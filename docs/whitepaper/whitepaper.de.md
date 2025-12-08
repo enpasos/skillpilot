@@ -37,7 +37,7 @@ Daraus ergibt sich der Ansatz für **SkillPilot** fast von selbst: Es entsteht a
 
 Das Herzstück von SkillPilot ist die Abkehr von linearen Listen hin zu einem vernetzten Graphen.
 
-![Beispiel-Visualisierung des Skill-Graphen](graph_example.png)
+![Beispiel-Visualisierung des Skill-Graphen](graph_example.de.png)
 
 * **Die Landkarte (Knoten & Verbindungen):** Lernziele sind Knoten in einem Netzwerk. Verbindungen definieren Abhängigkeiten ("Du musst A können, bevor du B lernst") oder Hierarchien ("Themenfeld X beinhaltet die Skills Y und Z").
 * **Die Frontier (Die Lerngrenze):** Das System berechnet für jeden Lernenden dynamisch die sogenannte „Frontier“. Das ist die Menge aller Skills, für die der Lernende *jetzt gerade* bereit ist – also Skills, deren Voraussetzungen er bereits erfüllt hat, die er aber selbst noch nicht beherrscht.
@@ -50,7 +50,7 @@ Dies verhindert Überforderung und stellt sicher, dass der KI-Tutor keine willk�
 
 Ein zentraler Pfeiler von SkillPilot ist „Privacy by Design“ durch eine strikte Datentrennung.
 
-![Schematische Darstellung der Datentrennung](architecture_sketch.svg)
+![Schematische Darstellung der Datentrennung](sketch.de.svg)
 
 Die klassische algorithmische Komponente – der **SkillPilot Server** – kennt den Lernenden ausschließlich als Pseudonym (`skillpilotId`). Auf diesem Server werden lediglich technisch notwendige Metadaten gespeichert: der erreichte Lernfortschritt im Graphen.
 
