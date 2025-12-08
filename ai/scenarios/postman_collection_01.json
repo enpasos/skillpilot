@@ -1,0 +1,256 @@
+{
+    "info": {
+        "_postman_id": "a9094f6f-scenario-01-live",
+        "name": "SkillPilot Live Scenario 01",
+        "description": "Verification flow for Scenario 01. Includes both Instruction-based and ID-based Scope Setting.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "https://skillpilot.com/api/ai",
+            "type": "string"
+        },
+        {
+            "key": "skillpilotId",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "targetGoalId",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "exampleGoalId",
+            "value": "c1c6e76a-e8a1-4058-9cf7-fe4b5a45489d",
+            "type": "string"
+        }
+    ],
+    "item": [
+        {
+            "name": "1. Create Learner",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "var jsonData = pm.response.json();",
+                            "pm.test(\"Status code is 200\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});",
+                            "if (jsonData.state && jsonData.state.skillpilotId) {",
+                            "    pm.collectionVariables.set(\"skillpilotId\", jsonData.state.skillpilotId);",
+                            "    console.log(\"Learner ID set: \" + jsonData.state.skillpilotId);",
+                            "}"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/learners",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "learners"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "2. Set Curriculum (Oberstufe)",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status code is 200\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});",
+                            "var jsonData = pm.response.json();",
+                            "pm.test(\"Got Frontier\", function () {",
+                            "    pm.expect(jsonData.frontier).to.be.an('array');",
+                            "});",
+                            "// Capture a goal ID for testing 4b if available",
+                            "if (jsonData.frontier && jsonData.frontier.length > 0) {",
+                            "    // We could overwrite exampleGoalId here, but let's keep the hardcoded one as backup",
+                            "    // pm.collectionVariables.set(\"exampleGoalId\", jsonData.frontier[0].id);",
+                            "}"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"curriculumId\": \"DE_HES_S_GYM_2_OVERVIEW\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/learners/{{skillpilotId}}/curriculum",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "learners",
+                        "{{skillpilotId}}/curriculum"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "3. Personalize (Focus Math)",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status code is 200\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"goalIds\": [\"DE_HES_S_GYM_2_MATHEMATIK\"]\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/learners/{{skillpilotId}}/personalization",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "learners",
+                        "{{skillpilotId}}",
+                        "personalization"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "4. Set Scope (by IDs)",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "var jsonData = pm.response.json();",
+                            "pm.test(\"Status code is 200\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});",
+                            "pm.test(\"Has Planned Goals\", function () {",
+                            "    pm.expect(jsonData.goals.planned.length).to.be.above(0);",
+                            "});",
+                            "if (jsonData.goals.planned.length > 0) {",
+                            "    var firstGoal = jsonData.goals.planned[0];",
+                            "    pm.collectionVariables.set(\"targetGoalId\", firstGoal.id);",
+                            "    console.log(\"Target Goal ID: \" + firstGoal.id + \" (\" + firstGoal.title + \")\");",
+                            "}"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"goalIds\": [\"{{exampleGoalId}}\"]\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/learners/{{skillpilotId}}/scope",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "learners",
+                        "{{skillpilotId}}",
+                        "scope"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "5. Set Mastery (Simulate 1.0)",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status code is 200\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});",
+                            "pm.test(\"Returns Frontier\", function () {",
+                            "    var jsonData = pm.response.json();",
+                            "    pm.expect(jsonData.frontier).to.exist;",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"goalId\": \"{{targetGoalId}}\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/learners/{{skillpilotId}}/mastery",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "learners",
+                        "{{skillpilotId}}",
+                        "mastery"
+                    ]
+                }
+            }
+        }
+    ]
+}

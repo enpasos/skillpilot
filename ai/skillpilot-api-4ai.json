@@ -1,0 +1,583 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Skillpilot AI Interface",
+        "description": "Optimized API for AI Tutors.\n\n### INSTRUCTIONS\n1. **First Priority**: Ensure you have a `skillpilotId`. If not, ask the user or create one.\n2. **State Machine**: Always check `nextAllowedActions` in the response. It tells you what API calls are valid next.\n   - If `['setCurriculum']`: You MUST ask the user to select a curriculum.\n   - If `['setPersonalization', ...]`: You can personalize, set scope, or start teaching.\n3. **Core Concepts**: Use `getLearnerState` for context, `setMastery` for progress.",
+        "version": "v2-ai-optimized-unified"
+    },
+    "servers": [
+        {
+            "url": "https://skillpilot.com"
+        }
+    ],
+    "paths": {
+        "/api/ai/learners": {
+            "post": {
+                "operationId": "createLearner",
+                "summary": "Initialize a new learner session",
+                "description": "Creates a new learner entity. Can optionally initialize with a topic to auto-select curriculum.",
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateLearnerRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Learner created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateLearnerResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-openai-isConsequential": false
+            }
+        },
+        "/api/ai/learners/{skillpilotId}/state": {
+            "get": {
+                "operationId": "getLearnerState",
+                "summary": "Get unified learner state",
+                "description": "Returns the full context: ID, Curriculum, Rich Frontier, and Goals summary. Use this to avoid multiple round trips.",
+                "parameters": [
+                    {
+                        "name": "skillpilotId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Unified state",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UnifiedLearnerStateResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-openai-isConsequential": false
+            }
+        },
+        "/api/ai/learners/{skillpilotId}/scope": {
+            "post": {
+                "operationId": "setScope",
+                "summary": "Set learning scope/focus",
+                "description": "Personalize the plan based on user instruction (e.g. 'I want to learn Stochastik'). The server automatically finds relevant goals and adds them to the planned list.",
+                "parameters": [
+                    {
+                        "name": "skillpilotId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ScopeRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Scope updated. Returns new learner state with planned goals.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UnifiedLearnerStateResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-openai-isConsequential": false
+            }
+        },
+        "/api/ai/learners/{skillpilotId}/mastery": {
+            "post": {
+                "operationId": "setMastery",
+                "summary": "Update mastery and get next steps",
+                "description": "Updates mastery for a goal and immediately returns the new frontier.",
+                "parameters": [
+                    {
+                        "name": "skillpilotId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MasteryUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Mastery updated, returns new frontier",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MasteryUpdateResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-openai-isConsequential": false
+            }
+        },
+        "/api/ai/landscapes": {
+            "get": {
+                "operationId": "listLandscapes",
+                "summary": "List available curriculums",
+                "responses": {
+                    "200": {
+                        "description": "List of available landscapes/curriculums",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LandscapeOverviewResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-openai-isConsequential": false
+            }
+        },
+        "/api/ai/learners/{skillpilotId}/curriculum": {
+            "post": {
+                "operationId": "setCurriculum",
+                "summary": "Set current curriculum/landscape",
+                "parameters": [
+                    {
+                        "name": "skillpilotId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateCurriculumRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Curriculum updated successfully. Returns the new learner state.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UnifiedLearnerStateResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Learner or Curriculum not found"
+                    }
+                },
+                "x-openai-isConsequential": false
+            }
+        },
+        "/api/ai/learners/{skillpilotId}/personalization": {
+            "post": {
+                "operationId": "setPersonalization",
+                "summary": "Personalize the curriculum",
+                "description": "Restrict the curriculum to specific subjects or levels. Use this after selecting a curriculum but before setting a scope.",
+                "parameters": [
+                    {
+                        "name": "skillpilotId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PersonalizationRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Personalization updated. Returns new learner state.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UnifiedLearnerStateResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-openai-isConsequential": false
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CreateLearnerRequest": {
+                "type": "object",
+                "properties": {
+                    "topic": {
+                        "type": "string"
+                    }
+                }
+            },
+            "CreateLearnerResponse": {
+                "type": "object",
+                "properties": {
+                    "skillpilotId": {
+                        "type": "string",
+                        "description": "UUID of the new learner"
+                    },
+                    "state": {
+                        "$ref": "#/components/schemas/UnifiedLearnerStateResponse"
+                    },
+                    "availableLandscapes": {
+                        "type": "array",
+                        "description": "List of available curricula to choose from if none was auto-selected.",
+                        "items": {
+                            "$ref": "#/components/schemas/LandscapeSummary"
+                        }
+                    }
+                }
+            },
+            "UnifiedLearnerStateResponse": {
+                "type": "object",
+                "properties": {
+                    "learnerId": {
+                        "type": "string"
+                    },
+                    "curriculum": {
+                        "$ref": "#/components/schemas/LandscapeSummary"
+                    },
+                    "frontier": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FrontierGoal"
+                        }
+                    },
+                    "goals": {
+                        "$ref": "#/components/schemas/LearnerGoals"
+                    },
+                    "nextAllowedActions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of allowed next actions. The AI MUST follow these hints."
+                    }
+                }
+            },
+            "FrontierGoal": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "atomic",
+                            "cluster"
+                        ]
+                    },
+                    "reason": {
+                        "type": "string"
+                    }
+                }
+            },
+            "LearnerGoals": {
+                "type": "object",
+                "properties": {
+                    "planned": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FrontierGoal"
+                        }
+                    },
+                    "mastered_count": {
+                        "type": "integer"
+                    },
+                    "total_count": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "ScopeRequest": {
+                "type": "object",
+                "properties": {
+                    "goalIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of Goal IDs to set as the scope. REQUIRED."
+                    }
+                },
+                "required": [
+                    "goalIds"
+                ]
+            },
+            "MasteryUpdateResponse": {
+                "type": "object",
+                "properties": {
+                    "frontier": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FrontierGoal"
+                        }
+                    }
+                }
+            },
+            "Learner": {
+                "type": "object",
+                "properties": {
+                    "skillpilotId": {
+                        "type": "string"
+                    },
+                    "selectedCurriculum": {
+                        "type": "string",
+                        "description": "ID of the current landscape"
+                    }
+                }
+            },
+            "MasteryUpdateRequest": {
+                "type": "object",
+                "required": [
+                    "goalId"
+                ],
+                "properties": {
+                    "goalId": {
+                        "type": "string",
+                        "description": "The UUID of the single goal to set to 1.0 (Mastered). MUST be an Atomic Goal (no children)."
+                    }
+                }
+            },
+            "MasteryResponse": {
+                "type": "object",
+                "properties": {
+                    "mastery": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "number",
+                            "format": "double"
+                        },
+                        "description": "Map of Goal UUID to mastery score (0.0 to 1.0). e.g. {'uuid': 1.0}"
+                    },
+                    "goalId": {
+                        "type": "string",
+                        "description": "Simplification: Single Goal UUID to mark as mastered (1.0)."
+                    }
+                },
+                "required": [
+                    "goalId"
+                ]
+            },
+            "FrontierResponse": {
+                "type": "object",
+                "properties": {
+                    "goals": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of Goal UUIDs that are ready to be learned."
+                    }
+                }
+            },
+            "PlannedGoalsRequest": {
+                "type": "object",
+                "properties": {
+                    "goals": {
+                        "type": "array",
+                        "description": "List of goal IDs (UUIDs)",
+                        "items": {
+                            "type": "string"
+                        },
+                        "uniqueItems": true
+                    }
+                },
+                "required": [
+                    "goals"
+                ]
+            },
+            "PlannedGoalsResponse": {
+                "type": "object",
+                "properties": {
+                    "goals": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "UpdateCurriculumRequest": {
+                "type": "object",
+                "properties": {
+                    "curriculumId": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PersonalizationRequest": {
+                "type": "object",
+                "properties": {
+                    "config": {
+                        "type": "object",
+                        "description": "Configuration map. Key = Landscape ID. Value = {selected: boolean, filterId: string}. EXAMPLE: {'math-de': {'selected': true, 'filterId': 'Q1'}}",
+                        "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                                "selected": {
+                                    "type": "boolean"
+                                },
+                                "filterId": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "goalIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of Goal IDs (UUIDs) to enable. The backend will automatically select the corresponding landscapes. Preferred over 'config' for simplicity."
+                    }
+                }
+            },
+            "LandscapeOverviewResponse": {
+                "type": "object",
+                "properties": {
+                    "summaries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LandscapeSummary"
+                        }
+                    }
+                }
+            },
+            "LandscapeSummary": {
+                "type": "object",
+                "properties": {
+                    "landscapeId": {
+                        "type": "string"
+                    },
+                    "filename": {
+                        "type": "string"
+                    },
+                    "subject": {
+                        "type": "string"
+                    },
+                    "locale": {
+                        "type": "string"
+                    },
+                    "level": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    }
+                }
+            },
+            "LearningLandscape": {
+                "type": "object",
+                "properties": {
+                    "landscapeId": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "goals": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LearningGoal"
+                        }
+                    }
+                }
+            },
+            "LearningGoal": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "UUID of the goal. Use this for all mastery updates."
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "requires": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "IDs of prerequisite goals"
+                    }
+                },
+                "example": {
+                    "id": "123e4567-e89b-12d3-a456-426614174000",
+                    "title": "Linear Equations",
+                    "description": "Understanding y = mx + b",
+                    "requires": [
+                        "987fcdeb-51a2-43f1-a567-987654321000"
+                    ]
+                }
+            }
+        }
+    }
+}

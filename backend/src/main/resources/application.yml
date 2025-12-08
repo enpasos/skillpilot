@@ -1,0 +1,50 @@
+server:
+  port: 8080
+  forward-headers-strategy: framework
+
+logging:
+  file:
+    name: logs/skillpilot.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 7
+
+spring:
+  application:
+    name: skillpilot-backend
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:skillpilot}
+    username: ${POSTGRES_USER:skillpilot}
+    password: ${POSTGRES_PASSWORD:skillpilot}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+  liquibase:
+    enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+skillpilot:
+  landscapes:
+    directory: ../curricula
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+ 
+
+cors:
+  allowed-origins: "http://localhost:5173,http://127.0.0.1:5173"

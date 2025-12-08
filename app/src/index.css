@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color-scheme: light;
+  --color-bg-main: 11 16 32;
+  --color-bg-card: 31 41 55;
+  --color-bg-sidebar: 15 23 42;
+  --color-primary: 59 130 246;
+  --color-primary-glow: 147 197 253;
+
+  /* ChatGPT Theme - Light Mode Defaults */
+  --chat-bg: #ffffff;
+  --sidebar-bg: #f9f9f9;
+  /* Sehr helles Grau */
+  /* gray-900 - Stärkerer Kontrast */
+  --text-primary: #111827;
+  /* gray-600 - Bessere Lesbarkeit */
+  --text-secondary: #4b5563;
+  /* gray-500 */
+  --border-color: #e5e7eb;
+  --input-bg: #ffffff;
+}
+
+.dark {
+  color-scheme: dark;
+  /* ChatGPT Theme - Dark Mode */
+  --chat-bg: #343541;
+  /* Das ikonische GPT-Dunkelgrau */
+  --sidebar-bg: #202123;
+  /* Fast schwarz */
+  --text-primary: #ececf1;
+  /* Off-White für besseren Kontrast */
+  --text-secondary: #c5c5d2;
+  --border-color: #4d4d4f;
+  --input-bg: #40414f;
+}
+
+@layer base {
+  * {
+    font-family: inherit;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    @apply bg-chat-bg text-text-primary antialiased transition-colors;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply rounded-2xl border border-border-color bg-sidebar-bg backdrop-blur transition-colors;
+  }
+}

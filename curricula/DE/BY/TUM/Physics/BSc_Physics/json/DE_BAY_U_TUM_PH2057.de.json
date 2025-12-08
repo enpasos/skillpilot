@@ -1,0 +1,303 @@
+{
+    "title": "Rechnergestützte Physik 1 (TUM, Modul PH2057)",
+    "titleEn": "Computational Physics 1 (TUM, Module PH2057)",
+    "description": "Grundlegende numerische Methoden und Lösungen für gewöhnliche und partielle Differentialgleichungen: Gleitkommazahlen/Fehlerquellen, Quadratur, Differentiation, Nullstellensuche, lineare Algebra, Datenanpassung/Interpolation, ODE- und PDE-Verfahren. Workload 150 h (60 h Präsenz), 5 ECTS, Wintersemester. Version 2025w verantwortlich: Recksiegel, Stefan. Sprache: EN.",
+    "descriptionEn": "Fundamental numerical methods and solutions for ordinary and partial differential equations: floating point numbers/error sources, quadrature, differentiation, root finding, linear algebra, data fitting/interpolation, ODE and PDE methods. Workload 150 h (60 h contact), 5 ECTS, winter term. Version 2025w responsible: Recksiegel, Stefan. Language: EN.",
+    "landscapeId": "4d40dce7-3d1a-48d5-8b76-a95aa81de264",
+    "locale": "de-DE",
+    "subject": "Rechnergestützte Physik 1",
+    "frameworkId": "tum-ph2057",
+    "filters": [
+        {
+            "id": "MSc",
+            "label": "Master Physik / TMP / Numerik"
+        }
+    ],
+    "goals": [
+        {
+            "id": "b3e4e5b7-bed3-49d5-9fcd-6867324642b4",
+            "shortKey": "tum_ph2057_module",
+            "title": "Rechnergestützte Physik 1 – Modulüberblick",
+            "titleEn": "Computational Physics 1 – Module Overview",
+            "description": "Lernende verstehen grundlegende numerische Methoden, implementieren sie und setzen sie auf ODEs/PDEs und physikalische Probleme an.",
+            "descriptionEn": "Learners understand fundamental numerical methods, implement them, and apply them to ODEs/PDEs and physical problems.",
+            "core": true,
+            "weight": 1.8,
+            "phase": "Modul",
+            "area": "Überblick",
+            "tags": [
+                "ects:5",
+                "workload:150h",
+                "presence:60h",
+                "level:master",
+                "duration:1_semester",
+                "language:en",
+                "module:PH2057",
+                "semester:WS",
+                "responsible:recksiegel_stefan"
+            ],
+            "contains": [
+                "c780a21c-140e-4417-bc7d-839ebbd27963",
+                "756c9100-eb31-410b-8232-f1a04a1218f1",
+                "077a42fb-1b14-4c4b-a50a-32dc6c279b27",
+                "de8fa7a0-b575-421f-8188-a2bfacd5021b",
+                "66ad8cf3-aca1-4277-8a2d-100dbb9fe273",
+                "342ac64f-2067-454e-9b49-05bd71df3e1e",
+                "69eb4724-dfa7-4606-a557-df60cfadc330",
+                "30288e3b-20b4-41d7-a5eb-26c01ac46ab1"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ph2057",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Überblick",
+                "topicCode": "tum_ph2057_module"
+            }
+        },
+        {
+            "id": "c780a21c-140e-4417-bc7d-839ebbd27963",
+            "shortKey": "tum_ph2057_lo1",
+            "title": "Zahlen & Fehlerquellen",
+            "titleEn": "Numbers & Error Sources",
+            "description": "Lernende verstehen Repräsentation von Zahlen im Computer und typische Fehlerquellen/Fehlerfortpflanzung.",
+            "descriptionEn": "Learners understand the representation of numbers in computers and typical error sources/propagation.",
+            "core": true,
+            "weight": 0.25,
+            "phase": "Modul",
+            "area": "Grundlagen",
+            "tags": [
+                "ects:5",
+                "module:PH2057"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ph2057",
+                "demandLevel": "AB1",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Grundlagen",
+                "topicCode": "tum_ph2057_lo1"
+            }
+        },
+        {
+            "id": "756c9100-eb31-410b-8232-f1a04a1218f1",
+            "shortKey": "tum_ph2057_lo2",
+            "title": "Quadratur & Differentiation",
+            "titleEn": "Quadrature & Differentiation",
+            "description": "Lernende wenden numerische Integration (Trapez-, Simpson-, Gauss, adaptiv) und Differentiation (Vorwärts/Zentral, höhere Ordnung) an.",
+            "descriptionEn": "Learners apply numerical integration (trapezoidal, Simpson, Gauss, adaptive) and differentiation (forward/central, higher order).",
+            "core": true,
+            "weight": 0.35,
+            "phase": "Modul",
+            "area": "Analysis",
+            "tags": [
+                "ects:5",
+                "module:PH2057"
+            ],
+            "contains": [],
+            "requires": [
+                "c780a21c-140e-4417-bc7d-839ebbd27963"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ph2057",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Analysis",
+                "topicCode": "tum_ph2057_lo2"
+            }
+        },
+        {
+            "id": "077a42fb-1b14-4c4b-a50a-32dc6c279b27",
+            "shortKey": "tum_ph2057_lo3",
+            "title": "Nullstellensuche",
+            "titleEn": "Root Finding",
+            "description": "Lernende setzen Bisektion und Newton-Raphson (1D/mehrdimensional) ein und beurteilen Konvergenz/Einsatzgrenzen.",
+            "descriptionEn": "Learners use bisection and Newton-Raphson (1D/multidimensional) and assess convergence/limits.",
+            "core": true,
+            "weight": 0.3,
+            "phase": "Modul",
+            "area": "Root Finding",
+            "tags": [
+                "ects:5",
+                "module:PH2057"
+            ],
+            "contains": [],
+            "requires": [
+                "c780a21c-140e-4417-bc7d-839ebbd27963"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ph2057",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Root Finding",
+                "topicCode": "tum_ph2057_lo3"
+            }
+        },
+        {
+            "id": "de8fa7a0-b575-421f-8188-a2bfacd5021b",
+            "shortKey": "tum_ph2057_lo4",
+            "title": "Lineare Algebra (numerisch)",
+            "titleEn": "Linear Algebra (Numerical)",
+            "description": "Lernende lösen lineare Gleichungssysteme (Gauss/Backsubstitution, LU, SVD) und verstehen Konditionierung.",
+            "descriptionEn": "Learners solve linear systems of equations (Gauss/backsubstitution, LU, SVD) and understand conditioning.",
+            "core": true,
+            "weight": 0.35,
+            "phase": "Modul",
+            "area": "Linear Algebra",
+            "tags": [
+                "ects:5",
+                "module:PH2057"
+            ],
+            "contains": [],
+            "requires": [
+                "c780a21c-140e-4417-bc7d-839ebbd27963"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ph2057",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Linear Algebra",
+                "topicCode": "tum_ph2057_lo4"
+            }
+        },
+        {
+            "id": "66ad8cf3-aca1-4277-8a2d-100dbb9fe273",
+            "shortKey": "tum_ph2057_lo5",
+            "title": "Interpolation & Datenanpassung",
+            "titleEn": "Interpolation & Data Fitting",
+            "description": "Lernende nutzen Inter-/Extrapolation (Lagrange, Splines) und Ausgleichsrechnung (Least Squares linear/nichtlinear, χ²).",
+            "descriptionEn": "Learners use inter-/extrapolation (Lagrange, splines) and fitting (least squares linear/nonlinear, χ²).",
+            "core": true,
+            "weight": 0.35,
+            "phase": "Modul",
+            "area": "Fitting",
+            "tags": [
+                "ects:5",
+                "module:PH2057"
+            ],
+            "contains": [],
+            "requires": [
+                "de8fa7a0-b575-421f-8188-a2bfacd5021b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ph2057",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Fitting",
+                "topicCode": "tum_ph2057_lo5"
+            }
+        },
+        {
+            "id": "342ac64f-2067-454e-9b49-05bd71df3e1e",
+            "shortKey": "tum_ph2057_lo6",
+            "title": "ODE-Verfahren",
+            "titleEn": "ODE Methods",
+            "description": "Lernende klassifizieren ODEs, wenden Euler/Midpoint/Runge-Kutta an, behandeln Anfangs-/Randwertprobleme und Eigenwertprobleme.",
+            "descriptionEn": "Learners classify ODEs, apply Euler/Midpoint/Runge-Kutta, and deal with initial/boundary value and eigenvalue problems.",
+            "core": true,
+            "weight": 0.45,
+            "phase": "Modul",
+            "area": "ODEs",
+            "tags": [
+                "ects:5",
+                "module:PH2057"
+            ],
+            "contains": [],
+            "requires": [
+                "756c9100-eb31-410b-8232-f1a04a1218f1",
+                "077a42fb-1b14-4c4b-a50a-32dc6c279b27",
+                "de8fa7a0-b575-421f-8188-a2bfacd5021b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ph2057",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "ODEs",
+                "topicCode": "tum_ph2057_lo6"
+            }
+        },
+        {
+            "id": "69eb4724-dfa7-4606-a557-df60cfadc330",
+            "shortKey": "tum_ph2057_lo7",
+            "title": "PDE-Verfahren",
+            "titleEn": "PDE Methods",
+            "description": "Lernende klassifizieren PDEs (elliptisch, parabolisch, hyperbolisch) und wählen passende numerische Verfahren.",
+            "descriptionEn": "Learners classify PDEs (elliptic, parabolic, hyperbolic) and choose appropriate numerical methods.",
+            "core": true,
+            "weight": 0.4,
+            "phase": "Modul",
+            "area": "PDEs",
+            "tags": [
+                "ects:5",
+                "module:PH2057"
+            ],
+            "contains": [],
+            "requires": [
+                "342ac64f-2067-454e-9b49-05bd71df3e1e"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ph2057",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "PDEs",
+                "topicCode": "tum_ph2057_lo7"
+            }
+        },
+        {
+            "id": "30288e3b-20b4-41d7-a5eb-26c01ac46ab1",
+            "shortKey": "tum_ph2057_lo8",
+            "title": "Physikalische Modellierung",
+            "titleEn": "Physical Modeling",
+            "description": "Lernende stellen zu einem physikalischen Problem passende Differentialgleichungen auf und wählen geeignete numerische Lösungsmethoden.",
+            "descriptionEn": "Learners set up appropriate differential equations for a physical problem and choose suitable numerical solution methods.",
+            "core": true,
+            "weight": 0.4,
+            "phase": "Modul",
+            "area": "Modellierung",
+            "tags": [
+                "ects:5",
+                "module:PH2057"
+            ],
+            "contains": [],
+            "requires": [
+                "342ac64f-2067-454e-9b49-05bd71df3e1e",
+                "69eb4724-dfa7-4606-a557-df60cfadc330"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ph2057",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Modellierung",
+                "topicCode": "tum_ph2057_lo8"
+            }
+        }
+    ]
+}
