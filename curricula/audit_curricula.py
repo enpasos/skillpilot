@@ -59,17 +59,15 @@ def audit_node(node, path, issues, is_root=False):
 
     # Rule 3: Untranslated Content (Simple heuristic)
     # Only flag if German is not empty and English equals German
+    desc_de = node.get("description", "")
+    desc_en = node.get("descriptionEn", "")
+    if desc_de and desc_de == desc_en:
+         issues.append(f"[{path}] 'descriptionEn' identical to 'description' (Untranslated?)\n        DE: {desc_de}")
+
     title_de = node.get("title", "")
     title_en = node.get("titleEn", "")
     if title_de and title_de == title_en:
-         issues.append(f"[{path}] 'titleEn' identical to 'title' (Untranslated?)")
-    
-    desc_de = node.get("description", "")
-    desc_en = node.get("descriptionEn", "")
-    
-    # Ignore empty descriptions for this check, but if both are present and equal, flag it.
-    if desc_de and desc_de == desc_en:
-         issues.append(f"[{path}] 'descriptionEn' identical to 'description' (Untranslated?)")
+         issues.append(f"[{path}] 'titleEn' identical to 'title' (Untranslated?)\n        DE: {title_de}")
 
     # Rule 4: Reorder
     # We return the reordered node

@@ -50,7 +50,7 @@ This prevents overload and ensures that the AI tutor does not make arbitrary jum
 
 A central pillar of SkillPilot is “privacy by design” through strict separation of data.
 
-![Schematic representation of data separation](architecture_sketch.svg)
+![Schematic representation of data separation](sketch.en.svg)
 
 The classical algorithmic component—the **SkillPilot server**—knows the learner solely as a pseudonym (`skillpilotId`). Only technically necessary metadata are stored on this server: the learning progress achieved in the graph.
 
