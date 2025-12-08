@@ -191,12 +191,9 @@ interface CompetenceTreeProps {
 
 export const CompetenceTree: React.FC<CompetenceTreeProps> = ({ rootGoals, activeFilter, personalConfig, ...props }) => {
   const visibleRoots = rootGoals.filter((g) => {
-    // Filter by active tag filter
-    if (activeFilter && activeFilter !== 'all') {
-      if (g.tags && g.tags.length > 0 && !g.tags.includes(activeFilter)) {
-        return false
-      }
-    }
+    // We don't strictly filter root goals by activeFilter, because root goals usually represent 'Structure' (e.g. 'Fächer')
+    // and might not have the specific tags (e.g. 'GK') that their children have.
+    // We let TreeNode handle the filtering of children.
     return true
   })
 
