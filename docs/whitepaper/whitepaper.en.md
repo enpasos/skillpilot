@@ -37,7 +37,7 @@ From this, the approach for **SkillPilot** almost suggests itself: it is created
 
 At the heart of SkillPilot lies the departure from linear lists towards a connected graph.
 
-![Example visualization of the skill graph](graph_example.png)
+![Example visualization of the skill graph](graph_example.en.png)
 
 * **The Map (Nodes & Connections):** Learning objectives are nodes in a network. Connections define dependencies (“You must be able to do A before you learn B”) or hierarchies (“Topic area X includes skills Y and Z”).
 * **The Frontier (Learning Boundary):** The system dynamically calculates the so-called “frontier” for each learner. This is the set of all skills for which the learner is *right now* ready—i.e. skills whose prerequisites they already fulfill but which they themselves do not yet master.
