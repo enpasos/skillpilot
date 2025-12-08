@@ -4,6 +4,8 @@ SkillPilot navigates you through complex learning landscapes, modeling curricula
 
 This project is an invitation to the community to jointly build and bring to life a secure platform for learning landscapes—a shared home where learners, educators, curriculum institutions, and supporting AIs alike can thrive.
 
+![SkillPilot cartoon](https://enpasos.github.io/skillpilot/cartoon/SkillPilot_Cartoon.en.png)
+
 For a detailed introduction and the vision behind SkillPilot, please refer to the Whitepaper:
 
 *   [**Read Whitepaper (English)**](https://enpasos.github.io/skillpilot/whitepaper/whitepaper.en.html)
