@@ -1,12 +1,22 @@
 {
-    "title": "Französisch Oberstufe (Hessen, KC 2024)",
-    "titleEn": "French Upper Secondary (Hesse, KC 2024)",
-    "description": "Lernlandschaft für das hessische Kerncurriculum Französisch (gymnasiale Oberstufe, Ausgabe 2024).",
-    "descriptionEn": "Learning landscape for the Hessian core curriculum French (Upper Secondary, 2024 edition).",
     "landscapeId": "30acd190-609c-4109-8ee7-06fc5594af19",
     "locale": "de-DE",
     "subject": "Französisch",
     "frameworkId": "hessen-kc-2024-french",
+    "title": "Französisch Oberstufe (Hessen, KC 2024)",
+    "titleEn": "French Upper Secondary (Hesse, KC 2024)",
+    "description": "Lernlandschaft für das hessische Kerncurriculum Französisch (gymnasiale Oberstufe, Ausgabe 2024).",
+    "descriptionEn": "Learning landscape for the Hessian core curriculum French (Upper Secondary, 2024 edition).",
+    "filters": [
+        {
+            "id": "GK",
+            "label": "Grundkurs"
+        },
+        {
+            "id": "LK",
+            "label": "Leistungskurs"
+        }
+    ],
     "goals": [
         {
             "id": "35cf060b-92dd-4b7b-b066-e95a51dc31d1",
@@ -17,16 +27,10 @@
             "descriptionEn": "Overarching goal for French Upper Secondary (KC 2024).",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-french",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "GLOBAL",
-                "area": "Meta",
-                "topicCode": "GLOBAL"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "f8c2435a-b7bb-459c-ad2f-7de746bce7eb",
                 "77b6cd41-1b2c-4f8b-918b-1d774db3dd66",
@@ -48,11 +52,17 @@
                 "fcf4b242-23da-482a-8cef-8e7d0fb76486",
                 "a9b36bb7-69d4-4fee-9d1e-468932c8f86e"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-french",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "GLOBAL",
+                "area": "Meta",
+                "topicCode": "GLOBAL"
+            }
         },
         {
             "id": "f8c2435a-b7bb-459c-ad2f-7de746bce7eb",
@@ -63,6 +73,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu Le cercle familial et amical lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -71,16 +90,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "779a831f-16d2-45ae-a96a-b05289601123",
@@ -91,6 +101,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu Le cercle familial et amical verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "f8c2435a-b7bb-459c-ad2f-7de746bce7eb"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -99,18 +120,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E1"
-            },
-            "requires": [
-                "f8c2435a-b7bb-459c-ad2f-7de746bce7eb"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a8571dad-0570-486e-91f6-6a853cb5343b",
@@ -121,6 +131,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu Le cercle familial et amical reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "779a831f-16d2-45ae-a96a-b05289601123"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -129,18 +150,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E1"
-            },
-            "requires": [
-                "779a831f-16d2-45ae-a96a-b05289601123"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "f26c58d7-656e-4700-b6a2-93d1636b0daf",
@@ -151,6 +161,17 @@
             "descriptionEn": "Die lernende Person kann zu Le cercle familial et amical zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "a8571dad-0570-486e-91f6-6a853cb5343b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -159,18 +180,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E1"
-            },
-            "requires": [
-                "a8571dad-0570-486e-91f6-6a853cb5343b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "2e585b1d-058f-4af7-b2c9-35adfa480630",
@@ -181,6 +191,17 @@
             "descriptionEn": "Die lernende Person kann zu Le cercle familial et amical einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "f26c58d7-656e-4700-b6a2-93d1636b0daf"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -189,18 +210,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E1"
-            },
-            "requires": [
-                "f26c58d7-656e-4700-b6a2-93d1636b0daf"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "28e8578f-db1e-42f9-ac54-4dd54f4424dc",
@@ -211,6 +221,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu Le cercle familial et amical zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "779a831f-16d2-45ae-a96a-b05289601123"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -219,18 +240,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E1"
-            },
-            "requires": [
-                "779a831f-16d2-45ae-a96a-b05289601123"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "3db3a0b2-349b-48f3-b665-06fdb94b5b87",
@@ -241,6 +251,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu Le cercle familial et amical gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "f8c2435a-b7bb-459c-ad2f-7de746bce7eb"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -249,18 +270,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E1"
-            },
-            "requires": [
-                "f8c2435a-b7bb-459c-ad2f-7de746bce7eb"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "4bbb7335-aa57-474b-8e21-e0f85401c250",
@@ -271,6 +281,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu Le cercle familial et amical erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "f26c58d7-656e-4700-b6a2-93d1636b0daf"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -279,18 +300,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E1"
-            },
-            "requires": [
-                "f26c58d7-656e-4700-b6a2-93d1636b0daf"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "77b6cd41-1b2c-4f8b-918b-1d774db3dd66",
@@ -301,6 +311,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu La culture des jeunes lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -309,16 +328,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "8c4af824-d1d8-436a-81b6-e05e4c4f411a",
@@ -329,6 +339,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu La culture des jeunes verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "77b6cd41-1b2c-4f8b-918b-1d774db3dd66"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -337,18 +358,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E2"
-            },
-            "requires": [
-                "77b6cd41-1b2c-4f8b-918b-1d774db3dd66"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "6d417aef-6f0f-4ac8-a2e4-07614fc57a40",
@@ -359,6 +369,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu La culture des jeunes reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "8c4af824-d1d8-436a-81b6-e05e4c4f411a"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -367,18 +388,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E2"
-            },
-            "requires": [
-                "8c4af824-d1d8-436a-81b6-e05e4c4f411a"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "1f5421d6-d7f3-4de6-a6d4-cf9467061571",
@@ -389,6 +399,17 @@
             "descriptionEn": "Die lernende Person kann zu La culture des jeunes zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "6d417aef-6f0f-4ac8-a2e4-07614fc57a40"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -397,18 +418,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E2"
-            },
-            "requires": [
-                "6d417aef-6f0f-4ac8-a2e4-07614fc57a40"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "6b3b64b2-d067-4929-8e20-d76ddff3a573",
@@ -419,6 +429,17 @@
             "descriptionEn": "Die lernende Person kann zu La culture des jeunes einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "1f5421d6-d7f3-4de6-a6d4-cf9467061571"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -427,18 +448,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E2"
-            },
-            "requires": [
-                "1f5421d6-d7f3-4de6-a6d4-cf9467061571"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "24d76a61-3c01-4c96-b7ca-9a701269da87",
@@ -449,6 +459,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu La culture des jeunes zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "8c4af824-d1d8-436a-81b6-e05e4c4f411a"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -457,18 +478,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E2"
-            },
-            "requires": [
-                "8c4af824-d1d8-436a-81b6-e05e4c4f411a"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "44adf3c3-71e4-4712-80b0-0bca9b51e9da",
@@ -479,6 +489,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu La culture des jeunes gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "77b6cd41-1b2c-4f8b-918b-1d774db3dd66"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -487,18 +508,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E2"
-            },
-            "requires": [
-                "77b6cd41-1b2c-4f8b-918b-1d774db3dd66"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "df028830-ff5a-4de2-ba32-53744f51ccac",
@@ -509,6 +519,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu La culture des jeunes erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "1f5421d6-d7f3-4de6-a6d4-cf9467061571"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -517,18 +538,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E2"
-            },
-            "requires": [
-                "1f5421d6-d7f3-4de6-a6d4-cf9467061571"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ae595560-2cb0-41ed-9ce6-9d2aa411e05a",
@@ -539,6 +549,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu Les médias – chances et risques lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -547,16 +566,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5c4e5e03-ce65-48e0-9cad-26311edbd05c",
@@ -567,6 +577,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu Les médias – chances et risques verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "ae595560-2cb0-41ed-9ce6-9d2aa411e05a"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -575,18 +596,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E3"
-            },
-            "requires": [
-                "ae595560-2cb0-41ed-9ce6-9d2aa411e05a"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d78b1c9f-81d3-41f4-8bba-e12b886d7a68",
@@ -597,6 +607,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu Les médias – chances et risques reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "5c4e5e03-ce65-48e0-9cad-26311edbd05c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -605,18 +626,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E3"
-            },
-            "requires": [
-                "5c4e5e03-ce65-48e0-9cad-26311edbd05c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "9e7e9124-40fd-4d6e-88cc-4dc2bd4eff23",
@@ -627,6 +637,17 @@
             "descriptionEn": "Die lernende Person kann zu Les médias – chances et risques zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "d78b1c9f-81d3-41f4-8bba-e12b886d7a68"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -635,18 +656,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E3"
-            },
-            "requires": [
-                "d78b1c9f-81d3-41f4-8bba-e12b886d7a68"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a18334ac-b695-430d-b7a6-5552c0fc9a0d",
@@ -657,6 +667,17 @@
             "descriptionEn": "Die lernende Person kann zu Les médias – chances et risques einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "9e7e9124-40fd-4d6e-88cc-4dc2bd4eff23"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -665,18 +686,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E3"
-            },
-            "requires": [
-                "9e7e9124-40fd-4d6e-88cc-4dc2bd4eff23"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "af2b6dcf-2e77-4ebb-aa21-4d8f3cc7b865",
@@ -687,6 +697,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu Les médias – chances et risques zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "5c4e5e03-ce65-48e0-9cad-26311edbd05c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -695,18 +716,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E3"
-            },
-            "requires": [
-                "5c4e5e03-ce65-48e0-9cad-26311edbd05c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "492f5111-58b0-4d4b-92ab-bf9db1712b4b",
@@ -717,6 +727,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu Les médias – chances et risques gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "ae595560-2cb0-41ed-9ce6-9d2aa411e05a"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -725,18 +746,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E3"
-            },
-            "requires": [
-                "ae595560-2cb0-41ed-9ce6-9d2aa411e05a"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "210f84d8-2b7a-4166-b289-3c4ae787fe85",
@@ -747,6 +757,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu Les médias – chances et risques erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "9e7e9124-40fd-4d6e-88cc-4dc2bd4eff23"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -755,18 +776,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E3"
-            },
-            "requires": [
-                "9e7e9124-40fd-4d6e-88cc-4dc2bd4eff23"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "f9a75d5e-8c9f-47e2-ac93-db4730ad6d0f",
@@ -777,6 +787,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu Trouver sa place dans la société lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -785,16 +804,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b52ada27-311f-44d5-83e4-81fe3151eeed",
@@ -805,6 +815,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu Trouver sa place dans la société verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "f9a75d5e-8c9f-47e2-ac93-db4730ad6d0f"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -813,18 +834,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E4"
-            },
-            "requires": [
-                "f9a75d5e-8c9f-47e2-ac93-db4730ad6d0f"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "110966ca-239a-4c25-823f-d9ad6d7cde6a",
@@ -835,6 +845,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu Trouver sa place dans la société reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "b52ada27-311f-44d5-83e4-81fe3151eeed"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -843,18 +864,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E4"
-            },
-            "requires": [
-                "b52ada27-311f-44d5-83e4-81fe3151eeed"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "c5722e13-19b7-4fb5-939c-15b3a1fa69a9",
@@ -865,6 +875,17 @@
             "descriptionEn": "Die lernende Person kann zu Trouver sa place dans la société zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "110966ca-239a-4c25-823f-d9ad6d7cde6a"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -873,18 +894,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E4"
-            },
-            "requires": [
-                "110966ca-239a-4c25-823f-d9ad6d7cde6a"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "1ac9971f-89db-447d-bdd9-b0b25aef5c53",
@@ -895,6 +905,17 @@
             "descriptionEn": "Die lernende Person kann zu Trouver sa place dans la société einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "c5722e13-19b7-4fb5-939c-15b3a1fa69a9"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -903,18 +924,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E4"
-            },
-            "requires": [
-                "c5722e13-19b7-4fb5-939c-15b3a1fa69a9"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "58f107ec-d0a8-452b-8803-09ec84335ccd",
@@ -925,6 +935,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu Trouver sa place dans la société zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "b52ada27-311f-44d5-83e4-81fe3151eeed"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -933,18 +954,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E4"
-            },
-            "requires": [
-                "b52ada27-311f-44d5-83e4-81fe3151eeed"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "3819f275-0f26-40ec-8004-f901d62eb624",
@@ -955,6 +965,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu Trouver sa place dans la société gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "f9a75d5e-8c9f-47e2-ac93-db4730ad6d0f"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -963,18 +984,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E4"
-            },
-            "requires": [
-                "f9a75d5e-8c9f-47e2-ac93-db4730ad6d0f"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "db7c70ef-204f-4eb9-9884-36005140dd52",
@@ -985,6 +995,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu Trouver sa place dans la société erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "c5722e13-19b7-4fb5-939c-15b3a1fa69a9"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -993,18 +1014,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E4"
-            },
-            "requires": [
-                "c5722e13-19b7-4fb5-939c-15b3a1fa69a9"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "87766143-2cf4-488a-8933-ba5ed1375143",
@@ -1015,6 +1025,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu Les tentations lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1023,16 +1042,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "f0e6d123-67f3-4c24-ad6c-720090710187",
@@ -1043,6 +1053,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu Les tentations verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "87766143-2cf4-488a-8933-ba5ed1375143"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1051,18 +1072,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E5"
-            },
-            "requires": [
-                "87766143-2cf4-488a-8933-ba5ed1375143"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b814fe42-f349-4417-b1b4-c5c705f7e4ae",
@@ -1073,6 +1083,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu Les tentations reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "f0e6d123-67f3-4c24-ad6c-720090710187"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1081,18 +1102,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E5"
-            },
-            "requires": [
-                "f0e6d123-67f3-4c24-ad6c-720090710187"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "67aecc25-e8da-468c-85b1-2c9002934026",
@@ -1103,6 +1113,17 @@
             "descriptionEn": "Die lernende Person kann zu Les tentations zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "b814fe42-f349-4417-b1b4-c5c705f7e4ae"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1111,18 +1132,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E5"
-            },
-            "requires": [
-                "b814fe42-f349-4417-b1b4-c5c705f7e4ae"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e6c19d33-0bfe-421b-a703-1f272fe8de95",
@@ -1133,6 +1143,17 @@
             "descriptionEn": "Die lernende Person kann zu Les tentations einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "67aecc25-e8da-468c-85b1-2c9002934026"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1141,18 +1162,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E5"
-            },
-            "requires": [
-                "67aecc25-e8da-468c-85b1-2c9002934026"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "390bda4d-335a-4179-9e08-2e1a667dec3f",
@@ -1163,6 +1173,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu Les tentations zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "f0e6d123-67f3-4c24-ad6c-720090710187"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1171,18 +1192,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E5"
-            },
-            "requires": [
-                "f0e6d123-67f3-4c24-ad6c-720090710187"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "55ab59e2-d687-48e7-b080-4c61f3f095eb",
@@ -1193,6 +1203,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu Les tentations gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "87766143-2cf4-488a-8933-ba5ed1375143"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1201,18 +1222,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E5"
-            },
-            "requires": [
-                "87766143-2cf4-488a-8933-ba5ed1375143"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "2af3cafb-8395-4bb6-93f5-0e471df958fb",
@@ -1223,6 +1233,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu Les tentations erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "67aecc25-e8da-468c-85b1-2c9002934026"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1231,18 +1252,7 @@
                 "phase": "E",
                 "area": "Thema",
                 "topicCode": "E5"
-            },
-            "requires": [
-                "67aecc25-e8da-468c-85b1-2c9002934026"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "896d8e2e-e38f-4703-ab4b-95af2b07b4aa",
@@ -1253,6 +1263,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu E-Phase Französisch lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1261,16 +1280,7 @@
                 "phase": "E",
                 "area": "Meta",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "77113835-ea2d-4abe-8b1e-73b6ca69d379",
@@ -1281,6 +1291,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu E-Phase Französisch verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "896d8e2e-e38f-4703-ab4b-95af2b07b4aa"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1289,18 +1310,7 @@
                 "phase": "E",
                 "area": "Meta",
                 "topicCode": "E"
-            },
-            "requires": [
-                "896d8e2e-e38f-4703-ab4b-95af2b07b4aa"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "dd8c7ec1-fd42-4e66-9024-e012d717f853",
@@ -1311,6 +1321,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu E-Phase Französisch reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "77113835-ea2d-4abe-8b1e-73b6ca69d379"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1319,18 +1340,7 @@
                 "phase": "E",
                 "area": "Meta",
                 "topicCode": "E"
-            },
-            "requires": [
-                "77113835-ea2d-4abe-8b1e-73b6ca69d379"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "05009215-bc65-46e5-95fe-f91f069db50d",
@@ -1341,6 +1351,17 @@
             "descriptionEn": "Die lernende Person kann zu E-Phase Französisch zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "dd8c7ec1-fd42-4e66-9024-e012d717f853"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1349,18 +1370,7 @@
                 "phase": "E",
                 "area": "Meta",
                 "topicCode": "E"
-            },
-            "requires": [
-                "dd8c7ec1-fd42-4e66-9024-e012d717f853"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "2a0eb982-fc8a-4e32-b679-bc78ee9256aa",
@@ -1371,6 +1381,17 @@
             "descriptionEn": "Die lernende Person kann zu E-Phase Französisch einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "05009215-bc65-46e5-95fe-f91f069db50d"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1379,18 +1400,7 @@
                 "phase": "E",
                 "area": "Meta",
                 "topicCode": "E"
-            },
-            "requires": [
-                "05009215-bc65-46e5-95fe-f91f069db50d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e50f3ac2-14c4-46d2-a234-eb68a6b46a15",
@@ -1401,6 +1411,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu E-Phase Französisch zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "77113835-ea2d-4abe-8b1e-73b6ca69d379"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1409,18 +1430,7 @@
                 "phase": "E",
                 "area": "Meta",
                 "topicCode": "E"
-            },
-            "requires": [
-                "77113835-ea2d-4abe-8b1e-73b6ca69d379"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "529a006c-e05d-46c0-8397-3caadb7ea09e",
@@ -1431,6 +1441,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu E-Phase Französisch gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "896d8e2e-e38f-4703-ab4b-95af2b07b4aa"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1439,18 +1460,7 @@
                 "phase": "E",
                 "area": "Meta",
                 "topicCode": "E"
-            },
-            "requires": [
-                "896d8e2e-e38f-4703-ab4b-95af2b07b4aa"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "c5688b27-6b01-4380-b1c6-d0201207dd62",
@@ -1461,6 +1471,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu E-Phase Französisch erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "05009215-bc65-46e5-95fe-f91f069db50d"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1469,18 +1490,7 @@
                 "phase": "E",
                 "area": "Meta",
                 "topicCode": "E"
-            },
-            "requires": [
-                "05009215-bc65-46e5-95fe-f91f069db50d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "35cf060b-92dd-4b7b-b066-e95a51dc31d1",
@@ -1491,16 +1501,10 @@
             "descriptionEn": "Oberziel: kommunikative und interkulturelle Kompetenzen im Französischen gemäß KC. Grund- und Leistungskurs arbeiten an denselben Themenfeldern; das erhöhte Niveau im Leistungskurs zeigt sich in komplexeren Texten und Aufgaben (tiefergehende Analyse, höhere Abstraktion, mehr Eigenständigkeit), nicht in eigenen zusätzlichen Inhalten.",
             "core": true,
             "weight": 1.2,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-french",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "GLOBAL",
-                "area": "Meta",
-                "topicCode": "GLOBAL"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "8a383b0c-ae8f-4d23-85c1-82a290550718",
                 "e90bd7bf-e381-4f89-bc03-b33c7c5e7138",
@@ -1511,11 +1515,17 @@
                 "6dab6e10-1a13-416d-a2bb-bf3528c37242",
                 "68f3859d-d948-4e88-a8f4-e8e708cdea42"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-french",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "GLOBAL",
+                "area": "Meta",
+                "topicCode": "GLOBAL"
+            }
         },
         {
             "id": "8a383b0c-ae8f-4d23-85c1-82a290550718",
@@ -1526,6 +1536,14 @@
             "descriptionEn": "Die lernende Person kann Texte zu Französisch Oberstufe (KC 2024) lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1.2,
+            "tags": [
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1534,15 +1552,7 @@
                 "phase": "GLOBAL",
                 "area": "Meta",
                 "topicCode": "GLOBAL"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e90bd7bf-e381-4f89-bc03-b33c7c5e7138",
@@ -1553,6 +1563,16 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu Französisch Oberstufe (KC 2024) verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1.2,
+            "tags": [
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "8a383b0c-ae8f-4d23-85c1-82a290550718"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1561,17 +1581,7 @@
                 "phase": "GLOBAL",
                 "area": "Meta",
                 "topicCode": "GLOBAL"
-            },
-            "requires": [
-                "8a383b0c-ae8f-4d23-85c1-82a290550718"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5eabe871-6575-422f-b1e6-fade8048ecac",
@@ -1582,6 +1592,16 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu Französisch Oberstufe (KC 2024) reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1.2,
+            "tags": [
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "e90bd7bf-e381-4f89-bc03-b33c7c5e7138"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1590,17 +1610,7 @@
                 "phase": "GLOBAL",
                 "area": "Meta",
                 "topicCode": "GLOBAL"
-            },
-            "requires": [
-                "e90bd7bf-e381-4f89-bc03-b33c7c5e7138"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "631c181a-2079-401e-bb21-d99a515ef46d",
@@ -1611,6 +1621,16 @@
             "descriptionEn": "Die lernende Person kann zu Französisch Oberstufe (KC 2024) zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1.2,
+            "tags": [
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "5eabe871-6575-422f-b1e6-fade8048ecac"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1619,17 +1639,7 @@
                 "phase": "GLOBAL",
                 "area": "Meta",
                 "topicCode": "GLOBAL"
-            },
-            "requires": [
-                "5eabe871-6575-422f-b1e6-fade8048ecac"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "4fd7f30b-fedf-4858-a326-60905d67c752",
@@ -1640,6 +1650,16 @@
             "descriptionEn": "Die lernende Person kann zu Französisch Oberstufe (KC 2024) einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1.2,
+            "tags": [
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "631c181a-2079-401e-bb21-d99a515ef46d"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1648,17 +1668,7 @@
                 "phase": "GLOBAL",
                 "area": "Meta",
                 "topicCode": "GLOBAL"
-            },
-            "requires": [
-                "631c181a-2079-401e-bb21-d99a515ef46d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "f58fab87-9dad-4a98-a563-08de6f6ad367",
@@ -1669,6 +1679,16 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu Französisch Oberstufe (KC 2024) zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1.2,
+            "tags": [
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "e90bd7bf-e381-4f89-bc03-b33c7c5e7138"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1677,17 +1697,7 @@
                 "phase": "GLOBAL",
                 "area": "Meta",
                 "topicCode": "GLOBAL"
-            },
-            "requires": [
-                "e90bd7bf-e381-4f89-bc03-b33c7c5e7138"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "6dab6e10-1a13-416d-a2bb-bf3528c37242",
@@ -1698,6 +1708,16 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu Französisch Oberstufe (KC 2024) gezielt anwenden.",
             "core": true,
             "weight": 1.2,
+            "tags": [
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "8a383b0c-ae8f-4d23-85c1-82a290550718"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1706,17 +1726,7 @@
                 "phase": "GLOBAL",
                 "area": "Meta",
                 "topicCode": "GLOBAL"
-            },
-            "requires": [
-                "8a383b0c-ae8f-4d23-85c1-82a290550718"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "68f3859d-d948-4e88-a8f4-e8e708cdea42",
@@ -1727,6 +1737,16 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu Französisch Oberstufe (KC 2024) erkennen und vergleichen.",
             "core": true,
             "weight": 1.2,
+            "tags": [
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "631c181a-2079-401e-bb21-d99a515ef46d"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1735,17 +1755,7 @@
                 "phase": "GLOBAL",
                 "area": "Meta",
                 "topicCode": "GLOBAL"
-            },
-            "requires": [
-                "631c181a-2079-401e-bb21-d99a515ef46d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "2b4c8631-5fd4-4050-8881-4c41c551847a",
@@ -1756,6 +1766,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu Q1 lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1764,16 +1783,7 @@
                 "phase": "Q1",
                 "area": "Meta",
                 "topicCode": "Q1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "089be7a0-186f-47df-b25d-606f752adfc4",
@@ -1784,6 +1794,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu Q1 verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "2b4c8631-5fd4-4050-8881-4c41c551847a"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1792,18 +1813,7 @@
                 "phase": "Q1",
                 "area": "Meta",
                 "topicCode": "Q1"
-            },
-            "requires": [
-                "2b4c8631-5fd4-4050-8881-4c41c551847a"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "802980fa-fc91-43e7-9df4-6177e9dde914",
@@ -1814,6 +1824,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu Q1 reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "089be7a0-186f-47df-b25d-606f752adfc4"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1822,18 +1843,7 @@
                 "phase": "Q1",
                 "area": "Meta",
                 "topicCode": "Q1"
-            },
-            "requires": [
-                "089be7a0-186f-47df-b25d-606f752adfc4"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "9b6b222a-7086-42bc-a84e-01b181b29d4f",
@@ -1844,6 +1854,17 @@
             "descriptionEn": "Die lernende Person kann zu Q1 zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "802980fa-fc91-43e7-9df4-6177e9dde914"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1852,18 +1873,7 @@
                 "phase": "Q1",
                 "area": "Meta",
                 "topicCode": "Q1"
-            },
-            "requires": [
-                "802980fa-fc91-43e7-9df4-6177e9dde914"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "fb9aa7f6-9043-410f-97c7-694f2ff26a61",
@@ -1874,6 +1884,17 @@
             "descriptionEn": "Die lernende Person kann zu Q1 einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "9b6b222a-7086-42bc-a84e-01b181b29d4f"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1882,18 +1903,7 @@
                 "phase": "Q1",
                 "area": "Meta",
                 "topicCode": "Q1"
-            },
-            "requires": [
-                "9b6b222a-7086-42bc-a84e-01b181b29d4f"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5006040e-f061-4656-a021-4536932f4bf7",
@@ -1904,6 +1914,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu Q1 zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "089be7a0-186f-47df-b25d-606f752adfc4"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1912,18 +1933,7 @@
                 "phase": "Q1",
                 "area": "Meta",
                 "topicCode": "Q1"
-            },
-            "requires": [
-                "089be7a0-186f-47df-b25d-606f752adfc4"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "67872ed2-57e4-43da-aced-7b47ad0e3bf8",
@@ -1934,6 +1944,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu Q1 gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "2b4c8631-5fd4-4050-8881-4c41c551847a"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1942,18 +1963,7 @@
                 "phase": "Q1",
                 "area": "Meta",
                 "topicCode": "Q1"
-            },
-            "requires": [
-                "2b4c8631-5fd4-4050-8881-4c41c551847a"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d4fc04b9-270d-4159-9374-153c42832d69",
@@ -1964,6 +1974,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu Q1 erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "9b6b222a-7086-42bc-a84e-01b181b29d4f"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -1972,18 +1993,7 @@
                 "phase": "Q1",
                 "area": "Meta",
                 "topicCode": "Q1"
-            },
-            "requires": [
-                "9b6b222a-7086-42bc-a84e-01b181b29d4f"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5b68751c-ae6a-419b-bc15-4f7985597f61",
@@ -1994,6 +2004,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu Q2 lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2002,16 +2021,7 @@
                 "phase": "Q2",
                 "area": "Meta",
                 "topicCode": "Q2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "830a26c6-8368-455b-b8ab-994c117977c3",
@@ -2022,6 +2032,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu Q2 verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "5b68751c-ae6a-419b-bc15-4f7985597f61"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2030,18 +2051,7 @@
                 "phase": "Q2",
                 "area": "Meta",
                 "topicCode": "Q2"
-            },
-            "requires": [
-                "5b68751c-ae6a-419b-bc15-4f7985597f61"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "0bf8faef-8615-4287-a0e7-04ec9179dc0c",
@@ -2052,6 +2062,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu Q2 reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "830a26c6-8368-455b-b8ab-994c117977c3"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2060,18 +2081,7 @@
                 "phase": "Q2",
                 "area": "Meta",
                 "topicCode": "Q2"
-            },
-            "requires": [
-                "830a26c6-8368-455b-b8ab-994c117977c3"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "3b1ee932-bb2e-492d-a34a-3b79ab868d56",
@@ -2082,6 +2092,17 @@
             "descriptionEn": "Die lernende Person kann zu Q2 zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "0bf8faef-8615-4287-a0e7-04ec9179dc0c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2090,18 +2111,7 @@
                 "phase": "Q2",
                 "area": "Meta",
                 "topicCode": "Q2"
-            },
-            "requires": [
-                "0bf8faef-8615-4287-a0e7-04ec9179dc0c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a7a88c0e-83ef-496e-9c4b-cda1c159d3aa",
@@ -2112,6 +2122,17 @@
             "descriptionEn": "Die lernende Person kann zu Q2 einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "3b1ee932-bb2e-492d-a34a-3b79ab868d56"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2120,18 +2141,7 @@
                 "phase": "Q2",
                 "area": "Meta",
                 "topicCode": "Q2"
-            },
-            "requires": [
-                "3b1ee932-bb2e-492d-a34a-3b79ab868d56"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "6e055edd-8af7-4042-8162-dd207475aa83",
@@ -2142,6 +2152,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu Q2 zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "830a26c6-8368-455b-b8ab-994c117977c3"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2150,18 +2171,7 @@
                 "phase": "Q2",
                 "area": "Meta",
                 "topicCode": "Q2"
-            },
-            "requires": [
-                "830a26c6-8368-455b-b8ab-994c117977c3"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "1075da69-fbd6-4998-96f3-22d7e70a292d",
@@ -2172,6 +2182,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu Q2 gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "5b68751c-ae6a-419b-bc15-4f7985597f61"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2180,18 +2201,7 @@
                 "phase": "Q2",
                 "area": "Meta",
                 "topicCode": "Q2"
-            },
-            "requires": [
-                "5b68751c-ae6a-419b-bc15-4f7985597f61"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "52409375-edd4-46bc-815c-907ae6d9ccf1",
@@ -2202,6 +2212,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu Q2 erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "3b1ee932-bb2e-492d-a34a-3b79ab868d56"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2210,18 +2231,7 @@
                 "phase": "Q2",
                 "area": "Meta",
                 "topicCode": "Q2"
-            },
-            "requires": [
-                "3b1ee932-bb2e-492d-a34a-3b79ab868d56"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b8fb666d-8fca-4c52-8dae-16977066b727",
@@ -2232,6 +2242,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu Q3 lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2240,16 +2259,7 @@
                 "phase": "Q3",
                 "area": "Meta",
                 "topicCode": "Q3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "66814111-8014-462c-bac2-89caa264ee96",
@@ -2260,6 +2270,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu Q3 verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "b8fb666d-8fca-4c52-8dae-16977066b727"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2268,18 +2289,7 @@
                 "phase": "Q3",
                 "area": "Meta",
                 "topicCode": "Q3"
-            },
-            "requires": [
-                "b8fb666d-8fca-4c52-8dae-16977066b727"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e3cf0f96-aa5e-4460-941f-1a93d7f629cf",
@@ -2290,6 +2300,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu Q3 reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "66814111-8014-462c-bac2-89caa264ee96"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2298,18 +2319,7 @@
                 "phase": "Q3",
                 "area": "Meta",
                 "topicCode": "Q3"
-            },
-            "requires": [
-                "66814111-8014-462c-bac2-89caa264ee96"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "30852d34-3157-44c4-8971-3d63ef4389ef",
@@ -2320,6 +2330,17 @@
             "descriptionEn": "Die lernende Person kann zu Q3 zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "e3cf0f96-aa5e-4460-941f-1a93d7f629cf"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2328,18 +2349,7 @@
                 "phase": "Q3",
                 "area": "Meta",
                 "topicCode": "Q3"
-            },
-            "requires": [
-                "e3cf0f96-aa5e-4460-941f-1a93d7f629cf"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "bc1a770d-788d-45ad-8e27-8803595c6c25",
@@ -2350,6 +2360,17 @@
             "descriptionEn": "Die lernende Person kann zu Q3 einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "30852d34-3157-44c4-8971-3d63ef4389ef"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2358,18 +2379,7 @@
                 "phase": "Q3",
                 "area": "Meta",
                 "topicCode": "Q3"
-            },
-            "requires": [
-                "30852d34-3157-44c4-8971-3d63ef4389ef"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "558c1656-5d7f-4be6-85d1-f8896ce9d3e5",
@@ -2380,6 +2390,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu Q3 zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "66814111-8014-462c-bac2-89caa264ee96"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2388,18 +2409,7 @@
                 "phase": "Q3",
                 "area": "Meta",
                 "topicCode": "Q3"
-            },
-            "requires": [
-                "66814111-8014-462c-bac2-89caa264ee96"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "063768ba-99b1-4e11-a570-36b5a26fa6c3",
@@ -2410,6 +2420,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu Q3 gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "b8fb666d-8fca-4c52-8dae-16977066b727"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2418,18 +2439,7 @@
                 "phase": "Q3",
                 "area": "Meta",
                 "topicCode": "Q3"
-            },
-            "requires": [
-                "b8fb666d-8fca-4c52-8dae-16977066b727"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a4501d10-95a7-45f1-98c9-0999fc953bca",
@@ -2440,6 +2450,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu Q3 erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "30852d34-3157-44c4-8971-3d63ef4389ef"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2448,18 +2469,7 @@
                 "phase": "Q3",
                 "area": "Meta",
                 "topicCode": "Q3"
-            },
-            "requires": [
-                "30852d34-3157-44c4-8971-3d63ef4389ef"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "9036bcbf-2468-499c-8c28-25ae04b6dc5f",
@@ -2470,6 +2480,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu Q4 lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2478,16 +2497,7 @@
                 "phase": "Q4",
                 "area": "Meta",
                 "topicCode": "Q4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "9511ddd0-b6f3-43dc-adc9-749f190b40c9",
@@ -2498,6 +2508,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu Q4 verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "9036bcbf-2468-499c-8c28-25ae04b6dc5f"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2506,18 +2527,7 @@
                 "phase": "Q4",
                 "area": "Meta",
                 "topicCode": "Q4"
-            },
-            "requires": [
-                "9036bcbf-2468-499c-8c28-25ae04b6dc5f"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "53eaeb4b-436d-4de3-a390-0b1ca76f170b",
@@ -2528,6 +2538,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu Q4 reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "9511ddd0-b6f3-43dc-adc9-749f190b40c9"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2536,18 +2557,7 @@
                 "phase": "Q4",
                 "area": "Meta",
                 "topicCode": "Q4"
-            },
-            "requires": [
-                "9511ddd0-b6f3-43dc-adc9-749f190b40c9"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "343589cc-9799-483c-9576-aa9947e2a898",
@@ -2558,6 +2568,17 @@
             "descriptionEn": "Die lernende Person kann zu Q4 zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "53eaeb4b-436d-4de3-a390-0b1ca76f170b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2566,18 +2587,7 @@
                 "phase": "Q4",
                 "area": "Meta",
                 "topicCode": "Q4"
-            },
-            "requires": [
-                "53eaeb4b-436d-4de3-a390-0b1ca76f170b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e0ef1ab4-0044-463d-9cb1-b8579d68d678",
@@ -2588,6 +2598,17 @@
             "descriptionEn": "Die lernende Person kann zu Q4 einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "343589cc-9799-483c-9576-aa9947e2a898"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2596,18 +2617,7 @@
                 "phase": "Q4",
                 "area": "Meta",
                 "topicCode": "Q4"
-            },
-            "requires": [
-                "343589cc-9799-483c-9576-aa9947e2a898"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "67baf0eb-695f-497e-987d-526c3b4c918a",
@@ -2618,6 +2628,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu Q4 zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "9511ddd0-b6f3-43dc-adc9-749f190b40c9"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2626,18 +2647,7 @@
                 "phase": "Q4",
                 "area": "Meta",
                 "topicCode": "Q4"
-            },
-            "requires": [
-                "9511ddd0-b6f3-43dc-adc9-749f190b40c9"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5d23894d-4f91-41a5-ad52-fe5bae3433bb",
@@ -2648,6 +2658,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu Q4 gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "9036bcbf-2468-499c-8c28-25ae04b6dc5f"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2656,18 +2677,7 @@
                 "phase": "Q4",
                 "area": "Meta",
                 "topicCode": "Q4"
-            },
-            "requires": [
-                "9036bcbf-2468-499c-8c28-25ae04b6dc5f"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d6493d69-9320-481d-9a36-47246176685d",
@@ -2678,6 +2688,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu Q4 erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "343589cc-9799-483c-9576-aa9947e2a898"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2686,18 +2707,7 @@
                 "phase": "Q4",
                 "area": "Meta",
                 "topicCode": "Q4"
-            },
-            "requires": [
-                "343589cc-9799-483c-9576-aa9947e2a898"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "9d7990fe-03ba-4744-a07f-947762859609",
@@ -2708,6 +2718,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu Modes de vie en transformation lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2716,16 +2735,7 @@
                 "phase": "Q1",
                 "area": "Thème",
                 "topicCode": "TF1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "c66cc04a-a961-4fe5-b3ab-b99ab0c4f06c",
@@ -2736,6 +2746,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu Modes de vie en transformation verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "9d7990fe-03ba-4744-a07f-947762859609"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2744,18 +2765,7 @@
                 "phase": "Q1",
                 "area": "Thème",
                 "topicCode": "TF1"
-            },
-            "requires": [
-                "9d7990fe-03ba-4744-a07f-947762859609"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "0f3a3722-128e-4d2d-acbf-7e9bf18dd15f",
@@ -2766,6 +2776,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu Modes de vie en transformation reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "c66cc04a-a961-4fe5-b3ab-b99ab0c4f06c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2774,18 +2795,7 @@
                 "phase": "Q1",
                 "area": "Thème",
                 "topicCode": "TF1"
-            },
-            "requires": [
-                "c66cc04a-a961-4fe5-b3ab-b99ab0c4f06c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "daa88ed7-f916-4e1d-8e7a-880d9eee7fc3",
@@ -2796,6 +2806,17 @@
             "descriptionEn": "Die lernende Person kann zu Modes de vie en transformation zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "0f3a3722-128e-4d2d-acbf-7e9bf18dd15f"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2804,18 +2825,7 @@
                 "phase": "Q1",
                 "area": "Thème",
                 "topicCode": "TF1"
-            },
-            "requires": [
-                "0f3a3722-128e-4d2d-acbf-7e9bf18dd15f"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "25f465be-2eba-4bf8-a04e-5e1260e4d593",
@@ -2826,6 +2836,17 @@
             "descriptionEn": "Die lernende Person kann zu Modes de vie en transformation einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "daa88ed7-f916-4e1d-8e7a-880d9eee7fc3"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2834,18 +2855,7 @@
                 "phase": "Q1",
                 "area": "Thème",
                 "topicCode": "TF1"
-            },
-            "requires": [
-                "daa88ed7-f916-4e1d-8e7a-880d9eee7fc3"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d04f6437-d8fe-4d27-871f-99b8c3ad1355",
@@ -2856,6 +2866,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu Modes de vie en transformation zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "c66cc04a-a961-4fe5-b3ab-b99ab0c4f06c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2864,18 +2885,7 @@
                 "phase": "Q1",
                 "area": "Thème",
                 "topicCode": "TF1"
-            },
-            "requires": [
-                "c66cc04a-a961-4fe5-b3ab-b99ab0c4f06c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "bcdee7eb-b46b-44b1-b512-79a24b56ac5b",
@@ -2886,6 +2896,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu Modes de vie en transformation gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "9d7990fe-03ba-4744-a07f-947762859609"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2894,18 +2915,7 @@
                 "phase": "Q1",
                 "area": "Thème",
                 "topicCode": "TF1"
-            },
-            "requires": [
-                "9d7990fe-03ba-4744-a07f-947762859609"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a4362bda-38fd-45e9-8f03-2ade56a22447",
@@ -2916,6 +2926,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu Modes de vie en transformation erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "daa88ed7-f916-4e1d-8e7a-880d9eee7fc3"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2924,18 +2945,7 @@
                 "phase": "Q1",
                 "area": "Thème",
                 "topicCode": "TF1"
-            },
-            "requires": [
-                "daa88ed7-f916-4e1d-8e7a-880d9eee7fc3"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "7bbcff9e-d06a-4065-8a4d-03735207a051",
@@ -2946,6 +2956,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu Valeurs lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2954,16 +2973,7 @@
                 "phase": "Q1",
                 "area": "Thème",
                 "topicCode": "TF2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "594cbbea-8805-46b9-b705-918cd3610195",
@@ -2974,6 +2984,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu Valeurs verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "7bbcff9e-d06a-4065-8a4d-03735207a051"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -2982,18 +3003,7 @@
                 "phase": "Q1",
                 "area": "Thème",
                 "topicCode": "TF2"
-            },
-            "requires": [
-                "7bbcff9e-d06a-4065-8a4d-03735207a051"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "faf63ec9-5e7d-4632-9188-6c6ba9e95181",
@@ -3004,6 +3014,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu Valeurs reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "594cbbea-8805-46b9-b705-918cd3610195"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3012,18 +3033,7 @@
                 "phase": "Q1",
                 "area": "Thème",
                 "topicCode": "TF2"
-            },
-            "requires": [
-                "594cbbea-8805-46b9-b705-918cd3610195"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "42cda3d4-93ff-4910-8ee1-645314a46e5c",
@@ -3034,6 +3044,17 @@
             "descriptionEn": "Die lernende Person kann zu Valeurs zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "faf63ec9-5e7d-4632-9188-6c6ba9e95181"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3042,18 +3063,7 @@
                 "phase": "Q1",
                 "area": "Thème",
                 "topicCode": "TF2"
-            },
-            "requires": [
-                "faf63ec9-5e7d-4632-9188-6c6ba9e95181"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "4fdbd66e-e867-448e-8187-23c29b26c980",
@@ -3064,6 +3074,17 @@
             "descriptionEn": "Die lernende Person kann zu Valeurs einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "42cda3d4-93ff-4910-8ee1-645314a46e5c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3072,18 +3093,7 @@
                 "phase": "Q1",
                 "area": "Thème",
                 "topicCode": "TF2"
-            },
-            "requires": [
-                "42cda3d4-93ff-4910-8ee1-645314a46e5c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "245bc6c3-c38c-419f-8309-cabe47711a11",
@@ -3094,6 +3104,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu Valeurs zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "594cbbea-8805-46b9-b705-918cd3610195"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3102,18 +3123,7 @@
                 "phase": "Q1",
                 "area": "Thème",
                 "topicCode": "TF2"
-            },
-            "requires": [
-                "594cbbea-8805-46b9-b705-918cd3610195"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "32a09633-a3b1-4d8f-89d6-6b4328cc9fbb",
@@ -3124,6 +3134,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu Valeurs gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "7bbcff9e-d06a-4065-8a4d-03735207a051"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3132,18 +3153,7 @@
                 "phase": "Q1",
                 "area": "Thème",
                 "topicCode": "TF2"
-            },
-            "requires": [
-                "7bbcff9e-d06a-4065-8a4d-03735207a051"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "61ed6ec4-ca3b-4adc-a1ba-01d62a492636",
@@ -3154,6 +3164,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu Valeurs erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "42cda3d4-93ff-4910-8ee1-645314a46e5c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3162,18 +3183,7 @@
                 "phase": "Q1",
                 "area": "Thème",
                 "topicCode": "TF2"
-            },
-            "requires": [
-                "42cda3d4-93ff-4910-8ee1-645314a46e5c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "fce60ddc-9bf0-4ca9-8067-3cbef755d85f",
@@ -3184,6 +3194,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu La France et l’Allemagne au cœur de l’Europe lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3192,16 +3211,7 @@
                 "phase": "Q2",
                 "area": "Thème",
                 "topicCode": "TF3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a5fbcee3-7cbe-494f-9fce-b798f1fbff6c",
@@ -3212,6 +3222,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu La France et l’Allemagne au cœur de l’Europe verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "fce60ddc-9bf0-4ca9-8067-3cbef755d85f"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3220,18 +3241,7 @@
                 "phase": "Q2",
                 "area": "Thème",
                 "topicCode": "TF3"
-            },
-            "requires": [
-                "fce60ddc-9bf0-4ca9-8067-3cbef755d85f"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "55a09d65-3ffe-452b-bb6a-e3dbad724e4c",
@@ -3242,6 +3252,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu La France et l’Allemagne au cœur de l’Europe reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "a5fbcee3-7cbe-494f-9fce-b798f1fbff6c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3250,18 +3271,7 @@
                 "phase": "Q2",
                 "area": "Thème",
                 "topicCode": "TF3"
-            },
-            "requires": [
-                "a5fbcee3-7cbe-494f-9fce-b798f1fbff6c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "198963d7-429e-4f39-b2cb-781f6ec52479",
@@ -3272,6 +3282,17 @@
             "descriptionEn": "Die lernende Person kann zu La France et l’Allemagne au cœur de l’Europe zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "55a09d65-3ffe-452b-bb6a-e3dbad724e4c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3280,18 +3301,7 @@
                 "phase": "Q2",
                 "area": "Thème",
                 "topicCode": "TF3"
-            },
-            "requires": [
-                "55a09d65-3ffe-452b-bb6a-e3dbad724e4c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b93fe59c-8cf0-40b6-9734-d94eb7510a1c",
@@ -3302,6 +3312,17 @@
             "descriptionEn": "Die lernende Person kann zu La France et l’Allemagne au cœur de l’Europe einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "198963d7-429e-4f39-b2cb-781f6ec52479"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3310,18 +3331,7 @@
                 "phase": "Q2",
                 "area": "Thème",
                 "topicCode": "TF3"
-            },
-            "requires": [
-                "198963d7-429e-4f39-b2cb-781f6ec52479"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "04c17b70-ed9a-476b-bae7-b773ccceb0ca",
@@ -3332,6 +3342,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu La France et l’Allemagne au cœur de l’Europe zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "a5fbcee3-7cbe-494f-9fce-b798f1fbff6c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3340,18 +3361,7 @@
                 "phase": "Q2",
                 "area": "Thème",
                 "topicCode": "TF3"
-            },
-            "requires": [
-                "a5fbcee3-7cbe-494f-9fce-b798f1fbff6c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "62fe4338-43dc-46b6-8489-1e081c9cfa8b",
@@ -3362,6 +3372,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu La France et l’Allemagne au cœur de l’Europe gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "fce60ddc-9bf0-4ca9-8067-3cbef755d85f"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3370,18 +3391,7 @@
                 "phase": "Q2",
                 "area": "Thème",
                 "topicCode": "TF3"
-            },
-            "requires": [
-                "fce60ddc-9bf0-4ca9-8067-3cbef755d85f"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "7a5a8637-40fc-43ca-8c19-bc9a720da30b",
@@ -3392,6 +3402,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu La France et l’Allemagne au cœur de l’Europe erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "198963d7-429e-4f39-b2cb-781f6ec52479"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3400,18 +3421,7 @@
                 "phase": "Q2",
                 "area": "Thème",
                 "topicCode": "TF3"
-            },
-            "requires": [
-                "198963d7-429e-4f39-b2cb-781f6ec52479"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ea5c1e37-5200-4f06-946d-a8d97926dc4b",
@@ -3422,6 +3432,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu La France et la francophonie lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3430,16 +3449,7 @@
                 "phase": "Q2",
                 "area": "Thème",
                 "topicCode": "TF4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d9039e8c-7e46-421f-8ac2-f89ee0c1b08e",
@@ -3450,6 +3460,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu La France et la francophonie verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "ea5c1e37-5200-4f06-946d-a8d97926dc4b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3458,18 +3479,7 @@
                 "phase": "Q2",
                 "area": "Thème",
                 "topicCode": "TF4"
-            },
-            "requires": [
-                "ea5c1e37-5200-4f06-946d-a8d97926dc4b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "2c7166e3-53a3-4ac7-a246-31b702a7b148",
@@ -3480,6 +3490,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu La France et la francophonie reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "d9039e8c-7e46-421f-8ac2-f89ee0c1b08e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3488,18 +3509,7 @@
                 "phase": "Q2",
                 "area": "Thème",
                 "topicCode": "TF4"
-            },
-            "requires": [
-                "d9039e8c-7e46-421f-8ac2-f89ee0c1b08e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "cf2b19ec-edb6-4b48-b24a-a78e32f392c8",
@@ -3510,6 +3520,17 @@
             "descriptionEn": "Die lernende Person kann zu La France et la francophonie zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "2c7166e3-53a3-4ac7-a246-31b702a7b148"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3518,18 +3539,7 @@
                 "phase": "Q2",
                 "area": "Thème",
                 "topicCode": "TF4"
-            },
-            "requires": [
-                "2c7166e3-53a3-4ac7-a246-31b702a7b148"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "1a39a8d0-7958-4cec-b786-49d48e03bffb",
@@ -3540,6 +3550,17 @@
             "descriptionEn": "Die lernende Person kann zu La France et la francophonie einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "cf2b19ec-edb6-4b48-b24a-a78e32f392c8"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3548,18 +3569,7 @@
                 "phase": "Q2",
                 "area": "Thème",
                 "topicCode": "TF4"
-            },
-            "requires": [
-                "cf2b19ec-edb6-4b48-b24a-a78e32f392c8"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "289a9f70-0a31-4520-808e-88c09c556207",
@@ -3570,6 +3580,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu La France et la francophonie zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "d9039e8c-7e46-421f-8ac2-f89ee0c1b08e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3578,18 +3599,7 @@
                 "phase": "Q2",
                 "area": "Thème",
                 "topicCode": "TF4"
-            },
-            "requires": [
-                "d9039e8c-7e46-421f-8ac2-f89ee0c1b08e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "6ee5e2b8-2a0c-4f12-8987-735b5c425f11",
@@ -3600,6 +3610,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu La France et la francophonie gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "ea5c1e37-5200-4f06-946d-a8d97926dc4b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3608,18 +3629,7 @@
                 "phase": "Q2",
                 "area": "Thème",
                 "topicCode": "TF4"
-            },
-            "requires": [
-                "ea5c1e37-5200-4f06-946d-a8d97926dc4b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "676a2569-cd26-4eea-9094-c8e0788f7030",
@@ -3630,6 +3640,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu La France et la francophonie erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "cf2b19ec-edb6-4b48-b24a-a78e32f392c8"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3638,18 +3659,7 @@
                 "phase": "Q2",
                 "area": "Thème",
                 "topicCode": "TF4"
-            },
-            "requires": [
-                "cf2b19ec-edb6-4b48-b24a-a78e32f392c8"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ad661ca1-70bc-4ec1-a9a4-08f3bc30109d",
@@ -3660,6 +3670,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu L’individu dans la société lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3668,16 +3687,7 @@
                 "phase": "Q3",
                 "area": "Thème",
                 "topicCode": "TF5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "de4a87a7-af66-4ddc-927f-acd5cf5acb23",
@@ -3688,6 +3698,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu L’individu dans la société verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "ad661ca1-70bc-4ec1-a9a4-08f3bc30109d"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3696,18 +3717,7 @@
                 "phase": "Q3",
                 "area": "Thème",
                 "topicCode": "TF5"
-            },
-            "requires": [
-                "ad661ca1-70bc-4ec1-a9a4-08f3bc30109d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "c81d831c-dc97-42a8-a944-b31d67f098ce",
@@ -3718,6 +3728,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu L’individu dans la société reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "de4a87a7-af66-4ddc-927f-acd5cf5acb23"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3726,18 +3747,7 @@
                 "phase": "Q3",
                 "area": "Thème",
                 "topicCode": "TF5"
-            },
-            "requires": [
-                "de4a87a7-af66-4ddc-927f-acd5cf5acb23"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a40d5953-87f8-4053-8d19-6c3fd7e6bcbc",
@@ -3748,6 +3758,17 @@
             "descriptionEn": "Die lernende Person kann zu L’individu dans la société zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "c81d831c-dc97-42a8-a944-b31d67f098ce"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3756,18 +3777,7 @@
                 "phase": "Q3",
                 "area": "Thème",
                 "topicCode": "TF5"
-            },
-            "requires": [
-                "c81d831c-dc97-42a8-a944-b31d67f098ce"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "96707d27-4276-4168-85ae-f07cd914b23c",
@@ -3778,6 +3788,16 @@
             "descriptionEn": "Die lernende Person kann zu L’individu dans la société einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:writing",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "a40d5953-87f8-4053-8d19-6c3fd7e6bcbc"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3786,17 +3806,7 @@
                 "phase": "Q3",
                 "area": "Thème",
                 "topicCode": "TF5"
-            },
-            "requires": [
-                "a40d5953-87f8-4053-8d19-6c3fd7e6bcbc"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:writing",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ad51bfda-eb02-4a13-bf69-0bddf90045e5",
@@ -3807,6 +3817,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu L’individu dans la société zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "de4a87a7-af66-4ddc-927f-acd5cf5acb23"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3815,18 +3836,7 @@
                 "phase": "Q3",
                 "area": "Thème",
                 "topicCode": "TF5"
-            },
-            "requires": [
-                "de4a87a7-af66-4ddc-927f-acd5cf5acb23"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b42e665c-2952-4bd3-8a80-4b9ec40f42a0",
@@ -3837,6 +3847,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu L’individu dans la société gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "ad661ca1-70bc-4ec1-a9a4-08f3bc30109d"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3845,18 +3866,7 @@
                 "phase": "Q3",
                 "area": "Thème",
                 "topicCode": "TF5"
-            },
-            "requires": [
-                "ad661ca1-70bc-4ec1-a9a4-08f3bc30109d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "f97f8467-2ddb-4522-93cd-44d005baf601",
@@ -3867,6 +3877,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu L’individu dans la société erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "a40d5953-87f8-4053-8d19-6c3fd7e6bcbc"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3875,18 +3896,7 @@
                 "phase": "Q3",
                 "area": "Thème",
                 "topicCode": "TF5"
-            },
-            "requires": [
-                "a40d5953-87f8-4053-8d19-6c3fd7e6bcbc"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "77f1975a-26c8-4c91-b962-d8e5896fba90",
@@ -3897,6 +3907,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu Le monde du travail lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3905,16 +3924,7 @@
                 "phase": "Q3",
                 "area": "Thème",
                 "topicCode": "TF6"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ca601f64-4b4d-430a-9d5f-c47ab6baac99",
@@ -3925,6 +3935,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu Le monde du travail verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "77f1975a-26c8-4c91-b962-d8e5896fba90"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3933,18 +3954,7 @@
                 "phase": "Q3",
                 "area": "Thème",
                 "topicCode": "TF6"
-            },
-            "requires": [
-                "77f1975a-26c8-4c91-b962-d8e5896fba90"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "dd07920b-a242-419d-9320-091f738620ee",
@@ -3955,6 +3965,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu Le monde du travail reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "ca601f64-4b4d-430a-9d5f-c47ab6baac99"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3963,18 +3984,7 @@
                 "phase": "Q3",
                 "area": "Thème",
                 "topicCode": "TF6"
-            },
-            "requires": [
-                "ca601f64-4b4d-430a-9d5f-c47ab6baac99"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "25eb32dd-6f86-43a5-8558-4e4dbf1ed302",
@@ -3985,6 +3995,17 @@
             "descriptionEn": "Die lernende Person kann zu Le monde du travail zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "dd07920b-a242-419d-9320-091f738620ee"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -3993,18 +4014,7 @@
                 "phase": "Q3",
                 "area": "Thème",
                 "topicCode": "TF6"
-            },
-            "requires": [
-                "dd07920b-a242-419d-9320-091f738620ee"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a73d381a-54b0-4b0d-a9e2-762819bf89e5",
@@ -4015,6 +4025,16 @@
             "descriptionEn": "Die lernende Person kann zu Le monde du travail einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:writing",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "25eb32dd-6f86-43a5-8558-4e4dbf1ed302"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4023,17 +4043,7 @@
                 "phase": "Q3",
                 "area": "Thème",
                 "topicCode": "TF6"
-            },
-            "requires": [
-                "25eb32dd-6f86-43a5-8558-4e4dbf1ed302"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:writing",
-                "LK"
-            ]
+            }
         },
         {
             "id": "bb629cea-50ab-4c48-9031-ea22703ff642",
@@ -4044,6 +4054,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu Le monde du travail zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "ca601f64-4b4d-430a-9d5f-c47ab6baac99"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4052,18 +4073,7 @@
                 "phase": "Q3",
                 "area": "Thème",
                 "topicCode": "TF6"
-            },
-            "requires": [
-                "ca601f64-4b4d-430a-9d5f-c47ab6baac99"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "bcfae253-d9f0-4df5-aab3-b7f5c1429497",
@@ -4074,6 +4084,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu Le monde du travail gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "77f1975a-26c8-4c91-b962-d8e5896fba90"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4082,18 +4103,7 @@
                 "phase": "Q3",
                 "area": "Thème",
                 "topicCode": "TF6"
-            },
-            "requires": [
-                "77f1975a-26c8-4c91-b962-d8e5896fba90"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "94f42555-8f93-4745-81cf-711b553b382c",
@@ -4104,6 +4114,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu Le monde du travail erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "25eb32dd-6f86-43a5-8558-4e4dbf1ed302"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4112,18 +4133,7 @@
                 "phase": "Q3",
                 "area": "Thème",
                 "topicCode": "TF6"
-            },
-            "requires": [
-                "25eb32dd-6f86-43a5-8558-4e4dbf1ed302"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "fcf4b242-23da-482a-8cef-8e7d0fb76486",
@@ -4134,6 +4144,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu Les médias – communication au XXIe siècle lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4142,16 +4161,7 @@
                 "phase": "Q4",
                 "area": "Thème",
                 "topicCode": "TF7"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5ae739ef-0265-4e97-9291-184ea5ddbbe1",
@@ -4162,6 +4172,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu Les médias – communication au XXIe siècle verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "fcf4b242-23da-482a-8cef-8e7d0fb76486"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4170,18 +4191,7 @@
                 "phase": "Q4",
                 "area": "Thème",
                 "topicCode": "TF7"
-            },
-            "requires": [
-                "fcf4b242-23da-482a-8cef-8e7d0fb76486"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e2059534-106f-4f34-b3e2-e370ab81bf52",
@@ -4192,6 +4202,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu Les médias – communication au XXIe siècle reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "5ae739ef-0265-4e97-9291-184ea5ddbbe1"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4200,18 +4221,7 @@
                 "phase": "Q4",
                 "area": "Thème",
                 "topicCode": "TF7"
-            },
-            "requires": [
-                "5ae739ef-0265-4e97-9291-184ea5ddbbe1"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "321732a6-3cd7-4336-b6d9-cbcbaa8f03d3",
@@ -4222,6 +4232,17 @@
             "descriptionEn": "Die lernende Person kann zu Les médias – communication au XXIe siècle zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "e2059534-106f-4f34-b3e2-e370ab81bf52"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4230,18 +4251,7 @@
                 "phase": "Q4",
                 "area": "Thème",
                 "topicCode": "TF7"
-            },
-            "requires": [
-                "e2059534-106f-4f34-b3e2-e370ab81bf52"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "32d0d803-3aeb-4a9a-aaac-325b506ee118",
@@ -4252,6 +4262,16 @@
             "descriptionEn": "Die lernende Person kann zu Les médias – communication au XXIe siècle einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:writing",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "321732a6-3cd7-4336-b6d9-cbcbaa8f03d3"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4260,17 +4280,7 @@
                 "phase": "Q4",
                 "area": "Thème",
                 "topicCode": "TF7"
-            },
-            "requires": [
-                "321732a6-3cd7-4336-b6d9-cbcbaa8f03d3"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:writing",
-                "LK"
-            ]
+            }
         },
         {
             "id": "13984eda-90b1-4ee0-b6ee-c51c44fa1eae",
@@ -4281,6 +4291,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu Les médias – communication au XXIe siècle zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "5ae739ef-0265-4e97-9291-184ea5ddbbe1"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4289,18 +4310,7 @@
                 "phase": "Q4",
                 "area": "Thème",
                 "topicCode": "TF7"
-            },
-            "requires": [
-                "5ae739ef-0265-4e97-9291-184ea5ddbbe1"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d1af020b-0ccb-4a38-b4a2-611290cf9a57",
@@ -4311,6 +4321,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu Les médias – communication au XXIe siècle gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "fcf4b242-23da-482a-8cef-8e7d0fb76486"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4319,18 +4340,7 @@
                 "phase": "Q4",
                 "area": "Thème",
                 "topicCode": "TF7"
-            },
-            "requires": [
-                "fcf4b242-23da-482a-8cef-8e7d0fb76486"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "30f25855-199d-440c-ba0c-7dffaba05b17",
@@ -4341,6 +4351,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu Les médias – communication au XXIe siècle erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "321732a6-3cd7-4336-b6d9-cbcbaa8f03d3"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4349,18 +4370,7 @@
                 "phase": "Q4",
                 "area": "Thème",
                 "topicCode": "TF7"
-            },
-            "requires": [
-                "321732a6-3cd7-4336-b6d9-cbcbaa8f03d3"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a9b36bb7-69d4-4fee-9d1e-468932c8f86e",
@@ -4371,6 +4381,15 @@
             "descriptionEn": "Die lernende Person kann Texte zu Les enjeux de la mondialisation lesen und Kernaussagen entnehmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4379,16 +4398,7 @@
                 "phase": "Q4",
                 "area": "Thème",
                 "topicCode": "TF8"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "2b05e04f-5dab-40ad-85fd-531566067aee",
@@ -4399,6 +4409,17 @@
             "descriptionEn": "Die lernende Person kann Hörimpulse zu Les enjeux de la mondialisation verstehen und Schlüsselinformationen sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:listening",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "a9b36bb7-69d4-4fee-9d1e-468932c8f86e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4407,18 +4428,7 @@
                 "phase": "Q4",
                 "area": "Thème",
                 "topicCode": "TF8"
-            },
-            "requires": [
-                "a9b36bb7-69d4-4fee-9d1e-468932c8f86e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:listening",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "9b7d8bae-a592-438d-b9f7-cedbb2419fad",
@@ -4429,6 +4439,17 @@
             "descriptionEn": "Die lernende Person kann in Gesprächen zu Les enjeux de la mondialisation reagieren, nachfragen und beitragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "2b05e04f-5dab-40ad-85fd-531566067aee"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4437,18 +4458,7 @@
                 "phase": "Q4",
                 "area": "Thème",
                 "topicCode": "TF8"
-            },
-            "requires": [
-                "2b05e04f-5dab-40ad-85fd-531566067aee"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "67ce3838-7786-4edd-b25c-9adc02a0e287",
@@ -4459,6 +4469,17 @@
             "descriptionEn": "Die lernende Person kann zu Les enjeux de la mondialisation zusammenhängend sprechen (z. B. Kurzvortrag, Meinungsäußerung).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "9b7d8bae-a592-438d-b9f7-cedbb2419fad"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4467,18 +4488,7 @@
                 "phase": "Q4",
                 "area": "Thème",
                 "topicCode": "TF8"
-            },
-            "requires": [
-                "9b7d8bae-a592-438d-b9f7-cedbb2419fad"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "cafcd8f3-eeb0-481b-abf0-1b0c63fa4b49",
@@ -4489,6 +4499,17 @@
             "descriptionEn": "Die lernende Person kann zu Les enjeux de la mondialisation einen kurzen Text adressatengerecht schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "67ce3838-7786-4edd-b25c-9adc02a0e287"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4497,18 +4518,7 @@
                 "phase": "Q4",
                 "area": "Thème",
                 "topicCode": "TF8"
-            },
-            "requires": [
-                "67ce3838-7786-4edd-b25c-9adc02a0e287"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b4dcb182-8f74-4514-b404-641cc9b5df35",
@@ -4519,6 +4529,17 @@
             "descriptionEn": "Die lernende Person kann wesentliche Informationen zu Les enjeux de la mondialisation zwischen Deutsch und Französisch vermitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:mediation",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "2b05e04f-5dab-40ad-85fd-531566067aee"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4527,18 +4548,7 @@
                 "phase": "Q4",
                 "area": "Thème",
                 "topicCode": "TF8"
-            },
-            "requires": [
-                "2b05e04f-5dab-40ad-85fd-531566067aee"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:mediation",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "2ad9bfa1-8d82-4ba1-8852-35d47429205f",
@@ -4549,6 +4559,17 @@
             "descriptionEn": "Die lernende Person kann Wortschatz und Grammatik zu Les enjeux de la mondialisation gezielt anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "a9b36bb7-69d4-4fee-9d1e-468932c8f86e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4557,18 +4578,7 @@
                 "phase": "Q4",
                 "area": "Thème",
                 "topicCode": "TF8"
-            },
-            "requires": [
-                "a9b36bb7-69d4-4fee-9d1e-468932c8f86e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "af82664f-236d-44c2-a96d-d6153617aded",
@@ -4579,6 +4589,17 @@
             "descriptionEn": "Die lernende Person kann kulturelle Bezüge zu Les enjeux de la mondialisation erkennen und vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:C1",
+                "skill:analysis",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "67ce3838-7786-4edd-b25c-9adc02a0e287"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-french",
                 "demandLevel": "AB2",
@@ -4587,28 +4608,7 @@
                 "phase": "Q4",
                 "area": "Thème",
                 "topicCode": "TF8"
-            },
-            "requires": [
-                "67ce3838-7786-4edd-b25c-9adc02a0e287"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:analysis",
-                "GK",
-                "LK"
-            ]
-        }
-    ],
-    "filters": [
-        {
-            "id": "GK",
-            "label": "Grundkurs"
-        },
-        {
-            "id": "LK",
-            "label": "Leistungskurs"
+            }
         }
     ]
 }

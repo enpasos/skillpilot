@@ -1,12 +1,22 @@
 {
-    "title": "Deutsch Oberstufe (Hessen, KC 2024)",
-    "titleEn": "German Upper Secondary (Hesse, KC 2024)",
-    "description": "Lernlandschaft für das hessische Kerncurriculum Deutsch (gymnasiale Oberstufe, Ausgabe 2024).",
-    "descriptionEn": "Learning landscape for the Hessian core curriculum German (Upper Secondary, 2024 edition).",
     "landscapeId": "f1ba2118-853f-4aa0-bef5-4f749bc621ed",
     "locale": "de-DE",
     "subject": "Deutsch",
     "frameworkId": "hessen-kc-2024-german",
+    "title": "Deutsch Oberstufe (Hessen, KC 2024)",
+    "titleEn": "German Upper Secondary (Hesse, KC 2024)",
+    "description": "Lernlandschaft für das hessische Kerncurriculum Deutsch (gymnasiale Oberstufe, Ausgabe 2024).",
+    "descriptionEn": "Learning landscape for the Hessian core curriculum German (Upper Secondary, 2024 edition).",
+    "filters": [
+        {
+            "id": "GK",
+            "label": "Grundkurs"
+        },
+        {
+            "id": "LK",
+            "label": "Leistungskurs"
+        }
+    ],
     "goals": [
         {
             "id": "3c005ffa-cafe-4920-8d09-27309ad20fff",
@@ -17,6 +27,19 @@
             "descriptionEn": "Overarching goal: Master literary, linguistic and media competencies according to KC German.",
             "core": true,
             "weight": 1.2,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "da121f0a-946a-4f64-b322-89016916488c",
+                "d618fae3-28ba-494d-b49e-359657263512",
+                "92a74a6c-3153-4f34-a003-304da38f5a2e",
+                "8ff37db9-8b55-4db7-a862-de0a35c758f0",
+                "b0346be5-d0c8-4602-9add-0fc7383d51e4"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -25,20 +48,7 @@
                 "phase": "GLOBAL",
                 "area": "Meta",
                 "topicCode": "GLOBAL"
-            },
-            "requires": [],
-            "contains": [
-                "da121f0a-946a-4f64-b322-89016916488c",
-                "d618fae3-28ba-494d-b49e-359657263512",
-                "92a74a6c-3153-4f34-a003-304da38f5a2e",
-                "8ff37db9-8b55-4db7-a862-de0a35c758f0",
-                "b0346be5-d0c8-4602-9add-0fc7383d51e4"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "da121f0a-946a-4f64-b322-89016916488c",
@@ -49,6 +59,16 @@
             "descriptionEn": "Grundlagen Lesen/Schreiben/Argumentieren vertiefen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "790c6736-766d-46b7-9aa1-f73e84241b91",
+                "1c84de14-2322-4762-9813-7dd036c540e5"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -57,17 +77,7 @@
                 "phase": "E",
                 "area": "Meta",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [
-                "790c6736-766d-46b7-9aa1-f73e84241b91",
-                "1c84de14-2322-4762-9813-7dd036c540e5"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "790c6736-766d-46b7-9aa1-f73e84241b91",
@@ -78,6 +88,20 @@
             "descriptionEn": "Sprachbewusstsein, Grammatik, Textsorten.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:lesen",
+                "skill:sprachreflexion",
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "5def1ba2-e22c-47e1-987a-f8c85bf6ab17",
+                "edbaceb0-8060-42d1-8dbf-130adcf182ec",
+                "8104f8c6-231c-4414-bb20-cb73aacd61e2",
+                "2a05c3d3-992e-4360-957c-aa10faa51ed9"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -86,21 +110,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E1"
-            },
-            "requires": [],
-            "contains": [
-                "5def1ba2-e22c-47e1-987a-f8c85bf6ab17",
-                "edbaceb0-8060-42d1-8dbf-130adcf182ec",
-                "8104f8c6-231c-4414-bb20-cb73aacd61e2",
-                "2a05c3d3-992e-4360-957c-aa10faa51ed9"
-            ],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "skill:sprachreflexion",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "1c84de14-2322-4762-9813-7dd036c540e5",
@@ -111,6 +121,18 @@
             "descriptionEn": "Grundbegriffe Lyrik/Epik/Drama.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "f162e7f9-dc1a-4dbd-afc3-c264b9bc6dfb",
+                "ded72aca-192f-4dad-938e-2a5ca99c6725",
+                "b9882547-672c-4206-a6d1-d3aff706bbbe",
+                "8550652f-f4fa-46c9-b975-e93a20dd497d"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -119,19 +141,7 @@
                 "phase": "E",
                 "area": "Literatur",
                 "topicCode": "E2"
-            },
-            "requires": [],
-            "contains": [
-                "f162e7f9-dc1a-4dbd-afc3-c264b9bc6dfb",
-                "ded72aca-192f-4dad-938e-2a5ca99c6725",
-                "b9882547-672c-4206-a6d1-d3aff706bbbe",
-                "8550652f-f4fa-46c9-b975-e93a20dd497d"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5def1ba2-e22c-47e1-987a-f8c85bf6ab17",
@@ -142,6 +152,14 @@
             "descriptionEn": "Die lernende Person kann grundlegende Grammatikstrukturen (z. B. Satzarten, Satzglieder, Zeiten) sicher anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:sprachreflexion",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -150,15 +168,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:sprachreflexion",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "edbaceb0-8060-42d1-8dbf-130adcf182ec",
@@ -169,6 +179,14 @@
             "descriptionEn": "Die lernende Person kann Textsorten bestimmen und deren Kommunikationsabsicht begründen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:lesen",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -177,15 +195,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "8104f8c6-231c-4414-bb20-cb73aacd61e2",
@@ -196,6 +206,13 @@
             "descriptionEn": "Die lernende Person kann einfache Argumentationsstrukturen (These–Argument–Beleg) erkennen und selbst nutzen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -204,14 +221,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "2a05c3d3-992e-4360-957c-aa10faa51ed9",
@@ -222,6 +232,13 @@
             "descriptionEn": "Die lernende Person kann mediale Beiträge (z. B. Artikel, Posts) hinsichtlich Intention und zentraler Mittel untersuchen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -230,14 +247,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "f162e7f9-dc1a-4dbd-afc3-c264b9bc6dfb",
@@ -248,6 +258,14 @@
             "descriptionEn": "Die lernende Person kann lyrische Formen (z. B. Sonett, freie Verse) erkennen und grundlegende metrische Strukturen beschreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:schreiben",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -256,15 +274,7 @@
                 "phase": "E",
                 "area": "Literatur",
                 "topicCode": "E2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:schreiben",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ded72aca-192f-4dad-938e-2a5ca99c6725",
@@ -275,6 +285,13 @@
             "descriptionEn": "Die lernende Person kann Erzählperspektiven und einfache Erzählzeitmodelle an Beispielen bestimmen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -283,14 +300,7 @@
                 "phase": "E",
                 "area": "Literatur",
                 "topicCode": "E2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b9882547-672c-4206-a6d1-d3aff706bbbe",
@@ -301,6 +311,14 @@
             "descriptionEn": "Die lernende Person kann Aufbau und Figurenkonstellation eines Dramas beschreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:schreiben",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -309,15 +327,7 @@
                 "phase": "E",
                 "area": "Literatur",
                 "topicCode": "E2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:schreiben",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "8550652f-f4fa-46c9-b975-e93a20dd497d",
@@ -328,6 +338,14 @@
             "descriptionEn": "Die lernende Person kann eine Textinterpretation in nachvollziehbaren Schritten (Frage, Analyse, Deutung, Fazit) entwickeln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:lesen",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -336,15 +354,7 @@
                 "phase": "E",
                 "area": "Literatur",
                 "topicCode": "E2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d618fae3-28ba-494d-b49e-359657263512",
@@ -355,6 +365,19 @@
             "descriptionEn": "Politik/Sprache/Literatur um 1800",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "db7eb145-d0f8-4f84-b8fd-b3bb15e7e32b",
+                "01d990ad-8e6d-4c0c-afa7-69b51581cbb7",
+                "7ac2e568-7531-4a6a-9162-459a5c2eae51",
+                "0c8bd726-278b-432d-bdfa-e68f381cf23d",
+                "20e8b668-76cd-4953-8086-b6042ecb433e"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -363,20 +386,7 @@
                 "phase": "Q1",
                 "area": "Meta",
                 "topicCode": "Q1"
-            },
-            "requires": [],
-            "contains": [
-                "db7eb145-d0f8-4f84-b8fd-b3bb15e7e32b",
-                "01d990ad-8e6d-4c0c-afa7-69b51581cbb7",
-                "7ac2e568-7531-4a6a-9162-459a5c2eae51",
-                "0c8bd726-278b-432d-bdfa-e68f381cf23d",
-                "20e8b668-76cd-4953-8086-b6042ecb433e"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "92a74a6c-3153-4f34-a003-304da38f5a2e",
@@ -387,6 +397,19 @@
             "descriptionEn": "Öffentlichkeit/Drama/Realismus",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "e72463ff-450b-4448-820c-209e4d6a5107",
+                "cc72e7ff-e029-4c13-873f-2302d71980c2",
+                "c3507ed3-9830-4222-b219-8b4520e653f8",
+                "674379cc-6497-4bbc-9ca9-e587492d439f",
+                "ee14d6b4-56d8-4269-a1b8-3ea16ad5c3f9"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -395,20 +418,7 @@
                 "phase": "Q2",
                 "area": "Meta",
                 "topicCode": "Q2"
-            },
-            "requires": [],
-            "contains": [
-                "e72463ff-450b-4448-820c-209e4d6a5107",
-                "cc72e7ff-e029-4c13-873f-2302d71980c2",
-                "c3507ed3-9830-4222-b219-8b4520e653f8",
-                "674379cc-6497-4bbc-9ca9-e587492d439f",
-                "ee14d6b4-56d8-4269-a1b8-3ea16ad5c3f9"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "8ff37db9-8b55-4db7-a862-de0a35c758f0",
@@ -419,6 +429,19 @@
             "descriptionEn": "Moderne/Kommunikation/Globalität",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "8f012f4f-16f8-43e2-904d-94d2baa2c32d",
+                "2bf0f555-17c5-452c-90f5-947c30d52495",
+                "c476e9e9-4c44-4308-a590-e30cd4a4f552",
+                "b378cab3-ab65-4ad1-bb9e-ab2711acf017",
+                "de1fcfb9-07e4-4779-8c19-ba33096f4911"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -427,20 +450,7 @@
                 "phase": "Q3",
                 "area": "Meta",
                 "topicCode": "Q3"
-            },
-            "requires": [],
-            "contains": [
-                "8f012f4f-16f8-43e2-904d-94d2baa2c32d",
-                "2bf0f555-17c5-452c-90f5-947c30d52495",
-                "c476e9e9-4c44-4308-a590-e30cd4a4f552",
-                "b378cab3-ab65-4ad1-bb9e-ab2711acf017",
-                "de1fcfb9-07e4-4779-8c19-ba33096f4911"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b0346be5-d0c8-4602-9add-0fc7383d51e4",
@@ -451,6 +461,17 @@
             "descriptionEn": "Gegenwart, Film, Wertung",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "b79584c8-9103-47b7-942e-b4c63fe1755a",
+                "9c011e06-bd1e-408f-9f67-976acea368d1",
+                "0bfa2de0-1589-44dd-97fe-335afb1fe2a9"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -459,18 +480,7 @@
                 "phase": "Q4",
                 "area": "Meta",
                 "topicCode": "Q4"
-            },
-            "requires": [],
-            "contains": [
-                "b79584c8-9103-47b7-942e-b4c63fe1755a",
-                "9c011e06-bd1e-408f-9f67-976acea368d1",
-                "0bfa2de0-1589-44dd-97fe-335afb1fe2a9"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "db7eb145-d0f8-4f84-b8fd-b3bb15e7e32b",
@@ -481,16 +491,10 @@
             "descriptionEn": "Epochenumbruch 18./19. Jahrhundert",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q1",
-                "area": "Literatur",
-                "topicCode": "Q1.1"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "bc5d457d-acf3-4e76-8fa8-0c0f7a316bd4",
                 "f98bd42f-62bf-4839-96c2-e1783ba22dd9",
@@ -499,11 +503,17 @@
                 "fa031563-a305-4b2e-9733-ea582f869944",
                 "97765592-3a84-466a-ace3-568e702f0dfb"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q1",
+                "area": "Literatur",
+                "topicCode": "Q1.1"
+            }
         },
         {
             "id": "bc5d457d-acf3-4e76-8fa8-0c0f7a316bd4",
@@ -514,6 +524,13 @@
             "descriptionEn": "Die lernende Person kann den literarischen und historischen Epochenkontext um 1800 skizzieren und zentrale Merkmale benennen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -522,14 +539,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "f98bd42f-62bf-4839-96c2-e1783ba22dd9",
@@ -540,6 +550,16 @@
             "descriptionEn": "Die lernende Person kann einen Text um 1800 (Prosa oder Drama) unter Verwendung von Fachbegriffen analysieren (z. B. Aufbau, Erzählweise, Figurenkonstellation).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:lesen",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "bc5d457d-acf3-4e76-8fa8-0c0f7a316bd4"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -548,17 +568,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.1"
-            },
-            "requires": [
-                "bc5d457d-acf3-4e76-8fa8-0c0f7a316bd4"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5da765a1-74fc-45fe-964d-f02898355b82",
@@ -569,6 +579,16 @@
             "descriptionEn": "Die lernende Person kann zentrale Motive (z. B. Natur, Subjekt, Vernunft, Gefühl) in Texten um 1800 herausarbeiten und mit Textbelegen stützen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:lesen",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "f98bd42f-62bf-4839-96c2-e1783ba22dd9"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -577,17 +597,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.1"
-            },
-            "requires": [
-                "f98bd42f-62bf-4839-96c2-e1783ba22dd9"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "cd263f8b-3941-44a6-90f0-ad618258e43f",
@@ -598,6 +608,15 @@
             "descriptionEn": "Die lernende Person kann zentrale Gattungen und Formen der Zeit (z. B. klassisches Drama, Roman, Gedicht) unterscheiden und ihre Merkmale vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "5da765a1-74fc-45fe-964d-f02898355b82"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -606,16 +625,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.1"
-            },
-            "requires": [
-                "5da765a1-74fc-45fe-964d-f02898355b82"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "fa031563-a305-4b2e-9733-ea582f869944",
@@ -626,6 +636,15 @@
             "descriptionEn": "Die lernende Person kann ausgewählte Texte der Klassik und Romantik hinsichtlich Motivgestaltung, Sprachgestalt und Menschenbild vergleichend analysieren.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "skill:lesen",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "cd263f8b-3941-44a6-90f0-ad618258e43f"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -634,16 +653,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.1"
-            },
-            "requires": [
-                "cd263f8b-3941-44a6-90f0-ad618258e43f"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "LK"
-            ]
+            }
         },
         {
             "id": "97765592-3a84-466a-ace3-568e702f0dfb",
@@ -654,6 +664,15 @@
             "descriptionEn": "Die lernende Person kann Deutungsmuster zum Epochenumbruch auf neue, nicht vorbereitete Texte übertragen und eigenständig begründete Deutungen formulieren.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "skill:lesen",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "fa031563-a305-4b2e-9733-ea582f869944"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -662,16 +681,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.1"
-            },
-            "requires": [
-                "fa031563-a305-4b2e-9733-ea582f869944"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "LK"
-            ]
+            }
         },
         {
             "id": "01d990ad-8e6d-4c0c-afa7-69b51581cbb7",
@@ -682,16 +692,10 @@
             "descriptionEn": "Sprache, Denken, Wirklichkeit",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q1",
-                "area": "Sprache",
-                "topicCode": "Q1.2"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "217c824e-e118-49e8-a3ca-ed4a819f9d2d",
                 "894aaf89-4baf-4368-a8f6-b4bdf7c16617",
@@ -700,11 +704,17 @@
                 "9fac6f62-8871-4604-b714-39ef761df28d",
                 "a97c384e-f8e7-4a55-86ee-e4f308a3e8a6"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q1",
+                "area": "Sprache",
+                "topicCode": "Q1.2"
+            }
         },
         {
             "id": "217c824e-e118-49e8-a3ca-ed4a819f9d2d",
@@ -715,6 +725,14 @@
             "descriptionEn": "Die lernende Person kann zentrale sprachphilosophische Positionen (z. B. Saussure, Wittgenstein in Auszügen) skizzieren und deren Grundannahmen benennen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:sprachreflexion",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -723,15 +741,7 @@
                 "phase": "Q1",
                 "area": "Sprache",
                 "topicCode": "Q1.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:sprachreflexion",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "894aaf89-4baf-4368-a8f6-b4bdf7c16617",
@@ -742,6 +752,15 @@
             "descriptionEn": "Die lernende Person kann Argumentationsgänge in Sachtexten zu Sprache/Denken rekonstruieren und deren Struktur (These, Argument, Beispiel) herausarbeiten.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "217c824e-e118-49e8-a3ca-ed4a819f9d2d"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -750,16 +769,7 @@
                 "phase": "Q1",
                 "area": "Sprache",
                 "topicCode": "Q1.2"
-            },
-            "requires": [
-                "217c824e-e118-49e8-a3ca-ed4a819f9d2d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "f8b9910c-35bd-4ec0-8720-441c5716c46d",
@@ -770,6 +780,16 @@
             "descriptionEn": "Die lernende Person kann Bedeutungs- und Begriffsfelder (z. B. „Sprache“, „Realität“) in Texten untersuchen und Verschiebungen oder Konnotationen begründen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:lesen",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "894aaf89-4baf-4368-a8f6-b4bdf7c16617"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -778,17 +798,7 @@
                 "phase": "Q1",
                 "area": "Sprache",
                 "topicCode": "Q1.2"
-            },
-            "requires": [
-                "894aaf89-4baf-4368-a8f6-b4bdf7c16617"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "32aebabf-2e3c-4f95-a4a0-2b15434f368d",
@@ -799,6 +809,16 @@
             "descriptionEn": "Die lernende Person kann Sprachhandlungen und Kommunikationssituationen mithilfe pragmatischer Modelle (Sprechakte, Kontext) einordnen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:sprachreflexion",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "f8b9910c-35bd-4ec0-8720-441c5716c46d"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -807,17 +827,7 @@
                 "phase": "Q1",
                 "area": "Sprache",
                 "topicCode": "Q1.2"
-            },
-            "requires": [
-                "f8b9910c-35bd-4ec0-8720-441c5716c46d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:sprachreflexion",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "9fac6f62-8871-4604-b714-39ef761df28d",
@@ -828,6 +838,15 @@
             "descriptionEn": "Die lernende Person kann an Textbeispielen analysieren, wie sprachliche Mittel Weltbilder konstruieren und stabilisieren.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "skill:lesen",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "32aebabf-2e3c-4f95-a4a0-2b15434f368d"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -836,16 +855,7 @@
                 "phase": "Q1",
                 "area": "Sprache",
                 "topicCode": "Q1.2"
-            },
-            "requires": [
-                "32aebabf-2e3c-4f95-a4a0-2b15434f368d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a97c384e-f8e7-4a55-86ee-e4f308a3e8a6",
@@ -856,6 +866,16 @@
             "descriptionEn": "Die lernende Person kann sprach- und diskurskritische Perspektiven (z. B. Ideologiekritik, Medienkritik) auf Texte anwenden und begründet Stellung nehmen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "skill:lesen",
+                "skill:medien",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "9fac6f62-8871-4604-b714-39ef761df28d"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -864,17 +884,7 @@
                 "phase": "Q1",
                 "area": "Sprache",
                 "topicCode": "Q1.2"
-            },
-            "requires": [
-                "9fac6f62-8871-4604-b714-39ef761df28d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "skill:medien",
-                "LK"
-            ]
+            }
         },
         {
             "id": "7ac2e568-7531-4a6a-9162-459a5c2eae51",
@@ -885,16 +895,10 @@
             "descriptionEn": "Natur als Imagination und Wirklichkeit",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q1",
-                "area": "Literatur",
-                "topicCode": "Q1.3"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "7c291ea0-22ee-46c2-82d4-379f6abdeda0",
                 "32a304e7-e42e-4afa-add4-1416afd448a2",
@@ -903,11 +907,17 @@
                 "28219ca7-fcab-4f29-b9a8-07a00d466b78",
                 "f8e528ab-0041-4e55-8035-6396452f7d3d"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q1",
+                "area": "Literatur",
+                "topicCode": "Q1.3"
+            }
         },
         {
             "id": "7c291ea0-22ee-46c2-82d4-379f6abdeda0",
@@ -918,6 +928,13 @@
             "descriptionEn": "Die lernende Person kann Naturdarstellungen in literarischen Texten verschiedener Epochen beschreiben und zentrale Bildmotive benennen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -926,14 +943,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "32a304e7-e42e-4afa-add4-1416afd448a2",
@@ -944,6 +954,15 @@
             "descriptionEn": "Die lernende Person kann Naturdarstellungen in ausgewählten Texten (z. B. Klassik, Romantik, Moderne) vergleichen und epochenbezogen einordnen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "7c291ea0-22ee-46c2-82d4-379f6abdeda0"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -952,16 +971,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.3"
-            },
-            "requires": [
-                "7c291ea0-22ee-46c2-82d4-379f6abdeda0"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "799303ef-88c7-407c-9c06-2bfd2aac3984",
@@ -972,6 +982,15 @@
             "descriptionEn": "Die lernende Person kann Naturmotive symbolisch/metaphorisch deuten und ihre Funktion für die Aussage des Textes erläutern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "32a304e7-e42e-4afa-add4-1416afd448a2"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -980,16 +999,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.3"
-            },
-            "requires": [
-                "32a304e7-e42e-4afa-add4-1416afd448a2"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "7e3dcf53-86ca-40fe-89c2-773a427d6e09",
@@ -1000,6 +1010,16 @@
             "descriptionEn": "Die lernende Person kann Texte mit Naturbezug vor dem Hintergrund ökologischer Fragestellungen lesen und deuten.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:sprechen",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "799303ef-88c7-407c-9c06-2bfd2aac3984"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1008,17 +1028,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.3"
-            },
-            "requires": [
-                "799303ef-88c7-407c-9c06-2bfd2aac3984"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:sprechen",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "28219ca7-fcab-4f29-b9a8-07a00d466b78",
@@ -1029,6 +1039,14 @@
             "descriptionEn": "Die lernende Person kann Intertextualität und Anspielungen zwischen Naturtexten unterschiedlicher Epochen erkennen und interpretieren (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "7e3dcf53-86ca-40fe-89c2-773a427d6e09"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -1037,15 +1055,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.3"
-            },
-            "requires": [
-                "7e3dcf53-86ca-40fe-89c2-773a427d6e09"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "f8e528ab-0041-4e55-8035-6396452f7d3d",
@@ -1056,6 +1066,14 @@
             "descriptionEn": "Die lernende Person kann Naturdarstellungen in unterschiedlichen Medien (Text, Bild, Film) vergleichend analysieren (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "28219ca7-fcab-4f29-b9a8-07a00d466b78"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -1064,15 +1082,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.3"
-            },
-            "requires": [
-                "28219ca7-fcab-4f29-b9a8-07a00d466b78"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "0c8bd726-278b-432d-bdfa-e68f381cf23d",
@@ -1083,16 +1093,10 @@
             "descriptionEn": "Romantische Spiegelungen",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q1",
-                "area": "Literatur",
-                "topicCode": "Q1.4"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "84cc36b9-354e-41ef-8f66-ee33a30c1dd3",
                 "3861bfb5-5618-4114-a3e0-20bb1b4cdde4",
@@ -1101,11 +1105,17 @@
                 "f092c37b-9640-48f9-886b-515d368cd8ae",
                 "2c81a8e0-b231-4cbf-b075-ccbce3d628d4"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q1",
+                "area": "Literatur",
+                "topicCode": "Q1.4"
+            }
         },
         {
             "id": "84cc36b9-354e-41ef-8f66-ee33a30c1dd3",
@@ -1116,6 +1126,13 @@
             "descriptionEn": "Die lernende Person kann typische Merkmale der Romantik (z. B. Sehnsucht, Nacht, Unendlichkeit) an Textbeispielen herausarbeiten.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1124,14 +1141,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "3861bfb5-5618-4114-a3e0-20bb1b4cdde4",
@@ -1142,6 +1152,15 @@
             "descriptionEn": "Die lernende Person kann Fragment, Ironie und offene Formen als romantische Gestaltungsweisen deuten.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "84cc36b9-354e-41ef-8f66-ee33a30c1dd3"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1150,16 +1169,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.4"
-            },
-            "requires": [
-                "84cc36b9-354e-41ef-8f66-ee33a30c1dd3"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "604c3cd2-c0c3-4a97-954f-f75279156e5a",
@@ -1170,6 +1180,15 @@
             "descriptionEn": "Die lernende Person kann romantische Märchen und Novellen hinsichtlich Struktur, Motivik und Erzählweise analysieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "3861bfb5-5618-4114-a3e0-20bb1b4cdde4"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1178,16 +1197,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.4"
-            },
-            "requires": [
-                "3861bfb5-5618-4114-a3e0-20bb1b4cdde4"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "342e259c-bebf-4c60-9fe7-d017ca40ae10",
@@ -1198,6 +1208,15 @@
             "descriptionEn": "Die lernende Person kann musikalische Bezüge und Synästhesie in romantischen Texten beschreiben und interpretieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "604c3cd2-c0c3-4a97-954f-f75279156e5a"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1206,16 +1225,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.4"
-            },
-            "requires": [
-                "604c3cd2-c0c3-4a97-954f-f75279156e5a"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "f092c37b-9640-48f9-886b-515d368cd8ae",
@@ -1226,6 +1236,15 @@
             "descriptionEn": "Die lernende Person kann phantastische Elemente und Spiegelmotive analysieren und ihre Bedeutung für die Wirklichkeitsdarstellung erklären (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "skill:lesen",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "342e259c-bebf-4c60-9fe7-d017ca40ae10"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -1234,16 +1253,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.4"
-            },
-            "requires": [
-                "342e259c-bebf-4c60-9fe7-d017ca40ae10"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "LK"
-            ]
+            }
         },
         {
             "id": "2c81a8e0-b231-4cbf-b075-ccbce3d628d4",
@@ -1254,6 +1264,14 @@
             "descriptionEn": "Die lernende Person kann zentrale Linien der Romantik-Rezeption bis in die Gegenwart skizzieren und an Beispielen veranschaulichen (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "f092c37b-9640-48f9-886b-515d368cd8ae"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -1262,15 +1280,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.4"
-            },
-            "requires": [
-                "f092c37b-9640-48f9-886b-515d368cd8ae"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "20e8b668-76cd-4953-8086-b6042ecb433e",
@@ -1281,16 +1291,10 @@
             "descriptionEn": "Emanzipation und Aufklärung",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q1",
-                "area": "Literatur",
-                "topicCode": "Q1.5"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "27f00a0f-d78a-4d8e-8802-5077b76f885b",
                 "512b5ef7-ca62-4c91-8669-54989ca3386e",
@@ -1299,11 +1303,17 @@
                 "60d9636b-6d8b-44b8-977b-da521b369012",
                 "5896b82c-9422-4ee8-8280-0b2289e7340e"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q1",
+                "area": "Literatur",
+                "topicCode": "Q1.5"
+            }
         },
         {
             "id": "27f00a0f-d78a-4d8e-8802-5077b76f885b",
@@ -1314,6 +1324,13 @@
             "descriptionEn": "Die lernende Person kann zentrale Gedanken der Aufklärung (Vernunft, Mündigkeit, Toleranz) anhand von Texten erläutern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1322,14 +1339,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "512b5ef7-ca62-4c91-8669-54989ca3386e",
@@ -1340,6 +1350,15 @@
             "descriptionEn": "Die lernende Person kann Emanzipationsdiskurse (z. B. Bildung, Geschlecht, Stand) in Texten identifizieren und bewerten.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "27f00a0f-d78a-4d8e-8802-5077b76f885b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1348,16 +1367,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.5"
-            },
-            "requires": [
-                "27f00a0f-d78a-4d8e-8802-5077b76f885b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "666ab77a-9e49-4bba-856d-a1b23ba56bec",
@@ -1368,6 +1378,15 @@
             "descriptionEn": "Die lernende Person kann Dramen und Prosatexte der Aufklärung hinsichtlich Konfliktstruktur und Figurenkonstellation analysieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "512b5ef7-ca62-4c91-8669-54989ca3386e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1376,16 +1395,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.5"
-            },
-            "requires": [
-                "512b5ef7-ca62-4c91-8669-54989ca3386e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "80c292ea-8ea0-4149-b185-d62a05a9ef55",
@@ -1396,6 +1406,15 @@
             "descriptionEn": "Die lernende Person kann Argumentationsstrategien in Texten der Aufklärung untersuchen und auf eigene Stellungnahmen übertragen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "666ab77a-9e49-4bba-856d-a1b23ba56bec"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1404,16 +1423,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.5"
-            },
-            "requires": [
-                "666ab77a-9e49-4bba-856d-a1b23ba56bec"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "60d9636b-6d8b-44b8-977b-da521b369012",
@@ -1424,6 +1434,14 @@
             "descriptionEn": "Die lernende Person kann historische und literarische Geschlechterrollen kritisch vergleichen (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "80c292ea-8ea0-4149-b185-d62a05a9ef55"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -1432,15 +1450,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.5"
-            },
-            "requires": [
-                "80c292ea-8ea0-4149-b185-d62a05a9ef55"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "5896b82c-9422-4ee8-8280-0b2289e7340e",
@@ -1451,6 +1461,14 @@
             "descriptionEn": "Die lernende Person kann Vorstellungen vom „bürgerlichen Subjekt“ und von Öffentlichkeit in Texten des 18. Jahrhunderts analysieren (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "60d9636b-6d8b-44b8-977b-da521b369012"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -1459,15 +1477,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.5"
-            },
-            "requires": [
-                "60d9636b-6d8b-44b8-977b-da521b369012"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "e72463ff-450b-4448-820c-209e4d6a5107",
@@ -1478,16 +1488,10 @@
             "descriptionEn": "Sprache und Öffentlichkeit",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q2",
-                "area": "Sprache",
-                "topicCode": "Q2.1"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "754511ed-4c33-4a92-a21a-272511aef2b2",
                 "7c8115bd-bda0-44b2-9695-a7778228233e",
@@ -1496,11 +1500,17 @@
                 "c3ec13e8-4882-43f3-92b3-4a841268fdb9",
                 "db945d5a-3aae-4270-b051-1d3eb693ce1a"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q2",
+                "area": "Sprache",
+                "topicCode": "Q2.1"
+            }
         },
         {
             "id": "754511ed-4c33-4a92-a21a-272511aef2b2",
@@ -1511,6 +1521,14 @@
             "descriptionEn": "Die lernende Person kann Reden oder Kommentare hinsichtlich Aufbau, rhetorischer Mittel und intendierter Wirkung analysieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:lesen",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1519,15 +1537,7 @@
                 "phase": "Q2",
                 "area": "Sprache",
                 "topicCode": "Q2.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "7c8115bd-bda0-44b2-9695-a7778228233e",
@@ -1538,6 +1548,17 @@
             "descriptionEn": "Die lernende Person kann die Rolle verschiedener Medienformate (z. B. Kommentar, Leitartikel, Talkshow) für öffentliche Meinungsbildung beschreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:medien",
+                "skill:schreiben",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "754511ed-4c33-4a92-a21a-272511aef2b2"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1546,18 +1567,7 @@
                 "phase": "Q2",
                 "area": "Sprache",
                 "topicCode": "Q2.1"
-            },
-            "requires": [
-                "754511ed-4c33-4a92-a21a-272511aef2b2"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:medien",
-                "skill:schreiben",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "213b51d2-ccff-4cfb-8a4d-c9cf50153317",
@@ -1568,6 +1578,16 @@
             "descriptionEn": "Die lernende Person kann exemplarische öffentliche Diskurse (z. B. zu politischen oder gesellschaftlichen Themen) sprachlich und argumentativ untersuchen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:lesen",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "7c8115bd-bda0-44b2-9695-a7778228233e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1576,17 +1596,7 @@
                 "phase": "Q2",
                 "area": "Sprache",
                 "topicCode": "Q2.1"
-            },
-            "requires": [
-                "7c8115bd-bda0-44b2-9695-a7778228233e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "685d4bf2-c4b1-4417-9f81-914f98abbd77",
@@ -1597,6 +1607,15 @@
             "descriptionEn": "Die lernende Person kann Anzeichen für Desinformation und manipulatives Sprechen/Schreiben identifizieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "213b51d2-ccff-4cfb-8a4d-c9cf50153317"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1605,16 +1624,7 @@
                 "phase": "Q2",
                 "area": "Sprache",
                 "topicCode": "Q2.1"
-            },
-            "requires": [
-                "213b51d2-ccff-4cfb-8a4d-c9cf50153317"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "c3ec13e8-4882-43f3-92b3-4a841268fdb9",
@@ -1625,6 +1635,15 @@
             "descriptionEn": "Die lernende Person kann Stil und Register öffentlicher Texte adressatengerecht beurteilen und eigene Formulierungen daran ausrichten.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "skill:lesen",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "685d4bf2-c4b1-4417-9f81-914f98abbd77"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -1633,16 +1652,7 @@
                 "phase": "Q2",
                 "area": "Sprache",
                 "topicCode": "Q2.1"
-            },
-            "requires": [
-                "685d4bf2-c4b1-4417-9f81-914f98abbd77"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "LK"
-            ]
+            }
         },
         {
             "id": "db945d5a-3aae-4270-b051-1d3eb693ce1a",
@@ -1653,6 +1663,15 @@
             "descriptionEn": "Die lernende Person kann Framing-Strategien in öffentlichen Texten erkennen und deren Einfluss auf Wahrnehmung und Bewertung reflektieren.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "skill:lesen",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "c3ec13e8-4882-43f3-92b3-4a841268fdb9"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -1661,16 +1680,7 @@
                 "phase": "Q2",
                 "area": "Sprache",
                 "topicCode": "Q2.1"
-            },
-            "requires": [
-                "c3ec13e8-4882-43f3-92b3-4a841268fdb9"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "LK"
-            ]
+            }
         },
         {
             "id": "cc72e7ff-e029-4c13-873f-2302d71980c2",
@@ -1681,16 +1691,10 @@
             "descriptionEn": "Soziales Drama und politisches Theater",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q2",
-                "area": "Literatur",
-                "topicCode": "Q2.2"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "8a605d64-b399-4e38-ad35-952a9612dea2",
                 "51d1cb34-b2f7-4469-bfaf-2096bf9e678c",
@@ -1699,11 +1703,17 @@
                 "ed8eba9a-5ac5-4f69-b8fd-8a825ac80fac",
                 "e196ac07-9223-4a94-b5d9-b71cb165d13d"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q2",
+                "area": "Literatur",
+                "topicCode": "Q2.2"
+            }
         },
         {
             "id": "8a605d64-b399-4e38-ad35-952a9612dea2",
@@ -1714,6 +1724,13 @@
             "descriptionEn": "Die lernende Person kann sozialkritische Dramen in Aufbau, Konfliktstruktur und sprachlicher Gestaltung analysieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1722,14 +1739,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "51d1cb34-b2f7-4469-bfaf-2096bf9e678c",
@@ -1740,6 +1750,15 @@
             "descriptionEn": "Die lernende Person kann Figurenkonstellationen und Machtverhältnisse in gesellschaftskritischen Dramen herausarbeiten.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "8a605d64-b399-4e38-ad35-952a9612dea2"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1748,16 +1767,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.2"
-            },
-            "requires": [
-                "8a605d64-b399-4e38-ad35-952a9612dea2"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5d1f6ee0-6609-4d02-b775-43acbf5e6ccc",
@@ -1768,6 +1778,15 @@
             "descriptionEn": "Die lernende Person kann Bühnenmittel (z. B. Raum, Licht, Requisiten) in ihrer Wirkung auf das Publikum deuten.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "51d1cb34-b2f7-4469-bfaf-2096bf9e678c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1776,16 +1795,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.2"
-            },
-            "requires": [
-                "51d1cb34-b2f7-4469-bfaf-2096bf9e678c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a9df553f-ead5-441e-9a48-c92281814614",
@@ -1796,6 +1806,15 @@
             "descriptionEn": "Die lernende Person kann sozial- und zeitgeschichtliche Kontexte zur vertieften Deutung von Dramen heranziehen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "5d1f6ee0-6609-4d02-b775-43acbf5e6ccc"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1804,16 +1823,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.2"
-            },
-            "requires": [
-                "5d1f6ee0-6609-4d02-b775-43acbf5e6ccc"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ed8eba9a-5ac5-4f69-b8fd-8a825ac80fac",
@@ -1824,6 +1834,14 @@
             "descriptionEn": "Die lernende Person kann episches und dokumentarisches Theater in Zielen und Mitteln von traditionellen Formen abgrenzen (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "a9df553f-ead5-441e-9a48-c92281814614"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -1832,15 +1850,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.2"
-            },
-            "requires": [
-                "a9df553f-ead5-441e-9a48-c92281814614"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "e196ac07-9223-4a94-b5d9-b71cb165d13d",
@@ -1851,6 +1861,14 @@
             "descriptionEn": "Die lernende Person kann unterschiedliche Inszenierungen eines Dramas vergleichend analysieren und interpretieren (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "ed8eba9a-5ac5-4f69-b8fd-8a825ac80fac"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -1859,15 +1877,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.2"
-            },
-            "requires": [
-                "ed8eba9a-5ac5-4f69-b8fd-8a825ac80fac"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "c3507ed3-9830-4222-b219-8b4520e653f8",
@@ -1878,16 +1888,10 @@
             "descriptionEn": "Literatur zwischen Widerstand, Exil und innerer Emigration",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q2",
-                "area": "Literatur",
-                "topicCode": "Q2.3"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "93ce9bfd-4663-4cc8-a272-084bffb3acc2",
                 "c289de12-3455-48ee-ae8d-a1549ca8ebfc",
@@ -1896,11 +1900,17 @@
                 "ac67e998-026f-4e80-bfd6-295b91c9e23b",
                 "ceed2cb6-0066-47ef-9dfb-a951b80398c5"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q2",
+                "area": "Literatur",
+                "topicCode": "Q2.3"
+            }
         },
         {
             "id": "93ce9bfd-4663-4cc8-a272-084bffb3acc2",
@@ -1911,6 +1921,13 @@
             "descriptionEn": "Die lernende Person kann den historischen Kontext von 1933–45 sowie Exil- und Widerstandssituation skizzieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1919,14 +1936,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "c289de12-3455-48ee-ae8d-a1549ca8ebfc",
@@ -1937,6 +1947,16 @@
             "descriptionEn": "Die lernende Person kann ausgewählte Texte des Widerstands und Exils in Inhalt, Figuren und Gestaltung analysieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:lesen",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "93ce9bfd-4663-4cc8-a272-084bffb3acc2"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1945,17 +1965,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.3"
-            },
-            "requires": [
-                "93ce9bfd-4663-4cc8-a272-084bffb3acc2"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "cd414558-1d78-4fed-a6c7-4e62ba1ba89e",
@@ -1966,6 +1976,15 @@
             "descriptionEn": "Die lernende Person kann Zensur- und Publikationsbedingungen beschreiben und deren Bedeutung für Texte nachvollziehen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "c289de12-3455-48ee-ae8d-a1549ca8ebfc"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -1974,16 +1993,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.3"
-            },
-            "requires": [
-                "c289de12-3455-48ee-ae8d-a1549ca8ebfc"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "48c98739-622e-485d-93d5-7763a58d3792",
@@ -1994,6 +2004,15 @@
             "descriptionEn": "Die lernende Person kann stilistische Besonderheiten von Exil- und Widerstandsliteratur deuten.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "cd414558-1d78-4fed-a6c7-4e62ba1ba89e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2002,16 +2021,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.3"
-            },
-            "requires": [
-                "cd414558-1d78-4fed-a6c7-4e62ba1ba89e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ac67e998-026f-4e80-bfd6-295b91c9e23b",
@@ -2022,6 +2032,14 @@
             "descriptionEn": "Die lernende Person kann Texte der inneren Emigration mit Exil-/Widerstandsliteratur vergleichen (Themen, Ton, Perspektive) (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "48c98739-622e-485d-93d5-7763a58d3792"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -2030,15 +2048,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.3"
-            },
-            "requires": [
-                "48c98739-622e-485d-93d5-7763a58d3792"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "ceed2cb6-0066-47ef-9dfb-a951b80398c5",
@@ -2049,6 +2059,14 @@
             "descriptionEn": "Die lernende Person kann Aspekte der Rezeptionsgeschichte von Texten dieser Zeit erläutern (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "ac67e998-026f-4e80-bfd6-295b91c9e23b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -2057,15 +2075,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.3"
-            },
-            "requires": [
-                "ac67e998-026f-4e80-bfd6-295b91c9e23b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "674379cc-6497-4bbc-9ca9-e587492d439f",
@@ -2076,16 +2086,10 @@
             "descriptionEn": "Darstellung von Wirklichkeit im Realismus/Naturalismus",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q2",
-                "area": "Literatur",
-                "topicCode": "Q2.4"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "333ffa68-33ac-4413-a7f8-5bb1d9665815",
                 "36c1f2c5-60b7-427f-89e1-65449fa74d6f",
@@ -2094,11 +2098,17 @@
                 "698f1bcc-e085-4bbd-8533-d33d4de1f7bf",
                 "42d79428-1d70-4f4d-b4a9-578ee32baaee"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q2",
+                "area": "Literatur",
+                "topicCode": "Q2.4"
+            }
         },
         {
             "id": "333ffa68-33ac-4413-a7f8-5bb1d9665815",
@@ -2109,6 +2119,13 @@
             "descriptionEn": "Die lernende Person kann zentrale Positionen der Poetik des Realismus und Naturalismus wiedergeben und an Texten zeigen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2117,14 +2134,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "36c1f2c5-60b7-427f-89e1-65449fa74d6f",
@@ -2135,6 +2145,15 @@
             "descriptionEn": "Die lernende Person kann Erzähltechnik und Perspektive in realistischen/naturalistischen Texten analysieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "333ffa68-33ac-4413-a7f8-5bb1d9665815"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2143,16 +2162,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.4"
-            },
-            "requires": [
-                "333ffa68-33ac-4413-a7f8-5bb1d9665815"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "cb5c75e9-11da-435b-a282-87de70dc9fc0",
@@ -2163,6 +2173,15 @@
             "descriptionEn": "Die lernende Person kann Milieuschilderung und Detailrealismus beschreiben und in ihrer Funktion deuten.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "36c1f2c5-60b7-427f-89e1-65449fa74d6f"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2171,16 +2190,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.4"
-            },
-            "requires": [
-                "36c1f2c5-60b7-427f-89e1-65449fa74d6f"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "0ac0f309-5c7d-43e3-b5d4-452896d94a64",
@@ -2191,6 +2201,15 @@
             "descriptionEn": "Die lernende Person kann Sprache und Stilmittel der Epoche (z. B. Umgangssprache, Dialekt) untersuchen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "cb5c75e9-11da-435b-a282-87de70dc9fc0"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2199,16 +2218,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.4"
-            },
-            "requires": [
-                "cb5c75e9-11da-435b-a282-87de70dc9fc0"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "698f1bcc-e085-4bbd-8533-d33d4de1f7bf",
@@ -2219,6 +2229,14 @@
             "descriptionEn": "Die lernende Person kann ein exemplarisches Werk umfassend interpretieren (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "0ac0f309-5c7d-43e3-b5d4-452896d94a64"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -2227,15 +2245,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.4"
-            },
-            "requires": [
-                "0ac0f309-5c7d-43e3-b5d4-452896d94a64"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "42d79428-1d70-4f4d-b4a9-578ee32baaee",
@@ -2246,6 +2256,14 @@
             "descriptionEn": "Die lernende Person kann zeitgenössische Reaktionen auf realistische/naturalistische Literatur skizzieren (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "698f1bcc-e085-4bbd-8533-d33d4de1f7bf"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -2254,15 +2272,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.4"
-            },
-            "requires": [
-                "698f1bcc-e085-4bbd-8533-d33d4de1f7bf"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "ee14d6b4-56d8-4269-a1b8-3ea16ad5c3f9",
@@ -2273,16 +2283,10 @@
             "descriptionEn": "Frauen- und Männerbilder",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q2",
-                "area": "Literatur",
-                "topicCode": "Q2.5"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "5bffdd92-7ccc-4534-9b73-aafebe45cbc6",
                 "5cfb8682-9f25-4e26-b2b3-3cec195e16a4",
@@ -2291,11 +2295,17 @@
                 "3510023f-0ea1-40d9-b365-eaa9fc9975d4",
                 "020c90f9-e9bf-420c-845f-6a99d8df7f52"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q2",
+                "area": "Literatur",
+                "topicCode": "Q2.5"
+            }
         },
         {
             "id": "5bffdd92-7ccc-4534-9b73-aafebe45cbc6",
@@ -2306,6 +2316,13 @@
             "descriptionEn": "Die lernende Person kann Rollenbilder von Frauen und Männern in verschiedenen Epochen vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2314,14 +2331,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5cfb8682-9f25-4e26-b2b3-3cec195e16a4",
@@ -2332,6 +2342,16 @@
             "descriptionEn": "Die lernende Person kann Figurenkonzeptionen hinsichtlich Geschlechterrollen analysieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:lesen",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "5bffdd92-7ccc-4534-9b73-aafebe45cbc6"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2340,17 +2360,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.5"
-            },
-            "requires": [
-                "5bffdd92-7ccc-4534-9b73-aafebe45cbc6"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "045b2229-7eb4-499a-8828-40c77b2b72f2",
@@ -2361,6 +2371,15 @@
             "descriptionEn": "Die lernende Person kann sprachliche Konstruktionen von Geschlecht (z. B. Metaphern, Zuschreibungen) untersuchen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "5cfb8682-9f25-4e26-b2b3-3cec195e16a4"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2369,16 +2388,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.5"
-            },
-            "requires": [
-                "5cfb8682-9f25-4e26-b2b3-3cec195e16a4"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "900f2e7a-18b7-4e1d-833e-ba6c760bd4fc",
@@ -2389,6 +2399,15 @@
             "descriptionEn": "Die lernende Person kann mediale Geschlechterbilder kritisch analysieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "045b2229-7eb4-499a-8828-40c77b2b72f2"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2397,16 +2416,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.5"
-            },
-            "requires": [
-                "045b2229-7eb4-499a-8828-40c77b2b72f2"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "3510023f-0ea1-40d9-b365-eaa9fc9975d4",
@@ -2417,6 +2427,14 @@
             "descriptionEn": "Die lernende Person kann grundlegende Gender-Theorien auf literarische und mediale Beispiele anwenden (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "900f2e7a-18b7-4e1d-833e-ba6c760bd4fc"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -2425,15 +2443,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.5"
-            },
-            "requires": [
-                "900f2e7a-18b7-4e1d-833e-ba6c760bd4fc"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "020c90f9-e9bf-420c-845f-6a99d8df7f52",
@@ -2444,6 +2454,14 @@
             "descriptionEn": "Die lernende Person kann stereotype Muster in Texten und Medien dekonstruieren (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "3510023f-0ea1-40d9-b365-eaa9fc9975d4"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -2452,15 +2470,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.5"
-            },
-            "requires": [
-                "3510023f-0ea1-40d9-b365-eaa9fc9975d4"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "8f012f4f-16f8-43e2-904d-94d2baa2c32d",
@@ -2471,16 +2481,10 @@
             "descriptionEn": "Literarische Moderne frühes 20. Jh.",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q3",
-                "area": "Literatur",
-                "topicCode": "Q3.1"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "23453eb4-63db-41da-985e-2519c96d1d25",
                 "ee6de2c1-0a26-4a9d-93fa-7d3dc070bcf4",
@@ -2489,11 +2493,17 @@
                 "cb02b867-cdb9-4af9-a4ce-5112854ec701",
                 "5a06556b-132c-46da-a0b2-50c18273dbdb"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q3",
+                "area": "Literatur",
+                "topicCode": "Q3.1"
+            }
         },
         {
             "id": "23453eb4-63db-41da-985e-2519c96d1d25",
@@ -2504,6 +2514,13 @@
             "descriptionEn": "Die lernende Person kann zentrale Merkmale der literarischen Moderne benennen und an Texten nachweisen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2512,14 +2529,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ee6de2c1-0a26-4a9d-93fa-7d3dc070bcf4",
@@ -2530,6 +2540,16 @@
             "descriptionEn": "Die lernende Person kann moderne Lyrik in Form, Bildlichkeit und Klang gestalten analysieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:lesen",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "23453eb4-63db-41da-985e-2519c96d1d25"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2538,17 +2558,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.1"
-            },
-            "requires": [
-                "23453eb4-63db-41da-985e-2519c96d1d25"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "9df875d0-29b6-4a80-a770-80ff16b1e66d",
@@ -2559,6 +2569,15 @@
             "descriptionEn": "Die lernende Person kann moderne Erzählformen (z. B. innerer Monolog, Bewusstseinsstrom) deuten.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "ee6de2c1-0a26-4a9d-93fa-7d3dc070bcf4"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2567,16 +2586,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.1"
-            },
-            "requires": [
-                "ee6de2c1-0a26-4a9d-93fa-7d3dc070bcf4"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "6292e692-5672-405d-af4a-2c145ac479ec",
@@ -2587,6 +2597,15 @@
             "descriptionEn": "Die lernende Person kann expressionistische Texte hinsichtlich Sprachgestalt und Motivik interpretieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "9df875d0-29b6-4a80-a770-80ff16b1e66d"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2595,16 +2614,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.1"
-            },
-            "requires": [
-                "9df875d0-29b6-4a80-a770-80ff16b1e66d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "cb02b867-cdb9-4af9-a4ce-5112854ec701",
@@ -2615,6 +2625,14 @@
             "descriptionEn": "Die lernende Person kann Texte mit Stream-of-Consciousness-Technik analysieren (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "6292e692-5672-405d-af4a-2c145ac479ec"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -2623,15 +2641,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.1"
-            },
-            "requires": [
-                "6292e692-5672-405d-af4a-2c145ac479ec"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "5a06556b-132c-46da-a0b2-50c18273dbdb",
@@ -2642,6 +2652,14 @@
             "descriptionEn": "Die lernende Person kann avantgardistische/experimentelle Texte in ihrer ästhetischen Programmatik einordnen (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "cb02b867-cdb9-4af9-a4ce-5112854ec701"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -2650,15 +2668,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.1"
-            },
-            "requires": [
-                "cb02b867-cdb9-4af9-a4ce-5112854ec701"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "2bf0f555-17c5-452c-90f5-947c30d52495",
@@ -2669,16 +2679,10 @@
             "descriptionEn": "Anthropologische Grundfragen",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q3",
-                "area": "Literatur",
-                "topicCode": "Q3.2"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "793b3ec1-ed0c-4dbc-898b-405dbe08b93c",
                 "5605de4a-0088-44bb-a7ec-8c9f97f73d95",
@@ -2687,11 +2691,17 @@
                 "b6f395ad-0a2d-42f2-9abf-2d4a3f9f244b",
                 "c1c054e8-4f23-4ffb-80a4-80028a782865"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q3",
+                "area": "Literatur",
+                "topicCode": "Q3.2"
+            }
         },
         {
             "id": "793b3ec1-ed0c-4dbc-898b-405dbe08b93c",
@@ -2702,6 +2712,13 @@
             "descriptionEn": "Die lernende Person kann unterschiedliche Menschenbilder in literarischen Texten vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2710,14 +2727,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5605de4a-0088-44bb-a7ec-8c9f97f73d95",
@@ -2728,6 +2738,15 @@
             "descriptionEn": "Die lernende Person kann Identitätsentwürfe von Figuren analysieren und deren Entwicklung nachvollziehen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "793b3ec1-ed0c-4dbc-898b-405dbe08b93c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2736,16 +2755,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.2"
-            },
-            "requires": [
-                "793b3ec1-ed0c-4dbc-898b-405dbe08b93c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "1b620845-9b75-4932-ace8-8f033ebace2f",
@@ -2756,6 +2766,15 @@
             "descriptionEn": "Die lernende Person kann ethische Dilemmata und Entscheidungsprozesse in Texten herausarbeiten.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "5605de4a-0088-44bb-a7ec-8c9f97f73d95"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2764,16 +2783,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.2"
-            },
-            "requires": [
-                "5605de4a-0088-44bb-a7ec-8c9f97f73d95"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "7e7e82b5-412d-4630-9ea8-ae7f8e17dd46",
@@ -2784,6 +2794,15 @@
             "descriptionEn": "Die lernende Person kann philosophische Bezüge (z. B. Existenzialismus) zur Textdeutung heranziehen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "1b620845-9b75-4932-ace8-8f033ebace2f"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2792,16 +2811,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.2"
-            },
-            "requires": [
-                "1b620845-9b75-4932-ace8-8f033ebace2f"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b6f395ad-0a2d-42f2-9abf-2d4a3f9f244b",
@@ -2812,6 +2822,14 @@
             "descriptionEn": "Die lernende Person kann existenzielle Motive vertiefend interpretieren (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "7e7e82b5-412d-4630-9ea8-ae7f8e17dd46"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -2820,15 +2838,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.2"
-            },
-            "requires": [
-                "7e7e82b5-412d-4630-9ea8-ae7f8e17dd46"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "c1c054e8-4f23-4ffb-80a4-80028a782865",
@@ -2839,6 +2849,14 @@
             "descriptionEn": "Die lernende Person kann Utopien und Dystopien im Hinblick auf Menschenbild und Gesellschaft vergleichen (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "b6f395ad-0a2d-42f2-9abf-2d4a3f9f244b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -2847,15 +2865,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.2"
-            },
-            "requires": [
-                "b6f395ad-0a2d-42f2-9abf-2d4a3f9f244b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "c476e9e9-4c44-4308-a590-e30cd4a4f552",
@@ -2866,16 +2876,10 @@
             "descriptionEn": "Neuanfänge nach 1945/1989",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q3",
-                "area": "Literatur",
-                "topicCode": "Q3.3"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "0ae1b1ec-67ac-47b4-893c-8ad3716033ec",
                 "54ebbbee-1d34-4c61-8a77-a4549bd7a10e",
@@ -2884,11 +2888,17 @@
                 "ef895543-aded-4fd4-9e7b-26166fc04285",
                 "85d31593-be68-42df-b560-48aa5e94a4a4"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q3",
+                "area": "Literatur",
+                "topicCode": "Q3.3"
+            }
         },
         {
             "id": "0ae1b1ec-67ac-47b4-893c-8ad3716033ec",
@@ -2899,6 +2909,13 @@
             "descriptionEn": "Die lernende Person kann zentrale Merkmale der Trümmerliteratur beschreiben und an Texten zeigen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2907,14 +2924,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "54ebbbee-1d34-4c61-8a77-a4549bd7a10e",
@@ -2925,6 +2935,15 @@
             "descriptionEn": "Die lernende Person kann Themen und Perspektiven der Wendeliteratur analysieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "0ae1b1ec-67ac-47b4-893c-8ad3716033ec"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2933,16 +2952,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.3"
-            },
-            "requires": [
-                "0ae1b1ec-67ac-47b4-893c-8ad3716033ec"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e54ad74f-7c1a-43a0-9201-05e4bd3fec17",
@@ -2953,6 +2963,15 @@
             "descriptionEn": "Die lernende Person kann Formen der literarischen Erinnerung und Gedenkkultur herausarbeiten.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "54ebbbee-1d34-4c61-8a77-a4549bd7a10e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2961,16 +2980,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.3"
-            },
-            "requires": [
-                "54ebbbee-1d34-4c61-8a77-a4549bd7a10e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "910c601b-9325-4d9c-b81b-f3a6482c16bc",
@@ -2981,6 +2991,15 @@
             "descriptionEn": "Die lernende Person kann unterschiedliche PerspektIVEN (Ost/West) vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "e54ad74f-7c1a-43a0-9201-05e4bd3fec17"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -2989,16 +3008,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.3"
-            },
-            "requires": [
-                "e54ad74f-7c1a-43a0-9201-05e4bd3fec17"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ef895543-aded-4fd4-9e7b-26166fc04285",
@@ -3009,6 +3019,14 @@
             "descriptionEn": "Die lernende Person kann intertextuelle Bezüge in Neuanfangstexten analysieren (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "910c601b-9325-4d9c-b81b-f3a6482c16bc"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -3017,15 +3035,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.3"
-            },
-            "requires": [
-                "910c601b-9325-4d9c-b81b-f3a6482c16bc"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "85d31593-be68-42df-b560-48aa5e94a4a4",
@@ -3036,6 +3046,14 @@
             "descriptionEn": "Die lernende Person kann mediale Aufarbeitungen (Film, Doku) mit literarischen Texten vergleichen (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "ef895543-aded-4fd4-9e7b-26166fc04285"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -3044,15 +3062,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.3"
-            },
-            "requires": [
-                "ef895543-aded-4fd4-9e7b-26166fc04285"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "b378cab3-ab65-4ad1-bb9e-ab2711acf017",
@@ -3063,16 +3073,10 @@
             "descriptionEn": "Kommunikation im Wandel",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q3",
-                "area": "Sprache",
-                "topicCode": "Q3.4"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "c0e1555d-08c3-4b55-8aae-19a7d1975135",
                 "e5cdf061-d038-4834-a04f-48c0e8babac9",
@@ -3081,11 +3085,17 @@
                 "53ad450c-bcaf-4a65-88de-5f07812814d8",
                 "deaf55f5-79f7-419b-ba69-96d146cbb5f0"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q3",
+                "area": "Sprache",
+                "topicCode": "Q3.4"
+            }
         },
         {
             "id": "c0e1555d-08c3-4b55-8aae-19a7d1975135",
@@ -3096,6 +3106,16 @@
             "descriptionEn": "Die lernende Person kann charakteristische Merkmale von Medien- und Netzsprache (z. B. Abkürzungen, Emojis, Memes) beschreiben und deren Wirkung diskutieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:medien",
+                "skill:schreiben",
+                "skill:sprechen",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3104,17 +3124,7 @@
                 "phase": "Q3",
                 "area": "Sprache",
                 "topicCode": "Q3.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:medien",
-                "skill:schreiben",
-                "skill:sprechen",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e5cdf061-d038-4834-a04f-48c0e8babac9",
@@ -3125,6 +3135,16 @@
             "descriptionEn": "Die lernende Person kann Kommunikationssituationen mit pragmatischen Modellen (Adressatenbezug, Höflichkeitsstrategien, Implizites) analysieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:lesen",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "c0e1555d-08c3-4b55-8aae-19a7d1975135"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3133,17 +3153,7 @@
                 "phase": "Q3",
                 "area": "Sprache",
                 "topicCode": "Q3.4"
-            },
-            "requires": [
-                "c0e1555d-08c3-4b55-8aae-19a7d1975135"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "c0fb163f-553f-4c80-8d3e-f9072d68729c",
@@ -3154,6 +3164,17 @@
             "descriptionEn": "Die lernende Person kann Diskurse (z. B. in sozialen Medien) hinsichtlich Positionen, Argumentationsmustern und sprachlichen Strategien untersuchen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:lesen",
+                "skill:medien",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "e5cdf061-d038-4834-a04f-48c0e8babac9"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3162,18 +3183,7 @@
                 "phase": "Q3",
                 "area": "Sprache",
                 "topicCode": "Q3.4"
-            },
-            "requires": [
-                "e5cdf061-d038-4834-a04f-48c0e8babac9"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "skill:medien",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "54204990-b925-44b3-8574-df57afa9f861",
@@ -3184,6 +3194,16 @@
             "descriptionEn": "Die lernende Person kann rhetorische Mittel in mündlichen und schriftlichen Beiträgen erkennen und ihre Funktion für die Überzeugungskraft beurteilen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:sprechen",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "c0fb163f-553f-4c80-8d3e-f9072d68729c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3192,17 +3212,7 @@
                 "phase": "Q3",
                 "area": "Sprache",
                 "topicCode": "Q3.4"
-            },
-            "requires": [
-                "c0fb163f-553f-4c80-8d3e-f9072d68729c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:sprechen",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "53ad450c-bcaf-4a65-88de-5f07812814d8",
@@ -3213,6 +3223,17 @@
             "descriptionEn": "Die lernende Person kann multimodale Texte (Bild, Ton, Schrift) in ihrer Gesamtaussage analysieren und die Wechselwirkung der Modi beschreiben.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "skill:lesen",
+                "skill:medien",
+                "skill:schreiben",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "54204990-b925-44b3-8574-df57afa9f861"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -3221,18 +3242,7 @@
                 "phase": "Q3",
                 "area": "Sprache",
                 "topicCode": "Q3.4"
-            },
-            "requires": [
-                "54204990-b925-44b3-8574-df57afa9f861"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "skill:medien",
-                "skill:schreiben",
-                "LK"
-            ]
+            }
         },
         {
             "id": "deaf55f5-79f7-419b-ba69-96d146cbb5f0",
@@ -3243,6 +3253,15 @@
             "descriptionEn": "Die lernende Person kann kommunikative Praktiken (z. B. Shitstorms, Hate Speech, Clickbait) unter ethischen Gesichtspunkten reflektieren.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "skill:medien",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "53ad450c-bcaf-4a65-88de-5f07812814d8"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -3251,16 +3270,7 @@
                 "phase": "Q3",
                 "area": "Sprache",
                 "topicCode": "Q3.4"
-            },
-            "requires": [
-                "53ad450c-bcaf-4a65-88de-5f07812814d8"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:medien",
-                "LK"
-            ]
+            }
         },
         {
             "id": "de1fcfb9-07e4-4779-8c19-ba33096f4911",
@@ -3271,16 +3281,10 @@
             "descriptionEn": "Literatur/Sprache im Kontext Migration",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q3",
-                "area": "Literatur",
-                "topicCode": "Q3.5"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "6a03261f-b001-481f-afd0-a7a6a7f621df",
                 "dd8323cb-124c-41ae-b6ca-dcfa597c5afd",
@@ -3289,11 +3293,17 @@
                 "6fcd537d-bae4-48a5-aa98-9209237df066",
                 "44f914c9-0ece-4a98-b44b-2357d2f4056d"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q3",
+                "area": "Literatur",
+                "topicCode": "Q3.5"
+            }
         },
         {
             "id": "6a03261f-b001-481f-afd0-a7a6a7f621df",
@@ -3304,6 +3314,14 @@
             "descriptionEn": "Die lernende Person kann Migrationserzählungen hinsichtlich Handlung, Perspektive und Konflikten analysieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:lesen",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3312,15 +3330,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "dd8323cb-124c-41ae-b6ca-dcfa597c5afd",
@@ -3331,6 +3341,15 @@
             "descriptionEn": "Die lernende Person kann Mehrsprachigkeit und sprachliche Hybridität in Texten beschreiben und deuten.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "6a03261f-b001-481f-afd0-a7a6a7f621df"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3339,16 +3358,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.5"
-            },
-            "requires": [
-                "6a03261f-b001-481f-afd0-a7a6a7f621df"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e6c26c62-f4ba-41e8-9811-eec4f89d8f28",
@@ -3359,6 +3369,15 @@
             "descriptionEn": "Die lernende Person kann Identitätsverhandlungen von Figuren im Migrationskontext herausarbeiten.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "dd8323cb-124c-41ae-b6ca-dcfa597c5afd"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3367,16 +3386,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.5"
-            },
-            "requires": [
-                "dd8323cb-124c-41ae-b6ca-dcfa597c5afd"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ed73cd70-42bd-49ea-9d68-545c2f5bd79d",
@@ -3387,6 +3397,15 @@
             "descriptionEn": "Die lernende Person kann perspektivische Wechsel (Innen-/Außensicht) analysieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "e6c26c62-f4ba-41e8-9811-eec4f89d8f28"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3395,16 +3414,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.5"
-            },
-            "requires": [
-                "e6c26c62-f4ba-41e8-9811-eec4f89d8f28"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "6fcd537d-bae4-48a5-aa98-9209237df066",
@@ -3415,6 +3425,14 @@
             "descriptionEn": "Die lernende Person kann postkoloniale Lesarten auf ausgewählte Texte anwenden (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "ed73cd70-42bd-49ea-9d68-545c2f5bd79d"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -3423,15 +3441,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.5"
-            },
-            "requires": [
-                "ed73cd70-42bd-49ea-9d68-545c2f5bd79d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "44f914c9-0ece-4a98-b44b-2357d2f4056d",
@@ -3442,6 +3452,14 @@
             "descriptionEn": "Die lernende Person kann Fragen von Übersetzung und Transkulturalität reflektieren (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "6fcd537d-bae4-48a5-aa98-9209237df066"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -3450,15 +3468,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.5"
-            },
-            "requires": [
-                "6fcd537d-bae4-48a5-aa98-9209237df066"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "b79584c8-9103-47b7-942e-b4c63fe1755a",
@@ -3469,16 +3479,10 @@
             "descriptionEn": "Literarisches Leben der Gegenwart",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q4",
-                "area": "Literatur",
-                "topicCode": "Q4.1"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "2e9f59aa-a903-44a9-9844-ea23222adbc4",
                 "0a7f53ca-0141-4b46-9073-7335d384e04e",
@@ -3487,11 +3491,17 @@
                 "62d98827-afce-46b8-b2eb-72cffff4907c",
                 "fc1db232-bcd7-4ef0-bd5e-f8f1b029263e"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q4",
+                "area": "Literatur",
+                "topicCode": "Q4.1"
+            }
         },
         {
             "id": "2e9f59aa-a903-44a9-9844-ea23222adbc4",
@@ -3502,6 +3512,13 @@
             "descriptionEn": "Die lernende Person kann Strukturen des Literaturbetriebs (Verlage, Preise, Marketing) beschreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3510,14 +3527,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "0a7f53ca-0141-4b46-9073-7335d384e04e",
@@ -3528,6 +3538,15 @@
             "descriptionEn": "Die lernende Person kann die Bedeutung von Literaturpreisen und Kanondiskursen diskutieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "2e9f59aa-a903-44a9-9844-ea23222adbc4"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3536,16 +3555,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.1"
-            },
-            "requires": [
-                "2e9f59aa-a903-44a9-9844-ea23222adbc4"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b1dfb1ec-60d4-49c3-866a-4557cb91976b",
@@ -3556,6 +3566,15 @@
             "descriptionEn": "Die lernende Person kann neue Formate (z. B. Graphic Novel, Blogroman) analysieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "0a7f53ca-0141-4b46-9073-7335d384e04e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3564,16 +3583,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.1"
-            },
-            "requires": [
-                "0a7f53ca-0141-4b46-9073-7335d384e04e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "f9248006-c7e0-4887-b536-f87ebe3dd151",
@@ -3584,6 +3594,15 @@
             "descriptionEn": "Die lernende Person kann digitale Publikationsformen (Blogs, Social Reading) hinsichtlich Chancen und Grenzen beurteilen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "b1dfb1ec-60d4-49c3-866a-4557cb91976b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3592,16 +3611,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.1"
-            },
-            "requires": [
-                "b1dfb1ec-60d4-49c3-866a-4557cb91976b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "62d98827-afce-46b8-b2eb-72cffff4907c",
@@ -3612,6 +3622,14 @@
             "descriptionEn": "Die lernende Person kann Kritik- und Feuilletontexte zur Gegenwartsliteratur auswerten (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "f9248006-c7e0-4887-b536-f87ebe3dd151"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -3620,15 +3638,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.1"
-            },
-            "requires": [
-                "f9248006-c7e0-4887-b536-f87ebe3dd151"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "fc1db232-bcd7-4ef0-bd5e-f8f1b029263e",
@@ -3639,6 +3649,14 @@
             "descriptionEn": "Die lernende Person kann Diversitätsaspekte (z. B. Herkunft, Geschlecht, Perspektiven) im aktuellen Literaturspektrum analysieren (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "62d98827-afce-46b8-b2eb-72cffff4907c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -3647,15 +3665,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.1"
-            },
-            "requires": [
-                "62d98827-afce-46b8-b2eb-72cffff4907c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "9c011e06-bd1e-408f-9f67-976acea368d1",
@@ -3666,16 +3676,10 @@
             "descriptionEn": "Film und Literatur",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q4",
-                "area": "Medien",
-                "topicCode": "Q4.2"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "0d7f323d-cfbd-4f38-bbd9-75fdd8fd808c",
                 "dcddbbbf-597d-40c6-8fc3-e42199691d4e",
@@ -3684,11 +3688,17 @@
                 "bf2a9cc8-a713-4ed4-b6ea-f1c34d3fab2e",
                 "89ae0585-e6d8-45d3-83b2-fb096629ddc4"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q4",
+                "area": "Medien",
+                "topicCode": "Q4.2"
+            }
         },
         {
             "id": "0d7f323d-cfbd-4f38-bbd9-75fdd8fd808c",
@@ -3699,6 +3709,13 @@
             "descriptionEn": "Die lernende Person kann Buch- und Filmversionen einer Geschichte in Struktur und Wirkung vergleichen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3707,14 +3724,7 @@
                 "phase": "Q4",
                 "area": "Medien",
                 "topicCode": "Q4.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "dcddbbbf-597d-40c6-8fc3-e42199691d4e",
@@ -3725,6 +3735,16 @@
             "descriptionEn": "Die lernende Person kann Filmsprache (Einstellung, Montage, Ton) analysieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:lesen",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "0d7f323d-cfbd-4f38-bbd9-75fdd8fd808c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3733,17 +3753,7 @@
                 "phase": "Q4",
                 "area": "Medien",
                 "topicCode": "Q4.2"
-            },
-            "requires": [
-                "0d7f323d-cfbd-4f38-bbd9-75fdd8fd808c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:lesen",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d7a4c35f-a564-46a1-befc-f09908073ad7",
@@ -3754,6 +3764,15 @@
             "descriptionEn": "Die lernende Person kann erzählerische Unterschiede zwischen literarischem Text und Film deuten.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "dcddbbbf-597d-40c6-8fc3-e42199691d4e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3762,16 +3781,7 @@
                 "phase": "Q4",
                 "area": "Medien",
                 "topicCode": "Q4.2"
-            },
-            "requires": [
-                "dcddbbbf-597d-40c6-8fc3-e42199691d4e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "38e72730-f9eb-4b07-bd9e-266fbd6b44d2",
@@ -3782,6 +3792,15 @@
             "descriptionEn": "Die lernende Person kann Ton/Bild/Schnitt als Gestaltungsmittel interpretieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "d7a4c35f-a564-46a1-befc-f09908073ad7"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3790,16 +3809,7 @@
                 "phase": "Q4",
                 "area": "Medien",
                 "topicCode": "Q4.2"
-            },
-            "requires": [
-                "d7a4c35f-a564-46a1-befc-f09908073ad7"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "bf2a9cc8-a713-4ed4-b6ea-f1c34d3fab2e",
@@ -3810,6 +3820,14 @@
             "descriptionEn": "Die lernende Person kann intermediale Bezüge (z. B. Zitate, Referenzen) herausarbeiten (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "38e72730-f9eb-4b07-bd9e-266fbd6b44d2"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -3818,15 +3836,7 @@
                 "phase": "Q4",
                 "area": "Medien",
                 "topicCode": "Q4.2"
-            },
-            "requires": [
-                "38e72730-f9eb-4b07-bd9e-266fbd6b44d2"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "89ae0585-e6d8-45d3-83b2-fb096629ddc4",
@@ -3837,6 +3847,14 @@
             "descriptionEn": "Die lernende Person kann serielle Erzählformen (z. B. Serien) analysieren und mit literarischen Formen vergleichen (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "bf2a9cc8-a713-4ed4-b6ea-f1c34d3fab2e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -3845,15 +3863,7 @@
                 "phase": "Q4",
                 "area": "Medien",
                 "topicCode": "Q4.2"
-            },
-            "requires": [
-                "bf2a9cc8-a713-4ed4-b6ea-f1c34d3fab2e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "0bfa2de0-1589-44dd-97fe-335afb1fe2a9",
@@ -3864,16 +3874,10 @@
             "descriptionEn": "Literarische Wirkungen und Wertungen",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-german",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Q4",
-                "area": "Literatur",
-                "topicCode": "Q4.3"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "9a4d6f65-71ea-49ca-bc9f-bdd91264a7b4",
                 "3c23a339-dd13-46c9-b251-320123bc6194",
@@ -3882,11 +3886,17 @@
                 "bc931549-47aa-410f-a031-86b55a3762a1",
                 "22e11ad6-01f5-42b2-9317-dbb8ddb57e57"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-german",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Q4",
+                "area": "Literatur",
+                "topicCode": "Q4.3"
+            }
         },
         {
             "id": "9a4d6f65-71ea-49ca-bc9f-bdd91264a7b4",
@@ -3897,6 +3907,13 @@
             "descriptionEn": "Die lernende Person kann Rezeptionsgeschichte ausgewählter Werke skizzieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3905,14 +3922,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "3c23a339-dd13-46c9-b251-320123bc6194",
@@ -3923,6 +3933,16 @@
             "descriptionEn": "Die lernende Person kann Kriterien literarischer Bewertung diskutieren und begründet anwenden.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "skill:sprechen",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "9a4d6f65-71ea-49ca-bc9f-bdd91264a7b4"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3931,17 +3951,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.3"
-            },
-            "requires": [
-                "9a4d6f65-71ea-49ca-bc9f-bdd91264a7b4"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "skill:sprechen",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d35b62e8-aea8-44fb-9c53-914725411e49",
@@ -3952,6 +3962,15 @@
             "descriptionEn": "Die lernende Person kann Kanonbildungsprozesse reflektieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "3c23a339-dd13-46c9-b251-320123bc6194"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3960,16 +3979,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.3"
-            },
-            "requires": [
-                "3c23a339-dd13-46c9-b251-320123bc6194"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e173852b-e4c0-4fb9-9c8d-ba39c56c7565",
@@ -3980,6 +3990,15 @@
             "descriptionEn": "Die lernende Person kann ethische Fragen literarischer Darstellung (z. B. Gewalt, Trauma) reflektieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "d35b62e8-aea8-44fb-9c53-914725411e49"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB2",
@@ -3988,16 +4007,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.3"
-            },
-            "requires": [
-                "d35b62e8-aea8-44fb-9c53-914725411e49"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "bc931549-47aa-410f-a031-86b55a3762a1",
@@ -4008,6 +4018,14 @@
             "descriptionEn": "Die lernende Person kann grundlegende literaturtheoretische Modelle zur Interpretation nutzen (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "e173852b-e4c0-4fb9-9c8d-ba39c56c7565"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -4016,15 +4034,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.3"
-            },
-            "requires": [
-                "e173852b-e4c0-4fb9-9c8d-ba39c56c7565"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "22e11ad6-01f5-42b2-9317-dbb8ddb57e57",
@@ -4035,6 +4045,14 @@
             "descriptionEn": "Die lernende Person kann literarische Kontroversen (z. B. um Werke/Autoren) nachvollziehen und bewerten (LK).",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "bc931549-47aa-410f-a031-86b55a3762a1"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-german",
                 "demandLevel": "AB3",
@@ -4043,25 +4061,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.3"
-            },
-            "requires": [
-                "bc931549-47aa-410f-a031-86b55a3762a1"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
-        }
-    ],
-    "filters": [
-        {
-            "id": "GK",
-            "label": "Grundkurs"
-        },
-        {
-            "id": "LK",
-            "label": "Leistungskurs"
+            }
         }
     ]
 }

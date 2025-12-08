@@ -1,12 +1,22 @@
 {
-    "title": "Englisch Oberstufe (Hessen, KC 2024)",
-    "titleEn": "English Upper Secondary (Hesse, KC 2024)",
-    "description": "Lernlandschaft für das hessische Kerncurriculum Englisch (gymnasiale Oberstufe, Ausgabe 2024).",
-    "descriptionEn": "Learning landscape for the Hessian core curriculum English (Upper Secondary, 2024 edition).",
     "landscapeId": "bc2124fa-2974-46cc-85e7-2392e61250e1",
     "locale": "de-DE",
     "subject": "Englisch",
     "frameworkId": "hessen-kc-2024-english",
+    "title": "Englisch Oberstufe (Hessen, KC 2024)",
+    "titleEn": "English Upper Secondary (Hesse, KC 2024)",
+    "description": "Lernlandschaft für das hessische Kerncurriculum Englisch (gymnasiale Oberstufe, Ausgabe 2024).",
+    "descriptionEn": "Learning landscape for the Hessian core curriculum English (Upper Secondary, 2024 edition).",
+    "filters": [
+        {
+            "id": "GK",
+            "label": "Grundkurs"
+        },
+        {
+            "id": "LK",
+            "label": "Leistungskurs"
+        }
+    ],
     "goals": [
         {
             "id": "6bb9635c-6819-43bc-8665-ba7b6c5f5f85",
@@ -17,6 +27,19 @@
             "descriptionEn": "Overarching goal: Competencies in language, literature, media and intercultural contexts according to KC English. Basic and advanced courses work on the same topics; the higher level in the advanced course is realized via more complex texts, more demanding tasks and higher independence, not via own additional contents.",
             "core": true,
             "weight": 1.2,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "90ac9109-a708-4e9e-a112-6ba1fc9a8eb1",
+                "34dea026-5c99-4b4b-847e-051ef3da8035",
+                "91ddee3b-2c66-4af1-bf1c-dd050997fe30",
+                "74719c2c-c410-4fcf-9b51-1947b970484e",
+                "b4e445aa-71d7-41b1-9929-3db597b58737"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -25,20 +48,7 @@
                 "phase": "GLOBAL",
                 "area": "Meta",
                 "topicCode": "GLOBAL"
-            },
-            "requires": [],
-            "contains": [
-                "90ac9109-a708-4e9e-a112-6ba1fc9a8eb1",
-                "34dea026-5c99-4b4b-847e-051ef3da8035",
-                "91ddee3b-2c66-4af1-bf1c-dd050997fe30",
-                "74719c2c-c410-4fcf-9b51-1947b970484e",
-                "b4e445aa-71d7-41b1-9929-3db597b58737"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "90ac9109-a708-4e9e-a112-6ba1fc9a8eb1",
@@ -49,6 +59,20 @@
             "descriptionEn": "Einführungsphase: Build-up Competences",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "544aad84-4c32-4e31-9a32-6bfa1310ff72",
+                "de8e479b-55cc-40dd-8ba6-2143fb65135a",
+                "a294c6a3-7f40-43c2-af27-2d5d76537e2c",
+                "7a56eac7-8d2a-461e-92c1-3b7ba9b5712d",
+                "07f87ca2-bc6a-4492-ad17-7d6cfdd1edac"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -57,21 +81,7 @@
                 "phase": "E",
                 "area": "Meta",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [
-                "544aad84-4c32-4e31-9a32-6bfa1310ff72",
-                "de8e479b-55cc-40dd-8ba6-2143fb65135a",
-                "a294c6a3-7f40-43c2-af27-2d5d76537e2c",
-                "7a56eac7-8d2a-461e-92c1-3b7ba9b5712d",
-                "07f87ca2-bc6a-4492-ad17-7d6cfdd1edac"
-            ],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "544aad84-4c32-4e31-9a32-6bfa1310ff72",
@@ -82,6 +92,14 @@
             "descriptionEn": "Growing up (Heranwachsen)",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -90,15 +108,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a0791bff-b611-46fd-933e-e5df7756d039",
@@ -109,6 +119,15 @@
             "descriptionEn": "Learners can demonstrate text comprehension in context of Growing up (Heranwachsen).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -117,16 +136,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "f61465ad-7197-41d5-b9fb-5e3710638111",
@@ -137,6 +147,15 @@
             "descriptionEn": "Learners can demonstrate vocabulary/grammar consolidation in context of Growing up (Heranwachsen).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -145,16 +164,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "81150ef2-da6f-4421-afa9-83340abb0f84",
@@ -165,6 +175,16 @@
             "descriptionEn": "Learners can demonstrate listening/speaking in context of Growing up (Heranwachsen).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:listening",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -173,17 +193,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:listening",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a2545ced-568a-441b-b2e7-dc240dc56a5b",
@@ -194,6 +204,16 @@
             "descriptionEn": "Learners can demonstrate writing/mediate in context of Growing up (Heranwachsen).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:mediation",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -202,17 +222,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:mediation",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ccce96fd-7676-43af-b08b-73a8c21216c5",
@@ -223,6 +233,15 @@
             "descriptionEn": "Learners can demonstrate intercultural reflection in context of Growing up (Heranwachsen).",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:intercultural",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -231,16 +250,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:intercultural",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "de8e479b-55cc-40dd-8ba6-2143fb65135a",
@@ -251,6 +261,14 @@
             "descriptionEn": "Making a difference",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -259,15 +277,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "64ae2edb-88a9-4c8a-b9da-4135e87c0e0c",
@@ -278,6 +288,15 @@
             "descriptionEn": "Learners can demonstrate text comprehension in context of Making a difference.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -286,16 +305,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "c5ff4dfa-16ad-44b9-9f7d-c4b0a241b147",
@@ -306,6 +316,15 @@
             "descriptionEn": "Learners can demonstrate vocabulary/grammar consolidation in context of Making a difference.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -314,16 +333,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "9e61fadf-555d-4bbe-8b63-f9fe5e7baf9e",
@@ -334,6 +344,16 @@
             "descriptionEn": "Learners can demonstrate listening/speaking in context of Making a difference.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:listening",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -342,17 +362,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:listening",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5becb27a-c552-475c-9369-daed0113d868",
@@ -363,6 +373,16 @@
             "descriptionEn": "Learners can demonstrate writing/mediate in context of Making a difference.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:mediation",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -371,17 +391,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:mediation",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "4d3e4399-e8fd-4ce5-a1bf-7febd69bbfb8",
@@ -392,6 +402,15 @@
             "descriptionEn": "Learners can demonstrate intercultural reflection in context of Making a difference.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:intercultural",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -400,16 +419,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:intercultural",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a294c6a3-7f40-43c2-af27-2d5d76537e2c",
@@ -420,6 +430,15 @@
             "descriptionEn": "The English-speaking world",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -428,16 +447,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "0b376d2a-bc71-4c20-97b4-94251f8c1630",
@@ -448,6 +458,16 @@
             "descriptionEn": "Learners can demonstrate text comprehension in context of The English-speaking world.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:reading",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -456,17 +476,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:reading",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "246b19c9-e2b2-4b89-93d3-23a14262da99",
@@ -477,6 +487,16 @@
             "descriptionEn": "Learners can demonstrate vocabulary/grammar consolidation in context of The English-speaking world.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:lexis-grammar",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -485,17 +505,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:lexis-grammar",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "9b25b553-9297-4be1-8ba5-c419a5b143d3",
@@ -506,6 +516,16 @@
             "descriptionEn": "Learners can demonstrate listening/speaking in context of The English-speaking world.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:listening",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -514,17 +534,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:listening",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "660099a7-2f5f-4c52-a61c-7d9ae436f2be",
@@ -535,6 +545,17 @@
             "descriptionEn": "Learners can demonstrate writing/mediate in context of The English-speaking world.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:mediation",
+                "skill:speaking",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -543,18 +564,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:mediation",
-                "skill:speaking",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "1ec52613-d56f-4a08-b27f-a77b89d6bae0",
@@ -565,6 +575,16 @@
             "descriptionEn": "Learners can demonstrate intercultural reflection in context of The English-speaking world.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:intercultural",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -573,17 +593,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:intercultural",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "7a56eac7-8d2a-461e-92c1-3b7ba9b5712d",
@@ -594,6 +604,16 @@
             "descriptionEn": "Youth culture in English-speaking countries",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:intercultural",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -602,17 +622,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:intercultural",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "dcb4441d-990b-4acc-a20b-75244825d544",
@@ -623,6 +633,17 @@
             "descriptionEn": "Learners can demonstrate text comprehension in context of Youth culture in English-speaking countries.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:intercultural",
+                "skill:reading",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -631,18 +652,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:intercultural",
-                "skill:reading",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "21f5256b-cf41-40db-a3e6-11510c6f2fc3",
@@ -653,6 +663,17 @@
             "descriptionEn": "Learners can demonstrate vocabulary/grammar consolidation in context of Youth culture in English-speaking countries.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:intercultural",
+                "skill:lexis-grammar",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -661,18 +682,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:intercultural",
-                "skill:lexis-grammar",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "930e1b15-ea20-46f8-9378-632bfd4b5404",
@@ -683,6 +693,17 @@
             "descriptionEn": "Learners can demonstrate listening/speaking in context of Youth culture in English-speaking countries.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:intercultural",
+                "skill:listening",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -691,18 +712,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:intercultural",
-                "skill:listening",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "0199f08b-49c2-4032-a5dc-555a3dbc948c",
@@ -713,18 +723,6 @@
             "descriptionEn": "Learners can demonstrate writing/mediate in context of Youth culture in English-speaking countries.",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-english",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "E",
-                "area": "Sprache",
-                "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
             "tags": [
                 "cefr:B1",
                 "skill:intercultural",
@@ -733,7 +731,19 @@
                 "skill:writing",
                 "GK",
                 "LK"
-            ]
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-english",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "E",
+                "area": "Sprache",
+                "topicCode": "E"
+            }
         },
         {
             "id": "d6b7535e-a10b-4921-be15-2feaa6206441",
@@ -744,6 +754,16 @@
             "descriptionEn": "Learners can demonstrate intercultural reflection in context of Youth culture in English-speaking countries.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:intercultural",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -752,17 +772,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:intercultural",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "07f87ca2-bc6a-4492-ad17-7d6cfdd1edac",
@@ -773,6 +783,14 @@
             "descriptionEn": "Role models",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -781,15 +799,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "47b0acbe-3c44-4129-9408-2b827199a32d",
@@ -800,6 +810,15 @@
             "descriptionEn": "Learners can demonstrate text comprehension in context of Role models.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:reading",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -808,16 +827,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:reading",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "30420d0e-a2be-4005-ac45-5d1257e328ff",
@@ -828,6 +838,15 @@
             "descriptionEn": "Learners can demonstrate vocabulary/grammar consolidation in context of Role models.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:lexis-grammar",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -836,16 +855,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:lexis-grammar",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e9827517-a672-4c13-a485-4a0f33554701",
@@ -856,6 +866,16 @@
             "descriptionEn": "Learners can demonstrate listening/speaking in context of Role models.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:listening",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -864,17 +884,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:listening",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "9054cccf-58e3-4865-a0e3-3df52d02adc0",
@@ -885,6 +895,16 @@
             "descriptionEn": "Learners can demonstrate writing/mediate in context of Role models.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:mediation",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -893,17 +913,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:mediation",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e11c28ac-cdaf-4cd4-a9d1-6293f80416f8",
@@ -914,6 +924,15 @@
             "descriptionEn": "Learners can demonstrate intercultural reflection in context of Role models.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B1",
+                "skill:intercultural",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -922,16 +941,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B1",
-                "skill:intercultural",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "34dea026-5c99-4b4b-847e-051ef3da8035",
@@ -942,6 +952,17 @@
             "descriptionEn": "Qualifikationsphase 1",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "c0833654-e44b-4594-90db-239ac5575a23",
+                "b460e077-d42b-48df-a56a-d20edd560f86"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -950,18 +971,7 @@
                 "phase": "Q1",
                 "area": "Meta",
                 "topicCode": "Q1"
-            },
-            "requires": [],
-            "contains": [
-                "c0833654-e44b-4594-90db-239ac5575a23",
-                "b460e077-d42b-48df-a56a-d20edd560f86"
-            ],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "91ddee3b-2c66-4af1-bf1c-dd050997fe30",
@@ -972,6 +982,17 @@
             "descriptionEn": "Qualifikationsphase 2",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "11079440-96ce-4946-b6c2-2a9a4cd32414",
+                "1859cab6-9994-408f-b1b6-83e420d634fe"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -980,18 +1001,7 @@
                 "phase": "Q2",
                 "area": "Meta",
                 "topicCode": "Q2"
-            },
-            "requires": [],
-            "contains": [
-                "11079440-96ce-4946-b6c2-2a9a4cd32414",
-                "1859cab6-9994-408f-b1b6-83e420d634fe"
-            ],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "74719c2c-c410-4fcf-9b51-1947b970484e",
@@ -1002,6 +1012,17 @@
             "descriptionEn": "Qualifikationsphase 3",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "853240bb-5efc-4304-bcbf-b7a451566947",
+                "41a9ccb5-d2fb-4cd3-91f8-2b2a22d5fb91"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1010,18 +1031,7 @@
                 "phase": "Q3",
                 "area": "Meta",
                 "topicCode": "Q3"
-            },
-            "requires": [],
-            "contains": [
-                "853240bb-5efc-4304-bcbf-b7a451566947",
-                "41a9ccb5-d2fb-4cd3-91f8-2b2a22d5fb91"
-            ],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b4e445aa-71d7-41b1-9929-3db597b58737",
@@ -1032,6 +1042,17 @@
             "descriptionEn": "Qualifikationsphase 4",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "4837e662-9247-4e97-9f05-5cdef20ab169",
+                "cfcff1bf-e540-442b-9add-2cd6a2311ccf"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1040,18 +1061,7 @@
                 "phase": "Q4",
                 "area": "Meta",
                 "topicCode": "Q4"
-            },
-            "requires": [],
-            "contains": [
-                "4837e662-9247-4e97-9f05-5cdef20ab169",
-                "cfcff1bf-e540-442b-9add-2cd6a2311ccf"
-            ],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "c0833654-e44b-4594-90db-239ac5575a23",
@@ -1062,6 +1072,18 @@
             "descriptionEn": "The individual and society",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "fc043400-4489-45ab-91ae-84d7a44b0664",
+                "9e5460ed-3bf4-43e2-a5ff-d4a89b868e21",
+                "0303351b-50d6-4a01-9300-56ea451e4831"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1070,19 +1092,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF1"
-            },
-            "requires": [],
-            "contains": [
-                "fc043400-4489-45ab-91ae-84d7a44b0664",
-                "9e5460ed-3bf4-43e2-a5ff-d4a89b868e21",
-                "0303351b-50d6-4a01-9300-56ea451e4831"
-            ],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "588dd187-f757-4c94-92d7-5410a7747234",
@@ -1093,6 +1103,15 @@
             "descriptionEn": "Identity and diversity",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:intercultural",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1101,16 +1120,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:intercultural",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "9f2cd9a1-8a26-4443-be40-713149923127",
@@ -1121,6 +1131,14 @@
             "descriptionEn": "Ambitions and obstacles",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1129,15 +1147,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "39639b5a-12a8-47ad-889b-a5d02b726ab3",
@@ -1148,6 +1158,14 @@
             "descriptionEn": "Conformity vs individualism",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1156,15 +1174,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "fd068ac5-d0f3-45ed-be53-c5628a66e145",
@@ -1175,6 +1185,13 @@
             "descriptionEn": "Social diversity & gender",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -1183,14 +1200,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "LK"
-            ]
+            }
         },
         {
             "id": "81166ed9-85fb-4097-915a-51800f70a61a",
@@ -1201,6 +1211,14 @@
             "descriptionEn": "Case study (identity)",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "skill:intercultural",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -1209,15 +1227,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:intercultural",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b460e077-d42b-48df-a56a-d20edd560f86",
@@ -1228,6 +1238,19 @@
             "descriptionEn": "Politics/culture/society – USA",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:intercultural",
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "d74454f5-fe28-4742-84e1-cbd330bfa679",
+                "b7a38fef-babc-419a-ad2c-f7fff9205944",
+                "99e13c7b-5be7-4614-ac07-5b555083ba04"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1236,20 +1259,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF2"
-            },
-            "requires": [],
-            "contains": [
-                "d74454f5-fe28-4742-84e1-cbd330bfa679",
-                "b7a38fef-babc-419a-ad2c-f7fff9205944",
-                "99e13c7b-5be7-4614-ac07-5b555083ba04"
-            ],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:intercultural",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "44c0d195-8e38-4577-bbfc-d73238726445",
@@ -1260,6 +1270,14 @@
             "descriptionEn": "American ideals & realities",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1268,15 +1286,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a34c4637-b953-4fdd-ad1f-d4fc9f4a7899",
@@ -1287,6 +1297,14 @@
             "descriptionEn": "Freedom/equality/happiness",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1295,15 +1313,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "43afbf26-fb69-4d2c-9fbc-6e8e7eb96ec1",
@@ -1314,6 +1324,16 @@
             "descriptionEn": "Identity debates USA",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:intercultural",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1322,17 +1342,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:intercultural",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "c33dfa23-e1f7-457f-8214-1abe0aa5be62",
@@ -1343,6 +1353,13 @@
             "descriptionEn": "Current political/cultural issues",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -1351,14 +1368,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "LK"
-            ]
+            }
         },
         {
             "id": "75b0f80f-adbe-4f0e-a4d6-d2c2de7dc093",
@@ -1369,6 +1379,13 @@
             "descriptionEn": "Case study USA",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -1377,14 +1394,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "LK"
-            ]
+            }
         },
         {
             "id": "11079440-96ce-4946-b6c2-2a9a4cd32414",
@@ -1395,6 +1405,19 @@
             "descriptionEn": "Politics/culture/society – UK",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:intercultural",
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "93b17c0d-912d-4a70-99cd-56e84c407766",
+                "91c1fba1-c7a0-4c38-abfe-4e521e9d6d0e",
+                "ec7b7db8-e97b-4f65-9cf6-640a0e318a37"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1403,20 +1426,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF3"
-            },
-            "requires": [],
-            "contains": [
-                "93b17c0d-912d-4a70-99cd-56e84c407766",
-                "91c1fba1-c7a0-4c38-abfe-4e521e9d6d0e",
-                "ec7b7db8-e97b-4f65-9cf6-640a0e318a37"
-            ],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:intercultural",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "7f5e8893-7378-4040-9a57-b6b38d0ffdde",
@@ -1427,6 +1437,14 @@
             "descriptionEn": "UK historical context",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1435,15 +1453,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e1dc5f9a-fe2f-4c30-8625-511c6c378fbd",
@@ -1454,6 +1464,14 @@
             "descriptionEn": "Empire/postcolonial legacies",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1462,15 +1480,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "29dd8da5-6946-4b53-b054-1f62b541508f",
@@ -1481,6 +1491,16 @@
             "descriptionEn": "Identity debates UK",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:intercultural",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1489,17 +1509,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:intercultural",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "dcb9890f-15f7-4128-84ac-296ab0f0797f",
@@ -1510,6 +1520,13 @@
             "descriptionEn": "Current issues UK",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -1518,14 +1535,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "LK"
-            ]
+            }
         },
         {
             "id": "9a6c1794-d144-40aa-afb0-a7970d9fd8bd",
@@ -1536,6 +1546,13 @@
             "descriptionEn": "Case study UK",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -1544,14 +1561,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "LK"
-            ]
+            }
         },
         {
             "id": "1859cab6-9994-408f-b1b6-83e420d634fe",
@@ -1562,6 +1572,19 @@
             "descriptionEn": "Politics/culture/society – weiterer anglophoner Raum",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:intercultural",
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "e4c47d3b-8d01-4c4f-9470-972e573afd87",
+                "6252070d-4d01-4b1e-ab21-0ce3298dd4cd",
+                "fec872bd-a4e3-4a40-9305-b45c0012356b"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1570,20 +1593,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF4"
-            },
-            "requires": [],
-            "contains": [
-                "e4c47d3b-8d01-4c4f-9470-972e573afd87",
-                "6252070d-4d01-4b1e-ab21-0ce3298dd4cd",
-                "fec872bd-a4e3-4a40-9305-b45c0012356b"
-            ],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:intercultural",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "407b8707-525d-4490-afaf-9b3eb98ffe1f",
@@ -1594,6 +1604,14 @@
             "descriptionEn": "Ref-country historical path",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1602,15 +1620,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "192c4f0c-ced2-4859-b7fa-a18e251872f9",
@@ -1621,6 +1631,14 @@
             "descriptionEn": "Legacy of British rule",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1629,15 +1647,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "bd26b778-52f4-4ed0-83b5-37b4c640f5a1",
@@ -1648,6 +1658,16 @@
             "descriptionEn": "Identity debates ref-country",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:intercultural",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1656,17 +1676,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:intercultural",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "767ec7a8-5116-4ce9-9455-2391211f5986",
@@ -1677,6 +1687,13 @@
             "descriptionEn": "Current issues ref-country",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -1685,14 +1702,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "LK"
-            ]
+            }
         },
         {
             "id": "708c9e2d-a838-4aba-a649-f3531b6dab63",
@@ -1703,6 +1713,13 @@
             "descriptionEn": "Case study ref-country",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -1711,14 +1728,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "LK"
-            ]
+            }
         },
         {
             "id": "853240bb-5efc-4304-bcbf-b7a451566947",
@@ -1729,6 +1739,18 @@
             "descriptionEn": "The media",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "85469a31-adf6-4723-97bd-0885638020de",
+                "d2d0995d-6154-491a-ab3f-eac2f6af3655",
+                "fce9f507-291b-432b-ba84-04dfe3f88435"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1737,19 +1759,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF5"
-            },
-            "requires": [],
-            "contains": [
-                "85469a31-adf6-4723-97bd-0885638020de",
-                "d2d0995d-6154-491a-ab3f-eac2f6af3655",
-                "fce9f507-291b-432b-ba84-04dfe3f88435"
-            ],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "63e99f6d-aa73-43f9-884f-189dd394a0eb",
@@ -1760,6 +1770,14 @@
             "descriptionEn": "Media landscape change",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1768,15 +1786,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "68680536-ae37-479e-b0af-11653debadb5",
@@ -1787,6 +1797,14 @@
             "descriptionEn": "Traditional vs new media",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1795,15 +1813,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5bc4e261-11b9-4423-a2d2-686665d80d97",
@@ -1814,6 +1824,14 @@
             "descriptionEn": "Impact on individual/society",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1822,15 +1840,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "fe15a106-d913-499c-b91b-20198bb0796d",
@@ -1841,6 +1851,13 @@
             "descriptionEn": "Manipulation/ethics",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -1849,14 +1866,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "LK"
-            ]
+            }
         },
         {
             "id": "60e7443b-0cda-405f-8360-c5e736b2adca",
@@ -1867,6 +1877,13 @@
             "descriptionEn": "Case study media",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -1875,14 +1892,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "LK"
-            ]
+            }
         },
         {
             "id": "41a9ccb5-d2fb-4cd3-91f8-2b2a22d5fb91",
@@ -1893,6 +1903,18 @@
             "descriptionEn": "The world of work",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "628428c1-78c1-4051-8d96-074df3977366",
+                "ae2aee0a-6592-4171-bd23-7e1fc17d25f0",
+                "d8c7ad38-11da-4162-9c1f-ce3cbdbac76b"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1901,19 +1923,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF6"
-            },
-            "requires": [],
-            "contains": [
-                "628428c1-78c1-4051-8d96-074df3977366",
-                "ae2aee0a-6592-4171-bd23-7e1fc17d25f0",
-                "d8c7ad38-11da-4162-9c1f-ce3cbdbac76b"
-            ],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "117691bc-9cba-4272-981f-0054be5b34a1",
@@ -1924,6 +1934,14 @@
             "descriptionEn": "World of work changes",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1932,15 +1950,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF6"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b071060e-a518-40a6-b491-9a5b4e589286",
@@ -1951,6 +1961,14 @@
             "descriptionEn": "Automation/digitalization",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1959,15 +1977,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF6"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "380799a5-6683-4045-b9ac-11b33b35029e",
@@ -1978,6 +1988,14 @@
             "descriptionEn": "Global job market/lingua franca",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -1986,15 +2004,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF6"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "869295d5-f612-4e8e-861d-0d0e163ff5be",
@@ -2005,6 +2015,13 @@
             "descriptionEn": "Career paths/competition",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -2013,14 +2030,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF6"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "LK"
-            ]
+            }
         },
         {
             "id": "55d5f1fc-b1b4-4cdf-ae03-f2fc25e96693",
@@ -2031,6 +2041,13 @@
             "descriptionEn": "Case study work",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -2039,14 +2056,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF6"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "LK"
-            ]
+            }
         },
         {
             "id": "4837e662-9247-4e97-9f05-5cdef20ab169",
@@ -2057,6 +2067,18 @@
             "descriptionEn": "Global chances and challenges",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "f268c832-b423-4d77-8042-0458ff73c828",
+                "d23fd090-c239-4506-8a94-b8ef385febc0",
+                "0fe758fb-1db1-4a43-bd98-80e9796434d5"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2065,19 +2087,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF7"
-            },
-            "requires": [],
-            "contains": [
-                "f268c832-b423-4d77-8042-0458ff73c828",
-                "d23fd090-c239-4506-8a94-b8ef385febc0",
-                "0fe758fb-1db1-4a43-bd98-80e9796434d5"
-            ],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b4fff618-997d-488b-91a1-56920eda4c9d",
@@ -2088,6 +2098,14 @@
             "descriptionEn": "Sustainability social/environment",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2096,15 +2114,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF7"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ccdd0e54-da89-4a3d-b820-9c091bcc532e",
@@ -2115,6 +2125,14 @@
             "descriptionEn": "Economic sustainability",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2123,15 +2141,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF7"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d0322ede-27f1-4e17-b780-ea1a97f0fdaa",
@@ -2142,6 +2152,14 @@
             "descriptionEn": "Conflict & cooperation",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2150,15 +2168,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF7"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "f3b52059-7d96-45a7-b8a8-e599cb38b441",
@@ -2169,6 +2179,13 @@
             "descriptionEn": "Migration/peacekeeping",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -2177,14 +2194,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF7"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "LK"
-            ]
+            }
         },
         {
             "id": "abe139ac-47cf-4b59-bb25-76565864921e",
@@ -2195,6 +2205,13 @@
             "descriptionEn": "Case study global",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -2203,14 +2220,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF7"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "LK"
-            ]
+            }
         },
         {
             "id": "cfcff1bf-e540-442b-9add-2cd6a2311ccf",
@@ -2221,6 +2231,18 @@
             "descriptionEn": "Science and technology",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "b6ce9078-1fae-4e4b-b893-6917801614bf",
+                "fc22debd-e08a-40f9-8a54-780d85729c77",
+                "494516ac-1d03-450f-ba6a-8aa55a1385b6"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2229,19 +2251,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF8"
-            },
-            "requires": [],
-            "contains": [
-                "b6ce9078-1fae-4e4b-b893-6917801614bf",
-                "fc22debd-e08a-40f9-8a54-780d85729c77",
-                "494516ac-1d03-450f-ba6a-8aa55a1385b6"
-            ],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "59d5878b-a089-43bb-bffb-baf986bb6aab",
@@ -2252,6 +2262,14 @@
             "descriptionEn": "Science/tech progress",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2260,15 +2278,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF8"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "10856158-0d90-45a7-bf30-531ecb0bce24",
@@ -2279,6 +2289,14 @@
             "descriptionEn": "Impact on society",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2287,15 +2305,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF8"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "52da1709-8bf4-446e-a29f-95dd45d464cb",
@@ -2306,6 +2316,14 @@
             "descriptionEn": "Ethical implications",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2314,15 +2332,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF8"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "1689a52b-001b-47a8-ad3b-bd7b0c7b6cd2",
@@ -2333,6 +2343,13 @@
             "descriptionEn": "Future scenarios",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -2341,14 +2358,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF8"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "LK"
-            ]
+            }
         },
         {
             "id": "071367a9-1ae2-43ff-bdeb-e0281be90775",
@@ -2359,6 +2369,13 @@
             "descriptionEn": "Case study science",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -2367,14 +2384,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF8"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "LK"
-            ]
+            }
         },
         {
             "id": "fc043400-4489-45ab-91ae-84d7a44b0664",
@@ -2385,6 +2395,16 @@
             "descriptionEn": "Write analytical/argumentative texts on identity/diversity",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:intercultural",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2393,17 +2413,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:intercultural",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "9e5460ed-3bf4-43e2-a5ff-d4a89b868e21",
@@ -2414,6 +2424,15 @@
             "descriptionEn": "Debate social diversity topics coherently",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2422,16 +2441,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "0303351b-50d6-4a01-9300-56ea451e4831",
@@ -2442,6 +2452,15 @@
             "descriptionEn": "Mediate identity-related content between cultures",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "skill:intercultural",
+                "skill:mediation",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -2450,16 +2469,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:intercultural",
-                "skill:mediation",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d74454f5-fe28-4742-84e1-cbd330bfa679",
@@ -2470,6 +2480,15 @@
             "descriptionEn": "Write analytical texts on US ideals vs realities",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2478,16 +2497,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b7a38fef-babc-419a-ad2c-f7fff9205944",
@@ -2498,6 +2508,15 @@
             "descriptionEn": "Present on current US issues with register awareness",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2506,16 +2525,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "99e13c7b-5be7-4614-ac07-5b555083ba04",
@@ -2526,6 +2536,14 @@
             "descriptionEn": "Mediate US sociopolitical texts into German/English",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "skill:mediation",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -2534,15 +2552,7 @@
                 "phase": "Q1",
                 "area": "Kontext",
                 "topicCode": "TF2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:mediation",
-                "LK"
-            ]
+            }
         },
         {
             "id": "93b17c0d-912d-4a70-99cd-56e84c407766",
@@ -2553,6 +2563,16 @@
             "descriptionEn": "Write essays on UK identity/history topics",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:intercultural",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2561,17 +2581,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:intercultural",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "91c1fba1-c7a0-4c38-abfe-4e521e9d6d0e",
@@ -2582,6 +2592,14 @@
             "descriptionEn": "Analyse spoken UK media for arguments/register",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2590,15 +2608,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ec7b7db8-e97b-4f65-9cf6-640a0e318a37",
@@ -2609,6 +2619,14 @@
             "descriptionEn": "Mediate UK cultural content across languages",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "skill:mediation",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -2617,15 +2635,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:mediation",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e4c47d3b-8d01-4c4f-9470-972e573afd87",
@@ -2636,6 +2646,15 @@
             "descriptionEn": "Compose reports on ref-country tradition/change",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2644,16 +2663,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "6252070d-4d01-4b1e-ab21-0ce3298dd4cd",
@@ -2664,6 +2674,15 @@
             "descriptionEn": "Present comparative view on ref-country issues",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2672,16 +2691,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "fec872bd-a4e3-4a40-9305-b45c0012356b",
@@ -2692,6 +2702,14 @@
             "descriptionEn": "Mediate ref-country texts considering audience/register",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "skill:mediation",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -2700,15 +2718,7 @@
                 "phase": "Q2",
                 "area": "Kontext",
                 "topicCode": "TF4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:mediation",
-                "LK"
-            ]
+            }
         },
         {
             "id": "85469a31-adf6-4723-97bd-0885638020de",
@@ -2719,6 +2729,14 @@
             "descriptionEn": "Evaluate bias/manipulation across media",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2727,15 +2745,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d2d0995d-6154-491a-ab3f-eac2f6af3655",
@@ -2746,6 +2756,15 @@
             "descriptionEn": "Write analytical reviews of media artifacts",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2754,16 +2773,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "fce9f507-291b-432b-ba84-04dfe3f88435",
@@ -2774,6 +2784,13 @@
             "descriptionEn": "Create multimodal product with matching register",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -2782,14 +2799,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "LK"
-            ]
+            }
         },
         {
             "id": "628428c1-78c1-4051-8d96-074df3977366",
@@ -2800,6 +2810,15 @@
             "descriptionEn": "Produce CV/cover letter with appropriate register",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2808,16 +2827,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF6"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ae2aee0a-6592-4171-bd23-7e1fc17d25f0",
@@ -2828,6 +2838,14 @@
             "descriptionEn": "Conduct/appraise interviews/meetings",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2836,15 +2854,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF6"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d8c7ad38-11da-4162-9c1f-ce3cbdbac76b",
@@ -2855,6 +2865,14 @@
             "descriptionEn": "Mediate job-related info (ads/contracts) accurately",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "skill:mediation",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -2863,15 +2881,7 @@
                 "phase": "Q3",
                 "area": "Kontext",
                 "topicCode": "TF6"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:mediation",
-                "LK"
-            ]
+            }
         },
         {
             "id": "f268c832-b423-4d77-8042-0458ff73c828",
@@ -2882,6 +2892,15 @@
             "descriptionEn": "Write position papers on global challenges",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2890,16 +2909,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF7"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d23fd090-c239-4506-8a94-b8ef385febc0",
@@ -2910,6 +2920,15 @@
             "descriptionEn": "Participate in panels on sustainability/conflict",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:speaking",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2918,16 +2937,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF7"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:speaking",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "0fe758fb-1db1-4a43-bd98-80e9796434d5",
@@ -2938,6 +2948,14 @@
             "descriptionEn": "Mediate global-issue texts for different audiences",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "skill:mediation",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -2946,15 +2964,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF7"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:mediation",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b6ce9078-1fae-4e4b-b893-6917801614bf",
@@ -2965,6 +2975,15 @@
             "descriptionEn": "Write reports on science/tech impact",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "skill:writing",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -2973,16 +2992,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF8"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "skill:writing",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "fc22debd-e08a-40f9-8a54-780d85729c77",
@@ -2993,6 +3003,14 @@
             "descriptionEn": "Explain scientific developments to lay audience",
             "core": true,
             "weight": 1,
+            "tags": [
+                "cefr:B2",
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB2",
@@ -3001,15 +3019,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF8"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:B2",
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "494516ac-1d03-450f-ba6a-8aa55a1385b6",
@@ -3020,6 +3030,14 @@
             "descriptionEn": "Mediate science/tech info accurately",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "cefr:C1",
+                "skill:mediation",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-english",
                 "demandLevel": "AB3",
@@ -3028,25 +3046,7 @@
                 "phase": "Q4",
                 "area": "Kontext",
                 "topicCode": "TF8"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "cefr:C1",
-                "skill:mediation",
-                "LK"
-            ]
-        }
-    ],
-    "filters": [
-        {
-            "id": "GK",
-            "label": "Grundkurs"
-        },
-        {
-            "id": "LK",
-            "label": "Leistungskurs"
+            }
         }
     ]
 }
