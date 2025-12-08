@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenschutzerklärung - SkillPilot</title>
+    <script>
+        (function () {
+            const stored = localStorage.getItem('skillpilot_theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = stored === 'dark' || stored === 'light' ? stored : (prefersDark ? 'dark' : 'light');
+            const root = document.documentElement;
+            root.classList.remove('light', 'dark');
+            root.classList.add(theme);
+            const meta = document.querySelector('meta[name="theme-color"]') || (() => {
+                const m = document.createElement('meta');
+                m.name = 'theme-color';
+                document.head.appendChild(m);
+                return m;
+            })();
+            meta.setAttribute('content', theme === 'dark' ? '#0b1221' : '#e2e8f0');
+        })();
+    </script>
+    <style>
+        :root {
+            color-scheme: light;
+            --bg-gradient: radial-gradient(circle at top, #f8fafc, #e2e8f0);
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent: #0ea5e9;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-border: #e2e8f0;
+            --shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+        }
+
+        :root.dark {
+            color-scheme: dark;
+            --bg-gradient: radial-gradient(circle at top, #1e293b, #020617);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --card-bg: rgba(15, 23, 42, 0.7);
+            --card-border: rgba(30, 41, 59, 0.5);
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        h2 {
+            margin-top: 2em;
+            color: var(--accent);
+            font-size: 1.25rem;
+        }
+
+        .container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(8px);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="/" class="back-link">&larr; Zurück zu SkillPilot</a>
+
+        <h1>Datenschutzerklärung</h1>
+        <p style="color: var(--text-secondary); font-size: 0.9em;">Stand: 27. November 2025</p>
+
+        <p>Wir freuen uns über Ihr Interesse an SkillPilot. Der Schutz Ihrer Privatsphäre ist für uns sehr wichtig.
+            Nachstehend informieren wir Sie ausführlich über den Umgang mit Ihren Daten.</p>
+
+        <h2>1. Pseudonyme Nutzung</h2>
+        <p>SkillPilot ist so konzipiert, dass es vollständig pseudonym genutzt werden kann. Wir verlangen keine
+            Registrierung mit Klarnamen oder E-Mail-Adresse. Ihr Lernfortschritt wird ausschließlich unter einer
+            zufällig generierten <strong>SkillPilot-ID</strong> (UUID) gespeichert.</p>
+        <p>Diese ID ist der einzige Schlüssel zu Ihren Daten. Wenn Sie diese ID verlieren, können wir Ihren Lernstand
+            nicht wiederherstellen, da wir keine Verknüpfung zu Ihrer Person haben.</p>
+
+        <h2>2. Erhebung und Speicherung von Daten</h2>
+        <p>Wenn Sie SkillPilot nutzen, speichern wir unter Ihrer SkillPilot-ID folgende Informationen:</p>
+        <ul>
+            <li>Ihren gewählten Lernpfad (Curriculum/Landschaft).</li>
+            <li>Ihren aktuellen Lernstand (Mastery) für einzelne Kompetenzen.</li>
+            <li>Ihre geplanten Lernziele (Frontier).</li>
+        </ul>
+        <p>Diese Daten dienen ausschließlich dazu, Ihnen passende Lernvorschläge zu machen und Ihren Fortschritt zu
+            visualisieren.</p>
+
+        <h2>3. Nutzung durch KI-Assistenten (GPTs)</h2>
+        <p>Wenn Sie SkillPilot über einen KI-Assistenten (z.B. ChatGPT) nutzen, übermittelt der Assistent Ihre
+            SkillPilot-ID an unsere Schnittstelle (API), um Lernziele abzurufen oder Fortschritte zu speichern. Wir
+            erhalten dabei keine Chat-Protokolle oder persönlichen Nachrichten aus Ihrer Konversation mit dem
+            KI-Assistenten.</p>
+
+        <h2>4. Weitergabe an Dritte</h2>
+        <p>Wir verkaufen Ihre Daten nicht und geben sie nicht unbefugt an Dritte weiter. Das Hosting unserer Dienste
+            erfolgt auf sicheren Servern.</p>
+
+        <h2>5. Ihre Rechte</h2>
+        <p>Da wir Ihre Daten nur pseudonym speichern, können wir Auskunfts- oder Löschanfragen nur bearbeiten, wenn Sie
+            uns Ihre SkillPilot-ID mitteilen. Sie können Ihre Daten jederzeit löschen lassen, indem Sie uns Ihre ID
+            übermitteln oder (sofern implementiert) die Löschfunktion in der App nutzen.</p>
+
+        <h2>6. Kontakt</h2>
+        <p>Bei Fragen zum Datenschutz erreichen Sie uns unter:<br>
+            <a href="mailto:support@skillpilot.com">support@skillpilot.com</a><br>
+            <a href="/imprint">Impressum</a>
+        </p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,787 @@
+{
+    "title": "Analysis 2 für Physik (TUM, Modul CIT513018)",
+    "titleEn": "Analysis 2 für Physik (TUM, Modul CIT513018)",
+    "description": "Es werden Grundbegriffe und Methoden der Analysis im Mehrdimensionalen vermittelt (Stetigkeit, Differenzierbarkeit, Taylor/implizite Funktionen, Kurvenintegrale/Vektoranalysis) sowie Verfahren der gewöhnlichen Differenzialgleichungen erlernt. Die Inhalte werden auf physikalische Modelle angewendet. Gesamtaufwand 240 h (davon 90 h Präsenz), 8 ECTS, angeboten im Sommersemester. Version 2025s verantwortet von Warzel, Simone.",
+    "descriptionEn": "Es werden Grundbegriffe und Methoden der Analysis im Mehrdimensionalen vermittelt (Stetigkeit, Differenzierbarkeit, Taylor/implizite Funktionen, Kurvenintegrale/Vektoranalysis) sowie Verfahren der gewöhnlichen Differenzialgleichungen erlernt. Die Inhalte werden auf physikalische Modelle angewendet. Gesamtaufwand 240 h (davon 90 h Präsenz), 8 ECTS, angeboten im Sommersemester. Version 2025s verantwortet von Warzel, Simone.",
+    "landscapeId": "1b37603e-4746-4308-9667-f9f206ccd2a4",
+    "locale": "de-DE",
+    "subject": "Mathematik",
+    "frameworkId": "tum-cit513018",
+    "filters": [
+        {
+            "id": "BSc",
+            "label": "Bachelor Physik"
+        }
+    ],
+    "goals": [
+        {
+            "id": "582bb013-6e2a-4fb1-8c60-f6d2aca4612b",
+            "shortKey": "tum_cit513018_module",
+            "title": "Analysis 2 für Physik – Gesamtmodul",
+            "titleEn": "Analysis 2 für Physik – Gesamtmodul",
+            "description": "Studierende können zentrale Verfahren der mehrdimensionalen Analysis (Taylor, implizite/Umkehrfunktion, Extremwerte, Kurvenintegrale) und der Theorie gewöhnlicher Differenzialgleichungen sicher anwenden, um physikalische Modelle zu formulieren und zu analysieren.",
+            "descriptionEn": "Studierende können zentrale Verfahren der mehrdimensionalen Analysis (Taylor, implizite/Umkehrfunktion, Extremwerte, Kurvenintegrale) und der Theorie gewöhnlicher Differenzialgleichungen sicher anwenden, um physikalische Modelle zu formulieren und zu analysieren.",
+            "core": true,
+            "weight": 4,
+            "phase": "Modul",
+            "area": "Gesamtkompetenz",
+            "tags": [
+                "ects:8",
+                "level:bachelor",
+                "duration:1_semester",
+                "language:de",
+                "workload:240h",
+                "presence:90h",
+                "module:CIT513018",
+                "semester:SS",
+                "responsible:warzel_simone"
+            ],
+            "contains": [
+                "a309bdf5-043f-4418-a37e-6f420aefc0cf",
+                "f3112a49-690b-4aaf-ab06-9ecc072ac722",
+                "160cddae-88e8-41b3-844c-b2959b75755b",
+                "b42e40c5-4634-4944-a4e2-8e3889b2736f"
+            ],
+            "requires": [
+                "2192834b-c755-45a1-81c1-2719d0a78a93",
+                "155a95ec-318b-4a1a-b664-dc516ed99e37"
+            ],
+            "examples": [
+                "Klausuraufgaben Analysis 2",
+                "Übungsserien Vorlesung"
+            ],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Gesamtkompetenz",
+                "topicCode": "tum_cit513018_module"
+            }
+        },
+        {
+            "id": "a309bdf5-043f-4418-a37e-6f420aefc0cf",
+            "shortKey": "tum_cit513018_lo1",
+            "title": "Mehrdimensionale Stetigkeit und Differenzierbarkeit",
+            "titleEn": "Mehrdimensionale Stetigkeit und Differenzierbarkeit",
+            "description": "Die lernende Person kann Stetigkeit, Differenzierbarkeit und partielle Ableitungen für Funktionen mehrerer Veränderlicher analysieren, inklusive Jacobimatrizen interpretieren.",
+            "descriptionEn": "Die lernende Person kann Stetigkeit, Differenzierbarkeit und partielle Ableitungen für Funktionen mehrerer Veränderlicher analysieren, inklusive Jacobimatrizen interpretieren.",
+            "core": true,
+            "weight": 1,
+            "phase": "Modul",
+            "area": "Analysis",
+            "tags": [
+                "ects:2",
+                "topic:multivariate",
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [],
+            "contains": [
+                "4a56487f-9da0-4b46-93a3-6e1ea5db7271",
+                "86889c75-75ff-4acf-904c-f0249934a163",
+                "2d9fa9ba-4055-42ac-9130-95e4024b37f6",
+                "5067ddf8-8c90-45e4-afce-5623917cbfc5",
+                "b347ce54-cddf-474a-a677-170e1e406013"
+            ],
+            "examples": [
+                "Übung: Stetigkeitsnachweis in R^3",
+                "Jacobi-Determinante berechnen"
+            ],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Analysis",
+                "topicCode": "tum_cit513018_lo1"
+            }
+        },
+        {
+            "id": "4a56487f-9da0-4b46-93a3-6e1ea5db7271",
+            "shortKey": "tum_cit513018_lo1_1",
+            "title": "Topologische Grundbegriffe im R^n",
+            "titleEn": "Topologische Grundbegriffe im R^n",
+            "description": "Die lernende Person kann topologische Grundbegriffe wie offene und abgeschlossene Mengen, Umgebungen und Konvergenz von Folgen im R^n definieren und anwenden.",
+            "descriptionEn": "Die lernende Person kann topologische Grundbegriffe wie offene und abgeschlossene Mengen, Umgebungen und Konvergenz von Folgen im R^n definieren und anwenden.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Analysis",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Analysis",
+                "topicCode": "tum_cit513018_lo1_1"
+            }
+        },
+        {
+            "id": "86889c75-75ff-4acf-904c-f0249934a163",
+            "shortKey": "tum_cit513018_lo1_2",
+            "title": "Stetigkeit von Funktionen im R^n",
+            "titleEn": "Stetigkeit von Funktionen im R^n",
+            "description": "Die lernende Person kann die Stetigkeit von Funktionen f: R^n -> R^m mit dem Epsilon-Delta-Kriterium und dem Folgenkriterium überprüfen.",
+            "descriptionEn": "Die lernende Person kann die Stetigkeit von Funktionen f: R^n -> R^m mit dem Epsilon-Delta-Kriterium und dem Folgenkriterium überprüfen.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Analysis",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "4a56487f-9da0-4b46-93a3-6e1ea5db7271"
+            ],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Analysis",
+                "topicCode": "tum_cit513018_lo1_2"
+            }
+        },
+        {
+            "id": "2d9fa9ba-4055-42ac-9130-95e4024b37f6",
+            "shortKey": "tum_cit513018_lo1_3",
+            "title": "Partielle Ableitungen und Gradient",
+            "titleEn": "Partielle Ableitungen und Gradient",
+            "description": "Die lernende Person kann partielle Ableitungen von Funktionen mehrerer Veränderlicher berechnen und den Gradienten als Vektor der stärksten Zunahme interpretieren.",
+            "descriptionEn": "Die lernende Person kann partielle Ableitungen von Funktionen mehrerer Veränderlicher berechnen und den Gradienten als Vektor der stärksten Zunahme interpretieren.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Analysis",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "86889c75-75ff-4acf-904c-f0249934a163"
+            ],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Analysis",
+                "topicCode": "tum_cit513018_lo1_3"
+            }
+        },
+        {
+            "id": "5067ddf8-8c90-45e4-afce-5623917cbfc5",
+            "shortKey": "tum_cit513018_lo1_4",
+            "title": "Totale Differenzierbarkeit und Jacobi-Matrix",
+            "titleEn": "Totale Differenzierbarkeit und Jacobi-Matrix",
+            "description": "Die lernende Person kann die totale Differenzierbarkeit einer Funktion nachweisen und die Jacobi-Matrix als Linearisierung der Funktion aufstellen und interpretieren.",
+            "descriptionEn": "Die lernende Person kann die totale Differenzierbarkeit einer Funktion nachweisen und die Jacobi-Matrix als Linearisierung der Funktion aufstellen und interpretieren.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Analysis",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "2d9fa9ba-4055-42ac-9130-95e4024b37f6"
+            ],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Analysis",
+                "topicCode": "tum_cit513018_lo1_4"
+            }
+        },
+        {
+            "id": "b347ce54-cddf-474a-a677-170e1e406013",
+            "shortKey": "tum_cit513018_lo1_5",
+            "title": "Kettenregel für mehrdimensionale Funktionen",
+            "titleEn": "Kettenregel für mehrdimensionale Funktionen",
+            "description": "Die lernende Person kann die Kettenregel zur Ableitung von verketteten mehrdimensionalen Funktionen anwenden.",
+            "descriptionEn": "Die lernende Person kann die Kettenregel zur Ableitung von verketteten mehrdimensionalen Funktionen anwenden.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Analysis",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "5067ddf8-8c90-45e4-afce-5623917cbfc5"
+            ],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Analysis",
+                "topicCode": "tum_cit513018_lo1_5"
+            }
+        },
+        {
+            "id": "f3112a49-690b-4aaf-ab06-9ecc072ac722",
+            "shortKey": "tum_cit513018_lo2",
+            "title": "Taylorentwicklung, implizite Funktionen und Extremwerte",
+            "titleEn": "Taylorentwicklung, implizite Funktionen und Extremwerte",
+            "description": "Die lernende Person kann Taylorreihen für mehrdimensionale Funktionen entwickeln, das implizite Funktionentheorem anwenden und Extremwertprobleme (mit Nebenbedingungen) lösen.",
+            "descriptionEn": "Die lernende Person kann Taylorreihen für mehrdimensionale Funktionen entwickeln, das implizite Funktionentheorem anwenden und Extremwertprobleme (mit Nebenbedingungen) lösen.",
+            "core": true,
+            "weight": 1,
+            "phase": "Modul",
+            "area": "Analysis",
+            "tags": [
+                "ects:2",
+                "topic:taylor",
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "a309bdf5-043f-4418-a37e-6f420aefc0cf"
+            ],
+            "contains": [
+                "d44062eb-8a3a-4495-a6a2-cb714ea18d6b",
+                "b122da49-a85d-43ee-af7a-f653406e271f",
+                "39167ebd-2706-48a1-8b29-197bd67eccf6",
+                "ce44c30c-37d3-4a11-9061-9af5999d5cb5",
+                "fe145ee3-273e-4975-8cbf-64e07a26195e",
+                "a4bca260-ae84-45c1-b938-f2a12938f41a"
+            ],
+            "examples": [
+                "Lagrange-Multiplikator Aufgabe",
+                "Taylorapproximation 2. Ordnung bestimmen"
+            ],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Analysis",
+                "topicCode": "tum_cit513018_lo2"
+            }
+        },
+        {
+            "id": "d44062eb-8a3a-4495-a6a2-cb714ea18d6b",
+            "shortKey": "tum_cit513018_lo2_1",
+            "title": "Höhere partielle Ableitungen und Satz von Schwarz",
+            "titleEn": "Höhere partielle Ableitungen und Satz von Schwarz",
+            "description": "Die lernende Person kann höhere partielle Ableitungen berechnen und die Vertauschbarkeit der Ableitungsreihenfolge mit dem Satz von Schwarz begründen.",
+            "descriptionEn": "Die lernende Person kann höhere partielle Ableitungen berechnen und die Vertauschbarkeit der Ableitungsreihenfolge mit dem Satz von Schwarz begründen.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Analysis",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "2d9fa9ba-4055-42ac-9130-95e4024b37f6"
+            ],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Analysis",
+                "topicCode": "tum_cit513018_lo2_1"
+            }
+        },
+        {
+            "id": "b122da49-a85d-43ee-af7a-f653406e271f",
+            "shortKey": "tum_cit513018_lo2_2",
+            "title": "Taylor-Formel im R^n",
+            "titleEn": "Taylor-Formel im R^n",
+            "description": "Die lernende Person kann die Taylor-Formel zur Approximation von Funktionen mehrerer Veränderlicher verwenden.",
+            "descriptionEn": "Die lernende Person kann die Taylor-Formel zur Approximation von Funktionen mehrerer Veränderlicher verwenden.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Analysis",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "d44062eb-8a3a-4495-a6a2-cb714ea18d6b"
+            ],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Analysis",
+                "topicCode": "tum_cit513018_lo2_2"
+            }
+        },
+        {
+            "id": "39167ebd-2706-48a1-8b29-197bd67eccf6",
+            "shortKey": "tum_cit513018_lo2_3",
+            "title": "Satz über implizite Funktionen",
+            "titleEn": "Satz über implizite Funktionen",
+            "description": "Die lernende Person kann den Satz über implizite Funktionen anwenden, um die lokale Auflösbarkeit von Gleichungssystemen zu überprüfen.",
+            "descriptionEn": "Die lernende Person kann den Satz über implizite Funktionen anwenden, um die lokale Auflösbarkeit von Gleichungssystemen zu überprüfen.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Analysis",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "5067ddf8-8c90-45e4-afce-5623917cbfc5"
+            ],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Analysis",
+                "topicCode": "tum_cit513018_lo2_3"
+            }
+        },
+        {
+            "id": "ce44c30c-37d3-4a11-9061-9af5999d5cb5",
+            "shortKey": "tum_cit513018_lo2_4",
+            "title": "Satz über die Umkehrfunktion",
+            "titleEn": "Satz über die Umkehrfunktion",
+            "description": "Die lernende Person kann den Satz über die Umkehrfunktion nutzen, um die lokale Invertierbarkeit einer Funktion zu zeigen.",
+            "descriptionEn": "Die lernende Person kann den Satz über die Umkehrfunktion nutzen, um die lokale Invertierbarkeit einer Funktion zu zeigen.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Analysis",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "39167ebd-2706-48a1-8b29-197bd67eccf6"
+            ],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Analysis",
+                "topicCode": "tum_cit513018_lo2_4"
+            }
+        },
+        {
+            "id": "fe145ee3-273e-4975-8cbf-64e07a26195e",
+            "shortKey": "tum_cit513018_lo2_5",
+            "title": "Lokale Extremwerte",
+            "titleEn": "Lokale Extremwerte",
+            "description": "Die lernende Person kann lokale Extremwerte von Funktionen mehrerer Veränderlicher mit notwendigen (Gradient) und hinreichenden (Hesse-Matrix) Kriterien bestimmen.",
+            "descriptionEn": "Die lernende Person kann lokale Extremwerte von Funktionen mehrerer Veränderlicher mit notwendigen (Gradient) und hinreichenden (Hesse-Matrix) Kriterien bestimmen.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Analysis",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "d44062eb-8a3a-4495-a6a2-cb714ea18d6b"
+            ],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Analysis",
+                "topicCode": "tum_cit513018_lo2_5"
+            }
+        },
+        {
+            "id": "a4bca260-ae84-45c1-b938-f2a12938f41a",
+            "shortKey": "tum_cit513018_lo2_6",
+            "title": "Extremwerte mit Nebenbedingungen",
+            "titleEn": "Extremwerte mit Nebenbedingungen",
+            "description": "Die lernende Person kann Extremwertprobleme unter Nebenbedingungen mit der Methode der Lagrange-Multiplikatoren lösen.",
+            "descriptionEn": "Die lernende Person kann Extremwertprobleme unter Nebenbedingungen mit der Methode der Lagrange-Multiplikatoren lösen.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Analysis",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "fe145ee3-273e-4975-8cbf-64e07a26195e"
+            ],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Analysis",
+                "topicCode": "tum_cit513018_lo2_6"
+            }
+        },
+        {
+            "id": "160cddae-88e8-41b3-844c-b2959b75755b",
+            "shortKey": "tum_cit513018_lo3",
+            "title": "Kurvenintegrale und Vektoranalysis",
+            "titleEn": "Kurvenintegrale und Vektoranalysis",
+            "description": "Die lernende Person kann Kurvenintegrale berechnen, grundlegende Sätze der Vektoranalysis (z. B. Green) anwenden und physikalische Feldgrößen interpretieren.",
+            "descriptionEn": "Die lernende Person kann Kurvenintegrale berechnen, grundlegende Sätze der Vektoranalysis (z. B. Green) anwenden und physikalische Feldgrößen interpretieren.",
+            "core": true,
+            "weight": 1,
+            "phase": "Modul",
+            "area": "Vektoranalysis",
+            "tags": [
+                "ects:2",
+                "topic:vector-calculus",
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "a309bdf5-043f-4418-a37e-6f420aefc0cf"
+            ],
+            "contains": [
+                "1e31267a-6aa2-432d-8c39-8644d5595213",
+                "a704f2b9-43a0-45bd-8282-06c2d4c28585",
+                "94f4a9bc-1727-4b8c-a5eb-f50b4d61b2a9",
+                "5ef842e4-8f06-4e3d-8bc4-688add1a4417"
+            ],
+            "examples": [
+                "Berechnung eines Wirbelfeldes",
+                "Anwendung von Greens Satz"
+            ],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Vektoranalysis",
+                "topicCode": "tum_cit513018_lo3"
+            }
+        },
+        {
+            "id": "1e31267a-6aa2-432d-8c39-8644d5595213",
+            "shortKey": "tum_cit513018_lo3_1",
+            "title": "Parametrisierung von Kurven",
+            "titleEn": "Parametrisierung von Kurven",
+            "description": "Die lernende Person kann Kurven im R^n parametrisieren.",
+            "descriptionEn": "Die lernende Person kann Kurven im R^n parametrisieren.",
+            "core": true,
+            "weight": 0.25,
+            "phase": "Modul",
+            "area": "Vektoranalysis",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Vektoranalysis",
+                "topicCode": "tum_cit513018_lo3_1"
+            }
+        },
+        {
+            "id": "a704f2b9-43a0-45bd-8282-06c2d4c28585",
+            "shortKey": "tum_cit513018_lo3_2",
+            "title": "Kurvenintegrale von Skalar- und Vektorfeldern",
+            "titleEn": "Kurvenintegrale von Skalar- und Vektorfeldern",
+            "description": "Die lernende Person kann Kurvenintegrale 1. und 2. Art berechnen und ihre physikalische Bedeutung (z.B. Masse, Arbeit) erläutern.",
+            "descriptionEn": "Die lernende Person kann Kurvenintegrale 1. und 2. Art berechnen und ihre physikalische Bedeutung (z.B. Masse, Arbeit) erläutern.",
+            "core": true,
+            "weight": 0.25,
+            "phase": "Modul",
+            "area": "Vektoranalysis",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "1e31267a-6aa2-432d-8c39-8644d5595213"
+            ],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Vektoranalysis",
+                "topicCode": "tum_cit513018_lo3_2"
+            }
+        },
+        {
+            "id": "94f4a9bc-1727-4b8c-a5eb-f50b4d61b2a9",
+            "shortKey": "tum_cit513018_lo3_3",
+            "title": "Potentialfelder und Wegunabhängigkeit",
+            "titleEn": "Potentialfelder und Wegunabhängigkeit",
+            "description": "Die lernende Person kann konservative Vektorfelder (Potentialfelder) erkennen und deren Potentialfunktion zur Vereinfachung von Kurvenintegralen nutzen.",
+            "descriptionEn": "Die lernende Person kann konservative Vektorfelder (Potentialfelder) erkennen und deren Potentialfunktion zur Vereinfachung von Kurvenintegralen nutzen.",
+            "core": true,
+            "weight": 0.25,
+            "phase": "Modul",
+            "area": "Vektoranalysis",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "a704f2b9-43a0-45bd-8282-06c2d4c28585"
+            ],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Vektoranalysis",
+                "topicCode": "tum_cit513018_lo3_3"
+            }
+        },
+        {
+            "id": "5ef842e4-8f06-4e3d-8bc4-688add1a4417",
+            "shortKey": "tum_cit513018_lo3_4",
+            "title": "Satz von Green",
+            "titleEn": "Satz von Green",
+            "description": "Die lernende Person kann den Satz von Green anwenden, um Kurvenintegrale in der Ebene in Gebietsintegrale umzuwandeln.",
+            "descriptionEn": "Die lernende Person kann den Satz von Green anwenden, um Kurvenintegrale in der Ebene in Gebietsintegrale umzuwandeln.",
+            "core": true,
+            "weight": 0.25,
+            "phase": "Modul",
+            "area": "Vektoranalysis",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "a704f2b9-43a0-45bd-8282-06c2d4c28585"
+            ],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Vektoranalysis",
+                "topicCode": "tum_cit513018_lo3_4"
+            }
+        },
+        {
+            "id": "b42e40c5-4634-4944-a4e2-8e3889b2736f",
+            "shortKey": "tum_cit513018_lo4",
+            "title": "Gewöhnliche Differenzialgleichungen",
+            "titleEn": "Gewöhnliche Differenzialgleichungen",
+            "description": "Die lernende Person kann grundlegende Verfahren zur Lösung gewöhnlicher Differenzialgleichungen (lineare, separierbare, Systeme) anwenden und Lösungen in physikalischen Kontext übertragen.",
+            "descriptionEn": "Die lernende Person kann grundlegende Verfahren zur Lösung gewöhnlicher Differenzialgleichungen (lineare, separierbare, Systeme) anwenden und Lösungen in physikalischen Kontext übertragen.",
+            "core": true,
+            "weight": 1,
+            "phase": "Modul",
+            "area": "Differenzialgleichungen",
+            "tags": [
+                "ects:2",
+                "topic:ode",
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [],
+            "contains": [
+                "a2bb3b53-bbb2-49d7-a3e8-32603f00a70c",
+                "f74c15a7-4d06-4480-91dc-8f339a61ac0c",
+                "ba7c0fda-fbc8-4dad-ba8e-571805cf31b6",
+                "72c65aad-582d-46fe-b707-44d8ddec6637"
+            ],
+            "examples": [
+                "Lösung eines linearen Systems erster Ordnung",
+                "Initialwertproblem mit Variation der Konstanten"
+            ],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Differenzialgleichungen",
+                "topicCode": "tum_cit513018_lo4"
+            }
+        },
+        {
+            "id": "a2bb3b53-bbb2-49d7-a3e8-32603f00a70c",
+            "shortKey": "tum_cit513018_lo4_1",
+            "title": "Grundbegriffe von DGLs",
+            "titleEn": "Grundbegriffe von DGLs",
+            "description": "Die lernende Person kann Differenzialgleichungen nach Ordnung und Linearität klassifizieren und die Begriffe Anfangs- und Randwertproblem erläutern.",
+            "descriptionEn": "Die lernende Person kann Differenzialgleichungen nach Ordnung und Linearität klassifizieren und die Begriffe Anfangs- und Randwertproblem erläutern.",
+            "core": true,
+            "weight": 0.25,
+            "phase": "Modul",
+            "area": "Differenzialgleichungen",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Differenzialgleichungen",
+                "topicCode": "tum_cit513018_lo4_1"
+            }
+        },
+        {
+            "id": "f74c15a7-4d06-4480-91dc-8f339a61ac0c",
+            "shortKey": "tum_cit513018_lo4_2",
+            "title": "Lösungsmethoden für DGL 1. Ordnung",
+            "titleEn": "Lösungsmethoden für DGL 1. Ordnung",
+            "description": "Die lernende Person kann DGLs 1. Ordnung mittels Separation der Variablen und Variation der Konstanten (für lineare DGLs) lösen.",
+            "descriptionEn": "Die lernende Person kann DGLs 1. Ordnung mittels Separation der Variablen und Variation der Konstanten (für lineare DGLs) lösen.",
+            "core": true,
+            "weight": 0.25,
+            "phase": "Modul",
+            "area": "Differenzialgleichungen",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "a2bb3b53-bbb2-49d7-a3e8-32603f00a70c"
+            ],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Differenzialgleichungen",
+                "topicCode": "tum_cit513018_lo4_2"
+            }
+        },
+        {
+            "id": "ba7c0fda-fbc8-4dad-ba8e-571805cf31b6",
+            "shortKey": "tum_cit513018_lo4_3",
+            "title": "Lineare DGL höherer Ordnung mit konstanten Koeffizienten",
+            "titleEn": "Lineare DGL höherer Ordnung mit konstanten Koeffizienten",
+            "description": "Die lernende Person kann homogene und inhomogene lineare DGLs n-ter Ordnung mit konstanten Koeffizienten durch den Ansatz der charakteristischen Gleichung lösen.",
+            "descriptionEn": "Die lernende Person kann homogene und inhomogene lineare DGLs n-ter Ordnung mit konstanten Koeffizienten durch den Ansatz der charakteristischen Gleichung lösen.",
+            "core": true,
+            "weight": 0.25,
+            "phase": "Modul",
+            "area": "Differenzialgleichungen",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "a2bb3b53-bbb2-49d7-a3e8-32603f00a70c"
+            ],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Differenzialgleichungen",
+                "topicCode": "tum_cit513018_lo4_3"
+            }
+        },
+        {
+            "id": "72c65aad-582d-46fe-b707-44d8ddec6637",
+            "shortKey": "tum_cit513018_lo4_4",
+            "title": "Lineare DGL-Systeme 1. Ordnung",
+            "titleEn": "Lineare DGL-Systeme 1. Ordnung",
+            "description": "Die lernende Person kann homogene lineare Systeme von DGLs 1. Ordnung mit konstanten Koeffizienten über das Eigenwert-Problem lösen.",
+            "descriptionEn": "Die lernende Person kann homogene lineare Systeme von DGLs 1. Ordnung mit konstanten Koeffizienten über das Eigenwert-Problem lösen.",
+            "core": true,
+            "weight": 0.25,
+            "phase": "Modul",
+            "area": "Differenzialgleichungen",
+            "tags": [
+                "ects:8",
+                "module:CIT513018"
+            ],
+            "requires": [
+                "ba7c0fda-fbc8-4dad-ba8e-571805cf31b6"
+            ],
+            "contains": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit513018",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Differenzialgleichungen",
+                "topicCode": "tum_cit513018_lo4_4"
+            }
+        }
+    ]
+}

@@ -1,0 +1,187 @@
+{
+    "title": "Finance (Hyper-Deep)",
+    "titleEn": "Finance (Hyper-Deep)",
+    "description": "Detaillierte Finanzformeln.",
+    "descriptionEn": "Detaillierte Finanzformeln.",
+    "landscapeId": "bdc20389-7a96-4af0-9443-f2533e8e9983",
+    "goals": [
+        {
+            "id": "3354d3a0-af86-4345-bed9-75e09c79faf6",
+            "title": "Finance",
+            "titleEn": "Finance",
+            "description": "Finanzwirtschaft.",
+            "descriptionEn": "Finanzwirtschaft.",
+            "contains": [
+                "8a3c420e-059c-4994-a945-1eef08bc2d46",
+                "0cc9e7a9-d2e4-41af-8d3c-c5dd74e53344",
+                "ae0f1c2f-5c82-4dc1-86bd-c6e8ff8ff22d"
+            ],
+            "requires": []
+        },
+        {
+            "id": "8a3c420e-059c-4994-a945-1eef08bc2d46",
+            "title": "CAPM Detail",
+            "titleEn": "CAPM Detail",
+            "description": "Capital Asset Pricing Model Breakdown.",
+            "descriptionEn": "Capital Asset Pricing Model Breakdown.",
+            "contains": [
+                "93667f76-890d-4c48-9c4f-5d21c0e47e4e",
+                "166e4f5f-9d92-4f85-b301-df9be8001dc1",
+                "ba46ab03-4372-47e1-a639-4b2533d13cea"
+            ],
+            "requires": []
+        },
+        {
+            "id": "93667f76-890d-4c48-9c4f-5d21c0e47e4e",
+            "title": "Risk Free Rate (rf)",
+            "titleEn": "Risk Free Rate (rf)",
+            "description": "Skill: Yield of gov bonds (e.g. 10y German Bunds/US Treasuries).",
+            "descriptionEn": "Skill: Yield of gov bonds (e.g. 10y German Bunds/US Treasuries).",
+            "contains": [],
+            "requires": [],
+            "tags": [
+                "atomic",
+                "skill",
+                "Data"
+            ]
+        },
+        {
+            "id": "166e4f5f-9d92-4f85-b301-df9be8001dc1",
+            "title": "Beta (β)",
+            "titleEn": "Beta (β)",
+            "description": "Skill: Measure of systematic risk. Formula: Cov(ri, rm) / Var(rm).",
+            "descriptionEn": "Skill: Measure of systematic risk. Formula: Cov(ri, rm) / Var(rm).",
+            "contains": [],
+            "requires": [],
+            "tags": [
+                "atomic",
+                "skill",
+                "Math"
+            ]
+        },
+        {
+            "id": "ba46ab03-4372-47e1-a639-4b2533d13cea",
+            "title": "Market Risk Premium",
+            "titleEn": "Market Risk Premium",
+            "description": "Skill: Expected Market Return minus Risk Free Rate (E(rm) - rf).",
+            "descriptionEn": "Skill: Expected Market Return minus Risk Free Rate (E(rm) - rf).",
+            "contains": [],
+            "requires": [],
+            "tags": [
+                "atomic",
+                "skill",
+                "Math"
+            ]
+        },
+        {
+            "id": "0cc9e7a9-d2e4-41af-8d3c-c5dd74e53344",
+            "title": "WACC Detail",
+            "titleEn": "WACC Detail",
+            "description": "Weighted Average Cost of Capital.",
+            "descriptionEn": "Weighted Average Cost of Capital.",
+            "contains": [
+                "15208383-66c9-43db-bfb2-58cc6334d630",
+                "7a6e9097-0ee6-4f1c-a5ec-ee27231e553c",
+                "f8c82809-a63c-49ce-95a8-0e516e213a03"
+            ],
+            "requires": []
+        },
+        {
+            "id": "15208383-66c9-43db-bfb2-58cc6334d630",
+            "title": "Market Value Weights",
+            "titleEn": "Market Value Weights",
+            "description": "Skill: Apply Market Cap (E) and Market Value of Debt (D), not Book Values.",
+            "descriptionEn": "Skill: Apply Market Cap (E) and Market Value of Debt (D), not Book Values.",
+            "contains": [],
+            "requires": [],
+            "tags": [
+                "atomic",
+                "skill",
+                "Method"
+            ]
+        },
+        {
+            "id": "7a6e9097-0ee6-4f1c-a5ec-ee27231e553c",
+            "title": "Cost of Debt (rd)",
+            "titleEn": "Cost of Debt (rd)",
+            "description": "Skill: Yield to Maturity on existing long-term debt.",
+            "descriptionEn": "Skill: Yield to Maturity on existing long-term debt.",
+            "contains": [],
+            "requires": [],
+            "tags": [
+                "atomic",
+                "skill",
+                "Method"
+            ]
+        },
+        {
+            "id": "f8c82809-a63c-49ce-95a8-0e516e213a03",
+            "title": "Tax Shield",
+            "titleEn": "Tax Shield",
+            "description": "Skill: Apply (1 - TaxRate) to Cost of Debt.",
+            "descriptionEn": "Skill: Apply (1 - TaxRate) to Cost of Debt.",
+            "contains": [],
+            "requires": [],
+            "tags": [
+                "atomic",
+                "skill",
+                "Math"
+            ]
+        },
+        {
+            "id": "ae0f1c2f-5c82-4dc1-86bd-c6e8ff8ff22d",
+            "title": "Black-Scholes Inputs",
+            "titleEn": "Black-Scholes Inputs",
+            "description": "Determinants of Option Value.",
+            "descriptionEn": "Determinants of Option Value.",
+            "contains": [
+                "67c1f499-11cf-4a80-8003-d2d6dc36fe71",
+                "b2d5e17c-bf9c-4eb2-af60-ac596b9a3db8",
+                "616f216f-0e94-42bc-a406-9849fb343eeb"
+            ],
+            "requires": []
+        },
+        {
+            "id": "67c1f499-11cf-4a80-8003-d2d6dc36fe71",
+            "title": "Moneyness (S vs K)",
+            "titleEn": "Moneyness (S vs K)",
+            "description": "Skill: In-the-money vs. Out-of-the-money based on Spot (S) and Strike (K).",
+            "descriptionEn": "Skill: In-the-money vs. Out-of-the-money based on Spot (S) and Strike (K).",
+            "contains": [],
+            "requires": [],
+            "tags": [
+                "atomic",
+                "skill",
+                "Def"
+            ]
+        },
+        {
+            "id": "b2d5e17c-bf9c-4eb2-af60-ac596b9a3db8",
+            "title": "Volatility (σ)",
+            "titleEn": "Volatility (σ)",
+            "description": "Skill: Impact of standard deviation of returns on option price (Vega).",
+            "descriptionEn": "Skill: Impact of standard deviation of returns on option price (Vega).",
+            "contains": [],
+            "requires": [],
+            "tags": [
+                "atomic",
+                "skill",
+                "Def"
+            ]
+        },
+        {
+            "id": "616f216f-0e94-42bc-a406-9849fb343eeb",
+            "title": "Time to Maturity (T)",
+            "titleEn": "Time to Maturity (T)",
+            "description": "Skill: Time decay (Theta).",
+            "descriptionEn": "Skill: Time decay (Theta).",
+            "contains": [],
+            "requires": [],
+            "tags": [
+                "atomic",
+                "skill",
+                "Def"
+            ]
+        }
+    ]
+}

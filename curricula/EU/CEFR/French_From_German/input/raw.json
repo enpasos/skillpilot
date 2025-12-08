@@ -1,0 +1,430 @@
+{
+  "nodes": [
+    {
+      "id": "FR_GER_ROOT",
+      "title": "Französisch GER A1–C2 (DELF/DALF)",
+      "description": "Übergeordnetes Curriculum für Französisch von GER A1 bis C2 mit DELF-/DALF-Abschluss.",
+      "tags": ["subject:fr", "curriculum", "cefr:A1-C2"],
+      "contains": [
+        "FR_GER_A1",
+        "FR_GER_A2",
+        "FR_GER_B1",
+        "FR_GER_B2",
+        "FR_GER_C1",
+        "FR_GER_C2"
+      ]
+    },
+
+    {
+      "id": "FR_GER_A1",
+      "title": "Französisch A1 (DELF A1)",
+      "description": "Elementare Sprachverwendung – Einstieg ohne Vorkenntnisse, Ziel DELF A1.",
+      "tags": ["subject:fr", "cefr:A1", "exam:DELF-A1"],
+      "contains": [
+        "FR_A1_VOC",
+        "FR_A1_GRAM",
+        "FR_A1_LISTEN",
+        "FR_A1_SPEAK",
+        "FR_A1_READ",
+        "FR_A1_WRITE",
+        "FR_EXAM_DELF_A1"
+      ],
+      "estDurationHours": 60
+    },
+    {
+      "id": "FR_A1_VOC",
+      "title": "A1 Wortschatz: Alltag & Basis",
+      "description": "Aufbau eines aktiven Basiswortschatzes von ca. 400–500 Wörtern zu Alltagsthemen.",
+      "tags": ["subject:fr", "cefr:A1", "skill:vocabulary"],
+      "successCriteria": "Lerner kann mindestens 80 % von 400–500 Kernwörtern zu Themen wie Begrüßung, Zahlen, Uhrzeit, Familie, Beruf, Essen, Einkaufen und Wegbeschreibung aktiv in einfachen Sätzen verwenden."
+    },
+    {
+      "id": "FR_A1_GRAM",
+      "title": "A1 Grammatik: Präsens & Grundlagen",
+      "description": "Grundlegende Satzstrukturen im Präsens mit einfachen Verben und Artikeln.",
+      "tags": ["subject:fr", "cefr:A1", "skill:grammar"],
+      "successCriteria": "In 20 einfachen Sätzen werden Verben im Präsens (être, avoir, aller, faire, regelmäßige -er-Verben) und passende Artikel in ≥ 80 % der Fälle korrekt gewählt."
+    },
+    {
+      "id": "FR_A1_LISTEN",
+      "title": "A1 Hörverstehen: einfache Äußerungen",
+      "description": "Einfache, langsame Äußerungen im Alltag verstehen.",
+      "tags": ["subject:fr", "cefr:A1", "skill:listening"],
+      "successCriteria": "Bei 3 kurzen Hörtexten (je 30–60 Sekunden) beantwortet der Lerner mindestens 70 % der Verständnisfragen korrekt."
+    },
+    {
+      "id": "FR_A1_SPEAK",
+      "title": "A1 Sprechen: sich vorstellen & alltägliche Routinen",
+      "description": "Einfache mündliche Kommunikation: sich vorstellen, Herkunft, Beruf, Hobbys, sehr einfache Fragen stellen.",
+      "tags": ["subject:fr", "cefr:A1", "skill:speaking"],
+      "successCriteria": "Der Lerner kann eine 1-minütige Selbstvorstellung geben und 5 Standardfragen (z.B. Name, Herkunft, Beruf, Hobbys, Wohnort) verständlich beantworten."
+    },
+    {
+      "id": "FR_A1_READ",
+      "title": "A1 Lesen: kurze Alltagstexte",
+      "description": "Sehr einfache Texte wie Anzeigen, Speisekarten, kurze Nachrichten verstehen.",
+      "tags": ["subject:fr", "cefr:A1", "skill:reading"],
+      "successCriteria": "Bei 10 kurzen Alltagstexten (z.B. Schilder, Anzeigen, Menüs) kann der Lerner jeweils die Hauptaussage korrekt angeben (mind. 8 von 10)."
+    },
+    {
+      "id": "FR_A1_WRITE",
+      "title": "A1 Schreiben: einfache Sätze",
+      "description": "Einzelformen von Sätzen über sich selbst und den unmittelbaren Alltag schreiben.",
+      "tags": ["subject:fr", "cefr:A1", "skill:writing"],
+      "successCriteria": "Der Lerner kann einen Text von 50–70 Wörtern über sich (Name, Herkunft, Familie, Hobbys) verfassen, der ohne gravierende Grammatikfehler verständlich ist."
+    },
+    {
+      "id": "FR_EXAM_DELF_A1",
+      "title": "Prüfungsvorbereitung DELF A1",
+      "description": "Vorbereitung auf die DELF-A1-Prüfung (Hören, Lesen, Schreiben, Sprechen) anhand von Musteraufgaben.",
+      "tags": ["subject:fr", "cefr:A1", "exam:DELF-A1"],
+      "requires": ["FR_A1_VOC", "FR_A1_GRAM", "FR_A1_LISTEN", "FR_A1_SPEAK", "FR_A1_READ", "FR_A1_WRITE"],
+      "successCriteria": "Der Lerner erreicht in mindestens zwei vollständigen DELF-A1-Probentests jeweils ≥ 60 % der Gesamtpunktzahl."
+    },
+
+    {
+      "id": "FR_GER_A2",
+      "title": "Französisch A2 (DELF A2)",
+      "description": "Grundlegende Kommunikationsfähigkeit in vertrauten Situationen, Ziel DELF A2.",
+      "tags": ["subject:fr", "cefr:A2", "exam:DELF-A2"],
+      "contains": [
+        "FR_A2_VOC",
+        "FR_A2_GRAM",
+        "FR_A2_LISTEN",
+        "FR_A2_SPEAK",
+        "FR_A2_READ",
+        "FR_A2_WRITE",
+        "FR_EXAM_DELF_A2"
+      ],
+      "requires": ["FR_GER_A1"],
+      "estDurationHours": 120
+    },
+    {
+      "id": "FR_A2_VOC",
+      "title": "A2 Wortschatz: Alltag vertiefen",
+      "description": "Wortschatzaufbau auf ca. 1000 Wörter zu Themen wie Gesundheit, Reisen, Wohnen, Arbeit.",
+      "tags": ["subject:fr", "cefr:A2", "skill:vocabulary"],
+      "successCriteria": "Der Lerner kann zu mindestens 50 vorgegebenen Alltagssituationen (z.B. Arztbesuch, Hotel, Einkauf, Freizeit) spontan jeweils 1–2 Sätze bilden."
+    },
+    {
+      "id": "FR_A2_GRAM",
+      "title": "A2 Grammatik: Vergangenheit & Zukunft",
+      "description": "Einführung und sichere Grundverwendung von passé composé und imparfait sowie futur proche.",
+      "tags": ["subject:fr", "cefr:A2", "skill:grammar"],
+      "requires": ["FR_A1_GRAM"],
+      "successCriteria": "In 20 Sätzen mit Alltagssituationen wählt der Lerner in ≥ 75 % der Fälle die passende Zeit (présent, passé composé, imparfait, futur proche) korrekt."
+    },
+    {
+      "id": "FR_A2_LISTEN",
+      "title": "A2 Hörverstehen: Alltagssituationen",
+      "description": "Hörtexte zu Arztbesuch, Reisen, Wohnen, Arbeit verstehen.",
+      "tags": ["subject:fr", "cefr:A2", "skill:listening"],
+      "successCriteria": "Bei 3 Hörtexten (je 1–2 Minuten) erzielt der Lerner in Verständnisfragen mindestens 70 % richtige Antworten."
+    },
+    {
+      "id": "FR_A2_SPEAK",
+      "title": "A2 Sprechen: einfache Problembeschreibung",
+      "description": "Probleme im Alltag mündlich schildern (z.B. im Hotel, beim Arzt, im Geschäft).",
+      "tags": ["subject:fr", "cefr:A2", "skill:speaking"],
+      "successCriteria": "Der Lerner kann in Rollenspielen zwei typische Probleme (Hotelzimmer-Mangel, gesundheitliches Problem) in jeweils 1–2 Minuten verständlich erklären."
+    },
+    {
+      "id": "FR_A2_READ",
+      "title": "A2 Lesen: kurze Berichte & Infos",
+      "description": "Einfache Berichte, E-Mails, Informationsschilder und kurze Regeln lesen.",
+      "tags": ["subject:fr", "cefr:A2", "skill:reading"],
+      "successCriteria": "Bei zwei Texten mit insgesamt ca. 200–250 Wörtern kann der Lerner Kernaussage und 3–4 Details richtig benennen."
+    },
+    {
+      "id": "FR_A2_WRITE",
+      "title": "A2 Schreiben: E-Mails & Beschreibungen",
+      "description": "Einfache E-Mails, Einladungen, Beschwerden und kurze Beschreibungen schreiben.",
+      "tags": ["subject:fr", "cefr:A2", "skill:writing"],
+      "successCriteria": "Der Lerner verfasst mindestens zwei Texte (je 80–100 Wörter), z.B. Einladung und Beschwerde, die klar strukturiert und weitgehend fehlerfrei verständlich sind."
+    },
+    {
+      "id": "FR_EXAM_DELF_A2",
+      "title": "Prüfungsvorbereitung DELF A2",
+      "description": "Systematische Vorbereitung auf DELF A2 mit Fokus auf typischen Aufgabenformaten.",
+      "tags": ["subject:fr", "cefr:A2", "exam:DELF-A2"],
+      "requires": ["FR_A2_VOC", "FR_A2_GRAM", "FR_A2_LISTEN", "FR_A2_SPEAK", "FR_A2_READ", "FR_A2_WRITE"],
+      "successCriteria": "Der Lerner erreicht in zwei vollständigen DELF-A2-Probentests jeweils ≥ 60 % der Gesamtpunktzahl."
+    },
+
+    {
+      "id": "FR_GER_B1",
+      "title": "Französisch B1 (DELF B1)",
+      "description": "Selbstständige Sprachverwendung im Alltag und auf Reisen, Ziel DELF B1.",
+      "tags": ["subject:fr", "cefr:B1", "exam:DELF-B1"],
+      "contains": [
+        "FR_B1_VOC",
+        "FR_B1_GRAM",
+        "FR_B1_LISTEN",
+        "FR_B1_SPEAK",
+        "FR_B1_READ",
+        "FR_B1_WRITE",
+        "FR_EXAM_DELF_B1"
+      ],
+      "requires": ["FR_GER_A2"],
+      "estDurationHours": 180
+    },
+    {
+      "id": "FR_B1_VOC",
+      "title": "B1 Wortschatz: Erfahrungen & Meinungen",
+      "description": "Ausbau des Wortschatzes auf ca. 2000 Wörter zu Arbeit, Medien, Gesellschaft und Reisen.",
+      "tags": ["subject:fr", "cefr:B1", "skill:vocabulary"],
+      "successCriteria": "Der Lerner kann zu mindestens 100 abstrakteren Begriffen (z.B. Umwelt, Politik, Medien, Arbeit) einfache Erklärungen oder Beispiele geben."
+    },
+    {
+      "id": "FR_B1_GRAM",
+      "title": "B1 Grammatik: Zeitformen & Konditional",
+      "description": "Sicherer Einsatz von passé composé und imparfait, Einführung futur simple und conditionnel présent, Relativsätze (qui, que, où, dont).",
+      "tags": ["subject:fr", "cefr:B1", "skill:grammar"],
+      "requires": ["FR_A2_GRAM"],
+      "successCriteria": "In einem Lückentext mit 30 Sätzen setzt der Lerner Zeitformen und Relativpronomen in mindestens 80 % der Fälle korrekt ein."
+    },
+    {
+      "id": "FR_B1_LISTEN",
+      "title": "B1 Hörverstehen: Interviews & Berichte",
+      "description": "Interviews, Radioeinspieler und Berichte zu vertrauten Themen verstehen.",
+      "tags": ["subject:fr", "cefr:B1", "skill:listening"],
+      "successCriteria": "Der Lerner versteht drei Hörtexte (insgesamt 6–8 Minuten) so, dass er Hauptaussagen und mindestens zwei Details pro Text korrekt wiedergeben kann."
+    },
+    {
+      "id": "FR_B1_SPEAK",
+      "title": "B1 Sprechen: Erfahrungen berichten & argumentieren",
+      "description": "Zusammenhängend über Erfahrungen und Pläne sprechen und einfache Argumente formulieren.",
+      "tags": ["subject:fr", "cefr:B1", "skill:speaking"],
+      "successCriteria": "Der Lerner hält eine 3-minütige Präsentation zu einem Alltagsthema (z.B. Reise, Hobby, Arbeit) und beantwortet anschließend 3–4 Rückfragen verständlich."
+    },
+    {
+      "id": "FR_B1_READ",
+      "title": "B1 Lesen: Nachrichten & Artikel",
+      "description": "Zeitungsartikel, einfache Kommentare und Berichte verstehen.",
+      "tags": ["subject:fr", "cefr:B1", "skill:reading"],
+      "successCriteria": "Zwei Artikel (je 250–350 Wörter) werden so verstanden, dass der Lerner die Kernaussagen und die einfache Argumentationsstruktur wiedergeben kann."
+    },
+    {
+      "id": "FR_B1_WRITE",
+      "title": "B1 Schreiben: Berichte & Stellungnahmen",
+      "description": "Texte von 150–180 Wörtern zu eigenen Erfahrungen und Meinungen schreiben.",
+      "tags": ["subject:fr", "cefr:B1", "skill:writing"],
+      "successCriteria": "Der Lerner verfasst mindestens zwei Texte (Bericht und einfache Stellungnahme) mit jeweils 150–180 Wörtern, die klar gegliedert und überwiegend korrekt sind."
+    },
+    {
+      "id": "FR_EXAM_DELF_B1",
+      "title": "Prüfungsvorbereitung DELF B1",
+      "description": "Gezielte Vorbereitung auf die DELF-B1-Prüfung mit Fokus auf Argumentation und Textproduktion.",
+      "tags": ["subject:fr", "cefr:B1", "exam:DELF-B1"],
+      "requires": ["FR_B1_VOC", "FR_B1_GRAM", "FR_B1_LISTEN", "FR_B1_SPEAK", "FR_B1_READ", "FR_B1_WRITE"],
+      "successCriteria": "In zwei DELF-B1-Probentests erzielt der Lerner jeweils ≥ 60 % der Punkte, insbesondere in den produktiven Teilen (Schreiben, Sprechen)."
+    },
+
+    {
+      "id": "FR_GER_B2",
+      "title": "Französisch B2 (DELF B2)",
+      "description": "Flüssige Kommunikation in vielen Situationen, Studium/Job-Vorbereitung, Ziel DELF B2.",
+      "tags": ["subject:fr", "cefr:B2", "exam:DELF-B2"],
+      "contains": [
+        "FR_B2_VOC",
+        "FR_B2_GRAM",
+        "FR_B2_LISTEN",
+        "FR_B2_SPEAK",
+        "FR_B2_READ",
+        "FR_B2_WRITE",
+        "FR_EXAM_DELF_B2"
+      ],
+      "requires": ["FR_GER_B1"],
+      "estDurationHours": 250
+    },
+    {
+      "id": "FR_B2_VOC",
+      "title": "B2 Wortschatz: abstrakte Themen",
+      "description": "Ausbau auf ca. 3000–3500 Wörter, inkl. Politik, Gesellschaft, Wissenschaft.",
+      "tags": ["subject:fr", "cefr:B2", "skill:vocabulary"],
+      "successCriteria": "Der Lerner kann mindestens 150 anspruchsvollere Begriffe (z.B. Demokratie, Globalisierung, Nachhaltigkeit) korrekt verwenden und erklären."
+    },
+    {
+      "id": "FR_B2_GRAM",
+      "title": "B2 Grammatik: Subjonctif & komplexe Strukturen",
+      "description": "Einführung des subjonctif présent, erweiterter Gebrauch von conditionnel, Passiv und komplexen Nebensätzen.",
+      "tags": ["subject:fr", "cefr:B2", "skill:grammar"],
+      "requires": ["FR_B1_GRAM"],
+      "successCriteria": "In 40 Sätzen entscheidet der Lerner in ≥ 75 % der Fälle korrekt, ob subjonctif oder indicatif verwendet werden muss und setzt die richtige Form ein."
+    },
+    {
+      "id": "FR_B2_LISTEN",
+      "title": "B2 Hörverstehen: Nachrichten & Vorträge",
+      "description": "Nachrichten, Vorträge und Debatten zu komplexeren Themen verstehen.",
+      "tags": ["subject:fr", "cefr:B2", "skill:listening"],
+      "successCriteria": "Ein 10-minütiger Hörtext kann in 8–10 Stichpunkten inhaltlich korrekt zusammengefasst werden."
+    },
+    {
+      "id": "FR_B2_SPEAK",
+      "title": "B2 Sprechen: Diskussionen & Argumentation",
+      "description": "Aktive Teilnahme an Diskussionen mit klarer Argumentation und spontaner Reaktion.",
+      "tags": ["subject:fr", "cefr:B2", "skill:speaking"],
+      "successCriteria": "Der Lerner kann in einer 10-minütigen Diskussion zu einem gesellschaftlichen Thema eigenständig Argumente vorbringen und auf Gegenargumente reagieren."
+    },
+    {
+      "id": "FR_B2_READ",
+      "title": "B2 Lesen: anspruchsvollere Texte",
+      "description": "Längere Zeitungsartikel, Essays und einfache Fachtexte verstehen.",
+      "tags": ["subject:fr", "cefr:B2", "skill:reading"],
+      "successCriteria": "Ein Text von 600–800 Wörtern kann so wiedergegeben werden, dass Kernaussagen, Pro- und Contra-Argumente und Schlussfolgerungen klar sind."
+    },
+    {
+      "id": "FR_B2_WRITE",
+      "title": "B2 Schreiben: strukturierte Argumentation",
+      "description": "Texte von ca. 250 Wörtern mit klarer Argumentationsstruktur verfassen.",
+      "tags": ["subject:fr", "cefr:B2", "skill:writing"],
+      "successCriteria": "Der Lerner schreibt mindestens zwei argumentative Texte (je 250 Wörter) mit Einleitung, Hauptteil und Schluss, in denen passende Konnektoren verwendet werden (z.B. cependant, néanmoins, en revanche)."
+    },
+    {
+      "id": "FR_EXAM_DELF_B2",
+      "title": "Prüfungsvorbereitung DELF B2",
+      "description": "Vorbereitung auf DELF B2 mit Fokus auf komplexere Hör- und Leseaufgaben sowie anspruchsvollere mündliche und schriftliche Produktion.",
+      "tags": ["subject:fr", "cefr:B2", "exam:DELF-B2"],
+      "requires": ["FR_B2_VOC", "FR_B2_GRAM", "FR_B2_LISTEN", "FR_B2_SPEAK", "FR_B2_READ", "FR_B2_WRITE"],
+      "successCriteria": "Der Lerner erreicht in zwei vollständigen DELF-B2-Probentests jeweils ≥ 60–70 % der Gesamtpunktzahl."
+    },
+
+    {
+      "id": "FR_GER_C1",
+      "title": "Französisch C1 (DALF C1)",
+      "description": "Kompetente Sprachverwendung, differenzierte Ausdrucksfähigkeit, Ziel DALF C1.",
+      "tags": ["subject:fr", "cefr:C1", "exam:DALF-C1"],
+      "contains": [
+        "FR_C1_VOC",
+        "FR_C1_GRAM",
+        "FR_C1_LISTEN",
+        "FR_C1_SPEAK",
+        "FR_C1_READ",
+        "FR_C1_WRITE",
+        "FR_EXAM_DALF_C1"
+      ],
+      "requires": ["FR_GER_B2"],
+      "estDurationHours": 300
+    },
+    {
+      "id": "FR_C1_VOC",
+      "title": "C1 Wortschatz: Fach- und Bildungssprache",
+      "description": "Wortschatz auf ca. 5000 Wörter erweitern, inkl. fachlicher und abstrakter Begriffe.",
+      "tags": ["subject:fr", "cefr:C1", "skill:vocabulary"],
+      "successCriteria": "Der Lerner kann mindestens 200 abstrakte oder fachsprachliche Begriffe (z.B. Hypothese, Evidenz, Paradigma) korrekt in eigenen Sätzen verwenden."
+    },
+    {
+      "id": "FR_C1_GRAM",
+      "title": "C1 Grammatik: differenzierte Bedeutungsnuancen",
+      "description": "Subjonctif passé, conditionnel passé, komplexe Nebensatzstrukturen und Registerwechsel.",
+      "tags": ["subject:fr", "cefr:C1", "skill:grammar"],
+      "requires": ["FR_B2_GRAM"],
+      "successCriteria": "In komplexeren Texten und Sätzen wird der subjonctif/indicatif und die Zeitfolge in ≥ 80 % der Fälle korrekt umgesetzt."
+    },
+    {
+      "id": "FR_C1_LISTEN",
+      "title": "C1 Hörverstehen: Vorträge & Debatten",
+      "description": "Komplexe Vorträge, Seminare und Debatten im Detail verstehen.",
+      "tags": ["subject:fr", "cefr:C1", "skill:listening"],
+      "successCriteria": "Ein 15-minütiger Vortrag kann in einem 250-Wörter-Text inhaltlich korrekt und strukturiert zusammengefasst werden."
+    },
+    {
+      "id": "FR_C1_SPEAK",
+      "title": "C1 Sprechen: Präsentieren & Diskutieren",
+      "description": "Längere Präsentationen halten und kompetent diskutieren.",
+      "tags": ["subject:fr", "cefr:C1", "skill:speaking"],
+      "successCriteria": "Der Lerner hält eine 15-minütige Präsentation zu einem komplexen Thema und führt anschließend eine 15-minütige Diskussion, ohne größere Verständnisschwierigkeiten."
+    },
+    {
+      "id": "FR_C1_READ",
+      "title": "C1 Lesen: wissenschaftliche Texte & Essays",
+      "description": "Längere, komplexe Texte aus Wissenschaft und Kultur verstehen und analysieren.",
+      "tags": ["subject:fr", "cefr:C1", "skill:reading"],
+      "successCriteria": "Der Lerner kann die Argumentationsstruktur eines ca. 1500-Wörter-Textes (wissenschaftlich oder essayistisch) analysieren und kritisch kommentieren."
+    },
+    {
+      "id": "FR_C1_WRITE",
+      "title": "C1 Schreiben: Analyse & Synthese",
+      "description": "Längere Texte (350–450 Wörter) mit Analyse- und Syntheseleistung schreiben.",
+      "tags": ["subject:fr", "cefr:C1", "skill:writing"],
+      "successCriteria": "Der Lerner verfasst mehrere Texte (Analyse, Synthese, Argumentation) mit je 350–450 Wörtern, die kohärent, sprachlich differenziert und weitgehend fehlerfrei sind."
+    },
+    {
+      "id": "FR_EXAM_DALF_C1",
+      "title": "Prüfungsvorbereitung DALF C1",
+      "description": "Vorbereitung auf DALF C1 mit Fokus auf Synthese, Analyse und differenzierte Argumentation.",
+      "tags": ["subject:fr", "cefr:C1", "exam:DALF-C1"],
+      "requires": ["FR_C1_VOC", "FR_C1_GRAM", "FR_C1_LISTEN", "FR_C1_SPEAK", "FR_C1_READ", "FR_C1_WRITE"],
+      "successCriteria": "Der Lerner besteht interne Mock-Prüfungen auf DALF-C1-Niveau mit ≥ 60 % der Punkte."
+    },
+
+    {
+      "id": "FR_GER_C2",
+      "title": "Französisch C2 (DALF C2)",
+      "description": "Annähernd muttersprachliche Beherrschung, Ziel DALF C2.",
+      "tags": ["subject:fr", "cefr:C2", "exam:DALF-C2"],
+      "contains": [
+        "FR_C2_VOC",
+        "FR_C2_GRAM",
+        "FR_C2_LISTEN",
+        "FR_C2_SPEAK",
+        "FR_C2_READ",
+        "FR_C2_WRITE",
+        "FR_EXAM_DALF_C2"
+      ],
+      "requires": ["FR_GER_C1"],
+      "estDurationHours": 300
+    },
+    {
+      "id": "FR_C2_VOC",
+      "title": "C2 Wortschatz: hohe Präzision & Stil",
+      "description": "Sehr umfangreicher, nuancierter Wortschatz (8000+ Wörter) inkl. idiomatischer Wendungen.",
+      "tags": ["subject:fr", "cefr:C2", "skill:vocabulary"],
+      "successCriteria": "Der Lerner kann zu fünf abstrakten Themen (z.B. Ethik, Ästhetik, Identität, Macht, Globalisierung) spontan differenziert und präzise sprechen."
+    },
+    {
+      "id": "FR_C2_GRAM",
+      "title": "C2 Grammatik: stilistische Souveränität",
+      "description": "Nahezu fehlerfreier Umgang mit allen grammatischen Strukturen, bewusster Registerwechsel und stilistische Feinheiten.",
+      "tags": ["subject:fr", "cefr:C2", "skill:grammar"],
+      "requires": ["FR_C1_GRAM"],
+      "successCriteria": "In längeren eigenen Texten liegt die Grammatik-/Konjugationsfehlerquote deutlich unter 2 %."
+    },
+    {
+      "id": "FR_C2_LISTEN",
+      "title": "C2 Hörverstehen: komplexe Diskurse",
+      "description": "Nahezu alles Gehörte verstehen, einschließlich dialektgefärbter oder schnell gesprochener Sprache.",
+      "tags": ["subject:fr", "cefr:C2", "skill:listening"],
+      "successCriteria": "Ein 20-minütiger Radioessay oder eine komplexe Debatte kann präzise zusammengefasst und kommentiert werden."
+    },
+    {
+      "id": "FR_C2_SPEAK",
+      "title": "C2 Sprechen: stilistisch variabel & nuanciert",
+      "description": "Sehr hohe mündliche Ausdrucksfähigkeit, angepasst an Situation und Adressat.",
+      "tags": ["subject:fr", "cefr:C2", "skill:speaking"],
+      "successCriteria": "Der Lerner führt ein 20-minütiges Prüfungsgespräch zu komplexen Themen mit nuancierten, stilistisch angemessenen Formulierungen."
+    },
+    {
+      "id": "FR_C2_READ",
+      "title": "C2 Lesen: alle Textsorten",
+      "description": "Sichere Beherrschung aller Textsorten, inkl. Literatur, Fachtexte und stark stilisierter Sprache.",
+      "tags": ["subject:fr", "cefr:C2", "skill:reading"],
+      "successCriteria": "Literarische und fachliche Texte werden so verstanden, dass der Lerner Feinheiten von Stil, Ironie und impliziten Bedeutungen erklären kann."
+    },
+    {
+      "id": "FR_C2_WRITE",
+      "title": "C2 Schreiben: anspruchsvolle Texte",
+      "description": "Schreiben von anspruchsvollen Texten (400–500 Wörter) mit komplexer Struktur, Synthese und kritischer Bewertung.",
+      "tags": ["subject:fr", "cefr:C2", "skill:writing"],
+      "successCriteria": "Der Lerner verfasst mehrere komplexe Texte (z.B. Synthese aus mehreren Quellen, kritischer Essay) mit hohem sprachlichen und argumentativen Niveau."
+    },
+    {
+      "id": "FR_EXAM_DALF_C2",
+      "title": "Prüfungsvorbereitung DALF C2",
+      "description": "Vorbereitung auf DALF C2 mit Fokus auf Synthese, kritische Reflexion und stilistisch hochstehende Produktion.",
+      "tags": ["subject:fr", "cefr:C2", "exam:DALF-C2"],
+      "requires": ["FR_C2_VOC", "FR_C2_GRAM", "FR_C2_LISTEN", "FR_C2_SPEAK", "FR_C2_READ", "FR_C2_WRITE"],
+      "successCriteria": "Der Lerner besteht interne DALF-C2-Mock-Prüfungen auf Prüfungsniveau gemessen an offiziellen Bewertungskriterien."
+    }
+  ]
+}

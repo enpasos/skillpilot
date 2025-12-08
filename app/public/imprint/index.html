@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum - SkillPilot</title>
+    <script>
+        (function () {
+            const stored = localStorage.getItem('skillpilot_theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = stored === 'dark' || stored === 'light' ? stored : (prefersDark ? 'dark' : 'light');
+            const root = document.documentElement;
+            root.classList.remove('light', 'dark');
+            root.classList.add(theme);
+            const meta = document.querySelector('meta[name="theme-color"]') || (() => {
+                const m = document.createElement('meta');
+                m.name = 'theme-color';
+                document.head.appendChild(m);
+                return m;
+            })();
+            meta.setAttribute('content', theme === 'dark' ? '#0b1221' : '#e2e8f0');
+        })();
+    </script>
+    <style>
+        :root {
+            color-scheme: light;
+            --bg-gradient: radial-gradient(circle at top, #f8fafc, #e2e8f0);
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent: #0ea5e9;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-border: #e2e8f0;
+            --shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+        }
+
+        :root.dark {
+            color-scheme: dark;
+            --bg-gradient: radial-gradient(circle at top, #1e293b, #020617);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --card-bg: rgba(15, 23, 42, 0.7);
+            --card-border: rgba(30, 41, 59, 0.5);
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(8px);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            margin-bottom: 1.5em;
+        }
+
+        .company-name {
+            font-weight: 700;
+            font-size: 1.1em;
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.5em;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="/" class="back-link">&larr; Zurück zu SkillPilot</a>
+
+        <h1>Impressum</h1>
+
+        <p>
+            <span class="company-name">enpasos - Enterprise Patterns & Solutions GmbH</span>
+            Geschäftsführer: Dr. Matthias Unverzagt
+        </p>
+
+        <p>
+            <strong>Kontakt:</strong><br>
+            E-Mail: <a href="mailto:support@skillpilot.com">support@skillpilot.com</a>
+        </p>
+
+        <p>
+            <strong>Anschrift:</strong><br>
+            Haintürchenstr. 2<br>
+            D-61462 Königstein
+        </p>
+
+        <p>
+            <strong>Registereintrag:</strong><br>
+            Registergericht: Amtsgericht Königstein<br>
+            Registernummer: HRB 6597
+        </p>
+
+        <p>
+            <strong>Umsatzsteuer-ID:</strong><br>
+            Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:<br>
+            DE 245617005
+        </p>
+    </div>
+</body>
+
+</html>
