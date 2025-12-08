@@ -202,6 +202,8 @@ public class LandscapeService {
                         byLegacyId.put(legacyId, landscape);
                     }
 
+                } catch (com.fasterxml.jackson.databind.exc.MismatchedInputException e) {
+                    log.debug("Skipping non-landscape JSON file {}: {}", file, e.getMessage());
                 } catch (Exception e) {
                     log.error("Failed to read landscape file {}", file, e);
                 }

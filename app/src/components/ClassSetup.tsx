@@ -44,7 +44,7 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, onSave, onCa
           const res = await fetch(toApi('/api/ui/learners'), { method: 'POST' })
           if (!res.ok) throw new Error(`Status ${res.status}`)
           const data = await res.json()
-          const id = data.skillpilotId || data.id
+          const id = data.state?.skillpilotId || data.skillpilotId || data.id
           if (!id) throw new Error('Keine SkillPilot-ID erhalten')
           students.push({ name, id: String(id) })
         } catch (err) {
