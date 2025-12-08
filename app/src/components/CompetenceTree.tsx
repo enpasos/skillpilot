@@ -81,151 +81,135 @@ const TreeNode: React.FC<TreeNodeProps> = ({
       }
     }
 
-    return true
-  })
+    const visibleRoots = rootGoals.filter((g) => {
+      // Filter by active tag filter
+      if (activeFilter && activeFilter !== 'all') {
+        if (g.tags && g.tags.length > 0 && !g.tags.includes(activeFilter)) {
+          return false
+        }
+      }
+      return true
+    })
 
-  const hasChildren = visibleChildren.length > 0
-  const mastery = getMastery(goal.id)
-  const isPlanned = plannedGoals.has(goal.id)
-  const isSelected = selectedId === goal.id
+    const hasChildren = visibleChildren.length > 0
+    const mastery = getMastery(goal.id)
+    const isPlanned = plannedGoals.has(goal.id)
+    const isSelected = selectedId === goal.id
 
-  const plannedCount = aggregatedPlannedGoals?.get(goal.id) ?? 0
+    const plannedCount = aggregatedPlannedGoals?.get(goal.id) ?? 0
 
-  return (
-    <div className="">
-      <div
-        className={`flex items-center gap-2 py-1.5 px-2 rounded-md cursor-pointer transition-colors border border-transparent ${isSelected ? 'bg-sky-100 dark:bg-sky-900/40 border-sky-300 dark:border-sky-500/50' : 'hover:bg-slate-200 dark:hover:bg-slate-800/50'
-          }`}
-        style={{ paddingLeft: `${depth * 16 + 8}px` }}
-        onClick={() => onSelect(goal.id)}
-      >
-        <button
-          onClick={(e) => {
-            e.stopPropagation()
-            setIsExpanded(!isExpanded)
-          }}
-          className={`p-0.5 rounded hover:bg-slate-700 text-slate-400 w-4 h-4 flex items-center justify-center ${!hasChildren ? 'invisible' : ''
-            }`}
-        >
-          <span className="text-[10px]">{isExpanded ? '▼' : '▶'}</span>
-        </button>
-
+    return (
+      <div className="">
         <div
-          className="w-12 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden flex-shrink-0"
-          title={`Fortschritt: ${(mastery * 100).toFixed(0)}%`}
+          className={`flex items-center gap-2 py-1.5 px-2 rounded-md cursor-pointer transition-colors border border-transparent ${isSelected ? 'bg-sky-100 dark:bg-sky-900/40 border-sky-300 dark:border-sky-500/50' : 'hover:bg-slate-200 dark:hover:bg-slate-800/50'
+            }`}
+          style={{ paddingLeft: `${depth * 16 + 8}px` }}
+          onClick={() => onSelect(goal.id)}
         >
-          <div
-            className={`h-full ${mastery >= 1 ? 'bg-emerald-500' : 'bg-sky-500'}`}
-            style={{ width: `${mastery * 100}%` }}
-          />
-        </div>
-
-        <span className={`text-sm truncate flex-1 ${mastery >= 1 ? 'text-slate-500 dark:text-slate-400' : 'text-slate-700 dark:text-slate-200'}`}>
-          {goal.title}
-        </span>
-
-        {aggregatedPlannedGoals ? (
-          <div className="flex items-center gap-1 text-slate-500">
-            {plannedCount > 0 && (
-              <>
-                <span className="text-amber-400">★</span>
-                <span className="text-xs">{plannedCount}</span>
-              </>
-            )}
-          </div>
-        ) : (
           <button
             onClick={(e) => {
               e.stopPropagation()
-              onTogglePlan(goal.id)
+              setIsExpanded(!isExpanded)
             }}
-            className={`p-1 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors ${isPlanned ? 'text-amber-400' : 'text-slate-300 dark:text-slate-600 hover:text-amber-400 dark:hover:text-amber-200'
+            className={`p-0.5 rounded hover:bg-slate-700 text-slate-400 w-4 h-4 flex items-center justify-center ${!hasChildren ? 'invisible' : ''
               }`}
-            title={isPlanned ? 'Von Lernliste entfernen' : 'Als Lernziel setzen'}
           >
-            ★
+            <span className="text-[10px]">{isExpanded ? '▼' : '▶'}</span>
           </button>
+
+          <div
+            className="w-12 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden flex-shrink-0"
+            title={`Fortschritt: ${(mastery * 100).toFixed(0)}%`}
+          >
+            <div
+              className={`h-full ${mastery >= 1 ? 'bg-emerald-500' : 'bg-sky-500'}`}
+              style={{ width: `${mastery * 100}%` }}
+            />
+          </div>
+
+          <span className={`text-sm truncate flex-1 ${mastery >= 1 ? 'text-slate-500 dark:text-slate-400' : 'text-slate-700 dark:text-slate-200'}`}>
+            {goal.title}
+          </span>
+
+          {aggregatedPlannedGoals ? (
+            <div className="flex items-center gap-1 text-slate-500">
+              {plannedCount > 0 && (
+                <>
+                  <span className="text-amber-400">★</span>
+                  <span className="text-xs">{plannedCount}</span>
+                </>
+              )}
+            </div>
+          ) : (
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                onTogglePlan(goal.id)
+              }}
+              className={`p-1 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors ${isPlanned ? 'text-amber-400' : 'text-slate-300 dark:text-slate-600 hover:text-amber-400 dark:hover:text-amber-200'
+                }`}
+              title={isPlanned ? 'Von Lernliste entfernen' : 'Als Lernziel setzen'}
+            >
+              ★
+            </button>
+          )}
+        </div>
+
+        {isExpanded && hasChildren && (
+          <div>
+            {visibleChildren.map((childId) => (
+              <TreeNode
+                key={childId}
+                goalId={childId}
+                allGoals={allGoals}
+                getMastery={getMastery}
+                plannedGoals={plannedGoals}
+                onTogglePlan={onTogglePlan}
+                onSelect={onSelect}
+                selectedId={selectedId}
+                depth={depth + 1}
+                activeFilter={activeFilter}
+                aggregatedPlannedGoals={aggregatedPlannedGoals}
+                totalStudents={totalStudents}
+                personalConfig={personalConfig}
+              />
+            ))}
+          </div>
         )}
       </div>
-
-      {isExpanded && hasChildren && (
-        <div>
-          {visibleChildren.map((childId) => (
-            <TreeNode
-              key={childId}
-              goalId={childId}
-              allGoals={allGoals}
-              getMastery={getMastery}
-              plannedGoals={plannedGoals}
-              onTogglePlan={onTogglePlan}
-              onSelect={onSelect}
-              selectedId={selectedId}
-              depth={depth + 1}
-              activeFilter={activeFilter}
-              aggregatedPlannedGoals={aggregatedPlannedGoals}
-              totalStudents={totalStudents}
-              personalConfig={personalConfig}
-            />
-          ))}
-        </div>
-      )}
-    </div>
-  )
-}
+    )
+  }
 
 interface CompetenceTreeProps {
-  rootGoals: UiGoal[]
+    rootGoals: UiGoal[]
   allGoals: Map<string, UiGoal>
   getMastery: (goalId: string) => number
   plannedGoals: Set<string>
   onTogglePlan: (id: string) => void
-  onSelect: (id: string) => void
-  selectedId: string
-  activeFilter?: string
+      onSelect: (id: string) => void
+        selectedId: string
+activeFilter ?: string
 
-  aggregatedPlannedGoals?: Map<string, number>
-  totalStudents?: number
-  personalConfig?: Record<string, { selected: boolean; filterId?: string }>
+aggregatedPlannedGoals ?: Map<string, number>
+totalStudents ?: number
+personalConfig ?: Record<string, { selected: boolean; filterId?: string }>
 }
 
 export const CompetenceTree: React.FC<CompetenceTreeProps> = ({ rootGoals, activeFilter, personalConfig, ...props }) => {
-  // Check if root level has any config (Strict Opt-in)
-  const hasConfiguredRoots = personalConfig && Object.keys(personalConfig).length > 0 && rootGoals.some(g =>
-    (g.landscapeId && personalConfig[g.landscapeId] !== undefined) || personalConfig[g.id] !== undefined
-  )
+  return true
+})
 
-  const visibleRoots = rootGoals.filter((g) => {
-    // 1. Filter by active tag filter
-    if (activeFilter && activeFilter !== 'all') {
-      if (g.tags && g.tags.length > 0 && !g.tags.includes(activeFilter)) {
-        return false
-      }
-    }
-
-    // 2. Filter by Personal Curriculum (Level 2) - for root nodes
-    if (personalConfig && Object.keys(personalConfig).length > 0) {
-      const config = (g.landscapeId ? personalConfig[g.landscapeId] : undefined) ?? personalConfig[g.id]
-      if (config) {
-        if (config.selected !== true) return false
-      } else {
-        if (hasConfiguredRoots) return false
-      }
-    }
-
-    return true
-  })
-
-  return (
-    <div className="flex flex-col gap-1 overflow-y-auto max-h-full pr-2">
-      {visibleRoots.map((g) => (
-        <TreeNode
-          key={g.id}
-          goalId={g.id}
-          activeFilter={activeFilter}
-          personalConfig={personalConfig}
-          {...props}
-        />
-      ))}
-    </div>
-  )
+return (
+  <div className="flex flex-col gap-1 overflow-y-auto max-h-full pr-2">
+    {visibleRoots.map((g) => (
+      <TreeNode
+        key={g.id}
+        goalId={g.id}
+        activeFilter={activeFilter}
+        personalConfig={personalConfig}
+        {...props}
+      />
+    ))}
+  </div>
+)
 }
