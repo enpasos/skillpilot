@@ -1,12 +1,22 @@
 {
-    "title": "Latein Oberstufe (Hessen, KC 2024)",
-    "titleEn": "Latin Upper Secondary (Hesse, KC 2024)",
-    "description": "Lernlandschaft für das hessische Kerncurriculum Latein (gymnasiale Oberstufe, Ausgabe 2024).",
-    "descriptionEn": "Learning landscape for the Hessian core curriculum Latin (Upper Secondary, 2024 edition).",
     "landscapeId": "fe28bda8-03f3-4c4a-8286-7fcfce4eeac1",
     "locale": "de-DE",
     "subject": "Latein",
     "frameworkId": "hessen-kc-2024-latin",
+    "title": "Latein Oberstufe (Hessen, KC 2024)",
+    "titleEn": "Latin Upper Secondary (Hesse, KC 2024)",
+    "description": "Lernlandschaft für das hessische Kerncurriculum Latein (gymnasiale Oberstufe, Ausgabe 2024).",
+    "descriptionEn": "Learning landscape for the Hessian core curriculum Latin (Upper Secondary, 2024 edition).",
+    "filters": [
+        {
+            "id": "GK",
+            "label": "Grundkurs"
+        },
+        {
+            "id": "LK",
+            "label": "Leistungskurs"
+        }
+    ],
     "goals": [
         {
             "id": "a6690c7e-e297-4c05-a016-45cbfe9452ae",
@@ -17,6 +27,19 @@
             "descriptionEn": "Overarching goal: decipher Latin texts (Rhetoric, Philosophy, Historiography) within the KC framework.",
             "core": true,
             "weight": 1.2,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "90831aaf-1d6b-48ef-800a-f89163ad2728",
+                "255cf7ec-f2b0-4949-a45b-a944cebe44bf",
+                "e7f23949-d206-4667-a647-66dba471d81f",
+                "6e8c48d7-da25-434b-9d5d-811bba22c1d3",
+                "627c72c9-fcb4-4d8b-bd37-30f5c6e6de67"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -25,20 +48,7 @@
                 "phase": "GLOBAL",
                 "area": "Meta",
                 "topicCode": "GLOBAL"
-            },
-            "requires": [],
-            "contains": [
-                "90831aaf-1d6b-48ef-800a-f89163ad2728",
-                "255cf7ec-f2b0-4949-a45b-a944cebe44bf",
-                "e7f23949-d206-4667-a647-66dba471d81f",
-                "6e8c48d7-da25-434b-9d5d-811bba22c1d3",
-                "627c72c9-fcb4-4d8b-bd37-30f5c6e6de67"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "90831aaf-1d6b-48ef-800a-f89163ad2728",
@@ -49,6 +59,16 @@
             "descriptionEn": "Sprach-/Textroutine, Übersetzen, Stilmittel.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "ab9182f6-165e-4531-83c1-f1d578ee0574",
+                "4e55b09a-ee9e-4e47-a8cf-735cb9a11307"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -57,17 +77,7 @@
                 "phase": "E",
                 "area": "Meta",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [
-                "ab9182f6-165e-4531-83c1-f1d578ee0574",
-                "4e55b09a-ee9e-4e47-a8cf-735cb9a11307"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ab9182f6-165e-4531-83c1-f1d578ee0574",
@@ -78,6 +88,16 @@
             "descriptionEn": "Grammatik/Ausdruck sichern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "653259f9-a4c1-48b1-839c-d570bbb56933",
+                "5a956583-4241-44ac-ade9-c199137ccb4a"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -86,17 +106,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E1"
-            },
-            "requires": [],
-            "contains": [
-                "653259f9-a4c1-48b1-839c-d570bbb56933",
-                "5a956583-4241-44ac-ade9-c199137ccb4a"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "4e55b09a-ee9e-4e47-a8cf-735cb9a11307",
@@ -107,6 +117,16 @@
             "descriptionEn": "Übersetzen/Interpretieren grundlegender Texte.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "077dff6e-51c5-45b2-9601-2887063b364a",
+                "2b15eb59-acbf-4e31-8637-7558a8de01a3"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -115,17 +135,7 @@
                 "phase": "E",
                 "area": "Text",
                 "topicCode": "E2"
-            },
-            "requires": [],
-            "contains": [
-                "077dff6e-51c5-45b2-9601-2887063b364a",
-                "2b15eb59-acbf-4e31-8637-7558a8de01a3"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "653259f9-a4c1-48b1-839c-d570bbb56933",
@@ -136,6 +146,13 @@
             "descriptionEn": "Lateinische Grammatik-Strukturen wiederholen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -144,14 +161,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5a956583-4241-44ac-ade9-c199137ccb4a",
@@ -162,6 +172,13 @@
             "descriptionEn": "Rhetorische/poetische Mittel identifizieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -170,14 +187,7 @@
                 "phase": "E",
                 "area": "Sprache",
                 "topicCode": "E1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "077dff6e-51c5-45b2-9601-2887063b364a",
@@ -188,6 +198,13 @@
             "descriptionEn": "Texttranslation mit Hilfsmitteln.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -196,14 +213,7 @@
                 "phase": "E",
                 "area": "Text",
                 "topicCode": "E2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "2b15eb59-acbf-4e31-8637-7558a8de01a3",
@@ -214,6 +224,13 @@
             "descriptionEn": "Grundlegende Deutung und Kontextualisierung.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -222,14 +239,7 @@
                 "phase": "E",
                 "area": "Text",
                 "topicCode": "E2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "255cf7ec-f2b0-4949-a45b-a944cebe44bf",
@@ -240,6 +250,19 @@
             "descriptionEn": "Rhetorik Themenfelder",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "a3ee2ee7-3fba-4da4-8497-52689e0ffa8b",
+                "6f0f8134-036f-4ec4-a8c8-a264cc5a6577",
+                "ec27548f-8218-4f0c-bc18-be8575b9156e",
+                "db2897b8-567f-4d02-8657-fb822e826604",
+                "2b9b9082-316c-419a-94df-bbb05efb835e"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -248,20 +271,7 @@
                 "phase": "Q1",
                 "area": "Meta",
                 "topicCode": "Q1"
-            },
-            "requires": [],
-            "contains": [
-                "a3ee2ee7-3fba-4da4-8497-52689e0ffa8b",
-                "6f0f8134-036f-4ec4-a8c8-a264cc5a6577",
-                "ec27548f-8218-4f0c-bc18-be8575b9156e",
-                "db2897b8-567f-4d02-8657-fb822e826604",
-                "2b9b9082-316c-419a-94df-bbb05efb835e"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e7f23949-d206-4667-a647-66dba471d81f",
@@ -272,6 +282,19 @@
             "descriptionEn": "Q2 Themenfelder",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "2cb72238-1681-4898-bf2c-255e2a2b63a9",
+                "9197340c-e89a-4522-8a7b-7df49d71d547",
+                "4cd166dd-3ce8-4545-a3c4-e6879728e75d",
+                "6fe2c8ce-7ae9-42e3-b33d-fb6a91e0ea53",
+                "71a69b8b-8d7b-49d6-822b-cc4a955fdb31"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -280,20 +303,7 @@
                 "phase": "Q2",
                 "area": "Meta",
                 "topicCode": "Q2"
-            },
-            "requires": [],
-            "contains": [
-                "2cb72238-1681-4898-bf2c-255e2a2b63a9",
-                "9197340c-e89a-4522-8a7b-7df49d71d547",
-                "4cd166dd-3ce8-4545-a3c4-e6879728e75d",
-                "6fe2c8ce-7ae9-42e3-b33d-fb6a91e0ea53",
-                "71a69b8b-8d7b-49d6-822b-cc4a955fdb31"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "6e8c48d7-da25-434b-9d5d-811bba22c1d3",
@@ -304,6 +314,19 @@
             "descriptionEn": "Q3 Themenfelder",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "7f429ba9-8a88-48a1-8956-77dfdbaf54fe",
+                "52a15625-8aa2-4a5b-a857-3436af415f7e",
+                "a5060bfe-2b46-491d-82bd-e9e5b4a587d4",
+                "900f2280-e37b-473b-b002-ec7291a39aaf",
+                "3eaa3f6f-7b40-40e8-b4b8-94bfa6d8aa5d"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -312,20 +335,7 @@
                 "phase": "Q3",
                 "area": "Meta",
                 "topicCode": "Q3"
-            },
-            "requires": [],
-            "contains": [
-                "7f429ba9-8a88-48a1-8956-77dfdbaf54fe",
-                "52a15625-8aa2-4a5b-a857-3436af415f7e",
-                "a5060bfe-2b46-491d-82bd-e9e5b4a587d4",
-                "900f2280-e37b-473b-b002-ec7291a39aaf",
-                "3eaa3f6f-7b40-40e8-b4b8-94bfa6d8aa5d"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "627c72c9-fcb4-4d8b-bd37-30f5c6e6de67",
@@ -336,6 +346,17 @@
             "descriptionEn": "Q4 Themenfelder",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "238e0dbd-6eab-4ae1-a553-48d2fb8eaead",
+                "4c35c5a1-f7ff-4cf0-9bba-1f9daaf6ae1d",
+                "78702875-9af2-42ab-a5a4-07f48fe83ece"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -344,18 +365,7 @@
                 "phase": "Q4",
                 "area": "Meta",
                 "topicCode": "Q4"
-            },
-            "requires": [],
-            "contains": [
-                "238e0dbd-6eab-4ae1-a553-48d2fb8eaead",
-                "4c35c5a1-f7ff-4cf0-9bba-1f9daaf6ae1d",
-                "78702875-9af2-42ab-a5a4-07f48fe83ece"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a3ee2ee7-3fba-4da4-8497-52689e0ffa8b",
@@ -366,6 +376,19 @@
             "descriptionEn": "Der ideale Redner",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "b55bef2c-e46d-4d12-acef-35bb258a4e6f",
+                "e54c3f4a-953a-446e-844c-9073465639b5",
+                "84759957-e494-42ab-83d9-bbbb5bdaaa5d",
+                "98c305db-6573-48cc-b151-8b08a6d1ef46",
+                "139ee17e-79b4-4b59-83b2-88eede46c7f2"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -374,20 +397,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.1"
-            },
-            "requires": [],
-            "contains": [
-                "b55bef2c-e46d-4d12-acef-35bb258a4e6f",
-                "e54c3f4a-953a-446e-844c-9073465639b5",
-                "84759957-e494-42ab-83d9-bbbb5bdaaa5d",
-                "98c305db-6573-48cc-b151-8b08a6d1ef46",
-                "139ee17e-79b4-4b59-83b2-88eede46c7f2"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b55bef2c-e46d-4d12-acef-35bb258a4e6f",
@@ -398,6 +408,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -406,14 +423,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e54c3f4a-953a-446e-844c-9073465639b5",
@@ -424,6 +434,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -432,14 +449,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "84759957-e494-42ab-83d9-bbbb5bdaaa5d",
@@ -450,6 +460,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -458,14 +475,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "98c305db-6573-48cc-b151-8b08a6d1ef46",
@@ -476,6 +486,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -484,13 +500,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "139ee17e-79b4-4b59-83b2-88eede46c7f2",
@@ -501,6 +511,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -509,13 +525,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "6f0f8134-036f-4ec4-a8c8-a264cc5a6577",
@@ -526,6 +536,19 @@
             "descriptionEn": "Die ideale Rede",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "f9dac6fa-6af8-4ef5-871d-d141e27bf7af",
+                "d533eb2c-9caf-4812-aaa5-bf74794987b8",
+                "3474a975-b221-4702-8c0c-ca3bc4808778",
+                "dfef0e85-236d-49f5-95ed-627b6a4ad293",
+                "4da8ffbb-0b93-4b11-8ab0-aa9c89c1fbc4"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -534,20 +557,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.2"
-            },
-            "requires": [],
-            "contains": [
-                "f9dac6fa-6af8-4ef5-871d-d141e27bf7af",
-                "d533eb2c-9caf-4812-aaa5-bf74794987b8",
-                "3474a975-b221-4702-8c0c-ca3bc4808778",
-                "dfef0e85-236d-49f5-95ed-627b6a4ad293",
-                "4da8ffbb-0b93-4b11-8ab0-aa9c89c1fbc4"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "f9dac6fa-6af8-4ef5-871d-d141e27bf7af",
@@ -558,6 +568,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -566,14 +583,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d533eb2c-9caf-4812-aaa5-bf74794987b8",
@@ -584,6 +594,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -592,14 +609,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "3474a975-b221-4702-8c0c-ca3bc4808778",
@@ -610,6 +620,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -618,14 +635,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "dfef0e85-236d-49f5-95ed-627b6a4ad293",
@@ -636,6 +646,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -644,13 +660,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "4da8ffbb-0b93-4b11-8ab0-aa9c89c1fbc4",
@@ -661,6 +671,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -669,13 +685,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "ec27548f-8218-4f0c-bc18-be8575b9156e",
@@ -686,6 +696,19 @@
             "descriptionEn": "Rhetorische Praxis Republik",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "6f0d57d6-2ecc-4483-805f-c4b3d4c7d935",
+                "e8010598-a982-4eaf-92c5-ed6ff56a98f7",
+                "bf823a6c-afa4-4047-b6c5-e65a934e96d3",
+                "a85554e7-b77a-421e-ba74-77c5cb112476",
+                "b68adbd7-4187-435f-b680-957547583ae1"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -694,20 +717,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.3"
-            },
-            "requires": [],
-            "contains": [
-                "6f0d57d6-2ecc-4483-805f-c4b3d4c7d935",
-                "e8010598-a982-4eaf-92c5-ed6ff56a98f7",
-                "bf823a6c-afa4-4047-b6c5-e65a934e96d3",
-                "a85554e7-b77a-421e-ba74-77c5cb112476",
-                "b68adbd7-4187-435f-b680-957547583ae1"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "6f0d57d6-2ecc-4483-805f-c4b3d4c7d935",
@@ -718,6 +728,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -726,14 +743,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e8010598-a982-4eaf-92c5-ed6ff56a98f7",
@@ -744,6 +754,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -752,14 +769,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "bf823a6c-afa4-4047-b6c5-e65a934e96d3",
@@ -770,6 +780,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -778,14 +795,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a85554e7-b77a-421e-ba74-77c5cb112476",
@@ -796,6 +806,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -804,13 +820,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "b68adbd7-4187-435f-b680-957547583ae1",
@@ -821,6 +831,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -829,13 +845,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "db2897b8-567f-4d02-8657-fb822e826604",
@@ -846,6 +856,19 @@
             "descriptionEn": "Rhetorische Praxis Poesie",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "e3a01061-3970-4d14-80c0-2d486764df1e",
+                "bb998310-07f8-4838-a349-68254210b16c",
+                "d5cc4834-8c7f-453b-88c2-daa6092476cc",
+                "64f9ae7b-ddae-4d58-84ab-03c551fa6e88",
+                "135cba55-8802-47a8-b34e-86744c39709f"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -854,20 +877,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.4"
-            },
-            "requires": [],
-            "contains": [
-                "e3a01061-3970-4d14-80c0-2d486764df1e",
-                "bb998310-07f8-4838-a349-68254210b16c",
-                "d5cc4834-8c7f-453b-88c2-daa6092476cc",
-                "64f9ae7b-ddae-4d58-84ab-03c551fa6e88",
-                "135cba55-8802-47a8-b34e-86744c39709f"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e3a01061-3970-4d14-80c0-2d486764df1e",
@@ -878,6 +888,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -886,14 +903,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "bb998310-07f8-4838-a349-68254210b16c",
@@ -904,6 +914,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -912,14 +929,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d5cc4834-8c7f-453b-88c2-daa6092476cc",
@@ -930,6 +940,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -938,14 +955,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "64f9ae7b-ddae-4d58-84ab-03c551fa6e88",
@@ -956,6 +966,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -964,13 +980,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "135cba55-8802-47a8-b34e-86744c39709f",
@@ -981,6 +991,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -989,13 +1005,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "2b9b9082-316c-419a-94df-bbb05efb835e",
@@ -1006,6 +1016,19 @@
             "descriptionEn": "Rhetorische Praxis Geschichtsschreibung",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "2c4d9d7d-c4f1-40cb-a21a-e171f824eb8e",
+                "d4fff173-4ca0-4746-9715-37022a59be67",
+                "543ecc74-8353-4f5b-8f84-1411b4310ed0",
+                "3b1f2431-f30c-4169-96ec-5b39def9c3fa",
+                "00ffdaf3-3e16-4fe8-a91d-15a76c93844c"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1014,20 +1037,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.5"
-            },
-            "requires": [],
-            "contains": [
-                "2c4d9d7d-c4f1-40cb-a21a-e171f824eb8e",
-                "d4fff173-4ca0-4746-9715-37022a59be67",
-                "543ecc74-8353-4f5b-8f84-1411b4310ed0",
-                "3b1f2431-f30c-4169-96ec-5b39def9c3fa",
-                "00ffdaf3-3e16-4fe8-a91d-15a76c93844c"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "2c4d9d7d-c4f1-40cb-a21a-e171f824eb8e",
@@ -1038,6 +1048,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1046,14 +1063,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d4fff173-4ca0-4746-9715-37022a59be67",
@@ -1064,6 +1074,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1072,14 +1089,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "543ecc74-8353-4f5b-8f84-1411b4310ed0",
@@ -1090,6 +1100,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1098,14 +1115,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "3b1f2431-f30c-4169-96ec-5b39def9c3fa",
@@ -1116,6 +1126,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -1124,13 +1140,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "00ffdaf3-3e16-4fe8-a91d-15a76c93844c",
@@ -1141,6 +1151,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -1149,13 +1165,7 @@
                 "phase": "Q1",
                 "area": "Literatur",
                 "topicCode": "Q1.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "2cb72238-1681-4898-bf2c-255e2a2b63a9",
@@ -1166,6 +1176,19 @@
             "descriptionEn": "Individuum und Gemeinschaft",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "cd8a3798-bc92-400a-ba07-7bdd28654431",
+                "c8adc2ab-be8c-4a3e-a540-30cfbbd01806",
+                "db75bbc2-cb71-4a17-90ae-dc9042109fa8",
+                "42a4ba99-9ac1-4321-be14-df7b0e9a8c53",
+                "68541e2c-3940-40a4-b86e-4f6894b47188"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1174,20 +1197,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.1"
-            },
-            "requires": [],
-            "contains": [
-                "cd8a3798-bc92-400a-ba07-7bdd28654431",
-                "c8adc2ab-be8c-4a3e-a540-30cfbbd01806",
-                "db75bbc2-cb71-4a17-90ae-dc9042109fa8",
-                "42a4ba99-9ac1-4321-be14-df7b0e9a8c53",
-                "68541e2c-3940-40a4-b86e-4f6894b47188"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "cd8a3798-bc92-400a-ba07-7bdd28654431",
@@ -1198,6 +1208,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1206,14 +1223,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "c8adc2ab-be8c-4a3e-a540-30cfbbd01806",
@@ -1224,6 +1234,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1232,14 +1249,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "db75bbc2-cb71-4a17-90ae-dc9042109fa8",
@@ -1250,6 +1260,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1258,14 +1275,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "42a4ba99-9ac1-4321-be14-df7b0e9a8c53",
@@ -1276,6 +1286,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -1284,13 +1300,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "68541e2c-3940-40a4-b86e-4f6894b47188",
@@ -1301,6 +1311,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -1309,13 +1325,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "9197340c-e89a-4522-8a7b-7df49d71d547",
@@ -1326,6 +1336,19 @@
             "descriptionEn": "Staatspräsentation im Prinzipat",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "8671d6ca-3ba0-4020-8b9f-d940272a2bf7",
+                "ff147545-6240-4d24-8aca-0cb7a6b74a92",
+                "8890465c-3ef4-42f0-bd34-c621ef5f4fa9",
+                "8be2d2c4-4dd7-409c-9725-f3305a75036f",
+                "554caa93-c833-4324-9752-7e5f714b6186"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1334,20 +1357,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.2"
-            },
-            "requires": [],
-            "contains": [
-                "8671d6ca-3ba0-4020-8b9f-d940272a2bf7",
-                "ff147545-6240-4d24-8aca-0cb7a6b74a92",
-                "8890465c-3ef4-42f0-bd34-c621ef5f4fa9",
-                "8be2d2c4-4dd7-409c-9725-f3305a75036f",
-                "554caa93-c833-4324-9752-7e5f714b6186"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "8671d6ca-3ba0-4020-8b9f-d940272a2bf7",
@@ -1358,6 +1368,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1366,14 +1383,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ff147545-6240-4d24-8aca-0cb7a6b74a92",
@@ -1384,6 +1394,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1392,14 +1409,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "8890465c-3ef4-42f0-bd34-c621ef5f4fa9",
@@ -1410,6 +1420,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1418,14 +1435,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "8be2d2c4-4dd7-409c-9725-f3305a75036f",
@@ -1436,6 +1446,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -1444,13 +1460,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "554caa93-c833-4324-9752-7e5f714b6186",
@@ -1461,6 +1471,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -1469,13 +1485,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "4cd166dd-3ce8-4545-a3c4-e6879728e75d",
@@ -1486,6 +1496,19 @@
             "descriptionEn": "Engagement oder Rückzug",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "fbce28d5-af46-47a1-a0ce-c4eddea9bace",
+                "5a62d8a7-9c60-4984-a1f8-2808a645e84e",
+                "a8a691de-b714-4a13-b0fc-31b3f19af6cc",
+                "538395ee-58bb-4ae2-94b6-bfac7ce7db05",
+                "a0b79a4d-9b0d-4c9f-9d2a-04cab2f74665"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1494,20 +1517,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.3"
-            },
-            "requires": [],
-            "contains": [
-                "fbce28d5-af46-47a1-a0ce-c4eddea9bace",
-                "5a62d8a7-9c60-4984-a1f8-2808a645e84e",
-                "a8a691de-b714-4a13-b0fc-31b3f19af6cc",
-                "538395ee-58bb-4ae2-94b6-bfac7ce7db05",
-                "a0b79a4d-9b0d-4c9f-9d2a-04cab2f74665"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "fbce28d5-af46-47a1-a0ce-c4eddea9bace",
@@ -1518,6 +1528,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1526,14 +1543,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5a62d8a7-9c60-4984-a1f8-2808a645e84e",
@@ -1544,6 +1554,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1552,14 +1569,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a8a691de-b714-4a13-b0fc-31b3f19af6cc",
@@ -1570,6 +1580,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1578,14 +1595,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "538395ee-58bb-4ae2-94b6-bfac7ce7db05",
@@ -1596,6 +1606,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -1604,13 +1620,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "a0b79a4d-9b0d-4c9f-9d2a-04cab2f74665",
@@ -1621,6 +1631,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -1629,13 +1645,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "6fe2c8ce-7ae9-42e3-b33d-fb6a91e0ea53",
@@ -1646,6 +1656,19 @@
             "descriptionEn": "Überleben in/außerhalb patria",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "dc727845-4b3c-464f-a8f0-84d0d15ddda1",
+                "735fff56-ab78-449c-a58b-f9659cf8fcad",
+                "0a367c37-1177-4c2e-bf99-49569665e03b",
+                "7fa1715b-bac9-43ee-9311-88ea729c10cd",
+                "28ebca51-10b6-4378-ae0d-e0b8362724ff"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1654,20 +1677,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.4"
-            },
-            "requires": [],
-            "contains": [
-                "dc727845-4b3c-464f-a8f0-84d0d15ddda1",
-                "735fff56-ab78-449c-a58b-f9659cf8fcad",
-                "0a367c37-1177-4c2e-bf99-49569665e03b",
-                "7fa1715b-bac9-43ee-9311-88ea729c10cd",
-                "28ebca51-10b6-4378-ae0d-e0b8362724ff"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "dc727845-4b3c-464f-a8f0-84d0d15ddda1",
@@ -1678,6 +1688,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1686,14 +1703,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "735fff56-ab78-449c-a58b-f9659cf8fcad",
@@ -1704,6 +1714,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1712,14 +1729,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "0a367c37-1177-4c2e-bf99-49569665e03b",
@@ -1730,6 +1740,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1738,14 +1755,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "7fa1715b-bac9-43ee-9311-88ea729c10cd",
@@ -1756,6 +1766,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -1764,13 +1780,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "28ebca51-10b6-4378-ae0d-e0b8362724ff",
@@ -1781,6 +1791,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -1789,13 +1805,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "71a69b8b-8d7b-49d6-822b-cc4a955fdb31",
@@ -1806,6 +1816,19 @@
             "descriptionEn": "humanitas Spannungsfeld",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "5c7f87ed-1475-4d70-881c-ed8f491fc697",
+                "d836755b-bf4f-4d27-b17c-ad39db05ddbb",
+                "2617039d-147d-45fa-9ebf-1a911273d633",
+                "01843c25-fa81-4eef-a769-a9726c0d5808",
+                "a924b336-c03a-43fe-b017-3ecb2fca77cf"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1814,20 +1837,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.5"
-            },
-            "requires": [],
-            "contains": [
-                "5c7f87ed-1475-4d70-881c-ed8f491fc697",
-                "d836755b-bf4f-4d27-b17c-ad39db05ddbb",
-                "2617039d-147d-45fa-9ebf-1a911273d633",
-                "01843c25-fa81-4eef-a769-a9726c0d5808",
-                "a924b336-c03a-43fe-b017-3ecb2fca77cf"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5c7f87ed-1475-4d70-881c-ed8f491fc697",
@@ -1838,6 +1848,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1846,14 +1863,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d836755b-bf4f-4d27-b17c-ad39db05ddbb",
@@ -1864,6 +1874,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1872,14 +1889,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "2617039d-147d-45fa-9ebf-1a911273d633",
@@ -1890,6 +1900,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1898,14 +1915,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "01843c25-fa81-4eef-a769-a9726c0d5808",
@@ -1916,6 +1926,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -1924,13 +1940,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "a924b336-c03a-43fe-b017-3ecb2fca77cf",
@@ -1941,6 +1951,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -1949,13 +1965,7 @@
                 "phase": "Q2",
                 "area": "Literatur",
                 "topicCode": "Q2.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "7f429ba9-8a88-48a1-8956-77dfdbaf54fe",
@@ -1966,6 +1976,19 @@
             "descriptionEn": "Lehren der Stoa",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "53b1a566-68bf-4f6f-afd0-7e9258abd906",
+                "94524c5b-0f4c-4417-bb08-3f2e12eefb5f",
+                "5b1eb6b2-fae5-4c28-9a1b-c66b5f69d2ae",
+                "e79fcab2-e556-4453-9f20-da88266fb2d0",
+                "a4b265de-3659-4d81-821b-df3b5c494b3a"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -1974,20 +1997,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.1"
-            },
-            "requires": [],
-            "contains": [
-                "53b1a566-68bf-4f6f-afd0-7e9258abd906",
-                "94524c5b-0f4c-4417-bb08-3f2e12eefb5f",
-                "5b1eb6b2-fae5-4c28-9a1b-c66b5f69d2ae",
-                "e79fcab2-e556-4453-9f20-da88266fb2d0",
-                "a4b265de-3659-4d81-821b-df3b5c494b3a"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "53b1a566-68bf-4f6f-afd0-7e9258abd906",
@@ -1998,6 +2008,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2006,14 +2023,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "94524c5b-0f4c-4417-bb08-3f2e12eefb5f",
@@ -2024,6 +2034,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2032,14 +2049,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5b1eb6b2-fae5-4c28-9a1b-c66b5f69d2ae",
@@ -2050,6 +2060,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2058,14 +2075,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e79fcab2-e556-4453-9f20-da88266fb2d0",
@@ -2076,6 +2086,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -2084,13 +2100,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "a4b265de-3659-4d81-821b-df3b5c494b3a",
@@ -2101,6 +2111,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -2109,13 +2125,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "52a15625-8aa2-4a5b-a857-3436af415f7e",
@@ -2126,6 +2136,19 @@
             "descriptionEn": "Lehren Epikurs",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "47701b3c-8a89-4a95-91df-6126779be3b8",
+                "1d7e1011-97c1-428a-8be9-1694bdc6c407",
+                "3e291358-6500-4707-bba5-dbf40087a59e",
+                "67de6310-c7cf-4750-859c-86461a81d9a1",
+                "cbb921b5-a1f1-4ff2-92e8-4ddb16730415"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2134,20 +2157,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.2"
-            },
-            "requires": [],
-            "contains": [
-                "47701b3c-8a89-4a95-91df-6126779be3b8",
-                "1d7e1011-97c1-428a-8be9-1694bdc6c407",
-                "3e291358-6500-4707-bba5-dbf40087a59e",
-                "67de6310-c7cf-4750-859c-86461a81d9a1",
-                "cbb921b5-a1f1-4ff2-92e8-4ddb16730415"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "47701b3c-8a89-4a95-91df-6126779be3b8",
@@ -2158,6 +2168,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2166,14 +2183,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "1d7e1011-97c1-428a-8be9-1694bdc6c407",
@@ -2184,6 +2194,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2192,14 +2209,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "3e291358-6500-4707-bba5-dbf40087a59e",
@@ -2210,6 +2220,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2218,14 +2235,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "67de6310-c7cf-4750-859c-86461a81d9a1",
@@ -2236,6 +2246,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -2244,13 +2260,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "cbb921b5-a1f1-4ff2-92e8-4ddb16730415",
@@ -2261,6 +2271,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -2269,13 +2285,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "a5060bfe-2b46-491d-82bd-e9e5b4a587d4",
@@ -2286,6 +2296,19 @@
             "descriptionEn": "Freiheit und Determinismus",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "6328764c-778a-45d0-862e-8f4785bc31db",
+                "37c1f056-91ea-4ccc-a801-2757673a5f17",
+                "e97b8447-c238-4847-a4bd-1c1c1778c681",
+                "7a52a3cc-fda2-4ea7-9b09-73137df0b435",
+                "013cae1b-f341-49ae-a37b-2232f327d46a"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2294,20 +2317,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.3"
-            },
-            "requires": [],
-            "contains": [
-                "6328764c-778a-45d0-862e-8f4785bc31db",
-                "37c1f056-91ea-4ccc-a801-2757673a5f17",
-                "e97b8447-c238-4847-a4bd-1c1c1778c681",
-                "7a52a3cc-fda2-4ea7-9b09-73137df0b435",
-                "013cae1b-f341-49ae-a37b-2232f327d46a"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "6328764c-778a-45d0-862e-8f4785bc31db",
@@ -2318,6 +2328,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2326,14 +2343,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "37c1f056-91ea-4ccc-a801-2757673a5f17",
@@ -2344,6 +2354,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2352,14 +2369,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e97b8447-c238-4847-a4bd-1c1c1778c681",
@@ -2370,6 +2380,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2378,14 +2395,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "7a52a3cc-fda2-4ea7-9b09-73137df0b435",
@@ -2396,6 +2406,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -2404,13 +2420,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "013cae1b-f341-49ae-a37b-2232f327d46a",
@@ -2421,6 +2431,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -2429,13 +2445,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "900f2280-e37b-473b-b002-ec7291a39aaf",
@@ -2446,6 +2456,19 @@
             "descriptionEn": "Menschliche Grunderfahrungen",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "0b123dc0-15c9-49c7-83cc-e0a8a1547251",
+                "d8366162-757a-4149-bcfc-6775f9b7e0fe",
+                "8f456e97-1fb3-4fd6-8c9b-5cb2f9041f2a",
+                "5fe96099-a862-42d7-a486-2c470a81d2fd",
+                "dec6de0a-af67-4731-9153-affae6cfcf68"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2454,20 +2477,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.4"
-            },
-            "requires": [],
-            "contains": [
-                "0b123dc0-15c9-49c7-83cc-e0a8a1547251",
-                "d8366162-757a-4149-bcfc-6775f9b7e0fe",
-                "8f456e97-1fb3-4fd6-8c9b-5cb2f9041f2a",
-                "5fe96099-a862-42d7-a486-2c470a81d2fd",
-                "dec6de0a-af67-4731-9153-affae6cfcf68"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "0b123dc0-15c9-49c7-83cc-e0a8a1547251",
@@ -2478,6 +2488,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2486,14 +2503,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d8366162-757a-4149-bcfc-6775f9b7e0fe",
@@ -2504,6 +2514,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2512,14 +2529,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "8f456e97-1fb3-4fd6-8c9b-5cb2f9041f2a",
@@ -2530,6 +2540,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2538,14 +2555,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5fe96099-a862-42d7-a486-2c470a81d2fd",
@@ -2556,6 +2566,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -2564,13 +2580,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "dec6de0a-af67-4731-9153-affae6cfcf68",
@@ -2581,6 +2591,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -2589,13 +2605,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "3eaa3f6f-7b40-40e8-b4b8-94bfa6d8aa5d",
@@ -2606,6 +2616,19 @@
             "descriptionEn": "Philosophie und Historiographie",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "919538e8-f7f9-47bc-b484-c6cc59312184",
+                "d2b8c087-67bd-4ab8-aab7-2adf202ab99f",
+                "4e3bdd85-d735-4513-9867-0000dcdc4db3",
+                "669f4d7e-3d62-4146-9108-ff21155dcb2c",
+                "00e2291f-1448-49a6-90c8-a967131e5a84"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2614,20 +2637,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.5"
-            },
-            "requires": [],
-            "contains": [
-                "919538e8-f7f9-47bc-b484-c6cc59312184",
-                "d2b8c087-67bd-4ab8-aab7-2adf202ab99f",
-                "4e3bdd85-d735-4513-9867-0000dcdc4db3",
-                "669f4d7e-3d62-4146-9108-ff21155dcb2c",
-                "00e2291f-1448-49a6-90c8-a967131e5a84"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "919538e8-f7f9-47bc-b484-c6cc59312184",
@@ -2638,6 +2648,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2646,14 +2663,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d2b8c087-67bd-4ab8-aab7-2adf202ab99f",
@@ -2664,6 +2674,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2672,14 +2689,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "4e3bdd85-d735-4513-9867-0000dcdc4db3",
@@ -2690,6 +2700,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2698,14 +2715,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "669f4d7e-3d62-4146-9108-ff21155dcb2c",
@@ -2716,6 +2726,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -2724,13 +2740,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "00e2291f-1448-49a6-90c8-a967131e5a84",
@@ -2741,6 +2751,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -2749,13 +2765,7 @@
                 "phase": "Q3",
                 "area": "Literatur",
                 "topicCode": "Q3.5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "238e0dbd-6eab-4ae1-a553-48d2fb8eaead",
@@ -2766,6 +2776,19 @@
             "descriptionEn": "Rezeption Rhetorik/Literatur",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "6fa4ab3e-4aee-423f-bab5-581e8cb0c782",
+                "12469fae-0b8d-4137-b128-2de2d1a405f5",
+                "05da4897-eb45-453d-816d-4b34d0d548aa",
+                "a63aad4f-0ffe-425e-8af7-2ec02a032a00",
+                "f27ca370-7754-49fe-9b95-5ee55093370d"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2774,20 +2797,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.1"
-            },
-            "requires": [],
-            "contains": [
-                "6fa4ab3e-4aee-423f-bab5-581e8cb0c782",
-                "12469fae-0b8d-4137-b128-2de2d1a405f5",
-                "05da4897-eb45-453d-816d-4b34d0d548aa",
-                "a63aad4f-0ffe-425e-8af7-2ec02a032a00",
-                "f27ca370-7754-49fe-9b95-5ee55093370d"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "6fa4ab3e-4aee-423f-bab5-581e8cb0c782",
@@ -2798,6 +2808,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2806,14 +2823,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "12469fae-0b8d-4137-b128-2de2d1a405f5",
@@ -2824,6 +2834,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2832,14 +2849,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "05da4897-eb45-453d-816d-4b34d0d548aa",
@@ -2850,6 +2860,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2858,14 +2875,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a63aad4f-0ffe-425e-8af7-2ec02a032a00",
@@ -2876,6 +2886,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -2884,13 +2900,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "f27ca370-7754-49fe-9b95-5ee55093370d",
@@ -2901,6 +2911,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -2909,13 +2925,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "4c35c5a1-f7ff-4cf0-9bba-1f9daaf6ae1d",
@@ -2926,6 +2936,19 @@
             "descriptionEn": "Rezeption Staatstheorien",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "5885b8a8-62cb-40f8-9566-02ee06721148",
+                "842698ff-6c44-426e-a42f-31cc6b4288ca",
+                "4e21a79b-e23b-4ec7-aff6-601c97dccabf",
+                "1f633fad-f8f3-4e71-be51-caa8b285e964",
+                "5683262f-cbb0-40b1-80ef-5acde75b1d9a"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2934,20 +2957,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.2"
-            },
-            "requires": [],
-            "contains": [
-                "5885b8a8-62cb-40f8-9566-02ee06721148",
-                "842698ff-6c44-426e-a42f-31cc6b4288ca",
-                "4e21a79b-e23b-4ec7-aff6-601c97dccabf",
-                "1f633fad-f8f3-4e71-be51-caa8b285e964",
-                "5683262f-cbb0-40b1-80ef-5acde75b1d9a"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "5885b8a8-62cb-40f8-9566-02ee06721148",
@@ -2958,6 +2968,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2966,14 +2983,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "842698ff-6c44-426e-a42f-31cc6b4288ca",
@@ -2984,6 +2994,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -2992,14 +3009,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "4e21a79b-e23b-4ec7-aff6-601c97dccabf",
@@ -3010,6 +3020,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -3018,14 +3035,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "1f633fad-f8f3-4e71-be51-caa8b285e964",
@@ -3036,6 +3046,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -3044,13 +3060,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "5683262f-cbb0-40b1-80ef-5acde75b1d9a",
@@ -3061,6 +3071,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -3069,13 +3085,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "78702875-9af2-42ab-a5a4-07f48fe83ece",
@@ -3086,6 +3096,19 @@
             "descriptionEn": "Rezeption antike Philosophie",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "fdbc336a-e661-45d4-b8b9-9257cdc9bc2e",
+                "adcda5a9-ba43-483b-97ed-0bd841abc138",
+                "c86652c0-a178-4ea2-af7d-b70c936713f0",
+                "89b91c44-0fce-4b23-9393-05a096dea4fa",
+                "79978065-f33a-4c2b-b882-bd31447dc4f5"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -3094,20 +3117,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.3"
-            },
-            "requires": [],
-            "contains": [
-                "fdbc336a-e661-45d4-b8b9-9257cdc9bc2e",
-                "adcda5a9-ba43-483b-97ed-0bd841abc138",
-                "c86652c0-a178-4ea2-af7d-b70c936713f0",
-                "89b91c44-0fce-4b23-9393-05a096dea4fa",
-                "79978065-f33a-4c2b-b882-bd31447dc4f5"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "fdbc336a-e661-45d4-b8b9-9257cdc9bc2e",
@@ -3118,6 +3128,13 @@
             "descriptionEn": "The learner can apply context/authors knowledge.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -3126,14 +3143,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "adcda5a9-ba43-483b-97ed-0bd841abc138",
@@ -3144,6 +3154,13 @@
             "descriptionEn": "The learner can apply text analysis.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -3152,14 +3169,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "c86652c0-a178-4ea2-af7d-b70c936713f0",
@@ -3170,6 +3180,13 @@
             "descriptionEn": "The learner can apply stylistic devices/rhetoric.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB2",
@@ -3178,14 +3195,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "89b91c44-0fce-4b23-9393-05a096dea4fa",
@@ -3196,6 +3206,12 @@
             "descriptionEn": "The learner can apply interpretation.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -3204,13 +3220,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "79978065-f33a-4c2b-b882-bd31447dc4f5",
@@ -3221,6 +3231,12 @@
             "descriptionEn": "The learner can apply comparison/transfer.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-latin",
                 "demandLevel": "AB3",
@@ -3229,23 +3245,7 @@
                 "phase": "Q4",
                 "area": "Literatur",
                 "topicCode": "Q4.3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
-        }
-    ],
-    "filters": [
-        {
-            "id": "GK",
-            "label": "Grundkurs"
-        },
-        {
-            "id": "LK",
-            "label": "Leistungskurs"
+            }
         }
     ]
 }

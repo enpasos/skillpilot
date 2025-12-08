@@ -1,12 +1,22 @@
 {
-    "title": "Chemie Oberstufe (Hessen, KC 2024)",
-    "titleEn": "Chemistry Upper Secondary (Hesse, KC 2024)",
-    "description": "Lernlandschaft für das hessische Kerncurriculum Chemie der gymnasialen Oberstufe (Ausgabe 2024).",
-    "descriptionEn": "Learning landscape for the Hessian core curriculum Chemistry (Upper Secondary, 2024 edition).",
     "landscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
     "locale": "de-DE",
     "subject": "Chemie",
     "frameworkId": "hessen-kc-2024-chemistry",
+    "title": "Chemie Oberstufe (Hessen, KC 2024)",
+    "titleEn": "Chemistry Upper Secondary (Hesse, KC 2024)",
+    "description": "Lernlandschaft für das hessische Kerncurriculum Chemie der gymnasialen Oberstufe (Ausgabe 2024).",
+    "descriptionEn": "Learning landscape for the Hessian core curriculum Chemistry (Upper Secondary, 2024 edition).",
+    "filters": [
+        {
+            "id": "GK",
+            "label": "Grundkurs"
+        },
+        {
+            "id": "LK",
+            "label": "Leistungskurs"
+        }
+    ],
     "goals": [
         {
             "id": "ee186c26-816c-4495-b37d-ec09f4e7761c",
@@ -17,6 +27,19 @@
             "descriptionEn": "Overarching goal: The learner can safely apply and reflect on central contents of Hessian upper secondary chemistry from redox concepts to organic compounds to sustainability.",
             "core": true,
             "weight": 1.2,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "a72207c1-0803-44c6-90be-2835121bbd18",
+                "1a5afd84-e78f-4947-a6c4-677f21fdf703",
+                "5863588e-092a-4432-afd9-c8b860424032",
+                "234a4af1-3a24-4c61-89f2-f1700ee1294e",
+                "d36c7b04-196b-4ce3-b086-9bbda02029f4"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -34,20 +57,7 @@
                 "phase": "GLOBAL",
                 "area": "Meta",
                 "topicCode": "GLOBAL"
-            },
-            "requires": [],
-            "contains": [
-                "a72207c1-0803-44c6-90be-2835121bbd18",
-                "1a5afd84-e78f-4947-a6c4-677f21fdf703",
-                "5863588e-092a-4432-afd9-c8b860424032",
-                "234a4af1-3a24-4c61-89f2-f1700ee1294e",
-                "d36c7b04-196b-4ce3-b086-9bbda02029f4"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a72207c1-0803-44c6-90be-2835121bbd18",
@@ -58,6 +68,19 @@
             "descriptionEn": "Grundlagen zu Redox- und Protolysereaktionen sowie ein erster Blick auf organische Stoffklassen und Energieträger.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "984581b5-0033-435a-b1bd-21575cf53fa6",
+                "c56f9f05-b697-49ce-9632-19cac46d314d",
+                "b0aacac3-7ff3-4971-a538-f0d3fc6c36fb",
+                "286cf84e-fa59-41df-98aa-ad403e3f1fa2",
+                "ff196419-6a0f-460d-abca-33c6d943a403"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -73,20 +96,7 @@
                 "phase": "E",
                 "area": "Meta",
                 "topicCode": "E"
-            },
-            "requires": [],
-            "contains": [
-                "984581b5-0033-435a-b1bd-21575cf53fa6",
-                "c56f9f05-b697-49ce-9632-19cac46d314d",
-                "b0aacac3-7ff3-4971-a538-f0d3fc6c36fb",
-                "286cf84e-fa59-41df-98aa-ad403e3f1fa2",
-                "ff196419-6a0f-460d-abca-33c6d943a403"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "984581b5-0033-435a-b1bd-21575cf53fa6",
@@ -97,6 +107,19 @@
             "descriptionEn": "Elektronenübergänge als zentrales Reaktionsprinzip verstehen und auf galvanische Zellen sowie Elektrolyse übertragen.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "76283163-1255-47ab-8ed4-2164e5b6babc",
+                "bb5a6336-d996-4d6c-a993-973faf47401b",
+                "abe62a49-2813-4308-a99f-95ed063335cd",
+                "95a60e08-ee4a-493c-bab6-95b5a773ebf1",
+                "68c40510-b4b0-4b23-8902-2f3b5a328523"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -110,20 +133,7 @@
                 "phase": "E",
                 "area": "Redox",
                 "topicCode": "E.1"
-            },
-            "requires": [],
-            "contains": [
-                "76283163-1255-47ab-8ed4-2164e5b6babc",
-                "bb5a6336-d996-4d6c-a993-973faf47401b",
-                "abe62a49-2813-4308-a99f-95ed063335cd",
-                "95a60e08-ee4a-493c-bab6-95b5a773ebf1",
-                "68c40510-b4b0-4b23-8902-2f3b5a328523"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "76283163-1255-47ab-8ed4-2164e5b6babc",
@@ -134,6 +144,13 @@
             "descriptionEn": "Die lernende Person kann Oxidation und Reduktion als Elektronenübergänge beschreiben, Oxidations- und Reduktionsmittel zuordnen und das Donator-Akzeptor-Prinzip an Beispielen erläutern.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -144,14 +161,7 @@
                 "phase": "E",
                 "area": "Redox",
                 "topicCode": "E.1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "bb5a6336-d996-4d6c-a993-973faf47401b",
@@ -162,6 +172,15 @@
             "descriptionEn": "Die lernende Person kann Oxidationszahlen für Atome in Verbindungen herleiten und Redoxgleichungen mithilfe von Oxidationszahlen ausgleichen.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "76283163-1255-47ab-8ed4-2164e5b6babc"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -172,16 +191,7 @@
                 "phase": "E",
                 "area": "Redox",
                 "topicCode": "E.1"
-            },
-            "requires": [
-                "76283163-1255-47ab-8ed4-2164e5b6babc"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "abe62a49-2813-4308-a99f-95ed063335cd",
@@ -192,6 +202,15 @@
             "descriptionEn": "Die lernende Person kann aus Metallabscheidungen und Messungen einfacher galvanischer Zellen eine verkürzte Redoxreihe erstellen und Donator-/Akzeptor-Paare kennzeichnen.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "bb5a6336-d996-4d6c-a993-973faf47401b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -205,16 +224,7 @@
                 "phase": "E",
                 "area": "Redox",
                 "topicCode": "E.1"
-            },
-            "requires": [
-                "bb5a6336-d996-4d6c-a993-973faf47401b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "95a60e08-ee4a-493c-bab6-95b5a773ebf1",
@@ -225,6 +235,15 @@
             "descriptionEn": "Die lernende Person kann Aufbau und Funktionsweise eines galvanischen Elements erläutern, Elektrodenreaktionen formulieren und die Zellspannung qualitativ erklären.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "abe62a49-2813-4308-a99f-95ed063335cd"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -236,16 +255,7 @@
                 "phase": "E",
                 "area": "Redox",
                 "topicCode": "E.1"
-            },
-            "requires": [
-                "abe62a49-2813-4308-a99f-95ed063335cd"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "68c40510-b4b0-4b23-8902-2f3b5a328523",
@@ -256,6 +266,15 @@
             "descriptionEn": "Die lernende Person kann an einem Beispiel die Elektrolyse erläutern, Stoffmengenbeziehungen angeben und Unterschiede zum galvanischen Element herausarbeiten.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "95a60e08-ee4a-493c-bab6-95b5a773ebf1"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -267,16 +286,7 @@
                 "phase": "E",
                 "area": "Redox",
                 "topicCode": "E.1"
-            },
-            "requires": [
-                "95a60e08-ee4a-493c-bab6-95b5a773ebf1"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "c56f9f05-b697-49ce-9632-19cac46d314d",
@@ -287,6 +297,19 @@
             "descriptionEn": "Säuren und Basen nach Arrhenius und Brønsted charakterisieren, pH-Werte berechnen und Titrationen sicher durchführen.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "598ce491-270c-4fe6-bea0-6e4140b3901d",
+                "14590470-b074-4fe0-b661-ea19e0e5a80b",
+                "f2d5e6e4-0fbb-49a0-bda2-46315fb4b805",
+                "7a34b0e9-5324-4911-ab8b-0b87a665d4b8",
+                "d30f85f0-334a-41d7-81b2-9bafde28b6ca"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -299,20 +322,7 @@
                 "phase": "E",
                 "area": "Säure-Base",
                 "topicCode": "E.2"
-            },
-            "requires": [],
-            "contains": [
-                "598ce491-270c-4fe6-bea0-6e4140b3901d",
-                "14590470-b074-4fe0-b661-ea19e0e5a80b",
-                "f2d5e6e4-0fbb-49a0-bda2-46315fb4b805",
-                "7a34b0e9-5324-4911-ab8b-0b87a665d4b8",
-                "d30f85f0-334a-41d7-81b2-9bafde28b6ca"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "598ce491-270c-4fe6-bea0-6e4140b3901d",
@@ -323,6 +333,15 @@
             "descriptionEn": "Die lernende Person kann typische anorganische Säuren und Basen anhand der Arrhenius-Definition benennen und ihre Formeln sicher angeben.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "76283163-1255-47ab-8ed4-2164e5b6babc"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -333,16 +352,7 @@
                 "phase": "E",
                 "area": "Säure-Base",
                 "topicCode": "E.2"
-            },
-            "requires": [
-                "76283163-1255-47ab-8ed4-2164e5b6babc"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "14590470-b074-4fe0-b661-ea19e0e5a80b",
@@ -353,6 +363,15 @@
             "descriptionEn": "Die lernende Person kann Stoffmengen, Konzentrationen und pH-Werte starker Säuren und Basen berechnen und Messergebnisse plausibilisieren.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "598ce491-270c-4fe6-bea0-6e4140b3901d"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -363,16 +382,7 @@
                 "phase": "E",
                 "area": "Säure-Base",
                 "topicCode": "E.2"
-            },
-            "requires": [
-                "598ce491-270c-4fe6-bea0-6e4140b3901d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "f2d5e6e4-0fbb-49a0-bda2-46315fb4b805",
@@ -383,6 +393,15 @@
             "descriptionEn": "Die lernende Person kann eine Titration mit Umschlagspunkt fachgerecht durchführen, Indikatoren auswählen und aus Volumina die Konzentration der Probe berechnen.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "14590470-b074-4fe0-b661-ea19e0e5a80b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -395,16 +414,7 @@
                 "phase": "E",
                 "area": "Säure-Base",
                 "topicCode": "E.2"
-            },
-            "requires": [
-                "14590470-b074-4fe0-b661-ea19e0e5a80b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "7a34b0e9-5324-4911-ab8b-0b87a665d4b8",
@@ -415,6 +425,15 @@
             "descriptionEn": "Die lernende Person kann Protolysegleichungen formulieren, korrespondierende Säure-Base-Paare identifizieren und Protonenübertragungen begründen.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "14590470-b074-4fe0-b661-ea19e0e5a80b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -425,16 +444,7 @@
                 "phase": "E",
                 "area": "Säure-Base",
                 "topicCode": "E.2"
-            },
-            "requires": [
-                "14590470-b074-4fe0-b661-ea19e0e5a80b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d30f85f0-334a-41d7-81b2-9bafde28b6ca",
@@ -445,6 +455,15 @@
             "descriptionEn": "Die lernende Person kann mithilfe des Brønsted-Modells Reaktionsrichtungen abschätzen, Oxonium- und Hydroxidionen nachweisen und Modellvorstellungen reflektieren.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "7a34b0e9-5324-4911-ab8b-0b87a665d4b8"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -455,16 +474,7 @@
                 "phase": "E",
                 "area": "Säure-Base",
                 "topicCode": "E.2"
-            },
-            "requires": [
-                "7a34b0e9-5324-4911-ab8b-0b87a665d4b8"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b0aacac3-7ff3-4971-a538-f0d3fc6c36fb",
@@ -475,6 +485,18 @@
             "descriptionEn": "Homologe Reihen, isomere Strukturen und erste funktionelle Gruppen als Grundlage der organischen Chemie verstehen.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "e576f45a-ef98-4a39-ad06-b3c7e0d2d4b9",
+                "f5492148-ed03-47a5-a642-4ec24de1eb60",
+                "deb8ad37-9e90-4e8e-9d95-b73851bf1417",
+                "0c2a8baa-c6f6-4b86-b760-e18185ba4d02"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -488,19 +510,7 @@
                 "phase": "E",
                 "area": "Organische Grundlagen",
                 "topicCode": "E.3"
-            },
-            "requires": [],
-            "contains": [
-                "e576f45a-ef98-4a39-ad06-b3c7e0d2d4b9",
-                "f5492148-ed03-47a5-a642-4ec24de1eb60",
-                "deb8ad37-9e90-4e8e-9d95-b73851bf1417",
-                "0c2a8baa-c6f6-4b86-b760-e18185ba4d02"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e576f45a-ef98-4a39-ad06-b3c7e0d2d4b9",
@@ -511,6 +521,15 @@
             "descriptionEn": "Die lernende Person kann Alkane und Alkene nomenklatorisch korrekt benennen, Strukturformeln skizzieren und einfache Isomerien unterscheiden.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "598ce491-270c-4fe6-bea0-6e4140b3901d"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -521,16 +540,7 @@
                 "phase": "E",
                 "area": "Organische Grundlagen",
                 "topicCode": "E.3"
-            },
-            "requires": [
-                "598ce491-270c-4fe6-bea0-6e4140b3901d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "f5492148-ed03-47a5-a642-4ec24de1eb60",
@@ -541,6 +551,15 @@
             "descriptionEn": "Die lernende Person kann den Einfluss von Van-der-Waals- und Wasserstoffbrücken auf Schmelz- und Siedetemperaturen sowie Löslichkeiten ausgewählter Stoffe begründen.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "e576f45a-ef98-4a39-ad06-b3c7e0d2d4b9"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -551,16 +570,7 @@
                 "phase": "E",
                 "area": "Organische Grundlagen",
                 "topicCode": "E.3"
-            },
-            "requires": [
-                "e576f45a-ef98-4a39-ad06-b3c7e0d2d4b9"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "deb8ad37-9e90-4e8e-9d95-b73851bf1417",
@@ -571,6 +581,15 @@
             "descriptionEn": "Die lernende Person kann den Mechanismus der Bromierung eines Alkans erläutern und Zwischenstufen mithilfe geeigneter Modelle darstellen.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "f5492148-ed03-47a5-a642-4ec24de1eb60"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -581,16 +600,7 @@
                 "phase": "E",
                 "area": "Organische Grundlagen",
                 "topicCode": "E.3"
-            },
-            "requires": [
-                "f5492148-ed03-47a5-a642-4ec24de1eb60"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "0c2a8baa-c6f6-4b86-b760-e18185ba4d02",
@@ -601,6 +611,15 @@
             "descriptionEn": "Die lernende Person kann Eigenschaften von Ethanol aus der Hydroxygruppe ableiten und Wirkungen sowie Risiken im Alltag beurteilen.",
             "core": true,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "f5492148-ed03-47a5-a642-4ec24de1eb60"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -612,16 +631,7 @@
                 "phase": "E",
                 "area": "Organische Grundlagen",
                 "topicCode": "E.3"
-            },
-            "requires": [
-                "f5492148-ed03-47a5-a642-4ec24de1eb60"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "286cf84e-fa59-41df-98aa-ad403e3f1fa2",
@@ -632,6 +642,17 @@
             "descriptionEn": "Fossile Rohstoffe gewinnen, trennen und unter Nachhaltigkeitsaspekten bewerten.",
             "core": false,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "e544c1f6-5ce8-4365-9c69-7a6b241e1b4c",
+                "cf5e20a9-22bb-4b7d-84a0-9edb69ee055e",
+                "46cd3833-36cf-4173-9c66-bc376fbc1947"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -644,18 +665,7 @@
                 "phase": "E",
                 "area": "Energiequellen",
                 "topicCode": "E.4"
-            },
-            "requires": [],
-            "contains": [
-                "e544c1f6-5ce8-4365-9c69-7a6b241e1b4c",
-                "cf5e20a9-22bb-4b7d-84a0-9edb69ee055e",
-                "46cd3833-36cf-4173-9c66-bc376fbc1947"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e544c1f6-5ce8-4365-9c69-7a6b241e1b4c",
@@ -666,6 +676,15 @@
             "descriptionEn": "Die lernende Person kann Lagerstätten, Fördermethoden und ökologische Risiken der Erdöl- und Erdgasgewinnung erläutern.",
             "core": false,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "0c2a8baa-c6f6-4b86-b760-e18185ba4d02"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -676,16 +695,7 @@
                 "phase": "E",
                 "area": "Energiequellen",
                 "topicCode": "E.4"
-            },
-            "requires": [
-                "0c2a8baa-c6f6-4b86-b760-e18185ba4d02"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "cf5e20a9-22bb-4b7d-84a0-9edb69ee055e",
@@ -696,6 +706,15 @@
             "descriptionEn": "Die lernende Person kann die fraktionierte Destillation sowie das thermische Cracken qualitativ beschreiben und typische Produkte zuordnen.",
             "core": false,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "e544c1f6-5ce8-4365-9c69-7a6b241e1b4c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -707,16 +726,7 @@
                 "phase": "E",
                 "area": "Energiequellen",
                 "topicCode": "E.4"
-            },
-            "requires": [
-                "e544c1f6-5ce8-4365-9c69-7a6b241e1b4c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "46cd3833-36cf-4173-9c66-bc376fbc1947",
@@ -727,6 +737,15 @@
             "descriptionEn": "Die lernende Person kann Verbrennungsreaktionen verschiedener Kohlenwasserstoffe vergleichen und energetische Kennzahlen im Kontext diskutieren.",
             "core": false,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "cf5e20a9-22bb-4b7d-84a0-9edb69ee055e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -737,16 +756,7 @@
                 "phase": "E",
                 "area": "Energiequellen",
                 "topicCode": "E.4"
-            },
-            "requires": [
-                "cf5e20a9-22bb-4b7d-84a0-9edb69ee055e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ff196419-6a0f-460d-abca-33c6d943a403",
@@ -757,6 +767,17 @@
             "descriptionEn": "Energieumwandlung in Brennstoffzellen und Akkumulatoren diskutieren.",
             "core": false,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "b81d2a1a-f831-41cf-96f4-b3d324f1f3b6",
+                "394f76e4-a00a-48d9-9223-74c3d96363cd",
+                "9d83b822-970b-4571-bf38-57dfec918330"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -767,18 +788,7 @@
                 "phase": "E",
                 "area": "Energiequellen",
                 "topicCode": "E.5"
-            },
-            "requires": [],
-            "contains": [
-                "b81d2a1a-f831-41cf-96f4-b3d324f1f3b6",
-                "394f76e4-a00a-48d9-9223-74c3d96363cd",
-                "9d83b822-970b-4571-bf38-57dfec918330"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b81d2a1a-f831-41cf-96f4-b3d324f1f3b6",
@@ -789,6 +799,16 @@
             "descriptionEn": "Die lernende Person kann die Vorgänge an den Elektroden einer Wasserstoff-Sauerstoff-Brennstoffzelle beschreiben und den Einsatz als Energiespeicher diskutieren.",
             "core": false,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "95a60e08-ee4a-493c-bab6-95b5a773ebf1",
+                "b9f32c77-7e8b-441f-9952-144fe86f9119"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -799,17 +819,7 @@
                 "phase": "E",
                 "area": "Energiequellen",
                 "topicCode": "E.5"
-            },
-            "requires": [
-                "95a60e08-ee4a-493c-bab6-95b5a773ebf1",
-                "b9f32c77-7e8b-441f-9952-144fe86f9119"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "394f76e4-a00a-48d9-9223-74c3d96363cd",
@@ -820,6 +830,15 @@
             "descriptionEn": "Die lernende Person kann Aufbau und Funktionsweise eines Lithium-Ionen-Akkus in vereinfachter Form erläutern und Nutzungsmöglichkeiten nennen.",
             "core": false,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "b81d2a1a-f831-41cf-96f4-b3d324f1f3b6"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -830,16 +849,7 @@
                 "phase": "E",
                 "area": "Energiequellen",
                 "topicCode": "E.5"
-            },
-            "requires": [
-                "b81d2a1a-f831-41cf-96f4-b3d324f1f3b6"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "9d83b822-970b-4571-bf38-57dfec918330",
@@ -850,6 +860,15 @@
             "descriptionEn": "Die lernende Person kann die elektrochemischen Prozesse im Blei-Akkumulator qualitativ deuten und Chancen sowie Grenzen als Energiespeicher benennen.",
             "core": false,
             "weight": 0.9,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "b81d2a1a-f831-41cf-96f4-b3d324f1f3b6"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -860,16 +879,7 @@
                 "phase": "E",
                 "area": "Energiequellen",
                 "topicCode": "E.5"
-            },
-            "requires": [
-                "b81d2a1a-f831-41cf-96f4-b3d324f1f3b6"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "1a5afd84-e78f-4947-a6c4-677f21fdf703",
@@ -880,6 +890,21 @@
             "descriptionEn": "Funktionelle Gruppen, Reaktionstypen und alltagsnahe Stoffklassen analysieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "d71478c0-23d8-4a21-8bc1-6f62ee2a263e",
+                "db2557e0-1720-43fb-be4e-db222ae3b34c",
+                "1fa48289-a254-4866-97de-a7fd960ded2a",
+                "fc5eeefd-7e9c-44e9-b25b-085d348e37e9",
+                "9d0837ba-3bb9-40b1-9baf-aa852f10cd73"
+            ],
+            "requires": [
+                "a72207c1-0803-44c6-90be-2835121bbd18"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -891,22 +916,7 @@
                 "phase": "Q1",
                 "area": "Organische Chemie",
                 "topicCode": "Q1"
-            },
-            "requires": [
-                "a72207c1-0803-44c6-90be-2835121bbd18"
-            ],
-            "contains": [
-                "d71478c0-23d8-4a21-8bc1-6f62ee2a263e",
-                "db2557e0-1720-43fb-be4e-db222ae3b34c",
-                "1fa48289-a254-4866-97de-a7fd960ded2a",
-                "fc5eeefd-7e9c-44e9-b25b-085d348e37e9",
-                "9d0837ba-3bb9-40b1-9baf-aa852f10cd73"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d71478c0-23d8-4a21-8bc1-6f62ee2a263e",
@@ -917,6 +927,24 @@
             "descriptionEn": "Intramolekulare Bindungen und intermolekulare Kräfte analysieren und mit Reaktionsmechanismen verknüpfen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "aee971bb-ffe4-446c-a857-e199252ef6f3",
+                "78d0285d-b84d-48c0-bf13-73e065f3ff96",
+                "964729f6-5239-4b7d-b21f-161a8d3a8f2b",
+                "da6b3030-da29-428f-9ebd-e0a6512c7155",
+                "3006abb6-a992-48fb-a464-a70fa8b7a4b8",
+                "929da470-71f2-4209-9dbc-67c9be190f5e",
+                "53e0ff42-55e9-4fb5-9cc7-8c2006f51789",
+                "e6208125-488c-4720-85e0-861aafc68d66"
+            ],
+            "requires": [
+                "b0aacac3-7ff3-4971-a538-f0d3fc6c36fb"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -929,25 +957,7 @@
                 "phase": "Q1",
                 "area": "Organische Chemie",
                 "topicCode": "Q1.1"
-            },
-            "requires": [
-                "b0aacac3-7ff3-4971-a538-f0d3fc6c36fb"
-            ],
-            "contains": [
-                "aee971bb-ffe4-446c-a857-e199252ef6f3",
-                "78d0285d-b84d-48c0-bf13-73e065f3ff96",
-                "964729f6-5239-4b7d-b21f-161a8d3a8f2b",
-                "da6b3030-da29-428f-9ebd-e0a6512c7155",
-                "3006abb6-a992-48fb-a464-a70fa8b7a4b8",
-                "929da470-71f2-4209-9dbc-67c9be190f5e",
-                "53e0ff42-55e9-4fb5-9cc7-8c2006f51789",
-                "e6208125-488c-4720-85e0-861aafc68d66"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "aee971bb-ffe4-446c-a857-e199252ef6f3",
@@ -958,6 +968,15 @@
             "descriptionEn": "Die lernende Person kann Metall-, Ionen- und Elektronenpaarbindungen sowie Molekülgeometrien mit dem EPA-Modell erläutern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "e576f45a-ef98-4a39-ad06-b3c7e0d2d4b9"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -968,16 +987,7 @@
                 "phase": "Q1",
                 "area": "Organische Chemie",
                 "topicCode": "Q1.1"
-            },
-            "requires": [
-                "e576f45a-ef98-4a39-ad06-b3c7e0d2d4b9"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "78d0285d-b84d-48c0-bf13-73e065f3ff96",
@@ -988,6 +998,15 @@
             "descriptionEn": "Die lernende Person kann Dipolkräfte, Wasserstoffbrücken, Ionen-Dipol-Wechselwirkungen und Van-der-Waals-Kräfte an Beispielen erläutern.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "aee971bb-ffe4-446c-a857-e199252ef6f3"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -998,16 +1017,7 @@
                 "phase": "Q1",
                 "area": "Organische Chemie",
                 "topicCode": "Q1.1"
-            },
-            "requires": [
-                "aee971bb-ffe4-446c-a857-e199252ef6f3"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "964729f6-5239-4b7d-b21f-161a8d3a8f2b",
@@ -1018,6 +1028,15 @@
             "descriptionEn": "Die lernende Person kann Schmelz- und Siedetemperaturen sowie Löslichkeiten homologer Reihen mithilfe molekularer Kräfte begründen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "78d0285d-b84d-48c0-bf13-73e065f3ff96"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1028,16 +1047,7 @@
                 "phase": "Q1",
                 "area": "Organische Chemie",
                 "topicCode": "Q1.1"
-            },
-            "requires": [
-                "78d0285d-b84d-48c0-bf13-73e065f3ff96"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "da6b3030-da29-428f-9ebd-e0a6512c7155",
@@ -1048,6 +1058,15 @@
             "descriptionEn": "Die lernende Person kann radikalische Substitutionen und elektrophile Additionen an ungesättigten Verbindungen erklären und Nachweismethoden angeben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "964729f6-5239-4b7d-b21f-161a8d3a8f2b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1058,16 +1077,7 @@
                 "phase": "Q1",
                 "area": "Organische Chemie",
                 "topicCode": "Q1.1"
-            },
-            "requires": [
-                "964729f6-5239-4b7d-b21f-161a8d3a8f2b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "3006abb6-a992-48fb-a464-a70fa8b7a4b8",
@@ -1078,6 +1088,14 @@
             "descriptionEn": "Die lernende Person kann den Mesomeriemechanismus im Benzol erklären und die elektrophile Substitution am Ring modellieren.",
             "core": false,
             "weight": 1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "da6b3030-da29-428f-9ebd-e0a6512c7155"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -1089,15 +1107,7 @@
                 "phase": "Q1",
                 "area": "Organische Chemie",
                 "topicCode": "Q1.1"
-            },
-            "requires": [
-                "da6b3030-da29-428f-9ebd-e0a6512c7155"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "db2557e0-1720-43fb-be4e-db222ae3b34c",
@@ -1108,20 +1118,9 @@
             "descriptionEn": "Eigenschaften, Nachweise und Reaktionen von Alkanolen, Aldehyden und Ketonen vergleichen.",
             "core": true,
             "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-chemistry",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [
-                    "BC_AUFBAU",
-                    "BC_REAKTION"
-                ],
-                "phase": "Q1",
-                "area": "Organische Chemie",
-                "topicCode": "Q1.2"
-            },
-            "requires": [
-                "d71478c0-23d8-4a21-8bc1-6f62ee2a263e"
+            "tags": [
+                "GK",
+                "LK"
             ],
             "contains": [
                 "c95a4093-a44b-4235-abfa-aedbd05891ad",
@@ -1133,170 +1132,10 @@
                 "827b211a-5bbf-4ba6-b16e-fac78f3b7524",
                 "d823f55b-df20-44f3-ab00-bcd6839e1db7"
             ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
-        },
-        {
-            "id": "c95a4093-a44b-4235-abfa-aedbd05891ad",
-            "shortKey": "chem_q1_2_01_alkanole",
-            "title": "Alkanole klassifizieren",
-            "titleEn": "Alkanole klassifizieren",
-            "description": "Die lernende Person kann Alkanole benennen, strukturformelgerechte Darstellungen nutzen und Konstitutionsisomere diskutieren.",
-            "descriptionEn": "Die lernende Person kann Alkanole benennen, strukturformelgerechte Darstellungen nutzen und Konstitutionsisomere diskutieren.",
-            "core": true,
-            "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-chemistry",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [
-                    "BC_AUFBAU"
-                ],
-                "phase": "Q1",
-                "area": "Organische Chemie",
-                "topicCode": "Q1.2"
-            },
             "requires": [
-                "964729f6-5239-4b7d-b21f-161a8d3a8f2b"
+                "d71478c0-23d8-4a21-8bc1-6f62ee2a263e"
             ],
-            "contains": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
-        },
-        {
-            "id": "8daad975-4282-4091-982f-98b77e62e47e",
-            "shortKey": "chem_q1_2_02_polare_eigenschaften",
-            "title": "Polare Eigenschaften erklären",
-            "titleEn": "Polare Eigenschaften erklären",
-            "description": "Die lernende Person kann Dipol-Dipol-Wechselwirkungen und Wasserstoffbrücken zur Deutung von Löslichkeit und Siedetemperatur heranziehen.",
-            "descriptionEn": "Die lernende Person kann Dipol-Dipol-Wechselwirkungen und Wasserstoffbrücken zur Deutung von Löslichkeit und Siedetemperatur heranziehen.",
-            "core": true,
-            "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-chemistry",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [
-                    "BC_AUFBAU"
-                ],
-                "phase": "Q1",
-                "area": "Organische Chemie",
-                "topicCode": "Q1.2"
-            },
-            "requires": [
-                "c95a4093-a44b-4235-abfa-aedbd05891ad"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
-        },
-        {
-            "id": "dbbbfa75-635a-44f7-9dca-c8f38a56794d",
-            "shortKey": "chem_q1_2_03_nukleophile_substitution",
-            "title": "Nukleophile Substitution anwenden",
-            "titleEn": "Nukleophile Substitution anwenden",
-            "description": "Die lernende Person kann Reaktionsgleichungen zwischen Halogenalkanen und Hydroxidionen formulieren und Nachweise für Halogenidionen beschreiben.",
-            "descriptionEn": "Die lernende Person kann Reaktionsgleichungen zwischen Halogenalkanen und Hydroxidionen formulieren und Nachweise für Halogenidionen beschreiben.",
-            "core": true,
-            "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-chemistry",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [
-                    "BC_REAKTION"
-                ],
-                "phase": "Q1",
-                "area": "Organische Chemie",
-                "topicCode": "Q1.2"
-            },
-            "requires": [
-                "8daad975-4282-4091-982f-98b77e62e47e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
-        },
-        {
-            "id": "646532d2-8f06-459b-88fc-03a6f71f5885",
-            "shortKey": "chem_q1_2_04_oxidation_alkanole",
-            "title": "Oxidation von Alkanolen vergleichen",
-            "titleEn": "Oxidation von Alkanolen vergleichen",
-            "description": "Die lernende Person kann primäre, sekundäre und tertiäre Alkanole unterscheiden und Oxidationsprodukte samt Nachweisen erläutern.",
-            "descriptionEn": "Die lernende Person kann primäre, sekundäre und tertiäre Alkanole unterscheiden und Oxidationsprodukte samt Nachweisen erläutern.",
-            "core": true,
-            "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-chemistry",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [
-                    "BC_REAKTION"
-                ],
-                "phase": "Q1",
-                "area": "Organische Chemie",
-                "topicCode": "Q1.2"
-            },
-            "requires": [
-                "8daad975-4282-4091-982f-98b77e62e47e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
-        },
-        {
-            "id": "fc09c008-3f3d-4958-a114-11fe7183931a",
-            "shortKey": "chem_q1_2_05_sn_mechanismen_lk",
-            "title": "Substitutionsmechanismen differenzieren (LK)",
-            "titleEn": "Substitutionsmechanismen differenzieren (LK)",
-            "description": "Die lernende Person kann SN1- und SN2-Mechanismen gegenüberstellen und sterische sowie induktive Effekte diskutieren.",
-            "descriptionEn": "Die lernende Person kann SN1- und SN2-Mechanismen gegenüberstellen und sterische sowie induktive Effekte diskutieren.",
-            "core": false,
-            "weight": 1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-chemistry",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [
-                    "BC_REAKTION"
-                ],
-                "phase": "Q1",
-                "area": "Organische Chemie",
-                "topicCode": "Q1.2"
-            },
-            "requires": [
-                "dbbbfa75-635a-44f7-9dca-c8f38a56794d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
-        },
-        {
-            "id": "1fa48289-a254-4866-97de-a7fd960ded2a",
-            "shortKey": "chem_q1_3_carbonsaeuren",
-            "title": "Q1.3 Alkansäuren und Derivate",
-            "titleEn": "Q1.3 Alkansäuren und Derivate",
-            "description": "Carbonsäuren und Ester strukturell beschreiben, Reaktionen bilanzieren und Anwendungen beurteilen.",
-            "descriptionEn": "Carbonsäuren und Ester strukturell beschreiben, Reaktionen bilanzieren und Anwendungen beurteilen.",
-            "core": true,
-            "weight": 1,
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1307,10 +1146,170 @@
                 ],
                 "phase": "Q1",
                 "area": "Organische Chemie",
-                "topicCode": "Q1.3"
-            },
+                "topicCode": "Q1.2"
+            }
+        },
+        {
+            "id": "c95a4093-a44b-4235-abfa-aedbd05891ad",
+            "shortKey": "chem_q1_2_01_alkanole",
+            "title": "Alkanole klassifizieren",
+            "titleEn": "Alkanole klassifizieren",
+            "description": "Die lernende Person kann Alkanole benennen, strukturformelgerechte Darstellungen nutzen und Konstitutionsisomere diskutieren.",
+            "descriptionEn": "Die lernende Person kann Alkanole benennen, strukturformelgerechte Darstellungen nutzen und Konstitutionsisomere diskutieren.",
+            "core": true,
+            "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
             "requires": [
-                "db2557e0-1720-43fb-be4e-db222ae3b34c"
+                "964729f6-5239-4b7d-b21f-161a8d3a8f2b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-chemistry",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [
+                    "BC_AUFBAU"
+                ],
+                "phase": "Q1",
+                "area": "Organische Chemie",
+                "topicCode": "Q1.2"
+            }
+        },
+        {
+            "id": "8daad975-4282-4091-982f-98b77e62e47e",
+            "shortKey": "chem_q1_2_02_polare_eigenschaften",
+            "title": "Polare Eigenschaften erklären",
+            "titleEn": "Polare Eigenschaften erklären",
+            "description": "Die lernende Person kann Dipol-Dipol-Wechselwirkungen und Wasserstoffbrücken zur Deutung von Löslichkeit und Siedetemperatur heranziehen.",
+            "descriptionEn": "Die lernende Person kann Dipol-Dipol-Wechselwirkungen und Wasserstoffbrücken zur Deutung von Löslichkeit und Siedetemperatur heranziehen.",
+            "core": true,
+            "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "c95a4093-a44b-4235-abfa-aedbd05891ad"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-chemistry",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [
+                    "BC_AUFBAU"
+                ],
+                "phase": "Q1",
+                "area": "Organische Chemie",
+                "topicCode": "Q1.2"
+            }
+        },
+        {
+            "id": "dbbbfa75-635a-44f7-9dca-c8f38a56794d",
+            "shortKey": "chem_q1_2_03_nukleophile_substitution",
+            "title": "Nukleophile Substitution anwenden",
+            "titleEn": "Nukleophile Substitution anwenden",
+            "description": "Die lernende Person kann Reaktionsgleichungen zwischen Halogenalkanen und Hydroxidionen formulieren und Nachweise für Halogenidionen beschreiben.",
+            "descriptionEn": "Die lernende Person kann Reaktionsgleichungen zwischen Halogenalkanen und Hydroxidionen formulieren und Nachweise für Halogenidionen beschreiben.",
+            "core": true,
+            "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "8daad975-4282-4091-982f-98b77e62e47e"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-chemistry",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [
+                    "BC_REAKTION"
+                ],
+                "phase": "Q1",
+                "area": "Organische Chemie",
+                "topicCode": "Q1.2"
+            }
+        },
+        {
+            "id": "646532d2-8f06-459b-88fc-03a6f71f5885",
+            "shortKey": "chem_q1_2_04_oxidation_alkanole",
+            "title": "Oxidation von Alkanolen vergleichen",
+            "titleEn": "Oxidation von Alkanolen vergleichen",
+            "description": "Die lernende Person kann primäre, sekundäre und tertiäre Alkanole unterscheiden und Oxidationsprodukte samt Nachweisen erläutern.",
+            "descriptionEn": "Die lernende Person kann primäre, sekundäre und tertiäre Alkanole unterscheiden und Oxidationsprodukte samt Nachweisen erläutern.",
+            "core": true,
+            "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "8daad975-4282-4091-982f-98b77e62e47e"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-chemistry",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [
+                    "BC_REAKTION"
+                ],
+                "phase": "Q1",
+                "area": "Organische Chemie",
+                "topicCode": "Q1.2"
+            }
+        },
+        {
+            "id": "fc09c008-3f3d-4958-a114-11fe7183931a",
+            "shortKey": "chem_q1_2_05_sn_mechanismen_lk",
+            "title": "Substitutionsmechanismen differenzieren (LK)",
+            "titleEn": "Substitutionsmechanismen differenzieren (LK)",
+            "description": "Die lernende Person kann SN1- und SN2-Mechanismen gegenüberstellen und sterische sowie induktive Effekte diskutieren.",
+            "descriptionEn": "Die lernende Person kann SN1- und SN2-Mechanismen gegenüberstellen und sterische sowie induktive Effekte diskutieren.",
+            "core": false,
+            "weight": 1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "dbbbfa75-635a-44f7-9dca-c8f38a56794d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-chemistry",
+                "demandLevel": "AB3",
+                "processCompetencies": [],
+                "guidingIdeas": [
+                    "BC_REAKTION"
+                ],
+                "phase": "Q1",
+                "area": "Organische Chemie",
+                "topicCode": "Q1.2"
+            }
+        },
+        {
+            "id": "1fa48289-a254-4866-97de-a7fd960ded2a",
+            "shortKey": "chem_q1_3_carbonsaeuren",
+            "title": "Q1.3 Alkansäuren und Derivate",
+            "titleEn": "Q1.3 Alkansäuren und Derivate",
+            "description": "Carbonsäuren und Ester strukturell beschreiben, Reaktionen bilanzieren und Anwendungen beurteilen.",
+            "descriptionEn": "Carbonsäuren und Ester strukturell beschreiben, Reaktionen bilanzieren und Anwendungen beurteilen.",
+            "core": true,
+            "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
             ],
             "contains": [
                 "5eedcbe1-949e-478e-a9c0-9945513f235e",
@@ -1322,11 +1321,22 @@
                 "a87f64e9-3c86-479c-902a-4d794b32c2f9",
                 "25ff1dc2-9222-4a84-ae20-67ad70626c0e"
             ],
+            "requires": [
+                "db2557e0-1720-43fb-be4e-db222ae3b34c"
+            ],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-chemistry",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [
+                    "BC_AUFBAU",
+                    "BC_REAKTION"
+                ],
+                "phase": "Q1",
+                "area": "Organische Chemie",
+                "topicCode": "Q1.3"
+            }
         },
         {
             "id": "5eedcbe1-949e-478e-a9c0-9945513f235e",
@@ -1337,6 +1347,15 @@
             "descriptionEn": "Die lernende Person kann Carboxylgruppen nachweisen, homologe Reihen darstellen und Strukturformeln sicher schreiben.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "646532d2-8f06-459b-88fc-03a6f71f5885"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1347,16 +1366,7 @@
                 "phase": "Q1",
                 "area": "Organische Chemie",
                 "topicCode": "Q1.3"
-            },
-            "requires": [
-                "646532d2-8f06-459b-88fc-03a6f71f5885"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "0d979a44-004b-4986-b947-b4033987218a",
@@ -1367,6 +1377,15 @@
             "descriptionEn": "Die lernende Person kann den Einfluss polarer Bindungen, induktiver Effekte und Mesomerie auf die Säurestärke von Carbonsäuren erklären.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "5eedcbe1-949e-478e-a9c0-9945513f235e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1378,16 +1397,7 @@
                 "phase": "Q1",
                 "area": "Organische Chemie",
                 "topicCode": "Q1.3"
-            },
-            "requires": [
-                "5eedcbe1-949e-478e-a9c0-9945513f235e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "664ba5ce-2ac9-4391-b56b-5282908c2588",
@@ -1398,6 +1408,15 @@
             "descriptionEn": "Die lernende Person kann Kondensationsreaktionen zwischen Alkoholen und Carbonsäuren formulieren und Anwendungen nennen.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "5eedcbe1-949e-478e-a9c0-9945513f235e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1408,16 +1427,7 @@
                 "phase": "Q1",
                 "area": "Organische Chemie",
                 "topicCode": "Q1.3"
-            },
-            "requires": [
-                "5eedcbe1-949e-478e-a9c0-9945513f235e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "74612f03-c029-4bdc-bc95-d7056868b7f7",
@@ -1428,6 +1438,15 @@
             "descriptionEn": "Die lernende Person kann saure und alkalische Esterhydrolysen unterscheiden und Reaktionsprodukte bilanzieren.",
             "core": true,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "664ba5ce-2ac9-4391-b56b-5282908c2588"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1438,16 +1457,7 @@
                 "phase": "Q1",
                 "area": "Organische Chemie",
                 "topicCode": "Q1.3"
-            },
-            "requires": [
-                "664ba5ce-2ac9-4391-b56b-5282908c2588"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "dbe8223d-2d84-4f56-bba6-4e943bda66e3",
@@ -1458,6 +1468,14 @@
             "descriptionEn": "Die lernende Person kann Di- und Tricarbonsäuren strukturell beschreiben und Mechanismen der alkalischen Esterhydrolyse vertiefen.",
             "core": false,
             "weight": 1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "74612f03-c029-4bdc-bc95-d7056868b7f7"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -1469,15 +1487,7 @@
                 "phase": "Q1",
                 "area": "Organische Chemie",
                 "topicCode": "Q1.3"
-            },
-            "requires": [
-                "74612f03-c029-4bdc-bc95-d7056868b7f7"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "fc5eeefd-7e9c-44e9-b25b-085d348e37e9",
@@ -1488,6 +1498,22 @@
             "descriptionEn": "Seifenherstellung, Tensidstruktur und Waschprozesse verstehen.",
             "core": false,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "16f6adaa-beca-4a39-9156-03d76dbf4458",
+                "4529a2c3-571d-4df8-8481-65f4f2525564",
+                "942d1aee-ffa1-4390-99db-4bb021366c70",
+                "be5ff0dc-9ebf-4176-ab2c-effb3a96915d",
+                "e9a6d454-287d-4764-95b2-31318bc88d88",
+                "002ef55a-ddbb-46f1-847b-b30f75194975"
+            ],
+            "requires": [
+                "1fa48289-a254-4866-97de-a7fd960ded2a"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1499,23 +1525,7 @@
                 "phase": "Q1",
                 "area": "Anwendungen",
                 "topicCode": "Q1.4"
-            },
-            "requires": [
-                "1fa48289-a254-4866-97de-a7fd960ded2a"
-            ],
-            "contains": [
-                "16f6adaa-beca-4a39-9156-03d76dbf4458",
-                "4529a2c3-571d-4df8-8481-65f4f2525564",
-                "942d1aee-ffa1-4390-99db-4bb021366c70",
-                "be5ff0dc-9ebf-4176-ab2c-effb3a96915d",
-                "e9a6d454-287d-4764-95b2-31318bc88d88",
-                "002ef55a-ddbb-46f1-847b-b30f75194975"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "16f6adaa-beca-4a39-9156-03d76dbf4458",
@@ -1526,6 +1536,15 @@
             "descriptionEn": "Die lernende Person kann die alkalische Hydrolyse von Fetten beschreiben und Produkte trennen.",
             "core": false,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "664ba5ce-2ac9-4391-b56b-5282908c2588"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1536,16 +1555,7 @@
                 "phase": "Q1",
                 "area": "Anwendungen",
                 "topicCode": "Q1.4"
-            },
-            "requires": [
-                "664ba5ce-2ac9-4391-b56b-5282908c2588"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "4529a2c3-571d-4df8-8481-65f4f2525564",
@@ -1556,6 +1566,15 @@
             "descriptionEn": "Die lernende Person kann Aufbau von Seifen an Grenzflächen erklären und Emulgatorwirkung beschreiben.",
             "core": false,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "16f6adaa-beca-4a39-9156-03d76dbf4458"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1566,16 +1585,7 @@
                 "phase": "Q1",
                 "area": "Anwendungen",
                 "topicCode": "Q1.4"
-            },
-            "requires": [
-                "16f6adaa-beca-4a39-9156-03d76dbf4458"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "942d1aee-ffa1-4390-99db-4bb021366c70",
@@ -1586,6 +1596,15 @@
             "descriptionEn": "Die lernende Person kann Faktoren der Waschwirkung wie Temperatur, Wasserhärte und Tensidkonzentration diskutieren.",
             "core": false,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "4529a2c3-571d-4df8-8481-65f4f2525564"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1597,16 +1616,7 @@
                 "phase": "Q1",
                 "area": "Anwendungen",
                 "topicCode": "Q1.4"
-            },
-            "requires": [
-                "4529a2c3-571d-4df8-8481-65f4f2525564"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "be5ff0dc-9ebf-4176-ab2c-effb3a96915d",
@@ -1617,6 +1627,14 @@
             "descriptionEn": "Die lernende Person kann permanente und temporäre Härte unterscheiden und Verfahren zur Enthärtung erläutern.",
             "core": false,
             "weight": 1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "942d1aee-ffa1-4390-99db-4bb021366c70"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -1627,15 +1645,7 @@
                 "phase": "Q1",
                 "area": "Anwendungen",
                 "topicCode": "Q1.4"
-            },
-            "requires": [
-                "942d1aee-ffa1-4390-99db-4bb021366c70"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "9d0837ba-3bb9-40b1-9baf-aa852f10cd73",
@@ -1646,6 +1656,19 @@
             "descriptionEn": "Strategien zur Lebensmittelkonservierung vergleichen und bewerten.",
             "core": false,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "9c18b640-588a-42e8-9941-7ab6e6f832f7",
+                "00c2c149-f860-4e2c-97aa-b517a2843213",
+                "c890cce9-322e-4090-bff0-e0e00c43c534",
+                "537d5ba1-f869-43ff-84f2-bfc15f266cf7",
+                "e28aa00f-b9f9-40f5-814e-295c8796c500"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1657,20 +1680,7 @@
                 "phase": "Q1",
                 "area": "Anwendungen",
                 "topicCode": "Q1.5"
-            },
-            "requires": [],
-            "contains": [
-                "9c18b640-588a-42e8-9941-7ab6e6f832f7",
-                "00c2c149-f860-4e2c-97aa-b517a2843213",
-                "c890cce9-322e-4090-bff0-e0e00c43c534",
-                "537d5ba1-f869-43ff-84f2-bfc15f266cf7",
-                "e28aa00f-b9f9-40f5-814e-295c8796c500"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "9c18b640-588a-42e8-9941-7ab6e6f832f7",
@@ -1681,6 +1691,15 @@
             "descriptionEn": "Die lernende Person kann historische und moderne Verfahren der Lebensmittelkonservierung gegenüberstellen und Risiken benennen.",
             "core": false,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "5eedcbe1-949e-478e-a9c0-9945513f235e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1691,16 +1710,7 @@
                 "phase": "Q1",
                 "area": "Anwendungen",
                 "topicCode": "Q1.5"
-            },
-            "requires": [
-                "5eedcbe1-949e-478e-a9c0-9945513f235e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "00c2c149-f860-4e2c-97aa-b517a2843213",
@@ -1711,6 +1721,15 @@
             "descriptionEn": "Die lernende Person kann einen qualitativen Nachweis für Ascorbinsäure durchführen und als Antioxidans deuten.",
             "core": false,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "9c18b640-588a-42e8-9941-7ab6e6f832f7"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1721,16 +1740,7 @@
                 "phase": "Q1",
                 "area": "Anwendungen",
                 "topicCode": "Q1.5"
-            },
-            "requires": [
-                "9c18b640-588a-42e8-9941-7ab6e6f832f7"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "c890cce9-322e-4090-bff0-e0e00c43c534",
@@ -1741,6 +1751,15 @@
             "descriptionEn": "Die lernende Person kann Wirkweise, Dosierung und rechtliche Aspekte von Sorbinsäure als Konservierungsstoff erläutern.",
             "core": false,
             "weight": 1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "9c18b640-588a-42e8-9941-7ab6e6f832f7"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1752,16 +1771,7 @@
                 "phase": "Q1",
                 "area": "Anwendungen",
                 "topicCode": "Q1.5"
-            },
-            "requires": [
-                "9c18b640-588a-42e8-9941-7ab6e6f832f7"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "537d5ba1-f869-43ff-84f2-bfc15f266cf7",
@@ -1772,6 +1782,14 @@
             "descriptionEn": "Die lernende Person kann den Gehalt von Ascorbinsäure oder p-Hydroxybenzoesäureestern mithilfe geeigneter Verfahren bestimmen.",
             "core": false,
             "weight": 1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "00c2c149-f860-4e2c-97aa-b517a2843213"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -1782,15 +1800,7 @@
                 "phase": "Q1",
                 "area": "Anwendungen",
                 "topicCode": "Q1.5"
-            },
-            "requires": [
-                "00c2c149-f860-4e2c-97aa-b517a2843213"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "5863588e-092a-4432-afd9-c8b860424032",
@@ -1801,6 +1811,20 @@
             "descriptionEn": "Proteine, Kohlenhydrate, Fette sowie Kunststoffe analysieren und nachhaltige Synthesewege entwickeln.",
             "core": true,
             "weight": 1.05,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "1507ed0d-068f-4fab-8125-abf33076893a",
+                "2b75db6e-3be7-4c96-8f31-b960dd75ac20",
+                "30b2b3da-9613-42ca-8e28-27dfc61771b6",
+                "fbf3c146-d99e-415a-8049-5ead89b04f60"
+            ],
+            "requires": [
+                "1a5afd84-e78f-4947-a6c4-677f21fdf703"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1812,21 +1836,7 @@
                 "phase": "Q2",
                 "area": "Organische Chemie",
                 "topicCode": "Q2"
-            },
-            "requires": [
-                "1a5afd84-e78f-4947-a6c4-677f21fdf703"
-            ],
-            "contains": [
-                "1507ed0d-068f-4fab-8125-abf33076893a",
-                "2b75db6e-3be7-4c96-8f31-b960dd75ac20",
-                "30b2b3da-9613-42ca-8e28-27dfc61771b6",
-                "fbf3c146-d99e-415a-8049-5ead89b04f60"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "1507ed0d-068f-4fab-8125-abf33076893a",
@@ -1837,19 +1847,10 @@
             "descriptionEn": "Aufbau und Reaktionen von Aminosäuren, Proteinen, Kohlenhydraten und Fetten untersuchen.",
             "core": true,
             "weight": 1.05,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-chemistry",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [
-                    "BC_AUFBAU",
-                    "BC_REAKTION"
-                ],
-                "phase": "Q2",
-                "area": "Naturstoffe",
-                "topicCode": "Q2.1"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "f47e4008-d1da-40ef-854b-b6f4a3fb742a",
                 "cd5c7f13-f056-4ba5-a066-099406e6b6fb",
@@ -1860,11 +1861,20 @@
                 "dca99cca-2415-4a02-abd0-24703ae00ce3",
                 "b1d67cdc-f748-4167-a8aa-79d4c0f657a5"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-chemistry",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [
+                    "BC_AUFBAU",
+                    "BC_REAKTION"
+                ],
+                "phase": "Q2",
+                "area": "Naturstoffe",
+                "topicCode": "Q2.1"
+            }
         },
         {
             "id": "f47e4008-d1da-40ef-854b-b6f4a3fb742a",
@@ -1875,6 +1885,15 @@
             "descriptionEn": "Die lernende Person kann Struktur, Zwitterionenbildung und Säure-Base-Eigenschaften proteinogener Aminosäuren darstellen.",
             "core": true,
             "weight": 1.05,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "0d979a44-004b-4986-b947-b4033987218a"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1885,16 +1904,7 @@
                 "phase": "Q2",
                 "area": "Naturstoffe",
                 "topicCode": "Q2.1"
-            },
-            "requires": [
-                "0d979a44-004b-4986-b947-b4033987218a"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "cd5c7f13-f056-4ba5-a066-099406e6b6fb",
@@ -1905,6 +1915,15 @@
             "descriptionEn": "Die lernende Person kann Kondensationsreaktionen zwischen Aminosäuren formulieren und den Aufbau von Proteinen beschreiben.",
             "core": true,
             "weight": 1.05,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "f47e4008-d1da-40ef-854b-b6f4a3fb742a"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1915,16 +1934,7 @@
                 "phase": "Q2",
                 "area": "Naturstoffe",
                 "topicCode": "Q2.1"
-            },
-            "requires": [
-                "f47e4008-d1da-40ef-854b-b6f4a3fb742a"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e624ba00-9202-4dbf-ab86-0c7dd93089e6",
@@ -1935,6 +1945,15 @@
             "descriptionEn": "Die lernende Person kann Mono-, Di- und Polysaccharide unterscheiden, Nachweise erläutern und Strukturmerkmale deuten.",
             "core": true,
             "weight": 1.05,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "664ba5ce-2ac9-4391-b56b-5282908c2588"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1945,16 +1964,7 @@
                 "phase": "Q2",
                 "area": "Naturstoffe",
                 "topicCode": "Q2.1"
-            },
-            "requires": [
-                "664ba5ce-2ac9-4391-b56b-5282908c2588"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d7ce7699-8bf3-4efc-93bf-013912db5cf0",
@@ -1965,6 +1975,15 @@
             "descriptionEn": "Die lernende Person kann Zusammensetzung, Sättigungsgrad und Hydrierung von Fetten erklären und Bedeutung für Ernährung diskutieren.",
             "core": true,
             "weight": 1.05,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "16f6adaa-beca-4a39-9156-03d76dbf4458"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -1976,16 +1995,7 @@
                 "phase": "Q2",
                 "area": "Naturstoffe",
                 "topicCode": "Q2.1"
-            },
-            "requires": [
-                "16f6adaa-beca-4a39-9156-03d76dbf4458"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "fb09b9cb-0d23-4c33-b89a-8b288f03e00d",
@@ -1996,6 +2006,14 @@
             "descriptionEn": "Die lernende Person kann Dünnschichtchromatografie von Aminosäuren planen, Laufmittel wählen und Rf-Werte auswerten.",
             "core": false,
             "weight": 1.05,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "f47e4008-d1da-40ef-854b-b6f4a3fb742a"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -2006,15 +2024,7 @@
                 "phase": "Q2",
                 "area": "Naturstoffe",
                 "topicCode": "Q2.1"
-            },
-            "requires": [
-                "f47e4008-d1da-40ef-854b-b6f4a3fb742a"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "2b75db6e-3be7-4c96-8f31-b960dd75ac20",
@@ -2025,6 +2035,22 @@
             "descriptionEn": "Polymerklassen, Synthesereaktionen und Recyclingstrategien vergleichen.",
             "core": true,
             "weight": 1.05,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "80a3b3e7-c22f-4c0f-879a-a60f4df57934",
+                "db0ff738-dde5-458f-8ed2-91e8fc99df2a",
+                "ccec2c0a-1d79-4da0-b446-2be76de6b6dd",
+                "b3016703-0884-40bd-9261-2b854bff83b2",
+                "c6d28506-6412-4ce8-9b4f-f1b451a73a18",
+                "9994dd5a-cbf8-47a4-9c84-617163dfc57f",
+                "a28842cb-65f9-422b-ae56-c3ad41270b38",
+                "ac519458-a7e7-4bce-abf8-4e4c2d495950"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2036,23 +2062,7 @@
                 "phase": "Q2",
                 "area": "Polymerchemie",
                 "topicCode": "Q2.2"
-            },
-            "requires": [],
-            "contains": [
-                "80a3b3e7-c22f-4c0f-879a-a60f4df57934",
-                "db0ff738-dde5-458f-8ed2-91e8fc99df2a",
-                "ccec2c0a-1d79-4da0-b446-2be76de6b6dd",
-                "b3016703-0884-40bd-9261-2b854bff83b2",
-                "c6d28506-6412-4ce8-9b4f-f1b451a73a18",
-                "9994dd5a-cbf8-47a4-9c84-617163dfc57f",
-                "a28842cb-65f9-422b-ae56-c3ad41270b38",
-                "ac519458-a7e7-4bce-abf8-4e4c2d495950"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "80a3b3e7-c22f-4c0f-879a-a60f4df57934",
@@ -2063,6 +2073,15 @@
             "descriptionEn": "Die lernende Person kann Thermoplaste, Duroplaste und Elastomere anhand ihrer Struktur und Eigenschaften unterscheiden.",
             "core": true,
             "weight": 1.05,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "d7ce7699-8bf3-4efc-93bf-013912db5cf0"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2073,16 +2092,7 @@
                 "phase": "Q2",
                 "area": "Polymerchemie",
                 "topicCode": "Q2.2"
-            },
-            "requires": [
-                "d7ce7699-8bf3-4efc-93bf-013912db5cf0"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "db0ff738-dde5-458f-8ed2-91e8fc99df2a",
@@ -2093,6 +2103,15 @@
             "descriptionEn": "Die lernende Person kann den Mechanismus der radikalischen Polymerisation skizzieren und die Herstellung von Polyethylen erläutern.",
             "core": true,
             "weight": 1.05,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "80a3b3e7-c22f-4c0f-879a-a60f4df57934"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2103,16 +2122,7 @@
                 "phase": "Q2",
                 "area": "Polymerchemie",
                 "topicCode": "Q2.2"
-            },
-            "requires": [
-                "80a3b3e7-c22f-4c0f-879a-a60f4df57934"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ccec2c0a-1d79-4da0-b446-2be76de6b6dd",
@@ -2123,6 +2133,15 @@
             "descriptionEn": "Die lernende Person kann die Bildung von Polyestern oder Polyamiden beschreiben und Monomere zuordnen.",
             "core": true,
             "weight": 1.05,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "db0ff738-dde5-458f-8ed2-91e8fc99df2a"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2133,16 +2152,7 @@
                 "phase": "Q2",
                 "area": "Polymerchemie",
                 "topicCode": "Q2.2"
-            },
-            "requires": [
-                "db0ff738-dde5-458f-8ed2-91e8fc99df2a"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b3016703-0884-40bd-9261-2b854bff83b2",
@@ -2153,6 +2163,15 @@
             "descriptionEn": "Die lernende Person kann werkstoffliches und rohstoffliches Recycling erklären und ökologische Aspekte diskutieren.",
             "core": true,
             "weight": 1.05,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "ccec2c0a-1d79-4da0-b446-2be76de6b6dd"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2164,16 +2183,7 @@
                 "phase": "Q2",
                 "area": "Polymerchemie",
                 "topicCode": "Q2.2"
-            },
-            "requires": [
-                "ccec2c0a-1d79-4da0-b446-2be76de6b6dd"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "c6d28506-6412-4ce8-9b4f-f1b451a73a18",
@@ -2184,6 +2194,14 @@
             "descriptionEn": "Die lernende Person kann die Bildung von Polyurethanen erläutern und Besonderheiten der Reaktionsführung erklären.",
             "core": false,
             "weight": 1.05,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "db0ff738-dde5-458f-8ed2-91e8fc99df2a"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -2194,15 +2212,7 @@
                 "phase": "Q2",
                 "area": "Polymerchemie",
                 "topicCode": "Q2.2"
-            },
-            "requires": [
-                "db0ff738-dde5-458f-8ed2-91e8fc99df2a"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "30b2b3da-9613-42ca-8e28-27dfc61771b6",
@@ -2213,6 +2223,19 @@
             "descriptionEn": "Aromatische Systeme strukturell und reaktiv vertiefen.",
             "core": false,
             "weight": 1.05,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "d9e9d0ed-821b-4a2d-aee3-2ff226845564",
+                "b3c216ea-48ff-4fc0-824d-aa2578fab1ed",
+                "3769b5d5-ef6a-40bb-ba50-bd3d378e7579",
+                "7dba3ed5-555c-4f6a-aa0e-20dd47b1ecbc",
+                "4674b851-864a-4362-987b-0ac265d2f1d6"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2224,20 +2247,7 @@
                 "phase": "Q2",
                 "area": "Organische Chemie",
                 "topicCode": "Q2.3"
-            },
-            "requires": [],
-            "contains": [
-                "d9e9d0ed-821b-4a2d-aee3-2ff226845564",
-                "b3c216ea-48ff-4fc0-824d-aa2578fab1ed",
-                "3769b5d5-ef6a-40bb-ba50-bd3d378e7579",
-                "7dba3ed5-555c-4f6a-aa0e-20dd47b1ecbc",
-                "4674b851-864a-4362-987b-0ac265d2f1d6"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d9e9d0ed-821b-4a2d-aee3-2ff226845564",
@@ -2248,6 +2258,15 @@
             "descriptionEn": "Die lernende Person kann das delokalisierte π-System und die besondere Stabilität von Benzol mithilfe des Mesomeriemodells erklären.",
             "core": false,
             "weight": 1.05,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "3006abb6-a992-48fb-a464-a70fa8b7a4b8"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2258,16 +2277,7 @@
                 "phase": "Q2",
                 "area": "Organische Chemie",
                 "topicCode": "Q2.3"
-            },
-            "requires": [
-                "3006abb6-a992-48fb-a464-a70fa8b7a4b8"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b3c216ea-48ff-4fc0-824d-aa2578fab1ed",
@@ -2278,6 +2288,15 @@
             "descriptionEn": "Die lernende Person kann den Mechanismus der elektrophilen Substitution am Aromaten erläutern und Reaktionsbedingungen diskutieren.",
             "core": false,
             "weight": 1.05,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "d9e9d0ed-821b-4a2d-aee3-2ff226845564"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2288,16 +2307,7 @@
                 "phase": "Q2",
                 "area": "Organische Chemie",
                 "topicCode": "Q2.3"
-            },
-            "requires": [
-                "d9e9d0ed-821b-4a2d-aee3-2ff226845564"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "3769b5d5-ef6a-40bb-ba50-bd3d378e7579",
@@ -2308,6 +2318,14 @@
             "descriptionEn": "Die lernende Person kann induktive und mesomere Effekte bei Zweitsubstitutionen erklären und Beispiele wie Toluol oder Phenol diskutieren.",
             "core": false,
             "weight": 1.05,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "b3c216ea-48ff-4fc0-824d-aa2578fab1ed"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -2318,15 +2336,7 @@
                 "phase": "Q2",
                 "area": "Organische Chemie",
                 "topicCode": "Q2.3"
-            },
-            "requires": [
-                "b3c216ea-48ff-4fc0-824d-aa2578fab1ed"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "fbf3c146-d99e-415a-8049-5ead89b04f60",
@@ -2337,6 +2347,18 @@
             "descriptionEn": "Biobasierte Polymere und elastische Werkstoffe bewerten.",
             "core": false,
             "weight": 1.05,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "d40be26e-d3b8-4442-8039-cc9aaab9620d",
+                "6cf84872-d737-41d4-ad67-68c2f8d5c999",
+                "83d644f0-ef79-4242-a5db-80845a160520",
+                "308f9f22-faf4-4f0f-92d9-e8d139c8c9b0"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2348,19 +2370,7 @@
                 "phase": "Q2",
                 "area": "Polymerchemie",
                 "topicCode": "Q2.4"
-            },
-            "requires": [],
-            "contains": [
-                "d40be26e-d3b8-4442-8039-cc9aaab9620d",
-                "6cf84872-d737-41d4-ad67-68c2f8d5c999",
-                "83d644f0-ef79-4242-a5db-80845a160520",
-                "308f9f22-faf4-4f0f-92d9-e8d139c8c9b0"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d40be26e-d3b8-4442-8039-cc9aaab9620d",
@@ -2371,6 +2381,15 @@
             "descriptionEn": "Die lernende Person kann Synthese und Eigenschaften von Polymilchsäure (PLA) beschreiben und Einsatzfelder nennen.",
             "core": false,
             "weight": 1.05,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "ccec2c0a-1d79-4da0-b446-2be76de6b6dd"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2381,16 +2400,7 @@
                 "phase": "Q2",
                 "area": "Polymerchemie",
                 "topicCode": "Q2.4"
-            },
-            "requires": [
-                "ccec2c0a-1d79-4da0-b446-2be76de6b6dd"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "6cf84872-d737-41d4-ad67-68c2f8d5c999",
@@ -2401,6 +2411,15 @@
             "descriptionEn": "Die lernende Person kann Aufbau und Eigenschaften einfacher Copolymere erläutern und Vorteile gegenüber Homopolymeren diskutieren.",
             "core": false,
             "weight": 1.05,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "d40be26e-d3b8-4442-8039-cc9aaab9620d"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2411,16 +2430,7 @@
                 "phase": "Q2",
                 "area": "Polymerchemie",
                 "topicCode": "Q2.4"
-            },
-            "requires": [
-                "d40be26e-d3b8-4442-8039-cc9aaab9620d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "83d644f0-ef79-4242-a5db-80845a160520",
@@ -2431,6 +2441,14 @@
             "descriptionEn": "Die lernende Person kann Synthese und Vulkanisation von synthetischem Kautschuk sowie Eigenschaften modifizierter Cellulose erläutern.",
             "core": false,
             "weight": 1.05,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "6cf84872-d737-41d4-ad67-68c2f8d5c999"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -2442,15 +2460,7 @@
                 "phase": "Q2",
                 "area": "Polymerchemie",
                 "topicCode": "Q2.4"
-            },
-            "requires": [
-                "6cf84872-d737-41d4-ad67-68c2f8d5c999"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "234a4af1-3a24-4c61-89f2-f1700ee1294e",
@@ -2461,6 +2471,21 @@
             "descriptionEn": "Gleichgewichte verstehen, beeinflussen und quantitativ beschreiben.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "3ea16598-166a-4f7f-a2f7-4baffc3978c6",
+                "a58ab76f-9b22-460b-a911-fed7d5112457",
+                "6c67f0ea-1946-47a9-842d-697eaa17f6a8",
+                "71841410-5081-4a7b-99e8-e18731edb9af",
+                "f3b023a2-ea7b-4bcf-b0c1-1e75982dca14"
+            ],
+            "requires": [
+                "5863588e-092a-4432-afd9-c8b860424032"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2472,22 +2497,7 @@
                 "phase": "Q3",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q3"
-            },
-            "requires": [
-                "5863588e-092a-4432-afd9-c8b860424032"
-            ],
-            "contains": [
-                "3ea16598-166a-4f7f-a2f7-4baffc3978c6",
-                "a58ab76f-9b22-460b-a911-fed7d5112457",
-                "6c67f0ea-1946-47a9-842d-697eaa17f6a8",
-                "71841410-5081-4a7b-99e8-e18731edb9af",
-                "f3b023a2-ea7b-4bcf-b0c1-1e75982dca14"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "3ea16598-166a-4f7f-a2f7-4baffc3978c6",
@@ -2498,19 +2508,10 @@
             "descriptionEn": "Dynamische Gleichgewichte qualitativ deuten und quantitativ berechnen.",
             "core": true,
             "weight": 1.1,
-            "dimensionTags": {
-                "framework": "hessen-kc-2024-chemistry",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [
-                    "BC_REAKTION",
-                    "BC_ENERGIE"
-                ],
-                "phase": "Q3",
-                "area": "Physikalische Chemie",
-                "topicCode": "Q3.1"
-            },
-            "requires": [],
+            "tags": [
+                "GK",
+                "LK"
+            ],
             "contains": [
                 "da327a7e-30e6-4296-88f8-7803d244478f",
                 "6ee8f696-95e4-4bd7-b923-6222e70a8449",
@@ -2521,11 +2522,20 @@
                 "6298e773-75aa-45af-9424-f544b449c9ee",
                 "9b597253-2caf-43eb-a7e4-a347c34f2e73"
             ],
+            "requires": [],
             "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            "dimensionTags": {
+                "framework": "hessen-kc-2024-chemistry",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [
+                    "BC_REAKTION",
+                    "BC_ENERGIE"
+                ],
+                "phase": "Q3",
+                "area": "Physikalische Chemie",
+                "topicCode": "Q3.1"
+            }
         },
         {
             "id": "da327a7e-30e6-4296-88f8-7803d244478f",
@@ -2536,6 +2546,15 @@
             "descriptionEn": "Die lernende Person kann das gleichzeitige Vorliegen von Edukten und Produkten experimentell zeigen und das dynamische Gleichgewicht definieren.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "2b75db6e-3be7-4c96-8f31-b960dd75ac20"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2546,16 +2565,7 @@
                 "phase": "Q3",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q3.1"
-            },
-            "requires": [
-                "2b75db6e-3be7-4c96-8f31-b960dd75ac20"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "6ee8f696-95e4-4bd7-b923-6222e70a8449",
@@ -2566,6 +2576,16 @@
             "descriptionEn": "Die lernende Person kann Gleichgewichtskonstanten vereinfachter Systeme berechnen und interpretiert den Zahlenwert im Kontext.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "da327a7e-30e6-4296-88f8-7803d244478f",
+                "d72c2ce2-c11c-427a-b022-126940a35439"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2577,17 +2597,7 @@
                 "phase": "Q3",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q3.1"
-            },
-            "requires": [
-                "da327a7e-30e6-4296-88f8-7803d244478f",
-                "d72c2ce2-c11c-427a-b022-126940a35439"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "a03e4751-f23c-4c93-9a4c-70ac2e80cbbd",
@@ -2598,6 +2608,15 @@
             "descriptionEn": "Die lernende Person kann den Einfluss von Konzentration, Druck und Temperatur auf die Lage eines Gleichgewichts qualitativ vorhersagen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "6ee8f696-95e4-4bd7-b923-6222e70a8449"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2609,16 +2628,7 @@
                 "phase": "Q3",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q3.1"
-            },
-            "requires": [
-                "6ee8f696-95e4-4bd7-b923-6222e70a8449"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "11c20e66-1287-434e-8766-09b37350bf9e",
@@ -2629,6 +2639,15 @@
             "descriptionEn": "Die lernende Person kann erläutern, wie Katalysatoren die Einstellung eines Gleichgewichts beeinflussen und Beispiele für homogene und heterogene Katalyse nennen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "a03e4751-f23c-4c93-9a4c-70ac2e80cbbd"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2639,16 +2658,7 @@
                 "phase": "Q3",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q3.1"
-            },
-            "requires": [
-                "a03e4751-f23c-4c93-9a4c-70ac2e80cbbd"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "7cf46714-9e74-45d9-9c92-8f2b06048ea8",
@@ -2659,6 +2669,15 @@
             "descriptionEn": "Die lernende Person kann das Haber-Bosch-Verfahren analysieren, MWG-Gleichungen mit verschiedenen stöchiometrischen Faktoren anwenden und Konzentrationen berechnen.",
             "core": false,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "6ee8f696-95e4-4bd7-b923-6222e70a8449",
+                "d72c2ce2-c11c-427a-b022-126940a35439"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -2670,16 +2689,7 @@
                 "phase": "Q3",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q3.1"
-            },
-            "requires": [
-                "6ee8f696-95e4-4bd7-b923-6222e70a8449",
-                "d72c2ce2-c11c-427a-b022-126940a35439"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "a58ab76f-9b22-460b-a911-fed7d5112457",
@@ -2690,6 +2700,21 @@
             "descriptionEn": "Säure-Base-Gleichgewichte quantitativ erfassen und Titrationskurven auswerten.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "183efcd1-8b70-4b95-8fbd-2c7d35616af9",
+                "b52a6cbc-3260-4ff2-bd24-7835da1e7dad",
+                "e12d003d-e8bc-4417-8400-9687520ee30f",
+                "139a6bd3-9137-4bcc-98b9-3fc957178504",
+                "873f7f36-308a-4f01-94b6-452580dbd8dd",
+                "694a3d17-3d6d-4933-a229-d65f42e1abe9",
+                "cf54967b-4eff-4de7-b9a7-0a392f5de477"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2700,22 +2725,7 @@
                 "phase": "Q3",
                 "area": "Säure-Base",
                 "topicCode": "Q3.2"
-            },
-            "requires": [],
-            "contains": [
-                "183efcd1-8b70-4b95-8fbd-2c7d35616af9",
-                "b52a6cbc-3260-4ff2-bd24-7835da1e7dad",
-                "e12d003d-e8bc-4417-8400-9687520ee30f",
-                "139a6bd3-9137-4bcc-98b9-3fc957178504",
-                "873f7f36-308a-4f01-94b6-452580dbd8dd",
-                "694a3d17-3d6d-4933-a229-d65f42e1abe9",
-                "cf54967b-4eff-4de7-b9a7-0a392f5de477"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "183efcd1-8b70-4b95-8fbd-2c7d35616af9",
@@ -2726,6 +2736,15 @@
             "descriptionEn": "Die lernende Person kann Protolysegleichungen aufstellen und korrespondierende Paare sicher identifizieren.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "d30f85f0-334a-41d7-81b2-9bafde28b6ca"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2736,16 +2755,7 @@
                 "phase": "Q3",
                 "area": "Säure-Base",
                 "topicCode": "Q3.2"
-            },
-            "requires": [
-                "d30f85f0-334a-41d7-81b2-9bafde28b6ca"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b52a6cbc-3260-4ff2-bd24-7835da1e7dad",
@@ -2756,6 +2766,16 @@
             "descriptionEn": "Die lernende Person kann Stärke von Säuren und Basen mithilfe von pKS- und pKB-Werten vergleichen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "183efcd1-8b70-4b95-8fbd-2c7d35616af9",
+                "a8204a50-9bd0-41a4-b505-54c277a6d82b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2766,17 +2786,7 @@
                 "phase": "Q3",
                 "area": "Säure-Base",
                 "topicCode": "Q3.2"
-            },
-            "requires": [
-                "183efcd1-8b70-4b95-8fbd-2c7d35616af9",
-                "a8204a50-9bd0-41a4-b505-54c277a6d82b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e12d003d-e8bc-4417-8400-9687520ee30f",
@@ -2787,6 +2797,16 @@
             "descriptionEn": "Die lernende Person kann für starke Säuren und Basen pH-Werte aus Konzentrationen bestimmen und Messergebnisse interpretieren.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "b52a6cbc-3260-4ff2-bd24-7835da1e7dad",
+                "a8204a50-9bd0-41a4-b505-54c277a6d82b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2797,17 +2817,7 @@
                 "phase": "Q3",
                 "area": "Säure-Base",
                 "topicCode": "Q3.2"
-            },
-            "requires": [
-                "b52a6cbc-3260-4ff2-bd24-7835da1e7dad",
-                "a8204a50-9bd0-41a4-b505-54c277a6d82b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "139a6bd3-9137-4bcc-98b9-3fc957178504",
@@ -2818,6 +2828,16 @@
             "descriptionEn": "Die lernende Person kann Titrationsdaten auswerten, Äquivalenzpunkte bestimmen und mehrprotonige Systeme qualitativ beschreiben.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "e12d003d-e8bc-4417-8400-9687520ee30f",
+                "a8204a50-9bd0-41a4-b505-54c277a6d82b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2828,17 +2848,7 @@
                 "phase": "Q3",
                 "area": "Säure-Base",
                 "topicCode": "Q3.2"
-            },
-            "requires": [
-                "e12d003d-e8bc-4417-8400-9687520ee30f",
-                "a8204a50-9bd0-41a4-b505-54c277a6d82b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "873f7f36-308a-4f01-94b6-452580dbd8dd",
@@ -2849,6 +2859,15 @@
             "descriptionEn": "Die lernende Person kann Pufferlösungen mithilfe der Henderson-Hasselbalch-Gleichung quantitativ beschreiben.",
             "core": false,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "139a6bd3-9137-4bcc-98b9-3fc957178504",
+                "a8204a50-9bd0-41a4-b505-54c277a6d82b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -2859,16 +2878,7 @@
                 "phase": "Q3",
                 "area": "Säure-Base",
                 "topicCode": "Q3.2"
-            },
-            "requires": [
-                "139a6bd3-9137-4bcc-98b9-3fc957178504",
-                "a8204a50-9bd0-41a4-b505-54c277a6d82b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "6c67f0ea-1946-47a9-842d-697eaa17f6a8",
@@ -2879,6 +2889,20 @@
             "descriptionEn": "Redoxreihen, Elektrolyse und Korrosion mit Gleichgewichtskonzepten verknüpfen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "68aa5804-2e4c-4730-a29c-d7ff1f106d9b",
+                "0777b113-ef70-4b7a-aaf5-77b44bdc8980",
+                "ab03871d-93d8-4fb5-b5b3-464f7b63bdef",
+                "b0723b3c-c96f-4c2e-b28c-809d5358c09a",
+                "17608075-808c-4e67-ac3e-928ade8a04cc",
+                "cd44c2c5-f445-4e0f-970a-9b8ff861a527"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2890,21 +2914,7 @@
                 "phase": "Q3",
                 "area": "Redox",
                 "topicCode": "Q3.3"
-            },
-            "requires": [],
-            "contains": [
-                "68aa5804-2e4c-4730-a29c-d7ff1f106d9b",
-                "0777b113-ef70-4b7a-aaf5-77b44bdc8980",
-                "ab03871d-93d8-4fb5-b5b3-464f7b63bdef",
-                "b0723b3c-c96f-4c2e-b28c-809d5358c09a",
-                "17608075-808c-4e67-ac3e-928ade8a04cc",
-                "cd44c2c5-f445-4e0f-970a-9b8ff861a527"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "68aa5804-2e4c-4730-a29c-d7ff1f106d9b",
@@ -2915,6 +2925,15 @@
             "descriptionEn": "Die lernende Person kann Standardpotenziale interpretieren und Zellspannungen bei Standardbedingungen berechnen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "abe62a49-2813-4308-a99f-95ed063335cd"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2926,16 +2945,7 @@
                 "phase": "Q3",
                 "area": "Redox",
                 "topicCode": "Q3.3"
-            },
-            "requires": [
-                "abe62a49-2813-4308-a99f-95ed063335cd"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "0777b113-ef70-4b7a-aaf5-77b44bdc8980",
@@ -2946,6 +2956,15 @@
             "descriptionEn": "Die lernende Person kann Elektrolyse mithilfe regenerativer Energiequellen beschreiben und Effizienzfragen diskutieren.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "68aa5804-2e4c-4730-a29c-d7ff1f106d9b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2956,16 +2975,7 @@
                 "phase": "Q3",
                 "area": "Redox",
                 "topicCode": "Q3.3"
-            },
-            "requires": [
-                "68aa5804-2e4c-4730-a29c-d7ff1f106d9b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ab03871d-93d8-4fb5-b5b3-464f7b63bdef",
@@ -2976,6 +2986,15 @@
             "descriptionEn": "Die lernende Person kann Lokalelemente erläutern, Korrosionsschutzmaßnahmen begründen und Opferanoden erklären.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "68aa5804-2e4c-4730-a29c-d7ff1f106d9b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -2986,16 +3005,7 @@
                 "phase": "Q3",
                 "area": "Redox",
                 "topicCode": "Q3.3"
-            },
-            "requires": [
-                "68aa5804-2e4c-4730-a29c-d7ff1f106d9b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "b0723b3c-c96f-4c2e-b28c-809d5358c09a",
@@ -3006,6 +3016,15 @@
             "descriptionEn": "Die lernende Person kann Konzentrationszellen mithilfe der Nernst-Gleichung berechnen und Aussagen zur Zellspannung treffen.",
             "core": false,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "68aa5804-2e4c-4730-a29c-d7ff1f106d9b",
+                "a8204a50-9bd0-41a4-b505-54c277a6d82b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -3017,16 +3036,7 @@
                 "phase": "Q3",
                 "area": "Redox",
                 "topicCode": "Q3.3"
-            },
-            "requires": [
-                "68aa5804-2e4c-4730-a29c-d7ff1f106d9b",
-                "a8204a50-9bd0-41a4-b505-54c277a6d82b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "71841410-5081-4a7b-99e8-e18731edb9af",
@@ -3037,6 +3047,18 @@
             "descriptionEn": "Puffersysteme qualitativ und quantitativ einordnen.",
             "core": false,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "e2f553c3-48b2-4d47-b85e-7455b08c3116",
+                "d81cba8a-975a-4ade-93a7-1387ac76ae57",
+                "8d75bbfe-f8dc-4853-80af-5cf3aac3933c",
+                "2871c17d-970f-4500-a16f-c2ea1c5b2a46"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3047,19 +3069,7 @@
                 "phase": "Q3",
                 "area": "Säure-Base",
                 "topicCode": "Q3.4"
-            },
-            "requires": [],
-            "contains": [
-                "e2f553c3-48b2-4d47-b85e-7455b08c3116",
-                "d81cba8a-975a-4ade-93a7-1387ac76ae57",
-                "8d75bbfe-f8dc-4853-80af-5cf3aac3933c",
-                "2871c17d-970f-4500-a16f-c2ea1c5b2a46"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e2f553c3-48b2-4d47-b85e-7455b08c3116",
@@ -3070,6 +3080,15 @@
             "descriptionEn": "Die lernende Person kann das Phosphat-Puffersystem beschreiben und die Wirkung mithilfe von Le Chatelier begründen.",
             "core": false,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "139a6bd3-9137-4bcc-98b9-3fc957178504"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3080,16 +3099,7 @@
                 "phase": "Q3",
                 "area": "Säure-Base",
                 "topicCode": "Q3.4"
-            },
-            "requires": [
-                "139a6bd3-9137-4bcc-98b9-3fc957178504"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d81cba8a-975a-4ade-93a7-1387ac76ae57",
@@ -3100,6 +3110,15 @@
             "descriptionEn": "Die lernende Person kann Kohlensäure-Hydrogencarbonat- und Ammoniumpuffer in offenen Systemen qualitativ erläutern.",
             "core": false,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "e2f553c3-48b2-4d47-b85e-7455b08c3116"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3110,16 +3129,7 @@
                 "phase": "Q3",
                 "area": "Säure-Base",
                 "topicCode": "Q3.4"
-            },
-            "requires": [
-                "e2f553c3-48b2-4d47-b85e-7455b08c3116"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "8d75bbfe-f8dc-4853-80af-5cf3aac3933c",
@@ -3130,6 +3140,14 @@
             "descriptionEn": "Die lernende Person kann für Pufferlösungen quantitative pH-Berechnungen durchführen.",
             "core": false,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "d81cba8a-975a-4ade-93a7-1387ac76ae57"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -3140,15 +3158,7 @@
                 "phase": "Q3",
                 "area": "Säure-Base",
                 "topicCode": "Q3.4"
-            },
-            "requires": [
-                "d81cba8a-975a-4ade-93a7-1387ac76ae57"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "f3b023a2-ea7b-4bcf-b0c1-1e75982dca14",
@@ -3159,6 +3169,20 @@
             "descriptionEn": "Reaktionsgeschwindigkeiten messen, deuten und beeinflussen.",
             "core": false,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "2f3de2bf-583d-497a-bbeb-304f971fa8c3",
+                "2ced34ce-2db3-4894-9757-257195ea1ed3",
+                "c291f38f-e47c-41cb-80f1-2c2b23619791",
+                "2d86985f-536c-404e-bdf9-05145e01d610",
+                "db4f331a-d9ae-4356-aa71-d1a1090663ab",
+                "b08f69d2-71b7-4049-bcc8-a40d24b0911e"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3170,21 +3194,7 @@
                 "phase": "Q3",
                 "area": "Kinetik",
                 "topicCode": "Q3.5"
-            },
-            "requires": [],
-            "contains": [
-                "2f3de2bf-583d-497a-bbeb-304f971fa8c3",
-                "2ced34ce-2db3-4894-9757-257195ea1ed3",
-                "c291f38f-e47c-41cb-80f1-2c2b23619791",
-                "2d86985f-536c-404e-bdf9-05145e01d610",
-                "db4f331a-d9ae-4356-aa71-d1a1090663ab",
-                "b08f69d2-71b7-4049-bcc8-a40d24b0911e"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "2f3de2bf-583d-497a-bbeb-304f971fa8c3",
@@ -3195,6 +3205,15 @@
             "descriptionEn": "Die lernende Person kann mittlere und momentane Reaktionsgeschwindigkeiten aus Konzentrations-Zeit-Diagrammen bestimmen.",
             "core": false,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "da327a7e-30e6-4296-88f8-7803d244478f"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3205,16 +3224,7 @@
                 "phase": "Q3",
                 "area": "Kinetik",
                 "topicCode": "Q3.5"
-            },
-            "requires": [
-                "da327a7e-30e6-4296-88f8-7803d244478f"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "2ced34ce-2db3-4894-9757-257195ea1ed3",
@@ -3225,6 +3235,15 @@
             "descriptionEn": "Die lernende Person kann den Einfluss von Stoffart, Konzentration und Zerteilungsgrad auf die Reaktionsgeschwindigkeit qualitativ erklären.",
             "core": false,
             "weight": 1.1,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "2f3de2bf-583d-497a-bbeb-304f971fa8c3"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3235,16 +3254,7 @@
                 "phase": "Q3",
                 "area": "Kinetik",
                 "topicCode": "Q3.5"
-            },
-            "requires": [
-                "2f3de2bf-583d-497a-bbeb-304f971fa8c3"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "c291f38f-e47c-41cb-80f1-2c2b23619791",
@@ -3255,6 +3265,14 @@
             "descriptionEn": "Die lernende Person kann den Verlauf einer autokatalytischen Reaktion wie Oxalsäure mit Permanganat analysieren.",
             "core": false,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "2ced34ce-2db3-4894-9757-257195ea1ed3"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -3265,15 +3283,7 @@
                 "phase": "Q3",
                 "area": "Kinetik",
                 "topicCode": "Q3.5"
-            },
-            "requires": [
-                "2ced34ce-2db3-4894-9757-257195ea1ed3"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "d36c7b04-196b-4ce3-b086-9bbda02029f4",
@@ -3284,6 +3294,19 @@
             "descriptionEn": "Thermodynamische Prinzipien, nachhaltige Energieträger und moderne Waschmittel evaluieren.",
             "core": true,
             "weight": 1.15,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "ddb6a5b6-3c4f-4f75-b151-498211bf4c1d",
+                "8da28848-37ac-4a02-919a-99a34a24177d",
+                "1f3d7382-996d-4836-9692-cfc2d4a71488"
+            ],
+            "requires": [
+                "234a4af1-3a24-4c61-89f2-f1700ee1294e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3295,20 +3318,7 @@
                 "phase": "Q4",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q4"
-            },
-            "requires": [
-                "234a4af1-3a24-4c61-89f2-f1700ee1294e"
-            ],
-            "contains": [
-                "ddb6a5b6-3c4f-4f75-b151-498211bf4c1d",
-                "8da28848-37ac-4a02-919a-99a34a24177d",
-                "1f3d7382-996d-4836-9692-cfc2d4a71488"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "ddb6a5b6-3c4f-4f75-b151-498211bf4c1d",
@@ -3319,6 +3329,20 @@
             "descriptionEn": "Thermodynamische Sätze, Enthalpie und Entropie zur Bewertung chemischer Prozesse nutzen.",
             "core": true,
             "weight": 1.15,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "99349536-95f6-43bf-be7d-2049eeec9725",
+                "1491613d-ab91-4ff6-8f2f-7fd3f936e0f0",
+                "956e9346-9119-44c5-aab1-12fee2831f43",
+                "7f3279ea-90d0-4034-a545-efb779daad8d",
+                "cac6bbdc-8c6e-4483-811a-708f11212354",
+                "9a6a03f9-8d08-4d0d-b86f-829832561768"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3329,21 +3353,7 @@
                 "phase": "Q4",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q4.1"
-            },
-            "requires": [],
-            "contains": [
-                "99349536-95f6-43bf-be7d-2049eeec9725",
-                "1491613d-ab91-4ff6-8f2f-7fd3f936e0f0",
-                "956e9346-9119-44c5-aab1-12fee2831f43",
-                "7f3279ea-90d0-4034-a545-efb779daad8d",
-                "cac6bbdc-8c6e-4483-811a-708f11212354",
-                "9a6a03f9-8d08-4d0d-b86f-829832561768"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "99349536-95f6-43bf-be7d-2049eeec9725",
@@ -3354,6 +3364,15 @@
             "descriptionEn": "Die lernende Person kann offene, geschlossene und isolierte Systeme unterscheiden und Energieerhaltung qualitativ erklären.",
             "core": true,
             "weight": 1.15,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "a03e4751-f23c-4c93-9a4c-70ac2e80cbbd"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3364,16 +3383,7 @@
                 "phase": "Q4",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q4.1"
-            },
-            "requires": [
-                "a03e4751-f23c-4c93-9a4c-70ac2e80cbbd"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "1491613d-ab91-4ff6-8f2f-7fd3f936e0f0",
@@ -3384,6 +3394,15 @@
             "descriptionEn": "Die lernende Person kann Reaktionsenthalpien mit dem Satz von Hess und einfachen Kalorimetrieansätzen bestimmen.",
             "core": true,
             "weight": 1.15,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "99349536-95f6-43bf-be7d-2049eeec9725"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3394,16 +3413,7 @@
                 "phase": "Q4",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q4.1"
-            },
-            "requires": [
-                "99349536-95f6-43bf-be7d-2049eeec9725"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "956e9346-9119-44c5-aab1-12fee2831f43",
@@ -3414,6 +3424,15 @@
             "descriptionEn": "Die lernende Person kann den Einfluss der Temperatur auf Reaktionsgeschwindigkeiten mithilfe der Stoßtheorie begründen.",
             "core": true,
             "weight": 1.15,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "1491613d-ab91-4ff6-8f2f-7fd3f936e0f0"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3424,16 +3443,7 @@
                 "phase": "Q4",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q4.1"
-            },
-            "requires": [
-                "1491613d-ab91-4ff6-8f2f-7fd3f936e0f0"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "7f3279ea-90d0-4034-a545-efb779daad8d",
@@ -3444,6 +3454,14 @@
             "descriptionEn": "Die lernende Person kann Entropiebeiträge diskutieren und mithilfe der Gibbs-Helmholtz-Gleichung Aussagen zur Spontanität treffen.",
             "core": false,
             "weight": 1.15,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "1491613d-ab91-4ff6-8f2f-7fd3f936e0f0"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -3454,15 +3472,7 @@
                 "phase": "Q4",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q4.1"
-            },
-            "requires": [
-                "1491613d-ab91-4ff6-8f2f-7fd3f936e0f0"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "8da28848-37ac-4a02-919a-99a34a24177d",
@@ -3473,6 +3483,21 @@
             "descriptionEn": "Energieumwandlungen in Brennstoffzellen und biogenen Kraftstoffen bewerten.",
             "core": false,
             "weight": 1.15,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "e2e587f6-812c-4a1f-9ad8-8c6ab58f76a3",
+                "cb71c0bf-f3f4-4315-880e-f80362bdfad7",
+                "fd91b3ff-9e95-4207-904c-cb0c3ad51bc3",
+                "0d606bf8-c152-47b9-8c90-16b9b4422498",
+                "d7e5db85-8a40-40ef-b513-18510eb86d23",
+                "206bfa43-a28c-49a0-a1e1-dc9ef12f1085",
+                "1e4b16ef-8aef-4c22-bdb3-bb8f4b94a09f"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3484,22 +3509,7 @@
                 "phase": "Q4",
                 "area": "Nachhaltigkeit",
                 "topicCode": "Q4.2"
-            },
-            "requires": [],
-            "contains": [
-                "e2e587f6-812c-4a1f-9ad8-8c6ab58f76a3",
-                "cb71c0bf-f3f4-4315-880e-f80362bdfad7",
-                "fd91b3ff-9e95-4207-904c-cb0c3ad51bc3",
-                "0d606bf8-c152-47b9-8c90-16b9b4422498",
-                "d7e5db85-8a40-40ef-b513-18510eb86d23",
-                "206bfa43-a28c-49a0-a1e1-dc9ef12f1085",
-                "1e4b16ef-8aef-4c22-bdb3-bb8f4b94a09f"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e2e587f6-812c-4a1f-9ad8-8c6ab58f76a3",
@@ -3510,6 +3520,16 @@
             "descriptionEn": "Die lernende Person kann Elektrodenreaktionen in sauren und alkalischen Brennstoffzellen erläutern und Vor- sowie Nachteile diskutieren.",
             "core": false,
             "weight": 1.15,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "b81d2a1a-f831-41cf-96f4-b3d324f1f3b6",
+                "25e2a8a8-7827-4997-b625-5f000213b9f9"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3520,17 +3540,7 @@
                 "phase": "Q4",
                 "area": "Nachhaltigkeit",
                 "topicCode": "Q4.2"
-            },
-            "requires": [
-                "b81d2a1a-f831-41cf-96f4-b3d324f1f3b6",
-                "25e2a8a8-7827-4997-b625-5f000213b9f9"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "cb71c0bf-f3f4-4315-880e-f80362bdfad7",
@@ -3541,6 +3551,15 @@
             "descriptionEn": "Die lernende Person kann Aufbau von Triglyceriden beschreiben und ökologische Folgen des Einsatzes diskutieren.",
             "core": false,
             "weight": 1.15,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "d7ce7699-8bf3-4efc-93bf-013912db5cf0"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3552,16 +3571,7 @@
                 "phase": "Q4",
                 "area": "Nachhaltigkeit",
                 "topicCode": "Q4.2"
-            },
-            "requires": [
-                "d7ce7699-8bf3-4efc-93bf-013912db5cf0"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "fd91b3ff-9e95-4207-904c-cb0c3ad51bc3",
@@ -3572,6 +3582,15 @@
             "descriptionEn": "Die lernende Person kann die Gewinnung von Glucose und deren Umwandlung zu Ethanol durch Gärung beschreiben und Nutzen-Risiko-Aspekte bewerten.",
             "core": false,
             "weight": 1.15,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "e624ba00-9202-4dbf-ab86-0c7dd93089e6"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3583,16 +3602,7 @@
                 "phase": "Q4",
                 "area": "Nachhaltigkeit",
                 "topicCode": "Q4.2"
-            },
-            "requires": [
-                "e624ba00-9202-4dbf-ab86-0c7dd93089e6"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "0d606bf8-c152-47b9-8c90-16b9b4422498",
@@ -3603,6 +3613,15 @@
             "descriptionEn": "Die lernende Person kann Aufbau und Einsatz von Lithium-Ionen-Akkumulatoren in Elektrofahrzeugen bewerten.",
             "core": false,
             "weight": 1.15,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "394f76e4-a00a-48d9-9223-74c3d96363cd",
+                "b552b7c0-4c43-402e-8fbd-8e02f1d5ea31"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -3613,16 +3632,7 @@
                 "phase": "Q4",
                 "area": "Nachhaltigkeit",
                 "topicCode": "Q4.2"
-            },
-            "requires": [
-                "394f76e4-a00a-48d9-9223-74c3d96363cd",
-                "b552b7c0-4c43-402e-8fbd-8e02f1d5ea31"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "1f3d7382-996d-4836-9692-cfc2d4a71488",
@@ -3633,6 +3643,20 @@
             "descriptionEn": "Moderne Waschmittelrezepturen hinsichtlich Nachhaltigkeit analysieren.",
             "core": false,
             "weight": 1.15,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [
+                "f65c827c-0ad6-4c5c-8f0a-8931f561639c",
+                "8cf8e124-4f2f-44b9-b7a2-27a37adae5a1",
+                "d7eb7f36-e883-4416-927f-8f27d2957f66",
+                "e79ff97f-ca1a-4b09-b00c-f7d8a5ec7847",
+                "8cb05348-af8a-4fe2-987f-8641827c8074",
+                "ddbf8b0a-2afe-4755-90c6-81b81cacf3e7"
+            ],
+            "requires": [],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3644,21 +3668,7 @@
                 "phase": "Q4",
                 "area": "Nachhaltigkeit",
                 "topicCode": "Q4.3"
-            },
-            "requires": [],
-            "contains": [
-                "f65c827c-0ad6-4c5c-8f0a-8931f561639c",
-                "8cf8e124-4f2f-44b9-b7a2-27a37adae5a1",
-                "d7eb7f36-e883-4416-927f-8f27d2957f66",
-                "e79ff97f-ca1a-4b09-b00c-f7d8a5ec7847",
-                "8cb05348-af8a-4fe2-987f-8641827c8074",
-                "ddbf8b0a-2afe-4755-90c6-81b81cacf3e7"
-            ],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "f65c827c-0ad6-4c5c-8f0a-8931f561639c",
@@ -3669,6 +3679,15 @@
             "descriptionEn": "Die lernende Person kann anionische, kationische und nichtionische Tenside anhand ihres Aufbaus charakterisieren.",
             "core": false,
             "weight": 1.15,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "4529a2c3-571d-4df8-8481-65f4f2525564"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3679,16 +3698,7 @@
                 "phase": "Q4",
                 "area": "Nachhaltigkeit",
                 "topicCode": "Q4.3"
-            },
-            "requires": [
-                "4529a2c3-571d-4df8-8481-65f4f2525564"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "8cf8e124-4f2f-44b9-b7a2-27a37adae5a1",
@@ -3699,6 +3709,15 @@
             "descriptionEn": "Die lernende Person kann Funktionen von Enthärtern, Bleichsystemen, Enzymen und Hilfsstoffen erklären.",
             "core": false,
             "weight": 1.15,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "f65c827c-0ad6-4c5c-8f0a-8931f561639c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3710,16 +3729,7 @@
                 "phase": "Q4",
                 "area": "Nachhaltigkeit",
                 "topicCode": "Q4.3"
-            },
-            "requires": [
-                "f65c827c-0ad6-4c5c-8f0a-8931f561639c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "d7eb7f36-e883-4416-927f-8f27d2957f66",
@@ -3730,6 +3740,15 @@
             "descriptionEn": "Die lernende Person kann ökologische, ökonomische und soziale Aspekte moderner Waschmittel reflektieren.",
             "core": false,
             "weight": 1.15,
+            "tags": [
+                "GK",
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "8cf8e124-4f2f-44b9-b7a2-27a37adae5a1"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB2",
@@ -3740,16 +3759,7 @@
                 "phase": "Q4",
                 "area": "Nachhaltigkeit",
                 "topicCode": "Q4.3"
-            },
-            "requires": [
-                "8cf8e124-4f2f-44b9-b7a2-27a37adae5a1"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "GK",
-                "LK"
-            ]
+            }
         },
         {
             "id": "e79ff97f-ca1a-4b09-b00c-f7d8a5ec7847",
@@ -3760,6 +3770,14 @@
             "descriptionEn": "Die lernende Person kann Zeolith-Enthärter strukturell erklären und biologische Abbauwege von Tensiden beschreiben.",
             "core": false,
             "weight": 1.15,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "8cf8e124-4f2f-44b9-b7a2-27a37adae5a1"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -3770,15 +3788,7 @@
                 "phase": "Q4",
                 "area": "Nachhaltigkeit",
                 "topicCode": "Q4.3"
-            },
-            "requires": [
-                "8cf8e124-4f2f-44b9-b7a2-27a37adae5a1"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "929da470-71f2-4209-9dbc-67c9be190f5e",
@@ -3789,6 +3799,14 @@
             "descriptionEn": "Die lernende Person kann einfache MO-Diagramme (z. B. O2, N2) interpretieren und Bindungsordnung ableiten.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "964729f6-5239-4b7d-b21f-161a8d3a8f2b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -3799,15 +3817,7 @@
                 "phase": "Q1",
                 "area": "Struktur",
                 "topicCode": "Q1.1"
-            },
-            "requires": [
-                "964729f6-5239-4b7d-b21f-161a8d3a8f2b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "53e0ff42-55e9-4fb5-9cc7-8c2006f51789",
@@ -3818,6 +3828,14 @@
             "descriptionEn": "Die lernende Person kann Konstitution, Konfiguration (R/S, E/Z) und Konformation unterscheiden und darstellen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "964729f6-5239-4b7d-b21f-161a8d3a8f2b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -3828,15 +3846,7 @@
                 "phase": "Q1",
                 "area": "Struktur",
                 "topicCode": "Q1.1"
-            },
-            "requires": [
-                "964729f6-5239-4b7d-b21f-161a8d3a8f2b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "e6208125-488c-4720-85e0-861aafc68d66",
@@ -3847,6 +3857,14 @@
             "descriptionEn": "Die lernende Person kann IR- und 1H-NMR-Grundsignale einfachen organischen Strukturen zuordnen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "964729f6-5239-4b7d-b21f-161a8d3a8f2b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -3857,15 +3875,7 @@
                 "phase": "Q1",
                 "area": "Struktur",
                 "topicCode": "Q1.1"
-            },
-            "requires": [
-                "964729f6-5239-4b7d-b21f-161a8d3a8f2b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "f123166b-5988-4d7d-a0bf-24c4e742f9dd",
@@ -3876,6 +3886,14 @@
             "descriptionEn": "Die lernende Person kann SN1- und SN2-Mechanismen bzgl. Kinetik, Lösungsmittel und Substrat deuten.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "dbbbfa75-635a-44f7-9dca-c8f38a56794d"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -3886,15 +3904,7 @@
                 "phase": "Q1",
                 "area": "Organik",
                 "topicCode": "Q1.2"
-            },
-            "requires": [
-                "dbbbfa75-635a-44f7-9dca-c8f38a56794d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "827b211a-5bbf-4ba6-b16e-fac78f3b7524",
@@ -3905,6 +3915,14 @@
             "descriptionEn": "Die lernende Person kann Reaktivität von Aldehyden vs. Ketonen mechanistisch begründen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "8daad975-4282-4091-982f-98b77e62e47e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -3915,15 +3933,7 @@
                 "phase": "Q1",
                 "area": "Organik",
                 "topicCode": "Q1.2"
-            },
-            "requires": [
-                "8daad975-4282-4091-982f-98b77e62e47e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "d823f55b-df20-44f3-ab00-bcd6839e1db7",
@@ -3934,6 +3944,14 @@
             "descriptionEn": "Die lernende Person kann Grignard-Reagenzien einsetzen und Reaktionsschritte formulieren.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "827b211a-5bbf-4ba6-b16e-fac78f3b7524"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -3944,15 +3962,7 @@
                 "phase": "Q1",
                 "area": "Organik",
                 "topicCode": "Q1.2"
-            },
-            "requires": [
-                "827b211a-5bbf-4ba6-b16e-fac78f3b7524"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "d3d7cbfe-6a1d-4a4e-8931-82ac909484a8",
@@ -3963,6 +3973,14 @@
             "descriptionEn": "Die lernende Person kann Reaktivität von Chloriden, Anhydriden und Estern ordnen und begründen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "0d979a44-004b-4986-b947-b4033987218a"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -3973,15 +3991,7 @@
                 "phase": "Q1",
                 "area": "Organik",
                 "topicCode": "Q1.3"
-            },
-            "requires": [
-                "0d979a44-004b-4986-b947-b4033987218a"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "a87f64e9-3c86-479c-902a-4d794b32c2f9",
@@ -3992,6 +4002,14 @@
             "descriptionEn": "Die lernende Person kann Transesterifizierungen planen und Gleichgewichte beurteilen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "664ba5ce-2ac9-4391-b56b-5282908c2588"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4002,15 +4020,7 @@
                 "phase": "Q1",
                 "area": "Organik",
                 "topicCode": "Q1.3"
-            },
-            "requires": [
-                "664ba5ce-2ac9-4391-b56b-5282908c2588"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "25ff1dc2-9222-4a84-ae20-67ad70626c0e",
@@ -4021,6 +4031,14 @@
             "descriptionEn": "Die lernende Person kann intramolekulare Esterbildungen und Lacton-Stabilität erklären.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "664ba5ce-2ac9-4391-b56b-5282908c2588"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4031,15 +4049,7 @@
                 "phase": "Q1",
                 "area": "Organik",
                 "topicCode": "Q1.3"
-            },
-            "requires": [
-                "664ba5ce-2ac9-4391-b56b-5282908c2588"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "e9a6d454-287d-4764-95b2-31318bc88d88",
@@ -4050,6 +4060,14 @@
             "descriptionEn": "Die lernende Person kann CMC, Schaumbildung und Schmutztragevermögen quantifizieren.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "4529a2c3-571d-4df8-8481-65f4f2525564"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4060,15 +4078,7 @@
                 "phase": "Q1",
                 "area": "Organik",
                 "topicCode": "Q1.4"
-            },
-            "requires": [
-                "4529a2c3-571d-4df8-8481-65f4f2525564"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "002ef55a-ddbb-46f1-847b-b30f75194975",
@@ -4079,6 +4089,14 @@
             "descriptionEn": "Die lernende Person kann Kriterien der Tensid-Bioabbaubarkeit erläutern.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "942d1aee-ffa1-4390-99db-4bb021366c70"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4089,15 +4107,7 @@
                 "phase": "Q1",
                 "area": "Organik",
                 "topicCode": "Q1.4"
-            },
-            "requires": [
-                "942d1aee-ffa1-4390-99db-4bb021366c70"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "e28aa00f-b9f9-40f5-814e-295c8796c500",
@@ -4108,6 +4118,14 @@
             "descriptionEn": "Die lernende Person kann redoxaktive Konservierungsstrategien bewerten.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "00c2c149-f860-4e2c-97aa-b517a2843213"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4118,15 +4136,7 @@
                 "phase": "Q1",
                 "area": "Angewandte Chemie",
                 "topicCode": "Q1.5"
-            },
-            "requires": [
-                "00c2c149-f860-4e2c-97aa-b517a2843213"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "06eac494-e511-4b39-abad-bc150c5528c1",
@@ -4137,6 +4147,14 @@
             "descriptionEn": "Die lernende Person kann Proteinstrukturebenen und Faltungsfaktoren erläutern.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "cd5c7f13-f056-4ba5-a066-099406e6b6fb"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4147,15 +4165,7 @@
                 "phase": "Q2",
                 "area": "Biochemie",
                 "topicCode": "Q2.1"
-            },
-            "requires": [
-                "cd5c7f13-f056-4ba5-a066-099406e6b6fb"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "dca99cca-2415-4a02-abd0-24703ae00ce3",
@@ -4166,6 +4176,14 @@
             "descriptionEn": "Die lernende Person kann einfache Michaelis-Menten-Zusammenhänge deuten.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "06eac494-e511-4b39-abad-bc150c5528c1"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4176,15 +4194,7 @@
                 "phase": "Q2",
                 "area": "Biochemie",
                 "topicCode": "Q2.1"
-            },
-            "requires": [
-                "06eac494-e511-4b39-abad-bc150c5528c1"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "b1d67cdc-f748-4167-a8aa-79d4c0f657a5",
@@ -4195,6 +4205,14 @@
             "descriptionEn": "Die lernende Person kann glykosidische Bindungen und Hydrolyse/Verknüpfung erklären.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "e624ba00-9202-4dbf-ab86-0c7dd93089e6"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4205,15 +4223,7 @@
                 "phase": "Q2",
                 "area": "Biochemie",
                 "topicCode": "Q2.1"
-            },
-            "requires": [
-                "e624ba00-9202-4dbf-ab86-0c7dd93089e6"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "9994dd5a-cbf8-47a4-9c84-617163dfc57f",
@@ -4224,6 +4234,14 @@
             "descriptionEn": "Die lernende Person kann Glasübergang und Schmelzpunkt von Polymeren deuten.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "db0ff738-dde5-458f-8ed2-91e8fc99df2a"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4234,15 +4252,7 @@
                 "phase": "Q2",
                 "area": "Material",
                 "topicCode": "Q2.2"
-            },
-            "requires": [
-                "db0ff738-dde5-458f-8ed2-91e8fc99df2a"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "a28842cb-65f9-422b-ae56-c3ad41270b38",
@@ -4253,6 +4263,14 @@
             "descriptionEn": "Die lernende Person kann Eigenschaftsprofile (Festigkeit, Barriere, Transparenz) strukturbezogen erklären.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "80a3b3e7-c22f-4c0f-879a-a60f4df57934"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4263,15 +4281,7 @@
                 "phase": "Q2",
                 "area": "Material",
                 "topicCode": "Q2.2"
-            },
-            "requires": [
-                "80a3b3e7-c22f-4c0f-879a-a60f4df57934"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "ac519458-a7e7-4bce-abf8-4e4c2d495950",
@@ -4282,6 +4292,14 @@
             "descriptionEn": "Die lernende Person kann Abbaumechanismen und Bedingungen für Biopolymere erläutern.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "b3016703-0884-40bd-9261-2b854bff83b2"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4293,15 +4311,7 @@
                 "phase": "Q2",
                 "area": "Material",
                 "topicCode": "Q2.2"
-            },
-            "requires": [
-                "b3016703-0884-40bd-9261-2b854bff83b2"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "7dba3ed5-555c-4f6a-aa0e-20dd47b1ecbc",
@@ -4312,6 +4322,14 @@
             "descriptionEn": "Die lernende Person kann den Mechanismus der elektrophilen Substitution über den σ-Komplex erläutern.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "b3c216ea-48ff-4fc0-824d-aa2578fab1ed"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4322,15 +4340,7 @@
                 "phase": "Q2",
                 "area": "Organik",
                 "topicCode": "Q2.3"
-            },
-            "requires": [
-                "b3c216ea-48ff-4fc0-824d-aa2578fab1ed"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "4674b851-864a-4362-987b-0ac265d2f1d6",
@@ -4341,6 +4351,14 @@
             "descriptionEn": "Die lernende Person kann Friedel-Crafts-Alkylierung/Acylierung planen und steuern.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "7dba3ed5-555c-4f6a-aa0e-20dd47b1ecbc"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4351,15 +4369,7 @@
                 "phase": "Q2",
                 "area": "Organik",
                 "topicCode": "Q2.3"
-            },
-            "requires": [
-                "7dba3ed5-555c-4f6a-aa0e-20dd47b1ecbc"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "308f9f22-faf4-4f0f-92d9-e8d139c8c9b0",
@@ -4370,6 +4380,14 @@
             "descriptionEn": "Die lernende Person kann Korrosionsschutzstrategien für Metalle/Legierungen bewerten.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "d40be26e-d3b8-4442-8039-cc9aaab9620d"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4381,15 +4399,7 @@
                 "phase": "Q2",
                 "area": "Material",
                 "topicCode": "Q2.4"
-            },
-            "requires": [
-                "d40be26e-d3b8-4442-8039-cc9aaab9620d"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "2814d641-0182-443c-bc56-f0c176d9d709",
@@ -4400,6 +4410,14 @@
             "descriptionEn": "Die lernende Person kann Kp und Kc umrechnen und Einsatzgrenzen diskutieren.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "6ee8f696-95e4-4bd7-b923-6222e70a8449"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4411,15 +4429,7 @@
                 "phase": "Q3",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q3.1"
-            },
-            "requires": [
-                "6ee8f696-95e4-4bd7-b923-6222e70a8449"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "6298e773-75aa-45af-9424-f544b449c9ee",
@@ -4430,6 +4440,14 @@
             "descriptionEn": "Die lernende Person kann Temperaturabhängigkeiten von Gleichgewichten berechnen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "a03e4751-f23c-4c93-9a4c-70ac2e80cbbd"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4441,15 +4459,7 @@
                 "phase": "Q3",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q3.1"
-            },
-            "requires": [
-                "a03e4751-f23c-4c93-9a4c-70ac2e80cbbd"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "9b597253-2caf-43eb-a7e4-a347c34f2e73",
@@ -4460,6 +4470,14 @@
             "descriptionEn": "Die lernende Person kann gekoppelte Gleichgewichte qualitativ/quantitativ analysieren.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "6ee8f696-95e4-4bd7-b923-6222e70a8449"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4470,15 +4488,7 @@
                 "phase": "Q3",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q3.1"
-            },
-            "requires": [
-                "6ee8f696-95e4-4bd7-b923-6222e70a8449"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "694a3d17-3d6d-4933-a229-d65f42e1abe9",
@@ -4489,6 +4499,14 @@
             "descriptionEn": "Die lernende Person kann Titrationskurven starker/schwacher Säuren/Basen auswerten.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "139a6bd3-9137-4bcc-98b9-3fc957178504"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4499,15 +4517,7 @@
                 "phase": "Q3",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q3.2"
-            },
-            "requires": [
-                "139a6bd3-9137-4bcc-98b9-3fc957178504"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "cf54967b-4eff-4de7-b9a7-0a392f5de477",
@@ -4518,6 +4528,14 @@
             "descriptionEn": "Die lernende Person kann mehrprotonige Säure-Base-Systeme berechnen und Puffereigenschaften bewerten.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "b52a6cbc-3260-4ff2-bd24-7835da1e7dad"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4528,15 +4546,7 @@
                 "phase": "Q3",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q3.2"
-            },
-            "requires": [
-                "b52a6cbc-3260-4ff2-bd24-7835da1e7dad"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "17608075-808c-4e67-ac3e-928ade8a04cc",
@@ -4547,6 +4557,14 @@
             "descriptionEn": "Die lernende Person kann pE/pH-Diagramme interpretieren und Stabilitätsbereiche ableiten.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "68aa5804-2e4c-4730-a29c-d7ff1f106d9b"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4558,15 +4576,7 @@
                 "phase": "Q3",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q3.3"
-            },
-            "requires": [
-                "68aa5804-2e4c-4730-a29c-d7ff1f106d9b"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "cd44c2c5-f445-4e0f-970a-9b8ff861a527",
@@ -4577,6 +4587,14 @@
             "descriptionEn": "Die lernende Person kann Elektrolyseprozesse mit Redoxgleichgewichten verknüpfen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "0777b113-ef70-4b7a-aaf5-77b44bdc8980"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4588,15 +4606,7 @@
                 "phase": "Q3",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q3.3"
-            },
-            "requires": [
-                "0777b113-ef70-4b7a-aaf5-77b44bdc8980"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "2871c17d-970f-4500-a16f-c2ea1c5b2a46",
@@ -4607,6 +4617,14 @@
             "descriptionEn": "Die lernende Person kann Puffer für definierte pH-Bereiche konstruieren und Kapazität berechnen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "8d75bbfe-f8dc-4853-80af-5cf3aac3933c"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4617,15 +4635,7 @@
                 "phase": "Q3",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q3.4"
-            },
-            "requires": [
-                "8d75bbfe-f8dc-4853-80af-5cf3aac3933c"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "2d86985f-536c-404e-bdf9-05145e01d610",
@@ -4636,6 +4646,14 @@
             "descriptionEn": "Die lernende Person kann Aktivierungsenergien aus Temperaturabhängigkeiten ermitteln.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "2f3de2bf-583d-497a-bbeb-304f971fa8c3"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4647,15 +4665,7 @@
                 "phase": "Q3",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q3.5"
-            },
-            "requires": [
-                "2f3de2bf-583d-497a-bbeb-304f971fa8c3"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "db4f331a-d9ae-4356-aa71-d1a1090663ab",
@@ -4666,6 +4676,14 @@
             "descriptionEn": "Die lernende Person kann mehrstufige Mechanismen aus Geschwindigkeitsgesetzen herleiten.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "2f3de2bf-583d-497a-bbeb-304f971fa8c3"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4676,15 +4694,7 @@
                 "phase": "Q3",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q3.5"
-            },
-            "requires": [
-                "2f3de2bf-583d-497a-bbeb-304f971fa8c3"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "b08f69d2-71b7-4049-bcc8-a40d24b0911e",
@@ -4695,6 +4705,14 @@
             "descriptionEn": "Die lernende Person kann hetero-/homogene und enzymatische Katalyse hinsichtlich Aktivierung bewerten.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "11c20e66-1287-434e-8766-09b37350bf9e"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4705,15 +4723,7 @@
                 "phase": "Q3",
                 "area": "Physikalische Chemie",
                 "topicCode": "Q3.5"
-            },
-            "requires": [
-                "11c20e66-1287-434e-8766-09b37350bf9e"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "cac6bbdc-8c6e-4483-811a-708f11212354",
@@ -4724,6 +4734,14 @@
             "descriptionEn": "Die lernende Person kann freie Reaktionsenthalpie berechnen und Spontaneität/Ertrag deuten.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "1491613d-ab91-4ff6-8f2f-7fd3f936e0f0"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4735,15 +4753,7 @@
                 "phase": "Q4",
                 "area": "Energetik",
                 "topicCode": "Q4.1"
-            },
-            "requires": [
-                "1491613d-ab91-4ff6-8f2f-7fd3f936e0f0"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "9a6a03f9-8d08-4d0d-b86f-829832561768",
@@ -4754,6 +4764,14 @@
             "descriptionEn": "Die lernende Person kann einfache statistische Verteilungen zur Energetik einordnen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "956e9346-9119-44c5-aab1-12fee2831f43"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4765,15 +4783,7 @@
                 "phase": "Q4",
                 "area": "Energetik",
                 "topicCode": "Q4.1"
-            },
-            "requires": [
-                "956e9346-9119-44c5-aab1-12fee2831f43"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "d7e5db85-8a40-40ef-b513-18510eb86d23",
@@ -4784,6 +4794,14 @@
             "descriptionEn": "Die lernende Person kann Zellspannungen unter Betriebsbedingungen mit Nernst-Gleichung berechnen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "e2e587f6-812c-4a1f-9ad8-8c6ab58f76a3"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4795,15 +4813,7 @@
                 "phase": "Q4",
                 "area": "Energie",
                 "topicCode": "Q4.2"
-            },
-            "requires": [
-                "e2e587f6-812c-4a1f-9ad8-8c6ab58f76a3"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "206bfa43-a28c-49a0-a1e1-dc9ef12f1085",
@@ -4814,6 +4824,14 @@
             "descriptionEn": "Die lernende Person kann Wirkungsgrade verschiedener Energiewandler berechnen und vergleichen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "cb71c0bf-f3f4-4315-880e-f80362bdfad7"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4825,15 +4843,7 @@
                 "phase": "Q4",
                 "area": "Energie",
                 "topicCode": "Q4.2"
-            },
-            "requires": [
-                "cb71c0bf-f3f4-4315-880e-f80362bdfad7"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "1e4b16ef-8aef-4c22-bdb3-bb8f4b94a09f",
@@ -4844,6 +4854,14 @@
             "descriptionEn": "Die lernende Person kann vereinfachte Ökobilanzen für Energieträger erstellen und interpretieren.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "fd91b3ff-9e95-4207-904c-cb0c3ad51bc3"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4855,15 +4873,7 @@
                 "phase": "Q4",
                 "area": "Energie",
                 "topicCode": "Q4.2"
-            },
-            "requires": [
-                "fd91b3ff-9e95-4207-904c-cb0c3ad51bc3"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "8cb05348-af8a-4fe2-987f-8641827c8074",
@@ -4874,6 +4884,14 @@
             "descriptionEn": "Die lernende Person kann Atomökonomie, E-Faktor und PMI für Formulierungen berechnen.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "d7eb7f36-e883-4416-927f-8f27d2957f66"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4885,15 +4903,7 @@
                 "phase": "Q4",
                 "area": "Angewandte Chemie",
                 "topicCode": "Q4.3"
-            },
-            "requires": [
-                "d7eb7f36-e883-4416-927f-8f27d2957f66"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
+            }
         },
         {
             "id": "ddbf8b0a-2afe-4755-90c6-81b81cacf3e7",
@@ -4904,6 +4914,14 @@
             "descriptionEn": "Die lernende Person kann Struktur-Eigenschafts-Beziehungen von Tensiden für Waschmittel optimieren.",
             "core": true,
             "weight": 1.1,
+            "tags": [
+                "LK"
+            ],
+            "contains": [],
+            "requires": [
+                "8cf8e124-4f2f-44b9-b7a2-27a37adae5a1"
+            ],
+            "examples": [],
             "dimensionTags": {
                 "framework": "hessen-kc-2024-chemistry",
                 "demandLevel": "AB3",
@@ -4914,25 +4932,7 @@
                 "phase": "Q4",
                 "area": "Angewandte Chemie",
                 "topicCode": "Q4.3"
-            },
-            "requires": [
-                "8cf8e124-4f2f-44b9-b7a2-27a37adae5a1"
-            ],
-            "contains": [],
-            "examples": [],
-            "tags": [
-                "LK"
-            ]
-        }
-    ],
-    "filters": [
-        {
-            "id": "GK",
-            "label": "Grundkurs"
-        },
-        {
-            "id": "LK",
-            "label": "Leistungskurs"
+            }
         }
     ]
 }
