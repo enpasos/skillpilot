@@ -4,6 +4,7 @@ import { GoalCard } from '../components/GoalCard'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
 import { Settings, Upload, Download } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
+import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
 
 import type { UiGoal } from '../goalTypes'
@@ -323,6 +324,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         initialConfig={personalConfig}
         rootLandscapeId={rootLandscapeId}
       />
+
+      <InfoModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title={modalTitle}
+        type={modalType}
+      >
+        {modalMessage}
+      </InfoModal>
     </div>
   )
 }
