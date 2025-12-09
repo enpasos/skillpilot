@@ -250,7 +250,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                             : 'bg-white/50 dark:bg-slate-800/50 border-border-color hover:border-sky-400/50 hover:shadow-lg'
                             }`}
                         >
-                          <span className={`text-lg font-semibold ${isActive ? 'text-sky-600 dark:text-sky-300' : 'text-text-primary'}`}>
+                          <span className={`text-lg font-semibold whitespace-pre-line text-center ${isActive ? 'text-sky-600 dark:text-sky-300' : 'text-text-primary'}`}>
                             {label}
                           </span>
                         </button>
