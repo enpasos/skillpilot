@@ -40,6 +40,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [isSetupOpen, setIsSetupOpen] = useState(false)
   const [personalConfig, setPersonalConfig] = useState<Record<string, { selected: boolean; filterId?: string }>>({})
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [modalTitle, setModalTitle] = useState("");
+  const [modalType, setModalType] = useState<'info' | 'error' | 'success'>('info');
+
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const selectedId = currentGoal?.id ?? rootGoals[0]?.id ?? ''
@@ -206,16 +211,31 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           window.location.reload();
         } else {
           console.error("Import failed", res.status);
-          let msg = "Import failed.";
+
+          let serverMsg = "";
           try {
             const errData = await res.json();
-            if (errData && errData.message) msg = errData.message;
-          } catch (e) { /* ignore json parse error */ }
-          alert(msg);
+            if (errData && errData.message) serverMsg = errData.message;
+          } catch (e) { /* ignore */ }
+
+          // Use helpful message if signature error suspected or generic otherwise
+          if (res.status === 400 && (serverMsg.toLowerCase().includes("signature") || serverMsg.toLowerCase().includes("tampered"))) {
+            setModalMessage("Cannot import this file. The digital signature could not be verified. This usually means the file content has been modified manually. Please ensure you are importing an original, unmodified export file.");
+            setModalTitle("Import Validation Failed");
+            setModalType('error');
+          } else {
+            setModalMessage(serverMsg || "An unknown error occurred.");
+            setModalTitle("Import Failed");
+            setModalType('error');
+          }
+          setIsModalOpen(true);
         }
       } catch (err) {
         console.error("Import error", err);
-        alert("An error occurred during import.");
+        setModalMessage("A network or system error occurred during import.");
+        setModalTitle("Import Error");
+        setModalType('error');
+        setIsModalOpen(true);
       }
     };
     reader.readAsText(file);
