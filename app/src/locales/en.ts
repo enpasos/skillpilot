@@ -18,9 +18,9 @@ export const en = {
         login: {
             back: "Back to Selection",
             roles: {
-                learner: "Learner",
-                trainer: "Trainer",
-                explorer: "Curriculum Explorer"
+                learner: "Learning",
+                trainer: "Teaching",
+                explorer: "Explore Curriculum"
             },
             idLabel: "SkillPilot ID",
             requestNewId: "Request New ID",
