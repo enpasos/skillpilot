@@ -1,8 +1,8 @@
-import React, { useState, useMemo, useCallback } from 'react'
+import React, { useState, useMemo, useCallback, useRef } from 'react'
 import { CompetenceTree } from '../components/CompetenceTree'
 import { GoalCard } from '../components/GoalCard'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
-import { Settings } from 'lucide-react'
+import { Settings, Upload, Download } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { LogoutButton } from '../components/LogoutButton'
 
@@ -38,6 +38,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [isSetupOpen, setIsSetupOpen] = useState(false)
   const [personalConfig, setPersonalConfig] = useState<Record<string, { selected: boolean; filterId?: string }>>({})
+
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const selectedId = currentGoal?.id ?? rootGoals[0]?.id ?? ''
 
@@ -154,6 +156,67 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     return activeFilter
   }, [landscapeId, personalConfig, activeFilter])
 
+  const handleExport = useCallback(async () => {
+    if (!skillpilotId) return
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/export` : `/api/ui/learners/${skillpilotId}/export`
+      const res = await fetch(url)
+      if (res.ok) {
+        const data = await res.json()
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `learner_data_${skillpilotId}.json`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } else {
+        console.error("Export failed", res.status, res.statusText)
+      }
+    } catch (e) {
+      console.error("Export error", e)
+    }
+  }, [skillpilotId])
+
+  const handleImportClick = () => {
+    fileInputRef.current?.click();
+  }
+
+  const handleFileChange = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file || !skillpilotId) return;
+
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      try {
+        const json = JSON.parse(e.target?.result as string);
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/import` : `/api/ui/learners/${skillpilotId}/import`
+
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(json)
+        });
+
+        if (res.ok) {
+          // Reload page to reflect imported state (simplest way to ensure consistency)
+          window.location.reload();
+        } else {
+          console.error("Import failed", res.status);
+          // Optionally show user feedback
+        }
+      } catch (err) {
+        console.error("Import error", err);
+        // Optionally show user feedback
+      }
+    };
+    reader.readAsText(file);
+    // Reset input so same file can be selected again if needed
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  }, [skillpilotId]);
+
   return (
     <div className="flex h-screen bg-chat-bg text-text-primary overflow-hidden transition-colors">
       <aside className="w-1/3 min-w-[300px] border-r border-border-color flex flex-col bg-sidebar-bg">
@@ -165,6 +228,27 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             </div>
           </div>
           <div className="flex items-center gap-2">
+            <button
+              onClick={handleExport}
+              className="text-text-secondary hover:text-sky-400 transition-colors"
+              title="Daten exportieren"
+            >
+              <Download size={18} />
+            </button>
+            <button
+              onClick={handleImportClick}
+              className="text-text-secondary hover:text-sky-400 transition-colors"
+              title="Daten importieren"
+            >
+              <Upload size={18} />
+            </button>
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={handleFileChange}
+              className="hidden"
+              accept=".json"
+            />
             <button
               onClick={() => setIsSetupOpen(true)}
               className="text-text-secondary hover:text-sky-400 transition-colors"

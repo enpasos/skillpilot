@@ -11,7 +11,9 @@ import com.skillpilot.backend.api.CreateLearnerRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.ScopeRequest;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
+import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.UpdatePersonalCurriculumRequest;
+import com.skillpilot.backend.api.LearnerDataDTO;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.service.LearnerService;
 import jakarta.validation.Valid;
@@ -102,5 +104,17 @@ public class LearnerUiController {
     public void updatePersonalCurriculum(@PathVariable String skillpilotId,
             @RequestBody UpdatePersonalCurriculumRequest request) {
         learnerService.setPersonalCurriculum(skillpilotId, request, null);
+    }
+
+    @GetMapping("/{skillpilotId}/export")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public LearnerDataDTO exportLearner(@PathVariable String skillpilotId) {
+        return learnerService.exportLearner(skillpilotId);
+    }
+
+    @PostMapping("/{skillpilotId}/import")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public void importLearner(@PathVariable String skillpilotId, @RequestBody LearnerDataDTO data) {
+        learnerService.importLearner(skillpilotId, data);
     }
 }

@@ -31,6 +31,7 @@ import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
+import com.skillpilot.backend.api.LearnerDataDTO;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Service
@@ -682,6 +683,42 @@ public class LearnerService {
             }
         }
         return roots;
+    }
+
+    @Transactional(readOnly = true)
+    public LearnerDataDTO exportLearner(String skillpilotId) {
+        Learner learner = getLearner(skillpilotId);
+        Map<String, Double> mastery = getMastery(skillpilotId);
+        List<String> planned = getPlannedGoals(skillpilotId);
+        return new LearnerDataDTO(learner, mastery, planned);
+    }
+
+    @Transactional
+    public void importLearner(String skillpilotId, LearnerDataDTO data) {
+        Learner existing = getLearner(skillpilotId);
+
+        // Restore Learner properties
+        if (data.learner() != null) {
+            existing.setSelectedCurriculum(data.learner().getSelectedCurriculum());
+            existing.setPersonalCurriculum(data.learner().getPersonalCurriculum());
+            learnerRepository.save(existing);
+        }
+
+        // Restore Mastery
+        if (data.mastery() != null) {
+            for (Map.Entry<String, Double> entry : data.mastery().entrySet()) {
+                MasteryId mid = new MasteryId(skillpilotId, entry.getKey());
+                Mastery m = masteryRepository.findById(mid)
+                        .orElse(new Mastery(existing, entry.getKey(), entry.getValue()));
+                m.setValue(entry.getValue());
+                masteryRepository.save(m);
+            }
+        }
+
+        // Restore Planned Goals
+        if (data.plannedGoals() != null) {
+            setPlannedGoals(skillpilotId, new HashSet<>(data.plannedGoals()));
+        }
     }
 
 }
