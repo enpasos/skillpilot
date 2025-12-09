@@ -218,8 +218,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             if (errData && errData.message) serverMsg = errData.message;
           } catch (e) { /* ignore */ }
 
-          // Use helpful message if signature error suspected or generic otherwise
-          if (res.status === 400 && (serverMsg.toLowerCase().includes("signature") || serverMsg.toLowerCase().includes("tampered"))) {
+          // Use helpful message if signature error suspected (400 Bad Request) or generic otherwise
+          if (res.status === 400) {
             setModalMessage("Cannot import this file. The digital signature could not be verified. This usually means the file content has been modified manually. Please ensure you are importing an original, unmodified export file.");
             setModalTitle("Import Validation Failed");
             setModalType('error');
