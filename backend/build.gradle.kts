@@ -34,6 +34,7 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.boot:spring-boot-test-autoconfigure")
+    testImplementation("com.h2database:h2")
 }
 
 tasks.test {

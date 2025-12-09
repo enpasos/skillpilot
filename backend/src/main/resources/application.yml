@@ -40,6 +40,8 @@ skillpilot:
     directory: ../curricula
   ai:
     api-key: ${SKILLPILOT_AI_API_KEY:}
+  security:
+    signing-secret: ${SKILLPILOT_SIGNING_SECRET:default-insecure-secret-change-me}
 
 springdoc:
   api-docs:
