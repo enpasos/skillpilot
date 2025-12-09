@@ -6,6 +6,7 @@ import { Settings, Upload, Download } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
+import { useLanguage } from '../contexts/LanguageContext'
 
 import type { UiGoal } from '../goalTypes'
 
@@ -185,6 +186,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [skillpilotId])
 
+  const { language } = useLanguage();
+
   const handleImportClick = () => {
     fileInputRef.current?.click();
   }
@@ -220,20 +223,35 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
           // Use helpful message if signature error suspected (400 Bad Request) or generic otherwise
           if (res.status === 400) {
-            setModalMessage("Cannot import this file. The digital signature could not be verified. This usually means the file content has been modified manually. Please ensure you are importing an original, unmodified export file.");
-            setModalTitle("Import Validation Failed");
+            if (language === 'de') {
+              setModalMessage("Diese Datei kann nicht importiert werden. Die digitale Signatur konnte nicht verifiziert werden. Dies bedeutet in der Regel, dass der Dateiinhalt manuell verändert wurde. Bitte stellen Sie sicher, dass Sie eine originale, unveränderte Exportdatei importieren.");
+              setModalTitle("Import-Validierung fehlgeschlagen");
+            } else {
+              setModalMessage("Cannot import this file. The digital signature could not be verified. This usually means the file content has been modified manually. Please ensure you are importing an original, unmodified export file.");
+              setModalTitle("Import Validation Failed");
+            }
             setModalType('error');
           } else {
-            setModalMessage(serverMsg || "An unknown error occurred.");
-            setModalTitle("Import Failed");
+            if (language === 'de') {
+              setModalMessage(serverMsg || "Ein unbekannter Fehler ist aufgetreten.");
+              setModalTitle("Import fehlgeschlagen");
+            } else {
+              setModalMessage(serverMsg || "An unknown error occurred.");
+              setModalTitle("Import Failed");
+            }
             setModalType('error');
           }
           setIsModalOpen(true);
         }
       } catch (err) {
         console.error("Import error", err);
-        setModalMessage("A network or system error occurred during import.");
-        setModalTitle("Import Error");
+        if (language === 'de') {
+          setModalMessage("Ein Netzwerk- oder Systemfehler ist während des Imports aufgetreten.");
+          setModalTitle("Import-Fehler");
+        } else {
+          setModalMessage("A network or system error occurred during import.");
+          setModalTitle("Import Error");
+        }
         setModalType('error');
         setIsModalOpen(true);
       }
@@ -241,7 +259,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     reader.readAsText(file);
     // Reset input so same file can be selected again if needed
     if (fileInputRef.current) fileInputRef.current.value = '';
-  }, [skillpilotId]);
+  }, [skillpilotId, language]);
 
   return (
     <div className="flex h-screen bg-chat-bg text-text-primary overflow-hidden transition-colors">
