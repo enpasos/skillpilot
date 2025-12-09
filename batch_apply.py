@@ -11,14 +11,12 @@ except ImportError:
     sys.exit(1)
 
 def main():
-    target_dir = "curricula/DE/BW/Uni_Mannheim/Master_Jura/json"
+    # Specific files to process
+    files = [
+        "curricula/EU/CEFR/English_From_German/json/EU_EUR_L_CEFR_ENGLISH.de.json",
+        "curricula/EU/CEFR/French_From_German/json/EU_EUR_L_CEFR_FRENCH.de.json"
+    ]
     map_file = "translated_map.json"
-    
-    if not os.path.exists(target_dir):
-        print(f"Directory not found: {target_dir}")
-        return
-
-    files = glob.glob(os.path.join(target_dir, "*.json"))
     print(f"Found {len(files)} files to process.")
 
     for i, f in enumerate(files):
