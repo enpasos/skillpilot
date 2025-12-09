@@ -1,10 +1,12 @@
 package com.skillpilot.backend.service;
 
 import com.skillpilot.backend.api.MasteryUpdateRequest;
+import com.skillpilot.backend.domain.CopySource;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.MasteryId;
 import com.skillpilot.backend.domain.PlannedGoal;
+import java.time.Instant;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
@@ -441,7 +443,7 @@ public class LearnerService {
         }
 
         return new UnifiedLearnerStateResponse(learner.getSkillpilotId(), curriculumSummary, frontier,
-                new LearnerGoals(plannedRich, masteredCount, totalCount), nextAllowedActions);
+                new LearnerGoals(plannedRich, masteredCount, totalCount), nextAllowedActions, learner.getCopySources());
     }
 
     @Transactional
@@ -698,7 +700,7 @@ public class LearnerService {
         Learner learner = getLearner(skillpilotId);
         Map<String, Double> mastery = getMastery(skillpilotId);
         List<String> planned = getPlannedGoals(skillpilotId);
-        LearnerDataDTO data = new LearnerDataDTO(learner, mastery, planned);
+        LearnerDataDTO data = new LearnerDataDTO(learner, mastery, planned, learner.getCopySources());
 
         String signature = calculateSignature(data);
         return new SignedLearnerDataDTO(data, signature);
@@ -716,6 +718,18 @@ public class LearnerService {
         LearnerDataDTO data = signedData.data();
         Learner existing = getLearner(skillpilotId);
         // ... rest of logic
+
+        // Provenance / Chain of Custody
+        if (data.copySources() != null) {
+            existing.getCopySources().addAll(data.copySources());
+        }
+        if (data.learner() != null) {
+            String sourceId = data.learner().getSkillpilotId();
+            // Add immediate source if not self
+            if (!sourceId.equals(skillpilotId)) {
+                existing.getCopySources().add(new CopySource(sourceId, Instant.now()));
+            }
+        }
 
         // Restore Learner properties
         if (data.learner() != null) {
