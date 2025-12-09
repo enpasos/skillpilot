@@ -19,7 +19,7 @@ export const de = {
             back: "Zurück zur Auswahl",
             roles: {
                 learner: "Lernerfolge",
-                trainer: "Lernmanagement",
+                trainer: "Kurs-\norganisation",
                 explorer: "Inhalte erkunden"
             },
             idLabel: "SkillPilot-ID",
