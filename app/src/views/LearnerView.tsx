@@ -9,6 +9,7 @@ import { LogoutButton } from '../components/LogoutButton'
 import { useLanguage } from '../contexts/LanguageContext'
 
 import type { UiGoal } from '../goalTypes'
+import type { Learner } from '../learnerTypes'
 
 interface LearnerViewProps {
   rootGoals: UiGoal[]
@@ -38,6 +39,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   rootLandscapeId,
 }) => {
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
+  const [learnerData, setLearnerData] = useState<Learner | null>(null)
   const [isSetupOpen, setIsSetupOpen] = useState(false)
   const [personalConfig, setPersonalConfig] = useState<Record<string, { selected: boolean; filterId?: string }>>({})
 
@@ -77,7 +79,21 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         console.warn('Failed to load planned goals', e)
       }
     }
+    const fetchLearnerData = async () => {
+      try {
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
+        const res = await fetch(url)
+        if (res.ok) {
+          const data = await res.json()
+          setLearnerData(data)
+        }
+      } catch (e) {
+        console.warn('Failed to load learner data', e)
+      }
+    }
     fetchPlanned()
+    fetchLearnerData()
   }, [skillpilotId])
 
   const togglePlan = useCallback(async (id: string) => {
@@ -321,6 +337,26 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             personalConfig={personalConfig}
           />
         </div>
+
+        {learnerData && learnerData.copySources && learnerData.copySources.length > 0 && (
+          <div className="p-3 border-t border-border-color bg-gray-50 dark:bg-slate-900 text-xs text-text-secondary">
+            <h3 className="font-semibold mb-1">
+              {language === 'de' ? 'Enthält Daten von' : 'Includes data from'}
+            </h3>
+            <div className="flex flex-col gap-1 max-h-[100px] overflow-y-auto">
+              {learnerData.copySources.map((src, idx) => (
+                <div key={idx} className="flex justify-between">
+                  <span className="truncate" title={src.sourceId}>
+                    {src.sourceId.substring(0, 8)}...
+                  </span>
+                  <span className="whitespace-nowrap ml-2">
+                    {new Date(src.copiedAt).toLocaleDateString()}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </aside>
 
       <main className="flex-1 p-6 bg-chat-bg overflow-y-auto transition-colors">

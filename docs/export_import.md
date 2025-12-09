@@ -29,6 +29,16 @@ Nothing. The export process is **read-only**.
 *   The data of the original (source) SkillPilot-ID remains **completely unchanged** after export.
 *   Importing that data into a new ID creates a **copy**. The source and target are completely independent after the operation.
 
+## Provenance & Watermarking (Chain of Custody)
+
+SkillPilot implements a **Chain of Custody** system to prevent denial of authorship while allowing data portability.
+
+*   **Tracking**: Every learner profile maintains a history of **Copy Sources**.
+*   **Mechanism**:
+    *   When you import data from another user, that user's **SkillPilot-ID** and the **Timestamp** of the import are permanently added to your profile's provenance record.
+    *   This history is **cumulative**. If User A copies from User B, and User B previously copied from the Teacher, User A's profile will list *both* the Teacher and User B as sources.
+*   **Visibility**: This provenance data is visible in the profile, showing exactly where the data originated. This serves as a "watermark" that travels with the data, making it impossible to claim copied work as purely original.
+
 ## Security & Signatures
 
 The exported file is secured with an **HMAC-SHA256 signature**. This ensures data integrity and prevents tampering (e.g., manually editing the file to give yourself 100% mastery).
@@ -39,7 +49,8 @@ The exported file is secured with an **HMAC-SHA256 signature**. This ensures dat
   "data": {
     "learner": { ... },
     "mastery": { ... },
-    "plannedGoals": [ ... ]
+    "plannedGoals": [ ... ],
+    "copySources": [ ... ]
   },
   "signature": "a1b2c3d4..."
 }

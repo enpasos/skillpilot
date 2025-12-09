@@ -27,6 +27,10 @@ public class Learner {
     @Column(name = "personal_curriculum", columnDefinition = "TEXT")
     private String personalCurriculum;
 
+    @jakarta.persistence.ElementCollection(fetch = jakarta.persistence.FetchType.EAGER)
+    @jakarta.persistence.CollectionTable(name = "learner_copy_sources", joinColumns = @jakarta.persistence.JoinColumn(name = "learner_id"))
+    private java.util.Set<CopySource> copySources = new java.util.HashSet<>();
+
     public String getSkillpilotId() {
         return skillpilotId;
     }
@@ -49,6 +53,14 @@ public class Learner {
 
     public void setPersonalCurriculum(String personalCurriculum) {
         this.personalCurriculum = personalCurriculum;
+    }
+
+    public java.util.Set<CopySource> getCopySources() {
+        return copySources;
+    }
+
+    public void setCopySources(java.util.Set<CopySource> copySources) {
+        this.copySources = copySources;
     }
 
     // Needed for JPA toolchain to set generated ID
