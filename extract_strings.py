@@ -7,6 +7,11 @@ def extract_strings(filepath, output_path):
         data = json.load(f)
     
     unique_strings = {}
+    try:
+        with open(output_path, 'r', encoding='utf-8') as f:
+            unique_strings = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        pass
 
     def process_node(node):
         # check title
