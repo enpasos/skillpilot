@@ -108,13 +108,14 @@ public class LearnerUiController {
 
     @GetMapping("/{skillpilotId}/export")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
-    public LearnerDataDTO exportLearner(@PathVariable String skillpilotId) {
+    public com.skillpilot.backend.api.SignedLearnerDataDTO exportLearner(@PathVariable String skillpilotId) {
         return learnerService.exportLearner(skillpilotId);
     }
 
     @PostMapping("/{skillpilotId}/import")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
-    public void importLearner(@PathVariable String skillpilotId, @RequestBody LearnerDataDTO data) {
+    public void importLearner(@PathVariable String skillpilotId,
+            @RequestBody com.skillpilot.backend.api.SignedLearnerDataDTO data) {
         learnerService.importLearner(skillpilotId, data);
     }
 }

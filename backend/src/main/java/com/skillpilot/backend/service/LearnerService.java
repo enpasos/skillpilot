@@ -32,6 +32,11 @@ import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.LearnerDataDTO;
+import com.skillpilot.backend.api.SignedLearnerDataDTO;
+import org.springframework.beans.factory.annotation.Value;
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Service
@@ -42,6 +47,9 @@ public class LearnerService {
     private final PlannedGoalRepository plannedGoalRepository;
     private final LandscapeService landscapeService;
     private final ObjectMapper objectMapper;
+
+    @Value("${skillpilot.security.signing-secret}")
+    private String signingSecret;
 
     public LearnerService(
             LearnerRepository learnerRepository,
@@ -686,16 +694,28 @@ public class LearnerService {
     }
 
     @Transactional(readOnly = true)
-    public LearnerDataDTO exportLearner(String skillpilotId) {
+    public SignedLearnerDataDTO exportLearner(String skillpilotId) {
         Learner learner = getLearner(skillpilotId);
         Map<String, Double> mastery = getMastery(skillpilotId);
         List<String> planned = getPlannedGoals(skillpilotId);
-        return new LearnerDataDTO(learner, mastery, planned);
+        LearnerDataDTO data = new LearnerDataDTO(learner, mastery, planned);
+
+        String signature = calculateSignature(data);
+        return new SignedLearnerDataDTO(data, signature);
     }
 
     @Transactional
-    public void importLearner(String skillpilotId, LearnerDataDTO data) {
+    public void importLearner(String skillpilotId, SignedLearnerDataDTO signedData) {
+        // distinct verification logic
+        String calculatedSignature = calculateSignature(signedData.data());
+        if (!calculatedSignature.equals(signedData.signature())) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Invalid data signature. Data may have been tampered with.");
+        }
+
+        LearnerDataDTO data = signedData.data();
         Learner existing = getLearner(skillpilotId);
+        // ... rest of logic
 
         // Restore Learner properties
         if (data.learner() != null) {
@@ -718,6 +738,20 @@ public class LearnerService {
         // Restore Planned Goals
         if (data.plannedGoals() != null) {
             setPlannedGoals(skillpilotId, new HashSet<>(data.plannedGoals()));
+        }
+    }
+
+    private String calculateSignature(LearnerDataDTO data) {
+        try {
+            String json = objectMapper.writeValueAsString(data);
+            Mac mac = Mac.getInstance("HmacSHA256");
+            SecretKeySpec secretKeySpec = new SecretKeySpec(signingSecret.getBytes(StandardCharsets.UTF_8),
+                    "HmacSHA256");
+            mac.init(secretKeySpec);
+            byte[] hmacData = mac.doFinal(json.getBytes(StandardCharsets.UTF_8));
+            return java.util.HexFormat.of().formatHex(hmacData);
+        } catch (Exception e) {
+            throw new RuntimeException("Error calculating signature", e);
         }
     }
 
