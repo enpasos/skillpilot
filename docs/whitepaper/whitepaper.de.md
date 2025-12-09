@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (DE)
 
-**Version:** 1.0.1
+**Version:** 1.0.2
 **Datum:** Dezember 2025
 **Projekt:** SkillPilot
 
@@ -58,19 +58,37 @@ Der eigentliche Dialoginhalt ist vom Server entkoppelt. Welche Informationen der
 
 ---
 
-## 5. Status Quo: Verfügbare Inhalte
-
+## 5. Fast wie Blockchain: Chain of Custody
+ 
+SkillPilot implementiert ein **Chain of Custody** Pattern, um Lernerfolge manipulationssicher und nachvollziehbar zu machen.
+ 
+Da der KI-Agent (SkillPilot GPT) in dem derzeit implementierten Muster der einzige Akteur ist, der Lernerfolge bewertet, authentisiert er sich gegenüber dem SkillPilot Backend. Nur er hat das Schreibrecht für Lernerfolge.
+ 
+Die Lernenden können ihre Daten (Profil + Fortschritt) jederzeit vom Server exportieren. Diese Exporte werden vom Server **kryptographisch signiert**. Damit wird sichergestellt, dass die Daten nicht offline manipuliert („optimiert“) werden können.
+ 
+Besonders mächtig wird der Ansatz beim Austausch von Daten: Beim Import in einen anderen Account (z. B. Schulwechsel oder Backup) wird die komplette **Kette der Datenherkunft** (Data Provenance) gespeichert. Ein Lehrer kann so in einer Hausaufgabe, die auf einem Template basiert, die vollständige Historie einsehen. Wurde die Lösung selbst erarbeitet? Oder wurde der Stand eines Mitschülers importiert und weitergeführt? Die Chain of Custody macht dies transparent, ohne den Austausch zu verhindern.
+ 
+---
+ 
+## 6. Status Quo: Verfügbare Inhalte
+ 
 SkillPilot ist keine theoretische Übung. Das System ist bereits mit umfangreichen Curricula ausgestattet, die offizielle Bildungsstandards abbilden:
 
-* **Schule (Hessen Sek I & II):** Vollständige Abdeckung der Fächer Mathematik, Physik, Chemie, Biologie, Informatik, Geschichte sowie Sprachen (Deutsch, Englisch, Französisch, Latein).
-* **Sprachen (GER):** Europäischer Referenzrahmen für Englisch und Französisch (A1–C2).
-* **Universität:** Exemplarische Module (z. B. TUM Physik).
+* **Schule (Hessen Sek I & II):**
+    *   Gymnasiale Oberstufe (DE, Hessen, G9, Sekundarstufe II)
+    *   Gymnasiale Mittelstufe (DE, Hessen, G9, Sekundarstufe I)
+*   **Universität:**
+    *   **Uni Mannheim:** Bachelor BWL, Bachelor Jura, Master Jura.
+    *   **TUM:** Bachelor Physik, Master Theoretische und Mathematische Physik.
+*   **Sprachen (GER):**
+    *   Englisch (CEFR A1-C2)
+    *   Französisch (CEFR A1-C2)
 
 Diese Inhalte dienen als Startpunkt und können von der Community erweitert werden.
 
 ---
 
-## 6. Der offene Ansatz: Geschäftsmodell & Einladung
+## 7. Der offene Ansatz: Geschäftsmodell & Einladung
 
 Um eine breite Akzeptanz und nachhaltige Weiterentwicklung zu sichern, wird SkillPilot als **Open Source Software unter der Apache-2.0-Lizenz** veröffentlicht. Dies ist eine bewusste Einladung an die klassischen Akteure des Bildungswesens.
 

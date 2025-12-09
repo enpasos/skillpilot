@@ -58,19 +58,37 @@ The actual dialog content is decoupled from the server. What information the lea
 
 ---
 
-## 5. Status Quo: Available Content
-
+## 5. Almost like Blockchain: Chain of Custody
+ 
+SkillPilot implements a **Chain of Custody** pattern to make learning achievements tamper-proof and traceable.
+ 
+Since the AI Agent (SkillPilot GPT), in the currently implemented pattern, is the only actor evaluating learning success, it authenticates itself against the SkillPilot Backend. Only it has write access for learning achievements.
+ 
+Learners can export their data (profile + progress) from the server at any time. These exports are **cryptographically signed** by the server. This ensures that data cannot be manipulated ("optimized") offline.
+ 
+The approach becomes particularly powerful when exchanging data: When importing into another account (e.g., changing schools or restoring a backup), the complete **chain of data origin** (Data Provenance) is stored. A teacher can thus view the complete history in a homework assignment based on a template. Was the solution created by the student themselves? Or was a classmate's status imported and continued? The Chain of Custody makes this transparent without preventing the exchange.
+ 
+---
+ 
+## 6. Status Quo: Available Content
+ 
 SkillPilot is not a theoretical exercise. The system already comes with extensive curricula that reflect official educational standards:
 
-* **Schools (Hessen lower and upper secondary):** Complete coverage of the subjects mathematics, physics, chemistry, biology, computer science, history, and languages (German, English, French, Latin).
-* **Languages (GER/CEFR):** European Framework of Reference for English and French (A1–C2).
-* **University:** Sample modules (e.g. TUM Physics).
+* **Schools (Hesse, Germany, Secondary I & II):**
+    *   Gymnasiale Oberstufe (DE, Hessen, G9, Secondary II)
+    *   Gymnasiale Mittelstufe (DE, Hessen, G9, Secondary I)
+*   **University:**
+    *   **Uni Mannheim:** Bachelor Business Administration (BWL), Bachelor Law, Master Law.
+    *   **TUM:** Bachelor Physics, Master Theoretical and Mathematical Physics.
+*   **Languages (CEFR):**
+    *   English (CEFR A1-C2)
+    *   French (CEFR A1-C2)
 
 This content serves as a starting point and can be expanded by the community.
 
 ---
 
-## 6. The Open Approach: Business Model & Invitation
+## 7. The Open Approach: Business Model & Invitation
 
 To ensure broad acceptance and sustainable further development, SkillPilot is released as **open source software under the Apache-2.0 license**. This is a deliberate invitation to the traditional players in the education system.
 
