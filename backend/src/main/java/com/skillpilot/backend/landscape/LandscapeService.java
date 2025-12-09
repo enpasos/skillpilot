@@ -351,13 +351,37 @@ public class LandscapeService {
                     for (String ref : g.getContains()) {
                         String refLandscapeId = goalIdToLandscapeId.get(ref);
                         if (refLandscapeId != null && !refLandscapeId.equals(l.getLandscapeId())) {
-                            referenced.add(refLandscapeId);
+                            // Only consider it a "referenced landscape" (sub-module) if the reference
+                            // points to the ROOT goal of that other landscape.
+                            // This prevents false positives when two curricula share identical sub-goals
+                            // (e.g. CEFR levels).
+                            LearningLandscape refLandscape = getById(refLandscapeId);
+                            if (refLandscape != null) {
+                                String refRootId = getRootGoalId(refLandscape);
+                                if (ref.equals(refRootId)) {
+                                    referenced.add(refLandscapeId);
+                                }
+                            }
                         }
                     }
                 }
             }
         }
         return referenced;
+    }
+
+    private String getRootGoalId(LearningLandscape l) {
+        if (l.getGoals() == null || l.getGoals().isEmpty()) {
+            return null;
+        }
+        // Strategy 1: Look for "root" tag
+        for (LearningGoal g : l.getGoals()) {
+            if (g.getTags() != null && g.getTags().contains("root")) {
+                return g.getId();
+            }
+        }
+        // Strategy 2: Fallback to the first goal
+        return l.getGoals().get(0).getId();
     }
 
     public List<LandscapeSummary> getBaseCurricula() {
