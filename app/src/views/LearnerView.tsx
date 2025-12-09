@@ -205,11 +205,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           window.location.reload();
         } else {
           console.error("Import failed", res.status);
-          // Optionally show user feedback
+          let msg = "Import failed.";
+          try {
+            const errData = await res.json();
+            if (errData && errData.message) msg = errData.message;
+          } catch (e) { /* ignore json parse error */ }
+          alert(msg);
         }
       } catch (err) {
         console.error("Import error", err);
-        // Optionally show user feedback
+        alert("An error occurred during import.");
       }
     };
     reader.readAsText(file);
