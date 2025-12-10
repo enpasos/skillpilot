@@ -29,7 +29,9 @@ The server guides you via `nextAllowedActions`.
 - `setCurriculum(skillpilotId, curriculumId)`
   - Sets the active curriculum and **returns the new Learner State**.
   - **Check `nextAllowedActions`**: If it says `setPersonalization`, you can offer to filter subjects.
-  - **PROACTIVE**: Check `tags` in the `frontier` (e.g. `["GK", "LK"]`). Ask the user for their preference (e.g. "Grundkurs or Leistungskurs?") before calling `setPersonalization`.
+  - **PROACTIVE**: Check `tags` in the `frontier` (e.g. `["GK", "LK"]`).
+  - **Conditional Check**: If the frontier contains mixed tags AND you do not know the user's preference yet, ask (e.g. "Grundkurs or Leistungskurs?").
+  - **Silence**: If the user already specified "LK"/"GK" or the context is clear, proceed directly to `setPersonalization` with the corresponding IDs/Tags.
 
 - `setPersonalization(skillpilotId, { goalIds: [uuid] })`
   - **One-time Setup:** Restricts the curriculum framework (e.g. "Only Math", "Only A1-A2").
