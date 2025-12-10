@@ -435,15 +435,37 @@ public class LearnerService {
         List<String> nextAllowedActions = new ArrayList<>();
         if (curriculumId == null) {
             nextAllowedActions.add("setCurriculum");
-        } else {
+        }
+        List<String> activeFilters = new ArrayList<>();
+        if (curriculumId != null) {
             nextAllowedActions.add("setPersonalization");
             nextAllowedActions.add("setScope");
             nextAllowedActions.add("getFrontier");
             nextAllowedActions.add("setMastery");
+
+            // Extract active filters for the current curriculum
+            try {
+                String json = learner.getPersonalCurriculum();
+                if (json != null && !json.isBlank()) {
+                    Map<String, Map<String, Object>> config = objectMapper.readValue(json,
+                            new com.fasterxml.jackson.core.type.TypeReference<>() {
+                            });
+                    Map<String, Object> landscapeConfig = config.get(curriculumId);
+                    if (landscapeConfig != null) {
+                        Object filterObj = landscapeConfig.get("filterId");
+                        if (filterObj instanceof String) {
+                            activeFilters.add((String) filterObj);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                // Ignore parsing errors
+            }
         }
 
         return new UnifiedLearnerStateResponse(learner.getSkillpilotId(), curriculumSummary, frontier,
-                new LearnerGoals(plannedRich, masteredCount, totalCount), nextAllowedActions, learner.getCopySources());
+                new LearnerGoals(plannedRich, masteredCount, totalCount), nextAllowedActions, activeFilters,
+                learner.getCopySources());
     }
 
     @Transactional

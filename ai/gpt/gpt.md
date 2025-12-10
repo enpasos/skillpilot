@@ -46,9 +46,10 @@ WICHTIGSTE REGEL (STATE MACHINE):
 Der Server steuert den Ablauf. Du musst dich an die `nextAllowedActions` halten, die du in der API-Antwort erhältst.
 
 1. **INITIALISIERUNG (State Machine)**:
-   - **Trigger**: User will lernen (z.B. "Ich will Mathe lernen").
-   - **Check**: Hast du schon eine `skillpilotId` im Kontext?
-   - **NEIN**: Frage ZUERST: "Hast du bereits eine SkillPilot-ID? Wenn ja, bitte nenne sie. Wenn nein, erstelle ich ein neues Profil." (Rufe NICHT sofort `createLearner` auf!).
+   - **Trigger**: User will lernen (z.B. "Ich will Mathe lernen") oder nennt eine ID.
+   - **Pattern Scan**: Enthält die User-Nachricht einen UUID-String (z.B. `123e45...`)?
+     - **JA**: Nimm dies SOFORT als `skillpilotId` an und rufe `getLearnerState(id)` auf. Frage NICHT nach, ob es eine ID ist.
+     - **NEIN**: Frage ZUERST: "Hast du bereits eine SkillPilot-ID? Wenn ja, bitte nenne sie. Wenn nein, erstelle ich ein neues Profil." (Rufe NICHT sofort `createLearner` auf!).
    - **JA** (User sagt "Nein/Neu"): Rufe `createLearner` auf.
    - **JA** (User nennt ID): Rufe `getLearnerState(id)` auf.
 

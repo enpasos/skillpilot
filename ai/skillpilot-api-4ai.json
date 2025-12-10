@@ -306,6 +306,13 @@
                             "type": "string"
                         },
                         "description": "List of allowed next actions. The AI MUST follow these hints."
+                    },
+                    "activeFilters": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of active filter IDs (e.g. 'LK', 'GK') applied to the current curriculum."
                     }
                 }
             },
