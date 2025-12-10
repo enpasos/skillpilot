@@ -443,18 +443,24 @@ public class LearnerService {
             nextAllowedActions.add("getFrontier");
             nextAllowedActions.add("setMastery");
 
-            // Extract active filters for the current curriculum
+            // Extract active filters from ALL configured landscapes (Aggregation)
+            // This handles the case where personalization is on a child subject (e.g. Math
+            // LK)
+            // but the user is viewing the parent (Overview).
             try {
                 String json = learner.getPersonalCurriculum();
                 if (json != null && !json.isBlank()) {
                     Map<String, Map<String, Object>> config = objectMapper.readValue(json,
                             new com.fasterxml.jackson.core.type.TypeReference<>() {
                             });
-                    Map<String, Object> landscapeConfig = config.get(curriculumId);
-                    if (landscapeConfig != null) {
+
+                    for (Map<String, Object> landscapeConfig : config.values()) {
                         Object filterObj = landscapeConfig.get("filterId");
                         if (filterObj instanceof String) {
-                            activeFilters.add((String) filterObj);
+                            String f = (String) filterObj;
+                            if (!activeFilters.contains(f)) {
+                                activeFilters.add(f);
+                            }
                         }
                     }
                 }
