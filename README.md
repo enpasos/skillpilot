@@ -37,6 +37,6 @@ For a detailed introduction and the vision behind SkillPilot, please refer to th
 *   [**Read Whitepaper (English)**](https://enpasos.github.io/skillpilot/whitepaper/whitepaper.en.html)
 *   [**Whitepaper lesen (Deutsch)**](https://enpasos.github.io/skillpilot/whitepaper/whitepaper.de.html)
 
-## 🌐 Live Demo
+## 🌐 Live 
 
 Visit us at **[skillpilot.com](https://skillpilot.com)**.
