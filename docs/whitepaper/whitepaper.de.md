@@ -40,8 +40,8 @@ Wir betrachten den SkillPilot KI-Agenten nicht als fertiges Software-Produkt, so
 ![SkillPilot KI Agent In Ausbildung](../comic2/SkillPilot_Agent_In_Training.de.jpg)
 
 1.  **Die richtige Tonart (Chat Persona):** Ein guter Trainer rattert keine Daten herunter. Er muss lernen, die Sprache der Lernenden zu sprechen, zu motivieren und auf Augenhöhe zu kommunizieren.
-2.  **Der Draht zur Basis (Backend):** Der Agent darf nicht halluzinieren, wen er vor sich hat. Er muss lernen, die Fakten ("Lernstand", "Frontier") präzise vom SkillPilot-Server ("Mission Control") abzurufen.
-3.  **Navigation im Dschungel (Curriculum):** Lehrpläne sind komplex. Der Agent lernt, Filter (z.B. "Mathe LK") zu nutzen, um den Dschungel transparent zu machen und einen klaren Pfad aufzuzeigen.
+2.  **Der Draht zur Basis (Backend-Interaktion):** Der Agent darf nicht halluzinieren. Er muss sich mit "Mission Control" abstimmen. Hier kommt es entscheidend auf das funktionierende Zusammenspiel zwischen Backend und KI an.
+3.  **Navigation im Dschungel (Curriculum):** Lehrpläne sind komplex. Der Agent lernt, Filter (z.B. "Mathe LK") zu nutzen. Gleichzeitig müssen wir die Curricula-Modelle so anpassen, dass sie den Bedürfnissen des Agenten entsprechen.
 4.  **Der pädagogische Funke (Didaktik):** Die Königsdisziplin. Der Agent soll nicht vorsagen, sondern begleiten. Er lernt, schlaue Gegenfragen zu stellen, damit beim Lernenden selbst ein "Aha!"-Moment entsteht.
 
 ---
