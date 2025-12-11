@@ -11,7 +11,7 @@
 SkillPilot modelliert Lehrpläne (**Curricula**) als **Skill-Graph**. Lernende, Lehrkräfte und KI-Agenten nutzen diesen als maschinenlesbare Landkarte. So kann der Lernende von seinem aktuellen **Skill-Stand** sicher zu seinen **Skill-Zielen** navigieren. Ein KI-Agent führt ihn dabei durch **personalisierte Curricula**. Dazu erfasst das System Lernerfolge auf atomaren Skill-Zielen und leitet daraus den **Beherrschungsgrad** für übergeordnete Themen ab. Auf dieser Basis führt der Weg über die **nächsten erreichbaren Skill-Ziele** systematisch hin zu den individuellen Bildungszielen.
 
 
-![SkillPilot Cartoon](../cartoon/SkillPilot_Cartoon.de.jpg)
+![SkillPilot Comic](../comic1/SkillPilot_Comic.de.jpg)
 
 ---
 
