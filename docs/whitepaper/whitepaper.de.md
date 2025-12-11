@@ -33,7 +33,20 @@ Daraus ergibt sich der Ansatz für **SkillPilot** fast von selbst: Es entsteht a
 
 ---
 
-## 3. Die Technologie: Der Skill-Graph
+## 3. Der lernende Agent: Ein Agent in Ausbildung
+
+Wir betrachten den SkillPilot KI-Agenten nicht als fertiges Software-Produkt, sondern als einen **Auszubildenden**. Er lernt gerade seinen Job als Trainer. Aktuell arbeiten wir daran, ihm vier wesentliche Fähigkeiten beizubringen:
+
+![SkillPilot KI Agent In Ausbildung](../comic2/SkillPilot_Agent_In_Training.de.jpg)
+
+1.  **Die richtige Tonart (Chat Persona):** Ein guter Trainer rattert keine Daten herunter. Er muss lernen, die Sprache der Lernenden zu sprechen, zu motivieren und auf Augenhöhe zu kommunizieren.
+2.  **Der Draht zur Basis (Backend):** Der Agent darf nicht halluzinieren, wen er vor sich hat. Er muss lernen, die Fakten ("Lernstand", "Frontier") präzise vom SkillPilot-Server ("Mission Control") abzurufen.
+3.  **Navigation im Dschungel (Curriculum):** Lehrpläne sind komplex. Der Agent lernt, Filter (z.B. "Mathe LK") zu nutzen, um den Dschungel transparent zu machen und einen klaren Pfad aufzuzeigen.
+4.  **Der pädagogische Funke (Didaktik):** Die Königsdisziplin. Der Agent soll nicht vorsagen, sondern begleiten. Er lernt, schlaue Gegenfragen zu stellen, damit beim Lernenden selbst ein "Aha!"-Moment entsteht.
+
+---
+
+## 4. Die Technologie: Der Skill-Graph
 
 Das Herzstück von SkillPilot ist die Abkehr von linearen Listen hin zu einem vernetzten Graphen.
 
@@ -46,7 +59,7 @@ Dies verhindert Überforderung und stellt sicher, dass der KI-Tutor keine willk�
 
 ---
 
-## 4. Der Datenansatz: Sicherheit & Privacy
+## 5. Der Datenansatz: Sicherheit & Privacy
 
 Ein zentraler Pfeiler von SkillPilot ist „Privacy by Design“ durch eine strikte Datentrennung.
 
@@ -58,7 +71,7 @@ Der eigentliche Dialoginhalt ist vom Server entkoppelt. Welche Informationen der
 
 ---
 
-## 5. Fast wie Blockchain: Chain of Custody
+## 6. Fast wie Blockchain: Chain of Custody
  
 SkillPilot implementiert ein **Chain of Custody** Pattern, um Lernerfolge manipulationssicher und nachvollziehbar zu machen.
  
@@ -70,7 +83,7 @@ Besonders mächtig wird der Ansatz beim Austausch von Daten: Beim Import in eine
  
 ---
  
-## 6. Status Quo: Verfügbare Inhalte
+## 7. Status Quo: Verfügbare Inhalte
  
 SkillPilot ist keine theoretische Übung. Das System ist bereits mit umfangreichen Curricula ausgestattet, die offizielle Bildungsstandards abbilden:
 
@@ -88,7 +101,7 @@ Diese Inhalte dienen als Startpunkt und können von der Community erweitert werd
 
 ---
 
-## 7. Der offene Ansatz: Geschäftsmodell & Einladung
+## 8. Der offene Ansatz: Geschäftsmodell & Einladung
 
 Um eine breite Akzeptanz und nachhaltige Weiterentwicklung zu sichern, wird SkillPilot als **Open Source Software unter der Apache-2.0-Lizenz** veröffentlicht. Dies ist eine bewusste Einladung an die klassischen Akteure des Bildungswesens.
 
