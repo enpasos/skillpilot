@@ -33,7 +33,20 @@ From this, the approach for **SkillPilot** almost suggests itself: it is created
 
 ---
 
-## 3. The Technology: The Skill Graph
+## 3. The Learning Agent: An Agent in Training
+
+We do not view the SkillPilot AI Agent as a finished software product, but as an **apprentice**. It is currently learning its job as a trainer. We are currently working on teaching it four essential skills:
+
+![SkillPilot AI Agent In Training](../comic2/SkillPilot_Agent_In_Training.en.jpg)
+
+1.  **The Right Tone (Chat Persona):** A good trainer doesn't rattle off data. It must learn to speak the learner's language, motivate, and communicate at eye level.
+2.  **The Wire to the Base (Backend):** The agent must not hallucinate who it is talking to. It must learn to retrieve facts ("Learning State", "Frontier") precisely from the SkillPilot Server ("Mission Control").
+3.  **Navigating the Jungle (Curriculum):** Curricula are complex. The agent learns to use filters (e.g., "Math Advanced Course") to make the jungle transparent and show a clear path.
+4.  **The Pedagogical Spark (Didactics):** The supreme discipline. The agent should not give away the answer, but guide. It learns to ask smart counter-questions so that the learner has an "Aha!" moment themselves.
+
+---
+
+## 4. The Technology: The Skill Graph
 
 At the heart of SkillPilot lies the departure from linear lists towards a connected graph.
 
@@ -46,7 +59,7 @@ This prevents overload and ensures that the AI tutor does not make arbitrary jum
 
 ---
 
-## 4. The Data Approach: Security & Privacy
+## 5. The Data Approach: Security & Privacy
 
 A central pillar of SkillPilot is “privacy by design” through strict separation of data.
 
@@ -58,7 +71,7 @@ The actual dialog content is decoupled from the server. What information the lea
 
 ---
 
-## 5. Almost like Blockchain: Chain of Custody
+## 6. Almost like Blockchain: Chain of Custody
  
 SkillPilot implements a **Chain of Custody** pattern to make learning achievements tamper-proof and traceable.
  
@@ -70,7 +83,7 @@ The approach becomes particularly powerful when exchanging data: When importing 
  
 ---
  
-## 6. Status Quo: Available Content
+## 7. Status Quo: Available Content
  
 SkillPilot is not a theoretical exercise. The system already comes with extensive curricula that reflect official educational standards:
 
@@ -88,7 +101,7 @@ This content serves as a starting point and can be expanded by the community.
 
 ---
 
-## 7. The Open Approach: Business Model & Invitation
+## 8. The Open Approach: Business Model & Invitation
 
 To ensure broad acceptance and sustainable further development, SkillPilot is released as **open source software under the Apache-2.0 license**. This is a deliberate invitation to the traditional players in the education system.
 
