@@ -40,8 +40,8 @@ We do not view the SkillPilot AI Agent as a finished software product, but as an
 ![SkillPilot AI Agent In Training](../comic2/SkillPilot_Agent_In_Training.en.jpg)
 
 1.  **The Right Tone (Chat Persona):** A good trainer doesn't rattle off data. It must learn to speak the learner's language, motivate, and communicate at eye level.
-2.  **The Wire to the Base (Backend):** The agent must not hallucinate who it is talking to. It must learn to retrieve facts ("Learning State", "Frontier") precisely from the SkillPilot Server ("Mission Control").
-3.  **Navigating the Jungle (Curriculum):** Curricula are complex. The agent learns to use filters (e.g., "Math Advanced Course") to make the jungle transparent and show a clear path.
+2.  **The Wire to the Base (Backend Interaction):** The agent must not hallucinate who it is talking to. It needs to sync perfectly with "Mission Control". This is a two-way street: the backend communication must also work seamlessly to support the AI.
+3.  **Navigating the Jungle (Curriculum):** Curricula are complex. The agent learns to use filters (e.g., "Math Advanced Course") to show a clear path. Simultaneously, we need to adjust the curriculum models to meet the agent's needs.
 4.  **The Pedagogical Spark (Didactics):** The supreme discipline. The agent should not give away the answer, but guide. It learns to ask smart counter-questions so that the learner has an "Aha!" moment themselves.
 
 ---
