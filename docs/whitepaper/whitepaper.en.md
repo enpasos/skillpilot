@@ -11,7 +11,7 @@
 SkillPilot models curricula as a **skill graph**. Learners, teachers, and AI agents use this as a machine-readable map. This allows the learner to safely navigate from their current **skill state** to their **skill goals**. An AI agent guides them through **personalized curricula**. To do this, the system records learning achievements on atomic skill goals and derives the **mastery level** for higher-level topics from them. On this basis, the path via the **next attainable skill goals** leads systematically to individual educational objectives.
 
 
-![SkillPilot Cartoon](../cartoon/SkillPilot_Cartoon.en.jpg)
+![SkillPilot Cartoon](../comic1/SkillPilot_Comic.en.jpg)
 
 ---
 
