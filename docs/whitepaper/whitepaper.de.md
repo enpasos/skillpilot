@@ -63,7 +63,7 @@ Dies verhindert Überforderung und stellt sicher, dass der KI-Tutor keine willk�
 
 Ein zentraler Pfeiler von SkillPilot ist „Privacy by Design“ durch eine strikte Datentrennung.
 
-![Schematische Darstellung der Datentrennung](sketch.de.svg)
+![Schematische Darstellung der Datentrennung](architecture.de.png)
 
 Die klassische algorithmische Komponente – der **SkillPilot Server** – kennt den Lernenden ausschließlich als Pseudonym (`skillpilotId`). Auf diesem Server werden lediglich technisch notwendige Metadaten gespeichert: der erreichte Lernfortschritt im Graphen.
 
