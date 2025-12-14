@@ -184,7 +184,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
               </Link>
 
               {/* Card 2: GPT */}
-              <a href="https://chatgpt.com/g/g-693dafc1449081919613d127c1fad585-skillpilot-gpt" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-6 hover:shadow-lg hover:border-sky-400/50 transition-all duration-300">
+              <a href="https://chatgpt.com/g/g-693ebdcb2fac8191b3a765ce7f451fb2-skillpilot-gpt" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-6 hover:shadow-lg hover:border-sky-400/50 transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-lg font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">

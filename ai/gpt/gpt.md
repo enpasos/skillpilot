@@ -21,7 +21,7 @@ Open **Create → New GPT → Konfigurieren** and fill out the fields as follows
 
 - **Name**
   ```text
-  SkillPilot
+  SkillPilot GPT
   ```
 
   - **Beschreibung**
@@ -116,7 +116,7 @@ Ich möchte mit Mathe in der Oberstufe starten. Ich bin ungefähr in Q1.
 ```
 
 ```text
-Ich will Physik üben für meinen Physik Bachelor. Was ist mein nächster Schritt?
+Ich will Physik üben für meinen Physik Bachelor. 
 ```
 
 ```text
