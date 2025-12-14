@@ -50,8 +50,9 @@ The server guides you via `nextAllowedActions`.
     2. **IF** `activeFilters` is empty AND mixed tags exist in the frontier, **ONLY THEN** ask (e.g. "Grundkurs or Leistungskurs?").
 
 - `setPersonalization(skillpilotId, { goalIds: [uuid] })`
-  - **One-time Setup:** Restricts the curriculum framework (e.g. "Only Math", "Only A1-A2").
+  - **One-time Setup:** Restricts the curriculum framework (e.g. "Only Math", "Only A1-A2", "Leistungskurs").
   - **Use Goal UUIDs**: Pass the UUIDs of the modules/subjects you want to keep.
+  - **Filters**: If the user selects a specific track (e.g., "LK", "GK"), **YOU MUST INCLUDE THIS STRING** in the list (e.g. `["uuid-1", "uuid-2", "LK"]`).
   - **IMMEDIATE FEEDBACK**: Returns the **new learner state** directly. Use the new UUIDs from this response immediately.
 
 - `setScope(skillpilotId, { "goalIds": ["UUID"] })`
