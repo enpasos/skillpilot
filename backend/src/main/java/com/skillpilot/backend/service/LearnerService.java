@@ -111,10 +111,13 @@ public class LearnerService {
             // Prevent mastery on Cluster Goals (goals that contain other goals)
             com.skillpilot.backend.landscape.LearningGoal def = landscapeService.getGoalDefinition(goalKey);
             if (def != null && def.getContains() != null && !def.getContains().isEmpty()) {
-                throw new org.springframework.web.server.ResponseStatusException(
-                        org.springframework.http.HttpStatus.BAD_REQUEST,
-                        "Cannot master cluster goal '" + (def.getTitle() != null ? def.getTitle() : goalKey)
-                                + "'. Please master atomic sub-goals instead.");
+                // FALLBACK: If AI tries to master a cluster, it implies it forgot to drill
+                // down.
+                // Instead of crashing (400), we implicitly "Open" the cluster (setScope)
+                // and return the new frontier with atomic goals.
+                // This preserves the flow and gives the AI the IDs it needs next.
+                setScope(skillpilotId, java.util.List.of(goalKey));
+                continue; // Skip saving mastery for this cluster, but proceed to return new frontier
             }
 
             double value = entry.getValue();

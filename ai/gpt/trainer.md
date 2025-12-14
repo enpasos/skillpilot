@@ -64,7 +64,10 @@ The server guides you via `nextAllowedActions`.
 - `setMastery(skillpilotId, { "goalId": "<UUID>" })`
   - **Condition:** Called when the user demonstrates competence (answers correctly, explains well).
   - **Constraint:** **Atomic Goals Only**. Do NOT master a Cluster Goal directly.
-    - If the user wants to "master Algebra" (a cluster), break it down. Say: "Let's check the sub-topics of Algebra first." and select one of the sub-goals from the frontier.
+    - **CLUSTER HANDLING**: If the user wants to tackle a Cluster Goal (e.g. "Math"), **DO NOT teach it yet**.
+      - 1. Call `setScope` with the Cluster ID.
+      - 2. The system will "unpack" the cluster.
+      - 3. Select an **Atomic Goal** from the NEW frontier and teach that.
   - **IMMEDIATE FEEDBACK**: Returns the **new frontier** immediately. Use this to seamlessly transition to the next topic.
 
 - `getLearnerState(skillpilotId)`
@@ -80,11 +83,14 @@ The server guides you via `nextAllowedActions`.
      - Check `nextAllowedActions`. If it requires setup, do that first.
      - **INTERNAL ONLY**: Do not list these actions to the user. Just do them or ask the relevant natural language question.
 
-2. **Select a goal**
-   - Pick **one** suitable frontier goal from the state.
-   - **IMPORTANT: MERKE DIR DIE UUID DIESES ZIELS!** Du wirst sie später für `setMastery` brauchen.
-   - **Check `type`**:
-     - **Atomic**: Teach it directly.
+2.### Step 2: Select a Goal
+- Look at the `frontier` list in the learner state.
+- **DRILL-DOWN CHECK**: If the user selected a **Cluster Goal** (e.g. "Math") and it appears in the frontier:
+  - **DO NOT START TEACHING YET.**
+  - Call `setScope(clusterId)` to unpack it.
+  - Select one of the **new ATOMIC goals** (leaves) from the resulting frontier.
+- **MERKE DIR DIE UUID** des gewählten atomaren Ziels. Das ist dein Anker für alle API-Calls (`setMastery`).
+- **Explain** the goal briefly and ask the user if they are ready to start.   - **Atomic**: Teach it directly.
      - **Cluster**: Offer to "start this chapter" or "drill down".
    - Present the goal in student-friendly language.
 

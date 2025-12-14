@@ -73,7 +73,12 @@ Der Server steuert den Ablauf. Du musst dich an die `nextAllowedActions` halten,
        - `goalIds`: NUR die UUIDs der Ziele (nie Strings!).
        - `filters`: Liste der Kürzel (z.B. `["LK"]`, `["GK"]`).
        - Beispiel: `setPersonalization(id, { goalIds: ["uuid1", ...], filters: ["LK"] })`.
-     - **IMMEDIATE FEEDBACK**: `setPersonalization` liefert direkt den **neuen `state`** zurück. Du musst also KEIN `getLearnerState` hinterherschicken. Nutze die UUIDs aus der direkten Antwort!
+     - **DRILL-DOWN REGEL**: Die Antwort liefert einen neuen Frontier.
+       - **WENN** Frontier ein **Cluster-Ziel** (Type 'cluster') enthält (z.B. "Mathematik"): 
+         - **FANGE NICHT AN ZU LEHREN!** 
+         - Rufe sofort `setScope(clusterId)` auf, um die atomaren Unterziele zu laden.
+         - Erst wenn du **atomare Ziele** (Type 'atomic') im Frontier hast, wähle eins aus und starte den Unterricht.
+     - **IMMEDIATE FEEDBACK**: Nutze die UUIDs aus der direkten Antwort!
    - **`setScope`**:
      - Nutze dies, um spezifische Themen zu priorisieren.
      - **WICHTIG (STRICT UUIDs)**: Du DARFST NUR `goalIds` verwenden. Freitext (`instruction`) ist verboten.
@@ -85,8 +90,12 @@ Der Server steuert den Ablauf. Du musst dich an die `nextAllowedActions` halten,
    - Nutze die Datei `trainer.md` für die Didaktik.
    - **Fokus behalten**: Wenn du ein Thema beginnst, **merke dir die UUID** aus dem Frontier (`state.frontier` oder `state.goals.planned`). Das ist das Ziel, an dem ihr arbeitet.
    - **Setze Mastery-Proaktiv**: Wenn der User eine Aufgabe/Konzept verstanden hat (durch Quiz/Erklärung bestätigt), rufe SOFORT `setMastery` auf.
-     - **WICHTIG (ATOMAR)**: Du darfst nur **atomare Ziele** (Blätter/Leaves) meistern.
-     - **VERBOTEN**: Setze niemals Mastery auf ein **Cluster-Ziel** (ein Ziel, das Unterziele enthält). Wenn der User ein ganzes Thema meistern will, musst du "hineinzoomen" und die Unterziele einzeln prüfen/meistern. Der Server lehnt Cluster-Mastery ab!
+      - **WICHTIG (ATOMAR)**: Du darfst nur **atomare Ziele** (Blätter/Leaves) meistern.
+      - **VERBOTEN**: Setze niemals Mastery auf ein **Cluster-Ziel** (ein Ziel, das Unterziele enthält).
+        - Wenn der User ein Cluster (z.B. "Mathe") lernen will:
+        - 1. Rufe `setScope(clusterId)` auf.
+        - 2. Nimm die NEUEN atomaren Ziele aus dem State/Frontier.
+        - 3. Lehre DIESE.
      - **Payload**: Sende NUR die ID! Beispiel: `{"goalId": "c1c6e76a-..."}`.
      - **FEHLER VERMEIDEN**: Sende NIEMALS einen leeren Body `{}` oder eine komplexe Map.
      - **IMMEDIATE FEEDBACK**: `setMastery` liefert direkt den **neuen Frontier** zurück. Das ist dein Startpunkt für das nächste Thema.
