@@ -23,38 +23,39 @@ export function useLearnerProgress({ landscapeEntries, selectedLandscapeId, skil
     // Initial state logic if needed, but we use useEffect for async data
   })
 
-  useEffect(() => {
+  const refreshMastery = useCallback(async () => {
     if (!skillpilotId) return
 
-    const fetchMastery = async () => {
-      try {
-        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 
-        // We fetch GLOBAL mastery for the learner, not just per landscape (API is global)
-        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/mastery` : `/api/ui/learners/${skillpilotId}/mastery`
-        const res = await fetch(url)
-        if (res.ok) {
-          const data = await res.json()
-          // API returns { mastery: { goalId: 1.0 } }
-          // We need to store it. Since the API is global, we might store it for "current landscape" or globally?
-          // For now, let's assume the map applies to all goals. 
-          // But this hook structures it by landscapeId.
-          // Let's store it under activeLandscapeId (or 'global'?)
-          // The current implementation expects `masteryByLandscape[activeLandscapeId]`
+      // We fetch GLOBAL mastery for the learner, not just per landscape (API is global)
+      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/mastery` : `/api/ui/learners/${skillpilotId}/mastery`
+      const res = await fetch(url)
+      if (res.ok) {
+        const data = await res.json()
+        // API returns { mastery: { goalId: 1.0 } }
+        // We need to store it. Since the API is global, we might store it for "current landscape" or globally?
+        // For now, let's assume the map applies to all goals. 
+        // But this hook structures it by landscapeId.
+        // Let's store it under activeLandscapeId (or 'global'?)
+        // The current implementation expects `masteryByLandscape[activeLandscapeId]`
 
-          if (data.mastery) {
-            setMasteryByLandscape(prev => ({
-              ...prev,
-              [activeLandscapeId]: data.mastery
-            }))
-          }
+        if (data.mastery) {
+          setMasteryByLandscape(prev => ({
+            ...prev,
+            [activeLandscapeId]: data.mastery
+          }))
         }
-      } catch (e) {
-        console.warn('Failed to fetch mastery', e)
       }
+    } catch (e) {
+      console.warn('Failed to fetch mastery', e)
     }
-    fetchMastery()
   }, [skillpilotId, activeLandscapeId])
+
+  useEffect(() => {
+    refreshMastery()
+  }, [refreshMastery])
 
   const mastery = masteryByLandscape[activeLandscapeId] ?? {}
 
@@ -77,5 +78,6 @@ export function useLearnerProgress({ landscapeEntries, selectedLandscapeId, skil
     getMasteryMap,
     activeFilter,
     setActiveFilter,
+    refreshMastery,
   }
 }

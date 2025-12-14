@@ -189,6 +189,7 @@ const App: React.FC = () => {
             onLogout={handleLogout}
             availableLandscapes={availableLandscapes}
             rootLandscapeId={core.selectedLandscapeId}
+            onRefresh={core.refreshMastery}
           />
         }
       />

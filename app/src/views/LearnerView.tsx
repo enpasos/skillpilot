@@ -2,7 +2,7 @@ import React, { useState, useMemo, useCallback, useRef } from 'react'
 import { CompetenceTree } from '../components/CompetenceTree'
 import { GoalCard } from '../components/GoalCard'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
-import { Settings, Upload, Download } from 'lucide-react'
+import { Settings, Upload, Download, RefreshCw } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -23,6 +23,7 @@ interface LearnerViewProps {
   onLogout?: () => void
   availableLandscapes?: { landscapeId: string; title: string; filters?: { id: string; label: string }[] }[]
   rootLandscapeId?: string
+  onRefresh?: () => void
 }
 
 export const LearnerView: React.FC<LearnerViewProps> = ({
@@ -37,6 +38,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   onLogout,
   availableLandscapes = [],
   rootLandscapeId,
+  onRefresh,
 }) => {
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [learnerData, setLearnerData] = useState<Learner | null>(null)
@@ -301,6 +303,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               title="Daten importieren"
             >
               <Upload size={18} />
+            </button>
+            <button
+              onClick={onRefresh}
+              className="text-text-secondary hover:text-sky-400 transition-colors"
+              title="Aktualisieren"
+            >
+              <RefreshCw size={18} />
             </button>
             <input
               type="file"

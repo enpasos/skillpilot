@@ -66,6 +66,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     updateMasteryForCurrent,
     activeFilter,
     setActiveFilter,
+    refreshMastery,
   } = useLearnerProgress({ landscapeEntries, selectedLandscapeId, skillpilotId })
 
   useEffect(() => {
@@ -252,5 +253,6 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     handleNavigateToExternal,
     goalShortKeyMap,
     setSelectedLandscapeId,
+    refreshMastery,
   }
 }
