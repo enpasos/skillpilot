@@ -78,47 +78,49 @@ export const GoalCard: React.FC<GoalCardProps> = ({ goal, masteryValue, onMaster
 
       {goal.sourceRef && <div className="mt-2 text-[11px] text-text-secondary">Quelle: {goal.sourceRef}</div>}
 
-      {showLearnerTools && onMasteryChange && (
+      {showLearnerTools && (
         <div className="mt-4 space-y-2">
           <div className="flex items-center justify-between text-xs text-text-secondary">
             <span className="font-medium">Kompetenzstand für dieses Lernziel</span>
             <span className="tabular-nums">{Math.round(masteryValue * 100)}%</span>
           </div>
           <MasteryBar value={masteryValue} />
-          <div className="flex items-center gap-3">
-            <input
-              type="range"
-              min={0}
-              max={100}
-              step={10}
-              value={Math.round(masteryValue * 100)}
-              onChange={(event) => handleChange(goal.id, Number(event.target.value) / 100)}
-              className="w-full accent-sky-400"
-            />
-            <div className="flex gap-1">
-              <button
-                type="button"
-                onClick={() => handleChange(goal.id, 0)}
-                className="rounded-full border border-border-color px-2 py-1 text-[11px] hover:border-text-secondary text-text-secondary"
-              >
-                0%
-              </button>
-              <button
-                type="button"
-                onClick={() => handleChange(goal.id, 0.5)}
-                className="rounded-full border border-border-color px-2 py-1 text-[11px] hover:border-text-secondary text-text-secondary"
-              >
-                50%
-              </button>
-              <button
-                type="button"
-                onClick={() => handleChange(goal.id, 1)}
-                className="rounded-full border border-border-color px-2 py-1 text-[11px] hover:border-text-secondary text-text-secondary"
-              >
-                100%
-              </button>
+          {onMasteryChange && (
+            <div className="flex items-center gap-3">
+              <input
+                type="range"
+                min={0}
+                max={100}
+                step={10}
+                value={Math.round(masteryValue * 100)}
+                onChange={(event) => handleChange(goal.id, Number(event.target.value) / 100)}
+                className="w-full accent-sky-400"
+              />
+              <div className="flex gap-1">
+                <button
+                  type="button"
+                  onClick={() => handleChange(goal.id, 0)}
+                  className="rounded-full border border-border-color px-2 py-1 text-[11px] hover:border-text-secondary text-text-secondary"
+                >
+                  0%
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleChange(goal.id, 0.5)}
+                  className="rounded-full border border-border-color px-2 py-1 text-[11px] hover:border-text-secondary text-text-secondary"
+                >
+                  50%
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleChange(goal.id, 1)}
+                  className="rounded-full border border-border-color px-2 py-1 text-[11px] hover:border-text-secondary text-text-secondary"
+                >
+                  100%
+                </button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       )}
     </div>

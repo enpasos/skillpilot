@@ -7,6 +7,6 @@ import jakarta.validation.constraints.DecimalMin;
 import java.util.Map;
 
 public record MasteryUpdateRequest(
-                Map<@NotNull String, @NotNull @DecimalMin("0.0") @DecimalMax("1.0") Double> mastery,
-                String goalId) {
+        Map<String, Double> mastery,
+        String goalId) {
 }

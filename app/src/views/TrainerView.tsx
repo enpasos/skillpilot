@@ -10,7 +10,7 @@ import type { LandscapeEntry } from '../hooks/useLandscapes'
 import type { UiGoal } from '../goalTypes'
 import type { ClassSession } from '../trainerTypes'
 import type { MasteryMap } from '../learnerTypes'
-import { shortKeyFromId } from '../shortKey'
+
 import { Save, Trash2 } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 import { en } from '../locales/en'
@@ -152,26 +152,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     [currentLearnerId, masteryByStudent, goalIndexAll, goalShortKeyMap, masteryCache],
   )
 
-  const handleStudentMasteryChange = (id: string, value: number) => {
-    if (currentLearnerId === '__ALL__') return
 
-    const goal = goalIndexAll.get(id)
-    if (!goal || (goal.contains && goal.contains.length > 0)) return
-
-    const clamped = Math.max(0, Math.min(1, value))
-    const key = goalShortKeyMap.get(id) ?? shortKeyFromId(id)
-
-    const studentMasteryMap = masteryByStudent.get(currentLearnerId) ?? {}
-    const nextMasteryMap = { ...studentMasteryMap, [key]: clamped }
-    const nextMasteryByStudent = new Map(masteryByStudent).set(currentLearnerId, nextMasteryMap)
-    setMasteryByStudent(nextMasteryByStudent)
-
-    fetch(toApi(`/api/ui/learners/${encodeURIComponent(currentLearnerId)}/mastery`), {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ mastery: nextMasteryMap }),
-    }).catch((err) => console.warn('Could not save mastery', err))
-  }
 
   // --- EFFECTS ---
   useEffect(() => {
@@ -655,7 +636,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
                 showMastery
               />
 
-              <GoalCard goal={currentGoal} masteryValue={getStudentMastery(currentGoal.id)} onMasteryChange={currentLearnerId === '__ALL__' ? undefined : handleStudentMasteryChange} showLearnerTools />
+              <GoalCard goal={currentGoal} masteryValue={getStudentMastery(currentGoal.id)} showLearnerTools />
 
               <NeighborSection
                 title={tExp.contains}
