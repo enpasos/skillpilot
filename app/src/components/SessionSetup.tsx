@@ -18,9 +18,11 @@ interface SessionSetupProps {
 
 import { useTranslation } from '../hooks/useTranslation'
 import { LanguageToggle } from './LanguageToggle'
+import { useLanguage } from '../contexts/LanguageContext'
 
 export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skillpilotId, setSkillpilotId, onStart }) => {
   const t = useTranslation()
+  const { language } = useLanguage()
   const [selectedLandscapeId, setSelectedLandscapeId] = useState<string>(() => {
     // Restore trainer's last selection from local storage
     if (role === 'trainer') {
@@ -169,7 +171,14 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
           {!showLogin ? (
             <div className="grid grid-cols-1 gap-4 w-full animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
               {/* Card 1: Whitepaper */}
-              <Link to="/whitepaper" className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-6 hover:shadow-lg hover:border-sky-400/50 transition-all duration-300">
+              <a
+                href={language === 'de'
+                  ? 'https://enpasos.github.io/skillpilot/whitepaper/whitepaper.de.html'
+                  : 'https://enpasos.github.io/skillpilot/whitepaper/whitepaper.en.html'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-6 hover:shadow-lg hover:border-sky-400/50 transition-all duration-300"
+              >
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-lg font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
@@ -181,7 +190,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                   </div>
                   <ArrowRight className="text-text-secondary group-hover:translate-x-1 group-hover:text-sky-500 transition-all" />
                 </div>
-              </Link>
+              </a>
 
               {/* Card 2: GPT */}
               <a href="https://chatgpt.com/g/g-693ebdcb2fac8191b3a765ce7f451fb2-skillpilot-gpt" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-6 hover:shadow-lg hover:border-sky-400/50 transition-all duration-300">

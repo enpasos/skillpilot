@@ -6,7 +6,7 @@ import { TrainerView } from './views/TrainerView'
 import { LegalView } from './views/LegalView'
 import { PrivacyView } from './views/PrivacyView'
 import { ImprintView } from './views/ImprintView'
-import { WhitepaperView } from './views/WhitepaperView'
+
 import { SessionSetup } from './components/SessionSetup'
 import { useAppCore } from './hooks/useAppCore'
 
@@ -33,7 +33,7 @@ const App: React.FC = () => {
   const location = useLocation()
 
   // Allow public routes to render without session
-  const isPublicRoute = ['/legal', '/privacy', '/imprint', '/whitepaper'].includes(location.pathname)
+  const isPublicRoute = ['/legal', '/privacy', '/imprint'].includes(location.pathname)
 
   const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId })
   const availableLandscapes = useMemo(
@@ -74,7 +74,7 @@ const App: React.FC = () => {
         <Route path="/legal" element={<LegalView />} />
         <Route path="/privacy" element={<PrivacyView />} />
         <Route path="/imprint" element={<ImprintView />} />
-        <Route path="/whitepaper" element={<WhitepaperView />} />
+
       </Routes>
     )
   }
@@ -232,7 +232,7 @@ const App: React.FC = () => {
       <Route path="/legal" element={<LegalView />} />
       <Route path="/privacy" element={<PrivacyView />} />
       <Route path="/imprint" element={<ImprintView />} />
-      <Route path="/whitepaper" element={<WhitepaperView />} />
+
       <Route path="/" element={<Navigate to="/explorer" />} />
     </Routes>
   )
