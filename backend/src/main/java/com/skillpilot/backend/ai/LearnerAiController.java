@@ -100,7 +100,7 @@ public class LearnerAiController {
 
     public UnifiedLearnerStateResponse setPersonalization(@PathVariable String skillpilotId,
             @RequestBody com.skillpilot.backend.api.PersonalizationRequest request) {
-        learnerService.setPersonalCurriculum(skillpilotId, request.config(), request.goalIds());
+        learnerService.setPersonalCurriculum(skillpilotId, request.config(), request.goalIds(), request.filters());
         return learnerService.getLearnerState(skillpilotId);
     }
 }

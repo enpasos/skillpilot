@@ -183,41 +183,61 @@ public class LearnerService {
     }
 
     @Transactional
-    public void setPersonalCurriculum(String skillpilotId, Map<String, Object> config, List<String> goalIds) {
+    public void setPersonalCurriculum(String skillpilotId, Map<String, Object> config, List<String> goalIds,
+            List<String> filters) {
         Learner learner = getLearner(skillpilotId);
 
         Map<String, Object> finalConfig = config != null ? new HashMap<>(config) : new HashMap<>();
 
-        if (goalIds != null && !goalIds.isEmpty()) {
+        java.util.Set<String> targetLandscapes = new java.util.HashSet<>();
+        java.util.List<String> effectiveFilters = new java.util.ArrayList<>();
+        if (filters != null) {
+            effectiveFilters.addAll(filters);
+        }
+
+        if (goalIds != null) { // Only process if goalIds is not null
             for (String gid : goalIds) {
-                // Check if it is a landscape ID directly
+                if (gid == null || gid.isBlank())
+                    continue;
+
+                // 1. Is it a Landscape ID?
                 if (landscapeService.getById(gid) != null) {
-                    Map<String, Object> settings = (Map<String, Object>) finalConfig.getOrDefault(gid, new HashMap<>());
-                    settings.put("selected", true);
-                    finalConfig.put(gid, settings);
+                    targetLandscapes.add(gid);
                     continue;
                 }
 
-                // Check which landscape contains this goal
+                // 2. Is it a Goal ID?
                 String landscapeId = landscapeService.getLandscapeIdForGoal(gid);
                 if (landscapeId != null) {
-                    Map<String, Object> settings = (Map<String, Object>) finalConfig.getOrDefault(landscapeId,
-                            new HashMap<>());
-                    settings.put("selected", true);
-                    finalConfig.put(landscapeId, settings);
-                } else {
-                    // Fallback: Treat 'gid' as a filter/tag for the current curriculum
-                    // e.g. "LK", "GK"
-                    String current = learner.getSelectedCurriculum();
-                    if (current != null) {
-                        Map<String, Object> settings = (Map<String, Object>) finalConfig.getOrDefault(current,
-                                new HashMap<>());
-                        settings.put("selected", true);
-                        settings.put("filterId", gid); // Treat the unknown ID as a filter tag
-                        finalConfig.put(current, settings);
-                    }
+                    targetLandscapes.add(landscapeId);
+                    continue;
                 }
+
+                // 3. Fallback: Treat as filter if NOT explicitly provided in filters list?
+                // Ideally, we trust the explicit list. But for backward compat, maybe keeps?
+                // Let's assume strict separation now given tool change.
+                // But if GPT mixes them in goalIds despite instructions, we should catch them.
+                effectiveFilters.add(gid);
             }
+        }
+
+        // If we have filters but no specific landscapes, apply to current (Root)
+        if (targetLandscapes.isEmpty() && !effectiveFilters.isEmpty()) {
+            String current = learner.getSelectedCurriculum();
+            if (current != null) {
+                targetLandscapes.add(current);
+            }
+        }
+
+        // Apply configuration
+        for (String landscapeId : targetLandscapes) {
+            Map<String, Object> settings = (Map<String, Object>) finalConfig.getOrDefault(landscapeId, new HashMap<>());
+            settings.put("selected", true);
+            if (!effectiveFilters.isEmpty()) {
+                // Apply the first found filter (usually only one, e.g. "LK")
+                settings.put("filterId", effectiveFilters.get(0));
+            }
+            finalConfig.put(landscapeId, settings);
         }
 
         try {

@@ -67,9 +67,12 @@ Der Server steuert den Ablauf. Du musst dich an die `nextAllowedActions` halten,
    - **`['setPersonalization', ...]`**: Der User hat ein Curriculum. Du kannst jetzt:
      - **WICHTIG (Präferenz-Check)**:
        0. **FALL ZERO**: Wenn `activeFilters` bereits gesetzt ist ("LK", "GK"...), NICHT fragen. Gehe davon aus, dass die Personalisierung aktiv ist.
-       1. **FALL A (Bekannt)**: Wenn der User z.B. "Mathe LK" gesagt hat -> Personalisiere SOFORT (ohne Rückfrage) mit den entsprechenden UUIDs.
+       1. **FALL A (Bekannt)**: Wenn der User z.B. "Mathe LK" gesagt hat -> Personalisiere SOFORT (ohne Rückfrage).
        2. **FALL B (Unbekannt)**: Nur wenn Mixed-Tags (GK/LK) da sind UND `activeFilters` leer ist -> Frage: "Möchtest du GK oder LK?".
-     - `setPersonalization` NUR mit einer NICHT-leeren `goalIds`-Liste aufrufen (UUIDs aus `frontier`/State, nie Namen, nie `{}`, nie Strings aus dem Chat).
+     - **API-Aufruf (NEU & WICHTIG)**: 
+       - `goalIds`: NUR die UUIDs der Ziele (nie Strings!).
+       - `filters`: Liste der Kürzel (z.B. `["LK"]`, `["GK"]`).
+       - Beispiel: `setPersonalization(id, { goalIds: ["uuid1", ...], filters: ["LK"] })`.
      - **IMMEDIATE FEEDBACK**: `setPersonalization` liefert direkt den **neuen `state`** zurück. Du musst also KEIN `getLearnerState` hinterherschicken. Nutze die UUIDs aus der direkten Antwort!
    - **`setScope`**:
      - Nutze dies, um spezifische Themen zu priorisieren.

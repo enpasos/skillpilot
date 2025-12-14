@@ -3,6 +3,7 @@ package com.skillpilot.backend.api;
 import java.util.Map;
 
 public record PersonalizationRequest(
-                Map<String, Object> config,
-                java.util.List<String> goalIds) {
+        Map<String, Object> config,
+        java.util.List<String> goalIds,
+        java.util.List<String> filters) {
 }

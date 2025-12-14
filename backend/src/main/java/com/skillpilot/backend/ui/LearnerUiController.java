@@ -103,7 +103,7 @@ public class LearnerUiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public void updatePersonalCurriculum(@PathVariable String skillpilotId,
             @RequestBody UpdatePersonalCurriculumRequest request) {
-        learnerService.setPersonalCurriculum(skillpilotId, request, null);
+        learnerService.setPersonalCurriculum(skillpilotId, request, null, null);
     }
 
     @GetMapping("/{skillpilotId}/export")
