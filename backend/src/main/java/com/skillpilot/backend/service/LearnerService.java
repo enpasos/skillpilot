@@ -192,7 +192,7 @@ public class LearnerService {
             for (String gid : goalIds) {
                 // Check if it is a landscape ID directly
                 if (landscapeService.getById(gid) != null) {
-                    Map<String, Object> settings = new HashMap<>();
+                    Map<String, Object> settings = (Map<String, Object>) finalConfig.getOrDefault(gid, new HashMap<>());
                     settings.put("selected", true);
                     finalConfig.put(gid, settings);
                     continue;
@@ -201,7 +201,8 @@ public class LearnerService {
                 // Check which landscape contains this goal
                 String landscapeId = landscapeService.getLandscapeIdForGoal(gid);
                 if (landscapeId != null) {
-                    Map<String, Object> settings = new HashMap<>();
+                    Map<String, Object> settings = (Map<String, Object>) finalConfig.getOrDefault(landscapeId,
+                            new HashMap<>());
                     settings.put("selected", true);
                     finalConfig.put(landscapeId, settings);
                 } else {
