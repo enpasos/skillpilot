@@ -1,8 +1,8 @@
 {
     "title": "Numerical Methods for Partial Differential Equations (TUM, Modul MA3303)",
     "titleEn": "Numerical Methods for Partial Differential Equations (TUM, Module MA3303)",
-    "description": "After successful completion of the module the students are able to understand and apply numerical solution techniques for partial differential equations. They have programming skills and are able to handle corresponding software. 9 ECTS, angeboten im Sommersemester, Version 2021w, verantwortet von Junge, Oliver.",
-    "descriptionEn": "After successful completion of the module the students are able to understand and apply numerical solution techniques for partial differential equations. They have programming skills and are able to handle corresponding software. 9 ECTS, offered in summer semester, version 2021w, responsible: Junge, Oliver.",
+    "description": "Das Modul vertieft numerische Methoden zur Lösung partieller Differentialgleichungen mit Schwerpunkt auf Finite-Elemente-Verfahren für (mehrdimensionale) elliptische Randwertprobleme. Behandelt werden Diskretisierung und Implementationsprinzipien, a-priori- und a-posteriori-Fehleranalyse, adaptive Gitterverfeinerung sowie schnelle Löser und Vorconditionierung. Ergänzend wird eine Einführung in numerische Methoden für Evolutionsgleichungen gegeben. Nach erfolgreichem Abschluss können Studierende numerische Lösungsverfahren für PDEs verstehen und anwenden und besitzen Programmierfertigkeiten, um entsprechende Software zu nutzen und einfache Komponenten selbst umzusetzen. 9 ECTS, angeboten im Sommersemester, Version 2021w, verantwortet von Junge, Oliver.",
+    "descriptionEn": "The module deepens numerical methods for the solution of partial differential equations with a focus on finite element methods for (multidimensional) elliptic boundary value problems. Topics include discretization and implementation principles, a priori and a posteriori error analysis, adaptive mesh refinement, as well as fast solvers and preconditioning. In addition, the module gives an introduction to numerical methods for evolution equations. After successful completion, students are able to understand and apply numerical solution techniques for PDEs and have programming skills to work with the corresponding software and to implement basic components themselves. 9 ECTS, offered in the summer semester, version 2021w, responsible: Junge, Oliver.",
     "landscapeId": "b72859c4-ebc2-4524-b23d-12dd04320a03",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -19,8 +19,8 @@
             "shortKey": "tum_ma3303_module",
             "title": "Numerical Methods for Partial Differential Equations – Gesamtmodul",
             "titleEn": "Numerical Methods for Partial Differential Equations – Full Module",
-            "description": "After successful completion of the module the students are able to understand and apply numerical solution techniques for partial differential equations. They have programming skills and are able to handle corresponding software.",
-            "descriptionEn": "After successful completion of the module the students are able to understand and apply numerical solution techniques for partial differential equations. They have programming skills and are able to handle corresponding software.",
+            "description": "Nach erfolgreichem Abschluss können Studierende numerische Lösungstechniken für partielle Differentialgleichungen verstehen und anwenden, insbesondere im Kontext von Finite-Elemente-Verfahren für elliptische Randwertprobleme. Sie können Fehler- und Adaptivitätskonzepte einordnen und besitzen Programmierfertigkeiten, um entsprechende Software zu handhaben.",
+            "descriptionEn": "After successful completion of the module students are able to understand and apply numerical solution techniques for partial differential equations, in particular finite element methods for elliptic boundary value problems. They can place concepts of error analysis and adaptivity and have programming skills to handle corresponding software.",
             "core": true,
             "weight": 9.0,
             "phase": "Modul",
@@ -29,15 +29,27 @@
                 "ects:9",
                 "workload:270h",
                 "presence:90h",
-                "level:bachelor",
-                "language:de",
+                "level:master",
+                "language:en",
                 "module:MA3303",
                 "semester:SS",
                 "duration:1_semester",
                 "responsible:junge_oliver"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "adfa31cd-90fe-5930-8e43-4738989b3efc",
+                "420ac80e-d898-5f14-8002-f95fdaac3807",
+                "ffed2165-60a6-5a11-a2df-e4ace9b64cd9",
+                "07ef3ec5-1e11-5255-b8c0-7c6e5bec8265",
+                "f2ba670d-e3c0-5f16-9907-c4386816e9a3",
+                "e4bb7533-669f-52a8-8ab0-6d420e1612ed",
+                "310c7247-084b-54e5-aef0-7401ee5355ad",
+                "ee5c061e-152b-5112-a9fc-8fc891e79c89"
+            ],
+            "requires": [
+                "6202cf26-6e1f-5eff-a0ee-f2965764d3ae",
+                "9da88d73-34df-5c7a-9bf2-14b001783b26"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-ma3303",
@@ -49,6 +61,733 @@
                 "topicCode": "tum_ma3303_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA3303&description_version=2021w"
+        },
+        {
+            "id": "adfa31cd-90fe-5930-8e43-4738989b3efc",
+            "shortKey": "tum_ma3303_lo1",
+            "title": "Elliptische Randwertprobleme und Variationsformulierung",
+            "titleEn": "Elliptic Boundary Value Problems and Variational Formulations",
+            "description": "Zusammenfassender Cluster: Modellierung elliptischer Randwertprobleme, schwache Formulierungen und funktionalanalytische Grundlagen für Finite-Elemente-Methoden.",
+            "descriptionEn": "Summary cluster: modeling elliptic boundary value problems, weak formulations, and functional-analytic foundations for finite element methods.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Variationsformulierung",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [
+                "ba913527-b30c-5fca-ad51-49c2429a350f",
+                "cc6be0f1-5f7c-5c89-a12a-631642e4d741"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Variationsformulierung",
+                "topicCode": "tum_ma3303_lo1"
+            }
+        },
+        {
+            "id": "ba913527-b30c-5fca-ad51-49c2429a350f",
+            "shortKey": "tum_ma3303_lo1_1",
+            "title": "Schwache Formulierungen für elliptische Probleme herleiten",
+            "titleEn": "Derive Weak Formulations for Elliptic Problems",
+            "description": "Die lernende Person kann für einfache elliptische Randwertprobleme die schwache Formulierung herleiten, Randbedingungen korrekt einbauen und geeignete Funktionsräume (z.B. Sobolev-Räume) benennen.",
+            "descriptionEn": "The learner can derive weak formulations for basic elliptic boundary value problems, incorporate boundary conditions correctly, and identify suitable function spaces (e.g., Sobolev spaces).",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Variationsformulierung",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Variationsformulierung",
+                "topicCode": "tum_ma3303_lo1_1"
+            }
+        },
+        {
+            "id": "cc6be0f1-5f7c-5c89-a12a-631642e4d741",
+            "shortKey": "tum_ma3303_lo1_2",
+            "title": "Existenz/Uniqueness und Stabilität in Variationsproblemen einordnen",
+            "titleEn": "Place Existence/Uniqueness and Stability in Variational Problems",
+            "description": "Die lernende Person kann zentrale Voraussetzungen (z.B. Koerzivität, Beschränktheit) erklären, die Bedeutung von Wohlgestelltheit für Numerik diskutieren und einfache Konsequenzen für Fehlerabschätzungen ableiten.",
+            "descriptionEn": "The learner can explain key assumptions (e.g., coercivity, boundedness), discuss well-posedness for numerical methods, and derive basic consequences for error estimates.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Variationsformulierung",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "ba913527-b30c-5fca-ad51-49c2429a350f"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Variationsformulierung",
+                "topicCode": "tum_ma3303_lo1_2"
+            }
+        },
+        {
+            "id": "420ac80e-d898-5f14-8002-f95fdaac3807",
+            "shortKey": "tum_ma3303_lo2",
+            "title": "Finite-Elemente-Diskretisierung und Implementationsprinzipien",
+            "titleEn": "Finite Element Discretization and Implementation Principles",
+            "description": "Zusammenfassender Cluster: FE-Ansatzräume, Gitter/Elemente, Basisfunktionen und Assemblierung der diskreten Systeme in mehreren Dimensionen.",
+            "descriptionEn": "Summary cluster: FE trial spaces, meshes/elements, basis functions, and assembling discrete systems in multiple dimensions.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Finite Elemente",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [
+                "157fab6b-b04b-5142-a5d6-98a7be8eeeb4",
+                "1eadbbec-1ed1-57f8-9ec2-dc068feb1b21"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Finite Elemente",
+                "topicCode": "tum_ma3303_lo2"
+            }
+        },
+        {
+            "id": "157fab6b-b04b-5142-a5d6-98a7be8eeeb4",
+            "shortKey": "tum_ma3303_lo2_1",
+            "title": "FE-Ansatzräume, Elemente und Basisfunktionen auswählen",
+            "titleEn": "Select FE Trial Spaces, Elements, and Basis Functions",
+            "description": "Die lernende Person kann elementare Finite-Elemente-Räume (z.B. P1/P2) auf Gittern beschreiben, geeignete Elemente für ein Problem auswählen und die Approximationseigenschaften qualitativ begründen.",
+            "descriptionEn": "The learner can describe basic finite element spaces (e.g., P1/P2) on meshes, select suitable elements for a given problem, and justify approximation properties qualitatively.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Finite Elemente",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "cc6be0f1-5f7c-5c89-a12a-631642e4d741"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Finite Elemente",
+                "topicCode": "tum_ma3303_lo2_1"
+            }
+        },
+        {
+            "id": "1eadbbec-1ed1-57f8-9ec2-dc068feb1b21",
+            "shortKey": "tum_ma3303_lo2_2",
+            "title": "Steifigkeitsmatrix und Lastvektor assemblieren und Randbedingungen behandeln",
+            "titleEn": "Assemble Stiffness Matrices/Loads and Handle Boundary Conditions",
+            "description": "Die lernende Person kann die Assemblierung von Steifigkeitsmatrix und Lastvektor erklären, Dirichlet-/Neumann-Randbedingungen korrekt umsetzen und die resultierenden linearen Gleichungssysteme softwareorientiert strukturieren.",
+            "descriptionEn": "The learner can explain assembly of stiffness matrices and load vectors, implement Dirichlet/Neumann boundary conditions correctly, and structure the resulting linear systems in a software-oriented way.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Finite Elemente",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "157fab6b-b04b-5142-a5d6-98a7be8eeeb4"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Finite Elemente",
+                "topicCode": "tum_ma3303_lo2_2"
+            }
+        },
+        {
+            "id": "ffed2165-60a6-5a11-a2df-e4ace9b64cd9",
+            "shortKey": "tum_ma3303_lo3",
+            "title": "A-priori-Fehleranalyse",
+            "titleEn": "A Priori Error Analysis",
+            "description": "Zusammenfassender Cluster: Grundprinzipien der a-priori-Fehleranalyse für FE-Methoden (Stabilität, Approximations- und Interpolationsabschätzungen, Konvergenzraten).",
+            "descriptionEn": "Summary cluster: core principles of a priori error analysis for FE methods (stability, approximation/interpolation estimates, convergence rates).",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "A-priori-Analyse",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [
+                "01ba4d2c-a253-5d19-a135-16c856c6908a",
+                "a519474f-be81-5a5f-9fdf-3102dc47a3f5"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "A-priori-Analyse",
+                "topicCode": "tum_ma3303_lo3"
+            }
+        },
+        {
+            "id": "01ba4d2c-a253-5d19-a135-16c856c6908a",
+            "shortKey": "tum_ma3303_lo3_1",
+            "title": "A-priori-Fehlerabschätzungen herleiten und interpretieren",
+            "titleEn": "Derive and Interpret A Priori Error Estimates",
+            "description": "Die lernende Person kann die Struktur typischer a-priori-Fehlerabschätzungen erklären (z.B. über Projektionsargumente/Céa-artige Aussagen) und die Abhängigkeit von Gitterweite und Regularität interpretieren.",
+            "descriptionEn": "The learner can explain the structure of typical a priori error estimates (e.g., via projection arguments/Céa-type statements) and interpret the dependence on mesh size and regularity.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "A-priori-Analyse",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "1eadbbec-1ed1-57f8-9ec2-dc068feb1b21"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "A-priori-Analyse",
+                "topicCode": "tum_ma3303_lo3_1"
+            }
+        },
+        {
+            "id": "a519474f-be81-5a5f-9fdf-3102dc47a3f5",
+            "shortKey": "tum_ma3303_lo3_2",
+            "title": "Konvergenzraten aus Interpolations- und Regularitätsannahmen ableiten",
+            "titleEn": "Derive Convergence Rates from Interpolation and Regularity Assumptions",
+            "description": "Die lernende Person kann aus Interpolationsabschätzungen und Regularitätsannahmen Konvergenzraten begründen und die Wahl von Elementordnung bzw. Gitterverfeinerung fachlich motivieren.",
+            "descriptionEn": "The learner can justify convergence rates from interpolation estimates and regularity assumptions and motivate choices of element order or mesh refinement.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "A-priori-Analyse",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "01ba4d2c-a253-5d19-a135-16c856c6908a"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "A-priori-Analyse",
+                "topicCode": "tum_ma3303_lo3_2"
+            }
+        },
+        {
+            "id": "07ef3ec5-1e11-5255-b8c0-7c6e5bec8265",
+            "shortKey": "tum_ma3303_lo4",
+            "title": "A-posteriori-Fehleranalyse und Fehlerschätzer",
+            "titleEn": "A Posteriori Error Analysis and Error Estimators",
+            "description": "Zusammenfassender Cluster: Residuenbasierte und indikatorbasierte Fehlerschätzer sowie deren Eigenschaften (Zuverlässigkeit/Effizienz) als Grundlage adaptiver Verfahren.",
+            "descriptionEn": "Summary cluster: residual-based and indicator-based error estimators and their properties (reliability/efficiency) as a basis for adaptive methods.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "A-posteriori-Analyse",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [
+                "00203c2b-3296-56e0-a155-7f83c857b6cd",
+                "048de9d2-531a-550b-9ff7-dce778737691"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "A-posteriori-Analyse",
+                "topicCode": "tum_ma3303_lo4"
+            }
+        },
+        {
+            "id": "00203c2b-3296-56e0-a155-7f83c857b6cd",
+            "shortKey": "tum_ma3303_lo4_1",
+            "title": "A-posteriori-Fehlerschätzer konstruieren und Eigenschaften erklären",
+            "titleEn": "Construct A Posteriori Estimators and Explain Their Properties",
+            "description": "Die lernende Person kann die Idee residualbasierter Fehlerschätzer erläutern, typische Terme aufstellen und Begriffe wie Zuverlässigkeit und Effizienz in einfachen Kontexten erklären.",
+            "descriptionEn": "The learner can explain the idea of residual-based error estimators, set up typical terms, and explain notions such as reliability and efficiency in basic settings.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "A-posteriori-Analyse",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "a519474f-be81-5a5f-9fdf-3102dc47a3f5"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "A-posteriori-Analyse",
+                "topicCode": "tum_ma3303_lo4_1"
+            }
+        },
+        {
+            "id": "048de9d2-531a-550b-9ff7-dce778737691",
+            "shortKey": "tum_ma3303_lo4_2",
+            "title": "Fehlerschätzer in numerischen Experimenten anwenden und interpretieren",
+            "titleEn": "Apply and Interpret Error Estimators in Numerical Experiments",
+            "description": "Die lernende Person kann Fehlerschätzer auswerten, lokale Indikatoren interpretieren und daraus begründete Entscheidungen für lokale Gitterverfeinerung ableiten.",
+            "descriptionEn": "The learner can evaluate error estimators, interpret local indicators, and derive justified decisions for local mesh refinement.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "A-posteriori-Analyse",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "00203c2b-3296-56e0-a155-7f83c857b6cd"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "A-posteriori-Analyse",
+                "topicCode": "tum_ma3303_lo4_2"
+            }
+        },
+        {
+            "id": "f2ba670d-e3c0-5f16-9907-c4386816e9a3",
+            "shortKey": "tum_ma3303_lo5",
+            "title": "Adaptive Gitterverfeinerung",
+            "titleEn": "Adaptive Mesh Refinement",
+            "description": "Zusammenfassender Cluster: Adaptivitäts-Zyklus (Solve–Estimate–Mark–Refine), Markierungsstrategien und praktische Umsetzung adaptiver FE-Methoden.",
+            "descriptionEn": "Summary cluster: the adaptivity loop (solve–estimate–mark–refine), marking strategies, and practical implementation of adaptive FE methods.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Adaptivität",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [
+                "fe49d465-1c8a-5e9c-a494-671a2de708f5",
+                "13bcd9da-e854-5cee-9f17-c36f25111797"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Adaptivität",
+                "topicCode": "tum_ma3303_lo5"
+            }
+        },
+        {
+            "id": "fe49d465-1c8a-5e9c-a494-671a2de708f5",
+            "shortKey": "tum_ma3303_lo5_1",
+            "title": "Adaptivitäts-Zyklus formulieren und Markierungsstrategien erklären",
+            "titleEn": "Formulate the Adaptivity Loop and Explain Marking Strategies",
+            "description": "Die lernende Person kann den Adaptivitäts-Zyklus (Solve–Estimate–Mark–Refine) beschreiben, Markierungsstrategien (z.B. Dörfler-Markierung) erklären und deren Zielsetzung begründen.",
+            "descriptionEn": "The learner can describe the adaptivity loop (solve–estimate–mark–refine), explain marking strategies (e.g., Dörfler marking), and justify their objectives.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Adaptivität",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "048de9d2-531a-550b-9ff7-dce778737691"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Adaptivität",
+                "topicCode": "tum_ma3303_lo5_1"
+            }
+        },
+        {
+            "id": "13bcd9da-e854-5cee-9f17-c36f25111797",
+            "shortKey": "tum_ma3303_lo5_2",
+            "title": "Adaptive FE-Verfahren implementieren und Effekte bewerten",
+            "titleEn": "Implement Adaptive FE Methods and Evaluate Their Effects",
+            "description": "Die lernende Person kann adaptive Verfeinerung in Software oder mit vorhandenen Werkzeugen umsetzen, die Effekte auf Fehler und Rechenaufwand bewerten und typische Phänomene (z.B. Singularitäten) diskutieren.",
+            "descriptionEn": "The learner can implement adaptive refinement in software or using existing tools, evaluate effects on error and computational cost, and discuss typical phenomena (e.g., singularities).",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Adaptivität",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "fe49d465-1c8a-5e9c-a494-671a2de708f5"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Adaptivität",
+                "topicCode": "tum_ma3303_lo5_2"
+            }
+        },
+        {
+            "id": "e4bb7533-669f-52a8-8ab0-6d420e1612ed",
+            "shortKey": "tum_ma3303_lo6",
+            "title": "Schnelle Löser und Vorconditionierung",
+            "titleEn": "Fast Solvers and Preconditioning",
+            "description": "Zusammenfassender Cluster: Iterative Löser, Vorconditionierung und schnelle Verfahren (z.B. Multigrid) für die linearen Systeme aus FE-Diskretisierungen.",
+            "descriptionEn": "Summary cluster: iterative solvers, preconditioning, and fast methods (e.g., multigrid) for linear systems arising from FE discretizations.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Schnelle Löser",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [
+                "6c89b60f-d21b-5f64-a085-a4cb63904a26",
+                "03aadec8-b60f-5e67-b309-15861ae04088"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Schnelle Löser",
+                "topicCode": "tum_ma3303_lo6"
+            }
+        },
+        {
+            "id": "6c89b60f-d21b-5f64-a085-a4cb63904a26",
+            "shortKey": "tum_ma3303_lo6_1",
+            "title": "Iterative Löser und Vorconditionierung auswählen und begründen",
+            "titleEn": "Select and Justify Iterative Solvers and Preconditioners",
+            "description": "Die lernende Person kann geeignete iterative Löser (z.B. CG, GMRES) für FE-Systeme auswählen, Vorconditionierungskonzepte erklären und Kriterien für Effizienz und Robustheit diskutieren.",
+            "descriptionEn": "The learner can select suitable iterative solvers (e.g., CG, GMRES) for FE systems, explain preconditioning concepts, and discuss criteria for efficiency and robustness.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Schnelle Löser",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "1eadbbec-1ed1-57f8-9ec2-dc068feb1b21"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Schnelle Löser",
+                "topicCode": "tum_ma3303_lo6_1"
+            }
+        },
+        {
+            "id": "03aadec8-b60f-5e67-b309-15861ae04088",
+            "shortKey": "tum_ma3303_lo6_2",
+            "title": "Multigrid- und schnelle Löser-Konzepte in Beispielen anwenden",
+            "titleEn": "Apply Multigrid and Fast Solver Concepts in Examples",
+            "description": "Die lernende Person kann Grundideen von Multigrid bzw. schnellen Lösern erläutern, deren Einsatz in Beispielproblemen begründen und Laufzeit-/Speicheraspekte bei der Umsetzung bewerten.",
+            "descriptionEn": "The learner can explain the basic ideas of multigrid and fast solvers, justify their use on example problems, and assess runtime and memory aspects in implementations.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Schnelle Löser",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "6c89b60f-d21b-5f64-a085-a4cb63904a26"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Schnelle Löser",
+                "topicCode": "tum_ma3303_lo6_2"
+            }
+        },
+        {
+            "id": "310c7247-084b-54e5-aef0-7401ee5355ad",
+            "shortKey": "tum_ma3303_lo7",
+            "title": "Mehrdimensionale Aspekte und Modellvarianten",
+            "titleEn": "Multidimensional Aspects and Model Variants",
+            "description": "Zusammenfassender Cluster: Geometrie, Randbedingungen, Elementtypen und Modellvarianten in mehrdimensionalen elliptischen Problemen.",
+            "descriptionEn": "Summary cluster: geometry, boundary conditions, element types, and model variants in multidimensional elliptic problems.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Mehrdimensionale PDEs",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [
+                "c014261c-227e-5b82-bfaa-5bf500812733",
+                "5d5b9165-0c74-57a2-870f-7bf4a5fe5725"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Mehrdimensionale PDEs",
+                "topicCode": "tum_ma3303_lo7"
+            }
+        },
+        {
+            "id": "c014261c-227e-5b82-bfaa-5bf500812733",
+            "shortKey": "tum_ma3303_lo7_1",
+            "title": "Geometrie, Randbedingungen und Elementtypen in 2D/3D handhaben",
+            "titleEn": "Handle Geometry, Boundary Conditions, and Element Types in 2D/3D",
+            "description": "Die lernende Person kann typische Herausforderungen mehrdimensionaler Probleme (Geometrie, Gitternetze, Randbedingungen) beschreiben und geeignete Elementtypen bzw. Diskretisierungsvarianten auswählen.",
+            "descriptionEn": "The learner can describe common challenges of multidimensional problems (geometry, meshes, boundary conditions) and select suitable element types or discretization variants.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Mehrdimensionale PDEs",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "1eadbbec-1ed1-57f8-9ec2-dc068feb1b21"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Mehrdimensionale PDEs",
+                "topicCode": "tum_ma3303_lo7_1"
+            }
+        },
+        {
+            "id": "5d5b9165-0c74-57a2-870f-7bf4a5fe5725",
+            "shortKey": "tum_ma3303_lo7_2",
+            "title": "Varianten elliptischer Modelle numerisch einordnen und lösen",
+            "titleEn": "Classify and Solve Variants of Elliptic Models Numerically",
+            "description": "Die lernende Person kann Modellvarianten (z.B. variable Koeffizienten, gemischte Formulierungen in Grundzügen) einordnen und die Auswirkungen auf Diskretisierung, Löserwahl und Fehlerverhalten qualitativ diskutieren.",
+            "descriptionEn": "The learner can classify model variants (e.g., variable coefficients, basic mixed formulations) and discuss qualitatively how they affect discretization, solver choice, and error behavior.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Mehrdimensionale PDEs",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "c014261c-227e-5b82-bfaa-5bf500812733"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Mehrdimensionale PDEs",
+                "topicCode": "tum_ma3303_lo7_2"
+            }
+        },
+        {
+            "id": "ee5c061e-152b-5112-a9fc-8fc891e79c89",
+            "shortKey": "tum_ma3303_lo8",
+            "title": "Evolutionsgleichungen: Zeitdiskretisierung und Raum-Zeit-Kopplung",
+            "titleEn": "Evolution Equations: Time Discretization and Space–Time Coupling",
+            "description": "Zusammenfassender Cluster: Grundideen der numerischen Behandlung von Evolutionsgleichungen, Kopplung von Raumdiskretisierung (z.B. FE) mit Zeitintegratoren und praktische Umsetzung.",
+            "descriptionEn": "Summary cluster: core ideas for numerically treating evolution equations, coupling spatial discretization (e.g., FE) with time integrators, and practical implementation.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Evolutionsgleichungen",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [
+                "52b169d0-e80e-5a65-a874-5cfa6fe32103",
+                "e69c9440-a50c-5cd1-9c9d-3b8eea541d51"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Evolutionsgleichungen",
+                "topicCode": "tum_ma3303_lo8"
+            }
+        },
+        {
+            "id": "52b169d0-e80e-5a65-a874-5cfa6fe32103",
+            "shortKey": "tum_ma3303_lo8_1",
+            "title": "Zeitdiskretisierung für Evolutionsgleichungen auswählen und analysieren",
+            "titleEn": "Select and Analyze Time Discretizations for Evolution Equations",
+            "description": "Die lernende Person kann grundlegende Zeitdiskretisierungen (explizit/implizit) für Evolutionsgleichungen einordnen, Stabilitäts-/Genauigkeitsaspekte diskutieren und die Kopplung mit Raumdiskretisierung (Method of Lines) erklären.",
+            "descriptionEn": "The learner can place basic time discretizations (explicit/implicit) for evolution equations, discuss stability/accuracy aspects, and explain coupling with spatial discretization (method of lines).",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Evolutionsgleichungen",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "1eadbbec-1ed1-57f8-9ec2-dc068feb1b21"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Evolutionsgleichungen",
+                "topicCode": "tum_ma3303_lo8_1"
+            }
+        },
+        {
+            "id": "e69c9440-a50c-5cd1-9c9d-3b8eea541d51",
+            "shortKey": "tum_ma3303_lo8_2",
+            "title": "Evolutions-PDEs numerisch lösen und Softwarewerkzeuge nutzen",
+            "titleEn": "Solve Evolution PDEs Numerically and Use Software Tools",
+            "description": "Die lernende Person kann einfache Evolutions-PDEs mit geeigneter Raum- und Zeitdiskretisierung implementieren oder mit vorhandener Software lösen, Resultate interpretieren und Rechenaufwand sowie Fehlereinflüsse bewerten.",
+            "descriptionEn": "The learner can implement a simple evolution PDE with suitable spatial and time discretization or solve it using existing software, interpret results, and assess computational cost and error sources.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Evolutionsgleichungen",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "52b169d0-e80e-5a65-a874-5cfa6fe32103",
+                "03aadec8-b60f-5e67-b309-15861ae04088"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Evolutionsgleichungen",
+                "topicCode": "tum_ma3303_lo8_2"
+            }
         }
     ]
 }

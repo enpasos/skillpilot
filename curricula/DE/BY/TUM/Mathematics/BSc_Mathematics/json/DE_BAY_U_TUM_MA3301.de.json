@@ -1,8 +1,8 @@
 {
     "title": "Numerik der Differentialgleichungen (TUM, Modul MA3301)",
     "titleEn": "Numerics of Differential Equations (TUM, Module MA3301)",
-    "description": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, Basisalgorithmen zur Numerik gewöhnlicher und einfacher partieller Differentialgleichungen zu verstehen, zu beurteilen und anzuwenden. Sie verstehen Grundtechniken zur Beschreibung von Diskretisierungsfehlern und können diese anwenden. Sie haben gelernt, algorithmisch zu denken und komplexe Algorithmen am Computer zu realisieren. 9 ECTS, angeboten im Wintersemester, Version 2021s, verantwortet von Junge, Oliver.",
-    "descriptionEn": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, Basisalgorithmen zur Numerik gewöhnlicher und einfacher partieller Differentialgleichungen zu verstehen, zu beurteilen und anzuwenden. Sie verstehen Grundtechniken zur Beschreibung von Diskretisierungsfehlern und können diese anwenden. Sie haben gelernt, algorithmisch zu denken und komplexe Algorithmen am Computer zu realisieren. 9 ECTS, offered in winter semester, version 2021s, responsible: Junge, Oliver.",
+    "description": "Das Modul vermittelt zentrale numerische Methoden für gewöhnliche und einfache partielle Differentialgleichungen. Behandelt werden nichtsteife und steife Integrationsverfahren für Anfangswertprobleme, ein Ausblick auf Randwertprobleme und Optimalsteuerung sowie eine Einführung in die numerische Lösung partieller Differentialgleichungen (Finite Differenzen, Finite Elemente, Spektralmethoden) mit Schwerpunkt auf Problemen in einer Raumdimension und 2D für elliptische Randwertprobleme. Nach erfolgreichem Abschluss können Studierende grundlegende Algorithmen verstehen, beurteilen und anwenden, Diskretisierungsfehler beschreiben und numerische Verfahren am Computer umsetzen. 9 ECTS, angeboten im Wintersemester, Version 2021s, verantwortet von Junge, Oliver.",
+    "descriptionEn": "The module introduces core numerical methods for ordinary and simple partial differential equations. Topics include nonstiff and stiff integration methods for initial value problems, an outlook on boundary value problems and optimal control, and an introduction to numerical PDEs (finite differences, finite elements, spectral methods) with a focus on one-dimensional problems and 2D elliptic boundary value problems. After successful completion, students can understand, assess, and apply basic algorithms, describe discretization errors, and implement numerical methods in computer code. 9 ECTS, offered in the winter semester, version 2021s, responsible: Junge, Oliver.",
     "landscapeId": "0eae1b1a-6178-42cc-8233-43d79f2c89e7",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -20,7 +20,7 @@
             "title": "Numerik der Differentialgleichungen – Gesamtmodul",
             "titleEn": "Numerics of Differential Equations – Full Module",
             "description": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, Basisalgorithmen zur Numerik gewöhnlicher und einfacher partieller Differentialgleichungen zu verstehen, zu beurteilen und anzuwenden. Sie verstehen Grundtechniken zur Beschreibung von Diskretisierungsfehlern und können diese anwenden. Sie haben gelernt, algorithmisch zu denken und komplexe Algorithmen am Computer zu realisieren.",
-            "descriptionEn": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, Basisalgorithmen zur Numerik gewöhnlicher und einfacher partieller Differentialgleichungen zu verstehen, zu beurteilen und anzuwenden. Sie verstehen Grundtechniken zur Beschreibung von Diskretisierungsfehlern und können diese anwenden. Sie haben gelernt, algorithmisch zu denken und komplexe Algorithmen am Computer zu realisieren.",
+            "descriptionEn": "After successful completion of the module students are able to understand, assess, and apply basic algorithms for the numerical treatment of ordinary and simple partial differential equations. They understand fundamental techniques to describe discretization errors and can apply them. They have learned to think algorithmically and to implement complex algorithms on a computer.",
             "core": true,
             "weight": 9.0,
             "phase": "Modul",
@@ -29,15 +29,29 @@
                 "ects:9",
                 "workload:270h",
                 "presence:90h",
-                "level:bachelor",
-                "language:de",
+                "level:master",
+                "language:en",
                 "module:MA3301",
                 "semester:WS",
                 "duration:1_semester",
                 "responsible:junge_oliver"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "c42ff922-d417-5a61-82b4-43250be56308",
+                "c90c4c36-97c1-51d4-8c43-dfbb086e2338",
+                "58f60b7a-ccee-53e9-b49a-c92d82fd7ce0",
+                "02dde634-8caf-5685-b271-5ab5679e9046",
+                "2fceddba-5703-561c-aca9-801e2e937870",
+                "83d37700-821d-5814-8051-091df06c0519",
+                "f266099a-54d9-5084-8ded-9c4332605e53",
+                "6215da32-c1d8-55ce-9e39-793c90094b48"
+            ],
+            "requires": [
+                "8eb1605b-fa70-511b-bbe4-28173d359c3b",
+                "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
+                "feaad1d5-022f-5ab3-93c3-001ac46de351",
+                "6202cf26-6e1f-5eff-a0ee-f2965764d3ae"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-ma3301",
@@ -49,6 +63,732 @@
                 "topicCode": "tum_ma3301_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA3301&description_version=2021s"
+        },
+        {
+            "id": "c42ff922-d417-5a61-82b4-43250be56308",
+            "shortKey": "tum_ma3301_lo1",
+            "title": "Diskretisierung, Fehler und Konvergenz",
+            "titleEn": "Discretization, Error, and Convergence",
+            "description": "Zusammenfassender Cluster: Grundbegriffe der Diskretisierung sowie Fehler-, Stabilitäts- und Konvergenzkonzepte als Basis der Numerik von Differentialgleichungen.",
+            "descriptionEn": "Summary cluster: core notions of discretization and concepts of error, stability, and convergence as the basis of numerical differential equations.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Diskretisierung & Fehler",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [
+                "e72fa7b6-560e-59b1-8b38-68001b7132f7",
+                "e1d7b4d6-fb90-5609-8e1f-2eb4f8c6acb8"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Diskretisierung & Fehler",
+                "topicCode": "tum_ma3301_lo1"
+            }
+        },
+        {
+            "id": "e72fa7b6-560e-59b1-8b38-68001b7132f7",
+            "shortKey": "tum_ma3301_lo1_1",
+            "title": "Diskretisierungsfehler und Konvergenzbegriffe erklären",
+            "titleEn": "Explain Discretization Error and Notions of Convergence",
+            "description": "Die lernende Person kann lokale und globale Fehlerbegriffe definieren, Konsistenz und Stabilität unterscheiden und Konvergenz von Verfahren für Anfangs- bzw. Randwertprobleme erläutern.",
+            "descriptionEn": "The learner can define local and global error notions, distinguish consistency and stability, and explain convergence of methods for initial and boundary value problems.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Diskretisierung & Fehler",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Diskretisierung & Fehler",
+                "topicCode": "tum_ma3301_lo1_1"
+            }
+        },
+        {
+            "id": "e1d7b4d6-fb90-5609-8e1f-2eb4f8c6acb8",
+            "shortKey": "tum_ma3301_lo1_2",
+            "title": "Fehlerabschätzungen nutzen und Schrittweitenwahl begründen",
+            "titleEn": "Use Error Estimates and Justify Step-Size Choices",
+            "description": "Die lernende Person kann Fehlerabschätzungen herleiten oder anwenden, Ordnung von Verfahren bestimmen und daraus Kriterien für Schrittweitenwahl bzw. Gitterverfeinerung ableiten.",
+            "descriptionEn": "The learner can derive or apply error estimates, determine the order of a method, and derive criteria for step-size selection or mesh refinement.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Diskretisierung & Fehler",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "e72fa7b6-560e-59b1-8b38-68001b7132f7"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Diskretisierung & Fehler",
+                "topicCode": "tum_ma3301_lo1_2"
+            }
+        },
+        {
+            "id": "c90c4c36-97c1-51d4-8c43-dfbb086e2338",
+            "shortKey": "tum_ma3301_lo2",
+            "title": "Nichtsteife Anfangswertprobleme: explizite Verfahren",
+            "titleEn": "Nonstiff Initial Value Problems: Explicit Methods",
+            "description": "Zusammenfassender Cluster: Explizite Integrationsverfahren für nichtsteife Anfangswertprobleme und deren Fehler- und Stabilitätseigenschaften.",
+            "descriptionEn": "Summary cluster: explicit integration methods for nonstiff initial value problems and their error and stability properties.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "ODE-IVP (nichtsteif)",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [
+                "2a0687b0-cf3b-57fe-8480-683bb55c154a",
+                "4016efb0-8fc7-5a2c-8aa8-fdcfbd6b7b11"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "ODE-IVP (nichtsteif)",
+                "topicCode": "tum_ma3301_lo2"
+            }
+        },
+        {
+            "id": "2a0687b0-cf3b-57fe-8480-683bb55c154a",
+            "shortKey": "tum_ma3301_lo2_1",
+            "title": "Explizite Integrationsverfahren für ODE-IVPs anwenden",
+            "titleEn": "Apply Explicit Integration Methods for ODE IVPs",
+            "description": "Die lernende Person kann einfache explizite Verfahren (z.B. explizites Euler-, Runge–Kutta-Verfahren) für Anfangswertprobleme formulieren, implementieren und auf Beispiele anwenden.",
+            "descriptionEn": "The learner can formulate, implement, and apply basic explicit methods (e.g., explicit Euler, Runge–Kutta) for initial value problems.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "ODE-IVP (nichtsteif)",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "e72fa7b6-560e-59b1-8b38-68001b7132f7"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "ODE-IVP (nichtsteif)",
+                "topicCode": "tum_ma3301_lo2_1"
+            }
+        },
+        {
+            "id": "4016efb0-8fc7-5a2c-8aa8-fdcfbd6b7b11",
+            "shortKey": "tum_ma3301_lo2_2",
+            "title": "Adaptive Schrittweitensteuerung und Stabilität beurteilen",
+            "titleEn": "Assess Adaptive Step-Size Control and Stability",
+            "description": "Die lernende Person kann Schrittweitensteuerung (Fehlerschätzer, Toleranzen) einsetzen, Stabilitätsaspekte diskutieren und die Eignung expliziter Verfahren für gegebene Probleme begründen.",
+            "descriptionEn": "The learner can use step-size control (error estimators, tolerances), discuss stability aspects, and justify when explicit methods are appropriate for a given problem.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "ODE-IVP (nichtsteif)",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "2a0687b0-cf3b-57fe-8480-683bb55c154a"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "ODE-IVP (nichtsteif)",
+                "topicCode": "tum_ma3301_lo2_2"
+            }
+        },
+        {
+            "id": "58f60b7a-ccee-53e9-b49a-c92d82fd7ce0",
+            "shortKey": "tum_ma3301_lo3",
+            "title": "Steife Anfangswertprobleme: implizite Verfahren",
+            "titleEn": "Stiff Initial Value Problems: Implicit Methods",
+            "description": "Zusammenfassender Cluster: Erkennung von Steifigkeit sowie implizite Integrationsverfahren und Stabilitätsbegriffe (z.B. A-Stabilität) für steife Probleme.",
+            "descriptionEn": "Summary cluster: recognizing stiffness and using implicit integration methods and stability notions (e.g., A-stability) for stiff problems.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "ODE-IVP (steif)",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [
+                "bd89688c-19a9-5195-adbf-e6e1971e8079",
+                "63430556-25aa-5d90-85a5-24efe0c0d1a1"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "ODE-IVP (steif)",
+                "topicCode": "tum_ma3301_lo3"
+            }
+        },
+        {
+            "id": "bd89688c-19a9-5195-adbf-e6e1971e8079",
+            "shortKey": "tum_ma3301_lo3_1",
+            "title": "Steifigkeit erkennen und passende Verfahren wählen",
+            "titleEn": "Recognize Stiffness and Choose Appropriate Methods",
+            "description": "Die lernende Person kann typische Merkmale steifer Probleme erläutern, geeignete Stabilitätsbegriffe verwenden und begründen, warum implizite Verfahren erforderlich sein können.",
+            "descriptionEn": "The learner can explain typical signatures of stiff problems, use suitable stability notions, and justify why implicit methods may be required.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "ODE-IVP (steif)",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "4016efb0-8fc7-5a2c-8aa8-fdcfbd6b7b11"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "ODE-IVP (steif)",
+                "topicCode": "tum_ma3301_lo3_1"
+            }
+        },
+        {
+            "id": "63430556-25aa-5d90-85a5-24efe0c0d1a1",
+            "shortKey": "tum_ma3301_lo3_2",
+            "title": "Implizite Integrationsverfahren implementieren und analysieren",
+            "titleEn": "Implement and Analyze Implicit Integration Methods",
+            "description": "Die lernende Person kann einfache implizite Verfahren (z.B. implizites Euler-, trapezförmiges Verfahren) formulieren, nichtlineare Gleichungen (z.B. via Newton) lösen und Stabilität sowie Genauigkeit beurteilen.",
+            "descriptionEn": "The learner can formulate basic implicit methods (e.g., implicit Euler, trapezoidal rule), solve the arising nonlinear equations (e.g., via Newton’s method), and assess stability and accuracy.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "ODE-IVP (steif)",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "bd89688c-19a9-5195-adbf-e6e1971e8079"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "ODE-IVP (steif)",
+                "topicCode": "tum_ma3301_lo3_2"
+            }
+        },
+        {
+            "id": "02dde634-8caf-5685-b271-5ab5679e9046",
+            "shortKey": "tum_ma3301_lo4",
+            "title": "Randwertprobleme und Optimalsteuerung (Ausblick)",
+            "titleEn": "Boundary Value Problems and Optimal Control (Outlook)",
+            "description": "Zusammenfassender Cluster: Ausblick auf numerische Ansätze für Randwertprobleme und optimale Steuerung im Kontext von Differentialgleichungen.",
+            "descriptionEn": "Summary cluster: an outlook on numerical approaches to boundary value problems and optimal control in the context of differential equations.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "BVP & Optimalsteuerung",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [
+                "0785e056-2b8e-5684-859c-5e6f7b400655",
+                "c027fa55-3ddf-5606-95ad-8ca56c2894e7"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "BVP & Optimalsteuerung",
+                "topicCode": "tum_ma3301_lo4"
+            }
+        },
+        {
+            "id": "0785e056-2b8e-5684-859c-5e6f7b400655",
+            "shortKey": "tum_ma3301_lo4_1",
+            "title": "Randwertprobleme numerisch einordnen und einfache Ansätze skizzieren",
+            "titleEn": "Classify Boundary Value Problems and Sketch Basic Numerical Approaches",
+            "description": "Die lernende Person kann Randwertprobleme gegenüber Anfangswertproblemen abgrenzen, typische Diskretisierungsansätze (z.B. Schießen, Kollokation) beschreiben und deren Vor- und Nachteile diskutieren.",
+            "descriptionEn": "The learner can distinguish boundary value problems from initial value problems, describe common discretization approaches (e.g., shooting, collocation), and discuss their advantages and limitations.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "BVP & Optimalsteuerung",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "4016efb0-8fc7-5a2c-8aa8-fdcfbd6b7b11"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "BVP & Optimalsteuerung",
+                "topicCode": "tum_ma3301_lo4_1"
+            }
+        },
+        {
+            "id": "c027fa55-3ddf-5606-95ad-8ca56c2894e7",
+            "shortKey": "tum_ma3301_lo4_2",
+            "title": "Optimalsteuerungsprobleme als diskrete Probleme formulieren (Überblick)",
+            "titleEn": "Formulate Optimal Control Problems as Discrete Problems (Overview)",
+            "description": "Die lernende Person kann einfache Optimalsteuerungsprobleme in eine diskrete Optimierungsformulierung überführen, die Rolle von Zustands- und Kontrollvariablen erklären und typische Lösungsstrategien in Grundzügen einordnen.",
+            "descriptionEn": "The learner can translate simple optimal control problems into a discrete optimization formulation, explain the roles of state and control variables, and place typical solution strategies at a high level.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "BVP & Optimalsteuerung",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "0785e056-2b8e-5684-859c-5e6f7b400655"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "BVP & Optimalsteuerung",
+                "topicCode": "tum_ma3301_lo4_2"
+            }
+        },
+        {
+            "id": "2fceddba-5703-561c-aca9-801e2e937870",
+            "shortKey": "tum_ma3301_lo5",
+            "title": "PDE-Numerik I: Finite Differenzen",
+            "titleEn": "PDE Numerics I: Finite Differences",
+            "description": "Zusammenfassender Cluster: Numerische Lösung einfacher PDEs mit finiten Differenzen, Fokus auf 1D sowie 2D elliptische Randwertprobleme.",
+            "descriptionEn": "Summary cluster: numerical solution of simple PDEs with finite differences, focusing on 1D and 2D elliptic boundary value problems.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "PDE: Finite Differenzen",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [
+                "41408973-a119-5d9a-a5e7-b43081efa31c",
+                "eeabff6a-c305-5344-914c-10dcadcbfa3d"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "PDE: Finite Differenzen",
+                "topicCode": "tum_ma3301_lo5"
+            }
+        },
+        {
+            "id": "41408973-a119-5d9a-a5e7-b43081efa31c",
+            "shortKey": "tum_ma3301_lo5_1",
+            "title": "Finite-Differenzen-Schemata für einfache PDEs konstruieren",
+            "titleEn": "Construct Finite Difference Schemes for Simple PDEs",
+            "description": "Die lernende Person kann für einfache PDEs in 1D passende finite-Differenzen-Schemata aufstellen, Randbedingungen korrekt berücksichtigen und die entstehenden linearen Gleichungssysteme beschreiben.",
+            "descriptionEn": "The learner can set up suitable finite difference schemes for simple 1D PDEs, handle boundary conditions correctly, and describe the resulting linear systems.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "PDE: Finite Differenzen",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "e1d7b4d6-fb90-5609-8e1f-2eb4f8c6acb8"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "PDE: Finite Differenzen",
+                "topicCode": "tum_ma3301_lo5_1"
+            }
+        },
+        {
+            "id": "eeabff6a-c305-5344-914c-10dcadcbfa3d",
+            "shortKey": "tum_ma3301_lo5_2",
+            "title": "Finite-Differenzen-Verfahren in 2D elliptischen Problemen anwenden und Fehler diskutieren",
+            "titleEn": "Apply Finite Differences to 2D Elliptic Problems and Discuss Error",
+            "description": "Die lernende Person kann finite Differenzen für 2D elliptische Randwertprobleme anwenden, die Lösung numerisch bestimmen und Diskretisierungsfehler sowie Stabilitätsaspekte auf Beispielproblemen diskutieren.",
+            "descriptionEn": "The learner can apply finite differences to 2D elliptic boundary value problems, compute numerical solutions, and discuss discretization error and stability aspects on examples.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "PDE: Finite Differenzen",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "41408973-a119-5d9a-a5e7-b43081efa31c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "PDE: Finite Differenzen",
+                "topicCode": "tum_ma3301_lo5_2"
+            }
+        },
+        {
+            "id": "83d37700-821d-5814-8051-091df06c0519",
+            "shortKey": "tum_ma3301_lo6",
+            "title": "PDE-Numerik II: Finite Elemente",
+            "titleEn": "PDE Numerics II: Finite Elements",
+            "description": "Zusammenfassender Cluster: Variationsformulierung und Finite-Elemente-Methoden für elliptische Randwertprobleme in 1D und 2D.",
+            "descriptionEn": "Summary cluster: variational formulations and finite element methods for elliptic boundary value problems in 1D and 2D.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "PDE: Finite Elemente",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [
+                "b412adef-c096-5f58-9729-d35592dd8c6e",
+                "c3723ea7-53e7-5491-8da8-796b83a001f8"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "PDE: Finite Elemente",
+                "topicCode": "tum_ma3301_lo6"
+            }
+        },
+        {
+            "id": "b412adef-c096-5f58-9729-d35592dd8c6e",
+            "shortKey": "tum_ma3301_lo6_1",
+            "title": "Schwache Formulierung herleiten und FE-Ansatzraum wählen",
+            "titleEn": "Derive Weak Formulations and Choose FE Trial Spaces",
+            "description": "Die lernende Person kann für einfache elliptische Probleme die schwache Formulierung herleiten, geeignete Ansatzräume wählen und das Grundprinzip der Finite-Elemente-Diskretisierung erklären.",
+            "descriptionEn": "The learner can derive weak formulations for basic elliptic problems, choose suitable trial spaces, and explain the core principle of finite element discretization.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "PDE: Finite Elemente",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "41408973-a119-5d9a-a5e7-b43081efa31c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "PDE: Finite Elemente",
+                "topicCode": "tum_ma3301_lo6_1"
+            }
+        },
+        {
+            "id": "c3723ea7-53e7-5491-8da8-796b83a001f8",
+            "shortKey": "tum_ma3301_lo6_2",
+            "title": "Finite-Elemente-Verfahren implementieren und Resultate interpretieren",
+            "titleEn": "Implement Finite Element Methods and Interpret Results",
+            "description": "Die lernende Person kann elementare FE-Verfahren (z.B. in 1D, einfache 2D-Gitter) implementieren bzw. anwenden, Steifigkeitsmatrix und Lastvektor aufstellen und Genauigkeit sowie Fehlerverhalten an Beispielen interpretieren.",
+            "descriptionEn": "The learner can implement or apply basic FE methods (e.g., in 1D and on simple 2D meshes), assemble stiffness matrices and load vectors, and interpret accuracy and error behavior on examples.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "PDE: Finite Elemente",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "b412adef-c096-5f58-9729-d35592dd8c6e"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "PDE: Finite Elemente",
+                "topicCode": "tum_ma3301_lo6_2"
+            }
+        },
+        {
+            "id": "f266099a-54d9-5084-8ded-9c4332605e53",
+            "shortKey": "tum_ma3301_lo7",
+            "title": "PDE-Numerik III: Spektralmethoden",
+            "titleEn": "PDE Numerics III: Spectral Methods",
+            "description": "Zusammenfassender Cluster: Spektralmethoden als hochgenaue Ansätze für 1D-Probleme und deren numerische Eigenschaften.",
+            "descriptionEn": "Summary cluster: spectral methods as high-accuracy approaches for 1D problems and their numerical properties.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "PDE: Spektralmethoden",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [
+                "4df1c95e-6315-5d06-8942-5e0f289c2064",
+                "493b0e17-db3d-577f-9117-c535e27aaa3a"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "PDE: Spektralmethoden",
+                "topicCode": "tum_ma3301_lo7"
+            }
+        },
+        {
+            "id": "4df1c95e-6315-5d06-8942-5e0f289c2064",
+            "shortKey": "tum_ma3301_lo7_1",
+            "title": "Spektral- und Kollokationsansätze formulieren",
+            "titleEn": "Formulate Spectral and Collocation Approaches",
+            "description": "Die lernende Person kann Funktionen in geeigneten Basen (z.B. Fourier) darstellen, Spektral- bzw. Kollokationsansätze für einfache 1D-Probleme formulieren und die Rolle von Regularität für die Konvergenz erklären.",
+            "descriptionEn": "The learner can represent functions in suitable bases (e.g., Fourier), formulate spectral or collocation approaches for simple 1D problems, and explain the role of regularity for convergence.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "PDE: Spektralmethoden",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "41408973-a119-5d9a-a5e7-b43081efa31c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "PDE: Spektralmethoden",
+                "topicCode": "tum_ma3301_lo7_1"
+            }
+        },
+        {
+            "id": "493b0e17-db3d-577f-9117-c535e27aaa3a",
+            "shortKey": "tum_ma3301_lo7_2",
+            "title": "Genauigkeit und praktische Aspekte von Spektralmethoden beurteilen",
+            "titleEn": "Assess Accuracy and Practical Aspects of Spectral Methods",
+            "description": "Die lernende Person kann typische numerische Effekte (z.B. Aliasing, Periodisierung) diskutieren und begründen, wann Spektralmethoden gegenüber Gitterverfahren vorteilhaft sind.",
+            "descriptionEn": "The learner can discuss typical numerical effects (e.g., aliasing, periodization) and justify when spectral methods are advantageous compared to grid-based methods.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "PDE: Spektralmethoden",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "4df1c95e-6315-5d06-8942-5e0f289c2064"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "PDE: Spektralmethoden",
+                "topicCode": "tum_ma3301_lo7_2"
+            }
+        },
+        {
+            "id": "6215da32-c1d8-55ce-9e39-793c90094b48",
+            "shortKey": "tum_ma3301_lo8",
+            "title": "Algorithmische Umsetzung und Bewertung",
+            "titleEn": "Algorithmic Implementation and Evaluation",
+            "description": "Zusammenfassender Cluster: Umsetzung numerischer Verfahren in Software und Bewertung von Aufwand, Genauigkeit und Robustheit.",
+            "descriptionEn": "Summary cluster: implementing numerical methods in software and evaluating cost, accuracy, and robustness.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Implementierung & Bewertung",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [
+                "26d824a7-8dbb-562f-a632-30f0de2b34a9",
+                "5dace4e9-9339-5488-88c7-0e5f02bc9f6c"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Implementierung & Bewertung",
+                "topicCode": "tum_ma3301_lo8"
+            }
+        },
+        {
+            "id": "26d824a7-8dbb-562f-a632-30f0de2b34a9",
+            "shortKey": "tum_ma3301_lo8_1",
+            "title": "Numerische Algorithmen robust implementieren und testen",
+            "titleEn": "Implement Numerical Algorithms Robustly and Test Them",
+            "description": "Die lernende Person kann numerische Verfahren strukturiert implementieren, geeignete Testfälle und Referenzlösungen wählen und typische Fehlerquellen (z.B. Rundung, schlechte Kondition) berücksichtigen.",
+            "descriptionEn": "The learner can implement numerical methods in a structured way, choose suitable test cases and reference solutions, and account for common pitfalls (e.g., rounding, ill-conditioning).",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Implementierung & Bewertung",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "e1d7b4d6-fb90-5609-8e1f-2eb4f8c6acb8"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Implementierung & Bewertung",
+                "topicCode": "tum_ma3301_lo8_1"
+            }
+        },
+        {
+            "id": "5dace4e9-9339-5488-88c7-0e5f02bc9f6c",
+            "shortKey": "tum_ma3301_lo8_2",
+            "title": "Methoden vergleichen und für Aufgabenstellungen begründet auswählen",
+            "titleEn": "Compare Methods and Choose Them for a Given Task",
+            "description": "Die lernende Person kann Verfahren hinsichtlich Aufwand, Stabilität und Genauigkeit vergleichen und eine problemabhängige Methodenwahl (nichtsteif/steif, FD/FE/Spektral) fachlich begründet treffen.",
+            "descriptionEn": "The learner can compare methods with respect to cost, stability, and accuracy and make a well-justified, problem-dependent choice (nonstiff/stiff, FD/FE/spectral).",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Implementierung & Bewertung",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "26d824a7-8dbb-562f-a632-30f0de2b34a9"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Implementierung & Bewertung",
+                "topicCode": "tum_ma3301_lo8_2"
+            }
         }
     ]
 }
