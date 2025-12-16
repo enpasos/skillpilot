@@ -2,7 +2,7 @@
     "title": "Numerik (TUM, Modul MA0008)",
     "titleEn": "Numerical Analysis (TUM, Module MA0008)",
     "description": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, algorithmisch-numerische Denkweisen anhand von Basisalgorithmen der Numerischen Mathematik zu verstehen. Sie beherrschen Grundtechniken zur Beurteilung von Effizienz und Genauigkeit numerischer Algorithmen und ihrer Realisierung in Computerprogrammen (in numerischen Programmiersprachen, z.B. MATLAB oder Julia) sowie zur Abschätzung von Approximationsfehlern. 9 ECTS, angeboten im Wintersemester, Version 2023s, verantwortet von Ullmann, Elisabeth.",
-    "descriptionEn": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, algorithmisch-numerische Denkweisen anhand von Basisalgorithmen der Numerischen Mathematik zu verstehen. Sie beherrschen Grundtechniken zur Beurteilung von Effizienz und Genauigkeit numerischer Algorithmen und ihrer Realisierung in Computerprogrammen (in numerischen Programmiersprachen, z.B. MATLAB oder Julia) sowie zur Abschätzung von Approximationsfehlern. 9 ECTS, offered in winter semester, version 2023s, responsible: Ullmann, Elisabeth.",
+    "descriptionEn": "After successfully completing the module, students are able to understand algorithmic and numerical ways of thinking using basic algorithms of numerical mathematics. They master fundamental techniques for assessing the efficiency and accuracy of numerical algorithms and their implementation in computer programs (in numerical programming languages such as MATLAB or Julia), as well as for estimating approximation errors. 9 ECTS, offered in the winter semester, version 2023s, responsible: Ullmann, Elisabeth.",
     "landscapeId": "15c54ccb-193e-4a29-8a6e-f27b5b675775",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -20,7 +20,7 @@
             "title": "Numerik – Gesamtmodul",
             "titleEn": "Numerical Analysis – Full Module",
             "description": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, algorithmisch-numerische Denkweisen anhand von Basisalgorithmen der Numerischen Mathematik zu verstehen. Sie beherrschen Grundtechniken zur Beurteilung von Effizienz und Genauigkeit numerischer Algorithmen und ihrer Realisierung in Computerprogrammen (in numerischen Programmiersprachen, z.B. MATLAB oder Julia) sowie zur Abschätzung von Approximationsfehlern.",
-            "descriptionEn": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, algorithmisch-numerische Denkweisen anhand von Basisalgorithmen der Numerischen Mathematik zu verstehen. Sie beherrschen Grundtechniken zur Beurteilung von Effizienz und Genauigkeit numerischer Algorithmen und ihrer Realisierung in Computerprogrammen (in numerischen Programmiersprachen, z.B. MATLAB oder Julia) sowie zur Abschätzung von Approximationsfehlern.",
+            "descriptionEn": "After successfully completing the module, students are able to understand algorithmic and numerical ways of thinking using basic algorithms of numerical mathematics. They master fundamental techniques for assessing the efficiency and accuracy of numerical algorithms and their implementation in computer programs (in numerical programming languages such as MATLAB or Julia), as well as for estimating approximation errors.",
             "core": true,
             "weight": 9.0,
             "phase": "Modul",
@@ -36,8 +36,20 @@
                 "duration:1_semester",
                 "responsible:ullmann_elisabeth"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "3310b32b-64d2-50bb-881f-b6b38fce6d4e",
+                "45984319-69e1-5e70-be59-b8e142d810df",
+                "064abf89-2ef7-594a-940b-43852dac4daf",
+                "69b2eab7-ce97-5884-893d-753e7fdb685e",
+                "0c7c81bc-0d90-589e-a864-efdb667e5ffc",
+                "192c12a7-85c8-5526-b94a-6f12deb33f9a",
+                "c398ccb0-d3e2-561b-9fe4-6234c3d6187b"
+            ],
+            "requires": [
+                "8eb1605b-fa70-511b-bbe4-28173d359c3b",
+                "feaad1d5-022f-5ab3-93c3-001ac46de351",
+                "684c912e-f23b-41f2-9ffe-3ac205ae67fe"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-ma0008",
@@ -49,6 +61,726 @@
                 "topicCode": "tum_ma0008_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA0008&description_version=2023s"
+        },
+        {
+            "id": "3310b32b-64d2-50bb-881f-b6b38fce6d4e",
+            "shortKey": "tum_ma0008_lo1",
+            "title": "Matrixfaktorisierungen und lineare Gleichungssysteme",
+            "titleEn": "Matrix Factorizations and Linear Systems",
+            "description": "Zusammenfassender Cluster: Matrixfaktorisierungen und ihre Anwendung zur Lösung linearer Gleichungssysteme als Grundbausteine numerischer Algorithmen.",
+            "descriptionEn": "Summary cluster: matrix factorizations and their use for solving linear systems as core building blocks of numerical algorithms.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Lineare Gleichungssysteme",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [
+                "17bfc737-37a4-587a-a381-9eef5642daa0",
+                "4d1b9714-0cd5-5d55-b579-0357850e014f"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Lineare Gleichungssysteme",
+                "topicCode": "tum_ma0008_lo1"
+            }
+        },
+        {
+            "id": "17bfc737-37a4-587a-a381-9eef5642daa0",
+            "shortKey": "tum_ma0008_lo1_1",
+            "title": "LU-, QR- und Cholesky-Zerlegungen anwenden",
+            "titleEn": "Apply LU, QR, and Cholesky Factorizations",
+            "description": "Die lernende Person kann LU- (mit Pivotisierung), QR- und Cholesky-Zerlegungen berechnen und ihre Rolle beim numerischen Lösen linearer Probleme erklären.",
+            "descriptionEn": "The learner can compute LU (with pivoting), QR, and Cholesky factorizations and explain their role in numerically solving linear problems.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Lineare Gleichungssysteme",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Lineare Gleichungssysteme",
+                "topicCode": "tum_ma0008_lo1_1"
+            }
+        },
+        {
+            "id": "4d1b9714-0cd5-5d55-b579-0357850e014f",
+            "shortKey": "tum_ma0008_lo1_2",
+            "title": "Lineare Gleichungssysteme numerisch lösen",
+            "titleEn": "Numerically Solve Linear Systems",
+            "description": "Die lernende Person kann lineare Gleichungssysteme mit Faktorisierungen lösen, Aufwand und Genauigkeit abschätzen und typische Problemfälle (z.B. schlecht konditionierte Matrizen) erkennen.",
+            "descriptionEn": "The learner can solve linear systems using factorizations, estimate computational cost and accuracy, and recognize typical issues (e.g., ill-conditioned matrices).",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Lineare Gleichungssysteme",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [],
+            "requires": [
+                "17bfc737-37a4-587a-a381-9eef5642daa0"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Lineare Gleichungssysteme",
+                "topicCode": "tum_ma0008_lo1_2"
+            }
+        },
+        {
+            "id": "45984319-69e1-5e70-be59-b8e142d810df",
+            "shortKey": "tum_ma0008_lo2",
+            "title": "Ausgleichsrechnung und Least-Squares-Probleme",
+            "titleEn": "Least Squares and Data Fitting",
+            "description": "Zusammenfassender Cluster: Ausgleichsrechnung und Least-Squares-Probleme als numerische Modellierung überbestimmter linearer Systeme.",
+            "descriptionEn": "Summary cluster: data fitting and least squares problems as numerical models of overdetermined linear systems.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Ausgleichsrechnung",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [
+                "ab9272c3-bcb7-5992-9f3c-fb1c005514db",
+                "e8a6ff95-6a9d-561b-bb25-9ec122dc3ee7"
+            ],
+            "requires": [
+                "4d1b9714-0cd5-5d55-b579-0357850e014f"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Ausgleichsrechnung",
+                "topicCode": "tum_ma0008_lo2"
+            }
+        },
+        {
+            "id": "ab9272c3-bcb7-5992-9f3c-fb1c005514db",
+            "shortKey": "tum_ma0008_lo2_1",
+            "title": "Least-Squares-Probleme formulieren",
+            "titleEn": "Formulate Least Squares Problems",
+            "description": "Die lernende Person kann Ausgleichsprobleme als Least-Squares-Optimierung modellieren, Residuen interpretieren und passende Daten- bzw. Designmatrizen aufstellen.",
+            "descriptionEn": "The learner can model data fitting problems as least squares optimization, interpret residuals, and set up appropriate data/design matrices.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Ausgleichsrechnung",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Ausgleichsrechnung",
+                "topicCode": "tum_ma0008_lo2_1"
+            }
+        },
+        {
+            "id": "e8a6ff95-6a9d-561b-bb25-9ec122dc3ee7",
+            "shortKey": "tum_ma0008_lo2_2",
+            "title": "Least Squares stabil berechnen",
+            "titleEn": "Compute Least Squares Solutions Stably",
+            "description": "Die lernende Person kann Least-Squares-Lösungen mittels QR-Zerlegung (und im Vergleich über Normalgleichungen) berechnen und die numerische Stabilität diskutieren.",
+            "descriptionEn": "The learner can compute least squares solutions using a QR factorization (and, in comparison, via normal equations) and discuss numerical stability.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Ausgleichsrechnung",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [],
+            "requires": [
+                "ab9272c3-bcb7-5992-9f3c-fb1c005514db"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Ausgleichsrechnung",
+                "topicCode": "tum_ma0008_lo2_2"
+            }
+        },
+        {
+            "id": "064abf89-2ef7-594a-940b-43852dac4daf",
+            "shortKey": "tum_ma0008_lo3",
+            "title": "Fehleranalyse: IEEE-Arithmetik, Kondition, Stabilität",
+            "titleEn": "Error Analysis: Floating-Point, Conditioning, Stability",
+            "description": "Zusammenfassender Cluster: Fehlerquellen in der numerischen Rechnung (IEEE-Gleitkomma), Kondition von Problemen und Stabilität von Algorithmen.",
+            "descriptionEn": "Summary cluster: sources of numerical error (IEEE floating-point), conditioning of problems, and stability of algorithms.",
+            "core": true,
+            "weight": 1.6,
+            "phase": "Modul",
+            "area": "Fehleranalyse",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [
+                "ed758153-c63f-5c5e-9cda-9306507353ff",
+                "63107fa7-8290-5f53-bb47-7fd795c06739"
+            ],
+            "requires": [
+                "4d1b9714-0cd5-5d55-b579-0357850e014f"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Fehleranalyse",
+                "topicCode": "tum_ma0008_lo3"
+            }
+        },
+        {
+            "id": "ed758153-c63f-5c5e-9cda-9306507353ff",
+            "shortKey": "tum_ma0008_lo3_1",
+            "title": "IEEE-Gleitkommaarithmetik verstehen",
+            "titleEn": "Understand IEEE Floating-Point Arithmetic",
+            "description": "Die lernende Person kann IEEE-Gleitkommazahlen, Rundung, Maschinengenauigkeit und Fehlerfortpflanzung in einfachen Rechnungen erklären und abschätzen.",
+            "descriptionEn": "The learner can explain IEEE floating-point numbers, rounding, machine precision, and error propagation in simple computations and estimate their effects.",
+            "core": true,
+            "weight": 0.8,
+            "phase": "Modul",
+            "area": "Fehleranalyse",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Fehleranalyse",
+                "topicCode": "tum_ma0008_lo3_1"
+            }
+        },
+        {
+            "id": "63107fa7-8290-5f53-bb47-7fd795c06739",
+            "shortKey": "tum_ma0008_lo3_2",
+            "title": "Kondition und Stabilität beurteilen",
+            "titleEn": "Assess Conditioning and Stability",
+            "description": "Die lernende Person kann Konditionszahlen (z.B. für lineare Systeme) abschätzen, Vorwärts- und Rückwärtsfehler unterscheiden und Stabilitätsaussagen zu Algorithmen begründen.",
+            "descriptionEn": "The learner can estimate condition numbers (e.g., for linear systems), distinguish forward and backward error, and justify stability statements about algorithms.",
+            "core": true,
+            "weight": 0.8,
+            "phase": "Modul",
+            "area": "Fehleranalyse",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [],
+            "requires": [
+                "ed758153-c63f-5c5e-9cda-9306507353ff"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Fehleranalyse",
+                "topicCode": "tum_ma0008_lo3_2"
+            }
+        },
+        {
+            "id": "69b2eab7-ce97-5884-893d-753e7fdb685e",
+            "shortKey": "tum_ma0008_lo4",
+            "title": "Nichtlineare Gleichungen: Fixpunktiteration und Newton",
+            "titleEn": "Nonlinear Equations: Fixed-Point Iteration and Newton’s Method",
+            "description": "Zusammenfassender Cluster: Iterative Verfahren zur Lösung nichtlinearer Gleichungen und Gleichungssysteme (Fixpunktiteration, Newton-Verfahren).",
+            "descriptionEn": "Summary cluster: iterative methods for solving nonlinear equations and systems (fixed-point iteration, Newton’s method).",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Nichtlineare Gleichungen",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [
+                "57aa735c-c258-550e-9d40-e2df91bca4d8",
+                "f78ecb67-d858-5c63-b61a-281be0dba05c"
+            ],
+            "requires": [
+                "63107fa7-8290-5f53-bb47-7fd795c06739"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Nichtlineare Gleichungen",
+                "topicCode": "tum_ma0008_lo4"
+            }
+        },
+        {
+            "id": "57aa735c-c258-550e-9d40-e2df91bca4d8",
+            "shortKey": "tum_ma0008_lo4_1",
+            "title": "Fixpunktiteration analysieren und implementieren",
+            "titleEn": "Analyze and Implement Fixed-Point Iterations",
+            "description": "Die lernende Person kann Fixpunktiterationen herleiten, Konvergenzkriterien (z.B. Kontraktion) prüfen und sinnvolle Abbruchkriterien implementieren.",
+            "descriptionEn": "The learner can derive fixed-point iterations, check convergence criteria (e.g., contraction conditions), and implement meaningful stopping criteria.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Nichtlineare Gleichungen",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Nichtlineare Gleichungen",
+                "topicCode": "tum_ma0008_lo4_1"
+            }
+        },
+        {
+            "id": "f78ecb67-d858-5c63-b61a-281be0dba05c",
+            "shortKey": "tum_ma0008_lo4_2",
+            "title": "Newton-Verfahren für Gleichungen und Systeme einsetzen",
+            "titleEn": "Use Newton’s Method for Equations and Systems",
+            "description": "Die lernende Person kann das Newton-Verfahren für skalare Gleichungen und Gleichungssysteme anwenden, lokale Konvergenzeigenschaften erläutern und die nötigen linearen Teilschritte numerisch lösen.",
+            "descriptionEn": "The learner can apply Newton’s method to scalar equations and systems, explain local convergence properties, and numerically solve the required linear subproblems.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Nichtlineare Gleichungen",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [],
+            "requires": [
+                "57aa735c-c258-550e-9d40-e2df91bca4d8"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Nichtlineare Gleichungen",
+                "topicCode": "tum_ma0008_lo4_2"
+            }
+        },
+        {
+            "id": "0c7c81bc-0d90-589e-a864-efdb667e5ffc",
+            "shortKey": "tum_ma0008_lo5",
+            "title": "Polynom- und Spline-Interpolation",
+            "titleEn": "Polynomial and Spline Interpolation",
+            "description": "Zusammenfassender Cluster: Approximation durch Interpolation mittels Polynomen und Splines einschließlich Fehlerbetrachtungen.",
+            "descriptionEn": "Summary cluster: approximation via polynomial and spline interpolation, including error considerations.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Interpolation",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [
+                "75d99859-f476-5fe6-8464-c4302ffc989d",
+                "82b7884c-eda0-521e-a6fd-13c5e4b74214"
+            ],
+            "requires": [
+                "63107fa7-8290-5f53-bb47-7fd795c06739"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Interpolation",
+                "topicCode": "tum_ma0008_lo5"
+            }
+        },
+        {
+            "id": "75d99859-f476-5fe6-8464-c4302ffc989d",
+            "shortKey": "tum_ma0008_lo5_1",
+            "title": "Polynominterpolation konstruieren",
+            "titleEn": "Construct Polynomial Interpolants",
+            "description": "Die lernende Person kann Interpolationspolynome (Lagrange- und Newton-Form) konstruieren, Stützstellen wählen und den Interpolationsfehler für glatte Funktionen abschätzen.",
+            "descriptionEn": "The learner can construct interpolation polynomials (Lagrange and Newton form), choose interpolation nodes, and estimate the interpolation error for smooth functions.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Interpolation",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Interpolation",
+                "topicCode": "tum_ma0008_lo5_1"
+            }
+        },
+        {
+            "id": "82b7884c-eda0-521e-a6fd-13c5e4b74214",
+            "shortKey": "tum_ma0008_lo5_2",
+            "title": "Spline-Interpolation anwenden",
+            "titleEn": "Apply Spline Interpolation",
+            "description": "Die lernende Person kann Spline-Interpolanten (z.B. kubische Splines) aufstellen, Randbedingungen verstehen und Splines zur Approximation und Glättung einsetzen.",
+            "descriptionEn": "The learner can set up spline interpolants (e.g., cubic splines), understand boundary conditions, and use splines for approximation and smoothing.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Interpolation",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [],
+            "requires": [
+                "75d99859-f476-5fe6-8464-c4302ffc989d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Interpolation",
+                "topicCode": "tum_ma0008_lo5_2"
+            }
+        },
+        {
+            "id": "192c12a7-85c8-5526-b94a-6f12deb33f9a",
+            "shortKey": "tum_ma0008_lo6",
+            "title": "Quadratur (numerische Integration)",
+            "titleEn": "Quadrature (Numerical Integration)",
+            "description": "Zusammenfassender Cluster: Numerische Integration (Quadraturregeln) und Verfahren zur Fehlerabschätzung und Effizienzbewertung.",
+            "descriptionEn": "Summary cluster: numerical integration (quadrature rules) and methods for error estimation and efficiency assessment.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Quadratur",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [
+                "817972ca-a8b0-52c7-b807-ca0476f757f2",
+                "dab94e70-23d4-54cc-8c41-9f7665266609"
+            ],
+            "requires": [
+                "75d99859-f476-5fe6-8464-c4302ffc989d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Quadratur",
+                "topicCode": "tum_ma0008_lo6"
+            }
+        },
+        {
+            "id": "817972ca-a8b0-52c7-b807-ca0476f757f2",
+            "shortKey": "tum_ma0008_lo6_1",
+            "title": "Quadraturregeln anwenden und Fehler ordnen",
+            "titleEn": "Apply Quadrature Rules and Error Orders",
+            "description": "Die lernende Person kann klassische Quadraturregeln (Trapez, Simpson, Gauß) anwenden und deren Konvergenzordnung bzw. Fehlerterme in Beispielen interpretieren.",
+            "descriptionEn": "The learner can apply classical quadrature rules (trapezoidal, Simpson, Gauss) and interpret their convergence order and error terms in examples.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Quadratur",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Quadratur",
+                "topicCode": "tum_ma0008_lo6_1"
+            }
+        },
+        {
+            "id": "dab94e70-23d4-54cc-8c41-9f7665266609",
+            "shortKey": "tum_ma0008_lo6_2",
+            "title": "Adaptive Quadratur umsetzen",
+            "titleEn": "Implement Adaptive Quadrature",
+            "description": "Die lernende Person kann adaptive Integrationsverfahren mit Fehlerabschätzung implementieren und Effizienz (Rechenaufwand) und Genauigkeit vergleichen.",
+            "descriptionEn": "The learner can implement adaptive integration methods with error estimation and compare efficiency (computational cost) and accuracy.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Quadratur",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [],
+            "requires": [
+                "817972ca-a8b0-52c7-b807-ca0476f757f2"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Quadratur",
+                "topicCode": "tum_ma0008_lo6_2"
+            }
+        },
+        {
+            "id": "c398ccb0-d3e2-561b-9fe4-6234c3d6187b",
+            "shortKey": "tum_ma0008_lo7",
+            "title": "Ergänzende Themen der Numerik",
+            "titleEn": "Supplementary Topics in Numerical Analysis",
+            "description": "Zusammenfassender Cluster: Auswahl vertiefender Themen (z.B. Singulärwertzerlegung, schnelle Fouriertransformation, Eigenwertprobleme, Monte-Carlo-Quadratur, dünnbesetzte Matrizen).",
+            "descriptionEn": "Summary cluster: a selection of advanced topics (e.g., singular value decomposition, fast Fourier transform, eigenvalue problems, Monte Carlo quadrature, sparse matrices).",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Ergänzende Themen",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [
+                "d6c49f58-b275-5b71-bf75-8af34778e961",
+                "19bf0e3c-7e83-59d1-8463-37fec25e4bde",
+                "316d2789-6c4f-54f7-9809-edd4d1b0e20d",
+                "6296bc56-db88-50b3-b371-d944f24e5cad",
+                "b2bc407a-1dd1-5396-bf1c-c7df769aafc9"
+            ],
+            "requires": [
+                "63107fa7-8290-5f53-bb47-7fd795c06739"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Ergänzende Themen",
+                "topicCode": "tum_ma0008_lo7"
+            }
+        },
+        {
+            "id": "d6c49f58-b275-5b71-bf75-8af34778e961",
+            "shortKey": "tum_ma0008_lo7_1",
+            "title": "Singulärwertzerlegung (SVD) nutzen",
+            "titleEn": "Use the Singular Value Decomposition (SVD)",
+            "description": "Die lernende Person kann die SVD als numerisches Werkzeug einsetzen (z.B. für Rangbestimmung, Pseudoinverse, Least Squares) und die Bedeutung der Singularwerte interpretieren.",
+            "descriptionEn": "The learner can use the SVD as a numerical tool (e.g., for rank detection, pseudoinverse, least squares) and interpret the meaning of singular values.",
+            "core": true,
+            "weight": 0.22,
+            "phase": "Modul",
+            "area": "Ergänzende Themen",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Ergänzende Themen",
+                "topicCode": "tum_ma0008_lo7_1"
+            }
+        },
+        {
+            "id": "19bf0e3c-7e83-59d1-8463-37fec25e4bde",
+            "shortKey": "tum_ma0008_lo7_2",
+            "title": "Schnelle Fouriertransformation (FFT) anwenden",
+            "titleEn": "Apply the Fast Fourier Transform (FFT)",
+            "description": "Die lernende Person kann die FFT als Beschleunigung der diskreten Fouriertransformation erklären und für einfache Signal- bzw. Datenoperationen einsetzen.",
+            "descriptionEn": "The learner can explain the FFT as an acceleration of the discrete Fourier transform and use it for simple signal/data operations.",
+            "core": true,
+            "weight": 0.22,
+            "phase": "Modul",
+            "area": "Ergänzende Themen",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Ergänzende Themen",
+                "topicCode": "tum_ma0008_lo7_2"
+            }
+        },
+        {
+            "id": "316d2789-6c4f-54f7-9809-edd4d1b0e20d",
+            "shortKey": "tum_ma0008_lo7_3",
+            "title": "Eigenwertprobleme numerisch behandeln",
+            "titleEn": "Treat Eigenvalue Problems Numerically",
+            "description": "Die lernende Person kann grundlegende numerische Verfahren für Eigenwerte und Eigenvektoren (z.B. Potenzmethode) in Beispielen anwenden und die Rolle von Kondition und Stabilität einordnen.",
+            "descriptionEn": "The learner can apply basic numerical methods for eigenvalues and eigenvectors (e.g., the power method) in examples and place the role of conditioning and stability.",
+            "core": true,
+            "weight": 0.22,
+            "phase": "Modul",
+            "area": "Ergänzende Themen",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Ergänzende Themen",
+                "topicCode": "tum_ma0008_lo7_3"
+            }
+        },
+        {
+            "id": "6296bc56-db88-50b3-b371-d944f24e5cad",
+            "shortKey": "tum_ma0008_lo7_4",
+            "title": "Monte-Carlo-Quadratur einsetzen",
+            "titleEn": "Use Monte Carlo Quadrature",
+            "description": "Die lernende Person kann Monte-Carlo-Quadratur als stochastisches Integrationsverfahren erklären, Stichprobenfehler abschätzen und einfache Implementierungen durchführen.",
+            "descriptionEn": "The learner can explain Monte Carlo quadrature as a stochastic integration method, estimate sampling error, and carry out simple implementations.",
+            "core": true,
+            "weight": 0.22,
+            "phase": "Modul",
+            "area": "Ergänzende Themen",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Ergänzende Themen",
+                "topicCode": "tum_ma0008_lo7_4"
+            }
+        },
+        {
+            "id": "b2bc407a-1dd1-5396-bf1c-c7df769aafc9",
+            "shortKey": "tum_ma0008_lo7_5",
+            "title": "Dünnbesetzte Matrizen berücksichtigen",
+            "titleEn": "Handle Sparse Matrices",
+            "description": "Die lernende Person kann Sparsity-Strukturen erkennen, Speicher- und Laufzeitvorteile dünnbesetzter Matrizen erläutern und geeignete numerische Vorgehensweisen skizzieren.",
+            "descriptionEn": "The learner can recognize sparsity structures, explain memory and runtime advantages of sparse matrices, and outline suitable numerical approaches.",
+            "core": true,
+            "weight": 0.22,
+            "phase": "Modul",
+            "area": "Ergänzende Themen",
+            "tags": [
+                "ects:9",
+                "module:MA0008"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0008",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Ergänzende Themen",
+                "topicCode": "tum_ma0008_lo7_5"
+            }
         }
     ]
 }
