@@ -1,8 +1,8 @@
 {
     "title": "Financial Mathematics 1 (TUM, Modul MA3407)",
     "titleEn": "Financial Mathematics 1 (TUM, Module MA3407)",
-    "description": "At the end of the module students are able to understand the fundamentals of mathematical finance and portfolio optimization in discrete time and will be able to evaluate financial derivatives in single- and multi-period financial markets. Moreover, students are able to implement different numerical methods and pricing formulas, They are familiar with the seminal work of Harry Markowitz on mean-variance theory, understand the theoretical background and practical impact of efficient portfolios and the capital asset pricing model. They also know the most important risk measures and are able to evaluate and manage portfolios according to their risk-return profiles. Case Studies and examples in the lecture or in the exercises give a further insight into the concepts of portfolio analysis used in the investment industry. 9 ECTS, angeboten im Wintersemester, Version 2021s, verantwortet von Zagst, Rudi.",
-    "descriptionEn": "At the end of the module students are able to understand the fundamentals of mathematical finance and portfolio optimization in discrete time and will be able to evaluate financial derivatives in single- and multi-period financial markets. Moreover, students are able to implement different numerical methods and pricing formulas, They are familiar with the seminal work of Harry Markowitz on mean-variance theory, understand the theoretical background and practical impact of efficient portfolios and the capital asset pricing model. They also know the most important risk measures and are able to evaluate and manage portfolios according to their risk-return profiles. Case Studies and examples in the lecture or in the exercises give a further insight into the concepts of portfolio analysis used in the investment industry. 9 ECTS, offered in winter semester, version 2021s, responsible: Zagst, Rudi.",
+    "description": "Das Modul vermittelt Grundlagen der mathematischen Finanzmathematik und der Portfoliooptimierung in diskreter Zeit. Behandelt werden Assetklassen, Ein- und Mehrperioden-Finanzmärkte, Arbitragefreiheit und Vollständigkeit, das Binomial- bzw. Cox–Ross–Rubinstein-Modell sowie die Bewertung bedingter Ansprüche durch Replikation und risikoneutrale Bewertung. Zudem werden numerische Implementationen (z.B. Binomialbaum-Verfahren) sowie Konzepte der Portfolioselektion (Mean-Variance-Theorie nach Markowitz, effiziente Portfolios), Arbitrage Pricing Theory, Capital Asset Pricing Model (CAPM), alternative Risikomaße und risikoadjustierte Performancemaße behandelt. Fallstudien und Übungsbeispiele vertiefen die Anwendung in der Investmentpraxis. 9 ECTS, angeboten im Wintersemester, Version 2021s, verantwortet von Zagst, Rudi.",
+    "descriptionEn": "The module covers the fundamentals of mathematical finance and portfolio optimization in discrete time. Topics include asset classes, single- and multi-period financial markets, absence of arbitrage and market completeness, the binomial/Cox–Ross–Rubinstein model, and pricing of contingent claims via replication and risk-neutral valuation. Students also learn how to implement pricing models (e.g., binomial trees) and study portfolio selection in discrete time (Markowitz mean–variance theory and efficient portfolios), arbitrage pricing theory, the capital asset pricing model (CAPM), alternative risk measures, and risk-adjusted performance measures. Case studies and exercises provide further insight into portfolio analysis used in the investment industry. 9 ECTS, offered in the winter semester, version 2021s, responsible: Zagst, Rudi.",
     "landscapeId": "08ae6127-29bb-4405-91e8-969ac3fb437b",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -19,8 +19,8 @@
             "shortKey": "tum_ma3407_module",
             "title": "Financial Mathematics 1 – Gesamtmodul",
             "titleEn": "Financial Mathematics 1 – Full Module",
-            "description": "At the end of the module students are able to understand the fundamentals of mathematical finance and portfolio optimization in discrete time and will be able to evaluate financial derivatives in single- and multi-period financial markets. Moreover, students are able to implement different numerical methods and pricing formulas, They are familiar with the seminal work of Harry Markowitz on mean-variance theory, understand the theoretical background and practical impact of efficient portfolios and the capital asset pricing model. They also know the most important risk measures and are able to evaluate and manage portfolios according to their risk-return profiles. Case Studies and examples in the lecture or in the exercises give a further insight into the concepts of portfolio analysis used in the investment industry.",
-            "descriptionEn": "At the end of the module students are able to understand the fundamentals of mathematical finance and portfolio optimization in discrete time and will be able to evaluate financial derivatives in single- and multi-period financial markets. Moreover, students are able to implement different numerical methods and pricing formulas, They are familiar with the seminal work of Harry Markowitz on mean-variance theory, understand the theoretical background and practical impact of efficient portfolios and the capital asset pricing model. They also know the most important risk measures and are able to evaluate and manage portfolios according to their risk-return profiles. Case Studies and examples in the lecture or in the exercises give a further insight into the concepts of portfolio analysis used in the investment industry.",
+            "description": "Nach erfolgreichem Abschluss können Studierende die Grundlagen der mathematischen Finanzmathematik und der Portfoliooptimierung in diskreter Zeit verstehen. Sie können Finanzderivate in Ein- und Mehrperiodenmärkten bewerten, Modelle und Bewertungsformeln numerisch implementieren und Portfolios anhand von Risiko-Rendite-Profilen beurteilen und steuern.",
+            "descriptionEn": "At the end of the module students are able to understand the fundamentals of mathematical finance and portfolio optimization in discrete time and will be able to evaluate financial derivatives in single- and multi-period financial markets. Moreover, students are able to implement different numerical methods and pricing formulas. They know mean–variance theory and understand the background and impact of efficient portfolios and the CAPM. They also know important risk measures and can evaluate and manage portfolios according to their risk–return profiles.",
             "core": true,
             "weight": 9.0,
             "phase": "Modul",
@@ -29,15 +29,26 @@
                 "ects:9",
                 "workload:270h",
                 "presence:90h",
-                "level:bachelor",
-                "language:de",
+                "level:master",
+                "language:en",
                 "module:MA3407",
                 "semester:WS",
                 "duration:1_semester",
                 "responsible:zagst_rudi"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "03ce338b-6352-53e1-9438-02b8b66e7a04",
+                "bd967e9a-7e2b-5e1e-8550-4b8ef07302c2",
+                "de1d8938-f0c0-5696-9747-456668eb1a20",
+                "72d05854-c9d9-5788-8e6a-7adcf7fb0186",
+                "ff8a3a23-d0b5-5982-b1a8-af40fad6a304",
+                "3fe9c09f-92c6-530b-8e1a-7a4fe30029ba",
+                "6f8e9463-aef1-5f16-8231-dd8a4c7ccb88",
+                "49d4a4ac-3593-57cb-879f-a0179ee800a3"
+            ],
+            "requires": [
+                "ef775418-c971-542f-87fe-07bd9c995bb1"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-ma3407",
@@ -49,6 +60,733 @@
                 "topicCode": "tum_ma3407_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA3407&description_version=2021s"
+        },
+        {
+            "id": "03ce338b-6352-53e1-9438-02b8b66e7a04",
+            "shortKey": "tum_ma3407_lo1",
+            "title": "Assetklassen und Einperiodenmärkte",
+            "titleEn": "Asset Classes and Single-Period Markets",
+            "description": "Zusammenfassender Cluster: Grundbegriffe diskreter Finanzmärkte, Assetklassen, Payoffs und Portfolios im Einperiodenmodell.",
+            "descriptionEn": "Summary cluster: basic notions of discrete financial markets, asset classes, payoffs, and portfolios in a single-period setting.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Marktmodelle",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [
+                "083b34ff-6f0b-529e-a221-5e9710c77568",
+                "fa56326c-d371-5cf1-a395-936e89461148"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Marktmodelle",
+                "topicCode": "tum_ma3407_lo1"
+            }
+        },
+        {
+            "id": "083b34ff-6f0b-529e-a221-5e9710c77568",
+            "shortKey": "tum_ma3407_lo1_1",
+            "title": "Assetklassen, Cashflows und Portfolios modellieren",
+            "titleEn": "Model Asset Classes, Cashflows, and Portfolios",
+            "description": "Die lernende Person kann grundlegende Assetklassen unterscheiden, diskrete Cashflows/Payoffs darstellen und Portfolios als lineare Kombinationen von Assets modellieren.",
+            "descriptionEn": "The learner can distinguish basic asset classes, represent discrete cashflows/payoffs, and model portfolios as linear combinations of assets.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Marktmodelle",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Marktmodelle",
+                "topicCode": "tum_ma3407_lo1_1"
+            }
+        },
+        {
+            "id": "fa56326c-d371-5cf1-a395-936e89461148",
+            "shortKey": "tum_ma3407_lo1_2",
+            "title": "Einperiodenmärkte analysieren und Portfolioauszahlungen berechnen",
+            "titleEn": "Analyze Single-Period Markets and Compute Portfolio Payoffs",
+            "description": "Die lernende Person kann in Einperiodenmärkten Portfolioauszahlungen berechnen, einfache Handelsstrategien formulieren und grundlegende Markteigenschaften (z.B. Dominanz) in Beispielen diskutieren.",
+            "descriptionEn": "The learner can compute portfolio payoffs in single-period markets, formulate simple trading strategies, and discuss basic market properties (e.g., dominance) in examples.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Marktmodelle",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [],
+            "requires": [
+                "083b34ff-6f0b-529e-a221-5e9710c77568"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Marktmodelle",
+                "topicCode": "tum_ma3407_lo1_2"
+            }
+        },
+        {
+            "id": "bd967e9a-7e2b-5e1e-8550-4b8ef07302c2",
+            "shortKey": "tum_ma3407_lo2",
+            "title": "Arbitragefreiheit und Vollständigkeit",
+            "titleEn": "Absence of Arbitrage and Completeness",
+            "description": "Zusammenfassender Cluster: Arbitragefreiheit, State Prices und Vollständigkeit als Grundlage der Bewertung diskreter Märkte.",
+            "descriptionEn": "Summary cluster: no-arbitrage, state prices, and completeness as the basis for pricing in discrete markets.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "No-Arbitrage",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [
+                "ba60f335-b597-549e-9a34-dfe476d835a0",
+                "00327cbe-ff7f-53d7-8b3c-8087fb913fea"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "No-Arbitrage",
+                "topicCode": "tum_ma3407_lo2"
+            }
+        },
+        {
+            "id": "ba60f335-b597-549e-9a34-dfe476d835a0",
+            "shortKey": "tum_ma3407_lo2_1",
+            "title": "Arbitragefreiheit prüfen und State-Price-Ideen verwenden",
+            "titleEn": "Check No-Arbitrage and Use State-Price Ideas",
+            "description": "Die lernende Person kann Arbitragefreiheit definieren und in Beispielen prüfen sowie State-Price-Vektoren bzw. äquivalente Bewertungsprinzipien zur Preisbestimmung einsetzen.",
+            "descriptionEn": "The learner can define and check absence of arbitrage in examples and use state-price vectors or equivalent valuation principles for pricing.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "No-Arbitrage",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [],
+            "requires": [
+                "fa56326c-d371-5cf1-a395-936e89461148"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "No-Arbitrage",
+                "topicCode": "tum_ma3407_lo2_1"
+            }
+        },
+        {
+            "id": "00327cbe-ff7f-53d7-8b3c-8087fb913fea",
+            "shortKey": "tum_ma3407_lo2_2",
+            "title": "Vollständigkeit und Replikation zur Bewertung nutzen",
+            "titleEn": "Use Completeness and Replication for Pricing",
+            "description": "Die lernende Person kann Marktvollständigkeit erläutern, Replikationsportfolios konstruieren und daraus eindeutige Preise bedingter Ansprüche in vollständigen Märkten ableiten.",
+            "descriptionEn": "The learner can explain market completeness, construct replicating portfolios, and derive unique prices of contingent claims in complete markets.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "No-Arbitrage",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [],
+            "requires": [
+                "ba60f335-b597-549e-9a34-dfe476d835a0"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "No-Arbitrage",
+                "topicCode": "tum_ma3407_lo2_2"
+            }
+        },
+        {
+            "id": "de1d8938-f0c0-5696-9747-456668eb1a20",
+            "shortKey": "tum_ma3407_lo3",
+            "title": "Binomial-/CRR-Modell und Bewertung bedingter Ansprüche",
+            "titleEn": "Binomial/CRR Model and Pricing of Contingent Claims",
+            "description": "Zusammenfassender Cluster: Binomial- bzw. Cox–Ross–Rubinstein-Modell, risikoneutrale Bewertung und Bewertung von Derivaten.",
+            "descriptionEn": "Summary cluster: the binomial/Cox–Ross–Rubinstein model, risk-neutral valuation, and pricing derivatives.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Binomialmodell",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [
+                "df2448cc-edf6-5c56-9318-50629d3989cf",
+                "08f1ae47-2acd-55a6-9259-79b880b837bd"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Binomialmodell",
+                "topicCode": "tum_ma3407_lo3"
+            }
+        },
+        {
+            "id": "df2448cc-edf6-5c56-9318-50629d3989cf",
+            "shortKey": "tum_ma3407_lo3_1",
+            "title": "CRR-Modell aufstellen und risikoneutrale Parameter bestimmen",
+            "titleEn": "Set Up the CRR Model and Determine Risk-Neutral Parameters",
+            "description": "Die lernende Person kann das Binomial-/CRR-Modell formulieren, No-Arbitrage-Bedingungen herleiten und risikoneutrale Wahrscheinlichkeiten bzw. Diskontfaktoren bestimmen.",
+            "descriptionEn": "The learner can set up the binomial/CRR model, derive no-arbitrage conditions, and determine risk-neutral probabilities or discount factors.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Binomialmodell",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [],
+            "requires": [
+                "00327cbe-ff7f-53d7-8b3c-8087fb913fea"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Binomialmodell",
+                "topicCode": "tum_ma3407_lo3_1"
+            }
+        },
+        {
+            "id": "08f1ae47-2acd-55a6-9259-79b880b837bd",
+            "shortKey": "tum_ma3407_lo3_2",
+            "title": "Bedingte Ansprüche durch Replikation und Backward Induction bewerten",
+            "titleEn": "Price Contingent Claims via Replication and Backward Induction",
+            "description": "Die lernende Person kann europäische Derivate im Binomialmodell mittels Replikation oder Backward Induction bewerten und die Ergebnisse als risikoneutrale Erwartungswerte interpretieren.",
+            "descriptionEn": "The learner can price European derivatives in the binomial model via replication or backward induction and interpret results as risk-neutral expectations.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Binomialmodell",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [],
+            "requires": [
+                "df2448cc-edf6-5c56-9318-50629d3989cf"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Binomialmodell",
+                "topicCode": "tum_ma3407_lo3_2"
+            }
+        },
+        {
+            "id": "72d05854-c9d9-5788-8e6a-7adcf7fb0186",
+            "shortKey": "tum_ma3407_lo4",
+            "title": "Mehrperiodenmärkte und dynamische Strategien",
+            "titleEn": "Multi-Period Markets and Dynamic Strategies",
+            "description": "Zusammenfassender Cluster: Mehrperioden-Finanzmärkte, selbstfinanzierende Strategien und dynamische Bewertung in diskreter Zeit.",
+            "descriptionEn": "Summary cluster: multi-period financial markets, self-financing strategies, and dynamic pricing in discrete time.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Mehrperioden",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [
+                "895d5315-9df5-54e1-8d06-d1041300b36a",
+                "a0a5f69c-85c5-5ca1-8c32-5d62ca7073a1"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Mehrperioden",
+                "topicCode": "tum_ma3407_lo4"
+            }
+        },
+        {
+            "id": "895d5315-9df5-54e1-8d06-d1041300b36a",
+            "shortKey": "tum_ma3407_lo4_1",
+            "title": "Selbstfinanzierende Strategien und Martingalideen im Mehrperiodenmodell einordnen",
+            "titleEn": "Place Self-Financing Strategies and Martingale Ideas in Multi-Period Models",
+            "description": "Die lernende Person kann selbstfinanzierende Strategien definieren, diskrete Handelsstrategien in Bäumen formulieren und die Rolle risikoneutraler Maße/Martingalargumente für die Bewertung einordnen.",
+            "descriptionEn": "The learner can define self-financing strategies, formulate discrete trading strategies on trees, and place the role of risk-neutral measures/martingale arguments for pricing.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Mehrperioden",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [],
+            "requires": [
+                "08f1ae47-2acd-55a6-9259-79b880b837bd"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Mehrperioden",
+                "topicCode": "tum_ma3407_lo4_1"
+            }
+        },
+        {
+            "id": "a0a5f69c-85c5-5ca1-8c32-5d62ca7073a1",
+            "shortKey": "tum_ma3407_lo4_2",
+            "title": "Derivate in Mehrperiodenmärkten bewerten und Strategien konstruieren",
+            "titleEn": "Price Derivatives in Multi-Period Markets and Construct Strategies",
+            "description": "Die lernende Person kann in Mehrperiodenmärkten Preise von Derivaten per dynamischer Replikation oder Backward Induction bestimmen und zugehörige Hedging-Strategien konstruieren.",
+            "descriptionEn": "The learner can price derivatives in multi-period markets via dynamic replication or backward induction and construct corresponding hedging strategies.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Mehrperioden",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [],
+            "requires": [
+                "895d5315-9df5-54e1-8d06-d1041300b36a"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Mehrperioden",
+                "topicCode": "tum_ma3407_lo4_2"
+            }
+        },
+        {
+            "id": "ff8a3a23-d0b5-5982-b1a8-af40fad6a304",
+            "shortKey": "tum_ma3407_lo5",
+            "title": "Numerische Implementierung von Bewertungsmodellen",
+            "titleEn": "Numerical Implementation of Pricing Models",
+            "description": "Zusammenfassender Cluster: Implementierung diskreter Bewertungsmodelle (z.B. Binomialbaum) und Überprüfung numerischer Ergebnisse.",
+            "descriptionEn": "Summary cluster: implementing discrete pricing models (e.g., binomial trees) and validating numerical results.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Implementierung",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [
+                "c2c69c5e-acf1-5087-afa3-221d09a1b526",
+                "fb4a8886-4535-5784-9e09-7eb5694a4649"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Implementierung",
+                "topicCode": "tum_ma3407_lo5"
+            }
+        },
+        {
+            "id": "c2c69c5e-acf1-5087-afa3-221d09a1b526",
+            "shortKey": "tum_ma3407_lo5_1",
+            "title": "Binomialbaum-Modelle implementieren und Preise berechnen",
+            "titleEn": "Implement Binomial Tree Models and Compute Prices",
+            "description": "Die lernende Person kann Binomialbaum-Verfahren implementieren, Derivatepreise numerisch berechnen und Parameterwahl sowie Laufzeit/Genauigkeit in einfachen Settings begründen.",
+            "descriptionEn": "The learner can implement binomial tree methods, compute derivative prices numerically, and justify parameter choices as well as runtime/accuracy in basic settings.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Implementierung",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [],
+            "requires": [
+                "08f1ae47-2acd-55a6-9259-79b880b837bd"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Implementierung",
+                "topicCode": "tum_ma3407_lo5_1"
+            }
+        },
+        {
+            "id": "fb4a8886-4535-5784-9e09-7eb5694a4649",
+            "shortKey": "tum_ma3407_lo5_2",
+            "title": "Numerische Methoden und Preisformeln vergleichen und validieren",
+            "titleEn": "Compare and Validate Numerical Methods and Pricing Formulas",
+            "description": "Die lernende Person kann numerische Ergebnisse plausibilisieren (z.B. Grenzfälle, Sensitivitäten), verschiedene Preisformeln/Implementierungen vergleichen und Abweichungen fachlich erklären.",
+            "descriptionEn": "The learner can sanity-check numerical results (e.g., limiting cases, sensitivities), compare different pricing formulas/implementations, and explain discrepancies.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Implementierung",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [],
+            "requires": [
+                "c2c69c5e-acf1-5087-afa3-221d09a1b526"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Implementierung",
+                "topicCode": "tum_ma3407_lo5_2"
+            }
+        },
+        {
+            "id": "3fe9c09f-92c6-530b-8e1a-7a4fe30029ba",
+            "shortKey": "tum_ma3407_lo6",
+            "title": "Portfoliooptimierung und Mean–Variance-Theorie",
+            "titleEn": "Portfolio Optimization and Mean–Variance Theory",
+            "description": "Zusammenfassender Cluster: Optimale Portfolios im Einperiodenmarkt, Mean–Variance-Theorie nach Markowitz und Portfolioselektion.",
+            "descriptionEn": "Summary cluster: optimal portfolios in single-period markets, Markowitz mean–variance theory, and portfolio selection.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Portfoliooptimierung",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [
+                "8b1f461f-1676-5801-895f-6fb222d82133",
+                "eb2ec56a-dcfb-585e-8ad2-bfd401c4edbf"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Portfoliooptimierung",
+                "topicCode": "tum_ma3407_lo6"
+            }
+        },
+        {
+            "id": "8b1f461f-1676-5801-895f-6fb222d82133",
+            "shortKey": "tum_ma3407_lo6_1",
+            "title": "Mean–Variance-Modelle formulieren und effiziente Portfolios bestimmen",
+            "titleEn": "Formulate Mean–Variance Models and Determine Efficient Portfolios",
+            "description": "Die lernende Person kann Erwartungswert/Varianz eines Portfolios berechnen, das Mean–Variance-Optimierungsproblem formulieren und effiziente Portfolios bzw. die Effizienzgrenze bestimmen.",
+            "descriptionEn": "The learner can compute expected return/variance of a portfolio, formulate the mean–variance optimization problem, and determine efficient portfolios or the efficient frontier.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Portfoliooptimierung",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [],
+            "requires": [
+                "fa56326c-d371-5cf1-a395-936e89461148"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Portfoliooptimierung",
+                "topicCode": "tum_ma3407_lo6_1"
+            }
+        },
+        {
+            "id": "eb2ec56a-dcfb-585e-8ad2-bfd401c4edbf",
+            "shortKey": "tum_ma3407_lo6_2",
+            "title": "Portfolioselektion und Risikoprofile in Beispielen anwenden",
+            "titleEn": "Apply Portfolio Selection and Risk Profiles in Examples",
+            "description": "Die lernende Person kann Portfolioselektion in Beispielen durchführen, Risiko-Rendite-Abwägungen erläutern und die Wirkung von Nebenbedingungen bzw. Parametern auf optimale Portfolios interpretieren.",
+            "descriptionEn": "The learner can perform portfolio selection in examples, explain risk–return trade-offs, and interpret how constraints or parameters affect optimal portfolios.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Portfoliooptimierung",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [],
+            "requires": [
+                "8b1f461f-1676-5801-895f-6fb222d82133"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Portfoliooptimierung",
+                "topicCode": "tum_ma3407_lo6_2"
+            }
+        },
+        {
+            "id": "6f8e9463-aef1-5f16-8231-dd8a4c7ccb88",
+            "shortKey": "tum_ma3407_lo7",
+            "title": "APT und CAPM",
+            "titleEn": "Arbitrage Pricing Theory and CAPM",
+            "description": "Zusammenfassender Cluster: Grundlagen von APT und CAPM sowie deren Verbindung zu effizienten Portfolios und Marktarbitrage.",
+            "descriptionEn": "Summary cluster: foundations of APT and CAPM and their connection to efficient portfolios and no-arbitrage ideas.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Asset Pricing",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [
+                "1432cf03-0cbc-5b7c-b8e3-b263f3030336",
+                "36a289e5-4580-5a1d-9dc0-67cad62456c9"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Asset Pricing",
+                "topicCode": "tum_ma3407_lo7"
+            }
+        },
+        {
+            "id": "1432cf03-0cbc-5b7c-b8e3-b263f3030336",
+            "shortKey": "tum_ma3407_lo7_1",
+            "title": "APT- und CAPM-Grundideen herleiten und interpretieren",
+            "titleEn": "Derive and Interpret APT and CAPM Fundamentals",
+            "description": "Die lernende Person kann die Grundideen von APT und CAPM erklären, zentrale Größen (z.B. Betas, Marktportfolio) interpretieren und die Verbindung zu No-Arbitrage- und Mean–Variance-Argumenten herstellen.",
+            "descriptionEn": "The learner can explain the core ideas of APT and CAPM, interpret key quantities (e.g., betas, market portfolio), and connect them to no-arbitrage and mean–variance arguments.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Asset Pricing",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [],
+            "requires": [
+                "ba60f335-b597-549e-9a34-dfe476d835a0",
+                "eb2ec56a-dcfb-585e-8ad2-bfd401c4edbf"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Asset Pricing",
+                "topicCode": "tum_ma3407_lo7_1"
+            }
+        },
+        {
+            "id": "36a289e5-4580-5a1d-9dc0-67cad62456c9",
+            "shortKey": "tum_ma3407_lo7_2",
+            "title": "CAPM/APT in Beispielen zur Bewertung und Portfolioanalyse anwenden",
+            "titleEn": "Apply CAPM/APT to Valuation and Portfolio Analysis",
+            "description": "Die lernende Person kann CAPM- bzw. APT-Beziehungen auf Daten/Beispiele anwenden, erwartete Renditen und Risikoprämien bestimmen und Modellannahmen kritisch diskutieren.",
+            "descriptionEn": "The learner can apply CAPM or APT relations to data/examples, determine expected returns and risk premia, and discuss model assumptions critically.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Asset Pricing",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [],
+            "requires": [
+                "1432cf03-0cbc-5b7c-b8e3-b263f3030336"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Asset Pricing",
+                "topicCode": "tum_ma3407_lo7_2"
+            }
+        },
+        {
+            "id": "49d4a4ac-3593-57cb-879f-a0179ee800a3",
+            "shortKey": "tum_ma3407_lo8",
+            "title": "Risikomaße, Performance und Expertenprognosen",
+            "titleEn": "Risk Measures, Performance, and Expert Forecasts",
+            "description": "Zusammenfassender Cluster: Alternative Risikomaße, risikoadjustierte Performancemaße und Integration von Expertenprognosen in die Portfolioanalyse.",
+            "descriptionEn": "Summary cluster: alternative risk measures, risk-adjusted performance measures, and integrating expert forecasts into portfolio analysis.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Risikomanagement",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [
+                "b65dd865-c491-5818-9dcf-ac11d9c25a94",
+                "83b1b52e-85ea-5fc1-9a0b-b6fcd91b3de5"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Risikomanagement",
+                "topicCode": "tum_ma3407_lo8"
+            }
+        },
+        {
+            "id": "b65dd865-c491-5818-9dcf-ac11d9c25a94",
+            "shortKey": "tum_ma3407_lo8_1",
+            "title": "Risikomaße und risikoadjustierte Performancemaße einsetzen",
+            "titleEn": "Use Risk Measures and Risk-Adjusted Performance Measures",
+            "description": "Die lernende Person kann alternative Risikomaße (z.B. Value-at-Risk, Expected Shortfall) und Performancemaße (z.B. Sharpe, Sortino) erklären, berechnen und zur Bewertung von Portfolios nutzen.",
+            "descriptionEn": "The learner can explain, compute, and use alternative risk measures (e.g., VaR, expected shortfall) and performance measures (e.g., Sharpe, Sortino) to evaluate portfolios.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Risikomanagement",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [],
+            "requires": [
+                "eb2ec56a-dcfb-585e-8ad2-bfd401c4edbf"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Risikomanagement",
+                "topicCode": "tum_ma3407_lo8_1"
+            }
+        },
+        {
+            "id": "83b1b52e-85ea-5fc1-9a0b-b6fcd91b3de5",
+            "shortKey": "tum_ma3407_lo8_2",
+            "title": "Expertenprognosen integrieren und Portfolios in Fallstudien steuern",
+            "titleEn": "Integrate Expert Forecasts and Manage Portfolios in Case Studies",
+            "description": "Die lernende Person kann Expertenprognosen in einfache Portfolioentscheidungen integrieren, Resultate in Fallstudien interpretieren und Portfolios anhand von Risiko-Rendite-Kriterien fachlich begründet steuern.",
+            "descriptionEn": "The learner can integrate expert forecasts into basic portfolio decisions, interpret results in case studies, and manage portfolios in a well-justified manner based on risk–return criteria.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Risikomanagement",
+            "tags": [
+                "ects:9",
+                "module:MA3407"
+            ],
+            "contains": [],
+            "requires": [
+                "b65dd865-c491-5818-9dcf-ac11d9c25a94"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3407",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Risikomanagement",
+                "topicCode": "tum_ma3407_lo8_2"
+            }
         }
     ]
 }
