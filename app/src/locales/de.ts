@@ -56,6 +56,12 @@ export const de = {
         emptyContains: "Keine Unterziele",
         emptyNextSteps: "Keine direkten Folgeziele"
     },
+    learner: {
+        myGoals: "Meine Lernziele",
+        marked: "markiert",
+        completed: "abgeschlossen",
+        includesDataFrom: "Enthält Daten von"
+    },
     trainer: {
         dashboard: "Trainer Dashboard",
         import: "Importieren",

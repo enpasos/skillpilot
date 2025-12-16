@@ -2,7 +2,7 @@
     "title": "Diskrete Mathematik (TUM, Modul CIT1130011)",
     "titleEn": "Discrete Mathematics (TUM, Module CIT1130011)",
     "description": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, grundlegende mathematische Begriffe und Strukturen der Diskreten Mathematik zu verwenden und haben erweiterte Rechenfertigkeiten zum Umgang mit diesen entwickelt. Ihre Fähigkeit, zu abstrahieren und exakt zu argumentieren sowie die Verbindung von Strukturen und Anschauungen herzustellen, wurde weiter geschärft. Die Studierenden erkennen, wann Methoden der Diskreten Mathematik angewandt werden können. Ferner sind die Studierenden in der Lage, Konzepte der Diskreten Mathematik zur Modellierung geeigneter Praxisprobleme einzusetzen. 4 ECTS, angeboten im Sommersemester, Version 2025s, verantwortet von Weltge, Stefan.",
-    "descriptionEn": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, grundlegende mathematische Begriffe und Strukturen der Diskreten Mathematik zu verwenden und haben erweiterte Rechenfertigkeiten zum Umgang mit diesen entwickelt. Ihre Fähigkeit, zu abstrahieren und exakt zu argumentieren sowie die Verbindung von Strukturen und Anschauungen herzustellen, wurde weiter geschärft. Die Studierenden erkennen, wann Methoden der Diskreten Mathematik angewandt werden können. Ferner sind die Studierenden in der Lage, Konzepte der Diskreten Mathematik zur Modellierung geeigneter Praxisprobleme einzusetzen. 4 ECTS, offered in summer semester, version 2025s, responsible: Weltge, Stefan.",
+    "descriptionEn": "After successfully completing the module, students are able to use fundamental mathematical concepts and structures of discrete mathematics and have developed enhanced computational skills for working with them. Their ability to abstract and to argue precisely, as well as to connect structures and intuition, has been further sharpened. Students recognize when methods of discrete mathematics can be applied. Furthermore, students are able to use concepts of discrete mathematics to model suitable practical problems. 4 ECTS, offered in the summer semester, version 2025s, responsible: Weltge, Stefan.",
     "landscapeId": "cb868e8f-70bf-4f8a-a68a-96a16f4344c9",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -20,7 +20,7 @@
             "title": "Diskrete Mathematik – Gesamtmodul",
             "titleEn": "Discrete Mathematics – Full Module",
             "description": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, grundlegende mathematische Begriffe und Strukturen der Diskreten Mathematik zu verwenden und haben erweiterte Rechenfertigkeiten zum Umgang mit diesen entwickelt. Ihre Fähigkeit, zu abstrahieren und exakt zu argumentieren sowie die Verbindung von Strukturen und Anschauungen herzustellen, wurde weiter geschärft. Die Studierenden erkennen, wann Methoden der Diskreten Mathematik angewandt werden können. Ferner sind die Studierenden in der Lage, Konzepte der Diskreten Mathematik zur Modellierung geeigneter Praxisprobleme einzusetzen.",
-            "descriptionEn": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, grundlegende mathematische Begriffe und Strukturen der Diskreten Mathematik zu verwenden und haben erweiterte Rechenfertigkeiten zum Umgang mit diesen entwickelt. Ihre Fähigkeit, zu abstrahieren und exakt zu argumentieren sowie die Verbindung von Strukturen und Anschauungen herzustellen, wurde weiter geschärft. Die Studierenden erkennen, wann Methoden der Diskreten Mathematik angewandt werden können. Ferner sind die Studierenden in der Lage, Konzepte der Diskreten Mathematik zur Modellierung geeigneter Praxisprobleme einzusetzen.",
+            "descriptionEn": "After successfully completing the module, students are able to use fundamental mathematical concepts and structures of discrete mathematics and have developed enhanced computational skills for working with them. Their ability to abstract and to argue precisely, as well as to connect structures and intuition, has been further sharpened. Students recognize when methods of discrete mathematics can be applied. Furthermore, students are able to use concepts of discrete mathematics to model suitable practical problems.",
             "core": true,
             "weight": 4.0,
             "phase": "Modul",
@@ -36,8 +36,18 @@
                 "duration:1_semester",
                 "responsible:weltge_stefan"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "93c5857f-db60-5624-a139-f984d315e11b",
+                "bd7dedf1-0b43-59da-9602-76ca0ba310be",
+                "f4d5160d-b468-55a5-bdfc-0b6349100fc3",
+                "05483f69-f778-5e68-8c3e-5403236f8c0c",
+                "7c98809b-587a-56f5-a3a2-1375020c9fe6",
+                "ea392f3d-c8c3-5c52-9d06-39cfea44e9a9"
+            ],
+            "requires": [
+                "8eb1605b-fa70-511b-bbe4-28173d359c3b",
+                "feaad1d5-022f-5ab3-93c3-001ac46de351"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-cit1130011",
@@ -49,6 +59,546 @@
                 "topicCode": "tum_cit1130011_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=CIT1130011&description_version=2025s"
+        },
+        {
+            "id": "93c5857f-db60-5624-a139-f984d315e11b",
+            "shortKey": "tum_cit1130011_lo1",
+            "title": "Elementare Zahlentheorie",
+            "titleEn": "Elementary Number Theory",
+            "description": "Zusammenfassender Cluster: Lemma von Bézout, Eulers Satz, chinesischer Restsatz und ein schwacher Primzahlsatz.",
+            "descriptionEn": "Summary cluster: Bézout's lemma, Euler's theorem, the Chinese remainder theorem, and a weak form of the prime number theorem.",
+            "core": true,
+            "weight": 0.7,
+            "phase": "Modul",
+            "area": "Zahlentheorie",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [
+                "a66b4bed-2382-5615-85b1-7fc8532acce9",
+                "7854d5ea-2a42-5f55-a475-8809ac643521"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Zahlentheorie",
+                "topicCode": "tum_cit1130011_lo1"
+            }
+        },
+        {
+            "id": "a66b4bed-2382-5615-85b1-7fc8532acce9",
+            "shortKey": "tum_cit1130011_lo1_1",
+            "title": "Lemma von Bézout, ggT und modulare Inversen",
+            "titleEn": "Bézout's Lemma, GCD, and Modular Inverses",
+            "description": "Die lernende Person kann den größten gemeinsamen Teiler bestimmen, Bézout-Koeffizienten berechnen und modulare Inversen in Kongruenzrechnungen nutzen.",
+            "descriptionEn": "The learner can compute greatest common divisors, find Bézout coefficients, and use modular inverses in modular arithmetic.",
+            "core": true,
+            "weight": 0.35,
+            "phase": "Modul",
+            "area": "Zahlentheorie",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Zahlentheorie",
+                "topicCode": "tum_cit1130011_lo1_1"
+            }
+        },
+        {
+            "id": "7854d5ea-2a42-5f55-a475-8809ac643521",
+            "shortKey": "tum_cit1130011_lo1_2",
+            "title": "Euler-Satz, chinesischer Restsatz und schwacher Primzahlsatz",
+            "titleEn": "Euler's Theorem, Chinese Remainder Theorem, and a Weak Prime Number Theorem",
+            "description": "Die lernende Person kann Eulers Satz anwenden, Kongruenzen mit dem chinesischen Restsatz lösen und einen schwachen Primzahlsatz in einfachen Abschätzungen nutzen.",
+            "descriptionEn": "The learner can apply Euler's theorem, solve congruences using the Chinese remainder theorem, and use a weak prime number theorem in simple estimates.",
+            "core": true,
+            "weight": 0.35,
+            "phase": "Modul",
+            "area": "Zahlentheorie",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [],
+            "requires": [
+                "a66b4bed-2382-5615-85b1-7fc8532acce9"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Zahlentheorie",
+                "topicCode": "tum_cit1130011_lo1_2"
+            }
+        },
+        {
+            "id": "bd7dedf1-0b43-59da-9602-76ca0ba310be",
+            "shortKey": "tum_cit1130011_lo2",
+            "title": "Kombinatorik",
+            "titleEn": "Combinatorics",
+            "description": "Zusammenfassender Cluster: kombinatorische Extremalprobleme und Strukturtheoreme (Sperner, Erdős–Ko–Rado, Ramsey, van der Waerden).",
+            "descriptionEn": "Summary cluster: extremal and structural results in combinatorics (Sperner, Erdős–Ko–Rado, Ramsey, van der Waerden).",
+            "core": true,
+            "weight": 0.7,
+            "phase": "Modul",
+            "area": "Kombinatorik",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [
+                "074cfd8e-e034-58d3-ae3f-ddefd36b7c76",
+                "71d7a653-4c19-5227-b015-0e2b5862f2ca"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Kombinatorik",
+                "topicCode": "tum_cit1130011_lo2"
+            }
+        },
+        {
+            "id": "074cfd8e-e034-58d3-ae3f-ddefd36b7c76",
+            "shortKey": "tum_cit1130011_lo2_1",
+            "title": "Sperners Satz und Erdős–Ko–Rado",
+            "titleEn": "Sperner's Theorem and Erdős–Ko–Rado",
+            "description": "Die lernende Person kann Sperners Satz und den Satz von Erdős–Ko–Rado formulieren und in Beispielen zur Abschätzung maximaler Familien einsetzen.",
+            "descriptionEn": "The learner can state Sperner's theorem and the Erdős–Ko–Rado theorem and apply them in examples to bound the size of families.",
+            "core": true,
+            "weight": 0.35,
+            "phase": "Modul",
+            "area": "Kombinatorik",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Kombinatorik",
+                "topicCode": "tum_cit1130011_lo2_1"
+            }
+        },
+        {
+            "id": "71d7a653-4c19-5227-b015-0e2b5862f2ca",
+            "shortKey": "tum_cit1130011_lo2_2",
+            "title": "Ramsey-Theorie und Satz von van der Waerden",
+            "titleEn": "Ramsey Theory and van der Waerden's Theorem",
+            "description": "Die lernende Person kann einfache Ramsey- und van-der-Waerden-Aussagen erklären und in kleinen Beispielen anwenden.",
+            "descriptionEn": "The learner can explain basic Ramsey and van der Waerden statements and apply them in small examples.",
+            "core": true,
+            "weight": 0.35,
+            "phase": "Modul",
+            "area": "Kombinatorik",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [],
+            "requires": [
+                "074cfd8e-e034-58d3-ae3f-ddefd36b7c76"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Kombinatorik",
+                "topicCode": "tum_cit1130011_lo2_2"
+            }
+        },
+        {
+            "id": "f4d5160d-b468-55a5-bdfc-0b6349100fc3",
+            "shortKey": "tum_cit1130011_lo3",
+            "title": "Grundlagen der Graphentheorie",
+            "titleEn": "Foundations of Graph Theory",
+            "description": "Zusammenfassender Cluster: Wege, Kreise, Zusammenhang, Spannbäume, eulersche Graphen und Bipartitionen.",
+            "descriptionEn": "Summary cluster: paths, cycles, connectivity, spanning trees, Eulerian graphs, and bipartitions.",
+            "core": true,
+            "weight": 0.8,
+            "phase": "Modul",
+            "area": "Graphentheorie",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [
+                "57575342-38df-519b-b8ea-ab864b426f1b",
+                "49ef8b0a-c408-5649-8ee2-da5fc37e1f2f"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Graphentheorie",
+                "topicCode": "tum_cit1130011_lo3"
+            }
+        },
+        {
+            "id": "57575342-38df-519b-b8ea-ab864b426f1b",
+            "shortKey": "tum_cit1130011_lo3_1",
+            "title": "Wege, Kreise, Zusammenhang und Bipartitheit",
+            "titleEn": "Paths, Cycles, Connectivity, and Bipartiteness",
+            "description": "Die lernende Person kann grundlegende Graphbegriffe (Wege, Kreise, Zusammenhang) sicher verwenden und Bipartitheit über geeignete Charakterisierungen prüfen.",
+            "descriptionEn": "The learner can use fundamental graph concepts (paths, cycles, connectivity) and test bipartiteness using standard characterizations.",
+            "core": true,
+            "weight": 0.4,
+            "phase": "Modul",
+            "area": "Graphentheorie",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Graphentheorie",
+                "topicCode": "tum_cit1130011_lo3_1"
+            }
+        },
+        {
+            "id": "49ef8b0a-c408-5649-8ee2-da5fc37e1f2f",
+            "shortKey": "tum_cit1130011_lo3_2",
+            "title": "Spannbäume und eulersche Graphen",
+            "titleEn": "Spanning Trees and Eulerian Graphs",
+            "description": "Die lernende Person kann Spannbäume konstruieren, Bäume/Wälder charakterisieren und eulersche Graphen über Gradkriterien erkennen und nutzen.",
+            "descriptionEn": "The learner can construct spanning trees, characterize trees/forests, and recognize and use Eulerian graphs via degree criteria.",
+            "core": true,
+            "weight": 0.4,
+            "phase": "Modul",
+            "area": "Graphentheorie",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [],
+            "requires": [
+                "57575342-38df-519b-b8ea-ab864b426f1b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Graphentheorie",
+                "topicCode": "tum_cit1130011_lo3_2"
+            }
+        },
+        {
+            "id": "05483f69-f778-5e68-8c3e-5403236f8c0c",
+            "shortKey": "tum_cit1130011_lo4",
+            "title": "Planare Graphen",
+            "titleEn": "Planar Graphs",
+            "description": "Zusammenfassender Cluster: Eulers Formel, Satz von Kuratowski und Vier-Farben-Satz als zentrale Aussagen zur Planarität.",
+            "descriptionEn": "Summary cluster: Euler's formula, Kuratowski's theorem, and the four color theorem as central results about planarity.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Graphentheorie",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [
+                "1170b551-f9eb-53d8-9418-8e6c78d4e4e1",
+                "d746b68e-8286-5cf2-98e0-db27407b5bf7"
+            ],
+            "requires": [
+                "f4d5160d-b468-55a5-bdfc-0b6349100fc3"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Graphentheorie",
+                "topicCode": "tum_cit1130011_lo4"
+            }
+        },
+        {
+            "id": "1170b551-f9eb-53d8-9418-8e6c78d4e4e1",
+            "shortKey": "tum_cit1130011_lo4_1",
+            "title": "Eulers Formel und Konsequenzen",
+            "titleEn": "Euler's Formula and Consequences",
+            "description": "Die lernende Person kann Eulers Formel für planare Graphen anwenden und daraus einfache Kanten-/Flächen-Abschätzungen ableiten.",
+            "descriptionEn": "The learner can apply Euler's formula for planar graphs and derive simple bounds on edges/faces from it.",
+            "core": true,
+            "weight": 0.3,
+            "phase": "Modul",
+            "area": "Graphentheorie",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Graphentheorie",
+                "topicCode": "tum_cit1130011_lo4_1"
+            }
+        },
+        {
+            "id": "d746b68e-8286-5cf2-98e0-db27407b5bf7",
+            "shortKey": "tum_cit1130011_lo4_2",
+            "title": "Kuratowski und Vier-Farben-Satz",
+            "titleEn": "Kuratowski's Theorem and the Four Color Theorem",
+            "description": "Die lernende Person kann Nicht-Planarität über K5 und K3,3 begründen (Kuratowski) und den Vier-Farben-Satz als grundlegendes Resultat einordnen.",
+            "descriptionEn": "The learner can justify non-planarity via K5 and K3,3 (Kuratowski) and place the four color theorem as a fundamental result.",
+            "core": true,
+            "weight": 0.3,
+            "phase": "Modul",
+            "area": "Graphentheorie",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [],
+            "requires": [
+                "1170b551-f9eb-53d8-9418-8e6c78d4e4e1"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Graphentheorie",
+                "topicCode": "tum_cit1130011_lo4_2"
+            }
+        },
+        {
+            "id": "7c98809b-587a-56f5-a3a2-1375020c9fe6",
+            "shortKey": "tum_cit1130011_lo5",
+            "title": "Kürzeste Wege",
+            "titleEn": "Shortest Paths",
+            "description": "Zusammenfassender Cluster: kürzeste Wege in azyklischen Digraphen sowie Dijkstra- und Bellman-Ford-Algorithmus.",
+            "descriptionEn": "Summary cluster: shortest paths in acyclic digraphs as well as the Dijkstra and Bellman–Ford algorithms.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Graphalgorithmen",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [
+                "36f57ea0-90e4-5d9f-922c-f6717ef57c73",
+                "312f9cec-0b02-533b-b90e-f1a3b34ee7fe"
+            ],
+            "requires": [
+                "f4d5160d-b468-55a5-bdfc-0b6349100fc3"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Graphalgorithmen",
+                "topicCode": "tum_cit1130011_lo5"
+            }
+        },
+        {
+            "id": "36f57ea0-90e4-5d9f-922c-f6717ef57c73",
+            "shortKey": "tum_cit1130011_lo5_1",
+            "title": "Azyklische Digraphen und Dijkstra",
+            "titleEn": "Acyclic Digraphs and Dijkstra",
+            "description": "Die lernende Person kann kürzeste Wege in DAGs effizient berechnen und Dijkstras Algorithmus bei nichtnegativen Kantengewichten korrekt anwenden.",
+            "descriptionEn": "The learner can compute shortest paths in DAGs efficiently and correctly apply Dijkstra's algorithm for nonnegative edge weights.",
+            "core": true,
+            "weight": 0.3,
+            "phase": "Modul",
+            "area": "Graphalgorithmen",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Graphalgorithmen",
+                "topicCode": "tum_cit1130011_lo5_1"
+            }
+        },
+        {
+            "id": "312f9cec-0b02-533b-b90e-f1a3b34ee7fe",
+            "shortKey": "tum_cit1130011_lo5_2",
+            "title": "Bellman-Ford und negative Kanten",
+            "titleEn": "Bellman–Ford and Negative Edges",
+            "description": "Die lernende Person kann den Bellman-Ford-Algorithmus anwenden, mit negativen Kanten umgehen und negative Zyklen erkennen.",
+            "descriptionEn": "The learner can apply the Bellman–Ford algorithm, handle negative edges, and detect negative cycles.",
+            "core": true,
+            "weight": 0.3,
+            "phase": "Modul",
+            "area": "Graphalgorithmen",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [],
+            "requires": [
+                "36f57ea0-90e4-5d9f-922c-f6717ef57c73"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Graphalgorithmen",
+                "topicCode": "tum_cit1130011_lo5_2"
+            }
+        },
+        {
+            "id": "ea392f3d-c8c3-5c52-9d06-39cfea44e9a9",
+            "shortKey": "tum_cit1130011_lo6",
+            "title": "Kürzeste Spannbäume und Greedy-Algorithmus",
+            "titleEn": "Minimum Spanning Trees and Greedy Algorithms",
+            "description": "Zusammenfassender Cluster: kürzeste Spannbäume bzw. gewichtsmaximale Wälder und grundlegende Greedy-Strategien (z.B. Kruskal/Prim).",
+            "descriptionEn": "Summary cluster: minimum spanning trees / maximum-weight forests and fundamental greedy strategies (e.g., Kruskal/Prim).",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Graphalgorithmen",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [
+                "be1e4feb-b899-5b52-a14d-f7b857e51d07",
+                "2169fc73-fde2-51f1-b1e1-0a6b2b653b11"
+            ],
+            "requires": [
+                "f4d5160d-b468-55a5-bdfc-0b6349100fc3"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Graphalgorithmen",
+                "topicCode": "tum_cit1130011_lo6"
+            }
+        },
+        {
+            "id": "be1e4feb-b899-5b52-a14d-f7b857e51d07",
+            "shortKey": "tum_cit1130011_lo6_1",
+            "title": "Kruskal/Prim für Spannbäume und maximale Wälder",
+            "titleEn": "Kruskal/Prim for Spanning Trees and Maximum Forests",
+            "description": "Die lernende Person kann minimale Spannbäume bzw. maximale Wälder definieren und in Beispielen mit Greedy-Algorithmen (Kruskal/Prim) berechnen.",
+            "descriptionEn": "The learner can define minimum spanning trees and maximum forests and compute them in examples using greedy algorithms (Kruskal/Prim).",
+            "core": true,
+            "weight": 0.3,
+            "phase": "Modul",
+            "area": "Graphalgorithmen",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Graphalgorithmen",
+                "topicCode": "tum_cit1130011_lo6_1"
+            }
+        },
+        {
+            "id": "2169fc73-fde2-51f1-b1e1-0a6b2b653b11",
+            "shortKey": "tum_cit1130011_lo6_2",
+            "title": "Greedy-Korrektheit (Schnitt-/Kreis-Eigenschaften)",
+            "titleEn": "Greedy Correctness (Cut/Cycle Properties)",
+            "description": "Die lernende Person kann die Korrektheit von Greedy-Ansätzen für Spannbaumprobleme über Schnitt- oder Kreis-Eigenschaften begründen und auf Varianten übertragen.",
+            "descriptionEn": "The learner can justify correctness of greedy approaches for spanning-tree problems using cut or cycle properties and transfer the ideas to variants.",
+            "core": true,
+            "weight": 0.3,
+            "phase": "Modul",
+            "area": "Graphalgorithmen",
+            "tags": [
+                "ects:4",
+                "module:CIT1130011"
+            ],
+            "contains": [],
+            "requires": [
+                "be1e4feb-b899-5b52-a14d-f7b857e51d07"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130011",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Graphalgorithmen",
+                "topicCode": "tum_cit1130011_lo6_2"
+            }
         }
     ]
 }

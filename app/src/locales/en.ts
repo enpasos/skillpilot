@@ -56,6 +56,12 @@ export const en = {
         emptyContains: "No sub-goals",
         emptyNextSteps: "No direct follow-up goals"
     },
+    learner: {
+        myGoals: "My Learning Goals",
+        marked: "marked",
+        completed: "completed",
+        includesDataFrom: "Includes data from"
+    },
     trainer: {
         dashboard: "Trainer Dashboard",
         import: "Import",

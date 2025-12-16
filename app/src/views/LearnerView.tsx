@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useCallback, useRef } from 'react'
+import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
 import { GoalCard } from '../components/GoalCard'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
@@ -205,6 +206,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [skillpilotId])
 
   const { language } = useLanguage();
+  const t = useTranslation();
 
   const handleImportClick = () => {
     fileInputRef.current?.click();
@@ -284,9 +286,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       <aside className="w-1/3 min-w-[300px] border-r border-border-color flex flex-col bg-sidebar-bg">
         <div className="p-4 border-b border-border-color flex items-center justify-between">
           <div>
-            <h2 className="font-bold text-sky-600 dark:text-sky-400">Meine Lernziele</h2>
+            <h2 className="font-bold text-sky-600 dark:text-sky-400">{t.learner.myGoals}</h2>
             <div className="text-xs text-text-secondary mt-1">
-              {plannedCount} markiert • {masteredCount} abgeschlossen
+              {plannedCount} {t.learner.marked} • {masteredCount} {t.learner.completed}
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -350,7 +352,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         {learnerData && learnerData.copySources && learnerData.copySources.length > 0 && (
           <div className="p-3 border-t border-border-color bg-gray-50 dark:bg-slate-900 text-xs text-text-secondary">
             <h3 className="font-semibold mb-1">
-              {language === 'de' ? 'Enthält Daten von' : 'Includes data from'}
+              {t.learner.includesDataFrom}
             </h3>
             <div className="flex flex-col gap-1 max-h-[100px] overflow-y-auto">
               {learnerData.copySources.map((src, idx) => (
