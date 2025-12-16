@@ -1,8 +1,8 @@
 {
     "title": "Partielle Differentialgleichungen (TUM, Modul MA3005)",
     "titleEn": "Partial Differential Equations (TUM, Module MA3005)",
-    "description": "After successful completion of the module students are able to understand, apply and analyze basic methods to treat partial differential equations. In particular they distinguish different types of partial differential equation and understand their basic properties. The students understand the concepts of classical and weak (variational) solutions to elliptic partial differential equations including the questions on existence, uniqueness and well-posedness as well as on regularity of solutions. Moreover, they can analyze structural properties of such solutions, i.e. by applying maximum principles. 9 ECTS, angeboten im Sommersemester, Version 2021s, verantwortet von Friesecke, Gero.",
-    "descriptionEn": "After successful completion of the module students are able to understand, apply and analyze basic methods to treat partial differential equations. In particular they distinguish different types of partial differential equation and understand their basic properties. The students understand the concepts of classical and weak (variational) solutions to elliptic partial differential equations including the questions on existence, uniqueness and well-posedness as well as on regularity of solutions. Moreover, they can analyze structural properties of such solutions, i.e. by applying maximum principles. 9 ECTS, offered in summer semester, version 2021s, responsible: Friesecke, Gero.",
+    "description": "Das Modul behandelt grundlegende Methoden zur Theorie partieller Differentialgleichungen (PDEs), insbesondere klassische Darstellungsmethoden für Transport-, Laplace-, Wärme- und Wellengleichungen, eine Einführung in Erhaltungsgesetze, Sobolev-Räume und schwache (variationale) Lösungen elliptischer Gleichungen zweiter Ordnung. Nach erfolgreichem Abschluss können Studierende PDE-Typen unterscheiden und deren grundlegende Eigenschaften analysieren. Sie verstehen klassische und schwache Lösungsbegriffe, können Fragen von Existenz, Eindeutigkeit, Wohlgestelltheit und Regularität behandeln und strukturelle Eigenschaften (z.B. über Maximumprinzipien) untersuchen. 9 ECTS, angeboten im Sommersemester, Version 2021s, verantwortlich: Friesecke, Gero.",
+    "descriptionEn": "The module covers basic methods for partial differential equations (PDEs), in particular classical theory and representation formulas for transport, Laplace, heat, and wave equations, an introduction to conservation laws, Sobolev spaces, and weak (variational) solutions of second-order elliptic equations. After successful completion, students can distinguish different types of PDEs and analyze their basic properties. They understand concepts of classical and weak solutions, can address existence, uniqueness, well-posedness, and regularity, and can analyze structural properties of solutions (e.g., via maximum principles). 9 ECTS, offered in the summer semester, version 2021s, responsible: Friesecke, Gero.",
     "landscapeId": "27b1ab0a-76c0-488e-a725-1fc37382d94d",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -19,8 +19,8 @@
             "shortKey": "tum_ma3005_module",
             "title": "Partielle Differentialgleichungen – Gesamtmodul",
             "titleEn": "Partial Differential Equations – Full Module",
-            "description": "After successful completion of the module students are able to understand, apply and analyze basic methods to treat partial differential equations. In particular they distinguish different types of partial differential equation and understand their basic properties. The students understand the concepts of classical and weak (variational) solutions to elliptic partial differential equations including the questions on existence, uniqueness and well-posedness as well as on regularity of solutions. Moreover, they can analyze structural properties of such solutions, i.e. by applying maximum principles.",
-            "descriptionEn": "After successful completion of the module students are able to understand, apply and analyze basic methods to treat partial differential equations. In particular they distinguish different types of partial differential equation and understand their basic properties. The students understand the concepts of classical and weak (variational) solutions to elliptic partial differential equations including the questions on existence, uniqueness and well-posedness as well as on regularity of solutions. Moreover, they can analyze structural properties of such solutions, i.e. by applying maximum principles.",
+            "description": "Nach erfolgreichem Abschluss können Studierende grundlegende Methoden zur Behandlung partieller Differentialgleichungen verstehen, anwenden und analysieren. Insbesondere können sie PDE-Typen unterscheiden und deren grundlegende Eigenschaften einordnen. Sie verstehen klassische und schwache (variationale) Lösungsbegriffe für elliptische PDEs inklusive Fragen von Existenz, Eindeutigkeit, Wohlgestelltheit und Regularität und können strukturelle Eigenschaften (z.B. mittels Maximumprinzipien) untersuchen.",
+            "descriptionEn": "After successful completion of the module, students are able to understand, apply, and analyze basic methods to treat partial differential equations. In particular, they can distinguish different types of PDEs and understand their basic properties. They understand concepts of classical and weak (variational) solutions to elliptic PDEs, including questions of existence, uniqueness, and well-posedness as well as regularity of solutions. Moreover, they can analyze structural properties of such solutions, e.g., by applying maximum principles.",
             "core": true,
             "weight": 9.0,
             "phase": "Modul",
@@ -29,15 +29,26 @@
                 "ects:9",
                 "workload:270h",
                 "presence:90h",
-                "level:bachelor",
-                "language:de",
+                "level:master",
+                "language:en",
                 "module:MA3005",
                 "semester:SS",
                 "duration:1_semester",
                 "responsible:friesecke_gero"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "cd13a36f-8898-5221-824a-37a42c765d53",
+                "28b31232-ae50-5613-99d1-5f72b527b0ae",
+                "1394999b-37f3-5be8-bdac-c61ae506bcd8",
+                "4e9bdf33-c304-56b2-a02a-c5e60caf6ae7",
+                "03fab82b-37a5-5174-bf1a-10f83e18c1ee",
+                "70dab8a1-db1e-54d2-8bc9-d6c24b4c9250"
+            ],
+            "requires": [
+                "8eb1605b-fa70-511b-bbe4-28173d359c3b",
+                "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
+                "c18dbc1a-e398-5053-8bec-f566af8be089"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-ma3005",
@@ -49,6 +60,558 @@
                 "topicCode": "tum_ma3005_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA3005&description_version=2021s"
+        },
+        {
+            "id": "cd13a36f-8898-5221-824a-37a42c765d53",
+            "shortKey": "tum_ma3005_lo1",
+            "title": "Grundlagen und Transportgleichungen",
+            "titleEn": "Basics and Transport Equations",
+            "description": "Zusammenfassender Cluster: PDE-Typen, Grundbegriffe und klassische Methoden für Transportgleichungen (Charakteristiken, Darstellungslösungen).",
+            "descriptionEn": "Summary cluster: PDE types, basic notions, and classical methods for transport equations (characteristics, representation formulas).",
+            "core": true,
+            "weight": 1.4,
+            "phase": "Modul",
+            "area": "Grundlagen & Transport",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [
+                "ee7221f5-4f98-587d-8689-c3d7fcf57aac",
+                "fdbad2fa-9937-5163-a2fe-ae541ff5aa3a"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Grundlagen & Transport",
+                "topicCode": "tum_ma3005_lo1"
+            }
+        },
+        {
+            "id": "ee7221f5-4f98-587d-8689-c3d7fcf57aac",
+            "shortKey": "tum_ma3005_lo1_1",
+            "title": "PDE-Typen unterscheiden und Grundbegriffe anwenden",
+            "titleEn": "Distinguish PDE Types and Apply Basic Notions",
+            "description": "Die lernende Person kann PDEs nach Typ (elliptisch/parabolisch/hyperbolisch) klassifizieren, Anfangs- und Randwertprobleme formulieren und grundlegende Eigenschaften anhand von Beispielen diskutieren.",
+            "descriptionEn": "The learner can classify PDEs by type (elliptic/parabolic/hyperbolic), formulate initial and boundary value problems, and discuss basic properties in examples.",
+            "core": true,
+            "weight": 0.7,
+            "phase": "Modul",
+            "area": "Grundlagen & Transport",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Grundlagen & Transport",
+                "topicCode": "tum_ma3005_lo1_1"
+            }
+        },
+        {
+            "id": "fdbad2fa-9937-5163-a2fe-ae541ff5aa3a",
+            "shortKey": "tum_ma3005_lo1_2",
+            "title": "Transportgleichungen mit Darstellungsmethoden behandeln",
+            "titleEn": "Treat Transport Equations Using Representation Methods",
+            "description": "Die lernende Person kann lineare Transportgleichungen mittels Charakteristiken behandeln, Darstellungslösungen herleiten und Existenz-/Eindeutigkeitsaussagen in einfachen Situationen nutzen.",
+            "descriptionEn": "The learner can treat linear transport equations via characteristics, derive representation formulas, and use basic existence/uniqueness statements in simple settings.",
+            "core": true,
+            "weight": 0.7,
+            "phase": "Modul",
+            "area": "Grundlagen & Transport",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [],
+            "requires": [
+                "ee7221f5-4f98-587d-8689-c3d7fcf57aac"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Grundlagen & Transport",
+                "topicCode": "tum_ma3005_lo1_2"
+            }
+        },
+        {
+            "id": "28b31232-ae50-5613-99d1-5f72b527b0ae",
+            "shortKey": "tum_ma3005_lo2",
+            "title": "Laplace-Gleichung: Theorie und Darstellungsformeln",
+            "titleEn": "Laplace Equation: Theory and Representation Formulas",
+            "description": "Zusammenfassender Cluster: Klassische Theorie zur Laplace-/Poisson-Gleichung mit Darstellungsformeln und Prinzipien harmonischer Funktionen.",
+            "descriptionEn": "Summary cluster: classical theory for the Laplace/Poisson equation with representation formulas and principles for harmonic functions.",
+            "core": true,
+            "weight": 1.3,
+            "phase": "Modul",
+            "area": "Laplace-Gleichung",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [
+                "43424f5f-0d76-5950-a1fd-b42568dd320b",
+                "a37ddca2-b916-5710-87e0-a8f24da1fbc7"
+            ],
+            "requires": [
+                "ee7221f5-4f98-587d-8689-c3d7fcf57aac"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Laplace-Gleichung",
+                "topicCode": "tum_ma3005_lo2"
+            }
+        },
+        {
+            "id": "43424f5f-0d76-5950-a1fd-b42568dd320b",
+            "shortKey": "tum_ma3005_lo2_1",
+            "title": "Laplace-/Poisson-Gleichung und harmonische Funktionen nutzen",
+            "titleEn": "Use the Laplace/Poisson Equation and Harmonic Functions",
+            "description": "Die lernende Person kann grundlegende Eigenschaften harmonischer Funktionen (z.B. Mittelwert- und Maximumprinzip) anwenden und einfache Randwertprobleme modellieren.",
+            "descriptionEn": "The learner can apply basic properties of harmonic functions (e.g., mean value and maximum principles) and model simple boundary value problems.",
+            "core": true,
+            "weight": 0.65,
+            "phase": "Modul",
+            "area": "Laplace-Gleichung",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [],
+            "requires": [
+                "ee7221f5-4f98-587d-8689-c3d7fcf57aac"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Laplace-Gleichung",
+                "topicCode": "tum_ma3005_lo2_1"
+            }
+        },
+        {
+            "id": "a37ddca2-b916-5710-87e0-a8f24da1fbc7",
+            "shortKey": "tum_ma3005_lo2_2",
+            "title": "Darstellungsformeln für elliptische Gleichungen einsetzen",
+            "titleEn": "Use Representation Formulas for Elliptic Equations",
+            "description": "Die lernende Person kann Darstellungsformeln (z.B. über Fundamentalsolutionen/Green-Funktionen) in Beispielen nutzen, um Lösungen zu konstruieren oder qualitative Aussagen abzuleiten.",
+            "descriptionEn": "The learner can use representation formulas (e.g., via fundamental solutions/Green’s functions) in examples to construct solutions or derive qualitative statements.",
+            "core": true,
+            "weight": 0.65,
+            "phase": "Modul",
+            "area": "Laplace-Gleichung",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [],
+            "requires": [
+                "43424f5f-0d76-5950-a1fd-b42568dd320b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Laplace-Gleichung",
+                "topicCode": "tum_ma3005_lo2_2"
+            }
+        },
+        {
+            "id": "1394999b-37f3-5be8-bdac-c61ae506bcd8",
+            "shortKey": "tum_ma3005_lo3",
+            "title": "Wärme- und Wellengleichung",
+            "titleEn": "Heat and Wave Equations",
+            "description": "Zusammenfassender Cluster: Klassische Theorie und Darstellungsformeln für Wärme- und Wellengleichung.",
+            "descriptionEn": "Summary cluster: classical theory and representation formulas for the heat and wave equations.",
+            "core": true,
+            "weight": 1.4,
+            "phase": "Modul",
+            "area": "Wärme- und Wellengleichung",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [
+                "a0b9179a-d450-5c2e-a77a-4946fc9696fb",
+                "1d538337-5652-5e95-820c-43bd3ee3d254"
+            ],
+            "requires": [
+                "ee7221f5-4f98-587d-8689-c3d7fcf57aac"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Wärme- und Wellengleichung",
+                "topicCode": "tum_ma3005_lo3"
+            }
+        },
+        {
+            "id": "a0b9179a-d450-5c2e-a77a-4946fc9696fb",
+            "shortKey": "tum_ma3005_lo3_1",
+            "title": "Wärmeleitungsgleichung analysieren",
+            "titleEn": "Analyze the Heat Equation",
+            "description": "Die lernende Person kann die Wärmeleitungsgleichung als parabolische PDE einordnen, klassische Darstellungen (z.B. über Wärme-Kern) nutzen und grundlegende Eigenschaften (Glättung, Maximumprinzip) erläutern.",
+            "descriptionEn": "The learner can classify the heat equation as a parabolic PDE, use classical representations (e.g., via the heat kernel), and explain basic properties (smoothing, maximum principle).",
+            "core": true,
+            "weight": 0.7,
+            "phase": "Modul",
+            "area": "Wärme- und Wellengleichung",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [],
+            "requires": [
+                "ee7221f5-4f98-587d-8689-c3d7fcf57aac"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Wärme- und Wellengleichung",
+                "topicCode": "tum_ma3005_lo3_1"
+            }
+        },
+        {
+            "id": "1d538337-5652-5e95-820c-43bd3ee3d254",
+            "shortKey": "tum_ma3005_lo3_2",
+            "title": "Wellengleichung mit Darstellungsmethoden behandeln",
+            "titleEn": "Treat the Wave Equation Using Representation Methods",
+            "description": "Die lernende Person kann die Wellengleichung als hyperbolische PDE einordnen, klassische Darstellungsformeln (z.B. d’Alembert) und Energieargumente in Beispielen einsetzen.",
+            "descriptionEn": "The learner can classify the wave equation as a hyperbolic PDE and use classical representation formulas (e.g., d’Alembert) and energy arguments in examples.",
+            "core": true,
+            "weight": 0.7,
+            "phase": "Modul",
+            "area": "Wärme- und Wellengleichung",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [],
+            "requires": [
+                "a0b9179a-d450-5c2e-a77a-4946fc9696fb"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Wärme- und Wellengleichung",
+                "topicCode": "tum_ma3005_lo3_2"
+            }
+        },
+        {
+            "id": "4e9bdf33-c304-56b2-a02a-c5e60caf6ae7",
+            "shortKey": "tum_ma3005_lo4",
+            "title": "Einführung in Erhaltungsgesetze",
+            "titleEn": "Introduction to Conservation Laws",
+            "description": "Zusammenfassender Cluster: Grundideen von Erhaltungsgesetzen, schwache Lösungen und die Behandlung von Schocks/Entropie.",
+            "descriptionEn": "Summary cluster: core ideas of conservation laws, weak solutions, and handling shocks/entropy.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Erhaltungsgesetze",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [
+                "24311f30-7b32-5847-9b0f-530a2998a1fc",
+                "3171928d-abe4-57cf-9f7d-46a516213f06"
+            ],
+            "requires": [
+                "fdbad2fa-9937-5163-a2fe-ae541ff5aa3a"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Erhaltungsgesetze",
+                "topicCode": "tum_ma3005_lo4"
+            }
+        },
+        {
+            "id": "24311f30-7b32-5847-9b0f-530a2998a1fc",
+            "shortKey": "tum_ma3005_lo4_1",
+            "title": "Erhaltungsgesetze modellieren und schwache Lösungen verstehen",
+            "titleEn": "Model Conservation Laws and Understand Weak Solutions",
+            "description": "Die lernende Person kann Erhaltungsgesetze formulieren, den schwachen Lösungsbegriff definieren und die Entstehung von Diskontinuitäten (z.B. Schocks) in Beispielen erläutern.",
+            "descriptionEn": "The learner can formulate conservation laws, define weak solutions, and explain the emergence of discontinuities (e.g., shocks) in examples.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Erhaltungsgesetze",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [],
+            "requires": [
+                "fdbad2fa-9937-5163-a2fe-ae541ff5aa3a"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Erhaltungsgesetze",
+                "topicCode": "tum_ma3005_lo4_1"
+            }
+        },
+        {
+            "id": "3171928d-abe4-57cf-9f7d-46a516213f06",
+            "shortKey": "tum_ma3005_lo4_2",
+            "title": "Entropiebedingungen und Riemann-Probleme einordnen",
+            "titleEn": "Place Entropy Conditions and Riemann Problems",
+            "description": "Die lernende Person kann die Rolle von Entropiebedingungen zur Auswahl physikalisch relevanter Lösungen erklären und einfache Riemann-Probleme qualitativ analysieren.",
+            "descriptionEn": "The learner can explain the role of entropy conditions in selecting physically relevant solutions and qualitatively analyze simple Riemann problems.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Erhaltungsgesetze",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [],
+            "requires": [
+                "24311f30-7b32-5847-9b0f-530a2998a1fc"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Erhaltungsgesetze",
+                "topicCode": "tum_ma3005_lo4_2"
+            }
+        },
+        {
+            "id": "03fab82b-37a5-5174-bf1a-10f83e18c1ee",
+            "shortKey": "tum_ma3005_lo5",
+            "title": "Sobolev-Räume",
+            "titleEn": "Sobolev Spaces",
+            "description": "Zusammenfassender Cluster: Sobolev-Räume als funktionalanalytische Grundlage für schwache Lösungsbegriffe in der PDE-Theorie.",
+            "descriptionEn": "Summary cluster: Sobolev spaces as the functional-analytic foundation for weak solution concepts in PDE theory.",
+            "core": true,
+            "weight": 1.6,
+            "phase": "Modul",
+            "area": "Sobolev-Räume",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [
+                "8c135c63-0ea4-5bc0-b94b-6c4ee3b8601c",
+                "caca85ed-0498-5279-a87f-26bfc0bcd5a0"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Sobolev-Räume",
+                "topicCode": "tum_ma3005_lo5"
+            }
+        },
+        {
+            "id": "8c135c63-0ea4-5bc0-b94b-6c4ee3b8601c",
+            "shortKey": "tum_ma3005_lo5_1",
+            "title": "Sobolev-Räume und schwache Ableitungen definieren",
+            "titleEn": "Define Sobolev Spaces and Weak Derivatives",
+            "description": "Die lernende Person kann schwache Ableitungen definieren, Sobolev-Räume W^{k,p} einordnen und grundlegende Beispiele sowie Normen sicher verwenden.",
+            "descriptionEn": "The learner can define weak derivatives, place Sobolev spaces W^{k,p}, and confidently use basic examples and norms.",
+            "core": true,
+            "weight": 0.8,
+            "phase": "Modul",
+            "area": "Sobolev-Räume",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Sobolev-Räume",
+                "topicCode": "tum_ma3005_lo5_1"
+            }
+        },
+        {
+            "id": "caca85ed-0498-5279-a87f-26bfc0bcd5a0",
+            "shortKey": "tum_ma3005_lo5_2",
+            "title": "Grundlegende Sobolev-Werkzeuge anwenden",
+            "titleEn": "Apply Basic Sobolev Tools",
+            "description": "Die lernende Person kann grundlegende Werkzeuge wie Einbettungen, Poincaré-Ungleichung und Kompaktheitsargumente in Beispielen verwenden, um Abschätzungen und Konvergenzaussagen zu begründen.",
+            "descriptionEn": "The learner can use basic tools such as embeddings, the Poincaré inequality, and compactness arguments in examples to justify estimates and convergence statements.",
+            "core": true,
+            "weight": 0.8,
+            "phase": "Modul",
+            "area": "Sobolev-Räume",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [],
+            "requires": [
+                "8c135c63-0ea4-5bc0-b94b-6c4ee3b8601c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Sobolev-Räume",
+                "topicCode": "tum_ma3005_lo5_2"
+            }
+        },
+        {
+            "id": "70dab8a1-db1e-54d2-8bc9-d6c24b4c9250",
+            "shortKey": "tum_ma3005_lo6",
+            "title": "Schwache Lösungen elliptischer Gleichungen",
+            "titleEn": "Weak Solutions of Elliptic Equations",
+            "description": "Zusammenfassender Cluster: Schwache (variationale) Lösungen elliptischer PDEs inkl. Existenz, Eindeutigkeit, Wohlgestelltheit, Regularität und Maximumprinzipien.",
+            "descriptionEn": "Summary cluster: weak (variational) solutions of elliptic PDEs including existence, uniqueness, well-posedness, regularity, and maximum principles.",
+            "core": true,
+            "weight": 2.1,
+            "phase": "Modul",
+            "area": "Schwache Lösungen (elliptisch)",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [
+                "d178eb50-adc7-5867-ae41-c73138cb7378",
+                "58245a77-28c4-541c-b5e6-7f8007db854a"
+            ],
+            "requires": [
+                "caca85ed-0498-5279-a87f-26bfc0bcd5a0",
+                "43424f5f-0d76-5950-a1fd-b42568dd320b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Schwache Lösungen (elliptisch)",
+                "topicCode": "tum_ma3005_lo6"
+            }
+        },
+        {
+            "id": "d178eb50-adc7-5867-ae41-c73138cb7378",
+            "shortKey": "tum_ma3005_lo6_1",
+            "title": "Variationsformulierung elliptischer Gleichungen nutzen",
+            "titleEn": "Use Variational Formulations for Elliptic Equations",
+            "description": "Die lernende Person kann elliptische Gleichungen zweiter Ordnung variational formulieren, schwache Lösungen definieren und Existenz/Eindeutigkeit (z.B. via Lax-Milgram) in Beispielen begründen.",
+            "descriptionEn": "The learner can formulate second-order elliptic equations variationally, define weak solutions, and justify existence/uniqueness (e.g., via Lax–Milgram) in examples.",
+            "core": true,
+            "weight": 1.05,
+            "phase": "Modul",
+            "area": "Schwache Lösungen (elliptisch)",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [],
+            "requires": [
+                "caca85ed-0498-5279-a87f-26bfc0bcd5a0",
+                "43424f5f-0d76-5950-a1fd-b42568dd320b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Schwache Lösungen (elliptisch)",
+                "topicCode": "tum_ma3005_lo6_1"
+            }
+        },
+        {
+            "id": "58245a77-28c4-541c-b5e6-7f8007db854a",
+            "shortKey": "tum_ma3005_lo6_2",
+            "title": "Regularität und Maximumprinzipien anwenden",
+            "titleEn": "Apply Regularity Results and Maximum Principles",
+            "description": "Die lernende Person kann Regularitätsfragen für schwache Lösungen diskutieren und strukturelle Eigenschaften elliptischer Lösungen, insbesondere über Maximumprinzipien, analysieren.",
+            "descriptionEn": "The learner can discuss regularity questions for weak solutions and analyze structural properties of elliptic solutions, in particular via maximum principles.",
+            "core": true,
+            "weight": 1.05,
+            "phase": "Modul",
+            "area": "Schwache Lösungen (elliptisch)",
+            "tags": [
+                "ects:9",
+                "module:MA3005"
+            ],
+            "contains": [],
+            "requires": [
+                "d178eb50-adc7-5867-ae41-c73138cb7378"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Schwache Lösungen (elliptisch)",
+                "topicCode": "tum_ma3005_lo6_2"
+            }
         }
     ]
 }

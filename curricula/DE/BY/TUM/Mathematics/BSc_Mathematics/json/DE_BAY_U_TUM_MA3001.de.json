@@ -1,8 +1,8 @@
 {
     "title": "Funktionalanalysis (TUM, Modul MA3001)",
     "titleEn": "Functional Analysis (TUM, Module MA3001)",
-    "description": "After successful completion of the module students are able to understand and apply basic theoretical techniques to analyze linear functionals and operators on Banach and Hilbert spaces. In particular, they can analyze spectra of compact selfadjoint operators, understand the notion of duality and can apply concepts of weak and weak-star convergence in Banach spaces. <br> 9 ECTS, angeboten im Wintersemester, Version 2021s, verantwortet von Matthes, Daniel.",
-    "descriptionEn": "After successful completion of the module students are able to understand and apply basic theoretical techniques to analyze linear functionals and operators on Banach and Hilbert spaces. In particular, they can analyze spectra of compact selfadjoint operators, understand the notion of duality and can apply concepts of weak and weak-star convergence in Banach spaces. <br> 9 ECTS, offered in winter semester, version 2021s, responsible: Matthes, Daniel.",
+    "description": "Nach dem erfolgreichen Abschluss des Moduls können die Studierenden grundlegende theoretische Techniken der Funktionalanalysis zum Analysieren linearer Funktionale und Operatoren auf Banach- und Hilberträumen anwenden. Sie verstehen Dualität und können den Satz von Hahn-Banach einsetzen. Sie können Konzepte schwacher und schwach*-Konvergenz in Banachräumen anwenden und Spektren kompakter selbstadjungierter Operatoren analysieren. Eine kurze Einführung in unbeschränkte Operatoren rundet das Modul ab. 9 ECTS, angeboten im Wintersemester, Version 2021s, verantwortlich: Matthes, Daniel.",
+    "descriptionEn": "After successfully completing the module, students can apply basic theoretical techniques from functional analysis to analyze linear functionals and operators on Banach and Hilbert spaces. They understand duality and can apply the Hahn–Banach theorem. They can work with notions of weak and weak* convergence in Banach spaces and analyze spectra of compact selfadjoint operators. A brief introduction to unbounded operators completes the module. 9 ECTS, offered in the winter semester, version 2021s, responsible: Matthes, Daniel.",
     "landscapeId": "547711d6-8b1b-4e35-964e-d0a67d127345",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -19,8 +19,8 @@
             "shortKey": "tum_ma3001_module",
             "title": "Funktionalanalysis – Gesamtmodul",
             "titleEn": "Functional Analysis – Full Module",
-            "description": "After successful completion of the module students are able to understand and apply basic theoretical techniques to analyze linear functionals and operators on Banach and Hilbert spaces. In particular, they can analyze spectra of compact selfadjoint operators, understand the notion of duality and can apply concepts of weak and weak-star convergence in Banach spaces. <br>",
-            "descriptionEn": "After successful completion of the module students are able to understand and apply basic theoretical techniques to analyze linear functionals and operators on Banach and Hilbert spaces. In particular, they can analyze spectra of compact selfadjoint operators, understand the notion of duality and can apply concepts of weak and weak-star convergence in Banach spaces. <br>",
+            "description": "Nach dem erfolgreichen Abschluss des Moduls können die Studierenden grundlegende theoretische Techniken der Funktionalanalysis zum Analysieren linearer Funktionale und Operatoren auf Banach- und Hilberträumen anwenden. Insbesondere können sie Spektren kompakter selbstadjungierter Operatoren analysieren, Dualität verstehen und Konzepte schwacher und schwach*-Konvergenz in Banachräumen anwenden.",
+            "descriptionEn": "After successfully completing the module, students can understand and apply basic theoretical techniques to analyze linear functionals and operators on Banach and Hilbert spaces. In particular, they can analyze spectra of compact selfadjoint operators, understand the notion of duality, and apply concepts of weak and weak* convergence in Banach spaces.",
             "core": true,
             "weight": 9.0,
             "phase": "Modul",
@@ -29,15 +29,26 @@
                 "ects:9",
                 "workload:270h",
                 "presence:90h",
-                "level:bachelor",
-                "language:de",
+                "level:master",
+                "language:en",
                 "module:MA3001",
                 "semester:WS",
                 "duration:1_semester",
                 "responsible:matthes_daniel"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "01a8aef2-0073-56cb-9187-17b9faa7a00f",
+                "4006541b-d445-520a-ad23-722cf12ae1ae",
+                "857af9e5-7616-54c3-a892-a8e3f5abfc73",
+                "8e873771-dff0-5a71-ba82-df6b7d3a54c8",
+                "17a58db1-702f-5ca9-9248-2f8949ac7672",
+                "e38ec425-eb43-5b0b-89e7-238228960278"
+            ],
+            "requires": [
+                "8eb1605b-fa70-511b-bbe4-28173d359c3b",
+                "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
+                "feaad1d5-022f-5ab3-93c3-001ac46de351"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-ma3001",
@@ -49,6 +60,563 @@
                 "topicCode": "tum_ma3001_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA3001&description_version=2021s"
+        },
+        {
+            "id": "01a8aef2-0073-56cb-9187-17b9faa7a00f",
+            "shortKey": "tum_ma3001_lo1",
+            "title": "Banach- und Hilberträume",
+            "titleEn": "Banach and Hilbert Spaces",
+            "description": "Zusammenfassender Cluster: Grundbegriffe und Beispiele von Banach- und Hilberträumen als Grundlage der Funktionalanalysis.",
+            "descriptionEn": "Summary cluster: basic notions and examples of Banach and Hilbert spaces as the foundation of functional analysis.",
+            "core": true,
+            "weight": 1.8,
+            "phase": "Modul",
+            "area": "Banach- und Hilberträume",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [
+                "d12f8041-371b-5f5d-a3cb-822f47156396",
+                "4b8772a6-bc84-5a1a-a63f-ad7553a97984"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Banach- und Hilberträume",
+                "topicCode": "tum_ma3001_lo1"
+            }
+        },
+        {
+            "id": "d12f8041-371b-5f5d-a3cb-822f47156396",
+            "shortKey": "tum_ma3001_lo1_1",
+            "title": "Normierte Räume und Banachräume sicher verwenden",
+            "titleEn": "Work Confidently with Normed and Banach Spaces",
+            "description": "Die lernende Person kann Normen und vollständige normierte Räume (Banachräume) definieren, Beispiele einordnen und grundlegende topologische Begriffe (Konvergenz, Vollständigkeit) anwenden.",
+            "descriptionEn": "The learner can define norms and complete normed spaces (Banach spaces), classify examples, and apply basic topological notions (convergence, completeness).",
+            "core": true,
+            "weight": 0.9,
+            "phase": "Modul",
+            "area": "Banach- und Hilberträume",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Banach- und Hilberträume",
+                "topicCode": "tum_ma3001_lo1_1"
+            }
+        },
+        {
+            "id": "4b8772a6-bc84-5a1a-a63f-ad7553a97984",
+            "shortKey": "tum_ma3001_lo1_2",
+            "title": "Hilberträume: Skalarprodukt, Orthogonalität, Projektion",
+            "titleEn": "Hilbert Spaces: Inner Product, Orthogonality, Projection",
+            "description": "Die lernende Person kann Hilberträume als vollständige Skalarprodukträume behandeln, Orthogonalität nutzen und Projektionen auf abgeschlossene Unterräume in Beispielen bestimmen.",
+            "descriptionEn": "The learner can work with Hilbert spaces as complete inner-product spaces, use orthogonality, and determine projections onto closed subspaces in examples.",
+            "core": true,
+            "weight": 0.9,
+            "phase": "Modul",
+            "area": "Banach- und Hilberträume",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "d12f8041-371b-5f5d-a3cb-822f47156396"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Banach- und Hilberträume",
+                "topicCode": "tum_ma3001_lo1_2"
+            }
+        },
+        {
+            "id": "4006541b-d445-520a-ad23-722cf12ae1ae",
+            "shortKey": "tum_ma3001_lo2",
+            "title": "Beschränkte Operatoren und Hauptsätze",
+            "titleEn": "Bounded Operators and Fundamental Theorems",
+            "description": "Zusammenfassender Cluster: Beschränkte lineare Operatoren und grundlegende Sätze (u.a. Open Mapping) als Werkzeuge der Funktionalanalysis.",
+            "descriptionEn": "Summary cluster: bounded linear operators and fundamental theorems (including open mapping) as tools in functional analysis.",
+            "core": true,
+            "weight": 1.6,
+            "phase": "Modul",
+            "area": "Lineare Operatoren",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [
+                "1dd7494e-bf82-50c9-a4a0-4af3df3c9cc2",
+                "7dd21b88-73d3-52b9-ac7d-e1d0432236f6"
+            ],
+            "requires": [
+                "d12f8041-371b-5f5d-a3cb-822f47156396"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Lineare Operatoren",
+                "topicCode": "tum_ma3001_lo2"
+            }
+        },
+        {
+            "id": "1dd7494e-bf82-50c9-a4a0-4af3df3c9cc2",
+            "shortKey": "tum_ma3001_lo2_1",
+            "title": "Beschränkte lineare Operatoren und Operatornorm nutzen",
+            "titleEn": "Use Bounded Linear Operators and the Operator Norm",
+            "description": "Die lernende Person kann beschränkte lineare Operatoren definieren, die Operatornorm verwenden und grundlegende Eigenschaften (Stetigkeit, lineare Abbildungen zwischen Banachräumen) in Aufgaben anwenden.",
+            "descriptionEn": "The learner can define bounded linear operators, use the operator norm, and apply basic properties (continuity, linear maps between Banach spaces) in problems.",
+            "core": true,
+            "weight": 0.8,
+            "phase": "Modul",
+            "area": "Lineare Operatoren",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "d12f8041-371b-5f5d-a3cb-822f47156396"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Lineare Operatoren",
+                "topicCode": "tum_ma3001_lo2_1"
+            }
+        },
+        {
+            "id": "7dd21b88-73d3-52b9-ac7d-e1d0432236f6",
+            "shortKey": "tum_ma3001_lo2_2",
+            "title": "Offenheitsabbildungssatz (Open Mapping) anwenden",
+            "titleEn": "Apply the Open Mapping Theorem",
+            "description": "Die lernende Person kann den Offenheitsabbildungssatz (sowie eng verwandte Resultate wie den Satz vom abgeschlossenen Graphen) in passenden Situationen einsetzen und Konsequenzen für Inversen und Lösbarkeit erklären.",
+            "descriptionEn": "The learner can apply the open mapping theorem (and closely related results such as the closed graph theorem) in suitable situations and explain consequences for inverses and solvability.",
+            "core": true,
+            "weight": 0.8,
+            "phase": "Modul",
+            "area": "Lineare Operatoren",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "1dd7494e-bf82-50c9-a4a0-4af3df3c9cc2"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Lineare Operatoren",
+                "topicCode": "tum_ma3001_lo2_2"
+            }
+        },
+        {
+            "id": "857af9e5-7616-54c3-a892-a8e3f5abfc73",
+            "shortKey": "tum_ma3001_lo3",
+            "title": "Dualität und Hahn-Banach",
+            "titleEn": "Duality and Hahn–Banach",
+            "description": "Zusammenfassender Cluster: Dualität, Dualräume und der Satz von Hahn-Banach als zentrale Bausteine der Funktionalanalysis.",
+            "descriptionEn": "Summary cluster: duality, dual spaces, and the Hahn–Banach theorem as central building blocks of functional analysis.",
+            "core": true,
+            "weight": 1.4,
+            "phase": "Modul",
+            "area": "Dualität",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [
+                "12616f80-f447-5411-b4d7-2760e480ca5c",
+                "163adbc1-ddc5-5b8b-87a6-740ccbb46b92"
+            ],
+            "requires": [
+                "d12f8041-371b-5f5d-a3cb-822f47156396"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Dualität",
+                "topicCode": "tum_ma3001_lo3"
+            }
+        },
+        {
+            "id": "12616f80-f447-5411-b4d7-2760e480ca5c",
+            "shortKey": "tum_ma3001_lo3_1",
+            "title": "Dualräume und lineare Funktionale verstehen",
+            "titleEn": "Understand Dual Spaces and Linear Functionals",
+            "description": "Die lernende Person kann Dualräume beschreiben, stetige lineare Funktionale in Beispielen bestimmen und Dualität als Strukturprinzip in Banach- und Hilberträumen verwenden.",
+            "descriptionEn": "The learner can describe dual spaces, determine continuous linear functionals in examples, and use duality as a structural principle in Banach and Hilbert spaces.",
+            "core": true,
+            "weight": 0.7,
+            "phase": "Modul",
+            "area": "Dualität",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "d12f8041-371b-5f5d-a3cb-822f47156396"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Dualität",
+                "topicCode": "tum_ma3001_lo3_1"
+            }
+        },
+        {
+            "id": "163adbc1-ddc5-5b8b-87a6-740ccbb46b92",
+            "shortKey": "tum_ma3001_lo3_2",
+            "title": "Satz von Hahn-Banach anwenden",
+            "titleEn": "Apply the Hahn–Banach Theorem",
+            "description": "Die lernende Person kann den Satz von Hahn-Banach als Extensionstheorem einsetzen und typische Anwendungen (z.B. Abschätzungen und Separationsargumente) in Aufgaben nachvollziehen.",
+            "descriptionEn": "The learner can use the Hahn–Banach theorem as an extension theorem and follow typical applications (e.g., estimates and separation arguments) in problems.",
+            "core": true,
+            "weight": 0.7,
+            "phase": "Modul",
+            "area": "Dualität",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "12616f80-f447-5411-b4d7-2760e480ca5c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Dualität",
+                "topicCode": "tum_ma3001_lo3_2"
+            }
+        },
+        {
+            "id": "8e873771-dff0-5a71-ba82-df6b7d3a54c8",
+            "shortKey": "tum_ma3001_lo4",
+            "title": "Schwache und schwach*-Konvergenz",
+            "titleEn": "Weak and Weak* Convergence",
+            "description": "Zusammenfassender Cluster: Schwache und schwach*-Konvergenz als zentrale Konvergenzbegriffe in Banachräumen.",
+            "descriptionEn": "Summary cluster: weak and weak* convergence as central notions of convergence in Banach spaces.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Schwache Konvergenz",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [
+                "2433be3d-bb4a-53e5-9bd4-8b8e7594748b",
+                "9c49f626-c498-5bde-9a49-9e4f4a5e793b"
+            ],
+            "requires": [
+                "12616f80-f447-5411-b4d7-2760e480ca5c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Schwache Konvergenz",
+                "topicCode": "tum_ma3001_lo4"
+            }
+        },
+        {
+            "id": "2433be3d-bb4a-53e5-9bd4-8b8e7594748b",
+            "shortKey": "tum_ma3001_lo4_1",
+            "title": "Schwache Konvergenz in Banach- und Hilberträumen anwenden",
+            "titleEn": "Apply Weak Convergence in Banach and Hilbert Spaces",
+            "description": "Die lernende Person kann schwache Konvergenz definieren, in Beispielen prüfen und typische Konsequenzen (z.B. schwache Kompaktheitseigenschaften in Standardsituationen) diskutieren.",
+            "descriptionEn": "The learner can define weak convergence, verify it in examples, and discuss typical consequences (e.g., weak compactness properties in standard settings).",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Schwache Konvergenz",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "12616f80-f447-5411-b4d7-2760e480ca5c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Schwache Konvergenz",
+                "topicCode": "tum_ma3001_lo4_1"
+            }
+        },
+        {
+            "id": "9c49f626-c498-5bde-9a49-9e4f4a5e793b",
+            "shortKey": "tum_ma3001_lo4_2",
+            "title": "Schwach*-Konvergenz und Dualräume nutzen",
+            "titleEn": "Use Weak* Convergence and Dual Spaces",
+            "description": "Die lernende Person kann schwach*-Konvergenz im Dualraum einordnen und in Beispielen nutzen, um Konvergenz- und Kompaktheitsargumente in Dualräumen zu führen.",
+            "descriptionEn": "The learner can place weak* convergence in the dual space and use it in examples to carry out convergence and compactness arguments in dual spaces.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Schwache Konvergenz",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "2433be3d-bb4a-53e5-9bd4-8b8e7594748b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Schwache Konvergenz",
+                "topicCode": "tum_ma3001_lo4_2"
+            }
+        },
+        {
+            "id": "17a58db1-702f-5ca9-9248-2f8949ac7672",
+            "shortKey": "tum_ma3001_lo5",
+            "title": "Spektraltheorie kompakter selbstadjungierter Operatoren",
+            "titleEn": "Spectral Theory of Compact Selfadjoint Operators",
+            "description": "Zusammenfassender Cluster: Spektraltheorie für kompakte selbstadjungierte Operatoren als zentrale Anwendung der Hilbertraumtheorie.",
+            "descriptionEn": "Summary cluster: spectral theory for compact selfadjoint operators as a central application of Hilbert space theory.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Spektraltheorie",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [
+                "6b3d94a7-2e5b-5f8a-99f2-b78e7c982c9b",
+                "1cecd4c4-954b-50c3-b639-55a1322ca9a1"
+            ],
+            "requires": [
+                "1dd7494e-bf82-50c9-a4a0-4af3df3c9cc2",
+                "4b8772a6-bc84-5a1a-a63f-ad7553a97984"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Spektraltheorie",
+                "topicCode": "tum_ma3001_lo5"
+            }
+        },
+        {
+            "id": "6b3d94a7-2e5b-5f8a-99f2-b78e7c982c9b",
+            "shortKey": "tum_ma3001_lo5_1",
+            "title": "Kompakte und selbstadjungierte Operatoren behandeln",
+            "titleEn": "Work with Compact and Selfadjoint Operators",
+            "description": "Die lernende Person kann kompakte Operatoren und Selbstadjungiertheit in Hilberträumen einordnen und grundlegende Eigenschaften sowie Beispiele sicher verwenden.",
+            "descriptionEn": "The learner can place compact operators and selfadjointness in Hilbert spaces and confidently use basic properties and examples.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Spektraltheorie",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "1dd7494e-bf82-50c9-a4a0-4af3df3c9cc2",
+                "4b8772a6-bc84-5a1a-a63f-ad7553a97984"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Spektraltheorie",
+                "topicCode": "tum_ma3001_lo5_1"
+            }
+        },
+        {
+            "id": "1cecd4c4-954b-50c3-b639-55a1322ca9a1",
+            "shortKey": "tum_ma3001_lo5_2",
+            "title": "Spektren kompakter selbstadjungierter Operatoren analysieren",
+            "titleEn": "Analyze Spectra of Compact Selfadjoint Operators",
+            "description": "Die lernende Person kann Spektren kompakter selbstadjungierter Operatoren beschreiben, Eigenwerte/-vektoren bestimmen und den Spektralsatz in Beispielen anwenden.",
+            "descriptionEn": "The learner can describe spectra of compact selfadjoint operators, determine eigenvalues/eigenvectors, and apply the spectral theorem in examples.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Spektraltheorie",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "6b3d94a7-2e5b-5f8a-99f2-b78e7c982c9b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Spektraltheorie",
+                "topicCode": "tum_ma3001_lo5_2"
+            }
+        },
+        {
+            "id": "e38ec425-eb43-5b0b-89e7-238228960278",
+            "shortKey": "tum_ma3001_lo6",
+            "title": "Einführung in unbeschränkte Operatoren",
+            "titleEn": "Introduction to Unbounded Operators",
+            "description": "Zusammenfassender Cluster: Kurzer Einstieg in unbeschränkte Operatoren und die Besonderheiten von Definitionsbereichen.",
+            "descriptionEn": "Summary cluster: a brief introduction to unbounded operators and the role of domains.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Unbeschränkte Operatoren",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [
+                "6943ab5e-3f31-5fb6-82b1-a9f8b3c3c3b4",
+                "049585ac-1372-55be-ba3d-8bb60fa8e752"
+            ],
+            "requires": [
+                "1dd7494e-bf82-50c9-a4a0-4af3df3c9cc2"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Unbeschränkte Operatoren",
+                "topicCode": "tum_ma3001_lo6"
+            }
+        },
+        {
+            "id": "6943ab5e-3f31-5fb6-82b1-a9f8b3c3c3b4",
+            "shortKey": "tum_ma3001_lo6_1",
+            "title": "Unbeschränkte Operatoren und Definitionsbereiche verstehen",
+            "titleEn": "Understand Unbounded Operators and Domains",
+            "description": "Die lernende Person kann unbeschränkte Operatoren als Operatoren mit nichttrivialem Definitionsbereich einordnen, Begriffe wie Dichte, Abgeschlossenheit und Graphnorm erläutern und Beispiele diskutieren.",
+            "descriptionEn": "The learner can place unbounded operators as operators with nontrivial domains, explain notions such as density, closedness, and graph norm, and discuss examples.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Unbeschränkte Operatoren",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "1dd7494e-bf82-50c9-a4a0-4af3df3c9cc2",
+                "4b8772a6-bc84-5a1a-a63f-ad7553a97984"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Unbeschränkte Operatoren",
+                "topicCode": "tum_ma3001_lo6_1"
+            }
+        },
+        {
+            "id": "049585ac-1372-55be-ba3d-8bb60fa8e752",
+            "shortKey": "tum_ma3001_lo6_2",
+            "title": "Motivation und Beispiele unbeschränkter Operatoren geben",
+            "titleEn": "Give Motivation and Examples of Unbounded Operators",
+            "description": "Die lernende Person kann typische Quellen unbeschränkter Operatoren (z.B. Differentialoperatoren) beschreiben und erklären, warum im unbeschränkten Fall zusätzliche Domänen- und Abgeschlossenheitsfragen auftreten.",
+            "descriptionEn": "The learner can describe typical sources of unbounded operators (e.g., differential operators) and explain why additional domain and closedness issues arise in the unbounded case.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Unbeschränkte Operatoren",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "6943ab5e-3f31-5fb6-82b1-a9f8b3c3c3b4"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Unbeschränkte Operatoren",
+                "topicCode": "tum_ma3001_lo6_2"
+            }
         }
     ]
 }
