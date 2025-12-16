@@ -1,8 +1,8 @@
 {
     "title": "Funktionentheorie (TUM, Modul MA2006)",
     "titleEn": "Complex Analysis (TUM, Module MA2006)",
-    "description": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, die grundlegenden Konzepte, Methoden und Resultate der Funktionentheorie zu verstehen. Sie können logische Zusammenhänge zwischen diesen Konzepten diskutieren, anhand von Beispielen erläutern und Aufgaben mit Hilfe der kennengelernten Konzepte und erlernten Methoden lösen. Insbesondere können die Studierenden den Residuenkalkül anwenden. 5 ECTS, angeboten im Sommersemester, Version 2021w, verantwortet von Warzel, Simone.",
-    "descriptionEn": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, die grundlegenden Konzepte, Methoden und Resultate der Funktionentheorie zu verstehen. Sie können logische Zusammenhänge zwischen diesen Konzepten diskutieren, anhand von Beispielen erläutern und Aufgaben mit Hilfe der kennengelernten Konzepte und erlernten Methoden lösen. Insbesondere können die Studierenden den Residuenkalkül anwenden. 5 ECTS, offered in summer semester, version 2021w, responsible: Warzel, Simone.",
+    "description": "Einführung in die Funktionentheorie (Analysis im Komplexen): holomorphe Funktionen als komplex differenzierbare Funktionen, als Potenzreihen und als Lösungen der Cauchy-Riemann-Gleichungen; komplexe Kurvenintegrale und Integralsätze; Singularitäten und Residuen (Residuenkalkül); konforme Abbildungen. Nach dem erfolgreichen Abschluss des Moduls verstehen die Studierenden grundlegende Konzepte, Methoden und Resultate der Funktionentheorie, können Zusammenhänge diskutieren, anhand von Beispielen erläutern und Aufgaben mit den erlernten Methoden lösen; insbesondere können sie den Residuenkalkül anwenden. 5 ECTS, angeboten im Sommersemester, Version 2021w, verantwortet von Warzel, Simone.",
+    "descriptionEn": "Introduction to complex analysis: holomorphic functions as complex-differentiable functions, as power series, and as solutions to the Cauchy–Riemann equations; complex line integrals and integral theorems; singularities and residues (residue calculus); conformal mappings. After successfully completing the module, students understand the fundamental concepts, methods, and results of complex analysis, can discuss logical connections between these concepts, illustrate them with examples, and solve problems using the methods introduced; in particular, they can apply the residue calculus. 5 ECTS, offered in the summer semester, version 2021w, responsible: Warzel, Simone.",
     "landscapeId": "d3d07107-c5d1-4b8b-a155-b3d309aed57c",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -19,8 +19,8 @@
             "shortKey": "tum_ma2006_module",
             "title": "Funktionentheorie – Gesamtmodul",
             "titleEn": "Complex Analysis – Full Module",
-            "description": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, die grundlegenden Konzepte, Methoden und Resultate der Funktionentheorie zu verstehen. Sie können logische Zusammenhänge zwischen diesen Konzepten diskutieren, anhand von Beispielen erläutern und Aufgaben mit Hilfe der kennengelernten Konzepte und erlernten Methoden lösen. Insbesondere können die Studierenden den Residuenkalkül anwenden.",
-            "descriptionEn": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, die grundlegenden Konzepte, Methoden und Resultate der Funktionentheorie zu verstehen. Sie können logische Zusammenhänge zwischen diesen Konzepten diskutieren, anhand von Beispielen erläutern und Aufgaben mit Hilfe der kennengelernten Konzepte und erlernten Methoden lösen. Insbesondere können die Studierenden den Residuenkalkül anwenden.",
+            "description": "Nach dem erfolgreichen Abschluss des Moduls verstehen die Studierenden grundlegende Konzepte, Methoden und Resultate der Funktionentheorie. Sie können logische Zusammenhänge zwischen diesen Konzepten diskutieren, anhand von Beispielen erläutern und Aufgaben mit Hilfe der kennengelernten Konzepte und erlernten Methoden lösen. Insbesondere können die Studierenden den Residuenkalkül anwenden.",
+            "descriptionEn": "After successfully completing the module, students understand the fundamental concepts, methods, and results of complex analysis. They can discuss logical connections between these concepts, illustrate them with examples, and solve problems using the concepts and methods introduced. In particular, they can apply the residue calculus.",
             "core": true,
             "weight": 5.0,
             "phase": "Modul",
@@ -36,8 +36,17 @@
                 "duration:1_semester",
                 "responsible:warzel_simone"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "ff00fdf3-c381-56ad-886e-e2ec32a3fbfe",
+                "b4f54d03-670d-5bdd-9a74-9201cd36d9f9",
+                "b148c70a-927b-5be9-980d-9d96ec18f963",
+                "19fc165c-826f-5aea-8e37-b8452d3f55c6",
+                "7eab39b0-60b0-5bab-9ce2-970040b2435e"
+            ],
+            "requires": [
+                "8eb1605b-fa70-511b-bbe4-28173d359c3b",
+                "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-ma2006",
@@ -49,6 +58,466 @@
                 "topicCode": "tum_ma2006_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA2006&description_version=2021w"
+        },
+        {
+            "id": "ff00fdf3-c381-56ad-886e-e2ec32a3fbfe",
+            "shortKey": "tum_ma2006_lo1",
+            "title": "Holomorphe Funktionen und Cauchy-Riemann",
+            "titleEn": "Holomorphic Functions and Cauchy–Riemann",
+            "description": "Zusammenfassender Cluster: Holomorphe Funktionen als komplex-differenzierbare Funktionen und als Lösungen der Cauchy-Riemann-Gleichungen.",
+            "descriptionEn": "Summary cluster: holomorphic functions as complex-differentiable functions and as solutions to the Cauchy–Riemann equations.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Holomorphe Funktionen",
+            "tags": [
+                "ects:5",
+                "module:MA2006"
+            ],
+            "contains": [
+                "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46",
+                "0b08a8ec-5793-566d-9753-e3acfd9a554b"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2006",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Holomorphe Funktionen",
+                "topicCode": "tum_ma2006_lo1"
+            }
+        },
+        {
+            "id": "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46",
+            "shortKey": "tum_ma2006_lo1_1",
+            "title": "Komplexe Differenzierbarkeit und Holomorphie nutzen",
+            "titleEn": "Use Complex Differentiability and Holomorphy",
+            "description": "Die lernende Person kann die komplexe Ableitung definieren, Holomorphie erkennen und grundlegende Rechenregeln (z.B. Kettenregel) in Beispielen anwenden.",
+            "descriptionEn": "The learner can define the complex derivative, recognize holomorphic functions, and apply basic calculus rules (e.g., the chain rule) in examples.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Holomorphe Funktionen",
+            "tags": [
+                "ects:5",
+                "module:MA2006"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2006",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Holomorphe Funktionen",
+                "topicCode": "tum_ma2006_lo1_1"
+            }
+        },
+        {
+            "id": "0b08a8ec-5793-566d-9753-e3acfd9a554b",
+            "shortKey": "tum_ma2006_lo1_2",
+            "title": "Cauchy-Riemann-Gleichungen anwenden",
+            "titleEn": "Apply the Cauchy–Riemann Equations",
+            "description": "Die lernende Person kann die Cauchy-Riemann-Gleichungen formulieren und in Beispielen nutzen, um Holomorphie zu prüfen und Zusammenhänge zu erklären.",
+            "descriptionEn": "The learner can state the Cauchy–Riemann equations and use them in examples to test holomorphy and explain related properties.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Holomorphe Funktionen",
+            "tags": [
+                "ects:5",
+                "module:MA2006"
+            ],
+            "contains": [],
+            "requires": [
+                "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2006",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Holomorphe Funktionen",
+                "topicCode": "tum_ma2006_lo1_2"
+            }
+        },
+        {
+            "id": "b4f54d03-670d-5bdd-9a74-9201cd36d9f9",
+            "shortKey": "tum_ma2006_lo2",
+            "title": "Holomorphie als Potenzreihendarstellung",
+            "titleEn": "Holomorphy via Power Series Representations",
+            "description": "Zusammenfassender Cluster: Holomorphe Funktionen als Potenzreihen und der Umgang mit Taylor- und Laurententwicklungen.",
+            "descriptionEn": "Summary cluster: holomorphic functions as power series and working with Taylor and Laurent expansions.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Potenzreihen",
+            "tags": [
+                "ects:5",
+                "module:MA2006"
+            ],
+            "contains": [
+                "2c9b52f8-2b7b-53c2-9bd7-5fa25c8b5f76",
+                "7ddac262-f6a5-5920-a45b-bbf87655f4bd"
+            ],
+            "requires": [
+                "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2006",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Potenzreihen",
+                "topicCode": "tum_ma2006_lo2"
+            }
+        },
+        {
+            "id": "2c9b52f8-2b7b-53c2-9bd7-5fa25c8b5f76",
+            "shortKey": "tum_ma2006_lo2_1",
+            "title": "Potenzreihen im Komplexen handhaben",
+            "titleEn": "Handle Power Series in the Complex Plane",
+            "description": "Die lernende Person kann Potenzreihen im Komplexen untersuchen (Konvergenzradius, Ableiten/Integrieren gliedweise) und daraus lokale Darstellungen holomorpher Funktionen gewinnen.",
+            "descriptionEn": "The learner can analyze power series in the complex plane (radius of convergence, termwise differentiation/integration) and use them to obtain local representations of holomorphic functions.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Potenzreihen",
+            "tags": [
+                "ects:5",
+                "module:MA2006"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2006",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Potenzreihen",
+                "topicCode": "tum_ma2006_lo2_1"
+            }
+        },
+        {
+            "id": "7ddac262-f6a5-5920-a45b-bbf87655f4bd",
+            "shortKey": "tum_ma2006_lo2_2",
+            "title": "Taylor- und Laurententwicklungen nutzen",
+            "titleEn": "Use Taylor and Laurent Expansions",
+            "description": "Die lernende Person kann Taylor- und Laurententwicklungen in Beispielen bestimmen, Koeffizienten interpretieren und daraus Aussagen über das Verhalten von Funktionen ableiten.",
+            "descriptionEn": "The learner can determine Taylor and Laurent expansions in examples, interpret coefficients, and derive statements about the behavior of functions.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Potenzreihen",
+            "tags": [
+                "ects:5",
+                "module:MA2006"
+            ],
+            "contains": [],
+            "requires": [
+                "2c9b52f8-2b7b-53c2-9bd7-5fa25c8b5f76"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2006",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Potenzreihen",
+                "topicCode": "tum_ma2006_lo2_2"
+            }
+        },
+        {
+            "id": "b148c70a-927b-5be9-980d-9d96ec18f963",
+            "shortKey": "tum_ma2006_lo3",
+            "title": "Komplexe Integration und Integralsätze",
+            "titleEn": "Complex Integration and Integral Theorems",
+            "description": "Zusammenfassender Cluster: Komplexe Kurvenintegrale und grundlegende Integralsätze als Basis der Funktionentheorie.",
+            "descriptionEn": "Summary cluster: complex line integrals and fundamental integral theorems as the basis of complex analysis.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kurvenintegrale",
+            "tags": [
+                "ects:5",
+                "module:MA2006"
+            ],
+            "contains": [
+                "da3781cd-8454-5d71-93b0-f5b006f676c8",
+                "04fd5505-cb9e-5bf2-85c2-faf20248f81b"
+            ],
+            "requires": [
+                "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2006",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Kurvenintegrale",
+                "topicCode": "tum_ma2006_lo3"
+            }
+        },
+        {
+            "id": "da3781cd-8454-5d71-93b0-f5b006f676c8",
+            "shortKey": "tum_ma2006_lo3_1",
+            "title": "Komplexe Kurvenintegrale berechnen",
+            "titleEn": "Compute Complex Line Integrals",
+            "description": "Die lernende Person kann komplexe Kurvenintegrale über parametrisierte Wege berechnen und grundlegende Eigenschaften (z.B. Umparametrisierung, Orientierung) korrekt berücksichtigen.",
+            "descriptionEn": "The learner can compute complex line integrals along parameterized curves and correctly account for basic properties (e.g., reparameterization, orientation).",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Kurvenintegrale",
+            "tags": [
+                "ects:5",
+                "module:MA2006"
+            ],
+            "contains": [],
+            "requires": [
+                "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2006",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Kurvenintegrale",
+                "topicCode": "tum_ma2006_lo3_1"
+            }
+        },
+        {
+            "id": "04fd5505-cb9e-5bf2-85c2-faf20248f81b",
+            "shortKey": "tum_ma2006_lo3_2",
+            "title": "Cauchy-Integralsätze und Cauchy-Formel anwenden",
+            "titleEn": "Apply Cauchy’s Theorems and the Cauchy Integral Formula",
+            "description": "Die lernende Person kann zentrale Integralsätze (Cauchy-Integralsatz) und die Cauchy-Integralformel anwenden, um Integrale zu bestimmen und Konsequenzen für holomorphe Funktionen herzuleiten.",
+            "descriptionEn": "The learner can apply central integral theorems (Cauchy’s theorem) and the Cauchy integral formula to compute integrals and derive consequences for holomorphic functions.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Kurvenintegrale",
+            "tags": [
+                "ects:5",
+                "module:MA2006"
+            ],
+            "contains": [],
+            "requires": [
+                "da3781cd-8454-5d71-93b0-f5b006f676c8"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2006",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Kurvenintegrale",
+                "topicCode": "tum_ma2006_lo3_2"
+            }
+        },
+        {
+            "id": "19fc165c-826f-5aea-8e37-b8452d3f55c6",
+            "shortKey": "tum_ma2006_lo4",
+            "title": "Singularitäten und Residuen",
+            "titleEn": "Singularities and Residues",
+            "description": "Zusammenfassender Cluster: Singularitäten, Laurentreihen und Residuen als zentrale Werkzeuge zur Integralberechnung.",
+            "descriptionEn": "Summary cluster: singularities, Laurent series, and residues as central tools for evaluating integrals.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Residuenkalkül",
+            "tags": [
+                "ects:5",
+                "module:MA2006"
+            ],
+            "contains": [
+                "1947d8ec-729c-5e12-a2ab-4119a38b81da",
+                "7e2eaa61-54af-59ca-83fe-8538b3cab4be"
+            ],
+            "requires": [
+                "04fd5505-cb9e-5bf2-85c2-faf20248f81b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2006",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Residuenkalkül",
+                "topicCode": "tum_ma2006_lo4"
+            }
+        },
+        {
+            "id": "1947d8ec-729c-5e12-a2ab-4119a38b81da",
+            "shortKey": "tum_ma2006_lo4_1",
+            "title": "Singularitäten klassifizieren",
+            "titleEn": "Classify Singularities",
+            "description": "Die lernende Person kann isolierte Singularitäten mithilfe von Laurentreihen klassifizieren (hebbar, Pol, wesentlich) und das lokale Verhalten von Funktionen daraus ableiten.",
+            "descriptionEn": "The learner can classify isolated singularities using Laurent series (removable, pole, essential) and derive local behavior of functions from this classification.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Residuenkalkül",
+            "tags": [
+                "ects:5",
+                "module:MA2006"
+            ],
+            "contains": [],
+            "requires": [
+                "7ddac262-f6a5-5920-a45b-bbf87655f4bd"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2006",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Residuenkalkül",
+                "topicCode": "tum_ma2006_lo4_1"
+            }
+        },
+        {
+            "id": "7e2eaa61-54af-59ca-83fe-8538b3cab4be",
+            "shortKey": "tum_ma2006_lo4_2",
+            "title": "Residuenkalkül anwenden",
+            "titleEn": "Apply the Residue Calculus",
+            "description": "Die lernende Person kann Residuen berechnen, den Residuensatz anwenden und damit komplexe Integrale sowie ausgewählte reelle Integrale in Beispielen bestimmen.",
+            "descriptionEn": "The learner can compute residues, apply the residue theorem, and use it to evaluate complex integrals as well as selected real integrals in examples.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Residuenkalkül",
+            "tags": [
+                "ects:5",
+                "module:MA2006"
+            ],
+            "contains": [],
+            "requires": [
+                "1947d8ec-729c-5e12-a2ab-4119a38b81da",
+                "04fd5505-cb9e-5bf2-85c2-faf20248f81b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2006",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Residuenkalkül",
+                "topicCode": "tum_ma2006_lo4_2"
+            }
+        },
+        {
+            "id": "7eab39b0-60b0-5bab-9ce2-970040b2435e",
+            "shortKey": "tum_ma2006_lo5",
+            "title": "Konforme Abbildungen",
+            "titleEn": "Conformal Mappings",
+            "description": "Zusammenfassender Cluster: Konforme Abbildungen als Anwendung holomorpher Funktionen zur Geometrie komplexer Gebiete.",
+            "descriptionEn": "Summary cluster: conformal mappings as an application of holomorphic functions to the geometry of complex domains.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Konforme Abbildungen",
+            "tags": [
+                "ects:5",
+                "module:MA2006"
+            ],
+            "contains": [
+                "876ab522-b4f6-5698-982b-c5ae4c5c2699",
+                "e7ccfb07-2b21-505b-9580-ccff19447438"
+            ],
+            "requires": [
+                "0b08a8ec-5793-566d-9753-e3acfd9a554b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2006",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Konforme Abbildungen",
+                "topicCode": "tum_ma2006_lo5"
+            }
+        },
+        {
+            "id": "876ab522-b4f6-5698-982b-c5ae4c5c2699",
+            "shortKey": "tum_ma2006_lo5_1",
+            "title": "Konforme Abbildungen erkennen und Eigenschaften nutzen",
+            "titleEn": "Recognize Conformal Maps and Use Their Properties",
+            "description": "Die lernende Person kann Konformität holomorpher Abbildungen (lokale Winkeltreue bei nichtverschwindender Ableitung) erklären und in Beispielen prüfen.",
+            "descriptionEn": "The learner can explain conformality of holomorphic maps (local angle preservation when the derivative is nonzero) and verify it in examples.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Konforme Abbildungen",
+            "tags": [
+                "ects:5",
+                "module:MA2006"
+            ],
+            "contains": [],
+            "requires": [
+                "0b08a8ec-5793-566d-9753-e3acfd9a554b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2006",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Konforme Abbildungen",
+                "topicCode": "tum_ma2006_lo5_1"
+            }
+        },
+        {
+            "id": "e7ccfb07-2b21-505b-9580-ccff19447438",
+            "shortKey": "tum_ma2006_lo5_2",
+            "title": "Möbiustransformationen und elementare Abbildungen anwenden",
+            "titleEn": "Apply Möbius Transformations and Elementary Maps",
+            "description": "Die lernende Person kann Möbiustransformationen sowie elementare konforme Abbildungen (z.B. Exponential- und Logarithmusabbildung mit Verzweigungen) zur Abbildung einfacher Gebiete einsetzen und Ergebnisse interpretieren.",
+            "descriptionEn": "The learner can use Möbius transformations and elementary conformal maps (e.g., exponential and logarithm maps with branches) to map simple domains and interpret the results.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Konforme Abbildungen",
+            "tags": [
+                "ects:5",
+                "module:MA2006"
+            ],
+            "contains": [],
+            "requires": [
+                "876ab522-b4f6-5698-982b-c5ae4c5c2699"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2006",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Konforme Abbildungen",
+                "topicCode": "tum_ma2006_lo5_2"
+            }
         }
     ]
 }
