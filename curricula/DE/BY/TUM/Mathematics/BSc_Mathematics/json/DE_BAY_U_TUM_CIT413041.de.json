@@ -1,8 +1,8 @@
 {
     "title": "Discrete Optimization (TUM, Modul CIT413041)",
     "titleEn": "Discrete Optimization (TUM, Module CIT413041)",
-    "description": "Nach erfolgreichem Abschluss des Moduls haben die Studierenden ein solides Wissen über die grundlegenden Konzepte der diskreten Optimierung. Insbesondere erkennen sie relevante mathematische Strukturen der linearen ganzzahligen und kombinatorischen Optimierung und können diese für effiziente Lösungsverfahren ausnutzen. Außerdem sind die Studierenden in der Lage, reale Probleme als Probleme der diskreten Optimierung zu modellieren und Spezialfälle zu identifizieren, die effizient lösbar sind. 9 ECTS, angeboten im Wintersemester, Version 2024s, verantwortet von Weltge, Stefan.",
-    "descriptionEn": "Nach erfolgreichem Abschluss des Moduls haben die Studierenden ein solides Wissen über die grundlegenden Konzepte der diskreten Optimierung. Insbesondere erkennen sie relevante mathematische Strukturen der linearen ganzzahligen und kombinatorischen Optimierung und können diese für effiziente Lösungsverfahren ausnutzen. Außerdem sind die Studierenden in der Lage, reale Probleme als Probleme der diskreten Optimierung zu modellieren und Spezialfälle zu identifizieren, die effizient lösbar sind. 9 ECTS, offered in winter semester, version 2024s, responsible: Weltge, Stefan.",
+    "description": "Das Modul behandelt zentrale Themen der diskreten Optimierung, insbesondere der linearen ganzzahligen Optimierung und der kombinatorischen Optimierung. Im Vordergrund steht die Analyse mathematischer Strukturen, die die Entwicklung effizienter Algorithmen ermöglicht. Dazu werden Grundlagen der Komplexitätstheorie sowie Inhalte der ganzzahligen Optimierung (Gitter und diophantische Gleichungssysteme, ganzzahlige Hüllen und ganzzahlige Polyeder, totale Unimodularität, Schnittebenen und Branch-&-Bound/Branch-&-Cut) behandelt. Im Teil der kombinatorischen Optimierung werden Algorithmen für Matroide, maximale und kostenminimale Flüsse sowie Matchings in bipartiten und allgemeinen Graphen erarbeitet. Nach erfolgreichem Abschluss können Studierende reale Probleme als diskrete Optimierungsprobleme modellieren, strukturelle Spezialfälle identifizieren und geeignete Algorithmik begründet auswählen. 9 ECTS, angeboten im Wintersemester, Version 2024s, verantwortet von Weltge, Stefan.",
+    "descriptionEn": "The module covers core topics in discrete optimization, in particular integer linear optimization and combinatorial optimization. The focus is on analyzing mathematical structures that enable the design of efficient algorithms. Topics include foundations of complexity theory as well as integer optimization (lattices and linear Diophantine systems, integer hulls and integral polyhedra, total unimodularity, cutting planes, and branch-and-bound/branch-and-cut). In the combinatorial part, algorithms for matroids, maximum and minimum-cost flows, and matchings in bipartite and general graphs are studied. After successful completion, students can model real problems as discrete optimization problems, identify tractable special cases via structural properties, and select appropriate algorithms in a well-justified way. 9 ECTS, offered in the winter semester, version 2024s, responsible: Weltge, Stefan.",
     "landscapeId": "a9550da1-62c5-4ae0-b1e0-9ee0f8490385",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -20,7 +20,7 @@
             "title": "Discrete Optimization – Gesamtmodul",
             "titleEn": "Discrete Optimization – Full Module",
             "description": "Nach erfolgreichem Abschluss des Moduls haben die Studierenden ein solides Wissen über die grundlegenden Konzepte der diskreten Optimierung. Insbesondere erkennen sie relevante mathematische Strukturen der linearen ganzzahligen und kombinatorischen Optimierung und können diese für effiziente Lösungsverfahren ausnutzen. Außerdem sind die Studierenden in der Lage, reale Probleme als Probleme der diskreten Optimierung zu modellieren und Spezialfälle zu identifizieren, die effizient lösbar sind.",
-            "descriptionEn": "Nach erfolgreichem Abschluss des Moduls haben die Studierenden ein solides Wissen über die grundlegenden Konzepte der diskreten Optimierung. Insbesondere erkennen sie relevante mathematische Strukturen der linearen ganzzahligen und kombinatorischen Optimierung und können diese für effiziente Lösungsverfahren ausnutzen. Außerdem sind die Studierenden in der Lage, reale Probleme als Probleme der diskreten Optimierung zu modellieren und Spezialfälle zu identifizieren, die effizient lösbar sind.",
+            "descriptionEn": "After successful completion of the module students have solid knowledge of the fundamental concepts of discrete optimization. In particular, they recognize relevant mathematical structures in integer linear and combinatorial optimization and can exploit them for efficient solution methods. Moreover, students are able to model real problems as discrete optimization problems and identify special cases that can be solved efficiently.",
             "core": true,
             "weight": 9.0,
             "phase": "Modul",
@@ -29,15 +29,29 @@
                 "ects:9",
                 "workload:270h",
                 "presence:90h",
-                "level:bachelor",
-                "language:de",
+                "level:master",
+                "language:en",
                 "module:CIT413041",
                 "semester:WS",
                 "duration:1_semester",
                 "responsible:weltge_stefan"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "c93c61d6-74c3-5a8f-bb85-35f46a10205a",
+                "3a3c9971-42b9-5477-b8e4-69c49d4146d5",
+                "42bc95a2-082e-5702-9ec1-4044701c528f",
+                "28a57b3e-ea07-5549-8f2a-3b58a5a62b42",
+                "62d1aed4-3fed-520c-900e-18305f96959b",
+                "c369b413-5f63-58c7-97ef-afa44baa50eb",
+                "e0136c92-76e9-5749-b734-8c329f05fa29",
+                "be9cd2b7-b576-56d0-849e-df44a0d3a58b"
+            ],
+            "requires": [
+                "feaad1d5-022f-5ab3-93c3-001ac46de351",
+                "1e712ee7-a9d9-58d0-8eb9-e45098c14fbc",
+                "946f50cd-f6d9-5d1c-a79d-c06a302ce7be",
+                "b805ec8a-3357-56b6-a770-86490a3c8916"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-cit413041",
@@ -49,6 +63,732 @@
                 "topicCode": "tum_cit413041_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=CIT413041&description_version=2024s"
+        },
+        {
+            "id": "c93c61d6-74c3-5a8f-bb85-35f46a10205a",
+            "shortKey": "tum_cit413041_lo1",
+            "title": "Grundlagen der Komplexitätstheorie",
+            "titleEn": "Foundations of Complexity Theory",
+            "description": "Zusammenfassender Cluster: Komplexitätsmodelle, Reduktionen und grundlegende Klassen als Basis für die Analyse diskreter Optimierungsprobleme.",
+            "descriptionEn": "Summary cluster: computational models, reductions, and basic complexity classes as a basis for analyzing discrete optimization problems.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Komplexität",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [
+                "4c9c4fdd-e731-54d9-90fc-c430a5c137ff",
+                "8b69e1e7-f2ba-56c3-b929-36fa12cbb5df"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Komplexität",
+                "topicCode": "tum_cit413041_lo1"
+            }
+        },
+        {
+            "id": "4c9c4fdd-e731-54d9-90fc-c430a5c137ff",
+            "shortKey": "tum_cit413041_lo1_1",
+            "title": "Komplexitätsbegriffe und Reduktionen anwenden",
+            "titleEn": "Apply Complexity Concepts and Reductions",
+            "description": "Die lernende Person kann grundlegende Komplexitätsbegriffe (z.B. Laufzeitordnung, Polynomialzeit) erklären und Reduktionen verwenden, um die Schwierigkeit von Entscheidungs- und Optimierungsproblemen einzuordnen.",
+            "descriptionEn": "The learner can explain basic complexity concepts (e.g., asymptotic runtime, polynomial time) and use reductions to classify the difficulty of decision and optimization problems.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Komplexität",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Komplexität",
+                "topicCode": "tum_cit413041_lo1_1"
+            }
+        },
+        {
+            "id": "8b69e1e7-f2ba-56c3-b929-36fa12cbb5df",
+            "shortKey": "tum_cit413041_lo1_2",
+            "title": "Diskrete Optimierungsprobleme algorithmisch klassifizieren",
+            "titleEn": "Classify Discrete Optimization Problems Algorithmically",
+            "description": "Die lernende Person kann typische Probleme der diskreten Optimierung anhand struktureller Eigenschaften als effizient lösbar oder als (vermutlich) schwer einordnen und die Konsequenzen für die Methodenwahl begründen.",
+            "descriptionEn": "The learner can classify typical discrete optimization problems as efficiently solvable or (presumably) hard based on structural properties and justify the implications for choosing solution methods.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Komplexität",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [
+                "4c9c4fdd-e731-54d9-90fc-c430a5c137ff"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Komplexität",
+                "topicCode": "tum_cit413041_lo1_2"
+            }
+        },
+        {
+            "id": "3a3c9971-42b9-5477-b8e4-69c49d4146d5",
+            "shortKey": "tum_cit413041_lo2",
+            "title": "Komplexität von linearen Gleichungssystemen und LP (Ellipsoid)",
+            "titleEn": "Complexity of Linear Systems and LP (Ellipsoid Method)",
+            "description": "Zusammenfassender Cluster: Komplexität kontinuierlicher Grundprobleme und Ideen polynomialzeitlicher LP-Verfahren (Ellipsoidmethode, Separation vs. Optimierung).",
+            "descriptionEn": "Summary cluster: complexity of basic continuous problems and ideas of polynomial-time LP methods (ellipsoid method, separation vs. optimization).",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "LP & Ellipsoid",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [
+                "31684b32-6ee4-5329-8fec-6bbeae4e5f9c",
+                "7b4fa5c2-7e1e-552e-b19e-f7db3f9ac93b"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "LP & Ellipsoid",
+                "topicCode": "tum_cit413041_lo2"
+            }
+        },
+        {
+            "id": "31684b32-6ee4-5329-8fec-6bbeae4e5f9c",
+            "shortKey": "tum_cit413041_lo2_1",
+            "title": "Ellipsoidmethode konzeptionell erklären und einordnen",
+            "titleEn": "Explain and Place the Ellipsoid Method Conceptually",
+            "description": "Die lernende Person kann die Grundidee der Ellipsoidmethode beschreiben, den Zusammenhang von Separation und Optimierung erklären und die Rolle polynomialzeitlicher LP-Algorithmen in der Theorie einordnen.",
+            "descriptionEn": "The learner can describe the main idea of the ellipsoid method, explain the relation between separation and optimization, and place polynomial-time LP algorithms within the theory.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "LP & Ellipsoid",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [
+                "8b69e1e7-f2ba-56c3-b929-36fa12cbb5df"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "LP & Ellipsoid",
+                "topicCode": "tum_cit413041_lo2_1"
+            }
+        },
+        {
+            "id": "7b4fa5c2-7e1e-552e-b19e-f7db3f9ac93b",
+            "shortKey": "tum_cit413041_lo2_2",
+            "title": "Komplexitätsaussagen zu linearen Problemen begründet diskutieren",
+            "titleEn": "Discuss Complexity Statements for Linear Problems",
+            "description": "Die lernende Person kann grundlegende Komplexitätsaspekte beim Lösen linearer Gleichungssysteme und linearer Optimierungsprobleme erläutern und die Konsequenzen für algorithmische Strategien (z.B. Relaxationen, Trennung) begründet diskutieren.",
+            "descriptionEn": "The learner can explain basic complexity aspects of solving linear systems and linear optimization problems and discuss implications for algorithmic strategies (e.g., relaxations, separation) in a well-justified way.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "LP & Ellipsoid",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [
+                "31684b32-6ee4-5329-8fec-6bbeae4e5f9c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "LP & Ellipsoid",
+                "topicCode": "tum_cit413041_lo2_2"
+            }
+        },
+        {
+            "id": "42bc95a2-082e-5702-9ec1-4044701c528f",
+            "shortKey": "tum_cit413041_lo3",
+            "title": "Lineare diophantische Gleichungssysteme und Gitter",
+            "titleEn": "Linear Diophantine Systems and Lattices",
+            "description": "Zusammenfassender Cluster: Ganzzahlige Lösungen linearer Systeme, Gitterstrukturen und deren Nutzung in der ganzzahligen Optimierung.",
+            "descriptionEn": "Summary cluster: integer solutions of linear systems, lattice structures, and their use in integer optimization.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Gitter",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [
+                "bb894737-f90b-5c72-813c-6c57f91d4acc",
+                "911ecb30-2a7f-5d98-93e9-2a599b674e76"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Gitter",
+                "topicCode": "tum_cit413041_lo3"
+            }
+        },
+        {
+            "id": "bb894737-f90b-5c72-813c-6c57f91d4acc",
+            "shortKey": "tum_cit413041_lo3_1",
+            "title": "Diophantische Systeme und Gitterstrukturen beschreiben",
+            "titleEn": "Describe Diophantine Systems and Lattice Structures",
+            "description": "Die lernende Person kann lineare diophantische Gleichungssysteme formulieren, den Lösungsraum als Gitter interpretieren und grundlegende Begriffe (Basis, Rang, Erzeugung) in einfachen Beispielen anwenden.",
+            "descriptionEn": "The learner can formulate linear Diophantine systems, interpret the solution set as a lattice, and apply basic notions (basis, rank, generation) in simple examples.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Gitter",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [
+                "8b69e1e7-f2ba-56c3-b929-36fa12cbb5df"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Gitter",
+                "topicCode": "tum_cit413041_lo3_1"
+            }
+        },
+        {
+            "id": "911ecb30-2a7f-5d98-93e9-2a599b674e76",
+            "shortKey": "tum_cit413041_lo3_2",
+            "title": "Gitterbasierte Argumente für Integrität und Machbarkeit nutzen",
+            "titleEn": "Use Lattice-Based Arguments for Integrality and Feasibility",
+            "description": "Die lernende Person kann in ausgewählten Aufgaben Gitterargumente einsetzen, um ganzzahlige Machbarkeit bzw. Struktur von Lösungen zu analysieren, und die Verbindung zu ganzzahliger Optimierung erläutern.",
+            "descriptionEn": "The learner can use lattice-based arguments in selected tasks to analyze integer feasibility or solution structure and explain the connection to integer optimization.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Gitter",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [
+                "bb894737-f90b-5c72-813c-6c57f91d4acc"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Gitter",
+                "topicCode": "tum_cit413041_lo3_2"
+            }
+        },
+        {
+            "id": "28a57b3e-ea07-5549-8f2a-3b58a5a62b42",
+            "shortKey": "tum_cit413041_lo4",
+            "title": "Ganzzahlige Punkte in Polyedern und totale Unimodularität",
+            "titleEn": "Integer Points in Polyhedra and Total Unimodularity",
+            "description": "Zusammenfassender Cluster: Ganzzahlige Hülle, ganzzahlige Polyeder und Strukturbedingungen (z.B. totale Unimodularität) für Integrität von LP-Relaxationen.",
+            "descriptionEn": "Summary cluster: integer hulls, integral polyhedra, and structural conditions (e.g., total unimodularity) ensuring integrality of LP relaxations.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Ganzzahlige Polyeder",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [
+                "b3fab463-021a-5666-9469-f49b268373cd",
+                "4929c0ac-a547-5a20-9798-01c862ebf11b"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Ganzzahlige Polyeder",
+                "topicCode": "tum_cit413041_lo4"
+            }
+        },
+        {
+            "id": "b3fab463-021a-5666-9469-f49b268373cd",
+            "shortKey": "tum_cit413041_lo4_1",
+            "title": "Ganzzahlige Hülle und ganzzahlige Polyeder einordnen",
+            "titleEn": "Place Integer Hulls and Integral Polyhedra",
+            "description": "Die lernende Person kann den Begriff der ganzzahligen Hülle erläutern, integrale Polyeder erkennen/charakterisieren und die Rolle von Relaxationen in der ganzzahligen Optimierung begründen.",
+            "descriptionEn": "The learner can explain the notion of the integer hull, recognize/characterize integral polyhedra, and justify the role of relaxations in integer optimization.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Ganzzahlige Polyeder",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [
+                "7b4fa5c2-7e1e-552e-b19e-f7db3f9ac93b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Ganzzahlige Polyeder",
+                "topicCode": "tum_cit413041_lo4_1"
+            }
+        },
+        {
+            "id": "4929c0ac-a547-5a20-9798-01c862ebf11b",
+            "shortKey": "tum_cit413041_lo4_2",
+            "title": "Totale Unimodularität als Integritätskriterium anwenden",
+            "titleEn": "Apply Total Unimodularity as an Integrality Criterion",
+            "description": "Die lernende Person kann totale Unimodularität erklären, sie in ausgewählten Beispielen prüfen und daraus Integritätsaussagen für LP-Relaxationen (z.B. Netzwerkmatrizen) ableiten.",
+            "descriptionEn": "The learner can explain total unimodularity, check it in selected examples, and derive integrality results for LP relaxations (e.g., network matrices).",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Ganzzahlige Polyeder",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [
+                "b3fab463-021a-5666-9469-f49b268373cd"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Ganzzahlige Polyeder",
+                "topicCode": "tum_cit413041_lo4_2"
+            }
+        },
+        {
+            "id": "62d1aed4-3fed-520c-900e-18305f96959b",
+            "shortKey": "tum_cit413041_lo5",
+            "title": "Schnittebenen und Branch-&-Bound/Branch-&-Cut",
+            "titleEn": "Cutting Planes and Branch-and-Bound/Branch-and-Cut",
+            "description": "Zusammenfassender Cluster: Schnittebenen, Valid Inequalities und kombinierte Verfahren (Branch-&-Bound, Branch-&-Cut) für ILPs.",
+            "descriptionEn": "Summary cluster: cutting planes, valid inequalities, and combined methods (branch-and-bound, branch-and-cut) for ILPs.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "ILP-Algorithmen",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [
+                "5ffa5499-b339-5446-a68b-67bd72428c0f",
+                "61b6cd24-5e9d-500b-8f41-f7ce46032fc5"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "ILP-Algorithmen",
+                "topicCode": "tum_cit413041_lo5"
+            }
+        },
+        {
+            "id": "5ffa5499-b339-5446-a68b-67bd72428c0f",
+            "shortKey": "tum_cit413041_lo5_1",
+            "title": "Schnittebenen und gültige Ungleichungen konstruieren",
+            "titleEn": "Construct Cutting Planes and Valid Inequalities",
+            "description": "Die lernende Person kann die Idee von Schnittebenen erläutern, gültige Ungleichungen identifizieren/konstruierten und erklären, wie Relaxationen durch Schnitte verschärft werden.",
+            "descriptionEn": "The learner can explain the idea of cutting planes, identify/construct valid inequalities, and explain how relaxations are tightened by cuts.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "ILP-Algorithmen",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [
+                "4929c0ac-a547-5a20-9798-01c862ebf11b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "ILP-Algorithmen",
+                "topicCode": "tum_cit413041_lo5_1"
+            }
+        },
+        {
+            "id": "61b6cd24-5e9d-500b-8f41-f7ce46032fc5",
+            "shortKey": "tum_cit413041_lo5_2",
+            "title": "Branch-&-Bound/Branch-&-Cut als Lösungsstrategie einsetzen",
+            "titleEn": "Use Branch-and-Bound/Branch-and-Cut as a Solution Strategy",
+            "description": "Die lernende Person kann Branch-&-Bound und Branch-&-Cut strukturell beschreiben, Bounding- und Branching-Entscheidungen begründen und in einfachen Beispielen Suchbäume bzw. Schnittebenen-Iterationen nachvollziehen.",
+            "descriptionEn": "The learner can describe branch-and-bound and branch-and-cut structurally, justify bounding and branching decisions, and trace search trees or cut iterations in simple examples.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "ILP-Algorithmen",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [
+                "5ffa5499-b339-5446-a68b-67bd72428c0f"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "ILP-Algorithmen",
+                "topicCode": "tum_cit413041_lo5_2"
+            }
+        },
+        {
+            "id": "c369b413-5f63-58c7-97ef-afa44baa50eb",
+            "shortKey": "tum_cit413041_lo6",
+            "title": "Matroide und Greedy-Algorithmen",
+            "titleEn": "Matroids and Greedy Algorithms",
+            "description": "Zusammenfassender Cluster: Matroid-Strukturen als Grundlage effizienter kombinatorischer Optimierung und Greedy-Methoden.",
+            "descriptionEn": "Summary cluster: matroid structure as a basis for efficient combinatorial optimization and greedy methods.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Matroide",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [
+                "c19ceb31-9c5f-5e7a-a755-af2d7fd12f9d",
+                "8320eb41-58b1-5de3-baa1-26c0ea13f5e0"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Matroide",
+                "topicCode": "tum_cit413041_lo6"
+            }
+        },
+        {
+            "id": "c19ceb31-9c5f-5e7a-a755-af2d7fd12f9d",
+            "shortKey": "tum_cit413041_lo6_1",
+            "title": "Matroide erkennen und als Optimierungsstruktur nutzen",
+            "titleEn": "Recognize Matroids and Use Them as an Optimization Structure",
+            "description": "Die lernende Person kann Matroide über Unabhängigkeitsaxiome definieren, Beispiele (z.B. Grafik-/Vektormatroid) erkennen und die zugehörigen Optimierungsprobleme formulieren.",
+            "descriptionEn": "The learner can define matroids via independence axioms, recognize examples (e.g., graphic/vector matroids), and formulate the associated optimization problems.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Matroide",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [
+                "8b69e1e7-f2ba-56c3-b929-36fa12cbb5df"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Matroide",
+                "topicCode": "tum_cit413041_lo6_1"
+            }
+        },
+        {
+            "id": "8320eb41-58b1-5de3-baa1-26c0ea13f5e0",
+            "shortKey": "tum_cit413041_lo6_2",
+            "title": "Greedy-Algorithmus auf Matroiden korrekt anwenden",
+            "titleEn": "Apply the Greedy Algorithm on Matroids Correctly",
+            "description": "Die lernende Person kann den Greedy-Algorithmus für gewichtete Matroiden anwenden, die Korrektheit über Austauschargumente erläutern und die Grenzen der Methode anhand von Gegenbeispielen ohne Matroidstruktur erklären.",
+            "descriptionEn": "The learner can apply the greedy algorithm for weighted matroids, explain correctness via exchange arguments, and explain limitations using counterexamples without matroid structure.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Matroide",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [
+                "c19ceb31-9c5f-5e7a-a755-af2d7fd12f9d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Matroide",
+                "topicCode": "tum_cit413041_lo6_2"
+            }
+        },
+        {
+            "id": "e0136c92-76e9-5749-b734-8c329f05fa29",
+            "shortKey": "tum_cit413041_lo7",
+            "title": "Maximale und kostenminimale Flüsse",
+            "titleEn": "Maximum and Minimum-Cost Flows",
+            "description": "Zusammenfassender Cluster: Netzwerkflussmodelle, Max-Flow-Min-Cut-Strukturen und Algorithmen für maximale und kostenminimale Flüsse.",
+            "descriptionEn": "Summary cluster: network flow models, max-flow/min-cut structure, and algorithms for maximum and minimum-cost flows.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Flüsse",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [
+                "e1f20ee4-5804-5f76-a052-d802545fa829",
+                "e0467da1-9031-5a3f-886c-a4fe41e5e0c4"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Flüsse",
+                "topicCode": "tum_cit413041_lo7"
+            }
+        },
+        {
+            "id": "e1f20ee4-5804-5f76-a052-d802545fa829",
+            "shortKey": "tum_cit413041_lo7_1",
+            "title": "Max-Flow-Min-Cut modellieren und Algorithmen anwenden",
+            "titleEn": "Model Max-Flow/Min-Cut and Apply Algorithms",
+            "description": "Die lernende Person kann Probleme als Flussnetzwerk modellieren, den Max-Flow-Min-Cut-Zusammenhang erklären und grundlegende Algorithmik (augmentierende Pfade, Residualnetz) in Beispielen anwenden.",
+            "descriptionEn": "The learner can model problems as flow networks, explain the max-flow/min-cut relationship, and apply basic algorithms (augmenting paths, residual networks) in examples.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Flüsse",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [
+                "8b69e1e7-f2ba-56c3-b929-36fa12cbb5df"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Flüsse",
+                "topicCode": "tum_cit413041_lo7_1"
+            }
+        },
+        {
+            "id": "e0467da1-9031-5a3f-886c-a4fe41e5e0c4",
+            "shortKey": "tum_cit413041_lo7_2",
+            "title": "Kostenminimale Flüsse lösen und Dual-/Potentialideen nutzen",
+            "titleEn": "Solve Minimum-Cost Flows and Use Dual/Potential Ideas",
+            "description": "Die lernende Person kann kostenminimale Flüsse formulieren, geeignete Algorithmen (z.B. successive shortest path) anwenden und die Rolle von Potentialen/Dualvariablen zur Korrektheit und Effizienz begründen.",
+            "descriptionEn": "The learner can formulate minimum-cost flow problems, apply suitable algorithms (e.g., successive shortest path), and justify the role of potentials/dual variables for correctness and efficiency.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Flüsse",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [
+                "e1f20ee4-5804-5f76-a052-d802545fa829"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Flüsse",
+                "topicCode": "tum_cit413041_lo7_2"
+            }
+        },
+        {
+            "id": "be9cd2b7-b576-56d0-849e-df44a0d3a58b",
+            "shortKey": "tum_cit413041_lo8",
+            "title": "Matchings in bipartiten und allgemeinen Graphen",
+            "titleEn": "Matchings in Bipartite and General Graphs",
+            "description": "Zusammenfassender Cluster: Matching-Probleme, augmentierende Pfade und Algorithmen für bipartite und allgemeine Graphen (inkl. Strukturideen wie Blossoms).",
+            "descriptionEn": "Summary cluster: matching problems, augmenting paths, and algorithms for bipartite and general graphs (including structural ideas such as blossoms).",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Matchings",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [
+                "94954213-cc69-5bbe-aae2-89d3e8579313",
+                "eeed2e2d-b0c9-5920-acc4-53eb199776b0"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Matchings",
+                "topicCode": "tum_cit413041_lo8"
+            }
+        },
+        {
+            "id": "94954213-cc69-5bbe-aae2-89d3e8579313",
+            "shortKey": "tum_cit413041_lo8_1",
+            "title": "Bipartite Matchings modellieren und Algorithmik anwenden",
+            "titleEn": "Model Bipartite Matchings and Apply Algorithms",
+            "description": "Die lernende Person kann Matching- und Zuordnungsprobleme in bipartiten Graphen modellieren, augmentierende-Pfad-Methoden anwenden und die Verbindung zu Flussmodellen erläutern.",
+            "descriptionEn": "The learner can model matching and assignment problems on bipartite graphs, apply augmenting-path methods, and explain the connection to flow models.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Matchings",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [
+                "e1f20ee4-5804-5f76-a052-d802545fa829"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Matchings",
+                "topicCode": "tum_cit413041_lo8_1"
+            }
+        },
+        {
+            "id": "eeed2e2d-b0c9-5920-acc4-53eb199776b0",
+            "shortKey": "tum_cit413041_lo8_2",
+            "title": "Matchings in allgemeinen Graphen einordnen und Strukturideen nutzen",
+            "titleEn": "Place Matchings in General Graphs and Use Structural Ideas",
+            "description": "Die lernende Person kann den Unterschied zu bipartiten Matchings erläutern, die Rolle von Odd Cycles/Blossoms beschreiben und in einfachen Beispielen die Logik entsprechender Algorithmen nachvollziehen.",
+            "descriptionEn": "The learner can explain the difference to bipartite matchings, describe the role of odd cycles/blossoms, and trace the logic of corresponding algorithms on simple examples.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Matchings",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [
+                "94954213-cc69-5bbe-aae2-89d3e8579313"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Matchings",
+                "topicCode": "tum_cit413041_lo8_2"
+            }
         }
     ]
 }

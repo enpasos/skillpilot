@@ -1,8 +1,8 @@
 {
     "title": "Probability Theory (TUM, Modul MA2409)",
     "titleEn": "Probability Theory (TUM, Module MA2409)",
-    "description": "After successful completion of the module students are able to understand and apply measure-theoretic probability theory, in particular,<br>- the theory of sequences of i.i.d. random variables, in particular laws of large numbers and the central limit theorem<br>- martingale theory.<br> 9 ECTS, angeboten im Wintersemester, Version 2023s, verantwortet von Rolles, Silke.",
-    "descriptionEn": "After successful completion of the module students are able to understand and apply measure-theoretic probability theory, in particular,<br>- the theory of sequences of i.i.d. random variables, in particular laws of large numbers and the central limit theorem<br>- martingale theory.<br> 9 ECTS, offered in winter semester, version 2023s, responsible: Rolles, Silke.",
+    "description": "Das Modul vermittelt maßtheoretische Wahrscheinlichkeitstheorie mit Schwerpunkt auf Unabhängigkeit, Grenzwertsätzen und Martingalen. Behandelt werden Unabhängigkeit von Sigma-Algebren und Zufallsvariablen, Konstruktion von Folgen von Zufallsvariablen (u.a. Kolmogorovs Erweiterungssatz), Borel–Cantelli-Lemmas und Kolmogorovs 0–1-Gesetz, schwaches und starkes Gesetz der großen Zahlen, charakteristische Funktionen und schwache Konvergenz sowie zentrale Grenzwertsätze (u.a. Lindeberg–Feller). Außerdem werden bedingte Erwartungen und Martingale (Ungleichungen, Konvergenzsätze, Optional-Stopping) behandelt. 9 ECTS, angeboten im Wintersemester, Version 2023s, verantwortet von Rolles, Silke.",
+    "descriptionEn": "The module covers measure-theoretic probability theory with a focus on independence, limit theorems, and martingales. Topics include independence of sigma-algebras and random variables, construction of sequences of random variables (including Kolmogorov’s extension theorem), the Borel–Cantelli lemmas and Kolmogorov’s 0–1 law, weak and strong laws of large numbers, characteristic functions and weak convergence, and central limit theorems (including Lindeberg–Feller). In addition, conditional expectations and martingales (inequalities, convergence theorems, optional stopping) are covered. 9 ECTS, offered in the winter semester, version 2023s, responsible: Rolles, Silke.",
     "landscapeId": "93ad8305-207d-4c52-9841-9ab9d0e1be60",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -19,8 +19,8 @@
             "shortKey": "tum_ma2409_module",
             "title": "Probability Theory – Gesamtmodul",
             "titleEn": "Probability Theory – Full Module",
-            "description": "After successful completion of the module students are able to understand and apply measure-theoretic probability theory, in particular,<br>- the theory of sequences of i.i.d. random variables, in particular laws of large numbers and the central limit theorem<br>- martingale theory.<br>",
-            "descriptionEn": "After successful completion of the module students are able to understand and apply measure-theoretic probability theory, in particular,<br>- the theory of sequences of i.i.d. random variables, in particular laws of large numbers and the central limit theorem<br>- martingale theory.<br>",
+            "description": "Nach erfolgreichem Abschluss können Studierende maßtheoretische Wahrscheinlichkeitstheorie verstehen und anwenden. Insbesondere beherrschen sie die Theorie von Folgen i.i.d. Zufallsvariablen (Gesetze der großen Zahlen, zentraler Grenzwertsatz) sowie grundlegende Resultate der Martingaltheorie.",
+            "descriptionEn": "After successful completion of the module students are able to understand and apply measure-theoretic probability theory. In particular, they master the theory of sequences of i.i.d. random variables (laws of large numbers, central limit theorem) and fundamental results from martingale theory.",
             "core": true,
             "weight": 9.0,
             "phase": "Modul",
@@ -29,15 +29,29 @@
                 "ects:9",
                 "workload:270h",
                 "presence:90h",
-                "level:bachelor",
-                "language:de",
+                "level:master",
+                "language:en",
                 "module:MA2409",
                 "semester:WS",
                 "duration:1_semester",
                 "responsible:rolles_silke"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "83d0cf0e-33f5-50fb-97cb-352e46de566c",
+                "7fc2f8bd-2692-58b6-b261-8e0aead9d50c",
+                "26e8d7e5-a5af-5305-9de7-5161cd321106",
+                "6ecff4ce-a2a6-55cd-a814-58fc0769b81d",
+                "85beb1f2-e99d-5e80-8d8e-b87ddf63e49a",
+                "a2e7fa38-2a58-52d0-8072-2c701f8b782f",
+                "917983de-1c81-5e32-8941-68c858308904",
+                "d57550e5-503a-5a0d-b230-5d7668d9a984"
+            ],
+            "requires": [
+                "8eb1605b-fa70-511b-bbe4-28173d359c3b",
+                "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
+                "c18dbc1a-e398-5053-8bec-f566af8be089",
+                "ef775418-c971-542f-87fe-07bd9c995bb1"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-ma2409",
@@ -49,6 +63,732 @@
                 "topicCode": "tum_ma2409_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA2409&description_version=2023s"
+        },
+        {
+            "id": "83d0cf0e-33f5-50fb-97cb-352e46de566c",
+            "shortKey": "tum_ma2409_lo1",
+            "title": "Unabhängigkeit und Sigma-Algebren",
+            "titleEn": "Independence and Sigma-Algebras",
+            "description": "Zusammenfassender Cluster: Unabhängigkeit von Sigma-Algebren und Zufallsvariablen sowie deren Einsatz in Beweis- und Modellierungsargumenten.",
+            "descriptionEn": "Summary cluster: independence of sigma-algebras and random variables and its use in proofs and modeling arguments.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Unabhängigkeit",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [
+                "eab7e1e0-9858-545f-b2f6-7646c542f00b",
+                "c6565e1d-b842-5386-8901-a0b6bac796e8"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Unabhängigkeit",
+                "topicCode": "tum_ma2409_lo1"
+            }
+        },
+        {
+            "id": "eab7e1e0-9858-545f-b2f6-7646c542f00b",
+            "shortKey": "tum_ma2409_lo1_1",
+            "title": "Unabhängigkeit von Sigma-Algebren und Zufallsvariablen definieren",
+            "titleEn": "Define Independence of Sigma-Algebras and Random Variables",
+            "description": "Die lernende Person kann Unabhängigkeit von Ereignissen, Sigma-Algebren und Zufallsvariablen präzise definieren und grundlegende Rechenregeln bzw. Folgerungen (z.B. Faktorisierung von Wahrscheinlichkeiten/Erwartungswerten) anwenden.",
+            "descriptionEn": "The learner can precisely define independence of events, sigma-algebras, and random variables and apply basic rules and consequences (e.g., factorization of probabilities/expectations).",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Unabhängigkeit",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Unabhängigkeit",
+                "topicCode": "tum_ma2409_lo1_1"
+            }
+        },
+        {
+            "id": "c6565e1d-b842-5386-8901-a0b6bac796e8",
+            "shortKey": "tum_ma2409_lo1_2",
+            "title": "Unabhängigkeit in Beispielen nachweisen und nutzen",
+            "titleEn": "Verify and Use Independence in Examples",
+            "description": "Die lernende Person kann Unabhängigkeit in Beispielen prüfen (z.B. über Erzeuger/π-Systeme) und die Eigenschaft zur Vereinfachung von Beweisen und Berechnungen einsetzen.",
+            "descriptionEn": "The learner can check independence in examples (e.g., via generators/π-systems) and use it to simplify proofs and computations.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Unabhängigkeit",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [],
+            "requires": [
+                "eab7e1e0-9858-545f-b2f6-7646c542f00b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Unabhängigkeit",
+                "topicCode": "tum_ma2409_lo1_2"
+            }
+        },
+        {
+            "id": "7fc2f8bd-2692-58b6-b261-8e0aead9d50c",
+            "shortKey": "tum_ma2409_lo2",
+            "title": "Konstruktion von Zufallsvariablenfolgen und Kolmogorovs Erweiterungssatz",
+            "titleEn": "Constructing Random Variable Sequences and Kolmogorov’s Extension Theorem",
+            "description": "Zusammenfassender Cluster: Existenz und Konstruktion stochastischer Prozesse über konsistente endlich-dimensionale Verteilungen und Kolmogorovs Erweiterungssatz.",
+            "descriptionEn": "Summary cluster: existence and construction of stochastic processes via consistent finite-dimensional distributions and Kolmogorov’s extension theorem.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Konstruktion & Erweiterung",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [
+                "1c15826f-c0d2-5db3-86c8-b6a74e2e2504",
+                "49b43499-0037-5533-85f2-ce5077c2a3d2"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Konstruktion & Erweiterung",
+                "topicCode": "tum_ma2409_lo2"
+            }
+        },
+        {
+            "id": "1c15826f-c0d2-5db3-86c8-b6a74e2e2504",
+            "shortKey": "tum_ma2409_lo2_1",
+            "title": "Konsistenzbedingungen und Kolmogorovs Erweiterungssatz erklären",
+            "titleEn": "Explain Consistency Conditions and Kolmogorov’s Extension Theorem",
+            "description": "Die lernende Person kann Konsistenzbedingungen für endlich-dimensionale Verteilungen formulieren und die Aussage sowie Bedeutung von Kolmogorovs Erweiterungssatz erläutern.",
+            "descriptionEn": "The learner can formulate consistency conditions for finite-dimensional distributions and explain the statement and significance of Kolmogorov’s extension theorem.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Konstruktion & Erweiterung",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [],
+            "requires": [
+                "c6565e1d-b842-5386-8901-a0b6bac796e8"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Konstruktion & Erweiterung",
+                "topicCode": "tum_ma2409_lo2_1"
+            }
+        },
+        {
+            "id": "49b43499-0037-5533-85f2-ce5077c2a3d2",
+            "shortKey": "tum_ma2409_lo2_2",
+            "title": "Stochastische Prozesse aus endlich-dimensionalen Verteilungen konstruieren",
+            "titleEn": "Construct Stochastic Processes from Finite-Dimensional Distributions",
+            "description": "Die lernende Person kann in ausgewählten Fällen Folgen bzw. Prozesse über konsistente Verteilungen konstruieren und grundlegende Eigenschaften (z.B. Unabhängigkeit, Stationarität in Beispielen) ableiten.",
+            "descriptionEn": "The learner can construct sequences or processes from consistent distributions in selected cases and derive basic properties (e.g., independence, stationarity in examples).",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Konstruktion & Erweiterung",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [],
+            "requires": [
+                "1c15826f-c0d2-5db3-86c8-b6a74e2e2504"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Konstruktion & Erweiterung",
+                "topicCode": "tum_ma2409_lo2_2"
+            }
+        },
+        {
+            "id": "26e8d7e5-a5af-5305-9de7-5161cd321106",
+            "shortKey": "tum_ma2409_lo3",
+            "title": "Borel–Cantelli und Kolmogorovs 0–1-Gesetz",
+            "titleEn": "Borel–Cantelli and Kolmogorov’s 0–1 Law",
+            "description": "Zusammenfassender Cluster: Borel–Cantelli-Lemmas und 0–1-Gesetze als Werkzeuge für fast-sichere Aussagen über Folgen und Ereignisse.",
+            "descriptionEn": "Summary cluster: the Borel–Cantelli lemmas and 0–1 laws as tools for almost-sure statements about sequences and events.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "0–1-Gesetze",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [
+                "48e23315-5730-52df-b918-9c1f24e42368",
+                "eeb2f9e7-5d83-5c33-bc44-b70dd5f85557"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "0–1-Gesetze",
+                "topicCode": "tum_ma2409_lo3"
+            }
+        },
+        {
+            "id": "48e23315-5730-52df-b918-9c1f24e42368",
+            "shortKey": "tum_ma2409_lo3_1",
+            "title": "Borel–Cantelli-Lemmas anwenden",
+            "titleEn": "Apply the Borel–Cantelli Lemmas",
+            "description": "Die lernende Person kann die Borel–Cantelli-Lemmas formulieren und in Beispielen einsetzen, um Aussagen über das unendliche Eintreten von Ereignissen zu beweisen.",
+            "descriptionEn": "The learner can state the Borel–Cantelli lemmas and use them in examples to prove statements about events occurring infinitely often.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "0–1-Gesetze",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [],
+            "requires": [
+                "c6565e1d-b842-5386-8901-a0b6bac796e8"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "0–1-Gesetze",
+                "topicCode": "tum_ma2409_lo3_1"
+            }
+        },
+        {
+            "id": "eeb2f9e7-5d83-5c33-bc44-b70dd5f85557",
+            "shortKey": "tum_ma2409_lo3_2",
+            "title": "Kolmogorovs 0–1-Gesetz herleiten und nutzen",
+            "titleEn": "Derive and Use Kolmogorov’s 0–1 Law",
+            "description": "Die lernende Person kann die Idee der Tail-Sigma-Algebra erläutern, Kolmogorovs 0–1-Gesetz in Grundzügen herleiten und auf ausgewählte Ereignisse (z.B. Grenzwerteigenschaften) anwenden.",
+            "descriptionEn": "The learner can explain the idea of the tail sigma-algebra, derive Kolmogorov’s 0–1 law at a basic level, and apply it to selected events (e.g., limit properties).",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "0–1-Gesetze",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [],
+            "requires": [
+                "48e23315-5730-52df-b918-9c1f24e42368"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "0–1-Gesetze",
+                "topicCode": "tum_ma2409_lo3_2"
+            }
+        },
+        {
+            "id": "6ecff4ce-a2a6-55cd-a814-58fc0769b81d",
+            "shortKey": "tum_ma2409_lo4",
+            "title": "Gesetze der großen Zahlen",
+            "titleEn": "Laws of Large Numbers",
+            "description": "Zusammenfassender Cluster: Schwaches und starkes Gesetz der großen Zahlen für i.i.d. Folgen und deren Anwendung auf einfache Modelle.",
+            "descriptionEn": "Summary cluster: weak and strong laws of large numbers for i.i.d. sequences and applications to basic models.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Grenzwertsätze (LLN)",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [
+                "8c38a0db-9367-549d-bc58-46c6a90ea52e",
+                "84da0dbb-8ccb-5b1c-a0fa-8ec46458f658"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Grenzwertsätze (LLN)",
+                "topicCode": "tum_ma2409_lo4"
+            }
+        },
+        {
+            "id": "8c38a0db-9367-549d-bc58-46c6a90ea52e",
+            "shortKey": "tum_ma2409_lo4_1",
+            "title": "Schwaches und starkes Gesetz der großen Zahlen formulieren und beweisnah einordnen",
+            "titleEn": "State Weak/Strong LLN and Place Their Proof Ideas",
+            "description": "Die lernende Person kann schwaches und starkes Gesetz der großen Zahlen für i.i.d. Folgen formulieren, zentrale Beweisideen (z.B. Abschätzungen, Borel–Cantelli) skizzieren und die Voraussetzungen interpretieren.",
+            "descriptionEn": "The learner can state the weak and strong laws of large numbers for i.i.d. sequences, sketch key proof ideas (e.g., estimates, Borel–Cantelli), and interpret the assumptions.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Grenzwertsätze (LLN)",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [],
+            "requires": [
+                "eeb2f9e7-5d83-5c33-bc44-b70dd5f85557"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Grenzwertsätze (LLN)",
+                "topicCode": "tum_ma2409_lo4_1"
+            }
+        },
+        {
+            "id": "84da0dbb-8ccb-5b1c-a0fa-8ec46458f658",
+            "shortKey": "tum_ma2409_lo4_2",
+            "title": "LLN in Beispielen anwenden und Grenzen interpretieren",
+            "titleEn": "Apply LLN in Examples and Interpret Limits",
+            "description": "Die lernende Person kann LLN auf konkrete Zufallsexperimente anwenden, geeignete Normalisierungen begründen und Grenzwerte probabilistisch interpretieren.",
+            "descriptionEn": "The learner can apply LLN to concrete random experiments, justify suitable normalizations, and interpret limits probabilistically.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Grenzwertsätze (LLN)",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [],
+            "requires": [
+                "8c38a0db-9367-549d-bc58-46c6a90ea52e"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Grenzwertsätze (LLN)",
+                "topicCode": "tum_ma2409_lo4_2"
+            }
+        },
+        {
+            "id": "85beb1f2-e99d-5e80-8d8e-b87ddf63e49a",
+            "shortKey": "tum_ma2409_lo5",
+            "title": "Charakteristische Funktionen, schwache Konvergenz und zentrale Grenzwertsätze",
+            "titleEn": "Characteristic Functions, Weak Convergence, and Central Limit Theorems",
+            "description": "Zusammenfassender Cluster: Charakteristische Funktionen und schwache Konvergenz als Werkzeuge für zentrale Grenzwertsätze, inkl. L²-CLT und Lindeberg–Feller.",
+            "descriptionEn": "Summary cluster: characteristic functions and weak convergence as tools for central limit theorems, including an L²-CLT and Lindeberg–Feller.",
+            "core": true,
+            "weight": 1.4,
+            "phase": "Modul",
+            "area": "Grenzwertsätze (CLT)",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [
+                "834acc66-62ec-5ce2-b19c-b1392c446c06",
+                "e34ed84a-f161-5684-bdc9-50f3098db661"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Grenzwertsätze (CLT)",
+                "topicCode": "tum_ma2409_lo5"
+            }
+        },
+        {
+            "id": "834acc66-62ec-5ce2-b19c-b1392c446c06",
+            "shortKey": "tum_ma2409_lo5_1",
+            "title": "Charakteristische Funktionen und schwache Konvergenz verwenden",
+            "titleEn": "Use Characteristic Functions and Weak Convergence",
+            "description": "Die lernende Person kann charakteristische Funktionen definieren, grundlegende Eigenschaften anwenden und den Zusammenhang zu schwacher Konvergenz (z.B. über Lévy) in Aufgaben nutzen.",
+            "descriptionEn": "The learner can define characteristic functions, apply their basic properties, and use their connection to weak convergence (e.g., via Lévy’s theorem) in exercises.",
+            "core": true,
+            "weight": 0.7,
+            "phase": "Modul",
+            "area": "Grenzwertsätze (CLT)",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [],
+            "requires": [
+                "84da0dbb-8ccb-5b1c-a0fa-8ec46458f658"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Grenzwertsätze (CLT)",
+                "topicCode": "tum_ma2409_lo5_1"
+            }
+        },
+        {
+            "id": "e34ed84a-f161-5684-bdc9-50f3098db661",
+            "shortKey": "tum_ma2409_lo5_2",
+            "title": "Zentrale Grenzwertsätze (inkl. Lindeberg–Feller) formulieren und anwenden",
+            "titleEn": "State and Apply CLTs (Including Lindeberg–Feller)",
+            "description": "Die lernende Person kann zentrale Grenzwertsätze für i.i.d. und geeignete Dreiecksarrays formulieren (inkl. Lindeberg–Feller), Voraussetzungen prüfen und Konvergenzaussagen in Beispielen herleiten.",
+            "descriptionEn": "The learner can state central limit theorems for i.i.d. sequences and suitable triangular arrays (including Lindeberg–Feller), check assumptions, and derive convergence statements in examples.",
+            "core": true,
+            "weight": 0.7,
+            "phase": "Modul",
+            "area": "Grenzwertsätze (CLT)",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [],
+            "requires": [
+                "834acc66-62ec-5ce2-b19c-b1392c446c06"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Grenzwertsätze (CLT)",
+                "topicCode": "tum_ma2409_lo5_2"
+            }
+        },
+        {
+            "id": "a2e7fa38-2a58-52d0-8072-2c701f8b782f",
+            "shortKey": "tum_ma2409_lo6",
+            "title": "Bedingte Erwartungen",
+            "titleEn": "Conditional Expectations",
+            "description": "Zusammenfassender Cluster: Definition und zentrale Eigenschaften bedingter Erwartung als Projektion/Bestapproximation sowie Rechenregeln und Beispiele.",
+            "descriptionEn": "Summary cluster: definition and key properties of conditional expectation as a projection/best approximation, including rules and examples.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Bedingte Erwartung",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [
+                "dd915ff7-609e-5f7a-983f-f8945ee5eff4",
+                "1f785e2f-c78d-5dac-9ef7-a73f1856969f"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Bedingte Erwartung",
+                "topicCode": "tum_ma2409_lo6"
+            }
+        },
+        {
+            "id": "dd915ff7-609e-5f7a-983f-f8945ee5eff4",
+            "shortKey": "tum_ma2409_lo6_1",
+            "title": "Bedingte Erwartung definieren und Grundeigenschaften anwenden",
+            "titleEn": "Define Conditional Expectation and Apply Core Properties",
+            "description": "Die lernende Person kann bedingte Erwartung bezüglich einer Sigma-Algebra definieren, die Charakterisierung über Integrale/Projektionen erklären und Grundeigenschaften (Linearität, Turmregel) anwenden.",
+            "descriptionEn": "The learner can define conditional expectation with respect to a sigma-algebra, explain its characterization via integrals/projections, and apply core properties (linearity, tower property).",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Bedingte Erwartung",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [],
+            "requires": [
+                "eab7e1e0-9858-545f-b2f6-7646c542f00b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Bedingte Erwartung",
+                "topicCode": "tum_ma2409_lo6_1"
+            }
+        },
+        {
+            "id": "1f785e2f-c78d-5dac-9ef7-a73f1856969f",
+            "shortKey": "tum_ma2409_lo6_2",
+            "title": "Bedingte Erwartungen in Beispielen berechnen und interpretieren",
+            "titleEn": "Compute and Interpret Conditional Expectations in Examples",
+            "description": "Die lernende Person kann bedingte Erwartungen in ausgewählten Beispielen berechnen bzw. bestimmen (z.B. mit Symmetrie oder L²-Projektion) und die Ergebnisse probabilistisch interpretieren.",
+            "descriptionEn": "The learner can compute or determine conditional expectations in selected examples (e.g., via symmetry or L² projection) and interpret the results probabilistically.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Bedingte Erwartung",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [],
+            "requires": [
+                "dd915ff7-609e-5f7a-983f-f8945ee5eff4"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Bedingte Erwartung",
+                "topicCode": "tum_ma2409_lo6_2"
+            }
+        },
+        {
+            "id": "917983de-1c81-5e32-8941-68c858308904",
+            "shortKey": "tum_ma2409_lo7",
+            "title": "Martingale: Ungleichungen und Konvergenz",
+            "titleEn": "Martingales: Inequalities and Convergence",
+            "description": "Zusammenfassender Cluster: Martingaldefinition über bedingte Erwartung, zentrale Ungleichungen und Konvergenzsätze.",
+            "descriptionEn": "Summary cluster: martingale definitions via conditional expectation and key inequalities and convergence theorems.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Martingale",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [
+                "f48e3aeb-8594-5559-88d7-a56e5020087c",
+                "dbf72e1d-08d5-5d97-af86-97a0415a934a"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Martingale",
+                "topicCode": "tum_ma2409_lo7"
+            }
+        },
+        {
+            "id": "f48e3aeb-8594-5559-88d7-a56e5020087c",
+            "shortKey": "tum_ma2409_lo7_1",
+            "title": "Martingale definieren und grundlegende Ungleichungen anwenden",
+            "titleEn": "Define Martingales and Apply Basic Inequalities",
+            "description": "Die lernende Person kann Martingale, Sub-/Supermartingale definieren, Beispiele konstruieren und grundlegende Ungleichungen (z.B. Doob) in Abschätzungen anwenden.",
+            "descriptionEn": "The learner can define martingales and sub-/supermartingales, construct examples, and apply basic inequalities (e.g., Doob) in estimates.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Martingale",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [],
+            "requires": [
+                "1f785e2f-c78d-5dac-9ef7-a73f1856969f"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Martingale",
+                "topicCode": "tum_ma2409_lo7_1"
+            }
+        },
+        {
+            "id": "dbf72e1d-08d5-5d97-af86-97a0415a934a",
+            "shortKey": "tum_ma2409_lo7_2",
+            "title": "Martingal-Konvergenzsätze nutzen",
+            "titleEn": "Use Martingale Convergence Theorems",
+            "description": "Die lernende Person kann zentrale Martingal-Konvergenzsätze formulieren, die Voraussetzungen prüfen und Konvergenzfolgen in Beispielaufgaben herleiten.",
+            "descriptionEn": "The learner can state key martingale convergence theorems, check assumptions, and derive convergence conclusions in example problems.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Martingale",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [],
+            "requires": [
+                "f48e3aeb-8594-5559-88d7-a56e5020087c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Martingale",
+                "topicCode": "tum_ma2409_lo7_2"
+            }
+        },
+        {
+            "id": "d57550e5-503a-5a0d-b230-5d7668d9a984",
+            "shortKey": "tum_ma2409_lo8",
+            "title": "Optional-Stopping-Theorem und Anwendungen",
+            "titleEn": "Optional Stopping Theorem and Applications",
+            "description": "Zusammenfassender Cluster: Optional-Stopping-Theorem, Bedingungen und Anwendungen auf Stoppzeiten (z.B. Ruinprobleme, hitting times in einfachen Modellen).",
+            "descriptionEn": "Summary cluster: the optional stopping theorem, conditions, and applications to stopping times (e.g., ruin problems, hitting times in basic models).",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Optional Stopping",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [
+                "4fb6a3a8-cf10-5a1a-93b6-4bae4b623cff",
+                "69a4c3b1-eac4-5a61-8157-ef3e3bb25a87"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Optional Stopping",
+                "topicCode": "tum_ma2409_lo8"
+            }
+        },
+        {
+            "id": "4fb6a3a8-cf10-5a1a-93b6-4bae4b623cff",
+            "shortKey": "tum_ma2409_lo8_1",
+            "title": "Optional-Stopping-Theorem formulieren und Bedingungen prüfen",
+            "titleEn": "State Optional Stopping and Check Conditions",
+            "description": "Die lernende Person kann das Optional-Stopping-Theorem formulieren, typische Bedingungen (z.B. Beschränktheit/Integrabilität) prüfen und die Aussage korrekt auf Stoppzeiten anwenden.",
+            "descriptionEn": "The learner can state the optional stopping theorem, check typical conditions (e.g., boundedness/integrability), and apply the result correctly to stopping times.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Optional Stopping",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [],
+            "requires": [
+                "dbf72e1d-08d5-5d97-af86-97a0415a934a"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Optional Stopping",
+                "topicCode": "tum_ma2409_lo8_1"
+            }
+        },
+        {
+            "id": "69a4c3b1-eac4-5a61-8157-ef3e3bb25a87",
+            "shortKey": "tum_ma2409_lo8_2",
+            "title": "Optional-Stopping in Anwendungen einsetzen",
+            "titleEn": "Use Optional Stopping in Applications",
+            "description": "Die lernende Person kann Optional-Stopping in ausgewählten Anwendungen einsetzen, die entstehenden Gleichungen lösen und die probabilistische Bedeutung der Resultate (z.B. Trefferwahrscheinlichkeiten, Erwartungswerte) interpretieren.",
+            "descriptionEn": "The learner can use optional stopping in selected applications, solve the resulting equations, and interpret the probabilistic meaning of the results (e.g., hitting probabilities, expected values).",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Optional Stopping",
+            "tags": [
+                "ects:9",
+                "module:MA2409"
+            ],
+            "contains": [],
+            "requires": [
+                "4fb6a3a8-cf10-5a1a-93b6-4bae4b623cff"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Optional Stopping",
+                "topicCode": "tum_ma2409_lo8_2"
+            }
         }
     ]
 }

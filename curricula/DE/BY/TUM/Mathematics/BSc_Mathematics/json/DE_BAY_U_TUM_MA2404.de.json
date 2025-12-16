@@ -1,8 +1,8 @@
 {
     "title": "Markovketten (TUM, Modul MA2404)",
     "titleEn": "Markov Chains (TUM, Module MA2404)",
-    "description": "Nach dem erfolgreichen Abschluss des Moduls ist der Studierende in der Lage, die Markoveigenschaft anzuwenden, Eigenschaften von Markovketten wie z.B. Irreduzibilität, Aperiodizität und Rekurrenz zu untersuchen, stationäre Verteilungen zu berechnen und den Konvergenzsatz und den Ergodensatz anzuwenden. 5 ECTS, angeboten im Sommersemester, Version 2021w, verantwortet von Rolles, Silke.",
-    "descriptionEn": "Nach dem erfolgreichen Abschluss des Moduls ist der Studierende in der Lage, die Markoveigenschaft anzuwenden, Eigenschaften von Markovketten wie z.B. Irreduzibilität, Aperiodizität und Rekurrenz zu untersuchen, stationäre Verteilungen zu berechnen und den Konvergenzsatz und den Ergodensatz anzuwenden. 5 ECTS, offered in summer semester, version 2021w, responsible: Rolles, Silke.",
+    "description": "Das Modul behandelt diskrete Markovketten mit endlichem oder abzählbarem Zustandsraum. Inhaltlich werden die Markov-Eigenschaft, Übergangsmatrizen und Mehr-Schritt-Übergänge (Chapman–Kolmogorov) sowie Filtrierungen, Stoppzeiten und die starke Markov-Eigenschaft eingeführt. Zudem werden Struktur- und Langzeiteigenschaften (kommunizierende Klassen, Irreduzibilität, Rekurrenz/Transienz, Aperiodizität, Absorption), stationäre Verteilungen und Konvergenz-/Ergoden-Sätze behandelt. Ergänzend werden Zeitumkehr und detailed balance diskutiert und an klassischen Beispielen (z.B. Irrfahrt, Ruinproblem, Geburts- und Todesprozesse, Galton–Watson-Verzweigungsprozess, Warteschlangenmodelle, Ehrenfest-Modell) angewendet. 5 ECTS, angeboten im Sommersemester, Version 2021w, verantwortet von Rolles, Silke.",
+    "descriptionEn": "The module covers discrete Markov chains on finite or countable state spaces. Topics include the Markov property, transition matrices and multi-step transitions (Chapman–Kolmogorov), as well as filtrations, stopping times, and the strong Markov property. It further treats structural and long-term properties (communicating classes, irreducibility, recurrence/transience, aperiodicity, absorption), stationary distributions, and convergence/ergodic theorems. In addition, time reversal and detailed balance are discussed and applied to classical examples (e.g., random walks, gambler’s ruin, birth–death processes, Galton–Watson branching processes, queueing models, the Ehrenfest model). 5 ECTS, offered in the summer semester, version 2021w, responsible: Rolles, Silke.",
     "landscapeId": "9d7c64d8-abab-4b44-b81a-c1aac9af2700",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -19,8 +19,8 @@
             "shortKey": "tum_ma2404_module",
             "title": "Markovketten – Gesamtmodul",
             "titleEn": "Markov Chains – Full Module",
-            "description": "Nach dem erfolgreichen Abschluss des Moduls ist der Studierende in der Lage, die Markoveigenschaft anzuwenden, Eigenschaften von Markovketten wie z.B. Irreduzibilität, Aperiodizität und Rekurrenz zu untersuchen, stationäre Verteilungen zu berechnen und den Konvergenzsatz und den Ergodensatz anzuwenden.",
-            "descriptionEn": "Nach dem erfolgreichen Abschluss des Moduls ist der Studierende in der Lage, die Markoveigenschaft anzuwenden, Eigenschaften von Markovketten wie z.B. Irreduzibilität, Aperiodizität und Rekurrenz zu untersuchen, stationäre Verteilungen zu berechnen und den Konvergenzsatz und den Ergodensatz anzuwenden.",
+            "description": "Nach dem erfolgreichen Abschluss des Moduls ist der Studierende in der Lage, die Markov-Eigenschaft anzuwenden, Eigenschaften von Markovketten wie z.B. Irreduzibilität, Aperiodizität und Rekurrenz zu untersuchen, stationäre Verteilungen zu berechnen sowie den Konvergenzsatz und den Ergodensatz anzuwenden.",
+            "descriptionEn": "After successful completion of the module, students are able to apply the Markov property, analyze properties of Markov chains such as irreducibility, aperiodicity, and recurrence, compute stationary distributions, and apply convergence and ergodic theorems.",
             "core": true,
             "weight": 5.0,
             "phase": "Modul",
@@ -36,8 +36,16 @@
                 "duration:1_semester",
                 "responsible:rolles_silke"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "b2ca5747-3a07-5d3b-b833-2df19262efa7",
+                "dbcbf3eb-a681-537e-966b-82a15e44c11c",
+                "94a8c284-4a6c-5f87-b9d7-f346afea8e7f",
+                "da050910-ce35-5f70-8fd1-58fc773dfc1b",
+                "2c6c22a5-bfd1-5af0-806d-ff04756fcde2"
+            ],
+            "requires": [
+                "ef775418-c971-542f-87fe-07bd9c995bb1"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-ma2404",
@@ -49,6 +57,459 @@
                 "topicCode": "tum_ma2404_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA2404&description_version=2021w"
+        },
+        {
+            "id": "b2ca5747-3a07-5d3b-b833-2df19262efa7",
+            "shortKey": "tum_ma2404_lo1",
+            "title": "Markov-Eigenschaft und Übergänge",
+            "titleEn": "Markov Property and Transitions",
+            "description": "Zusammenfassender Cluster: Markov-Eigenschaft, Übergangsmatrix, Mehr-Schritt-Übergänge und Chapman–Kolmogorov-Gleichung.",
+            "descriptionEn": "Summary cluster: the Markov property, transition matrices, multi-step transitions, and the Chapman–Kolmogorov equation.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Grundlagen",
+            "tags": [
+                "ects:5",
+                "module:MA2404"
+            ],
+            "contains": [
+                "ec013231-0f55-5c8d-913d-83988cb22767",
+                "19868fc1-d982-5c83-98e2-29611775854a"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Grundlagen",
+                "topicCode": "tum_ma2404_lo1"
+            }
+        },
+        {
+            "id": "ec013231-0f55-5c8d-913d-83988cb22767",
+            "shortKey": "tum_ma2404_lo1_1",
+            "title": "Markov-Eigenschaft und Übergangsmatrix definieren und nutzen",
+            "titleEn": "Define and Use the Markov Property and Transition Matrix",
+            "description": "Die lernende Person kann die Markov-Eigenschaft präzise formulieren, Übergangswahrscheinlichkeiten in einer Übergangsmatrix darstellen und aus Startverteilungen Folgeverteilungen berechnen.",
+            "descriptionEn": "The learner can state the Markov property precisely, represent transition probabilities via a transition matrix, and compute distributions at later times from an initial distribution.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Grundlagen",
+            "tags": [
+                "ects:5",
+                "module:MA2404"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Grundlagen",
+                "topicCode": "tum_ma2404_lo1_1"
+            }
+        },
+        {
+            "id": "19868fc1-d982-5c83-98e2-29611775854a",
+            "shortKey": "tum_ma2404_lo1_2",
+            "title": "Mehr-Schritt-Übergänge mit Chapman–Kolmogorov berechnen",
+            "titleEn": "Compute Multi-Step Transitions Using Chapman–Kolmogorov",
+            "description": "Die lernende Person kann Mehr-Schritt-Übergangswahrscheinlichkeiten berechnen (z.B. über Matrixpotenzen) und die Chapman–Kolmogorov-Gleichung in Aufgaben anwenden.",
+            "descriptionEn": "The learner can compute multi-step transition probabilities (e.g., via matrix powers) and apply the Chapman–Kolmogorov equation in exercises.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Grundlagen",
+            "tags": [
+                "ects:5",
+                "module:MA2404"
+            ],
+            "contains": [],
+            "requires": [
+                "ec013231-0f55-5c8d-913d-83988cb22767"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Grundlagen",
+                "topicCode": "tum_ma2404_lo1_2"
+            }
+        },
+        {
+            "id": "dbcbf3eb-a681-537e-966b-82a15e44c11c",
+            "shortKey": "tum_ma2404_lo2",
+            "title": "Filtrierungen, Stoppzeiten und starke Markov-Eigenschaft",
+            "titleEn": "Filtrations, Stopping Times, and the Strong Markov Property",
+            "description": "Zusammenfassender Cluster: Filtrierung, Stoppzeiten, Eintrittszeiten und Anwendung der starken Markov-Eigenschaft.",
+            "descriptionEn": "Summary cluster: filtrations, stopping times, hitting times, and using the strong Markov property.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Stoppzeiten",
+            "tags": [
+                "ects:5",
+                "module:MA2404"
+            ],
+            "contains": [
+                "3201b1ce-3e33-5378-a94e-b8cf8c98989f",
+                "53dd1263-3d10-5a32-8d8a-d54b5ab285c0"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stoppzeiten",
+                "topicCode": "tum_ma2404_lo2"
+            }
+        },
+        {
+            "id": "3201b1ce-3e33-5378-a94e-b8cf8c98989f",
+            "shortKey": "tum_ma2404_lo2_1",
+            "title": "Filtrierung und Stoppzeiten (Eintrittszeiten) definieren und interpretieren",
+            "titleEn": "Define and Interpret Filtrations and Stopping (Hitting) Times",
+            "description": "Die lernende Person kann Filtrierungen, Stoppzeiten und Eintrittszeiten definieren und in Beispielen interpretieren (z.B. erste Trefferzeit eines Zustands).",
+            "descriptionEn": "The learner can define filtrations, stopping times, and hitting times and interpret them in examples (e.g., first hitting time of a state).",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Stoppzeiten",
+            "tags": [
+                "ects:5",
+                "module:MA2404"
+            ],
+            "contains": [],
+            "requires": [
+                "19868fc1-d982-5c83-98e2-29611775854a"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stoppzeiten",
+                "topicCode": "tum_ma2404_lo2_1"
+            }
+        },
+        {
+            "id": "53dd1263-3d10-5a32-8d8a-d54b5ab285c0",
+            "shortKey": "tum_ma2404_lo2_2",
+            "title": "Starke Markov-Eigenschaft an Stoppzeiten anwenden",
+            "titleEn": "Apply the Strong Markov Property at Stopping Times",
+            "description": "Die lernende Person kann die starke Markov-Eigenschaft anwenden, um nach Stoppzeiten Markovketten „neu zu starten“, und daraus Aussagen über Trefferwahrscheinlichkeiten oder erwartete Eintrittszeiten ableiten.",
+            "descriptionEn": "The learner can apply the strong Markov property to “restart” a Markov chain at a stopping time and derive results such as hitting probabilities or expected hitting times.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Stoppzeiten",
+            "tags": [
+                "ects:5",
+                "module:MA2404"
+            ],
+            "contains": [],
+            "requires": [
+                "3201b1ce-3e33-5378-a94e-b8cf8c98989f"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stoppzeiten",
+                "topicCode": "tum_ma2404_lo2_2"
+            }
+        },
+        {
+            "id": "94a8c284-4a6c-5f87-b9d7-f346afea8e7f",
+            "shortKey": "tum_ma2404_lo3",
+            "title": "Struktur von Markovketten: Klassen, Rekurrenz und Aperiodizität",
+            "titleEn": "Structure of Markov Chains: Classes, Recurrence, and Aperiodicity",
+            "description": "Zusammenfassender Cluster: Kommunizierende Klassen, Abgeschlossenheit, Irreduzibilität, Rekurrenz/Transienz, Wiederkehrzeiten, Absorption und Aperiodizität.",
+            "descriptionEn": "Summary cluster: communicating classes, closedness, irreducibility, recurrence/transience, return times, absorption, and aperiodicity.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Struktur",
+            "tags": [
+                "ects:5",
+                "module:MA2404"
+            ],
+            "contains": [
+                "1c79c6b8-234e-5421-9500-f702bbd7c957",
+                "fee7f744-00d5-588a-8f6f-d0f1cd38e732"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Struktur",
+                "topicCode": "tum_ma2404_lo3"
+            }
+        },
+        {
+            "id": "1c79c6b8-234e-5421-9500-f702bbd7c957",
+            "shortKey": "tum_ma2404_lo3_1",
+            "title": "Kommunizierende Klassen, Irreduzibilität, Absorption und Periodizität untersuchen",
+            "titleEn": "Analyze Communicating Classes, Irreducibility, Absorption, and Periodicity",
+            "description": "Die lernende Person kann kommunizierende Klassen bestimmen, Abgeschlossenheit und Irreduzibilität prüfen, absorbierende Zustände erkennen und Periodizität bzw. Aperiodizität in Beispielen untersuchen.",
+            "descriptionEn": "The learner can determine communicating classes, check closedness and irreducibility, identify absorbing states, and analyze periodicity vs. aperiodicity in examples.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Struktur",
+            "tags": [
+                "ects:5",
+                "module:MA2404"
+            ],
+            "contains": [],
+            "requires": [
+                "53dd1263-3d10-5a32-8d8a-d54b5ab285c0"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Struktur",
+                "topicCode": "tum_ma2404_lo3_1"
+            }
+        },
+        {
+            "id": "fee7f744-00d5-588a-8f6f-d0f1cd38e732",
+            "shortKey": "tum_ma2404_lo3_2",
+            "title": "Rekurrenz/Transienz und Wiederkehrzeiten in Beispielen bestimmen",
+            "titleEn": "Determine Recurrence/Transience and Return-Time Properties in Examples",
+            "description": "Die lernende Person kann Rekurrenz und Transienz in Beispielen einordnen, Wiederkehrzeiten definieren und Aussagen über Absorptionswahrscheinlichkeiten bzw. Erwartungswerte in einfachen Ketten herleiten.",
+            "descriptionEn": "The learner can classify recurrence vs. transience in examples, define return times, and derive statements about absorption probabilities or expectations in basic chains.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Struktur",
+            "tags": [
+                "ects:5",
+                "module:MA2404"
+            ],
+            "contains": [],
+            "requires": [
+                "1c79c6b8-234e-5421-9500-f702bbd7c957"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Struktur",
+                "topicCode": "tum_ma2404_lo3_2"
+            }
+        },
+        {
+            "id": "da050910-ce35-5f70-8fd1-58fc773dfc1b",
+            "shortKey": "tum_ma2404_lo4",
+            "title": "Stationäre Verteilungen und Langzeitverhalten",
+            "titleEn": "Stationary Distributions and Long-Term Behavior",
+            "description": "Zusammenfassender Cluster: Invariante/stationäre Verteilungen, Konvergenzsatz, Ergodensatz sowie positive- und Nullrekurrenz.",
+            "descriptionEn": "Summary cluster: invariant/stationary distributions, convergence theorems, ergodic theorems, and positive vs. null recurrence.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Stationarität & Ergodik",
+            "tags": [
+                "ects:5",
+                "module:MA2404"
+            ],
+            "contains": [
+                "9cde1649-627a-5c5e-8249-9ce61aca44ae",
+                "29d15589-4f21-5ef0-bb5e-dd3ea986033e"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stationarität & Ergodik",
+                "topicCode": "tum_ma2404_lo4"
+            }
+        },
+        {
+            "id": "9cde1649-627a-5c5e-8249-9ce61aca44ae",
+            "shortKey": "tum_ma2404_lo4_1",
+            "title": "Stationäre Verteilungen berechnen und Rekurrenztypen einordnen",
+            "titleEn": "Compute Stationary Distributions and Classify Recurrence Types",
+            "description": "Die lernende Person kann stationäre Verteilungen als Lösungen von π=πP bestimmen, Invarianz/Stationarität interpretieren und die Begriffe positive- bzw. Nullrekurrenz in geeigneten Beispielen einordnen.",
+            "descriptionEn": "The learner can compute stationary distributions as solutions of π=πP, interpret invariance/stationarity, and classify positive vs. null recurrence in suitable examples.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Stationarität & Ergodik",
+            "tags": [
+                "ects:5",
+                "module:MA2404"
+            ],
+            "contains": [],
+            "requires": [
+                "fee7f744-00d5-588a-8f6f-d0f1cd38e732"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stationarität & Ergodik",
+                "topicCode": "tum_ma2404_lo4_1"
+            }
+        },
+        {
+            "id": "29d15589-4f21-5ef0-bb5e-dd3ea986033e",
+            "shortKey": "tum_ma2404_lo4_2",
+            "title": "Konvergenzsatz und Ergodensatz anwenden",
+            "titleEn": "Apply Convergence and Ergodic Theorems",
+            "description": "Die lernende Person kann Konvergenz- und Ergoden-Sätze für Markovketten anwenden, Grenzverteilungen bzw. Zeitmittelwerte bestimmen und die Voraussetzungen (Irreduzibilität, Aperiodizität, positive Rekurrenz) prüfen.",
+            "descriptionEn": "The learner can apply convergence and ergodic theorems for Markov chains, determine limiting distributions or time averages, and check assumptions (irreducibility, aperiodicity, positive recurrence).",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Stationarität & Ergodik",
+            "tags": [
+                "ects:5",
+                "module:MA2404"
+            ],
+            "contains": [],
+            "requires": [
+                "9cde1649-627a-5c5e-8249-9ce61aca44ae"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stationarität & Ergodik",
+                "topicCode": "tum_ma2404_lo4_2"
+            }
+        },
+        {
+            "id": "2c6c22a5-bfd1-5af0-806d-ff04756fcde2",
+            "shortKey": "tum_ma2404_lo5",
+            "title": "Zeitumkehr, detailed balance und Modellbeispiele",
+            "titleEn": "Time Reversal, Detailed Balance, and Model Examples",
+            "description": "Zusammenfassender Cluster: Zeitumkehr und detailed balance (Reversibilität) sowie Anwendung der Theorie auf klassische Beispiele.",
+            "descriptionEn": "Summary cluster: time reversal and detailed balance (reversibility) and applying the theory to classical examples.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Anwendungen & Reversibilität",
+            "tags": [
+                "ects:5",
+                "module:MA2404"
+            ],
+            "contains": [
+                "22d5aa9b-868e-5412-a508-3b0afda3fb9d",
+                "18a09eec-930b-5c73-86eb-baf3646f94c4"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Anwendungen & Reversibilität",
+                "topicCode": "tum_ma2404_lo5"
+            }
+        },
+        {
+            "id": "22d5aa9b-868e-5412-a508-3b0afda3fb9d",
+            "shortKey": "tum_ma2404_lo5_1",
+            "title": "Zeitumkehr und detailed balance formulieren und nutzen",
+            "titleEn": "Formulate and Use Time Reversal and Detailed Balance",
+            "description": "Die lernende Person kann Zeitumkehr einer Markovkette beschreiben, detailed balance als Kriterium für Reversibilität formulieren und in Beispielen nutzen, um stationäre Verteilungen zu bestimmen.",
+            "descriptionEn": "The learner can describe time reversal of a Markov chain, formulate detailed balance as a criterion for reversibility, and use it in examples to determine stationary distributions.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Anwendungen & Reversibilität",
+            "tags": [
+                "ects:5",
+                "module:MA2404"
+            ],
+            "contains": [],
+            "requires": [
+                "29d15589-4f21-5ef0-bb5e-dd3ea986033e"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Anwendungen & Reversibilität",
+                "topicCode": "tum_ma2404_lo5_1"
+            }
+        },
+        {
+            "id": "18a09eec-930b-5c73-86eb-baf3646f94c4",
+            "shortKey": "tum_ma2404_lo5_2",
+            "title": "Klassische Modelle als Markovketten modellieren und analysieren",
+            "titleEn": "Model and Analyze Classical Examples as Markov Chains",
+            "description": "Die lernende Person kann klassische Beispiele (z.B. Irrfahrt, Ruinproblem, Geburts- und Todesprozesse, Galton–Watson, Warteschlangenmodelle, Ehrenfest) als Markovketten modellieren und geeignete Resultate (Trefferwahrscheinlichkeiten, Stationarität, Langzeitverhalten) anwenden.",
+            "descriptionEn": "The learner can model classical examples (e.g., random walks, gambler’s ruin, birth–death processes, Galton–Watson, queueing models, the Ehrenfest model) as Markov chains and apply appropriate results (hitting probabilities, stationarity, long-term behavior).",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Anwendungen & Reversibilität",
+            "tags": [
+                "ects:5",
+                "module:MA2404"
+            ],
+            "contains": [],
+            "requires": [
+                "22d5aa9b-868e-5412-a508-3b0afda3fb9d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Anwendungen & Reversibilität",
+                "topicCode": "tum_ma2404_lo5_2"
+            }
         }
     ]
 }
