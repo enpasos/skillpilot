@@ -78,6 +78,13 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
         filteredLandscapes = filterOptions(landscapes);
     }
 
+    // Sort alphabetically by the displayed text
+    const sortedLandscapes = [...filteredLandscapes].sort((a, b) => {
+        const textA = a.title || a.description || a.subject || '';
+        const textB = b.title || b.description || b.subject || '';
+        return textA.localeCompare(textB, language);
+    });
+
     return (
         <select
             value={currentLandscapeId || ''}
@@ -87,7 +94,7 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
             <option value="" disabled>
                 {t.startPage.login.curriculumLabel.select}
             </option>
-            {filteredLandscapes.map((l) => (
+            {sortedLandscapes.map((l) => (
                 <option key={l.curriculumId} value={l.curriculumId} className="bg-input-bg text-text-primary">
                     {l.title || l.description || l.subject}
                 </option>
