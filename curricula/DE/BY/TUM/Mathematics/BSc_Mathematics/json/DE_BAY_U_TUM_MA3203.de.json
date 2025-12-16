@@ -1,8 +1,8 @@
 {
     "title": "Projektive Geometrie 1 (TUM, Modul MA3203)",
     "titleEn": "Projective Geometry 1 (TUM, Module MA3203)",
-    "description": "After successful completion of the module students are able to see how projective geometry forms a broad basis for many (seemingly) different geometric structures. They are able to apply a projective viewpoint to various geometric structures. They understand the role of transformation groups and algebra in this context. 9 ECTS, angeboten in jedem Semester, Version 2020w, verantwortet von Richter-Gebert, Jürgen.",
-    "descriptionEn": "After successful completion of the module students are able to see how projective geometry forms a broad basis for many (seemingly) different geometric structures. They are able to apply a projective viewpoint to various geometric structures. They understand the role of transformation groups and algebra in this context. 9 ECTS, offered every semester, version 2020w, responsible: Richter-Gebert, Jürgen.",
+    "description": "Das Modul behandelt projektive Räume und ihre Transformationsgruppen, algebraische Darstellungen geometrischer Strukturen und projektive Invarianten. Es umfasst reelle und komplexe projektive Geometrie sowie lineare und nichtlineare geometrische Objekte und ausgewählte Struktursätze. Zudem werden im Sinne des Erlanger Programms nach Klein ausgewählte Subgeometrien projektiver Räume diskutiert. Nach erfolgreichem Abschluss können Studierende den projektiven Standpunkt auf verschiedene geometrische Strukturen anwenden und verstehen die Rolle von Transformationsgruppen und Algebra in diesem Kontext. 9 ECTS, angeboten in jedem Semester, Version 2020w, verantwortet von Richter-Gebert, Jürgen.",
+    "descriptionEn": "The module covers projective spaces and their transformation groups, algebraic representations of geometric structures, and projective invariants. It includes real and complex projective geometry as well as linear and nonlinear geometric objects and selected structure theorems. In the spirit of Klein’s Erlangen program, selected sub-geometries of projective spaces are discussed. After successful completion, students can apply a projective viewpoint to various geometric structures and understand the role of transformation groups and algebra in this context. 9 ECTS, offered every semester, version 2020w, responsible: Richter-Gebert, Jürgen.",
     "landscapeId": "ccb951a3-9945-40ae-9f51-00fb1dc3095c",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -19,7 +19,7 @@
             "shortKey": "tum_ma3203_module",
             "title": "Projektive Geometrie 1 – Gesamtmodul",
             "titleEn": "Projective Geometry 1 – Full Module",
-            "description": "After successful completion of the module students are able to see how projective geometry forms a broad basis for many (seemingly) different geometric structures. They are able to apply a projective viewpoint to various geometric structures. They understand the role of transformation groups and algebra in this context.",
+            "description": "Nach erfolgreichem Abschluss können Studierende sehen, wie projektive Geometrie eine breite Grundlage für viele (scheinbar) unterschiedliche geometrische Strukturen bildet. Sie können einen projektiven Standpunkt auf verschiedene geometrische Strukturen anwenden und verstehen die Rolle von Transformationsgruppen und Algebra in diesem Kontext.",
             "descriptionEn": "After successful completion of the module students are able to see how projective geometry forms a broad basis for many (seemingly) different geometric structures. They are able to apply a projective viewpoint to various geometric structures. They understand the role of transformation groups and algebra in this context.",
             "core": true,
             "weight": 9.0,
@@ -29,15 +29,28 @@
                 "ects:9",
                 "workload:270h",
                 "presence:90h",
-                "level:bachelor",
-                "language:de",
+                "level:master",
+                "language:en",
                 "module:MA3203",
                 "semester:WS+SS",
                 "duration:1_semester",
                 "responsible:richter_gebert_j_rgen"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "9f74e103-74f3-5641-b8e1-464d7dbfc1a2",
+                "60c6bb94-d633-5bc3-bf8b-0a9a8b0da1b7",
+                "03aabd59-7cfe-5d71-a770-e4cd1576e424",
+                "5890a948-1248-5035-8b68-6f0c66256792",
+                "e1ee2fd1-9ddc-51cf-96aa-f4576760d369",
+                "65d7bc26-e372-5a19-aa85-72290de17d7e",
+                "22cad1be-3b94-5037-8241-68f506558840",
+                "50a48bac-83da-57d5-8c54-9e18aeab4662"
+            ],
+            "requires": [
+                "8eb1605b-fa70-511b-bbe4-28173d359c3b",
+                "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
+                "834d5562-2d6c-5a80-8702-722337eb3fa4"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-ma3203",
@@ -49,6 +62,748 @@
                 "topicCode": "tum_ma3203_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA3203&description_version=2020w"
+        },
+        {
+            "id": "9f74e103-74f3-5641-b8e1-464d7dbfc1a2",
+            "shortKey": "tum_ma3203_lo1",
+            "title": "Projektive Räume und Koordinaten",
+            "titleEn": "Projective Spaces and Coordinates",
+            "description": "Zusammenfassender Cluster: Projektive Räume, homogene Koordinaten und grundlegende projektive Konstruktionen als Basis der projektiven Sichtweise.",
+            "descriptionEn": "Summary cluster: projective spaces, homogeneous coordinates, and basic projective constructions as the basis of the projective viewpoint.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Projektive Räume",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [
+                "d0eb2ba9-a9ba-56f3-9e86-8df8a973176d",
+                "20e2fdd9-9643-57de-bb3e-b2d5e6d89729"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Projektive Räume",
+                "topicCode": "tum_ma3203_lo1"
+            }
+        },
+        {
+            "id": "d0eb2ba9-a9ba-56f3-9e86-8df8a973176d",
+            "shortKey": "tum_ma3203_lo1_1",
+            "title": "Projektive Räume und homogene Koordinaten verwenden",
+            "titleEn": "Use Projective Spaces and Homogeneous Coordinates",
+            "description": "Die lernende Person kann projektive Räume definieren, homogene Koordinaten verwenden und grundlegende Rechnungen in projektiven Räumen (z.B. Punkte, Geraden, Hyperflächen) durchführen.",
+            "descriptionEn": "The learner can define projective spaces, use homogeneous coordinates, and carry out basic computations in projective spaces (e.g., points, lines, hyperplanes).",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Projektive Räume",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Projektive Räume",
+                "topicCode": "tum_ma3203_lo1_1"
+            }
+        },
+        {
+            "id": "20e2fdd9-9643-57de-bb3e-b2d5e6d89729",
+            "shortKey": "tum_ma3203_lo1_2",
+            "title": "Projektive Konstruktionen und Dualität einordnen",
+            "titleEn": "Place Projective Constructions and Duality",
+            "description": "Die lernende Person kann grundlegende projektive Konstruktionen beschreiben und den Dualitätsbegriff (Punkte/Hyperflächen) in Beispielen anwenden.",
+            "descriptionEn": "The learner can describe basic projective constructions and apply the notion of duality (points/hyperplanes) in examples.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Projektive Räume",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [],
+            "requires": [
+                "d0eb2ba9-a9ba-56f3-9e86-8df8a973176d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Projektive Räume",
+                "topicCode": "tum_ma3203_lo1_2"
+            }
+        },
+        {
+            "id": "60c6bb94-d633-5bc3-bf8b-0a9a8b0da1b7",
+            "shortKey": "tum_ma3203_lo2",
+            "title": "Transformationsgruppen und Struktursätze",
+            "titleEn": "Transformation Groups and Structure Theorems",
+            "description": "Zusammenfassender Cluster: Transformationsgruppen projektiver Räume und die Rolle von Struktursätzen zur Charakterisierung projektiver Abbildungen.",
+            "descriptionEn": "Summary cluster: transformation groups of projective spaces and the role of structure theorems in characterizing projective maps.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Transformationen",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [
+                "01fa9371-e863-5118-835a-3b287bbf9f27",
+                "22a794e4-b392-58d2-ab55-68b0e5a2dd5a"
+            ],
+            "requires": [
+                "d0eb2ba9-a9ba-56f3-9e86-8df8a973176d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Transformationen",
+                "topicCode": "tum_ma3203_lo2"
+            }
+        },
+        {
+            "id": "01fa9371-e863-5118-835a-3b287bbf9f27",
+            "shortKey": "tum_ma3203_lo2_1",
+            "title": "Projektive Transformationen und Gruppenwirkungen nutzen",
+            "titleEn": "Use Projective Transformations and Group Actions",
+            "description": "Die lernende Person kann projektive Transformationen (kollineare Abbildungen) darstellen, Transformationsgruppen beschreiben und Gruppenwirkungen zur Analyse geometrischer Situationen einsetzen.",
+            "descriptionEn": "The learner can represent projective transformations (collineations), describe transformation groups, and use group actions to analyze geometric situations.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Transformationen",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [],
+            "requires": [
+                "d0eb2ba9-a9ba-56f3-9e86-8df8a973176d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Transformationen",
+                "topicCode": "tum_ma3203_lo2_1"
+            }
+        },
+        {
+            "id": "22a794e4-b392-58d2-ab55-68b0e5a2dd5a",
+            "shortKey": "tum_ma3203_lo2_2",
+            "title": "Struktursätze zu Transformationen anwenden",
+            "titleEn": "Apply Structure Theorems for Transformations",
+            "description": "Die lernende Person kann ausgewählte Struktursätze (z.B. fundamentale Sätze der projektiven Geometrie in geeigneter Form) in Beispielen nutzen, um projektive Abbildungen zu charakterisieren.",
+            "descriptionEn": "The learner can use selected structure theorems (e.g., suitable forms of the fundamental theorems of projective geometry) in examples to characterize projective maps.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Transformationen",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [],
+            "requires": [
+                "01fa9371-e863-5118-835a-3b287bbf9f27"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Transformationen",
+                "topicCode": "tum_ma3203_lo2_2"
+            }
+        },
+        {
+            "id": "03aabd59-7cfe-5d71-a770-e4cd1576e424",
+            "shortKey": "tum_ma3203_lo3",
+            "title": "Algebraische Darstellungen geometrischer Strukturen",
+            "titleEn": "Algebraic Representations of Geometric Structures",
+            "description": "Zusammenfassender Cluster: Algebraische Repräsentationen und Rechenmethoden zur Behandlung projektiver Strukturen und Inzidenzen.",
+            "descriptionEn": "Summary cluster: algebraic representations and computational methods for handling projective structures and incidences.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Algebraische Methoden",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [
+                "1274336d-ff80-5ac6-995e-c5265cb5d34d",
+                "b71acb24-4273-5bfd-a0d9-56a2fd0b23b9"
+            ],
+            "requires": [
+                "d0eb2ba9-a9ba-56f3-9e86-8df8a973176d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Algebraische Methoden",
+                "topicCode": "tum_ma3203_lo3"
+            }
+        },
+        {
+            "id": "1274336d-ff80-5ac6-995e-c5265cb5d34d",
+            "shortKey": "tum_ma3203_lo3_1",
+            "title": "Geometrische Strukturen algebraisch modellieren",
+            "titleEn": "Model Geometric Structures Algebraically",
+            "description": "Die lernende Person kann geometrische Strukturen algebraisch repräsentieren (z.B. über Koordinaten, Gleichungen und lineare Algebra) und daraus Rechenverfahren für projektive Probleme ableiten.",
+            "descriptionEn": "The learner can represent geometric structures algebraically (e.g., via coordinates, equations, and linear algebra) and derive computational procedures for projective problems.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Algebraische Methoden",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [],
+            "requires": [
+                "d0eb2ba9-a9ba-56f3-9e86-8df8a973176d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Algebraische Methoden",
+                "topicCode": "tum_ma3203_lo3_1"
+            }
+        },
+        {
+            "id": "b71acb24-4273-5bfd-a0d9-56a2fd0b23b9",
+            "shortKey": "tum_ma3203_lo3_2",
+            "title": "Inzidenz- und Rangargumente sicher einsetzen",
+            "titleEn": "Use Incidence and Rank Arguments Confidently",
+            "description": "Die lernende Person kann Inzidenzaussagen (z.B. Schnitt, Lagebeziehungen) in Koordinaten übersetzen und mit Rang-/Dimensionsargumenten strukturieren.",
+            "descriptionEn": "The learner can translate incidence statements (e.g., intersections, relative positions) into coordinates and structure them using rank/dimension arguments.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Algebraische Methoden",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [],
+            "requires": [
+                "1274336d-ff80-5ac6-995e-c5265cb5d34d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Algebraische Methoden",
+                "topicCode": "tum_ma3203_lo3_2"
+            }
+        },
+        {
+            "id": "5890a948-1248-5035-8b68-6f0c66256792",
+            "shortKey": "tum_ma3203_lo4",
+            "title": "Invariante geometrische Eigenschaften",
+            "titleEn": "Invariant Geometric Properties",
+            "description": "Zusammenfassender Cluster: Projektive Invarianten und invariant-geometrische Argumente als Kern der projektiven Sichtweise.",
+            "descriptionEn": "Summary cluster: projective invariants and invariant-geometric reasoning as the core of the projective viewpoint.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Invarianten",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [
+                "1f48c18b-5ede-511f-9053-8115e8b95817",
+                "bdb0ce6f-a841-54c7-85ed-e6934a9e4945"
+            ],
+            "requires": [
+                "01fa9371-e863-5118-835a-3b287bbf9f27"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Invarianten",
+                "topicCode": "tum_ma3203_lo4"
+            }
+        },
+        {
+            "id": "1f48c18b-5ede-511f-9053-8115e8b95817",
+            "shortKey": "tum_ma3203_lo4_1",
+            "title": "Projektive Invarianten (z.B. Doppelverhältnis) nutzen",
+            "titleEn": "Use Projective Invariants (e.g., Cross Ratio)",
+            "description": "Die lernende Person kann projektive Invarianten wie das Doppelverhältnis definieren, berechnen und zur Unterscheidung projektiver Konfigurationen einsetzen.",
+            "descriptionEn": "The learner can define, compute, and use projective invariants such as the cross ratio to distinguish projective configurations.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Invarianten",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [],
+            "requires": [
+                "01fa9371-e863-5118-835a-3b287bbf9f27"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Invarianten",
+                "topicCode": "tum_ma3203_lo4_1"
+            }
+        },
+        {
+            "id": "bdb0ce6f-a841-54c7-85ed-e6934a9e4945",
+            "shortKey": "tum_ma3203_lo4_2",
+            "title": "Invariante Eigenschaften unter Transformationen begründen",
+            "titleEn": "Justify Invariant Properties under Transformations",
+            "description": "Die lernende Person kann begründen, welche Eigenschaften unter projektiven Transformationen invariant sind, und diese Invarianz in Beweis- und Rechenaufgaben nutzen.",
+            "descriptionEn": "The learner can justify which properties are invariant under projective transformations and use this invariance in proofs and computations.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Invarianten",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [],
+            "requires": [
+                "1f48c18b-5ede-511f-9053-8115e8b95817"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Invarianten",
+                "topicCode": "tum_ma3203_lo4_2"
+            }
+        },
+        {
+            "id": "e1ee2fd1-9ddc-51cf-96aa-f4576760d369",
+            "shortKey": "tum_ma3203_lo5",
+            "title": "Reelle und komplexe projektive Geometrie",
+            "titleEn": "Real and Complex Projective Geometry",
+            "description": "Zusammenfassender Cluster: Projektive Geometrie über R und C und der Umgang mit typischen Objekten und Argumenten in beiden Settings.",
+            "descriptionEn": "Summary cluster: projective geometry over R and C and working with typical objects and arguments in both settings.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Reell & Komplex",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [
+                "b215b742-689c-5980-acaf-2598a63f792a",
+                "95b2d70e-72de-5572-8db3-99d1d142164f"
+            ],
+            "requires": [
+                "d0eb2ba9-a9ba-56f3-9e86-8df8a973176d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Reell & Komplex",
+                "topicCode": "tum_ma3203_lo5"
+            }
+        },
+        {
+            "id": "b215b742-689c-5980-acaf-2598a63f792a",
+            "shortKey": "tum_ma3203_lo5_1",
+            "title": "Reelle projektive Geometrie sicher anwenden",
+            "titleEn": "Apply Real Projective Geometry Confidently",
+            "description": "Die lernende Person kann grundlegende Objekte der reellen projektiven Geometrie (projektive Gerade/Ebene/Raum) beschreiben und typische Rechnungen und Argumente in Beispielen durchführen.",
+            "descriptionEn": "The learner can describe basic objects of real projective geometry (projective line/plane/space) and carry out typical computations and arguments in examples.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Reell & Komplex",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [],
+            "requires": [
+                "d0eb2ba9-a9ba-56f3-9e86-8df8a973176d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Reell & Komplex",
+                "topicCode": "tum_ma3203_lo5_1"
+            }
+        },
+        {
+            "id": "95b2d70e-72de-5572-8db3-99d1d142164f",
+            "shortKey": "tum_ma3203_lo5_2",
+            "title": "Komplexe projektive Geometrie einordnen",
+            "titleEn": "Place Complex Projective Geometry",
+            "description": "Die lernende Person kann Unterschiede und Besonderheiten der komplexen projektiven Geometrie erläutern und grundlegende Beispiele (z.B. projektive Gerade über C) in Aufgaben nutzen.",
+            "descriptionEn": "The learner can explain differences and features of complex projective geometry and use basic examples (e.g., the projective line over C) in problems.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Reell & Komplex",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [],
+            "requires": [
+                "b215b742-689c-5980-acaf-2598a63f792a"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Reell & Komplex",
+                "topicCode": "tum_ma3203_lo5_2"
+            }
+        },
+        {
+            "id": "65d7bc26-e372-5a19-aa85-72290de17d7e",
+            "shortKey": "tum_ma3203_lo6",
+            "title": "Lineare und nichtlineare geometrische Objekte",
+            "titleEn": "Linear and Nonlinear Geometric Objects",
+            "description": "Zusammenfassender Cluster: Lineare und nichtlineare Objekte in projektiven Räumen und ihre algebraische Beschreibung.",
+            "descriptionEn": "Summary cluster: linear and nonlinear objects in projective spaces and their algebraic description.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Geometrische Objekte",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [
+                "6ca3bee9-3ce4-5420-b682-af64d2aec0e8",
+                "e2789eba-1d73-5953-8da4-f0ed49866ecf"
+            ],
+            "requires": [
+                "b71acb24-4273-5bfd-a0d9-56a2fd0b23b9"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Geometrische Objekte",
+                "topicCode": "tum_ma3203_lo6"
+            }
+        },
+        {
+            "id": "6ca3bee9-3ce4-5420-b682-af64d2aec0e8",
+            "shortKey": "tum_ma3203_lo6_1",
+            "title": "Lineare Objekte in projektiven Räumen behandeln",
+            "titleEn": "Work with Linear Objects in Projective Spaces",
+            "description": "Die lernende Person kann lineare Unterräume, Schnitte und Projektionen in projektiven Räumen beschreiben und grundlegende Eigenschaften (Dimension, Lage) in Beispielen analysieren.",
+            "descriptionEn": "The learner can describe linear subspaces, intersections, and projections in projective spaces and analyze basic properties (dimension, position) in examples.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Geometrische Objekte",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [],
+            "requires": [
+                "b71acb24-4273-5bfd-a0d9-56a2fd0b23b9"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Geometrische Objekte",
+                "topicCode": "tum_ma3203_lo6_1"
+            }
+        },
+        {
+            "id": "e2789eba-1d73-5953-8da4-f0ed49866ecf",
+            "shortKey": "tum_ma3203_lo6_2",
+            "title": "Nichtlineare Objekte (z.B. Kegelschnitte) modellieren",
+            "titleEn": "Model Nonlinear Objects (e.g., Conics)",
+            "description": "Die lernende Person kann einfache nichtlineare geometrische Objekte (z.B. Kegelschnitte/Quadriken) in projektiven Räumen durch Gleichungen beschreiben und deren projektive Eigenschaften in Beispielen untersuchen.",
+            "descriptionEn": "The learner can describe simple nonlinear geometric objects (e.g., conics/quadrics) in projective spaces via equations and investigate their projective properties in examples.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Geometrische Objekte",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [],
+            "requires": [
+                "6ca3bee9-3ce4-5420-b682-af64d2aec0e8"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Geometrische Objekte",
+                "topicCode": "tum_ma3203_lo6_2"
+            }
+        },
+        {
+            "id": "22cad1be-3b94-5037-8241-68f506558840",
+            "shortKey": "tum_ma3203_lo7",
+            "title": "Struktursätze und Subgeometrien",
+            "titleEn": "Structure Theorems and Sub-Geometries",
+            "description": "Zusammenfassender Cluster: Struktursätze und ausgewählte Subgeometrien projektiver Räume als Bausteine für weiterführende Geometrien.",
+            "descriptionEn": "Summary cluster: structure theorems and selected sub-geometries of projective spaces as building blocks for further geometries.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Struktursätze",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [
+                "b66f2aa5-6a94-599d-9065-1dc4842954c4",
+                "24c741b6-7709-5fd5-9938-38fb04397d15"
+            ],
+            "requires": [
+                "bdb0ce6f-a841-54c7-85ed-e6934a9e4945"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Struktursätze",
+                "topicCode": "tum_ma3203_lo7"
+            }
+        },
+        {
+            "id": "b66f2aa5-6a94-599d-9065-1dc4842954c4",
+            "shortKey": "tum_ma3203_lo7_1",
+            "title": "Geometrische Struktursätze in Beispielen nutzen",
+            "titleEn": "Use Geometric Structure Theorems in Examples",
+            "description": "Die lernende Person kann ausgewählte Struktursätze der projektiven Geometrie anwenden, um geometrische Konfigurationen zu klassifizieren oder Aussagen über Invarianten/Abbildungen abzuleiten.",
+            "descriptionEn": "The learner can apply selected structure theorems of projective geometry to classify configurations or derive statements about invariants/maps.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Struktursätze",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [],
+            "requires": [
+                "bdb0ce6f-a841-54c7-85ed-e6934a9e4945"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Struktursätze",
+                "topicCode": "tum_ma3203_lo7_1"
+            }
+        },
+        {
+            "id": "24c741b6-7709-5fd5-9938-38fb04397d15",
+            "shortKey": "tum_ma3203_lo7_2",
+            "title": "Subgeometrien projektiver Räume einordnen",
+            "titleEn": "Place Sub-Geometries of Projective Spaces",
+            "description": "Die lernende Person kann ausgewählte Subgeometrien (z.B. affine Geometrie als Teilgeometrie) in den projektiven Kontext einbetten und die zugehörigen Invarianten/Transformationen diskutieren.",
+            "descriptionEn": "The learner can embed selected sub-geometries (e.g., affine geometry) into the projective setting and discuss the associated invariants/transformations.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Struktursätze",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [],
+            "requires": [
+                "b66f2aa5-6a94-599d-9065-1dc4842954c4"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Struktursätze",
+                "topicCode": "tum_ma3203_lo7_2"
+            }
+        },
+        {
+            "id": "50a48bac-83da-57d5-8c54-9e18aeab4662",
+            "shortKey": "tum_ma3203_lo8",
+            "title": "Erlanger Programm und Anwendungen",
+            "titleEn": "Erlangen Program and Applications",
+            "description": "Zusammenfassender Cluster: Erlanger Programm als Leitidee und Anwendungen der projektiven Sichtweise auf unterschiedliche Geometrien.",
+            "descriptionEn": "Summary cluster: the Erlangen program as a guiding idea and applications of the projective viewpoint across different geometries.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Erlanger Programm",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [
+                "b43a16d4-7390-5dd0-818d-3951651f9c42",
+                "7f260040-e085-517c-98bc-50df4169a2ef"
+            ],
+            "requires": [
+                "01fa9371-e863-5118-835a-3b287bbf9f27",
+                "24c741b6-7709-5fd5-9938-38fb04397d15"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Erlanger Programm",
+                "topicCode": "tum_ma3203_lo8"
+            }
+        },
+        {
+            "id": "b43a16d4-7390-5dd0-818d-3951651f9c42",
+            "shortKey": "tum_ma3203_lo8_1",
+            "title": "Kleins Erlanger Programm erklären",
+            "titleEn": "Explain Klein’s Erlangen Program",
+            "description": "Die lernende Person kann das Erlanger Programm als Klassifikation von Geometrien über Transformationsgruppen erklären und in Beispielen geometrische Invarianten aus Gruppenwirkungen ableiten.",
+            "descriptionEn": "The learner can explain the Erlangen program as a classification of geometries via transformation groups and derive geometric invariants from group actions in examples.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Erlanger Programm",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [],
+            "requires": [
+                "01fa9371-e863-5118-835a-3b287bbf9f27"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Erlanger Programm",
+                "topicCode": "tum_ma3203_lo8_1"
+            }
+        },
+        {
+            "id": "7f260040-e085-517c-98bc-50df4169a2ef",
+            "shortKey": "tum_ma3203_lo8_2",
+            "title": "Projektive Sichtweise auf verschiedene Geometrien übertragen",
+            "titleEn": "Transfer the Projective Viewpoint to Various Geometries",
+            "description": "Die lernende Person kann eine projektive Sichtweise auf unterschiedliche geometrische Strukturen anwenden und die Rolle von Transformationen, Invarianten und Algebra in konkreten Beispielen begründen.",
+            "descriptionEn": "The learner can apply a projective viewpoint to different geometric structures and justify the role of transformations, invariants, and algebra in concrete examples.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Erlanger Programm",
+            "tags": [
+                "ects:9",
+                "module:MA3203"
+            ],
+            "contains": [],
+            "requires": [
+                "b43a16d4-7390-5dd0-818d-3951651f9c42",
+                "24c741b6-7709-5fd5-9938-38fb04397d15"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3203",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Erlanger Programm",
+                "topicCode": "tum_ma3203_lo8_2"
+            }
         }
     ]
 }

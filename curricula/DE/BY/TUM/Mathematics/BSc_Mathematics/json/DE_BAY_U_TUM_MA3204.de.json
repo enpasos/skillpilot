@@ -1,8 +1,8 @@
 {
     "title": "Projektive Geometrie 2 (TUM, Modul MA3204)",
     "titleEn": "Projective Geometry 2 (TUM, Module MA3204)",
-    "description": "After successful completion of the module the students are able to apply advanced algebraic techniques (like Tensor or Clifford Algebra) to geometric Problems and decide what tools are most appropriate for a specific situations. They are also able to apply combinatorial methods (oriented matroids, polytopes) to certain geometric problems. They understand the interplay of geometric, combinatoric and algebric structures in selected examples. 5 ECTS, angeboten unregelmäßig, Version 2024w, verantwortet von Richter-Gebert, Jürgen.",
-    "descriptionEn": "After successful completion of the module the students are able to apply advanced algebraic techniques (like Tensor or Clifford Algebra) to geometric Problems and decide what tools are most appropriate for a specific situations. They are also able to apply combinatorial methods (oriented matroids, polytopes) to certain geometric problems. They understand the interplay of geometric, combinatoric and algebric structures in selected examples. 5 ECTS, offered irregular, version 2024w, responsible: Richter-Gebert, Jürgen.",
+    "description": "Das Modul behandelt ausgewählte fortgeschrittene Themen der projektiven Geometrie, z.B. Tensor-Diagramm-Kalkül, Starrheitstheorie, kombinatorische projektive Geometrie, Kreisgeometrie, Clifford-Algebra, projektive algebraische Geometrie, hyperbolische Geometrie und projektive Polytoptheorie. Nach erfolgreichem Abschluss können Studierende fortgeschrittene algebraische Techniken (z.B. Tensor- oder Clifford-Algebra) auf geometrische Probleme anwenden, geeignete Werkzeuge für konkrete Situationen auswählen und kombinatorische Methoden (z.B. orientierte Matroide, Polytopen) in ausgewählten Beispielen einsetzen. 5 ECTS, angeboten unregelmäßig, Version 2024w, verantwortet von Richter-Gebert, Jürgen.",
+    "descriptionEn": "The module covers selected advanced topics in projective geometry, e.g., tensor diagram calculus, rigidity theory, combinatorial projective geometry, circle geometry, Clifford algebra, projective algebraic geometry, hyperbolic geometry, and projective polytope theory. After successful completion, students can apply advanced algebraic techniques (e.g., tensor or Clifford algebra) to geometric problems, decide which tools are most appropriate for a given situation, and apply combinatorial methods (e.g., oriented matroids, polytopes) in selected examples. 5 ECTS, offered irregularly, version 2024w, responsible: Richter-Gebert, Jürgen.",
     "landscapeId": "e0225518-93a2-4bf2-8ac0-05a25154fa0a",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -19,8 +19,8 @@
             "shortKey": "tum_ma3204_module",
             "title": "Projektive Geometrie 2 – Gesamtmodul",
             "titleEn": "Projective Geometry 2 – Full Module",
-            "description": "After successful completion of the module the students are able to apply advanced algebraic techniques (like Tensor or Clifford Algebra) to geometric Problems and decide what tools are most appropriate for a specific situations. They are also able to apply combinatorial methods (oriented matroids, polytopes) to certain geometric problems. They understand the interplay of geometric, combinatoric and algebric structures in selected examples.",
-            "descriptionEn": "After successful completion of the module the students are able to apply advanced algebraic techniques (like Tensor or Clifford Algebra) to geometric Problems and decide what tools are most appropriate for a specific situations. They are also able to apply combinatorial methods (oriented matroids, polytopes) to certain geometric problems. They understand the interplay of geometric, combinatoric and algebric structures in selected examples.",
+            "description": "Nach erfolgreichem Abschluss sind die Studierenden in der Lage, fortgeschrittene algebraische Techniken (z.B. Tensor- bzw. Clifford-Algebra) auf geometrische Probleme anzuwenden, passende Werkzeuge für konkrete Situationen auszuwählen und kombinatorische Methoden (z.B. orientierte Matroide, Polytopen) in ausgewählten Beispielen einzusetzen. Sie verstehen das Zusammenspiel geometrischer, kombinatorischer und algebraischer Strukturen in den behandelten Themen.",
+            "descriptionEn": "After successful completion of the module students are able to apply advanced algebraic techniques (e.g., tensor or Clifford algebra) to geometric problems and decide what tools are most appropriate for a specific situation. They are also able to apply combinatorial methods (e.g., oriented matroids, polytopes) to selected geometric problems. They understand the interplay of geometric, combinatorial, and algebraic structures in the topics covered.",
             "core": true,
             "weight": 5.0,
             "phase": "Modul",
@@ -29,14 +29,24 @@
                 "ects:5",
                 "workload:150h",
                 "presence:45h",
-                "level:bachelor",
-                "language:de",
+                "level:master",
+                "language:en",
                 "module:MA3204",
+                "semester:irregular",
                 "duration:1_semester",
                 "responsible:richter_gebert_j_rgen"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "b9ef5503-3e62-5f7e-8086-69e32f3cba5f",
+                "4679b416-5b52-544a-a92e-0785d65338d2",
+                "02868f11-5c5e-59af-ab9a-eb47fe304494",
+                "1b173ad9-2f57-5ce9-9080-6841213b998f",
+                "e14303f6-e9b5-5c1d-b7c8-9f727add8b65"
+            ],
+            "requires": [
+                "834d5562-2d6c-5a80-8702-722337eb3fa4",
+                "18433727-e8bf-4bc0-bf0a-4a8f48773e59"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-ma3204",
@@ -48,6 +58,451 @@
                 "topicCode": "tum_ma3204_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA3204&description_version=2024w"
+        },
+        {
+            "id": "b9ef5503-3e62-5f7e-8086-69e32f3cba5f",
+            "shortKey": "tum_ma3204_lo1",
+            "title": "Tensor-Diagramm-Kalkül",
+            "titleEn": "Tensor Diagram Calculus",
+            "description": "Zusammenfassender Cluster: Tensor-Diagramme als Sprache multilinearer Algebra und deren Einsatz zur Modellierung geometrischer Strukturen.",
+            "descriptionEn": "Summary cluster: tensor diagrams as a language of multilinear algebra and their use for modeling geometric structures.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Tensor-Diagramm-Kalkül",
+            "tags": [
+                "ects:5",
+                "module:MA3204"
+            ],
+            "contains": [
+                "83304618-a100-5739-a302-dd65e10f46d2",
+                "0079c852-395a-5042-968b-8621b54edc6d"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3204",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Tensor-Diagramm-Kalkül",
+                "topicCode": "tum_ma3204_lo1"
+            }
+        },
+        {
+            "id": "83304618-a100-5739-a302-dd65e10f46d2",
+            "shortKey": "tum_ma3204_lo1_1",
+            "title": "Tensor-Diagramme interpretieren und umformen",
+            "titleEn": "Interpret and Transform Tensor Diagrams",
+            "description": "Die lernende Person kann Tensor-Diagramme als Darstellung multilinearer Abbildungen interpretieren und grundlegende Operationen wie Kontraktion, Umordnung und Indexnotation sicher anwenden.",
+            "descriptionEn": "The learner can interpret tensor diagrams as representations of multilinear maps and apply basic operations such as contraction, rearrangement, and index notation.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Tensor-Diagramm-Kalkül",
+            "tags": [
+                "ects:5",
+                "module:MA3204"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3204",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Tensor-Diagramm-Kalkül",
+                "topicCode": "tum_ma3204_lo1_1"
+            }
+        },
+        {
+            "id": "0079c852-395a-5042-968b-8621b54edc6d",
+            "shortKey": "tum_ma3204_lo1_2",
+            "title": "Tensor-Diagramm-Kalkül zur Bearbeitung geometrischer Probleme einsetzen",
+            "titleEn": "Use Tensor Diagram Calculus to Tackle Geometric Problems",
+            "description": "Die lernende Person kann ausgewählte geometrische Fragestellungen in eine Tensor- bzw. Diagrammformulierung übersetzen, geeignete Diagramm-Manipulationen wählen und die Ergebnisse geometrisch interpretieren.",
+            "descriptionEn": "The learner can translate selected geometric questions into a tensor/diagram formulation, choose suitable diagram manipulations, and interpret the results geometrically.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Tensor-Diagramm-Kalkül",
+            "tags": [
+                "ects:5",
+                "module:MA3204"
+            ],
+            "contains": [],
+            "requires": [
+                "83304618-a100-5739-a302-dd65e10f46d2"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3204",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Tensor-Diagramm-Kalkül",
+                "topicCode": "tum_ma3204_lo1_2"
+            }
+        },
+        {
+            "id": "4679b416-5b52-544a-a92e-0785d65338d2",
+            "shortKey": "tum_ma3204_lo2",
+            "title": "Clifford-Algebra und Kreisgeometrie",
+            "titleEn": "Clifford Algebra and Circle Geometry",
+            "description": "Zusammenfassender Cluster: Clifford-Algebra als Werkzeug zur Darstellung geometrischer Operationen und zur Bearbeitung ausgewählter Probleme der Kreisgeometrie.",
+            "descriptionEn": "Summary cluster: Clifford algebra as a tool to represent geometric operations and to treat selected problems in circle geometry.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Clifford-Algebra",
+            "tags": [
+                "ects:5",
+                "module:MA3204"
+            ],
+            "contains": [
+                "dae92348-faba-5e03-ad7a-5d8b0b76a1c7",
+                "b09baa66-1804-598f-b511-554f19267dd4"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3204",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Clifford-Algebra",
+                "topicCode": "tum_ma3204_lo2"
+            }
+        },
+        {
+            "id": "dae92348-faba-5e03-ad7a-5d8b0b76a1c7",
+            "shortKey": "tum_ma3204_lo2_1",
+            "title": "Clifford-Algebra als geometrisches Werkzeug nutzen",
+            "titleEn": "Use Clifford Algebra as a Geometric Tool",
+            "description": "Die lernende Person kann Grundbegriffe der Clifford-Algebra (Quadratische Formen, Erzeuger, Produkte) erklären und damit geometrische Operationen wie Spiegelungen und Rotationen modellieren.",
+            "descriptionEn": "The learner can explain basic notions of Clifford algebra (quadratic forms, generators, products) and model geometric operations such as reflections and rotations.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Clifford-Algebra",
+            "tags": [
+                "ects:5",
+                "module:MA3204"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3204",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Clifford-Algebra",
+                "topicCode": "tum_ma3204_lo2_1"
+            }
+        },
+        {
+            "id": "b09baa66-1804-598f-b511-554f19267dd4",
+            "shortKey": "tum_ma3204_lo2_2",
+            "title": "Kreisgeometrie mit Clifford-Algebra bearbeiten",
+            "titleEn": "Work on Circle Geometry with Clifford Algebra",
+            "description": "Die lernende Person kann ausgewählte Probleme der Kreis- und Inversionsgeometrie mit Clifford-algebraischen Methoden formulieren, lösen und invariantenbasiert diskutieren.",
+            "descriptionEn": "The learner can formulate, solve, and discuss selected problems in circle and inversion geometry using Clifford-algebraic methods and invariants.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Clifford-Algebra",
+            "tags": [
+                "ects:5",
+                "module:MA3204"
+            ],
+            "contains": [],
+            "requires": [
+                "dae92348-faba-5e03-ad7a-5d8b0b76a1c7"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3204",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Clifford-Algebra",
+                "topicCode": "tum_ma3204_lo2_2"
+            }
+        },
+        {
+            "id": "02868f11-5c5e-59af-ab9a-eb47fe304494",
+            "shortKey": "tum_ma3204_lo3",
+            "title": "Starrheitstheorie (Rigidity Theory)",
+            "titleEn": "Rigidity Theory",
+            "description": "Zusammenfassender Cluster: Modellierung und Analyse von Starrheitsproblemen in Geometrie und Graphen-Frameworks.",
+            "descriptionEn": "Summary cluster: modeling and analyzing rigidity problems in geometry and graph-based frameworks.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Starrheitstheorie",
+            "tags": [
+                "ects:5",
+                "module:MA3204"
+            ],
+            "contains": [
+                "696e3000-34b0-59f4-bd46-5176d88f5bcb",
+                "34eb52a8-dbe6-5fbf-a1be-f8113facfaaa"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3204",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Starrheitstheorie",
+                "topicCode": "tum_ma3204_lo3"
+            }
+        },
+        {
+            "id": "696e3000-34b0-59f4-bd46-5176d88f5bcb",
+            "shortKey": "tum_ma3204_lo3_1",
+            "title": "Starrheitsprobleme als Frameworks und Graphen modellieren",
+            "titleEn": "Model Rigidity Problems as Frameworks and Graphs",
+            "description": "Die lernende Person kann Starrheitsprobleme als Punkt-Stab-Frameworks bzw. Graphenmodelle formulieren und zentrale Begriffe wie Flex, Starrheit und infinitesimale Starrheit definieren.",
+            "descriptionEn": "The learner can formulate rigidity problems as bar-and-joint frameworks or graph models and define key notions such as flexes, rigidity, and infinitesimal rigidity.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Starrheitstheorie",
+            "tags": [
+                "ects:5",
+                "module:MA3204"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3204",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Starrheitstheorie",
+                "topicCode": "tum_ma3204_lo3_1"
+            }
+        },
+        {
+            "id": "34eb52a8-dbe6-5fbf-a1be-f8113facfaaa",
+            "shortKey": "tum_ma3204_lo3_2",
+            "title": "Starrheitskriterien in Beispielen anwenden und interpretieren",
+            "titleEn": "Apply and Interpret Rigidity Criteria in Examples",
+            "description": "Die lernende Person kann in ausgewählten Beispielen Starrheitskriterien bzw. Rangbedingungen anwenden, Freiheitsgrade bestimmen und die Resultate geometrisch interpretieren.",
+            "descriptionEn": "The learner can apply rigidity criteria or rank conditions in selected examples, determine degrees of freedom, and interpret the results geometrically.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Starrheitstheorie",
+            "tags": [
+                "ects:5",
+                "module:MA3204"
+            ],
+            "contains": [],
+            "requires": [
+                "696e3000-34b0-59f4-bd46-5176d88f5bcb"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3204",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Starrheitstheorie",
+                "topicCode": "tum_ma3204_lo3_2"
+            }
+        },
+        {
+            "id": "1b173ad9-2f57-5ce9-9080-6841213b998f",
+            "shortKey": "tum_ma3204_lo4",
+            "title": "Kombinatorische projektive Geometrie und Polytopen",
+            "titleEn": "Combinatorial Projective Geometry and Polytopes",
+            "description": "Zusammenfassender Cluster: Kombinatorische Methoden (Inzidenzstrukturen, orientierte Matroide) und Polytoptheorie als Zugänge zu projektiven Fragestellungen.",
+            "descriptionEn": "Summary cluster: combinatorial methods (incidence structures, oriented matroids) and polytope theory as approaches to projective questions.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kombinatorik & Polytopen",
+            "tags": [
+                "ects:5",
+                "module:MA3204"
+            ],
+            "contains": [
+                "df2edbbb-9493-52f5-8505-caafc3423372",
+                "9c8fee6a-9aeb-5b01-8146-61b3f7c91f0a"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3204",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Kombinatorik & Polytopen",
+                "topicCode": "tum_ma3204_lo4"
+            }
+        },
+        {
+            "id": "df2edbbb-9493-52f5-8505-caafc3423372",
+            "shortKey": "tum_ma3204_lo4_1",
+            "title": "Kombinatorische Inzidenzstrukturen und orientierte Matroide beschreiben",
+            "titleEn": "Describe Combinatorial Incidence Structures and Oriented Matroids",
+            "description": "Die lernende Person kann kombinatorische Modelle der projektiven Geometrie (Inzidenzsysteme) beschreiben und grundlegende Konzepte orientierter Matroide (z.B. Chirotope) in einfachen Argumenten einsetzen.",
+            "descriptionEn": "The learner can describe combinatorial models of projective geometry (incidence systems) and use basic concepts of oriented matroids (e.g., chirotopes) in simple arguments.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Kombinatorik & Polytopen",
+            "tags": [
+                "ects:5",
+                "module:MA3204"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3204",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Kombinatorik & Polytopen",
+                "topicCode": "tum_ma3204_lo4_1"
+            }
+        },
+        {
+            "id": "9c8fee6a-9aeb-5b01-8146-61b3f7c91f0a",
+            "shortKey": "tum_ma3204_lo4_2",
+            "title": "Projektive Polytopen in ausgewählten Beispielen analysieren",
+            "titleEn": "Analyze Projective Polytopes in Selected Examples",
+            "description": "Die lernende Person kann Polytopen als kombinatorisch-geometrische Objekte analysieren (Gesichter, Seitenverband, Dualität) und projektive Aspekte in ausgewählten Beispielen nutzen.",
+            "descriptionEn": "The learner can analyze polytopes as combinatorial-geometric objects (faces, face lattice, duality) and use projective aspects in selected examples.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Kombinatorik & Polytopen",
+            "tags": [
+                "ects:5",
+                "module:MA3204"
+            ],
+            "contains": [],
+            "requires": [
+                "df2edbbb-9493-52f5-8505-caafc3423372"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3204",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Kombinatorik & Polytopen",
+                "topicCode": "tum_ma3204_lo4_2"
+            }
+        },
+        {
+            "id": "e14303f6-e9b5-5c1d-b7c8-9f727add8b65",
+            "shortKey": "tum_ma3204_lo5",
+            "title": "Projektive algebraische und hyperbolische Geometrie",
+            "titleEn": "Projective Algebraic and Hyperbolic Geometry",
+            "description": "Zusammenfassender Cluster: Ausgewählte Themen der projektiven algebraischen Geometrie und der hyperbolischen Geometrie sowie die Verknüpfung algebraischer, kombinatorischer und geometrischer Sichtweisen.",
+            "descriptionEn": "Summary cluster: selected topics from projective algebraic geometry and hyperbolic geometry, and connecting algebraic, combinatorial, and geometric viewpoints.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Algebraische & hyperbolische Geometrie",
+            "tags": [
+                "ects:5",
+                "module:MA3204"
+            ],
+            "contains": [
+                "f9f8f675-c556-5928-9eae-e91f830feb9a",
+                "5045ef53-f02d-5995-a5c9-4a877bed9c11"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3204",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Algebraische & hyperbolische Geometrie",
+                "topicCode": "tum_ma3204_lo5"
+            }
+        },
+        {
+            "id": "f9f8f675-c556-5928-9eae-e91f830feb9a",
+            "shortKey": "tum_ma3204_lo5_1",
+            "title": "Grundbegriffe der projektiven algebraischen Geometrie anwenden",
+            "titleEn": "Apply Basic Concepts of Projective Algebraic Geometry",
+            "description": "Die lernende Person kann projektive Varietäten über homogene Polynome beschreiben, einfache Beispiele (z.B. Kurven oder Flächen) untersuchen und algebraische Invarianten in diesem Kontext interpretieren.",
+            "descriptionEn": "The learner can describe projective varieties via homogeneous polynomials, study basic examples (e.g., curves or surfaces), and interpret algebraic invariants in this context.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Algebraische & hyperbolische Geometrie",
+            "tags": [
+                "ects:5",
+                "module:MA3204"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3204",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Algebraische & hyperbolische Geometrie",
+                "topicCode": "tum_ma3204_lo5_1"
+            }
+        },
+        {
+            "id": "5045ef53-f02d-5995-a5c9-4a877bed9c11",
+            "shortKey": "tum_ma3204_lo5_2",
+            "title": "Hyperbolische Geometrie im projektiven Modell einordnen und Werkzeuge auswählen",
+            "titleEn": "Place Hyperbolic Geometry in Projective Models and Select Tools",
+            "description": "Die lernende Person kann hyperbolische Geometrie in projektiven Modellen (z.B. Cayley–Klein) einordnen, das Zusammenspiel algebraischer, kombinatorischer und geometrischer Strukturen in ausgewählten Beispielen erklären und geeignete Methoden für eine gegebene Problemstellung auswählen.",
+            "descriptionEn": "The learner can place hyperbolic geometry in projective models (e.g., Cayley–Klein), explain the interplay of algebraic, combinatorial, and geometric structures in selected examples, and select suitable methods for a given problem setting.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Algebraische & hyperbolische Geometrie",
+            "tags": [
+                "ects:5",
+                "module:MA3204"
+            ],
+            "contains": [],
+            "requires": [
+                "f9f8f675-c556-5928-9eae-e91f830feb9a"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3204",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Algebraische & hyperbolische Geometrie",
+                "topicCode": "tum_ma3204_lo5_2"
+            }
         }
     ]
 }

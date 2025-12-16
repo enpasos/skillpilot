@@ -1,8 +1,8 @@
 {
     "title": "Dynamische Systeme (TUM, Modul MA3081)",
     "titleEn": "Dynamical Systems (TUM, Module MA3081)",
-    "description": "After successful completion of the module the students are able to understand and apply the mathematical theory of dynamical systems stressing the analysis of geometric and topological properties of solutions of nonlinear ordinary differential equations as well as iterated maps in finite-dimensional Euclidean phase spaces. Furthermore the students are able to analyse elements for the theory of systems on differentiable manifolds and in infinite-dimensional phase spaces. 9 ECTS, angeboten im Sommersemester, Version 2021w, verantwortet von Kühn, Christian.",
-    "descriptionEn": "After successful completion of the module the students are able to understand and apply the mathematical theory of dynamical systems stressing the analysis of geometric and topological properties of solutions of nonlinear ordinary differential equations as well as iterated maps in finite-dimensional Euclidean phase spaces. Furthermore the students are able to analyse elements for the theory of systems on differentiable manifolds and in infinite-dimensional phase spaces. 9 ECTS, offered in summer semester, version 2021w, responsible: Kühn, Christian.",
+    "description": "Das Modul vertieft die mathematische Theorie dynamischer Systeme mit Fokus auf geometrische und topologische Eigenschaften von Lösungen nichtlinearer gewöhnlicher Differentialgleichungen sowie iterierter Abbildungen in endlich-dimensionalen Phasenräumen. Behandelt werden u.a. Stabilität und Lyapunovfunktionen, Poincaré-Abbildungen, stabile/instabile Mannigfaltigkeiten, hyperbolische Mengen und strukturelle Stabilität, lokale und globale Bifurkationen, sowie chaotische Dynamik, symbolische Dynamik und ergodische Aspekte (invariante Maße, Rekurrenz, Ergodizität, Entropie). 9 ECTS, angeboten im Sommersemester, Version 2021w, verantwortet von Kühn, Christian.",
+    "descriptionEn": "The module deepens the mathematical theory of dynamical systems with an emphasis on geometric and topological properties of solutions of nonlinear ordinary differential equations as well as iterated maps in finite-dimensional phase spaces. Topics include stability and Lyapunov functions, Poincaré maps, stable and unstable manifolds, hyperbolic sets and structural stability, local and global bifurcations, and chaotic dynamics including symbolic dynamics and ergodic aspects (invariant measures, recurrence, ergodicity, entropy). 9 ECTS, offered in the summer semester, version 2021w, responsible: Kühn, Christian.",
     "landscapeId": "904174e1-a5e0-4146-a2b4-cd8e6eabea09",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -19,7 +19,7 @@
             "shortKey": "tum_ma3081_module",
             "title": "Dynamische Systeme – Gesamtmodul",
             "titleEn": "Dynamical Systems – Full Module",
-            "description": "After successful completion of the module the students are able to understand and apply the mathematical theory of dynamical systems stressing the analysis of geometric and topological properties of solutions of nonlinear ordinary differential equations as well as iterated maps in finite-dimensional Euclidean phase spaces. Furthermore the students are able to analyse elements for the theory of systems on differentiable manifolds and in infinite-dimensional phase spaces.",
+            "description": "Nach erfolgreichem Abschluss können Studierende die mathematische Theorie dynamischer Systeme verstehen und anwenden, mit Schwerpunkt auf der Analyse geometrischer und topologischer Eigenschaften von Lösungen nichtlinearer gewöhnlicher Differentialgleichungen sowie iterierter Abbildungen in endlich-dimensionalen euklidischen Phasenräumen. Darüber hinaus können sie Elemente der Theorie von Systemen auf differenzierbaren Mannigfaltigkeiten sowie in unendlich-dimensionalen Phasenräumen einordnen.",
             "descriptionEn": "After successful completion of the module the students are able to understand and apply the mathematical theory of dynamical systems stressing the analysis of geometric and topological properties of solutions of nonlinear ordinary differential equations as well as iterated maps in finite-dimensional Euclidean phase spaces. Furthermore the students are able to analyse elements for the theory of systems on differentiable manifolds and in infinite-dimensional phase spaces.",
             "core": true,
             "weight": 9.0,
@@ -29,15 +29,27 @@
                 "ects:9",
                 "workload:270h",
                 "presence:90h",
-                "level:bachelor",
-                "language:de",
+                "level:master",
+                "language:en",
                 "module:MA3081",
                 "semester:SS",
                 "duration:1_semester",
                 "responsible:k_hn_christian"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "b5c62c99-0982-5e36-8c2d-afced50272ca",
+                "47fbf825-ee74-5f82-893f-19d204f0101c",
+                "3ab0f6ac-ff8c-5163-ac8f-0a5c525e1fe1",
+                "44de45cd-dc60-5322-a5e5-6d924dfc5b54",
+                "ef08304a-3c61-5632-93b4-03c7eff0ae58",
+                "bf7bc449-c806-52c4-9368-d726be03922c",
+                "387a9082-e090-533b-a1eb-0a38e65788f8",
+                "c5d9c36d-fcc5-5ae3-a2f8-a6aea41394e7"
+            ],
+            "requires": [
+                "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
+                "c8982665-86b6-5371-8682-852992cab2e7"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-ma3081",
@@ -49,6 +61,746 @@
                 "topicCode": "tum_ma3081_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA3081&description_version=2021w"
+        },
+        {
+            "id": "b5c62c99-0982-5e36-8c2d-afced50272ca",
+            "shortKey": "tum_ma3081_lo1",
+            "title": "Stabilität und Lyapunovtheorie",
+            "titleEn": "Stability and Lyapunov Theory",
+            "description": "Zusammenfassender Cluster: Stabilitätsbegriffe und Lyapunovfunktionen als zentrale Werkzeuge der qualitativen Dynamik.",
+            "descriptionEn": "Summary cluster: stability notions and Lyapunov functions as central tools of qualitative dynamics.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Stabilität & Lyapunov",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [
+                "a704436d-7d15-51d2-9ee3-d2e7cc1962df",
+                "47c37263-b045-5f35-9559-f2c0a1343150"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stabilität & Lyapunov",
+                "topicCode": "tum_ma3081_lo1"
+            }
+        },
+        {
+            "id": "a704436d-7d15-51d2-9ee3-d2e7cc1962df",
+            "shortKey": "tum_ma3081_lo1_1",
+            "title": "Stabilitätsbegriffe für Flüsse und Abbildungen anwenden",
+            "titleEn": "Apply Stability Notions for Flows and Maps",
+            "description": "Die lernende Person kann Stabilitätsbegriffe für Gleichgewichte und Fixpunkte (Lyapunov-, asymptotische, exponentielle Stabilität) formulieren und in Beispielen anwenden.",
+            "descriptionEn": "The learner can formulate stability notions for equilibria and fixed points (Lyapunov, asymptotic, exponential stability) and apply them in examples.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Stabilität & Lyapunov",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stabilität & Lyapunov",
+                "topicCode": "tum_ma3081_lo1_1"
+            }
+        },
+        {
+            "id": "47c37263-b045-5f35-9559-f2c0a1343150",
+            "shortKey": "tum_ma3081_lo1_2",
+            "title": "Lyapunovfunktionen konstruieren und verwenden",
+            "titleEn": "Construct and Use Lyapunov Functions",
+            "description": "Die lernende Person kann Lyapunovfunktionen zur Stabilitätsanalyse einsetzen, geeignete Kandidaten begründen und typische Schlussweisen (z.B. Invarianzprinzip) in Aufgaben nachvollziehen.",
+            "descriptionEn": "The learner can use Lyapunov functions for stability analysis, justify suitable candidates, and follow standard reasoning patterns (e.g., invariance principles) in problems.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Stabilität & Lyapunov",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [
+                "a704436d-7d15-51d2-9ee3-d2e7cc1962df"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stabilität & Lyapunov",
+                "topicCode": "tum_ma3081_lo1_2"
+            }
+        },
+        {
+            "id": "47fbf825-ee74-5f82-893f-19d204f0101c",
+            "shortKey": "tum_ma3081_lo2",
+            "title": "Poincaré-Abbildungen und invariante Mannigfaltigkeiten",
+            "titleEn": "Poincaré Maps and Invariant Manifolds",
+            "description": "Zusammenfassender Cluster: Poincaré-Abbildung, invariante Mannigfaltigkeiten und Hartman-Grobman als Werkzeuge der lokalen Theorie.",
+            "descriptionEn": "Summary cluster: Poincaré maps, invariant manifolds, and Hartman–Grobman as tools of local theory.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Lokale Theorie",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [
+                "8fe1e6f5-649b-5714-a55c-ef128f2bf297",
+                "d4fe6023-ab12-5b93-8462-9164a6f77320"
+            ],
+            "requires": [
+                "47c37263-b045-5f35-9559-f2c0a1343150"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Lokale Theorie",
+                "topicCode": "tum_ma3081_lo2"
+            }
+        },
+        {
+            "id": "8fe1e6f5-649b-5714-a55c-ef128f2bf297",
+            "shortKey": "tum_ma3081_lo2_1",
+            "title": "Poincaré-Abbildung für periodische Orbits einsetzen",
+            "titleEn": "Use the Poincaré Map for Periodic Orbits",
+            "description": "Die lernende Person kann Poincaré-Abbildungen konstruieren und nutzen, um periodische Orbits zu analysieren, Stabilität über Monodromie/Multiplikatoren zu beurteilen und Beispiele zu bearbeiten.",
+            "descriptionEn": "The learner can construct and use Poincaré maps to analyze periodic orbits, assess stability via multipliers/monodromy, and work through examples.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Lokale Theorie",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [
+                "47c37263-b045-5f35-9559-f2c0a1343150"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Lokale Theorie",
+                "topicCode": "tum_ma3081_lo2_1"
+            }
+        },
+        {
+            "id": "d4fe6023-ab12-5b93-8462-9164a6f77320",
+            "shortKey": "tum_ma3081_lo2_2",
+            "title": "Invariante Mannigfaltigkeiten und Hartman-Grobman einordnen",
+            "titleEn": "Place Invariant Manifolds and the Hartman–Grobman Theorem",
+            "description": "Die lernende Person kann stabile/instabile Mannigfaltigkeiten für hyperbolische Fixpunkte beschreiben und das Hartman-Grobman-Theorem zur lokalen Topologie-Konjugation mit der Linearisierung nutzen.",
+            "descriptionEn": "The learner can describe stable/unstable manifolds for hyperbolic fixed points and use the Hartman–Grobman theorem to relate local dynamics to the linearization via topological conjugacy.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Lokale Theorie",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [
+                "8fe1e6f5-649b-5714-a55c-ef128f2bf297"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Lokale Theorie",
+                "topicCode": "tum_ma3081_lo2_2"
+            }
+        },
+        {
+            "id": "3ab0f6ac-ff8c-5163-ac8f-0a5c525e1fe1",
+            "shortKey": "tum_ma3081_lo3",
+            "title": "Hyperbolische Dynamik und strukturelle Stabilität",
+            "titleEn": "Hyperbolic Dynamics and Structural Stability",
+            "description": "Zusammenfassender Cluster: Hyperbolische Mengen, strukturelle Stabilität und Anosov-Systeme als Kern der hyperbolischen Dynamik.",
+            "descriptionEn": "Summary cluster: hyperbolic sets, structural stability, and Anosov systems as core topics of hyperbolic dynamics.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Hyperbolische Dynamik",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [
+                "510a55e6-f6a2-5e13-822e-f8691b818bcd",
+                "037a6667-629e-56b5-8402-570dda7d9e00"
+            ],
+            "requires": [
+                "d4fe6023-ab12-5b93-8462-9164a6f77320"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Hyperbolische Dynamik",
+                "topicCode": "tum_ma3081_lo3"
+            }
+        },
+        {
+            "id": "510a55e6-f6a2-5e13-822e-f8691b818bcd",
+            "shortKey": "tum_ma3081_lo3_1",
+            "title": "Hyperbolische Mengen und strukturelle Stabilität verstehen",
+            "titleEn": "Understand Hyperbolic Sets and Structural Stability",
+            "description": "Die lernende Person kann hyperbolische Mengen definieren, strukturelle Stabilität einordnen und zentrale Konsequenzen (z.B. Persistenz unter Störungen) in Beispielen diskutieren.",
+            "descriptionEn": "The learner can define hyperbolic sets, place structural stability, and discuss key consequences (e.g., persistence under perturbations) in examples.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Hyperbolische Dynamik",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [
+                "d4fe6023-ab12-5b93-8462-9164a6f77320"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Hyperbolische Dynamik",
+                "topicCode": "tum_ma3081_lo3_1"
+            }
+        },
+        {
+            "id": "037a6667-629e-56b5-8402-570dda7d9e00",
+            "shortKey": "tum_ma3081_lo3_2",
+            "title": "Anosov-Diffeomorphismen und Beispiele hyperbolischer Dynamik einordnen",
+            "titleEn": "Place Anosov Diffeomorphisms and Examples of Hyperbolic Dynamics",
+            "description": "Die lernende Person kann Anosov-Diffeomorphismen als global hyperbolische Systeme charakterisieren, Beispiele diskutieren und ihre Rolle in der Theorie hyperbolischer Dynamik erklären.",
+            "descriptionEn": "The learner can characterize Anosov diffeomorphisms as globally hyperbolic systems, discuss examples, and explain their role in hyperbolic dynamics.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Hyperbolische Dynamik",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [
+                "510a55e6-f6a2-5e13-822e-f8691b818bcd"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Hyperbolische Dynamik",
+                "topicCode": "tum_ma3081_lo3_2"
+            }
+        },
+        {
+            "id": "44de45cd-dc60-5322-a5e5-6d924dfc5b54",
+            "shortKey": "tum_ma3081_lo4",
+            "title": "Lokale Bifurkationen, Normalformen, Zentrumsmannigfaltigkeit",
+            "titleEn": "Local Bifurcations, Normal Forms, Center Manifolds",
+            "description": "Zusammenfassender Cluster: Lokale Bifurkationen in Flüssen/Abbildungen mit Normalformen und Zentrumsmannigfaltigkeit.",
+            "descriptionEn": "Summary cluster: local bifurcations in flows/maps using normal forms and center manifolds.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Bifurkationstheorie",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [
+                "612bccfd-d090-5b8f-8a3a-c72cb9ab6e6b",
+                "1923026d-4429-5619-b075-6f420beaf9a0"
+            ],
+            "requires": [
+                "d4fe6023-ab12-5b93-8462-9164a6f77320"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Bifurkationstheorie",
+                "topicCode": "tum_ma3081_lo4"
+            }
+        },
+        {
+            "id": "612bccfd-d090-5b8f-8a3a-c72cb9ab6e6b",
+            "shortKey": "tum_ma3081_lo4_1",
+            "title": "Lokale Bifurkationen von Flüssen und Abbildungen analysieren",
+            "titleEn": "Analyze Local Bifurcations of Flows and Maps",
+            "description": "Die lernende Person kann lokale Bifurkationen in Flüssen und Abbildungen identifizieren und deren qualitative Dynamik in Abhängigkeit eines Parameters beschreiben.",
+            "descriptionEn": "The learner can identify local bifurcations in flows and maps and describe the qualitative parameter-dependent dynamics.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Bifurkationstheorie",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [
+                "d4fe6023-ab12-5b93-8462-9164a6f77320"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Bifurkationstheorie",
+                "topicCode": "tum_ma3081_lo4_1"
+            }
+        },
+        {
+            "id": "1923026d-4429-5619-b075-6f420beaf9a0",
+            "shortKey": "tum_ma3081_lo4_2",
+            "title": "Normalformen und Zentrumsmannigfaltigkeiten nutzen",
+            "titleEn": "Use Normal Forms and Center Manifolds",
+            "description": "Die lernende Person kann Normalformen zur lokalen Analyse heranziehen und Zentrumsmannigfaltigkeiten zur Dimensionsreduktion und Bifurkationsanalyse in Beispielen einsetzen.",
+            "descriptionEn": "The learner can use normal forms for local analysis and apply center manifolds for dimension reduction and bifurcation analysis in examples.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Bifurkationstheorie",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [
+                "612bccfd-d090-5b8f-8a3a-c72cb9ab6e6b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Bifurkationstheorie",
+                "topicCode": "tum_ma3081_lo4_2"
+            }
+        },
+        {
+            "id": "ef08304a-3c61-5632-93b4-03c7eff0ae58",
+            "shortKey": "tum_ma3081_lo5",
+            "title": "Globale Bifurkationen und Melnikov",
+            "titleEn": "Global Bifurcations and Melnikov’s Method",
+            "description": "Zusammenfassender Cluster: Globale Bifurkationen (u.a. Shilnikov) und Melnikov-Methode als Zugang zu komplexer Dynamik.",
+            "descriptionEn": "Summary cluster: global bifurcations (including Shilnikov) and Melnikov’s method as a route to complex dynamics.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Globale Bifurkationen",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [
+                "b5ece4bb-86c7-5329-adf0-91b5bdea887d",
+                "e68442e1-b286-59cc-9ca7-93ea22c397da"
+            ],
+            "requires": [
+                "1923026d-4429-5619-b075-6f420beaf9a0"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Globale Bifurkationen",
+                "topicCode": "tum_ma3081_lo5"
+            }
+        },
+        {
+            "id": "b5ece4bb-86c7-5329-adf0-91b5bdea887d",
+            "shortKey": "tum_ma3081_lo5_1",
+            "title": "Globale Bifurkationen und Shilnikov-Bedingung einordnen",
+            "titleEn": "Place Global Bifurcations and the Shilnikov Condition",
+            "description": "Die lernende Person kann globale Bifurkationen (homoklin/heteroklin) beschreiben, ihre Bedeutung für komplexe Dynamik erläutern und die Shilnikov-Bedingung in Beispielen einordnen.",
+            "descriptionEn": "The learner can describe global bifurcations (homoclinic/heteroclinic), explain their relevance for complex dynamics, and place the Shilnikov condition in examples.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Globale Bifurkationen",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [
+                "1923026d-4429-5619-b075-6f420beaf9a0"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Globale Bifurkationen",
+                "topicCode": "tum_ma3081_lo5_1"
+            }
+        },
+        {
+            "id": "e68442e1-b286-59cc-9ca7-93ea22c397da",
+            "shortKey": "tum_ma3081_lo5_2",
+            "title": "Melnikov-Methode zur Detektion von Chaos anwenden",
+            "titleEn": "Apply Melnikov’s Method to Detect Chaos",
+            "description": "Die lernende Person kann die Melnikov-Methode in Modellproblemen einsetzen, transversale Schnitte stabiler/instabiler Mannigfaltigkeiten nachweisen und daraus chaotische Dynamik motivieren.",
+            "descriptionEn": "The learner can use Melnikov’s method in model problems to establish transversal intersections of stable/unstable manifolds and motivate chaotic dynamics from this.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Globale Bifurkationen",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [
+                "b5ece4bb-86c7-5329-adf0-91b5bdea887d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Globale Bifurkationen",
+                "topicCode": "tum_ma3081_lo5_2"
+            }
+        },
+        {
+            "id": "bf7bc449-c806-52c4-9368-d726be03922c",
+            "shortKey": "tum_ma3081_lo6",
+            "title": "Chaotische Dynamik und symbolische Dynamik",
+            "titleEn": "Chaotic Dynamics and Symbolic Dynamics",
+            "description": "Zusammenfassender Cluster: Chaos (Horseshoe, seltsame Attraktoren), Symbolik und quantitative Begriffe (Lyapunov-Exponenten).",
+            "descriptionEn": "Summary cluster: chaos (horseshoes, strange attractors), symbolic dynamics, and quantitative notions (Lyapunov exponents).",
+            "core": true,
+            "weight": 1.3,
+            "phase": "Modul",
+            "area": "Chaos & Symbolik",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [
+                "599a5516-00ad-5722-a112-0fc4e7582276",
+                "c312a4a9-d3b6-59ff-87b1-f4deeb1a0ba8"
+            ],
+            "requires": [
+                "e68442e1-b286-59cc-9ca7-93ea22c397da"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Chaos & Symbolik",
+                "topicCode": "tum_ma3081_lo6"
+            }
+        },
+        {
+            "id": "599a5516-00ad-5722-a112-0fc4e7582276",
+            "shortKey": "tum_ma3081_lo6_1",
+            "title": "Smale-Horseshoe und symbolische Dynamik verstehen",
+            "titleEn": "Understand the Smale Horseshoe and Symbolic Dynamics",
+            "description": "Die lernende Person kann die Smale-Horseshoe-Konstruktion erklären, transitive/hyperbolische Invariantenmengen einordnen und symbolische Dynamik als Kodierung komplexer Dynamik nutzen.",
+            "descriptionEn": "The learner can explain the Smale horseshoe construction, place transitive/hyperbolic invariant sets, and use symbolic dynamics as an encoding of complex dynamics.",
+            "core": true,
+            "weight": 0.65,
+            "phase": "Modul",
+            "area": "Chaos & Symbolik",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [
+                "e68442e1-b286-59cc-9ca7-93ea22c397da"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Chaos & Symbolik",
+                "topicCode": "tum_ma3081_lo6_1"
+            }
+        },
+        {
+            "id": "c312a4a9-d3b6-59ff-87b1-f4deeb1a0ba8",
+            "shortKey": "tum_ma3081_lo6_2",
+            "title": "Strange Attractors und Lyapunov-Exponenten analysieren",
+            "titleEn": "Analyze Strange Attractors and Lyapunov Exponents",
+            "description": "Die lernende Person kann Beispiele seltsamer Attraktoren diskutieren, Sensitivität und transitive Dynamik einordnen und Lyapunov-Exponenten als quantitative Chaos-Merkmale interpretieren.",
+            "descriptionEn": "The learner can discuss examples of strange attractors, place sensitivity and transitivity, and interpret Lyapunov exponents as quantitative indicators of chaos.",
+            "core": true,
+            "weight": 0.65,
+            "phase": "Modul",
+            "area": "Chaos & Symbolik",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [
+                "599a5516-00ad-5722-a112-0fc4e7582276"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Chaos & Symbolik",
+                "topicCode": "tum_ma3081_lo6_2"
+            }
+        },
+        {
+            "id": "387a9082-e090-533b-a1eb-0a38e65788f8",
+            "shortKey": "tum_ma3081_lo7",
+            "title": "Eindimensionale Dynamik: Unimodale und Kreisabbildungen",
+            "titleEn": "One-Dimensional Dynamics: Unimodal and Circle Maps",
+            "description": "Zusammenfassender Cluster: Dynamik eindimensionaler Abbildungen (unimodal, Kreisabbildungen) einschließlich Periodenstruktur und Rotationszahl.",
+            "descriptionEn": "Summary cluster: dynamics of one-dimensional maps (unimodal maps, circle maps) including period structure and the rotation number.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Eindimensionale Dynamik",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [
+                "b4e9b273-24dc-59f6-b541-2954e2dedfbc",
+                "603cabf1-4c82-5924-8bd0-f5033214d035"
+            ],
+            "requires": [
+                "612bccfd-d090-5b8f-8a3a-c72cb9ab6e6b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Eindimensionale Dynamik",
+                "topicCode": "tum_ma3081_lo7"
+            }
+        },
+        {
+            "id": "b4e9b273-24dc-59f6-b541-2954e2dedfbc",
+            "shortKey": "tum_ma3081_lo7_1",
+            "title": "Unimodale Abbildungen und Sharkovsky einordnen",
+            "titleEn": "Place Unimodal Maps and Sharkovsky’s Theorem",
+            "description": "Die lernende Person kann unimodale Abbildungen in Beispielen analysieren, Periodenstruktur diskutieren und die Aussage des Satzes von Sharkovsky zur Existenz periodischer Orbits einordnen.",
+            "descriptionEn": "The learner can analyze unimodal maps in examples, discuss period structure, and place the statement of Sharkovsky’s theorem on the existence of periodic orbits.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Eindimensionale Dynamik",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [
+                "612bccfd-d090-5b8f-8a3a-c72cb9ab6e6b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Eindimensionale Dynamik",
+                "topicCode": "tum_ma3081_lo7_1"
+            }
+        },
+        {
+            "id": "603cabf1-4c82-5924-8bd0-f5033214d035",
+            "shortKey": "tum_ma3081_lo7_2",
+            "title": "Kreisabbildungen und Rotationszahl nutzen",
+            "titleEn": "Use Circle Maps and the Rotation Number",
+            "description": "Die lernende Person kann Kreisabbildungen einordnen, die Idee der Rotationszahl erklären und qualitative Phänomene (z.B. periodische Fenster/Locking) in Beispielen diskutieren.",
+            "descriptionEn": "The learner can place circle maps, explain the idea of the rotation number, and discuss qualitative phenomena (e.g., periodic windows/locking) in examples.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Eindimensionale Dynamik",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [
+                "b4e9b273-24dc-59f6-b541-2954e2dedfbc"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Eindimensionale Dynamik",
+                "topicCode": "tum_ma3081_lo7_2"
+            }
+        },
+        {
+            "id": "c5d9c36d-fcc5-5ae3-a2f8-a6aea41394e7",
+            "shortKey": "tum_ma3081_lo8",
+            "title": "Invariante Maße und Ergodentheorie",
+            "titleEn": "Invariant Measures and Ergodic Theory",
+            "description": "Zusammenfassender Cluster: Invariante Maße, Rekurrenz, Ergodizität, Mixing und Entropie als ergodische Perspektive auf Dynamik.",
+            "descriptionEn": "Summary cluster: invariant measures, recurrence, ergodicity, mixing, and entropy as an ergodic perspective on dynamics.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Ergodentheorie",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [
+                "e170de14-b8aa-5520-a013-410d7130fb41",
+                "9109b8d5-6a2c-59ec-82cd-e4f250f2e48c"
+            ],
+            "requires": [
+                "c312a4a9-d3b6-59ff-87b1-f4deeb1a0ba8"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Ergodentheorie",
+                "topicCode": "tum_ma3081_lo8"
+            }
+        },
+        {
+            "id": "e170de14-b8aa-5520-a013-410d7130fb41",
+            "shortKey": "tum_ma3081_lo8_1",
+            "title": "Invariante Maße konstruieren und Rekurrenz verstehen",
+            "titleEn": "Construct Invariant Measures and Understand Recurrence",
+            "description": "Die lernende Person kann invariante Maße motivieren und konstruieren (z.B. Krylov-Bogoliubov), Poincaré-Rekurrenz einordnen und Konsequenzen für Langzeitverhalten diskutieren.",
+            "descriptionEn": "The learner can motivate and construct invariant measures (e.g., via Krylov–Bogoliubov), place Poincaré recurrence, and discuss consequences for long-term behavior.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Ergodentheorie",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [
+                "c312a4a9-d3b6-59ff-87b1-f4deeb1a0ba8"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Ergodentheorie",
+                "topicCode": "tum_ma3081_lo8_1"
+            }
+        },
+        {
+            "id": "9109b8d5-6a2c-59ec-82cd-e4f250f2e48c",
+            "shortKey": "tum_ma3081_lo8_2",
+            "title": "Ergodizität, Mixing und Entropie einordnen",
+            "titleEn": "Place Ergodicity, Mixing, and Entropy",
+            "description": "Die lernende Person kann Ergodizität und (punktweise) Ergodensätze erläutern, Mixing-Begriffe unterscheiden und Entropie als Maß für Komplexität dynamischer Systeme interpretieren.",
+            "descriptionEn": "The learner can explain ergodicity and pointwise ergodic theorems, distinguish mixing notions, and interpret entropy as a measure of dynamical complexity.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Ergodentheorie",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [
+                "e170de14-b8aa-5520-a013-410d7130fb41"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Ergodentheorie",
+                "topicCode": "tum_ma3081_lo8_2"
+            }
         }
     ]
 }
