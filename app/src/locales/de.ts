@@ -56,6 +56,15 @@ export const de = {
         emptyContains: "Keine Unterziele",
         emptyNextSteps: "Keine direkten Folgeziele"
     },
+    tooltips: {
+        progress: "Fortschritt",
+        removeFromList: "Von Lernliste entfernen",
+        addToList: "Als Lernziel setzen",
+        exportData: "Daten exportieren",
+        importData: "Daten importieren",
+        refresh: "Aktualisieren",
+        adjustCurriculum: "Lehrplan anpassen"
+    },
     learner: {
         myGoals: "Meine Lernziele",
         marked: "markiert",

@@ -56,6 +56,15 @@ export const en = {
         emptyContains: "No sub-goals",
         emptyNextSteps: "No direct follow-up goals"
     },
+    tooltips: {
+        progress: "Progress",
+        removeFromList: "Remove from learning list",
+        addToList: "Add to learning list",
+        exportData: "Export data",
+        importData: "Import data",
+        refresh: "Refresh",
+        adjustCurriculum: "Adjust curriculum"
+    },
     learner: {
         myGoals: "My Learning Goals",
         marked: "marked",

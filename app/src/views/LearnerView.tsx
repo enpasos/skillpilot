@@ -295,21 +295,21 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             <button
               onClick={handleExport}
               className="text-text-secondary hover:text-sky-400 transition-colors"
-              title="Daten exportieren"
+              title={t.tooltips.exportData}
             >
               <Download size={18} />
             </button>
             <button
               onClick={handleImportClick}
               className="text-text-secondary hover:text-sky-400 transition-colors"
-              title="Daten importieren"
+              title={t.tooltips.importData}
             >
               <Upload size={18} />
             </button>
             <button
               onClick={onRefresh}
               className="text-text-secondary hover:text-sky-400 transition-colors"
-              title="Aktualisieren"
+              title={t.tooltips.refresh}
             >
               <RefreshCw size={18} />
             </button>
@@ -323,7 +323,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             <button
               onClick={() => setIsSetupOpen(true)}
               className="text-text-secondary hover:text-sky-400 transition-colors"
-              title="Lehrplan anpassen"
+              title={t.tooltips.adjustCurriculum}
             >
               <Settings size={18} />
             </button>

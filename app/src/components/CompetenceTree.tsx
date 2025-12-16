@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from '../hooks/useTranslation'
 import type { UiGoal } from '../goalTypes'
 
 
@@ -32,6 +33,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   totalStudents,
   personalConfig,
 }) => {
+  const t = useTranslation()
   const goal = allGoals.get(goalId)
   const [isExpanded, setIsExpanded] = useState(depth < 1)
 
@@ -113,7 +115,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
 
         <div
           className="w-12 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden flex-shrink-0"
-          title={`Fortschritt: ${(mastery * 100).toFixed(0)}%`}
+          title={`${t.tooltips.progress}: ${(mastery * 100).toFixed(0)}%`}
         >
           <div
             className={`h-full ${mastery >= 1 ? 'bg-emerald-500' : 'bg-sky-500'}`}
@@ -142,7 +144,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             }}
             className={`p-1 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors ${isPlanned ? 'text-amber-400' : 'text-slate-300 dark:text-slate-600 hover:text-amber-400 dark:hover:text-amber-200'
               }`}
-            title={isPlanned ? 'Von Lernliste entfernen' : 'Als Lernziel setzen'}
+            title={isPlanned ? t.tooltips.removeFromList : t.tooltips.addToList}
           >
             ★
           </button>
