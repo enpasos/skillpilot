@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (EN)
 
-**Version:** 1.0.1
+**Version:** 1.0.3
 **Date:** December 2025  
 **Project:** SkillPilot
 
@@ -57,6 +57,13 @@ At the heart of SkillPilot lies the departure from linear lists towards a connec
 
 This prevents overload and ensures that the AI tutor does not make arbitrary jumps, but instead operates pedagogically sensibly within the next zone of development (zone of proximal development).
 
+**The Visible Success (Mastery):**
+For the learner, SkillPilot translates this complex graph structure into a clear, motivating progress display.
+
+![Learning Success in Personalized Curriculum](mastery.en.png)
+
+The fill levels of the bars ("Mastery") are not a manual logbook. They are the automatic result of dialogues with the AI tutor. As soon as the agent verifies in the conversation that a learning objective has been understood, it reports this back to the graph, and the progress becomes visible in real time.
+
 ---
 
 ## 5. The Data Approach: Security & Privacy
@@ -91,8 +98,9 @@ SkillPilot is not a theoretical exercise. The system already comes with extensiv
     *   Gymnasiale Oberstufe (DE, Hessen, G9, Secondary II)
     *   Gymnasiale Mittelstufe (DE, Hessen, G9, Secondary I)
 *   **University:**
+    *   **Uni Heidelberg:** Bachelor Biosciences, Master Molecular BioSciences.
     *   **Uni Mannheim:** Bachelor Business Administration (BWL), Bachelor Law, Master Law.
-    *   **TUM:** Bachelor Physics, Master Theoretical and Mathematical Physics.
+    *   **TUM:** Bachelor Mathematics, Bachelor Physics, Master Theoretical and Mathematical Physics.
 *   **Languages (CEFR):**
     *   English (CEFR A1-C2)
     *   French (CEFR A1-C2)

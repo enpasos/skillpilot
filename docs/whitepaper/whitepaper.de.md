@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (DE)
 
-**Version:** 1.0.2
+**Version:** 1.0.3
 **Datum:** Dezember 2025
 **Projekt:** SkillPilot
 
@@ -57,6 +57,13 @@ Das Herzstück von SkillPilot ist die Abkehr von linearen Listen hin zu einem ve
 
 Dies verhindert Überforderung und stellt sicher, dass der KI-Tutor keine willkürlichen Sprünge macht, sondern pädagogisch sinnvoll im Bereich der nächsten Entwicklung (Zone of Proximal Development) agiert.
 
+**Der sichtbare Erfolg (Mastery):**
+Für den Lernenden übersetzt SkillPilot diese komplexe Graph-Struktur in eine klare, motivierende Fortschrittsanzeige.
+
+![Lernerfolg im personalisierten Curriculum](mastery.de.png)
+
+Die Füllstände der Balken („Mastery“) sind dabei kein manuelles Logbuch. Sie sind das automatische Ergebnis der Dialoge mit dem KI-Tutor. Sobald der Agent im Gespräch verifiziert, dass ein Lernziel verstanden wurde, meldet er dies an den Graph zurück, und der Fortschritt wird in Echtzeit sichtbar.
+
 ---
 
 ## 5. Der Datenansatz: Sicherheit & Privacy
@@ -90,10 +97,11 @@ SkillPilot ist keine theoretische Übung. Das System ist bereits mit umfangreich
 * **Schule (Hessen Sek I & II):**
     *   Gymnasiale Oberstufe (DE, Hessen, G9, Sekundarstufe II)
     *   Gymnasiale Mittelstufe (DE, Hessen, G9, Sekundarstufe I)
-*   **Universität:**
+* **Universität:**
+    *   **Uni Heidelberg:** Bachelor Biowissenschaften (Biosciences), Master Molecular BioSciences.
     *   **Uni Mannheim:** Bachelor BWL, Bachelor Jura, Master Jura.
-    *   **TUM:** Bachelor Physik, Master Theoretische und Mathematische Physik.
-*   **Sprachen (GER):**
+    *   **TUM:** Bachelor Mathematik, Bachelor Physik, Master Theoretische und Mathematische Physik.
+* **Sprachen (GER):**
     *   Englisch (CEFR A1-C2)
     *   Französisch (CEFR A1-C2)
 
