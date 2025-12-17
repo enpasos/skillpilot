@@ -152,9 +152,7 @@ Ich will Physik üben für meinen Physik Bachelor.
 Ich will nach CEFR Französisch von Grund auf lernen.
 ```
 
------
-
------
+-----  
 
 ## 3. Knowledge: attaching `trainer.md`
 
