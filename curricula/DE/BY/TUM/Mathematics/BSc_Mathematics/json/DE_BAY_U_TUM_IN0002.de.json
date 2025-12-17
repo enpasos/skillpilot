@@ -500,8 +500,8 @@
             "shortKey": "tum_in0002_lo5_2",
             "title": "Bäume modellieren und grundlegende Operationen implementieren",
             "titleEn": "Model Trees and Implement Basic Operations",
-            "description": "Die lernende Person kann Bäume als Datenstruktur modellieren und grundlegende Operationen (z.B. Einfügen, Suchen, Traversieren) implementieren und testen.",
-            "descriptionEn": "The learner can model trees as a data structure and implement and test basic operations (e.g., insert, search, traverse).",
+            "description": "Zusammenfassender Cluster: Bäume als Datenstruktur modellieren und grundlegende Operationen implementieren.",
+            "descriptionEn": "Summary cluster: model trees as a data structure and implement basic operations.",
             "core": true,
             "weight": 0.4,
             "phase": "Modul",
@@ -510,7 +510,11 @@
                 "ects:6",
                 "module:IN0002"
             ],
-            "contains": [],
+            "contains": [
+                "10ca7dff-7b03-4c1c-a266-def109647dee",
+                "c6c01d62-95d5-4596-b267-665fb840b92e",
+                "22509a1e-13de-460d-8020-86d80f07d822"
+            ],
             "requires": [
                 "9983d701-cba4-524b-8aec-78aefca7f368",
                 "0b23298a-864f-5909-a2be-7c03c8a703b6"
@@ -1172,6 +1176,97 @@
                 "phase": "Modul",
                 "area": "Objektorientierung",
                 "topicCode": "tum_in0002_lo6_1_3"
+            }
+        },
+        {
+            "id": "10ca7dff-7b03-4c1c-a266-def109647dee",
+            "shortKey": "tum_in0002_lo5_2_1",
+            "title": "Bäume als Datenstruktur modellieren",
+            "titleEn": "Model Trees as a Data Structure",
+            "description": "Die lernende Person kann grundlegende Baumstrukturen (Knoten, Kanten, Wurzel, Kinder) modellieren und geeignete Repräsentationen (z.B. Node-Klassen) wählen.",
+            "descriptionEn": "The learner can model basic tree structures (nodes, edges, root, children) and choose suitable representations (e.g., node classes).",
+            "core": true,
+            "weight": 0.14,
+            "phase": "Modul",
+            "area": "Datenstrukturen",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "9983d701-cba4-524b-8aec-78aefca7f368",
+                "0b23298a-864f-5909-a2be-7c03c8a703b6"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Datenstrukturen",
+                "topicCode": "tum_in0002_lo5_2_1"
+            }
+        },
+        {
+            "id": "c6c01d62-95d5-4596-b267-665fb840b92e",
+            "shortKey": "tum_in0002_lo5_2_2",
+            "title": "Grundoperationen auf Bäumen implementieren (Einfügen, Suchen)",
+            "titleEn": "Implement Basic Tree Operations (Insert, Search)",
+            "description": "Die lernende Person kann grundlegende Operationen wie Einfügen und Suchen für eine einfache Baumstruktur implementieren und an Beispielen testen.",
+            "descriptionEn": "The learner can implement basic operations such as insertion and search for a simple tree structure and test them on examples.",
+            "core": true,
+            "weight": 0.13,
+            "phase": "Modul",
+            "area": "Datenstrukturen",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "10ca7dff-7b03-4c1c-a266-def109647dee"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Datenstrukturen",
+                "topicCode": "tum_in0002_lo5_2_2"
+            }
+        },
+        {
+            "id": "22509a1e-13de-460d-8020-86d80f07d822",
+            "shortKey": "tum_in0002_lo5_2_3",
+            "title": "Baumtraversierungen implementieren und testen",
+            "titleEn": "Implement and Test Tree Traversals",
+            "description": "Die lernende Person kann einfache Traversierungen (z.B. Preorder/Inorder/Postorder) implementieren und mit Tests die Korrektheit der Ausgaben prüfen.",
+            "descriptionEn": "The learner can implement basic traversals (e.g., preorder/inorder/postorder) and verify output correctness with tests.",
+            "core": true,
+            "weight": 0.13,
+            "phase": "Modul",
+            "area": "Datenstrukturen",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "c6c01d62-95d5-4596-b267-665fb840b92e"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Datenstrukturen",
+                "topicCode": "tum_in0002_lo5_2_3"
             }
         }
     ]

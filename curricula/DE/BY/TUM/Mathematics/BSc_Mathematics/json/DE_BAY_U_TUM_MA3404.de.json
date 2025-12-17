@@ -395,8 +395,8 @@
             "shortKey": "tum_ma3404_lo4_2",
             "title": "Permutationstests durchführen und Ergebnisse interpretieren",
             "titleEn": "Run Permutation Tests and Interpret Results",
-            "description": "Die lernende Person kann Permutationstests formulieren und in R durchführen, p-Werte interpretieren und die Grenzen der Methode (z.B. Abhängigkeiten, multiple Tests) fachlich diskutieren.",
-            "descriptionEn": "The learner can formulate and run permutation tests in R, interpret p-values, and discuss limitations (e.g., dependencies, multiple testing) in a well-justified way.",
+            "description": "Zusammenfassender Cluster: Permutationstests formulieren, durchführen und Ergebnisse/Annahmen einordnen.",
+            "descriptionEn": "Summary cluster: formulate and run permutation tests and assess results/assumptions.",
             "core": true,
             "weight": 0.5,
             "phase": "Modul",
@@ -405,7 +405,11 @@
                 "ects:5",
                 "module:MA3404"
             ],
-            "contains": [],
+            "contains": [
+                "7d32eacd-6d0c-43da-9462-b11e72c3d6e2",
+                "6c73a91d-4092-4f11-965a-6626112476d2",
+                "0033055b-9fb0-4d2c-b87f-396081e6d5d5"
+            ],
             "requires": [
                 "65901581-e472-5669-b1ce-e1787d043330"
             ],
@@ -509,6 +513,96 @@
                 "phase": "Modul",
                 "area": "MCMC & Optimierung",
                 "topicCode": "tum_ma3404_lo5_2"
+            }
+        },
+        {
+            "id": "7d32eacd-6d0c-43da-9462-b11e72c3d6e2",
+            "shortKey": "tum_ma3404_lo4_2_1",
+            "title": "Permutationstest formulieren und in R durchführen",
+            "titleEn": "Formulate and Run a Permutation Test in R",
+            "description": "Die lernende Person kann einen Permutationstest für eine einfache Fragestellung formulieren und in R implementieren bzw. ausführen.",
+            "descriptionEn": "The learner can formulate a permutation test for a simple question and implement or run it in R.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Resampling",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [],
+            "requires": [
+                "65901581-e472-5669-b1ce-e1787d043330"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Resampling",
+                "topicCode": "tum_ma3404_lo4_2_1"
+            }
+        },
+        {
+            "id": "6c73a91d-4092-4f11-965a-6626112476d2",
+            "shortKey": "tum_ma3404_lo4_2_2",
+            "title": "p-Werte aus Permutationstests interpretieren",
+            "titleEn": "Interpret p-Values from Permutation Tests",
+            "description": "Die lernende Person kann p-Werte aus Permutationstests interpretieren und die Aussage in Bezug auf die zugrunde liegende Hypothese erläutern.",
+            "descriptionEn": "The learner can interpret p-values from permutation tests and explain what the result says about the underlying hypothesis.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "Resampling",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [],
+            "requires": [
+                "7d32eacd-6d0c-43da-9462-b11e72c3d6e2"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Resampling",
+                "topicCode": "tum_ma3404_lo4_2_2"
+            }
+        },
+        {
+            "id": "0033055b-9fb0-4d2c-b87f-396081e6d5d5",
+            "shortKey": "tum_ma3404_lo4_2_3",
+            "title": "Annahmen und Grenzen von Permutationstests diskutieren",
+            "titleEn": "Discuss Assumptions and Limitations of Permutation Tests",
+            "description": "Die lernende Person kann zentrale Annahmen (z.B. Austauschbarkeit) erläutern und Grenzen von Permutationstests (z.B. Abhängigkeiten, multiple Tests) fachlich begründet diskutieren.",
+            "descriptionEn": "The learner can explain key assumptions (e.g., exchangeability) and discuss limitations of permutation tests (e.g., dependencies, multiple testing) in a well-justified way.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "Resampling",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [],
+            "requires": [
+                "6c73a91d-4092-4f11-965a-6626112476d2"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Resampling",
+                "topicCode": "tum_ma3404_lo4_2_3"
             }
         }
     ]

@@ -24,13 +24,40 @@ export function FlashcardDrill({ onComplete }: FlashcardDrillProps) {
     const [isFlipped, setIsFlipped] = useState(false)
     const [sessionStats, setSessionStats] = useState({ reviewed: 0 })
 
+    const [stats, setStats] = useState({ total: 0, new: 0, due: 0, learned: 0 })
+
     // Initialize Queue: Find items due for review
     useEffect(() => {
         const now = Date.now()
+        const totalCards = vocabData.cards.length
+        let newCards = 0
+        let dueCardsCount = 0
+        let learnedCards = 0
+
         const dueCards = vocabData.cards.filter(card => {
             const state = srsState[card.id]
-            if (!state) return true // New card
-            return state.nextReview <= now
+            if (!state) {
+                newCards++
+                return true // New card
+            }
+
+            // "Learned" definition: Interval > 3 days (arbitrary but simple)
+            if (state.interval > 3) {
+                learnedCards++
+            }
+
+            if (state.nextReview <= now) {
+                dueCardsCount++
+                return true
+            }
+            return false
+        })
+
+        setStats({
+            total: totalCards,
+            new: newCards,
+            due: dueCardsCount,
+            learned: learnedCards
         })
 
         // Limit session to 20 cards to keep it bite-sized
@@ -70,6 +97,11 @@ export function FlashcardDrill({ onComplete }: FlashcardDrillProps) {
 
         setSessionStats(prev => ({ reviewed: prev.reviewed + 1 }))
 
+        // Update stats optimistically (simplified)
+        if (result.interval > 3) {
+            setStats(prev => ({ ...prev, learned: prev.learned + 1 }))
+        }
+
         // Move to next
         setIsFlipped(false)
         setTimeout(() => setCurrentCardIndex(prev => prev + 1), 200)
@@ -80,6 +112,16 @@ export function FlashcardDrill({ onComplete }: FlashcardDrillProps) {
             <div className="flex flex-col items-center justify-center p-8 text-center h-[60vh]">
                 <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
                 <h2 className="text-2xl font-bold mb-2">All Caught Up!</h2>
+                <div className="grid grid-cols-2 gap-4 my-8 text-left w-64">
+                    <div className="bg-gray-100 p-3 rounded-lg dark:bg-gray-800">
+                        <div className="text-xs text-gray-500 uppercase">Learned</div>
+                        <div className="text-xl font-bold text-sky-600">{stats.learned}</div>
+                    </div>
+                    <div className="bg-gray-100 p-3 rounded-lg dark:bg-gray-800">
+                        <div className="text-xs text-gray-500 uppercase">Total</div>
+                        <div className="text-xl font-bold">{stats.total}</div>
+                    </div>
+                </div>
                 <p className="text-gray-500 mb-6">No cards due for review right now.</p>
                 <button onClick={onComplete} className="bg-sky-500 text-white px-6 py-2 rounded-full hover:bg-sky-600">
                     Back to Curriculum
@@ -104,10 +146,38 @@ export function FlashcardDrill({ onComplete }: FlashcardDrillProps) {
     return (
         <div className="flex flex-col items-center w-full max-w-md mx-auto p-4 min-h-[60vh]">
 
+            {/* Dashboard */}
+            <div className="w-full flex justify-between items-center mb-6 px-2">
+                <div className="flex gap-4 text-xs font-semibold text-gray-500 dark:text-gray-400">
+                    <div className="flex flex-col items-center">
+                        <span className="text-sky-500 text-lg leading-none">{stats.due}</span>
+                        <span>Due</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <span className="text-blue-400 text-lg leading-none">{stats.new}</span>
+                        <span>New</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <span className="text-green-500 text-lg leading-none">{stats.learned}</span>
+                        <span>Learned</span>
+                    </div>
+                </div>
+
+                <div className="group relative flex items-center gap-1 text-[10px] text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full cursor-help hover:bg-amber-100 dark:hover:bg-amber-900/30 transition-colors">
+                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                    Local Data
+                    {/* Tooltip */}
+                    <div className="absolute top-full right-0 mt-2 w-48 bg-gray-800 text-white p-3 rounded-lg text-xs z-50 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
+                        Your progress is stored in this browser. If you switch devices or clear cache, it will be reset.
+                    </div>
+                </div>
+            </div>
+
+
             {/* Progress Bar */}
-            <div className="w-full h-2 bg-gray-200 rounded-full mb-6 dark:bg-gray-700">
+            <div className="w-full h-2 bg-gray-200 rounded-full mb-6 dark:bg-gray-700 overflow-hidden">
                 <div
-                    className="h-full bg-sky-500 rounded-full transition-all duration-300"
+                    className="h-full bg-sky-500 transition-all duration-300 ease-out"
                     style={{ width: `${((currentCardIndex) / queue.length) * 100}%` }}
                 />
             </div>

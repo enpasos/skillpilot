@@ -371,8 +371,8 @@
             "shortKey": "tum_ma3301_lo4_1",
             "title": "Randwertprobleme numerisch einordnen und einfache Ansätze skizzieren",
             "titleEn": "Classify Boundary Value Problems and Sketch Basic Numerical Approaches",
-            "description": "Die lernende Person kann Randwertprobleme gegenüber Anfangswertproblemen abgrenzen, typische Diskretisierungsansätze (z.B. Schießen, Kollokation) beschreiben und deren Vor- und Nachteile diskutieren.",
-            "descriptionEn": "The learner can distinguish boundary value problems from initial value problems, describe common discretization approaches (e.g., shooting, collocation), and discuss their advantages and limitations.",
+            "description": "Zusammenfassender Cluster: Randwertprobleme gegenüber Anfangswertproblemen abgrenzen und grundlegende numerische Ansätze einordnen.",
+            "descriptionEn": "Summary cluster: distinguish boundary value problems from initial value problems and place basic numerical approaches.",
             "core": true,
             "weight": 0.5,
             "phase": "Modul",
@@ -381,7 +381,11 @@
                 "ects:9",
                 "module:MA3301"
             ],
-            "contains": [],
+            "contains": [
+                "90fa57ee-39e8-4c97-a9aa-c5250065fbe9",
+                "d5341969-c540-4c50-8279-c3c8ab30ed5a",
+                "20ff52f6-73a0-46d9-bfb7-0e796a276ea8"
+            ],
             "requires": [
                 "4016efb0-8fc7-5a2c-8aa8-fdcfbd6b7b11"
             ],
@@ -583,8 +587,8 @@
             "shortKey": "tum_ma3301_lo6_2",
             "title": "Finite-Elemente-Verfahren implementieren und Resultate interpretieren",
             "titleEn": "Implement Finite Element Methods and Interpret Results",
-            "description": "Die lernende Person kann elementare FE-Verfahren (z.B. in 1D, einfache 2D-Gitter) implementieren bzw. anwenden, Steifigkeitsmatrix und Lastvektor aufstellen und Genauigkeit sowie Fehlerverhalten an Beispielen interpretieren.",
-            "descriptionEn": "The learner can implement or apply basic FE methods (e.g., in 1D and on simple 2D meshes), assemble stiffness matrices and load vectors, and interpret accuracy and error behavior on examples.",
+            "description": "Zusammenfassender Cluster: elementare Finite-Elemente-Verfahren umsetzen, Assemblierung durchführen und Genauigkeit/Fehlerverhalten interpretieren.",
+            "descriptionEn": "Summary cluster: implement basic finite element methods, perform assembly, and interpret accuracy/error behavior.",
             "core": true,
             "weight": 0.55,
             "phase": "Modul",
@@ -593,7 +597,11 @@
                 "ects:9",
                 "module:MA3301"
             ],
-            "contains": [],
+            "contains": [
+                "e2994d96-3871-4aeb-a13b-62ad5fd06205",
+                "0628ec8d-d82d-48d8-8ce3-519de66f5eda",
+                "54ba4bc8-af7c-4555-b243-330932cce0c4"
+            ],
             "requires": [
                 "b412adef-c096-5f58-9729-d35592dd8c6e"
             ],
@@ -735,8 +743,8 @@
             "shortKey": "tum_ma3301_lo8_1",
             "title": "Numerische Algorithmen robust implementieren und testen",
             "titleEn": "Implement Numerical Algorithms Robustly and Test Them",
-            "description": "Die lernende Person kann numerische Verfahren strukturiert implementieren, geeignete Testfälle und Referenzlösungen wählen und typische Fehlerquellen (z.B. Rundung, schlechte Kondition) berücksichtigen.",
-            "descriptionEn": "The learner can implement numerical methods in a structured way, choose suitable test cases and reference solutions, and account for common pitfalls (e.g., rounding, ill-conditioning).",
+            "description": "Zusammenfassender Cluster: numerische Verfahren strukturiert implementieren, testen und typische numerische Fehlerquellen berücksichtigen.",
+            "descriptionEn": "Summary cluster: implement numerical methods in a structured way, test them, and account for typical numerical error sources.",
             "core": true,
             "weight": 0.6,
             "phase": "Modul",
@@ -745,7 +753,11 @@
                 "ects:9",
                 "module:MA3301"
             ],
-            "contains": [],
+            "contains": [
+                "ee004acc-a4aa-4892-9e8a-c2a9ea47749c",
+                "c9317ce3-c825-481e-b529-1c888c4ed865",
+                "7d4e10fd-af8d-4413-a3e8-533a86362b54"
+            ],
             "requires": [
                 "e1d7b4d6-fb90-5609-8e1f-2eb4f8c6acb8"
             ],
@@ -788,6 +800,276 @@
                 "phase": "Modul",
                 "area": "Implementierung & Bewertung",
                 "topicCode": "tum_ma3301_lo8_2"
+            }
+        },
+        {
+            "id": "90fa57ee-39e8-4c97-a9aa-c5250065fbe9",
+            "shortKey": "tum_ma3301_lo4_1_1",
+            "title": "Randwertprobleme von Anfangswertproblemen unterscheiden",
+            "titleEn": "Distinguish Boundary Value Problems from Initial Value Problems",
+            "description": "Die lernende Person kann Randwert- und Anfangswertprobleme unterscheiden und typische Randbedingungen in Modellen korrekt benennen.",
+            "descriptionEn": "The learner can distinguish boundary value problems from initial value problems and name typical boundary conditions correctly in models.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "BVP & Optimalsteuerung",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "4016efb0-8fc7-5a2c-8aa8-fdcfbd6b7b11"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "BVP & Optimalsteuerung",
+                "topicCode": "tum_ma3301_lo4_1_1"
+            }
+        },
+        {
+            "id": "d5341969-c540-4c50-8279-c3c8ab30ed5a",
+            "shortKey": "tum_ma3301_lo4_1_2",
+            "title": "Schießmethode für Randwertprobleme skizzieren",
+            "titleEn": "Sketch the Shooting Method for Boundary Value Problems",
+            "description": "Die lernende Person kann die Idee der Schießmethode erklären und in einem einfachen Beispiel die Reduktion auf ein Anfangswertproblem skizzieren.",
+            "descriptionEn": "The learner can explain the idea of the shooting method and sketch how a simple boundary value problem is reduced to an initial value problem.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "BVP & Optimalsteuerung",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "90fa57ee-39e8-4c97-a9aa-c5250065fbe9"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "BVP & Optimalsteuerung",
+                "topicCode": "tum_ma3301_lo4_1_2"
+            }
+        },
+        {
+            "id": "20ff52f6-73a0-46d9-bfb7-0e796a276ea8",
+            "shortKey": "tum_ma3301_lo4_1_3",
+            "title": "Kollokationsansätze für Randwertprobleme einordnen",
+            "titleEn": "Place Collocation Approaches for Boundary Value Problems",
+            "description": "Die lernende Person kann die Grundidee von Kollokationsansätzen beschreiben und Vor- und Nachteile gegenüber anderen Basismethoden qualitativ diskutieren.",
+            "descriptionEn": "The learner can describe the basic idea of collocation approaches and discuss pros and cons relative to other basic methods qualitatively.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "BVP & Optimalsteuerung",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "90fa57ee-39e8-4c97-a9aa-c5250065fbe9"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "BVP & Optimalsteuerung",
+                "topicCode": "tum_ma3301_lo4_1_3"
+            }
+        },
+        {
+            "id": "e2994d96-3871-4aeb-a13b-62ad5fd06205",
+            "shortKey": "tum_ma3301_lo6_2_1",
+            "title": "Steifigkeitsmatrix und Lastvektor im FE-Verfahren aufstellen",
+            "titleEn": "Assemble Stiffness Matrix and Load Vector in FEM",
+            "description": "Die lernende Person kann für ein einfaches Modellproblem die Steifigkeitsmatrix und den Lastvektor im Finite-Elemente-Verfahren herleiten und zusammenbauen.",
+            "descriptionEn": "The learner can derive and assemble the stiffness matrix and load vector for a simple model problem in the finite element method.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "PDE: Finite Elemente",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "b412adef-c096-5f58-9729-d35592dd8c6e"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "PDE: Finite Elemente",
+                "topicCode": "tum_ma3301_lo6_2_1"
+            }
+        },
+        {
+            "id": "0628ec8d-d82d-48d8-8ce3-519de66f5eda",
+            "shortKey": "tum_ma3301_lo6_2_2",
+            "title": "Einfaches FE-Modellproblem implementieren und lösen",
+            "titleEn": "Implement and Solve a Simple FEM Model Problem",
+            "description": "Die lernende Person kann ein elementares FE-Verfahren (z.B. 1D oder auf einem einfachen 2D-Gitter) implementieren bzw. anwenden, Randbedingungen berücksichtigen und das entstehende lineare System lösen.",
+            "descriptionEn": "The learner can implement or apply a basic FEM scheme (e.g., 1D or on a simple 2D mesh), account for boundary conditions, and solve the resulting linear system.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "PDE: Finite Elemente",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "e2994d96-3871-4aeb-a13b-62ad5fd06205"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "PDE: Finite Elemente",
+                "topicCode": "tum_ma3301_lo6_2_2"
+            }
+        },
+        {
+            "id": "54ba4bc8-af7c-4555-b243-330932cce0c4",
+            "shortKey": "tum_ma3301_lo6_2_3",
+            "title": "Fehlerverhalten und Genauigkeit von FE-Lösungen interpretieren",
+            "titleEn": "Interpret Error Behavior and Accuracy of FEM Solutions",
+            "description": "Die lernende Person kann anhand von Beispielen das Fehlerverhalten von FE-Lösungen interpretieren (z.B. Konvergenz bei Gitterverfeinerung) und die Genauigkeit qualitativ bewerten.",
+            "descriptionEn": "The learner can interpret the error behavior of FEM solutions in examples (e.g., convergence under mesh refinement) and assess accuracy qualitatively.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "PDE: Finite Elemente",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "0628ec8d-d82d-48d8-8ce3-519de66f5eda"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "PDE: Finite Elemente",
+                "topicCode": "tum_ma3301_lo6_2_3"
+            }
+        },
+        {
+            "id": "ee004acc-a4aa-4892-9e8a-c2a9ea47749c",
+            "shortKey": "tum_ma3301_lo8_1_1",
+            "title": "Numerische Verfahren strukturiert implementieren",
+            "titleEn": "Implement Numerical Methods in a Structured Way",
+            "description": "Die lernende Person kann numerische Verfahren modular und nachvollziehbar implementieren (z.B. klare Schnittstellen, Parameterisierung).",
+            "descriptionEn": "The learner can implement numerical methods in a modular and traceable way (e.g., clear interfaces, parameterization).",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Implementierung & Bewertung",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "e1d7b4d6-fb90-5609-8e1f-2eb4f8c6acb8"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Implementierung & Bewertung",
+                "topicCode": "tum_ma3301_lo8_1_1"
+            }
+        },
+        {
+            "id": "c9317ce3-c825-481e-b529-1c888c4ed865",
+            "shortKey": "tum_ma3301_lo8_1_2",
+            "title": "Testfälle und Referenzlösungen für numerische Verfahren wählen",
+            "titleEn": "Choose Test Cases and Reference Solutions for Numerical Methods",
+            "description": "Die lernende Person kann geeignete Testfälle konstruieren, Referenzlösungen auswählen und Ergebnisse plausibilisieren.",
+            "descriptionEn": "The learner can construct suitable test cases, choose reference solutions, and validate results for plausibility.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Implementierung & Bewertung",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "ee004acc-a4aa-4892-9e8a-c2a9ea47749c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Implementierung & Bewertung",
+                "topicCode": "tum_ma3301_lo8_1_2"
+            }
+        },
+        {
+            "id": "7d4e10fd-af8d-4413-a3e8-533a86362b54",
+            "shortKey": "tum_ma3301_lo8_1_3",
+            "title": "Typische numerische Fehlerquellen berücksichtigen",
+            "titleEn": "Account for Typical Numerical Error Sources",
+            "description": "Die lernende Person kann typische Fehlerquellen (z.B. Rundung, schlechte Kondition) erkennen und bei Implementierung und Interpretation von Ergebnissen berücksichtigen.",
+            "descriptionEn": "The learner can identify typical error sources (e.g., rounding, ill-conditioning) and account for them in implementations and result interpretation.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Implementierung & Bewertung",
+            "tags": [
+                "ects:9",
+                "module:MA3301"
+            ],
+            "contains": [],
+            "requires": [
+                "c9317ce3-c825-481e-b529-1c888c4ed865"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3301",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Implementierung & Bewertung",
+                "topicCode": "tum_ma3301_lo8_1_3"
             }
         }
     ]
