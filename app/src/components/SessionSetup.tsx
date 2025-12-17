@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { CurriculumDropdown } from './CurriculumDropdown'
 import { ThemeToggle } from './ThemeToggle'
 import type { LandscapeSummary } from './CurriculumDropdown'
@@ -30,6 +30,16 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     }
     return ''
   })
+  // Use location (ensure import is added)
+  const location = useLocation()
+
+  React.useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    const deepLinkCurriculum = params.get('curriculum') || params.get('landscape') || params.get('l')
+    if (deepLinkCurriculum && deepLinkCurriculum !== selectedLandscapeId) {
+      setSelectedLandscapeId(deepLinkCurriculum)
+    }
+  }, [location.search])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [hasCheckedId, setHasCheckedId] = useState(false)

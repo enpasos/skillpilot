@@ -96,8 +96,15 @@ const App: React.FC = () => {
             core.setSelectedLandscapeId(landscapeId)
           }
           const search = landscapeId ? `?l=${landscapeId}` : ''
+          const params = new URLSearchParams(location.search)
+          const deepLinkGoal = params.get('goal') || params.get('g')
+
           if (role === 'learner') {
-            navigate(`/learner${search}`)
+            if (deepLinkGoal) {
+              navigate(`/learner/${deepLinkGoal}${search}`)
+            } else {
+              navigate(`/learner${search}`)
+            }
           } else if (role === 'trainer') {
             navigate(`/trainer${search}`)
           } else {
@@ -127,8 +134,15 @@ const App: React.FC = () => {
             core.setSelectedLandscapeId(landscapeId)
           }
           const search = landscapeId ? `?l=${landscapeId}` : ''
+          const params = new URLSearchParams(location.search)
+          const deepLinkGoal = params.get('goal') || params.get('g')
+
           if (role === 'learner') {
-            navigate(`/learner${search}`)
+            if (deepLinkGoal) {
+              navigate(`/learner/${deepLinkGoal}${search}`)
+            } else {
+              navigate(`/learner${search}`)
+            }
           } else if (role === 'trainer') {
             navigate(`/trainer${search}`)
           } else {
