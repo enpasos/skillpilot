@@ -38,6 +38,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl }: FlashcardDrillProp
     const [currentCardIndex, setCurrentCardIndex] = useState(0)
     const [isFlipped, setIsFlipped] = useState(false)
     const [sessionStats, setSessionStats] = useState({ reviewed: 0 })
+    const [reloadTrigger, setReloadTrigger] = useState(0) // New state for soft reload
 
     const [stats, setStats] = useState({
         total: 0,
@@ -71,6 +72,8 @@ export function FlashcardDrill({ onComplete, dataSourceUrl }: FlashcardDrillProp
                     // Box Calc
                     if (!state) {
                         b0++
+                        dueCardsCount++
+                        return true
                     } else {
                         if (state.interval < 3) b1++
                         else if (state.interval <= 10) b2++
@@ -78,10 +81,6 @@ export function FlashcardDrill({ onComplete, dataSourceUrl }: FlashcardDrillProp
                     }
 
                     // Due Calc
-                    if (!state) {
-                        dueCardsCount++
-                        return true
-                    }
                     if (state.nextReview <= now) {
                         dueCardsCount++
                         return true
@@ -106,7 +105,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl }: FlashcardDrillProp
         }
 
         loadData()
-    }, [dataSourceUrl])
+    }, [dataSourceUrl, reloadTrigger]) // Added reloadTrigger dependency
 
     const currentCard = queue[currentCardIndex]
     const isFinished = currentCardIndex >= queue.length
@@ -211,7 +210,17 @@ export function FlashcardDrill({ onComplete, dataSourceUrl }: FlashcardDrillProp
                 <BrainCircuit className="w-16 h-16 text-sky-500 mb-4" />
                 <h2 className="text-2xl font-bold mb-2">Session Complete!</h2>
                 <p className="text-gray-500 mb-6">You reviewed {sessionStats.reviewed} cards.</p>
-                <button onClick={() => window.location.reload()} className="bg-sky-500 text-white px-6 py-2 rounded-full hover:bg-sky-600">
+                <button
+                    onClick={() => {
+                        // Soft Reload: Reset state and trigger re-fetch
+                        setQueue([])
+                        setCurrentCardIndex(0)
+                        setSessionStats({ reviewed: 0 })
+                        setIsFlipped(false)
+                        setReloadTrigger(prev => prev + 1)
+                    }}
+                    className="bg-sky-500 text-white px-6 py-2 rounded-full hover:bg-sky-600"
+                >
                     Continue Learning
                 </button>
             </div>
