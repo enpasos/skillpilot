@@ -282,91 +282,93 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   return (
     <div className="flex h-screen bg-chat-bg text-text-primary overflow-hidden transition-colors">
-      <aside className="w-full flex flex-col bg-sidebar-bg">
-        <div className="p-4 border-b border-border-color flex items-center justify-between">
-          <div>
-            <h2 className="font-bold text-sky-600 dark:text-sky-400">{t.learner.myGoals}</h2>
-            <div className="text-xs text-text-secondary mt-1">
-              {plannedCount} {t.learner.marked} • {masteredCount} {t.learner.completed}
+      <aside className="w-full flex flex-col bg-sidebar-bg items-center">
+        <div className="w-full max-w-4xl flex flex-col h-full">
+          <div className="p-4 border-b border-border-color flex items-center justify-between shrink-0">
+            <div>
+              <h2 className="font-bold text-sky-600 dark:text-sky-400">{t.learner.myGoals}</h2>
+              <div className="text-xs text-text-secondary mt-1">
+                {plannedCount} {t.learner.marked} • {masteredCount} {t.learner.completed}
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={handleExport}
+                className="text-text-secondary hover:text-sky-400 transition-colors"
+                title={t.tooltips.exportData}
+              >
+                <Download size={18} />
+              </button>
+              <button
+                onClick={handleImportClick}
+                className="text-text-secondary hover:text-sky-400 transition-colors"
+                title={t.tooltips.importData}
+              >
+                <Upload size={18} />
+              </button>
+              <button
+                onClick={onRefresh}
+                className="text-text-secondary hover:text-sky-400 transition-colors"
+                title={t.tooltips.refresh}
+              >
+                <RefreshCw size={18} />
+              </button>
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleFileChange}
+                className="hidden"
+                accept=".json"
+              />
+              <button
+                onClick={() => setIsSetupOpen(true)}
+                className="text-text-secondary hover:text-sky-400 transition-colors"
+                title={t.tooltips.adjustCurriculum}
+              >
+                <Settings size={18} />
+              </button>
+              <ThemeToggle />
+              {onLogout && (
+                <LogoutButton onLogout={onLogout} />
+              )}
+
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={handleExport}
-              className="text-text-secondary hover:text-sky-400 transition-colors"
-              title={t.tooltips.exportData}
-            >
-              <Download size={18} />
-            </button>
-            <button
-              onClick={handleImportClick}
-              className="text-text-secondary hover:text-sky-400 transition-colors"
-              title={t.tooltips.importData}
-            >
-              <Upload size={18} />
-            </button>
-            <button
-              onClick={onRefresh}
-              className="text-text-secondary hover:text-sky-400 transition-colors"
-              title={t.tooltips.refresh}
-            >
-              <RefreshCw size={18} />
-            </button>
-            <input
-              type="file"
-              ref={fileInputRef}
-              onChange={handleFileChange}
-              className="hidden"
-              accept=".json"
+
+          <div className="flex-1 p-2 overflow-y-auto">
+            <CompetenceTree
+              rootGoals={visibleRootGoals}
+              allGoals={goalIndexAll}
+              getMastery={getMastery}
+              plannedGoals={plannedGoals}
+              onTogglePlan={togglePlan}
+              onSelect={onSelectGoal}
+              selectedId={selectedId}
+              activeFilter={effectiveActiveFilter}
+              personalConfig={personalConfig}
             />
-            <button
-              onClick={() => setIsSetupOpen(true)}
-              className="text-text-secondary hover:text-sky-400 transition-colors"
-              title={t.tooltips.adjustCurriculum}
-            >
-              <Settings size={18} />
-            </button>
-            <ThemeToggle />
-            {onLogout && (
-              <LogoutButton onLogout={onLogout} />
-            )}
-
           </div>
-        </div>
 
-        <div className="flex-1 p-2 overflow-y-auto">
-          <CompetenceTree
-            rootGoals={visibleRootGoals}
-            allGoals={goalIndexAll}
-            getMastery={getMastery}
-            plannedGoals={plannedGoals}
-            onTogglePlan={togglePlan}
-            onSelect={onSelectGoal}
-            selectedId={selectedId}
-            activeFilter={effectiveActiveFilter}
-            personalConfig={personalConfig}
-          />
-        </div>
-
-        {learnerData && learnerData.copySources && learnerData.copySources.length > 0 && (
-          <div className="p-3 border-t border-border-color bg-gray-50 dark:bg-slate-900 text-xs text-text-secondary">
-            <h3 className="font-semibold mb-1">
-              {t.learner.includesDataFrom}
-            </h3>
-            <div className="flex flex-col gap-1 max-h-[100px] overflow-y-auto">
-              {learnerData.copySources.map((src, idx) => (
-                <div key={idx} className="flex justify-between">
-                  <span className="truncate" title={src.sourceId}>
-                    {src.sourceId.substring(0, 8)}...
-                  </span>
-                  <span className="whitespace-nowrap ml-2">
-                    {new Date(src.copiedAt).toLocaleDateString()}
-                  </span>
-                </div>
-              ))}
+          {learnerData && learnerData.copySources && learnerData.copySources.length > 0 && (
+            <div className="p-3 border-t border-border-color bg-gray-50 dark:bg-slate-900 text-xs text-text-secondary shrink-0">
+              <h3 className="font-semibold mb-1">
+                {t.learner.includesDataFrom}
+              </h3>
+              <div className="flex flex-col gap-1 max-h-[100px] overflow-y-auto">
+                {learnerData.copySources.map((src, idx) => (
+                  <div key={idx} className="flex justify-between">
+                    <span className="truncate" title={src.sourceId}>
+                      {src.sourceId.substring(0, 8)}...
+                    </span>
+                    <span className="whitespace-nowrap ml-2">
+                      {new Date(src.copiedAt).toLocaleDateString()}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </aside>
 
       <PersonalCurriculumSetup
