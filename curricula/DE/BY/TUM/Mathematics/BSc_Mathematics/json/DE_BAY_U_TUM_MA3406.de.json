@@ -1113,8 +1113,8 @@
             "shortKey": "tum_ma3406_lo1_1_1",
             "title": "Sterblichkeitswahrscheinlichkeiten sowie q_x und p_x berechnen",
             "titleEn": "Compute Mortality Probabilities and q_x/p_x",
-            "description": "Die lernende Person kann Sterblichkeitswahrscheinlichkeiten definieren und zentrale biometrische Größen wie q_x und p_x in Beispielen berechnen und interpretieren.",
-            "descriptionEn": "The learner can define mortality probabilities and compute and interpret key biometric quantities such as q_x and p_x in examples.",
+            "description": "Zusammenfassender Cluster: Sterblichkeitswahrscheinlichkeiten sowie die Größen q_x und p_x definieren und in Beispielen nutzen.",
+            "descriptionEn": "Summary cluster: define mortality probabilities and the quantities q_x and p_x and use them in examples.",
             "core": true,
             "weight": 0.2,
             "phase": "Modul",
@@ -1123,7 +1123,10 @@
                 "ects:9",
                 "module:MA3406"
             ],
-            "contains": [],
+            "contains": [
+                "767b16aa-d083-4c3d-8c52-a2b4e57588a0",
+                "e48daf1e-b62f-48c6-b409-503aef5bb82c"
+            ],
             "requires": [],
             "examples": [],
             "dimensionTags": {
@@ -1252,6 +1255,64 @@
                 "phase": "Modul",
                 "area": "Lebensversicherung",
                 "topicCode": "tum_ma3406_lo4_2_3_2"
+            }
+        },
+        {
+            "id": "767b16aa-d083-4c3d-8c52-a2b4e57588a0",
+            "shortKey": "tum_ma3406_lo1_1_1_1",
+            "title": "Sterblichkeitswahrscheinlichkeiten sowie q_x und p_x definieren",
+            "titleEn": "Define Mortality Probabilities and q_x/p_x",
+            "description": "Die lernende Person kann Sterblichkeitswahrscheinlichkeiten definieren und die Größen q_x und p_x inhaltlich korrekt einordnen.",
+            "descriptionEn": "The learner can define mortality probabilities and correctly place the quantities q_x and p_x conceptually.",
+            "core": true,
+            "weight": 0.1,
+            "phase": "Modul",
+            "area": "Biometrie",
+            "tags": [
+                "ects:9",
+                "module:MA3406"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3406",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Biometrie",
+                "topicCode": "tum_ma3406_lo1_1_1_1"
+            }
+        },
+        {
+            "id": "e48daf1e-b62f-48c6-b409-503aef5bb82c",
+            "shortKey": "tum_ma3406_lo1_1_1_2",
+            "title": "q_x und p_x in Beispielen berechnen und interpretieren",
+            "titleEn": "Compute and Interpret q_x and p_x in Examples",
+            "description": "Die lernende Person kann q_x und p_x in Beispielen berechnen und die Ergebnisse im Kontext von Sterbewahrscheinlichkeiten interpretieren.",
+            "descriptionEn": "The learner can compute q_x and p_x in examples and interpret the results in the context of mortality probabilities.",
+            "core": true,
+            "weight": 0.1,
+            "phase": "Modul",
+            "area": "Biometrie",
+            "tags": [
+                "ects:9",
+                "module:MA3406"
+            ],
+            "contains": [],
+            "requires": [
+                "767b16aa-d083-4c3d-8c52-a2b4e57588a0"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3406",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Biometrie",
+                "topicCode": "tum_ma3406_lo1_1_1_2"
             }
         }
     ]
