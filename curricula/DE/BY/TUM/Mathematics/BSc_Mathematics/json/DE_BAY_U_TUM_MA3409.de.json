@@ -1,8 +1,8 @@
 {
     "title": "Applied Regression (TUM, Modul MA3409)",
     "titleEn": "Applied Regression (TUM, Module MA3409)",
-    "description": "Students will learn how to solve real applied data problems through examples matching real data to theory. They will learn how to program in R and use it for effective data science, including visualization and analysis. Students will gain comprehensive knowledge of the many types of regression models available for solving real-world problems. 5 ECTS, angeboten im Wintersemester, Version 2022w, verantwortet von Ankerst, Donna.",
-    "descriptionEn": "Students will learn how to solve real applied data problems through examples matching real data to theory. They will learn how to program in R and use it for effective data science, including visualization and analysis. Students will gain comprehensive knowledge of the many types of regression models available for solving real-world problems. 5 ECTS, offered in winter semester, version 2022w, responsible: Ankerst, Donna.",
+    "description": "Das Modul vermittelt angewandte Regressionsmodelle für verschiedene Datentypen. Behandelt werden einfache und multiple lineare Regression für kontinuierliche Zielgrößen (inklusive Modellspezifikation, Diagnostik und Modellauswahl), logistische und Poisson-Regression für binäre bzw. Zähldaten, Survival-Regression für Zeit-bis-Ereignis-Daten sowie lineare Mixed-Models mit Random Effects für longitudinale Daten. Studierende lernen, reale Datenprobleme anhand von Beispielen zu lösen, Daten mit R zu analysieren und zu visualisieren sowie passende Regressionsmodelle auszuwählen, zu schätzen und zu interpretieren. 5 ECTS, angeboten im Wintersemester, Version 2022w, verantwortet von Ankerst, Donna.",
+    "descriptionEn": "The module teaches applied regression models for different data types. Topics include simple and multiple normal linear regression for continuous outcomes (including model specification, diagnostics, and selection), logistic and Poisson regression for binary and count outcomes, survival regression for time-to-event data, and linear mixed models with random effects for longitudinal data. Students learn to solve real applied data problems through examples, to analyze and visualize data in R, and to select, fit, and interpret appropriate regression models. 5 ECTS, offered in the winter semester, version 2022w, responsible: Ankerst, Donna.",
     "landscapeId": "2fc0a282-5459-49de-bbb8-71665e26a45b",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -19,8 +19,8 @@
             "shortKey": "tum_ma3409_module",
             "title": "Applied Regression – Gesamtmodul",
             "titleEn": "Applied Regression – Full Module",
-            "description": "Students will learn how to solve real applied data problems through examples matching real data to theory. They will learn how to program in R and use it for effective data science, including visualization and analysis. Students will gain comprehensive knowledge of the many types of regression models available for solving real-world problems.",
-            "descriptionEn": "Students will learn how to solve real applied data problems through examples matching real data to theory. They will learn how to program in R and use it for effective data science, including visualization and analysis. Students will gain comprehensive knowledge of the many types of regression models available for solving real-world problems.",
+            "description": "Nach erfolgreichem Abschluss können Studierende reale Datenprobleme mit geeigneten Regressionsmodellen lösen. Sie können lineare, logistische und Poisson-Regression modellieren, Diagnostik und Modellauswahl durchführen sowie Survival-Regression und lineare Mixed-Models für Zeit-bis-Ereignis- bzw. longitudinale Daten anwenden. Sie können Regressionsmodelle in R implementieren, visualisieren und die Ergebnisse fachlich interpretieren.",
+            "descriptionEn": "After successful completion of the module, students are able to solve real applied data problems using appropriate regression models. They can model linear, logistic, and Poisson regression, perform diagnostics and model selection, and apply survival regression and linear mixed models for time-to-event and longitudinal data. They can implement regression analyses in R, visualize results, and interpret model outputs.",
             "core": true,
             "weight": 5.0,
             "phase": "Modul",
@@ -30,14 +30,22 @@
                 "workload:150h",
                 "presence:45h",
                 "level:bachelor",
-                "language:de",
+                "language:en",
                 "module:MA3409",
                 "semester:WS",
                 "duration:1_semester",
                 "responsible:ankerst_donna"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "33ba7e20-a027-5e8e-a01d-87fbbf9b3879",
+                "cb269655-05c2-5339-bb70-bd8b96c05d9b",
+                "76cbcd4e-22ae-5adc-8eaf-ce4ae1d03d82",
+                "56726e24-f231-5369-91d0-3f828ca8c3f1",
+                "a6dd85c3-0165-50b0-aa6a-b9203dadb37d"
+            ],
+            "requires": [
+                "ef775418-c971-542f-87fe-07bd9c995bb1"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-ma3409",
@@ -49,6 +57,459 @@
                 "topicCode": "tum_ma3409_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA3409&description_version=2022w"
+        },
+        {
+            "id": "33ba7e20-a027-5e8e-a01d-87fbbf9b3879",
+            "shortKey": "tum_ma3409_lo1",
+            "title": "Lineare Regression: Modellierung und Interpretation",
+            "titleEn": "Linear Regression: Modeling and Interpretation",
+            "description": "Zusammenfassender Cluster: Spezifikation, Schätzung und Interpretation einfacher und multipler linearer Regressionsmodelle für kontinuierliche Zielgrößen.",
+            "descriptionEn": "Summary cluster: specifying, fitting, and interpreting simple and multiple linear regression models for continuous outcomes.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Lineare Regression",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [
+                "5d9ad1a5-66f4-5e9b-bc33-dd9dc52135ad",
+                "c17e2975-2a62-5a80-ac9f-99a09fa87e0e"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Lineare Regression",
+                "topicCode": "tum_ma3409_lo1"
+            }
+        },
+        {
+            "id": "5d9ad1a5-66f4-5e9b-bc33-dd9dc52135ad",
+            "shortKey": "tum_ma3409_lo1_1",
+            "title": "Einfache und multiple lineare Regression spezifizieren und schätzen",
+            "titleEn": "Specify and Fit Simple and Multiple Linear Regression",
+            "description": "Die lernende Person kann lineare Regressionsmodelle für kontinuierliche Zielgrößen spezifizieren, Parameter schätzen und Regressionskoeffizienten inhaltlich interpretieren.",
+            "descriptionEn": "The learner can specify linear regression models for continuous outcomes, fit parameters, and interpret regression coefficients in context.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Lineare Regression",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Lineare Regression",
+                "topicCode": "tum_ma3409_lo1_1"
+            }
+        },
+        {
+            "id": "c17e2975-2a62-5a80-ac9f-99a09fa87e0e",
+            "shortKey": "tum_ma3409_lo1_2",
+            "title": "Lineare Regression in R implementieren und Vorhersagen ableiten",
+            "titleEn": "Implement Linear Regression in R and Derive Predictions",
+            "description": "Die lernende Person kann lineare Regression in R fitten, Modelloutput auswerten, Vorhersagen und Konfidenz-/Prognoseintervalle erzeugen und Ergebnisse visualisieren.",
+            "descriptionEn": "The learner can fit linear regression in R, evaluate model output, produce predictions and confidence/prediction intervals, and visualize results.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Lineare Regression",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [],
+            "requires": [
+                "5d9ad1a5-66f4-5e9b-bc33-dd9dc52135ad"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Lineare Regression",
+                "topicCode": "tum_ma3409_lo1_2"
+            }
+        },
+        {
+            "id": "cb269655-05c2-5339-bb70-bd8b96c05d9b",
+            "shortKey": "tum_ma3409_lo2",
+            "title": "Diagnostik und Modellauswahl",
+            "titleEn": "Diagnostics and Model Selection",
+            "description": "Zusammenfassender Cluster: Modellannahmen prüfen, Diagnostik durchführen und Modelle strukturiert auswählen bzw. vergleichen.",
+            "descriptionEn": "Summary cluster: checking model assumptions, performing diagnostics, and selecting/comparing models systematically.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Diagnostik & Auswahl",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [
+                "a005a8e2-df8d-5f5f-9401-4ec757b653ee",
+                "b5441a4f-a37a-519b-8c7b-82a0b77dc5f9"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Diagnostik & Auswahl",
+                "topicCode": "tum_ma3409_lo2"
+            }
+        },
+        {
+            "id": "a005a8e2-df8d-5f5f-9401-4ec757b653ee",
+            "shortKey": "tum_ma3409_lo2_1",
+            "title": "Regressionsdiagnostik durchführen und Annahmen prüfen",
+            "titleEn": "Perform Regression Diagnostics and Check Assumptions",
+            "description": "Die lernende Person kann Diagnostik für lineare Regression durchführen (Residualanalysen, Einflussdiagnostik), Annahmen wie Linearität und Homoskedastizität prüfen und Befunde interpretieren.",
+            "descriptionEn": "The learner can perform diagnostics for linear regression (residual and influence analyses), check assumptions such as linearity and homoscedasticity, and interpret findings.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Diagnostik & Auswahl",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [],
+            "requires": [
+                "c17e2975-2a62-5a80-ac9f-99a09fa87e0e"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Diagnostik & Auswahl",
+                "topicCode": "tum_ma3409_lo2_1"
+            }
+        },
+        {
+            "id": "b5441a4f-a37a-519b-8c7b-82a0b77dc5f9",
+            "shortKey": "tum_ma3409_lo2_2",
+            "title": "Modelle auswählen, vergleichen und overfitting vermeiden",
+            "titleEn": "Select and Compare Models and Avoid Overfitting",
+            "description": "Die lernende Person kann Modelle anhand von Gütemaßen und Validierung (z.B. Informationskriterien, Kreuzvalidierung) vergleichen, Variablenselektion begründen und overfitting erkennen und vermeiden.",
+            "descriptionEn": "The learner can compare models using fit criteria and validation (e.g., information criteria, cross-validation), justify variable selection, and recognize and avoid overfitting.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Diagnostik & Auswahl",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [],
+            "requires": [
+                "a005a8e2-df8d-5f5f-9401-4ec757b653ee"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Diagnostik & Auswahl",
+                "topicCode": "tum_ma3409_lo2_2"
+            }
+        },
+        {
+            "id": "76cbcd4e-22ae-5adc-8eaf-ce4ae1d03d82",
+            "shortKey": "tum_ma3409_lo3",
+            "title": "GLMs: Logistische und Poisson-Regression",
+            "titleEn": "GLMs: Logistic and Poisson Regression",
+            "description": "Zusammenfassender Cluster: Generalisierte lineare Modelle für binäre und Zähldaten (Logit- und Poisson-Regression) inklusive Interpretation und Modellprüfung.",
+            "descriptionEn": "Summary cluster: generalized linear models for binary and count data (logistic and Poisson regression), including interpretation and model checks.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "GLMs",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [
+                "d3cd5aa8-8f12-5252-a9a5-1e1555088c66",
+                "6097b974-77ad-5197-a442-0145214b0027"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "GLMs",
+                "topicCode": "tum_ma3409_lo3"
+            }
+        },
+        {
+            "id": "d3cd5aa8-8f12-5252-a9a5-1e1555088c66",
+            "shortKey": "tum_ma3409_lo3_1",
+            "title": "Logistische Regression für binäre Zielgrößen anwenden",
+            "titleEn": "Apply Logistic Regression for Binary Outcomes",
+            "description": "Die lernende Person kann logistische Regression spezifizieren, Parameterschätzungen interpretieren (z.B. Odds Ratios) und Modellgüte/Diagnostik für binäre Daten in R durchführen.",
+            "descriptionEn": "The learner can specify logistic regression, interpret parameter estimates (e.g., odds ratios), and perform model fit checks/diagnostics for binary data in R.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "GLMs",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [],
+            "requires": [
+                "a005a8e2-df8d-5f5f-9401-4ec757b653ee"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "GLMs",
+                "topicCode": "tum_ma3409_lo3_1"
+            }
+        },
+        {
+            "id": "6097b974-77ad-5197-a442-0145214b0027",
+            "shortKey": "tum_ma3409_lo3_2",
+            "title": "Poisson-Regression für Zähldaten modellieren und prüfen",
+            "titleEn": "Model and Check Poisson Regression for Count Data",
+            "description": "Die lernende Person kann Poisson-Regression für Zähldaten formulieren, Parameter und Effekte interpretieren, overdispersion erkennen und Modellanpassungen bzw. Alternativen begründet diskutieren.",
+            "descriptionEn": "The learner can formulate Poisson regression for count data, interpret parameters and effects, detect overdispersion, and discuss model adjustments or alternatives in a well-justified way.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "GLMs",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [],
+            "requires": [
+                "d3cd5aa8-8f12-5252-a9a5-1e1555088c66"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "GLMs",
+                "topicCode": "tum_ma3409_lo3_2"
+            }
+        },
+        {
+            "id": "56726e24-f231-5369-91d0-3f828ca8c3f1",
+            "shortKey": "tum_ma3409_lo4",
+            "title": "Survival-Regression für Zeit-bis-Ereignis-Daten",
+            "titleEn": "Survival Regression for Time-to-Event Data",
+            "description": "Zusammenfassender Cluster: Regression für Zeit-bis-Ereignis-Daten mit Zensierung, inklusive Interpretation und Modellannahmen.",
+            "descriptionEn": "Summary cluster: regression for time-to-event data with censoring, including interpretation and model assumptions.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Survival Regression",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [
+                "db315245-2b35-57ca-a1a4-c08f56f5379c",
+                "5ef5b48e-87eb-5cf0-876e-787262dda814"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Survival Regression",
+                "topicCode": "tum_ma3409_lo4"
+            }
+        },
+        {
+            "id": "db315245-2b35-57ca-a1a4-c08f56f5379c",
+            "shortKey": "tum_ma3409_lo4_1",
+            "title": "Zensierung berücksichtigen und Survival-Regression fitten",
+            "titleEn": "Handle Censoring and Fit Survival Regression",
+            "description": "Die lernende Person kann Zeit-bis-Ereignis-Daten mit Zensierung modellieren, geeignete Survival-Regression (z.B. Cox-Modell) fitten und Hazard Ratios interpretieren.",
+            "descriptionEn": "The learner can model time-to-event data with censoring, fit survival regression (e.g., Cox model), and interpret hazard ratios.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Survival Regression",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [],
+            "requires": [
+                "b5441a4f-a37a-519b-8c7b-82a0b77dc5f9"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Survival Regression",
+                "topicCode": "tum_ma3409_lo4_1"
+            }
+        },
+        {
+            "id": "5ef5b48e-87eb-5cf0-876e-787262dda814",
+            "shortKey": "tum_ma3409_lo4_2",
+            "title": "Survival-Modelle diagnostizieren und in R auswerten",
+            "titleEn": "Diagnose Survival Models and Evaluate Them in R",
+            "description": "Die lernende Person kann Survival-Modelle in R auswerten, Modellannahmen (z.B. Proportional Hazards) prüfen und Ergebnisse mit passenden Visualisierungen kommunizieren.",
+            "descriptionEn": "The learner can evaluate survival models in R, check model assumptions (e.g., proportional hazards), and communicate results with appropriate visualizations.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Survival Regression",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [],
+            "requires": [
+                "db315245-2b35-57ca-a1a4-c08f56f5379c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Survival Regression",
+                "topicCode": "tum_ma3409_lo4_2"
+            }
+        },
+        {
+            "id": "a6dd85c3-0165-50b0-aa6a-b9203dadb37d",
+            "shortKey": "tum_ma3409_lo5",
+            "title": "Lineare Mixed-Models für longitudinale Daten",
+            "titleEn": "Linear Mixed Models for Longitudinal Data",
+            "description": "Zusammenfassender Cluster: Lineare Mixed-Models mit Random Effects für wiederholte Messungen und longitudinale Datenanalyse.",
+            "descriptionEn": "Summary cluster: linear mixed models with random effects for repeated measurements and longitudinal data analysis.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Mixed Models",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [
+                "08615fa7-7a81-5fdb-9b4c-f6f42edb3eb7",
+                "5dcac871-1ae2-5aa1-9010-489189e9985e"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Mixed Models",
+                "topicCode": "tum_ma3409_lo5"
+            }
+        },
+        {
+            "id": "08615fa7-7a81-5fdb-9b4c-f6f42edb3eb7",
+            "shortKey": "tum_ma3409_lo5_1",
+            "title": "Mixed-Models mit Random Effects spezifizieren und interpretieren",
+            "titleEn": "Specify and Interpret Mixed Models with Random Effects",
+            "description": "Die lernende Person kann lineare Mixed-Models formulieren, Random Effects interpretieren (z.B. zufällige Interzepte/Steigungen) und die Motivation gegenüber einfachen Regressionsmodellen erklären.",
+            "descriptionEn": "The learner can formulate linear mixed models, interpret random effects (e.g., random intercepts/slopes), and explain why they are used compared to simple regression models.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Mixed Models",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [],
+            "requires": [
+                "b5441a4f-a37a-519b-8c7b-82a0b77dc5f9"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Mixed Models",
+                "topicCode": "tum_ma3409_lo5_1"
+            }
+        },
+        {
+            "id": "5dcac871-1ae2-5aa1-9010-489189e9985e",
+            "shortKey": "tum_ma3409_lo5_2",
+            "title": "Mixed-Models in R fitten, diagnostizieren und Ergebnisse berichten",
+            "titleEn": "Fit and Diagnose Mixed Models in R and Report Results",
+            "description": "Die lernende Person kann Mixed-Models in R fitten, Modellfit und Diagnostik durchführen, Vorhersagen ableiten und Resultate für longitudinale Daten fachlich interpretieren und visualisieren.",
+            "descriptionEn": "The learner can fit mixed models in R, perform model fit checks and diagnostics, derive predictions, and interpret and visualize results for longitudinal data.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Mixed Models",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [],
+            "requires": [
+                "08615fa7-7a81-5fdb-9b4c-f6f42edb3eb7"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Mixed Models",
+                "topicCode": "tum_ma3409_lo5_2"
+            }
         }
     ]
 }

@@ -1,8 +1,8 @@
 {
     "title": "Insurance Mathematics 1 (TUM, Modul MA3405)",
     "titleEn": "Insurance Mathematics 1 (TUM, Module MA3405)",
-    "description": "After successful completion of the module, the students are able to understand and apply the main stochastic methods in the practice of (non-life) insurance. 9 ECTS, angeboten im Wintersemester, Version 2022s, verantwortet von Scherer, Matthias.",
-    "descriptionEn": "After successful completion of the module, the students are able to understand and apply the main stochastic methods in the practice of (non-life) insurance. 9 ECTS, offered in winter semester, version 2022s, responsible: Scherer, Matthias.",
+    "description": "Das Modul führt in die Versicherungsmathematik mit Schwerpunkt auf Schaden-/Unfallversicherung (Non-Life) ein. Behandelt werden Prämienkalkulation und Tarifmodelle, Kapitalallokation, das individuelle und das kollektive Modell, stochastische Modelle für Tarifierung, Reservierung (Loss Reserving) und Rückversicherung sowie verschiedene Reservierungsmethoden und deren Vergleich. Da Non-Life-Versicherung stark von der zufälligen Natur von Schadenanzahlen (Frequenz) und Schadengrößen (Severity) abhängt, werden stochastische Werkzeuge wie Credibility Theory, stochastische Prozesse, Extremwertanalyse und Abhängigkeitsmodellierung im Kontext eingeführt. Die Rolle der Rückversicherung als Risikoteilung wird mathematisch analysiert; Solvency II wird kurz diskutiert. 9 ECTS, angeboten im Wintersemester, Version 2022s, verantwortet von Scherer, Matthias.",
+    "descriptionEn": "The module introduces actuarial science with a focus on non-life insurance. Topics include pricing methods and tariff models, capital allocation, the individual and collective risk model, stochastic models for tariff calculation, loss reserving, and reinsurance, as well as different reserving methods and their comparison. Since non-life insurance is heavily influenced by the random nature of claim arrivals (frequency) and sizes (severity), stochastic tools such as credibility theory, stochastic processes, extreme-value analysis, and dependence modeling are introduced in this context. The role of reinsurance in risk sharing is analyzed from a mathematical perspective, and current regulation (Solvency II) is briefly discussed. 9 ECTS, offered in the winter semester, version 2022s, responsible: Scherer, Matthias.",
     "landscapeId": "c20ffb06-12da-42eb-bb44-eefabcddc3aa",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -19,8 +19,8 @@
             "shortKey": "tum_ma3405_module",
             "title": "Insurance Mathematics 1 – Gesamtmodul",
             "titleEn": "Insurance Mathematics 1 – Full Module",
-            "description": "After successful completion of the module, the students are able to understand and apply the main stochastic methods in the practice of (non-life) insurance.",
-            "descriptionEn": "After successful completion of the module, the students are able to understand and apply the main stochastic methods in the practice of (non-life) insurance.",
+            "description": "Nach erfolgreichem Abschluss können Studierende die wichtigsten stochastischen Methoden in der Praxis der Schaden-/Unfallversicherung (Non-Life) verstehen und anwenden, insbesondere für Tarifierung, Reservierung und Rückversicherung.",
+            "descriptionEn": "After successful completion of the module, students are able to understand and apply the main stochastic methods in the practice of (non-life) insurance, in particular for pricing, reserving, and reinsurance.",
             "core": true,
             "weight": 9.0,
             "phase": "Modul",
@@ -29,15 +29,26 @@
                 "ects:9",
                 "workload:270h",
                 "presence:90h",
-                "level:bachelor",
-                "language:de",
+                "level:master",
+                "language:en",
                 "module:MA3405",
                 "semester:WS",
                 "duration:1_semester",
                 "responsible:scherer_matthias"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "33c72944-ff39-5295-962c-889950b6e71c",
+                "9534030a-eee7-5857-a985-1e95cc3a387d",
+                "ab537682-579f-5e03-9626-94dac504f738",
+                "299c35ec-3c72-59b8-acf4-da04c2c0321c",
+                "306c0526-0ad1-5b39-a4b9-44d11e7701a4",
+                "fa4b5599-b011-5089-960a-e5b22903c91d",
+                "dde80f24-b6c8-5056-ba97-43df5f204c50",
+                "5647fae1-277c-5590-9f13-b8984159bfad"
+            ],
+            "requires": [
+                "ef775418-c971-542f-87fe-07bd9c995bb1"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-ma3405",
@@ -49,6 +60,732 @@
                 "topicCode": "tum_ma3405_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA3405&description_version=2022s"
+        },
+        {
+            "id": "33c72944-ff39-5295-962c-889950b6e71c",
+            "shortKey": "tum_ma3405_lo1",
+            "title": "Grundlagen und Daten in der Non-Life-Versicherung",
+            "titleEn": "Foundations and Data in Non-Life Insurance",
+            "description": "Zusammenfassender Cluster: Grundbegriffe der Schadenversicherung, Datenstrukturen und Trennung von Frequenz- und Severity-Modellierung.",
+            "descriptionEn": "Summary cluster: basic notions of non-life insurance, data structures, and separating frequency and severity modeling.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Grundlagen",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [
+                "ed6b414e-e8a9-581f-827b-65a4f62631e7",
+                "e7e1e964-33ee-581d-b21c-48843f91fc2c"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Grundlagen",
+                "topicCode": "tum_ma3405_lo1"
+            }
+        },
+        {
+            "id": "ed6b414e-e8a9-581f-827b-65a4f62631e7",
+            "shortKey": "tum_ma3405_lo1_1",
+            "title": "Schadenmodelle (Frequenz/Severity) aus Daten ableiten",
+            "titleEn": "Derive Claim Models (Frequency/Severity) from Data",
+            "description": "Die lernende Person kann Schadenanzahlen und Schadengrößen als separate stochastische Komponenten modellieren, geeignete Verteilungen wählen und Parameter aus Daten bzw. Schätzern ableiten.",
+            "descriptionEn": "The learner can model claim counts and claim sizes as separate stochastic components, choose suitable distributions, and infer parameters from data or estimators.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Grundlagen",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Grundlagen",
+                "topicCode": "tum_ma3405_lo1_1"
+            }
+        },
+        {
+            "id": "e7e1e964-33ee-581d-b21c-48843f91fc2c",
+            "shortKey": "tum_ma3405_lo1_2",
+            "title": "Tarifmerkmale und Segmentierung im Non-Life-Kontext interpretieren",
+            "titleEn": "Interpret Rating Factors and Segmentation in Non-Life Contexts",
+            "description": "Die lernende Person kann Tarifmerkmale/Rating Factors interpretieren, Daten segmentieren und erklären, wie Segmentierung die Schätzung von Frequenz- und Severity-Modellen beeinflusst.",
+            "descriptionEn": "The learner can interpret rating factors, segment data, and explain how segmentation affects estimation of frequency and severity models.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Grundlagen",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [],
+            "requires": [
+                "ed6b414e-e8a9-581f-827b-65a4f62631e7"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Grundlagen",
+                "topicCode": "tum_ma3405_lo1_2"
+            }
+        },
+        {
+            "id": "9534030a-eee7-5857-a985-1e95cc3a387d",
+            "shortKey": "tum_ma3405_lo2",
+            "title": "Tarifierung und Prämienkalkulation",
+            "titleEn": "Pricing and Premium Calculation",
+            "description": "Zusammenfassender Cluster: Prämienprinzipien, Tarifkalkulation und Kapitalallokation in der Schadenversicherung.",
+            "descriptionEn": "Summary cluster: premium principles, tariff calculation, and capital allocation in non-life insurance.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Prämien",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [
+                "ca36d5cb-cb6d-5e41-89c7-3fba7e79d35f",
+                "ae1fe460-8e16-5fbe-92e8-18c761e2a347"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Prämien",
+                "topicCode": "tum_ma3405_lo2"
+            }
+        },
+        {
+            "id": "ca36d5cb-cb6d-5e41-89c7-3fba7e79d35f",
+            "shortKey": "tum_ma3405_lo2_1",
+            "title": "Prämienprinzipien anwenden und Nettoprämien berechnen",
+            "titleEn": "Apply Premium Principles and Compute Net Premiums",
+            "description": "Die lernende Person kann zentrale Prämienprinzipien (z.B. Erwartungswertprinzip, Varianzprinzip) anwenden und aus Frequenz/Severity-Modellen Nettoprämien ableiten.",
+            "descriptionEn": "The learner can apply core premium principles (e.g., expected value, variance principle) and derive net premiums from frequency/severity models.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Prämien",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [],
+            "requires": [
+                "e7e1e964-33ee-581d-b21c-48843f91fc2c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Prämien",
+                "topicCode": "tum_ma3405_lo2_1"
+            }
+        },
+        {
+            "id": "ae1fe460-8e16-5fbe-92e8-18c761e2a347",
+            "shortKey": "tum_ma3405_lo2_2",
+            "title": "Kapitalallokation und Sicherheitszuschläge begründen",
+            "titleEn": "Justify Capital Allocation and Safety Loadings",
+            "description": "Die lernende Person kann die Rolle von Sicherheitszuschlägen erläutern, einfache Kapitalallokationsideen darstellen und deren Einfluss auf Bruttoprämien bzw. Tarife begründen.",
+            "descriptionEn": "The learner can explain the role of safety loadings, describe basic capital allocation ideas, and justify their impact on gross premiums or tariffs.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Prämien",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [],
+            "requires": [
+                "ca36d5cb-cb6d-5e41-89c7-3fba7e79d35f"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Prämien",
+                "topicCode": "tum_ma3405_lo2_2"
+            }
+        },
+        {
+            "id": "ab537682-579f-5e03-9626-94dac504f738",
+            "shortKey": "tum_ma3405_lo3",
+            "title": "Individuelles und kollektives Risikomodell",
+            "titleEn": "Individual and Collective Risk Model",
+            "description": "Zusammenfassender Cluster: Individuelles und kollektives Modell zur Aggregation von Risiken sowie zentrale Kenngrößen und Approximationen.",
+            "descriptionEn": "Summary cluster: individual and collective models for aggregating risk and key quantities and approximations.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Risikomodelle",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [
+                "ae196dca-aa61-5622-8a35-66572f26410c",
+                "d1785525-f867-5411-a0b6-0d1b85982676"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Risikomodelle",
+                "topicCode": "tum_ma3405_lo3"
+            }
+        },
+        {
+            "id": "ae196dca-aa61-5622-8a35-66572f26410c",
+            "shortKey": "tum_ma3405_lo3_1",
+            "title": "Individuelles und kollektives Modell formulieren und vergleichen",
+            "titleEn": "Formulate and Compare Individual and Collective Models",
+            "description": "Die lernende Person kann das individuelle und das kollektive Risikomodell formulieren, Aggregatsummen definieren und die Modelle hinsichtlich Annahmen und Anwendungsfällen vergleichen.",
+            "descriptionEn": "The learner can formulate the individual and collective risk model, define aggregate losses, and compare assumptions and use cases.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Risikomodelle",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [],
+            "requires": [
+                "ca36d5cb-cb6d-5e41-89c7-3fba7e79d35f"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Risikomodelle",
+                "topicCode": "tum_ma3405_lo3_1"
+            }
+        },
+        {
+            "id": "d1785525-f867-5411-a0b6-0d1b85982676",
+            "shortKey": "tum_ma3405_lo3_2",
+            "title": "Aggregateverteilungen approximieren und Risikokennzahlen berechnen",
+            "titleEn": "Approximate Aggregate Loss Distributions and Compute Risk Metrics",
+            "description": "Die lernende Person kann Erwartungswert/Varianz von Aggregatsummen berechnen, einfache Approximationen (z.B. Normal-/Poisson-Approx.) einsetzen und daraus Risikokennzahlen ableiten.",
+            "descriptionEn": "The learner can compute mean/variance of aggregate losses, apply basic approximations (e.g., normal/Poisson), and derive risk metrics from them.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Risikomodelle",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [],
+            "requires": [
+                "ae196dca-aa61-5622-8a35-66572f26410c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Risikomodelle",
+                "topicCode": "tum_ma3405_lo3_2"
+            }
+        },
+        {
+            "id": "299c35ec-3c72-59b8-acf4-da04c2c0321c",
+            "shortKey": "tum_ma3405_lo4",
+            "title": "Loss Reserving und Reservierungsmethoden",
+            "titleEn": "Loss Reserving and Reserving Methods",
+            "description": "Zusammenfassender Cluster: Methoden zur Schadenreservierung, Modellannahmen und Vergleich verschiedener Reservierungsansätze.",
+            "descriptionEn": "Summary cluster: methods for loss reserving, modeling assumptions, and comparing reserving approaches.",
+            "core": true,
+            "weight": 1.3,
+            "phase": "Modul",
+            "area": "Reserving",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [
+                "d3cfcb6a-6cec-5e88-945b-7907a4f61415",
+                "9d36fd56-dade-5169-9cc8-59ccd2a75629"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Reserving",
+                "topicCode": "tum_ma3405_lo4"
+            }
+        },
+        {
+            "id": "d3cfcb6a-6cec-5e88-945b-7907a4f61415",
+            "shortKey": "tum_ma3405_lo4_1",
+            "title": "Loss-Reserving-Modelle auf Dreiecksdatensätzen anwenden",
+            "titleEn": "Apply Loss Reserving Models to Triangle Data",
+            "description": "Die lernende Person kann typische Reservierungsdaten (Entwicklungsdreiecke) interpretieren und grundlegende Reservierungsmethoden auf Beispiel-Datensätze anwenden.",
+            "descriptionEn": "The learner can interpret typical reserving data (development triangles) and apply basic reserving methods to example datasets.",
+            "core": true,
+            "weight": 0.65,
+            "phase": "Modul",
+            "area": "Reserving",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [],
+            "requires": [
+                "e7e1e964-33ee-581d-b21c-48843f91fc2c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Reserving",
+                "topicCode": "tum_ma3405_lo4_1"
+            }
+        },
+        {
+            "id": "9d36fd56-dade-5169-9cc8-59ccd2a75629",
+            "shortKey": "tum_ma3405_lo4_2",
+            "title": "Reserving-Methoden vergleichen und Unsicherheit beurteilen",
+            "titleEn": "Compare Reserving Methods and Assess Uncertainty",
+            "description": "Die lernende Person kann verschiedene Reservierungsmethoden vergleichen, deren Annahmen diskutieren und die Unsicherheit von Reserveschätzungen in Grundzügen beurteilen.",
+            "descriptionEn": "The learner can compare different reserving methods, discuss their assumptions, and assess the uncertainty of reserve estimates at a basic level.",
+            "core": true,
+            "weight": 0.65,
+            "phase": "Modul",
+            "area": "Reserving",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [],
+            "requires": [
+                "d3cfcb6a-6cec-5e88-945b-7907a4f61415"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Reserving",
+                "topicCode": "tum_ma3405_lo4_2"
+            }
+        },
+        {
+            "id": "306c0526-0ad1-5b39-a4b9-44d11e7701a4",
+            "shortKey": "tum_ma3405_lo5",
+            "title": "Rückversicherung und Risikoteilung",
+            "titleEn": "Reinsurance and Risk Sharing",
+            "description": "Zusammenfassender Cluster: Mathematische Modelle der Rückversicherung und Effekte auf Risiko und Prämie.",
+            "descriptionEn": "Summary cluster: mathematical models of reinsurance and their effects on risk and premiums.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Rückversicherung",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [
+                "e4c6deb6-92a3-5cd4-ad5d-711e48b28b72",
+                "d13e5a9c-8025-5fb0-9af8-be60dbc4acce"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Rückversicherung",
+                "topicCode": "tum_ma3405_lo5"
+            }
+        },
+        {
+            "id": "e4c6deb6-92a3-5cd4-ad5d-711e48b28b72",
+            "shortKey": "tum_ma3405_lo5_1",
+            "title": "Rückversicherungsverträge modellieren und Effekte auf Verteilungen ableiten",
+            "titleEn": "Model Reinsurance Contracts and Derive Effects on Distributions",
+            "description": "Die lernende Person kann grundlegende Rückversicherungsformen (z.B. Excess-of-Loss, Quoten) modellieren und die Auswirkungen auf Schadenzahlungen und Aggregatsummen qualitativ oder rechnerisch ableiten.",
+            "descriptionEn": "The learner can model basic reinsurance types (e.g., excess-of-loss, quota share) and derive qualitative or quantitative effects on claim payments and aggregate losses.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Rückversicherung",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [],
+            "requires": [
+                "d1785525-f867-5411-a0b6-0d1b85982676"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Rückversicherung",
+                "topicCode": "tum_ma3405_lo5_1"
+            }
+        },
+        {
+            "id": "d13e5a9c-8025-5fb0-9af8-be60dbc4acce",
+            "shortKey": "tum_ma3405_lo5_2",
+            "title": "Risikoteilung und Rückversicherungsdesign begründet bewerten",
+            "titleEn": "Evaluate Risk Sharing and Reinsurance Design",
+            "description": "Die lernende Person kann Rückversicherungsdesigns anhand von Risiko- und Prämienkriterien bewerten und begründet erklären, wann Rückversicherung zur Stabilisierung oder Kapitalentlastung eingesetzt wird.",
+            "descriptionEn": "The learner can evaluate reinsurance designs based on risk and premium criteria and explain when reinsurance is used for stabilization or capital relief.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Rückversicherung",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [],
+            "requires": [
+                "e4c6deb6-92a3-5cd4-ad5d-711e48b28b72"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Rückversicherung",
+                "topicCode": "tum_ma3405_lo5_2"
+            }
+        },
+        {
+            "id": "fa4b5599-b011-5089-960a-e5b22903c91d",
+            "shortKey": "tum_ma3405_lo6",
+            "title": "Credibility Theory, Abhängigkeiten und Extremwerte",
+            "titleEn": "Credibility Theory, Dependence, and Extreme Values",
+            "description": "Zusammenfassender Cluster: Credibility Theory, Abhängigkeitsmodellierung und Extremwertanalyse im Non-Life-Kontext.",
+            "descriptionEn": "Summary cluster: credibility theory, dependence modeling, and extreme value analysis in a non-life context.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Stochastische Werkzeuge",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [
+                "f0ed75e2-dd5b-59e6-b1db-e96aff912f07",
+                "56761b83-8f25-55ed-b0e7-13b057713b5e"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stochastische Werkzeuge",
+                "topicCode": "tum_ma3405_lo6"
+            }
+        },
+        {
+            "id": "f0ed75e2-dd5b-59e6-b1db-e96aff912f07",
+            "shortKey": "tum_ma3405_lo6_1",
+            "title": "Credibility-Theorie für Tarifierung und Reservierung einsetzen",
+            "titleEn": "Use Credibility Theory for Pricing and Reserving",
+            "description": "Die lernende Person kann Grundideen der Credibility Theory erklären, Credibility-Schätzer in einfachen Modellen anwenden und die Intuition des Shrinkage zwischen Kollektiv- und Individualinformation darstellen.",
+            "descriptionEn": "The learner can explain basic ideas of credibility theory, apply credibility estimators in simple models, and convey the intuition of shrinkage between collective and individual information.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Stochastische Werkzeuge",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [],
+            "requires": [
+                "ca36d5cb-cb6d-5e41-89c7-3fba7e79d35f"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stochastische Werkzeuge",
+                "topicCode": "tum_ma3405_lo6_1"
+            }
+        },
+        {
+            "id": "56761b83-8f25-55ed-b0e7-13b057713b5e",
+            "shortKey": "tum_ma3405_lo6_2",
+            "title": "Extremwerte und Abhängigkeiten in Schadenmodellen modellieren",
+            "titleEn": "Model Extremes and Dependence in Claim Models",
+            "description": "Die lernende Person kann Extremwertsituationen motivieren, Grundideen der Extremwertanalyse einordnen und Abhängigkeitsmodelle (z.B. Copulas in Grundzügen) im Kontext von Aggregations- und Rückversicherungseffekten diskutieren.",
+            "descriptionEn": "The learner can motivate extreme-value situations, place core ideas of extreme value analysis, and discuss dependence models (e.g., copulas at a basic level) in the context of aggregation and reinsurance effects.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Stochastische Werkzeuge",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [],
+            "requires": [
+                "f0ed75e2-dd5b-59e6-b1db-e96aff912f07"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stochastische Werkzeuge",
+                "topicCode": "tum_ma3405_lo6_2"
+            }
+        },
+        {
+            "id": "dde80f24-b6c8-5056-ba97-43df5f204c50",
+            "shortKey": "tum_ma3405_lo7",
+            "title": "Stochastische Prozesse und Schadenprozesse",
+            "titleEn": "Stochastic Processes and Claim Processes",
+            "description": "Zusammenfassender Cluster: Modelle der Schadenentstehung über stochastische Prozesse und deren Einsatz für Frequenzmodellierung und Reservierung.",
+            "descriptionEn": "Summary cluster: modeling claims via stochastic processes and using them for frequency modeling and reserving.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Prozesse",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [
+                "dac62164-61c1-5105-89f8-019ebf4cad0d",
+                "7af265a8-c754-523e-97d0-ab03ea2fc48d"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Prozesse",
+                "topicCode": "tum_ma3405_lo7"
+            }
+        },
+        {
+            "id": "dac62164-61c1-5105-89f8-019ebf4cad0d",
+            "shortKey": "tum_ma3405_lo7_1",
+            "title": "Schadenprozesse über Zählprozesse modellieren",
+            "titleEn": "Model Claim Processes via Counting Processes",
+            "description": "Die lernende Person kann Schadenanzahlen über Zählprozesse (z.B. Poisson) modellieren, grundlegende Eigenschaften nutzen und die Verbindung zu kollektiven Modellen erläutern.",
+            "descriptionEn": "The learner can model claim counts via counting processes (e.g., Poisson), use basic properties, and explain the connection to collective models.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Prozesse",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [],
+            "requires": [
+                "ae196dca-aa61-5622-8a35-66572f26410c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Prozesse",
+                "topicCode": "tum_ma3405_lo7_1"
+            }
+        },
+        {
+            "id": "7af265a8-c754-523e-97d0-ab03ea2fc48d",
+            "shortKey": "tum_ma3405_lo7_2",
+            "title": "Prozessmodelle zur Tarifierung/Reserving interpretieren und implementieren",
+            "titleEn": "Interpret and Implement Process Models for Pricing/Reserving",
+            "description": "Die lernende Person kann Prozessmodelle in Anwendungen interpretieren, einfache Simulationen/Implementationen skizzieren und die Rolle von Prozessannahmen für Reservierung und Rückversicherung diskutieren.",
+            "descriptionEn": "The learner can interpret process models in applications, sketch simple simulations/implementations, and discuss how process assumptions affect reserving and reinsurance.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Prozesse",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [],
+            "requires": [
+                "dac62164-61c1-5105-89f8-019ebf4cad0d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Prozesse",
+                "topicCode": "tum_ma3405_lo7_2"
+            }
+        },
+        {
+            "id": "5647fae1-277c-5590-9f13-b8984159bfad",
+            "shortKey": "tum_ma3405_lo8",
+            "title": "Regulatorik und Solvency II (Überblick)",
+            "titleEn": "Regulation and Solvency II (Overview)",
+            "description": "Zusammenfassender Cluster: Überblick über Solvency II und die Rolle quantitativer Risikomodelle in der Regulierung.",
+            "descriptionEn": "Summary cluster: overview of Solvency II and the role of quantitative risk models in regulation.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Regulatorik",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [
+                "fd2e7a39-147d-561e-97a6-627b2d6ebaad",
+                "989b69c4-f9b9-5598-b688-88713126ed17"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Regulatorik",
+                "topicCode": "tum_ma3405_lo8"
+            }
+        },
+        {
+            "id": "fd2e7a39-147d-561e-97a6-627b2d6ebaad",
+            "shortKey": "tum_ma3405_lo8_1",
+            "title": "Solvency-II-Grundideen und Risikokapitalbegriffe erklären",
+            "titleEn": "Explain Solvency II Basics and Risk Capital Concepts",
+            "description": "Die lernende Person kann zentrale Ziele von Solvency II benennen, grundlegende Begriffe (z.B. SCR/MCR in Grundzügen) erläutern und die Rolle stochastischer Modelle für Risikokapital abschätzen.",
+            "descriptionEn": "The learner can state key goals of Solvency II, explain basic notions (e.g., SCR/MCR at a high level), and assess the role of stochastic models for risk capital.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Regulatorik",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [],
+            "requires": [
+                "ae1fe460-8e16-5fbe-92e8-18c761e2a347"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Regulatorik",
+                "topicCode": "tum_ma3405_lo8_1"
+            }
+        },
+        {
+            "id": "989b69c4-f9b9-5598-b688-88713126ed17",
+            "shortKey": "tum_ma3405_lo8_2",
+            "title": "Methoden im Solvency-Kontext einordnen und Limitierungen diskutieren",
+            "titleEn": "Place Methods in the Solvency Context and Discuss Limitations",
+            "description": "Die lernende Person kann typische Methoden (Reserving, Extremwerte, Abhängigkeit, Rückversicherung) im Kontext regulatorischer Anforderungen einordnen und Limitierungen/Modellrisiken in Grundzügen diskutieren.",
+            "descriptionEn": "The learner can place typical methods (reserving, extremes, dependence, reinsurance) within a regulatory context and discuss limitations/model risk at a basic level.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Regulatorik",
+            "tags": [
+                "ects:9",
+                "module:MA3405"
+            ],
+            "contains": [],
+            "requires": [
+                "fd2e7a39-147d-561e-97a6-627b2d6ebaad"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3405",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Regulatorik",
+                "topicCode": "tum_ma3405_lo8_2"
+            }
         }
     ]
 }

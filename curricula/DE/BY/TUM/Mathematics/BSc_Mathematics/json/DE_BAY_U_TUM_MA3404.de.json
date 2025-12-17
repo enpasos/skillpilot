@@ -1,8 +1,8 @@
 {
     "title": "Statistical Computing (TUM, Modul MA3404)",
     "titleEn": "Statistical Computing (TUM, Module MA3404)",
-    "description": "After successful completion of the course, students can simulate random variables in the R statistical package using complex algorithms and graphical checks for correctness. They can use R to effectively visualize real multivariate datasets, as well as develop appropriate statistical inference procedures based on the bootstrap, jackknife and permutation methods. They can perform Bayesian inference using MCMC algorithms to fit posterior distributions. Alternatively, they can solve complex frequentist inference problems using MC methods and perform statistical likelihood maximization using advanced optimization algorithms. 5 ECTS, angeboten im Sommersemester, Version 2023s, verantwortet von Ankerst, Donna.",
-    "descriptionEn": "After successful completion of the course, students can simulate random variables in the R statistical package using complex algorithms and graphical checks for correctness. They can use R to effectively visualize real multivariate datasets, as well as develop appropriate statistical inference procedures based on the bootstrap, jackknife and permutation methods. They can perform Bayesian inference using MCMC algorithms to fit posterior distributions. Alternatively, they can solve complex frequentist inference problems using MC methods and perform statistical likelihood maximization using advanced optimization algorithms. 5 ECTS, offered in summer semester, version 2023s, responsible: Ankerst, Donna.",
+    "description": "Das Modul führt in Statistical Computing mit dem Statistikpaket R ein und orientiert sich an einem führenden Lehrbuch. Behandelt werden u.a. eine Wiederholung von Wahrscheinlichkeit und Statistik, Verfahren zur Erzeugung von Zufallsvariablen, Visualisierung multivariater Daten, Monte-Carlo-Integration, Varianz und Inferenz, Bootstrap und Jackknife, Permutationstests, Markov Chain Monte Carlo (MCMC) sowie Optimierung. Der Schwerpunkt liegt auf der praktischen Umsetzung und Simulation; eine tiefe theoretische Entwicklung der Methoden steht nicht im Vordergrund. 5 ECTS, angeboten im Sommersemester, Version 2023s, verantwortet von Ankerst, Donna.",
+    "descriptionEn": "The module introduces statistical computing using the R statistical package following a leading textbook. Topics include a review of probability and statistics, methods for generating random variables, visualization of multivariate data, Monte Carlo (MC) integration, variance and inference, bootstrap and jackknife, permutation tests, Markov Chain Monte Carlo (MCMC), and optimization. The focus is on practical implementation and simulation rather than on a deep theoretical development of the methods. 5 ECTS, offered in the summer semester, version 2023s, responsible: Ankerst, Donna.",
     "landscapeId": "3ad4a1d7-576b-44db-a202-0bb5f56883ea",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -19,8 +19,8 @@
             "shortKey": "tum_ma3404_module",
             "title": "Statistical Computing – Gesamtmodul",
             "titleEn": "Statistical Computing – Full Module",
-            "description": "After successful completion of the course, students can simulate random variables in the R statistical package using complex algorithms and graphical checks for correctness. They can use R to effectively visualize real multivariate datasets, as well as develop appropriate statistical inference procedures based on the bootstrap, jackknife and permutation methods. They can perform Bayesian inference using MCMC algorithms to fit posterior distributions. Alternatively, they can solve complex frequentist inference problems using MC methods and perform statistical likelihood maximization using advanced optimization algorithms.",
-            "descriptionEn": "After successful completion of the course, students can simulate random variables in the R statistical package using complex algorithms and graphical checks for correctness. They can use R to effectively visualize real multivariate datasets, as well as develop appropriate statistical inference procedures based on the bootstrap, jackknife and permutation methods. They can perform Bayesian inference using MCMC algorithms to fit posterior distributions. Alternatively, they can solve complex frequentist inference problems using MC methods and perform statistical likelihood maximization using advanced optimization algorithms.",
+            "description": "Nach erfolgreichem Abschluss können Studierende Zufallsvariablen in R mit (auch komplexeren) Algorithmen simulieren und die Korrektheit mit grafischen Checks überprüfen. Sie können multivariate Datensätze in R effektiv visualisieren und auf Basis von Bootstrap-, Jackknife- und Permutationsmethoden geeignete Inferenzverfahren entwickeln. Sie können Bayes’sche Inferenz mit MCMC-Algorithmen durchführen oder frequentistische Inferenzprobleme mit Monte-Carlo-Methoden lösen und Likelihood-Maximierung mit fortgeschrittenen Optimierungsalgorithmen umsetzen.",
+            "descriptionEn": "After successful completion of the course, students can simulate random variables in R using complex algorithms and graphical checks for correctness. They can effectively visualize real multivariate datasets and develop statistical inference procedures based on bootstrap, jackknife, and permutation methods. They can perform Bayesian inference using MCMC algorithms and solve complex frequentist inference problems using Monte Carlo methods. They can also perform statistical likelihood maximization using advanced optimization algorithms.",
             "core": true,
             "weight": 5.0,
             "phase": "Modul",
@@ -30,14 +30,22 @@
                 "workload:150h",
                 "presence:45h",
                 "level:bachelor",
-                "language:de",
+                "language:en",
                 "module:MA3404",
                 "semester:SS",
                 "duration:1_semester",
                 "responsible:ankerst_donna"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "8fefc061-e269-5767-8be2-f1f9cea44ba5",
+                "c5b2e0fa-6d33-520b-998c-871d20aaf852",
+                "36cefef8-b065-5ac9-be11-b0e6104edea6",
+                "cc0e58bd-e0f5-5b5f-a38e-95794298d1aa",
+                "90aa866a-e95c-5c38-91ed-42ee056f8031"
+            ],
+            "requires": [
+                "ef775418-c971-542f-87fe-07bd9c995bb1"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-ma3404",
@@ -49,6 +57,459 @@
                 "topicCode": "tum_ma3404_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA3404&description_version=2023s"
+        },
+        {
+            "id": "8fefc061-e269-5767-8be2-f1f9cea44ba5",
+            "shortKey": "tum_ma3404_lo1",
+            "title": "Simulation und Zufallsvariablen in R",
+            "titleEn": "Simulation and Random Variables in R",
+            "description": "Zusammenfassender Cluster: Erzeugung von Zufallsvariablen mit algorithmischen Verfahren und Validierung der Simulation in R.",
+            "descriptionEn": "Summary cluster: generating random variables using algorithmic methods and validating simulations in R.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Simulation",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [
+                "45e4c870-7800-5c05-8bde-617f917023eb",
+                "9a1a024e-18e3-5933-b164-ac67a492e6a3"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Simulation",
+                "topicCode": "tum_ma3404_lo1"
+            }
+        },
+        {
+            "id": "45e4c870-7800-5c05-8bde-617f917023eb",
+            "shortKey": "tum_ma3404_lo1_1",
+            "title": "Zufallsvariablen mit komplexeren Algorithmen simulieren",
+            "titleEn": "Simulate Random Variables Using Advanced Algorithms",
+            "description": "Die lernende Person kann Zufallsvariablen in R mit Verfahren wie Inversionsmethode, Akzeptanz-Zurückweisung oder Komposition simulieren und die resultierenden Stichproben fachlich einordnen.",
+            "descriptionEn": "The learner can simulate random variables in R using methods such as inverse transform, acceptance–rejection, or composition and place the resulting samples in context.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Simulation",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Simulation",
+                "topicCode": "tum_ma3404_lo1_1"
+            }
+        },
+        {
+            "id": "9a1a024e-18e3-5933-b164-ac67a492e6a3",
+            "shortKey": "tum_ma3404_lo1_2",
+            "title": "Simulationen mit grafischen Checks prüfen und debuggen",
+            "titleEn": "Validate and Debug Simulations Using Graphical Checks",
+            "description": "Die lernende Person kann Simulationen mit grafischen Checks (Histogramme, QQ-Plots, Streudiagramme) und einfachen Diagnosen validieren und typische Implementationsfehler systematisch identifizieren.",
+            "descriptionEn": "The learner can validate simulations using graphical checks (histograms, QQ plots, scatter plots) and basic diagnostics and systematically identify typical implementation errors.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Simulation",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [],
+            "requires": [
+                "45e4c870-7800-5c05-8bde-617f917023eb"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Simulation",
+                "topicCode": "tum_ma3404_lo1_2"
+            }
+        },
+        {
+            "id": "c5b2e0fa-6d33-520b-998c-871d20aaf852",
+            "shortKey": "tum_ma3404_lo2",
+            "title": "Visualisierung multivariater Daten",
+            "titleEn": "Visualization of Multivariate Data",
+            "description": "Zusammenfassender Cluster: Effektive Visualisierung multivariater Datensätze in R und Interpretation von Mustern, Ausreißern und Zusammenhängen.",
+            "descriptionEn": "Summary cluster: effective visualization of multivariate datasets in R and interpretation of patterns, outliers, and relationships.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Visualisierung",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [
+                "2a3326cf-9d8d-5412-b768-12a34c75de11",
+                "153eaf1d-aebf-585c-846e-34103dd37a90"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Visualisierung",
+                "topicCode": "tum_ma3404_lo2"
+            }
+        },
+        {
+            "id": "2a3326cf-9d8d-5412-b768-12a34c75de11",
+            "shortKey": "tum_ma3404_lo2_1",
+            "title": "Multivariate Daten in R visualisieren",
+            "titleEn": "Visualize Multivariate Data in R",
+            "description": "Die lernende Person kann multivariate Datensätze in R visualisieren (z.B. Pairplots, Heatmaps, Dimension-Reduktionsplots) und geeignete Darstellungen für eine Fragestellung auswählen.",
+            "descriptionEn": "The learner can visualize multivariate datasets in R (e.g., pair plots, heatmaps, dimension-reduction plots) and choose appropriate displays for a given question.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Visualisierung",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [],
+            "requires": [
+                "45e4c870-7800-5c05-8bde-617f917023eb"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Visualisierung",
+                "topicCode": "tum_ma3404_lo2_1"
+            }
+        },
+        {
+            "id": "153eaf1d-aebf-585c-846e-34103dd37a90",
+            "shortKey": "tum_ma3404_lo2_2",
+            "title": "Visualisierungen interpretieren und kommunizieren",
+            "titleEn": "Interpret and Communicate Visualizations",
+            "description": "Die lernende Person kann aus Visualisierungen plausible Hypothesen zu Zusammenhängen ableiten, Ausreißer/Cluster identifizieren und Ergebnisse verständlich kommunizieren.",
+            "descriptionEn": "The learner can derive plausible hypotheses about relationships from visualizations, identify outliers/clusters, and communicate results clearly.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Visualisierung",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [],
+            "requires": [
+                "2a3326cf-9d8d-5412-b768-12a34c75de11"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Visualisierung",
+                "topicCode": "tum_ma3404_lo2_2"
+            }
+        },
+        {
+            "id": "36cefef8-b065-5ac9-be11-b0e6104edea6",
+            "shortKey": "tum_ma3404_lo3",
+            "title": "Monte-Carlo-Methoden und Inferenz",
+            "titleEn": "Monte Carlo Methods and Inference",
+            "description": "Zusammenfassender Cluster: Monte-Carlo-Integration, Varianzschätzung und MC-basierte frequentistische Inferenz in R.",
+            "descriptionEn": "Summary cluster: Monte Carlo integration, variance estimation, and MC-based frequentist inference in R.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Monte Carlo",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [
+                "ee142f6d-1acc-56e5-96ee-18be5f9411bb",
+                "0fa83418-bb45-5567-b40b-595399907e6d"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Monte Carlo",
+                "topicCode": "tum_ma3404_lo3"
+            }
+        },
+        {
+            "id": "ee142f6d-1acc-56e5-96ee-18be5f9411bb",
+            "shortKey": "tum_ma3404_lo3_1",
+            "title": "Monte-Carlo-Integration implementieren und Fehler abschätzen",
+            "titleEn": "Implement Monte Carlo Integration and Estimate Error",
+            "description": "Die lernende Person kann Monte-Carlo-Integration implementieren, Varianz und Standardfehler schätzen und Konfidenzintervalle für MC-Schätzer in R berechnen.",
+            "descriptionEn": "The learner can implement Monte Carlo integration, estimate variance and standard error, and compute confidence intervals for MC estimators in R.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Monte Carlo",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [],
+            "requires": [
+                "9a1a024e-18e3-5933-b164-ac67a492e6a3"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Monte Carlo",
+                "topicCode": "tum_ma3404_lo3_1"
+            }
+        },
+        {
+            "id": "0fa83418-bb45-5567-b40b-595399907e6d",
+            "shortKey": "tum_ma3404_lo3_2",
+            "title": "Monte-Carlo-Simulation für frequentistische Inferenz einsetzen",
+            "titleEn": "Use Monte Carlo Simulation for Frequentist Inference",
+            "description": "Die lernende Person kann Monte-Carlo-Simulationen verwenden, um Stichprobenverteilungen zu approximieren, p-Werte/Intervalle abzuleiten und die Ergebnisse fachlich zu interpretieren.",
+            "descriptionEn": "The learner can use Monte Carlo simulations to approximate sampling distributions, derive p-values/intervals, and interpret results in context.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Monte Carlo",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [],
+            "requires": [
+                "ee142f6d-1acc-56e5-96ee-18be5f9411bb"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Monte Carlo",
+                "topicCode": "tum_ma3404_lo3_2"
+            }
+        },
+        {
+            "id": "cc0e58bd-e0f5-5b5f-a38e-95794298d1aa",
+            "shortKey": "tum_ma3404_lo4",
+            "title": "Resampling: Bootstrap, Jackknife, Permutationstests",
+            "titleEn": "Resampling: Bootstrap, Jackknife, Permutation Tests",
+            "description": "Zusammenfassender Cluster: Resampling-basierte Inferenzverfahren (Bootstrap, Jackknife, Permutationstests) und deren Anwendung in R.",
+            "descriptionEn": "Summary cluster: resampling-based inference (bootstrap, jackknife, permutation tests) and their application in R.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Resampling",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [
+                "65901581-e472-5669-b1ce-e1787d043330",
+                "0763e189-a185-5927-8ece-221d511336a6"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Resampling",
+                "topicCode": "tum_ma3404_lo4"
+            }
+        },
+        {
+            "id": "65901581-e472-5669-b1ce-e1787d043330",
+            "shortKey": "tum_ma3404_lo4_1",
+            "title": "Bootstrap- und Jackknife-Verfahren implementieren",
+            "titleEn": "Implement Bootstrap and Jackknife Methods",
+            "description": "Die lernende Person kann Bootstrap- und Jackknife-Verfahren implementieren, Standardfehler/Intervalle schätzen und geeignete Resampling-Schemata problemabhängig wählen.",
+            "descriptionEn": "The learner can implement bootstrap and jackknife methods, estimate standard errors/intervals, and choose appropriate resampling schemes for a given problem.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Resampling",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [],
+            "requires": [
+                "0fa83418-bb45-5567-b40b-595399907e6d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Resampling",
+                "topicCode": "tum_ma3404_lo4_1"
+            }
+        },
+        {
+            "id": "0763e189-a185-5927-8ece-221d511336a6",
+            "shortKey": "tum_ma3404_lo4_2",
+            "title": "Permutationstests durchführen und Ergebnisse interpretieren",
+            "titleEn": "Run Permutation Tests and Interpret Results",
+            "description": "Die lernende Person kann Permutationstests formulieren und in R durchführen, p-Werte interpretieren und die Grenzen der Methode (z.B. Abhängigkeiten, multiple Tests) fachlich diskutieren.",
+            "descriptionEn": "The learner can formulate and run permutation tests in R, interpret p-values, and discuss limitations (e.g., dependencies, multiple testing) in a well-justified way.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Resampling",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [],
+            "requires": [
+                "65901581-e472-5669-b1ce-e1787d043330"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Resampling",
+                "topicCode": "tum_ma3404_lo4_2"
+            }
+        },
+        {
+            "id": "90aa866a-e95c-5c38-91ed-42ee056f8031",
+            "shortKey": "tum_ma3404_lo5",
+            "title": "MCMC und Optimierung in der statistischen Modellierung",
+            "titleEn": "MCMC and Optimization in Statistical Modeling",
+            "description": "Zusammenfassender Cluster: Bayes’sche Inferenz via MCMC sowie Optimierung zur Likelihood-Maximierung in statistischen Modellen.",
+            "descriptionEn": "Summary cluster: Bayesian inference via MCMC and optimization for likelihood maximization in statistical models.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "MCMC & Optimierung",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [
+                "c8a22bcd-0e95-5709-b9fd-764adb969d5b",
+                "b7c126f3-fa36-507a-b484-06c3820d9241"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "MCMC & Optimierung",
+                "topicCode": "tum_ma3404_lo5"
+            }
+        },
+        {
+            "id": "c8a22bcd-0e95-5709-b9fd-764adb969d5b",
+            "shortKey": "tum_ma3404_lo5_1",
+            "title": "Bayes’sche Inferenz mit MCMC durchführen",
+            "titleEn": "Perform Bayesian Inference with MCMC",
+            "description": "Die lernende Person kann grundlegende MCMC-Algorithmen (z.B. Metropolis–Hastings, Gibbs) in R anwenden, Posteriorverteilungen approximieren und Konvergenz/Diagnostik in Grundzügen beurteilen.",
+            "descriptionEn": "The learner can apply basic MCMC algorithms (e.g., Metropolis–Hastings, Gibbs) in R, approximate posterior distributions, and assess convergence/diagnostics at a basic level.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "MCMC & Optimierung",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [],
+            "requires": [
+                "0fa83418-bb45-5567-b40b-595399907e6d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "MCMC & Optimierung",
+                "topicCode": "tum_ma3404_lo5_1"
+            }
+        },
+        {
+            "id": "b7c126f3-fa36-507a-b484-06c3820d9241",
+            "shortKey": "tum_ma3404_lo5_2",
+            "title": "Likelihood-Maximierung mit Optimierungsalgorithmen umsetzen",
+            "titleEn": "Carry Out Likelihood Maximization Using Optimization Algorithms",
+            "description": "Die lernende Person kann Likelihood-Optimierungsprobleme formulieren, fortgeschrittene Optimierungsalgorithmen in R einsetzen und die Qualität der gefundenen Lösungen (Konvergenz, Sensitivität) fachlich bewerten.",
+            "descriptionEn": "The learner can formulate likelihood optimization problems, use advanced optimization algorithms in R, and assess solution quality (convergence, sensitivity) in a well-justified way.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "MCMC & Optimierung",
+            "tags": [
+                "ects:5",
+                "module:MA3404"
+            ],
+            "contains": [],
+            "requires": [
+                "9a1a024e-18e3-5933-b164-ac67a492e6a3"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3404",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "MCMC & Optimierung",
+                "topicCode": "tum_ma3404_lo5_2"
+            }
         }
     ]
 }
