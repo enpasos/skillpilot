@@ -19,6 +19,15 @@ public class LearningGoal {
     private List<String> contains;
     private List<String> examples;
     private String sourceRef;
+    private java.util.Map<String, Object> extendedData;
+
+    public java.util.Map<String, Object> getExtendedData() {
+        return extendedData;
+    }
+
+    public void setExtendedData(java.util.Map<String, Object> extendedData) {
+        this.extendedData = extendedData;
+    }
 
     public String getId() {
         return id;

@@ -152,6 +152,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl }: FlashcardDrillProp
         setTimeout(() => setCurrentCardIndex(prev => prev + 1), 200)
     }
 
+    if (!dataSourceUrl) return <div className="p-8 text-center text-red-500">Configuration Error: Missing Vocabulary Source.</div>
     if (!vocabData) return <div className="p-8 text-center">Loading Data...</div>
 
     if (queue.length === 0 && currentCardIndex === 0) {
