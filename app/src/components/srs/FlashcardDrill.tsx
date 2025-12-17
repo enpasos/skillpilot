@@ -1,13 +1,27 @@
 import { useState, useEffect } from 'react'
 import { CheckCircle, BrainCircuit } from 'lucide-react'
-import vocabData from '../../assets/data/vocab_400.json'
+// import vocabData from '../../assets/data/vocab_400.json' // REMOVED
+
 import { calculateReview, INITIAL_DECK_STATE, type ReviewItem } from './srsLogic'
 
 interface FlashcardDrillProps {
     onComplete: () => void
+    dataSourceUrl?: string
 }
 
-export function FlashcardDrill({ onComplete }: FlashcardDrillProps) {
+interface VocabData {
+    deckId: string
+    title: string
+    cards: Array<{
+        id: string
+        front: string
+        back: string
+        category: string
+    }>
+}
+
+
+export function FlashcardDrill({ onComplete, dataSourceUrl }: FlashcardDrillProps) {
     // Load state from local storage or init
     const getStoredState = (): Record<string, ReviewItem> => {
         try {
@@ -19,7 +33,8 @@ export function FlashcardDrill({ onComplete }: FlashcardDrillProps) {
     }
 
     const [srsState, setSrsState] = useState<Record<string, ReviewItem>>(getStoredState)
-    const [queue, setQueue] = useState<typeof vocabData['cards']>([])
+    const [vocabData, setVocabData] = useState<VocabData | null>(null)
+    const [queue, setQueue] = useState<VocabData['cards']>([])
     const [currentCardIndex, setCurrentCardIndex] = useState(0)
     const [isFlipped, setIsFlipped] = useState(false)
     const [sessionStats, setSessionStats] = useState({ reviewed: 0 })
@@ -33,46 +48,62 @@ export function FlashcardDrill({ onComplete }: FlashcardDrillProps) {
         due: 0
     })
 
-    // Initialize Queue: Find items due for review
+    // Initialize: Fetch Data -> Then Queue
     useEffect(() => {
-        const now = Date.now()
-        const totalCards = vocabData.cards.length
-        let b0 = 0, b1 = 0, b2 = 0, b3 = 0
-        let dueCardsCount = 0
+        if (!dataSourceUrl) return
 
-        const dueCards = vocabData.cards.filter(card => {
-            const state = srsState[card.id]
+        const loadData = async () => {
+            try {
+                const res = await fetch(dataSourceUrl)
+                if (!res.ok) throw new Error("Failed to load vocab")
+                const data: VocabData = await res.json()
+                setVocabData(data)
 
-            // Box Calc
-            if (!state) {
-                b0++
-            } else {
-                if (state.interval < 3) b1++
-                else if (state.interval <= 10) b2++
-                else b3++
+                // Process Queue immediately after load
+                const now = Date.now()
+                const totalCards = data.cards.length
+                let b0 = 0, b1 = 0, b2 = 0, b3 = 0
+                let dueCardsCount = 0
+
+                const dueCards = data.cards.filter(card => {
+                    const state = srsState[card.id] || getStoredState()[card.id] // Fallback to fresh read if needed
+
+                    // Box Calc
+                    if (!state) {
+                        b0++
+                    } else {
+                        if (state.interval < 3) b1++
+                        else if (state.interval <= 10) b2++
+                        else b3++
+                    }
+
+                    // Due Calc
+                    if (!state) return true
+                    if (state.nextReview <= now) {
+                        dueCardsCount++
+                        return true
+                    }
+                    return false
+                })
+
+                setStats({
+                    total: totalCards,
+                    box0: b0,
+                    box1: b1,
+                    box2: b2,
+                    box3: b3,
+                    due: dueCardsCount
+                })
+
+                setQueue(dueCards.slice(0, 20))
+
+            } catch (e) {
+                console.error("Error loading vocab data", e)
             }
+        }
 
-            // Due Calc
-            if (!state) return true // New is always candidate for due
-            if (state.nextReview <= now) {
-                dueCardsCount++
-                return true
-            }
-            return false
-        })
-
-        setStats({
-            total: totalCards,
-            box0: b0,
-            box1: b1,
-            box2: b2,
-            box3: b3,
-            due: dueCardsCount
-        })
-
-        // Limit session to 20 cards to keep it bite-sized
-        setQueue(dueCards.slice(0, 20))
-    }, []) // Run once on mount
+        loadData()
+    }, [dataSourceUrl])
 
     const currentCard = queue[currentCardIndex]
     const isFinished = currentCardIndex >= queue.length
@@ -145,7 +176,7 @@ export function FlashcardDrill({ onComplete }: FlashcardDrillProps) {
                         <span className="font-bold text-green-700 dark:text-green-300">{stats.box3}</span>
                     </div>
                 </div>
-                <p className="text-gray-500 mb-6">No cards due for review right now.</p>
+                <p className="text-gray-500 mb-6">{vocabData?.title || 'Loading...'} - No cards due for review right now.</p>
                 <button onClick={onComplete} className="bg-sky-500 text-white px-6 py-2 rounded-full hover:bg-sky-600">
                     Back to Curriculum
                 </button>
@@ -165,6 +196,8 @@ export function FlashcardDrill({ onComplete }: FlashcardDrillProps) {
             </div>
         )
     }
+
+    if (!currentCard || !vocabData) return <div className="p-8 text-center">Loading Data...</div>
 
     return (
         <div className="flex flex-col items-center w-full max-w-md mx-auto p-4 min-h-[60vh]">

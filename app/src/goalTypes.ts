@@ -24,6 +24,7 @@ export interface UiGoal {
   examples: string[]
   effectiveRequires?: string[]
   inheritedRequires?: string[]
+  extendedData?: Record<string, any>
 }
 
 function demandLevelToNumber(level: string): number {
@@ -70,6 +71,7 @@ export function convertLearningGoal(
     examples: goal.examples ?? [],
     effectiveRequires: goal.requires ?? [],
     inheritedRequires: [],
+    extendedData: goal.extendedData
   }
 }
 

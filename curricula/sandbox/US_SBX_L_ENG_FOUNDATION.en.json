@@ -9,7 +9,7 @@
     "frameworkId": "sandbox-ef",
     "goals": [
         {
-            "id": "ef-root",
+            "id": "66d5b945-3129-4566-a320-006316279f01",
             "title": "English Foundation Overview",
             "titleEn": "English Foundation Overview",
             "description": "Master the basics: 400 words, essential grammar, and your first text.",
@@ -17,16 +17,16 @@
             "core": true,
             "weight": 1,
             "contains": [
-                "ef-vocab-400",
-                "ef-grammar-basic",
-                "ef-reader-day1"
+                "1537240c-255d-4518-a687-0130d70b72f1",
+                "9b422a5e-38c6-4702-8f96-267812264c12",
+                "f8e02660-d636-4740-8bca-722120038827"
             ],
             "tags": [
                 "root"
             ]
         },
         {
-            "id": "ef-vocab-400",
+            "id": "1537240c-255d-4518-a687-0130d70b72f1",
             "title": "Vocabulary: Top 400",
             "titleEn": "Vocabulary: Top 400",
             "description": "Memorize the 400 most frequent words.",
@@ -34,10 +34,13 @@
             "weight": 1,
             "tags": [
                 "srs-deck:eng_400_foundation"
-            ]
+            ],
+            "extendedData": {
+                "vocabularySource": "/data/vocab_400.json"
+            }
         },
         {
-            "id": "ef-grammar-basic",
+            "id": "9b422a5e-38c6-4702-8f96-267812264c12",
             "title": "Grammar: Basics",
             "titleEn": "Grammar: Basics",
             "description": "Sentence structure (S-V-O) and 'to be'.",
@@ -45,15 +48,15 @@
             "weight": 1
         },
         {
-            "id": "ef-reader-day1",
+            "id": "f8e02660-d636-4740-8bca-722120038827",
             "title": "Reader: My First Day",
             "titleEn": "Reader: My First Day",
             "description": "Read a text using only the 400 words.",
             "descriptionEn": "Read a text using only the 400 words.",
             "weight": 1,
             "requires": [
-                "ef-vocab-400",
-                "ef-grammar-basic"
+                "1537240c-255d-4518-a687-0130d70b72f1",
+                "9b422a5e-38c6-4702-8f96-267812264c12"
             ]
         }
     ]
