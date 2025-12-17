@@ -61,6 +61,29 @@ const App: React.FC = () => {
     if (!hasSession) return
     if (isPublicRoute) return // Don't redirect if on public route
 
+    // Deep Link Enforcer for Goal Navigation
+    if (role === 'learner') {
+      const params = new URLSearchParams(location.search)
+      const goalParam = params.get('goal') || params.get('g')
+
+      if (goalParam) {
+        const targetPath = `/learner/${goalParam}`
+        // Check if we are already at the target path (or deeper)
+        if (window.location.pathname.startsWith(targetPath)) {
+          // We successfully reached the goal. Clean up the query param to avoid locking navigation.
+          params.delete('goal')
+          params.delete('g')
+          const newSearch = params.toString()
+          navigate(`${window.location.pathname}${newSearch ? '?' + newSearch : ''}`, { replace: true })
+          return
+        } else {
+          // We are meant to be at the goal but aren't yet. Force redirect.
+          navigate(`${targetPath}${location.search}`, { replace: true })
+          return
+        }
+      }
+    }
+
     const desiredPath =
       role === 'learner' ? '/learner' : role === 'trainer' ? '/trainer' : '/explorer'
     if (!window.location.pathname.startsWith(desiredPath)) {
