@@ -138,16 +138,31 @@ export function FlashcardDrill({ onComplete, dataSourceUrl }: FlashcardDrillProp
 
         setSessionStats(prev => ({ reviewed: prev.reviewed + 1 }))
 
-        // Simple Optimistic Update for UI Feedback (perfect sync happens on next load/effect)
+        // Optimistic Update for UI Feedback
         setStats(prev => {
-            // Decrement due count
             const newDue = Math.max(0, prev.due - 1)
 
-            // Very rough box shift for visual pleasure:
-            // This isn't perfectly accurate without knowing source box, but good enough for feedback.
-            // If quality > 3, we assume progress.
-            // We just update the 'Due' number primarily.
-            return { ...prev, due: newDue }
+            // Calculate Box Movement
+            const isNew = !srsState[currentCard.id]
+
+            const getBox = (interval: number) => {
+                if (interval < 3) return 1
+                if (interval <= 10) return 2
+                return 3
+            }
+
+            const oldBox = isNew ? 0 : getBox(previousState.interval)
+            const newBox = getBox(result.interval)
+
+            // Don't update if box hasn't changed (unlikely for New cards, but possible for others)
+            if (oldBox === newBox) return { ...prev, due: newDue }
+
+            return {
+                ...prev,
+                due: newDue,
+                [`box${oldBox}`]: prev[`box${oldBox}` as keyof typeof prev] - 1,
+                [`box${newBox}`]: prev[`box${newBox}` as keyof typeof prev] + 1
+            }
         })
 
         // Move to next
