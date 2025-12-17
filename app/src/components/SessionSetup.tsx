@@ -271,29 +271,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                   {/* For Learner: No Role Selection Cards needed here anymore, we are already in Learner mode */}
 
                   {/* Secondary Roles Access (Only visible if we explicitly want to switch) */}
-                  <div className="flex justify-center gap-4 mb-4">
-                    {(['trainer', 'explorer'] as const).map((r) => {
-                      const isActive = role === r
-                      const label = t.startPage.login.roles[r]
-                      return (
-                        <button
-                          key={r}
-                          type="button"
-                          onClick={() => {
-                            setRole(r)
-                            setSelectedLandscapeId('')
-                            setHasCheckedId(false)
-                          }}
-                          className={`text-xs px-3 py-1 rounded-full border transition-all duration-300 ${isActive
-                            ? 'bg-sky-100 dark:bg-sky-900 border-sky-300 text-sky-700 dark:text-sky-300'
-                            : 'bg-transparent border-transparent text-text-secondary hover:text-text-primary hover:bg-slate-100 dark:hover:bg-slate-800'
-                            }`}
-                        >
-                          {label}
-                        </button>
-                      )
-                    })}
-                  </div>
+                  {/* Secondary Roles Access removed as per user request */}
                 </div>
 
                 {role === 'learner' && (
