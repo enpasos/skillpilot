@@ -85,7 +85,8 @@ function applyEffectiveRequires(entries: LandscapeEntry[]): LandscapeEntry[] {
 
 export function useLandscapes(landscapeId?: string, language: string = 'de') {
   const [entries, setEntries] = useState<LandscapeEntry[]>([])
-  const [loading, setLoading] = useState(false)
+  // Start loading immediately to prevent "No Data" flash during initial effect cycle
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)
 
   useEffect(() => {

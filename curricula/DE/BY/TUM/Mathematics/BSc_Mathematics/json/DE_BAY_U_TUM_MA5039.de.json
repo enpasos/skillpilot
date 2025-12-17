@@ -1,7 +1,7 @@
 {
     "title": "Fourier- und Laplace-Transformation (TUM, Modul MA5039)",
     "titleEn": "Fourier and Laplace Transforms (TUM, Module MA5039)",
-    "description": "At the end of the module, students are able to understand the interplay between functions and their Fourier transform and can use it to obtain optimized approximation of functions. 9 ECTS, angeboten unregelmäßig, Version 2012w, verantwortet von Lasser, Rupert.",
+    "description": "Nach erfolgreichem Abschluss des Moduls können Studierende das Zusammenspiel zwischen Funktionen und ihrer Fourier-Transformation verstehen und nutzen, um optimierte Approximationen von Funktionen zu erhalten. 9 ECTS, angeboten unregelmäßig, Version 2012w, verantwortet von Lasser, Rupert.",
     "descriptionEn": "At the end of the module, students are able to understand the interplay between functions and their Fourier transform and can use it to obtain optimized approximation of functions. 9 ECTS, offered irregular, version 2012w, responsible: Lasser, Rupert.",
     "landscapeId": "3dfa555b-bce7-4048-8f14-830287caa202",
     "locale": "de-DE",
@@ -19,8 +19,8 @@
             "shortKey": "tum_ma5039_module",
             "title": "Fourier- und Laplace-Transformation – Gesamtmodul",
             "titleEn": "Fourier and Laplace Transforms – Full Module",
-            "description": "At the end of the module, students are able to understand the interplay between functions and their Fourier transform and can use it to obtain optimized approximation of functions.",
-            "descriptionEn": "At the end of the module, students are able to understand the interplay between functions and their Fourier transform and can use it to obtain optimized approximation of functions.",
+            "description": "Zusammenfassender Cluster: Grundlagen und Anwendungen der Fourier- und Laplace-Transformation.",
+            "descriptionEn": "Summary cluster: fundamentals and applications of Fourier and Laplace transforms.",
             "core": true,
             "weight": 9.0,
             "phase": "Modul",
@@ -35,7 +35,11 @@
                 "duration:1_semester",
                 "responsible:lasser_rupert"
             ],
-            "contains": [],
+            "contains": [
+                "0ac690ef-1a1f-4f02-9203-b83c746de06b",
+                "771fd69b-4fd4-42d1-a6ee-86bdff60213b",
+                "955e4065-2743-4e62-87eb-f7b2935207cf"
+            ],
             "requires": [],
             "examples": [],
             "dimensionTags": {
@@ -48,6 +52,92 @@
                 "topicCode": "tum_ma5039_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA5039&description_version=2012w"
+        },
+        {
+            "id": "0ac690ef-1a1f-4f02-9203-b83c746de06b",
+            "shortKey": "tum_ma5039_lo1_1",
+            "title": "Fourier-Transformation definieren und grundlegende Eigenschaften nutzen",
+            "titleEn": "Define the Fourier Transform and Use Basic Properties",
+            "description": "Die lernende Person kann die Fourier-Transformation definieren, grundlegende Eigenschaften (z.B. Linearität, Verschiebung, Skalierung) erläutern und in einfachen Beispielen anwenden.",
+            "descriptionEn": "The learner can define the Fourier transform, explain basic properties (e.g., linearity, shift, scaling), and apply them in simple examples.",
+            "core": true,
+            "weight": 3.0,
+            "phase": "Modul",
+            "area": "Fourier-Transformation",
+            "tags": [
+                "ects:9",
+                "module:MA5039"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma5039",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Fourier-Transformation",
+                "topicCode": "tum_ma5039_lo1_1"
+            }
+        },
+        {
+            "id": "771fd69b-4fd4-42d1-a6ee-86bdff60213b",
+            "shortKey": "tum_ma5039_lo1_2",
+            "title": "Fourier-Transformation zur Approximation von Funktionen einsetzen",
+            "titleEn": "Use the Fourier Transform for Function Approximation",
+            "description": "Die lernende Person kann Fourier-Koeffizienten bzw. Spektren zur Approximation von Funktionen nutzen und die Güte der Approximation in einfachen Situationen begründen.",
+            "descriptionEn": "The learner can use Fourier coefficients or spectra to approximate functions and justify the quality of the approximation in simple settings.",
+            "core": true,
+            "weight": 3.0,
+            "phase": "Modul",
+            "area": "Approximation",
+            "tags": [
+                "ects:9",
+                "module:MA5039"
+            ],
+            "contains": [],
+            "requires": [
+                "0ac690ef-1a1f-4f02-9203-b83c746de06b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma5039",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Approximation",
+                "topicCode": "tum_ma5039_lo1_2"
+            }
+        },
+        {
+            "id": "955e4065-2743-4e62-87eb-f7b2935207cf",
+            "shortKey": "tum_ma5039_lo2_1",
+            "title": "Laplace-Transformation definieren und in Beispielen anwenden",
+            "titleEn": "Define the Laplace Transform and Apply It in Examples",
+            "description": "Die lernende Person kann die Laplace-Transformation als Integraltransform definieren und sie in einfachen Beispielen zur Berechnung oder Vereinfachung von Ausdrücken einsetzen.",
+            "descriptionEn": "The learner can define the Laplace transform as an integral transform and use it in simple examples to compute or simplify expressions.",
+            "core": true,
+            "weight": 3.0,
+            "phase": "Modul",
+            "area": "Laplace-Transformation",
+            "tags": [
+                "ects:9",
+                "module:MA5039"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma5039",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Laplace-Transformation",
+                "topicCode": "tum_ma5039_lo2_1"
+            }
         }
     ]
 }
