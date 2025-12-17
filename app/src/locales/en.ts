@@ -11,16 +11,16 @@ export const en = {
                 description: "Learn interactively with your AI tutor."
             },
             explorer: {
-                title: "Data Explorer",
-                description: "Manage your progress and curricula."
+                title: "My Successes",
+                description: "Track your progress in the cockpit."
             }
         },
         login: {
             back: "Back to Selection",
             roles: {
-                learner: "Learning\nSuccesses",
-                trainer: "Class Management",
-                explorer: "Explore Curriculum"
+                learner: "My Progress",
+                trainer: "Course Management (Teachers)",
+                explorer: "Explore Content (Experts)"
             },
             idLabel: "SkillPilot ID",
             requestNewId: "Request New ID",

@@ -1,8 +1,8 @@
 {
     "title": "Grundlagenpraktikum: Programmierung (TUM, Modul IN0002)",
     "titleEn": "Fundamentals of Programming (Exercises & Laboratory) (TUM, Module IN0002)",
-    "description": "Nach erfolreicher Teilnahme an diesem Modul beherrschen die Studierenden die Programmiersprache Java oder eine ähnliche objekt-orientierte Programmiersprache und das Programmieren im Kleinen. Sie können Programme eigenständig entwickeln und dabei wesentliche Konzepte der Informatik auf einem grundlegenden, praxis-orientierten, aber wissenschaftlichen Niveau anwenden, wie sie im Modul IN0001 gelehrt werden. 6 ECTS, angeboten im Wintersemester, Version 2024s, verantwortet von Seidl, Helmut.",
-    "descriptionEn": "Nach erfolreicher Teilnahme an diesem Modul beherrschen die Studierenden die Programmiersprache Java oder eine ähnliche objekt-orientierte Programmiersprache und das Programmieren im Kleinen. Sie können Programme eigenständig entwickeln und dabei wesentliche Konzepte der Informatik auf einem grundlegenden, praxis-orientierten, aber wissenschaftlichen Niveau anwenden, wie sie im Modul IN0001 gelehrt werden. 6 ECTS, offered in winter semester, version 2024s, responsible: Seidl, Helmut.",
+    "description": "Begleitend zum Modul IN0001 übt das Praktikum die kreative Anwendung zentraler Programmierkonzepte in Java (oder einer ähnlichen objektorientierten Sprache). Im Mittelpunkt stehen praktische Aufgaben zu grundlegenden Datenstrukturen, Rekursion, Objekten/Klassen/Methoden, Listen/Warteschlangen/Bäumen, höheren Konzepten der objektorientierten Programmierung sowie Nebenläufigkeit. Nach erfolgreicher Teilnahme können Studierende Programme eigenständig entwickeln und dabei die in IN0001 vermittelten Konzepte sicher und reflektiert zur Problemlösung einsetzen. 6 ECTS, angeboten im Wintersemester, Version 2024s, verantwortet von Seidl, Helmut.",
+    "descriptionEn": "Accompanying module IN0001, this programming lab trains the creative application of core programming concepts in Java (or a similar object-oriented language). The focus is on hands-on assignments covering basic data structures, recursion, objects/classes/methods, lists/queues/trees, advanced object-oriented programming concepts, and concurrency. After successful completion, students can develop programs independently and apply the concepts taught in IN0001 confidently and thoughtfully to solve problems. 6 ECTS, offered in the winter semester, version 2024s, responsible: Seidl, Helmut.",
     "landscapeId": "4e6fa825-9703-4cec-a6a9-0d91b1608a04",
     "locale": "de-DE",
     "subject": "Informatik",
@@ -19,8 +19,8 @@
             "shortKey": "tum_in0002_module",
             "title": "Grundlagenpraktikum: Programmierung – Gesamtmodul",
             "titleEn": "Fundamentals of Programming (Exercises & Laboratory) – Full Module",
-            "description": "Nach erfolreicher Teilnahme an diesem Modul beherrschen die Studierenden die Programmiersprache Java oder eine ähnliche objekt-orientierte Programmiersprache und das Programmieren im Kleinen. Sie können Programme eigenständig entwickeln und dabei wesentliche Konzepte der Informatik auf einem grundlegenden, praxis-orientierten, aber wissenschaftlichen Niveau anwenden, wie sie im Modul IN0001 gelehrt werden.",
-            "descriptionEn": "Nach erfolreicher Teilnahme an diesem Modul beherrschen die Studierenden die Programmiersprache Java oder eine ähnliche objekt-orientierte Programmiersprache und das Programmieren im Kleinen. Sie können Programme eigenständig entwickeln und dabei wesentliche Konzepte der Informatik auf einem grundlegenden, praxis-orientierten, aber wissenschaftlichen Niveau anwenden, wie sie im Modul IN0001 gelehrt werden.",
+            "description": "Nach erfolgreicher Teilnahme beherrschen Studierende die Programmiersprache Java (oder eine ähnliche objektorientierte Sprache) und das Programmieren im Kleinen. Sie können Programme eigenständig entwickeln und dabei wesentliche Konzepte der Informatik auf einem grundlegenden, praxis-orientierten, aber wissenschaftlichen Niveau anwenden; der gleichzeitige Besuch von IN0001 wird empfohlen.",
+            "descriptionEn": "After successful completion, students master Java (or a similar object-oriented language) and small-scale programming. They can develop programs independently and apply core concepts of computer science at a foundational, practice-oriented yet scientific level; taking IN0001 in parallel is recommended.",
             "core": true,
             "weight": 6.0,
             "phase": "Modul",
@@ -36,7 +36,16 @@
                 "duration:1_semester",
                 "responsible:seidl_helmut"
             ],
-            "contains": [],
+            "contains": [
+                "213ba33a-6933-53e1-8e89-eade69032973",
+                "5662e6a7-3ad9-5909-9ee1-86d5b8fe1e01",
+                "1459f474-41cb-554b-a7c0-37c9b3492596",
+                "22d03294-e14a-516e-aae0-8b4d239bca01",
+                "5a557bee-887e-5379-bff1-9dd5f6191ba0",
+                "0d08d561-6db7-5e4c-bdbf-5d9ed6b913da",
+                "c4f04f8b-f26e-564b-ac90-5756e16d0e44",
+                "f03a4a97-4455-5a5e-a53a-798b8fa32985"
+            ],
             "requires": [],
             "examples": [],
             "dimensionTags": {
@@ -49,6 +58,737 @@
                 "topicCode": "tum_in0002_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=IN0002&description_version=2024s"
+        },
+        {
+            "id": "213ba33a-6933-53e1-8e89-eade69032973",
+            "shortKey": "tum_in0002_lo1",
+            "title": "Praktische Problemlösung und Workflow",
+            "titleEn": "Practical Problem Solving and Workflow",
+            "description": "Zusammenfassender Cluster: Aufgabenstellungen verstehen, Lösungen planen und iterativ umsetzen (Implementierung, Test, Debugging).",
+            "descriptionEn": "Summary cluster: understand assignments, plan solutions, and implement iteratively (implementation, testing, debugging).",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Praktische Arbeit",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [
+                "0a00f721-a4d7-5a6a-9b52-7f59e1164246",
+                "5a11bbfe-f251-57d8-8505-06ee4641d1e8"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Praktische Arbeit",
+                "topicCode": "tum_in0002_lo1"
+            }
+        },
+        {
+            "id": "0a00f721-a4d7-5a6a-9b52-7f59e1164246",
+            "shortKey": "tum_in0002_lo1_1",
+            "title": "Programmieraufgaben analysieren und Lösungen planen",
+            "titleEn": "Analyze Programming Tasks and Plan Solutions",
+            "description": "Die lernende Person kann eine Aufgabenstellung analysieren, Annahmen und Randfälle identifizieren, einen Algorithmus-/Datenstruktur-Plan erstellen und Teilschritte priorisieren.",
+            "descriptionEn": "The learner can analyze an assignment, identify assumptions and edge cases, create an algorithm/data-structure plan, and prioritize implementation steps.",
+            "core": true,
+            "weight": 0.3,
+            "phase": "Modul",
+            "area": "Praktische Arbeit",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Praktische Arbeit",
+                "topicCode": "tum_in0002_lo1_1"
+            }
+        },
+        {
+            "id": "5a11bbfe-f251-57d8-8505-06ee4641d1e8",
+            "shortKey": "tum_in0002_lo1_2",
+            "title": "Programme iterativ implementieren, testen und debuggen",
+            "titleEn": "Implement Iteratively, Test, and Debug",
+            "description": "Die lernende Person kann eine Lösung iterativ implementieren, mit geeigneten Testfällen prüfen, Fehler systematisch debuggen und den Code nachvollziehbar strukturieren.",
+            "descriptionEn": "The learner can implement a solution iteratively, validate it with appropriate test cases, debug systematically, and structure the code to remain understandable.",
+            "core": true,
+            "weight": 0.3,
+            "phase": "Modul",
+            "area": "Praktische Arbeit",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "0a00f721-a4d7-5a6a-9b52-7f59e1164246"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Praktische Arbeit",
+                "topicCode": "tum_in0002_lo1_2"
+            }
+        },
+        {
+            "id": "5662e6a7-3ad9-5909-9ee1-86d5b8fe1e01",
+            "shortKey": "tum_in0002_lo2",
+            "title": "Grundlegende Datenstrukturen",
+            "titleEn": "Basic Data Structures",
+            "description": "Zusammenfassender Cluster: Mit Zahlen, Strings und Arrays arbeiten und diese kreativ zur Problemlösung einsetzen.",
+            "descriptionEn": "Summary cluster: work with numbers, strings, and arrays and use them creatively for problem solving.",
+            "core": true,
+            "weight": 0.8,
+            "phase": "Modul",
+            "area": "Datenstrukturen",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [
+                "a97e4c10-8dc4-5b14-8126-cf3f6fcbe8c9",
+                "7ed436ed-5070-5b6d-9389-c4bfe72cf639"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Datenstrukturen",
+                "topicCode": "tum_in0002_lo2"
+            }
+        },
+        {
+            "id": "a97e4c10-8dc4-5b14-8126-cf3f6fcbe8c9",
+            "shortKey": "tum_in0002_lo2_1",
+            "title": "Zahlen, Strings und Arrays sicher einsetzen",
+            "titleEn": "Use Numbers, Strings, and Arrays Safely",
+            "description": "Die lernende Person kann in Java mit Zahlen, Strings und Arrays arbeiten, typische Fehler (z.B. Index- und Nullpointerfehler) vermeiden und passende Repräsentationen auswählen.",
+            "descriptionEn": "The learner can work with numbers, strings, and arrays in Java, avoid typical errors (e.g., index and null-pointer issues), and choose appropriate representations.",
+            "core": true,
+            "weight": 0.4,
+            "phase": "Modul",
+            "area": "Datenstrukturen",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "0a00f721-a4d7-5a6a-9b52-7f59e1164246"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Datenstrukturen",
+                "topicCode": "tum_in0002_lo2_1"
+            }
+        },
+        {
+            "id": "7ed436ed-5070-5b6d-9389-c4bfe72cf639",
+            "shortKey": "tum_in0002_lo2_2",
+            "title": "Einfache Datenstrukturen kreativ zur Problemlösung nutzen",
+            "titleEn": "Use Simple Data Structures Creatively for Problem Solving",
+            "description": "Die lernende Person kann einfache Datenstrukturen (z.B. Arrays) gezielt zur Problemlösung einsetzen, Ein-/Ausgaben verarbeiten und Lösungen anhand von Tests verbessern.",
+            "descriptionEn": "The learner can use simple data structures (e.g., arrays) purposefully for problem solving, process input/output, and improve solutions based on tests.",
+            "core": true,
+            "weight": 0.4,
+            "phase": "Modul",
+            "area": "Datenstrukturen",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "a97e4c10-8dc4-5b14-8126-cf3f6fcbe8c9",
+                "5a11bbfe-f251-57d8-8505-06ee4641d1e8"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Datenstrukturen",
+                "topicCode": "tum_in0002_lo2_2"
+            }
+        },
+        {
+            "id": "1459f474-41cb-554b-a7c0-37c9b3492596",
+            "shortKey": "tum_in0002_lo3",
+            "title": "Rekursion in Übungsaufgaben",
+            "titleEn": "Recursion in Programming Exercises",
+            "description": "Zusammenfassender Cluster: Rekursion zur Problemlösung einsetzen und rekursive Lösungswege sicher umsetzen.",
+            "descriptionEn": "Summary cluster: use recursion for problem solving and implement recursive approaches reliably.",
+            "core": true,
+            "weight": 0.7,
+            "phase": "Modul",
+            "area": "Rekursion",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [
+                "0b23298a-864f-5909-a2be-7c03c8a703b6",
+                "7834b94c-7113-52f9-92ef-b0145f147a4f"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Rekursion",
+                "topicCode": "tum_in0002_lo3"
+            }
+        },
+        {
+            "id": "0b23298a-864f-5909-a2be-7c03c8a703b6",
+            "shortKey": "tum_in0002_lo3_1",
+            "title": "Rekursive Lösungen implementieren und Termination sicherstellen",
+            "titleEn": "Implement Recursive Solutions and Ensure Termination",
+            "description": "Die lernende Person kann rekursive Lösungen implementieren, geeignete Basisfälle formulieren und Terminierung sowie Korrektheit an Beispielen überprüfen.",
+            "descriptionEn": "The learner can implement recursive solutions, define appropriate base cases, and check termination and correctness on examples.",
+            "core": true,
+            "weight": 0.35,
+            "phase": "Modul",
+            "area": "Rekursion",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "a97e4c10-8dc4-5b14-8126-cf3f6fcbe8c9"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Rekursion",
+                "topicCode": "tum_in0002_lo3_1"
+            }
+        },
+        {
+            "id": "7834b94c-7113-52f9-92ef-b0145f147a4f",
+            "shortKey": "tum_in0002_lo3_2",
+            "title": "Binäre Suche und rekursive Muster anwenden",
+            "titleEn": "Apply Binary Search and Recursive Patterns",
+            "description": "Die lernende Person kann binäre Suche (iterativ oder rekursiv) implementieren und rekursive Muster (z.B. Divide-and-Conquer) in Aufgabenstellungen erkennen und anwenden.",
+            "descriptionEn": "The learner can implement binary search (iteratively or recursively) and recognize and apply recursive patterns (e.g., divide and conquer) in assignments.",
+            "core": true,
+            "weight": 0.35,
+            "phase": "Modul",
+            "area": "Rekursion",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "0b23298a-864f-5909-a2be-7c03c8a703b6"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Rekursion",
+                "topicCode": "tum_in0002_lo3_2"
+            }
+        },
+        {
+            "id": "22d03294-e14a-516e-aae0-8b4d239bca01",
+            "shortKey": "tum_in0002_lo4",
+            "title": "Objekte, Klassen und Methoden",
+            "titleEn": "Objects, Classes, and Methods",
+            "description": "Zusammenfassender Cluster: Objektorientierte Grundbausteine implementieren und Methoden so gestalten, dass sie wiederverwendbar und testbar sind.",
+            "descriptionEn": "Summary cluster: implement object-oriented building blocks and design methods to be reusable and testable.",
+            "core": true,
+            "weight": 0.8,
+            "phase": "Modul",
+            "area": "Objektorientierung",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [
+                "affdb1e1-e06a-5cca-9367-78ca20d04446",
+                "989a422d-bd2c-54f6-87de-837c804ecae7"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Objektorientierung",
+                "topicCode": "tum_in0002_lo4"
+            }
+        },
+        {
+            "id": "affdb1e1-e06a-5cca-9367-78ca20d04446",
+            "shortKey": "tum_in0002_lo4_1",
+            "title": "Klassen und Methoden entwerfen und implementieren",
+            "titleEn": "Design and Implement Classes and Methods",
+            "description": "Die lernende Person kann Klassen mit sinnvollen Attributen/Methoden modellieren, Objekte erzeugen und Methoden so implementieren, dass sie in Aufgaben zuverlässig funktionieren.",
+            "descriptionEn": "The learner can model classes with meaningful fields and methods, create objects, and implement methods so they work reliably in assignments.",
+            "core": true,
+            "weight": 0.4,
+            "phase": "Modul",
+            "area": "Objektorientierung",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "a97e4c10-8dc4-5b14-8126-cf3f6fcbe8c9"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Objektorientierung",
+                "topicCode": "tum_in0002_lo4_1"
+            }
+        },
+        {
+            "id": "989a422d-bd2c-54f6-87de-837c804ecae7",
+            "shortKey": "tum_in0002_lo4_2",
+            "title": "Kapselung und einfache Schnittstellen gestalten",
+            "titleEn": "Implement Encapsulation and Simple APIs",
+            "description": "Die lernende Person kann Kapselung umsetzen, Zustandsänderungen kontrollieren und einfache Schnittstellen/APIs so entwerfen, dass sie verständlich und testbar sind.",
+            "descriptionEn": "The learner can implement encapsulation, control state changes, and design simple APIs that are understandable and testable.",
+            "core": true,
+            "weight": 0.4,
+            "phase": "Modul",
+            "area": "Objektorientierung",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "affdb1e1-e06a-5cca-9367-78ca20d04446"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Objektorientierung",
+                "topicCode": "tum_in0002_lo4_2"
+            }
+        },
+        {
+            "id": "5a557bee-887e-5379-bff1-9dd5f6191ba0",
+            "shortKey": "tum_in0002_lo5",
+            "title": "Listen, Warteschlangen und Bäume",
+            "titleEn": "Lists, Queues, and Trees",
+            "description": "Zusammenfassender Cluster: Lineare Datenstrukturen und Bäume implementieren und zur Problemlösung nutzen.",
+            "descriptionEn": "Summary cluster: implement linear data structures and trees and use them to solve problems.",
+            "core": true,
+            "weight": 0.8,
+            "phase": "Modul",
+            "area": "Datenstrukturen",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [
+                "9983d701-cba4-524b-8aec-78aefca7f368",
+                "a3f43633-226e-5e5a-a634-bea9003e9435"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Datenstrukturen",
+                "topicCode": "tum_in0002_lo5"
+            }
+        },
+        {
+            "id": "9983d701-cba4-524b-8aec-78aefca7f368",
+            "shortKey": "tum_in0002_lo5_1",
+            "title": "Listen, Stacks und Queues implementieren und verwenden",
+            "titleEn": "Implement and Use Lists, Stacks, and Queues",
+            "description": "Die lernende Person kann Listen, Stacks und Queues implementieren oder zielgerichtet nutzen (z.B. für Traversierung, Pufferung, Aufgabenverwaltung) und das Verhalten an Tests überprüfen.",
+            "descriptionEn": "The learner can implement or purposefully use lists, stacks, and queues (e.g., for traversal, buffering, task handling) and validate behavior with tests.",
+            "core": true,
+            "weight": 0.4,
+            "phase": "Modul",
+            "area": "Datenstrukturen",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "affdb1e1-e06a-5cca-9367-78ca20d04446"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Datenstrukturen",
+                "topicCode": "tum_in0002_lo5_1"
+            }
+        },
+        {
+            "id": "a3f43633-226e-5e5a-a634-bea9003e9435",
+            "shortKey": "tum_in0002_lo5_2",
+            "title": "Bäume modellieren und grundlegende Operationen implementieren",
+            "titleEn": "Model Trees and Implement Basic Operations",
+            "description": "Die lernende Person kann Bäume als Datenstruktur modellieren und grundlegende Operationen (z.B. Einfügen, Suchen, Traversieren) implementieren und testen.",
+            "descriptionEn": "The learner can model trees as a data structure and implement and test basic operations (e.g., insert, search, traverse).",
+            "core": true,
+            "weight": 0.4,
+            "phase": "Modul",
+            "area": "Datenstrukturen",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "9983d701-cba4-524b-8aec-78aefca7f368",
+                "0b23298a-864f-5909-a2be-7c03c8a703b6"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Datenstrukturen",
+                "topicCode": "tum_in0002_lo5_2"
+            }
+        },
+        {
+            "id": "0d08d561-6db7-5e4c-bdbf-5d9ed6b913da",
+            "shortKey": "tum_in0002_lo6",
+            "title": "Höhere Konzepte der objektorientierten Programmierung",
+            "titleEn": "Advanced Object-Oriented Programming Concepts",
+            "description": "Zusammenfassender Cluster: Vererbung, Interfaces und Polymorphie praktisch anwenden und Code refaktorieren.",
+            "descriptionEn": "Summary cluster: apply inheritance, interfaces, and polymorphism in practice and refactor code.",
+            "core": true,
+            "weight": 0.7,
+            "phase": "Modul",
+            "area": "Objektorientierung",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [
+                "32792732-cb59-59ff-b659-75f7fd702fbc",
+                "cda12b74-e91a-5b28-9b07-6f4a16289c1d"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Objektorientierung",
+                "topicCode": "tum_in0002_lo6"
+            }
+        },
+        {
+            "id": "32792732-cb59-59ff-b659-75f7fd702fbc",
+            "shortKey": "tum_in0002_lo6_1",
+            "title": "Vererbung, abstrakte Klassen und Interfaces einsetzen",
+            "titleEn": "Use Inheritance, Abstract Classes, and Interfaces",
+            "description": "Die lernende Person kann Vererbung, abstrakte Klassen und Interfaces einsetzen, um gemeinsame Funktionalität zu strukturieren und Implementierungen austauschbar zu machen.",
+            "descriptionEn": "The learner can use inheritance, abstract classes, and interfaces to structure shared functionality and make implementations interchangeable.",
+            "core": true,
+            "weight": 0.35,
+            "phase": "Modul",
+            "area": "Objektorientierung",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "989a422d-bd2c-54f6-87de-837c804ecae7"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Objektorientierung",
+                "topicCode": "tum_in0002_lo6_1"
+            }
+        },
+        {
+            "id": "cda12b74-e91a-5b28-9b07-6f4a16289c1d",
+            "shortKey": "tum_in0002_lo6_2",
+            "title": "Polymorphie nutzen und Code refaktorieren",
+            "titleEn": "Use Polymorphism and Refactor Code",
+            "description": "Die lernende Person kann Polymorphie nutzen, um Code zu vereinfachen, und bestehende Lösungen refaktorieren, ohne das beobachtbare Verhalten zu verändern (z.B. durch passende Tests abgesichert).",
+            "descriptionEn": "The learner can use polymorphism to simplify code and refactor existing solutions without changing observable behavior (e.g., safeguarded by suitable tests).",
+            "core": true,
+            "weight": 0.35,
+            "phase": "Modul",
+            "area": "Objektorientierung",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "32792732-cb59-59ff-b659-75f7fd702fbc"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Objektorientierung",
+                "topicCode": "tum_in0002_lo6_2"
+            }
+        },
+        {
+            "id": "c4f04f8b-f26e-564b-ac90-5756e16d0e44",
+            "shortKey": "tum_in0002_lo7",
+            "title": "Nebenläufige Programmierung",
+            "titleEn": "Concurrent Programming",
+            "description": "Zusammenfassender Cluster: Nebenläufigkeit in Java üben, Threads einsetzen und einfache Synchronisationsideen verstehen.",
+            "descriptionEn": "Summary cluster: practice concurrency in Java, use threads, and understand basic synchronization ideas.",
+            "core": true,
+            "weight": 0.8,
+            "phase": "Modul",
+            "area": "Nebenläufigkeit",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [
+                "790e20e1-4a34-5928-8ec7-92c988d7c587",
+                "fed5b260-4194-59c1-b843-9e65b394f8c1"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Nebenläufigkeit",
+                "topicCode": "tum_in0002_lo7"
+            }
+        },
+        {
+            "id": "790e20e1-4a34-5928-8ec7-92c988d7c587",
+            "shortKey": "tum_in0002_lo7_1",
+            "title": "Threads verwenden und einfache nebenläufige Programme schreiben",
+            "titleEn": "Use Threads and Write Simple Concurrent Programs",
+            "description": "Die lernende Person kann Threads in Java verwenden, Aufgaben nebenläufig ausführen und das Verhalten (z.B. Interleavings) anhand von Beobachtungen und Tests nachvollziehen.",
+            "descriptionEn": "The learner can use threads in Java, execute tasks concurrently, and understand behavior (e.g., interleavings) using observations and tests.",
+            "core": true,
+            "weight": 0.4,
+            "phase": "Modul",
+            "area": "Nebenläufigkeit",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "5a11bbfe-f251-57d8-8505-06ee4641d1e8",
+                "32792732-cb59-59ff-b659-75f7fd702fbc"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Nebenläufigkeit",
+                "topicCode": "tum_in0002_lo7_1"
+            }
+        },
+        {
+            "id": "fed5b260-4194-59c1-b843-9e65b394f8c1",
+            "shortKey": "tum_in0002_lo7_2",
+            "title": "Synchronisation und Thread-Sicherheit berücksichtigen",
+            "titleEn": "Account for Synchronization and Thread Safety",
+            "description": "Die lernende Person kann typische Nebenläufigkeitsprobleme (z.B. Race Conditions) erkennen, einfache Synchronisationsmechanismen einsetzen und Thread-Sicherheit in Beispielen herstellen.",
+            "descriptionEn": "The learner can identify typical concurrency issues (e.g., race conditions), use simple synchronization mechanisms, and ensure thread safety in example programs.",
+            "core": true,
+            "weight": 0.4,
+            "phase": "Modul",
+            "area": "Nebenläufigkeit",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "790e20e1-4a34-5928-8ec7-92c988d7c587"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Nebenläufigkeit",
+                "topicCode": "tum_in0002_lo7_2"
+            }
+        },
+        {
+            "id": "f03a4a97-4455-5a5e-a53a-798b8fa32985",
+            "shortKey": "tum_in0002_lo8",
+            "title": "Integrierte Übungsaufgaben",
+            "titleEn": "Integrated Assignments",
+            "description": "Zusammenfassender Cluster: Mehrere Konzepte in größeren Übungsaufgaben kombinieren sowie Ergebnisse dokumentieren und kommunizieren.",
+            "descriptionEn": "Summary cluster: combine multiple concepts in larger assignments and document and communicate results.",
+            "core": true,
+            "weight": 0.8,
+            "phase": "Modul",
+            "area": "Integration",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [
+                "10d72e48-1e9b-5496-a57e-fcef45969aff",
+                "37e746a8-b318-5cf7-8755-70f63bb4d639"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Integration",
+                "topicCode": "tum_in0002_lo8"
+            }
+        },
+        {
+            "id": "10d72e48-1e9b-5496-a57e-fcef45969aff",
+            "shortKey": "tum_in0002_lo8_1",
+            "title": "Mehrere Konzepte kombinieren und Lösungen begründen",
+            "titleEn": "Combine Multiple Concepts and Justify Solutions",
+            "description": "Die lernende Person kann in Übungsaufgaben mehrere Konzepte (Datenstrukturen, Rekursion, OOP, Nebenläufigkeit) kombinieren, Designentscheidungen begründen und Lösungen gegen Randfälle absichern.",
+            "descriptionEn": "The learner can combine multiple concepts (data structures, recursion, OOP, concurrency) in assignments, justify design decisions, and guard solutions against edge cases.",
+            "core": true,
+            "weight": 0.4,
+            "phase": "Modul",
+            "area": "Integration",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "a3f43633-226e-5e5a-a634-bea9003e9435",
+                "cda12b74-e91a-5b28-9b07-6f4a16289c1d",
+                "790e20e1-4a34-5928-8ec7-92c988d7c587"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Integration",
+                "topicCode": "tum_in0002_lo8_1"
+            }
+        },
+        {
+            "id": "37e746a8-b318-5cf7-8755-70f63bb4d639",
+            "shortKey": "tum_in0002_lo8_2",
+            "title": "Ergebnisse dokumentieren und verständlich kommunizieren",
+            "titleEn": "Document Results and Communicate Clearly",
+            "description": "Die lernende Person kann Lösungen verständlich dokumentieren (z.B. kurze Erklärtexte, Kommentare, README) und Entscheidungen sowie Ergebnisse klar kommunizieren.",
+            "descriptionEn": "The learner can document solutions clearly (e.g., short explanations, comments, README) and communicate decisions and results effectively.",
+            "core": true,
+            "weight": 0.4,
+            "phase": "Modul",
+            "area": "Integration",
+            "tags": [
+                "ects:6",
+                "module:IN0002"
+            ],
+            "contains": [],
+            "requires": [
+                "10d72e48-1e9b-5496-a57e-fcef45969aff"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-in0002",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Integration",
+                "topicCode": "tum_in0002_lo8_2"
+            }
         }
     ]
 }

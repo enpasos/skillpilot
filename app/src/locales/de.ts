@@ -11,16 +11,16 @@ export const de = {
                 description: "Lerne interaktiv mit deinem KI-Tutor."
             },
             explorer: {
-                title: "Daten erforschen",
-                description: "Verwalte deine Lernfortschritte und Curricula."
+                title: "Meine Erfolge",
+                description: "Verfolge deinen Fortschritt im Cockpit."
             }
         },
         login: {
             back: "Zurück zur Auswahl",
             roles: {
                 learner: "Lernerfolge",
-                trainer: "Kurs-\norganisation",
-                explorer: "Inhalte erkunden"
+                trainer: "Kursorganisation (Lehrer)",
+                explorer: "Inhalte erkunden (Experten)"
             },
             idLabel: "SkillPilot-ID",
             requestNewId: "Neue ID anfordern",

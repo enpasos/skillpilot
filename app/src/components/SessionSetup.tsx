@@ -10,7 +10,7 @@ type Role = 'learner' | 'trainer' | 'explorer'
 
 interface SessionSetupProps {
   role: Role | null
-  setRole: (r: Role) => void
+  setRole: (r: Role | null) => void
   skillpilotId: string
   setSkillpilotId: (id: string) => void
   onStart: (id: string, landscapeId?: string) => void
@@ -170,7 +170,48 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         <div className="w-full space-y-4">
           {!showLogin ? (
             <div className="grid grid-cols-1 gap-4 w-full animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
-              {/* Card 1: Whitepaper */}
+              {/* Card 1: GPT */}
+              <a href="https://chatgpt.com/g/g-693ebdcb2fac8191b3a765ce7f451fb2-skillpilot-gpt" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-6 hover:shadow-lg hover:border-sky-400/50 transition-all duration-300">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                      {t.startPage.cards.gpt.title}
+                    </h3>
+                    <p className="text-sm text-text-secondary mt-1">
+                      {t.startPage.cards.gpt.description}
+                    </p>
+                  </div>
+                  <ArrowRight className="text-text-secondary group-hover:translate-x-1 group-hover:text-sky-500 transition-all" />
+                </div>
+              </a>
+
+              {/* Card 2: My Successes (Direct Learner Login) */}
+              <button
+                onClick={() => {
+                  setRole('learner')
+                  const id = localStorage.getItem('skillpilot_id')
+                  if (id) {
+                    setSkillpilotId(id)
+                    checkLearner(id)
+                  }
+                  setShowLogin(true)
+                }}
+                className="group w-full relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-6 hover:shadow-lg hover:border-sky-400/50 transition-all duration-300 text-left"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                      {t.startPage.cards.explorer.title}
+                    </h3>
+                    <p className="text-sm text-text-secondary mt-1">
+                      {t.startPage.cards.explorer.description}
+                    </p>
+                  </div>
+                  <ArrowRight className="text-text-secondary group-hover:translate-x-1 group-hover:text-sky-500 transition-all" />
+                </div>
+              </button>
+
+              {/* Card 3: Whitepaper */}
               <a
                 href={language === 'de'
                   ? 'https://enpasos.github.io/skillpilot/whitepaper/whitepaper.de.html'
@@ -192,38 +233,23 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                 </div>
               </a>
 
-              {/* Card 2: GPT */}
-              <a href="https://chatgpt.com/g/g-693ebdcb2fac8191b3a765ce7f451fb2-skillpilot-gpt" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-6 hover:shadow-lg hover:border-sky-400/50 transition-all duration-300">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-lg font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
-                      {t.startPage.cards.gpt.title}
-                    </h3>
-                    <p className="text-sm text-text-secondary mt-1">
-                      {t.startPage.cards.gpt.description}
-                    </p>
-                  </div>
-                  <ArrowRight className="text-text-secondary group-hover:translate-x-1 group-hover:text-sky-500 transition-all" />
-                </div>
-              </a>
-
-              {/* Card 3: Data Explorer (Login Trigger) */}
-              <button
-                onClick={() => setShowLogin(true)}
-                className="group w-full relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-6 hover:shadow-lg hover:border-sky-400/50 transition-all duration-300 text-left"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-lg font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
-                      {t.startPage.cards.explorer.title}
-                    </h3>
-                    <p className="text-sm text-text-secondary mt-1">
-                      {t.startPage.cards.explorer.description}
-                    </p>
-                  </div>
-                  <ArrowRight className="text-text-secondary group-hover:translate-x-1 group-hover:text-sky-500 transition-all" />
-                </div>
-              </button>
+              {/* Direct Access Links for Trainer/Explorer */}
+              <div className="flex justify-center gap-6 pt-4 text-xs text-text-secondary">
+                {(['trainer', 'explorer'] as const).map((r) => (
+                  <button
+                    key={r}
+                    onClick={() => {
+                      setRole(r)
+                      setSelectedLandscapeId('')
+                      setHasCheckedId(false)
+                      setShowLogin(true)
+                    }}
+                    className="hover:text-sky-500 hover:underline transition-colors"
+                  >
+                    {t.startPage.login.roles[r]}
+                  </button>
+                ))}
+              </div>
             </div>
           ) : ( // ACTUAL MATCH TARGET BELOW
             <div className="w-full animate-in slide-in-from-bottom-4 duration-300">
@@ -231,7 +257,10 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                 <div className="mb-6">
                   <button
                     type="button"
-                    onClick={() => setShowLogin(false)}
+                    onClick={() => {
+                      setShowLogin(false)
+                      setRole(null) // Reset role when going back
+                    }}
                     className="flex items-center text-sm text-text-secondary hover:text-text-primary transition-colors hover:-translate-x-1 duration-200"
                   >
                     <ArrowRight className="rotate-180 mr-1" size={16} /> {t.startPage.login.back}
@@ -239,29 +268,28 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                 </div>
 
                 <div className="space-y-6">
-                  {/* Role Selection Cards */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {(['learner', 'trainer', 'explorer'] as const).map((r) => {
+                  {/* For Learner: No Role Selection Cards needed here anymore, we are already in Learner mode */}
+
+                  {/* Secondary Roles Access (Only visible if we explicitly want to switch) */}
+                  <div className="flex justify-center gap-4 mb-4">
+                    {(['trainer', 'explorer'] as const).map((r) => {
                       const isActive = role === r
-                      const label = r === 'explorer' ? t.startPage.login.roles.explorer : t.startPage.login.roles[r]
+                      const label = t.startPage.login.roles[r]
                       return (
                         <button
                           key={r}
                           type="button"
                           onClick={() => {
                             setRole(r)
-                            // Reset selection when changing role
                             setSelectedLandscapeId('')
                             setHasCheckedId(false)
                           }}
-                          className={`flex flex-col items-center justify-center p-6 rounded-xl border transition-all duration-300 ${isActive
-                            ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-400 shadow-md scale-[1.02]'
-                            : 'bg-white/50 dark:bg-slate-800/50 border-border-color hover:border-sky-400/50 hover:shadow-lg'
+                          className={`text-xs px-3 py-1 rounded-full border transition-all duration-300 ${isActive
+                            ? 'bg-sky-100 dark:bg-sky-900 border-sky-300 text-sky-700 dark:text-sky-300'
+                            : 'bg-transparent border-transparent text-text-secondary hover:text-text-primary hover:bg-slate-100 dark:hover:bg-slate-800'
                             }`}
                         >
-                          <span className={`text-lg font-semibold whitespace-pre-line text-center ${isActive ? 'text-sky-600 dark:text-sky-300' : 'text-text-primary'}`}>
-                            {label}
-                          </span>
+                          {label}
                         </button>
                       )
                     })}
