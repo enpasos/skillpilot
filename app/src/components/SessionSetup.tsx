@@ -13,7 +13,7 @@ interface SessionSetupProps {
   setRole: (r: Role | null) => void
   skillpilotId: string
   setSkillpilotId: (id: string) => void
-  onStart: (id: string, landscapeId?: string, role?: Role) => void
+  onStart: (id: string, landscapeId?: string, role?: Role, goalId?: string) => void
 }
 
 import { useTranslation } from '../hooks/useTranslation'
@@ -37,6 +37,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     const params = new URLSearchParams(location.search)
     const deepLinkCurriculum = params.get('curriculum') || params.get('landscape') || params.get('l')
     const deepLinkId = params.get('skillpilotId') || params.get('id')
+    const deepLinkGoal = params.get('goal') || params.get('g')
 
     if (deepLinkCurriculum && deepLinkCurriculum !== selectedLandscapeId) {
       setSelectedLandscapeId(deepLinkCurriculum)
@@ -52,7 +53,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       setShowLogin(true);
 
       if (deepLinkCurriculum) {
-        onStart(id, deepLinkCurriculum, 'learner');
+        onStart(id, deepLinkCurriculum, 'learner', deepLinkGoal || undefined);
       }
     }
   }, [location.search])

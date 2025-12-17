@@ -780,7 +780,11 @@
                 "ects:9",
                 "module:MA3303"
             ],
-            "contains": [],
+            "contains": [
+                "9f8f1594-9936-4fb3-94d7-7bd7a4a1500a",
+                "3b955a7a-e4ad-41ad-8a6b-233c54946c6d",
+                "985e5dd5-4738-426e-b8b1-a7228fd2323c"
+            ],
             "requires": [
                 "52b169d0-e80e-5a65-a874-5cfa6fe32103",
                 "03aadec8-b60f-5e67-b309-15861ae04088"
@@ -944,6 +948,101 @@
                 "phase": "Modul",
                 "area": "Mehrdimensionale PDEs",
                 "topicCode": "tum_ma3303_lo7_1_3"
+            }
+        },
+        {
+            "id": "9f8f1594-9936-4fb3-94d7-7bd7a4a1500a",
+            "shortKey": "tum_ma3303_lo8_2_1",
+            "title": "Raum- und Zeitdiskretisierung für eine Evolutions-PDE implementieren",
+            "titleEn": "Implement Spatial and Time Discretizations for an Evolution PDE",
+            "description": "Die lernende Person kann für eine einfache Evolutions-PDE (z.B. Wärmegleichung) eine Raumdiskretisierung (z.B. FEM/FDM) und eine Zeitdiskretisierung (explizit/implizit) kombinieren und das entstehende Update bzw. lineare Gleichungssystem implementieren.",
+            "descriptionEn": "The learner can combine a spatial discretization (e.g., FEM/FDM) and a time discretization (explicit/implicit) for a simple evolution PDE (e.g., the heat equation) and implement the resulting update or linear system.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Evolutionsgleichungen",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "52b169d0-e80e-5a65-a874-5cfa6fe32103",
+                "03aadec8-b60f-5e67-b309-15861ae04088"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Evolutionsgleichungen",
+                "topicCode": "tum_ma3303_lo8_2_1"
+            }
+        },
+        {
+            "id": "3b955a7a-e4ad-41ad-8a6b-233c54946c6d",
+            "shortKey": "tum_ma3303_lo8_2_2",
+            "title": "Softwarewerkzeuge für Evolutionsgleichungen konfigurieren und nutzen",
+            "titleEn": "Configure and Use Software Tools for Evolution Equations",
+            "description": "Die lernende Person kann ein bestehendes PDE-Softwarewerkzeug konfigurieren (z.B. Gitter/Elemente, Zeitschritt, Löser), eine einfache Evolutionsgleichung numerisch lösen und die Eingabe-/Ausgabe für die Auswertung vorbereiten.",
+            "descriptionEn": "The learner can configure an existing PDE software tool (e.g., mesh/elements, time step, solver), solve a simple evolution equation numerically, and prepare input/output for evaluation.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Evolutionsgleichungen",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "52b169d0-e80e-5a65-a874-5cfa6fe32103",
+                "03aadec8-b60f-5e67-b309-15861ae04088",
+                "9f8f1594-9936-4fb3-94d7-7bd7a4a1500a"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Evolutionsgleichungen",
+                "topicCode": "tum_ma3303_lo8_2_2"
+            }
+        },
+        {
+            "id": "985e5dd5-4738-426e-b8b1-a7228fd2323c",
+            "shortKey": "tum_ma3303_lo8_2_3",
+            "title": "Numerische Resultate interpretieren und Aufwand/Fehler bewerten",
+            "titleEn": "Interpret Numerical Results and Assess Cost/Error",
+            "description": "Die lernende Person kann Resultate einer numerischen Simulation zu Evolutionsgleichungen plausibilisieren (z.B. mittels Konvergenztests), den Rechenaufwand grob abschätzen und wesentliche Fehlerquellen (Zeit-/Raumdiskretisierung, Rundung) qualitativ bewerten.",
+            "descriptionEn": "The learner can validate results from a numerical simulation of evolution equations (e.g., via convergence tests), roughly estimate computational cost, and qualitatively assess key error sources (time/space discretization, rounding).",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Evolutionsgleichungen",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "52b169d0-e80e-5a65-a874-5cfa6fe32103",
+                "03aadec8-b60f-5e67-b309-15861ae04088",
+                "3b955a7a-e4ad-41ad-8a6b-233c54946c6d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Evolutionsgleichungen",
+                "topicCode": "tum_ma3303_lo8_2_3"
             }
         }
     ]

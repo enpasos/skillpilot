@@ -128,9 +128,9 @@ Tools & Workflow:
 
 | Activity | EXACT URL TO USE (Append &skillpilotId=UUID) |
 | :--- | :--- |
-| **English Foundation: Vocabulary (Top 400)** | `https://skillpilot.com/?curriculum=US_SBX_L_ENG_FOUNDATION.en.json&goal=ef-vocab-400` |
-| **English Foundation: Grammar** | `https://skillpilot.com/?curriculum=US_SBX_L_ENG_FOUNDATION.en.json&goal=ef-grammar-basic` |
-| **English Foundation: Reader** | `https://skillpilot.com/?curriculum=US_SBX_L_ENG_FOUNDATION.en.json&goal=ef-reader-day1` |
+| **English Foundation: Vocabulary (Top 400)** | `https://skillpilot.com/?curriculum=sandbox-english-foundation-001&goal=ef-vocab-400` |
+| **English Foundation: Grammar** | `https://skillpilot.com/?curriculum=sandbox-english-foundation-001&goal=ef-grammar-basic` |
+| **English Foundation: Reader** | `https://skillpilot.com/?curriculum=sandbox-english-foundation-001&goal=ef-reader-day1` |
 
 **Rule**:
 If the user wants to learn "Vocabulary" or "Foundation", NEVER chat about it.

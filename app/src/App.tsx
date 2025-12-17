@@ -86,7 +86,7 @@ const App: React.FC = () => {
         setRole={setRole}
         skillpilotId={skillpilotId}
         setSkillpilotId={setSkillpilotId}
-        onStart={(id, landscapeId, forceRole) => {
+        onStart={(id, landscapeId, forceRole, forceGoalId) => {
           const activeRole = forceRole || role
           if (!activeRole) return
           setSkillpilotId(id)
@@ -97,8 +97,9 @@ const App: React.FC = () => {
             core.setSelectedLandscapeId(landscapeId)
           }
           const search = landscapeId ? `?l=${landscapeId}` : ''
+          // Fallback to URL if not passed explicitly (for manual clicks)
           const params = new URLSearchParams(location.search)
-          const deepLinkGoal = params.get('goal') || params.get('g')
+          const deepLinkGoal = forceGoalId || params.get('goal') || params.get('g')
 
           if (activeRole === 'learner') {
             if (deepLinkGoal) {
@@ -125,7 +126,7 @@ const App: React.FC = () => {
         setRole={setRole}
         skillpilotId={skillpilotId}
         setSkillpilotId={setSkillpilotId}
-        onStart={(id, landscapeId, forceRole) => {
+        onStart={(id, landscapeId, forceRole, forceGoalId) => {
           const activeRole = forceRole || role
           if (!activeRole) return
           setSkillpilotId(id)
@@ -136,8 +137,9 @@ const App: React.FC = () => {
             core.setSelectedLandscapeId(landscapeId)
           }
           const search = landscapeId ? `?l=${landscapeId}` : ''
+          // Fallback to URL if not passed explicitly (for manual clicks)
           const params = new URLSearchParams(location.search)
-          const deepLinkGoal = params.get('goal') || params.get('g')
+          const deepLinkGoal = forceGoalId || params.get('goal') || params.get('g')
 
           if (activeRole === 'learner') {
             if (deepLinkGoal) {
