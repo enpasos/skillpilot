@@ -48,6 +48,10 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       setRole('learner');
       checkLearner(id);
       setShowLogin(true);
+
+      if (deepLinkCurriculum) {
+        onStart(id, deepLinkCurriculum);
+      }
     }
   }, [location.search])
   const [loading, setLoading] = useState(false)
