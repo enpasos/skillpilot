@@ -6,6 +6,8 @@ import { Settings, Upload, Download, RefreshCw } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
+import { GoalCard } from '../components/GoalCard'
+import { FlashcardDrill } from '../components/srs/FlashcardDrill'
 import { useLanguage } from '../contexts/LanguageContext'
 
 import type { UiGoal } from '../goalTypes'
@@ -282,94 +284,94 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   return (
     <div className="flex h-screen bg-chat-bg text-text-primary overflow-hidden transition-colors">
-      <aside className="w-full flex flex-col bg-sidebar-bg items-center">
-        <div className="w-full max-w-4xl flex flex-col h-full">
-          <div className="p-4 border-b border-border-color flex items-center justify-between shrink-0">
-            <div>
-              <h2 className="font-bold text-sky-600 dark:text-sky-400">{t.learner.myGoals}</h2>
-              <div className="text-xs text-text-secondary mt-1">
-                {plannedCount} {t.learner.marked} • {masteredCount} {t.learner.completed}
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={handleExport}
-                className="text-text-secondary hover:text-sky-400 transition-colors"
-                title={t.tooltips.exportData}
-              >
-                <Download size={18} />
-              </button>
-              <button
-                onClick={handleImportClick}
-                className="text-text-secondary hover:text-sky-400 transition-colors"
-                title={t.tooltips.importData}
-              >
-                <Upload size={18} />
-              </button>
-              <button
-                onClick={onRefresh}
-                className="text-text-secondary hover:text-sky-400 transition-colors"
-                title={t.tooltips.refresh}
-              >
-                <RefreshCw size={18} />
-              </button>
-              <input
-                type="file"
-                ref={fileInputRef}
-                onChange={handleFileChange}
-                className="hidden"
-                accept=".json"
-              />
-              <button
-                onClick={() => setIsSetupOpen(true)}
-                className="text-text-secondary hover:text-sky-400 transition-colors"
-                title={t.tooltips.adjustCurriculum}
-              >
-                <Settings size={18} />
-              </button>
-              <ThemeToggle />
-              {onLogout && (
-                <LogoutButton onLogout={onLogout} />
-              )}
-
+      <aside className="w-80 flex flex-col bg-sidebar-bg border-r border-border-color shrink-0">
+        <div className="p-4 border-b border-border-color flex items-center justify-between shrink-0">
+          <div>
+            <h2 className="font-bold text-sky-600 dark:text-sky-400">{t.learner.myGoals}</h2>
+            <div className="text-xs text-text-secondary mt-1">
+              {plannedCount} {t.learner.marked} • {masteredCount} {t.learner.completed}
             </div>
           </div>
-
-          <div className="flex-1 p-2 overflow-y-auto">
-            <CompetenceTree
-              rootGoals={visibleRootGoals}
-              allGoals={goalIndexAll}
-              getMastery={getMastery}
-              plannedGoals={plannedGoals}
-              onTogglePlan={togglePlan}
-              onSelect={onSelectGoal}
-              selectedId={selectedId}
-              activeFilter={effectiveActiveFilter}
-              personalConfig={personalConfig}
-            />
+          <div className="flex items-center gap-1">
+            <button onClick={onRefresh} className="p-1 text-text-secondary hover:text-sky-400"><RefreshCw size={16} /></button>
+            <button onClick={() => setIsSetupOpen(true)} className="p-1 text-text-secondary hover:text-sky-400"><Settings size={16} /></button>
+            <ThemeToggle />
           </div>
-
-          {learnerData && learnerData.copySources && learnerData.copySources.length > 0 && (
-            <div className="p-3 border-t border-border-color bg-gray-50 dark:bg-slate-900 text-xs text-text-secondary shrink-0">
-              <h3 className="font-semibold mb-1">
-                {t.learner.includesDataFrom}
-              </h3>
-              <div className="flex flex-col gap-1 max-h-[100px] overflow-y-auto">
-                {learnerData.copySources.map((src, idx) => (
-                  <div key={idx} className="flex justify-between">
-                    <span className="truncate" title={src.sourceId}>
-                      {src.sourceId.substring(0, 8)}...
-                    </span>
-                    <span className="whitespace-nowrap ml-2">
-                      {new Date(src.copiedAt).toLocaleDateString()}
-                    </span>
-                  </div>
-                ))}
-              </div>
+        </div>
+        <div className="flex-1 overflow-y-auto p-2">
+          <CompetenceTree
+            rootGoals={visibleRootGoals}
+            allGoals={goalIndexAll}
+            getMastery={getMastery}
+            plannedGoals={plannedGoals}
+            onTogglePlan={togglePlan}
+            onSelect={onSelectGoal}
+            selectedId={selectedId}
+            activeFilter={effectiveActiveFilter}
+            personalConfig={personalConfig}
+          />
+        </div>
+        {learnerData && learnerData.copySources && learnerData.copySources.length > 0 && (
+          <div className="p-3 border-t border-border-color bg-gray-50 dark:bg-slate-900 text-xs text-text-secondary shrink-0">
+            <h3 className="font-semibold mb-1">
+              {t.learner.includesDataFrom}
+            </h3>
+            <div className="flex flex-col gap-1 max-h-[100px] overflow-y-auto">
+              {learnerData.copySources.map((src, idx) => (
+                <div key={idx} className="flex justify-between">
+                  <span className="truncate" title={src.sourceId}>
+                    {src.sourceId.substring(0, 8)}...
+                  </span>
+                  <span className="whitespace-nowrap ml-2">
+                    {new Date(src.copiedAt).toLocaleDateString()}
+                  </span>
+                </div>
+              ))}
             </div>
-          )}
+          </div>
+        )}
+        {/* Footer Imports/Exports */}
+        <div className="p-2 border-t border-border-color flex justify-between">
+          <div className="flex gap-2">
+            <button onClick={handleExport} className="text-text-secondary hover:text-sky-400"><Download size={16} /></button>
+            <button onClick={handleImportClick} className="text-text-secondary hover:text-sky-400"><Upload size={16} /></button>
+            <input type="file" ref={fileInputRef} onChange={handleFileChange} className="hidden" accept=".json" />
+          </div>
+          {onLogout && <LogoutButton onLogout={onLogout} />}
         </div>
       </aside>
+
+      <main className="flex-1 overflow-y-auto bg-chat-bg p-6 flex flex-col items-center">
+        {currentGoal ? (
+          <div className="w-full max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+            {/* Check for SRS Tag */}
+            {currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
+              <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6">
+                <div className="mb-6 border-b border-border-color pb-4">
+                  <h1 className="text-2xl font-bold text-sky-600 dark:text-sky-400 mb-2">{currentGoal.title}</h1>
+                  <p className="text-text-secondary">{currentGoal.description}</p>
+                </div>
+                <FlashcardDrill
+                  onComplete={() => {
+                    // Refresh mastery if needed or just show confetti
+                    onRefresh?.()
+                  }}
+                />
+              </div>
+            ) : (
+              <GoalCard
+                goal={currentGoal}
+                masteryValue={getMastery(currentGoal.id)}
+                showLearnerTools={true}
+              />
+            )}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center h-full text-text-secondary">
+            <p>Select a goal to start learning</p>
+          </div>
+        )}
+      </main>
 
       <PersonalCurriculumSetup
         isOpen={isSetupOpen}

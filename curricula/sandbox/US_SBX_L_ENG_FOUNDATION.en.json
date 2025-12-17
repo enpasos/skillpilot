@@ -1,0 +1,60 @@
+{
+    "title": "English Foundation (PoC)",
+    "titleEn": "English Foundation (PoC)",
+    "description": "Proof of Concept for Hybrid SRS and Competence Learning.",
+    "descriptionEn": "Proof of Concept for Hybrid SRS and Competence Learning.",
+    "landscapeId": "sandbox-english-foundation-001",
+    "locale": "en-US",
+    "subject": "English",
+    "frameworkId": "sandbox-ef",
+    "goals": [
+        {
+            "id": "ef-root",
+            "title": "English Foundation Overview",
+            "titleEn": "English Foundation Overview",
+            "description": "Master the basics: 400 words, essential grammar, and your first text.",
+            "descriptionEn": "Master the basics: 400 words, essential grammar, and your first text.",
+            "core": true,
+            "weight": 1,
+            "contains": [
+                "ef-vocab-400",
+                "ef-grammar-basic",
+                "ef-reader-day1"
+            ],
+            "tags": [
+                "root"
+            ]
+        },
+        {
+            "id": "ef-vocab-400",
+            "title": "Vocabulary: Top 400",
+            "titleEn": "Vocabulary: Top 400",
+            "description": "Memorize the 400 most frequent words.",
+            "descriptionEn": "Memorize the 400 most frequent words.",
+            "weight": 1,
+            "tags": [
+                "srs-deck:eng_400_foundation"
+            ]
+        },
+        {
+            "id": "ef-grammar-basic",
+            "title": "Grammar: Basics",
+            "titleEn": "Grammar: Basics",
+            "description": "Sentence structure (S-V-O) and 'to be'.",
+            "descriptionEn": "Sentence structure (S-V-O) and 'to be'.",
+            "weight": 1
+        },
+        {
+            "id": "ef-reader-day1",
+            "title": "Reader: My First Day",
+            "titleEn": "Reader: My First Day",
+            "description": "Read a text using only the 400 words.",
+            "descriptionEn": "Read a text using only the 400 words.",
+            "weight": 1,
+            "requires": [
+                "ef-vocab-400",
+                "ef-grammar-basic"
+            ]
+        }
+    ]
+}
