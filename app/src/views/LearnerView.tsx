@@ -357,6 +357,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                     // Refresh mastery if needed or just show confetti
                     onRefresh?.()
                   }}
+                  skillPilotId={skillpilotId}
                 />
               </div>
             ) : (

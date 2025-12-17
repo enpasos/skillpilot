@@ -7,6 +7,7 @@ import { calculateReview, INITIAL_DECK_STATE, type ReviewItem } from './srsLogic
 interface FlashcardDrillProps {
     onComplete: () => void
     dataSourceUrl?: string
+    skillPilotId: string
 }
 
 interface VocabData {
@@ -21,11 +22,13 @@ interface VocabData {
 }
 
 
-export function FlashcardDrill({ onComplete, dataSourceUrl }: FlashcardDrillProps) {
+export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId }: FlashcardDrillProps) {
     // Load state from local storage or init
     const getStoredState = (): Record<string, ReviewItem> => {
         try {
-            const stored = localStorage.getItem('srs_state_eng_400')
+            // Hardcoded deck ID for now (eng_400), but scoped to user
+            const storageKey = `srs_state_${skillPilotId}_eng_400`
+            const stored = localStorage.getItem(storageKey)
             return stored ? JSON.parse(stored) : {}
         } catch {
             return {}
@@ -133,7 +136,8 @@ export function FlashcardDrill({ onComplete, dataSourceUrl }: FlashcardDrillProp
 
         const updatedSrsState = { ...srsState, [currentCard.id]: newState }
         setSrsState(updatedSrsState)
-        localStorage.setItem('srs_state_eng_400', JSON.stringify(updatedSrsState))
+        const storageKey = `srs_state_${skillPilotId}_eng_400`
+        localStorage.setItem(storageKey, JSON.stringify(updatedSrsState))
 
         setSessionStats(prev => ({ reviewed: prev.reviewed + 1 }))
 
