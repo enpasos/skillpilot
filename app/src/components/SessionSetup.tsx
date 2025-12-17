@@ -36,8 +36,18 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   React.useEffect(() => {
     const params = new URLSearchParams(location.search)
     const deepLinkCurriculum = params.get('curriculum') || params.get('landscape') || params.get('l')
+    const deepLinkId = params.get('skillpilotId') || params.get('id')
+
     if (deepLinkCurriculum && deepLinkCurriculum !== selectedLandscapeId) {
       setSelectedLandscapeId(deepLinkCurriculum)
+    }
+
+    if (deepLinkId && !skillpilotId && role !== 'trainer') {
+      const id = deepLinkId.trim();
+      setSkillpilotId(id);
+      setRole('learner');
+      checkLearner(id);
+      setShowLogin(true);
     }
   }, [location.search])
   const [loading, setLoading] = useState(false)

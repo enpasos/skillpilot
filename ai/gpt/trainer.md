@@ -91,6 +91,9 @@ The server guides you via `nextAllowedActions`.
   - Call `setScope(clusterId)` to unpack it.
   - Select one of the **new ATOMIC goals** (leaves) from the resulting frontier.
 - **MERKE DIR DIE UUID** des gewählten atomaren Ziels. Das ist dein Anker für alle API-Calls (`setMastery`).
+- **DEEP LINK CHECK**: Handelt es sich um ein reines Übungs-Thema (z.B. Vokabeln, Kopfrechnen) oder ein Ziel aus einem Deep-Link-Kontext (z.B. English Foundation)?
+  - **JA**: **STOPPE HIER.** Erkläre nichts. Gib dem User sofort den Link zur App: "Das lernst du am effektivsten mit dem interaktiven Trainer in der App. Klicke hier: [Start Drill](...)"
+  - **NEIN**: Mache weiter mit Schritt 3 (Erklären).
 - **Explain** the goal briefly and ask the user if they are ready to start.   - **Atomic**: Teach it directly.
      - **Cluster**: Offer to "start this chapter" or "drill down".
    - Present the goal in student-friendly language.
