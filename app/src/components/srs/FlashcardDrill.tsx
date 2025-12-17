@@ -78,7 +78,10 @@ export function FlashcardDrill({ onComplete, dataSourceUrl }: FlashcardDrillProp
                     }
 
                     // Due Calc
-                    if (!state) return true
+                    if (!state) {
+                        dueCardsCount++
+                        return true
+                    }
                     if (state.nextReview <= now) {
                         dueCardsCount++
                         return true
