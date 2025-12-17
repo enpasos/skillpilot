@@ -64,10 +64,42 @@
             "shortKey": "tum_ma2902_lo1",
             "title": "Problemverständnis & Modellannahmen",
             "titleEn": "Problem Understanding & Model Assumptions",
-            "description": "Lernende analysieren gegebene Fallstudien, identifizieren relevante Größen/Mechanismen und formulieren sinnvolle Modellannahmen.",
-            "descriptionEn": "Learners analyze given case studies, identify relevant variables/mechanisms, and formulate reasonable model assumptions.",
+            "description": "Lernende erschließen Fallstudien, definieren die relevanten Modellgrößen und formulieren nachvollziehbare Modellannahmen.",
+            "descriptionEn": "Learners unpack case studies, define the relevant model quantities, and formulate well-justified modeling assumptions.",
             "core": true,
             "weight": 0.7,
+            "phase": "Modul",
+            "area": "Modellierung",
+            "tags": [
+                "ects:9",
+                "module:MA2902"
+            ],
+            "contains": [
+                "932f1f15-a35c-4fd2-b370-0d2787e4e7b0",
+                "bfc503b2-e57c-4493-8b1a-497d4e61858d",
+                "1f003cab-6fff-4122-a93a-7885942b5bb3"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2902",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Modellierung",
+                "topicCode": "tum_ma2902_lo1"
+            }
+        },
+        {
+            "id": "932f1f15-a35c-4fd2-b370-0d2787e4e7b0",
+            "shortKey": "tum_ma2902_lo1_1",
+            "title": "Relevante Größen und Mechanismen identifizieren",
+            "titleEn": "Identify Relevant Variables and Mechanisms",
+            "description": "Lernende analysieren Fallstudien und identifizieren relevante Größen, Mechanismen sowie verfügbare Daten.",
+            "descriptionEn": "Learners analyze case studies and identify relevant variables, mechanisms, and available data.",
+            "core": true,
+            "weight": 0.25,
             "phase": "Modul",
             "area": "Modellierung",
             "tags": [
@@ -84,7 +116,67 @@
                 "guidingIdeas": [],
                 "phase": "Modul",
                 "area": "Modellierung",
-                "topicCode": "tum_ma2902_lo1"
+                "topicCode": "tum_ma2902_lo1_1"
+            }
+        },
+        {
+            "id": "bfc503b2-e57c-4493-8b1a-497d4e61858d",
+            "shortKey": "tum_ma2902_lo1_2",
+            "title": "Modellgrößen definieren",
+            "titleEn": "Define Model Quantities",
+            "description": "Lernende definieren Zustandsvariablen, Parameter und Einheiten und legen eine geeignete Zustandsbeschreibung fest.",
+            "descriptionEn": "Learners define state variables, parameters, and units and choose an appropriate state representation.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Modellierung",
+            "tags": [
+                "ects:9",
+                "module:MA2902"
+            ],
+            "contains": [],
+            "requires": [
+                "932f1f15-a35c-4fd2-b370-0d2787e4e7b0"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2902",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Modellierung",
+                "topicCode": "tum_ma2902_lo1_2"
+            }
+        },
+        {
+            "id": "1f003cab-6fff-4122-a93a-7885942b5bb3",
+            "shortKey": "tum_ma2902_lo1_3",
+            "title": "Modellannahmen formulieren",
+            "titleEn": "Formulate Model Assumptions",
+            "description": "Lernende formulieren und begründen Modellannahmen und Vereinfachungen (z. B. Skalen, Randbedingungen).",
+            "descriptionEn": "Learners formulate and justify modeling assumptions and simplifications (e.g., scales, boundary conditions).",
+            "core": true,
+            "weight": 0.25,
+            "phase": "Modul",
+            "area": "Modellierung",
+            "tags": [
+                "ects:9",
+                "module:MA2902"
+            ],
+            "contains": [],
+            "requires": [
+                "bfc503b2-e57c-4493-8b1a-497d4e61858d"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2902",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Modellierung",
+                "topicCode": "tum_ma2902_lo1_3"
             }
         },
         {
@@ -92,8 +184,8 @@
             "shortKey": "tum_ma2902_lo2",
             "title": "Mathematische Formulierung",
             "titleEn": "Mathematical Formulation",
-            "description": "Lernende übertragen die Fallstudien in geeignete mathematische Modelle (z. B. Differentialgleichungen, stochastische Modelle, diskrete Strukturen).",
-            "descriptionEn": "Learners transfer case studies into suitable mathematical models (e.g., differential equations, stochastic models, discrete structures).",
+            "description": "Lernende wählen geeignete Modellklassen und formulieren Fallstudien als formal nutzbare mathematische Modelle.",
+            "descriptionEn": "Learners select suitable model classes and formulate case studies as formally usable mathematical models.",
             "core": true,
             "weight": 0.7,
             "phase": "Modul",
@@ -102,7 +194,11 @@
                 "ects:9",
                 "module:MA2902"
             ],
-            "contains": [],
+            "contains": [
+                "0632110c-c367-4ca5-9888-5a8c3136e258",
+                "c3bfd994-85b9-46f5-bbfb-393d72409927",
+                "1928f313-736c-4698-aca3-61d843de36e3"
+            ],
             "requires": [
                 "f17d2877-73d0-4671-9359-e49f4819fccc"
             ],
@@ -118,12 +214,100 @@
             }
         },
         {
+            "id": "0632110c-c367-4ca5-9888-5a8c3136e258",
+            "shortKey": "tum_ma2902_lo2_1",
+            "title": "Modellklasse auswählen",
+            "titleEn": "Select a Model Class",
+            "description": "Lernende wählen eine geeignete Modellklasse (deterministisch, stochastisch, diskret) für eine Fallstudie.",
+            "descriptionEn": "Learners select an appropriate model class (deterministic, stochastic, discrete) for a case study.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Formulierung",
+            "tags": [
+                "ects:9",
+                "module:MA2902"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2902",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Formulierung",
+                "topicCode": "tum_ma2902_lo2_1"
+            }
+        },
+        {
+            "id": "c3bfd994-85b9-46f5-bbfb-393d72409927",
+            "shortKey": "tum_ma2902_lo2_2",
+            "title": "Modell formal aufstellen",
+            "titleEn": "Formally Set Up the Model",
+            "description": "Lernende formulieren das Modell formal (Gleichungen, Zufallsmodelle oder Strukturen) und dokumentieren Variablen und Parameter.",
+            "descriptionEn": "Learners set up the model formally (equations, stochastic models, or structures) and document variables and parameters.",
+            "core": true,
+            "weight": 0.3,
+            "phase": "Modul",
+            "area": "Formulierung",
+            "tags": [
+                "ects:9",
+                "module:MA2902"
+            ],
+            "contains": [],
+            "requires": [
+                "0632110c-c367-4ca5-9888-5a8c3136e258"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2902",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Formulierung",
+                "topicCode": "tum_ma2902_lo2_2"
+            }
+        },
+        {
+            "id": "1928f313-736c-4698-aca3-61d843de36e3",
+            "shortKey": "tum_ma2902_lo2_3",
+            "title": "Bedingungen und Zielgrößen spezifizieren",
+            "titleEn": "Specify Conditions and Outputs",
+            "description": "Lernende spezifizieren Anfangs-/Randbedingungen, Eingaben und Zielgrößen, sodass das Modell für Analysen oder Simulationen verwendbar ist.",
+            "descriptionEn": "Learners specify initial/boundary conditions, inputs, and target quantities so the model is usable for analysis or simulation.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Formulierung",
+            "tags": [
+                "ects:9",
+                "module:MA2902"
+            ],
+            "contains": [],
+            "requires": [
+                "c3bfd994-85b9-46f5-bbfb-393d72409927"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2902",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Formulierung",
+                "topicCode": "tum_ma2902_lo2_3"
+            }
+        },
+        {
             "id": "1ef5f777-484a-4986-95a9-1c1e08c04d9f",
             "shortKey": "tum_ma2902_lo3",
             "title": "Methodenwahl & Lösung",
             "titleEn": "Method Selection & Solution",
-            "description": "Lernende wählen geeignete analytische oder numerische Methoden, lösen die Modelle und reflektieren Grenzen und Unsicherheiten.",
-            "descriptionEn": "Learners select appropriate analytical or numerical methods, solve the models, and reflect on limitations and uncertainties.",
+            "description": "Lernende wählen geeignete Methoden, lösen bzw. simulieren die Modelle und bewerten Grenzen und Unsicherheiten ihrer Ergebnisse.",
+            "descriptionEn": "Learners select suitable methods, solve or simulate the models, and assess limitations and uncertainty of their results.",
             "core": true,
             "weight": 0.65,
             "phase": "Modul",
@@ -132,7 +316,11 @@
                 "ects:9",
                 "module:MA2902"
             ],
-            "contains": [],
+            "contains": [
+                "2a3a3d18-498f-4b76-868c-f4c9bf31a730",
+                "a4232b5c-c4f6-4034-bdc5-53de322d82e4",
+                "51d68a9f-dfe5-44c0-8ca7-653ccfe34232"
+            ],
             "requires": [
                 "83f076c4-afe2-46d8-afc3-c13cfd2bb75f"
             ],
@@ -148,12 +336,100 @@
             }
         },
         {
+            "id": "2a3a3d18-498f-4b76-868c-f4c9bf31a730",
+            "shortKey": "tum_ma2902_lo3_1",
+            "title": "Methode auswählen",
+            "titleEn": "Select a Method",
+            "description": "Lernende wählen eine geeignete analytische oder numerische Methode passend zu Modell und Fragestellung aus.",
+            "descriptionEn": "Learners select an appropriate analytical or numerical method for the model and question.",
+            "core": true,
+            "weight": 0.22,
+            "phase": "Modul",
+            "area": "Methoden",
+            "tags": [
+                "ects:9",
+                "module:MA2902"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2902",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Methoden",
+                "topicCode": "tum_ma2902_lo3_1"
+            }
+        },
+        {
+            "id": "a4232b5c-c4f6-4034-bdc5-53de322d82e4",
+            "shortKey": "tum_ma2902_lo3_2",
+            "title": "Modell lösen oder simulieren",
+            "titleEn": "Solve or Simulate the Model",
+            "description": "Lernende führen die gewählte Methode durch bzw. implementieren sie, um Lösungen oder Simulationsergebnisse zu erhalten.",
+            "descriptionEn": "Learners execute or implement the selected method to obtain solutions or simulation results.",
+            "core": true,
+            "weight": 0.23,
+            "phase": "Modul",
+            "area": "Methoden",
+            "tags": [
+                "ects:9",
+                "module:MA2902"
+            ],
+            "contains": [],
+            "requires": [
+                "2a3a3d18-498f-4b76-868c-f4c9bf31a730"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2902",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Methoden",
+                "topicCode": "tum_ma2902_lo3_2"
+            }
+        },
+        {
+            "id": "51d68a9f-dfe5-44c0-8ca7-653ccfe34232",
+            "shortKey": "tum_ma2902_lo3_3",
+            "title": "Grenzen & Unsicherheiten bewerten",
+            "titleEn": "Assess Limitations and Uncertainty",
+            "description": "Lernende reflektieren Modell- und Lösungsgrenzen und bewerten Unsicherheiten (z. B. Sensitivität, Parameterabhängigkeit).",
+            "descriptionEn": "Learners reflect model/solution limitations and assess uncertainty (e.g., sensitivity, parameter dependence).",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Methoden",
+            "tags": [
+                "ects:9",
+                "module:MA2902"
+            ],
+            "contains": [],
+            "requires": [
+                "a4232b5c-c4f6-4034-bdc5-53de322d82e4"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2902",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Methoden",
+                "topicCode": "tum_ma2902_lo3_3"
+            }
+        },
+        {
             "id": "6fd10b87-27a1-45ae-9d93-f696a0a8b3cd",
             "shortKey": "tum_ma2902_lo4",
             "title": "Interpretation & Transfer",
             "titleEn": "Interpretation & Transfer",
-            "description": "Lernende interpretieren Ergebnisse im Anwendungskontext, diskutieren Plausibilität und übertragen Erkenntnisse auf verwandte Problemstellungen.",
-            "descriptionEn": "Learners interpret results in the application context, discuss plausibility, and transfer insights to related problems.",
+            "description": "Lernende interpretieren Ergebnisse im Anwendungskontext, prüfen Plausibilität und übertragen Erkenntnisse auf verwandte Problemstellungen.",
+            "descriptionEn": "Learners interpret results in the application context, check plausibility, and transfer insights to related problems.",
             "core": true,
             "weight": 0.65,
             "phase": "Modul",
@@ -162,7 +438,10 @@
                 "ects:9",
                 "module:MA2902"
             ],
-            "contains": [],
+            "contains": [
+                "5d75b201-caa6-4ec5-a7a5-bdfea89c2b9f",
+                "c3194611-12f8-4e0b-8d3b-86ffab63afc0"
+            ],
             "requires": [
                 "1ef5f777-484a-4986-95a9-1c1e08c04d9f"
             ],
@@ -175,6 +454,64 @@
                 "phase": "Modul",
                 "area": "Reflexion",
                 "topicCode": "tum_ma2902_lo4"
+            }
+        },
+        {
+            "id": "5d75b201-caa6-4ec5-a7a5-bdfea89c2b9f",
+            "shortKey": "tum_ma2902_lo4_1",
+            "title": "Ergebnisse interpretieren und validieren",
+            "titleEn": "Interpret and Validate Results",
+            "description": "Lernende interpretieren Ergebnisse im Anwendungskontext und prüfen Plausibilität (z. B. gegen Daten, Grenzfälle, Einheiten).",
+            "descriptionEn": "Learners interpret results in context and check plausibility (e.g., against data, limiting cases, units).",
+            "core": true,
+            "weight": 0.33,
+            "phase": "Modul",
+            "area": "Reflexion",
+            "tags": [
+                "ects:9",
+                "module:MA2902"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2902",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Reflexion",
+                "topicCode": "tum_ma2902_lo4_1"
+            }
+        },
+        {
+            "id": "c3194611-12f8-4e0b-8d3b-86ffab63afc0",
+            "shortKey": "tum_ma2902_lo4_2",
+            "title": "Transfer auf verwandte Probleme",
+            "titleEn": "Transfer to Related Problems",
+            "description": "Lernende übertragen Erkenntnisse auf verwandte Problemstellungen und passen das Modell für \"what-if\"-Szenarien an.",
+            "descriptionEn": "Learners transfer insights to related problems and adapt the model for \"what-if\" scenarios.",
+            "core": true,
+            "weight": 0.32,
+            "phase": "Modul",
+            "area": "Reflexion",
+            "tags": [
+                "ects:9",
+                "module:MA2902"
+            ],
+            "contains": [],
+            "requires": [
+                "5d75b201-caa6-4ec5-a7a5-bdfea89c2b9f"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma2902",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Reflexion",
+                "topicCode": "tum_ma2902_lo4_2"
             }
         }
     ]

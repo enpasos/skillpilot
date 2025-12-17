@@ -311,7 +311,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl }: FlashcardDrillProp
                 {/* Due Indicator */}
                 <div className="text-center mt-2">
                     <span className="text-[10px] text-gray-400">
-                        Today's Mission: <strong className="text-sky-500">{stats.due}</strong> cards left
+                        Cards ready for review: <strong className="text-sky-500">{stats.due}</strong>
                     </span>
                 </div>
             </div>
