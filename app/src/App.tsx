@@ -86,12 +86,13 @@ const App: React.FC = () => {
         setRole={setRole}
         skillpilotId={skillpilotId}
         setSkillpilotId={setSkillpilotId}
-        onStart={(id, landscapeId) => {
-          if (!role) return
+        onStart={(id, landscapeId, forceRole) => {
+          const activeRole = forceRole || role
+          if (!activeRole) return
           setSkillpilotId(id)
           setHasSession(true)
           localStorage.setItem('skillpilot_id', id)
-          localStorage.setItem('skillpilot_role', role)
+          localStorage.setItem('skillpilot_role', activeRole)
           if (landscapeId) {
             core.setSelectedLandscapeId(landscapeId)
           }
@@ -99,13 +100,13 @@ const App: React.FC = () => {
           const params = new URLSearchParams(location.search)
           const deepLinkGoal = params.get('goal') || params.get('g')
 
-          if (role === 'learner') {
+          if (activeRole === 'learner') {
             if (deepLinkGoal) {
               navigate(`/learner/${deepLinkGoal}${search}`)
             } else {
               navigate(`/learner${search}`)
             }
-          } else if (role === 'trainer') {
+          } else if (activeRole === 'trainer') {
             navigate(`/trainer${search}`)
           } else {
             navigate(`/explorer${search}`)
@@ -124,12 +125,13 @@ const App: React.FC = () => {
         setRole={setRole}
         skillpilotId={skillpilotId}
         setSkillpilotId={setSkillpilotId}
-        onStart={(id, landscapeId) => {
-          if (!role) return
+        onStart={(id, landscapeId, forceRole) => {
+          const activeRole = forceRole || role
+          if (!activeRole) return
           setSkillpilotId(id)
           setHasSession(true)
           localStorage.setItem('skillpilot_id', id)
-          localStorage.setItem('skillpilot_role', role)
+          localStorage.setItem('skillpilot_role', activeRole)
           if (landscapeId) {
             core.setSelectedLandscapeId(landscapeId)
           }
@@ -137,13 +139,13 @@ const App: React.FC = () => {
           const params = new URLSearchParams(location.search)
           const deepLinkGoal = params.get('goal') || params.get('g')
 
-          if (role === 'learner') {
+          if (activeRole === 'learner') {
             if (deepLinkGoal) {
               navigate(`/learner/${deepLinkGoal}${search}`)
             } else {
               navigate(`/learner${search}`)
             }
-          } else if (role === 'trainer') {
+          } else if (activeRole === 'trainer') {
             navigate(`/trainer${search}`)
           } else {
             navigate(`/explorer${search}`)

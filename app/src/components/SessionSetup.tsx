@@ -13,7 +13,7 @@ interface SessionSetupProps {
   setRole: (r: Role | null) => void
   skillpilotId: string
   setSkillpilotId: (id: string) => void
-  onStart: (id: string, landscapeId?: string) => void
+  onStart: (id: string, landscapeId?: string, role?: Role) => void
 }
 
 import { useTranslation } from '../hooks/useTranslation'
@@ -50,7 +50,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       setShowLogin(true);
 
       if (deepLinkCurriculum) {
-        onStart(id, deepLinkCurriculum);
+        onStart(id, deepLinkCurriculum, 'learner');
       }
     }
   }, [location.search])
@@ -147,7 +147,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       localStorage.setItem('skillpilot_trainer_landscape', selectedLandscapeId)
     }
 
-    onStart(effectiveId, selectedLandscapeId)
+    onStart(effectiveId, selectedLandscapeId, role || undefined)
   }
 
   // Effect to restore trainer selection when role changes
