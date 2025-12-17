@@ -152,6 +152,8 @@ export function FlashcardDrill({ onComplete, dataSourceUrl }: FlashcardDrillProp
         setTimeout(() => setCurrentCardIndex(prev => prev + 1), 200)
     }
 
+    if (!vocabData) return <div className="p-8 text-center">Loading Data...</div>
+
     if (queue.length === 0 && currentCardIndex === 0) {
         return (
             <div className="flex flex-col items-center justify-center p-8 text-center h-[60vh]">
