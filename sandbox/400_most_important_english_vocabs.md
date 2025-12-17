@@ -114,10 +114,89 @@ Diese Wörter decken statistisch gesehen etwa **65–75 %** aller englischen All
 
 ---
 
-### Kategorie 5: Fragewörter & Zahlen (Der Rest)
+### Kategorie 5: Fragewörter & Zahlen
 
 * **Who** (Wer), **What** (Was), **Where** (Wo), **When** (Wann), **Why** (Warum), **How** (Wie)
 * **one, two, three, four, five, six, seven, eight, nine, ten**
 * **first** (erste), **second** (zweite), **last** (letzte)
 
- 
+---
+
+### Kategorie 6: Essen & Trinken (Top 30)
+
+* **water** (Wasser), **coffee** (Kaffee), **tea** (Tee), **milk** (Milch), **juice** (Saft)
+* **bread** (Brot), **butter** (Butter), **cheese** (Käse), **egg** (Ei), **meat** (Fleisch)
+* **fruit** (Obst), **apple** (Apfel), **banana** (Banane), **vegetable** (Gemüse), **potato** (Kartoffel)
+* **rice** (Reis), **sugar** (Zucker), **salt** (Salz), **pepper** (Pfeffer), **oil** (Öl)
+* **breakfast** (Frühstück), **lunch** (Mittagessen), **dinner** (Abendessen), **meal** (Mahlzeit)
+* **cook** (kochen), **bake** (backen), **taste** (schmecken), **menu** (Speisekarte)
+
+---
+
+### Kategorie 7: Kleidung & Körper (Top 30)
+
+* **clothes** (Kleidung), **shoe** (Schuh), **shirt** (Hemd), **pants/trousers** (Hose), **dress** (Kleid)
+* **hat** (Hut/Mütze), **coat** (Mantel), **jacket** (Jacke), **watch** (Uhr), **glasses** (Brille)
+* **bag** (Tasche), **ring** (Ring), **umbrella** (Regenschirm)
+* **body** (Körper), **head** (Kopf), **hair** (Haar), **eye** (Auge), **ear** (Ohr)
+* **nose** (Nase), **mouth** (Mund), **tooth/teeth** (Zahn/Zähne), **neck** (Hals)
+* **arm** (Arm), **hand** (Hand), **finger** (Finger), **leg** (Bein), **foot/feet** (Fuß/Füße)
+
+---
+
+### Kategorie 8: Natur & Wetter (Top 30)
+
+* **sun** (Sonne), **moon** (Mond), **star** (Stern), **sky** (Himmel), **cloud** (Wolke)
+* **rain** (Regen), **snow** (Schnee), **wind** (Wind), **air** (Luft), **fire** (Feuer)
+* **water** (Wasser), **sea** (Meer), **river** (Fluss), **lake** (See), **beach** (Strand)
+* **tree** (Baum), **flower** (Blume), **grass** (Gras), **forest** (Wald), **mountain** (Berg)
+* **dog** (Hund), **cat** (Katze), **bird** (Vogel), **fish** (Fisch), **animal** (Tier)
+
+---
+
+### Kategorie 9: Gesellschaft & Stadt (Top 40)
+
+* **city** (Stadt), **town** (Kleinstadt), **village** (Dorf), **street** (Straße), **road** (Landstraße)
+* **house** (Haus), **apartment/flat** (Wohnung), **room** (Zimmer), **floor** (Boden/Stockwerk)
+* **school** (Schule), **university** (Universität), **office** (Büro), **hospital** (Krankenhaus)
+* **shop/store** (Geschäft), **market** (Markt), **bank** (Bank), **hotel** (Hotel), **restaurant** (Restaurant)
+* **money** (Geld), **price** (Preis), **cash** (Bargeld), **card** (Karte), **bill** (Rechnung)
+* **bus** (Bus), **train** (Zug), **car** (Auto), **taxi** (Taxi), **plane** (Flugzeug)
+* **ticket** (Ticket), **station** (Bahnhof), **airport** (Flughafen)
+
+---
+
+### Kategorie 10: Weitere wichtige Verben (Top 40)
+
+* **call** (anrufen/nennen), **find** (finden), **lose** (verlieren), **look for** (suchen)
+* **open** (öffnen), **close** (schließen), **begin** (beginnen), **end** (enden)
+* **move** (bewegen/umziehen), **meet** (treffen), **wait** (warten), **hope** (hoffen)
+* **believe** (glauben), **remember** (erinnern), **forget** (vergessen), **learn** (lernen)
+* **watch** (beobachten/ansehen), **show** (zeigen), **happen** (passieren), **seem** (scheinen)
+* **include** (beinhalten), **continue** (weitermachen), **change** (wechseln), **stop** (stoppen)
+* **allow** (erlauben), **add** (hinzufügen), **spend** (ausgeben/verbringen), **grow** (wachsen)
+* **win** (gewinnen), **lose** (verlieren), **cut** (schneiden), **kill** (töten)
+
+---
+
+### Kategorie 11: Weitere Adjektive & Adverbien (Top 40)
+
+* **full** (voll), **empty** (leer), **free** (frei/kostenlos), **expensive** (teuer)
+* **cheap** (billig), **rich** (reich), **poor** (arm), **safe** (sicher)
+* **dangerous** (gefährlich), **clean** (sauber), **strong** (stark), **weak** (schwach)
+* **simple** (einfach), **complex** (komplex), **possible** (möglich), **ready** (bereit)
+* **early** (früh), **late** (spät), **recent** (kürzlich), **soon** (bald)
+* **almost** (fast), **also** (auch), **even** (sogar), **only** (nur)
+* **together** (zusammen), **alone** (alleine), **again** (wieder), **already** (schon)
+* **maybe** (vielleicht), **probably** (wahrscheinlich), **sure** (sicher)
+
+---
+
+### Kategorie 12: Formen, Technik & Umwelt (Top 25)
+
+* **circle** (Kreis), **square** (Quadrat), **line** (Linie), **point** (Punkt), **shape** (Form)
+* **color** (Farbe), **light** (Licht), **dark** (Dunkelheit/dunkel), **sound** (Ton), **view** (Aussicht)
+* **computer** (Computer), **phone** (Telefon), **internet** (Internet), **screen** (Bildschirm)
+* **system** (System), **program** (Programm), **data** (Daten), **page** (Seite)
+* **energy** (Energie), **power** (Kraft/Strom), **gas** (Gas), **oil** (Öl/Erdöl)
+* **earth** (Erde), **ground** (Boden), **space** (Raum/Weltall), **plant** (Pflanze)
