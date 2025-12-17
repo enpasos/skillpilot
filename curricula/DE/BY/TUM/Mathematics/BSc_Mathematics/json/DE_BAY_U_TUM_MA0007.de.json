@@ -96,8 +96,8 @@
             "shortKey": "tum_ma0007_lo1_1",
             "title": "Kernbegriffe zuordnen und Querbezüge erklären",
             "titleEn": "Relate Core Concepts and Explain Cross-Links",
-            "description": "Die lernende Person kann zentrale Begriffe der Analysis (Grenzwert, Stetigkeit, Ableitung, Integral) und der Linearen Algebra (Vektorraum, lineare Abbildung, Matrix, Determinante) präzise definieren und sinnvolle Querbezüge zwischen ihnen erläutern.",
-            "descriptionEn": "The learner can precisely define core concepts of analysis (limit, continuity, derivative, integral) and linear algebra (vector space, linear map, matrix, determinant) and explain meaningful cross-links between them.",
+            "description": "Zusammenfassender Cluster: zentrale Begriffe der Analysis und der Linearen Algebra präzise verwenden und sinnvolle Querbezüge zwischen ihnen erläutern.",
+            "descriptionEn": "Summary cluster: use core concepts from analysis and linear algebra precisely and explain meaningful cross-links between them.",
             "core": true,
             "weight": 0.5,
             "phase": "Modul",
@@ -106,7 +106,13 @@
                 "ects:5",
                 "module:MA0007"
             ],
-            "contains": [],
+            "contains": [
+                "54080a64-f2b7-4889-9098-48a66d91d96c",
+                "9da5483d-6b02-4eee-92c9-28fffd1bcaae",
+                "536eb976-7250-4db9-8c5c-05acacbbd07d",
+                "1ae8eb36-f499-4c7d-8505-364f54183648",
+                "7e21331f-b10e-4f2a-a044-ec1fa26446e0"
+            ],
             "requires": [],
             "examples": [],
             "dimensionTags": {
@@ -124,8 +130,8 @@
             "shortKey": "tum_ma0007_lo1_2",
             "title": "Methoden auswählen und vergleichen",
             "titleEn": "Choose and Compare Methods",
-            "description": "Die lernende Person kann für eine gegebene Aufgabe begründen, ob ein analytischer oder linear-algebraischer Zugang (oder beides) geeignet ist, und die jeweiligen Stärken und Grenzen anhand einfacher Beispiele darstellen.",
-            "descriptionEn": "The learner can justify whether an analytic or a linear-algebraic approach (or both) is suitable for a given problem and illustrate the respective strengths and limitations with simple examples.",
+            "description": "Zusammenfassender Cluster: für Aufgaben analytische und linear-algebraische Zugänge auswählen, begründen und vergleichen.",
+            "descriptionEn": "Summary cluster: select, justify, and compare analytic and linear-algebraic approaches for given tasks.",
             "core": true,
             "weight": 0.5,
             "phase": "Modul",
@@ -134,7 +140,11 @@
                 "ects:5",
                 "module:MA0007"
             ],
-            "contains": [],
+            "contains": [
+                "885d927f-7d94-4542-ad42-f0a072ebff22",
+                "90c84316-5ce6-4cda-8c94-a047cea58da7",
+                "801e20a7-c578-4c99-a1d8-06df3bdf7e37"
+            ],
             "requires": [
                 "6f8b1181-c7ee-5b72-8286-f3fad3909327"
             ],
@@ -845,6 +855,244 @@
                 "phase": "Modul",
                 "area": "Differentialgleichungen",
                 "topicCode": "tum_ma0007_lo4_2_2"
+            }
+        },
+        {
+            "id": "54080a64-f2b7-4889-9098-48a66d91d96c",
+            "shortKey": "tum_ma0007_lo1_1_1",
+            "title": "Grenzwert- und Stetigkeitsbegriffe präzise verwenden",
+            "titleEn": "Use Limit and Continuity Concepts Precisely",
+            "description": "Die lernende Person kann die Begriffe Grenzwert und Stetigkeit präzise formulieren und in einfachen Beispielen korrekt anwenden.",
+            "descriptionEn": "The learner can state the notions of limit and continuity precisely and apply them correctly in simple examples.",
+            "core": true,
+            "weight": 0.1,
+            "phase": "Modul",
+            "area": "Integration",
+            "tags": [
+                "ects:5",
+                "module:MA0007"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0007",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Integration",
+                "topicCode": "tum_ma0007_lo1_1_1"
+            }
+        },
+        {
+            "id": "9da5483d-6b02-4eee-92c9-28fffd1bcaae",
+            "shortKey": "tum_ma0007_lo1_1_2",
+            "title": "Ableitung als lineare Abbildung (Differential) interpretieren",
+            "titleEn": "Interpret Derivatives as Linear Maps (Differentials)",
+            "description": "Die lernende Person kann die Ableitung als lokale lineare Approximation (Differential) interpretieren und diesen Zusammenhang in Beispielen (z.B. Linearisierung) nutzen.",
+            "descriptionEn": "The learner can interpret the derivative as a local linear approximation (differential) and use this connection in examples (e.g., linearization).",
+            "core": true,
+            "weight": 0.1,
+            "phase": "Modul",
+            "area": "Integration",
+            "tags": [
+                "ects:5",
+                "module:MA0007"
+            ],
+            "contains": [],
+            "requires": [
+                "54080a64-f2b7-4889-9098-48a66d91d96c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0007",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Integration",
+                "topicCode": "tum_ma0007_lo1_1_2"
+            }
+        },
+        {
+            "id": "536eb976-7250-4db9-8c5c-05acacbbd07d",
+            "shortKey": "tum_ma0007_lo1_1_3",
+            "title": "Integral als lineares Funktional einordnen",
+            "titleEn": "View the Integral as a Linear Functional",
+            "description": "Die lernende Person kann die Linearität des Integrals erläutern und das Integral als lineares Funktional in einfachen Beispielen nutzen.",
+            "descriptionEn": "The learner can explain the linearity of the integral and use the integral as a linear functional in simple examples.",
+            "core": true,
+            "weight": 0.1,
+            "phase": "Modul",
+            "area": "Integration",
+            "tags": [
+                "ects:5",
+                "module:MA0007"
+            ],
+            "contains": [],
+            "requires": [
+                "54080a64-f2b7-4889-9098-48a66d91d96c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0007",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Integration",
+                "topicCode": "tum_ma0007_lo1_1_3"
+            }
+        },
+        {
+            "id": "1ae8eb36-f499-4c7d-8505-364f54183648",
+            "shortKey": "tum_ma0007_lo1_1_4",
+            "title": "Vektorräume und lineare Abbildungen präzise verwenden",
+            "titleEn": "Use Vector Spaces and Linear Maps Precisely",
+            "description": "Die lernende Person kann Vektorräume und lineare Abbildungen präzise definieren und in einfachen Situationen korrekt anwenden.",
+            "descriptionEn": "The learner can define vector spaces and linear maps precisely and apply them correctly in simple situations.",
+            "core": true,
+            "weight": 0.1,
+            "phase": "Modul",
+            "area": "Integration",
+            "tags": [
+                "ects:5",
+                "module:MA0007"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0007",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Integration",
+                "topicCode": "tum_ma0007_lo1_1_4"
+            }
+        },
+        {
+            "id": "7e21331f-b10e-4f2a-a044-ec1fa26446e0",
+            "shortKey": "tum_ma0007_lo1_1_5",
+            "title": "Matrizen und Determinanten interpretieren",
+            "titleEn": "Interpret Matrices and Determinants",
+            "description": "Die lernende Person kann Matrizen als Darstellungen linearer Abbildungen einordnen und die Determinante als Kriterium für Invertierbarkeit bzw. Volumenskalierung interpretieren.",
+            "descriptionEn": "The learner can view matrices as representations of linear maps and interpret the determinant as a criterion for invertibility and as a volume scaling factor.",
+            "core": true,
+            "weight": 0.1,
+            "phase": "Modul",
+            "area": "Integration",
+            "tags": [
+                "ects:5",
+                "module:MA0007"
+            ],
+            "contains": [],
+            "requires": [
+                "1ae8eb36-f499-4c7d-8505-364f54183648"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0007",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Integration",
+                "topicCode": "tum_ma0007_lo1_1_5"
+            }
+        },
+        {
+            "id": "885d927f-7d94-4542-ad42-f0a072ebff22",
+            "shortKey": "tum_ma0007_lo1_2_1",
+            "title": "Analytischen vs. linear-algebraischen Zugang auswählen",
+            "titleEn": "Choose an Analytic vs. Linear-Algebraic Approach",
+            "description": "Die lernende Person kann für eine gegebene Aufgabe begründet entscheiden, ob ein analytischer oder ein linear-algebraischer Zugang (oder eine Kombination) passend ist.",
+            "descriptionEn": "The learner can decide with justification whether an analytic or a linear-algebraic approach (or a combination) is suitable for a given task.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Integration",
+            "tags": [
+                "ects:5",
+                "module:MA0007"
+            ],
+            "contains": [],
+            "requires": [
+                "6f8b1181-c7ee-5b72-8286-f3fad3909327"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0007",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Integration",
+                "topicCode": "tum_ma0007_lo1_2_1"
+            }
+        },
+        {
+            "id": "90c84316-5ce6-4cda-8c94-a047cea58da7",
+            "shortKey": "tum_ma0007_lo1_2_2",
+            "title": "Stärken und Grenzen beider Zugänge anhand einfacher Beispiele vergleichen",
+            "titleEn": "Compare Strengths and Limitations of Both Approaches in Simple Examples",
+            "description": "Die lernende Person kann Stärken und Grenzen analytischer und linear-algebraischer Vorgehensweisen an einfachen Beispielen nachvollziehbar gegenüberstellen.",
+            "descriptionEn": "The learner can compare strengths and limitations of analytic and linear-algebraic approaches in simple examples in a coherent way.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "Integration",
+            "tags": [
+                "ects:5",
+                "module:MA0007"
+            ],
+            "contains": [],
+            "requires": [
+                "6f8b1181-c7ee-5b72-8286-f3fad3909327",
+                "885d927f-7d94-4542-ad42-f0a072ebff22"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0007",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Integration",
+                "topicCode": "tum_ma0007_lo1_2_2"
+            }
+        },
+        {
+            "id": "801e20a7-c578-4c99-a1d8-06df3bdf7e37",
+            "shortKey": "tum_ma0007_lo1_2_3",
+            "title": "Methoden aus Analysis und Linearer Algebra gezielt kombinieren",
+            "titleEn": "Combine Methods from Analysis and Linear Algebra Deliberately",
+            "description": "Die lernende Person kann in einfachen Situationen Methoden aus Analysis und Linearer Algebra gezielt kombinieren (z.B. Linearisierung/Jacobi-Matrix, Matrixexponential in linearen ODEs).",
+            "descriptionEn": "The learner can deliberately combine methods from analysis and linear algebra in simple situations (e.g., linearization/Jacobian matrix, matrix exponential for linear ODEs).",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "Integration",
+            "tags": [
+                "ects:5",
+                "module:MA0007"
+            ],
+            "contains": [],
+            "requires": [
+                "6f8b1181-c7ee-5b72-8286-f3fad3909327",
+                "885d927f-7d94-4542-ad42-f0a072ebff22"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma0007",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Integration",
+                "topicCode": "tum_ma0007_lo1_2_3"
             }
         }
     ]

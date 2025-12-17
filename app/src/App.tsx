@@ -91,6 +91,7 @@ const App: React.FC = () => {
           if (!activeRole) return
           setSkillpilotId(id)
           setHasSession(true)
+          setRole(activeRole) // Explicitly set role to avoid redirect race
           localStorage.setItem('skillpilot_id', id)
           localStorage.setItem('skillpilot_role', activeRole)
           if (landscapeId) {
@@ -131,6 +132,7 @@ const App: React.FC = () => {
           if (!activeRole) return
           setSkillpilotId(id)
           setHasSession(true)
+          setRole(activeRole) // Explicitly set role to avoid redirect race
           localStorage.setItem('skillpilot_id', id)
           localStorage.setItem('skillpilot_role', activeRole)
           if (landscapeId) {
