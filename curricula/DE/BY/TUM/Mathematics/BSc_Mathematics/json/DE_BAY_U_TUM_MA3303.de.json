@@ -554,8 +554,8 @@
             "shortKey": "tum_ma3303_lo6_1",
             "title": "Iterative Löser und Vorconditionierung auswählen und begründen",
             "titleEn": "Select and Justify Iterative Solvers and Preconditioners",
-            "description": "Die lernende Person kann geeignete iterative Löser (z.B. CG, GMRES) für FE-Systeme auswählen, Vorconditionierungskonzepte erklären und Kriterien für Effizienz und Robustheit diskutieren.",
-            "descriptionEn": "The learner can select suitable iterative solvers (e.g., CG, GMRES) for FE systems, explain preconditioning concepts, and discuss criteria for efficiency and robustness.",
+            "description": "Zusammenfassender Cluster: iterative Löser auswählen, Vorconditionierung einordnen und Kriterien für Effizienz/Robustheit diskutieren.",
+            "descriptionEn": "Summary cluster: select iterative solvers, place preconditioning, and discuss criteria for efficiency/robustness.",
             "core": true,
             "weight": 0.55,
             "phase": "Modul",
@@ -564,7 +564,11 @@
                 "ects:9",
                 "module:MA3303"
             ],
-            "contains": [],
+            "contains": [
+                "fe11d085-aa09-4e13-ae4c-f90aa6bfe6d4",
+                "984bbcc1-c41d-44a0-b4c1-07ed9e7b5d97",
+                "83a86b4d-cb0b-4a44-a497-af4d4d9cbee4"
+            ],
             "requires": [
                 "1eadbbec-1ed1-57f8-9ec2-dc068feb1b21"
             ],
@@ -679,8 +683,8 @@
             "shortKey": "tum_ma3303_lo7_2",
             "title": "Varianten elliptischer Modelle numerisch einordnen und lösen",
             "titleEn": "Classify and Solve Variants of Elliptic Models Numerically",
-            "description": "Die lernende Person kann Modellvarianten (z.B. variable Koeffizienten, gemischte Formulierungen in Grundzügen) einordnen und die Auswirkungen auf Diskretisierung, Löserwahl und Fehlerverhalten qualitativ diskutieren.",
-            "descriptionEn": "The learner can classify model variants (e.g., variable coefficients, basic mixed formulations) and discuss qualitatively how they affect discretization, solver choice, and error behavior.",
+            "description": "Zusammenfassender Cluster: Modellvarianten elliptischer Probleme einordnen und Auswirkungen auf Numerik diskutieren.",
+            "descriptionEn": "Summary cluster: classify elliptic model variants and discuss their impact on numerical methods.",
             "core": true,
             "weight": 0.55,
             "phase": "Modul",
@@ -689,7 +693,11 @@
                 "ects:9",
                 "module:MA3303"
             ],
-            "contains": [],
+            "contains": [
+                "eb5f7fef-aeac-4791-a96b-b1746824b650",
+                "b1ad7e67-8f4e-4b50-96d8-333a5687370e",
+                "cacf78b7-4334-4be2-838b-2f7fb7087a32"
+            ],
             "requires": [
                 "c014261c-227e-5b82-bfaa-5bf500812733"
             ],
@@ -955,8 +963,8 @@
             "shortKey": "tum_ma3303_lo8_2_1",
             "title": "Raum- und Zeitdiskretisierung für eine Evolutions-PDE implementieren",
             "titleEn": "Implement Spatial and Time Discretizations for an Evolution PDE",
-            "description": "Die lernende Person kann für eine einfache Evolutions-PDE (z.B. Wärmegleichung) eine Raumdiskretisierung (z.B. FEM/FDM) und eine Zeitdiskretisierung (explizit/implizit) kombinieren und das entstehende Update bzw. lineare Gleichungssystem implementieren.",
-            "descriptionEn": "The learner can combine a spatial discretization (e.g., FEM/FDM) and a time discretization (explicit/implicit) for a simple evolution PDE (e.g., the heat equation) and implement the resulting update or linear system.",
+            "description": "Zusammenfassender Cluster: Raum- und Zeitdiskretisierung für einfache Evolutions-PDEs implementieren.",
+            "descriptionEn": "Summary cluster: implement spatial and time discretizations for simple evolution PDEs.",
             "core": true,
             "weight": 0.2,
             "phase": "Modul",
@@ -965,7 +973,10 @@
                 "ects:9",
                 "module:MA3303"
             ],
-            "contains": [],
+            "contains": [
+                "5f187a85-e161-4bfd-8e02-0896adfd4dd2",
+                "20ea9f0f-394e-47bb-9798-a518a712ae04"
+            ],
             "requires": [
                 "52b169d0-e80e-5a65-a874-5cfa6fe32103",
                 "03aadec8-b60f-5e67-b309-15861ae04088"
@@ -1043,6 +1054,247 @@
                 "phase": "Modul",
                 "area": "Evolutionsgleichungen",
                 "topicCode": "tum_ma3303_lo8_2_3"
+            }
+        },
+        {
+            "id": "fe11d085-aa09-4e13-ae4c-f90aa6bfe6d4",
+            "shortKey": "tum_ma3303_lo6_1_1",
+            "title": "Iterative Löser für FE-Systeme auswählen",
+            "titleEn": "Select Iterative Solvers for FE Systems",
+            "description": "Die lernende Person kann geeignete iterative Löser (z.B. CG, GMRES) für ein gegebenes FE-System auswählen und die Wahl anhand grundlegender System- und Solver-Eigenschaften begründen.",
+            "descriptionEn": "The learner can select suitable iterative solvers (e.g., CG, GMRES) for a given FE system and justify the choice using basic system and solver properties.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Schnelle Löser",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "1eadbbec-1ed1-57f8-9ec2-dc068feb1b21"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Schnelle Löser",
+                "topicCode": "tum_ma3303_lo6_1_1"
+            }
+        },
+        {
+            "id": "984bbcc1-c41d-44a0-b4c1-07ed9e7b5d97",
+            "shortKey": "tum_ma3303_lo6_1_2",
+            "title": "Vorconditionierungskonzepte erklären",
+            "titleEn": "Explain Preconditioning Concepts",
+            "description": "Die lernende Person kann grundlegende Vorconditionierungskonzepte erklären und deren Ziel (Verbesserung der Kondition/Iteration) in Beispielen nachvollziehen.",
+            "descriptionEn": "The learner can explain basic preconditioning concepts and understand their goal (improving conditioning/iterations) in examples.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Schnelle Löser",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "fe11d085-aa09-4e13-ae4c-f90aa6bfe6d4"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Schnelle Löser",
+                "topicCode": "tum_ma3303_lo6_1_2"
+            }
+        },
+        {
+            "id": "83a86b4d-cb0b-4a44-a497-af4d4d9cbee4",
+            "shortKey": "tum_ma3303_lo6_1_3",
+            "title": "Kriterien für Effizienz und Robustheit diskutieren",
+            "titleEn": "Discuss Criteria for Efficiency and Robustness",
+            "description": "Die lernende Person kann Kriterien für Effizienz und Robustheit iterativer Löser (z.B. Iterationszahl, Kosten pro Iteration, Sensitivität) qualitativ diskutieren.",
+            "descriptionEn": "The learner can discuss criteria for efficiency and robustness of iterative solvers (e.g., iteration counts, cost per iteration, sensitivity) qualitatively.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "Schnelle Löser",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "984bbcc1-c41d-44a0-b4c1-07ed9e7b5d97"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Schnelle Löser",
+                "topicCode": "tum_ma3303_lo6_1_3"
+            }
+        },
+        {
+            "id": "eb5f7fef-aeac-4791-a96b-b1746824b650",
+            "shortKey": "tum_ma3303_lo7_2_1",
+            "title": "Modellvarianten elliptischer Probleme erkennen",
+            "titleEn": "Identify Model Variants of Elliptic Problems",
+            "description": "Die lernende Person kann grundlegende Modellvarianten (z.B. variable Koeffizienten, gemischte Formulierungen in Grundzügen) erkennen und konzeptionell einordnen.",
+            "descriptionEn": "The learner can identify basic model variants (e.g., variable coefficients, basic mixed formulations) and place them conceptually.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Mehrdimensionale PDEs",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "c014261c-227e-5b82-bfaa-5bf500812733"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Mehrdimensionale PDEs",
+                "topicCode": "tum_ma3303_lo7_2_1"
+            }
+        },
+        {
+            "id": "b1ad7e67-8f4e-4b50-96d8-333a5687370e",
+            "shortKey": "tum_ma3303_lo7_2_2",
+            "title": "Auswirkungen von Modellvarianten auf Diskretisierung und Löserwahl diskutieren",
+            "titleEn": "Discuss How Model Variants Affect Discretization and Solver Choice",
+            "description": "Die lernende Person kann qualitativ diskutieren, wie Modellvarianten die Diskretisierung (z.B. Ansatzräume) und die Löserwahl beeinflussen.",
+            "descriptionEn": "The learner can discuss qualitatively how model variants affect discretization (e.g., choice of trial spaces) and solver choice.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Mehrdimensionale PDEs",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "eb5f7fef-aeac-4791-a96b-b1746824b650"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Mehrdimensionale PDEs",
+                "topicCode": "tum_ma3303_lo7_2_2"
+            }
+        },
+        {
+            "id": "cacf78b7-4334-4be2-838b-2f7fb7087a32",
+            "shortKey": "tum_ma3303_lo7_2_3",
+            "title": "Auswirkungen von Modellvarianten auf Fehlerverhalten beurteilen",
+            "titleEn": "Assess How Model Variants Affect Error Behavior",
+            "description": "Die lernende Person kann qualitativ diskutieren, wie Modellvarianten das Fehlerverhalten beeinflussen und woran sich Schwierigkeiten in der Praxis zeigen können.",
+            "descriptionEn": "The learner can discuss qualitatively how model variants affect error behavior and how practical difficulties may manifest.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "Mehrdimensionale PDEs",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "b1ad7e67-8f4e-4b50-96d8-333a5687370e"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Mehrdimensionale PDEs",
+                "topicCode": "tum_ma3303_lo7_2_3"
+            }
+        },
+        {
+            "id": "5f187a85-e161-4bfd-8e02-0896adfd4dd2",
+            "shortKey": "tum_ma3303_lo8_2_1_1",
+            "title": "Raumdiskretisierung (Method of Lines) für eine Evolutions-PDE aufstellen",
+            "titleEn": "Set Up a Spatial Discretization (Method of Lines) for an Evolution PDE",
+            "description": "Die lernende Person kann für eine einfache Evolutions-PDE eine Raumdiskretisierung (z.B. FEM/FDM) aufstellen und daraus ein semidiskretes ODE-System (Method of Lines) ableiten.",
+            "descriptionEn": "The learner can set up a spatial discretization (e.g., FEM/FDM) for a simple evolution PDE and derive the semi-discrete ODE system (method of lines).",
+            "core": true,
+            "weight": 0.1,
+            "phase": "Modul",
+            "area": "Evolutionsgleichungen",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "52b169d0-e80e-5a65-a874-5cfa6fe32103",
+                "03aadec8-b60f-5e67-b309-15861ae04088"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Evolutionsgleichungen",
+                "topicCode": "tum_ma3303_lo8_2_1_1"
+            }
+        },
+        {
+            "id": "20ea9f0f-394e-47bb-9798-a518a712ae04",
+            "shortKey": "tum_ma3303_lo8_2_1_2",
+            "title": "Zeitdiskretisierung für ein semidiskretes Evolutionssystem implementieren",
+            "titleEn": "Implement a Time Discretization for a Semi-Discrete Evolution System",
+            "description": "Die lernende Person kann für das semidiskrete System eine Zeitdiskretisierung (explizit/implizit) implementieren und den Zeitschritt als Update bzw. lineares Gleichungssystem formulieren.",
+            "descriptionEn": "The learner can implement an explicit/implicit time discretization for the semi-discrete system and formulate the time step as an update or linear system.",
+            "core": true,
+            "weight": 0.1,
+            "phase": "Modul",
+            "area": "Evolutionsgleichungen",
+            "tags": [
+                "ects:9",
+                "module:MA3303"
+            ],
+            "contains": [],
+            "requires": [
+                "5f187a85-e161-4bfd-8e02-0896adfd4dd2"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3303",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Evolutionsgleichungen",
+                "topicCode": "tum_ma3303_lo8_2_1_2"
             }
         }
     ]
