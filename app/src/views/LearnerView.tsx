@@ -1,7 +1,6 @@
 import React, { useState, useMemo, useCallback, useRef } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
-import { GoalCard } from '../components/GoalCard'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
 import { Settings, Upload, Download, RefreshCw } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
@@ -283,7 +282,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   return (
     <div className="flex h-screen bg-chat-bg text-text-primary overflow-hidden transition-colors">
-      <aside className="w-1/3 min-w-[300px] border-r border-border-color flex flex-col bg-sidebar-bg">
+      <aside className="w-full flex flex-col bg-sidebar-bg">
         <div className="p-4 border-b border-border-color flex items-center justify-between">
           <div>
             <h2 className="font-bold text-sky-600 dark:text-sky-400">{t.learner.myGoals}</h2>
@@ -369,37 +368,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           </div>
         )}
       </aside>
-
-      <main className="flex-1 p-6 bg-chat-bg overflow-y-auto transition-colors">
-        {currentGoal ? (
-          <div className="max-w-3xl mx-auto space-y-4">
-            <GoalCard
-              goal={currentGoal}
-              masteryValue={getMastery(currentGoal.id)}
-              onMasteryChange={() => { }}
-              showLearnerTools={false}
-            />
-            <div className="bg-input-bg border border-border-color rounded-2xl p-4 flex items-center justify-between">
-              <div>
-                <div className="text-sm text-text-primary">Auf Lernliste setzen</div>
-                <div className="text-[11px] text-text-secondary">Merke dir dieses Ziel für deinen Fokus.</div>
-              </div>
-              <button
-                type="button"
-                onClick={() => togglePlan(currentGoal.id)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors border ${plannedGoals.has(currentGoal.id)
-                  ? 'bg-amber-500/20 text-amber-600 dark:text-amber-300 border-amber-400/60'
-                  : 'bg-sidebar-bg text-text-primary border-border-color hover:bg-gray-200 dark:hover:bg-slate-700'
-                  }`}
-              >
-                {plannedGoals.has(currentGoal.id) ? 'Gemerkte Ziele' : 'Ziel merken'}
-              </button>
-            </div>
-          </div>
-        ) : (
-          <div className="text-center text-text-secondary mt-20">Wähle ein Lernziel aus.</div>
-        )}
-      </main>
 
       <PersonalCurriculumSetup
         isOpen={isSetupOpen}

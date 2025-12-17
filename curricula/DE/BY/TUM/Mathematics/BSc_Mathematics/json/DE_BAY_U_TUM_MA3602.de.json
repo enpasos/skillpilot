@@ -1,8 +1,8 @@
 {
     "title": "Applications of Mathematical Biology (TUM, Modul MA3602)",
     "titleEn": "Applications of Mathematical Biology (TUM, Module MA3602)",
-    "description": "Upon successful completion of the module, students are able to read most articles from biomathematical journals, to perform a basic literature research and know the most important data bases to search for biomathematical papers. Finally, students are able to approach a given problem, know the standard models and adapt them to the problem under consideration. 9 ECTS, angeboten im Sommersemester, Version 2023s.",
-    "descriptionEn": "Upon successful completion of the module, students are able to read most articles from biomathematical journals, to perform a basic literature research and know the most important data bases to search for biomathematical papers. Finally, students are able to approach a given problem, know the standard models and adapt them to the problem under consideration. 9 ECTS, offered in summer semester, version 2023s.",
+    "description": "Das Modul behandelt Grundlagen mathematischer Methoden (nichtlineare Dynamik und Bifurkationstheorie, singuläre Störungstheorie, Grundelemente stochastischer Prozesse) und wichtige Modellklassen in Anwendungen der mathematischen Biologie, u.a. in Ökologie, Biochemie, regulatorischen Netzwerken, Neurowissenschaften und Populationsgenetik. Nach erfolgreichem Abschluss können Studierende biomathematische Fachartikel weitgehend selbstständig lesen, eine grundlegende Literaturrecherche durchführen und die wichtigsten Datenbanken für biomathematische Arbeiten nutzen. Sie können ein gegebenes Problem strukturiert angehen, Standardmodelle auswählen und diese an die konkrete Fragestellung anpassen. 9 ECTS, angeboten im Sommersemester, Version 2023s.",
+    "descriptionEn": "The module covers basic mathematical methods (nonlinear dynamics and bifurcation theory, singular perturbation theory, and basic elements of stochastic processes) and important model classes in applications of mathematical biology, including ecology, biochemistry, regulatory networks, neuroscience, and population genetics. After successful completion, students are able to read most biomathematical journal articles, perform a basic literature search, and use the most important databases for biomathematical papers. They can approach a given problem in a structured way, select standard models, and adapt them to the problem under consideration. 9 ECTS, offered in the summer semester, version 2023s.",
     "landscapeId": "787289b3-ee31-414a-b101-9b5adee312ef",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -19,8 +19,8 @@
             "shortKey": "tum_ma3602_module",
             "title": "Applications of Mathematical Biology – Gesamtmodul",
             "titleEn": "Applications of Mathematical Biology – Full Module",
-            "description": "Upon successful completion of the module, students are able to read most articles from biomathematical journals, to perform a basic literature research and know the most important data bases to search for biomathematical papers. Finally, students are able to approach a given problem, know the standard models and adapt them to the problem under consideration.",
-            "descriptionEn": "Upon successful completion of the module, students are able to read most articles from biomathematical journals, to perform a basic literature research and know the most important data bases to search for biomathematical papers. Finally, students are able to approach a given problem, know the standard models and adapt them to the problem under consideration.",
+            "description": "Nach erfolgreichem Abschluss können Studierende biomathematische Fachartikel weitgehend selbstständig lesen, eine grundlegende Literaturrecherche durchführen und die wichtigsten Datenbanken für biomathematische Arbeiten nutzen. Sie können ein gegebenes Problem strukturiert angehen, Standardmodelle auswählen und diese an die konkrete Fragestellung anpassen.",
+            "descriptionEn": "Upon successful completion of the module, students are able to read most biomathematical journal articles, perform a basic literature search, and use the most important databases for biomathematical papers. Finally, they are able to approach a given problem in a structured way, know standard models, and adapt them to the problem under consideration.",
             "core": true,
             "weight": 9.0,
             "phase": "Modul",
@@ -29,14 +29,27 @@
                 "ects:9",
                 "workload:270h",
                 "presence:90h",
-                "level:bachelor",
-                "language:de",
+                "level:master",
+                "language:en",
                 "module:MA3602",
                 "semester:SS",
                 "duration:1_semester"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "ab0dd5e5-ebcc-5cce-abff-b5b3513f841b",
+                "74349416-9c3d-51da-9711-2c4464253168",
+                "1013dfa6-5fd9-50ee-94ea-a49e63fd2088",
+                "48b71ed2-fda6-5b9e-b918-50a32a2fc2e7",
+                "9bd70ff7-8890-5806-90dd-a6ca6280a43d",
+                "f2587d17-a04c-5753-aae9-b0b745028a28",
+                "49aa29b3-3514-571f-a99a-2c3a08329101",
+                "5efa20f0-934c-5b99-9464-4aa55615e6f3"
+            ],
+            "requires": [
+                "8eb1605b-fa70-511b-bbe4-28173d359c3b",
+                "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
+                "feaad1d5-022f-5ab3-93c3-001ac46de351"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-ma3602",
@@ -48,6 +61,733 @@
                 "topicCode": "tum_ma3602_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA3602&description_version=2023s"
+        },
+        {
+            "id": "ab0dd5e5-ebcc-5cce-abff-b5b3513f841b",
+            "shortKey": "tum_ma3602_lo1",
+            "title": "Nichtlineare Dynamik und Bifurkationstheorie",
+            "titleEn": "Nonlinear Dynamics and Bifurcation Theory",
+            "description": "Zusammenfassender Cluster: Qualitative Analyse nichtlinearer ODEs und lokale Bifurkationen als Grundlage für biomathematische Anwendungen.",
+            "descriptionEn": "Summary cluster: qualitative analysis of nonlinear ODEs and local bifurcations as a foundation for biomathematical applications.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Methoden",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [
+                "c3118309-1f68-51fb-9e11-98db72f8dec0",
+                "0953f6f7-426d-5e8c-9b7b-c514555bc013"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Methoden",
+                "topicCode": "tum_ma3602_lo1"
+            }
+        },
+        {
+            "id": "c3118309-1f68-51fb-9e11-98db72f8dec0",
+            "shortKey": "tum_ma3602_lo1_1",
+            "title": "Phasenraumanalyse nichtlinearer ODEs durchführen",
+            "titleEn": "Perform Phase-Space Analysis of Nonlinear ODEs",
+            "description": "Die lernende Person kann Gleichgewichtspunkte und periodische Orbits bestimmen, Stabilität untersuchen und qualitative Dynamik im Phasenraum analysieren.",
+            "descriptionEn": "The learner can identify equilibria and periodic orbits, study stability, and analyze qualitative dynamics in phase space.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Methoden",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Methoden",
+                "topicCode": "tum_ma3602_lo1_1"
+            }
+        },
+        {
+            "id": "0953f6f7-426d-5e8c-9b7b-c514555bc013",
+            "shortKey": "tum_ma3602_lo1_2",
+            "title": "Lokale Bifurkationen modellieren und interpretieren",
+            "titleEn": "Model and Interpret Local Bifurcations",
+            "description": "Die lernende Person kann lokale Bifurkationen (z.B. Fold/Saddle-Node, Hopf) erkennen, Bifurkationsdiagramme erstellen und biologische Interpretationen ableiten.",
+            "descriptionEn": "The learner can identify local bifurcations (e.g., fold/saddle-node, Hopf), construct bifurcation diagrams, and derive biological interpretations.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Methoden",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [],
+            "requires": [
+                "c3118309-1f68-51fb-9e11-98db72f8dec0"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Methoden",
+                "topicCode": "tum_ma3602_lo1_2"
+            }
+        },
+        {
+            "id": "74349416-9c3d-51da-9711-2c4464253168",
+            "shortKey": "tum_ma3602_lo2",
+            "title": "Singuläre Störungstheorie und Asymptotik",
+            "titleEn": "Singular Perturbation Theory and Asymptotics",
+            "description": "Zusammenfassender Cluster: Zeitmaßstabtrennung, Skalenanalyse und asymptotische Verfahren zur Behandlung kleiner Parameter in biologischen Modellen.",
+            "descriptionEn": "Summary cluster: time-scale separation, scaling analysis, and asymptotic methods to handle small parameters in biological models.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Methoden",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [
+                "6eb5fbea-7a7c-5d66-a3fa-694a84b740c7",
+                "364440d4-da30-5a7f-b733-d827e77016e3"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Methoden",
+                "topicCode": "tum_ma3602_lo2"
+            }
+        },
+        {
+            "id": "6eb5fbea-7a7c-5d66-a3fa-694a84b740c7",
+            "shortKey": "tum_ma3602_lo2_1",
+            "title": "Zeitmaßstabtrennung und Skalenanalyse in Modellen erkennen",
+            "titleEn": "Identify Time-Scale Separation and Scaling in Models",
+            "description": "Die lernende Person kann Modelle nondimensionalisieren, kleine Parameter identifizieren und aus Zeitmaßstäben geeignete Approximationen (z.B. Quasi-Steady-State) motivieren.",
+            "descriptionEn": "The learner can nondimensionalize models, identify small parameters, and motivate suitable approximations from time-scale considerations (e.g., quasi-steady-state).",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Methoden",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Methoden",
+                "topicCode": "tum_ma3602_lo2_1"
+            }
+        },
+        {
+            "id": "364440d4-da30-5a7f-b733-d827e77016e3",
+            "shortKey": "tum_ma3602_lo2_2",
+            "title": "Asymptotische Verfahren auf singulär gestörte Probleme anwenden",
+            "titleEn": "Apply Asymptotic Methods to Singularly Perturbed Problems",
+            "description": "Die lernende Person kann grundlegende Verfahren wie Grenzschichtanalyse und matched asymptotic expansions anwenden und die entstehenden Approximationen im Kontext interpretieren.",
+            "descriptionEn": "The learner can apply basic methods such as boundary-layer analysis and matched asymptotic expansions and interpret the resulting approximations in context.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Methoden",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [],
+            "requires": [
+                "6eb5fbea-7a7c-5d66-a3fa-694a84b740c7"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Methoden",
+                "topicCode": "tum_ma3602_lo2_2"
+            }
+        },
+        {
+            "id": "1013dfa6-5fd9-50ee-94ea-a49e63fd2088",
+            "shortKey": "tum_ma3602_lo3",
+            "title": "Grundlagen stochastischer Prozesse",
+            "titleEn": "Basics of Stochastic Processes",
+            "description": "Zusammenfassender Cluster: Zentrale Konzepte stochastischer Prozesse für biomathematische Modellierung verstehen, nutzen und simulieren.",
+            "descriptionEn": "Summary cluster: understand, use, and simulate key concepts of stochastic processes for biomathematical modeling.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Stochastik",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [
+                "9a5ef7bb-d5f8-5b50-a317-b4b8f16c3fc6",
+                "795c3690-adb6-5c0c-8b0c-0f580777ba8c"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stochastik",
+                "topicCode": "tum_ma3602_lo3"
+            }
+        },
+        {
+            "id": "9a5ef7bb-d5f8-5b50-a317-b4b8f16c3fc6",
+            "shortKey": "tum_ma3602_lo3_1",
+            "title": "Grundbegriffe stochastischer Prozesse auf Modelle anwenden",
+            "titleEn": "Apply Core Notions of Stochastic Processes to Models",
+            "description": "Die lernende Person kann grundlegende Begriffe (Markov-Eigenschaft, Übergangsraten/-wahrscheinlichkeiten, Poisson-Prozess, CTMC) in biologischen Modellen verwenden.",
+            "descriptionEn": "The learner can use basic notions (Markov property, transition rates/probabilities, Poisson process, CTMC) in biological models.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Stochastik",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stochastik",
+                "topicCode": "tum_ma3602_lo3_1"
+            }
+        },
+        {
+            "id": "795c3690-adb6-5c0c-8b0c-0f580777ba8c",
+            "shortKey": "tum_ma3602_lo3_2",
+            "title": "Stochastische Modelle simulieren und mit deterministischen Modellen vergleichen",
+            "titleEn": "Simulate Stochastic Models and Compare Them to Deterministic Models",
+            "description": "Die lernende Person kann stochastische Modelle simulieren, Streuung/Unsicherheit quantifizieren und die Ergebnisse mit deterministischen Beschreibungen vergleichen und begründen.",
+            "descriptionEn": "The learner can simulate stochastic models, quantify variability/uncertainty, and compare and justify results against deterministic descriptions.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Stochastik",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [],
+            "requires": [
+                "9a5ef7bb-d5f8-5b50-a317-b4b8f16c3fc6"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stochastik",
+                "topicCode": "tum_ma3602_lo3_2"
+            }
+        },
+        {
+            "id": "48b71ed2-fda6-5b9e-b918-50a32a2fc2e7",
+            "shortKey": "tum_ma3602_lo4",
+            "title": "Ökologische Modelle",
+            "titleEn": "Ecological Models",
+            "description": "Zusammenfassender Cluster: Standardmodelle der Ökologie formulieren und Dynamik (Stabilität, Zyklen, Bifurkationen) biologisch interpretieren.",
+            "descriptionEn": "Summary cluster: formulate standard ecological models and interpret their dynamics (stability, cycles, bifurcations) in biological terms.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Anwendungen",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [
+                "da7e9b09-a84b-5288-bc4a-0fc77a5910e8",
+                "ca4408aa-80d0-5a40-ab1e-fcc494ea6fc7"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Anwendungen",
+                "topicCode": "tum_ma3602_lo4"
+            }
+        },
+        {
+            "id": "da7e9b09-a84b-5288-bc4a-0fc77a5910e8",
+            "shortKey": "tum_ma3602_lo4_1",
+            "title": "Ökologische Standardmodelle formulieren",
+            "titleEn": "Formulate Standard Ecological Models",
+            "description": "Die lernende Person kann Standardmodelle (z.B. logistisches Wachstum, Konkurrenz- und Räuber-Beute-Modelle) aus Annahmen herleiten und als Differentialgleichungen formulieren.",
+            "descriptionEn": "The learner can derive standard models (e.g., logistic growth, competition and predator–prey models) from assumptions and formulate them as differential equations.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Anwendungen",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [],
+            "requires": [
+                "c3118309-1f68-51fb-9e11-98db72f8dec0"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Anwendungen",
+                "topicCode": "tum_ma3602_lo4_1"
+            }
+        },
+        {
+            "id": "ca4408aa-80d0-5a40-ab1e-fcc494ea6fc7",
+            "shortKey": "tum_ma3602_lo4_2",
+            "title": "Ökologische Dynamik analysieren und interpretieren",
+            "titleEn": "Analyze and Interpret Ecological Dynamics",
+            "description": "Die lernende Person kann Gleichgewichte, Stabilität und qualitative Änderungen (z.B. Oszillationen, Bifurkationen) in ökologischen Modellen untersuchen und biologisch interpretieren.",
+            "descriptionEn": "The learner can study equilibria, stability, and qualitative changes (e.g., oscillations, bifurcations) in ecological models and interpret them biologically.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Anwendungen",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [],
+            "requires": [
+                "da7e9b09-a84b-5288-bc4a-0fc77a5910e8",
+                "0953f6f7-426d-5e8c-9b7b-c514555bc013"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Anwendungen",
+                "topicCode": "tum_ma3602_lo4_2"
+            }
+        },
+        {
+            "id": "9bd70ff7-8890-5806-90dd-a6ca6280a43d",
+            "shortKey": "tum_ma3602_lo5",
+            "title": "Biochemie und regulatorische Netzwerke",
+            "titleEn": "Biochemistry and Regulatory Networks",
+            "description": "Zusammenfassender Cluster: Modelle der Reaktionskinetik und regulatorischer Netzwerke formulieren, vereinfachen und dynamisch interpretieren.",
+            "descriptionEn": "Summary cluster: formulate, simplify, and interpret dynamical models of reaction kinetics and regulatory networks.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Anwendungen",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [
+                "ebdb54bd-5240-5595-8ffd-552ae34f7c4b",
+                "f56c2f74-cf5f-5ab7-8a48-46fdd4a7be75"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Anwendungen",
+                "topicCode": "tum_ma3602_lo5"
+            }
+        },
+        {
+            "id": "ebdb54bd-5240-5595-8ffd-552ae34f7c4b",
+            "shortKey": "tum_ma3602_lo5_1",
+            "title": "Reaktionskinetische Modelle formulieren und approximieren",
+            "titleEn": "Formulate and Approximate Reaction-Kinetic Models",
+            "description": "Die lernende Person kann Modelle der Reaktionskinetik (z.B. Mass-Action, Michaelis-Menten) formulieren und geeignete Approximationen über Zeitmaßstabtrennung begründen.",
+            "descriptionEn": "The learner can formulate reaction-kinetic models (e.g., mass action, Michaelis–Menten) and justify suitable approximations via time-scale separation.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Anwendungen",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [],
+            "requires": [
+                "6eb5fbea-7a7c-5d66-a3fa-694a84b740c7"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Anwendungen",
+                "topicCode": "tum_ma3602_lo5_1"
+            }
+        },
+        {
+            "id": "f56c2f74-cf5f-5ab7-8a48-46fdd4a7be75",
+            "shortKey": "tum_ma3602_lo5_2",
+            "title": "Regulatorische Netzwerke dynamisch analysieren",
+            "titleEn": "Dynamically Analyze Regulatory Networks",
+            "description": "Die lernende Person kann Feedback- und Schaltkreisstrukturen modellieren und Phänomene wie Oszillationen oder Schaltverhalten mit geeigneten Methoden (z.B. Bifurkationen, QSSA) erklären.",
+            "descriptionEn": "The learner can model feedback and circuit structures and explain phenomena such as oscillations or switch-like behavior using appropriate methods (e.g., bifurcations, QSSA).",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Anwendungen",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [],
+            "requires": [
+                "ebdb54bd-5240-5595-8ffd-552ae34f7c4b",
+                "364440d4-da30-5a7f-b733-d827e77016e3",
+                "0953f6f7-426d-5e8c-9b7b-c514555bc013"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Anwendungen",
+                "topicCode": "tum_ma3602_lo5_2"
+            }
+        },
+        {
+            "id": "f2587d17-a04c-5753-aae9-b0b745028a28",
+            "shortKey": "tum_ma3602_lo6",
+            "title": "Neuronale Modelle",
+            "titleEn": "Neuronal Models",
+            "description": "Zusammenfassender Cluster: Mathematische Modelle neuronaler Dynamik formulieren und typische Phänomene wie Spiking und Oszillationen analysieren.",
+            "descriptionEn": "Summary cluster: formulate mathematical models of neuronal dynamics and analyze typical phenomena such as spiking and oscillations.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Anwendungen",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [
+                "c2b55c48-ae87-5b97-8d8f-ed627e4ebae2",
+                "81b247e2-121c-5a50-855e-85ec54065336"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Anwendungen",
+                "topicCode": "tum_ma3602_lo6"
+            }
+        },
+        {
+            "id": "c2b55c48-ae87-5b97-8d8f-ed627e4ebae2",
+            "shortKey": "tum_ma3602_lo6_1",
+            "title": "Neuronale Standardmodelle formulieren",
+            "titleEn": "Formulate Standard Neuronal Models",
+            "description": "Die lernende Person kann neuronale Standardmodelle (z.B. Integrate-and-Fire, Hodgkin-Huxley-typische Modelle) formulieren und die Rolle der Modellparameter erläutern.",
+            "descriptionEn": "The learner can formulate standard neuronal models (e.g., integrate-and-fire, Hodgkin–Huxley-type models) and explain the role of model parameters.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Anwendungen",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [],
+            "requires": [
+                "c3118309-1f68-51fb-9e11-98db72f8dec0"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Anwendungen",
+                "topicCode": "tum_ma3602_lo6_1"
+            }
+        },
+        {
+            "id": "81b247e2-121c-5a50-855e-85ec54065336",
+            "shortKey": "tum_ma3602_lo6_2",
+            "title": "Spiking-, Oszillations- und Stochastikphänomene in neuronalen Modellen analysieren",
+            "titleEn": "Analyze Spiking, Oscillatory, and Stochastic Phenomena in Neuronal Models",
+            "description": "Die lernende Person kann Spiking/Oszillationen qualitativ analysieren, Parameterabhängigkeiten erklären und den Einfluss stochastischer Inputs bzw. Rauschens diskutieren.",
+            "descriptionEn": "The learner can qualitatively analyze spiking/oscillations, explain parameter dependence, and discuss the influence of stochastic inputs or noise.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Anwendungen",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [],
+            "requires": [
+                "c2b55c48-ae87-5b97-8d8f-ed627e4ebae2",
+                "0953f6f7-426d-5e8c-9b7b-c514555bc013",
+                "9a5ef7bb-d5f8-5b50-a317-b4b8f16c3fc6"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Anwendungen",
+                "topicCode": "tum_ma3602_lo6_2"
+            }
+        },
+        {
+            "id": "49aa29b3-3514-571f-a99a-2c3a08329101",
+            "shortKey": "tum_ma3602_lo7",
+            "title": "Modelle der Populationsgenetik",
+            "titleEn": "Models in Population Genetics",
+            "description": "Zusammenfassender Cluster: Zentrale stochastische Modelle der Populationsgenetik verstehen und Aussagen zu Drift, Selektion und Fixation herleiten.",
+            "descriptionEn": "Summary cluster: understand core stochastic models in population genetics and derive statements about drift, selection, and fixation.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Anwendungen",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [
+                "9aea59be-fde5-55c8-993e-febc26fec258",
+                "294588f9-14de-5205-be14-48301d4c5b21"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Anwendungen",
+                "topicCode": "tum_ma3602_lo7"
+            }
+        },
+        {
+            "id": "9aea59be-fde5-55c8-993e-febc26fec258",
+            "shortKey": "tum_ma3602_lo7_1",
+            "title": "Populationsgenetische Standardmodelle aufstellen und interpretieren",
+            "titleEn": "Set Up and Interpret Standard Population-Genetic Models",
+            "description": "Die lernende Person kann Standardmodelle (z.B. Wright-Fisher, Moran) für Allelfrequenzen formulieren und grundlegende Effekte von Drift und Selektion beschreiben.",
+            "descriptionEn": "The learner can formulate standard models (e.g., Wright–Fisher, Moran) for allele frequencies and describe basic effects of drift and selection.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Anwendungen",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [],
+            "requires": [
+                "9a5ef7bb-d5f8-5b50-a317-b4b8f16c3fc6"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Anwendungen",
+                "topicCode": "tum_ma3602_lo7_1"
+            }
+        },
+        {
+            "id": "294588f9-14de-5205-be14-48301d4c5b21",
+            "shortKey": "tum_ma3602_lo7_2",
+            "title": "Fixation und Zeitverhalten in Populationsgenetik-Modellen analysieren",
+            "titleEn": "Analyze Fixation and Time Behavior in Population-Genetic Models",
+            "description": "Die lernende Person kann Fixationswahrscheinlichkeiten und typische Zeitskalen (z.B. erwartete Fixationszeiten) herleiten und die Ergebnisse im Kontext interpretieren.",
+            "descriptionEn": "The learner can derive fixation probabilities and typical time scales (e.g., expected fixation times) and interpret the results in context.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Anwendungen",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [],
+            "requires": [
+                "9aea59be-fde5-55c8-993e-febc26fec258"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Anwendungen",
+                "topicCode": "tum_ma3602_lo7_2"
+            }
+        },
+        {
+            "id": "5efa20f0-934c-5b99-9464-4aa55615e6f3",
+            "shortKey": "tum_ma3602_lo8",
+            "title": "Literaturarbeit und Modelladaption",
+            "titleEn": "Literature Work and Model Adaptation",
+            "description": "Zusammenfassender Cluster: Biomathematische Literatur verstehen, recherchieren und Standardmodelle zielgerichtet an konkrete Fragestellungen anpassen.",
+            "descriptionEn": "Summary cluster: understand and search biomathematical literature and adapt standard models purposefully to concrete questions.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Wissenschaftliches Arbeiten",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [
+                "7a565389-c39b-540e-b30b-34384be9ed9a",
+                "f79e32ad-3cb6-5fe0-a4fb-2c998cfb9110"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Wissenschaftliches Arbeiten",
+                "topicCode": "tum_ma3602_lo8"
+            }
+        },
+        {
+            "id": "7a565389-c39b-540e-b30b-34384be9ed9a",
+            "shortKey": "tum_ma3602_lo8_1",
+            "title": "Biomathematische Fachartikel lesen und Modelle rekonstruieren",
+            "titleEn": "Read Biomathematical Papers and Reconstruct Models",
+            "description": "Die lernende Person kann Modelle aus Fachartikeln nachvollziehen, Annahmen und Notation erschließen und zentrale Ergebnisse (z.B. Gleichungen, Diagramme) in eigenen Worten reproduzieren.",
+            "descriptionEn": "The learner can follow models from research papers, interpret assumptions and notation, and reproduce central results (e.g., equations, figures) in their own words.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Wissenschaftliches Arbeiten",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [],
+            "requires": [
+                "c3118309-1f68-51fb-9e11-98db72f8dec0"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Wissenschaftliches Arbeiten",
+                "topicCode": "tum_ma3602_lo8_1"
+            }
+        },
+        {
+            "id": "f79e32ad-3cb6-5fe0-a4fb-2c998cfb9110",
+            "shortKey": "tum_ma3602_lo8_2",
+            "title": "Literaturrecherche durchführen und Standardmodelle anpassen",
+            "titleEn": "Perform Literature Searches and Adapt Standard Models",
+            "description": "Die lernende Person kann eine grundlegende Literaturrecherche durchführen (inkl. relevanter Datenbanken), passende Standardmodelle auswählen und diese an eine konkrete Fragestellung anpassen und begründen.",
+            "descriptionEn": "The learner can perform a basic literature search (including relevant databases), select suitable standard models, and adapt and justify them for a concrete question.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Wissenschaftliches Arbeiten",
+            "tags": [
+                "ects:9",
+                "module:MA3602"
+            ],
+            "contains": [],
+            "requires": [
+                "7a565389-c39b-540e-b30b-34384be9ed9a"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3602",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Wissenschaftliches Arbeiten",
+                "topicCode": "tum_ma3602_lo8_2"
+            }
         }
     ]
 }

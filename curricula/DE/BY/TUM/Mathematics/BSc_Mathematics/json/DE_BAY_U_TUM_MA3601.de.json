@@ -1,8 +1,8 @@
 {
     "title": "Mathematical Models in Biology (TUM, Modul MA3601)",
     "titleEn": "Mathematical Models in Biology (TUM, Module MA3601)",
-    "description": "After successful completion of the module, the student is able to evaluate the connection of different results related to different model approaches (stochastic/deterministic, discrete/continuous) and to choose the appropriate level for the description of the system under observation. Furthermore they are able to formulate mathematical models for biological systems on the basis of analytic, stochastic or discrete mathematical structures. 9 ECTS, angeboten im Wintersemester, Version 2023s.",
-    "descriptionEn": "After successful completion of the module, the student is able to evaluate the connection of different results related to different model approaches (stochastic/deterministic, discrete/continuous) and to choose the appropriate level for the description of the system under observation. Furthermore they are able to formulate mathematical models for biological systems on the basis of analytic, stochastic or discrete mathematical structures. 9 ECTS, offered in winter semester, version 2023s.",
+    "description": "Das Modul führt in Theorie und Anwendung dynamischer Systeme und stochastischer Prozesse in der mathematischen Biologie ein. Behandelt werden u.a. lineare Kompartimentmodelle, Markovketten, Galton-Watson-Verzweigungsprozesse, Geburts- und Todesprozesse, Populationsmodelle sowie räumliche und altersstrukturierte Modelle. Im Mittelpunkt steht, für ein biologisches System unterschiedliche Modellansätze (stochastisch/deterministisch, diskret/kontinuierlich) zu verstehen und das angemessene Beschreibungsniveau auswählen zu können. 9 ECTS, angeboten im Wintersemester, Version 2023s.",
+    "descriptionEn": "The module introduces theory and applications of dynamical systems and stochastic processes in mathematical biology. Topics include linear compartmental models, Markov chains, Galton-Watson branching processes, birth-death processes, population models, as well as spatial and age-structured models. The emphasis is on understanding different modeling approaches (stochastic/deterministic, discrete/continuous) for a single biological system and choosing an appropriate level of description. 9 ECTS, offered in the winter semester, version 2023s.",
     "landscapeId": "0eaf00a2-a36a-40e0-8ace-3758183bc94f",
     "locale": "de-DE",
     "subject": "Mathematik",
@@ -19,8 +19,8 @@
             "shortKey": "tum_ma3601_module",
             "title": "Mathematical Models in Biology – Gesamtmodul",
             "titleEn": "Mathematical Models in Biology – Full Module",
-            "description": "After successful completion of the module, the student is able to evaluate the connection of different results related to different model approaches (stochastic/deterministic, discrete/continuous) and to choose the appropriate level for the description of the system under observation. Furthermore they are able to formulate mathematical models for biological systems on the basis of analytic, stochastic or discrete mathematical structures.",
-            "descriptionEn": "After successful completion of the module, the student is able to evaluate the connection of different results related to different model approaches (stochastic/deterministic, discrete/continuous) and to choose the appropriate level for the description of the system under observation. Furthermore they are able to formulate mathematical models for biological systems on the basis of analytic, stochastic or discrete mathematical structures.",
+            "description": "Nach erfolgreichem Abschluss können Studierende Zusammenhänge zwischen Ergebnissen aus unterschiedlichen Modellansätzen (stochastisch/deterministisch, diskret/kontinuierlich) beurteilen und für ein betrachtetes System ein angemessenes Beschreibungsniveau wählen. Außerdem können sie mathematische Modelle für biologische Systeme auf Basis analytischer, stochastischer oder diskreter Strukturen formulieren.",
+            "descriptionEn": "After successful completion of the module, students are able to evaluate the connection of results obtained with different modeling approaches (stochastic/deterministic, discrete/continuous) and to choose an appropriate level of description for the system under observation. Furthermore, they can formulate mathematical models for biological systems based on analytic, stochastic, or discrete mathematical structures.",
             "core": true,
             "weight": 9.0,
             "phase": "Modul",
@@ -29,14 +29,28 @@
                 "ects:9",
                 "workload:270h",
                 "presence:90h",
-                "level:bachelor",
-                "language:de",
+                "level:master",
+                "language:en",
                 "module:MA3601",
                 "semester:WS",
                 "duration:1_semester"
             ],
-            "contains": [],
-            "requires": [],
+            "contains": [
+                "7ff29535-f157-5ed1-a252-61f8b87e6723",
+                "1ba0a5b8-1f44-5414-a652-4c57d0d4f751",
+                "aa1d331c-b3b6-558e-8da7-baccf2b68a4f",
+                "bbd76a36-e04b-5d76-a7dd-a4b5035026ac",
+                "283cb9f3-50c2-5a8c-a719-509eb8e8324d",
+                "a7320ab2-b4da-5270-b97e-ed3a4276232f",
+                "d441027c-d0c0-51c4-ad08-940ace8f4cb7",
+                "0879647c-2977-5471-8d76-e37eba1cacba"
+            ],
+            "requires": [
+                "8eb1605b-fa70-511b-bbe4-28173d359c3b",
+                "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
+                "feaad1d5-022f-5ab3-93c3-001ac46de351",
+                "ef775418-c971-542f-87fe-07bd9c995bb1"
+            ],
             "examples": [],
             "dimensionTags": {
                 "framework": "tum-ma3601",
@@ -48,6 +62,734 @@
                 "topicCode": "tum_ma3601_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA3601&description_version=2023s"
+        },
+        {
+            "id": "7ff29535-f157-5ed1-a252-61f8b87e6723",
+            "shortKey": "tum_ma3601_lo1",
+            "title": "Modellierungsansätze in der mathematischen Biologie",
+            "titleEn": "Modeling Approaches in Mathematical Biology",
+            "description": "Zusammenfassender Cluster: Modellklassen (stochastisch/deterministisch, diskret/kontinuierlich) unterscheiden und Modellannahmen sowie Ergebnisse im biologischen Kontext interpretieren.",
+            "descriptionEn": "Summary cluster: distinguish model classes (stochastic/deterministic, discrete/continuous) and interpret assumptions and results in a biological context.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Modellierung",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [
+                "22b731b7-c062-5d99-9557-e2b135c91290",
+                "10de9207-a537-5d4c-9c75-7e2e159c6654"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Modellierung",
+                "topicCode": "tum_ma3601_lo1"
+            }
+        },
+        {
+            "id": "22b731b7-c062-5d99-9557-e2b135c91290",
+            "shortKey": "tum_ma3601_lo1_1",
+            "title": "Deterministische vs. stochastische sowie diskrete vs. kontinuierliche Modelle auswählen",
+            "titleEn": "Select Deterministic vs Stochastic and Discrete vs Continuous Models",
+            "description": "Die lernende Person kann für eine biologische Fragestellung geeignete Modellklassen (deterministisch/stochastisch, diskret/kontinuierlich) unterscheiden und begründet auswählen.",
+            "descriptionEn": "The learner can distinguish and justify selecting suitable model classes (deterministic/stochastic, discrete/continuous) for a biological question.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Modellierung",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Modellierung",
+                "topicCode": "tum_ma3601_lo1_1"
+            }
+        },
+        {
+            "id": "10de9207-a537-5d4c-9c75-7e2e159c6654",
+            "shortKey": "tum_ma3601_lo1_2",
+            "title": "Modellannahmen, Parameter und Output im biologischen Kontext interpretieren",
+            "titleEn": "Interpret Model Assumptions, Parameters, and Outputs in Biological Context",
+            "description": "Die lernende Person kann Modellannahmen explizit formulieren, Parameter interpretieren und Modelloutput (z.B. Sensitivitäten, Unsicherheiten) im biologischen Kontext einordnen.",
+            "descriptionEn": "The learner can make model assumptions explicit, interpret parameters, and contextualize model outputs (e.g., sensitivities, uncertainties) in a biological setting.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Modellierung",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [],
+            "requires": [
+                "22b731b7-c062-5d99-9557-e2b135c91290"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Modellierung",
+                "topicCode": "tum_ma3601_lo1_2"
+            }
+        },
+        {
+            "id": "1ba0a5b8-1f44-5414-a652-4c57d0d4f751",
+            "shortKey": "tum_ma3601_lo2",
+            "title": "Lineare Kompartimentmodelle und ODEs",
+            "titleEn": "Linear Compartment Models and ODEs",
+            "description": "Zusammenfassender Cluster: Lineare Kompartimentmodelle als ODE-Systeme formulieren und grundlegende Stabilitätsaussagen für lineare Dynamik treffen.",
+            "descriptionEn": "Summary cluster: formulate linear compartment models as ODE systems and derive basic stability statements for linear dynamics.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Deterministische Modelle",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [
+                "31852194-e4f8-578b-bb3d-096ca9e3b54e",
+                "0410a4b2-bb66-5551-a2ec-e70a9c27ab18"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Deterministische Modelle",
+                "topicCode": "tum_ma3601_lo2"
+            }
+        },
+        {
+            "id": "31852194-e4f8-578b-bb3d-096ca9e3b54e",
+            "shortKey": "tum_ma3601_lo2_1",
+            "title": "Kompartimentmodelle als ODE-Systeme formulieren und in Matrixform schreiben",
+            "titleEn": "Formulate Compartment Models as ODE Systems and Write Them in Matrix Form",
+            "description": "Die lernende Person kann lineare Kompartimentmodelle aus Flussbilanzen ableiten, als ODE-System formulieren und als Matrix-/Vektorgleichung notieren.",
+            "descriptionEn": "The learner can derive linear compartment models from balance equations, formulate them as ODE systems, and express them in matrix/vector form.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Deterministische Modelle",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [],
+            "requires": [
+                "22b731b7-c062-5d99-9557-e2b135c91290"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Deterministische Modelle",
+                "topicCode": "tum_ma3601_lo2_1"
+            }
+        },
+        {
+            "id": "0410a4b2-bb66-5551-a2ec-e70a9c27ab18",
+            "shortKey": "tum_ma3601_lo2_2",
+            "title": "Stationärzustände und Stabilität linearer Systeme analysieren",
+            "titleEn": "Analyze Steady States and Stability of Linear Systems",
+            "description": "Die lernende Person kann Stationärzustände bestimmen und Stabilitätsaussagen (z.B. über Eigenwerte) für lineare (Kompartiment-)Systeme treffen und interpretieren.",
+            "descriptionEn": "The learner can determine steady states and make and interpret stability statements for linear (compartment) systems (e.g., via eigenvalues).",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Deterministische Modelle",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [],
+            "requires": [
+                "31852194-e4f8-578b-bb3d-096ca9e3b54e"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Deterministische Modelle",
+                "topicCode": "tum_ma3601_lo2_2"
+            }
+        },
+        {
+            "id": "aa1d331c-b3b6-558e-8da7-baccf2b68a4f",
+            "shortKey": "tum_ma3601_lo3",
+            "title": "Markovketten als biologische Modelle",
+            "titleEn": "Markov Chains as Biological Models",
+            "description": "Zusammenfassender Cluster: Diskrete stochastische Modelle mit Markovketten aufstellen und typische langfristige Eigenschaften analysieren.",
+            "descriptionEn": "Summary cluster: set up discrete stochastic models using Markov chains and analyze typical long-term properties.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Markovketten",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [
+                "569a4627-35bf-58df-aac4-aefec1f43b9c",
+                "5cfb0278-7e04-50cf-b7f8-a07eb8bc1c7e"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Markovketten",
+                "topicCode": "tum_ma3601_lo3"
+            }
+        },
+        {
+            "id": "569a4627-35bf-58df-aac4-aefec1f43b9c",
+            "shortKey": "tum_ma3601_lo3_1",
+            "title": "Markovketten modellieren und Übergangswahrscheinlichkeiten berechnen",
+            "titleEn": "Model Markov Chains and Compute Transition Probabilities",
+            "description": "Die lernende Person kann Zustandsräume und Übergangsstrukturen definieren, Übergangsmatrizen aufstellen und Mehr-Schritt-Übergangswahrscheinlichkeiten berechnen.",
+            "descriptionEn": "The learner can define state spaces and transition structures, set up transition matrices, and compute multi-step transition probabilities.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Markovketten",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [],
+            "requires": [
+                "22b731b7-c062-5d99-9557-e2b135c91290"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Markovketten",
+                "topicCode": "tum_ma3601_lo3_1"
+            }
+        },
+        {
+            "id": "5cfb0278-7e04-50cf-b7f8-a07eb8bc1c7e",
+            "shortKey": "tum_ma3601_lo3_2",
+            "title": "Langzeitverhalten, Absorption und Erwartungswerte in Markovketten analysieren",
+            "titleEn": "Analyze Long-Run Behavior, Absorption, and Expectations in Markov Chains",
+            "description": "Die lernende Person kann Absorption, Rekurrenz/Transienz und stationäre Verteilungen analysieren sowie Erwartungswerte wie Eintritts-/Hitting-Zeiten ableiten und interpretieren.",
+            "descriptionEn": "The learner can analyze absorption, recurrence/transience, and stationary distributions and derive and interpret expectations such as hitting times.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Markovketten",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [],
+            "requires": [
+                "569a4627-35bf-58df-aac4-aefec1f43b9c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Markovketten",
+                "topicCode": "tum_ma3601_lo3_2"
+            }
+        },
+        {
+            "id": "bbd76a36-e04b-5d76-a7dd-a4b5035026ac",
+            "shortKey": "tum_ma3601_lo4",
+            "title": "Galton-Watson-Verzweigungsprozesse",
+            "titleEn": "Galton–Watson Branching Processes",
+            "description": "Zusammenfassender Cluster: Verzweigungsprozesse zur Modellierung von Reproduktion, Wachstum und Extinktion in Populationen.",
+            "descriptionEn": "Summary cluster: branching processes to model reproduction, growth, and extinction in populations.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Verzweigungsprozesse",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [
+                "bbb56402-3838-5478-bba3-79fda03c6353",
+                "34e31ab0-b023-5ae1-8d23-e59f783c05f5"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Verzweigungsprozesse",
+                "topicCode": "tum_ma3601_lo4"
+            }
+        },
+        {
+            "id": "bbb56402-3838-5478-bba3-79fda03c6353",
+            "shortKey": "tum_ma3601_lo4_1",
+            "title": "Galton-Watson-Prozesse formulieren und Grundgrößen bestimmen",
+            "titleEn": "Formulate Galton–Watson Processes and Determine Basic Quantities",
+            "description": "Die lernende Person kann Galton-Watson-Verzweigungsprozesse zur Modellierung von Reproduktion formulieren und grundlegende Größen (z.B. erzeugende Funktion, Erwartungswert) bestimmen.",
+            "descriptionEn": "The learner can formulate Galton–Watson branching processes to model reproduction and determine basic quantities (e.g., generating function, expectation).",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Verzweigungsprozesse",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [],
+            "requires": [
+                "22b731b7-c062-5d99-9557-e2b135c91290"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Verzweigungsprozesse",
+                "topicCode": "tum_ma3601_lo4_1"
+            }
+        },
+        {
+            "id": "34e31ab0-b023-5ae1-8d23-e59f783c05f5",
+            "shortKey": "tum_ma3601_lo4_2",
+            "title": "Extinktion und kritische Parameter in Verzweigungsprozessen bestimmen",
+            "titleEn": "Determine Extinction and Critical Parameters in Branching Processes",
+            "description": "Die lernende Person kann Extinktionswahrscheinlichkeiten berechnen und die Rolle der Kritikalität (subkritisch/kritisch/superkritisch) anhand von Parametern diskutieren.",
+            "descriptionEn": "The learner can compute extinction probabilities and discuss the role of criticality (subcritical/critical/supercritical) in terms of parameters.",
+            "core": true,
+            "weight": 0.5,
+            "phase": "Modul",
+            "area": "Verzweigungsprozesse",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [],
+            "requires": [
+                "bbb56402-3838-5478-bba3-79fda03c6353"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Verzweigungsprozesse",
+                "topicCode": "tum_ma3601_lo4_2"
+            }
+        },
+        {
+            "id": "283cb9f3-50c2-5a8c-a719-509eb8e8324d",
+            "shortKey": "tum_ma3601_lo5",
+            "title": "Geburts- und Todesprozesse (CTMC)",
+            "titleEn": "Birth–Death Processes (CTMC)",
+            "description": "Zusammenfassender Cluster: Kontinuierliche Markovprozesse am Beispiel von Geburts- und Todesprozessen modellieren und stationäre Eigenschaften analysieren.",
+            "descriptionEn": "Summary cluster: model continuous-time Markov processes using birth–death processes and analyze stationary properties.",
+            "core": true,
+            "weight": 1.1,
+            "phase": "Modul",
+            "area": "Stochastische Prozesse",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [
+                "3c4af458-f7cd-5fd2-8dc2-37c74c23419c",
+                "7489ec06-5c4d-523e-90c4-13b76f556d2d"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stochastische Prozesse",
+                "topicCode": "tum_ma3601_lo5"
+            }
+        },
+        {
+            "id": "3c4af458-f7cd-5fd2-8dc2-37c74c23419c",
+            "shortKey": "tum_ma3601_lo5_1",
+            "title": "Geburts- und Todesprozesse als kontinuierliche Markovprozesse modellieren",
+            "titleEn": "Model Birth–Death Processes as Continuous-Time Markov Processes",
+            "description": "Die lernende Person kann Geburts- und Todesprozesse als kontinuierliche Markovprozesse modellieren, Übergangsraten formulieren und typische Zustandsänderungen mathematisch beschreiben.",
+            "descriptionEn": "The learner can model birth–death processes as continuous-time Markov processes, formulate transition rates, and describe typical state changes mathematically.",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Stochastische Prozesse",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [],
+            "requires": [
+                "569a4627-35bf-58df-aac4-aefec1f43b9c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stochastische Prozesse",
+                "topicCode": "tum_ma3601_lo5_1"
+            }
+        },
+        {
+            "id": "7489ec06-5c4d-523e-90c4-13b76f556d2d",
+            "shortKey": "tum_ma3601_lo5_2",
+            "title": "Stationarität und Erwartungswerte in Geburts- und Todesprozessen herleiten",
+            "titleEn": "Derive Stationarity and Expectations in Birth–Death Processes",
+            "description": "Die lernende Person kann stationäre Verteilungen herleiten und typische Kenngrößen (z.B. mittlere Populationsgröße, Verweilzeiten) berechnen und interpretieren.",
+            "descriptionEn": "The learner can derive stationary distributions and compute and interpret typical quantities (e.g., mean population size, sojourn times).",
+            "core": true,
+            "weight": 0.55,
+            "phase": "Modul",
+            "area": "Stochastische Prozesse",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [],
+            "requires": [
+                "3c4af458-f7cd-5fd2-8dc2-37c74c23419c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stochastische Prozesse",
+                "topicCode": "tum_ma3601_lo5_2"
+            }
+        },
+        {
+            "id": "a7320ab2-b4da-5270-b97e-ed3a4276232f",
+            "shortKey": "tum_ma3601_lo6",
+            "title": "Populationsdynamik: deterministisch und stochastisch",
+            "titleEn": "Population Dynamics: Deterministic and Stochastic",
+            "description": "Zusammenfassender Cluster: Klassische Populationsmodelle formulieren und analysieren sowie stochastische Effekte in Populationen verstehen.",
+            "descriptionEn": "Summary cluster: formulate and analyze classical population models and understand stochastic effects in populations.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Populationsmodelle",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [
+                "7ee10b85-fed7-56eb-979e-f3bd6257b124",
+                "f31fe5cd-297b-569d-a2d3-602fcd22cbfe"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Populationsmodelle",
+                "topicCode": "tum_ma3601_lo6"
+            }
+        },
+        {
+            "id": "7ee10b85-fed7-56eb-979e-f3bd6257b124",
+            "shortKey": "tum_ma3601_lo6_1",
+            "title": "Populationsmodelle aufstellen und qualitativ analysieren",
+            "titleEn": "Set Up and Qualitatively Analyze Population Models",
+            "description": "Die lernende Person kann klassische Populationsmodelle (z.B. logistisches Wachstum, Lotka-Volterra) formulieren, Gleichgewichte bestimmen und qualitative Dynamik analysieren.",
+            "descriptionEn": "The learner can formulate classical population models (e.g., logistic growth, Lotka–Volterra), determine equilibria, and analyze qualitative dynamics.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Populationsmodelle",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [],
+            "requires": [
+                "31852194-e4f8-578b-bb3d-096ca9e3b54e"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Populationsmodelle",
+                "topicCode": "tum_ma3601_lo6_1"
+            }
+        },
+        {
+            "id": "f31fe5cd-297b-569d-a2d3-602fcd22cbfe",
+            "shortKey": "tum_ma3601_lo6_2",
+            "title": "Stochastische Effekte in Populationsmodellen diskutieren und simulieren",
+            "titleEn": "Discuss and Simulate Stochastic Effects in Population Models",
+            "description": "Die lernende Person kann stochastische Effekte (z.B. demographisches Rauschen, zufällige Ereignisse) in Populationsmodellen modellieren, mittels Simulation untersuchen und die Ergebnisse mit deterministischen Modellen vergleichen.",
+            "descriptionEn": "The learner can model stochastic effects (e.g., demographic noise, random events) in population models, study them via simulation, and compare results to deterministic models.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Populationsmodelle",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [],
+            "requires": [
+                "7ee10b85-fed7-56eb-979e-f3bd6257b124",
+                "3c4af458-f7cd-5fd2-8dc2-37c74c23419c"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Populationsmodelle",
+                "topicCode": "tum_ma3601_lo6_2"
+            }
+        },
+        {
+            "id": "d441027c-d0c0-51c4-ad08-940ace8f4cb7",
+            "shortKey": "tum_ma3601_lo7",
+            "title": "Räumliche Modelle",
+            "titleEn": "Spatial Models",
+            "description": "Zusammenfassender Cluster: Räumliche Struktur und Ausbreitung in biologischen Systemen modellieren und typische Muster/Parameterwirkungen untersuchen.",
+            "descriptionEn": "Summary cluster: model spatial structure and spread in biological systems and investigate typical patterns and parameter effects.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Räumliche Modelle",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [
+                "98aadbfd-081f-5330-ab1f-a7f30fc540a4",
+                "4a68ea30-a6c0-5c30-a4e2-a96dca14c8ac"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Räumliche Modelle",
+                "topicCode": "tum_ma3601_lo7"
+            }
+        },
+        {
+            "id": "98aadbfd-081f-5330-ab1f-a7f30fc540a4",
+            "shortKey": "tum_ma3601_lo7_1",
+            "title": "Räumliche Modelle (Diffusion/Random Walk/Metapopulation) formulieren",
+            "titleEn": "Formulate Spatial Models (Diffusion/Random Walk/Metapopulation)",
+            "description": "Die lernende Person kann räumliche Ausbreitung und Struktur durch Modelle wie Diffusion/Random Walks, Reaktions-Diffusions-Gleichungen oder Metapopulationsmodelle abbilden.",
+            "descriptionEn": "The learner can represent spatial spread and structure using models such as diffusion/random walks, reaction–diffusion equations, or metapopulation models.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Räumliche Modelle",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [],
+            "requires": [
+                "7ee10b85-fed7-56eb-979e-f3bd6257b124"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Räumliche Modelle",
+                "topicCode": "tum_ma3601_lo7_1"
+            }
+        },
+        {
+            "id": "4a68ea30-a6c0-5c30-a4e2-a96dca14c8ac",
+            "shortKey": "tum_ma3601_lo7_2",
+            "title": "Räumliche Dynamik numerisch/simulationsbasiert untersuchen",
+            "titleEn": "Study Spatial Dynamics Numerically/Simulation-Based",
+            "description": "Die lernende Person kann räumliche Modelle numerisch oder simulationsbasiert untersuchen (z.B. Diskretisierung/Monte Carlo), typische Muster interpretieren und Parameterwirkungen analysieren.",
+            "descriptionEn": "The learner can study spatial models numerically or via simulation (e.g., discretization/Monte Carlo), interpret typical patterns, and analyze parameter effects.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Räumliche Modelle",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [],
+            "requires": [
+                "98aadbfd-081f-5330-ab1f-a7f30fc540a4"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Räumliche Modelle",
+                "topicCode": "tum_ma3601_lo7_2"
+            }
+        },
+        {
+            "id": "0879647c-2977-5471-8d76-e37eba1cacba",
+            "shortKey": "tum_ma3601_lo8",
+            "title": "Altersstrukturierte Modelle und Modellsynthese",
+            "titleEn": "Age-Structured Models and Model Synthesis",
+            "description": "Zusammenfassender Cluster: Altersstrukturierte Modelle formulieren und Ergebnisse verschiedener Modellklassen für ein biologisches System zusammenführen.",
+            "descriptionEn": "Summary cluster: formulate age-structured models and synthesize results from different model classes for a biological system.",
+            "core": true,
+            "weight": 1.2,
+            "phase": "Modul",
+            "area": "Altersstruktur & Synthese",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [
+                "fae5fc3e-8248-5f3d-9276-1fe85947549b",
+                "146ad660-d464-584f-a612-6194f5bdc410"
+            ],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Altersstruktur & Synthese",
+                "topicCode": "tum_ma3601_lo8"
+            }
+        },
+        {
+            "id": "fae5fc3e-8248-5f3d-9276-1fe85947549b",
+            "shortKey": "tum_ma3601_lo8_1",
+            "title": "Altersstrukturierte Modelle (Leslie-Matrix) formulieren und analysieren",
+            "titleEn": "Formulate and Analyze Age-Structured Models (Leslie Matrix)",
+            "description": "Die lernende Person kann altersstrukturierte Modelle z.B. mit Leslie-Matrizen formulieren, Wachstumsraten und stabile Altersverteilungen bestimmen und biologische Konsequenzen interpretieren.",
+            "descriptionEn": "The learner can formulate age-structured models using, e.g., Leslie matrices, determine growth rates and stable age distributions, and interpret biological implications.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Altersstruktur & Synthese",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [],
+            "requires": [
+                "7ee10b85-fed7-56eb-979e-f3bd6257b124"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Altersstruktur & Synthese",
+                "topicCode": "tum_ma3601_lo8_1"
+            }
+        },
+        {
+            "id": "146ad660-d464-584f-a612-6194f5bdc410",
+            "shortKey": "tum_ma3601_lo8_2",
+            "title": "Geeigneten Modelltyp wählen und Ergebnisse über Modellklassen hinweg integrieren",
+            "titleEn": "Choose an Appropriate Model Type and Integrate Results Across Model Classes",
+            "description": "Die lernende Person kann für ein konkretes biologisches System ein angemessenes Modellniveau wählen, Ergebnisse verschiedener Modellklassen konsistent vergleichen und die Grenzen der jeweiligen Modelle kommunizieren.",
+            "descriptionEn": "The learner can choose an appropriate modeling level for a concrete biological system, compare results from different model classes consistently, and communicate the limitations of each model.",
+            "core": true,
+            "weight": 0.6,
+            "phase": "Modul",
+            "area": "Altersstruktur & Synthese",
+            "tags": [
+                "ects:9",
+                "module:MA3601"
+            ],
+            "contains": [],
+            "requires": [
+                "fae5fc3e-8248-5f3d-9276-1fe85947549b",
+                "10de9207-a537-5d4c-9c75-7e2e159c6654"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3601",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Altersstruktur & Synthese",
+                "topicCode": "tum_ma3601_lo8_2"
+            }
         }
     ]
 }
