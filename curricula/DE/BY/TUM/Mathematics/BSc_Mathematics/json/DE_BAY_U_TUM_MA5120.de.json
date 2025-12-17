@@ -1,7 +1,7 @@
 {
     "title": "Algebra 2 (TUM, Modul MA5120)",
     "titleEn": "Algebra 2 (TUM, Module MA5120)",
-    "description": "At the end of the module students understand basic concepts of commutative algebra and their relation to the theory of affine varieties. They are able to apply the learned theorems and methods to particular problems concerning rings, in particular finitely generated algebras over a field, and translate them into results on the corresponding affine varieties. <br> 9 ECTS, angeboten im Wintersemester, Version 2023s, verantwortet von Kemper, Gregor.",
+    "description": "Nach erfolgreichem Abschluss des Moduls verstehen Studierende grundlegende Konzepte der kommutativen Algebra und deren Beziehung zur Theorie affiner Varietäten. Sie können die erlernten Sätze und Methoden auf konkrete Probleme zu Ringen, insbesondere endlich erzeugten Algebren über einem Körper, anwenden und in Resultate über die entsprechenden affinen Varietäten übersetzen. 9 ECTS, angeboten im Wintersemester, Version 2023s, verantwortet von Kemper, Gregor.",
     "descriptionEn": "At the end of the module students understand basic concepts of commutative algebra and their relation to the theory of affine varieties. They are able to apply the learned theorems and methods to particular problems concerning rings, in particular finitely generated algebras over a field, and translate them into results on the corresponding affine varieties. <br> 9 ECTS, offered in winter semester, version 2023s, responsible: Kemper, Gregor.",
     "landscapeId": "f07b9c17-8286-4198-bbce-d54e752cd8ec",
     "locale": "de-DE",
@@ -19,8 +19,8 @@
             "shortKey": "tum_ma5120_module",
             "title": "Algebra 2 – Gesamtmodul",
             "titleEn": "Algebra 2 – Full Module",
-            "description": "At the end of the module students understand basic concepts of commutative algebra and their relation to the theory of affine varieties. They are able to apply the learned theorems and methods to particular problems concerning rings, in particular finitely generated algebras over a field, and translate them into results on the corresponding affine varieties. <br>",
-            "descriptionEn": "At the end of the module students understand basic concepts of commutative algebra and their relation to the theory of affine varieties. They are able to apply the learned theorems and methods to particular problems concerning rings, in particular finitely generated algebras over a field, and translate them into results on the corresponding affine varieties. <br>",
+            "description": "Zusammenfassender Cluster: Grundideen der kommutativen Algebra und Beziehungen zu affinen Varietäten.",
+            "descriptionEn": "Summary cluster: basic ideas of commutative algebra and relations to affine varieties.",
             "core": true,
             "weight": 9.0,
             "phase": "Modul",
@@ -36,7 +36,12 @@
                 "duration:1_semester",
                 "responsible:kemper_gregor"
             ],
-            "contains": [],
+            "contains": [
+                "485954f8-d577-4f88-ad14-3df2a069640b",
+                "3b5c21c2-3dde-4191-8fa9-1a0e25c38151",
+                "198aa126-9883-4d89-b0f2-663bd2851df3",
+                "fabcbc99-df16-412b-919b-1cf93dbd5c31"
+            ],
             "requires": [],
             "examples": [],
             "dimensionTags": {
@@ -49,6 +54,125 @@
                 "topicCode": "tum_ma5120_module"
             },
             "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA5120&description_version=2023s"
+        },
+        {
+            "id": "485954f8-d577-4f88-ad14-3df2a069640b",
+            "shortKey": "tum_ma5120_lo1_1",
+            "title": "Grundbegriffe der kommutativen Algebra in Beispielen anwenden",
+            "titleEn": "Apply Basic Concepts of Commutative Algebra in Examples",
+            "description": "Die lernende Person kann grundlegende Begriffe der kommutativen Algebra (z.B. Ideale, Quotientenringe, Primideale) in Beispielen verwenden und einfache Fragestellungen dazu bearbeiten.",
+            "descriptionEn": "The learner can use basic concepts of commutative algebra (e.g., ideals, quotient rings, prime ideals) in examples and solve simple tasks about them.",
+            "core": true,
+            "weight": 2.25,
+            "phase": "Modul",
+            "area": "Kommutative Algebra",
+            "tags": [
+                "ects:9",
+                "module:MA5120"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma5120",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Kommutative Algebra",
+                "topicCode": "tum_ma5120_lo1_1"
+            }
+        },
+        {
+            "id": "3b5c21c2-3dde-4191-8fa9-1a0e25c38151",
+            "shortKey": "tum_ma5120_lo1_2",
+            "title": "Beziehung zwischen Ringen und affinen Varietäten erklären",
+            "titleEn": "Explain the Relation Between Rings and Affine Varieties",
+            "description": "Die lernende Person kann erklären, wie affine Varietäten über Koordinatenringe beschrieben werden und wie algebraische Objekte geometrische Eigenschaften codieren.",
+            "descriptionEn": "The learner can explain how affine varieties are described via coordinate rings and how algebraic objects encode geometric properties.",
+            "core": true,
+            "weight": 2.25,
+            "phase": "Modul",
+            "area": "Affine Varietäten",
+            "tags": [
+                "ects:9",
+                "module:MA5120"
+            ],
+            "contains": [],
+            "requires": [
+                "485954f8-d577-4f88-ad14-3df2a069640b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma5120",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Affine Varietäten",
+                "topicCode": "tum_ma5120_lo1_2"
+            }
+        },
+        {
+            "id": "198aa126-9883-4d89-b0f2-663bd2851df3",
+            "shortKey": "tum_ma5120_lo2_1",
+            "title": "Methoden auf endlich erzeugte Algebren über einem Körper anwenden",
+            "titleEn": "Apply Methods to Finitely Generated Algebras over a Field",
+            "description": "Die lernende Person kann erlernte Sätze und Methoden auf konkrete Probleme zu endlich erzeugten Algebren über einem Körper anwenden und die Ergebnisse begründen.",
+            "descriptionEn": "The learner can apply learned theorems and methods to concrete problems about finitely generated algebras over a field and justify the results.",
+            "core": true,
+            "weight": 2.25,
+            "phase": "Modul",
+            "area": "Ringe & Algebren",
+            "tags": [
+                "ects:9",
+                "module:MA5120"
+            ],
+            "contains": [],
+            "requires": [
+                "485954f8-d577-4f88-ad14-3df2a069640b"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma5120",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Ringe & Algebren",
+                "topicCode": "tum_ma5120_lo2_1"
+            }
+        },
+        {
+            "id": "fabcbc99-df16-412b-919b-1cf93dbd5c31",
+            "shortKey": "tum_ma5120_lo2_2",
+            "title": "Algebraische Resultate in Aussagen über affine Varietäten übersetzen",
+            "titleEn": "Translate Algebraic Results into Statements About Affine Varieties",
+            "description": "Die lernende Person kann algebraische Aussagen über Ringe/Ideale in geometrische Aussagen über die zugehörigen affinen Varietäten übersetzen und die Interpretation erläutern.",
+            "descriptionEn": "The learner can translate algebraic statements about rings/ideals into geometric statements about the corresponding affine varieties and explain the interpretation.",
+            "core": true,
+            "weight": 2.25,
+            "phase": "Modul",
+            "area": "Affine Varietäten",
+            "tags": [
+                "ects:9",
+                "module:MA5120"
+            ],
+            "contains": [],
+            "requires": [
+                "3b5c21c2-3dde-4191-8fa9-1a0e25c38151",
+                "198aa126-9883-4d89-b0f2-663bd2851df3"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma5120",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Affine Varietäten",
+                "topicCode": "tum_ma5120_lo2_2"
+            }
         }
     ]
 }
