@@ -213,8 +213,8 @@
             "shortKey": "tum_ma3409_lo2_2",
             "title": "Modelle auswählen, vergleichen und overfitting vermeiden",
             "titleEn": "Select and Compare Models and Avoid Overfitting",
-            "description": "Die lernende Person kann Modelle anhand von Gütemaßen und Validierung (z.B. Informationskriterien, Kreuzvalidierung) vergleichen, Variablenselektion begründen und overfitting erkennen und vermeiden.",
-            "descriptionEn": "The learner can compare models using fit criteria and validation (e.g., information criteria, cross-validation), justify variable selection, and recognize and avoid overfitting.",
+            "description": "Zusammenfassender Cluster: Modelle vergleichen, Variablen auswählen und Overfitting vermeiden.",
+            "descriptionEn": "Summary cluster: compare models, select variables, and avoid overfitting.",
             "core": true,
             "weight": 0.5,
             "phase": "Modul",
@@ -223,7 +223,11 @@
                 "ects:5",
                 "module:MA3409"
             ],
-            "contains": [],
+            "contains": [
+                "8f61505d-8142-408d-89c2-1604096b3924",
+                "2af3db7c-ab16-4ff2-b719-4ebb147cdaa0",
+                "32fade5a-aa5a-4ec3-a071-250715a39f70"
+            ],
             "requires": [
                 "a005a8e2-df8d-5f5f-9401-4ec757b653ee"
             ],
@@ -304,8 +308,8 @@
             "shortKey": "tum_ma3409_lo3_2",
             "title": "Poisson-Regression für Zähldaten modellieren und prüfen",
             "titleEn": "Model and Check Poisson Regression for Count Data",
-            "description": "Die lernende Person kann Poisson-Regression für Zähldaten formulieren, Parameter und Effekte interpretieren, overdispersion erkennen und Modellanpassungen bzw. Alternativen begründet diskutieren.",
-            "descriptionEn": "The learner can formulate Poisson regression for count data, interpret parameters and effects, detect overdispersion, and discuss model adjustments or alternatives in a well-justified way.",
+            "description": "Zusammenfassender Cluster: Poisson-Regression formulieren, interpretieren und auf Overdispersion/Alternativen prüfen.",
+            "descriptionEn": "Summary cluster: formulate Poisson regression, interpret it, and check for overdispersion/alternatives.",
             "core": true,
             "weight": 0.5,
             "phase": "Modul",
@@ -314,7 +318,11 @@
                 "ects:5",
                 "module:MA3409"
             ],
-            "contains": [],
+            "contains": [
+                "0efbe843-d7f2-4e07-9c71-b71efa437465",
+                "3039b153-d66c-4287-a0ce-6b23ba4ce714",
+                "060f80e1-9e13-4490-a933-cd36308dce51"
+            ],
             "requires": [
                 "d3cd5aa8-8f12-5252-a9a5-1e1555088c66"
             ],
@@ -509,6 +517,186 @@
                 "phase": "Modul",
                 "area": "Mixed Models",
                 "topicCode": "tum_ma3409_lo5_2"
+            }
+        },
+        {
+            "id": "8f61505d-8142-408d-89c2-1604096b3924",
+            "shortKey": "tum_ma3409_lo2_2_1",
+            "title": "Modelle mit Informationskriterien und Kreuzvalidierung vergleichen",
+            "titleEn": "Compare Models Using Information Criteria and Cross-Validation",
+            "description": "Die lernende Person kann Modelle mit Gütemaßen (z.B. AIC/BIC) und Kreuzvalidierung vergleichen und die Ergebnisse nachvollziehbar interpretieren.",
+            "descriptionEn": "The learner can compare models using fit criteria (e.g., AIC/BIC) and cross-validation and interpret the results coherently.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Diagnostik & Auswahl",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [],
+            "requires": [
+                "a005a8e2-df8d-5f5f-9401-4ec757b653ee"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Diagnostik & Auswahl",
+                "topicCode": "tum_ma3409_lo2_2_1"
+            }
+        },
+        {
+            "id": "2af3db7c-ab16-4ff2-b719-4ebb147cdaa0",
+            "shortKey": "tum_ma3409_lo2_2_2",
+            "title": "Variablenselektion begründen",
+            "titleEn": "Justify Variable Selection",
+            "description": "Die lernende Person kann Variablenselektion begründen (z.B. inhaltliche Plausibilität, Regularisierung/Stepwise als Heuristik) und die Auswirkungen auf Interpretierbarkeit und Prognose diskutieren.",
+            "descriptionEn": "The learner can justify variable selection (e.g., substantive plausibility, regularization/stepwise as heuristics) and discuss effects on interpretability and prediction.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "Diagnostik & Auswahl",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [],
+            "requires": [
+                "8f61505d-8142-408d-89c2-1604096b3924"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Diagnostik & Auswahl",
+                "topicCode": "tum_ma3409_lo2_2_2"
+            }
+        },
+        {
+            "id": "32fade5a-aa5a-4ec3-a071-250715a39f70",
+            "shortKey": "tum_ma3409_lo2_2_3",
+            "title": "Overfitting erkennen und vermeiden",
+            "titleEn": "Recognize and Avoid Overfitting",
+            "description": "Die lernende Person kann Overfitting an Symptomen (z.B. starke Trainingsleistung, schwache Testleistung) erkennen und Gegenmaßnahmen (z.B. Regularisierung, einfachere Modelle) begründen.",
+            "descriptionEn": "The learner can recognize overfitting via symptoms (e.g., strong training performance, weak test performance) and justify countermeasures (e.g., regularization, simpler models).",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "Diagnostik & Auswahl",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [],
+            "requires": [
+                "8f61505d-8142-408d-89c2-1604096b3924"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Diagnostik & Auswahl",
+                "topicCode": "tum_ma3409_lo2_2_3"
+            }
+        },
+        {
+            "id": "0efbe843-d7f2-4e07-9c71-b71efa437465",
+            "shortKey": "tum_ma3409_lo3_2_1",
+            "title": "Poisson-Regression für Zähldaten formulieren",
+            "titleEn": "Formulate Poisson Regression for Count Data",
+            "description": "Die lernende Person kann ein Poisson-Regression-Modell für Zähldaten aufstellen und die Rolle von Link-Funktion und linearer Prädiktorform erklären.",
+            "descriptionEn": "The learner can set up a Poisson regression model for count data and explain the role of the link function and the linear predictor.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "GLMs",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [],
+            "requires": [
+                "d3cd5aa8-8f12-5252-a9a5-1e1555088c66"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "GLMs",
+                "topicCode": "tum_ma3409_lo3_2_1"
+            }
+        },
+        {
+            "id": "3039b153-d66c-4287-a0ce-6b23ba4ce714",
+            "shortKey": "tum_ma3409_lo3_2_2",
+            "title": "Parameter und Effekte in der Poisson-Regression interpretieren",
+            "titleEn": "Interpret Parameters and Effects in Poisson Regression",
+            "description": "Die lernende Person kann Parameter und Effekte in der Poisson-Regression interpretieren (z.B. Rate Ratios) und Schlussfolgerungen für Zähldaten begründen.",
+            "descriptionEn": "The learner can interpret parameters and effects in Poisson regression (e.g., rate ratios) and justify conclusions for count data.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "GLMs",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [],
+            "requires": [
+                "0efbe843-d7f2-4e07-9c71-b71efa437465"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "GLMs",
+                "topicCode": "tum_ma3409_lo3_2_2"
+            }
+        },
+        {
+            "id": "060f80e1-9e13-4490-a933-cd36308dce51",
+            "shortKey": "tum_ma3409_lo3_2_3",
+            "title": "Overdispersion erkennen und Modellalternativen diskutieren",
+            "titleEn": "Detect Overdispersion and Discuss Model Alternatives",
+            "description": "Die lernende Person kann Overdispersion erkennen und geeignete Anpassungen oder Alternativen (z.B. Quasi-Poisson, Negative Binomial) fachlich begründet diskutieren.",
+            "descriptionEn": "The learner can detect overdispersion and discuss suitable adjustments or alternatives (e.g., quasi-Poisson, negative binomial) in a well-justified way.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "GLMs",
+            "tags": [
+                "ects:5",
+                "module:MA3409"
+            ],
+            "contains": [],
+            "requires": [
+                "3039b153-d66c-4287-a0ce-6b23ba4ce714"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3409",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "GLMs",
+                "topicCode": "tum_ma3409_lo3_2_3"
             }
         }
     ]

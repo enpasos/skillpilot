@@ -97,8 +97,8 @@
             "shortKey": "tum_ma3001_lo1_1",
             "title": "Normierte Räume und Banachräume sicher verwenden",
             "titleEn": "Work Confidently with Normed and Banach Spaces",
-            "description": "Die lernende Person kann Normen und vollständige normierte Räume (Banachräume) definieren, Beispiele einordnen und grundlegende topologische Begriffe (Konvergenz, Vollständigkeit) anwenden.",
-            "descriptionEn": "The learner can define norms and complete normed spaces (Banach spaces), classify examples, and apply basic topological notions (convergence, completeness).",
+            "description": "Zusammenfassender Cluster: Normen, Banachräume und grundlegende Konvergenz-/Vollständigkeitsbegriffe in Beispielen anwenden.",
+            "descriptionEn": "Summary cluster: apply norms, Banach spaces, and basic notions of convergence/completeness in examples.",
             "core": true,
             "weight": 0.9,
             "phase": "Modul",
@@ -107,7 +107,11 @@
                 "ects:9",
                 "module:MA3001"
             ],
-            "contains": [],
+            "contains": [
+                "3e94b3c6-3836-45a8-8824-6709510c4163",
+                "4adff8d9-84b5-44c7-a1a9-4a87738093d7",
+                "f88bf4ef-f201-4af8-99a8-53ace3104be7"
+            ],
             "requires": [],
             "examples": [],
             "dimensionTags": {
@@ -562,8 +566,8 @@
             "shortKey": "tum_ma3001_lo6_1",
             "title": "Unbeschränkte Operatoren und Definitionsbereiche verstehen",
             "titleEn": "Understand Unbounded Operators and Domains",
-            "description": "Die lernende Person kann unbeschränkte Operatoren als Operatoren mit nichttrivialem Definitionsbereich einordnen, Begriffe wie Dichte, Abgeschlossenheit und Graphnorm erläutern und Beispiele diskutieren.",
-            "descriptionEn": "The learner can place unbounded operators as operators with nontrivial domains, explain notions such as density, closedness, and graph norm, and discuss examples.",
+            "description": "Zusammenfassender Cluster: unbeschränkte Operatoren über Definitionsbereiche, Dichte, Abgeschlossenheit und Graphnorm einordnen.",
+            "descriptionEn": "Summary cluster: place unbounded operators via domains, density, closedness, and graph norm.",
             "core": true,
             "weight": 0.5,
             "phase": "Modul",
@@ -572,7 +576,11 @@
                 "ects:9",
                 "module:MA3001"
             ],
-            "contains": [],
+            "contains": [
+                "3681aca6-2785-46ab-ad57-dc1c62b085dc",
+                "7167327c-3f74-4799-a21f-e313dc258dbd",
+                "66aa83ab-dea5-4ad4-be30-ea4043d73c6b"
+            ],
             "requires": [
                 "1dd7494e-bf82-50c9-a4a0-4af3df3c9cc2",
                 "4b8772a6-bc84-5a1a-a63f-ad7553a97984"
@@ -616,6 +624,185 @@
                 "phase": "Modul",
                 "area": "Unbeschränkte Operatoren",
                 "topicCode": "tum_ma3001_lo6_2"
+            }
+        },
+        {
+            "id": "3e94b3c6-3836-45a8-8824-6709510c4163",
+            "shortKey": "tum_ma3001_lo1_1_1",
+            "title": "Normen und normierte Räume definieren und Beispiele einordnen",
+            "titleEn": "Define Norms and Normed Spaces and Classify Examples",
+            "description": "Die lernende Person kann Normen definieren, Beispiele für normierte Räume angeben und grundlegende Eigenschaften (z.B. Dreiecksungleichung) in Beispielen prüfen.",
+            "descriptionEn": "The learner can define norms, give examples of normed spaces, and check basic properties (e.g., the triangle inequality) in examples.",
+            "core": true,
+            "weight": 0.3,
+            "phase": "Modul",
+            "area": "Banach- und Hilberträume",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Banach- und Hilberträume",
+                "topicCode": "tum_ma3001_lo1_1_1"
+            }
+        },
+        {
+            "id": "4adff8d9-84b5-44c7-a1a9-4a87738093d7",
+            "shortKey": "tum_ma3001_lo1_1_2",
+            "title": "Vollständigkeit prüfen und Banachräume einordnen",
+            "titleEn": "Check Completeness and Place Banach Spaces",
+            "description": "Die lernende Person kann den Begriff der Vollständigkeit erläutern, Cauchy-Folgen einordnen und Banachräume als vollständige normierte Räume erkennen.",
+            "descriptionEn": "The learner can explain completeness, place Cauchy sequences, and recognize Banach spaces as complete normed spaces.",
+            "core": true,
+            "weight": 0.3,
+            "phase": "Modul",
+            "area": "Banach- und Hilberträume",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "3e94b3c6-3836-45a8-8824-6709510c4163"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Banach- und Hilberträume",
+                "topicCode": "tum_ma3001_lo1_1_2"
+            }
+        },
+        {
+            "id": "f88bf4ef-f201-4af8-99a8-53ace3104be7",
+            "shortKey": "tum_ma3001_lo1_1_3",
+            "title": "Konvergenzbegriffe in normierten Räumen anwenden",
+            "titleEn": "Apply Notions of Convergence in Normed Spaces",
+            "description": "Die lernende Person kann Konvergenz und Cauchy-Eigenschaft in normierten Räumen anwenden und einfache Aussagen zu Folgen und Reihen begründen.",
+            "descriptionEn": "The learner can apply convergence and the Cauchy property in normed spaces and justify basic statements about sequences and series.",
+            "core": true,
+            "weight": 0.3,
+            "phase": "Modul",
+            "area": "Banach- und Hilberträume",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "4adff8d9-84b5-44c7-a1a9-4a87738093d7"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Banach- und Hilberträume",
+                "topicCode": "tum_ma3001_lo1_1_3"
+            }
+        },
+        {
+            "id": "3681aca6-2785-46ab-ad57-dc1c62b085dc",
+            "shortKey": "tum_ma3001_lo6_1_1",
+            "title": "Unbeschränkte Operatoren und dichte Definitionsbereiche einordnen",
+            "titleEn": "Place Unbounded Operators and Dense Domains",
+            "description": "Die lernende Person kann unbeschränkte Operatoren über ihren Definitionsbereich einordnen und erklären, was ein dichter Definitionsbereich bedeutet.",
+            "descriptionEn": "The learner can place unbounded operators via their domain and explain what it means for a domain to be dense.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Unbeschränkte Operatoren",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "1dd7494e-bf82-50c9-a4a0-4af3df3c9cc2",
+                "4b8772a6-bc84-5a1a-a63f-ad7553a97984"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Unbeschränkte Operatoren",
+                "topicCode": "tum_ma3001_lo6_1_1"
+            }
+        },
+        {
+            "id": "7167327c-3f74-4799-a21f-e313dc258dbd",
+            "shortKey": "tum_ma3001_lo6_1_2",
+            "title": "Abgeschlossenheit und Graphnorm erläutern",
+            "titleEn": "Explain Closedness and Graph Norm",
+            "description": "Die lernende Person kann Abgeschlossenheit unbeschränkter Operatoren erläutern und die Graphnorm als Werkzeug zur Behandlung von Domänenfragen einordnen.",
+            "descriptionEn": "The learner can explain closedness of unbounded operators and place the graph norm as a tool to handle domain issues.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "Unbeschränkte Operatoren",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "3681aca6-2785-46ab-ad57-dc1c62b085dc"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Unbeschränkte Operatoren",
+                "topicCode": "tum_ma3001_lo6_1_2"
+            }
+        },
+        {
+            "id": "66aa83ab-dea5-4ad4-be30-ea4043d73c6b",
+            "shortKey": "tum_ma3001_lo6_1_3",
+            "title": "Beispiele unbeschränkter Operatoren diskutieren",
+            "titleEn": "Discuss Examples of Unbounded Operators",
+            "description": "Die lernende Person kann Beispiele unbeschränkter Operatoren (z.B. Differentialoperatoren) diskutieren und typische Domänen-/Abgeschlossenheitsfragen in Beispielen benennen.",
+            "descriptionEn": "The learner can discuss examples of unbounded operators (e.g., differential operators) and point out typical domain/closedness issues in examples.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "Unbeschränkte Operatoren",
+            "tags": [
+                "ects:9",
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "7167327c-3f74-4799-a21f-e313dc258dbd"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3001",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Unbeschränkte Operatoren",
+                "topicCode": "tum_ma3001_lo6_1_3"
             }
         }
     ]

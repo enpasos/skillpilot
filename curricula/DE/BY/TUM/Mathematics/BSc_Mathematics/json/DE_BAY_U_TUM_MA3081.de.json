@@ -98,8 +98,8 @@
             "shortKey": "tum_ma3081_lo1_1",
             "title": "Stabilitätsbegriffe für Flüsse und Abbildungen anwenden",
             "titleEn": "Apply Stability Notions for Flows and Maps",
-            "description": "Die lernende Person kann Stabilitätsbegriffe für Gleichgewichte und Fixpunkte (Lyapunov-, asymptotische, exponentielle Stabilität) formulieren und in Beispielen anwenden.",
-            "descriptionEn": "The learner can formulate stability notions for equilibria and fixed points (Lyapunov, asymptotic, exponential stability) and apply them in examples.",
+            "description": "Zusammenfassender Cluster: Stabilitätsbegriffe für Gleichgewichte/Fixpunkte formulieren und in Beispielen anwenden.",
+            "descriptionEn": "Summary cluster: formulate stability notions for equilibria/fixed points and apply them in examples.",
             "core": true,
             "weight": 0.6,
             "phase": "Modul",
@@ -108,7 +108,10 @@
                 "ects:9",
                 "module:MA3081"
             ],
-            "contains": [],
+            "contains": [
+                "faa6ecb3-4fba-459a-a93c-eb97348c893e",
+                "77b5ff6d-5f15-4a01-8a5a-17b800c65fad"
+            ],
             "requires": [],
             "examples": [],
             "dimensionTags": {
@@ -800,6 +803,64 @@
                 "phase": "Modul",
                 "area": "Ergodentheorie",
                 "topicCode": "tum_ma3081_lo8_2"
+            }
+        },
+        {
+            "id": "faa6ecb3-4fba-459a-a93c-eb97348c893e",
+            "shortKey": "tum_ma3081_lo1_1_1",
+            "title": "Stabilitätsbegriffe für Gleichgewichte und Fixpunkte formulieren",
+            "titleEn": "Formulate Stability Notions for Equilibria and Fixed Points",
+            "description": "Die lernende Person kann Lyapunov-, asymptotische und exponentielle Stabilität für Gleichgewichte bzw. Fixpunkte präzise formulieren.",
+            "descriptionEn": "The learner can precisely formulate Lyapunov, asymptotic, and exponential stability for equilibria or fixed points.",
+            "core": true,
+            "weight": 0.3,
+            "phase": "Modul",
+            "area": "Stabilität & Lyapunov",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stabilität & Lyapunov",
+                "topicCode": "tum_ma3081_lo1_1_1"
+            }
+        },
+        {
+            "id": "77b5ff6d-5f15-4a01-8a5a-17b800c65fad",
+            "shortKey": "tum_ma3081_lo1_1_2",
+            "title": "Stabilität in Beispielen analysieren",
+            "titleEn": "Analyze Stability in Examples",
+            "description": "Die lernende Person kann Stabilitätsbegriffe in Beispielen für Flüsse oder Abbildungen anwenden und die Ergebnisse nachvollziehbar begründen.",
+            "descriptionEn": "The learner can apply stability notions to examples for flows or maps and justify the results coherently.",
+            "core": true,
+            "weight": 0.3,
+            "phase": "Modul",
+            "area": "Stabilität & Lyapunov",
+            "tags": [
+                "ects:9",
+                "module:MA3081"
+            ],
+            "contains": [],
+            "requires": [
+                "faa6ecb3-4fba-459a-a93c-eb97348c893e"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-ma3081",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Stabilität & Lyapunov",
+                "topicCode": "tum_ma3081_lo1_1_2"
             }
         }
     ]

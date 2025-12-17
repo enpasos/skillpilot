@@ -136,7 +136,7 @@ export function FlashcardDrill({ onComplete }: FlashcardDrillProps) {
                 <BrainCircuit className="w-16 h-16 text-sky-500 mb-4" />
                 <h2 className="text-2xl font-bold mb-2">Session Complete!</h2>
                 <p className="text-gray-500 mb-6">You reviewed {sessionStats.reviewed} cards.</p>
-                <button onClick={onComplete} className="bg-sky-500 text-white px-6 py-2 rounded-full hover:bg-sky-600">
+                <button onClick={() => window.location.reload()} className="bg-sky-500 text-white px-6 py-2 rounded-full hover:bg-sky-600">
                     Continue Learning
                 </button>
             </div>
@@ -228,10 +228,30 @@ export function FlashcardDrill({ onComplete }: FlashcardDrillProps) {
                     </button>
                 ) : (
                     <>
-                        <button onClick={() => handleRate(1)} className="bg-red-100 text-red-700 border border-red-200 py-3 rounded-xl font-bold hover:bg-red-200">Again</button>
-                        <button onClick={() => handleRate(3)} className="bg-orange-100 text-orange-700 border border-orange-200 py-3 rounded-xl font-bold hover:bg-orange-200">Hard</button>
-                        <button onClick={() => handleRate(4)} className="bg-blue-100 text-blue-700 border border-blue-200 py-3 rounded-xl font-bold hover:bg-blue-200">Good</button>
-                        <button onClick={() => handleRate(5)} className="bg-green-100 text-green-700 border border-green-200 py-3 rounded-xl font-bold hover:bg-green-200">Easy</button>
+                        <div className="group relative col-span-1">
+                            <button onClick={() => handleRate(1)} className="w-full bg-red-100 text-red-700 border border-red-200 py-3 rounded-xl font-bold hover:bg-red-200">Again</button>
+                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-32 bg-gray-800 text-white text-xs p-2 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-10 text-center">
+                                Did not know it. Review &lt; 1 min.
+                            </div>
+                        </div>
+                        <div className="group relative col-span-1">
+                            <button onClick={() => handleRate(3)} className="w-full bg-orange-100 text-orange-700 border border-orange-200 py-3 rounded-xl font-bold hover:bg-orange-200">Hard</button>
+                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-32 bg-gray-800 text-white text-xs p-2 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-10 text-center">
+                                Correct but slow/unsure.
+                            </div>
+                        </div>
+                        <div className="group relative col-span-1">
+                            <button onClick={() => handleRate(4)} className="w-full bg-blue-100 text-blue-700 border border-blue-200 py-3 rounded-xl font-bold hover:bg-blue-200">Good</button>
+                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-32 bg-gray-800 text-white text-xs p-2 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-10 text-center">
+                                Correct with some effort.
+                            </div>
+                        </div>
+                        <div className="group relative col-span-1">
+                            <button onClick={() => handleRate(5)} className="w-full bg-green-100 text-green-700 border border-green-200 py-3 rounded-xl font-bold hover:bg-green-200">Easy</button>
+                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-32 bg-gray-800 text-white text-xs p-2 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-10 text-center">
+                                Instant recall. Perfect.
+                            </div>
+                        </div>
                     </>
                 )}
             </div>
