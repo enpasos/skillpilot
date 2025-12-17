@@ -42,9 +42,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       setSelectedLandscapeId(deepLinkCurriculum)
     }
 
-    if (deepLinkId && !skillpilotId && role !== 'trainer') {
+    if (deepLinkId && role !== 'trainer') {
       const id = deepLinkId.trim();
-      setSkillpilotId(id);
+      if (skillpilotId !== id) {
+        setSkillpilotId(id);
+      }
       setRole('learner');
       checkLearner(id);
       setShowLogin(true);
