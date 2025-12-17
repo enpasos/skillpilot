@@ -100,8 +100,8 @@
             "shortKey": "tum_cit413041_lo1_1",
             "title": "Komplexitätsbegriffe und Reduktionen anwenden",
             "titleEn": "Apply Complexity Concepts and Reductions",
-            "description": "Die lernende Person kann grundlegende Komplexitätsbegriffe (z.B. Laufzeitordnung, Polynomialzeit) erklären und Reduktionen verwenden, um die Schwierigkeit von Entscheidungs- und Optimierungsproblemen einzuordnen.",
-            "descriptionEn": "The learner can explain basic complexity concepts (e.g., asymptotic runtime, polynomial time) and use reductions to classify the difficulty of decision and optimization problems.",
+            "description": "Zusammenfassender Cluster: grundlegende Komplexitätsbegriffe und Reduktionen zur Einordnung von Problemen nutzen.",
+            "descriptionEn": "Summary cluster: use basic complexity concepts and reductions to classify problems.",
             "core": true,
             "weight": 0.5,
             "phase": "Modul",
@@ -110,7 +110,11 @@
                 "ects:9",
                 "module:CIT413041"
             ],
-            "contains": [],
+            "contains": [
+                "db8841d5-a2b3-4f43-adde-e8cb3e352dea",
+                "054b16c4-d568-46f7-bffb-b83d880ee302",
+                "69465aa3-4af5-4f70-b1a9-6310a271e50a"
+            ],
             "requires": [],
             "examples": [],
             "dimensionTags": {
@@ -945,6 +949,94 @@
                 "phase": "Modul",
                 "area": "Flüsse",
                 "topicCode": "tum_cit413041_lo7_2_3"
+            }
+        },
+        {
+            "id": "db8841d5-a2b3-4f43-adde-e8cb3e352dea",
+            "shortKey": "tum_cit413041_lo1_1_1",
+            "title": "Komplexitätsmaße und Polynomialzeit erklären",
+            "titleEn": "Explain Complexity Measures and Polynomial Time",
+            "description": "Die lernende Person kann Laufzeitordnungen (O-Notation) erklären und den Begriff der Polynomialzeit an Beispielen einordnen.",
+            "descriptionEn": "The learner can explain asymptotic runtime (Big-O notation) and place the notion of polynomial time in examples.",
+            "core": true,
+            "weight": 0.2,
+            "phase": "Modul",
+            "area": "Komplexität",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Komplexität",
+                "topicCode": "tum_cit413041_lo1_1_1"
+            }
+        },
+        {
+            "id": "054b16c4-d568-46f7-bffb-b83d880ee302",
+            "shortKey": "tum_cit413041_lo1_1_2",
+            "title": "Polynomialzeit-Reduktionen formulieren",
+            "titleEn": "Formulate Polynomial-Time Reductions",
+            "description": "Die lernende Person kann die Idee von Polynomialzeit-Reduktionen erklären und in einfachen Fällen eine Reduktion skizzieren.",
+            "descriptionEn": "The learner can explain the idea of polynomial-time reductions and sketch a reduction in simple cases.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "Komplexität",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [
+                "db8841d5-a2b3-4f43-adde-e8cb3e352dea"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Komplexität",
+                "topicCode": "tum_cit413041_lo1_1_2"
+            }
+        },
+        {
+            "id": "69465aa3-4af5-4f70-b1a9-6310a271e50a",
+            "shortKey": "tum_cit413041_lo1_1_3",
+            "title": "Schwierigkeit von Problemen mit Reduktionen einordnen",
+            "titleEn": "Classify Problem Difficulty Using Reductions",
+            "description": "Die lernende Person kann Reduktionen nutzen, um Entscheidungs- und Optimierungsprobleme als (vermutlich) schwer einzuordnen und die Konsequenzen für Lösungsverfahren zu erläutern.",
+            "descriptionEn": "The learner can use reductions to classify decision and optimization problems as (presumably) hard and explain the consequences for solution methods.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "Komplexität",
+            "tags": [
+                "ects:9",
+                "module:CIT413041"
+            ],
+            "contains": [],
+            "requires": [
+                "054b16c4-d568-46f7-bffb-b83d880ee302"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit413041",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Komplexität",
+                "topicCode": "tum_cit413041_lo1_1_3"
             }
         }
     ]

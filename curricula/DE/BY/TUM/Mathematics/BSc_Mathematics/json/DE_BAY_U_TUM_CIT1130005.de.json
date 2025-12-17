@@ -294,8 +294,8 @@
             "shortKey": "tum_cit1130005_lo3_1",
             "title": "Affine Teilräume und affine Abbildungen",
             "titleEn": "Affine Subspaces and Affine Maps",
-            "description": "Die lernende Person kann affine Teilräume (z.B. Geraden, Ebenen) darstellen, Schnitt- und Abstandssituationen modellieren und affine Abbildungen in Koordinaten beschreiben.",
-            "descriptionEn": "The learner can represent affine subspaces (e.g., lines, planes), model intersection and distance situations, and describe affine maps in coordinates.",
+            "description": "Zusammenfassender Cluster: affine Teilräume darstellen, typische Situationen modellieren und affine Abbildungen beschreiben.",
+            "descriptionEn": "Summary cluster: represent affine subspaces, model typical situations, and describe affine maps.",
             "core": true,
             "weight": 0.45,
             "phase": "Modul",
@@ -304,7 +304,11 @@
                 "ects:6",
                 "module:CIT1130005"
             ],
-            "contains": [],
+            "contains": [
+                "90870ec6-c823-4651-91dd-9690baba7e96",
+                "5ec7fd3b-12e0-42d4-bfcf-a6d08ed555ce",
+                "93243956-9479-47a6-8440-1c9f6a835c03"
+            ],
             "requires": [],
             "examples": [],
             "dimensionTags": {
@@ -1325,6 +1329,94 @@
                 "phase": "Modul",
                 "area": "Skalarprodukt",
                 "topicCode": "tum_cit1130005_lo2_2_2_2"
+            }
+        },
+        {
+            "id": "90870ec6-c823-4651-91dd-9690baba7e96",
+            "shortKey": "tum_cit1130005_lo3_1_1",
+            "title": "Affine Teilräume in Koordinaten darstellen",
+            "titleEn": "Represent Affine Subspaces in Coordinates",
+            "description": "Die lernende Person kann affine Teilräume (z.B. Geraden, Ebenen) parametrisch oder als Lösungsmengen linearer Gleichungen darstellen und zwischen Darstellungen wechseln.",
+            "descriptionEn": "The learner can represent affine subspaces (e.g., lines, planes) parametrically or as solution sets of linear equations and switch between representations.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "Analytische Geometrie",
+            "tags": [
+                "ects:6",
+                "module:CIT1130005"
+            ],
+            "contains": [],
+            "requires": [],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Analytische Geometrie",
+                "topicCode": "tum_cit1130005_lo3_1_1"
+            }
+        },
+        {
+            "id": "5ec7fd3b-12e0-42d4-bfcf-a6d08ed555ce",
+            "shortKey": "tum_cit1130005_lo3_1_2",
+            "title": "Schnitt- und Abstandssituationen mit affinen Teilräumen modellieren",
+            "titleEn": "Model Intersection and Distance Situations with Affine Subspaces",
+            "description": "Die lernende Person kann Schnittsituationen zwischen affinen Teilräumen modellieren und in einfachen Fällen Abstände (z.B. Punkt–Gerade) auf geeignete Rechnungen zurückführen.",
+            "descriptionEn": "The learner can model intersections of affine subspaces and reduce basic distance problems (e.g., point–line) to suitable computations.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "Analytische Geometrie",
+            "tags": [
+                "ects:6",
+                "module:CIT1130005"
+            ],
+            "contains": [],
+            "requires": [
+                "90870ec6-c823-4651-91dd-9690baba7e96"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Analytische Geometrie",
+                "topicCode": "tum_cit1130005_lo3_1_2"
+            }
+        },
+        {
+            "id": "93243956-9479-47a6-8440-1c9f6a835c03",
+            "shortKey": "tum_cit1130005_lo3_1_3",
+            "title": "Affine Abbildungen in Koordinaten beschreiben",
+            "titleEn": "Describe Affine Maps in Coordinates",
+            "description": "Die lernende Person kann affine Abbildungen als Linearteil plus Translation darstellen und die Wirkung in Koordinaten berechnen.",
+            "descriptionEn": "The learner can represent affine maps as a linear part plus a translation and compute their action in coordinates.",
+            "core": true,
+            "weight": 0.15,
+            "phase": "Modul",
+            "area": "Analytische Geometrie",
+            "tags": [
+                "ects:6",
+                "module:CIT1130005"
+            ],
+            "contains": [],
+            "requires": [
+                "90870ec6-c823-4651-91dd-9690baba7e96"
+            ],
+            "examples": [],
+            "dimensionTags": {
+                "framework": "tum-cit1130005",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Modul",
+                "area": "Analytische Geometrie",
+                "topicCode": "tum_cit1130005_lo3_1_3"
             }
         }
     ]

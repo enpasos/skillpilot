@@ -64,9 +64,9 @@ const App: React.FC = () => {
     const desiredPath =
       role === 'learner' ? '/learner' : role === 'trainer' ? '/trainer' : '/explorer'
     if (!window.location.pathname.startsWith(desiredPath)) {
-      navigate(desiredPath, { replace: true })
+      navigate(desiredPath + location.search, { replace: true })
     }
-  }, [role, hasSession, navigate, isPublicRoute])
+  }, [role, hasSession, navigate, isPublicRoute, location.search])
 
   if (isPublicRoute) {
     return (
