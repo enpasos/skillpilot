@@ -119,6 +119,7 @@ public class LandscapeService {
                 gc.setContains(g.getContains());
                 gc.setExamples(g.getExamples());
                 gc.setSourceRef(g.getSourceRef());
+                gc.setExtendedData(g.getExtendedData());
 
                 // Localize Goal Title/Desc
                 gc.setTitle(StringUtils.hasText(g.getTitleEn()) ? g.getTitleEn() : g.getTitle());
