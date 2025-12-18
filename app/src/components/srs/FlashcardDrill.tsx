@@ -325,62 +325,70 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
 
                 <div className="grid grid-cols-4 gap-1 h-16 w-full">
                     {/* Box 0: New */}
-                    <div className="flex flex-col justify-end bg-gray-100 dark:bg-slate-800 rounded-lg relative overflow-hidden group">
-                        <div
-                            className="bg-gray-300 dark:bg-gray-600 absolute bottom-0 left-0 right-0 transition-all duration-500"
-                            style={{ height: `${(stats.box0 / stats.total) * 100}%` }}
-                        ></div>
-                        <div className="relative z-10 p-1 text-center">
+                    <div className="flex flex-col justify-end relative group cursor-help rounded-lg">
+                        <div className="absolute inset-0 bg-gray-100 dark:bg-slate-800 rounded-lg overflow-hidden">
+                            <div
+                                className="bg-gray-300 dark:bg-gray-600 absolute bottom-0 left-0 right-0 transition-all duration-500"
+                                style={{ height: `${(stats.box0 / stats.total) * 100}%` }}
+                            ></div>
+                        </div>
+                        <div className="relative z-10 p-1 text-center pointer-events-none">
                             <span className="text-xs font-bold text-gray-600 dark:text-gray-300 block">{stats.box0}</span>
                             <span className="text-[9px] text-gray-500 uppercase">{t.new}</span>
                         </div>
                         {/* Tooltip */}
-                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-50">
                             {t.box0Tooltip}
                         </div>
                     </div>
 
                     {/* Box 1: Learning (< 3d) */}
-                    <div className="flex flex-col justify-end bg-orange-50 dark:bg-slate-800/50 rounded-lg relative overflow-hidden group">
-                        <div
-                            className="bg-orange-200 dark:bg-orange-900/50 absolute bottom-0 left-0 right-0 transition-all duration-500"
-                            style={{ height: `${(stats.box1 / stats.total) * 100}%` }}
-                        ></div>
-                        <div className="relative z-10 p-1 text-center">
+                    <div className="flex flex-col justify-end relative group cursor-help rounded-lg">
+                        <div className="absolute inset-0 bg-orange-50 dark:bg-slate-800/50 rounded-lg overflow-hidden">
+                            <div
+                                className="bg-orange-200 dark:bg-orange-900/50 absolute bottom-0 left-0 right-0 transition-all duration-500"
+                                style={{ height: `${(stats.box1 / stats.total) * 100}%` }}
+                            ></div>
+                        </div>
+                        <div className="relative z-10 p-1 text-center pointer-events-none">
                             <span className="text-xs font-bold text-orange-700 dark:text-orange-400 block">{stats.box1}</span>
                             <span className="text-[9px] text-orange-600/70 dark:text-orange-400/70 uppercase">{t.learn}</span>
                         </div>
-                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-50">
                             {t.box1Tooltip}
                         </div>
                     </div>
 
                     {/* Box 2: Review (3-10d) */}
-                    <div className="flex flex-col justify-end bg-blue-50 dark:bg-slate-800/50 rounded-lg relative overflow-hidden group">
-                        <div
-                            className="bg-blue-200 dark:bg-blue-900/50 absolute bottom-0 left-0 right-0 transition-all duration-500"
-                            style={{ height: `${(stats.box2 / stats.total) * 100}%` }}
-                        ></div>
-                        <div className="relative z-10 p-1 text-center">
+                    <div className="flex flex-col justify-end relative group cursor-help rounded-lg">
+                        <div className="absolute inset-0 bg-blue-50 dark:bg-slate-800/50 rounded-lg overflow-hidden">
+                            <div
+                                className="bg-blue-200 dark:bg-blue-900/50 absolute bottom-0 left-0 right-0 transition-all duration-500"
+                                style={{ height: `${(stats.box2 / stats.total) * 100}%` }}
+                            ></div>
+                        </div>
+                        <div className="relative z-10 p-1 text-center pointer-events-none">
                             <span className="text-xs font-bold text-blue-700 dark:text-blue-400 block">{stats.box2}</span>
                             <span className="text-[9px] text-blue-600/70 dark:text-blue-400/70 uppercase">{t.review}</span>
                         </div>
-                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-50">
                             {t.box2Tooltip}
                         </div>
                     </div>
 
                     {/* Box 3: Mastered (>10d) */}
-                    <div className="flex flex-col justify-end bg-green-50 dark:bg-slate-800/50 rounded-lg relative overflow-hidden group">
-                        <div
-                            className="bg-green-200 dark:bg-green-900/50 absolute bottom-0 left-0 right-0 transition-all duration-500"
-                            style={{ height: `${(stats.box3 / stats.total) * 100}%` }}
-                        ></div>
-                        <div className="relative z-10 p-1 text-center">
+                    <div className="flex flex-col justify-end relative group cursor-help rounded-lg">
+                        <div className="absolute inset-0 bg-green-50 dark:bg-slate-800/50 rounded-lg overflow-hidden">
+                            <div
+                                className="bg-green-200 dark:bg-green-900/50 absolute bottom-0 left-0 right-0 transition-all duration-500"
+                                style={{ height: `${(stats.box3 / stats.total) * 100}%` }}
+                            ></div>
+                        </div>
+                        <div className="relative z-10 p-1 text-center pointer-events-none">
                             <span className="text-xs font-bold text-green-700 dark:text-green-400 block">{stats.box3}</span>
                             <span className="text-[9px] text-green-600/70 dark:text-green-400/70 uppercase">{t.master}</span>
                         </div>
-                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-50">
                             {t.box3Tooltip}
                         </div>
                     </div>
@@ -399,11 +407,17 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
 
 
             {/* Progress Bar */}
-            <div className="w-full h-2 bg-gray-200 rounded-full mb-6 dark:bg-gray-700 overflow-hidden">
-                <div
-                    className="h-full bg-sky-500 transition-all duration-300 ease-out"
-                    style={{ width: `${((currentCardIndex) / queue.length) * 100}%` }}
-                />
+            <div className="group relative w-full mb-6 cursor-help">
+                <div className="w-full h-2 bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
+                    <div
+                        className="h-full bg-sky-500 transition-all duration-300 ease-out"
+                        style={{ width: `${((currentCardIndex) / queue.length) * 100}%` }}
+                    />
+                </div>
+                {/* Tooltip */}
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-50">
+                    {t.progressTooltip.replace('{0}', currentCardIndex.toString()).replace('{1}', queue.length.toString())}
+                </div>
             </div>
 
             {/* Card Area */}
