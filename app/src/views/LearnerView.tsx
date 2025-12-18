@@ -358,6 +358,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                     onRefresh?.()
                   }}
                   skillPilotId={skillpilotId}
+                  titleOverride={currentGoal.title}
                 />
               </div>
             ) : (

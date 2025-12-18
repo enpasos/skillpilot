@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { CheckCircle, BrainCircuit } from 'lucide-react'
-// import vocabData from '../../assets/data/vocab_400.json' // REMOVED
+import { useLanguage } from '../../contexts/LanguageContext'
 
 import { calculateReview, INITIAL_DECK_STATE, type ReviewItem } from './srsLogic'
 
@@ -8,6 +8,7 @@ interface FlashcardDrillProps {
     onComplete: () => void
     dataSourceUrl?: string
     skillPilotId: string
+    titleOverride?: string
 }
 
 interface VocabData {
@@ -21,8 +22,77 @@ interface VocabData {
     }>
 }
 
+const UI_TEXT = {
+    en: {
+        configError: "Configuration Error: Missing Vocabulary Source.",
+        loading: "Loading Data...",
+        allCaughtUp: "All Caught Up!",
+        new: "New",
+        learn: "Learn",
+        review: "Review",
+        master: "Master",
+        noneDue: "No cards due for review right now.",
+        back: "Back to Curriculum",
+        sessionComplete: "Session Complete!",
+        reviewed: "You reviewed {0} cards.",
+        continue: "Continue Learning",
+        progress: "Your Progress",
+        localData: "Local Data",
+        localDataTooltip: "Saved in this browser.",
+        box0Tooltip: "Box 0: Unseen",
+        box1Tooltip: "Box 1: < 3 Days",
+        box2Tooltip: "Box 2: 3-10 Days",
+        box3Tooltip: "Box 3: > 10 Days",
+        readyForReview: "Cards ready for review: {0}. Doing 20 of them is great!",
+        tapToFlip: "Tap to flip",
+        showAnswer: "Show Answer",
+        again: "Again",
+        hard: "Hard",
+        good: "Good",
+        easy: "Easy",
+        againTooltip: "Did not know it. Review < 1 min.",
+        hardTooltip: "Correct but slow/unsure.",
+        goodTooltip: "Correct with some effort.",
+        easyTooltip: "Instant recall. Perfect."
+    },
+    de: {
+        configError: "Konfigurationsfehler: Fehlende Vokabelquelle.",
+        loading: "Lade Daten...",
+        allCaughtUp: "Alles erledigt!",
+        new: "Neu",
+        learn: "Lernen",
+        review: "Wdh.",
+        master: "Meister",
+        noneDue: "Derzeit keine Karten zur Wiederholung fällig.",
+        back: "Zurück zum Lehrplan",
+        sessionComplete: "Sitzung beendet!",
+        reviewed: "Du hast {0} Karten wiederholt.",
+        continue: "Weiterlernen",
+        progress: "Dein Fortschritt",
+        localData: "Lokale Daten",
+        localDataTooltip: "In diesem Browser gespeichert.",
+        box0Tooltip: "Box 0: Ungesehen",
+        box1Tooltip: "Box 1: < 3 Tage",
+        box2Tooltip: "Box 2: 3-10 Tage",
+        box3Tooltip: "Box 3: > 10 Tage",
+        readyForReview: "Bereit zur Wiederholung: {0}. 20 Stück zu schaffen ist super!",
+        tapToFlip: "Zum Umdrehen tippen",
+        showAnswer: "Antwort zeigen",
+        again: "Nochmal",
+        hard: "Schwer",
+        good: "Gut",
+        easy: "Einfach",
+        againTooltip: "Nicht gewusst. Wdh < 1 Min.",
+        hardTooltip: "Richtig, aber langsam/unsicher.",
+        goodTooltip: "Richtig mit etwas Mühe.",
+        easyTooltip: "Sofort gewusst. Perfekt."
+    }
+}
 
-export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId }: FlashcardDrillProps) {
+export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleOverride }: FlashcardDrillProps) {
+    const { language } = useLanguage()
+    const t = language === 'de' ? UI_TEXT.de : UI_TEXT.en
+
     // Load state from local storage or init
     const getStoredState = (): Record<string, ReviewItem> => {
         try {
@@ -173,36 +243,38 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId }: Flas
         setTimeout(() => setCurrentCardIndex(prev => prev + 1), 200)
     }
 
-    if (!dataSourceUrl) return <div className="p-8 text-center text-red-500">Configuration Error: Missing Vocabulary Source.</div>
-    if (!vocabData) return <div className="p-8 text-center">Loading Data...</div>
+    if (!dataSourceUrl) return <div className="p-8 text-center text-red-500">{t.configError}</div>
+
+
+    if (!vocabData) return <div className="p-8 text-center">{t.loading}</div>
 
     if (queue.length === 0 && currentCardIndex === 0) {
         return (
             <div className="flex flex-col items-center justify-center p-8 text-center h-[60vh]">
                 <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
-                <h2 className="text-2xl font-bold mb-2">All Caught Up!</h2>
+                <h2 className="text-2xl font-bold mb-2">{t.allCaughtUp}</h2>
                 <div className="flex gap-2 my-8 justify-center w-full max-w-sm">
                     {/* Mini Box View for Summary */}
                     <div className="flex flex-col items-center p-2 bg-gray-50 rounded dark:bg-slate-800 flex-1">
-                        <span className="text-xs text-gray-500">New</span>
+                        <span className="text-xs text-gray-500">{t.new}</span>
                         <span className="font-bold text-gray-700 dark:text-gray-300">{stats.box0}</span>
                     </div>
                     <div className="flex flex-col items-center p-2 bg-orange-50 rounded dark:bg-slate-800 flex-1">
-                        <span className="text-xs text-orange-600">Learn</span>
+                        <span className="text-xs text-orange-600">{t.learn}</span>
                         <span className="font-bold text-orange-700 dark:text-orange-300">{stats.box1}</span>
                     </div>
                     <div className="flex flex-col items-center p-2 bg-blue-50 rounded dark:bg-slate-800 flex-1">
-                        <span className="text-xs text-blue-600">Review</span>
+                        <span className="text-xs text-blue-600">{t.review}</span>
                         <span className="font-bold text-blue-700 dark:text-blue-300">{stats.box2}</span>
                     </div>
                     <div className="flex flex-col items-center p-2 bg-green-50 rounded dark:bg-slate-800 flex-1">
-                        <span className="text-xs text-green-600">Master</span>
+                        <span className="text-xs text-green-600">{t.master}</span>
                         <span className="font-bold text-green-700 dark:text-green-300">{stats.box3}</span>
                     </div>
                 </div>
-                <p className="text-gray-500 mb-6">{vocabData?.title || 'Loading...'} - No cards due for review right now.</p>
+                <p className="text-gray-500 mb-6">{titleOverride || vocabData?.title || 'Loading...'} - {t.noneDue}</p>
                 <button onClick={onComplete} className="bg-sky-500 text-white px-6 py-2 rounded-full hover:bg-sky-600">
-                    Back to Curriculum
+                    {t.back}
                 </button>
             </div>
         )
@@ -212,8 +284,8 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId }: Flas
         return (
             <div className="flex flex-col items-center justify-center p-8 text-center h-[60vh]">
                 <BrainCircuit className="w-16 h-16 text-sky-500 mb-4" />
-                <h2 className="text-2xl font-bold mb-2">Session Complete!</h2>
-                <p className="text-gray-500 mb-6">You reviewed {sessionStats.reviewed} cards.</p>
+                <h2 className="text-2xl font-bold mb-2">{t.sessionComplete}</h2>
+                <p className="text-gray-500 mb-6">{t.reviewed.replace('{0}', sessionStats.reviewed.toString())}</p>
                 <button
                     onClick={() => {
                         // Soft Reload: Reset state and trigger re-fetch
@@ -225,13 +297,13 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId }: Flas
                     }}
                     className="bg-sky-500 text-white px-6 py-2 rounded-full hover:bg-sky-600"
                 >
-                    Continue Learning
+                    {t.continue}
                 </button>
             </div>
         )
     }
 
-    if (!currentCard || !vocabData) return <div className="p-8 text-center">Loading Data...</div>
+    if (!currentCard || !vocabData) return <div className="p-8 text-center">{t.loading}</div>
 
     return (
         <div className="flex flex-col items-center w-full max-w-md mx-auto p-4 min-h-[60vh]">
@@ -239,12 +311,12 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId }: Flas
             {/* Dashboard: Leitner Boxes */}
             <div className="w-full mb-6">
                 <div className="flex justify-between items-end mb-2 px-1">
-                    <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Your Progress</span>
+                    <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{t.progress}</span>
                     <div className="group relative flex items-center gap-1 text-[10px] text-gray-400 cursor-help">
                         <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                        Local Data
+                        {t.localData}
                         <div className="absolute top-full right-0 mt-1 w-48 bg-gray-800 text-white p-2 rounded text-xs z-50 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                            Saved in this browser.
+                            {t.localDataTooltip}
                         </div>
                     </div>
                 </div>
@@ -258,11 +330,11 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId }: Flas
                         ></div>
                         <div className="relative z-10 p-1 text-center">
                             <span className="text-xs font-bold text-gray-600 dark:text-gray-300 block">{stats.box0}</span>
-                            <span className="text-[9px] text-gray-500 uppercase">New</span>
+                            <span className="text-[9px] text-gray-500 uppercase">{t.new}</span>
                         </div>
                         {/* Tooltip */}
                         <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
-                            Box 0: Unseen
+                            {t.box0Tooltip}
                         </div>
                     </div>
 
@@ -274,10 +346,10 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId }: Flas
                         ></div>
                         <div className="relative z-10 p-1 text-center">
                             <span className="text-xs font-bold text-orange-700 dark:text-orange-400 block">{stats.box1}</span>
-                            <span className="text-[9px] text-orange-600/70 dark:text-orange-400/70 uppercase">Learn</span>
+                            <span className="text-[9px] text-orange-600/70 dark:text-orange-400/70 uppercase">{t.learn}</span>
                         </div>
                         <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
-                            Box 1: &lt; 3 Days
+                            {t.box1Tooltip}
                         </div>
                     </div>
 
@@ -289,10 +361,10 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId }: Flas
                         ></div>
                         <div className="relative z-10 p-1 text-center">
                             <span className="text-xs font-bold text-blue-700 dark:text-blue-400 block">{stats.box2}</span>
-                            <span className="text-[9px] text-blue-600/70 dark:text-blue-400/70 uppercase">Review</span>
+                            <span className="text-[9px] text-blue-600/70 dark:text-blue-400/70 uppercase">{t.review}</span>
                         </div>
                         <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
-                            Box 2: 3-10 Days
+                            {t.box2Tooltip}
                         </div>
                     </div>
 
@@ -304,10 +376,10 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId }: Flas
                         ></div>
                         <div className="relative z-10 p-1 text-center">
                             <span className="text-xs font-bold text-green-700 dark:text-green-400 block">{stats.box3}</span>
-                            <span className="text-[9px] text-green-600/70 dark:text-green-400/70 uppercase">Master</span>
+                            <span className="text-[9px] text-green-600/70 dark:text-green-400/70 uppercase">{t.master}</span>
                         </div>
                         <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
-                            Box 3: &gt; 10 Days
+                            {t.box3Tooltip}
                         </div>
                     </div>
                 </div>
@@ -315,7 +387,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId }: Flas
                 {/* Due Indicator */}
                 <div className="text-center mt-2">
                     <span className="text-[10px] text-gray-400">
-                        Cards ready for review: <strong className="text-sky-500">{stats.due}</strong>
+                        {t.readyForReview.replace('{0}', stats.due.toString())}
                     </span>
                 </div>
             </div>
@@ -347,7 +419,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId }: Flas
                     >
                         <span className="text-xs font-bold text-sky-500 uppercase tracking-wider mb-2">{currentCard.category}</span>
                         <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-100">{currentCard.front}</h2>
-                        <p className="text-gray-400 text-sm mt-4 italic">Tap to flip</p>
+                        <p className="text-gray-400 text-sm mt-4 italic">{t.tapToFlip}</p>
                     </div>
 
                     {/* Back */}
@@ -371,32 +443,32 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId }: Flas
                         onClick={() => setIsFlipped(true)}
                         className="col-span-4 bg-gray-800 text-white py-4 rounded-xl font-semibold shadow-lg hover:bg-gray-700 transition-colors"
                     >
-                        Show Answer
+                        {t.showAnswer}
                     </button>
                 ) : (
                     <>
                         <div className="group relative col-span-1">
-                            <button onClick={() => handleRate(1)} className="w-full bg-red-100 text-red-700 border border-red-200 py-3 rounded-xl font-bold hover:bg-red-200">Again</button>
+                            <button onClick={() => handleRate(1)} className="w-full bg-red-100 text-red-700 border border-red-200 py-3 rounded-xl font-bold hover:bg-red-200">{t.again}</button>
                             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-32 bg-gray-800 text-white text-xs p-2 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-10 text-center">
-                                Did not know it. Review &lt; 1 min.
+                                {t.againTooltip}
                             </div>
                         </div>
                         <div className="group relative col-span-1">
-                            <button onClick={() => handleRate(3)} className="w-full bg-orange-100 text-orange-700 border border-orange-200 py-3 rounded-xl font-bold hover:bg-orange-200">Hard</button>
+                            <button onClick={() => handleRate(3)} className="w-full bg-orange-100 text-orange-700 border border-orange-200 py-3 rounded-xl font-bold hover:bg-orange-200">{t.hard}</button>
                             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-32 bg-gray-800 text-white text-xs p-2 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-10 text-center">
-                                Correct but slow/unsure.
+                                {t.hardTooltip}
                             </div>
                         </div>
                         <div className="group relative col-span-1">
-                            <button onClick={() => handleRate(4)} className="w-full bg-blue-100 text-blue-700 border border-blue-200 py-3 rounded-xl font-bold hover:bg-blue-200">Good</button>
+                            <button onClick={() => handleRate(4)} className="w-full bg-blue-100 text-blue-700 border border-blue-200 py-3 rounded-xl font-bold hover:bg-blue-200">{t.good}</button>
                             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-32 bg-gray-800 text-white text-xs p-2 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-10 text-center">
-                                Correct with some effort.
+                                {t.goodTooltip}
                             </div>
                         </div>
                         <div className="group relative col-span-1">
-                            <button onClick={() => handleRate(5)} className="w-full bg-green-100 text-green-700 border border-green-200 py-3 rounded-xl font-bold hover:bg-green-200">Easy</button>
+                            <button onClick={() => handleRate(5)} className="w-full bg-green-100 text-green-700 border border-green-200 py-3 rounded-xl font-bold hover:bg-green-200">{t.easy}</button>
                             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-32 bg-gray-800 text-white text-xs p-2 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-10 text-center">
-                                Instant recall. Perfect.
+                                {t.easyTooltip}
                             </div>
                         </div>
                     </>
