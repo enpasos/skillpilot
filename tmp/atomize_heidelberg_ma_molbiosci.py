@@ -1723,6 +1723,29 @@ def main() -> None:
         ),
         # --- Masterarbeit (MA) ---
         SplitSpec(
+            parent_short_key="ma_apply_methods_data_analysis",
+            parent_title=None,
+            parent_title_en=None,
+            parent_description=None,
+            parent_description_en=None,
+            children=(
+                ChildSpec(
+                    suffix="1",
+                    title="Methoden zur Datenanalyse anwenden",
+                    title_en="Apply methods for data analysis",
+                    description="Die Studierenden können geeignete Methoden zur Analyse experimenteller oder theoretischer Daten anwenden.",
+                    description_en="Students can apply suitable methods for analyzing experimental or theoretical data.",
+                ),
+                ChildSpec(
+                    suffix="2",
+                    title="Daten auswerten",
+                    title_en="Evaluate data",
+                    description="Die Studierenden können experimentelle oder theoretische Daten auswerten.",
+                    description_en="Students can evaluate experimental or theoretical data.",
+                ),
+            ),
+        ),
+        SplitSpec(
             parent_short_key="ma_contextualize_current_research_interdisciplinary",
             parent_title=None,
             parent_title_en=None,
@@ -1866,6 +1889,29 @@ def main() -> None:
             ),
         ),
         SplitSpec(
+            parent_short_key="ma_present_discuss_results_in_english_3",
+            parent_title=None,
+            parent_title_en=None,
+            parent_description=None,
+            parent_description_en=None,
+            children=(
+                ChildSpec(
+                    suffix="1",
+                    title="Ergebnisse auf Englisch präsentieren",
+                    title_en="Present results in English",
+                    description="Die Studierenden können Ergebnisse auf Englisch präsentieren.",
+                    description_en="Students can present results in English.",
+                ),
+                ChildSpec(
+                    suffix="2",
+                    title="Ergebnisse auf Englisch diskutieren",
+                    title_en="Discuss results in English",
+                    description="Die Studierenden können Ergebnisse auf Englisch diskutieren.",
+                    description_en="Students can discuss results in English.",
+                ),
+            ),
+        ),
+        SplitSpec(
             parent_short_key="ma_write_structured_reflective_thesis_software",
             parent_title=None,
             parent_title_en=None,
@@ -1927,9 +1973,14 @@ def main() -> None:
     for spec in splits_sorted:
         apply_split(data, spec)
 
+    # Text-only cleanups (idempotent)
+    for goal in data.get("goals", []):
+        if goal.get("shortKey") == "frontii_literature_english_abstract_3":
+            goal["title"] = "Englischsprachiges Abstract strukturiert zusammenfassen"
+            goal["titleEn"] = "Summarize an English abstract in a structured way"
+
     target.write_text(json.dumps(data, ensure_ascii=False, indent=4) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":
     main()
-
