@@ -66,7 +66,22 @@ The fill levels of the bars ("Mastery") are not a manual logbook. They are the a
 
 ---
 
-## 5. The Data Approach: Security & Privacy
+## 5. The Hybrid Loop: Integrating Memorization
+
+While the Skill Graph excels at modeling understanding and concepts, pure rote memorization (e.g., vocabulary, formulas) requires a different approach.
+
+![Hybrid Learning Loop](memorize.en.png)
+
+SkillPilot integrates a **Flashcard Drill Engine** based on **Spaced Repetition (SRS)**. This creates a hybrid learning cycle:
+
+*   **The Competence Loop (Strategic):** The Skill Graph defines *WHAT* to learn (e.g., "Top 400 Vocabulary").
+*   **The Memorization Loop (Tactical):** The Drill Engine manages *HOW* to learn it efficiently. Algorithms like SuperMemo-2 optimize review intervals to minimize forgetting.
+
+This allows the AI Agent to act as a "Coach", sending the learner to the "Gym" (Drill) for focused training and welcoming them back to the "Arena" (Chat) to apply the new knowledge in context.
+
+---
+
+## 6. The Data Approach: Security & Privacy
 
 A central pillar of SkillPilot is “privacy by design” through strict separation of data.
 
@@ -78,7 +93,7 @@ The actual dialog content is decoupled from the server. What information the lea
 
 ---
 
-## 6. Almost like Blockchain: Chain of Custody
+## 7. Almost like Blockchain: Chain of Custody
  
 SkillPilot implements a **Chain of Custody** pattern to make learning achievements tamper-proof and traceable.
  
@@ -90,7 +105,7 @@ The approach becomes particularly powerful when exchanging data: When importing 
  
 ---
  
-## 7. Status Quo: Available Content
+## 8. Status Quo: Available Content
  
 SkillPilot is not a theoretical exercise. The system already comes with extensive curricula that reflect official educational standards:
 
@@ -109,7 +124,7 @@ This content serves as a starting point and can be expanded by the community.
 
 ---
 
-## 8. The Open Approach: Business Model & Invitation
+## 9. The Open Approach: Business Model & Invitation
 
 To ensure broad acceptance and sustainable further development, SkillPilot is released as **open source software under the Apache-2.0 license**. This is a deliberate invitation to the traditional players in the education system.
 

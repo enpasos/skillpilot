@@ -66,7 +66,22 @@ Die Füllstände der Balken („Mastery“) sind dabei kein manuelles Logbuch. S
 
 ---
 
-## 5. Der Datenansatz: Sicherheit & Privacy
+## 5. Der Hybride Loop: Integration von Memorieren
+
+Während der Skill-Graph hervorragend geeignet ist, um Verständnis und Konzepte zu modellieren, erfordert das reine Auswendiglernen (z. B. Vokabeln, Formeln) einen anderen Ansatz.
+
+![Hybrider Lernkreislauf](memorize.de.png)
+
+SkillPilot integriert dafür eine **Flashcard Drill Engine**, die auf **Spaced Repetition (SRS)** basiert. Dies schafft einen hybriden Lernkreislauf:
+
+*   **Der Kompetenz-Loop (Strategisch):** Der Skill-Graph definiert, *WAS* gelernt werden soll (z. B. "Top 400 Wortschatz").
+*   **Der Memorisier-Loop (Taktisch):** Die Drill-Engine steuert, *WIE* dies effizient gelernt wird. Algorithmen wie SuperMemo-2 optimieren die Wiederholungsintervalle, um das Vergessen zu minimieren.
+
+Dies ermöglicht es dem KI-Agenten, als "Trainer" zu fungieren, der den Lernenden für gezieltes Training ins "Fitnessstudio" (Drill) schickt und ihn anschließend in der "Arena" (Chat) zurückbegrüßt, um das neue Wissen im Kontext anzuwenden.
+
+---
+
+## 6. Der Datenansatz: Sicherheit & Privacy
 
 Ein zentraler Pfeiler von SkillPilot ist „Privacy by Design“ durch eine strikte Datentrennung.
 
@@ -78,7 +93,7 @@ Der eigentliche Dialoginhalt ist vom Server entkoppelt. Welche Informationen der
 
 ---
 
-## 6. Fast wie Blockchain: Chain of Custody
+## 7. Fast wie Blockchain: Chain of Custody
  
 SkillPilot implementiert ein **Chain of Custody** Pattern, um Lernerfolge manipulationssicher und nachvollziehbar zu machen.
  
@@ -90,7 +105,7 @@ Besonders mächtig wird der Ansatz beim Austausch von Daten: Beim Import in eine
  
 ---
  
-## 7. Status Quo: Verfügbare Inhalte
+## 8. Status Quo: Verfügbare Inhalte
  
 SkillPilot ist keine theoretische Übung. Das System ist bereits mit umfangreichen Curricula ausgestattet, die offizielle Bildungsstandards abbilden:
 
@@ -109,7 +124,7 @@ Diese Inhalte dienen als Startpunkt und können von der Community erweitert werd
 
 ---
 
-## 8. Der offene Ansatz: Geschäftsmodell & Einladung
+## 9. Der offene Ansatz: Geschäftsmodell & Einladung
 
 Um eine breite Akzeptanz und nachhaltige Weiterentwicklung zu sichern, wird SkillPilot als **Open Source Software unter der Apache-2.0-Lizenz** veröffentlicht. Dies ist eine bewusste Einladung an die klassischen Akteure des Bildungswesens.
 
