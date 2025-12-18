@@ -92,7 +92,7 @@ End-to-end flow for a typical learner session:
 3.  **Discovery:** It looks at the `frontier` list in the state. These are the goals ready to be learned.
 4.  **Personalization:** If the user has a specific goal ("I want to learn for the exam"), it calls `setScope`.
 5.  **Teaching:** It picks a goal from the frontier, explains it, and does exercises.
-6.  **Mastery:** After success, it calls `setMastery`. This returns the **new** frontier immediately.
+6.  **Mastery:** After success, it calls `setMastery` **immediately** (no confirmation prompt). If competence is not verified, it must **not** call `setMastery`. This returns the **new** frontier immediately.
 7.  **Loop:** It picks the next goal from the returned frontier and continues.
 
 -----
