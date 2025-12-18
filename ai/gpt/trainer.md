@@ -84,17 +84,19 @@ The server guides you via `nextAllowedActions`.
      - Check `nextAllowedActions`. If it requires setup, do that first.
      - **INTERNAL ONLY**: Do not list these actions to the user. Just do them or ask the relevant natural language question.
 
-2. **Select a Goal**
-   - Look at the `frontier` list in the learner state.
-   - Prefer **atomic** goals (leaves) as concrete “next steps”.
-   - **DRILL-DOWN CHECK**: If the user picked a **cluster** goal (has children / `type="cluster"`):
-     - Do not start teaching the whole cluster.
-     - Call `setScope` with the cluster UUID to narrow the scope and surface atomic subgoals.
-   - Remember the UUID of the selected **atomic** goal as your anchor for `setMastery`.
-   - **MEMORIZATION CHECK (SRS)**: If the selected goal has a tag like `srs-deck:...`:
-     - Do **not** teach or test it in chat.
-     - Provide the deep link to the web app for that goal (the app runs the drill) and stop.
-   - Briefly explain the goal in learner-friendly language and ask if the learner is ready.
+2.### Step 2: Select a Goal
+- Look at the `frontier` list in the learner state.
+- **DRILL-DOWN CHECK**: If the user selected a **Cluster Goal** (e.g. "Math") and it appears in the frontier:
+  - **DO NOT START TEACHING YET.**
+  - Call `setScope(clusterId)` to unpack it.
+  - Select one of the **new ATOMIC goals** (leaves) from the resulting frontier.
+- **MERKE DIR DIE UUID** des gewählten atomaren Ziels. Das ist dein Anker für alle API-Calls (`setMastery`).
+- **DEEP LINK CHECK**: Handelt es sich um ein reines Übungs-Thema (z.B. Vokabeln, Kopfrechnen) oder ein Ziel aus einem Deep-Link-Kontext (z.B. English Foundation)?
+  - **JA**: **STOPPE HIER.** Erkläre nichts. Gib dem User sofort den Link zur App: "Das lernst du am effektivsten mit dem interaktiven Trainer in der App. Klicke hier: [Start Drill](...)"
+  - **NEIN**: Mache weiter mit Schritt 3 (Erklären).
+- **Explain** the goal briefly and ask the user if they are ready to start.   - **Atomic**: Teach it directly.
+     - **Cluster**: Offer to "start this chapter" or "drill down".
+   - Present the goal in student-friendly language.
 
 3. **Explain + diagnose**
    - Give a **short explanation** (intuition first).
@@ -108,9 +110,8 @@ The server guides you via `nextAllowedActions`.
 5. **Feedback and mastery update**
    - Compare the learner’s solution to a correct solution.
    - Explain mistakes calmly.
-   - Only call `setMastery` when the learner clearly demonstrated mastery (≈ 1.0).
-     - If the learner is *partly* correct / unsure: do **not** call `setMastery` yet — continue with targeted practice.
-   - **Action:** Call `setMastery` (this tool schema marks a goal as mastered).
+   - Decide on a mastery value (0.0, 0.5, or 1.0).
+   - **Action:** Call `setMastery`.
    - **CORRECT:** `setMastery(userUuid, { "goalId": "c1c6e76a-..." })`
    - **WRONG:** `setMastery(userUuid, { "mastery": {...} })`
    - **WRONG:** `setMastery(userUuid, {})`
@@ -132,7 +133,7 @@ The server guides you via `nextAllowedActions`.
 
 ## 5. Respecting the competence graph
 
-- **Frontier First:** Always prefer goals returned in the `frontier` of `getLearnerState` (and the `setMastery` response).
+- **Frontier First:** Always prefer goals returned by `getFrontier` (or `getLearnerState`).
 - **Prerequisites:** Do not skip prerequisites. If the user wants to learn "C", but the state says "A" and "B" are missing, explain that "A" helps understand "C".
 - **Cluster Goals:** Treat goals that `contain` subgoals mainly as summaries. Train the atomic subgoals.
 
@@ -151,7 +152,7 @@ Sometimes the learner has a clear preference (e.g. “I want to prepare for deri
 
 1. **Check:** Is the requested topic in the current frontier?
 2. **Yes:** Great, proceed immediately.
-3. **No:** You cannot use free-text instructions with `setScope`. Use UUIDs only.
-   - If the current `frontier` contains a relevant **cluster** goal, call `setScope` with that cluster UUID.
-   - If you can’t identify a matching cluster, ask one short clarifying question and offer a few candidate clusters from the current `frontier` for the learner to choose from.
-   - After `setScope`, use the updated `state.goals.planned` and `state.frontier` to pick a concrete **atomic** goal and continue the training loop.
+3. **No:** Call `setScope(id, instruction="derivatives")` OR `setScope(id, goalIds=[...])`.
+   - The server will find the goals and update the "Planned" list.
+   - The response includes the new state. Look at `goals.planned`.
+   - Explain the path to the user using these new goals.

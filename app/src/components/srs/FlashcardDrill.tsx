@@ -9,7 +9,6 @@ interface FlashcardDrillProps {
     dataSourceUrl?: string
     skillPilotId: string
     titleOverride?: string
-    deckId?: string
 }
 
 interface VocabData {
@@ -94,14 +93,15 @@ const UI_TEXT = {
     }
 }
 
-export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleOverride, deckId }: FlashcardDrillProps) {
+export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleOverride }: FlashcardDrillProps) {
     const { language } = useLanguage()
     const t = language === 'de' ? UI_TEXT.de : UI_TEXT.en
 
-    const buildStorageKey = (deck: string) => `srs_state_${skillPilotId}_${deck}`
-
-    const readStoredState = (storageKey: string): Record<string, ReviewItem> => {
+    // Load state from local storage or init
+    const getStoredState = (): Record<string, ReviewItem> => {
         try {
+            // Hardcoded deck ID for now (eng_400), but scoped to user
+            const storageKey = `srs_state_${skillPilotId}_eng_400`
             const stored = localStorage.getItem(storageKey)
             return stored ? JSON.parse(stored) : {}
         } catch {
@@ -109,11 +109,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
         }
     }
 
-    const [activeDeckId, setActiveDeckId] = useState<string | undefined>(deckId)
-    const initialStorageKey = deckId ? buildStorageKey(deckId) : null
-    const [srsState, setSrsState] = useState<Record<string, ReviewItem>>(() => {
-        return initialStorageKey ? readStoredState(initialStorageKey) : {}
-    })
+    const [srsState, setSrsState] = useState<Record<string, ReviewItem>>(getStoredState)
     const [vocabData, setVocabData] = useState<VocabData | null>(null)
     const [queue, setQueue] = useState<VocabData['cards']>([])
     const [currentCardIndex, setCurrentCardIndex] = useState(0)
@@ -141,12 +137,6 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
                 const data: VocabData = await res.json()
                 setVocabData(data)
 
-                const resolvedDeckId = data.deckId || deckId
-                if (resolvedDeckId) setActiveDeckId(resolvedDeckId)
-                const resolvedStorageKey = resolvedDeckId ? buildStorageKey(resolvedDeckId) : null
-                const storedState = resolvedStorageKey ? readStoredState(resolvedStorageKey) : {}
-                setSrsState(storedState)
-
                 // Process Queue immediately after load
                 const now = Date.now()
                 const totalCards = data.cards.length
@@ -154,7 +144,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
                 let dueCardsCount = 0
 
                 const dueCards = data.cards.filter(card => {
-                    const state = storedState[card.id]
+                    const state = srsState[card.id] || getStoredState()[card.id] // Fallback to fresh read if needed
 
                     // Box Calc
                     if (!state) {
@@ -192,7 +182,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
         }
 
         loadData()
-    }, [dataSourceUrl, reloadTrigger, deckId]) // Added reloadTrigger dependency
+    }, [dataSourceUrl, reloadTrigger]) // Added reloadTrigger dependency
 
     const currentCard = queue[currentCardIndex]
     const isFinished = currentCardIndex >= queue.length
@@ -220,9 +210,8 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
 
         const updatedSrsState = { ...srsState, [currentCard.id]: newState }
         setSrsState(updatedSrsState)
-        if (activeDeckId) {
-            localStorage.setItem(buildStorageKey(activeDeckId), JSON.stringify(updatedSrsState))
-        }
+        const storageKey = `srs_state_${skillPilotId}_eng_400`
+        localStorage.setItem(storageKey, JSON.stringify(updatedSrsState))
 
         setSessionStats(prev => ({ reviewed: prev.reviewed + 1 }))
 
