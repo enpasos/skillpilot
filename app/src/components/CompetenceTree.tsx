@@ -123,7 +123,10 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           />
         </div>
 
-        <span className={`text-sm truncate flex-1 ${mastery >= 1 ? 'text-slate-500 dark:text-slate-400' : 'text-slate-700 dark:text-slate-200'}`}>
+        <span
+          className={`text-sm truncate flex-1 ${mastery >= 1 ? 'text-slate-500 dark:text-slate-400' : 'text-slate-700 dark:text-slate-200'}`}
+          title={goal.title}
+        >
           {goal.title}
         </span>
 

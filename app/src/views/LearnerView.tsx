@@ -1,8 +1,8 @@
-import React, { useState, useMemo, useCallback, useRef } from 'react'
+import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
-import { Settings, Upload, Download, RefreshCw } from 'lucide-react'
+import { Settings, Upload, Download, RefreshCw, Menu, X } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -144,6 +144,42 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     fetchConfig()
   }, [skillpilotId])
 
+  // Check mobile state
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Sidebar state
+  const [sidebarWidth, setSidebarWidth] = useState(320)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const isResizing = useRef(false)
+
+  const startResizing = useCallback(() => {
+    isResizing.current = true
+    document.addEventListener('mousemove', resize)
+    document.addEventListener('mouseup', stopResizing)
+    document.body.style.cursor = 'col-resize'
+    document.body.style.userSelect = 'none'
+  }, [])
+
+  const stopResizing = useCallback(() => {
+    isResizing.current = false
+    document.removeEventListener('mousemove', resize)
+    document.removeEventListener('mouseup', stopResizing)
+    document.body.style.cursor = ''
+    document.body.style.userSelect = ''
+  }, [])
+
+  const resize = useCallback((e: MouseEvent) => {
+    if (isResizing.current) {
+      setSidebarWidth(Math.max(240, Math.min(800, e.clientX)))
+    }
+  }, [])
+
   // Save personal config to backend
   const handleConfigChange = useCallback(async (newConfig: Record<string, { selected: boolean; filterId?: string }>) => {
     setPersonalConfig(newConfig)
@@ -284,18 +320,45 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   return (
     <div className="flex h-screen bg-chat-bg text-text-primary overflow-hidden transition-colors">
-      <aside className="w-80 flex flex-col bg-sidebar-bg border-r border-border-color shrink-0">
+
+      {/* Mobile Backdrop */}
+      {isMobile && isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 animate-in fade-in duration-200"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
+      <aside
+        className={`flex flex-col bg-sidebar-bg border-r border-border-color shrink-0
+          fixed inset-y-0 left-0 z-50 shadow-2xl transition-transform duration-300
+          ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+          md:translate-x-0 md:relative md:shadow-none md:transition-none md:flex
+        `}
+        style={{
+          width: isMobile ? '85%' : sidebarWidth,
+          maxWidth: isMobile ? '320px' : 'none'
+        }}
+      >
         <div className="p-4 border-b border-border-color flex items-center justify-between shrink-0">
-          <div>
-            <h2 className="font-bold text-sky-600 dark:text-sky-400">{t.learner.myGoals}</h2>
-            <div className="text-xs text-text-secondary mt-1">
+          <div className="flex-1 min-w-0 mr-2">
+            <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate">{t.learner.myGoals}</h2>
+            <div className="text-xs text-text-secondary mt-1 truncate">
               {plannedCount} {t.learner.marked} • {masteredCount} {t.learner.completed}
             </div>
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 shrink-0">
             <button onClick={onRefresh} className="p-1 text-text-secondary hover:text-sky-400"><RefreshCw size={16} /></button>
             <button onClick={() => setIsSetupOpen(true)} className="p-1 text-text-secondary hover:text-sky-400"><Settings size={16} /></button>
             <ThemeToggle />
+            {isMobile && (
+              <button
+                onClick={() => setIsSidebarOpen(false)}
+                className="p-1 ml-1 text-text-secondary hover:text-red-400"
+              >
+                <X size={20} />
+              </button>
+            )}
           </div>
         </div>
         <div className="flex-1 overflow-y-auto p-2">
@@ -339,9 +402,30 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           </div>
           {onLogout && <LogoutButton onLogout={onLogout} />}
         </div>
+
+        {/* Resize Handle (Desktop) */}
+        {!isMobile && (
+          <div
+            className="absolute right-0 top-0 bottom-0 w-1 hover:w-1.5 cursor-col-resize z-10 transition-colors group"
+            style={{ right: -2 }}
+            onMouseDown={startResizing}
+          >
+            {/* Visual indicator on hover */}
+            <div className="absolute inset-y-0 right-0 w-full bg-transparent group-hover:bg-sky-400/50 transition-colors" />
+          </div>
+        )}
       </aside>
 
-      <main className="flex-1 overflow-y-auto bg-chat-bg p-6 flex flex-col items-center">
+      <main className="flex-1 overflow-y-auto bg-chat-bg p-6 flex flex-col items-center relative">
+        {/* Mobile Toggle Button */}
+        {isMobile && !isSidebarOpen && (
+          <button
+            className="absolute top-4 left-4 p-2 text-text-secondary hover:text-sky-400 z-10 bg-white/50 dark:bg-slate-900/50 rounded-md backdrop-blur-sm border border-border-color shadow-sm"
+            onClick={() => setIsSidebarOpen(true)}
+          >
+            <Menu size={20} />
+          </button>
+        )}
         {currentGoal ? (
           <div className="w-full max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-500">
             {/* Check for SRS Tag */}
