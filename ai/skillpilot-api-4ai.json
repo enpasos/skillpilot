@@ -75,7 +75,7 @@
             "post": {
                 "operationId": "setScope",
                 "summary": "Set learning scope/focus",
-                "description": "Personalize the plan based on user instruction (e.g. 'I want to learn Stochastik'). The server automatically finds relevant goals and adds them to the planned list.",
+                "description": "Set learning scope/focus by goal UUIDs. REQUIREMENT: Provide `goalIds` (UUIDs) only; free-text instructions are not supported. You may pass a cluster goal UUID to narrow scope and surface its descendants in the frontier.",
                 "parameters": [
                     {
                         "name": "skillpilotId",
@@ -115,7 +115,7 @@
             "post": {
                 "operationId": "setMastery",
                 "summary": "Update mastery and get next steps",
-                "description": "Updates mastery for a goal and immediately returns the new frontier.",
+                "description": "Mark a single ATOMIC goal (leaf) as mastered (set to 1.0) and return the updated frontier. If the user asks for a cluster goal, call `setScope` with the cluster UUID to drill down, then master atomic goals.",
                 "parameters": [
                     {
                         "name": "skillpilotId",
@@ -266,27 +266,42 @@
             "CreateLearnerResponse": {
                 "type": "object",
                 "properties": {
-                    "skillpilotId": {
-                        "type": "string",
-                        "description": "UUID of the new learner"
-                    },
                     "state": {
                         "$ref": "#/components/schemas/UnifiedLearnerStateResponse"
                     },
-                    "availableLandscapes": {
+                    "availableCurricula": {
                         "type": "array",
                         "description": "List of available curricula to choose from if none was auto-selected.",
                         "items": {
                             "$ref": "#/components/schemas/LandscapeSummary"
                         }
+                    },
+                    "availableLandscapes": {
+                        "type": "array",
+                        "deprecated": true,
+                        "description": "Deprecated alias of `availableCurricula`.",
+                        "items": {
+                            "$ref": "#/components/schemas/LandscapeSummary"
+                        }
+                    },
+                    "skillpilotId": {
+                        "type": "string",
+                        "deprecated": true,
+                        "description": "Deprecated: the learner ID is in `state.skillpilotId`."
                     }
                 }
             },
             "UnifiedLearnerStateResponse": {
                 "type": "object",
                 "properties": {
+                    "skillpilotId": {
+                        "type": "string",
+                        "description": "Opaque learner key (pseudonymous). Use this for all subsequent calls."
+                    },
                     "learnerId": {
-                        "type": "string"
+                        "type": "string",
+                        "deprecated": true,
+                        "description": "Deprecated alias of `skillpilotId`."
                     },
                     "curriculum": {
                         "$ref": "#/components/schemas/LandscapeSummary"
@@ -313,6 +328,13 @@
                             "type": "string"
                         },
                         "description": "List of active filter IDs (e.g. 'LK', 'GK') applied to the current curriculum."
+                    },
+                    "copySources": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CopySource"
+                        },
+                        "description": "If this learner includes copied data from other learner IDs."
                     }
                 }
             },
@@ -337,6 +359,13 @@
                     },
                     "reason": {
                         "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Goal tags. Use these to detect special handling (e.g. `srs-deck:*` for memorization drills)."
                     }
                 }
             },
@@ -357,6 +386,18 @@
                     }
                 }
             },
+            "CopySource": {
+                "type": "object",
+                "properties": {
+                    "sourceId": {
+                        "type": "string"
+                    },
+                    "copiedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
             "ScopeRequest": {
                 "type": "object",
                 "properties": {
@@ -365,7 +406,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of Goal IDs to set as the scope. REQUIRED."
+                        "description": "List of Goal UUIDs to set as the scope. REQUIRED. (No free-text instructions.)"
                     }
                 },
                 "required": [
@@ -403,7 +444,7 @@
                 "properties": {
                     "goalId": {
                         "type": "string",
-                        "description": "The UUID of the single goal to set to 1.0 (Mastered). MUST be an Atomic Goal (no children)."
+                        "description": "The UUID of the single ATOMIC goal (leaf) to mark as mastered (set to 1.0)."
                     }
                 }
             },
@@ -516,32 +557,42 @@
                         "items": {
                             "$ref": "#/components/schemas/LandscapeSummary"
                         }
+                    },
+                    "hierarchy": {
+                        "type": "object",
+                        "description": "Optional curriculum hierarchy tree for navigation.",
+                        "additionalProperties": true
+                    }
+                }
+            },
+            "LandscapeFilter": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "label": {
+                        "type": "string"
                     }
                 }
             },
             "LandscapeSummary": {
                 "type": "object",
                 "properties": {
-                    "landscapeId": {
+                    "curriculumId": {
                         "type": "string"
                     },
-                    "filename": {
+                    "title": {
                         "type": "string"
                     },
-                    "subject": {
+                    "description": {
                         "type": "string"
                     },
-                    "locale": {
-                        "type": "string"
-                    },
-                    "level": {
-                        "type": "string"
-                    },
-                    "country": {
-                        "type": "string"
-                    },
-                    "region": {
-                        "type": "string"
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LandscapeFilter"
+                        }
                     }
                 }
             },

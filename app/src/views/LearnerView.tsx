@@ -56,6 +56,22 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const selectedId = currentGoal?.id ?? rootGoals[0]?.id ?? ''
 
+  const srsMeta = useMemo(() => {
+    if (!currentGoal) return null
+    const tags = currentGoal.tags ?? []
+    const deckTag = tags.find((t) => t.startsWith('srs-deck:'))
+    const deckIdFromTag = deckTag ? deckTag.split(':', 2)[1] : undefined
+
+    const ext = currentGoal.extendedData ?? {}
+    const deckId = (ext as any).srs?.deckId ?? deckIdFromTag
+    const dataSourceUrl = (ext as any).srs?.dataSource ?? (ext as any).vocabularySource
+
+    const isMemorization = (ext as any).learningMode === 'memorization'
+    const isSrs = isMemorization || Boolean(deckId) || Boolean(deckTag)
+
+    return { isSrs, deckId, dataSourceUrl }
+  }, [currentGoal])
+
   const plannedCount = plannedGoals.size
   const masteredCount = useMemo(() => {
     let count = 0
@@ -344,21 +360,22 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       <main className="flex-1 overflow-y-auto bg-chat-bg p-6 flex flex-col items-center">
         {currentGoal ? (
           <div className="w-full max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-500">
-            {/* Check for SRS Tag */}
-            {currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
+            {/* Memorization goals (SRS) */}
+            {srsMeta?.isSrs ? (
               <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6">
                 <div className="mb-6 border-b border-border-color pb-4">
                   <h1 className="text-2xl font-bold text-sky-600 dark:text-sky-400 mb-2">{currentGoal.title}</h1>
                   <p className="text-text-secondary">{currentGoal.description}</p>
                 </div>
                 <FlashcardDrill
-                  dataSourceUrl={currentGoal.extendedData?.vocabularySource}
+                  dataSourceUrl={srsMeta.dataSourceUrl}
                   onComplete={() => {
                     // Refresh mastery if needed or just show confetti
                     onRefresh?.()
                   }}
                   skillPilotId={skillpilotId}
                   titleOverride={currentGoal.title}
+                  deckId={srsMeta.deckId}
                 />
               </div>
             ) : (
