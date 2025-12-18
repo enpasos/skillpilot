@@ -39,11 +39,12 @@ const UI_TEXT = {
         progress: "Your Progress",
         localData: "Local Data",
         localDataTooltip: "Saved in this browser.",
-        box0Tooltip: "Box 0: Unseen",
-        box1Tooltip: "Box 1: < 3 Days",
-        box2Tooltip: "Box 2: 3-10 Days",
-        box3Tooltip: "Box 3: > 10 Days",
-        readyForReview: "Cards ready for review: {0}. Doing 20 of them is great!",
+        box0Tooltip: "New cards. Start here.",
+        box1Tooltip: "Learning. Repeat < 3 days.",
+        box2Tooltip: "Consolidating. Repeat 3-10 days.",
+        box3Tooltip: "Mastered. Repeat > 10 days.",
+        speedMemorization: "Speed Memorization – Be honest with yourself!",
+        readyForReview: "Cards for today: {0}. Doing 20 of them is great!",
         tapToFlip: "Tap to flip",
         showAnswer: "Show Answer",
         again: "Again",
@@ -71,11 +72,12 @@ const UI_TEXT = {
         progress: "Dein Fortschritt",
         localData: "Lokale Daten",
         localDataTooltip: "In diesem Browser gespeichert.",
-        box0Tooltip: "Box 0: Ungesehen",
-        box1Tooltip: "Box 1: < 3 Tage",
-        box2Tooltip: "Box 2: 3-10 Tage",
-        box3Tooltip: "Box 3: > 10 Tage",
-        readyForReview: "Bereit zur Wiederholung: {0}. 20 Stück zu schaffen ist super!",
+        box0Tooltip: "Neue Karten. Startpunkt.",
+        box1Tooltip: "Lernen. Wdh. < 3 Tage.",
+        box2Tooltip: "Festigen. Wdh. 3-10 Tage.",
+        box3Tooltip: "Gemeistert. Wdh. > 10 Tage.",
+        speedMemorization: "Speed Memorization – Sei ehrlich zu Dir selbst!",
+        readyForReview: "Bereit für heute: {0}. 20 Stück zu schaffen ist super!",
         tapToFlip: "Zum Umdrehen tippen",
         showAnswer: "Antwort zeigen",
         again: "Nochmal",
@@ -385,7 +387,10 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
                 </div>
 
                 {/* Due Indicator */}
-                <div className="text-center mt-2">
+                <div className="text-center mt-2 flex flex-col gap-0.5">
+                    <span className="text-[10px] text-gray-400 font-medium">
+                        {t.speedMemorization}
+                    </span>
                     <span className="text-[10px] text-gray-400">
                         {t.readyForReview.replace('{0}', stats.due.toString())}
                     </span>
