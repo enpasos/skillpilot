@@ -1,11 +1,13 @@
 package com.skillpilot.backend.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.ContentCachingRequestWrapper;
@@ -13,11 +15,34 @@ import org.springframework.web.util.ContentCachingResponseWrapper;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.time.Instant;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Component
 public class RequestLoggingFilter extends OncePerRequestFilter {
 
     private static final Logger logger = LoggerFactory.getLogger(RequestLoggingFilter.class);
+    private static final Object AI_TRACE_LOCK = new Object();
+
+    private final ObjectMapper objectMapper;
+
+    @Value("${skillpilot.ai.trace.enabled:false}")
+    private boolean aiTraceEnabled;
+
+    @Value("${skillpilot.ai.trace.path:}")
+    private String aiTracePath;
+
+    @Value("${skillpilot.ai.trace.max-body-chars:50000}")
+    private int aiTraceMaxBodyChars;
+
+    public RequestLoggingFilter(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -53,7 +78,68 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
                 logger.info("Response Body: {}", responseBody);
             }
 
+            if (aiTraceEnabled && request.getRequestURI().startsWith("/api/ai")) {
+                writeAiTrace(request, response, duration, requestBody, responseBody);
+            }
+
             responseWrapper.copyBodyToResponse();
         }
+    }
+
+    private void writeAiTrace(HttpServletRequest request,
+                              HttpServletResponse response,
+                              long duration,
+                              String requestBody,
+                              String responseBody) {
+        String pathValue = (aiTracePath == null || aiTracePath.isBlank())
+                ? "tmp/ai-trace.jsonl"
+                : aiTracePath;
+        Path path = Paths.get(pathValue);
+        Map<String, Object> entry = new LinkedHashMap<>();
+        entry.put("ts", Instant.now().toString());
+        entry.put("method", request.getMethod());
+        entry.put("path", request.getRequestURI());
+        entry.put("query", request.getQueryString());
+        entry.put("status", response.getStatus());
+        entry.put("durationMs", duration);
+        entry.put("skillpilotId", extractSkillpilotId(request.getRequestURI()));
+        entry.put("requestBody", truncate(requestBody));
+        entry.put("responseBody", truncate(responseBody));
+
+        try {
+            String line = objectMapper.writeValueAsString(entry) + System.lineSeparator();
+            synchronized (AI_TRACE_LOCK) {
+                Path parent = path.getParent();
+                if (parent != null) {
+                    Files.createDirectories(parent);
+                }
+                Files.writeString(path, line, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            }
+        } catch (IOException e) {
+            logger.warn("Failed to write AI trace log to {}", path, e);
+        }
+    }
+
+    private String truncate(String value) {
+        if (value == null || value.isBlank()) {
+            return "";
+        }
+        if (value.length() <= aiTraceMaxBodyChars) {
+            return value;
+        }
+        return value.substring(0, aiTraceMaxBodyChars) + "...(truncated)";
+    }
+
+    private String extractSkillpilotId(String uri) {
+        if (uri == null) {
+            return "";
+        }
+        String[] parts = uri.split("/");
+        for (int i = 0; i < parts.length - 1; i++) {
+            if ("learners".equals(parts[i])) {
+                return parts[i + 1];
+            }
+        }
+        return "";
     }
 }

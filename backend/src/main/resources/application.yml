@@ -40,6 +40,10 @@ skillpilot:
     directory: ../curricula
   ai:
     api-key: ${SKILLPILOT_AI_API_KEY:}
+    trace:
+      enabled: ${SKILLPILOT_AI_TRACE_ENABLED:false}
+      path: ${SKILLPILOT_AI_TRACE_PATH:tmp/ai-trace.jsonl}
+      max-body-chars: ${SKILLPILOT_AI_TRACE_MAX_BODY_CHARS:50000}
   security:
     signing-secret: ${SKILLPILOT_SIGNING_SECRET:default-insecure-secret-change-me}
 
