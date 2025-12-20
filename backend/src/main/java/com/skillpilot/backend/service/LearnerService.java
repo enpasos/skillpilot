@@ -36,6 +36,7 @@ import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.LearnerDataDTO;
 import com.skillpilot.backend.api.SignedLearnerDataDTO;
+import com.skillpilot.backend.api.StateMachineInfo;
 import org.springframework.beans.factory.annotation.Value;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -164,7 +165,8 @@ public class LearnerService {
                 state.frontierAtomic(),
                 state.nextAllowedActions(),
                 state.learningState(),
-                state.activeGoal());
+                state.activeGoal(),
+                state.stateMachine());
     }
 
     @Transactional(readOnly = true)
@@ -550,15 +552,42 @@ public class LearnerService {
             learningState = LearningState.TEACHING;
         }
 
+        StateMachineInfo stateMachine = buildStateMachineInfo(curriculumId, frontier, frontierAtomic, activeGoal,
+                learningState);
+
         return new UnifiedLearnerStateResponse(learner.getSkillpilotId(), curriculumSummary, frontier, frontierAtomic,
                 new LearnerGoals(plannedRich, masteredCount, totalCount), nextAllowedActions, activeFilters,
-                learner.getCopySources(), learningState.name(), activeGoal);
+                learner.getCopySources(), learningState.name(), activeGoal, stateMachine);
     }
 
     private List<FrontierGoal> filterAtomicFrontier(List<FrontierGoal> frontier) {
         return frontier.stream()
                 .filter(goal -> "atomic".equals(goal.type()))
                 .toList();
+    }
+
+    private StateMachineInfo buildStateMachineInfo(String curriculumId, List<FrontierGoal> frontier,
+            List<FrontierGoal> frontierAtomic, FrontierGoal activeGoal, LearningState learningState) {
+        String state = curriculumId == null ? "SETUP" : learningState.name();
+        String requiredAction = "getFrontier";
+        List<FrontierGoal> goalOptions = Collections.emptyList();
+        List<com.skillpilot.backend.landscape.LandscapeSummary> curriculumOptions = Collections.emptyList();
+
+        if (curriculumId == null) {
+            requiredAction = "setCurriculum";
+            curriculumOptions = getAvailableBaseCurricula();
+        } else if (activeGoal != null) {
+            requiredAction = "setMastery";
+            goalOptions = List.of(activeGoal);
+        } else if (!frontierAtomic.isEmpty()) {
+            requiredAction = "setActiveGoal";
+            goalOptions = frontierAtomic;
+        } else if (!frontier.isEmpty()) {
+            requiredAction = "setScope";
+            goalOptions = frontier;
+        }
+
+        return new StateMachineInfo(state, requiredAction, goalOptions, curriculumOptions, activeGoal);
     }
 
     @Transactional

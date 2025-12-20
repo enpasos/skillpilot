@@ -60,7 +60,7 @@ The implementation largely matches the flow depicted in the diagram:
     - `createLearner` transitions the state from **"no skillpilot_id"** to **"ID but no selected_curriculum"**.
 
 2.  **Mandatory Curriculum**:
-    - If no curriculum is selected, the `nextAllowedActions` field in the API response strictly returns `['updateCurriculum']`.
+    - If no curriculum is selected, the `stateMachine.requiredAction` is `setCurriculum`.
     - This enforces the transition from **State 2** to **State 3** ("ID + selected_curriculum").
 
 3.  **The Core Loop**:
@@ -73,7 +73,7 @@ The diagram depicts a linear path:
 
 The current code implementation is **more flexible**:
 
--   **Optional Personalization**: Once a curriculum is selected, `nextAllowedActions` includes `['personalize', 'setScope', 'getFrontier', ...]`.
+-   **Optional Personalization**: Once a curriculum is selected, `stateMachine.requiredAction` will move from `setCurriculum` to either `setScope`/`setActiveGoal` depending on the available options, while `nextAllowedActions` still lists all allowed calls.
 -   This means the AI Agent *can* choose to personalize (State 3 → 4), but it is not forced to. It can skip directly to setting a scope or starting the teaching loop (State 3 → Loop).
 -   **Context Switching**: The `updateCurriculum` action can be called at any time (from State 3 or 4) to switch context. The code supports this, effectively resetting the "active" personalization context (since personalization is stored per-landscape).
 
@@ -86,3 +86,12 @@ The implementation supports the strict flow shown in the diagram but allows for 
 - Always pick **one atomic goal** from `frontierAtomic` (fallback: `frontier`) before teaching.
 - **Goal lock**: stick to that goal until `setMastery` succeeds or the user explicitly redirects.
 - After `setMastery`, immediately use the **new frontier** to select the next atomic goal.
+
+## Backend StateMachine Output
+
+The backend returns a `stateMachine` object in learner responses. It contains:
+- `state`: high-level state (SETUP, FRONTIER, TEACHING)
+- `requiredAction`: the **single** action the agent must perform next
+- `goalOptions` / `curriculumOptions`: the content choices for that action
+
+Agents should follow `stateMachine.requiredAction` strictly and use the provided options.

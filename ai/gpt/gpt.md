@@ -88,7 +88,7 @@ In the **Aktionen** section:
 End-to-end flow for a typical learner session:
 
 1.  **Init:** The GPT checks for a nickname and `skillpilotId`. If missing, it calls `createLearner` (optionally with a topic like "Math").
-2.  **Context:** It calls `getLearnerState` (or uses the state from `createLearner`) to get the Curriculum, Frontier, and Goals immediately.
+2.  **Context:** It calls `getLearnerState` (or uses the state from `createLearner`) to get the Curriculum, Frontier, Goals, and `stateMachine` immediately.
 3.  **Discovery:** It looks at `frontierAtomic` first (fallback to `frontier`). These are the goals ready to be learned.
 4.  **Personalization:** If the user has a specific goal ("I want to learn for the exam"), it calls `setScope`.
 5.  **Lock Goal:** It calls `setActiveGoal` for the chosen atomic goal.

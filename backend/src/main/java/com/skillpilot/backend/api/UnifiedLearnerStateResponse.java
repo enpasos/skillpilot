@@ -15,5 +15,6 @@ public record UnifiedLearnerStateResponse(
                 List<String> activeFilters,
                 Set<CopySource> copySources,
                 String learningState,
-                FrontierGoal activeGoal) {
+                FrontierGoal activeGoal,
+                StateMachineInfo stateMachine) {
 }

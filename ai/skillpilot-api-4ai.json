@@ -2,7 +2,7 @@
     "openapi": "3.1.0",
     "info": {
         "title": "Skillpilot AI Interface",
-        "description": "Optimized API for AI Tutors.\n\n### INSTRUCTIONS\n1. **First Priority**: Ensure you have a `skillpilotId`. If not, ask the user or create one.\n2. **State Machine**: Always check `nextAllowedActions` in the response. It tells you what API calls are valid next.\n   - If `['setCurriculum']`: You MUST ask the user to select a curriculum.\n   - If `['setPersonalization', ...]`: You can personalize, set scope, or start teaching.\n3. **Core Concepts**: Use `getLearnerState` for context, `setMastery` for progress.",
+        "description": "Optimized API for AI Tutors.\n\n### INSTRUCTIONS\n1. **First Priority**: Ensure you have a `skillpilotId`. If not, ask the user or create one.\n2. **State Machine**: Always follow `stateMachine.requiredAction` (fallback: `nextAllowedActions`).\n   - If `setCurriculum`: ask the user to select from `stateMachine.curriculumOptions`.\n   - If `setActiveGoal`: select from `stateMachine.goalOptions` and call `setActiveGoal`.\n   - If `setMastery`: teach the locked goal and call `setMastery`.\n3. **Core Concepts**: Use `getLearnerState` for context, `setMastery` for progress.",
         "version": "v2-ai-optimized-unified"
     },
     "servers": [
@@ -155,7 +155,7 @@
             "post": {
                 "operationId": "setMastery",
                 "summary": "Update mastery and get next steps",
-                "description": "Updates mastery for the active goal and immediately returns the new frontier plus state (nextAllowedActions, learningState, activeGoal).",
+                "description": "Updates mastery for the active goal and immediately returns the new frontier plus state (stateMachine, nextAllowedActions, learningState, activeGoal).",
                 "parameters": [
                     {
                         "name": "skillpilotId",
@@ -367,6 +367,9 @@
                     },
                     "activeGoal": {
                         "$ref": "#/components/schemas/FrontierGoal"
+                    },
+                    "stateMachine": {
+                        "$ref": "#/components/schemas/StateMachineInfo"
                     }
                 }
             },
@@ -464,6 +467,39 @@
                     "learningState": {
                         "type": "string",
                         "description": "Current learning state after mastery (e.g. FRONTIER, TEACHING)."
+                    },
+                    "activeGoal": {
+                        "$ref": "#/components/schemas/FrontierGoal"
+                    },
+                    "stateMachine": {
+                        "$ref": "#/components/schemas/StateMachineInfo"
+                    }
+                }
+            },
+            "StateMachineInfo": {
+                "type": "object",
+                "properties": {
+                    "state": {
+                        "type": "string",
+                        "description": "Current high-level state (SETUP, FRONTIER, TEACHING)."
+                    },
+                    "requiredAction": {
+                        "type": "string",
+                        "description": "Single required action for the current state. Follow this strictly."
+                    },
+                    "goalOptions": {
+                        "type": "array",
+                        "description": "Goal options relevant to the required action (e.g. frontierAtomic or active goal).",
+                        "items": {
+                            "$ref": "#/components/schemas/FrontierGoal"
+                        }
+                    },
+                    "curriculumOptions": {
+                        "type": "array",
+                        "description": "Curriculum options when a curriculum must be selected.",
+                        "items": {
+                            "$ref": "#/components/schemas/LandscapeSummary"
+                        }
                     },
                     "activeGoal": {
                         "$ref": "#/components/schemas/FrontierGoal"

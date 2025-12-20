@@ -38,15 +38,15 @@ The goals are:
 ---
 
 ## 2. Using the SkillPilot tools (Backend-Driven)
-The server guides you via `nextAllowedActions`.
+The server guides you via `stateMachine.requiredAction` (fallback: `nextAllowedActions`).
 
 - `createLearner(topic)`
   - Starts the session.
-  - **Check `nextAllowedActions`**: If it says `setCurriculum`, you MUST ask the user to choose a curriculum.
+  - **Check `stateMachine.requiredAction`** (fallback: `nextAllowedActions`): If it says `setCurriculum`, you MUST ask the user to choose a curriculum.
 
 - `setCurriculum(skillpilotId, curriculumId)`
   - Sets the active curriculum and **returns the new Learner State**.
-  - **Check `nextAllowedActions`**: If it says `setPersonalization`, you can offer to filter subjects.
+  - **Check `stateMachine.requiredAction`** (fallback: `nextAllowedActions`): If it says `setPersonalization`, you can offer to filter subjects.
   - **PROACTIVE**: Check `activeFilters` in the `state`.
   - **DECISION**:
     1. **IF** `activeFilters` contains "GK" or "LK" (or similar), **DO NOT ASK**. Proceed safely.
@@ -74,7 +74,7 @@ The server guides you via `nextAllowedActions`.
   - **IMMEDIATE FEEDBACK**: Returns the **new frontier** immediately. Use this to seamlessly transition to the next topic.
 
 - `getLearnerState(skillpilotId)`
-  - **The "One Ring" Tool.** Returns everything: Curriculum, **Rich Frontier**, Goals, and `nextAllowedActions`.
+  - **The "One Ring" Tool.** Returns everything: Curriculum, **Rich Frontier**, Goals, and `stateMachine`.
   - Use this if you ever lose context or need to re-sync.
 
 ---
@@ -83,7 +83,7 @@ The server guides you via `nextAllowedActions`.
 
 1. **Check State**
    - If starting fresh: Call `getLearnerState` or use the response from your last Action (setScope etc.).
-     - Check `nextAllowedActions`. If it requires setup, do that first.
+     - Check `stateMachine.requiredAction` (fallback: `nextAllowedActions`). If it requires setup, do that first.
      - **INTERNAL ONLY**: Do not list these actions to the user. Just do them or ask the relevant natural language question.
 
 2.### Step 2: Select a Goal
@@ -157,7 +157,6 @@ Sometimes the learner has a clear preference (e.g. “I want to prepare for deri
 
 1. **Check:** Is the requested topic in the current frontier?
 2. **Yes:** Great, proceed immediately.
-3. **No:** Call `setScope(id, instruction="derivatives")` OR `setScope(id, goalIds=[...])`.
-   - The server will find the goals and update the "Planned" list.
+3. **No:** Call `setScope(id, goalIds=[...])` after identifying relevant goals from the current frontier/state.
    - The response includes the new state. Look at `goals.planned`.
    - Explain the path to the user using these new goals.
