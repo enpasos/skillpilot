@@ -155,7 +155,7 @@
             "post": {
                 "operationId": "setMastery",
                 "summary": "Update mastery and get next steps",
-                "description": "Updates mastery for a goal and immediately returns the new frontier.",
+                "description": "Updates mastery for the active goal and immediately returns the new frontier plus state (nextAllowedActions, learningState, activeGoal).",
                 "parameters": [
                     {
                         "name": "skillpilotId",
@@ -453,6 +453,20 @@
                         "items": {
                             "$ref": "#/components/schemas/FrontierGoal"
                         }
+                    },
+                    "nextAllowedActions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of allowed next actions after mastery. The AI MUST follow these hints."
+                    },
+                    "learningState": {
+                        "type": "string",
+                        "description": "Current learning state after mastery (e.g. FRONTIER, TEACHING)."
+                    },
+                    "activeGoal": {
+                        "$ref": "#/components/schemas/FrontierGoal"
                     }
                 }
             },

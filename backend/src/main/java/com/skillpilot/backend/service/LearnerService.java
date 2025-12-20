@@ -153,14 +153,18 @@ public class LearnerService {
             masteryRepository.save(mastery);
         }
 
-        // Return the new frontier immediately
+        // Return the new frontier and state immediately
         learner.setActiveGoalId(null);
         learner.setLearningState(LearningState.FRONTIER);
         learnerRepository.save(learner);
 
-        List<FrontierGoal> newFrontier = getRichFrontier(skillpilotId);
-        List<FrontierGoal> newFrontierAtomic = filterAtomicFrontier(newFrontier);
-        return new MasteryUpdateResponse(newFrontier, newFrontierAtomic);
+        UnifiedLearnerStateResponse state = getLearnerState(skillpilotId);
+        return new MasteryUpdateResponse(
+                state.frontier(),
+                state.frontierAtomic(),
+                state.nextAllowedActions(),
+                state.learningState(),
+                state.activeGoal());
     }
 
     @Transactional(readOnly = true)
