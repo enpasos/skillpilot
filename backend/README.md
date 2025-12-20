@@ -1,6 +1,6 @@
 # SkillPilot Spring Boot Service (local dev)
 
-Minimal Spring Boot 4.0.0 service targeting Postgres 18 on WSL2. JDK 25 (Corretto) for the app/toolchain.
+Minimal Spring Boot 4.0.1 service targeting Postgres 18 on WSL2. JDK 25 (Corretto) for the app/toolchain.
 
 ## Prereqs
 - Java: `$HOME/.local/share/amazon-corretto-25` (export as `AMAZON_CORRETTO_25` so Gradle toolchains see it)
