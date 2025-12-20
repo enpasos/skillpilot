@@ -2,9 +2,11 @@ package com.skillpilot.backend.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import jakarta.persistence.Enumerated;
 import java.time.Instant;
 import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
@@ -26,6 +28,13 @@ public class Learner {
 
     @Column(name = "personal_curriculum", columnDefinition = "TEXT")
     private String personalCurriculum;
+
+    @Column(name = "active_goal_id")
+    private String activeGoalId;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "learning_state")
+    private LearningState learningState = LearningState.FRONTIER;
 
     @jakarta.persistence.ElementCollection(fetch = jakarta.persistence.FetchType.EAGER)
     @jakarta.persistence.CollectionTable(name = "learner_copy_sources", joinColumns = @jakarta.persistence.JoinColumn(name = "learner_id"))
@@ -63,6 +72,22 @@ public class Learner {
         this.copySources = copySources;
     }
 
+    public String getActiveGoalId() {
+        return activeGoalId;
+    }
+
+    public void setActiveGoalId(String activeGoalId) {
+        this.activeGoalId = activeGoalId;
+    }
+
+    public LearningState getLearningState() {
+        return learningState;
+    }
+
+    public void setLearningState(LearningState learningState) {
+        this.learningState = learningState;
+    }
+
     // Needed for JPA toolchain to set generated ID
     public void setSkillpilotId(String skillpilotId) {
         this.skillpilotId = skillpilotId;
@@ -72,6 +97,9 @@ public class Learner {
     void ensureId() {
         if (this.skillpilotId == null || this.skillpilotId.isBlank()) {
             this.skillpilotId = UUID.randomUUID().toString();
+        }
+        if (this.learningState == null) {
+            this.learningState = LearningState.FRONTIER;
         }
     }
 }

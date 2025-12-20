@@ -9,8 +9,11 @@ public record UnifiedLearnerStateResponse(
                 String skillpilotId,
                 LandscapeSummary curriculum,
                 List<FrontierGoal> frontier,
+                List<FrontierGoal> frontierAtomic,
                 LearnerGoals goals,
                 List<String> nextAllowedActions,
                 List<String> activeFilters,
-                Set<CopySource> copySources) {
+                Set<CopySource> copySources,
+                String learningState,
+                FrontierGoal activeGoal) {
 }

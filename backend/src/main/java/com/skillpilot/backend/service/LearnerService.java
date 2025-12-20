@@ -3,6 +3,7 @@ package com.skillpilot.backend.service;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.domain.CopySource;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.MasteryId;
 import com.skillpilot.backend.domain.PlannedGoal;
@@ -70,6 +71,8 @@ public class LearnerService {
     public Learner createLearner(CreateLearnerRequest request) {
         Learner learner = new Learner();
         learner.setSkillpilotId(UUID.randomUUID().toString());
+        learner.setLearningState(LearningState.FRONTIER);
+        learner.setActiveGoalId(null);
 
         // Explicitly ignore topic in request for clean initialization
         // if (request != null && request.topic() != null && !request.topic().isBlank())
@@ -105,19 +108,42 @@ public class LearnerService {
         Learner learner = learnerRepository.findById(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
 
+        String activeGoalId = learner.getActiveGoalId();
+        if (activeGoalId == null || activeGoalId.isBlank()) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "No active goal selected. Call setActiveGoal first.");
+        }
+
+        String requestedGoalId = request.goalId();
+        if (requestedGoalId == null || requestedGoalId.isBlank()) {
+            if (request.mastery() != null && request.mastery().size() == 1) {
+                requestedGoalId = request.mastery().keySet().iterator().next();
+            }
+        }
+
+        if (requestedGoalId == null || requestedGoalId.isBlank()) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Missing goalId in mastery update.");
+        }
+
+        if (!activeGoalId.equals(requestedGoalId)) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "Mastery goal does not match active goal. Active: " + activeGoalId);
+        }
+
+        if (request.mastery() != null && request.mastery().size() != 1) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Mastery update must contain exactly one goal.");
+        }
+
         for (Map.Entry<String, Double> entry : request.mastery().entrySet()) {
             String goalKey = entry.getKey();
 
             // Prevent mastery on Cluster Goals (goals that contain other goals)
             com.skillpilot.backend.landscape.LearningGoal def = landscapeService.getGoalDefinition(goalKey);
             if (def != null && def.getContains() != null && !def.getContains().isEmpty()) {
-                // FALLBACK: If AI tries to master a cluster, it implies it forgot to drill
-                // down.
-                // Instead of crashing (400), we implicitly "Open" the cluster (setScope)
-                // and return the new frontier with atomic goals.
-                // This preserves the flow and gives the AI the IDs it needs next.
-                setScope(skillpilotId, java.util.List.of(goalKey));
-                continue; // Skip saving mastery for this cluster, but proceed to return new frontier
+                throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "Cannot set mastery on cluster goals. Select an atomic goal first.");
             }
 
             double value = entry.getValue();
@@ -128,8 +154,13 @@ public class LearnerService {
         }
 
         // Return the new frontier immediately
+        learner.setActiveGoalId(null);
+        learner.setLearningState(LearningState.FRONTIER);
+        learnerRepository.save(learner);
+
         List<FrontierGoal> newFrontier = getRichFrontier(skillpilotId);
-        return new MasteryUpdateResponse(newFrontier);
+        List<FrontierGoal> newFrontierAtomic = filterAtomicFrontier(newFrontier);
+        return new MasteryUpdateResponse(newFrontier, newFrontierAtomic);
     }
 
     @Transactional(readOnly = true)
@@ -182,6 +213,8 @@ public class LearnerService {
         }
         Learner learner = getLearner(skillpilotId);
         learner.setSelectedCurriculum(curriculumId);
+        learner.setActiveGoalId(null);
+        learner.setLearningState(LearningState.FRONTIER);
         learnerRepository.save(learner);
     }
 
@@ -223,6 +256,10 @@ public class LearnerService {
                 effectiveFilters.add(gid);
             }
         }
+
+        learner.setActiveGoalId(null);
+        learner.setLearningState(LearningState.FRONTIER);
+        learnerRepository.save(learner);
 
         // If we have filters but no specific landscapes, apply to current (Root)
         if (targetLandscapes.isEmpty() && !effectiveFilters.isEmpty()) {
@@ -409,6 +446,7 @@ public class LearnerService {
         }
 
         List<FrontierGoal> frontier = getRichFrontier(skillpilotId);
+        List<FrontierGoal> frontierAtomic = filterAtomicFrontier(frontier);
 
         List<String> plannedIds = getPlannedGoals(skillpilotId);
         List<FrontierGoal> plannedRich = new ArrayList<>();
@@ -465,7 +503,11 @@ public class LearnerService {
             nextAllowedActions.add("setPersonalization");
             nextAllowedActions.add("setScope");
             nextAllowedActions.add("getFrontier");
-            nextAllowedActions.add("setMastery");
+            if (learner.getActiveGoalId() != null && !learner.getActiveGoalId().isBlank()) {
+                nextAllowedActions.add("setMastery");
+            } else if (!frontierAtomic.isEmpty()) {
+                nextAllowedActions.add("setActiveGoal");
+            }
 
             // Extract active filters from ALL configured landscapes (Aggregation)
             // This handles the case where personalization is on a child subject (e.g. Math
@@ -493,9 +535,26 @@ public class LearnerService {
             }
         }
 
-        return new UnifiedLearnerStateResponse(learner.getSkillpilotId(), curriculumSummary, frontier,
+        String activeGoalId = learner.getActiveGoalId();
+        FrontierGoal activeGoal = resolveActiveGoal(activeGoalId, allGoals);
+        LearningState learningState = learner.getLearningState();
+        if (learningState == null) {
+            learningState = (activeGoalId == null || activeGoalId.isBlank()) ? LearningState.FRONTIER : LearningState.TEACHING;
+        } else if ((activeGoalId == null || activeGoalId.isBlank()) && learningState == LearningState.TEACHING) {
+            learningState = LearningState.FRONTIER;
+        } else if (activeGoalId != null && !activeGoalId.isBlank() && learningState == LearningState.FRONTIER) {
+            learningState = LearningState.TEACHING;
+        }
+
+        return new UnifiedLearnerStateResponse(learner.getSkillpilotId(), curriculumSummary, frontier, frontierAtomic,
                 new LearnerGoals(plannedRich, masteredCount, totalCount), nextAllowedActions, activeFilters,
-                learner.getCopySources());
+                learner.getCopySources(), learningState.name(), activeGoal);
+    }
+
+    private List<FrontierGoal> filterAtomicFrontier(List<FrontierGoal> frontier) {
+        return frontier.stream()
+                .filter(goal -> "atomic".equals(goal.type()))
+                .toList();
     }
 
     @Transactional
@@ -517,6 +576,58 @@ public class LearnerService {
         Set<String> newPlanned = new java.util.HashSet<>(getPlannedGoals(skillpilotId));
         newPlanned.addAll(goalIds);
         setPlannedGoals(skillpilotId, newPlanned);
+        learner.setActiveGoalId(null);
+        learner.setLearningState(LearningState.FRONTIER);
+        learnerRepository.save(learner);
+    }
+
+    @Transactional
+    public void setActiveGoal(String skillpilotId, String goalId) {
+        Learner learner = getLearner(skillpilotId);
+        if (goalId == null || goalId.isBlank()) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "goalId must not be empty.");
+        }
+
+        if (learner.getActiveGoalId() != null && !learner.getActiveGoalId().isBlank()) {
+            if (learner.getActiveGoalId().equals(goalId)) {
+                return;
+            }
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "Active goal already set. Clear via setScope or complete mastery.");
+        }
+
+        List<FrontierGoal> frontierAtomic = filterAtomicFrontier(getRichFrontier(skillpilotId));
+        boolean allowed = frontierAtomic.stream().anyMatch(goal -> goal.id().equals(goalId));
+        if (!allowed) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "goalId must be an atomic goal from the current frontier.");
+        }
+
+        learner.setActiveGoalId(goalId);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.save(learner);
+    }
+
+    private FrontierGoal resolveActiveGoal(String goalId, Map<String, LearningGoal> allGoals) {
+        if (goalId == null || goalId.isBlank()) {
+            return null;
+        }
+        LearningGoal g = allGoals.get(goalId);
+        if (g == null) {
+            String containerId = landscapeService.getLandscapeIdForGoal(goalId);
+            if (containerId != null) {
+                LearningLandscape l = landscapeService.getById(containerId);
+                if (l != null && l.getGoals() != null) {
+                    g = l.getGoals().stream().filter(goal -> goal.getId().equals(goalId)).findFirst().orElse(null);
+                }
+            }
+        }
+        if (g == null) {
+            return new FrontierGoal(goalId, "Unknown Goal", "", "unknown", "Active", null);
+        }
+        String type = (g.getContains() != null && !g.getContains().isEmpty()) ? "cluster" : "atomic";
+        return new FrontierGoal(g.getId(), g.getTitle(), g.getDescription(), type, "Active", g.getTags());
     }
 
     private void ensureLearnerExists(String skillpilotId) {

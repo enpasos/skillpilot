@@ -16,17 +16,33 @@ stateDiagram-v2
     
     state HasCurr {
         [*] --> Ready
-        
-        state "Ready / Main Loop" as Ready
+
+        state "Ready / Learning Loop" as Ready
         state "Personalized" as Pers
-        
+
         Ready --> Pers: setPersonalization (Optional)
         Pers --> Ready: (Applied)
-        
+
         Ready --> Ready: setScope
+        Ready --> Ready: setActiveGoal
         Ready --> Ready: setMastery
         Ready --> Ready: getLearnerState
         Ready --> Ready: getFrontier
+
+        state Ready {
+            [*] --> Frontier
+            state "Frontier holen" as Frontier
+            state "Lernziel bestimmen (atomar)" as SelectGoal
+            state "Lehren + Verifizieren" as Teach
+            state "Mastery speichern" as SaveMastery
+
+            Frontier --> SelectGoal: getLearnerState/getFrontier
+            SelectGoal --> Teach: setActiveGoal (atomic)
+            Teach --> SaveMastery: setMastery (success)
+            Teach --> SelectGoal: user redirects / setScope
+            Teach --> Frontier: refresh state if unclear
+            SaveMastery --> Frontier: returns new frontier
+        }
     }
 
     HasCurr --> HasCurr: setCurriculum (Switch Context)
@@ -48,7 +64,7 @@ The implementation largely matches the flow depicted in the diagram:
     - This enforces the transition from **State 2** to **State 3** ("ID + selected_curriculum").
 
 3.  **The Core Loop**:
-    - Once a curriculum is selected, the core actions (`setScope`, `upsertMastery`, `getLearnerState`) become available, matching the loop at the bottom of the diagram.
+    - Once a curriculum is selected, the core actions (`setScope`, `setMastery`, `getLearnerState`) become available. The learning loop now formalizes: **fetch frontier → select atomic goal → teach/verify → save mastery → new frontier**.
 
 ### 💡 Observation: Personalization Flexibility
 
@@ -64,3 +80,9 @@ The current code implementation is **more flexible**:
 ### Conclusion
 
 The implementation supports the strict flow shown in the diagram but allows for an optimized path where personalization is optional, providing greater flexibility for the AI Agent.
+
+## Learning Loop Rules (Agent Contract)
+
+- Always pick **one atomic goal** from `frontierAtomic` (fallback: `frontier`) before teaching.
+- **Goal lock**: stick to that goal until `setMastery` succeeds or the user explicitly redirects.
+- After `setMastery`, immediately use the **new frontier** to select the next atomic goal.

@@ -1,6 +1,7 @@
 package com.skillpilot.backend.ai;
 
 import com.skillpilot.backend.api.CreateLearnerResponse;
+import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.UpdateCurriculumRequest;
 import com.skillpilot.backend.api.CreateLearnerRequest;
@@ -64,6 +65,14 @@ public class LearnerAiController {
         return learnerService.getLearnerState(skillpilotId);
     }
 
+    @PostMapping("/{skillpilotId}/active-goal")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public UnifiedLearnerStateResponse setActiveGoal(@PathVariable String skillpilotId,
+            @Valid @RequestBody ActiveGoalRequest request) {
+        learnerService.setActiveGoal(skillpilotId, request.goalId());
+        return learnerService.getLearnerState(skillpilotId);
+    }
+
     @PostMapping("/{skillpilotId}/mastery")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public MasteryUpdateResponse setMastery(
@@ -83,8 +92,7 @@ public class LearnerAiController {
                     org.springframework.http.HttpStatus.BAD_REQUEST, "Either 'mastery' map or 'goalId' is required.");
         }
 
-        learnerService.setMastery(skillpilotId, effectiveRequest);
-        return new MasteryUpdateResponse(learnerService.getRichFrontier(skillpilotId));
+        return learnerService.setMastery(skillpilotId, effectiveRequest);
     }
 
     @PostMapping("/{skillpilotId}/curriculum")

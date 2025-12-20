@@ -121,7 +121,7 @@ class LearnerServiceTest {
 
         var state = learnerService.getLearnerState(learnerId);
         assertThat(state.nextAllowedActions()).containsExactlyInAnyOrder(
-                "setPersonalization", "setScope", "getFrontier", "setMastery");
+                "setPersonalization", "setScope", "getFrontier");
     }
 
     private static LearningGoal goal(String id, List<String> requires, List<String> contains) {

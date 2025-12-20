@@ -111,6 +111,46 @@
                 "x-openai-isConsequential": false
             }
         },
+        "/api/ai/learners/{skillpilotId}/active-goal": {
+            "post": {
+                "operationId": "setActiveGoal",
+                "summary": "Lock an atomic goal for teaching",
+                "description": "Selects the current atomic goal (must be from frontierAtomic) and locks the session until mastery or redirect.",
+                "parameters": [
+                    {
+                        "name": "skillpilotId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ActiveGoalRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Active goal set. Returns new learner state.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UnifiedLearnerStateResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-openai-isConsequential": false
+            }
+        },
         "/api/ai/learners/{skillpilotId}/mastery": {
             "post": {
                 "operationId": "setMastery",
@@ -297,6 +337,13 @@
                             "$ref": "#/components/schemas/FrontierGoal"
                         }
                     },
+                    "frontierAtomic": {
+                        "type": "array",
+                        "description": "Atomic-only subset of frontier. Prefer this list for selecting a learnable goal.",
+                        "items": {
+                            "$ref": "#/components/schemas/FrontierGoal"
+                        }
+                    },
                     "goals": {
                         "$ref": "#/components/schemas/LearnerGoals"
                     },
@@ -313,8 +360,27 @@
                             "type": "string"
                         },
                         "description": "List of active filter IDs (e.g. 'LK', 'GK') applied to the current curriculum."
+                    },
+                    "learningState": {
+                        "type": "string",
+                        "description": "Current learning state (e.g. FRONTIER, TEACHING)."
+                    },
+                    "activeGoal": {
+                        "$ref": "#/components/schemas/FrontierGoal"
                     }
                 }
+            },
+            "ActiveGoalRequest": {
+                "type": "object",
+                "properties": {
+                    "goalId": {
+                        "type": "string",
+                        "description": "Atomic goal UUID to lock as the current learning target."
+                    }
+                },
+                "required": [
+                    "goalId"
+                ]
             },
             "FrontierGoal": {
                 "type": "object",
@@ -377,6 +443,13 @@
                 "properties": {
                     "frontier": {
                         "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FrontierGoal"
+                        }
+                    },
+                    "frontierAtomic": {
+                        "type": "array",
+                        "description": "Atomic-only subset of frontier. Prefer this list for the next goal.",
                         "items": {
                             "$ref": "#/components/schemas/FrontierGoal"
                         }
