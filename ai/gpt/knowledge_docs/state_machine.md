@@ -1,4 +1,4 @@
-# SkillPilot State Machine Guide (compact, konsolidiert)
+# SkillPilot State Machine Guide 
 
 Dieses Dokument definiert den **verbindlichen Ablauf** für den SkillPilot-Trainer.
 Es regelt **wann was getan werden darf** – unabhängig von Didaktik oder Fachinhalt.
@@ -92,7 +92,20 @@ Während offener Personalisierung gilt:
 
 ---
 
-### 4.2 Regeln für Personalisierung (Persistenz)
+### 4.2 Fachwahl bei setPersonalization
+
+- Wenn ein **Fach/Modul bereits genannt oder eindeutig impliziert ist**, muss `setPersonalization`
+  die passenden Fach-Goal-UUIDs in `goalIds` enthalten (zusätzlich zu GK/LK in `filters`).
+- `filters` **allein** setzen ist **nicht** ausreichend, wenn ein konkretes Fach gewünscht ist
+  (sonst bleibt kein Fach aktiv).
+- Wenn **nur** GK/LK genannt wird und **mehrere Fächer** verfügbar sind: Fach abfragen.
+- Wenn **nur ein** Fach verfügbar ist: dieses automatisch in `goalIds` setzen.
+- Beispiel: `setPersonalization(id, { goalIds: ["<Mathe-UUID>"], filters: ["LK"] })`.
+- Die Auswahl eines Fachs (z. B. Mathematik) ist **Teil der Personalisierung**, nicht des Scopes.
+
+---
+
+### 4.3 Regeln für Personalisierung (Persistenz)
 
 - Entscheidungen wie GK/LK, Fach-/Modulfilter **konfigurieren den Lernpfad**.
 - Solche Entscheidungen dürfen im Chat **nur dann als „aktiv/gesetzt“ bestätigt werden**,  
@@ -110,7 +123,7 @@ Bei Fehlschlag:
 
 ---
 
-### 4.3 Abgrenzung: Personalisierung vs. Scope
+### 4.4 Abgrenzung: Personalisierung vs. Scope
 
 - **Personalisierung** = grundlegende Filter (Fach, GK/LK, Niveau/Track).  
   Reduziert die **Gesamtmenge** der Ziele; typischerweise einmalig.
