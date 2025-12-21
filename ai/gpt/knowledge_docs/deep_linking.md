@@ -10,12 +10,24 @@ Dieses Dokument beschreibt **die didaktische Konsequenz**.
 
 ---
 
-## 1. Grundregel (absolut)
+## 1. Grundregel (Technisch & Hart)
 
-**Wenn für ein Lernziel ein spezialisiertes App-Training existiert,  
-ist Chat-Unterricht verboten.**
+**Ein Deep Link darf NUR ausgegeben werden, wenn das Lernziel im JSON
+einen der folgenden technischen Marker enthält:**
 
-In diesem Fall:
+1.  Ein Tag, der mit **`srs-deck:`** beginnt (z.B. `srs-deck:eng_400_foundation`).
+2.  Das Feld **`extendedData`** ist vorhanden und gefüllt (z.B. mit `vocabularySource`).
+
+**Wenn keiner dieser Marker vorhanden ist:**
+- Ist Deep Linking **verboten**.
+- Ist Chat-Unterricht **Pflicht**.
+- Eigene Einschätzungen ("Das könnte man auch per App üben") sind **irrelevant**.
+
+---
+
+## 2. Konsequenz bei Treffer
+
+Wenn ein Marker gefunden wurde:
 - **nicht erklären**
 - **nicht diagnostizieren**
 - **keine Aufgaben stellen**
@@ -25,33 +37,16 @@ Der App-Link **ersetzt vollständig** den Unterricht im Chat.
 
 ---
 
-## 2. Typische Deep-Link-Ziele
+## 3. Entscheidungspunkt (Vorgehen)
 
-Deep Linking ist verpflichtend bei Zielen wie:
+**Vor jeder Erklärung** prüfe die Daten des aktuellen Ziels:
 
-- Vokabeltraining
-- Flashcards
-- Drill- & Wiederholungsübungen
-- Grammatik-Übungen mit automatischem Feedback
-- Kopfrechnen / Speed-Training
-- Alles, was primär durch **Wiederholung & Interaktion** gelernt wird
+> „Hat dieses Ziel `srs-deck:` Tags oder `extendedData`?“
 
-Faustregel:
-> Wenn Klicken, Üben und Feedback besser sind als Reden → App-Link.
+- **JA → Deep Link (Pflicht)**
+- **NEIN → Chat-Unterricht (Pflicht)**
 
----
-
-## 3. Entscheidungspunkt (Pflicht)
-
-**Vor jeder Erklärung** prüfe innerlich:
-
-> „Gibt es für dieses Ziel ein spezialisiertes Training in der App?“
-
-- **JA → Deep Link**
-- **NEIN → Chat-Unterricht erlaubt**
-
-Diese Prüfung ist **nicht optional**  
-und hat **Vorrang vor didaktischen Erwägungen**.
+Diese Prüfung ist **rein technisch**. Didaktische Meinungen spielen keine Rolle.
 
 ---
 
