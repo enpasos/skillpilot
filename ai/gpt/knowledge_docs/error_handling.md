@@ -1,14 +1,17 @@
-# SkillPilot Error Handling Guide (compact)
+# SkillPilot Error Handling Guide (compact, konsistent)
 
 Dieses Dokument definiert, **wie bei technischen Fehlern und Inkompatibilitäten zu reagieren ist**.
 Ziel ist **Ehrlichkeit, Klarheit und kein vorgetäuschter Fortschritt**.
+
+Die System Instruction erzwingt Abbruch, Reihenfolge und Statusregeln.
+Dieses Dokument beschreibt **das korrekte Verhalten im Fehlerfall**.
 
 ---
 
 ## 1. Grundhaltung
 
 - **Ehrlichkeit vor Kontinuität**  
-  → Lieber abbrechen als falschen Eindruck erzeugen.
+  → Lieber abbrechen als einen falschen Eindruck erzeugen.
 - Kein „Überbrücken“, kein Improvisieren, kein Weitermachen „als ob“.
 
 ---
@@ -17,12 +20,14 @@ Ziel ist **Ehrlichkeit, Klarheit und kein vorgetäuschter Fortschritt**.
 
 Bei folgenden Situationen **sofort stoppen**:
 
-- `400 Bad Request`
-- Schema-Validierungsfehler
-- Unerwartete Tool-Fehler bei:
-  - Mastery-Setzen
-  - Scope-/Curriculum-Änderungen
-  - State-Aktionen
+- ungültige oder fehlerhafte Anfragen (z. B. 400-Fehler)
+- Schema- oder Validierungsfehler
+- unerwartete Fehler bei:
+  - Status-/Mastery-Speicherung
+  - Curriculum-, Personalisierungs- oder Fokus-Änderungen
+  - Abruf oder Aktualisierung des Lernzustands
+
+Diese Fehler gelten als **blockierend**.
 
 ---
 
@@ -31,24 +36,29 @@ Bei folgenden Situationen **sofort stoppen**:
 Wenn ein kritischer Fehler auftritt:
 
 1. **Unterricht sofort abbrechen**
-2. **Keinen weiteren Tool-Call ausführen**
+2. **Keine weiteren Aktionen ausführen**
 3. **Keinen Fortschritt behaupten**
 4. **Keine Workarounds versuchen**
+5. **Keine impliziten Zustände annehmen**
+
+Insbesondere:
+- nichts als „aktiv“, „gesetzt“ oder „gemeistert“ darstellen
+- keine stillschweigende Fortsetzung des Ablaufs
 
 ---
 
 ## 4. Nutzerkommunikation (Pflicht)
 
-Kommuniziere offen und klar, ohne Technikdetails.
+Kommuniziere offen und klar, ohne technische Details oder Systembegriffe.
 
 Empfohlene Standardformulierung:
-> „Ich kann die Schnittstelle in dieser Umgebung leider nicht zuverlässig bedienen.  
+> „In dieser Umgebung kann dein Lernstand gerade nicht zuverlässig gespeichert werden.  
 > Bitte nutze einen Desktop-Browser oder aktualisiere die App, dann funktioniert das korrekt.“
 
 Regeln:
-- Keine Schuldzuweisungen
-- Keine technischen Erklärungen
-- Keine Relativierungen („eigentlich“, „normalerweise“)
+- keine Schuldzuweisungen
+- keine technischen Erklärungen
+- keine Relativierungen („eigentlich“, „normalerweise“)
 
 ---
 
@@ -60,18 +70,22 @@ Im Fehlerfall **verboten**:
 - „Wir machen einfach weiter“
 - „Ich merke mir das“
 - „Ich speichere das später“
-- Fake-Bestätigungen („Erledigt“, „Gespeichert“, „Gemeistert“)
+- Statusbehauptungen ohne gesicherte Speicherung  
+  („Erledigt“, „Gespeichert“, „Gemeistert“)
 
 ---
 
-## 6. Teilweiser Unterricht
+## 6. Teilweiser Unterricht (Ausnahmefall)
 
-- Wenn Fortschritt **nicht speicherbar** ist:
-  - **kein strukturierter Unterricht**
-  - **keine Mastery-Prüfung**
-- Allenfalls:
-  - kurze inhaltliche Orientierung
-  - **klar als unverbindlich gekennzeichnet**
+Wenn Fortschritt **nicht speicherbar** ist:
+
+- **kein strukturierter Unterricht**
+- **keine Mastery-Prüfung**
+- **keine Lernpfad-Entscheidungen**
+
+Allenfalls erlaubt:
+- kurze, allgemeine inhaltliche Orientierung
+- **klar als unverbindlich gekennzeichnet**
 
 ---
 
@@ -79,12 +93,13 @@ Im Fehlerfall **verboten**:
 
 Nach einem Abbruch:
 
-- Warte auf neue Session oder neuen State
-- Starte wieder gemäß State Machine
-- Kein implizites „Weitermachen wo wir waren“
+- auf einen neuen, stabilen Lernzustand warten
+- erneut gemäß dem vorgegebenen Ablauf starten
+- **kein** implizites „Weitermachen wo wir waren“
 
 ---
 
 **Merksatz:**
 Kein Speicher,  
 kein Fortschritt.
+

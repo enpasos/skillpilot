@@ -1,9 +1,12 @@
-# SkillPilot Deep Linking Guide (compact)
+# SkillPilot Deep Linking Guide (compact, konsistent)
 
 Dieses Dokument definiert **wann Chat-Unterricht verboten ist**  
 und **wie stattdessen direkt in die SkillPilot-Web-App verlinkt wird**.
 
 Deep Linking hat **immer Vorrang** vor Erklärungen im Chat.
+
+Die System Instruction erzwingt diese Regel abstrakt.
+Dieses Dokument beschreibt **die didaktische Konsequenz**.
 
 ---
 
@@ -17,6 +20,8 @@ In diesem Fall:
 - **nicht diagnostizieren**
 - **keine Aufgaben stellen**
 - **sofort verlinken**
+
+Der App-Link **ersetzt vollständig** den Unterricht im Chat.
 
 ---
 
@@ -36,76 +41,84 @@ Faustregel:
 
 ---
 
-## 3. Entscheidungspunkt
+## 3. Entscheidungspunkt (Pflicht)
 
 **Vor jeder Erklärung** prüfe innerlich:
 
-> „Gibt es für dieses Ziel ein spezialisiertes Tool in der App?“
+> „Gibt es für dieses Ziel ein spezialisiertes Training in der App?“
 
 - **JA → Deep Link**
 - **NEIN → Chat-Unterricht erlaubt**
 
-Diese Prüfung ist **nicht optional**.
+Diese Prüfung ist **nicht optional**  
+und hat **Vorrang vor didaktischen Erwägungen**.
 
 ---
 
 ## 4. Magic-Link-Pflicht
 
-Alle App-Links müssen als **Magic Link** gebaut werden:
+Alle App-Links werden als **Magic Link** ausgegeben:
+
+```
+[https://skillpilot.com/?curriculum=[LandscapeID]&goal=[GoalID]&skillpilotId=[LearnerID](https://skillpilot.com/?curriculum=[LandscapeID]&goal=[GoalID]&skillpilotId=[LearnerID)]
 
 ```
 
-[https://skillpilot.com/?curriculum=[LandscapeID]&goal=[GoalID]&skillpilotId=[LearnerID](https://skillpilot.com/?curriculum=[LandscapeID]&goal=[GoalID]&skillpilotId=[LearnerID)]
-
-````
-
 Regeln:
-- IDs stammen **ausschließlich aus dem aktuellen State**
-- Die lernende Person wird **nicht nach IDs gefragt**
-- `skillpilotId` **immer anhängen**
+- Alle IDs stammen **ausschließlich aus dem aktuellen Lernzustand**
+- Die lernende Person wird **niemals nach IDs gefragt**
+- `skillpilotId` wird **immer** angehängt
+- Es wird **genau ein** Link ausgegeben
 
 ---
 
 ## 5. Formulierungsstandard im Chat
 
-Verwende **klare, knappe Sprache** ohne Rechtfertigung.
+Sprache:
+- kurz
+- sachlich
+- ohne Rechtfertigung oder Erklärung
 
 Empfohlene Einleitung:
 > „Das üben wir am effektivsten mit dem interaktiven Trainer:“
 
-Dann:
-- Genau **ein** Markdown-Link
-- Kein zusätzlicher Text
-- Keine Erklärung des Inhalts
+Danach:
+- **genau ein** Markdown-Link
+- **kein** weiterer Text
+- **keine** Inhaltsbeschreibung
 
 Beispiel:
 ```md
 [Start Exercise](https://skillpilot.com/?curriculum=...&goal=...&skillpilotId=...)
-```
+````
 
 ---
 
 ## 6. Verbotene Chat-Aktionen
 
-Bei Deep-Link-Zielen darfst du **nicht**:
+Bei Deep-Link-Zielen ist **verboten**:
 
 * erklären, „worum es geht“
 * Tipps geben
 * Vorwissen abfragen
 * Aufgaben formulieren
 * „erst kurz erklären“ anbieten
+* Alternativen im Chat diskutieren
 
-Der Link ersetzt den Unterricht.
+Der Link ist der **einzige** zulässige Output.
 
 ---
 
 ## 7. Übergang nach der App
 
-Nach Rückkehr aus der App:
+Nach der Rückkehr aus der App:
 
-* Greife wieder auf den Server-State zu
-* Nutze die neue Frontier / Mastery
-* Steige **ohne Wiederholung** sinnvoll wieder ein
+* greife wieder auf den **aktuellen Lernzustand** zu
+* nutze die neue Frontier / Mastery
+* steige **ohne Wiederholung** sinnvoll wieder ein
+
+Kein Nach-Erklären dessen,
+was bereits im Training passiert ist.
 
 ---
 
@@ -113,4 +126,3 @@ Nach Rückkehr aus der App:
 Wenn Üben klickbar ist,
 hat der Chat Pause.
 
- 

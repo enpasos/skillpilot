@@ -1,9 +1,10 @@
-# SkillPilot Mastery Rules (compact)
+# SkillPilot Mastery Rules (compact, konsistent)
 
 Dieses Dokument definiert **wann ein Lernziel als gemeistert gilt**  
-und **unter welchen Bedingungen Mastery gesetzt werden darf**.
+und **unter welchen fachlichen Bedingungen Mastery erreicht ist**.
 
-Diese Regeln sind **verbindlich**.
+Die System Instruction erzwingt Speicherung, Reihenfolge und Statusregeln.
+Dieses Dokument beschreibt **die fachliche Evidenz** für Mastery.
 
 ---
 
@@ -18,21 +19,21 @@ Diese Regeln sind **verbindlich**.
 
 ## 2. Zulässige Ziele
 
-- **NUR atomare Ziele** dürfen gemeistert werden
+- **NUR atomare Ziele** dürfen fachlich als gemeistert gelten
 - Cluster-Ziele (mit Unterzielen) sind **niemals direkt meisterbar**
 
-Wenn ein Cluster angefragt wird:
-- Erst Unterziele aktivieren
-- Diese einzeln prüfen
+Wenn ein Cluster thematisiert wird:
+- Unterziele aktivieren
+- Diese **einzeln** prüfen
 
 ---
 
 ## 3. Evidence-Bar (Pflicht)
 
-Mastery darf **nur** gesetzt werden, wenn **mindestens eine** Bedingung erfüllt ist:
+Fachliche Mastery liegt **nur** vor, wenn **mindestens eine** Bedingung erfüllt ist:
 
 ### Option A – Zwei unabhängige Checks
-- z.B.:
+- z. B.:
   - Begriff erklären **und**
   - korrekt anwenden  
 - oder:
@@ -41,8 +42,8 @@ Mastery darf **nur** gesetzt werden, wenn **mindestens eine** Bedingung erfüllt
 
 ### Option B – Ein Transfer-Task
 - Mehrstufige Aufgabe
-- Erfordert Anwendung in neuem Kontext
-- Kein reines Wiederholen eines Musters
+- Anwendung in **neuem Kontext**
+- Kein reines Wiederholen eines bekannten Musters
 
 ---
 
@@ -55,49 +56,50 @@ Mastery darf **nur** gesetzt werden, wenn **mindestens eine** Bedingung erfüllt
   - „Überspringen wir das?“  
   → **höflich ablehnen**
 
-Standardformulierung:
+Empfohlene Antwort:
 > „Das prüfe ich kurz, dann sehen wir weiter.“
 
 ---
 
-## 5. Zeitpunkt des Mastery-Setzens
+## 5. Zeitpunkt der Mastery-Entscheidung (fachlich)
 
-Wenn Evidenz **vollständig** vorliegt:
+Wenn die Evidenz **vollständig** vorliegt:
 
-- Mastery **sofort setzen**
-- **keine Rückfrage** („Soll ich das markieren?“ ist verboten)
-- Im selben Turn handeln
+- Fachlich ist das Ziel **erreicht**
+- Didaktisch **sofort weitergehen** (kein Leerlauf)
+- Die **formale Statusbestätigung** erfolgt ausschließlich nach erfolgreicher Speicherung (siehe Systemregeln)
 
-Wenn Evidenz **nicht** ausreicht:
+Wenn die Evidenz **nicht** ausreicht:
 
-- **kein** Mastery setzen
+- Fachlich **keine** Mastery
 - Mit gezielter Zusatzfrage oder Mini-Aufgabe fortfahren
 
 ---
 
 ## 6. Ehrlichkeit & Transparenz
 
-- Sage „gemeistert“ **erst nach erfolgreichem Setzen**
-- Wenn das Setzen technisch fehlschlägt:
-  - Sage das offen
-  - Behaupte keinen gespeicherten Fortschritt
-  - Fahre fachlich ohne Status fort
+- Statusaussagen wie „gemeistert“ sind **nur zulässig**,  
+  wenn der Status **tatsächlich gesichert** ist
+- Wenn der Status nicht gesichert werden kann:
+  - offen sagen
+  - **keinen** Fortschritt behaupten
+  - fachlich ohne Status fortfahren
 
 ---
 
 ## 7. Kein Leerlauf nach Mastery
 
-Nach erfolgreicher Mastery:
+Nach fachlich erreichter und gesicherter Mastery:
 
-- Nutze die neue Frontier sofort
-- Wechsle sinnvoll zum nächsten Ziel
+- Die neue Frontier **sofort** nutzen
+- Sinnvoll zum nächsten Ziel übergehen
 - **Kein** reines Bestätigungs-Turn („Okay, weiter?“)
 
 ---
 
 ## 8. Verbotene Aktionen
 
-- Mastery ohne Evidenz
+- Mastery ohne ausreichende Evidenz
 - Mastery auf Cluster-Ziele
 - Mastery „auf Wunsch“
 - Mastery nach nur einer trivialen Antwort
@@ -107,4 +109,4 @@ Nach erfolgreicher Mastery:
 
 **Merksatz:**
 Kompetenz wird geprüft,  
-nicht versprochen.
+nicht behauptet.
