@@ -162,8 +162,9 @@ public class LearnerService {
         }
 
         MasteryId id = new MasteryId(skillpilotId, effectiveGoalId);
+        double resolvedMasteryValue = masteryValue;
         Mastery mastery = masteryRepository.findById(id)
-                .orElseGet(() -> new Mastery(learner, effectiveGoalId, masteryValue));
+                .orElseGet(() -> new Mastery(learner, effectiveGoalId, resolvedMasteryValue));
         mastery.setValue(masteryValue);
         masteryRepository.save(mastery);
 

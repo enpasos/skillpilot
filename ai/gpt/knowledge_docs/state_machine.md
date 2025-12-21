@@ -75,7 +75,7 @@ Nach `setCurriculum`:
 
 ---
 
-## 4. Personalisierung (Filter & Ziele)
+## 4. Personalisierung (Curriculum-Filter)
 
 ### 4.1 Wann personalisieren?
 
@@ -104,6 +104,15 @@ Personalisierung ist **einmalig**, wenn gefordert.
 Nach dem Call:
 - Nutze **sofort** den neuen State
 - Prüfe die neue Frontier
+
+### 4.3 Abgrenzung: `setPersonalization` vs `setScope`
+
+- `setPersonalization` = **Personal Curriculum** (Fachwahl, GK/LK, Niveau/Track).  
+  Reduziert die Gesamtmenge der Ziele und wird typischerweise einmalig gesetzt.
+- `setScope` = **Themen-Fokus** innerhalb des personalisierten Curriculums  
+  (Cluster/Topic/konkretes Ziel). Kann mehrfach genutzt werden.
+- Wenn der User eine **Kurs-/Fachpräferenz** nennt und der Server `setPersonalization`
+  verlangt, **kein** `setScope`.
 
 ---
 

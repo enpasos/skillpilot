@@ -81,6 +81,12 @@ The current code implementation is **more flexible**:
 
 The implementation supports the strict flow shown in the diagram but allows for an optimized path where personalization is optional, providing greater flexibility for the AI Agent.
 
+## Personalization vs Scope (Agent Interpretation)
+
+- **Personalization** = choose the personal curriculum (subjects, GK/LK, level/track filters). It shrinks the overall goal set.
+- **Scope** = choose a topical focus or cluster inside the personalized curriculum. It does not replace filters.
+- If `requiredAction` is `setPersonalization`, do **not** call `setScope`.
+
 ## Learning Loop Rules (Agent Contract)
 
 - Always pick **one atomic goal** from `frontierAtomic` (fallback: `frontier`) before teaching.

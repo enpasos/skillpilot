@@ -90,11 +90,12 @@ End-to-end flow for a typical learner session:
 1.  **Init:** The GPT checks for a nickname and `skillpilotId`. If missing, it calls `createLearner` (optionally with a topic like "Math").
 2.  **Context:** It calls `getLearnerState` (or uses the state from `createLearner`) to get the Curriculum, Frontier, Goals, and `stateMachine` immediately.
 3.  **Discovery:** It looks at `frontierAtomic` first (fallback to `frontier`). These are the goals ready to be learned.
-4.  **Personalization:** If the user has a specific goal ("I want to learn for the exam"), it calls `setScope`.
-5.  **Lock Goal:** It calls `setActiveGoal` for the chosen atomic goal.
-6.  **Teaching:** It teaches that locked goal and does exercises.
-7.  **Mastery:** After success, it calls `setMastery` **immediately** (no confirmation prompt). If competence is not verified, it must **not** call `setMastery`. This returns the **new** frontier immediately.
-8.  **Loop:** It picks the next goal from `frontierAtomic`, locks it, and continues.
+4.  **Personalization:** If `stateMachine.requiredAction` is `setPersonalization` (e.g. GK/LK or subject/level filters are needed), ask for the missing preference and call `setPersonalization`.
+5.  **Scope:** If the user has a specific topic goal ("I want to learn Stochastik/Analysis"), call `setScope` to focus the plan.
+6.  **Lock Goal:** It calls `setActiveGoal` for the chosen atomic goal.
+7.  **Teaching:** It teaches that locked goal and does exercises.
+8.  **Mastery:** After success, it calls `setMastery` **immediately** (no confirmation prompt). If competence is not verified, it must **not** call `setMastery`. This returns the **new** frontier immediately.
+9.  **Loop:** It picks the next goal from `frontierAtomic`, locks it, and continues.
 
 -----
 
