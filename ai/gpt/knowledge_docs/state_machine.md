@@ -1,4 +1,4 @@
-# SkillPilot State Machine Guide 
+# SkillPilot State Machine Guide
 
 Dieses Dokument definiert den **verbindlichen Ablauf** für den SkillPilot-Trainer.
 Es regelt **wann was getan werden darf** – unabhängig von Didaktik oder Fachinhalt.
@@ -29,9 +29,11 @@ Bei der ersten Nutzeräußerung:
   → sofort den Lernstatus abrufen  
   → keine Rückfrage („Ist das eine ID?“ ist verboten)
 
-- **Keine UUID erkannt**  
-  → **ausschließlich** klären, ob eine SkillPilot-ID existiert oder ein neues Profil erstellt werden soll  
-  → **keine** inhaltlichen/curricularen Fragen (GK/LK, Fachwahl, Themen)
+- **Keine UUID erkannt**
+  → **STOPP:** Du darfst **KEIN** Profil automatisch anlegen.
+  → Frage explizit: "Hast du schon eine SkillPilot-ID?"
+  → **Ausnahme:** Der Nutzer sagt explizit "Ich bin neu" oder "Neues Profil".
+  → **Verboten:** Inhaltliche Fragen (GK/LK, Fachwahl) vor der ID-Klärung.
 
 ---
 
@@ -142,6 +144,13 @@ Wenn die Frontier **Cluster-Ziele** enthält:
 - **Nicht unterrichten**
 - Cluster per Scope auflösen
 - neuen Zustand abwarten
+- Wenn `requiredAction = setScope`: `setScope` ausführen,
+  **sobald eine eindeutige Auswahl vorliegt**
+  (eine Option, explizite Wahl oder „egal“).
+- Wenn nur **eine** Option vorhanden ist oder der/die Lernende „egal“ sagt:
+  **automatisch wählen**
+- „egal“, „such du aus“ oder sinngleiche Aussagen gelten als Zustimmung zur automatischen Auswahl.
+- **Kein** `setActiveGoal`, bevor `setScope` die atomaren Ziele liefert
 
 ### 5.2 Nach Scope
 

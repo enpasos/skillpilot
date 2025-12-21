@@ -75,16 +75,6 @@ public class LearnerService {
         learner.setLearningState(LearningState.FRONTIER);
         learner.setActiveGoalId(null);
 
-        // Explicitly ignore topic in request for clean initialization
-        // if (request != null && request.topic() != null && !request.topic().isBlank())
-        // {
-        // LearningLandscape match =
-        // landscapeService.findCurriculumByTopic(request.topic());
-        // if (match != null) {
-        // learner.setSelectedCurriculum(match.getLandscapeId());
-        // }
-        // }
-
         return learnerRepository.save(learner);
     }
 
@@ -562,7 +552,8 @@ public class LearnerService {
         FrontierGoal activeGoal = resolveActiveGoal(activeGoalId, allGoals);
         LearningState learningState = learner.getLearningState();
         if (learningState == null) {
-            learningState = (activeGoalId == null || activeGoalId.isBlank()) ? LearningState.FRONTIER : LearningState.TEACHING;
+            learningState = (activeGoalId == null || activeGoalId.isBlank()) ? LearningState.FRONTIER
+                    : LearningState.TEACHING;
         } else if ((activeGoalId == null || activeGoalId.isBlank()) && learningState == LearningState.TEACHING) {
             learningState = LearningState.FRONTIER;
         } else if (activeGoalId != null && !activeGoalId.isBlank() && learningState == LearningState.FRONTIER) {

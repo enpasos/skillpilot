@@ -2,7 +2,7 @@
     "openapi": "3.1.0",
     "info": {
         "title": "Skillpilot AI Interface",
-        "description": "Optimized API for AI Tutors.\n\n### INSTRUCTIONS\n1. **First Priority**: Ensure you have a `skillpilotId`. If not, ask the user or create one.\n2. **State Machine**: Always follow `stateMachine.requiredAction` (fallback: `nextAllowedActions`).\n   - If `setCurriculum`: ask the user to select from `stateMachine.curriculumOptions`.\n   - If `setActiveGoal`: select from `stateMachine.goalOptions` and call `setActiveGoal`.\n   - If `setMastery`: teach the locked goal and call `setMastery`.\n3. **Core Concepts**: Use `getLearnerState` for context, `setMastery` for progress.",
+        "description": "Optimized API for AI Tutors.\n\n### INSTRUCTIONS\n1. **First Priority**: Ensure you have a `skillpilotId`. If not, **ASK** the user. Do **NOT** create a new learner unless explicitly requested (e.g. 'new user').\n2. **State Machine**: Always follow `stateMachine.requiredAction` (fallback: `nextAllowedActions`).\n   - If `setCurriculum`: ask the user to select from `stateMachine.curriculumOptions`.\n   - If `setPersonalization`: apply subject/module `goalIds` plus `filters` (e.g. GK/LK).\n   - If `setScope`: call `setScope` with `goalIds` from `stateMachine.goalOptions` (cluster goals). If only one option or the user says \"egal\", pick it automatically.\n   - If `setActiveGoal`: select from `stateMachine.goalOptions` and call `setActiveGoal`.\n   - If `setMastery`: teach the locked goal and call `setMastery`.\n3. **Core Concepts**: Use `getLearnerState` for context, `setMastery` for progress.",
         "version": "v2-ai-optimized-unified"
     },
     "servers": [
@@ -15,7 +15,7 @@
             "post": {
                 "operationId": "createLearner",
                 "summary": "Initialize a new learner session",
-                "description": "Creates a new learner entity. Can optionally initialize with a topic to auto-select curriculum.",
+                "description": "Creates a new learner entity.",
                 "requestBody": {
                     "required": false,
                     "content": {
@@ -75,7 +75,7 @@
             "post": {
                 "operationId": "setScope",
                 "summary": "Set learning scope/focus",
-                "description": "Personalize the plan based on user instruction (e.g. 'I want to learn Stochastik'). The server automatically finds relevant goals and adds them to the planned list.",
+                "description": "Set focus using Goal UUIDs (from stateMachine.goalOptions/frontier). Free-text instructions are not supported; always pass goalIds.",
                 "parameters": [
                     {
                         "name": "skillpilotId",
@@ -297,23 +297,15 @@
         "schemas": {
             "CreateLearnerRequest": {
                 "type": "object",
-                "properties": {
-                    "topic": {
-                        "type": "string"
-                    }
-                }
+                "properties": {}
             },
             "CreateLearnerResponse": {
                 "type": "object",
                 "properties": {
-                    "skillpilotId": {
-                        "type": "string",
-                        "description": "UUID of the new learner"
-                    },
                     "state": {
                         "$ref": "#/components/schemas/UnifiedLearnerStateResponse"
                     },
-                    "availableLandscapes": {
+                    "availableCurricula": {
                         "type": "array",
                         "description": "List of available curricula to choose from if none was auto-selected.",
                         "items": {
@@ -325,7 +317,7 @@
             "UnifiedLearnerStateResponse": {
                 "type": "object",
                 "properties": {
-                    "learnerId": {
+                    "skillpilotId": {
                         "type": "string"
                     },
                     "curriculum": {
@@ -360,6 +352,12 @@
                             "type": "string"
                         },
                         "description": "List of active filter IDs (e.g. 'LK', 'GK') applied to the current curriculum."
+                    },
+                    "copySources": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CopySource"
+                        }
                     },
                     "learningState": {
                         "type": "string",
@@ -406,6 +404,12 @@
                     },
                     "reason": {
                         "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 }
             },
@@ -434,7 +438,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of Goal IDs to set as the scope. REQUIRED."
+                        "description": "List of Goal IDs (UUIDs) to set as the scope. REQUIRED. Use goal IDs from stateMachine.goalOptions/frontier."
                     }
                 },
                 "required": [
@@ -642,26 +646,43 @@
             "LandscapeSummary": {
                 "type": "object",
                 "properties": {
-                    "landscapeId": {
+                    "curriculumId": {
                         "type": "string"
                     },
-                    "filename": {
+                    "title": {
                         "type": "string"
                     },
-                    "subject": {
+                    "description": {
                         "type": "string"
                     },
-                    "locale": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LandscapeFilter"
+                        }
+                    }
+                }
+            },
+            "LandscapeFilter": {
+                "type": "object",
+                "properties": {
+                    "id": {
                         "type": "string"
                     },
-                    "level": {
+                    "label": {
+                        "type": "string"
+                    }
+                }
+            },
+            "CopySource": {
+                "type": "object",
+                "properties": {
+                    "sourceId": {
                         "type": "string"
                     },
-                    "country": {
-                        "type": "string"
-                    },
-                    "region": {
-                        "type": "string"
+                    "copiedAt": {
+                        "type": "string",
+                        "format": "date-time"
                     }
                 }
             },
