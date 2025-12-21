@@ -53,12 +53,12 @@ Ich will nach CEFR Französisch von Grund auf lernen.
 
 -----  
 
-## 3. Knowledge: attaching `trainer.md`
+## 3. Knowledge: attaching knowledge_docs
 
 In the **Wissen** section of the GPT builder:
 
 1.  Click **„Datei hochladen“**.
-2.  Upload the `trainer.md` file from this repository.
+2.  Upload the all knowledge_docs from this repository.
 
 The GPT willconsult this file to understand the pedagogical "Training Loop".
 

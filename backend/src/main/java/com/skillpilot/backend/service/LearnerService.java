@@ -110,11 +110,6 @@ public class LearnerService {
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
 
         String activeGoalId = learner.getActiveGoalId();
-        if (activeGoalId == null || activeGoalId.isBlank()) {
-            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
-                    "No active goal selected. Call setActiveGoal first.");
-        }
-
         String requestedGoalId = request.goalId();
         if (requestedGoalId == null || requestedGoalId.isBlank()) {
             if (request.mastery() != null && request.mastery().size() == 1) {
@@ -122,37 +117,55 @@ public class LearnerService {
             }
         }
 
-        if (requestedGoalId == null || requestedGoalId.isBlank()) {
-            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
-                    "Missing goalId in mastery update.");
-        }
+        String effectiveGoalId = (activeGoalId != null && !activeGoalId.isBlank())
+                ? activeGoalId
+                : requestedGoalId;
 
-        if (!activeGoalId.equals(requestedGoalId)) {
+        if (effectiveGoalId == null || effectiveGoalId.isBlank()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
-                    "Mastery goal does not match active goal. Active: " + activeGoalId);
+                    "No active goal selected and no goalId provided.");
         }
 
-        if (request.mastery() != null && request.mastery().size() != 1) {
-            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
-                    "Mastery update must contain exactly one goal.");
-        }
-
-        for (Map.Entry<String, Double> entry : request.mastery().entrySet()) {
-            String goalKey = entry.getKey();
-
-            // Prevent mastery on Cluster Goals (goals that contain other goals)
-            com.skillpilot.backend.landscape.LearningGoal def = landscapeService.getGoalDefinition(goalKey);
-            if (def != null && def.getContains() != null && !def.getContains().isEmpty()) {
-                throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
-                        "Cannot set mastery on cluster goals. Select an atomic goal first.");
+        if (activeGoalId == null || activeGoalId.isBlank()) {
+            List<FrontierGoal> frontierAtomic = filterAtomicFrontier(getRichFrontier(skillpilotId));
+            boolean allowed = frontierAtomic.stream().anyMatch(goal -> goal.id().equals(effectiveGoalId));
+            if (!allowed) {
+                Map<String, Double> masterySnapshot = getMastery(skillpilotId);
+                if (masterySnapshot.getOrDefault(effectiveGoalId, 0.0) >= 0.9) {
+                    UnifiedLearnerStateResponse state = getLearnerState(skillpilotId);
+                    return new MasteryUpdateResponse(
+                            state.frontier(),
+                            state.frontierAtomic(),
+                            state.nextAllowedActions(),
+                            state.learningState(),
+                            state.activeGoal(),
+                            state.stateMachine());
+                }
+                throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                        "goalId must be an atomic goal from the current frontier.");
             }
-
-            double value = entry.getValue();
-            MasteryId id = new MasteryId(skillpilotId, goalKey);
-            Mastery mastery = masteryRepository.findById(id).orElseGet(() -> new Mastery(learner, goalKey, value));
-            mastery.setValue(value);
-            masteryRepository.save(mastery);
         }
+
+        double masteryValue = 1.0;
+        if (request.mastery() != null && request.mastery().size() == 1) {
+            Map.Entry<String, Double> entry = request.mastery().entrySet().iterator().next();
+            if (effectiveGoalId.equals(entry.getKey()) && entry.getValue() != null) {
+                masteryValue = entry.getValue();
+            }
+        }
+
+        // Prevent mastery on Cluster Goals (goals that contain other goals)
+        com.skillpilot.backend.landscape.LearningGoal def = landscapeService.getGoalDefinition(effectiveGoalId);
+        if (def != null && def.getContains() != null && !def.getContains().isEmpty()) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Cannot set mastery on cluster goals. Select an atomic goal first.");
+        }
+
+        MasteryId id = new MasteryId(skillpilotId, effectiveGoalId);
+        Mastery mastery = masteryRepository.findById(id)
+                .orElseGet(() -> new Mastery(learner, effectiveGoalId, masteryValue));
+        mastery.setValue(masteryValue);
+        masteryRepository.save(mastery);
 
         // Return the new frontier and state immediately
         learner.setActiveGoalId(null);
@@ -506,15 +519,6 @@ public class LearnerService {
         }
         List<String> activeFilters = new ArrayList<>();
         if (curriculumId != null) {
-            nextAllowedActions.add("setPersonalization");
-            nextAllowedActions.add("setScope");
-            nextAllowedActions.add("getFrontier");
-            if (learner.getActiveGoalId() != null && !learner.getActiveGoalId().isBlank()) {
-                nextAllowedActions.add("setMastery");
-            } else if (!frontierAtomic.isEmpty()) {
-                nextAllowedActions.add("setActiveGoal");
-            }
-
             // Extract active filters from ALL configured landscapes (Aggregation)
             // This handles the case where personalization is on a child subject (e.g. Math
             // LK)
@@ -539,6 +543,18 @@ public class LearnerService {
             } catch (Exception e) {
                 // Ignore parsing errors
             }
+
+            boolean personalizationRequired = needsPersonalization(frontier, activeFilters);
+            nextAllowedActions.add("setPersonalization");
+            if (!personalizationRequired) {
+                nextAllowedActions.add("setScope");
+                nextAllowedActions.add("getFrontier");
+                if (learner.getActiveGoalId() != null && !learner.getActiveGoalId().isBlank()) {
+                    nextAllowedActions.add("setMastery");
+                } else if (!frontierAtomic.isEmpty()) {
+                    nextAllowedActions.add("setActiveGoal");
+                }
+            }
         }
 
         String activeGoalId = learner.getActiveGoalId();
@@ -553,7 +569,7 @@ public class LearnerService {
         }
 
         StateMachineInfo stateMachine = buildStateMachineInfo(curriculumId, frontier, frontierAtomic, activeGoal,
-                learningState);
+                learningState, activeFilters);
 
         return new UnifiedLearnerStateResponse(learner.getSkillpilotId(), curriculumSummary, frontier, frontierAtomic,
                 new LearnerGoals(plannedRich, masteredCount, totalCount), nextAllowedActions, activeFilters,
@@ -567,7 +583,8 @@ public class LearnerService {
     }
 
     private StateMachineInfo buildStateMachineInfo(String curriculumId, List<FrontierGoal> frontier,
-            List<FrontierGoal> frontierAtomic, FrontierGoal activeGoal, LearningState learningState) {
+            List<FrontierGoal> frontierAtomic, FrontierGoal activeGoal, LearningState learningState,
+            List<String> activeFilters) {
         String state = curriculumId == null ? "SETUP" : learningState.name();
         String requiredAction = "getFrontier";
         List<FrontierGoal> goalOptions = Collections.emptyList();
@@ -579,6 +596,9 @@ public class LearnerService {
         } else if (activeGoal != null) {
             requiredAction = "setMastery";
             goalOptions = List.of(activeGoal);
+        } else if (needsPersonalization(frontier, activeFilters)) {
+            requiredAction = "setPersonalization";
+            goalOptions = frontier;
         } else if (!frontierAtomic.isEmpty()) {
             requiredAction = "setActiveGoal";
             goalOptions = frontierAtomic;
@@ -588,6 +608,23 @@ public class LearnerService {
         }
 
         return new StateMachineInfo(state, requiredAction, goalOptions, curriculumOptions, activeGoal);
+    }
+
+    private boolean needsPersonalization(List<FrontierGoal> frontier, List<String> activeFilters) {
+        if (activeFilters != null && !activeFilters.isEmpty()) {
+            return false;
+        }
+        for (FrontierGoal goal : frontier) {
+            if (goal.tags() == null) {
+                continue;
+            }
+            for (String tag : goal.tags()) {
+                if ("GK".equals(tag) || "LK".equals(tag)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Transactional

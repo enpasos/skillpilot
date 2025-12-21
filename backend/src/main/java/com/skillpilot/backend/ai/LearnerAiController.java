@@ -77,19 +77,17 @@ public class LearnerAiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public MasteryUpdateResponse setMastery(
             @PathVariable String skillpilotId,
-            @Valid @RequestBody MasteryUpdateRequest request) {
+            @RequestBody(required = false) MasteryUpdateRequest request) {
 
         MasteryUpdateRequest effectiveRequest = request;
 
-        // Convenience for AI: If generic map is missing but goalId is provided,
-        // construct it.
-        if ((request.mastery() == null || request.mastery().isEmpty()) && request.goalId() != null) {
+        if (effectiveRequest == null) {
+            effectiveRequest = new MasteryUpdateRequest(null, null);
+        } else if ((effectiveRequest.mastery() == null || effectiveRequest.mastery().isEmpty())
+                && effectiveRequest.goalId() != null) {
             java.util.Map<String, Double> newMap = new java.util.HashMap<>();
-            newMap.put(request.goalId(), 1.0);
-            effectiveRequest = new MasteryUpdateRequest(newMap, request.goalId());
-        } else if (request.mastery() == null || request.mastery().isEmpty()) {
-            throw new org.springframework.web.server.ResponseStatusException(
-                    org.springframework.http.HttpStatus.BAD_REQUEST, "Either 'mastery' map or 'goalId' is required.");
+            newMap.put(effectiveRequest.goalId(), 1.0);
+            effectiveRequest = new MasteryUpdateRequest(newMap, effectiveRequest.goalId());
         }
 
         return learnerService.setMastery(skillpilotId, effectiveRequest);

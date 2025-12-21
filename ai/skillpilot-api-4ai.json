@@ -155,7 +155,7 @@
             "post": {
                 "operationId": "setMastery",
                 "summary": "Update mastery and get next steps",
-                "description": "Updates mastery for the active goal and immediately returns the new frontier plus state (stateMachine, nextAllowedActions, learningState, activeGoal).",
+                "description": "Updates mastery for the active goal and immediately returns the new frontier plus state (stateMachine, nextAllowedActions, learningState, activeGoal). If a goal is already active, you may omit goalId and the server will use the active goal.",
                 "parameters": [
                     {
                         "name": "skillpilotId",
@@ -167,7 +167,7 @@
                     }
                 ],
                 "requestBody": {
-                    "required": true,
+                    "required": false,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -520,13 +520,10 @@
             },
             "MasteryUpdateRequest": {
                 "type": "object",
-                "required": [
-                    "goalId"
-                ],
                 "properties": {
                     "goalId": {
                         "type": "string",
-                        "description": "The UUID of the single goal to set to 1.0 (Mastered). MUST be an Atomic Goal (no children)."
+                        "description": "Optional when an active goal is set. The UUID of the single goal to set to 1.0 (Mastered). MUST be an Atomic Goal (no children)."
                     }
                 }
             },
