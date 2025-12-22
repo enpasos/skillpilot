@@ -527,9 +527,12 @@
                 "properties": {
                     "goalId": {
                         "type": "string",
-                        "description": "Optional when an active goal is set. The UUID of the single goal to set to 1.0 (Mastered). MUST be an Atomic Goal (no children)."
+                        "description": "The UUID of the single goal to set to 1.0 (Mastered). MUST be an Atomic Goal (no children)."
                     }
-                }
+                },
+                "required": [
+                    "goalId"
+                ]
             },
             "MasteryResponse": {
                 "type": "object",
