@@ -444,7 +444,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
                         style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
                     >
                         <span className="text-xs font-bold text-sky-500 uppercase tracking-wider mb-2">{currentCard.category}</span>
-                        <div className="w-full text-center text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100 flex flex-col items-center justify-center">
+                        <div className="w-full text-center text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 flex flex-col items-center justify-center">
                             <ReactMarkdown
                                 remarkPlugins={[remarkMath]}
                                 rehypePlugins={[rehypeKatex]}
@@ -467,7 +467,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
                             WebkitBackfaceVisibility: 'hidden'
                         }}
                     >
-                        <div className="w-full text-center text-2xl md:text-3xl font-bold text-sky-700 dark:text-sky-300 flex flex-col items-center justify-center">
+                        <div className="w-full text-center text-lg md:text-xl font-bold text-sky-700 dark:text-sky-300 flex flex-col items-center justify-center">
                             <ReactMarkdown
                                 remarkPlugins={[remarkMath]}
                                 rehypePlugins={[rehypeKatex]}
