@@ -56,24 +56,39 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const selectedId = currentGoal?.id ?? rootGoals[0]?.id ?? ''
 
-  const reachableGoals = useMemo(() => {
-    const reachable = new Set<string>()
-    const stack = [...rootGoals]
+  // Filter root goals based on Personal Curriculum (Level 2)
+  const visibleRootGoals = useMemo(() => {
+    // If no config exists yet, show all by default
+    if (Object.keys(personalConfig).length === 0) return rootGoals
+
+    return rootGoals.filter((goal) => {
+      const config = personalConfig[goal.id]
+      // Always show root goals
+      if (rootGoals.some(r => r.id === goal.id)) return true
+
+      // Show only if explicitly selected (strict opt-in when config exists)
+      return config?.selected === true
+    })
+  }, [rootGoals, personalConfig])
+
+  const visibleGoals = useMemo(() => {
+    const visible = new Set<string>()
+    const stack = [...visibleRootGoals]
     const hasConfig = Object.keys(personalConfig).length > 0
 
     while (stack.length > 0) {
       const g = stack.pop()
       if (!g) continue
 
-      // If config exists, respect visibility settings
+      // If config exists, respect visibility settings for children
       if (hasConfig) {
         const cfg = personalConfig[g.id]
         // If explicitly unselected, skip branch
         if (cfg && cfg.selected === false) continue
       }
 
-      if (reachable.has(g.id)) continue
-      reachable.add(g.id)
+      if (visible.has(g.id)) continue
+      visible.add(g.id)
       if (g.contains && g.contains.length > 0) {
         g.contains.forEach((childId) => {
           const child = goalIndexAll.get(childId)
@@ -81,8 +96,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         })
       }
     }
-    return reachable
-  }, [rootGoals, goalIndexAll, personalConfig])
+    return visible
+  }, [visibleRootGoals, goalIndexAll, personalConfig])
 
   const plannedCount = useMemo(() => {
     let count = 0
@@ -238,20 +253,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [skillpilotId])
 
-  // Filter root goals based on Personal Curriculum (Level 2)
-  const visibleRootGoals = useMemo(() => {
-    // If no config exists yet, show all by default
-    if (Object.keys(personalConfig).length === 0) return rootGoals
 
-    return rootGoals.filter((goal) => {
-      const config = personalConfig[goal.id]
-      // Always show root goals
-      if (rootGoals.some(r => r.id === goal.id)) return true
-
-      // Show only if explicitly selected (strict opt-in when config exists)
-      return config?.selected === true
-    })
-  }, [rootGoals, personalConfig])
 
   // Determine effective active filter based on personal config for current landscape
   const effectiveActiveFilter = useMemo(() => {
