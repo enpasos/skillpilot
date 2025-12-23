@@ -13,6 +13,10 @@ export const de = {
             explorer: {
                 title: "Meine Erfolge",
                 description: "Verfolge deinen Fortschritt im Cockpit."
+            },
+            hallOfFame: {
+                title: "Hall of Fame",
+                description: "Die erfolgreichsten Lerner der Community."
             }
         },
         login: {

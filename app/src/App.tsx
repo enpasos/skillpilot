@@ -6,6 +6,7 @@ import { TrainerView } from './views/TrainerView'
 import { LegalView } from './views/LegalView'
 import { PrivacyView } from './views/PrivacyView'
 import { ImprintView } from './views/ImprintView'
+import { HallOfFameView } from './views/HallOfFameView'
 
 import { SessionSetup } from './components/SessionSetup'
 import { useAppCore } from './hooks/useAppCore'
@@ -33,7 +34,7 @@ const App: React.FC = () => {
   const location = useLocation()
 
   // Allow public routes to render without session
-  const isPublicRoute = ['/legal', '/privacy', '/imprint'].includes(location.pathname)
+  const isPublicRoute = ['/legal', '/privacy', '/imprint', '/hall-of-fame'].includes(location.pathname)
 
   const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId })
   const availableLandscapes = useMemo(
@@ -96,8 +97,10 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/legal" element={<LegalView />} />
         <Route path="/privacy" element={<PrivacyView />} />
+        <Route path="/legal" element={<LegalView />} />
+        <Route path="/privacy" element={<PrivacyView />} />
         <Route path="/imprint" element={<ImprintView />} />
-
+        <Route path="/hall-of-fame" element={<HallOfFameView />} />
       </Routes>
     )
   }

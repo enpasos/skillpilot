@@ -7,4 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MasteryRepository extends JpaRepository<Mastery, MasteryId> {
     List<Mastery> findByLearner_SkillpilotId(String skillpilotId);
+
+    List<Mastery> findAllByValueGreaterThanEqual(double value);
 }

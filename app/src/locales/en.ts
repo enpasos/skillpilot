@@ -13,6 +13,10 @@ export const en = {
             explorer: {
                 title: "My Successes",
                 description: "Track your progress in the cockpit."
+            },
+            hallOfFame: {
+                title: "Hall of Fame",
+                description: "Top learners of the community."
             }
         },
         login: {

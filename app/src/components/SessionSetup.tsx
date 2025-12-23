@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { CurriculumDropdown } from './CurriculumDropdown'
 import { ThemeToggle } from './ThemeToggle'
 import type { LandscapeSummary } from './CurriculumDropdown'
-import { Save, ArrowRight, Github } from 'lucide-react'
+import { Save, ArrowRight, Github, Trophy } from 'lucide-react'
 import logo from '../assets/skillpilot512x512.png'
 
 type Role = 'learner' | 'trainer' | 'explorer'
@@ -238,7 +238,27 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                 </div>
               </button>
 
-              {/* Card 3: Whitepaper */}
+              {/* Card 3: Hall of Fame */}
+              <Link
+                to="/hall-of-fame"
+                className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-6 hover:shadow-lg hover:border-amber-400/50 transition-all duration-300"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold text-text-primary group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors flex items-center gap-2">
+                      {/* @ts-ignore */}
+                      {t.startPage.cards.hallOfFame?.title || "Hall of Fame"} <Trophy size={16} className="text-amber-500" />
+                    </h3>
+                    <p className="text-sm text-text-secondary mt-1">
+                      {/* @ts-ignore */}
+                      {t.startPage.cards.hallOfFame?.description || "Top learners."}
+                    </p>
+                  </div>
+                  <ArrowRight className="text-text-secondary group-hover:translate-x-1 group-hover:text-amber-500 transition-all" />
+                </div>
+              </Link>
+
+              {/* Card 4: Whitepaper */}
               <a
                 href={language === 'de'
                   ? 'https://enpasos.github.io/skillpilot/whitepaper/whitepaper.de.html'
