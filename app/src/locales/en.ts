@@ -93,5 +93,22 @@ export const en = {
             title: "Select a context",
             text: "Select 'All' on the left to plan goals for the whole class.\nOr select an individual student to view or assess their progress."
         }
+    },
+    hallOfFamePage: {
+        subtitle: "Celebrating the most dedicated learners on SkillPilot.",
+        noData: {
+            title: "No champions have risen yet. Be the first!",
+            button: "Start Learning"
+        },
+        stats: {
+            mastered: "Total Mastered Goals across all learners:",
+            goals: "Total Goals"
+        },
+        table: {
+            learnerId: "Learner ID",
+            goals: "GOALS"
+        },
+        back: "Back to SkillPilot",
+        loading: "Loading Hall of Fame..."
     }
 }

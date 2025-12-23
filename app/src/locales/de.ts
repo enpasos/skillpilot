@@ -93,5 +93,22 @@ export const de = {
             title: "Wähle einen Kontext",
             text: "Wähle links 'All' aus, um Ziele für die ganze Klasse zu planen.\nOder wähle einen einzelnen Schüler aus, um dessen Lernstand einzusehen oder zu bewerten."
         }
+    },
+    hallOfFamePage: {
+        subtitle: "Wir feiern die engagiertesten Lerner auf SkillPilot.",
+        noData: {
+            title: "Noch keine Champions. Sei der Erste!",
+            button: "Jetzt lernen"
+        },
+        stats: {
+            mastered: "Insgesamt gemeisterte Ziele aller Lerner:",
+            goals: "Ziele gesamt"
+        },
+        table: {
+            learnerId: "Lerner-ID",
+            goals: "ZIELE"
+        },
+        back: "Zurück zu SkillPilot",
+        loading: "Lade Hall of Fame..."
     }
 }

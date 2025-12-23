@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ThemeToggle } from '../components/ThemeToggle'
+import { LanguageToggle } from '../components/LanguageToggle'
+import { useTranslation } from '../hooks/useTranslation'
 
 interface TopLearner {
   learnerLabel: string
@@ -25,6 +27,7 @@ export const HallOfFameView: React.FC = () => {
   const [data, setData] = useState<HallOfFameData | null>(null)
   const [selectedCurriculumId, setSelectedCurriculumId] = useState<string>('')
   const [loading, setLoading] = useState(true)
+  const t = useTranslation()
 
   useEffect(() => {
     fetch('/api/ui/hall-of-fame')
@@ -49,7 +52,7 @@ export const HallOfFameView: React.FC = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-chat-bg text-text-primary p-6 flex items-center justify-center">
-        Loading Hall of Fame...
+        {t.hallOfFamePage.loading}
       </div>
     )
   }
@@ -57,18 +60,20 @@ export const HallOfFameView: React.FC = () => {
   if (!data || data.curricula.length === 0) {
     return (
       <div className="min-h-screen bg-chat-bg text-text-primary p-6 flex flex-col items-center justify-center space-y-4 relative">
-        <div className="absolute top-6 right-6">
+        <div className="absolute top-6 right-6 flex items-center gap-4">
+          <LanguageToggle />
           <ThemeToggle />
         </div>
         <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-200">
-          Hall of Fame
+          {/* @ts-ignore */}
+          {t.startPage.cards.hallOfFame?.title || "Hall of Fame"}
         </h1>
-        <p className="text-text-secondary">No champions have risen yet. Be the first!</p>
+        <p className="text-text-secondary">{t.hallOfFamePage.noData.title}</p>
         <Link
           to="/"
           className="px-6 py-2 bg-slate-200/50 dark:bg-slate-700/50 hover:bg-slate-300/50 dark:hover:bg-slate-600/50 rounded-full border border-border-color transition-colors text-text-primary"
         >
-          Start Learning
+          {t.hallOfFamePage.noData.button}
         </Link>
       </div>
     )
@@ -78,7 +83,8 @@ export const HallOfFameView: React.FC = () => {
     <div className="min-h-screen bg-chat-bg text-text-primary overflow-y-auto transition-colors duration-300 relative">
 
       {/* Top Controls */}
-      <div className="absolute top-6 right-6">
+      <div className="absolute top-6 right-6 flex items-center gap-4">
+        <LanguageToggle />
         <ThemeToggle />
       </div>
 
@@ -87,11 +93,12 @@ export const HallOfFameView: React.FC = () => {
         <header className="text-center space-y-4 pt-10 md:pt-0">
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 dark:from-yellow-300 dark:via-orange-400 dark:to-red-500">
-              Hall of Fame
+              {/* @ts-ignore */}
+              {t.startPage.cards.hallOfFame?.title || "Hall of Fame"}
             </span>
           </h1>
           <p className="text-text-secondary max-w-lg mx-auto">
-            Celebrating the most dedicated learners on SkillPilot.
+            {t.hallOfFamePage.subtitle}
           </p>
         </header>
 
@@ -127,11 +134,11 @@ export const HallOfFameView: React.FC = () => {
               <div>
                 <h2 className="text-2xl font-bold text-text-primary mb-1">{selectedBoard.title}</h2>
                 <div className="text-sm text-text-secondary">
-                  Total Mastered Goals across all learners: <span className="text-orange-600 dark:text-orange-400 font-mono">{selectedBoard.totalMastered}</span>
+                  {t.hallOfFamePage.stats.mastered} <span className="text-orange-600 dark:text-orange-400 font-mono">{selectedBoard.totalMastered}</span>
                 </div>
               </div>
               <div className="text-right hidden md:block">
-                <div className="text-xs text-text-secondary uppercase tracking-wider font-semibold">Total Goals</div>
+                <div className="text-xs text-text-secondary uppercase tracking-wider font-semibold">{t.hallOfFamePage.stats.goals}</div>
                 <div className="text-3xl font-bold text-text-primary">{selectedBoard.totalAtomicGoals}</div>
               </div>
             </div>
@@ -169,12 +176,12 @@ export const HallOfFameView: React.FC = () => {
                         <span className="text-lg font-medium text-text-primary font-mono tracking-wide">
                           {learner.learnerLabel}...
                         </span>
-                        <span className="text-xs text-text-secondary">Learner ID</span>
+                        <span className="text-xs text-text-secondary">{t.hallOfFamePage.table.learnerId}</span>
                       </div>
                     </div>
                     <div className="flex items-center space-x-2">
                       <span className="text-2xl font-bold text-text-primary">{learner.score}</span>
-                      <span className="text-xs text-text-secondary uppercase">Goals</span>
+                      <span className="text-xs text-text-secondary uppercase">{t.hallOfFamePage.table.goals}</span>
                     </div>
                   </div>
                 )
@@ -186,7 +193,7 @@ export const HallOfFameView: React.FC = () => {
         {/* Footer */}
         <div className="text-center pt-8 pb-4">
           <Link to="/" className="text-text-secondary hover:text-text-primary transition-colors underline underline-offset-4 decoration-slate-300 dark:decoration-slate-600 hover:decoration-sky-500">
-            Back to SkillPilot
+            {t.hallOfFamePage.back}
           </Link>
         </div>
       </div>
