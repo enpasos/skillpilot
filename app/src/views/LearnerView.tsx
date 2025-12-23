@@ -59,9 +59,19 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const reachableGoals = useMemo(() => {
     const reachable = new Set<string>()
     const stack = [...rootGoals]
+    const hasConfig = Object.keys(personalConfig).length > 0
+
     while (stack.length > 0) {
       const g = stack.pop()
       if (!g) continue
+
+      // If config exists, respect visibility settings
+      if (hasConfig) {
+        const cfg = personalConfig[g.id]
+        // If explicitly unselected, skip branch
+        if (cfg && cfg.selected === false) continue
+      }
+
       if (reachable.has(g.id)) continue
       reachable.add(g.id)
       if (g.contains && g.contains.length > 0) {
@@ -72,7 +82,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       }
     }
     return reachable
-  }, [rootGoals, goalIndexAll])
+  }, [rootGoals, goalIndexAll, personalConfig])
 
   const plannedCount = useMemo(() => {
     let count = 0
