@@ -87,24 +87,24 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const plannedCount = useMemo(() => {
     let count = 0
     plannedGoals.forEach((id) => {
-      if (!reachableGoals.has(id)) return
+      if (!visibleGoals.has(id)) return
       const g = goalIndexAll.get(id)
       if (g && (!g.contains || g.contains.length === 0)) {
         count++
       }
     })
     return count
-  }, [plannedGoals, goalIndexAll, reachableGoals])
+  }, [plannedGoals, goalIndexAll, visibleGoals])
 
   const masteredCount = useMemo(() => {
     let count = 0
     goalIndexAll.forEach((g) => {
-      if (reachableGoals.has(g.id) && (!g.contains || g.contains.length === 0) && getMastery(g.id) >= 1) {
+      if (visibleGoals.has(g.id) && (!g.contains || g.contains.length === 0) && getMastery(g.id) >= 1) {
         count += 1
       }
     })
     return count
-  }, [goalIndexAll, getMastery, reachableGoals])
+  }, [goalIndexAll, getMastery, visibleGoals])
 
   // Load planned goals from backend
   React.useEffect(() => {
