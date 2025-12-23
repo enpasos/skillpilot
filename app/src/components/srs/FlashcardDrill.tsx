@@ -4,6 +4,11 @@ import { useLanguage } from '../../contexts/LanguageContext'
 
 import { calculateReview, INITIAL_DECK_STATE, type ReviewItem } from './srsLogic'
 
+import ReactMarkdown from 'react-markdown'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
+import 'katex/dist/katex.min.css'
+
 interface FlashcardDrillProps {
     onComplete: () => void
     dataSourceUrl?: string
@@ -439,7 +444,17 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
                         style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
                     >
                         <span className="text-xs font-bold text-sky-500 uppercase tracking-wider mb-2">{currentCard.category}</span>
-                        <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-100">{currentCard.front}</h2>
+                        <div className="w-full text-center text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100 flex flex-col items-center justify-center">
+                            <ReactMarkdown
+                                remarkPlugins={[remarkMath]}
+                                rehypePlugins={[rehypeKatex]}
+                                components={{
+                                    p: ({ node, ...props }) => <p className="m-0" {...props} />
+                                }}
+                            >
+                                {currentCard.front}
+                            </ReactMarkdown>
+                        </div>
                         <p className="text-gray-400 text-sm mt-4 italic">{t.tapToFlip}</p>
                     </div>
 
@@ -452,7 +467,17 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
                             WebkitBackfaceVisibility: 'hidden'
                         }}
                     >
-                        <h2 className="text-3xl font-bold text-sky-700 dark:text-sky-300">{currentCard.back}</h2>
+                        <div className="w-full text-center text-2xl md:text-3xl font-bold text-sky-700 dark:text-sky-300 flex flex-col items-center justify-center">
+                            <ReactMarkdown
+                                remarkPlugins={[remarkMath]}
+                                rehypePlugins={[rehypeKatex]}
+                                components={{
+                                    p: ({ node, ...props }) => <p className="m-0" {...props} />
+                                }}
+                            >
+                                {currentCard.back}
+                            </ReactMarkdown>
+                        </div>
                     </div>
                 </div>
             </div>
