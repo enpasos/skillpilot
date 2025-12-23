@@ -56,26 +56,45 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const selectedId = currentGoal?.id ?? rootGoals[0]?.id ?? ''
 
+  const reachableGoals = useMemo(() => {
+    const reachable = new Set<string>()
+    const stack = [...rootGoals]
+    while (stack.length > 0) {
+      const g = stack.pop()
+      if (!g) continue
+      if (reachable.has(g.id)) continue
+      reachable.add(g.id)
+      if (g.contains && g.contains.length > 0) {
+        g.contains.forEach((childId) => {
+          const child = goalIndexAll.get(childId)
+          if (child) stack.push(child)
+        })
+      }
+    }
+    return reachable
+  }, [rootGoals, goalIndexAll])
+
   const plannedCount = useMemo(() => {
     let count = 0
     plannedGoals.forEach((id) => {
+      if (!reachableGoals.has(id)) return
       const g = goalIndexAll.get(id)
       if (g && (!g.contains || g.contains.length === 0)) {
         count++
       }
     })
     return count
-  }, [plannedGoals, goalIndexAll])
+  }, [plannedGoals, goalIndexAll, reachableGoals])
 
   const masteredCount = useMemo(() => {
     let count = 0
     goalIndexAll.forEach((g) => {
-      if ((!g.contains || g.contains.length === 0) && getMastery(g.id) >= 1) {
+      if (reachableGoals.has(g.id) && (!g.contains || g.contains.length === 0) && getMastery(g.id) >= 1) {
         count += 1
       }
     })
     return count
-  }, [goalIndexAll, getMastery])
+  }, [goalIndexAll, getMastery, reachableGoals])
 
   // Load planned goals from backend
   React.useEffect(() => {
