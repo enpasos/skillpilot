@@ -93,6 +93,9 @@ def main():
     }
 
     print(f"Loaded {len(goals_map)} goals.")
+    
+
+
     print(f"Looking for Level IDs: {LEVEL_IDS}")
     
     for lvl, lid in LEVEL_IDS.items():
@@ -192,6 +195,11 @@ def main():
     # User said: "In the curriculum selection there must only be "Englisch (CEFR A1-C2)" ..."
     # So we keep it clean.
 
+    # Remove (Structure) from main title
+    if "(Structure)" in main_data.get("title", ""):
+        main_data["title"] = main_data["title"].replace(" (Structure)", "")
+        main_data["titleEn"] = main_data.get("titleEn", "").replace(" (Structure)", "")
+    
     # Save Everything
     save_json("EU_EUR_L_CEFR_ENGLISH.de.json", main_data)
     
