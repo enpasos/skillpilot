@@ -131,6 +131,8 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
         due: 0
     })
 
+    const [error, setError] = useState<string | null>(null)
+
     // Initialize: Fetch Data -> Then Queue
     useEffect(() => {
         if (!dataSourceUrl) return
@@ -183,6 +185,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
 
             } catch (e) {
                 console.error("Error loading vocab data", e)
+                setError("Konnte Karteikarten nicht laden (möglicherweise noch nicht erstellt).")
             }
         }
 
@@ -254,6 +257,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
 
     if (!dataSourceUrl) return <div className="p-8 text-center text-red-500">{t.configError}</div>
 
+    if (error) return <div className="p-8 text-center text-gray-500 italic">{error}</div>
 
     if (!vocabData) return <div className="p-8 text-center">{t.loading}</div>
 
