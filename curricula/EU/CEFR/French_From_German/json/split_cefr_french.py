@@ -76,12 +76,30 @@ def main():
     for lid in LEVEL_IDS.values():
         global_visited.add(lid)
 
+    # Custom Descriptions
+    CEFR_META = {
+        "A1": {"title": "A1 (Einstieg)", "desc": "Elementare Sprachverwendung; kann sich vorstellen, einfache Fragen beantworten."},
+        "A2": {"title": "A2 (Grundlagen)", "desc": "Elementare Sprachverwendung; kann einfache Informationen in Routine-Situationen austauschen."},
+        "B1": {"title": "B1 (Mittelstufe)", "desc": "Selbstständige Sprachverwendung; kann sich in vertrauten Situationen verständigen und Meinungen äußern."},
+        "B2": {"title": "B2 (Gute Mittelstufe)", "desc": "Selbstständige Sprachverwendung; kann komplexere Texte verstehen und sich spontan und fließend verständigen."},
+        "C1": {"title": "C1 (Fortgeschritten)", "desc": "Kompetente Sprachverwendung; kann in fast allen Situationen anwenden und komplexe Themen verstehen."},
+        "C2": {"title": "C2 (Exzellent)", "desc": "Kompetente Sprachverwendung; beherrscht die Sprache fast muttersprachlich."}
+    }
+
     for lvl, lid in LEVEL_IDS.items():
         if lid not in goals_map:
             continue
             
         print(f"Processing Level {lvl}...")
         level_goal = goals_map[lid]
+        
+        # Update Root Goal Title/Desc
+        meta = CEFR_META.get(lvl, {})
+        new_title_suffix = meta.get("title", lvl)
+        new_desc = meta.get("desc", level_goal["description"])
+        
+        level_goal["title"] = f"Französisch {new_title_suffix}"
+        level_goal["description"] = new_desc
         
         level_descendants = []
         visited_local = set()
@@ -106,9 +124,9 @@ def main():
         
         # Create file content
         level_data = {
-            "title": f"Französisch (CEFR {lvl})",
+            "title": f"Französisch {new_title_suffix}",
             "titleEn": f"French (CEFR {lvl})",
-            "description": f"Teilcurriculum für Niveau {lvl}",
+            "description": new_desc,
             "descriptionEn": f"Sub-curriculum for Level {lvl}",
             "landscapeId": str(uuid.uuid4()),
             "locale": data["locale"],
@@ -117,7 +135,7 @@ def main():
             "goals": lvl_goals_objects
         }
         
-        # Add 'root' tag to the first goal to ensure it's hidden by backend logic
+        # Add 'root' tag to the first goal
         if lvl_goals_objects:
             first_goal = lvl_goals_objects[0]
             if "tags" not in first_goal:

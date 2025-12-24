@@ -540,3 +540,8 @@ SkillPilot provides an **Optimized OpenAPI Specification** designed specifically
 - **Google Gemini:** See `ai/gem/gemini.md` for system instructions and setup steps.
 - **ChatGPT:** See `ai/gpt/gpt.md` for GPT configuration.
 - **OpenAPI Spec:** Use `ai/skillpilot-api-4ai.json` for the tool definition.
+
+## 13. Curriculum Assets & Flashcard Decks
+- **Source of Truth:** Flashcard decks (`*_deck.json`) and other curriculum-related assets must be stored in the same directory as the curriculum JSON files (e.g., `curricula/EU/CEFR/English_From_German/json/`).
+- **Deployment:** These files are copied to `app/public/data/` during the build/deployment process to be accessible by the frontend.
+- **Development:** When creating a new deck, save it in the curriculum directory and manually copy it to `app/public/data/` if testing locally.

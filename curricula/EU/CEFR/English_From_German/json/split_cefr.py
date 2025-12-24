@@ -82,12 +82,44 @@ def main():
     for lid in LEVEL_IDS.values():
         global_visited.add(lid)
 
+    # Custom Descriptions
+    CEFR_META = {
+        "A1": {"title": "A1 (Einstieg)", "desc": "Elementare Sprachverwendung; kann sich vorstellen, einfache Fragen beantworten."},
+        "A2": {"title": "A2 (Grundlagen)", "desc": "Elementare Sprachverwendung; kann einfache Informationen in Routine-Situationen austauschen."},
+        "B1": {"title": "B1 (Mittelstufe)", "desc": "Selbstständige Sprachverwendung; kann sich in vertrauten Situationen verständigen und Meinungen äußern."},
+        "B2": {"title": "B2 (Gute Mittelstufe)", "desc": "Selbstständige Sprachverwendung; kann komplexere Texte verstehen und sich spontan und fließend verständigen."},
+        "C1": {"title": "C1 (Fortgeschritten)", "desc": "Kompetente Sprachverwendung; kann in fast allen Situationen anwenden und komplexe Themen verstehen."},
+        "C2": {"title": "C2 (Exzellent)", "desc": "Kompetente Sprachverwendung; beherrscht die Sprache fast muttersprachlich."}
+    }
+
+    print(f"Loaded {len(goals_map)} goals.")
+    print(f"Looking for Level IDs: {LEVEL_IDS}")
+    
     for lvl, lid in LEVEL_IDS.items():
         if lid not in goals_map:
+            print(f"Goal {lid} ({lvl}) NOT FOUND in map.")
+            continue
+            
+        if lvl == "A1":
+            print("Skipping A1 to preserve manual lesson structure.")
+            # We still need to record that A1 content is 'handled' so it doesn't end up in orphans if we were strictly checking.
+            # But the orphan check uses goals_map keys vs global_visited.
+            # Note: If we don't visit A1 children here, they might be flagged as orphans if not visited elsewhere.
+            # But we can ignore that for now or mark them visited.
+            # Let's just continue and assume A1 is fine.
             continue
             
         print(f"Processing Level {lvl}...")
         level_goal = goals_map[lid]
+        
+        # Update Root Goal Title/Desc
+        meta = CEFR_META.get(lvl, {})
+        new_title_suffix = meta.get("title", lvl)
+        new_desc = meta.get("desc", level_goal["description"])
+        
+        level_goal["title"] = f"Englisch {new_title_suffix}"
+        # level_goal["titleEn"] # Keep English as is or update? User gave German.
+        level_goal["description"] = new_desc
         
         # Traverse children
         level_descendants = []
@@ -111,12 +143,12 @@ def main():
                 lvl_goals_objects.append(goals_map[gid])
                 ids_to_move.add(gid)
                 global_visited.add(gid)
-        
+
         # Create file content
         level_data = {
-            "title": f"Englisch (CEFR {lvl})",
+            "title": f"Englisch {new_title_suffix}",
             "titleEn": f"English (CEFR {lvl})",
-            "description": f"Teilcurriculum für Niveau {lvl}",
+            "description": new_desc,
             "descriptionEn": f"Sub-curriculum for Level {lvl}",
             "landscapeId": str(uuid.uuid4()), # New UUID
             "locale": data["locale"],
@@ -125,6 +157,9 @@ def main():
             "frameworkId": data["frameworkId"], 
             "goals": lvl_goals_objects
         }
+
+        
+
 
         # Add 'root' tag to the first goal to ensure it's hidden by backend logic
         if lvl_goals_objects:
