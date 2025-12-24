@@ -197,6 +197,7 @@ def main():
 
     # Remove (Structure) from main title
     if "(Structure)" in main_data.get("title", ""):
+        print("Removing (Structure) from title...")
         main_data["title"] = main_data["title"].replace(" (Structure)", "")
         main_data["titleEn"] = main_data.get("titleEn", "").replace(" (Structure)", "")
     
