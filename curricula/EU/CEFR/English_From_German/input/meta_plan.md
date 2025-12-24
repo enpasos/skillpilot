@@ -23,8 +23,27 @@ Grammatik wird **kumulativ** gelernt: Alles aus niedrigeren Levels bleibt releva
 | **C1**    | 5.000–8.000                      | Komplexe Texte |
 | **C2**    | 8.000–10.000+                    | Nahe muttersprachlich |
 
-## 2. Konkrete Vokabeln: Orientierung an den häufigsten Wörtern
-(Unverändert – priorisiere Oxford 3000/5000, frequency-based.)
+## 2. Konkrete Vokabeln: Die Oxford 3000/5000 Strategie
+
+Wir setzen auf den **Goldstandard** für CEFR-basierten Wortschatz: Die **Oxford 3000** (A1–B2) und **Oxford 5000** (B2–C1).
+
+### Warum diese Listen?
+- **Frequenz & Relevanz:** Basieren auf einem Corpus von >2 Mrd. Wörtern; filtern aber nach Relevanz für Lernende (nicht nur reine Häufigkeit).
+- **CEFR-Level:** Jedes Wort ist einem konkreten Level (A1, A2 etc.) zugeordnet.
+- **Priorisierung:** Die wichtigsten Wörter ("Core Vocabulary") werden zuerst gelernt.
+
+### Umsetzung im Curriculum
+1.  **Quelle:** [Oxford Learner's Dictionaries Wordlists](https://www.oxfordlearnersdictionaries.com/wordlists/oxford3000-5000)
+2.  **Mengen-Kalkulation (Volume Strategy):**
+    *   Um das A1-Ziel (~800 Wörter) in 12 Lektionen zu erreichen, benötigen wir **ca. 70 Wörter pro Lektion**.
+    *   Diese werden in thematische Cluster (z.B. Nomen, Verben, Phrasen) pro Lektion unterteilt.
+3.  **Verteilung:**
+    - **A1:** Top ~800-1000 Wörter der Oxford 3000 (gefiltert nach A1).
+    - **A2:** Weitere ~1000 Wörter (A2 Filter).
+    - **B1:** Aufstockung auf ~3000 Wörter (B1 Filter).
+    - **B2:** Abschluss der Oxford 3000 + Einstieg Oxford 5000.
+    - **C1:** Restliche Oxford 5000 + akademischer Wortschatz.
+4.  **Lernmethode:** Kontexteinbettung in Lektionen + SRS-Flashcards (Spaced Repetition).
 
 ## 3. Grammatikziele pro CEFR-Level
 
