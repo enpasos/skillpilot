@@ -61,11 +61,12 @@ def main():
     main_goals_list.append(goals_map[ROOT_ID])
     
     # Add Level Nodes (A1-C2)
-    for lid in LEVEL_IDS.values():
-        if lid in goals_map:
-            main_goals_list.append(goals_map[lid])
-        else:
-            print(f"Warning: Level ID {lid} not found in map.")
+    # They move to sub-files now.
+    # for lid in LEVEL_IDS.values():
+    #     if lid in goals_map:
+    #         main_goals_list.append(goals_map[lid])
+    #     else:
+    #         print(f"Warning: Level ID {lid} not found in map.")
 
     ids_to_move = set()
     level_files_content = {}
@@ -92,6 +93,11 @@ def main():
                 level_descendants.extend(get_descendants(child_id, goals_map, visited_local))
         
         lvl_goals_objects = []
+        
+        # Add Level Node as first object
+        lvl_goals_objects.append(level_goal)
+        ids_to_move.add(lid)
+        
         for gid in level_descendants:
             if gid in goals_map:
                 lvl_goals_objects.append(goals_map[gid])
@@ -133,8 +139,10 @@ def main():
     # Construct Main File
     main_data = copy.deepcopy(data)
     main_data["goals"] = main_goals_list
-    # main_data["title"] += " (Structure)"
-    # main_data["titleEn"] += " (Structure)"
+    
+    # Helper: ensure clean title/description 
+    main_data["title"] = main_data["title"].replace(" (Structure)", "")
+    main_data["titleEn"] = main_data["titleEn"].replace(" (Structure)", "")
 
     save_json("EU_EUR_L_CEFR_FRENCH.de.json", main_data)
     

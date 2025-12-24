@@ -66,12 +66,12 @@ def main():
     # Add Root
     main_goals_list.append(goals_map[ROOT_ID])
     
-    # Add Level Nodes (A1-C2) to Main
-    for lid in LEVEL_IDS.values():
-        if lid in goals_map:
-            main_goals_list.append(goals_map[lid])
-        else:
-            print(f"Warning: Level ID {lid} not found in map.")
+    # DO NOT Add Level Nodes (A1-C2) to Main. They move to sub-files.
+    # for lid in LEVEL_IDS.values():
+    #     if lid in goals_map:
+    #         main_goals_list.append(goals_map[lid])
+    #     else:
+    #         print(f"Warning: Level ID {lid} not found in map.")
 
     ids_to_move = set()
     level_files_content = {}
@@ -90,9 +90,6 @@ def main():
         level_goal = goals_map[lid]
         
         # Traverse children
-        # We start traversal from the children of the Level Node
-        # The Level Node itself stays in Main.
-        
         level_descendants = []
         visited_local = set()
         
@@ -104,6 +101,11 @@ def main():
         
         # Collect goal objects
         lvl_goals_objects = []
+        
+        # Add Level Node ITSELF as the first goal (Root of the sub-file)
+        lvl_goals_objects.append(level_goal)
+        ids_to_move.add(lid)
+        
         for gid in level_descendants:
             if gid in goals_map:
                 lvl_goals_objects.append(goals_map[gid])
@@ -147,9 +149,13 @@ def main():
     # Construct Main File
     main_data = copy.deepcopy(data)
     main_data["goals"] = main_goals_list
-    # Helper: update title/description of main to reflect it's the structure
-    # main_data["title"] += " (Structure)"
-    # main_data["titleEn"] += " (Structure)"
+    # Helper: ensure clean title/description (remove any previous (Structure) suffix)
+    main_data["title"] = main_data["title"].replace(" (Structure)", "")
+    main_data["titleEn"] = main_data["titleEn"].replace(" (Structure)", "")
+    
+    # Just in case we want to add it back or keep it clean. User requirement changed?
+    # User said: "In the curriculum selection there must only be "Englisch (CEFR A1-C2)" ..."
+    # So we keep it clean.
 
     # Save Everything
     save_json("EU_EUR_L_CEFR_ENGLISH.de.json", main_data)
