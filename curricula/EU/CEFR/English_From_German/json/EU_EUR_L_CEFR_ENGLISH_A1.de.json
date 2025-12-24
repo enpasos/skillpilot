@@ -9,7 +9,7 @@
     "frameworkId": "cefr-english",
     "goals": [
         {
-            "id": "08b48ebe-94ea-40b6-872d-1db8d9defab3",
+            "id": "cefr_a1_root",
             "title": "Englisch A1 (Einstieg)",
             "titleEn": "Level A1 - Course Structure",
             "description": "Elementare Sprachverwendung; kann sich vorstellen, einfache Fragen beantworten.",
@@ -22,16 +22,35 @@
                 "root"
             ],
             "contains": [
+                "cefr_a1_module_01",
+                "cefr_a1_module_02",
+                "cefr_a1_module_03",
+                "cefr_a1_module_04"
+            ]
+        },
+        {
+            "id": "cefr_a1_module_01",
+            "title": "Modul 1: Grundlagen & Identität",
+            "titleEn": "Module 1: Basics & Identity",
+            "description": "Grundlagen der Kommunikation: Begrüßung, Familie, einfache Gegenstände.",
+            "descriptionEn": "Communication basics: Greetings, Family, simple objects.",
+            "core": true,
+            "weight": 5,
+            "tags": [
+                "module"
+            ],
+            "contains": [
                 "cefr_a1_lesson_01",
-                "cefr_a1_lesson_02"
+                "cefr_a1_lesson_02",
+                "cefr_a1_lesson_03"
             ]
         },
         {
             "id": "cefr_a1_lesson_01",
-            "title": "Lektion 1: Begrüßung & Vorstellen",
-            "titleEn": "Lesson 1: Greetings & Introduction",
-            "description": "Lernen Sie sich zu begrüßen und vorzustellen.",
-            "descriptionEn": "Learn to greet and introduce yourself.",
+            "title": "Lektion 01: Begrüßung & Ich",
+            "titleEn": "Lesson 01: Greetings & Me",
+            "description": "Sich vorstellen und begrüßen.",
+            "descriptionEn": "Introduce yourself and greet others.",
             "core": true,
             "weight": 10,
             "tags": [
@@ -41,7 +60,6 @@
             "contains": [
                 "cefr_a1_l01_vocabulary",
                 "cefr_a1_l01_grammar",
-                "cefr_a1_l01_reading",
                 "cefr_a1_l01_practice"
             ]
         },
@@ -49,8 +67,8 @@
             "id": "cefr_a1_l01_vocabulary",
             "title": "L1: Wortschatz (Begrüßung)",
             "titleEn": "L1: Vocabulary (Greetings)",
-            "description": "Lernen Sie die wichtigsten Wörter: Hello, Goodbye, Name.",
-            "descriptionEn": "Learn the most important words: Hello, Goodbye, Name.",
+            "description": "Wichtige Wörter: Hello, Name, Länder.",
+            "descriptionEn": "Key words: Hello, Name, Countries.",
             "core": true,
             "weight": 2,
             "tags": [
@@ -64,10 +82,10 @@
         },
         {
             "id": "cefr_a1_l01_grammar",
-            "title": "Grammatik verstehen: Das Verb 'to be' (sein)",
+            "title": "Grammatik verstehen: Das Verb 'to be'",
             "titleEn": "Understand Grammar: The verb 'to be'",
-            "description": "Lernen Sie die Formen von 'to be' (am, are, is) für Aussagen.",
-            "descriptionEn": "Learn the forms of 'to be' (am, are, is) for statements.",
+            "description": "Formen von 'sein' (I am, You are).",
+            "descriptionEn": "Forms of 'to be' (I am, You are).",
             "core": true,
             "weight": 2,
             "tags": [
@@ -76,39 +94,25 @@
             "contains": []
         },
         {
-            "id": "cefr_a1_l01_reading",
-            "title": "Lesekompetenz: Einen Begrüßungsdialog verstehen",
-            "titleEn": "Reading Competence: Understand a greeting dialog",
-            "description": "Lesen Sie einen kurzen Dialog zwischen zwei Personen, die sich kennenlernen.",
-            "descriptionEn": "Read a short dialog between two people getting to know each other.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "reading"
-            ],
-            "contains": []
-        },
-        {
             "id": "cefr_a1_l01_practice",
-            "title": "Sprechkompetenz: Jemanden begrüßen und sich vorstellen",
-            "titleEn": "Speaking Competence: Greet someone and introduce yourself",
-            "description": "Üben Sie: Sagen Sie 'Hello', Ihren Namen und fragen Sie 'Wie geht es Ihnen?'.",
-            "descriptionEn": "Practice: Say 'Hello', your name, and ask 'How are you?'.",
+            "title": "Sprechkompetenz: Sich vorstellen",
+            "titleEn": "Speaking Competence: Introduce yourself",
+            "description": "Anwenden: 'Hello, I represent...'",
+            "descriptionEn": "Apply: 'Hello, I represent...'",
             "core": true,
             "weight": 4,
             "tags": [
                 "practice",
-                "speaking",
-                "listening"
+                "speaking"
             ],
             "contains": []
         },
         {
             "id": "cefr_a1_lesson_02",
-            "title": "Lektion 2: Familie & Freunde",
-            "titleEn": "Lesson 2: Family & Friends",
-            "description": "Sprechen Sie über Ihre Familie und Freunde.",
-            "descriptionEn": "Talk about your family and friends.",
+            "title": "Lektion 02: Familie & Freunde",
+            "titleEn": "Lesson 02: Family & Friends",
+            "description": "Über Familie sprechen.",
+            "descriptionEn": "Talk about family.",
             "core": true,
             "weight": 10,
             "tags": [
@@ -118,7 +122,6 @@
             "contains": [
                 "cefr_a1_l02_vocabulary",
                 "cefr_a1_l02_grammar",
-                "cefr_a1_l02_reading",
                 "cefr_a1_l02_practice"
             ]
         },
@@ -126,8 +129,8 @@
             "id": "cefr_a1_l02_vocabulary",
             "title": "L2: Wortschatz (Familie)",
             "titleEn": "L2: Vocabulary (Family)",
-            "description": "Wörter für Familienmitglieder: Mother, Father, Friend.",
-            "descriptionEn": "Words for family members: Mother, Father, Friend.",
+            "description": "Wörter: Mutter, Vater, Titel.",
+            "descriptionEn": "Words: Mother, Father, Titles.",
             "core": true,
             "weight": 2,
             "tags": [
@@ -141,10 +144,10 @@
         },
         {
             "id": "cefr_a1_l02_grammar",
-            "title": "Grammatik verstehen: W-Fragen & 'my/your'",
-            "titleEn": "Understand Grammar: Wh-Questions & 'my/your'",
-            "description": "Lernen Sie Fragen mit 'Who' zu stellen und Besitz anzuzeigen (my, your).",
-            "descriptionEn": "Learn to ask questions with 'Who' and indicate possession (my, your).",
+            "title": "Grammatik verstehen: 'to be' & W-Fragen",
+            "titleEn": "Understand Grammar: 'to be' & Wh-Questions",
+            "description": "Er ist/Sie sind & Wer/Was.",
+            "descriptionEn": "He is/They are & Who/What.",
             "core": true,
             "weight": 2,
             "tags": [
@@ -153,30 +156,669 @@
             "contains": []
         },
         {
-            "id": "cefr_a1_l02_reading",
-            "title": "Lesekompetenz: Kurze Personenbeschreibungen",
-            "titleEn": "Reading Competence: Short profile descriptions",
-            "description": "Lesen Sie kurze Texte über Familienmitglieder und Freunde.",
-            "descriptionEn": "Read short texts about family members and friends.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "reading"
-            ],
-            "contains": []
-        },
-        {
             "id": "cefr_a1_l02_practice",
-            "title": "Sprechkompetenz: Die eigene Familie vorstellen",
-            "titleEn": "Speaking Competence: Introduce your own family",
-            "description": "Üben Sie: Erzählen Sie kurz, wer zu Ihrer Familie gehört (z.B. 'This is my mother').",
-            "descriptionEn": "Practice: Briefly tell who belongs to your family (e.g. 'This is my mother').",
+            "title": "Sprechkompetenz: Familie beschreiben",
+            "titleEn": "Speaking Competence: Describe family",
+            "description": "Anwenden: 'Das ist meine Mutter...'",
+            "descriptionEn": "Apply: 'This is my mother...'",
             "core": true,
             "weight": 4,
             "tags": [
                 "practice",
-                "speaking",
-                "writing"
+                "speaking"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_lesson_03",
+            "title": "Lektion 03: Meine Welt",
+            "titleEn": "Lesson 03: My World",
+            "description": "Gegenstände benennen.",
+            "descriptionEn": "Naming objects.",
+            "core": true,
+            "weight": 10,
+            "tags": [
+                "lesson",
+                "A1"
+            ],
+            "contains": [
+                "cefr_a1_l03_vocabulary",
+                "cefr_a1_l03_grammar",
+                "cefr_a1_l03_practice"
+            ]
+        },
+        {
+            "id": "cefr_a1_l03_vocabulary",
+            "title": "L3: Wortschatz (Gegenstände)",
+            "titleEn": "L3: Vocabulary (Objects)",
+            "description": "Buch, Stift, Farben.",
+            "descriptionEn": "Book, pen, colors.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "vocabulary",
+                "srs-deck:cefr_a1_english_deck"
+            ],
+            "extendedData": {
+                "vocabularySource": "/data/cefr_a1_english_deck.json"
+            },
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l03_grammar",
+            "title": "Grammatik verstehen: Artikel & Plural",
+            "titleEn": "Understand Grammar: Articles & Plural",
+            "description": "a/an, the, this/that & Mehrzahl.",
+            "descriptionEn": "a/an, the, this/that & plural.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "grammar"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l03_practice",
+            "title": "Sprechkompetenz: Dinge benennen",
+            "titleEn": "Speaking Competence: Naming things",
+            "description": "Anwenden: 'Das ist ein rotes Buch.'",
+            "descriptionEn": "Apply: 'This is a red book.'",
+            "core": true,
+            "weight": 4,
+            "tags": [
+                "practice",
+                "speaking"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_module_02",
+            "title": "Modul 2: Beschreibung & Besitz",
+            "titleEn": "Module 2: Description & Possession",
+            "description": "Eigenschaften, Aussehen und Wohnen.",
+            "descriptionEn": "Traits, appearance and living.",
+            "core": true,
+            "weight": 5,
+            "tags": [
+                "module"
+            ],
+            "contains": [
+                "cefr_a1_lesson_04",
+                "cefr_a1_lesson_05",
+                "cefr_a1_lesson_06"
+            ]
+        },
+        {
+            "id": "cefr_a1_lesson_04",
+            "title": "Lektion 04: Eigenschaften",
+            "titleEn": "Lesson 04: Traits",
+            "description": "Dinge beschreiben.",
+            "descriptionEn": "Describing things.",
+            "core": true,
+            "weight": 10,
+            "tags": [
+                "lesson"
+            ],
+            "contains": [
+                "cefr_a1_l04_vocabulary",
+                "cefr_a1_l04_grammar",
+                "cefr_a1_l04_practice"
+            ]
+        },
+        {
+            "id": "cefr_a1_l04_vocabulary",
+            "title": "L4: Wortschatz (Adjektive)",
+            "titleEn": "L4: Vocabulary (Adjectives)",
+            "description": "Groß, klein, gut, schlecht.",
+            "descriptionEn": "Big, small, good, bad.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "vocabulary",
+                "srs-deck:cefr_a1_english_deck"
+            ],
+            "extendedData": {
+                "vocabularySource": "/data/cefr_a1_english_deck.json"
+            },
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l04_grammar",
+            "title": "Grammatik: Adjektive",
+            "titleEn": "Grammar: Adjectives",
+            "description": "Position von Adjektiven.",
+            "descriptionEn": "Position of adjectives.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "grammar"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l04_practice",
+            "title": "Sprechkompetenz: Beschreiben",
+            "titleEn": "Speaking: Describing",
+            "description": "Sagen, wie Dinge sind.",
+            "descriptionEn": "Saying what things are like.",
+            "core": true,
+            "weight": 4,
+            "tags": [
+                "practice"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_lesson_05",
+            "title": "Lektion 05: Haben & Aussehen",
+            "titleEn": "Lesson 05: Have & Looks",
+            "description": "Besitz ausdrücken.",
+            "descriptionEn": "Expressing possession.",
+            "core": true,
+            "weight": 10,
+            "tags": [
+                "lesson"
+            ],
+            "contains": [
+                "cefr_a1_l05_vocabulary",
+                "cefr_a1_l05_grammar",
+                "cefr_a1_l05_practice"
+            ]
+        },
+        {
+            "id": "cefr_a1_l05_vocabulary",
+            "title": "L5: Wortschatz (Körper & Besitz)",
+            "titleEn": "L5: Vocabulary (Body & Possessions)",
+            "description": "Körperteile, Auto, Fahrrad.",
+            "descriptionEn": "Body parts, car, bike.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "vocabulary",
+                "srs-deck:cefr_a1_english_deck"
+            ],
+            "extendedData": {
+                "vocabularySource": "/data/cefr_a1_english_deck.json"
+            },
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l05_grammar",
+            "title": "Grammatik: 'have got'",
+            "titleEn": "Grammar: 'have got'",
+            "description": "Aussage, Verneinung, Frage.",
+            "descriptionEn": "Statement, negation, question.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "grammar"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l05_practice",
+            "title": "Sprechkompetenz: Besitz nennen",
+            "titleEn": "Speaking: Stating possession",
+            "description": "Ich habe ein Auto.",
+            "descriptionEn": "I have a car.",
+            "core": true,
+            "weight": 4,
+            "tags": [
+                "practice"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_lesson_06",
+            "title": "Lektion 06: Zuhause",
+            "titleEn": "Lesson 06: Home",
+            "description": "Wohnen beschreiben.",
+            "descriptionEn": "Describing home.",
+            "core": true,
+            "weight": 10,
+            "tags": [
+                "lesson"
+            ],
+            "contains": [
+                "cefr_a1_l06_vocabulary",
+                "cefr_a1_l06_grammar",
+                "cefr_a1_l06_practice"
+            ]
+        },
+        {
+            "id": "cefr_a1_l06_vocabulary",
+            "title": "L6: Wortschatz (Möbel & Räume)",
+            "titleEn": "L6: Vocabulary (Furniture & Rooms)",
+            "description": "Tisch, Bett, Küche.",
+            "descriptionEn": "Table, bed, kitchen.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "vocabulary",
+                "srs-deck:cefr_a1_english_deck"
+            ],
+            "extendedData": {
+                "vocabularySource": "/data/cefr_a1_english_deck.json"
+            },
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l06_grammar",
+            "title": "Grammatik: There is/are",
+            "titleEn": "Grammar: There is/are",
+            "description": "Es gibt... & Präpositionen.",
+            "descriptionEn": "There is... & prepositions.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "grammar"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l06_practice",
+            "title": "Sprechkompetenz: Zimmer beschreiben",
+            "titleEn": "Speaking: Describing room",
+            "description": "Mein Zimmer hat ein Bett.",
+            "descriptionEn": "My room has a bed.",
+            "core": true,
+            "weight": 4,
+            "tags": [
+                "practice"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_module_03",
+            "title": "Modul 3: Alltag & Gewohnheiten",
+            "titleEn": "Module 3: Daily Life & Habits",
+            "description": "Tagesablauf und Hobbys.",
+            "descriptionEn": "Daily routine and hobbies.",
+            "core": true,
+            "weight": 5,
+            "tags": [
+                "module"
+            ],
+            "contains": [
+                "cefr_a1_lesson_07",
+                "cefr_a1_lesson_08",
+                "cefr_a1_lesson_09"
+            ]
+        },
+        {
+            "id": "cefr_a1_lesson_07",
+            "title": "Lektion 07: Mein Tag",
+            "titleEn": "Lesson 07: My Day",
+            "description": "Über den Tag sprechen.",
+            "descriptionEn": "Talking about the day.",
+            "core": true,
+            "weight": 10,
+            "tags": [
+                "lesson"
+            ],
+            "contains": [
+                "cefr_a1_l07_vocabulary",
+                "cefr_a1_l07_grammar",
+                "cefr_a1_l07_practice"
+            ]
+        },
+        {
+            "id": "cefr_a1_l07_vocabulary",
+            "title": "L7: Wortschatz (Routinen & Zeit)",
+            "titleEn": "L7: Vocabulary (Routines & Time)",
+            "description": "Uhrzeit, Verben des Alltags.",
+            "descriptionEn": "Time, daily verbs.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "vocabulary",
+                "srs-deck:cefr_a1_english_deck"
+            ],
+            "extendedData": {
+                "vocabularySource": "/data/cefr_a1_english_deck.json"
+            },
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l07_grammar",
+            "title": "Grammatik: Present Simple (I/You)",
+            "titleEn": "Grammar: Present Simple (I/You)",
+            "description": "Aussage & Verneinung (don't).",
+            "descriptionEn": "Statements & negation (don't).",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "grammar"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l07_practice",
+            "title": "Sprechkompetenz: Tagesablauf",
+            "titleEn": "Speaking: Daily Routine",
+            "description": "Ich stehe um 7 auf.",
+            "descriptionEn": "I get up at 7.",
+            "core": true,
+            "weight": 4,
+            "tags": [
+                "practice"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_lesson_08",
+            "title": "Lektion 08: Er & Sie",
+            "titleEn": "Lesson 08: He & She",
+            "description": "Über andere sprechen.",
+            "descriptionEn": "Talking about others.",
+            "core": true,
+            "weight": 10,
+            "tags": [
+                "lesson"
+            ],
+            "contains": [
+                "cefr_a1_l08_vocabulary",
+                "cefr_a1_l08_grammar",
+                "cefr_a1_l08_practice"
+            ]
+        },
+        {
+            "id": "cefr_a1_l08_vocabulary",
+            "title": "L8: Wortschatz (Jobs & Aktivitäten)",
+            "titleEn": "L8: Vocabulary (Jobs & Activities)",
+            "description": "Lehrer, Arzt, Arbeiten.",
+            "descriptionEn": "Teacher, doctor, working.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "vocabulary",
+                "srs-deck:cefr_a1_english_deck"
+            ],
+            "extendedData": {
+                "vocabularySource": "/data/cefr_a1_english_deck.json"
+            },
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l08_grammar",
+            "title": "Grammatik: Present Simple (3. Pers.)",
+            "titleEn": "Grammar: Present Simple (3rd Pers.)",
+            "description": "He works, She doesn't play.",
+            "descriptionEn": "He works, She doesn't play.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "grammar"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l08_practice",
+            "title": "Sprechkompetenz: Andere beschreiben",
+            "titleEn": "Speaking: Describing others",
+            "description": "Er arbeitet als Lehrer.",
+            "descriptionEn": "He works as a teacher.",
+            "core": true,
+            "weight": 4,
+            "tags": [
+                "practice"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_lesson_09",
+            "title": "Lektion 09: Freizeit",
+            "titleEn": "Lesson 09: Free Time",
+            "description": "Hobbys und Likes.",
+            "descriptionEn": "Hobbies and likes.",
+            "core": true,
+            "weight": 10,
+            "tags": [
+                "lesson"
+            ],
+            "contains": [
+                "cefr_a1_l09_vocabulary",
+                "cefr_a1_l09_grammar",
+                "cefr_a1_l09_practice"
+            ]
+        },
+        {
+            "id": "cefr_a1_l09_vocabulary",
+            "title": "L9: Wortschatz (Hobbys)",
+            "titleEn": "L9: Vocabulary (Hobbies)",
+            "description": "Sport, Musik, Tage.",
+            "descriptionEn": "Sports, music, days.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "vocabulary",
+                "srs-deck:cefr_a1_english_deck"
+            ],
+            "extendedData": {
+                "vocabularySource": "/data/cefr_a1_english_deck.json"
+            },
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l09_grammar",
+            "title": "Grammatik: Questions & Adverbs",
+            "titleEn": "Grammar: Questions & Adverbs",
+            "description": "Do you...? & always/never.",
+            "descriptionEn": "Do you...? & always/never.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "grammar"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l09_practice",
+            "title": "Sprechkompetenz: Vorlieben",
+            "titleEn": "Speaking: Preferences",
+            "description": "Ich mag Fußball.",
+            "descriptionEn": "I like football.",
+            "core": true,
+            "weight": 4,
+            "tags": [
+                "practice"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_module_04",
+            "title": "Modul 4: Unterwegs & Interaktion",
+            "titleEn": "Module 4: Travel & Interaction",
+            "description": "Essen, Stadt und Geschichten.",
+            "descriptionEn": "Food, city and stories.",
+            "core": true,
+            "weight": 5,
+            "tags": [
+                "module"
+            ],
+            "contains": [
+                "cefr_a1_lesson_10",
+                "cefr_a1_lesson_11",
+                "cefr_a1_lesson_12"
+            ]
+        },
+        {
+            "id": "cefr_a1_lesson_10",
+            "title": "Lektion 10: Essen & Einkaufen",
+            "titleEn": "Lesson 10: Food & Shopping",
+            "description": "Essen bestellen.",
+            "descriptionEn": "Ordering food.",
+            "core": true,
+            "weight": 10,
+            "tags": [
+                "lesson"
+            ],
+            "contains": [
+                "cefr_a1_l10_vocabulary",
+                "cefr_a1_l10_grammar",
+                "cefr_a1_l10_practice"
+            ]
+        },
+        {
+            "id": "cefr_a1_l10_vocabulary",
+            "title": "L10: Wortschatz (Essen)",
+            "titleEn": "L10: Vocabulary (Food)",
+            "description": "Essen, Trinken, Preise.",
+            "descriptionEn": "Food, drink, prices.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "vocabulary",
+                "srs-deck:cefr_a1_english_deck"
+            ],
+            "extendedData": {
+                "vocabularySource": "/data/cefr_a1_english_deck.json"
+            },
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l10_grammar",
+            "title": "Grammatik: How much/many",
+            "titleEn": "Grammar: How much/many",
+            "description": "Mengen, Would like.",
+            "descriptionEn": "Quantities, Would like.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "grammar"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l10_practice",
+            "title": "Sprechkompetenz: Bestellen",
+            "titleEn": "Speaking: Ordering",
+            "description": "Ich hätte gerne Wasser.",
+            "descriptionEn": "I would like water.",
+            "core": true,
+            "weight": 4,
+            "tags": [
+                "practice"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_lesson_11",
+            "title": "Lektion 11: In der Stadt",
+            "titleEn": "Lesson 11: In the City",
+            "description": "Weg finden.",
+            "descriptionEn": "Finding the way.",
+            "core": true,
+            "weight": 10,
+            "tags": [
+                "lesson"
+            ],
+            "contains": [
+                "cefr_a1_l11_vocabulary",
+                "cefr_a1_l11_grammar",
+                "cefr_a1_l11_practice"
+            ]
+        },
+        {
+            "id": "cefr_a1_l11_vocabulary",
+            "title": "L11: Wortschatz (Stadt)",
+            "titleEn": "L11: Vocabulary (City)",
+            "description": "Bahnhof, Park, Richtungen.",
+            "descriptionEn": "Station, park, directions.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "vocabulary",
+                "srs-deck:cefr_a1_english_deck"
+            ],
+            "extendedData": {
+                "vocabularySource": "/data/cefr_a1_english_deck.json"
+            },
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l11_grammar",
+            "title": "Grammatik: Imperativ",
+            "titleEn": "Grammar: Imperative",
+            "description": "Go, Stop, Turn.",
+            "descriptionEn": "Go, Stop, Turn.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "grammar"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l11_practice",
+            "title": "Sprechkompetenz: Wegbeschreibung",
+            "titleEn": "Speaking: Directions",
+            "description": "Gehen Sie links.",
+            "descriptionEn": "Go left.",
+            "core": true,
+            "weight": 4,
+            "tags": [
+                "practice"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_lesson_12",
+            "title": "Lektion 12: Abschluss A1",
+            "titleEn": "Lesson 12: Completion A1",
+            "description": "Geschichten erzählen.",
+            "descriptionEn": "Telling stories.",
+            "core": true,
+            "weight": 10,
+            "tags": [
+                "lesson"
+            ],
+            "contains": [
+                "cefr_a1_l12_vocabulary",
+                "cefr_a1_l12_grammar",
+                "cefr_a1_l12_practice"
+            ]
+        },
+        {
+            "id": "cefr_a1_l12_vocabulary",
+            "title": "L12: Wortschatz (Mix)",
+            "titleEn": "L12: Vocabulary (Mix)",
+            "description": "Wiederholung wichtiger Wörter.",
+            "descriptionEn": "Review of key words.",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "vocabulary",
+                "srs-deck:cefr_a1_english_deck"
+            ],
+            "extendedData": {
+                "vocabularySource": "/data/cefr_a1_english_deck.json"
+            },
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l12_grammar",
+            "title": "Grammatik: Review",
+            "titleEn": "Grammar: Review",
+            "description": "Satzverbindungen (and, but).",
+            "descriptionEn": "Connectors (and, but).",
+            "core": true,
+            "weight": 2,
+            "tags": [
+                "grammar"
+            ],
+            "contains": []
+        },
+        {
+            "id": "cefr_a1_l12_practice",
+            "title": "Sprechkompetenz: Geschichte",
+            "titleEn": "Speaking: Story",
+            "description": "Kleine Geschichte erzählen.",
+            "descriptionEn": "Tell a small story.",
+            "core": true,
+            "weight": 4,
+            "tags": [
+                "practice"
             ],
             "contains": []
         }
