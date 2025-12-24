@@ -98,6 +98,7 @@ def main():
                 ids_to_move.add(gid)
                 global_visited.add(gid)
         
+        # Create file content
         level_data = {
             "title": f"Französisch (CEFR {lvl})",
             "titleEn": f"French (CEFR {lvl})",
@@ -109,6 +110,15 @@ def main():
             "frameworkId": data["frameworkId"], 
             "goals": lvl_goals_objects
         }
+        
+        # Add 'root' tag to the first goal to ensure it's hidden by backend logic
+        if lvl_goals_objects:
+            first_goal = lvl_goals_objects[0]
+            if "tags" not in first_goal:
+                first_goal["tags"] = []
+            if "root" not in first_goal["tags"]:
+                first_goal["tags"].append("root")
+
         level_files_content[lvl] = level_data
 
     # Check for orphans
@@ -123,8 +133,8 @@ def main():
     # Construct Main File
     main_data = copy.deepcopy(data)
     main_data["goals"] = main_goals_list
-    main_data["title"] += " (Structure)"
-    main_data["titleEn"] += " (Structure)"
+    # main_data["title"] += " (Structure)"
+    # main_data["titleEn"] += " (Structure)"
 
     save_json("EU_EUR_L_CEFR_FRENCH.de.json", main_data)
     

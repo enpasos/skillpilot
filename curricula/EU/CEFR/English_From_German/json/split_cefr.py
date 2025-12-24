@@ -123,6 +123,15 @@ def main():
             "frameworkId": data["frameworkId"], 
             "goals": lvl_goals_objects
         }
+
+        # Add 'root' tag to the first goal to ensure it's hidden by backend logic
+        if lvl_goals_objects:
+            first_goal = lvl_goals_objects[0]
+            if "tags" not in first_goal:
+                first_goal["tags"] = []
+            if "root" not in first_goal["tags"]:
+                first_goal["tags"].append("root")
+
         level_files_content[lvl] = level_data
 
     # Check for orphans (goals not reachable from A1-C2)
@@ -139,8 +148,8 @@ def main():
     main_data = copy.deepcopy(data)
     main_data["goals"] = main_goals_list
     # Helper: update title/description of main to reflect it's the structure
-    main_data["title"] += " (Structure)"
-    main_data["titleEn"] += " (Structure)"
+    # main_data["title"] += " (Structure)"
+    # main_data["titleEn"] += " (Structure)"
 
     # Save Everything
     save_json("EU_EUR_L_CEFR_ENGLISH.de.json", main_data)
