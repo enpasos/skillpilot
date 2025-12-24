@@ -1,8 +1,8 @@
 {
     "title": "Betriebssysteme (TU Darmstadt, Modul 20-00-0903)",
     "titleEn": "Betriebssysteme (TU Darmstadt, Modul 20-00-0903)",
-    "description": "Erfolgreicher Abschluss des Moduls \"Betriebssysteme\".",
-    "descriptionEn": "Erfolgreicher Abschluss des Moduls \"Betriebssysteme\".",
+    "description": "- Einführung in Betriebssysteme (BS) - Notwendigkeit, Design\n- Prozesse und Threads - BS Datenstrukturen, Abstraktionen, Kernel/User mode, context switches, Interrupts\n- Interprozeß-Kommunikation - IPC, RPC, Schnittstellen, Hierarchien, Messaging-Semantiken\n- Koordination: Deadlocks - Critical sections, Deadlock-Charakterisierung, Entdeckung, Recovery und Vermeidung\n- Scheduling/Ressourcen-Management - Prozess-Reihenfolgen, unterbrechendes und unterbrechungsfreies Scheduling, verschiedene Scheduling-Konzepte und -Algorithmen, Implementierungen in BS\n- Nebenläufigkeit: Races, Mutual Exclusions - Critical sections, races, spin locks\n- Programmierungsabstraktionen: Semaphoren, Monitore\n- Speicherverwaltung - BS-Datenstrukturen, Management- und Austausch-Ansätze, virtueller Speicher, paging, caching, segmentation\n- I/O - Geräte-Management, Treiber, Interrupt-Behandlung, DMA\n- Dateisysteme - Anforderungen, Design, Implementierungen, Datenstrukturen, Verzeichnisse, virtuelle Dateisysteme\n- Einführung in die grundlegende Sicherheitsaspekte von BS\n- Virtuelle Maschinen (VM) - Grundlagen und Typisierung von VMs und Hypervisoren",
+    "descriptionEn": "- Einführung in Betriebssysteme (BS) - Notwendigkeit, Design\n- Prozesse und Threads - BS Datenstrukturen, Abstraktionen, Kernel/User mode, context switches, Interrupts\n- Interprozeß-Kommunikation - IPC, RPC, Schnittstellen, Hierarchien, Messaging-Semantiken\n- Koordination: Deadlocks - Critical sections, Deadlock-Charakterisierung, Entdeckung, Recovery und Vermeidung\n- Scheduling/Ressourcen-Management - Prozess-Reihenfolgen, unterbrechendes und unterbrechungsfreies Scheduling, verschiedene Scheduling-Konzepte und -Algorithmen, Implementierungen in BS\n- Nebenläufigkeit: Races, Mutual Exclusions - Critical sections, races, spin locks\n- Programmierungsabstraktionen: Semaphoren, Monitore\n- Speicherverwaltung - BS-Datenstrukturen, Management- und Austausch-Ansätze, virtueller Speicher, paging, caching, segmentation\n- I/O - Geräte-Management, Treiber, Interrupt-Behandlung, DMA\n- Dateisysteme - Anforderungen, Design, Implementierungen, Datenstrukturen, Verzeichnisse, virtuelle Dateisysteme\n- Einführung in die grundlegende Sicherheitsaspekte von BS\n- Virtuelle Maschinen (VM) - Grundlagen und Typisierung von VMs und Hypervisoren",
     "landscapeId": "cc715930-d95d-56a4-9beb-9837bba08442",
     "locale": "de-DE",
     "subject": "Informatik",
@@ -19,8 +19,8 @@
             "shortKey": "tud_bsc_inf_20_00_0903",
             "title": "Betriebssysteme",
             "titleEn": "Betriebssysteme",
-            "description": "Erfolgreicher Abschluss des Moduls \"Betriebssysteme\".",
-            "descriptionEn": "Successful completion of module \"Betriebssysteme\".",
+            "description": "Die lernende Person kann grundlegende Betriebssystem-Konzepte erläutern, Ansätze vergleichen und Techniken zum Aufbau von Betriebssystemen erklären.",
+            "descriptionEn": "Die lernende Person kann grundlegende Betriebssystem-Konzepte erläutern, Ansätze vergleichen und Techniken zum Aufbau von Betriebssystemen erklären.",
             "core": false,
             "weight": 5.0,
             "tags": [
@@ -38,9 +38,105 @@
                 "topicCode": "tud_bsc_inf_20_00_0903"
             },
             "requires": [],
+            "contains": [
+                "7a26baab-98ef-53aa-8bdb-e60a2a876fa7",
+                "1a338c57-e1ec-5f81-b575-51e9373b854c",
+                "cf525109-f28c-571a-a8e3-06c492a4b896"
+            ],
+            "examples": [],
+            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik",
+            "extendedData": {
+                "content": "- Einführung in Betriebssysteme (BS) - Notwendigkeit, Design\n- Prozesse und Threads - BS Datenstrukturen, Abstraktionen, Kernel/User mode, context switches, Interrupts\n- Interprozeß-Kommunikation - IPC, RPC, Schnittstellen, Hierarchien, Messaging-Semantiken\n- Koordination: Deadlocks - Critical sections, Deadlock-Charakterisierung, Entdeckung, Recovery und Vermeidung\n- Scheduling/Ressourcen-Management - Prozess-Reihenfolgen, unterbrechendes und unterbrechungsfreies Scheduling, verschiedene Scheduling-Konzepte und -Algorithmen, Implementierungen in BS\n- Nebenläufigkeit: Races, Mutual Exclusions - Critical sections, races, spin locks\n- Programmierungsabstraktionen: Semaphoren, Monitore\n- Speicherverwaltung - BS-Datenstrukturen, Management- und Austausch-Ansätze, virtueller Speicher, paging, caching, segmentation\n- I/O - Geräte-Management, Treiber, Interrupt-Behandlung, DMA\n- Dateisysteme - Anforderungen, Design, Implementierungen, Datenstrukturen, Verzeichnisse, virtuelle Dateisysteme\n- Einführung in die grundlegende Sicherheitsaspekte von BS\n- Virtuelle Maschinen (VM) - Grundlagen und Typisierung von VMs und Hypervisoren",
+                "learningOutcomes": [
+                    "Studierende erhalten nach erfolgreichem Besuch der Veranstaltung einen Überblick über grundlegende Betriebssystem-Konzepte.",
+                    "Verschiedene Ansätze einzelner BS-Konzepte können von Studierenden diskutiert und ausgewählte Ansätze hinsichtlich variierender technischer Anforderungen - insbesondere Design-Prinzipien, Sicherheit und Performanz - analysiert werden.",
+                    "Weiterhin verstehen sie Techniken zum Aufbau solcher Systeme."
+                ]
+            }
+        },
+        {
+            "id": "7a26baab-98ef-53aa-8bdb-e60a2a876fa7",
+            "shortKey": "tud_bsc_inf_20_00_0903_lo1",
+            "title": "Betriebssysteme – Lernziel 1",
+            "titleEn": "Betriebssysteme – Learning Outcome 1",
+            "description": "Die lernende Person kann grundlegende Betriebssystem-Konzepte erläutern und einen Überblick über zentrale Aufgaben eines Betriebssystems geben.",
+            "descriptionEn": "Die lernende Person kann grundlegende Betriebssystem-Konzepte erläutern und einen Überblick über zentrale Aufgaben eines Betriebssystems geben.",
+            "core": false,
+            "weight": 1.667,
+            "tags": [
+                "ects:5",
+                "module:20-00-0903",
+                "program:bsc_informatik"
+            ],
+            "dimensionTags": {
+                "framework": "tud-20000903",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Wahlpflichtbereich",
+                "area": "Wahlpflicht",
+                "topicCode": "tud_bsc_inf_20_00_0903_lo1"
+            },
+            "requires": [],
             "contains": [],
             "examples": [],
-            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
+            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
+        },
+        {
+            "id": "1a338c57-e1ec-5f81-b575-51e9373b854c",
+            "shortKey": "tud_bsc_inf_20_00_0903_lo2",
+            "title": "Betriebssysteme – Lernziel 2",
+            "titleEn": "Betriebssysteme – Learning Outcome 2",
+            "description": "Die lernende Person kann verschiedene Ansätze zu Betriebssystem-Kernkonzepten diskutieren und deren Eignung hinsichtlich Design-Prinzipien, Sicherheit und Performanz analysieren.",
+            "descriptionEn": "Die lernende Person kann verschiedene Ansätze zu Betriebssystem-Kernkonzepten diskutieren und deren Eignung hinsichtlich Design-Prinzipien, Sicherheit und Performanz analysieren.",
+            "core": false,
+            "weight": 1.667,
+            "tags": [
+                "ects:5",
+                "module:20-00-0903",
+                "program:bsc_informatik"
+            ],
+            "dimensionTags": {
+                "framework": "tud-20000903",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Wahlpflichtbereich",
+                "area": "Wahlpflicht",
+                "topicCode": "tud_bsc_inf_20_00_0903_lo2"
+            },
+            "requires": [],
+            "contains": [],
+            "examples": [],
+            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
+        },
+        {
+            "id": "cf525109-f28c-571a-a8e3-06c492a4b896",
+            "shortKey": "tud_bsc_inf_20_00_0903_lo3",
+            "title": "Betriebssysteme – Lernziel 3",
+            "titleEn": "Betriebssysteme – Learning Outcome 3",
+            "description": "Die lernende Person kann Techniken zum Aufbau von Betriebssystemen erklären.",
+            "descriptionEn": "Die lernende Person kann Techniken zum Aufbau von Betriebssystemen erklären.",
+            "core": false,
+            "weight": 1.667,
+            "tags": [
+                "ects:5",
+                "module:20-00-0903",
+                "program:bsc_informatik"
+            ],
+            "dimensionTags": {
+                "framework": "tud-20000903",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Wahlpflichtbereich",
+                "area": "Wahlpflicht",
+                "topicCode": "tud_bsc_inf_20_00_0903_lo3"
+            },
+            "requires": [],
+            "contains": [],
+            "examples": [],
+            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
         }
     ]
 }

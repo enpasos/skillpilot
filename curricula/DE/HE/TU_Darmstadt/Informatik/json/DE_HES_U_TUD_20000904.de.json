@@ -1,8 +1,8 @@
 {
     "title": "Einführung in den Compilerbau (TU Darmstadt, Modul 20-00-0904)",
     "titleEn": "Einführung in den Compilerbau (TU Darmstadt, Modul 20-00-0904)",
-    "description": "Erfolgreicher Abschluss des Moduls \"Einführung in den Compilerbau\".",
-    "descriptionEn": "Erfolgreicher Abschluss des Moduls \"Einführung in den Compilerbau\".",
+    "description": "- Aufbau von Compilern\n- Kontextfreie Grammatiken zur Beschreibungen der Syntax von Programmiersprachen\n- Lexing- und Parsingverfahren\n- Zwischendarstellungen\n- Semantische Analyse\n- Laufzeitorganisation\n- Code-Erzeugung\n- Software-Werkzeuge für den Compilerbau\n- Implementierungstechniken für Compiler",
+    "descriptionEn": "- Aufbau von Compilern\n- Kontextfreie Grammatiken zur Beschreibungen der Syntax von Programmiersprachen\n- Lexing- und Parsingverfahren\n- Zwischendarstellungen\n- Semantische Analyse\n- Laufzeitorganisation\n- Code-Erzeugung\n- Software-Werkzeuge für den Compilerbau\n- Implementierungstechniken für Compiler",
     "landscapeId": "834b8971-ef03-5a3c-aa35-9d5940ab1995",
     "locale": "de-DE",
     "subject": "Informatik",
@@ -19,8 +19,8 @@
             "shortKey": "tud_bsc_inf_20_00_0904",
             "title": "Einführung in den Compilerbau",
             "titleEn": "Einführung in den Compilerbau",
-            "description": "Erfolgreicher Abschluss des Moduls \"Einführung in den Compilerbau\".",
-            "descriptionEn": "Successful completion of module \"Einführung in den Compilerbau\".",
+            "description": "Die lernende Person kann den Aufbau von Compilern beschreiben, formale Konzepte für Syntax und Semantik anwenden und Compiler mit Werkzeugen und manuellen Techniken implementieren.",
+            "descriptionEn": "Die lernende Person kann den Aufbau von Compilern beschreiben, formale Konzepte für Syntax und Semantik anwenden und Compiler mit Werkzeugen und manuellen Techniken implementieren.",
             "core": false,
             "weight": 5.0,
             "tags": [
@@ -38,9 +38,135 @@
                 "topicCode": "tud_bsc_inf_20_00_0904"
             },
             "requires": [],
+            "contains": [
+                "4c9124cc-d909-552c-8faf-1552240e5c9c",
+                "6977d58d-ae98-5245-965b-146b177b7e40",
+                "a54cf90b-066f-5e05-908b-b4245e7ba2fa",
+                "7a9a43f1-6600-56a2-a0b3-072ceaa2db9d"
+            ],
+            "examples": [],
+            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik",
+            "extendedData": {
+                "content": "- Aufbau von Compilern\n- Kontextfreie Grammatiken zur Beschreibungen der Syntax von Programmiersprachen\n- Lexing- und Parsingverfahren\n- Zwischendarstellungen\n- Semantische Analyse\n- Laufzeitorganisation\n- Code-Erzeugung\n- Software-Werkzeuge für den Compilerbau\n- Implementierungstechniken für Compiler",
+                "learningOutcomes": [
+                    "Studierende kennen nach erfolgreichem Besuch der Veranstaltung den Aufbau von Compilern.",
+                    "Sie verstehen formale Konzepte zur Beschreibung von Syntax und Semantik von Programmiersprachen.",
+                    "Sie können diese Konzepte mit algorithmischen Verfahren kombinieren, um selbständig zu einer spezifizierten Programmiersprache einen passenden Compiler zu implementieren, der die Sprache auf die gewünschte Zielmaschine abbildet.",
+                    "Sie kennen Software-Werkzeuge zur Unterstützung des Compilerbaus und können diese zusammen mit manuellen Techniken bei der Implementierung von Compilern einsetzen."
+                ]
+            }
+        },
+        {
+            "id": "4c9124cc-d909-552c-8faf-1552240e5c9c",
+            "shortKey": "tud_bsc_inf_20_00_0904_lo1",
+            "title": "Einführung in den Compilerbau – Lernziel 1",
+            "titleEn": "Einführung in den Compilerbau – Learning Outcome 1",
+            "description": "Die lernende Person kann den Aufbau von Compilern beschreiben.",
+            "descriptionEn": "Die lernende Person kann den Aufbau von Compilern beschreiben.",
+            "core": false,
+            "weight": 1.25,
+            "tags": [
+                "ects:5",
+                "module:20-00-0904",
+                "program:bsc_informatik"
+            ],
+            "dimensionTags": {
+                "framework": "tud-20000904",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Wahlpflichtbereich",
+                "area": "Wahlpflicht",
+                "topicCode": "tud_bsc_inf_20_00_0904_lo1"
+            },
+            "requires": [],
             "contains": [],
             "examples": [],
-            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
+            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
+        },
+        {
+            "id": "6977d58d-ae98-5245-965b-146b177b7e40",
+            "shortKey": "tud_bsc_inf_20_00_0904_lo2",
+            "title": "Einführung in den Compilerbau – Lernziel 2",
+            "titleEn": "Einführung in den Compilerbau – Learning Outcome 2",
+            "description": "Die lernende Person kann formale Konzepte zur Beschreibung von Syntax und Semantik von Programmiersprachen erklären.",
+            "descriptionEn": "Die lernende Person kann formale Konzepte zur Beschreibung von Syntax und Semantik von Programmiersprachen erklären.",
+            "core": false,
+            "weight": 1.25,
+            "tags": [
+                "ects:5",
+                "module:20-00-0904",
+                "program:bsc_informatik"
+            ],
+            "dimensionTags": {
+                "framework": "tud-20000904",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Wahlpflichtbereich",
+                "area": "Wahlpflicht",
+                "topicCode": "tud_bsc_inf_20_00_0904_lo2"
+            },
+            "requires": [],
+            "contains": [],
+            "examples": [],
+            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
+        },
+        {
+            "id": "a54cf90b-066f-5e05-908b-b4245e7ba2fa",
+            "shortKey": "tud_bsc_inf_20_00_0904_lo3",
+            "title": "Einführung in den Compilerbau – Lernziel 3",
+            "titleEn": "Einführung in den Compilerbau – Learning Outcome 3",
+            "description": "Die lernende Person kann diese Konzepte mit algorithmischen Verfahren kombinieren, um einen Compiler für eine spezifizierte Programmiersprache zu implementieren, der auf die Zielmaschine abbildet.",
+            "descriptionEn": "Die lernende Person kann diese Konzepte mit algorithmischen Verfahren kombinieren, um einen Compiler für eine spezifizierte Programmiersprache zu implementieren, der auf die Zielmaschine abbildet.",
+            "core": false,
+            "weight": 1.25,
+            "tags": [
+                "ects:5",
+                "module:20-00-0904",
+                "program:bsc_informatik"
+            ],
+            "dimensionTags": {
+                "framework": "tud-20000904",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Wahlpflichtbereich",
+                "area": "Wahlpflicht",
+                "topicCode": "tud_bsc_inf_20_00_0904_lo3"
+            },
+            "requires": [],
+            "contains": [],
+            "examples": [],
+            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
+        },
+        {
+            "id": "7a9a43f1-6600-56a2-a0b3-072ceaa2db9d",
+            "shortKey": "tud_bsc_inf_20_00_0904_lo4",
+            "title": "Einführung in den Compilerbau – Lernziel 4",
+            "titleEn": "Einführung in den Compilerbau – Learning Outcome 4",
+            "description": "Die lernende Person kann Werkzeuge zur Unterstützung des Compilerbaus einsetzen und manuelle Techniken bei der Implementierung von Compilern nutzen.",
+            "descriptionEn": "Die lernende Person kann Werkzeuge zur Unterstützung des Compilerbaus einsetzen und manuelle Techniken bei der Implementierung von Compilern nutzen.",
+            "core": false,
+            "weight": 1.25,
+            "tags": [
+                "ects:5",
+                "module:20-00-0904",
+                "program:bsc_informatik"
+            ],
+            "dimensionTags": {
+                "framework": "tud-20000904",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Wahlpflichtbereich",
+                "area": "Wahlpflicht",
+                "topicCode": "tud_bsc_inf_20_00_0904_lo4"
+            },
+            "requires": [],
+            "contains": [],
+            "examples": [],
+            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
         }
     ]
 }

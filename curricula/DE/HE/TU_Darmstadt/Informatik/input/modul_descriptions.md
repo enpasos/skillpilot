@@ -402,3 +402,209 @@ Nach erfolgreichem Abschluss des Teamprojektes Softwareentwicklung sind die Stud
 - Systematische Durchführung grundlegender, dem Projekt angemessener, Qualitätssicherung;  
 - Effektiver Einsatz grundlegender Softwarewerkzeuge (z.B. Testwerkzeuge, Versionskontrollsysteme und Projektplanungswerkzeuge);  
 - Projektpräsentation für Außenstehende im Rahmen eines kurzen Vortrags sowie Darlegung des Projektstands.
+
+
+
+## B. Wahlpflichtbereich - Modulbeschreibungen B.Sc. Informatik TU Darmstadt
+
+Im Wahlpflichtbereich müssen Studierende Module im Umfang von 24 CP wählen, um eine Vertiefung in ausgewählten informatischen Themen zu erreichen. Die folgende Zusammenfassung basiert auf dem Modulhandbuch (Stand: 30.09.2022, PO 2023), das nach Überprüfung der aktuellen TU Darmstadt-Website (Stand: 2025) weiterhin die gültige Version darstellt – es wurden keine neueren Updates gefunden. Der Fokus liegt auf dem Lerninhalt (Abschnitt 2) und den vermittelten Fähigkeiten (Qualifikationsziele / Lernergebnisse, Abschnitt 3). Die Sprache der Module ist Deutsch, und sie werden in der Regel in jedem zweiten Semester angeboten.
+
+### Betriebssysteme (20-00-0903, 5 CP)
+
+#### Inhalt
+- Einführung in Betriebssysteme (BS) - Notwendigkeit, Design
+- Prozesse und Threads - BS Datenstrukturen, Abstraktionen, Kernel/User mode, context switches, Interrupts
+- Interprozeß-Kommunikation - IPC, RPC, Schnittstellen, Hierarchien, Messaging-Semantiken
+- Koordination: Deadlocks - Critical sections, Deadlock-Charakterisierung, Entdeckung, Recovery und Vermeidung
+- Scheduling/Ressourcen-Management - Prozess-Reihenfolgen, unterbrechendes und unterbrechungsfreies Scheduling, verschiedene Scheduling-Konzepte und -Algorithmen, Implementierungen in BS
+- Nebenläufigkeit: Races, Mutual Exclusions - Critical sections, races, spin locks
+- Programmierungsabstraktionen: Semaphoren, Monitore
+- Speicherverwaltung - BS-Datenstrukturen, Management- und Austausch-Ansätze, virtueller Speicher, paging, caching, segmentation
+- I/O - Geräte-Management, Treiber, Interrupt-Behandlung, DMA
+- Dateisysteme - Anforderungen, Design, Implementierungen, Datenstrukturen, Verzeichnisse, virtuelle Dateisysteme
+- Einführung in die grundlegende Sicherheitsaspekte von BS
+- Virtuelle Maschinen (VM) - Grundlagen und Typisierung von VMs und Hypervisoren
+
+#### Vermittelte Fähigkeiten
+Studierende erhalten nach erfolgreichem Besuch der Veranstaltung einen Überblick über grundlegende Betriebssystem-Konzepte. Verschiedene Ansätze einzelner BS-Konzepte können von Studierenden diskutiert und ausgewählte Ansätze hinsichtlich variierender technischer Anforderungen - insbesondere Design-Prinzipien, Sicherheit und Performanz - analysiert werden. Weiterhin verstehen sie Techniken zum Aufbau solcher Systeme.
+
+### Einführung in den Compilerbau (20-00-0904, 5 CP)
+
+#### Inhalt
+- Aufbau von Compilern
+- Kontextfreie Grammatiken zur Beschreibungen der Syntax von Programmiersprachen
+- Lexing- und Parsingverfahren
+- Zwischendarstellungen
+- Semantische Analyse
+- Laufzeitorganisation
+- Code-Erzeugung
+- Software-Werkzeuge für den Compilerbau
+- Implementierungstechniken für Compiler
+
+#### Vermittelte Fähigkeiten
+Studierende kennen nach erfolgreichem Besuch der Veranstaltung den Aufbau von Compilern. Sie verstehen formale Konzepte zur Beschreibung von Syntax und Semantik von Programmiersprachen. Sie können diese Konzepte mit algorithmischen Verfahren kombinieren, um selbständig zu einer spezifizierten Programmiersprache einen passenden Compiler zu implementieren, der die Sprache auf die gewünschte Zielmaschine abbildet. Sie kennen Software-Werkzeuge zur Unterstützung des Compilerbaus und können diese zusammen mit manuellen Techniken bei der Implementierung von Compilern einsetzen.
+
+### Scientific Computing (20-00-1156, 5 CP)
+
+#### Inhalt
+- Grundlagen der wissenschaftlichen Modellierung und „The Scientific Method“
+- Modellbildung und Systembeschreibung am Beispiel mechanischer Systeme
+- Problemspezifikation für die Simulation komplexer Modelle
+- Modellbildung und -identifikation am Beispiel mechanischer Systeme
+- Modellanalyse statischer Systeme durch numerische Verfahren zur Lösung linearer und nichtlinearer Gleichungssysteme
+- Modellanalyse und Simulation dynamischer Modellen durch Anfangswertprobleme mit gewöhnlichen Differentialgleichungen
+- Implementierung von Modellen und Simulationen an Beispielen z.B. aus der Robotik und anderen Bereichen
+- Validierung von Modellen und Simulationen anhand von Messdaten
+- Anwendungen in der Simulation und Steuerung von Robotern sowie der physikalisch basierten Animation und Computerspielen
+
+#### Vermittelte Fähigkeiten
+Studierende kennen nach erfolgreichem Besuch der Veranstaltung die grundlegenden Schritte zur Entwicklung von ersten Modellen und Simulationen und sind in der Lage, erste Simulationsstudien z.B. in der Robotik durchzuführen. Sie kennen die wesentlichen Schritte zum Aufbau solcher Simulationssysteme (Problemspezifikation, Modellbildung und Parameteridentifikation, Modellanalyse, Implementierung und Validierung) und können mit diesen erste Simulationen konstruieren, die gegebene Anforderungen erfüllen. Hierbei wird die Fähigkeit erlernt für grundlegende Aufgabenstellungen in der Simulation geeignete numerische Verfahren auszuwählen und anzuwenden.
+
+### Formale Methoden im Softwareentwurf (20-00-0901, 5 CP)
+
+#### Inhalt
+- Modellierung nebenläufiger Software mit der Sprache ProMeLa
+- Formalisierung von Sicherheits- und Lebendigkeitseigenschaften mit temporaler Aussagenlogik
+- Theoretische Grundlagen von Modellprüfungsverfahren
+- Verifikation von ProMeLa Programmen mittels des Modellprüfers SPIN
+- Syntax, Semantik und Sequenzenkalkül für typisierte Logik erster Stufe
+- Grundlagen der kontraktbasierten Softwarespezifikationssprache JML
+- Dynamische Logik als eine Programmlogik erster Stufe
+- Formale Programmverifikation durch symbolische Ausführung und Invariantenschließen
+- Werkzeugunterstützte Verifikation von Java-Programen mit der KeY System
+
+#### Vermittelte Fähigkeiten
+Nach erfolgreichem Besuch der Veranstaltung haben die Studierenden praktisch anwendbare Grundkenntnisse in den beiden wichtigsten Verfahren zur formalen Spezifikation und Verifikation von Software:  
+1. Modellprüfung gegen in temporaler Aussagenlogik spezifierte Eigenschaften  
+2. Deduktive Verifikation von Methodenkontrakten
+
+### Visual Computing (20-00-0014, 5 CP)
+
+#### Inhalt
+- Grundlagen der Wahrnehmung
+- Grundlagen der Fouriertransformation
+- Bilder, Bildfilterung, -kompression & -verarbeitung
+- Grundlagen der Objekterkennung
+- Geometrische Transformationen
+- Grundlagen der 3D-Rekonstruktion
+- Oberflächen- und Szenenrepräsentationen
+- Renderingverfahren
+- Farbe: Wahrnehmung, Räume & Modelle
+- Grundlagen der n-dimensionalen Informationsvisualisierung
+- Benutzeroberflächen & Multimedia Retrieval
+
+#### Vermittelte Fähigkeiten
+Nach erfolgreichem Besuch der Veranstaltung beschreiben Studierende die Grundkonzepte sowie grundlegende Modelle und Methoden des Visual Computings. Sie erklären wichtige Verfahren zur Bildsynthese (Computergraphik & Visualisierung) sowie zur Bildanalyse (Computer Vision) und können damit einfache Bildsynthese- und -analyseaufgaben lösen.
+
+
+## C. Wahlbereich - Modulbeschreibungen B.Sc. Informatik TU Darmstadt
+
+Im Wahlbereich C müssen Studierende Module im Umfang von 42 CP wählen, um Vertiefungen in fachlichen Themen, studienbegleitenden Leistungen (z. B. Praktika, Seminare) und die Bachelorarbeit abzudecken. Der Bereich ist unterteilt in Fachprüfungen (Vertiefung in Themenbereichen) und studienbegleitende Leistungen. Die folgende Zusammenfassung basiert auf dem Modulhandbuch (Stand: 30.09.2022, PO 2023), das nach Überprüfung der aktuellen TU Darmstadt-Website (Stand: 2025) weiterhin die gültige Version darstellt. Der Fokus liegt auf dem Lerninhalt (Abschnitt 2) und den vermittelten Fähigkeiten (Qualifikationsziele / Lernergebnisse, Abschnitt 3). Die Sprache der Module ist meist Deutsch und/oder Englisch, und sie werden in der Regel in jedem zweiten Semester angeboten.
+
+Da der Wahlbereich C Hunderte von Modulen umfasst, fahre ich schrittweise vor. Dieser Teil deckt den Anfang des Unterbereichs "Künstliche Intelligenz" ab (basierend auf extrahierten Seiten 59-70 des Modulhandbuchs). Weitere Unterbereiche (z. B. Cybersicherheit, Praktika) folgen in nachfolgenden Schritten.
+
+### Wahlbereich Fachprüfungen
+
+#### Künstliche Intelligenz
+
+##### Data Mining und Maschinelles Lernen (20-00-0052, 6 CP)
+
+###### Inhalt
+Durch die rasante Entwicklung der Informationstechnologie sind immer größere Datenmengen verfügbar. Diese enthalten oft implizites Wissen, das, wenn es bekannt wäre, große wirtschaftliche oder wissenschaftliche Bedeutung hätte. Data Mining ist ein Forschungsgebiet, das sich mit der Suche nach potentiell nützlichem Wissen in großen Datenmengen beschäftigt, und Maschinelles Lernverfahren gehören zu den Schlüsseltechnologien innerhalb dieses Gebiets.  
+Die Vorlesung bietet eine Einführung in das Gebiet des Maschinellen Lernens unter dem besonderen Aspekt des Data Minings. Es werden Verfahren aus verschiedenen Paradigmen des Maschinellen Lernens mit exemplarischen Anwendungen vorgestellt. Um das Wissen zu operationalisieren, werden in den Übungen praktisch-e Erfahrungen mit Lernalgorithmen gesammelt.  
+- Einführung (Grundbegriffe, Lernprobleme, Konzepte, Beispiele, Repräsentation)  
+- Regel-Lernen  
+  - Lernen einzelner Regeln (Generalisierung und Spezialisierung, Strukturierte Hypothesenräume, Version Spaces)  
+  - Lernen von Regel-Mengen (Covering Strategie, Evaluierungsmaße für Regeln, Pruning, Mehr-Klassenprobleme)  
+- Evaluierung und kosten-sensitives Lernen (Accuracy, X-Val, ROC-Kurven, Cost-Sensitive Learning)  
+- Instanzenbasiertes Lernen (kNN, IBL, NEAR, RISE)  
+- Entscheidungsbaum-Lernen (ID3, C4.5, etc.)  
+- Ensemble-Methoden (Bias/Variance, Bagging, Randomization, Boosting, Stacking, ECOCs)  
+- Pre-Processing (Feature Subset Selection, Diskretisierung, Sampling, Data Cleaning)  
+- Clustering und Lernen von Assoziationsregeln (Apriori)
+
+###### Vermittelte Fähigkeiten
+Nach der erfolgreichen Absolvierung dieser Lehrveranstaltung sind die Studierenden in der Lage:  
+- grundlegende Techniken des Data Mining und Maschinellen Lernens zu verstehen und erklären;  
+- praktische Data Mining Systeme selbständig einzusetzen und deren Stärken und Schwächen zu verstehen;  
+- neue Entwicklungen auf diesem Gebiet kritisch zu beurteilen.
+
+##### Computer Vision (20-00-0157, 6 CP)
+
+###### Inhalt
+- Grundlagen der Bildformierung  
+- Lineare und (einfache) nichtlineare Bildfilterung  
+- Grundlagen der Mehransichten-Geometrie  
+- Kamerakalibrierung & -posenschätzung  
+- Grundlagen der 3D-Rekonstruktion  
+- Grundlagen der Bewegungsschätzung aus Videos  
+- Template- und Unterraum-Ansätze zur Objekterkennung  
+- Objektklassifikation mit Bag of Words  
+- Objektdetektion  
+- Grundlagen der Bildsegmentierung
+
+###### Vermittelte Fähigkeiten
+Studierende beherrschen nach erfolgreichem Besuch der Veranstaltung die Grundlagen der Computer Vision. Sie verstehen grundlegende Techniken der Bild- und Videoanalyse, und können deren Annahmen und mathematische Formulierungen benennen, sowie die sich ergebenden Algorithmen beschreiben. Sie sind in der Lage diese Techniken praktisch so umzusetzen, dass sie grundlegende Bildanalyseaufgaben an Hand realistischer Bilddaten lösen können.
+
+##### Statistisches Maschinelles Lernen (20-00-0358, 6 CP)
+
+###### Inhalt
+- Statistische Methodik für das Maschinelle Lernen  
+- Auffrischung zu Statistik, Optimierung und Linearer Algebra  
+- Bayes’sche Entscheidungstheorie  
+- Wahrscheinlichkeitsdichtenschätzung  
+- Nichtparametrische Modelle  
+- Mixtur Modelle und der EM-Algorithmus  
+- Lineare Modele zur Klassifikation und Regression  
+- Statistische Lerntheorie  
+- Kernel Methoden zur Klassification und Regression
+
+###### Vermittelte Fähigkeiten
+Die Lehrveranstaltung ist eine systematische Einführung in die Grundlagen und Methodik des statistischen maschinellen Lernens. Nach erfolgreichem Abschluss der Lehrveranstaltung verstehen Studierende die wichtigsten Methoden und Ansätze des Statistischen Maschinellen Lernens. Sie können maschinelle Lernverfahren anwenden, um eine Vielzahl neuer Probleme zu lösen.
+
+##### Computer Vision II (20-00-0401, 6 CP)
+
+###### Inhalt
+- Computer Vision als (probabilistische) Inferenz  
+- Robuste Schätzung und Modellierung  
+- Grundlagen der Bayes’schen Netze und Markov’schen Zufallsfelder  
+- Grundlegende Inferenz- und Lernverfahren der Computer Vision  
+- Bildrestaurierung  
+- Stereo  
+- Optischer Fluß  
+- Bayes’sches Tracking von (artikulierten) Objekten  
+- Semantische Segmentierung  
+- Aktuelle Themen der Forschung
+
+###### Vermittelte Fähigkeiten
+Studierende haben nach erfolgreichem Besuch der Veranstaltung ein vertieftes Verständnis der Computer Vision. Sie formulieren Fragestellungen der Bild- und Videoanalyse als Inferenzprobleme und berücksichtigen dabei Herausforderungen reeller Anwendungen, z.B. im Sinne der Robustheit. Sie lösen das Inferenzproblem mittels diskreter oder kontinuierlicher Inferenzalgorithmen, und wenden diese auf realistische Bilddaten an. Sie evaluieren die anwendungsspezifischen Ergebnisse quantitativ.
+
+##### Natural Language Processing and the Web (20-00-0433, 6 CP)
+
+###### Inhalt
+Das Web beinhaltet mehr als 10 Milliarden indexierbare Webseiten, die mittels Stichwortsuche zugänglich sind. Die Vorlesung behandelt Methoden der automatischen Sprachverarbeitung bzw. des Natural Language Processing (NLP) zur Verarbeitung großer Mengen unstrukturierter Texte im Web und zur Analyse von Online-Inhalten als wertvolle Ressource für andere sprachtechnologische Anwendungen im Web.  
+Zentrale Inhalte:  
+- Verarbeitung unstrukturierter Texte im Web  
+  - NLP-Grundlagen: Tokenisierung, Wortartenerkennung, Stemming, Lemmatisierung, Chunking  
+  - UIMA: Grundlagen und Anwendungen  
+  - Web-Inhalte und ihre Charakteristika, u.a. verschiedene Genres, z.B. persönliche Seiten, Nachrichtenportale, Blogs, Foren, Wikis  
+  - Das Web als Korpus, insb. innovative Verwendung des Webs als sehr großes, verteiltes, verlinktes, wachsendes und multilinguales Korpus  
+- NLP-Anwendungen für das Web  
+  - Einführung in das Information Retrieval  
+  - Web-Suche und natürlichsprachliche Suchschnittstellen  
+  - Web-basierte Beantwortung von natürlichsprachlichen Fragen  
+  - Web-Mining im Web 2.0, z.B. Wikipedia, Wiktionary  
+  - Qualitätsbewertung von Web-Inhalten  
+  - Multilingualität  
+  - Internet-of-Services: Service Retrieval  
+  - Sentimentanalyse und Community Mining  
+  - Paraphrasen, Synonyme, semantische Verwandtschaft und das Web
+
+###### Vermittelte Fähigkeiten
+Nachdem Studierende die Veranstaltung besucht haben, können sie:  
+- Methoden und Ansätze zur Verarbeitung unstrukturierter Texte verstehen und differenzieren;  
+- die Arbeitsweise von Web-Suchmaschinen nachvollziehen und erläutern;  
+- exemplarische Anwendungen der Sprachverarbeitung im Web selbständig aufbauen und analysieren;  
+- das Potenzial von Web-Inhalten für die Verbesserung von sprachtechnologischen Anwendungen analysieren und einschätzen.
+
+(Fortsetzung des Unterbereichs "Künstliche Intelligenz" und weiterer Bereiche in den nächsten Schritten, da der Handbuch-Abschnitt umfangreich ist.)
