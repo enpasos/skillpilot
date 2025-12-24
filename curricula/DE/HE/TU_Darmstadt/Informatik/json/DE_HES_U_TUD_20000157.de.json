@@ -1,8 +1,8 @@
 {
     "title": "Computer Vision (TU Darmstadt, Modul 20-00-0157)",
     "titleEn": "Computer Vision (TU Darmstadt, Modul 20-00-0157)",
-    "description": "Erfolgreicher Abschluss des Moduls \"Computer Vision\".",
-    "descriptionEn": "Erfolgreicher Abschluss des Moduls \"Computer Vision\".",
+    "description": "- Grundlagen der Bildformierung\n- Lineare und (einfache) nichtlineare Bildfilterung\n- Grundlagen der Mehransichten-Geometrie\n- Kamerakalibrierung & -posenschätzung\n- Grundlagen der 3D-Rekonstruktion\n- Grundlagen der Bewegungsschätzung aus Videos\n- Template- und Unterraum-Ansätze zur Objekterkennung\n- Objektklassifikation mit Bag of Words\n- Objektdetektion\n- Grundlagen der Bildsegmentierung",
+    "descriptionEn": "- Grundlagen der Bildformierung\n- Lineare und (einfache) nichtlineare Bildfilterung\n- Grundlagen der Mehransichten-Geometrie\n- Kamerakalibrierung & -posenschätzung\n- Grundlagen der 3D-Rekonstruktion\n- Grundlagen der Bewegungsschätzung aus Videos\n- Template- und Unterraum-Ansätze zur Objekterkennung\n- Objektklassifikation mit Bag of Words\n- Objektdetektion\n- Grundlagen der Bildsegmentierung",
     "landscapeId": "88085f0d-08ec-527e-a372-c18c5171b11d",
     "locale": "de-DE",
     "subject": "Informatik",
@@ -19,8 +19,8 @@
             "shortKey": "tud_bsc_inf_20_00_0157",
             "title": "Computer Vision",
             "titleEn": "Computer Vision",
-            "description": "Erfolgreicher Abschluss des Moduls \"Computer Vision\".",
-            "descriptionEn": "Successful completion of module \"Computer Vision\".",
+            "description": "Die lernende Person kann Grundlagen der Computer Vision erläutern, Bild- und Videoanalyseverfahren erklären und grundlegende Bildanalyseaufgaben praktisch umsetzen.",
+            "descriptionEn": "Die lernende Person kann Grundlagen der Computer Vision erläutern, Bild- und Videoanalyseverfahren erklären und grundlegende Bildanalyseaufgaben praktisch umsetzen.",
             "core": false,
             "weight": 6.0,
             "tags": [
@@ -38,9 +38,105 @@
                 "topicCode": "tud_bsc_inf_20_00_0157"
             },
             "requires": [],
+            "contains": [
+                "fac6997e-7e02-5858-bb9c-7e38f7e550ef",
+                "44d70a46-3c27-5bbd-9eaa-da785b716b3d",
+                "bc249df6-db2e-524a-8bcb-bf2c3f9e5cf4"
+            ],
+            "examples": [],
+            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md",
+            "extendedData": {
+                "content": "- Grundlagen der Bildformierung\n- Lineare und (einfache) nichtlineare Bildfilterung\n- Grundlagen der Mehransichten-Geometrie\n- Kamerakalibrierung & -posenschätzung\n- Grundlagen der 3D-Rekonstruktion\n- Grundlagen der Bewegungsschätzung aus Videos\n- Template- und Unterraum-Ansätze zur Objekterkennung\n- Objektklassifikation mit Bag of Words\n- Objektdetektion\n- Grundlagen der Bildsegmentierung",
+                "learningOutcomes": [
+                    "Studierende beherrschen nach erfolgreichem Besuch der Veranstaltung die Grundlagen der Computer Vision.",
+                    "Sie verstehen grundlegende Techniken der Bild- und Videoanalyse, und können deren Annahmen und mathematische Formulierungen benennen, sowie die sich ergebenden Algorithmen beschreiben.",
+                    "Sie sind in der Lage diese Techniken praktisch so umzusetzen, dass sie grundlegende Bildanalyseaufgaben an Hand realistischer Bilddaten lösen können."
+                ]
+            }
+        },
+        {
+            "id": "fac6997e-7e02-5858-bb9c-7e38f7e550ef",
+            "shortKey": "tud_bsc_inf_20_00_0157_lo1",
+            "title": "Computer Vision – Lernziel 1",
+            "titleEn": "Computer Vision – Lernziel 1",
+            "description": "Die lernende Person kann die Grundlagen der Computer Vision erläutern.",
+            "descriptionEn": "Die lernende Person kann die Grundlagen der Computer Vision erläutern.",
+            "core": false,
+            "weight": 2.0,
+            "tags": [
+                "ects:6",
+                "module:20-00-0157",
+                "program:bsc_informatik"
+            ],
+            "dimensionTags": {
+                "framework": "tud-20000157",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Wahlbereich",
+                "area": "Künstliche Intelligenz",
+                "topicCode": "tud_bsc_inf_20_00_0157_lo1"
+            },
+            "requires": [],
             "contains": [],
             "examples": [],
-            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
+            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
+        },
+        {
+            "id": "44d70a46-3c27-5bbd-9eaa-da785b716b3d",
+            "shortKey": "tud_bsc_inf_20_00_0157_lo2",
+            "title": "Computer Vision – Lernziel 2",
+            "titleEn": "Computer Vision – Lernziel 2",
+            "description": "Die lernende Person kann grundlegende Techniken der Bild- und Videoanalyse erklären, einschließlich ihrer Annahmen, mathematischen Formulierungen und Algorithmen.",
+            "descriptionEn": "Die lernende Person kann grundlegende Techniken der Bild- und Videoanalyse erklären, einschließlich ihrer Annahmen, mathematischen Formulierungen und Algorithmen.",
+            "core": false,
+            "weight": 2.0,
+            "tags": [
+                "ects:6",
+                "module:20-00-0157",
+                "program:bsc_informatik"
+            ],
+            "dimensionTags": {
+                "framework": "tud-20000157",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Wahlbereich",
+                "area": "Künstliche Intelligenz",
+                "topicCode": "tud_bsc_inf_20_00_0157_lo2"
+            },
+            "requires": [],
+            "contains": [],
+            "examples": [],
+            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
+        },
+        {
+            "id": "bc249df6-db2e-524a-8bcb-bf2c3f9e5cf4",
+            "shortKey": "tud_bsc_inf_20_00_0157_lo3",
+            "title": "Computer Vision – Lernziel 3",
+            "titleEn": "Computer Vision – Lernziel 3",
+            "description": "Die lernende Person kann grundlegende Bildanalyseaufgaben mit realistischen Bilddaten praktisch umsetzen.",
+            "descriptionEn": "Die lernende Person kann grundlegende Bildanalyseaufgaben mit realistischen Bilddaten praktisch umsetzen.",
+            "core": false,
+            "weight": 2.0,
+            "tags": [
+                "ects:6",
+                "module:20-00-0157",
+                "program:bsc_informatik"
+            ],
+            "dimensionTags": {
+                "framework": "tud-20000157",
+                "demandLevel": "AB2",
+                "processCompetencies": [],
+                "guidingIdeas": [],
+                "phase": "Wahlbereich",
+                "area": "Künstliche Intelligenz",
+                "topicCode": "tud_bsc_inf_20_00_0157_lo3"
+            },
+            "requires": [],
+            "contains": [],
+            "examples": [],
+            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
         }
     ]
 }
