@@ -53,45 +53,59 @@ def ingest_vocab(level, language, source_csv, output_json, deck_title):
                     lesson_counters[l_num] = 0
                 lesson_counters[l_num] += 1
                 
-                # ID format: {lang_code}_{level}_l{lesson}_c{count} to be unique globally implies we should include language
-                # Previous ID was: f"{level.lower()}_l{l_num}_c{lesson_counters[l_num]}" (e.g. c2_l1_c1)
-                # This might collide if we mix languages in the same app context without deck separation.
-                # But decks are separate files. However, globally unique IDs are better.
-                # Let's add lang prefix: fr_a1_l1_c1
-                
+                # ID format: {lang_code}_{level}_l{lesson}_c{count}
                 lang_code = language.lower()[:2] # en, fr
-                card_id = f"{lang_code}_{level.lower()}_l{l_num}_c{lesson_counters[l_num]}"
                 
-                # Tags
-                tags = [f"lesson_{l_num}", level.lower()]
+                # Selector Tags (for separate goal filtering)
+                tag_fwd = f"select:l{l_num}_fwd"
+                tag_rev = f"select:l{l_num}_rev"
+                
+                # Common Tags
+                common_tags = [f"lesson_{l_num}", level.lower()]
                 if family_raw:
                     family_slug = slugify(family_raw)
                     if family_slug:
-                        tags.append(f"family:{family_slug}")
+                        common_tags.append(f"family:{family_slug}")
                         families.add(family_slug)
                     else:
                         missing_family += 1
                 else:
                     missing_family += 1
-
+                
                 if tags_raw:
-                    tags.extend([t.strip() for t in tags_raw.split(',') if t.strip()])
+                    common_tags.extend([t.strip() for t in tags_raw.split(',') if t.strip()])
                 
                 # Category
                 category = row.get('Category', '').strip()
                 if not category:
                     category = f"Lesson {l_num}"
                 
-                card = {
-                    "id": card_id,
+                # 1. Forward Card (Foreign -> Native)
+                # No suffix for ID to maintain compatibility with existing progress if mapped
+                id_fwd = f"{lang_code}_{level.lower()}_l{l_num}_c{lesson_counters[l_num]}"
+                
+                card_fwd = {
+                    "id": id_fwd,
                     "front": front,
                     "back": back,
                     "category": category,
-                    "tags": tags
+                    "tags": common_tags + [tag_fwd]
                 }
-                if family_raw:
-                    card["family"] = family_raw
-                cards.append(card)
+                if family_raw: card_fwd["family"] = family_raw
+                cards.append(card_fwd)
+                
+                # 2. Reverse Card (Native -> Foreign)
+                id_rev = f"{id_fwd}_rev"
+                
+                card_rev = {
+                    "id": id_rev,
+                    "front": back, # Swap
+                    "back": front,
+                    "category": f"{category} (Rev)",
+                    "tags": common_tags + [tag_rev, "reverse"]
+                }
+                if family_raw: card_rev["family"] = family_raw
+                cards.append(card_rev)
                 
     except FileNotFoundError:
         print(f"Error: Source file {source_csv} not found.")
@@ -107,7 +121,7 @@ def ingest_vocab(level, language, source_csv, output_json, deck_title):
     with open(output_json, 'w', encoding='utf-8') as f:
         json.dump(deck, f, indent=4, ensure_ascii=False)
     
-    print(f"Successfully generated {output_json} with {len(cards)} cards.")
+    print(f"Successfully generated {output_json} with {len(cards)} cards (Original+Reverse).")
     if families:
         print(f"Unique families: {len(families)}")
     if missing_family:
@@ -131,19 +145,6 @@ if __name__ == "__main__":
         
         abs_src = os.path.abspath(args.src)
         dir_name = os.path.dirname(abs_src)
-        
-        # Traverse up until we find 'input', then go to sibling 'json'
-        # Simple heuristic: go up 2 levels from vocab_sources to 'input', then 1 more to curriculum root
-        
-        # Example: X/input/vocab_sources/ -> X/input/ -> X/
-        
-        potential_root = os.path.dirname(os.path.dirname(dir_name))
-        if os.path.basename(os.path.dirname(dir_name)) == 'input':
-             potential_root = os.path.dirname(os.path.dirname(dir_name))
-        
-        # Actually proper way:
-        # If we are in `vocab_sources`, parent is `input`, parent is `Language_From_German`.
-        # We want `Language_From_German/json`.
         
         if 'vocab_sources' in dir_name:
              # Assume standard structure

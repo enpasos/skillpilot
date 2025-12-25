@@ -556,7 +556,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   }}
                   skillPilotId={skillpilotId}
                   titleOverride={currentGoal.title}
-                  filterTags={currentGoal.tags?.filter(t => !t.startsWith('srs-deck') && !['structure', 'root', 'module', 'lesson', 'vocabulary', 'grammar', 'practice', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'].includes(t))}
+                  filterTags={(() => {
+                    const tags = currentGoal.tags || []
+                    const selectTags = tags.filter(t => t.startsWith('select:'))
+                    if (selectTags.length > 0) return selectTags
+                    return tags.filter(t => !t.startsWith('srs-deck') && !['structure', 'root', 'module', 'lesson', 'vocabulary', 'grammar', 'practice', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'].includes(t))
+                  })()}
                 />
               </div>
             ) : (
