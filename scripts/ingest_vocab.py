@@ -2,11 +2,23 @@ import csv
 import json
 import os
 import argparse
+import re
+import unicodedata
+
+
+def slugify(value):
+    normalized = unicodedata.normalize('NFKD', value)
+    ascii_text = normalized.encode('ascii', 'ignore').decode('ascii')
+    ascii_text = ascii_text.lower()
+    ascii_text = re.sub(r'[^a-z0-9]+', '_', ascii_text)
+    return ascii_text.strip('_')
 
 def ingest_vocab(level, language, source_csv, output_json, deck_title):
     deck_id = f"cefr_{level.lower()}_{language.lower()}_vocabulary"
     
     cards = []
+    families = set()
+    missing_family = 0
     
     try:
         with open(source_csv, 'r', encoding='utf-8') as f:
@@ -20,6 +32,8 @@ def ingest_vocab(level, language, source_csv, output_json, deck_title):
                 back = row.get('Back', '').strip()
                 lesson_id = row.get('LessonID', '').strip() # Expecting "1", "2", ... "12"
                 tags_raw = row.get('TopicTags', '').strip()
+                family_raw = row.get('Family') or row.get('WordFamily') or ''
+                family_raw = family_raw.strip()
                 
                 if not front or not back or not lesson_id:
                     continue
@@ -50,11 +64,23 @@ def ingest_vocab(level, language, source_csv, output_json, deck_title):
                 
                 # Tags
                 tags = [f"lesson_{l_num}", level.lower()]
+                if family_raw:
+                    family_slug = slugify(family_raw)
+                    if family_slug:
+                        tags.append(f"family:{family_slug}")
+                        families.add(family_slug)
+                    else:
+                        missing_family += 1
+                else:
+                    missing_family += 1
+
                 if tags_raw:
                     tags.extend([t.strip() for t in tags_raw.split(',') if t.strip()])
                 
                 # Category
-                category = f"Lesson {l_num}"
+                category = row.get('Category', '').strip()
+                if not category:
+                    category = f"Lesson {l_num}"
                 
                 card = {
                     "id": card_id,
@@ -63,6 +89,8 @@ def ingest_vocab(level, language, source_csv, output_json, deck_title):
                     "category": category,
                     "tags": tags
                 }
+                if family_raw:
+                    card["family"] = family_raw
                 cards.append(card)
                 
     except FileNotFoundError:
@@ -80,6 +108,10 @@ def ingest_vocab(level, language, source_csv, output_json, deck_title):
         json.dump(deck, f, indent=4, ensure_ascii=False)
     
     print(f"Successfully generated {output_json} with {len(cards)} cards.")
+    if families:
+        print(f"Unique families: {len(families)}")
+    if missing_family:
+        print(f"Cards without family tag: {missing_family}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Ingest CSV vocabulary to JSON deck")
