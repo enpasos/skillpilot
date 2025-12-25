@@ -22,16 +22,18 @@ def deploy_decks():
             continue
             
         for file in files:
-            if file.startswith("cefr_") and file.endswith("_deck.json"):
-                source_path = os.path.join(root, file)
-                dest_path = os.path.join(target_dir, file)
-                
-                try:
-                    shutil.copy2(source_path, dest_path)
-                    print(f"Deployed: {file}")
-                    count += 1
-                except Exception as e:
-                    print(f"Error deploying {file}: {e}")
+            if not file.endswith("_deck.json"):
+                continue
+
+            source_path = os.path.join(root, file)
+            dest_path = os.path.join(target_dir, file)
+
+            try:
+                shutil.copy2(source_path, dest_path)
+                print(f"Deployed: {file}")
+                count += 1
+            except Exception as e:
+                print(f"Error deploying {file}: {e}")
 
     print(f"Deployment complete. {count} decks deployed.")
 
