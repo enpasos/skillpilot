@@ -14,6 +14,7 @@ interface FlashcardDrillProps {
     dataSourceUrl?: string
     skillPilotId: string
     titleOverride?: string
+    filterTags?: string[]
 }
 
 interface VocabData {
@@ -24,6 +25,7 @@ interface VocabData {
         front: string
         back: string
         category: string
+        tags?: string[]
     }>
 }
 
@@ -98,7 +100,7 @@ const UI_TEXT = {
     }
 }
 
-export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleOverride }: FlashcardDrillProps) {
+export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleOverride, filterTags }: FlashcardDrillProps) {
     const { language } = useLanguage()
     const t = language === 'de' ? UI_TEXT.de : UI_TEXT.en
 
@@ -133,6 +135,15 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
 
     const [error, setError] = useState<string | null>(null)
 
+    // Reset when props change
+    useEffect(() => {
+        setVocabData(null)
+        setQueue([])
+        setCurrentCardIndex(0)
+        setIsFlipped(false)
+        setSessionStats({ reviewed: 0 })
+    }, [dataSourceUrl, filterTags?.join(',')])
+
     // Initialize: Fetch Data -> Then Queue
     useEffect(() => {
         if (!dataSourceUrl) return
@@ -142,6 +153,14 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
                 const res = await fetch(dataSourceUrl)
                 if (!res.ok) throw new Error("Failed to load vocab")
                 const data: VocabData = await res.json()
+
+                // Filter cards if tags are provided
+                if (filterTags && filterTags.length > 0) {
+                    data.cards = data.cards.filter(card =>
+                        card.tags && card.tags.some(tag => filterTags.includes(tag))
+                    )
+                }
+
                 setVocabData(data)
 
                 // Process Queue immediately after load
@@ -190,7 +209,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
         }
 
         loadData()
-    }, [dataSourceUrl, reloadTrigger]) // Added reloadTrigger dependency
+    }, [dataSourceUrl, filterTags?.join(','), reloadTrigger]) // Added reloadTrigger dependency
 
     const currentCard = queue[currentCardIndex]
     const isFinished = currentCardIndex >= queue.length
