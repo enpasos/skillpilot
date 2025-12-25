@@ -3,14 +3,10 @@ import json
 import os
 import argparse
 
-def ingest_vocab(level, source_csv, output_json, deck_title):
-    deck_id = f"cefr_{level.lower()}_english_vocabulary"
+def ingest_vocab(level, language, source_csv, output_json, deck_title):
+    deck_id = f"cefr_{level.lower()}_{language.lower()}_vocabulary"
     
     cards = []
-    
-    # Map lesson ID to lesson titles (simplified for now, or read from curriculum? 
-    # For now we just use generic titles or read from CSV if provided, 
-    # but the user asked for mapping to lessons 1-12)
     
     try:
         with open(source_csv, 'r', encoding='utf-8') as f:
@@ -43,7 +39,14 @@ def ingest_vocab(level, source_csv, output_json, deck_title):
                     lesson_counters[l_num] = 0
                 lesson_counters[l_num] += 1
                 
-                card_id = f"{level.lower()}_l{l_num}_c{lesson_counters[l_num]}"
+                # ID format: {lang_code}_{level}_l{lesson}_c{count} to be unique globally implies we should include language
+                # Previous ID was: f"{level.lower()}_l{l_num}_c{lesson_counters[l_num]}" (e.g. c2_l1_c1)
+                # This might collide if we mix languages in the same app context without deck separation.
+                # But decks are separate files. However, globally unique IDs are better.
+                # Let's add lang prefix: fr_a1_l1_c1
+                
+                lang_code = language.lower()[:2] # en, fr
+                card_id = f"{lang_code}_{level.lower()}_l{l_num}_c{lesson_counters[l_num]}"
                 
                 # Tags
                 tags = [f"lesson_{l_num}", level.lower()]
@@ -51,7 +54,6 @@ def ingest_vocab(level, source_csv, output_json, deck_title):
                     tags.extend([t.strip() for t in tags_raw.split(',') if t.strip()])
                 
                 # Category
-                # We can fetch specific lesson themes if we want, but for now generic is safe
                 category = f"Lesson {l_num}"
                 
                 card = {
@@ -83,9 +85,50 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Ingest CSV vocabulary to JSON deck")
     parser.add_argument("--level", required=True, help="CEFR Level (A1, A2, B1, B2, C1, C2)")
     parser.add_argument("--src", required=True, help="Path to source CSV")
-    parser.add_argument("--out", required=True, help="Path to output JSON")
+    parser.add_argument("--out", required=False, help="Path to output JSON (optional, auto-derived if omitted)")
     parser.add_argument("--title", required=True, help="Title of the deck")
+    parser.add_argument("--language", default="English", help="Language (English, French, etc.)")
     
     args = parser.parse_args()
     
-    ingest_vocab(args.level, args.src, args.out, args.title)
+    # Auto-derive output path if not specified
+    output_path = args.out
+    if not output_path:
+        # Expected structure: curricula/EU/CEFR/.../input/vocab_sources/file.csv
+        # We want to go to:   curricula/EU/CEFR/.../json/cefr_{level}_{lang}_deck.json
+        
+        abs_src = os.path.abspath(args.src)
+        dir_name = os.path.dirname(abs_src)
+        
+        # Traverse up until we find 'input', then go to sibling 'json'
+        # Simple heuristic: go up 2 levels from vocab_sources to 'input', then 1 more to curriculum root
+        
+        # Example: X/input/vocab_sources/ -> X/input/ -> X/
+        
+        potential_root = os.path.dirname(os.path.dirname(dir_name))
+        if os.path.basename(os.path.dirname(dir_name)) == 'input':
+             potential_root = os.path.dirname(os.path.dirname(dir_name))
+        
+        # Actually proper way:
+        # If we are in `vocab_sources`, parent is `input`, parent is `Language_From_German`.
+        # We want `Language_From_German/json`.
+        
+        if 'vocab_sources' in dir_name:
+             # Assume standard structure
+             curriculum_root = os.path.dirname(os.path.dirname(dir_name))
+             target_dir = os.path.join(curriculum_root, "json")
+        else:
+             # Fallback: same dir as src
+             target_dir = dir_name
+
+        if not os.path.exists(target_dir):
+            try:
+                os.makedirs(target_dir, exist_ok=True)
+            except:
+                pass
+            
+        filename = f"cefr_{args.level.lower()}_{args.language.lower()}_deck.json"
+        output_path = os.path.join(target_dir, filename)
+        print(f"Auto-derived output path: {output_path}")
+
+    ingest_vocab(args.level, args.language, args.src, output_path, args.title)
