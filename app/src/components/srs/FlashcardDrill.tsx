@@ -15,6 +15,7 @@ interface FlashcardDrillProps {
     skillPilotId: string
     titleOverride?: string
     filterTags?: string[]
+    goalId: string
 }
 
 interface VocabData {
@@ -44,7 +45,7 @@ const UI_TEXT = {
         reviewed: "You reviewed {0} cards.",
         continue: "Continue Learning",
         progress: "Your Progress",
-        localData: "Local Data",
+        localData: "Local Data", // Not used explicitly anymore as we always force local
         localDataTooltip: "Saved in this browser.",
         box0Tooltip: "New cards. Start here.",
         box1Tooltip: "Learning. Repeat < 3 days.",
@@ -100,51 +101,42 @@ const UI_TEXT = {
     }
 }
 
-export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleOverride, filterTags }: FlashcardDrillProps) {
+export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleOverride, filterTags, goalId }: FlashcardDrillProps) {
     const { language } = useLanguage()
     const t = language === 'de' ? UI_TEXT.de : UI_TEXT.en
 
-    // Load state from local storage or init
-    const getStoredState = (): Record<string, ReviewItem> => {
-        try {
-            // Hardcoded deck ID for now (eng_400), but scoped to user
-            const storageKey = `srs_state_${skillPilotId}_eng_400`
-            const stored = localStorage.getItem(storageKey)
-            return stored ? JSON.parse(stored) : {}
-        } catch {
-            return {}
-        }
-    }
-
-    const [srsState, setSrsState] = useState<Record<string, ReviewItem>>(getStoredState)
+    // State for SRS
+    // Initial load happens in useEffect to ensure we use the correct keys
+    const [srsState, setSrsState] = useState<Record<string, ReviewItem>>({})
     const [vocabData, setVocabData] = useState<VocabData | null>(null)
     const [queue, setQueue] = useState<VocabData['cards']>([])
     const [currentCardIndex, setCurrentCardIndex] = useState(0)
     const [isFlipped, setIsFlipped] = useState(false)
     const [sessionStats, setSessionStats] = useState({ reviewed: 0 })
-    const [reloadTrigger, setReloadTrigger] = useState(0) // New state for soft reload
+    const [reloadTrigger, setReloadTrigger] = useState(0)
 
     const [stats, setStats] = useState({
         total: 0,
-        box0: 0, // New
-        box1: 0, // < 3 days
-        box2: 0, // 3-10 days
-        box3: 0, // > 10 days
+        box0: 0,
+        box1: 0,
+        box2: 0,
+        box3: 0,
         due: 0
     })
 
     const [error, setError] = useState<string | null>(null)
 
-    // Reset when props change
+    // Reset and Load
     useEffect(() => {
         setVocabData(null)
         setQueue([])
         setCurrentCardIndex(0)
         setIsFlipped(false)
         setSessionStats({ reviewed: 0 })
-    }, [dataSourceUrl, filterTags?.join(',')])
+        setSrsState({}) // Clear state
+    }, [dataSourceUrl, goalId]) // Reset on goal change
 
-    // Initialize: Fetch Data -> Then Queue
+    // Initialize: Fetch Data -> Load State -> Then Queue
     useEffect(() => {
         if (!dataSourceUrl) return
 
@@ -154,7 +146,6 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
                 if (!res.ok) throw new Error("Failed to load vocab")
                 const data: VocabData = await res.json()
 
-                // Filter cards if tags are provided
                 if (filterTags && filterTags.length > 0) {
                     data.cards = data.cards.filter(card =>
                         card.tags && card.tags.some(tag => filterTags.includes(tag))
@@ -163,16 +154,25 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
 
                 setVocabData(data)
 
-                // Process Queue immediately after load
+                // Load State Dynamically using goalId (User Request)
+                const storageKey = `srs_state_${skillPilotId}_${goalId}`
+                let loadedState: Record<string, ReviewItem> = {}
+                try {
+                    const stored = localStorage.getItem(storageKey)
+                    if (stored) loadedState = JSON.parse(stored)
+                } catch (e) { console.error("Storage load error", e) }
+
+                setSrsState(loadedState)
+
+                // Process Queue
                 const now = Date.now()
                 const totalCards = data.cards.length
                 let b0 = 0, b1 = 0, b2 = 0, b3 = 0
                 let dueCardsCount = 0
 
                 const dueCards = data.cards.filter(card => {
-                    const state = srsState[card.id] || getStoredState()[card.id] // Fallback to fresh read if needed
+                    const state = loadedState[card.id]
 
-                    // Box Calc
                     if (!state) {
                         b0++
                         dueCardsCount++
@@ -183,7 +183,6 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
                         else b3++
                     }
 
-                    // Due Calc
                     if (state.nextReview <= now) {
                         dueCardsCount++
                         return true
@@ -204,12 +203,14 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
 
             } catch (e) {
                 console.error("Error loading vocab data", e)
-                setError("Konnte Karteikarten nicht laden (möglicherweise noch nicht erstellt).")
+                setError("Card load error.")
             }
         }
 
         loadData()
-    }, [dataSourceUrl, filterTags?.join(','), reloadTrigger]) // Added reloadTrigger dependency
+    }, [dataSourceUrl, filterTags?.join(','), reloadTrigger, goalId, skillPilotId])
+    // Initialize: Fetch Data -> Then Queue
+
 
     const currentCard = queue[currentCardIndex]
     const isFinished = currentCardIndex >= queue.length
@@ -237,7 +238,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
 
         const updatedSrsState = { ...srsState, [currentCard.id]: newState }
         setSrsState(updatedSrsState)
-        const storageKey = `srs_state_${skillPilotId}_eng_400`
+        const storageKey = `srs_state_${skillPilotId}_${vocabData?.deckId || 'unknown'}`
         localStorage.setItem(storageKey, JSON.stringify(updatedSrsState))
 
         setSessionStats(prev => ({ reviewed: prev.reviewed + 1 }))

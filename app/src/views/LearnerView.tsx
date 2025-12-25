@@ -480,6 +480,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 </div>
                 <FlashcardDrill
                   key={currentGoal.id}
+                  goalId={currentGoal.id}
                   dataSourceUrl={currentGoal.extendedData?.vocabularySource}
                   onComplete={() => {
                     // Refresh mastery if needed or just show confetti
