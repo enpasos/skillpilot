@@ -20,9 +20,10 @@ def split_goals(language_dir, lang_code):
         new_goals = []
         modified = False
         
-        # Regex to match vocabulary goals: cefr_{level}_l{num}_vocabulary
-        # e.g. cefr_a1_l01_vocabulary
-        pattern = re.compile(rf"cefr_{level.lower()}_l(\d+)_vocabulary")
+        # Regex to match vocabulary goals: cefr_{level}_l{num}_vocabulary OR cefr_{lang}_{level}_l{num}_vocabulary
+        # e.g. cefr_a1_l01_vocabulary OR cefr_fr_a1_l01_vocabulary
+        # MUST match end of string to avoid matching _rev variants
+        pattern = re.compile(rf"cefr_(?:[a-z]{{2}}_)?{level.lower()}_l(\d+)_vocabulary$")
         
         for goal in data["goals"]:
             match = pattern.match(goal["id"])
