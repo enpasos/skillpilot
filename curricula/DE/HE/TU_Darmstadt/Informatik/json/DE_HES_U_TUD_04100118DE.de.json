@@ -1,8 +1,8 @@
 {
     "title": "Mathematik I für Informatik (TU Darmstadt, Modul 04-10-0118/de)",
-    "titleEn": "Mathematik I für Informatik (TU Darmstadt, Modul 04-10-0118/de)",
+    "titleEn": "Mathematics I for Computer Science (TU Darmstadt, Module 04-10-0118/de)",
     "description": "- Mengen, Relationen, Funktionen, algebraische Grundstrukturen  \n- modulare Arithmetik, RSA Verfahren für Verschlüsselung von Daten  \n- endlichdimensionale Vektorräume, lineare Abbildungen und Matrizen, Gauß-Algorithmus, Determinanten, Eigenwerte  \n- Grundlagen: reelle und komplexe Zahlen  \n- Folgen und Konvergenz",
-    "descriptionEn": "- Mengen, Relationen, Funktionen, algebraische Grundstrukturen  \n- modulare Arithmetik, RSA Verfahren für Verschlüsselung von Daten  \n- endlichdimensionale Vektorräume, lineare Abbildungen und Matrizen, Gauß-Algorithmus, Determinanten, Eigenwerte  \n- Grundlagen: reelle und komplexe Zahlen  \n- Folgen und Konvergenz",
+    "descriptionEn": "- Sets, relations, functions, algebraic structures\n- Modular arithmetic, RSA encryption\n- Finite-dimensional vector spaces, linear maps, matrices, Gaussian elimination, determinants, eigenvalues\n- Basics: real and complex numbers\n- Sequences and convergence",
     "landscapeId": "be372365-e8a7-5159-9e47-53454af4fbf7",
     "locale": "de-DE",
     "subject": "Informatik",
@@ -12,185 +12,231 @@
             "id": "4a2296a5-3ba3-5266-8def-e396bdb9e69d",
             "shortKey": "tud_bsc_inf_04_10_0118_de",
             "title": "Mathematik I für Informatik",
-            "titleEn": "Mathematik I für Informatik",
-            "description": "Die lernende Person kann: Beherrschung der mengentheoretischen Sprechweise; Vertrautheit mit grundlegenden algebraischen Strukturen und Grundbegriffen; Verständnis der grundlegenden Begriffe der linearen Algebra; Beherrschung der grundlegenden Algorithmen der linearen Algebra; Verständnis des Begriffs der reellen Zahlen und Beherrschung des Umgangs mit Grenzwertprozessen.",
-            "descriptionEn": "Die lernende Person kann: Beherrschung der mengentheoretischen Sprechweise; Vertrautheit mit grundlegenden algebraischen Strukturen und Grundbegriffen; Verständnis der grundlegenden Begriffe der linearen Algebra; Beherrschung der grundlegenden Algorithmen der linearen Algebra; Verständnis des Begriffs der reellen Zahlen und Beherrschung des Umgangs mit Grenzwertprozessen.",
+            "titleEn": "Mathematics I for Computer Science",
+            "description": "Die lernende Person beherrscht die Grundlagen der Mathematik für Informatiker: Mengenlehre, Algebraische Strukturen, Lineare Algebra und Analysis (Folgen).",
+            "descriptionEn": "The learner masters the foundations of mathematics for computer scientists: Set theory, algebraic structures, linear algebra, and analysis (sequences).",
             "core": true,
             "weight": 9.0,
             "tags": [
                 "ects:9",
                 "module:04-10-0118/de",
-                "program:bsc_informatik"
+                "program:bsc_informatik",
+                "root"
             ],
-            "dimensionTags": {
-                "framework": "tud-04100118de",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Pflichtbereich",
-                "area": "Pflicht",
-                "topicCode": "tud_bsc_inf_04_10_0118_de"
-            },
-            "requires": [],
             "contains": [
-                "09661100-f3c1-5bd0-a7d2-b2a595b54c26",
-                "c0144f69-704d-5fcf-b105-18832a30e769",
-                "e362c2ae-8da3-5576-a599-b436ac37ec9b",
-                "bf719b17-6738-5fe3-aa73-a8adf6acb88e",
-                "375ac33e-f939-5b43-8a6d-dbce115bcb03"
-            ],
-            "examples": [],
-            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik",
-            "extendedData": {
-                "content": "- Mengen, Relationen, Funktionen, algebraische Grundstrukturen  \n- modulare Arithmetik, RSA Verfahren für Verschlüsselung von Daten  \n- endlichdimensionale Vektorräume, lineare Abbildungen und Matrizen, Gauß-Algorithmus, Determinanten, Eigenwerte  \n- Grundlagen: reelle und komplexe Zahlen  \n- Folgen und Konvergenz",
-                "learningOutcomes": [
-                    "Beherrschung der mengentheoretischen Sprechweise",
-                    "Vertrautheit mit grundlegenden algebraischen Strukturen und Grundbegriffen",
-                    "Verständnis der grundlegenden Begriffe der linearen Algebra",
-                    "Beherrschung der grundlegenden Algorithmen der linearen Algebra",
-                    "Verständnis des Begriffs der reellen Zahlen und Beherrschung des Umgangs mit Grenzwertprozessen."
-                ]
-            }
+                "tud_math1_sets",
+                "tud_math1_algebra",
+                "tud_math1_linalg_basics",
+                "tud_math1_linalg_algo",
+                "tud_math1_analysis_seq"
+            ]
         },
         {
-            "id": "09661100-f3c1-5bd0-a7d2-b2a595b54c26",
-            "shortKey": "tud_bsc_inf_04_10_0118_de_lo1",
-            "title": "Mathematik I für Informatik – Lernziel 1",
-            "titleEn": "Mathematik I für Informatik – Learning Outcome 1",
-            "description": "Die lernende Person kann Beherrschung der mengentheoretischen Sprechweise.",
-            "descriptionEn": "Die lernende Person kann Beherrschung der mengentheoretischen Sprechweise.",
+            "id": "tud_math1_sets",
+            "shortKey": "tud_math1_sets",
+            "title": "Mengen, Relationen & Funktionen",
+            "titleEn": "Sets, Relations & Functions",
+            "description": "Umgang mit mengentheoretischer Notation, Relationen und Funktionseigenschaften.",
+            "descriptionEn": "Handling set-theoretic notation, relations, and function properties.",
             "core": true,
-            "weight": 1.8,
+            "weight": 1.5,
             "tags": [
-                "ects:9",
-                "module:04-10-0118/de",
-                "program:bsc_informatik"
+                "topic:sets"
             ],
-            "dimensionTags": {
-                "framework": "tud-04100118de",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Pflichtbereich",
-                "area": "Pflicht",
-                "topicCode": "tud_bsc_inf_04_10_0118_de_lo1"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
+            "contains": [
+                "tud_math1_sets_ops",
+                "tud_math1_relations"
+            ]
         },
         {
-            "id": "c0144f69-704d-5fcf-b105-18832a30e769",
-            "shortKey": "tud_bsc_inf_04_10_0118_de_lo2",
-            "title": "Mathematik I für Informatik – Lernziel 2",
-            "titleEn": "Mathematik I für Informatik – Learning Outcome 2",
-            "description": "Die lernende Person kann Vertrautheit mit grundlegenden algebraischen Strukturen und Grundbegriffen.",
-            "descriptionEn": "Die lernende Person kann Vertrautheit mit grundlegenden algebraischen Strukturen und Grundbegriffen.",
+            "id": "tud_math1_sets_ops",
+            "title": "Mengenoperationen anwenden",
+            "titleEn": "Apply Set Operations",
+            "description": "Vereinigung, Schnitt, Differenz und Potenzmenge sicher bestimmen und Beweise mit Mengeninklusion führen.",
             "core": true,
-            "weight": 1.8,
+            "weight": 0.5,
             "tags": [
-                "ects:9",
-                "module:04-10-0118/de",
-                "program:bsc_informatik"
-            ],
-            "dimensionTags": {
-                "framework": "tud-04100118de",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Pflichtbereich",
-                "area": "Pflicht",
-                "topicCode": "tud_bsc_inf_04_10_0118_de_lo2"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
+                "competence:apply"
+            ]
         },
         {
-            "id": "e362c2ae-8da3-5576-a599-b436ac37ec9b",
-            "shortKey": "tud_bsc_inf_04_10_0118_de_lo3",
-            "title": "Mathematik I für Informatik – Lernziel 3",
-            "titleEn": "Mathematik I für Informatik – Learning Outcome 3",
-            "description": "Die lernende Person kann Verständnis der grundlegenden Begriffe der linearen Algebra.",
-            "descriptionEn": "Die lernende Person kann Verständnis der grundlegenden Begriffe der linearen Algebra.",
+            "id": "tud_math1_relations",
+            "title": "Eigenschaften von Funktionen & Relationen",
+            "titleEn": "Properties of Functions & Relations",
+            "description": "Unterscheidung von injektiv, surjektiv, bijektiv. Äquivalenzrelationen erkennen und Äquivalenzklassen bilden.",
             "core": true,
-            "weight": 1.8,
+            "weight": 1.0,
             "tags": [
-                "ects:9",
-                "module:04-10-0118/de",
-                "program:bsc_informatik"
-            ],
-            "dimensionTags": {
-                "framework": "tud-04100118de",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Pflichtbereich",
-                "area": "Pflicht",
-                "topicCode": "tud_bsc_inf_04_10_0118_de_lo3"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
+                "competence:understand"
+            ]
         },
         {
-            "id": "bf719b17-6738-5fe3-aa73-a8adf6acb88e",
-            "shortKey": "tud_bsc_inf_04_10_0118_de_lo4",
-            "title": "Mathematik I für Informatik – Lernziel 4",
-            "titleEn": "Mathematik I für Informatik – Learning Outcome 4",
-            "description": "Die lernende Person kann Beherrschung der grundlegenden Algorithmen der linearen Algebra.",
-            "descriptionEn": "Die lernende Person kann Beherrschung der grundlegenden Algorithmen der linearen Algebra.",
+            "id": "tud_math1_algebra",
+            "shortKey": "tud_math1_algebra",
+            "title": "Algebraische Grundstrukturen & Zahlentheorie",
+            "titleEn": "Algebraic Structures & Number Theory",
+            "description": "Gruppen, Ringe, Körper und Kryptographie-Grundlagen.",
+            "descriptionEn": "Groups, rings, fields, and calligraphy basics.",
             "core": true,
-            "weight": 1.8,
+            "weight": 2.0,
             "tags": [
-                "ects:9",
-                "module:04-10-0118/de",
-                "program:bsc_informatik"
+                "topic:algebra"
             ],
-            "dimensionTags": {
-                "framework": "tud-04100118de",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Pflichtbereich",
-                "area": "Pflicht",
-                "topicCode": "tud_bsc_inf_04_10_0118_de_lo4"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
+            "contains": [
+                "tud_math1_structs",
+                "tud_math1_rsa"
+            ]
         },
         {
-            "id": "375ac33e-f939-5b43-8a6d-dbce115bcb03",
-            "shortKey": "tud_bsc_inf_04_10_0118_de_lo5",
-            "title": "Mathematik I für Informatik – Lernziel 5",
-            "titleEn": "Mathematik I für Informatik – Learning Outcome 5",
-            "description": "Die lernende Person kann Verständnis des Begriffs der reellen Zahlen und Beherrschung des Umgangs mit Grenzwertprozessen.",
-            "descriptionEn": "Die lernende Person kann Verständnis des Begriffs der reellen Zahlen und Beherrschung des Umgangs mit Grenzwertprozessen.",
+            "id": "tud_math1_structs",
+            "title": "Strukturen identifizieren (Gruppe, Ring, Körper)",
+            "titleEn": "Identify Structures (Group, Ring, Field)",
+            "description": "Prüfen, ob eine gegebene Menge mit Verknüpfung eine Gruppe, ein Ring oder ein Körper ist (Axiome prüfen).",
             "core": true,
-            "weight": 1.8,
+            "weight": 1.0,
             "tags": [
-                "ects:9",
-                "module:04-10-0118/de",
-                "program:bsc_informatik"
+                "competence:analyze"
+            ]
+        },
+        {
+            "id": "tud_math1_rsa",
+            "title": "Modulare Arithmetik & RSA",
+            "titleEn": "Modular Arithmetic & RSA",
+            "description": "Rechnen in Z/nZ, Euklidischer Algorithmus und Durchführung des RSA-Verfahrens.",
+            "core": true,
+            "weight": 1.0,
+            "tags": [
+                "competence:apply"
+            ]
+        },
+        {
+            "id": "tud_math1_linalg_basics",
+            "shortKey": "tud_math1_linalg_basics",
+            "title": "Vektorräume & Lineare Abbildungen",
+            "titleEn": "Vector Spaces & Linear Maps",
+            "description": "Abstrakte Konzepte der Linearen Algebra.",
+            "descriptionEn": "Abstract concepts of Linear Algebra.",
+            "core": true,
+            "weight": 2.0,
+            "tags": [
+                "topic:linalg"
             ],
-            "dimensionTags": {
-                "framework": "tud-04100118de",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Pflichtbereich",
-                "area": "Pflicht",
-                "topicCode": "tud_bsc_inf_04_10_0118_de_lo5"
-            },
-            "requires": [],
-            "contains": [],
-            "examples": [],
-            "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
+            "contains": [
+                "tud_math1_vector_spaces",
+                "tud_math1_basis",
+                "tud_math1_linear_maps"
+            ]
+        },
+        {
+            "id": "tud_math1_vector_spaces",
+            "title": "Vektorräume verstehen",
+            "titleEn": "Understand Vector Spaces",
+            "description": "Definition des Vektorraums und Untervektorraums wiedergeben und Beispiele identifizieren.",
+            "core": true,
+            "weight": 0.5,
+            "tags": [
+                "competence:know"
+            ]
+        },
+        {
+            "id": "tud_math1_basis",
+            "title": "Basis & Dimension bestimmen",
+            "titleEn": "Determine Basis & Dimension",
+            "description": "Lineare Unabhängigkeit prüfen, Erzeugendensysteme reduzierne, Dimension bestimmen.",
+            "core": true,
+            "weight": 0.7,
+            "tags": [
+                "competence:apply"
+            ]
+        },
+        {
+            "id": "tud_math1_linear_maps",
+            "title": "Lineare Abbildungen analysieren",
+            "titleEn": "Analyze Linear Maps",
+            "description": "Kern und Bild einer Abbildung bestimmen, Dimensionsformel anwenden.",
+            "core": true,
+            "weight": 0.8,
+            "tags": [
+                "competence:analyze"
+            ]
+        },
+        {
+            "id": "tud_math1_linalg_algo",
+            "shortKey": "tud_math1_linalg_algo",
+            "title": "Matrizen & Algorithmen",
+            "titleEn": "Matrices & Algorithms",
+            "description": "Rechnen mit Matrizen und Lösen von LGS.",
+            "descriptionEn": "Matrix calculus and solving linear systems.",
+            "core": true,
+            "weight": 2.0,
+            "tags": [
+                "topic:linalg"
+            ],
+            "contains": [
+                "tud_math1_gauss",
+                "tud_math1_det_eigen"
+            ]
+        },
+        {
+            "id": "tud_math1_gauss",
+            "title": "Gauß-Algorithmus anwenden",
+            "titleEn": "Apply Gaussian Elimination",
+            "description": "Lineare Gleichungssysteme systematisch lösen und Lösungsraum angeben.",
+            "core": true,
+            "weight": 1.0,
+            "tags": [
+                "competence:apply"
+            ]
+        },
+        {
+            "id": "tud_math1_det_eigen",
+            "title": "Determinanten & Eigenwerte",
+            "titleEn": "Determinants & Eigenvalues",
+            "description": "Determinanten berechnen (Laplace, Sarrus) und Eigenwerte/Eigenvektoren bestimmen.",
+            "core": true,
+            "weight": 1.0,
+            "tags": [
+                "competence:apply"
+            ]
+        },
+        {
+            "id": "tud_math1_analysis_seq",
+            "shortKey": "tud_math1_analysis_seq",
+            "title": "Grundlagen Analysis: Folgen",
+            "titleEn": "Analysis Basics: Sequences",
+            "description": "Reelle Zahlen und Konvergenz.",
+            "descriptionEn": "Real numbers and convergence.",
+            "core": true,
+            "weight": 1.5,
+            "tags": [
+                "topic:analysis"
+            ],
+            "contains": [
+                "tud_math1_complex",
+                "tud_math1_limits"
+            ]
+        },
+        {
+            "id": "tud_math1_complex",
+            "title": "Reelle & Komplexe Zahlen",
+            "titleEn": "Real & Complex Numbers",
+            "description": "Rechnen mit komplexen Zahlen (Polarform), Körperaxiome der reellen Zahlen nutzen.",
+            "core": true,
+            "weight": 0.5,
+            "tags": [
+                "competence:apply"
+            ]
+        },
+        {
+            "id": "tud_math1_limits",
+            "title": "Konvergenz untersuchen",
+            "titleEn": "Investigate Convergence",
+            "description": "Grenzwerte von Folgen berechnen, Konvergenzkriterien (Monotonie, Cauchy) anwenden.",
+            "core": true,
+            "weight": 1.0,
+            "tags": [
+                "competence:analyze"
+            ]
         }
     ]
 }
