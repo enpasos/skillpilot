@@ -479,6 +479,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   <p className="text-text-secondary">{currentGoal.description}</p>
                 </div>
                 <FlashcardDrill
+                  key={currentGoal.id}
                   dataSourceUrl={currentGoal.extendedData?.vocabularySource}
                   onComplete={() => {
                     // Refresh mastery if needed or just show confetti
