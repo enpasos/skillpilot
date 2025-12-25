@@ -269,8 +269,33 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/export` : `/api/ui/learners/${skillpilotId}/export`
       const res = await fetch(url)
       if (res.ok) {
-        const data = await res.json()
-        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const serverData = await res.json()
+
+        // V2 Export: Collect Local SRS State
+        const clientData: Record<string, any> = { srsState: {} }
+        const prefix = `srs_state_${skillpilotId}_`
+
+        try {
+          for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i)
+            if (key && key.startsWith(prefix)) {
+              // Save full key-value pair. We will parse the key on import to handle ID changes.
+              const val = localStorage.getItem(key)
+              if (val) clientData.srsState[key] = JSON.parse(val)
+            }
+          }
+        } catch (e) {
+          console.warn("Error collecting local stats for export", e)
+        }
+
+        const exportPayload = {
+          version: "2.0",
+          exportedAt: new Date().toISOString(),
+          serverExport: serverData,
+          clientData: clientData
+        }
+
+        const blob = new Blob([JSON.stringify(exportPayload, null, 2)], { type: 'application/json' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
         link.download = `learner_data_${skillpilotId}.json`;
@@ -300,16 +325,59 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     reader.onload = async (e) => {
       try {
         const json = JSON.parse(e.target?.result as string);
+
+        // V2 Import: Unwrap if Wrapper exists
+        let payloadToSend = json;
+        let clientDataToRestore: any = null;
+
+        if (json.serverExport && json.clientData) {
+          console.log("Detected V2 Export Wrapper")
+          payloadToSend = json.serverExport;
+          clientDataToRestore = json.clientData;
+        }
+
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
         const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/import` : `/api/ui/learners/${skillpilotId}/import`
 
         const res = await fetch(url, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(json)
+          body: JSON.stringify(payloadToSend)
         });
 
         if (res.ok) {
+          // Restore Local Data (SRS State) if present
+          if (clientDataToRestore && clientDataToRestore.srsState) {
+            try {
+              console.log("Restoring SRS State...")
+              const srsState = clientDataToRestore.srsState as Record<string, any>
+              let restoreCount = 0;
+
+              // Regex to parse old keys: srs_state_{OLD_ID}_{GOAL_ID}
+              // We assume ID does not contain underscores (UUIDs are hyphens).
+              // But just in case, we split by first 3 parts: srs, state, id.
+              // safer: match /^srs_state_([^_]+)_(.+)$/
+              const keyPattern = /^srs_state_([^_]+)_(.+)$/
+
+              Object.entries(srsState).forEach(([oldKey, value]) => {
+                const match = oldKey.match(keyPattern)
+                if (match) {
+                  // match[1] is old ID (ignored, we use current `skillpilotId`)
+                  const goalId = match[2]
+
+                  // Construct new key for CURRENT user
+                  const newKey = `srs_state_${skillpilotId}_${goalId}`
+
+                  localStorage.setItem(newKey, JSON.stringify(value))
+                  restoreCount++;
+                }
+              })
+              console.log(`Restored ${restoreCount} SRS state entries.`)
+            } catch (err) {
+              console.error("Error restoring local state", err)
+            }
+          }
+
           // Reload page to reflect imported state (simplest way to ensure consistency)
           window.location.reload();
         } else {

@@ -64,3 +64,32 @@ The signature is calculated based on the **data values**, not the exact byte-for
 *   **Reformatting/Whitespace (SAFE)**: If you pretty-print the JSON, add newlines, or extra spaces *outside* of string values, the import will still **SUCCEED**.
     *   *Reason*: The system parses the JSON into a data object first, ignoring formatting, and then recalculates the signature from that standardized object.
 *   **Reordering Fields (SAFE)**: If you change the order of keys (e.g., putting `"mastery"` before `"learner"`), the import will **SUCCEED**.
+
+## V2 Wrapper Format (SRS State)
+
+Starting with Version 2.0, the export file uses a **Wrapper Strategy** to include client-side data (like Flashcard Progress) that is not visible to the server.
+
+### Structure
+```json
+{
+  "version": "2.0",
+  "exportedAt": "2024-05-20T10:00:00.000Z",
+  "serverExport": {
+    // ... The original, signed server payload ...
+    "data": { ... },
+    "signature": "..."
+  },
+  "clientData": {
+    "srsState": {
+      "srs_state_USERID_GOALID": { ... }
+    }
+  }
+}
+```
+
+### How it works
+1.  **Export**: The client fetches the signed `serverExport` from the API, then scrapes specific keys (`srs_state_*`) from Local Storage and bundles them into `clientData`.
+2.  **Import**: The client detects the wrapper.
+    *   It sends only the `serverExport` inner object to the API for verification and import.
+    *   If successful, it iterates through `clientData.srsState`.
+    *   It **re-keys** the entries to match the *current* user's ID (e.g. replacing `old_user_id` with `new_user_id` in the storage key) and restores them to Local Storage.

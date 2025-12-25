@@ -80,6 +80,8 @@ The AI provider processes the conversation and tool outputs.
 ## 4. Backup & Recovery Strategy
 Since the server does not know who the students are, the **Teacher is the single source of truth** for the identity mapping.
 
-* **Export:** The Teacher must utilize the "Backup Data" feature in the dashboard regularly. This generates a JSON file containing the Class definitions and Student mappings.
-* **Storage:** This file must be stored securely by the teacher (School Server, USB Drive).
-* **Restore:** If browser data is cleared, the JSON file can be imported to restore the classroom view.
+* **Export:** The Teacher/Learner utilizes the "Backup Data" feature. This generates a JSON file (wrapper format) containing:
+    1.  The signed Server Data (Class definitions, Student mappings, Mastery).
+    2.  The Local Client Data (SRS Flashcard Progress).
+* **Storage:** This file must be stored securely by the user.
+* **Restore:** If browser data is cleared or the user switches devices, the JSON file can be imported. The system will restore the server state and re-hydrate the local flashcard progress for the current user.
