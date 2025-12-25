@@ -38,11 +38,11 @@ Wir setzen auf den **Goldstandard** für CEFR-basierten Wortschatz: Die **Oxford
     *   Um das A1-Ziel (~800 Wörter) in 12 Lektionen zu erreichen, benötigen wir **ca. 70 Wörter pro Lektion**.
     *   Diese werden in thematische Cluster (z.B. Nomen, Verben, Phrasen) pro Lektion unterteilt.
 3.  **Verteilung:**
-    - **A1:** Top ~800-1000 Wörter der Oxford 3000 (gefiltert nach A1).
-    - **A2:** Weitere ~1000 Wörter (A2 Filter).
-    - **B1:** Aufstockung auf ~3000 Wörter (B1 Filter).
-    - **B2:** Abschluss der Oxford 3000 + Einstieg Oxford 5000.
-    - **C1:** Restliche Oxford 5000 + akademischer Wortschatz.
+    - **A1:** Top ~800-1000 Wörter der Oxford 3000 (gefiltert nach A1) -> **Komplettabdeckung aller A1-Wörter.**
+    - **A2:** Weitere ~1000 Wörter (A2 Filter) -> **Komplettabdeckung aller A2-Wörter.**
+    - **B1:** Aufstockung auf ~3000 Wörter (B1 Filter) -> **Komplettabdeckung bis B1.**
+    - **B2:** Abschluss der Oxford 3000 + Einstieg Oxford 5000 (B2 Filter).
+    - **C1:** Restliche Oxford 5000 + akademischer Wortschatz (C1 Filter).
 4.  **Lernmethode:** Kontexteinbettung in Lektionen + SRS-Flashcards (Spaced Repetition).
 
 ## 3. Grammatikziele pro CEFR-Level
