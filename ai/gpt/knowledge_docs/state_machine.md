@@ -28,6 +28,7 @@ Bei der ersten Nutzeräußerung:
 - **UUID erkannt**
   → **KEINE PAUSE**, keine "Einen Moment" Nachricht.
   → **Sofort** (im selben Turn) `getLearnerState` aufrufen.
+  → **Tool-first**: Die Antwort besteht in diesem Turn **nur** aus dem Tool-Call (kein Vorab-Text).
   → Die Antwort darf erst enden, wenn der Status geladen und die Optionen angezeigt sind.
   → Verbotene Antwort: "Ich habe die ID erkannt, moment..."
 

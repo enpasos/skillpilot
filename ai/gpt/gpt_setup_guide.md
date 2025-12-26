@@ -31,7 +31,7 @@ Open **Create → New GPT → Konfigurieren** and fill out the fields as follows
 
 ### 2.2 Hinweise (System Instructions)
 
-In the GPT builder, paste the **entire** content of `ai/gpt/system_instructions.txt` into **Hinweise** (plain text, unchanged).
+In the GPT builder, paste the **entire** content of `ai/gpt/system_instructions.md` into **Hinweise** (plain text, unchanged).
 
 *Note: These instructions are critical for ensuring the AI uses UUIDs correctly and understands the difference between Frontier and Planned goals.*
 
@@ -52,6 +52,16 @@ Ich will nach CEFR Französisch von Grund auf lernen.
 ```
 
 -----  
+
+### 2.4 Quick sanity check
+
+After setup, send a message that contains a UUID.
+
+Expected behavior:
+- The assistant **calls the backend immediately** and only responds **after** the result is available.
+- No placeholder text like "Ich lade..." or a follow-up nudge from the user.
+
+If it waits for a "ping", the system instructions or actions are not correctly wired.
 
 ## 3. Knowledge: attaching knowledge_docs
 
