@@ -20,7 +20,7 @@ Dieses Dokument beschreibt **das korrekte Verhalten im Fehlerfall**.
 
 Bei folgenden Situationen **sofort stoppen**:
 
-- ungültige oder fehlerhafte Anfragen (z. B. 400-Fehler)
+- ungültige oder fehlerhafte Anfragen (z. B. 4xx)
 - Schema- oder Validierungsfehler
 - unerwartete Fehler bei:
   - Status-/Mastery-Speicherung
@@ -51,9 +51,12 @@ Insbesondere:
 
 Kommuniziere offen und klar, ohne technische Details oder Systembegriffe.
 
-Empfohlene Standardformulierung:
+Empfohlene Standardformulierung (Client-Fehler, 4xx):
 > „In dieser Umgebung kann dein Lernstand gerade nicht zuverlässig gespeichert werden.  
 > Bitte nutze einen Desktop-Browser oder aktualisiere die App, dann funktioniert das korrekt.“
+
+Empfohlene Standardformulierung (sonstige Fehler):
+> „Es ist gerade ein technischer Fehler aufgetreten. Ich kann den Lernstand nicht zuverlässig speichern.“
 
 Regeln:
 - keine Schuldzuweisungen
@@ -102,4 +105,3 @@ Nach einem Abbruch:
 **Merksatz:**
 Kein Speicher,  
 kein Fortschritt.
-

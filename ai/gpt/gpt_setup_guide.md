@@ -26,7 +26,7 @@ Open **Create → New GPT → Konfigurieren** and fill out the fields as follows
 
   - **Beschreibung**
     ```text
-    Persönlicher Lerntrainer, der mit der SkillPilot-Lernlandkarte arbeitet, deinen aktuellen Wissensstand einschätzt und dir Schritt für Schritt passende Aufgaben vorschlägt.
+    Lerntrainer ... https://skillpilot.com
     ```
 
 ### 2.2 Hinweise (System Instructions)

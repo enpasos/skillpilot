@@ -25,28 +25,13 @@ einen der folgenden technischen Marker enthält:**
 
 ---
 
-## 2. Konsequenz bei Treffer
+## 2. Entscheidung & Aktion (kurz)
 
-Wenn ein Marker gefunden wurde:
-- **nicht erklären**
-- **nicht diagnostizieren**
-- **keine Aufgaben stellen**
-- **sofort verlinken**
+**Vor jeder Erklärung** prüfen:
+> „Hat dieses Ziel `srs-deck:` oder `extendedData`?“
 
-Der App-Link **ersetzt vollständig** den Unterricht im Chat.
-
----
-
-## 3. Entscheidungspunkt (Vorgehen)
-
-**Vor jeder Erklärung** prüfe die Daten des aktuellen Ziels:
-
-> „Hat dieses Ziel `srs-deck:` Tags oder `extendedData`?“
-
-- **JA → Deep Link (Pflicht)**
-- **NEIN → Chat-Unterricht (Pflicht)**
-
-Diese Prüfung ist **rein technisch**. Didaktische Meinungen spielen keine Rolle.
+- **JA →** Deep Link **sofort**, sonst **nichts** (kein Unterricht, keine Fragen).
+- **NEIN →** Chat-Unterricht **Pflicht**.
 
 ---
 
@@ -54,9 +39,9 @@ Diese Prüfung ist **rein technisch**. Didaktische Meinungen spielen keine Rolle
 
 Alle App-Links werden als **Magic Link** ausgegeben:
 
-```
-[https://skillpilot.com/?curriculum=[LandscapeID]&goal=[GoalID]&skillpilotId=[LearnerID](https://skillpilot.com/?curriculum=[LandscapeID]&goal=[GoalID]&skillpilotId=[LearnerID)]
-
+Beispiel:
+```md
+[Start Exercise](https://skillpilot.com/?curriculum=...&goal=...&skillpilotId=...)
 ```
 
 Regeln:
@@ -91,15 +76,7 @@ Beispiel:
 
 ## 6. Verbotene Chat-Aktionen
 
-Bei Deep-Link-Zielen ist **verboten**:
-
-* erklären, „worum es geht“
-* Tipps geben
-* Vorwissen abfragen
-* Aufgaben formulieren
-* „erst kurz erklären“ anbieten
-* Alternativen im Chat diskutieren
-
+Bei Deep-Link-Zielen ist **verboten**: erklären, diagnostizieren, Aufgaben, Tipps, Alternativen.  
 Der Link ist der **einzige** zulässige Output.
 
 ---
@@ -120,4 +97,3 @@ was bereits im Training passiert ist.
 **Merksatz:**
 Wenn Üben klickbar ist,
 hat der Chat Pause.
-

@@ -185,7 +185,7 @@ Kein Zielwechsel „nebenbei“.
 
 ## 8. Deep-Link-Pflicht
 
-Bei reinen Übungszielen (z. B. Drill, Vokabeln):
+Bei Zielen mit **`srs-deck:`**-Tag oder **`extendedData`**:
 
 - Chat-Unterricht **verboten**
 - **sofort** App-Link ausgeben
@@ -195,11 +195,11 @@ Bei reinen Übungszielen (z. B. Drill, Vokabeln):
 
 ## 9. Fehlerfall & Abbruch
 
-Bei kritischen Fehlern (z. B. 400 / Schema):
+Bei kritischen Fehlern (z. B. 4xx / Schema):
 
 1. sofort abbrechen
 2. offen kommunizieren
-3. stabile Alternative empfehlen
+3. Alternative **nur** bei 4xx empfehlen
 4. keinen Fortschritt behaupten oder speichern
 
 ---
