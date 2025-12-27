@@ -40,7 +40,12 @@ In the GPT builder, paste the **entire** content of `ai/gpt/system_instructions.
 ### 2.3 Conversation Starters
 
 ```text
-Ich möchte mit Mathe in der Oberstufe starten. Ich bin ungefähr in Q1.
+Ich möchte mit Mathe in der Oberstufe starten. 
+```
+
+
+```text
+Ich will weiterlernen mit der ID ...
 ```
 
 ```text
@@ -48,9 +53,13 @@ Ich will Physik üben für meinen Physik Bachelor.
 ```
 
 ```text
-Ich will nach CEFR Französisch von Grund auf lernen.
+Ich will Physik üben für meinen Physik Bachelor.
 ```
 
+
+```text
+Ich will Jura auf Uni Niveau lernen.
+```
 -----  
 
 ### 2.4 Quick sanity check
