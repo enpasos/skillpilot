@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (DE)
 
-**Version:** 1.0.4
+**Version:** 1.0.5
 **Datum:** Dezember 2025
 **Projekt:** SkillPilot
 
@@ -56,6 +56,8 @@ Das Herzstück von SkillPilot ist die Abkehr von linearen Listen hin zu einem ve
 * **Die Frontier (Die Lerngrenze):** Das System berechnet für jeden Lernenden dynamisch die sogenannte „Frontier“. Das ist die Menge aller Skills, für die der Lernende *jetzt gerade* bereit ist – also Skills, deren Voraussetzungen er bereits erfüllt hat, die er aber selbst noch nicht beherrscht.
 
 Dies verhindert Überforderung und stellt sicher, dass der KI-Tutor keine willkürlichen Sprünge macht, sondern pädagogisch sinnvoll im Bereich der nächsten Entwicklung (Zone of Proximal Development) agiert.
+
+Während digitale Medien oft als Quellen der Ablenkung gelten, nutzt SkillPilot den Skill-Graphen als Instrument der strikten Fokussierung. Aus der Komplexität des gesamten Curriculums filtert das System – basierend auf dem gewählten Bildungsziel und dem individuellen Fortschritt – präzise jene Inhalte heraus, die an der aktuellen Wissensgrenze liegen. Statt sich in der Breite der Möglichkeiten zu verlieren, sieht der Lernende immer nur den nächsten, machbaren Schritt.
 
 **Der sichtbare Erfolg (Mastery):**
 Für den Lernenden übersetzt SkillPilot diese komplexe Graph-Struktur in eine klare, motivierende Fortschrittsanzeige.

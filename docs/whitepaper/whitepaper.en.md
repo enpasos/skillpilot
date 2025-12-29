@@ -57,6 +57,8 @@ At the heart of SkillPilot lies the departure from linear lists towards a connec
 
 This prevents overload and ensures that the AI tutor does not make arbitrary jumps, but instead operates pedagogically sensibly within the next zone of development (zone of proximal development).
 
+While digital media are often seen as sources of distraction, SkillPilot uses the skill graph as a tool for strict focus. From the complexity of the entire curriculum, the system filters out precisely those contents that lie at the current boundary of knowledge—based on the chosen educational goal and individual progress. Instead of getting lost in the breadth of possibilities, the learner always sees only the next, achievable step.
+
 **The Visible Success (Mastery):**
 For the learner, SkillPilot translates this complex graph structure into a clear, motivating progress display.
 
