@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (EN)
 
-**Version:** 1.0.4
+**Version:** 1.0.5
 **Date:** December 2025  
 **Project:** SkillPilot
 
