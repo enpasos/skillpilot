@@ -157,9 +157,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [skillpilotId])
 
   const togglePlan = useCallback(async (id: string) => {
-    const next = new Set(plannedGoals)
-    if (next.has(id)) next.delete(id)
-    else next.add(id)
+    // Single Goal Mode:
+    // If clicking the ALREADY selected goal -> Deselect it (Set empty)
+    // If clicking a NEW goal -> Select only that one (Set with 1 item)
+    let next: Set<string>;
+
+    if (plannedGoals.has(id)) {
+      next = new Set();
+    } else {
+      next = new Set([id]);
+    }
 
     setPlannedGoals(next)
 

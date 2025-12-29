@@ -195,6 +195,11 @@ public class LearnerService {
                 .filter(id -> id != null && !id.isBlank())
                 .collect(Collectors.toSet());
 
+        if (saneTargetIds.size() > 1) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Only one planned goal (Scope) is allowed at a time.");
+        }
+
         List<PlannedGoal> toDelete = existing.stream()
                 .filter(pg -> !saneTargetIds.contains(pg.getGoalId()))
                 .toList();

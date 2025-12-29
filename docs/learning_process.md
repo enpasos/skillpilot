@@ -25,7 +25,8 @@ The learner selects the specific **Modules** relevant to their path.
 ### Step 3: Concrete Learning Goal (Level 3)
 The learner sets a specific focus.
 - *Definition:* A target goal or topic to work towards.
-- *Default:* "All goals in the Personal Curriculum".
+- *Constraint:* **Only one** Planned Goal can be active at a time to ensure clear focus. Setting a new goal replaces the previous one.
+- *Default:* "All goals in the Personal Curriculum" (if no specific goal is planned).
 - *Action:* The learner says "I want to learn Analysis" or "I want to finish my Bachelor's".
 
 ### Step 4: The Frontier Loop (AI Assisted)
