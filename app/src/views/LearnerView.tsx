@@ -101,12 +101,29 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const plannedCount = useMemo(() => {
     let count = 0
-    plannedGoals.forEach((id) => {
+    const visited = new Set<string>()
+
+    const countRecursive = (id: string) => {
+      if (visited.has(id)) return
+      visited.add(id)
+
+      // Ensure we only count visible items (respecting personal curriculum filters)
       if (!visibleGoals.has(id)) return
+
       const g = goalIndexAll.get(id)
-      if (g && (!g.contains || g.contains.length === 0)) {
+      if (!g) return
+
+      // If atomic (no children), count it
+      if (!g.contains || g.contains.length === 0) {
         count++
+      } else {
+        // Otherwise recurse
+        g.contains.forEach(childId => countRecursive(childId))
       }
+    }
+
+    plannedGoals.forEach((id) => {
+      countRecursive(id)
     })
     return count
   }, [plannedGoals, goalIndexAll, visibleGoals])
