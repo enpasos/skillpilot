@@ -73,6 +73,7 @@ export const en = {
         myGoals: "My Learning Goals",
         marked: "marked",
         completed: "completed",
+        of: "of",
         includesDataFrom: "Includes data from"
     },
     trainer: {

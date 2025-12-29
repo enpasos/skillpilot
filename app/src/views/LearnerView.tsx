@@ -99,44 +99,71 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     return visible
   }, [visibleRootGoals, goalIndexAll, personalConfig])
 
-  const plannedCount = useMemo(() => {
-    let count = 0
+  // Calculate statistics: Total Atomic and Mastered Atomic
+  // Relative to Focus (Planned Subtree) if active, otherwise Global Visible.
+  const stats = useMemo(() => {
+    let totalAtomic = 0
+    let masteredAtomic = 0
     const visited = new Set<string>()
 
     const countRecursive = (id: string) => {
       if (visited.has(id)) return
       visited.add(id)
 
-      // Ensure we only count visible items (respecting personal curriculum filters)
       if (!visibleGoals.has(id)) return
 
       const g = goalIndexAll.get(id)
       if (!g) return
 
-      // If atomic (no children), count it
+      // Atomic Goal
       if (!g.contains || g.contains.length === 0) {
-        count++
+        totalAtomic++
+        if (getMastery(id) >= 1) {
+          masteredAtomic++
+        }
       } else {
-        // Otherwise recurse
         g.contains.forEach(childId => countRecursive(childId))
       }
     }
 
-    plannedGoals.forEach((id) => {
-      countRecursive(id)
-    })
-    return count
-  }, [plannedGoals, goalIndexAll, visibleGoals])
+    if (plannedGoals.size > 0) {
+      // Focus Mode: Count only within planned subtrees
+      plannedGoals.forEach(id => countRecursive(id))
+    } else {
+      // Global Mode: Count all visible root goals and their descendants
+      visibleGoals.forEach(id => {
+        // We iterate visibleGoals set which contains flattened IDs. 
+        // We just need to check if it is atomic.
+        // BUT visibleGoals contains EVERYTHING visible.
+        // So we can just iterate visibleGoals directly.
 
-  const masteredCount = useMemo(() => {
-    let count = 0
-    goalIndexAll.forEach((g) => {
-      if (visibleGoals.has(g.id) && (!g.contains || g.contains.length === 0) && getMastery(g.id) >= 1) {
-        count += 1
-      }
-    })
-    return count
-  }, [goalIndexAll, getMastery, visibleGoals])
+        // Wait, visibleGoals is a Set of ALL visible IDs (flattened). 
+        // So we don't need recursion if we just iterate the Set.
+
+        // Let's stick to recursion from Roots to be safe? 
+        // Actually, visibleGoals set is computed recursively in previous hook.
+        // So iterating visibleGoals and checking if atomic is O(N) and correct.
+
+        // HOWEVER, for consistency with the "Planned Subtree" logic (which needs recursion 
+        // because plannedGoals only contains the top node, not the whole subtree in a flat set 
+        // unless we built it), we should use the same approach or rely on the previous hook.
+
+        // Simplest: 
+        // If plannedGoals > 0: Recursion on planned IDs.
+        // Else: Iteration on visibleGoals Set (check if atomic).
+
+        const g = goalIndexAll.get(id)
+        if (g && (!g.contains || g.contains.length === 0)) {
+          totalAtomic++
+          if (getMastery(id) >= 1) {
+            masteredAtomic++
+          }
+        }
+      })
+    }
+
+    return { totalAtomic, masteredAtomic }
+  }, [plannedGoals, goalIndexAll, visibleGoals, getMastery])
 
   // Load planned goals from backend
   React.useEffect(() => {
@@ -479,7 +506,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           <div className="flex-1 min-w-0 mr-2">
             <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate">{t.learner.myGoals}</h2>
             <div className="text-xs text-text-secondary mt-1 truncate">
-              {plannedCount} {t.learner.marked} • {masteredCount} {t.learner.completed}
+              {stats.masteredAtomic} {t.learner.of} {stats.totalAtomic} {t.learner.completed}
             </div>
           </div>
           <div className="flex items-center gap-1 shrink-0">
