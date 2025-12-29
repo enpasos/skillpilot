@@ -54,7 +54,7 @@ public class LearnerAiController {
     @GetMapping("/{skillpilotId}/state")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse getLearnerState(@PathVariable String skillpilotId) {
-        return learnerService.getLearnerState(skillpilotId);
+        return optimizeResponse(learnerService.getLearnerState(skillpilotId));
     }
 
     @PostMapping("/{skillpilotId}/scope")
@@ -62,7 +62,7 @@ public class LearnerAiController {
 
     public UnifiedLearnerStateResponse setScope(@PathVariable String skillpilotId, @RequestBody ScopeRequest request) {
         learnerService.setScope(skillpilotId, request.goalIds());
-        return learnerService.getLearnerState(skillpilotId);
+        return optimizeResponse(learnerService.getLearnerState(skillpilotId));
     }
 
     @PostMapping("/{skillpilotId}/active-goal")
@@ -70,7 +70,7 @@ public class LearnerAiController {
     public UnifiedLearnerStateResponse setActiveGoal(@PathVariable String skillpilotId,
             @Valid @RequestBody ActiveGoalRequest request) {
         learnerService.setActiveGoal(skillpilotId, request.goalId());
-        return learnerService.getLearnerState(skillpilotId);
+        return optimizeResponse(learnerService.getLearnerState(skillpilotId));
     }
 
     @PostMapping("/{skillpilotId}/mastery")
@@ -98,7 +98,7 @@ public class LearnerAiController {
     public UnifiedLearnerStateResponse setCurriculum(@PathVariable String skillpilotId,
             @RequestBody UpdateCurriculumRequest request) {
         learnerService.setCurriculum(skillpilotId, request.getCurriculumId());
-        return learnerService.getLearnerState(skillpilotId);
+        return optimizeResponse(learnerService.getLearnerState(skillpilotId));
     }
 
     @PostMapping("/{skillpilotId}/personalization")
@@ -107,6 +107,25 @@ public class LearnerAiController {
     public UnifiedLearnerStateResponse setPersonalization(@PathVariable String skillpilotId,
             @RequestBody com.skillpilot.backend.api.PersonalizationRequest request) {
         learnerService.setPersonalCurriculum(skillpilotId, request.config(), request.goalIds(), request.filters());
-        return learnerService.getLearnerState(skillpilotId);
+        return optimizeResponse(learnerService.getLearnerState(skillpilotId));
+    }
+
+    private UnifiedLearnerStateResponse optimizeResponse(UnifiedLearnerStateResponse full) {
+        // Optimization: Reduce Payload Size for AI
+        // 1. frontierAtomic is strictly redundant if we have frontier or
+        // stateMachine.goalOptions
+        // 2. We keep 'frontier' (clusters) to allow setScope
+        return new UnifiedLearnerStateResponse(
+                full.skillpilotId(),
+                full.curriculum(),
+                full.frontier(),
+                java.util.Collections.emptyList(), // frontierAtomic -> cleared
+                full.goals(),
+                full.nextAllowedActions(),
+                full.activeFilters(),
+                full.copySources(),
+                full.learningState(),
+                full.activeGoal(),
+                full.stateMachine());
     }
 }
