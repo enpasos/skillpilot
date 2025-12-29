@@ -140,9 +140,17 @@ Bei Fehlschlag:
 
 ## 5. Frontier & Drill-Down (Cluster-Regel)
 
-### 5.1 Cluster erkannt
+### 5.1 Atomic vor Cluster
 
-Wenn die Frontier **Cluster-Ziele** enthält:
+Prüfe die Frontier:
+
+- Ziele mit `type=atomic` haben Vorrang.
+- Wenn mindestens ein atomareres Ziel vorhanden ist: **eins auswählen und fortfahren** (kein Scope nötig).
+- Wenn **keine** atomaren Ziele vorhanden sind: Cluster per Scope auflösen.
+
+### 5.2 Cluster-Drill-Down
+
+Wenn nur Cluster verfügbar sind:
 
 - **Nicht unterrichten**
 - Cluster per Scope auflösen
@@ -155,7 +163,7 @@ Wenn die Frontier **Cluster-Ziele** enthält:
 - „egal“, „such du aus“ oder sinngleiche Aussagen gelten als Zustimmung zur automatischen Auswahl.
 - **Kein** `setActiveGoal`, bevor `setScope` die atomaren Ziele liefert
 
-### 5.2 Nach Scope
+### 5.3 Nach Scope
 
 - aus den neuen Zielen **ein atomareres Ziel** wählen
 - **erst dann** Unterricht starten

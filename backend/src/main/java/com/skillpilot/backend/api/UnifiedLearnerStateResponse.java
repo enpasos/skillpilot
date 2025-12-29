@@ -6,15 +6,14 @@ import java.util.List;
 import java.util.Set;
 
 public record UnifiedLearnerStateResponse(
-                String skillpilotId,
-                LandscapeSummary curriculum,
-                List<FrontierGoal> frontier,
-                List<FrontierGoal> frontierAtomic,
-                LearnerGoals goals,
-                List<String> nextAllowedActions,
-                List<String> activeFilters,
-                Set<CopySource> copySources,
-                String learningState,
-                FrontierGoal activeGoal,
-                StateMachineInfo stateMachine) {
+        String skillpilotId,
+        LandscapeSummary curriculum,
+        List<FrontierGoal> frontier,
+        LearnerGoals goals,
+        List<String> nextAllowedActions,
+        List<String> activeFilters,
+        Set<CopySource> copySources,
+        String learningState,
+        FrontierGoal activeGoal,
+        StateMachineInfo stateMachine) {
 }

@@ -125,7 +125,6 @@ public class LearnerService {
                     UnifiedLearnerStateResponse state = getLearnerState(skillpilotId);
                     return new MasteryUpdateResponse(
                             state.frontier(),
-                            state.frontierAtomic(),
                             state.nextAllowedActions(),
                             state.learningState(),
                             state.activeGoal(),
@@ -166,7 +165,6 @@ public class LearnerService {
         UnifiedLearnerStateResponse state = getLearnerState(skillpilotId);
         return new MasteryUpdateResponse(
                 state.frontier(),
-                state.frontierAtomic(),
                 state.nextAllowedActions(),
                 state.learningState(),
                 state.activeGoal(),
@@ -613,7 +611,7 @@ public class LearnerService {
         StateMachineInfo stateMachine = buildStateMachineInfo(curriculumId, frontier, frontierAtomic, activeGoal,
                 learningState, activeFilters);
 
-        return new UnifiedLearnerStateResponse(learner.getSkillpilotId(), curriculumSummary, frontier, frontierAtomic,
+        return new UnifiedLearnerStateResponse(learner.getSkillpilotId(), curriculumSummary, frontier,
                 new LearnerGoals(plannedRich, masteredCount, totalCount), nextAllowedActions, activeFilters,
                 learner.getCopySources(), learningState.name(), activeGoal, stateMachine);
     }

@@ -115,7 +115,7 @@
             "post": {
                 "operationId": "setActiveGoal",
                 "summary": "Lock an atomic goal for teaching",
-                "description": "Selects the current atomic goal (must be from frontierAtomic) and locks the session until mastery or redirect.",
+                "description": "Selects the current atomic goal (use stateMachine.goalOptions or filter frontier by type=atomic) and locks the session until mastery or redirect.",
                 "parameters": [
                     {
                         "name": "skillpilotId",
@@ -325,13 +325,7 @@
                     },
                     "frontier": {
                         "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/FrontierGoal"
-                        }
-                    },
-                    "frontierAtomic": {
-                        "type": "array",
-                        "description": "Atomic-only subset of frontier. Prefer this list for selecting a learnable goal.",
+                        "description": "Goals ready to be learned; includes atomic and cluster goals. Filter by type=atomic when selecting an active goal.",
                         "items": {
                             "$ref": "#/components/schemas/FrontierGoal"
                         }
@@ -450,13 +444,7 @@
                 "properties": {
                     "frontier": {
                         "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/FrontierGoal"
-                        }
-                    },
-                    "frontierAtomic": {
-                        "type": "array",
-                        "description": "Atomic-only subset of frontier. Prefer this list for the next goal.",
+                        "description": "Updated frontier after mastery; includes atomic and cluster goals. Filter by type=atomic when selecting an active goal.",
                         "items": {
                             "$ref": "#/components/schemas/FrontierGoal"
                         }
@@ -493,7 +481,7 @@
                     },
                     "goalOptions": {
                         "type": "array",
-                        "description": "Goal options relevant to the required action (e.g. frontierAtomic or active goal).",
+                        "description": "Goal options relevant to the required action (e.g. frontier goals or active goal).",
                         "items": {
                             "$ref": "#/components/schemas/FrontierGoal"
                         }
