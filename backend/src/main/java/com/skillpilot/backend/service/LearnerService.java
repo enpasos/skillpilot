@@ -316,10 +316,11 @@ public class LearnerService {
         Map<String, LearningGoal> allGoals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
         Map<String, List<String>> effectiveRequires = computeEffectiveRequires(allGoals);
         Map<String, Double> masteryMap = getMastery(skillpilotId);
+        Map<String, Double> effectiveMastery = computeEffectiveMastery(allGoals, masteryMap);
 
         List<String> frontier = new ArrayList<>();
         for (LearningGoal goal : allGoals.values()) {
-            Double currentMastery = masteryMap.getOrDefault(goal.getId(), 0.0);
+            Double currentMastery = effectiveMastery.getOrDefault(goal.getId(), 0.0);
             if (currentMastery >= 0.9) {
                 continue; // Already mastered
             }
@@ -328,7 +329,7 @@ public class LearnerService {
             List<String> requires = effectiveRequires.getOrDefault(goal.getId(), goal.getRequires());
             if (requires != null) {
                 for (String reqId : requires) {
-                    Double reqMastery = masteryMap.getOrDefault(reqId, 0.0);
+                    Double reqMastery = effectiveMastery.getOrDefault(reqId, 0.0);
                     if (reqMastery < 0.9) {
                         prerequisitesMet = false;
                         break;
@@ -354,6 +355,7 @@ public class LearnerService {
 
         Map<String, LearningGoal> allGoals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
         Map<String, Double> masteryMap = getMastery(skillpilotId);
+        Map<String, Double> effectiveMastery = computeEffectiveMastery(allGoals, masteryMap);
         Map<String, List<String>> effectiveRequires = computeEffectiveRequires(allGoals);
 
         // Calculate Scope (Plan + Descendants + Prerequisites)
@@ -394,7 +396,7 @@ public class LearnerService {
             if (!plannedIds.isEmpty() && !scope.contains(goal.getId())) {
                 continue;
             }
-            Double currentMastery = masteryMap.getOrDefault(goal.getId(), 0.0);
+            Double currentMastery = effectiveMastery.getOrDefault(goal.getId(), 0.0);
             if (currentMastery >= 0.9) {
                 continue;
             }
@@ -403,7 +405,7 @@ public class LearnerService {
             List<String> requires = effectiveRequires.getOrDefault(goal.getId(), goal.getRequires());
             if (requires != null) {
                 for (String reqId : requires) {
-                    Double reqMastery = masteryMap.getOrDefault(reqId, 0.0);
+                    Double reqMastery = effectiveMastery.getOrDefault(reqId, 0.0);
                     if (reqMastery < 0.9) {
                         prerequisitesMet = false;
                         break;
@@ -438,6 +440,49 @@ public class LearnerService {
         }
 
         return frontier;
+    }
+
+    private Map<String, Double> computeEffectiveMastery(Map<String, LearningGoal> allGoals,
+            Map<String, Double> masteryMap) {
+        Map<String, Double> cache = new HashMap<>();
+        Set<String> visiting = new HashSet<>();
+        for (String goalId : allGoals.keySet()) {
+            computeEffectiveMastery(goalId, allGoals, masteryMap, cache, visiting);
+        }
+        return cache;
+    }
+
+    private double computeEffectiveMastery(String goalId, Map<String, LearningGoal> allGoals,
+            Map<String, Double> masteryMap, Map<String, Double> cache, Set<String> visiting) {
+        Double cached = cache.get(goalId);
+        if (cached != null) {
+            return cached;
+        }
+        if (visiting.contains(goalId)) {
+            return masteryMap.getOrDefault(goalId, 0.0);
+        }
+        visiting.add(goalId);
+
+        LearningGoal goal = allGoals.get(goalId);
+        double mastery = masteryMap.getOrDefault(goalId, 0.0);
+        double effective = mastery;
+
+        if (goal != null && goal.getContains() != null && !goal.getContains().isEmpty()) {
+            List<Double> childValues = new ArrayList<>();
+            for (String childId : goal.getContains()) {
+                if (!allGoals.containsKey(childId)) {
+                    continue;
+                }
+                childValues.add(computeEffectiveMastery(childId, allGoals, masteryMap, cache, visiting));
+            }
+            if (!childValues.isEmpty()) {
+                effective = childValues.stream().min(Double::compareTo).orElse(mastery);
+            }
+        }
+
+        visiting.remove(goalId);
+        cache.put(goalId, effective);
+        return effective;
     }
 
     @Transactional(readOnly = true)
