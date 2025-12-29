@@ -1,5 +1,6 @@
 package com.skillpilot.backend.config;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -91,10 +92,8 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
                               long duration,
                               String requestBody,
                               String responseBody) {
-        String pathValue = (aiTracePath == null || aiTracePath.isBlank())
-                ? "tmp/ai-trace.jsonl"
-                : aiTracePath;
-        Path path = Paths.get(pathValue);
+        Path path = resolveAiTracePath();
+        String skillpilotId = resolveSkillpilotId(request.getRequestURI(), requestBody, responseBody);
         Map<String, Object> entry = new LinkedHashMap<>();
         entry.put("ts", Instant.now().toString());
         entry.put("method", request.getMethod());
@@ -102,12 +101,43 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         entry.put("query", request.getQueryString());
         entry.put("status", response.getStatus());
         entry.put("durationMs", duration);
-        entry.put("skillpilotId", extractSkillpilotId(request.getRequestURI()));
+        entry.put("skillpilotId", skillpilotId);
         entry.put("requestBody", truncate(requestBody));
         entry.put("responseBody", truncate(responseBody));
 
         try {
             String line = objectMapper.writeValueAsString(entry) + System.lineSeparator();
+            writeTraceLine(path, line);
+            writeTraceLine(resolvePerLearnerTracePath(path, skillpilotId), line);
+        } catch (IOException e) {
+            logger.warn("Failed to serialize AI trace entry", e);
+        }
+    }
+
+    private Path resolveAiTracePath() {
+        String pathValue = (aiTracePath == null || aiTracePath.isBlank())
+                ? "tmp/ai-trace.jsonl"
+                : aiTracePath;
+        return Paths.get(pathValue);
+    }
+
+    private Path resolvePerLearnerTracePath(Path basePath, String skillpilotId) {
+        if (skillpilotId == null || skillpilotId.isBlank()) {
+            return null;
+        }
+        String safeId = sanitizeSkillpilotId(skillpilotId);
+        Path parent = basePath.getParent();
+        if (parent == null) {
+            parent = Paths.get("tmp");
+        }
+        return parent.resolve("ai-trace-" + safeId + ".jsonl");
+    }
+
+    private void writeTraceLine(Path path, String line) {
+        if (path == null) {
+            return;
+        }
+        try {
             synchronized (AI_TRACE_LOCK) {
                 Path parent = path.getParent();
                 if (parent != null) {
@@ -130,6 +160,41 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         return value.substring(0, aiTraceMaxBodyChars) + "...(truncated)";
     }
 
+    private String resolveSkillpilotId(String uri, String requestBody, String responseBody) {
+        String skillpilotId = extractSkillpilotId(uri);
+        if (!skillpilotId.isBlank()) {
+            return skillpilotId;
+        }
+        skillpilotId = extractSkillpilotIdFromJson(requestBody);
+        if (!skillpilotId.isBlank()) {
+            return skillpilotId;
+        }
+        return extractSkillpilotIdFromJson(responseBody);
+    }
+
+    private String extractSkillpilotIdFromJson(String body) {
+        if (body == null || body.isBlank()) {
+            return "";
+        }
+        try {
+            JsonNode node = objectMapper.readTree(body);
+            JsonNode direct = node.get("skillpilotId");
+            if (direct != null && !direct.asText("").isBlank()) {
+                return direct.asText("");
+            }
+            JsonNode state = node.get("state");
+            if (state != null) {
+                JsonNode nested = state.get("skillpilotId");
+                if (nested != null && !nested.asText("").isBlank()) {
+                    return nested.asText("");
+                }
+            }
+        } catch (IOException ignored) {
+            return "";
+        }
+        return "";
+    }
+
     private String extractSkillpilotId(String uri) {
         if (uri == null) {
             return "";
@@ -141,5 +206,9 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
             }
         }
         return "";
+    }
+
+    private String sanitizeSkillpilotId(String value) {
+        return value.replaceAll("[^A-Za-z0-9._-]", "_");
     }
 }
