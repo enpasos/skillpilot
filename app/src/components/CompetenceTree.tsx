@@ -17,6 +17,8 @@ interface TreeNodeProps {
   aggregatedPlannedGoals?: Map<string, number>
   totalStudents?: number
   personalConfig?: Record<string, { selected: boolean; filterId?: string }>
+  hasActivePlan?: boolean
+  isInPlannedSubtree?: boolean
 }
 
 const TreeNode: React.FC<TreeNodeProps> = ({
@@ -32,6 +34,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   aggregatedPlannedGoals,
   totalStudents,
   personalConfig,
+  hasActivePlan = false,
+  isInPlannedSubtree = false,
 }) => {
   const t = useTranslation()
   const goal = allGoals.get(goalId)
@@ -92,6 +96,16 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   const isPlanned = plannedGoals.has(goal.id)
   const isSelected = selectedId === goal.id
 
+  // Propagate: If I am in the subtree (passed from parent) OR I am the start of the plan
+  const selfInSubtree = isInPlannedSubtree || isPlanned
+
+  // Active Plan Strategy:
+  // If no plan is active at all -> No Dimming (normal behavior)
+  // If plan is active:
+  //   - If selfInSubtree -> Show Normal / Highlighted
+  //   - Else -> Dim
+  const isDimmed = hasActivePlan && !selfInSubtree
+
   const plannedCount = aggregatedPlannedGoals?.get(goal.id) ?? 0
 
   return (
@@ -124,9 +138,13 @@ const TreeNode: React.FC<TreeNodeProps> = ({
         </div>
 
         <span
-          className={`text-sm truncate flex-1 ${isPlanned
-            ? 'text-slate-900 dark:text-slate-100 font-medium'
-            : 'text-slate-500 dark:text-slate-500'
+          className={`text-sm truncate flex-1 ${isDimmed
+            ? 'text-slate-300 dark:text-slate-600' // Dimmed (Outside Scope)
+            : isPlanned
+              ? 'text-slate-900 dark:text-slate-100 font-medium' // Planned (Focus)
+              : mastery >= 1
+                ? 'text-slate-500 dark:text-slate-400' // Mastered (Normal Scope)
+                : 'text-slate-700 dark:text-slate-200' // Open (Normal Scope)
             }`}
           title={goal.title}
         >
@@ -174,6 +192,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
               aggregatedPlannedGoals={aggregatedPlannedGoals}
               totalStudents={totalStudents}
               personalConfig={personalConfig}
+              hasActivePlan={hasActivePlan}
+              isInPlannedSubtree={selfInSubtree}
             />
           ))}
         </div>
@@ -202,6 +222,7 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({ rootGoals, activ
   // and might not have the specific tags (e.g. 'GK') that their children have.
   // We let TreeNode handle the filtering of children.
   const visibleRoots = rootGoals
+  const hasActivePlan = props.plannedGoals.size > 0
 
   return (
     <div className="flex flex-col gap-1 overflow-y-auto max-h-full pr-2">
@@ -211,6 +232,8 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({ rootGoals, activ
           goalId={g.id}
           activeFilter={activeFilter}
           personalConfig={personalConfig}
+          hasActivePlan={hasActivePlan}
+          isInPlannedSubtree={false}
           {...props}
         />
       ))}
