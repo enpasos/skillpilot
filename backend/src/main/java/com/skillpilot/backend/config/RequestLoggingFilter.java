@@ -102,8 +102,8 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         entry.put("status", response.getStatus());
         entry.put("durationMs", duration);
         entry.put("skillpilotId", skillpilotId);
-        entry.put("requestBody", truncate(requestBody));
-        entry.put("responseBody", truncate(responseBody));
+        entry.put("requestBody", formatBodyForTrace(requestBody));
+        entry.put("responseBody", formatBodyForTrace(responseBody));
 
         try {
             String line = objectMapper.writeValueAsString(entry) + System.lineSeparator();
@@ -158,6 +158,20 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
             return value;
         }
         return value.substring(0, aiTraceMaxBodyChars) + "...(truncated)";
+    }
+
+    private Object formatBodyForTrace(String body) {
+        if (body == null || body.isBlank()) {
+            return "";
+        }
+        if (body.length() > aiTraceMaxBodyChars) {
+            return truncate(body);
+        }
+        try {
+            return objectMapper.readTree(body);
+        } catch (IOException e) {
+            return body;
+        }
     }
 
     private String resolveSkillpilotId(String uri, String requestBody, String responseBody) {
