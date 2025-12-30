@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Medal, Target, Send } from 'lucide-react'
+import { Target, Send, Check } from 'lucide-react'
 import { useTranslation } from '../hooks/useTranslation'
 import type { UiGoal } from '../goalTypes'
 
@@ -152,7 +152,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             {activeGoalId === goal.id ? (
               <Send size={16} className="text-amber-500" />
             ) : mastery >= 1 ? (
-              <Medal size={16} />
+              <Check size={16} />
             ) : (
               <Target size={16} />
             )}

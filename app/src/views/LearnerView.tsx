@@ -2,7 +2,7 @@ import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
-import { Settings, Upload, Download, RefreshCw, Menu, X, Medal, Target, Send } from 'lucide-react'
+import { Settings, Upload, Download, RefreshCw, Menu, X, Target, Send, Check } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -507,7 +507,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate">{t.learner.myGoals}</h2>
             <div className="text-xs flex items-center gap-2 mt-1 truncate">
               <span className="flex items-center gap-1 font-bold text-emerald-500" title={t.learner.completed}>
-                {stats.masteredAtomic} <Medal size={16} />
+                {stats.masteredAtomic} <Check size={16} />
               </span>
               <span className="text-slate-400 dark:text-slate-500 flex items-center gap-1 text-[10px]">
                 ... <Send size={16} className="text-amber-500" /> ...
