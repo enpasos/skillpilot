@@ -145,7 +145,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             className={`mr-1 ${isDimmed
               ? 'text-slate-300 dark:text-slate-600'
               : mastery >= 1
-                ? 'text-amber-500'
+                ? 'text-emerald-500'
                 : 'text-red-500'
               }`}
           >

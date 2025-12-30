@@ -506,7 +506,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           <div className="flex-1 min-w-0 mr-2">
             <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate">{t.learner.myGoals}</h2>
             <div className="text-xs flex items-center gap-2 mt-1 truncate">
-              <span className="flex items-center gap-1 font-bold text-amber-500" title={t.learner.completed}>
+              <span className="flex items-center gap-1 font-bold text-emerald-500" title={t.learner.completed}>
                 {stats.masteredAtomic} <Medal size={16} />
               </span>
               <span className="text-slate-400 dark:text-slate-500 flex items-center gap-1 text-[10px]">
