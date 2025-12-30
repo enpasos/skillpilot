@@ -2,7 +2,7 @@ import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
-import { Settings, Upload, Download, RefreshCw, Menu, X } from 'lucide-react'
+import { Settings, Upload, Download, RefreshCw, Menu, X, Medal, Target, Send } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -505,8 +505,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         <div className="p-4 border-b border-border-color flex items-center justify-between shrink-0">
           <div className="flex-1 min-w-0 mr-2">
             <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate">{t.learner.myGoals}</h2>
-            <div className="text-xs text-text-secondary mt-1 truncate">
-              {stats.masteredAtomic} {t.learner.of} {stats.totalAtomic} {t.learner.completed}
+            <div className="text-xs flex items-center gap-2 mt-1 truncate">
+              <span className="flex items-center gap-1 font-bold text-amber-500" title={t.learner.completed}>
+                {stats.masteredAtomic} <Medal size={16} />
+              </span>
+              <span className="text-slate-300 dark:text-slate-600 flex items-center gap-1 text-[10px]">
+                ... <Send size={12} className="text-sky-500" /> ...
+              </span>
+              <span className="flex items-center gap-1 font-bold text-red-500" title="Total">
+                {stats.totalAtomic} <Target size={16} />
+              </span>
             </div>
           </div>
           <div className="flex items-center gap-1 shrink-0">
