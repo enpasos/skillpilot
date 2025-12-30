@@ -130,15 +130,17 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           <span className="text-[10px]">{isExpanded ? '▼' : '▶'}</span>
         </button>
 
-        <div
-          className="w-12 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden flex-shrink-0"
-          title={`${t.tooltips.progress}: ${(mastery * 100).toFixed(0)}%`}
-        >
+        {children.length > 0 && (
           <div
-            className={`h-full ${mastery >= 1 ? 'bg-emerald-500' : 'bg-sky-500'}`}
-            style={{ width: `${mastery * 100}%` }}
-          />
-        </div>
+            className="w-12 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden flex-shrink-0"
+            title={`${t.tooltips.progress}: ${(mastery * 100).toFixed(0)}%`}
+          >
+            <div
+              className={`h-full ${mastery >= 1 ? 'bg-emerald-500' : 'bg-sky-500'}`}
+              style={{ width: `${mastery * 100}%` }}
+            />
+          </div>
+        )}
 
         {children.length === 0 && (
           <div
