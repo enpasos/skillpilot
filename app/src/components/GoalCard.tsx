@@ -45,69 +45,9 @@ export const GoalCard: React.FC<GoalCardProps> = ({ goal, masteryValue, onMaster
 
       <p className="mt-2 text-sm text-text-primary leading-relaxed">{goal.description}</p>
 
-      {/* Technical Details - Only shown for Non-Atomic Goals (Clusters) OR if you want to keep them for atomic goals but user asked to simplify. 
-          User said "die atomaren Ziele könnte man wie folgt vereinfachen" implying hiding details for them. 
-      */}
-      {!isAtomic && (
-        <>
-          <div className="mt-3 flex flex-wrap gap-2 text-xs text-text-secondary">
-            <span className="rounded-full border border-border-color px-3 py-1">
-              Phase {goal.phase} · {goal.area}
-            </span>
-            <span className="rounded-full border border-border-color px-3 py-1">{levelLabel(goal.level)}</span>
-            <span className="rounded-full border border-border-color px-3 py-1">{goal.core ? 'Kernziel' : 'Erweiterung'}</span>
-            <span className="rounded-full border border-border-color px-3 py-1">Gewicht {goal.weight}</span>
-          </div>
+      {/* Technical Details removed for Simplified Learner View */}
 
-          <div className="mt-3 grid gap-3 text-[11px] sm:grid-cols-2">
-            {goal.leitideen.length > 0 && (
-              <div>
-                <h3 className="text-xs font-semibold mb-1 text-text-primary">Leitideen</h3>
-                <div className="flex flex-wrap gap-1">
-                  {goal.leitideen.map((idea) => (
-                    <span key={idea} className="rounded-full border border-border-color px-2 py-0.5 text-text-secondary">
-                      {idea}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-            {goal.kompetenzen.length > 0 && (
-              <div>
-                <h3 className="text-xs font-semibold mb-1 text-text-primary">Prozesskompetenzen</h3>
-                <div className="flex flex-wrap gap-1">
-                  {goal.kompetenzen.map((kompetenz) => (
-                    <span
-                      key={kompetenz}
-                      className="rounded-full border border-border-color px-2 py-0.5 text-text-secondary"
-                    >
-                      {kompetenz}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {goal.examples.length > 0 && (
-            <div className="mt-3 text-[11px] text-text-secondary">
-              <h3 className="text-xs font-semibold mb-1 text-text-primary">Beispiele</h3>
-              <div className="flex flex-wrap gap-1">
-                {goal.examples.map((exampleId) => (
-                  <span
-                    key={exampleId}
-                    className="rounded-full border border-dashed border-border-color px-2 py-0.5 text-[11px] text-text-secondary"
-                  >
-                    {exampleId}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {goal.sourceRef && <div className="mt-2 text-[11px] text-text-secondary">Quelle: {goal.sourceRef}</div>}
-        </>
-      )}
+      {goal.sourceRef && <div className="mt-2 text-[11px] text-text-secondary">Quelle: {goal.sourceRef}</div>}
 
       {showLearnerTools && (
         <div className="mt-4 space-y-2">
