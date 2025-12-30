@@ -518,7 +518,40 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             </div>
           </div>
           <div className="flex items-center gap-1 shrink-0">
-            <button onClick={onRefresh} className="p-1 text-text-secondary hover:text-sky-400"><RefreshCw size={16} /></button>
+            <button onClick={() => {
+              if (onRefresh) onRefresh();
+              // Re-fetch local learner data
+              const fetchLearnerData = async () => {
+                try {
+                  const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+                  const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
+                  const res = await fetch(url)
+                  if (res.ok) {
+                    const data = await res.json()
+                    setLearnerData(data)
+                  }
+                } catch (e) {
+                  console.warn('Failed to reload learner data', e)
+                }
+              };
+              const fetchPlanned = async () => {
+                try {
+                  const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+                  const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned` : `/api/ui/learners/${skillpilotId}/planned`
+                  const res = await fetch(url)
+                  if (res.ok) {
+                    const data = await res.json()
+                    if (data.goals && Array.isArray(data.goals)) {
+                      setPlannedGoals(new Set(data.goals))
+                    }
+                  }
+                } catch (e) {
+                  console.warn('Failed to reload planned goals', e)
+                }
+              }
+              fetchLearnerData();
+              fetchPlanned();
+            }} className="p-1 text-text-secondary hover:text-sky-400"><RefreshCw size={16} /></button>
             <button onClick={() => setIsSetupOpen(true)} className="p-1 text-text-secondary hover:text-sky-400"><Settings size={16} /></button>
             <ThemeToggle />
             {isMobile && (
