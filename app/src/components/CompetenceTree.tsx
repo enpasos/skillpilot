@@ -138,98 +138,82 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           />
         </div>
 
+        {children.length === 0 && (
+          <div
+            className={`mr-1 ${isDimmed
+              ? 'text-slate-300 dark:text-slate-600'
+              : mastery >= 1
+                ? 'text-amber-500'
+                : 'text-red-500'
+              }`}
+          >
+            {mastery >= 1 ? <Medal size={16} /> : <Target size={16} />}
+          </div>
+        )}
+
+        <span
+          className={`text-sm truncate flex-1 ${isDimmed
+            ? 'text-slate-300 dark:text-slate-600' // Dimmed (Outside Scope)
+            : isPlanned
+              ? 'text-slate-900 dark:text-slate-100 font-medium' // Planned (Focus)
+              : mastery >= 1
+                ? 'text-slate-500 dark:text-slate-400' // Mastered (Normal Scope)
+                : 'text-slate-700 dark:text-slate-200' // Open (Normal Scope)
+            }`}
+          title={goal.title}
+        >
+          {goal.title}
+        </span>
+
+        {aggregatedPlannedGoals ? (
+          <div className="flex items-center gap-1 text-slate-500">
+            {plannedCount > 0 && (
+              <>
+                <span className="text-amber-400">★</span>
+                <span className="text-xs">{plannedCount}</span>
+              </>
+            )}
+          </div>
+        ) : (
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              onTogglePlan(goal.id)
+            }}
+            className={`p-1 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors ${isPlanned ? 'text-amber-400' : 'text-slate-300 dark:text-slate-600 hover:text-amber-400 dark:hover:text-amber-200'
+              }`}
+            title={isPlanned ? t.tooltips.removeFromList : t.tooltips.addToList}
+          >
+            ★
+          </button>
+        )}
       </div>
-
-      {children.length === 0 && ( /* Atomic Goal Icon */
-        <div
-          className={`mr-1 ${isDimmed
-            ? 'text-slate-300 dark:text-slate-600'
-            : mastery >= 1
-              ? 'text-amber-500'
-              : 'text-amber-500' // Target is now Amber/Orange based on "Target (Rot - analog Header)" user said red, but usually target is reddish/orange. Let's use text-red-500 to match header if header was red.
-            }`}
-        >
-          {/* Wait, header was text-red-500. Let's match red for Target. */}
-        </div>
-      )}
-      {/* Actually let's do the conditional inside the span logic properly */}
-
-      {children.length === 0 && (
-        <div
-          className={`mr-1 ${isDimmed
-            ? 'text-slate-300 dark:text-slate-600'
-            : mastery >= 1
-              ? 'text-amber-500'
-              : 'text-red-500'
-            }`}
-        >
-          {mastery >= 1 ? <Medal size={16} /> : <Target size={16} />}
-        </div>
-      )}
-
-      <span
-        className={`text-sm truncate flex-1 ${isDimmed
-          ? 'text-slate-300 dark:text-slate-600' // Dimmed (Outside Scope)
-          : isPlanned
-            ? 'text-slate-900 dark:text-slate-100 font-medium' // Planned (Focus)
-            : mastery >= 1
-              ? 'text-slate-500 dark:text-slate-400' // Mastered (Normal Scope)
-              : 'text-slate-700 dark:text-slate-200' // Open (Normal Scope)
-          }`}
-        title={goal.title}
-      >
-        {goal.title}
-      </span>
-
-      {aggregatedPlannedGoals ? (
-        <div className="flex items-center gap-1 text-slate-500">
-          {plannedCount > 0 && (
-            <>
-              <span className="text-amber-400">★</span>
-              <span className="text-xs">{plannedCount}</span>
-            </>
-          )}
-        </div>
-      ) : (
-        <button
-          onClick={(e) => {
-            e.stopPropagation()
-            onTogglePlan(goal.id)
-          }}
-          className={`p-1 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors ${isPlanned ? 'text-amber-400' : 'text-slate-300 dark:text-slate-600 hover:text-amber-400 dark:hover:text-amber-200'
-            }`}
-          title={isPlanned ? t.tooltips.removeFromList : t.tooltips.addToList}
-        >
-          ★
-        </button>
-      )}
-    </div>
 
       {
-    isExpanded && hasChildren && (
-      <div>
-        {visibleChildren.map((childId) => (
-          <TreeNode
-            key={childId}
-            goalId={childId}
-            allGoals={allGoals}
-            getMastery={getMastery}
-            plannedGoals={plannedGoals}
-            onTogglePlan={onTogglePlan}
-            onSelect={onSelect}
-            selectedId={selectedId}
-            depth={depth + 1}
-            activeFilter={activeFilter}
-            aggregatedPlannedGoals={aggregatedPlannedGoals}
-            totalStudents={totalStudents}
-            personalConfig={personalConfig}
-            hasActivePlan={hasActivePlan}
-            isInPlannedSubtree={selfInSubtree}
-          />
-        ))}
-      </div>
-    )
-  }
+        isExpanded && hasChildren && (
+          <div>
+            {visibleChildren.map((childId) => (
+              <TreeNode
+                key={childId}
+                goalId={childId}
+                allGoals={allGoals}
+                getMastery={getMastery}
+                plannedGoals={plannedGoals}
+                onTogglePlan={onTogglePlan}
+                onSelect={onSelect}
+                selectedId={selectedId}
+                depth={depth + 1}
+                activeFilter={activeFilter}
+                aggregatedPlannedGoals={aggregatedPlannedGoals}
+                totalStudents={totalStudents}
+                personalConfig={personalConfig}
+                hasActivePlan={hasActivePlan}
+                isInPlannedSubtree={selfInSubtree}
+              />
+            ))}
+          </div>
+        )
+      }
     </div >
   )
 }
