@@ -542,7 +542,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             selectedId={selectedId}
             activeFilter={effectiveActiveFilter}
             personalConfig={personalConfig}
-            activeGoalId={currentGoal?.id}
+            activeGoalId={learnerData?.activeGoalId}
           />
         </div>
         {learnerData && learnerData.copySources && learnerData.copySources.length > 0 && (
