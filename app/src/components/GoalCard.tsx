@@ -1,7 +1,7 @@
 import React from 'react'
 import { Check, Target, Send } from 'lucide-react'
 import type { UiGoal as Goal } from '../goalTypes'
-import { levelLabel } from '../goalUiUtils'
+
 import { MasteryBar } from './MasteryBar'
 
 interface GoalCardProps {
