@@ -152,7 +152,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             {activeGoalId === goal.id ? (
               <Send size={16} className="text-amber-500" />
             ) : mastery >= 1 ? (
-              <Check size={16} />
+              <Check size={16} strokeWidth={3} />
             ) : (
               <Target size={16} />
             )}
