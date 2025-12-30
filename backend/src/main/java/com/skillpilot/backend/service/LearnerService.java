@@ -272,7 +272,7 @@ public class LearnerService {
             }
         }
 
-        learner.setActiveGoalId(null);
+        // learner.setActiveGoalId(null);
         learner.setLearningState(LearningState.FRONTIER);
         learnerRepository.save(learner);
 
