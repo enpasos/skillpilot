@@ -20,5 +20,6 @@ export interface Learner {
   selectedCurriculum: string;
   personalCurriculum: string;
   copySources: CopySource[];
+  activeGoalId?: string;
 }
 
