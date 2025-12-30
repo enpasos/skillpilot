@@ -10,9 +10,11 @@ import jakarta.persistence.Enumerated;
 import java.time.Instant;
 import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name = "learner")
+@DynamicUpdate
 public class Learner {
 
     @Id

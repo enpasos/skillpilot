@@ -21,6 +21,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -227,8 +228,11 @@ public class LearnerService {
                     "Invalid curriculum ID: " + curriculumId);
         }
         Learner learner = getLearner(skillpilotId);
+        boolean curriculumChanged = !Objects.equals(learner.getSelectedCurriculum(), curriculumId);
         learner.setSelectedCurriculum(curriculumId);
-        learner.setActiveGoalId(null);
+        if (curriculumChanged) {
+            learner.setActiveGoalId(null);
+        }
         learner.setLearningState(LearningState.FRONTIER);
         learnerRepository.save(learner);
     }
@@ -272,9 +276,7 @@ public class LearnerService {
             }
         }
 
-        // learner.setActiveGoalId(null);
         learner.setLearningState(LearningState.FRONTIER);
-        learnerRepository.save(learner);
 
         // If we have filters but no specific landscapes, apply to current (Root)
         if (targetLandscapes.isEmpty() && !effectiveFilters.isEmpty()) {
