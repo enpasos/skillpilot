@@ -118,7 +118,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({ goal, masteryValue, onMaster
             </div>
           )}
 
-          <MasteryBar value={masteryValue} />
+          {!isAtomic && <MasteryBar value={masteryValue} />}
 
           {onMasteryChange && (
             <div className="flex items-center gap-3">
