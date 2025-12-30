@@ -47,7 +47,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({ goal, masteryValue, onMaster
 
       {/* Technical Details removed for Simplified Learner View */}
 
-      {goal.sourceRef && <div className="mt-2 text-[11px] text-text-secondary">Quelle: {goal.sourceRef}</div>}
+
 
       {showLearnerTools && (
         <div className="mt-4 space-y-2">
