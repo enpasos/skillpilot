@@ -20,6 +20,7 @@ interface TreeNodeProps {
   personalConfig?: Record<string, { selected: boolean; filterId?: string }>
   hasActivePlan?: boolean
   isInPlannedSubtree?: boolean
+  activeGoalId?: string
 }
 
 const TreeNode: React.FC<TreeNodeProps> = ({
@@ -37,6 +38,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   personalConfig,
   hasActivePlan = false,
   isInPlannedSubtree = false,
+  activeGoalId,
 }) => {
   const t = useTranslation()
   const goal = allGoals.get(goalId)
@@ -147,7 +149,13 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 : 'text-red-500'
               }`}
           >
-            {mastery >= 1 ? <Medal size={16} /> : <Target size={16} />}
+            {activeGoalId === goal.id ? (
+              <img src="/favicon/favicon.svg" alt="Active" className="w-4 h-4" />
+            ) : mastery >= 1 ? (
+              <Medal size={16} />
+            ) : (
+              <Target size={16} />
+            )}
           </div>
         )}
 
@@ -209,6 +217,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 personalConfig={personalConfig}
                 hasActivePlan={hasActivePlan}
                 isInPlannedSubtree={selfInSubtree}
+                activeGoalId={activeGoalId}
               />
             ))}
           </div>
@@ -231,6 +240,7 @@ interface CompetenceTreeProps {
   aggregatedPlannedGoals?: Map<string, number>
   totalStudents?: number
   personalConfig?: Record<string, { selected: boolean; filterId?: string }>
+  activeGoalId?: string
 }
 
 export const CompetenceTree: React.FC<CompetenceTreeProps> = ({ rootGoals, activeFilter, personalConfig, ...props }) => {
