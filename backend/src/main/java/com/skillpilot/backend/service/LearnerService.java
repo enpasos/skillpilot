@@ -158,7 +158,9 @@ public class LearnerService {
         masteryRepository.save(mastery);
 
         // Return the new frontier and state immediately
-        learner.setActiveGoalId(null);
+        if (masteryValue >= 0.9) {
+            learner.setActiveGoalId(null);
+        }
         learner.setLearningState(LearningState.FRONTIER);
         learnerRepository.save(learner);
 
@@ -686,7 +688,7 @@ public class LearnerService {
         Set<String> newPlanned = new java.util.HashSet<>(getPlannedGoals(skillpilotId));
         newPlanned.addAll(goalIds);
         setPlannedGoals(skillpilotId, newPlanned);
-        learner.setActiveGoalId(null);
+        // learner.setActiveGoalId(null); // Keep active goal when broadening scope
         learner.setLearningState(LearningState.FRONTIER);
         learnerRepository.save(learner);
     }
