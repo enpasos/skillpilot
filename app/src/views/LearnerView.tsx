@@ -630,6 +630,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 masteryValue={getMastery(currentGoal.id)}
                 showLearnerTools={true}
                 isPlanned={plannedGoals.has(currentGoal.id)}
+                isActive={learnerData?.activeGoalId === currentGoal.id}
               />
             )}
           </div>

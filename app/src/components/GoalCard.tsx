@@ -10,9 +10,10 @@ interface GoalCardProps {
   onMasteryChange?: (id: string, value: number) => void
   showLearnerTools: boolean
   isPlanned?: boolean
+  isActive?: boolean
 }
 
-export const GoalCard: React.FC<GoalCardProps> = ({ goal, masteryValue, onMasteryChange, showLearnerTools, isPlanned = false }) => {
+export const GoalCard: React.FC<GoalCardProps> = ({ goal, masteryValue, onMasteryChange, showLearnerTools, isPlanned = false, isActive = false }) => {
   const handleChange = onMasteryChange ?? (() => { })
 
   // Detect if Atomic Goal (no children)
@@ -27,9 +28,14 @@ export const GoalCard: React.FC<GoalCardProps> = ({ goal, masteryValue, onMaster
     StatusIcon = Check
     iconColor = "text-emerald-500"
     strokeWidth = 3
-  } else if (isPlanned) {
+  } else if (isActive) {
     StatusIcon = Send
     iconColor = "text-amber-500"
+  } else if (isPlanned) {
+    // Optional: Visual indicator for planned (Focus) clusters in the card?
+    // For now, let's keep it simple or maybe just don't show Plane for them if they aren't 'Active' work items.
+    // Use Case: Cluster is Planned -> Maybe show Star?
+    // User focus is on Atomic goals having Plane.
   }
 
   return (
