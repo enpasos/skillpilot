@@ -509,8 +509,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               <span className="flex items-center gap-1 font-bold text-amber-500" title={t.learner.completed}>
                 {stats.masteredAtomic} <Medal size={16} />
               </span>
-              <span className="text-slate-300 dark:text-slate-600 flex items-center gap-1 text-[10px]">
-                ... <img src="/favicon/favicon.svg" alt="separator" className="w-3 h-3" /> ...
+              <span className="text-slate-400 dark:text-slate-500 flex items-center gap-1 text-[10px]">
+                ... <img src="/favicon/favicon.svg" alt="separator" className="w-5 h-5" /> ...
               </span>
               <span className="flex items-center gap-1 font-bold text-red-500" title="Total">
                 {stats.totalAtomic} <Target size={16} />
