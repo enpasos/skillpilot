@@ -16,9 +16,9 @@ public class SpaController {
         return "forward:/imprint/index.html";
     }
 
-    // Fallback für SPA-Routing, aber statische Seiten wie /privacy, /imprint,
-    // /index.html sowie API-Routen ausnehmen
-    @RequestMapping(value = "/{path:^(?!api|v3|swagger-ui|privacy|imprint|index\\.html|assets).*$}")
+    // Fallback für SPA-Routing, aber statische Seiten und Dateien (mit Extension)
+    // sowie API-Routen ausnehmen.
+    @RequestMapping(value = "/{path:^(?!api|v3|swagger-ui|privacy|imprint|index\\.html|assets)(?!.*\\.).*$}")
     public String redirect() {
         return "forward:/index.html";
     }
