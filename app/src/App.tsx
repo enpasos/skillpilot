@@ -10,10 +10,48 @@ import { HallOfFameView } from './views/HallOfFameView'
 
 import { SessionSetup } from './components/SessionSetup'
 import { useAppCore } from './hooks/useAppCore'
+import { useTranslation } from './hooks/useTranslation'
+import { useLanguage } from './contexts/LanguageContext'
 
 type Role = 'learner' | 'trainer' | 'explorer'
 
+const PUBLIC_PATHS = new Set(['/', '/hall-of-fame', '/privacy', '/imprint', '/legal'])
+const GOAL_VIEWS = new Set(['learner', 'trainer', 'explorer'])
+const MAX_DESCRIPTION_LENGTH = 160
+
+const normalizeText = (text: string) => text.replace(/\s+/g, ' ').trim()
+
+const trimDescription = (text: string, maxLength = MAX_DESCRIPTION_LENGTH) => {
+  const normalized = normalizeText(text)
+  if (!normalized) return ''
+  if (normalized.length <= maxLength) return normalized
+  return `${normalized.slice(0, Math.max(0, maxLength - 3)).trimEnd()}...`
+}
+
+const upsertMetaTag = (attrName: 'name' | 'property', attrValue: string, content: string) => {
+  const selector = `meta[${attrName}="${attrValue}"]`
+  let element = document.head.querySelector(selector) as HTMLMetaElement | null
+  if (!element) {
+    element = document.createElement('meta')
+    element.setAttribute(attrName, attrValue)
+    document.head.appendChild(element)
+  }
+  element.setAttribute('content', content)
+}
+
+const upsertLinkTag = (rel: string, href: string) => {
+  let element = document.head.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null
+  if (!element) {
+    element = document.createElement('link')
+    element.setAttribute('rel', rel)
+    document.head.appendChild(element)
+  }
+  element.setAttribute('href', href)
+}
+
 const App: React.FC = () => {
+  const { language } = useLanguage()
+  const t = useTranslation()
   const [role, setRole] = useState<Role | null>(() => {
     return (localStorage.getItem('skillpilot_role') as Role) || null
   })
@@ -32,9 +70,10 @@ const App: React.FC = () => {
   })
   const navigate = useNavigate()
   const location = useLocation()
+  const normalizedPath = location.pathname === '/' ? '/' : location.pathname.replace(/\/+$/, '')
 
   // Allow public routes to render without session
-  const isPublicRoute = ['/legal', '/privacy', '/imprint', '/hall-of-fame'].includes(location.pathname)
+  const isPublicRoute = ['/legal', '/privacy', '/imprint', '/hall-of-fame'].includes(normalizedPath)
 
   const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId })
   const availableLandscapes = useMemo(
@@ -47,6 +86,81 @@ const App: React.FC = () => {
       })),
     [core.landscapeEntries],
   )
+
+  useEffect(() => {
+    const rawPath = location.pathname || '/'
+    const path = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '')
+    const view = path.split('/')[1] || ''
+    const isPublicPath = PUBLIC_PATHS.has(path)
+    const isGoalView = GOAL_VIEWS.has(view)
+    const hasAccess = hasSession || isPublicPath || path === '/'
+    const baseTitle = 'SkillPilot'
+    const defaultDescription =
+      language === 'en'
+        ? 'Your personal AI learning companion.'
+        : 'Dein personalisierter Lern-Navigator.'
+
+    const privacyDescription =
+      language === 'en'
+        ? 'SkillPilot privacy policy and data protection information.'
+        : 'Datenschutz und Datenverarbeitung bei SkillPilot.'
+    const imprintDescription =
+      language === 'en'
+        ? 'Legal imprint and contact information for SkillPilot.'
+        : 'Impressum und Kontaktinformationen fuer SkillPilot.'
+    const legalDescription =
+      language === 'en'
+        ? 'Legal notice, licensing, and usage disclaimer for SkillPilot.'
+        : 'Rechtliche Hinweise, Lizenz und Haftung fuer SkillPilot.'
+
+    let title = baseTitle
+    let description = defaultDescription
+
+    if (isPublicPath) {
+      if (path === '/hall-of-fame') {
+        const hofTitle = t.startPage.cards.hallOfFame?.title || 'Hall of Fame'
+        title = `${hofTitle} | ${baseTitle}`
+        description = t.hallOfFamePage.subtitle || defaultDescription
+      } else if (path === '/privacy') {
+        title = `${t.startPage.footer.privacy} | ${baseTitle}`
+        description = privacyDescription
+      } else if (path === '/imprint') {
+        title = `${t.startPage.footer.imprint} | ${baseTitle}`
+        description = imprintDescription
+      } else if (path === '/legal') {
+        title = `${t.startPage.footer.legal} | ${baseTitle}`
+        description = legalDescription
+      } else {
+        title = `${baseTitle} | ${t.startPage.subtitle}`
+      }
+    } else if (!hasSession) {
+      title = `${baseTitle} | ${t.startPage.subtitle}`
+    } else if (isGoalView && core.currentGoal) {
+      title = `${core.currentGoal.title} | ${baseTitle}`
+      description = core.currentGoal.description || defaultDescription
+    }
+
+    const canonicalPath = !hasAccess ? '/' : path
+    const canonicalUrl = `${window.location.origin}${canonicalPath}`
+    const finalDescription = trimDescription(description) || defaultDescription
+    const robots = !hasAccess ? 'noindex, follow' : 'index, follow'
+    const imageUrl = `${window.location.origin}/favicon/web-app-manifest-512x512.png`
+
+    document.title = title
+    upsertMetaTag('name', 'description', finalDescription)
+    upsertMetaTag('name', 'robots', robots)
+    upsertMetaTag('name', 'googlebot', `${robots}, max-image-preview:large, max-snippet:-1, max-video-preview:-1`)
+    upsertLinkTag('canonical', canonicalUrl)
+    upsertMetaTag('property', 'og:title', title)
+    upsertMetaTag('property', 'og:description', finalDescription)
+    upsertMetaTag('property', 'og:type', 'website')
+    upsertMetaTag('property', 'og:url', canonicalUrl)
+    upsertMetaTag('property', 'og:image', imageUrl)
+    upsertMetaTag('name', 'twitter:card', 'summary_large_image')
+    upsertMetaTag('name', 'twitter:title', title)
+    upsertMetaTag('name', 'twitter:description', finalDescription)
+    upsertMetaTag('name', 'twitter:image', imageUrl)
+  }, [location.pathname, hasSession, language, t, core.currentGoal])
 
   const handleLogout = () => {
     localStorage.removeItem('skillpilot_id')
