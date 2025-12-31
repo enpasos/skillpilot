@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (EN)
 
-**Version:** 1.0.5
+**Version:** 1.0.6
 **Date:** December 2025  
 **Project:** SkillPilot
 
@@ -117,7 +117,8 @@ SkillPilot is not a theoretical exercise. The system already comes with extensiv
 *   **University:**
     *   **Uni Heidelberg:** Bachelor Biosciences, Master Molecular BioSciences.
     *   **Uni Mannheim:** Bachelor Business Administration (BWL), Bachelor Law, Master Law.
-    *   **TUM:** Bachelor Mathematics, Bachelor Physics, Master Theoretical and Mathematical Physics.
+    *   **TU Darmstadt:** Bachelor Computer Science.
+    *   **TU Munich:** Bachelor Mathematics, Bachelor Physics, Master Theoretical and Mathematical Physics.
 *   **Languages (CEFR):**
     *   English (CEFR A1-C2)
     *   French (CEFR A1-C2)
