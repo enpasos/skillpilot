@@ -30,7 +30,7 @@ export function useLearnerProgress({ landscapeEntries, selectedLandscapeId, skil
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 
       // We fetch GLOBAL mastery for the learner, not just per landscape (API is global)
-      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/mastery` : `/api/ui/learners/${skillpilotId}/mastery`
+      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/mastery?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}/mastery?_t=${Date.now()}`
       const res = await fetch(url)
       if (res.ok) {
         const data = await res.json()

@@ -52,6 +52,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [modalTitle, setModalTitle] = useState("");
   const [modalType, setModalType] = useState<'info' | 'error' | 'success'>('info');
 
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const selectedId = currentGoal?.id ?? rootGoals[0]?.id ?? ''
@@ -518,40 +520,55 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             </div>
           </div>
           <div className="flex items-center gap-1 shrink-0">
-            <button onClick={() => {
-              if (onRefresh) onRefresh();
-              // Re-fetch local learner data
-              const fetchLearnerData = async () => {
-                try {
-                  const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-                  const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
-                  const res = await fetch(url)
-                  if (res.ok) {
-                    const data = await res.json()
-                    setLearnerData(data)
-                  }
-                } catch (e) {
-                  console.warn('Failed to reload learner data', e)
-                }
-              };
-              const fetchPlanned = async () => {
-                try {
-                  const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-                  const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned` : `/api/ui/learners/${skillpilotId}/planned`
-                  const res = await fetch(url)
-                  if (res.ok) {
-                    const data = await res.json()
-                    if (data.goals && Array.isArray(data.goals)) {
-                      setPlannedGoals(new Set(data.goals))
+
+            <button onClick={async () => {
+              if (isRefreshing) return;
+              setIsRefreshing(true);
+              try {
+                // Parallelize all refreshes
+                const promises = [];
+                if (onRefresh) promises.push(onRefresh());
+
+                // Re-fetch local learner data
+                const fetchLearnerData = async () => {
+                  try {
+                    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+                    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}?_t=${Date.now()}`
+                    const res = await fetch(url)
+                    if (res.ok) {
+                      const data = await res.json()
+                      setLearnerData(data)
                     }
+                  } catch (e) {
+                    console.warn('Failed to reload learner data', e)
                   }
-                } catch (e) {
-                  console.warn('Failed to reload planned goals', e)
+                };
+                promises.push(fetchLearnerData());
+
+                const fetchPlanned = async () => {
+                  try {
+                    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+                    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}/planned?_t=${Date.now()}`
+                    const res = await fetch(url)
+                    if (res.ok) {
+                      const data = await res.json()
+                      if (data.goals && Array.isArray(data.goals)) {
+                        setPlannedGoals(new Set(data.goals))
+                      }
+                    }
+                  } catch (e) {
+                    console.warn('Failed to reload planned goals', e)
+                  }
                 }
+                promises.push(fetchPlanned());
+
+                await Promise.all(promises);
+              } finally {
+                setIsRefreshing(false);
               }
-              fetchLearnerData();
-              fetchPlanned();
-            }} className="p-1 text-text-secondary hover:text-sky-400"><RefreshCw size={16} /></button>
+            }} className="p-1 text-text-secondary hover:text-sky-400">
+              <RefreshCw size={16} className={isRefreshing ? 'animate-spin' : ''} />
+            </button>
             <button onClick={() => setIsSetupOpen(true)} className="p-1 text-text-secondary hover:text-sky-400"><Settings size={16} /></button>
             <ThemeToggle />
             {isMobile && (
