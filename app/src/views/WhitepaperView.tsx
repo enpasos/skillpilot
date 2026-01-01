@@ -57,18 +57,15 @@ export const WhitepaperView: React.FC = () => {
       switchLabel: 'Deutsch',
       loading: 'Loading whitepaper...',
       error: 'Whitepaper could not be loaded.',
-      download: 'Download markdown',
     }
     : {
       back: 'Zurück zur App',
       switchLabel: 'English',
       loading: 'Whitepaper wird geladen...',
       error: 'Whitepaper konnte nicht geladen werden.',
-      download: 'Markdown herunterladen',
     }
 
   const switchLanguage = activeLanguage === 'en' ? 'de' : 'en'
-  const downloadPath = `/whitepaper/whitepaper.${activeLanguage === 'en' ? 'en' : 'de'}.md`
 
   return (
     <div className="min-h-screen bg-chat-bg text-text-primary p-6 flex justify-center transition-colors">
@@ -85,12 +82,6 @@ export const WhitepaperView: React.FC = () => {
             >
               {labels.switchLabel}
             </Link>
-            <a
-              href={downloadPath}
-              className="text-text-secondary hover:text-text-primary transition-colors"
-            >
-              {labels.download}
-            </a>
           </div>
         </div>
 
