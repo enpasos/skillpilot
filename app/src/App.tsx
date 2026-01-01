@@ -7,6 +7,7 @@ import { LegalView } from './views/LegalView'
 import { PrivacyView } from './views/PrivacyView'
 import { ImprintView } from './views/ImprintView'
 import { HallOfFameView } from './views/HallOfFameView'
+import { WhitepaperView } from './views/WhitepaperView'
 
 import { SessionSetup } from './components/SessionSetup'
 import { useAppCore } from './hooks/useAppCore'
@@ -15,7 +16,7 @@ import { useLanguage } from './contexts/LanguageContext'
 
 type Role = 'learner' | 'trainer' | 'explorer'
 
-const PUBLIC_PATHS = new Set(['/', '/hall-of-fame', '/privacy', '/imprint', '/legal'])
+const PUBLIC_PATHS = new Set(['/', '/hall-of-fame', '/privacy', '/imprint', '/legal', '/whitepaper'])
 const GOAL_VIEWS = new Set(['learner', 'trainer', 'explorer'])
 const MAX_DESCRIPTION_LENGTH = 160
 
@@ -71,9 +72,11 @@ const App: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const normalizedPath = location.pathname === '/' ? '/' : location.pathname.replace(/\/+$/, '')
+  const isWhitepaperRoute = normalizedPath === '/whitepaper' || normalizedPath.startsWith('/whitepaper/')
 
   // Allow public routes to render without session
-  const isPublicRoute = ['/legal', '/privacy', '/imprint', '/hall-of-fame'].includes(normalizedPath)
+  const isPublicRoute =
+    ['/legal', '/privacy', '/imprint', '/hall-of-fame'].includes(normalizedPath) || isWhitepaperRoute
 
   const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId })
   const availableLandscapes = useMemo(
@@ -91,7 +94,7 @@ const App: React.FC = () => {
     const rawPath = location.pathname || '/'
     const path = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '')
     const view = path.split('/')[1] || ''
-    const isPublicPath = PUBLIC_PATHS.has(path)
+    const isPublicPath = PUBLIC_PATHS.has(path) || path === '/whitepaper' || path.startsWith('/whitepaper/')
     const isGoalView = GOAL_VIEWS.has(view)
     const hasAccess = hasSession || isPublicPath || path === '/'
     const baseTitle = 'SkillPilot'
@@ -121,6 +124,10 @@ const App: React.FC = () => {
         const hofTitle = t.startPage.cards.hallOfFame?.title || 'Hall of Fame'
         title = `${hofTitle} | ${baseTitle}`
         description = t.hallOfFamePage.subtitle || defaultDescription
+      } else if (path === '/whitepaper' || path.startsWith('/whitepaper/')) {
+        const whitepaperTitle = t.startPage.cards.whitepaper.title || 'Whitepaper'
+        title = `${whitepaperTitle} | ${baseTitle}`
+        description = t.startPage.cards.whitepaper.description || defaultDescription
       } else if (path === '/privacy') {
         title = `${t.startPage.footer.privacy} | ${baseTitle}`
         description = privacyDescription
@@ -209,6 +216,7 @@ const App: React.FC = () => {
   if (isPublicRoute) {
     return (
       <Routes>
+        <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
         <Route path="/legal" element={<LegalView />} />
         <Route path="/privacy" element={<PrivacyView />} />
         <Route path="/legal" element={<LegalView />} />
@@ -392,6 +400,7 @@ const App: React.FC = () => {
       <Route path="/legal" element={<LegalView />} />
       <Route path="/privacy" element={<PrivacyView />} />
       <Route path="/imprint" element={<ImprintView />} />
+      <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
 
       <Route path="/" element={<Navigate to="/explorer" />} />
     </Routes>

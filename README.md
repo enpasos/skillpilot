@@ -34,8 +34,8 @@ We invite you to participate in the training of the AI Agent!
 
 For a detailed introduction and the vision behind SkillPilot, please refer to the Whitepaper:
 
-*   [**Read Whitepaper (English)**](https://enpasos.github.io/skillpilot/whitepaper/whitepaper.en.html)
-*   [**Whitepaper lesen (Deutsch)**](https://enpasos.github.io/skillpilot/whitepaper/whitepaper.de.html)
+*   [**Read Whitepaper (English)**](https://skillpilot.com/whitepaper/en)
+*   [**Whitepaper lesen (Deutsch)**](https://skillpilot.com/whitepaper/de)
 
 ## 🌐 Live 
 

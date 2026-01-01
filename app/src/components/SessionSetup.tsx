@@ -259,10 +259,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
               </Link>
 
               {/* Card 4: Whitepaper */}
-              <a
-                href={language === 'de'
-                  ? 'https://enpasos.github.io/skillpilot/whitepaper/whitepaper.de.html'
-                  : 'https://enpasos.github.io/skillpilot/whitepaper/whitepaper.en.html'}
+              <Link
+                to={`/whitepaper/${language === 'de' ? 'de' : 'en'}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-6 hover:shadow-lg hover:border-sky-400/50 transition-all duration-300"
@@ -278,7 +276,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                   </div>
                   <ArrowRight className="text-text-secondary group-hover:translate-x-1 group-hover:text-sky-500 transition-all" />
                 </div>
-              </a>
+              </Link>
 
               {/* Direct Access Links for Trainer/Explorer */}
               <div className="flex justify-center gap-6 pt-4 text-xs text-text-secondary">
