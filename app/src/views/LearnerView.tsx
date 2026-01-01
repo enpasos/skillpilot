@@ -192,8 +192,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       }
     }
     setForcedExpandedIds(ancestors)
-    onSelectGoal(targetId)
-  }, [learnerData?.activeGoalId, parentMap, onSelectGoal])
+    if (targetId !== selectedId) {
+      onSelectGoal(targetId)
+    }
+  }, [learnerData?.activeGoalId, parentMap, onSelectGoal, selectedId])
 
   // Auto-reveal on initial load if active goal exists
   useEffect(() => {

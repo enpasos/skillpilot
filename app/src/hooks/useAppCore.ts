@@ -156,11 +156,11 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     navigate(`/${view}/${id}?${searchParams.toString()}`)
   }
 
-  const handleSelectAbsolute = (id: string) => {
+  const handleSelectAbsolute = useCallback((id: string) => {
     if (!id) return
     const view = location.pathname.split('/')[1]
     navigate(`/${view}/${id}?${searchParams.toString()}`)
-  }
+  }, [navigate, location.pathname, searchParams])
 
   const handleNavigateToExternal = useCallback(
     (targetLandscapeId: string, goalId: string) => {
