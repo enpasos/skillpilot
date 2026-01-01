@@ -39,7 +39,7 @@ stateDiagram-v2
             Frontier --> SelectGoal: getLearnerState/getFrontier
             SelectGoal --> Teach: setActiveGoal (atomic)
             Teach --> SaveMastery: setMastery (success)
-            Teach --> SelectGoal: user redirects / setScope
+            Teach --> SelectGoal: user redirects / setActiveGoal
             Teach --> Frontier: refresh state if unclear
             SaveMastery --> Frontier: returns new frontier
         }

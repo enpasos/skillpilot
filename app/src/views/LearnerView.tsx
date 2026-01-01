@@ -198,13 +198,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [learnerData?.activeGoalId, parentMap, onSelectGoal, selectedId])
 
   // Auto-reveal on initial load if active goal exists
+  const initialRevealRef = useRef(false)
   useEffect(() => {
-    if (learnerData?.activeGoalId) {
-      // Small timeout to allow tree to render? Not strictly necessary if state-based, but safe.
-      // Actually, just calling it is fine.
+    if (learnerData?.activeGoalId && !initialRevealRef.current) {
       revealActiveGoal()
+      initialRevealRef.current = true
     }
-  }, [revealActiveGoal]) // Dependent on revealActiveGoal which depends on learnerData?.activeGoalId logic wrapper
+  }, [learnerData?.activeGoalId, revealActiveGoal])
 
 
   // Load planned goals from backend

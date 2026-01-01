@@ -703,12 +703,9 @@ public class LearnerService {
                     "goalId must not be empty.");
         }
 
-        if (learner.getActiveGoalId() != null && !learner.getActiveGoalId().isBlank()) {
-            if (learner.getActiveGoalId().equals(goalId)) {
-                return;
-            }
-            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
-                    "Active goal already set. Clear via setScope or complete mastery.");
+        String currentActiveGoalId = learner.getActiveGoalId();
+        if (currentActiveGoalId != null && !currentActiveGoalId.isBlank() && currentActiveGoalId.equals(goalId)) {
+            return;
         }
 
         List<FrontierGoal> frontierAtomic = filterAtomicFrontier(getRichFrontier(skillpilotId));
