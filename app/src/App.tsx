@@ -358,6 +358,7 @@ const App: React.FC = () => {
             availableLandscapes={availableLandscapes}
             rootLandscapeId={core.selectedLandscapeId}
             onRefresh={core.refreshMastery}
+            parentMap={core.parentMapAll}
           />
         }
       />

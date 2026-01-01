@@ -21,6 +21,7 @@ interface TreeNodeProps {
   hasActivePlan?: boolean
   isInPlannedSubtree?: boolean
   activeGoalId?: string
+  forcedExpandedIds?: Set<string>
 }
 
 const TreeNode: React.FC<TreeNodeProps> = ({
@@ -39,10 +40,19 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   hasActivePlan = false,
   isInPlannedSubtree = false,
   activeGoalId,
+  forcedExpandedIds,
 }) => {
   const t = useTranslation()
   const goal = allGoals.get(goalId)
   const [isExpanded, setIsExpanded] = useState(depth < 1)
+
+  // Force expansion if this ID is in the forced set
+  React.useEffect(() => {
+    if (forcedExpandedIds && forcedExpandedIds.has(goalId)) {
+      setIsExpanded(true)
+    }
+  }, [forcedExpandedIds, goalId])
+
 
   if (!goal) return null
 
@@ -220,6 +230,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 hasActivePlan={hasActivePlan}
                 isInPlannedSubtree={selfInSubtree}
                 activeGoalId={activeGoalId}
+                forcedExpandedIds={forcedExpandedIds}
               />
             ))}
           </div>
@@ -243,6 +254,7 @@ interface CompetenceTreeProps {
   totalStudents?: number
   personalConfig?: Record<string, { selected: boolean; filterId?: string }>
   activeGoalId?: string
+  forcedExpandedIds?: Set<string>
 }
 
 export const CompetenceTree: React.FC<CompetenceTreeProps> = ({ rootGoals, activeFilter, personalConfig, ...props }) => {

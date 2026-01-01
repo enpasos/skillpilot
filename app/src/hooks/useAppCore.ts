@@ -254,5 +254,6 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     goalShortKeyMap,
     setSelectedLandscapeId,
     refreshMastery,
+    parentMapAll,
   }
 }

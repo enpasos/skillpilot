@@ -26,6 +26,7 @@ interface LearnerViewProps {
   availableLandscapes?: { landscapeId: string; title: string; filters?: { id: string; label: string }[] }[]
   rootLandscapeId?: string
   onRefresh?: () => void
+  parentMap?: Map<string, string[]>
 }
 
 export const LearnerView: React.FC<LearnerViewProps> = ({
@@ -41,8 +42,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   availableLandscapes = [],
   rootLandscapeId,
   onRefresh,
+  parentMap,
 }) => {
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
+  const [forcedExpandedIds, setForcedExpandedIds] = useState<Set<string>>(new Set())
   const [learnerData, setLearnerData] = useState<Learner | null>(null)
   const [isSetupOpen, setIsSetupOpen] = useState(false)
   const [personalConfig, setPersonalConfig] = useState<Record<string, { selected: boolean; filterId?: string }>>({})
@@ -166,6 +169,40 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
     return { totalAtomic, masteredAtomic }
   }, [plannedGoals, goalIndexAll, visibleGoals, getMastery])
+
+
+  // Reveal Active Goal Logic
+  const revealActiveGoal = useCallback(() => {
+    if (!learnerData?.activeGoalId || !parentMap) return
+    const targetId = learnerData.activeGoalId
+    const ancestors = new Set<string>()
+
+    // Recursive / Iterative lookup
+    const queue = [targetId]
+    while (queue.length > 0) {
+      const current = queue.pop()!
+      const parents = parentMap.get(current)
+      if (parents) {
+        parents.forEach(p => {
+          if (!ancestors.has(p)) {
+            ancestors.add(p)
+            queue.push(p)
+          }
+        })
+      }
+    }
+    setForcedExpandedIds(ancestors)
+  }, [learnerData?.activeGoalId, parentMap])
+
+  // Auto-reveal on initial load if active goal exists
+  useEffect(() => {
+    if (learnerData?.activeGoalId) {
+      // Small timeout to allow tree to render? Not strictly necessary if state-based, but safe.
+      // Actually, just calling it is fine.
+      revealActiveGoal()
+    }
+  }, [revealActiveGoal]) // Dependent on revealActiveGoal which depends on learnerData?.activeGoalId logic wrapper
+
 
   // Load planned goals from backend
   React.useEffect(() => {
@@ -508,12 +545,19 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           <div className="flex-1 min-w-0 mr-2">
             <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate">{t.learner.myGoals}</h2>
             <div className="text-xs flex items-center gap-2 mt-1 truncate">
-              <span className="flex items-center gap-1 font-bold text-emerald-500" title={t.learner.completed}>
+              <button
+                className="flex items-center gap-1 font-bold text-emerald-500 hover:text-emerald-400 transition-colors"
+                title={t.learner.completed}
+              >
                 {stats.masteredAtomic} <Check size={16} strokeWidth={3} />
-              </span>
-              <span className="text-slate-400 dark:text-slate-500 flex items-center gap-1 text-[10px]">
+              </button>
+              <button
+                className="text-slate-400 dark:text-slate-500 flex items-center gap-1 text-[10px] hover:text-sky-500 transition-colors"
+                onClick={revealActiveGoal}
+                title="Gehe zum aktiven Ziel / Go to active goal"
+              >
                 ... <Send size={16} className="text-amber-500" /> ...
-              </span>
+              </button>
               <span className="flex items-center gap-1 font-bold text-red-500" title="Total">
                 {stats.totalAtomic} <Target size={16} />
               </span>
@@ -593,6 +637,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             activeFilter={effectiveActiveFilter}
             personalConfig={personalConfig}
             activeGoalId={learnerData?.activeGoalId}
+            forcedExpandedIds={forcedExpandedIds}
           />
         </div>
         {learnerData && learnerData.copySources && learnerData.copySources.length > 0 && (
