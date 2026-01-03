@@ -3,8 +3,8 @@ import { Link, useLocation } from 'react-router-dom'
 import { CurriculumDropdown } from './CurriculumDropdown'
 import { ThemeToggle } from './ThemeToggle'
 import type { LandscapeSummary } from './CurriculumDropdown'
-import { Save, ArrowRight, Github, Trophy, ShieldCheck } from 'lucide-react'
-import logo from '../assets/skillpilot512x512.png'
+import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send } from 'lucide-react'
+
 
 type Role = 'learner' | 'trainer' | 'explorer'
 
@@ -186,13 +186,15 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       <div className="flex-grow flex flex-col items-center justify-center w-full max-w-lg">
         {/* 0. Logo & Title */}
         <div className="flex flex-col items-center mb-10 animate-in fade-in zoom-in duration-500">
-          <div className="w-24 h-24 -mb-2">
-            <img src={logo} alt="SkillPilot Logo" className="w-full h-full object-contain" />
+          <div className="flex items-center gap-4 mb-2">
+            <div className="text-amber-500">
+              <Send size={48} strokeWidth={2} />
+            </div>
+            <h1 className="text-4xl font-bold tracking-tight text-slate-700 dark:text-slate-200">
+              SkillPilot
+            </h1>
           </div>
-          <h1 className="text-4xl font-bold tracking-tight text-slate-700 dark:text-slate-200">
-            SkillPilot
-          </h1>
-          <p className="mt-2 text-text-secondary">{t.startPage.subtitle}</p>
+          <p className="text-text-secondary">{t.startPage.subtitle}</p>
         </div>
 
         <div className="w-full space-y-4">

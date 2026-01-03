@@ -559,7 +559,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 onClick={revealActiveGoal}
                 title="Gehe zum aktiven Ziel / Go to active goal"
               >
-                ... <Send size={16} className="text-amber-500" /> ...
+                <Send size={16} className="text-amber-500" />
               </button>
               <span className="flex items-center gap-1 font-bold text-red-500" title="Total">
                 {stats.totalAtomic} <Target size={16} />
