@@ -65,7 +65,6 @@ export const HallOfFameView: React.FC = () => {
           <ThemeToggle />
         </div>
         <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-200">
-          {/* @ts-expect-error: translation key might be missing */}
           {t.startPage.cards.hallOfFame?.title || "Hall of Fame"}
         </h1>
         <p className="text-text-secondary">{t.hallOfFamePage.noData.title}</p>
@@ -93,7 +92,6 @@ export const HallOfFameView: React.FC = () => {
         <header className="text-center space-y-4 pt-10 md:pt-0">
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 dark:from-yellow-300 dark:via-orange-400 dark:to-red-500">
-              {/* @ts-expect-error: translation key might be missing */}
               {t.startPage.cards.hallOfFame?.title || "Hall of Fame"}
             </span>
           </h1>
