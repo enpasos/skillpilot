@@ -49,3 +49,26 @@ This job validates the Java/Spring Boot backend located in the `backend` directo
 
 ## Status Checks
 Both `frontend-ci` and `backend-ci` must pass for the workflow to be considered successful. This is typically required before merging Pull Requests into `main`.
+## Running Locally
+
+To reproduce the CI steps locally before pushing, you can use the helper script `run_ci.sh` located in the root directory.
+
+Run this command from the root of the project:
+```bash
+bash run_ci.sh
+```
+
+**This script will**:
+1.  Navigate to `app` and run:
+    -   `npm install` (Local-friendly alternative to `npm ci`)
+    -   `npm run validate:graph`
+    -   `npm run lint`
+    -   `npm run build`
+2.  Navigate to `backend` and run:
+    -   `./gradlew check`
+3.  Report success if all steps pass.
+
+**Requirements**:
+-   Node.js (matching version in CI, typically 20)
+-   Java JDK (matching version in CI, typically 25)
+-   Bash (or a compatible shell environment like WSL or Git Bash)
