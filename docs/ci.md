@@ -35,7 +35,22 @@ This job validates the React/TypeScript frontend application located in the `app
     -   Ensures the application compiles without TypeScript errors.
     -   Verifies that the production bundle can be generated successfully.
 
-### 2. Backend CI (`backend-ci`)
+### 2. Graph Validation CI (`graph-validation`)
+This job focuses on the integrity of the data (curriculum JSON files) rather than the code.
+
+**Environment**: Node.js 20 on Ubuntu Latest.
+
+**Steps**:
+1.  **Install Dependencies**: Runs `npm ci` in `app` directory to get access to the validation script and its dependencies (`tsx`, etc.).
+2.  **Validate Graph (`npm run validate:graph`)**:
+    -   Executes the custom graph validation script (`scripts/validateGraph.ts`).
+    -   **Checks**:
+        -   **Referential Integrity**: Ensures all `requires` and `contains` links point to valid, existing Goal IDs.
+        -   **Missing IDs**: Detects any broken links.
+        -   **Duplicates**: Ensures no Goal ID is defined more than once within the same landscape.
+        -   **Schema**: Validates that goals use allowed phases.
+
+### 3. Backend CI (`backend-ci`)
 This job validates the Java/Spring Boot backend located in the `backend` directory.
 
 **Environment**: Java 25 (Temurin distribution) on Ubuntu Latest.

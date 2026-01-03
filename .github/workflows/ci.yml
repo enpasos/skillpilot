@@ -42,12 +42,29 @@ jobs:
           cache-dependency-path: app/package-lock.json
       - name: Install dependencies
         run: npm ci
-      - name: Validate Graph
-        run: npm run validate:graph
       - name: Lint
         run: npm run lint
       - name: Build
         run: npm run build
+
+  graph-validation:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Validate Graph
+        run: npm run validate:graph
 
   backend-ci:
     runs-on: ubuntu-latest
