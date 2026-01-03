@@ -4,7 +4,7 @@
 
 :root {
   font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  color-scheme: light;
+  color-scheme: light dark;
   --color-bg-main: 11 16 32;
   --color-bg-card: 31 41 55;
   --color-bg-sidebar: 15 23 42;
@@ -22,6 +22,14 @@
   /* gray-500 */
   --border-color: #e5e7eb;
   --input-bg: #ffffff;
+}
+
+/* Explicit force for light mode to fight Samsung Dark Mode */
+html.light {
+    color-scheme: light;
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    --chat-bg: #ffffff !important;
 }
 
 .dark {
