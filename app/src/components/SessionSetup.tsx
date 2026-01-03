@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { CurriculumDropdown } from './CurriculumDropdown'
 import { ThemeToggle } from './ThemeToggle'
 import type { LandscapeSummary } from './CurriculumDropdown'
-import { Save, ArrowRight, Github, Trophy } from 'lucide-react'
+import { Save, ArrowRight, Github, Trophy, ShieldCheck } from 'lucide-react'
 import logo from '../assets/skillpilot512x512.png'
 
 type Role = 'learner' | 'trainer' | 'explorer'
@@ -196,6 +196,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         </div>
 
         <div className="w-full space-y-4">
+
+
           {!showLogin ? (
             <div className="grid grid-cols-1 gap-4 w-full animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
               {/* Card 1: GPT */}
@@ -208,8 +210,19 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                     <p className="text-sm text-text-secondary mt-1">
                       {t.startPage.cards.gpt.description}
                     </p>
+                    {/* Integrated Info Banner */}
+                    {t.startPage.banner && (
+                      <div className="mt-3 rounded-lg border border-sky-200 bg-sky-50 dark:border-sky-800/30 dark:bg-sky-900/20 p-3 flex gap-2 text-xs text-sky-900 dark:text-sky-100 items-start">
+                        <ShieldCheck className="shrink-0 text-sky-600 dark:text-sky-400" size={16} />
+                        <div className="leading-relaxed">
+                          {t.startPage.banner.text.split('**').map((part, i) =>
+                            i % 2 === 1 ? <span key={i} className="font-bold">{part}</span> : part
+                          )}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  <ArrowRight className="text-text-secondary group-hover:translate-x-1 group-hover:text-sky-500 transition-all" />
+                  <ArrowRight className="text-text-secondary group-hover:translate-x-1 group-hover:text-sky-500 transition-all shrink-0 ml-4" />
                 </div>
               </a>
 

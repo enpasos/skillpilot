@@ -42,6 +42,9 @@ export const de = {
                 text: "Ihre Daten werden nur lokal gespeichert."
             }
         },
+        banner: {
+            text: "**SkillPilot selbst ist kostenlos.**: Du brauchst nur einen ChatGPT-Account und einen Browser (aktuell nicht stabil mit der App-Version von ChatGPT)."
+        },
         footer: {
             privacy: "Datenschutz",
             imprint: "Impressum",
