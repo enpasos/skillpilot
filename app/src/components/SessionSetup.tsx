@@ -214,7 +214,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                     {t.startPage.banner && (
                       <div className="mt-3 rounded-lg border border-sky-200 bg-sky-50 dark:border-sky-800/30 dark:bg-sky-900/20 p-3 flex gap-2 text-xs text-sky-900 dark:text-sky-100 items-start">
                         <ShieldCheck className="shrink-0 text-sky-600 dark:text-sky-400" size={16} />
-                        <div className="leading-relaxed">
+                        <div className="leading-relaxed whitespace-pre-line">
                           {t.startPage.banner.text.split('**').map((part, i) =>
                             i % 2 === 1 ? <span key={i} className="font-bold">{part}</span> : part
                           )}
