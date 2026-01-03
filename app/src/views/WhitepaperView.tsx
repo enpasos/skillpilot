@@ -68,8 +68,8 @@ export const WhitepaperView: React.FC = () => {
   const switchLanguage = activeLanguage === 'en' ? 'de' : 'en'
 
   return (
-    <div className="min-h-screen bg-chat-bg text-text-primary p-6 flex justify-center transition-colors">
-      <div className="max-w-4xl w-full glass-panel p-8 shadow-2xl border border-border-color">
+    <div className="min-h-screen bg-chat-bg text-text-primary px-4 py-6 sm:px-6 lg:px-10 flex justify-center transition-colors">
+      <div className="max-w-4xl w-full">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-6">
           <Link to="/" className="flex items-center text-text-secondary hover:text-text-primary transition-colors">
             <ArrowLeft size={20} className="mr-2" />
