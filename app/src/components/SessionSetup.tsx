@@ -169,18 +169,21 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-chat-bg text-text-primary px-6 py-10 transition-colors relative">
-      <div className="absolute top-6 right-6 flex items-center gap-4">
-        <a
-          href="https://github.com/enpasos/skillpilot"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-text-secondary hover:text-text-primary transition-colors"
-          title="SkillPilot on GitHub"
-        >
-          <Github size={20} />
-        </a>
-        <LanguageToggle />
-        <ThemeToggle />
+      <div className="w-full flex justify-between items-center mb-6">
+        <div /> {/* Spacer to keep right alignment clean or put branding here later */}
+        <div className="flex items-center gap-4">
+          <a
+            href="https://github.com/enpasos/skillpilot"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-text-secondary hover:text-text-primary transition-colors"
+            title="SkillPilot on GitHub"
+          >
+            <Github size={20} />
+          </a>
+          <LanguageToggle />
+          <ThemeToggle />
+        </div>
       </div>
 
       <div className="flex-grow flex flex-col items-center justify-center w-full max-w-lg">
