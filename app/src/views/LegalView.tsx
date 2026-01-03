@@ -196,8 +196,8 @@ By proceeding and using SkillPilot, you confirm that you:
 export const LegalView: React.FC = () => {
     const { language } = useLanguage();
     return (
-        <div className="min-h-screen bg-chat-bg text-text-primary p-6 flex justify-center transition-colors">
-            <div className="max-w-4xl w-full glass-panel p-8 shadow-2xl border border-border-color">
+        <div className="min-h-screen bg-chat-bg text-text-primary px-4 py-6 sm:px-6 lg:px-10 flex justify-center transition-colors">
+            <div className="max-w-4xl w-full">
                 <Link to="/" className="flex items-center text-text-secondary hover:text-text-primary mb-6 transition-colors">
                     <ArrowLeft size={20} className="mr-2" />
                     {language === 'en' ? 'Back to App' : 'Zurück zur App'}
