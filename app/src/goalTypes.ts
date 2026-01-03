@@ -1,7 +1,15 @@
 import type { LearningGoal } from './landscapeTypes'
 
 export type CourseLevel = string
-export type PhaseCode = 'GLOBAL' | 'E' | 'Q1' | 'Q2' | 'Q3' | 'Q4'
+export type PhaseCode =
+  | 'GLOBAL'
+  | 'E' | 'Q1' | 'Q2' | 'Q3' | 'Q4'
+  | 'S0' | 'S1' | 'S2' | 'S3' | 'S4' | 'S5' | 'S6' | 'S7' | 'S8' | 'S9' | 'S10' | 'S11' | 'S12' | 'S13' | 'S14'
+  | 'Pflichtbereich' | 'Wahlpflichtbereich' | 'Wahlbereich' | 'Bachelorarbeit' | 'Programm'
+  | 'Modul' | 'Module'
+  | 'GOP' | 'Bachelorprüfung' | 'Studienleistung' | 'Grundlagenphase' | 'Vertiefungsphase'
+  | 'J1' | 'J2' | 'J3' | 'J4' | 'J5' | 'J6' | 'J7' | 'J8' | 'J9' | 'J10' | 'J11' | 'J12' | 'J13'
+  | 'J1' | 'J2' | 'J3' | 'J4' | 'J5' | 'J6' | 'J7' | 'J8' | 'J9' | 'J10' | 'J11' | 'J12' | 'J13'
 export type Leitidee = 'L1' | 'L2' | 'L3' | 'L4' | 'L5'
 
 export interface UiGoal {

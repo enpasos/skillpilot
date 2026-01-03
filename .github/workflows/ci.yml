@@ -4,16 +4,20 @@ on:
   push:
     branches: [ main ]
     paths-ignore:
-      - 'README.md'
-      - 'curricula/**' 
+      - 'README.md' 
       - 'AGENTS.md' 
+      - 'docs/**' 
+      - 'sandbox/**' 
+      - 'tmp/**'  
   pull_request:
     branches: [ main ]
     paths-ignore:
       - 'README.md'
-      - 'curricula/**' 
       - 'AGENTS.md' 
-
+      - 'docs/**' 
+      - 'sandbox/**' 
+      - 'tmp/**'   
+     
 permissions:
   contents: read
 
