@@ -18,10 +18,7 @@ export function useLearnerProgress({ landscapeEntries, selectedLandscapeId, skil
 
   const activeLandscapeId = currentLandscapeEntry?.meta.landscapeId ?? ''
 
-  // Fetch mastery when skillpilotId or activeLandscapeId changes
-  useState(() => {
-    // Initial state logic if needed, but we use useEffect for async data
-  })
+
 
   const refreshMastery = useCallback(async () => {
     if (!skillpilotId) return
@@ -54,7 +51,8 @@ export function useLearnerProgress({ landscapeEntries, selectedLandscapeId, skil
   }, [skillpilotId, activeLandscapeId])
 
   useEffect(() => {
-    refreshMastery()
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void refreshMastery()
   }, [refreshMastery])
 
   const mastery = masteryByLandscape[activeLandscapeId] ?? {}

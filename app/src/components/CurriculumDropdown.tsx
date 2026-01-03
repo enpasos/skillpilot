@@ -12,7 +12,7 @@ export interface LandscapeSummary {
     subject: string
     locale: string
     description?: string
-    filters?: any[]
+    filters?: { id: string; label: string }[]
     title?: string
 }
 

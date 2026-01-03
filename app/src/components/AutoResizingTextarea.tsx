@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 
 interface AutoResizingTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
     maxHeight?: number;
@@ -13,17 +13,17 @@ export const AutoResizingTextarea: React.FC<AutoResizingTextareaProps> = ({
 }) => {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-    const adjustHeight = () => {
+    const adjustHeight = useCallback(() => {
         const textarea = textareaRef.current;
         if (textarea) {
             textarea.style.height = 'auto';
             textarea.style.height = `${Math.min(textarea.scrollHeight, maxHeight)}px`;
         }
-    };
+    }, [maxHeight]);
 
     useEffect(() => {
         adjustHeight();
-    }, [value]);
+    }, [value, adjustHeight]);
 
     return (
         <textarea

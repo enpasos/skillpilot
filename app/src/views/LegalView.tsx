@@ -63,8 +63,8 @@ Für **Lernende**:
 
 Für **Trainer:innen/Lehrende**:
 
-* Lernende haben verschiedene Möglichkeiten, ihre Angaben zu **manipulieren** (z. B. falsche Selbsteinschätzungen, unzutreffende Nachweise).
-* Über technische Schnittstellen (z. B. API) können Lernfortschritte automatisiert eingespielt werden, die **tatsächlich nicht erbracht** wurden.
+* Lernende haben verschiedene Möglichkeiten, ihre Angaben zu **manipulieren** (z. B. falsche Selbsteinschätzungen, unzutreffende Nachweise).
+* Über technische Schnittstellen (z. B. API) können Lernfortschritte automatisiert eingespielt werden, die **tatsächlich nicht erbracht** wurden.
 * Trainer:innen und Institutionen bleiben selbst dafür verantwortlich, **Echtheit und Qualität** von Leistungsnachweisen und Fähigkeiten **unabhängig zu prüfen**.
 
 ### 4. Verfügbarkeit des Dienstes
@@ -77,7 +77,7 @@ Für **Trainer:innen/Lehrende**:
 
 * Es besteht **keine Garantie**, dass Daten in SkillPilot **dauerhaft** gespeichert oder wiederhergestellt werden können.
 * Es kann trotz technischer und organisatorischer Maßnahmen zu **Datenverlust, Beschädigung oder versehentlicher Löschung** kommen.
-* Nutzer:innen sind selbst dafür verantwortlich, **wichtige Informationen zusätzlich außerhalb von SkillPilot zu sichern** (z. B. Exporte, eigene Backups).
+* Nutzer:innen sind selbst dafür verantwortlich, **wichtige Informationen zusätzlich außerhalb von SkillPilot zu sichern** (z. B. Exporte, eigene Backups).
 
 ### 6. Haftungsausschluss
 

@@ -1,7 +1,5 @@
 name: CI
 
- 
-
 on:
   push:
     branches: [ main ]
@@ -16,10 +14,15 @@ on:
       - 'curricula/**' 
       - 'AGENTS.md' 
 
+permissions:
+  contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build:
+  frontend-ci:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -27,24 +30,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
           cache-dependency-path: app/package-lock.json
-
       - name: Install dependencies
         run: npm ci
-
+      - name: Validate Graph
+        run: npm run validate:graph
       - name: Lint
         run: npm run lint
-
       - name: Build
         run: npm run build
 
-  backend-tests:
+  backend-ci:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -52,16 +53,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Use Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 25
           cache: gradle
-
       - name: Ensure Gradle wrapper is executable
         run: chmod +x ./gradlew
-
       - name: Run backend tests
-        run: ./gradlew test
+        run: ./gradlew check

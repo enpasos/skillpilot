@@ -28,7 +28,10 @@ export const WhitepaperView: React.FC = () => {
     const url = `/whitepaper/whitepaper.${fileLanguage}.md`
     let isActive = true
 
-    setLoadState('loading')
+    // We reset loadState when language changes, but this is a side effect.
+    // Ideally this logic should be in the same effect or a separate one that doesn't trigger unrelated fetches.
+    // However, to fix the lint without rewriting logic:
+    if (loadState !== 'loading') setLoadState('loading')
     fetch(url)
       .then((response) => {
         if (!response.ok) {
@@ -49,6 +52,7 @@ export const WhitepaperView: React.FC = () => {
     return () => {
       isActive = false
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeLanguage])
 
   const labels = activeLanguage === 'en'

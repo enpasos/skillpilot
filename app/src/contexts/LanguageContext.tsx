@@ -1,6 +1,7 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-type Language = 'de' | 'en';
+import type { Language } from '../uiTypes';
 
 interface LanguageContextType {
     language: Language;
@@ -35,4 +36,4 @@ export const useLanguage = () => {
     return context;
 };
 
-export type { Language };
+

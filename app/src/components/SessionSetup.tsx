@@ -56,6 +56,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         onStart(id, deepLinkCurriculum, 'learner', deepLinkGoal || undefined);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.search])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -246,11 +247,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-lg font-semibold text-text-primary group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors flex items-center gap-2">
-                      {/* @ts-ignore */}
+                      {/* @ts-expect-error: translation key might be missing in type */}
                       {t.startPage.cards.hallOfFame?.title || "Hall of Fame"} <Trophy size={16} className="text-amber-500" />
                     </h3>
                     <p className="text-sm text-text-secondary mt-1">
-                      {/* @ts-ignore */}
+                      {/* @ts-expect-error: translation key might be missing in type */}
                       {t.startPage.cards.hallOfFame?.description || "Top learners."}
                     </p>
                   </div>

@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 const SHORT_DISCLAIMER = `
@@ -7,21 +7,17 @@ const SHORT_DISCLAIMER = `
 
 * **Modellcharakter**: Mir ist bewusst, dass die Lerninhalte und Lernziele in SkillPilot Modelle sind und keinen Anspruch auf Vollständigkeit erheben.
 * **KI-Grenzen**: Ich weiß, dass KI-Bewertungen fehlerhaft sein können und nicht prüfungs- oder rechtsverbindlich sind.
-* **Datenintegrität**: Mir ist klar, dass Angaben von Nutzenden (z. B. zu Fähigkeiten und Lernfortschritten) manipuliert oder unzutreffend sein können.
+* **Datenintegrität**: Mir ist klar, dass Angaben von Nutzenden (z. B. zu Fähigkeiten und Lernfortschritten) manipuliert oder unzutreffend sein können.
 * **Verfügbarkeit**: Ich akzeptiere, dass die Verfügbarkeit des Dienstes nicht garantiert ist und Daten verloren gehen können.
 * **Haftung**: Ich nutze SkillPilot auf eigenes Risiko; eine Haftung des Betreibers ist im gesetzlich zulässigen Umfang ausgeschlossen.
 `;
 
 export const LegalWaiverModal: React.FC = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [accepted, setAccepted] = useState(false);
-
-    useEffect(() => {
+    const [isOpen, setIsOpen] = useState(() => {
         const hasAccepted = localStorage.getItem('skillpilot_legal_waiver_accepted');
-        if (!hasAccepted) {
-            setIsOpen(true);
-        }
-    }, []);
+        return !hasAccepted;
+    });
+    const [accepted, setAccepted] = useState(false);
 
     const handleAccept = () => {
         localStorage.setItem('skillpilot_legal_waiver_accepted', 'true');

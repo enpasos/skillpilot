@@ -208,6 +208,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
         }
 
         loadData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dataSourceUrl, filterTags?.join(','), reloadTrigger, goalId, skillPilotId])
     // Initialize: Fetch Data -> Then Queue
 
@@ -473,7 +474,8 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
                                 remarkPlugins={[remarkMath]}
                                 rehypePlugins={[rehypeKatex]}
                                 components={{
-                                    p: ({ node, ...props }) => <p className="m-0" {...props} />
+                                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                                    p: ({ node: _node, ...props }) => <p className="m-0" {...props} />
                                 }}
                             >
                                 {currentCard.front}
@@ -496,7 +498,8 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
                                 remarkPlugins={[remarkMath]}
                                 rehypePlugins={[rehypeKatex]}
                                 components={{
-                                    p: ({ node, ...props }) => <p className="m-0" {...props} />
+                                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                                    p: ({ node: _node, ...props }) => <p className="m-0" {...props} />
                                 }}
                             >
                                 {currentCard.back}

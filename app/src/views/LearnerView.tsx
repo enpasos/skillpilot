@@ -307,12 +307,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const isResizing = useRef(false)
 
-  const startResizing = useCallback(() => {
-    isResizing.current = true
-    document.addEventListener('mousemove', resize)
-    document.addEventListener('mouseup', stopResizing)
-    document.body.style.cursor = 'col-resize'
-    document.body.style.userSelect = 'none'
+  const resize = useCallback((e: MouseEvent) => {
+    if (isResizing.current) {
+      setSidebarWidth(Math.max(240, Math.min(800, e.clientX)))
+    }
   }, [])
 
   const stopResizing = useCallback(() => {
@@ -321,13 +319,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     document.removeEventListener('mouseup', stopResizing)
     document.body.style.cursor = ''
     document.body.style.userSelect = ''
-  }, [])
+  }, [resize])
 
-  const resize = useCallback((e: MouseEvent) => {
-    if (isResizing.current) {
-      setSidebarWidth(Math.max(240, Math.min(800, e.clientX)))
-    }
-  }, [])
+  const startResizing = useCallback(() => {
+    isResizing.current = true
+    document.addEventListener('mousemove', resize)
+    document.addEventListener('mouseup', stopResizing)
+    document.body.style.cursor = 'col-resize'
+    document.body.style.userSelect = 'none'
+  }, [resize, stopResizing])
 
   // Save personal config to backend
   const handleConfigChange = useCallback(async (newConfig: Record<string, { selected: boolean; filterId?: string }>) => {
@@ -365,7 +365,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         const serverData = await res.json()
 
         // V2 Export: Collect Local SRS State
-        const clientData: Record<string, any> = { srsState: {} }
+        const clientData: Record<string, unknown> = { srsState: {} }
         const prefix = `srs_state_${skillpilotId}_`
 
         try {
@@ -374,7 +374,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             if (key && key.startsWith(prefix)) {
               // Save full key-value pair. We will parse the key on import to handle ID changes.
               const val = localStorage.getItem(key)
-              if (val) clientData.srsState[key] = JSON.parse(val)
+              if (val) (clientData.srsState as Record<string, unknown>)[key] = JSON.parse(val)
             }
           }
         } catch (e) {
@@ -420,13 +420,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         const json = JSON.parse(e.target?.result as string);
 
         // V2 Import: Unwrap if Wrapper exists
-        let payloadToSend = json;
-        let clientDataToRestore: any = null;
+        let payloadToSend: unknown = json;
+        let clientDataToRestore: unknown = null;
 
         if (json.serverExport && json.clientData) {
           console.log("Detected V2 Export Wrapper")
           payloadToSend = json.serverExport;
-          clientDataToRestore = json.clientData;
+          clientDataToRestore = json.clientData as Record<string, unknown>;
         }
 
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
@@ -440,10 +440,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
         if (res.ok) {
           // Restore Local Data (SRS State) if present
-          if (clientDataToRestore && clientDataToRestore.srsState) {
+          if (clientDataToRestore && (clientDataToRestore as Record<string, unknown>).srsState) {
             try {
               console.log("Restoring SRS State...")
-              const srsState = clientDataToRestore.srsState as Record<string, any>
+              const srsState = (clientDataToRestore as Record<string, unknown>).srsState as Record<string, unknown>
               let restoreCount = 0;
 
               // Regex to parse old keys: srs_state_{OLD_ID}_{GOAL_ID}
@@ -480,7 +480,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           try {
             const errData = await res.json();
             if (errData && errData.message) serverMsg = errData.message;
-          } catch (e) { /* ignore */ }
+          } catch { /* ignore */ }
 
           // Use helpful message if signature error suspected (400 Bad Request) or generic otherwise
           if (res.status === 400) {
@@ -707,7 +707,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 <FlashcardDrill
                   key={currentGoal.id}
                   goalId={currentGoal.id}
-                  dataSourceUrl={currentGoal.extendedData?.vocabularySource}
+                  dataSourceUrl={currentGoal.extendedData?.vocabularySource as string | undefined}
                   onComplete={() => {
                     // Refresh mastery if needed or just show confetti
                     onRefresh?.()

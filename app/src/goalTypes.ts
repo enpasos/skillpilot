@@ -24,7 +24,7 @@ export interface UiGoal {
   examples: string[]
   effectiveRequires?: string[]
   inheritedRequires?: string[]
-  extendedData?: Record<string, any>
+  extendedData?: Record<string, unknown>
 }
 
 function demandLevelToNumber(level: string): number {

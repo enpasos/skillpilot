@@ -109,8 +109,8 @@ export function useLandscapes(landscapeId?: string, language: string = 'de') {
           const summaries = json.summaries || []
 
           // Convert summaries to LandscapeEntry with empty goals
-          const entries: LandscapeEntry[] = summaries.map((s: any) => ({
-            meta: { ...s, goals: [] },
+          const entries: LandscapeEntry[] = summaries.map((s: unknown) => ({
+            meta: { ...(s as LearningLandscape), goals: [] },
             goals: [],
           }))
           setEntries(entries)

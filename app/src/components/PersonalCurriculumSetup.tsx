@@ -54,7 +54,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             const currentSelected = prev[landscapeId]?.selected ?? false
             const nextSelected = !currentSelected
 
-            let next = {
+            const next = {
                 ...prev,
                 [landscapeId]: {
                     ...prev[landscapeId],

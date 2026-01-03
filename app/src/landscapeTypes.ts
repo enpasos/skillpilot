@@ -37,7 +37,7 @@ export interface LearningGoal {
   contains: string[]
   examples: string[]
   sourceRef?: string
-  extendedData?: Record<string, any>
+  extendedData?: Record<string, unknown>
 }
 
 export interface LearningLandscape {
