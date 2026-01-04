@@ -938,12 +938,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                     </h2>
                     <p className="text-sm text-text-secondary">
                       {t.learner?.chooseNext || "Welches möchtest du als Nächstes angehen?"}
-                    </p>
-                  </div>
-                </div>
-
+```
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {stateMachineOptions
+                    .filter(candidate => candidate.type === 'atomic')
                     .slice(0, 6)
                     .map((candidate, idx) => (
                       <button
@@ -991,5 +989,5 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         {modalMessage}
       </InfoModal>
     </div>
-  )
+        )
 }
