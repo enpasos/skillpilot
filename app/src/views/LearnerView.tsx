@@ -11,7 +11,7 @@ import { FlashcardDrill } from '../components/srs/FlashcardDrill'
 import { useLanguage } from '../contexts/LanguageContext'
 
 import type { UiGoal } from '../goalTypes'
-import type { Learner } from '../learnerTypes'
+import type { Learner, FrontierGoal } from '../learnerTypes'
 
 interface LearnerViewProps {
   rootGoals: UiGoal[]
@@ -47,6 +47,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [forcedExpandedIds, setForcedExpandedIds] = useState<Set<string>>(new Set())
   const [learnerData, setLearnerData] = useState<Learner | null>(null)
+  const [backendFrontier, setBackendFrontier] = useState<FrontierGoal[]>([])
   const [isSetupOpen, setIsSetupOpen] = useState(false)
   const [personalConfig, setPersonalConfig] = useState<Record<string, { selected: boolean; filterId?: string }>>({})
 
@@ -197,70 +198,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [learnerData?.activeGoalId, parentMap, onSelectGoal, selectedId])
 
-  // Frontier Logic: Identify the "Next Actionable" goal in every branch.
-  // Assumption: Content is sequential within containers.
+  // Frontier Logic: SYNC WITH BACKEND
+  // We strictly use the Frontier logic provided by the AI-API (Backend).
   const frontierIds = useMemo(() => {
-    const ids = new Set<string>()
+    return new Set(backendFrontier.map(g => g.id))
+  }, [backendFrontier])
 
-    const check = (id: string): boolean => {
-      // Respect Global Visibility Config (e.g. Personal Curriculum)
-      if (!visibleGoals.has(id)) return false
-
-      const g = goalIndexAll.get(id)
-      if (!g) return false
-
-      // Check Prerequisites (Requires)
-      // If ANY required goal is not masterd, this goal is BLOCKED (not frontier).
-      if (g.requires && g.requires.length > 0) {
-        for (const reqId of g.requires) {
-          // Check if requirement is visible? Usually yes.
-          // Check mastery.
-          if (getMastery(reqId) < 1) {
-            return false // Blocked by prerequisite
-          }
-        }
-      }
-
-      // 1. If Atomic
-      if (!g.contains || g.contains.length === 0) {
-
-        // Final Filter Check for Atomic Goal
-        if (activeFilter && activeFilter !== 'all') {
-          // Only strictly enforce if the goal HAS tags. If it has no tags, we assume it's generic/OK.
-          if (g.tags && g.tags.length > 0 && !g.tags.includes(activeFilter)) {
-            return false; // Skip this goal, it's not for this profile
-          }
-        }
-
-        const m = getMastery(id)
-        if (m < 1) {
-          ids.add(id)
-          return true // Found frontier, branch is active
-        }
-        return false // Mastered
-      }
-
-      // 2. If Container
-      // If the container ITSELF is marked mastered (explicitly), we might skip children?
-      // But typically mastery is on atomic leaves. Let's traverse children.
-      let containerActive = false
-      for (const childId of g.contains) {
-        // If we found the frontier in this child, we STOP checking subsequent children (Sequential assumption).
-        // This ensures typically only 1 frontier goal per container.
-        const childActive = check(childId)
-        if (childActive) {
-          containerActive = true
-          break
-        }
-      }
-      return containerActive
-    }
-
-    // Check all visible roots in parallel (parallel tracks)
-    visibleRootGoals.forEach(r => check(r.id))
-
-    return ids
-  }, [visibleRootGoals, goalIndexAll, getMastery, visibleGoals, activeFilter])
+  const atomicFrontier = useMemo(() => {
+    return backendFrontier.filter(g => g.type === 'atomic')
+  }, [backendFrontier])
 
   // Auto-reveal on initial load if active goal exists
   const initialRevealRef = useRef(false)
@@ -305,6 +251,37 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
     fetchPlanned()
     fetchLearnerData()
+    const fetchLearnerData = async () => {
+      try {
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
+        const res = await fetch(url)
+        if (res.ok) {
+          const data = await res.json()
+          setLearnerData(data)
+        }
+      } catch (e) {
+        console.warn('Failed to load learner data', e)
+      }
+    }
+    const fetchState = async () => {
+      try {
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/state` : `/api/ui/learners/${skillpilotId}/state`
+        const res = await fetch(url)
+        if (res.ok) {
+          const data = await res.json()
+          if (data.frontier && Array.isArray(data.frontier)) {
+            setBackendFrontier(data.frontier)
+          }
+        }
+      } catch (e) {
+        console.warn('Failed to load learner state', e)
+      }
+    }
+    fetchPlanned()
+    fetchLearnerData()
+    fetchState()
   }, [skillpilotId])
 
   const togglePlan = useCallback(async (id: string) => {
@@ -674,6 +651,23 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 }
                 promises.push(fetchPlanned());
 
+                const fetchState = async () => {
+                  try {
+                    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+                    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/state?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}/state?_t=${Date.now()}`
+                    const res = await fetch(url)
+                    if (res.ok) {
+                      const data = await res.json()
+                      if (data.frontier && Array.isArray(data.frontier)) {
+                        setBackendFrontier(data.frontier)
+                      }
+                    }
+                  } catch (e) {
+                    console.warn('Failed to reload learner state', e)
+                  }
+                }
+                promises.push(fetchState());
+
                 await Promise.all(promises);
               } finally {
                 setIsRefreshing(false);
@@ -881,11 +875,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {Array.from(frontierIds)
-                    .map(id => goalIndexAll.get(id))
-                    .filter((g): g is UiGoal => !!g)
-                    // Sort via goalIndexAll defaults or alphabetically? 
-                    // Usually tree order is best but map iteration order is insertion order in JS.
+                  {atomicFrontier
                     .slice(0, 6)
                     .map((candidate, idx) => (
                       <button
@@ -900,7 +890,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                           <span className="font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors line-clamp-2">
                             {candidate.title}
                           </span>
-                          {/* Optional: Show Breadcrumb/Parent Context? */}
                         </div>
                       </button>
                     ))}

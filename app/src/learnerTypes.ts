@@ -23,3 +23,28 @@ export interface Learner {
   activeGoalId?: string;
 }
 
+export interface FrontierGoal {
+  id: string;
+  title: string;
+  description: string;
+  type: 'atomic' | 'cluster';
+  reason: string;
+  tags?: string[];
+}
+
+export interface UnifiedLearnerStateResponse {
+  skillpilotId: string;
+  curriculum: { landscapeId: string; title: string };
+  frontier: FrontierGoal[];
+  goals: {
+    planned: FrontierGoal[];
+    masteredCount: number;
+    totalCount: number;
+  };
+  nextAllowedActions: string[];
+  activeFilters: string[];
+  copySources: CopySource[];
+  learningState: string;
+  activeGoal?: FrontierGoal;
+  stateMachine: any; // Simplified for now
+}
