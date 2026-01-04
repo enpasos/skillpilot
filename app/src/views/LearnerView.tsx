@@ -47,7 +47,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [forcedExpandedIds, setForcedExpandedIds] = useState<Set<string>>(new Set())
   const [learnerData, setLearnerData] = useState<Learner | null>(null)
-  const [stateMachineOptions, setStateMachineOptions] = useState<FrontierGoal[]>([])
+  const [frontierOptions, setFrontierOptions] = useState<FrontierGoal[]>([])
   const [isSetupOpen, setIsSetupOpen] = useState(false)
   const [personalConfig, setPersonalConfig] = useState<Record<string, { selected: boolean; filterId?: string }>>({})
 
@@ -263,7 +263,37 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     return ids
   }, [visibleRootGoals, goalIndexAll, getMastery, visibleGoals, activeFilter])
 
-  // Removed atomicFrontier memo as frontierIds is now inherently atomic
+  const atomicFrontierOptions = useMemo(
+    () => frontierOptions.filter((candidate) => candidate.type === 'atomic'),
+    [frontierOptions],
+  )
+
+  const refreshState = useCallback(
+    async (cacheBust = false) => {
+      if (!skillpilotId) return
+      try {
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const suffix = cacheBust ? `?_t=${Date.now()}` : ''
+        const url = apiBase
+          ? `${apiBase}/api/ui/learners/${skillpilotId}/state${suffix}`
+          : `/api/ui/learners/${skillpilotId}/state${suffix}`
+        const res = await fetch(url)
+        if (res.ok) {
+          const data = await res.json()
+          if (data.frontier && Array.isArray(data.frontier)) {
+            setFrontierOptions(data.frontier)
+          } else if (data.stateMachine && Array.isArray(data.stateMachine.goalOptions)) {
+            setFrontierOptions(data.stateMachine.goalOptions)
+          } else {
+            setFrontierOptions([])
+          }
+        }
+      } catch (e) {
+        console.warn('Failed to load learner state', e)
+      }
+    },
+    [skillpilotId],
+  )
 
 
   // Auto-reveal on initial load if active goal exists
@@ -325,14 +355,41 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       });
 
       if (res.ok) {
-        // Refresh data to reflect simplified state (Active Goal Set)
-        onRefresh?.();
-        window.location.reload(); // Simplest way to ensure full sync
+        const data = await res.json()
+        if (data.frontier && Array.isArray(data.frontier)) {
+          setFrontierOptions(data.frontier)
+        } else if (data.stateMachine && Array.isArray(data.stateMachine.goalOptions)) {
+          setFrontierOptions(data.stateMachine.goalOptions)
+        }
+
+        const targetId = data.activeGoal?.id ?? goalId
+        setLearnerData((prev) => (prev ? { ...prev, activeGoalId: targetId } : prev))
+        if (parentMap) {
+          const ancestors = new Set<string>()
+          const queue = [targetId]
+          while (queue.length > 0) {
+            const current = queue.pop()!
+            const parents = parentMap.get(current)
+            if (parents) {
+              parents.forEach((p) => {
+                if (!ancestors.has(p)) {
+                  ancestors.add(p)
+                  queue.push(p)
+                }
+              })
+            }
+          }
+          setForcedExpandedIds(ancestors)
+        }
+        if (targetId !== selectedId) {
+          onSelectGoal(targetId)
+        }
+        onRefresh?.()
       }
     } catch (e) {
       console.warn('Failed to set active goal', e)
     }
-  }, [skillpilotId, onRefresh])
+  }, [skillpilotId, onRefresh, parentMap, selectedId, onSelectGoal])
 
   const togglePlan = useCallback(async (id: string) => {
     // Single Goal Mode:
@@ -357,11 +414,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ goals: Array.from(next) })
       })
+      await refreshState(true)
     } catch (e) {
       console.warn('Failed to save planned goals', e)
       // Revert on error? For now, just warn.
     }
-  }, [plannedGoals, skillpilotId])
+  }, [plannedGoals, skillpilotId, refreshState])
 
   // Load personal config from backend
   React.useEffect(() => {
@@ -382,27 +440,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         console.warn('Failed to load personal curriculum', e)
       }
     }
-    const fetchState = async () => {
-      try {
-        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/state` : `/api/ui/learners/${skillpilotId}/state`
-        const res = await fetch(url)
-        if (res.ok) {
-          const data = await res.json()
-          if (data.stateMachine && data.stateMachine.goalOptions && Array.isArray(data.stateMachine.goalOptions)) {
-            setStateMachineOptions(data.stateMachine.goalOptions)
-          } else {
-            // Fallback if stateMachine is empty but frontier exists (though user JSON shows stateMachine is specific)
-            setStateMachineOptions([])
-          }
-        }
-      } catch (e) {
-        console.warn('Failed to load learner state', e)
-      }
-    }
     fetchConfig()
-    fetchState()
-  }, [skillpilotId])
+    refreshState()
+  }, [skillpilotId, refreshState])
 
   // Check mobile state
   const [isMobile, setIsMobile] = useState(false)
@@ -452,10 +492,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newConfig)
       })
+      await refreshState(true)
     } catch (e) {
       console.warn('Failed to save personal curriculum', e)
     }
-  }, [skillpilotId])
+  }, [skillpilotId, refreshState])
 
 
 
@@ -722,24 +763,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
 
 
-                const fetchState = async () => {
-                  try {
-                    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-                    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/state?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}/state?_t=${Date.now()}`
-                    const res = await fetch(url)
-                    if (res.ok) {
-                      const data = await res.json()
-                      if (data.stateMachine && data.stateMachine.goalOptions && Array.isArray(data.stateMachine.goalOptions)) {
-                        setStateMachineOptions(data.stateMachine.goalOptions)
-                      } else {
-                        setStateMachineOptions([])
-                      }
-                    }
-                  } catch (e) {
-                    console.warn('Failed to reload learner state', e)
-                  }
-                }
-                promises.push(fetchState());
+                promises.push(refreshState(true));
 
                 await Promise.all(promises);
               } finally {
@@ -919,14 +943,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   } catch (e) {
                     console.warn('Failed to reload planned goals', e)
                   }
+                  await refreshState(true)
                 }}
-                onSetActive={(id) => togglePlan(id)}
+                onSetActive={handleSetActiveGoal}
                 isFrontier={frontierIds.has(currentGoal.id)}
               />
             )}
 
             {/* Extended Frontier Panel (Below GoalCard) */}
-            {stateMachineOptions.length > 0 && (getMastery(currentGoal.id) >= 1 || !learnerData?.activeGoalId || (!frontierIds.has(currentGoal.id) && learnerData?.activeGoalId !== currentGoal.id)) && (
+            {atomicFrontierOptions.length > 0 && (getMastery(currentGoal.id) >= 1 || !learnerData?.activeGoalId || (!frontierIds.has(currentGoal.id) && learnerData?.activeGoalId !== currentGoal.id)) && (
               <div className="mt-8 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="p-2 bg-sky-100 dark:bg-sky-900/30 rounded-lg text-sky-600 dark:text-sky-400">
@@ -938,10 +963,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                     </h2>
                     <p className="text-sm text-text-secondary">
                       {t.learner?.chooseNext || "Welches möchtest du als Nächstes angehen?"}
-```
+                    </p>
+                  </div>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {stateMachineOptions
-                    .filter(candidate => candidate.type === 'atomic')
+                  {atomicFrontierOptions
                     .slice(0, 6)
                     .map((candidate, idx) => (
                       <button

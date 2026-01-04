@@ -422,17 +422,22 @@ public class LearnerService {
             }
         }
 
-        // Compaction Logic: If frontier is too large, prefer clusters
+        // Compaction Logic: If frontier is too large, prefer atomic goals for actionable next steps.
         if (frontier.size() > 20) {
+            List<FrontierGoal> atomic = frontier.stream()
+                    .filter(g -> "atomic".equals(g.type()))
+                    .toList();
+            if (!atomic.isEmpty()) {
+                return atomic.subList(0, Math.min(atomic.size(), 20));
+            }
+
             List<FrontierGoal> clusters = frontier.stream()
                     .filter(g -> "cluster".equals(g.type()))
                     .toList();
-
             if (!clusters.isEmpty()) {
-                return clusters;
+                return clusters.subList(0, Math.min(clusters.size(), 20));
             }
-            // If no clusters but still huge, maybe limit to top 20?
-            // For now, let's just return the top 20 to avoid token overflow.
+
             return frontier.subList(0, Math.min(frontier.size(), 20));
         }
 
