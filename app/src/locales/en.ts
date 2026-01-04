@@ -77,7 +77,9 @@ export const en = {
         marked: "marked",
         completed: "completed",
         of: "of",
-        includesDataFrom: "Includes data from"
+        includesDataFrom: "Includes data from",
+        nextSteps: "Your next learning goals are:",
+        chooseNext: "Which one would you like to tackle next?"
     },
     trainer: {
         dashboard: "Trainer Dashboard",

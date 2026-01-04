@@ -77,7 +77,9 @@ export const de = {
         marked: "markiert",
         completed: "abgeschlossen",
         of: "von",
-        includesDataFrom: "Enthält Daten von"
+        includesDataFrom: "Enthält Daten von",
+        nextSteps: "Als nächste Lernziele stehen dir offen:",
+        chooseNext: "Welches möchtest du als Nächstes angehen?"
     },
     trainer: {
         dashboard: "Trainer Dashboard",
