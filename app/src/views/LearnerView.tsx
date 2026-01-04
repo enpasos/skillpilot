@@ -60,6 +60,25 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const fileInputRef = useRef<HTMLInputElement>(null)
 
+  // Save preferences to backend
+  const handlePreferencesChange = useCallback(async (strategy: 'RANDOM' | 'SEQUENTIAL', autoPilot: boolean) => {
+    // Optimistic update
+    setLearnerData(prev => prev ? { ...prev, learningStrategy: strategy, autoPilot } : null)
+
+    if (!skillpilotId) return
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/preferences` : `/api/ui/learners/${skillpilotId}/preferences`
+      await fetch(url, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ learningStrategy: strategy, autoPilot })
+      })
+    } catch (e) {
+      console.warn('Failed to save preferences', e)
+    }
+  }, [skillpilotId])
+
   const selectedId = currentGoal?.id ?? rootGoals[0]?.id ?? ''
 
   // Filter root goals based on Personal Curriculum (Level 2)
@@ -263,10 +282,24 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     return ids
   }, [visibleRootGoals, goalIndexAll, getMastery, visibleGoals, activeFilter])
 
-  const atomicFrontierOptions = useMemo(
-    () => frontierOptions.filter((candidate) => candidate.type === 'atomic'),
-    [frontierOptions],
-  )
+  const atomicFrontierOptions = useMemo(() => {
+    const atomic = frontierOptions.filter((candidate) => candidate.type === 'atomic')
+    const strategy = learnerData?.learningStrategy || 'RANDOM'
+
+    if (strategy === 'SEQUENTIAL') {
+      return atomic
+    } else {
+      // RANDOM: Deterministic shuffle based on options length/content to avoid jitter
+      // We will just shuffle once when list changes.
+      const shuffled = [...atomic]
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled
+    }
+  }, [frontierOptions, learnerData?.learningStrategy])
+
 
   const refreshState = useCallback(
     async (cacheBust = false) => {
@@ -391,6 +424,23 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [skillpilotId, onRefresh, parentMap, selectedId, onSelectGoal])
 
+  // Autopilot Logic
+  useEffect(() => {
+    if (!learnerData?.autoPilot || !learnerData?.activeGoalId) return
+
+    // Check if active goal is mastered
+    const currentMastery = getMastery(learnerData.activeGoalId)
+    if (currentMastery >= 1) {
+      if (atomicFrontierOptions.length > 0) {
+        const next = atomicFrontierOptions[0]
+        if (next.id !== learnerData.activeGoalId) {
+          console.log("Autopilot: Switching to", next.title)
+          handleSetActiveGoal(next.id)
+        }
+      }
+    }
+  }, [learnerData?.autoPilot, learnerData?.activeGoalId, getMastery, atomicFrontierOptions, handleSetActiveGoal])
+
   const togglePlan = useCallback(async (id: string) => {
     // Single Goal Mode:
     // If clicking the ALREADY selected goal -> Deselect it (Set empty)
@@ -497,6 +547,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       console.warn('Failed to save personal curriculum', e)
     }
   }, [skillpilotId, refreshState])
+
+  // Save preferences to backend
+
 
 
 
@@ -1027,6 +1080,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         onConfigChange={handleConfigChange}
         initialConfig={personalConfig}
         rootLandscapeId={rootLandscapeId}
+        initialStrategy={learnerData?.learningStrategy}
+        initialAutoPilot={learnerData?.autoPilot}
+        onPreferencesChange={handlePreferencesChange}
       />
 
       <InfoModal
@@ -1038,5 +1094,5 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         {modalMessage}
       </InfoModal>
     </div>
-        )
+  )
 }

@@ -38,6 +38,12 @@ public class Learner {
     @Column(name = "learning_state")
     private LearningState learningState = LearningState.FRONTIER;
 
+    @Column(name = "learning_strategy")
+    private String learningStrategy = "RANDOM";
+
+    @Column(name = "auto_pilot")
+    private Boolean autoPilot = false;
+
     @jakarta.persistence.ElementCollection(fetch = jakarta.persistence.FetchType.EAGER)
     @jakarta.persistence.CollectionTable(name = "learner_copy_sources", joinColumns = @jakarta.persistence.JoinColumn(name = "learner_id"))
     private java.util.Set<CopySource> copySources = new java.util.HashSet<>();
@@ -90,6 +96,22 @@ public class Learner {
         this.learningState = learningState;
     }
 
+    public String getLearningStrategy() {
+        return learningStrategy;
+    }
+
+    public void setLearningStrategy(String learningStrategy) {
+        this.learningStrategy = learningStrategy;
+    }
+
+    public Boolean getAutoPilot() {
+        return autoPilot;
+    }
+
+    public void setAutoPilot(Boolean autoPilot) {
+        this.autoPilot = autoPilot;
+    }
+
     // Needed for JPA toolchain to set generated ID
     public void setSkillpilotId(String skillpilotId) {
         this.skillpilotId = skillpilotId;
@@ -102,6 +124,12 @@ public class Learner {
         }
         if (this.learningState == null) {
             this.learningState = LearningState.FRONTIER;
+        }
+        if (this.learningStrategy == null) {
+            this.learningStrategy = "RANDOM";
+        }
+        if (this.autoPilot == null) {
+            this.autoPilot = false;
         }
     }
 }

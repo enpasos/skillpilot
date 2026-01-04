@@ -210,6 +210,17 @@ public class LearnerService {
         return getPlannedGoals(skillpilotId);
     }
 
+    @Transactional
+    public void setPreferences(String skillpilotId, String learningStrategy, Boolean autoPilot) {
+        Learner learner = getLearner(skillpilotId);
+        if (learningStrategy != null) {
+            learner.setLearningStrategy(learningStrategy);
+        }
+        if (autoPilot != null) {
+            learner.setAutoPilot(autoPilot);
+        }
+    }
+
     @Transactional(readOnly = true)
     public Learner getLearner(String skillpilotId) {
         return learnerRepository.findById(skillpilotId)
@@ -422,7 +433,8 @@ public class LearnerService {
             }
         }
 
-        // Compaction Logic: If frontier is too large, prefer atomic goals for actionable next steps.
+        // Compaction Logic: If frontier is too large, prefer atomic goals for
+        // actionable next steps.
         if (frontier.size() > 20) {
             List<FrontierGoal> atomic = frontier.stream()
                     .filter(g -> "atomic".equals(g.type()))

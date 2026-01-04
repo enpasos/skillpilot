@@ -22,6 +22,9 @@ interface PersonalCurriculumSetupProps {
     onConfigChange: (config: PersonalCurriculumConfig) => void
     initialConfig?: PersonalCurriculumConfig
     rootLandscapeId?: string
+    initialStrategy?: 'RANDOM' | 'SEQUENTIAL'
+    initialAutoPilot?: boolean
+    onPreferencesChange?: (strategy: 'RANDOM' | 'SEQUENTIAL', autoPilot: boolean) => void
 }
 
 export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = ({
@@ -31,6 +34,9 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     onConfigChange,
     initialConfig = {},
     rootLandscapeId,
+    initialStrategy = 'RANDOM',
+    initialAutoPilot = false,
+    onPreferencesChange,
 }) => {
     const computedInitial = React.useMemo(() => {
         if (Object.keys(initialConfig).length > 0) return initialConfig
@@ -42,12 +48,29 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     }, [availableLandscapes, initialConfig])
 
     const [config, setConfig] = useState<PersonalCurriculumConfig>(computedInitial)
+    const [strategy, setStrategy] = useState<'RANDOM' | 'SEQUENTIAL'>(initialStrategy)
+    const [autoPilot, setAutoPilot] = useState<boolean>(initialAutoPilot)
     const [expanded, setExpanded] = useState<Set<string>>(new Set())
 
     // Update config when initialConfig changes (e.g. loaded from backend)
     useEffect(() => {
         setConfig(computedInitial)
     }, [computedInitial])
+
+    useEffect(() => {
+        setStrategy(initialStrategy)
+        setAutoPilot(initialAutoPilot)
+    }, [initialStrategy, initialAutoPilot])
+
+    const handleStrategyChange = (newStrategy: 'RANDOM' | 'SEQUENTIAL') => {
+        setStrategy(newStrategy)
+        onPreferencesChange?.(newStrategy, autoPilot)
+    }
+
+    const handleAutoPilotChange = (newAutoPilot: boolean) => {
+        setAutoPilot(newAutoPilot)
+        onPreferencesChange?.(strategy, newAutoPilot)
+    }
 
     const toggleSelection = (landscapeId: string, isRoot: boolean) => {
         setConfig(prev => {
@@ -201,6 +224,52 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 </div>
 
                 <div className="flex-1 overflow-y-auto p-4">
+                    {/* Preferences Section */}
+                    {onPreferencesChange && (
+                        <div className="mb-6 bg-blue-50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30">
+                            <h3 className="text-sm font-semibold text-text-primary mb-3">Auswahlpriorisierung</h3>
+                            <div className="flex flex-col gap-3">
+                                <div className="flex items-center gap-6">
+                                    <label className="flex items-center gap-2 cursor-pointer">
+                                        <input
+                                            type="radio"
+                                            name="strategy"
+                                            checked={strategy === 'RANDOM'}
+                                            onChange={() => handleStrategyChange('RANDOM')}
+                                            className="w-4 h-4 text-sky-600 focus:ring-sky-500 border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-600"
+                                        />
+                                        <span className="text-sm text-text-primary">Zufällig (Abwechslung)</span>
+                                    </label>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+                                        <input
+                                            type="radio"
+                                            name="strategy"
+                                            checked={strategy === 'SEQUENTIAL'}
+                                            onChange={() => handleStrategyChange('SEQUENTIAL')}
+                                            className="w-4 h-4 text-sky-600 focus:ring-sky-500 border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-600"
+                                        />
+                                        <span className="text-sm text-text-primary">Schritt für Schritt</span>
+                                    </label>
+                                </div>
+
+                                <div className="h-px bg-border-color my-1"></div>
+
+                                <label className="flex items-center gap-2 cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        checked={autoPilot}
+                                        onChange={(e) => handleAutoPilotChange(e.target.checked)}
+                                        className="w-4 h-4 rounded text-sky-600 focus:ring-sky-500 border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-600"
+                                    />
+                                    <div>
+                                        <span className="text-sm font-medium text-text-primary">Autopilot aktivieren</span>
+                                        <p className="text-xs text-text-secondary">Startet automatisch das nächste Ziel nach Abschluss.</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    )}
+
                     <div className="flex flex-col gap-1">
                         {rootLandscape ? renderNode(rootLandscape, true) : childrenLandscapes.map(l => renderNode(l, false))}
                     </div>
@@ -215,6 +284,6 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     </button>
                 </div>
             </div>
-        </div>
+            )</div>
     )
 }
