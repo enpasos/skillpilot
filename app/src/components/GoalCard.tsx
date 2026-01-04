@@ -13,6 +13,7 @@ interface GoalCardProps {
   isActive?: boolean
   onRefresh?: () => void
   onSetActive?: (id: string) => void
+  nextCandidates?: Goal[]
 }
 
 import ReactMarkdown from 'react-markdown'
@@ -27,7 +28,8 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   isPlanned = false,
   isActive = false,
   onRefresh,
-  onSetActive
+  onSetActive,
+  nextCandidates = []
 }) => {
   const handleChange = onMasteryChange ?? (() => { })
   const [isRefreshing, setIsRefreshing] = useState(false)
@@ -97,8 +99,33 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
       {showLearnerTools && (
         <div className="mt-4 space-y-4">
-          {/* Action Buttons Row */}
-          {isAtomic && !isActive && onSetActive && (
+
+          {/* Frontier Recommendations (When Mastered) */}
+          {masteryValue >= 1 && nextCandidates.length > 0 && onSetActive && (
+            <div className="bg-amber-50 dark:bg-amber-900/10 rounded-xl p-4 border border-amber-100 dark:border-amber-900/30">
+              <h3 className="text-xs font-bold text-amber-700 dark:text-amber-500 uppercase tracking-wide mb-3">
+                Nächste Schritte
+              </h3>
+              <div className="flex flex-col gap-2">
+                {nextCandidates.slice(0, 3).map(candidate => (
+                  <button
+                    key={candidate.id}
+                    onClick={() => onSetActive(candidate.id)}
+                    className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-amber-200 dark:border-amber-900/50 hover:border-amber-400 dark:hover:border-amber-500 transition-colors text-left group/item"
+                  >
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-200 group-hover/item:text-amber-600 dark:group-hover/item:text-amber-400">
+                      {candidate.title}
+                    </span>
+                    <Send size={14} className="text-amber-400 opacity-0 group-hover/item:opacity-100 transition-opacity" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+
+          {/* Action Buttons Row (Only if NOT Mastered) */}
+          {isAtomic && !isActive && onSetActive && masteryValue < 1 && (
             <div className="flex justify-end">
               <button
                 onClick={() => onSetActive(goal.id)}

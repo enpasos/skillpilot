@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Target, Send, Check } from 'lucide-react'
+import { Target, Send, Check, Play, Zap } from 'lucide-react'
 import { useTranslation } from '../hooks/useTranslation'
 import type { UiGoal } from '../goalTypes'
 
@@ -22,6 +22,7 @@ interface TreeNodeProps {
   isInPlannedSubtree?: boolean
   activeGoalId?: string
   forcedExpandedIds?: Set<string>
+  frontierIds?: Set<string>
 }
 
 const TreeNode: React.FC<TreeNodeProps> = ({
@@ -41,6 +42,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   isInPlannedSubtree = false,
   activeGoalId,
   forcedExpandedIds,
+  frontierIds,
 }) => {
   const t = useTranslation()
   const goal = allGoals.get(goalId)
@@ -108,6 +110,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   const mastery = getMastery(goal.id)
   const isPlanned = plannedGoals.has(goal.id)
   const isSelected = selectedId === goal.id
+  const isFrontier = frontierIds?.has(goal.id)
 
   // Propagate: If I am in the subtree (passed from parent) OR I am the start of the plan
   const selfInSubtree = isInPlannedSubtree || isPlanned
@@ -158,13 +161,18 @@ const TreeNode: React.FC<TreeNodeProps> = ({
               ? 'text-slate-300 dark:text-slate-600'
               : mastery >= 1
                 ? 'text-emerald-500'
-                : 'text-red-500'
+                : isFrontier
+                  ? 'text-sky-500 animate-pulse' // Highlight Frontier Icon
+                  : 'text-red-500'
               }`}
           >
             {activeGoalId === goal.id ? (
               <Send size={16} className="text-amber-500" />
             ) : mastery >= 1 ? (
               <Check size={16} strokeWidth={3} />
+            ) : isFrontier ? (
+              // Use Play or Zap for Frontier
+              <Play size={16} fill="currentColor" strokeWidth={0} />
             ) : (
               <Target size={16} />
             )}
@@ -172,13 +180,15 @@ const TreeNode: React.FC<TreeNodeProps> = ({
         )}
 
         <span
-          className={`text-sm truncate flex-1 ${isDimmed
+          className={`text-sm truncate flex-1 transition-colors ${isDimmed
             ? 'text-slate-300 dark:text-slate-600' // Dimmed (Outside Scope)
             : isPlanned
               ? 'text-slate-900 dark:text-slate-100 font-medium' // Planned (Focus)
               : mastery >= 1
                 ? 'text-slate-500 dark:text-slate-400' // Mastered (Normal Scope)
-                : 'text-slate-700 dark:text-slate-200' // Open (Normal Scope)
+                : isFrontier
+                  ? 'text-sky-600 dark:text-sky-400 font-semibold' // Frontier (Highlighted)
+                  : 'text-slate-700 dark:text-slate-200' // Open (Normal Scope)
             }`}
           title={goal.title}
         >
@@ -231,6 +241,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 isInPlannedSubtree={selfInSubtree}
                 activeGoalId={activeGoalId}
                 forcedExpandedIds={forcedExpandedIds}
+                frontierIds={frontierIds}
               />
             ))}
           </div>
@@ -255,6 +266,7 @@ interface CompetenceTreeProps {
   personalConfig?: Record<string, { selected: boolean; filterId?: string }>
   activeGoalId?: string
   forcedExpandedIds?: Set<string>
+  frontierIds?: Set<string>
 }
 
 export const CompetenceTree: React.FC<CompetenceTreeProps> = ({ rootGoals, activeFilter, personalConfig, ...props }) => {

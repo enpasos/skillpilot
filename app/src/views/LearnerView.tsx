@@ -197,6 +197,50 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [learnerData?.activeGoalId, parentMap, onSelectGoal, selectedId])
 
+  // Frontier Logic: Identify the "Next Actionable" goal in every branch.
+  // Assumption: Content is sequential within containers.
+  const frontierIds = useMemo(() => {
+    const ids = new Set<string>()
+
+    const check = (id: string): boolean => {
+      // Returns true if this branch is "Active/Unfinished" (i.e. hit a frontier or is a frontier)
+      // Returns false if this branch is fully Mastered (so we can move to next sibling)
+
+      const g = goalIndexAll.get(id)
+      if (!g) return false
+
+      // 1. If Atomic
+      if (!g.contains || g.contains.length === 0) {
+        const m = getMastery(id)
+        if (m < 1) {
+          ids.add(id)
+          return true // Found frontier, branch is active
+        }
+        return false // Mastered
+      }
+
+      // 2. If Container
+      // If the container ITSELF is marked mastered (explicitly), we might skip children?
+      // But typically mastery is on atomic leaves. Let's traverse children.
+      let containerActive = false
+      for (const childId of g.contains) {
+        // If we found the frontier in this child, we STOP checking subsequent children (Sequential assumption).
+        // This ensures typically only 1 frontier goal per container.
+        const childActive = check(childId)
+        if (childActive) {
+          containerActive = true
+          break
+        }
+      }
+      return containerActive
+    }
+
+    // Check all visible roots in parallel (parallel tracks)
+    visibleRootGoals.forEach(r => check(r.id))
+
+    return ids
+  }, [visibleRootGoals, goalIndexAll, getMastery])
+
   // Auto-reveal on initial load if active goal exists
   const initialRevealRef = useRef(false)
   useEffect(() => {
@@ -641,6 +685,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             personalConfig={personalConfig}
             activeGoalId={learnerData?.activeGoalId}
             forcedExpandedIds={forcedExpandedIds}
+            frontierIds={frontierIds}
           />
         </div>
         {learnerData && learnerData.copySources && learnerData.copySources.length > 0 && (
@@ -746,16 +791,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
                       // Auto-Navigate if Active Goal Changed
                       if (data.activeGoalId && data.activeGoalId !== oldActiveId) {
-                        // We need to trigger the reveal logic. 
-                        // Since we just setLearnerData, the useEffect on [learnerData?.activeGoalId] might trigger validation?
-                        // BUT `revealActiveGoal` depends on `setForcedExpandedIds`.
-                        // The existing `useEffect` at line 202 only runs ONCE on mount (initialRevealRef).
-                        // So we must manually trigger navigation here.
-
-                        // We can re-use the logic from revealActiveGoal but we need the NEW ID.
-                        // But revealActiveGoal uses `learnerData.activeGoalId` from state, which might not be updated yet in this closure.
-                        // So let's write a helper or just do it here with the fresh `data.activeGoalId`.
-
+                        // Manual trigger reveal
                         const targetId = data.activeGoalId;
                         if (parentMap) {
                           const ancestors = new Set<string>()
@@ -797,6 +833,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   }
                 }}
                 onSetActive={(id) => togglePlan(id)}
+                nextCandidates={Array.from(frontierIds).map(id => goalIndexAll.get(id)).filter((g): g is UiGoal => !!g)}
               />
             )}
           </div>
