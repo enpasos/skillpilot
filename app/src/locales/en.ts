@@ -43,7 +43,7 @@ export const en = {
             }
         },
         banner: {
-            text: "**SkillPilot is free.**\nYou only need a ChatGPT account and a web browser.\n(Usage in the ChatGPT app is currently not reliable.)"
+            text: "**SkillPilot is free.**\nYou only need a ChatGPT account and a web browser."
         },
         footer: {
             privacy: "Privacy",
