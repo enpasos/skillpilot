@@ -206,14 +206,20 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       // Respect Global Visibility Config (e.g. Personal Curriculum)
       if (!visibleGoals.has(id)) return false
 
-      // Returns true if this branch is "Active/Unfinished" (i.e. hit a frontier or is a frontier)
-      // Returns false if this branch is fully Mastered (so we can move to next sibling)
-
       const g = goalIndexAll.get(id)
       if (!g) return false
 
       // 1. If Atomic
       if (!g.contains || g.contains.length === 0) {
+
+        // Final Filter Check for Atomic Goal
+        if (activeFilter && activeFilter !== 'all') {
+          // Only strictly enforce if the goal HAS tags. If it has no tags, we assume it's generic/OK.
+          if (g.tags && g.tags.length > 0 && !g.tags.includes(activeFilter)) {
+            return false; // Skip this goal, it's not for this profile
+          }
+        }
+
         const m = getMastery(id)
         if (m < 1) {
           ids.add(id)
@@ -242,7 +248,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     visibleRootGoals.forEach(r => check(r.id))
 
     return ids
-  }, [visibleRootGoals, goalIndexAll, getMastery, visibleGoals])
+  }, [visibleRootGoals, goalIndexAll, getMastery, visibleGoals, activeFilter])
 
   // Auto-reveal on initial load if active goal exists
   const initialRevealRef = useRef(false)
@@ -836,10 +842,55 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   }
                 }}
                 onSetActive={(id) => togglePlan(id)}
-                nextCandidates={Array.from(frontierIds).map(id => goalIndexAll.get(id)).filter((g): g is UiGoal => !!g)}
                 isFrontier={frontierIds.has(currentGoal.id)}
               />
             )}
+
+            {/* Extended Frontier Panel (Below GoalCard) */}
+            {getMastery(currentGoal.id) >= 1 && frontierIds.size > 0 && (
+              <div className="mt-8 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="p-2 bg-sky-100 dark:bg-sky-900/30 rounded-lg text-sky-600 dark:text-sky-400">
+                    <Send size={24} />
+                  </div>
+                  <div>
+                    <h2 className="text-lg font-bold text-text-primary">
+                      {t.learner?.nextSteps || "Als nächste Lernziele stehen dir offen:"}
+                    </h2>
+                    <p className="text-sm text-text-secondary">
+                      {t.learner?.chooseNext || "Welches möchtest du als Nächstes angehen?"}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {Array.from(frontierIds)
+                    .map(id => goalIndexAll.get(id))
+                    .filter((g): g is UiGoal => !!g)
+                    // Sort via goalIndexAll defaults or alphabetically? 
+                    // Usually tree order is best but map iteration order is insertion order in JS.
+                    .slice(0, 6)
+                    .map((candidate, idx) => (
+                      <button
+                        key={candidate.id}
+                        onClick={() => togglePlan(candidate.id)}
+                        className="flex items-start gap-3 p-4 bg-gray-50 dark:bg-slate-800/50 rounded-xl border border-border-color hover:border-sky-400 dark:hover:border-sky-500 hover:shadow-md transition-all text-left group"
+                      >
+                        <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 text-xs font-bold text-text-secondary border border-border-color group-hover:border-sky-400 group-hover:text-sky-500 transition-colors shrink-0 mt-0.5">
+                          {idx + 1}
+                        </span>
+                        <div>
+                          <span className="font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors line-clamp-2">
+                            {candidate.title}
+                          </span>
+                          {/* Optional: Show Breadcrumb/Parent Context? */}
+                        </div>
+                      </button>
+                    ))}
+                </div>
+              </div>
+            )}
+
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center h-full text-text-secondary">
