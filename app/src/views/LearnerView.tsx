@@ -847,7 +847,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             )}
 
             {/* Extended Frontier Panel (Below GoalCard) */}
-            {getMastery(currentGoal.id) >= 1 && frontierIds.size > 0 && (
+            {(getMastery(currentGoal.id) >= 1 || !learnerData?.activeGoalId) && frontierIds.size > 0 && (
               <div className="mt-8 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="p-2 bg-sky-100 dark:bg-sky-900/30 rounded-lg text-sky-600 dark:text-sky-400">
