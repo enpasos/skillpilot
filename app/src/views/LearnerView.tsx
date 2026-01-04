@@ -249,21 +249,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         console.warn('Failed to load learner data', e)
       }
     }
-    fetchPlanned()
-    fetchLearnerData()
-    const fetchLearnerData = async () => {
-      try {
-        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
-        const res = await fetch(url)
-        if (res.ok) {
-          const data = await res.json()
-          setLearnerData(data)
-        }
-      } catch (e) {
-        console.warn('Failed to load learner data', e)
-      }
-    }
+
     const fetchState = async () => {
       try {
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
