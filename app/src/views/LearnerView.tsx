@@ -209,6 +209,18 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       const g = goalIndexAll.get(id)
       if (!g) return false
 
+      // Check Prerequisites (Requires)
+      // If ANY required goal is not masterd, this goal is BLOCKED (not frontier).
+      if (g.requires && g.requires.length > 0) {
+        for (const reqId of g.requires) {
+          // Check if requirement is visible? Usually yes.
+          // Check mastery.
+          if (getMastery(reqId) < 1) {
+            return false // Blocked by prerequisite
+          }
+        }
+      }
+
       // 1. If Atomic
       if (!g.contains || g.contains.length === 0) {
 
@@ -847,7 +859,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             )}
 
             {/* Extended Frontier Panel (Below GoalCard) */}
-            {(getMastery(currentGoal.id) >= 1 || !learnerData?.activeGoalId) && frontierIds.size > 0 && (
+            {/* Show if:
+                1. Goal is Mastered (Standard "Next Steps")
+                2. OR No Global Active Goal (User is Idle/Searching)
+                3. OR Goal is NOT Frontier and NOT Active/Mastered (User is viewing a "Blocked" or "Future" goal -> Show alternatives) 
+            */}
+            {(getMastery(currentGoal.id) >= 1 || !learnerData?.activeGoalId || (!frontierIds.has(currentGoal.id) && learnerData?.activeGoalId !== currentGoal.id)) && frontierIds.size > 0 && (
               <div className="mt-8 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="p-2 bg-sky-100 dark:bg-sky-900/30 rounded-lg text-sky-600 dark:text-sky-400">
