@@ -1,6 +1,7 @@
 package com.skillpilot.backend.ui;
 
 import com.skillpilot.backend.api.CreateLearnerResponse;
+import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.MasteryResponse;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.FrontierResponse;
@@ -59,6 +60,14 @@ public class LearnerUiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public void setScope(@PathVariable String skillpilotId, @RequestBody ScopeRequest request) {
         learnerService.setScope(skillpilotId, request.goalIds());
+    }
+
+    @PostMapping("/{skillpilotId}/active-goal")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public UnifiedLearnerStateResponse setActiveGoal(@PathVariable String skillpilotId,
+            @Valid @RequestBody ActiveGoalRequest request) {
+        learnerService.setActiveGoal(skillpilotId, request.goalId());
+        return learnerService.getLearnerState(skillpilotId);
     }
 
     @GetMapping("/{skillpilotId}/mastery")

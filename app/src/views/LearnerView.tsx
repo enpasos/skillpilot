@@ -270,6 +270,28 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     fetchState()
   }, [skillpilotId])
 
+  const handleSetActiveGoal = useCallback(async (goalId: string) => {
+    if (!skillpilotId) return;
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/active-goal` : `/api/ui/learners/${skillpilotId}/active-goal`
+
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ goalId })
+      });
+
+      if (res.ok) {
+        // Refresh data to reflect simplified state (Active Goal Set)
+        onRefresh?.();
+        window.location.reload(); // Simplest way to ensure full sync
+      }
+    } catch (e) {
+      console.warn('Failed to set active goal', e)
+    }
+  }, [skillpilotId, onRefresh])
+
   const togglePlan = useCallback(async (id: string) => {
     // Single Goal Mode:
     // If clicking the ALREADY selected goal -> Deselect it (Set empty)
@@ -866,7 +888,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                     .map((candidate, idx) => (
                       <button
                         key={candidate.id}
-                        onClick={() => togglePlan(candidate.id)}
+                        onClick={() => handleSetActiveGoal(candidate.id)}
                         className="flex items-start gap-3 p-4 bg-gray-50 dark:bg-slate-800/50 rounded-xl border border-border-color hover:border-sky-400 dark:hover:border-sky-500 hover:shadow-md transition-all text-left group"
                       >
                         <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 text-xs font-bold text-text-secondary border border-border-color group-hover:border-sky-400 group-hover:text-sky-500 transition-colors shrink-0 mt-0.5">
