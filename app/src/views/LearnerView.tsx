@@ -730,6 +730,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
                 // Re-fetch local learner data
                 const fetchLearnerData = async () => {
+                  const oldActiveId = learnerData?.activeGoalId
                   try {
                     const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
                     const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}?_t=${Date.now()}`
@@ -737,6 +738,28 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                     if (res.ok) {
                       const data = await res.json()
                       setLearnerData(data)
+
+                      if (data.activeGoalId && data.activeGoalId !== oldActiveId) {
+                        const targetId = data.activeGoalId
+                        if (parentMap) {
+                          const ancestors = new Set<string>()
+                          const queue = [targetId]
+                          while (queue.length > 0) {
+                            const current = queue.pop()!
+                            const parents = parentMap.get(current)
+                            if (parents) {
+                              parents.forEach(p => {
+                                if (!ancestors.has(p)) {
+                                  ancestors.add(p)
+                                  queue.push(p)
+                                }
+                              })
+                            }
+                          }
+                          setForcedExpandedIds(ancestors)
+                        }
+                        onSelectGoal(targetId)
+                      }
                     }
                   } catch (e) {
                     console.warn('Failed to reload learner data', e)
