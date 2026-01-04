@@ -14,6 +14,7 @@ interface GoalCardProps {
   onRefresh?: () => void
   onSetActive?: (id: string) => void
   nextCandidates?: Goal[]
+  isFrontier?: boolean
 }
 
 import ReactMarkdown from 'react-markdown'
@@ -29,7 +30,8 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   isActive = false,
   onRefresh,
   onSetActive,
-  nextCandidates = []
+  nextCandidates = [],
+  isFrontier = false
 }) => {
   const handleChange = onMasteryChange ?? (() => { })
   const [isRefreshing, setIsRefreshing] = useState(false)
@@ -125,7 +127,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
 
           {/* Action Buttons Row (Only if NOT Mastered) */}
-          {isAtomic && !isActive && onSetActive && masteryValue < 1 && (
+          {isAtomic && !isActive && onSetActive && masteryValue < 1 && isFrontier && (
             <div className="flex justify-end">
               <button
                 onClick={() => onSetActive(goal.id)}

@@ -203,6 +203,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     const ids = new Set<string>()
 
     const check = (id: string): boolean => {
+      // Respect Global Visibility Config (e.g. Personal Curriculum)
+      if (!visibleGoals.has(id)) return false
+
       // Returns true if this branch is "Active/Unfinished" (i.e. hit a frontier or is a frontier)
       // Returns false if this branch is fully Mastered (so we can move to next sibling)
 
@@ -239,7 +242,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     visibleRootGoals.forEach(r => check(r.id))
 
     return ids
-  }, [visibleRootGoals, goalIndexAll, getMastery])
+  }, [visibleRootGoals, goalIndexAll, getMastery, visibleGoals])
 
   // Auto-reveal on initial load if active goal exists
   const initialRevealRef = useRef(false)
@@ -834,6 +837,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 }}
                 onSetActive={(id) => togglePlan(id)}
                 nextCandidates={Array.from(frontierIds).map(id => goalIndexAll.get(id)).filter((g): g is UiGoal => !!g)}
+                isFrontier={frontierIds.has(currentGoal.id)}
               />
             )}
           </div>
