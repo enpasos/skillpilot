@@ -1,5 +1,5 @@
-import React from 'react'
-import { Check, Target, Send } from 'lucide-react'
+import React, { useState } from 'react'
+import { Check, Target, Send, RefreshCw } from 'lucide-react'
 import type { UiGoal as Goal } from '../goalTypes'
 
 import { MasteryBar } from './MasteryBar'
@@ -11,14 +11,26 @@ interface GoalCardProps {
   showLearnerTools: boolean
   isPlanned?: boolean
   isActive?: boolean
+  onRefresh?: () => void
+  onSetActive?: (id: string) => void
 }
 
 import ReactMarkdown from 'react-markdown'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 
-export const GoalCard: React.FC<GoalCardProps> = ({ goal, masteryValue, onMasteryChange, showLearnerTools, isPlanned = false, isActive = false }) => {
+export const GoalCard: React.FC<GoalCardProps> = ({
+  goal,
+  masteryValue,
+  onMasteryChange,
+  showLearnerTools,
+  isPlanned = false,
+  isActive = false,
+  onRefresh,
+  onSetActive
+}) => {
   const handleChange = onMasteryChange ?? (() => { })
+  const [isRefreshing, setIsRefreshing] = useState(false)
 
   // Detect if Atomic Goal (no children)
   const isAtomic = !goal.contains || goal.contains.length === 0
@@ -36,22 +48,43 @@ export const GoalCard: React.FC<GoalCardProps> = ({ goal, masteryValue, onMaster
     StatusIcon = Send
     iconColor = "text-amber-500"
   } else if (isPlanned) {
-    // Optional: Visual indicator for planned (Focus) clusters in the card?
-    // For now, let's keep it simple or maybe just don't show Plane for them if they aren't 'Active' work items.
-    // Use Case: Cluster is Planned -> Maybe show Star?
-    // User focus is on Atomic goals having Plane.
+    // Planned logic placeholder
+  }
+
+  const handleRefresh = async () => {
+    if (onRefresh && !isRefreshing) {
+      setIsRefreshing(true)
+      try {
+        await onRefresh()
+      } finally {
+        setIsRefreshing(false)
+      }
+    }
   }
 
   return (
-    <div className="bg-sidebar-bg border border-border-color rounded-3xl p-5 shadow-none dark:shadow-card-2xl transition-colors">
+    <div className="bg-sidebar-bg border border-border-color rounded-3xl p-5 shadow-none dark:shadow-card-2xl transition-colors relative group">
       <div className="flex items-start justify-between gap-2 mb-2">
-        <h2 className="text-2xl font-semibold text-text-primary leading-tight">{goal.title}</h2>
-        {isAtomic && (
-          <div className={`shrink-0 ${iconColor}`}>
-            <StatusIcon size={28} strokeWidth={strokeWidth} />
-          </div>
-        )}
+        <h2 className="text-2xl font-semibold text-text-primary leading-tight pr-8">{goal.title}</h2>
+        <div className="flex items-center gap-2 shrink-0">
+          {isAtomic && (
+            <div className={`shrink-0 ${iconColor}`}>
+              <StatusIcon size={28} strokeWidth={strokeWidth} />
+            </div>
+          )}
+        </div>
       </div>
+
+      {/* Refresh Button - positioned absolute top-right but inside padding */}
+      {showLearnerTools && onRefresh && (
+        <button
+          onClick={handleRefresh}
+          className="absolute top-5 right-14 p-1 text-slate-400 hover:text-sky-500 transition-colors"
+          title="Refresh Goal Status"
+        >
+          <RefreshCw size={18} className={isRefreshing ? 'animate-spin' : ''} />
+        </button>
+      )}
 
       <div className="mt-2 text-sm text-text-primary leading-relaxed prose dark:prose-invert max-w-none">
         <ReactMarkdown
@@ -62,12 +95,21 @@ export const GoalCard: React.FC<GoalCardProps> = ({ goal, masteryValue, onMaster
         </ReactMarkdown>
       </div>
 
-      {/* Technical Details removed for Simplified Learner View */}
-
-
-
       {showLearnerTools && (
-        <div className="mt-4 space-y-2">
+        <div className="mt-4 space-y-4">
+          {/* Action Buttons Row */}
+          {isAtomic && !isActive && onSetActive && (
+            <div className="flex justify-end">
+              <button
+                onClick={() => onSetActive(goal.id)}
+                className="flex items-center gap-2 px-4 py-2 bg-amber-500/10 text-amber-600 dark:text-amber-500 hover:bg-amber-500/20 rounded-lg text-sm font-medium transition-colors border border-amber-500/20"
+              >
+                <Send size={16} />
+                <span>Als aktuelles Ziel auswählen</span>
+              </button>
+            </div>
+          )}
+
           {!isAtomic && (
             <div className="flex items-center justify-between text-xs text-text-secondary">
               <span className="font-medium">Kompetenzstand für dieses Lernziel</span>
