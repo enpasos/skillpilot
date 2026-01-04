@@ -32,6 +32,14 @@ export interface FrontierGoal {
   tags?: string[];
 }
 
+export interface StateMachineInfo {
+  state: string;
+  requiredAction: string;
+  goalOptions: FrontierGoal[];
+  curriculumOptions: { landscapeId: string; title: string }[];
+  activeGoal?: FrontierGoal;
+}
+
 export interface UnifiedLearnerStateResponse {
   skillpilotId: string;
   curriculum: { landscapeId: string; title: string };
@@ -46,5 +54,5 @@ export interface UnifiedLearnerStateResponse {
   copySources: CopySource[];
   learningState: string;
   activeGoal?: FrontierGoal;
-  stateMachine: any; // Simplified for now
+  stateMachine: StateMachineInfo;
 }
