@@ -13,6 +13,10 @@ interface GoalCardProps {
   isActive?: boolean
 }
 
+import ReactMarkdown from 'react-markdown'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
+
 export const GoalCard: React.FC<GoalCardProps> = ({ goal, masteryValue, onMasteryChange, showLearnerTools, isPlanned = false, isActive = false }) => {
   const handleChange = onMasteryChange ?? (() => { })
 
@@ -49,7 +53,14 @@ export const GoalCard: React.FC<GoalCardProps> = ({ goal, masteryValue, onMaster
         )}
       </div>
 
-      <p className="mt-2 text-sm text-text-primary leading-relaxed">{goal.description}</p>
+      <div className="mt-2 text-sm text-text-primary leading-relaxed prose dark:prose-invert max-w-none">
+        <ReactMarkdown
+          remarkPlugins={[remarkMath]}
+          rehypePlugins={[rehypeKatex]}
+        >
+          {goal.description}
+        </ReactMarkdown>
+      </div>
 
       {/* Technical Details removed for Simplified Learner View */}
 
