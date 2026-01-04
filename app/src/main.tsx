@@ -11,9 +11,11 @@ import { ThemeProvider } from './contexts/ThemeContext'
 
 import { LanguageProvider } from './contexts/LanguageContext'
 
+const routerBase = (import.meta.env.BASE_URL || '/').replace(/\/+$/, '')
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={routerBase}>
       <LanguageProvider>
         <ThemeProvider>
           <LegalWaiverModal />
