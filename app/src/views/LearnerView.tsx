@@ -366,22 +366,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   // Load personal config from backend
   React.useEffect(() => {
     if (!skillpilotId) return
-    const fetchConfig = async () => {
-      try {
-        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
-        const res = await fetch(url)
-        if (res.ok) {
-          const data = await res.json()
-          if (data.personalCurriculum) {
-            const parsed = JSON.parse(data.personalCurriculum)
-            setPersonalConfig(parsed || {})
-          }
-        }
-      } catch (e) {
-        console.warn('Failed to load personal curriculum', e)
-      }
-    }
     const fetchState = async () => {
       try {
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
