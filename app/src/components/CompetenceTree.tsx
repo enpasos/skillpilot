@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Target, Send, Check, Play, Zap } from 'lucide-react'
+import { Target, Send, Check, Play } from 'lucide-react'
 import { useTranslation } from '../hooks/useTranslation'
 import type { UiGoal } from '../goalTypes'
 

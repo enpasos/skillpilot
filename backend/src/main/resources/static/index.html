@@ -3,6 +3,22 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="color-scheme" content="light dark" />
+  <script>
+    (function () {
+      try {
+        var localTheme = localStorage.getItem('skillpilot_theme');
+        var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = localTheme ? localTheme : (supportDarkMode ? 'dark' : 'light');
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('light');
+        }
+      } catch (e) { }
+    })();
+  </script>
   <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
   <link rel="shortcut icon" href="/favicon/favicon.ico" />
@@ -10,22 +26,25 @@
   <link rel="manifest" href="/favicon/site.webmanifest" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SkillPilot | AI Learning Companion</title>
-  <meta name="description" content="SkillPilot is your personal AI learning companion for structured learning paths and progress tracking.">
+  <meta name="description"
+    content="SkillPilot is your personal AI learning companion for structured learning paths and progress tracking.">
   <meta name="robots" content="index, follow">
   <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://skillpilot.com/">
   <meta property="og:site_name" content="SkillPilot">
   <meta property="og:type" content="website">
   <meta property="og:title" content="SkillPilot | AI Learning Companion">
-  <meta property="og:description" content="SkillPilot is your personal AI learning companion for structured learning paths and progress tracking.">
+  <meta property="og:description"
+    content="SkillPilot is your personal AI learning companion for structured learning paths and progress tracking.">
   <meta property="og:image" content="https://skillpilot.com/favicon/web-app-manifest-512x512.png">
   <meta property="og:url" content="https://skillpilot.com/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SkillPilot | AI Learning Companion">
-  <meta name="twitter:description" content="SkillPilot is your personal AI learning companion for structured learning paths and progress tracking.">
+  <meta name="twitter:description"
+    content="SkillPilot is your personal AI learning companion for structured learning paths and progress tracking.">
   <meta name="twitter:image" content="https://skillpilot.com/favicon/web-app-manifest-512x512.png">
-  <script type="module" crossorigin src="/assets/index-CTDq7sBu.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-DrLm_yby.css">
+  <script type="module" crossorigin src="/assets/index-DKnW4EvE.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DScLd_Co.css">
 <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:inline-sw">if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/sw.js', { scope: '/' })})}</script></head>
 
 <body>
