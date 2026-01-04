@@ -47,7 +47,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [forcedExpandedIds, setForcedExpandedIds] = useState<Set<string>>(new Set())
   const [learnerData, setLearnerData] = useState<Learner | null>(null)
-  const [backendFrontier, setBackendFrontier] = useState<FrontierGoal[]>([])
+  const [stateMachineOptions, setStateMachineOptions] = useState<FrontierGoal[]>([])
   const [isSetupOpen, setIsSetupOpen] = useState(false)
   const [personalConfig, setPersonalConfig] = useState<Record<string, { selected: boolean; filterId?: string }>>({})
 
@@ -198,15 +198,73 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [learnerData?.activeGoalId, parentMap, onSelectGoal, selectedId])
 
-  // Frontier Logic: SYNC WITH BACKEND
-  // We strictly use the Frontier logic provided by the AI-API (Backend).
+  // Frontier Logic: Identify the "Next Actionable" goal in every branch.
+  // Assumption: Content is sequential within containers.
   const frontierIds = useMemo(() => {
-    return new Set(backendFrontier.map(g => g.id))
-  }, [backendFrontier])
+    const ids = new Set<string>()
 
-  const atomicFrontier = useMemo(() => {
-    return backendFrontier.filter(g => g.type === 'atomic')
-  }, [backendFrontier])
+    const check = (id: string): boolean => {
+      // Respect Global Visibility Config (e.g. Personal Curriculum)
+      if (!visibleGoals.has(id)) return false
+
+      const g = goalIndexAll.get(id)
+      if (!g) return false
+
+      // Check Prerequisites (Requires)
+      // If ANY required goal is not masterd, this goal is BLOCKED (not frontier).
+      if (g.requires && g.requires.length > 0) {
+        for (const reqId of g.requires) {
+          // Check if requirement is visible? Usually yes.
+          // Check mastery.
+          if (getMastery(reqId) < 1) {
+            return false // Blocked by prerequisite
+          }
+        }
+      }
+
+      // 1. If Atomic
+      if (!g.contains || g.contains.length === 0) {
+
+        // Final Filter Check for Atomic Goal
+        if (activeFilter && activeFilter !== 'all') {
+          // Only strictly enforce if the goal HAS tags. If it has no tags, we assume it's generic/OK.
+          if (g.tags && g.tags.length > 0 && !g.tags.includes(activeFilter)) {
+            return false; // Skip this goal, it's not for this profile
+          }
+        }
+
+        const m = getMastery(id)
+        if (m < 1) {
+          ids.add(id)
+          return true // Found frontier, branch is active
+        }
+        return false // Mastered
+      }
+
+      // 2. If Container
+      // If the container ITSELF is marked mastered (explicitly), we might skip children?
+      // But typically mastery is on atomic leaves. Let's traverse children.
+      let containerActive = false
+      for (const childId of g.contains) {
+        // If we found the frontier in this child, we STOP checking subsequent children (Sequential assumption).
+        // This ensures typically only 1 frontier goal per container.
+        const childActive = check(childId)
+        if (childActive) {
+          containerActive = true
+          break
+        }
+      }
+      return containerActive
+    }
+
+    // Check all visible roots in parallel (parallel tracks)
+    visibleRootGoals.forEach(r => check(r.id))
+
+    return ids
+  }, [visibleRootGoals, goalIndexAll, getMastery, visibleGoals, activeFilter])
+
+  // Removed atomicFrontier memo as frontierIds is now inherently atomic
+
 
   // Auto-reveal on initial load if active goal exists
   const initialRevealRef = useRef(false)
@@ -250,686 +308,706 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       }
     }
 
-    const fetchState = async () => {
+
+    const handleSetActiveGoal = useCallback(async (goalId: string) => {
+      if (!skillpilotId) return;
       try {
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/state` : `/api/ui/learners/${skillpilotId}/state`
-        const res = await fetch(url)
-        if (res.ok) {
-          const data = await res.json()
-          if (data.frontier && Array.isArray(data.frontier)) {
-            setBackendFrontier(data.frontier)
-          }
-        }
-      } catch (e) {
-        console.warn('Failed to load learner state', e)
-      }
-    }
-    fetchPlanned()
-    fetchLearnerData()
-    fetchState()
-  }, [skillpilotId])
-
-  const handleSetActiveGoal = useCallback(async (goalId: string) => {
-    if (!skillpilotId) return;
-    try {
-      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/active-goal` : `/api/ui/learners/${skillpilotId}/active-goal`
-
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ goalId })
-      });
-
-      if (res.ok) {
-        // Refresh data to reflect simplified state (Active Goal Set)
-        onRefresh?.();
-        window.location.reload(); // Simplest way to ensure full sync
-      }
-    } catch (e) {
-      console.warn('Failed to set active goal', e)
-    }
-  }, [skillpilotId, onRefresh])
-
-  const togglePlan = useCallback(async (id: string) => {
-    // Single Goal Mode:
-    // If clicking the ALREADY selected goal -> Deselect it (Set empty)
-    // If clicking a NEW goal -> Select only that one (Set with 1 item)
-    let next: Set<string>;
-
-    if (plannedGoals.has(id)) {
-      next = new Set();
-    } else {
-      next = new Set([id]);
-    }
-
-    setPlannedGoals(next)
-
-    if (!skillpilotId) return
-    try {
-      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned` : `/api/ui/learners/${skillpilotId}/planned`
-      await fetch(url, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ goals: Array.from(next) })
-      })
-    } catch (e) {
-      console.warn('Failed to save planned goals', e)
-      // Revert on error? For now, just warn.
-    }
-  }, [plannedGoals, skillpilotId])
-
-  // Load personal config from backend
-  React.useEffect(() => {
-    if (!skillpilotId) return
-    const fetchConfig = async () => {
-      try {
-        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
-        const res = await fetch(url)
-        if (res.ok) {
-          const data = await res.json()
-          if (data.personalCurriculum) {
-            const parsed = JSON.parse(data.personalCurriculum)
-            setPersonalConfig(parsed || {})
-          }
-        }
-      } catch (e) {
-        console.warn('Failed to load personal curriculum', e)
-      }
-    }
-    fetchConfig()
-  }, [skillpilotId])
-
-  // Check mobile state
-  const [isMobile, setIsMobile] = useState(false)
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768)
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
-
-  // Sidebar state
-  const [sidebarWidth, setSidebarWidth] = useState(320)
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-  const isResizing = useRef(false)
-
-  const resize = useCallback((e: MouseEvent) => {
-    if (isResizing.current) {
-      setSidebarWidth(Math.max(240, Math.min(800, e.clientX)))
-    }
-  }, [])
-
-  const stopResizing = useCallback(() => {
-    isResizing.current = false
-    document.removeEventListener('mousemove', resize)
-    document.removeEventListener('mouseup', stopResizing)
-    document.body.style.cursor = ''
-    document.body.style.userSelect = ''
-  }, [resize])
-
-  const startResizing = useCallback(() => {
-    isResizing.current = true
-    document.addEventListener('mousemove', resize)
-    document.addEventListener('mouseup', stopResizing)
-    document.body.style.cursor = 'col-resize'
-    document.body.style.userSelect = 'none'
-  }, [resize, stopResizing])
-
-  // Save personal config to backend
-  const handleConfigChange = useCallback(async (newConfig: Record<string, { selected: boolean; filterId?: string }>) => {
-    setPersonalConfig(newConfig)
-    if (!skillpilotId) return
-    try {
-      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/personal-curriculum` : `/api/ui/learners/${skillpilotId}/personal-curriculum`
-      await fetch(url, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newConfig)
-      })
-    } catch (e) {
-      console.warn('Failed to save personal curriculum', e)
-    }
-  }, [skillpilotId])
-
-
-
-  // Determine effective active filter based on personal config for current landscape
-  const effectiveActiveFilter = useMemo(() => {
-    const config = personalConfig[landscapeId]
-    if (config?.filterId) return config.filterId
-    return activeFilter
-  }, [landscapeId, personalConfig, activeFilter])
-
-  const handleExport = useCallback(async () => {
-    if (!skillpilotId) return
-    try {
-      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/export` : `/api/ui/learners/${skillpilotId}/export`
-      const res = await fetch(url)
-      if (res.ok) {
-        const serverData = await res.json()
-
-        // V2 Export: Collect Local SRS State
-        const clientData: Record<string, unknown> = { srsState: {} }
-        const prefix = `srs_state_${skillpilotId}_`
-
-        try {
-          for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i)
-            if (key && key.startsWith(prefix)) {
-              // Save full key-value pair. We will parse the key on import to handle ID changes.
-              const val = localStorage.getItem(key)
-              if (val) (clientData.srsState as Record<string, unknown>)[key] = JSON.parse(val)
-            }
-          }
-        } catch (e) {
-          console.warn("Error collecting local stats for export", e)
-        }
-
-        const exportPayload = {
-          version: "2.0",
-          exportedAt: new Date().toISOString(),
-          serverExport: serverData,
-          clientData: clientData
-        }
-
-        const blob = new Blob([JSON.stringify(exportPayload, null, 2)], { type: 'application/json' });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = `learner_data_${skillpilotId}.json`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      } else {
-        console.error("Export failed", res.status, res.statusText)
-      }
-    } catch (e) {
-      console.error("Export error", e)
-    }
-  }, [skillpilotId])
-
-  const { language } = useLanguage();
-  const t = useTranslation();
-
-  const handleImportClick = () => {
-    fileInputRef.current?.click();
-  }
-
-  const handleFileChange = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file || !skillpilotId) return;
-
-    const reader = new FileReader();
-    reader.onload = async (e) => {
-      try {
-        const json = JSON.parse(e.target?.result as string);
-
-        // V2 Import: Unwrap if Wrapper exists
-        let payloadToSend: unknown = json;
-        let clientDataToRestore: unknown = null;
-
-        if (json.serverExport && json.clientData) {
-          console.log("Detected V2 Export Wrapper")
-          payloadToSend = json.serverExport;
-          clientDataToRestore = json.clientData as Record<string, unknown>;
-        }
-
-        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/import` : `/api/ui/learners/${skillpilotId}/import`
+        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/active-goal` : `/api/ui/learners/${skillpilotId}/active-goal`
 
         const res = await fetch(url, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payloadToSend)
+          body: JSON.stringify({ goalId })
         });
 
         if (res.ok) {
-          // Restore Local Data (SRS State) if present
-          if (clientDataToRestore && (clientDataToRestore as Record<string, unknown>).srsState) {
-            try {
-              console.log("Restoring SRS State...")
-              const srsState = (clientDataToRestore as Record<string, unknown>).srsState as Record<string, unknown>
-              let restoreCount = 0;
+          // Refresh data to reflect simplified state (Active Goal Set)
+          onRefresh?.();
+          window.location.reload(); // Simplest way to ensure full sync
+        }
+      } catch (e) {
+        console.warn('Failed to set active goal', e)
+      }
+    }, [skillpilotId, onRefresh])
 
-              // Regex to parse old keys: srs_state_{OLD_ID}_{GOAL_ID}
-              // We assume ID does not contain underscores (UUIDs are hyphens).
-              // But just in case, we split by first 3 parts: srs, state, id.
-              // safer: match /^srs_state_([^_]+)_(.+)$/
-              const keyPattern = /^srs_state_([^_]+)_(.+)$/
+    const togglePlan = useCallback(async (id: string) => {
+      // Single Goal Mode:
+      // If clicking the ALREADY selected goal -> Deselect it (Set empty)
+      // If clicking a NEW goal -> Select only that one (Set with 1 item)
+      let next: Set<string>;
 
-              Object.entries(srsState).forEach(([oldKey, value]) => {
-                const match = oldKey.match(keyPattern)
-                if (match) {
-                  // match[1] is old ID (ignored, we use current `skillpilotId`)
-                  const goalId = match[2]
+      if (plannedGoals.has(id)) {
+        next = new Set();
+      } else {
+        next = new Set([id]);
+      }
 
-                  // Construct new key for CURRENT user
-                  const newKey = `srs_state_${skillpilotId}_${goalId}`
+      setPlannedGoals(next)
 
-                  localStorage.setItem(newKey, JSON.stringify(value))
-                  restoreCount++;
-                }
-              })
-              console.log(`Restored ${restoreCount} SRS state entries.`)
-            } catch (err) {
-              console.error("Error restoring local state", err)
+      if (!skillpilotId) return
+      try {
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned` : `/api/ui/learners/${skillpilotId}/planned`
+        await fetch(url, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ goals: Array.from(next) })
+        })
+      } catch (e) {
+        console.warn('Failed to save planned goals', e)
+        // Revert on error? For now, just warn.
+      }
+    }, [plannedGoals, skillpilotId])
+
+    // Load personal config from backend
+    React.useEffect(() => {
+      if (!skillpilotId) return
+      const fetchConfig = async () => {
+        try {
+          const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+          const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
+          const res = await fetch(url)
+          if (res.ok) {
+            const data = await res.json()
+            if (data.personalCurriculum) {
+              const parsed = JSON.parse(data.personalCurriculum)
+              setPersonalConfig(parsed || {})
             }
           }
+        } catch (e) {
+          console.warn('Failed to load personal curriculum', e)
+        }
+      }
+      const fetchState = async () => {
+        try {
+          const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+          const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/state` : `/api/ui/learners/${skillpilotId}/state`
+          const res = await fetch(url)
+          if (res.ok) {
+            const data = await res.json()
+            if (data.stateMachine && data.stateMachine.goalOptions && Array.isArray(data.stateMachine.goalOptions)) {
+              setStateMachineOptions(data.stateMachine.goalOptions)
+            } else {
+              // Fallback if stateMachine is empty but frontier exists (though user JSON shows stateMachine is specific)
+              setStateMachineOptions([])
+            }
+          }
+        } catch (e) {
+          console.warn('Failed to load learner state', e)
+        }
+      }
+      fetchPlanned()
+      fetchLearnerData()
+      fetchState()
+    }, [skillpilotId])
 
-          // Reload page to reflect imported state (simplest way to ensure consistency)
-          window.location.reload();
-        } else {
-          console.error("Import failed", res.status);
+    // Check mobile state
+    const [isMobile, setIsMobile] = useState(false)
+    useEffect(() => {
+      const checkMobile = () => setIsMobile(window.innerWidth < 768)
+      checkMobile()
+      window.addEventListener('resize', checkMobile)
+      return () => window.removeEventListener('resize', checkMobile)
+    }, [])
 
-          let serverMsg = "";
+    // Sidebar state
+    const [sidebarWidth, setSidebarWidth] = useState(320)
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+    const isResizing = useRef(false)
+
+    const resize = useCallback((e: MouseEvent) => {
+      if (isResizing.current) {
+        setSidebarWidth(Math.max(240, Math.min(800, e.clientX)))
+      }
+    }, [])
+
+    const stopResizing = useCallback(() => {
+      isResizing.current = false
+      document.removeEventListener('mousemove', resize)
+      document.removeEventListener('mouseup', stopResizing)
+      document.body.style.cursor = ''
+      document.body.style.userSelect = ''
+    }, [resize])
+
+    const startResizing = useCallback(() => {
+      isResizing.current = true
+      document.addEventListener('mousemove', resize)
+      document.addEventListener('mouseup', stopResizing)
+      document.body.style.cursor = 'col-resize'
+      document.body.style.userSelect = 'none'
+    }, [resize, stopResizing])
+
+    // Save personal config to backend
+    const handleConfigChange = useCallback(async (newConfig: Record<string, { selected: boolean; filterId?: string }>) => {
+      setPersonalConfig(newConfig)
+      if (!skillpilotId) return
+      try {
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/personal-curriculum` : `/api/ui/learners/${skillpilotId}/personal-curriculum`
+        await fetch(url, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newConfig)
+        })
+      } catch (e) {
+        console.warn('Failed to save personal curriculum', e)
+      }
+    }, [skillpilotId])
+
+
+
+    // Determine effective active filter based on personal config for current landscape
+    const effectiveActiveFilter = useMemo(() => {
+      const config = personalConfig[landscapeId]
+      if (config?.filterId) return config.filterId
+      return activeFilter
+    }, [landscapeId, personalConfig, activeFilter])
+
+    const handleExport = useCallback(async () => {
+      if (!skillpilotId) return
+      try {
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/export` : `/api/ui/learners/${skillpilotId}/export`
+        const res = await fetch(url)
+        if (res.ok) {
+          const serverData = await res.json()
+
+          // V2 Export: Collect Local SRS State
+          const clientData: Record<string, unknown> = { srsState: {} }
+          const prefix = `srs_state_${skillpilotId}_`
+
           try {
-            const errData = await res.json();
-            if (errData && errData.message) serverMsg = errData.message;
-          } catch { /* ignore */ }
-
-          // Use helpful message if signature error suspected (400 Bad Request) or generic otherwise
-          if (res.status === 400) {
-            if (language === 'de') {
-              setModalMessage("Diese Datei kann nicht importiert werden. Die digitale Signatur konnte nicht verifiziert werden. Dies bedeutet in der Regel, dass der Dateiinhalt manuell verändert wurde. Bitte stellen Sie sicher, dass Sie eine originale, unveränderte Exportdatei importieren.");
-              setModalTitle("Import-Validierung fehlgeschlagen");
-            } else {
-              setModalMessage("Cannot import this file. The digital signature could not be verified. This usually means the file content has been modified manually. Please ensure you are importing an original, unmodified export file.");
-              setModalTitle("Import Validation Failed");
+            for (let i = 0; i < localStorage.length; i++) {
+              const key = localStorage.key(i)
+              if (key && key.startsWith(prefix)) {
+                // Save full key-value pair. We will parse the key on import to handle ID changes.
+                const val = localStorage.getItem(key)
+                if (val) (clientData.srsState as Record<string, unknown>)[key] = JSON.parse(val)
+              }
             }
-            setModalType('error');
-          } else {
-            if (language === 'de') {
-              setModalMessage(serverMsg || "Ein unbekannter Fehler ist aufgetreten.");
-              setModalTitle("Import fehlgeschlagen");
-            } else {
-              setModalMessage(serverMsg || "An unknown error occurred.");
-              setModalTitle("Import Failed");
-            }
-            setModalType('error');
+          } catch (e) {
+            console.warn("Error collecting local stats for export", e)
           }
+
+          const exportPayload = {
+            version: "2.0",
+            exportedAt: new Date().toISOString(),
+            serverExport: serverData,
+            clientData: clientData
+          }
+
+          const blob = new Blob([JSON.stringify(exportPayload, null, 2)], { type: 'application/json' });
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(blob);
+          link.download = `learner_data_${skillpilotId}.json`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        } else {
+          console.error("Export failed", res.status, res.statusText)
+        }
+      } catch (e) {
+        console.error("Export error", e)
+      }
+    }, [skillpilotId])
+
+    const { language } = useLanguage();
+    const t = useTranslation();
+
+    const handleImportClick = () => {
+      fileInputRef.current?.click();
+    }
+
+    const handleFileChange = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
+      const file = event.target.files?.[0];
+      if (!file || !skillpilotId) return;
+
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        try {
+          const json = JSON.parse(e.target?.result as string);
+
+          // V2 Import: Unwrap if Wrapper exists
+          let payloadToSend: unknown = json;
+          let clientDataToRestore: unknown = null;
+
+          if (json.serverExport && json.clientData) {
+            console.log("Detected V2 Export Wrapper")
+            payloadToSend = json.serverExport;
+            clientDataToRestore = json.clientData as Record<string, unknown>;
+          }
+
+          const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+          const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/import` : `/api/ui/learners/${skillpilotId}/import`
+
+          const res = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payloadToSend)
+          });
+
+          if (res.ok) {
+            // Restore Local Data (SRS State) if present
+            if (clientDataToRestore && (clientDataToRestore as Record<string, unknown>).srsState) {
+              try {
+                console.log("Restoring SRS State...")
+                const srsState = (clientDataToRestore as Record<string, unknown>).srsState as Record<string, unknown>
+                let restoreCount = 0;
+
+                // Regex to parse old keys: srs_state_{OLD_ID}_{GOAL_ID}
+                // We assume ID does not contain underscores (UUIDs are hyphens).
+                // But just in case, we split by first 3 parts: srs, state, id.
+                // safer: match /^srs_state_([^_]+)_(.+)$/
+                const keyPattern = /^srs_state_([^_]+)_(.+)$/
+
+                Object.entries(srsState).forEach(([oldKey, value]) => {
+                  const match = oldKey.match(keyPattern)
+                  if (match) {
+                    // match[1] is old ID (ignored, we use current `skillpilotId`)
+                    const goalId = match[2]
+
+                    // Construct new key for CURRENT user
+                    const newKey = `srs_state_${skillpilotId}_${goalId}`
+
+                    localStorage.setItem(newKey, JSON.stringify(value))
+                    restoreCount++;
+                  }
+                })
+                console.log(`Restored ${restoreCount} SRS state entries.`)
+              } catch (err) {
+                console.error("Error restoring local state", err)
+              }
+            }
+
+            // Reload page to reflect imported state (simplest way to ensure consistency)
+            window.location.reload();
+          } else {
+            console.error("Import failed", res.status);
+
+            let serverMsg = "";
+            try {
+              const errData = await res.json();
+              if (errData && errData.message) serverMsg = errData.message;
+            } catch { /* ignore */ }
+
+            // Use helpful message if signature error suspected (400 Bad Request) or generic otherwise
+            if (res.status === 400) {
+              if (language === 'de') {
+                setModalMessage("Diese Datei kann nicht importiert werden. Die digitale Signatur konnte nicht verifiziert werden. Dies bedeutet in der Regel, dass der Dateiinhalt manuell verändert wurde. Bitte stellen Sie sicher, dass Sie eine originale, unveränderte Exportdatei importieren.");
+                setModalTitle("Import-Validierung fehlgeschlagen");
+              } else {
+                setModalMessage("Cannot import this file. The digital signature could not be verified. This usually means the file content has been modified manually. Please ensure you are importing an original, unmodified export file.");
+                setModalTitle("Import Validation Failed");
+              }
+              setModalType('error');
+            } else {
+              if (language === 'de') {
+                setModalMessage(serverMsg || "Ein unbekannter Fehler ist aufgetreten.");
+                setModalTitle("Import fehlgeschlagen");
+              } else {
+                setModalMessage(serverMsg || "An unknown error occurred.");
+                setModalTitle("Import Failed");
+              }
+              setModalType('error');
+            }
+            setIsModalOpen(true);
+          }
+        } catch (err) {
+          console.error("Import error", err);
+          if (language === 'de') {
+            setModalMessage("Ein Netzwerk- oder Systemfehler ist während des Imports aufgetreten.");
+            setModalTitle("Import-Fehler");
+          } else {
+            setModalMessage("A network or system error occurred during import.");
+            setModalTitle("Import Error");
+          }
+          setModalType('error');
           setIsModalOpen(true);
         }
-      } catch (err) {
-        console.error("Import error", err);
-        if (language === 'de') {
-          setModalMessage("Ein Netzwerk- oder Systemfehler ist während des Imports aufgetreten.");
-          setModalTitle("Import-Fehler");
-        } else {
-          setModalMessage("A network or system error occurred during import.");
-          setModalTitle("Import Error");
-        }
-        setModalType('error');
-        setIsModalOpen(true);
-      }
-    };
-    reader.readAsText(file);
-    // Reset input so same file can be selected again if needed
-    if (fileInputRef.current) fileInputRef.current.value = '';
-  }, [skillpilotId, language]);
+      };
+      reader.readAsText(file);
+      // Reset input so same file can be selected again if needed
+      if (fileInputRef.current) fileInputRef.current.value = '';
+    }, [skillpilotId, language]);
 
-  return (
-    <div className="flex h-screen bg-chat-bg text-text-primary overflow-hidden transition-colors">
+    return (
+      <div className="flex h-screen bg-chat-bg text-text-primary overflow-hidden transition-colors">
 
-      {/* Mobile Backdrop */}
-      {isMobile && isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-40 animate-in fade-in duration-200"
-          onClick={() => setIsSidebarOpen(false)}
-        />
-      )}
+        {/* Mobile Backdrop */}
+        {isMobile && isSidebarOpen && (
+          <div
+            className="fixed inset-0 bg-black/50 z-40 animate-in fade-in duration-200"
+            onClick={() => setIsSidebarOpen(false)}
+          />
+        )}
 
-      <aside
-        className={`flex flex-col bg-sidebar-bg border-r border-border-color shrink-0
+        <aside
+          className={`flex flex-col bg-sidebar-bg border-r border-border-color shrink-0
           fixed inset-y-0 left-0 z-50 shadow-2xl transition-transform duration-300
           ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
           md:translate-x-0 md:relative md:shadow-none md:transition-none md:flex
         `}
-        style={{
-          width: isMobile ? '85%' : sidebarWidth,
-          maxWidth: isMobile ? '320px' : 'none'
-        }}
-      >
-        <div className="p-4 border-b border-border-color flex items-center justify-between shrink-0">
-          <div className="flex-1 min-w-0 mr-2">
-            <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate">{t.learner.myGoals}</h2>
-            <div className="text-xs flex items-center gap-2 mt-1 truncate">
-              <button
-                className="flex items-center gap-1 font-bold text-emerald-500 hover:text-emerald-400 transition-colors"
-                title={t.learner.completed}
-              >
-                {stats.masteredAtomic} <Check size={16} strokeWidth={3} />
-              </button>
-              <button
-                className="text-slate-400 dark:text-slate-500 flex items-center gap-1 text-[10px] hover:text-sky-500 transition-colors"
-                onClick={revealActiveGoal}
-                title="Gehe zum aktiven Ziel / Go to active goal"
-              >
-                <Send size={16} className="text-amber-500" />
-              </button>
-              <span className="flex items-center gap-1 font-bold text-red-500" title="Total">
-                {stats.totalAtomic} <Target size={16} />
-              </span>
-            </div>
-          </div>
-          <div className="flex items-center gap-1 shrink-0">
-
-            <button onClick={async () => {
-              if (isRefreshing) return;
-              setIsRefreshing(true);
-              try {
-                // Parallelize all refreshes
-                const promises = [];
-                if (onRefresh) promises.push(onRefresh());
-
-                // Re-fetch local learner data
-                const fetchLearnerData = async () => {
-                  try {
-                    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-                    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}?_t=${Date.now()}`
-                    const res = await fetch(url)
-                    if (res.ok) {
-                      const data = await res.json()
-                      setLearnerData(data)
-                    }
-                  } catch (e) {
-                    console.warn('Failed to reload learner data', e)
-                  }
-                };
-                promises.push(fetchLearnerData());
-
-                const fetchPlanned = async () => {
-                  try {
-                    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-                    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}/planned?_t=${Date.now()}`
-                    const res = await fetch(url)
-                    if (res.ok) {
-                      const data = await res.json()
-                      if (data.goals && Array.isArray(data.goals)) {
-                        setPlannedGoals(new Set(data.goals))
-                      }
-                    }
-                  } catch (e) {
-                    console.warn('Failed to reload planned goals', e)
-                  }
-                }
-                promises.push(fetchPlanned());
-
-                const fetchState = async () => {
-                  try {
-                    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-                    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/state?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}/state?_t=${Date.now()}`
-                    const res = await fetch(url)
-                    if (res.ok) {
-                      const data = await res.json()
-                      if (data.frontier && Array.isArray(data.frontier)) {
-                        setBackendFrontier(data.frontier)
-                      }
-                    }
-                  } catch (e) {
-                    console.warn('Failed to reload learner state', e)
-                  }
-                }
-                promises.push(fetchState());
-
-                await Promise.all(promises);
-              } finally {
-                setIsRefreshing(false);
-              }
-            }} className="p-1 text-text-secondary hover:text-sky-400">
-              <RefreshCw size={16} className={isRefreshing ? 'animate-spin' : ''} />
-            </button>
-            <button onClick={() => setIsSetupOpen(true)} className="p-1 text-text-secondary hover:text-sky-400"><Settings size={16} /></button>
-            <ThemeToggle />
-            {isMobile && (
-              <button
-                onClick={() => setIsSidebarOpen(false)}
-                className="p-1 ml-1 text-text-secondary hover:text-red-400"
-              >
-                <X size={20} />
-              </button>
-            )}
-          </div>
-        </div>
-        <div className="flex-1 overflow-y-auto p-2">
-          <CompetenceTree
-            rootGoals={visibleRootGoals}
-            allGoals={goalIndexAll}
-            getMastery={getMastery}
-            plannedGoals={plannedGoals}
-            onTogglePlan={togglePlan}
-            onSelect={onSelectGoal}
-            selectedId={selectedId}
-            activeFilter={effectiveActiveFilter}
-            personalConfig={personalConfig}
-            activeGoalId={learnerData?.activeGoalId}
-            forcedExpandedIds={forcedExpandedIds}
-            frontierIds={frontierIds}
-          />
-        </div>
-        {learnerData && learnerData.copySources && learnerData.copySources.length > 0 && (
-          <div className="p-3 border-t border-border-color bg-gray-50 dark:bg-slate-900 text-xs text-text-secondary shrink-0">
-            <h3 className="font-semibold mb-1">
-              {t.learner.includesDataFrom}
-            </h3>
-            <div className="flex flex-col gap-1 max-h-[100px] overflow-y-auto">
-              {learnerData.copySources.map((src, idx) => (
-                <div key={idx} className="flex justify-between">
-                  <span className="truncate" title={src.sourceId}>
-                    {src.sourceId.substring(0, 8)}...
-                  </span>
-                  <span className="whitespace-nowrap ml-2">
-                    {new Date(src.copiedAt).toLocaleDateString()}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        {/* Footer Imports/Exports */}
-        <div className="p-2 border-t border-border-color flex justify-between">
-          <div className="flex gap-2">
-            <button onClick={handleExport} className="text-text-secondary hover:text-sky-400"><Download size={16} /></button>
-            <button onClick={handleImportClick} className="text-text-secondary hover:text-sky-400"><Upload size={16} /></button>
-            <input type="file" ref={fileInputRef} onChange={handleFileChange} className="hidden" accept=".json" />
-          </div>
-          {onLogout && <LogoutButton onLogout={onLogout} />}
-        </div>
-
-        {/* Resize Handle (Desktop) */}
-        {!isMobile && (
-          <div
-            className="absolute right-0 top-0 bottom-0 w-1 hover:w-1.5 cursor-col-resize z-10 transition-colors group"
-            style={{ right: -2 }}
-            onMouseDown={startResizing}
-          >
-            {/* Visual indicator on hover */}
-            <div className="absolute inset-y-0 right-0 w-full bg-transparent group-hover:bg-sky-400/50 transition-colors" />
-          </div>
-        )}
-      </aside>
-
-      <main className="flex-1 overflow-y-auto bg-chat-bg p-6 flex flex-col items-center relative">
-        {/* Mobile Toggle Button */}
-        {isMobile && !isSidebarOpen && (
-          <button
-            className="absolute top-4 left-4 p-2 text-text-secondary hover:text-sky-400 z-10 bg-white/50 dark:bg-slate-900/50 rounded-md backdrop-blur-sm border border-border-color shadow-sm"
-            onClick={() => setIsSidebarOpen(true)}
-          >
-            <Menu size={20} />
-          </button>
-        )}
-        {currentGoal ? (
-          <div className="w-full max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-500">
-            {/* Check for SRS Tag */}
-            {currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
-              <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6">
-                <div className="mb-6 border-b border-border-color pb-4">
-                  <h1 className="text-2xl font-bold text-sky-600 dark:text-sky-400 mb-2">{currentGoal.title}</h1>
-                  <p className="text-text-secondary">{currentGoal.description}</p>
-                </div>
-                <FlashcardDrill
-                  key={currentGoal.id}
-                  goalId={currentGoal.id}
-                  dataSourceUrl={currentGoal.extendedData?.vocabularySource as string | undefined}
-                  onComplete={() => {
-                    // Refresh mastery if needed or just show confetti
-                    onRefresh?.()
-                  }}
-                  skillPilotId={skillpilotId}
-                  titleOverride={currentGoal.title}
-                  filterTags={(() => {
-                    const tags = currentGoal.tags || []
-                    const selectTags = tags.filter(t => t.startsWith('select:'))
-                    if (selectTags.length > 0) return selectTags
-                    return tags.filter(t => !t.startsWith('srs-deck') && !['structure', 'root', 'module', 'lesson', 'vocabulary', 'grammar', 'practice', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'].includes(t))
-                  })()}
-                />
+          style={{
+            width: isMobile ? '85%' : sidebarWidth,
+            maxWidth: isMobile ? '320px' : 'none'
+          }}
+        >
+          <div className="p-4 border-b border-border-color flex items-center justify-between shrink-0">
+            <div className="flex-1 min-w-0 mr-2">
+              <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate">{t.learner.myGoals}</h2>
+              <div className="text-xs flex items-center gap-2 mt-1 truncate">
+                <button
+                  className="flex items-center gap-1 font-bold text-emerald-500 hover:text-emerald-400 transition-colors"
+                  title={t.learner.completed}
+                >
+                  {stats.masteredAtomic} <Check size={16} strokeWidth={3} />
+                </button>
+                <button
+                  className="text-slate-400 dark:text-slate-500 flex items-center gap-1 text-[10px] hover:text-sky-500 transition-colors"
+                  onClick={revealActiveGoal}
+                  title="Gehe zum aktiven Ziel / Go to active goal"
+                >
+                  <Send size={16} className="text-amber-500" />
+                </button>
+                <span className="flex items-center gap-1 font-bold text-red-500" title="Total">
+                  {stats.totalAtomic} <Target size={16} />
+                </span>
               </div>
-            ) : (
-              <GoalCard
-                goal={currentGoal}
-                masteryValue={getMastery(currentGoal.id)}
-                showLearnerTools={true}
-                isPlanned={plannedGoals.has(currentGoal.id)}
-                isActive={learnerData?.activeGoalId === currentGoal.id}
-                onRefresh={async () => {
-                  if (onRefresh) onRefresh();
+            </div>
+            <div className="flex items-center gap-1 shrink-0">
 
-                  // Store old active ID to detect changes
-                  const oldActiveId = learnerData?.activeGoalId;
+              <button onClick={async () => {
+                if (isRefreshing) return;
+                setIsRefreshing(true);
+                try {
+                  // Parallelize all refreshes
+                  const promises = [];
+                  if (onRefresh) promises.push(onRefresh());
 
-                  // 1. Refresh Learner Data
-                  try {
-                    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-                    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}?_t=${Date.now()}`
-                    const res = await fetch(url)
-                    if (res.ok) {
-                      const data = await res.json()
-                      setLearnerData(data)
+                  // Re-fetch local learner data
+                  const fetchLearnerData = async () => {
+                    try {
+                      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+                      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}?_t=${Date.now()}`
+                      const res = await fetch(url)
+                      if (res.ok) {
+                        const data = await res.json()
+                        setLearnerData(data)
+                      }
+                    } catch (e) {
+                      console.warn('Failed to reload learner data', e)
+                    }
+                  };
+                  promises.push(fetchLearnerData());
 
-                      // Auto-Navigate if Active Goal Changed
-                      if (data.activeGoalId && data.activeGoalId !== oldActiveId) {
-                        // Manual trigger reveal
-                        const targetId = data.activeGoalId;
-                        if (parentMap) {
-                          const ancestors = new Set<string>()
-                          const queue = [targetId]
-                          while (queue.length > 0) {
-                            const current = queue.pop()!
-                            const parents = parentMap.get(current)
-                            if (parents) {
-                              parents.forEach(p => {
-                                if (!ancestors.has(p)) {
-                                  ancestors.add(p)
-                                  queue.push(p)
-                                }
-                              })
-                            }
-                          }
-                          setForcedExpandedIds(ancestors)
+                  const fetchPlanned = async () => {
+                    try {
+                      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+                      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}/planned?_t=${Date.now()}`
+                      const res = await fetch(url)
+                      if (res.ok) {
+                        const data = await res.json()
+                        if (data.goals && Array.isArray(data.goals)) {
+                          setPlannedGoals(new Set(data.goals))
                         }
-                        onSelectGoal(targetId)
                       }
+                    } catch (e) {
+                      console.warn('Failed to reload planned goals', e)
                     }
-                  } catch (e) {
-                    console.warn('Failed to reload learner data', e)
                   }
+                  promises.push(fetchPlanned());
 
-                  // 2. Refresh Planned Goals
-                  try {
-                    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-                    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}/planned?_t=${Date.now()}`
-                    const res = await fetch(url)
-                    if (res.ok) {
-                      const data = await res.json()
-                      if (data.goals && Array.isArray(data.goals)) {
-                        setPlannedGoals(new Set(data.goals))
+                  const fetchState = async () => {
+                    try {
+                      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+                      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/state?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}/state?_t=${Date.now()}`
+                      const res = await fetch(url)
+                      if (res.ok) {
+                        const data = await res.json()
+                        if (data.frontier && Array.isArray(data.frontier)) {
+                          setBackendFrontier(data.frontier)
+                        }
                       }
+                    } catch (e) {
+                      console.warn('Failed to reload learner state', e)
                     }
-                  } catch (e) {
-                    console.warn('Failed to reload planned goals', e)
                   }
-                }}
-                onSetActive={(id) => togglePlan(id)}
-                isFrontier={frontierIds.has(currentGoal.id)}
-              />
-            )}
+                  promises.push(fetchState());
 
-            {/* Extended Frontier Panel (Below GoalCard) */}
-            {/* Show if:
+                  const fetchState = async () => {
+                    try {
+                      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+                      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/state?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}/state?_t=${Date.now()}`
+                      const res = await fetch(url)
+                      if (res.ok) {
+                        const data = await res.json()
+                        if (data.stateMachine && data.stateMachine.goalOptions && Array.isArray(data.stateMachine.goalOptions)) {
+                          setStateMachineOptions(data.stateMachine.goalOptions)
+                        } else {
+                          setStateMachineOptions([])
+                        }
+                      }
+                    } catch (e) {
+                      console.warn('Failed to reload learner state', e)
+                    }
+                  }
+                  promises.push(fetchState());
+
+                  await Promise.all(promises);
+                } finally {
+                  setIsRefreshing(false);
+                }
+              }} className="p-1 text-text-secondary hover:text-sky-400">
+                <RefreshCw size={16} className={isRefreshing ? 'animate-spin' : ''} />
+              </button>
+              <button onClick={() => setIsSetupOpen(true)} className="p-1 text-text-secondary hover:text-sky-400"><Settings size={16} /></button>
+              <ThemeToggle />
+              {isMobile && (
+                <button
+                  onClick={() => setIsSidebarOpen(false)}
+                  className="p-1 ml-1 text-text-secondary hover:text-red-400"
+                >
+                  <X size={20} />
+                </button>
+              )}
+            </div>
+          </div>
+          <div className="flex-1 overflow-y-auto p-2">
+            <CompetenceTree
+              rootGoals={visibleRootGoals}
+              allGoals={goalIndexAll}
+              getMastery={getMastery}
+              plannedGoals={plannedGoals}
+              onTogglePlan={togglePlan}
+              onSelect={onSelectGoal}
+              selectedId={selectedId}
+              activeFilter={effectiveActiveFilter}
+              personalConfig={personalConfig}
+              activeGoalId={learnerData?.activeGoalId}
+              forcedExpandedIds={forcedExpandedIds}
+              frontierIds={frontierIds}
+            />
+          </div>
+          {learnerData && learnerData.copySources && learnerData.copySources.length > 0 && (
+            <div className="p-3 border-t border-border-color bg-gray-50 dark:bg-slate-900 text-xs text-text-secondary shrink-0">
+              <h3 className="font-semibold mb-1">
+                {t.learner.includesDataFrom}
+              </h3>
+              <div className="flex flex-col gap-1 max-h-[100px] overflow-y-auto">
+                {learnerData.copySources.map((src, idx) => (
+                  <div key={idx} className="flex justify-between">
+                    <span className="truncate" title={src.sourceId}>
+                      {src.sourceId.substring(0, 8)}...
+                    </span>
+                    <span className="whitespace-nowrap ml-2">
+                      {new Date(src.copiedAt).toLocaleDateString()}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {/* Footer Imports/Exports */}
+          <div className="p-2 border-t border-border-color flex justify-between">
+            <div className="flex gap-2">
+              <button onClick={handleExport} className="text-text-secondary hover:text-sky-400"><Download size={16} /></button>
+              <button onClick={handleImportClick} className="text-text-secondary hover:text-sky-400"><Upload size={16} /></button>
+              <input type="file" ref={fileInputRef} onChange={handleFileChange} className="hidden" accept=".json" />
+            </div>
+            {onLogout && <LogoutButton onLogout={onLogout} />}
+          </div>
+
+          {/* Resize Handle (Desktop) */}
+          {!isMobile && (
+            <div
+              className="absolute right-0 top-0 bottom-0 w-1 hover:w-1.5 cursor-col-resize z-10 transition-colors group"
+              style={{ right: -2 }}
+              onMouseDown={startResizing}
+            >
+              {/* Visual indicator on hover */}
+              <div className="absolute inset-y-0 right-0 w-full bg-transparent group-hover:bg-sky-400/50 transition-colors" />
+            </div>
+          )}
+        </aside>
+
+        <main className="flex-1 overflow-y-auto bg-chat-bg p-6 flex flex-col items-center relative">
+          {/* Mobile Toggle Button */}
+          {isMobile && !isSidebarOpen && (
+            <button
+              className="absolute top-4 left-4 p-2 text-text-secondary hover:text-sky-400 z-10 bg-white/50 dark:bg-slate-900/50 rounded-md backdrop-blur-sm border border-border-color shadow-sm"
+              onClick={() => setIsSidebarOpen(true)}
+            >
+              <Menu size={20} />
+            </button>
+          )}
+          {currentGoal ? (
+            <div className="w-full max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+              {/* Check for SRS Tag */}
+              {currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
+                <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6">
+                  <div className="mb-6 border-b border-border-color pb-4">
+                    <h1 className="text-2xl font-bold text-sky-600 dark:text-sky-400 mb-2">{currentGoal.title}</h1>
+                    <p className="text-text-secondary">{currentGoal.description}</p>
+                  </div>
+                  <FlashcardDrill
+                    key={currentGoal.id}
+                    goalId={currentGoal.id}
+                    dataSourceUrl={currentGoal.extendedData?.vocabularySource as string | undefined}
+                    onComplete={() => {
+                      // Refresh mastery if needed or just show confetti
+                      onRefresh?.()
+                    }}
+                    skillPilotId={skillpilotId}
+                    titleOverride={currentGoal.title}
+                    filterTags={(() => {
+                      const tags = currentGoal.tags || []
+                      const selectTags = tags.filter(t => t.startsWith('select:'))
+                      if (selectTags.length > 0) return selectTags
+                      return tags.filter(t => !t.startsWith('srs-deck') && !['structure', 'root', 'module', 'lesson', 'vocabulary', 'grammar', 'practice', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'].includes(t))
+                    })()}
+                  />
+                </div>
+              ) : (
+                <GoalCard
+                  goal={currentGoal}
+                  masteryValue={getMastery(currentGoal.id)}
+                  showLearnerTools={true}
+                  isPlanned={plannedGoals.has(currentGoal.id)}
+                  isActive={learnerData?.activeGoalId === currentGoal.id}
+                  onRefresh={async () => {
+                    if (onRefresh) onRefresh();
+
+                    // Store old active ID to detect changes
+                    const oldActiveId = learnerData?.activeGoalId;
+
+                    // 1. Refresh Learner Data
+                    try {
+                      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+                      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}?_t=${Date.now()}`
+                      const res = await fetch(url)
+                      if (res.ok) {
+                        const data = await res.json()
+                        setLearnerData(data)
+
+                        // Auto-Navigate if Active Goal Changed
+                        if (data.activeGoalId && data.activeGoalId !== oldActiveId) {
+                          // Manual trigger reveal
+                          const targetId = data.activeGoalId;
+                          if (parentMap) {
+                            const ancestors = new Set<string>()
+                            const queue = [targetId]
+                            while (queue.length > 0) {
+                              const current = queue.pop()!
+                              const parents = parentMap.get(current)
+                              if (parents) {
+                                parents.forEach(p => {
+                                  if (!ancestors.has(p)) {
+                                    ancestors.add(p)
+                                    queue.push(p)
+                                  }
+                                })
+                              }
+                            }
+                            setForcedExpandedIds(ancestors)
+                          }
+                          onSelectGoal(targetId)
+                        }
+                      }
+                    } catch (e) {
+                      console.warn('Failed to reload learner data', e)
+                    }
+
+                    // 2. Refresh Planned Goals
+                    try {
+                      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+                      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}/planned?_t=${Date.now()}`
+                      const res = await fetch(url)
+                      if (res.ok) {
+                        const data = await res.json()
+                        if (data.goals && Array.isArray(data.goals)) {
+                          setPlannedGoals(new Set(data.goals))
+                        }
+                      }
+                    } catch (e) {
+                      console.warn('Failed to reload planned goals', e)
+                    }
+                  }}
+                  onSetActive={(id) => togglePlan(id)}
+                  isFrontier={frontierIds.has(currentGoal.id)}
+                />
+              )}
+
+              {/* Extended Frontier Panel (Below GoalCard) */}
+              {/* Show if:
                 1. Goal is Mastered (Standard "Next Steps")
                 2. OR No Global Active Goal (User is Idle/Searching)
                 3. OR Goal is NOT Frontier and NOT Active/Mastered (User is viewing a "Blocked" or "Future" goal -> Show alternatives) 
             */}
-            {(getMastery(currentGoal.id) >= 1 || !learnerData?.activeGoalId || (!frontierIds.has(currentGoal.id) && learnerData?.activeGoalId !== currentGoal.id)) && frontierIds.size > 0 && (
-              <div className="mt-8 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="p-2 bg-sky-100 dark:bg-sky-900/30 rounded-lg text-sky-600 dark:text-sky-400">
-                    <Send size={24} />
+              {(getMastery(currentGoal.id) >= 1 || !learnerData?.activeGoalId || (!frontierIds.has(currentGoal.id) && learnerData?.activeGoalId !== currentGoal.id)) && frontierIds.size > 0 && (
+                <div className="mt-8 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="p-2 bg-sky-100 dark:bg-sky-900/30 rounded-lg text-sky-600 dark:text-sky-400">
+                      <Send size={24} />
+                    </div>
+                    <div>
+                      <h2 className="text-lg font-bold text-text-primary">
+                        {t.learner?.nextSteps || "Als nächste Lernziele stehen dir offen:"}
+                      </h2>
+                      <p className="text-sm text-text-secondary">
+                        {t.learner?.chooseNext || "Welches möchtest du als Nächstes angehen?"}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h2 className="text-lg font-bold text-text-primary">
-                      {t.learner?.nextSteps || "Als nächste Lernziele stehen dir offen:"}
-                    </h2>
-                    <p className="text-sm text-text-secondary">
-                      {t.learner?.chooseNext || "Welches möchtest du als Nächstes angehen?"}
-                    </p>
-                  </div>
-                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {atomicFrontier
-                    .slice(0, 6)
-                    .map((candidate, idx) => (
-                      <button
-                        key={candidate.id}
-                        onClick={() => handleSetActiveGoal(candidate.id)}
-                        className="flex items-start gap-3 p-4 bg-gray-50 dark:bg-slate-800/50 rounded-xl border border-border-color hover:border-sky-400 dark:hover:border-sky-500 hover:shadow-md transition-all text-left group"
-                      >
-                        <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 text-xs font-bold text-text-secondary border border-border-color group-hover:border-sky-400 group-hover:text-sky-500 transition-colors shrink-0 mt-0.5">
-                          {idx + 1}
-                        </span>
-                        <div>
-                          <span className="font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors line-clamp-2">
-                            {candidate.title}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {stateMachineOptions
+                      .slice(0, 6)
+                      .map((candidate, idx) => (
+                        <button
+                          key={candidate.id}
+                          onClick={() => handleSetActiveGoal(candidate.id)}
+                          className="flex items-start gap-3 p-4 bg-gray-50 dark:bg-slate-800/50 rounded-xl border border-border-color hover:border-sky-400 dark:hover:border-sky-500 hover:shadow-md transition-all text-left group"
+                        >
+                          <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 text-xs font-bold text-text-secondary border border-border-color group-hover:border-sky-400 group-hover:text-sky-500 transition-colors shrink-0 mt-0.5">
+                            {idx + 1}
                           </span>
-                        </div>
-                      </button>
-                    ))}
+                          <div>
+                            <span className="font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors line-clamp-2">
+                              {candidate.title}
+                            </span>
+                          </div>
+                        </button>
+                      ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
 
-          </div>
-        ) : (
-          <div className="flex flex-col items-center justify-center h-full text-text-secondary">
-            <p>Select a goal to start learning</p>
-          </div>
-        )}
-      </main>
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center h-full text-text-secondary">
+              <p>Select a goal to start learning</p>
+            </div>
+          )}
+        </main>
 
-      <PersonalCurriculumSetup
-        isOpen={isSetupOpen}
-        onClose={() => setIsSetupOpen(false)}
-        availableLandscapes={availableLandscapes}
-        onConfigChange={handleConfigChange}
-        initialConfig={personalConfig}
-        rootLandscapeId={rootLandscapeId}
-      />
+        <PersonalCurriculumSetup
+          isOpen={isSetupOpen}
+          onClose={() => setIsSetupOpen(false)}
+          availableLandscapes={availableLandscapes}
+          onConfigChange={handleConfigChange}
+          initialConfig={personalConfig}
+          rootLandscapeId={rootLandscapeId}
+        />
 
-      <InfoModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        title={modalTitle}
-        type={modalType}
-      >
-        {modalMessage}
-      </InfoModal>
-    </div>
-  )
-}
+        <InfoModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          title={modalTitle}
+          type={modalType}
+        >
+          {modalMessage}
+        </InfoModal>
+      </div>
+    )
+  }
