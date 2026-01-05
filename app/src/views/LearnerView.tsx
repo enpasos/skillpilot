@@ -66,6 +66,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const t = useTranslation();
 
   const selectedId = currentGoal?.id ?? rootGoals[0]?.id ?? ''
+  const effectiveActiveGoalId = stateActiveGoalId ?? learnerData?.activeGoalId ?? null
 
   // Filter root goals based on Personal Curriculum (Level 2)
   const visibleRootGoals = useMemo(() => {
@@ -290,8 +291,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     () => new Set(atomicFrontierOptions.map((goal) => goal.id)),
     [atomicFrontierOptions],
   )
-
-  const effectiveActiveGoalId = stateActiveGoalId ?? learnerData?.activeGoalId ?? null
 
   const shouldShowNextSteps =
     atomicFrontierOptions.length > 0 &&
