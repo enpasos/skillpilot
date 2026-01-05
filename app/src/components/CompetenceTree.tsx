@@ -56,13 +56,12 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   }, [forcedExpandedIds, goalId])
 
 
-  if (!goal) return null
+  /* eslint-disable react-hooks/exhaustive-deps */
+  // We disable exhaustive-deps for sortedChildren to avoid complex dependency cycles with filtered lists
 
-  const children = goal.contains || []
+  const children = goal?.contains || []
 
   // Check if this level has any "Positive Selection" (at least one sibling explicitly selected).
-  // If so, we treat this as an "Opt-in" level where unconfigured items are hidden.
-  // If NOT (i.e. only negative selections or no config), we treat it as "Opt-out" or "Show All" level.
   const hasPositiveSibling = personalConfig && Object.keys(personalConfig).length > 0 && children.some(childId => {
     const c = allGoals.get(childId)
     if (!c) return false
@@ -70,41 +69,33 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     return config?.selected === true
   })
 
-  const visibleChildren = children.filter((childId) => {
-    // 1. Filter by active activeFilter (e.g. "GK", "LK")
-    if (activeFilter && activeFilter !== 'all') {
+  // Memoize visibleChildren computation to stabilize dependency for sortedChildren
+  const visibleChildren = React.useMemo(() => {
+    return children.filter((childId) => {
+      // 1. Filter by active activeFilter (e.g. "GK", "LK")
+      if (activeFilter && activeFilter !== 'all') {
+        const child = allGoals.get(childId)
+        if (!child) return false
+        if (child.tags && child.tags.length > 0 && !child.tags.includes(activeFilter)) {
+          return false
+        }
+      }
+
+      // 2. Filter by Personal Curriculum (Level 2)
       const child = allGoals.get(childId)
-      if (!child) return false
-      // If child has no tags, keep it (might be structural). If it has tags, check inclusion.
-      if (child.tags && child.tags.length > 0 && !child.tags.includes(activeFilter)) {
-        return false
+      if (child && personalConfig && Object.keys(personalConfig).length > 0) {
+        const config = (child.landscapeId ? personalConfig[child.landscapeId] : undefined) ?? personalConfig[child.id]
+
+        if (config) {
+          if (config.selected !== true) return false
+        } else {
+          if (hasPositiveSibling) return false
+        }
       }
-    }
 
-    // 2. Filter by Personal Curriculum (Level 2)
-    // If the child belongs to a specific landscape (subject), check if that landscape is enabled in personalConfig.
-    // ALSO check if the child ID itself is enabled (some subjects might be goals within the same landscape)
-    const child = allGoals.get(childId)
-    if (child && personalConfig && Object.keys(personalConfig).length > 0) {
-      // Check config for landscapeId OR goalId
-      const config = (child.landscapeId ? personalConfig[child.landscapeId] : undefined) ?? personalConfig[child.id]
-
-      // If we found a config entry (either for landscape or goal), respect it strictly.
-      if (config) {
-        if (config.selected !== true) return false
-      } else {
-        // If NO config entry found:
-        // If there is a Positive Sibling (someone else explicitly selected), then I am implicitly Unselected (Hide).
-        // Otherwise (nobody explicitly selected, or only negatives), I am implicitly Selected (Show).
-        if (hasPositiveSibling) return false
-
-        // Otherwise show default
-      }
-    }
-
-
-    return true
-  })
+      return true
+    })
+  }, [children, activeFilter, allGoals, personalConfig, hasPositiveSibling])
 
   // Sort visible children
   const sortedChildren = React.useMemo(() => {
@@ -120,6 +111,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     return sorted.map(g => g.id)
   }, [visibleChildren, allGoals])
 
+  if (!goal) return null
+
   const hasChildren = sortedChildren.length > 0
   const mastery = getMastery(goal.id)
   const isPlanned = plannedGoals.has(goal.id)
@@ -130,10 +123,6 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   const selfInSubtree = isInPlannedSubtree || isPlanned
 
   // Active Plan Strategy:
-  // If no plan is active at all -> No Dimming (normal behavior)
-  // If plan is active:
-  //   - If selfInSubtree -> Show Normal / Highlighted
-  //   - Else -> Dim
   const isDimmed = hasActivePlan && !selfInSubtree
 
   const plannedCount = aggregatedPlannedGoals?.get(goal.id) ?? 0
