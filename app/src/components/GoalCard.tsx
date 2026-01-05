@@ -38,6 +38,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
   // Detect if Atomic Goal (no children)
   const isAtomic = !goal.contains || goal.contains.length === 0
+  const canSetActive = Boolean(onSetActive && isAtomic && isFrontier && masteryValue < 1)
 
   // Determine Status Icon
   let StatusIcon = Target
@@ -72,9 +73,20 @@ export const GoalCard: React.FC<GoalCardProps> = ({
         <h2 className="text-2xl font-semibold text-text-primary leading-tight pr-8">{goal.title}</h2>
         <div className="flex items-center gap-2 shrink-0">
           {isAtomic && (
-            <div className={`shrink-0 ${iconColor}`}>
-              <StatusIcon size={28} strokeWidth={strokeWidth} />
-            </div>
+            canSetActive ? (
+              <button
+                type="button"
+                onClick={() => onSetActive?.(goal.id)}
+                className="shrink-0 text-amber-500 hover:text-amber-400 transition-colors"
+                title="Als aktuelles Ziel auswählen"
+              >
+                <Send size={28} strokeWidth={2} />
+              </button>
+            ) : (
+              <div className={`shrink-0 ${iconColor}`}>
+                <StatusIcon size={28} strokeWidth={strokeWidth} />
+              </div>
+            )
           )}
         </div>
       </div>
