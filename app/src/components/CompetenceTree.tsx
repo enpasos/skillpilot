@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Target, Send, Check, Play } from 'lucide-react'
 import { useTranslation } from '../hooks/useTranslation'
 import type { UiGoal } from '../goalTypes'
-
+import { sortGoalsTopologically } from '../utils/goalSorter'
 
 interface TreeNodeProps {
   goalId: string
@@ -71,7 +71,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   })
 
   const visibleChildren = children.filter((childId) => {
-    // 1. Filter by active tag filter (e.g. "GK", "LK")
+    // 1. Filter by active activeFilter (e.g. "GK", "LK")
     if (activeFilter && activeFilter !== 'all') {
       const child = allGoals.get(childId)
       if (!child) return false
@@ -106,7 +106,21 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     return true
   })
 
-  const hasChildren = visibleChildren.length > 0
+  // Sort visible children
+  const sortedChildren = React.useMemo(() => {
+    // Map IDs to Goal Objects
+    const goals = visibleChildren
+      .map(id => allGoals.get(id))
+      .filter((g): g is UiGoal => !!g)
+
+    // Sort topologically + alphabetical
+    const sorted = sortGoalsTopologically(goals)
+
+    // Return IDs
+    return sorted.map(g => g.id)
+  }, [visibleChildren, allGoals])
+
+  const hasChildren = sortedChildren.length > 0
   const mastery = getMastery(goal.id)
   const isPlanned = plannedGoals.has(goal.id)
   const isSelected = selectedId === goal.id
@@ -222,7 +236,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
       {
         isExpanded && hasChildren && (
           <div>
-            {visibleChildren.map((childId) => (
+            {sortedChildren.map((childId) => (
               <TreeNode
                 key={childId}
                 goalId={childId}
