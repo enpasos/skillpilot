@@ -16,11 +16,22 @@ public class SseService {
 
     private final Map<String, java.util.List<SseEmitter>> emitters = new ConcurrentHashMap<>();
 
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(SseService.class);
+
     public SseEmitter subscribe(String skillpilotId) {
+        log.info("SSE Subscribe request for learner: {}", skillpilotId);
         SseEmitter emitter = new SseEmitter(30 * 60 * 1000L);
 
         emitters.computeIfAbsent(skillpilotId, k -> new java.util.concurrent.CopyOnWriteArrayList<>())
                 .add(emitter);
+
+        try {
+            emitter.send(SseEmitter.event()
+                    .name("connected")
+                    .data("{\"status\":\"connected\"}"));
+        } catch (IOException e) {
+            log.warn("Failed to send welcome message", e);
+        }
 
         Runnable removeEmitter = () -> {
             java.util.List<SseEmitter> userEmitters = emitters.get(skillpilotId);
@@ -39,8 +50,6 @@ public class SseService {
         });
         emitter.onError((e) -> {
             removeEmitter.run();
-            // emitter.completeWithError(e); // Often better to just let it die or specific
-            // handling
         });
 
         return emitter;
@@ -49,6 +58,7 @@ public class SseService {
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
     public void handleLearnerStateChanged(LearnerStateChangedEvent event) {
         String id = event.getSkillpilotId();
+        log.info("SSE Processing event '{}' for learner: {}", event.getChangeType(), id);
         java.util.List<SseEmitter> userEmitters = emitters.get(id);
 
         if (userEmitters != null) {
@@ -61,12 +71,11 @@ public class SseService {
                                     "type", event.getChangeType(),
                                     "timestamp", System.currentTimeMillis())));
                 } catch (IOException e) {
-                    // Cleanup usually happens via callbacks, but we can force it if write fails
-                    // However, avoiding concurrent modification during iteration is key.
-                    // CopyOnWriteArrayList handles iteration safely.
-                    // logging ignored for brevity
+                    log.warn("Failed to send SSE event", e);
                 }
             }
+        } else {
+            log.debug("No active SSE emitters for learner: {}", id);
         }
     }
 }
