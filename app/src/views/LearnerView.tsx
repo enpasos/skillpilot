@@ -48,6 +48,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [forcedExpandedIds, setForcedExpandedIds] = useState<Set<string>>(new Set())
   const [learnerData, setLearnerData] = useState<Learner | null>(null)
   const [frontierOptions, setFrontierOptions] = useState<FrontierGoal[]>([])
+  const [stateActiveGoalId, setStateActiveGoalId] = useState<string | null>(null)
+  const [stateRequiredAction, setStateRequiredAction] = useState<string | null>(null)
   const [isSetupOpen, setIsSetupOpen] = useState(false)
   const [personalConfig, setPersonalConfig] = useState<Record<string, { selected: boolean; filterId?: string }>>({})
 
@@ -177,8 +179,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   // Reveal Active Goal Logic
   const revealActiveGoal = useCallback(() => {
-    if (!learnerData?.activeGoalId || !parentMap) return
-    const targetId = learnerData.activeGoalId
+    if (!effectiveActiveGoalId || !parentMap) return
+    const targetId = effectiveActiveGoalId
     const ancestors = new Set<string>()
 
     // Recursive / Iterative lookup
@@ -199,7 +201,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (targetId !== selectedId) {
       onSelectGoal(targetId)
     }
-  }, [learnerData?.activeGoalId, parentMap, onSelectGoal, selectedId])
+  }, [effectiveActiveGoalId, parentMap, onSelectGoal, selectedId])
 
   // Frontier Logic: Identify the "Next Actionable" goal in every branch.
   // Assumption: Content is sequential within containers.
@@ -289,6 +291,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     [atomicFrontierOptions],
   )
 
+  const effectiveActiveGoalId = stateActiveGoalId ?? learnerData?.activeGoalId ?? null
+
+  const shouldShowNextSteps =
+    atomicFrontierOptions.length > 0 &&
+    (stateRequiredAction ? stateRequiredAction === 'setActiveGoal' : !effectiveActiveGoalId)
+
 
   const refreshState = useCallback(
     async (cacheBust = false) => {
@@ -309,6 +317,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           } else {
             setFrontierOptions([])
           }
+          setStateActiveGoalId(data.activeGoal?.id ?? data.stateMachine?.activeGoal?.id ?? null)
+          setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
         }
       } catch (e) {
         console.warn('Failed to load learner state', e)
@@ -321,11 +331,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   // Auto-reveal on initial load if active goal exists
   const initialRevealRef = useRef(false)
   useEffect(() => {
-    if (learnerData?.activeGoalId && !initialRevealRef.current) {
+    if (effectiveActiveGoalId && !initialRevealRef.current) {
       revealActiveGoal()
       initialRevealRef.current = true
     }
-  }, [learnerData?.activeGoalId, revealActiveGoal])
+  }, [effectiveActiveGoalId, revealActiveGoal])
 
 
   // Load planned goals from backend
@@ -386,6 +396,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
         const targetId = data.activeGoal?.id ?? goalId
         setLearnerData((prev) => (prev ? { ...prev, activeGoalId: targetId } : prev))
+        setStateActiveGoalId(targetId)
+        setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
         if (parentMap) {
           const ancestors = new Set<string>()
           const queue = [targetId]
@@ -883,7 +895,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             selectedId={selectedId}
             activeFilter={effectiveActiveFilter}
             personalConfig={personalConfig}
-            activeGoalId={learnerData?.activeGoalId}
+            activeGoalId={effectiveActiveGoalId ?? undefined}
             forcedExpandedIds={forcedExpandedIds}
             frontierIds={frontierIds}
           />
@@ -973,7 +985,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 masteryValue={getMastery(currentGoal.id)}
                 showLearnerTools={true}
                 isPlanned={plannedGoals.has(currentGoal.id)}
-                isActive={learnerData?.activeGoalId === currentGoal.id}
+                isActive={effectiveActiveGoalId === currentGoal.id}
                 onRefresh={async () => {
                   if (onRefresh) onRefresh();
 
@@ -1040,7 +1052,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             )}
 
             {/* Extended Frontier Panel (Below GoalCard) */}
-            {atomicFrontierOptions.length > 0 && (getMastery(currentGoal.id) >= 1 || !learnerData?.activeGoalId || (!backendFrontierIds.has(currentGoal.id) && learnerData?.activeGoalId !== currentGoal.id)) && (
+            {shouldShowNextSteps && (
               <div className="mt-8 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="p-2 bg-sky-100 dark:bg-sky-900/30 rounded-lg text-sky-600 dark:text-sky-400">
