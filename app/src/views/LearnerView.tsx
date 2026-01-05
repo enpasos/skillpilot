@@ -281,6 +281,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [frontierOptions, learnerData?.learningStrategy])
 
+  const backendFrontierIds = useMemo(
+    () => new Set(atomicFrontierOptions.map((goal) => goal.id)),
+    [atomicFrontierOptions],
+  )
+
 
   const refreshState = useCallback(
     async (cacheBust = false) => {
@@ -399,11 +404,19 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           onSelectGoal(targetId)
         }
         onRefresh?.()
+      } else {
+        const message = await res.text()
+        setModalTitle(language === 'de' ? 'Aktion nicht möglich' : 'Action not allowed')
+        setModalMessage(message || (language === 'de'
+          ? 'Dieses Ziel ist nicht im aktuellen Frontier.'
+          : 'This goal is not in the current frontier.'))
+        setModalType('error')
+        setIsModalOpen(true)
       }
     } catch (e) {
       console.warn('Failed to set active goal', e)
     }
-  }, [skillpilotId, onRefresh, parentMap, selectedId, onSelectGoal])
+  }, [skillpilotId, onRefresh, parentMap, selectedId, onSelectGoal, language])
 
   // Autopilot Logic
   useEffect(() => {
@@ -1021,12 +1034,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   await refreshState(true)
                 }}
                 onSetActive={handleSetActiveGoal}
-                isFrontier={frontierIds.has(currentGoal.id)}
+                isFrontier={backendFrontierIds.has(currentGoal.id)}
               />
             )}
 
             {/* Extended Frontier Panel (Below GoalCard) */}
-            {atomicFrontierOptions.length > 0 && (getMastery(currentGoal.id) >= 1 || !learnerData?.activeGoalId || (!frontierIds.has(currentGoal.id) && learnerData?.activeGoalId !== currentGoal.id)) && (
+            {atomicFrontierOptions.length > 0 && (getMastery(currentGoal.id) >= 1 || !learnerData?.activeGoalId || (!backendFrontierIds.has(currentGoal.id) && learnerData?.activeGoalId !== currentGoal.id)) && (
               <div className="mt-8 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="p-2 bg-sky-100 dark:bg-sky-900/30 rounded-lg text-sky-600 dark:text-sky-400">

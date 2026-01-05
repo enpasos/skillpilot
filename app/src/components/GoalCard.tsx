@@ -38,7 +38,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
   // Detect if Atomic Goal (no children)
   const isAtomic = !goal.contains || goal.contains.length === 0
-  const canSetActive = Boolean(onSetActive && isAtomic && isFrontier && masteryValue < 1)
+  const canSetActive = Boolean(onSetActive && isAtomic && masteryValue < 1 && (isFrontier || isActive))
 
   // Determine Status Icon
   let StatusIcon = Target
@@ -77,8 +77,9 @@ export const GoalCard: React.FC<GoalCardProps> = ({
               <button
                 type="button"
                 onClick={() => onSetActive?.(goal.id)}
-                className="shrink-0 text-amber-500 hover:text-amber-400 transition-colors"
+                className="shrink-0 text-amber-500 hover:text-amber-400 transition-colors cursor-pointer"
                 title="Als aktuelles Ziel auswählen"
+                aria-label="Als aktuelles Ziel auswählen"
               >
                 <Send size={28} strokeWidth={2} />
               </button>
