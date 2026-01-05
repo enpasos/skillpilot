@@ -12,23 +12,33 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class SseService {
 
-    private final Map<String, SseEmitter> emitters = new ConcurrentHashMap<>();
+    private final Map<String, java.util.List<SseEmitter>> emitters = new ConcurrentHashMap<>();
 
     public SseEmitter subscribe(String skillpilotId) {
-        // Timeout 30 minutes, or use Long.MAX_VALUE for "infinite" but risky
-        // Let's use 30 minutes for now to keep connections reasonably fresh
         SseEmitter emitter = new SseEmitter(30 * 60 * 1000L);
 
-        emitters.put(skillpilotId, emitter);
+        emitters.computeIfAbsent(skillpilotId, k -> new java.util.concurrent.CopyOnWriteArrayList<>())
+                .add(emitter);
 
-        emitter.onCompletion(() -> emitters.remove(skillpilotId));
+        Runnable removeEmitter = () -> {
+            java.util.List<SseEmitter> userEmitters = emitters.get(skillpilotId);
+            if (userEmitters != null) {
+                userEmitters.remove(emitter);
+                if (userEmitters.isEmpty()) {
+                    emitters.remove(skillpilotId);
+                }
+            }
+        };
+
+        emitter.onCompletion(removeEmitter);
         emitter.onTimeout(() -> {
-            emitters.remove(skillpilotId);
+            removeEmitter.run();
             emitter.complete();
         });
         emitter.onError((e) -> {
-            emitters.remove(skillpilotId);
-            emitter.completeWithError(e);
+            removeEmitter.run();
+            // emitter.completeWithError(e); // Often better to just let it die or specific
+            // handling
         });
 
         return emitter;
@@ -37,18 +47,23 @@ public class SseService {
     @EventListener
     public void handleLearnerStateChanged(LearnerStateChangedEvent event) {
         String id = event.getSkillpilotId();
-        SseEmitter emitter = emitters.get(id);
+        java.util.List<SseEmitter> userEmitters = emitters.get(id);
 
-        if (emitter != null) {
-            try {
-                emitter.send(SseEmitter.event()
-                        .name("message")
-                        .data(Map.of(
-                                "type", event.getChangeType(),
-                                "timestamp", System.currentTimeMillis())));
-            } catch (IOException e) {
-                emitters.remove(id);
-                emitter.completeWithError(e);
+        if (userEmitters != null) {
+            // Send to all connected clients for this user
+            for (SseEmitter emitter : userEmitters) {
+                try {
+                    emitter.send(SseEmitter.event()
+                            .name("message")
+                            .data(Map.of(
+                                    "type", event.getChangeType(),
+                                    "timestamp", System.currentTimeMillis())));
+                } catch (IOException e) {
+                    // Cleanup usually happens via callbacks, but we can force it if write fails
+                    // However, avoiding concurrent modification during iteration is key.
+                    // CopyOnWriteArrayList handles iteration safely.
+                    // logging ignored for brevity
+                }
             }
         }
     }
