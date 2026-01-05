@@ -60,6 +60,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const fileInputRef = useRef<HTMLInputElement>(null)
 
+  const { language } = useLanguage();
+  const t = useTranslation();
+
   const selectedId = currentGoal?.id ?? rootGoals[0]?.id ?? ''
 
   // Filter root goals based on Personal Curriculum (Level 2)
@@ -416,7 +419,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     } catch (e) {
       console.warn('Failed to set active goal', e)
     }
-  }, [skillpilotId, onRefresh, parentMap, selectedId, onSelectGoal, language])
+  }, [skillpilotId, onRefresh, parentMap, selectedId, onSelectGoal])
 
   // Autopilot Logic
   useEffect(() => {
@@ -619,9 +622,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       console.error("Export error", e)
     }
   }, [skillpilotId])
-
-  const { language } = useLanguage();
-  const t = useTranslation();
 
   const handleImportClick = () => {
     fileInputRef.current?.click();
