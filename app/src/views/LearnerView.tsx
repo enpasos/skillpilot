@@ -1034,6 +1034,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   await refreshState(true)
                 }}
                 onSetActive={handleSetActiveGoal}
+                onRevealActive={revealActiveGoal}
                 isFrontier={backendFrontierIds.has(currentGoal.id)}
               />
             )}

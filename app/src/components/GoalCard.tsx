@@ -13,6 +13,7 @@ interface GoalCardProps {
   isActive?: boolean
   onRefresh?: () => void
   onSetActive?: (id: string) => void
+  onRevealActive?: () => void
   nextCandidates?: Goal[]
   isFrontier?: boolean
 }
@@ -30,6 +31,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   isActive = false,
   onRefresh,
   onSetActive,
+  onRevealActive,
   nextCandidates = [],
   isFrontier = false
 }) => {
@@ -39,6 +41,9 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   // Detect if Atomic Goal (no children)
   const isAtomic = !goal.contains || goal.contains.length === 0
   const canSetActive = Boolean(onSetActive && isAtomic && masteryValue < 1 && (isFrontier || isActive))
+  const activeActionLabel = isActive
+    ? 'Zum aktiven Lernziel springen'
+    : 'Als aktuelles Lernziel auswählen'
 
   // Determine Status Icon
   let StatusIcon = Target
@@ -76,10 +81,10 @@ export const GoalCard: React.FC<GoalCardProps> = ({
             canSetActive ? (
               <button
                 type="button"
-                onClick={() => onSetActive?.(goal.id)}
+                onClick={() => (isActive ? onRevealActive?.() : onSetActive?.(goal.id))}
                 className="shrink-0 text-amber-500 hover:text-amber-400 transition-colors cursor-pointer"
-                title="Als aktuelles Ziel auswählen"
-                aria-label="Als aktuelles Ziel auswählen"
+                title={activeActionLabel}
+                aria-label={activeActionLabel}
               >
                 <Send size={28} strokeWidth={2} />
               </button>
