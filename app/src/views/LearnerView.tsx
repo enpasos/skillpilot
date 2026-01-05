@@ -60,25 +60,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  // Save preferences to backend
-  const handlePreferencesChange = useCallback(async (strategy: 'RANDOM' | 'SEQUENTIAL', autoPilot: boolean) => {
-    // Optimistic update
-    setLearnerData(prev => prev ? { ...prev, learningStrategy: strategy, autoPilot } : null)
-
-    if (!skillpilotId) return
-    try {
-      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/preferences` : `/api/ui/learners/${skillpilotId}/preferences`
-      await fetch(url, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ learningStrategy: strategy, autoPilot })
-      })
-    } catch (e) {
-      console.warn('Failed to save preferences', e)
-    }
-  }, [skillpilotId])
-
   const selectedId = currentGoal?.id ?? rootGoals[0]?.id ?? ''
 
   // Filter root goals based on Personal Curriculum (Level 2)
