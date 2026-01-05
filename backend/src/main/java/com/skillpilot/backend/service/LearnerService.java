@@ -13,6 +13,8 @@ import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
+import com.skillpilot.backend.events.LearnerStateChangedEvent;
+import org.springframework.context.ApplicationEventPublisher;
 import com.skillpilot.backend.landscape.LearningLandscape;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -51,7 +53,9 @@ public class LearnerService {
     private final MasteryRepository masteryRepository;
     private final PlannedGoalRepository plannedGoalRepository;
     private final LandscapeService landscapeService;
+
     private final ObjectMapper objectMapper;
+    private final ApplicationEventPublisher eventPublisher;
 
     @Value("${skillpilot.security.signing-secret}")
     private String signingSecret;
@@ -61,12 +65,14 @@ public class LearnerService {
             MasteryRepository masteryRepository,
             PlannedGoalRepository plannedGoalRepository,
             LandscapeService landscapeService,
-            ObjectMapper objectMapper) {
+            ObjectMapper objectMapper,
+            ApplicationEventPublisher eventPublisher) {
         this.learnerRepository = learnerRepository;
         this.masteryRepository = masteryRepository;
         this.plannedGoalRepository = plannedGoalRepository;
         this.landscapeService = landscapeService;
         this.objectMapper = objectMapper;
+        this.eventPublisher = eventPublisher;
     }
 
     @Transactional
@@ -166,6 +172,7 @@ public class LearnerService {
         learnerRepository.save(learner);
 
         UnifiedLearnerStateResponse state = getLearnerState(skillpilotId);
+        eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "MASTERY_UPDATE"));
         return new MasteryUpdateResponse(
                 state.frontier(),
                 state.nextAllowedActions(),
@@ -241,6 +248,7 @@ public class LearnerService {
         }
         learner.setLearningState(LearningState.FRONTIER);
         learnerRepository.save(learner);
+        eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "CURRICULUM_UPDATE"));
     }
 
     @Transactional
@@ -311,6 +319,7 @@ public class LearnerService {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "Invalid personalization config");
         }
+        eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "PERSONALIZATION_UPDATE"));
     }
 
     @Transactional(readOnly = true)
@@ -705,6 +714,7 @@ public class LearnerService {
         // learner.setActiveGoalId(null); // Keep active goal when broadening scope
         learner.setLearningState(LearningState.FRONTIER);
         learnerRepository.save(learner);
+        eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "SCOPE_UPDATE"));
     }
 
     @Transactional
@@ -730,6 +740,7 @@ public class LearnerService {
         learner.setActiveGoalId(goalId);
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.save(learner);
+        eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "ACTIVE_GOAL_UPDATE"));
     }
 
     private FrontierGoal resolveActiveGoal(String goalId, Map<String, LearningGoal> allGoals) {

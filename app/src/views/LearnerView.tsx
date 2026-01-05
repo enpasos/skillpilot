@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react'
+import { useLearnerUpdates } from '../hooks/useLearnerUpdates'
 import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
@@ -324,7 +325,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       }
     },
     [skillpilotId],
+
   )
+
+  const handleSseUpdate = useCallback(() => {
+    refreshState(true)
+    onRefresh?.()
+  }, [refreshState, onRefresh])
+
+  useLearnerUpdates(skillpilotId, handleSseUpdate)
 
 
   // Auto-reveal on initial load if active goal exists
@@ -430,7 +439,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     } catch (e) {
       console.warn('Failed to set active goal', e)
     }
-  }, [skillpilotId, onRefresh, parentMap, selectedId, onSelectGoal])
+  }, [skillpilotId, onRefresh, parentMap, selectedId, onSelectGoal, language])
 
   // Autopilot Logic
   useEffect(() => {
