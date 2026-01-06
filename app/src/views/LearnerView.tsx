@@ -329,13 +329,22 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const handleSseUpdate = useCallback(async () => {
     console.log('[SSE] 🔄 Triggering full refresh...')
+    const oldActiveGoalId = learnerData?.activeGoalId
     // Refresh both mastery data AND learner state in parallel
     await Promise.all([
       refreshState(true),
       onRefresh?.()
     ])
     console.log('[SSE] ✅ Refresh complete')
-  }, [refreshState, onRefresh])
+    // After refresh, reveal active goal if it changed
+    // We need to check after a short delay since state may not be updated yet
+    setTimeout(() => {
+      if (learnerData?.activeGoalId && learnerData.activeGoalId !== oldActiveGoalId) {
+        console.log('[SSE] 🎯 Active goal changed, revealing:', learnerData.activeGoalId)
+        revealActiveGoal()
+      }
+    }, 100)
+  }, [refreshState, onRefresh, learnerData?.activeGoalId, revealActiveGoal])
 
   useLearnerUpdates(skillpilotId, handleSseUpdate)
 
