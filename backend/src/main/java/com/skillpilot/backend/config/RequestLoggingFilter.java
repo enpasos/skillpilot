@@ -54,6 +54,13 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
             return;
         }
 
+        // Skip response wrapping for SSE endpoints - they need to stay open!
+        if (request.getRequestURI().contains("/updates/")) {
+            logger.debug("Skipping response logging for SSE endpoint: {}", request.getRequestURI());
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         ContentCachingRequestWrapper requestWrapper = new ContentCachingRequestWrapper(request, 50000);
         ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper(response);
 
@@ -88,10 +95,10 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
     }
 
     private void writeAiTrace(HttpServletRequest request,
-                              HttpServletResponse response,
-                              long duration,
-                              String requestBody,
-                              String responseBody) {
+            HttpServletResponse response,
+            long duration,
+            String requestBody,
+            String responseBody) {
         Path path = resolveAiTracePath();
         String skillpilotId = resolveSkillpilotId(request.getRequestURI(), requestBody, responseBody);
         Map<String, Object> entry = new LinkedHashMap<>();
