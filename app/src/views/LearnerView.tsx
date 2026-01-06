@@ -327,9 +327,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   )
 
-  const handleSseUpdate = useCallback(() => {
-    refreshState(true)
-    onRefresh?.()
+  const handleSseUpdate = useCallback(async () => {
+    console.log('[SSE] 🔄 Triggering full refresh...')
+    // Refresh both mastery data AND learner state in parallel
+    await Promise.all([
+      refreshState(true),
+      onRefresh?.()
+    ])
+    console.log('[SSE] ✅ Refresh complete')
   }, [refreshState, onRefresh])
 
   useLearnerUpdates(skillpilotId, handleSseUpdate)
