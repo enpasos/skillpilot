@@ -5,7 +5,7 @@ import json
 import urllib.request
 import urllib.parse
 
-API_BASE = "http://localhost:8080/api/ui"
+API_BASE = "https://skillpilot.com/api/ui"
 
 def run_sse_listener(learner_id, stop_event):
     url = f"{API_BASE}/updates/{learner_id}"
@@ -80,7 +80,7 @@ def main():
         print(f"Failed to set curriculum: {e}")
 
     # 4. Wait for event
-    time.sleep(5)
+    time.sleep(20)
     stop_event.set()
     t.join(timeout=1)
     print("Done.")

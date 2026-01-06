@@ -1,9 +1,8 @@
 package com.skillpilot.backend.service;
 
 import com.skillpilot.backend.events.LearnerStateChangedEvent;
-import org.springframework.transaction.event.TransactionPhase;
-import org.springframework.transaction.event.TransactionalEventListener;
-
+import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
@@ -55,7 +54,8 @@ public class SseService {
         return emitter;
     }
 
-    @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
+    @Async
+    @EventListener
     public void handleLearnerStateChanged(LearnerStateChangedEvent event) {
         String id = event.getSkillpilotId();
         log.info("SSE Processing event '{}' for learner: {}", event.getChangeType(), id);

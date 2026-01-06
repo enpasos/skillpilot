@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 @SpringBootApplication
 @EnableConfigurationProperties({ com.skillpilot.backend.landscape.LandscapeProperties.class })
 @org.springframework.scheduling.annotation.EnableScheduling
+@org.springframework.scheduling.annotation.EnableAsync
 public class SkillpilotApplication {
     public static void main(String[] args) {
         SpringApplication.run(SkillpilotApplication.class, args);
