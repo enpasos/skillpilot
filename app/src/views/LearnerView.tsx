@@ -3,7 +3,7 @@ import { useLearnerUpdates } from '../hooks/useLearnerUpdates'
 import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
-import { Settings, Upload, Download, RefreshCw, Menu, X, Target, Send, Check } from 'lucide-react'
+import { Settings, Upload, Download, Menu, X, Target, Send, Check } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -59,7 +59,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [modalTitle, setModalTitle] = useState("");
   const [modalType, setModalType] = useState<'info' | 'error' | 'success'>('info');
 
-  const [isRefreshing, setIsRefreshing] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -805,81 +804,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           </div>
           <div className="flex items-center gap-1 shrink-0">
 
-            <button onClick={async () => {
-              if (isRefreshing) return;
-              setIsRefreshing(true);
-              try {
-                // Parallelize all refreshes
-                const promises = [];
-                if (onRefresh) promises.push(onRefresh());
-
-                // Re-fetch local learner data
-                const fetchLearnerData = async () => {
-                  const oldActiveId = learnerData?.activeGoalId
-                  try {
-                    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-                    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}?_t=${Date.now()}`
-                    const res = await fetch(url)
-                    if (res.ok) {
-                      const data = await res.json()
-                      setLearnerData(data)
-
-                      if (data.activeGoalId && data.activeGoalId !== oldActiveId) {
-                        const targetId = data.activeGoalId
-                        if (parentMap) {
-                          const ancestors = new Set<string>()
-                          const queue = [targetId]
-                          while (queue.length > 0) {
-                            const current = queue.pop()!
-                            const parents = parentMap.get(current)
-                            if (parents) {
-                              parents.forEach(p => {
-                                if (!ancestors.has(p)) {
-                                  ancestors.add(p)
-                                  queue.push(p)
-                                }
-                              })
-                            }
-                          }
-                          setForcedExpandedIds(ancestors)
-                        }
-                        onSelectGoal(targetId)
-                      }
-                    }
-                  } catch (e) {
-                    console.warn('Failed to reload learner data', e)
-                  }
-                };
-                promises.push(fetchLearnerData());
-
-                const fetchPlanned = async () => {
-                  try {
-                    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-                    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}/planned?_t=${Date.now()}`
-                    const res = await fetch(url)
-                    if (res.ok) {
-                      const data = await res.json()
-                      if (data.goals && Array.isArray(data.goals)) {
-                        setPlannedGoals(new Set(data.goals))
-                      }
-                    }
-                  } catch (e) {
-                    console.warn('Failed to reload planned goals', e)
-                  }
-                }
-                promises.push(fetchPlanned());
-
-
-
-                promises.push(refreshState(true));
-
-                await Promise.all(promises);
-              } finally {
-                setIsRefreshing(false);
-              }
-            }} className="p-1 text-text-secondary hover:text-sky-400">
-              <RefreshCw size={16} className={isRefreshing ? 'animate-spin' : ''} />
-            </button>
+            {/* SSE auto-refresh now active - manual refresh button removed */}
             <button onClick={() => setIsSetupOpen(true)} className="p-1 text-text-secondary hover:text-sky-400"><Settings size={16} /></button>
             <ThemeToggle />
             {isMobile && (

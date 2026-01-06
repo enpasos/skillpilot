@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Check, Target, Send, RefreshCw } from 'lucide-react'
+import React from 'react'
+import { Check, Target, Send } from 'lucide-react'
 import type { UiGoal as Goal } from '../goalTypes'
 
 import { MasteryBar } from './MasteryBar'
@@ -11,6 +11,7 @@ interface GoalCardProps {
   showLearnerTools: boolean
   isPlanned?: boolean
   isActive?: boolean
+  /** @deprecated SSE auto-updates now active */
   onRefresh?: () => void
   onSetActive?: (id: string) => void
   onRevealActive?: () => void
@@ -29,14 +30,13 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   showLearnerTools,
   isPlanned = false,
   isActive = false,
-  onRefresh,
+  onRefresh: _onRefresh, // unused, kept for API compat
   onSetActive,
   onRevealActive,
   nextCandidates = [],
   isFrontier = false
 }) => {
   const handleChange = onMasteryChange ?? (() => { })
-  const [isRefreshing, setIsRefreshing] = useState(false)
 
   // Detect if Atomic Goal (no children)
   const isAtomic = !goal.contains || goal.contains.length === 0
@@ -59,17 +59,6 @@ export const GoalCard: React.FC<GoalCardProps> = ({
     iconColor = "text-amber-500"
   } else if (isPlanned) {
     // Planned logic placeholder
-  }
-
-  const handleRefresh = async () => {
-    if (onRefresh && !isRefreshing) {
-      setIsRefreshing(true)
-      try {
-        await onRefresh()
-      } finally {
-        setIsRefreshing(false)
-      }
-    }
   }
 
   return (
@@ -97,16 +86,9 @@ export const GoalCard: React.FC<GoalCardProps> = ({
         </div>
       </div>
 
-      {/* Refresh Button - positioned absolute top-right but inside padding */}
-      {showLearnerTools && onRefresh && (
-        <button
-          onClick={handleRefresh}
-          className="absolute top-5 right-14 p-1 text-slate-400 hover:text-sky-500 transition-colors"
-          title="Refresh Goal Status"
-        >
-          <RefreshCw size={18} className={isRefreshing ? 'animate-spin' : ''} />
-        </button>
-      )}
+
+      {/* SSE auto-refresh now active - manual refresh button removed */}
+
 
       <div className="mt-2 text-sm text-text-primary leading-relaxed prose dark:prose-invert max-w-none">
         <ReactMarkdown
