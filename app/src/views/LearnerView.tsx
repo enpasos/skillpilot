@@ -925,65 +925,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 showLearnerTools={true}
                 isPlanned={plannedGoals.has(currentGoal.id)}
                 isActive={effectiveActiveGoalId === currentGoal.id}
-                onRefresh={async () => {
-                  if (onRefresh) onRefresh();
-
-                  // Store old active ID to detect changes
-                  const oldActiveId = learnerData?.activeGoalId;
-
-                  // 1. Refresh Learner Data
-                  try {
-                    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-                    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}?_t=${Date.now()}`
-                    const res = await fetch(url)
-                    if (res.ok) {
-                      const data = await res.json()
-                      setLearnerData(data)
-
-                      // Auto-Navigate if Active Goal Changed
-                      if (data.activeGoalId && data.activeGoalId !== oldActiveId) {
-                        // Manual trigger reveal
-                        const targetId = data.activeGoalId;
-                        if (parentMap) {
-                          const ancestors = new Set<string>()
-                          const queue = [targetId]
-                          while (queue.length > 0) {
-                            const current = queue.pop()!
-                            const parents = parentMap.get(current)
-                            if (parents) {
-                              parents.forEach(p => {
-                                if (!ancestors.has(p)) {
-                                  ancestors.add(p)
-                                  queue.push(p)
-                                }
-                              })
-                            }
-                          }
-                          setForcedExpandedIds(ancestors)
-                        }
-                        onSelectGoal(targetId)
-                      }
-                    }
-                  } catch (e) {
-                    console.warn('Failed to reload learner data', e)
-                  }
-
-                  // 2. Refresh Planned Goals
-                  try {
-                    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-                    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}/planned?_t=${Date.now()}`
-                    const res = await fetch(url)
-                    if (res.ok) {
-                      const data = await res.json()
-                      if (data.goals && Array.isArray(data.goals)) {
-                        setPlannedGoals(new Set(data.goals))
-                      }
-                    }
-                  } catch (e) {
-                    console.warn('Failed to reload planned goals', e)
-                  }
-                  await refreshState(true)
-                }}
                 onSetActive={handleSetActiveGoal}
                 onRevealActive={revealActiveGoal}
                 isFrontier={backendFrontierIds.has(currentGoal.id)}

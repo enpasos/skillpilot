@@ -11,8 +11,7 @@ interface GoalCardProps {
   showLearnerTools: boolean
   isPlanned?: boolean
   isActive?: boolean
-  /** @deprecated SSE auto-updates now active */
-  onRefresh?: () => void
+
   onSetActive?: (id: string) => void
   onRevealActive?: () => void
   nextCandidates?: Goal[]
@@ -30,7 +29,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   showLearnerTools,
   isPlanned = false,
   isActive = false,
-  // onRefresh intentionally ignored - SSE auto-updates now active
+
   onSetActive,
   onRevealActive,
   nextCandidates = [],
