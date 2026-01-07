@@ -329,33 +329,25 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const handleSseUpdate = useCallback(async () => {
     console.log('[SSE] 🔄 Triggering full refresh...')
-    const oldActiveGoalId = learnerData?.activeGoalId
     // Refresh both mastery data AND learner state in parallel
     await Promise.all([
       refreshState(true),
       onRefresh?.()
     ])
     console.log('[SSE] ✅ Refresh complete')
-    // After refresh, reveal active goal if it changed
-    // We need to check after a short delay since state may not be updated yet
-    setTimeout(() => {
-      if (learnerData?.activeGoalId && learnerData.activeGoalId !== oldActiveGoalId) {
-        console.log('[SSE] 🎯 Active goal changed, revealing:', learnerData.activeGoalId)
-        revealActiveGoal()
-      }
-    }, 100)
-  }, [refreshState, onRefresh, learnerData?.activeGoalId, revealActiveGoal])
+  }, [refreshState, onRefresh])
 
   useLearnerUpdates(skillpilotId, handleSseUpdate)
 
 
-  // Auto-reveal on initial load if active goal exists
-  const initialRevealRef = useRef(false)
+  // Auto-reveal when active goal changes (including from SSE updates)
+  const prevActiveGoalIdRef = useRef<string | null>(null)
   useEffect(() => {
-    if (effectiveActiveGoalId && !initialRevealRef.current) {
+    if (effectiveActiveGoalId && effectiveActiveGoalId !== prevActiveGoalIdRef.current) {
+      console.log('[SSE] 🎯 Active goal changed, revealing:', effectiveActiveGoalId)
       revealActiveGoal()
-      initialRevealRef.current = true
     }
+    prevActiveGoalIdRef.current = effectiveActiveGoalId
   }, [effectiveActiveGoalId, revealActiveGoal])
 
 
