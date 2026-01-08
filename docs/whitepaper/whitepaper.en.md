@@ -218,12 +218,10 @@ The content is extensible and versioned; source references are documented, and c
 
 Bologna/EHEA sets the framework for **outcomes, transparency, recognition, and quality** in higher education. SkillPilot can support these goals, but it does not replace institutional decisions.
 
-| Bologna/EHEA building block | SkillPilot contribution | Limit / prerequisite |
-| --------------------------- | ----------------------- | -------------------- |
-| Learning outcomes / competencies | Make outcomes navigable as a skill graph; progress visible. | Clean modeling, source references, versioning. |
-| Credits/workload (ECTS logic) | Support paths/prereqs and workload transparency. | **No credit awarding**; rules remain institutional. |
-| Recognition/mobility | Evidence + signed exports as preparation/support. | Recognition remains a formal process. |
-| Quality assurance | Signals about hurdles/paths for curriculum development. | QA processes + transparent AI rules required. |
+- **Learning outcomes / competencies:** Contribution: Make outcomes navigable as a skill graph; progress visible. Limit/prerequisite: Clean modeling, source references, versioning.
+- **Credits/workload (ECTS logic):** Contribution: Support paths/prereqs and workload transparency. Limit/prerequisite: **No credit awarding**; rules remain institutional.
+- **Recognition/mobility:** Contribution: Evidence + signed exports as preparation/support. Limit/prerequisite: Recognition remains a formal process.
+- **Quality assurance:** Contribution: Signals about hurdles/paths for curriculum development. Limit/prerequisite: QA processes + transparent AI rules required.
 
 ---
 

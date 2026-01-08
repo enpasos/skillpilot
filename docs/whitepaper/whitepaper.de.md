@@ -184,7 +184,7 @@ Damit Lernstände **portabel** und **prüfbar** bleiben, nutzt SkillPilot ein **
 Lernende können Profil + Fortschritt exportieren.  
 Der Server **signiert** diese Exporte kryptografisch, sodass Offline-Manipulation erkennbar ist.
 
-### 7.2 Data Provenance beim Import
+### 7.2 Herkunftsnachweis beim Import
 
 Beim Import (z.B. Wechsel, Backup) kann die komplette **Herkunftskette** mitgeführt werden. So wird sichtbar, ob ein Stand weitergeführt oder von außen übernommen wurde.
 
@@ -218,12 +218,10 @@ Die Inhalte sind erweiterbar und versioniert; Quellenbezüge sind dokumentiert, 
 
 Bologna/EHEA setzt im Hochschulraum den Rahmen für **Outcomes, Transparenz, Anerkennung und Qualität**. SkillPilot kann diese Ziele unterstützen – ersetzt aber keine institutionellen Entscheidungen.
 
-| Bologna/EHEA-Baustein           | Beitrag von SkillPilot                                            | Grenze / Voraussetzung                                  |
-| ------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------- |
-| Learning Outcomes / Kompetenzen | Outcomes als Skill-Graph navigierbar machen; Fortschritt sichtbar. | Saubere Modellierung, Quellenbezug, Versionierung.      |
-| Credits/Workload (ECTS-Logik)   | Pfade/Prereqs und Workload-Transparenz unterstützen.               | **Keine Credit-Vergabe**; Regeln bleiben institutionell. |
-| Anerkennung/Mobilität           | Evidenz + signierte Exporte als Vorbereitung/Unterstützung.        | Anerkennung bleibt formaler Prozess.                    |
-| Qualitätssicherung              | Signale über Hürden/Pfade für Lehrentwicklung.                     | QA-Prozesse + transparente KI-Regeln nötig.             |
+- **Learning Outcomes / Kompetenzen:** Beitrag: Outcomes als Skill-Graph navigierbar machen; Fortschritt sichtbar. Grenze/Voraussetzung: Saubere Modellierung, Quellenbezug, Versionierung.
+- **Credits/Workload (ECTS-Logik):** Beitrag: Pfade/Prereqs und Workload-Transparenz unterstützen. Grenze/Voraussetzung: **Keine Credit-Vergabe**; Regeln bleiben institutionell.
+- **Anerkennung/Mobilität:** Beitrag: Evidenz + signierte Exporte als Vorbereitung/Unterstützung. Grenze/Voraussetzung: Anerkennung bleibt formaler Prozess.
+- **Qualitätssicherung:** Beitrag: Signale über Hürden/Pfade für Lehrentwicklung. Grenze/Voraussetzung: QA-Prozesse + transparente KI-Regeln nötig.
 
 ---
 
