@@ -641,7 +641,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         const blob = new Blob([JSON.stringify(exportPayload, null, 2)], { type: 'application/json' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
-        link.download = `learner_data_${skillpilotId}.json`;
+        const timestamp = new Date().toISOString().slice(0, 16).replace('T', '_').replace(':', '');
+        link.download = `learner_data_${skillpilotId}_${timestamp}.json`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
