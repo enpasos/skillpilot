@@ -143,7 +143,7 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
         return Object.entries(weeks).map(([key, count]) => ({ key, count }))
     }
 
-    const weeklyData = getWeeklyVelocity()
+    const weeklyData = getWeeklyVelocity().sort((a, b) => a.key.localeCompare(b.key))
     const maxVelocity = Math.max(...weeklyData.map(w => w.count), 1)
 
     const recentAchievements = history.slice(0, 5).map(h => {
@@ -189,7 +189,7 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
                         <div>
                             <div className="flex items-end justify-between h-24 gap-1 mb-2">
                                 {weeklyData.map((w) => (
-                                    <div key={w.key} className="flex-1 flex flex-col justify-end items-center group">
+                                    <div key={w.key} className="flex-1 flex flex-col justify-end items-center group h-full">
                                         <div
                                             className="w-full bg-sky-500/20 dark:bg-sky-400/30 rounded-t-sm group-hover:bg-sky-500/40 transition-all relative"
                                             style={{ height: `${(w.count / maxVelocity) * 100}%`, minHeight: w.count > 0 ? '4px' : '0' }}
