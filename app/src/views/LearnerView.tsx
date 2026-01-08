@@ -796,7 +796,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         <div className="p-4 border-b border-border-color flex items-center justify-between shrink-0">
           <div className="flex-1 min-w-0 mr-2">
             <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate">{t.learner.myGoals}</h2>
-            <div className="text-xs flex items-center gap-2 mt-1 truncate">
+            <div className="text-xs flex items-center gap-2 mt-1">
               <ProgressPopover skillpilotId={skillpilotId} goalIndexAll={goalIndexAll}>
                 <button
                   className="flex items-center gap-1 font-bold text-emerald-500 hover:text-emerald-400 transition-colors"
