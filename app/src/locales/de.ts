@@ -79,7 +79,14 @@ export const de = {
         of: "von",
         includesDataFrom: "Enthält Daten von",
         nextSteps: "Als nächste Lernziele stehen dir offen:",
-        chooseNext: "Welches möchtest du als Nächstes angehen?"
+        chooseNext: "Welches möchtest du als Nächstes angehen?",
+        velocity: {
+            title: "Lerngeschwindigkeit",
+            chartLabel: "Gemeisterte Ziele / Woche (letzte 8 Wochen)",
+            recent: "Letzte Erfolge",
+            loading: "Lade Historie...",
+            none: "Noch keine Ziele gemeistert. Bleib dran!"
+        }
     },
     trainer: {
         dashboard: "Trainer Dashboard",

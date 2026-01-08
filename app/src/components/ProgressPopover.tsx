@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Check, Activity, X } from 'lucide-react'
 import type { UiGoal } from '../goalTypes'
+import { useTranslation } from '../hooks/useTranslation'
 
 interface MasteryHistoryEntry {
     goalId: string
@@ -19,6 +20,7 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
     children,
     goalIndexAll
 }) => {
+    const t = useTranslation()
     const [isOpen, setIsOpen] = useState(false)
     const [history, setHistory] = useState<MasteryHistoryEntry[]>([])
     const [loading, setLoading] = useState(false)
@@ -58,21 +60,34 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
 
     // --- Statistics Logic ---
 
+    const getStartOfWeekKey = (date: Date) => {
+        const d = new Date(date);
+        const day = d.getDay();
+        const diff = d.getDate() - day + (day === 0 ? -6 : 1); // adjust to Monday
+        d.setDate(diff);
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const dayOfMonth = String(d.getDate()).padStart(2, '0');
+        return `${year}-${month}-${dayOfMonth}`;
+    }
+
     // 1. Weekly Velocity (Last 8 weeks)
     const getWeeklyVelocity = () => {
         const weeks: Record<string, number> = {}
         const now = new Date()
+
         // Initialize last 8 weeks with 0
         for (let i = 7; i >= 0; i--) {
             const d = new Date(now)
             d.setDate(d.getDate() - (i * 7))
-            const weekKey = `${d.getFullYear()}-W${getWeekNumber(d)}`
+            const weekKey = getStartOfWeekKey(d)
             weeks[weekKey] = 0
         }
 
         history.forEach(entry => {
             const d = new Date(entry.timestamp)
-            const weekKey = `${d.getFullYear()}-W${getWeekNumber(d)}`
+            const weekKey = getStartOfWeekKey(d)
+            // Only count if it falls within our tracked weeks window
             if (weeks[weekKey] !== undefined) {
                 weeks[weekKey]++
             }
@@ -81,14 +96,8 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
         return Object.entries(weeks).map(([key, count]) => ({ key, count }))
     }
 
-    const getWeekNumber = (d: Date) => {
-        const onejan = new Date(d.getFullYear(), 0, 1)
-        const millisecsInDay = 86400000
-        return Math.ceil((((d.getTime() - onejan.getTime()) / millisecsInDay) + onejan.getDay() + 1) / 7)
-    }
-
     const weeklyData = getWeeklyVelocity()
-    const maxVelocity = Math.max(...weeklyData.map(w => w.count), 1) // Avoid div by zero
+    const maxVelocity = Math.max(...weeklyData.map(w => w.count), 1)
 
     // 2. Recent Achievements (Last 5)
     const recentAchievements = history.slice(0, 5).map(h => {
@@ -110,7 +119,7 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
                     <div className="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
                         <h3 className="font-semibold text-slate-800 dark:text-slate-100 flex items-center gap-2">
                             <Activity size={18} className="text-skillpilot-primary" />
-                            Learning Velocity
+                            {t.learner?.velocity?.title || "Learning Velocity"}
                         </h3>
                         <button onClick={() => setIsOpen(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
                             <X size={16} />
@@ -136,18 +145,18 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
                                     </div>
                                 ))}
                             </div>
-                            <p className="text-center text-xs text-slate-400">Goals Mastered / Week (Last 8 Weeks)</p>
+                            <p className="text-center text-xs text-slate-400">{t.learner?.velocity?.chartLabel || "Goals / Week"}</p>
                         </div>
 
                         {/* Recent List */}
                         <div>
-                            <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Recent Achievements</h4>
+                            <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">{t.learner?.velocity?.recent || "Recent"}</h4>
                             {loading ? (
-                                <div className="text-center py-4 text-sm text-slate-400 italic">Loading history...</div>
+                                <div className="text-center py-4 text-sm text-slate-400 italic">{t.learner?.velocity?.loading || "Loading..."}</div>
                             ) : recentAchievements.length > 0 ? (
                                 <div className="space-y-3">
-                                    {recentAchievements.map((item, i) => (
-                                        <div key={i} className="flex items-start gap-3 text-sm">
+                                    {recentAchievements.map((item, idx) => (
+                                        <div key={idx} className="flex items-start gap-3 text-sm">
                                             <div className="mt-0.5 text-green-500 bg-green-100 dark:bg-green-900/30 p-1 rounded-full">
                                                 <Check size={12} strokeWidth={3} />
                                             </div>
@@ -161,7 +170,7 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
                                     ))}
                                 </div>
                             ) : (
-                                <div className="text-center py-4 text-sm text-slate-400 italic">No mastered goals yet. Keep going!</div>
+                                <div className="text-center py-4 text-sm text-slate-400 italic">{t.learner?.velocity?.none || "No goals yet"}</div>
                             )}
                         </div>
                     </div>
