@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { Check, Activity, X } from 'lucide-react'
 import type { UiGoal } from '../goalTypes'
 import { useTranslation } from '../hooks/useTranslation'
@@ -20,21 +21,53 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
     children,
     goalIndexAll
 }) => {
-    const t = useTranslation()
+    // Explicitly casting to any to bypass potential TS issues with the hook signature during build if not updated
+    const tAny = useTranslation() as any
+    const t = tAny
+
     const [isOpen, setIsOpen] = useState(false)
     const [history, setHistory] = useState<MasteryHistoryEntry[]>([])
     const [loading, setLoading] = useState(false)
-    const popoverRef = useRef<HTMLDivElement>(null)
+
+    // Refs
+    const triggerRef = useRef<HTMLDivElement>(null)
+    const contentRef = useRef<HTMLDivElement>(null)
+
+    // Position
+    const [position, setPosition] = useState({ top: 0, left: 0 })
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
-            if (popoverRef.current && !popoverRef.current.contains(event.target as Node)) {
+            const target = event.target as Node
+            // Close if click is outside BOTH content and trigger
+            const clickInContent = contentRef.current && contentRef.current.contains(target)
+            // Trigger ref contains the children (the button). If we click the button again, the toggle function handles it.
+            // But if we click "outside content", we want to close.
+            // Wait. If click is on trigger, toggleOpen runs. If isOpen is true, setIsOpen(false).
+            // If we ALSO run setIsOpen(false) here, it might conflict or be redundant.
+            // Better: If click is NOT in content AND NOT in trigger, close.
+            const clickInTrigger = triggerRef.current && triggerRef.current.contains(target)
+
+            if (isOpen && !clickInContent && !clickInTrigger) {
                 setIsOpen(false)
             }
         }
+
+        // Handle window resize/scroll to close (simple) or update position
+        function handleScrollResize() {
+            if (isOpen) setIsOpen(false)
+        }
+
         document.addEventListener("mousedown", handleClickOutside)
-        return () => document.removeEventListener("mousedown", handleClickOutside)
-    }, [])
+        window.addEventListener("resize", handleScrollResize)
+        window.addEventListener("scroll", handleScrollResize, true) // capture
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside)
+            window.removeEventListener("resize", handleScrollResize)
+            window.removeEventListener("scroll", handleScrollResize, true)
+        }
+    }, [isOpen])
 
     const fetchHistory = async () => {
         setLoading(true)
@@ -53,9 +86,19 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
 
     const toggleOpen = () => {
         if (!isOpen) {
+            // Calculate position before opening
+            if (triggerRef.current) {
+                const rect = triggerRef.current.getBoundingClientRect()
+                setPosition({
+                    top: rect.bottom + window.scrollY + 8, // 8px gap
+                    left: rect.left + window.scrollX
+                })
+            }
             fetchHistory()
+            setIsOpen(true)
+        } else {
+            setIsOpen(false)
         }
-        setIsOpen(!isOpen)
     }
 
     // --- Statistics Logic ---
@@ -71,7 +114,6 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
         return `${year}-${month}-${dayOfMonth}`;
     }
 
-    // 1. Weekly Velocity (Last 8 weeks)
     const getWeeklyVelocity = () => {
         const weeks: Record<string, number> = {}
         const now = new Date()
@@ -87,7 +129,6 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
         history.forEach(entry => {
             const d = new Date(entry.timestamp)
             const weekKey = getStartOfWeekKey(d)
-            // Only count if it falls within our tracked weeks window
             if (weeks[weekKey] !== undefined) {
                 weeks[weekKey]++
             }
@@ -99,7 +140,6 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
     const weeklyData = getWeeklyVelocity()
     const maxVelocity = Math.max(...weeklyData.map(w => w.count), 1)
 
-    // 2. Recent Achievements (Last 5)
     const recentAchievements = history.slice(0, 5).map(h => {
         const goal = goalIndexAll.get(h.goalId)
         return {
@@ -108,18 +148,30 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
         }
     })
 
+    const velocityT = t.learner?.velocity || {}
+
     return (
-        <div className="relative inline-block" ref={popoverRef}>
-            <div onClick={toggleOpen} className="cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700/50 rounded-lg transition-colors p-1">
+        <>
+            <div ref={triggerRef} onClick={toggleOpen} className="cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700/50 rounded-lg transition-colors p-1 inline-block">
                 {children}
             </div>
 
-            {isOpen && (
-                <div className="absolute top-full left-0 z-50 mt-2 w-80 md:w-96 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            {isOpen && createPortal(
+                <div
+                    ref={contentRef}
+                    className="absolute z-[9999] w-80 md:w-96 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden animate-in fade-in zoom-in-95 duration-200"
+                    style={{
+                        top: position.top,
+                        left: position.left,
+                        // Prevent going off-screen right
+                        transform: (position.left + 384 > window.innerWidth) ? 'translateX(-100%)' : 'none',
+                        marginLeft: (position.left + 384 > window.innerWidth) ? '2rem' : '0'
+                    }}
+                >
                     <div className="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
                         <h3 className="font-semibold text-slate-800 dark:text-slate-100 flex items-center gap-2">
                             <Activity size={18} className="text-skillpilot-primary" />
-                            {t.learner?.velocity?.title || "Learning Velocity"}
+                            {velocityT.title || "Learning Velocity"}
                         </h3>
                         <button onClick={() => setIsOpen(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
                             <X size={16} />
@@ -145,14 +197,14 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
                                     </div>
                                 ))}
                             </div>
-                            <p className="text-center text-xs text-slate-400">{t.learner?.velocity?.chartLabel || "Goals / Week"}</p>
+                            <p className="text-center text-xs text-slate-400">{velocityT.chartLabel || "Goals / Week"}</p>
                         </div>
 
                         {/* Recent List */}
                         <div>
-                            <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">{t.learner?.velocity?.recent || "Recent"}</h4>
+                            <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">{velocityT.recent || "Recent"}</h4>
                             {loading ? (
-                                <div className="text-center py-4 text-sm text-slate-400 italic">{t.learner?.velocity?.loading || "Loading..."}</div>
+                                <div className="text-center py-4 text-sm text-slate-400 italic">{velocityT.loading || "Loading..."}</div>
                             ) : recentAchievements.length > 0 ? (
                                 <div className="space-y-3">
                                     {recentAchievements.map((item, idx) => (
@@ -170,12 +222,13 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
                                     ))}
                                 </div>
                             ) : (
-                                <div className="text-center py-4 text-sm text-slate-400 italic">{t.learner?.velocity?.none || "No goals yet"}</div>
+                                <div className="text-center py-4 text-sm text-slate-400 italic">{velocityT.none || "No goals yet"}</div>
                             )}
                         </div>
                     </div>
-                </div>
+                </div>,
+                document.body
             )}
-        </div>
+        </>
     )
 }
