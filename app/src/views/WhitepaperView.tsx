@@ -16,6 +16,18 @@ const resolveLanguage = (routeLang: string | undefined, fallback: 'de' | 'en') =
   return fallback
 }
 
+const convertHtmlImagesToMarkdown = (markdown: string) => (
+  markdown.replace(/<img\s+[^>]*>/gi, (match) => {
+    const srcMatch = match.match(/\bsrc\s*=\s*["']([^"']+)["']/i)
+    if (!srcMatch) return match
+    const altMatch = match.match(/\balt\s*=\s*["']([^"']*)["']/i)
+    const widthMatch = match.match(/\bwidth\s*=\s*["']?(\d+)["']?/i)
+    const altText = altMatch ? altMatch[1] : ''
+    const title = widthMatch ? ` \"width=${widthMatch[1]}\"` : ''
+    return `![${altText}](${srcMatch[1]}${title})`
+  })
+)
+
 export const WhitepaperView: React.FC = () => {
   const { language } = useLanguage()
   const { lang } = useParams()
@@ -41,7 +53,7 @@ export const WhitepaperView: React.FC = () => {
       })
       .then((text) => {
         if (!isActive) return
-        setContent(text)
+        setContent(convertHtmlImagesToMarkdown(text))
         setLoadState('ready')
       })
       .catch(() => {

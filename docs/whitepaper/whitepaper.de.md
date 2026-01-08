@@ -117,9 +117,7 @@ Der Graph dient als **Fokus-Filter**: Aus der Gesamtmenge werden nur die Inhalte
 
 Learning Velocity zeigt, wie viele **atomare Ziele** pro Woche neu als gemeistert gelten – als einfacher Rhythmus- und Kontinuitätsindikator.
 
-<div align="center">
-  <img src="velocity.de.png" alt="Lerngeschwindigkeit im Überblick" width="400" />
-</div>
+<img src="velocity.de.png" alt="Lerngeschwindigkeit im Überblick" width="400" />
 
 --- 
 
@@ -129,9 +127,7 @@ Nicht jedes Lernziel lernt man gleich: Konzepte brauchen Verständnis und Anwend
 
 Der Skill-Graph modelliert Verständnis und Abhängigkeiten. Für reines Auswendiglernen (Vokabeln, Formeln, Fakten) ist **Spaced Repetition** effizienter.
 
-<div align="center">
-  <img src="memorize.de.png" alt="Hybrider Lernkreislauf" width="400" />
-</div>
+<img src="memorize.de.png" alt="Hybrider Lernkreislauf" width="400" />
 
 SkillPilot integriert dafür eine **Flashcard Drill Engine** (SRS):
 

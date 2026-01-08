@@ -132,9 +132,7 @@ The graph acts as a **focus filter**: from the total set, only the content that 
 
 Learning velocity shows how many **atomic goals** are newly mastered per week - a simple indicator of rhythm and continuity.
 
-<div align="center">
-  <img src="velocity.en.png" alt="Learning velocity overview" width="400" />
-</div>
+<img src="velocity.en.png" alt="Learning velocity overview" width="400" />
 
 ---
 
@@ -144,9 +142,7 @@ Not every learning goal is learned the same way: concepts need understanding and
 
 The skill graph models understanding and dependencies. For pure memorization (vocabulary, formulas, facts), **spaced repetition** is more efficient.
 
-<div align="center">
-  <img src="memorize.en.png" alt="Hybrid learning loop" width="400" />
-</div>
+<img src="memorize.en.png" alt="Hybrid learning loop" width="400" />
 
 SkillPilot integrates a **flashcard drill engine** (SRS):
 
