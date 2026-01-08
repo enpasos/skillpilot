@@ -22,6 +22,7 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
     goalIndexAll
 }) => {
     // Explicitly casting to any to bypass potential TS issues with the hook signature during build if not updated
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const tAny = useTranslation() as any
     const t = tAny
 
@@ -41,11 +42,6 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
             const target = event.target as Node
             // Close if click is outside BOTH content and trigger
             const clickInContent = contentRef.current && contentRef.current.contains(target)
-            // Trigger ref contains the children (the button). If we click the button again, the toggle function handles it.
-            // But if we click "outside content", we want to close.
-            // Wait. If click is on trigger, toggleOpen runs. If isOpen is true, setIsOpen(false).
-            // If we ALSO run setIsOpen(false) here, it might conflict or be redundant.
-            // Better: If click is NOT in content AND NOT in trigger, close.
             const clickInTrigger = triggerRef.current && triggerRef.current.contains(target)
 
             if (isOpen && !clickInContent && !clickInTrigger) {
@@ -126,13 +122,23 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
             weeks[weekKey] = 0
         }
 
+        // Debug
+        console.log('[Velocity] Initialized Week Keys:', Object.keys(weeks))
+
         history.forEach(entry => {
             const d = new Date(entry.timestamp)
             const weekKey = getStartOfWeekKey(d)
+
+            console.log('[Velocity] Entry:', entry.timestamp, '-> Key:', weekKey)
+
             if (weeks[weekKey] !== undefined) {
                 weeks[weekKey]++
+            } else {
+                console.warn('[Velocity] Key not in window:', weekKey)
             }
         })
+
+        console.log('[Velocity] Final Counts:', weeks)
 
         return Object.entries(weeks).map(([key, count]) => ({ key, count }))
     }
@@ -170,7 +176,7 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
                 >
                     <div className="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
                         <h3 className="font-semibold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-                            <Activity size={18} className="text-skillpilot-primary" />
+                            <Activity size={18} className="text-sky-600 dark:text-sky-400" />
                             {velocityT.title || "Learning Velocity"}
                         </h3>
                         <button onClick={() => setIsOpen(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
@@ -185,11 +191,11 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
                                 {weeklyData.map((w) => (
                                     <div key={w.key} className="flex-1 flex flex-col justify-end items-center group">
                                         <div
-                                            className="w-full bg-skillpilot-primary/20 dark:bg-skillpilot-primary/30 rounded-t-sm group-hover:bg-skillpilot-primary/40 transition-all relative"
+                                            className="w-full bg-sky-500/20 dark:bg-sky-400/30 rounded-t-sm group-hover:bg-sky-500/40 transition-all relative"
                                             style={{ height: `${(w.count / maxVelocity) * 100}%`, minHeight: w.count > 0 ? '4px' : '0' }}
                                         >
                                             {w.count > 0 && (
-                                                <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold text-skillpilot-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                                                <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold text-sky-600 dark:text-sky-400 opacity-0 group-hover:opacity-100 transition-opacity">
                                                     {w.count}
                                                 </div>
                                             )}
