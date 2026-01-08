@@ -1,23 +1,35 @@
 # SkillPilot Whitepaper (EN)
 
-**Version:** 1.0.6
-**Date:** December 2025  
+**Version:** 1.0.7
+**Date:** January 2026
 **Project:** SkillPilot
 
 ---
 
 ## Summary
 
-SkillPilot models curricula as a **skill graph**. Learners, teachers, and AI agents use this as a machine-readable map. This allows the learner to safely navigate from their current **skill state** to their **skill goals**. An AI agent guides them through **personalized curricula**. To do this, the system records learning achievements on atomic skill goals and derives the **mastery level** for higher-level topics from them. On this basis, the path via the **next attainable skill goals** leads systematically to individual educational objectives.
+SkillPilot connects to **existing curricula** and uses them as the **source of truth** (e.g., state curricula, module handbooks, standards like CEFR). SkillPilot does not replace these standards; it translates them into a machine-readable **skill graph**. Learners, teachers, and an AI tutor use this as a map. This allows the learner to move safely from their current **skill state** to their **skill goals**. The AI tutor guides the dialog and relies on the **exact backend logic** for learning status, rules, and next steps.
+
+To achieve this, the system records learning achievements on atomic skill goals and derives the **mastery level** for higher-level topics. On this basis, the path via the **next attainable skill goals** leads systematically to individual educational objectives.
+
 
 
 ![SkillPilot Cartoon](../comic1/SkillPilot_Comic.en.jpg)
 
 ---
 
-## 1. The Challenge: Individual Skill Navigation
+## 1. The Challenge: Individual Skill Navigation Does Not Scale
 
-Traditional education is based on curricula that are issued by the state or defined as part of **accreditation processes**. For teachers or professors, however, it is an immense **bookkeeping** challenge to record in a fine-grained way where each individual pupil or student stands in the skill landscape and how they are moving through it. This becomes particularly evident in introductory lectures with more than a thousand students. SkillPilot aims to close this “tool gap”.
+Education follows curricula that are defined by the state or through **accreditation**. In practice, there is a gap between curriculum and learning reality:
+
+* Learners do not start at the same point (prior knowledge, pace, gaps).
+* Teachers still have to guide **many people in parallel**, often in large cohorts.
+* Learning goals usually exist **as text**, but not as a **navigable structure** with dependencies and sensible next steps.
+
+This leads to overload for some, boredom for others, and high effort to track learning states and next steps.
+
+SkillPilot closes this **tool gap**: outcome-oriented navigation in the curriculum without turning teachers into "bookkeepers." SkillPilot builds on the **existing curriculum** - it does not create new standards, it makes existing standards operational and navigable.
+
 
 ---
 
@@ -29,112 +41,207 @@ As of the end of 2025, AIs are thus up to many of the subject-matter and languag
 
 To ensure the algorithmic **precision** needed for **SkillPilot** when navigating learning objectives, a further trend works in our favor: the coupling of language AIs with classical software. Standards are emerging that allow AIs like ChatGPT to call the interfaces (APIs) of traditional programs in a targeted way.
 
-From this, the approach for **SkillPilot** almost suggests itself: it is created as a hybrid application. A classical, exact piece of software takes over the precise “bookkeeping” and navigation of skill goals in the background. Leading language AIs are instructed (as SkillPilot GPT) to act as empathetic trainers in conversation with learners, but to rely on the exact logic of the software in the background for learning progress.
+From this, the approach for **SkillPilot** almost suggests itself: it is created as a hybrid application. A classical, exact piece of software takes over the precise "bookkeeping" and navigation of skill goals in the background. Leading language AIs are instructed (as SkillPilot GPT) to act as empathetic trainers in conversation with learners, but to rely on the exact logic of the software in the background for learning progress.
 
 ---
 
-## 3. The Learning Agent: An Agent in Training
+## 3. The AI Tutor: An Agent "In Training"
 
-We do not view the SkillPilot AI Agent as a finished software product, but as an **apprentice**. It is currently learning its job as a trainer. We are currently working on teaching it four essential skills:
+The SkillPilot AI tutor is not a finished product but a **trainer in training**. Four abilities are central:
 
 ![SkillPilot AI Agent In Training](../comic2/SkillPilot_Agent_In_Training.en.jpg)
 
-1.  **The Right Tone (Chat Persona):** A good trainer doesn't rattle off data. It must learn to speak the learner's language, motivate, and communicate at eye level.
-2.  **The Wire to the Base (Backend Interaction):** The agent must not hallucinate who it is talking to. It needs to sync perfectly with "Mission Control". This is a two-way street: the backend communication must also work seamlessly to support the AI.
-3.  **Navigating the Jungle (Curriculum):** Curricula are complex. The agent learns to use filters (e.g., "Math Advanced Course") to show a clear path. Simultaneously, we need to adjust the curriculum models to meet the agent's needs.
-4.  **The Pedagogical Spark (Didactics):** The supreme discipline. The agent should not give away the answer, but guide. It learns to ask smart counter-questions so that the learner has an "Aha!" moment themselves.
+1. **Tone (Chat Persona)**  
+   Motivate, explain clearly, meet learners at eye level.
+
+2. **Mission Control (Backend Interaction)**  
+   Learning state, rules, and next steps are **not guessed** but pulled from the backend.
+
+3. **Curriculum Navigation**  
+   Complex curricula are reduced to meaningful paths via filters (e.g., track, level). The curriculum remains the reference; only the **machine-readable mapping** is improved (granularity, references, dependencies).
+
+4. **Didactics**  
+   Do not spoon-feed, but guide: good questions, make errors visible, foster transfer - until the "aha" moment.
+
+**Quality principle:** SkillPilot is primarily **formative** (feedback/practice/orientation). For **high-stakes** (grades, recognition), institutional rules and possibly human-in-the-loop are required.
+
+---
+
 
 ---
 
 ## 4. The Technology: The Skill Graph
 
-At the heart of SkillPilot lies the departure from linear lists towards a connected graph.
+SkillPilot replaces linear lists with a connected graph.
 
 ![Example visualization of the skill graph](graph_example.en.png)
 
-* **The Map (Nodes & Connections):** Learning objectives are nodes in a network. Connections define dependencies (“You must be able to do A before you learn B”) or hierarchies (“Topic area X includes skills Y and Z”).
-* **The Frontier (Learning Boundary):** The system dynamically calculates the so-called “frontier” for each learner. This is the set of all skills for which the learner is *right now* ready—i.e. skills whose prerequisites they already fulfill but which they themselves do not yet master.
+### 4.1 Plugging into Existing Curricula (Raw Input & Traceability)
 
-This prevents overload and ensures that the AI tutor does not make arbitrary jumps, but instead operates pedagogically sensibly within the next zone of development (zone of proximal development).
+SkillPilot does not "invent" curricula: curricula, module handbooks, or standards serve as **raw input** and are translated into a skill graph.
 
-While digital media are often seen as sources of distraction, SkillPilot uses the skill graph as a tool for strict focus. From the complexity of the entire curriculum, the system filters out precisely those contents that lie at the current boundary of knowledge—based on the chosen educational goal and individual progress. Instead of getting lost in the breadth of possibilities, the learner always sees only the next, achievable step.
+This is about:
 
-**The Visible Success (Mastery):**
-For the learner, SkillPilot translates this complex graph structure into a clear, motivating progress display.
+* **Operationalization:** learning outcomes are broken down into atomic skill goals (without changing the standard).
+* **Traceability:** each skill remains traceable to source/section/version.
+* **Navigability:** prerequisites and hierarchies are modeled explicitly so paths are plannable (didactic prereqs possibly as **overlays**).
+* **Governance:** changes currently run via GitHub (Issues/PRs), versioning via GitHub history (see section 10).
+
+### 4.2 Map: Nodes & Edges
+
+* **Nodes:** atomic skills ("can explain/apply X") and clusters (topics/modules).
+* **Edges:**
+  * **Prerequisites:** "A before B"
+  * **Contains/Part-of:** "X includes Y and Z"
+
+### 4.3 Frontier: Next Reachable Steps
+
+SkillPilot computes the **frontier**: skills whose prerequisites are met but not yet mastered.  
+This avoids jumps and keeps learning in the zone of sensible next steps.
+
+### 4.4 Focus Instead of Distraction
+
+The graph acts as a **focus filter**: from the total set, only the content that fits the goal and current state is shown - the **next feasible step** instead of "everything at once".
+
+### 4.5 Mastery: Progress as an Evidence Model
 
 ![Learning Success in Personalized Curriculum](mastery.en.png)
 
-The fill levels of the bars ("Mastery") are not a manual logbook. They are the automatic result of dialogues with the AI tutor. As soon as the agent verifies in the conversation that a learning objective has been understood, it reports this back to the graph, and the progress becomes visible in real time.
+**Mastery** is not a logbook but a derived status from learning interactions. For interoperability, a simple evidence model helps:
+
+* **Formative:** tutor dialogs, in-chat tasks, quick checks.
+* **Optional stronger:** quizzes, task series, artifacts (solution steps/code/short text), oral checks.
+* **Optional review:** skills can later require a re-check.
+
+> SkillPilot makes progress visible - the institution decides which evidence has which consequences.
+
+### 4.6 Learning Velocity
+
+Learning velocity shows how many **atomic goals** are newly mastered per week - a simple indicator of rhythm and continuity.
+
+<p align="center">
+  <img src="velocity.en.png" alt="Learning velocity overview" width="400" />
+</p>
 
 ---
 
-## 5. The Hybrid Loop: Integrating Memorization
+## 5. The Hybrid Learning Loop: Understanding + Memorizing + Practice
 
-While the Skill Graph excels at modeling understanding and concepts, pure rote memorization (e.g., vocabulary, formulas) requires a different approach.
+Not every learning goal is learned the same way: concepts need understanding and application, facts need repetition - and many skills need **active doing** (e.g., programming, calculating, writing).
 
-![Hybrid Learning Loop](memorize.en.png)
+The skill graph models understanding and dependencies. For pure memorization (vocabulary, formulas, facts), **spaced repetition** is more efficient.
 
-SkillPilot integrates a **Flashcard Drill Engine** based on **Spaced Repetition (SRS)**. This creates a hybrid learning cycle:
+<p align="center">
+  <img src="memorize.en.png" alt="Hybrid learning loop" width="400" />
+</p>
 
-*   **The Competence Loop (Strategic):** The Skill Graph defines *WHAT* to learn (e.g., "Top 400 Vocabulary").
-*   **The Memorization Loop (Tactical):** The Drill Engine manages *HOW* to learn it efficiently. Algorithms like SuperMemo-2 optimize review intervals to minimize forgetting.
+SkillPilot integrates a **flashcard drill engine** (SRS):
 
-This allows the AI Agent to act as a "Coach", sending the learner to the "Gym" (Drill) for focused training and welcoming them back to the "Arena" (Chat) to apply the new knowledge in context.
+* **Competence loop:** the skill graph defines *what* comes next.
+* **Memorization loop:** the drill engine optimizes *how* to repeat (intervals, prioritization; e.g., SuperMemo-2).
+
+In addition, other learning modes are needed for "doing" skills: the tutor should send learners into suitable **practice formats** (e.g., problem sets, programming tasks, writing/speaking exercises) and then guide them back in chat for evaluation, feedback, and transfer.
 
 ---
+## 6. Data Approach: Security & Privacy by Design
 
-## 6. The Data Approach: Security & Privacy
-
-A central pillar of SkillPilot is “privacy by design” through strict separation of data.
+A central pillar of SkillPilot is **data separation**.
 
 ![Schematic representation of data separation](architecture.en.png)
 
-The classical algorithmic component—the **SkillPilot server**—knows the learner solely as a pseudonym (`skillpilotId`). Only technically necessary metadata are stored on this server: the learning progress achieved in the graph.
+### 6.1 Pseudonym Instead of Identity
 
-The actual dialog content is decoupled from the server. What information the learner discloses to the language AI in the conversation is their own responsibility. The only bridge to the real world is the teacher. The mapping table (“Who is which pseudonym?”) is stored exclusively locally on the teacher’s computer or in their protected storage, never centrally.
+The **SkillPilot server** knows learners only as a pseudonym (`skillpilotId`).  
+On the server, only technically necessary metadata are stored, e.g., learning progress in the graph.
 
----
+### 6.2 Dialog Content Is Decoupled
 
-## 7. Almost like Blockchain: Chain of Custody
- 
-SkillPilot implements a **Chain of Custody** pattern to make learning achievements tamper-proof and traceable.
- 
-Since the AI Agent (SkillPilot GPT), in the currently implemented pattern, is the only actor evaluating learning success, it authenticates itself against the SkillPilot Backend. Only it has write access for learning achievements.
- 
-Learners can export their data (profile + progress) from the server at any time. These exports are **cryptographically signed** by the server. This ensures that data cannot be manipulated ("optimized") offline.
- 
-The approach becomes particularly powerful when exchanging data: When importing into another account (e.g., changing schools or restoring a backup), the complete **chain of data origin** (Data Provenance) is stored. A teacher can thus view the complete history in a homework assignment based on a template. Was the solution created by the student themselves? Or was a classmate's status imported and continued? The Chain of Custody makes this transparent without preventing the exchange.
- 
----
- 
-## 8. Status Quo: Available Content
- 
-SkillPilot is not a theoretical exercise. The system already comes with extensive curricula that reflect official educational standards:
+The dialog content (tutor conversations) is decoupled from the SkillPilot server, keeping the central data store minimal.
 
-* **Schools (Hesse, Germany, Secondary I & II):**
-    *   Gymnasiale Oberstufe (DE, Hessen, G9, Secondary II)
-    *   Gymnasiale Mittelstufe (DE, Hessen, G9, Secondary I)
-*   **University:**
-    *   **Uni Heidelberg:** Bachelor Biosciences, Master Molecular BioSciences.
-    *   **Uni Mannheim:** Bachelor Business Administration (BWL), Bachelor Law, Master Law.
-    *   **TU Darmstadt:** Bachelor Computer Science.
-    *   **TU Munich:** Bachelor Mathematics, Bachelor Physics, Master Theoretical and Mathematical Physics.
-*   **Languages (CEFR):**
-    *   English (CEFR A1-C2)
-    *   French (CEFR A1-C2)
+**Recommendation for educational institutions:**  
+Clear guidelines on which data should not be shared in tutor chats (sensitive personal data) and how learners are supported safely.
 
-This content serves as a starting point and can be expanded by the community.
+### 6.3 Mapping Inside the Institution (Local)
+
+The mapping "who is which pseudonym?" stays with the institution/teacher and is stored **locally** (e.g., in protected storage) - not centrally.
+
+### 6.4 AI Frontend / Provider Choice (Sovereignty)
+
+The tutor dialog happens in the respective AI frontend (currently: ChatGPT as the reference integration) and is subject to its operational and privacy framework.  
+For contexts with higher sovereignty requirements, alternative AI backends up to local models are planned. They must reliably meet the required properties (tool use, stability, structure, didactics).
 
 ---
 
-## 9. The Open Approach: Business Model & Invitation
+## 7. Chain of Custody: Integrity & Traceability
 
-To ensure broad acceptance and sustainable further development, SkillPilot is released as **open source software under the Apache-2.0 license**. This is a deliberate invitation to the traditional players in the education system.
+To keep learning states **portable** and **verifiable**, SkillPilot uses a **chain-of-custody** pattern.
 
-The goal is to bring established stakeholders on board rather than displace them. Publishers of educational materials, teachers, professors, and educational institutions retain their sovereignty. They can modernize and make their proven content and curricula accessible via the SkillPilot technology without losing control to a closed platform.
+* Tutor instances authenticate to the backend.
+* Write access for progress updates is granted only to **authorized actors** (current pattern: the tutor as the writing actor).
+
+### 7.1 Signed Exports
+
+Learners can export profile + progress.  
+The server **cryptographically signs** these exports so offline manipulation is detectable.
+
+### 7.2 Data Provenance on Import
+
+On import (e.g., transfer, backup), the full **provenance chain** can be carried along. This makes it visible whether a state was continued or taken from elsewhere.
+
+**Important:** Chain of custody protects integrity and provenance - it is a **transparency tool**, not a complete fraud-prevention system.
+
+---
+
+## 8. Status Quo: Available Content (Examples)
+
+SkillPilot is not just a concept: it already contains curricula/standards as starting points that reflect **official requirements**.
+
+### Schools (Hesse, Germany, Secondary I & II)
+* Gymnasiale Oberstufe (DE, Hessen, G9, Secondary II)
+* Gymnasiale Mittelstufe (DE, Hessen, G9, Secondary I)
+
+### Higher Education (Bologna-relevant)
+* Uni Heidelberg: Bachelor Biosciences, Master Molecular BioSciences
+* Uni Mannheim: Bachelor Business Administration (BWL), Bachelor Law, Master Law
+* TU Darmstadt: Bachelor Computer Science
+* TU Munich: Bachelor Mathematics, Bachelor Physics, Master Theoretical and Mathematical Physics
+
+### Languages (CEFR A1-C2)
+* English (A1-C2)
+* French (A1-C2)
+
+The content is extensible and versioned; source references are documented, and changes currently flow through GitHub (Issues/PRs).
+
+---
+
+## 9. SkillPilot in the Bologna/EHEA Context (Short Overview)
+
+Bologna/EHEA sets the framework for **outcomes, transparency, recognition, and quality** in higher education. SkillPilot can support these goals, but it does not replace institutional decisions.
+
+| Bologna/EHEA building block | SkillPilot contribution | Limit / prerequisite |
+| --------------------------- | ----------------------- | -------------------- |
+| Learning outcomes / competencies | Make outcomes navigable as a skill graph; progress visible. | Clean modeling, source references, versioning. |
+| Credits/workload (ECTS logic) | Support paths/prereqs and workload transparency. | **No credit awarding**; rules remain institutional. |
+| Recognition/mobility | Evidence + signed exports as preparation/support. | Recognition remains a formal process. |
+| Quality assurance | Signals about hurdles/paths for curriculum development. | QA processes + transparent AI rules required. |
+
+---
+
+## 10. Open Approach: Open Source, Governance & Invitation
+
+SkillPilot is released as **open source** under the **Apache-2.0 license** - an invitation to include established stakeholders rather than displace them:
+
+* Institutions retain **sovereignty** over curricula and content.
+* Coupling content to skill goals is possible in the future.
+* Open interfaces enable contributions and integration.
+
+**Governance (currently via GitHub):**
+* Discussion/feedback runs through **GitHub Issues**.
+* Changes to the curriculum/graph run through **pull requests** (review on GitHub).
+* **Versioning** follows GitHub history; **curriculum sources** are referenced.
+* More advanced governance mechanisms (e.g., expert review boards, QA processes, overlays) are possible in the future.
 
 **Initiator:**  
-The legal entity behind SkillPilot is **enpasos GmbH**, a family-owned company that draws on two decades of consulting experience in classical software architectures. The motivation for SkillPilot stems from the personal experience of the family members, who have passed through the traditional German school and university system and know its challenges first-hand. We would be delighted to use this foundation together to better position ourselves for the education of the next generation.
+The legal entity behind SkillPilot is **enpasos GmbH**. We invite partners to develop SkillPilot further together - in content, didactics, and technology.
 
 ---
-
