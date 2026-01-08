@@ -99,9 +99,35 @@ export const WhitepaperView: React.FC = () => {
           <div className="prose dark:prose-invert max-w-none text-text-primary">
             <ReactMarkdown
               components={{
-                img: (props) => (
-                  <img {...props} className="max-w-full h-auto rounded-lg border border-border-color" />
-                ),
+                img: ({ title, ...props }) => {
+                  const widthMatch = typeof title === 'string'
+                    ? title.match(/\b(?:width|max-width|w)=(\d+)\b/i)
+                    : null
+                  const explicitMaxWidth = widthMatch ? `${widthMatch[1]}px` : undefined
+                  const src = typeof props.src === 'string' ? props.src.toLowerCase() : ''
+                  const fallbackMaxWidth = src.includes('velocity')
+                    ? '420px'
+                    : src.includes('memorize')
+                      ? '400px'
+                      : undefined
+                  const maxWidth = explicitMaxWidth ?? fallbackMaxWidth
+                  const className = [
+                    'max-w-full h-auto rounded-lg border border-border-color',
+                    maxWidth ? 'block mx-auto' : '',
+                  ]
+                    .filter(Boolean)
+                    .join(' ')
+                  const style = maxWidth ? { maxWidth, width: '100%' } : undefined
+
+                  return (
+                    <img
+                      {...props}
+                      title={explicitMaxWidth ? undefined : title}
+                      className={className}
+                      style={style}
+                    />
+                  )
+                },
               }}
             >
               {content}
