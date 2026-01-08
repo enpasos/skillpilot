@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (EN)
 
-**Version:** 1.0.7
+**Version:** 1.0.9-draft
 **Date:** January 2026
 **Project:** SkillPilot
 
@@ -8,11 +8,9 @@
 
 ## Summary
 
-SkillPilot connects to **existing curricula** and uses them as the **source of truth** (e.g., state curricula, module handbooks, standards like CEFR). SkillPilot does not replace these standards; it translates them into a machine-readable **skill graph**. Learners, teachers, and an AI tutor use this as a map. This allows the learner to move safely from their current **skill state** to their **skill goals**. The AI tutor guides the dialog and relies on the **exact backend logic** for learning status, rules, and next steps.
+SkillPilot connects to **existing curricula** and uses them as the **source of truth** (e.g., state curricula, module handbooks, standards like CEFR). SkillPilot does not replace these standards; it translates them into a machine-readable **skill graph**. Learners, teachers, and an AI tutor use this as a machine-readable map. This allows the learner to move safely from their current **skill state** to their **skill goals**. The AI tutor leads the dialogue – relying on the **exact backend logic** for learning status, rules, and next steps.
 
 To achieve this, the system records learning achievements on atomic skill goals and derives the **mastery level** for higher-level topics. On this basis, the path via the **next attainable skill goals** leads systematically to individual educational objectives.
-
-
 
 ![SkillPilot Cartoon](../comic1/SkillPilot_Comic.en.jpg)
 
@@ -30,18 +28,36 @@ This leads to overload for some, boredom for others, and high effort to track le
 
 SkillPilot closes this **tool gap**: outcome-oriented navigation in the curriculum without turning teachers into "bookkeepers." SkillPilot builds on the **existing curriculum** - it does not create new standards, it makes existing standards operational and navigable.
 
-
 ---
 
-## 2. The Shift: Leveraging Modern AI Agents
+## 2. The Shift: Why Hybrid AI Systems Are the Right Approach
 
-In the three years since ChatGPT went online in November 2022, the world of language-based AI has evolved rapidly. A sense of this pace can be gained from *Humanity's Last Exam*, the toughest AI benchmark to date. It was introduced in early 2025 to test AIs with thousands of extremely difficult expert questions for genuine logical reasoning rather than mere knowledge. While top models almost completely failed at the beginning of the year (below 10% success), leading AIs were able to increase this performance to around 50% by the end of the year.
+Language models (LLMs) are now capable in many domains – but they are **not deterministic** and can hallucinate. Curriculum navigation and progress tracking, however, require **algorithmic precision**: clear rules, reproducible states, traceable updates.
 
-As of the end of 2025, AIs are thus up to many of the subject-matter and language demands of what is taught in schools and universities. But they have limitations: they are not trained educators and they do not act like algorithmically exact bookkeeping programs that calculate and manage without error.
+A robust pattern is therefore coupling LLMs to classical software via **APIs**:
 
-To ensure the algorithmic **precision** needed for **SkillPilot** when navigating learning objectives, a further trend works in our favor: the coupling of language AIs with classical software. Standards are emerging that allow AIs like ChatGPT to call the interfaces (APIs) of traditional programs in a targeted way.
+> **LLM for Dialogue & Didactics – Backend as "Source of Truth" for Rules, States, and Navigation.**
 
-From this, the approach for **SkillPilot** almost suggests itself: it is created as a hybrid application. A classical, exact piece of software takes over the precise "bookkeeping" and navigation of skill goals in the background. Leading language AIs are instructed (as SkillPilot GPT) to act as empathetic trainers in conversation with learners, but to rely on the exact logic of the software in the background for learning progress.
+SkillPilot follows exactly this approach: The backend handles the exact logic (graph, frontier, updates), while the AI tutor leads the dialogue using backend results as a binding foundation.
+
+### 2.1 AI-Agnostic – With High Standards
+
+The AI is principally interchangeable: The backend encapsulates the skill graph, frontier calculation, progress logic, and exports/signatures; the AI is a tutor frontend using these functions via API. Only AIs are suitable that reliably:
+
+* Execute tool/API calls (parameters, error handling),
+* Work systematically and consistently (e.g., stable skill IDs/updates),
+* Maintain a stable tutor persona (didactics, tone, motivation),
+* Have sufficient subject depth (school to university level),
+* Offer a robust user experience (UI, availability).
+
+### 2.2 Why Currently ChatGPT (Status: January 2026)
+
+SkillPilot starts with **ChatGPT** because it currently meets these requirements in combination: tool integration via Custom GPTs, a mature UI, broad availability, and sufficient tutor depth.  
+ChatGPT is thus the **reference integration**, not the only target platform.
+
+### 2.3 Next Steps: Further AI Backends
+
+Additional AI systems (e.g., Gemini, and later local models) will be connected as soon as they reliably fulfill the required properties.
 
 ---
 
@@ -65,10 +81,7 @@ The SkillPilot AI tutor is not a finished product but a **trainer in training**.
 
 **Quality principle:** SkillPilot is primarily **formative** (feedback/practice/orientation). For **high-stakes** (grades, recognition), institutional rules and possibly human-in-the-loop are required.
 
----
-
-
----
+--- 
 
 ## 4. The Technology: The Skill Graph
 
@@ -89,7 +102,7 @@ This is about:
 
 ### 4.2 Map: Nodes & Edges
 
-* **Nodes:** atomic skills ("can explain/apply X") and clusters (topics/modules).
+* **Nodes:** atomic skills ("can explain/apply X") and atomic clusters (topics/modules).
 * **Edges:**
   * **Prerequisites:** "A before B"
   * **Contains/Part-of:** "X includes Y and Z"
@@ -143,6 +156,7 @@ SkillPilot integrates a **flashcard drill engine** (SRS):
 In addition, other learning modes are needed for "doing" skills: the tutor should send learners into suitable **practice formats** (e.g., problem sets, programming tasks, writing/speaking exercises) and then guide them back in chat for evaluation, feedback, and transfer.
 
 ---
+
 ## 6. Data Approach: Security & Privacy by Design
 
 A central pillar of SkillPilot is **data separation**.
@@ -241,5 +255,3 @@ SkillPilot is released as **open source** under the **Apache-2.0 license** - an 
 
 **Initiator:**  
 The legal entity behind SkillPilot is **enpasos GmbH**. We invite partners to develop SkillPilot further together - in content, didactics, and technology.
-
----

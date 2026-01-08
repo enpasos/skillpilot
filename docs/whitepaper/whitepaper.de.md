@@ -66,9 +66,7 @@ Der SkillPilot KI-Tutor ist kein fertiges Produkt, sondern ein **Trainer in Ausb
 **Qualitätsprinzip:** SkillPilot ist primär **formativ** (Feedback/Üben/Orientierung). Für **High-stakes** (Noten, Anerkennung) braucht es institutionelle Regeln und ggf. Human-in-the-loop.
 
 ---
-
-
----
+ 
 
 ## 4. Die Technologie: Der Skill-Graph
 
@@ -120,7 +118,7 @@ Der Graph dient als **Fokus-Filter**: Aus der Gesamtmenge werden nur die Inhalte
 Learning Velocity zeigt, wie viele **atomare Ziele** pro Woche neu als gemeistert gelten – als einfacher Rhythmus- und Kontinuitätsindikator.
 
 <p align="center">
-  <img src="velocity.de.png" alt="Lerngeschwindigkeit im Überblick" width="400" />
+  <img src="./velocity.de.png" alt="Lerngeschwindigkeit im Überblick" width="400" />
 </p>
 
 --- 
@@ -132,7 +130,7 @@ Nicht jedes Lernziel lernt man gleich: Konzepte brauchen Verständnis und Anwend
 Der Skill-Graph modelliert Verständnis und Abhängigkeiten. Für reines Auswendiglernen (Vokabeln, Formeln, Fakten) ist **Spaced Repetition** effizienter.
 
 <p align="center">
-  <img src="memorize.de.png" alt="Hybrider Lernkreislauf" width="400" />
+  <img src="./memorize.de.png" alt="Hybrider Lernkreislauf" width="400" />
 </p>
 
 SkillPilot integriert dafür eine **Flashcard Drill Engine** (SRS):
