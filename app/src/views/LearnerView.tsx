@@ -59,6 +59,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [modalTitle, setModalTitle] = useState("");
   const [modalType, setModalType] = useState<'info' | 'error' | 'success'>('info');
 
+  // Refresh counter to force CompetenceTree re-render on SSE updates
+  const [refreshCounter, setRefreshCounter] = useState(0);
+
 
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -334,6 +337,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       refreshState(true),
       onRefresh?.()
     ])
+    // Increment counter to force CompetenceTree re-render
+    setRefreshCounter(c => c + 1)
     console.log('[SSE] ✅ Refresh complete')
   }, [refreshState, onRefresh])
 
@@ -825,6 +830,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         </div>
         <div className="flex-1 overflow-y-auto p-2">
           <CompetenceTree
+            key={`competence-tree-${refreshCounter}`}
             rootGoals={visibleRootGoals}
             allGoals={goalIndexAll}
             getMastery={getMastery}

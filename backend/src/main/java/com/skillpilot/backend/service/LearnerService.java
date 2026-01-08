@@ -38,6 +38,7 @@ import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.LearnerDataDTO;
+import com.skillpilot.backend.api.MasteryEntryDTO;
 import com.skillpilot.backend.api.SignedLearnerDataDTO;
 import com.skillpilot.backend.api.StateMachineInfo;
 import org.springframework.beans.factory.annotation.Value;
@@ -97,6 +98,17 @@ public class LearnerService {
         Map<String, Double> result = new HashMap<>();
         for (Mastery m : mastered) {
             result.put(m.getGoalKey(), m.getValue());
+        }
+        return result;
+    }
+
+    @Transactional(readOnly = true)
+    public Map<String, MasteryEntryDTO> getMasteryWithTimestamps(String skillpilotId) {
+        ensureLearnerExists(skillpilotId);
+        List<Mastery> mastered = masteryRepository.findByLearner_SkillpilotId(skillpilotId);
+        Map<String, MasteryEntryDTO> result = new HashMap<>();
+        for (Mastery m : mastered) {
+            result.put(m.getGoalKey(), new MasteryEntryDTO(m.getValue(), m.getUpdatedAt()));
         }
         return result;
     }
@@ -995,7 +1007,7 @@ public class LearnerService {
     @Transactional(readOnly = true)
     public SignedLearnerDataDTO exportLearner(String skillpilotId) {
         Learner learner = getLearner(skillpilotId);
-        Map<String, Double> mastery = getMastery(skillpilotId);
+        Map<String, MasteryEntryDTO> mastery = getMasteryWithTimestamps(skillpilotId);
         List<String> planned = getPlannedGoals(skillpilotId);
         LearnerDataDTO data = new LearnerDataDTO(learner, mastery, planned, learner.getCopySources());
 
@@ -1035,14 +1047,19 @@ public class LearnerService {
             learnerRepository.save(existing);
         }
 
-        // Restore Mastery
+        // Restore Mastery with original timestamps
         if (data.mastery() != null) {
-            for (Map.Entry<String, Double> entry : data.mastery().entrySet()) {
+            for (Map.Entry<String, MasteryEntryDTO> entry : data.mastery().entrySet()) {
                 MasteryId mid = new MasteryId(skillpilotId, entry.getKey());
+                MasteryEntryDTO entryData = entry.getValue();
                 Mastery m = masteryRepository.findById(mid)
-                        .orElse(new Mastery(existing, entry.getKey(), entry.getValue()));
-                m.setValue(entry.getValue());
-                masteryRepository.save(m);
+                        .orElse(new Mastery(existing, entry.getKey(), entryData.value()));
+                m.setValue(entryData.value());
+                masteryRepository.saveAndFlush(m);
+                // Restore original timestamp using native query (bypasses @PreUpdate)
+                if (entryData.updatedAt() != null) {
+                    masteryRepository.updateTimestamp(skillpilotId, entry.getKey(), entryData.updatedAt());
+                }
             }
         }
 

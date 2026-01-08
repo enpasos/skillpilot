@@ -30,7 +30,8 @@ public class Mastery {
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
 
-    public Mastery() {}
+    public Mastery() {
+    }
 
     public Mastery(Learner learner, String goalKey, double value) {
         this.learner = learner;
@@ -71,6 +72,10 @@ public class Mastery {
 
     public void setId(MasteryId id) {
         this.id = id;
+    }
+
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @PrePersist

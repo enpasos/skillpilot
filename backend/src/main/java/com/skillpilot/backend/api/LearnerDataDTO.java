@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.Set;
 
 public record LearnerDataDTO(
-                Learner learner,
-                Map<String, Double> mastery,
-                List<String> plannedGoals,
-                Set<CopySource> copySources) {
+        Learner learner,
+        Map<String, MasteryEntryDTO> mastery,
+        List<String> plannedGoals,
+        Set<CopySource> copySources) {
 }
