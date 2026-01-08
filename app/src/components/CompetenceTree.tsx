@@ -169,10 +169,10 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                   : 'text-red-500'
               }`}
           >
-            {activeGoalId === goal.id ? (
-              <Send size={16} className="text-amber-500" />
-            ) : mastery >= 1 ? (
+            {mastery >= 1 ? (
               <Check size={16} strokeWidth={3} />
+            ) : activeGoalId === goal.id ? (
+              <Send size={16} className="text-amber-500" />
             ) : isFrontier ? (
               // Use Play or Zap for Frontier
               <Play size={16} fill="currentColor" strokeWidth={0} />
