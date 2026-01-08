@@ -1015,6 +1015,20 @@ public class LearnerService {
         return new SignedLearnerDataDTO(data, signature);
     }
 
+    @Transactional(readOnly = true)
+    public List<com.skillpilot.backend.api.MasteryHistoryEntry> getHistory(String skillpilotId) {
+        ensureLearnerExists(skillpilotId);
+        return masteryRepository.findByLearner_SkillpilotId(skillpilotId)
+                .stream()
+                .filter(m -> m.getValue() >= 0.9) // Only mastered goals count for velocity
+                .map(m -> new com.skillpilot.backend.api.MasteryHistoryEntry(
+                        m.getGoalKey(),
+                        m.getUpdatedAt(),
+                        m.getValue()))
+                .sorted((a, b) -> b.timestamp().compareTo(a.timestamp())) // Newest first
+                .toList();
+    }
+
     @Transactional
     public void importLearner(String skillpilotId, SignedLearnerDataDTO signedData) {
         // distinct verification logic

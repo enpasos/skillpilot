@@ -134,4 +134,11 @@ public class LearnerUiController {
             @RequestBody com.skillpilot.backend.api.SignedLearnerDataDTO data) {
         learnerService.importLearner(skillpilotId, data);
     }
+
+    @GetMapping("/{skillpilotId}/history")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public java.util.List<com.skillpilot.backend.api.MasteryHistoryEntry> getHistory(
+            @PathVariable String skillpilotId) {
+        return learnerService.getHistory(skillpilotId);
+    }
 }
