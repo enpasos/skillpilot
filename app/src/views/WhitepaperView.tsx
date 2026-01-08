@@ -23,7 +23,7 @@ const convertHtmlImagesToMarkdown = (markdown: string) => (
     const altMatch = match.match(/\balt\s*=\s*["']([^"']*)["']/i)
     const widthMatch = match.match(/\bwidth\s*=\s*["']?(\d+)["']?/i)
     const altText = altMatch ? altMatch[1] : ''
-    const title = widthMatch ? ` \"width=${widthMatch[1]}\"` : ''
+    const title = widthMatch ? ` "width=${widthMatch[1]}"` : ''
     return `![${altText}](${srcMatch[1]}${title})`
   })
 )
