@@ -1,0 +1,235 @@
+{
+  "examSpecId": "hessen-landesabitur-2026-math",
+  "locale": "de-DE",
+  "subject": "Mathematik",
+  "frameworkRefs": [
+    "KMK-Standards Mathematik",
+    "Hessen Landesabitur 2026 Hinweise (Kap. 19.x)"
+  ],
+
+  "levels": {
+    "GK": {
+      "label": "grundlegendes Niveau (Grundkurs)",
+      "maxBE": 80
+    },
+    "LK": {
+      "label": "erhöhtes Niveau (Leistungskurs)",
+      "maxBE": 100
+    },
+    "LK_SfE": {
+      "label": "Leistungskurs Schulen für Erwachsene",
+      "maxBE": 95,
+      "notes": [
+        "Schwerpunkt in Q1.1–Q1.4 eher auf grundlegendem Niveau."
+      ]
+    }
+  },
+
+  "domains": [
+    {
+      "id": "analysis",
+      "label": "Analysis",
+      "curriculumTopicCodes": ["Q1", "Q1.1", "Q1.2", "Q1.3", "Q1.4"]
+    },
+    {
+      "id": "linalg_geo",
+      "label": "Lineare Algebra / Analytische Geometrie",
+      "curriculumTopicCodes": ["Q2", "Q2.1", "Q2.2", "Q2.3", "Q2.4", "Q2.6"]
+    },
+    {
+      "id": "stoch",
+      "label": "Stochastik",
+      "curriculumTopicCodes": ["Q3", "Q3.1", "Q3.2", "Q3.3", "Q3.4"]
+    }
+  ],
+
+  "calculatorModes": [
+    {
+      "id": "WTR",
+      "label": "wissenschaftlich-technischer Taschenrechner (ohne Grafik, ohne CAS)",
+      "requiredCapabilities": [
+        "Polynomgleichungen bis Grad 3 lösen",
+        "Gleichungen näherungsweise lösen",
+        "LGS bis 3 Unbekannte eindeutig lösbar lösen",
+        "Ableitung an einer Stelle",
+        "bestimmte Integrale",
+        "Regression (Gerade)",
+        "2x2- und 3x3-Matrizen: Produkt, Inverse",
+        "Mittelwert/Standardabweichung",
+        "Binomial- und Normalverteilung inkl. inverse Fragestellung"
+      ]
+    },
+    {
+      "id": "CAS",
+      "label": "CAS-fähiger Taschencomputer oder CAS am PC",
+      "requiredCapabilities": [
+        "entsprechend (mindestens) den WTR-Funktionen, plus symbolische Operationen"
+      ]
+    }
+  ],
+
+  "documentationRules": {
+    "general": [
+      "Wenn Teillösungen vom Rechner übernommen werden: schriftliche Erläuterungen erforderlich.",
+      "Korrekte mathematische Schreibweise; rechnerspezifische Syntax ist unzulässig."
+    ],
+    "referenceDoc": "Physik und Mathematik: Schreibweisen und Dokumentation von Lösungswegen (Hessen)"
+  },
+
+  "allowedAids": {
+    "part1": [
+      "Wörterbuch deutsche Rechtschreibung",
+      "Liste fachspezifischer Operatoren"
+    ],
+    "part2": [
+      "Wörterbuch deutsche Rechtschreibung",
+      "eingeführter WTR oder CAS (festgelegt zu Beginn der Q-Phase)",
+      "Formelsammlung (beigefügt) oder Druckausgabe",
+      "eingeführte gedruckte Formelsammlung Schulbuchverlag (ohne Herleitungen/Erklärungen)",
+      "Liste fachspezifischer Operatoren"
+    ],
+    "notAllowed": [
+      "schulinterne eigene Druckwerke",
+      "mathematische Fachbücher",
+      "mathematische Lexika"
+    ],
+    "languagePenaltyNote": [
+      "Schwerwiegende/gehäufte Verstöße gegen Rechtschreibung/Zeichensetzung: Abzug 1–2 Punkte (OAVO)."
+    ]
+  },
+
+  "contentFocusByLevel": {
+    "GK": {
+      "analysis": ["Q1.1", "Q1.2", "Q1.3", "Q1.4"],
+      "linalg_geo": ["Q2.1", "Q2.2", "Q2.3", "Q2.6"],
+      "stoch": ["Q3.1", "Q3.2", "Q3.3", "Q3.4"],
+      "notes": [
+        "Q2.6: Normalenvektor Ebene mitbehandeln.",
+        "Q2.3/Q2.6: Lagebeziehungen implizieren Winkelberechnung."
+      ]
+    },
+    "LK": {
+      "analysis": ["Q1.1", "Q1.2", "Q1.3", "Q1.4"],
+      "linalg_geo": ["Q2.1", "Q2.2", "Q2.3", "Q2.4"],
+      "stoch": ["Q3.1", "Q3.2", "Q3.3", "Q3.4"],
+      "notes": [
+        "Q1.3: Grenzwerte von Funktionen sind explizit zu thematisieren.",
+        "Q2.3: Lagebeziehungen implizieren Winkelberechnung.",
+        "Q3.3/Q3.4: kumulierte Binomialverteilung und Normalverteilung mit digitalen Werkzeugen inkl. inverse Fragestellung."
+      ]
+    }
+  },
+
+  "examStructure": {
+    "part1": {
+      "id": "A",
+      "label": "Prüfungsteil 1 (hilfsmittelfrei)",
+      "coversDomains": ["analysis", "linalg_geo", "stoch"],
+      "taskUnitBE": 5,
+      "independenceRequired": true,
+      "levels": {
+        "GK": {
+          "toSolve": 5,
+          "offered": {
+            "mandatory": [
+              { "domain": "analysis", "niveau": 1, "count": 1 },
+              { "domain": "linalg_geo", "niveau": 1, "count": 1 },
+              { "domain": "stoch", "niveau": 1, "count": 1 }
+            ],
+            "optional": [
+              { "domain": "analysis", "niveau": 1, "count": 1 },
+              { "domain": "linalg_geo", "niveau": 1, "count": 1 },
+              { "domain": "stoch", "niveau": 1, "count": 1 },
+              { "domain": "analysis", "niveau": 2, "count": 1 },
+              { "domain": "linalg_geo", "niveau": 2, "count": 1 },
+              { "domain": "stoch", "niveau": 2, "count": 1 }
+            ]
+          },
+          "selectionRule": [
+            "Aus den Wahlaufgaben: genau 1 Aufgabe Niveau 1 wählen (beliebiges Sachgebiet).",
+            "Aus den Wahlaufgaben: genau 1 Aufgabe Niveau 2 wählen (beliebiges Sachgebiet).",
+            "In Summe: 5 Aufgaben bearbeiten (4×Niveau1 + 1×Niveau2)."
+          ],
+          "BE": 25
+        },
+        "LK": {
+          "toSolve": 6,
+          "offered": {
+            "mandatory": [
+              { "domain": "analysis", "niveau": 1, "count": 2 },
+              { "domain": "linalg_geo", "niveau": 1, "count": 1 },
+              { "domain": "stoch", "niveau": 1, "count": 1 }
+            ],
+            "optional": [
+              { "domain": "analysis", "niveau": 2, "count": 2 },
+              { "domain": "linalg_geo", "niveau": 2, "count": 2 },
+              { "domain": "stoch", "niveau": 2, "count": 2 }
+            ]
+          },
+          "selectionRule": [
+            "Alle Pflichtaufgaben (4×Niveau1) sind zu bearbeiten.",
+            "Aus den 6 Wahlaufgaben Niveau 2: genau 2 wählen.",
+            "In Summe: 6 Aufgaben bearbeiten (4×Niveau1 + 2×Niveau2)."
+          ],
+          "BE": 30
+        }
+      },
+      "niveauMappingHint": {
+        "niveau1": "typisch AB1–AB2 (Basismethoden, standardisierte Verfahren, kurze Begründungen)",
+        "niveau2": "typisch AB2–AB3 (mehrschrittig, Modellieren/Argumentieren, Reflexion/Interpretation)"
+      }
+    },
+
+    "part2": {
+      "id": "B/C/D",
+      "label": "Prüfungsteil 2 (mit Hilfsmitteln; WTR oder CAS)",
+      "independenceRequired": true,
+      "levels": {
+        "GK": {
+          "toSolveProposals": [
+            { "domain": "analysis", "chooseOneOf": ["B1", "B2"], "BE": 25 },
+            { "domain": "linalg_geo", "proposalId": "C", "mandatory": true, "BE": 15 },
+            { "domain": "stoch", "proposalId": "D", "mandatory": true, "BE": 15 }
+          ],
+          "BE": 55
+        },
+        "LK": {
+          "toSolveProposals": [
+            { "domain": "analysis", "chooseOneOf": ["B1", "B2"], "BE": 30 },
+            { "domain": "linalg_geo", "proposalId": "C", "mandatory": true, "BE": 20 },
+            { "domain": "stoch", "proposalId": "D", "mandatory": true, "BE": 20 }
+          ],
+          "BE": 70
+        },
+        "LK_SfE": {
+          "toSolveProposals": [
+            { "domain": "analysis", "chooseOneOf": ["B1", "B2"], "BE": 25 },
+            { "domain": "linalg_geo", "proposalId": "C", "mandatory": true, "BE": 20 },
+            { "domain": "stoch", "proposalId": "D", "mandatory": true, "BE": 20 }
+          ],
+          "BE": 65
+        }
+      },
+      "notes": [
+        "Zwei Analysis-Vorschläge (B1, B2): Prüfling wählt genau einen.",
+        "C (Linalg/Geo) und D (Stochastik) sind Pflicht."
+      ]
+    }
+  },
+
+  "generationConstraints": {
+    "mustCover": [
+      "Alle drei Sachgebiete insgesamt (spätestens über Teil 1 + Teil 2).",
+      "Die genannten Themenfelder je Niveau (GK/LK) schwerpunktmäßig."
+    ],
+    "mustIncludeSpecialHints": [
+      "Q1.3: Grenzwerte (Funktionen) integrieren.",
+      "Bei Lagebeziehungen: Winkelberechnung einplanen.",
+      "Stochastik: inverse Fragestellungen (Binomial kumuliert, Normalverteilung) mindestens einmal in Teil 2."
+    ],
+    "toolUseInTasksPart2": [
+      "Aufgaben sollen Stellen enthalten, wo WTR/CAS sinnvoll ist (z.B. Ablehnungsbereich, kumulierte/inverse Verteilung, numerische Lösungen),",
+      "aber immer mit Dokumentations-/Interpretationsanteil."
+    ]
+  }
+}
