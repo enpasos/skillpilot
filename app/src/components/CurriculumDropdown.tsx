@@ -92,6 +92,14 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
         return 'OTHER'
     }
 
+    useEffect(() => {
+        if (!currentLandscapeId || landscapes.length === 0) return
+        const selected = landscapes.find((l) => l.curriculumId === currentLandscapeId)
+        if (!selected) return
+        const targetCategory = getCategory(selected)
+        setCategory((prev) => (prev === targetCategory ? prev : targetCategory))
+    }, [currentLandscapeId, landscapes])
+
     if (loading && (!landscapes || landscapes.length === 0)) {
         return <div className="text-text-secondary text-sm">{t.startPage.login.checking}</div>
     }
