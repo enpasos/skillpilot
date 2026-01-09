@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { X } from 'lucide-react'
+import { X, ChevronDown, ChevronRight } from 'lucide-react'
 
 interface LandscapeSummary {
     landscapeId: string
@@ -52,6 +52,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const [config, setConfig] = useState<PersonalCurriculumConfig>(computedInitial)
     const [strategy, setStrategy] = useState<'RANDOM' | 'SEQUENTIAL'>(initialStrategy)
     const [autoPilot, setAutoPilot] = useState<boolean>(initialAutoPilot)
+    const [expanded, setExpanded] = useState<Set<string>>(new Set())
 
     // Update config when initialConfig changes (e.g. loaded from backend)
     useEffect(() => {
@@ -111,8 +112,30 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         })
     }
 
-    // Removed: setFilter function
-    // Removed: toggleExpand function
+    const setFilter = (landscapeId: string, filterId: string) => {
+        const next = {
+            ...config,
+            [landscapeId]: {
+                ...config[landscapeId],
+                selected: true,
+                filterId
+            }
+        }
+        setConfig(next)
+        onConfigChange(next)
+    }
+
+    const toggleExpand = (landscapeId: string) => {
+        setExpanded(prev => {
+            const next = new Set(prev)
+            if (next.has(landscapeId)) {
+                next.delete(landscapeId)
+            } else {
+                next.add(landscapeId)
+            }
+            return next
+        })
+    }
 
     if (!isOpen) return null
 
@@ -124,8 +147,8 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 
     const renderNode = (landscape: LandscapeSummary, isRoot: boolean) => {
         const isSelected = config[landscape.landscapeId]?.selected ?? false
-        // Removed: const currentFilter = config[landscape.landscapeId]?.filterId ?? ''
-        // Removed: const hasFilters = landscape.filters && landscape.filters.length > 0
+        const currentFilter = config[landscape.landscapeId]?.filterId ?? ''
+        const hasFilters = landscape.filters && landscape.filters.length > 0
 
         return (
             <div key={landscape.landscapeId} className="flex flex-col">
@@ -133,13 +156,12 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     className={`flex items-center gap-2 p-2 rounded-md transition-colors ${isSelected ? 'bg-input-bg shadow-sm' : 'hover:bg-input-bg/50'
                         }`}
                 >
-                    {/* Removed expand button as it was primarily for filters */}
-                    {/* <button
+                    <button
                         onClick={() => toggleExpand(landscape.landscapeId)}
                         className={`p-1 rounded hover:bg-gray-200 dark:hover:bg-slate-700 text-text-secondary ${!hasFilters && !isRoot ? 'invisible' : ''}`}
                     >
                         {(expanded.has(landscape.landscapeId) || isRoot) ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
-                    </button> */}
+                    </button>
 
                     <input
                         type="checkbox"
@@ -156,8 +178,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     </span>
                 </div>
 
-                {/* Removed: Render Filters if expanded */}
-                {/* {hasFilters && (expanded.has(landscape.landscapeId) || isRoot) && (
+                {hasFilters && (expanded.has(landscape.landscapeId) || isRoot) && (
                     <div className="ml-11 flex flex-col gap-1 mt-1 mb-2 border-l-2 border-border-color pl-2">
                         {landscape.filters!.map(f => (
                             <label
@@ -170,7 +191,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                     name={`filter-${landscape.landscapeId}`}
                                     checked={currentFilter === f.id}
                                     onChange={() => setFilter(landscape.landscapeId, f.id)}
-                                    disabled={!isSelected}
+                                    // Removed disabled={!isSelected} so selecting a filter auto-selects the subject
                                     className="w-3.5 h-3.5 border-border-color bg-input-bg text-sky-500 focus:ring-sky-500 focus:ring-offset-sidebar-bg"
                                 />
                                 <span className="text-sm">{f.label}</span>
