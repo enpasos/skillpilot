@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (DE)
 
-**Version:** 1.0.7
+**Version:** 1.0.9
 **Datum:** Januar 2026
 **Projekt:** SkillPilot
 
@@ -208,7 +208,7 @@ SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als St
 * Uni Heidelberg: Bachelor Biowissenschaften, Master Molecular BioSciences
 * Uni Mannheim: Bachelor BWL, Bachelor Jura, Master Jura
 * TU Darmstadt: Bachelor Informatik
-* TU München: Bachelor Mathematik, Bachelor Physik, Master Theoretische und Mathematische Physik
+* TU München: Bachelor Informatik, Bachelor Mathematik, Bachelor Physik, Master Quantenwissenschaft und -technologie, Master Theoretische und Mathematische Physik
 
 ### Sprachen (CEFR A1–C2)
 * Englisch (A1–C2)
