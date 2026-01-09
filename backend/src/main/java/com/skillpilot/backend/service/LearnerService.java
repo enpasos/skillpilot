@@ -536,6 +536,11 @@ public class LearnerService {
                                 curriculumId,
                                 full.getTitle() != null ? full.getTitle() : full.getSubject(),
                                 full.getDescription(),
+                                full.getCountry(),
+                                full.getRegion(),
+                                full.getSchoolType(),
+                                full.getSubject(),
+                                full.getLocale(),
                                 full.getFilters()));
             }
         }

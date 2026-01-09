@@ -192,16 +192,36 @@ public class LandscapeService {
                         log.warn("Skipping landscape without id: {}", file);
                         continue;
                     }
-                    loaded.add(landscape);
 
-                    // Map legacy ID from filename
+                    // Map legacy ID from filename & Metadata
                     String filename = file.getFileName().toString();
                     java.util.regex.Matcher matcher = FILENAME_PATTERN.matcher(filename);
                     if (matcher.matches()) {
                         String locale = matcher.group(7);
                         String legacyId = filename.replace("." + locale + ".json", "");
                         byLegacyId.put(legacyId, landscape);
+
+                        // Backfill metadata if missing (Legacy Files)
+                        if (landscape.getCountry() == null)
+                            landscape.setCountry(matcher.group(1));
+                        if (landscape.getRegion() == null)
+                            landscape.setRegion(matcher.group(2));
+                        if (landscape.getLocale() == null)
+                            landscape.setLocale(locale);
+
+                        // Mapping logic from getLandscapeOverviewResponse
+                        String p4 = matcher.group(4);
+                        if (landscape.getSchoolType() == null)
+                            landscape.setSchoolType(p4);
+
+                        String p5 = matcher.group(5);
+                        String p6 = matcher.group(6);
+                        String mappedSubject = p6 != null ? p6 : p5;
+                        if (landscape.getSubject() == null)
+                            landscape.setSubject(mappedSubject);
                     }
+
+                    loaded.add(landscape);
 
                 } catch (com.fasterxml.jackson.databind.exc.MismatchedInputException e) {
                     log.debug("Skipping non-landscape JSON file {}: {}", file, e.getMessage());
@@ -234,101 +254,78 @@ public class LandscapeService {
     }
 
     public LandscapeOverviewResponse getOverview(String lang) {
-        Path dir = Path.of(properties.getDirectory()).toAbsolutePath().normalize();
-        if (!Files.isDirectory(dir)) {
-            return new LandscapeOverviewResponse(Collections.emptyList(), Collections.emptyMap());
-        }
-
-        List<LandscapeSummary> summaries = new ArrayList<>();
-
-        return getLandscapeOverviewResponse(dir, FILENAME_PATTERN, lang);
-    }
-
-    private LandscapeOverviewResponse getLandscapeOverviewResponse(Path dir, java.util.regex.Pattern regex,
-            String lang) {
         List<LandscapeSummary> summaries = new ArrayList<>();
         Map<String, Object> hierarchy = new HashMap<>();
 
-        try {
-            List<Path> files = Files.walk(dir)
-                    .filter(Files::isRegularFile)
-                    .filter(p -> StringUtils.hasText(p.getFileName().toString()))
-                    .filter(p -> p.getFileName().toString().endsWith(".json"))
-                    .sorted()
-                    .collect(Collectors.toList());
+        for (LearningLandscape ll : cachedLandscapes) {
+            String country = ll.getCountry();
+            String region = ll.getRegion();
+            String mappedType = ll.getSchoolType();
+            String mappedSubject = ll.getSubject();
 
-            for (Path file : files) {
-                String filename = file.getFileName().toString();
-                java.util.regex.Matcher matcher = regex.matcher(filename);
-                if (matcher.matches()) {
-                    String country = matcher.group(1);
-                    String region = matcher.group(2);
-                    String type = matcher.group(3);
-                    String p4 = matcher.group(4);
-                    String p5 = matcher.group(5);
-                    String p6 = matcher.group(6);
-                    String locale = matcher.group(7);
+            // Skip if metadata is missing (e.g. if simpler JSONs are added without valid
+            // metadata)
+            if (country == null)
+                country = "Unknown";
+            if (region == null)
+                region = "Unknown";
+            if (mappedType == null)
+                mappedType = "Other";
+            if (mappedSubject == null)
+                mappedSubject = "General";
 
-                    String mappedType = p4;
-                    String mappedLevel = p5;
-                    String mappedSubject = p6 != null ? p6 : p5;
+            String displayTitle = null;
+            String displayDescription = null;
 
-                    String landscapeId = filename.replace("." + locale + ".json", "");
-
-                    List<LandscapeFilter> filters = new ArrayList<>();
-                    String displayTitle = null;
-                    String displayDescription = null;
-
-                    LearningLandscape ll = cachedByLegacyId.get(landscapeId);
-                    if (ll != null) {
-                        if (ll.getFilters() != null) {
-                            filters = ll.getFilters();
-                        }
-
-                        // Select Title
-                        if ("en".equals(lang) && ll.getTitleEn() != null && !ll.getTitleEn().isBlank()) {
-                            displayTitle = ll.getTitleEn();
-                        } else {
-                            displayTitle = ll.getTitle();
-                        }
-
-                        // Select Description
-                        if ("en".equals(lang) && ll.getDescriptionEn() != null && !ll.getDescriptionEn().isBlank()) {
-                            displayDescription = ll.getDescriptionEn();
-                        } else {
-                            displayDescription = ll.getDescription();
-                        }
-                    }
-
-                    // Fallbacks
-                    if (displayTitle == null || displayTitle.isBlank()) {
-                        displayTitle = String.format("%s %s %s %s", country, region, mappedType, mappedSubject);
-                    }
-                    if (displayDescription == null) {
-                        displayDescription = "";
-                    }
-
-                    if (ll != null) {
-                        summaries.add(
-                                new LandscapeSummary(ll.getLandscapeId(), displayTitle, displayDescription, filters));
-                    }
-
-                    // Build hierarchy
-                    Map<String, Object> countryMap = (Map<String, Object>) hierarchy.computeIfAbsent(country,
-                            k -> new HashMap<>());
-                    Map<String, Object> regionMap = (Map<String, Object>) countryMap.computeIfAbsent(region,
-                            k -> new HashMap<>());
-                    Map<String, Object> typeMap = (Map<String, Object>) regionMap.computeIfAbsent(mappedType,
-                            k -> new HashMap<>());
-                    List<String> subjects = (List<String>) typeMap.computeIfAbsent(mappedLevel, k -> new ArrayList<>());
-
-                    if (!subjects.contains(mappedSubject)) {
-                        subjects.add(mappedSubject);
-                    }
-                }
+            // Select Title
+            if ("en".equals(lang) && StringUtils.hasText(ll.getTitleEn())) {
+                displayTitle = ll.getTitleEn();
+            } else {
+                displayTitle = ll.getTitle();
             }
-        } catch (Exception e) {
-            log.error("Failed to list landscapes for overview", e);
+
+            // Select Description
+            if ("en".equals(lang) && StringUtils.hasText(ll.getDescriptionEn())) {
+                displayDescription = ll.getDescriptionEn();
+            } else {
+                displayDescription = ll.getDescription();
+            }
+
+            // Fallbacks
+            if (!StringUtils.hasText(displayTitle)) {
+                displayTitle = String.format("%s %s %s %s", country, region, mappedType, mappedSubject);
+            }
+
+            summaries.add(new LandscapeSummary(ll.getLandscapeId(), displayTitle, displayDescription,
+                    country, region, mappedType, mappedSubject, ll.getLocale(),
+                    ll.getFilters() != null ? ll.getFilters() : new ArrayList<>()));
+
+            // Build hierarchy
+            // Note: mappedLevel (p5) is not available in LearningLandscape yet, defaulting
+            // to mappedSubject or empty?
+            // In legacy: p5 was Level. p6 was Subject.
+            // In new: Grade is inside the curriculum structure, not top level metadata
+            // usually?
+            // Wait, new curricula have ONE file per Subject (e.g. Math), covering ALL
+            // grades.
+            // Legacy curricula were often split by module/level.
+            // Let's use mappedSubject as the leaf node for now.
+
+            Map<String, Object> countryMap = (Map<String, Object>) hierarchy.computeIfAbsent(country,
+                    k -> new HashMap<>());
+            Map<String, Object> regionMap = (Map<String, Object>) countryMap.computeIfAbsent(region,
+                    k -> new HashMap<>());
+            Map<String, Object> typeMap = (Map<String, Object>) regionMap.computeIfAbsent(mappedType,
+                    k -> new HashMap<>());
+
+            // For now, put subject in a "All" bucket if we don't have a specific
+            // level/grade level property in LearningLandscape
+            String level = "General";
+            List<String> subjects = (List<String>) typeMap.computeIfAbsent(level, k -> new ArrayList<>());
+
+            if (!subjects.contains(mappedSubject)) {
+                subjects.add(mappedSubject);
+            }
         }
 
         // Filter out non-root curricula (those that are contained in others)

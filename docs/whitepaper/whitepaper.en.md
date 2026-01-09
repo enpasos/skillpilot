@@ -206,9 +206,18 @@ On import (e.g., transfer, backup), the full **provenance chain** can be carried
 
 SkillPilot is not just a concept: it already contains curricula/standards as starting points that reflect **official requirements**.
 
-### Schools (Hesse, Germany, Secondary I & II)
-* Gymnasiale Oberstufe (DE, Hessen, G9, Secondary II)
-* Gymnasiale Mittelstufe (DE, Hessen, G9, Secondary I)
+### Schools (Bavaria & Hesse, Germany)
+**Bavaria:**
+* Grundschule (Primary School, complete: Grades 1–4)
+* Mittelschule (Middle School, complete: Grades 5–10)
+* Realschule (Secondary School, complete: Grades 5–10)
+* Gymnasium (Academic High School, complete: Grades 5–13)
+* Fachoberschule & Berufsoberschule (Vocational High School)
+* Wirtschaftsschule (Business School)
+
+**Hesse:**
+* Gymnasiale Oberstufe (G9, Secondary II)
+* Gymnasiale Mittelstufe (G9, Secondary I)
 
 ### Higher Education (Bologna-relevant)
 * Uni Heidelberg: Bachelor Biosciences, Master Molecular BioSciences

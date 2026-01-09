@@ -190,9 +190,19 @@ Beim Import (z.B. Wechsel, Backup) kann die komplette **Herkunftskette** mitgef�
 
 SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als Startpunkt, die **offizielle Vorgaben** abbilden.
 
-### Schule (Hessen Sek I & II)
-* Gymnasiale Oberstufe (DE, Hessen, G9, Sekundarstufe II)
-* Gymnasiale Mittelstufe (DE, Hessen, G9, Sekundarstufe I)
+### Schule (Bayern & Hessen)
+
+**Bayern:**
+* Grundschule (Alle Fächer, Jgst 1–4)
+* Mittelschule (Alle Fächer, Jgst 5–10)
+* Realschule (Alle Fächer, Jgst 5–10)
+* Gymnasium (Alle Fächer, Jgst 5–13)
+* Fachoberschule & Berufsoberschule (FOS/BOS)
+* Wirtschaftsschule
+
+**Hessen:**
+* Gymnasiale Oberstufe (G9, Sekundarstufe II)
+* Gymnasiale Mittelstufe (G9, Sekundarstufe I)
 
 ### Hochschule (Bologna-relevant)
 * Uni Heidelberg: Bachelor Biowissenschaften, Master Molecular BioSciences

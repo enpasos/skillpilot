@@ -1,10 +1,14 @@
 package com.skillpilot.backend.landscape;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonAlias;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LearningLandscape {
+    @JsonProperty("landscapeId")
+    @JsonAlias("id")
     private String landscapeId;
     private String locale;
     private String subject;
@@ -13,6 +17,9 @@ public class LearningLandscape {
     private String titleEn;
     private String description;
     private String descriptionEn;
+    private String country;
+    private String region;
+    private String schoolType;
     private List<LandscapeFilter> filters;
     private List<LearningGoal> goals;
 
@@ -79,6 +86,30 @@ public class LearningLandscape {
 
     public void setDescriptionEn(String descriptionEn) {
         this.descriptionEn = descriptionEn;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getSchoolType() {
+        return schoolType;
+    }
+
+    public void setSchoolType(String schoolType) {
+        this.schoolType = schoolType;
     }
 
     public List<LandscapeFilter> getFilters() {
