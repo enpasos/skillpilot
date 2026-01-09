@@ -1,0 +1,60 @@
+code: IN0010
+title: Grundlagen: Rechnernetze und Verteilte Systeme
+title_en: Introduction to Computer Networking and Distributed Systems
+ects: 6
+ects_plan: 6
+semester_plan: 4
+
+content:
+- Rechnernetze
+++ Überblick: Computernetze und das Internet
++++ Komponenten (Router, Switches, Clients, Server)
++++ Aufbau (Topologien, Routing, Pakete gegenüber virtuelle Verbindungen)
++++ Schichtenmodell (OSI und Internet)
++++ Geschichtlicher Hintergrund
+++ Schichtenübergreifende Konzepte (innerhalb der Schichten behandelt):
++++ Adressierung
++++ Fehlererkennung
++++ Codierung und Modulation
++++ Medienzugriffsverfahren
++++ Flusskontrolle
++++ Verbindungsmanagement
++++ Paketvermittlung gegenüber virtuelle Verbindungen
+++ Schichten:
++++ Anwendungsprotokolle und Anwendungen (application layer)
+++++ Aufgaben und Interface
+++++ Beispiele: HTTP, DNS, SMTP (Mail), Peer-to-Peer-Protokolle
++++ Transportschicht
+++++ Aufgabe und Interface
+++++ Beispiele: TCP und UDP
++++ Vermittlungsschicht
+++++ Aufgaben und Interface
+++++ Routing: Link State gegenüber Distance Vector Protokolle
+++++ Adressierung: IP Adressen
+++++ Beispiele: IP, Routing im Internet
++++ Sicherungsschicht
+++++ Aufgaben und Interface
+++++ Beispiele: Ethernet, Wireless LAN
++++ Bitübertragungsschicht
+++++ Aufgaben und Interface
+++++ Beispiele
+- Verteilte Systeme:
+++ Middleware, z.B. RPC
+++ Web Services
+- Übergreifende Aufgaben:
+++ Netzmanagement
+++ IT-Sicherheit
++++ Kryptographische Mechanismen und Dienste
++++ Authentifizierung, Vertraulichkeit, Integrität
++++ Protokolle mit Sicherheitsmechanismen, z.B.: IPsec, PGP, Kerberos, SSL, SSH, ...
++++ Firewalls, Intrusion Detection
+Inhalt der Übung:
+Die Übung behandelt Rechenaufgaben zur Bestimmung der Leistungsfähigkeit von Protokollen und Mechanismen einzelner Schichten (Physical Layer, Data Link Layer, Network Layer, Transport Layer).
+In Programmierübungen wird die Implementierung einzelner Protokollmechanismen geübt.
+
+outcomes:
+- Nach dem Modul "Grundlagen: Rechnernetze und Verteilte Systeme" sind die Studierenden in der Lage, die Technologien und Methoden von Rechnernetzen und Verteilten Systemen zu verstehen, und anhand wesentlicher Protokolle der geschichteten Netzarchitektur zu erläutern, welche Protokollmechanismen in den einzelnen Schichten eingesetzt werden, und wie diese funktionieren. Zudem verstehen sie, wie verteilte Anwendungen wie z.B. das World Wide Web mit Hilfe der Internetprotokolle realisiert sind, und wie Rechnernetze aufgebaut sind. Darüber hinaus sind die Studierenden in der Lage, die Leistungsfähigkeit ausgewählter Netze und verteilter Anwendungen zu bestimmen, sowie einzelne Protokollmechanismen zu implementieren.
+
+preconditions:
+IN0001 Einführung in die Informatik 1, IN0003 Einführung in die Informatik 2 bzw. ab WiSe 2018/19 Funktionale Programmierung und Verifikation, IN0002 Praktikum: Grundlagen der Programmierung
+

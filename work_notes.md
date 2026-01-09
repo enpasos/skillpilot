@@ -47,5 +47,21 @@ Your task is to build a robust automation pipeline/script (`scripts/scrape_tum_c
     3.  **Execution:** Run `scrape_tum_curriculum.py` for QST.
     4.  **Backlog:** Compile a full list of TUM curricula for future prioritization.
 
+## Optimization & QA (Jan 2026)
+Following user feedback, substantial improvements have been made to the scraping and modeling quality:
+
+### 1. Granularity & Content Modeling
+- **Content Modeling (`Inhalt`):** Previously, content text (e.g., "Newton's Laws, Lagrangian Mechanics...") was just part of the description. Now, these are parsed into distinct sub-goals (`area: "Wissen"`), usually comma-separated or list-based.
+- **Improved List Splitter:**
+    - **Numbered Lists:** Handles `1.`, `1.)`, `(1)`, `1 Title` (no dot).
+    - **Bullet Points:** Explicitly splits by `•`.
+    - **Results:** Modules like `PH0001` (Experimentalphysik) went from ~14 nodes to >20 nodes.
+    - **Audit:** Implemented "Rule of Thumb": modules with < 20 nodes are flagged and regenerated.
+
+### 2. Specific Module Fixes
+- **PH0005 (Theoretical Physics 1):** Fixed parsing to extract content lists (e.g. "Koordinatensysteme").
+- **CH1104 (Chemistry):** Fixed parsing of "Kapitelübersicht" (Chapter Overview) which lacked standard punctuation. Added `ects:6` tag.
+- **Landscape Repair:** `scripts/fix_physics_landscape.py` created to fix broken UUID links in `DE_BAY_U_TUM_BSC_PHYSIK.de.json` after module updates.
+
 ---
 *Historical Note: The `scrape_lehrplanplus.py` script for Bavarian schools (Gymnasium/Realschule) is completed and located in `scripts/`. It is separate from this TUM project.*

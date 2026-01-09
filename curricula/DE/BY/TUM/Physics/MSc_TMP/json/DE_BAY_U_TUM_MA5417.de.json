@@ -1,542 +1,68 @@
 {
     "title": "Large Deviations (TUM, Modul MA5417)",
     "titleEn": "Large Deviations (TUM, Module MA5417)",
-    "description": "Theorie der großen Abweichungen für seltene Ereignisse und exponentielle Abklingraten; i.i.d.-Folgen und empirische Maße; Anwendungen in Ergodentheorie, Informationstheorie und Statistischer Physik. Workload 150 h (45 h Präsenz), 5 ECTS, unregelmäßig. Version 2021s verantwortlich: Gantert, Nina.",
-    "descriptionEn": "Theory of large deviations for rare events and exponential decay rates; i.i.d. sequences and empirical measures; applications in ergodic theory, information theory, and statistical physics. Workload 150 h (45 h contact), 5 ECTS, irregular. Version 2021s responsible: Gantert, Nina.",
-    "landscapeId": "f1a473cc-1d27-48a9-880b-3a4b9720385a",
+    "description": "Large deviation theory is a part of probability theory that deals with the description of \"unlikely\" events and determines how fast their probabilities decay.",
+    "descriptionEn": "Large deviation theory is a part of probability theory that deals with the description of \"unlikely\" events and determines how fast their probabilities decay.",
+    "landscapeId": "f68372f7-1ecb-5dcc-8af2-ecd0ba7b7574",
     "locale": "de-DE",
-    "subject": "Wahrscheinlichkeit – Große Abweichungen",
+    "subject": "TUM-Module",
     "frameworkId": "tum-ma5417",
-    "filters": [
-        {
-            "id": "MSc",
-            "label": "Master TMP"
-        }
-    ],
     "goals": [
         {
-            "id": "09285dbe-f226-4913-aba0-9e80e85b3e46",
+            "id": "c410c91c-a29d-5e7f-8426-419f8194529b",
             "shortKey": "tum_ma5417_module",
-            "title": "Large Deviations – Modulüberblick",
-            "titleEn": "Large Deviations – Module Overview",
-            "description": "Lernende beherrschen zentrale Large-Deviation-Prinzipien für i.i.d.-Folgen und empirische Maße und wenden exponentielle Abschätzungen in typischen Anwendungen an.",
-            "descriptionEn": "Learners master central large deviation principles for i.i.d. sequences and empirical measures and apply exponential estimates in typical applications.",
+            "title": "Large Deviations (Modul MA5417)",
+            "titleEn": "Large Deviations (Module MA5417)",
+            "description": "Large deviation theory is a part of probability theory that deals with the description of \"unlikely\" events and determines how fast their probabilities decay.",
+            "descriptionEn": "Large deviation theory is a part of probability theory that deals with the description of \"unlikely\" events and determines how fast their probabilities decay.",
             "core": true,
-            "weight": 1.8,
+            "weight": 5.0,
             "phase": "Modul",
-            "area": "Überblick",
+            "area": "Gesamtkompetenz",
             "tags": [
-                "ects:5",
-                "workload:150h",
-                "presence:45h",
-                "level:master",
-                "duration:1_semester",
-                "language:en",
                 "module:MA5417",
-                "semester:irregular",
-                "responsible:gantert_nina",
-                "prereq:ma2409"
+                "ects:5"
             ],
             "contains": [
-                "9c13e2d0-279c-4f48-986d-53d8143a6315",
-                "7f369489-e372-4fe1-9e07-2562d03fb7eb",
-                "2c546ebd-4894-48d5-9f98-695df149e36d",
-                "b065cb14-aef7-43d9-b568-a4a3bd69c621"
+                "ef8b8717-1bc9-5b6b-b34a-3bf433e44b53",
+                "9f1c1869-be8d-5024-9f8f-799139f4466d"
             ],
             "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma5417",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Überblick",
-                "topicCode": "tum_ma5417_module"
-            }
+            "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/MA5417"
         },
         {
-            "id": "9c13e2d0-279c-4f48-986d-53d8143a6315",
+            "id": "ef8b8717-1bc9-5b6b-b34a-3bf433e44b53",
             "shortKey": "tum_ma5417_lo1",
-            "title": "Grundlagen & Exponential-Ungleichungen",
-            "titleEn": "Fundamentals & Exponential Inequalities",
-            "description": "Lernende erläutern die Zielsetzung der Large-Deviation-Theorie, nutzen exponentielle Ungleichungen und interpretieren Abklingraten für seltene Ereignisse.",
-            "descriptionEn": "Learners explain the purpose of large deviation theory, use exponential inequalities, and interpret decay rates for rare events.",
+            "title": "At the end of the module, students are familiar with with the theory of large de",
+            "titleEn": "Learning Outcome",
+            "description": "At the end of the module, students are familiar with with the theory of large deviations and are able to apply basic techniques as exponential inequalities.",
+            "descriptionEn": "At the end of the module, students are familiar with with the theory of large deviations and are able to apply basic techniques as exponential inequalities.",
             "core": true,
-            "weight": 0.45,
+            "weight": 0.0,
             "phase": "Modul",
-            "area": "Grundlagen",
+            "area": "Kompetenz",
             "tags": [
-                "ects:5",
-                "module:MA5417"
-            ],
-            "contains": [
-                "20e044ce-3898-4324-a696-bea0c6777cde",
-                "7207f958-4005-4e8a-82ec-64b67b763e10",
-                "4f91c86c-1477-4c64-b7be-63c44eb76a5a"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma5417",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Grundlagen",
-                "topicCode": "tum_ma5417_lo1"
-            }
-        },
-        {
-            "id": "20e044ce-3898-4324-a696-bea0c6777cde",
-            "shortKey": "tum_ma5417_lo1_1",
-            "title": "Ziel & Grundbegriffe",
-            "titleEn": "Purpose & Basic Concepts",
-            "description": "Lernende erklären die Zielsetzung der Large-Deviation-Theorie und den Begriff einer Ratefunktion.",
-            "descriptionEn": "Learners explain the purpose of large deviation theory and the notion of a rate function.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Grundlagen",
-            "tags": [
-                "ects:5",
                 "module:MA5417"
             ],
             "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma5417",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Grundlagen",
-                "topicCode": "tum_ma5417_lo1_1"
-            }
+            "requires": []
         },
         {
-            "id": "7207f958-4005-4e8a-82ec-64b67b763e10",
-            "shortKey": "tum_ma5417_lo1_2",
-            "title": "Exponentielle Ungleichungen (Chernoff)",
-            "titleEn": "Exponential Inequalities (Chernoff)",
-            "description": "Lernende leiten exponentielle Abschätzungen (z. B. Chernoff/Markov) her und nutzen sie zur Abschätzung seltener Ereignisse.",
-            "descriptionEn": "Learners derive exponential bounds (e.g., Chernoff/Markov) and use them to estimate probabilities of rare events.",
-            "core": true,
-            "weight": 0.15,
+            "id": "9f1c1869-be8d-5024-9f8f-799139f4466d",
+            "shortKey": "tum_ma5417_ct1",
+            "title": "Large deviation theory is a part of probability theory that deals with the descr",
+            "titleEn": "Large deviation theory is a part of probability theory that deals with the descr",
+            "description": "Large deviation theory is a part of probability theory that deals with the description of \"unlikely\" events and determines how fast their probabilities decay.",
+            "descriptionEn": "Large deviation theory is a part of probability theory that deals with the description of \"unlikely\" events and determines how fast their probabilities decay.",
+            "core": false,
+            "weight": 0.0,
             "phase": "Modul",
-            "area": "Grundlagen",
+            "area": "Wissen",
             "tags": [
-                "ects:5",
                 "module:MA5417"
             ],
             "contains": [],
-            "requires": [
-                "20e044ce-3898-4324-a696-bea0c6777cde"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma5417",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Grundlagen",
-                "topicCode": "tum_ma5417_lo1_2"
-            }
-        },
-        {
-            "id": "4f91c86c-1477-4c64-b7be-63c44eb76a5a",
-            "shortKey": "tum_ma5417_lo1_3",
-            "title": "Abklingraten interpretieren",
-            "titleEn": "Interpret Decay Rates",
-            "description": "Lernende interpretieren exponentielle Abklingraten als Large-Deviation-Asymptotik seltener Ereignisse und lesen Ratefunktionen aus LDP-Aussagen ab.",
-            "descriptionEn": "Learners interpret exponential decay rates as large deviation asymptotics of rare events and read off rate functions from LDP statements.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Grundlagen",
-            "tags": [
-                "ects:5",
-                "module:MA5417"
-            ],
-            "contains": [],
-            "requires": [
-                "7207f958-4005-4e8a-82ec-64b67b763e10"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma5417",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Grundlagen",
-                "topicCode": "tum_ma5417_lo1_3"
-            }
-        },
-        {
-            "id": "7f369489-e372-4fe1-9e07-2562d03fb7eb",
-            "shortKey": "tum_ma5417_lo2",
-            "title": "LDP für i.i.d.-Folgen",
-            "titleEn": "LDP for i.i.d. Sequences",
-            "description": "Lernende formulieren und nutzen LDPs für Summen/empirische Mittelwerte i.i.d. Zufallsvariablen und berechnen zugehörige Ratefunktionen.",
-            "descriptionEn": "Learners formulate and use LDPs for sums/empirical means of i.i.d. random variables and compute the associated rate functions.",
-            "core": true,
-            "weight": 0.45,
-            "phase": "Modul",
-            "area": "IID",
-            "tags": [
-                "ects:5",
-                "module:MA5417"
-            ],
-            "contains": [
-                "7cc0a0df-99ce-4ae6-a0ac-f518386b7872",
-                "b5e17ee7-e51b-4dea-b996-e3ed7dc9be07",
-                "eb914224-8418-403f-976a-f80105cd9a70"
-            ],
-            "requires": [
-                "9c13e2d0-279c-4f48-986d-53d8143a6315"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma5417",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "IID",
-                "topicCode": "tum_ma5417_lo2"
-            }
-        },
-        {
-            "id": "7cc0a0df-99ce-4ae6-a0ac-f518386b7872",
-            "shortKey": "tum_ma5417_lo2_1",
-            "title": "Cramérs Satz formulieren",
-            "titleEn": "State Cramér's Theorem",
-            "description": "Lernende formulieren Cramérs Satz als Large-Deviation-Prinzip für Summen bzw. empirische Mittelwerte i.i.d. Zufallsvariablen.",
-            "descriptionEn": "Learners state Cramér's theorem as a large deviation principle for sums or empirical means of i.i.d. random variables.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "IID",
-            "tags": [
-                "ects:5",
-                "module:MA5417"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma5417",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "IID",
-                "topicCode": "tum_ma5417_lo2_1"
-            }
-        },
-        {
-            "id": "b5e17ee7-e51b-4dea-b996-e3ed7dc9be07",
-            "shortKey": "tum_ma5417_lo2_2",
-            "title": "Ratefunktion berechnen",
-            "titleEn": "Compute the Rate Function",
-            "description": "Lernende berechnen Ratefunktionen als Legendre-Fenchel-Transformierte der Log-Momentenerzeugenden Funktion.",
-            "descriptionEn": "Learners compute rate functions as Legendre–Fenchel transforms of the log moment generating function.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "IID",
-            "tags": [
-                "ects:5",
-                "module:MA5417"
-            ],
-            "contains": [],
-            "requires": [
-                "7cc0a0df-99ce-4ae6-a0ac-f518386b7872"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma5417",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "IID",
-                "topicCode": "tum_ma5417_lo2_2"
-            }
-        },
-        {
-            "id": "eb914224-8418-403f-976a-f80105cd9a70",
-            "shortKey": "tum_ma5417_lo2_3",
-            "title": "LDP für Summen anwenden",
-            "titleEn": "Apply LDP to Sums",
-            "description": "Lernende nutzen das LDP, um asymptotische Wahrscheinlichkeiten von Abweichungsereignissen für Summen oder Mittelwerte abzuschätzen.",
-            "descriptionEn": "Learners use the LDP to estimate asymptotic probabilities of deviation events for sums or means.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "IID",
-            "tags": [
-                "ects:5",
-                "module:MA5417"
-            ],
-            "contains": [],
-            "requires": [
-                "b5e17ee7-e51b-4dea-b996-e3ed7dc9be07"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma5417",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "IID",
-                "topicCode": "tum_ma5417_lo2_3"
-            }
-        },
-        {
-            "id": "2c546ebd-4894-48d5-9f98-695df149e36d",
-            "shortKey": "tum_ma5417_lo3",
-            "title": "LDP für empirische Maße",
-            "titleEn": "LDP for Empirical Measures",
-            "description": "Lernende formulieren und nutzen Large-Deviation-Resultate für empirische Maße (z. B. Sanov) und interpretieren die zugehörigen Ratefunktionen.",
-            "descriptionEn": "Learners formulate and use large deviation results for empirical measures (e.g., Sanov) and interpret the associated rate functions.",
-            "core": true,
-            "weight": 0.45,
-            "phase": "Modul",
-            "area": "Empirisch",
-            "tags": [
-                "ects:5",
-                "module:MA5417"
-            ],
-            "contains": [
-                "5e6fb56f-0d7e-48ad-8142-020b257ed364",
-                "687b61f1-1ae3-4f03-a466-c9b3662123fa",
-                "41254fe7-be16-444e-baa0-e30a7751685c"
-            ],
-            "requires": [
-                "9c13e2d0-279c-4f48-986d-53d8143a6315"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma5417",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Empirisch",
-                "topicCode": "tum_ma5417_lo3"
-            }
-        },
-        {
-            "id": "5e6fb56f-0d7e-48ad-8142-020b257ed364",
-            "shortKey": "tum_ma5417_lo3_1",
-            "title": "Sanovs Satz formulieren",
-            "titleEn": "State Sanov's Theorem",
-            "description": "Lernende formulieren Sanovs Satz als Large-Deviation-Prinzip für empirische Maße.",
-            "descriptionEn": "Learners state Sanov's theorem as a large deviation principle for empirical measures.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Empirisch",
-            "tags": [
-                "ects:5",
-                "module:MA5417"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma5417",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Empirisch",
-                "topicCode": "tum_ma5417_lo3_1"
-            }
-        },
-        {
-            "id": "687b61f1-1ae3-4f03-a466-c9b3662123fa",
-            "shortKey": "tum_ma5417_lo3_2",
-            "title": "Relative Entropie als Ratefunktion",
-            "titleEn": "Relative Entropy as Rate Function",
-            "description": "Lernende interpretieren die Ratefunktion in Sanovs Satz als relative Entropie (Kullback–Leibler-Divergenz).",
-            "descriptionEn": "Learners interpret the rate function in Sanov's theorem as relative entropy (Kullback–Leibler divergence).",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Empirisch",
-            "tags": [
-                "ects:5",
-                "module:MA5417"
-            ],
-            "contains": [],
-            "requires": [
-                "5e6fb56f-0d7e-48ad-8142-020b257ed364"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma5417",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Empirisch",
-                "topicCode": "tum_ma5417_lo3_2"
-            }
-        },
-        {
-            "id": "41254fe7-be16-444e-baa0-e30a7751685c",
-            "shortKey": "tum_ma5417_lo3_3",
-            "title": "Empirische Maße: Beispiele",
-            "titleEn": "Empirical Measures: Examples",
-            "description": "Lernende wenden Large-Deviation-Resultate für empirische Maße in einfachen Beispielen an (z. B. empirische Verteilungen, Typklassen).",
-            "descriptionEn": "Learners apply large deviation results for empirical measures in simple examples (e.g., empirical distributions, type classes).",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Empirisch",
-            "tags": [
-                "ects:5",
-                "module:MA5417"
-            ],
-            "contains": [],
-            "requires": [
-                "687b61f1-1ae3-4f03-a466-c9b3662123fa"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma5417",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Empirisch",
-                "topicCode": "tum_ma5417_lo3_3"
-            }
-        },
-        {
-            "id": "b065cb14-aef7-43d9-b568-a4a3bd69c621",
-            "shortKey": "tum_ma5417_lo4",
-            "title": "Anwendungen in Ergodik/Info-Theorie & Physik",
-            "titleEn": "Applications in Ergodics/Info-Theory & Physics",
-            "description": "Lernende wenden Large-Deviation-Techniken auf typische Beispiele aus Ergodentheorie, Informationstheorie und Statistischer Physik an.",
-            "descriptionEn": "Learners apply large deviation techniques to typical examples from ergodic theory, information theory, and statistical physics.",
-            "core": true,
-            "weight": 0.45,
-            "phase": "Modul",
-            "area": "Anwendungen",
-            "tags": [
-                "ects:5",
-                "module:MA5417"
-            ],
-            "contains": [
-                "31c18c5a-0e05-4aa7-8d29-67d966cb6fa6",
-                "19480e5b-3256-4d83-89fc-bf733581f79c",
-                "0a0a15d5-cea2-4edf-8f37-58a2b1eec07c"
-            ],
-            "requires": [
-                "7f369489-e372-4fe1-9e07-2562d03fb7eb",
-                "2c546ebd-4894-48d5-9f98-695df149e36d"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma5417",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Anwendungen",
-                "topicCode": "tum_ma5417_lo4"
-            }
-        },
-        {
-            "id": "31c18c5a-0e05-4aa7-8d29-67d966cb6fa6",
-            "shortKey": "tum_ma5417_lo4_1",
-            "title": "Anwendung: Ergodentheorie",
-            "titleEn": "Application: Ergodic Theory",
-            "description": "Lernende wenden Large-Deviation-Techniken in ausgewählten Beispielen aus der Ergodentheorie an.",
-            "descriptionEn": "Learners apply large deviation techniques in selected examples from ergodic theory.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Anwendungen",
-            "tags": [
-                "ects:5",
-                "module:MA5417"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma5417",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Anwendungen",
-                "topicCode": "tum_ma5417_lo4_1"
-            }
-        },
-        {
-            "id": "19480e5b-3256-4d83-89fc-bf733581f79c",
-            "shortKey": "tum_ma5417_lo4_2",
-            "title": "Anwendung: Informationstheorie",
-            "titleEn": "Application: Information Theory",
-            "description": "Lernende wenden Large-Deviation-Techniken in ausgewählten Beispielen aus der Informationstheorie an.",
-            "descriptionEn": "Learners apply large deviation techniques in selected examples from information theory.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Anwendungen",
-            "tags": [
-                "ects:5",
-                "module:MA5417"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma5417",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Anwendungen",
-                "topicCode": "tum_ma5417_lo4_2"
-            }
-        },
-        {
-            "id": "0a0a15d5-cea2-4edf-8f37-58a2b1eec07c",
-            "shortKey": "tum_ma5417_lo4_3",
-            "title": "Anwendung: Statistische Physik",
-            "titleEn": "Application: Statistical Physics",
-            "description": "Lernende wenden Large-Deviation-Techniken in ausgewählten Beispielen aus der Statistischen Physik an.",
-            "descriptionEn": "Learners apply large deviation techniques in selected examples from statistical physics.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Anwendungen",
-            "tags": [
-                "ects:5",
-                "module:MA5417"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma5417",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Anwendungen",
-                "topicCode": "tum_ma5417_lo4_3"
-            }
+            "requires": []
         }
     ]
 }

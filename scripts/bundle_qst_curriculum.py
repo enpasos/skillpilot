@@ -50,28 +50,8 @@ def bundle_qst():
                 "phase": "Programm",
                 "area": "Gesamt",
                 "tags": ["program:msc_qst", "level:master"],
-                "contains": [catalog_id],
-                "requires": []
-            },
-            {
-                "id": catalog_id,
-                "shortKey": "msc_qst_modules",
-                "title": "Modulkatalog QST",
-                "titleEn": "Module Catalog QST",
-                "description": "Alle Module des Studiengangs.",
-                "descriptionEn": "All modules of the program.",
-                "core": True,
-                "weight": 0,
-                "phase": "Katalog",
-                "area": "Module",
-                "tags": ["catalog:qst"],
                 "contains": modules,
-                "requires": [program_id] # Usually sub-goals require the parent in this directed graph? No, usually parent contains child. Wait, requirements are usually prerequisites.
-                # In Physics JSON: "requires": [] for the Program. Sub-catalogs "requires": [program_id]? 
-                # Checking Physics JSON: "Grundlagenphase" (child) requires []? No.
-                # "Grundlagenphase" (child) is contained in "Program".
-                # "Vertiefungsphase" (child 2) requires "Grundlagenphase" (child 1).
-                # Here we just have one big catalog.
+                "requires": []
             }
         ]
     }

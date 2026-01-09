@@ -1,93 +1,130 @@
 {
-    "title": "Master Quantum Science and Technology (DE, BY, TUM)",
-    "titleEn": "Master Quantum Science and Technology (DE, BY, TUM)",
-    "description": "Masterstudiengang QST an der TUM.",
-    "descriptionEn": "Master program QST at TUM.",
-    "landscapeId": "8ee3075d-3808-5a1e-8542-7af60a09606f",
+    "title": "M.Sc. Quantum Science and Technology (TUM)",
+    "titleEn": "M.Sc. Quantum Science and Technology (TUM)",
+    "description": "Curriculum Master QST an der TU München.",
+    "descriptionEn": "Curriculum Master QST at TU Munich.",
+    "landscapeId": "153a5498-9bda-539b-8105-a6a6874286f1",
     "locale": "de-DE",
-    "subject": "QST",
+    "subject": "Quantum Science and Technology",
     "frameworkId": "tum-msc-qst",
+    "filters": [
+        {
+            "id": "MSc",
+            "label": "Master QST"
+        }
+    ],
     "goals": [
         {
-            "id": "5148adeb-7491-50d2-910c-a78a1de726a6",
-            "shortKey": "msc_qst_program",
-            "title": "M.Sc. QST - Gesamtstudiengang",
-            "titleEn": "M.Sc. QST - Full Program",
-            "description": "Gesamtstudiengang Quantum Science and Technology.",
-            "descriptionEn": "Full program Quantum Science and Technology.",
+            "id": "153a5498-9bda-539b-8105-a6a6874286f1",
+            "shortKey": "tum_msc_qst",
+            "title": "M.Sc. Quantenwissenschaft und -technologie",
+            "titleEn": "M.Sc. Quantum Science and Technology",
+            "description": "Gesamtkompetenz des Masterstudiengangs Quantum Science and Technology.",
+            "descriptionEn": "Overall competence of the Master program Quantum Science and Technology.",
             "core": true,
-            "weight": 120,
-            "phase": "Programm",
-            "area": "Gesamt",
+            "weight": 10,
+            "phase": "Curriculum",
+            "area": "Gesamtkompetenz",
             "tags": [
-                "program:msc_qst",
+                "ects:120",
                 "level:master"
             ],
             "contains": [
-                "0eaa9e6a-6579-56bc-a06b-f99c53a7f748"
+                "f08ff23e-a997-5a38-8390-4b03606685dd",
+                "9da574c5-ad08-5e8b-8968-69e0010a18b5",
+                "6b4b8ff2-9789-5d20-9699-371070f5f724",
+                "6fae7b63-8570-52a8-9824-9df59aa62c73"
             ],
-            "requires": [],
-            "dimensionTags": {
-                "framework": "tum-msc-qst",
-                "phase": "Programm",
-                "area": "Gesamt",
-                "topicCode": "msc_qst_program"
-            }
+            "requires": []
         },
         {
-            "id": "0eaa9e6a-6579-56bc-a06b-f99c53a7f748",
-            "shortKey": "msc_qst_modules",
-            "title": "Modulkatalog QST",
-            "titleEn": "Module Catalog QST",
-            "description": "Alle Module des Studiengangs.",
-            "descriptionEn": "All modules of the program.",
+            "id": "f08ff23e-a997-5a38-8390-4b03606685dd",
+            "shortKey": "tum_msc_qst_c1",
+            "title": "Pflichtbereich (Core Modules)",
+            "titleEn": "Pflichtbereich (Core Modules)",
+            "description": "Bereich: Pflichtbereich (Core Modules)",
+            "descriptionEn": "Area: Pflichtbereich (Core Modules)",
             "core": true,
-            "weight": 0,
-            "phase": "Katalog",
-            "area": "Module",
-            "tags": [
-                "catalog:qst"
-            ],
+            "weight": 5,
+            "phase": "Bereich",
+            "area": "Struktur",
             "contains": [
-                "f20a6baf-d751-5670-ad97-65a76d73f7d0",
-                "8336c85e-4975-5997-b305-1290301c782f",
-                "6a91362a-8295-570b-b78b-79cfe6e0acd9",
-                "9efd3553-d446-5a45-bccc-073dab892fe8",
-                "ffd8099d-9a9d-51c9-acb0-c08f8357aef9",
-                "6a18bd58-bf49-540c-8788-65454ad93e11",
-                "1b08b162-3ae5-513f-9dcb-237bcf1d21c7",
-                "48e15687-0501-5221-9579-ee38de91d8a2",
-                "2838efa5-bc0f-5f17-b690-c7dd560786c2",
-                "987b11a4-6905-5afc-9f12-55d47817b460",
-                "1cfce821-0832-5524-89fa-2a2d0bd1c6f3",
-                "9661f780-5e28-5dc7-a066-755fdd428793",
-                "bc681342-48aa-5c66-9849-d4022fc5e490",
-                "6f45c296-e570-5a0c-8271-9b391004b90b",
-                "273ffb9c-ab3d-5219-a9b8-458ed1d64593",
-                "56c4bb7c-05cc-559f-aaf9-2e69309a64d2",
-                "7585e221-f5c2-5dfa-9b0a-b1633af08f54",
-                "6aeb1190-d278-5ec7-9749-b94c51f036de",
-                "50ab3e19-141b-5e87-b491-55ed439d9c37",
-                "9f7dc4a9-24ff-577b-8e7a-ee5002fb2c5a",
-                "bbc41eae-580c-5aca-852d-fd4d4f547694",
-                "68c7dc6b-cdb1-584b-9010-d7ed9dc7da19",
-                "d2b43773-fc0c-5e92-9d85-dc2b9c9c88c3",
-                "7897f2f7-475f-5272-b2bc-2437205fbe77",
-                "fc797960-7899-52fb-90d3-67137032fe00",
-                "949471af-aa41-5877-a2e0-eed662e9021e",
-                "78674950-a910-5f04-b9f8-834132f866f2",
-                "136ab409-f9e0-51ec-becf-14124f6a911a",
-                "c2354ada-fab3-55b4-9c9b-f5865164b4ba"
+                "00f7ddee-379d-5622-b840-00236f67220d",
+                "ee57132d-831a-5c54-b8bb-f8447aff9ec0"
             ],
-            "requires": [
-                "5148adeb-7491-50d2-910c-a78a1de726a6"
+            "requires": []
+        },
+        {
+            "id": "9da574c5-ad08-5e8b-8968-69e0010a18b5",
+            "shortKey": "tum_msc_qst_c2",
+            "title": "Wahltheorie",
+            "titleEn": "Wahlpflichtbereich Theorie (Elective Theory)",
+            "description": "Bereich: Wahlpflichtbereich Theorie (Elective Theory)",
+            "descriptionEn": "Area: Wahlpflichtbereich Theorie (Elective Theory)",
+            "core": false,
+            "weight": 3,
+            "phase": "Bereich",
+            "area": "Struktur",
+            "contains": [
+                "40a86f71-951d-5e84-a42c-dec71cb10966",
+                "4b1203b5-3698-5fdc-9f1c-e0b360603700",
+                "84d3a05d-5025-525f-9b5c-2c0e38ab0477",
+                "2bba64b4-aeb5-5ff9-80b8-db43390b5c38",
+                "afaa7256-876b-5cb5-ba81-f70dbc14df28",
+                "5e130d5c-c4b8-5f8a-9b48-a6d74b83a67b",
+                "40229606-0dab-51eb-85fb-90baeb26ad95",
+                "59ec034e-3585-51cb-ac98-72c80be76b53",
+                "bd271067-31f6-54d5-8d98-c27d2aa36afa",
+                "121402f9-2d29-5d9d-8c3d-cf80d8c74c9b",
+                "c0eb6747-b78e-5c06-9f8f-e23c3d6171b2"
             ],
-            "dimensionTags": {
-                "framework": "tum-msc-qst",
-                "phase": "Katalog",
-                "area": "Module",
-                "topicCode": "msc_qst_modules"
-            }
+            "requires": []
+        },
+        {
+            "id": "6b4b8ff2-9789-5d20-9699-371070f5f724",
+            "shortKey": "tum_msc_qst_c3",
+            "title": "Wahlpflichtbereich Experiment (Elective Experiment)",
+            "titleEn": "Wahlpflichtbereich Experiment (Elective Experiment)",
+            "description": "Bereich: Wahlpflichtbereich Experiment (Elective Experiment)",
+            "descriptionEn": "Area: Wahlpflichtbereich Experiment (Elective Experiment)",
+            "core": false,
+            "weight": 3,
+            "phase": "Bereich",
+            "area": "Struktur",
+            "contains": [
+                "f16d3546-9124-59e8-a783-dd309a9dcd5e",
+                "e4a4e095-00ad-57a3-bb5f-e4909e9083b7",
+                "acc03beb-f5b2-5444-b4cf-5e0694efe675",
+                "8799b9cd-aa5b-5ed6-aa04-9a4f5d93d461",
+                "68b46c30-c5ca-5467-a464-f988a2fefb80",
+                "8df32f09-88b6-548f-bd2e-7ae33bc6a2e3",
+                "4737cf13-41ac-5a0f-ae80-f8e54a499189",
+                "9b5940bc-fe50-5b73-9014-5de40cd9c6de",
+                "c7079d4d-d2a0-51a0-9f4f-add5d80c2e23",
+                "d2cb0778-a415-59d1-98e3-6343e14658ff",
+                "e221ae35-db80-575f-8581-cbee1c909164",
+                "7e315a99-88cf-5538-9a2c-f4e51ec0b48f",
+                "e041e9e2-34f3-5edb-b8f3-f1601b241f48",
+                "cccc411d-c66c-5dbf-929d-fa18c32cf62d",
+                "1b050f32-0d0f-5338-90ba-3ff621f966fd"
+            ],
+            "requires": []
+        },
+        {
+            "id": "6fae7b63-8570-52a8-9824-9df59aa62c73",
+            "shortKey": "tum_msc_qst_c4",
+            "title": "Seminare und Praktika (Seminars and Labs)",
+            "titleEn": "Seminars and internships (Seminars and Labs)",
+            "description": "Bereich: Seminare und Praktika (Seminars and Labs)",
+            "descriptionEn": "Area: Seminare und Praktika (Seminars and Labs)",
+            "core": false,
+            "weight": 3,
+            "phase": "Bereich",
+            "area": "Struktur",
+            "contains": [
+                "aa35595d-4df3-5e01-a18b-d8a37d5da2bc"
+            ],
+            "requires": []
         }
     ]
 }

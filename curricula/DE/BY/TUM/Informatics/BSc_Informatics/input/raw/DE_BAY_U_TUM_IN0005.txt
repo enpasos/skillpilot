@@ -1,0 +1,39 @@
+code: IN0005
+title: Grundlagenpraktikum: Rechnerarchitektur
+title_en: Basic Practical Course: Computer Architecture
+ects: 5
+ects_plan: 5
+semester_plan: 2
+
+content:
+- Techniken zur Performanzanalyse
+- Benchmarkingtechniken
+- Profiling-Tools, u.a. perf, gprof, Callgrind
+- Nutzung von Hardware Performance Countern
+- Grundlagen C-Programmierung
+- Datenstrukturen, Funktionen, Strings, Pointer-Arithmetik, I/O
+- Makefiles, Debugging-Techniken, GDB, Assertions
+- Grundlagen Compiler-Optimierungen
+- Rahmenbedingungen: Application Binary Interface, definiertes
+Verhalten
+- Einfluss von Programmannotationen (Pointer-Aliasing, Alignment,
+etc.) auf Performanz
+- Grundlegende Modelle zur parallelen Programmierung, Flynn'sche
+Klassifikation
+- Optimierung von Instruktionsparallelismus
+- Spezialisierung im Rahmen der Projektarbeit in einer der folgenden
+Bereiche:
+- Ausnutzung von Vektoreinheiten moderner Prozessoren
+- SIMD-Instruktionen in Maschinencode
+- SIMD-Intrinsics in höheren Programmiersprachen
+- Multi-Threading mit Pthreads oder OpenMP
+- Synchronisierung, atomare Operationen
+- Cache-Optimierungen
+- Programmiermodelle für heterogene Systeme (u.a. GPUs, FPGAs)
+
+outcomes:
+- Nach der Teilnahme an dem Modul sind die Studierenden in der Lage, im Kontext moderner Rechensysteme (moderne x86-64 Prozessoren, GPUs) die Performanzcharakteristiken von Programmen zu analysieren, mithilfe dieser Ergebnisse zielgerichtete Optimierungen zu entwickeln und damit auch komplexe Hardware sowohl zeit- als auch energieeffizient zu programmieren und eigene Implementierungen zu bewerten.
+
+preconditions:
+IN0004: Einführung in die Rechnerarchitektur
+
