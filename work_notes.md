@@ -1,46 +1,51 @@
-# Work Notes: LehrplanPLUS Curriculum Import
+# Work Notes: TUM Curriculum Automation
 
-## Context
-We are systematically importing curricula from [LehrplanPLUS Bayern](https://www.lehrplanplus.bayern.de/) into the Skillpilot platform. The goal is to provide a comprehensive set of standardized competencies for the Bavarian school system (including Gymnasium, Realschule, Grundschule, etc.).
+## Project Goal
+We are expanding the Skillpilot platform to include all major curricula from the **Technical University of Munich (TUM)**.
+Following the successful manual/semi-automated import of **Mathematics** and **Physics** (B.Sc.), the goal is to **automate** this process for future subjects and programs.
 
-## Task Description
-The objective is to crawl the LehrplanPLUS website to extract the full curriculum hierarchy and convert it into the Skillpilot JSON format.
+## Context & References
+We have established a pattern for TUM curricula in `curricula/DE/BY/TUM/`.
+- **Reference 1 (Mathematics):** `curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/`
+- **Reference 2 (Physics):** `curricula/DE/BY/TUM/Physics/BSc_Physics/`
 
-**Data Hierarchy:**
-`School Type` -> `Subject` -> `Grade` -> `Learning Area (Lernbereich)` -> `Competence (Kompetenzerwartung)`
+### File Structure Pattern
+For a given Program (e.g., `BSc_Physics`):
+1.  **Input List (`xyz.txt`):** Contains a list of Module Codes and Titles, plus a URL template.
+    -   Example: `curricula/DE/BY/TUM/Physics/BSc_Physics/input/DE_BAY_U_TUM_xyz.txt`
+    -   Format: `[ModuleCode] [Title]`
+    -   Url Template: `https://academics.nat.tum.de/org/mh/details/mod/$m`
+2.  **Module JSONs:** Generated JSON files for each module.
+    -   Location: `json/` subdirectory.
+    -   Naming: `DE_BAY_U_TUM_[ModuleCode].de.json`
+3.  **Landscape JSON:** The main file defining the curriculum structure (semesters, groups, etc.).
+    -   Example: `DE_BAY_U_TUM_BSC_MATHEMATIK.de.json`
 
-**Target Artifacts:**
-JSON files stored in `curricula/DE/BY/[SchoolType]/[Subject].json`.
+## Task Description for Next Agent
+Your task is to build a robust automation pipeline/script (`scripts/scrape_tum_curriculum.py`) that can:
+
+1.  **Read Input:** Parse an `xyz.txt` (or standardized input file) to get a list of modules and the target URL pattern.
+2.  **Scrape Data:** For each module:
+    -   Fetch the module details page (e.g., `https://academics.nat.tum.de/org/mh/details/mod/MA0001`).
+    -   Extract metadata: Title (DE/EN), Description, ECTS, Responsible Person.
+    -   Extract Content: "Learning Outcomes" (Kompetenzen), "Content" (Inhalt).
+3.  **Generate JSON:**
+    -   Create a standard Skillpilot JSON for the module.
+    -   Map "Learning Outcomes" to granular `goals` within the JSON.
+    -   Use `uuid` for stable ID generation (ideally deterministic based on Module Code to avoid duplicates on re-runs).
+4.  **Integration:**
+    -   (Optional/Advanced) Assist in generating the root Landscape JSON to structure these modules.
 
 ## Current Status
-- **Implementation:** A Python scraper has been built at `scripts/scrape_lehrplanplus.py`.
-- **Dependencies:** `requests`, `beautifulsoup4`, `uuid`.
-- **State:** **COMPLETED** (Full run successful).
-- **Output:** JSON curricula generated in `curricula/DE/BY/` for all processed school types.
+- **Mathematics & Physics:** Completed (manually/semi-auto). Files exist as references.
+- **Automation:** **Core Logic Implemented**.
+    - `scripts/scrape_tum_curriculum.py`: created and tested (uses API).
+    - `scripts/create_new_curriculum.py`: created for setting up new subjects.
+- **Next Steps:**
+    1.  **Discovery:** Discover and list modules for **Quantum Science and Technology (Master)** (High Priority).
+    2.  **Expansion:** Use `create_new_curriculum.py` to set up QST.
+    3.  **Execution:** Run `scrape_tum_curriculum.py` for QST.
+    4.  **Backlog:** Compile a full list of TUM curricula for future prioritization.
 
-## Execution History
-- **Run 1:** Limit testing (Grundschule/Deutsch). Success.
-- **Run 2:** Full Run. Issue with missing English content ("Ausprägung"). Fixed.
-- **Run 3:** Full Run. Crash on "Geschichte/Politik/Geographie". Fixed (Filename Sanitization).
-- **Run 4:** Full Run (ID `13494fde`). **Success.**
-
-
-## Handover / Execution Instructions
-To complete the task (e.g., for GPT-5.2-Codex):
-
-1.  **Modify the Script:**
-    Open `scripts/scrape_lehrplanplus.py` and disable the limits:
-    ```python
-    LIMIT_SCHOOL_TYPES = None  # Process all school types
-    LIMIT_SUBJECTS_PER_TYPE = None # Process all subjects
-    ```
-
-2.  **Run the Scraper:**
-    Execute the script from the project root:
-    ```bash
-    python3 scripts/scrape_lehrplanplus.py
-    ```
-    *Note: This will perform a large number of HTTP requests. Monitor for timeouts or rate limiting.*
-
-3.  **Verify Output:**
-    Check the `curricula/DE/BY/` directory. It should populate with folders for each School Type (e.g., `Gymnasium`, `Realschule`) containing JSON files for each Subject.
+---
+*Historical Note: The `scrape_lehrplanplus.py` script for Bavarian schools (Gymnasium/Realschule) is completed and located in `scripts/`. It is separate from this TUM project.*
