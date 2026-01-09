@@ -1,42 +1,59 @@
 {
-    "title": "Master Theoretische und Mathematische Physik (DE, BY, TUM)",
-    "titleEn": "Master Theoretical and Mathematical Physics (TUM)",
-    "description": "Übergreifende Programmkapsel für das TUM-Modulangebot im Elite-Master TMP (gemeinsam mit LMU). Enthält alle TUM-Module laut aktuellem Katalog; jede Kachel verweist auf das jeweilige Modul-Landschafts-JSON.",
-    "descriptionEn": "Overarching program capsule for the TUM module offerings in the Elite Master TMP (jointly with LMU). Contains all TUM modules according to the current catalog; each tile points to the respective module landscape JSON.",
-    "landscapeId": "a0d81171-363c-4b4f-a177-cda18f5749a8",
+    "title": "M.Sc. Theoretische und Mathematische Physik (TUM)",
+    "titleEn": "M.Sc. Theoretical and Mathematical Physics (TUM)",
+    "description": "Curriculum Master TMP an der TU München.",
+    "descriptionEn": "Curriculum Master TMP at TU Munich.",
+    "landscapeId": "9382e4f4-c148-51eb-b7da-b26582466fc5",
     "locale": "de-DE",
-    "subject": "Master Theoretische und Mathematische Physik (TMP)",
-    "frameworkId": "tum-tmp-master",
+    "subject": "Theoretische und Mathematische Physik",
+    "frameworkId": "tum-msc-tmp",
+    "filters": [
+        {
+            "id": "MSc",
+            "label": "Master TMP"
+        }
+    ],
     "goals": [
         {
-            "id": "c5810cc6-56b6-47e4-b44d-62bb675eb494",
-            "shortKey": "tum_tmp_master_program",
-            "title": "Master TMP (TUM) – Modulangebot",
-            "titleEn": "Master TMP (TUM) – Module Offerings",
-            "description": "Modulangebot der TUM im Elite-Master Theoretische & Mathematische Physik: TUM-Teile aus Physik, Mathematik und Earth-System-Modeling, wie im TMP-Wiki/TUMonline geführt.",
-            "descriptionEn": "Module offerings of TUM in the Elite Master Theoretical & Mathematical Physics: TUM parts from Physics, Mathematics and Earth System Modeling, as listed in the TMP-Wiki/TUMonline.",
+            "id": "9382e4f4-c148-51eb-b7da-b26582466fc5",
+            "shortKey": "tum_msc_tmp",
+            "title": "M.Sc. Theoretische und Mathematische Physik",
+            "titleEn": "M.Sc. Theoretical and Mathematical Physics",
+            "description": "Gesamtkompetenz des Masterstudiengangs TMP.",
+            "descriptionEn": "Overall competence of the Master program TMP.",
             "core": true,
-            "weight": 50,
-            "phase": "Programm",
-            "area": "Katalog",
+            "weight": 10,
+            "phase": "Curriculum",
+            "area": "Gesamtkompetenz",
             "tags": [
-                "program:tmp_master",
-                "degree:master",
-                "language:de+en",
-                "responsible:tum"
+                "ects:120",
+                "level:master"
             ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-tmp-master",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Programm",
-                "area": "Katalog",
-                "topicCode": "tum_tmp_master_program"
-            }
+            "contains": [
+                "eb58fbe6-92f8-51ae-ae4f-77c6812526af",
+                "384f86c5-9095-5e5b-a27b-8ceae8b978b0",
+                "9a45e121-5ed1-5fcb-a3b7-dff2e9da5d70",
+                "307a754e-26c9-55f8-a387-b1a51f858d62",
+                "152e7d0b-514f-5d22-8b8b-92c9f33220a8",
+                "cc90ce25-9721-540a-b84e-d59f34bf93ce",
+                "c410c91c-a29d-5e7f-8426-419f8194529b",
+                "b7755199-de74-5b22-b845-297da2639ce9",
+                "ffc83647-5f12-585b-9612-8c489e2b7861",
+                "eb5c3c14-0efd-5f25-a4e4-b39a99f9c025",
+                "0eae3787-39da-5bd0-a9df-c4b0eb7d8770",
+                "0508ff06-dae4-5ca4-9d64-9ec76d061815",
+                "277f95b4-f402-57f3-9edf-5bef56a3d937",
+                "42bc43b1-2b01-5fc9-986c-6924db961b46",
+                "c004eef6-e94f-51c9-a2dd-0b204f7afa23",
+                "108fa005-9bf7-5973-bfe1-c47d67fdeed2",
+                "413d912a-596c-5214-aaad-a1315a7494ab",
+                "bad944d9-d362-5222-94c1-33b310808cf4",
+                "19799977-78e1-56a2-b4f7-bc0164b70c65",
+                "f0140ae8-ee80-5cae-8a21-7cd133fa3eda",
+                "b5a135e8-fda6-59fc-b782-dbf98be569a2",
+                "e311c15c-e45a-53c9-96eb-6a10ca0eca40"
+            ],
+            "requires": []
         }
     ]
 }

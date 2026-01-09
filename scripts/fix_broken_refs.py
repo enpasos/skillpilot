@@ -60,8 +60,24 @@ if __name__ == "__main__":
     
     print("\n" + "="*60 + "\n")
     
+    # Fix BSC_PHYSIK
+    fix_landscape(
+        Path("curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_BSC_PHYSIK.de.json"),
+        Path("curricula/DE/BY/TUM/Physics/BSc_Physics/json")
+    )
+    
+    print("\n" + "="*60 + "\n")
+    
     # Fix TMP_MASTER
     fix_landscape(
         Path("curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_TMP_MASTER.de.json"),
         Path("curricula/DE/BY/TUM/Physics/MSc_TMP/json")
+    )
+    
+    print("\n" + "="*60 + "\n")
+    
+    # Fix MSC_QST
+    fix_landscape(
+        Path("curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_MSC_QST.de.json"),
+        Path("curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json")
     )

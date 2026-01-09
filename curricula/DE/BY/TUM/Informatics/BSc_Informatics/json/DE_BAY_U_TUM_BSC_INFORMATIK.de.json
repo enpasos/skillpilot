@@ -1,291 +1,195 @@
 {
-    "title": "B.Sc. Informatik (DE, BY, TUM)",
+    "title": "B.Sc. Informatik (TUM)",
     "titleEn": "B.Sc. Informatics (TUM)",
-    "description": "Curriculum/Kompetenzgraph basierend auf dem TUM-CIT-Studienplan. Wahlmodule sind als Platzhalter pro Semester erfasst; die Bachelorarbeit ist bewusst nicht als Knoten modelliert.",
-    "descriptionEn": "Curriculum/competence graph based on the TUM CIT study plan. Electives are captured as semester placeholders; the bachelor thesis is intentionally not modeled as a node.",
-    "landscapeId": "eb908a0d-8510-59c7-a45e-95b9f022f3d0",
+    "description": "Curriculum Bachelor Informatik an der TU München.",
+    "descriptionEn": "Curriculum Bachelor Informatics at TU Munich.",
     "locale": "de-DE",
     "subject": "Informatik",
-    "frameworkId": "tum-bsc-informatik-studyplan",
+    "frameworkId": "tum-bsc-informatik",
     "goals": [
         {
-            "id": "fc876a04-ac71-5c2f-9b30-789e5ccc3357",
-            "shortKey": "bsc_informatik_program",
-            "title": "B.Sc. Informatik – Gesamtstudiengang",
-            "titleEn": "B.Sc. Informatics – Full Program",
-            "description": "Semesterstruktur des Bachelorstudiengangs Informatik nach Studienplan mit Pflichtmodulen und Wahlmodul-Platzhaltern.",
-            "descriptionEn": "Semester structure of the B.Sc. Informatics program with mandatory modules and elective placeholders.",
+            "id": "d30a3203-cd9a-57b5-9cb9-ef2fb86d49a9",
+            "shortKey": "tum_bsc_informatik",
+            "title": "B.Sc. Informatik",
+            "titleEn": "B.Sc. Informatics",
+            "description": "Gesamtkompetenz des Bachelorstudiengangs Informatik.",
+            "descriptionEn": "Overall competence of the Bachelor program Informatics.",
             "core": true,
-            "weight": 141.0,
-            "phase": "Programm",
-            "area": "Gesamt",
-            "tags": [
-                "ects:141",
-                "level:bachelor",
-                "duration:6_semester",
-                "language:de",
-                "program:bsc_informatik",
-                "note:thesis_excluded"
-            ],
+            "weight": 10,
+            "phase": "Curriculum",
+            "area": "Gesamtkompetenz",
             "contains": [
-                "5ca8e559-4823-599e-9aa6-9ffbb7b9cb68",
-                "cedf16da-fab9-5da6-906d-fdda191b0dc8",
-                "5ccc57b6-ed99-50ed-b5df-f5a4a95eea2e",
-                "9a900aff-0867-57ce-a84f-2232891d18ff",
-                "312043c0-1649-549b-95d3-7b744f30d219",
-                "4d7ab984-6c2a-5999-b3d3-48797025b2b3"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-bsc-informatik-studyplan",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Programm",
-                "area": "Gesamt",
-                "topicCode": "bsc_informatik_program"
-            },
-            "sourceRef": "https://www.cit.tum.de/en/cit/studium/studiengaenge/bachelor-informatik/studienplan/"
+                "d2f01dca-32c5-566f-a70e-3cb5035e78f2",
+                "228e9988-1da5-5e35-81d6-7a72d124e33f",
+                "5fae2a39-5545-5c4e-a051-5019a58af963"
+            ]
         },
         {
-            "id": "5ca8e559-4823-599e-9aa6-9ffbb7b9cb68",
-            "shortKey": "bsc_informatik_sem1",
+            "id": "8ef303eb-5a33-5a88-aeba-8e2063e4fec2",
+            "shortKey": "tum_bsc_inf_c1_s1",
             "title": "1. Fachsemester",
-            "titleEn": "Semester 1",
-            "description": "Module des 1. Fachsemesters laut Studienplan.",
-            "descriptionEn": "Modules of semester 1 according to the study plan.",
+            "titleEn": "1. Semester",
+            "description": "Module des 1. Semesters in Grundlagenphase (Semester 1-4)",
+            "descriptionEn": "Modules of the 1. semester in Grundlagenphase (Semester 1-4)",
             "core": true,
-            "weight": 28.0,
-            "phase": "S1",
+            "weight": 2,
+            "phase": "Semester",
             "area": "Struktur",
-            "tags": [
-                "semester:1",
-                "ects:28"
+            "contains": [
+                "6b32908a-8f7d-5037-8044-cade70cd1b87",
+                "64fecb41-a7f0-54d8-9fce-e839f894ec7e",
+                "e2149b80-72a4-56ee-88eb-d60797c06437",
+                "3fdf8dbd-35a9-5b7c-911f-3e6d056ae13e"
             ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-bsc-informatik-studyplan",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "S1",
-                "area": "Struktur",
-                "topicCode": "bsc_informatik_sem1"
-            },
-            "sourceRef": "https://www.cit.tum.de/en/cit/studium/studiengaenge/bachelor-informatik/studienplan/"
+            "tags": [
+                "semester:1"
+            ]
         },
         {
-            "id": "cedf16da-fab9-5da6-906d-fdda191b0dc8",
-            "shortKey": "bsc_informatik_sem2",
+            "id": "10646887-a1c8-5885-9b9f-a8121ebcbbc0",
+            "shortKey": "tum_bsc_inf_c1_s2",
             "title": "2. Fachsemester",
-            "titleEn": "Semester 2",
-            "description": "Module des 2. Fachsemesters laut Studienplan.",
-            "descriptionEn": "Modules of semester 2 according to the study plan.",
+            "titleEn": "2. Semester",
+            "description": "Module des 2. Semesters in Grundlagenphase (Semester 1-4)",
+            "descriptionEn": "Modules of the 2. semester in Grundlagenphase (Semester 1-4)",
             "core": true,
-            "weight": 30.0,
-            "phase": "S2",
+            "weight": 2,
+            "phase": "Semester",
             "area": "Struktur",
-            "tags": [
-                "semester:2",
-                "ects:30"
+            "contains": [
+                "b45680b3-02aa-5add-8f4e-eb35d5160797",
+                "49d7c236-bf8a-503d-a9b9-cd7e507e9f99",
+                "c15182dd-5ae5-5bec-9b78-f56c22c1e77c",
+                "37a85caa-a066-56cc-8b56-95a8fc289c4f",
+                "f7e4121c-4221-51b0-a4ca-d4319611bb9f"
             ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-bsc-informatik-studyplan",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "S2",
-                "area": "Struktur",
-                "topicCode": "bsc_informatik_sem2"
-            },
-            "sourceRef": "https://www.cit.tum.de/en/cit/studium/studiengaenge/bachelor-informatik/studienplan/"
+            "tags": [
+                "semester:2"
+            ]
         },
         {
-            "id": "5ccc57b6-ed99-50ed-b5df-f5a4a95eea2e",
-            "shortKey": "bsc_informatik_sem3",
+            "id": "ddf8595e-1f83-5ba6-921c-c64d84ddec93",
+            "shortKey": "tum_bsc_inf_c1_s3",
             "title": "3. Fachsemester",
-            "titleEn": "Semester 3",
-            "description": "Module des 3. Fachsemesters laut Studienplan.",
-            "descriptionEn": "Modules of semester 3 according to the study plan.",
+            "titleEn": "3. Semester",
+            "description": "Module des 3. Semesters in Grundlagenphase (Semester 1-4)",
+            "descriptionEn": "Modules of the 3. semester in Grundlagenphase (Semester 1-4)",
             "core": true,
-            "weight": 24.0,
-            "phase": "S3",
+            "weight": 2,
+            "phase": "Semester",
             "area": "Struktur",
-            "tags": [
-                "semester:3",
-                "ects:24"
+            "contains": [
+                "e7c8d839-5c11-5d5d-a9fc-e2abab7a0488",
+                "c8241bf8-3844-5710-ac07-697b3c65852b",
+                "28f77e54-55b0-5e02-89a6-715d4cdd6bd0",
+                "0efe7878-312e-581d-81f6-4d45c8fe459e"
             ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-bsc-informatik-studyplan",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "S3",
-                "area": "Struktur",
-                "topicCode": "bsc_informatik_sem3"
-            },
-            "sourceRef": "https://www.cit.tum.de/en/cit/studium/studiengaenge/bachelor-informatik/studienplan/"
+            "tags": [
+                "semester:3"
+            ]
         },
         {
-            "id": "9a900aff-0867-57ce-a84f-2232891d18ff",
-            "shortKey": "bsc_informatik_sem4",
+            "id": "4f010172-49b7-5c65-9486-873f9e98da98",
+            "shortKey": "tum_bsc_inf_c1_s4",
             "title": "4. Fachsemester",
-            "titleEn": "Semester 4",
-            "description": "Module des 4. Fachsemesters laut Studienplan.",
-            "descriptionEn": "Modules of semester 4 according to the study plan.",
+            "titleEn": "4. Semester",
+            "description": "Module des 4. Semesters in Grundlagenphase (Semester 1-4)",
+            "descriptionEn": "Modules of the 4. semester in Grundlagenphase (Semester 1-4)",
             "core": true,
-            "weight": 25.0,
-            "phase": "S4",
+            "weight": 2,
+            "phase": "Semester",
             "area": "Struktur",
-            "tags": [
-                "semester:4",
-                "ects:25"
+            "contains": [
+                "8721534d-b37c-5f84-9bae-9e1cf77b51b9",
+                "818b67bf-d76f-53bc-abb9-e00fe91dee52",
+                "2ee3425b-dad7-5cfb-a9d6-863aa5d38637",
+                "2eb30d74-c8b9-583a-9bac-0d2874c8ae4f"
             ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-bsc-informatik-studyplan",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "S4",
-                "area": "Struktur",
-                "topicCode": "bsc_informatik_sem4"
-            },
-            "sourceRef": "https://www.cit.tum.de/en/cit/studium/studiengaenge/bachelor-informatik/studienplan/"
+            "tags": [
+                "semester:4"
+            ]
         },
         {
-            "id": "312043c0-1649-549b-95d3-7b744f30d219",
-            "shortKey": "bsc_informatik_sem5",
+            "id": "d2f01dca-32c5-566f-a70e-3cb5035e78f2",
+            "shortKey": "tum_bsc_inf_c1",
+            "title": "Grundlagenphase (Semester 1-4)",
+            "titleEn": "Grundlagenphase (Semester 1-4)",
+            "description": "Phase: Grundlagenphase (Semester 1-4)",
+            "descriptionEn": "Phase: Grundlagenphase (Semester 1-4)",
+            "core": true,
+            "weight": 5,
+            "phase": "Bereich",
+            "area": "Struktur",
+            "contains": [
+                "8ef303eb-5a33-5a88-aeba-8e2063e4fec2",
+                "10646887-a1c8-5885-9b9f-a8121ebcbbc0",
+                "ddf8595e-1f83-5ba6-921c-c64d84ddec93",
+                "4f010172-49b7-5c65-9486-873f9e98da98"
+            ]
+        },
+        {
+            "id": "7f1b870d-58d3-58a3-ad56-a53b922c5939",
+            "shortKey": "tum_bsc_inf_c2_s5",
             "title": "5. Fachsemester",
-            "titleEn": "Semester 5",
-            "description": "Module des 5. Fachsemesters laut Studienplan.",
-            "descriptionEn": "Modules of semester 5 according to the study plan.",
+            "titleEn": "5. Semester",
+            "description": "Module des 5. Semesters in Vertiefungsphase (Semester 5-6)",
+            "descriptionEn": "Modules of the 5. semester in Vertiefungsphase (Semester 5-6)",
             "core": true,
-            "weight": 21.0,
-            "phase": "S5",
+            "weight": 2,
+            "phase": "Semester",
             "area": "Struktur",
-            "tags": [
-                "semester:5",
-                "ects:21"
-            ],
             "contains": [
-                "ce33db8c-097a-5dce-9d54-706f927beb1e"
+                "0300e8fe-a875-5012-8173-81d74be7fc93",
+                "1aaf102c-90ae-55b0-9285-6f2d8353b2fc"
             ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-bsc-informatik-studyplan",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "S5",
-                "area": "Struktur",
-                "topicCode": "bsc_informatik_sem5"
-            },
-            "sourceRef": "https://www.cit.tum.de/en/cit/studium/studiengaenge/bachelor-informatik/studienplan/"
+            "tags": [
+                "semester:5"
+            ]
         },
         {
-            "id": "4d7ab984-6c2a-5999-b3d3-48797025b2b3",
-            "shortKey": "bsc_informatik_sem6",
+            "id": "e6f69fe7-2771-597b-a2c0-ddde24ed56d7",
+            "shortKey": "tum_bsc_inf_c2_s6",
             "title": "6. Fachsemester",
-            "titleEn": "Semester 6",
-            "description": "Module des 6. Fachsemesters laut Studienplan; die Bachelorarbeit ist nicht als Knoten enthalten.",
-            "descriptionEn": "Modules of semester 6 according to the study plan; the bachelor thesis is not included as a node.",
+            "titleEn": "6. Semester",
+            "description": "Module des 6. Semesters in Vertiefungsphase (Semester 5-6)",
+            "descriptionEn": "Modules of the 6. semester in Vertiefungsphase (Semester 5-6)",
             "core": true,
-            "weight": 13.0,
-            "phase": "S6",
+            "weight": 2,
+            "phase": "Semester",
             "area": "Struktur",
+            "contains": [],
             "tags": [
-                "semester:6",
-                "ects:13",
-                "note:thesis_excluded"
-            ],
+                "semester:6"
+            ]
+        },
+        {
+            "id": "228e9988-1da5-5e35-81d6-7a72d124e33f",
+            "shortKey": "tum_bsc_inf_c2",
+            "title": "Vertiefungsphase (Semester 5-6)",
+            "titleEn": "Vertiefungsphase (Semester 5-6)",
+            "description": "Phase: Vertiefungsphase (Semester 5-6)",
+            "descriptionEn": "Phase: Vertiefungsphase (Semester 5-6)",
+            "core": true,
+            "weight": 5,
+            "phase": "Bereich",
+            "area": "Struktur",
             "contains": [
-                "a09763b0-5d1c-5460-814b-3f8b54380c8f"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-bsc-informatik-studyplan",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "S6",
-                "area": "Struktur",
-                "topicCode": "bsc_informatik_sem6"
-            },
-            "sourceRef": "https://www.cit.tum.de/en/cit/studium/studiengaenge/bachelor-informatik/studienplan/"
+                "7f1b870d-58d3-58a3-ad56-a53b922c5939",
+                "e6f69fe7-2771-597b-a2c0-ddde24ed56d7"
+            ]
         },
         {
-            "id": "ce33db8c-097a-5dce-9d54-706f927beb1e",
-            "shortKey": "bsc_informatik_electives_sem5",
-            "title": "Wahlmodule Informatik (Semester 5)",
-            "titleEn": "Informatics Electives (Semester 5)",
-            "description": "Wahlmodule Informatik im Umfang von 5 ECTS gemäß Studienplan.",
-            "descriptionEn": "Informatics electives totaling 5 ECTS according to the study plan.",
+            "id": "5fae2a39-5545-5c4e-a051-5019a58af963",
+            "shortKey": "tum_bsc_inf_c3",
+            "title": "Abschluss",
+            "titleEn": "Abschluss",
+            "description": "Phase: Abschluss",
+            "descriptionEn": "Phase: Abschluss",
             "core": true,
-            "weight": 5.0,
-            "phase": "S5",
-            "area": "Wahlbereich",
-            "tags": [
-                "semester:5",
-                "ects:5",
-                "category:elective"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-bsc-informatik-studyplan",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "S5",
-                "area": "Wahlbereich",
-                "topicCode": "bsc_informatik_electives_sem5"
-            },
-            "sourceRef": "https://www.cit.tum.de/en/cit/studium/studiengaenge/bachelor-informatik/studienplan/"
-        },
-        {
-            "id": "a09763b0-5d1c-5460-814b-3f8b54380c8f",
-            "shortKey": "bsc_informatik_electives_sem6",
-            "title": "Wahlmodule Informatik (Semester 6)",
-            "titleEn": "Informatics Electives (Semester 6)",
-            "description": "Wahlmodule Informatik im Umfang von 13 ECTS gemäß Studienplan.",
-            "descriptionEn": "Informatics electives totaling 13 ECTS according to the study plan.",
-            "core": true,
-            "weight": 13.0,
-            "phase": "S6",
-            "area": "Wahlbereich",
-            "tags": [
-                "semester:6",
-                "ects:13",
-                "category:elective"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-bsc-informatik-studyplan",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "S6",
-                "area": "Wahlbereich",
-                "topicCode": "bsc_informatik_electives_sem6"
-            },
-            "sourceRef": "https://www.cit.tum.de/en/cit/studium/studiengaenge/bachelor-informatik/studienplan/"
+            "weight": 5,
+            "phase": "Bereich",
+            "area": "Struktur",
+            "contains": []
         }
     ]
 }
