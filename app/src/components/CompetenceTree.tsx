@@ -88,6 +88,11 @@ const TreeNode: React.FC<TreeNodeProps> = ({
 
         if (config) {
           if (config.selected !== true) return false
+
+          // 3. Filter by 'filterId' (e.g. "LK", "GK") if configured for this landscape
+          if (config.filterId && child.tags && child.tags.length > 0 && !child.tags.includes(config.filterId)) {
+            return false
+          }
         } else {
           if (hasPositiveSibling) return false
         }
