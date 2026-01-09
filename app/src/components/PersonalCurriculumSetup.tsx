@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { X, ChevronRight, ChevronDown } from 'lucide-react'
+import { X } from 'lucide-react'
 
 interface LandscapeSummary {
     landscapeId: string
@@ -15,22 +15,7 @@ interface PersonalCurriculumConfig {
     }
 }
 
-// Reuse category logic (ideally this should be shared)
-type Category = 'SCHOOL' | 'UNI' | 'OTHER'
 
-// Helper to determine category
-const getCategory = (l: LandscapeSummary): Category => {
-    // Note: LandscapeSummary as defined here does not currently include schoolType?
-    // Let's check the interface definition at the top.
-    // It is just { landscapeId, title, subject?, filters? }
-    // We might need to extend it or infer from title.
-    const title = (l.title || '').toUpperCase()
-    // We don't have schoolType here yet. Assuming 'subject' might help or just title.
-
-    if (title.includes('SCHULE') || title.includes('GYMNASIUM') || title.includes('GYMNASIAL') || title.includes('GRUNDSCHULE')) return 'SCHOOL';
-    if (title.includes('BACHELOR') || title.includes('MASTER') || title.includes('UNI') || title.includes('HOCHSCHULE')) return 'UNI';
-    return 'OTHER';
-}
 
 interface PersonalCurriculumSetupProps {
     isOpen: boolean
@@ -67,8 +52,6 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const [config, setConfig] = useState<PersonalCurriculumConfig>(computedInitial)
     const [strategy, setStrategy] = useState<'RANDOM' | 'SEQUENTIAL'>(initialStrategy)
     const [autoPilot, setAutoPilot] = useState<boolean>(initialAutoPilot)
-    const [expanded, setExpanded] = useState<Set<string>>(new Set())
-    const [category, setCategory] = useState<Category>('SCHOOL') // Default category
 
     // Update config when initialConfig changes (e.g. loaded from backend)
     useEffect(() => {
@@ -128,59 +111,21 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         })
     }
 
-    const setFilter = (landscapeId: string, filterId: string) => {
-        setConfig(prev => {
-            const next = {
-                ...prev,
-                [landscapeId]: {
-                    ...prev[landscapeId],
-                    filterId
-                }
-            }
-            onConfigChange(next)
-            return next
-        })
-    }
-
-    const toggleExpand = (id: string) => {
-        setExpanded(prev => {
-            const next = new Set(prev)
-            if (next.has(id)) next.delete(id)
-            else next.add(id)
-            return next
-        })
-    }
+    // Removed: setFilter function
+    // Removed: toggleExpand function
 
     if (!isOpen) return null
 
     // Separate Root and Children
-    // Separate Root and Children
     const rootLandscape = availableLandscapes.find(l => l.landscapeId === rootLandscapeId)
-
-    // Filter landscapes by category
-    const filteredAvailable = availableLandscapes.filter(l => {
-        // Always show the root if it matches, but usually we filter the LIST of choices.
-        // If rootLandscapeId is set, that's the "active" one, but here we are selecting SUB-modules?
-        // The logic says: "Wähle deine Fächer".
-        // Usually availableLandscapes contains ALL available. 
-        // Let's filter childrenLandscapes.
-        return getCategory(l) === category
-    })
-
-    const childrenLandscapes = filteredAvailable
+    const childrenLandscapes = availableLandscapes
         .filter(l => l.landscapeId !== rootLandscapeId)
         .sort((a, b) => (a.subject || a.title).localeCompare(b.subject || b.title))
 
-    const categoryLabels: Record<Category, string> = {
-        'SCHOOL': 'Schule',
-        'UNI': 'Universität & Hochschule',
-        'OTHER': 'Sprachen & Weiterbildung'
-    }
-
     const renderNode = (landscape: LandscapeSummary, isRoot: boolean) => {
         const isSelected = config[landscape.landscapeId]?.selected ?? false
-        const currentFilter = config[landscape.landscapeId]?.filterId ?? ''
-        const hasFilters = landscape.filters && landscape.filters.length > 0
+        // Removed: const currentFilter = config[landscape.landscapeId]?.filterId ?? ''
+        // Removed: const hasFilters = landscape.filters && landscape.filters.length > 0
 
         return (
             <div key={landscape.landscapeId} className="flex flex-col">
@@ -188,12 +133,13 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     className={`flex items-center gap-2 p-2 rounded-md transition-colors ${isSelected ? 'bg-input-bg shadow-sm' : 'hover:bg-input-bg/50'
                         }`}
                 >
-                    <button
+                    {/* Removed expand button as it was primarily for filters */}
+                    {/* <button
                         onClick={() => toggleExpand(landscape.landscapeId)}
                         className={`p-1 rounded hover:bg-gray-200 dark:hover:bg-slate-700 text-text-secondary ${!hasFilters && !isRoot ? 'invisible' : ''}`}
                     >
                         {(expanded.has(landscape.landscapeId) || isRoot) ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
-                    </button>
+                    </button> */}
 
                     <input
                         type="checkbox"
@@ -210,8 +156,8 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     </span>
                 </div>
 
-                {/* Render Filters if expanded */}
-                {hasFilters && (expanded.has(landscape.landscapeId) || isRoot) && (
+                {/* Removed: Render Filters if expanded */}
+                {/* {hasFilters && (expanded.has(landscape.landscapeId) || isRoot) && (
                     <div className="ml-11 flex flex-col gap-1 mt-1 mb-2 border-l-2 border-border-color pl-2">
                         {landscape.filters!.map(f => (
                             <label
@@ -234,7 +180,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 )}
 
                 {/* Render Children if this is Root */}
-                {isRoot && (expanded.has(landscape.landscapeId) || true) && (
+                {isRoot && (
                     <div className="ml-6 border-l border-border-color pl-2 mt-1">
                         {childrenLandscapes.map(child => renderNode(child, false))}
                     </div>
@@ -244,37 +190,19 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     }
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4" >
             <div className="bg-sidebar-bg border border-border-color rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl transition-colors">
-                <div className="p-6 border-b border-border-color flex flex-col gap-4">
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <h2 className="text-xl font-bold text-text-primary">Mein Lehrplan</h2>
-                            <p className="text-text-secondary text-sm mt-1">Wähle deine Fächer und Kursniveaus.</p>
-                        </div>
-                        <button
-                            onClick={onClose}
-                            className="p-2 hover:bg-input-bg rounded-full transition-colors text-text-secondary hover:text-text-primary"
-                        >
-                            <X size={24} />
-                        </button>
+                <div className="p-6 border-b border-border-color flex items-center justify-between">
+                    <div>
+                        <h2 className="text-xl font-bold text-text-primary">Mein Lehrplan</h2>
+                        <p className="text-text-secondary text-sm mt-1">Wähle deine Fächer und Kursniveaus.</p>
                     </div>
-
-                    {/* Category Selector */}
-                    <div className="flex gap-2 p-1 bg-input-bg rounded-lg border border-border-color">
-                        {(['SCHOOL', 'UNI', 'OTHER'] as Category[]).map(cat => (
-                            <button
-                                key={cat}
-                                onClick={() => setCategory(cat)}
-                                className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-colors ${category === cat
-                                    ? 'bg-sky-600 text-white shadow-sm'
-                                    : 'text-text-secondary hover:bg-black/5 dark:hover:bg-white/5'
-                                    }`}
-                            >
-                                {categoryLabels[cat]}
-                            </button>
-                        ))}
-                    </div>
+                    <button
+                        onClick={onClose}
+                        className="p-2 hover:bg-input-bg rounded-full transition-colors text-text-secondary hover:text-text-primary"
+                    >
+                        <X size={24} />
+                    </button>
                 </div>
 
                 <div className="flex-1 overflow-y-auto p-4">

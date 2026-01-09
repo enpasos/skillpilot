@@ -138,25 +138,45 @@ def parse_curriculum_page(grade_url, prefix=""):
     
     for header in headers:
         text = clean_text(header.text)
-        if "Lernbereich" in text:
+        # Check for explicit "Lernbereich" OR patterns like "M5 1 ..." (SubjectGrade Number)
+        # Regex: Start with letters, then optional space, then digits. E.g. "M5", "M 5", "D 12"
+        if "Lernbereich" in text or re.match(r'^[A-Z]+\s*\d', text):
             if current_area:
                 areas.append(current_area)
             
             title = f"{prefix} {text}" if prefix else text
             current_area = {"title": title, "goals": []}
         
-        elif "Kompetenzerwartungen" in text and current_area:
+        if "Kompetenzerwartungen" in text and current_area:
             # The goals are likely in the next <ul> or valid sibling.
             # Let's look at the next sibling.
+            print(f"    DEBUG: Found Kompetenzerwartungen for {current_area['title']}")
             nxt = header.find_next_sibling()
-            while nxt and nxt.name not in ['h2', 'h3', 'h4', 'h5', 'h6', 'div']: 
+            while nxt and nxt.name not in ['h2', 'h3', 'h4', 'h5', 'h6']: 
                 # Be careful not to skip too much
+                target_ul = None
+                
+                # Debug element
+                # print(f"      DEBUG Sibling: {nxt.name}")
+
                 if nxt.name == 'ul':
-                    for li in nxt.find_all('li'):
+                    target_ul = nxt
+                elif nxt.name == 'div':
+                    # Check if ul is inside div
+                    target_ul = nxt.find('ul')
+                
+                if target_ul:
+                    goals_count = 0
+                    for li in target_ul.find_all('li'):
                         goal_text = clean_text(li.text)
                         if goal_text:
                             current_area["goals"].append(goal_text)
-                    break # Found the goals list
+                            goals_count += 1
+                    
+                    print(f"      DEBUG: Extracted {goals_count} goals.")
+                    if current_area["goals"]: # Only break if we actually found goals
+                        break 
+                
                 nxt = nxt.find_next_sibling()
     
     if current_area:
@@ -322,6 +342,10 @@ def main():
     for idx, st in enumerate(school_types):
         if idx >= LIMIT_SCHOOL_TYPES:
             break
+        
+        # FILTER: Only process Gymnasium for now to fix the reported issue quickly
+        if "Gymnasium" not in st['name']:
+            continue
             
         print(f"Processing School Type: {st['name']}")
         subjects = get_subjects(st['url'])
@@ -330,6 +354,10 @@ def main():
         for s_idx, subj in enumerate(subjects):
             if s_idx >= LIMIT_SUBJECTS_PER_TYPE:
                 break
+            
+            # FILTER: Only process Mathematik
+            if "Mathematik" not in subj['name']:
+                continue
                 
             process_subject(st['name'], subj)
             time.sleep(1)
