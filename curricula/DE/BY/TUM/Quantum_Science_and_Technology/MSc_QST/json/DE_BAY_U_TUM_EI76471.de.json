@@ -1,8 +1,8 @@
 {
     "title": "Quanteninformationstheorie (TUM, Modul EI76471)",
     "titleEn": "Quantum Information Theory (TUM, Module EI76471)",
-    "description": "Die Idee der Datenübertragung und -speicherung unter Verwendung der Eigenschaften physikalischer Systeme auf der atomaren Skala hat in den vergangenen Jahrzehnten ganze Gebiete experimenteller sowie theoretischer Forschung eröffnet.\nDas vorliegende Modul soll in die mathematische Modellierung von Quanten-Kommunikationssystemen mittels des aus der klassischen Informationstheorie bekannten Shannon'schen Zugang einführen.\nSowohl von der Themenauswahl als auch der methodischen Herangehensweise stellt das Modul eine konsequente Fortführung des Inhaltes entsprechender Module im Themenbereich klassische Informationstheorie dar. Explizit behandelt werden:\n- die mathematischen und konzeptuellen Grundlagen der Beschreibung von Quantensystemen mit endlichen Freiheitsgraden mit besonderem Fokus auf einen operationellen Zugang zur Quantentheorie\n- Quanten-Hypothesentests; Quanten-Stein's Lemma\n- Quellenkodierung für gedächtnislose Quanten-Quellen\n- Kodierungssätze für Übertragung klassischer Nachrichten über Semiklassische und Quantenmechanische gedächtnislose Kanäle\n- Fortgeschrittene Themen aus den Bereichen Informationstheoretische Sicherheit für Quantenmechanische Kanäle und Quellen, Verschränkungstheorie, Optimale Protokolle für die Generierung quantenmechanischer und klassischer Kommunikationsresourcen.",
-    "descriptionEn": "The idea of ​​data transmission and storage using the properties of physical systems at the atomic scale has opened up entire areas of experimental and theoretical research in recent decades.\nThe present module is intended to introduce the mathematical modeling of quantum communication systems using the Shannon approach known from classical information theory.\nIn terms of both the selection of topics and the methodological approach, the module represents a consistent continuation of the content of corresponding modules in the subject area of ​​classical information theory. The following are explicitly covered:\n- the mathematical and conceptual foundations of the description of quantum systems with finite degrees of freedom with a particular focus on an operational approach to quantum theory\n- quantum hypothesis testing; Quantum Stone's Lemma\n- Source coding for memoryless quantum sources\n- Coding sets for the transmission of classical messages via semi-classical and quantum mechanical memoryless channels\n- Advanced topics in the areas of information theoretical security for quantum mechanical channels and sources, entanglement theory, optimal protocols for the generation of quantum mechanical and classical communication resources.",
+    "description": "Das Modul führt in die mathematische Modellierung von Quanten-Kommunikationssystemen ein und behandelt Quantenhypothesentests, Quellen- und Kanalcodierung sowie fortgeschrittene Themen wie Sicherheit und Verschränkung.",
+    "descriptionEn": "The module introduces mathematical modeling of quantum communication systems and covers quantum hypothesis testing, source and channel coding, as well as advanced topics such as security and entanglement.",
     "locale": "de-DE",
     "subject": "TUM-Module",
     "frameworkId": "tum-ei76471",
@@ -10,10 +10,10 @@
         {
             "id": "afaa7256-876b-5cb5-ba81-f70dbc14df28",
             "shortKey": "tum_ei76471_module",
-            "title": "Quanteninformationstheorie (Modul EI76471)",
-            "titleEn": "Quantum Information Theory (Module EI76471)",
-            "description": "Die Idee der Datenübertragung und -speicherung unter Verwendung der Eigenschaften physikalischer Systeme auf der atomaren Skala hat in den vergangenen Jahrzehnten ganze Gebiete experimenteller sowie theoretischer Forschung eröffnet.\nDas vorliegende Modul soll in die mathematische Modellierung von Quanten-Kommunikationssystemen mittels des aus der klassischen Informationstheorie bekannten Shannon'schen Zugang einführen.\nSowohl von der Themenauswahl als auch der methodischen Herangehensweise stellt das Modul eine konsequente Fortführung des Inhaltes entsprechender Module im Themenbereich klassische Informationstheorie dar. Explizit behandelt werden:\n- die mathematischen und konzeptuellen Grundlagen der Beschreibung von Quantensystemen mit endlichen Freiheitsgraden mit besonderem Fokus auf einen operationellen Zugang zur Quantentheorie\n- Quanten-Hypothesentests; Quanten-Stein's Lemma\n- Quellenkodierung für gedächtnislose Quanten-Quellen\n- Kodierungssätze für Übertragung klassischer Nachrichten über Semiklassische und Quantenmechanische gedächtnislose Kanäle\n- Fortgeschrittene Themen aus den Bereichen Informationstheoretische Sicherheit für Quantenmechanische Kanäle und Quellen, Verschränkungstheorie, Optimale Protokolle für die Generierung quantenmechanischer und klassischer Kommunikationsresourcen.",
-            "descriptionEn": "The idea of ​​data transmission and storage using the properties of physical systems at the atomic scale has opened up entire areas of experimental and theoretical research in recent decades.\nThe present module is intended to introduce the mathematical modeling of quantum communication systems using the Shannon approach known from classical information theory.\nIn terms of both the selection of topics and the methodological approach, the module represents a consistent continuation of the content of corresponding modules in the subject area of ​​classical information theory. The following are explicitly covered:\n- the mathematical and conceptual foundations of the description of quantum systems with finite degrees of freedom with a particular focus on an operational approach to quantum theory\n- quantum hypothesis testing; Quantum Stone's Lemma\n- Source coding for memoryless quantum sources\n- Coding sets for the transmission of classical messages via semi-classical and quantum mechanical memoryless channels\n- Advanced topics in the areas of information theoretical security for quantum mechanical channels and sources, entanglement theory, optimal protocols for the generation of quantum mechanical and classical communication resources.",
+            "title": "Quanteninformationstheorie (EI76471)",
+            "titleEn": "Quantum Information Theory (EI76471)",
+            "description": "Die lernende Person kann Quantenkommunikationssysteme informationstheoretisch modellieren und Kodierungssätze anwenden.",
+            "descriptionEn": "The learner can model quantum communication systems using information-theoretic concepts and apply coding theorems.",
             "core": true,
             "weight": 5.0,
             "phase": "Modul",
@@ -23,21 +23,44 @@
                 "ects:5"
             ],
             "contains": [
-                "efd6c6a6-4fb8-505f-a008-526cb11a3673",
-                "8a1b3fcc-0a4f-52f4-bf0f-2470a1514dda"
+                "0ca18197-9574-5cd5-8868-2ab3bdc33f70",
+                "1cecb12d-1e0a-59f5-8b77-b6f69920d015",
+                "2b29733a-f480-5215-ab9d-e970f61fcdc7",
+                "b49bf20d-b43f-5642-bba9-6281933cb643",
+                "54c299d6-39e2-5f38-b7f5-0e8bbf6d86e3"
             ],
             "requires": [],
             "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/EI76471"
         },
         {
-            "id": "efd6c6a6-4fb8-505f-a008-526cb11a3673",
-            "shortKey": "tum_ei76471_lo1",
-            "title": "Nach dem erfolgreichen Abschluss des Moduls haben die Studierenden ein Verständn",
-            "titleEn": "After successfully completing the module, students have an understanding of mathematical and conceptual methods for treating communication scenarios for discrete memoryless semi-classical and quantum mechanical systems",
-            "description": "Nach dem erfolgreichen Abschluss des Moduls haben die Studierenden ein Verständnis für mathematische und konzeptuelle Methoden zur Behandlung von Kommunikationszenarien für diskrete gedächtnislose Semiklassische und quantenmechanische Systeme.Sie kennen die wichtigsten Kommunikationszenarien und die dazugehörigen Kodierungssätze sowie allgemeine und spezielle Strategien zu deren Beweis.",
-            "descriptionEn": "After successfully completing the module, students have an understanding of mathematical and conceptual methods for treating communication scenarios for discrete memoryless semi-classical and quantum mechanical systems. They know the most important communication scenarios and the associated coding theorems as well as general and special strategies for their proof.",
+            "id": "0ca18197-9574-5cd5-8868-2ab3bdc33f70",
+            "shortKey": "tum_ei76471_foundations_of_quantum_information_modeling",
+            "title": "Grundlagen der Modellierung in der Quanteninformationstheorie",
+            "titleEn": "Foundations of quantum information modeling",
+            "description": "Die lernende Person kann Quanteninformationstheorie mit Shannon-Konzepten und operativen Beschreibungen verbinden.",
+            "descriptionEn": "The learner can relate quantum information theory to classical Shannon concepts and operational descriptions.",
             "core": true,
-            "weight": 0.0,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:EI76471"
+            ],
+            "contains": [
+                "7e72a59d-a1fd-5f4f-a7d4-6594477367d4",
+                "fd220a25-b32d-5a13-9720-f663caa2f0f8"
+            ],
+            "requires": []
+        },
+        {
+            "id": "7e72a59d-a1fd-5f4f-a7d4-6594477367d4",
+            "shortKey": "tum_ei76471_operational_description_of_finite_dimensional_quantum_systems",
+            "title": "Operationelle Beschreibung endlichdimensionaler Quantensysteme",
+            "titleEn": "Operational description of finite-dimensional quantum systems",
+            "description": "Die lernende Person kann endlichdimensionale Quantensysteme operativ modellieren.",
+            "descriptionEn": "The learner can model finite-dimensional quantum systems with an operational approach.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
             "area": "Kompetenz",
             "tags": [
@@ -47,16 +70,210 @@
             "requires": []
         },
         {
-            "id": "8a1b3fcc-0a4f-52f4-bf0f-2470a1514dda",
-            "shortKey": "tum_ei76471_ct1",
-            "title": "Die Idee der Datenübertragung und -speicherung unter Verwendung der Eigenschafte",
-            "titleEn": "The idea of ​​data transfer and storage using the properties",
-            "description": "Die Idee der Datenübertragung und -speicherung unter Verwendung der Eigenschaften physikalischer Systeme auf der atomaren Skala hat in den vergangenen Jahrzehnten ganze Gebiete experimenteller sowie theoretischer Forschung eröffnet.",
-            "descriptionEn": "The idea of ​​data transmission and storage using the properties of physical systems at the atomic scale has opened up entire areas of experimental and theoretical research in recent decades.",
-            "core": false,
-            "weight": 0.0,
+            "id": "fd220a25-b32d-5a13-9720-f663caa2f0f8",
+            "shortKey": "tum_ei76471_connections_to_classical_information_theory",
+            "title": "Verbindungen zur klassischen Informationstheorie",
+            "titleEn": "Connections to classical information theory",
+            "description": "Die lernende Person kann Quantenmodelle mit klassischen informationstheoretischen Größen verknüpfen.",
+            "descriptionEn": "The learner can relate quantum models to classical information-theoretic quantities.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
-            "area": "Wissen",
+            "area": "Kompetenz",
+            "tags": [
+                "module:EI76471"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "1cecb12d-1e0a-59f5-8b77-b6f69920d015",
+            "shortKey": "tum_ei76471_quantum_hypothesis_testing",
+            "title": "Quantenhypothesentests",
+            "titleEn": "Quantum hypothesis testing",
+            "description": "Die lernende Person kann Hypothesentests im Quantenkontext analysieren.",
+            "descriptionEn": "The learner can analyze hypothesis tests in the quantum setting.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:EI76471"
+            ],
+            "contains": [
+                "f2009e14-2990-5d10-bd5d-7362c21a2b25"
+            ],
+            "requires": [
+                "0ca18197-9574-5cd5-8868-2ab3bdc33f70"
+            ]
+        },
+        {
+            "id": "f2009e14-2990-5d10-bd5d-7362c21a2b25",
+            "shortKey": "tum_ei76471_quantum_hypothesis_tests_and_stein_s_lemma",
+            "title": "Quantenhypothesentests und Quanten-Stein-Lemma",
+            "titleEn": "Quantum hypothesis tests and Stein's lemma",
+            "description": "Die lernende Person kann das Quanten-Stein-Lemma zur Zustandsdiskriminierung anwenden.",
+            "descriptionEn": "The learner can apply quantum Stein's lemma to discriminate states.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:EI76471"
+            ],
+            "contains": [],
+            "requires": [
+                "1cecb12d-1e0a-59f5-8b77-b6f69920d015"
+            ]
+        },
+        {
+            "id": "2b29733a-f480-5215-ab9d-e970f61fcdc7",
+            "shortKey": "tum_ei76471_source_coding_for_quantum_sources",
+            "title": "Quellenkodierung für Quantenquellen",
+            "titleEn": "Source coding for quantum sources",
+            "description": "Die lernende Person kann gedächtnislose Quantenquellen komprimieren.",
+            "descriptionEn": "The learner can compress memoryless quantum sources.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:EI76471"
+            ],
+            "contains": [
+                "ffe80b9c-22ac-5773-9381-b621a28f9719"
+            ],
+            "requires": [
+                "0ca18197-9574-5cd5-8868-2ab3bdc33f70"
+            ]
+        },
+        {
+            "id": "ffe80b9c-22ac-5773-9381-b621a28f9719",
+            "shortKey": "tum_ei76471_compression_of_memoryless_quantum_sources",
+            "title": "Kompression gedächtnisloser Quantenquellen",
+            "titleEn": "Compression of memoryless quantum sources",
+            "description": "Die lernende Person kann Schumacher-Kompression und verwandte Resultate erklären.",
+            "descriptionEn": "The learner can explain Schumacher compression and related results.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:EI76471"
+            ],
+            "contains": [],
+            "requires": [
+                "2b29733a-f480-5215-ab9d-e970f61fcdc7"
+            ]
+        },
+        {
+            "id": "b49bf20d-b43f-5642-bba9-6281933cb643",
+            "shortKey": "tum_ei76471_channel_coding_for_quantum_channels",
+            "title": "Kanalcodierung für Quantenkanäle",
+            "titleEn": "Channel coding for quantum channels",
+            "description": "Die lernende Person kann Kodierungssätze für klassische Kommunikation über Quantenkanäle analysieren.",
+            "descriptionEn": "The learner can analyze coding theorems for classical communication over quantum channels.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:EI76471"
+            ],
+            "contains": [
+                "e2e9860f-022b-59eb-994c-cec27e50f48e",
+                "1c1e861f-c8e4-55b0-8c67-ac2b79900033"
+            ],
+            "requires": [
+                "0ca18197-9574-5cd5-8868-2ab3bdc33f70"
+            ]
+        },
+        {
+            "id": "e2e9860f-022b-59eb-994c-cec27e50f48e",
+            "shortKey": "tum_ei76471_classical_messages_over_semiclassical_and_quantum_channels",
+            "title": "Klassische Nachrichten über semiklassische und Quantenkanäle",
+            "titleEn": "Classical messages over semiclassical and quantum channels",
+            "description": "Die lernende Person kann die Übertragung klassischer Nachrichten über gedächtnislose Kanäle beschreiben.",
+            "descriptionEn": "The learner can describe transmission of classical messages over memoryless channels.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:EI76471"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "1c1e861f-c8e4-55b0-8c67-ac2b79900033",
+            "shortKey": "tum_ei76471_coding_theorems_for_memoryless_quantum_channels",
+            "title": "Kodierungssätze für gedächtnislose Quantenkanäle",
+            "titleEn": "Coding theorems for memoryless quantum channels",
+            "description": "Die lernende Person kann Kodierungssätze und Beweisstrategien für Quantenkanäle skizzieren.",
+            "descriptionEn": "The learner can outline coding theorems and proof strategies for quantum channels.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:EI76471"
+            ],
+            "contains": [],
+            "requires": [
+                "e2e9860f-022b-59eb-994c-cec27e50f48e"
+            ]
+        },
+        {
+            "id": "54c299d6-39e2-5f38-b7f5-0e8bbf6d86e3",
+            "shortKey": "tum_ei76471_advanced_topics_and_communication_resources",
+            "title": "Fortgeschrittene Themen und Kommunikationsressourcen",
+            "titleEn": "Advanced topics and communication resources",
+            "description": "Die lernende Person kann fortgeschrittene Themen wie Sicherheit und Verschränkung als Ressourcen erklären.",
+            "descriptionEn": "The learner can describe advanced topics such as security and entanglement-based resources.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:EI76471"
+            ],
+            "contains": [
+                "152fc683-cc61-5783-a379-fe7c50b767ae",
+                "9ec007ca-a085-5c76-99a3-491efb7a4a87"
+            ],
+            "requires": [
+                "b49bf20d-b43f-5642-bba9-6281933cb643"
+            ]
+        },
+        {
+            "id": "152fc683-cc61-5783-a379-fe7c50b767ae",
+            "shortKey": "tum_ei76471_information_theoretic_security_for_quantum_channels",
+            "title": "Informationstheoretische Sicherheit für Quantenkanäle",
+            "titleEn": "Information-theoretic security for quantum channels",
+            "description": "Die lernende Person kann Sicherheitskonzepte für Quantenkanäle und -quellen erläutern.",
+            "descriptionEn": "The learner can explain security concepts for quantum channels and sources.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:EI76471"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "9ec007ca-a085-5c76-99a3-491efb7a4a87",
+            "shortKey": "tum_ei76471_entanglement_theory_and_resource_generation_protocols",
+            "title": "Verschränkungstheorie und Ressourcengenerierung",
+            "titleEn": "Entanglement theory and resource generation protocols",
+            "description": "Die lernende Person kann Verschränkung als Ressource und zugehörige Protokolle beschreiben.",
+            "descriptionEn": "The learner can describe entanglement-based resources and protocols for generating communication resources.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
             "tags": [
                 "module:EI76471"
             ],
