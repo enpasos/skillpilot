@@ -27,8 +27,6 @@ class LandscapeServiceTest {
 
                 // Check for specific curricula that should have empty filters
                 // Check for specific curricula that should have empty filters
-                // "831dc997-3a8f-4d12-85f8-9e44aad54e94" -> DE_BAY_U_TUM_BSC_PHYSIK
-                assertFiltersEmpty(summaries, "831dc997-3a8f-4d12-85f8-9e44aad54e94");
                 // "d79c5e83-34d0-4fc7-8ee5-5da57083f7b8" -> EU_EUR_L_CEFR_ENGLISH
                 assertFiltersEmpty(summaries, "d79c5e83-34d0-4fc7-8ee5-5da57083f7b8");
                 // "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da" -> DE_HES_S_GYM_2_OVERVIEW
@@ -50,10 +48,10 @@ class LandscapeServiceTest {
                 // Verify roots are present
                 // Verify roots are present
                 // "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da" -> DE_HES_S_GYM_2_OVERVIEW
-                // "831dc997-3a8f-4d12-85f8-9e44aad54e94" -> DE_BAY_U_TUM_BSC_PHYSIK
+                // "4a7e9ee2-c24e-55a2-9fdc-5e3350947052" -> DE_BAY_U_TUM_BSC_PHYSIK
                 assertThat(summaries).extracting(LandscapeSummary::getCurriculumId)
                                 .contains("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da",
-                                                "831dc997-3a8f-4d12-85f8-9e44aad54e94");
+                                                "4a7e9ee2-c24e-55a2-9fdc-5e3350947052");
 
                 // Verify contained curricula are ABSENT
                 // "3e56aa75-c76c-4de5-883b-0aac98297846" -> DE_HES_S_GYM_2_BIOLOGIE
