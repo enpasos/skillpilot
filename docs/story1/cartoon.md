@@ -18,3 +18,23 @@
 **Panel 4: Von Lernziel zu Lernziel** 
 * **Bild:** Der Roboter schwebt neben einem Schüler, der einen Berg besteigt. Der Roboter beleuchtet nur den *allerneuesten* Schritt auf angedeuteten Stufen vor den Füßen des Schülers.
 * **Text:** *"Er berechnet die 'Frontier': Genau der nächste Lernschritt, für den der Schüler jetzt bereit ist. Weder Langeweile noch Überforderung."*
+
+
+--------------------
+
+
+**Panel 5: Meine Erfolge**
+* **Bild:**  Der Cartoon-Charakter Max (Schüler, rotes T-Shirt, wie zuvor etabliert) sitzt vor einem Computerbildschirm. Er lächelt freundlich in die Kamera und zeigt mit dem Zeigefinger seiner rechten Hand deutlich nach oben auf den oberen Bildschirmrand (wo die URL "https://skillpilot.com" wäre). In der Sprechblase von Max steht "Ich schaue mir meine Erfolge an.".
+* **Text:** *"Erfolge: Max will genau sehen was er schon gelernt hat. Wieder gibt er 'skillpilot.com' im Browser ein, klickt aber dann auf 'Meine Erfolge'."*"*
+
+
+
+**Panel 6: Max und Mission Control**
+* **Bild:** Max: "Der Cartoon-Charakter Max (Schüler, rotes T-Shirt, wie zuvor etabliert) sitzt vor einem Computerbildschirm. Er lächelt freundlich in die Kamera und zeigt mit dem Zeigefinger seiner rechten Hand deutlich nach oben auf den oberen Bildschirmrand (wo die URL "https://skillpilot.com" wäre).". Großer Server Turm (Mission Control): Ist verbunden mit dem Computerbildschirm.
+* **Text:** *"Max gibt seine SkillPilot-ID per copy/paste aus einer Ablage ein und verbindet sich direkt mit Mission Control."*
+
+
+
+**Panel 7: Max behält Überblick**
+* **Bild:** Der Roboter schwebt neben einem Schüler, der einen Berg besteigt. Der Roboter beleuchtet nur den *allerneuesten* Schritt auf angedeuteten Stufen vor den Füßen des Schülers, aber der Schüler schaut mit einem Fernglas bis zum Gipfel.
+* **Text:** *"Die SkillPilot-GPT führt den Lernenden schritt für Schritt. Aber im Kontakt zu Mission-Control kann er schauen was noch kommt."*
