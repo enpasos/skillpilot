@@ -39,6 +39,8 @@
         "a6ee6304-8c26-4eda-b56e-676655e703c2",
         "e73eff57-dcf1-4db3-8325-ccdce9d53a3c",
         "be43163c-b2fb-5296-a1be-c97de53ee868",
+        "f204141c-c20b-504d-808c-6bcb426ce453",
+        "be43163c-b2fb-5296-a1be-c97de53ee868",
         "f204141c-c20b-504d-808c-6bcb426ce453"
       ],
       "requires": [],
@@ -12785,6 +12787,657 @@
         "demandLevel": "AB2"
       },
       "sourceRef": "abi_2026_mathe_gk.md"
+    },
+    {
+      "id": "be43163c-b2fb-5296-a1be-c97de53ee868",
+      "shortKey": "abi_lk",
+      "title": "Abiturprüfung Mathematik (LK)",
+      "titleEn": "Abitur Exam Mathematics (Advanced Course)",
+      "description": "Der Lernende kann die schriftliche Abiturprüfung Mathematik im Leistungskurs (100 BE) erfolgreich ablegen. Dies umfasst Teil 1 (hilfsmittelfrei, 30 BE) und Teil 2 (mit WTR/CAS, 70 BE).",
+      "descriptionEn": "The learner can successfully complete the written Abitur exam in Mathematics at advanced level (100 BE). This includes Part 1 (without aids, 30 BE) and Part 2 (with calculator, 70 BE).",
+      "core": true,
+      "weight": 3.0,
+      "tags": [
+        "LK"
+      ],
+      "contains": [
+        "47d7c4aa-e6a0-5955-8c24-d2d07c3cb898",
+        "3cdb44da-e46e-504c-ad61-e04b282359d2"
+      ],
+      "requires": [
+        "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa",
+        "5079ea22-57d1-483b-b9cc-5bebefb77dbc",
+        "4ab18312-0b43-461d-9154-3fba277baae7",
+        "031b5000-16bb-430a-9c11-cb625f228bf4"
+      ],
+      "examples": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "phase": "Abitur",
+        "area": "Prüfung",
+        "topicCode": "ABI"
+      },
+      "sourceRef": "Landesabitur 2026, Hinweise Kap. 19"
+    },
+    {
+      "id": "47d7c4aa-e6a0-5955-8c24-d2d07c3cb898",
+      "shortKey": "abi_lk_t1",
+      "title": "Teil 1: Hilfsmittelfrei (LK)",
+      "titleEn": "Part 1: Without Aids (LK)",
+      "description": "Prüfungsteil 1 (30 BE): 6 Aufgaben à 5 BE – 4 Pflichtaufgaben Niveau 1 + 2 Wahlaufgaben Niveau 2.",
+      "descriptionEn": "Exam Part 1 (30 BE): 6 tasks à 5 BE – 4 mandatory tasks level 1 + 2 choice tasks level 2.",
+      "core": true,
+      "weight": 2.0,
+      "tags": [
+        "LK"
+      ],
+      "contains": [
+        "2ef712f1-84fe-5395-b232-af7017163449",
+        "eebf8986-8745-51cd-8c3d-b20ab23b7577",
+        "05891de6-3ab5-5b5a-8bdd-fef64ab23c29",
+        "b715567c-ac92-51fa-b308-85254644a971",
+        "770ad9dc-abbe-5504-9dad-10a4bd96b6bb",
+        "5d77e5a8-b9f0-50e4-b9d7-29ae847c8a37"
+      ],
+      "requires": [],
+      "examples": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "Teil1"
+      }
+    },
+    {
+      "id": "2ef712f1-84fe-5395-b232-af7017163449",
+      "shortKey": "abi_lk_t1_ana_n1",
+      "title": "Analysis (Niveau 1, hilfsmittelfrei)",
+      "titleEn": "Analysis (Level 1, without aids)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nGegeben ist $f(x)=x^3-2x$.\n\na) Bestimme $f'(x)$. (2 BE)  \nb) Bestimme die Gleichung der Tangente an $f$ im Punkt $x=1$. (3 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 1, Level 1 (5 BE)**.",
+      "core": true,
+      "weight": 1.0,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa"
+      ],
+      "examples": [
+        "ABI_LK_A1",
+        "ABI_LK_A2"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "Analysis",
+        "demandLevel": "AB1"
+      }
+    },
+    {
+      "id": "eebf8986-8745-51cd-8c3d-b20ab23b7577",
+      "shortKey": "abi_lk_t1_ana_n2",
+      "title": "Analysis (Niveau 2, hilfsmittelfrei)",
+      "titleEn": "Analysis (Level 2, without aids)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nUntersuche den Grenzwert\n\n$$\n\\lim_{x\\to\\infty}\\left(\\ln(x)-\\ln(x+1)\\right)\n$$\n\nund deute das Ergebnis. (5 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 1, Level 2 (5 BE)**.",
+      "core": true,
+      "weight": 1.0,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa",
+        "031b5000-16bb-430a-9c11-cb625f228bf4"
+      ],
+      "examples": [
+        "ABI_LK_A5",
+        "ABI_LK_A6"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "Analysis",
+        "demandLevel": "AB2"
+      }
+    },
+    {
+      "id": "05891de6-3ab5-5b5a-8bdd-fef64ab23c29",
+      "shortKey": "abi_lk_t1_la_n1",
+      "title": "Lineare Algebra/Geometrie (Niveau 1, hilfsmittelfrei)",
+      "titleEn": "Linear Algebra/Geometry (Level 1, without aids)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nGegeben sind die Geraden\n\n$$\ng:\\ \\vec x=\\begin{pmatrix}1\\\\0\\\\2\\end{pmatrix}+t\\begin{pmatrix}1\\\\2\\\\-1\\end{pmatrix},\\qquad\nh:\\ \\vec x=\\begin{pmatrix}2\\\\1\\\\0\\end{pmatrix}+s\\begin{pmatrix}2\\\\4\\\\-2\\end{pmatrix}.\n$$\n\na) Begründe, dass $g\\parallel h$ gilt. (3 BE)  \nb) Bestimme den Abstand der Geraden. (2 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 1, Level 1 (5 BE)**.",
+      "core": true,
+      "weight": 1.0,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
+      ],
+      "examples": [
+        "ABI_LK_A3"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "LA/AG",
+        "demandLevel": "AB1"
+      }
+    },
+    {
+      "id": "b715567c-ac92-51fa-b308-85254644a971",
+      "shortKey": "abi_lk_t1_la_n2",
+      "title": "Lineare Algebra/Geometrie (Niveau 2, hilfsmittelfrei)",
+      "titleEn": "Linear Algebra/Geometry (Level 2, without aids)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nGegeben sind die Ebenen $E_1: x+2y-z=3$ und $E_2: 2x-y+2z=4$.\n\na) Bestimme den Winkel zwischen $E_1$ und $E_2$. (3 BE)  \nb) Bestimme eine Gleichung der Schnittgeraden $E_1\\cap E_2$. (2 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 1, Level 2 (5 BE)**.",
+      "core": true,
+      "weight": 1.0,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
+      ],
+      "examples": [
+        "ABI_LK_A7",
+        "ABI_LK_A8"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "LA/AG",
+        "demandLevel": "AB2"
+      }
+    },
+    {
+      "id": "770ad9dc-abbe-5504-9dad-10a4bd96b6bb",
+      "shortKey": "abi_lk_t1_sto_n1",
+      "title": "Stochastik (Niveau 1, hilfsmittelfrei)",
+      "titleEn": "Stochastics (Level 1, without aids)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nEin Test hat Sensitivität $0{,}95$ und Spezifität $0{,}90$. In einer Population sind $2\\%$ tatsächlich krank.\n\na) Bestimme $P(\\text{positiv})$. (3 BE)  \nb) Bestimme $P(\\text{krank}\\mid \\text{positiv})$. (2 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 1, Level 1 (5 BE)**.",
+      "core": true,
+      "weight": 1.0,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "4ab18312-0b43-461d-9154-3fba277baae7"
+      ],
+      "examples": [
+        "ABI_LK_A4"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "Stochastik",
+        "demandLevel": "AB1"
+      }
+    },
+    {
+      "id": "5d77e5a8-b9f0-50e4-b9d7-29ae847c8a37",
+      "shortKey": "abi_lk_t1_sto_n2",
+      "title": "Stochastik (Niveau 2, hilfsmittelfrei)",
+      "titleEn": "Stochastics (Level 2, without aids)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nBehauptung: „Wenn zwei Ereignisse die gleiche Wahrscheinlichkeit haben, sind sie unabhängig.“\n\nWiderlege die Behauptung durch ein Gegenbeispiel mit kurzer Begründung. (5 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 1, Level 2 (5 BE)**.",
+      "core": true,
+      "weight": 1.0,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "4ab18312-0b43-461d-9154-3fba277baae7"
+      ],
+      "examples": [
+        "ABI_LK_A9",
+        "ABI_LK_A10"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "Stochastik",
+        "demandLevel": "AB2"
+      }
+    },
+    {
+      "id": "3cdb44da-e46e-504c-ad61-e04b282359d2",
+      "shortKey": "abi_lk_t2",
+      "title": "Teil 2: Mit Hilfsmitteln (LK)",
+      "titleEn": "Part 2: With Aids (LK)",
+      "description": "Prüfungsteil 2 (70 BE): Analysis B (30 BE, Wahl), LA/AG C (20 BE, Pflicht), Stochastik D (20 BE, Pflicht). WTR/CAS erlaubt.",
+      "descriptionEn": "Exam Part 2 (70 BE): Analysis B (30 BE, choice), LA/AG C (20 BE, mandatory), Stochastics D (20 BE, mandatory). Calculator allowed.",
+      "core": true,
+      "weight": 2.0,
+      "tags": [
+        "LK"
+      ],
+      "contains": [
+        "bc60e300-96be-599a-89b6-8fcca380803d",
+        "971b981d-d8e0-5c4c-9b93-e401b19f32fc",
+        "9f3286cf-db96-58dd-8ad8-fc1e5fd71e43"
+      ],
+      "requires": [],
+      "examples": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "Teil2"
+      }
+    },
+    {
+      "id": "bc60e300-96be-599a-89b6-8fcca380803d",
+      "shortKey": "abi_lk_t2_ana",
+      "title": "Analysis B (mit Hilfsmitteln, 30 BE)",
+      "titleEn": "Analysis B (with aids, 30 BE)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 2 (30 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nGegeben ist\n\n$$\nf(x)=x\\cdot e^{-0{,}5x}\\quad (x\\ge 0).\n$$\n\na) Bestimme $f'(x)$ und den Ort des Maximums. (6 BE)  \nb) Berechne den maximalen Funktionswert. (3 BE)  \nc) Bestimme die Fläche $A=\\int_0^{6} f(x)\\,dx$. (6 BE)  \nd) Bestimme den Grenzwert $\\lim_{x\\to\\infty} f(x)$ und deute. (3 BE)  \ne) Gegeben sei die Schar $f_a(x)=x e^{-ax}$ mit $a>0$. Bestimme $a$ so, dass das Maximum bei $x=4$ liegt. (5 BE)  \nf) **WTR/CAS:** Bestimme näherungsweise $x$ mit\n\n$$\n\\int_0^{x} f(t)\\,dt = 1{,}5.\n$$\n\nDokumentiere Vorgehen (Integralgleichung, Tool-Schritte, Ergebnisprüfung). (7 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 2 (30 BE)**.",
+      "core": true,
+      "weight": 1.5,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa",
+        "031b5000-16bb-430a-9c11-cb625f228bf4"
+      ],
+      "examples": [
+        "ABI_LK_B1",
+        "ABI_LK_B2"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "Analysis",
+        "demandLevel": "AB3"
+      }
+    },
+    {
+      "id": "971b981d-d8e0-5c4c-9b93-e401b19f32fc",
+      "shortKey": "abi_lk_t2_la",
+      "title": "Lineare Algebra/Geometrie C (mit Hilfsmitteln, 20 BE)",
+      "titleEn": "Linear Algebra/Geometry C (with aids, 20 BE)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 2 (20 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n**Teil I: Raumgeometrie**\n\nGegeben sind $A(1,2,0)$, $B(5,2,2)$, $C(1,6,2)$. Ebene $E$ geht durch $A,B,C$.\n\na) Bestimme eine Koordinatenform von $E$. (5 BE)  \n\nb) Gegeben ist\n\n$$\ng:\\ \\vec x=\\begin{pmatrix}1\\\\2\\\\5\\end{pmatrix}+s\\begin{pmatrix}2\\\\0\\\\-1\\end{pmatrix}.\n$$\n\nUntersuche die Lage von $g$ zu $E$ und bestimme ggf. den Schnittpunkt. (5 BE)  \n\nc) Bestimme den Winkel zwischen $g$ und $E$. (4 BE)\n\n**Teil II: Übergangsprozess (Markov, Q2.4)**\n\nEin Prozess hat (Spalten-)Übergangsmatrix\n\n$$\nM=\\begin{pmatrix}0{,}8&0{,}3\\\\0{,}2&0{,}7\\end{pmatrix},\\quad v_{n+1}=Mv_n.\n$$\n\nd) Bestimme einen Fixvektor $v$ mit $Mv=v$ und $v_1+v_2=1$. (4 BE)  \ne) **WTR/CAS:** Berechne $v_{5}$ für $v_0=\\binom{1}{0}$ und interpretiere die Bedeutung. Dokumentiere Matrixpotenzen/Multiplikationsschritte. (2 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 2 (20 BE)**.",
+      "core": true,
+      "weight": 1.5,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
+      ],
+      "examples": [
+        "ABI_LK_C"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "LA/AG",
+        "demandLevel": "AB3"
+      }
+    },
+    {
+      "id": "9f3286cf-db96-58dd-8ad8-fc1e5fd71e43",
+      "shortKey": "abi_lk_t2_sto",
+      "title": "Stochastik D (mit Hilfsmitteln, 20 BE)",
+      "titleEn": "Stochastics D (with aids, 20 BE)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 2 (20 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nEin Hersteller behauptet: „Der Ausschussanteil liegt bei höchstens $p=0{,}03$.“  \nStichprobe: $n=200$, beobachtet $x=11$.\n\na) Formuliere $H_0$ und $H_1$ (einseitig) und gib das Modell $X$ an. (3 BE)  \nb) **WTR/CAS:** Bestimme den Ablehnungsbereich für $\\alpha=5\\%$  \n(kleinstes $k$ mit $P_{H_0}(X\\ge k)\\le 0{,}05$). Dokumentation Pflicht. (6 BE)  \nc) Triff die Testentscheidung und formuliere das Ergebnis im Kontext. (4 BE)  \nd) Erkläre Fehler 1. und 2. Art in diesem Kontext (je ein Satz pro Fehler). (4 BE)  \n\ne) **Normalverteilung inkl. inverse Fragestellung (WTR/CAS):**  \nEs sei $Y\\sim\\mathcal N(\\mu=50,\\sigma=4)$.  \nBestimme $P(46\\le Y\\le 58)$ und den Wert $c$, sodass $P(Y\\le c)=0{,}95$.  \nDokumentiere Vorgehen/Tool. (3 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 2 (20 BE)**.",
+      "core": true,
+      "weight": 1.5,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "4ab18312-0b43-461d-9154-3fba277baae7"
+      ],
+      "examples": [
+        "ABI_LK_D"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "Stochastik",
+        "demandLevel": "AB3"
+      }
+    },
+    {
+      "id": "f204141c-c20b-504d-808c-6bcb426ce453",
+      "shortKey": "abi_gk",
+      "title": "Abiturprüfung Mathematik (GK)",
+      "titleEn": "Abitur Exam Mathematics (Basic Course)",
+      "description": "Der Lernende kann die schriftliche Abiturprüfung Mathematik im Grundkurs (80 BE) erfolgreich ablegen. Dies umfasst Teil 1 (hilfsmittelfrei, 25 BE) und Teil 2 (mit WTR/CAS, 55 BE).",
+      "descriptionEn": "The learner can successfully complete the written Abitur exam in Mathematics at basic level (80 BE). This includes Part 1 (without aids, 25 BE) and Part 2 (with calculator, 55 BE).",
+      "core": true,
+      "weight": 3.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [
+        "bdf27846-8d7a-5a48-a108-3e5a9660e62a",
+        "f13a3bae-88ed-53e9-b5a7-21179a264119"
+      ],
+      "requires": [
+        "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa",
+        "5079ea22-57d1-483b-b9cc-5bebefb77dbc",
+        "4ab18312-0b43-461d-9154-3fba277baae7",
+        "031b5000-16bb-430a-9c11-cb625f228bf4"
+      ],
+      "examples": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "phase": "Abitur",
+        "area": "Prüfung",
+        "topicCode": "ABI"
+      },
+      "sourceRef": "Landesabitur 2026, Hinweise Kap. 19"
+    },
+    {
+      "id": "bdf27846-8d7a-5a48-a108-3e5a9660e62a",
+      "shortKey": "abi_gk_t1",
+      "title": "Teil 1: Hilfsmittelfrei (GK)",
+      "titleEn": "Part 1: Without Aids (GK)",
+      "description": "Prüfungsteil 1 (25 BE): 5 Aufgaben à 5 BE – 3 Pflichtaufgaben Niveau 1 + 1 Wahlaufgabe Niveau 1 + 1 Wahlaufgabe Niveau 2.",
+      "descriptionEn": "Exam Part 1 (25 BE): 5 tasks à 5 BE – 3 mandatory level 1 + 1 choice level 1 + 1 choice level 2.",
+      "core": true,
+      "weight": 2.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [
+        "52470a68-dd71-5a8c-b312-e5faab22959f",
+        "f2d5f069-a1fa-5df5-aa69-eb5e32865b95",
+        "828178ed-12eb-5b15-b346-c6a18a2e38bf",
+        "5bdcd7bd-fa83-5bbe-8f40-b019f90c04d5",
+        "4414c5fa-ceaa-54f0-bbf2-d605f0d48431",
+        "2641019d-08a3-589c-a23a-772c80f3dd9f"
+      ],
+      "requires": [],
+      "examples": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "Teil1"
+      }
+    },
+    {
+      "id": "52470a68-dd71-5a8c-b312-e5faab22959f",
+      "shortKey": "abi_gk_t1_ana_n1",
+      "title": "Analysis (Niveau 1, hilfsmittelfrei)",
+      "titleEn": "Analysis (Level 1, without aids)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nGegeben ist die Funktion $f(x)=2x-1$.\n\na) Berechne $f(3)$ und $f(-2)$. (2 BE)  \nb) Bestimme die Nullstelle von $f$. (3 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 1, Level 1 (5 BE)**.",
+      "core": true,
+      "weight": 1.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa"
+      ],
+      "examples": [
+        "ABI_GK_A1",
+        "ABI_GK_A4"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "Analysis",
+        "demandLevel": "AB1"
+      }
+    },
+    {
+      "id": "f2d5f069-a1fa-5df5-aa69-eb5e32865b95",
+      "shortKey": "abi_gk_t1_ana_n2",
+      "title": "Analysis (Niveau 2, hilfsmittelfrei)",
+      "titleEn": "Analysis (Level 2, without aids)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nEin Rechteck hat Umfang $40$ cm.\n\na) Stelle die Fläche $A(x)$ als Funktion einer Seitenlänge $x$ auf. (2 BE)  \nb) Bestimme die Seitenlängen mit maximaler Fläche und begründe kurz. (3 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 1, Level 2 (5 BE)**.",
+      "core": true,
+      "weight": 1.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa",
+        "031b5000-16bb-430a-9c11-cb625f228bf4"
+      ],
+      "examples": [
+        "ABI_GK_A7"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "Analysis",
+        "demandLevel": "AB2"
+      }
+    },
+    {
+      "id": "828178ed-12eb-5b15-b346-c6a18a2e38bf",
+      "shortKey": "abi_gk_t1_la_n1",
+      "title": "Lineare Algebra/Geometrie (Niveau 1, hilfsmittelfrei)",
+      "titleEn": "Linear Algebra/Geometry (Level 1, without aids)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nGegeben sind die Punkte $A(1,2,0)$ und $B(5,0,2)$.\n\na) Bestimme den Richtungsvektor $\\overrightarrow{AB}$. (2 BE)  \nb) Gib eine Parametergleichung der Geraden $g$ durch $A$ und $B$ an. (3 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 1, Level 1 (5 BE)**.",
+      "core": true,
+      "weight": 1.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
+      ],
+      "examples": [
+        "ABI_GK_A2",
+        "ABI_GK_A5"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "LA/AG",
+        "demandLevel": "AB1"
+      }
+    },
+    {
+      "id": "5bdcd7bd-fa83-5bbe-8f40-b019f90c04d5",
+      "shortKey": "abi_gk_t1_la_n2",
+      "title": "Lineare Algebra/Geometrie (Niveau 2, hilfsmittelfrei)",
+      "titleEn": "Linear Algebra/Geometry (Level 2, without aids)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nGegeben sind die Geraden\n\n$$\ng:\\ \\vec x=\\begin{pmatrix}1\\\\0\\\\2\\end{pmatrix}+t\\begin{pmatrix}2\\\\1\\\\0\\end{pmatrix},\\qquad\nh:\\ \\vec x=\\begin{pmatrix}3\\\\1\\\\2\\end{pmatrix}+s\\begin{pmatrix}4\\\\2\\\\0\\end{pmatrix}.\n$$\n\na) Untersuche, ob $g$ und $h$ parallel sind. (3 BE)  \nb) Bestimme den Winkel zwischen den Richtungsvektoren. (2 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 1, Level 2 (5 BE)**.",
+      "core": true,
+      "weight": 1.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
+      ],
+      "examples": [
+        "ABI_GK_A8"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "LA/AG",
+        "demandLevel": "AB2"
+      }
+    },
+    {
+      "id": "4414c5fa-ceaa-54f0-bbf2-d605f0d48431",
+      "shortKey": "abi_gk_t1_sto_n1",
+      "title": "Stochastik (Niveau 1, hilfsmittelfrei)",
+      "titleEn": "Stochastics (Level 1, without aids)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nIn einer Urne liegen 3 rote und 2 blaue Kugeln. Es wird **zweimal mit Zurücklegen** gezogen.\n\na) Bestimme $P(\\text{rot, dann blau})$. (2 BE)  \nb) Bestimme $P(\\text{genau eine rote Kugel})$. (3 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 1, Level 1 (5 BE)**.",
+      "core": true,
+      "weight": 1.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "4ab18312-0b43-461d-9154-3fba277baae7"
+      ],
+      "examples": [
+        "ABI_GK_A3",
+        "ABI_GK_A6"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "Stochastik",
+        "demandLevel": "AB1"
+      }
+    },
+    {
+      "id": "2641019d-08a3-589c-a23a-772c80f3dd9f",
+      "shortKey": "abi_gk_t1_sto_n2",
+      "title": "Stochastik (Niveau 2, hilfsmittelfrei)",
+      "titleEn": "Stochastics (Level 2, without aids)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nIn einer Klasse sind 60% der Lernenden mit dem Bus gekommen, 40% zu Fuß.  \nVon den Busfahrenden sind 10% zu spät, von den Fußgehenden 5% zu spät.\n\na) Bestimme $P(\\text{zu spät})$. (3 BE)  \nb) Bestimme $P(\\text{Bus}\\mid \\text{zu spät})$. (2 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 1, Level 2 (5 BE)**.",
+      "core": true,
+      "weight": 1.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "4ab18312-0b43-461d-9154-3fba277baae7"
+      ],
+      "examples": [
+        "ABI_GK_A9"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "Stochastik",
+        "demandLevel": "AB2"
+      }
+    },
+    {
+      "id": "f13a3bae-88ed-53e9-b5a7-21179a264119",
+      "shortKey": "abi_gk_t2",
+      "title": "Teil 2: Mit Hilfsmitteln (GK)",
+      "titleEn": "Part 2: With Aids (GK)",
+      "description": "Prüfungsteil 2 (55 BE): Analysis B (25 BE, Wahl), LA/AG C (15 BE, Pflicht), Stochastik D (15 BE, Pflicht). WTR/CAS erlaubt.",
+      "descriptionEn": "Exam Part 2 (55 BE): Analysis B (25 BE, choice), LA/AG C (15 BE, mandatory), Stochastics D (15 BE, mandatory). Calculator allowed.",
+      "core": true,
+      "weight": 2.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [
+        "0ba923a8-1641-51a7-b01e-7860bf97d513",
+        "147b8cd6-b659-5581-9875-45c3339b522b",
+        "7ed9c402-73a2-5eb2-ba74-fcc7f0ca756e"
+      ],
+      "requires": [],
+      "examples": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "Teil2"
+      }
+    },
+    {
+      "id": "0ba923a8-1641-51a7-b01e-7860bf97d513",
+      "shortKey": "abi_gk_t2_ana",
+      "title": "Analysis B (mit Hilfsmitteln, 25 BE)",
+      "titleEn": "Analysis B (with aids, 25 BE)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 2 (25 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n**Kontext:** Eine Zuflussrate in ein Becken (in $\\mathrm{m^3/h}$) sei\n\n$$\nr(t)=6t\\,e^{-0{,}5t}\\quad (t\\ge 0).\n$$\n\nZu Beginn sind $B(0)=2\\ \\mathrm{m^3}$ im Becken.\n\na) Bestimme $B(t)$ als Bestand (mit Anfangsbestand) und vereinfache so weit wie möglich. (7 BE)  \nb) Bestimme den Zeitpunkt, an dem $r(t)$ maximal ist, und interpretiere das Ergebnis. (6 BE)  \nc) Berechne die insgesamt bis $t=6$ zugeflossene Wassermenge. (4 BE)  \nd) Bestimme den Grenzwert $\\lim_{t\\to\\infty} r(t)$ und deute ihn. (4 BE)  \ne) **WTR/CAS:** Bestimme näherungsweise den Zeitpunkt $t$, zu dem $B(t)=20$ gilt.  \nDokumentiere Vorgehen (Gleichung, Tool-Schritte, Ergebnisprüfung). (4 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 2 (25 BE)**.",
+      "core": true,
+      "weight": 1.5,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa",
+        "031b5000-16bb-430a-9c11-cb625f228bf4"
+      ],
+      "examples": [
+        "ABI_GK_B1",
+        "ABI_GK_B2"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "Analysis",
+        "demandLevel": "AB2"
+      }
+    },
+    {
+      "id": "147b8cd6-b659-5581-9875-45c3339b522b",
+      "shortKey": "abi_gk_t2_la",
+      "title": "Lineare Algebra/Geometrie C (mit Hilfsmitteln, 15 BE)",
+      "titleEn": "Linear Algebra/Geometry C (with aids, 15 BE)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 2 (15 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nGegeben sind $A(1,2,0)$, $B(5,2,2)$, $C(1,6,2)$.  \nDie Ebene $E$ geht durch $A,B,C$.\n\na) Bestimme eine Ebenengleichung von $E$ in Koordinatenform. (5 BE)  \nb) Untersuche, ob $P(3,4,1)$ auf $E$ liegt. (2 BE)  \nc) Bestimme den Winkel zwischen der Geraden\n\n$$\ng:\\ \\vec x=\\begin{pmatrix}1\\\\2\\\\5\\end{pmatrix}+s\\begin{pmatrix}2\\\\0\\\\-1\\end{pmatrix}\n$$\n\nund der Ebene $E$. (4 BE)  \nd) Bestimme den Abstand des Punktes $P(3,4,1)$ von $E$. (4 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 2 (15 BE)**.",
+      "core": true,
+      "weight": 1.5,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
+      ],
+      "examples": [
+        "ABI_GK_C"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "LA/AG",
+        "demandLevel": "AB2"
+      }
+    },
+    {
+      "id": "7ed9c402-73a2-5eb2-ba74-fcc7f0ca756e",
+      "shortKey": "abi_gk_t2_sto",
+      "title": "Stochastik D (mit Hilfsmitteln, 15 BE)",
+      "titleEn": "Stochastics D (with aids, 15 BE)",
+      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 2 (15 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nEin Hersteller behauptet: „Der Ausschussanteil liegt bei höchstens $p=0{,}03$.“  \nIn einer Stichprobe von $n=200$ Teilen werden $x=11$ Ausschussteile gefunden.\n\na) Modellieren Sie mit $X\\sim\\mathrm{Bin}(n,p)$ unter $H_0$ und formulieren Sie $H_0$ und $H_1$ (einseitig). (3 BE)  \nb) **WTR/CAS:** Bestimmen Sie den Ablehnungsbereich zum Signifikanzniveau $\\alpha=5\\%$  \n(kleinstes $k$ mit $P_{H_0}(X\\ge k)\\le 0{,}05$). Dokumentation Pflicht. (6 BE)  \nc) Treffen Sie die Testentscheidung für $x=11$ und formulieren Sie das Ergebnis im Kontext. (4 BE)  \nd) **Inverse Fragestellung (WTR/CAS):** Zeigen Sie an einem kurzen Beispiel, dass bei größerem Stichprobenumfang $n$ Prognose-/Konfidenzintervalle typischerweise enger werden.  \n(qualitativ + eine Tool-gestützte Beispielrechnung). (2 BE)",
+      "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 2 (15 BE)**.",
+      "core": true,
+      "weight": 1.5,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "4ab18312-0b43-461d-9154-3fba277baae7"
+      ],
+      "examples": [
+        "ABI_GK_D"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "area": "Stochastik",
+        "demandLevel": "AB2"
+      }
     }
   ]
 }

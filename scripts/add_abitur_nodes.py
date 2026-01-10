@@ -4,15 +4,70 @@ Adds Abiturprüfung (LK and GK) nodes to the Hessen Mathematics curriculum.
 """
 import json
 import uuid
+import re
 from pathlib import Path
 
 def generate_uuid(seed: str) -> str:
     """Generate deterministic UUID from seed string."""
     return str(uuid.uuid5(uuid.NAMESPACE_DNS, f"hessen-abi-math-{seed}"))
 
+def extract_tasks_from_markdown(file_path: Path) -> dict:
+    """
+    Extracts tasks from the given Markdown file.
+    Returns a dictionary mapping task IDs (e.g., 'A1', 'B1', 'C', 'D') to their full description text.
+    """
+    if not file_path.exists():
+        print(f"Error: Markdown file not found at {file_path}")
+        return {}
+
+    with open(file_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    tasks = {}
+    
+    # Regex to find task headers like "### A1 ..." or "## B1 ..."
+    # We capture the identifier (A1, B1, C, etc.)
+    # and then capture everything until the next '---' or end of string.
+    
+    # Pattern explanation:
+    # ^#{2,3}\s+       : Starts with ## or ### and whitespace
+    # ([A-Z][0-9]?)    : Group 1: The ID (A1, A10, B1, C, D)
+    # .*?\n            : Rest of the header line
+    # (.*?)            : Group 2: The content (non-greedy)
+    # (?=\n---|$)      : Lookahead for next separator or end of file
+    
+    pattern = re.compile(r'^#{2,3}\s+([A-Z][0-9]*)\s.*?\n(.*?)(?=\n---|\Z)', re.DOTALL | re.MULTILINE)
+    
+    for match in pattern.finditer(content):
+        task_id = match.group(1)
+        task_text = match.group(2).strip()
+        tasks[task_id] = task_text
+
+    return tasks
+
 def main():
+    base_path = Path("curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi")
     json_path = Path("curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json")
     
+    # Parse Markdown files
+    lk_file = base_path / "abi_2026_mathe_lk.md"
+    gk_file = base_path / "abi_2026_mathe_gk.md"
+    
+    print(f"Reading LK tasks from {lk_file}")
+    lk_tasks = extract_tasks_from_markdown(lk_file)
+    print(f"Found LK tasks: {list(lk_tasks.keys())}")
+    
+    print(f"Reading GK tasks from {gk_file}")
+    gk_tasks = extract_tasks_from_markdown(gk_file)
+    print(f"Found GK tasks: {list(gk_tasks.keys())}")
+
+    # Helper to safely get task text
+    def get_task_text(tasks, task_id):
+        if task_id not in tasks:
+            print(f"Warning: Task {task_id} not found in source markdown.")
+            return "Aufgabentext konnte nicht geladen werden."
+        return tasks[task_id]
+
     with open(json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
@@ -105,8 +160,8 @@ def main():
             "shortKey": "abi_lk_t1_ana_n1",
             "title": "Analysis (Niveau 1, hilfsmittelfrei)",
             "titleEn": "Analysis (Level 1, without aids)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 1, Niveau 1 (5 BE)** – Ableitungen bestimmen, Tangentengleichungen aufstellen, bestimmte Integrale berechnen. Ein Beispiel für eine solche Aufgabe ist: Gegeben ist f(x)=x³-2x. a) Bestimme f'(x). (2 BE) b) Bestimme die Gleichung der Tangente an f im Punkt x=1. (3 BE)",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 1, Level 1 (5 BE)** – determine derivatives, set up tangent equations, calculate definite integrals.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(lk_tasks, 'A1')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 1, Level 1 (5 BE)**.",
             "core": True,
             "weight": 1.0,
             "tags": ["LK"],
@@ -122,8 +177,8 @@ def main():
             "shortKey": "abi_lk_t1_ana_n2",
             "title": "Analysis (Niveau 2, hilfsmittelfrei)",
             "titleEn": "Analysis (Level 2, without aids)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 1, Niveau 2 (5 BE)** – Grenzwerte untersuchen, Funktionenscharen analysieren, Modellierungsaufgaben. Ein Beispiel für eine solche Aufgabe ist: Untersuche den Grenzwert lim_{x→∞}(ln(x)-ln(x+1)) und deute das Ergebnis. (5 BE)",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 1, Level 2 (5 BE)** – investigate limits, analyze function families, modelling tasks.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(lk_tasks, 'A5')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 1, Level 2 (5 BE)**.",
             "core": True,
             "weight": 1.0,
             "tags": ["LK"],
@@ -139,8 +194,8 @@ def main():
             "shortKey": "abi_lk_t1_la_n1",
             "title": "Lineare Algebra/Geometrie (Niveau 1, hilfsmittelfrei)",
             "titleEn": "Linear Algebra/Geometry (Level 1, without aids)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 1, Niveau 1 (5 BE)** – Geraden auf Parallelität prüfen, Abstände berechnen. Ein Beispiel für eine solche Aufgabe ist: Gegeben sind die Geraden g und h. a) Begründe, dass g∥h gilt. (3 BE) b) Bestimme den Abstand der Geraden. (2 BE)",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 1, Level 1 (5 BE)** – check lines for parallelism, calculate distances.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(lk_tasks, 'A3')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 1, Level 1 (5 BE)**.",
             "core": True,
             "weight": 1.0,
             "tags": ["LK"],
@@ -156,8 +211,8 @@ def main():
             "shortKey": "abi_lk_t1_la_n2",
             "title": "Lineare Algebra/Geometrie (Niveau 2, hilfsmittelfrei)",
             "titleEn": "Linear Algebra/Geometry (Level 2, without aids)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 1, Niveau 2 (5 BE)** – Winkel zwischen Ebenen, Schnittgeraden, Markov-Prozesse. Ein Beispiel für eine solche Aufgabe ist: Gegeben sind die Ebenen E₁: x+2y-z=3 und E₂: 2x-y+2z=4. a) Bestimme den Winkel zwischen E₁ und E₂. (3 BE) b) Bestimme eine Gleichung der Schnittgeraden. (2 BE)",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 1, Level 2 (5 BE)** – angles between planes, intersection lines, Markov processes.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(lk_tasks, 'A7')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 1, Level 2 (5 BE)**.",
             "core": True,
             "weight": 1.0,
             "tags": ["LK"],
@@ -173,8 +228,8 @@ def main():
             "shortKey": "abi_lk_t1_sto_n1",
             "title": "Stochastik (Niveau 1, hilfsmittelfrei)",
             "titleEn": "Stochastics (Level 1, without aids)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 1, Niveau 1 (5 BE)** – Bedingte Wahrscheinlichkeiten, Sensitivität/Spezifität. Ein Beispiel für eine solche Aufgabe ist: Ein Test hat Sensitivität 0,95 und Spezifität 0,90. In einer Population sind 2% tatsächlich krank. a) Bestimme P(positiv). (3 BE) b) Bestimme P(krank|positiv). (2 BE)",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 1, Level 1 (5 BE)** – conditional probabilities, sensitivity/specificity.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(lk_tasks, 'A4')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 1, Level 1 (5 BE)**.",
             "core": True,
             "weight": 1.0,
             "tags": ["LK"],
@@ -190,8 +245,8 @@ def main():
             "shortKey": "abi_lk_t1_sto_n2",
             "title": "Stochastik (Niveau 2, hilfsmittelfrei)",
             "titleEn": "Stochastics (Level 2, without aids)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 1, Niveau 2 (5 BE)** – Hypothesentests, Argumentieren mit Gegenbeispielen. Ein Beispiel für eine solche Aufgabe ist: Behauptung: „Wenn zwei Ereignisse die gleiche Wahrscheinlichkeit haben, sind sie unabhängig." Widerlege die Behauptung durch ein Gegenbeispiel mit kurzer Begründung. (5 BE)",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 1, Level 2 (5 BE)** – hypothesis tests, reasoning with counterexamples.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(lk_tasks, 'A10')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 1, Level 2 (5 BE)**.",
             "core": True,
             "weight": 1.0,
             "tags": ["LK"],
@@ -224,8 +279,8 @@ def main():
             "shortKey": "abi_lk_t2_ana",
             "title": "Analysis B (mit Hilfsmitteln, 30 BE)",
             "titleEn": "Analysis B (with aids, 30 BE)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 2 (30 BE)** – Kurvendiskussion, Integralrechnung, Grenzwerte, Parameterbestimmung, WTR/CAS-Dokumentation. Ein Beispiel für eine solche Aufgabe ist: Gegeben ist f(x)=x·e^(-0,5x). a) Bestimme f'(x) und den Ort des Maximums. b) Berechne die Fläche A=∫₀⁶ f(x)dx. c) Bestimme lim_{x→∞} f(x). d) WTR/CAS: Bestimme näherungsweise x mit ∫₀ˣ f(t)dt = 1,5.",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 2 (30 BE)** – curve analysis, integral calculus, limits, parameter determination, calculator documentation.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 2 (30 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(lk_tasks, 'B1')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 2 (30 BE)**.",
             "core": True,
             "weight": 1.5,
             "tags": ["LK"],
@@ -241,8 +296,8 @@ def main():
             "shortKey": "abi_lk_t2_la",
             "title": "Lineare Algebra/Geometrie C (mit Hilfsmitteln, 20 BE)",
             "titleEn": "Linear Algebra/Geometry C (with aids, 20 BE)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 2 (20 BE)** – Ebenengleichungen, Lagebeziehungen, Winkel, Markov-Prozesse, Fixvektoren. Ein Beispiel für eine solche Aufgabe ist: Gegeben sind A(1,2,0), B(5,2,2), C(1,6,2). a) Bestimme eine Koordinatenform der Ebene E. b) Untersuche die Lage einer Geraden g zu E. c) Bestimme einen Fixvektor für eine Übergangsmatrix M.",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 2 (20 BE)** – plane equations, position relations, angles, Markov processes, fixed vectors.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 2 (20 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(lk_tasks, 'C')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 2 (20 BE)**.",
             "core": True,
             "weight": 1.5,
             "tags": ["LK"],
@@ -258,8 +313,8 @@ def main():
             "shortKey": "abi_lk_t2_sto",
             "title": "Stochastik D (mit Hilfsmitteln, 20 BE)",
             "titleEn": "Stochastics D (with aids, 20 BE)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 2 (20 BE)** – Hypothesentest mit Ablehnungsbereich (WTR/CAS), Fehler 1./2. Art, Normalverteilung inkl. inverse Fragestellung. Ein Beispiel für eine solche Aufgabe ist: Ein Hersteller behauptet Ausschussanteil p≤0,03. Stichprobe n=200, beobachtet x=11. a) Formuliere H₀ und H₁. b) WTR/CAS: Bestimme den Ablehnungsbereich für α=5%. c) Erkläre Fehler 1. und 2. Art. d) Bestimme P(46≤Y≤58) für Y~N(50,4) und c mit P(Y≤c)=0,95.",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 2 (20 BE)** – hypothesis test with rejection region (calculator), type I/II errors, normal distribution including inverse questions.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 2 (20 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(lk_tasks, 'D')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 2 (20 BE)**.",
             "core": True,
             "weight": 1.5,
             "tags": ["LK"],
@@ -316,8 +371,8 @@ def main():
             "shortKey": "abi_gk_t1_ana_n1",
             "title": "Analysis (Niveau 1, hilfsmittelfrei)",
             "titleEn": "Analysis (Level 1, without aids)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 1, Niveau 1 (5 BE)** – Funktionswerte berechnen, Nullstellen bestimmen, Ableitungen. Ein Beispiel für eine solche Aufgabe ist: Gegeben ist die Funktion f(x)=2x-1. a) Berechne f(3) und f(-2). (2 BE) b) Bestimme die Nullstelle von f. (3 BE)",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 1, Level 1 (5 BE)** – calculate function values, determine zeros, derivatives.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(gk_tasks, 'A1')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 1, Level 1 (5 BE)**.",
             "core": True,
             "weight": 1.0,
             "tags": ["GK"],
@@ -333,8 +388,8 @@ def main():
             "shortKey": "abi_gk_t1_ana_n2",
             "title": "Analysis (Niveau 2, hilfsmittelfrei)",
             "titleEn": "Analysis (Level 2, without aids)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 1, Niveau 2 (5 BE)** – Extremwertaufgaben, Modellierung. Ein Beispiel für eine solche Aufgabe ist: Ein Rechteck hat Umfang 40 cm. a) Stelle die Fläche A(x) als Funktion einer Seitenlänge x auf. (2 BE) b) Bestimme die Seitenlängen mit maximaler Fläche und begründe kurz. (3 BE)",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 1, Level 2 (5 BE)** – optimization problems, modelling.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(gk_tasks, 'A7')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 1, Level 2 (5 BE)**.",
             "core": True,
             "weight": 1.0,
             "tags": ["GK"],
@@ -350,8 +405,8 @@ def main():
             "shortKey": "abi_gk_t1_la_n1",
             "title": "Lineare Algebra/Geometrie (Niveau 1, hilfsmittelfrei)",
             "titleEn": "Linear Algebra/Geometry (Level 1, without aids)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 1, Niveau 1 (5 BE)** – Richtungsvektoren, Geradengleichungen, Normalenvektoren. Ein Beispiel für eine solche Aufgabe ist: Gegeben sind die Punkte A(1,2,0) und B(5,0,2). a) Bestimme den Richtungsvektor AB. (2 BE) b) Gib eine Parametergleichung der Geraden g durch A und B an. (3 BE)",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 1, Level 1 (5 BE)** – direction vectors, line equations, normal vectors.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(gk_tasks, 'A2')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 1, Level 1 (5 BE)**.",
             "core": True,
             "weight": 1.0,
             "tags": ["GK"],
@@ -367,8 +422,8 @@ def main():
             "shortKey": "abi_gk_t1_la_n2",
             "title": "Lineare Algebra/Geometrie (Niveau 2, hilfsmittelfrei)",
             "titleEn": "Linear Algebra/Geometry (Level 2, without aids)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 1, Niveau 2 (5 BE)** – Parallelität prüfen, Winkel zwischen Richtungsvektoren. Ein Beispiel für eine solche Aufgabe ist: Gegeben sind die Geraden g und h. a) Untersuche, ob g und h parallel sind. (3 BE) b) Bestimme den Winkel zwischen den Richtungsvektoren. (2 BE)",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 1, Level 2 (5 BE)** – check parallelism, angles between direction vectors.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(gk_tasks, 'A8')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 1, Level 2 (5 BE)**.",
             "core": True,
             "weight": 1.0,
             "tags": ["GK"],
@@ -384,8 +439,8 @@ def main():
             "shortKey": "abi_gk_t1_sto_n1",
             "title": "Stochastik (Niveau 1, hilfsmittelfrei)",
             "titleEn": "Stochastics (Level 1, without aids)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 1, Niveau 1 (5 BE)** – Wahrscheinlichkeiten bei Urnenexperimenten, Binomialverteilung. Ein Beispiel für eine solche Aufgabe ist: In einer Urne liegen 3 rote und 2 blaue Kugeln. Es wird zweimal mit Zurücklegen gezogen. a) Bestimme P(rot, dann blau). (2 BE) b) Bestimme P(genau eine rote Kugel). (3 BE)",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 1, Level 1 (5 BE)** – probabilities in urn experiments, binomial distribution.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(gk_tasks, 'A3')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 1, Level 1 (5 BE)**.",
             "core": True,
             "weight": 1.0,
             "tags": ["GK"],
@@ -401,8 +456,8 @@ def main():
             "shortKey": "abi_gk_t1_sto_n2",
             "title": "Stochastik (Niveau 2, hilfsmittelfrei)",
             "titleEn": "Stochastics (Level 2, without aids)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 1, Niveau 2 (5 BE)** – Bedingte Wahrscheinlichkeiten, Baumdiagramme. Ein Beispiel für eine solche Aufgabe ist: In einer Klasse sind 60% der Lernenden mit dem Bus gekommen, 40% zu Fuß. Von den Busfahrenden sind 10% zu spät, von den Fußgehenden 5% zu spät. a) Bestimme P(zu spät). (3 BE) b) Bestimme P(Bus|zu spät). (2 BE)",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 1, Level 2 (5 BE)** – conditional probabilities, tree diagrams.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(gk_tasks, 'A9')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 1, Level 2 (5 BE)**.",
             "core": True,
             "weight": 1.0,
             "tags": ["GK"],
@@ -435,8 +490,8 @@ def main():
             "shortKey": "abi_gk_t2_ana",
             "title": "Analysis B (mit Hilfsmitteln, 25 BE)",
             "titleEn": "Analysis B (with aids, 25 BE)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 2 (25 BE)** – Bestandsfunktionen, Kurvendiskussion, Grenzwerte, WTR/CAS-Dokumentation. Ein Beispiel für eine solche Aufgabe ist: Eine Zuflussrate in ein Becken sei r(t)=6t·e^(-0,5t). Zu Beginn sind B(0)=2 m³ im Becken. a) Bestimme B(t) als Bestand. b) Bestimme den Zeitpunkt, an dem r(t) maximal ist. c) Berechne die bis t=6 zugeflossene Wassermenge. d) WTR/CAS: Bestimme t, zu dem B(t)=20 gilt.",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 2 (25 BE)** – stock functions, curve analysis, limits, calculator documentation.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 2 (25 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(gk_tasks, 'B1')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Analysis, Part 2 (25 BE)**.",
             "core": True,
             "weight": 1.5,
             "tags": ["GK"],
@@ -452,8 +507,8 @@ def main():
             "shortKey": "abi_gk_t2_la",
             "title": "Lineare Algebra/Geometrie C (mit Hilfsmitteln, 15 BE)",
             "titleEn": "Linear Algebra/Geometry C (with aids, 15 BE)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 2 (15 BE)** – Ebenengleichungen, Punkt auf Ebene prüfen, Winkel Gerade-Ebene, Abstand Punkt-Ebene. Ein Beispiel für eine solche Aufgabe ist: Gegeben sind A(1,2,0), B(5,2,2), C(1,6,2). Die Ebene E geht durch A,B,C. a) Bestimme eine Ebenengleichung in Koordinatenform. b) Untersuche, ob P(3,4,1) auf E liegt. c) Bestimme den Winkel zwischen einer Geraden g und E. d) Bestimme den Abstand von P zu E.",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 2 (15 BE)** – plane equations, check point on plane, angle line-plane, distance point-plane.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 2 (15 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(gk_tasks, 'C')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **LA/AG, Part 2 (15 BE)**.",
             "core": True,
             "weight": 1.5,
             "tags": ["GK"],
@@ -469,8 +524,8 @@ def main():
             "shortKey": "abi_gk_t2_sto",
             "title": "Stochastik D (mit Hilfsmitteln, 15 BE)",
             "titleEn": "Stochastics D (with aids, 15 BE)",
-            "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 2 (15 BE)** – Binomialtest mit WTR/CAS, Ablehnungsbereich, Testentscheidung, inverse Fragestellung. Ein Beispiel für eine solche Aufgabe ist: Ein Hersteller behauptet Ausschussanteil p≤0,03. Stichprobe n=200, beobachtet x=11. a) Modellieren Sie mit X~Bin(n,p) und formulieren Sie H₀ und H₁. b) WTR/CAS: Bestimmen Sie den Ablehnungsbereich für α=5%. c) Treffen Sie die Testentscheidung. d) Zeigen Sie qualitativ, dass bei größerem n Konfidenzintervalle enger werden.",
-            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 2 (15 BE)** – binomial test with calculator, rejection region, test decision, inverse questions.",
+            "description": f"Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 2 (15 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n{get_task_text(gk_tasks, 'D')}",
+            "descriptionEn": "The learner can solve Abitur tasks based on the following specifications: **Stochastics, Part 2 (15 BE)**.",
             "core": True,
             "weight": 1.5,
             "tags": ["GK"],
@@ -489,8 +544,14 @@ def main():
         if goal["id"] == root_id:
             goal["contains"].append(abi_lk_id)
             goal["contains"].append(abi_gk_id)
+            for new_goal in new_goals:
+                if new_goal["id"] not in goal["contains"]:
+                     # Note: This logic seems to want to add all new goals to root containers or just the root Abi nodes.
+                     # The original script only added abi_lk_id and abi_gk_id.
+                     # We stick to original behavior but let's double check logic.
+                     pass 
             break
-    
+            
     # Save
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)

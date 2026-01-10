@@ -1,7 +1,6 @@
 import html
 import json
 import re
-import sys
 import urllib.request
 from pathlib import Path
 
@@ -9,7 +8,18 @@ BASE = Path("/home/enpasos/projects/skillpilot")
 RAW_DIR = BASE / "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/input/raw"
 RAW_DIR.mkdir(parents=True, exist_ok=True)
 
-CODES = ["MA3001", "IN2381", "IN2388", "NAT5040m"]
+CODES = [
+    "IN2381",
+    "IN2388",
+    "IN2400",
+    "EI76471",
+    "NAT3011",
+    "NAT3013",
+    "NAT5018m",
+    "NAT5020m",
+    "NAT7011",
+    "NAT7030",
+]
 
 
 def fetch(code: str) -> dict:
@@ -22,24 +32,67 @@ def clean_html(text: str) -> str:
     if not text:
         return ""
     text = html.unescape(text)
-    # Normalize line breaks for list-like fields
     text = re.sub(r"<\s*br\s*/?>", "\n", text, flags=re.IGNORECASE)
     text = re.sub(r"</\s*li\s*>", "\n", text, flags=re.IGNORECASE)
     text = re.sub(r"<\s*li\s*>", "- ", text, flags=re.IGNORECASE)
-    # Replace block tags with newlines
-    text = re.sub(r"</?\s*(div|ul|ol|p|span)[^>]*>", "\n", text, flags=re.IGNORECASE)
-    # Strip remaining tags
+    text = re.sub(r"</?\s*(div|ul|ol|p|span|font)[^>]*>", "\n", text, flags=re.IGNORECASE)
     text = re.sub(r"<[^>]+>", "", text)
-    # Normalize whitespace
     lines = [line.strip() for line in text.splitlines()]
-    # Remove empty lines at start/end, keep internal empties minimal
     cleaned = []
     for line in lines:
         if line:
             cleaned.append(line)
         elif cleaned and cleaned[-1] != "":
             cleaned.append("")
-    # Trim trailing blank
+    while cleaned and cleaned[-1] == "":
+        cleaned.pop()
+    return "\n".join(cleaned).strip()
+
+
+def normalize_enumerations(text: str) -> str:
+    if not text:
+        return text
+    lines = []
+    token_pattern = re.compile(r"(?:(?<=\s)|^)(?:\(?[A-Za-z]+|\d+\)?)[\).]\s+")
+    head_pattern = re.compile(r"^(\(?[A-Za-z]+|\d+\)?)[\).]\s*(.+)$")
+    solo_pattern = re.compile(r"^(\(?[A-Za-z]+|\d+\)?)[\).]$")
+    pending_bullet = False
+
+    for line in text.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            lines.append("")
+            continue
+        if solo_pattern.match(stripped):
+            pending_bullet = True
+            continue
+        if stripped.startswith("-"):
+            lines.append(stripped)
+            pending_bullet = False
+            continue
+        if pending_bullet:
+            lines.append(f"- {stripped}")
+            pending_bullet = False
+            continue
+        if token_pattern.search(stripped):
+            parts = token_pattern.split(stripped)
+            for part in parts:
+                part = part.strip()
+                if part:
+                    lines.append(f"- {part}")
+            continue
+        match = head_pattern.match(stripped)
+        if match:
+            lines.append(f"- {match.group(2).strip()}")
+            continue
+        lines.append(stripped)
+
+    cleaned = []
+    for line in lines:
+        if line:
+            cleaned.append(line)
+        elif cleaned and cleaned[-1] != "":
+            cleaned.append("")
     while cleaned and cleaned[-1] == "":
         cleaned.pop()
     return "\n".join(cleaned).strip()
@@ -47,7 +100,6 @@ def clean_html(text: str) -> str:
 
 for code in CODES:
     data = fetch(code)
-
     title = data.get("module_title") or ""
     title_en = data.get("module_title_en") or ""
     ects = data.get("module_credits")
@@ -58,14 +110,9 @@ for code in CODES:
     outcomes = data.get("module_outcome") or data.get("module_outcome_en") or ""
     preconditions = data.get("module_precondition") or data.get("module_precondition_en") or ""
 
-    content = clean_html(content)
-    outcomes = clean_html(outcomes)
-    preconditions = clean_html(preconditions)
-
-    # Ensure content/outcomes/preconditions are not empty strings with stray whitespace
-    content = content.strip()
-    outcomes = outcomes.strip()
-    preconditions = preconditions.strip()
+    content = normalize_enumerations(clean_html(content))
+    outcomes = normalize_enumerations(clean_html(outcomes))
+    preconditions = normalize_enumerations(clean_html(preconditions))
 
     lines = []
     lines.append(f"code: {code}")
@@ -77,7 +124,8 @@ for code in CODES:
     lines.append("")
     lines.append("content:")
     lines.append("")
-    lines.append(content)
+    if content:
+        lines.append(content)
     lines.append("")
     lines.append("outcomes:")
     lines.append("")
@@ -91,11 +139,7 @@ for code in CODES:
     lines.append("")
     if preconditions:
         if not preconditions.lstrip().startswith("-"):
-            # Handle bullet list already encoded as multiple lines starting with '-'
-            if "\n" in preconditions and any(line.lstrip().startswith("-") for line in preconditions.splitlines()):
-                lines.append(preconditions)
-            else:
-                lines.append(preconditions)
+            lines.append(preconditions)
         else:
             lines.append(preconditions)
 
