@@ -536,20 +536,34 @@ def main():
         }
     ]
     
+    # IDEMPOTENCY FIX: Remove any existing goals that have IDs we are about to add
+    new_goal_ids = {g["id"] for g in new_goals}
+    original_count = len(data["goals"])
+    
+    # Filter out any goals that have an ID present in our new set
+    data["goals"] = [g for g in data["goals"] if g["id"] not in new_goal_ids]
+    
+    removed_count = original_count - len(data["goals"])
+    if removed_count > 0:
+        print(f"Removed {removed_count} existing/duplicate goals to prevent collisions.")
+
     # Add new goals to the end
     data["goals"].extend(new_goals)
     
     # Add Abitur nodes to root goal's contains array
     for goal in data["goals"]:
         if goal["id"] == root_id:
+            # We don't need to check for existence because "contains" is a list.
+            # But we should avoid duplicate IDs in "contains".
+            # Let's clean up contains first.
+            
+            # Remove any of our new IDs from existing contains to avoid duplicates if specific ones were there
+            # (Though currently we only add abi_lk_id and abi_gk_id)
+            goal["contains"] = [cid for cid in goal["contains"] if cid not in [abi_lk_id, abi_gk_id]]
+            
+            # Add them back
             goal["contains"].append(abi_lk_id)
             goal["contains"].append(abi_gk_id)
-            for new_goal in new_goals:
-                if new_goal["id"] not in goal["contains"]:
-                     # Note: This logic seems to want to add all new goals to root containers or just the root Abi nodes.
-                     # The original script only added abi_lk_id and abi_gk_id.
-                     # We stick to original behavior but let's double check logic.
-                     pass 
             break
             
     # Save
