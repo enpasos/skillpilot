@@ -113,7 +113,7 @@ def main():
         }
         
         for mod in cluster.get("modules", []):
-            mod_id = generate_deterministic_uuid("tum-module", mod["code"])
+            mod_id = generate_deterministic_uuid("tum-goal-root", mod["code"])
             cluster_goal["contains"].append(mod_id)
         
         goals_list.append(cluster_goal)
