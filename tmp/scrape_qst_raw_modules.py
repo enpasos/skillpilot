@@ -9,16 +9,20 @@ RAW_DIR = BASE / "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/inp
 RAW_DIR.mkdir(parents=True, exist_ok=True)
 
 CODES = [
-    "IN2381",
-    "IN2388",
-    "IN2400",
-    "EI76471",
-    "NAT3011",
-    "NAT3013",
-    "NAT5018m",
-    "NAT5020m",
-    "NAT7011",
-    "NAT7030",
+    "CH3337",
+    "CIT4330012",
+    "CIT4330013",
+    "CIT4430005",
+    "EI70760",
+    "EI77006",
+    "NAT3036",
+    "NAT5008m",
+    "NAT5030m",
+    "NAT7001",
+    "NAT7003",
+    "NAT7026",
+    "PH2127",
+    "PH2141",
 ]
 
 

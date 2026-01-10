@@ -1,8 +1,8 @@
 {
-    "title": "Simulation von Quantengeräten (TUM, Modul EI70760)",
-    "titleEn": "Simulation of quantum devices (TUM, module EI70760)",
-    "description": "Das Modul führt in quantenmechanische Konzepte ein, die zur Beschreibung von Quanteneffekten in nanoskaligen Geräten erforderlich sind, und stellt geeignete numerische Methoden für die Simulation solcher Geräte bereit. Die behandelten Themen reichen von der Schrödinger-Gleichung und ihrer numerischen Behandlung bis hin zu Quantentransportsimulationen.",
-    "descriptionEn": "The module introduces quantum mechanical concepts as required for describing quantum effects in nanoscale devices, and provides suitable numerical methods for the simulation of such devices. Topics covered range from the Schrödinger equation and its numerical treatment to quantum transport simulations.",
+    "title": "Simulation von Quantenbauelementen (TUM, Modul EI70760)",
+    "titleEn": "Simulation of Quantum Devices (TUM, Module EI70760)",
+    "description": "Das Modul führt in quantenmechanische Modelle von Nano-Bauelementen und numerische Simulationsmethoden bis hin zu Quantentransport ein.",
+    "descriptionEn": "The module introduces quantum-mechanical models of nanoscale devices and numerical simulation methods including quantum transport.",
     "locale": "de-DE",
     "subject": "TUM-Module",
     "frameworkId": "tum-ei70760",
@@ -10,10 +10,10 @@
         {
             "id": "8df32f09-88b6-548f-bd2e-7ae33bc6a2e3",
             "shortKey": "tum_ei70760_module",
-            "title": "Simulation von Quantengeräten (Modul EI70760)",
-            "titleEn": "Simulation of quantum devices (module EI70760)",
-            "description": "Das Modul führt in quantenmechanische Konzepte ein, die zur Beschreibung von Quanteneffekten in nanoskaligen Geräten erforderlich sind, und stellt geeignete numerische Methoden für die Simulation solcher Geräte bereit. Die behandelten Themen reichen von der Schrödinger-Gleichung und ihrer numerischen Behandlung bis hin zu Quantentransportsimulationen.",
-            "descriptionEn": "The module introduces quantum mechanical concepts as required for describing quantum effects in nanoscale devices, and provides suitable numerical methods for the simulation of such devices. Topics covered range from the Schrödinger equation and its numerical treatment to quantum transport simulations.",
+            "title": "Simulation von Quantenbauelementen (EI70760)",
+            "titleEn": "Simulation of Quantum Devices (EI70760)",
+            "description": "Die lernende Person kann quantennanoelektronische Bauelemente modellieren und numerische Simulationen ihres Verhaltens implementieren.",
+            "descriptionEn": "The learner can model quantum nanoelectronic devices and implement numerical simulations of their behavior.",
             "core": true,
             "weight": 5.0,
             "phase": "Modul",
@@ -23,22 +23,42 @@
                 "ects:5"
             ],
             "contains": [
-                "c63a19a9-94d9-538b-93e6-7ef5777c721a",
-                "5609f6fe-5f34-5e32-895c-9cbe3e77c823",
-                "83999a3e-5a0c-5777-966e-49a5aaf16092"
+                "00801381-b610-5259-a4cb-899854352ee2",
+                "e7209cdb-4feb-5538-9736-33a8c12fe412",
+                "2726ca59-c3f8-5097-a5b3-fd1bbbcf9f7e"
             ],
             "requires": [],
             "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/EI70760"
         },
         {
-            "id": "c63a19a9-94d9-538b-93e6-7ef5777c721a",
-            "shortKey": "tum_ei70760_lo1",
-            "title": "Nach erfolgreichem Abschluss dieses Moduls sind die Studierenden in der Lage",
-            "titleEn": "After the successful completion of this module, the students are able to",
-            "description": "Nach erfolgreichem Abschluss dieses Moduls sind die Studierenden in der Lage, - physikalische Modelle zur Beschreibung quantennanoelektronischer Bauelemente und Strukturen anzuwenden - numerische Methoden zur Lösung der physikalischen Modellgleichungen anzuwenden - grundlegende numerische Codes zur Modellierung quantennanoelektronischer Bauelemente und Strukturen zu entwickeln",
-            "descriptionEn": "After the successful completion of this module, the students are able to - apply physical models to the description of quantum nanoelectronic devices and structures - apply numerical methods to the solution of the physical model equations - develop basic numerical codes for modeling quantum nanoelectronic devices and structures",
+            "id": "00801381-b610-5259-a4cb-899854352ee2",
+            "shortKey": "tum_ei70760_quantum_device_modeling",
+            "title": "Modellierung von Quantenbauelementen",
+            "titleEn": "Quantum device modeling",
+            "description": "Die lernende Person kann physikalische Modelle für nanoskalige Quantenbauelemente formulieren.",
+            "descriptionEn": "The learner can formulate physical models for nanoscale quantum devices.",
             "core": true,
-            "weight": 0.0,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:EI70760"
+            ],
+            "contains": [
+                "f28b8515-eac8-5b83-a961-9230d7ed1d3e",
+                "5618df5c-442d-5f4e-b2b3-f6d93d44b57e"
+            ],
+            "requires": []
+        },
+        {
+            "id": "f28b8515-eac8-5b83-a961-9230d7ed1d3e",
+            "shortKey": "tum_ei70760_schrodinger_equation_for_nanodevices",
+            "title": "Schrödinger-Gleichung für Nanobauelemente",
+            "titleEn": "Schrodinger equation for nanodevices",
+            "description": "Die lernende Person kann Schrödinger-Gleichungen für eingeschlossene Strukturen aufstellen.",
+            "descriptionEn": "The learner can set up Schrodinger equations for confined structures.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
             "area": "Kompetenz",
             "tags": [
@@ -48,16 +68,55 @@
             "requires": []
         },
         {
-            "id": "5609f6fe-5f34-5e32-895c-9cbe3e77c823",
-            "shortKey": "tum_ei70760_ct1",
-            "title": "Das Modul führt quantenmechanische Konzepte ein, die zur Beschreibung von Qua erforderlich sind",
-            "titleEn": "The module introduces quantum mechanical concepts as required for describing qua",
-            "description": "Das Modul führt in quantenmechanische Konzepte ein, die zur Beschreibung von Quanteneffekten in nanoskaligen Geräten erforderlich sind, und stellt geeignete numerische Methoden für die Simulation solcher Geräte bereit.",
-            "descriptionEn": "The module introduces quantum mechanical concepts as required for describing quantum effects in nanoscale devices, and provides suitable numerical methods for the simulation of such devices.",
-            "core": false,
-            "weight": 0.0,
+            "id": "5618df5c-442d-5f4e-b2b3-f6d93d44b57e",
+            "shortKey": "tum_ei70760_device_physics_and_boundary_conditions",
+            "title": "Bauelementphysik und Randbedingungen",
+            "titleEn": "Device physics and boundary conditions",
+            "description": "Die lernende Person kann Bauelementparameter und Randbedingungen festlegen.",
+            "descriptionEn": "The learner can specify device parameters and boundary conditions.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
-            "area": "Wissen",
+            "area": "Kompetenz",
+            "tags": [
+                "module:EI70760"
+            ],
+            "contains": [],
+            "requires": [
+                "f28b8515-eac8-5b83-a961-9230d7ed1d3e"
+            ]
+        },
+        {
+            "id": "e7209cdb-4feb-5538-9736-33a8c12fe412",
+            "shortKey": "tum_ei70760_numerical_solution_methods",
+            "title": "Numerische Lösungsmethoden",
+            "titleEn": "Numerical solution methods",
+            "description": "Die lernende Person kann numerische Verfahren zur Lösung der Modellgleichungen anwenden.",
+            "descriptionEn": "The learner can apply numerical techniques to solve model equations.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:EI70760"
+            ],
+            "contains": [
+                "c056dbd3-a739-5e49-84a0-1edf8f154b3c",
+                "066da222-646a-51d8-afcf-2ecc120ff4f0"
+            ],
+            "requires": []
+        },
+        {
+            "id": "c056dbd3-a739-5e49-84a0-1edf8f154b3c",
+            "shortKey": "tum_ei70760_discretization_and_eigenvalue_problems",
+            "title": "Diskretisierung und Eigenwertprobleme",
+            "titleEn": "Discretization and eigenvalue problems",
+            "description": "Die lernende Person kann Gleichungen diskretisieren und Eigenzustände berechnen.",
+            "descriptionEn": "The learner can discretize equations and solve for states.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
             "tags": [
                 "module:EI70760"
             ],
@@ -65,21 +124,79 @@
             "requires": []
         },
         {
-            "id": "83999a3e-5a0c-5777-966e-49a5aaf16092",
-            "shortKey": "tum_ei70760_ct2",
-            "title": "Topics covered range from the Schrödinger equation and its numerical treatment t",
-            "titleEn": "Topics covered range from the Schrödinger equation and its numerical treatmen...",
-            "description": "Die behandelten Themen reichen von der Schrödinger-Gleichung und ihrer numerischen Behandlung bis hin zu Quantentransportsimulationen.",
-            "descriptionEn": "Topics covered range from the Schrödinger equation and its numerical treatment to quantum transport simulations.",
-            "core": false,
-            "weight": 0.0,
+            "id": "066da222-646a-51d8-afcf-2ecc120ff4f0",
+            "shortKey": "tum_ei70760_quantum_transport_simulations",
+            "title": "Quantentransportsimulationen",
+            "titleEn": "Quantum transport simulations",
+            "description": "Die lernende Person kann Transportprozesse mit geeigneten numerischen Methoden modellieren.",
+            "descriptionEn": "The learner can model transport using appropriate numerical methods.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
-            "area": "Wissen",
+            "area": "Kompetenz",
+            "tags": [
+                "module:EI70760"
+            ],
+            "contains": [],
+            "requires": [
+                "c056dbd3-a739-5e49-84a0-1edf8f154b3c"
+            ]
+        },
+        {
+            "id": "2726ca59-c3f8-5097-a5b3-fd1bbbcf9f7e",
+            "shortKey": "tum_ei70760_implementation_and_validation",
+            "title": "Implementierung und Validierung",
+            "titleEn": "Implementation and validation",
+            "description": "Die lernende Person kann grundlegende Simulationscodes implementieren und Ergebnisse validieren.",
+            "descriptionEn": "The learner can implement basic simulation codes and validate results.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:EI70760"
+            ],
+            "contains": [
+                "1dacd5c1-8d5f-54e3-ab82-0ba8a0bab48c",
+                "66b4ab15-626d-5841-9943-a8c17898f408"
+            ],
+            "requires": []
+        },
+        {
+            "id": "1dacd5c1-8d5f-54e3-ab82-0ba8a0bab48c",
+            "shortKey": "tum_ei70760_coding_basic_simulators",
+            "title": "Programmierung einfacher Simulatoren",
+            "titleEn": "Coding basic simulators",
+            "description": "Die lernende Person kann einfache numerische Solver programmieren.",
+            "descriptionEn": "The learner can implement simple numerical solvers.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
             "tags": [
                 "module:EI70760"
             ],
             "contains": [],
             "requires": []
+        },
+        {
+            "id": "66b4ab15-626d-5841-9943-a8c17898f408",
+            "shortKey": "tum_ei70760_result_interpretation_and_verification",
+            "title": "Ergebnisinterpretation und Verifikation",
+            "titleEn": "Result interpretation and verification",
+            "description": "Die lernende Person kann Simulationsergebnisse interpretieren und Modellkonsistenz prüfen.",
+            "descriptionEn": "The learner can interpret outputs and check model consistency.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:EI70760"
+            ],
+            "contains": [],
+            "requires": [
+                "1dacd5c1-8d5f-54e3-ab82-0ba8a0bab48c"
+            ]
         }
     ]
 }

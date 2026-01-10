@@ -1,8 +1,8 @@
 {
     "title": "Symmetrie und Gruppentheorie (TUM, Modul CH3337)",
     "titleEn": "Symmetry and Group Theory (TUM, Module CH3337)",
-    "description": "1. Grundlagen der Gruppentheorie\n2. Molekulare Symmetrie und Punktsymmetriegruppen\n3. Repräsentation von Gruppen\n4. Symmetrie und Quantenmechanik\n5. MO-Theorie und Symmetrie in der Anorganischen und Organischen Chemie\n6. Ligandenfeldtheorie und Spektroskopie\n7. Molekulare Schwingungen\n8. Festkörper- und Kristallsymmetrie",
-    "descriptionEn": "1. Basics of group theory\n2. Molecular symmetry and point symmetry groups\n3. Representation of groups\n4. Symmetry and quantum mechanics\n5. MO theory and symmetry in inorganic and organic chemistry\n6. Ligand field theory and spectroscopy\n7. Molecular vibrations\n8. Solid and crystal symmetry",
+    "description": "Das Modul behandelt Grundlagen der Gruppentheorie, molekulare Symmetrie, Darstellungen, Symmetrie in der Quantenmechanik sowie Anwendungen in MO- und Ligandenfeldtheorie, Schwingungen und Kristallsymmetrie.",
+    "descriptionEn": "The module covers group theory basics, molecular symmetry, representations, symmetry in quantum mechanics, and applications in MO and ligand field theory, vibrations, and crystal symmetry.",
     "locale": "de-DE",
     "subject": "TUM-Module",
     "frameworkId": "tum-ch3337",
@@ -10,34 +10,55 @@
         {
             "id": "e4a4e095-00ad-57a3-bb5f-e4909e9083b7",
             "shortKey": "tum_ch3337_module",
-            "title": "Symmetrie und Gruppentheorie (Modul CH3337)",
-            "titleEn": "Symmetry and Group Theory (Module CH3337)",
-            "description": "1. Grundlagen der Gruppentheorie\n2. Molekulare Symmetrie und Punktsymmetriegruppen\n3. Repräsentation von Gruppen\n4. Symmetrie und Quantenmechanik\n5. MO-Theorie und Symmetrie in der Anorganischen und Organischen Chemie\n6. Ligandenfeldtheorie und Spektroskopie\n7. Molekulare Schwingungen\n8. Festkörper- und Kristallsymmetrie",
-            "descriptionEn": "1. Basics of group theory\n2. Molecular symmetry and point symmetry groups\n3. Representation of groups\n4. Symmetry and quantum mechanics\n5. MO theory and symmetry in inorganic and organic chemistry\n6. Ligand field theory and spectroscopy\n7. Molecular vibrations\n8. Solid and crystal symmetry",
+            "title": "Symmetrie und Gruppentheorie (CH3337)",
+            "titleEn": "Symmetry and Group Theory (CH3337)",
+            "description": "Die lernende Person kann Gruppen- und Symmetrieargumente nutzen, um molekulare und festkörperphysikalische Systeme zu analysieren.",
+            "descriptionEn": "The learner can use group theory and symmetry arguments to analyze molecular and solid-state systems.",
             "core": true,
-            "weight": 5.0,
+            "weight": 4.0,
             "phase": "Modul",
             "area": "Gesamtkompetenz",
             "tags": [
                 "module:CH3337",
-                "ects:5"
+                "ects:4"
             ],
             "contains": [
-                "1338d1a1-19e2-556f-8d24-df42c52503fb",
-                "d235d5f2-b036-5f48-b05c-d1690ca01c7a"
+                "9cc5f46a-358c-57e5-9564-c4ba9272a0b6",
+                "d9f41648-7a5a-57e9-a63b-a29d6f4dc3ba",
+                "cd7bd153-50de-53b1-bd42-90cdf6f29269"
             ],
             "requires": [],
             "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/CH3337"
         },
         {
-            "id": "1338d1a1-19e2-556f-8d24-df42c52503fb",
-            "shortKey": "tum_ch3337_lo1",
-            "title": "Nach der erfolgreichen Teilnahme an diesem Modul sind die Studierenden in der La",
-            "titleEn": "After successful participation in this module, students are in the La",
-            "description": "Nach der erfolgreichen Teilnahme an diesem Modul sind die Studierenden in der Lage, sich an die für Symmetriebetrachtungen notwendigen mathematischen Grundlagen und Werkzeuge der Gruppentheorie zu erinnern. Sie können diese zur Vereinfachung und Lösung von Problemen aus verschiedensten Bereichen der Chemie und Quantenmechanik nach Erarbeiten der Übungsaufgaben selbständig einsetzen. Die wichtigsten Anwendungsbeispiele von Symmetrie und Gruppentheorie in der Chemie sind den Studierenden bekannt.",
-            "descriptionEn": "After successfully completing this module, students will be able to remember the mathematical fundamentals and tools of group theory necessary for symmetry considerations. You can use these to simplify and solve problems from a wide range of areas of chemistry and quantum mechanics independently after completing the exercises. The students are familiar with the most important examples of the application of symmetry and group theory in chemistry.",
+            "id": "9cc5f46a-358c-57e5-9564-c4ba9272a0b6",
+            "shortKey": "tum_ch3337_group_theory_foundations",
+            "title": "Grundlagen der Gruppentheorie",
+            "titleEn": "Group theory foundations",
+            "description": "Die lernende Person kann Gruppen definieren und grundlegende Symmetrieoperationen sowie Darstellungen anwenden.",
+            "descriptionEn": "The learner can define groups and apply basic symmetry operations and representations.",
             "core": true,
-            "weight": 0.0,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:CH3337"
+            ],
+            "contains": [
+                "66f7ab21-c172-5ce7-aefd-965fd2334c0f",
+                "d37b424c-8303-5a8c-a047-5ea5980e3bf2"
+            ],
+            "requires": []
+        },
+        {
+            "id": "66f7ab21-c172-5ce7-aefd-965fd2334c0f",
+            "shortKey": "tum_ch3337_group_axioms_subgroups_and_symmetry_operations",
+            "title": "Gruppenaxiome, Untergruppen und Symmetrieoperationen",
+            "titleEn": "Group axioms, subgroups, and symmetry operations",
+            "description": "Die lernende Person kann Symmetrieoperationen klassifizieren und Untergruppen sowie Erzeuger bestimmen.",
+            "descriptionEn": "The learner can classify symmetry operations and identify subgroups and generators.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
             "area": "Kompetenz",
             "tags": [
@@ -47,21 +68,135 @@
             "requires": []
         },
         {
-            "id": "d235d5f2-b036-5f48-b05c-d1690ca01c7a",
-            "shortKey": "tum_ch3337_ct1",
-            "title": "Grundlagen der Gruppentheorie",
-            "titleEn": "Basics of group theory",
-            "description": "Grundlagen der Gruppentheorie",
-            "descriptionEn": "Basics of group theory",
-            "core": false,
-            "weight": 0.0,
+            "id": "d37b424c-8303-5a8c-a047-5ea5980e3bf2",
+            "shortKey": "tum_ch3337_representations_and_character_tables",
+            "title": "Darstellungen und Charaktertafeln",
+            "titleEn": "Representations and character tables",
+            "description": "Die lernende Person kann Darstellungen aufbauen und Charaktertafeln für Punktgruppen nutzen.",
+            "descriptionEn": "The learner can build representations and read character tables for point groups.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
-            "area": "Wissen",
+            "area": "Kompetenz",
+            "tags": [
+                "module:CH3337"
+            ],
+            "contains": [],
+            "requires": [
+                "66f7ab21-c172-5ce7-aefd-965fd2334c0f"
+            ]
+        },
+        {
+            "id": "d9f41648-7a5a-57e9-a63b-a29d6f4dc3ba",
+            "shortKey": "tum_ch3337_molecular_symmetry_and_spectroscopy",
+            "title": "Molekülsymmetrie und Spektroskopie",
+            "titleEn": "Molecular symmetry and spectroscopy",
+            "description": "Die lernende Person kann Moleküle nach Punktgruppen klassifizieren und spektrale Aktivität vorhersagen.",
+            "descriptionEn": "The learner can classify molecules by point groups and predict spectroscopic activity.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:CH3337"
+            ],
+            "contains": [
+                "b4f6c159-d561-56f7-9eaa-381a7fa159fc",
+                "563f574c-4eea-5593-840a-c62fbc419cae"
+            ],
+            "requires": []
+        },
+        {
+            "id": "b4f6c159-d561-56f7-9eaa-381a7fa159fc",
+            "shortKey": "tum_ch3337_point_group_classification_of_molecules",
+            "title": "Punktgruppenklassifikation von Molekülen",
+            "titleEn": "Point group classification of molecules",
+            "description": "Die lernende Person kann Symmetrieelemente bestimmen und die Punktgruppe eines Moleküls ableiten.",
+            "descriptionEn": "The learner can determine point groups and symmetry elements of molecules.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
             "tags": [
                 "module:CH3337"
             ],
             "contains": [],
             "requires": []
+        },
+        {
+            "id": "563f574c-4eea-5593-840a-c62fbc419cae",
+            "shortKey": "tum_ch3337_vibrational_modes_and_selection_rules",
+            "title": "Schwingungsmoden und Auswahlregeln",
+            "titleEn": "Vibrational modes and selection rules",
+            "description": "Die lernende Person kann Normalmoden herleiten und IR-/Raman-Aktivität aus Symmetrie ableiten.",
+            "descriptionEn": "The learner can derive normal modes and relate symmetry to IR/Raman activity.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:CH3337"
+            ],
+            "contains": [],
+            "requires": [
+                "b4f6c159-d561-56f7-9eaa-381a7fa159fc"
+            ]
+        },
+        {
+            "id": "cd7bd153-50de-53b1-bd42-90cdf6f29269",
+            "shortKey": "tum_ch3337_symmetry_in_quantum_chemistry_and_solids",
+            "title": "Symmetrie in Quantenchemie und Festkörpern",
+            "titleEn": "Symmetry in quantum chemistry and solids",
+            "description": "Die lernende Person kann Symmetrie auf quantenmechanische Modelle und Festkörperstrukturen anwenden.",
+            "descriptionEn": "The learner can apply symmetry to quantum-mechanical models and solid-state structures.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:CH3337"
+            ],
+            "contains": [
+                "23dda2f8-7902-55b3-aff7-e9c7e2aa3485",
+                "657e1d36-71b3-50af-ae17-87eba1a09c4f"
+            ],
+            "requires": []
+        },
+        {
+            "id": "23dda2f8-7902-55b3-aff7-e9c7e2aa3485",
+            "shortKey": "tum_ch3337_symmetry_in_quantum_mechanics_and_mo_theory",
+            "title": "Symmetrie in Quantenmechanik und MO-Theorie",
+            "titleEn": "Symmetry in quantum mechanics and MO theory",
+            "description": "Die lernende Person kann Symmetrieargumente zur Vereinfachung der MO-Analyse und von Quantenzuständen nutzen.",
+            "descriptionEn": "The learner can use symmetry to simplify MO analysis and quantum states.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:CH3337"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "657e1d36-71b3-50af-ae17-87eba1a09c4f",
+            "shortKey": "tum_ch3337_crystal_and_lattice_symmetry",
+            "title": "Kristall- und Gittersymmetrie",
+            "titleEn": "Crystal and lattice symmetry",
+            "description": "Die lernende Person kann Raumgruppen beschreiben und deren Einfluss auf Festkörpereigenschaften erklären.",
+            "descriptionEn": "The learner can describe space-group symmetry and its effect on solid-state properties.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:CH3337"
+            ],
+            "contains": [],
+            "requires": [
+                "23dda2f8-7902-55b3-aff7-e9c7e2aa3485"
+            ]
         }
     ]
 }

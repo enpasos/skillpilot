@@ -1,8 +1,8 @@
 {
-    "title": "Streutheorie 2 (TUM, Modul PH2141)",
-    "titleEn": "Scattering theory 2 (TUM, Module PH2141)",
-    "description": "Modul PH2141",
-    "descriptionEn": "Module PH2141",
+    "title": "Nanotechnologie (TUM, Modul PH2141)",
+    "titleEn": "Nanotechnology (TUM, Module PH2141)",
+    "description": "Das Modul behandelt Nanofertigung, Nanomaterialien, Charakterisierungsmethoden und Anwendungen der Nanotechnologie.",
+    "descriptionEn": "The module covers nanofabrication, nanomaterials, characterization methods, and applications of nanotechnology.",
     "locale": "de-DE",
     "subject": "TUM-Module",
     "frameworkId": "tum-ph2141",
@@ -10,10 +10,10 @@
         {
             "id": "1b050f32-0d0f-5338-90ba-3ff621f966fd",
             "shortKey": "tum_ph2141_module",
-            "title": "Streutheorie 2 (Modul PH2141)",
-            "titleEn": "Scattering theory 2 (Module PH2141)",
-            "description": "Modul PH2141",
-            "descriptionEn": "Module PH2141",
+            "title": "Nanotechnologie (PH2141)",
+            "titleEn": "Nanotechnology (PH2141)",
+            "description": "Die lernende Person kann Nanofertigung, Eigenschaften von Nanomaterialien und Charakterisierungsmethoden erklären.",
+            "descriptionEn": "The learner can explain nanofabrication, nanomaterials properties, and characterization methods.",
             "core": true,
             "weight": 5.0,
             "phase": "Modul",
@@ -22,9 +22,238 @@
                 "module:PH2141",
                 "ects:5"
             ],
-            "contains": [],
+            "contains": [
+                "71be2225-23d7-5167-bd86-d523d83086a0",
+                "9c115206-4d0d-5cc1-a60b-3fea7c38637a",
+                "df671d54-acd6-50d1-9cfa-70b19707e012",
+                "9f9cee3e-f0f3-5c33-b5ae-3545c2221911"
+            ],
             "requires": [],
             "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/PH2141"
+        },
+        {
+            "id": "71be2225-23d7-5167-bd86-d523d83086a0",
+            "shortKey": "tum_ph2141_nanofabrication_methods",
+            "title": "Nanofabrikationsmethoden",
+            "titleEn": "Nanofabrication methods",
+            "description": "Die lernende Person kann Top-down- und Bottom-up-Fertigungsansätze vergleichen.",
+            "descriptionEn": "The learner can compare top-down and bottom-up fabrication approaches.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:PH2141"
+            ],
+            "contains": [
+                "55e1a6a0-cf22-556b-b854-7013e3a1a524",
+                "96b38755-097f-5b27-a552-36ca470c5f28"
+            ],
+            "requires": []
+        },
+        {
+            "id": "55e1a6a0-cf22-556b-b854-7013e3a1a524",
+            "shortKey": "tum_ph2141_lithography_etching_deposition",
+            "title": "Lithografie, Ätzen und Abscheidung",
+            "titleEn": "Lithography, etching, deposition",
+            "description": "Die lernende Person kann gängige Lithografie- und Abscheideverfahren skizzieren.",
+            "descriptionEn": "The learner can outline common lithography and deposition methods.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:PH2141"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "96b38755-097f-5b27-a552-36ca470c5f28",
+            "shortKey": "tum_ph2141_self_assembly_and_bottom_up_synthesis",
+            "title": "Selbstorganisation und Bottom-up-Synthese",
+            "titleEn": "Self-assembly and bottom-up synthesis",
+            "description": "Die lernende Person kann Bottom-up-Assemblierungstechniken beschreiben.",
+            "descriptionEn": "The learner can describe bottom-up assembly techniques.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:PH2141"
+            ],
+            "contains": [],
+            "requires": [
+                "55e1a6a0-cf22-556b-b854-7013e3a1a524"
+            ]
+        },
+        {
+            "id": "9c115206-4d0d-5cc1-a60b-3fea7c38637a",
+            "shortKey": "tum_ph2141_nanomaterials_and_properties",
+            "title": "Nanomaterialien und Eigenschaften",
+            "titleEn": "Nanomaterials and properties",
+            "description": "Die lernende Person kann größenabhängige Eigenschaften von Nanomaterialien analysieren.",
+            "descriptionEn": "The learner can analyze size-dependent properties of nanomaterials.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:PH2141"
+            ],
+            "contains": [
+                "a95fa6a6-3c38-57ed-8f68-16fbc24f3bcc",
+                "657d6c81-42a5-5029-88d0-41101d46daf1"
+            ],
+            "requires": []
+        },
+        {
+            "id": "a95fa6a6-3c38-57ed-8f68-16fbc24f3bcc",
+            "shortKey": "tum_ph2141_quantum_dots_nanowires_and_2d_materials",
+            "title": "Quantenpunkte, Nanodrähte und 2D-Materialien",
+            "titleEn": "Quantum dots, nanowires, and 2D materials",
+            "description": "Die lernende Person kann zentrale Klassen von Nanomaterialien beschreiben.",
+            "descriptionEn": "The learner can describe key nanomaterial classes.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:PH2141"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "657d6c81-42a5-5029-88d0-41101d46daf1",
+            "shortKey": "tum_ph2141_quantum_confinement_and_size_effects",
+            "title": "Quantenkonfinierung und Größeneffekte",
+            "titleEn": "Quantum confinement and size effects",
+            "description": "Die lernende Person kann Konfinierung und Oberflächeneffekte erklären.",
+            "descriptionEn": "The learner can explain confinement and surface effects.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:PH2141"
+            ],
+            "contains": [],
+            "requires": [
+                "a95fa6a6-3c38-57ed-8f68-16fbc24f3bcc"
+            ]
+        },
+        {
+            "id": "df671d54-acd6-50d1-9cfa-70b19707e012",
+            "shortKey": "tum_ph2141_characterization_techniques",
+            "title": "Charakterisierungstechniken",
+            "titleEn": "Characterization techniques",
+            "description": "Die lernende Person kann geeignete Charakterisierungsmethoden auswählen.",
+            "descriptionEn": "The learner can select appropriate characterization methods.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:PH2141"
+            ],
+            "contains": [
+                "34d8cad9-4caf-5eb1-97e2-998a300d3acf",
+                "d071812f-ec2c-5f0f-858f-6c47311a7c18"
+            ],
+            "requires": []
+        },
+        {
+            "id": "34d8cad9-4caf-5eb1-97e2-998a300d3acf",
+            "shortKey": "tum_ph2141_electron_and_scanning_probe_microscopy",
+            "title": "Elektronen- und Rastersondenmikroskopie",
+            "titleEn": "Electron and scanning probe microscopy",
+            "description": "Die lernende Person kann Prinzipien von SEM/TEM/AFM erklären.",
+            "descriptionEn": "The learner can explain SEM/TEM/AFM principles.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:PH2141"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "d071812f-ec2c-5f0f-858f-6c47311a7c18",
+            "shortKey": "tum_ph2141_optical_and_electrical_measurements",
+            "title": "Optische und elektrische Messungen",
+            "titleEn": "Optical and electrical measurements",
+            "description": "Die lernende Person kann spektroskopische und Transportmessungen beschreiben.",
+            "descriptionEn": "The learner can describe spectroscopic and transport measurements.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:PH2141"
+            ],
+            "contains": [],
+            "requires": [
+                "34d8cad9-4caf-5eb1-97e2-998a300d3acf"
+            ]
+        },
+        {
+            "id": "9f9cee3e-f0f3-5c33-b5ae-3545c2221911",
+            "shortKey": "tum_ph2141_applications_and_integration",
+            "title": "Anwendungen und Integration",
+            "titleEn": "Applications and integration",
+            "description": "Die lernende Person kann Nanotechnologie mit Geräteanwendungen verknüpfen.",
+            "descriptionEn": "The learner can relate nanotechnology to device applications.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:PH2141"
+            ],
+            "contains": [
+                "f6d11381-eb6f-54d8-931c-f1093cbb5181",
+                "694bde3c-75d4-5ddc-adc6-81ea47c4be25"
+            ],
+            "requires": []
+        },
+        {
+            "id": "f6d11381-eb6f-54d8-931c-f1093cbb5181",
+            "shortKey": "tum_ph2141_nanoelectronics_and_sensors",
+            "title": "Nanoelektronik und Sensoren",
+            "titleEn": "Nanoelectronics and sensors",
+            "description": "Die lernende Person kann Anwendungen in Elektronik und Sensorik beschreiben.",
+            "descriptionEn": "The learner can describe nanotech applications in electronics and sensing.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:PH2141"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "694bde3c-75d4-5ddc-adc6-81ea47c4be25",
+            "shortKey": "tum_ph2141_nanophotonics_and_bioapplications",
+            "title": "Nanophotonik und Bioanwendungen",
+            "titleEn": "Nanophotonics and bioapplications",
+            "description": "Die lernende Person kann photonik- und biomedizinische Anwendungen diskutieren.",
+            "descriptionEn": "The learner can discuss photonic and biomedical uses.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:PH2141"
+            ],
+            "contains": [],
+            "requires": [
+                "f6d11381-eb6f-54d8-931c-f1093cbb5181"
+            ]
         }
     ]
 }
