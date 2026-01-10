@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { CurriculumDropdown } from './CurriculumDropdown'
 import { ThemeToggle } from './ThemeToggle'
 import type { LandscapeSummary } from './CurriculumDropdown'
-import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send } from 'lucide-react'
+import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, FileText } from 'lucide-react'
 
 
 type Role = 'learner' | 'trainer' | 'explorer'
@@ -197,7 +197,15 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
               SkillPilot
             </h1>
           </div>
-          <p className="text-text-secondary">{t.startPage.subtitle}</p>
+          <a
+            href="/SkillPilot_so_lerne_ich.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-text-secondary hover:text-sky-500 transition-colors"
+          >
+            <FileText size={20} />
+            <span className="font-medium">{t.startPage.subtitle}</span>
+          </a>
         </div>
 
         <div className="w-full space-y-4">

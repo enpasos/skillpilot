@@ -1,6 +1,6 @@
 export const de = {
     startPage: {
-        subtitle: "Dein personalisierter Lern-Navigator",
+        subtitle: "so lerne ich",
         cards: {
             whitepaper: {
                 title: "Whitepaper lesen",
