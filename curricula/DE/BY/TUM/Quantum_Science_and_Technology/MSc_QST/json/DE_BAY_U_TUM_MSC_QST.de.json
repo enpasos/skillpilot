@@ -863,12 +863,345 @@
             "requires": []
         },
         {
+            "id": "40a86f71-951d-5e84-a42c-dec71cb10966",
+            "shortKey": "tum_ma3001_module",
+            "title": "Funktionalanalysis (MA3001)",
+            "titleEn": "Functional Analysis (MA3001)",
+            "description": "Die lernende Person kann zentrale Werkzeuge der Funktionalanalysis nutzen, um lineare Funktionale und Operatoren auf Banach- und Hilbert-Räumen zu untersuchen.",
+            "descriptionEn": "The learner can use core tools of functional analysis to study linear functionals and operators on Banach and Hilbert spaces.",
+            "core": true,
+            "weight": 9.0,
+            "phase": "Modul",
+            "area": "Gesamtkompetenz",
+            "tags": [
+                "module:MA3001",
+                "ects:9"
+            ],
+            "contains": [
+                "fb652b89-be6e-5cff-b6ac-709d1dd6db02",
+                "248a9c78-1a46-5c5c-8b35-92ab3e334b23",
+                "aa75456f-3e1b-5305-8550-c12f0d6f08a0",
+                "642365fb-a766-53ae-9288-4af4b2d81f6b",
+                "0f274ec4-8b99-548b-a1f3-6b8982060e3f",
+                "5a788fc9-490c-5e89-b90a-8cc03723d923"
+            ],
+            "requires": [],
+            "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/MA3001"
+        },
+        {
+            "id": "fb652b89-be6e-5cff-b6ac-709d1dd6db02",
+            "shortKey": "tum_ma3001_normed_banach_and_hilbert_spaces",
+            "title": "Normierte, Banach- und Hilbert-Räume",
+            "titleEn": "Normed, Banach, and Hilbert spaces",
+            "description": "Die lernende Person kann normierte Räume definieren und Banach- sowie Hilbert-Strukturen unterscheiden.",
+            "descriptionEn": "The learner can define normed spaces and distinguish Banach and Hilbert structures.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [
+                "1c8dafc5-9907-57e3-b5e7-7546b036a776",
+                "911516bb-2162-52dc-a1ca-108685f20bce"
+            ],
+            "requires": []
+        },
+        {
+            "id": "1c8dafc5-9907-57e3-b5e7-7546b036a776",
+            "shortKey": "tum_ma3001_banach_spaces_and_completeness",
+            "title": "Banachräume und Vollständigkeit",
+            "titleEn": "Banach spaces and completeness",
+            "description": "Die lernende Person kann Vollständigkeit erklären und Banachraum-Eigenschaften in Beispielen nachweisen.",
+            "descriptionEn": "The learner can explain completeness and verify Banach space properties in examples.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "911516bb-2162-52dc-a1ca-108685f20bce",
+            "shortKey": "tum_ma3001_hilbert_spaces_inner_products_and_orthogonality",
+            "title": "Hilberträume, Skalarprodukte und Orthogonalität",
+            "titleEn": "Hilbert spaces, inner products, and orthogonality",
+            "description": "Die lernende Person kann mit Skalarprodukten, Orthogonalität und Projektionen in Hilberträumen arbeiten.",
+            "descriptionEn": "The learner can work with inner products, orthogonality, and projections in Hilbert spaces.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "1c8dafc5-9907-57e3-b5e7-7546b036a776"
+            ]
+        },
+        {
+            "id": "248a9c78-1a46-5c5c-8b35-92ab3e334b23",
+            "shortKey": "tum_ma3001_bounded_linear_operators_and_fundamental_theorems",
+            "title": "Beschränkte lineare Operatoren und grundlegende Sätze",
+            "titleEn": "Bounded linear operators and fundamental theorems",
+            "description": "Die lernende Person kann beschränkte lineare Operatoren analysieren und zentrale Existenzsätze anwenden.",
+            "descriptionEn": "The learner can analyze bounded linear operators and apply key existence theorems.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [
+                "9812ea4c-0182-51c0-8eec-32a2436f5c5d",
+                "1ead68d5-928c-5bdf-a0a0-b6e19c88f32d"
+            ],
+            "requires": [
+                "fb652b89-be6e-5cff-b6ac-709d1dd6db02"
+            ]
+        },
+        {
+            "id": "9812ea4c-0182-51c0-8eec-32a2436f5c5d",
+            "shortKey": "tum_ma3001_bounded_operators_and_operator_norms",
+            "title": "Beschränkte Operatoren und Operatornormen",
+            "titleEn": "Bounded operators and operator norms",
+            "description": "Die lernende Person kann Operatornormen berechnen und Beschränktheit bestimmen.",
+            "descriptionEn": "The learner can compute operator norms and determine boundedness.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "1ead68d5-928c-5bdf-a0a0-b6e19c88f32d",
+            "shortKey": "tum_ma3001_open_mapping_and_bounded_inverse_theorems",
+            "title": "Satz der offenen Abbildung und Satz vom beschränkten Inversen",
+            "titleEn": "Open mapping and bounded inverse theorems",
+            "description": "Die lernende Person kann den Satz der offenen Abbildung und seine Folgerungen anwenden.",
+            "descriptionEn": "The learner can apply the open mapping theorem and related consequences.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "9812ea4c-0182-51c0-8eec-32a2436f5c5d"
+            ]
+        },
+        {
+            "id": "aa75456f-3e1b-5305-8550-c12f0d6f08a0",
+            "shortKey": "tum_ma3001_duality_and_hahn_banach",
+            "title": "Dualität und Hahn-Banach",
+            "titleEn": "Duality and Hahn-Banach",
+            "description": "Die lernende Person kann Dualräume und Erweiterungssätze für lineare Funktionale nutzen.",
+            "descriptionEn": "The learner can use dual spaces and extension principles for linear functionals.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [
+                "e4ca2f65-67f2-572f-a5b5-8a752c1fcdff",
+                "98975ef7-4991-5262-a77b-40c6929fddad"
+            ],
+            "requires": [
+                "fb652b89-be6e-5cff-b6ac-709d1dd6db02"
+            ]
+        },
+        {
+            "id": "e4ca2f65-67f2-572f-a5b5-8a752c1fcdff",
+            "shortKey": "tum_ma3001_dual_spaces_and_linear_functionals",
+            "title": "Dualräume und lineare Funktionale",
+            "titleEn": "Dual spaces and linear functionals",
+            "description": "Die lernende Person kann Dualräume identifizieren und lineare Funktionale interpretieren.",
+            "descriptionEn": "The learner can identify dual spaces and interpret linear functionals.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "98975ef7-4991-5262-a77b-40c6929fddad",
+            "shortKey": "tum_ma3001_hahn_banach_extension_theorems",
+            "title": "Hahn-Banach-Fortsetzungssätze",
+            "titleEn": "Hahn-Banach extension theorems",
+            "description": "Die lernende Person kann Hahn-Banach zur Fortsetzung von Funktionalen und zur Separierung von Mengen anwenden.",
+            "descriptionEn": "The learner can apply Hahn-Banach to extend functionals and separate sets.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "e4ca2f65-67f2-572f-a5b5-8a752c1fcdff"
+            ]
+        },
+        {
+            "id": "642365fb-a766-53ae-9288-4af4b2d81f6b",
+            "shortKey": "tum_ma3001_weak_and_weak_convergence",
+            "title": "Schwache und schwach* Konvergenz",
+            "titleEn": "Weak and weak* convergence",
+            "description": "Die lernende Person kann schwache und schwach* Topologien und Konvergenz analysieren.",
+            "descriptionEn": "The learner can analyze weak and weak* topologies and convergence.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [
+                "7e2eb70e-398c-5aac-a33f-67ccc1681589",
+                "07ac0dc5-95e3-55d4-ae53-2ac6a127c3dd"
+            ],
+            "requires": [
+                "aa75456f-3e1b-5305-8550-c12f0d6f08a0"
+            ]
+        },
+        {
+            "id": "7e2eb70e-398c-5aac-a33f-67ccc1681589",
+            "shortKey": "tum_ma3001_weak_convergence_in_banach_spaces",
+            "title": "Schwache Konvergenz in Banachräumen",
+            "titleEn": "Weak convergence in Banach spaces",
+            "description": "Die lernende Person kann schwache Konvergenz mithilfe beschränkter linearer Funktionale testen.",
+            "descriptionEn": "The learner can test weak convergence using bounded linear functionals.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "07ac0dc5-95e3-55d4-ae53-2ac6a127c3dd",
+            "shortKey": "tum_ma3001_weak_convergence_and_duality",
+            "title": "Schwach* Konvergenz und Dualität",
+            "titleEn": "Weak* convergence and duality",
+            "description": "Die lernende Person kann schwache und schwach* Konvergenz unterscheiden und Kompaktheitsergebnisse nutzen.",
+            "descriptionEn": "The learner can distinguish weak and weak* convergence and use compactness results.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "7e2eb70e-398c-5aac-a33f-67ccc1681589"
+            ]
+        },
+        {
+            "id": "0f274ec4-8b99-548b-a1f3-6b8982060e3f",
+            "shortKey": "tum_ma3001_spectral_theory_of_compact_selfadjoint_operators",
+            "title": "Spektraltheorie kompakter selbstadjungierter Operatoren",
+            "titleEn": "Spectral theory of compact selfadjoint operators",
+            "description": "Die lernende Person kann Spektren kompakter selbstadjungierter Operatoren in Hilberträumen analysieren.",
+            "descriptionEn": "The learner can analyze spectra of compact selfadjoint operators in Hilbert spaces.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [
+                "ac0db799-d5d4-5c16-878d-c9df0212e5d6",
+                "c919bffa-350d-52be-b935-641b608d0653"
+            ],
+            "requires": [
+                "248a9c78-1a46-5c5c-8b35-92ab3e334b23"
+            ]
+        },
+        {
+            "id": "ac0db799-d5d4-5c16-878d-c9df0212e5d6",
+            "shortKey": "tum_ma3001_compact_operators_and_spectral_properties",
+            "title": "Kompakte Operatoren und spektrale Eigenschaften",
+            "titleEn": "Compact operators and spectral properties",
+            "description": "Die lernende Person kann kompakte Operatoren charakterisieren und deren Spektrum bestimmen.",
+            "descriptionEn": "The learner can characterize compact operators and their spectra.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "c919bffa-350d-52be-b935-641b608d0653",
+            "shortKey": "tum_ma3001_selfadjoint_operators_and_spectral_decompositions",
+            "title": "Selbstadjungierte Operatoren und Spektralzerlegungen",
+            "titleEn": "Selfadjoint operators and spectral decompositions",
+            "description": "Die lernende Person kann die Spektralzerlegung kompakter selbstadjungierter Operatoren anwenden.",
+            "descriptionEn": "The learner can apply spectral decomposition for compact selfadjoint operators.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "ac0db799-d5d4-5c16-878d-c9df0212e5d6"
+            ]
+        },
+        {
+            "id": "5a788fc9-490c-5e89-b90a-8cc03723d923",
+            "shortKey": "tum_ma3001_introduction_to_unbounded_operators",
+            "title": "Einführung in unbeschränkte Operatoren",
+            "titleEn": "Introduction to unbounded operators",
+            "description": "Die lernende Person kann grundlegende Begriffe unbeschränkter Operatoren und ihrer Definitionsbereiche erläutern.",
+            "descriptionEn": "The learner can explain basic notions of unbounded operators and their domains.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "248a9c78-1a46-5c5c-8b35-92ab3e334b23"
+            ]
+        },
+        {
             "id": "4b1203b5-3698-5fdc-9f1c-e0b360603700",
             "shortKey": "tum_in2381_module",
-            "title": "Einführung in Quantum Computing (Modul IN2381)",
-            "titleEn": "Introduction to Quantum Computing (Module IN2381)",
-            "description": "- Mathematischer Formalismus und Grundlagen der Quantenmechanik\n- Quantenschaltungen\n- Quantenteleportation\n- Bellsche Ungleichung\n- Grundlegende Quantenalgorithmen",
-            "descriptionEn": "- Mathematical formalism and fundamentals of quantum mechanics\n- Quantum circuits\n- Quantenteleportation\n- Bell's inequality\n- Basic quantum algorithms",
+            "title": "Einführung in Quantum Computing (IN2381)",
+            "titleEn": "Introduction to Quantum Computing (IN2381)",
+            "description": "Die lernende Person kann den mathematischen Formalismus des Quantum Computing erklären, einfache Quantenalgorithmen analysieren und grundlegende Quantenschaltungen entwerfen.",
+            "descriptionEn": "The learner can explain the mathematical foundations of quantum computing and design simple quantum algorithms and circuits.",
             "core": true,
             "weight": 5.0,
             "phase": "Modul",
@@ -878,21 +1211,44 @@
                 "ects:5"
             ],
             "contains": [
-                "c8f9d7ba-edab-504d-86d9-59ef876ce35b",
-                "38abbbdc-abf0-5f5b-9fb2-532e7c7139ad"
+                "2ff05a7a-adac-5dec-a88b-ad2a0c4217c7",
+                "e306f083-2350-5b78-8a1b-445b66cc4de0",
+                "435930e6-ad5d-5f7f-9a23-bdaca5edc00d",
+                "84bad838-0db0-5f72-8d9e-0c0d10927136",
+                "d41c6c3b-4224-5a1c-a6b1-f86f089986d3"
             ],
             "requires": [],
             "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN2381"
         },
         {
-            "id": "c8f9d7ba-edab-504d-86d9-59ef876ce35b",
-            "shortKey": "tum_in2381_lo1",
-            "title": "Nach erfolgreicher Teilnahme an diesem Modul beherrschen die Studierenden die Gr",
-            "titleEn": "After successful participation in this module, students will master the Gr",
-            "description": "Nach erfolgreicher Teilnahme an diesem Modul beherrschen die Studierenden die Grundlagen und den mathematischen Formalismus von Quantum Computing. Sie sind in der Lage, Quanten-Algorithmen, wie z.B. Grover-Suche, zu analysieren und Quantenschaltungen für einfache Algorithmen zu entwickeln. Die Studierenden können entsprechende Software-Tools (wie Qiskit oder Cirq) anwenden, sowie mögliche Einsatzgebieten von (zukünftigen) Quantencomputern einschätzen.",
-            "descriptionEn": "After successfully completing this module, students will master the basics and mathematical formalism of quantum computing. You are able to analyze quantum algorithms, such as Grover search, and develop quantum circuits for simple algorithms. Students can use appropriate software tools (such as Qiskit or Cirq) and assess possible areas of application for (future) quantum computers.",
+            "id": "2ff05a7a-adac-5dec-a88b-ad2a0c4217c7",
+            "shortKey": "tum_in2381_quantum_mechanics_formalism_for_computing",
+            "title": "Quantenmechanischer Formalismus für das Quantencomputing",
+            "titleEn": "Quantum mechanics formalism for computing",
+            "description": "Die lernende Person kann den Zustands- und Operatorformalismus für Qubits und Messungen anwenden.",
+            "descriptionEn": "The learner can use the state and operator formalism for qubits and measurements.",
             "core": true,
-            "weight": 0.0,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [
+                "99aec628-12c6-558f-95e5-4184cd5ee869",
+                "24f8dc35-3de6-56e3-a6fd-712ddd61ccf5"
+            ],
+            "requires": []
+        },
+        {
+            "id": "99aec628-12c6-558f-95e5-4184cd5ee869",
+            "shortKey": "tum_in2381_qubit_states_and_dirac_notation",
+            "title": "Qubit-Zustände und Dirac-Notation",
+            "titleEn": "Qubit states and Dirac notation",
+            "description": "Die lernende Person kann Ein- und Mehrqubit-Zustände darstellen und Amplituden berechnen.",
+            "descriptionEn": "The learner can represent single- and multi-qubit states and compute amplitudes.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
             "area": "Kompetenz",
             "tags": [
@@ -902,16 +1258,230 @@
             "requires": []
         },
         {
-            "id": "38abbbdc-abf0-5f5b-9fb2-532e7c7139ad",
-            "shortKey": "tum_in2381_ct1",
-            "title": "Mathematischer Formalismus und Grundlagen der Quantenmechanik",
-            "titleEn": "Mathematical formalism and fundamentals of quantum mechanics",
-            "description": "Mathematischer Formalismus und Grundlagen der Quantenmechanik",
-            "descriptionEn": "Mathematical formalism and fundamentals of quantum mechanics",
-            "core": false,
-            "weight": 0.0,
+            "id": "24f8dc35-3de6-56e3-a6fd-712ddd61ccf5",
+            "shortKey": "tum_in2381_quantum_measurements_and_probabilities",
+            "title": "Quantenmessungen und Wahrscheinlichkeiten",
+            "titleEn": "Quantum measurements and probabilities",
+            "description": "Die lernende Person kann Messungen modellieren und Ergebnisstatistiken berechnen.",
+            "descriptionEn": "The learner can model measurements and compute outcome statistics.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
-            "area": "Wissen",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [],
+            "requires": [
+                "99aec628-12c6-558f-95e5-4184cd5ee869"
+            ]
+        },
+        {
+            "id": "e306f083-2350-5b78-8a1b-445b66cc4de0",
+            "shortKey": "tum_in2381_quantum_circuits_and_gates",
+            "title": "Quantenschaltungen und Gatter",
+            "titleEn": "Quantum circuits and gates",
+            "description": "Die lernende Person kann Schaltungen aus elementaren Quantengattern aufbauen.",
+            "descriptionEn": "The learner can build circuits from elementary quantum gates.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [
+                "2d8a3483-70aa-5fd6-8d9b-7b6944e90468",
+                "5fbf8d44-646a-50a6-946b-4e9175c0bbd9"
+            ],
+            "requires": [
+                "2ff05a7a-adac-5dec-a88b-ad2a0c4217c7"
+            ]
+        },
+        {
+            "id": "2d8a3483-70aa-5fd6-8d9b-7b6944e90468",
+            "shortKey": "tum_in2381_single_and_two_qubit_gates",
+            "title": "Ein- und Zwei-Qubit-Gatter",
+            "titleEn": "Single- and two-qubit gates",
+            "description": "Die lernende Person kann gängige Gatter anwenden und ihre Matrixdarstellungen verstehen.",
+            "descriptionEn": "The learner can use common gates and understand their matrix representations.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "5fbf8d44-646a-50a6-946b-4e9175c0bbd9",
+            "shortKey": "tum_in2381_circuit_construction_and_execution",
+            "title": "Schaltungsentwurf und Ausführung",
+            "titleEn": "Circuit construction and execution",
+            "description": "Die lernende Person kann Schaltungen für einfache Aufgaben entwerfen und Ausgaben vorhersagen.",
+            "descriptionEn": "The learner can design circuits for simple tasks and predict outputs.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [],
+            "requires": [
+                "2d8a3483-70aa-5fd6-8d9b-7b6944e90468"
+            ]
+        },
+        {
+            "id": "435930e6-ad5d-5f7f-9a23-bdaca5edc00d",
+            "shortKey": "tum_in2381_entanglement_and_communication_protocols",
+            "title": "Verschränkung und Kommunikationsprotokolle",
+            "titleEn": "Entanglement and communication protocols",
+            "description": "Die lernende Person kann Verschränkung und ihre Rolle in grundlegenden Protokollen erklären.",
+            "descriptionEn": "The learner can explain entanglement and its role in basic protocols.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [
+                "cb58f58d-9116-5759-9f0d-c83c9c0babd0",
+                "3d846cac-990d-5fd2-b0b9-a581fdf99581"
+            ],
+            "requires": [
+                "2ff05a7a-adac-5dec-a88b-ad2a0c4217c7"
+            ]
+        },
+        {
+            "id": "cb58f58d-9116-5759-9f0d-c83c9c0babd0",
+            "shortKey": "tum_in2381_bell_inequalities_and_nonlocality",
+            "title": "Bellsche Ungleichungen und Nichtlokalität",
+            "titleEn": "Bell inequalities and nonlocality",
+            "description": "Die lernende Person kann Bell-Tests erklären und ihre Konsequenzen für Nichtlokalität beschreiben.",
+            "descriptionEn": "The learner can explain Bell tests and their implications.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "3d846cac-990d-5fd2-b0b9-a581fdf99581",
+            "shortKey": "tum_in2381_quantum_teleportation",
+            "title": "Quantenteleportation",
+            "titleEn": "Quantum teleportation",
+            "description": "Die lernende Person kann das Teleportationsprotokoll skizzieren und benötigte Ressourcen benennen.",
+            "descriptionEn": "The learner can outline the teleportation protocol and required resources.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [],
+            "requires": [
+                "cb58f58d-9116-5759-9f0d-c83c9c0babd0"
+            ]
+        },
+        {
+            "id": "84bad838-0db0-5f72-8d9e-0c0d10927136",
+            "shortKey": "tum_in2381_fundamental_quantum_algorithms",
+            "title": "Grundlegende Quantenalgorithmen",
+            "titleEn": "Fundamental quantum algorithms",
+            "description": "Die lernende Person kann zentrale Quantenalgorithmen und ihre Beschleunigungen analysieren.",
+            "descriptionEn": "The learner can analyze core quantum algorithms and their speedups.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [
+                "5ec2dcb2-6ecd-508c-9eea-2923fb000493"
+            ],
+            "requires": [
+                "e306f083-2350-5b78-8a1b-445b66cc4de0"
+            ]
+        },
+        {
+            "id": "5ec2dcb2-6ecd-508c-9eea-2923fb000493",
+            "shortKey": "tum_in2381_grover_search_and_basic_algorithmic_ideas",
+            "title": "Grover-Suche und grundlegende algorithmische Ideen",
+            "titleEn": "Grover search and basic algorithmic ideas",
+            "description": "Die lernende Person kann Grovers Algorithmus beschreiben und dessen Komplexität analysieren.",
+            "descriptionEn": "The learner can describe Grover's algorithm and analyze its complexity.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "d41c6c3b-4224-5a1c-a6b1-f86f089986d3",
+            "shortKey": "tum_in2381_software_tools_and_applications",
+            "title": "Software-Tools und Anwendungen",
+            "titleEn": "Software tools and applications",
+            "description": "Die lernende Person kann grundlegende Software-Tools für Quantenschaltungen nutzen und Einsatzfelder einschätzen.",
+            "descriptionEn": "The learner can use basic software tools for quantum circuits and assess application areas.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [
+                "cb68f929-93ec-5cc9-8918-a78611e53ddc",
+                "4ec29e98-8762-5daf-8091-ecb8055ecabe"
+            ],
+            "requires": [
+                "e306f083-2350-5b78-8a1b-445b66cc4de0"
+            ]
+        },
+        {
+            "id": "cb68f929-93ec-5cc9-8918-a78611e53ddc",
+            "shortKey": "tum_in2381_circuit_simulation_with_qiskit_or_cirq",
+            "title": "Schaltungssimulation mit Qiskit oder Cirq",
+            "titleEn": "Circuit simulation with Qiskit or Cirq",
+            "description": "Die lernende Person kann einfache Schaltungen in gängigen Toolkits implementieren und ausführen.",
+            "descriptionEn": "The learner can implement and run simple circuits in common toolkits.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [],
+            "requires": [
+                "5fbf8d44-646a-50a6-946b-4e9175c0bbd9"
+            ]
+        },
+        {
+            "id": "4ec29e98-8762-5daf-8091-ecb8055ecabe",
+            "shortKey": "tum_in2381_use_cases_and_limitations_of_quantum_computing",
+            "title": "Anwendungsfälle und Grenzen des Quantencomputings",
+            "titleEn": "Use cases and limitations of quantum computing",
+            "description": "Die lernende Person kann Anwendungsdomänen benennen und Grenzen diskutieren.",
+            "descriptionEn": "The learner can identify application domains and discuss limitations.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
             "tags": [
                 "module:IN2381"
             ],
@@ -921,10 +1491,10 @@
         {
             "id": "84d3a05d-5025-525f-9b5c-2c0e38ab0477",
             "shortKey": "tum_in2388_module",
-            "title": "Tensornetzwerke (Modul IN2388)",
-            "titleEn": "Tensor Networks (Module IN2388)",
-            "description": "- Grundlagen und grafische Darstellung von Tensornetzwerken\n- Mathematische Approximationstheorie\n- Backpropagation durch Tensor-Netzwerkoperationen\n- Simulation stark korrelierter Quantensysteme und digitaler Quantencomputer\n- Wahrscheinlichkeitsverteilungsstichprobe mithilfe von Tensornetzwerken",
-            "descriptionEn": "- Fundamentals and graphical representation of tensor networks\n- Mathematical approximation theory\n- Backpropagation through tensor network operations\n- Simulating strongly correlated quantum systems and digital quantum computers\n- Probability distribution sampling using tensor networks",
+            "title": "Tensornetzwerke (IN2388)",
+            "titleEn": "Tensor Networks (IN2388)",
+            "description": "Die lernende Person kann Tensornetzwerkdarstellungen nutzen, um hochdimensionale Daten zu approximieren und Quantensysteme zu simulieren.",
+            "descriptionEn": "The learner can use tensor network representations to approximate high-dimensional data and simulate quantum systems.",
             "core": true,
             "weight": 5.0,
             "phase": "Modul",
@@ -934,21 +1504,43 @@
                 "ects:5"
             ],
             "contains": [
-                "9d6385fc-92ed-5417-9404-575ddbc6f36e",
-                "1b0778ad-e8d8-5cfd-9a4d-e238a7110d80"
+                "049714ca-7dfd-5560-97e8-80e36ba8152f",
+                "6d86b09d-615b-581a-a6a7-3868dd2b113d",
+                "a5a2d561-212a-5f3b-a275-10b241a8866c",
+                "26c06b38-18b3-5448-a0fe-4f2ef30f4797"
             ],
             "requires": [],
             "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN2388"
         },
         {
-            "id": "9d6385fc-92ed-5417-9404-575ddbc6f36e",
-            "shortKey": "tum_in2388_lo1",
-            "title": "Nach erfolgreichem Abschluss dieses Moduls sind Studierende mit dem mathematischen Formalismus und der grafischen Notation für Tensornetzwerke vertraut",
-            "titleEn": "After successful completion of this module, students are familiar with the mathematical formalism and graphical notation for tensor networks",
-            "description": "Nach erfolgreichem Abschluss dieses Moduls sind Studierende mit dem mathematischen Formalismus und der grafischen Notation für Tensornetzwerke vertraut. Sie können Tensornetzwerkansätze zur Approximation hochdimensionaler Daten bewerten und anwenden. Sie verstehen, warum sich Tensornetzwerkmethoden zur Simulation stark korrelierter Quantensysteme eignen und sind mit entsprechenden Algorithmen vertraut.",
-            "descriptionEn": "After successful completion of this module, students are familiar with the mathematical formalism and graphical notation for tensor networks. They can assess and apply tensor network approaches for approximating high-dimensional data. They understand why tensor network methods are suitable for simulating strongly correlated quantum systems, and are familiar with corresponding algorithms.",
+            "id": "049714ca-7dfd-5560-97e8-80e36ba8152f",
+            "shortKey": "tum_in2388_tensor_network_fundamentals",
+            "title": "Grundlagen der Tensornetzwerke",
+            "titleEn": "Tensor network fundamentals",
+            "description": "Die lernende Person kann Tensoren und Netzwerke grafisch darstellen.",
+            "descriptionEn": "The learner can represent tensors and networks graphically.",
             "core": true,
-            "weight": 0.0,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2388"
+            ],
+            "contains": [
+                "239dd8d5-5610-53ce-99f4-425082417244",
+                "704e625d-3a3e-592e-96b9-182a7abbf0b1"
+            ],
+            "requires": []
+        },
+        {
+            "id": "239dd8d5-5610-53ce-99f4-425082417244",
+            "shortKey": "tum_in2388_tensor_notation_and_contractions",
+            "title": "Tensornotation und Kontraktionen",
+            "titleEn": "Tensor notation and contractions",
+            "description": "Die lernende Person kann Tensordiagramme interpretieren und Kontraktionen berechnen.",
+            "descriptionEn": "The learner can interpret tensor diagrams and compute contractions.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
             "area": "Kompetenz",
             "tags": [
@@ -958,18 +1550,548 @@
             "requires": []
         },
         {
-            "id": "1b0778ad-e8d8-5cfd-9a4d-e238a7110d80",
-            "shortKey": "tum_in2388_ct1",
-            "title": "Grundlagen und grafische Darstellung von Tensornetzwerken",
-            "titleEn": "Fundamentals and graphical representation of tensor networks",
-            "description": "Grundlagen und grafische Darstellung von Tensornetzwerken",
-            "descriptionEn": "Fundamentals and graphical representation of tensor networks",
-            "core": false,
-            "weight": 0.0,
+            "id": "704e625d-3a3e-592e-96b9-182a7abbf0b1",
+            "shortKey": "tum_in2388_common_network_structures_mps_mpo_peps",
+            "title": "Gängige Netzwerkstrukturen (MPS, MPO, PEPS)",
+            "titleEn": "Common network structures (MPS, MPO, PEPS)",
+            "description": "Die lernende Person kann Standardarchitekturen und ihre Eigenschaften beschreiben.",
+            "descriptionEn": "The learner can describe standard network architectures and their properties.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
-            "area": "Wissen",
+            "area": "Kompetenz",
             "tags": [
                 "module:IN2388"
+            ],
+            "contains": [],
+            "requires": [
+                "239dd8d5-5610-53ce-99f4-425082417244"
+            ]
+        },
+        {
+            "id": "6d86b09d-615b-581a-a6a7-3868dd2b113d",
+            "shortKey": "tum_in2388_approximation_theory_and_optimization",
+            "title": "Approximationstheorie und Optimierung",
+            "titleEn": "Approximation theory and optimization",
+            "description": "Die lernende Person kann Niedrigrang-Approximationen anwenden und Tensornetzwerke optimieren.",
+            "descriptionEn": "The learner can apply low-rank approximations and optimize tensor networks.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2388"
+            ],
+            "contains": [
+                "52cec7b8-32b9-5560-8aeb-d583f069e704",
+                "05e1a174-0667-5764-94ab-d0865059ef7c"
+            ],
+            "requires": [
+                "049714ca-7dfd-5560-97e8-80e36ba8152f"
+            ]
+        },
+        {
+            "id": "52cec7b8-32b9-5560-8aeb-d583f069e704",
+            "shortKey": "tum_in2388_low_rank_approximations_and_truncation",
+            "title": "Niedrigrang-Approximationen und Trunkierung",
+            "titleEn": "Low-rank approximations and truncation",
+            "description": "Die lernende Person kann Trunkierungen durchführen und Approximationsfehler abschätzen.",
+            "descriptionEn": "The learner can perform truncation and estimate approximation errors.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2388"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "05e1a174-0667-5764-94ab-d0865059ef7c",
+            "shortKey": "tum_in2388_backpropagation_through_tensor_network_operations",
+            "title": "Backpropagation durch Tensornetzwerk-Operationen",
+            "titleEn": "Backpropagation through tensor network operations",
+            "description": "Die lernende Person kann Gradienten berechnen und Tensornetzwerk-Modelle trainieren.",
+            "descriptionEn": "The learner can compute gradients and train tensor network models.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2388"
+            ],
+            "contains": [],
+            "requires": [
+                "52cec7b8-32b9-5560-8aeb-d583f069e704"
+            ]
+        },
+        {
+            "id": "a5a2d561-212a-5f3b-a275-10b241a8866c",
+            "shortKey": "tum_in2388_simulation_of_quantum_systems_and_circuits",
+            "title": "Simulation von Quantensystemen und -schaltungen",
+            "titleEn": "Simulation of quantum systems and circuits",
+            "description": "Die lernende Person kann Tensornetzwerke zur Simulation stark korrelierter Systeme und Quantenschaltungen einsetzen.",
+            "descriptionEn": "The learner can use tensor networks to simulate strongly correlated systems and quantum circuits.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2388"
+            ],
+            "contains": [
+                "190f888e-2044-5714-a501-1cb21428b2cd",
+                "c44068e5-c05f-51ba-b04f-0d10a8d7831b"
+            ],
+            "requires": [
+                "049714ca-7dfd-5560-97e8-80e36ba8152f"
+            ]
+        },
+        {
+            "id": "190f888e-2044-5714-a501-1cb21428b2cd",
+            "shortKey": "tum_in2388_simulation_of_many_body_quantum_systems",
+            "title": "Simulation von Vielteilchen-Quantensystemen",
+            "titleEn": "Simulation of many-body quantum systems",
+            "description": "Die lernende Person kann stark korrelierte Systeme mit Tensornetzwerken modellieren.",
+            "descriptionEn": "The learner can model strongly correlated systems with tensor networks.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2388"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "c44068e5-c05f-51ba-b04f-0d10a8d7831b",
+            "shortKey": "tum_in2388_simulation_of_digital_quantum_circuits",
+            "title": "Simulation digitaler Quantenschaltungen",
+            "titleEn": "Simulation of digital quantum circuits",
+            "description": "Die lernende Person kann Schaltungsdynamik mit Tensornetzwerk-Methoden simulieren.",
+            "descriptionEn": "The learner can simulate circuit dynamics using tensor network methods.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2388"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "26c06b38-18b3-5448-a0fe-4f2ef30f4797",
+            "shortKey": "tum_in2388_probabilistic_modeling_and_sampling",
+            "title": "Probabilistische Modellierung und Sampling",
+            "titleEn": "Probabilistic modeling and sampling",
+            "description": "Die lernende Person kann Tensornetzwerke für Sampling und Wahrscheinlichkeitsverteilungen nutzen.",
+            "descriptionEn": "The learner can use tensor networks for sampling and probability distributions.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2388"
+            ],
+            "contains": [
+                "79f01c57-9212-5bde-98cc-32dd4ce1e8e4"
+            ],
+            "requires": [
+                "049714ca-7dfd-5560-97e8-80e36ba8152f"
+            ]
+        },
+        {
+            "id": "79f01c57-9212-5bde-98cc-32dd4ce1e8e4",
+            "shortKey": "tum_in2388_sampling_from_tensor_network_models",
+            "title": "Sampling aus Tensornetzwerk-Modellen",
+            "titleEn": "Sampling from tensor network models",
+            "description": "Die lernende Person kann Stichproben erzeugen und probabilistische Ausgaben interpretieren.",
+            "descriptionEn": "The learner can generate samples and interpret probabilistic outputs.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2388"
+            ],
+            "contains": [],
+            "requires": [
+                "239dd8d5-5610-53ce-99f4-425082417244"
+            ]
+        },
+        {
+            "id": "aa35595d-4df3-5e01-a18b-d8a37d5da2bc",
+            "shortKey": "tum_nat5040m_module",
+            "title": "Seminar: Fortgeschrittene Themen des Quantencomputings (NAT5040m)",
+            "titleEn": "Seminar: Advanced Topics of Quantum Computing (NAT5040m)",
+            "description": "Die lernende Person kann ein fortgeschrittenes Thema des Quantencomputings untersuchen, theoretisch analysieren und Ergebnisse kommunizieren.",
+            "descriptionEn": "The learner can investigate an advanced quantum computing topic, analyze its theory, and communicate results.",
+            "core": true,
+            "weight": 5.0,
+            "phase": "Modul",
+            "area": "Gesamtkompetenz",
+            "tags": [
+                "module:NAT5040m",
+                "ects:5"
+            ],
+            "contains": [
+                "bc5260ae-8067-5535-abcb-5646d9d04bec",
+                "9045e23c-8418-53ce-9087-5d48a1ca78c8",
+                "ded07f4f-4368-54ac-987f-7b5d422367c0",
+                "de757bd0-d028-59a4-821c-3d0fed7be5a9"
+            ],
+            "requires": [],
+            "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/NAT5040m"
+        },
+        {
+            "id": "bc5260ae-8067-5535-abcb-5646d9d04bec",
+            "shortKey": "tum_nat5040m_seminar_orientation_and_goals",
+            "title": "Seminarausrichtung und Ziele",
+            "titleEn": "Seminar orientation and goals",
+            "description": "Die lernende Person kann übergeordnete Ziele und Herausforderungen im Quantencomputing erklären.",
+            "descriptionEn": "The learner can explain overarching goals and challenges in quantum computing.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [
+                "ca979f00-2107-5178-9097-a1c726d98ffd"
+            ],
+            "requires": []
+        },
+        {
+            "id": "ca979f00-2107-5178-9097-a1c726d98ffd",
+            "shortKey": "tum_nat5040m_quantum_computing_landscape_and_challenges",
+            "title": "Landschaft und Herausforderungen des Quantencomputings",
+            "titleEn": "Quantum computing landscape and challenges",
+            "description": "Die lernende Person kann zentrale Herausforderungen wie Skalierung, Rauschen und algorithmische Grenzen zusammenfassen.",
+            "descriptionEn": "The learner can summarize key challenges such as scalability, noise, and algorithmic limits.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "9045e23c-8418-53ce-9087-5d48a1ca78c8",
+            "shortKey": "tum_nat5040m_advanced_topic_exploration",
+            "title": "Erkundung fortgeschrittener Themen",
+            "titleEn": "Advanced topic exploration",
+            "description": "Die lernende Person kann ein ausgewähltes fortgeschrittenes Thema vertiefen und einordnen.",
+            "descriptionEn": "The learner can study and contextualize a selected advanced topic.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [
+                "410bbe68-fad0-5b3e-98d5-9a54c639e8af",
+                "1f6c331b-8d38-5006-8273-7ecb5f9cdc51",
+                "69e7a0d0-af8a-5406-816d-7027b722437e",
+                "d79b0c29-ba6d-5bb6-a6a1-d139af6893e1",
+                "4d9ab239-6e43-54c0-b48e-261356d8af3e",
+                "49ccd385-07c1-579f-b7dd-b438613b451a",
+                "fd0afc87-c843-5b6b-995a-16ecc5350dcc",
+                "874f5b73-11f7-56a3-b619-dec79bb3823c",
+                "7086a9b7-d19d-5118-9275-f674c345dc7e",
+                "28d856a2-c29a-530c-b7b6-d1178d6fb20f"
+            ],
+            "requires": [
+                "bc5260ae-8067-5535-abcb-5646d9d04bec"
+            ]
+        },
+        {
+            "id": "410bbe68-fad0-5b3e-98d5-9a54c639e8af",
+            "shortKey": "tum_nat5040m_quantum_hardware_and_physical_realizations",
+            "title": "Quantenhardware und physikalische Realisierungen",
+            "titleEn": "Quantum hardware and physical realizations",
+            "description": "Die lernende Person kann wichtige Hardware-Plattformen und ihre Trade-offs beschreiben.",
+            "descriptionEn": "The learner can describe major hardware platforms and their trade-offs.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "1f6c331b-8d38-5006-8273-7ecb5f9cdc51",
+            "shortKey": "tum_nat5040m_quantum_circuits_and_models_of_computation",
+            "title": "Quantenschaltungen und Rechenmodelle",
+            "titleEn": "Quantum circuits and models of computation",
+            "description": "Die lernende Person kann Schaltungsmodelle erklären, die in fortgeschrittenen Algorithmen verwendet werden.",
+            "descriptionEn": "The learner can explain circuit models used in advanced algorithms.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "69e7a0d0-af8a-5406-816d-7027b722437e",
+            "shortKey": "tum_nat5040m_quantum_simulation",
+            "title": "Quantensimulation",
+            "titleEn": "Quantum simulation",
+            "description": "Die lernende Person kann die Simulation von Quantensystemen mit Quantencomputern erklären.",
+            "descriptionEn": "The learner can explain simulation of quantum systems using quantum computers.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "d79b0c29-ba6d-5bb6-a6a1-d139af6893e1",
+            "shortKey": "tum_nat5040m_tensor_network_methods",
+            "title": "Tensornetzwerkmethoden",
+            "titleEn": "Tensor network methods",
+            "description": "Die lernende Person kann Tensornetzwerk-Ansätze für Simulation und Kompression erläutern.",
+            "descriptionEn": "The learner can explain tensor network approaches for simulation and compression.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "4d9ab239-6e43-54c0-b48e-261356d8af3e",
+            "shortKey": "tum_nat5040m_qubitization_and_quantum_eigenvalue_transformation",
+            "title": "Qubitisierung und Quanteneigenwerttransformation",
+            "titleEn": "Qubitization and quantum eigenvalue transformation",
+            "description": "Die lernende Person kann Qubitisierung und QET als algorithmische Bausteine skizzieren.",
+            "descriptionEn": "The learner can outline qubitization and QET as algorithmic primitives.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "49ccd385-07c1-579f-b7dd-b438613b451a",
+            "shortKey": "tum_nat5040m_variational_algorithms_and_quantum_machine_learning",
+            "title": "Variationale Quantenalgorithmen und Quantenmaschinelles Lernen",
+            "titleEn": "Variational algorithms and quantum machine learning",
+            "description": "Die lernende Person kann variationale Methoden und Lernanwendungen beschreiben.",
+            "descriptionEn": "The learner can describe variational methods and learning applications.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "fd0afc87-c843-5b6b-995a-16ecc5350dcc",
+            "shortKey": "tum_nat5040m_quantum_optimization",
+            "title": "Quantenoptimierung",
+            "titleEn": "Quantum optimization",
+            "description": "Die lernende Person kann Optimierungsprobleme formulieren und Quantenansätze erläutern.",
+            "descriptionEn": "The learner can explain optimization formulations and quantum approaches.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "874f5b73-11f7-56a3-b619-dec79bb3823c",
+            "shortKey": "tum_nat5040m_quantum_error_correction",
+            "title": "Quantenfehlerkorrektur",
+            "titleEn": "Quantum error correction",
+            "description": "Die lernende Person kann Fehlermodelle und grundlegende Korrekturideen erklären.",
+            "descriptionEn": "The learner can explain error models and basic correction ideas.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "7086a9b7-d19d-5118-9275-f674c345dc7e",
+            "shortKey": "tum_nat5040m_quantum_cellular_automata",
+            "title": "Quantenzelluläre Automaten",
+            "titleEn": "Quantum cellular automata",
+            "description": "Die lernende Person kann zelluläre Automaten in Quantenkontexten beschreiben.",
+            "descriptionEn": "The learner can describe cellular automata models in quantum settings.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "28d856a2-c29a-530c-b7b6-d1178d6fb20f",
+            "shortKey": "tum_nat5040m_quantum_cryptography",
+            "title": "Quantenkryptographie",
+            "titleEn": "Quantum cryptography",
+            "description": "Die lernende Person kann kryptographische Grundideen und Sicherheitsaspekte erläutern.",
+            "descriptionEn": "The learner can explain cryptographic primitives and security ideas.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "ded07f4f-4368-54ac-987f-7b5d422367c0",
+            "shortKey": "tum_nat5040m_research_and_communication",
+            "title": "Recherche und Kommunikation",
+            "titleEn": "Research and communication",
+            "description": "Die lernende Person kann eine fokussierte Literaturrecherche durchführen und Ergebnisse präsentieren.",
+            "descriptionEn": "The learner can conduct a focused literature review and present findings.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [
+                "a973de0f-41db-5969-b156-61a13457ab43",
+                "1ffff89c-9c9d-50da-a7b9-c7b1b06b98a7"
+            ],
+            "requires": [
+                "9045e23c-8418-53ce-9087-5d48a1ca78c8"
+            ]
+        },
+        {
+            "id": "a973de0f-41db-5969-b156-61a13457ab43",
+            "shortKey": "tum_nat5040m_literature_study_and_critical_evaluation",
+            "title": "Literaturstudium und kritische Bewertung",
+            "titleEn": "Literature study and critical evaluation",
+            "description": "Die lernende Person kann Fachartikel zusammenfassen und kritisch bewerten.",
+            "descriptionEn": "The learner can summarize and critique research papers.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "1ffff89c-9c9d-50da-a7b9-c7b1b06b98a7",
+            "shortKey": "tum_nat5040m_seminar_presentation_and_discussion",
+            "title": "Seminarpräsentation und Diskussion",
+            "titleEn": "Seminar presentation and discussion",
+            "description": "Die lernende Person kann Ergebnisse klar präsentieren und Fragen beantworten.",
+            "descriptionEn": "The learner can present results clearly and respond to questions.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [],
+            "requires": [
+                "a973de0f-41db-5969-b156-61a13457ab43"
+            ]
+        },
+        {
+            "id": "de757bd0-d028-59a4-821c-3d0fed7be5a9",
+            "shortKey": "tum_nat5040m_implementation_or_analysis",
+            "title": "Implementierung oder Analyse",
+            "titleEn": "Implementation or analysis",
+            "description": "Die lernende Person kann eine ausgewählte Methode implementieren oder theoretisch analysieren.",
+            "descriptionEn": "The learner can implement or analyze a selected quantum algorithm or method.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [
+                "e0e43ef0-fe57-5cbc-b4a2-9cd6e40192e8",
+                "367adcdd-8d42-5092-ab0e-1a85ac258a55"
+            ],
+            "requires": [
+                "9045e23c-8418-53ce-9087-5d48a1ca78c8"
+            ]
+        },
+        {
+            "id": "e0e43ef0-fe57-5cbc-b4a2-9cd6e40192e8",
+            "shortKey": "tum_nat5040m_algorithm_implementation_or_simulation",
+            "title": "Algorithmus-Implementierung oder Simulation",
+            "titleEn": "Algorithm implementation or simulation",
+            "description": "Die lernende Person kann einen gewählten Algorithmus implementieren oder eine Simulation durchführen.",
+            "descriptionEn": "The learner can implement a chosen algorithm or run a simulation.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "367adcdd-8d42-5092-ab0e-1a85ac258a55",
+            "shortKey": "tum_nat5040m_theoretical_analysis_of_the_selected_method",
+            "title": "Theoretische Analyse der ausgewählten Methode",
+            "titleEn": "Theoretical analysis of the selected method",
+            "description": "Die lernende Person kann Annahmen, Komplexität und Grenzen erläutern.",
+            "descriptionEn": "The learner can explain assumptions, complexity, and limitations.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:NAT5040m"
             ],
             "contains": [],
             "requires": []
@@ -1026,62 +2148,6 @@
             "area": "Wissen",
             "tags": [
                 "module:IN2400"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "40a86f71-951d-5e84-a42c-dec71cb10966",
-            "shortKey": "tum_ma3001_module",
-            "title": "Funktionalanalysis (Modul MA3001)",
-            "titleEn": "Functional Analysis (Module MA3001)",
-            "description": "- Banach- und Hilbert-Räume;\n- Begrenzte lineare Operatoren, Satz der offenen Abbildung;\n- Spektraltheorie für kompakte selbstadjungierte Operatoren;\n- Dualität, Hahn-Banach-Theoreme;\n- Schwache und schwache* Konvergenz;\n- Kurze Einführung in unbegrenzte Operatoren",
-            "descriptionEn": "- Banach and Hilbert spaces;\n- Bounded linear operators, open mapping theorem;\n- Spectral theory for compact selfadjoint operators;\n- Duality, Hahn-Banach theorems;\n- Weak and weak* convergence;\n- Brief introduction to unbounded operators",
-            "core": true,
-            "weight": 9.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:MA3001",
-                "ects:9"
-            ],
-            "contains": [
-                "90179896-8c49-5c2c-a4dc-1dcf0e7dbb63",
-                "8f11d5e3-ac20-5ef6-8c40-46c977ce63f9"
-            ],
-            "requires": [],
-            "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/MA3001"
-        },
-        {
-            "id": "90179896-8c49-5c2c-a4dc-1dcf0e7dbb63",
-            "shortKey": "tum_ma3001_lo1",
-            "title": "Nach erfolgreichem Abschluss des Moduls sind Studierende in der Lage, grundlegende theoretische Techniken zur Analyse linearer Funktionale und Operatoren auf Banach- und Hilbert-Räumen zu verstehen und anzuwenden",
-            "titleEn": "After successful completion of the module students are able to understand and apply basic theoretical techniques to analyze linear functionals and operators on Banach and Hilbert spaces",
-            "description": "Nach erfolgreichem Abschluss des Moduls sind Studierende in der Lage, grundlegende theoretische Techniken zur Analyse linearer Funktionale und Operatoren auf Banach- und Hilbert-Räumen zu verstehen und anzuwenden. Insbesondere können sie Spektren kompakter selbstadjunkter Operatoren analysieren, den Begriff der Dualität verstehen und Konzepte der Konvergenz schwacher Sterne und schwacher Sterne in Banachräumen anwenden.",
-            "descriptionEn": "After successful completion of the module students are able to understand and apply basic theoretical techniques to analyze linear functionals and operators on Banach and Hilbert spaces. In particular, they can analyze spectra of compact selfadjoint operators, understand the notion of duality and can apply concepts of weak and weak-star convergence in Banach spaces.",
-            "core": true,
-            "weight": 0.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:MA3001"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "8f11d5e3-ac20-5ef6-8c40-46c977ce63f9",
-            "shortKey": "tum_ma3001_ct1",
-            "title": "Banach- und Hilbert-Räume;",
-            "titleEn": "Banach and Hilbert spaces;",
-            "description": "Banach- und Hilbert-Räume;",
-            "descriptionEn": "Banach and Hilbert spaces;",
-            "core": false,
-            "weight": 0.0,
-            "phase": "Modul",
-            "area": "Wissen",
-            "tags": [
-                "module:MA3001"
             ],
             "contains": [],
             "requires": []
@@ -2833,98 +3899,6 @@
             "area": "Wissen",
             "tags": [
                 "module:NAT5030m"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "aa35595d-4df3-5e01-a18b-d8a37d5da2bc",
-            "shortKey": "tum_nat5040m_module",
-            "title": "Seminar: Advanced Topics of Quantum Computing (Modul NAT5040m)",
-            "titleEn": "Seminar: Topics of Quantum Computing (Module NAT5040m)",
-            "description": "Der Formalismus der Quantenmechanik stellt im Vergleich zu klassischen Computern einen Paradigmenwechsel für elementare Operationen wie die Anwendung einheitlicher Quantengatter dar. Im Seminar „Fortgeschrittene Themen des Quantencomputings“ beschäftigen sich Studierende mit aktuellen Quantenalgorithmen, deren zugrundeliegender mathematischer Beschreibung und theoretischer Analyse sowie damit verbundenen Methoden zur (numerischen) Simulation der Funktionalität eines Quantencomputers. Mögliche Themen sind:\n- Quantenhardware und physikalische Realisierungen von Quantencomputern\n- Quantenschaltungen\n- Quantensimulation (Verwendung eines Quantencomputers zur Simulation eines Zielquantensystems)\n- Tensornetzwerkmethoden\n- Qubitisierung und die Quanteneigenwerttransformation\n- Variationale Quantenalgorithmen und Quantenmaschinelles Lernen\n- Quantenoptimierung\n- Quantenfehlerkorrektur\n- Quantenzelluläre Automaten\n- Quantenkryptographie",
-            "descriptionEn": "The formalism of quantum mechanics represents a paradigm shift for elementary operations, like applying unitary quantum gates, compared to classical computers. In the seminar \"Advanced Topics of Quantum Computing\", students investigate current state-of-the-art quantum algorithms, their underlying mathematical description and theoretical analysis, and associated methods to (numerically) simulate the functionality of a quantum computer. Potential topics include:\n- Quantum hardware and physical realizations of quantum computers\n- Quantum circuits\n- Quantum simulation (using a quantum computer to simulate a target quantum system)\n- Tensor network methods\n- Qubitization and the quantum eigenvalue transformation\n- Variational quantum algorithms and quantum machine learning\n- Quantum optimization\n- Quantum error correction\n- Quantum cellular automata\n- Quantum cryptography",
-            "core": true,
-            "weight": 5.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:NAT5040m",
-                "ects:5"
-            ],
-            "contains": [
-                "9f7b6604-f671-5cd0-80eb-e45c2b34dfbc",
-                "67b7596a-c7eb-5ec3-97d3-e3f1925b4537",
-                "ceb88e2e-1cc9-50ba-a6a4-101306deb75a",
-                "c53a2116-42a7-5006-8733-506320676104"
-            ],
-            "requires": [],
-            "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/NAT5040m"
-        },
-        {
-            "id": "9f7b6604-f671-5cd0-80eb-e45c2b34dfbc",
-            "shortKey": "tum_nat5040m_lo1",
-            "title": "Nach Abschluss des Seminars erkennen Studierende die allgemeinen Ziele und Herausforderungen des Quantencomputings",
-            "titleEn": "After completing the seminar, students recognize the general goals and challenges of quantum computing",
-            "description": "Nach Abschluss des Seminars erkennen Studierende die allgemeinen Ziele und Herausforderungen des Quantencomputings. Sie können ein Unterthema im Detail verstehen und einen zugehörigen Algorithmus implementieren oder dessen zugrunde liegende Prinzipien erklären.",
-            "descriptionEn": "After completing the seminar, students recognize the general goals and challenges of quantum computing. They can understand a subtopic in detail and can implement an associated algorithm or explain its underlying principles.",
-            "core": true,
-            "weight": 0.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT5040m"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "67b7596a-c7eb-5ec3-97d3-e3f1925b4537",
-            "shortKey": "tum_nat5040m_ct1",
-            "title": "Der Formalismus der Quantenmechanik stellt einen Paradigmenwechsel für die elementare Op dar",
-            "titleEn": "The formalism of quantum mechanics represents a paradigm shift for elementary op",
-            "description": "Der Formalismus der Quantenmechanik stellt im Vergleich zu klassischen Computern einen Paradigmenwechsel für elementare Operationen wie die Anwendung einheitlicher Quantengatter dar.",
-            "descriptionEn": "The formalism of quantum mechanics represents a paradigm shift for elementary operations, like applying unitary quantum gates, compared to classical computers.",
-            "core": false,
-            "weight": 0.0,
-            "phase": "Modul",
-            "area": "Wissen",
-            "tags": [
-                "module:NAT5040m"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "ceb88e2e-1cc9-50ba-a6a4-101306deb75a",
-            "shortKey": "tum_nat5040m_ct2",
-            "title": "Im Seminar „Advanced Topics of Quantum Computing“ untersuchen Studierende aktuelle Themen",
-            "titleEn": "In the seminar \"Advanced Topics of Quantum Computing\", students investigate curr",
-            "description": "Im Seminar „Fortgeschrittene Themen des Quantencomputings“ beschäftigen sich Studierende mit aktuellen Quantenalgorithmen, deren zugrundeliegender mathematischer Beschreibung und theoretischer Analyse sowie damit verbundenen Methoden zur (numerischen) Simulation der Funktionalität eines Quantencomputers.",
-            "descriptionEn": "In the seminar \"Advanced Topics of Quantum Computing\", students investigate current state-of-the-art quantum algorithms, their underlying mathematical description and theoretical analysis, and associated methods to (numerically) simulate the functionality of a quantum computer.",
-            "core": false,
-            "weight": 0.0,
-            "phase": "Modul",
-            "area": "Wissen",
-            "tags": [
-                "module:NAT5040m"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "c53a2116-42a7-5006-8733-506320676104",
-            "shortKey": "tum_nat5040m_ct3",
-            "title": "Mögliche Themen sind:",
-            "titleEn": "Possible topics are:",
-            "description": "Mögliche Themen sind:",
-            "descriptionEn": "Possible topics are:",
-            "core": false,
-            "weight": 0.0,
-            "phase": "Modul",
-            "area": "Wissen",
-            "tags": [
-                "module:NAT5040m"
             ],
             "contains": [],
             "requires": []

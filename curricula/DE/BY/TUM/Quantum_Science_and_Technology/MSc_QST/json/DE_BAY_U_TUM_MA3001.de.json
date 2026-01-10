@@ -1,8 +1,8 @@
 {
     "title": "Funktionalanalysis (TUM, Modul MA3001)",
     "titleEn": "Functional Analysis (TUM, Module MA3001)",
-    "description": "- Banach- und Hilbert-Räume;\n- Begrenzte lineare Operatoren, Satz der offenen Abbildung;\n- Spektraltheorie für kompakte selbstadjungierte Operatoren;\n- Dualität, Hahn-Banach-Theoreme;\n- Schwache und schwache* Konvergenz;\n- Kurze Einführung in unbegrenzte Operatoren",
-    "descriptionEn": "- Banach and Hilbert spaces;\n- Bounded linear operators, open mapping theorem;\n- Spectral theory for compact selfadjoint operators;\n- Duality, Hahn-Banach theorems;\n- Weak and weak* convergence;\n- Brief introduction to unbounded operators",
+    "description": "Das Modul Funktionalanalysis behandelt Banach- und Hilbert-Räume, beschränkte lineare Operatoren und zentrale Sätze wie den Satz der offenen Abbildung. Es umfasst Dualität und Hahn-Banach, schwache und schwach* Konvergenz, Spektraltheorie kompakter selbstadjungierter Operatoren sowie eine Einführung in unbeschränkte Operatoren.",
+    "descriptionEn": "The module Functional Analysis covers Banach and Hilbert spaces, bounded linear operators and key theorems such as the open mapping theorem. It includes duality and Hahn-Banach, weak and weak* convergence, spectral theory of compact selfadjoint operators, and an introduction to unbounded operators.",
     "locale": "de-DE",
     "subject": "TUM-Module",
     "frameworkId": "tum-ma3001",
@@ -10,10 +10,10 @@
         {
             "id": "40a86f71-951d-5e84-a42c-dec71cb10966",
             "shortKey": "tum_ma3001_module",
-            "title": "Funktionalanalysis (Modul MA3001)",
-            "titleEn": "Functional Analysis (Module MA3001)",
-            "description": "- Banach- und Hilbert-Räume;\n- Begrenzte lineare Operatoren, Satz der offenen Abbildung;\n- Spektraltheorie für kompakte selbstadjungierte Operatoren;\n- Dualität, Hahn-Banach-Theoreme;\n- Schwache und schwache* Konvergenz;\n- Kurze Einführung in unbegrenzte Operatoren",
-            "descriptionEn": "- Banach and Hilbert spaces;\n- Bounded linear operators, open mapping theorem;\n- Spectral theory for compact selfadjoint operators;\n- Duality, Hahn-Banach theorems;\n- Weak and weak* convergence;\n- Brief introduction to unbounded operators",
+            "title": "Funktionalanalysis (MA3001)",
+            "titleEn": "Functional Analysis (MA3001)",
+            "description": "Die lernende Person kann zentrale Werkzeuge der Funktionalanalysis nutzen, um lineare Funktionale und Operatoren auf Banach- und Hilbert-Räumen zu untersuchen.",
+            "descriptionEn": "The learner can use core tools of functional analysis to study linear functionals and operators on Banach and Hilbert spaces.",
             "core": true,
             "weight": 9.0,
             "phase": "Modul",
@@ -23,21 +23,45 @@
                 "ects:9"
             ],
             "contains": [
-                "90179896-8c49-5c2c-a4dc-1dcf0e7dbb63",
-                "8f11d5e3-ac20-5ef6-8c40-46c977ce63f9"
+                "fb652b89-be6e-5cff-b6ac-709d1dd6db02",
+                "248a9c78-1a46-5c5c-8b35-92ab3e334b23",
+                "aa75456f-3e1b-5305-8550-c12f0d6f08a0",
+                "642365fb-a766-53ae-9288-4af4b2d81f6b",
+                "0f274ec4-8b99-548b-a1f3-6b8982060e3f",
+                "5a788fc9-490c-5e89-b90a-8cc03723d923"
             ],
             "requires": [],
             "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/MA3001"
         },
         {
-            "id": "90179896-8c49-5c2c-a4dc-1dcf0e7dbb63",
-            "shortKey": "tum_ma3001_lo1",
-            "title": "Nach erfolgreichem Abschluss des Moduls sind Studierende in der Lage, grundlegende theoretische Techniken zur Analyse linearer Funktionale und Operatoren auf Banach- und Hilbert-Räumen zu verstehen und anzuwenden",
-            "titleEn": "After successful completion of the module students are able to understand and apply basic theoretical techniques to analyze linear functionals and operators on Banach and Hilbert spaces",
-            "description": "Nach erfolgreichem Abschluss des Moduls sind Studierende in der Lage, grundlegende theoretische Techniken zur Analyse linearer Funktionale und Operatoren auf Banach- und Hilbert-Räumen zu verstehen und anzuwenden. Insbesondere können sie Spektren kompakter selbstadjunkter Operatoren analysieren, den Begriff der Dualität verstehen und Konzepte der Konvergenz schwacher Sterne und schwacher Sterne in Banachräumen anwenden.",
-            "descriptionEn": "After successful completion of the module students are able to understand and apply basic theoretical techniques to analyze linear functionals and operators on Banach and Hilbert spaces. In particular, they can analyze spectra of compact selfadjoint operators, understand the notion of duality and can apply concepts of weak and weak-star convergence in Banach spaces.",
+            "id": "fb652b89-be6e-5cff-b6ac-709d1dd6db02",
+            "shortKey": "tum_ma3001_normed_banach_and_hilbert_spaces",
+            "title": "Normierte, Banach- und Hilbert-Räume",
+            "titleEn": "Normed, Banach, and Hilbert spaces",
+            "description": "Die lernende Person kann normierte Räume definieren und Banach- sowie Hilbert-Strukturen unterscheiden.",
+            "descriptionEn": "The learner can define normed spaces and distinguish Banach and Hilbert structures.",
             "core": true,
-            "weight": 0.0,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [
+                "1c8dafc5-9907-57e3-b5e7-7546b036a776",
+                "911516bb-2162-52dc-a1ca-108685f20bce"
+            ],
+            "requires": []
+        },
+        {
+            "id": "1c8dafc5-9907-57e3-b5e7-7546b036a776",
+            "shortKey": "tum_ma3001_banach_spaces_and_completeness",
+            "title": "Banachräume und Vollständigkeit",
+            "titleEn": "Banach spaces and completeness",
+            "description": "Die lernende Person kann Vollständigkeit erklären und Banachraum-Eigenschaften in Beispielen nachweisen.",
+            "descriptionEn": "The learner can explain completeness and verify Banach space properties in examples.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
             "area": "Kompetenz",
             "tags": [
@@ -47,21 +71,274 @@
             "requires": []
         },
         {
-            "id": "8f11d5e3-ac20-5ef6-8c40-46c977ce63f9",
-            "shortKey": "tum_ma3001_ct1",
-            "title": "Banach- und Hilbert-Räume;",
-            "titleEn": "Banach and Hilbert spaces;",
-            "description": "Banach- und Hilbert-Räume;",
-            "descriptionEn": "Banach and Hilbert spaces;",
-            "core": false,
-            "weight": 0.0,
+            "id": "911516bb-2162-52dc-a1ca-108685f20bce",
+            "shortKey": "tum_ma3001_hilbert_spaces_inner_products_and_orthogonality",
+            "title": "Hilberträume, Skalarprodukte und Orthogonalität",
+            "titleEn": "Hilbert spaces, inner products, and orthogonality",
+            "description": "Die lernende Person kann mit Skalarprodukten, Orthogonalität und Projektionen in Hilberträumen arbeiten.",
+            "descriptionEn": "The learner can work with inner products, orthogonality, and projections in Hilbert spaces.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
-            "area": "Wissen",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "1c8dafc5-9907-57e3-b5e7-7546b036a776"
+            ]
+        },
+        {
+            "id": "248a9c78-1a46-5c5c-8b35-92ab3e334b23",
+            "shortKey": "tum_ma3001_bounded_linear_operators_and_fundamental_theorems",
+            "title": "Beschränkte lineare Operatoren und grundlegende Sätze",
+            "titleEn": "Bounded linear operators and fundamental theorems",
+            "description": "Die lernende Person kann beschränkte lineare Operatoren analysieren und zentrale Existenzsätze anwenden.",
+            "descriptionEn": "The learner can analyze bounded linear operators and apply key existence theorems.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [
+                "9812ea4c-0182-51c0-8eec-32a2436f5c5d",
+                "1ead68d5-928c-5bdf-a0a0-b6e19c88f32d"
+            ],
+            "requires": [
+                "fb652b89-be6e-5cff-b6ac-709d1dd6db02"
+            ]
+        },
+        {
+            "id": "9812ea4c-0182-51c0-8eec-32a2436f5c5d",
+            "shortKey": "tum_ma3001_bounded_operators_and_operator_norms",
+            "title": "Beschränkte Operatoren und Operatornormen",
+            "titleEn": "Bounded operators and operator norms",
+            "description": "Die lernende Person kann Operatornormen berechnen und Beschränktheit bestimmen.",
+            "descriptionEn": "The learner can compute operator norms and determine boundedness.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
             "tags": [
                 "module:MA3001"
             ],
             "contains": [],
             "requires": []
+        },
+        {
+            "id": "1ead68d5-928c-5bdf-a0a0-b6e19c88f32d",
+            "shortKey": "tum_ma3001_open_mapping_and_bounded_inverse_theorems",
+            "title": "Satz der offenen Abbildung und Satz vom beschränkten Inversen",
+            "titleEn": "Open mapping and bounded inverse theorems",
+            "description": "Die lernende Person kann den Satz der offenen Abbildung und seine Folgerungen anwenden.",
+            "descriptionEn": "The learner can apply the open mapping theorem and related consequences.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "9812ea4c-0182-51c0-8eec-32a2436f5c5d"
+            ]
+        },
+        {
+            "id": "aa75456f-3e1b-5305-8550-c12f0d6f08a0",
+            "shortKey": "tum_ma3001_duality_and_hahn_banach",
+            "title": "Dualität und Hahn-Banach",
+            "titleEn": "Duality and Hahn-Banach",
+            "description": "Die lernende Person kann Dualräume und Erweiterungssätze für lineare Funktionale nutzen.",
+            "descriptionEn": "The learner can use dual spaces and extension principles for linear functionals.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [
+                "e4ca2f65-67f2-572f-a5b5-8a752c1fcdff",
+                "98975ef7-4991-5262-a77b-40c6929fddad"
+            ],
+            "requires": [
+                "fb652b89-be6e-5cff-b6ac-709d1dd6db02"
+            ]
+        },
+        {
+            "id": "e4ca2f65-67f2-572f-a5b5-8a752c1fcdff",
+            "shortKey": "tum_ma3001_dual_spaces_and_linear_functionals",
+            "title": "Dualräume und lineare Funktionale",
+            "titleEn": "Dual spaces and linear functionals",
+            "description": "Die lernende Person kann Dualräume identifizieren und lineare Funktionale interpretieren.",
+            "descriptionEn": "The learner can identify dual spaces and interpret linear functionals.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "98975ef7-4991-5262-a77b-40c6929fddad",
+            "shortKey": "tum_ma3001_hahn_banach_extension_theorems",
+            "title": "Hahn-Banach-Fortsetzungssätze",
+            "titleEn": "Hahn-Banach extension theorems",
+            "description": "Die lernende Person kann Hahn-Banach zur Fortsetzung von Funktionalen und zur Separierung von Mengen anwenden.",
+            "descriptionEn": "The learner can apply Hahn-Banach to extend functionals and separate sets.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "e4ca2f65-67f2-572f-a5b5-8a752c1fcdff"
+            ]
+        },
+        {
+            "id": "642365fb-a766-53ae-9288-4af4b2d81f6b",
+            "shortKey": "tum_ma3001_weak_and_weak_convergence",
+            "title": "Schwache und schwach* Konvergenz",
+            "titleEn": "Weak and weak* convergence",
+            "description": "Die lernende Person kann schwache und schwach* Topologien und Konvergenz analysieren.",
+            "descriptionEn": "The learner can analyze weak and weak* topologies and convergence.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [
+                "7e2eb70e-398c-5aac-a33f-67ccc1681589",
+                "07ac0dc5-95e3-55d4-ae53-2ac6a127c3dd"
+            ],
+            "requires": [
+                "aa75456f-3e1b-5305-8550-c12f0d6f08a0"
+            ]
+        },
+        {
+            "id": "7e2eb70e-398c-5aac-a33f-67ccc1681589",
+            "shortKey": "tum_ma3001_weak_convergence_in_banach_spaces",
+            "title": "Schwache Konvergenz in Banachräumen",
+            "titleEn": "Weak convergence in Banach spaces",
+            "description": "Die lernende Person kann schwache Konvergenz mithilfe beschränkter linearer Funktionale testen.",
+            "descriptionEn": "The learner can test weak convergence using bounded linear functionals.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "07ac0dc5-95e3-55d4-ae53-2ac6a127c3dd",
+            "shortKey": "tum_ma3001_weak_convergence_and_duality",
+            "title": "Schwach* Konvergenz und Dualität",
+            "titleEn": "Weak* convergence and duality",
+            "description": "Die lernende Person kann schwache und schwach* Konvergenz unterscheiden und Kompaktheitsergebnisse nutzen.",
+            "descriptionEn": "The learner can distinguish weak and weak* convergence and use compactness results.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "7e2eb70e-398c-5aac-a33f-67ccc1681589"
+            ]
+        },
+        {
+            "id": "0f274ec4-8b99-548b-a1f3-6b8982060e3f",
+            "shortKey": "tum_ma3001_spectral_theory_of_compact_selfadjoint_operators",
+            "title": "Spektraltheorie kompakter selbstadjungierter Operatoren",
+            "titleEn": "Spectral theory of compact selfadjoint operators",
+            "description": "Die lernende Person kann Spektren kompakter selbstadjungierter Operatoren in Hilberträumen analysieren.",
+            "descriptionEn": "The learner can analyze spectra of compact selfadjoint operators in Hilbert spaces.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [
+                "ac0db799-d5d4-5c16-878d-c9df0212e5d6",
+                "c919bffa-350d-52be-b935-641b608d0653"
+            ],
+            "requires": [
+                "248a9c78-1a46-5c5c-8b35-92ab3e334b23"
+            ]
+        },
+        {
+            "id": "ac0db799-d5d4-5c16-878d-c9df0212e5d6",
+            "shortKey": "tum_ma3001_compact_operators_and_spectral_properties",
+            "title": "Kompakte Operatoren und spektrale Eigenschaften",
+            "titleEn": "Compact operators and spectral properties",
+            "description": "Die lernende Person kann kompakte Operatoren charakterisieren und deren Spektrum bestimmen.",
+            "descriptionEn": "The learner can characterize compact operators and their spectra.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "c919bffa-350d-52be-b935-641b608d0653",
+            "shortKey": "tum_ma3001_selfadjoint_operators_and_spectral_decompositions",
+            "title": "Selbstadjungierte Operatoren und Spektralzerlegungen",
+            "titleEn": "Selfadjoint operators and spectral decompositions",
+            "description": "Die lernende Person kann die Spektralzerlegung kompakter selbstadjungierter Operatoren anwenden.",
+            "descriptionEn": "The learner can apply spectral decomposition for compact selfadjoint operators.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "ac0db799-d5d4-5c16-878d-c9df0212e5d6"
+            ]
+        },
+        {
+            "id": "5a788fc9-490c-5e89-b90a-8cc03723d923",
+            "shortKey": "tum_ma3001_introduction_to_unbounded_operators",
+            "title": "Einführung in unbeschränkte Operatoren",
+            "titleEn": "Introduction to unbounded operators",
+            "description": "Die lernende Person kann grundlegende Begriffe unbeschränkter Operatoren und ihrer Definitionsbereiche erläutern.",
+            "descriptionEn": "The learner can explain basic notions of unbounded operators and their domains.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:MA3001"
+            ],
+            "contains": [],
+            "requires": [
+                "248a9c78-1a46-5c5c-8b35-92ab3e334b23"
+            ]
         }
     ]
 }

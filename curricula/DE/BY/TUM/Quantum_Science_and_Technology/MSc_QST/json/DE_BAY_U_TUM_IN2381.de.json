@@ -1,8 +1,8 @@
 {
     "title": "Einführung in Quantum Computing (TUM, Modul IN2381)",
     "titleEn": "Introduction to Quantum Computing (TUM, Module IN2381)",
-    "description": "- Mathematischer Formalismus und Grundlagen der Quantenmechanik\n- Quantenschaltungen\n- Quantenteleportation\n- Bellsche Ungleichung\n- Grundlegende Quantenalgorithmen",
-    "descriptionEn": "- Mathematical formalism and fundamentals of quantum mechanics\n- Quantum circuits\n- Quantenteleportation\n- Bell's inequality\n- Basic quantum algorithms",
+    "description": "Das Modul führt in den mathematischen Formalismus der Quantenmechanik für das Quantencomputing ein und behandelt Quantenschaltungen, Teleportation, Bellsche Ungleichungen sowie grundlegende Quantenalgorithmen. Studierende analysieren einfache Algorithmen, entwerfen Schaltungen und nutzen Tools wie Qiskit oder Cirq.",
+    "descriptionEn": "The module introduces the quantum-mechanical formalism for quantum computing and covers quantum circuits, teleportation, Bell inequalities, and fundamental quantum algorithms. Students analyze simple algorithms, design circuits, and use tools such as Qiskit or Cirq.",
     "locale": "de-DE",
     "subject": "TUM-Module",
     "frameworkId": "tum-in2381",
@@ -10,10 +10,10 @@
         {
             "id": "4b1203b5-3698-5fdc-9f1c-e0b360603700",
             "shortKey": "tum_in2381_module",
-            "title": "Einführung in Quantum Computing (Modul IN2381)",
-            "titleEn": "Introduction to Quantum Computing (Module IN2381)",
-            "description": "- Mathematischer Formalismus und Grundlagen der Quantenmechanik\n- Quantenschaltungen\n- Quantenteleportation\n- Bellsche Ungleichung\n- Grundlegende Quantenalgorithmen",
-            "descriptionEn": "- Mathematical formalism and fundamentals of quantum mechanics\n- Quantum circuits\n- Quantenteleportation\n- Bell's inequality\n- Basic quantum algorithms",
+            "title": "Einführung in Quantum Computing (IN2381)",
+            "titleEn": "Introduction to Quantum Computing (IN2381)",
+            "description": "Die lernende Person kann den mathematischen Formalismus des Quantum Computing erklären, einfache Quantenalgorithmen analysieren und grundlegende Quantenschaltungen entwerfen.",
+            "descriptionEn": "The learner can explain the mathematical foundations of quantum computing and design simple quantum algorithms and circuits.",
             "core": true,
             "weight": 5.0,
             "phase": "Modul",
@@ -23,21 +23,44 @@
                 "ects:5"
             ],
             "contains": [
-                "c8f9d7ba-edab-504d-86d9-59ef876ce35b",
-                "38abbbdc-abf0-5f5b-9fb2-532e7c7139ad"
+                "2ff05a7a-adac-5dec-a88b-ad2a0c4217c7",
+                "e306f083-2350-5b78-8a1b-445b66cc4de0",
+                "435930e6-ad5d-5f7f-9a23-bdaca5edc00d",
+                "84bad838-0db0-5f72-8d9e-0c0d10927136",
+                "d41c6c3b-4224-5a1c-a6b1-f86f089986d3"
             ],
             "requires": [],
             "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN2381"
         },
         {
-            "id": "c8f9d7ba-edab-504d-86d9-59ef876ce35b",
-            "shortKey": "tum_in2381_lo1",
-            "title": "Nach erfolgreicher Teilnahme an diesem Modul beherrschen die Studierenden die Gr",
-            "titleEn": "After successful participation in this module, students will master the Gr",
-            "description": "Nach erfolgreicher Teilnahme an diesem Modul beherrschen die Studierenden die Grundlagen und den mathematischen Formalismus von Quantum Computing. Sie sind in der Lage, Quanten-Algorithmen, wie z.B. Grover-Suche, zu analysieren und Quantenschaltungen für einfache Algorithmen zu entwickeln. Die Studierenden können entsprechende Software-Tools (wie Qiskit oder Cirq) anwenden, sowie mögliche Einsatzgebieten von (zukünftigen) Quantencomputern einschätzen.",
-            "descriptionEn": "After successfully completing this module, students will master the basics and mathematical formalism of quantum computing. You are able to analyze quantum algorithms, such as Grover search, and develop quantum circuits for simple algorithms. Students can use appropriate software tools (such as Qiskit or Cirq) and assess possible areas of application for (future) quantum computers.",
+            "id": "2ff05a7a-adac-5dec-a88b-ad2a0c4217c7",
+            "shortKey": "tum_in2381_quantum_mechanics_formalism_for_computing",
+            "title": "Quantenmechanischer Formalismus für das Quantencomputing",
+            "titleEn": "Quantum mechanics formalism for computing",
+            "description": "Die lernende Person kann den Zustands- und Operatorformalismus für Qubits und Messungen anwenden.",
+            "descriptionEn": "The learner can use the state and operator formalism for qubits and measurements.",
             "core": true,
-            "weight": 0.0,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [
+                "99aec628-12c6-558f-95e5-4184cd5ee869",
+                "24f8dc35-3de6-56e3-a6fd-712ddd61ccf5"
+            ],
+            "requires": []
+        },
+        {
+            "id": "99aec628-12c6-558f-95e5-4184cd5ee869",
+            "shortKey": "tum_in2381_qubit_states_and_dirac_notation",
+            "title": "Qubit-Zustände und Dirac-Notation",
+            "titleEn": "Qubit states and Dirac notation",
+            "description": "Die lernende Person kann Ein- und Mehrqubit-Zustände darstellen und Amplituden berechnen.",
+            "descriptionEn": "The learner can represent single- and multi-qubit states and compute amplitudes.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
             "area": "Kompetenz",
             "tags": [
@@ -47,16 +70,230 @@
             "requires": []
         },
         {
-            "id": "38abbbdc-abf0-5f5b-9fb2-532e7c7139ad",
-            "shortKey": "tum_in2381_ct1",
-            "title": "Mathematischer Formalismus und Grundlagen der Quantenmechanik",
-            "titleEn": "Mathematical formalism and fundamentals of quantum mechanics",
-            "description": "Mathematischer Formalismus und Grundlagen der Quantenmechanik",
-            "descriptionEn": "Mathematical formalism and fundamentals of quantum mechanics",
-            "core": false,
-            "weight": 0.0,
+            "id": "24f8dc35-3de6-56e3-a6fd-712ddd61ccf5",
+            "shortKey": "tum_in2381_quantum_measurements_and_probabilities",
+            "title": "Quantenmessungen und Wahrscheinlichkeiten",
+            "titleEn": "Quantum measurements and probabilities",
+            "description": "Die lernende Person kann Messungen modellieren und Ergebnisstatistiken berechnen.",
+            "descriptionEn": "The learner can model measurements and compute outcome statistics.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
-            "area": "Wissen",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [],
+            "requires": [
+                "99aec628-12c6-558f-95e5-4184cd5ee869"
+            ]
+        },
+        {
+            "id": "e306f083-2350-5b78-8a1b-445b66cc4de0",
+            "shortKey": "tum_in2381_quantum_circuits_and_gates",
+            "title": "Quantenschaltungen und Gatter",
+            "titleEn": "Quantum circuits and gates",
+            "description": "Die lernende Person kann Schaltungen aus elementaren Quantengattern aufbauen.",
+            "descriptionEn": "The learner can build circuits from elementary quantum gates.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [
+                "2d8a3483-70aa-5fd6-8d9b-7b6944e90468",
+                "5fbf8d44-646a-50a6-946b-4e9175c0bbd9"
+            ],
+            "requires": [
+                "2ff05a7a-adac-5dec-a88b-ad2a0c4217c7"
+            ]
+        },
+        {
+            "id": "2d8a3483-70aa-5fd6-8d9b-7b6944e90468",
+            "shortKey": "tum_in2381_single_and_two_qubit_gates",
+            "title": "Ein- und Zwei-Qubit-Gatter",
+            "titleEn": "Single- and two-qubit gates",
+            "description": "Die lernende Person kann gängige Gatter anwenden und ihre Matrixdarstellungen verstehen.",
+            "descriptionEn": "The learner can use common gates and understand their matrix representations.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "5fbf8d44-646a-50a6-946b-4e9175c0bbd9",
+            "shortKey": "tum_in2381_circuit_construction_and_execution",
+            "title": "Schaltungsentwurf und Ausführung",
+            "titleEn": "Circuit construction and execution",
+            "description": "Die lernende Person kann Schaltungen für einfache Aufgaben entwerfen und Ausgaben vorhersagen.",
+            "descriptionEn": "The learner can design circuits for simple tasks and predict outputs.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [],
+            "requires": [
+                "2d8a3483-70aa-5fd6-8d9b-7b6944e90468"
+            ]
+        },
+        {
+            "id": "435930e6-ad5d-5f7f-9a23-bdaca5edc00d",
+            "shortKey": "tum_in2381_entanglement_and_communication_protocols",
+            "title": "Verschränkung und Kommunikationsprotokolle",
+            "titleEn": "Entanglement and communication protocols",
+            "description": "Die lernende Person kann Verschränkung und ihre Rolle in grundlegenden Protokollen erklären.",
+            "descriptionEn": "The learner can explain entanglement and its role in basic protocols.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [
+                "cb58f58d-9116-5759-9f0d-c83c9c0babd0",
+                "3d846cac-990d-5fd2-b0b9-a581fdf99581"
+            ],
+            "requires": [
+                "2ff05a7a-adac-5dec-a88b-ad2a0c4217c7"
+            ]
+        },
+        {
+            "id": "cb58f58d-9116-5759-9f0d-c83c9c0babd0",
+            "shortKey": "tum_in2381_bell_inequalities_and_nonlocality",
+            "title": "Bellsche Ungleichungen und Nichtlokalität",
+            "titleEn": "Bell inequalities and nonlocality",
+            "description": "Die lernende Person kann Bell-Tests erklären und ihre Konsequenzen für Nichtlokalität beschreiben.",
+            "descriptionEn": "The learner can explain Bell tests and their implications.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "3d846cac-990d-5fd2-b0b9-a581fdf99581",
+            "shortKey": "tum_in2381_quantum_teleportation",
+            "title": "Quantenteleportation",
+            "titleEn": "Quantum teleportation",
+            "description": "Die lernende Person kann das Teleportationsprotokoll skizzieren und benötigte Ressourcen benennen.",
+            "descriptionEn": "The learner can outline the teleportation protocol and required resources.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [],
+            "requires": [
+                "cb58f58d-9116-5759-9f0d-c83c9c0babd0"
+            ]
+        },
+        {
+            "id": "84bad838-0db0-5f72-8d9e-0c0d10927136",
+            "shortKey": "tum_in2381_fundamental_quantum_algorithms",
+            "title": "Grundlegende Quantenalgorithmen",
+            "titleEn": "Fundamental quantum algorithms",
+            "description": "Die lernende Person kann zentrale Quantenalgorithmen und ihre Beschleunigungen analysieren.",
+            "descriptionEn": "The learner can analyze core quantum algorithms and their speedups.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [
+                "5ec2dcb2-6ecd-508c-9eea-2923fb000493"
+            ],
+            "requires": [
+                "e306f083-2350-5b78-8a1b-445b66cc4de0"
+            ]
+        },
+        {
+            "id": "5ec2dcb2-6ecd-508c-9eea-2923fb000493",
+            "shortKey": "tum_in2381_grover_search_and_basic_algorithmic_ideas",
+            "title": "Grover-Suche und grundlegende algorithmische Ideen",
+            "titleEn": "Grover search and basic algorithmic ideas",
+            "description": "Die lernende Person kann Grovers Algorithmus beschreiben und dessen Komplexität analysieren.",
+            "descriptionEn": "The learner can describe Grover's algorithm and analyze its complexity.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "d41c6c3b-4224-5a1c-a6b1-f86f089986d3",
+            "shortKey": "tum_in2381_software_tools_and_applications",
+            "title": "Software-Tools und Anwendungen",
+            "titleEn": "Software tools and applications",
+            "description": "Die lernende Person kann grundlegende Software-Tools für Quantenschaltungen nutzen und Einsatzfelder einschätzen.",
+            "descriptionEn": "The learner can use basic software tools for quantum circuits and assess application areas.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [
+                "cb68f929-93ec-5cc9-8918-a78611e53ddc",
+                "4ec29e98-8762-5daf-8091-ecb8055ecabe"
+            ],
+            "requires": [
+                "e306f083-2350-5b78-8a1b-445b66cc4de0"
+            ]
+        },
+        {
+            "id": "cb68f929-93ec-5cc9-8918-a78611e53ddc",
+            "shortKey": "tum_in2381_circuit_simulation_with_qiskit_or_cirq",
+            "title": "Schaltungssimulation mit Qiskit oder Cirq",
+            "titleEn": "Circuit simulation with Qiskit or Cirq",
+            "description": "Die lernende Person kann einfache Schaltungen in gängigen Toolkits implementieren und ausführen.",
+            "descriptionEn": "The learner can implement and run simple circuits in common toolkits.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN2381"
+            ],
+            "contains": [],
+            "requires": [
+                "5fbf8d44-646a-50a6-946b-4e9175c0bbd9"
+            ]
+        },
+        {
+            "id": "4ec29e98-8762-5daf-8091-ecb8055ecabe",
+            "shortKey": "tum_in2381_use_cases_and_limitations_of_quantum_computing",
+            "title": "Anwendungsfälle und Grenzen des Quantencomputings",
+            "titleEn": "Use cases and limitations of quantum computing",
+            "description": "Die lernende Person kann Anwendungsdomänen benennen und Grenzen diskutieren.",
+            "descriptionEn": "The learner can identify application domains and discuss limitations.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
             "tags": [
                 "module:IN2381"
             ],
