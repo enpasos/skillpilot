@@ -1,8 +1,8 @@
 package com.skillpilot.backend.landscape;
 
 import com.skillpilot.backend.api.LandscapeOverviewResponse;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -186,9 +186,19 @@ public class LandscapeService {
                     .collect(Collectors.toList());
             for (Path file : files) {
                 try {
-                    LearningLandscape landscape = objectMapper.readValue(file.toFile(), new TypeReference<>() {
-                    });
-                    if (landscape.getLandscapeId() == null) {
+                    JsonNode root = objectMapper.readTree(file.toFile());
+                    if (root == null || !root.isObject()) {
+                        log.debug("Skipping non-landscape JSON file {}: not a JSON object", file);
+                        continue;
+                    }
+                    boolean hasLandscapeId = root.hasNonNull("landscapeId") || root.hasNonNull("id");
+                    if (!hasLandscapeId) {
+                        log.debug("Skipping non-landscape JSON file {}: missing landscapeId", file);
+                        continue;
+                    }
+
+                    LearningLandscape landscape = objectMapper.treeToValue(root, LearningLandscape.class);
+                    if (!StringUtils.hasText(landscape.getLandscapeId())) {
                         log.warn("Skipping landscape without id: {}", file);
                         continue;
                     }
