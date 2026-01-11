@@ -25,6 +25,9 @@ python3 scripts/deploy_story.py
 # 'app' ist ein Unterordner, hier ist der relative Pfad okay
 cd app
 
+echo "Installiere Abhängigkeiten..."
+npm install
+
 echo "Baue Anwendung..."
 npm run build
 
