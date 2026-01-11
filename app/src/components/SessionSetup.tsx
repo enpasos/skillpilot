@@ -201,7 +201,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
             to={`/story/${language}`}
             className="flex items-center gap-2 text-text-secondary hover:text-sky-500 transition-colors"
           >
-            <FileText size={20} />
+
             <span className="font-medium">{t.startPage.subtitle}</span>
           </Link>
         </div>

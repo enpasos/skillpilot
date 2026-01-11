@@ -1,6 +1,6 @@
 export const de = {
     startPage: {
-        subtitle: "so lerne ich",
+        subtitle: "so lerne ich ...",
         cards: {
             whitepaper: {
                 title: "Whitepaper lesen",
