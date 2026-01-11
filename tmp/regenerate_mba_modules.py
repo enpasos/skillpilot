@@ -271,6 +271,15 @@ def build_goals(code: str, module_meta, translator: Translator):
             root['tags'].append(f"ects:{module_meta['ects']}")
         root['sourceRef'] = f"https://academics.nat.tum.de/org/mh/details/mod/{code}"
 
+    # Minimal requires: learning outcomes depend on core topics.
+    title_index = {g.get('titleEn', '').strip().lower(): g for g in goals}
+    core_topics = title_index.get('core topics')
+    learning_outcomes = title_index.get('learning outcomes')
+    if core_topics and learning_outcomes:
+        requires = learning_outcomes.get('requires', [])
+        if core_topics['id'] not in requires:
+            learning_outcomes['requires'] = requires + [core_topics['id']]
+
     return goals
 
 
