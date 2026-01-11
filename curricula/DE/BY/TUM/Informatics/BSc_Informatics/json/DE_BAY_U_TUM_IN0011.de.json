@@ -1,8 +1,8 @@
 {
     "title": "Einführung in die Theoretische Informatik (TUM, Modul IN0011)",
     "titleEn": "Introduction to Theory of Computation (TUM, Module IN0011)",
-    "description": "Formale Sprachen, Grammatiken, Chomsky Hierarchy.",
-    "descriptionEn": "Formale Sprachen, Grammatiken, Chomsky Hierarchy.",
+    "description": "Die lernende Person kann formale Sprachen, Berechenbarkeit und Komplexität analysieren.",
+    "descriptionEn": "The learner can analyze formal languages, computability, and complexity.",
     "locale": "de-DE",
     "subject": "TUM-Module",
     "frameworkId": "tum-in0011",
@@ -10,10 +10,10 @@
         {
             "id": "818b67bf-d76f-53bc-abb9-e00fe91dee52",
             "shortKey": "tum_in0011_module",
-            "title": "Einführung in die Theoretische Informatik (Modul IN0011)",
-            "titleEn": "Introduction to Theory of Computation (Module IN0011)",
-            "description": "Formale Sprachen, Grammatiken, Chomsky Hierarchy.",
-            "descriptionEn": "Formale Sprachen, Grammatiken, Chomsky Hierarchy.",
+            "title": "Einführung in die Theoretische Informatik (IN0011)",
+            "titleEn": "Introduction to Theory of Computation (IN0011)",
+            "description": "Die lernende Person kann formale Sprachen, Berechenbarkeit und Komplexität analysieren.",
+            "descriptionEn": "The learner can analyze formal languages, computability, and complexity.",
             "core": true,
             "weight": 8.0,
             "phase": "Modul",
@@ -23,21 +23,45 @@
                 "ects:8"
             ],
             "contains": [
-                "f4c60497-f5fa-5465-9e88-980f888c518a",
-                "ea7b197d-bd12-5166-ba7a-f549332e63c7"
+                "9d4fb5b9-22a3-51df-b510-417a5d730d24",
+                "eb553465-5a14-55eb-a4d7-50dd28b0df37",
+                "315964ef-5892-5aba-9c10-5531807350d6",
+                "42c7e58c-38a9-562a-8553-618a39557ed9",
+                "bfe8b492-c406-585c-9ad5-efa9121186fb",
+                "6d179dbe-26cb-533b-b321-6c4fa5d8d993"
             ],
             "requires": [],
             "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0011"
         },
         {
-            "id": "f4c60497-f5fa-5465-9e88-980f888c518a",
-            "shortKey": "tum_in0011_lo1",
-            "title": "Nach der erfolgreichen Teilnahme an diesem Modul verstehen die Teilnehmer die we",
-            "titleEn": "Learning Outcome",
-            "description": "Nach der erfolgreichen Teilnahme an diesem Modul verstehen die Teilnehmer die wesentlichen Konzepte der Theoretischen Informatik auf einem grundlegenden, aber wissenschaftlichen Niveau. Teilnehmer wissen, was reguläre Ausdrücke, kontextfreie Grammatiken, die Chomsky Hierarchy, endliche Automaten und Turingmaschinen sind. Sie können gegebene formale Sprachen mit dem passenden Beschreibungsmittel definieren und sie können zeigen, falls sich eine gegebene Sprache nicht mit einem bestimmten Beschreibungsmittel definieren lässt. Sie können beweisen, dass bestimmte Beschreibungsmittel äquivalent sind und können verschiedene Beschreibungen algorithmisch ineinander transformieren. Sie können die grundlegenden Konzepte der Komplexitätstheorie erklären und können Entscheidungsprobleme unter gegebenen Komplexitätsschranken algorithmisch aufeinander reduzieren.",
-            "descriptionEn": "Nach der erfolgreichen Teilnahme an diesem Modul verstehen die Teilnehmer die wesentlichen Konzepte der Theoretischen Informatik auf einem grundlegenden, aber wissenschaftlichen Niveau. Teilnehmer wissen, was reguläre Ausdrücke, kontextfreie Grammatiken, die Chomsky Hierarchy, endliche Automaten und Turingmaschinen sind. Sie können gegebene formale Sprachen mit dem passenden Beschreibungsmittel definieren und sie können zeigen, falls sich eine gegebene Sprache nicht mit einem bestimmten Beschreibungsmittel definieren lässt. Sie können beweisen, dass bestimmte Beschreibungsmittel äquivalent sind und können verschiedene Beschreibungen algorithmisch ineinander transformieren. Sie können die grundlegenden Konzepte der Komplexitätstheorie erklären und können Entscheidungsprobleme unter gegebenen Komplexitätsschranken algorithmisch aufeinander reduzieren.",
+            "id": "9d4fb5b9-22a3-51df-b510-417a5d730d24",
+            "shortKey": "tum_in0011_regular_languages_and_automata",
+            "title": "Reguläre Sprachen und Automaten",
+            "titleEn": "Regular languages and automata",
+            "description": "Die lernende Person kann mit regulären Sprachen und endlichen Automaten arbeiten.",
+            "descriptionEn": "The learner can work with regular languages and finite automata.",
             "core": true,
-            "weight": 0.0,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0011"
+            ],
+            "contains": [
+                "f32345a2-1814-57c8-82c8-e2c1d05f306f",
+                "7d685151-3159-562f-a6ee-5dcdd4df1703"
+            ],
+            "requires": []
+        },
+        {
+            "id": "f32345a2-1814-57c8-82c8-e2c1d05f306f",
+            "shortKey": "tum_in0011_regular_expressions_and_automata",
+            "title": "Reguläre Ausdrücke und Automaten",
+            "titleEn": "Regular expressions and automata",
+            "description": "Die lernende Person kann zwischen regulären Ausdrücken und DFA/NFA-Modellen konvertieren.",
+            "descriptionEn": "The learner can convert between regular expressions and DFA/NFA models.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
             "area": "Kompetenz",
             "tags": [
@@ -47,16 +71,296 @@
             "requires": []
         },
         {
-            "id": "ea7b197d-bd12-5166-ba7a-f549332e63c7",
-            "shortKey": "tum_in0011_ct1",
-            "title": "Formale Sprachen, Grammatiken, Chomsky Hierarchy.",
-            "titleEn": "Formale Sprachen, Grammatiken, Chomsky Hierarchy.",
-            "description": "Formale Sprachen, Grammatiken, Chomsky Hierarchy.",
-            "descriptionEn": "Formale Sprachen, Grammatiken, Chomsky Hierarchy.",
-            "core": false,
-            "weight": 0.0,
+            "id": "7d685151-3159-562f-a6ee-5dcdd4df1703",
+            "shortKey": "tum_in0011_pumping_lemma_and_minimization",
+            "title": "Pumping-Lemma und Minimierung",
+            "titleEn": "Pumping lemma and minimization",
+            "description": "Die lernende Person kann das Pumping-Lemma anwenden und Automaten mithilfe von Myhill-Nerode minimieren.",
+            "descriptionEn": "The learner can apply the pumping lemma and minimize automata using Myhill-Nerode.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
-            "area": "Wissen",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0011"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "eb553465-5a14-55eb-a4d7-50dd28b0df37",
+            "shortKey": "tum_in0011_context_free_languages",
+            "title": "Kontextfreie Sprachen",
+            "titleEn": "Context-free languages",
+            "description": "Die lernende Person kann kontextfreie Sprachen und Pushdown-Automaten analysieren.",
+            "descriptionEn": "The learner can analyze context-free languages and pushdown automata.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0011"
+            ],
+            "contains": [
+                "80ac0162-b296-574d-8833-906d4801eaaa",
+                "6f7e5c87-aada-523a-85a0-89871603f423"
+            ],
+            "requires": [
+                "9d4fb5b9-22a3-51df-b510-417a5d730d24"
+            ]
+        },
+        {
+            "id": "80ac0162-b296-574d-8833-906d4801eaaa",
+            "shortKey": "tum_in0011_cfgs_and_pdas",
+            "title": "CFGs und PDAs",
+            "titleEn": "CFGs and PDAs",
+            "description": "Die lernende Person kann zwischen CFGs und PDAs übersetzen und deren Leistung analysieren.",
+            "descriptionEn": "The learner can translate between CFGs and PDAs and analyze their power.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0011"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "6f7e5c87-aada-523a-85a0-89871603f423",
+            "shortKey": "tum_in0011_normal_forms_and_cyk",
+            "title": "Normalformen und CYK",
+            "titleEn": "Normal forms and CYK",
+            "description": "Die lernende Person kann Chomsky/Greibach-Normalformen und den CYK-Algorithmus verwenden.",
+            "descriptionEn": "The learner can use Chomsky/Greibach normal forms and the CYK algorithm.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0011"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "315964ef-5892-5aba-9c10-5531807350d6",
+            "shortKey": "tum_in0011_context_sensitive_languages",
+            "title": "Kontextsensitive Sprachen",
+            "titleEn": "Context-sensitive languages",
+            "description": "Die lernende Person kann kontextsensitive Sprachen und linear begrenzte Automaten beschreiben.",
+            "descriptionEn": "The learner can describe context-sensitive languages and linear bounded automata.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0011"
+            ],
+            "contains": [
+                "12dea0a9-152d-58a1-8952-6f3aed1b1e4e",
+                "da75e54f-5cdb-5a17-840b-a8a7e5248cc4"
+            ],
+            "requires": [
+                "eb553465-5a14-55eb-a4d7-50dd28b0df37"
+            ]
+        },
+        {
+            "id": "12dea0a9-152d-58a1-8952-6f3aed1b1e4e",
+            "shortKey": "tum_in0011_csls_and_lbas",
+            "title": "CSLs und LBAs",
+            "titleEn": "CSLs and LBAs",
+            "description": "Die lernende Person kann CSLs und die Rolle von LBAs erklären.",
+            "descriptionEn": "The learner can explain CSLs and the role of LBAs.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0011"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "da75e54f-5cdb-5a17-840b-a8a7e5248cc4",
+            "shortKey": "tum_in0011_closure_and_hierarchy_properties",
+            "title": "Abschluss- und Hierarchieeigenschaften",
+            "titleEn": "Closure and hierarchy properties",
+            "description": "Die lernende Person kann über Abschlusseigenschaften und die Chomsky-Hierarchie nachdenken.",
+            "descriptionEn": "The learner can reason about closure properties and the Chomsky hierarchy.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0011"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "42c7e58c-38a9-562a-8553-618a39557ed9",
+            "shortKey": "tum_in0011_computability_theory",
+            "title": "Berechenbarkeitstheorie",
+            "titleEn": "Computability theory",
+            "description": "Die lernende Person kann Entscheidbarkeits- und Berechnungsmodelle analysieren.",
+            "descriptionEn": "The learner can analyze decidability and computation models.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0011"
+            ],
+            "contains": [
+                "6706fd5e-ff5d-51e2-8843-4b752a27e86e",
+                "9f7cf612-84e2-5038-ba77-71d293a650ab"
+            ],
+            "requires": [
+                "9d4fb5b9-22a3-51df-b510-417a5d730d24"
+            ]
+        },
+        {
+            "id": "6706fd5e-ff5d-51e2-8843-4b752a27e86e",
+            "shortKey": "tum_in0011_turing_machines_and_equivalences",
+            "title": "Turingmaschinen und Äquivalenzen",
+            "titleEn": "Turing machines and equivalences",
+            "description": "Die lernende Person kann Turing-Maschinen und äquivalente Modelle beschreiben (While/Goto, rekursive Funktionen).",
+            "descriptionEn": "The learner can describe Turing machines and equivalent models (While/Goto, recursive functions).",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0011"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "9f7cf612-84e2-5038-ba77-71d293a650ab",
+            "shortKey": "tum_in0011_decidability_and_reductions",
+            "title": "Entscheidbarkeit und Kürzungen",
+            "titleEn": "Decidability and reductions",
+            "description": "Die lernende Person kann Probleme nach Entscheidbarkeit klassifizieren und Reduktionen anwenden.",
+            "descriptionEn": "The learner can classify problems by decidability and apply reductions.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0011"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "bfe8b492-c406-585c-9ad5-efa9121186fb",
+            "shortKey": "tum_in0011_undecidability_results",
+            "title": "Unentscheidbarkeitsergebnisse",
+            "titleEn": "Undecidability results",
+            "description": "Die lernende Person kann klassische Unentscheidbarkeitstheoreme erklären.",
+            "descriptionEn": "The learner can explain classic undecidability theorems.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0011"
+            ],
+            "contains": [
+                "851e5e85-f83a-50d7-8e87-807acde7c7c6",
+                "81d7de5c-eb29-5444-a39a-c8ec9da580c4"
+            ],
+            "requires": [
+                "42c7e58c-38a9-562a-8553-618a39557ed9"
+            ]
+        },
+        {
+            "id": "851e5e85-f83a-50d7-8e87-807acde7c7c6",
+            "shortKey": "tum_in0011_halting_problem_and_rice_theorems",
+            "title": "Halteproblem und Rice-Theoreme",
+            "titleEn": "Halting problem and Rice theorems",
+            "description": "Die lernende Person kann das Halteproblem und die Rice/Rice-Shapiro-Theoreme erklären.",
+            "descriptionEn": "The learner can explain the halting problem and Rice/Rice-Shapiro theorems.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0011"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "81d7de5c-eb29-5444-a39a-c8ec9da580c4",
+            "shortKey": "tum_in0011_pcp_and_cfg_undecidability",
+            "title": "PCP- und CFG-Unentscheidbarkeit",
+            "titleEn": "PCP and CFG undecidability",
+            "description": "Die lernende Person kann das Post-Korrespondenzproblem und unentscheidbare CFG-Probleme erklären.",
+            "descriptionEn": "The learner can explain the Post correspondence problem and undecidable CFG problems.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0011"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "6d179dbe-26cb-533b-b321-6c4fa5d8d993",
+            "shortKey": "tum_in0011_complexity_theory",
+            "title": "Komplexitätstheorie",
+            "titleEn": "Complexity theory",
+            "description": "Die lernende Person kann Komplexitätsklassen und Reduktionen analysieren.",
+            "descriptionEn": "The learner can analyze complexity classes and reductions.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0011"
+            ],
+            "contains": [
+                "26c27cb3-c3f3-5066-b667-989ca7721cc0",
+                "da8e2124-517e-5ee2-9c67-93e26fae4580"
+            ],
+            "requires": [
+                "42c7e58c-38a9-562a-8553-618a39557ed9"
+            ]
+        },
+        {
+            "id": "26c27cb3-c3f3-5066-b667-989ca7721cc0",
+            "shortKey": "tum_in0011_time_and_space_complexity_classes",
+            "title": "Zeit- und Raumkomplexitätsklassen",
+            "titleEn": "Time and space complexity classes",
+            "description": "Die lernende Person kann Klassen wie P und NP und deren Eigenschaften definieren.",
+            "descriptionEn": "The learner can define classes such as P and NP and their properties.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0011"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "da8e2124-517e-5ee2-9c67-93e26fae4580",
+            "shortKey": "tum_in0011_np_completeness_and_reductions",
+            "title": "NP-Vollständigkeit und Reduktionen",
+            "titleEn": "NP-completeness and reductions",
+            "description": "Die lernende Person kann Polynomreduktionen anwenden und das Cook-Theorem erklären.",
+            "descriptionEn": "The learner can apply polynomial reductions and explain the Cook theorem.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
             "tags": [
                 "module:IN0011"
             ],

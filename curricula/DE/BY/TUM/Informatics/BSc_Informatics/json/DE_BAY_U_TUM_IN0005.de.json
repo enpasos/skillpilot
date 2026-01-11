@@ -1,8 +1,8 @@
 {
     "title": "Grundlagenpraktikum: Rechnerarchitektur (TUM, Modul IN0005)",
     "titleEn": "Basic Practical Course: Computer Architecture (TUM, Module IN0005)",
-    "description": "- Techniken zur Performanzanalyse",
-    "descriptionEn": "- Techniken zur Performanzanalyse",
+    "description": "Die lernende Person kann die Programmleistung analysieren und hardwarebewusste Optimierungen in der Praxis anwenden.",
+    "descriptionEn": "The learner can analyze program performance and apply hardware-aware optimizations in practice.",
     "locale": "de-DE",
     "subject": "TUM-Module",
     "frameworkId": "tum-in0005",
@@ -10,10 +10,10 @@
         {
             "id": "f7e4121c-4221-51b0-a4ca-d4319611bb9f",
             "shortKey": "tum_in0005_module",
-            "title": "Grundlagenpraktikum: Rechnerarchitektur (Modul IN0005)",
-            "titleEn": "Basic Practical Course: Computer Architecture (Module IN0005)",
-            "description": "- Techniken zur Performanzanalyse",
-            "descriptionEn": "- Techniken zur Performanzanalyse",
+            "title": "Grundlagenpraktikum: Rechnerarchitektur (IN0005)",
+            "titleEn": "Basic Practical Course: Computer Architecture (IN0005)",
+            "description": "Die lernende Person kann die Programmleistung analysieren und hardwarebewusste Optimierungen in der Praxis anwenden.",
+            "descriptionEn": "The learner can analyze program performance and apply hardware-aware optimizations in practice.",
             "core": true,
             "weight": 5.0,
             "phase": "Modul",
@@ -23,21 +23,44 @@
                 "ects:5"
             ],
             "contains": [
-                "a225a99d-9418-5b6f-aa83-a0954da51a04",
-                "df2edde7-aa72-552b-90fb-173ebec73352"
+                "c2dbfdc3-47a6-51d5-9686-6d498d09b32e",
+                "ff6c0d85-9237-53fe-8737-272f3d632213",
+                "817604c8-206d-57d6-8f08-ce7fd6bbecb7",
+                "5369074a-e3bb-5b1e-8862-78c6ae8491c6",
+                "4f9cb31b-974f-5a27-a5b6-9c48e7b83da0"
             ],
             "requires": [],
             "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0005"
         },
         {
-            "id": "a225a99d-9418-5b6f-aa83-a0954da51a04",
-            "shortKey": "tum_in0005_lo1",
-            "title": "Nach der Teilnahme an dem Modul sind die Studierenden in der Lage, im Kontext mo",
-            "titleEn": "Learning Outcome",
-            "description": "Nach der Teilnahme an dem Modul sind die Studierenden in der Lage, im Kontext moderner Rechensysteme (moderne x86-64 Prozessoren, GPUs) die Performanzcharakteristiken von Programmen zu analysieren, mithilfe dieser Ergebnisse zielgerichtete Optimierungen zu entwickeln und damit auch komplexe Hardware sowohl zeit- als auch energieeffizient zu programmieren und eigene Implementierungen zu bewerten.",
-            "descriptionEn": "Nach der Teilnahme an dem Modul sind die Studierenden in der Lage, im Kontext moderner Rechensysteme (moderne x86-64 Prozessoren, GPUs) die Performanzcharakteristiken von Programmen zu analysieren, mithilfe dieser Ergebnisse zielgerichtete Optimierungen zu entwickeln und damit auch komplexe Hardware sowohl zeit- als auch energieeffizient zu programmieren und eigene Implementierungen zu bewerten.",
+            "id": "c2dbfdc3-47a6-51d5-9686-6d498d09b32e",
+            "shortKey": "tum_in0005_performance_analysis_and_measurement",
+            "title": "Leistungsanalyse und -messung",
+            "titleEn": "Performance analysis and measurement",
+            "description": "Die lernende Person kann Leistungsmerkmale von Programmen messen und analysieren.",
+            "descriptionEn": "The learner can measure and analyze performance characteristics of programs.",
             "core": true,
-            "weight": 0.0,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0005"
+            ],
+            "contains": [
+                "20e370be-2fb0-5483-b758-917c63a7c676",
+                "1b2823a6-3201-5a4a-8979-336b197b5372"
+            ],
+            "requires": []
+        },
+        {
+            "id": "20e370be-2fb0-5483-b758-917c63a7c676",
+            "shortKey": "tum_in0005_benchmarking_techniques",
+            "title": "Benchmarking-Techniken",
+            "titleEn": "Benchmarking techniques",
+            "description": "Die lernende Person kann Benchmarks entwerfen und durchführen, um die Leistung zu vergleichen.",
+            "descriptionEn": "The learner can design and run benchmarks to compare performance.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
             "area": "Kompetenz",
             "tags": [
@@ -47,16 +70,238 @@
             "requires": []
         },
         {
-            "id": "df2edde7-aa72-552b-90fb-173ebec73352",
-            "shortKey": "tum_in0005_ct1",
-            "title": "Techniken zur Performanzanalyse",
-            "titleEn": "Techniken zur Performanzanalyse",
-            "description": "Techniken zur Performanzanalyse",
-            "descriptionEn": "Techniken zur Performanzanalyse",
-            "core": false,
-            "weight": 0.0,
+            "id": "1b2823a6-3201-5a4a-8979-336b197b5372",
+            "shortKey": "tum_in0005_profiling_tools_and_counters",
+            "title": "Profilierungswerkzeuge und Zähler",
+            "titleEn": "Profiling tools and counters",
+            "description": "Die lernende Person kann Profilierungstools und Hardware-Leistungsindikatoren verwenden.",
+            "descriptionEn": "The learner can use profiling tools and hardware performance counters.",
+            "core": true,
+            "weight": 1.0,
             "phase": "Modul",
-            "area": "Wissen",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0005"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "ff6c0d85-9237-53fe-8737-272f3d632213",
+            "shortKey": "tum_in0005_systems_programming_in_c",
+            "title": "Systemprogrammierung in C",
+            "titleEn": "Systems programming in C",
+            "description": "Die lernende Person kann Low-Level-Programme in C implementieren und debuggen.",
+            "descriptionEn": "The learner can implement and debug low-level programs in C.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0005"
+            ],
+            "contains": [
+                "0caa7e7e-dd5e-5ace-8409-6a795be4670f",
+                "ac4ee96b-719b-5c97-8542-f858a3dc6d2c"
+            ],
+            "requires": []
+        },
+        {
+            "id": "0caa7e7e-dd5e-5ace-8409-6a795be4670f",
+            "shortKey": "tum_in0005_c_basics_data_structures_and_pointers",
+            "title": "C-Grundlagen: Datenstrukturen und Zeiger",
+            "titleEn": "C basics: data structures and pointers",
+            "description": "Die lernende Person kann C-Datenstrukturen, Strings, Zeiger und I/O verwenden.",
+            "descriptionEn": "The learner can use C data structures, strings, pointers, and I/O.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0005"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "ac4ee96b-719b-5c97-8542-f858a3dc6d2c",
+            "shortKey": "tum_in0005_build_and_debugging_workflows",
+            "title": "Workflows erstellen und debuggen",
+            "titleEn": "Build and debugging workflows",
+            "description": "Die lernende Person kann Makefiles, Behauptungen und Debugger wie GDB verwenden.",
+            "descriptionEn": "The learner can use makefiles, assertions, and debuggers such as GDB.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0005"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "817604c8-206d-57d6-8f08-ce7fd6bbecb7",
+            "shortKey": "tum_in0005_compiler_and_abi_considerations",
+            "title": "Überlegungen zum Compiler und ABI",
+            "titleEn": "Compiler and ABI considerations",
+            "description": "Die lernende Person kann Compilerverhalten und ABI-Einschränkungen berücksichtigen.",
+            "descriptionEn": "The learner can account for compiler behavior and ABI constraints.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0005"
+            ],
+            "contains": [
+                "113b3360-ae4f-5301-a0cb-a64de6aa7c38",
+                "17799fe6-459f-599b-8a31-de8875b11037"
+            ],
+            "requires": [
+                "ff6c0d85-9237-53fe-8737-272f3d632213"
+            ]
+        },
+        {
+            "id": "113b3360-ae4f-5301-a0cb-a64de6aa7c38",
+            "shortKey": "tum_in0005_compiler_optimizations_and_defined_behavior",
+            "title": "Compiler-Optimierungen und definiertes Verhalten",
+            "titleEn": "Compiler optimizations and defined behavior",
+            "description": "Die lernende Person kann grundlegende Compiler-Optimierungen und definierte Verhaltenseinschränkungen erklären.",
+            "descriptionEn": "The learner can explain basic compiler optimizations and defined behavior constraints.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0005"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "17799fe6-459f-599b-8a31-de8875b11037",
+            "shortKey": "tum_in0005_abi_and_annotation_effects",
+            "title": "ABI- und Anmerkungseffekte",
+            "titleEn": "ABI and annotation effects",
+            "description": "Die lernende Person kann ABI-Regeln und -Anmerkungen (Aliasing, Ausrichtung) mit der Leistung in Zusammenhang bringen.",
+            "descriptionEn": "The learner can relate ABI rules and annotations (aliasing, alignment) to performance.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0005"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "5369074a-e3bb-5b1e-8862-78c6ae8491c6",
+            "shortKey": "tum_in0005_parallelism_and_simd",
+            "title": "Parallelität und SIMD",
+            "titleEn": "Parallelism and SIMD",
+            "description": "Die lernende Person kann Parallelität auf Befehls- und Thread-Ebene nutzen.",
+            "descriptionEn": "The learner can exploit parallelism at the instruction and thread level.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0005"
+            ],
+            "contains": [
+                "9dcbd17f-908d-50e7-9282-ea4451da2a43",
+                "0886e130-5c6e-532d-bf6a-302e8fa86de3"
+            ],
+            "requires": [
+                "ff6c0d85-9237-53fe-8737-272f3d632213"
+            ]
+        },
+        {
+            "id": "9dcbd17f-908d-50e7-9282-ea4451da2a43",
+            "shortKey": "tum_in0005_parallel_programming_models",
+            "title": "Parallele Programmiermodelle",
+            "titleEn": "Parallel programming models",
+            "description": "Die lernende Person kann Flynns Taxonomie und grundlegende Parallelmodelle beschreiben.",
+            "descriptionEn": "The learner can describe Flynn's taxonomy and basic parallel models.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0005"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "0886e130-5c6e-532d-bf6a-302e8fa86de3",
+            "shortKey": "tum_in0005_simd_and_instruction_level_parallelism",
+            "title": "SIMD und Parallelität auf Befehlsebene",
+            "titleEn": "SIMD and instruction-level parallelism",
+            "description": "Die lernende Person kann SIMD-Konzepte verwenden und Überlegungen zur Parallelität auf Unterrichtsebene anstellen.",
+            "descriptionEn": "The learner can use SIMD concepts and reason about instruction-level parallelism.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0005"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "4f9cb31b-974f-5a27-a5b6-9c48e7b83da0",
+            "shortKey": "tum_in0005_hardware_aware_optimization_projects",
+            "title": "Hardwarebewusste Optimierungsprojekte",
+            "titleEn": "Hardware-aware optimization projects",
+            "description": "Die lernende Person kann Optimierungen für moderne Architekturen und Beschleuniger anwenden.",
+            "descriptionEn": "The learner can apply optimizations for modern architectures and accelerators.",
+            "core": true,
+            "weight": 2.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0005"
+            ],
+            "contains": [
+                "0f53968f-cb81-50b5-a5fb-b66460ec70a6",
+                "9eedecf8-34a1-5207-a6fb-2da085fdf766"
+            ],
+            "requires": [
+                "c2dbfdc3-47a6-51d5-9686-6d498d09b32e"
+            ]
+        },
+        {
+            "id": "0f53968f-cb81-50b5-a5fb-b66460ec70a6",
+            "shortKey": "tum_in0005_multithreading_and_synchronization",
+            "title": "Multithreading und Synchronisation",
+            "titleEn": "Multithreading and synchronization",
+            "description": "Die lernende Person kann Multithreading mit Pthreads oder OpenMP implementieren und Synchronisationsprimitive verwenden.",
+            "descriptionEn": "The learner can implement multithreading with Pthreads or OpenMP and use synchronization primitives.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
+            "tags": [
+                "module:IN0005"
+            ],
+            "contains": [],
+            "requires": []
+        },
+        {
+            "id": "9eedecf8-34a1-5207-a6fb-2da085fdf766",
+            "shortKey": "tum_in0005_cache_and_heterogeneous_systems",
+            "title": "Cache und heterogene Systeme",
+            "titleEn": "Cache and heterogeneous systems",
+            "description": "Die lernende Person kann für Caches optimieren und heterogene Systeme wie GPUs oder FPGAs programmieren.",
+            "descriptionEn": "The learner can optimize for caches and program heterogeneous systems such as GPUs or FPGAs.",
+            "core": true,
+            "weight": 1.0,
+            "phase": "Modul",
+            "area": "Kompetenz",
             "tags": [
                 "module:IN0005"
             ],
