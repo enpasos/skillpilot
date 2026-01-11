@@ -31,6 +31,12 @@ npm install
 echo "Baue Anwendung..."
 npm run build
 
+echo "Baue Backend..."
+cd ../backend
+chmod +x gradlew
+./gradlew clean build -x test
+cd ..
+
 echo "Starte Service neu..."
 # Prüfen, ob wir sudo-Rechte haben oder das Passwort benötigt wird (interaktiv)
 sudo systemctl restart skillpilot

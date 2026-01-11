@@ -1,6 +1,6 @@
 export const en = {
     startPage: {
-        subtitle: "Your Personal Learning Navigator",
+        subtitle: "how I learn",
         cards: {
             whitepaper: {
                 title: "Read Whitepaper",
