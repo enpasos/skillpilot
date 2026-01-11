@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { CurriculumDropdown } from './CurriculumDropdown'
 import { ThemeToggle } from './ThemeToggle'
 import type { LandscapeSummary } from './CurriculumDropdown'
-import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, FileText } from 'lucide-react'
+import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send } from 'lucide-react'
 
 
 type Role = 'learner' | 'trainer' | 'explorer'
