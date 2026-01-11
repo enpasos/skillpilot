@@ -184,25 +184,22 @@ comic06.de.png
 comic07.de.png
  
 
+**Stil:** 2D-Cartoon-Illustration mit klaren, dicken schwarzen Konturlinien und flächiger Farbgebung.
 
-**Stil:** 2D-Cartoon-Illustration mit klaren, schwarzen Konturlinien und flächiger Farbgebung.
-
-**Szenerie:** Ein langer gewundener Weg mit angedeuteten Steinstufen führt einen steilen, grauen Berg hinauf. Der Gipfel ist in helles Licht getaucht. Der Himmel ist klar blau, heller am Gipfel.
+**Szenerie:** Ein steiler, grauer Felsberg dominiert die rechte Bildhälfte. Ein gewundener Weg aus hellen, stufenförmigen Steinplatten führt hinauf zu einem extrem hell leuchtenden Gipfel, von dem Lichtstrahlen ausgehen. Der Himmel ist klar blau, heller in Richtung des leuchtenden Berggipfels.
 
 **Charaktere:**
 
-* **Max:** Ein Junge mit braunen, stacheligen Haaren, rotem T-Shirt, blauen Jeans und roten Turnschuhen, steht auf der Treppe und blickt durch ein Fernglas in Richtung des hellen Gipfels.
-* **KI-Tutor:** Ein kleiner, schwebender weißer und blauer Roboter mit einem leuchtenden 'O'-Symbol auf der Brust, hält eine Taschenlampe, die den Pfad direkt wo Max läuft beleuchtet.
+* **Max:** Ein Junge mit braunen, stacheligen Haaren, rotem T-Shirt, blauen Jeans und grauen Turnschuhen mit weißer Sohle. Er steht auf einer der Steinstufen, etwa auf halber Höhe, und blickt durch ein schwarzes Fernglas in Richtung des strahlenden Gipfels.
+* **KI-Tutor:** Ein kleiner, schwebender, weißer und blauer Roboter mit einem leuchtenden blauen 'O'-Symbol auf der Brust. Er hält eine Taschenlampe, deren gelber Lichtkegel die Stufen direkt vor Max beleuchtet.
 
 **Texte & Rahmen:**
 
-* **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Max behält den Überblick".
-* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Der KI-Tutor führt Max Schritt für Schritt. Über Mission Control sieht Max neben seinen Erfolgen auch, was später kommt.".
+* **Oben links:** Ein gelbes rechteckiges Textfeld mit einem schwarzen Rahmen. Darin steht die schwarze Überschrift: "Max behält den Überblick".
+* **Unten:** Ein großes weißes rechteckiges Textfeld mit einem schwarzen Rahmen, das sich über die gesamte Breite erstreckt. Darin steht der schwarze Text: "Der KI-Tutor führt Max Schritt für Schritt. Über Mission Control sieht Max neben seinen Erfolgen auch, was später noch kommt.".
 
 **Schriftstil & Typografie:**
 
-* **Konsistente Schriftart:** Verwende für alle Texte (Überschriften, Sprechblasen, Beschreibungsfelder, digitale Anzeigen) eine **handgezeichnete, serifenlose, klare, freundliche und leicht unregelmäßige Druckschrift im Comic-Stil** Schriftart.
-* **Anwendung:** Diese spezifische Schriftart muss für alle geschriebenen Inhalte im gesamten Bild konsistent verwendet werden, um einen einheitlichen Comic-Look zu gewährleisten.
+* **Konsistente Schriftart:** Alle Texte (Überschrift oben und Beschreibung unten) verwenden eine konsistente, handgezeichnete, serifenlose Druckschrift im Comic-Stil.
 
-**Komposition:** Die Perspektive zeigt die Charaktere von der Seite, wie sie die Treppe hinaufsteigen, mit dem hellen Gipfel als Fokuspunkt im Hintergrund.
- 
+**Komposition:** Die Perspektive zeigt die Charaktere von der Seite, wie sie die Treppe von links unten nach rechts oben hinaufsteigen. Der helle Gipfel ist der visuelle Fokuspunkt im rechten oberen Hintergrund.
