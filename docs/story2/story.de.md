@@ -3,7 +3,7 @@
 **Stand:** 11. Januar 2026
 
 > 💡 **Tipp:** Wenn in der ChatGPT-App etwas nicht richtig funktioniert, nutze den **Webbrowser**.  
-> 🔑 **Wichtig:** Deine **SkillPilot-ID** ist dein Schlüssel zu deinem Lernfortschritt. Für ein öffentliches PDF: ID in Screenshots **schwärzen/blur**.
+> 🔑 **Wichtig:** Deine **SkillPilot-ID** ist dein Schlüssel zu deinem Lernfortschritt.  
 
 ---
 

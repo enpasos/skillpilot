@@ -11,7 +11,7 @@ export const en = {
                 description: "Learn interactively with your AI tutor."
             },
             explorer: {
-                title: "My Successes",
+                title: "My Achievements",
                 description: "Track your progress in the cockpit."
             },
             hallOfFame: {
