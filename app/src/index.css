@@ -1,6 +1,36 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-gray-50: #f9f9f9;
+  --color-gray-700: #40414f;
+  --color-gray-800: #343541;
+  --color-gray-900: #202123;
+
+  --color-chat-bg: var(--chat-bg);
+  --color-sidebar-bg: var(--sidebar-bg);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-color: var(--border-color);
+  --color-input-bg: var(--input-bg);
+
+  --color-background: rgb(var(--color-bg-main) / <alpha-value>);
+  --color-background-card: rgb(var(--color-bg-card) / <alpha-value>);
+  --color-background-sidebar: rgb(var(--color-bg-sidebar) / <alpha-value>);
+
+  --color-primary: rgb(var(--color-primary) / <alpha-value>);
+  --color-primary-glow: rgb(var(--color-primary-glow) / <alpha-value>);
+
+  --color-mastery-high: #10b981;
+  --color-mastery-medium: #fbbf24;
+  --color-mastery-low: #f43f5e;
+  --color-mastery-none: #475569;
+
+  --background-image-app-gradient: radial-gradient(circle at top, #1e293b, #020617);
+  --background-image-card-gradient: radial-gradient(circle at top left, #1f2937, #020617);
+
+  --shadow-card-2xl: 0 18px 40px rgba(15, 23, 42, 0.7);
+}
 
 :root {
   font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -14,12 +44,8 @@
   /* ChatGPT Theme - Light Mode Defaults */
   --chat-bg: #ffffff;
   --sidebar-bg: #f9f9f9;
-  /* Sehr helles Grau */
-  /* gray-900 - Stärkerer Kontrast */
   --text-primary: #111827;
-  /* gray-600 - Bessere Lesbarkeit */
   --text-secondary: #4b5563;
-  /* gray-500 */
   --border-color: #e5e7eb;
   --input-bg: #ffffff;
 }
@@ -36,11 +62,8 @@ html.light {
   color-scheme: dark;
   /* ChatGPT Theme - Dark Mode */
   --chat-bg: #343541;
-  /* Das ikonische GPT-Dunkelgrau */
   --sidebar-bg: #202123;
-  /* Fast schwarz */
   --text-primary: #ececf1;
-  /* Off-White für besseren Kontrast */
   --text-secondary: #c5c5d2;
   --border-color: #4d4d4f;
   --input-bg: #40414f;
