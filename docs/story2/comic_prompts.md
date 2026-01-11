@@ -1,9 +1,9 @@
  
 
 ---
-comic1a
+comic01.de.png
 
-**Prompt für die Reproduktion des Cartoon-Bildes:**
+
 
 **Stil:** 2D-Cartoon-Illustration im Comic-Stil mit kräftigen schwarzen Konturlinien und flächigen, klaren Farben.
 
@@ -14,7 +14,7 @@ comic1a
 
 **Sprechblasen & Bildschirminhalt:**
 
-* **Sprechblase Max:** Über Max' Kopf befindet sich eine Sprechblase mit dem Text: "Ich starte mit SkillPilot.com".
+* **Sprechblase Max:** Über Max' Kopf befindet sich eine Sprechblase mit dem Text: "So lerne ich".
 * **Sprechblase Monitor:** Vom Monitor geht eine weitere Sprechblase aus, die auf die Adressleiste zeigt und den Text "[https://skillpilot.com](https://skillpilot.com)" enthält.
 * **Monitor:** Der schwarze Computerbildschirm zeigt eine Webbrowser-Oberfläche.
 
@@ -23,13 +23,14 @@ comic1a
 * **Raum:** Der Hintergrund ist eine schlichte, helle, beigefarbene Wand.
 * **Schreibtisch:** Auf dem Holzschreibtisch stehen der Monitor, eine schwarze Tastatur und die Maus.
 
-**Text & Layout:**
+**Texte & Rahmen:**
 
-* **Bildunterschrift:** Unter der gesamten Illustration befindet sich ein weißes Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Start: Max will für seinen Mathe-LK lernen. Einen kostenlosen ChatGPT Account hat er schon. Er gibt 'skillpilot.com' im Browser ein und klickt dann auf 'SkillPilot GPT starten'.".
+* **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Start bei SkillPilot".
+* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Start: Max will für seinen Mathe-LK lernen. Einen kostenlosen ChatGPT Account hat er schon. Er gibt 'skillpilot.com' im Browser ein und klickt dann auf 'SkillPilot GPT starten'.".
 
 ---
 
-comic1b
+comic02.de.png
 
 **Stil:** 2D-Cartoon-Illustration im Comic-Stil mit kräftigen schwarzen Konturlinien und flächigen, klaren Farben.
 
@@ -46,13 +47,14 @@ Das Bild ist durch eine dicke, schwarze diagonale Linie von oben links nach unte
 * **Charakter:** Der kleine, schwebende weiße und blaue Roboter mit leuchtenden blauen Augen und einem blauen Kreis auf der Brust.
 * **Aktion & Objekt:** Der Roboter hält mit seiner rechten Hand eine leuchtende, blaue, rechteckige holografische Karte hoch. Auf der Karte steht in leuchtender weiß-blauer Schrift: "SKILLPILOT-ID: X7F9-G2".
 
-**Text & Rahmen:**
+**Texte & Rahmen:**
 
-* **Bildunterschrift:** Unter der gesamten Illustration befindet sich ein weißes Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Chat: Max fängt an mit seinem KI-Tutor zu chatten. Er erklärt, was er lernen will, und erhält eine SkillPilot-ID als geheimes Pseudonym. Dann geht es los mit dem Lernen.".
+* **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "SkillPilot-ID".
+* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Chat: Max fängt an mit seinem KI-Tutor zu chatten. Er erklärt, was er lernen will, und erhält eine SkillPilot-ID als geheimes Pseudonym. Dann geht es los mit dem Lernen.".
 
 ---
 
-comic1c
+comic03.de.png
 
 **Prompt für die Reproduktion des Cartoon-Bildes:**
 
@@ -71,9 +73,14 @@ comic1c
 * **Datenaustausch:** Ein heller, geschwungener blauer Leuchtstrahl mit Pfeilen an beiden Enden verbindet den Roboter und den Server. Auf diesem Strahl schwebt ein blauer, leuchtender Würfel (Datenpaket) mit Schaltungsmustern, der mit "Lernstand" und "Frontier" beschriftet ist.
 * **Beleuchtung:** Alle aktiven Elemente (Roboter, Signal, Datenpaket, Server-Leuchten) strahlen ein blaues Licht aus.
 
+**Texte & Rahmen:**
+
+* **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Mission Control".
+* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen und dem schwarzen Text: "Sync: SkillPilot tauscht Lernstand und Frontier mit Mission Control aus.".
+
 ---
 
-comic1d
+comic04.de.png
 
 **Prompt für die Reproduktion des Cartoon-Bildes:**
 
@@ -86,13 +93,14 @@ comic1d
 * **Der Schüler (Max):** Ein Junge mit braunen Haaren, rotem T-Shirt, blauen Jeans und roten Turnschuhen ist in einer dynamischen Gehbewegung dargestellt. Er setzt gerade seinen Fuß auf die nächste Stufe und blickt lächelnd und entschlossen nach vorne den Berg hinauf.
 * **Der Roboter:** Der kleine, schwebende weiße und blaue Roboter fliegt neben dem Jungen. Er hält eine Taschenlampe in der Hand, deren gelber Lichtkegel exakt nur die einzelne Stufe beleuchtet, die direkt vor den Füßen des Jungen liegt.
 
-**Text & Layout:**
+**Texte & Rahmen:**
 
-* **Bildunterschrift:** Unter der Illustration befindet sich ein weißes Textfeld, das über die gesamte Breite geht. Darin steht der schwarze Text: "Er berechnet die 'Frontier': Genau der nächste Lernschritt, für den der Schüler jetzt bereit ist. Weder Langeweile noch Überforderung.".
+* **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Frontier".
+* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen und dem schwarzen Text: "Er berechnet die 'Frontier': Genau der nächste Lernschritt, für den der Schüler jetzt bereit ist. Weder Langeweile noch Überforderung.".
 
 ---
 
-comic2
+comic05.de.png
 
 **Prompt für die Reproduktion des Cartoon-Bildes:**
 
@@ -113,13 +121,14 @@ comic2
 * **Raum:** Der Hintergrund ist eine schlichte, helle, beigefarbene Wand.
 * **Beleuchtung:** Die Szene ist hell und gleichmäßig beleuchtet.
 
-**Text & Layout:**
+**Texte & Rahmen:**
 
-* **Bildunterschrift:** Unter dem gesamten Bild befindet sich ein Textfeld mit dem Text: "Erfolge: Max will genau sehen was er schon gelernt hat. Wieder gibt er 'skillpilot.com' im Browser ein, klickt aber dann auf 'Meine Erfolge'.".
+* **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Erfolge".
+* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen und dem schwarzen Text: "Erfolge: Max will genau sehen was er schon gelernt hat. Wieder gibt er 'skillpilot.com' im Browser ein, klickt aber dann auf 'Meine Erfolge'.".
 
 ---
 
-comic3 
+comic06.de.png 
 
 **Stil:** 2D-Cartoon-Illustration mit klaren schwarzen Konturlinien und flächiger, freundlicher Farbgebung. Der Look ist sauber und modern, wie in einem Comic.
 
@@ -134,13 +143,16 @@ comic3
 
 * **Sprechblase von Max:** Eine Sprechblase über Max' Kopf enthält den Text "[https://skillpilot.com](https://skillpilot.com)".
 * **Sprechblase vom PC:** Eine Sprechblase, die vom Computer-Tower ausgeht, enthält den Text "Copy & Paste... Verbindung hergestellt!".
-* **Bildunterschrift:** Unter dem gesamten Bild steht in einem weißen Kasten mit schwarzem Rahmen der Text: "Max gibt seine SkillPilot-ID per copy/paste aus einer Ablage ein und verbindet sich direkt mit Mission Control.".
+**Texte & Rahmen:**
+
+* **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Verbindung".
+* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen und dem schwarzen Text: "Max gibt seine SkillPilot-ID per copy/paste aus einer Ablage ein und verbindet sich direkt mit Mission Control.".
 
 **Hintergrund & Komposition:** Der Hintergrund ist eine einfache, helle Wand. Die Beleuchtung ist hell und gleichmäßig. Die Perspektive ist eine Totale auf Augenhöhe.
 
 ---
 
-comic4
+comic07.de.png
  
 
 
