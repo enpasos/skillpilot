@@ -45,6 +45,7 @@ def main():
 
     clusters = []
     current_cluster = None
+    module_codes = []
 
     for line in lines:
         line_stripped = line.strip()
@@ -70,6 +71,8 @@ def main():
             if current_cluster not in clusters:
                 clusters.append(current_cluster)
             current_cluster['modules'].append({'code': code})
+            if code not in module_codes:
+                module_codes.append(code)
 
     root_id = generate_deterministic_uuid('tum-landscape', 'mba')
 
@@ -135,6 +138,14 @@ def main():
             cluster_goal['contains'].append(mod_id)
 
         goals.append(cluster_goal)
+
+    # Attach module goal graphs in the same landscape.
+    for code in module_codes:
+        module_path = json_dir / f'DE_BAY_U_TUM_{code}.de.json'
+        if not module_path.exists():
+            raise FileNotFoundError(f'Missing module JSON for {code}: {module_path}')
+        module_data = json.loads(module_path.read_text(encoding='utf-8'))
+        goals.extend(module_data.get('goals', []))
 
     landscape['goals'] = goals
 
