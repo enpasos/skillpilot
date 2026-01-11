@@ -160,18 +160,17 @@ comic06.de.png
 **Szenerie & Charaktere:**
 
 * **Max:** Ein Junge mit braunen, stacheligen Haaren, rotem T-Shirt, blauen Jeans und roten Turnschuhen, sitzt lächelnd an einem Holzschreibtisch. Er zeigt mit dem rechten Zeigefinger auf den Computerbildschirm.
-* **Computer-Setup:** Auf dem Schreibtisch steht ein PC-Monitor, eine Tastatur, eine Maus und ein Computer-Tower. Auf dem Monitor ist ein Webbrowser geöffnet. In der Adressleiste steht "[https://skillpilot.com](https://skillpilot.com)". Darunter ist ein Eingabefeld mit der ID "[PASTED-ID-X7F9]" und einem Mauszeiger zu sehen.
-* **Verbindung:** Vom Computer-Tower führen mehrere dicke Kabel zu einem großen, grauen Server-Rack, das rechts neben dem Schreibtisch steht.
+* **Computer-Setup:** Auf dem Schreibtisch steht ein PC-Monitor, eine Tastatur. Auf dem Monitor ist ein Webbrowser geöffnet. In der Adressleiste steht "https://skillpilot.com". Darunter ist ein Eingabefeld mit der ID "[PASTED-ID-X7F9]" und einem Mauszeiger zu sehen.
+* **Verbindung:** Vom PC-Monitor ist per Kabel verbunden mit einem großen, grauen Server-Rack, das rechts neben dem Schreibtisch steht.
 * **Server-Rack:** Das Rack ist beschriftet mit "MISSION CONTROL" in blauen Großbuchstaben. Es hat mehrere Einschübe mit blinkenden blauen Leuchten.
 
 **Texte & Sprechblasen:**
 
-* **Sprechblase von Max:** Eine Sprechblase über Max' Kopf enthält den Text "[https://skillpilot.com](https://skillpilot.com)".
-* **Sprechblase vom PC:** Eine Sprechblase, die vom Computer-Tower ausgeht, enthält den Text "Copy & Paste... Verbindung hergestellt!".
+* **Sprechblase von Max:** Eine Sprechblase über Max' Kopf enthält den Text "... ID eingegeben ... verbunden.". 
 **Texte & Rahmen:**
 
-* **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Verbindung".
-* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max gibt seine SkillPilot-ID per copy/paste aus einer Ablage ein und verbindet sich direkt mit Mission Control.".
+* **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Verbindung mit Mission Control".
+* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max gibt noch seine SkillPilot-ID ein und verbindet sich direkt mit Mission Control.".
 
 **Schriftstil & Typografie:**
 
@@ -188,17 +187,17 @@ comic07.de.png
 
 **Stil:** 2D-Cartoon-Illustration mit klaren, schwarzen Konturlinien und flächiger Farbgebung.
 
-**Szenerie:** Eine lange, gewundene Treppe aus hellen Steinstufen führt einen steilen, grauen Berg hinauf. Der Gipfel ist in helles, strahlendes Licht getaucht, das den Pfad beleuchtet. Der Himmel ist klar blau, heller am Gipfel.
+**Szenerie:** Ein langer gewundener Weg mit angedeuteten Steinstufen führt einen steilen, grauen Berg hinauf. Der Gipfel ist in helles Licht getaucht. Der Himmel ist klar blau, heller am Gipfel.
 
 **Charaktere:**
 
 * **Max:** Ein Junge mit braunen, stacheligen Haaren, rotem T-Shirt, blauen Jeans und roten Turnschuhen, steht auf der Treppe und blickt durch ein Fernglas in Richtung des hellen Gipfels.
-* **KI-Tutor:** Ein kleiner, schwebender weißer und blauer Roboter mit einem leuchtenden 'O'-Symbol auf der Brust, hält eine Taschenlampe, die den Pfad direkt vor Max beleuchtet.
+* **KI-Tutor:** Ein kleiner, schwebender weißer und blauer Roboter mit einem leuchtenden 'O'-Symbol auf der Brust, hält eine Taschenlampe, die den Pfad direkt wo Max läuft beleuchtet.
 
 **Texte & Rahmen:**
 
 * **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Max behält den Überblick".
-* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Der KI-Tutor führt Max Schritt für Schritt. Im Kontakt mit Mission Control kann Max jedoch sehen, was noch kommt.".
+* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Der KI-Tutor führt Max Schritt für Schritt. Über Mission Control sieht Max neben seinen Erfolgen auch, was später kommt.".
 
 **Schriftstil & Typografie:**
 
