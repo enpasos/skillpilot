@@ -9,14 +9,14 @@ comic01.de.png
 
 **Charakter & Aktion:**
 
-* **Max:** Ein junger Mann mit braunen, stacheligen Haaren, rotem T-Shirt und blauen Jeans, sitzt auf einem blauen Bürostuhl an einem Holzschreibtisch.
+* **Max:** Ein Junge mit braunen, stacheligen Haaren, rotem T-Shirt, blauen Jeans und roten Turnschuhen, sitzt auf einem blauen Bürostuhl an einem Holzschreibtisch.
 * **Aktion:** Er lächelt und zeigt mit dem rechten Zeigefinger auf den Computerbildschirm. Seine linke Hand ruht auf der schwarzen Maus.
 
 **Sprechblasen & Bildschirminhalt:**
 
-* **Sprechblase Max:** Über Max' Kopf befindet sich eine Sprechblase mit dem Text: "So lerne ich".
-* **Sprechblase Monitor:** Vom Monitor geht eine weitere Sprechblase aus, die auf die Adressleiste zeigt und den Text "[https://skillpilot.com](https://skillpilot.com)" enthält.
-* **Monitor:** Der schwarze Computerbildschirm zeigt eine Webbrowser-Oberfläche.
+* **Sprechblase Max:** Links neben Max' Kopf befindet sich eine Sprechblase mit dem Text: "So lerne ich ...".
+* **Sprechblase Monitor:** Vom Monitor geht eine weitere Sprechblase aus, die auf die Adressleiste zeigt und den Text "https://skillpilot.com" enthält.
+* **Monitor:** Der schwarze Computerbildschirm ist nur von schräg hinten zu sehen.
 
 **Hintergrund & Umgebung:**
 
@@ -26,7 +26,12 @@ comic01.de.png
 **Texte & Rahmen:**
 
 * **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Start bei SkillPilot".
-* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Start: Max will für seinen Mathe-LK lernen. Einen kostenlosen ChatGPT Account hat er schon. Er gibt 'skillpilot.com' im Browser ein und klickt dann auf 'SkillPilot GPT starten'.".
+* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max will für seinen Mathe-LK lernen. Einen kostenlosen ChatGPT-Account hat er schon. Er tippt ‚skillpilot.com‘ im Browser ein und klickt auf ‚SkillPilot GPT starten‘.".
+
+**Schriftstil & Typografie:**
+
+* **Konsistente Schriftart:** Verwende für alle Texte (Überschriften, Sprechblasen, Beschreibungsfelder, digitale Anzeigen) eine **handgezeichnete, serifenlose, klare, freundliche und leicht unregelmäßige Druckschrift im Comic-Stil** Schriftart.
+* **Anwendung:** Diese spezifische Schriftart muss für alle geschriebenen Inhalte im gesamten Bild konsistent verwendet werden, um einen einheitlichen Comic-Look zu gewährleisten.
 
 ---
 
@@ -39,7 +44,7 @@ Das Bild ist durch eine dicke, schwarze diagonale Linie von oben links nach unte
 
 **Linker Bereich (Gelber Hintergrund):**
 
-* **Charakter:** Max, ein junger Mann mit braunen, stacheligen Haaren, rotem T-Shirt und blauen Jeans, sitzt auf einem blauen Bürostuhl an einem Holzschreibtisch.
+* **Charakter:** Max, ein Junge mit braunen, stacheligen Haaren, rotem T-Shirt, blauen Jeans und roten Turnschuhen, sitzt auf einem blauen Bürostuhl an einem Holzschreibtisch.
 * **Aktion:** Er tippt konzentriert auf einer schwarzen Tastatur und blickt auf den schwarzen Computerbildschirm vor ihm.
 
 **Rechter Bereich (Blau-Grauer Hintergrund):**
@@ -49,14 +54,18 @@ Das Bild ist durch eine dicke, schwarze diagonale Linie von oben links nach unte
 
 **Texte & Rahmen:**
 
-* **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "SkillPilot-ID".
-* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Chat: Max fängt an mit seinem KI-Tutor zu chatten. Er erklärt, was er lernen will, und erhält eine SkillPilot-ID als geheimes Pseudonym. Dann geht es los mit dem Lernen.".
+* **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Chat mit dem KI-Tutor".
+* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max chattet mit seinem KI-Tutor, sagt sein Lernziel, bekommt eine SkillPilot-ID als geheimes Pseudonym – dann startet der Lernchat.".
+
+**Schriftstil & Typografie:**
+
+* **Konsistente Schriftart:** Verwende für alle Texte (Überschriften, Sprechblasen, Beschreibungsfelder, digitale Anzeigen) eine **handgezeichnete, serifenlose, klare, freundliche und leicht unregelmäßige Druckschrift im Comic-Stil** Schriftart.
+* **Anwendung:** Diese spezifische Schriftart muss für alle geschriebenen Inhalte im gesamten Bild konsistent verwendet werden, um einen einheitlichen Comic-Look zu gewährleisten.
 
 ---
 
 comic03.de.png
-
-**Prompt für die Reproduktion des Cartoon-Bildes:**
+ 
 
 **Stil:** 2D-Cartoon-Illustration im sauberen Comic-Stil mit kräftigen schwarzen Konturlinien und flächigen, klaren Farben. Die Farbpalette ist modern, mit kühlen Blau- und Grautönen und leuchtenden Akzenten.
 
@@ -76,39 +85,50 @@ comic03.de.png
 **Texte & Rahmen:**
 
 * **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Mission Control".
-* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen und dem schwarzen Text: "Sync: SkillPilot tauscht Lernstand und Frontier mit Mission Control aus.".
+* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Sync: Der KI-Tutor tauscht Lernstand und Frontier mit Mission Control aus.".
+
+**Schriftstil & Typografie:**
+
+* **Konsistente Schriftart:** Verwende für alle Texte (Überschriften, Sprechblasen, Beschreibungsfelder, digitale Anzeigen) eine **handgezeichnete, serifenlose, klare, freundliche und leicht unregelmäßige Druckschrift im Comic-Stil** Schriftart.
+* **Anwendung:** Diese spezifische Schriftart muss für alle geschriebenen Inhalte im gesamten Bild konsistent verwendet werden, um einen einheitlichen Comic-Look zu gewährleisten.
+
+
 
 ---
 
 comic04.de.png
-
-**Prompt für die Reproduktion des Cartoon-Bildes:**
+ 
 
 **Stil:** 2D-Cartoon-Illustration im Comic-Stil mit kräftigen schwarzen Konturlinien und flächigen, klaren Farben.
 
-**Szenerie:** Eine Treppe, deren Stufen durch leuchtend blaue Neon-Konturen hervorgehoben sind, führt einen steilen, grauen, felsigen Berghang hinauf. Der Hintergrund ist ein heller, blauer Himmel mit angedeuteten weiteren Bergspitzen in der Ferne.
+**Szenerie:** Ein Weg führt einen steilen, grauen, felsigen Berghang hinauf. Der Hintergrund ist ein heller, blauer Himmel mit angedeuteten weiteren Bergspitzen in der Ferne.
 
 **Charaktere & Aktion:**
 
-* **Der Schüler (Max):** Ein Junge mit braunen Haaren, rotem T-Shirt, blauen Jeans und roten Turnschuhen ist in einer dynamischen Gehbewegung dargestellt. Er setzt gerade seinen Fuß auf die nächste Stufe und blickt lächelnd und entschlossen nach vorne den Berg hinauf.
-* **Der Roboter:** Der kleine, schwebende weiße und blaue Roboter fliegt neben dem Jungen. Er hält eine Taschenlampe in der Hand, deren gelber Lichtkegel exakt nur die einzelne Stufe beleuchtet, die direkt vor den Füßen des Jungen liegt.
+* **Max:** Ein Junge mit braunen, stacheligen Haaren, rotem T-Shirt, blauen Jeans und roten Turnschuhen ist in einer dynamischen Gehbewegung dargestellt. Er setzt gerade seinen Fuß auf die nächste Stufe und blickt lächelnd und entschlossen nach vorne den Berg hinauf.
+* **Der Roboter:** Der kleine, schwebende weiße und blaue Roboter fliegt neben Max. Er hält eine Taschenlampe in der Hand, deren gelber Lichtkegel exakt nur die einzelne Stufe beleuchtet, die direkt vor den Füßen von Max liegt.
 
 **Texte & Rahmen:**
 
 * **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Frontier".
-* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen und dem schwarzen Text: "Er berechnet die 'Frontier': Genau der nächste Lernschritt, für den der Schüler jetzt bereit ist. Weder Langeweile noch Überforderung.".
+* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Die KI berechnet die ‚Frontier‘: genau den nächsten Lernschritt, für den der Schüler jetzt bereit ist – ohne Langeweile und ohne Überforderung.".
+
+**Schriftstil & Typografie:**
+
+* **Konsistente Schriftart:** Verwende für alle Texte (Überschriften, Sprechblasen, Beschreibungsfelder, digitale Anzeigen) eine **handgezeichnete, serifenlose, klare, freundliche und leicht unregelmäßige Druckschrift im Comic-Stil** Schriftart.
+* **Anwendung:** Diese spezifische Schriftart muss für alle geschriebenen Inhalte im gesamten Bild konsistent verwendet werden, um einen einheitlichen Comic-Look zu gewährleisten.
 
 ---
 
 comic05.de.png
 
-**Prompt für die Reproduktion des Cartoon-Bildes:**
+ 
 
 **Stil:** 2D-Cartoon-Illustration mit kräftigen schwarzen Konturlinien und flächiger, freundlicher Farbgebung.
 
 **Charakter & Aktion:**
 
-* **Max:** Ein junger Mann mit braunen Haaren, rotem T-Shirt und blauen Jeans, sitzt auf einem blauen Bürostuhl an einem Holzschreibtisch. Er lächelt und zeigt mit dem rechten Zeigefinger auf den Computerbildschirm, während seine linke Hand auf der Maus ruht.
+* **Max:** Ein Junge mit braunen, stacheligen Haaren, rotem T-Shirt, blauen Jeans und roten Turnschuhen, sitzt auf einem blauen Bürostuhl an einem Holzschreibtisch. Er lächelt und zeigt mit dem rechten Zeigefinger auf den Computerbildschirm, während seine linke Hand auf der Maus ruht.
 * **Sprechblase:** Über seinem Kopf befindet sich eine Sprechblase mit dem Text: "Ich schaue mir meine Erfolge an.".
 
 **Computer & Schreibtisch:**
@@ -123,8 +143,13 @@ comic05.de.png
 
 **Texte & Rahmen:**
 
-* **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Erfolge".
-* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen und dem schwarzen Text: "Erfolge: Max will genau sehen was er schon gelernt hat. Wieder gibt er 'skillpilot.com' im Browser ein, klickt aber dann auf 'Meine Erfolge'.".
+* **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Meine Erfolge".
+* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max will genau sehen, was er schon gelernt hat: Er gibt wieder ‚skillpilot.com‘ im Browser ein und klickt diesmal auf ‚Meine Erfolge‘.".
+
+**Schriftstil & Typografie:**
+
+* **Konsistente Schriftart:** Verwende für alle Texte (Überschriften, Sprechblasen, Beschreibungsfelder, digitale Anzeigen) eine **handgezeichnete, serifenlose, klare, freundliche und leicht unregelmäßige Druckschrift im Comic-Stil** Schriftart.
+* **Anwendung:** Diese spezifische Schriftart muss für alle geschriebenen Inhalte im gesamten Bild konsistent verwendet werden, um einen einheitlichen Comic-Look zu gewährleisten.
 
 ---
 
@@ -134,7 +159,7 @@ comic06.de.png
 
 **Szenerie & Charaktere:**
 
-* **Max:** Ein junger Mann mit braunen Haaren, rotem T-Shirt und blauen Jeans, sitzt lächelnd an einem Holzschreibtisch. Er zeigt mit dem rechten Zeigefinger auf den Computerbildschirm.
+* **Max:** Ein Junge mit braunen, stacheligen Haaren, rotem T-Shirt, blauen Jeans und roten Turnschuhen, sitzt lächelnd an einem Holzschreibtisch. Er zeigt mit dem rechten Zeigefinger auf den Computerbildschirm.
 * **Computer-Setup:** Auf dem Schreibtisch steht ein PC-Monitor, eine Tastatur, eine Maus und ein Computer-Tower. Auf dem Monitor ist ein Webbrowser geöffnet. In der Adressleiste steht "[https://skillpilot.com](https://skillpilot.com)". Darunter ist ein Eingabefeld mit der ID "[PASTED-ID-X7F9]" und einem Mauszeiger zu sehen.
 * **Verbindung:** Vom Computer-Tower führen mehrere dicke Kabel zu einem großen, grauen Server-Rack, das rechts neben dem Schreibtisch steht.
 * **Server-Rack:** Das Rack ist beschriftet mit "MISSION CONTROL" in blauen Großbuchstaben. Es hat mehrere Einschübe mit blinkenden blauen Leuchten.
@@ -146,7 +171,12 @@ comic06.de.png
 **Texte & Rahmen:**
 
 * **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Verbindung".
-* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen und dem schwarzen Text: "Max gibt seine SkillPilot-ID per copy/paste aus einer Ablage ein und verbindet sich direkt mit Mission Control.".
+* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max gibt seine SkillPilot-ID per copy/paste aus einer Ablage ein und verbindet sich direkt mit Mission Control.".
+
+**Schriftstil & Typografie:**
+
+* **Konsistente Schriftart:** Verwende für alle Texte (Überschriften, Sprechblasen, Beschreibungsfelder, digitale Anzeigen) eine **handgezeichnete, serifenlose, klare, freundliche und leicht unregelmäßige Druckschrift im Comic-Stil** Schriftart.
+* **Anwendung:** Diese spezifische Schriftart muss für alle geschriebenen Inhalte im gesamten Bild konsistent verwendet werden, um einen einheitlichen Comic-Look zu gewährleisten.
 
 **Hintergrund & Komposition:** Der Hintergrund ist eine einfache, helle Wand. Die Beleuchtung ist hell und gleichmäßig. Die Perspektive ist eine Totale auf Augenhöhe.
 
@@ -162,13 +192,18 @@ comic07.de.png
 
 **Charaktere:**
 
-* **Max:** Ein junger Mann mit braunen Haaren, rotem T-Shirt, blauen Jeans und grauen Turnschuhen, steht auf der Treppe und blickt durch ein Fernglas in Richtung des hellen Gipfels.
+* **Max:** Ein Junge mit braunen, stacheligen Haaren, rotem T-Shirt, blauen Jeans und roten Turnschuhen, steht auf der Treppe und blickt durch ein Fernglas in Richtung des hellen Gipfels.
 * **KI-Tutor:** Ein kleiner, schwebender weißer und blauer Roboter mit einem leuchtenden 'O'-Symbol auf der Brust, hält eine Taschenlampe, die den Pfad direkt vor Max beleuchtet.
 
 **Texte & Rahmen:**
 
 * **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Max behält den Überblick".
-* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen und dem schwarzen Text: "Der KI-Tutor führt Max Schritt für Schritt. Im Kontakt mit Mission Control kann Max jedoch sehen, was noch kommt.".
+* **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Der KI-Tutor führt Max Schritt für Schritt. Im Kontakt mit Mission Control kann Max jedoch sehen, was noch kommt.".
+
+**Schriftstil & Typografie:**
+
+* **Konsistente Schriftart:** Verwende für alle Texte (Überschriften, Sprechblasen, Beschreibungsfelder, digitale Anzeigen) eine **handgezeichnete, serifenlose, klare, freundliche und leicht unregelmäßige Druckschrift im Comic-Stil** Schriftart.
+* **Anwendung:** Diese spezifische Schriftart muss für alle geschriebenen Inhalte im gesamten Bild konsistent verwendet werden, um einen einheitlichen Comic-Look zu gewährleisten.
 
 **Komposition:** Die Perspektive zeigt die Charaktere von der Seite, wie sie die Treppe hinaufsteigen, mit dem hellen Gipfel als Fokuspunkt im Hintergrund.
  
