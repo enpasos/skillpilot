@@ -18,6 +18,10 @@ echo "Deploying Whitepaper assets..."
 # Kopiert Whitepaper-Markdown und Bilder in app/public
 python3 scripts/deploy_whitepaper.py
 
+echo "Deploying Story assets..."
+# Kopiert Story-Markdown und Bilder in app/public
+python3 scripts/deploy_story.py
+
 # 'app' ist ein Unterordner, hier ist der relative Pfad okay
 cd app
 

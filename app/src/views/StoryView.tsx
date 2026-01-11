@@ -114,6 +114,8 @@ export const StoryView: React.FC = () => {
                                         ? title.match(/\b(?:width|max-width|w)=(\d+)\b/i)
                                         : null
                                     const explicitMaxWidth = widthMatch ? `${widthMatch[1]}px` : undefined
+                                    const rawSrc = typeof props.src === 'string' ? props.src.toLowerCase() : ''
+                                    const src = rawSrc.startsWith('/') || rawSrc.startsWith('http') ? rawSrc : `/${rawSrc}`
 
                                     const maxWidth = explicitMaxWidth
                                     const className = [
@@ -127,6 +129,7 @@ export const StoryView: React.FC = () => {
                                     return (
                                         <img
                                             {...props}
+                                            src={src}
                                             title={explicitMaxWidth ? undefined : title}
                                             className={className}
                                             style={style}
