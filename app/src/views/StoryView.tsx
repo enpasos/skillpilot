@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -108,6 +109,7 @@ export const StoryView: React.FC = () => {
                 {loadState === 'ready' && (
                     <div className="prose dark:prose-invert max-w-none text-text-primary">
                         <ReactMarkdown
+                            remarkPlugins={[remarkGfm]}
                             components={{
                                 img: ({ title, ...props }) => {
                                     const widthMatch = typeof title === 'string'
