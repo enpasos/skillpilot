@@ -8,6 +8,7 @@ import { PrivacyView } from './views/PrivacyView'
 import { ImprintView } from './views/ImprintView'
 import { HallOfFameView } from './views/HallOfFameView'
 import { WhitepaperView } from './views/WhitepaperView'
+import { StoryView } from './views/StoryView'
 
 import { SessionSetup } from './components/SessionSetup'
 import { useAppCore } from './hooks/useAppCore'
@@ -16,7 +17,7 @@ import { useLanguage } from './contexts/LanguageContext'
 
 type Role = 'learner' | 'trainer' | 'explorer'
 
-const PUBLIC_PATHS = new Set(['/', '/hall-of-fame', '/privacy', '/imprint', '/legal', '/whitepaper'])
+const PUBLIC_PATHS = new Set(['/', '/hall-of-fame', '/privacy', '/imprint', '/legal', '/whitepaper', '/story'])
 const GOAL_VIEWS = new Set(['learner', 'trainer', 'explorer'])
 const MAX_DESCRIPTION_LENGTH = 160
 
@@ -401,6 +402,7 @@ const App: React.FC = () => {
       <Route path="/legal" element={<LegalView />} />
       <Route path="/privacy" element={<PrivacyView />} />
       <Route path="/imprint" element={<ImprintView />} />
+      <Route path="/story/:lang?" element={<StoryView />} />
       <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
 
       <Route path="/" element={<Navigate to="/explorer" />} />

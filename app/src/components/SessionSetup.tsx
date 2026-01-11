@@ -197,19 +197,13 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
               SkillPilot
             </h1>
           </div>
-          {language === 'de' ? (
-            <a
-              href="/SkillPilot_so_lerne_ich.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-text-secondary hover:text-sky-500 transition-colors"
-            >
-              <FileText size={20} />
-              <span className="font-medium">{t.startPage.subtitle}</span>
-            </a>
-          ) : (
-            <p className="text-text-secondary">{t.startPage.subtitle}</p>
-          )}
+          <Link
+            to={`/story/${language}`}
+            className="flex items-center gap-2 text-text-secondary hover:text-sky-500 transition-colors"
+          >
+            <FileText size={20} />
+            <span className="font-medium">{t.startPage.subtitle}</span>
+          </Link>
         </div>
 
         <div className="w-full space-y-4">
