@@ -20,16 +20,11 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     show-sql: false
   liquibase:
-    enabled: false
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
   endpoint:
     health:
       probes:

@@ -1,0 +1,145 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-initial-learner-schema
+      author: skillpilot
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: learner
+      changes:
+        - createTable:
+            tableName: learner
+            columns:
+              - column:
+                  name: skillpilot_id
+                  type: VARCHAR(80)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: selected_curriculum
+                  type: VARCHAR(255)
+              - column:
+                  name: personal_curriculum
+                  type: TEXT
+              - column:
+                  name: active_goal_id
+                  type: VARCHAR(255)
+              - column:
+                  name: learning_state
+                  type: VARCHAR(255)
+              - column:
+                  name: learning_strategy
+                  type: VARCHAR(255)
+              - column:
+                  name: auto_pilot
+                  type: BOOLEAN
+
+  - changeSet:
+      id: 001-initial-learner-copy-sources
+      author: skillpilot
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: learner_copy_sources
+      changes:
+        - createTable:
+            tableName: learner_copy_sources
+            columns:
+              - column:
+                  name: learner_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_learner_copy_sources_learner
+                    references: learner(skillpilot_id)
+              - column:
+                  name: source_id
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: copied_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 001-initial-mastery-schema
+      author: skillpilot
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: mastery
+      changes:
+        - createTable:
+            tableName: mastery
+            columns:
+              - column:
+                  name: skillpilot_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_mastery
+                    foreignKeyName: fk_mastery_learner
+                    references: learner(skillpilot_id)
+              - column:
+                  name: goal_key
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_mastery
+              - column:
+                  name: value
+                  type: DOUBLE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 001-initial-planned-goal-schema
+      author: skillpilot
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: planned_goal
+      changes:
+        - createTable:
+            tableName: planned_goal
+            columns:
+              - column:
+                  name: skillpilot_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_planned_goal
+                    foreignKeyName: fk_planned_goal_learner
+                    references: learner(skillpilot_id)
+              - column:
+                  name: goal_id
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_planned_goal
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
