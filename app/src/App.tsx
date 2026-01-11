@@ -208,7 +208,7 @@ const App: React.FC = () => {
 
     const desiredPath =
       role === 'learner' ? '/learner' : role === 'trainer' ? '/trainer' : '/explorer'
-    if (!window.location.pathname.startsWith(desiredPath)) {
+    if (!window.location.pathname.startsWith(desiredPath) && window.location.pathname !== '/') {
       navigate(desiredPath + location.search, { replace: true })
     }
   }, [role, hasSession, navigate, isPublicRoute, location.search])
@@ -227,7 +227,7 @@ const App: React.FC = () => {
     )
   }
 
-  if (!hasSession) {
+  if (!hasSession || normalizedPath === '/') {
     return (
       <SessionSetup
         role={role}
