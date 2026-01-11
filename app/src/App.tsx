@@ -74,10 +74,11 @@ const App: React.FC = () => {
   const location = useLocation()
   const normalizedPath = location.pathname === '/' ? '/' : location.pathname.replace(/\/+$/, '')
   const isWhitepaperRoute = normalizedPath === '/whitepaper' || normalizedPath.startsWith('/whitepaper/')
+  const isStoryRoute = normalizedPath === '/story' || normalizedPath.startsWith('/story/')
 
   // Allow public routes to render without session
   const isPublicRoute =
-    ['/legal', '/privacy', '/imprint', '/hall-of-fame'].includes(normalizedPath) || isWhitepaperRoute
+    ['/legal', '/privacy', '/imprint', '/hall-of-fame'].includes(normalizedPath) || isWhitepaperRoute || isStoryRoute
 
   const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId })
   const availableLandscapes = useMemo(
@@ -224,6 +225,7 @@ const App: React.FC = () => {
         <Route path="/privacy" element={<PrivacyView />} />
         <Route path="/imprint" element={<ImprintView />} />
         <Route path="/hall-of-fame" element={<HallOfFameView />} />
+        <Route path="/story/:lang?" element={<StoryView />} />
       </Routes>
     )
   }
