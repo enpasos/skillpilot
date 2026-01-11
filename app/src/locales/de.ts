@@ -123,5 +123,28 @@ export const de = {
         },
         back: "Zurück zu SkillPilot",
         loading: "Lade Hall of Fame..."
+    },
+    usersPage: {
+        title: "Users",
+        subtitle: "Überblick über registrierte SkillPilot-User.",
+        loading: "Lade User-Statistiken...",
+        empty: "Noch keine Userdaten vorhanden.",
+        error: "User-Statistiken konnten nicht geladen werden.",
+        back: "Zurück zu SkillPilot",
+        stats: {
+            total: "User gesamt",
+            totalHint: "Alle registrierten User",
+            achievements: "User mit Erfolgen",
+            achievementsHint: "Mindestens ein Ziel gemeistert (>= 0.9)",
+            rate: "Erfolgsquote"
+        },
+        chart: {
+            title: "Userzahl über Zeit",
+            subtitle: "Kumulierte Anzahl",
+            totalLabel: "Alle User",
+            achievementsLabel: "Mit Erfolgen",
+            empty: "Noch keine Zeitreihendaten.",
+            lastUpdated: "Aktualisiert"
+        }
     }
 }

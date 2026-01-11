@@ -9,6 +9,7 @@ import { ImprintView } from './views/ImprintView'
 import { HallOfFameView } from './views/HallOfFameView'
 import { WhitepaperView } from './views/WhitepaperView'
 import { StoryView } from './views/StoryView'
+import { UsersView } from './views/UsersView'
 
 import { SessionSetup } from './components/SessionSetup'
 import { useAppCore } from './hooks/useAppCore'
@@ -17,7 +18,16 @@ import { useLanguage } from './contexts/LanguageContext'
 
 type Role = 'learner' | 'trainer' | 'explorer'
 
-const PUBLIC_PATHS = new Set(['/', '/hall-of-fame', '/privacy', '/imprint', '/legal', '/whitepaper', '/story'])
+const PUBLIC_PATHS = new Set([
+  '/',
+  '/hall-of-fame',
+  '/privacy',
+  '/imprint',
+  '/legal',
+  '/whitepaper',
+  '/story',
+  '/users',
+])
 const GOAL_VIEWS = new Set(['learner', 'trainer', 'explorer'])
 const MAX_DESCRIPTION_LENGTH = 160
 
@@ -78,7 +88,9 @@ const App: React.FC = () => {
 
   // Allow public routes to render without session
   const isPublicRoute =
-    ['/legal', '/privacy', '/imprint', '/hall-of-fame'].includes(normalizedPath) || isWhitepaperRoute || isStoryRoute
+    ['/legal', '/privacy', '/imprint', '/hall-of-fame', '/users'].includes(normalizedPath) ||
+    isWhitepaperRoute ||
+    isStoryRoute
 
   const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId })
   const availableLandscapes = useMemo(
@@ -130,6 +142,10 @@ const App: React.FC = () => {
         const whitepaperTitle = t.startPage.cards.whitepaper.title || 'Whitepaper'
         title = `${whitepaperTitle} | ${baseTitle}`
         description = t.startPage.cards.whitepaper.description || defaultDescription
+      } else if (path === '/users') {
+        const usersTitle = t.usersPage?.title || 'Users'
+        title = `${usersTitle} | ${baseTitle}`
+        description = t.usersPage?.subtitle || defaultDescription
       } else if (path === '/privacy') {
         title = `${t.startPage.footer.privacy} | ${baseTitle}`
         description = privacyDescription
@@ -225,6 +241,7 @@ const App: React.FC = () => {
         <Route path="/privacy" element={<PrivacyView />} />
         <Route path="/imprint" element={<ImprintView />} />
         <Route path="/hall-of-fame" element={<HallOfFameView />} />
+        <Route path="/users" element={<UsersView />} />
         <Route path="/story/:lang?" element={<StoryView />} />
       </Routes>
     )
