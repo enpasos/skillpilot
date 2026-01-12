@@ -4,7 +4,7 @@ import { ThemeToggle } from '../components/ThemeToggle'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { useTranslation } from '../hooks/useTranslation'
 import { useLanguage } from '../contexts/LanguageContext'
-import { ArrowLeft } from 'lucide-react'
+import { Users, ArrowLeft } from 'lucide-react'
 
 interface UserCountPoint {
   date: string
@@ -25,17 +25,14 @@ export const UsersView: React.FC = () => {
   const [error, setError] = useState<string | null>(null)
   const [filter, setFilter] = useState<'ALL' | 'WITH_ACHIEVEMENTS' | 'ACTIVE_LAST_WEEK'>('ALL')
 
+  const usersT = t.usersPage || {}
+  const statsT = usersT.stats || {}
+  const filtersT = usersT.filters || {}
+  const chartT = usersT.chart || {}
+
   useEffect(() => {
     // Note: setLoading(true) is handled by the filter change handlers or initial state
-    // to avoid "setState in effect" warnings, except for initial mount which we rely on initial state.
-    // However, to ensure it shows loading on re-fetches triggered by other things (if any), 
-    // we strictly should handle it. 
-    // For now, we'll assume setters handle explicit loading states or we accept a brief "stale" display 
-    // if we don't set it here. 
-    // BUT, for simplicity in this specific fix, let's keep it simple:
-    // The fetch automatically handles the 'fulfillment' (loading=false). 
-    // If we want to show loading *during* the fetch when filter changes, we should set it in the handler.
-
+    // to avoid "setState in effect" warnings.
     fetch(`/api/ui/users/stats?filter=${filter}`)
       .then((res) => {
         if (!res.ok) {
@@ -121,8 +118,13 @@ export const UsersView: React.FC = () => {
     }
   }, [series])
 
-  const usersT = t.usersPage || {}
-  const chartT = usersT.chart || {}
+  const getTotalLabel = () => {
+    switch (filter) {
+      case 'WITH_ACHIEVEMENTS': return statsT.achievements || 'IDs with successes'
+      case 'ACTIVE_LAST_WEEK': return filtersT.activeLastWeek || 'Active last week'
+      default: return statsT.total || 'Total IDs'
+    }
+  }
 
   if (loading) {
     return (
@@ -141,7 +143,7 @@ export const UsersView: React.FC = () => {
           to="/stats"
           className="text-sky-500 hover:underline"
         >
-          Back to Statistics
+          {t.usersPage?.back || 'Back to Statistics'}
         </Link>
       </div>
     )
@@ -162,11 +164,14 @@ export const UsersView: React.FC = () => {
 
       <div className="max-w-5xl mx-auto p-6 space-y-8 pt-20">
         <header className="text-center space-y-3 pt-10 md:pt-0">
+          <div className="inline-flex items-center justify-center p-4 rounded-full bg-sky-100/50 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 mb-4 animate-in zoom-in duration-500">
+            <Users size={48} strokeWidth={1.5} />
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-700 dark:text-slate-200">
-            SkillPilot IDs
+            {usersT.title || 'SkillPilot IDs'}
           </h1>
           <p className="text-text-secondary max-w-2xl mx-auto">
-            Overview of generated SkillPilot IDs.
+            {usersT.subtitle || 'Overview of generated SkillPilot IDs.'}
           </p>
         </header>
 
@@ -177,29 +182,29 @@ export const UsersView: React.FC = () => {
               onClick={() => handleFilterChange('ALL')}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${filter === 'ALL' ? 'bg-white dark:bg-slate-700 text-sky-600 dark:text-sky-400 shadow-sm' : 'text-text-secondary hover:text-text-primary'}`}
             >
-              All
+              {filtersT.all || 'All'}
             </button>
             <button
               onClick={() => handleFilterChange('WITH_ACHIEVEMENTS')}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${filter === 'WITH_ACHIEVEMENTS' ? 'bg-white dark:bg-slate-700 text-sky-600 dark:text-sky-400 shadow-sm' : 'text-text-secondary hover:text-text-primary'}`}
             >
-              With Successes
+              {filtersT.withAchievements || 'With Successes'}
             </button>
             <button
               onClick={() => handleFilterChange('ACTIVE_LAST_WEEK')}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${filter === 'ACTIVE_LAST_WEEK' ? 'bg-white dark:bg-slate-700 text-sky-600 dark:text-sky-400 shadow-sm' : 'text-text-secondary hover:text-text-primary'}`}
             >
-              Active Last Week
+              {filtersT.activeLastWeek || 'Active Last Week'}
             </button>
           </div>
         </div>
 
         <section className="text-center py-6">
-          <div className="mt-3 text-3xl font-bold">
+          <div className="text-6xl font-black tracking-tighter">
             {data ? numberFormatter.format(data.totalUsers) : '-'}
           </div>
           <div className="text-sm font-medium text-text-secondary uppercase tracking-widest mt-2">
-            SkillPilot-IDs
+            {getTotalLabel()}
           </div>
         </section>
 
@@ -207,7 +212,7 @@ export const UsersView: React.FC = () => {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
               <h2 className="text-2xl font-bold text-text-primary">
-                {chartT.title || 'User count over time'}
+                {chartT.title || 'IDs over time'}
               </h2>
               <div className="flex flex-wrap items-center gap-2 text-sm text-text-secondary">
                 <span>{chartT.subtitle || 'Cumulative total'}</span>
@@ -224,7 +229,7 @@ export const UsersView: React.FC = () => {
             </div>
           ) : (
             <div className="mt-6">
-              <div className="relative h-48 w-full">
+              <div className="relative h-64 w-full">
                 <svg
                   viewBox="0 0 100 100"
                   preserveAspectRatio="none"
@@ -248,7 +253,7 @@ export const UsersView: React.FC = () => {
                     />
                   )}
                 </svg>
-                <div className="absolute top-3 right-4 text-xs text-text-secondary">
+                <div className="absolute top-2 right-2 text-xs font-mono bg-white/50 dark:bg-slate-900/50 px-2 py-1 rounded text-text-secondary">
                   {numberFormatter.format(chart.maxCount)}
                 </div>
               </div>

@@ -125,24 +125,29 @@ export const en = {
         loading: "Loading Hall of Fame..."
     },
     usersPage: {
-        title: "Users",
-        subtitle: "Overview of registered SkillPilot users.",
-        loading: "Loading user stats...",
-        empty: "No user data yet.",
-        error: "Unable to load user statistics.",
+        title: "SkillPilot IDs",
+        subtitle: "Overview of generated SkillPilot IDs.",
+        loading: "Loading ID stats...",
+        empty: "No ID data yet.",
+        error: "Unable to load ID statistics.",
         back: "Back to SkillPilot",
         stats: {
-            total: "Total users",
-            totalHint: "All registered users",
-            achievements: "Users with achievements",
+            total: "Total IDs",
+            totalHint: "All registered IDs",
+            achievements: "IDs with achievements",
             achievementsHint: "At least one mastered goal (>= 0.9)",
             rate: "Achievement rate"
         },
+        filters: {
+            all: "All",
+            withAchievements: "With Successes",
+            activeLastWeek: "Active Last Week"
+        },
         chart: {
-            title: "User count over time",
+            title: "IDs over time",
             subtitle: "Cumulative total",
-            totalLabel: "All users",
-            achievementsLabel: "With achievements",
+            totalLabel: "All IDs",
+            achievementsLabel: "With successes",
             empty: "No time series data yet.",
             lastUpdated: "Updated"
         }

@@ -125,23 +125,28 @@ export const de = {
         loading: "Lade Hall of Fame..."
     },
     usersPage: {
-        title: "Users",
-        subtitle: "Überblick über registrierte SkillPilot-User.",
-        loading: "Lade User-Statistiken...",
-        empty: "Noch keine Userdaten vorhanden.",
-        error: "User-Statistiken konnten nicht geladen werden.",
+        title: "SkillPilot-IDs",
+        subtitle: "Überblick über generierte SkillPilot-IDs.",
+        loading: "Lade ID-Statistiken...",
+        empty: "Noch keine ID-Daten vorhanden.",
+        error: "ID-Statistiken konnten nicht geladen werden.",
         back: "Zurück zu SkillPilot",
         stats: {
-            total: "User gesamt",
-            totalHint: "Alle registrierten User",
-            achievements: "User mit Erfolgen",
+            total: "IDs gesamt",
+            totalHint: "Alle registrierten IDs",
+            achievements: "IDs mit Erfolgen",
             achievementsHint: "Mindestens ein Ziel gemeistert (>= 0.9)",
             rate: "Erfolgsquote"
         },
+        filters: {
+            all: "Alle",
+            withAchievements: "Mit Erfolgen",
+            activeLastWeek: "Aktiv letzte Woche"
+        },
         chart: {
-            title: "Userzahl über Zeit",
+            title: "Anzahl über Zeit",
             subtitle: "Kumulierte Anzahl",
-            totalLabel: "Alle User",
+            totalLabel: "Alle IDs",
             achievementsLabel: "Mit Erfolgen",
             empty: "Noch keine Zeitreihendaten.",
             lastUpdated: "Aktualisiert"

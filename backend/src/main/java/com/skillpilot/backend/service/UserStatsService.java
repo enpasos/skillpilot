@@ -29,7 +29,6 @@ public class UserStatsService {
     }
 
     public UserStatsResponse getStats(String filter) {
-        long totalUsers = learnerRepository.count();
         List<Instant> createdAtValues;
 
         if ("WITH_ACHIEVEMENTS".equalsIgnoreCase(filter)) {
@@ -40,6 +39,8 @@ public class UserStatsService {
         } else {
             createdAtValues = learnerRepository.findAllCreatedAt();
         }
+
+        long totalUsers = createdAtValues.size();
 
         Map<LocalDate, Long> createdCounts = new HashMap<>();
         for (Instant createdAt : createdAtValues) {
