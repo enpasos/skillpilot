@@ -7,11 +7,11 @@ export const en = {
                 description: "Learn more about the concept and vision."
             },
             gpt: {
-                title: "Start SkillPilot GPT",
+                title: "SkillPilot GPT",
                 description: "Learn interactively with your AI tutor."
             },
             explorer: {
-                title: "My Achievements",
+                title: "Cockpit",
                 description: "Track your progress in the cockpit."
             },
             hallOfFame: {

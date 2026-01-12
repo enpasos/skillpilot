@@ -7,11 +7,11 @@ export const de = {
                 description: "Erfahre mehr über das Konzept und die Vision."
             },
             gpt: {
-                title: "SkillPilot GPT starten",
+                title: "SkillPilot GPT",
                 description: "Lerne interaktiv mit deinem KI-Tutor."
             },
             explorer: {
-                title: "Meine Erfolge",
+                title: "Cockpit",
                 description: "Verfolge deinen Fortschritt im Cockpit."
             },
             hallOfFame: {

@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { CurriculumDropdown } from './CurriculumDropdown'
 import { ThemeToggle } from './ThemeToggle'
 import type { LandscapeSummary } from './CurriculumDropdown'
-import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send } from 'lucide-react'
+import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Compass } from 'lucide-react'
 
 
 type Role = 'learner' | 'trainer' | 'explorer'
@@ -215,8 +215,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
               <a href="https://chatgpt.com/g/g-693ebdcb2fac8191b3a765ce7f451fb2-skillpilot-gpt" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-6 hover:shadow-lg hover:border-sky-400/50 transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-lg font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
-                      {t.startPage.cards.gpt.title}
+                    <h3 className="text-lg font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors flex items-center gap-2">
+                      {t.startPage.cards.gpt.title} <MessageCircle size={18} className="text-sky-500" />
                     </h3>
                     <p className="text-sm text-text-secondary mt-1">
                       {t.startPage.cards.gpt.description}
@@ -252,8 +252,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-lg font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
-                      {t.startPage.cards.explorer.title}
+                    <h3 className="text-lg font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors flex items-center gap-2">
+                      {t.startPage.cards.explorer.title} <Compass size={18} className="text-sky-500" />
                     </h3>
                     <p className="text-sm text-text-secondary mt-1">
                       {t.startPage.cards.explorer.description}
