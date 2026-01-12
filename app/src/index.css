@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Force class-based dark mode instead of media-query default */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-gray-50: #f9f9f9;
   --color-gray-700: #40414f;
@@ -52,10 +55,10 @@
 
 /* Explicit force for light mode to fight Samsung Dark Mode */
 html.light {
-    color-scheme: light;
-    background-color: #ffffff !important;
-    color: #111827 !important;
-    --chat-bg: #ffffff !important;
+  color-scheme: light;
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  --chat-bg: #ffffff !important;
 }
 
 .dark {
