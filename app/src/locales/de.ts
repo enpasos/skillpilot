@@ -45,13 +45,13 @@ export const de = {
         banner: {
             text: "**SkillPilot ist kostenlos.**\nDu benötigst lediglich einen ChatGPT-Account.\n\n**Hinweis zur App:** Die ChatGPT-App unterstützt komplexe GPT-Funktionen leider oft nicht korrekt. Wir können die Funktionalität dort nicht garantieren und empfehlen den **Webbrowser**."
         },
+        links: {
+            statistics: "Statistiken"
+        },
         footer: {
             privacy: "Datenschutz",
             imprint: "Impressum",
             legal: "Rechtliches"
-        },
-        links: {
-            statistics: "Statistiken"
         }
     },
     statsHub: {
