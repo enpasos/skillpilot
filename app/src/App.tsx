@@ -10,6 +10,8 @@ import { HallOfFameView } from './views/HallOfFameView'
 import { WhitepaperView } from './views/WhitepaperView'
 import { StoryView } from './views/StoryView'
 import { UsersView } from './views/UsersView'
+import { StatsView } from './views/StatsView'
+import { SuccessView } from './views/SuccessView'
 
 import { SessionSetup } from './components/SessionSetup'
 import { useAppCore } from './hooks/useAppCore'
@@ -27,6 +29,8 @@ const PUBLIC_PATHS = new Set([
   '/whitepaper',
   '/story',
   '/users',
+  '/stats',
+  '/successes',
 ])
 const GOAL_VIEWS = new Set(['learner', 'trainer', 'explorer'])
 const MAX_DESCRIPTION_LENGTH = 160
@@ -143,9 +147,15 @@ const App: React.FC = () => {
         title = `${whitepaperTitle} | ${baseTitle}`
         description = t.startPage.cards.whitepaper.description || defaultDescription
       } else if (path === '/users') {
-        const usersTitle = t.usersPage?.title || 'Users'
+        const usersTitle = t.usersPage?.title || 'SkillPilot IDs'
         title = `${usersTitle} | ${baseTitle}`
         description = t.usersPage?.subtitle || defaultDescription
+      } else if (path === '/stats') {
+        title = `Statistics | ${baseTitle}`
+        description = 'Explore the growth of our learning community.'
+      } else if (path === '/successes') {
+        title = `Successes | ${baseTitle}`
+        description = 'Total number of mastered learning goals.'
       } else if (path === '/privacy') {
         title = `${t.startPage.footer.privacy} | ${baseTitle}`
         description = privacyDescription
@@ -241,7 +251,9 @@ const App: React.FC = () => {
         <Route path="/privacy" element={<PrivacyView />} />
         <Route path="/imprint" element={<ImprintView />} />
         <Route path="/hall-of-fame" element={<HallOfFameView />} />
+        <Route path="/stats" element={<StatsView />} />
         <Route path="/users" element={<UsersView />} />
+        <Route path="/successes" element={<SuccessView />} />
         <Route path="/story/:lang?" element={<StoryView />} />
       </Routes>
     )

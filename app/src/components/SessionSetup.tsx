@@ -303,6 +303,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
               {/* Direct Access Links for Trainer/Explorer */}
               <div className="flex justify-center gap-6 pt-4 text-xs text-text-secondary">
+                <Link to="/stats" className="hover:text-sky-500 hover:underline transition-colors">
+                  Statistics
+                </Link>
                 {(['trainer', 'explorer'] as const).map((r) => (
                   <button
                     key={r}

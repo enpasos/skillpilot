@@ -24,6 +24,9 @@ public interface MasteryRepository extends JpaRepository<Mastery, MasteryId> {
             "from Mastery m where m.value >= :threshold group by m.learner.skillpilotId")
     List<LearnerAchievementDate> findFirstAchievementDates(@Param("threshold") double threshold);
 
+    @Query("select m.updatedAt from Mastery m where m.value >= :threshold")
+    List<Instant> findAllAchievementDates(@Param("threshold") double threshold);
+
     @Modifying
     @Query("UPDATE Mastery m SET m.updatedAt = :timestamp WHERE m.id.skillpilotId = :skillpilotId AND m.id.goalKey = :goalKey")
     void updateTimestamp(@Param("skillpilotId") String skillpilotId, @Param("goalKey") String goalKey,

@@ -57,11 +57,26 @@ public class UserStatsService {
         }
         List<UserCountPoint> achievementSeries = buildCumulativeSeries(achievementCounts);
 
+        List<Instant> allAchievementDates = masteryRepository.findAllAchievementDates(ACHIEVEMENT_THRESHOLD);
+        long totalSuccesses = allAchievementDates.size();
+
+        Map<LocalDate, Long> successCounts = new HashMap<>();
+        for (Instant achievedAt : allAchievementDates) {
+            if (achievedAt == null) {
+                continue;
+            }
+            LocalDate date = achievedAt.atZone(ZoneOffset.UTC).toLocalDate();
+            successCounts.merge(date, 1L, Long::sum);
+        }
+        List<UserCountPoint> successSeries = buildCumulativeSeries(successCounts);
+
         return new UserStatsResponse(
                 totalUsers,
                 usersWithAchievements,
+                totalSuccesses,
                 totalSeries,
                 achievementSeries,
+                successSeries,
                 Instant.now());
     }
 

@@ -64,7 +64,7 @@ export const HallOfFameView: React.FC = () => {
           <LanguageToggle />
           <ThemeToggle />
         </div>
-        <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-200">
+        <h1 className="text-3xl font-bold text-text-primary">
           {t.startPage.cards.hallOfFame?.title || "Hall of Fame"}
         </h1>
         <p className="text-text-secondary">{t.hallOfFamePage.noData.title}</p>
@@ -90,10 +90,8 @@ export const HallOfFameView: React.FC = () => {
       <div className="max-w-4xl mx-auto p-6 space-y-8">
         {/* Header */}
         <header className="text-center space-y-4 pt-10 md:pt-0">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 dark:from-yellow-300 dark:via-orange-400 dark:to-red-500">
-              {t.startPage.cards.hallOfFame?.title || "Hall of Fame"}
-            </span>
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-text-primary">
+            {t.startPage.cards.hallOfFame?.title || "Hall of Fame"}
           </h1>
           <p className="text-text-secondary max-w-lg mx-auto">
             {t.hallOfFamePage.subtitle}
