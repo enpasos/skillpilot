@@ -122,7 +122,7 @@ export const SuccessView: React.FC = () => {
                     <div className="inline-flex items-center justify-center p-4 rounded-full bg-amber-100/50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 mb-4 animate-in zoom-in duration-500">
                         <Trophy size={48} strokeWidth={1.5} />
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-text-primary">
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-700 dark:text-slate-200">
                         Learning Successes
                     </h1>
                     <p className="text-text-secondary max-w-2xl mx-auto">

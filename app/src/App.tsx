@@ -92,7 +92,7 @@ const App: React.FC = () => {
 
   // Allow public routes to render without session
   const isPublicRoute =
-    ['/legal', '/privacy', '/imprint', '/hall-of-fame', '/users'].includes(normalizedPath) ||
+    PUBLIC_PATHS.has(normalizedPath) ||
     isWhitepaperRoute ||
     isStoryRoute
 

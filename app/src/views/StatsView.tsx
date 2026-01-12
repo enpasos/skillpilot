@@ -18,7 +18,7 @@ export const StatsView: React.FC = () => {
 
             <div className="max-w-4xl mx-auto p-6 flex flex-col items-center justify-center min-h-[80vh]">
                 <header className="text-center space-y-4 mb-12">
-                    <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-text-primary">
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-700 dark:text-slate-200">
                         Statistics
                     </h1>
                     <p className="text-lg text-text-secondary max-w-2xl mx-auto">

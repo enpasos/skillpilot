@@ -145,7 +145,7 @@ export const UsersView: React.FC = () => {
 
       <div className="max-w-5xl mx-auto p-6 space-y-8 pt-20">
         <header className="text-center space-y-3 pt-10 md:pt-0">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-text-primary">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-700 dark:text-slate-200">
             SkillPilot IDs
           </h1>
           <p className="text-text-secondary max-w-2xl mx-auto">
