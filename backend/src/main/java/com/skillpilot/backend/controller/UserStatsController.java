@@ -4,6 +4,7 @@ import com.skillpilot.backend.api.UserStatsResponse;
 import com.skillpilot.backend.service.UserStatsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,7 +18,7 @@ public class UserStatsController {
     }
 
     @GetMapping("/users/stats")
-    public UserStatsResponse getUserStats() {
-        return userStatsService.getStats();
+    public UserStatsResponse getUserStats(@RequestParam(defaultValue = "ALL") String filter) {
+        return userStatsService.getStats(filter);
     }
 }

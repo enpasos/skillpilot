@@ -28,9 +28,18 @@ public class UserStatsService {
         this.masteryRepository = masteryRepository;
     }
 
-    public UserStatsResponse getStats() {
+    public UserStatsResponse getStats(String filter) {
         long totalUsers = learnerRepository.count();
-        List<Instant> createdAtValues = learnerRepository.findAllCreatedAt();
+        List<Instant> createdAtValues;
+
+        if ("WITH_ACHIEVEMENTS".equalsIgnoreCase(filter)) {
+            createdAtValues = learnerRepository.findAllCreatedAtWithAchievements(ACHIEVEMENT_THRESHOLD);
+        } else if ("ACTIVE_LAST_WEEK".equalsIgnoreCase(filter)) {
+            Instant oneWeekAgo = Instant.now().minus(7, java.time.temporal.ChronoUnit.DAYS);
+            createdAtValues = learnerRepository.findAllCreatedAtActiveSince(oneWeekAgo);
+        } else {
+            createdAtValues = learnerRepository.findAllCreatedAt();
+        }
 
         Map<LocalDate, Long> createdCounts = new HashMap<>();
         for (Instant createdAt : createdAtValues) {

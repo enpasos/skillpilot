@@ -23,9 +23,20 @@ export const UsersView: React.FC = () => {
   const [data, setData] = useState<UserStatsResponse | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [filter, setFilter] = useState<'ALL' | 'WITH_ACHIEVEMENTS' | 'ACTIVE_LAST_WEEK'>('ALL')
 
   useEffect(() => {
-    fetch('/api/ui/users/stats')
+    // Note: setLoading(true) is handled by the filter change handlers or initial state
+    // to avoid "setState in effect" warnings, except for initial mount which we rely on initial state.
+    // However, to ensure it shows loading on re-fetches triggered by other things (if any), 
+    // we strictly should handle it. 
+    // For now, we'll assume setters handle explicit loading states or we accept a brief "stale" display 
+    // if we don't set it here. 
+    // BUT, for simplicity in this specific fix, let's keep it simple:
+    // The fetch automatically handles the 'fulfillment' (loading=false). 
+    // If we want to show loading *during* the fetch when filter changes, we should set it in the handler.
+
+    fetch(`/api/ui/users/stats?filter=${filter}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Request failed with ${res.status}`)
@@ -41,7 +52,14 @@ export const UsersView: React.FC = () => {
         setError(err?.message || 'Unknown error')
         setLoading(false)
       })
-  }, [])
+  }, [filter])
+
+  const handleFilterChange = (newFilter: 'ALL' | 'WITH_ACHIEVEMENTS' | 'ACTIVE_LAST_WEEK') => {
+    if (filter !== newFilter) {
+      setFilter(newFilter)
+      setLoading(true)
+    }
+  }
 
   const series = useMemo(() => data?.totalSeries || [], [data])
 
@@ -142,7 +160,6 @@ export const UsersView: React.FC = () => {
         </Link>
       </div>
 
-
       <div className="max-w-5xl mx-auto p-6 space-y-8 pt-20">
         <header className="text-center space-y-3 pt-10 md:pt-0">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-700 dark:text-slate-200">
@@ -153,12 +170,36 @@ export const UsersView: React.FC = () => {
           </p>
         </header>
 
+        {/* Filter Controls */}
+        <div className="flex justify-center">
+          <div className="inline-flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
+            <button
+              onClick={() => handleFilterChange('ALL')}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${filter === 'ALL' ? 'bg-white dark:bg-slate-700 text-sky-600 dark:text-sky-400 shadow-sm' : 'text-text-secondary hover:text-text-primary'}`}
+            >
+              All
+            </button>
+            <button
+              onClick={() => handleFilterChange('WITH_ACHIEVEMENTS')}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${filter === 'WITH_ACHIEVEMENTS' ? 'bg-white dark:bg-slate-700 text-sky-600 dark:text-sky-400 shadow-sm' : 'text-text-secondary hover:text-text-primary'}`}
+            >
+              With Successes
+            </button>
+            <button
+              onClick={() => handleFilterChange('ACTIVE_LAST_WEEK')}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${filter === 'ACTIVE_LAST_WEEK' ? 'bg-white dark:bg-slate-700 text-sky-600 dark:text-sky-400 shadow-sm' : 'text-text-secondary hover:text-text-primary'}`}
+            >
+              Active Last Week
+            </button>
+          </div>
+        </div>
+
         <section className="text-center py-6">
           <div className="mt-3 text-3xl font-bold">
-            {numberFormatter.format(data.totalUsers)}
+            {data ? numberFormatter.format(data.totalUsers) : '-'}
           </div>
           <div className="text-sm font-medium text-text-secondary uppercase tracking-widest mt-2">
-            Total IDs
+            SkillPilot-IDs
           </div>
         </section>
 
