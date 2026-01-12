@@ -2,10 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { LanguageToggle } from '../components/LanguageToggle'
+import { useTranslation } from '../hooks/useTranslation'
 import { Users, Trophy, ArrowRight, ArrowLeft } from 'lucide-react'
 
 export const StatsView: React.FC = () => {
-
+    const t = useTranslation()
+    const statsHub = t.statsHub || {}
+    const cards = statsHub.cards || {}
     const cardBase =
         'group relative overflow-hidden rounded-2xl border border-border-color bg-white/40 dark:bg-slate-800/40 backdrop-blur-sm p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-sky-400/50'
 
@@ -16,13 +19,13 @@ export const StatsView: React.FC = () => {
                 <ThemeToggle />
             </div>
 
-            <div className="max-w-4xl mx-auto p-6 flex flex-col items-center justify-center min-h-[80vh]">
+            <div className="max-w-4xl mx-auto p-6 pt-20 flex flex-col items-center justify-center min-h-[80vh]">
                 <header className="text-center space-y-4 mb-12">
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-700 dark:text-slate-200">
-                        Statistics
+                        {statsHub.title || 'Statistics'}
                     </h1>
                     <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-                        Explore the growth of our learning community.
+                        {statsHub.subtitle || 'Explore the growth of our learning community.'}
                     </p>
                 </header>
 
@@ -34,9 +37,9 @@ export const StatsView: React.FC = () => {
                             </div>
                             <ArrowRight className="text-text-secondary group-hover:translate-x-1 group-hover:text-sky-500 transition-all" />
                         </div>
-                        <h3 className="text-2xl font-bold text-text-primary mb-2">SkillPilot-IDs</h3>
+                        <h3 className="text-2xl font-bold text-text-primary mb-2">{cards.users?.title || 'SkillPilot-IDs'}</h3>
                         <p className="text-sm text-text-secondary">
-                            Overview of generated SkillPilot IDs and community growth.
+                            {cards.users?.description || 'Overview of generated SkillPilot IDs and community growth.'}
                         </p>
                     </Link>
 
@@ -47,9 +50,9 @@ export const StatsView: React.FC = () => {
                             </div>
                             <ArrowRight className="text-text-secondary group-hover:translate-x-1 group-hover:text-amber-500 transition-all" />
                         </div>
-                        <h3 className="text-2xl font-bold text-text-primary mb-2">Successes</h3>
+                        <h3 className="text-2xl font-bold text-text-primary mb-2">{cards.successes?.title || 'Successes'}</h3>
                         <p className="text-sm text-text-secondary">
-                            Total number of mastered learning goals across the platform.
+                            {cards.successes?.description || 'Total number of mastered learning goals across the platform.'}
                         </p>
                     </Link>
                 </div>
@@ -60,7 +63,7 @@ export const StatsView: React.FC = () => {
                         className="flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors group"
                     >
                         <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-                        Back to Home
+                        {statsHub.back || 'Back to Home'}
                     </Link>
                 </div>
             </div>

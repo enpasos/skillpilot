@@ -49,6 +49,24 @@ export const en = {
             privacy: "Privacy",
             imprint: "Imprint",
             legal: "Legal"
+        },
+        links: {
+            statistics: "Statistics"
+        }
+    },
+    statsHub: {
+        title: "Statistics",
+        subtitle: "Explore the growth of our learning community.",
+        back: "Back to Home",
+        cards: {
+            users: {
+                title: "SkillPilot-IDs",
+                description: "Overview of generated SkillPilot IDs and community growth."
+            },
+            successes: {
+                title: "Successes",
+                description: "Total number of mastered learning goals across the platform."
+            }
         }
     },
     explorer: {

@@ -49,6 +49,24 @@ export const de = {
             privacy: "Datenschutz",
             imprint: "Impressum",
             legal: "Rechtliches"
+        },
+        links: {
+            statistics: "Statistiken"
+        }
+    },
+    statsHub: {
+        title: "Statistiken",
+        subtitle: "Entdecke das Wachstum unserer Lern-Community.",
+        back: "Zurück zur Startseite",
+        cards: {
+            users: {
+                title: "SkillPilot-IDs",
+                description: "Überblick über generierte SkillPilot-IDs und Community-Wachstum."
+            },
+            successes: {
+                title: "Erfolge",
+                description: "Gesamtanzahl gemeisterter Lernziele auf der Plattform."
+            }
         }
     },
     explorer: {
