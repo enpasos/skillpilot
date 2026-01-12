@@ -46,7 +46,8 @@ export const en = {
             text: "**SkillPilot is free.**\nYou only need a ChatGPT account.\n\n**Note on the App:** The ChatGPT mobile app often does not correctly support complex GPT features. We cannot guarantee functionality there and recommend using a **web browser**."
         },
         links: {
-            statistics: "Statistics"
+            statistics: "Statistics",
+            whitepaper: "Whitepaper"
         },
         footer: {
             privacy: "Privacy",

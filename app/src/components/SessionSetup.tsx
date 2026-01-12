@@ -263,49 +263,36 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                 </div>
               </button>
 
-              <div className="grid grid-cols-2 gap-4">
-                {/* Card 3: Hall of Fame */}
-                <Link
-                  to="/hall-of-fame"
-                  className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-4 hover:shadow-lg hover:border-amber-400/50 transition-all duration-300"
-                >
-                  <div className="flex flex-col h-full justify-between">
-                    <div>
-                      <h3 className="text-base font-semibold text-text-primary group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors flex items-center gap-2 mb-1">
-                        <Trophy size={16} className="text-amber-500 shrink-0" />
-                        {t.startPage.cards.hallOfFame?.title || "Hall of Fame"}
-                      </h3>
-                      <p className="text-xs text-text-secondary leading-snug">
-                        {t.startPage.cards.hallOfFame?.description || "Top learners."}
-                      </p>
-                    </div>
+              {/* Card 3: Hall of Fame */}
+              <Link
+                to="/hall-of-fame"
+                className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-6 hover:shadow-lg hover:border-amber-400/50 transition-all duration-300"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold text-text-primary group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors flex items-center gap-2">
+                      {t.startPage.cards.hallOfFame?.title || "Hall of Fame"} <Trophy size={18} className="text-amber-500" />
+                    </h3>
+                    <p className="text-sm text-text-secondary mt-1">
+                      {t.startPage.cards.hallOfFame?.description || "Top learners."}
+                    </p>
                   </div>
-                </Link>
+                  <ArrowRight className="text-text-secondary group-hover:translate-x-1 group-hover:text-amber-500 transition-all" />
+                </div>
+              </Link>
 
-                {/* Card 4: Whitepaper */}
+              {/* Direct Access Links for Trainer/Explorer */}
+              <div className="flex justify-center gap-6 pt-4 text-xs text-text-secondary items-center flex-wrap">
+                <Link to="/stats" className="hover:text-sky-500 hover:underline transition-colors">
+                  {t.startPage.links.statistics}
+                </Link>
                 <Link
                   to={`/whitepaper/${language === 'de' ? 'de' : 'en'}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-4 hover:shadow-lg hover:border-sky-400/50 transition-all duration-300"
+                  className="hover:text-sky-500 hover:underline transition-colors"
                 >
-                  <div className="flex flex-col h-full justify-between">
-                    <div>
-                      <h3 className="text-base font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors flex items-center gap-2 mb-1">
-                        <span className='whitespace-nowrap'>Whitepaper</span> <ArrowRight size={14} className="text-text-secondary group-hover:translate-x-1 group-hover:text-sky-500 transition-all ml-auto" />
-                      </h3>
-                      <p className="text-xs text-text-secondary leading-snug">
-                        {t.startPage.cards.whitepaper.description}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-
-              {/* Direct Access Links for Trainer/Explorer */}
-              <div className="flex justify-center gap-6 pt-4 text-xs text-text-secondary">
-                <Link to="/stats" className="hover:text-sky-500 hover:underline transition-colors">
-                  {t.startPage.links.statistics}
+                  {t.startPage.links.whitepaper}
                 </Link>
                 {(['trainer', 'explorer'] as const).map((r) => (
                   <button
