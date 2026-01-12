@@ -21,7 +21,6 @@ import { useLanguage } from './contexts/LanguageContext'
 type Role = 'learner' | 'trainer' | 'explorer'
 
 const PUBLIC_PATHS = new Set([
-  '/',
   '/hall-of-fame',
   '/privacy',
   '/imprint',
@@ -95,6 +94,9 @@ const App: React.FC = () => {
     PUBLIC_PATHS.has(normalizedPath) ||
     isWhitepaperRoute ||
     isStoryRoute
+
+  // DEBUG: Check why landing page might be empty
+  // console.log('Routing State:', { normalizedPath, isPublicRoute, hasSession })
 
   const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId })
   const availableLandscapes = useMemo(
