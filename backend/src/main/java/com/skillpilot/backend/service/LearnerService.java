@@ -203,10 +203,6 @@ public class LearnerService {
     }
 
     @Transactional
-        return getPlannedGoals(skillpilotId);
-    }
-
-    @Transactional
     public List<String> setPlannedGoals(String skillpilotId, Set<String> goalIds) {
         Learner learner = learnerRepository.findById(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
