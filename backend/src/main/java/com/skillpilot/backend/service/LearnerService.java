@@ -420,6 +420,12 @@ public class LearnerService {
         List<String> plannedIds = getPlannedGoals(skillpilotId);
         Set<String> scope = computeScope(plannedIds, allGoals, effectiveRequires);
 
+        System.out.println("DEBUG_SKILLPILOT: getRichFrontier - Plan: " + plannedIds);
+        System.out.println("DEBUG_SKILLPILOT: getRichFrontier - Scope Size: " + scope.size());
+        if (!plannedIds.isEmpty() && scope.size() < 10) {
+            System.out.println("DEBUG_SKILLPILOT: Scope Content: " + scope);
+        }
+
         if (scope.isEmpty() && plannedIds.isEmpty()) {
             // If no scope is set (plannedGoals empty), return the Top Level Modules
             // (Subjects)
@@ -966,21 +972,47 @@ public class LearnerService {
 
     private void collectDescendants(String goalId, Map<String, LearningGoal> allGoals, Set<String> result) {
         LearningGoal goal = allGoals.get(goalId);
-        if (goal == null || goal.getContains() == null) {
+        if (goal == null) {
+            // Log warning?
+            System.out.println("DEBUG_SKILLPILOT: collectDescendants failed to find goal: " + goalId);
+            return;
+        }
+        if (goal.getContains() == null) {
             return;
         }
         for (String childRef : goal.getContains()) {
             String childId = childRef;
-            // Normalize "landscapeId:goalId" references if valid
-            if (!allGoals.containsKey(childId) && childRef.contains(":")) {
+            boolean found = allGoals.containsKey(childId);
+
+            // 1. Normalize "landscapeId:goalId" references if valid
+            if (!found && childRef.contains(":")) {
                 String[] parts = childRef.split(":", 2);
                 if (parts.length == 2 && allGoals.containsKey(parts[1])) {
                     childId = parts[1];
+                    found = true;
+                }
+            }
+
+            // 2. Fuzzy Lookup: Try to find a key that ends with ":childRef"
+            // This handles the case where the parent references "A" but the map has "S:A"
+            if (!found) {
+                final String suffix = ":" + childRef;
+                for (String key : allGoals.keySet()) {
+                    if (key.endsWith(suffix)) {
+                        childId = key;
+                        found = true;
+                        break;
+                    }
                 }
             }
 
             if (result.add(childId)) { // Avoid cycles
-                collectDescendants(childId, allGoals, result);
+                if (found) {
+                    collectDescendants(childId, allGoals, result);
+                } else {
+                    System.out.println(
+                            "DEBUG_SKILLPILOT: Could not resolve child: " + childRef + " for parent: " + goalId);
+                }
             }
         }
     }

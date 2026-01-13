@@ -22,6 +22,7 @@ echo "=========================================="
 echo "Running Backend CI (backend)"
 echo "=========================================="
 cd backend
+chmod +x gradlew
 ./gradlew check
 cd ..
 
