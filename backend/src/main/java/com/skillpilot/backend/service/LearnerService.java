@@ -411,14 +411,28 @@ public class LearnerService {
             return Collections.emptyList();
         }
 
-        Map<String, LearningGoal> allGoals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
+        // 1. Get Filtered Goals (for display/frontier candidates)
+        Map<String, LearningGoal> allFilteredGoals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
+
+        // 2. Get Unfiltered Goals (for structural traversal / scope calculation)
+        // We need the FULL structure to find descendants, even if the parent is
+        // filtered out.
+        Map<String, LearningGoal> allStructuralGoals = getFilteredGoals(curriculumId, "{}");
+
         Map<String, Double> masteryMap = getMastery(skillpilotId);
-        Map<String, Double> effectiveMastery = computeEffectiveMastery(allGoals, masteryMap);
-        Map<String, List<String>> effectiveRequires = computeEffectiveRequires(allGoals);
+        // We use Structural Goals for mastery calculation to ensure hidden
+        // prerequisites are found.
+        Map<String, Double> effectiveMastery = computeEffectiveMastery(allStructuralGoals, masteryMap);
+        Map<String, List<String>> effectiveRequires = computeEffectiveRequires(allStructuralGoals);
 
         // Calculate Scope (Plan + Descendants + Prerequisites)
         List<String> plannedIds = getPlannedGoals(skillpilotId);
-        Set<String> scope = computeScope(plannedIds, allGoals, effectiveRequires);
+
+        // CRITICAL FIX: Use Structural (Unfiltered) Goals for Scope!
+        // This ensures that if the User plans a Parent that is currently "Hidden" by a
+        // filter,
+        // we still find its children and include them in the scope.
+        Set<String> scope = computeScope(plannedIds, allStructuralGoals, effectiveRequires);
 
         System.out.println("DEBUG_SKILLPILOT: getRichFrontier - Plan: " + plannedIds);
         System.out.println("DEBUG_SKILLPILOT: getRichFrontier - Scope Size: " + scope.size());
@@ -432,13 +446,14 @@ public class LearnerService {
             // This ensures we don't show an empty screen if the Plan refers to deleted
             // content.
             // (Subjects)
-            return getTopLevelModules(learner.getSelectedCurriculum(), allGoals);
+            return getTopLevelModules(learner.getSelectedCurriculum(), allFilteredGoals);
         }
 
         List<FrontierGoal> frontier = new ArrayList<>();
 
-        for (LearningGoal goal : allGoals.values()) {
-            // Filter by Scope if Plan exists
+        // Iterate FILTERED goals (what the user should see)
+        for (LearningGoal goal : allFilteredGoals.values()) {
+            // Filter by Scope (calculated from Structural)
             if (!plannedIds.isEmpty() && !scope.contains(goal.getId())) {
                 continue;
             }

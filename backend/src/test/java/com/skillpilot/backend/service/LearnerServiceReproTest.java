@@ -229,6 +229,77 @@ public class LearnerServiceReproTest {
         }
     }
 
+    @Test
+    void testFrontierWithMasteredPrerequisites() throws Exception {
+        try {
+            // Setup:
+            // Cluster E.2 (GK) -> Contains:
+            // - Target (GK, Unmastered) -> Requires Prereq
+            // - Prereq (GK, Mastered) -> Requires DeepPrereq
+            // - DeepPrereq (GK, Mastered)
+            // Plan: E.2
+            // Expected: Target should be in Frontier (since Prereq is mastered)
+
+            Map<String, Object> personalConfig = new HashMap<>();
+            personalConfig.put("test-landscape", Map.of("selected", true, "filterId", "GK"));
+            String configJson = new ObjectMapper().writeValueAsString(personalConfig);
+
+            learner.setSelectedCurriculum("test-landscape");
+            learner.setPersonalCurriculum(configJson);
+
+            LearningGoal target = goal("Target", List.of("Prereq"), null);
+            target.setTags(List.of("GK"));
+
+            LearningGoal prereq = goal("Prereq", List.of("DeepPrereq"), null);
+            prereq.setTags(List.of("GK"));
+
+            LearningGoal deepPrereq = goal("DeepPrereq", null, null);
+            deepPrereq.setTags(List.of("GK"));
+
+            LearningGoal cluster = goal("E.2", null, List.of("Target", "Prereq", "DeepPrereq"));
+            cluster.setTags(List.of("GK"));
+
+            LearningLandscape landscape = new LearningLandscape();
+            landscape.setLandscapeId("test-landscape");
+            landscape.setTitle("Test");
+            landscape.setDescription("Desc");
+            landscape.setCountry("DE");
+            landscape.setRegion("HES");
+            landscape.setSchoolType("GYM");
+            landscape.setSubject("Math");
+            landscape.setLocale("de-DE");
+            landscape.setGoals(List.of(cluster, target, prereq, deepPrereq));
+
+            when(landscapeService.getById("test-landscape")).thenReturn(landscape);
+            when(landscapeService.getClosure("test-landscape")).thenReturn(List.of(landscape));
+
+            // Plan: E.2
+            when(plannedGoalRepository.findByLearner_SkillpilotId("test-learner"))
+                    .thenReturn(List.of(new com.skillpilot.backend.domain.PlannedGoal(learner, "E.2")));
+
+            // Mastery: Prereq and DeepPrereq are Mastered (1.0)
+            com.skillpilot.backend.domain.Mastery m1 = new com.skillpilot.backend.domain.Mastery(learner, "Prereq",
+                    1.0);
+            com.skillpilot.backend.domain.Mastery m2 = new com.skillpilot.backend.domain.Mastery(learner, "DeepPrereq",
+                    1.0);
+            when(masteryRepository.findByLearner_SkillpilotId("test-learner")).thenReturn(List.of(m1, m2));
+
+            // Run getRichFrontier
+            List<FrontierGoal> frontier = learnerService.getRichFrontier("test-learner");
+
+            System.out.println("DEBUG: testFrontierWithMasteredPrerequisites Frontier: " + frontier);
+
+            // Assertions
+            // "Target" should be visible
+            assertThat(frontier).isNotEmpty();
+            assertThat(frontier).anyMatch(g -> g.id().equals("Target"));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
     private LearningGoal goal(String id, List<String> requires, List<String> contains) {
         LearningGoal g = new LearningGoal();
         g.setId(id);
