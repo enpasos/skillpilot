@@ -287,3 +287,106 @@ A curriculum graph $(G,C,R_d)$ is valid iff:
 Everything else in this specification is either derived (definitions) or recommended modeling guidance.
 
 ---
+
+## 12. Filters and scoped evaluation (Optimistic vs. Pessimistic)
+
+A **filter** restricts the global curriculum graph to a subset of nodes (e.g., *Grade 12* AND *Subject: Mathematics* AND *Track: Advanced*).
+
+### 12.1 Filter predicate and induced subgraph
+
+A filter is modeled as a predicate:
+
+$$
+F: G \to \{0,1\}.
+$$
+
+It selects the filtered node set:
+
+$$
+G_F = \{\, g \in G \mid F(g)=1 \,\}.
+$$
+
+The induced (restricted) relations are:
+
+$$
+C_F = C \cap (G_F \times G_F),
+\qquad
+R_{d,F} = R_d \cap (G_F \times G_F).
+$$
+
+The effective relation inside the filtered graph, $R_{eff,F}$, is computed from $C_F$ and $R_{d,F}$ using the same definition as in §6 (i.e., by inheriting requirements along $C_F$).
+
+### 12.2 Optimistic mode
+
+In **optimistic mode**, we first apply the filter and then compute availability inside the filtered graph only.  
+Intuition: when a learner is in the filtered scope (e.g., Grade 12), we temporarily assume that missing prerequisites from outside the scope do not block progress.
+
+Let $M \subseteq G$ be the learner’s mastered set (global). Define the filtered mastery:
+
+$$
+M_F = M \cap G_F.
+$$
+
+Then the optimistic frontier is:
+
+$$
+Frontier_{opt}(M,F) =
+\left\{
+g \in G_F \setminus M_F \ \middle|\ 
+\forall u\in G_F:\ (u,g)\in R_{eff,F}^+ \Rightarrow u\in M_F
+\right\}.
+$$
+
+### 12.3 Pessimistic mode
+
+In **pessimistic mode**, candidate goals are still restricted to the filtered set, but prerequisites are enforced **globally** (including nodes outside the filter).
+
+Let $R_{eff}$ be computed on the full graph $(G,C,R_d)$. Then:
+
+$$
+Frontier_{pess}(M,F) =
+\left\{
+g \in G_F \setminus M \ \middle|\ 
+\forall u\in G:\ (u,g)\in R_{eff}^+ \Rightarrow u\in M
+\right\}.
+$$
+
+### 12.4 Diagnostic: missing prerequisites
+
+For diagnosis, define the set of missing prerequisites of a goal $g$:
+
+$$
+Missing(g,M) =
+\{\, u \in G \mid (u,g)\in R_{eff}^+ \land u\notin M \,\}.
+$$
+
+To distinguish gaps inside vs. outside the filter:
+
+$$
+\begin{aligned}
+Missing_{in}(g,M,F)  &= Missing(g,M)\cap G_F,\\
+Missing_{out}(g,M,F) &= Missing(g,M)\setminus G_F.
+\end{aligned}
+$$
+
+
+Operationally, one can start with optimistic mode for efficiency and exploration; if a learner struggles with a goal, switch to pessimistic mode (or compute $Missing_{out}$) to identify prerequisite gaps outside the current filter.
+
+### 12.5 Optional: relaxed pessimism via a prerequisite scope
+
+A “weakened” pessimistic approach can be modeled by choosing a **scope** set $S \subseteq G$ of prerequisites that must be enforced (e.g., only prerequisites from the last one or two phases, or only prerequisites up to a bounded depth).
+
+Define:
+
+$$
+Frontier_{scope}(M,F,S) =
+\left\{
+g \in G_F \setminus M \ \middle|\ 
+\forall u\in S:\ (u,g)\in R_{eff}^+ \Rightarrow u\in M
+\right\}.
+$$
+
+Special cases:
+
+* $S = G$ gives the fully pessimistic mode.
+* Choosing $S$ smaller than $G$ yields a relaxed pessimistic check that can be widened iteratively if needed.
