@@ -1135,26 +1135,26 @@ public class LearnerService {
         }
         scope.addAll(descendants);
 
-        // 3. Add Prerequisites (e.g. Analysis -> Algebra)
-        Set<String> prerequisites = new HashSet<>();
-        Set<String> visitingInfo = new HashSet<>(scope);
-        // Iteratively add prerequisites because prereqs of prereqs should also be in
-        // scope?
-        // effectiveRequires usually already includes transitive closure if computed
-        // that
-        // way?
-        // computeEffectiveRequires implementation:
-        // "collectEffectiveRequires" does recursion. Yes, it returns transitive
-        // closure.
-        // So we only need one pass.
+        // 3. Add Prerequisites (Transitive Closure)
+        // We must ensure that if A requires B, and B requires C, both B and C are in
+        // scope.
+        // effectiveRequires only handles inheritance (parent -> child), not dependency
+        // transitivity.
+        java.util.Queue<String> queue = new java.util.LinkedList<>(scope);
 
-        for (String sid : scope) {
-            List<String> reqs = effectiveRequires.get(sid);
+        while (!queue.isEmpty()) {
+            String currentId = queue.poll();
+            List<String> reqs = effectiveRequires.get(currentId);
             if (reqs != null) {
-                prerequisites.addAll(reqs);
+                for (String reqId : reqs) {
+                    // Normalize reference if needed (though effectiveRequires should have IDs)
+                    if (scope.add(reqId)) {
+                        // If we added a new goal to the scope, we must also check its prerequisites
+                        queue.add(reqId);
+                    }
+                }
             }
         }
-        scope.addAll(prerequisites);
         return scope;
     }
 
