@@ -426,8 +426,11 @@ public class LearnerService {
             System.out.println("DEBUG_SKILLPILOT: Scope Content: " + scope);
         }
 
-        if (scope.isEmpty() && plannedIds.isEmpty()) {
-            // If no scope is set (plannedGoals empty), return the Top Level Modules
+        if (scope.isEmpty()) {
+            // If scope is empty (even if plannedGoals has "Phantom" IDs), return the Top
+            // Level Modules
+            // This ensures we don't show an empty screen if the Plan refers to deleted
+            // content.
             // (Subjects)
             return getTopLevelModules(learner.getSelectedCurriculum(), allGoals);
         }
@@ -1173,7 +1176,12 @@ public class LearnerService {
 
         Set<String> scope = new HashSet<>();
         // 1. Start with Plan
-        scope.addAll(plannedIds);
+        // 1. Start with Plan (Only if they exist in current context)
+        for (String pid : plannedIds) {
+            if (allGoals.containsKey(pid)) {
+                scope.add(pid);
+            }
+        }
 
         // 2. Add Descendants (e.g. Math -> Analysis)
         Set<String> descendants = new HashSet<>();

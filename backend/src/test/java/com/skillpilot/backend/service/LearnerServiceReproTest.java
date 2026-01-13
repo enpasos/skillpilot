@@ -173,15 +173,68 @@ public class LearnerServiceReproTest {
         }
     }
 
+    @Test
+    void testPhantomPlannedGoalReturnsTopLevel() throws Exception {
+        try {
+            // Setup: Plan is "PhantomID" (does not exist in Landscape).
+            // Landscape has "Root" -> "Child".
+            // Expected: "PhantomID" is ignored. Plan effectively empty. Returns Top Level
+            // ("Root").
+            // Actual (Hypothesis): Scope = {PhantomID}. Frontier = Empty.
+
+            Map<String, Object> personalConfig = new HashMap<>();
+            String configJson = new ObjectMapper().writeValueAsString(personalConfig);
+
+            learner.setSelectedCurriculum("test-landscape");
+            learner.setPersonalCurriculum(configJson);
+
+            LearningGoal root = goal("Root", null, List.of("Child"));
+            LearningGoal child = goal("Child", null, null);
+
+            LearningLandscape landscape = new LearningLandscape();
+            landscape.setLandscapeId("test-landscape");
+            landscape.setTitle("Test");
+            landscape.setDescription("Desc");
+            landscape.setCountry("DE");
+            landscape.setRegion("HES");
+            landscape.setSchoolType("GYM");
+            landscape.setSubject("Math");
+            landscape.setLocale("de-DE");
+            landscape.setGoals(List.of(root, child));
+
+            when(landscapeService.getById("test-landscape")).thenReturn(landscape);
+            when(landscapeService.getClosure("test-landscape")).thenReturn(List.of(landscape));
+
+            // Plan: PhantomID
+            when(plannedGoalRepository.findByLearner_SkillpilotId("test-learner"))
+                    .thenReturn(List.of(new com.skillpilot.backend.domain.PlannedGoal(learner, "PhantomID")));
+
+            // Mastery: None
+            when(masteryRepository.findByLearner_SkillpilotId("test-learner")).thenReturn(Collections.emptyList());
+
+            // Run getRichFrontier
+            List<FrontierGoal> frontier = learnerService.getRichFrontier("test-learner");
+
+            System.out.println("DEBUG: testPhantomPlannedGoalReturnsTopLevel Frontier: " + frontier);
+
+            // Assertions
+            // If PhantomID is ignored, we should see "Child" (The Top Level Module
+            // contained in Root).
+            assertThat(frontier).isNotEmpty();
+            assertThat(frontier).anyMatch(g -> g.id().equals("Child"));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
     private LearningGoal goal(String id, List<String> requires, List<String> contains) {
         LearningGoal g = new LearningGoal();
         g.setId(id);
         g.setTitle("Title for " + id);
         g.setRequires(requires == null ? new ArrayList<>() : new ArrayList<>(requires));
         g.setContains(contains == null ? new ArrayList<>() : new ArrayList<>(contains));
-        if (contains == null || contains.isEmpty()) {
-            // atomic
-        }
         return g;
     }
 }
