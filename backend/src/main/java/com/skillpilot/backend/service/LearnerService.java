@@ -203,6 +203,10 @@ public class LearnerService {
     }
 
     @Transactional
+        return getPlannedGoals(skillpilotId);
+    }
+
+    @Transactional
     public List<String> setPlannedGoals(String skillpilotId, Set<String> goalIds) {
         Learner learner = learnerRepository.findById(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
@@ -225,6 +229,35 @@ public class LearnerService {
                 .map(id -> new PlannedGoal(learner, id))
                 .toList();
         plannedGoalRepository.saveAll(toAdd);
+
+        // Validation: Verify Active Goal is still in Scope
+        String activeGoalId = learner.getActiveGoalId();
+        if (activeGoalId != null && !activeGoalId.isBlank()) {
+            String curriculumId = learner.getSelectedCurriculum();
+            if (curriculumId != null) {
+                // Must rebuild context to compute scope
+                Map<String, LearningGoal> allGoals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
+                Map<String, List<String>> effectiveRequires = computeEffectiveRequires(allGoals);
+                List<String> newPlannedIds = new ArrayList<>(saneTargetIds); // Use the new set
+
+                Set<String> newScope = computeScope(newPlannedIds, allGoals, effectiveRequires);
+
+                // If scope is empty (Plan cleared), active goal is usually invalid unless it's
+                // a top-level module?
+                // But setActiveGoal restricts to atomic frontier.
+                // If plan is cleared, we are in overview. Active goal should probably be
+                // cleared to be safe.
+                boolean inScope = newScope.contains(activeGoalId);
+
+                if (!inScope) {
+                    learner.setActiveGoalId(null);
+                    learner.setLearningState(LearningState.FRONTIER);
+                    learnerRepository.save(learner);
+                    eventPublisher.publishEvent(
+                            new LearnerStateChangedEvent(this, skillpilotId, "ACTIVE_GOAL_CLEARED_BY_SCOPE"));
+                }
+            }
+        }
 
         return getPlannedGoals(skillpilotId);
     }
@@ -389,34 +422,13 @@ public class LearnerService {
 
         // Calculate Scope (Plan + Descendants + Prerequisites)
         List<String> plannedIds = getPlannedGoals(skillpilotId);
+        Set<String> scope = computeScope(plannedIds, allGoals, effectiveRequires);
 
-        // If no scope is set (plannedGoals empty), return the Top Level Modules
-        // (Subjects)
-        if (plannedIds.isEmpty()) {
+        if (scope.isEmpty() && plannedIds.isEmpty()) {
+            // If no scope is set (plannedGoals empty), return the Top Level Modules
+            // (Subjects)
             return getTopLevelModules(learner.getSelectedCurriculum(), allGoals);
         }
-
-        // Calculate scope based on planned goals
-        Set<String> scope = new HashSet<>();
-        // 1. Start with Plan
-        scope.addAll(plannedIds);
-
-        // 2. Add Descendants (e.g. Math -> Analysis)
-        Set<String> descendants = new HashSet<>();
-        for (String pid : plannedIds) {
-            collectDescendants(pid, allGoals, descendants);
-        }
-        scope.addAll(descendants);
-
-        // 3. Add Prerequisites (e.g. Analysis -> Algebra)
-        Set<String> prerequisites = new HashSet<>();
-        for (String sid : scope) {
-            List<String> reqs = effectiveRequires.get(sid);
-            if (reqs != null) {
-                prerequisites.addAll(reqs);
-            }
-        }
-        scope.addAll(prerequisites);
 
         List<FrontierGoal> frontier = new ArrayList<>();
 
@@ -1100,6 +1112,54 @@ public class LearnerService {
         } catch (Exception e) {
             throw new RuntimeException("Error calculating signature", e);
         }
+    }
+
+    private Set<String> computeScope(List<String> plannedIds, Map<String, LearningGoal> allGoals,
+            Map<String, List<String>> effectiveRequires) {
+        // If no scope is set (plannedGoals empty), we conceptually have "no
+        // restriction"
+        // But for getRichFrontier, empty plan means "Top Level Modules".
+        // However, this helper is for validating if a goal is IN scope.
+        // If plan is empty, is everything in scope? Or nothing?
+        // UI behavior: Empty plan -> Show top level. Active goal CANNOT be set if we
+        // are at top level (usually).
+        // Actually, if plan is empty, we are in "Overview Mode".
+        if (plannedIds.isEmpty()) {
+            return Collections.emptySet();
+        }
+
+        Set<String> scope = new HashSet<>();
+        // 1. Start with Plan
+        scope.addAll(plannedIds);
+
+        // 2. Add Descendants (e.g. Math -> Analysis)
+        Set<String> descendants = new HashSet<>();
+        for (String pid : plannedIds) {
+            collectDescendants(pid, allGoals, descendants);
+        }
+        scope.addAll(descendants);
+
+        // 3. Add Prerequisites (e.g. Analysis -> Algebra)
+        Set<String> prerequisites = new HashSet<>();
+        Set<String> visitingInfo = new HashSet<>(scope);
+        // Iteratively add prerequisites because prereqs of prereqs should also be in
+        // scope?
+        // effectiveRequires usually already includes transitive closure if computed
+        // that
+        // way?
+        // computeEffectiveRequires implementation:
+        // "collectEffectiveRequires" does recursion. Yes, it returns transitive
+        // closure.
+        // So we only need one pass.
+
+        for (String sid : scope) {
+            List<String> reqs = effectiveRequires.get(sid);
+            if (reqs != null) {
+                prerequisites.addAll(reqs);
+            }
+        }
+        scope.addAll(prerequisites);
+        return scope;
     }
 
 }
