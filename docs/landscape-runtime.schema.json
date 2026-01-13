@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.local/schema/landscape-runtime.schema.json",
+  "title": "LearningLandscape (Runtime Fields Only)",
+  "description": "Schema for fields that are read by the runtime app. Extra fields are allowed.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "landscapeId",
+    "title",
+    "description",
+    "goals"
+  ],
+  "properties": {
+    "landscapeId": {
+      "type": "string",
+      "description": "Landscape identifier used for routing and cross-landscape references."
+    },
+    "title": {
+      "type": "string",
+      "description": "Landscape title used in UI."
+    },
+    "description": {
+      "type": "string",
+      "description": "Landscape description used in UI metadata."
+    },
+    "subject": {
+      "type": "string",
+      "description": "Optional subject label shown in external prerequisite references."
+    },
+    "filters": {
+      "type": "array",
+      "description": "Optional UI filters (e.g., GK/LK).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "label"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "goals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/goal"
+      }
+    }
+  },
+  "$defs": {
+    "goal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "description",
+        "weight",
+        "contains",
+        "requires",
+        "dimensionTags"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Goal UUID."
+        },
+        "title": {
+          "type": "string",
+          "description": "Goal title shown in UI."
+        },
+        "description": {
+          "type": "string",
+          "description": "Goal description shown in UI."
+        },
+        "weight": {
+          "type": "number",
+          "description": "Weight used for aggregated mastery."
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Filter and UI tags (e.g., GK/LK)."
+        },
+        "contains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Child goal IDs (contains edges)."
+        },
+        "requires": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Prerequisite goal IDs (requires edges)."
+        },
+        "dimensionTags": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "phase"
+          ],
+          "properties": {
+            "phase": {
+              "type": "string",
+              "description": "Phase code used for ordering (e.g., E, Q1, Q2, Q3, Q4, J11)."
+            }
+          },
+          "description": "Only phase is required at runtime; other dimension tags are ignored by the UI."
+        }
+      }
+    }
+  }
+}
