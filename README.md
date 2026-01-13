@@ -33,6 +33,12 @@ We invite you to participate in the training of the AI Agent!
 *   **Report**: Open [Issues](https://github.com/enpasos/skillpilot/issues) in this project for identified weaknesses.
 
 
+## 📚 Documentation
+
+The full technical documentation is available here:
+
+*   [**SkillPilot Documentation**](https://enpasos.github.io/skillpilot/)
+
 ## 📚 Whitepaper
 
 For a detailed introduction and the vision behind SkillPilot, please refer to the Whitepaper:
