@@ -885,7 +885,7 @@ public class LearnerService {
                     // Filter by tag if filterId is set
                     if (filterId != null && !filterId.isBlank()) {
                         boolean tagMatch = false;
-                        if (g.getTags() != null && g.getTags().contains(filterId)) {
+                        if (g.getTags() == null || g.getTags().isEmpty() || g.getTags().contains(filterId)) {
                             tagMatch = true;
                         }
                         // Also check dimension tags if needed, but simple tags for now
