@@ -24,6 +24,22 @@
       "type": "string",
       "description": "Landscape description used in UI metadata."
     },
+    "titleEn": {
+      "type": "string",
+      "description": "English title."
+    },
+    "descriptionEn": {
+      "type": "string",
+      "description": "English description."
+    },
+    "locale": {
+      "type": "string",
+      "description": "Locale code (e.g. de-DE)."
+    },
+    "frameworkId": {
+      "type": "string",
+      "description": "Framework identifier."
+    },
     "subject": {
       "type": "string",
       "description": "Optional subject label shown in external prerequisite references."
@@ -81,6 +97,18 @@
           "type": "string",
           "description": "Goal description shown in UI."
         },
+        "titleEn": {
+          "type": "string",
+          "description": "English goal title."
+        },
+        "descriptionEn": {
+          "type": "string",
+          "description": "English goal description."
+        },
+        "sourceRef": {
+          "type": "string",
+          "description": "Reference to external source/PDF."
+        },
         "weight": {
           "type": "number",
           "description": "Weight used for aggregated mastery."
@@ -118,7 +146,8 @@
               "description": "Phase code used for ordering (e.g., E, Q1, Q2, Q3, Q4, J11)."
             }
           },
-          "description": "Only phase is required at runtime; other dimension tags are ignored by the UI."
+          "description": "Only phase is required at runtime; other dimension tags are ignored by the UI.",
+          "additionalProperties": true
         }
       }
     }
