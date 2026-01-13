@@ -10,7 +10,7 @@ The intent is that independent implementations interpret and validate graphs in 
 
 * $G$ is a finite set of **goals** (also called skills or nodes).
 * A **binary relation** $X \subseteq G \times G$ is a set of ordered pairs $(a,b)$.
-* For any relation $X$, $X^+$ denotes the **transitive closure** of $X$.
+* For any relation $X$, $X^+$ denotes the **transitive closure** of $X$.  
   Informally, $(a,b)\in X^+$ means there exists a directed path from $a$ to $b$ following edges in $X$.
 * A directed graph $(G,X)$ is **acyclic** iff there is no $g \in G$ such that $(g,g)\in X^+$.
 
@@ -67,32 +67,32 @@ $$
 
 $(p,c)\in C$ means **parent** $p$ contains **child** $c$.
 
+**Note:** $C$ is the *direct* containment relation (“direct contains”).  
+Indirect containment (ancestor/descendant) is derived via the transitive closure $C^+$.
+
 Edges in $C$ are interpreted as hierarchical grouping (e.g., Module contains Topic).
 
-### 4.2 Forest constraint
+### 4.2 Containment constraint (polyhierarchy)
 
-$(G,C)$ MUST be a forest, meaning:
+$(G,C)$ MUST be acyclic (containment cannot contain cycles):
 
-1. **At most one parent per node**
-   $$
-   \forall c\in G:\ \left\lvert{p\in G \mid (p,c)\in C}\right\rvert \le 1
-   $$
+$$
+\neg \exists g\in G:\ (g,g)\in C^+
+$$
 
-2. **No cycles**
-   $$
-   \neg \exists g\in G:\ (g,g)\in C^+
-   $$
+This allows **multiple parents** per node (a polyhierarchy).  
+If you want a strict tree/forest, see the recommended rule in §8.3.
 
 ### 4.3 Ancestors and descendants
 
 Define:
 
 $$
-Ancestors(g) = { a\in G \mid (a,g)\in C^+ }
+Ancestors(g) = \{\, a\in G \mid (a,g)\in C^+ \,\}
 $$
 
 $$
-Descendants(g) = { d\in G \mid (g,d)\in C^+ }
+Descendants(g) = \{\, d\in G \mid (g,d)\in C^+ \,\}
 $$
 
 ---
@@ -107,7 +107,7 @@ $$
 R_d \subseteq G \times G
 $$
 
-$(u,v)\in R_d$ means **$u$ is a direct prerequisite of $v$**.
+$(u,v)\in R_d$ means **$u$ is a direct prerequisite of $v$**.  
 Equivalently: to learn/attempt $v$, $u$ must be satisfied first.
 
 ### 5.2 DAG constraint
@@ -132,7 +132,7 @@ $$
 (u,v)\in R_{eff}
 \iff
 \big((u,v)\in R_d\big)
-\ \lor
+\ \lor\
 \big(\exists a\in Ancestors(v): (u,a)\in R_d\big)
 $$
 
@@ -141,12 +141,14 @@ Interpretation:
 * A goal inherits all direct prerequisites declared on its ancestors.
 * Only **direct** prerequisites declared in $R_d$ are inherited from ancestors.
 
+**Note (with multiple parents):** If a node has multiple parents, it inherits the union of prerequisites from *all* ancestor paths.
+
 ### 6.2 Effective prerequisite set
 
 For convenience, define the set of effective prerequisites of a node:
 
 $$
-Pre_{eff}(v) = { u\in G \mid (u,v)\in R_{eff} }
+Pre_{eff}(v) = \{\, u\in G \mid (u,v)\in R_{eff} \,\}
 $$
 
 ---
@@ -165,9 +167,9 @@ $$
 
 This constraint is stricter than acyclicity of $R_d$ alone because inheritance via $C$ can introduce cycles.
 
-**Non-normative example (illustrative):**
-Let $P$ contain $C$ (i.e., $(P,C)\in C$). Suppose $(X,P)\in R_d$ and $(C,X)\in R_d$.
-Then $C \to X \to P$ exists in $R_d$, but inheritance adds $(X,C)\in R_{eff}$ (since $P$ is an ancestor of $C$), creating a cycle $C \to X \to C$ in $R_{eff}$.
+**Non-normative example (illustrative):**  
+Let $(A,B)\in C$ (i.e., $A$ contains $B$). Suppose $(X,A)\in R_d$ and $(B,X)\in R_d$.  
+Then $B \to X \to A$ exists in $R_d$, but inheritance adds $(X,B)\in R_{eff}$ (since $A$ is an ancestor of $B$), creating a cycle $B \to X \to B$ in $R_{eff}$.
 
 ### 7.2 Local minimality
 
@@ -188,7 +190,7 @@ Formally, for each $(u,g)\in R_d$, remove that single direct edge and recompute 
 Let:
 
 $$
-R_d' = R_d \setminus {(u,g)}
+R_d' = R_d \setminus \{(u,g)\}
 $$
 
 and let $R_{eff}'$ be the effective relation computed from $R_d'$ using the definition in §6.1.
@@ -225,6 +227,14 @@ Often, prerequisites SHOULD be modeled between peer concepts rather than between
 
 If your product needs exceptions, treat this as a heuristic.
 
+### 8.3 Optional: At most one parent per node (tree/forest mode)
+
+If you want a strict tree/forest hierarchy, enforce:
+
+$$
+\forall c\in G:\ \left|\{\,p\in G \mid (p,c)\in C\,\}\right| \le 1
+$$
+
 ---
 
 ## 9. Learning availability and progression
@@ -237,10 +247,10 @@ The learner’s frontier (available next goals) is:
 
 $$
 Frontier(M) =
-\left{
-g \in G\setminus M \ \middle|\
+\left\{
+g \in G\setminus M \ \middle|\ 
 \forall u\in G:\ (u,g)\in R_{eff}^+ \Rightarrow u\in M
-\right}
+\right\}
 $$
 
 Interpretation: a goal is available if all of its prerequisite goals (including transitive prerequisites) are mastered.
@@ -268,7 +278,7 @@ If the system supports remedial or non-linear paths, violations of this rule may
 A curriculum graph $(G,C,R_d)$ is valid iff:
 
 1. $Id$ is injective on $G$
-2. $(G,C)$ is a forest (at most one parent, no cycles)
+2. $(G,C)$ is acyclic (containment DAG / polyhierarchy; multiple parents allowed)
 3. $(G,R_d)$ is a DAG
 4. $R_{eff}$ (computed from $C$ and $R_d$) is acyclic
 5. $R_d$ satisfies local minimality

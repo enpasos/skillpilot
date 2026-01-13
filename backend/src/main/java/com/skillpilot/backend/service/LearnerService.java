@@ -442,6 +442,13 @@ public class LearnerService {
             List<String> requires = effectiveRequires.getOrDefault(goal.getId(), goal.getRequires());
             if (requires != null) {
                 for (String reqId : requires) {
+                    // PRAGMATIC FILTERING:
+                    // If a prerequisite is NOT in scope (and we have a restricted scope), ignore
+                    // it.
+                    if (!plannedIds.isEmpty() && !scope.contains(reqId)) {
+                        continue;
+                    }
+
                     Double reqMastery = effectiveMastery.getOrDefault(reqId, 0.0);
                     if (reqMastery < 0.9) {
                         prerequisitesMet = false;
@@ -1135,26 +1142,9 @@ public class LearnerService {
         }
         scope.addAll(descendants);
 
-        // 3. Add Prerequisites (Transitive Closure)
-        // We must ensure that if A requires B, and B requires C, both B and C are in
-        // scope.
-        // effectiveRequires only handles inheritance (parent -> child), not dependency
-        // transitivity.
-        java.util.Queue<String> queue = new java.util.LinkedList<>(scope);
-
-        while (!queue.isEmpty()) {
-            String currentId = queue.poll();
-            List<String> reqs = effectiveRequires.get(currentId);
-            if (reqs != null) {
-                for (String reqId : reqs) {
-                    // Normalize reference if needed (though effectiveRequires should have IDs)
-                    if (scope.add(reqId)) {
-                        // If we added a new goal to the scope, we must also check its prerequisites
-                        queue.add(reqId);
-                    }
-                }
-            }
-        }
+        // 3. Add Prerequisites (Transitive Closure) - DISABLED for "Pragmatic Approach"
+        // User requested that focus should strictly be Plan + Descendants.
+        // Prerequisites outside this scope should be ignored in getRichFrontier.
         return scope;
     }
 
