@@ -1,2297 +1,1779 @@
 {
-    "title": "Fallstudien der mathematischen Modellbildung (TUM, Modul MA2902)",
-    "titleEn": "Mathematical Modeling: Case Studies (TUM, Module MA2902)",
-    "description": "Das Modul behandelt mehrere Fallstudien der mathematischen Modellbildung in unterschiedlichen Anwendungskontexten. Die Fallstudien werden von Dozierenden mit einschlägiger Spezialisierung durchgeführt; die mathematischen Inhalte richten sich nach den jeweiligen Problemen aus Natur-, Ingenieur-, Lebens- und Wirtschaftswissenschaften. Im Mittelpunkt stehen das strukturierte Vorgehen von Problemverständnis und Annahmen über Modellformulierung, Analyse und numerische Umsetzung bis hin zu Validierung, Sensitivitätsanalyse und Kommunikation der Ergebnisse im interdisziplinären Kontext. 9 ECTS, angeboten im Wintersemester, Version 2025s, verantwortet von Wolf, Michael Marc.",
-    "descriptionEn": "The module covers several case studies in mathematical modeling across different application contexts. The case studies are taught by lecturers with relevant specialization; the mathematical content depends on the concrete problems from the natural sciences, engineering, life sciences, and economics. The focus is on a structured workflow from understanding the problem and assumptions through model formulation, analysis and numerical implementation to validation, sensitivity analysis, and communicating results in an interdisciplinary setting. 9 ECTS, offered in the winter semester, version 2025s, responsible: Wolf, Michael Marc.",
-    "landscapeId": "657a84fe-f8c4-47d5-bfa8-0b7aebdaaf18",
-    "locale": "de-DE",
-    "subject": "Mathematik",
-    "frameworkId": "tum-ma2902",
-    "filters": [
-        {
-            "id": "BSc",
-            "label": "Bachelor Mathematik"
-        }
-    ],
-    "goals": [
-        {
-            "id": "4dd10c4d-8c3c-4ff9-82ac-06d17dc5da89",
-            "shortKey": "tum_ma2902_module",
-            "title": "Fallstudien der mathematischen Modellbildung – Gesamtmodul",
-            "titleEn": "Mathematical Modeling: Case Studies – Full Module",
-            "description": "Nach dem erfolgreichen Abschluss des Moduls ist der Studierende in der Lage, die mathematische Modellbildung anhand spezifischer Probleme aus den Natur-, Ingenieur-, Lebens- und Wirtschaftswissenschaften zu verstehen und Techniken zur Bearbeitung solcher Probleme im inhaltlich interdisziplinären Kontext anzuwenden.",
-            "descriptionEn": "After successful completion of the module, students are able to understand mathematical modeling based on specific problems from the natural, engineering, life, and economic sciences and to apply techniques for working on such problems in an interdisciplinary context.",
-            "core": true,
-            "weight": 9.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "ects:9",
-                "workload:270h",
-                "presence:90h",
-                "level:bachelor",
-                "language:de",
-                "module:MA2902",
-                "semester:WS",
-                "duration:1_semester",
-                "responsible:wolf_michael_marc"
-            ],
-            "contains": [
-                "d012bbbe-b52e-552e-b890-065c18820431",
-                "4b2de55d-770c-5416-849f-b88482a57e61",
-                "01923271-7344-592e-a00b-084240626436",
-                "d3ea6643-4b0b-541c-bd25-d85e67465bc9",
-                "922a049a-4cc4-5605-86a3-bd4244bea1b9",
-                "060e700e-23ef-572d-be1e-e6e7be06858d",
-                "7b735681-0501-5f79-9393-7713997f3e3a",
-                "9203d8e3-b65f-5966-9bea-ac3e3d79410c",
-                "13596409-5edf-5452-a47a-5c05cf2dc156"
-            ],
-            "requires": [
-                "8eb1605b-fa70-511b-bbe4-28173d359c3b",
-                "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
-                "feaad1d5-022f-5ab3-93c3-001ac46de351"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Gesamtkompetenz",
-                "topicCode": "tum_ma2902_module"
-            },
-            "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA2902&description_version=2025s"
-        },
-        {
-            "id": "d012bbbe-b52e-552e-b890-065c18820431",
-            "shortKey": "tum_ma2902_lo1",
-            "title": "Problemverständnis und Zieldefinition",
-            "titleEn": "Problem Understanding and Goal Definition",
-            "description": "Zusammenfassender Cluster: Problemkontext erfassen, Ziele und Randbedingungen klären und Anforderungen an ein mathematisches Modell ableiten.",
-            "descriptionEn": "Summary cluster: understanding the problem context, clarifying goals and constraints, and deriving requirements for a mathematical model.",
-            "core": true,
-            "weight": 1.1,
-            "phase": "Modul",
-            "area": "Problemverständnis",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "c02b2332-2050-5cbb-9a8d-00f6c3649c69",
-                "cf5bf8d5-0f73-55df-8043-c434301a92fa"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Problemverständnis",
-                "topicCode": "tum_ma2902_lo1"
-            }
-        },
-        {
-            "id": "c02b2332-2050-5cbb-9a8d-00f6c3649c69",
-            "shortKey": "tum_ma2902_lo1_1",
-            "title": "Anwendungsproblem strukturieren und Fragestellungen präzisieren",
-            "titleEn": "Structure an Applied Problem and Specify Questions",
-            "description": "Die lernende Person kann ein Anwendungsszenario strukturieren, relevante Größen identifizieren und präzise mathematisch formulierbare Fragestellungen ableiten.",
-            "descriptionEn": "The learner can structure an application scenario, identify relevant quantities, and derive precise, mathematically formulable questions.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Problemverständnis",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "cfd4cda5-fa70-5678-be2b-f09dc370ec3e",
-                "d855ee3f-7015-5c3b-b7dc-075b83eb4662",
-                "f088549f-71ef-5692-abd4-42d4ccb228eb"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Problemverständnis",
-                "topicCode": "tum_ma2902_lo1_1"
-            }
-        },
-        {
-            "id": "cf5bf8d5-0f73-55df-8043-c434301a92fa",
-            "shortKey": "tum_ma2902_lo1_2",
-            "title": "Annahmen, Datenlage und Zielkriterien festlegen",
-            "titleEn": "Define Assumptions, Data Availability, and Objective Criteria",
-            "description": "Die lernende Person kann sinnvolle Modellannahmen und Zielkriterien formulieren, die Datenlage einschätzen und die Auswirkungen von Annahmen auf mögliche Modelltypen diskutieren.",
-            "descriptionEn": "The learner can formulate reasonable modeling assumptions and objective criteria, assess available data, and discuss how assumptions affect feasible model choices.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Problemverständnis",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "b6f01da9-f552-50da-bb9d-9e9aa9d5a3dc",
-                "5d57e115-8e27-57fc-a90c-58258a0ac8dc",
-                "8744d761-2e6e-584c-a042-d16221f64e81"
-            ],
-            "requires": [
-                "c02b2332-2050-5cbb-9a8d-00f6c3649c69"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Problemverständnis",
-                "topicCode": "tum_ma2902_lo1_2"
-            }
-        },
-        {
-            "id": "4b2de55d-770c-5416-849f-b88482a57e61",
-            "shortKey": "tum_ma2902_lo2",
-            "title": "Modellformulierung und Abstraktion",
-            "titleEn": "Model Formulation and Abstraction",
-            "description": "Zusammenfassender Cluster: Übersetzung in mathematische Modelle (z.B. Gleichungen, Graphen, Optimierungs- oder stochastische Modelle) und Begründung der Abstraktion.",
-            "descriptionEn": "Summary cluster: translating a problem into mathematical models (e.g., equations, graphs, optimization, or stochastic models) and justifying the abstraction.",
-            "core": true,
-            "weight": 1.2,
-            "phase": "Modul",
-            "area": "Modellformulierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "bfe06470-7f57-507b-909a-2215a758933a",
-                "91fd2dc2-edd4-5996-b0fc-a7aeb63d6b00"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellformulierung",
-                "topicCode": "tum_ma2902_lo2"
-            }
-        },
-        {
-            "id": "bfe06470-7f57-507b-909a-2215a758933a",
-            "shortKey": "tum_ma2902_lo2_1",
-            "title": "Mathematisches Modell aus dem Problemkontext ableiten",
-            "titleEn": "Derive a Mathematical Model from the Problem Context",
-            "description": "Die lernende Person kann aus dem Problemkontext ein geeignetes Modell ableiten (z.B. ODE/PDE, diskretes Modell, Optimierungsmodell) und Variablen, Parameter sowie Rand-/Anfangsbedingungen festlegen.",
-            "descriptionEn": "The learner can derive a suitable model from the problem context (e.g., ODE/PDE, discrete model, optimization model) and specify variables, parameters, and boundary/initial conditions.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Modellformulierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "c3e2fd36-be8c-55c3-9e53-daef5ece8617",
-                "54025d73-08ec-568b-baf0-586082281055",
-                "0e1be292-46c6-5ecd-b6b8-d80372360dc7"
-            ],
-            "requires": [
-                "cf5bf8d5-0f73-55df-8043-c434301a92fa"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellformulierung",
-                "topicCode": "tum_ma2902_lo2_1"
-            }
-        },
-        {
-            "id": "91fd2dc2-edd4-5996-b0fc-a7aeb63d6b00",
-            "shortKey": "tum_ma2902_lo2_2",
-            "title": "Abstraktionsgrad begründen und Modellvarianten vergleichen",
-            "titleEn": "Justify the Level of Abstraction and Compare Model Variants",
-            "description": "Die lernende Person kann Modellvarianten vergleichen, den Abstraktionsgrad (Komplexität vs. Interpretierbarkeit) begründen und geeignete Vereinfachungen oder Erweiterungen herleiten.",
-            "descriptionEn": "The learner can compare model variants, justify the level of abstraction (complexity vs. interpretability), and derive suitable simplifications or extensions.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Modellformulierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "661c2cdc-406d-529e-ba15-60f0588ac8bd",
-                "7cf1dcae-d0c8-5c6a-be04-c764a6a82a0f",
-                "bc340d82-c3d2-559b-a779-32c7c6fb7a3d"
-            ],
-            "requires": [
-                "bfe06470-7f57-507b-909a-2215a758933a"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellformulierung",
-                "topicCode": "tum_ma2902_lo2_2"
-            }
-        },
-        {
-            "id": "01923271-7344-592e-a00b-084240626436",
-            "shortKey": "tum_ma2902_lo3",
-            "title": "Parameter, Daten und Kalibrierung",
-            "titleEn": "Parameters, Data, and Calibration",
-            "description": "Zusammenfassender Cluster: Parameteridentifikation, Schätzung/Kalibrierung und Umgang mit Datenunsicherheit im Kontext der Fallstudien.",
-            "descriptionEn": "Summary cluster: parameter identification, estimation/calibration, and handling data uncertainty within the case studies.",
-            "core": true,
-            "weight": 1.1,
-            "phase": "Modul",
-            "area": "Kalibrierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "6f3c5575-472b-5f48-b982-d613de71db1b",
-                "86c0c16a-198d-5c69-925b-108931da9d63"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kalibrierung",
-                "topicCode": "tum_ma2902_lo3"
-            }
-        },
-        {
-            "id": "6f3c5575-472b-5f48-b982-d613de71db1b",
-            "shortKey": "tum_ma2902_lo3_1",
-            "title": "Parameter schätzen und Modelle an Daten anpassen",
-            "titleEn": "Estimate Parameters and Fit Models to Data",
-            "description": "Die lernende Person kann Parameter aus Daten oder Expertenwissen schätzen, geeignete Kriterien (z.B. Least Squares) wählen und Kalibrierungsschritte nachvollziehbar dokumentieren.",
-            "descriptionEn": "The learner can estimate parameters from data or expert knowledge, choose suitable criteria (e.g., least squares), and document calibration steps transparently.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Kalibrierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "36b23b5f-873d-5a50-aded-ad695fa51087",
-                "a9b5e363-6413-5228-82b1-2f6ffa312660",
-                "8bad5f07-7dfc-5c7c-aea6-bc0df04c19b3"
-            ],
-            "requires": [
-                "91fd2dc2-edd4-5996-b0fc-a7aeb63d6b00"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kalibrierung",
-                "topicCode": "tum_ma2902_lo3_1"
-            }
-        },
-        {
-            "id": "86c0c16a-198d-5c69-925b-108931da9d63",
-            "shortKey": "tum_ma2902_lo3_2",
-            "title": "Datenqualität und Unsicherheit in der Modellierung berücksichtigen",
-            "titleEn": "Account for Data Quality and Uncertainty in Modeling",
-            "description": "Die lernende Person kann Datenqualität einschätzen, Unsicherheiten modellieren (z.B. Messfehler, Varianzannahmen) und die Auswirkungen auf Schlussfolgerungen diskutieren.",
-            "descriptionEn": "The learner can assess data quality, model uncertainties (e.g., measurement error, variance assumptions), and discuss their impact on conclusions.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Kalibrierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "a8e3f4b4-7c84-5ae4-bcf9-252dffb2e57b",
-                "40638140-a35e-5320-b807-0d190b72cf7b",
-                "e8a03b8c-a4e9-5a04-9560-3ce6bf89b6ff"
-            ],
-            "requires": [
-                "6f3c5575-472b-5f48-b982-d613de71db1b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kalibrierung",
-                "topicCode": "tum_ma2902_lo3_2"
-            }
-        },
-        {
-            "id": "d3ea6643-4b0b-541c-bd25-d85e67465bc9",
-            "shortKey": "tum_ma2902_lo4",
-            "title": "Analyse und mathematische Eigenschaften",
-            "titleEn": "Analysis and Mathematical Properties",
-            "description": "Zusammenfassender Cluster: Qualitative und quantitative Analyse (Existenz/Einzigkeit, Stabilität, Invarianten, Komplexität) passend zum jeweiligen Modelltyp.",
-            "descriptionEn": "Summary cluster: qualitative and quantitative analysis (existence/uniqueness, stability, invariants, complexity) appropriate to the model type.",
-            "core": true,
-            "weight": 1.1,
-            "phase": "Modul",
-            "area": "Analyse",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "552479e3-d3a1-57cc-9cc7-f5c562574943",
-                "c1726e20-930f-5f63-b67e-27ecb58ce721"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Analyse",
-                "topicCode": "tum_ma2902_lo4"
-            }
-        },
-        {
-            "id": "552479e3-d3a1-57cc-9cc7-f5c562574943",
-            "shortKey": "tum_ma2902_lo4_1",
-            "title": "Modelleigenschaften analysieren und interpretieren",
-            "titleEn": "Analyze and Interpret Model Properties",
-            "description": "Die lernende Person kann zentrale Modelleigenschaften (z.B. Stabilität, Erhaltungsgrößen, Konvexität) analysieren oder nachvollziehen und die Bedeutung für die Anwendung interpretieren.",
-            "descriptionEn": "The learner can analyze or trace key model properties (e.g., stability, conserved quantities, convexity) and interpret their meaning for the application.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Analyse",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "0a678670-eb59-5c9b-9ea0-9278da3841b2",
-                "7e1396be-19e0-5449-af20-924c94d5fc5d",
-                "9e82ca0f-0378-5a7c-89d9-e33456d11712"
-            ],
-            "requires": [
-                "86c0c16a-198d-5c69-925b-108931da9d63"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Analyse",
-                "topicCode": "tum_ma2902_lo4_1"
-            }
-        },
-        {
-            "id": "c1726e20-930f-5f63-b67e-27ecb58ce721",
-            "shortKey": "tum_ma2902_lo4_2",
-            "title": "Analytische Resultate zur Vereinfachung oder zum Verständnis nutzen",
-            "titleEn": "Use Analytical Results to Simplify or Understand the Model",
-            "description": "Die lernende Person kann analytische Resultate (z.B. Abschätzungen, Grenzfälle) nutzen, um Modelle zu vereinfachen, Parameterbereiche einzugrenzen oder qualitative Aussagen zu begründen.",
-            "descriptionEn": "The learner can use analytical results (e.g., bounds, limiting cases) to simplify models, restrict parameter ranges, or justify qualitative statements.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Analyse",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "9713aa9f-586d-55a4-8fb7-99cf6f21cd49",
-                "f7158db8-cf10-544e-9ff8-ec4c2cb70093",
-                "a0ba6c0d-95a7-5c4b-9657-8484803ff171"
-            ],
-            "requires": [
-                "552479e3-d3a1-57cc-9cc7-f5c562574943"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Analyse",
-                "topicCode": "tum_ma2902_lo4_2"
-            }
-        },
-        {
-            "id": "922a049a-4cc4-5605-86a3-bd4244bea1b9",
-            "shortKey": "tum_ma2902_lo5",
-            "title": "Numerische Umsetzung und Simulation",
-            "titleEn": "Numerical Implementation and Simulation",
-            "description": "Zusammenfassender Cluster: Numerische Algorithmen auswählen/implementieren, Simulationen durchführen und Ergebnisse reproduzierbar auswerten.",
-            "descriptionEn": "Summary cluster: selecting/implementing numerical algorithms, running simulations, and evaluating results reproducibly.",
-            "core": true,
-            "weight": 1.2,
-            "phase": "Modul",
-            "area": "Numerik & Simulation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "6fb51e74-d6ca-5ac5-9ca7-01821be8ee6c",
-                "dfbea154-bc3f-50b5-b04f-6f8aa2f2172c"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Numerik & Simulation",
-                "topicCode": "tum_ma2902_lo5"
-            }
-        },
-        {
-            "id": "6fb51e74-d6ca-5ac5-9ca7-01821be8ee6c",
-            "shortKey": "tum_ma2902_lo5_1",
-            "title": "Numerische Verfahren passend zum Modell auswählen und implementieren",
-            "titleEn": "Select and Implement Numerical Methods Appropriate to the Model",
-            "description": "Die lernende Person kann passende numerische Verfahren (z.B. Solver, Optimierer, Simulation) auswählen, implementieren oder nutzen und Parameter/Initialwerte systematisch variieren.",
-            "descriptionEn": "The learner can select appropriate numerical methods (e.g., solvers, optimizers, simulation), implement or use them, and systematically vary parameters/initial conditions.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Numerik & Simulation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "e0257501-37c0-50f7-b125-77ca8e32ac0b",
-                "8b0fe6eb-4a41-59e4-84c1-624f5b567de4",
-                "cbecbb2a-b056-5067-a0be-c376a4337869"
-            ],
-            "requires": [
-                "c1726e20-930f-5f63-b67e-27ecb58ce721"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Numerik & Simulation",
-                "topicCode": "tum_ma2902_lo5_1"
-            }
-        },
-        {
-            "id": "dfbea154-bc3f-50b5-b04f-6f8aa2f2172c",
-            "shortKey": "tum_ma2902_lo5_2",
-            "title": "Numerische Ergebnisse prüfen, visualisieren und reproduzierbar dokumentieren",
-            "titleEn": "Check, Visualize, and Document Numerical Results Reproducibly",
-            "description": "Die lernende Person kann numerische Ergebnisse plausibilisieren (z.B. Einheiten, Grenzfälle), geeignete Visualisierungen erstellen und den Rechenweg reproduzierbar dokumentieren.",
-            "descriptionEn": "The learner can sanity-check numerical results (e.g., units, limiting cases), create suitable visualizations, and document computations reproducibly.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Numerik & Simulation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "84343b2a-91f5-5d06-b006-dbf96e6c0691",
-                "f340d3e6-e587-52be-ae91-598b82582603",
-                "2bf5488e-9bcd-5d5a-87e9-ed58151e9c2c"
-            ],
-            "requires": [
-                "6fb51e74-d6ca-5ac5-9ca7-01821be8ee6c"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Numerik & Simulation",
-                "topicCode": "tum_ma2902_lo5_2"
-            }
-        },
-        {
-            "id": "060e700e-23ef-572d-be1e-e6e7be06858d",
-            "shortKey": "tum_ma2902_lo6",
-            "title": "Validierung, Sensitivität und Modellkritik",
-            "titleEn": "Validation, Sensitivity, and Model Critique",
-            "description": "Zusammenfassender Cluster: Validierung am Daten-/Realitätsbezug, Sensitivitätsanalysen und kritische Reflexion von Modellgrenzen.",
-            "descriptionEn": "Summary cluster: validation against data/reality, sensitivity analyses, and critical reflection on model limitations.",
-            "core": true,
-            "weight": 1.1,
-            "phase": "Modul",
-            "area": "Validierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "d5c52a45-b6f4-515d-8b10-045453f7a788",
-                "98888908-32bb-5cb1-ba70-a31d8eeacd08"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Validierung",
-                "topicCode": "tum_ma2902_lo6"
-            }
-        },
-        {
-            "id": "d5c52a45-b6f4-515d-8b10-045453f7a788",
-            "shortKey": "tum_ma2902_lo6_1",
-            "title": "Modelle validieren und Gütekriterien definieren",
-            "titleEn": "Validate Models and Define Quality Criteria",
-            "description": "Die lernende Person kann Validierungskriterien definieren, Modellvorhersagen mit Daten/Erwartungen vergleichen und Abweichungen strukturiert analysieren.",
-            "descriptionEn": "The learner can define validation criteria, compare model predictions with data/expectations, and analyze deviations in a structured way.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Validierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "81677cb3-b2bb-5a56-94ad-d8fa48a6b88d",
-                "f6f3fc56-4022-535c-8d5b-aaf781b3e27b",
-                "403d19da-c4be-5149-808b-70def90a3163"
-            ],
-            "requires": [
-                "dfbea154-bc3f-50b5-b04f-6f8aa2f2172c"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Validierung",
-                "topicCode": "tum_ma2902_lo6_1"
-            }
-        },
-        {
-            "id": "98888908-32bb-5cb1-ba70-a31d8eeacd08",
-            "shortKey": "tum_ma2902_lo6_2",
-            "title": "Sensitivitätsanalyse durchführen und Modellgrenzen diskutieren",
-            "titleEn": "Perform Sensitivity Analysis and Discuss Model Limitations",
-            "description": "Die lernende Person kann Sensitivitätsanalysen (z.B. Parameter-Scans) durchführen, robuste vs. fragile Aussagen identifizieren und Modellgrenzen/Annahmen kritisch diskutieren.",
-            "descriptionEn": "The learner can perform sensitivity analyses (e.g., parameter scans), identify robust vs. fragile conclusions, and critically discuss model limitations and assumptions.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Validierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "65e90027-8eb7-5cdf-8fe3-a00da33a044e",
-                "6aa4cd6f-8fd7-5561-99b3-0b25df41fa0f",
-                "aed9fa74-baab-5392-b3cb-6d3ad74ea10a"
-            ],
-            "requires": [
-                "d5c52a45-b6f4-515d-8b10-045453f7a788"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Validierung",
-                "topicCode": "tum_ma2902_lo6_2"
-            }
-        },
-        {
-            "id": "7b735681-0501-5f79-9393-7713997f3e3a",
-            "shortKey": "tum_ma2902_lo7",
-            "title": "Interdisziplinäre Kommunikation und Dokumentation",
-            "titleEn": "Interdisciplinary Communication and Documentation",
-            "description": "Zusammenfassender Cluster: Ergebnisse verständlich kommunizieren, Dokumentation erstellen und im interdisziplinären Kontext argumentieren.",
-            "descriptionEn": "Summary cluster: communicating results clearly, producing documentation, and arguing in an interdisciplinary context.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kommunikation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "6219ee17-00d8-5267-8e6f-f886d8eb7946",
-                "534ed248-c8e3-5eeb-b101-25ad5abdc863"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kommunikation",
-                "topicCode": "tum_ma2902_lo7"
-            }
-        },
-        {
-            "id": "6219ee17-00d8-5267-8e6f-f886d8eb7946",
-            "shortKey": "tum_ma2902_lo7_1",
-            "title": "Modelle und Ergebnisse adressatengerecht präsentieren",
-            "titleEn": "Present Models and Results to the Intended Audience",
-            "description": "Die lernende Person kann Modellannahmen, Methoden und Ergebnisse in schriftlicher oder mündlicher Form adressatengerecht darstellen und geeignete Visualisierungen/Begründungen wählen.",
-            "descriptionEn": "The learner can present model assumptions, methods, and results in written or oral form for the intended audience and choose appropriate visualizations and justifications.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Kommunikation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "e90db93a-f2a2-5982-8e60-b41793d31520",
-                "6d2e2dfe-904d-5930-94ea-cfb8124c710b",
-                "ae8d7c4d-90cc-5ee7-80bb-08d2a3660c7b"
-            ],
-            "requires": [
-                "98888908-32bb-5cb1-ba70-a31d8eeacd08"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kommunikation",
-                "topicCode": "tum_ma2902_lo7_1"
-            }
-        },
-        {
-            "id": "534ed248-c8e3-5eeb-b101-25ad5abdc863",
-            "shortKey": "tum_ma2902_lo7_2",
-            "title": "Dokumentation und Reproduzierbarkeit im Teamkontext sicherstellen",
-            "titleEn": "Ensure Documentation and Reproducibility in a Team Setting",
-            "description": "Die lernende Person kann Modelle/Code/Ergebnisse dokumentieren, Reproduzierbarkeit sicherstellen und arbeitsteilig im Team kommunizieren (z.B. Rollen, Schnittstellen, Versionierung).",
-            "descriptionEn": "The learner can document models/code/results, ensure reproducibility, and communicate effectively in a team setting (e.g., roles, interfaces, versioning).",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Kommunikation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "4df58d93-b66c-55b1-a848-b5f8763a413a",
-                "a7ea8f94-da80-51f7-827f-3ddc1541a2cb",
-                "aa39b08a-c01f-5ef0-b234-6ca086cff478"
-            ],
-            "requires": [
-                "6219ee17-00d8-5267-8e6f-f886d8eb7946"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kommunikation",
-                "topicCode": "tum_ma2902_lo7_2"
-            }
-        },
-        {
-            "id": "9203d8e3-b65f-5966-9bea-ac3e3d79410c",
-            "shortKey": "tum_ma2902_lo8",
-            "title": "Transfer und Fallstudien-Integration",
-            "titleEn": "Transfer and Case Study Integration",
-            "description": "Zusammenfassender Cluster: Erkenntnisse aus Fallstudien verallgemeinern, Methoden transferieren und neue Problemstellungen strukturiert angehen.",
-            "descriptionEn": "Summary cluster: generalizing insights from case studies, transferring methods, and approaching new problems systematically.",
-            "core": true,
-            "weight": 1.2,
-            "phase": "Modul",
-            "area": "Transfer",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "4dfafb71-2a1b-541f-86b0-9b21a30e227d",
-                "3211fd37-4d48-5c69-be7e-749cb735f307"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Transfer",
-                "topicCode": "tum_ma2902_lo8"
-            }
-        },
-        {
-            "id": "4dfafb71-2a1b-541f-86b0-9b21a30e227d",
-            "shortKey": "tum_ma2902_lo8_1",
-            "title": "Methoden zwischen Anwendungskontexten transferieren",
-            "titleEn": "Transfer Methods Across Application Contexts",
-            "description": "Die lernende Person kann in verschiedenen Fallstudien wiederkehrende Strukturen erkennen, geeignete Methoden übertragen und die Anpassungen an neue Kontexte begründen.",
-            "descriptionEn": "The learner can recognize recurring structures across case studies, transfer suitable methods, and justify adaptations to new contexts.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Transfer",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "8894bc38-2b7a-5bf0-8744-164fb2c96379",
-                "8aab3373-9043-52b1-b9da-26851fcd6f3b",
-                "21138ae8-4222-5040-a27e-3029addab7a3"
-            ],
-            "requires": [
-                "534ed248-c8e3-5eeb-b101-25ad5abdc863"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Transfer",
-                "topicCode": "tum_ma2902_lo8_1"
-            }
-        },
-        {
-            "id": "3211fd37-4d48-5c69-be7e-749cb735f307",
-            "shortKey": "tum_ma2902_lo8_2",
-            "title": "Neue Fallstudien eigenständig bearbeiten und reflektieren",
-            "titleEn": "Work on New Case Studies Independently and Reflect",
-            "description": "Die lernende Person kann eine neue Fallstudie eigenständig entlang eines Modellierungsprozesses bearbeiten, Ergebnisse kritisch reflektieren und nächste Schritte (Datenbedarf, Modellverfeinerung) ableiten.",
-            "descriptionEn": "The learner can work on a new case study independently along a modeling workflow, critically reflect results, and derive next steps (data needs, model refinement).",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Transfer",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [
-                "b05efafe-1800-5747-9b9c-751acf7db78e",
-                "1b9ef468-2cbf-5dc5-a280-39e8b13bcc6d",
-                "1a495fd0-6ed3-535c-b6a0-8706408ab619"
-            ],
-            "requires": [
-                "4dfafb71-2a1b-541f-86b0-9b21a30e227d"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Transfer",
-                "topicCode": "tum_ma2902_lo8_2"
-            }
-        },
-        {
-            "id": "13596409-5edf-5452-a47a-5c05cf2dc156",
-            "shortKey": "tum_ma2902_memorize",
-            "title": "Kernaussagen des Moduls memorisieren",
-            "titleEn": "Memorize Key Module Statements",
-            "description": "Die lernende Person hat alle zentralen Definitionen und Sätze des Moduls verinnerlicht (geprüft z.B. durch SRS/Lernkarten).",
-            "descriptionEn": "The learner has internalized all key definitions and theorems of the module (verified e.g. via SRS/flashcards).",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:MA2902",
-                "srs-deck:ma2902"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/ma2902_deck.json"
-            },
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Gesamtkompetenz",
-                "topicCode": "tum_ma2902_memorize"
-            }
-        },
-        {
-            "id": "cfd4cda5-fa70-5678-be2b-f09dc370ec3e",
-            "shortKey": "tum_ma2902_lo1_1_1",
-            "title": "Kennen: Anwendungsproblem strukturieren und Fragestellungen präzisieren",
-            "titleEn": "Know: Structure an Applied Problem and Specify Questions",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Anwendungsproblem strukturieren und Fragestellungen präzisieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Structure an Applied Problem and Specify Questions'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Problemverständnis",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Problemverständnis",
-                "topicCode": "tum_ma2902_lo1_1_1"
-            }
-        },
-        {
-            "id": "d855ee3f-7015-5c3b-b7dc-075b83eb4662",
-            "shortKey": "tum_ma2902_lo1_1_2",
-            "title": "Verstehen: Anwendungsproblem strukturieren und Fragestellungen präzisieren",
-            "titleEn": "Understand: Structure an Applied Problem and Specify Questions",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Anwendungsproblem strukturieren und Fragestellungen präzisieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Structure an Applied Problem and Specify Questions'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Problemverständnis",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "cfd4cda5-fa70-5678-be2b-f09dc370ec3e"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Problemverständnis",
-                "topicCode": "tum_ma2902_lo1_1_2"
-            }
-        },
-        {
-            "id": "f088549f-71ef-5692-abd4-42d4ccb228eb",
-            "shortKey": "tum_ma2902_lo1_1_3",
-            "title": "Anwenden: Anwendungsproblem strukturieren und Fragestellungen präzisieren",
-            "titleEn": "Apply: Structure an Applied Problem and Specify Questions",
-            "description": "Die lernende Person wendet das Wissen zu 'Anwendungsproblem strukturieren und Fragestellungen präzisieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Structure an Applied Problem and Specify Questions' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Problemverständnis",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "d855ee3f-7015-5c3b-b7dc-075b83eb4662"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Problemverständnis",
-                "topicCode": "tum_ma2902_lo1_1_3"
-            }
-        },
-        {
-            "id": "b6f01da9-f552-50da-bb9d-9e9aa9d5a3dc",
-            "shortKey": "tum_ma2902_lo1_2_1",
-            "title": "Kennen: Annahmen, Datenlage und Zielkriterien festlegen",
-            "titleEn": "Know: Define Assumptions, Data Availability, and Objective Criteria",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Annahmen, Datenlage und Zielkriterien festlegen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Define Assumptions, Data Availability, and Objective Criteria'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Problemverständnis",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Problemverständnis",
-                "topicCode": "tum_ma2902_lo1_2_1"
-            }
-        },
-        {
-            "id": "5d57e115-8e27-57fc-a90c-58258a0ac8dc",
-            "shortKey": "tum_ma2902_lo1_2_2",
-            "title": "Verstehen: Annahmen, Datenlage und Zielkriterien festlegen",
-            "titleEn": "Understand: Define Assumptions, Data Availability, and Objective Criteria",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Annahmen, Datenlage und Zielkriterien festlegen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Define Assumptions, Data Availability, and Objective Criteria'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Problemverständnis",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "b6f01da9-f552-50da-bb9d-9e9aa9d5a3dc"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Problemverständnis",
-                "topicCode": "tum_ma2902_lo1_2_2"
-            }
-        },
-        {
-            "id": "8744d761-2e6e-584c-a042-d16221f64e81",
-            "shortKey": "tum_ma2902_lo1_2_3",
-            "title": "Anwenden: Annahmen, Datenlage und Zielkriterien festlegen",
-            "titleEn": "Apply: Define Assumptions, Data Availability, and Objective Criteria",
-            "description": "Die lernende Person wendet das Wissen zu 'Annahmen, Datenlage und Zielkriterien festlegen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Define Assumptions, Data Availability, and Objective Criteria' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Problemverständnis",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "5d57e115-8e27-57fc-a90c-58258a0ac8dc"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Problemverständnis",
-                "topicCode": "tum_ma2902_lo1_2_3"
-            }
-        },
-        {
-            "id": "c3e2fd36-be8c-55c3-9e53-daef5ece8617",
-            "shortKey": "tum_ma2902_lo2_1_1",
-            "title": "Kennen: Mathematisches Modell aus dem Problemkontext ableiten",
-            "titleEn": "Know: Derive a Mathematical Model from the Problem Context",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Mathematisches Modell aus dem Problemkontext ableiten' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Derive a Mathematical Model from the Problem Context'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Modellformulierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellformulierung",
-                "topicCode": "tum_ma2902_lo2_1_1"
-            }
-        },
-        {
-            "id": "54025d73-08ec-568b-baf0-586082281055",
-            "shortKey": "tum_ma2902_lo2_1_2",
-            "title": "Verstehen: Mathematisches Modell aus dem Problemkontext ableiten",
-            "titleEn": "Understand: Derive a Mathematical Model from the Problem Context",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Mathematisches Modell aus dem Problemkontext ableiten'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Derive a Mathematical Model from the Problem Context'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Modellformulierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "c3e2fd36-be8c-55c3-9e53-daef5ece8617"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellformulierung",
-                "topicCode": "tum_ma2902_lo2_1_2"
-            }
-        },
-        {
-            "id": "0e1be292-46c6-5ecd-b6b8-d80372360dc7",
-            "shortKey": "tum_ma2902_lo2_1_3",
-            "title": "Anwenden: Mathematisches Modell aus dem Problemkontext ableiten",
-            "titleEn": "Apply: Derive a Mathematical Model from the Problem Context",
-            "description": "Die lernende Person wendet das Wissen zu 'Mathematisches Modell aus dem Problemkontext ableiten' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Derive a Mathematical Model from the Problem Context' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Modellformulierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "54025d73-08ec-568b-baf0-586082281055"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellformulierung",
-                "topicCode": "tum_ma2902_lo2_1_3"
-            }
-        },
-        {
-            "id": "661c2cdc-406d-529e-ba15-60f0588ac8bd",
-            "shortKey": "tum_ma2902_lo2_2_1",
-            "title": "Kennen: Abstraktionsgrad begründen und Modellvarianten vergleichen",
-            "titleEn": "Know: Justify the Level of Abstraction and Compare Model Variants",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Abstraktionsgrad begründen und Modellvarianten vergleichen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Justify the Level of Abstraction and Compare Model Variants'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Modellformulierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellformulierung",
-                "topicCode": "tum_ma2902_lo2_2_1"
-            }
-        },
-        {
-            "id": "7cf1dcae-d0c8-5c6a-be04-c764a6a82a0f",
-            "shortKey": "tum_ma2902_lo2_2_2",
-            "title": "Verstehen: Abstraktionsgrad begründen und Modellvarianten vergleichen",
-            "titleEn": "Understand: Justify the Level of Abstraction and Compare Model Variants",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Abstraktionsgrad begründen und Modellvarianten vergleichen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Justify the Level of Abstraction and Compare Model Variants'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Modellformulierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "661c2cdc-406d-529e-ba15-60f0588ac8bd"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellformulierung",
-                "topicCode": "tum_ma2902_lo2_2_2"
-            }
-        },
-        {
-            "id": "bc340d82-c3d2-559b-a779-32c7c6fb7a3d",
-            "shortKey": "tum_ma2902_lo2_2_3",
-            "title": "Anwenden: Abstraktionsgrad begründen und Modellvarianten vergleichen",
-            "titleEn": "Apply: Justify the Level of Abstraction and Compare Model Variants",
-            "description": "Die lernende Person wendet das Wissen zu 'Abstraktionsgrad begründen und Modellvarianten vergleichen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Justify the Level of Abstraction and Compare Model Variants' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Modellformulierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "7cf1dcae-d0c8-5c6a-be04-c764a6a82a0f"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellformulierung",
-                "topicCode": "tum_ma2902_lo2_2_3"
-            }
-        },
-        {
-            "id": "36b23b5f-873d-5a50-aded-ad695fa51087",
-            "shortKey": "tum_ma2902_lo3_1_1",
-            "title": "Kennen: Parameter schätzen und Modelle an Daten anpassen",
-            "titleEn": "Know: Estimate Parameters and Fit Models to Data",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Parameter schätzen und Modelle an Daten anpassen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Estimate Parameters and Fit Models to Data'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Kalibrierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kalibrierung",
-                "topicCode": "tum_ma2902_lo3_1_1"
-            }
-        },
-        {
-            "id": "a9b5e363-6413-5228-82b1-2f6ffa312660",
-            "shortKey": "tum_ma2902_lo3_1_2",
-            "title": "Verstehen: Parameter schätzen und Modelle an Daten anpassen",
-            "titleEn": "Understand: Estimate Parameters and Fit Models to Data",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Parameter schätzen und Modelle an Daten anpassen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Estimate Parameters and Fit Models to Data'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Kalibrierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "36b23b5f-873d-5a50-aded-ad695fa51087"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kalibrierung",
-                "topicCode": "tum_ma2902_lo3_1_2"
-            }
-        },
-        {
-            "id": "8bad5f07-7dfc-5c7c-aea6-bc0df04c19b3",
-            "shortKey": "tum_ma2902_lo3_1_3",
-            "title": "Anwenden: Parameter schätzen und Modelle an Daten anpassen",
-            "titleEn": "Apply: Estimate Parameters and Fit Models to Data",
-            "description": "Die lernende Person wendet das Wissen zu 'Parameter schätzen und Modelle an Daten anpassen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Estimate Parameters and Fit Models to Data' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Kalibrierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "a9b5e363-6413-5228-82b1-2f6ffa312660"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kalibrierung",
-                "topicCode": "tum_ma2902_lo3_1_3"
-            }
-        },
-        {
-            "id": "a8e3f4b4-7c84-5ae4-bcf9-252dffb2e57b",
-            "shortKey": "tum_ma2902_lo3_2_1",
-            "title": "Kennen: Datenqualität und Unsicherheit in der Modellierung berücksichtigen",
-            "titleEn": "Know: Account for Data Quality and Uncertainty in Modeling",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Datenqualität und Unsicherheit in der Modellierung berücksichtigen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Account for Data Quality and Uncertainty in Modeling'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Kalibrierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kalibrierung",
-                "topicCode": "tum_ma2902_lo3_2_1"
-            }
-        },
-        {
-            "id": "40638140-a35e-5320-b807-0d190b72cf7b",
-            "shortKey": "tum_ma2902_lo3_2_2",
-            "title": "Verstehen: Datenqualität und Unsicherheit in der Modellierung berücksichtigen",
-            "titleEn": "Understand: Account for Data Quality and Uncertainty in Modeling",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Datenqualität und Unsicherheit in der Modellierung berücksichtigen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Account for Data Quality and Uncertainty in Modeling'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Kalibrierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "a8e3f4b4-7c84-5ae4-bcf9-252dffb2e57b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kalibrierung",
-                "topicCode": "tum_ma2902_lo3_2_2"
-            }
-        },
-        {
-            "id": "e8a03b8c-a4e9-5a04-9560-3ce6bf89b6ff",
-            "shortKey": "tum_ma2902_lo3_2_3",
-            "title": "Anwenden: Datenqualität und Unsicherheit in der Modellierung berücksichtigen",
-            "titleEn": "Apply: Account for Data Quality and Uncertainty in Modeling",
-            "description": "Die lernende Person wendet das Wissen zu 'Datenqualität und Unsicherheit in der Modellierung berücksichtigen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Account for Data Quality and Uncertainty in Modeling' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Kalibrierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "40638140-a35e-5320-b807-0d190b72cf7b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kalibrierung",
-                "topicCode": "tum_ma2902_lo3_2_3"
-            }
-        },
-        {
-            "id": "0a678670-eb59-5c9b-9ea0-9278da3841b2",
-            "shortKey": "tum_ma2902_lo4_1_1",
-            "title": "Kennen: Modelleigenschaften analysieren und interpretieren",
-            "titleEn": "Know: Analyze and Interpret Model Properties",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Modelleigenschaften analysieren und interpretieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Analyze and Interpret Model Properties'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Analyse",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Analyse",
-                "topicCode": "tum_ma2902_lo4_1_1"
-            }
-        },
-        {
-            "id": "7e1396be-19e0-5449-af20-924c94d5fc5d",
-            "shortKey": "tum_ma2902_lo4_1_2",
-            "title": "Verstehen: Modelleigenschaften analysieren und interpretieren",
-            "titleEn": "Understand: Analyze and Interpret Model Properties",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Modelleigenschaften analysieren und interpretieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Analyze and Interpret Model Properties'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Analyse",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "0a678670-eb59-5c9b-9ea0-9278da3841b2"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Analyse",
-                "topicCode": "tum_ma2902_lo4_1_2"
-            }
-        },
-        {
-            "id": "9e82ca0f-0378-5a7c-89d9-e33456d11712",
-            "shortKey": "tum_ma2902_lo4_1_3",
-            "title": "Anwenden: Modelleigenschaften analysieren und interpretieren",
-            "titleEn": "Apply: Analyze and Interpret Model Properties",
-            "description": "Die lernende Person wendet das Wissen zu 'Modelleigenschaften analysieren und interpretieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Analyze and Interpret Model Properties' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Analyse",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "7e1396be-19e0-5449-af20-924c94d5fc5d"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Analyse",
-                "topicCode": "tum_ma2902_lo4_1_3"
-            }
-        },
-        {
-            "id": "9713aa9f-586d-55a4-8fb7-99cf6f21cd49",
-            "shortKey": "tum_ma2902_lo4_2_1",
-            "title": "Kennen: Analytische Resultate zur Vereinfachung oder zum Verständnis nutzen",
-            "titleEn": "Know: Use Analytical Results to Simplify or Understand the Model",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Analytische Resultate zur Vereinfachung oder zum Verständnis nutzen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Analytical Results to Simplify or Understand the Model'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Analyse",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Analyse",
-                "topicCode": "tum_ma2902_lo4_2_1"
-            }
-        },
-        {
-            "id": "f7158db8-cf10-544e-9ff8-ec4c2cb70093",
-            "shortKey": "tum_ma2902_lo4_2_2",
-            "title": "Verstehen: Analytische Resultate zur Vereinfachung oder zum Verständnis nutzen",
-            "titleEn": "Understand: Use Analytical Results to Simplify or Understand the Model",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Analytische Resultate zur Vereinfachung oder zum Verständnis nutzen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Use Analytical Results to Simplify or Understand the Model'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Analyse",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "9713aa9f-586d-55a4-8fb7-99cf6f21cd49"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Analyse",
-                "topicCode": "tum_ma2902_lo4_2_2"
-            }
-        },
-        {
-            "id": "a0ba6c0d-95a7-5c4b-9657-8484803ff171",
-            "shortKey": "tum_ma2902_lo4_2_3",
-            "title": "Anwenden: Analytische Resultate zur Vereinfachung oder zum Verständnis nutzen",
-            "titleEn": "Apply: Use Analytical Results to Simplify or Understand the Model",
-            "description": "Die lernende Person wendet das Wissen zu 'Analytische Resultate zur Vereinfachung oder zum Verständnis nutzen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Use Analytical Results to Simplify or Understand the Model' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Analyse",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "f7158db8-cf10-544e-9ff8-ec4c2cb70093"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Analyse",
-                "topicCode": "tum_ma2902_lo4_2_3"
-            }
-        },
-        {
-            "id": "e0257501-37c0-50f7-b125-77ca8e32ac0b",
-            "shortKey": "tum_ma2902_lo5_1_1",
-            "title": "Kennen: Numerische Verfahren passend zum Modell auswählen und implementieren",
-            "titleEn": "Know: Select and Implement Numerical Methods Appropriate to the Model",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Numerische Verfahren passend zum Modell auswählen und implementieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Select and Implement Numerical Methods Appropriate to the Model'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Numerik & Simulation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Numerik & Simulation",
-                "topicCode": "tum_ma2902_lo5_1_1"
-            }
-        },
-        {
-            "id": "8b0fe6eb-4a41-59e4-84c1-624f5b567de4",
-            "shortKey": "tum_ma2902_lo5_1_2",
-            "title": "Verstehen: Numerische Verfahren passend zum Modell auswählen und implementieren",
-            "titleEn": "Understand: Select and Implement Numerical Methods Appropriate to the Model",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Numerische Verfahren passend zum Modell auswählen und implementieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Select and Implement Numerical Methods Appropriate to the Model'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Numerik & Simulation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "e0257501-37c0-50f7-b125-77ca8e32ac0b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Numerik & Simulation",
-                "topicCode": "tum_ma2902_lo5_1_2"
-            }
-        },
-        {
-            "id": "cbecbb2a-b056-5067-a0be-c376a4337869",
-            "shortKey": "tum_ma2902_lo5_1_3",
-            "title": "Anwenden: Numerische Verfahren passend zum Modell auswählen und implementieren",
-            "titleEn": "Apply: Select and Implement Numerical Methods Appropriate to the Model",
-            "description": "Die lernende Person wendet das Wissen zu 'Numerische Verfahren passend zum Modell auswählen und implementieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Select and Implement Numerical Methods Appropriate to the Model' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Numerik & Simulation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "8b0fe6eb-4a41-59e4-84c1-624f5b567de4"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Numerik & Simulation",
-                "topicCode": "tum_ma2902_lo5_1_3"
-            }
-        },
-        {
-            "id": "84343b2a-91f5-5d06-b006-dbf96e6c0691",
-            "shortKey": "tum_ma2902_lo5_2_1",
-            "title": "Kennen: Numerische Ergebnisse prüfen, visualisieren und reproduzierbar dokumentieren",
-            "titleEn": "Know: Check, Visualize, and Document Numerical Results Reproducibly",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Numerische Ergebnisse prüfen, visualisieren und reproduzierbar dokumentieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Check, Visualize, and Document Numerical Results Reproducibly'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Numerik & Simulation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Numerik & Simulation",
-                "topicCode": "tum_ma2902_lo5_2_1"
-            }
-        },
-        {
-            "id": "f340d3e6-e587-52be-ae91-598b82582603",
-            "shortKey": "tum_ma2902_lo5_2_2",
-            "title": "Verstehen: Numerische Ergebnisse prüfen, visualisieren und reproduzierbar dokumentieren",
-            "titleEn": "Understand: Check, Visualize, and Document Numerical Results Reproducibly",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Numerische Ergebnisse prüfen, visualisieren und reproduzierbar dokumentieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Check, Visualize, and Document Numerical Results Reproducibly'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Numerik & Simulation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "84343b2a-91f5-5d06-b006-dbf96e6c0691"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Numerik & Simulation",
-                "topicCode": "tum_ma2902_lo5_2_2"
-            }
-        },
-        {
-            "id": "2bf5488e-9bcd-5d5a-87e9-ed58151e9c2c",
-            "shortKey": "tum_ma2902_lo5_2_3",
-            "title": "Anwenden: Numerische Ergebnisse prüfen, visualisieren und reproduzierbar dokumentieren",
-            "titleEn": "Apply: Check, Visualize, and Document Numerical Results Reproducibly",
-            "description": "Die lernende Person wendet das Wissen zu 'Numerische Ergebnisse prüfen, visualisieren und reproduzierbar dokumentieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Check, Visualize, and Document Numerical Results Reproducibly' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Numerik & Simulation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "f340d3e6-e587-52be-ae91-598b82582603"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Numerik & Simulation",
-                "topicCode": "tum_ma2902_lo5_2_3"
-            }
-        },
-        {
-            "id": "81677cb3-b2bb-5a56-94ad-d8fa48a6b88d",
-            "shortKey": "tum_ma2902_lo6_1_1",
-            "title": "Kennen: Modelle validieren und Gütekriterien definieren",
-            "titleEn": "Know: Validate Models and Define Quality Criteria",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Modelle validieren und Gütekriterien definieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Validate Models and Define Quality Criteria'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Validierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Validierung",
-                "topicCode": "tum_ma2902_lo6_1_1"
-            }
-        },
-        {
-            "id": "f6f3fc56-4022-535c-8d5b-aaf781b3e27b",
-            "shortKey": "tum_ma2902_lo6_1_2",
-            "title": "Verstehen: Modelle validieren und Gütekriterien definieren",
-            "titleEn": "Understand: Validate Models and Define Quality Criteria",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Modelle validieren und Gütekriterien definieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Validate Models and Define Quality Criteria'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Validierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "81677cb3-b2bb-5a56-94ad-d8fa48a6b88d"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Validierung",
-                "topicCode": "tum_ma2902_lo6_1_2"
-            }
-        },
-        {
-            "id": "403d19da-c4be-5149-808b-70def90a3163",
-            "shortKey": "tum_ma2902_lo6_1_3",
-            "title": "Anwenden: Modelle validieren und Gütekriterien definieren",
-            "titleEn": "Apply: Validate Models and Define Quality Criteria",
-            "description": "Die lernende Person wendet das Wissen zu 'Modelle validieren und Gütekriterien definieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Validate Models and Define Quality Criteria' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Validierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "f6f3fc56-4022-535c-8d5b-aaf781b3e27b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Validierung",
-                "topicCode": "tum_ma2902_lo6_1_3"
-            }
-        },
-        {
-            "id": "65e90027-8eb7-5cdf-8fe3-a00da33a044e",
-            "shortKey": "tum_ma2902_lo6_2_1",
-            "title": "Kennen: Sensitivitätsanalyse durchführen und Modellgrenzen diskutieren",
-            "titleEn": "Know: Perform Sensitivity Analysis and Discuss Model Limitations",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Sensitivitätsanalyse durchführen und Modellgrenzen diskutieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Perform Sensitivity Analysis and Discuss Model Limitations'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Validierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Validierung",
-                "topicCode": "tum_ma2902_lo6_2_1"
-            }
-        },
-        {
-            "id": "6aa4cd6f-8fd7-5561-99b3-0b25df41fa0f",
-            "shortKey": "tum_ma2902_lo6_2_2",
-            "title": "Verstehen: Sensitivitätsanalyse durchführen und Modellgrenzen diskutieren",
-            "titleEn": "Understand: Perform Sensitivity Analysis and Discuss Model Limitations",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Sensitivitätsanalyse durchführen und Modellgrenzen diskutieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Perform Sensitivity Analysis and Discuss Model Limitations'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Validierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "65e90027-8eb7-5cdf-8fe3-a00da33a044e"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Validierung",
-                "topicCode": "tum_ma2902_lo6_2_2"
-            }
-        },
-        {
-            "id": "aed9fa74-baab-5392-b3cb-6d3ad74ea10a",
-            "shortKey": "tum_ma2902_lo6_2_3",
-            "title": "Anwenden: Sensitivitätsanalyse durchführen und Modellgrenzen diskutieren",
-            "titleEn": "Apply: Perform Sensitivity Analysis and Discuss Model Limitations",
-            "description": "Die lernende Person wendet das Wissen zu 'Sensitivitätsanalyse durchführen und Modellgrenzen diskutieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Perform Sensitivity Analysis and Discuss Model Limitations' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Validierung",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "6aa4cd6f-8fd7-5561-99b3-0b25df41fa0f"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Validierung",
-                "topicCode": "tum_ma2902_lo6_2_3"
-            }
-        },
-        {
-            "id": "e90db93a-f2a2-5982-8e60-b41793d31520",
-            "shortKey": "tum_ma2902_lo7_1_1",
-            "title": "Kennen: Modelle und Ergebnisse adressatengerecht präsentieren",
-            "titleEn": "Know: Present Models and Results to the Intended Audience",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Modelle und Ergebnisse adressatengerecht präsentieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Present Models and Results to the Intended Audience'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Kommunikation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kommunikation",
-                "topicCode": "tum_ma2902_lo7_1_1"
-            }
-        },
-        {
-            "id": "6d2e2dfe-904d-5930-94ea-cfb8124c710b",
-            "shortKey": "tum_ma2902_lo7_1_2",
-            "title": "Verstehen: Modelle und Ergebnisse adressatengerecht präsentieren",
-            "titleEn": "Understand: Present Models and Results to the Intended Audience",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Modelle und Ergebnisse adressatengerecht präsentieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Present Models and Results to the Intended Audience'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Kommunikation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "e90db93a-f2a2-5982-8e60-b41793d31520"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kommunikation",
-                "topicCode": "tum_ma2902_lo7_1_2"
-            }
-        },
-        {
-            "id": "ae8d7c4d-90cc-5ee7-80bb-08d2a3660c7b",
-            "shortKey": "tum_ma2902_lo7_1_3",
-            "title": "Anwenden: Modelle und Ergebnisse adressatengerecht präsentieren",
-            "titleEn": "Apply: Present Models and Results to the Intended Audience",
-            "description": "Die lernende Person wendet das Wissen zu 'Modelle und Ergebnisse adressatengerecht präsentieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Present Models and Results to the Intended Audience' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Kommunikation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "6d2e2dfe-904d-5930-94ea-cfb8124c710b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kommunikation",
-                "topicCode": "tum_ma2902_lo7_1_3"
-            }
-        },
-        {
-            "id": "4df58d93-b66c-55b1-a848-b5f8763a413a",
-            "shortKey": "tum_ma2902_lo7_2_1",
-            "title": "Kennen: Dokumentation und Reproduzierbarkeit im Teamkontext sicherstellen",
-            "titleEn": "Know: Ensure Documentation and Reproducibility in a Team Setting",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Dokumentation und Reproduzierbarkeit im Teamkontext sicherstellen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Ensure Documentation and Reproducibility in a Team Setting'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Kommunikation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kommunikation",
-                "topicCode": "tum_ma2902_lo7_2_1"
-            }
-        },
-        {
-            "id": "a7ea8f94-da80-51f7-827f-3ddc1541a2cb",
-            "shortKey": "tum_ma2902_lo7_2_2",
-            "title": "Verstehen: Dokumentation und Reproduzierbarkeit im Teamkontext sicherstellen",
-            "titleEn": "Understand: Ensure Documentation and Reproducibility in a Team Setting",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Dokumentation und Reproduzierbarkeit im Teamkontext sicherstellen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Ensure Documentation and Reproducibility in a Team Setting'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Kommunikation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "4df58d93-b66c-55b1-a848-b5f8763a413a"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kommunikation",
-                "topicCode": "tum_ma2902_lo7_2_2"
-            }
-        },
-        {
-            "id": "aa39b08a-c01f-5ef0-b234-6ca086cff478",
-            "shortKey": "tum_ma2902_lo7_2_3",
-            "title": "Anwenden: Dokumentation und Reproduzierbarkeit im Teamkontext sicherstellen",
-            "titleEn": "Apply: Ensure Documentation and Reproducibility in a Team Setting",
-            "description": "Die lernende Person wendet das Wissen zu 'Dokumentation und Reproduzierbarkeit im Teamkontext sicherstellen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Ensure Documentation and Reproducibility in a Team Setting' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Kommunikation",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "a7ea8f94-da80-51f7-827f-3ddc1541a2cb"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kommunikation",
-                "topicCode": "tum_ma2902_lo7_2_3"
-            }
-        },
-        {
-            "id": "8894bc38-2b7a-5bf0-8744-164fb2c96379",
-            "shortKey": "tum_ma2902_lo8_1_1",
-            "title": "Kennen: Methoden zwischen Anwendungskontexten transferieren",
-            "titleEn": "Know: Transfer Methods Across Application Contexts",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Methoden zwischen Anwendungskontexten transferieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Transfer Methods Across Application Contexts'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Transfer",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Transfer",
-                "topicCode": "tum_ma2902_lo8_1_1"
-            }
-        },
-        {
-            "id": "8aab3373-9043-52b1-b9da-26851fcd6f3b",
-            "shortKey": "tum_ma2902_lo8_1_2",
-            "title": "Verstehen: Methoden zwischen Anwendungskontexten transferieren",
-            "titleEn": "Understand: Transfer Methods Across Application Contexts",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Methoden zwischen Anwendungskontexten transferieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Transfer Methods Across Application Contexts'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Transfer",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "8894bc38-2b7a-5bf0-8744-164fb2c96379"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Transfer",
-                "topicCode": "tum_ma2902_lo8_1_2"
-            }
-        },
-        {
-            "id": "21138ae8-4222-5040-a27e-3029addab7a3",
-            "shortKey": "tum_ma2902_lo8_1_3",
-            "title": "Anwenden: Methoden zwischen Anwendungskontexten transferieren",
-            "titleEn": "Apply: Transfer Methods Across Application Contexts",
-            "description": "Die lernende Person wendet das Wissen zu 'Methoden zwischen Anwendungskontexten transferieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Transfer Methods Across Application Contexts' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Transfer",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "8aab3373-9043-52b1-b9da-26851fcd6f3b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Transfer",
-                "topicCode": "tum_ma2902_lo8_1_3"
-            }
-        },
-        {
-            "id": "b05efafe-1800-5747-9b9c-751acf7db78e",
-            "shortKey": "tum_ma2902_lo8_2_1",
-            "title": "Kennen: Neue Fallstudien eigenständig bearbeiten und reflektieren",
-            "titleEn": "Know: Work on New Case Studies Independently and Reflect",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Neue Fallstudien eigenständig bearbeiten und reflektieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Work on New Case Studies Independently and Reflect'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Transfer",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Transfer",
-                "topicCode": "tum_ma2902_lo8_2_1"
-            }
-        },
-        {
-            "id": "1b9ef468-2cbf-5dc5-a280-39e8b13bcc6d",
-            "shortKey": "tum_ma2902_lo8_2_2",
-            "title": "Verstehen: Neue Fallstudien eigenständig bearbeiten und reflektieren",
-            "titleEn": "Understand: Work on New Case Studies Independently and Reflect",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Neue Fallstudien eigenständig bearbeiten und reflektieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Work on New Case Studies Independently and Reflect'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Transfer",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "b05efafe-1800-5747-9b9c-751acf7db78e"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Transfer",
-                "topicCode": "tum_ma2902_lo8_2_2"
-            }
-        },
-        {
-            "id": "1a495fd0-6ed3-535c-b6a0-8706408ab619",
-            "shortKey": "tum_ma2902_lo8_2_3",
-            "title": "Anwenden: Neue Fallstudien eigenständig bearbeiten und reflektieren",
-            "titleEn": "Apply: Work on New Case Studies Independently and Reflect",
-            "description": "Die lernende Person wendet das Wissen zu 'Neue Fallstudien eigenständig bearbeiten und reflektieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Work on New Case Studies Independently and Reflect' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Transfer",
-            "tags": [
-                "ects:9",
-                "module:MA2902"
-            ],
-            "contains": [],
-            "requires": [
-                "1b9ef468-2cbf-5dc5-a280-39e8b13bcc6d"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2902",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Transfer",
-                "topicCode": "tum_ma2902_lo8_2_3"
-            }
-        }
-    ]
+  "title": "Fallstudien der mathematischen Modellbildung (TUM, Modul MA2902)",
+  "titleEn": "Mathematical Modeling: Case Studies (TUM, Module MA2902)",
+  "description": "Das Modul behandelt mehrere Fallstudien der mathematischen Modellbildung in unterschiedlichen Anwendungskontexten. Die Fallstudien werden von Dozierenden mit einschlägiger Spezialisierung durchgeführt; die mathematischen Inhalte richten sich nach den jeweiligen Problemen aus Natur-, Ingenieur-, Lebens- und Wirtschaftswissenschaften. Im Mittelpunkt stehen das strukturierte Vorgehen von Problemverständnis und Annahmen über Modellformulierung, Analyse und numerische Umsetzung bis hin zu Validierung, Sensitivitätsanalyse und Kommunikation der Ergebnisse im interdisziplinären Kontext. 9 ECTS, angeboten im Wintersemester, Version 2025s, verantwortet von Wolf, Michael Marc.",
+  "descriptionEn": "The module covers several case studies in mathematical modeling across different application contexts. The case studies are taught by lecturers with relevant specialization; the mathematical content depends on the concrete problems from the natural sciences, engineering, life sciences, and economics. The focus is on a structured workflow from understanding the problem and assumptions through model formulation, analysis and numerical implementation to validation, sensitivity analysis, and communicating results in an interdisciplinary setting. 9 ECTS, offered in the winter semester, version 2025s, responsible: Wolf, Michael Marc.",
+  "landscapeId": "657a84fe-f8c4-47d5-bfa8-0b7aebdaaf18",
+  "locale": "de-DE",
+  "subject": "Mathematik",
+  "frameworkId": "tum-ma2902",
+  "filters": [
+    {
+      "id": "BSc",
+      "label": "Bachelor Mathematik"
+    }
+  ],
+  "goals": [
+    {
+      "id": "4dd10c4d-8c3c-4ff9-82ac-06d17dc5da89",
+      "title": "Fallstudien der mathematischen Modellbildung – Gesamtmodul",
+      "titleEn": "Mathematical Modeling: Case Studies – Full Module",
+      "description": "Nach dem erfolgreichen Abschluss des Moduls ist der Studierende in der Lage, die mathematische Modellbildung anhand spezifischer Probleme aus den Natur-, Ingenieur-, Lebens- und Wirtschaftswissenschaften zu verstehen und Techniken zur Bearbeitung solcher Probleme im inhaltlich interdisziplinären Kontext anzuwenden.",
+      "descriptionEn": "After successful completion of the module, students are able to understand mathematical modeling based on specific problems from the natural, engineering, life, and economic sciences and to apply techniques for working on such problems in an interdisciplinary context.",
+      "weight": 9.0,
+      "tags": [
+        "ects:9",
+        "workload:270h",
+        "presence:90h",
+        "level:bachelor",
+        "language:de",
+        "module:MA2902",
+        "semester:WS",
+        "duration:1_semester",
+        "responsible:wolf_michael_marc"
+      ],
+      "contains": [
+        "d012bbbe-b52e-552e-b890-065c18820431",
+        "4b2de55d-770c-5416-849f-b88482a57e61",
+        "01923271-7344-592e-a00b-084240626436",
+        "d3ea6643-4b0b-541c-bd25-d85e67465bc9",
+        "922a049a-4cc4-5605-86a3-bd4244bea1b9",
+        "060e700e-23ef-572d-be1e-e6e7be06858d",
+        "7b735681-0501-5f79-9393-7713997f3e3a",
+        "9203d8e3-b65f-5966-9bea-ac3e3d79410c",
+        "13596409-5edf-5452-a47a-5c05cf2dc156"
+      ],
+      "requires": [
+        "8eb1605b-fa70-511b-bbe4-28173d359c3b",
+        "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
+        "feaad1d5-022f-5ab3-93c3-001ac46de351"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      },
+      "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA2902&description_version=2025s"
+    },
+    {
+      "id": "d012bbbe-b52e-552e-b890-065c18820431",
+      "title": "Problemverständnis und Zieldefinition",
+      "titleEn": "Problem Understanding and Goal Definition",
+      "description": "Zusammenfassender Cluster: Problemkontext erfassen, Ziele und Randbedingungen klären und Anforderungen an ein mathematisches Modell ableiten.",
+      "descriptionEn": "Summary cluster: understanding the problem context, clarifying goals and constraints, and deriving requirements for a mathematical model.",
+      "weight": 1.1,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "c02b2332-2050-5cbb-9a8d-00f6c3649c69",
+        "cf5bf8d5-0f73-55df-8043-c434301a92fa"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "c02b2332-2050-5cbb-9a8d-00f6c3649c69",
+      "title": "Anwendungsproblem strukturieren und Fragestellungen präzisieren",
+      "titleEn": "Structure an Applied Problem and Specify Questions",
+      "description": "Die lernende Person kann ein Anwendungsszenario strukturieren, relevante Größen identifizieren und präzise mathematisch formulierbare Fragestellungen ableiten.",
+      "descriptionEn": "The learner can structure an application scenario, identify relevant quantities, and derive precise, mathematically formulable questions.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "cfd4cda5-fa70-5678-be2b-f09dc370ec3e",
+        "d855ee3f-7015-5c3b-b7dc-075b83eb4662",
+        "f088549f-71ef-5692-abd4-42d4ccb228eb"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "cf5bf8d5-0f73-55df-8043-c434301a92fa",
+      "title": "Annahmen, Datenlage und Zielkriterien festlegen",
+      "titleEn": "Define Assumptions, Data Availability, and Objective Criteria",
+      "description": "Die lernende Person kann sinnvolle Modellannahmen und Zielkriterien formulieren, die Datenlage einschätzen und die Auswirkungen von Annahmen auf mögliche Modelltypen diskutieren.",
+      "descriptionEn": "The learner can formulate reasonable modeling assumptions and objective criteria, assess available data, and discuss how assumptions affect feasible model choices.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "b6f01da9-f552-50da-bb9d-9e9aa9d5a3dc",
+        "5d57e115-8e27-57fc-a90c-58258a0ac8dc",
+        "8744d761-2e6e-584c-a042-d16221f64e81"
+      ],
+      "requires": [
+        "c02b2332-2050-5cbb-9a8d-00f6c3649c69"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4b2de55d-770c-5416-849f-b88482a57e61",
+      "title": "Modellformulierung und Abstraktion",
+      "titleEn": "Model Formulation and Abstraction",
+      "description": "Zusammenfassender Cluster: Übersetzung in mathematische Modelle (z.B. Gleichungen, Graphen, Optimierungs- oder stochastische Modelle) und Begründung der Abstraktion.",
+      "descriptionEn": "Summary cluster: translating a problem into mathematical models (e.g., equations, graphs, optimization, or stochastic models) and justifying the abstraction.",
+      "weight": 1.2,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "bfe06470-7f57-507b-909a-2215a758933a",
+        "91fd2dc2-edd4-5996-b0fc-a7aeb63d6b00"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "bfe06470-7f57-507b-909a-2215a758933a",
+      "title": "Mathematisches Modell aus dem Problemkontext ableiten",
+      "titleEn": "Derive a Mathematical Model from the Problem Context",
+      "description": "Die lernende Person kann aus dem Problemkontext ein geeignetes Modell ableiten (z.B. ODE/PDE, diskretes Modell, Optimierungsmodell) und Variablen, Parameter sowie Rand-/Anfangsbedingungen festlegen.",
+      "descriptionEn": "The learner can derive a suitable model from the problem context (e.g., ODE/PDE, discrete model, optimization model) and specify variables, parameters, and boundary/initial conditions.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "c3e2fd36-be8c-55c3-9e53-daef5ece8617",
+        "54025d73-08ec-568b-baf0-586082281055",
+        "0e1be292-46c6-5ecd-b6b8-d80372360dc7"
+      ],
+      "requires": [
+        "cf5bf8d5-0f73-55df-8043-c434301a92fa"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "91fd2dc2-edd4-5996-b0fc-a7aeb63d6b00",
+      "title": "Abstraktionsgrad begründen und Modellvarianten vergleichen",
+      "titleEn": "Justify the Level of Abstraction and Compare Model Variants",
+      "description": "Die lernende Person kann Modellvarianten vergleichen, den Abstraktionsgrad (Komplexität vs. Interpretierbarkeit) begründen und geeignete Vereinfachungen oder Erweiterungen herleiten.",
+      "descriptionEn": "The learner can compare model variants, justify the level of abstraction (complexity vs. interpretability), and derive suitable simplifications or extensions.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "661c2cdc-406d-529e-ba15-60f0588ac8bd",
+        "7cf1dcae-d0c8-5c6a-be04-c764a6a82a0f",
+        "bc340d82-c3d2-559b-a779-32c7c6fb7a3d"
+      ],
+      "requires": [
+        "bfe06470-7f57-507b-909a-2215a758933a"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "01923271-7344-592e-a00b-084240626436",
+      "title": "Parameter, Daten und Kalibrierung",
+      "titleEn": "Parameters, Data, and Calibration",
+      "description": "Zusammenfassender Cluster: Parameteridentifikation, Schätzung/Kalibrierung und Umgang mit Datenunsicherheit im Kontext der Fallstudien.",
+      "descriptionEn": "Summary cluster: parameter identification, estimation/calibration, and handling data uncertainty within the case studies.",
+      "weight": 1.1,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "6f3c5575-472b-5f48-b982-d613de71db1b",
+        "86c0c16a-198d-5c69-925b-108931da9d63"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6f3c5575-472b-5f48-b982-d613de71db1b",
+      "title": "Parameter schätzen und Modelle an Daten anpassen",
+      "titleEn": "Estimate Parameters and Fit Models to Data",
+      "description": "Die lernende Person kann Parameter aus Daten oder Expertenwissen schätzen, geeignete Kriterien (z.B. Least Squares) wählen und Kalibrierungsschritte nachvollziehbar dokumentieren.",
+      "descriptionEn": "The learner can estimate parameters from data or expert knowledge, choose suitable criteria (e.g., least squares), and document calibration steps transparently.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "36b23b5f-873d-5a50-aded-ad695fa51087",
+        "a9b5e363-6413-5228-82b1-2f6ffa312660",
+        "8bad5f07-7dfc-5c7c-aea6-bc0df04c19b3"
+      ],
+      "requires": [
+        "91fd2dc2-edd4-5996-b0fc-a7aeb63d6b00"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "86c0c16a-198d-5c69-925b-108931da9d63",
+      "title": "Datenqualität und Unsicherheit in der Modellierung berücksichtigen",
+      "titleEn": "Account for Data Quality and Uncertainty in Modeling",
+      "description": "Die lernende Person kann Datenqualität einschätzen, Unsicherheiten modellieren (z.B. Messfehler, Varianzannahmen) und die Auswirkungen auf Schlussfolgerungen diskutieren.",
+      "descriptionEn": "The learner can assess data quality, model uncertainties (e.g., measurement error, variance assumptions), and discuss their impact on conclusions.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "a8e3f4b4-7c84-5ae4-bcf9-252dffb2e57b",
+        "40638140-a35e-5320-b807-0d190b72cf7b",
+        "e8a03b8c-a4e9-5a04-9560-3ce6bf89b6ff"
+      ],
+      "requires": [
+        "6f3c5575-472b-5f48-b982-d613de71db1b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d3ea6643-4b0b-541c-bd25-d85e67465bc9",
+      "title": "Analyse und mathematische Eigenschaften",
+      "titleEn": "Analysis and Mathematical Properties",
+      "description": "Zusammenfassender Cluster: Qualitative und quantitative Analyse (Existenz/Einzigkeit, Stabilität, Invarianten, Komplexität) passend zum jeweiligen Modelltyp.",
+      "descriptionEn": "Summary cluster: qualitative and quantitative analysis (existence/uniqueness, stability, invariants, complexity) appropriate to the model type.",
+      "weight": 1.1,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "552479e3-d3a1-57cc-9cc7-f5c562574943",
+        "c1726e20-930f-5f63-b67e-27ecb58ce721"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "552479e3-d3a1-57cc-9cc7-f5c562574943",
+      "title": "Modelleigenschaften analysieren und interpretieren",
+      "titleEn": "Analyze and Interpret Model Properties",
+      "description": "Die lernende Person kann zentrale Modelleigenschaften (z.B. Stabilität, Erhaltungsgrößen, Konvexität) analysieren oder nachvollziehen und die Bedeutung für die Anwendung interpretieren.",
+      "descriptionEn": "The learner can analyze or trace key model properties (e.g., stability, conserved quantities, convexity) and interpret their meaning for the application.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "0a678670-eb59-5c9b-9ea0-9278da3841b2",
+        "7e1396be-19e0-5449-af20-924c94d5fc5d",
+        "9e82ca0f-0378-5a7c-89d9-e33456d11712"
+      ],
+      "requires": [
+        "86c0c16a-198d-5c69-925b-108931da9d63"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "c1726e20-930f-5f63-b67e-27ecb58ce721",
+      "title": "Analytische Resultate zur Vereinfachung oder zum Verständnis nutzen",
+      "titleEn": "Use Analytical Results to Simplify or Understand the Model",
+      "description": "Die lernende Person kann analytische Resultate (z.B. Abschätzungen, Grenzfälle) nutzen, um Modelle zu vereinfachen, Parameterbereiche einzugrenzen oder qualitative Aussagen zu begründen.",
+      "descriptionEn": "The learner can use analytical results (e.g., bounds, limiting cases) to simplify models, restrict parameter ranges, or justify qualitative statements.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "9713aa9f-586d-55a4-8fb7-99cf6f21cd49",
+        "f7158db8-cf10-544e-9ff8-ec4c2cb70093",
+        "a0ba6c0d-95a7-5c4b-9657-8484803ff171"
+      ],
+      "requires": [
+        "552479e3-d3a1-57cc-9cc7-f5c562574943"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "922a049a-4cc4-5605-86a3-bd4244bea1b9",
+      "title": "Numerische Umsetzung und Simulation",
+      "titleEn": "Numerical Implementation and Simulation",
+      "description": "Zusammenfassender Cluster: Numerische Algorithmen auswählen/implementieren, Simulationen durchführen und Ergebnisse reproduzierbar auswerten.",
+      "descriptionEn": "Summary cluster: selecting/implementing numerical algorithms, running simulations, and evaluating results reproducibly.",
+      "weight": 1.2,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "6fb51e74-d6ca-5ac5-9ca7-01821be8ee6c",
+        "dfbea154-bc3f-50b5-b04f-6f8aa2f2172c"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6fb51e74-d6ca-5ac5-9ca7-01821be8ee6c",
+      "title": "Numerische Verfahren passend zum Modell auswählen und implementieren",
+      "titleEn": "Select and Implement Numerical Methods Appropriate to the Model",
+      "description": "Die lernende Person kann passende numerische Verfahren (z.B. Solver, Optimierer, Simulation) auswählen, implementieren oder nutzen und Parameter/Initialwerte systematisch variieren.",
+      "descriptionEn": "The learner can select appropriate numerical methods (e.g., solvers, optimizers, simulation), implement or use them, and systematically vary parameters/initial conditions.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "e0257501-37c0-50f7-b125-77ca8e32ac0b",
+        "8b0fe6eb-4a41-59e4-84c1-624f5b567de4",
+        "cbecbb2a-b056-5067-a0be-c376a4337869"
+      ],
+      "requires": [
+        "c1726e20-930f-5f63-b67e-27ecb58ce721"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "dfbea154-bc3f-50b5-b04f-6f8aa2f2172c",
+      "title": "Numerische Ergebnisse prüfen, visualisieren und reproduzierbar dokumentieren",
+      "titleEn": "Check, Visualize, and Document Numerical Results Reproducibly",
+      "description": "Die lernende Person kann numerische Ergebnisse plausibilisieren (z.B. Einheiten, Grenzfälle), geeignete Visualisierungen erstellen und den Rechenweg reproduzierbar dokumentieren.",
+      "descriptionEn": "The learner can sanity-check numerical results (e.g., units, limiting cases), create suitable visualizations, and document computations reproducibly.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "84343b2a-91f5-5d06-b006-dbf96e6c0691",
+        "f340d3e6-e587-52be-ae91-598b82582603",
+        "2bf5488e-9bcd-5d5a-87e9-ed58151e9c2c"
+      ],
+      "requires": [
+        "6fb51e74-d6ca-5ac5-9ca7-01821be8ee6c"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "060e700e-23ef-572d-be1e-e6e7be06858d",
+      "title": "Validierung, Sensitivität und Modellkritik",
+      "titleEn": "Validation, Sensitivity, and Model Critique",
+      "description": "Zusammenfassender Cluster: Validierung am Daten-/Realitätsbezug, Sensitivitätsanalysen und kritische Reflexion von Modellgrenzen.",
+      "descriptionEn": "Summary cluster: validation against data/reality, sensitivity analyses, and critical reflection on model limitations.",
+      "weight": 1.1,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "d5c52a45-b6f4-515d-8b10-045453f7a788",
+        "98888908-32bb-5cb1-ba70-a31d8eeacd08"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d5c52a45-b6f4-515d-8b10-045453f7a788",
+      "title": "Modelle validieren und Gütekriterien definieren",
+      "titleEn": "Validate Models and Define Quality Criteria",
+      "description": "Die lernende Person kann Validierungskriterien definieren, Modellvorhersagen mit Daten/Erwartungen vergleichen und Abweichungen strukturiert analysieren.",
+      "descriptionEn": "The learner can define validation criteria, compare model predictions with data/expectations, and analyze deviations in a structured way.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "81677cb3-b2bb-5a56-94ad-d8fa48a6b88d",
+        "f6f3fc56-4022-535c-8d5b-aaf781b3e27b",
+        "403d19da-c4be-5149-808b-70def90a3163"
+      ],
+      "requires": [
+        "dfbea154-bc3f-50b5-b04f-6f8aa2f2172c"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "98888908-32bb-5cb1-ba70-a31d8eeacd08",
+      "title": "Sensitivitätsanalyse durchführen und Modellgrenzen diskutieren",
+      "titleEn": "Perform Sensitivity Analysis and Discuss Model Limitations",
+      "description": "Die lernende Person kann Sensitivitätsanalysen (z.B. Parameter-Scans) durchführen, robuste vs. fragile Aussagen identifizieren und Modellgrenzen/Annahmen kritisch diskutieren.",
+      "descriptionEn": "The learner can perform sensitivity analyses (e.g., parameter scans), identify robust vs. fragile conclusions, and critically discuss model limitations and assumptions.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "65e90027-8eb7-5cdf-8fe3-a00da33a044e",
+        "6aa4cd6f-8fd7-5561-99b3-0b25df41fa0f",
+        "aed9fa74-baab-5392-b3cb-6d3ad74ea10a"
+      ],
+      "requires": [
+        "d5c52a45-b6f4-515d-8b10-045453f7a788"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7b735681-0501-5f79-9393-7713997f3e3a",
+      "title": "Interdisziplinäre Kommunikation und Dokumentation",
+      "titleEn": "Interdisciplinary Communication and Documentation",
+      "description": "Zusammenfassender Cluster: Ergebnisse verständlich kommunizieren, Dokumentation erstellen und im interdisziplinären Kontext argumentieren.",
+      "descriptionEn": "Summary cluster: communicating results clearly, producing documentation, and arguing in an interdisciplinary context.",
+      "weight": 1.0,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "6219ee17-00d8-5267-8e6f-f886d8eb7946",
+        "534ed248-c8e3-5eeb-b101-25ad5abdc863"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6219ee17-00d8-5267-8e6f-f886d8eb7946",
+      "title": "Modelle und Ergebnisse adressatengerecht präsentieren",
+      "titleEn": "Present Models and Results to the Intended Audience",
+      "description": "Die lernende Person kann Modellannahmen, Methoden und Ergebnisse in schriftlicher oder mündlicher Form adressatengerecht darstellen und geeignete Visualisierungen/Begründungen wählen.",
+      "descriptionEn": "The learner can present model assumptions, methods, and results in written or oral form for the intended audience and choose appropriate visualizations and justifications.",
+      "weight": 0.5,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "e90db93a-f2a2-5982-8e60-b41793d31520",
+        "6d2e2dfe-904d-5930-94ea-cfb8124c710b",
+        "ae8d7c4d-90cc-5ee7-80bb-08d2a3660c7b"
+      ],
+      "requires": [
+        "98888908-32bb-5cb1-ba70-a31d8eeacd08"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "534ed248-c8e3-5eeb-b101-25ad5abdc863",
+      "title": "Dokumentation und Reproduzierbarkeit im Teamkontext sicherstellen",
+      "titleEn": "Ensure Documentation and Reproducibility in a Team Setting",
+      "description": "Die lernende Person kann Modelle/Code/Ergebnisse dokumentieren, Reproduzierbarkeit sicherstellen und arbeitsteilig im Team kommunizieren (z.B. Rollen, Schnittstellen, Versionierung).",
+      "descriptionEn": "The learner can document models/code/results, ensure reproducibility, and communicate effectively in a team setting (e.g., roles, interfaces, versioning).",
+      "weight": 0.5,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "4df58d93-b66c-55b1-a848-b5f8763a413a",
+        "a7ea8f94-da80-51f7-827f-3ddc1541a2cb",
+        "aa39b08a-c01f-5ef0-b234-6ca086cff478"
+      ],
+      "requires": [
+        "6219ee17-00d8-5267-8e6f-f886d8eb7946"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9203d8e3-b65f-5966-9bea-ac3e3d79410c",
+      "title": "Transfer und Fallstudien-Integration",
+      "titleEn": "Transfer and Case Study Integration",
+      "description": "Zusammenfassender Cluster: Erkenntnisse aus Fallstudien verallgemeinern, Methoden transferieren und neue Problemstellungen strukturiert angehen.",
+      "descriptionEn": "Summary cluster: generalizing insights from case studies, transferring methods, and approaching new problems systematically.",
+      "weight": 1.2,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "4dfafb71-2a1b-541f-86b0-9b21a30e227d",
+        "3211fd37-4d48-5c69-be7e-749cb735f307"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4dfafb71-2a1b-541f-86b0-9b21a30e227d",
+      "title": "Methoden zwischen Anwendungskontexten transferieren",
+      "titleEn": "Transfer Methods Across Application Contexts",
+      "description": "Die lernende Person kann in verschiedenen Fallstudien wiederkehrende Strukturen erkennen, geeignete Methoden übertragen und die Anpassungen an neue Kontexte begründen.",
+      "descriptionEn": "The learner can recognize recurring structures across case studies, transfer suitable methods, and justify adaptations to new contexts.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "8894bc38-2b7a-5bf0-8744-164fb2c96379",
+        "8aab3373-9043-52b1-b9da-26851fcd6f3b",
+        "21138ae8-4222-5040-a27e-3029addab7a3"
+      ],
+      "requires": [
+        "534ed248-c8e3-5eeb-b101-25ad5abdc863"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "3211fd37-4d48-5c69-be7e-749cb735f307",
+      "title": "Neue Fallstudien eigenständig bearbeiten und reflektieren",
+      "titleEn": "Work on New Case Studies Independently and Reflect",
+      "description": "Die lernende Person kann eine neue Fallstudie eigenständig entlang eines Modellierungsprozesses bearbeiten, Ergebnisse kritisch reflektieren und nächste Schritte (Datenbedarf, Modellverfeinerung) ableiten.",
+      "descriptionEn": "The learner can work on a new case study independently along a modeling workflow, critically reflect results, and derive next steps (data needs, model refinement).",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [
+        "b05efafe-1800-5747-9b9c-751acf7db78e",
+        "1b9ef468-2cbf-5dc5-a280-39e8b13bcc6d",
+        "1a495fd0-6ed3-535c-b6a0-8706408ab619"
+      ],
+      "requires": [
+        "4dfafb71-2a1b-541f-86b0-9b21a30e227d"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "13596409-5edf-5452-a47a-5c05cf2dc156",
+      "title": "Kernaussagen des Moduls memorisieren",
+      "titleEn": "Memorize Key Module Statements",
+      "description": "Die lernende Person hat alle zentralen Definitionen und Sätze des Moduls verinnerlicht (geprüft z.B. durch SRS/Lernkarten).",
+      "descriptionEn": "The learner has internalized all key definitions and theorems of the module (verified e.g. via SRS/flashcards).",
+      "weight": 0.5,
+      "tags": [
+        "module:MA2902",
+        "srs-deck:ma2902"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/ma2902_deck.json"
+      },
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "cfd4cda5-fa70-5678-be2b-f09dc370ec3e",
+      "title": "Kennen: Anwendungsproblem strukturieren und Fragestellungen präzisieren",
+      "titleEn": "Know: Structure an Applied Problem and Specify Questions",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Anwendungsproblem strukturieren und Fragestellungen präzisieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Structure an Applied Problem and Specify Questions'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d855ee3f-7015-5c3b-b7dc-075b83eb4662",
+      "title": "Verstehen: Anwendungsproblem strukturieren und Fragestellungen präzisieren",
+      "titleEn": "Understand: Structure an Applied Problem and Specify Questions",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Anwendungsproblem strukturieren und Fragestellungen präzisieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Structure an Applied Problem and Specify Questions'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "cfd4cda5-fa70-5678-be2b-f09dc370ec3e"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f088549f-71ef-5692-abd4-42d4ccb228eb",
+      "title": "Anwenden: Anwendungsproblem strukturieren und Fragestellungen präzisieren",
+      "titleEn": "Apply: Structure an Applied Problem and Specify Questions",
+      "description": "Die lernende Person wendet das Wissen zu 'Anwendungsproblem strukturieren und Fragestellungen präzisieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Structure an Applied Problem and Specify Questions' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "d855ee3f-7015-5c3b-b7dc-075b83eb4662"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b6f01da9-f552-50da-bb9d-9e9aa9d5a3dc",
+      "title": "Kennen: Annahmen, Datenlage und Zielkriterien festlegen",
+      "titleEn": "Know: Define Assumptions, Data Availability, and Objective Criteria",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Annahmen, Datenlage und Zielkriterien festlegen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Define Assumptions, Data Availability, and Objective Criteria'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "5d57e115-8e27-57fc-a90c-58258a0ac8dc",
+      "title": "Verstehen: Annahmen, Datenlage und Zielkriterien festlegen",
+      "titleEn": "Understand: Define Assumptions, Data Availability, and Objective Criteria",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Annahmen, Datenlage und Zielkriterien festlegen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Define Assumptions, Data Availability, and Objective Criteria'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "b6f01da9-f552-50da-bb9d-9e9aa9d5a3dc"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8744d761-2e6e-584c-a042-d16221f64e81",
+      "title": "Anwenden: Annahmen, Datenlage und Zielkriterien festlegen",
+      "titleEn": "Apply: Define Assumptions, Data Availability, and Objective Criteria",
+      "description": "Die lernende Person wendet das Wissen zu 'Annahmen, Datenlage und Zielkriterien festlegen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Define Assumptions, Data Availability, and Objective Criteria' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "5d57e115-8e27-57fc-a90c-58258a0ac8dc"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "c3e2fd36-be8c-55c3-9e53-daef5ece8617",
+      "title": "Kennen: Mathematisches Modell aus dem Problemkontext ableiten",
+      "titleEn": "Know: Derive a Mathematical Model from the Problem Context",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Mathematisches Modell aus dem Problemkontext ableiten' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Derive a Mathematical Model from the Problem Context'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "54025d73-08ec-568b-baf0-586082281055",
+      "title": "Verstehen: Mathematisches Modell aus dem Problemkontext ableiten",
+      "titleEn": "Understand: Derive a Mathematical Model from the Problem Context",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Mathematisches Modell aus dem Problemkontext ableiten'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Derive a Mathematical Model from the Problem Context'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "c3e2fd36-be8c-55c3-9e53-daef5ece8617"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0e1be292-46c6-5ecd-b6b8-d80372360dc7",
+      "title": "Anwenden: Mathematisches Modell aus dem Problemkontext ableiten",
+      "titleEn": "Apply: Derive a Mathematical Model from the Problem Context",
+      "description": "Die lernende Person wendet das Wissen zu 'Mathematisches Modell aus dem Problemkontext ableiten' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Derive a Mathematical Model from the Problem Context' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "54025d73-08ec-568b-baf0-586082281055"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "661c2cdc-406d-529e-ba15-60f0588ac8bd",
+      "title": "Kennen: Abstraktionsgrad begründen und Modellvarianten vergleichen",
+      "titleEn": "Know: Justify the Level of Abstraction and Compare Model Variants",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Abstraktionsgrad begründen und Modellvarianten vergleichen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Justify the Level of Abstraction and Compare Model Variants'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7cf1dcae-d0c8-5c6a-be04-c764a6a82a0f",
+      "title": "Verstehen: Abstraktionsgrad begründen und Modellvarianten vergleichen",
+      "titleEn": "Understand: Justify the Level of Abstraction and Compare Model Variants",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Abstraktionsgrad begründen und Modellvarianten vergleichen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Justify the Level of Abstraction and Compare Model Variants'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "661c2cdc-406d-529e-ba15-60f0588ac8bd"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "bc340d82-c3d2-559b-a779-32c7c6fb7a3d",
+      "title": "Anwenden: Abstraktionsgrad begründen und Modellvarianten vergleichen",
+      "titleEn": "Apply: Justify the Level of Abstraction and Compare Model Variants",
+      "description": "Die lernende Person wendet das Wissen zu 'Abstraktionsgrad begründen und Modellvarianten vergleichen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Justify the Level of Abstraction and Compare Model Variants' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "7cf1dcae-d0c8-5c6a-be04-c764a6a82a0f"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "36b23b5f-873d-5a50-aded-ad695fa51087",
+      "title": "Kennen: Parameter schätzen und Modelle an Daten anpassen",
+      "titleEn": "Know: Estimate Parameters and Fit Models to Data",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Parameter schätzen und Modelle an Daten anpassen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Estimate Parameters and Fit Models to Data'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a9b5e363-6413-5228-82b1-2f6ffa312660",
+      "title": "Verstehen: Parameter schätzen und Modelle an Daten anpassen",
+      "titleEn": "Understand: Estimate Parameters and Fit Models to Data",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Parameter schätzen und Modelle an Daten anpassen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Estimate Parameters and Fit Models to Data'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "36b23b5f-873d-5a50-aded-ad695fa51087"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8bad5f07-7dfc-5c7c-aea6-bc0df04c19b3",
+      "title": "Anwenden: Parameter schätzen und Modelle an Daten anpassen",
+      "titleEn": "Apply: Estimate Parameters and Fit Models to Data",
+      "description": "Die lernende Person wendet das Wissen zu 'Parameter schätzen und Modelle an Daten anpassen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Estimate Parameters and Fit Models to Data' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "a9b5e363-6413-5228-82b1-2f6ffa312660"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a8e3f4b4-7c84-5ae4-bcf9-252dffb2e57b",
+      "title": "Kennen: Datenqualität und Unsicherheit in der Modellierung berücksichtigen",
+      "titleEn": "Know: Account for Data Quality and Uncertainty in Modeling",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Datenqualität und Unsicherheit in der Modellierung berücksichtigen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Account for Data Quality and Uncertainty in Modeling'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "40638140-a35e-5320-b807-0d190b72cf7b",
+      "title": "Verstehen: Datenqualität und Unsicherheit in der Modellierung berücksichtigen",
+      "titleEn": "Understand: Account for Data Quality and Uncertainty in Modeling",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Datenqualität und Unsicherheit in der Modellierung berücksichtigen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Account for Data Quality and Uncertainty in Modeling'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "a8e3f4b4-7c84-5ae4-bcf9-252dffb2e57b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e8a03b8c-a4e9-5a04-9560-3ce6bf89b6ff",
+      "title": "Anwenden: Datenqualität und Unsicherheit in der Modellierung berücksichtigen",
+      "titleEn": "Apply: Account for Data Quality and Uncertainty in Modeling",
+      "description": "Die lernende Person wendet das Wissen zu 'Datenqualität und Unsicherheit in der Modellierung berücksichtigen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Account for Data Quality and Uncertainty in Modeling' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "40638140-a35e-5320-b807-0d190b72cf7b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0a678670-eb59-5c9b-9ea0-9278da3841b2",
+      "title": "Kennen: Modelleigenschaften analysieren und interpretieren",
+      "titleEn": "Know: Analyze and Interpret Model Properties",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Modelleigenschaften analysieren und interpretieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Analyze and Interpret Model Properties'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7e1396be-19e0-5449-af20-924c94d5fc5d",
+      "title": "Verstehen: Modelleigenschaften analysieren und interpretieren",
+      "titleEn": "Understand: Analyze and Interpret Model Properties",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Modelleigenschaften analysieren und interpretieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Analyze and Interpret Model Properties'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "0a678670-eb59-5c9b-9ea0-9278da3841b2"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9e82ca0f-0378-5a7c-89d9-e33456d11712",
+      "title": "Anwenden: Modelleigenschaften analysieren und interpretieren",
+      "titleEn": "Apply: Analyze and Interpret Model Properties",
+      "description": "Die lernende Person wendet das Wissen zu 'Modelleigenschaften analysieren und interpretieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Analyze and Interpret Model Properties' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "7e1396be-19e0-5449-af20-924c94d5fc5d"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9713aa9f-586d-55a4-8fb7-99cf6f21cd49",
+      "title": "Kennen: Analytische Resultate zur Vereinfachung oder zum Verständnis nutzen",
+      "titleEn": "Know: Use Analytical Results to Simplify or Understand the Model",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Analytische Resultate zur Vereinfachung oder zum Verständnis nutzen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Analytical Results to Simplify or Understand the Model'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f7158db8-cf10-544e-9ff8-ec4c2cb70093",
+      "title": "Verstehen: Analytische Resultate zur Vereinfachung oder zum Verständnis nutzen",
+      "titleEn": "Understand: Use Analytical Results to Simplify or Understand the Model",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Analytische Resultate zur Vereinfachung oder zum Verständnis nutzen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Use Analytical Results to Simplify or Understand the Model'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "9713aa9f-586d-55a4-8fb7-99cf6f21cd49"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a0ba6c0d-95a7-5c4b-9657-8484803ff171",
+      "title": "Anwenden: Analytische Resultate zur Vereinfachung oder zum Verständnis nutzen",
+      "titleEn": "Apply: Use Analytical Results to Simplify or Understand the Model",
+      "description": "Die lernende Person wendet das Wissen zu 'Analytische Resultate zur Vereinfachung oder zum Verständnis nutzen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Use Analytical Results to Simplify or Understand the Model' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "f7158db8-cf10-544e-9ff8-ec4c2cb70093"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e0257501-37c0-50f7-b125-77ca8e32ac0b",
+      "title": "Kennen: Numerische Verfahren passend zum Modell auswählen und implementieren",
+      "titleEn": "Know: Select and Implement Numerical Methods Appropriate to the Model",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Numerische Verfahren passend zum Modell auswählen und implementieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Select and Implement Numerical Methods Appropriate to the Model'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8b0fe6eb-4a41-59e4-84c1-624f5b567de4",
+      "title": "Verstehen: Numerische Verfahren passend zum Modell auswählen und implementieren",
+      "titleEn": "Understand: Select and Implement Numerical Methods Appropriate to the Model",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Numerische Verfahren passend zum Modell auswählen und implementieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Select and Implement Numerical Methods Appropriate to the Model'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "e0257501-37c0-50f7-b125-77ca8e32ac0b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "cbecbb2a-b056-5067-a0be-c376a4337869",
+      "title": "Anwenden: Numerische Verfahren passend zum Modell auswählen und implementieren",
+      "titleEn": "Apply: Select and Implement Numerical Methods Appropriate to the Model",
+      "description": "Die lernende Person wendet das Wissen zu 'Numerische Verfahren passend zum Modell auswählen und implementieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Select and Implement Numerical Methods Appropriate to the Model' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "8b0fe6eb-4a41-59e4-84c1-624f5b567de4"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "84343b2a-91f5-5d06-b006-dbf96e6c0691",
+      "title": "Kennen: Numerische Ergebnisse prüfen, visualisieren und reproduzierbar dokumentieren",
+      "titleEn": "Know: Check, Visualize, and Document Numerical Results Reproducibly",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Numerische Ergebnisse prüfen, visualisieren und reproduzierbar dokumentieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Check, Visualize, and Document Numerical Results Reproducibly'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f340d3e6-e587-52be-ae91-598b82582603",
+      "title": "Verstehen: Numerische Ergebnisse prüfen, visualisieren und reproduzierbar dokumentieren",
+      "titleEn": "Understand: Check, Visualize, and Document Numerical Results Reproducibly",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Numerische Ergebnisse prüfen, visualisieren und reproduzierbar dokumentieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Check, Visualize, and Document Numerical Results Reproducibly'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "84343b2a-91f5-5d06-b006-dbf96e6c0691"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "2bf5488e-9bcd-5d5a-87e9-ed58151e9c2c",
+      "title": "Anwenden: Numerische Ergebnisse prüfen, visualisieren und reproduzierbar dokumentieren",
+      "titleEn": "Apply: Check, Visualize, and Document Numerical Results Reproducibly",
+      "description": "Die lernende Person wendet das Wissen zu 'Numerische Ergebnisse prüfen, visualisieren und reproduzierbar dokumentieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Check, Visualize, and Document Numerical Results Reproducibly' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "f340d3e6-e587-52be-ae91-598b82582603"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "81677cb3-b2bb-5a56-94ad-d8fa48a6b88d",
+      "title": "Kennen: Modelle validieren und Gütekriterien definieren",
+      "titleEn": "Know: Validate Models and Define Quality Criteria",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Modelle validieren und Gütekriterien definieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Validate Models and Define Quality Criteria'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f6f3fc56-4022-535c-8d5b-aaf781b3e27b",
+      "title": "Verstehen: Modelle validieren und Gütekriterien definieren",
+      "titleEn": "Understand: Validate Models and Define Quality Criteria",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Modelle validieren und Gütekriterien definieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Validate Models and Define Quality Criteria'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "81677cb3-b2bb-5a56-94ad-d8fa48a6b88d"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "403d19da-c4be-5149-808b-70def90a3163",
+      "title": "Anwenden: Modelle validieren und Gütekriterien definieren",
+      "titleEn": "Apply: Validate Models and Define Quality Criteria",
+      "description": "Die lernende Person wendet das Wissen zu 'Modelle validieren und Gütekriterien definieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Validate Models and Define Quality Criteria' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "f6f3fc56-4022-535c-8d5b-aaf781b3e27b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "65e90027-8eb7-5cdf-8fe3-a00da33a044e",
+      "title": "Kennen: Sensitivitätsanalyse durchführen und Modellgrenzen diskutieren",
+      "titleEn": "Know: Perform Sensitivity Analysis and Discuss Model Limitations",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Sensitivitätsanalyse durchführen und Modellgrenzen diskutieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Perform Sensitivity Analysis and Discuss Model Limitations'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6aa4cd6f-8fd7-5561-99b3-0b25df41fa0f",
+      "title": "Verstehen: Sensitivitätsanalyse durchführen und Modellgrenzen diskutieren",
+      "titleEn": "Understand: Perform Sensitivity Analysis and Discuss Model Limitations",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Sensitivitätsanalyse durchführen und Modellgrenzen diskutieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Perform Sensitivity Analysis and Discuss Model Limitations'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "65e90027-8eb7-5cdf-8fe3-a00da33a044e"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "aed9fa74-baab-5392-b3cb-6d3ad74ea10a",
+      "title": "Anwenden: Sensitivitätsanalyse durchführen und Modellgrenzen diskutieren",
+      "titleEn": "Apply: Perform Sensitivity Analysis and Discuss Model Limitations",
+      "description": "Die lernende Person wendet das Wissen zu 'Sensitivitätsanalyse durchführen und Modellgrenzen diskutieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Perform Sensitivity Analysis and Discuss Model Limitations' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "6aa4cd6f-8fd7-5561-99b3-0b25df41fa0f"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e90db93a-f2a2-5982-8e60-b41793d31520",
+      "title": "Kennen: Modelle und Ergebnisse adressatengerecht präsentieren",
+      "titleEn": "Know: Present Models and Results to the Intended Audience",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Modelle und Ergebnisse adressatengerecht präsentieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Present Models and Results to the Intended Audience'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6d2e2dfe-904d-5930-94ea-cfb8124c710b",
+      "title": "Verstehen: Modelle und Ergebnisse adressatengerecht präsentieren",
+      "titleEn": "Understand: Present Models and Results to the Intended Audience",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Modelle und Ergebnisse adressatengerecht präsentieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Present Models and Results to the Intended Audience'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "e90db93a-f2a2-5982-8e60-b41793d31520"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ae8d7c4d-90cc-5ee7-80bb-08d2a3660c7b",
+      "title": "Anwenden: Modelle und Ergebnisse adressatengerecht präsentieren",
+      "titleEn": "Apply: Present Models and Results to the Intended Audience",
+      "description": "Die lernende Person wendet das Wissen zu 'Modelle und Ergebnisse adressatengerecht präsentieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Present Models and Results to the Intended Audience' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "6d2e2dfe-904d-5930-94ea-cfb8124c710b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4df58d93-b66c-55b1-a848-b5f8763a413a",
+      "title": "Kennen: Dokumentation und Reproduzierbarkeit im Teamkontext sicherstellen",
+      "titleEn": "Know: Ensure Documentation and Reproducibility in a Team Setting",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Dokumentation und Reproduzierbarkeit im Teamkontext sicherstellen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Ensure Documentation and Reproducibility in a Team Setting'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a7ea8f94-da80-51f7-827f-3ddc1541a2cb",
+      "title": "Verstehen: Dokumentation und Reproduzierbarkeit im Teamkontext sicherstellen",
+      "titleEn": "Understand: Ensure Documentation and Reproducibility in a Team Setting",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Dokumentation und Reproduzierbarkeit im Teamkontext sicherstellen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Ensure Documentation and Reproducibility in a Team Setting'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "4df58d93-b66c-55b1-a848-b5f8763a413a"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "aa39b08a-c01f-5ef0-b234-6ca086cff478",
+      "title": "Anwenden: Dokumentation und Reproduzierbarkeit im Teamkontext sicherstellen",
+      "titleEn": "Apply: Ensure Documentation and Reproducibility in a Team Setting",
+      "description": "Die lernende Person wendet das Wissen zu 'Dokumentation und Reproduzierbarkeit im Teamkontext sicherstellen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Ensure Documentation and Reproducibility in a Team Setting' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "a7ea8f94-da80-51f7-827f-3ddc1541a2cb"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8894bc38-2b7a-5bf0-8744-164fb2c96379",
+      "title": "Kennen: Methoden zwischen Anwendungskontexten transferieren",
+      "titleEn": "Know: Transfer Methods Across Application Contexts",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Methoden zwischen Anwendungskontexten transferieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Transfer Methods Across Application Contexts'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8aab3373-9043-52b1-b9da-26851fcd6f3b",
+      "title": "Verstehen: Methoden zwischen Anwendungskontexten transferieren",
+      "titleEn": "Understand: Transfer Methods Across Application Contexts",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Methoden zwischen Anwendungskontexten transferieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Transfer Methods Across Application Contexts'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "8894bc38-2b7a-5bf0-8744-164fb2c96379"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "21138ae8-4222-5040-a27e-3029addab7a3",
+      "title": "Anwenden: Methoden zwischen Anwendungskontexten transferieren",
+      "titleEn": "Apply: Transfer Methods Across Application Contexts",
+      "description": "Die lernende Person wendet das Wissen zu 'Methoden zwischen Anwendungskontexten transferieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Transfer Methods Across Application Contexts' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "8aab3373-9043-52b1-b9da-26851fcd6f3b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b05efafe-1800-5747-9b9c-751acf7db78e",
+      "title": "Kennen: Neue Fallstudien eigenständig bearbeiten und reflektieren",
+      "titleEn": "Know: Work on New Case Studies Independently and Reflect",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Neue Fallstudien eigenständig bearbeiten und reflektieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Work on New Case Studies Independently and Reflect'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1b9ef468-2cbf-5dc5-a280-39e8b13bcc6d",
+      "title": "Verstehen: Neue Fallstudien eigenständig bearbeiten und reflektieren",
+      "titleEn": "Understand: Work on New Case Studies Independently and Reflect",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Neue Fallstudien eigenständig bearbeiten und reflektieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Work on New Case Studies Independently and Reflect'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "b05efafe-1800-5747-9b9c-751acf7db78e"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1a495fd0-6ed3-535c-b6a0-8706408ab619",
+      "title": "Anwenden: Neue Fallstudien eigenständig bearbeiten und reflektieren",
+      "titleEn": "Apply: Work on New Case Studies Independently and Reflect",
+      "description": "Die lernende Person wendet das Wissen zu 'Neue Fallstudien eigenständig bearbeiten und reflektieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Work on New Case Studies Independently and Reflect' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA2902"
+      ],
+      "contains": [],
+      "requires": [
+        "1b9ef468-2cbf-5dc5-a280-39e8b13bcc6d"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    }
+  ]
 }

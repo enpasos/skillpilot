@@ -1,637 +1,606 @@
 {
-    "title": "Quantenhardware (TUM, Modul NAT3034)",
-    "titleEn": "Quantum Hardware (TUM, Module NAT3034)",
-    "description": "Quantenhardware führt in verschiedene physikalische Implementierungen von Quantensystemen ein. Behandelt werden Licht-Materie-Wechselwirkung, Hohlraum- und Schaltkreis-QED, supraleitende und halbleitende Qubits, Methoden zur Kontrolle und Auslese sowie Wege zum Aufbau größerer Quantenprozessoren. Zudem werden Grundlagen der Quantensensorik wie Rauschquellen, Empfindlichkeitsgrenzen, Optomechanik und Defektsensoren erläutert.",
-    "descriptionEn": "Quantum Hardware introduces different physical implementations of quantum systems. It covers light-matter interaction, cavity and circuit QED, superconducting and semiconductor qubits, control and readout techniques, and approaches to building larger quantum processors. It also introduces quantum sensing, including noise sources, sensitivity limits, optomechanics, and defect-based sensors.",
-    "locale": "de-DE",
-    "subject": "TUM-Module",
-    "frameworkId": "tum-nat3034",
-    "goals": [
-        {
-            "id": "00f7ddee-379d-5622-b840-00236f67220d",
-            "shortKey": "tum_nat3034_module",
-            "title": "Quantenhardware (Modul NAT3034)",
-            "titleEn": "Quantum Hardware (Module NAT3034)",
-            "description": "Die lernende Person kann zentrale Konzepte der Quantenhardware erklären und grundlegende Eigenschaften wichtiger Hardware-Plattformen analysieren.",
-            "descriptionEn": "The learner can explain core concepts of quantum hardware and analyze key properties of major hardware platforms.",
-            "core": true,
-            "weight": 10.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:NAT3034",
-                "ects:10"
-            ],
-            "contains": [
-                "80d601ba-613b-5c50-9bdf-eb73d26bbea5",
-                "0195928a-f063-5e8a-94af-23aa58d90f76",
-                "d343be7c-4186-5532-b30c-cf98f5b61c76",
-                "e5fb3161-741d-510e-9e97-8a68b23ec010",
-                "b70ff858-1d56-5473-9d53-3d3bdb9f8cc1",
-                "6f3f1d90-93cc-5377-9c94-ca9848671276"
-            ],
-            "requires": [],
-            "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/NAT3034"
-        },
-        {
-            "id": "80d601ba-613b-5c50-9bdf-eb73d26bbea5",
-            "shortKey": "tum_nat3034_foundations",
-            "title": "Grundlagen und Motivation",
-            "titleEn": "Foundations and motivation",
-            "description": "Die lernende Person kann grundlegende Begriffe der Quantenhardware einordnen und Motivation sowie Anwendungen benennen.",
-            "descriptionEn": "The learner can situate key concepts of quantum hardware and name motivations and applications.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [
-                "39f715d3-4493-50b4-9b5d-88835642950a",
-                "53c89da3-dabe-58fc-81e3-c235b6035a3b",
-                "17f711cd-02d9-5255-befb-54c00967ca05",
-                "16606df1-fc80-5ce2-b720-673f4753f698"
-            ],
-            "requires": []
-        },
-        {
-            "id": "39f715d3-4493-50b4-9b5d-88835642950a",
-            "shortKey": "tum_nat3034_quantum_1_2",
-            "title": "Quantum 1.0 und Quantum 2.0",
-            "titleEn": "Quantum 1.0 vs Quantum 2.0",
-            "description": "Die lernende Person kann historische und moderne Quantentechnologien unterscheiden und deren Ziele einordnen.",
-            "descriptionEn": "The learner can distinguish historical and modern quantum technologies and relate them to hardware goals.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "53c89da3-dabe-58fc-81e3-c235b6035a3b",
-            "shortKey": "tum_nat3034_two_level_oscillator",
-            "title": "Zwei-Niveau-System und harmonischer Oszillator",
-            "titleEn": "Two-level system and harmonic oscillator",
-            "description": "Die lernende Person kann grundlegende Quantensysteme modellieren, die als Qubits oder Resonatoren dienen.",
-            "descriptionEn": "The learner can model basic quantum systems used as qubits and resonators.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "17f711cd-02d9-5255-befb-54c00967ca05",
-            "shortKey": "tum_nat3034_coherence_relaxation",
-            "title": "Überlagerung, Verschränkung, Relaxation und Dephasierung",
-            "titleEn": "Superposition, entanglement, relaxation, and dephasing",
-            "description": "Die lernende Person kann Kohärenz- und Dekohärenzprozesse für Qubits erklären.",
-            "descriptionEn": "The learner can explain coherence and decoherence processes relevant for qubits.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": [
-                "53c89da3-dabe-58fc-81e3-c235b6035a3b"
-            ]
-        },
-        {
-            "id": "16606df1-fc80-5ce2-b720-673f4753f698",
-            "shortKey": "tum_nat3034_quantum_vs_classical",
-            "title": "Quanten- vs. klassische Information und Anwendungen",
-            "titleEn": "Quantum vs classical information and applications",
-            "description": "Die lernende Person kann Quanten- und klassische Information vergleichen und Anwendungen benennen.",
-            "descriptionEn": "The learner can contrast quantum and classical information and name key application areas.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "0195928a-f063-5e8a-94af-23aa58d90f76",
-            "shortKey": "tum_nat3034_light_matter_qed",
-            "title": "Licht-Materie-Wechselwirkung und QED",
-            "titleEn": "Light-matter interaction and QED",
-            "description": "Die lernende Person kann Licht-Materie-Wechselwirkung in Hohlraum- und Schaltkreis-QED analysieren.",
-            "descriptionEn": "The learner can analyze light-matter interaction in cavity and circuit QED settings.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [
-                "30634276-7a75-58a0-bc8e-1952ca43f967",
-                "de4b2875-0437-5444-af8f-dbd8e89fe812",
-                "d661a517-7396-5a9e-86a7-e37f928cd066",
-                "36b5e9f1-df30-5c2a-b5f1-dcfc755f6a7b"
-            ],
-            "requires": [
-                "80d601ba-613b-5c50-9bdf-eb73d26bbea5"
-            ]
-        },
-        {
-            "id": "30634276-7a75-58a0-bc8e-1952ca43f967",
-            "shortKey": "tum_nat3034_field_quantization",
-            "title": "Quantisierung des elektromagnetischen Feldes und Photonenzustände",
-            "titleEn": "Quantization of the electromagnetic field and photon states",
-            "description": "Die lernende Person kann Feldquantisierung und Eigenschaften von Photonenzuständen beschreiben.",
-            "descriptionEn": "The learner can describe field quantization and properties of photon states.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "de4b2875-0437-5444-af8f-dbd8e89fe812",
-            "shortKey": "tum_nat3034_sources_detectors",
-            "title": "Photonenquellen, Detektoren und verschränkte Photonen",
-            "titleEn": "Photon sources, detectors, and entangled photons",
-            "description": "Die lernende Person kann Erzeugung, Detektion und Verschränkung von Photonen erklären.",
-            "descriptionEn": "The learner can explain how photons are generated, detected, and entangled.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": [
-                "30634276-7a75-58a0-bc8e-1952ca43f967"
-            ]
-        },
-        {
-            "id": "d661a517-7396-5a9e-86a7-e37f928cd066",
-            "shortKey": "tum_nat3034_two_level_jc",
-            "title": "Zwei-Niveau-Atome, Dipolmomente, Jaynes-Cummings und Rabi-Dynamik",
-            "titleEn": "Two-level atoms, dipole moments, Jaynes-Cummings, and Rabi dynamics",
-            "description": "Die lernende Person kann Atom-Feld-Kopplung modellieren und Rabi-Oszillationen vorhersagen.",
-            "descriptionEn": "The learner can model atom-field coupling and predict Rabi oscillations.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": [
-                "30634276-7a75-58a0-bc8e-1952ca43f967"
-            ]
-        },
-        {
-            "id": "36b5e9f1-df30-5c2a-b5f1-dcfc755f6a7b",
-            "shortKey": "tum_nat3034_cavity_circuit_qed",
-            "title": "Hohlraum- und Schaltkreis-QED, Kooperativität und AC-Stark-Effekt",
-            "titleEn": "Cavity and circuit QED, cooperativity, and AC Stark effect",
-            "description": "Die lernende Person kann starke Kopplungskriterien und cavity-induzierte Niveauverschiebungen erklären.",
-            "descriptionEn": "The learner can explain strong coupling criteria and cavity-induced level shifts.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": [
-                "d661a517-7396-5a9e-86a7-e37f928cd066"
-            ]
-        },
-        {
-            "id": "d343be7c-4186-5532-b30c-cf98f5b61c76",
-            "shortKey": "tum_nat3034_superconducting_circuits",
-            "title": "Supraleitende Quantenschaltungen",
-            "titleEn": "Superconducting quantum circuits",
-            "description": "Die lernende Person kann supraleitende Hardwareplattformen für Qubits analysieren.",
-            "descriptionEn": "The learner can analyze superconducting hardware platforms for qubits.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [
-                "70de7af0-7a70-5c48-a96d-bbcfae7e7eed",
-                "51756d4c-60b2-5b2c-bfbf-7502754d480a",
-                "9326cfd4-f587-5fb4-acbb-d1f23a3a3bf1",
-                "1a48cc97-3969-58ae-b2d5-2f828f47f111",
-                "3f58391d-b563-52d8-9528-59f1b936a04e"
-            ],
-            "requires": [
-                "0195928a-f063-5e8a-94af-23aa58d90f76"
-            ]
-        },
-        {
-            "id": "70de7af0-7a70-5c48-a96d-bbcfae7e7eed",
-            "shortKey": "tum_nat3034_sc_resonators",
-            "title": "Supraleitende Resonatoren und Qualitätsfaktoren",
-            "titleEn": "Superconducting resonators and quality factors",
-            "description": "Die lernende Person kann Resonatorgeometrie mit Frequenz und Qualitätsfaktor verknüpfen.",
-            "descriptionEn": "The learner can relate resonator geometry to frequency and quality factor.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "51756d4c-60b2-5b2c-bfbf-7502754d480a",
-            "shortKey": "tum_nat3034_josephson_qubits",
-            "title": "Josephson-Junction-Qubits und Anharmonizität",
-            "titleEn": "Josephson junction qubits and anharmonicity",
-            "description": "Die lernende Person kann erklären, wie Josephson-Kontakte nichtlineare Qubits ermöglichen.",
-            "descriptionEn": "The learner can explain how Josephson junctions create nonlinear qubits.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": [
-                "70de7af0-7a70-5c48-a96d-bbcfae7e7eed"
-            ]
-        },
-        {
-            "id": "9326cfd4-f587-5fb4-acbb-d1f23a3a3bf1",
-            "shortKey": "tum_nat3034_qubit_hamiltonian",
-            "title": "Engineering von Qubit-Hamiltonianen",
-            "titleEn": "Qubit Hamiltonian engineering",
-            "description": "Die lernende Person kann effektive Hamiltonianen für supraleitende Qubits herleiten.",
-            "descriptionEn": "The learner can derive effective Hamiltonians for superconducting qubits.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": [
-                "51756d4c-60b2-5b2c-bfbf-7502754d480a"
-            ]
-        },
-        {
-            "id": "1a48cc97-3969-58ae-b2d5-2f828f47f111",
-            "shortKey": "tum_nat3034_sc_gates_readout",
-            "title": "Ein- und Zwei-Qubit-Gatter, Kontrolle und Auslese",
-            "titleEn": "Single- and two-qubit gates with control and readout",
-            "description": "Die lernende Person kann Gate-Operationen und Messschemata für supraleitende Qubits skizzieren.",
-            "descriptionEn": "The learner can outline gate operations and measurement schemes for superconducting qubits.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": [
-                "9326cfd4-f587-5fb4-acbb-d1f23a3a3bf1"
-            ]
-        },
-        {
-            "id": "3f58391d-b563-52d8-9528-59f1b936a04e",
-            "shortKey": "tum_nat3034_sc_decoherence",
-            "title": "Dekohärenzmechanismen in supraleitenden Schaltungen",
-            "titleEn": "Decoherence mechanisms in superconducting circuits",
-            "description": "Die lernende Person kann dominante Dekohärenzkanäle und Gegenmaßnahmen benennen.",
-            "descriptionEn": "The learner can identify dominant decoherence channels and mitigation strategies.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": [
-                "51756d4c-60b2-5b2c-bfbf-7502754d480a"
-            ]
-        },
-        {
-            "id": "e5fb3161-741d-510e-9e97-8a68b23ec010",
-            "shortKey": "tum_nat3034_semiconductor_circuits",
-            "title": "Halbleiter-Quantenschaltungen",
-            "titleEn": "Semiconductor quantum circuits",
-            "description": "Die lernende Person kann Halbleiterplattformen für Qubits und Resonatoren analysieren.",
-            "descriptionEn": "The learner can analyze semiconductor platforms for qubits and resonators.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [
-                "41bcc753-9b43-5c28-bd97-23933b6de65c",
-                "8c7c4ecf-be60-50ee-95ca-fbb3a98be7e6",
-                "14cb6376-4acd-587d-91d1-eebf093ca701",
-                "e78f10f5-9d07-5233-9096-8a2cde754658"
-            ],
-            "requires": [
-                "0195928a-f063-5e8a-94af-23aa58d90f76"
-            ]
-        },
-        {
-            "id": "41bcc753-9b43-5c28-bd97-23933b6de65c",
-            "shortKey": "tum_nat3034_semiconductor_qubits",
-            "title": "Halbleiter-Qubits (Quantenpunkte, Donatoren, Defekte)",
-            "titleEn": "Semiconductor qubits (quantum dots, donors, defects)",
-            "description": "Die lernende Person kann erklären, wie Halbleiter-Qubits realisiert und kontrolliert werden.",
-            "descriptionEn": "The learner can explain how semiconductor qubits are realized and controlled.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "8c7c4ecf-be60-50ee-95ca-fbb3a98be7e6",
-            "shortKey": "tum_nat3034_semiconductor_resonators",
-            "title": "Resonatoren und Kopplungsstärken in Halbleitern",
-            "titleEn": "Resonators and coupling strength in semiconductors",
-            "description": "Die lernende Person kann Geräteparameter mit Kopplungsstärke und Kontrolltreue verknüpfen.",
-            "descriptionEn": "The learner can relate device parameters to coupling strength and control fidelity.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": [
-                "41bcc753-9b43-5c28-bd97-23933b6de65c"
-            ]
-        },
-        {
-            "id": "14cb6376-4acd-587d-91d1-eebf093ca701",
-            "shortKey": "tum_nat3034_semiconductor_gates",
-            "title": "Gatter, Kontrolle und Auslese in Halbleitersystemen",
-            "titleEn": "Gate operations, control, and readout",
-            "description": "Die lernende Person kann Gate- und Messschemata für Halbleiter-Qubits skizzieren.",
-            "descriptionEn": "The learner can outline gate and measurement schemes for semiconductor qubits.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": [
-                "8c7c4ecf-be60-50ee-95ca-fbb3a98be7e6"
-            ]
-        },
-        {
-            "id": "e78f10f5-9d07-5233-9096-8a2cde754658",
-            "shortKey": "tum_nat3034_semiconductor_decoherence",
-            "title": "Dekohärenz und Dephasierung in Halbleitern",
-            "titleEn": "Decoherence and dephasing in semiconductors",
-            "description": "Die lernende Person kann Rauschquellen und Dephasierungsmechanismen in Halbleitersystemen beschreiben.",
-            "descriptionEn": "The learner can describe noise sources and dephasing mechanisms in semiconductor devices.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": [
-                "41bcc753-9b43-5c28-bd97-23933b6de65c"
-            ]
-        },
-        {
-            "id": "b70ff858-1d56-5473-9d53-3d3bdb9f8cc1",
-            "shortKey": "tum_nat3034_atoms_gases",
-            "title": "Atome und Quantengase",
-            "titleEn": "Atoms and quantum gases",
-            "description": "Die lernende Person kann erklären, wie ultrakalte Atome und Quantengase als Hardwareplattformen genutzt werden.",
-            "descriptionEn": "The learner can explain how ultracold atoms and quantum gases are used as hardware platforms.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [
-                "17a4a5ff-0b89-5924-a8ea-611a1dfa2f37",
-                "deef2043-aee7-54e5-ab06-ab1a866bca32",
-                "7ac3e393-2de1-5de0-8638-23ae3bf3200f"
-            ],
-            "requires": [
-                "0195928a-f063-5e8a-94af-23aa58d90f76"
-            ]
-        },
-        {
-            "id": "17a4a5ff-0b89-5924-a8ea-611a1dfa2f37",
-            "shortKey": "tum_nat3034_ultracold_preparation",
-            "title": "Präparation ultrakalter Gase",
-            "titleEn": "Ultracold gas preparation",
-            "description": "Die lernende Person kann Laserkühlung, Einfangen und Verdampfungskühlung beschreiben.",
-            "descriptionEn": "The learner can describe laser cooling, trapping, and evaporative cooling techniques.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "deef2043-aee7-54e5-ab06-ab1a866bca32",
-            "shortKey": "tum_nat3034_interactions_lattices",
-            "title": "Wechselwirkungen und optische Gitter",
-            "titleEn": "Interactions and optical lattices",
-            "description": "Die lernende Person kann Wechselwirkungen in optischen Gittern erklären und steuern.",
-            "descriptionEn": "The learner can explain interactions in optical lattices and their control.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": [
-                "17a4a5ff-0b89-5924-a8ea-611a1dfa2f37"
-            ]
-        },
-        {
-            "id": "7ac3e393-2de1-5de0-8638-23ae3bf3200f",
-            "shortKey": "tum_nat3034_hubbard_models",
-            "title": "Bose-Hubbard- und Hubbard-Modelle",
-            "titleEn": "Bose-Hubbard and Hubbard models",
-            "description": "Die lernende Person kann Gittermodelle auf ultrakalte Atomsysteme anwenden.",
-            "descriptionEn": "The learner can apply lattice models to describe cold-atom systems.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": [
-                "deef2043-aee7-54e5-ab06-ab1a866bca32"
-            ]
-        },
-        {
-            "id": "6f3f1d90-93cc-5377-9c94-ca9848671276",
-            "shortKey": "tum_nat3034_quantum_sensing",
-            "title": "Quantensensorik",
-            "titleEn": "Quantum sensing",
-            "description": "Die lernende Person kann Hardwarekonzepte der Quantensensorik und ihre Grenzen erklären.",
-            "descriptionEn": "The learner can explain hardware concepts for quantum sensing and their limits.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [
-                "7ea28c5d-5782-575a-94b9-07c9de7f7823",
-                "2c4d087c-90d1-56a4-beee-2fb23b64cefa",
-                "afdb49af-1c52-532d-95f9-3641432e7c79",
-                "584c306a-838a-5bba-b288-3d7605bcd8bc",
-                "50020d84-1119-51ba-9391-c6428da6b9ac"
-            ],
-            "requires": [
-                "0195928a-f063-5e8a-94af-23aa58d90f76"
-            ]
-        },
-        {
-            "id": "7ea28c5d-5782-575a-94b9-07c9de7f7823",
-            "shortKey": "tum_nat3034_noise_sql",
-            "title": "Rauschquellen und Sensitivitätsgrenzen (SQL)",
-            "titleEn": "Noise sources and sensitivity limits (SQL)",
-            "description": "Die lernende Person kann Rauschquellen analysieren und sie mit der Standardquantengrenze verknüpfen.",
-            "descriptionEn": "The learner can analyze noise sources and relate them to the standard quantum limit.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "2c4d087c-90d1-56a4-beee-2fb23b64cefa",
-            "shortKey": "tum_nat3034_optomechanics",
-            "title": "Optomechanik und Positionsmessung",
-            "titleEn": "Optomechanics and position measurements",
-            "description": "Die lernende Person kann optomechanische Messungen und Positionsauslese beschreiben.",
-            "descriptionEn": "The learner can describe optomechanical sensing and position readout.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": [
-                "7ea28c5d-5782-575a-94b9-07c9de7f7823"
-            ]
-        },
-        {
-            "id": "afdb49af-1c52-532d-95f9-3641432e7c79",
-            "shortKey": "tum_nat3034_backaction_shot_noise",
-            "title": "Quantenrückwirkung und Schrotrauschen",
-            "titleEn": "Quantum backaction and shot noise",
-            "description": "Die lernende Person kann Quantenrückwirkung und Schrotrauschen als Messgrenzen erklären.",
-            "descriptionEn": "The learner can explain measurement backaction and shot-noise limits.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": [
-                "2c4d087c-90d1-56a4-beee-2fb23b64cefa"
-            ]
-        },
-        {
-            "id": "584c306a-838a-5bba-b288-3d7605bcd8bc",
-            "shortKey": "tum_nat3034_nv_centers",
-            "title": "NV-Zentren und Spin-Qubit-Sensoren",
-            "titleEn": "NV centers and spin-qubit sensors",
-            "description": "Die lernende Person kann Sensorik mit Defektzentren in Diamant und Halbleitern beschreiben.",
-            "descriptionEn": "The learner can describe sensing with defect centers in diamond and semiconductors.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "50020d84-1119-51ba-9391-c6428da6b9ac",
-            "shortKey": "tum_nat3034_beyond_sql",
-            "title": "Jenseits des SQL: Squeezing und QND",
-            "titleEn": "Beyond SQL with squeezing and QND",
-            "description": "Die lernende Person kann erklären, wie Squeezing und quanten-nicht-destruktive Messungen das SQL übertreffen.",
-            "descriptionEn": "The learner can explain how squeezing and quantum non-demolition techniques surpass the SQL.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3034"
-            ],
-            "contains": [],
-            "requires": [
-                "afdb49af-1c52-532d-95f9-3641432e7c79"
-            ]
-        }
-    ]
+  "title": "Quantenhardware (TUM, Modul NAT3034)",
+  "titleEn": "Quantum Hardware (TUM, Module NAT3034)",
+  "description": "Quantenhardware führt in verschiedene physikalische Implementierungen von Quantensystemen ein. Behandelt werden Licht-Materie-Wechselwirkung, Hohlraum- und Schaltkreis-QED, supraleitende und halbleitende Qubits, Methoden zur Kontrolle und Auslese sowie Wege zum Aufbau größerer Quantenprozessoren. Zudem werden Grundlagen der Quantensensorik wie Rauschquellen, Empfindlichkeitsgrenzen, Optomechanik und Defektsensoren erläutert.",
+  "descriptionEn": "Quantum Hardware introduces different physical implementations of quantum systems. It covers light-matter interaction, cavity and circuit QED, superconducting and semiconductor qubits, control and readout techniques, and approaches to building larger quantum processors. It also introduces quantum sensing, including noise sources, sensitivity limits, optomechanics, and defect-based sensors.",
+  "locale": "de-DE",
+  "subject": "TUM-Module",
+  "frameworkId": "tum-nat3034",
+  "goals": [
+    {
+      "id": "00f7ddee-379d-5622-b840-00236f67220d",
+      "title": "Quantenhardware (Modul NAT3034)",
+      "titleEn": "Quantum Hardware (Module NAT3034)",
+      "description": "Die lernende Person kann zentrale Konzepte der Quantenhardware erklären und grundlegende Eigenschaften wichtiger Hardware-Plattformen analysieren.",
+      "descriptionEn": "The learner can explain core concepts of quantum hardware and analyze key properties of major hardware platforms.",
+      "weight": 10.0,
+      "tags": [
+        "module:NAT3034",
+        "ects:10"
+      ],
+      "contains": [
+        "80d601ba-613b-5c50-9bdf-eb73d26bbea5",
+        "0195928a-f063-5e8a-94af-23aa58d90f76",
+        "d343be7c-4186-5532-b30c-cf98f5b61c76",
+        "e5fb3161-741d-510e-9e97-8a68b23ec010",
+        "b70ff858-1d56-5473-9d53-3d3bdb9f8cc1",
+        "6f3f1d90-93cc-5377-9c94-ca9848671276"
+      ],
+      "requires": [],
+      "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/NAT3034",
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "80d601ba-613b-5c50-9bdf-eb73d26bbea5",
+      "title": "Grundlagen und Motivation",
+      "titleEn": "Foundations and motivation",
+      "description": "Die lernende Person kann grundlegende Begriffe der Quantenhardware einordnen und Motivation sowie Anwendungen benennen.",
+      "descriptionEn": "The learner can situate key concepts of quantum hardware and name motivations and applications.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [
+        "39f715d3-4493-50b4-9b5d-88835642950a",
+        "53c89da3-dabe-58fc-81e3-c235b6035a3b",
+        "17f711cd-02d9-5255-befb-54c00967ca05",
+        "16606df1-fc80-5ce2-b720-673f4753f698"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "39f715d3-4493-50b4-9b5d-88835642950a",
+      "title": "Quantum 1.0 und Quantum 2.0",
+      "titleEn": "Quantum 1.0 vs Quantum 2.0",
+      "description": "Die lernende Person kann historische und moderne Quantentechnologien unterscheiden und deren Ziele einordnen.",
+      "descriptionEn": "The learner can distinguish historical and modern quantum technologies and relate them to hardware goals.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "53c89da3-dabe-58fc-81e3-c235b6035a3b",
+      "title": "Zwei-Niveau-System und harmonischer Oszillator",
+      "titleEn": "Two-level system and harmonic oscillator",
+      "description": "Die lernende Person kann grundlegende Quantensysteme modellieren, die als Qubits oder Resonatoren dienen.",
+      "descriptionEn": "The learner can model basic quantum systems used as qubits and resonators.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "17f711cd-02d9-5255-befb-54c00967ca05",
+      "title": "Überlagerung, Verschränkung, Relaxation und Dephasierung",
+      "titleEn": "Superposition, entanglement, relaxation, and dephasing",
+      "description": "Die lernende Person kann Kohärenz- und Dekohärenzprozesse für Qubits erklären.",
+      "descriptionEn": "The learner can explain coherence and decoherence processes relevant for qubits.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [
+        "53c89da3-dabe-58fc-81e3-c235b6035a3b"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "16606df1-fc80-5ce2-b720-673f4753f698",
+      "title": "Quanten- vs. klassische Information und Anwendungen",
+      "titleEn": "Quantum vs classical information and applications",
+      "description": "Die lernende Person kann Quanten- und klassische Information vergleichen und Anwendungen benennen.",
+      "descriptionEn": "The learner can contrast quantum and classical information and name key application areas.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0195928a-f063-5e8a-94af-23aa58d90f76",
+      "title": "Licht-Materie-Wechselwirkung und QED",
+      "titleEn": "Light-matter interaction and QED",
+      "description": "Die lernende Person kann Licht-Materie-Wechselwirkung in Hohlraum- und Schaltkreis-QED analysieren.",
+      "descriptionEn": "The learner can analyze light-matter interaction in cavity and circuit QED settings.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [
+        "30634276-7a75-58a0-bc8e-1952ca43f967",
+        "de4b2875-0437-5444-af8f-dbd8e89fe812",
+        "d661a517-7396-5a9e-86a7-e37f928cd066",
+        "36b5e9f1-df30-5c2a-b5f1-dcfc755f6a7b"
+      ],
+      "requires": [
+        "80d601ba-613b-5c50-9bdf-eb73d26bbea5"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "30634276-7a75-58a0-bc8e-1952ca43f967",
+      "title": "Quantisierung des elektromagnetischen Feldes und Photonenzustände",
+      "titleEn": "Quantization of the electromagnetic field and photon states",
+      "description": "Die lernende Person kann Feldquantisierung und Eigenschaften von Photonenzuständen beschreiben.",
+      "descriptionEn": "The learner can describe field quantization and properties of photon states.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "de4b2875-0437-5444-af8f-dbd8e89fe812",
+      "title": "Photonenquellen, Detektoren und verschränkte Photonen",
+      "titleEn": "Photon sources, detectors, and entangled photons",
+      "description": "Die lernende Person kann Erzeugung, Detektion und Verschränkung von Photonen erklären.",
+      "descriptionEn": "The learner can explain how photons are generated, detected, and entangled.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [
+        "30634276-7a75-58a0-bc8e-1952ca43f967"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d661a517-7396-5a9e-86a7-e37f928cd066",
+      "title": "Zwei-Niveau-Atome, Dipolmomente, Jaynes-Cummings und Rabi-Dynamik",
+      "titleEn": "Two-level atoms, dipole moments, Jaynes-Cummings, and Rabi dynamics",
+      "description": "Die lernende Person kann Atom-Feld-Kopplung modellieren und Rabi-Oszillationen vorhersagen.",
+      "descriptionEn": "The learner can model atom-field coupling and predict Rabi oscillations.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [
+        "30634276-7a75-58a0-bc8e-1952ca43f967"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "36b5e9f1-df30-5c2a-b5f1-dcfc755f6a7b",
+      "title": "Hohlraum- und Schaltkreis-QED, Kooperativität und AC-Stark-Effekt",
+      "titleEn": "Cavity and circuit QED, cooperativity, and AC Stark effect",
+      "description": "Die lernende Person kann starke Kopplungskriterien und cavity-induzierte Niveauverschiebungen erklären.",
+      "descriptionEn": "The learner can explain strong coupling criteria and cavity-induced level shifts.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [
+        "d661a517-7396-5a9e-86a7-e37f928cd066"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d343be7c-4186-5532-b30c-cf98f5b61c76",
+      "title": "Supraleitende Quantenschaltungen",
+      "titleEn": "Superconducting quantum circuits",
+      "description": "Die lernende Person kann supraleitende Hardwareplattformen für Qubits analysieren.",
+      "descriptionEn": "The learner can analyze superconducting hardware platforms for qubits.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [
+        "70de7af0-7a70-5c48-a96d-bbcfae7e7eed",
+        "51756d4c-60b2-5b2c-bfbf-7502754d480a",
+        "9326cfd4-f587-5fb4-acbb-d1f23a3a3bf1",
+        "1a48cc97-3969-58ae-b2d5-2f828f47f111",
+        "3f58391d-b563-52d8-9528-59f1b936a04e"
+      ],
+      "requires": [
+        "0195928a-f063-5e8a-94af-23aa58d90f76"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "70de7af0-7a70-5c48-a96d-bbcfae7e7eed",
+      "title": "Supraleitende Resonatoren und Qualitätsfaktoren",
+      "titleEn": "Superconducting resonators and quality factors",
+      "description": "Die lernende Person kann Resonatorgeometrie mit Frequenz und Qualitätsfaktor verknüpfen.",
+      "descriptionEn": "The learner can relate resonator geometry to frequency and quality factor.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "51756d4c-60b2-5b2c-bfbf-7502754d480a",
+      "title": "Josephson-Junction-Qubits und Anharmonizität",
+      "titleEn": "Josephson junction qubits and anharmonicity",
+      "description": "Die lernende Person kann erklären, wie Josephson-Kontakte nichtlineare Qubits ermöglichen.",
+      "descriptionEn": "The learner can explain how Josephson junctions create nonlinear qubits.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [
+        "70de7af0-7a70-5c48-a96d-bbcfae7e7eed"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9326cfd4-f587-5fb4-acbb-d1f23a3a3bf1",
+      "title": "Engineering von Qubit-Hamiltonianen",
+      "titleEn": "Qubit Hamiltonian engineering",
+      "description": "Die lernende Person kann effektive Hamiltonianen für supraleitende Qubits herleiten.",
+      "descriptionEn": "The learner can derive effective Hamiltonians for superconducting qubits.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [
+        "51756d4c-60b2-5b2c-bfbf-7502754d480a"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1a48cc97-3969-58ae-b2d5-2f828f47f111",
+      "title": "Ein- und Zwei-Qubit-Gatter, Kontrolle und Auslese",
+      "titleEn": "Single- and two-qubit gates with control and readout",
+      "description": "Die lernende Person kann Gate-Operationen und Messschemata für supraleitende Qubits skizzieren.",
+      "descriptionEn": "The learner can outline gate operations and measurement schemes for superconducting qubits.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [
+        "9326cfd4-f587-5fb4-acbb-d1f23a3a3bf1"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "3f58391d-b563-52d8-9528-59f1b936a04e",
+      "title": "Dekohärenzmechanismen in supraleitenden Schaltungen",
+      "titleEn": "Decoherence mechanisms in superconducting circuits",
+      "description": "Die lernende Person kann dominante Dekohärenzkanäle und Gegenmaßnahmen benennen.",
+      "descriptionEn": "The learner can identify dominant decoherence channels and mitigation strategies.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [
+        "51756d4c-60b2-5b2c-bfbf-7502754d480a"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e5fb3161-741d-510e-9e97-8a68b23ec010",
+      "title": "Halbleiter-Quantenschaltungen",
+      "titleEn": "Semiconductor quantum circuits",
+      "description": "Die lernende Person kann Halbleiterplattformen für Qubits und Resonatoren analysieren.",
+      "descriptionEn": "The learner can analyze semiconductor platforms for qubits and resonators.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [
+        "41bcc753-9b43-5c28-bd97-23933b6de65c",
+        "8c7c4ecf-be60-50ee-95ca-fbb3a98be7e6",
+        "14cb6376-4acd-587d-91d1-eebf093ca701",
+        "e78f10f5-9d07-5233-9096-8a2cde754658"
+      ],
+      "requires": [
+        "0195928a-f063-5e8a-94af-23aa58d90f76"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "41bcc753-9b43-5c28-bd97-23933b6de65c",
+      "title": "Halbleiter-Qubits (Quantenpunkte, Donatoren, Defekte)",
+      "titleEn": "Semiconductor qubits (quantum dots, donors, defects)",
+      "description": "Die lernende Person kann erklären, wie Halbleiter-Qubits realisiert und kontrolliert werden.",
+      "descriptionEn": "The learner can explain how semiconductor qubits are realized and controlled.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8c7c4ecf-be60-50ee-95ca-fbb3a98be7e6",
+      "title": "Resonatoren und Kopplungsstärken in Halbleitern",
+      "titleEn": "Resonators and coupling strength in semiconductors",
+      "description": "Die lernende Person kann Geräteparameter mit Kopplungsstärke und Kontrolltreue verknüpfen.",
+      "descriptionEn": "The learner can relate device parameters to coupling strength and control fidelity.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [
+        "41bcc753-9b43-5c28-bd97-23933b6de65c"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "14cb6376-4acd-587d-91d1-eebf093ca701",
+      "title": "Gatter, Kontrolle und Auslese in Halbleitersystemen",
+      "titleEn": "Gate operations, control, and readout",
+      "description": "Die lernende Person kann Gate- und Messschemata für Halbleiter-Qubits skizzieren.",
+      "descriptionEn": "The learner can outline gate and measurement schemes for semiconductor qubits.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [
+        "8c7c4ecf-be60-50ee-95ca-fbb3a98be7e6"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e78f10f5-9d07-5233-9096-8a2cde754658",
+      "title": "Dekohärenz und Dephasierung in Halbleitern",
+      "titleEn": "Decoherence and dephasing in semiconductors",
+      "description": "Die lernende Person kann Rauschquellen und Dephasierungsmechanismen in Halbleitersystemen beschreiben.",
+      "descriptionEn": "The learner can describe noise sources and dephasing mechanisms in semiconductor devices.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [
+        "41bcc753-9b43-5c28-bd97-23933b6de65c"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b70ff858-1d56-5473-9d53-3d3bdb9f8cc1",
+      "title": "Atome und Quantengase",
+      "titleEn": "Atoms and quantum gases",
+      "description": "Die lernende Person kann erklären, wie ultrakalte Atome und Quantengase als Hardwareplattformen genutzt werden.",
+      "descriptionEn": "The learner can explain how ultracold atoms and quantum gases are used as hardware platforms.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [
+        "17a4a5ff-0b89-5924-a8ea-611a1dfa2f37",
+        "deef2043-aee7-54e5-ab06-ab1a866bca32",
+        "7ac3e393-2de1-5de0-8638-23ae3bf3200f"
+      ],
+      "requires": [
+        "0195928a-f063-5e8a-94af-23aa58d90f76"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "17a4a5ff-0b89-5924-a8ea-611a1dfa2f37",
+      "title": "Präparation ultrakalter Gase",
+      "titleEn": "Ultracold gas preparation",
+      "description": "Die lernende Person kann Laserkühlung, Einfangen und Verdampfungskühlung beschreiben.",
+      "descriptionEn": "The learner can describe laser cooling, trapping, and evaporative cooling techniques.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "deef2043-aee7-54e5-ab06-ab1a866bca32",
+      "title": "Wechselwirkungen und optische Gitter",
+      "titleEn": "Interactions and optical lattices",
+      "description": "Die lernende Person kann Wechselwirkungen in optischen Gittern erklären und steuern.",
+      "descriptionEn": "The learner can explain interactions in optical lattices and their control.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [
+        "17a4a5ff-0b89-5924-a8ea-611a1dfa2f37"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7ac3e393-2de1-5de0-8638-23ae3bf3200f",
+      "title": "Bose-Hubbard- und Hubbard-Modelle",
+      "titleEn": "Bose-Hubbard and Hubbard models",
+      "description": "Die lernende Person kann Gittermodelle auf ultrakalte Atomsysteme anwenden.",
+      "descriptionEn": "The learner can apply lattice models to describe cold-atom systems.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [
+        "deef2043-aee7-54e5-ab06-ab1a866bca32"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6f3f1d90-93cc-5377-9c94-ca9848671276",
+      "title": "Quantensensorik",
+      "titleEn": "Quantum sensing",
+      "description": "Die lernende Person kann Hardwarekonzepte der Quantensensorik und ihre Grenzen erklären.",
+      "descriptionEn": "The learner can explain hardware concepts for quantum sensing and their limits.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [
+        "7ea28c5d-5782-575a-94b9-07c9de7f7823",
+        "2c4d087c-90d1-56a4-beee-2fb23b64cefa",
+        "afdb49af-1c52-532d-95f9-3641432e7c79",
+        "584c306a-838a-5bba-b288-3d7605bcd8bc",
+        "50020d84-1119-51ba-9391-c6428da6b9ac"
+      ],
+      "requires": [
+        "0195928a-f063-5e8a-94af-23aa58d90f76"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7ea28c5d-5782-575a-94b9-07c9de7f7823",
+      "title": "Rauschquellen und Sensitivitätsgrenzen (SQL)",
+      "titleEn": "Noise sources and sensitivity limits (SQL)",
+      "description": "Die lernende Person kann Rauschquellen analysieren und sie mit der Standardquantengrenze verknüpfen.",
+      "descriptionEn": "The learner can analyze noise sources and relate them to the standard quantum limit.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "2c4d087c-90d1-56a4-beee-2fb23b64cefa",
+      "title": "Optomechanik und Positionsmessung",
+      "titleEn": "Optomechanics and position measurements",
+      "description": "Die lernende Person kann optomechanische Messungen und Positionsauslese beschreiben.",
+      "descriptionEn": "The learner can describe optomechanical sensing and position readout.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [
+        "7ea28c5d-5782-575a-94b9-07c9de7f7823"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "afdb49af-1c52-532d-95f9-3641432e7c79",
+      "title": "Quantenrückwirkung und Schrotrauschen",
+      "titleEn": "Quantum backaction and shot noise",
+      "description": "Die lernende Person kann Quantenrückwirkung und Schrotrauschen als Messgrenzen erklären.",
+      "descriptionEn": "The learner can explain measurement backaction and shot-noise limits.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [
+        "2c4d087c-90d1-56a4-beee-2fb23b64cefa"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "584c306a-838a-5bba-b288-3d7605bcd8bc",
+      "title": "NV-Zentren und Spin-Qubit-Sensoren",
+      "titleEn": "NV centers and spin-qubit sensors",
+      "description": "Die lernende Person kann Sensorik mit Defektzentren in Diamant und Halbleitern beschreiben.",
+      "descriptionEn": "The learner can describe sensing with defect centers in diamond and semiconductors.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "50020d84-1119-51ba-9391-c6428da6b9ac",
+      "title": "Jenseits des SQL: Squeezing und QND",
+      "titleEn": "Beyond SQL with squeezing and QND",
+      "description": "Die lernende Person kann erklären, wie Squeezing und quanten-nicht-destruktive Messungen das SQL übertreffen.",
+      "descriptionEn": "The learner can explain how squeezing and quantum non-demolition techniques surpass the SQL.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3034"
+      ],
+      "contains": [],
+      "requires": [
+        "afdb49af-1c52-532d-95f9-3641432e7c79"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    }
+  ],
+  "landscapeId": "08ce2cfb-c279-57d1-ba2d-8b83991e65f9"
 }

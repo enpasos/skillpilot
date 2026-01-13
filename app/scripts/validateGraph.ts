@@ -12,7 +12,8 @@ const allowedPhases = new Set([
   'Pflichtbereich', 'Wahlpflichtbereich', 'Wahlbereich', 'Bachelorarbeit', 'Programm',
   'Modul', 'Module',
   'GOP', 'Bachelorprüfung', 'Studienleistung', 'Grundlagenphase', 'Vertiefungsphase',
-  'J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13'
+  'J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13',
+  'Curriculum', 'Semester', 'Bereich', 'Katalog'
 ])
 
 const allowedLeitideen = new Set([

@@ -1,2306 +1,1788 @@
 {
-    "title": "Geometrie (TUM, Modul MA2011)",
-    "titleEn": "Geometry (TUM, Module MA2011)",
-    "description": "Die Vorlesung deckt ausgewählte grundlegende Themen aus projektiver Geometrie, Differentialgeometrie und kombinatorischer Geometrie ab und legt Wert auf Querbezüge sowie die Visualisierung geometrischer Objekte. Nach dem erfolgreichen Abschluss des Moduls Geometrie sind die Studierenden in der Lage, grundlegende Konzepte (u.a. Darstellung von Objekten und geometrischen Operationen, Durchführen von Transformationen sowie Berechnen charakteristischer Maßzahlen) sachgerecht anzuwenden. Insbesondere können sie geometrische Objekte mit Methoden der Algebra, Analysis und Kombinatorik formal beschreiben und Berechnungen an diesen Objekten durchführen. Die Studierenden kennen Visualisierungsmöglichkeiten geometrischer Objekte und können diese einsetzen. 9 ECTS, angeboten im Sommersemester, Version 2022w, verantwortet von Richter-Gebert, Jürgen.",
-    "descriptionEn": "The course covers selected fundamental topics from projective geometry, differential geometry, and combinatorial geometry and emphasizes connections between these areas as well as visualization of geometric objects. After successfully completing the module, students are able to apply core concepts of geometry (including representing objects and geometric operations, carrying out transformations, and computing characteristic invariants) appropriately. In particular, they can formally describe geometric objects using methods from algebra, analysis, and combinatorics and perform computations with these objects. Students know ways to visualize geometric objects and can carry them out. 9 ECTS, offered in the summer semester, version 2022w, responsible: Richter-Gebert, Jürgen.",
-    "landscapeId": "b4207a0e-e5be-4fee-bad1-6b5923eb4514",
-    "locale": "de-DE",
-    "subject": "Mathematik",
-    "frameworkId": "tum-ma2011",
-    "filters": [
-        {
-            "id": "BSc",
-            "label": "Bachelor Mathematik"
-        }
-    ],
-    "goals": [
-        {
-            "id": "834d5562-2d6c-5a80-8702-722337eb3fa4",
-            "shortKey": "tum_ma2011_module",
-            "title": "Geometrie – Gesamtmodul",
-            "titleEn": "Geometry – Full Module",
-            "description": "Die Vorlesung deckt ausgewählte grundlegende Themen aus projektiver Geometrie, Differentialgeometrie und kombinatorischer Geometrie ab und legt Wert auf Querbezüge sowie die Visualisierung geometrischer Objekte. Nach dem erfolgreichen Abschluss des Moduls Geometrie sind die Studierenden in der Lage, grundlegende Konzepte (u.a. Darstellung von Objekten und geometrischen Operationen, Durchführen von Transformationen sowie Berechnen charakteristischer Maßzahlen) sachgerecht anzuwenden. Insbesondere können sie geometrische Objekte mit Methoden der Algebra, Analysis und Kombinatorik formal beschreiben und Berechnungen an diesen Objekten durchführen. Die Studierenden kennen Visualisierungsmöglichkeiten geometrischer Objekte und können diese einsetzen.",
-            "descriptionEn": "The course covers selected fundamental topics from projective geometry, differential geometry, and combinatorial geometry and emphasizes connections between these areas as well as visualization of geometric objects. After successfully completing the module, students are able to apply core concepts of geometry (including representing objects and geometric operations, carrying out transformations, and computing characteristic invariants) appropriately. In particular, they can formally describe geometric objects using methods from algebra, analysis, and combinatorics and perform computations with these objects. Students know ways to visualize geometric objects and can carry them out.",
-            "core": true,
-            "weight": 9.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "ects:9",
-                "workload:270h",
-                "presence:120h",
-                "level:bachelor",
-                "language:de",
-                "module:MA2011",
-                "semester:SS",
-                "duration:1_semester",
-                "responsible:richter_gebert_j_rgen"
-            ],
-            "contains": [
-                "a81ce684-8033-50a1-9dee-d1b3a4456642",
-                "889b0996-5ae9-5124-8782-f6eb4da6b47c",
-                "28dc011f-2cd4-5359-b5b4-64a35416e5b0",
-                "e0541959-8b4f-5ea8-8565-e7a7bb9184d0",
-                "6fb07495-8f5f-5e10-a1b1-420c85669625",
-                "d305edd1-132d-5058-9895-2e90f49c9345",
-                "e83dd291-800b-520e-bbf8-e3ce45bb8b3d",
-                "2aeb98b2-efa3-5734-a986-afc3c593e630",
-                "09ffbdb8-2b35-5a31-8399-8b944e059713"
-            ],
-            "requires": [
-                "8eb1605b-fa70-511b-bbe4-28173d359c3b",
-                "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
-                "feaad1d5-022f-5ab3-93c3-001ac46de351"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Gesamtkompetenz",
-                "topicCode": "tum_ma2011_module"
-            },
-            "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA2011&description_version=2022w"
-        },
-        {
-            "id": "a81ce684-8033-50a1-9dee-d1b3a4456642",
-            "shortKey": "tum_ma2011_lo1",
-            "title": "Darstellungen und Transformationen",
-            "titleEn": "Representations and Transformations",
-            "description": "Zusammenfassender Cluster: Geometrische Objekte darstellen (u.a. homogene Koordinaten) und Transformationen als zentrales Werkzeug nutzen.",
-            "descriptionEn": "Summary cluster: representing geometric objects (including homogeneous coordinates) and using transformations as a central tool.",
-            "core": true,
-            "weight": 1.2,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "3ec85263-ed3b-5925-bc67-6ff716609bc2",
-                "9e7cb759-dae7-5e79-8ea8-d3927809d5d1"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo1"
-            }
-        },
-        {
-            "id": "3ec85263-ed3b-5925-bc67-6ff716609bc2",
-            "shortKey": "tum_ma2011_lo1_1",
-            "title": "Homogene Koordinaten verwenden",
-            "titleEn": "Use Homogeneous Coordinates",
-            "description": "Die lernende Person kann Punkte und Geraden in projektiven Räumen mit homogenen Koordinaten darstellen und in Koordinaten rechnen.",
-            "descriptionEn": "The learner can represent points and lines in projective spaces using homogeneous coordinates and perform coordinate computations.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "4c1662d1-afc8-523c-ba9d-ac94b2a7d21f",
-                "1db4a6ff-3c3d-525a-ac5b-5619eff4da63",
-                "6c49c11f-4b3d-5be8-8d03-b58302129040"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo1_1"
-            }
-        },
-        {
-            "id": "9e7cb759-dae7-5e79-8ea8-d3927809d5d1",
-            "shortKey": "tum_ma2011_lo1_2",
-            "title": "Geometrische Transformationen durchführen",
-            "titleEn": "Carry Out Geometric Transformations",
-            "description": "Die lernende Person kann Transformationen (z.B. projektive Abbildungen) in geeigneten Koordinatensystemen beschreiben, anwenden und ihre Wirkung auf Objekte interpretieren.",
-            "descriptionEn": "The learner can describe, apply, and interpret transformations (e.g., projective maps) in suitable coordinate systems.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "7cdd7612-c0f5-57a3-89bb-082e3fba864b",
-                "edb8084a-cffc-5034-ba0e-bf808651df9d",
-                "a771ef9e-3507-52c3-a4c2-7ad1c88048a4"
-            ],
-            "requires": [
-                "3ec85263-ed3b-5925-bc67-6ff716609bc2"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo1_2"
-            }
-        },
-        {
-            "id": "889b0996-5ae9-5124-8782-f6eb4da6b47c",
-            "shortKey": "tum_ma2011_lo2",
-            "title": "Projektive Geometrie: Ebene, Gerade, Transformationen",
-            "titleEn": "Projective Geometry: Plane, Line, Transformations",
-            "description": "Zusammenfassender Cluster: Grundobjekte der projektiven Geometrie in Ebene und auf der Geraden (über R und C) sowie ihre Transformationen.",
-            "descriptionEn": "Summary cluster: basic objects of projective geometry in the plane and on the line (over R and C) and their transformations.",
-            "core": true,
-            "weight": 1.3,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "7b39e9b5-ff13-54dc-972e-f3cffbabc95d",
-                "550a9512-6ea1-5284-afcc-939b3bf34da3"
-            ],
-            "requires": [
-                "9e7cb759-dae7-5e79-8ea8-d3927809d5d1"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo2"
-            }
-        },
-        {
-            "id": "7b39e9b5-ff13-54dc-972e-f3cffbabc95d",
-            "shortKey": "tum_ma2011_lo2_1",
-            "title": "Reelle projektive Ebene und projektive Gerade verstehen",
-            "titleEn": "Understand the Real Projective Plane and Projective Line",
-            "description": "Die lernende Person kann die reelle projektive Ebene und die projektive Gerade über R (und C) beschreiben, typische Objekte/Operationen benennen und in Beispielen rechnen.",
-            "descriptionEn": "The learner can describe the real projective plane and the projective line over R (and C), name typical objects/operations, and compute in examples.",
-            "core": true,
-            "weight": 0.65,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "437cff9a-2df9-5285-bf3e-81bd430c2e7f",
-                "de4982c1-54ec-5d41-8576-c7d4c31403fa",
-                "392ed8e0-d0b2-5257-a30d-5949958e1900"
-            ],
-            "requires": [
-                "3ec85263-ed3b-5925-bc67-6ff716609bc2"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo2_1"
-            }
-        },
-        {
-            "id": "550a9512-6ea1-5284-afcc-939b3bf34da3",
-            "shortKey": "tum_ma2011_lo2_2",
-            "title": "Projektive Abbildungen und Invarianten einsetzen",
-            "titleEn": "Use Projective Maps and Invariants",
-            "description": "Die lernende Person kann projektive Transformationen formulieren, Zusammensetzungen analysieren und projektive Invarianten in einfachen Aufgaben nutzen.",
-            "descriptionEn": "The learner can formulate projective transformations, analyze compositions, and use projective invariants in basic tasks.",
-            "core": true,
-            "weight": 0.65,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "6d6782ad-5b97-5223-aee5-e4d01655965b",
-                "0cd012e7-1ae4-50e6-99fc-077fc47064aa",
-                "59f3d54e-bd61-5de4-ad50-f5e95793343a"
-            ],
-            "requires": [
-                "7b39e9b5-ff13-54dc-972e-f3cffbabc95d",
-                "9e7cb759-dae7-5e79-8ea8-d3927809d5d1"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo2_2"
-            }
-        },
-        {
-            "id": "28dc011f-2cd4-5359-b5b4-64a35416e5b0",
-            "shortKey": "tum_ma2011_lo3",
-            "title": "Cayley-Klein und Querbezüge zur euklidischen Geometrie",
-            "titleEn": "Cayley–Klein and Links to Euclidean Geometry",
-            "description": "Zusammenfassender Cluster: Querbezüge zwischen projektiver und euklidischer Geometrie über den Cayley-Klein-Ansatz.",
-            "descriptionEn": "Summary cluster: links between projective and Euclidean geometry via the Cayley–Klein approach.",
-            "core": true,
-            "weight": 0.9,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "f8bbfd74-0312-5e04-ac8a-0ca0d5a3d056",
-                "36cbbb08-b3cd-5a8d-b92f-39ab133bb6a8"
-            ],
-            "requires": [
-                "550a9512-6ea1-5284-afcc-939b3bf34da3"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo3"
-            }
-        },
-        {
-            "id": "f8bbfd74-0312-5e04-ac8a-0ca0d5a3d056",
-            "shortKey": "tum_ma2011_lo3_1",
-            "title": "Cayley-Klein-Ansatz zur euklidischen Geometrie erklären",
-            "titleEn": "Explain the Cayley–Klein Approach to Euclidean Geometry",
-            "description": "Die lernende Person kann die Idee des Cayley-Klein-Ansatzes beschreiben, mit dem euklidische Geometrie aus projektiver Geometrie gewonnen wird, und die Rolle des „Absoluten“ erläutern.",
-            "descriptionEn": "The learner can describe the idea of the Cayley–Klein approach for deriving Euclidean geometry from projective geometry and explain the role of the “absolute”.",
-            "core": true,
-            "weight": 0.45,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "d627bdd3-4539-5394-ba2a-ca9e2c0e8977",
-                "5834707a-baa4-5e12-9a47-a33d39e9d5ed",
-                "821fa5d7-f824-5bf6-be2b-acfd3c3ec6dd"
-            ],
-            "requires": [
-                "550a9512-6ea1-5284-afcc-939b3bf34da3"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo3_1"
-            }
-        },
-        {
-            "id": "36cbbb08-b3cd-5a8d-b92f-39ab133bb6a8",
-            "shortKey": "tum_ma2011_lo3_2",
-            "title": "Euklidische Größen projektiv interpretieren",
-            "titleEn": "Interpret Euclidean Quantities Projectively",
-            "description": "Die lernende Person kann in Beispielen zeigen, wie projektive Modelle euklidische Begriffe (z.B. Winkel/Abstände in geeigneten Settings) motivieren und berechenbar machen.",
-            "descriptionEn": "The learner can demonstrate in examples how projective models motivate and make computable Euclidean notions (e.g., angles/distances in suitable settings).",
-            "core": true,
-            "weight": 0.45,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "bc24a490-d410-5824-a7e9-e2eb19200d31",
-                "847db4b9-741f-5f63-b677-49f1e0743ccc",
-                "e6a710ba-e3b8-5d08-b346-a46b1332d760"
-            ],
-            "requires": [
-                "f8bbfd74-0312-5e04-ac8a-0ca0d5a3d056"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo3_2"
-            }
-        },
-        {
-            "id": "e0541959-8b4f-5ea8-8565-e7a7bb9184d0",
-            "shortKey": "tum_ma2011_lo4",
-            "title": "Differentialgeometrie: Kurven",
-            "titleEn": "Differential Geometry: Curves",
-            "description": "Zusammenfassender Cluster: Theorie ebener und räumlicher Kurven mit Krümmungs- und Torsionsmaßen.",
-            "descriptionEn": "Summary cluster: theory of plane and space curves with curvature and torsion measures.",
-            "core": true,
-            "weight": 1.2,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "daae6df7-713c-5fbc-896e-63a4497004a1",
-                "5a3a8ec3-867f-512f-af34-e64d17f28ecb"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo4"
-            }
-        },
-        {
-            "id": "daae6df7-713c-5fbc-896e-63a4497004a1",
-            "shortKey": "tum_ma2011_lo4_1",
-            "title": "Ebene und räumliche Kurven parametrisieren und analysieren",
-            "titleEn": "Parametrize and Analyze Plane and Space Curves",
-            "description": "Die lernende Person kann ebene und räumliche Kurven parametrisieren, Tangenten/Normalen bestimmen und grundlegende Invarianten wie Krümmung in Beispielen berechnen.",
-            "descriptionEn": "The learner can parametrize plane and space curves, determine tangents/normals, and compute basic invariants such as curvature in examples.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "84e2871e-096e-5f60-9de8-160a0a7c2b2f",
-                "f2e19cb5-8754-5ff6-a556-8925ef660de5",
-                "9912f6ab-5fd8-5983-98b5-97f02569a188"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo4_1"
-            }
-        },
-        {
-            "id": "5a3a8ec3-867f-512f-af34-e64d17f28ecb",
-            "shortKey": "tum_ma2011_lo4_2",
-            "title": "Krümmung und Torsion interpretieren",
-            "titleEn": "Interpret Curvature and Torsion",
-            "description": "Die lernende Person kann Krümmung und Torsion als Maßzahlen räumlicher Kurven interpretieren und deren Bedeutung für Form und Bewegung geometrisch erklären.",
-            "descriptionEn": "The learner can interpret curvature and torsion as invariants of space curves and explain their geometric meaning for shape and motion.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "1f0d6318-49d1-5093-8fff-b2f4dc99e5af",
-                "7f2a046c-c612-5bea-bf35-72caec7db586",
-                "a74f47f8-d738-574b-8aa3-9f586a3aebe1"
-            ],
-            "requires": [
-                "daae6df7-713c-5fbc-896e-63a4497004a1"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo4_2"
-            }
-        },
-        {
-            "id": "6fb07495-8f5f-5e10-a1b1-420c85669625",
-            "shortKey": "tum_ma2011_lo5",
-            "title": "Differentialgeometrie: Flächen und Gauss-Bonnet",
-            "titleEn": "Differential Geometry: Surfaces and Gauss–Bonnet",
-            "description": "Zusammenfassender Cluster: Flächentheorie mit Gaussabbildung sowie der Satz von Gauss-Bonnet als Verbindung zu topologischen Invarianten.",
-            "descriptionEn": "Summary cluster: surface theory with the Gauss map and the Gauss–Bonnet theorem linking to topological invariants.",
-            "core": true,
-            "weight": 1.3,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "1311805a-1d0e-5545-a85f-ecefa3aefc14",
-                "7b409514-48e6-557b-8f60-048c34406b76"
-            ],
-            "requires": [
-                "5a3a8ec3-867f-512f-af34-e64d17f28ecb"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo5"
-            }
-        },
-        {
-            "id": "1311805a-1d0e-5545-a85f-ecefa3aefc14",
-            "shortKey": "tum_ma2011_lo5_1",
-            "title": "Flächen, Normalen und Gaussabbildung behandeln",
-            "titleEn": "Work with Surfaces, Normals, and the Gauss Map",
-            "description": "Die lernende Person kann Flächen im Raum beschreiben, Normalen und die Gaussabbildung bestimmen und Krümmungsbegriffe in Beispielen berechnen.",
-            "descriptionEn": "The learner can describe surfaces in space, determine normals and the Gauss map, and compute curvature notions in examples.",
-            "core": true,
-            "weight": 0.65,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "394a0801-473a-53f2-ab29-7fef185b5de4",
-                "9aa57168-252f-5cd0-8be6-021d7357106c",
-                "0c6a8d35-167f-521e-b750-5b708b6de43f"
-            ],
-            "requires": [
-                "daae6df7-713c-5fbc-896e-63a4497004a1"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo5_1"
-            }
-        },
-        {
-            "id": "7b409514-48e6-557b-8f60-048c34406b76",
-            "shortKey": "tum_ma2011_lo5_2",
-            "title": "Satz von Gauss-Bonnet anwenden",
-            "titleEn": "Apply the Gauss–Bonnet Theorem",
-            "description": "Die lernende Person kann den Satz von Gauss-Bonnet in einfachen Situationen einsetzen, den Zusammenhang zwischen Krümmung und Topologie (Euler-Charakteristik) erläutern und Resultate interpretieren.",
-            "descriptionEn": "The learner can apply the Gauss–Bonnet theorem in simple settings, explain the link between curvature and topology (Euler characteristic), and interpret results.",
-            "core": true,
-            "weight": 0.65,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "eee0f1af-d884-5171-bb24-c0e8eddbfca7",
-                "74d0a04d-1096-59e2-9209-132a84f0be84",
-                "2ab0a800-8385-50f8-a6b0-0deb59200974"
-            ],
-            "requires": [
-                "1311805a-1d0e-5545-a85f-ecefa3aefc14"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo5_2"
-            }
-        },
-        {
-            "id": "d305edd1-132d-5058-9895-2e90f49c9345",
-            "shortKey": "tum_ma2011_lo6",
-            "title": "Kombinatorische Geometrie: Inzidenzsysteme und Matroide",
-            "titleEn": "Combinatorial Geometry: Incidence Systems and Matroids",
-            "description": "Zusammenfassender Cluster: Inzidenzstrukturen und Matroide als kombinatorische Modelle geometrischer Zusammenhänge.",
-            "descriptionEn": "Summary cluster: incidence structures and matroids as combinatorial models of geometric relations.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "bef721cf-6d29-5beb-9145-46705762fa0e",
-                "1ff40e20-2901-5682-8e80-b3d2d094b6c1"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo6"
-            }
-        },
-        {
-            "id": "bef721cf-6d29-5beb-9145-46705762fa0e",
-            "shortKey": "tum_ma2011_lo6_1",
-            "title": "Inzidenzsysteme modellieren und auswerten",
-            "titleEn": "Model and Analyze Incidence Systems",
-            "description": "Die lernende Person kann Inzidenzsysteme definieren, Beispiele aus der kombinatorischen Geometrie formulieren und grundlegende Zähl- und Strukturargumente anwenden.",
-            "descriptionEn": "The learner can define incidence systems, formulate examples from combinatorial geometry, and apply basic counting and structure arguments.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "d72034e1-bd42-5a33-9c94-f16aaf79b38c",
-                "a0b55d8a-10cd-54a2-86ff-4621f1770859",
-                "f445be3e-0472-5a99-94ca-1b3a4c57a30b"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo6_1"
-            }
-        },
-        {
-            "id": "1ff40e20-2901-5682-8e80-b3d2d094b6c1",
-            "shortKey": "tum_ma2011_lo6_2",
-            "title": "Matroide als Abstraktion geometrischer Unabhängigkeit nutzen",
-            "titleEn": "Use Matroids as an Abstraction of Geometric Independence",
-            "description": "Die lernende Person kann Matroide über Unabhängigkeit oder Rang definieren, Grundaxiome prüfen und Matroide in geometrischen Beispielen interpretieren.",
-            "descriptionEn": "The learner can define matroids via independence or rank, verify the basic axioms, and interpret matroids in geometric examples.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "b9798d2d-8321-53da-b1a1-51f1e9eab4af",
-                "9892225f-9cd2-5a99-9e81-2b21a5429ed9",
-                "cb2303d5-072b-57d5-9788-9901b89bd0ca"
-            ],
-            "requires": [
-                "bef721cf-6d29-5beb-9145-46705762fa0e"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo6_2"
-            }
-        },
-        {
-            "id": "e83dd291-800b-520e-bbf8-e3ce45bb8b3d",
-            "shortKey": "tum_ma2011_lo7",
-            "title": "Polytopen, Seitenverband und Euler-Charakteristik",
-            "titleEn": "Polytopes, Face Lattices, and the Euler Characteristic",
-            "description": "Zusammenfassender Cluster: Polytope, Seitenverband und Euler-Charakteristik als zentrale Werkzeuge der kombinatorischen Geometrie.",
-            "descriptionEn": "Summary cluster: polytopes, face lattices, and the Euler characteristic as central tools of combinatorial geometry.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "b070b91a-db4d-5631-a745-197100532b6a",
-                "723392ef-5528-579d-9502-68ed22a992de"
-            ],
-            "requires": [
-                "1ff40e20-2901-5682-8e80-b3d2d094b6c1"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo7"
-            }
-        },
-        {
-            "id": "b070b91a-db4d-5631-a745-197100532b6a",
-            "shortKey": "tum_ma2011_lo7_1",
-            "title": "Polytope und Seitenverband (Face Lattice) beschreiben",
-            "titleEn": "Describe Polytopes and the Face Lattice",
-            "description": "Die lernende Person kann Polytopen beschreiben, ihre Seiten (Faces) organisieren und den Seitenverband als geordnetes System in Beispielen auswerten.",
-            "descriptionEn": "The learner can describe polytopes, organize their faces, and analyze the face lattice as a partially ordered structure in examples.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "e74d5b42-c780-5871-a179-549c45178802",
-                "824bc8c0-fba5-55e5-b878-468299f038f4",
-                "fef3a854-7a96-5944-bd12-3a7754d4a0c1"
-            ],
-            "requires": [
-                "bef721cf-6d29-5beb-9145-46705762fa0e"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo7_1"
-            }
-        },
-        {
-            "id": "723392ef-5528-579d-9502-68ed22a992de",
-            "shortKey": "tum_ma2011_lo7_2",
-            "title": "Euler-Charakteristik in geometrischen Strukturen verwenden",
-            "titleEn": "Use the Euler Characteristic in Geometric Structures",
-            "description": "Die lernende Person kann Euler-Charakteristiken berechnen, Beziehungen zwischen kombinatorischen Daten (z.B. Anzahl von Ecken/Kanten/Flächen) herleiten und Ergebnisse interpretieren.",
-            "descriptionEn": "The learner can compute Euler characteristics, derive relations between combinatorial data (e.g., numbers of vertices/edges/faces), and interpret the results.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "617a1c4a-7983-577f-96e5-a34570ab1e77",
-                "f3d67693-7251-5b83-9a15-574483b8a28a",
-                "cf922bde-5b87-5799-b015-44c963435ced"
-            ],
-            "requires": [
-                "b070b91a-db4d-5631-a745-197100532b6a"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo7_2"
-            }
-        },
-        {
-            "id": "2aeb98b2-efa3-5734-a986-afc3c593e630",
-            "shortKey": "tum_ma2011_lo8",
-            "title": "Symmetrien, Methodenwahl und Visualisierung",
-            "titleEn": "Symmetries, Method Choice, and Visualization",
-            "description": "Zusammenfassender Cluster: Symmetrien, methodisches Vorgehen und Visualisierung als Querschnittskompetenzen der Geometrie.",
-            "descriptionEn": "Summary cluster: symmetries, methodological approach, and visualization as cross-cutting competencies in geometry.",
-            "core": true,
-            "weight": 1.1,
-            "phase": "Modul",
-            "area": "Methoden & Visualisierung",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "82b1d2e8-9650-5bd9-9651-e3c09f1009d1",
-                "a62e6f72-5008-5359-aea1-d9e82d61f547"
-            ],
-            "requires": [
-                "9e7cb759-dae7-5e79-8ea8-d3927809d5d1",
-                "1ff40e20-2901-5682-8e80-b3d2d094b6c1"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Methoden & Visualisierung",
-                "topicCode": "tum_ma2011_lo8"
-            }
-        },
-        {
-            "id": "82b1d2e8-9650-5bd9-9651-e3c09f1009d1",
-            "shortKey": "tum_ma2011_lo8_1",
-            "title": "Geometrische Symmetriegruppen analysieren",
-            "titleEn": "Analyze Geometric Symmetry Groups",
-            "description": "Die lernende Person kann Symmetriegruppen geometrischer Objekte beschreiben, Gruppenaktionen in Beispielen nutzen und Symmetrien zur Strukturierung von Problemen einsetzen.",
-            "descriptionEn": "The learner can describe symmetry groups of geometric objects, use group actions in examples, and exploit symmetries to structure problems.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Methoden & Visualisierung",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "04725b55-f9e9-5fb4-9fbc-664b248e7432",
-                "5e15ba63-1247-5d74-9a29-e7d7a1e18187",
-                "daaa2a01-45bf-52a4-9873-488afe01b6b5"
-            ],
-            "requires": [
-                "9e7cb759-dae7-5e79-8ea8-d3927809d5d1",
-                "bef721cf-6d29-5beb-9145-46705762fa0e"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Methoden & Visualisierung",
-                "topicCode": "tum_ma2011_lo8_1"
-            }
-        },
-        {
-            "id": "a62e6f72-5008-5359-aea1-d9e82d61f547",
-            "shortKey": "tum_ma2011_lo8_2",
-            "title": "Methodenwahl begründen und Objekte visualisieren",
-            "titleEn": "Justify Method Choices and Visualize Objects",
-            "description": "Die lernende Person kann für geometrische Aufgaben geeignete Methoden (algebraisch, analytisch, kombinatorisch) auswählen, Querbezüge benennen und geometrische Objekte sinnvoll visualisieren.",
-            "descriptionEn": "The learner can choose suitable methods (algebraic, analytic, combinatorial) for geometric tasks, articulate connections between areas, and meaningfully visualize geometric objects.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Methoden & Visualisierung",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [
-                "fb609bcf-11a6-5e29-9798-5857194af7b9",
-                "f647322f-eef3-5a41-89f0-ad59abbb1f69",
-                "94a5485b-51df-5729-9892-ec25018ccdce"
-            ],
-            "requires": [
-                "82b1d2e8-9650-5bd9-9651-e3c09f1009d1"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Methoden & Visualisierung",
-                "topicCode": "tum_ma2011_lo8_2"
-            }
-        },
-        {
-            "id": "09ffbdb8-2b35-5a31-8399-8b944e059713",
-            "shortKey": "tum_ma2011_memorize",
-            "title": "Kernaussagen des Moduls memorisieren",
-            "titleEn": "Memorize Key Module Statements",
-            "description": "Die lernende Person hat alle zentralen Definitionen und Sätze des Moduls verinnerlicht (geprüft z.B. durch SRS/Lernkarten).",
-            "descriptionEn": "The learner has internalized all key definitions and theorems of the module (verified e.g. via SRS/flashcards).",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:MA2011",
-                "srs-deck:ma2011"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/ma2011_deck.json"
-            },
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Gesamtkompetenz",
-                "topicCode": "tum_ma2011_memorize"
-            }
-        },
-        {
-            "id": "4c1662d1-afc8-523c-ba9d-ac94b2a7d21f",
-            "shortKey": "tum_ma2011_lo1_1_1",
-            "title": "Kennen: Homogene Koordinaten verwenden",
-            "titleEn": "Know: Use Homogeneous Coordinates",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Homogene Koordinaten verwenden' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Homogeneous Coordinates'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo1_1_1"
-            }
-        },
-        {
-            "id": "1db4a6ff-3c3d-525a-ac5b-5619eff4da63",
-            "shortKey": "tum_ma2011_lo1_1_2",
-            "title": "Verstehen: Homogene Koordinaten verwenden",
-            "titleEn": "Understand: Use Homogeneous Coordinates",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Homogene Koordinaten verwenden'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Use Homogeneous Coordinates'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "4c1662d1-afc8-523c-ba9d-ac94b2a7d21f"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo1_1_2"
-            }
-        },
-        {
-            "id": "6c49c11f-4b3d-5be8-8d03-b58302129040",
-            "shortKey": "tum_ma2011_lo1_1_3",
-            "title": "Anwenden: Homogene Koordinaten verwenden",
-            "titleEn": "Apply: Use Homogeneous Coordinates",
-            "description": "Die lernende Person wendet das Wissen zu 'Homogene Koordinaten verwenden' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Use Homogeneous Coordinates' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "1db4a6ff-3c3d-525a-ac5b-5619eff4da63"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo1_1_3"
-            }
-        },
-        {
-            "id": "7cdd7612-c0f5-57a3-89bb-082e3fba864b",
-            "shortKey": "tum_ma2011_lo1_2_1",
-            "title": "Kennen: Geometrische Transformationen durchführen",
-            "titleEn": "Know: Carry Out Geometric Transformations",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Geometrische Transformationen durchführen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Carry Out Geometric Transformations'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo1_2_1"
-            }
-        },
-        {
-            "id": "edb8084a-cffc-5034-ba0e-bf808651df9d",
-            "shortKey": "tum_ma2011_lo1_2_2",
-            "title": "Verstehen: Geometrische Transformationen durchführen",
-            "titleEn": "Understand: Carry Out Geometric Transformations",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Geometrische Transformationen durchführen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Carry Out Geometric Transformations'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "7cdd7612-c0f5-57a3-89bb-082e3fba864b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo1_2_2"
-            }
-        },
-        {
-            "id": "a771ef9e-3507-52c3-a4c2-7ad1c88048a4",
-            "shortKey": "tum_ma2011_lo1_2_3",
-            "title": "Anwenden: Geometrische Transformationen durchführen",
-            "titleEn": "Apply: Carry Out Geometric Transformations",
-            "description": "Die lernende Person wendet das Wissen zu 'Geometrische Transformationen durchführen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Carry Out Geometric Transformations' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "edb8084a-cffc-5034-ba0e-bf808651df9d"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo1_2_3"
-            }
-        },
-        {
-            "id": "437cff9a-2df9-5285-bf3e-81bd430c2e7f",
-            "shortKey": "tum_ma2011_lo2_1_1",
-            "title": "Kennen: Reelle projektive Ebene und projektive Gerade verstehen",
-            "titleEn": "Know: Understand the Real Projective Plane and Projective Line",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Reelle projektive Ebene und projektive Gerade verstehen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Understand the Real Projective Plane and Projective Line'.",
-            "core": true,
-            "weight": 0.195,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo2_1_1"
-            }
-        },
-        {
-            "id": "de4982c1-54ec-5d41-8576-c7d4c31403fa",
-            "shortKey": "tum_ma2011_lo2_1_2",
-            "title": "Verstehen: Reelle projektive Ebene und projektive Gerade verstehen",
-            "titleEn": "Understand: Understand the Real Projective Plane and Projective Line",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Reelle projektive Ebene und projektive Gerade verstehen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Understand the Real Projective Plane and Projective Line'.",
-            "core": true,
-            "weight": 0.195,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "437cff9a-2df9-5285-bf3e-81bd430c2e7f"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo2_1_2"
-            }
-        },
-        {
-            "id": "392ed8e0-d0b2-5257-a30d-5949958e1900",
-            "shortKey": "tum_ma2011_lo2_1_3",
-            "title": "Anwenden: Reelle projektive Ebene und projektive Gerade verstehen",
-            "titleEn": "Apply: Understand the Real Projective Plane and Projective Line",
-            "description": "Die lernende Person wendet das Wissen zu 'Reelle projektive Ebene und projektive Gerade verstehen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Understand the Real Projective Plane and Projective Line' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.26,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "de4982c1-54ec-5d41-8576-c7d4c31403fa"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo2_1_3"
-            }
-        },
-        {
-            "id": "6d6782ad-5b97-5223-aee5-e4d01655965b",
-            "shortKey": "tum_ma2011_lo2_2_1",
-            "title": "Kennen: Projektive Abbildungen und Invarianten einsetzen",
-            "titleEn": "Know: Use Projective Maps and Invariants",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Projektive Abbildungen und Invarianten einsetzen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Projective Maps and Invariants'.",
-            "core": true,
-            "weight": 0.195,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo2_2_1"
-            }
-        },
-        {
-            "id": "0cd012e7-1ae4-50e6-99fc-077fc47064aa",
-            "shortKey": "tum_ma2011_lo2_2_2",
-            "title": "Verstehen: Projektive Abbildungen und Invarianten einsetzen",
-            "titleEn": "Understand: Use Projective Maps and Invariants",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Projektive Abbildungen und Invarianten einsetzen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Use Projective Maps and Invariants'.",
-            "core": true,
-            "weight": 0.195,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "6d6782ad-5b97-5223-aee5-e4d01655965b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo2_2_2"
-            }
-        },
-        {
-            "id": "59f3d54e-bd61-5de4-ad50-f5e95793343a",
-            "shortKey": "tum_ma2011_lo2_2_3",
-            "title": "Anwenden: Projektive Abbildungen und Invarianten einsetzen",
-            "titleEn": "Apply: Use Projective Maps and Invariants",
-            "description": "Die lernende Person wendet das Wissen zu 'Projektive Abbildungen und Invarianten einsetzen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Use Projective Maps and Invariants' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.26,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "0cd012e7-1ae4-50e6-99fc-077fc47064aa"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo2_2_3"
-            }
-        },
-        {
-            "id": "d627bdd3-4539-5394-ba2a-ca9e2c0e8977",
-            "shortKey": "tum_ma2011_lo3_1_1",
-            "title": "Kennen: Cayley-Klein-Ansatz zur euklidischen Geometrie erklären",
-            "titleEn": "Know: Explain the Cayley–Klein Approach to Euclidean Geometry",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Cayley-Klein-Ansatz zur euklidischen Geometrie erklären' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Explain the Cayley–Klein Approach to Euclidean Geometry'.",
-            "core": true,
-            "weight": 0.135,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo3_1_1"
-            }
-        },
-        {
-            "id": "5834707a-baa4-5e12-9a47-a33d39e9d5ed",
-            "shortKey": "tum_ma2011_lo3_1_2",
-            "title": "Verstehen: Cayley-Klein-Ansatz zur euklidischen Geometrie erklären",
-            "titleEn": "Understand: Explain the Cayley–Klein Approach to Euclidean Geometry",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Cayley-Klein-Ansatz zur euklidischen Geometrie erklären'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Explain the Cayley–Klein Approach to Euclidean Geometry'.",
-            "core": true,
-            "weight": 0.135,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "d627bdd3-4539-5394-ba2a-ca9e2c0e8977"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo3_1_2"
-            }
-        },
-        {
-            "id": "821fa5d7-f824-5bf6-be2b-acfd3c3ec6dd",
-            "shortKey": "tum_ma2011_lo3_1_3",
-            "title": "Anwenden: Cayley-Klein-Ansatz zur euklidischen Geometrie erklären",
-            "titleEn": "Apply: Explain the Cayley–Klein Approach to Euclidean Geometry",
-            "description": "Die lernende Person wendet das Wissen zu 'Cayley-Klein-Ansatz zur euklidischen Geometrie erklären' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Explain the Cayley–Klein Approach to Euclidean Geometry' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.18000000000000002,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "5834707a-baa4-5e12-9a47-a33d39e9d5ed"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo3_1_3"
-            }
-        },
-        {
-            "id": "bc24a490-d410-5824-a7e9-e2eb19200d31",
-            "shortKey": "tum_ma2011_lo3_2_1",
-            "title": "Kennen: Euklidische Größen projektiv interpretieren",
-            "titleEn": "Know: Interpret Euclidean Quantities Projectively",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Euklidische Größen projektiv interpretieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Interpret Euclidean Quantities Projectively'.",
-            "core": true,
-            "weight": 0.135,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo3_2_1"
-            }
-        },
-        {
-            "id": "847db4b9-741f-5f63-b677-49f1e0743ccc",
-            "shortKey": "tum_ma2011_lo3_2_2",
-            "title": "Verstehen: Euklidische Größen projektiv interpretieren",
-            "titleEn": "Understand: Interpret Euclidean Quantities Projectively",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Euklidische Größen projektiv interpretieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Interpret Euclidean Quantities Projectively'.",
-            "core": true,
-            "weight": 0.135,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "bc24a490-d410-5824-a7e9-e2eb19200d31"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo3_2_2"
-            }
-        },
-        {
-            "id": "e6a710ba-e3b8-5d08-b346-a46b1332d760",
-            "shortKey": "tum_ma2011_lo3_2_3",
-            "title": "Anwenden: Euklidische Größen projektiv interpretieren",
-            "titleEn": "Apply: Interpret Euclidean Quantities Projectively",
-            "description": "Die lernende Person wendet das Wissen zu 'Euklidische Größen projektiv interpretieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Interpret Euclidean Quantities Projectively' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.18000000000000002,
-            "phase": "Modul",
-            "area": "Projektive Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "847db4b9-741f-5f63-b677-49f1e0743ccc"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Projektive Geometrie",
-                "topicCode": "tum_ma2011_lo3_2_3"
-            }
-        },
-        {
-            "id": "84e2871e-096e-5f60-9de8-160a0a7c2b2f",
-            "shortKey": "tum_ma2011_lo4_1_1",
-            "title": "Kennen: Ebene und räumliche Kurven parametrisieren und analysieren",
-            "titleEn": "Know: Parametrize and Analyze Plane and Space Curves",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Ebene und räumliche Kurven parametrisieren und analysieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Parametrize and Analyze Plane and Space Curves'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo4_1_1"
-            }
-        },
-        {
-            "id": "f2e19cb5-8754-5ff6-a556-8925ef660de5",
-            "shortKey": "tum_ma2011_lo4_1_2",
-            "title": "Verstehen: Ebene und räumliche Kurven parametrisieren und analysieren",
-            "titleEn": "Understand: Parametrize and Analyze Plane and Space Curves",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Ebene und räumliche Kurven parametrisieren und analysieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Parametrize and Analyze Plane and Space Curves'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "84e2871e-096e-5f60-9de8-160a0a7c2b2f"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo4_1_2"
-            }
-        },
-        {
-            "id": "9912f6ab-5fd8-5983-98b5-97f02569a188",
-            "shortKey": "tum_ma2011_lo4_1_3",
-            "title": "Anwenden: Ebene und räumliche Kurven parametrisieren und analysieren",
-            "titleEn": "Apply: Parametrize and Analyze Plane and Space Curves",
-            "description": "Die lernende Person wendet das Wissen zu 'Ebene und räumliche Kurven parametrisieren und analysieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Parametrize and Analyze Plane and Space Curves' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "f2e19cb5-8754-5ff6-a556-8925ef660de5"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo4_1_3"
-            }
-        },
-        {
-            "id": "1f0d6318-49d1-5093-8fff-b2f4dc99e5af",
-            "shortKey": "tum_ma2011_lo4_2_1",
-            "title": "Kennen: Krümmung und Torsion interpretieren",
-            "titleEn": "Know: Interpret Curvature and Torsion",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Krümmung und Torsion interpretieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Interpret Curvature and Torsion'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo4_2_1"
-            }
-        },
-        {
-            "id": "7f2a046c-c612-5bea-bf35-72caec7db586",
-            "shortKey": "tum_ma2011_lo4_2_2",
-            "title": "Verstehen: Krümmung und Torsion interpretieren",
-            "titleEn": "Understand: Interpret Curvature and Torsion",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Krümmung und Torsion interpretieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Interpret Curvature and Torsion'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "1f0d6318-49d1-5093-8fff-b2f4dc99e5af"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo4_2_2"
-            }
-        },
-        {
-            "id": "a74f47f8-d738-574b-8aa3-9f586a3aebe1",
-            "shortKey": "tum_ma2011_lo4_2_3",
-            "title": "Anwenden: Krümmung und Torsion interpretieren",
-            "titleEn": "Apply: Interpret Curvature and Torsion",
-            "description": "Die lernende Person wendet das Wissen zu 'Krümmung und Torsion interpretieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Interpret Curvature and Torsion' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "7f2a046c-c612-5bea-bf35-72caec7db586"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo4_2_3"
-            }
-        },
-        {
-            "id": "394a0801-473a-53f2-ab29-7fef185b5de4",
-            "shortKey": "tum_ma2011_lo5_1_1",
-            "title": "Kennen: Flächen, Normalen und Gaussabbildung behandeln",
-            "titleEn": "Know: Work with Surfaces, Normals, and the Gauss Map",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Flächen, Normalen und Gaussabbildung behandeln' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Work with Surfaces, Normals, and the Gauss Map'.",
-            "core": true,
-            "weight": 0.195,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo5_1_1"
-            }
-        },
-        {
-            "id": "9aa57168-252f-5cd0-8be6-021d7357106c",
-            "shortKey": "tum_ma2011_lo5_1_2",
-            "title": "Verstehen: Flächen, Normalen und Gaussabbildung behandeln",
-            "titleEn": "Understand: Work with Surfaces, Normals, and the Gauss Map",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Flächen, Normalen und Gaussabbildung behandeln'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Work with Surfaces, Normals, and the Gauss Map'.",
-            "core": true,
-            "weight": 0.195,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "394a0801-473a-53f2-ab29-7fef185b5de4"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo5_1_2"
-            }
-        },
-        {
-            "id": "0c6a8d35-167f-521e-b750-5b708b6de43f",
-            "shortKey": "tum_ma2011_lo5_1_3",
-            "title": "Anwenden: Flächen, Normalen und Gaussabbildung behandeln",
-            "titleEn": "Apply: Work with Surfaces, Normals, and the Gauss Map",
-            "description": "Die lernende Person wendet das Wissen zu 'Flächen, Normalen und Gaussabbildung behandeln' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Work with Surfaces, Normals, and the Gauss Map' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.26,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "9aa57168-252f-5cd0-8be6-021d7357106c"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo5_1_3"
-            }
-        },
-        {
-            "id": "eee0f1af-d884-5171-bb24-c0e8eddbfca7",
-            "shortKey": "tum_ma2011_lo5_2_1",
-            "title": "Kennen: Satz von Gauss-Bonnet anwenden",
-            "titleEn": "Know: Apply the Gauss–Bonnet Theorem",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Satz von Gauss-Bonnet anwenden' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply the Gauss–Bonnet Theorem'.",
-            "core": true,
-            "weight": 0.195,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo5_2_1"
-            }
-        },
-        {
-            "id": "74d0a04d-1096-59e2-9209-132a84f0be84",
-            "shortKey": "tum_ma2011_lo5_2_2",
-            "title": "Verstehen: Satz von Gauss-Bonnet anwenden",
-            "titleEn": "Understand: Apply the Gauss–Bonnet Theorem",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Satz von Gauss-Bonnet anwenden'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Apply the Gauss–Bonnet Theorem'.",
-            "core": true,
-            "weight": 0.195,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "eee0f1af-d884-5171-bb24-c0e8eddbfca7"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo5_2_2"
-            }
-        },
-        {
-            "id": "2ab0a800-8385-50f8-a6b0-0deb59200974",
-            "shortKey": "tum_ma2011_lo5_2_3",
-            "title": "Anwenden: Satz von Gauss-Bonnet anwenden",
-            "titleEn": "Apply: Apply the Gauss–Bonnet Theorem",
-            "description": "Die lernende Person wendet das Wissen zu 'Satz von Gauss-Bonnet anwenden' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Apply the Gauss–Bonnet Theorem' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.26,
-            "phase": "Modul",
-            "area": "Differentialgeometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "74d0a04d-1096-59e2-9209-132a84f0be84"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Differentialgeometrie",
-                "topicCode": "tum_ma2011_lo5_2_3"
-            }
-        },
-        {
-            "id": "d72034e1-bd42-5a33-9c94-f16aaf79b38c",
-            "shortKey": "tum_ma2011_lo6_1_1",
-            "title": "Kennen: Inzidenzsysteme modellieren und auswerten",
-            "titleEn": "Know: Model and Analyze Incidence Systems",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Inzidenzsysteme modellieren und auswerten' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Model and Analyze Incidence Systems'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo6_1_1"
-            }
-        },
-        {
-            "id": "a0b55d8a-10cd-54a2-86ff-4621f1770859",
-            "shortKey": "tum_ma2011_lo6_1_2",
-            "title": "Verstehen: Inzidenzsysteme modellieren und auswerten",
-            "titleEn": "Understand: Model and Analyze Incidence Systems",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Inzidenzsysteme modellieren und auswerten'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Model and Analyze Incidence Systems'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "d72034e1-bd42-5a33-9c94-f16aaf79b38c"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo6_1_2"
-            }
-        },
-        {
-            "id": "f445be3e-0472-5a99-94ca-1b3a4c57a30b",
-            "shortKey": "tum_ma2011_lo6_1_3",
-            "title": "Anwenden: Inzidenzsysteme modellieren und auswerten",
-            "titleEn": "Apply: Model and Analyze Incidence Systems",
-            "description": "Die lernende Person wendet das Wissen zu 'Inzidenzsysteme modellieren und auswerten' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Model and Analyze Incidence Systems' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "a0b55d8a-10cd-54a2-86ff-4621f1770859"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo6_1_3"
-            }
-        },
-        {
-            "id": "b9798d2d-8321-53da-b1a1-51f1e9eab4af",
-            "shortKey": "tum_ma2011_lo6_2_1",
-            "title": "Kennen: Matroide als Abstraktion geometrischer Unabhängigkeit nutzen",
-            "titleEn": "Know: Use Matroids as an Abstraction of Geometric Independence",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Matroide als Abstraktion geometrischer Unabhängigkeit nutzen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Matroids as an Abstraction of Geometric Independence'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo6_2_1"
-            }
-        },
-        {
-            "id": "9892225f-9cd2-5a99-9e81-2b21a5429ed9",
-            "shortKey": "tum_ma2011_lo6_2_2",
-            "title": "Verstehen: Matroide als Abstraktion geometrischer Unabhängigkeit nutzen",
-            "titleEn": "Understand: Use Matroids as an Abstraction of Geometric Independence",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Matroide als Abstraktion geometrischer Unabhängigkeit nutzen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Use Matroids as an Abstraction of Geometric Independence'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "b9798d2d-8321-53da-b1a1-51f1e9eab4af"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo6_2_2"
-            }
-        },
-        {
-            "id": "cb2303d5-072b-57d5-9788-9901b89bd0ca",
-            "shortKey": "tum_ma2011_lo6_2_3",
-            "title": "Anwenden: Matroide als Abstraktion geometrischer Unabhängigkeit nutzen",
-            "titleEn": "Apply: Use Matroids as an Abstraction of Geometric Independence",
-            "description": "Die lernende Person wendet das Wissen zu 'Matroide als Abstraktion geometrischer Unabhängigkeit nutzen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Use Matroids as an Abstraction of Geometric Independence' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "9892225f-9cd2-5a99-9e81-2b21a5429ed9"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo6_2_3"
-            }
-        },
-        {
-            "id": "e74d5b42-c780-5871-a179-549c45178802",
-            "shortKey": "tum_ma2011_lo7_1_1",
-            "title": "Kennen: Polytope und Seitenverband (Face Lattice) beschreiben",
-            "titleEn": "Know: Describe Polytopes and the Face Lattice",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Polytope und Seitenverband (Face Lattice) beschreiben' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Describe Polytopes and the Face Lattice'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo7_1_1"
-            }
-        },
-        {
-            "id": "824bc8c0-fba5-55e5-b878-468299f038f4",
-            "shortKey": "tum_ma2011_lo7_1_2",
-            "title": "Verstehen: Polytope und Seitenverband (Face Lattice) beschreiben",
-            "titleEn": "Understand: Describe Polytopes and the Face Lattice",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Polytope und Seitenverband (Face Lattice) beschreiben'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Describe Polytopes and the Face Lattice'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "e74d5b42-c780-5871-a179-549c45178802"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo7_1_2"
-            }
-        },
-        {
-            "id": "fef3a854-7a96-5944-bd12-3a7754d4a0c1",
-            "shortKey": "tum_ma2011_lo7_1_3",
-            "title": "Anwenden: Polytope und Seitenverband (Face Lattice) beschreiben",
-            "titleEn": "Apply: Describe Polytopes and the Face Lattice",
-            "description": "Die lernende Person wendet das Wissen zu 'Polytope und Seitenverband (Face Lattice) beschreiben' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Describe Polytopes and the Face Lattice' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "824bc8c0-fba5-55e5-b878-468299f038f4"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo7_1_3"
-            }
-        },
-        {
-            "id": "617a1c4a-7983-577f-96e5-a34570ab1e77",
-            "shortKey": "tum_ma2011_lo7_2_1",
-            "title": "Kennen: Euler-Charakteristik in geometrischen Strukturen verwenden",
-            "titleEn": "Know: Use the Euler Characteristic in Geometric Structures",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Euler-Charakteristik in geometrischen Strukturen verwenden' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use the Euler Characteristic in Geometric Structures'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo7_2_1"
-            }
-        },
-        {
-            "id": "f3d67693-7251-5b83-9a15-574483b8a28a",
-            "shortKey": "tum_ma2011_lo7_2_2",
-            "title": "Verstehen: Euler-Charakteristik in geometrischen Strukturen verwenden",
-            "titleEn": "Understand: Use the Euler Characteristic in Geometric Structures",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Euler-Charakteristik in geometrischen Strukturen verwenden'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Use the Euler Characteristic in Geometric Structures'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "617a1c4a-7983-577f-96e5-a34570ab1e77"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo7_2_2"
-            }
-        },
-        {
-            "id": "cf922bde-5b87-5799-b015-44c963435ced",
-            "shortKey": "tum_ma2011_lo7_2_3",
-            "title": "Anwenden: Euler-Charakteristik in geometrischen Strukturen verwenden",
-            "titleEn": "Apply: Use the Euler Characteristic in Geometric Structures",
-            "description": "Die lernende Person wendet das Wissen zu 'Euler-Charakteristik in geometrischen Strukturen verwenden' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Use the Euler Characteristic in Geometric Structures' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Kombinatorische Geometrie",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "f3d67693-7251-5b83-9a15-574483b8a28a"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kombinatorische Geometrie",
-                "topicCode": "tum_ma2011_lo7_2_3"
-            }
-        },
-        {
-            "id": "04725b55-f9e9-5fb4-9fbc-664b248e7432",
-            "shortKey": "tum_ma2011_lo8_1_1",
-            "title": "Kennen: Geometrische Symmetriegruppen analysieren",
-            "titleEn": "Know: Analyze Geometric Symmetry Groups",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Geometrische Symmetriegruppen analysieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Analyze Geometric Symmetry Groups'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Methoden & Visualisierung",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Methoden & Visualisierung",
-                "topicCode": "tum_ma2011_lo8_1_1"
-            }
-        },
-        {
-            "id": "5e15ba63-1247-5d74-9a29-e7d7a1e18187",
-            "shortKey": "tum_ma2011_lo8_1_2",
-            "title": "Verstehen: Geometrische Symmetriegruppen analysieren",
-            "titleEn": "Understand: Analyze Geometric Symmetry Groups",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Geometrische Symmetriegruppen analysieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Analyze Geometric Symmetry Groups'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Methoden & Visualisierung",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "04725b55-f9e9-5fb4-9fbc-664b248e7432"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Methoden & Visualisierung",
-                "topicCode": "tum_ma2011_lo8_1_2"
-            }
-        },
-        {
-            "id": "daaa2a01-45bf-52a4-9873-488afe01b6b5",
-            "shortKey": "tum_ma2011_lo8_1_3",
-            "title": "Anwenden: Geometrische Symmetriegruppen analysieren",
-            "titleEn": "Apply: Analyze Geometric Symmetry Groups",
-            "description": "Die lernende Person wendet das Wissen zu 'Geometrische Symmetriegruppen analysieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Analyze Geometric Symmetry Groups' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Methoden & Visualisierung",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "5e15ba63-1247-5d74-9a29-e7d7a1e18187"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Methoden & Visualisierung",
-                "topicCode": "tum_ma2011_lo8_1_3"
-            }
-        },
-        {
-            "id": "fb609bcf-11a6-5e29-9798-5857194af7b9",
-            "shortKey": "tum_ma2011_lo8_2_1",
-            "title": "Kennen: Methodenwahl begründen und Objekte visualisieren",
-            "titleEn": "Know: Justify Method Choices and Visualize Objects",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Methodenwahl begründen und Objekte visualisieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Justify Method Choices and Visualize Objects'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Methoden & Visualisierung",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Methoden & Visualisierung",
-                "topicCode": "tum_ma2011_lo8_2_1"
-            }
-        },
-        {
-            "id": "f647322f-eef3-5a41-89f0-ad59abbb1f69",
-            "shortKey": "tum_ma2011_lo8_2_2",
-            "title": "Verstehen: Methodenwahl begründen und Objekte visualisieren",
-            "titleEn": "Understand: Justify Method Choices and Visualize Objects",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Methodenwahl begründen und Objekte visualisieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Justify Method Choices and Visualize Objects'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Methoden & Visualisierung",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "fb609bcf-11a6-5e29-9798-5857194af7b9"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Methoden & Visualisierung",
-                "topicCode": "tum_ma2011_lo8_2_2"
-            }
-        },
-        {
-            "id": "94a5485b-51df-5729-9892-ec25018ccdce",
-            "shortKey": "tum_ma2011_lo8_2_3",
-            "title": "Anwenden: Methodenwahl begründen und Objekte visualisieren",
-            "titleEn": "Apply: Justify Method Choices and Visualize Objects",
-            "description": "Die lernende Person wendet das Wissen zu 'Methodenwahl begründen und Objekte visualisieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Justify Method Choices and Visualize Objects' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Methoden & Visualisierung",
-            "tags": [
-                "ects:9",
-                "module:MA2011"
-            ],
-            "contains": [],
-            "requires": [
-                "f647322f-eef3-5a41-89f0-ad59abbb1f69"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2011",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Methoden & Visualisierung",
-                "topicCode": "tum_ma2011_lo8_2_3"
-            }
-        }
-    ]
+  "title": "Geometrie (TUM, Modul MA2011)",
+  "titleEn": "Geometry (TUM, Module MA2011)",
+  "description": "Die Vorlesung deckt ausgewählte grundlegende Themen aus projektiver Geometrie, Differentialgeometrie und kombinatorischer Geometrie ab und legt Wert auf Querbezüge sowie die Visualisierung geometrischer Objekte. Nach dem erfolgreichen Abschluss des Moduls Geometrie sind die Studierenden in der Lage, grundlegende Konzepte (u.a. Darstellung von Objekten und geometrischen Operationen, Durchführen von Transformationen sowie Berechnen charakteristischer Maßzahlen) sachgerecht anzuwenden. Insbesondere können sie geometrische Objekte mit Methoden der Algebra, Analysis und Kombinatorik formal beschreiben und Berechnungen an diesen Objekten durchführen. Die Studierenden kennen Visualisierungsmöglichkeiten geometrischer Objekte und können diese einsetzen. 9 ECTS, angeboten im Sommersemester, Version 2022w, verantwortet von Richter-Gebert, Jürgen.",
+  "descriptionEn": "The course covers selected fundamental topics from projective geometry, differential geometry, and combinatorial geometry and emphasizes connections between these areas as well as visualization of geometric objects. After successfully completing the module, students are able to apply core concepts of geometry (including representing objects and geometric operations, carrying out transformations, and computing characteristic invariants) appropriately. In particular, they can formally describe geometric objects using methods from algebra, analysis, and combinatorics and perform computations with these objects. Students know ways to visualize geometric objects and can carry them out. 9 ECTS, offered in the summer semester, version 2022w, responsible: Richter-Gebert, Jürgen.",
+  "landscapeId": "b4207a0e-e5be-4fee-bad1-6b5923eb4514",
+  "locale": "de-DE",
+  "subject": "Mathematik",
+  "frameworkId": "tum-ma2011",
+  "filters": [
+    {
+      "id": "BSc",
+      "label": "Bachelor Mathematik"
+    }
+  ],
+  "goals": [
+    {
+      "id": "834d5562-2d6c-5a80-8702-722337eb3fa4",
+      "title": "Geometrie – Gesamtmodul",
+      "titleEn": "Geometry – Full Module",
+      "description": "Die Vorlesung deckt ausgewählte grundlegende Themen aus projektiver Geometrie, Differentialgeometrie und kombinatorischer Geometrie ab und legt Wert auf Querbezüge sowie die Visualisierung geometrischer Objekte. Nach dem erfolgreichen Abschluss des Moduls Geometrie sind die Studierenden in der Lage, grundlegende Konzepte (u.a. Darstellung von Objekten und geometrischen Operationen, Durchführen von Transformationen sowie Berechnen charakteristischer Maßzahlen) sachgerecht anzuwenden. Insbesondere können sie geometrische Objekte mit Methoden der Algebra, Analysis und Kombinatorik formal beschreiben und Berechnungen an diesen Objekten durchführen. Die Studierenden kennen Visualisierungsmöglichkeiten geometrischer Objekte und können diese einsetzen.",
+      "descriptionEn": "The course covers selected fundamental topics from projective geometry, differential geometry, and combinatorial geometry and emphasizes connections between these areas as well as visualization of geometric objects. After successfully completing the module, students are able to apply core concepts of geometry (including representing objects and geometric operations, carrying out transformations, and computing characteristic invariants) appropriately. In particular, they can formally describe geometric objects using methods from algebra, analysis, and combinatorics and perform computations with these objects. Students know ways to visualize geometric objects and can carry them out.",
+      "weight": 9.0,
+      "tags": [
+        "ects:9",
+        "workload:270h",
+        "presence:120h",
+        "level:bachelor",
+        "language:de",
+        "module:MA2011",
+        "semester:SS",
+        "duration:1_semester",
+        "responsible:richter_gebert_j_rgen"
+      ],
+      "contains": [
+        "a81ce684-8033-50a1-9dee-d1b3a4456642",
+        "889b0996-5ae9-5124-8782-f6eb4da6b47c",
+        "28dc011f-2cd4-5359-b5b4-64a35416e5b0",
+        "e0541959-8b4f-5ea8-8565-e7a7bb9184d0",
+        "6fb07495-8f5f-5e10-a1b1-420c85669625",
+        "d305edd1-132d-5058-9895-2e90f49c9345",
+        "e83dd291-800b-520e-bbf8-e3ce45bb8b3d",
+        "2aeb98b2-efa3-5734-a986-afc3c593e630",
+        "09ffbdb8-2b35-5a31-8399-8b944e059713"
+      ],
+      "requires": [
+        "8eb1605b-fa70-511b-bbe4-28173d359c3b",
+        "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
+        "feaad1d5-022f-5ab3-93c3-001ac46de351"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      },
+      "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA2011&description_version=2022w"
+    },
+    {
+      "id": "a81ce684-8033-50a1-9dee-d1b3a4456642",
+      "title": "Darstellungen und Transformationen",
+      "titleEn": "Representations and Transformations",
+      "description": "Zusammenfassender Cluster: Geometrische Objekte darstellen (u.a. homogene Koordinaten) und Transformationen als zentrales Werkzeug nutzen.",
+      "descriptionEn": "Summary cluster: representing geometric objects (including homogeneous coordinates) and using transformations as a central tool.",
+      "weight": 1.2,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "3ec85263-ed3b-5925-bc67-6ff716609bc2",
+        "9e7cb759-dae7-5e79-8ea8-d3927809d5d1"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "3ec85263-ed3b-5925-bc67-6ff716609bc2",
+      "title": "Homogene Koordinaten verwenden",
+      "titleEn": "Use Homogeneous Coordinates",
+      "description": "Die lernende Person kann Punkte und Geraden in projektiven Räumen mit homogenen Koordinaten darstellen und in Koordinaten rechnen.",
+      "descriptionEn": "The learner can represent points and lines in projective spaces using homogeneous coordinates and perform coordinate computations.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "4c1662d1-afc8-523c-ba9d-ac94b2a7d21f",
+        "1db4a6ff-3c3d-525a-ac5b-5619eff4da63",
+        "6c49c11f-4b3d-5be8-8d03-b58302129040"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9e7cb759-dae7-5e79-8ea8-d3927809d5d1",
+      "title": "Geometrische Transformationen durchführen",
+      "titleEn": "Carry Out Geometric Transformations",
+      "description": "Die lernende Person kann Transformationen (z.B. projektive Abbildungen) in geeigneten Koordinatensystemen beschreiben, anwenden und ihre Wirkung auf Objekte interpretieren.",
+      "descriptionEn": "The learner can describe, apply, and interpret transformations (e.g., projective maps) in suitable coordinate systems.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "7cdd7612-c0f5-57a3-89bb-082e3fba864b",
+        "edb8084a-cffc-5034-ba0e-bf808651df9d",
+        "a771ef9e-3507-52c3-a4c2-7ad1c88048a4"
+      ],
+      "requires": [
+        "3ec85263-ed3b-5925-bc67-6ff716609bc2"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "889b0996-5ae9-5124-8782-f6eb4da6b47c",
+      "title": "Projektive Geometrie: Ebene, Gerade, Transformationen",
+      "titleEn": "Projective Geometry: Plane, Line, Transformations",
+      "description": "Zusammenfassender Cluster: Grundobjekte der projektiven Geometrie in Ebene und auf der Geraden (über R und C) sowie ihre Transformationen.",
+      "descriptionEn": "Summary cluster: basic objects of projective geometry in the plane and on the line (over R and C) and their transformations.",
+      "weight": 1.3,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "7b39e9b5-ff13-54dc-972e-f3cffbabc95d",
+        "550a9512-6ea1-5284-afcc-939b3bf34da3"
+      ],
+      "requires": [
+        "9e7cb759-dae7-5e79-8ea8-d3927809d5d1"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7b39e9b5-ff13-54dc-972e-f3cffbabc95d",
+      "title": "Reelle projektive Ebene und projektive Gerade verstehen",
+      "titleEn": "Understand the Real Projective Plane and Projective Line",
+      "description": "Die lernende Person kann die reelle projektive Ebene und die projektive Gerade über R (und C) beschreiben, typische Objekte/Operationen benennen und in Beispielen rechnen.",
+      "descriptionEn": "The learner can describe the real projective plane and the projective line over R (and C), name typical objects/operations, and compute in examples.",
+      "weight": 0.65,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "437cff9a-2df9-5285-bf3e-81bd430c2e7f",
+        "de4982c1-54ec-5d41-8576-c7d4c31403fa",
+        "392ed8e0-d0b2-5257-a30d-5949958e1900"
+      ],
+      "requires": [
+        "3ec85263-ed3b-5925-bc67-6ff716609bc2"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "550a9512-6ea1-5284-afcc-939b3bf34da3",
+      "title": "Projektive Abbildungen und Invarianten einsetzen",
+      "titleEn": "Use Projective Maps and Invariants",
+      "description": "Die lernende Person kann projektive Transformationen formulieren, Zusammensetzungen analysieren und projektive Invarianten in einfachen Aufgaben nutzen.",
+      "descriptionEn": "The learner can formulate projective transformations, analyze compositions, and use projective invariants in basic tasks.",
+      "weight": 0.65,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "6d6782ad-5b97-5223-aee5-e4d01655965b",
+        "0cd012e7-1ae4-50e6-99fc-077fc47064aa",
+        "59f3d54e-bd61-5de4-ad50-f5e95793343a"
+      ],
+      "requires": [
+        "7b39e9b5-ff13-54dc-972e-f3cffbabc95d",
+        "9e7cb759-dae7-5e79-8ea8-d3927809d5d1"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "28dc011f-2cd4-5359-b5b4-64a35416e5b0",
+      "title": "Cayley-Klein und Querbezüge zur euklidischen Geometrie",
+      "titleEn": "Cayley–Klein and Links to Euclidean Geometry",
+      "description": "Zusammenfassender Cluster: Querbezüge zwischen projektiver und euklidischer Geometrie über den Cayley-Klein-Ansatz.",
+      "descriptionEn": "Summary cluster: links between projective and Euclidean geometry via the Cayley–Klein approach.",
+      "weight": 0.9,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "f8bbfd74-0312-5e04-ac8a-0ca0d5a3d056",
+        "36cbbb08-b3cd-5a8d-b92f-39ab133bb6a8"
+      ],
+      "requires": [
+        "550a9512-6ea1-5284-afcc-939b3bf34da3"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f8bbfd74-0312-5e04-ac8a-0ca0d5a3d056",
+      "title": "Cayley-Klein-Ansatz zur euklidischen Geometrie erklären",
+      "titleEn": "Explain the Cayley–Klein Approach to Euclidean Geometry",
+      "description": "Die lernende Person kann die Idee des Cayley-Klein-Ansatzes beschreiben, mit dem euklidische Geometrie aus projektiver Geometrie gewonnen wird, und die Rolle des „Absoluten“ erläutern.",
+      "descriptionEn": "The learner can describe the idea of the Cayley–Klein approach for deriving Euclidean geometry from projective geometry and explain the role of the “absolute”.",
+      "weight": 0.45,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "d627bdd3-4539-5394-ba2a-ca9e2c0e8977",
+        "5834707a-baa4-5e12-9a47-a33d39e9d5ed",
+        "821fa5d7-f824-5bf6-be2b-acfd3c3ec6dd"
+      ],
+      "requires": [
+        "550a9512-6ea1-5284-afcc-939b3bf34da3"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "36cbbb08-b3cd-5a8d-b92f-39ab133bb6a8",
+      "title": "Euklidische Größen projektiv interpretieren",
+      "titleEn": "Interpret Euclidean Quantities Projectively",
+      "description": "Die lernende Person kann in Beispielen zeigen, wie projektive Modelle euklidische Begriffe (z.B. Winkel/Abstände in geeigneten Settings) motivieren und berechenbar machen.",
+      "descriptionEn": "The learner can demonstrate in examples how projective models motivate and make computable Euclidean notions (e.g., angles/distances in suitable settings).",
+      "weight": 0.45,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "bc24a490-d410-5824-a7e9-e2eb19200d31",
+        "847db4b9-741f-5f63-b677-49f1e0743ccc",
+        "e6a710ba-e3b8-5d08-b346-a46b1332d760"
+      ],
+      "requires": [
+        "f8bbfd74-0312-5e04-ac8a-0ca0d5a3d056"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e0541959-8b4f-5ea8-8565-e7a7bb9184d0",
+      "title": "Differentialgeometrie: Kurven",
+      "titleEn": "Differential Geometry: Curves",
+      "description": "Zusammenfassender Cluster: Theorie ebener und räumlicher Kurven mit Krümmungs- und Torsionsmaßen.",
+      "descriptionEn": "Summary cluster: theory of plane and space curves with curvature and torsion measures.",
+      "weight": 1.2,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "daae6df7-713c-5fbc-896e-63a4497004a1",
+        "5a3a8ec3-867f-512f-af34-e64d17f28ecb"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "daae6df7-713c-5fbc-896e-63a4497004a1",
+      "title": "Ebene und räumliche Kurven parametrisieren und analysieren",
+      "titleEn": "Parametrize and Analyze Plane and Space Curves",
+      "description": "Die lernende Person kann ebene und räumliche Kurven parametrisieren, Tangenten/Normalen bestimmen und grundlegende Invarianten wie Krümmung in Beispielen berechnen.",
+      "descriptionEn": "The learner can parametrize plane and space curves, determine tangents/normals, and compute basic invariants such as curvature in examples.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "84e2871e-096e-5f60-9de8-160a0a7c2b2f",
+        "f2e19cb5-8754-5ff6-a556-8925ef660de5",
+        "9912f6ab-5fd8-5983-98b5-97f02569a188"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "5a3a8ec3-867f-512f-af34-e64d17f28ecb",
+      "title": "Krümmung und Torsion interpretieren",
+      "titleEn": "Interpret Curvature and Torsion",
+      "description": "Die lernende Person kann Krümmung und Torsion als Maßzahlen räumlicher Kurven interpretieren und deren Bedeutung für Form und Bewegung geometrisch erklären.",
+      "descriptionEn": "The learner can interpret curvature and torsion as invariants of space curves and explain their geometric meaning for shape and motion.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "1f0d6318-49d1-5093-8fff-b2f4dc99e5af",
+        "7f2a046c-c612-5bea-bf35-72caec7db586",
+        "a74f47f8-d738-574b-8aa3-9f586a3aebe1"
+      ],
+      "requires": [
+        "daae6df7-713c-5fbc-896e-63a4497004a1"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6fb07495-8f5f-5e10-a1b1-420c85669625",
+      "title": "Differentialgeometrie: Flächen und Gauss-Bonnet",
+      "titleEn": "Differential Geometry: Surfaces and Gauss–Bonnet",
+      "description": "Zusammenfassender Cluster: Flächentheorie mit Gaussabbildung sowie der Satz von Gauss-Bonnet als Verbindung zu topologischen Invarianten.",
+      "descriptionEn": "Summary cluster: surface theory with the Gauss map and the Gauss–Bonnet theorem linking to topological invariants.",
+      "weight": 1.3,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "1311805a-1d0e-5545-a85f-ecefa3aefc14",
+        "7b409514-48e6-557b-8f60-048c34406b76"
+      ],
+      "requires": [
+        "5a3a8ec3-867f-512f-af34-e64d17f28ecb"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1311805a-1d0e-5545-a85f-ecefa3aefc14",
+      "title": "Flächen, Normalen und Gaussabbildung behandeln",
+      "titleEn": "Work with Surfaces, Normals, and the Gauss Map",
+      "description": "Die lernende Person kann Flächen im Raum beschreiben, Normalen und die Gaussabbildung bestimmen und Krümmungsbegriffe in Beispielen berechnen.",
+      "descriptionEn": "The learner can describe surfaces in space, determine normals and the Gauss map, and compute curvature notions in examples.",
+      "weight": 0.65,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "394a0801-473a-53f2-ab29-7fef185b5de4",
+        "9aa57168-252f-5cd0-8be6-021d7357106c",
+        "0c6a8d35-167f-521e-b750-5b708b6de43f"
+      ],
+      "requires": [
+        "daae6df7-713c-5fbc-896e-63a4497004a1"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7b409514-48e6-557b-8f60-048c34406b76",
+      "title": "Satz von Gauss-Bonnet anwenden",
+      "titleEn": "Apply the Gauss–Bonnet Theorem",
+      "description": "Die lernende Person kann den Satz von Gauss-Bonnet in einfachen Situationen einsetzen, den Zusammenhang zwischen Krümmung und Topologie (Euler-Charakteristik) erläutern und Resultate interpretieren.",
+      "descriptionEn": "The learner can apply the Gauss–Bonnet theorem in simple settings, explain the link between curvature and topology (Euler characteristic), and interpret results.",
+      "weight": 0.65,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "eee0f1af-d884-5171-bb24-c0e8eddbfca7",
+        "74d0a04d-1096-59e2-9209-132a84f0be84",
+        "2ab0a800-8385-50f8-a6b0-0deb59200974"
+      ],
+      "requires": [
+        "1311805a-1d0e-5545-a85f-ecefa3aefc14"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d305edd1-132d-5058-9895-2e90f49c9345",
+      "title": "Kombinatorische Geometrie: Inzidenzsysteme und Matroide",
+      "titleEn": "Combinatorial Geometry: Incidence Systems and Matroids",
+      "description": "Zusammenfassender Cluster: Inzidenzstrukturen und Matroide als kombinatorische Modelle geometrischer Zusammenhänge.",
+      "descriptionEn": "Summary cluster: incidence structures and matroids as combinatorial models of geometric relations.",
+      "weight": 1.0,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "bef721cf-6d29-5beb-9145-46705762fa0e",
+        "1ff40e20-2901-5682-8e80-b3d2d094b6c1"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "bef721cf-6d29-5beb-9145-46705762fa0e",
+      "title": "Inzidenzsysteme modellieren und auswerten",
+      "titleEn": "Model and Analyze Incidence Systems",
+      "description": "Die lernende Person kann Inzidenzsysteme definieren, Beispiele aus der kombinatorischen Geometrie formulieren und grundlegende Zähl- und Strukturargumente anwenden.",
+      "descriptionEn": "The learner can define incidence systems, formulate examples from combinatorial geometry, and apply basic counting and structure arguments.",
+      "weight": 0.5,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "d72034e1-bd42-5a33-9c94-f16aaf79b38c",
+        "a0b55d8a-10cd-54a2-86ff-4621f1770859",
+        "f445be3e-0472-5a99-94ca-1b3a4c57a30b"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1ff40e20-2901-5682-8e80-b3d2d094b6c1",
+      "title": "Matroide als Abstraktion geometrischer Unabhängigkeit nutzen",
+      "titleEn": "Use Matroids as an Abstraction of Geometric Independence",
+      "description": "Die lernende Person kann Matroide über Unabhängigkeit oder Rang definieren, Grundaxiome prüfen und Matroide in geometrischen Beispielen interpretieren.",
+      "descriptionEn": "The learner can define matroids via independence or rank, verify the basic axioms, and interpret matroids in geometric examples.",
+      "weight": 0.5,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "b9798d2d-8321-53da-b1a1-51f1e9eab4af",
+        "9892225f-9cd2-5a99-9e81-2b21a5429ed9",
+        "cb2303d5-072b-57d5-9788-9901b89bd0ca"
+      ],
+      "requires": [
+        "bef721cf-6d29-5beb-9145-46705762fa0e"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e83dd291-800b-520e-bbf8-e3ce45bb8b3d",
+      "title": "Polytopen, Seitenverband und Euler-Charakteristik",
+      "titleEn": "Polytopes, Face Lattices, and the Euler Characteristic",
+      "description": "Zusammenfassender Cluster: Polytope, Seitenverband und Euler-Charakteristik als zentrale Werkzeuge der kombinatorischen Geometrie.",
+      "descriptionEn": "Summary cluster: polytopes, face lattices, and the Euler characteristic as central tools of combinatorial geometry.",
+      "weight": 1.0,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "b070b91a-db4d-5631-a745-197100532b6a",
+        "723392ef-5528-579d-9502-68ed22a992de"
+      ],
+      "requires": [
+        "1ff40e20-2901-5682-8e80-b3d2d094b6c1"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b070b91a-db4d-5631-a745-197100532b6a",
+      "title": "Polytope und Seitenverband (Face Lattice) beschreiben",
+      "titleEn": "Describe Polytopes and the Face Lattice",
+      "description": "Die lernende Person kann Polytopen beschreiben, ihre Seiten (Faces) organisieren und den Seitenverband als geordnetes System in Beispielen auswerten.",
+      "descriptionEn": "The learner can describe polytopes, organize their faces, and analyze the face lattice as a partially ordered structure in examples.",
+      "weight": 0.5,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "e74d5b42-c780-5871-a179-549c45178802",
+        "824bc8c0-fba5-55e5-b878-468299f038f4",
+        "fef3a854-7a96-5944-bd12-3a7754d4a0c1"
+      ],
+      "requires": [
+        "bef721cf-6d29-5beb-9145-46705762fa0e"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "723392ef-5528-579d-9502-68ed22a992de",
+      "title": "Euler-Charakteristik in geometrischen Strukturen verwenden",
+      "titleEn": "Use the Euler Characteristic in Geometric Structures",
+      "description": "Die lernende Person kann Euler-Charakteristiken berechnen, Beziehungen zwischen kombinatorischen Daten (z.B. Anzahl von Ecken/Kanten/Flächen) herleiten und Ergebnisse interpretieren.",
+      "descriptionEn": "The learner can compute Euler characteristics, derive relations between combinatorial data (e.g., numbers of vertices/edges/faces), and interpret the results.",
+      "weight": 0.5,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "617a1c4a-7983-577f-96e5-a34570ab1e77",
+        "f3d67693-7251-5b83-9a15-574483b8a28a",
+        "cf922bde-5b87-5799-b015-44c963435ced"
+      ],
+      "requires": [
+        "b070b91a-db4d-5631-a745-197100532b6a"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "2aeb98b2-efa3-5734-a986-afc3c593e630",
+      "title": "Symmetrien, Methodenwahl und Visualisierung",
+      "titleEn": "Symmetries, Method Choice, and Visualization",
+      "description": "Zusammenfassender Cluster: Symmetrien, methodisches Vorgehen und Visualisierung als Querschnittskompetenzen der Geometrie.",
+      "descriptionEn": "Summary cluster: symmetries, methodological approach, and visualization as cross-cutting competencies in geometry.",
+      "weight": 1.1,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "82b1d2e8-9650-5bd9-9651-e3c09f1009d1",
+        "a62e6f72-5008-5359-aea1-d9e82d61f547"
+      ],
+      "requires": [
+        "9e7cb759-dae7-5e79-8ea8-d3927809d5d1",
+        "1ff40e20-2901-5682-8e80-b3d2d094b6c1"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "82b1d2e8-9650-5bd9-9651-e3c09f1009d1",
+      "title": "Geometrische Symmetriegruppen analysieren",
+      "titleEn": "Analyze Geometric Symmetry Groups",
+      "description": "Die lernende Person kann Symmetriegruppen geometrischer Objekte beschreiben, Gruppenaktionen in Beispielen nutzen und Symmetrien zur Strukturierung von Problemen einsetzen.",
+      "descriptionEn": "The learner can describe symmetry groups of geometric objects, use group actions in examples, and exploit symmetries to structure problems.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "04725b55-f9e9-5fb4-9fbc-664b248e7432",
+        "5e15ba63-1247-5d74-9a29-e7d7a1e18187",
+        "daaa2a01-45bf-52a4-9873-488afe01b6b5"
+      ],
+      "requires": [
+        "9e7cb759-dae7-5e79-8ea8-d3927809d5d1",
+        "bef721cf-6d29-5beb-9145-46705762fa0e"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a62e6f72-5008-5359-aea1-d9e82d61f547",
+      "title": "Methodenwahl begründen und Objekte visualisieren",
+      "titleEn": "Justify Method Choices and Visualize Objects",
+      "description": "Die lernende Person kann für geometrische Aufgaben geeignete Methoden (algebraisch, analytisch, kombinatorisch) auswählen, Querbezüge benennen und geometrische Objekte sinnvoll visualisieren.",
+      "descriptionEn": "The learner can choose suitable methods (algebraic, analytic, combinatorial) for geometric tasks, articulate connections between areas, and meaningfully visualize geometric objects.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [
+        "fb609bcf-11a6-5e29-9798-5857194af7b9",
+        "f647322f-eef3-5a41-89f0-ad59abbb1f69",
+        "94a5485b-51df-5729-9892-ec25018ccdce"
+      ],
+      "requires": [
+        "82b1d2e8-9650-5bd9-9651-e3c09f1009d1"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "09ffbdb8-2b35-5a31-8399-8b944e059713",
+      "title": "Kernaussagen des Moduls memorisieren",
+      "titleEn": "Memorize Key Module Statements",
+      "description": "Die lernende Person hat alle zentralen Definitionen und Sätze des Moduls verinnerlicht (geprüft z.B. durch SRS/Lernkarten).",
+      "descriptionEn": "The learner has internalized all key definitions and theorems of the module (verified e.g. via SRS/flashcards).",
+      "weight": 0.5,
+      "tags": [
+        "module:MA2011",
+        "srs-deck:ma2011"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/ma2011_deck.json"
+      },
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4c1662d1-afc8-523c-ba9d-ac94b2a7d21f",
+      "title": "Kennen: Homogene Koordinaten verwenden",
+      "titleEn": "Know: Use Homogeneous Coordinates",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Homogene Koordinaten verwenden' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Homogeneous Coordinates'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1db4a6ff-3c3d-525a-ac5b-5619eff4da63",
+      "title": "Verstehen: Homogene Koordinaten verwenden",
+      "titleEn": "Understand: Use Homogeneous Coordinates",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Homogene Koordinaten verwenden'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Use Homogeneous Coordinates'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "4c1662d1-afc8-523c-ba9d-ac94b2a7d21f"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6c49c11f-4b3d-5be8-8d03-b58302129040",
+      "title": "Anwenden: Homogene Koordinaten verwenden",
+      "titleEn": "Apply: Use Homogeneous Coordinates",
+      "description": "Die lernende Person wendet das Wissen zu 'Homogene Koordinaten verwenden' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Use Homogeneous Coordinates' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "1db4a6ff-3c3d-525a-ac5b-5619eff4da63"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7cdd7612-c0f5-57a3-89bb-082e3fba864b",
+      "title": "Kennen: Geometrische Transformationen durchführen",
+      "titleEn": "Know: Carry Out Geometric Transformations",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Geometrische Transformationen durchführen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Carry Out Geometric Transformations'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "edb8084a-cffc-5034-ba0e-bf808651df9d",
+      "title": "Verstehen: Geometrische Transformationen durchführen",
+      "titleEn": "Understand: Carry Out Geometric Transformations",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Geometrische Transformationen durchführen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Carry Out Geometric Transformations'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "7cdd7612-c0f5-57a3-89bb-082e3fba864b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a771ef9e-3507-52c3-a4c2-7ad1c88048a4",
+      "title": "Anwenden: Geometrische Transformationen durchführen",
+      "titleEn": "Apply: Carry Out Geometric Transformations",
+      "description": "Die lernende Person wendet das Wissen zu 'Geometrische Transformationen durchführen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Carry Out Geometric Transformations' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "edb8084a-cffc-5034-ba0e-bf808651df9d"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "437cff9a-2df9-5285-bf3e-81bd430c2e7f",
+      "title": "Kennen: Reelle projektive Ebene und projektive Gerade verstehen",
+      "titleEn": "Know: Understand the Real Projective Plane and Projective Line",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Reelle projektive Ebene und projektive Gerade verstehen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Understand the Real Projective Plane and Projective Line'.",
+      "weight": 0.195,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "de4982c1-54ec-5d41-8576-c7d4c31403fa",
+      "title": "Verstehen: Reelle projektive Ebene und projektive Gerade verstehen",
+      "titleEn": "Understand: Understand the Real Projective Plane and Projective Line",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Reelle projektive Ebene und projektive Gerade verstehen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Understand the Real Projective Plane and Projective Line'.",
+      "weight": 0.195,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "437cff9a-2df9-5285-bf3e-81bd430c2e7f"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "392ed8e0-d0b2-5257-a30d-5949958e1900",
+      "title": "Anwenden: Reelle projektive Ebene und projektive Gerade verstehen",
+      "titleEn": "Apply: Understand the Real Projective Plane and Projective Line",
+      "description": "Die lernende Person wendet das Wissen zu 'Reelle projektive Ebene und projektive Gerade verstehen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Understand the Real Projective Plane and Projective Line' to concrete examples and tasks.",
+      "weight": 0.26,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "de4982c1-54ec-5d41-8576-c7d4c31403fa"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6d6782ad-5b97-5223-aee5-e4d01655965b",
+      "title": "Kennen: Projektive Abbildungen und Invarianten einsetzen",
+      "titleEn": "Know: Use Projective Maps and Invariants",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Projektive Abbildungen und Invarianten einsetzen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Projective Maps and Invariants'.",
+      "weight": 0.195,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0cd012e7-1ae4-50e6-99fc-077fc47064aa",
+      "title": "Verstehen: Projektive Abbildungen und Invarianten einsetzen",
+      "titleEn": "Understand: Use Projective Maps and Invariants",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Projektive Abbildungen und Invarianten einsetzen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Use Projective Maps and Invariants'.",
+      "weight": 0.195,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "6d6782ad-5b97-5223-aee5-e4d01655965b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "59f3d54e-bd61-5de4-ad50-f5e95793343a",
+      "title": "Anwenden: Projektive Abbildungen und Invarianten einsetzen",
+      "titleEn": "Apply: Use Projective Maps and Invariants",
+      "description": "Die lernende Person wendet das Wissen zu 'Projektive Abbildungen und Invarianten einsetzen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Use Projective Maps and Invariants' to concrete examples and tasks.",
+      "weight": 0.26,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "0cd012e7-1ae4-50e6-99fc-077fc47064aa"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d627bdd3-4539-5394-ba2a-ca9e2c0e8977",
+      "title": "Kennen: Cayley-Klein-Ansatz zur euklidischen Geometrie erklären",
+      "titleEn": "Know: Explain the Cayley–Klein Approach to Euclidean Geometry",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Cayley-Klein-Ansatz zur euklidischen Geometrie erklären' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Explain the Cayley–Klein Approach to Euclidean Geometry'.",
+      "weight": 0.135,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "5834707a-baa4-5e12-9a47-a33d39e9d5ed",
+      "title": "Verstehen: Cayley-Klein-Ansatz zur euklidischen Geometrie erklären",
+      "titleEn": "Understand: Explain the Cayley–Klein Approach to Euclidean Geometry",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Cayley-Klein-Ansatz zur euklidischen Geometrie erklären'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Explain the Cayley–Klein Approach to Euclidean Geometry'.",
+      "weight": 0.135,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "d627bdd3-4539-5394-ba2a-ca9e2c0e8977"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "821fa5d7-f824-5bf6-be2b-acfd3c3ec6dd",
+      "title": "Anwenden: Cayley-Klein-Ansatz zur euklidischen Geometrie erklären",
+      "titleEn": "Apply: Explain the Cayley–Klein Approach to Euclidean Geometry",
+      "description": "Die lernende Person wendet das Wissen zu 'Cayley-Klein-Ansatz zur euklidischen Geometrie erklären' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Explain the Cayley–Klein Approach to Euclidean Geometry' to concrete examples and tasks.",
+      "weight": 0.18000000000000002,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "5834707a-baa4-5e12-9a47-a33d39e9d5ed"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "bc24a490-d410-5824-a7e9-e2eb19200d31",
+      "title": "Kennen: Euklidische Größen projektiv interpretieren",
+      "titleEn": "Know: Interpret Euclidean Quantities Projectively",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Euklidische Größen projektiv interpretieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Interpret Euclidean Quantities Projectively'.",
+      "weight": 0.135,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "847db4b9-741f-5f63-b677-49f1e0743ccc",
+      "title": "Verstehen: Euklidische Größen projektiv interpretieren",
+      "titleEn": "Understand: Interpret Euclidean Quantities Projectively",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Euklidische Größen projektiv interpretieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Interpret Euclidean Quantities Projectively'.",
+      "weight": 0.135,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "bc24a490-d410-5824-a7e9-e2eb19200d31"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e6a710ba-e3b8-5d08-b346-a46b1332d760",
+      "title": "Anwenden: Euklidische Größen projektiv interpretieren",
+      "titleEn": "Apply: Interpret Euclidean Quantities Projectively",
+      "description": "Die lernende Person wendet das Wissen zu 'Euklidische Größen projektiv interpretieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Interpret Euclidean Quantities Projectively' to concrete examples and tasks.",
+      "weight": 0.18000000000000002,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "847db4b9-741f-5f63-b677-49f1e0743ccc"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "84e2871e-096e-5f60-9de8-160a0a7c2b2f",
+      "title": "Kennen: Ebene und räumliche Kurven parametrisieren und analysieren",
+      "titleEn": "Know: Parametrize and Analyze Plane and Space Curves",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Ebene und räumliche Kurven parametrisieren und analysieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Parametrize and Analyze Plane and Space Curves'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f2e19cb5-8754-5ff6-a556-8925ef660de5",
+      "title": "Verstehen: Ebene und räumliche Kurven parametrisieren und analysieren",
+      "titleEn": "Understand: Parametrize and Analyze Plane and Space Curves",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Ebene und räumliche Kurven parametrisieren und analysieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Parametrize and Analyze Plane and Space Curves'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "84e2871e-096e-5f60-9de8-160a0a7c2b2f"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9912f6ab-5fd8-5983-98b5-97f02569a188",
+      "title": "Anwenden: Ebene und räumliche Kurven parametrisieren und analysieren",
+      "titleEn": "Apply: Parametrize and Analyze Plane and Space Curves",
+      "description": "Die lernende Person wendet das Wissen zu 'Ebene und räumliche Kurven parametrisieren und analysieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Parametrize and Analyze Plane and Space Curves' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "f2e19cb5-8754-5ff6-a556-8925ef660de5"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1f0d6318-49d1-5093-8fff-b2f4dc99e5af",
+      "title": "Kennen: Krümmung und Torsion interpretieren",
+      "titleEn": "Know: Interpret Curvature and Torsion",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Krümmung und Torsion interpretieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Interpret Curvature and Torsion'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7f2a046c-c612-5bea-bf35-72caec7db586",
+      "title": "Verstehen: Krümmung und Torsion interpretieren",
+      "titleEn": "Understand: Interpret Curvature and Torsion",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Krümmung und Torsion interpretieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Interpret Curvature and Torsion'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "1f0d6318-49d1-5093-8fff-b2f4dc99e5af"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a74f47f8-d738-574b-8aa3-9f586a3aebe1",
+      "title": "Anwenden: Krümmung und Torsion interpretieren",
+      "titleEn": "Apply: Interpret Curvature and Torsion",
+      "description": "Die lernende Person wendet das Wissen zu 'Krümmung und Torsion interpretieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Interpret Curvature and Torsion' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "7f2a046c-c612-5bea-bf35-72caec7db586"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "394a0801-473a-53f2-ab29-7fef185b5de4",
+      "title": "Kennen: Flächen, Normalen und Gaussabbildung behandeln",
+      "titleEn": "Know: Work with Surfaces, Normals, and the Gauss Map",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Flächen, Normalen und Gaussabbildung behandeln' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Work with Surfaces, Normals, and the Gauss Map'.",
+      "weight": 0.195,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9aa57168-252f-5cd0-8be6-021d7357106c",
+      "title": "Verstehen: Flächen, Normalen und Gaussabbildung behandeln",
+      "titleEn": "Understand: Work with Surfaces, Normals, and the Gauss Map",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Flächen, Normalen und Gaussabbildung behandeln'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Work with Surfaces, Normals, and the Gauss Map'.",
+      "weight": 0.195,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "394a0801-473a-53f2-ab29-7fef185b5de4"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0c6a8d35-167f-521e-b750-5b708b6de43f",
+      "title": "Anwenden: Flächen, Normalen und Gaussabbildung behandeln",
+      "titleEn": "Apply: Work with Surfaces, Normals, and the Gauss Map",
+      "description": "Die lernende Person wendet das Wissen zu 'Flächen, Normalen und Gaussabbildung behandeln' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Work with Surfaces, Normals, and the Gauss Map' to concrete examples and tasks.",
+      "weight": 0.26,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "9aa57168-252f-5cd0-8be6-021d7357106c"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "eee0f1af-d884-5171-bb24-c0e8eddbfca7",
+      "title": "Kennen: Satz von Gauss-Bonnet anwenden",
+      "titleEn": "Know: Apply the Gauss–Bonnet Theorem",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Satz von Gauss-Bonnet anwenden' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply the Gauss–Bonnet Theorem'.",
+      "weight": 0.195,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "74d0a04d-1096-59e2-9209-132a84f0be84",
+      "title": "Verstehen: Satz von Gauss-Bonnet anwenden",
+      "titleEn": "Understand: Apply the Gauss–Bonnet Theorem",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Satz von Gauss-Bonnet anwenden'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Apply the Gauss–Bonnet Theorem'.",
+      "weight": 0.195,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "eee0f1af-d884-5171-bb24-c0e8eddbfca7"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "2ab0a800-8385-50f8-a6b0-0deb59200974",
+      "title": "Anwenden: Satz von Gauss-Bonnet anwenden",
+      "titleEn": "Apply: Apply the Gauss–Bonnet Theorem",
+      "description": "Die lernende Person wendet das Wissen zu 'Satz von Gauss-Bonnet anwenden' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Apply the Gauss–Bonnet Theorem' to concrete examples and tasks.",
+      "weight": 0.26,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "74d0a04d-1096-59e2-9209-132a84f0be84"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d72034e1-bd42-5a33-9c94-f16aaf79b38c",
+      "title": "Kennen: Inzidenzsysteme modellieren und auswerten",
+      "titleEn": "Know: Model and Analyze Incidence Systems",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Inzidenzsysteme modellieren und auswerten' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Model and Analyze Incidence Systems'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a0b55d8a-10cd-54a2-86ff-4621f1770859",
+      "title": "Verstehen: Inzidenzsysteme modellieren und auswerten",
+      "titleEn": "Understand: Model and Analyze Incidence Systems",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Inzidenzsysteme modellieren und auswerten'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Model and Analyze Incidence Systems'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "d72034e1-bd42-5a33-9c94-f16aaf79b38c"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f445be3e-0472-5a99-94ca-1b3a4c57a30b",
+      "title": "Anwenden: Inzidenzsysteme modellieren und auswerten",
+      "titleEn": "Apply: Model and Analyze Incidence Systems",
+      "description": "Die lernende Person wendet das Wissen zu 'Inzidenzsysteme modellieren und auswerten' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Model and Analyze Incidence Systems' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "a0b55d8a-10cd-54a2-86ff-4621f1770859"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b9798d2d-8321-53da-b1a1-51f1e9eab4af",
+      "title": "Kennen: Matroide als Abstraktion geometrischer Unabhängigkeit nutzen",
+      "titleEn": "Know: Use Matroids as an Abstraction of Geometric Independence",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Matroide als Abstraktion geometrischer Unabhängigkeit nutzen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Matroids as an Abstraction of Geometric Independence'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9892225f-9cd2-5a99-9e81-2b21a5429ed9",
+      "title": "Verstehen: Matroide als Abstraktion geometrischer Unabhängigkeit nutzen",
+      "titleEn": "Understand: Use Matroids as an Abstraction of Geometric Independence",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Matroide als Abstraktion geometrischer Unabhängigkeit nutzen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Use Matroids as an Abstraction of Geometric Independence'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "b9798d2d-8321-53da-b1a1-51f1e9eab4af"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "cb2303d5-072b-57d5-9788-9901b89bd0ca",
+      "title": "Anwenden: Matroide als Abstraktion geometrischer Unabhängigkeit nutzen",
+      "titleEn": "Apply: Use Matroids as an Abstraction of Geometric Independence",
+      "description": "Die lernende Person wendet das Wissen zu 'Matroide als Abstraktion geometrischer Unabhängigkeit nutzen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Use Matroids as an Abstraction of Geometric Independence' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "9892225f-9cd2-5a99-9e81-2b21a5429ed9"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e74d5b42-c780-5871-a179-549c45178802",
+      "title": "Kennen: Polytope und Seitenverband (Face Lattice) beschreiben",
+      "titleEn": "Know: Describe Polytopes and the Face Lattice",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Polytope und Seitenverband (Face Lattice) beschreiben' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Describe Polytopes and the Face Lattice'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "824bc8c0-fba5-55e5-b878-468299f038f4",
+      "title": "Verstehen: Polytope und Seitenverband (Face Lattice) beschreiben",
+      "titleEn": "Understand: Describe Polytopes and the Face Lattice",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Polytope und Seitenverband (Face Lattice) beschreiben'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Describe Polytopes and the Face Lattice'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "e74d5b42-c780-5871-a179-549c45178802"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "fef3a854-7a96-5944-bd12-3a7754d4a0c1",
+      "title": "Anwenden: Polytope und Seitenverband (Face Lattice) beschreiben",
+      "titleEn": "Apply: Describe Polytopes and the Face Lattice",
+      "description": "Die lernende Person wendet das Wissen zu 'Polytope und Seitenverband (Face Lattice) beschreiben' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Describe Polytopes and the Face Lattice' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "824bc8c0-fba5-55e5-b878-468299f038f4"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "617a1c4a-7983-577f-96e5-a34570ab1e77",
+      "title": "Kennen: Euler-Charakteristik in geometrischen Strukturen verwenden",
+      "titleEn": "Know: Use the Euler Characteristic in Geometric Structures",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Euler-Charakteristik in geometrischen Strukturen verwenden' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use the Euler Characteristic in Geometric Structures'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f3d67693-7251-5b83-9a15-574483b8a28a",
+      "title": "Verstehen: Euler-Charakteristik in geometrischen Strukturen verwenden",
+      "titleEn": "Understand: Use the Euler Characteristic in Geometric Structures",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Euler-Charakteristik in geometrischen Strukturen verwenden'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Use the Euler Characteristic in Geometric Structures'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "617a1c4a-7983-577f-96e5-a34570ab1e77"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "cf922bde-5b87-5799-b015-44c963435ced",
+      "title": "Anwenden: Euler-Charakteristik in geometrischen Strukturen verwenden",
+      "titleEn": "Apply: Use the Euler Characteristic in Geometric Structures",
+      "description": "Die lernende Person wendet das Wissen zu 'Euler-Charakteristik in geometrischen Strukturen verwenden' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Use the Euler Characteristic in Geometric Structures' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "f3d67693-7251-5b83-9a15-574483b8a28a"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "04725b55-f9e9-5fb4-9fbc-664b248e7432",
+      "title": "Kennen: Geometrische Symmetriegruppen analysieren",
+      "titleEn": "Know: Analyze Geometric Symmetry Groups",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Geometrische Symmetriegruppen analysieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Analyze Geometric Symmetry Groups'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "5e15ba63-1247-5d74-9a29-e7d7a1e18187",
+      "title": "Verstehen: Geometrische Symmetriegruppen analysieren",
+      "titleEn": "Understand: Analyze Geometric Symmetry Groups",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Geometrische Symmetriegruppen analysieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Analyze Geometric Symmetry Groups'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "04725b55-f9e9-5fb4-9fbc-664b248e7432"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "daaa2a01-45bf-52a4-9873-488afe01b6b5",
+      "title": "Anwenden: Geometrische Symmetriegruppen analysieren",
+      "titleEn": "Apply: Analyze Geometric Symmetry Groups",
+      "description": "Die lernende Person wendet das Wissen zu 'Geometrische Symmetriegruppen analysieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Analyze Geometric Symmetry Groups' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "5e15ba63-1247-5d74-9a29-e7d7a1e18187"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "fb609bcf-11a6-5e29-9798-5857194af7b9",
+      "title": "Kennen: Methodenwahl begründen und Objekte visualisieren",
+      "titleEn": "Know: Justify Method Choices and Visualize Objects",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Methodenwahl begründen und Objekte visualisieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Justify Method Choices and Visualize Objects'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f647322f-eef3-5a41-89f0-ad59abbb1f69",
+      "title": "Verstehen: Methodenwahl begründen und Objekte visualisieren",
+      "titleEn": "Understand: Justify Method Choices and Visualize Objects",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Methodenwahl begründen und Objekte visualisieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Justify Method Choices and Visualize Objects'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "fb609bcf-11a6-5e29-9798-5857194af7b9"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "94a5485b-51df-5729-9892-ec25018ccdce",
+      "title": "Anwenden: Methodenwahl begründen und Objekte visualisieren",
+      "titleEn": "Apply: Justify Method Choices and Visualize Objects",
+      "description": "Die lernende Person wendet das Wissen zu 'Methodenwahl begründen und Objekte visualisieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Justify Method Choices and Visualize Objects' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA2011"
+      ],
+      "contains": [],
+      "requires": [
+        "f647322f-eef3-5a41-89f0-ad59abbb1f69"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    }
+  ]
 }

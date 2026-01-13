@@ -12,6 +12,8 @@ npm install
 echo "--> Running Graph Validation"
 npm run validate:graph
 
+
+
 echo "--> Running Lint & Build"
 npm run lint
 npm run build

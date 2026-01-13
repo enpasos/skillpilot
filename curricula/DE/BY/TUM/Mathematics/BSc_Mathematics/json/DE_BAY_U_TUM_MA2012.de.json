@@ -1,2297 +1,1779 @@
 {
-    "title": "Einführung in die Optimierung (TUM, Modul MA2012)",
-    "titleEn": "Introduction to Optimization (TUM, Module MA2012)",
-    "description": "Nach der erfolgreichen Teilnahme am Modul beherrschen die Studierenden die vermittelten grundlegenden Konzepte und Methoden der unrestringierten nichtlinearen Optimierung, der Konvexität und der linearen Optimierung. Die Studierenden können in der Praxis auftretende Aufgabenstellungen in der einschlägigen mathematischen Fachsprache als Optimierungsproblem modellieren und klassifizieren. Sie sind in der Lage, problemabhängig Optimalitätsbedingungen der unrestringierten und linearen Optimierung herzuleiten. Die Studierenden besitzen ein geometrisches Verständnis für die Konzepte und Methoden der unrestringierten nichtlinearen Optimierung, der Konvexität und der linearen Optimierung und können die in diesem Kontext auftretenden innermathematischen und angewandten Fragestellungen analysieren und lösen. Die Studierenden kennen die sach- und fachgerechten Optimierungsverfahren (z.B. global konvergente Abstiegsverfahren, Newton-Verfahren, Newton-artige Methoden und Simplex-Verfahren) und können diese im richtigen Kontext anwenden. Sie sind in der Lage, den Rechenaufwand und das Konvergenzverhalten von Optimierungsmethoden zu analysieren und zu bewerten. 9 ECTS, angeboten im Sommersemester, Version 2022w, verantwortet von Ulbrich, Michael.",
-    "descriptionEn": "After successfully completing the module, students master the fundamental concepts and methods of unconstrained nonlinear optimization, convexity, and linear optimization. They can model and classify real-world tasks as optimization problems in the appropriate mathematical language. Depending on the problem, they are able to derive optimality conditions for unconstrained and linear optimization. They develop a geometric understanding of the underlying concepts and methods and can analyze and solve mathematical and applied questions arising in this context. Students are familiar with appropriate optimization algorithms (e.g., globally convergent descent methods, Newton’s method, Newton-type methods, and the simplex method) and can apply them in the right context. They can analyze and evaluate the computational effort and convergence behavior of optimization methods. 9 ECTS, offered in the summer semester, version 2022w, responsible: Ulbrich, Michael.",
-    "landscapeId": "2fa68528-2816-4a53-a25d-db4ffcce43da",
-    "locale": "de-DE",
-    "subject": "Mathematik",
-    "frameworkId": "tum-ma2012",
-    "filters": [
-        {
-            "id": "BSc",
-            "label": "Bachelor Mathematik"
-        }
-    ],
-    "goals": [
-        {
-            "id": "b805ec8a-3357-56b6-a770-86490a3c8916",
-            "shortKey": "tum_ma2012_module",
-            "title": "Einführung in die Optimierung – Gesamtmodul",
-            "titleEn": "Introduction to Optimization – Full Module",
-            "description": "Nach der erfolgreichen Teilnahme am Modul beherrschen die Studierenden die vermittelten grundlegenden Konzepte und Methoden der unrestringierten nichtlinearen Optimierung, der Konvexität und der linearen Optimierung. Die Studierenden können in der Praxis auftretende Aufgabenstellungen in der einschlägigen mathematischen Fachsprache als Optimierungsproblem modellieren und klassifizieren. Sie sind in der Lage, problemabhängig Optimalitätsbedingungen der unrestringierten und linearen Optimierung herzuleiten. Die Studierenden besitzen ein geometrisches Verständnis für die Konzepte und Methoden der unrestringierten nichtlinearen Optimierung, der Konvexität und der linearen Optimierung und können die in diesem Kontext auftretenden innermathematischen und angewandten Fragestellungen analysieren und lösen. Die Studierenden kennen die sach- und fachgerechten Optimierungsverfahren (z.B. global konvergente Abstiegsverfahren, Newton-Verfahren, Newton-artige Methoden und Simplex-Verfahren) und können diese im richtigen Kontext anwenden. Sie sind in der Lage, den Rechenaufwand und das Konvergenzverhalten von Optimierungsmethoden zu analysieren und zu bewerten.",
-            "descriptionEn": "After successfully completing the module, students master the fundamental concepts and methods of unconstrained nonlinear optimization, convexity, and linear optimization. They can model and classify real-world tasks as optimization problems in the appropriate mathematical language. Depending on the problem, they are able to derive optimality conditions for unconstrained and linear optimization. They develop a geometric understanding of the underlying concepts and methods and can analyze and solve mathematical and applied questions arising in this context. Students are familiar with appropriate optimization algorithms (e.g., globally convergent descent methods, Newton’s method, Newton-type methods, and the simplex method) and can apply them in the right context. They can analyze and evaluate the computational effort and convergence behavior of optimization methods.",
-            "core": true,
-            "weight": 9.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "ects:9",
-                "workload:270h",
-                "presence:120h",
-                "level:bachelor",
-                "language:de",
-                "module:MA2012",
-                "semester:SS",
-                "duration:1_semester",
-                "responsible:ulbrich_michael"
-            ],
-            "contains": [
-                "f4711b83-4672-5a09-bd86-7c0e84db6db3",
-                "62fcb5aa-5b01-5f58-bbad-34d101c6d30a",
-                "eea443e7-d3ef-56ea-a9a5-17253cd650a7",
-                "a1f088e7-97bf-5606-8372-7867a8820711",
-                "01af8723-7e21-531f-8c9e-acb6b699f5fe",
-                "7f40ff34-bc58-524f-b827-3c89bd06f828",
-                "79af14d1-31c4-5d07-bb4b-9e40bf2f965f",
-                "438a70ee-b31b-5de2-9b0a-dfd87fe6efd0",
-                "1ccf2391-a538-587c-a5b8-793dad4f0011"
-            ],
-            "requires": [
-                "8eb1605b-fa70-511b-bbe4-28173d359c3b",
-                "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
-                "feaad1d5-022f-5ab3-93c3-001ac46de351"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Gesamtkompetenz",
-                "topicCode": "tum_ma2012_module"
-            },
-            "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA2012&description_version=2022w"
-        },
-        {
-            "id": "f4711b83-4672-5a09-bd86-7c0e84db6db3",
-            "shortKey": "tum_ma2012_lo1",
-            "title": "Modellierung und Klassifikation von Optimierungsproblemen",
-            "titleEn": "Modeling and Classification of Optimization Problems",
-            "description": "Zusammenfassender Cluster: Praktische Fragestellungen als Optimierungsprobleme modellieren und nach Struktur und Lösungsansätzen klassifizieren.",
-            "descriptionEn": "Summary cluster: modeling real-world tasks as optimization problems and classifying them by structure and suitable solution approaches.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "1cc84872-bfe4-5cf0-825f-698e1c6b6a8b",
-                "a2a65d4a-4cf8-55e7-b022-4c0e490d6116"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma2012_lo1"
-            }
-        },
-        {
-            "id": "1cc84872-bfe4-5cf0-825f-698e1c6b6a8b",
-            "shortKey": "tum_ma2012_lo1_1",
-            "title": "Optimierungsmodelle aus Praxisproblemen erstellen",
-            "titleEn": "Build Optimization Models from Real-World Problems",
-            "description": "Die lernende Person kann Entscheidungsvariablen, Zielfunktion und Nebenbedingungen aus einer praktischen Aufgabenstellung ableiten und ein passendes Optimierungsmodell formulieren.",
-            "descriptionEn": "The learner can derive decision variables, an objective function, and constraints from a real-world task and formulate an appropriate optimization model.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "d5da96a0-e1fc-547b-9736-60dada3134d1",
-                "276ea5da-33d7-509f-8f4c-22374b15c2db",
-                "073b2bce-899d-53e9-9997-a53927436d4c"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma2012_lo1_1"
-            }
-        },
-        {
-            "id": "a2a65d4a-4cf8-55e7-b022-4c0e490d6116",
-            "shortKey": "tum_ma2012_lo1_2",
-            "title": "Optimierungsprobleme klassifizieren und formal notieren",
-            "titleEn": "Classify and Formally Specify Optimization Problems",
-            "description": "Die lernende Person kann Optimierungsprobleme nach Struktur (z.B. linear/nichtlinear, glatt/nichtglatt, konvex/nichtkonvex, mit/ohne Nebenbedingungen) einordnen und in mathematischer Fachsprache präzise notieren.",
-            "descriptionEn": "The learner can classify optimization problems by structure (e.g., linear/nonlinear, smooth/nonsmooth, convex/nonconvex, with/without constraints) and specify them precisely in mathematical language.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "962caa99-6a7e-50f3-b00a-9d01ebf28327",
-                "5a5297a2-b3f2-531d-95aa-13d473e1420b",
-                "3c2454af-7e22-5391-be6b-e951eb2fe884"
-            ],
-            "requires": [
-                "1cc84872-bfe4-5cf0-825f-698e1c6b6a8b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma2012_lo1_2"
-            }
-        },
-        {
-            "id": "62fcb5aa-5b01-5f58-bbad-34d101c6d30a",
-            "shortKey": "tum_ma2012_lo2",
-            "title": "Unrestringierte Optimierung: Optimalitätsbedingungen",
-            "titleEn": "Unconstrained Optimization: Optimality Conditions",
-            "description": "Zusammenfassender Cluster: Optimalitätsbedingungen der unrestringierten Optimierung als Grundlage für Verfahren und Konvergenzanalysen.",
-            "descriptionEn": "Summary cluster: optimality conditions for unconstrained optimization as a basis for methods and convergence analysis.",
-            "core": true,
-            "weight": 1.2,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "d41fc6a5-58e8-5ab2-af28-04a55914a323",
-                "a7f85acd-3df6-5ac0-9624-b119fe3e3b5a"
-            ],
-            "requires": [
-                "a2a65d4a-4cf8-55e7-b022-4c0e490d6116"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo2"
-            }
-        },
-        {
-            "id": "d41fc6a5-58e8-5ab2-af28-04a55914a323",
-            "shortKey": "tum_ma2012_lo2_1",
-            "title": "Ableitungen für Optimierung berechnen und nutzen",
-            "titleEn": "Compute and Use Derivatives for Optimization",
-            "description": "Die lernende Person kann Gradient und Hesse-Matrix (sowie Richtungsableitungen) für typische Zielfunktionen berechnen und zur Analyse von Abstiegsrichtungen einsetzen.",
-            "descriptionEn": "The learner can compute gradients and Hessians (as well as directional derivatives) for typical objective functions and use them to analyze descent directions.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "fdc8da39-2bef-558b-8df2-d6f715a7f66e",
-                "9d7dd8c2-6790-5eeb-92b7-5167d8884f2d",
-                "59c7d60e-44ab-51d3-bdcb-b6c1c18b88a0"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo2_1"
-            }
-        },
-        {
-            "id": "a7f85acd-3df6-5ac0-9624-b119fe3e3b5a",
-            "shortKey": "tum_ma2012_lo2_2",
-            "title": "Optimalitätsbedingungen herleiten und prüfen",
-            "titleEn": "Derive and Check Optimality Conditions",
-            "description": "Die lernende Person kann notwendige und hinreichende Optimalitätsbedingungen für unrestringierte Optimierung (1./2. Ordnung) herleiten und auf konkrete Probleme anwenden.",
-            "descriptionEn": "The learner can derive necessary and sufficient optimality conditions for unconstrained optimization (first/second order) and apply them to concrete problems.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "d9afaea5-3328-5c04-8276-8ddf7ccaf185",
-                "92bf1490-701e-58cf-b31a-fb9e99c9ed8b",
-                "9d5fec93-8505-5d2a-8ef7-73a114f7a7d2"
-            ],
-            "requires": [
-                "d41fc6a5-58e8-5ab2-af28-04a55914a323"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo2_2"
-            }
-        },
-        {
-            "id": "eea443e7-d3ef-56ea-a9a5-17253cd650a7",
-            "shortKey": "tum_ma2012_lo3",
-            "title": "Abstiegsverfahren und Globalisierung",
-            "titleEn": "Descent Methods and Globalization",
-            "description": "Zusammenfassender Cluster: Global konvergente Abstiegsverfahren einschließlich Schrittweitenstrategien und Konvergenz-/Aufwandsanalyse.",
-            "descriptionEn": "Summary cluster: globally convergent descent methods, including step-size strategies and convergence/cost analysis.",
-            "core": true,
-            "weight": 1.4,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "36d427e7-32d8-5020-9414-c9eba6678786",
-                "a60f33af-98af-5cc8-86ae-36b4fcea2755"
-            ],
-            "requires": [
-                "a7f85acd-3df6-5ac0-9624-b119fe3e3b5a"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo3"
-            }
-        },
-        {
-            "id": "36d427e7-32d8-5020-9414-c9eba6678786",
-            "shortKey": "tum_ma2012_lo3_1",
-            "title": "Global konvergente Abstiegsverfahren anwenden",
-            "titleEn": "Apply Globally Convergent Descent Methods",
-            "description": "Die lernende Person kann Abstiegsverfahren (z.B. Gradientenverfahren) formulieren, geeignete Schrittweitenregeln (z.B. Armijo-/Wolfe-Bedingungen) verwenden und Abbruchkriterien definieren.",
-            "descriptionEn": "The learner can formulate descent methods (e.g., gradient methods), use suitable step-size rules (e.g., Armijo/Wolfe conditions), and define stopping criteria.",
-            "core": true,
-            "weight": 0.7,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "cdc54edc-e955-5f78-bb82-5a4cf165fd59",
-                "705c4a58-a7b0-51a1-82a2-76b3b5e2a285",
-                "cfe1de71-8706-54ac-bd6b-1d248ca22a4f"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo3_1"
-            }
-        },
-        {
-            "id": "a60f33af-98af-5cc8-86ae-36b4fcea2755",
-            "shortKey": "tum_ma2012_lo3_2",
-            "title": "Konvergenz und Aufwand von Verfahren bewerten",
-            "titleEn": "Evaluate Convergence and Computational Effort",
-            "description": "Die lernende Person kann Konvergenzargumente für Abstiegsverfahren nachvollziehen, typische Konvergenzraten vergleichen und Rechenaufwand sowie numerische Stabilität in Anwendungen einschätzen.",
-            "descriptionEn": "The learner can follow convergence arguments for descent methods, compare typical convergence rates, and assess computational cost and numerical stability in applications.",
-            "core": true,
-            "weight": 0.7,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "54742cd2-8611-5920-82eb-09dcaa9a5313",
-                "a943e849-fe2b-565f-bb2b-a5cd4e8cb70a",
-                "5d51f196-2706-56a5-b266-8e3faa5f9d71"
-            ],
-            "requires": [
-                "36d427e7-32d8-5020-9414-c9eba6678786"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo3_2"
-            }
-        },
-        {
-            "id": "a1f088e7-97bf-5606-8372-7867a8820711",
-            "shortKey": "tum_ma2012_lo4",
-            "title": "Newton- und Newton-artige Methoden",
-            "titleEn": "Newton and Newton-Type Methods",
-            "description": "Zusammenfassender Cluster: Newton-Verfahren und Newton-artige Methoden einschließlich Globalisierung lokal konvergenter Verfahren.",
-            "descriptionEn": "Summary cluster: Newton’s method and Newton-type methods, including globalization of locally convergent schemes.",
-            "core": true,
-            "weight": 1.2,
-            "phase": "Modul",
-            "area": "Newton-Verfahren",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "35dd1363-f48b-540f-8d9b-d728487668ae",
-                "44914695-427b-577e-bd83-934ec78d6e97"
-            ],
-            "requires": [
-                "a60f33af-98af-5cc8-86ae-36b4fcea2755"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Newton-Verfahren",
-                "topicCode": "tum_ma2012_lo4"
-            }
-        },
-        {
-            "id": "35dd1363-f48b-540f-8d9b-d728487668ae",
-            "shortKey": "tum_ma2012_lo4_1",
-            "title": "Newton-Verfahren für Optimierung einsetzen",
-            "titleEn": "Use Newton’s Method for Optimization",
-            "description": "Die lernende Person kann Newton-Schritte für unrestringierte Optimierung herleiten, lineare Teilschritte praktisch lösen und lokale Konvergenzeigenschaften erläutern.",
-            "descriptionEn": "The learner can derive Newton steps for unconstrained optimization, solve the resulting linear subproblems in practice, and explain local convergence properties.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Newton-Verfahren",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "bfcf7117-7cb9-5b1d-8fa1-d745d2ea256f",
-                "f83c5cdd-334b-5894-a368-563878f411b1",
-                "526e2cd8-ccb6-5855-ba37-71dc3967e000"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Newton-Verfahren",
-                "topicCode": "tum_ma2012_lo4_1"
-            }
-        },
-        {
-            "id": "44914695-427b-577e-bd83-934ec78d6e97",
-            "shortKey": "tum_ma2012_lo4_2",
-            "title": "Newton-artige Methoden globalisieren",
-            "titleEn": "Globalize Newton-Type Methods",
-            "description": "Die lernende Person kann Dämpfung/Line-Search oder Trust-Region-Ideen zur Globalisierung lokal konvergenter Verfahren beschreiben und Newton-artige Methoden (z.B. Quasi-Newton) im Kontext einordnen.",
-            "descriptionEn": "The learner can describe damping/line-search or trust-region ideas to globalize locally convergent methods and place Newton-type methods (e.g., quasi-Newton) in context.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Newton-Verfahren",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "d8901b5c-02a7-5391-ae96-a34fbd274dd8",
-                "6bcebfd4-50b5-53b8-90e3-1ecc8e6bde7d",
-                "eb81082c-8ee0-5890-97b2-5c681f849cbb"
-            ],
-            "requires": [
-                "35dd1363-f48b-540f-8d9b-d728487668ae"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Newton-Verfahren",
-                "topicCode": "tum_ma2012_lo4_2"
-            }
-        },
-        {
-            "id": "01af8723-7e21-531f-8c9e-acb6b699f5fe",
-            "shortKey": "tum_ma2012_lo5",
-            "title": "Konvexität: Mengen und Funktionen",
-            "titleEn": "Convexity: Sets and Functions",
-            "description": "Zusammenfassender Cluster: Konvexe Mengen und konvexe Funktionen als geometrische und analytische Grundlage der Optimierung.",
-            "descriptionEn": "Summary cluster: convex sets and convex functions as the geometric and analytic foundation of optimization.",
-            "core": true,
-            "weight": 1.2,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "4e8fd812-a9bc-5dd7-9427-d25ac70d540b",
-                "72fda829-2547-5170-b90b-0e41a209a6c3"
-            ],
-            "requires": [
-                "a2a65d4a-4cf8-55e7-b022-4c0e490d6116"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo5"
-            }
-        },
-        {
-            "id": "4e8fd812-a9bc-5dd7-9427-d25ac70d540b",
-            "shortKey": "tum_ma2012_lo5_1",
-            "title": "Konvexe Mengen und Polyeder analysieren",
-            "titleEn": "Analyze Convex Sets and Polyhedra",
-            "description": "Die lernende Person kann konvexe Mengen charakterisieren, Konvexkombinationen nutzen und Polyeder als Schnitt von Halbräumen beschreiben und in Beispielen geometrisch interpretieren.",
-            "descriptionEn": "The learner can characterize convex sets, use convex combinations, and describe polyhedra as intersections of half-spaces and interpret them geometrically in examples.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "979066c0-832e-5328-9945-c01d16c895a2",
-                "dbdc635b-594b-5e4a-ac28-2edcbe534ce6",
-                "92d444d2-e0dc-5dea-ba87-81b08a30427f"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo5_1"
-            }
-        },
-        {
-            "id": "72fda829-2547-5170-b90b-0e41a209a6c3",
-            "shortKey": "tum_ma2012_lo5_2",
-            "title": "Konvexe Funktionen erkennen und Eigenschaften nutzen",
-            "titleEn": "Recognize Convex Functions and Use Their Properties",
-            "description": "Die lernende Person kann Konvexität von Funktionen prüfen, grundlegende Konsequenzen (z.B. lokale = globale Minima) erklären und Standardbeispiele konvexer Funktionen sicher verwenden.",
-            "descriptionEn": "The learner can check convexity of functions, explain key consequences (e.g., local minima are global), and confidently use standard examples of convex functions.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "d1017901-b41f-5c2b-8ef9-93b4c9c0506e",
-                "27387279-8cf4-564f-84c6-25dbe772d4a3",
-                "02fd8584-7ddf-57a9-94c1-b1daf2289ddb"
-            ],
-            "requires": [
-                "4e8fd812-a9bc-5dd7-9427-d25ac70d540b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo5_2"
-            }
-        },
-        {
-            "id": "7f40ff34-bc58-524f-b827-3c89bd06f828",
-            "shortKey": "tum_ma2012_lo6",
-            "title": "Metrische Projektion und Trennungssätze",
-            "titleEn": "Metric Projection and Separation Theorems",
-            "description": "Zusammenfassender Cluster: Metrische Projektion und Trennungssätze als Werkzeuge zur Analyse konvexer Optimierungsprobleme.",
-            "descriptionEn": "Summary cluster: metric projection and separation theorems as tools for analyzing convex optimization problems.",
-            "core": true,
-            "weight": 0.8,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "c349a20c-8008-5218-8b55-b18186369a39",
-                "f731e195-91ec-5622-89ab-12f1d6175239"
-            ],
-            "requires": [
-                "72fda829-2547-5170-b90b-0e41a209a6c3"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo6"
-            }
-        },
-        {
-            "id": "c349a20c-8008-5218-8b55-b18186369a39",
-            "shortKey": "tum_ma2012_lo6_1",
-            "title": "Metrische Projektion auf konvexe Mengen nutzen",
-            "titleEn": "Use Metric Projections onto Convex Sets",
-            "description": "Die lernende Person kann die metrische Projektion auf abgeschlossene konvexe Mengen formulieren, in einfachen Fällen berechnen und die Optimalitätsinterpretation erläutern.",
-            "descriptionEn": "The learner can formulate the metric projection onto closed convex sets, compute it in simple cases, and explain its optimality interpretation.",
-            "core": true,
-            "weight": 0.4,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "7c5a47b4-6b8d-5a60-8e26-4ff310567360",
-                "e695ad99-2259-5ca0-865a-0c389395c1e1",
-                "5cd9f056-6926-53e4-8e30-357fd3803d70"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo6_1"
-            }
-        },
-        {
-            "id": "f731e195-91ec-5622-89ab-12f1d6175239",
-            "shortKey": "tum_ma2012_lo6_2",
-            "title": "Trennungssätze anwenden",
-            "titleEn": "Apply Separation Theorems",
-            "description": "Die lernende Person kann Trennungssätze für konvexe Mengen in Beispielen anwenden, stützende Hyperebenen interpretieren und geometrische Dualitätsargumente nachvollziehen.",
-            "descriptionEn": "The learner can apply separation theorems for convex sets in examples, interpret supporting hyperplanes, and follow geometric duality arguments.",
-            "core": true,
-            "weight": 0.4,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "4d331c9e-e35c-5fa7-bdb6-8b14b206578c",
-                "98ebfd99-2d51-56eb-af39-4ac38e580f47",
-                "8adaf926-da06-524d-8511-66ad61548544"
-            ],
-            "requires": [
-                "c349a20c-8008-5218-8b55-b18186369a39"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo6_2"
-            }
-        },
-        {
-            "id": "79af14d1-31c4-5d07-bb4b-9e40bf2f965f",
-            "shortKey": "tum_ma2012_lo7",
-            "title": "Lineare Optimierung: Polyeder, Dualität, KKT",
-            "titleEn": "Linear Optimization: Polyhedra, Duality, KKT",
-            "description": "Zusammenfassender Cluster: Lineare Optimierung mit polyedrischer Geometrie, LP-Dualität und KKT-/Komplementaritätsbedingungen.",
-            "descriptionEn": "Summary cluster: linear optimization with polyhedral geometry, LP duality, and KKT/complementary slackness conditions.",
-            "core": true,
-            "weight": 1.1,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "b9fe2afb-4c71-51a1-afed-585585e443e0",
-                "56f448c1-1535-5b1e-8036-991450972b55"
-            ],
-            "requires": [
-                "f731e195-91ec-5622-89ab-12f1d6175239"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo7"
-            }
-        },
-        {
-            "id": "b9fe2afb-4c71-51a1-afed-585585e443e0",
-            "shortKey": "tum_ma2012_lo7_1",
-            "title": "Lineare Programme in Standardformen formulieren",
-            "titleEn": "Formulate Linear Programs in Standard Forms",
-            "description": "Die lernende Person kann lineare Programme in äquivalente Standardformen überführen, die zulässige Menge als Polyeder beschreiben und Extrempunkte als Kandidaten für Optima begründen.",
-            "descriptionEn": "The learner can transform linear programs into equivalent standard forms, describe the feasible set as a polyhedron, and justify why extreme points are candidates for optima.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "acdba5c8-5ce7-560d-94ab-3706178e0dca",
-                "d0bf401d-2d90-5489-9db7-e5f59232f79f",
-                "05dfe141-0611-58c4-a27a-96d6da35783f"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo7_1"
-            }
-        },
-        {
-            "id": "56f448c1-1535-5b1e-8036-991450972b55",
-            "shortKey": "tum_ma2012_lo7_2",
-            "title": "LP-Dualität und KKT-Bedingungen nutzen",
-            "titleEn": "Use LP Duality and KKT Conditions",
-            "description": "Die lernende Person kann das Dualproblem zu einem LP herleiten, Dualitätsaussagen interpretieren und KKT-/Komplementaritätsbedingungen zur Zertifizierung optimaler Lösungen einsetzen.",
-            "descriptionEn": "The learner can derive the dual problem of a linear program, interpret duality statements, and use KKT/complementary slackness conditions to certify optimal solutions.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "c8924a2e-c4bf-5f05-98fe-66715ee7812c",
-                "846697a9-4b54-50d6-bbfd-f777a9c2f2b0",
-                "ee9a0339-d943-522e-ad0e-8b1e72e898f5"
-            ],
-            "requires": [
-                "b9fe2afb-4c71-51a1-afed-585585e443e0"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo7_2"
-            }
-        },
-        {
-            "id": "438a70ee-b31b-5de2-9b0a-dfd87fe6efd0",
-            "shortKey": "tum_ma2012_lo8",
-            "title": "(Duales) Simplex-Verfahren",
-            "titleEn": "(Dual) Simplex Method",
-            "description": "Zusammenfassender Cluster: Simplex-Verfahren (primal/dual) als grundlegender Algorithmus der linearen Optimierung.",
-            "descriptionEn": "Summary cluster: the simplex method (primal/dual) as a fundamental algorithm for linear optimization.",
-            "core": true,
-            "weight": 1.1,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "82843401-1e94-592f-8a99-871c9648bb92",
-                "33f3085a-28d3-5178-bb39-879275df8afc"
-            ],
-            "requires": [
-                "56f448c1-1535-5b1e-8036-991450972b55"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo8"
-            }
-        },
-        {
-            "id": "82843401-1e94-592f-8a99-871c9648bb92",
-            "shortKey": "tum_ma2012_lo8_1",
-            "title": "(Primal-)Simplex-Schritte ausführen und deuten",
-            "titleEn": "Carry Out and Interpret (Primal) Simplex Steps",
-            "description": "Die lernende Person kann die Grundidee des Simplex-Verfahrens erklären, Pivot-Schritte in kleinen Beispielen durchführen und die Bedeutung von Basislösungen geometrisch interpretieren.",
-            "descriptionEn": "The learner can explain the core idea of the simplex method, perform pivot steps in small examples, and interpret the role of basic solutions geometrically.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "a92c5fae-0e24-5369-bec7-6c6b25b6af9e",
-                "17d84d3e-c920-5a33-9257-abba7b2bb2af",
-                "2f2ecf92-9e4b-5c00-b687-24003c0a2004"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo8_1"
-            }
-        },
-        {
-            "id": "33f3085a-28d3-5178-bb39-879275df8afc",
-            "shortKey": "tum_ma2012_lo8_2",
-            "title": "Duales Simplex und algorithmische Bewertung",
-            "titleEn": "Dual Simplex and Algorithmic Evaluation",
-            "description": "Die lernende Person kann das duale Simplex-Verfahren im Grundprinzip erläutern, geeignete Startbedingungen diskutieren und Rechenaufwand sowie Konvergenzverhalten des Simplex-Verfahrens bewerten.",
-            "descriptionEn": "The learner can explain the basic principle of the dual simplex method, discuss suitable starting conditions, and evaluate the computational effort and convergence behavior of the simplex method.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [
-                "f4e1d5ec-5031-5bbd-a229-ddc19ebfdef5",
-                "fb7e9fd5-5517-58a9-90ce-33f4833a0bee",
-                "3e3089eb-8666-553c-ace9-6585cf88bd34"
-            ],
-            "requires": [
-                "82843401-1e94-592f-8a99-871c9648bb92"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo8_2"
-            }
-        },
-        {
-            "id": "1ccf2391-a538-587c-a5b8-793dad4f0011",
-            "shortKey": "tum_ma2012_memorize",
-            "title": "Kernaussagen des Moduls memorisieren",
-            "titleEn": "Memorize Key Module Statements",
-            "description": "Die lernende Person hat alle zentralen Definitionen und Sätze des Moduls verinnerlicht (geprüft z.B. durch SRS/Lernkarten).",
-            "descriptionEn": "The learner has internalized all key definitions and theorems of the module (verified e.g. via SRS/flashcards).",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:MA2012",
-                "srs-deck:ma2012"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/ma2012_deck.json"
-            },
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Gesamtkompetenz",
-                "topicCode": "tum_ma2012_memorize"
-            }
-        },
-        {
-            "id": "d5da96a0-e1fc-547b-9736-60dada3134d1",
-            "shortKey": "tum_ma2012_lo1_1_1",
-            "title": "Kennen: Optimierungsmodelle aus Praxisproblemen erstellen",
-            "titleEn": "Know: Build Optimization Models from Real-World Problems",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Optimierungsmodelle aus Praxisproblemen erstellen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Build Optimization Models from Real-World Problems'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma2012_lo1_1_1"
-            }
-        },
-        {
-            "id": "276ea5da-33d7-509f-8f4c-22374b15c2db",
-            "shortKey": "tum_ma2012_lo1_1_2",
-            "title": "Verstehen: Optimierungsmodelle aus Praxisproblemen erstellen",
-            "titleEn": "Understand: Build Optimization Models from Real-World Problems",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Optimierungsmodelle aus Praxisproblemen erstellen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Build Optimization Models from Real-World Problems'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "d5da96a0-e1fc-547b-9736-60dada3134d1"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma2012_lo1_1_2"
-            }
-        },
-        {
-            "id": "073b2bce-899d-53e9-9997-a53927436d4c",
-            "shortKey": "tum_ma2012_lo1_1_3",
-            "title": "Anwenden: Optimierungsmodelle aus Praxisproblemen erstellen",
-            "titleEn": "Apply: Build Optimization Models from Real-World Problems",
-            "description": "Die lernende Person wendet das Wissen zu 'Optimierungsmodelle aus Praxisproblemen erstellen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Build Optimization Models from Real-World Problems' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "276ea5da-33d7-509f-8f4c-22374b15c2db"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma2012_lo1_1_3"
-            }
-        },
-        {
-            "id": "962caa99-6a7e-50f3-b00a-9d01ebf28327",
-            "shortKey": "tum_ma2012_lo1_2_1",
-            "title": "Kennen: Optimierungsprobleme klassifizieren und formal notieren",
-            "titleEn": "Know: Classify and Formally Specify Optimization Problems",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Optimierungsprobleme klassifizieren und formal notieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Classify and Formally Specify Optimization Problems'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma2012_lo1_2_1"
-            }
-        },
-        {
-            "id": "5a5297a2-b3f2-531d-95aa-13d473e1420b",
-            "shortKey": "tum_ma2012_lo1_2_2",
-            "title": "Verstehen: Optimierungsprobleme klassifizieren und formal notieren",
-            "titleEn": "Understand: Classify and Formally Specify Optimization Problems",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Optimierungsprobleme klassifizieren und formal notieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Classify and Formally Specify Optimization Problems'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "962caa99-6a7e-50f3-b00a-9d01ebf28327"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma2012_lo1_2_2"
-            }
-        },
-        {
-            "id": "3c2454af-7e22-5391-be6b-e951eb2fe884",
-            "shortKey": "tum_ma2012_lo1_2_3",
-            "title": "Anwenden: Optimierungsprobleme klassifizieren und formal notieren",
-            "titleEn": "Apply: Classify and Formally Specify Optimization Problems",
-            "description": "Die lernende Person wendet das Wissen zu 'Optimierungsprobleme klassifizieren und formal notieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Classify and Formally Specify Optimization Problems' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "5a5297a2-b3f2-531d-95aa-13d473e1420b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma2012_lo1_2_3"
-            }
-        },
-        {
-            "id": "fdc8da39-2bef-558b-8df2-d6f715a7f66e",
-            "shortKey": "tum_ma2012_lo2_1_1",
-            "title": "Kennen: Ableitungen für Optimierung berechnen und nutzen",
-            "titleEn": "Know: Compute and Use Derivatives for Optimization",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Ableitungen für Optimierung berechnen und nutzen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Compute and Use Derivatives for Optimization'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo2_1_1"
-            }
-        },
-        {
-            "id": "9d7dd8c2-6790-5eeb-92b7-5167d8884f2d",
-            "shortKey": "tum_ma2012_lo2_1_2",
-            "title": "Verstehen: Ableitungen für Optimierung berechnen und nutzen",
-            "titleEn": "Understand: Compute and Use Derivatives for Optimization",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Ableitungen für Optimierung berechnen und nutzen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Compute and Use Derivatives for Optimization'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "fdc8da39-2bef-558b-8df2-d6f715a7f66e"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo2_1_2"
-            }
-        },
-        {
-            "id": "59c7d60e-44ab-51d3-bdcb-b6c1c18b88a0",
-            "shortKey": "tum_ma2012_lo2_1_3",
-            "title": "Anwenden: Ableitungen für Optimierung berechnen und nutzen",
-            "titleEn": "Apply: Compute and Use Derivatives for Optimization",
-            "description": "Die lernende Person wendet das Wissen zu 'Ableitungen für Optimierung berechnen und nutzen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Compute and Use Derivatives for Optimization' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "9d7dd8c2-6790-5eeb-92b7-5167d8884f2d"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo2_1_3"
-            }
-        },
-        {
-            "id": "d9afaea5-3328-5c04-8276-8ddf7ccaf185",
-            "shortKey": "tum_ma2012_lo2_2_1",
-            "title": "Kennen: Optimalitätsbedingungen herleiten und prüfen",
-            "titleEn": "Know: Derive and Check Optimality Conditions",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Optimalitätsbedingungen herleiten und prüfen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Derive and Check Optimality Conditions'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo2_2_1"
-            }
-        },
-        {
-            "id": "92bf1490-701e-58cf-b31a-fb9e99c9ed8b",
-            "shortKey": "tum_ma2012_lo2_2_2",
-            "title": "Verstehen: Optimalitätsbedingungen herleiten und prüfen",
-            "titleEn": "Understand: Derive and Check Optimality Conditions",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Optimalitätsbedingungen herleiten und prüfen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Derive and Check Optimality Conditions'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "d9afaea5-3328-5c04-8276-8ddf7ccaf185"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo2_2_2"
-            }
-        },
-        {
-            "id": "9d5fec93-8505-5d2a-8ef7-73a114f7a7d2",
-            "shortKey": "tum_ma2012_lo2_2_3",
-            "title": "Anwenden: Optimalitätsbedingungen herleiten und prüfen",
-            "titleEn": "Apply: Derive and Check Optimality Conditions",
-            "description": "Die lernende Person wendet das Wissen zu 'Optimalitätsbedingungen herleiten und prüfen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Derive and Check Optimality Conditions' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "92bf1490-701e-58cf-b31a-fb9e99c9ed8b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo2_2_3"
-            }
-        },
-        {
-            "id": "cdc54edc-e955-5f78-bb82-5a4cf165fd59",
-            "shortKey": "tum_ma2012_lo3_1_1",
-            "title": "Kennen: Global konvergente Abstiegsverfahren anwenden",
-            "titleEn": "Know: Apply Globally Convergent Descent Methods",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Global konvergente Abstiegsverfahren anwenden' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply Globally Convergent Descent Methods'.",
-            "core": true,
-            "weight": 0.21,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo3_1_1"
-            }
-        },
-        {
-            "id": "705c4a58-a7b0-51a1-82a2-76b3b5e2a285",
-            "shortKey": "tum_ma2012_lo3_1_2",
-            "title": "Verstehen: Global konvergente Abstiegsverfahren anwenden",
-            "titleEn": "Understand: Apply Globally Convergent Descent Methods",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Global konvergente Abstiegsverfahren anwenden'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Apply Globally Convergent Descent Methods'.",
-            "core": true,
-            "weight": 0.21,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "cdc54edc-e955-5f78-bb82-5a4cf165fd59"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo3_1_2"
-            }
-        },
-        {
-            "id": "cfe1de71-8706-54ac-bd6b-1d248ca22a4f",
-            "shortKey": "tum_ma2012_lo3_1_3",
-            "title": "Anwenden: Global konvergente Abstiegsverfahren anwenden",
-            "titleEn": "Apply: Apply Globally Convergent Descent Methods",
-            "description": "Die lernende Person wendet das Wissen zu 'Global konvergente Abstiegsverfahren anwenden' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Apply Globally Convergent Descent Methods' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.27999999999999997,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "705c4a58-a7b0-51a1-82a2-76b3b5e2a285"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo3_1_3"
-            }
-        },
-        {
-            "id": "54742cd2-8611-5920-82eb-09dcaa9a5313",
-            "shortKey": "tum_ma2012_lo3_2_1",
-            "title": "Kennen: Konvergenz und Aufwand von Verfahren bewerten",
-            "titleEn": "Know: Evaluate Convergence and Computational Effort",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Konvergenz und Aufwand von Verfahren bewerten' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Evaluate Convergence and Computational Effort'.",
-            "core": true,
-            "weight": 0.21,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo3_2_1"
-            }
-        },
-        {
-            "id": "a943e849-fe2b-565f-bb2b-a5cd4e8cb70a",
-            "shortKey": "tum_ma2012_lo3_2_2",
-            "title": "Verstehen: Konvergenz und Aufwand von Verfahren bewerten",
-            "titleEn": "Understand: Evaluate Convergence and Computational Effort",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Konvergenz und Aufwand von Verfahren bewerten'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Evaluate Convergence and Computational Effort'.",
-            "core": true,
-            "weight": 0.21,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "54742cd2-8611-5920-82eb-09dcaa9a5313"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo3_2_2"
-            }
-        },
-        {
-            "id": "5d51f196-2706-56a5-b266-8e3faa5f9d71",
-            "shortKey": "tum_ma2012_lo3_2_3",
-            "title": "Anwenden: Konvergenz und Aufwand von Verfahren bewerten",
-            "titleEn": "Apply: Evaluate Convergence and Computational Effort",
-            "description": "Die lernende Person wendet das Wissen zu 'Konvergenz und Aufwand von Verfahren bewerten' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Evaluate Convergence and Computational Effort' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.27999999999999997,
-            "phase": "Modul",
-            "area": "Unrestringierte Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "a943e849-fe2b-565f-bb2b-a5cd4e8cb70a"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringierte Optimierung",
-                "topicCode": "tum_ma2012_lo3_2_3"
-            }
-        },
-        {
-            "id": "bfcf7117-7cb9-5b1d-8fa1-d745d2ea256f",
-            "shortKey": "tum_ma2012_lo4_1_1",
-            "title": "Kennen: Newton-Verfahren für Optimierung einsetzen",
-            "titleEn": "Know: Use Newton’s Method for Optimization",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Newton-Verfahren für Optimierung einsetzen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Newton’s Method for Optimization'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Newton-Verfahren",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Newton-Verfahren",
-                "topicCode": "tum_ma2012_lo4_1_1"
-            }
-        },
-        {
-            "id": "f83c5cdd-334b-5894-a368-563878f411b1",
-            "shortKey": "tum_ma2012_lo4_1_2",
-            "title": "Verstehen: Newton-Verfahren für Optimierung einsetzen",
-            "titleEn": "Understand: Use Newton’s Method for Optimization",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Newton-Verfahren für Optimierung einsetzen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Use Newton’s Method for Optimization'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Newton-Verfahren",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "bfcf7117-7cb9-5b1d-8fa1-d745d2ea256f"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Newton-Verfahren",
-                "topicCode": "tum_ma2012_lo4_1_2"
-            }
-        },
-        {
-            "id": "526e2cd8-ccb6-5855-ba37-71dc3967e000",
-            "shortKey": "tum_ma2012_lo4_1_3",
-            "title": "Anwenden: Newton-Verfahren für Optimierung einsetzen",
-            "titleEn": "Apply: Use Newton’s Method for Optimization",
-            "description": "Die lernende Person wendet das Wissen zu 'Newton-Verfahren für Optimierung einsetzen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Use Newton’s Method for Optimization' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Newton-Verfahren",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "f83c5cdd-334b-5894-a368-563878f411b1"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Newton-Verfahren",
-                "topicCode": "tum_ma2012_lo4_1_3"
-            }
-        },
-        {
-            "id": "d8901b5c-02a7-5391-ae96-a34fbd274dd8",
-            "shortKey": "tum_ma2012_lo4_2_1",
-            "title": "Kennen: Newton-artige Methoden globalisieren",
-            "titleEn": "Know: Globalize Newton-Type Methods",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Newton-artige Methoden globalisieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Globalize Newton-Type Methods'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Newton-Verfahren",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Newton-Verfahren",
-                "topicCode": "tum_ma2012_lo4_2_1"
-            }
-        },
-        {
-            "id": "6bcebfd4-50b5-53b8-90e3-1ecc8e6bde7d",
-            "shortKey": "tum_ma2012_lo4_2_2",
-            "title": "Verstehen: Newton-artige Methoden globalisieren",
-            "titleEn": "Understand: Globalize Newton-Type Methods",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Newton-artige Methoden globalisieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Globalize Newton-Type Methods'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Newton-Verfahren",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "d8901b5c-02a7-5391-ae96-a34fbd274dd8"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Newton-Verfahren",
-                "topicCode": "tum_ma2012_lo4_2_2"
-            }
-        },
-        {
-            "id": "eb81082c-8ee0-5890-97b2-5c681f849cbb",
-            "shortKey": "tum_ma2012_lo4_2_3",
-            "title": "Anwenden: Newton-artige Methoden globalisieren",
-            "titleEn": "Apply: Globalize Newton-Type Methods",
-            "description": "Die lernende Person wendet das Wissen zu 'Newton-artige Methoden globalisieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Globalize Newton-Type Methods' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Newton-Verfahren",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "6bcebfd4-50b5-53b8-90e3-1ecc8e6bde7d"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Newton-Verfahren",
-                "topicCode": "tum_ma2012_lo4_2_3"
-            }
-        },
-        {
-            "id": "979066c0-832e-5328-9945-c01d16c895a2",
-            "shortKey": "tum_ma2012_lo5_1_1",
-            "title": "Kennen: Konvexe Mengen und Polyeder analysieren",
-            "titleEn": "Know: Analyze Convex Sets and Polyhedra",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Konvexe Mengen und Polyeder analysieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Analyze Convex Sets and Polyhedra'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo5_1_1"
-            }
-        },
-        {
-            "id": "dbdc635b-594b-5e4a-ac28-2edcbe534ce6",
-            "shortKey": "tum_ma2012_lo5_1_2",
-            "title": "Verstehen: Konvexe Mengen und Polyeder analysieren",
-            "titleEn": "Understand: Analyze Convex Sets and Polyhedra",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Konvexe Mengen und Polyeder analysieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Analyze Convex Sets and Polyhedra'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "979066c0-832e-5328-9945-c01d16c895a2"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo5_1_2"
-            }
-        },
-        {
-            "id": "92d444d2-e0dc-5dea-ba87-81b08a30427f",
-            "shortKey": "tum_ma2012_lo5_1_3",
-            "title": "Anwenden: Konvexe Mengen und Polyeder analysieren",
-            "titleEn": "Apply: Analyze Convex Sets and Polyhedra",
-            "description": "Die lernende Person wendet das Wissen zu 'Konvexe Mengen und Polyeder analysieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Analyze Convex Sets and Polyhedra' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "dbdc635b-594b-5e4a-ac28-2edcbe534ce6"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo5_1_3"
-            }
-        },
-        {
-            "id": "d1017901-b41f-5c2b-8ef9-93b4c9c0506e",
-            "shortKey": "tum_ma2012_lo5_2_1",
-            "title": "Kennen: Konvexe Funktionen erkennen und Eigenschaften nutzen",
-            "titleEn": "Know: Recognize Convex Functions and Use Their Properties",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Konvexe Funktionen erkennen und Eigenschaften nutzen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Recognize Convex Functions and Use Their Properties'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo5_2_1"
-            }
-        },
-        {
-            "id": "27387279-8cf4-564f-84c6-25dbe772d4a3",
-            "shortKey": "tum_ma2012_lo5_2_2",
-            "title": "Verstehen: Konvexe Funktionen erkennen und Eigenschaften nutzen",
-            "titleEn": "Understand: Recognize Convex Functions and Use Their Properties",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Konvexe Funktionen erkennen und Eigenschaften nutzen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Recognize Convex Functions and Use Their Properties'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "d1017901-b41f-5c2b-8ef9-93b4c9c0506e"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo5_2_2"
-            }
-        },
-        {
-            "id": "02fd8584-7ddf-57a9-94c1-b1daf2289ddb",
-            "shortKey": "tum_ma2012_lo5_2_3",
-            "title": "Anwenden: Konvexe Funktionen erkennen und Eigenschaften nutzen",
-            "titleEn": "Apply: Recognize Convex Functions and Use Their Properties",
-            "description": "Die lernende Person wendet das Wissen zu 'Konvexe Funktionen erkennen und Eigenschaften nutzen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Recognize Convex Functions and Use Their Properties' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "27387279-8cf4-564f-84c6-25dbe772d4a3"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo5_2_3"
-            }
-        },
-        {
-            "id": "7c5a47b4-6b8d-5a60-8e26-4ff310567360",
-            "shortKey": "tum_ma2012_lo6_1_1",
-            "title": "Kennen: Metrische Projektion auf konvexe Mengen nutzen",
-            "titleEn": "Know: Use Metric Projections onto Convex Sets",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Metrische Projektion auf konvexe Mengen nutzen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Metric Projections onto Convex Sets'.",
-            "core": true,
-            "weight": 0.12,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo6_1_1"
-            }
-        },
-        {
-            "id": "e695ad99-2259-5ca0-865a-0c389395c1e1",
-            "shortKey": "tum_ma2012_lo6_1_2",
-            "title": "Verstehen: Metrische Projektion auf konvexe Mengen nutzen",
-            "titleEn": "Understand: Use Metric Projections onto Convex Sets",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Metrische Projektion auf konvexe Mengen nutzen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Use Metric Projections onto Convex Sets'.",
-            "core": true,
-            "weight": 0.12,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "7c5a47b4-6b8d-5a60-8e26-4ff310567360"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo6_1_2"
-            }
-        },
-        {
-            "id": "5cd9f056-6926-53e4-8e30-357fd3803d70",
-            "shortKey": "tum_ma2012_lo6_1_3",
-            "title": "Anwenden: Metrische Projektion auf konvexe Mengen nutzen",
-            "titleEn": "Apply: Use Metric Projections onto Convex Sets",
-            "description": "Die lernende Person wendet das Wissen zu 'Metrische Projektion auf konvexe Mengen nutzen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Use Metric Projections onto Convex Sets' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.16000000000000003,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "e695ad99-2259-5ca0-865a-0c389395c1e1"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo6_1_3"
-            }
-        },
-        {
-            "id": "4d331c9e-e35c-5fa7-bdb6-8b14b206578c",
-            "shortKey": "tum_ma2012_lo6_2_1",
-            "title": "Kennen: Trennungssätze anwenden",
-            "titleEn": "Know: Apply Separation Theorems",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Trennungssätze anwenden' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply Separation Theorems'.",
-            "core": true,
-            "weight": 0.12,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo6_2_1"
-            }
-        },
-        {
-            "id": "98ebfd99-2d51-56eb-af39-4ac38e580f47",
-            "shortKey": "tum_ma2012_lo6_2_2",
-            "title": "Verstehen: Trennungssätze anwenden",
-            "titleEn": "Understand: Apply Separation Theorems",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Trennungssätze anwenden'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Apply Separation Theorems'.",
-            "core": true,
-            "weight": 0.12,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "4d331c9e-e35c-5fa7-bdb6-8b14b206578c"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo6_2_2"
-            }
-        },
-        {
-            "id": "8adaf926-da06-524d-8511-66ad61548544",
-            "shortKey": "tum_ma2012_lo6_2_3",
-            "title": "Anwenden: Trennungssätze anwenden",
-            "titleEn": "Apply: Apply Separation Theorems",
-            "description": "Die lernende Person wendet das Wissen zu 'Trennungssätze anwenden' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Apply Separation Theorems' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.16000000000000003,
-            "phase": "Modul",
-            "area": "Konvexität",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "98ebfd99-2d51-56eb-af39-4ac38e580f47"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konvexität",
-                "topicCode": "tum_ma2012_lo6_2_3"
-            }
-        },
-        {
-            "id": "acdba5c8-5ce7-560d-94ab-3706178e0dca",
-            "shortKey": "tum_ma2012_lo7_1_1",
-            "title": "Kennen: Lineare Programme in Standardformen formulieren",
-            "titleEn": "Know: Formulate Linear Programs in Standard Forms",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Lineare Programme in Standardformen formulieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Formulate Linear Programs in Standard Forms'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo7_1_1"
-            }
-        },
-        {
-            "id": "d0bf401d-2d90-5489-9db7-e5f59232f79f",
-            "shortKey": "tum_ma2012_lo7_1_2",
-            "title": "Verstehen: Lineare Programme in Standardformen formulieren",
-            "titleEn": "Understand: Formulate Linear Programs in Standard Forms",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Lineare Programme in Standardformen formulieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Formulate Linear Programs in Standard Forms'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "acdba5c8-5ce7-560d-94ab-3706178e0dca"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo7_1_2"
-            }
-        },
-        {
-            "id": "05dfe141-0611-58c4-a27a-96d6da35783f",
-            "shortKey": "tum_ma2012_lo7_1_3",
-            "title": "Anwenden: Lineare Programme in Standardformen formulieren",
-            "titleEn": "Apply: Formulate Linear Programs in Standard Forms",
-            "description": "Die lernende Person wendet das Wissen zu 'Lineare Programme in Standardformen formulieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Formulate Linear Programs in Standard Forms' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "d0bf401d-2d90-5489-9db7-e5f59232f79f"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo7_1_3"
-            }
-        },
-        {
-            "id": "c8924a2e-c4bf-5f05-98fe-66715ee7812c",
-            "shortKey": "tum_ma2012_lo7_2_1",
-            "title": "Kennen: LP-Dualität und KKT-Bedingungen nutzen",
-            "titleEn": "Know: Use LP Duality and KKT Conditions",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'LP-Dualität und KKT-Bedingungen nutzen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use LP Duality and KKT Conditions'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo7_2_1"
-            }
-        },
-        {
-            "id": "846697a9-4b54-50d6-bbfd-f777a9c2f2b0",
-            "shortKey": "tum_ma2012_lo7_2_2",
-            "title": "Verstehen: LP-Dualität und KKT-Bedingungen nutzen",
-            "titleEn": "Understand: Use LP Duality and KKT Conditions",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'LP-Dualität und KKT-Bedingungen nutzen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Use LP Duality and KKT Conditions'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "c8924a2e-c4bf-5f05-98fe-66715ee7812c"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo7_2_2"
-            }
-        },
-        {
-            "id": "ee9a0339-d943-522e-ad0e-8b1e72e898f5",
-            "shortKey": "tum_ma2012_lo7_2_3",
-            "title": "Anwenden: LP-Dualität und KKT-Bedingungen nutzen",
-            "titleEn": "Apply: Use LP Duality and KKT Conditions",
-            "description": "Die lernende Person wendet das Wissen zu 'LP-Dualität und KKT-Bedingungen nutzen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Use LP Duality and KKT Conditions' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "846697a9-4b54-50d6-bbfd-f777a9c2f2b0"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo7_2_3"
-            }
-        },
-        {
-            "id": "a92c5fae-0e24-5369-bec7-6c6b25b6af9e",
-            "shortKey": "tum_ma2012_lo8_1_1",
-            "title": "Kennen: (Primal-)Simplex-Schritte ausführen und deuten",
-            "titleEn": "Know: Carry Out and Interpret (Primal) Simplex Steps",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu '(Primal-)Simplex-Schritte ausführen und deuten' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Carry Out and Interpret (Primal) Simplex Steps'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo8_1_1"
-            }
-        },
-        {
-            "id": "17d84d3e-c920-5a33-9257-abba7b2bb2af",
-            "shortKey": "tum_ma2012_lo8_1_2",
-            "title": "Verstehen: (Primal-)Simplex-Schritte ausführen und deuten",
-            "titleEn": "Understand: Carry Out and Interpret (Primal) Simplex Steps",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu '(Primal-)Simplex-Schritte ausführen und deuten'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Carry Out and Interpret (Primal) Simplex Steps'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "a92c5fae-0e24-5369-bec7-6c6b25b6af9e"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo8_1_2"
-            }
-        },
-        {
-            "id": "2f2ecf92-9e4b-5c00-b687-24003c0a2004",
-            "shortKey": "tum_ma2012_lo8_1_3",
-            "title": "Anwenden: (Primal-)Simplex-Schritte ausführen und deuten",
-            "titleEn": "Apply: Carry Out and Interpret (Primal) Simplex Steps",
-            "description": "Die lernende Person wendet das Wissen zu '(Primal-)Simplex-Schritte ausführen und deuten' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Carry Out and Interpret (Primal) Simplex Steps' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "17d84d3e-c920-5a33-9257-abba7b2bb2af"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo8_1_3"
-            }
-        },
-        {
-            "id": "f4e1d5ec-5031-5bbd-a229-ddc19ebfdef5",
-            "shortKey": "tum_ma2012_lo8_2_1",
-            "title": "Kennen: Duales Simplex und algorithmische Bewertung",
-            "titleEn": "Know: Dual Simplex and Algorithmic Evaluation",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Duales Simplex und algorithmische Bewertung' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Dual Simplex and Algorithmic Evaluation'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo8_2_1"
-            }
-        },
-        {
-            "id": "fb7e9fd5-5517-58a9-90ce-33f4833a0bee",
-            "shortKey": "tum_ma2012_lo8_2_2",
-            "title": "Verstehen: Duales Simplex und algorithmische Bewertung",
-            "titleEn": "Understand: Dual Simplex and Algorithmic Evaluation",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Duales Simplex und algorithmische Bewertung'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Dual Simplex and Algorithmic Evaluation'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "f4e1d5ec-5031-5bbd-a229-ddc19ebfdef5"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo8_2_2"
-            }
-        },
-        {
-            "id": "3e3089eb-8666-553c-ace9-6585cf88bd34",
-            "shortKey": "tum_ma2012_lo8_2_3",
-            "title": "Anwenden: Duales Simplex und algorithmische Bewertung",
-            "titleEn": "Apply: Dual Simplex and Algorithmic Evaluation",
-            "description": "Die lernende Person wendet das Wissen zu 'Duales Simplex und algorithmische Bewertung' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Dual Simplex and Algorithmic Evaluation' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Lineare Optimierung",
-            "tags": [
-                "ects:9",
-                "module:MA2012"
-            ],
-            "contains": [],
-            "requires": [
-                "fb7e9fd5-5517-58a9-90ce-33f4833a0bee"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2012",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lineare Optimierung",
-                "topicCode": "tum_ma2012_lo8_2_3"
-            }
-        }
-    ]
+  "title": "Einführung in die Optimierung (TUM, Modul MA2012)",
+  "titleEn": "Introduction to Optimization (TUM, Module MA2012)",
+  "description": "Nach der erfolgreichen Teilnahme am Modul beherrschen die Studierenden die vermittelten grundlegenden Konzepte und Methoden der unrestringierten nichtlinearen Optimierung, der Konvexität und der linearen Optimierung. Die Studierenden können in der Praxis auftretende Aufgabenstellungen in der einschlägigen mathematischen Fachsprache als Optimierungsproblem modellieren und klassifizieren. Sie sind in der Lage, problemabhängig Optimalitätsbedingungen der unrestringierten und linearen Optimierung herzuleiten. Die Studierenden besitzen ein geometrisches Verständnis für die Konzepte und Methoden der unrestringierten nichtlinearen Optimierung, der Konvexität und der linearen Optimierung und können die in diesem Kontext auftretenden innermathematischen und angewandten Fragestellungen analysieren und lösen. Die Studierenden kennen die sach- und fachgerechten Optimierungsverfahren (z.B. global konvergente Abstiegsverfahren, Newton-Verfahren, Newton-artige Methoden und Simplex-Verfahren) und können diese im richtigen Kontext anwenden. Sie sind in der Lage, den Rechenaufwand und das Konvergenzverhalten von Optimierungsmethoden zu analysieren und zu bewerten. 9 ECTS, angeboten im Sommersemester, Version 2022w, verantwortet von Ulbrich, Michael.",
+  "descriptionEn": "After successfully completing the module, students master the fundamental concepts and methods of unconstrained nonlinear optimization, convexity, and linear optimization. They can model and classify real-world tasks as optimization problems in the appropriate mathematical language. Depending on the problem, they are able to derive optimality conditions for unconstrained and linear optimization. They develop a geometric understanding of the underlying concepts and methods and can analyze and solve mathematical and applied questions arising in this context. Students are familiar with appropriate optimization algorithms (e.g., globally convergent descent methods, Newton’s method, Newton-type methods, and the simplex method) and can apply them in the right context. They can analyze and evaluate the computational effort and convergence behavior of optimization methods. 9 ECTS, offered in the summer semester, version 2022w, responsible: Ulbrich, Michael.",
+  "landscapeId": "2fa68528-2816-4a53-a25d-db4ffcce43da",
+  "locale": "de-DE",
+  "subject": "Mathematik",
+  "frameworkId": "tum-ma2012",
+  "filters": [
+    {
+      "id": "BSc",
+      "label": "Bachelor Mathematik"
+    }
+  ],
+  "goals": [
+    {
+      "id": "b805ec8a-3357-56b6-a770-86490a3c8916",
+      "title": "Einführung in die Optimierung – Gesamtmodul",
+      "titleEn": "Introduction to Optimization – Full Module",
+      "description": "Nach der erfolgreichen Teilnahme am Modul beherrschen die Studierenden die vermittelten grundlegenden Konzepte und Methoden der unrestringierten nichtlinearen Optimierung, der Konvexität und der linearen Optimierung. Die Studierenden können in der Praxis auftretende Aufgabenstellungen in der einschlägigen mathematischen Fachsprache als Optimierungsproblem modellieren und klassifizieren. Sie sind in der Lage, problemabhängig Optimalitätsbedingungen der unrestringierten und linearen Optimierung herzuleiten. Die Studierenden besitzen ein geometrisches Verständnis für die Konzepte und Methoden der unrestringierten nichtlinearen Optimierung, der Konvexität und der linearen Optimierung und können die in diesem Kontext auftretenden innermathematischen und angewandten Fragestellungen analysieren und lösen. Die Studierenden kennen die sach- und fachgerechten Optimierungsverfahren (z.B. global konvergente Abstiegsverfahren, Newton-Verfahren, Newton-artige Methoden und Simplex-Verfahren) und können diese im richtigen Kontext anwenden. Sie sind in der Lage, den Rechenaufwand und das Konvergenzverhalten von Optimierungsmethoden zu analysieren und zu bewerten.",
+      "descriptionEn": "After successfully completing the module, students master the fundamental concepts and methods of unconstrained nonlinear optimization, convexity, and linear optimization. They can model and classify real-world tasks as optimization problems in the appropriate mathematical language. Depending on the problem, they are able to derive optimality conditions for unconstrained and linear optimization. They develop a geometric understanding of the underlying concepts and methods and can analyze and solve mathematical and applied questions arising in this context. Students are familiar with appropriate optimization algorithms (e.g., globally convergent descent methods, Newton’s method, Newton-type methods, and the simplex method) and can apply them in the right context. They can analyze and evaluate the computational effort and convergence behavior of optimization methods.",
+      "weight": 9.0,
+      "tags": [
+        "ects:9",
+        "workload:270h",
+        "presence:120h",
+        "level:bachelor",
+        "language:de",
+        "module:MA2012",
+        "semester:SS",
+        "duration:1_semester",
+        "responsible:ulbrich_michael"
+      ],
+      "contains": [
+        "f4711b83-4672-5a09-bd86-7c0e84db6db3",
+        "62fcb5aa-5b01-5f58-bbad-34d101c6d30a",
+        "eea443e7-d3ef-56ea-a9a5-17253cd650a7",
+        "a1f088e7-97bf-5606-8372-7867a8820711",
+        "01af8723-7e21-531f-8c9e-acb6b699f5fe",
+        "7f40ff34-bc58-524f-b827-3c89bd06f828",
+        "79af14d1-31c4-5d07-bb4b-9e40bf2f965f",
+        "438a70ee-b31b-5de2-9b0a-dfd87fe6efd0",
+        "1ccf2391-a538-587c-a5b8-793dad4f0011"
+      ],
+      "requires": [
+        "8eb1605b-fa70-511b-bbe4-28173d359c3b",
+        "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
+        "feaad1d5-022f-5ab3-93c3-001ac46de351"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      },
+      "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA2012&description_version=2022w"
+    },
+    {
+      "id": "f4711b83-4672-5a09-bd86-7c0e84db6db3",
+      "title": "Modellierung und Klassifikation von Optimierungsproblemen",
+      "titleEn": "Modeling and Classification of Optimization Problems",
+      "description": "Zusammenfassender Cluster: Praktische Fragestellungen als Optimierungsprobleme modellieren und nach Struktur und Lösungsansätzen klassifizieren.",
+      "descriptionEn": "Summary cluster: modeling real-world tasks as optimization problems and classifying them by structure and suitable solution approaches.",
+      "weight": 1.0,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "1cc84872-bfe4-5cf0-825f-698e1c6b6a8b",
+        "a2a65d4a-4cf8-55e7-b022-4c0e490d6116"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1cc84872-bfe4-5cf0-825f-698e1c6b6a8b",
+      "title": "Optimierungsmodelle aus Praxisproblemen erstellen",
+      "titleEn": "Build Optimization Models from Real-World Problems",
+      "description": "Die lernende Person kann Entscheidungsvariablen, Zielfunktion und Nebenbedingungen aus einer praktischen Aufgabenstellung ableiten und ein passendes Optimierungsmodell formulieren.",
+      "descriptionEn": "The learner can derive decision variables, an objective function, and constraints from a real-world task and formulate an appropriate optimization model.",
+      "weight": 0.5,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "d5da96a0-e1fc-547b-9736-60dada3134d1",
+        "276ea5da-33d7-509f-8f4c-22374b15c2db",
+        "073b2bce-899d-53e9-9997-a53927436d4c"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a2a65d4a-4cf8-55e7-b022-4c0e490d6116",
+      "title": "Optimierungsprobleme klassifizieren und formal notieren",
+      "titleEn": "Classify and Formally Specify Optimization Problems",
+      "description": "Die lernende Person kann Optimierungsprobleme nach Struktur (z.B. linear/nichtlinear, glatt/nichtglatt, konvex/nichtkonvex, mit/ohne Nebenbedingungen) einordnen und in mathematischer Fachsprache präzise notieren.",
+      "descriptionEn": "The learner can classify optimization problems by structure (e.g., linear/nonlinear, smooth/nonsmooth, convex/nonconvex, with/without constraints) and specify them precisely in mathematical language.",
+      "weight": 0.5,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "962caa99-6a7e-50f3-b00a-9d01ebf28327",
+        "5a5297a2-b3f2-531d-95aa-13d473e1420b",
+        "3c2454af-7e22-5391-be6b-e951eb2fe884"
+      ],
+      "requires": [
+        "1cc84872-bfe4-5cf0-825f-698e1c6b6a8b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "62fcb5aa-5b01-5f58-bbad-34d101c6d30a",
+      "title": "Unrestringierte Optimierung: Optimalitätsbedingungen",
+      "titleEn": "Unconstrained Optimization: Optimality Conditions",
+      "description": "Zusammenfassender Cluster: Optimalitätsbedingungen der unrestringierten Optimierung als Grundlage für Verfahren und Konvergenzanalysen.",
+      "descriptionEn": "Summary cluster: optimality conditions for unconstrained optimization as a basis for methods and convergence analysis.",
+      "weight": 1.2,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "d41fc6a5-58e8-5ab2-af28-04a55914a323",
+        "a7f85acd-3df6-5ac0-9624-b119fe3e3b5a"
+      ],
+      "requires": [
+        "a2a65d4a-4cf8-55e7-b022-4c0e490d6116"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d41fc6a5-58e8-5ab2-af28-04a55914a323",
+      "title": "Ableitungen für Optimierung berechnen und nutzen",
+      "titleEn": "Compute and Use Derivatives for Optimization",
+      "description": "Die lernende Person kann Gradient und Hesse-Matrix (sowie Richtungsableitungen) für typische Zielfunktionen berechnen und zur Analyse von Abstiegsrichtungen einsetzen.",
+      "descriptionEn": "The learner can compute gradients and Hessians (as well as directional derivatives) for typical objective functions and use them to analyze descent directions.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "fdc8da39-2bef-558b-8df2-d6f715a7f66e",
+        "9d7dd8c2-6790-5eeb-92b7-5167d8884f2d",
+        "59c7d60e-44ab-51d3-bdcb-b6c1c18b88a0"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a7f85acd-3df6-5ac0-9624-b119fe3e3b5a",
+      "title": "Optimalitätsbedingungen herleiten und prüfen",
+      "titleEn": "Derive and Check Optimality Conditions",
+      "description": "Die lernende Person kann notwendige und hinreichende Optimalitätsbedingungen für unrestringierte Optimierung (1./2. Ordnung) herleiten und auf konkrete Probleme anwenden.",
+      "descriptionEn": "The learner can derive necessary and sufficient optimality conditions for unconstrained optimization (first/second order) and apply them to concrete problems.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "d9afaea5-3328-5c04-8276-8ddf7ccaf185",
+        "92bf1490-701e-58cf-b31a-fb9e99c9ed8b",
+        "9d5fec93-8505-5d2a-8ef7-73a114f7a7d2"
+      ],
+      "requires": [
+        "d41fc6a5-58e8-5ab2-af28-04a55914a323"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "eea443e7-d3ef-56ea-a9a5-17253cd650a7",
+      "title": "Abstiegsverfahren und Globalisierung",
+      "titleEn": "Descent Methods and Globalization",
+      "description": "Zusammenfassender Cluster: Global konvergente Abstiegsverfahren einschließlich Schrittweitenstrategien und Konvergenz-/Aufwandsanalyse.",
+      "descriptionEn": "Summary cluster: globally convergent descent methods, including step-size strategies and convergence/cost analysis.",
+      "weight": 1.4,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "36d427e7-32d8-5020-9414-c9eba6678786",
+        "a60f33af-98af-5cc8-86ae-36b4fcea2755"
+      ],
+      "requires": [
+        "a7f85acd-3df6-5ac0-9624-b119fe3e3b5a"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "36d427e7-32d8-5020-9414-c9eba6678786",
+      "title": "Global konvergente Abstiegsverfahren anwenden",
+      "titleEn": "Apply Globally Convergent Descent Methods",
+      "description": "Die lernende Person kann Abstiegsverfahren (z.B. Gradientenverfahren) formulieren, geeignete Schrittweitenregeln (z.B. Armijo-/Wolfe-Bedingungen) verwenden und Abbruchkriterien definieren.",
+      "descriptionEn": "The learner can formulate descent methods (e.g., gradient methods), use suitable step-size rules (e.g., Armijo/Wolfe conditions), and define stopping criteria.",
+      "weight": 0.7,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "cdc54edc-e955-5f78-bb82-5a4cf165fd59",
+        "705c4a58-a7b0-51a1-82a2-76b3b5e2a285",
+        "cfe1de71-8706-54ac-bd6b-1d248ca22a4f"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a60f33af-98af-5cc8-86ae-36b4fcea2755",
+      "title": "Konvergenz und Aufwand von Verfahren bewerten",
+      "titleEn": "Evaluate Convergence and Computational Effort",
+      "description": "Die lernende Person kann Konvergenzargumente für Abstiegsverfahren nachvollziehen, typische Konvergenzraten vergleichen und Rechenaufwand sowie numerische Stabilität in Anwendungen einschätzen.",
+      "descriptionEn": "The learner can follow convergence arguments for descent methods, compare typical convergence rates, and assess computational cost and numerical stability in applications.",
+      "weight": 0.7,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "54742cd2-8611-5920-82eb-09dcaa9a5313",
+        "a943e849-fe2b-565f-bb2b-a5cd4e8cb70a",
+        "5d51f196-2706-56a5-b266-8e3faa5f9d71"
+      ],
+      "requires": [
+        "36d427e7-32d8-5020-9414-c9eba6678786"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a1f088e7-97bf-5606-8372-7867a8820711",
+      "title": "Newton- und Newton-artige Methoden",
+      "titleEn": "Newton and Newton-Type Methods",
+      "description": "Zusammenfassender Cluster: Newton-Verfahren und Newton-artige Methoden einschließlich Globalisierung lokal konvergenter Verfahren.",
+      "descriptionEn": "Summary cluster: Newton’s method and Newton-type methods, including globalization of locally convergent schemes.",
+      "weight": 1.2,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "35dd1363-f48b-540f-8d9b-d728487668ae",
+        "44914695-427b-577e-bd83-934ec78d6e97"
+      ],
+      "requires": [
+        "a60f33af-98af-5cc8-86ae-36b4fcea2755"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "35dd1363-f48b-540f-8d9b-d728487668ae",
+      "title": "Newton-Verfahren für Optimierung einsetzen",
+      "titleEn": "Use Newton’s Method for Optimization",
+      "description": "Die lernende Person kann Newton-Schritte für unrestringierte Optimierung herleiten, lineare Teilschritte praktisch lösen und lokale Konvergenzeigenschaften erläutern.",
+      "descriptionEn": "The learner can derive Newton steps for unconstrained optimization, solve the resulting linear subproblems in practice, and explain local convergence properties.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "bfcf7117-7cb9-5b1d-8fa1-d745d2ea256f",
+        "f83c5cdd-334b-5894-a368-563878f411b1",
+        "526e2cd8-ccb6-5855-ba37-71dc3967e000"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "44914695-427b-577e-bd83-934ec78d6e97",
+      "title": "Newton-artige Methoden globalisieren",
+      "titleEn": "Globalize Newton-Type Methods",
+      "description": "Die lernende Person kann Dämpfung/Line-Search oder Trust-Region-Ideen zur Globalisierung lokal konvergenter Verfahren beschreiben und Newton-artige Methoden (z.B. Quasi-Newton) im Kontext einordnen.",
+      "descriptionEn": "The learner can describe damping/line-search or trust-region ideas to globalize locally convergent methods and place Newton-type methods (e.g., quasi-Newton) in context.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "d8901b5c-02a7-5391-ae96-a34fbd274dd8",
+        "6bcebfd4-50b5-53b8-90e3-1ecc8e6bde7d",
+        "eb81082c-8ee0-5890-97b2-5c681f849cbb"
+      ],
+      "requires": [
+        "35dd1363-f48b-540f-8d9b-d728487668ae"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "01af8723-7e21-531f-8c9e-acb6b699f5fe",
+      "title": "Konvexität: Mengen und Funktionen",
+      "titleEn": "Convexity: Sets and Functions",
+      "description": "Zusammenfassender Cluster: Konvexe Mengen und konvexe Funktionen als geometrische und analytische Grundlage der Optimierung.",
+      "descriptionEn": "Summary cluster: convex sets and convex functions as the geometric and analytic foundation of optimization.",
+      "weight": 1.2,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "4e8fd812-a9bc-5dd7-9427-d25ac70d540b",
+        "72fda829-2547-5170-b90b-0e41a209a6c3"
+      ],
+      "requires": [
+        "a2a65d4a-4cf8-55e7-b022-4c0e490d6116"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4e8fd812-a9bc-5dd7-9427-d25ac70d540b",
+      "title": "Konvexe Mengen und Polyeder analysieren",
+      "titleEn": "Analyze Convex Sets and Polyhedra",
+      "description": "Die lernende Person kann konvexe Mengen charakterisieren, Konvexkombinationen nutzen und Polyeder als Schnitt von Halbräumen beschreiben und in Beispielen geometrisch interpretieren.",
+      "descriptionEn": "The learner can characterize convex sets, use convex combinations, and describe polyhedra as intersections of half-spaces and interpret them geometrically in examples.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "979066c0-832e-5328-9945-c01d16c895a2",
+        "dbdc635b-594b-5e4a-ac28-2edcbe534ce6",
+        "92d444d2-e0dc-5dea-ba87-81b08a30427f"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "72fda829-2547-5170-b90b-0e41a209a6c3",
+      "title": "Konvexe Funktionen erkennen und Eigenschaften nutzen",
+      "titleEn": "Recognize Convex Functions and Use Their Properties",
+      "description": "Die lernende Person kann Konvexität von Funktionen prüfen, grundlegende Konsequenzen (z.B. lokale = globale Minima) erklären und Standardbeispiele konvexer Funktionen sicher verwenden.",
+      "descriptionEn": "The learner can check convexity of functions, explain key consequences (e.g., local minima are global), and confidently use standard examples of convex functions.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "d1017901-b41f-5c2b-8ef9-93b4c9c0506e",
+        "27387279-8cf4-564f-84c6-25dbe772d4a3",
+        "02fd8584-7ddf-57a9-94c1-b1daf2289ddb"
+      ],
+      "requires": [
+        "4e8fd812-a9bc-5dd7-9427-d25ac70d540b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7f40ff34-bc58-524f-b827-3c89bd06f828",
+      "title": "Metrische Projektion und Trennungssätze",
+      "titleEn": "Metric Projection and Separation Theorems",
+      "description": "Zusammenfassender Cluster: Metrische Projektion und Trennungssätze als Werkzeuge zur Analyse konvexer Optimierungsprobleme.",
+      "descriptionEn": "Summary cluster: metric projection and separation theorems as tools for analyzing convex optimization problems.",
+      "weight": 0.8,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "c349a20c-8008-5218-8b55-b18186369a39",
+        "f731e195-91ec-5622-89ab-12f1d6175239"
+      ],
+      "requires": [
+        "72fda829-2547-5170-b90b-0e41a209a6c3"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "c349a20c-8008-5218-8b55-b18186369a39",
+      "title": "Metrische Projektion auf konvexe Mengen nutzen",
+      "titleEn": "Use Metric Projections onto Convex Sets",
+      "description": "Die lernende Person kann die metrische Projektion auf abgeschlossene konvexe Mengen formulieren, in einfachen Fällen berechnen und die Optimalitätsinterpretation erläutern.",
+      "descriptionEn": "The learner can formulate the metric projection onto closed convex sets, compute it in simple cases, and explain its optimality interpretation.",
+      "weight": 0.4,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "7c5a47b4-6b8d-5a60-8e26-4ff310567360",
+        "e695ad99-2259-5ca0-865a-0c389395c1e1",
+        "5cd9f056-6926-53e4-8e30-357fd3803d70"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f731e195-91ec-5622-89ab-12f1d6175239",
+      "title": "Trennungssätze anwenden",
+      "titleEn": "Apply Separation Theorems",
+      "description": "Die lernende Person kann Trennungssätze für konvexe Mengen in Beispielen anwenden, stützende Hyperebenen interpretieren und geometrische Dualitätsargumente nachvollziehen.",
+      "descriptionEn": "The learner can apply separation theorems for convex sets in examples, interpret supporting hyperplanes, and follow geometric duality arguments.",
+      "weight": 0.4,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "4d331c9e-e35c-5fa7-bdb6-8b14b206578c",
+        "98ebfd99-2d51-56eb-af39-4ac38e580f47",
+        "8adaf926-da06-524d-8511-66ad61548544"
+      ],
+      "requires": [
+        "c349a20c-8008-5218-8b55-b18186369a39"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "79af14d1-31c4-5d07-bb4b-9e40bf2f965f",
+      "title": "Lineare Optimierung: Polyeder, Dualität, KKT",
+      "titleEn": "Linear Optimization: Polyhedra, Duality, KKT",
+      "description": "Zusammenfassender Cluster: Lineare Optimierung mit polyedrischer Geometrie, LP-Dualität und KKT-/Komplementaritätsbedingungen.",
+      "descriptionEn": "Summary cluster: linear optimization with polyhedral geometry, LP duality, and KKT/complementary slackness conditions.",
+      "weight": 1.1,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "b9fe2afb-4c71-51a1-afed-585585e443e0",
+        "56f448c1-1535-5b1e-8036-991450972b55"
+      ],
+      "requires": [
+        "f731e195-91ec-5622-89ab-12f1d6175239"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b9fe2afb-4c71-51a1-afed-585585e443e0",
+      "title": "Lineare Programme in Standardformen formulieren",
+      "titleEn": "Formulate Linear Programs in Standard Forms",
+      "description": "Die lernende Person kann lineare Programme in äquivalente Standardformen überführen, die zulässige Menge als Polyeder beschreiben und Extrempunkte als Kandidaten für Optima begründen.",
+      "descriptionEn": "The learner can transform linear programs into equivalent standard forms, describe the feasible set as a polyhedron, and justify why extreme points are candidates for optima.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "acdba5c8-5ce7-560d-94ab-3706178e0dca",
+        "d0bf401d-2d90-5489-9db7-e5f59232f79f",
+        "05dfe141-0611-58c4-a27a-96d6da35783f"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "56f448c1-1535-5b1e-8036-991450972b55",
+      "title": "LP-Dualität und KKT-Bedingungen nutzen",
+      "titleEn": "Use LP Duality and KKT Conditions",
+      "description": "Die lernende Person kann das Dualproblem zu einem LP herleiten, Dualitätsaussagen interpretieren und KKT-/Komplementaritätsbedingungen zur Zertifizierung optimaler Lösungen einsetzen.",
+      "descriptionEn": "The learner can derive the dual problem of a linear program, interpret duality statements, and use KKT/complementary slackness conditions to certify optimal solutions.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "c8924a2e-c4bf-5f05-98fe-66715ee7812c",
+        "846697a9-4b54-50d6-bbfd-f777a9c2f2b0",
+        "ee9a0339-d943-522e-ad0e-8b1e72e898f5"
+      ],
+      "requires": [
+        "b9fe2afb-4c71-51a1-afed-585585e443e0"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "438a70ee-b31b-5de2-9b0a-dfd87fe6efd0",
+      "title": "(Duales) Simplex-Verfahren",
+      "titleEn": "(Dual) Simplex Method",
+      "description": "Zusammenfassender Cluster: Simplex-Verfahren (primal/dual) als grundlegender Algorithmus der linearen Optimierung.",
+      "descriptionEn": "Summary cluster: the simplex method (primal/dual) as a fundamental algorithm for linear optimization.",
+      "weight": 1.1,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "82843401-1e94-592f-8a99-871c9648bb92",
+        "33f3085a-28d3-5178-bb39-879275df8afc"
+      ],
+      "requires": [
+        "56f448c1-1535-5b1e-8036-991450972b55"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "82843401-1e94-592f-8a99-871c9648bb92",
+      "title": "(Primal-)Simplex-Schritte ausführen und deuten",
+      "titleEn": "Carry Out and Interpret (Primal) Simplex Steps",
+      "description": "Die lernende Person kann die Grundidee des Simplex-Verfahrens erklären, Pivot-Schritte in kleinen Beispielen durchführen und die Bedeutung von Basislösungen geometrisch interpretieren.",
+      "descriptionEn": "The learner can explain the core idea of the simplex method, perform pivot steps in small examples, and interpret the role of basic solutions geometrically.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "a92c5fae-0e24-5369-bec7-6c6b25b6af9e",
+        "17d84d3e-c920-5a33-9257-abba7b2bb2af",
+        "2f2ecf92-9e4b-5c00-b687-24003c0a2004"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "33f3085a-28d3-5178-bb39-879275df8afc",
+      "title": "Duales Simplex und algorithmische Bewertung",
+      "titleEn": "Dual Simplex and Algorithmic Evaluation",
+      "description": "Die lernende Person kann das duale Simplex-Verfahren im Grundprinzip erläutern, geeignete Startbedingungen diskutieren und Rechenaufwand sowie Konvergenzverhalten des Simplex-Verfahrens bewerten.",
+      "descriptionEn": "The learner can explain the basic principle of the dual simplex method, discuss suitable starting conditions, and evaluate the computational effort and convergence behavior of the simplex method.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [
+        "f4e1d5ec-5031-5bbd-a229-ddc19ebfdef5",
+        "fb7e9fd5-5517-58a9-90ce-33f4833a0bee",
+        "3e3089eb-8666-553c-ace9-6585cf88bd34"
+      ],
+      "requires": [
+        "82843401-1e94-592f-8a99-871c9648bb92"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1ccf2391-a538-587c-a5b8-793dad4f0011",
+      "title": "Kernaussagen des Moduls memorisieren",
+      "titleEn": "Memorize Key Module Statements",
+      "description": "Die lernende Person hat alle zentralen Definitionen und Sätze des Moduls verinnerlicht (geprüft z.B. durch SRS/Lernkarten).",
+      "descriptionEn": "The learner has internalized all key definitions and theorems of the module (verified e.g. via SRS/flashcards).",
+      "weight": 0.5,
+      "tags": [
+        "module:MA2012",
+        "srs-deck:ma2012"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/ma2012_deck.json"
+      },
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d5da96a0-e1fc-547b-9736-60dada3134d1",
+      "title": "Kennen: Optimierungsmodelle aus Praxisproblemen erstellen",
+      "titleEn": "Know: Build Optimization Models from Real-World Problems",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Optimierungsmodelle aus Praxisproblemen erstellen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Build Optimization Models from Real-World Problems'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "276ea5da-33d7-509f-8f4c-22374b15c2db",
+      "title": "Verstehen: Optimierungsmodelle aus Praxisproblemen erstellen",
+      "titleEn": "Understand: Build Optimization Models from Real-World Problems",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Optimierungsmodelle aus Praxisproblemen erstellen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Build Optimization Models from Real-World Problems'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "d5da96a0-e1fc-547b-9736-60dada3134d1"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "073b2bce-899d-53e9-9997-a53927436d4c",
+      "title": "Anwenden: Optimierungsmodelle aus Praxisproblemen erstellen",
+      "titleEn": "Apply: Build Optimization Models from Real-World Problems",
+      "description": "Die lernende Person wendet das Wissen zu 'Optimierungsmodelle aus Praxisproblemen erstellen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Build Optimization Models from Real-World Problems' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "276ea5da-33d7-509f-8f4c-22374b15c2db"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "962caa99-6a7e-50f3-b00a-9d01ebf28327",
+      "title": "Kennen: Optimierungsprobleme klassifizieren und formal notieren",
+      "titleEn": "Know: Classify and Formally Specify Optimization Problems",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Optimierungsprobleme klassifizieren und formal notieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Classify and Formally Specify Optimization Problems'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "5a5297a2-b3f2-531d-95aa-13d473e1420b",
+      "title": "Verstehen: Optimierungsprobleme klassifizieren und formal notieren",
+      "titleEn": "Understand: Classify and Formally Specify Optimization Problems",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Optimierungsprobleme klassifizieren und formal notieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Classify and Formally Specify Optimization Problems'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "962caa99-6a7e-50f3-b00a-9d01ebf28327"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "3c2454af-7e22-5391-be6b-e951eb2fe884",
+      "title": "Anwenden: Optimierungsprobleme klassifizieren und formal notieren",
+      "titleEn": "Apply: Classify and Formally Specify Optimization Problems",
+      "description": "Die lernende Person wendet das Wissen zu 'Optimierungsprobleme klassifizieren und formal notieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Classify and Formally Specify Optimization Problems' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "5a5297a2-b3f2-531d-95aa-13d473e1420b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "fdc8da39-2bef-558b-8df2-d6f715a7f66e",
+      "title": "Kennen: Ableitungen für Optimierung berechnen und nutzen",
+      "titleEn": "Know: Compute and Use Derivatives for Optimization",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Ableitungen für Optimierung berechnen und nutzen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Compute and Use Derivatives for Optimization'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9d7dd8c2-6790-5eeb-92b7-5167d8884f2d",
+      "title": "Verstehen: Ableitungen für Optimierung berechnen und nutzen",
+      "titleEn": "Understand: Compute and Use Derivatives for Optimization",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Ableitungen für Optimierung berechnen und nutzen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Compute and Use Derivatives for Optimization'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "fdc8da39-2bef-558b-8df2-d6f715a7f66e"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "59c7d60e-44ab-51d3-bdcb-b6c1c18b88a0",
+      "title": "Anwenden: Ableitungen für Optimierung berechnen und nutzen",
+      "titleEn": "Apply: Compute and Use Derivatives for Optimization",
+      "description": "Die lernende Person wendet das Wissen zu 'Ableitungen für Optimierung berechnen und nutzen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Compute and Use Derivatives for Optimization' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "9d7dd8c2-6790-5eeb-92b7-5167d8884f2d"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d9afaea5-3328-5c04-8276-8ddf7ccaf185",
+      "title": "Kennen: Optimalitätsbedingungen herleiten und prüfen",
+      "titleEn": "Know: Derive and Check Optimality Conditions",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Optimalitätsbedingungen herleiten und prüfen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Derive and Check Optimality Conditions'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "92bf1490-701e-58cf-b31a-fb9e99c9ed8b",
+      "title": "Verstehen: Optimalitätsbedingungen herleiten und prüfen",
+      "titleEn": "Understand: Derive and Check Optimality Conditions",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Optimalitätsbedingungen herleiten und prüfen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Derive and Check Optimality Conditions'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "d9afaea5-3328-5c04-8276-8ddf7ccaf185"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9d5fec93-8505-5d2a-8ef7-73a114f7a7d2",
+      "title": "Anwenden: Optimalitätsbedingungen herleiten und prüfen",
+      "titleEn": "Apply: Derive and Check Optimality Conditions",
+      "description": "Die lernende Person wendet das Wissen zu 'Optimalitätsbedingungen herleiten und prüfen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Derive and Check Optimality Conditions' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "92bf1490-701e-58cf-b31a-fb9e99c9ed8b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "cdc54edc-e955-5f78-bb82-5a4cf165fd59",
+      "title": "Kennen: Global konvergente Abstiegsverfahren anwenden",
+      "titleEn": "Know: Apply Globally Convergent Descent Methods",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Global konvergente Abstiegsverfahren anwenden' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply Globally Convergent Descent Methods'.",
+      "weight": 0.21,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "705c4a58-a7b0-51a1-82a2-76b3b5e2a285",
+      "title": "Verstehen: Global konvergente Abstiegsverfahren anwenden",
+      "titleEn": "Understand: Apply Globally Convergent Descent Methods",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Global konvergente Abstiegsverfahren anwenden'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Apply Globally Convergent Descent Methods'.",
+      "weight": 0.21,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "cdc54edc-e955-5f78-bb82-5a4cf165fd59"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "cfe1de71-8706-54ac-bd6b-1d248ca22a4f",
+      "title": "Anwenden: Global konvergente Abstiegsverfahren anwenden",
+      "titleEn": "Apply: Apply Globally Convergent Descent Methods",
+      "description": "Die lernende Person wendet das Wissen zu 'Global konvergente Abstiegsverfahren anwenden' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Apply Globally Convergent Descent Methods' to concrete examples and tasks.",
+      "weight": 0.27999999999999997,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "705c4a58-a7b0-51a1-82a2-76b3b5e2a285"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "54742cd2-8611-5920-82eb-09dcaa9a5313",
+      "title": "Kennen: Konvergenz und Aufwand von Verfahren bewerten",
+      "titleEn": "Know: Evaluate Convergence and Computational Effort",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Konvergenz und Aufwand von Verfahren bewerten' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Evaluate Convergence and Computational Effort'.",
+      "weight": 0.21,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a943e849-fe2b-565f-bb2b-a5cd4e8cb70a",
+      "title": "Verstehen: Konvergenz und Aufwand von Verfahren bewerten",
+      "titleEn": "Understand: Evaluate Convergence and Computational Effort",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Konvergenz und Aufwand von Verfahren bewerten'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Evaluate Convergence and Computational Effort'.",
+      "weight": 0.21,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "54742cd2-8611-5920-82eb-09dcaa9a5313"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "5d51f196-2706-56a5-b266-8e3faa5f9d71",
+      "title": "Anwenden: Konvergenz und Aufwand von Verfahren bewerten",
+      "titleEn": "Apply: Evaluate Convergence and Computational Effort",
+      "description": "Die lernende Person wendet das Wissen zu 'Konvergenz und Aufwand von Verfahren bewerten' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Evaluate Convergence and Computational Effort' to concrete examples and tasks.",
+      "weight": 0.27999999999999997,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "a943e849-fe2b-565f-bb2b-a5cd4e8cb70a"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "bfcf7117-7cb9-5b1d-8fa1-d745d2ea256f",
+      "title": "Kennen: Newton-Verfahren für Optimierung einsetzen",
+      "titleEn": "Know: Use Newton’s Method for Optimization",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Newton-Verfahren für Optimierung einsetzen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Newton’s Method for Optimization'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f83c5cdd-334b-5894-a368-563878f411b1",
+      "title": "Verstehen: Newton-Verfahren für Optimierung einsetzen",
+      "titleEn": "Understand: Use Newton’s Method for Optimization",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Newton-Verfahren für Optimierung einsetzen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Use Newton’s Method for Optimization'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "bfcf7117-7cb9-5b1d-8fa1-d745d2ea256f"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "526e2cd8-ccb6-5855-ba37-71dc3967e000",
+      "title": "Anwenden: Newton-Verfahren für Optimierung einsetzen",
+      "titleEn": "Apply: Use Newton’s Method for Optimization",
+      "description": "Die lernende Person wendet das Wissen zu 'Newton-Verfahren für Optimierung einsetzen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Use Newton’s Method for Optimization' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "f83c5cdd-334b-5894-a368-563878f411b1"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d8901b5c-02a7-5391-ae96-a34fbd274dd8",
+      "title": "Kennen: Newton-artige Methoden globalisieren",
+      "titleEn": "Know: Globalize Newton-Type Methods",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Newton-artige Methoden globalisieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Globalize Newton-Type Methods'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6bcebfd4-50b5-53b8-90e3-1ecc8e6bde7d",
+      "title": "Verstehen: Newton-artige Methoden globalisieren",
+      "titleEn": "Understand: Globalize Newton-Type Methods",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Newton-artige Methoden globalisieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Globalize Newton-Type Methods'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "d8901b5c-02a7-5391-ae96-a34fbd274dd8"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "eb81082c-8ee0-5890-97b2-5c681f849cbb",
+      "title": "Anwenden: Newton-artige Methoden globalisieren",
+      "titleEn": "Apply: Globalize Newton-Type Methods",
+      "description": "Die lernende Person wendet das Wissen zu 'Newton-artige Methoden globalisieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Globalize Newton-Type Methods' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "6bcebfd4-50b5-53b8-90e3-1ecc8e6bde7d"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "979066c0-832e-5328-9945-c01d16c895a2",
+      "title": "Kennen: Konvexe Mengen und Polyeder analysieren",
+      "titleEn": "Know: Analyze Convex Sets and Polyhedra",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Konvexe Mengen und Polyeder analysieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Analyze Convex Sets and Polyhedra'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "dbdc635b-594b-5e4a-ac28-2edcbe534ce6",
+      "title": "Verstehen: Konvexe Mengen und Polyeder analysieren",
+      "titleEn": "Understand: Analyze Convex Sets and Polyhedra",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Konvexe Mengen und Polyeder analysieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Analyze Convex Sets and Polyhedra'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "979066c0-832e-5328-9945-c01d16c895a2"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "92d444d2-e0dc-5dea-ba87-81b08a30427f",
+      "title": "Anwenden: Konvexe Mengen und Polyeder analysieren",
+      "titleEn": "Apply: Analyze Convex Sets and Polyhedra",
+      "description": "Die lernende Person wendet das Wissen zu 'Konvexe Mengen und Polyeder analysieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Analyze Convex Sets and Polyhedra' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "dbdc635b-594b-5e4a-ac28-2edcbe534ce6"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d1017901-b41f-5c2b-8ef9-93b4c9c0506e",
+      "title": "Kennen: Konvexe Funktionen erkennen und Eigenschaften nutzen",
+      "titleEn": "Know: Recognize Convex Functions and Use Their Properties",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Konvexe Funktionen erkennen und Eigenschaften nutzen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Recognize Convex Functions and Use Their Properties'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "27387279-8cf4-564f-84c6-25dbe772d4a3",
+      "title": "Verstehen: Konvexe Funktionen erkennen und Eigenschaften nutzen",
+      "titleEn": "Understand: Recognize Convex Functions and Use Their Properties",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Konvexe Funktionen erkennen und Eigenschaften nutzen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Recognize Convex Functions and Use Their Properties'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "d1017901-b41f-5c2b-8ef9-93b4c9c0506e"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "02fd8584-7ddf-57a9-94c1-b1daf2289ddb",
+      "title": "Anwenden: Konvexe Funktionen erkennen und Eigenschaften nutzen",
+      "titleEn": "Apply: Recognize Convex Functions and Use Their Properties",
+      "description": "Die lernende Person wendet das Wissen zu 'Konvexe Funktionen erkennen und Eigenschaften nutzen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Recognize Convex Functions and Use Their Properties' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "27387279-8cf4-564f-84c6-25dbe772d4a3"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7c5a47b4-6b8d-5a60-8e26-4ff310567360",
+      "title": "Kennen: Metrische Projektion auf konvexe Mengen nutzen",
+      "titleEn": "Know: Use Metric Projections onto Convex Sets",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Metrische Projektion auf konvexe Mengen nutzen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Metric Projections onto Convex Sets'.",
+      "weight": 0.12,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e695ad99-2259-5ca0-865a-0c389395c1e1",
+      "title": "Verstehen: Metrische Projektion auf konvexe Mengen nutzen",
+      "titleEn": "Understand: Use Metric Projections onto Convex Sets",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Metrische Projektion auf konvexe Mengen nutzen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Use Metric Projections onto Convex Sets'.",
+      "weight": 0.12,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "7c5a47b4-6b8d-5a60-8e26-4ff310567360"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "5cd9f056-6926-53e4-8e30-357fd3803d70",
+      "title": "Anwenden: Metrische Projektion auf konvexe Mengen nutzen",
+      "titleEn": "Apply: Use Metric Projections onto Convex Sets",
+      "description": "Die lernende Person wendet das Wissen zu 'Metrische Projektion auf konvexe Mengen nutzen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Use Metric Projections onto Convex Sets' to concrete examples and tasks.",
+      "weight": 0.16000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "e695ad99-2259-5ca0-865a-0c389395c1e1"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4d331c9e-e35c-5fa7-bdb6-8b14b206578c",
+      "title": "Kennen: Trennungssätze anwenden",
+      "titleEn": "Know: Apply Separation Theorems",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Trennungssätze anwenden' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply Separation Theorems'.",
+      "weight": 0.12,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "98ebfd99-2d51-56eb-af39-4ac38e580f47",
+      "title": "Verstehen: Trennungssätze anwenden",
+      "titleEn": "Understand: Apply Separation Theorems",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Trennungssätze anwenden'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Apply Separation Theorems'.",
+      "weight": 0.12,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "4d331c9e-e35c-5fa7-bdb6-8b14b206578c"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8adaf926-da06-524d-8511-66ad61548544",
+      "title": "Anwenden: Trennungssätze anwenden",
+      "titleEn": "Apply: Apply Separation Theorems",
+      "description": "Die lernende Person wendet das Wissen zu 'Trennungssätze anwenden' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Apply Separation Theorems' to concrete examples and tasks.",
+      "weight": 0.16000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "98ebfd99-2d51-56eb-af39-4ac38e580f47"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "acdba5c8-5ce7-560d-94ab-3706178e0dca",
+      "title": "Kennen: Lineare Programme in Standardformen formulieren",
+      "titleEn": "Know: Formulate Linear Programs in Standard Forms",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Lineare Programme in Standardformen formulieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Formulate Linear Programs in Standard Forms'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d0bf401d-2d90-5489-9db7-e5f59232f79f",
+      "title": "Verstehen: Lineare Programme in Standardformen formulieren",
+      "titleEn": "Understand: Formulate Linear Programs in Standard Forms",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Lineare Programme in Standardformen formulieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Formulate Linear Programs in Standard Forms'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "acdba5c8-5ce7-560d-94ab-3706178e0dca"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "05dfe141-0611-58c4-a27a-96d6da35783f",
+      "title": "Anwenden: Lineare Programme in Standardformen formulieren",
+      "titleEn": "Apply: Formulate Linear Programs in Standard Forms",
+      "description": "Die lernende Person wendet das Wissen zu 'Lineare Programme in Standardformen formulieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Formulate Linear Programs in Standard Forms' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "d0bf401d-2d90-5489-9db7-e5f59232f79f"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "c8924a2e-c4bf-5f05-98fe-66715ee7812c",
+      "title": "Kennen: LP-Dualität und KKT-Bedingungen nutzen",
+      "titleEn": "Know: Use LP Duality and KKT Conditions",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'LP-Dualität und KKT-Bedingungen nutzen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use LP Duality and KKT Conditions'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "846697a9-4b54-50d6-bbfd-f777a9c2f2b0",
+      "title": "Verstehen: LP-Dualität und KKT-Bedingungen nutzen",
+      "titleEn": "Understand: Use LP Duality and KKT Conditions",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'LP-Dualität und KKT-Bedingungen nutzen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Use LP Duality and KKT Conditions'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "c8924a2e-c4bf-5f05-98fe-66715ee7812c"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ee9a0339-d943-522e-ad0e-8b1e72e898f5",
+      "title": "Anwenden: LP-Dualität und KKT-Bedingungen nutzen",
+      "titleEn": "Apply: Use LP Duality and KKT Conditions",
+      "description": "Die lernende Person wendet das Wissen zu 'LP-Dualität und KKT-Bedingungen nutzen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Use LP Duality and KKT Conditions' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "846697a9-4b54-50d6-bbfd-f777a9c2f2b0"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a92c5fae-0e24-5369-bec7-6c6b25b6af9e",
+      "title": "Kennen: (Primal-)Simplex-Schritte ausführen und deuten",
+      "titleEn": "Know: Carry Out and Interpret (Primal) Simplex Steps",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu '(Primal-)Simplex-Schritte ausführen und deuten' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Carry Out and Interpret (Primal) Simplex Steps'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "17d84d3e-c920-5a33-9257-abba7b2bb2af",
+      "title": "Verstehen: (Primal-)Simplex-Schritte ausführen und deuten",
+      "titleEn": "Understand: Carry Out and Interpret (Primal) Simplex Steps",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu '(Primal-)Simplex-Schritte ausführen und deuten'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Carry Out and Interpret (Primal) Simplex Steps'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "a92c5fae-0e24-5369-bec7-6c6b25b6af9e"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "2f2ecf92-9e4b-5c00-b687-24003c0a2004",
+      "title": "Anwenden: (Primal-)Simplex-Schritte ausführen und deuten",
+      "titleEn": "Apply: Carry Out and Interpret (Primal) Simplex Steps",
+      "description": "Die lernende Person wendet das Wissen zu '(Primal-)Simplex-Schritte ausführen und deuten' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Carry Out and Interpret (Primal) Simplex Steps' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "17d84d3e-c920-5a33-9257-abba7b2bb2af"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f4e1d5ec-5031-5bbd-a229-ddc19ebfdef5",
+      "title": "Kennen: Duales Simplex und algorithmische Bewertung",
+      "titleEn": "Know: Dual Simplex and Algorithmic Evaluation",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Duales Simplex und algorithmische Bewertung' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Dual Simplex and Algorithmic Evaluation'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "fb7e9fd5-5517-58a9-90ce-33f4833a0bee",
+      "title": "Verstehen: Duales Simplex und algorithmische Bewertung",
+      "titleEn": "Understand: Dual Simplex and Algorithmic Evaluation",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Duales Simplex und algorithmische Bewertung'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Dual Simplex and Algorithmic Evaluation'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "f4e1d5ec-5031-5bbd-a229-ddc19ebfdef5"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "3e3089eb-8666-553c-ace9-6585cf88bd34",
+      "title": "Anwenden: Duales Simplex und algorithmische Bewertung",
+      "titleEn": "Apply: Dual Simplex and Algorithmic Evaluation",
+      "description": "Die lernende Person wendet das Wissen zu 'Duales Simplex und algorithmische Bewertung' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Dual Simplex and Algorithmic Evaluation' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA2012"
+      ],
+      "contains": [],
+      "requires": [
+        "fb7e9fd5-5517-58a9-90ce-33f4833a0bee"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    }
+  ]
 }

@@ -1,1132 +1,1315 @@
 {
-    "title": "Englisch C1 (Fachkundig)",
-    "titleEn": "English (CEFR C1)",
-    "description": "Fachkundige Sprachkenntnisse; akademische Texte und komplexe Sachverhalte.",
-    "descriptionEn": "Proficient language skills; academic texts and complex issues.",
-    "landscapeId": "6c4cece4-466c-48c3-96b4-a31689736c49",
-    "locale": "de-DE",
-    "subject": "Englisch",
-    "frameworkId": "cefr-english",
-    "goals": [
-        {
-            "id": "6c4cece4-466c-48c3-96b4-a31689736c49",
-            "title": "Englisch C1 (Fachkundig)",
-            "titleEn": "Level C1 - Course Structure",
-            "description": "Systematische Entwicklung der C1-Kompetenzen durch 12 Lektionen.",
-            "descriptionEn": "Systematic development of C1 competencies through 12 lessons.",
-            "core": true,
-            "weight": 1,
-            "tags": [
-                "structure",
-                "C1",
-                "root"
-            ],
-            "contains": [
-                "cefr_c1_module_01",
-                "cefr_c1_module_02",
-                "cefr_c1_module_03",
-                "cefr_c1_module_04"
-            ],
-            "requires": [
-                "481d7658-d58a-4abb-9d99-935ad62d9fec"
-            ]
-        },
-        {
-            "id": "cefr_c1_module_01",
-            "title": "Modul 1: Diskurs & Struktur",
-            "titleEn": "Module 1: Discourse & Structure",
-            "description": "Rhetorik, Inversion und Stil.",
-            "descriptionEn": "Rhetoric, inversion and style.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_c1_lesson_01",
-                "cefr_c1_lesson_02",
-                "cefr_c1_lesson_03"
-            ]
-        },
-        {
-            "id": "cefr_c1_lesson_01",
-            "title": "Lektion 01: Rhetorische Mittel",
-            "titleEn": "Lesson 01: Rhetorical Devices",
-            "description": "Betonung (Cleft Sentences).",
-            "descriptionEn": "Emphasis (Cleft Sentences).",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "C1"
-            ],
-            "contains": [
-                "cefr_c1_l01_vocabulary",
-                "cefr_c1_l01_vocabulary_rev",
-                "cefr_c1_l01_grammar",
-                "cefr_c1_l01_practice"
-            ]
-        },
-        {
-            "id": "cefr_c1_l01_vocabulary",
-            "title": "L1: Wortschatz (Rhetorik) (Lesen)",
-            "titleEn": "L1: Vocabulary (Rhetoric) (Reading)",
-            "description": "Strukturwörter, Akademisch.",
-            "descriptionEn": "Structure words, academic.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_1",
-                "select:l1_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l01_vocabulary_rev",
-            "title": "L1: Wortschatz (Rhetorik) (Schreiben)",
-            "titleEn": "L1: Vocabulary (Rhetoric) (Writing)",
-            "description": "Strukturwörter, Akademisch.",
-            "descriptionEn": "Structure words, academic.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_1",
-                "select:l1_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l01_grammar",
-            "title": "Grammatik: Emphasis",
-            "titleEn": "Grammar: Emphasis",
-            "description": "It was X that...",
-            "descriptionEn": "It was X that...",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l01_practice",
-            "title": "Sprechkompetenz: Rede",
-            "titleEn": "Speaking: Speech",
-            "description": "Strukturierte Rede.",
-            "descriptionEn": "Structured speech.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_lesson_02",
-            "title": "Lektion 02: Inversion",
-            "titleEn": "Lesson 02: Inversion",
-            "description": "Formeller Stil (Never have I...).",
-            "descriptionEn": "Formal style (Never have I...).",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "C1"
-            ],
-            "contains": [
-                "cefr_c1_l02_vocabulary",
-                "cefr_c1_l02_vocabulary_rev",
-                "cefr_c1_l02_grammar",
-                "cefr_c1_l02_practice"
-            ],
-            "requires": [
-                "cefr_c1_lesson_01"
-            ]
-        },
-        {
-            "id": "cefr_c1_l02_vocabulary",
-            "title": "L2: Wortschatz (Formal) (Lesen)",
-            "titleEn": "L2: Vocabulary (Formal) (Reading)",
-            "description": "Formelle Ausdrücke.",
-            "descriptionEn": "Formal expressions.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_2",
-                "select:l2_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l02_vocabulary_rev",
-            "title": "L2: Wortschatz (Formal) (Schreiben)",
-            "titleEn": "L2: Vocabulary (Formal) (Writing)",
-            "description": "Formelle Ausdrücke.",
-            "descriptionEn": "Formal expressions.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_2",
-                "select:l2_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l02_grammar",
-            "title": "Grammatik: Inversion",
-            "titleEn": "Grammar: Inversion",
-            "description": "Rarely, Seldom.",
-            "descriptionEn": "Rarely, Seldom.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l02_practice",
-            "title": "Sprechkompetenz: Vortrag",
-            "titleEn": "Speaking: Lecture",
-            "description": "Dramatisch vortragen.",
-            "descriptionEn": "Present dramatically.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_lesson_03",
-            "title": "Lektion 03: Komplexe Sätze",
-            "titleEn": "Lesson 03: Complex Sentences",
-            "description": "Partizipien und Reduktion.",
-            "descriptionEn": "Participles and reduction.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "C1"
-            ],
-            "contains": [
-                "cefr_c1_l03_vocabulary",
-                "cefr_c1_l03_vocabulary_rev",
-                "cefr_c1_l03_grammar",
-                "cefr_c1_l03_practice"
-            ],
-            "requires": [
-                "cefr_c1_lesson_02"
-            ]
-        },
-        {
-            "id": "cefr_c1_l03_vocabulary",
-            "title": "L3: Wortschatz (Akademisch) (Lesen)",
-            "titleEn": "L3: Vocabulary (Academic) (Reading)",
-            "description": "Verben für Texte.",
-            "descriptionEn": "Verbs for texts.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_3",
-                "select:l3_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l03_vocabulary_rev",
-            "title": "L3: Wortschatz (Akademisch) (Schreiben)",
-            "titleEn": "L3: Vocabulary (Academic) (Writing)",
-            "description": "Verben für Texte.",
-            "descriptionEn": "Verbs for texts.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_3",
-                "select:l3_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l03_grammar",
-            "title": "Grammatik: Participle Clauses",
-            "titleEn": "Grammar: Participle Clauses",
-            "description": "Not knowing that...",
-            "descriptionEn": "Not knowing that...",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l03_practice",
-            "title": "Sprechkompetenz: Zusammenfassen",
-            "titleEn": "Speaking: Summarizing",
-            "description": "Komplexes kurz fassen.",
-            "descriptionEn": "Summarize complex things.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_module_02",
-            "title": "Modul 2: Gesellschaft & Ethik",
-            "titleEn": "Module 2: Society & Ethics",
-            "description": "Hypothesen, Nuancen und Formalität.",
-            "descriptionEn": "Hypotheses, nuance and formality.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_c1_lesson_04",
-                "cefr_c1_lesson_05",
-                "cefr_c1_lesson_06"
-            ]
-        },
-        {
-            "id": "cefr_c1_lesson_04",
-            "title": "Lektion 04: Hypothetische Welten",
-            "titleEn": "Lesson 04: Hypothetical Worlds",
-            "description": "Philosophie (Advanced Conditionals).",
-            "descriptionEn": "Philosophy (Advanced Conditionals).",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "C1"
-            ],
-            "contains": [
-                "cefr_c1_l04_vocabulary",
-                "cefr_c1_l04_vocabulary_rev",
-                "cefr_c1_l04_grammar",
-                "cefr_c1_l04_practice"
-            ],
-            "requires": [
-                "cefr_c1_lesson_03"
-            ]
-        },
-        {
-            "id": "cefr_c1_l04_vocabulary",
-            "title": "L4: Wortschatz (Philosophie) (Lesen)",
-            "titleEn": "L4: Vocabulary (Philosophy) (Reading)",
-            "description": "Ethik, Annahmen.",
-            "descriptionEn": "Ethics, assumptions.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_4",
-                "select:l4_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l04_vocabulary_rev",
-            "title": "L4: Wortschatz (Philosophie) (Schreiben)",
-            "titleEn": "L4: Vocabulary (Philosophy) (Writing)",
-            "description": "Ethik, Annahmen.",
-            "descriptionEn": "Ethics, assumptions.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_4",
-                "select:l4_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l04_grammar",
-            "title": "Grammatik: Adv. Conditionals",
-            "titleEn": "Grammar: Adv. Conditionals",
-            "description": "Were I to go...",
-            "descriptionEn": "Were I to go...",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l04_practice",
-            "title": "Sprechkompetenz: Debatte",
-            "titleEn": "Speaking: Debate",
-            "description": "Ethische Fragen.",
-            "descriptionEn": "Ethical questions.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_lesson_05",
-            "title": "Lektion 05: Nuancen",
-            "titleEn": "Lesson 05: Nuances",
-            "description": "Feine Unterschiede (Modals).",
-            "descriptionEn": "Subtle differences (Modals).",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "C1"
-            ],
-            "contains": [
-                "cefr_c1_l05_vocabulary",
-                "cefr_c1_l05_vocabulary_rev",
-                "cefr_c1_l05_grammar",
-                "cefr_c1_l05_practice"
-            ],
-            "requires": [
-                "cefr_c1_lesson_04"
-            ]
-        },
-        {
-            "id": "cefr_c1_l05_vocabulary",
-            "title": "L5: Wortschatz (Kritik) (Lesen)",
-            "titleEn": "L5: Vocabulary (Critique) (Reading)",
-            "description": "Andeutungen, Kritik.",
-            "descriptionEn": "Insinuations, critique.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_5",
-                "select:l5_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l05_vocabulary_rev",
-            "title": "L5: Wortschatz (Kritik) (Schreiben)",
-            "titleEn": "L5: Vocabulary (Critique) (Writing)",
-            "description": "Andeutungen, Kritik.",
-            "descriptionEn": "Insinuations, critique.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_5",
-                "select:l5_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l05_grammar",
-            "title": "Grammatik: Adv. Modals",
-            "titleEn": "Grammar: Adv. Modals",
-            "description": "Needn't have done.",
-            "descriptionEn": "Needn't have done.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l05_practice",
-            "title": "Sprechkompetenz: Diplomatie",
-            "titleEn": "Speaking: Diplomacy",
-            "description": "Höflich kritisieren.",
-            "descriptionEn": "Criticize politely.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_lesson_06",
-            "title": "Lektion 06: Formalität",
-            "titleEn": "Lesson 06: Formality",
-            "description": "Subjunktiv und Bitten.",
-            "descriptionEn": "Subjunctive and requests.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "C1"
-            ],
-            "contains": [
-                "cefr_c1_l06_vocabulary",
-                "cefr_c1_l06_vocabulary_rev",
-                "cefr_c1_l06_grammar",
-                "cefr_c1_l06_practice"
-            ],
-            "requires": [
-                "cefr_c1_lesson_05"
-            ]
-        },
-        {
-            "id": "cefr_c1_l06_vocabulary",
-            "title": "L6: Wortschatz (Recht) (Lesen)",
-            "titleEn": "L6: Vocabulary (Law) (Reading)",
-            "description": "Vorschriften, Anträge.",
-            "descriptionEn": "Regulations, applications.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_6",
-                "select:l6_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l06_vocabulary_rev",
-            "title": "L6: Wortschatz (Recht) (Schreiben)",
-            "titleEn": "L6: Vocabulary (Law) (Writing)",
-            "description": "Vorschriften, Anträge.",
-            "descriptionEn": "Regulations, applications.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_6",
-                "select:l6_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l06_grammar",
-            "title": "Grammatik: Subjunctive",
-            "titleEn": "Grammar: Subjunctive",
-            "description": "It is vital that he be...",
-            "descriptionEn": "It is vital that he be...",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l06_practice",
-            "title": "Sprechkompetenz: Sitzung",
-            "titleEn": "Speaking: Meeting",
-            "description": "Formelle Leitung.",
-            "descriptionEn": "Formal leadership.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_module_03",
-            "title": "Modul 3: Business & Psychologie",
-            "titleEn": "Module 3: Business & Psychology",
-            "description": "Verhandlung, Berichte und Verhalten.",
-            "descriptionEn": "Negotiation, reports and behavior.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_c1_lesson_07",
-                "cefr_c1_lesson_08",
-                "cefr_c1_lesson_09"
-            ]
-        },
-        {
-            "id": "cefr_c1_lesson_07",
-            "title": "Lektion 07: Verhandlungen",
-            "titleEn": "Lesson 07: Negotiations",
-            "description": "Konflikte lösen.",
-            "descriptionEn": "Solving conflicts.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "C1"
-            ],
-            "contains": [
-                "cefr_c1_l07_vocabulary",
-                "cefr_c1_l07_vocabulary_rev",
-                "cefr_c1_l07_grammar",
-                "cefr_c1_l07_practice"
-            ],
-            "requires": [
-                "cefr_c1_lesson_06"
-            ]
-        },
-        {
-            "id": "cefr_c1_l07_vocabulary",
-            "title": "L7: Wortschatz (Soft Skills) (Lesen)",
-            "titleEn": "L7: Vocabulary (Soft Skills) (Reading)",
-            "description": "Einigung, Kompromiss.",
-            "descriptionEn": "Agreement, compromise.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_7",
-                "select:l7_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l07_vocabulary_rev",
-            "title": "L7: Wortschatz (Soft Skills) (Schreiben)",
-            "titleEn": "L7: Vocabulary (Soft Skills) (Writing)",
-            "description": "Einigung, Kompromiss.",
-            "descriptionEn": "Agreement, compromise.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_7",
-                "select:l7_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l07_grammar",
-            "title": "Grammatik: Ellipsis",
-            "titleEn": "Grammar: Ellipsis",
-            "description": "So can I, Neither do we.",
-            "descriptionEn": "So can I, Neither do we.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l07_practice",
-            "title": "Sprechkompetenz: Verhandeln",
-            "titleEn": "Speaking: Negotiating",
-            "description": "Verhandlung führen.",
-            "descriptionEn": "Run a negotiation.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_lesson_08",
-            "title": "Lektion 08: Distanzierung",
-            "titleEn": "Lesson 08: Distancing",
-            "description": "Objektiv berichten.",
-            "descriptionEn": "Report objectively.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "C1"
-            ],
-            "contains": [
-                "cefr_c1_l08_vocabulary",
-                "cefr_c1_l08_vocabulary_rev",
-                "cefr_c1_l08_grammar",
-                "cefr_c1_l08_practice"
-            ],
-            "requires": [
-                "cefr_c1_lesson_07"
-            ]
-        },
-        {
-            "id": "cefr_c1_l08_vocabulary",
-            "title": "L8: Wortschatz (Bericht) (Lesen)",
-            "titleEn": "L8: Vocabulary (Report) (Reading)",
-            "description": "Angeblich, vermutlich.",
-            "descriptionEn": "Allegedly, presumably.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_8",
-                "select:l8_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l08_vocabulary_rev",
-            "title": "L8: Wortschatz (Bericht) (Schreiben)",
-            "titleEn": "L8: Vocabulary (Report) (Writing)",
-            "description": "Angeblich, vermutlich.",
-            "descriptionEn": "Allegedly, presumably.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_8",
-                "select:l8_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l08_grammar",
-            "title": "Grammatik: Passive Reporting",
-            "titleEn": "Grammar: Passive Reporting",
-            "description": "He is said to be...",
-            "descriptionEn": "He is said to be...",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l08_practice",
-            "title": "Sprechkompetenz: Journalismus",
-            "titleEn": "Speaking: Journalism",
-            "description": "Nachrichten präsentieren.",
-            "descriptionEn": "Present news.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_lesson_09",
-            "title": "Lektion 09: Emotion & Verhalten",
-            "titleEn": "Lesson 09: Emotion & Behavior",
-            "description": "Psychologische Tiefe.",
-            "descriptionEn": "Psychological depth.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "C1"
-            ],
-            "contains": [
-                "cefr_c1_l09_vocabulary",
-                "cefr_c1_l09_vocabulary_rev",
-                "cefr_c1_l09_grammar",
-                "cefr_c1_l09_practice"
-            ],
-            "requires": [
-                "cefr_c1_lesson_08"
-            ]
-        },
-        {
-            "id": "cefr_c1_l09_vocabulary",
-            "title": "L9: Wortschatz (Psyche) (Lesen)",
-            "titleEn": "L9: Vocabulary (Psyche) (Reading)",
-            "description": "Emotionen, Charakter.",
-            "descriptionEn": "Emotions, character.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_9",
-                "select:l9_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l09_vocabulary_rev",
-            "title": "L9: Wortschatz (Psyche) (Schreiben)",
-            "titleEn": "L9: Vocabulary (Psyche) (Writing)",
-            "description": "Emotionen, Charakter.",
-            "descriptionEn": "Emotions, character.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_9",
-                "select:l9_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l09_grammar",
-            "title": "Grammatik: Emphasis 'do'",
-            "titleEn": "Grammar: Emphasis 'do'",
-            "description": "I do understand.",
-            "descriptionEn": "I do understand.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l09_practice",
-            "title": "Sprechkompetenz: Analyse",
-            "titleEn": "Speaking: Analysis",
-            "description": "Verhalten analysieren.",
-            "descriptionEn": "Analyze behavior.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_module_04",
-            "title": "Modul 4: Meisterschaft & Stil",
-            "titleEn": "Module 4: Mastery & Style",
-            "description": "Idiome, Literatur und Abschluss.",
-            "descriptionEn": "Idioms, literature and completion.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_c1_lesson_10",
-                "cefr_c1_lesson_11",
-                "cefr_c1_lesson_12"
-            ]
-        },
-        {
-            "id": "cefr_c1_lesson_10",
-            "title": "Lektion 10: Idiome",
-            "titleEn": "Lesson 10: Idioms",
-            "description": "Bildhafte Sprache.",
-            "descriptionEn": "Figurative language.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "C1"
-            ],
-            "contains": [
-                "cefr_c1_l10_vocabulary",
-                "cefr_c1_l10_vocabulary_rev",
-                "cefr_c1_l10_grammar",
-                "cefr_c1_l10_practice"
-            ],
-            "requires": [
-                "cefr_c1_lesson_09"
-            ]
-        },
-        {
-            "id": "cefr_c1_l10_vocabulary",
-            "title": "L10: Wortschatz (Idiome) (Lesen)",
-            "titleEn": "L10: Vocabulary (Idioms) (Reading)",
-            "description": "Metaphern, Redewendungen.",
-            "descriptionEn": "Metaphors, phrases.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_10",
-                "select:l10_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l10_vocabulary_rev",
-            "title": "L10: Wortschatz (Idiome) (Schreiben)",
-            "titleEn": "L10: Vocabulary (Idioms) (Writing)",
-            "description": "Metaphern, Redewendungen.",
-            "descriptionEn": "Metaphors, phrases.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_10",
-                "select:l10_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l10_grammar",
-            "title": "Grammatik: Collocations",
-            "titleEn": "Grammar: Collocations",
-            "description": "Fixed expressions.",
-            "descriptionEn": "Fixed expressions.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l10_practice",
-            "title": "Sprechkompetenz: Storytelling",
-            "titleEn": "Speaking: Storytelling",
-            "description": "Lebendig erzählen.",
-            "descriptionEn": "Tell stories vividly.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_lesson_11",
-            "title": "Lektion 11: Literatur",
-            "titleEn": "Lesson 11: Literature",
-            "description": "Stilmittel und Schreibstil.",
-            "descriptionEn": "Stylistic devices and style.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "C1"
-            ],
-            "contains": [
-                "cefr_c1_l11_vocabulary",
-                "cefr_c1_l11_vocabulary_rev",
-                "cefr_c1_l11_grammar",
-                "cefr_c1_l11_practice"
-            ],
-            "requires": [
-                "cefr_c1_lesson_10"
-            ]
-        },
-        {
-            "id": "cefr_c1_l11_vocabulary",
-            "title": "L11: Wortschatz (Literatur) (Lesen)",
-            "titleEn": "L11: Vocabulary (Literature) (Reading)",
-            "description": "Kritik, Gattungen.",
-            "descriptionEn": "Criticism, genres.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_11",
-                "select:l11_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l11_vocabulary_rev",
-            "title": "L11: Wortschatz (Literatur) (Schreiben)",
-            "titleEn": "L11: Vocabulary (Literature) (Writing)",
-            "description": "Kritik, Gattungen.",
-            "descriptionEn": "Criticism, genres.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_11",
-                "select:l11_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l11_grammar",
-            "title": "Grammatik: Nominalisation",
-            "titleEn": "Grammar: Nominalisation",
-            "description": "Verbs to nouns.",
-            "descriptionEn": "Verbs to nouns.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l11_practice",
-            "title": "Sprechkompetenz: Rezitation",
-            "titleEn": "Speaking: Recitation",
-            "description": "Text vortragen.",
-            "descriptionEn": "Recite a text.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_lesson_12",
-            "title": "Lektion 12: Abschluss C1",
-            "titleEn": "Lesson 12: Completion C1",
-            "description": "Meisterrede halten.",
-            "descriptionEn": "Give a master speech.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "C1"
-            ],
-            "contains": [
-                "cefr_c1_l12_vocabulary",
-                "cefr_c1_l12_vocabulary_rev",
-                "cefr_c1_l12_grammar",
-                "cefr_c1_l12_practice"
-            ],
-            "requires": [
-                "cefr_c1_lesson_11"
-            ]
-        },
-        {
-            "id": "cefr_c1_l12_vocabulary",
-            "title": "L12: Wortschatz (Advanced) (Lesen)",
-            "titleEn": "L12: Vocabulary (Advanced) (Reading)",
-            "description": "Gehoben, Fachsprache.",
-            "descriptionEn": "Sophisticated, jargon.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_12",
-                "select:l12_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l12_vocabulary_rev",
-            "title": "L12: Wortschatz (Advanced) (Schreiben)",
-            "titleEn": "L12: Vocabulary (Advanced) (Writing)",
-            "description": "Gehoben, Fachsprache.",
-            "descriptionEn": "Sophisticated, jargon.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_c1_english_deck",
-                "lesson_12",
-                "select:l12_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_c1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l12_grammar",
-            "title": "Grammatik: Review C1",
-            "titleEn": "Grammar: Review C1",
-            "description": "Complex review.",
-            "descriptionEn": "Complex review.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_c1_l12_practice",
-            "title": "Sprechkompetenz: Rede",
-            "titleEn": "Speaking: Speech",
-            "description": "Abschlussrede.",
-            "descriptionEn": "Final speech.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        }
-    ]
+  "title": "Englisch C1 (Fachkundig)",
+  "titleEn": "English (CEFR C1)",
+  "description": "Fachkundige Sprachkenntnisse; akademische Texte und komplexe Sachverhalte.",
+  "descriptionEn": "Proficient language skills; academic texts and complex issues.",
+  "landscapeId": "6c4cece4-466c-48c3-96b4-a31689736c49",
+  "locale": "de-DE",
+  "subject": "Englisch",
+  "frameworkId": "cefr-english",
+  "goals": [
+    {
+      "id": "6c4cece4-466c-48c3-96b4-a31689736c49",
+      "title": "Englisch C1 (Fachkundig)",
+      "titleEn": "Level C1 - Course Structure",
+      "description": "Systematische Entwicklung der C1-Kompetenzen durch 12 Lektionen.",
+      "descriptionEn": "Systematic development of C1 competencies through 12 lessons.",
+      "weight": 1,
+      "tags": [
+        "structure",
+        "C1",
+        "root"
+      ],
+      "contains": [
+        "cefr_c1_module_01",
+        "cefr_c1_module_02",
+        "cefr_c1_module_03",
+        "cefr_c1_module_04"
+      ],
+      "requires": [
+        "481d7658-d58a-4abb-9d99-935ad62d9fec"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_c1_module_01",
+      "title": "Modul 1: Diskurs & Struktur",
+      "titleEn": "Module 1: Discourse & Structure",
+      "description": "Rhetorik, Inversion und Stil.",
+      "descriptionEn": "Rhetoric, inversion and style.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_c1_lesson_01",
+        "cefr_c1_lesson_02",
+        "cefr_c1_lesson_03"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_lesson_01",
+      "title": "Lektion 01: Rhetorische Mittel",
+      "titleEn": "Lesson 01: Rhetorical Devices",
+      "description": "Betonung (Cleft Sentences).",
+      "descriptionEn": "Emphasis (Cleft Sentences).",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "C1"
+      ],
+      "contains": [
+        "cefr_c1_l01_vocabulary",
+        "cefr_c1_l01_vocabulary_rev",
+        "cefr_c1_l01_grammar",
+        "cefr_c1_l01_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l01_vocabulary",
+      "title": "L1: Wortschatz (Rhetorik) (Lesen)",
+      "titleEn": "L1: Vocabulary (Rhetoric) (Reading)",
+      "description": "Strukturwörter, Akademisch.",
+      "descriptionEn": "Structure words, academic.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_1",
+        "select:l1_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l01_vocabulary_rev",
+      "title": "L1: Wortschatz (Rhetorik) (Schreiben)",
+      "titleEn": "L1: Vocabulary (Rhetoric) (Writing)",
+      "description": "Strukturwörter, Akademisch.",
+      "descriptionEn": "Structure words, academic.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_1",
+        "select:l1_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l01_grammar",
+      "title": "Grammatik: Emphasis",
+      "titleEn": "Grammar: Emphasis",
+      "description": "It was X that...",
+      "descriptionEn": "It was X that...",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l01_practice",
+      "title": "Sprechkompetenz: Rede",
+      "titleEn": "Speaking: Speech",
+      "description": "Strukturierte Rede.",
+      "descriptionEn": "Structured speech.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_lesson_02",
+      "title": "Lektion 02: Inversion",
+      "titleEn": "Lesson 02: Inversion",
+      "description": "Formeller Stil (Never have I...).",
+      "descriptionEn": "Formal style (Never have I...).",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "C1"
+      ],
+      "contains": [
+        "cefr_c1_l02_vocabulary",
+        "cefr_c1_l02_vocabulary_rev",
+        "cefr_c1_l02_grammar",
+        "cefr_c1_l02_practice"
+      ],
+      "requires": [
+        "cefr_c1_lesson_01"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_c1_l02_vocabulary",
+      "title": "L2: Wortschatz (Formal) (Lesen)",
+      "titleEn": "L2: Vocabulary (Formal) (Reading)",
+      "description": "Formelle Ausdrücke.",
+      "descriptionEn": "Formal expressions.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_2",
+        "select:l2_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l02_vocabulary_rev",
+      "title": "L2: Wortschatz (Formal) (Schreiben)",
+      "titleEn": "L2: Vocabulary (Formal) (Writing)",
+      "description": "Formelle Ausdrücke.",
+      "descriptionEn": "Formal expressions.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_2",
+        "select:l2_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l02_grammar",
+      "title": "Grammatik: Inversion",
+      "titleEn": "Grammar: Inversion",
+      "description": "Rarely, Seldom.",
+      "descriptionEn": "Rarely, Seldom.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l02_practice",
+      "title": "Sprechkompetenz: Vortrag",
+      "titleEn": "Speaking: Lecture",
+      "description": "Dramatisch vortragen.",
+      "descriptionEn": "Present dramatically.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_lesson_03",
+      "title": "Lektion 03: Komplexe Sätze",
+      "titleEn": "Lesson 03: Complex Sentences",
+      "description": "Partizipien und Reduktion.",
+      "descriptionEn": "Participles and reduction.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "C1"
+      ],
+      "contains": [
+        "cefr_c1_l03_vocabulary",
+        "cefr_c1_l03_vocabulary_rev",
+        "cefr_c1_l03_grammar",
+        "cefr_c1_l03_practice"
+      ],
+      "requires": [
+        "cefr_c1_lesson_02"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_c1_l03_vocabulary",
+      "title": "L3: Wortschatz (Akademisch) (Lesen)",
+      "titleEn": "L3: Vocabulary (Academic) (Reading)",
+      "description": "Verben für Texte.",
+      "descriptionEn": "Verbs for texts.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_3",
+        "select:l3_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l03_vocabulary_rev",
+      "title": "L3: Wortschatz (Akademisch) (Schreiben)",
+      "titleEn": "L3: Vocabulary (Academic) (Writing)",
+      "description": "Verben für Texte.",
+      "descriptionEn": "Verbs for texts.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_3",
+        "select:l3_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l03_grammar",
+      "title": "Grammatik: Participle Clauses",
+      "titleEn": "Grammar: Participle Clauses",
+      "description": "Not knowing that...",
+      "descriptionEn": "Not knowing that...",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l03_practice",
+      "title": "Sprechkompetenz: Zusammenfassen",
+      "titleEn": "Speaking: Summarizing",
+      "description": "Komplexes kurz fassen.",
+      "descriptionEn": "Summarize complex things.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_module_02",
+      "title": "Modul 2: Gesellschaft & Ethik",
+      "titleEn": "Module 2: Society & Ethics",
+      "description": "Hypothesen, Nuancen und Formalität.",
+      "descriptionEn": "Hypotheses, nuance and formality.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_c1_lesson_04",
+        "cefr_c1_lesson_05",
+        "cefr_c1_lesson_06"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_lesson_04",
+      "title": "Lektion 04: Hypothetische Welten",
+      "titleEn": "Lesson 04: Hypothetical Worlds",
+      "description": "Philosophie (Advanced Conditionals).",
+      "descriptionEn": "Philosophy (Advanced Conditionals).",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "C1"
+      ],
+      "contains": [
+        "cefr_c1_l04_vocabulary",
+        "cefr_c1_l04_vocabulary_rev",
+        "cefr_c1_l04_grammar",
+        "cefr_c1_l04_practice"
+      ],
+      "requires": [
+        "cefr_c1_lesson_03"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_c1_l04_vocabulary",
+      "title": "L4: Wortschatz (Philosophie) (Lesen)",
+      "titleEn": "L4: Vocabulary (Philosophy) (Reading)",
+      "description": "Ethik, Annahmen.",
+      "descriptionEn": "Ethics, assumptions.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_4",
+        "select:l4_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l04_vocabulary_rev",
+      "title": "L4: Wortschatz (Philosophie) (Schreiben)",
+      "titleEn": "L4: Vocabulary (Philosophy) (Writing)",
+      "description": "Ethik, Annahmen.",
+      "descriptionEn": "Ethics, assumptions.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_4",
+        "select:l4_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l04_grammar",
+      "title": "Grammatik: Adv. Conditionals",
+      "titleEn": "Grammar: Adv. Conditionals",
+      "description": "Were I to go...",
+      "descriptionEn": "Were I to go...",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l04_practice",
+      "title": "Sprechkompetenz: Debatte",
+      "titleEn": "Speaking: Debate",
+      "description": "Ethische Fragen.",
+      "descriptionEn": "Ethical questions.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_lesson_05",
+      "title": "Lektion 05: Nuancen",
+      "titleEn": "Lesson 05: Nuances",
+      "description": "Feine Unterschiede (Modals).",
+      "descriptionEn": "Subtle differences (Modals).",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "C1"
+      ],
+      "contains": [
+        "cefr_c1_l05_vocabulary",
+        "cefr_c1_l05_vocabulary_rev",
+        "cefr_c1_l05_grammar",
+        "cefr_c1_l05_practice"
+      ],
+      "requires": [
+        "cefr_c1_lesson_04"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_c1_l05_vocabulary",
+      "title": "L5: Wortschatz (Kritik) (Lesen)",
+      "titleEn": "L5: Vocabulary (Critique) (Reading)",
+      "description": "Andeutungen, Kritik.",
+      "descriptionEn": "Insinuations, critique.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_5",
+        "select:l5_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l05_vocabulary_rev",
+      "title": "L5: Wortschatz (Kritik) (Schreiben)",
+      "titleEn": "L5: Vocabulary (Critique) (Writing)",
+      "description": "Andeutungen, Kritik.",
+      "descriptionEn": "Insinuations, critique.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_5",
+        "select:l5_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l05_grammar",
+      "title": "Grammatik: Adv. Modals",
+      "titleEn": "Grammar: Adv. Modals",
+      "description": "Needn't have done.",
+      "descriptionEn": "Needn't have done.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l05_practice",
+      "title": "Sprechkompetenz: Diplomatie",
+      "titleEn": "Speaking: Diplomacy",
+      "description": "Höflich kritisieren.",
+      "descriptionEn": "Criticize politely.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_lesson_06",
+      "title": "Lektion 06: Formalität",
+      "titleEn": "Lesson 06: Formality",
+      "description": "Subjunktiv und Bitten.",
+      "descriptionEn": "Subjunctive and requests.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "C1"
+      ],
+      "contains": [
+        "cefr_c1_l06_vocabulary",
+        "cefr_c1_l06_vocabulary_rev",
+        "cefr_c1_l06_grammar",
+        "cefr_c1_l06_practice"
+      ],
+      "requires": [
+        "cefr_c1_lesson_05"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_c1_l06_vocabulary",
+      "title": "L6: Wortschatz (Recht) (Lesen)",
+      "titleEn": "L6: Vocabulary (Law) (Reading)",
+      "description": "Vorschriften, Anträge.",
+      "descriptionEn": "Regulations, applications.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_6",
+        "select:l6_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l06_vocabulary_rev",
+      "title": "L6: Wortschatz (Recht) (Schreiben)",
+      "titleEn": "L6: Vocabulary (Law) (Writing)",
+      "description": "Vorschriften, Anträge.",
+      "descriptionEn": "Regulations, applications.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_6",
+        "select:l6_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l06_grammar",
+      "title": "Grammatik: Subjunctive",
+      "titleEn": "Grammar: Subjunctive",
+      "description": "It is vital that he be...",
+      "descriptionEn": "It is vital that he be...",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l06_practice",
+      "title": "Sprechkompetenz: Sitzung",
+      "titleEn": "Speaking: Meeting",
+      "description": "Formelle Leitung.",
+      "descriptionEn": "Formal leadership.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_module_03",
+      "title": "Modul 3: Business & Psychologie",
+      "titleEn": "Module 3: Business & Psychology",
+      "description": "Verhandlung, Berichte und Verhalten.",
+      "descriptionEn": "Negotiation, reports and behavior.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_c1_lesson_07",
+        "cefr_c1_lesson_08",
+        "cefr_c1_lesson_09"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_lesson_07",
+      "title": "Lektion 07: Verhandlungen",
+      "titleEn": "Lesson 07: Negotiations",
+      "description": "Konflikte lösen.",
+      "descriptionEn": "Solving conflicts.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "C1"
+      ],
+      "contains": [
+        "cefr_c1_l07_vocabulary",
+        "cefr_c1_l07_vocabulary_rev",
+        "cefr_c1_l07_grammar",
+        "cefr_c1_l07_practice"
+      ],
+      "requires": [
+        "cefr_c1_lesson_06"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_c1_l07_vocabulary",
+      "title": "L7: Wortschatz (Soft Skills) (Lesen)",
+      "titleEn": "L7: Vocabulary (Soft Skills) (Reading)",
+      "description": "Einigung, Kompromiss.",
+      "descriptionEn": "Agreement, compromise.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_7",
+        "select:l7_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l07_vocabulary_rev",
+      "title": "L7: Wortschatz (Soft Skills) (Schreiben)",
+      "titleEn": "L7: Vocabulary (Soft Skills) (Writing)",
+      "description": "Einigung, Kompromiss.",
+      "descriptionEn": "Agreement, compromise.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_7",
+        "select:l7_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l07_grammar",
+      "title": "Grammatik: Ellipsis",
+      "titleEn": "Grammar: Ellipsis",
+      "description": "So can I, Neither do we.",
+      "descriptionEn": "So can I, Neither do we.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l07_practice",
+      "title": "Sprechkompetenz: Verhandeln",
+      "titleEn": "Speaking: Negotiating",
+      "description": "Verhandlung führen.",
+      "descriptionEn": "Run a negotiation.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_lesson_08",
+      "title": "Lektion 08: Distanzierung",
+      "titleEn": "Lesson 08: Distancing",
+      "description": "Objektiv berichten.",
+      "descriptionEn": "Report objectively.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "C1"
+      ],
+      "contains": [
+        "cefr_c1_l08_vocabulary",
+        "cefr_c1_l08_vocabulary_rev",
+        "cefr_c1_l08_grammar",
+        "cefr_c1_l08_practice"
+      ],
+      "requires": [
+        "cefr_c1_lesson_07"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_c1_l08_vocabulary",
+      "title": "L8: Wortschatz (Bericht) (Lesen)",
+      "titleEn": "L8: Vocabulary (Report) (Reading)",
+      "description": "Angeblich, vermutlich.",
+      "descriptionEn": "Allegedly, presumably.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_8",
+        "select:l8_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l08_vocabulary_rev",
+      "title": "L8: Wortschatz (Bericht) (Schreiben)",
+      "titleEn": "L8: Vocabulary (Report) (Writing)",
+      "description": "Angeblich, vermutlich.",
+      "descriptionEn": "Allegedly, presumably.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_8",
+        "select:l8_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l08_grammar",
+      "title": "Grammatik: Passive Reporting",
+      "titleEn": "Grammar: Passive Reporting",
+      "description": "He is said to be...",
+      "descriptionEn": "He is said to be...",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l08_practice",
+      "title": "Sprechkompetenz: Journalismus",
+      "titleEn": "Speaking: Journalism",
+      "description": "Nachrichten präsentieren.",
+      "descriptionEn": "Present news.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_lesson_09",
+      "title": "Lektion 09: Emotion & Verhalten",
+      "titleEn": "Lesson 09: Emotion & Behavior",
+      "description": "Psychologische Tiefe.",
+      "descriptionEn": "Psychological depth.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "C1"
+      ],
+      "contains": [
+        "cefr_c1_l09_vocabulary",
+        "cefr_c1_l09_vocabulary_rev",
+        "cefr_c1_l09_grammar",
+        "cefr_c1_l09_practice"
+      ],
+      "requires": [
+        "cefr_c1_lesson_08"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_c1_l09_vocabulary",
+      "title": "L9: Wortschatz (Psyche) (Lesen)",
+      "titleEn": "L9: Vocabulary (Psyche) (Reading)",
+      "description": "Emotionen, Charakter.",
+      "descriptionEn": "Emotions, character.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_9",
+        "select:l9_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l09_vocabulary_rev",
+      "title": "L9: Wortschatz (Psyche) (Schreiben)",
+      "titleEn": "L9: Vocabulary (Psyche) (Writing)",
+      "description": "Emotionen, Charakter.",
+      "descriptionEn": "Emotions, character.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_9",
+        "select:l9_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l09_grammar",
+      "title": "Grammatik: Emphasis 'do'",
+      "titleEn": "Grammar: Emphasis 'do'",
+      "description": "I do understand.",
+      "descriptionEn": "I do understand.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l09_practice",
+      "title": "Sprechkompetenz: Analyse",
+      "titleEn": "Speaking: Analysis",
+      "description": "Verhalten analysieren.",
+      "descriptionEn": "Analyze behavior.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_module_04",
+      "title": "Modul 4: Meisterschaft & Stil",
+      "titleEn": "Module 4: Mastery & Style",
+      "description": "Idiome, Literatur und Abschluss.",
+      "descriptionEn": "Idioms, literature and completion.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_c1_lesson_10",
+        "cefr_c1_lesson_11",
+        "cefr_c1_lesson_12"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_lesson_10",
+      "title": "Lektion 10: Idiome",
+      "titleEn": "Lesson 10: Idioms",
+      "description": "Bildhafte Sprache.",
+      "descriptionEn": "Figurative language.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "C1"
+      ],
+      "contains": [
+        "cefr_c1_l10_vocabulary",
+        "cefr_c1_l10_vocabulary_rev",
+        "cefr_c1_l10_grammar",
+        "cefr_c1_l10_practice"
+      ],
+      "requires": [
+        "cefr_c1_lesson_09"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_c1_l10_vocabulary",
+      "title": "L10: Wortschatz (Idiome) (Lesen)",
+      "titleEn": "L10: Vocabulary (Idioms) (Reading)",
+      "description": "Metaphern, Redewendungen.",
+      "descriptionEn": "Metaphors, phrases.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_10",
+        "select:l10_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l10_vocabulary_rev",
+      "title": "L10: Wortschatz (Idiome) (Schreiben)",
+      "titleEn": "L10: Vocabulary (Idioms) (Writing)",
+      "description": "Metaphern, Redewendungen.",
+      "descriptionEn": "Metaphors, phrases.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_10",
+        "select:l10_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l10_grammar",
+      "title": "Grammatik: Collocations",
+      "titleEn": "Grammar: Collocations",
+      "description": "Fixed expressions.",
+      "descriptionEn": "Fixed expressions.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l10_practice",
+      "title": "Sprechkompetenz: Storytelling",
+      "titleEn": "Speaking: Storytelling",
+      "description": "Lebendig erzählen.",
+      "descriptionEn": "Tell stories vividly.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_lesson_11",
+      "title": "Lektion 11: Literatur",
+      "titleEn": "Lesson 11: Literature",
+      "description": "Stilmittel und Schreibstil.",
+      "descriptionEn": "Stylistic devices and style.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "C1"
+      ],
+      "contains": [
+        "cefr_c1_l11_vocabulary",
+        "cefr_c1_l11_vocabulary_rev",
+        "cefr_c1_l11_grammar",
+        "cefr_c1_l11_practice"
+      ],
+      "requires": [
+        "cefr_c1_lesson_10"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_c1_l11_vocabulary",
+      "title": "L11: Wortschatz (Literatur) (Lesen)",
+      "titleEn": "L11: Vocabulary (Literature) (Reading)",
+      "description": "Kritik, Gattungen.",
+      "descriptionEn": "Criticism, genres.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_11",
+        "select:l11_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l11_vocabulary_rev",
+      "title": "L11: Wortschatz (Literatur) (Schreiben)",
+      "titleEn": "L11: Vocabulary (Literature) (Writing)",
+      "description": "Kritik, Gattungen.",
+      "descriptionEn": "Criticism, genres.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_11",
+        "select:l11_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l11_grammar",
+      "title": "Grammatik: Nominalisation",
+      "titleEn": "Grammar: Nominalisation",
+      "description": "Verbs to nouns.",
+      "descriptionEn": "Verbs to nouns.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l11_practice",
+      "title": "Sprechkompetenz: Rezitation",
+      "titleEn": "Speaking: Recitation",
+      "description": "Text vortragen.",
+      "descriptionEn": "Recite a text.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_lesson_12",
+      "title": "Lektion 12: Abschluss C1",
+      "titleEn": "Lesson 12: Completion C1",
+      "description": "Meisterrede halten.",
+      "descriptionEn": "Give a master speech.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "C1"
+      ],
+      "contains": [
+        "cefr_c1_l12_vocabulary",
+        "cefr_c1_l12_vocabulary_rev",
+        "cefr_c1_l12_grammar",
+        "cefr_c1_l12_practice"
+      ],
+      "requires": [
+        "cefr_c1_lesson_11"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_c1_l12_vocabulary",
+      "title": "L12: Wortschatz (Advanced) (Lesen)",
+      "titleEn": "L12: Vocabulary (Advanced) (Reading)",
+      "description": "Gehoben, Fachsprache.",
+      "descriptionEn": "Sophisticated, jargon.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_12",
+        "select:l12_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l12_vocabulary_rev",
+      "title": "L12: Wortschatz (Advanced) (Schreiben)",
+      "titleEn": "L12: Vocabulary (Advanced) (Writing)",
+      "description": "Gehoben, Fachsprache.",
+      "descriptionEn": "Sophisticated, jargon.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_c1_english_deck",
+        "lesson_12",
+        "select:l12_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_c1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l12_grammar",
+      "title": "Grammatik: Review C1",
+      "titleEn": "Grammar: Review C1",
+      "description": "Complex review.",
+      "descriptionEn": "Complex review.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_c1_l12_practice",
+      "title": "Sprechkompetenz: Rede",
+      "titleEn": "Speaking: Speech",
+      "description": "Abschlussrede.",
+      "descriptionEn": "Final speech.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    }
+  ]
 }

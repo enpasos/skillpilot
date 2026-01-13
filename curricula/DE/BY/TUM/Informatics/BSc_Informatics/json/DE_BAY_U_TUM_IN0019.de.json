@@ -1,428 +1,407 @@
 {
-    "title": "Numerisches Programmieren (TUM, Modul IN0019)",
-    "titleEn": "Numerical Programming (TUM, Module IN0019)",
-    "description": "Die lernende Person kann numerische Algorithmen für zentrale Rechenprobleme implementieren und analysieren.",
-    "descriptionEn": "The learner can implement and analyze numerical algorithms for core computational problems.",
-    "locale": "de-DE",
-    "subject": "TUM-Module",
-    "frameworkId": "tum-in0019",
-    "goals": [
-        {
-            "id": "0300e8fe-a875-5012-8173-81d74be7fc93",
-            "shortKey": "tum_in0019_module",
-            "title": "Numerisches Programmieren (IN0019)",
-            "titleEn": "Numerical Programming (IN0019)",
-            "description": "Die lernende Person kann numerische Algorithmen für zentrale Rechenprobleme implementieren und analysieren.",
-            "descriptionEn": "The learner can implement and analyze numerical algorithms for core computational problems.",
-            "core": true,
-            "weight": 6.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:IN0019",
-                "ects:6"
-            ],
-            "contains": [
-                "0153ce16-8ca9-59c9-9b74-97e77618c1f6",
-                "74c1ee34-1616-595b-88be-cb282e2d2d36",
-                "6f8acba1-1f70-55b3-aea7-a985390f0307",
-                "8789c6dc-dd02-5674-83dc-2eaf25c91a1f",
-                "bbd49649-c384-5a7b-8c88-b1c35e523e8b",
-                "9902b99d-8fe4-5d3b-96c6-06e94e565a70",
-                "82ec64c5-9337-5904-af9b-921d3a033d44"
-            ],
-            "requires": [],
-            "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0019"
-        },
-        {
-            "id": "0153ce16-8ca9-59c9-9b74-97e77618c1f6",
-            "shortKey": "tum_in0019_floating_point_and_error_analysis",
-            "title": "Gleitkomma- und Fehleranalyse",
-            "titleEn": "Floating point and error analysis",
-            "description": "Die lernende Person kann über numerische Fehler und Stabilität nachdenken.",
-            "descriptionEn": "The learner can reason about numerical errors and stability.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [
-                "6c705b9a-dcc0-57fe-8588-2bccd3aaa33a",
-                "2c59b317-3a91-5cf3-abd6-a5858ad7b04b"
-            ],
-            "requires": []
-        },
-        {
-            "id": "6c705b9a-dcc0-57fe-8588-2bccd3aaa33a",
-            "shortKey": "tum_in0019_floating_point_representation",
-            "title": "Gleitkommadarstellung",
-            "titleEn": "Floating point representation",
-            "description": "Die lernende Person kann Gleitkommaformate und Rundungsfehler erklären.",
-            "descriptionEn": "The learner can explain floating point formats and rounding errors.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "2c59b317-3a91-5cf3-abd6-a5858ad7b04b",
-            "shortKey": "tum_in0019_conditioning_and_stability",
-            "title": "Konditionierung und Stabilität",
-            "titleEn": "Conditioning and stability",
-            "description": "Die lernende Person kann Konditionierung und numerische Stabilität analysieren.",
-            "descriptionEn": "The learner can analyze conditioning and numerical stability.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "74c1ee34-1616-595b-88be-cb282e2d2d36",
-            "shortKey": "tum_in0019_interpolation_and_approximation",
-            "title": "Interpolation und Approximation",
-            "titleEn": "Interpolation and approximation",
-            "description": "Die lernende Person kann Funktionen mithilfe von Interpolationsverfahren approximieren.",
-            "descriptionEn": "The learner can approximate functions using interpolation methods.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [
-                "44ebfcd3-474a-59a5-97a6-43c02eb30262",
-                "0960514c-6f8f-5162-a2fd-23e2a346c1d7"
-            ],
-            "requires": [
-                "0153ce16-8ca9-59c9-9b74-97e77618c1f6"
-            ]
-        },
-        {
-            "id": "44ebfcd3-474a-59a5-97a6-43c02eb30262",
-            "shortKey": "tum_in0019_polynomial_and_spline_interpolation",
-            "title": "Polynom- und Spline-Interpolation",
-            "titleEn": "Polynomial and spline interpolation",
-            "description": "Die lernende Person kann Polynominterpolations- und Spline-Methoden anwenden.",
-            "descriptionEn": "The learner can apply polynomial interpolation and spline methods.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "0960514c-6f8f-5162-a2fd-23e2a346c1d7",
-            "shortKey": "tum_in0019_trigonometric_interpolation_and_fft",
-            "title": "Trigonometrische Interpolation und FFT",
-            "titleEn": "Trigonometric interpolation and FFT",
-            "description": "Die lernende Person kann die trigonometrische Interpolation und die FFT nutzen.",
-            "descriptionEn": "The learner can use trigonometric interpolation and the FFT.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "6f8acba1-1f70-55b3-aea7-a985390f0307",
-            "shortKey": "tum_in0019_numerical_integration",
-            "title": "Numerische Integration",
-            "titleEn": "Numerical integration",
-            "description": "Die lernende Person kann Integrale mithilfe numerischer Regeln approximieren.",
-            "descriptionEn": "The learner can approximate integrals using numerical rules.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [
-                "062acf8c-f965-57a2-97cf-f6832cd8f691",
-                "76bb20c9-6c8e-5f04-bf07-c8ad2d896beb"
-            ],
-            "requires": [
-                "74c1ee34-1616-595b-88be-cb282e2d2d36"
-            ]
-        },
-        {
-            "id": "062acf8c-f965-57a2-97cf-f6832cd8f691",
-            "shortKey": "tum_in0019_composite_rules_and_extrapolation",
-            "title": "Zusammengesetzte Regeln und Extrapolation",
-            "titleEn": "Composite rules and extrapolation",
-            "description": "Die lernende Person kann zusammengesetzte Integrationsregeln und Extrapolation anwenden.",
-            "descriptionEn": "The learner can apply composite integration rules and extrapolation.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "76bb20c9-6c8e-5f04-bf07-c8ad2d896beb",
-            "shortKey": "tum_in0019_gaussian_quadrature",
-            "title": "Gaußsche Quadratur",
-            "titleEn": "Gaussian quadrature",
-            "description": "Die lernende Person kann Gauß-Quadraturmethoden anwenden.",
-            "descriptionEn": "The learner can apply Gauss quadrature methods.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "8789c6dc-dd02-5674-83dc-2eaf25c91a1f",
-            "shortKey": "tum_in0019_linear_systems_and_least_squares",
-            "title": "Lineare Systeme und kleinste Quadrate",
-            "titleEn": "Linear systems and least squares",
-            "description": "Die lernende Person kann lineare Systeme numerisch lösen.",
-            "descriptionEn": "The learner can solve linear systems numerically.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [
-                "4236dcaf-7cc1-56bd-837f-cc28c3ab2a5f",
-                "bd6e42b0-d0ff-59ca-b031-da2b039721a7"
-            ],
-            "requires": [
-                "0153ce16-8ca9-59c9-9b74-97e77618c1f6"
-            ]
-        },
-        {
-            "id": "4236dcaf-7cc1-56bd-837f-cc28c3ab2a5f",
-            "shortKey": "tum_in0019_gaussian_elimination_and_lr_factorization",
-            "title": "Gaußsche Eliminierung und LR-Faktorisierung",
-            "titleEn": "Gaussian elimination and LR factorization",
-            "description": "Die lernende Person kann Gaußsche Eliminierung, Pivotierung und LR-Faktorisierung anwenden.",
-            "descriptionEn": "The learner can apply Gaussian elimination, pivoting, and LR factorization.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "bd6e42b0-d0ff-59ca-b031-da2b039721a7",
-            "shortKey": "tum_in0019_least_squares_problems",
-            "title": "Probleme der kleinsten Quadrate",
-            "titleEn": "Least squares problems",
-            "description": "Die lernende Person kann Kleinste-Quadrate-Probleme lösen und Lösungen analysieren.",
-            "descriptionEn": "The learner can solve least squares problems and analyze solutions.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "bbd49649-c384-5a7b-8c88-b1c35e523e8b",
-            "shortKey": "tum_in0019_ordinary_differential_equations",
-            "title": "Gewöhnliche Differentialgleichungen",
-            "titleEn": "Ordinary differential equations",
-            "description": "Die lernende Person kann ODEs mit numerischen Methoden lösen.",
-            "descriptionEn": "The learner can solve ODEs with numerical methods.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [
-                "ae8aeb11-e581-5eee-94d7-3a91dfd92d64",
-                "57ce3f23-43ec-5269-ad91-5396578a1734"
-            ],
-            "requires": [
-                "6f8acba1-1f70-55b3-aea7-a985390f0307"
-            ]
-        },
-        {
-            "id": "ae8aeb11-e581-5eee-94d7-3a91dfd92d64",
-            "shortKey": "tum_in0019_euler_and_runge_kutta_methods",
-            "title": "Euler- und Runge-Kutta-Methoden",
-            "titleEn": "Euler and Runge-Kutta methods",
-            "description": "Die lernende Person kann Euler- und Runge-Kutta-Schemata anwenden.",
-            "descriptionEn": "The learner can apply Euler and Runge-Kutta schemes.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "57ce3f23-43ec-5269-ad91-5396578a1734",
-            "shortKey": "tum_in0019_stability_and_multistep_methods",
-            "title": "Stabilität und mehrstufige Methoden",
-            "titleEn": "Stability and multistep methods",
-            "description": "Die lernende Person kann Stabilität analysieren und mehrstufige Methoden anwenden.",
-            "descriptionEn": "The learner can analyze stability and use multistep methods.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "9902b99d-8fe4-5d3b-96c6-06e94e565a70",
-            "shortKey": "tum_in0019_iterative_methods_and_nonlinear_equations",
-            "title": "Iterative Methoden und nichtlineare Gleichungen",
-            "titleEn": "Iterative methods and nonlinear equations",
-            "description": "Die lernende Person kann iterative Schemata für lineare und nichtlineare Probleme anwenden.",
-            "descriptionEn": "The learner can apply iterative schemes for linear and nonlinear problems.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [
-                "291a6bbd-8022-557c-a0a2-89db68c64455",
-                "1afb1417-d034-5141-9521-0cfd4e9abd23"
-            ],
-            "requires": [
-                "8789c6dc-dd02-5674-83dc-2eaf25c91a1f"
-            ]
-        },
-        {
-            "id": "291a6bbd-8022-557c-a0a2-89db68c64455",
-            "shortKey": "tum_in0019_jacobi_and_gauss_seidel_methods",
-            "title": "Jacobi- und Gauß-Seidel-Methoden",
-            "titleEn": "Jacobi and Gauss-Seidel methods",
-            "description": "Die lernende Person kann Entspannungsmethoden wie Jacobi und Gauss-Seidel anwenden.",
-            "descriptionEn": "The learner can apply relaxation methods such as Jacobi and Gauss-Seidel.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "1afb1417-d034-5141-9521-0cfd4e9abd23",
-            "shortKey": "tum_in0019_fixed_point_and_newton_methods",
-            "title": "Festkomma- und Newton-Methoden",
-            "titleEn": "Fixed-point and Newton methods",
-            "description": "Die lernende Person kann nichtlineare Gleichungen mithilfe der Festkomma-Iteration und der Newton-Methode lösen.",
-            "descriptionEn": "The learner can solve nonlinear equations using fixed-point iteration and Newton's method.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "82ec64c5-9337-5904-af9b-921d3a033d44",
-            "shortKey": "tum_in0019_eigenvalue_problems",
-            "title": "Eigenwertprobleme",
-            "titleEn": "Eigenvalue problems",
-            "description": "Die lernende Person kann Eigenwerte und Eigenvektoren numerisch berechnen.",
-            "descriptionEn": "The learner can compute eigenvalues and eigenvectors numerically.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [
-                "158ae976-488a-5556-8b55-9771b203debf",
-                "d8e41b18-9ec6-5fa0-88f8-cc01a0b50238"
-            ],
-            "requires": [
-                "8789c6dc-dd02-5674-83dc-2eaf25c91a1f"
-            ]
-        },
-        {
-            "id": "158ae976-488a-5556-8b55-9771b203debf",
-            "shortKey": "tum_in0019_power_iteration_and_conditioning",
-            "title": "Power-Iteration und Konditionierung",
-            "titleEn": "Power iteration and conditioning",
-            "description": "Die lernende Person kann Power-Iteration anwenden und Konditionierung analysieren.",
-            "descriptionEn": "The learner can apply power iteration and analyze conditioning.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "d8e41b18-9ec6-5fa0-88f8-cc01a0b50238",
-            "shortKey": "tum_in0019_qr_algorithm_and_reductions",
-            "title": "QR-Algorithmus und Reduzierungen",
-            "titleEn": "QR algorithm and reductions",
-            "description": "Die lernende Person kann den QR-Algorithmus und Reduktionstechniken anwenden.",
-            "descriptionEn": "The learner can apply the QR algorithm and reduction techniques.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0019"
-            ],
-            "contains": [],
-            "requires": []
-        }
-    ]
+  "title": "Numerisches Programmieren (TUM, Modul IN0019)",
+  "titleEn": "Numerical Programming (TUM, Module IN0019)",
+  "description": "Die lernende Person kann numerische Algorithmen für zentrale Rechenprobleme implementieren und analysieren.",
+  "descriptionEn": "The learner can implement and analyze numerical algorithms for core computational problems.",
+  "locale": "de-DE",
+  "subject": "TUM-Module",
+  "frameworkId": "tum-in0019",
+  "goals": [
+    {
+      "id": "0300e8fe-a875-5012-8173-81d74be7fc93",
+      "title": "Numerisches Programmieren (IN0019)",
+      "titleEn": "Numerical Programming (IN0019)",
+      "description": "Die lernende Person kann numerische Algorithmen für zentrale Rechenprobleme implementieren und analysieren.",
+      "descriptionEn": "The learner can implement and analyze numerical algorithms for core computational problems.",
+      "weight": 6.0,
+      "tags": [
+        "module:IN0019",
+        "ects:6"
+      ],
+      "contains": [
+        "0153ce16-8ca9-59c9-9b74-97e77618c1f6",
+        "74c1ee34-1616-595b-88be-cb282e2d2d36",
+        "6f8acba1-1f70-55b3-aea7-a985390f0307",
+        "8789c6dc-dd02-5674-83dc-2eaf25c91a1f",
+        "bbd49649-c384-5a7b-8c88-b1c35e523e8b",
+        "9902b99d-8fe4-5d3b-96c6-06e94e565a70",
+        "82ec64c5-9337-5904-af9b-921d3a033d44"
+      ],
+      "requires": [],
+      "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0019",
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0153ce16-8ca9-59c9-9b74-97e77618c1f6",
+      "title": "Gleitkomma- und Fehleranalyse",
+      "titleEn": "Floating point and error analysis",
+      "description": "Die lernende Person kann über numerische Fehler und Stabilität nachdenken.",
+      "descriptionEn": "The learner can reason about numerical errors and stability.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [
+        "6c705b9a-dcc0-57fe-8588-2bccd3aaa33a",
+        "2c59b317-3a91-5cf3-abd6-a5858ad7b04b"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6c705b9a-dcc0-57fe-8588-2bccd3aaa33a",
+      "title": "Gleitkommadarstellung",
+      "titleEn": "Floating point representation",
+      "description": "Die lernende Person kann Gleitkommaformate und Rundungsfehler erklären.",
+      "descriptionEn": "The learner can explain floating point formats and rounding errors.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "2c59b317-3a91-5cf3-abd6-a5858ad7b04b",
+      "title": "Konditionierung und Stabilität",
+      "titleEn": "Conditioning and stability",
+      "description": "Die lernende Person kann Konditionierung und numerische Stabilität analysieren.",
+      "descriptionEn": "The learner can analyze conditioning and numerical stability.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "74c1ee34-1616-595b-88be-cb282e2d2d36",
+      "title": "Interpolation und Approximation",
+      "titleEn": "Interpolation and approximation",
+      "description": "Die lernende Person kann Funktionen mithilfe von Interpolationsverfahren approximieren.",
+      "descriptionEn": "The learner can approximate functions using interpolation methods.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [
+        "44ebfcd3-474a-59a5-97a6-43c02eb30262",
+        "0960514c-6f8f-5162-a2fd-23e2a346c1d7"
+      ],
+      "requires": [
+        "0153ce16-8ca9-59c9-9b74-97e77618c1f6"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "44ebfcd3-474a-59a5-97a6-43c02eb30262",
+      "title": "Polynom- und Spline-Interpolation",
+      "titleEn": "Polynomial and spline interpolation",
+      "description": "Die lernende Person kann Polynominterpolations- und Spline-Methoden anwenden.",
+      "descriptionEn": "The learner can apply polynomial interpolation and spline methods.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0960514c-6f8f-5162-a2fd-23e2a346c1d7",
+      "title": "Trigonometrische Interpolation und FFT",
+      "titleEn": "Trigonometric interpolation and FFT",
+      "description": "Die lernende Person kann die trigonometrische Interpolation und die FFT nutzen.",
+      "descriptionEn": "The learner can use trigonometric interpolation and the FFT.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6f8acba1-1f70-55b3-aea7-a985390f0307",
+      "title": "Numerische Integration",
+      "titleEn": "Numerical integration",
+      "description": "Die lernende Person kann Integrale mithilfe numerischer Regeln approximieren.",
+      "descriptionEn": "The learner can approximate integrals using numerical rules.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [
+        "062acf8c-f965-57a2-97cf-f6832cd8f691",
+        "76bb20c9-6c8e-5f04-bf07-c8ad2d896beb"
+      ],
+      "requires": [
+        "74c1ee34-1616-595b-88be-cb282e2d2d36"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "062acf8c-f965-57a2-97cf-f6832cd8f691",
+      "title": "Zusammengesetzte Regeln und Extrapolation",
+      "titleEn": "Composite rules and extrapolation",
+      "description": "Die lernende Person kann zusammengesetzte Integrationsregeln und Extrapolation anwenden.",
+      "descriptionEn": "The learner can apply composite integration rules and extrapolation.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "76bb20c9-6c8e-5f04-bf07-c8ad2d896beb",
+      "title": "Gaußsche Quadratur",
+      "titleEn": "Gaussian quadrature",
+      "description": "Die lernende Person kann Gauß-Quadraturmethoden anwenden.",
+      "descriptionEn": "The learner can apply Gauss quadrature methods.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8789c6dc-dd02-5674-83dc-2eaf25c91a1f",
+      "title": "Lineare Systeme und kleinste Quadrate",
+      "titleEn": "Linear systems and least squares",
+      "description": "Die lernende Person kann lineare Systeme numerisch lösen.",
+      "descriptionEn": "The learner can solve linear systems numerically.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [
+        "4236dcaf-7cc1-56bd-837f-cc28c3ab2a5f",
+        "bd6e42b0-d0ff-59ca-b031-da2b039721a7"
+      ],
+      "requires": [
+        "0153ce16-8ca9-59c9-9b74-97e77618c1f6"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4236dcaf-7cc1-56bd-837f-cc28c3ab2a5f",
+      "title": "Gaußsche Eliminierung und LR-Faktorisierung",
+      "titleEn": "Gaussian elimination and LR factorization",
+      "description": "Die lernende Person kann Gaußsche Eliminierung, Pivotierung und LR-Faktorisierung anwenden.",
+      "descriptionEn": "The learner can apply Gaussian elimination, pivoting, and LR factorization.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "bd6e42b0-d0ff-59ca-b031-da2b039721a7",
+      "title": "Probleme der kleinsten Quadrate",
+      "titleEn": "Least squares problems",
+      "description": "Die lernende Person kann Kleinste-Quadrate-Probleme lösen und Lösungen analysieren.",
+      "descriptionEn": "The learner can solve least squares problems and analyze solutions.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "bbd49649-c384-5a7b-8c88-b1c35e523e8b",
+      "title": "Gewöhnliche Differentialgleichungen",
+      "titleEn": "Ordinary differential equations",
+      "description": "Die lernende Person kann ODEs mit numerischen Methoden lösen.",
+      "descriptionEn": "The learner can solve ODEs with numerical methods.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [
+        "ae8aeb11-e581-5eee-94d7-3a91dfd92d64",
+        "57ce3f23-43ec-5269-ad91-5396578a1734"
+      ],
+      "requires": [
+        "6f8acba1-1f70-55b3-aea7-a985390f0307"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ae8aeb11-e581-5eee-94d7-3a91dfd92d64",
+      "title": "Euler- und Runge-Kutta-Methoden",
+      "titleEn": "Euler and Runge-Kutta methods",
+      "description": "Die lernende Person kann Euler- und Runge-Kutta-Schemata anwenden.",
+      "descriptionEn": "The learner can apply Euler and Runge-Kutta schemes.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "57ce3f23-43ec-5269-ad91-5396578a1734",
+      "title": "Stabilität und mehrstufige Methoden",
+      "titleEn": "Stability and multistep methods",
+      "description": "Die lernende Person kann Stabilität analysieren und mehrstufige Methoden anwenden.",
+      "descriptionEn": "The learner can analyze stability and use multistep methods.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9902b99d-8fe4-5d3b-96c6-06e94e565a70",
+      "title": "Iterative Methoden und nichtlineare Gleichungen",
+      "titleEn": "Iterative methods and nonlinear equations",
+      "description": "Die lernende Person kann iterative Schemata für lineare und nichtlineare Probleme anwenden.",
+      "descriptionEn": "The learner can apply iterative schemes for linear and nonlinear problems.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [
+        "291a6bbd-8022-557c-a0a2-89db68c64455",
+        "1afb1417-d034-5141-9521-0cfd4e9abd23"
+      ],
+      "requires": [
+        "8789c6dc-dd02-5674-83dc-2eaf25c91a1f"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "291a6bbd-8022-557c-a0a2-89db68c64455",
+      "title": "Jacobi- und Gauß-Seidel-Methoden",
+      "titleEn": "Jacobi and Gauss-Seidel methods",
+      "description": "Die lernende Person kann Entspannungsmethoden wie Jacobi und Gauss-Seidel anwenden.",
+      "descriptionEn": "The learner can apply relaxation methods such as Jacobi and Gauss-Seidel.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1afb1417-d034-5141-9521-0cfd4e9abd23",
+      "title": "Festkomma- und Newton-Methoden",
+      "titleEn": "Fixed-point and Newton methods",
+      "description": "Die lernende Person kann nichtlineare Gleichungen mithilfe der Festkomma-Iteration und der Newton-Methode lösen.",
+      "descriptionEn": "The learner can solve nonlinear equations using fixed-point iteration and Newton's method.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "82ec64c5-9337-5904-af9b-921d3a033d44",
+      "title": "Eigenwertprobleme",
+      "titleEn": "Eigenvalue problems",
+      "description": "Die lernende Person kann Eigenwerte und Eigenvektoren numerisch berechnen.",
+      "descriptionEn": "The learner can compute eigenvalues and eigenvectors numerically.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [
+        "158ae976-488a-5556-8b55-9771b203debf",
+        "d8e41b18-9ec6-5fa0-88f8-cc01a0b50238"
+      ],
+      "requires": [
+        "8789c6dc-dd02-5674-83dc-2eaf25c91a1f"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "158ae976-488a-5556-8b55-9771b203debf",
+      "title": "Power-Iteration und Konditionierung",
+      "titleEn": "Power iteration and conditioning",
+      "description": "Die lernende Person kann Power-Iteration anwenden und Konditionierung analysieren.",
+      "descriptionEn": "The learner can apply power iteration and analyze conditioning.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d8e41b18-9ec6-5fa0-88f8-cc01a0b50238",
+      "title": "QR-Algorithmus und Reduzierungen",
+      "titleEn": "QR algorithm and reductions",
+      "description": "Die lernende Person kann den QR-Algorithmus und Reduktionstechniken anwenden.",
+      "descriptionEn": "The learner can apply the QR algorithm and reduction techniques.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0019"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    }
+  ],
+  "landscapeId": "73b77159-6c32-5c89-b179-d9117bc78e6b"
 }

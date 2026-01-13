@@ -1,481 +1,457 @@
 {
-    "title": "Grundlagen: Algorithmen und Datenstrukturen (TUM, Modul IN0007)",
-    "titleEn": "Fundamentals of Algorithms and Data Structures (TUM, Module IN0007)",
-    "description": "Die lernende Person kann Algorithmen analysieren und Kerndatenstrukturen implementieren.",
-    "descriptionEn": "The learner can analyze algorithms and implement core data structures.",
-    "locale": "de-DE",
-    "subject": "TUM-Module",
-    "frameworkId": "tum-in0007",
-    "goals": [
-        {
-            "id": "49d7c236-bf8a-503d-a9b9-cd7e507e9f99",
-            "shortKey": "tum_in0007_module",
-            "title": "Grundlagen: Algorithmen und Datenstrukturen (IN0007)",
-            "titleEn": "Fundamentals of Algorithms and Data Structures (IN0007)",
-            "description": "Die lernende Person kann Algorithmen analysieren und Kerndatenstrukturen implementieren.",
-            "descriptionEn": "The learner can analyze algorithms and implement core data structures.",
-            "core": true,
-            "weight": 6.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:IN0007",
-                "ects:6"
-            ],
-            "contains": [
-                "8327e3f1-cfee-5790-83e1-a2516005b852",
-                "8ba1c334-b539-54f5-8b30-594c397a9c28",
-                "1ae8e27f-7d12-51bf-ac5d-e601962b4160",
-                "ef4b7453-d39a-59ae-8eca-90e4cc63f2a0",
-                "1d7dc5a4-1a4c-5176-b626-bfe7228387bb",
-                "ae66c347-879f-5e7e-b8b0-45082c7970c9",
-                "f092e816-08b4-5d3e-aec7-46b6cf4cb371",
-                "65bad2fc-b9f2-5cab-9f3d-662c4332a9ea"
-            ],
-            "requires": [],
-            "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0007"
-        },
-        {
-            "id": "8327e3f1-cfee-5790-83e1-a2516005b852",
-            "shortKey": "tum_in0007_complexity_and_algorithm_analysis",
-            "title": "Komplexitäts- und Algorithmusanalyse",
-            "titleEn": "Complexity and algorithm analysis",
-            "description": "Die lernende Person kann die asymptotische Analyse zur Bewertung von Algorithmen verwenden.",
-            "descriptionEn": "The learner can use asymptotic analysis to evaluate algorithms.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [
-                "a194ed9c-d9de-553e-9e92-aa031fb6f9e9",
-                "909f48da-0b14-56e6-a0a8-77129f951882"
-            ],
-            "requires": []
-        },
-        {
-            "id": "a194ed9c-d9de-553e-9e92-aa031fb6f9e9",
-            "shortKey": "tum_in0007_asymptotic_notation_and_models",
-            "title": "Asymptotische Notation und Modelle",
-            "titleEn": "Asymptotic notation and models",
-            "description": "Die lernende Person kann die Notation im Big-O-Stil und grundlegende Berechnungsmodelle verwenden.",
-            "descriptionEn": "The learner can use Big-O style notation and basic computation models.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "909f48da-0b14-56e6-a0a8-77129f951882",
-            "shortKey": "tum_in0007_efficiency_analysis",
-            "title": "Effizienzanalyse",
-            "titleEn": "Efficiency analysis",
-            "description": "Die lernende Person kann die zeitliche und räumliche Komplexität von Algorithmen analysieren.",
-            "descriptionEn": "The learner can analyze time and space complexity for algorithms.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "8ba1c334-b539-54f5-8b30-594c397a9c28",
-            "shortKey": "tum_in0007_sequence_data_structures",
-            "title": "Sequenzdatenstrukturen",
-            "titleEn": "Sequence data structures",
-            "description": "Die lernende Person kann sequenzbasierte Strukturen umsetzen und analysieren.",
-            "descriptionEn": "The learner can implement and analyze sequence-based structures.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [
-                "bc0448d2-a274-5138-8122-47421bb9c48b",
-                "856a0abd-ec1a-5bb7-9b1c-31d6397192b8"
-            ],
-            "requires": []
-        },
-        {
-            "id": "bc0448d2-a274-5138-8122-47421bb9c48b",
-            "shortKey": "tum_in0007_dynamic_arrays_and_lists",
-            "title": "Dynamische Arrays und Listen",
-            "titleEn": "Dynamic arrays and lists",
-            "description": "Die lernende Person kann Arrays und Listen implementieren und die Betriebskosten vergleichen.",
-            "descriptionEn": "The learner can implement arrays and lists and compare operation costs.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "856a0abd-ec1a-5bb7-9b1c-31d6397192b8",
-            "shortKey": "tum_in0007_stacks_and_queues",
-            "title": "Stapel und Warteschlangen",
-            "titleEn": "Stacks and queues",
-            "description": "Die lernende Person kann Stacks und Warteschlangen implementieren und deren Abläufe analysieren.",
-            "descriptionEn": "The learner can implement stacks and queues and analyze their operations.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "1ae8e27f-7d12-51bf-ac5d-e601962b4160",
-            "shortKey": "tum_in0007_hashing",
-            "title": "Hashing",
-            "titleEn": "Hashing",
-            "description": "Die lernende Person kann Hashing-Strategien für eine effiziente Suche anwenden.",
-            "descriptionEn": "The learner can apply hashing strategies for efficient lookup.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [
-                "1858adf3-a66d-5a09-85b9-26c3ecc186f4",
-                "9a534940-bccb-51a3-b906-1bf13d871521"
-            ],
-            "requires": [
-                "8ba1c334-b539-54f5-8b30-594c397a9c28"
-            ]
-        },
-        {
-            "id": "1858adf3-a66d-5a09-85b9-26c3ecc186f4",
-            "shortKey": "tum_in0007_chaining_and_probing",
-            "title": "Verketten und Sondieren",
-            "titleEn": "Chaining and probing",
-            "description": "Die lernende Person kann Hashing mit Verkettungs- und Sondierungsmethoden implementieren.",
-            "descriptionEn": "The learner can implement hashing with chaining and probing methods.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "9a534940-bccb-51a3-b906-1bf13d871521",
-            "shortKey": "tum_in0007_universal_and_perfect_hashing",
-            "title": "Universelles und perfektes Hashing",
-            "titleEn": "Universal and perfect hashing",
-            "description": "Die lernende Person kann universelles Hashing erklären und perfekte Hashing-Ideen anwenden.",
-            "descriptionEn": "The learner can explain universal hashing and apply perfect hashing ideas.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "ef4b7453-d39a-59ae-8eca-90e4cc63f2a0",
-            "shortKey": "tum_in0007_sorting_and_selection",
-            "title": "Sortieren und Auswählen",
-            "titleEn": "Sorting and selection",
-            "description": "Die lernende Person kann Sortieralgorithmen vergleichen und analysieren.",
-            "descriptionEn": "The learner can compare and analyze sorting algorithms.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [
-                "0feafc10-6eaa-5d6b-aebd-00109eb0a229",
-                "4252218c-8d56-5830-b520-1f0e69e74180"
-            ],
-            "requires": [
-                "8ba1c334-b539-54f5-8b30-594c397a9c28"
-            ]
-        },
-        {
-            "id": "0feafc10-6eaa-5d6b-aebd-00109eb0a229",
-            "shortKey": "tum_in0007_basic_sorting_algorithms",
-            "title": "Grundlegende Sortieralgorithmen",
-            "titleEn": "Basic sorting algorithms",
-            "description": "Die lernende Person kann Einfügen, Auswählen und Blasensortieren implementieren.",
-            "descriptionEn": "The learner can implement insertion, selection, and bubble sort.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "4252218c-8d56-5830-b520-1f0e69e74180",
-            "shortKey": "tum_in0007_advanced_sorting_algorithms",
-            "title": "Erweiterte Sortieralgorithmen",
-            "titleEn": "Advanced sorting algorithms",
-            "description": "Die lernende Person kann Zusammenführungssortierung, Heapsortierung und Schnellsortierung analysieren und Untergrenzen diskutieren.",
-            "descriptionEn": "The learner can analyze merge sort, heap sort, and quick sort and discuss lower bounds.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "1d7dc5a4-1a4c-5176-b626-bfe7228387bb",
-            "shortKey": "tum_in0007_priority_queues_and_heaps",
-            "title": "Prioritätswarteschlangen und Heaps",
-            "titleEn": "Priority queues and heaps",
-            "description": "Die lernende Person kann Heap-basierte Prioritätswarteschlangen verwenden.",
-            "descriptionEn": "The learner can use heap-based priority queues.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [
-                "d751d2d8-5c0c-56c4-b3d5-1a5dbc7be17f",
-                "4f6e70f9-ee0f-547a-bfc0-f6b73911c452"
-            ],
-            "requires": [
-                "8ba1c334-b539-54f5-8b30-594c397a9c28"
-            ]
-        },
-        {
-            "id": "d751d2d8-5c0c-56c4-b3d5-1a5dbc7be17f",
-            "shortKey": "tum_in0007_binary_and_binomial_heaps",
-            "title": "Binäre und binomiale Heaps",
-            "titleEn": "Binary and binomial heaps",
-            "description": "Die lernende Person kann binäre Heaps implementieren und binomiale Heaps beschreiben.",
-            "descriptionEn": "The learner can implement binary heaps and describe binomial heaps.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "4f6e70f9-ee0f-547a-bfc0-f6b73911c452",
-            "shortKey": "tum_in0007_priority_queue_operations",
-            "title": "Vorrangige Warteschlangenvorgänge",
-            "titleEn": "Priority queue operations",
-            "description": "Die lernende Person kann Heap-Operationen auf Probleme mit Prioritätswarteschlangen anwenden.",
-            "descriptionEn": "The learner can apply heap operations to priority queue problems.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "ae66c347-879f-5e7e-b8b0-45082c7970c9",
-            "shortKey": "tum_in0007_search_trees",
-            "title": "Suche Bäume",
-            "titleEn": "Search trees",
-            "description": "Die lernende Person kann baumbasierte Suchstrukturen nutzen.",
-            "descriptionEn": "The learner can use tree-based search structures.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [
-                "13ae4051-e9db-5a3d-bec9-867e489e3d99",
-                "e2529c88-cb2f-5272-bdf0-f16cc48757ee"
-            ],
-            "requires": [
-                "8ba1c334-b539-54f5-8b30-594c397a9c28"
-            ]
-        },
-        {
-            "id": "13ae4051-e9db-5a3d-bec9-867e489e3d99",
-            "shortKey": "tum_in0007_binary_search_trees",
-            "title": "Binäre Suchbäume",
-            "titleEn": "Binary search trees",
-            "description": "Die lernende Person kann binäre Suchbäume implementieren und Operationen analysieren.",
-            "descriptionEn": "The learner can implement binary search trees and analyze operations.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "e2529c88-cb2f-5272-bdf0-f16cc48757ee",
-            "shortKey": "tum_in0007_balanced_search_trees",
-            "title": "Ausgewogene Suchbäume",
-            "titleEn": "Balanced search trees",
-            "description": "Die lernende Person kann AVL-Bäume und (a,b)-Bäume sowie deren Ausbalancierung beschreiben.",
-            "descriptionEn": "The learner can describe AVL trees and (a,b)-trees and their balancing.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "f092e816-08b4-5d3e-aec7-46b6cf4cb371",
-            "shortKey": "tum_in0007_graph_algorithms",
-            "title": "Graphalgorithmen",
-            "titleEn": "Graph algorithms",
-            "description": "Die lernende Person kann Probleme mit Diagrammen modellieren und Standardalgorithmen anwenden.",
-            "descriptionEn": "The learner can model problems with graphs and apply standard algorithms.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [
-                "ddbca30a-4f76-5770-a12a-d4be44fd21a0",
-                "1759cef6-ab18-51c9-92b3-e3804bc8d722"
-            ],
-            "requires": [
-                "8ba1c334-b539-54f5-8b30-594c397a9c28"
-            ]
-        },
-        {
-            "id": "ddbca30a-4f76-5770-a12a-d4be44fd21a0",
-            "shortKey": "tum_in0007_graph_representations_and_traversals",
-            "title": "Graphdarstellungen und Durchquerungen",
-            "titleEn": "Graph representations and traversals",
-            "description": "Die lernende Person kann Diagramme darstellen und DFS/BFS-Durchläufe durchführen.",
-            "descriptionEn": "The learner can represent graphs and perform DFS/BFS traversals.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "1759cef6-ab18-51c9-92b3-e3804bc8d722",
-            "shortKey": "tum_in0007_shortest_paths_and_spanning_trees",
-            "title": "Kürzeste Wege und überspannte Bäume",
-            "titleEn": "Shortest paths and spanning trees",
-            "description": "Die lernende Person kann kürzeste Pfade und minimale Spannbäume berechnen und topologische Sortierung verwenden.",
-            "descriptionEn": "The learner can compute shortest paths and minimum spanning trees and use topological sorting.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "65bad2fc-b9f2-5cab-9f3d-662c4332a9ea",
-            "shortKey": "tum_in0007_optional_topics",
-            "title": "Optionale Themen",
-            "titleEn": "Optional topics",
-            "description": "Die lernende Person kann weitere algorithmische Techniken erkennen.",
-            "descriptionEn": "The learner can recognize additional algorithmic techniques.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [
-                "8f45fd68-a4a0-582c-87ee-3e1ec227f6ed",
-                "6b8b6d53-a0f7-5f0d-a207-00e97f85613a"
-            ],
-            "requires": []
-        },
-        {
-            "id": "8f45fd68-a4a0-582c-87ee-3e1ec227f6ed",
-            "shortKey": "tum_in0007_data_compression_basics",
-            "title": "Grundlagen der Datenkomprimierung",
-            "titleEn": "Data compression basics",
-            "description": "Die lernende Person kann die Komprimierung im Huffman- und Lempel-Ziv-Stil erklären.",
-            "descriptionEn": "The learner can explain Huffman and Lempel-Ziv style compression.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "6b8b6d53-a0f7-5f0d-a207-00e97f85613a",
-            "shortKey": "tum_in0007_pattern_matching_basics",
-            "title": "Grundlagen des Mustervergleichs",
-            "titleEn": "Pattern matching basics",
-            "description": "Die lernende Person kann einfache Mustervergleichsalgorithmen beschreiben.",
-            "descriptionEn": "The learner can describe simple pattern matching algorithms.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0007"
-            ],
-            "contains": [],
-            "requires": []
-        }
-    ]
+  "title": "Grundlagen: Algorithmen und Datenstrukturen (TUM, Modul IN0007)",
+  "titleEn": "Fundamentals of Algorithms and Data Structures (TUM, Module IN0007)",
+  "description": "Die lernende Person kann Algorithmen analysieren und Kerndatenstrukturen implementieren.",
+  "descriptionEn": "The learner can analyze algorithms and implement core data structures.",
+  "locale": "de-DE",
+  "subject": "TUM-Module",
+  "frameworkId": "tum-in0007",
+  "goals": [
+    {
+      "id": "49d7c236-bf8a-503d-a9b9-cd7e507e9f99",
+      "title": "Grundlagen: Algorithmen und Datenstrukturen (IN0007)",
+      "titleEn": "Fundamentals of Algorithms and Data Structures (IN0007)",
+      "description": "Die lernende Person kann Algorithmen analysieren und Kerndatenstrukturen implementieren.",
+      "descriptionEn": "The learner can analyze algorithms and implement core data structures.",
+      "weight": 6.0,
+      "tags": [
+        "module:IN0007",
+        "ects:6"
+      ],
+      "contains": [
+        "8327e3f1-cfee-5790-83e1-a2516005b852",
+        "8ba1c334-b539-54f5-8b30-594c397a9c28",
+        "1ae8e27f-7d12-51bf-ac5d-e601962b4160",
+        "ef4b7453-d39a-59ae-8eca-90e4cc63f2a0",
+        "1d7dc5a4-1a4c-5176-b626-bfe7228387bb",
+        "ae66c347-879f-5e7e-b8b0-45082c7970c9",
+        "f092e816-08b4-5d3e-aec7-46b6cf4cb371",
+        "65bad2fc-b9f2-5cab-9f3d-662c4332a9ea"
+      ],
+      "requires": [],
+      "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0007",
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8327e3f1-cfee-5790-83e1-a2516005b852",
+      "title": "Komplexitäts- und Algorithmusanalyse",
+      "titleEn": "Complexity and algorithm analysis",
+      "description": "Die lernende Person kann die asymptotische Analyse zur Bewertung von Algorithmen verwenden.",
+      "descriptionEn": "The learner can use asymptotic analysis to evaluate algorithms.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [
+        "a194ed9c-d9de-553e-9e92-aa031fb6f9e9",
+        "909f48da-0b14-56e6-a0a8-77129f951882"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a194ed9c-d9de-553e-9e92-aa031fb6f9e9",
+      "title": "Asymptotische Notation und Modelle",
+      "titleEn": "Asymptotic notation and models",
+      "description": "Die lernende Person kann die Notation im Big-O-Stil und grundlegende Berechnungsmodelle verwenden.",
+      "descriptionEn": "The learner can use Big-O style notation and basic computation models.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "909f48da-0b14-56e6-a0a8-77129f951882",
+      "title": "Effizienzanalyse",
+      "titleEn": "Efficiency analysis",
+      "description": "Die lernende Person kann die zeitliche und räumliche Komplexität von Algorithmen analysieren.",
+      "descriptionEn": "The learner can analyze time and space complexity for algorithms.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8ba1c334-b539-54f5-8b30-594c397a9c28",
+      "title": "Sequenzdatenstrukturen",
+      "titleEn": "Sequence data structures",
+      "description": "Die lernende Person kann sequenzbasierte Strukturen umsetzen und analysieren.",
+      "descriptionEn": "The learner can implement and analyze sequence-based structures.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [
+        "bc0448d2-a274-5138-8122-47421bb9c48b",
+        "856a0abd-ec1a-5bb7-9b1c-31d6397192b8"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "bc0448d2-a274-5138-8122-47421bb9c48b",
+      "title": "Dynamische Arrays und Listen",
+      "titleEn": "Dynamic arrays and lists",
+      "description": "Die lernende Person kann Arrays und Listen implementieren und die Betriebskosten vergleichen.",
+      "descriptionEn": "The learner can implement arrays and lists and compare operation costs.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "856a0abd-ec1a-5bb7-9b1c-31d6397192b8",
+      "title": "Stapel und Warteschlangen",
+      "titleEn": "Stacks and queues",
+      "description": "Die lernende Person kann Stacks und Warteschlangen implementieren und deren Abläufe analysieren.",
+      "descriptionEn": "The learner can implement stacks and queues and analyze their operations.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1ae8e27f-7d12-51bf-ac5d-e601962b4160",
+      "title": "Hashing",
+      "titleEn": "Hashing",
+      "description": "Die lernende Person kann Hashing-Strategien für eine effiziente Suche anwenden.",
+      "descriptionEn": "The learner can apply hashing strategies for efficient lookup.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [
+        "1858adf3-a66d-5a09-85b9-26c3ecc186f4",
+        "9a534940-bccb-51a3-b906-1bf13d871521"
+      ],
+      "requires": [
+        "8ba1c334-b539-54f5-8b30-594c397a9c28"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1858adf3-a66d-5a09-85b9-26c3ecc186f4",
+      "title": "Verketten und Sondieren",
+      "titleEn": "Chaining and probing",
+      "description": "Die lernende Person kann Hashing mit Verkettungs- und Sondierungsmethoden implementieren.",
+      "descriptionEn": "The learner can implement hashing with chaining and probing methods.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9a534940-bccb-51a3-b906-1bf13d871521",
+      "title": "Universelles und perfektes Hashing",
+      "titleEn": "Universal and perfect hashing",
+      "description": "Die lernende Person kann universelles Hashing erklären und perfekte Hashing-Ideen anwenden.",
+      "descriptionEn": "The learner can explain universal hashing and apply perfect hashing ideas.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ef4b7453-d39a-59ae-8eca-90e4cc63f2a0",
+      "title": "Sortieren und Auswählen",
+      "titleEn": "Sorting and selection",
+      "description": "Die lernende Person kann Sortieralgorithmen vergleichen und analysieren.",
+      "descriptionEn": "The learner can compare and analyze sorting algorithms.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [
+        "0feafc10-6eaa-5d6b-aebd-00109eb0a229",
+        "4252218c-8d56-5830-b520-1f0e69e74180"
+      ],
+      "requires": [
+        "8ba1c334-b539-54f5-8b30-594c397a9c28"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0feafc10-6eaa-5d6b-aebd-00109eb0a229",
+      "title": "Grundlegende Sortieralgorithmen",
+      "titleEn": "Basic sorting algorithms",
+      "description": "Die lernende Person kann Einfügen, Auswählen und Blasensortieren implementieren.",
+      "descriptionEn": "The learner can implement insertion, selection, and bubble sort.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4252218c-8d56-5830-b520-1f0e69e74180",
+      "title": "Erweiterte Sortieralgorithmen",
+      "titleEn": "Advanced sorting algorithms",
+      "description": "Die lernende Person kann Zusammenführungssortierung, Heapsortierung und Schnellsortierung analysieren und Untergrenzen diskutieren.",
+      "descriptionEn": "The learner can analyze merge sort, heap sort, and quick sort and discuss lower bounds.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1d7dc5a4-1a4c-5176-b626-bfe7228387bb",
+      "title": "Prioritätswarteschlangen und Heaps",
+      "titleEn": "Priority queues and heaps",
+      "description": "Die lernende Person kann Heap-basierte Prioritätswarteschlangen verwenden.",
+      "descriptionEn": "The learner can use heap-based priority queues.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [
+        "d751d2d8-5c0c-56c4-b3d5-1a5dbc7be17f",
+        "4f6e70f9-ee0f-547a-bfc0-f6b73911c452"
+      ],
+      "requires": [
+        "8ba1c334-b539-54f5-8b30-594c397a9c28"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d751d2d8-5c0c-56c4-b3d5-1a5dbc7be17f",
+      "title": "Binäre und binomiale Heaps",
+      "titleEn": "Binary and binomial heaps",
+      "description": "Die lernende Person kann binäre Heaps implementieren und binomiale Heaps beschreiben.",
+      "descriptionEn": "The learner can implement binary heaps and describe binomial heaps.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4f6e70f9-ee0f-547a-bfc0-f6b73911c452",
+      "title": "Vorrangige Warteschlangenvorgänge",
+      "titleEn": "Priority queue operations",
+      "description": "Die lernende Person kann Heap-Operationen auf Probleme mit Prioritätswarteschlangen anwenden.",
+      "descriptionEn": "The learner can apply heap operations to priority queue problems.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ae66c347-879f-5e7e-b8b0-45082c7970c9",
+      "title": "Suche Bäume",
+      "titleEn": "Search trees",
+      "description": "Die lernende Person kann baumbasierte Suchstrukturen nutzen.",
+      "descriptionEn": "The learner can use tree-based search structures.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [
+        "13ae4051-e9db-5a3d-bec9-867e489e3d99",
+        "e2529c88-cb2f-5272-bdf0-f16cc48757ee"
+      ],
+      "requires": [
+        "8ba1c334-b539-54f5-8b30-594c397a9c28"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "13ae4051-e9db-5a3d-bec9-867e489e3d99",
+      "title": "Binäre Suchbäume",
+      "titleEn": "Binary search trees",
+      "description": "Die lernende Person kann binäre Suchbäume implementieren und Operationen analysieren.",
+      "descriptionEn": "The learner can implement binary search trees and analyze operations.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e2529c88-cb2f-5272-bdf0-f16cc48757ee",
+      "title": "Ausgewogene Suchbäume",
+      "titleEn": "Balanced search trees",
+      "description": "Die lernende Person kann AVL-Bäume und (a,b)-Bäume sowie deren Ausbalancierung beschreiben.",
+      "descriptionEn": "The learner can describe AVL trees and (a,b)-trees and their balancing.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f092e816-08b4-5d3e-aec7-46b6cf4cb371",
+      "title": "Graphalgorithmen",
+      "titleEn": "Graph algorithms",
+      "description": "Die lernende Person kann Probleme mit Diagrammen modellieren und Standardalgorithmen anwenden.",
+      "descriptionEn": "The learner can model problems with graphs and apply standard algorithms.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [
+        "ddbca30a-4f76-5770-a12a-d4be44fd21a0",
+        "1759cef6-ab18-51c9-92b3-e3804bc8d722"
+      ],
+      "requires": [
+        "8ba1c334-b539-54f5-8b30-594c397a9c28"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ddbca30a-4f76-5770-a12a-d4be44fd21a0",
+      "title": "Graphdarstellungen und Durchquerungen",
+      "titleEn": "Graph representations and traversals",
+      "description": "Die lernende Person kann Diagramme darstellen und DFS/BFS-Durchläufe durchführen.",
+      "descriptionEn": "The learner can represent graphs and perform DFS/BFS traversals.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1759cef6-ab18-51c9-92b3-e3804bc8d722",
+      "title": "Kürzeste Wege und überspannte Bäume",
+      "titleEn": "Shortest paths and spanning trees",
+      "description": "Die lernende Person kann kürzeste Pfade und minimale Spannbäume berechnen und topologische Sortierung verwenden.",
+      "descriptionEn": "The learner can compute shortest paths and minimum spanning trees and use topological sorting.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "65bad2fc-b9f2-5cab-9f3d-662c4332a9ea",
+      "title": "Optionale Themen",
+      "titleEn": "Optional topics",
+      "description": "Die lernende Person kann weitere algorithmische Techniken erkennen.",
+      "descriptionEn": "The learner can recognize additional algorithmic techniques.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [
+        "8f45fd68-a4a0-582c-87ee-3e1ec227f6ed",
+        "6b8b6d53-a0f7-5f0d-a207-00e97f85613a"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8f45fd68-a4a0-582c-87ee-3e1ec227f6ed",
+      "title": "Grundlagen der Datenkomprimierung",
+      "titleEn": "Data compression basics",
+      "description": "Die lernende Person kann die Komprimierung im Huffman- und Lempel-Ziv-Stil erklären.",
+      "descriptionEn": "The learner can explain Huffman and Lempel-Ziv style compression.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6b8b6d53-a0f7-5f0d-a207-00e97f85613a",
+      "title": "Grundlagen des Mustervergleichs",
+      "titleEn": "Pattern matching basics",
+      "description": "Die lernende Person kann einfache Mustervergleichsalgorithmen beschreiben.",
+      "descriptionEn": "The learner can describe simple pattern matching algorithms.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0007"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    }
+  ],
+  "landscapeId": "e610bf12-c8fc-5d64-b48c-3fec90a58634"
 }

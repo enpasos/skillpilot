@@ -1,1099 +1,1293 @@
 {
-    "title": "Französisch A2 (Grundlagen)",
-    "titleEn": "French (CEFR A2)",
-    "description": "Elementare Sprachverwendung; einfache Informationen in Routine-Situationen.",
-    "descriptionEn": "Elementary language use; simple information in routine situations.",
-    "landscapeId": "5732bb6f-804c-4f80-b370-60b80d6d5e4b",
-    "locale": "de-DE",
-    "subject": "Französisch",
-    "frameworkId": "cefr-français",
-    "goals": [
-        {
-            "id": "69af5a55-d21b-40ed-acd8-1abeeb1f9084",
-            "title": "Französisch A2 (Grundlagen)",
-            "titleEn": "Level A2 - Course Structure",
-            "description": "Systematischer Aufbau in 12 Lektionen (Vergangenheit, Alltag, Zukunft).",
-            "descriptionEn": "Systematic structure in 12 lessons (Past, Daily Life, Future).",
-            "core": true,
-            "weight": 1,
-            "tags": [
-                "structure",
-                "A2",
-                "root"
-            ],
-            "contains": [
-                "cefr_fr_a2_module_01",
-                "cefr_fr_a2_module_02",
-                "cefr_fr_a2_module_03",
-                "cefr_fr_a2_module_04"
-            ],
-            "requires": [
-                "5d319918-3472-47b4-9d10-f5fbe76fbfaf"
-            ]
-        },
-        {
-            "id": "cefr_fr_a2_module_01",
-            "title": "Modul 1: Vergangenes erzählen",
-            "titleEn": "Module 1: Telling the Past",
-            "description": "Wochenende, Reisen, Biographie.",
-            "descriptionEn": "Weekend, Travel, Biography.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_fr_a2_lesson_01",
-                "cefr_fr_a2_lesson_02",
-                "cefr_fr_a2_lesson_03"
-            ]
-        },
-        {
-            "id": "cefr_fr_a2_lesson_01",
-            "title": "Lektion 01: Das Wochenende",
-            "titleEn": "Lesson 01: The Weekend",
-            "description": "Was hast du gemacht?",
-            "descriptionEn": "What did you do?",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_fr_a2_l01_vocabulary",
-                "cefr_fr_a2_l01_vocabulary_rev",
-                "cefr_fr_a2_l01_grammar",
-                "cefr_fr_a2_l01_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a2_l01_vocabulary",
-            "title": "L1: Wortschatz (Freizeit) (Lesen)",
-            "titleEn": "L1: Vocabulary (Leisure) (Reading)",
-            "description": "Aktivitäten, Zeitadverbien.",
-            "descriptionEn": "Activities, time adverbs.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_1",
-                "select:l1_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l01_vocabulary_rev",
-            "title": "L1: Wortschatz (Freizeit) (Schreiben)",
-            "titleEn": "L1: Vocabulary (Leisure) (Writing)",
-            "description": "Aktivitäten, Zeitadverbien.",
-            "descriptionEn": "Activities, time adverbs.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_1",
-                "select:l1_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l01_grammar",
-            "title": "Grammatik: Passé Composé (avoir)",
-            "titleEn": "Grammar: Passé Composé (avoir)",
-            "description": "Regelmäßige Verben (j'ai mangé).",
-            "descriptionEn": "Regular verbs (j'ai mangé).",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l01_practice",
-            "title": "Sprechkompetenz: Erzählen",
-            "titleEn": "Speaking: Narration",
-            "description": "Erzähle vom Wochenende.",
-            "descriptionEn": "Tell about the weekend.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_lesson_02",
-            "title": "Lektion 02: Reisen",
-            "titleEn": "Lesson 02: Travel",
-            "description": "Reisebericht.",
-            "descriptionEn": "Trip report.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_fr_a2_l02_vocabulary",
-                "cefr_fr_a2_l02_vocabulary_rev",
-                "cefr_fr_a2_l02_grammar",
-                "cefr_fr_a2_l02_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a2_l02_vocabulary",
-            "title": "L2: Wortschatz (Reisen) (Lesen)",
-            "titleEn": "L2: Vocabulary (Travel) (Reading)",
-            "description": "Sehenswürdigkeiten, Transport.",
-            "descriptionEn": "Sights, transport.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_2",
-                "select:l2_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l02_vocabulary_rev",
-            "title": "L2: Wortschatz (Reisen) (Schreiben)",
-            "titleEn": "L2: Vocabulary (Travel) (Writing)",
-            "description": "Sehenswürdigkeiten, Transport.",
-            "descriptionEn": "Sights, transport.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_2",
-                "select:l2_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l02_grammar",
-            "title": "Grammatik: Passé Composé (être)",
-            "titleEn": "Grammar: Passé Composé (être)",
-            "description": "Bewegungsverben (je suis allé).",
-            "descriptionEn": "Movement verbs (je suis allé).",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l02_practice",
-            "title": "Schreiben: Postkarte",
-            "titleEn": "Writing: Postcard",
-            "description": "Schreibe aus dem Urlaub.",
-            "descriptionEn": "Write from vacation.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_lesson_03",
-            "title": "Lektion 03: Biographie",
-            "titleEn": "Lesson 03: Biography",
-            "description": "Lebenslauf.",
-            "descriptionEn": "Curriculum Vitae.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_fr_a2_l03_vocabulary",
-                "cefr_fr_a2_l03_vocabulary_rev",
-                "cefr_fr_a2_l03_grammar",
-                "cefr_fr_a2_l03_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a2_l03_vocabulary",
-            "title": "L3: Wortschatz (Leben) (Lesen)",
-            "titleEn": "L3: Vocabulary (Life) (Reading)",
-            "description": "Lebensphasen, Schule, Arbeit.",
-            "descriptionEn": "Life stages, school, work.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_3",
-                "select:l3_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l03_vocabulary_rev",
-            "title": "L3: Wortschatz (Leben) (Schreiben)",
-            "titleEn": "L3: Vocabulary (Life) (Writing)",
-            "description": "Lebensphasen, Schule, Arbeit.",
-            "descriptionEn": "Life stages, school, work.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_3",
-                "select:l3_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l03_grammar",
-            "title": "Grammatik: Irreguläre Partizipien",
-            "titleEn": "Grammar: Irregular Participles",
-            "description": "eu, été, fait, pris.",
-            "descriptionEn": "eu, été, fait, pris.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l03_practice",
-            "title": "Präsentation: Eine Person",
-            "titleEn": "Presentation: A Person",
-            "description": "Stelle eine berühmte Person vor.",
-            "descriptionEn": "Introduce a famous person.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_module_02",
-            "title": "Modul 2: Alltag & Arbeit",
-            "titleEn": "Module 2: Daily Life & Work",
-            "description": "Arbeitstag, Restaurant, Wohnen.",
-            "descriptionEn": "Workday, Restaurant, Housing.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_fr_a2_lesson_04",
-                "cefr_fr_a2_lesson_05",
-                "cefr_fr_a2_lesson_06"
-            ]
-        },
-        {
-            "id": "cefr_fr_a2_lesson_04",
-            "title": "Lektion 04: Mein Arbeitstag",
-            "titleEn": "Lesson 04: Workday",
-            "description": "Tagesablauf und Gewohnheiten.",
-            "descriptionEn": "Daily routine and habits.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_fr_a2_l04_vocabulary",
-                "cefr_fr_a2_l04_vocabulary_rev",
-                "cefr_fr_a2_l04_grammar",
-                "cefr_fr_a2_l04_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a2_l04_vocabulary",
-            "title": "L4: Wortschatz (Büro) (Lesen)",
-            "titleEn": "L4: Vocabulary (Office) (Reading)",
-            "description": "Kollegen, Meetings, Aufgaben.",
-            "descriptionEn": "Colleagues, meetings, tasks.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_4",
-                "select:l4_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l04_vocabulary_rev",
-            "title": "L4: Wortschatz (Büro) (Schreiben)",
-            "titleEn": "L4: Vocabulary (Office) (Writing)",
-            "description": "Kollegen, Meetings, Aufgaben.",
-            "descriptionEn": "Colleagues, meetings, tasks.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_4",
-                "select:l4_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l04_grammar",
-            "title": "Grammatik: Adverbien",
-            "titleEn": "Grammar: Adverbs",
-            "description": "Häufigkeit (souvent, jamais).",
-            "descriptionEn": "Frequency (souvent, jamais).",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l04_practice",
-            "title": "Interaktion: Zeitplan",
-            "titleEn": "Interaction: Schedule",
-            "description": "Bespreche deinen Zeitplan.",
-            "descriptionEn": "Discuss your schedule.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_lesson_05",
-            "title": "Lektion 05: Im Restaurant",
-            "titleEn": "Lesson 05: At the Restaurant",
-            "description": "Menü und Spezialwünsche.",
-            "descriptionEn": "Menu and special requests.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_fr_a2_l05_vocabulary",
-                "cefr_fr_a2_l05_vocabulary_rev",
-                "cefr_fr_a2_l05_grammar",
-                "cefr_fr_a2_l05_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a2_l05_vocabulary",
-            "title": "L5: Wortschatz (Restaurant) (Lesen)",
-            "titleEn": "L5: Vocabulary (Restaurant) (Reading)",
-            "description": "Gerichte, Zutaten, Geschmack.",
-            "descriptionEn": "Dishes, ingredients, taste.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_5",
-                "select:l5_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l05_vocabulary_rev",
-            "title": "L5: Wortschatz (Restaurant) (Schreiben)",
-            "titleEn": "L5: Vocabulary (Restaurant) (Writing)",
-            "description": "Gerichte, Zutaten, Geschmack.",
-            "descriptionEn": "Dishes, ingredients, taste.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_5",
-                "select:l5_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l05_grammar",
-            "title": "Grammatik: Teilungsartikel",
-            "titleEn": "Grammar: Partitive Articles",
-            "description": "du, de la, en.",
-            "descriptionEn": "du, de la, en.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l05_practice",
-            "title": "Rollenspiel: Dinner",
-            "titleEn": "Roleplay: Dinner",
-            "description": "Bestelle ein 3-Gänge-Menü.",
-            "descriptionEn": "Order a 3-course meal.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_lesson_06",
-            "title": "Lektion 06: Wohnen & Umgebung",
-            "titleEn": "Lesson 06: Housing",
-            "description": "Wohnungssuche.",
-            "descriptionEn": "Flat hunting.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_fr_a2_l06_vocabulary",
-                "cefr_fr_a2_l06_vocabulary_rev",
-                "cefr_fr_a2_l06_grammar",
-                "cefr_fr_a2_l06_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a2_l06_vocabulary",
-            "title": "L6: Wortschatz (Immobilien) (Lesen)",
-            "titleEn": "L6: Vocabulary (Real Estate) (Reading)",
-            "description": "Miete, Lage, Beschreibung.",
-            "descriptionEn": "Rent, location, description.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_6",
-                "select:l6_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l06_vocabulary_rev",
-            "title": "L6: Wortschatz (Immobilien) (Schreiben)",
-            "titleEn": "L6: Vocabulary (Real Estate) (Writing)",
-            "description": "Miete, Lage, Beschreibung.",
-            "descriptionEn": "Rent, location, description.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_6",
-                "select:l6_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l06_grammar",
-            "title": "Grammatik: Vergleich",
-            "titleEn": "Grammar: Comparison",
-            "description": "plus/moins ... que.",
-            "descriptionEn": "more/less ... than.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l06_practice",
-            "title": "Diskussion: Traumhaus",
-            "titleEn": "Discussion: Dream House",
-            "description": "Vergleiche zwei Wohnungen.",
-            "descriptionEn": "Compare two apartments.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_module_03",
-            "title": "Modul 3: Gesundheit & Kommunikation",
-            "titleEn": "Module 3: Health & Communication",
-            "description": "Arzt, Telefon, Kleidung.",
-            "descriptionEn": "Doctor, Telephone, Clothes.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_fr_a2_lesson_07",
-                "cefr_fr_a2_lesson_08",
-                "cefr_fr_a2_lesson_09"
-            ]
-        },
-        {
-            "id": "cefr_fr_a2_lesson_07",
-            "title": "Lektion 07: Beim Arzt",
-            "titleEn": "Lesson 07: At the Doctor",
-            "description": "Krankheit und Ratschläge.",
-            "descriptionEn": "Illness and advice.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_fr_a2_l07_vocabulary",
-                "cefr_fr_a2_l07_vocabulary_rev",
-                "cefr_fr_a2_l07_grammar",
-                "cefr_fr_a2_l07_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a2_l07_vocabulary",
-            "title": "L7: Wortschatz (Gesundheit) (Lesen)",
-            "titleEn": "L7: Vocabulary (Health) (Reading)",
-            "description": "Körper, Schmerzen, Medizin.",
-            "descriptionEn": "Body, pain, medicine.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_7",
-                "select:l7_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l07_vocabulary_rev",
-            "title": "L7: Wortschatz (Gesundheit) (Schreiben)",
-            "titleEn": "L7: Vocabulary (Health) (Writing)",
-            "description": "Körper, Schmerzen, Medizin.",
-            "descriptionEn": "Body, pain, medicine.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_7",
-                "select:l7_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l07_grammar",
-            "title": "Grammatik: Imperativ",
-            "titleEn": "Grammar: Imperative",
-            "description": "Ratschläge geben (Reposez-vous).",
-            "descriptionEn": "Give advice (Reposez-vous).",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l07_practice",
-            "title": "Rollenspiel: Konsultation",
-            "titleEn": "Roleplay: Consultation",
-            "description": "Beschreibe Symptome.",
-            "descriptionEn": "Describe symptoms.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_lesson_08",
-            "title": "Lektion 08: Kommunikation",
-            "titleEn": "Lesson 08: Communication",
-            "description": "Telefon und E-Mail.",
-            "descriptionEn": "Phone and email.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_fr_a2_l08_vocabulary",
-                "cefr_fr_a2_l08_vocabulary_rev",
-                "cefr_fr_a2_l08_grammar",
-                "cefr_fr_a2_l08_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a2_l08_vocabulary",
-            "title": "L8: Wortschatz (Medien) (Lesen)",
-            "titleEn": "L8: Vocabulary (Media) (Reading)",
-            "description": "Anruf, Nachricht, Verabredung.",
-            "descriptionEn": "Call, message, appointment.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_8",
-                "select:l8_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l08_vocabulary_rev",
-            "title": "L8: Wortschatz (Medien) (Schreiben)",
-            "titleEn": "L8: Vocabulary (Media) (Writing)",
-            "description": "Anruf, Nachricht, Verabredung.",
-            "descriptionEn": "Call, message, appointment.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_8",
-                "select:l8_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l08_grammar",
-            "title": "Grammatik: Objektpronomen",
-            "titleEn": "Grammar: Object Pronouns",
-            "description": "Direkt (le, la, les).",
-            "descriptionEn": "Direct (le, la, les).",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l08_practice",
-            "title": "Interaktion: Termin",
-            "titleEn": "Interaction: Appointment",
-            "description": "Vereinbare einen Termin.",
-            "descriptionEn": "Make an appointment.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_lesson_09",
-            "title": "Lektion 09: Kleidung & Stil",
-            "titleEn": "Lesson 09: Fashion & Style",
-            "description": "Mode und Geschenke.",
-            "descriptionEn": "Fashion and gifts.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_fr_a2_l09_vocabulary",
-                "cefr_fr_a2_l09_vocabulary_rev",
-                "cefr_fr_a2_l09_grammar",
-                "cefr_fr_a2_l09_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a2_l09_vocabulary",
-            "title": "L9: Wortschatz (Mode) (Lesen)",
-            "titleEn": "L9: Vocabulary (Fashion) (Reading)",
-            "description": "Stil, Accessoires, Materialien.",
-            "descriptionEn": "Style, accessories, materials.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_9",
-                "select:l9_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l09_vocabulary_rev",
-            "title": "L9: Wortschatz (Mode) (Schreiben)",
-            "titleEn": "L9: Vocabulary (Fashion) (Writing)",
-            "description": "Stil, Accessoires, Materialien.",
-            "descriptionEn": "Style, accessories, materials.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_9",
-                "select:l9_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l09_grammar",
-            "title": "Grammatik: Indirekte Pronomen",
-            "titleEn": "Grammar: Indirect Pronouns",
-            "description": "lui, leur.",
-            "descriptionEn": "lui, leur.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l09_practice",
-            "title": "Diskussion: Geschenke",
-            "titleEn": "Discussion: Gifts",
-            "description": "Was schenkst du wem?",
-            "descriptionEn": "What do you give to whom?",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_module_04",
-            "title": "Modul 4: Pläne & Zukunft",
-            "titleEn": "Module 4: Plans & Future",
-            "description": "Zukunft, Erinnerungen, Reisen.",
-            "descriptionEn": "Future, Memories, Travel.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_fr_a2_lesson_10",
-                "cefr_fr_a2_lesson_11",
-                "cefr_fr_a2_lesson_12"
-            ]
-        },
-        {
-            "id": "cefr_fr_a2_lesson_10",
-            "title": "Lektion 10: Zukunftspläne",
-            "titleEn": "Lesson 10: Future Plans",
-            "description": "Langfristige Projekte.",
-            "descriptionEn": "Long-term projects.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_fr_a2_l10_vocabulary",
-                "cefr_fr_a2_l10_vocabulary_rev",
-                "cefr_fr_a2_l10_grammar",
-                "cefr_fr_a2_l10_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a2_l10_vocabulary",
-            "title": "L10: Wortschatz (Zukunft) (Lesen)",
-            "titleEn": "L10: Vocabulary (Future) (Reading)",
-            "description": "Träume, Projekte, Studium.",
-            "descriptionEn": "Dreams, projects, studies.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_10",
-                "select:l10_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l10_vocabulary_rev",
-            "title": "L10: Wortschatz (Zukunft) (Schreiben)",
-            "titleEn": "L10: Vocabulary (Future) (Writing)",
-            "description": "Träume, Projekte, Studium.",
-            "descriptionEn": "Dreams, projects, studies.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_10",
-                "select:l10_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l10_grammar",
-            "title": "Grammatik: Futur Simple",
-            "titleEn": "Grammar: Simple Future",
-            "description": "Bildung (-ai, -as...).",
-            "descriptionEn": "Formation (-ai, -as...).",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l10_practice",
-            "title": "Sprechkompetenz: Visionen",
-            "titleEn": "Speaking: Visions",
-            "description": "Wo bist du in 5 Jahren?",
-            "descriptionEn": "Where will you be in 5 years?",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_lesson_11",
-            "title": "Lektion 11: Damals",
-            "titleEn": "Lesson 11: Back Then",
-            "description": "Kindheitserinnerungen.",
-            "descriptionEn": "Childhood memories.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_fr_a2_l11_vocabulary",
-                "cefr_fr_a2_l11_vocabulary_rev",
-                "cefr_fr_a2_l11_grammar",
-                "cefr_fr_a2_l11_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a2_l11_vocabulary",
-            "title": "L11: Wortschatz (Kindheit) (Lesen)",
-            "titleEn": "L11: Vocabulary (Childhood) (Reading)",
-            "description": "Spiele, Schule, Familie.",
-            "descriptionEn": "Games, school, family.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_11",
-                "select:l11_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l11_vocabulary_rev",
-            "title": "L11: Wortschatz (Kindheit) (Schreiben)",
-            "titleEn": "L11: Vocabulary (Childhood) (Writing)",
-            "description": "Spiele, Schule, Familie.",
-            "descriptionEn": "Games, school, family.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_11",
-                "select:l11_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l11_grammar",
-            "title": "Grammatik: Imparfait",
-            "titleEn": "Grammar: Imparfait",
-            "description": "Gewohnheiten in der Vergangenheit.",
-            "descriptionEn": "Habits in the past.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l11_practice",
-            "title": "Erzählen: Früher",
-            "titleEn": "Storytelling: Earlier",
-            "description": "Erzähle aus der Kindheit.",
-            "descriptionEn": "Tell from childhood.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_lesson_12",
-            "title": "Lektion 12: Abschluss A2",
-            "titleEn": "Lesson 12: Review A2",
-            "description": "Reiseplanung Komplett.",
-            "descriptionEn": "Complete trip planning.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_fr_a2_l12_vocabulary",
-                "cefr_fr_a2_l12_vocabulary_rev",
-                "cefr_fr_a2_l12_grammar",
-                "cefr_fr_a2_l12_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a2_l12_vocabulary",
-            "title": "L12: Wortschatz (Reisebüro) (Lesen)",
-            "titleEn": "L12: Vocabulary (Travel Agency) (Reading)",
-            "description": "Buchung, Hotel, Beschwerden.",
-            "descriptionEn": "Booking, hotel, complaints.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_12",
-                "select:l12_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l12_vocabulary_rev",
-            "title": "L12: Wortschatz (Reisebüro) (Schreiben)",
-            "titleEn": "L12: Vocabulary (Travel Agency) (Writing)",
-            "description": "Buchung, Hotel, Beschwerden.",
-            "descriptionEn": "Booking, hotel, complaints.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_french_deck",
-                "lesson_12",
-                "select:l12_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l12_grammar",
-            "title": "Grammatik: Review & Relativ",
-            "titleEn": "Grammar: Review & Relative",
-            "description": "qui, que & Zeiten-Review.",
-            "descriptionEn": "qui, que & Tense Review.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a2_l12_practice",
-            "title": "Abschlussprojekt: Reise",
-            "titleEn": "Final Project: Trip",
-            "description": "Plane und präsentiere eine Reise.",
-            "descriptionEn": "Plan and present a trip.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        }
-    ]
+  "title": "Französisch A2 (Grundlagen)",
+  "titleEn": "French (CEFR A2)",
+  "description": "Elementare Sprachverwendung; einfache Informationen in Routine-Situationen.",
+  "descriptionEn": "Elementary language use; simple information in routine situations.",
+  "landscapeId": "5732bb6f-804c-4f80-b370-60b80d6d5e4b",
+  "locale": "de-DE",
+  "subject": "Französisch",
+  "frameworkId": "cefr-français",
+  "goals": [
+    {
+      "id": "69af5a55-d21b-40ed-acd8-1abeeb1f9084",
+      "title": "Französisch A2 (Grundlagen)",
+      "titleEn": "Level A2 - Course Structure",
+      "description": "Systematischer Aufbau in 12 Lektionen (Vergangenheit, Alltag, Zukunft).",
+      "descriptionEn": "Systematic structure in 12 lessons (Past, Daily Life, Future).",
+      "weight": 1,
+      "tags": [
+        "structure",
+        "A2",
+        "root"
+      ],
+      "contains": [
+        "cefr_fr_a2_module_01",
+        "cefr_fr_a2_module_02",
+        "cefr_fr_a2_module_03",
+        "cefr_fr_a2_module_04"
+      ],
+      "requires": [
+        "5d319918-3472-47b4-9d10-f5fbe76fbfaf"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_fr_a2_module_01",
+      "title": "Modul 1: Vergangenes erzählen",
+      "titleEn": "Module 1: Telling the Past",
+      "description": "Wochenende, Reisen, Biographie.",
+      "descriptionEn": "Weekend, Travel, Biography.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_fr_a2_lesson_01",
+        "cefr_fr_a2_lesson_02",
+        "cefr_fr_a2_lesson_03"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_lesson_01",
+      "title": "Lektion 01: Das Wochenende",
+      "titleEn": "Lesson 01: The Weekend",
+      "description": "Was hast du gemacht?",
+      "descriptionEn": "What did you do?",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_fr_a2_l01_vocabulary",
+        "cefr_fr_a2_l01_vocabulary_rev",
+        "cefr_fr_a2_l01_grammar",
+        "cefr_fr_a2_l01_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l01_vocabulary",
+      "title": "L1: Wortschatz (Freizeit) (Lesen)",
+      "titleEn": "L1: Vocabulary (Leisure) (Reading)",
+      "description": "Aktivitäten, Zeitadverbien.",
+      "descriptionEn": "Activities, time adverbs.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_1",
+        "select:l1_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l01_vocabulary_rev",
+      "title": "L1: Wortschatz (Freizeit) (Schreiben)",
+      "titleEn": "L1: Vocabulary (Leisure) (Writing)",
+      "description": "Aktivitäten, Zeitadverbien.",
+      "descriptionEn": "Activities, time adverbs.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_1",
+        "select:l1_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l01_grammar",
+      "title": "Grammatik: Passé Composé (avoir)",
+      "titleEn": "Grammar: Passé Composé (avoir)",
+      "description": "Regelmäßige Verben (j'ai mangé).",
+      "descriptionEn": "Regular verbs (j'ai mangé).",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l01_practice",
+      "title": "Sprechkompetenz: Erzählen",
+      "titleEn": "Speaking: Narration",
+      "description": "Erzähle vom Wochenende.",
+      "descriptionEn": "Tell about the weekend.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_lesson_02",
+      "title": "Lektion 02: Reisen",
+      "titleEn": "Lesson 02: Travel",
+      "description": "Reisebericht.",
+      "descriptionEn": "Trip report.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_fr_a2_l02_vocabulary",
+        "cefr_fr_a2_l02_vocabulary_rev",
+        "cefr_fr_a2_l02_grammar",
+        "cefr_fr_a2_l02_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l02_vocabulary",
+      "title": "L2: Wortschatz (Reisen) (Lesen)",
+      "titleEn": "L2: Vocabulary (Travel) (Reading)",
+      "description": "Sehenswürdigkeiten, Transport.",
+      "descriptionEn": "Sights, transport.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_2",
+        "select:l2_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l02_vocabulary_rev",
+      "title": "L2: Wortschatz (Reisen) (Schreiben)",
+      "titleEn": "L2: Vocabulary (Travel) (Writing)",
+      "description": "Sehenswürdigkeiten, Transport.",
+      "descriptionEn": "Sights, transport.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_2",
+        "select:l2_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l02_grammar",
+      "title": "Grammatik: Passé Composé (être)",
+      "titleEn": "Grammar: Passé Composé (être)",
+      "description": "Bewegungsverben (je suis allé).",
+      "descriptionEn": "Movement verbs (je suis allé).",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l02_practice",
+      "title": "Schreiben: Postkarte",
+      "titleEn": "Writing: Postcard",
+      "description": "Schreibe aus dem Urlaub.",
+      "descriptionEn": "Write from vacation.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_lesson_03",
+      "title": "Lektion 03: Biographie",
+      "titleEn": "Lesson 03: Biography",
+      "description": "Lebenslauf.",
+      "descriptionEn": "Curriculum Vitae.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_fr_a2_l03_vocabulary",
+        "cefr_fr_a2_l03_vocabulary_rev",
+        "cefr_fr_a2_l03_grammar",
+        "cefr_fr_a2_l03_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l03_vocabulary",
+      "title": "L3: Wortschatz (Leben) (Lesen)",
+      "titleEn": "L3: Vocabulary (Life) (Reading)",
+      "description": "Lebensphasen, Schule, Arbeit.",
+      "descriptionEn": "Life stages, school, work.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_3",
+        "select:l3_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l03_vocabulary_rev",
+      "title": "L3: Wortschatz (Leben) (Schreiben)",
+      "titleEn": "L3: Vocabulary (Life) (Writing)",
+      "description": "Lebensphasen, Schule, Arbeit.",
+      "descriptionEn": "Life stages, school, work.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_3",
+        "select:l3_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l03_grammar",
+      "title": "Grammatik: Irreguläre Partizipien",
+      "titleEn": "Grammar: Irregular Participles",
+      "description": "eu, été, fait, pris.",
+      "descriptionEn": "eu, été, fait, pris.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l03_practice",
+      "title": "Präsentation: Eine Person",
+      "titleEn": "Presentation: A Person",
+      "description": "Stelle eine berühmte Person vor.",
+      "descriptionEn": "Introduce a famous person.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_module_02",
+      "title": "Modul 2: Alltag & Arbeit",
+      "titleEn": "Module 2: Daily Life & Work",
+      "description": "Arbeitstag, Restaurant, Wohnen.",
+      "descriptionEn": "Workday, Restaurant, Housing.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_fr_a2_lesson_04",
+        "cefr_fr_a2_lesson_05",
+        "cefr_fr_a2_lesson_06"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_lesson_04",
+      "title": "Lektion 04: Mein Arbeitstag",
+      "titleEn": "Lesson 04: Workday",
+      "description": "Tagesablauf und Gewohnheiten.",
+      "descriptionEn": "Daily routine and habits.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_fr_a2_l04_vocabulary",
+        "cefr_fr_a2_l04_vocabulary_rev",
+        "cefr_fr_a2_l04_grammar",
+        "cefr_fr_a2_l04_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l04_vocabulary",
+      "title": "L4: Wortschatz (Büro) (Lesen)",
+      "titleEn": "L4: Vocabulary (Office) (Reading)",
+      "description": "Kollegen, Meetings, Aufgaben.",
+      "descriptionEn": "Colleagues, meetings, tasks.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_4",
+        "select:l4_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l04_vocabulary_rev",
+      "title": "L4: Wortschatz (Büro) (Schreiben)",
+      "titleEn": "L4: Vocabulary (Office) (Writing)",
+      "description": "Kollegen, Meetings, Aufgaben.",
+      "descriptionEn": "Colleagues, meetings, tasks.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_4",
+        "select:l4_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l04_grammar",
+      "title": "Grammatik: Adverbien",
+      "titleEn": "Grammar: Adverbs",
+      "description": "Häufigkeit (souvent, jamais).",
+      "descriptionEn": "Frequency (souvent, jamais).",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l04_practice",
+      "title": "Interaktion: Zeitplan",
+      "titleEn": "Interaction: Schedule",
+      "description": "Bespreche deinen Zeitplan.",
+      "descriptionEn": "Discuss your schedule.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_lesson_05",
+      "title": "Lektion 05: Im Restaurant",
+      "titleEn": "Lesson 05: At the Restaurant",
+      "description": "Menü und Spezialwünsche.",
+      "descriptionEn": "Menu and special requests.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_fr_a2_l05_vocabulary",
+        "cefr_fr_a2_l05_vocabulary_rev",
+        "cefr_fr_a2_l05_grammar",
+        "cefr_fr_a2_l05_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l05_vocabulary",
+      "title": "L5: Wortschatz (Restaurant) (Lesen)",
+      "titleEn": "L5: Vocabulary (Restaurant) (Reading)",
+      "description": "Gerichte, Zutaten, Geschmack.",
+      "descriptionEn": "Dishes, ingredients, taste.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_5",
+        "select:l5_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l05_vocabulary_rev",
+      "title": "L5: Wortschatz (Restaurant) (Schreiben)",
+      "titleEn": "L5: Vocabulary (Restaurant) (Writing)",
+      "description": "Gerichte, Zutaten, Geschmack.",
+      "descriptionEn": "Dishes, ingredients, taste.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_5",
+        "select:l5_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l05_grammar",
+      "title": "Grammatik: Teilungsartikel",
+      "titleEn": "Grammar: Partitive Articles",
+      "description": "du, de la, en.",
+      "descriptionEn": "du, de la, en.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l05_practice",
+      "title": "Rollenspiel: Dinner",
+      "titleEn": "Roleplay: Dinner",
+      "description": "Bestelle ein 3-Gänge-Menü.",
+      "descriptionEn": "Order a 3-course meal.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_lesson_06",
+      "title": "Lektion 06: Wohnen & Umgebung",
+      "titleEn": "Lesson 06: Housing",
+      "description": "Wohnungssuche.",
+      "descriptionEn": "Flat hunting.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_fr_a2_l06_vocabulary",
+        "cefr_fr_a2_l06_vocabulary_rev",
+        "cefr_fr_a2_l06_grammar",
+        "cefr_fr_a2_l06_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l06_vocabulary",
+      "title": "L6: Wortschatz (Immobilien) (Lesen)",
+      "titleEn": "L6: Vocabulary (Real Estate) (Reading)",
+      "description": "Miete, Lage, Beschreibung.",
+      "descriptionEn": "Rent, location, description.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_6",
+        "select:l6_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l06_vocabulary_rev",
+      "title": "L6: Wortschatz (Immobilien) (Schreiben)",
+      "titleEn": "L6: Vocabulary (Real Estate) (Writing)",
+      "description": "Miete, Lage, Beschreibung.",
+      "descriptionEn": "Rent, location, description.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_6",
+        "select:l6_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l06_grammar",
+      "title": "Grammatik: Vergleich",
+      "titleEn": "Grammar: Comparison",
+      "description": "plus/moins ... que.",
+      "descriptionEn": "more/less ... than.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l06_practice",
+      "title": "Diskussion: Traumhaus",
+      "titleEn": "Discussion: Dream House",
+      "description": "Vergleiche zwei Wohnungen.",
+      "descriptionEn": "Compare two apartments.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_module_03",
+      "title": "Modul 3: Gesundheit & Kommunikation",
+      "titleEn": "Module 3: Health & Communication",
+      "description": "Arzt, Telefon, Kleidung.",
+      "descriptionEn": "Doctor, Telephone, Clothes.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_fr_a2_lesson_07",
+        "cefr_fr_a2_lesson_08",
+        "cefr_fr_a2_lesson_09"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_lesson_07",
+      "title": "Lektion 07: Beim Arzt",
+      "titleEn": "Lesson 07: At the Doctor",
+      "description": "Krankheit und Ratschläge.",
+      "descriptionEn": "Illness and advice.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_fr_a2_l07_vocabulary",
+        "cefr_fr_a2_l07_vocabulary_rev",
+        "cefr_fr_a2_l07_grammar",
+        "cefr_fr_a2_l07_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l07_vocabulary",
+      "title": "L7: Wortschatz (Gesundheit) (Lesen)",
+      "titleEn": "L7: Vocabulary (Health) (Reading)",
+      "description": "Körper, Schmerzen, Medizin.",
+      "descriptionEn": "Body, pain, medicine.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_7",
+        "select:l7_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l07_vocabulary_rev",
+      "title": "L7: Wortschatz (Gesundheit) (Schreiben)",
+      "titleEn": "L7: Vocabulary (Health) (Writing)",
+      "description": "Körper, Schmerzen, Medizin.",
+      "descriptionEn": "Body, pain, medicine.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_7",
+        "select:l7_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l07_grammar",
+      "title": "Grammatik: Imperativ",
+      "titleEn": "Grammar: Imperative",
+      "description": "Ratschläge geben (Reposez-vous).",
+      "descriptionEn": "Give advice (Reposez-vous).",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l07_practice",
+      "title": "Rollenspiel: Konsultation",
+      "titleEn": "Roleplay: Consultation",
+      "description": "Beschreibe Symptome.",
+      "descriptionEn": "Describe symptoms.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_lesson_08",
+      "title": "Lektion 08: Kommunikation",
+      "titleEn": "Lesson 08: Communication",
+      "description": "Telefon und E-Mail.",
+      "descriptionEn": "Phone and email.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_fr_a2_l08_vocabulary",
+        "cefr_fr_a2_l08_vocabulary_rev",
+        "cefr_fr_a2_l08_grammar",
+        "cefr_fr_a2_l08_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l08_vocabulary",
+      "title": "L8: Wortschatz (Medien) (Lesen)",
+      "titleEn": "L8: Vocabulary (Media) (Reading)",
+      "description": "Anruf, Nachricht, Verabredung.",
+      "descriptionEn": "Call, message, appointment.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_8",
+        "select:l8_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l08_vocabulary_rev",
+      "title": "L8: Wortschatz (Medien) (Schreiben)",
+      "titleEn": "L8: Vocabulary (Media) (Writing)",
+      "description": "Anruf, Nachricht, Verabredung.",
+      "descriptionEn": "Call, message, appointment.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_8",
+        "select:l8_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l08_grammar",
+      "title": "Grammatik: Objektpronomen",
+      "titleEn": "Grammar: Object Pronouns",
+      "description": "Direkt (le, la, les).",
+      "descriptionEn": "Direct (le, la, les).",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l08_practice",
+      "title": "Interaktion: Termin",
+      "titleEn": "Interaction: Appointment",
+      "description": "Vereinbare einen Termin.",
+      "descriptionEn": "Make an appointment.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_lesson_09",
+      "title": "Lektion 09: Kleidung & Stil",
+      "titleEn": "Lesson 09: Fashion & Style",
+      "description": "Mode und Geschenke.",
+      "descriptionEn": "Fashion and gifts.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_fr_a2_l09_vocabulary",
+        "cefr_fr_a2_l09_vocabulary_rev",
+        "cefr_fr_a2_l09_grammar",
+        "cefr_fr_a2_l09_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l09_vocabulary",
+      "title": "L9: Wortschatz (Mode) (Lesen)",
+      "titleEn": "L9: Vocabulary (Fashion) (Reading)",
+      "description": "Stil, Accessoires, Materialien.",
+      "descriptionEn": "Style, accessories, materials.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_9",
+        "select:l9_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l09_vocabulary_rev",
+      "title": "L9: Wortschatz (Mode) (Schreiben)",
+      "titleEn": "L9: Vocabulary (Fashion) (Writing)",
+      "description": "Stil, Accessoires, Materialien.",
+      "descriptionEn": "Style, accessories, materials.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_9",
+        "select:l9_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l09_grammar",
+      "title": "Grammatik: Indirekte Pronomen",
+      "titleEn": "Grammar: Indirect Pronouns",
+      "description": "lui, leur.",
+      "descriptionEn": "lui, leur.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l09_practice",
+      "title": "Diskussion: Geschenke",
+      "titleEn": "Discussion: Gifts",
+      "description": "Was schenkst du wem?",
+      "descriptionEn": "What do you give to whom?",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_module_04",
+      "title": "Modul 4: Pläne & Zukunft",
+      "titleEn": "Module 4: Plans & Future",
+      "description": "Zukunft, Erinnerungen, Reisen.",
+      "descriptionEn": "Future, Memories, Travel.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_fr_a2_lesson_10",
+        "cefr_fr_a2_lesson_11",
+        "cefr_fr_a2_lesson_12"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_lesson_10",
+      "title": "Lektion 10: Zukunftspläne",
+      "titleEn": "Lesson 10: Future Plans",
+      "description": "Langfristige Projekte.",
+      "descriptionEn": "Long-term projects.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_fr_a2_l10_vocabulary",
+        "cefr_fr_a2_l10_vocabulary_rev",
+        "cefr_fr_a2_l10_grammar",
+        "cefr_fr_a2_l10_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l10_vocabulary",
+      "title": "L10: Wortschatz (Zukunft) (Lesen)",
+      "titleEn": "L10: Vocabulary (Future) (Reading)",
+      "description": "Träume, Projekte, Studium.",
+      "descriptionEn": "Dreams, projects, studies.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_10",
+        "select:l10_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l10_vocabulary_rev",
+      "title": "L10: Wortschatz (Zukunft) (Schreiben)",
+      "titleEn": "L10: Vocabulary (Future) (Writing)",
+      "description": "Träume, Projekte, Studium.",
+      "descriptionEn": "Dreams, projects, studies.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_10",
+        "select:l10_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l10_grammar",
+      "title": "Grammatik: Futur Simple",
+      "titleEn": "Grammar: Simple Future",
+      "description": "Bildung (-ai, -as...).",
+      "descriptionEn": "Formation (-ai, -as...).",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l10_practice",
+      "title": "Sprechkompetenz: Visionen",
+      "titleEn": "Speaking: Visions",
+      "description": "Wo bist du in 5 Jahren?",
+      "descriptionEn": "Where will you be in 5 years?",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_lesson_11",
+      "title": "Lektion 11: Damals",
+      "titleEn": "Lesson 11: Back Then",
+      "description": "Kindheitserinnerungen.",
+      "descriptionEn": "Childhood memories.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_fr_a2_l11_vocabulary",
+        "cefr_fr_a2_l11_vocabulary_rev",
+        "cefr_fr_a2_l11_grammar",
+        "cefr_fr_a2_l11_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l11_vocabulary",
+      "title": "L11: Wortschatz (Kindheit) (Lesen)",
+      "titleEn": "L11: Vocabulary (Childhood) (Reading)",
+      "description": "Spiele, Schule, Familie.",
+      "descriptionEn": "Games, school, family.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_11",
+        "select:l11_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l11_vocabulary_rev",
+      "title": "L11: Wortschatz (Kindheit) (Schreiben)",
+      "titleEn": "L11: Vocabulary (Childhood) (Writing)",
+      "description": "Spiele, Schule, Familie.",
+      "descriptionEn": "Games, school, family.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_11",
+        "select:l11_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l11_grammar",
+      "title": "Grammatik: Imparfait",
+      "titleEn": "Grammar: Imparfait",
+      "description": "Gewohnheiten in der Vergangenheit.",
+      "descriptionEn": "Habits in the past.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l11_practice",
+      "title": "Erzählen: Früher",
+      "titleEn": "Storytelling: Earlier",
+      "description": "Erzähle aus der Kindheit.",
+      "descriptionEn": "Tell from childhood.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_lesson_12",
+      "title": "Lektion 12: Abschluss A2",
+      "titleEn": "Lesson 12: Review A2",
+      "description": "Reiseplanung Komplett.",
+      "descriptionEn": "Complete trip planning.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_fr_a2_l12_vocabulary",
+        "cefr_fr_a2_l12_vocabulary_rev",
+        "cefr_fr_a2_l12_grammar",
+        "cefr_fr_a2_l12_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l12_vocabulary",
+      "title": "L12: Wortschatz (Reisebüro) (Lesen)",
+      "titleEn": "L12: Vocabulary (Travel Agency) (Reading)",
+      "description": "Buchung, Hotel, Beschwerden.",
+      "descriptionEn": "Booking, hotel, complaints.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_12",
+        "select:l12_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l12_vocabulary_rev",
+      "title": "L12: Wortschatz (Reisebüro) (Schreiben)",
+      "titleEn": "L12: Vocabulary (Travel Agency) (Writing)",
+      "description": "Buchung, Hotel, Beschwerden.",
+      "descriptionEn": "Booking, hotel, complaints.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_french_deck",
+        "lesson_12",
+        "select:l12_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l12_grammar",
+      "title": "Grammatik: Review & Relativ",
+      "titleEn": "Grammar: Review & Relative",
+      "description": "qui, que & Zeiten-Review.",
+      "descriptionEn": "qui, que & Tense Review.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a2_l12_practice",
+      "title": "Abschlussprojekt: Reise",
+      "titleEn": "Final Project: Trip",
+      "description": "Plane und präsentiere eine Reise.",
+      "descriptionEn": "Plan and present a trip.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    }
+  ]
 }

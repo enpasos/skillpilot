@@ -1,302 +1,288 @@
 {
-    "title": "Quantencomputing und Quantenfehlerkorrektur aus experimenteller Sicht (TUM, Modul NAT7030)",
-    "titleEn": "Experimental Quantum Computing and Quantum Error Correction (TUM, Module NAT7030)",
-    "description": "Das Modul vermittelt experimentelle Grundlagen des Quantencomputings und der Quanten-Fehlerkorrektur, einschließlich Plattformen, Fehlermodelle, Codes und fehlertoleranter Implementierung.",
-    "descriptionEn": "The module introduces experimental quantum computing and quantum error correction, including platforms, error models, codes, and fault-tolerant implementation.",
-    "locale": "de-DE",
-    "subject": "TUM-Module",
-    "frameworkId": "tum-nat7030",
-    "goals": [
-        {
-            "id": "c0eb6747-b78e-5c06-9f8f-e23c3d6171b2",
-            "shortKey": "tum_nat7030_module",
-            "title": "Quantencomputing und Quantenfehlerkorrektur aus experimenteller Sicht (NAT7030)",
-            "titleEn": "Experimental Quantum Computing and Quantum Error Correction (NAT7030)",
-            "description": "Die lernende Person kann experimentelle Quantenplattformen erklären und Fehlerkorrekturkonzepte anwenden.",
-            "descriptionEn": "The learner can explain experimental quantum computing platforms and apply quantum error correction concepts.",
-            "core": true,
-            "weight": 10.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:NAT7030",
-                "ects:10"
-            ],
-            "contains": [
-                "a6f8dc1d-6d16-54a6-8b9d-ab637c9f2990",
-                "5d5d9dbe-6818-5988-b6b3-fbe31c5dfdcd",
-                "ed8a7f1d-d464-5fec-a700-6a20d2107555",
-                "2b0965c4-8825-5840-8dba-cf3720418f5d",
-                "11e36bee-077f-50f7-a641-9893eea9c623"
-            ],
-            "requires": [],
-            "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/NAT7030"
-        },
-        {
-            "id": "a6f8dc1d-6d16-54a6-8b9d-ab637c9f2990",
-            "shortKey": "tum_nat7030_quantum_circuits_and_gate_operations",
-            "title": "Quantenschaltungen und Gatteroperationen",
-            "titleEn": "Quantum circuits and gate operations",
-            "description": "Die lernende Person kann Qubits, Gatter und Schaltungsmodelle für Experimente beschreiben.",
-            "descriptionEn": "The learner can describe qubits, gates, and circuit models used in experiments.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7030"
-            ],
-            "contains": [
-                "0b51b0a0-0984-5cea-b43d-41bb064759c6",
-                "cf4a84ec-ecaf-5b8a-9fe9-0fb147341917"
-            ],
-            "requires": []
-        },
-        {
-            "id": "0b51b0a0-0984-5cea-b43d-41bb064759c6",
-            "shortKey": "tum_nat7030_qubits_gates_and_circuit_descriptions",
-            "title": "Qubits, Gatter und Schaltungsbeschreibungen",
-            "titleEn": "Qubits, gates, and circuit descriptions",
-            "description": "Die lernende Person kann elementare Gatter und Schaltungen beschreiben.",
-            "descriptionEn": "The learner can describe elementary quantum gates and circuits.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7030"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "cf4a84ec-ecaf-5b8a-9fe9-0fb147341917",
-            "shortKey": "tum_nat7030_universal_gate_sets_and_logical_operations",
-            "title": "Universelle Gattermengen und logische Operationen",
-            "titleEn": "Universal gate sets and logical operations",
-            "description": "Die lernende Person kann universelle Gattermengen und logische Operationen erläutern.",
-            "descriptionEn": "The learner can explain universal gate sets and logical operations.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7030"
-            ],
-            "contains": [],
-            "requires": [
-                "0b51b0a0-0984-5cea-b43d-41bb064759c6"
-            ]
-        },
-        {
-            "id": "5d5d9dbe-6818-5988-b6b3-fbe31c5dfdcd",
-            "shortKey": "tum_nat7030_quantum_computing_hardware_platforms",
-            "title": "Quantencomputing-Hardwareplattformen",
-            "titleEn": "Quantum computing hardware platforms",
-            "description": "Die lernende Person kann führende experimentelle Plattformen vergleichen.",
-            "descriptionEn": "The learner can compare leading experimental platforms.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7030"
-            ],
-            "contains": [
-                "fb712dbf-1ea2-500d-9fb3-1aa6670c4f12",
-                "25a9fdd0-9d67-5f2d-aec5-599d107181de"
-            ],
-            "requires": [
-                "a6f8dc1d-6d16-54a6-8b9d-ab637c9f2990"
-            ]
-        },
-        {
-            "id": "fb712dbf-1ea2-500d-9fb3-1aa6670c4f12",
-            "shortKey": "tum_nat7030_superconducting_qubits",
-            "title": "Supraleitende Qubits",
-            "titleEn": "Superconducting qubits",
-            "description": "Die lernende Person kann Architekturen und Kontrolle supraleitender Qubits skizzieren.",
-            "descriptionEn": "The learner can outline superconducting qubit architectures and control.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7030"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "25a9fdd0-9d67-5f2d-aec5-599d107181de",
-            "shortKey": "tum_nat7030_trapped_ions_and_neutral_atoms",
-            "title": "Gefangene Ionen und neutrale Atome",
-            "titleEn": "Trapped ions and neutral atoms",
-            "description": "Die lernende Person kann Ionenfallen- und Neutralatom-Plattformen beschreiben.",
-            "descriptionEn": "The learner can describe trapped-ion and neutral-atom platforms.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7030"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "ed8a7f1d-d464-5fec-a700-6a20d2107555",
-            "shortKey": "tum_nat7030_quantum_error_models",
-            "title": "Quanten-Fehlermodelle",
-            "titleEn": "Quantum error models",
-            "description": "Die lernende Person kann Rauschquellen und Fehlerkanäle in Experimenten beschreiben.",
-            "descriptionEn": "The learner can describe noise sources and error channels in experiments.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7030"
-            ],
-            "contains": [
-                "838ff615-d6a9-595a-b0e6-51dfb5a80a6a",
-                "040244df-f4da-5649-bd53-26d0e029b7a0"
-            ],
-            "requires": [
-                "a6f8dc1d-6d16-54a6-8b9d-ab637c9f2990"
-            ]
-        },
-        {
-            "id": "838ff615-d6a9-595a-b0e6-51dfb5a80a6a",
-            "shortKey": "tum_nat7030_error_channels_and_noise_characterization",
-            "title": "Fehlerkanäle und Rauschcharakterisierung",
-            "titleEn": "Error channels and noise characterization",
-            "description": "Die lernende Person kann Fehler modellieren und Rauschen charakterisieren.",
-            "descriptionEn": "The learner can model quantum errors and characterize noise.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7030"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "040244df-f4da-5649-bd53-26d0e029b7a0",
-            "shortKey": "tum_nat7030_syndrome_extraction_and_diagnostics",
-            "title": "Syndromextraktion und Diagnostik",
-            "titleEn": "Syndrome extraction and diagnostics",
-            "description": "Die lernende Person kann Syndrommessungen und Diagnostik erklären.",
-            "descriptionEn": "The learner can explain syndrome measurement and diagnostics.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7030"
-            ],
-            "contains": [],
-            "requires": [
-                "838ff615-d6a9-595a-b0e6-51dfb5a80a6a"
-            ]
-        },
-        {
-            "id": "2b0965c4-8825-5840-8dba-cf3720418f5d",
-            "shortKey": "tum_nat7030_quantum_error_correction_codes",
-            "title": "Quanten-Fehlerkorrekturcodes",
-            "titleEn": "Quantum error correction codes",
-            "description": "Die lernende Person kann experimentelle Codes vergleichen und Fehlertoleranz einordnen.",
-            "descriptionEn": "The learner can compare experimental QEC codes and fault tolerance.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7030"
-            ],
-            "contains": [
-                "8915ac20-1419-52a5-900c-898cc134b254",
-                "a0cce820-b970-5857-a07b-c348283a4048"
-            ],
-            "requires": [
-                "ed8a7f1d-d464-5fec-a700-6a20d2107555"
-            ]
-        },
-        {
-            "id": "8915ac20-1419-52a5-900c-898cc134b254",
-            "shortKey": "tum_nat7030_repetition_surface_and_color_codes",
-            "title": "Wiederholungs-, Surface- und Color-Codes",
-            "titleEn": "Repetition, surface, and color codes",
-            "description": "Die lernende Person kann gängige Codes aus Experimenten beschreiben.",
-            "descriptionEn": "The learner can describe common codes used in experiments.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7030"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "a0cce820-b970-5857-a07b-c348283a4048",
-            "shortKey": "tum_nat7030_qldpc_codes_and_fault_tolerant_thresholds",
-            "title": "qLDPC-Codes und fehlertolerante Schwellen",
-            "titleEn": "qLDPC codes and fault-tolerant thresholds",
-            "description": "Die lernende Person kann qLDPC-Codes und Fehlertoleranzschwellen erläutern.",
-            "descriptionEn": "The learner can explain qLDPC codes and fault-tolerance concepts.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7030"
-            ],
-            "contains": [],
-            "requires": [
-                "8915ac20-1419-52a5-900c-898cc134b254"
-            ]
-        },
-        {
-            "id": "11e36bee-077f-50f7-a641-9893eea9c623",
-            "shortKey": "tum_nat7030_experimental_progress_and_evaluation",
-            "title": "Experimentelle Fortschritte und Bewertung",
-            "titleEn": "Experimental progress and evaluation",
-            "description": "Die lernende Person kann aktuelle experimentelle Fortschritte in der Fehlerkorrektur bewerten.",
-            "descriptionEn": "The learner can analyze recent experimental advances in QEC.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7030"
-            ],
-            "contains": [
-                "7a351b19-4c0b-5736-8761-5e2a4779d8b7"
-            ],
-            "requires": [
-                "2b0965c4-8825-5840-8dba-cf3720418f5d"
-            ]
-        },
-        {
-            "id": "7a351b19-4c0b-5736-8761-5e2a4779d8b7",
-            "shortKey": "tum_nat7030_evaluating_experimental_qec_demonstrations",
-            "title": "Bewertung experimenteller QEC-Demonstrationen",
-            "titleEn": "Evaluating experimental QEC demonstrations",
-            "description": "Die lernende Person kann Experimente beurteilen und ihre Grenzen diskutieren.",
-            "descriptionEn": "The learner can assess experimental results and limitations.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7030"
-            ],
-            "contains": [],
-            "requires": []
-        }
-    ]
+  "title": "Quantencomputing und Quantenfehlerkorrektur aus experimenteller Sicht (TUM, Modul NAT7030)",
+  "titleEn": "Experimental Quantum Computing and Quantum Error Correction (TUM, Module NAT7030)",
+  "description": "Das Modul vermittelt experimentelle Grundlagen des Quantencomputings und der Quanten-Fehlerkorrektur, einschließlich Plattformen, Fehlermodelle, Codes und fehlertoleranter Implementierung.",
+  "descriptionEn": "The module introduces experimental quantum computing and quantum error correction, including platforms, error models, codes, and fault-tolerant implementation.",
+  "locale": "de-DE",
+  "subject": "TUM-Module",
+  "frameworkId": "tum-nat7030",
+  "goals": [
+    {
+      "id": "c0eb6747-b78e-5c06-9f8f-e23c3d6171b2",
+      "title": "Quantencomputing und Quantenfehlerkorrektur aus experimenteller Sicht (NAT7030)",
+      "titleEn": "Experimental Quantum Computing and Quantum Error Correction (NAT7030)",
+      "description": "Die lernende Person kann experimentelle Quantenplattformen erklären und Fehlerkorrekturkonzepte anwenden.",
+      "descriptionEn": "The learner can explain experimental quantum computing platforms and apply quantum error correction concepts.",
+      "weight": 10.0,
+      "tags": [
+        "module:NAT7030",
+        "ects:10"
+      ],
+      "contains": [
+        "a6f8dc1d-6d16-54a6-8b9d-ab637c9f2990",
+        "5d5d9dbe-6818-5988-b6b3-fbe31c5dfdcd",
+        "ed8a7f1d-d464-5fec-a700-6a20d2107555",
+        "2b0965c4-8825-5840-8dba-cf3720418f5d",
+        "11e36bee-077f-50f7-a641-9893eea9c623"
+      ],
+      "requires": [],
+      "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/NAT7030",
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a6f8dc1d-6d16-54a6-8b9d-ab637c9f2990",
+      "title": "Quantenschaltungen und Gatteroperationen",
+      "titleEn": "Quantum circuits and gate operations",
+      "description": "Die lernende Person kann Qubits, Gatter und Schaltungsmodelle für Experimente beschreiben.",
+      "descriptionEn": "The learner can describe qubits, gates, and circuit models used in experiments.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT7030"
+      ],
+      "contains": [
+        "0b51b0a0-0984-5cea-b43d-41bb064759c6",
+        "cf4a84ec-ecaf-5b8a-9fe9-0fb147341917"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0b51b0a0-0984-5cea-b43d-41bb064759c6",
+      "title": "Qubits, Gatter und Schaltungsbeschreibungen",
+      "titleEn": "Qubits, gates, and circuit descriptions",
+      "description": "Die lernende Person kann elementare Gatter und Schaltungen beschreiben.",
+      "descriptionEn": "The learner can describe elementary quantum gates and circuits.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7030"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "cf4a84ec-ecaf-5b8a-9fe9-0fb147341917",
+      "title": "Universelle Gattermengen und logische Operationen",
+      "titleEn": "Universal gate sets and logical operations",
+      "description": "Die lernende Person kann universelle Gattermengen und logische Operationen erläutern.",
+      "descriptionEn": "The learner can explain universal gate sets and logical operations.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7030"
+      ],
+      "contains": [],
+      "requires": [
+        "0b51b0a0-0984-5cea-b43d-41bb064759c6"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "5d5d9dbe-6818-5988-b6b3-fbe31c5dfdcd",
+      "title": "Quantencomputing-Hardwareplattformen",
+      "titleEn": "Quantum computing hardware platforms",
+      "description": "Die lernende Person kann führende experimentelle Plattformen vergleichen.",
+      "descriptionEn": "The learner can compare leading experimental platforms.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT7030"
+      ],
+      "contains": [
+        "fb712dbf-1ea2-500d-9fb3-1aa6670c4f12",
+        "25a9fdd0-9d67-5f2d-aec5-599d107181de"
+      ],
+      "requires": [
+        "a6f8dc1d-6d16-54a6-8b9d-ab637c9f2990"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "fb712dbf-1ea2-500d-9fb3-1aa6670c4f12",
+      "title": "Supraleitende Qubits",
+      "titleEn": "Superconducting qubits",
+      "description": "Die lernende Person kann Architekturen und Kontrolle supraleitender Qubits skizzieren.",
+      "descriptionEn": "The learner can outline superconducting qubit architectures and control.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7030"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "25a9fdd0-9d67-5f2d-aec5-599d107181de",
+      "title": "Gefangene Ionen und neutrale Atome",
+      "titleEn": "Trapped ions and neutral atoms",
+      "description": "Die lernende Person kann Ionenfallen- und Neutralatom-Plattformen beschreiben.",
+      "descriptionEn": "The learner can describe trapped-ion and neutral-atom platforms.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7030"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ed8a7f1d-d464-5fec-a700-6a20d2107555",
+      "title": "Quanten-Fehlermodelle",
+      "titleEn": "Quantum error models",
+      "description": "Die lernende Person kann Rauschquellen und Fehlerkanäle in Experimenten beschreiben.",
+      "descriptionEn": "The learner can describe noise sources and error channels in experiments.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT7030"
+      ],
+      "contains": [
+        "838ff615-d6a9-595a-b0e6-51dfb5a80a6a",
+        "040244df-f4da-5649-bd53-26d0e029b7a0"
+      ],
+      "requires": [
+        "a6f8dc1d-6d16-54a6-8b9d-ab637c9f2990"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "838ff615-d6a9-595a-b0e6-51dfb5a80a6a",
+      "title": "Fehlerkanäle und Rauschcharakterisierung",
+      "titleEn": "Error channels and noise characterization",
+      "description": "Die lernende Person kann Fehler modellieren und Rauschen charakterisieren.",
+      "descriptionEn": "The learner can model quantum errors and characterize noise.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7030"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "040244df-f4da-5649-bd53-26d0e029b7a0",
+      "title": "Syndromextraktion und Diagnostik",
+      "titleEn": "Syndrome extraction and diagnostics",
+      "description": "Die lernende Person kann Syndrommessungen und Diagnostik erklären.",
+      "descriptionEn": "The learner can explain syndrome measurement and diagnostics.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7030"
+      ],
+      "contains": [],
+      "requires": [
+        "838ff615-d6a9-595a-b0e6-51dfb5a80a6a"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "2b0965c4-8825-5840-8dba-cf3720418f5d",
+      "title": "Quanten-Fehlerkorrekturcodes",
+      "titleEn": "Quantum error correction codes",
+      "description": "Die lernende Person kann experimentelle Codes vergleichen und Fehlertoleranz einordnen.",
+      "descriptionEn": "The learner can compare experimental QEC codes and fault tolerance.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT7030"
+      ],
+      "contains": [
+        "8915ac20-1419-52a5-900c-898cc134b254",
+        "a0cce820-b970-5857-a07b-c348283a4048"
+      ],
+      "requires": [
+        "ed8a7f1d-d464-5fec-a700-6a20d2107555"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8915ac20-1419-52a5-900c-898cc134b254",
+      "title": "Wiederholungs-, Surface- und Color-Codes",
+      "titleEn": "Repetition, surface, and color codes",
+      "description": "Die lernende Person kann gängige Codes aus Experimenten beschreiben.",
+      "descriptionEn": "The learner can describe common codes used in experiments.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7030"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a0cce820-b970-5857-a07b-c348283a4048",
+      "title": "qLDPC-Codes und fehlertolerante Schwellen",
+      "titleEn": "qLDPC codes and fault-tolerant thresholds",
+      "description": "Die lernende Person kann qLDPC-Codes und Fehlertoleranzschwellen erläutern.",
+      "descriptionEn": "The learner can explain qLDPC codes and fault-tolerance concepts.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7030"
+      ],
+      "contains": [],
+      "requires": [
+        "8915ac20-1419-52a5-900c-898cc134b254"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "11e36bee-077f-50f7-a641-9893eea9c623",
+      "title": "Experimentelle Fortschritte und Bewertung",
+      "titleEn": "Experimental progress and evaluation",
+      "description": "Die lernende Person kann aktuelle experimentelle Fortschritte in der Fehlerkorrektur bewerten.",
+      "descriptionEn": "The learner can analyze recent experimental advances in QEC.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT7030"
+      ],
+      "contains": [
+        "7a351b19-4c0b-5736-8761-5e2a4779d8b7"
+      ],
+      "requires": [
+        "2b0965c4-8825-5840-8dba-cf3720418f5d"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7a351b19-4c0b-5736-8761-5e2a4779d8b7",
+      "title": "Bewertung experimenteller QEC-Demonstrationen",
+      "titleEn": "Evaluating experimental QEC demonstrations",
+      "description": "Die lernende Person kann Experimente beurteilen und ihre Grenzen diskutieren.",
+      "descriptionEn": "The learner can assess experimental results and limitations.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7030"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    }
+  ],
+  "landscapeId": "2b642320-a24f-5084-be56-9785d8f927fc"
 }

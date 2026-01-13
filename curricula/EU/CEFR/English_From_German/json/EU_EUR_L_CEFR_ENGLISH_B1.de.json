@@ -1,1132 +1,1315 @@
 {
-    "title": "Englisch B1 (Selbstständig)",
-    "titleEn": "English (CEFR B1)",
-    "description": "Selbstständige Sprachverwendung; kann Meinungen äußern und Erfahrungen berichten.",
-    "descriptionEn": "Independent language use; can express opinions and report experiences.",
-    "landscapeId": "606b8710-a6fe-4ae8-996c-8b9a2ea5b007",
-    "locale": "de-DE",
-    "subject": "Englisch",
-    "frameworkId": "cefr-english",
-    "goals": [
-        {
-            "id": "606b8710-a6fe-4ae8-996c-8b9a2ea5b007",
-            "title": "Englisch B1 (Selbstständig)",
-            "titleEn": "Level B1 - Course Structure",
-            "description": "Systematische Entwicklung der B1-Kompetenzen durch 12 Lektionen.",
-            "descriptionEn": "Systematic development of B1 competencies through 12 lessons.",
-            "core": true,
-            "weight": 1,
-            "tags": [
-                "structure",
-                "B1",
-                "root"
-            ],
-            "contains": [
-                "cefr_b1_module_01",
-                "cefr_b1_module_02",
-                "cefr_b1_module_03",
-                "cefr_b1_module_04"
-            ],
-            "requires": [
-                "2c0aa7e1-7e98-41f3-907f-af5d4d807f20"
-            ]
-        },
-        {
-            "id": "cefr_b1_module_01",
-            "title": "Modul 1: Erfahrungen & Vergangenheit",
-            "titleEn": "Module 1: Experiences & Past",
-            "description": "Lebenserfahrungen und Geschichten.",
-            "descriptionEn": "Life experiences and stories.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_b1_lesson_01",
-                "cefr_b1_lesson_02",
-                "cefr_b1_lesson_03"
-            ]
-        },
-        {
-            "id": "cefr_b1_lesson_01",
-            "title": "Lektion 01: Lebensereignisse",
-            "titleEn": "Lesson 01: Life Events",
-            "description": "Was man schon gemacht hat (Present Perfect).",
-            "descriptionEn": "What one has experienced (Present Perfect).",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_b1_l01_vocabulary",
-                "cefr_b1_l01_vocabulary_rev",
-                "cefr_b1_l01_grammar",
-                "cefr_b1_l01_practice"
-            ]
-        },
-        {
-            "id": "cefr_b1_l01_vocabulary",
-            "title": "L1: Wortschatz (Ereignisse) (Lesen)",
-            "titleEn": "L1: Vocabulary (Events) (Reading)",
-            "description": "Jobs, Umzug, Heiraten.",
-            "descriptionEn": "Jobs, moving, marrying.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_1",
-                "select:l1_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l01_vocabulary_rev",
-            "title": "L1: Wortschatz (Ereignisse) (Schreiben)",
-            "titleEn": "L1: Vocabulary (Events) (Writing)",
-            "description": "Jobs, Umzug, Heiraten.",
-            "descriptionEn": "Jobs, moving, marrying.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_1",
-                "select:l1_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l01_grammar",
-            "title": "Grammatik: Present Perfect",
-            "titleEn": "Grammar: Present Perfect",
-            "description": "Ever, never, just, yet.",
-            "descriptionEn": "Ever, never, just, yet.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l01_practice",
-            "title": "Sprechkompetenz: Erfahrungen",
-            "titleEn": "Speaking: Experiences",
-            "description": "Über Erfahrungen sprechen.",
-            "descriptionEn": "Talk about experiences.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_lesson_02",
-            "title": "Lektion 02: Geschichten erzählen",
-            "titleEn": "Lesson 02: Storytelling",
-            "description": "Hintergrundhandlungen.",
-            "descriptionEn": "Background actions.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_b1_l02_vocabulary",
-                "cefr_b1_l02_vocabulary_rev",
-                "cefr_b1_l02_grammar",
-                "cefr_b1_l02_practice"
-            ],
-            "requires": [
-                "cefr_b1_lesson_01"
-            ]
-        },
-        {
-            "id": "cefr_b1_l02_vocabulary",
-            "title": "L2: Wortschatz (Stories) (Lesen)",
-            "titleEn": "L2: Vocabulary (Stories) (Reading)",
-            "description": "Abenteuer, Unfälle.",
-            "descriptionEn": "Adventures, accidents.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_2",
-                "select:l2_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l02_vocabulary_rev",
-            "title": "L2: Wortschatz (Stories) (Schreiben)",
-            "titleEn": "L2: Vocabulary (Stories) (Writing)",
-            "description": "Abenteuer, Unfälle.",
-            "descriptionEn": "Adventures, accidents.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_2",
-                "select:l2_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l02_grammar",
-            "title": "Grammatik: Past Continuous",
-            "titleEn": "Grammar: Past Continuous",
-            "description": "I was walking when...",
-            "descriptionEn": "I was walking when...",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l02_practice",
-            "title": "Sprechkompetenz: Geschichte",
-            "titleEn": "Speaking: Story",
-            "description": "Eine Geschichte erzählen.",
-            "descriptionEn": "Tell a story.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_lesson_03",
-            "title": "Lektion 03: Hobbys & Vorlieben",
-            "titleEn": "Lesson 03: Hobbies & Preferences",
-            "description": "Präzise über Interessen sprechen.",
-            "descriptionEn": "Talk precisely about interests.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_b1_l03_vocabulary",
-                "cefr_b1_l03_vocabulary_rev",
-                "cefr_b1_l03_grammar",
-                "cefr_b1_l03_practice"
-            ],
-            "requires": [
-                "cefr_b1_lesson_02"
-            ]
-        },
-        {
-            "id": "cefr_b1_l03_vocabulary",
-            "title": "L3: Wortschatz (Interessen) (Lesen)",
-            "titleEn": "L3: Vocabulary (Interests) (Reading)",
-            "description": "Freizeitaktivitäten vertieft.",
-            "descriptionEn": "Leisure activities deep dive.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_3",
-                "select:l3_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l03_vocabulary_rev",
-            "title": "L3: Wortschatz (Interessen) (Schreiben)",
-            "titleEn": "L3: Vocabulary (Interests) (Writing)",
-            "description": "Freizeitaktivitäten vertieft.",
-            "descriptionEn": "Leisure activities deep dive.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_3",
-                "select:l3_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l03_grammar",
-            "title": "Grammatik: Gerund/Infinitive",
-            "titleEn": "Grammar: Gerund/Infinitive",
-            "description": "Like doing vs. want to do.",
-            "descriptionEn": "Like doing vs. want to do.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l03_practice",
-            "title": "Sprechkompetenz: Vorlieben",
-            "titleEn": "Speaking: Preferences",
-            "description": "Interessen diskutieren.",
-            "descriptionEn": "Discuss interests.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_module_02",
-            "title": "Modul 2: Zukunft & Möglichkeiten",
-            "titleEn": "Module 2: Future & Possibilities",
-            "description": "Zukunftsvorhersagen und Bedingungen.",
-            "descriptionEn": "Future predictions and conditions.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_b1_lesson_04",
-                "cefr_b1_lesson_05",
-                "cefr_b1_lesson_06"
-            ]
-        },
-        {
-            "id": "cefr_b1_lesson_04",
-            "title": "Lektion 04: Vorhersagen",
-            "titleEn": "Lesson 04: Predictions",
-            "description": "Will-Future und Vermutungen.",
-            "descriptionEn": "Will-Future and assumptions.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_b1_l04_vocabulary",
-                "cefr_b1_l04_vocabulary_rev",
-                "cefr_b1_l04_grammar",
-                "cefr_b1_l04_practice"
-            ],
-            "requires": [
-                "cefr_b1_lesson_03"
-            ]
-        },
-        {
-            "id": "cefr_b1_l04_vocabulary",
-            "title": "L4: Wortschatz (Zukunft) (Lesen)",
-            "titleEn": "L4: Vocabulary (Future) (Reading)",
-            "description": "Technologie, Umwelt.",
-            "descriptionEn": "Technology, environment.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_4",
-                "select:l4_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l04_vocabulary_rev",
-            "title": "L4: Wortschatz (Zukunft) (Schreiben)",
-            "titleEn": "L4: Vocabulary (Future) (Writing)",
-            "description": "Technologie, Umwelt.",
-            "descriptionEn": "Technology, environment.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_4",
-                "select:l4_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l04_grammar",
-            "title": "Grammatik: Will-Future",
-            "titleEn": "Grammar: Will-Future",
-            "description": "I think it will...",
-            "descriptionEn": "I think it will...",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l04_practice",
-            "title": "Sprechkompetenz: Prognosen",
-            "titleEn": "Speaking: Forecasts",
-            "description": "Über die Zukunft spekulieren.",
-            "descriptionEn": "Speculate about future.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_lesson_05",
-            "title": "Lektion 05: Bedingungen (Real)",
-            "titleEn": "Lesson 05: Conditions (Real)",
-            "description": "Wenn das passiert...",
-            "descriptionEn": "If this happens...",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_b1_l05_vocabulary",
-                "cefr_b1_l05_vocabulary_rev",
-                "cefr_b1_l05_grammar",
-                "cefr_b1_l05_practice"
-            ],
-            "requires": [
-                "cefr_b1_lesson_04"
-            ]
-        },
-        {
-            "id": "cefr_b1_l05_vocabulary",
-            "title": "L5: Wortschatz (Probleme) (Lesen)",
-            "titleEn": "L5: Vocabulary (Problems) (Reading)",
-            "description": "Alltagsprobleme, Lösungen.",
-            "descriptionEn": "Daily problems, solutions.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_5",
-                "select:l5_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l05_vocabulary_rev",
-            "title": "L5: Wortschatz (Probleme) (Schreiben)",
-            "titleEn": "L5: Vocabulary (Problems) (Writing)",
-            "description": "Alltagsprobleme, Lösungen.",
-            "descriptionEn": "Daily problems, solutions.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_5",
-                "select:l5_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l05_grammar",
-            "title": "Grammatik: 1st Conditional",
-            "titleEn": "Grammar: 1st Conditional",
-            "description": "If it rains, we will...",
-            "descriptionEn": "If it rains, we will...",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l05_practice",
-            "title": "Sprechkompetenz: Konsequenzen",
-            "titleEn": "Speaking: Consequences",
-            "description": "Was machst du, wenn...",
-            "descriptionEn": "What do you do if...",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_lesson_06",
-            "title": "Lektion 06: Hypothesen (Irreal)",
-            "titleEn": "Lesson 06: Hypotheses (Unreal)",
-            "description": "Was wäre, wenn...",
-            "descriptionEn": "What if...",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_b1_l06_vocabulary",
-                "cefr_b1_l06_vocabulary_rev",
-                "cefr_b1_l06_grammar",
-                "cefr_b1_l06_practice"
-            ],
-            "requires": [
-                "cefr_b1_lesson_05"
-            ]
-        },
-        {
-            "id": "cefr_b1_l06_vocabulary",
-            "title": "L6: Wortschatz (Träume) (Lesen)",
-            "titleEn": "L6: Vocabulary (Dreams) (Reading)",
-            "description": "Reichtum, Karriere.",
-            "descriptionEn": "Wealth, career.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_6",
-                "select:l6_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l06_vocabulary_rev",
-            "title": "L6: Wortschatz (Träume) (Schreiben)",
-            "titleEn": "L6: Vocabulary (Dreams) (Writing)",
-            "description": "Reichtum, Karriere.",
-            "descriptionEn": "Wealth, career.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_6",
-                "select:l6_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l06_grammar",
-            "title": "Grammatik: 2nd Conditional",
-            "titleEn": "Grammar: 2nd Conditional",
-            "description": "If I won the lottery...",
-            "descriptionEn": "If I won the lottery...",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l06_practice",
-            "title": "Sprechkompetenz: Träumen",
-            "titleEn": "Speaking: Dreaming",
-            "description": "Über Wünsche sprechen.",
-            "descriptionEn": "Talk about wishes.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_module_03",
-            "title": "Modul 3: Pflichten & Regeln",
-            "titleEn": "Module 3: Obligations & Rules",
-            "description": "Regeln, Ratschläge und Prozesse.",
-            "descriptionEn": "Rules, advice and processes.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_b1_lesson_07",
-                "cefr_b1_lesson_08",
-                "cefr_b1_lesson_09"
-            ]
-        },
-        {
-            "id": "cefr_b1_lesson_07",
-            "title": "Lektion 07: Rat & Pflicht",
-            "titleEn": "Lesson 07: Advice & Duty",
-            "description": "Regeln erklären (modals).",
-            "descriptionEn": "Explain rules (modals).",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_b1_l07_vocabulary",
-                "cefr_b1_l07_vocabulary_rev",
-                "cefr_b1_l07_grammar",
-                "cefr_b1_l07_practice"
-            ],
-            "requires": [
-                "cefr_b1_lesson_06"
-            ]
-        },
-        {
-            "id": "cefr_b1_l07_vocabulary",
-            "title": "L7: Wortschatz (Regeln) (Lesen)",
-            "titleEn": "L7: Vocabulary (Rules) (Reading)",
-            "description": "Gesundheit, Verkehr.",
-            "descriptionEn": "Health, traffic.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_7",
-                "select:l7_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l07_vocabulary_rev",
-            "title": "L7: Wortschatz (Regeln) (Schreiben)",
-            "titleEn": "L7: Vocabulary (Rules) (Writing)",
-            "description": "Gesundheit, Verkehr.",
-            "descriptionEn": "Health, traffic.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_7",
-                "select:l7_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l07_grammar",
-            "title": "Grammatik: Modals",
-            "titleEn": "Grammar: Modals",
-            "description": "Must, should, have to.",
-            "descriptionEn": "Must, should, have to.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l07_practice",
-            "title": "Sprechkompetenz: Rat geben",
-            "titleEn": "Speaking: Giving Advice",
-            "description": "Empfehlungen aussprechen.",
-            "descriptionEn": "Make recommendations.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_lesson_08",
-            "title": "Lektion 08: Prozesse",
-            "titleEn": "Lesson 08: Processes",
-            "description": "Passiv: Es wird gemacht.",
-            "descriptionEn": "Passive: It is done.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_b1_l08_vocabulary",
-                "cefr_b1_l08_vocabulary_rev",
-                "cefr_b1_l08_grammar",
-                "cefr_b1_l08_practice"
-            ],
-            "requires": [
-                "cefr_b1_lesson_07"
-            ]
-        },
-        {
-            "id": "cefr_b1_l08_vocabulary",
-            "title": "L8: Wortschatz (Produktion) (Lesen)",
-            "titleEn": "L8: Vocabulary (Production) (Reading)",
-            "description": "Materialien, Erfindungen.",
-            "descriptionEn": "Materials, inventions.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_8",
-                "select:l8_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l08_vocabulary_rev",
-            "title": "L8: Wortschatz (Produktion) (Schreiben)",
-            "titleEn": "L8: Vocabulary (Production) (Writing)",
-            "description": "Materialien, Erfindungen.",
-            "descriptionEn": "Materials, inventions.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_8",
-                "select:l8_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l08_grammar",
-            "title": "Grammatik: Passive Voice",
-            "titleEn": "Grammar: Passive Voice",
-            "description": "Is made, was built.",
-            "descriptionEn": "Is made, was built.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l08_practice",
-            "title": "Sprechkompetenz: Erklären",
-            "titleEn": "Speaking: Explaining",
-            "description": "Produktionsprozesse erklären.",
-            "descriptionEn": "Explain production processes.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_lesson_09",
-            "title": "Lektion 09: Möglichkeiten",
-            "titleEn": "Lesson 09: Possibilities",
-            "description": "Es könnte sein...",
-            "descriptionEn": "It might be...",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_b1_l09_vocabulary",
-                "cefr_b1_l09_vocabulary_rev",
-                "cefr_b1_l09_grammar",
-                "cefr_b1_l09_practice"
-            ],
-            "requires": [
-                "cefr_b1_lesson_08"
-            ]
-        },
-        {
-            "id": "cefr_b1_l09_vocabulary",
-            "title": "L9: Wortschatz (Rätsel) (Lesen)",
-            "titleEn": "L9: Vocabulary (Mysteries) (Reading)",
-            "description": "Wissenschaft, Fakten.",
-            "descriptionEn": "Science, facts.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_9",
-                "select:l9_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l09_vocabulary_rev",
-            "title": "L9: Wortschatz (Rätsel) (Schreiben)",
-            "titleEn": "L9: Vocabulary (Mysteries) (Writing)",
-            "description": "Wissenschaft, Fakten.",
-            "descriptionEn": "Science, facts.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_9",
-                "select:l9_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l09_grammar",
-            "title": "Grammatik: Modals of Probability",
-            "titleEn": "Grammar: Modals of Probability",
-            "description": "Might, could, may.",
-            "descriptionEn": "Might, could, may.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l09_practice",
-            "title": "Sprechkompetenz: Spekulieren",
-            "titleEn": "Speaking: Speculating",
-            "description": "Über Unbekanntes reden.",
-            "descriptionEn": "Talk about unknowns.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_module_04",
-            "title": "Modul 4: Interaktion & Berichte",
-            "titleEn": "Module 4: Interaction & Reports",
-            "description": "Definitionen und indirekte Rede.",
-            "descriptionEn": "Definitions and reported speech.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_b1_lesson_10",
-                "cefr_b1_lesson_11",
-                "cefr_b1_lesson_12"
-            ]
-        },
-        {
-            "id": "cefr_b1_lesson_10",
-            "title": "Lektion 10: Definitionen",
-            "titleEn": "Lesson 10: Definitions",
-            "description": "Leute und Dinge bestimmen.",
-            "descriptionEn": "Defining people and things.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_b1_l10_vocabulary",
-                "cefr_b1_l10_vocabulary_rev",
-                "cefr_b1_l10_grammar",
-                "cefr_b1_l10_practice"
-            ],
-            "requires": [
-                "cefr_b1_lesson_09"
-            ]
-        },
-        {
-            "id": "cefr_b1_l10_vocabulary",
-            "title": "L10: Wortschatz (Definition) (Lesen)",
-            "titleEn": "L10: Vocabulary (Definition) (Reading)",
-            "description": "Objekte, Gruppen.",
-            "descriptionEn": "Objects, groups.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_10",
-                "select:l10_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l10_vocabulary_rev",
-            "title": "L10: Wortschatz (Definition) (Schreiben)",
-            "titleEn": "L10: Vocabulary (Definition) (Writing)",
-            "description": "Objekte, Gruppen.",
-            "descriptionEn": "Objects, groups.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_10",
-                "select:l10_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l10_grammar",
-            "title": "Grammatik: Relative Clauses",
-            "titleEn": "Grammar: Relative Clauses",
-            "description": "Who, which, that.",
-            "descriptionEn": "Who, which, that.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l10_practice",
-            "title": "Sprechkompetenz: Umschreiben",
-            "titleEn": "Speaking: Paraphrasing",
-            "description": "Dinge erklären, deren Name fehlt.",
-            "descriptionEn": "Explain things missing name.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_lesson_11",
-            "title": "Lektion 11: Berichte",
-            "titleEn": "Lesson 11: Reports",
-            "description": "Was gesagt wurde.",
-            "descriptionEn": "What was said.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_b1_l11_vocabulary",
-                "cefr_b1_l11_vocabulary_rev",
-                "cefr_b1_l11_grammar",
-                "cefr_b1_l11_practice"
-            ],
-            "requires": [
-                "cefr_b1_lesson_10"
-            ]
-        },
-        {
-            "id": "cefr_b1_l11_vocabulary",
-            "title": "L11: Wortschatz (Kommunikation) (Lesen)",
-            "titleEn": "L11: Vocabulary (Communication) (Reading)",
-            "description": "Sagen, fragen, antworten.",
-            "descriptionEn": "Say, ask, answer.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_11",
-                "select:l11_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l11_vocabulary_rev",
-            "title": "L11: Wortschatz (Kommunikation) (Schreiben)",
-            "titleEn": "L11: Vocabulary (Communication) (Writing)",
-            "description": "Sagen, fragen, antworten.",
-            "descriptionEn": "Say, ask, answer.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_11",
-                "select:l11_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l11_grammar",
-            "title": "Grammatik: Reported Speech",
-            "titleEn": "Grammar: Reported Speech",
-            "description": "He said (that)...",
-            "descriptionEn": "He said (that)...",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l11_practice",
-            "title": "Sprechkompetenz: Weitergeben",
-            "titleEn": "Speaking: Relaying",
-            "description": "Nachrichten weitergeben.",
-            "descriptionEn": "Relay messages.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_lesson_12",
-            "title": "Lektion 12: Abschluss B1",
-            "titleEn": "Lesson 12: Completion B1",
-            "description": "Argumentieren und Diskutieren.",
-            "descriptionEn": "Arguing and Discussing.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_b1_l12_vocabulary",
-                "cefr_b1_l12_vocabulary_rev",
-                "cefr_b1_l12_grammar",
-                "cefr_b1_l12_practice"
-            ],
-            "requires": [
-                "cefr_b1_lesson_11"
-            ]
-        },
-        {
-            "id": "cefr_b1_l12_vocabulary",
-            "title": "L12: Wortschatz (Argumente) (Lesen)",
-            "titleEn": "L12: Vocabulary (Arguments) (Reading)",
-            "description": "Meinungswörter, Verbindungen.",
-            "descriptionEn": "Opinion words, connectors.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_12",
-                "select:l12_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l12_vocabulary_rev",
-            "title": "L12: Wortschatz (Argumente) (Schreiben)",
-            "titleEn": "L12: Vocabulary (Arguments) (Writing)",
-            "description": "Meinungswörter, Verbindungen.",
-            "descriptionEn": "Opinion words, connectors.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_english_deck",
-                "lesson_12",
-                "select:l12_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l12_grammar",
-            "title": "Grammatik: Review B1",
-            "titleEn": "Grammar: Review B1",
-            "description": "Mix & Connectors.",
-            "descriptionEn": "Mix & Connectors.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_b1_l12_practice",
-            "title": "Sprechkompetenz: Debatte",
-            "titleEn": "Speaking: Debate",
-            "description": "Standpunkt vertreten.",
-            "descriptionEn": "Argue a point.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        }
-    ]
+  "title": "Englisch B1 (Selbstständig)",
+  "titleEn": "English (CEFR B1)",
+  "description": "Selbstständige Sprachverwendung; kann Meinungen äußern und Erfahrungen berichten.",
+  "descriptionEn": "Independent language use; can express opinions and report experiences.",
+  "landscapeId": "606b8710-a6fe-4ae8-996c-8b9a2ea5b007",
+  "locale": "de-DE",
+  "subject": "Englisch",
+  "frameworkId": "cefr-english",
+  "goals": [
+    {
+      "id": "606b8710-a6fe-4ae8-996c-8b9a2ea5b007",
+      "title": "Englisch B1 (Selbstständig)",
+      "titleEn": "Level B1 - Course Structure",
+      "description": "Systematische Entwicklung der B1-Kompetenzen durch 12 Lektionen.",
+      "descriptionEn": "Systematic development of B1 competencies through 12 lessons.",
+      "weight": 1,
+      "tags": [
+        "structure",
+        "B1",
+        "root"
+      ],
+      "contains": [
+        "cefr_b1_module_01",
+        "cefr_b1_module_02",
+        "cefr_b1_module_03",
+        "cefr_b1_module_04"
+      ],
+      "requires": [
+        "2c0aa7e1-7e98-41f3-907f-af5d4d807f20"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_b1_module_01",
+      "title": "Modul 1: Erfahrungen & Vergangenheit",
+      "titleEn": "Module 1: Experiences & Past",
+      "description": "Lebenserfahrungen und Geschichten.",
+      "descriptionEn": "Life experiences and stories.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_b1_lesson_01",
+        "cefr_b1_lesson_02",
+        "cefr_b1_lesson_03"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_lesson_01",
+      "title": "Lektion 01: Lebensereignisse",
+      "titleEn": "Lesson 01: Life Events",
+      "description": "Was man schon gemacht hat (Present Perfect).",
+      "descriptionEn": "What one has experienced (Present Perfect).",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_b1_l01_vocabulary",
+        "cefr_b1_l01_vocabulary_rev",
+        "cefr_b1_l01_grammar",
+        "cefr_b1_l01_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l01_vocabulary",
+      "title": "L1: Wortschatz (Ereignisse) (Lesen)",
+      "titleEn": "L1: Vocabulary (Events) (Reading)",
+      "description": "Jobs, Umzug, Heiraten.",
+      "descriptionEn": "Jobs, moving, marrying.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_1",
+        "select:l1_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l01_vocabulary_rev",
+      "title": "L1: Wortschatz (Ereignisse) (Schreiben)",
+      "titleEn": "L1: Vocabulary (Events) (Writing)",
+      "description": "Jobs, Umzug, Heiraten.",
+      "descriptionEn": "Jobs, moving, marrying.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_1",
+        "select:l1_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l01_grammar",
+      "title": "Grammatik: Present Perfect",
+      "titleEn": "Grammar: Present Perfect",
+      "description": "Ever, never, just, yet.",
+      "descriptionEn": "Ever, never, just, yet.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l01_practice",
+      "title": "Sprechkompetenz: Erfahrungen",
+      "titleEn": "Speaking: Experiences",
+      "description": "Über Erfahrungen sprechen.",
+      "descriptionEn": "Talk about experiences.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_lesson_02",
+      "title": "Lektion 02: Geschichten erzählen",
+      "titleEn": "Lesson 02: Storytelling",
+      "description": "Hintergrundhandlungen.",
+      "descriptionEn": "Background actions.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_b1_l02_vocabulary",
+        "cefr_b1_l02_vocabulary_rev",
+        "cefr_b1_l02_grammar",
+        "cefr_b1_l02_practice"
+      ],
+      "requires": [
+        "cefr_b1_lesson_01"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_b1_l02_vocabulary",
+      "title": "L2: Wortschatz (Stories) (Lesen)",
+      "titleEn": "L2: Vocabulary (Stories) (Reading)",
+      "description": "Abenteuer, Unfälle.",
+      "descriptionEn": "Adventures, accidents.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_2",
+        "select:l2_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l02_vocabulary_rev",
+      "title": "L2: Wortschatz (Stories) (Schreiben)",
+      "titleEn": "L2: Vocabulary (Stories) (Writing)",
+      "description": "Abenteuer, Unfälle.",
+      "descriptionEn": "Adventures, accidents.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_2",
+        "select:l2_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l02_grammar",
+      "title": "Grammatik: Past Continuous",
+      "titleEn": "Grammar: Past Continuous",
+      "description": "I was walking when...",
+      "descriptionEn": "I was walking when...",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l02_practice",
+      "title": "Sprechkompetenz: Geschichte",
+      "titleEn": "Speaking: Story",
+      "description": "Eine Geschichte erzählen.",
+      "descriptionEn": "Tell a story.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_lesson_03",
+      "title": "Lektion 03: Hobbys & Vorlieben",
+      "titleEn": "Lesson 03: Hobbies & Preferences",
+      "description": "Präzise über Interessen sprechen.",
+      "descriptionEn": "Talk precisely about interests.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_b1_l03_vocabulary",
+        "cefr_b1_l03_vocabulary_rev",
+        "cefr_b1_l03_grammar",
+        "cefr_b1_l03_practice"
+      ],
+      "requires": [
+        "cefr_b1_lesson_02"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_b1_l03_vocabulary",
+      "title": "L3: Wortschatz (Interessen) (Lesen)",
+      "titleEn": "L3: Vocabulary (Interests) (Reading)",
+      "description": "Freizeitaktivitäten vertieft.",
+      "descriptionEn": "Leisure activities deep dive.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_3",
+        "select:l3_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l03_vocabulary_rev",
+      "title": "L3: Wortschatz (Interessen) (Schreiben)",
+      "titleEn": "L3: Vocabulary (Interests) (Writing)",
+      "description": "Freizeitaktivitäten vertieft.",
+      "descriptionEn": "Leisure activities deep dive.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_3",
+        "select:l3_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l03_grammar",
+      "title": "Grammatik: Gerund/Infinitive",
+      "titleEn": "Grammar: Gerund/Infinitive",
+      "description": "Like doing vs. want to do.",
+      "descriptionEn": "Like doing vs. want to do.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l03_practice",
+      "title": "Sprechkompetenz: Vorlieben",
+      "titleEn": "Speaking: Preferences",
+      "description": "Interessen diskutieren.",
+      "descriptionEn": "Discuss interests.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_module_02",
+      "title": "Modul 2: Zukunft & Möglichkeiten",
+      "titleEn": "Module 2: Future & Possibilities",
+      "description": "Zukunftsvorhersagen und Bedingungen.",
+      "descriptionEn": "Future predictions and conditions.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_b1_lesson_04",
+        "cefr_b1_lesson_05",
+        "cefr_b1_lesson_06"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_lesson_04",
+      "title": "Lektion 04: Vorhersagen",
+      "titleEn": "Lesson 04: Predictions",
+      "description": "Will-Future und Vermutungen.",
+      "descriptionEn": "Will-Future and assumptions.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_b1_l04_vocabulary",
+        "cefr_b1_l04_vocabulary_rev",
+        "cefr_b1_l04_grammar",
+        "cefr_b1_l04_practice"
+      ],
+      "requires": [
+        "cefr_b1_lesson_03"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_b1_l04_vocabulary",
+      "title": "L4: Wortschatz (Zukunft) (Lesen)",
+      "titleEn": "L4: Vocabulary (Future) (Reading)",
+      "description": "Technologie, Umwelt.",
+      "descriptionEn": "Technology, environment.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_4",
+        "select:l4_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l04_vocabulary_rev",
+      "title": "L4: Wortschatz (Zukunft) (Schreiben)",
+      "titleEn": "L4: Vocabulary (Future) (Writing)",
+      "description": "Technologie, Umwelt.",
+      "descriptionEn": "Technology, environment.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_4",
+        "select:l4_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l04_grammar",
+      "title": "Grammatik: Will-Future",
+      "titleEn": "Grammar: Will-Future",
+      "description": "I think it will...",
+      "descriptionEn": "I think it will...",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l04_practice",
+      "title": "Sprechkompetenz: Prognosen",
+      "titleEn": "Speaking: Forecasts",
+      "description": "Über die Zukunft spekulieren.",
+      "descriptionEn": "Speculate about future.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_lesson_05",
+      "title": "Lektion 05: Bedingungen (Real)",
+      "titleEn": "Lesson 05: Conditions (Real)",
+      "description": "Wenn das passiert...",
+      "descriptionEn": "If this happens...",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_b1_l05_vocabulary",
+        "cefr_b1_l05_vocabulary_rev",
+        "cefr_b1_l05_grammar",
+        "cefr_b1_l05_practice"
+      ],
+      "requires": [
+        "cefr_b1_lesson_04"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_b1_l05_vocabulary",
+      "title": "L5: Wortschatz (Probleme) (Lesen)",
+      "titleEn": "L5: Vocabulary (Problems) (Reading)",
+      "description": "Alltagsprobleme, Lösungen.",
+      "descriptionEn": "Daily problems, solutions.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_5",
+        "select:l5_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l05_vocabulary_rev",
+      "title": "L5: Wortschatz (Probleme) (Schreiben)",
+      "titleEn": "L5: Vocabulary (Problems) (Writing)",
+      "description": "Alltagsprobleme, Lösungen.",
+      "descriptionEn": "Daily problems, solutions.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_5",
+        "select:l5_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l05_grammar",
+      "title": "Grammatik: 1st Conditional",
+      "titleEn": "Grammar: 1st Conditional",
+      "description": "If it rains, we will...",
+      "descriptionEn": "If it rains, we will...",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l05_practice",
+      "title": "Sprechkompetenz: Konsequenzen",
+      "titleEn": "Speaking: Consequences",
+      "description": "Was machst du, wenn...",
+      "descriptionEn": "What do you do if...",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_lesson_06",
+      "title": "Lektion 06: Hypothesen (Irreal)",
+      "titleEn": "Lesson 06: Hypotheses (Unreal)",
+      "description": "Was wäre, wenn...",
+      "descriptionEn": "What if...",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_b1_l06_vocabulary",
+        "cefr_b1_l06_vocabulary_rev",
+        "cefr_b1_l06_grammar",
+        "cefr_b1_l06_practice"
+      ],
+      "requires": [
+        "cefr_b1_lesson_05"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_b1_l06_vocabulary",
+      "title": "L6: Wortschatz (Träume) (Lesen)",
+      "titleEn": "L6: Vocabulary (Dreams) (Reading)",
+      "description": "Reichtum, Karriere.",
+      "descriptionEn": "Wealth, career.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_6",
+        "select:l6_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l06_vocabulary_rev",
+      "title": "L6: Wortschatz (Träume) (Schreiben)",
+      "titleEn": "L6: Vocabulary (Dreams) (Writing)",
+      "description": "Reichtum, Karriere.",
+      "descriptionEn": "Wealth, career.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_6",
+        "select:l6_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l06_grammar",
+      "title": "Grammatik: 2nd Conditional",
+      "titleEn": "Grammar: 2nd Conditional",
+      "description": "If I won the lottery...",
+      "descriptionEn": "If I won the lottery...",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l06_practice",
+      "title": "Sprechkompetenz: Träumen",
+      "titleEn": "Speaking: Dreaming",
+      "description": "Über Wünsche sprechen.",
+      "descriptionEn": "Talk about wishes.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_module_03",
+      "title": "Modul 3: Pflichten & Regeln",
+      "titleEn": "Module 3: Obligations & Rules",
+      "description": "Regeln, Ratschläge und Prozesse.",
+      "descriptionEn": "Rules, advice and processes.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_b1_lesson_07",
+        "cefr_b1_lesson_08",
+        "cefr_b1_lesson_09"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_lesson_07",
+      "title": "Lektion 07: Rat & Pflicht",
+      "titleEn": "Lesson 07: Advice & Duty",
+      "description": "Regeln erklären (modals).",
+      "descriptionEn": "Explain rules (modals).",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_b1_l07_vocabulary",
+        "cefr_b1_l07_vocabulary_rev",
+        "cefr_b1_l07_grammar",
+        "cefr_b1_l07_practice"
+      ],
+      "requires": [
+        "cefr_b1_lesson_06"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_b1_l07_vocabulary",
+      "title": "L7: Wortschatz (Regeln) (Lesen)",
+      "titleEn": "L7: Vocabulary (Rules) (Reading)",
+      "description": "Gesundheit, Verkehr.",
+      "descriptionEn": "Health, traffic.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_7",
+        "select:l7_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l07_vocabulary_rev",
+      "title": "L7: Wortschatz (Regeln) (Schreiben)",
+      "titleEn": "L7: Vocabulary (Rules) (Writing)",
+      "description": "Gesundheit, Verkehr.",
+      "descriptionEn": "Health, traffic.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_7",
+        "select:l7_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l07_grammar",
+      "title": "Grammatik: Modals",
+      "titleEn": "Grammar: Modals",
+      "description": "Must, should, have to.",
+      "descriptionEn": "Must, should, have to.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l07_practice",
+      "title": "Sprechkompetenz: Rat geben",
+      "titleEn": "Speaking: Giving Advice",
+      "description": "Empfehlungen aussprechen.",
+      "descriptionEn": "Make recommendations.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_lesson_08",
+      "title": "Lektion 08: Prozesse",
+      "titleEn": "Lesson 08: Processes",
+      "description": "Passiv: Es wird gemacht.",
+      "descriptionEn": "Passive: It is done.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_b1_l08_vocabulary",
+        "cefr_b1_l08_vocabulary_rev",
+        "cefr_b1_l08_grammar",
+        "cefr_b1_l08_practice"
+      ],
+      "requires": [
+        "cefr_b1_lesson_07"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_b1_l08_vocabulary",
+      "title": "L8: Wortschatz (Produktion) (Lesen)",
+      "titleEn": "L8: Vocabulary (Production) (Reading)",
+      "description": "Materialien, Erfindungen.",
+      "descriptionEn": "Materials, inventions.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_8",
+        "select:l8_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l08_vocabulary_rev",
+      "title": "L8: Wortschatz (Produktion) (Schreiben)",
+      "titleEn": "L8: Vocabulary (Production) (Writing)",
+      "description": "Materialien, Erfindungen.",
+      "descriptionEn": "Materials, inventions.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_8",
+        "select:l8_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l08_grammar",
+      "title": "Grammatik: Passive Voice",
+      "titleEn": "Grammar: Passive Voice",
+      "description": "Is made, was built.",
+      "descriptionEn": "Is made, was built.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l08_practice",
+      "title": "Sprechkompetenz: Erklären",
+      "titleEn": "Speaking: Explaining",
+      "description": "Produktionsprozesse erklären.",
+      "descriptionEn": "Explain production processes.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_lesson_09",
+      "title": "Lektion 09: Möglichkeiten",
+      "titleEn": "Lesson 09: Possibilities",
+      "description": "Es könnte sein...",
+      "descriptionEn": "It might be...",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_b1_l09_vocabulary",
+        "cefr_b1_l09_vocabulary_rev",
+        "cefr_b1_l09_grammar",
+        "cefr_b1_l09_practice"
+      ],
+      "requires": [
+        "cefr_b1_lesson_08"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_b1_l09_vocabulary",
+      "title": "L9: Wortschatz (Rätsel) (Lesen)",
+      "titleEn": "L9: Vocabulary (Mysteries) (Reading)",
+      "description": "Wissenschaft, Fakten.",
+      "descriptionEn": "Science, facts.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_9",
+        "select:l9_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l09_vocabulary_rev",
+      "title": "L9: Wortschatz (Rätsel) (Schreiben)",
+      "titleEn": "L9: Vocabulary (Mysteries) (Writing)",
+      "description": "Wissenschaft, Fakten.",
+      "descriptionEn": "Science, facts.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_9",
+        "select:l9_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l09_grammar",
+      "title": "Grammatik: Modals of Probability",
+      "titleEn": "Grammar: Modals of Probability",
+      "description": "Might, could, may.",
+      "descriptionEn": "Might, could, may.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l09_practice",
+      "title": "Sprechkompetenz: Spekulieren",
+      "titleEn": "Speaking: Speculating",
+      "description": "Über Unbekanntes reden.",
+      "descriptionEn": "Talk about unknowns.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_module_04",
+      "title": "Modul 4: Interaktion & Berichte",
+      "titleEn": "Module 4: Interaction & Reports",
+      "description": "Definitionen und indirekte Rede.",
+      "descriptionEn": "Definitions and reported speech.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_b1_lesson_10",
+        "cefr_b1_lesson_11",
+        "cefr_b1_lesson_12"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_lesson_10",
+      "title": "Lektion 10: Definitionen",
+      "titleEn": "Lesson 10: Definitions",
+      "description": "Leute und Dinge bestimmen.",
+      "descriptionEn": "Defining people and things.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_b1_l10_vocabulary",
+        "cefr_b1_l10_vocabulary_rev",
+        "cefr_b1_l10_grammar",
+        "cefr_b1_l10_practice"
+      ],
+      "requires": [
+        "cefr_b1_lesson_09"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_b1_l10_vocabulary",
+      "title": "L10: Wortschatz (Definition) (Lesen)",
+      "titleEn": "L10: Vocabulary (Definition) (Reading)",
+      "description": "Objekte, Gruppen.",
+      "descriptionEn": "Objects, groups.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_10",
+        "select:l10_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l10_vocabulary_rev",
+      "title": "L10: Wortschatz (Definition) (Schreiben)",
+      "titleEn": "L10: Vocabulary (Definition) (Writing)",
+      "description": "Objekte, Gruppen.",
+      "descriptionEn": "Objects, groups.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_10",
+        "select:l10_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l10_grammar",
+      "title": "Grammatik: Relative Clauses",
+      "titleEn": "Grammar: Relative Clauses",
+      "description": "Who, which, that.",
+      "descriptionEn": "Who, which, that.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l10_practice",
+      "title": "Sprechkompetenz: Umschreiben",
+      "titleEn": "Speaking: Paraphrasing",
+      "description": "Dinge erklären, deren Name fehlt.",
+      "descriptionEn": "Explain things missing name.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_lesson_11",
+      "title": "Lektion 11: Berichte",
+      "titleEn": "Lesson 11: Reports",
+      "description": "Was gesagt wurde.",
+      "descriptionEn": "What was said.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_b1_l11_vocabulary",
+        "cefr_b1_l11_vocabulary_rev",
+        "cefr_b1_l11_grammar",
+        "cefr_b1_l11_practice"
+      ],
+      "requires": [
+        "cefr_b1_lesson_10"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_b1_l11_vocabulary",
+      "title": "L11: Wortschatz (Kommunikation) (Lesen)",
+      "titleEn": "L11: Vocabulary (Communication) (Reading)",
+      "description": "Sagen, fragen, antworten.",
+      "descriptionEn": "Say, ask, answer.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_11",
+        "select:l11_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l11_vocabulary_rev",
+      "title": "L11: Wortschatz (Kommunikation) (Schreiben)",
+      "titleEn": "L11: Vocabulary (Communication) (Writing)",
+      "description": "Sagen, fragen, antworten.",
+      "descriptionEn": "Say, ask, answer.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_11",
+        "select:l11_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l11_grammar",
+      "title": "Grammatik: Reported Speech",
+      "titleEn": "Grammar: Reported Speech",
+      "description": "He said (that)...",
+      "descriptionEn": "He said (that)...",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l11_practice",
+      "title": "Sprechkompetenz: Weitergeben",
+      "titleEn": "Speaking: Relaying",
+      "description": "Nachrichten weitergeben.",
+      "descriptionEn": "Relay messages.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_lesson_12",
+      "title": "Lektion 12: Abschluss B1",
+      "titleEn": "Lesson 12: Completion B1",
+      "description": "Argumentieren und Diskutieren.",
+      "descriptionEn": "Arguing and Discussing.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_b1_l12_vocabulary",
+        "cefr_b1_l12_vocabulary_rev",
+        "cefr_b1_l12_grammar",
+        "cefr_b1_l12_practice"
+      ],
+      "requires": [
+        "cefr_b1_lesson_11"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_b1_l12_vocabulary",
+      "title": "L12: Wortschatz (Argumente) (Lesen)",
+      "titleEn": "L12: Vocabulary (Arguments) (Reading)",
+      "description": "Meinungswörter, Verbindungen.",
+      "descriptionEn": "Opinion words, connectors.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_12",
+        "select:l12_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l12_vocabulary_rev",
+      "title": "L12: Wortschatz (Argumente) (Schreiben)",
+      "titleEn": "L12: Vocabulary (Arguments) (Writing)",
+      "description": "Meinungswörter, Verbindungen.",
+      "descriptionEn": "Opinion words, connectors.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_english_deck",
+        "lesson_12",
+        "select:l12_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l12_grammar",
+      "title": "Grammatik: Review B1",
+      "titleEn": "Grammar: Review B1",
+      "description": "Mix & Connectors.",
+      "descriptionEn": "Mix & Connectors.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_b1_l12_practice",
+      "title": "Sprechkompetenz: Debatte",
+      "titleEn": "Speaking: Debate",
+      "description": "Standpunkt vertreten.",
+      "descriptionEn": "Argue a point.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    }
+  ]
 }

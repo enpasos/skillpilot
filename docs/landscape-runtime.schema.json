@@ -40,6 +40,15 @@
       "type": "string",
       "description": "Framework identifier."
     },
+    "country": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "schoolType": {
+      "type": "string"
+    },
     "subject": {
       "type": "string",
       "description": "Optional subject label shown in external prerequisite references."
@@ -148,6 +157,10 @@
           },
           "description": "Only phase is required at runtime; other dimension tags are ignored by the UI.",
           "additionalProperties": true
+        },
+        "extendedData": {
+          "type": "object",
+          "description": "Arbitrary extra data (e.g. SRS deck config)."
         }
       }
     }

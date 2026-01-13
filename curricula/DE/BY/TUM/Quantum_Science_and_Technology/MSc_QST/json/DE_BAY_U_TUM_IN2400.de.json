@@ -1,204 +1,195 @@
 {
-    "title": "Fortgeschrittene Konzepte des Quantum Computing (TUM, Modul IN2400)",
-    "titleEn": "Advanced Concepts of Quantum Computing (TUM, Module IN2400)",
-    "description": "Das Modul behandelt fortgeschrittene Konzepte des Quantum Computing wie Quanten-Fouriertransformation, Shor-Algorithmus, Quantenoperationen und Quanten-Fehlerkorrektur inklusive Stabilizer-Formalismus.",
-    "descriptionEn": "The module covers advanced quantum computing concepts such as the quantum Fourier transform, Shor’s algorithm, quantum operations, and quantum error correction including the stabilizer formalism.",
-    "locale": "de-DE",
-    "subject": "TUM-Module",
-    "frameworkId": "tum-in2400",
-    "goals": [
-        {
-            "id": "2bba64b4-aeb5-5ff9-80b8-db43390b5c38",
-            "shortKey": "tum_in2400_module",
-            "title": "Fortgeschrittene Konzepte des Quantum Computing (IN2400)",
-            "titleEn": "Advanced Concepts of Quantum Computing (IN2400)",
-            "description": "Die lernende Person kann fortgeschrittene Konzepte des Quantum Computing wie QFT, Shor-Algorithmus, Quantenoperationen und Fehlerkorrektur anwenden.",
-            "descriptionEn": "The learner can apply advanced quantum computing concepts such as the quantum Fourier transform, Shor's algorithm, quantum operations, and error correction.",
-            "core": true,
-            "weight": 5.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:IN2400",
-                "ects:5"
-            ],
-            "contains": [
-                "ec00c4a6-1d87-52c9-814e-9db277a2ef2f",
-                "20e59db1-4dce-5ba2-baac-d62b14f6c969",
-                "552a584c-b92a-5afa-a68a-97cc0ab7e080"
-            ],
-            "requires": [],
-            "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN2400"
-        },
-        {
-            "id": "ec00c4a6-1d87-52c9-814e-9db277a2ef2f",
-            "shortKey": "tum_in2400_quantum_fourier_transform_and_period_finding",
-            "title": "Quanten-Fouriertransformation und Periodenfindung",
-            "titleEn": "Quantum Fourier transform and period finding",
-            "description": "Die lernende Person kann die Quanten-Fouriertransformation in algorithmischen Zusammenhängen erklären und einsetzen.",
-            "descriptionEn": "The learner can explain and use the quantum Fourier transform in algorithmic settings.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2400"
-            ],
-            "contains": [
-                "0d249783-951f-5003-a627-b8599f31c860",
-                "caccd482-5602-5490-88b5-3c2598343977"
-            ],
-            "requires": []
-        },
-        {
-            "id": "0d249783-951f-5003-a627-b8599f31c860",
-            "shortKey": "tum_in2400_quantum_fourier_transform_fundamentals",
-            "title": "Grundlagen der Quanten-Fouriertransformation",
-            "titleEn": "Quantum Fourier transform fundamentals",
-            "description": "Die lernende Person kann QFT-Schaltungen herleiten, implementieren und Ergebnisse interpretieren.",
-            "descriptionEn": "The learner can derive and implement the QFT circuit and interpret its outputs.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2400"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "caccd482-5602-5490-88b5-3c2598343977",
-            "shortKey": "tum_in2400_period_finding_and_shor_s_algorithm",
-            "title": "Periodenfindung und Shor-Algorithmus",
-            "titleEn": "Period finding and Shor's algorithm",
-            "description": "Die lernende Person kann QFT-basierte Periodenfindung mit der Ganzzahlfaktorisierung verbinden.",
-            "descriptionEn": "The learner can connect QFT-based period finding to integer factorization.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2400"
-            ],
-            "contains": [],
-            "requires": [
-                "0d249783-951f-5003-a627-b8599f31c860"
-            ]
-        },
-        {
-            "id": "20e59db1-4dce-5ba2-baac-d62b14f6c969",
-            "shortKey": "tum_in2400_advanced_quantum_operations",
-            "title": "Fortgeschrittene Quantenoperationen",
-            "titleEn": "Advanced quantum operations",
-            "description": "Die lernende Person kann Quantenoperationen über unitäre Gatter hinaus modellieren.",
-            "descriptionEn": "The learner can model quantum operations beyond unitary gates.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2400"
-            ],
-            "contains": [
-                "5984796b-0844-532f-8018-12c1e9e2a4f5",
-                "57031ddc-0cd5-5306-9d30-e28e7b0198d4"
-            ],
-            "requires": []
-        },
-        {
-            "id": "5984796b-0844-532f-8018-12c1e9e2a4f5",
-            "shortKey": "tum_in2400_quantum_operations_and_channels",
-            "title": "Quantenoperationen und Kanäle",
-            "titleEn": "Quantum operations and channels",
-            "description": "Die lernende Person kann CPTP-Abbildungen beschreiben und Quantenoperationen kombinieren.",
-            "descriptionEn": "The learner can describe CPTP maps and compose quantum operations.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2400"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "57031ddc-0cd5-5306-9d30-e28e7b0198d4",
-            "shortKey": "tum_in2400_circuit_synthesis_for_advanced_algorithms",
-            "title": "Schaltungssynthese für fortgeschrittene Algorithmen",
-            "titleEn": "Circuit synthesis for advanced algorithms",
-            "description": "Die lernende Person kann Schaltungsstrukturen für fortgeschrittene Algorithmen entwerfen.",
-            "descriptionEn": "The learner can design circuit structures for advanced algorithms.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2400"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "552a584c-b92a-5afa-a68a-97cc0ab7e080",
-            "shortKey": "tum_in2400_quantum_error_correction",
-            "title": "Quanten-Fehlerkorrektur",
-            "titleEn": "Quantum error correction",
-            "description": "Die lernende Person kann Fehlermodelle erklären und Fehlerkorrektur-Formalismen anwenden.",
-            "descriptionEn": "The learner can explain error models and apply error correction formalisms.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2400"
-            ],
-            "contains": [
-                "97500626-5468-5547-88fa-f14c564a8435",
-                "f4f995f3-6945-58f4-ac58-3757c2085ee7"
-            ],
-            "requires": [
-                "20e59db1-4dce-5ba2-baac-d62b14f6c969"
-            ]
-        },
-        {
-            "id": "97500626-5468-5547-88fa-f14c564a8435",
-            "shortKey": "tum_in2400_error_models_and_syndrome_extraction",
-            "title": "Fehlermodelle und Syndromextraktion",
-            "titleEn": "Error models and syndrome extraction",
-            "description": "Die lernende Person kann Fehler modellieren und Syndrommessungen beschreiben.",
-            "descriptionEn": "The learner can model errors and describe syndrome measurement.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2400"
-            ],
-            "contains": [],
-            "requires": [
-                "5984796b-0844-532f-8018-12c1e9e2a4f5"
-            ]
-        },
-        {
-            "id": "f4f995f3-6945-58f4-ac58-3757c2085ee7",
-            "shortKey": "tum_in2400_stabilizer_formalism_and_codes",
-            "title": "Stabilisatorformalismus und Codes",
-            "titleEn": "Stabilizer formalism and codes",
-            "description": "Die lernende Person kann den Stabilisatorformalismus zur Beschreibung von Codes nutzen.",
-            "descriptionEn": "The learner can use the stabilizer formalism to describe quantum codes.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2400"
-            ],
-            "contains": [],
-            "requires": [
-                "97500626-5468-5547-88fa-f14c564a8435"
-            ]
-        }
-    ]
+  "title": "Fortgeschrittene Konzepte des Quantum Computing (TUM, Modul IN2400)",
+  "titleEn": "Advanced Concepts of Quantum Computing (TUM, Module IN2400)",
+  "description": "Das Modul behandelt fortgeschrittene Konzepte des Quantum Computing wie Quanten-Fouriertransformation, Shor-Algorithmus, Quantenoperationen und Quanten-Fehlerkorrektur inklusive Stabilizer-Formalismus.",
+  "descriptionEn": "The module covers advanced quantum computing concepts such as the quantum Fourier transform, Shor’s algorithm, quantum operations, and quantum error correction including the stabilizer formalism.",
+  "locale": "de-DE",
+  "subject": "TUM-Module",
+  "frameworkId": "tum-in2400",
+  "goals": [
+    {
+      "id": "2bba64b4-aeb5-5ff9-80b8-db43390b5c38",
+      "title": "Fortgeschrittene Konzepte des Quantum Computing (IN2400)",
+      "titleEn": "Advanced Concepts of Quantum Computing (IN2400)",
+      "description": "Die lernende Person kann fortgeschrittene Konzepte des Quantum Computing wie QFT, Shor-Algorithmus, Quantenoperationen und Fehlerkorrektur anwenden.",
+      "descriptionEn": "The learner can apply advanced quantum computing concepts such as the quantum Fourier transform, Shor's algorithm, quantum operations, and error correction.",
+      "weight": 5.0,
+      "tags": [
+        "module:IN2400",
+        "ects:5"
+      ],
+      "contains": [
+        "ec00c4a6-1d87-52c9-814e-9db277a2ef2f",
+        "20e59db1-4dce-5ba2-baac-d62b14f6c969",
+        "552a584c-b92a-5afa-a68a-97cc0ab7e080"
+      ],
+      "requires": [],
+      "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN2400",
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ec00c4a6-1d87-52c9-814e-9db277a2ef2f",
+      "title": "Quanten-Fouriertransformation und Periodenfindung",
+      "titleEn": "Quantum Fourier transform and period finding",
+      "description": "Die lernende Person kann die Quanten-Fouriertransformation in algorithmischen Zusammenhängen erklären und einsetzen.",
+      "descriptionEn": "The learner can explain and use the quantum Fourier transform in algorithmic settings.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN2400"
+      ],
+      "contains": [
+        "0d249783-951f-5003-a627-b8599f31c860",
+        "caccd482-5602-5490-88b5-3c2598343977"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0d249783-951f-5003-a627-b8599f31c860",
+      "title": "Grundlagen der Quanten-Fouriertransformation",
+      "titleEn": "Quantum Fourier transform fundamentals",
+      "description": "Die lernende Person kann QFT-Schaltungen herleiten, implementieren und Ergebnisse interpretieren.",
+      "descriptionEn": "The learner can derive and implement the QFT circuit and interpret its outputs.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN2400"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "caccd482-5602-5490-88b5-3c2598343977",
+      "title": "Periodenfindung und Shor-Algorithmus",
+      "titleEn": "Period finding and Shor's algorithm",
+      "description": "Die lernende Person kann QFT-basierte Periodenfindung mit der Ganzzahlfaktorisierung verbinden.",
+      "descriptionEn": "The learner can connect QFT-based period finding to integer factorization.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN2400"
+      ],
+      "contains": [],
+      "requires": [
+        "0d249783-951f-5003-a627-b8599f31c860"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "20e59db1-4dce-5ba2-baac-d62b14f6c969",
+      "title": "Fortgeschrittene Quantenoperationen",
+      "titleEn": "Advanced quantum operations",
+      "description": "Die lernende Person kann Quantenoperationen über unitäre Gatter hinaus modellieren.",
+      "descriptionEn": "The learner can model quantum operations beyond unitary gates.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN2400"
+      ],
+      "contains": [
+        "5984796b-0844-532f-8018-12c1e9e2a4f5",
+        "57031ddc-0cd5-5306-9d30-e28e7b0198d4"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "5984796b-0844-532f-8018-12c1e9e2a4f5",
+      "title": "Quantenoperationen und Kanäle",
+      "titleEn": "Quantum operations and channels",
+      "description": "Die lernende Person kann CPTP-Abbildungen beschreiben und Quantenoperationen kombinieren.",
+      "descriptionEn": "The learner can describe CPTP maps and compose quantum operations.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN2400"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "57031ddc-0cd5-5306-9d30-e28e7b0198d4",
+      "title": "Schaltungssynthese für fortgeschrittene Algorithmen",
+      "titleEn": "Circuit synthesis for advanced algorithms",
+      "description": "Die lernende Person kann Schaltungsstrukturen für fortgeschrittene Algorithmen entwerfen.",
+      "descriptionEn": "The learner can design circuit structures for advanced algorithms.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN2400"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "552a584c-b92a-5afa-a68a-97cc0ab7e080",
+      "title": "Quanten-Fehlerkorrektur",
+      "titleEn": "Quantum error correction",
+      "description": "Die lernende Person kann Fehlermodelle erklären und Fehlerkorrektur-Formalismen anwenden.",
+      "descriptionEn": "The learner can explain error models and apply error correction formalisms.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN2400"
+      ],
+      "contains": [
+        "97500626-5468-5547-88fa-f14c564a8435",
+        "f4f995f3-6945-58f4-ac58-3757c2085ee7"
+      ],
+      "requires": [
+        "20e59db1-4dce-5ba2-baac-d62b14f6c969"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "97500626-5468-5547-88fa-f14c564a8435",
+      "title": "Fehlermodelle und Syndromextraktion",
+      "titleEn": "Error models and syndrome extraction",
+      "description": "Die lernende Person kann Fehler modellieren und Syndrommessungen beschreiben.",
+      "descriptionEn": "The learner can model errors and describe syndrome measurement.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN2400"
+      ],
+      "contains": [],
+      "requires": [
+        "5984796b-0844-532f-8018-12c1e9e2a4f5"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f4f995f3-6945-58f4-ac58-3757c2085ee7",
+      "title": "Stabilisatorformalismus und Codes",
+      "titleEn": "Stabilizer formalism and codes",
+      "description": "Die lernende Person kann den Stabilisatorformalismus zur Beschreibung von Codes nutzen.",
+      "descriptionEn": "The learner can use the stabilizer formalism to describe quantum codes.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN2400"
+      ],
+      "contains": [],
+      "requires": [
+        "97500626-5468-5547-88fa-f14c564a8435"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    }
+  ],
+  "landscapeId": "4b2c70b5-7d6a-5075-a457-5bd424a8af94"
 }

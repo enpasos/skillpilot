@@ -1,1475 +1,1146 @@
 {
-    "title": "Funktionentheorie (TUM, Modul MA2006)",
-    "titleEn": "Complex Analysis (TUM, Module MA2006)",
-    "description": "Einführung in die Funktionentheorie (Analysis im Komplexen): holomorphe Funktionen als komplex differenzierbare Funktionen, als Potenzreihen und als Lösungen der Cauchy-Riemann-Gleichungen; komplexe Kurvenintegrale und Integralsätze; Singularitäten und Residuen (Residuenkalkül); konforme Abbildungen. Nach dem erfolgreichen Abschluss des Moduls verstehen die Studierenden grundlegende Konzepte, Methoden und Resultate der Funktionentheorie, können Zusammenhänge diskutieren, anhand von Beispielen erläutern und Aufgaben mit den erlernten Methoden lösen; insbesondere können sie den Residuenkalkül anwenden. 5 ECTS, angeboten im Sommersemester, Version 2021w, verantwortet von Warzel, Simone.",
-    "descriptionEn": "Introduction to complex analysis: holomorphic functions as complex-differentiable functions, as power series, and as solutions to the Cauchy–Riemann equations; complex line integrals and integral theorems; singularities and residues (residue calculus); conformal mappings. After successfully completing the module, students understand the fundamental concepts, methods, and results of complex analysis, can discuss logical connections between these concepts, illustrate them with examples, and solve problems using the methods introduced; in particular, they can apply the residue calculus. 5 ECTS, offered in the summer semester, version 2021w, responsible: Warzel, Simone.",
-    "landscapeId": "d3d07107-c5d1-4b8b-a155-b3d309aed57c",
-    "locale": "de-DE",
-    "subject": "Mathematik",
-    "frameworkId": "tum-ma2006",
-    "filters": [
-        {
-            "id": "BSc",
-            "label": "Bachelor Mathematik"
-        }
-    ],
-    "goals": [
-        {
-            "id": "dc97e5be-a7b9-53ff-9e02-1b54b50673cb",
-            "shortKey": "tum_ma2006_module",
-            "title": "Funktionentheorie – Gesamtmodul",
-            "titleEn": "Complex Analysis – Full Module",
-            "description": "Nach dem erfolgreichen Abschluss des Moduls verstehen die Studierenden grundlegende Konzepte, Methoden und Resultate der Funktionentheorie. Sie können logische Zusammenhänge zwischen diesen Konzepten diskutieren, anhand von Beispielen erläutern und Aufgaben mit Hilfe der kennengelernten Konzepte und erlernten Methoden lösen. Insbesondere können die Studierenden den Residuenkalkül anwenden.",
-            "descriptionEn": "After successfully completing the module, students understand the fundamental concepts, methods, and results of complex analysis. They can discuss logical connections between these concepts, illustrate them with examples, and solve problems using the concepts and methods introduced. In particular, they can apply the residue calculus.",
-            "core": true,
-            "weight": 5.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "ects:5",
-                "workload:150h",
-                "presence:45h",
-                "level:bachelor",
-                "language:de",
-                "module:MA2006",
-                "semester:SS",
-                "duration:1_semester",
-                "responsible:warzel_simone"
-            ],
-            "contains": [
-                "ff00fdf3-c381-56ad-886e-e2ec32a3fbfe",
-                "b4f54d03-670d-5bdd-9a74-9201cd36d9f9",
-                "b148c70a-927b-5be9-980d-9d96ec18f963",
-                "19fc165c-826f-5aea-8e37-b8452d3f55c6",
-                "7eab39b0-60b0-5bab-9ce2-970040b2435e",
-                "fc5de43e-9a5e-5940-b4a0-80f20062ba69"
-            ],
-            "requires": [
-                "8eb1605b-fa70-511b-bbe4-28173d359c3b",
-                "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Gesamtkompetenz",
-                "topicCode": "tum_ma2006_module"
-            },
-            "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA2006&description_version=2021w"
-        },
-        {
-            "id": "ff00fdf3-c381-56ad-886e-e2ec32a3fbfe",
-            "shortKey": "tum_ma2006_lo1",
-            "title": "Holomorphe Funktionen und Cauchy-Riemann",
-            "titleEn": "Holomorphic Functions and Cauchy–Riemann",
-            "description": "Zusammenfassender Cluster: Holomorphe Funktionen als komplex-differenzierbare Funktionen und als Lösungen der Cauchy-Riemann-Gleichungen.",
-            "descriptionEn": "Summary cluster: holomorphic functions as complex-differentiable functions and as solutions to the Cauchy–Riemann equations.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Holomorphe Funktionen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [
-                "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46",
-                "0b08a8ec-5793-566d-9753-e3acfd9a554b"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Holomorphe Funktionen",
-                "topicCode": "tum_ma2006_lo1"
-            }
-        },
-        {
-            "id": "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46",
-            "shortKey": "tum_ma2006_lo1_1",
-            "title": "Komplexe Differenzierbarkeit und Holomorphie nutzen",
-            "titleEn": "Use Complex Differentiability and Holomorphy",
-            "description": "Die lernende Person kann die komplexe Ableitung definieren, Holomorphie erkennen und grundlegende Rechenregeln (z.B. Kettenregel) in Beispielen anwenden.",
-            "descriptionEn": "The learner can define the complex derivative, recognize holomorphic functions, and apply basic calculus rules (e.g., the chain rule) in examples.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Holomorphe Funktionen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [
-                "36cc9e83-757d-57cc-81af-9b5c305f1fa7",
-                "f19c3afa-2479-5ec3-9424-7b82eb4610c6",
-                "4ac2e1ed-2f0c-5ed4-b30c-e36fa6a72357"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Holomorphe Funktionen",
-                "topicCode": "tum_ma2006_lo1_1"
-            }
-        },
-        {
-            "id": "0b08a8ec-5793-566d-9753-e3acfd9a554b",
-            "shortKey": "tum_ma2006_lo1_2",
-            "title": "Cauchy-Riemann-Gleichungen anwenden",
-            "titleEn": "Apply the Cauchy–Riemann Equations",
-            "description": "Die lernende Person kann die Cauchy-Riemann-Gleichungen formulieren und in Beispielen nutzen, um Holomorphie zu prüfen und Zusammenhänge zu erklären.",
-            "descriptionEn": "The learner can state the Cauchy–Riemann equations and use them in examples to test holomorphy and explain related properties.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Holomorphe Funktionen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [
-                "ae1846dc-6f64-51eb-b933-e5e6c2c37b71",
-                "94c767d7-6971-5d6f-9414-d4d0789e1210",
-                "570411d7-b919-506d-b71e-f38be34bd6cf"
-            ],
-            "requires": [
-                "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Holomorphe Funktionen",
-                "topicCode": "tum_ma2006_lo1_2"
-            }
-        },
-        {
-            "id": "b4f54d03-670d-5bdd-9a74-9201cd36d9f9",
-            "shortKey": "tum_ma2006_lo2",
-            "title": "Holomorphie als Potenzreihendarstellung",
-            "titleEn": "Holomorphy via Power Series Representations",
-            "description": "Zusammenfassender Cluster: Holomorphe Funktionen als Potenzreihen und der Umgang mit Taylor- und Laurententwicklungen.",
-            "descriptionEn": "Summary cluster: holomorphic functions as power series and working with Taylor and Laurent expansions.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Potenzreihen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [
-                "2c9b52f8-2b7b-53c2-9bd7-5fa25c8b5f76",
-                "7ddac262-f6a5-5920-a45b-bbf87655f4bd"
-            ],
-            "requires": [
-                "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Potenzreihen",
-                "topicCode": "tum_ma2006_lo2"
-            }
-        },
-        {
-            "id": "2c9b52f8-2b7b-53c2-9bd7-5fa25c8b5f76",
-            "shortKey": "tum_ma2006_lo2_1",
-            "title": "Potenzreihen im Komplexen handhaben",
-            "titleEn": "Handle Power Series in the Complex Plane",
-            "description": "Die lernende Person kann Potenzreihen im Komplexen untersuchen (Konvergenzradius, Ableiten/Integrieren gliedweise) und daraus lokale Darstellungen holomorpher Funktionen gewinnen.",
-            "descriptionEn": "The learner can analyze power series in the complex plane (radius of convergence, termwise differentiation/integration) and use them to obtain local representations of holomorphic functions.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Potenzreihen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [
-                "d1697d9e-476a-521f-b203-21b6265e74b0",
-                "07e52aff-3b22-5c57-896e-8fdb87a1252f",
-                "8ebed364-de43-55e4-8377-96eda7d81986"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Potenzreihen",
-                "topicCode": "tum_ma2006_lo2_1"
-            }
-        },
-        {
-            "id": "7ddac262-f6a5-5920-a45b-bbf87655f4bd",
-            "shortKey": "tum_ma2006_lo2_2",
-            "title": "Taylor- und Laurententwicklungen nutzen",
-            "titleEn": "Use Taylor and Laurent Expansions",
-            "description": "Die lernende Person kann Taylor- und Laurententwicklungen in Beispielen bestimmen, Koeffizienten interpretieren und daraus Aussagen über das Verhalten von Funktionen ableiten.",
-            "descriptionEn": "The learner can determine Taylor and Laurent expansions in examples, interpret coefficients, and derive statements about the behavior of functions.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Potenzreihen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [
-                "511dbe8d-a896-50f9-9be5-c17a18fbb34c",
-                "07a6ea8f-05c4-50c8-a39e-639bd01fac3c",
-                "e9c44c9b-051c-5468-bdf5-9e37170c461b"
-            ],
-            "requires": [
-                "2c9b52f8-2b7b-53c2-9bd7-5fa25c8b5f76"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Potenzreihen",
-                "topicCode": "tum_ma2006_lo2_2"
-            }
-        },
-        {
-            "id": "b148c70a-927b-5be9-980d-9d96ec18f963",
-            "shortKey": "tum_ma2006_lo3",
-            "title": "Komplexe Integration und Integralsätze",
-            "titleEn": "Complex Integration and Integral Theorems",
-            "description": "Zusammenfassender Cluster: Komplexe Kurvenintegrale und grundlegende Integralsätze als Basis der Funktionentheorie.",
-            "descriptionEn": "Summary cluster: complex line integrals and fundamental integral theorems as the basis of complex analysis.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kurvenintegrale",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [
-                "da3781cd-8454-5d71-93b0-f5b006f676c8",
-                "04fd5505-cb9e-5bf2-85c2-faf20248f81b"
-            ],
-            "requires": [
-                "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kurvenintegrale",
-                "topicCode": "tum_ma2006_lo3"
-            }
-        },
-        {
-            "id": "da3781cd-8454-5d71-93b0-f5b006f676c8",
-            "shortKey": "tum_ma2006_lo3_1",
-            "title": "Komplexe Kurvenintegrale berechnen",
-            "titleEn": "Compute Complex Line Integrals",
-            "description": "Die lernende Person kann komplexe Kurvenintegrale über parametrisierte Wege berechnen und grundlegende Eigenschaften (z.B. Umparametrisierung, Orientierung) korrekt berücksichtigen.",
-            "descriptionEn": "The learner can compute complex line integrals along parameterized curves and correctly account for basic properties (e.g., reparameterization, orientation).",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Kurvenintegrale",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [
-                "7982572f-83b8-5040-9ffd-ccbda475966f",
-                "102ec592-2401-5eb0-827c-49343cf08f42",
-                "4cb402a1-0fb3-5413-99c4-fcc460c4c58b"
-            ],
-            "requires": [
-                "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kurvenintegrale",
-                "topicCode": "tum_ma2006_lo3_1"
-            }
-        },
-        {
-            "id": "04fd5505-cb9e-5bf2-85c2-faf20248f81b",
-            "shortKey": "tum_ma2006_lo3_2",
-            "title": "Cauchy-Integralsätze und Cauchy-Formel anwenden",
-            "titleEn": "Apply Cauchy’s Theorems and the Cauchy Integral Formula",
-            "description": "Die lernende Person kann zentrale Integralsätze (Cauchy-Integralsatz) und die Cauchy-Integralformel anwenden, um Integrale zu bestimmen und Konsequenzen für holomorphe Funktionen herzuleiten.",
-            "descriptionEn": "The learner can apply central integral theorems (Cauchy’s theorem) and the Cauchy integral formula to compute integrals and derive consequences for holomorphic functions.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Kurvenintegrale",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [
-                "1c1f07ef-6737-5694-b7f4-79283dbf357e",
-                "0b742658-c8f1-544c-9b2e-6be2f6218a43",
-                "82f23993-5f44-51fe-9647-02e7ae378017"
-            ],
-            "requires": [
-                "da3781cd-8454-5d71-93b0-f5b006f676c8"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kurvenintegrale",
-                "topicCode": "tum_ma2006_lo3_2"
-            }
-        },
-        {
-            "id": "19fc165c-826f-5aea-8e37-b8452d3f55c6",
-            "shortKey": "tum_ma2006_lo4",
-            "title": "Singularitäten und Residuen",
-            "titleEn": "Singularities and Residues",
-            "description": "Zusammenfassender Cluster: Singularitäten, Laurentreihen und Residuen als zentrale Werkzeuge zur Integralberechnung.",
-            "descriptionEn": "Summary cluster: singularities, Laurent series, and residues as central tools for evaluating integrals.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Residuenkalkül",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [
-                "1947d8ec-729c-5e12-a2ab-4119a38b81da",
-                "7e2eaa61-54af-59ca-83fe-8538b3cab4be"
-            ],
-            "requires": [
-                "04fd5505-cb9e-5bf2-85c2-faf20248f81b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Residuenkalkül",
-                "topicCode": "tum_ma2006_lo4"
-            }
-        },
-        {
-            "id": "1947d8ec-729c-5e12-a2ab-4119a38b81da",
-            "shortKey": "tum_ma2006_lo4_1",
-            "title": "Singularitäten klassifizieren",
-            "titleEn": "Classify Singularities",
-            "description": "Die lernende Person kann isolierte Singularitäten mithilfe von Laurentreihen klassifizieren (hebbar, Pol, wesentlich) und das lokale Verhalten von Funktionen daraus ableiten.",
-            "descriptionEn": "The learner can classify isolated singularities using Laurent series (removable, pole, essential) and derive local behavior of functions from this classification.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Residuenkalkül",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [
-                "7298b11c-b03c-5424-ad33-012050730ac5",
-                "6c04b61c-3512-5e76-87e9-18cf76c7dd27",
-                "861e983d-b5cf-5637-9c40-9cc874ce3f94"
-            ],
-            "requires": [
-                "7ddac262-f6a5-5920-a45b-bbf87655f4bd"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Residuenkalkül",
-                "topicCode": "tum_ma2006_lo4_1"
-            }
-        },
-        {
-            "id": "7e2eaa61-54af-59ca-83fe-8538b3cab4be",
-            "shortKey": "tum_ma2006_lo4_2",
-            "title": "Residuenkalkül anwenden",
-            "titleEn": "Apply the Residue Calculus",
-            "description": "Die lernende Person kann Residuen berechnen, den Residuensatz anwenden und damit komplexe Integrale sowie ausgewählte reelle Integrale in Beispielen bestimmen.",
-            "descriptionEn": "The learner can compute residues, apply the residue theorem, and use it to evaluate complex integrals as well as selected real integrals in examples.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Residuenkalkül",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [
-                "521bea6f-bf40-5fd3-96cd-2a15d7f13060",
-                "ce1f513e-3383-56c7-9dba-97370e44d082",
-                "a3a27ad8-76dc-52e6-a894-055d3a8d9c02"
-            ],
-            "requires": [
-                "1947d8ec-729c-5e12-a2ab-4119a38b81da",
-                "04fd5505-cb9e-5bf2-85c2-faf20248f81b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Residuenkalkül",
-                "topicCode": "tum_ma2006_lo4_2"
-            }
-        },
-        {
-            "id": "7eab39b0-60b0-5bab-9ce2-970040b2435e",
-            "shortKey": "tum_ma2006_lo5",
-            "title": "Konforme Abbildungen",
-            "titleEn": "Conformal Mappings",
-            "description": "Zusammenfassender Cluster: Konforme Abbildungen als Anwendung holomorpher Funktionen zur Geometrie komplexer Gebiete.",
-            "descriptionEn": "Summary cluster: conformal mappings as an application of holomorphic functions to the geometry of complex domains.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Konforme Abbildungen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [
-                "876ab522-b4f6-5698-982b-c5ae4c5c2699",
-                "e7ccfb07-2b21-505b-9580-ccff19447438"
-            ],
-            "requires": [
-                "0b08a8ec-5793-566d-9753-e3acfd9a554b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konforme Abbildungen",
-                "topicCode": "tum_ma2006_lo5"
-            }
-        },
-        {
-            "id": "876ab522-b4f6-5698-982b-c5ae4c5c2699",
-            "shortKey": "tum_ma2006_lo5_1",
-            "title": "Konforme Abbildungen erkennen und Eigenschaften nutzen",
-            "titleEn": "Recognize Conformal Maps and Use Their Properties",
-            "description": "Die lernende Person kann Konformität holomorpher Abbildungen (lokale Winkeltreue bei nichtverschwindender Ableitung) erklären und in Beispielen prüfen.",
-            "descriptionEn": "The learner can explain conformality of holomorphic maps (local angle preservation when the derivative is nonzero) and verify it in examples.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Konforme Abbildungen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [
-                "24f1b05c-0791-54c1-a761-faffa8d4d97c",
-                "35ce20f1-af9a-5b51-a0e7-097194c0a777",
-                "8f0fb7b9-0d78-5b65-951d-c26da02ee3c1"
-            ],
-            "requires": [
-                "0b08a8ec-5793-566d-9753-e3acfd9a554b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konforme Abbildungen",
-                "topicCode": "tum_ma2006_lo5_1"
-            }
-        },
-        {
-            "id": "e7ccfb07-2b21-505b-9580-ccff19447438",
-            "shortKey": "tum_ma2006_lo5_2",
-            "title": "Möbiustransformationen und elementare Abbildungen anwenden",
-            "titleEn": "Apply Möbius Transformations and Elementary Maps",
-            "description": "Die lernende Person kann Möbiustransformationen sowie elementare konforme Abbildungen (z.B. Exponential- und Logarithmusabbildung mit Verzweigungen) zur Abbildung einfacher Gebiete einsetzen und Ergebnisse interpretieren.",
-            "descriptionEn": "The learner can use Möbius transformations and elementary conformal maps (e.g., exponential and logarithm maps with branches) to map simple domains and interpret the results.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Konforme Abbildungen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [
-                "b5837e4a-8694-5d5e-99c7-3efb0329eaab",
-                "4c866cba-be9e-5a9c-9461-be0940f49a80",
-                "9c92411b-c4cb-59de-8687-c64ad77b2329"
-            ],
-            "requires": [
-                "876ab522-b4f6-5698-982b-c5ae4c5c2699"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konforme Abbildungen",
-                "topicCode": "tum_ma2006_lo5_2"
-            }
-        },
-        {
-            "id": "fc5de43e-9a5e-5940-b4a0-80f20062ba69",
-            "shortKey": "tum_ma2006_memorize",
-            "title": "Kernaussagen des Moduls memorisieren",
-            "titleEn": "Memorize Key Module Statements",
-            "description": "Die lernende Person hat alle zentralen Definitionen und Sätze des Moduls verinnerlicht (geprüft z.B. durch SRS/Lernkarten).",
-            "descriptionEn": "The learner has internalized all key definitions and theorems of the module (verified e.g. via SRS/flashcards).",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:MA2006",
-                "srs-deck:ma2006"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/ma2006_deck.json"
-            },
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Gesamtkompetenz",
-                "topicCode": "tum_ma2006_memorize"
-            }
-        },
-        {
-            "id": "36cc9e83-757d-57cc-81af-9b5c305f1fa7",
-            "shortKey": "tum_ma2006_lo1_1_1",
-            "title": "Kennen: Komplexe Differenzierbarkeit und Holomorphie nutzen",
-            "titleEn": "Know: Use Complex Differentiability and Holomorphy",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Komplexe Differenzierbarkeit und Holomorphie nutzen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Complex Differentiability and Holomorphy'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Holomorphe Funktionen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Holomorphe Funktionen",
-                "topicCode": "tum_ma2006_lo1_1_1"
-            }
-        },
-        {
-            "id": "f19c3afa-2479-5ec3-9424-7b82eb4610c6",
-            "shortKey": "tum_ma2006_lo1_1_2",
-            "title": "Verstehen: Komplexe Differenzierbarkeit und Holomorphie nutzen",
-            "titleEn": "Understand: Use Complex Differentiability and Holomorphy",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Komplexe Differenzierbarkeit und Holomorphie nutzen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Use Complex Differentiability and Holomorphy'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Holomorphe Funktionen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "36cc9e83-757d-57cc-81af-9b5c305f1fa7"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Holomorphe Funktionen",
-                "topicCode": "tum_ma2006_lo1_1_2"
-            }
-        },
-        {
-            "id": "4ac2e1ed-2f0c-5ed4-b30c-e36fa6a72357",
-            "shortKey": "tum_ma2006_lo1_1_3",
-            "title": "Anwenden: Komplexe Differenzierbarkeit und Holomorphie nutzen",
-            "titleEn": "Apply: Use Complex Differentiability and Holomorphy",
-            "description": "Die lernende Person wendet das Wissen zu 'Komplexe Differenzierbarkeit und Holomorphie nutzen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Use Complex Differentiability and Holomorphy' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Holomorphe Funktionen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "f19c3afa-2479-5ec3-9424-7b82eb4610c6"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Holomorphe Funktionen",
-                "topicCode": "tum_ma2006_lo1_1_3"
-            }
-        },
-        {
-            "id": "ae1846dc-6f64-51eb-b933-e5e6c2c37b71",
-            "shortKey": "tum_ma2006_lo1_2_1",
-            "title": "Kennen: Cauchy-Riemann-Gleichungen anwenden",
-            "titleEn": "Know: Apply the Cauchy–Riemann Equations",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Cauchy-Riemann-Gleichungen anwenden' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply the Cauchy–Riemann Equations'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Holomorphe Funktionen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Holomorphe Funktionen",
-                "topicCode": "tum_ma2006_lo1_2_1"
-            }
-        },
-        {
-            "id": "94c767d7-6971-5d6f-9414-d4d0789e1210",
-            "shortKey": "tum_ma2006_lo1_2_2",
-            "title": "Verstehen: Cauchy-Riemann-Gleichungen anwenden",
-            "titleEn": "Understand: Apply the Cauchy–Riemann Equations",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Cauchy-Riemann-Gleichungen anwenden'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Apply the Cauchy–Riemann Equations'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Holomorphe Funktionen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "ae1846dc-6f64-51eb-b933-e5e6c2c37b71"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Holomorphe Funktionen",
-                "topicCode": "tum_ma2006_lo1_2_2"
-            }
-        },
-        {
-            "id": "570411d7-b919-506d-b71e-f38be34bd6cf",
-            "shortKey": "tum_ma2006_lo1_2_3",
-            "title": "Anwenden: Cauchy-Riemann-Gleichungen anwenden",
-            "titleEn": "Apply: Apply the Cauchy–Riemann Equations",
-            "description": "Die lernende Person wendet das Wissen zu 'Cauchy-Riemann-Gleichungen anwenden' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Apply the Cauchy–Riemann Equations' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Holomorphe Funktionen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "94c767d7-6971-5d6f-9414-d4d0789e1210"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Holomorphe Funktionen",
-                "topicCode": "tum_ma2006_lo1_2_3"
-            }
-        },
-        {
-            "id": "d1697d9e-476a-521f-b203-21b6265e74b0",
-            "shortKey": "tum_ma2006_lo2_1_1",
-            "title": "Kennen: Potenzreihen im Komplexen handhaben",
-            "titleEn": "Know: Handle Power Series in the Complex Plane",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Potenzreihen im Komplexen handhaben' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Handle Power Series in the Complex Plane'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Potenzreihen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Potenzreihen",
-                "topicCode": "tum_ma2006_lo2_1_1"
-            }
-        },
-        {
-            "id": "07e52aff-3b22-5c57-896e-8fdb87a1252f",
-            "shortKey": "tum_ma2006_lo2_1_2",
-            "title": "Verstehen: Potenzreihen im Komplexen handhaben",
-            "titleEn": "Understand: Handle Power Series in the Complex Plane",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Potenzreihen im Komplexen handhaben'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Handle Power Series in the Complex Plane'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Potenzreihen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "d1697d9e-476a-521f-b203-21b6265e74b0"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Potenzreihen",
-                "topicCode": "tum_ma2006_lo2_1_2"
-            }
-        },
-        {
-            "id": "8ebed364-de43-55e4-8377-96eda7d81986",
-            "shortKey": "tum_ma2006_lo2_1_3",
-            "title": "Anwenden: Potenzreihen im Komplexen handhaben",
-            "titleEn": "Apply: Handle Power Series in the Complex Plane",
-            "description": "Die lernende Person wendet das Wissen zu 'Potenzreihen im Komplexen handhaben' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Handle Power Series in the Complex Plane' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Potenzreihen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "07e52aff-3b22-5c57-896e-8fdb87a1252f"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Potenzreihen",
-                "topicCode": "tum_ma2006_lo2_1_3"
-            }
-        },
-        {
-            "id": "511dbe8d-a896-50f9-9be5-c17a18fbb34c",
-            "shortKey": "tum_ma2006_lo2_2_1",
-            "title": "Kennen: Taylor- und Laurententwicklungen nutzen",
-            "titleEn": "Know: Use Taylor and Laurent Expansions",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Taylor- und Laurententwicklungen nutzen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Taylor and Laurent Expansions'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Potenzreihen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Potenzreihen",
-                "topicCode": "tum_ma2006_lo2_2_1"
-            }
-        },
-        {
-            "id": "07a6ea8f-05c4-50c8-a39e-639bd01fac3c",
-            "shortKey": "tum_ma2006_lo2_2_2",
-            "title": "Verstehen: Taylor- und Laurententwicklungen nutzen",
-            "titleEn": "Understand: Use Taylor and Laurent Expansions",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Taylor- und Laurententwicklungen nutzen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Use Taylor and Laurent Expansions'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Potenzreihen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "511dbe8d-a896-50f9-9be5-c17a18fbb34c"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Potenzreihen",
-                "topicCode": "tum_ma2006_lo2_2_2"
-            }
-        },
-        {
-            "id": "e9c44c9b-051c-5468-bdf5-9e37170c461b",
-            "shortKey": "tum_ma2006_lo2_2_3",
-            "title": "Anwenden: Taylor- und Laurententwicklungen nutzen",
-            "titleEn": "Apply: Use Taylor and Laurent Expansions",
-            "description": "Die lernende Person wendet das Wissen zu 'Taylor- und Laurententwicklungen nutzen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Use Taylor and Laurent Expansions' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Potenzreihen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "07a6ea8f-05c4-50c8-a39e-639bd01fac3c"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Potenzreihen",
-                "topicCode": "tum_ma2006_lo2_2_3"
-            }
-        },
-        {
-            "id": "7982572f-83b8-5040-9ffd-ccbda475966f",
-            "shortKey": "tum_ma2006_lo3_1_1",
-            "title": "Kennen: Komplexe Kurvenintegrale berechnen",
-            "titleEn": "Know: Compute Complex Line Integrals",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Komplexe Kurvenintegrale berechnen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Compute Complex Line Integrals'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Kurvenintegrale",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kurvenintegrale",
-                "topicCode": "tum_ma2006_lo3_1_1"
-            }
-        },
-        {
-            "id": "102ec592-2401-5eb0-827c-49343cf08f42",
-            "shortKey": "tum_ma2006_lo3_1_2",
-            "title": "Verstehen: Komplexe Kurvenintegrale berechnen",
-            "titleEn": "Understand: Compute Complex Line Integrals",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Komplexe Kurvenintegrale berechnen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Compute Complex Line Integrals'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Kurvenintegrale",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "7982572f-83b8-5040-9ffd-ccbda475966f"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kurvenintegrale",
-                "topicCode": "tum_ma2006_lo3_1_2"
-            }
-        },
-        {
-            "id": "4cb402a1-0fb3-5413-99c4-fcc460c4c58b",
-            "shortKey": "tum_ma2006_lo3_1_3",
-            "title": "Anwenden: Komplexe Kurvenintegrale berechnen",
-            "titleEn": "Apply: Compute Complex Line Integrals",
-            "description": "Die lernende Person wendet das Wissen zu 'Komplexe Kurvenintegrale berechnen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Compute Complex Line Integrals' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Kurvenintegrale",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "102ec592-2401-5eb0-827c-49343cf08f42"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kurvenintegrale",
-                "topicCode": "tum_ma2006_lo3_1_3"
-            }
-        },
-        {
-            "id": "1c1f07ef-6737-5694-b7f4-79283dbf357e",
-            "shortKey": "tum_ma2006_lo3_2_1",
-            "title": "Kennen: Cauchy-Integralsätze und Cauchy-Formel anwenden",
-            "titleEn": "Know: Apply Cauchy’s Theorems and the Cauchy Integral Formula",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Cauchy-Integralsätze und Cauchy-Formel anwenden' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply Cauchy’s Theorems and the Cauchy Integral Formula'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Kurvenintegrale",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kurvenintegrale",
-                "topicCode": "tum_ma2006_lo3_2_1"
-            }
-        },
-        {
-            "id": "0b742658-c8f1-544c-9b2e-6be2f6218a43",
-            "shortKey": "tum_ma2006_lo3_2_2",
-            "title": "Verstehen: Cauchy-Integralsätze und Cauchy-Formel anwenden",
-            "titleEn": "Understand: Apply Cauchy’s Theorems and the Cauchy Integral Formula",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Cauchy-Integralsätze und Cauchy-Formel anwenden'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Apply Cauchy’s Theorems and the Cauchy Integral Formula'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Kurvenintegrale",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "1c1f07ef-6737-5694-b7f4-79283dbf357e"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kurvenintegrale",
-                "topicCode": "tum_ma2006_lo3_2_2"
-            }
-        },
-        {
-            "id": "82f23993-5f44-51fe-9647-02e7ae378017",
-            "shortKey": "tum_ma2006_lo3_2_3",
-            "title": "Anwenden: Cauchy-Integralsätze und Cauchy-Formel anwenden",
-            "titleEn": "Apply: Apply Cauchy’s Theorems and the Cauchy Integral Formula",
-            "description": "Die lernende Person wendet das Wissen zu 'Cauchy-Integralsätze und Cauchy-Formel anwenden' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Apply Cauchy’s Theorems and the Cauchy Integral Formula' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Kurvenintegrale",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "0b742658-c8f1-544c-9b2e-6be2f6218a43"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Kurvenintegrale",
-                "topicCode": "tum_ma2006_lo3_2_3"
-            }
-        },
-        {
-            "id": "7298b11c-b03c-5424-ad33-012050730ac5",
-            "shortKey": "tum_ma2006_lo4_1_1",
-            "title": "Kennen: Singularitäten klassifizieren",
-            "titleEn": "Know: Classify Singularities",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Singularitäten klassifizieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Classify Singularities'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Residuenkalkül",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Residuenkalkül",
-                "topicCode": "tum_ma2006_lo4_1_1"
-            }
-        },
-        {
-            "id": "6c04b61c-3512-5e76-87e9-18cf76c7dd27",
-            "shortKey": "tum_ma2006_lo4_1_2",
-            "title": "Verstehen: Singularitäten klassifizieren",
-            "titleEn": "Understand: Classify Singularities",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Singularitäten klassifizieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Classify Singularities'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Residuenkalkül",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "7298b11c-b03c-5424-ad33-012050730ac5"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Residuenkalkül",
-                "topicCode": "tum_ma2006_lo4_1_2"
-            }
-        },
-        {
-            "id": "861e983d-b5cf-5637-9c40-9cc874ce3f94",
-            "shortKey": "tum_ma2006_lo4_1_3",
-            "title": "Anwenden: Singularitäten klassifizieren",
-            "titleEn": "Apply: Classify Singularities",
-            "description": "Die lernende Person wendet das Wissen zu 'Singularitäten klassifizieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Classify Singularities' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Residuenkalkül",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "6c04b61c-3512-5e76-87e9-18cf76c7dd27"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Residuenkalkül",
-                "topicCode": "tum_ma2006_lo4_1_3"
-            }
-        },
-        {
-            "id": "521bea6f-bf40-5fd3-96cd-2a15d7f13060",
-            "shortKey": "tum_ma2006_lo4_2_1",
-            "title": "Kennen: Residuenkalkül anwenden",
-            "titleEn": "Know: Apply the Residue Calculus",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Residuenkalkül anwenden' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply the Residue Calculus'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Residuenkalkül",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Residuenkalkül",
-                "topicCode": "tum_ma2006_lo4_2_1"
-            }
-        },
-        {
-            "id": "ce1f513e-3383-56c7-9dba-97370e44d082",
-            "shortKey": "tum_ma2006_lo4_2_2",
-            "title": "Verstehen: Residuenkalkül anwenden",
-            "titleEn": "Understand: Apply the Residue Calculus",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Residuenkalkül anwenden'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Apply the Residue Calculus'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Residuenkalkül",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "521bea6f-bf40-5fd3-96cd-2a15d7f13060"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Residuenkalkül",
-                "topicCode": "tum_ma2006_lo4_2_2"
-            }
-        },
-        {
-            "id": "a3a27ad8-76dc-52e6-a894-055d3a8d9c02",
-            "shortKey": "tum_ma2006_lo4_2_3",
-            "title": "Anwenden: Residuenkalkül anwenden",
-            "titleEn": "Apply: Apply the Residue Calculus",
-            "description": "Die lernende Person wendet das Wissen zu 'Residuenkalkül anwenden' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Apply the Residue Calculus' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Residuenkalkül",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "ce1f513e-3383-56c7-9dba-97370e44d082"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Residuenkalkül",
-                "topicCode": "tum_ma2006_lo4_2_3"
-            }
-        },
-        {
-            "id": "24f1b05c-0791-54c1-a761-faffa8d4d97c",
-            "shortKey": "tum_ma2006_lo5_1_1",
-            "title": "Kennen: Konforme Abbildungen erkennen und Eigenschaften nutzen",
-            "titleEn": "Know: Recognize Conformal Maps and Use Their Properties",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Konforme Abbildungen erkennen und Eigenschaften nutzen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Recognize Conformal Maps and Use Their Properties'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Konforme Abbildungen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konforme Abbildungen",
-                "topicCode": "tum_ma2006_lo5_1_1"
-            }
-        },
-        {
-            "id": "35ce20f1-af9a-5b51-a0e7-097194c0a777",
-            "shortKey": "tum_ma2006_lo5_1_2",
-            "title": "Verstehen: Konforme Abbildungen erkennen und Eigenschaften nutzen",
-            "titleEn": "Understand: Recognize Conformal Maps and Use Their Properties",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Konforme Abbildungen erkennen und Eigenschaften nutzen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Recognize Conformal Maps and Use Their Properties'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Konforme Abbildungen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "24f1b05c-0791-54c1-a761-faffa8d4d97c"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konforme Abbildungen",
-                "topicCode": "tum_ma2006_lo5_1_2"
-            }
-        },
-        {
-            "id": "8f0fb7b9-0d78-5b65-951d-c26da02ee3c1",
-            "shortKey": "tum_ma2006_lo5_1_3",
-            "title": "Anwenden: Konforme Abbildungen erkennen und Eigenschaften nutzen",
-            "titleEn": "Apply: Recognize Conformal Maps and Use Their Properties",
-            "description": "Die lernende Person wendet das Wissen zu 'Konforme Abbildungen erkennen und Eigenschaften nutzen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Recognize Conformal Maps and Use Their Properties' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Konforme Abbildungen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "35ce20f1-af9a-5b51-a0e7-097194c0a777"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konforme Abbildungen",
-                "topicCode": "tum_ma2006_lo5_1_3"
-            }
-        },
-        {
-            "id": "b5837e4a-8694-5d5e-99c7-3efb0329eaab",
-            "shortKey": "tum_ma2006_lo5_2_1",
-            "title": "Kennen: Möbiustransformationen und elementare Abbildungen anwenden",
-            "titleEn": "Know: Apply Möbius Transformations and Elementary Maps",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Möbiustransformationen und elementare Abbildungen anwenden' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply Möbius Transformations and Elementary Maps'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Konforme Abbildungen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konforme Abbildungen",
-                "topicCode": "tum_ma2006_lo5_2_1"
-            }
-        },
-        {
-            "id": "4c866cba-be9e-5a9c-9461-be0940f49a80",
-            "shortKey": "tum_ma2006_lo5_2_2",
-            "title": "Verstehen: Möbiustransformationen und elementare Abbildungen anwenden",
-            "titleEn": "Understand: Apply Möbius Transformations and Elementary Maps",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Möbiustransformationen und elementare Abbildungen anwenden'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Apply Möbius Transformations and Elementary Maps'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Konforme Abbildungen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "b5837e4a-8694-5d5e-99c7-3efb0329eaab"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konforme Abbildungen",
-                "topicCode": "tum_ma2006_lo5_2_2"
-            }
-        },
-        {
-            "id": "9c92411b-c4cb-59de-8687-c64ad77b2329",
-            "shortKey": "tum_ma2006_lo5_2_3",
-            "title": "Anwenden: Möbiustransformationen und elementare Abbildungen anwenden",
-            "titleEn": "Apply: Apply Möbius Transformations and Elementary Maps",
-            "description": "Die lernende Person wendet das Wissen zu 'Möbiustransformationen und elementare Abbildungen anwenden' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Apply Möbius Transformations and Elementary Maps' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Konforme Abbildungen",
-            "tags": [
-                "ects:5",
-                "module:MA2006"
-            ],
-            "contains": [],
-            "requires": [
-                "4c866cba-be9e-5a9c-9461-be0940f49a80"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma2006",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Konforme Abbildungen",
-                "topicCode": "tum_ma2006_lo5_2_3"
-            }
-        }
-    ]
+  "title": "Funktionentheorie (TUM, Modul MA2006)",
+  "titleEn": "Complex Analysis (TUM, Module MA2006)",
+  "description": "Einführung in die Funktionentheorie (Analysis im Komplexen): holomorphe Funktionen als komplex differenzierbare Funktionen, als Potenzreihen und als Lösungen der Cauchy-Riemann-Gleichungen; komplexe Kurvenintegrale und Integralsätze; Singularitäten und Residuen (Residuenkalkül); konforme Abbildungen. Nach dem erfolgreichen Abschluss des Moduls verstehen die Studierenden grundlegende Konzepte, Methoden und Resultate der Funktionentheorie, können Zusammenhänge diskutieren, anhand von Beispielen erläutern und Aufgaben mit den erlernten Methoden lösen; insbesondere können sie den Residuenkalkül anwenden. 5 ECTS, angeboten im Sommersemester, Version 2021w, verantwortet von Warzel, Simone.",
+  "descriptionEn": "Introduction to complex analysis: holomorphic functions as complex-differentiable functions, as power series, and as solutions to the Cauchy–Riemann equations; complex line integrals and integral theorems; singularities and residues (residue calculus); conformal mappings. After successfully completing the module, students understand the fundamental concepts, methods, and results of complex analysis, can discuss logical connections between these concepts, illustrate them with examples, and solve problems using the methods introduced; in particular, they can apply the residue calculus. 5 ECTS, offered in the summer semester, version 2021w, responsible: Warzel, Simone.",
+  "landscapeId": "d3d07107-c5d1-4b8b-a155-b3d309aed57c",
+  "locale": "de-DE",
+  "subject": "Mathematik",
+  "frameworkId": "tum-ma2006",
+  "filters": [
+    {
+      "id": "BSc",
+      "label": "Bachelor Mathematik"
+    }
+  ],
+  "goals": [
+    {
+      "id": "dc97e5be-a7b9-53ff-9e02-1b54b50673cb",
+      "title": "Funktionentheorie – Gesamtmodul",
+      "titleEn": "Complex Analysis – Full Module",
+      "description": "Nach dem erfolgreichen Abschluss des Moduls verstehen die Studierenden grundlegende Konzepte, Methoden und Resultate der Funktionentheorie. Sie können logische Zusammenhänge zwischen diesen Konzepten diskutieren, anhand von Beispielen erläutern und Aufgaben mit Hilfe der kennengelernten Konzepte und erlernten Methoden lösen. Insbesondere können die Studierenden den Residuenkalkül anwenden.",
+      "descriptionEn": "After successfully completing the module, students understand the fundamental concepts, methods, and results of complex analysis. They can discuss logical connections between these concepts, illustrate them with examples, and solve problems using the concepts and methods introduced. In particular, they can apply the residue calculus.",
+      "weight": 5.0,
+      "tags": [
+        "ects:5",
+        "workload:150h",
+        "presence:45h",
+        "level:bachelor",
+        "language:de",
+        "module:MA2006",
+        "semester:SS",
+        "duration:1_semester",
+        "responsible:warzel_simone"
+      ],
+      "contains": [
+        "ff00fdf3-c381-56ad-886e-e2ec32a3fbfe",
+        "b4f54d03-670d-5bdd-9a74-9201cd36d9f9",
+        "b148c70a-927b-5be9-980d-9d96ec18f963",
+        "19fc165c-826f-5aea-8e37-b8452d3f55c6",
+        "7eab39b0-60b0-5bab-9ce2-970040b2435e",
+        "fc5de43e-9a5e-5940-b4a0-80f20062ba69"
+      ],
+      "requires": [
+        "8eb1605b-fa70-511b-bbe4-28173d359c3b",
+        "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      },
+      "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA2006&description_version=2021w"
+    },
+    {
+      "id": "ff00fdf3-c381-56ad-886e-e2ec32a3fbfe",
+      "title": "Holomorphe Funktionen und Cauchy-Riemann",
+      "titleEn": "Holomorphic Functions and Cauchy–Riemann",
+      "description": "Zusammenfassender Cluster: Holomorphe Funktionen als komplex-differenzierbare Funktionen und als Lösungen der Cauchy-Riemann-Gleichungen.",
+      "descriptionEn": "Summary cluster: holomorphic functions as complex-differentiable functions and as solutions to the Cauchy–Riemann equations.",
+      "weight": 1.0,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [
+        "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46",
+        "0b08a8ec-5793-566d-9753-e3acfd9a554b"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46",
+      "title": "Komplexe Differenzierbarkeit und Holomorphie nutzen",
+      "titleEn": "Use Complex Differentiability and Holomorphy",
+      "description": "Die lernende Person kann die komplexe Ableitung definieren, Holomorphie erkennen und grundlegende Rechenregeln (z.B. Kettenregel) in Beispielen anwenden.",
+      "descriptionEn": "The learner can define the complex derivative, recognize holomorphic functions, and apply basic calculus rules (e.g., the chain rule) in examples.",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [
+        "36cc9e83-757d-57cc-81af-9b5c305f1fa7",
+        "f19c3afa-2479-5ec3-9424-7b82eb4610c6",
+        "4ac2e1ed-2f0c-5ed4-b30c-e36fa6a72357"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0b08a8ec-5793-566d-9753-e3acfd9a554b",
+      "title": "Cauchy-Riemann-Gleichungen anwenden",
+      "titleEn": "Apply the Cauchy–Riemann Equations",
+      "description": "Die lernende Person kann die Cauchy-Riemann-Gleichungen formulieren und in Beispielen nutzen, um Holomorphie zu prüfen und Zusammenhänge zu erklären.",
+      "descriptionEn": "The learner can state the Cauchy–Riemann equations and use them in examples to test holomorphy and explain related properties.",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [
+        "ae1846dc-6f64-51eb-b933-e5e6c2c37b71",
+        "94c767d7-6971-5d6f-9414-d4d0789e1210",
+        "570411d7-b919-506d-b71e-f38be34bd6cf"
+      ],
+      "requires": [
+        "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b4f54d03-670d-5bdd-9a74-9201cd36d9f9",
+      "title": "Holomorphie als Potenzreihendarstellung",
+      "titleEn": "Holomorphy via Power Series Representations",
+      "description": "Zusammenfassender Cluster: Holomorphe Funktionen als Potenzreihen und der Umgang mit Taylor- und Laurententwicklungen.",
+      "descriptionEn": "Summary cluster: holomorphic functions as power series and working with Taylor and Laurent expansions.",
+      "weight": 1.0,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [
+        "2c9b52f8-2b7b-53c2-9bd7-5fa25c8b5f76",
+        "7ddac262-f6a5-5920-a45b-bbf87655f4bd"
+      ],
+      "requires": [
+        "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "2c9b52f8-2b7b-53c2-9bd7-5fa25c8b5f76",
+      "title": "Potenzreihen im Komplexen handhaben",
+      "titleEn": "Handle Power Series in the Complex Plane",
+      "description": "Die lernende Person kann Potenzreihen im Komplexen untersuchen (Konvergenzradius, Ableiten/Integrieren gliedweise) und daraus lokale Darstellungen holomorpher Funktionen gewinnen.",
+      "descriptionEn": "The learner can analyze power series in the complex plane (radius of convergence, termwise differentiation/integration) and use them to obtain local representations of holomorphic functions.",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [
+        "d1697d9e-476a-521f-b203-21b6265e74b0",
+        "07e52aff-3b22-5c57-896e-8fdb87a1252f",
+        "8ebed364-de43-55e4-8377-96eda7d81986"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7ddac262-f6a5-5920-a45b-bbf87655f4bd",
+      "title": "Taylor- und Laurententwicklungen nutzen",
+      "titleEn": "Use Taylor and Laurent Expansions",
+      "description": "Die lernende Person kann Taylor- und Laurententwicklungen in Beispielen bestimmen, Koeffizienten interpretieren und daraus Aussagen über das Verhalten von Funktionen ableiten.",
+      "descriptionEn": "The learner can determine Taylor and Laurent expansions in examples, interpret coefficients, and derive statements about the behavior of functions.",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [
+        "511dbe8d-a896-50f9-9be5-c17a18fbb34c",
+        "07a6ea8f-05c4-50c8-a39e-639bd01fac3c",
+        "e9c44c9b-051c-5468-bdf5-9e37170c461b"
+      ],
+      "requires": [
+        "2c9b52f8-2b7b-53c2-9bd7-5fa25c8b5f76"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b148c70a-927b-5be9-980d-9d96ec18f963",
+      "title": "Komplexe Integration und Integralsätze",
+      "titleEn": "Complex Integration and Integral Theorems",
+      "description": "Zusammenfassender Cluster: Komplexe Kurvenintegrale und grundlegende Integralsätze als Basis der Funktionentheorie.",
+      "descriptionEn": "Summary cluster: complex line integrals and fundamental integral theorems as the basis of complex analysis.",
+      "weight": 1.0,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [
+        "da3781cd-8454-5d71-93b0-f5b006f676c8",
+        "04fd5505-cb9e-5bf2-85c2-faf20248f81b"
+      ],
+      "requires": [
+        "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "da3781cd-8454-5d71-93b0-f5b006f676c8",
+      "title": "Komplexe Kurvenintegrale berechnen",
+      "titleEn": "Compute Complex Line Integrals",
+      "description": "Die lernende Person kann komplexe Kurvenintegrale über parametrisierte Wege berechnen und grundlegende Eigenschaften (z.B. Umparametrisierung, Orientierung) korrekt berücksichtigen.",
+      "descriptionEn": "The learner can compute complex line integrals along parameterized curves and correctly account for basic properties (e.g., reparameterization, orientation).",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [
+        "7982572f-83b8-5040-9ffd-ccbda475966f",
+        "102ec592-2401-5eb0-827c-49343cf08f42",
+        "4cb402a1-0fb3-5413-99c4-fcc460c4c58b"
+      ],
+      "requires": [
+        "52f49ee7-c4c9-5ffe-8917-3e9e06ac4c46"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "04fd5505-cb9e-5bf2-85c2-faf20248f81b",
+      "title": "Cauchy-Integralsätze und Cauchy-Formel anwenden",
+      "titleEn": "Apply Cauchy’s Theorems and the Cauchy Integral Formula",
+      "description": "Die lernende Person kann zentrale Integralsätze (Cauchy-Integralsatz) und die Cauchy-Integralformel anwenden, um Integrale zu bestimmen und Konsequenzen für holomorphe Funktionen herzuleiten.",
+      "descriptionEn": "The learner can apply central integral theorems (Cauchy’s theorem) and the Cauchy integral formula to compute integrals and derive consequences for holomorphic functions.",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [
+        "1c1f07ef-6737-5694-b7f4-79283dbf357e",
+        "0b742658-c8f1-544c-9b2e-6be2f6218a43",
+        "82f23993-5f44-51fe-9647-02e7ae378017"
+      ],
+      "requires": [
+        "da3781cd-8454-5d71-93b0-f5b006f676c8"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "19fc165c-826f-5aea-8e37-b8452d3f55c6",
+      "title": "Singularitäten und Residuen",
+      "titleEn": "Singularities and Residues",
+      "description": "Zusammenfassender Cluster: Singularitäten, Laurentreihen und Residuen als zentrale Werkzeuge zur Integralberechnung.",
+      "descriptionEn": "Summary cluster: singularities, Laurent series, and residues as central tools for evaluating integrals.",
+      "weight": 1.0,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [
+        "1947d8ec-729c-5e12-a2ab-4119a38b81da",
+        "7e2eaa61-54af-59ca-83fe-8538b3cab4be"
+      ],
+      "requires": [
+        "04fd5505-cb9e-5bf2-85c2-faf20248f81b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1947d8ec-729c-5e12-a2ab-4119a38b81da",
+      "title": "Singularitäten klassifizieren",
+      "titleEn": "Classify Singularities",
+      "description": "Die lernende Person kann isolierte Singularitäten mithilfe von Laurentreihen klassifizieren (hebbar, Pol, wesentlich) und das lokale Verhalten von Funktionen daraus ableiten.",
+      "descriptionEn": "The learner can classify isolated singularities using Laurent series (removable, pole, essential) and derive local behavior of functions from this classification.",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [
+        "7298b11c-b03c-5424-ad33-012050730ac5",
+        "6c04b61c-3512-5e76-87e9-18cf76c7dd27",
+        "861e983d-b5cf-5637-9c40-9cc874ce3f94"
+      ],
+      "requires": [
+        "7ddac262-f6a5-5920-a45b-bbf87655f4bd"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7e2eaa61-54af-59ca-83fe-8538b3cab4be",
+      "title": "Residuenkalkül anwenden",
+      "titleEn": "Apply the Residue Calculus",
+      "description": "Die lernende Person kann Residuen berechnen, den Residuensatz anwenden und damit komplexe Integrale sowie ausgewählte reelle Integrale in Beispielen bestimmen.",
+      "descriptionEn": "The learner can compute residues, apply the residue theorem, and use it to evaluate complex integrals as well as selected real integrals in examples.",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [
+        "521bea6f-bf40-5fd3-96cd-2a15d7f13060",
+        "ce1f513e-3383-56c7-9dba-97370e44d082",
+        "a3a27ad8-76dc-52e6-a894-055d3a8d9c02"
+      ],
+      "requires": [
+        "1947d8ec-729c-5e12-a2ab-4119a38b81da",
+        "04fd5505-cb9e-5bf2-85c2-faf20248f81b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7eab39b0-60b0-5bab-9ce2-970040b2435e",
+      "title": "Konforme Abbildungen",
+      "titleEn": "Conformal Mappings",
+      "description": "Zusammenfassender Cluster: Konforme Abbildungen als Anwendung holomorpher Funktionen zur Geometrie komplexer Gebiete.",
+      "descriptionEn": "Summary cluster: conformal mappings as an application of holomorphic functions to the geometry of complex domains.",
+      "weight": 1.0,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [
+        "876ab522-b4f6-5698-982b-c5ae4c5c2699",
+        "e7ccfb07-2b21-505b-9580-ccff19447438"
+      ],
+      "requires": [
+        "0b08a8ec-5793-566d-9753-e3acfd9a554b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "876ab522-b4f6-5698-982b-c5ae4c5c2699",
+      "title": "Konforme Abbildungen erkennen und Eigenschaften nutzen",
+      "titleEn": "Recognize Conformal Maps and Use Their Properties",
+      "description": "Die lernende Person kann Konformität holomorpher Abbildungen (lokale Winkeltreue bei nichtverschwindender Ableitung) erklären und in Beispielen prüfen.",
+      "descriptionEn": "The learner can explain conformality of holomorphic maps (local angle preservation when the derivative is nonzero) and verify it in examples.",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [
+        "24f1b05c-0791-54c1-a761-faffa8d4d97c",
+        "35ce20f1-af9a-5b51-a0e7-097194c0a777",
+        "8f0fb7b9-0d78-5b65-951d-c26da02ee3c1"
+      ],
+      "requires": [
+        "0b08a8ec-5793-566d-9753-e3acfd9a554b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e7ccfb07-2b21-505b-9580-ccff19447438",
+      "title": "Möbiustransformationen und elementare Abbildungen anwenden",
+      "titleEn": "Apply Möbius Transformations and Elementary Maps",
+      "description": "Die lernende Person kann Möbiustransformationen sowie elementare konforme Abbildungen (z.B. Exponential- und Logarithmusabbildung mit Verzweigungen) zur Abbildung einfacher Gebiete einsetzen und Ergebnisse interpretieren.",
+      "descriptionEn": "The learner can use Möbius transformations and elementary conformal maps (e.g., exponential and logarithm maps with branches) to map simple domains and interpret the results.",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [
+        "b5837e4a-8694-5d5e-99c7-3efb0329eaab",
+        "4c866cba-be9e-5a9c-9461-be0940f49a80",
+        "9c92411b-c4cb-59de-8687-c64ad77b2329"
+      ],
+      "requires": [
+        "876ab522-b4f6-5698-982b-c5ae4c5c2699"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "fc5de43e-9a5e-5940-b4a0-80f20062ba69",
+      "title": "Kernaussagen des Moduls memorisieren",
+      "titleEn": "Memorize Key Module Statements",
+      "description": "Die lernende Person hat alle zentralen Definitionen und Sätze des Moduls verinnerlicht (geprüft z.B. durch SRS/Lernkarten).",
+      "descriptionEn": "The learner has internalized all key definitions and theorems of the module (verified e.g. via SRS/flashcards).",
+      "weight": 0.5,
+      "tags": [
+        "module:MA2006",
+        "srs-deck:ma2006"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/ma2006_deck.json"
+      },
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "36cc9e83-757d-57cc-81af-9b5c305f1fa7",
+      "title": "Kennen: Komplexe Differenzierbarkeit und Holomorphie nutzen",
+      "titleEn": "Know: Use Complex Differentiability and Holomorphy",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Komplexe Differenzierbarkeit und Holomorphie nutzen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Complex Differentiability and Holomorphy'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f19c3afa-2479-5ec3-9424-7b82eb4610c6",
+      "title": "Verstehen: Komplexe Differenzierbarkeit und Holomorphie nutzen",
+      "titleEn": "Understand: Use Complex Differentiability and Holomorphy",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Komplexe Differenzierbarkeit und Holomorphie nutzen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Use Complex Differentiability and Holomorphy'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "36cc9e83-757d-57cc-81af-9b5c305f1fa7"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4ac2e1ed-2f0c-5ed4-b30c-e36fa6a72357",
+      "title": "Anwenden: Komplexe Differenzierbarkeit und Holomorphie nutzen",
+      "titleEn": "Apply: Use Complex Differentiability and Holomorphy",
+      "description": "Die lernende Person wendet das Wissen zu 'Komplexe Differenzierbarkeit und Holomorphie nutzen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Use Complex Differentiability and Holomorphy' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "f19c3afa-2479-5ec3-9424-7b82eb4610c6"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ae1846dc-6f64-51eb-b933-e5e6c2c37b71",
+      "title": "Kennen: Cauchy-Riemann-Gleichungen anwenden",
+      "titleEn": "Know: Apply the Cauchy–Riemann Equations",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Cauchy-Riemann-Gleichungen anwenden' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply the Cauchy–Riemann Equations'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "94c767d7-6971-5d6f-9414-d4d0789e1210",
+      "title": "Verstehen: Cauchy-Riemann-Gleichungen anwenden",
+      "titleEn": "Understand: Apply the Cauchy–Riemann Equations",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Cauchy-Riemann-Gleichungen anwenden'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Apply the Cauchy–Riemann Equations'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "ae1846dc-6f64-51eb-b933-e5e6c2c37b71"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "570411d7-b919-506d-b71e-f38be34bd6cf",
+      "title": "Anwenden: Cauchy-Riemann-Gleichungen anwenden",
+      "titleEn": "Apply: Apply the Cauchy–Riemann Equations",
+      "description": "Die lernende Person wendet das Wissen zu 'Cauchy-Riemann-Gleichungen anwenden' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Apply the Cauchy–Riemann Equations' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "94c767d7-6971-5d6f-9414-d4d0789e1210"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d1697d9e-476a-521f-b203-21b6265e74b0",
+      "title": "Kennen: Potenzreihen im Komplexen handhaben",
+      "titleEn": "Know: Handle Power Series in the Complex Plane",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Potenzreihen im Komplexen handhaben' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Handle Power Series in the Complex Plane'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "07e52aff-3b22-5c57-896e-8fdb87a1252f",
+      "title": "Verstehen: Potenzreihen im Komplexen handhaben",
+      "titleEn": "Understand: Handle Power Series in the Complex Plane",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Potenzreihen im Komplexen handhaben'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Handle Power Series in the Complex Plane'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "d1697d9e-476a-521f-b203-21b6265e74b0"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8ebed364-de43-55e4-8377-96eda7d81986",
+      "title": "Anwenden: Potenzreihen im Komplexen handhaben",
+      "titleEn": "Apply: Handle Power Series in the Complex Plane",
+      "description": "Die lernende Person wendet das Wissen zu 'Potenzreihen im Komplexen handhaben' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Handle Power Series in the Complex Plane' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "07e52aff-3b22-5c57-896e-8fdb87a1252f"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "511dbe8d-a896-50f9-9be5-c17a18fbb34c",
+      "title": "Kennen: Taylor- und Laurententwicklungen nutzen",
+      "titleEn": "Know: Use Taylor and Laurent Expansions",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Taylor- und Laurententwicklungen nutzen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Taylor and Laurent Expansions'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "07a6ea8f-05c4-50c8-a39e-639bd01fac3c",
+      "title": "Verstehen: Taylor- und Laurententwicklungen nutzen",
+      "titleEn": "Understand: Use Taylor and Laurent Expansions",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Taylor- und Laurententwicklungen nutzen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Use Taylor and Laurent Expansions'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "511dbe8d-a896-50f9-9be5-c17a18fbb34c"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e9c44c9b-051c-5468-bdf5-9e37170c461b",
+      "title": "Anwenden: Taylor- und Laurententwicklungen nutzen",
+      "titleEn": "Apply: Use Taylor and Laurent Expansions",
+      "description": "Die lernende Person wendet das Wissen zu 'Taylor- und Laurententwicklungen nutzen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Use Taylor and Laurent Expansions' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "07a6ea8f-05c4-50c8-a39e-639bd01fac3c"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7982572f-83b8-5040-9ffd-ccbda475966f",
+      "title": "Kennen: Komplexe Kurvenintegrale berechnen",
+      "titleEn": "Know: Compute Complex Line Integrals",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Komplexe Kurvenintegrale berechnen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Compute Complex Line Integrals'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "102ec592-2401-5eb0-827c-49343cf08f42",
+      "title": "Verstehen: Komplexe Kurvenintegrale berechnen",
+      "titleEn": "Understand: Compute Complex Line Integrals",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Komplexe Kurvenintegrale berechnen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Compute Complex Line Integrals'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "7982572f-83b8-5040-9ffd-ccbda475966f"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4cb402a1-0fb3-5413-99c4-fcc460c4c58b",
+      "title": "Anwenden: Komplexe Kurvenintegrale berechnen",
+      "titleEn": "Apply: Compute Complex Line Integrals",
+      "description": "Die lernende Person wendet das Wissen zu 'Komplexe Kurvenintegrale berechnen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Compute Complex Line Integrals' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "102ec592-2401-5eb0-827c-49343cf08f42"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1c1f07ef-6737-5694-b7f4-79283dbf357e",
+      "title": "Kennen: Cauchy-Integralsätze und Cauchy-Formel anwenden",
+      "titleEn": "Know: Apply Cauchy’s Theorems and the Cauchy Integral Formula",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Cauchy-Integralsätze und Cauchy-Formel anwenden' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply Cauchy’s Theorems and the Cauchy Integral Formula'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0b742658-c8f1-544c-9b2e-6be2f6218a43",
+      "title": "Verstehen: Cauchy-Integralsätze und Cauchy-Formel anwenden",
+      "titleEn": "Understand: Apply Cauchy’s Theorems and the Cauchy Integral Formula",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Cauchy-Integralsätze und Cauchy-Formel anwenden'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Apply Cauchy’s Theorems and the Cauchy Integral Formula'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "1c1f07ef-6737-5694-b7f4-79283dbf357e"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "82f23993-5f44-51fe-9647-02e7ae378017",
+      "title": "Anwenden: Cauchy-Integralsätze und Cauchy-Formel anwenden",
+      "titleEn": "Apply: Apply Cauchy’s Theorems and the Cauchy Integral Formula",
+      "description": "Die lernende Person wendet das Wissen zu 'Cauchy-Integralsätze und Cauchy-Formel anwenden' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Apply Cauchy’s Theorems and the Cauchy Integral Formula' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "0b742658-c8f1-544c-9b2e-6be2f6218a43"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7298b11c-b03c-5424-ad33-012050730ac5",
+      "title": "Kennen: Singularitäten klassifizieren",
+      "titleEn": "Know: Classify Singularities",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Singularitäten klassifizieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Classify Singularities'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6c04b61c-3512-5e76-87e9-18cf76c7dd27",
+      "title": "Verstehen: Singularitäten klassifizieren",
+      "titleEn": "Understand: Classify Singularities",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Singularitäten klassifizieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Classify Singularities'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "7298b11c-b03c-5424-ad33-012050730ac5"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "861e983d-b5cf-5637-9c40-9cc874ce3f94",
+      "title": "Anwenden: Singularitäten klassifizieren",
+      "titleEn": "Apply: Classify Singularities",
+      "description": "Die lernende Person wendet das Wissen zu 'Singularitäten klassifizieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Classify Singularities' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "6c04b61c-3512-5e76-87e9-18cf76c7dd27"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "521bea6f-bf40-5fd3-96cd-2a15d7f13060",
+      "title": "Kennen: Residuenkalkül anwenden",
+      "titleEn": "Know: Apply the Residue Calculus",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Residuenkalkül anwenden' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply the Residue Calculus'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ce1f513e-3383-56c7-9dba-97370e44d082",
+      "title": "Verstehen: Residuenkalkül anwenden",
+      "titleEn": "Understand: Apply the Residue Calculus",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Residuenkalkül anwenden'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Apply the Residue Calculus'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "521bea6f-bf40-5fd3-96cd-2a15d7f13060"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a3a27ad8-76dc-52e6-a894-055d3a8d9c02",
+      "title": "Anwenden: Residuenkalkül anwenden",
+      "titleEn": "Apply: Apply the Residue Calculus",
+      "description": "Die lernende Person wendet das Wissen zu 'Residuenkalkül anwenden' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Apply the Residue Calculus' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "ce1f513e-3383-56c7-9dba-97370e44d082"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "24f1b05c-0791-54c1-a761-faffa8d4d97c",
+      "title": "Kennen: Konforme Abbildungen erkennen und Eigenschaften nutzen",
+      "titleEn": "Know: Recognize Conformal Maps and Use Their Properties",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Konforme Abbildungen erkennen und Eigenschaften nutzen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Recognize Conformal Maps and Use Their Properties'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "35ce20f1-af9a-5b51-a0e7-097194c0a777",
+      "title": "Verstehen: Konforme Abbildungen erkennen und Eigenschaften nutzen",
+      "titleEn": "Understand: Recognize Conformal Maps and Use Their Properties",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Konforme Abbildungen erkennen und Eigenschaften nutzen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Recognize Conformal Maps and Use Their Properties'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "24f1b05c-0791-54c1-a761-faffa8d4d97c"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8f0fb7b9-0d78-5b65-951d-c26da02ee3c1",
+      "title": "Anwenden: Konforme Abbildungen erkennen und Eigenschaften nutzen",
+      "titleEn": "Apply: Recognize Conformal Maps and Use Their Properties",
+      "description": "Die lernende Person wendet das Wissen zu 'Konforme Abbildungen erkennen und Eigenschaften nutzen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Recognize Conformal Maps and Use Their Properties' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "35ce20f1-af9a-5b51-a0e7-097194c0a777"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b5837e4a-8694-5d5e-99c7-3efb0329eaab",
+      "title": "Kennen: Möbiustransformationen und elementare Abbildungen anwenden",
+      "titleEn": "Know: Apply Möbius Transformations and Elementary Maps",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Möbiustransformationen und elementare Abbildungen anwenden' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply Möbius Transformations and Elementary Maps'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4c866cba-be9e-5a9c-9461-be0940f49a80",
+      "title": "Verstehen: Möbiustransformationen und elementare Abbildungen anwenden",
+      "titleEn": "Understand: Apply Möbius Transformations and Elementary Maps",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Möbiustransformationen und elementare Abbildungen anwenden'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Apply Möbius Transformations and Elementary Maps'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "b5837e4a-8694-5d5e-99c7-3efb0329eaab"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9c92411b-c4cb-59de-8687-c64ad77b2329",
+      "title": "Anwenden: Möbiustransformationen und elementare Abbildungen anwenden",
+      "titleEn": "Apply: Apply Möbius Transformations and Elementary Maps",
+      "description": "Die lernende Person wendet das Wissen zu 'Möbiustransformationen und elementare Abbildungen anwenden' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Apply Möbius Transformations and Elementary Maps' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA2006"
+      ],
+      "contains": [],
+      "requires": [
+        "4c866cba-be9e-5a9c-9461-be0940f49a80"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma2006",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    }
+  ]
 }

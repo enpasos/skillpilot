@@ -1,2463 +1,1910 @@
 {
-    "title": "Dynamische Systeme (TUM, Modul MA3081)",
-    "titleEn": "Dynamical Systems (TUM, Module MA3081)",
-    "description": "Das Modul vertieft die mathematische Theorie dynamischer Systeme mit Fokus auf geometrische und topologische Eigenschaften von Lösungen nichtlinearer gewöhnlicher Differentialgleichungen sowie iterierter Abbildungen in endlich-dimensionalen Phasenräumen. Behandelt werden u.a. Stabilität und Lyapunovfunktionen, Poincaré-Abbildungen, stabile/instabile Mannigfaltigkeiten, hyperbolische Mengen und strukturelle Stabilität, lokale und globale Bifurkationen, sowie chaotische Dynamik, symbolische Dynamik und ergodische Aspekte (invariante Maße, Rekurrenz, Ergodizität, Entropie). 9 ECTS, angeboten im Sommersemester, Version 2021w, verantwortet von Kühn, Christian.",
-    "descriptionEn": "The module deepens the mathematical theory of dynamical systems with an emphasis on geometric and topological properties of solutions of nonlinear ordinary differential equations as well as iterated maps in finite-dimensional phase spaces. Topics include stability and Lyapunov functions, Poincaré maps, stable and unstable manifolds, hyperbolic sets and structural stability, local and global bifurcations, and chaotic dynamics including symbolic dynamics and ergodic aspects (invariant measures, recurrence, ergodicity, entropy). 9 ECTS, offered in the summer semester, version 2021w, responsible: Kühn, Christian.",
-    "landscapeId": "904174e1-a5e0-4146-a2b4-cd8e6eabea09",
-    "locale": "de-DE",
-    "subject": "Mathematik",
-    "frameworkId": "tum-ma3081",
-    "filters": [
-        {
-            "id": "BSc",
-            "label": "Bachelor Mathematik"
-        }
-    ],
-    "goals": [
-        {
-            "id": "eb6fe417-5b78-4c8a-9a9a-55a9d8e02ef5",
-            "shortKey": "tum_ma3081_module",
-            "title": "Dynamische Systeme – Gesamtmodul",
-            "titleEn": "Dynamical Systems – Full Module",
-            "description": "Nach erfolgreichem Abschluss können Studierende die mathematische Theorie dynamischer Systeme verstehen und anwenden, mit Schwerpunkt auf der Analyse geometrischer und topologischer Eigenschaften von Lösungen nichtlinearer gewöhnlicher Differentialgleichungen sowie iterierter Abbildungen in endlich-dimensionalen euklidischen Phasenräumen. Darüber hinaus können sie Elemente der Theorie von Systemen auf differenzierbaren Mannigfaltigkeiten sowie in unendlich-dimensionalen Phasenräumen einordnen.",
-            "descriptionEn": "After successful completion of the module the students are able to understand and apply the mathematical theory of dynamical systems stressing the analysis of geometric and topological properties of solutions of nonlinear ordinary differential equations as well as iterated maps in finite-dimensional Euclidean phase spaces. Furthermore the students are able to analyse elements for the theory of systems on differentiable manifolds and in infinite-dimensional phase spaces.",
-            "core": true,
-            "weight": 9.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "ects:9",
-                "workload:270h",
-                "presence:90h",
-                "level:master",
-                "language:en",
-                "module:MA3081",
-                "semester:SS",
-                "duration:1_semester",
-                "responsible:k_hn_christian"
-            ],
-            "contains": [
-                "b5c62c99-0982-5e36-8c2d-afced50272ca",
-                "47fbf825-ee74-5f82-893f-19d204f0101c",
-                "3ab0f6ac-ff8c-5163-ac8f-0a5c525e1fe1",
-                "44de45cd-dc60-5322-a5e5-6d924dfc5b54",
-                "ef08304a-3c61-5632-93b4-03c7eff0ae58",
-                "bf7bc449-c806-52c4-9368-d726be03922c",
-                "387a9082-e090-533b-a1eb-0a38e65788f8",
-                "c5d9c36d-fcc5-5ae3-a2f8-a6aea41394e7",
-                "a38d1e6b-e289-5527-af12-0e69017c0e4e"
-            ],
-            "requires": [
-                "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
-                "c8982665-86b6-5371-8682-852992cab2e7"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Gesamtkompetenz",
-                "topicCode": "tum_ma3081_module"
-            },
-            "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA3081&description_version=2021w"
-        },
-        {
-            "id": "b5c62c99-0982-5e36-8c2d-afced50272ca",
-            "shortKey": "tum_ma3081_lo1",
-            "title": "Stabilität und Lyapunovtheorie",
-            "titleEn": "Stability and Lyapunov Theory",
-            "description": "Zusammenfassender Cluster: Stabilitätsbegriffe und Lyapunovfunktionen als zentrale Werkzeuge der qualitativen Dynamik.",
-            "descriptionEn": "Summary cluster: stability notions and Lyapunov functions as central tools of qualitative dynamics.",
-            "core": true,
-            "weight": 1.2,
-            "phase": "Modul",
-            "area": "Stabilität & Lyapunov",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "a704436d-7d15-51d2-9ee3-d2e7cc1962df",
-                "47c37263-b045-5f35-9559-f2c0a1343150"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Stabilität & Lyapunov",
-                "topicCode": "tum_ma3081_lo1"
-            }
-        },
-        {
-            "id": "a704436d-7d15-51d2-9ee3-d2e7cc1962df",
-            "shortKey": "tum_ma3081_lo1_1",
-            "title": "Stabilitätsbegriffe für Flüsse und Abbildungen anwenden",
-            "titleEn": "Apply Stability Notions for Flows and Maps",
-            "description": "Zusammenfassender Cluster: Stabilitätsbegriffe für Gleichgewichte/Fixpunkte formulieren und in Beispielen anwenden.",
-            "descriptionEn": "Summary cluster: formulate stability notions for equilibria/fixed points and apply them in examples.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Stabilität & Lyapunov",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "faa6ecb3-4fba-459a-a93c-eb97348c893e",
-                "77b5ff6d-5f15-4a01-8a5a-17b800c65fad"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Stabilität & Lyapunov",
-                "topicCode": "tum_ma3081_lo1_1"
-            }
-        },
-        {
-            "id": "47c37263-b045-5f35-9559-f2c0a1343150",
-            "shortKey": "tum_ma3081_lo1_2",
-            "title": "Lyapunovfunktionen konstruieren und verwenden",
-            "titleEn": "Construct and Use Lyapunov Functions",
-            "description": "Die lernende Person kann Lyapunovfunktionen zur Stabilitätsanalyse einsetzen, geeignete Kandidaten begründen und typische Schlussweisen (z.B. Invarianzprinzip) in Aufgaben nachvollziehen.",
-            "descriptionEn": "The learner can use Lyapunov functions for stability analysis, justify suitable candidates, and follow standard reasoning patterns (e.g., invariance principles) in problems.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Stabilität & Lyapunov",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "239197bf-7a96-5b6d-b98e-0bb8b455d60a",
-                "95ddfc21-078d-5560-9dff-c46294ce8fd1",
-                "1860da02-c6a7-50a3-88b7-7303acb52048"
-            ],
-            "requires": [
-                "a704436d-7d15-51d2-9ee3-d2e7cc1962df"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Stabilität & Lyapunov",
-                "topicCode": "tum_ma3081_lo1_2"
-            }
-        },
-        {
-            "id": "47fbf825-ee74-5f82-893f-19d204f0101c",
-            "shortKey": "tum_ma3081_lo2",
-            "title": "Poincaré-Abbildungen und invariante Mannigfaltigkeiten",
-            "titleEn": "Poincaré Maps and Invariant Manifolds",
-            "description": "Zusammenfassender Cluster: Poincaré-Abbildung, invariante Mannigfaltigkeiten und Hartman-Grobman als Werkzeuge der lokalen Theorie.",
-            "descriptionEn": "Summary cluster: Poincaré maps, invariant manifolds, and Hartman–Grobman as tools of local theory.",
-            "core": true,
-            "weight": 1.1,
-            "phase": "Modul",
-            "area": "Lokale Theorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "8fe1e6f5-649b-5714-a55c-ef128f2bf297",
-                "d4fe6023-ab12-5b93-8462-9164a6f77320"
-            ],
-            "requires": [
-                "47c37263-b045-5f35-9559-f2c0a1343150"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lokale Theorie",
-                "topicCode": "tum_ma3081_lo2"
-            }
-        },
-        {
-            "id": "8fe1e6f5-649b-5714-a55c-ef128f2bf297",
-            "shortKey": "tum_ma3081_lo2_1",
-            "title": "Poincaré-Abbildung für periodische Orbits einsetzen",
-            "titleEn": "Use the Poincaré Map for Periodic Orbits",
-            "description": "Die lernende Person kann Poincaré-Abbildungen konstruieren und nutzen, um periodische Orbits zu analysieren, Stabilität über Monodromie/Multiplikatoren zu beurteilen und Beispiele zu bearbeiten.",
-            "descriptionEn": "The learner can construct and use Poincaré maps to analyze periodic orbits, assess stability via multipliers/monodromy, and work through examples.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Lokale Theorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "e8208f84-1327-511d-af84-51dbc4f13001",
-                "e722085d-f964-57db-9563-b17d6ba97dbf",
-                "1bf3f24a-21cf-58c3-8189-0687a9fcc5cb"
-            ],
-            "requires": [
-                "47c37263-b045-5f35-9559-f2c0a1343150"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lokale Theorie",
-                "topicCode": "tum_ma3081_lo2_1"
-            }
-        },
-        {
-            "id": "d4fe6023-ab12-5b93-8462-9164a6f77320",
-            "shortKey": "tum_ma3081_lo2_2",
-            "title": "Invariante Mannigfaltigkeiten und Hartman-Grobman einordnen",
-            "titleEn": "Place Invariant Manifolds and the Hartman–Grobman Theorem",
-            "description": "Die lernende Person kann stabile/instabile Mannigfaltigkeiten für hyperbolische Fixpunkte beschreiben und das Hartman-Grobman-Theorem zur lokalen Topologie-Konjugation mit der Linearisierung nutzen.",
-            "descriptionEn": "The learner can describe stable/unstable manifolds for hyperbolic fixed points and use the Hartman–Grobman theorem to relate local dynamics to the linearization via topological conjugacy.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Lokale Theorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "aef79897-b2ee-5b2d-9944-c8caae432339",
-                "ead4af29-f2fe-5819-a21d-3a99e8984564",
-                "10693c75-3c4b-5f36-bde8-c06a6c1556a6"
-            ],
-            "requires": [
-                "8fe1e6f5-649b-5714-a55c-ef128f2bf297"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lokale Theorie",
-                "topicCode": "tum_ma3081_lo2_2"
-            }
-        },
-        {
-            "id": "3ab0f6ac-ff8c-5163-ac8f-0a5c525e1fe1",
-            "shortKey": "tum_ma3081_lo3",
-            "title": "Hyperbolische Dynamik und strukturelle Stabilität",
-            "titleEn": "Hyperbolic Dynamics and Structural Stability",
-            "description": "Zusammenfassender Cluster: Hyperbolische Mengen, strukturelle Stabilität und Anosov-Systeme als Kern der hyperbolischen Dynamik.",
-            "descriptionEn": "Summary cluster: hyperbolic sets, structural stability, and Anosov systems as core topics of hyperbolic dynamics.",
-            "core": true,
-            "weight": 1.1,
-            "phase": "Modul",
-            "area": "Hyperbolische Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "510a55e6-f6a2-5e13-822e-f8691b818bcd",
-                "037a6667-629e-56b5-8402-570dda7d9e00"
-            ],
-            "requires": [
-                "d4fe6023-ab12-5b93-8462-9164a6f77320"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Hyperbolische Dynamik",
-                "topicCode": "tum_ma3081_lo3"
-            }
-        },
-        {
-            "id": "510a55e6-f6a2-5e13-822e-f8691b818bcd",
-            "shortKey": "tum_ma3081_lo3_1",
-            "title": "Hyperbolische Mengen und strukturelle Stabilität verstehen",
-            "titleEn": "Understand Hyperbolic Sets and Structural Stability",
-            "description": "Die lernende Person kann hyperbolische Mengen definieren, strukturelle Stabilität einordnen und zentrale Konsequenzen (z.B. Persistenz unter Störungen) in Beispielen diskutieren.",
-            "descriptionEn": "The learner can define hyperbolic sets, place structural stability, and discuss key consequences (e.g., persistence under perturbations) in examples.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Hyperbolische Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "20328260-303c-545b-a246-3d300e9867ec",
-                "eb49e8de-4fad-5d1a-90f5-cca125c58d30",
-                "ca25ed90-2ac4-5f28-a82e-8796cb801d02"
-            ],
-            "requires": [
-                "d4fe6023-ab12-5b93-8462-9164a6f77320"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Hyperbolische Dynamik",
-                "topicCode": "tum_ma3081_lo3_1"
-            }
-        },
-        {
-            "id": "037a6667-629e-56b5-8402-570dda7d9e00",
-            "shortKey": "tum_ma3081_lo3_2",
-            "title": "Anosov-Diffeomorphismen und Beispiele hyperbolischer Dynamik einordnen",
-            "titleEn": "Place Anosov Diffeomorphisms and Examples of Hyperbolic Dynamics",
-            "description": "Die lernende Person kann Anosov-Diffeomorphismen als global hyperbolische Systeme charakterisieren, Beispiele diskutieren und ihre Rolle in der Theorie hyperbolischer Dynamik erklären.",
-            "descriptionEn": "The learner can characterize Anosov diffeomorphisms as globally hyperbolic systems, discuss examples, and explain their role in hyperbolic dynamics.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Hyperbolische Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "96b3d368-488e-592b-b6ea-73b4dcb9451a",
-                "d432a434-f85a-5264-910e-c306a15e64d5",
-                "80f51be2-3664-58a4-bfed-051cb331984b"
-            ],
-            "requires": [
-                "510a55e6-f6a2-5e13-822e-f8691b818bcd"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Hyperbolische Dynamik",
-                "topicCode": "tum_ma3081_lo3_2"
-            }
-        },
-        {
-            "id": "44de45cd-dc60-5322-a5e5-6d924dfc5b54",
-            "shortKey": "tum_ma3081_lo4",
-            "title": "Lokale Bifurkationen, Normalformen, Zentrumsmannigfaltigkeit",
-            "titleEn": "Local Bifurcations, Normal Forms, Center Manifolds",
-            "description": "Zusammenfassender Cluster: Lokale Bifurkationen in Flüssen/Abbildungen mit Normalformen und Zentrumsmannigfaltigkeit.",
-            "descriptionEn": "Summary cluster: local bifurcations in flows/maps using normal forms and center manifolds.",
-            "core": true,
-            "weight": 1.2,
-            "phase": "Modul",
-            "area": "Bifurkationstheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "612bccfd-d090-5b8f-8a3a-c72cb9ab6e6b",
-                "1923026d-4429-5619-b075-6f420beaf9a0"
-            ],
-            "requires": [
-                "d4fe6023-ab12-5b93-8462-9164a6f77320"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Bifurkationstheorie",
-                "topicCode": "tum_ma3081_lo4"
-            }
-        },
-        {
-            "id": "612bccfd-d090-5b8f-8a3a-c72cb9ab6e6b",
-            "shortKey": "tum_ma3081_lo4_1",
-            "title": "Lokale Bifurkationen von Flüssen und Abbildungen analysieren",
-            "titleEn": "Analyze Local Bifurcations of Flows and Maps",
-            "description": "Die lernende Person kann lokale Bifurkationen in Flüssen und Abbildungen identifizieren und deren qualitative Dynamik in Abhängigkeit eines Parameters beschreiben.",
-            "descriptionEn": "The learner can identify local bifurcations in flows and maps and describe the qualitative parameter-dependent dynamics.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Bifurkationstheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "dc8b2a3e-a4e6-5427-bffd-302cd49ca0ce",
-                "860c0430-5749-5ce3-b1f4-4c334b1a5bc0",
-                "2c26201e-a47c-50ee-b72f-066bceec3f80"
-            ],
-            "requires": [
-                "d4fe6023-ab12-5b93-8462-9164a6f77320"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Bifurkationstheorie",
-                "topicCode": "tum_ma3081_lo4_1"
-            }
-        },
-        {
-            "id": "1923026d-4429-5619-b075-6f420beaf9a0",
-            "shortKey": "tum_ma3081_lo4_2",
-            "title": "Normalformen und Zentrumsmannigfaltigkeiten nutzen",
-            "titleEn": "Use Normal Forms and Center Manifolds",
-            "description": "Die lernende Person kann Normalformen zur lokalen Analyse heranziehen und Zentrumsmannigfaltigkeiten zur Dimensionsreduktion und Bifurkationsanalyse in Beispielen einsetzen.",
-            "descriptionEn": "The learner can use normal forms for local analysis and apply center manifolds for dimension reduction and bifurcation analysis in examples.",
-            "core": true,
-            "weight": 0.6,
-            "phase": "Modul",
-            "area": "Bifurkationstheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "4e812ea6-ba6b-5e4a-b2b0-f28150153ad9",
-                "87cabc71-fb8d-5bd1-9970-d00af9c0c418",
-                "a0dea8af-8a42-571f-b974-a1119bb102fc"
-            ],
-            "requires": [
-                "612bccfd-d090-5b8f-8a3a-c72cb9ab6e6b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Bifurkationstheorie",
-                "topicCode": "tum_ma3081_lo4_2"
-            }
-        },
-        {
-            "id": "ef08304a-3c61-5632-93b4-03c7eff0ae58",
-            "shortKey": "tum_ma3081_lo5",
-            "title": "Globale Bifurkationen und Melnikov",
-            "titleEn": "Global Bifurcations and Melnikov’s Method",
-            "description": "Zusammenfassender Cluster: Globale Bifurkationen (u.a. Shilnikov) und Melnikov-Methode als Zugang zu komplexer Dynamik.",
-            "descriptionEn": "Summary cluster: global bifurcations (including Shilnikov) and Melnikov’s method as a route to complex dynamics.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Globale Bifurkationen",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "b5ece4bb-86c7-5329-adf0-91b5bdea887d",
-                "e68442e1-b286-59cc-9ca7-93ea22c397da"
-            ],
-            "requires": [
-                "1923026d-4429-5619-b075-6f420beaf9a0"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Globale Bifurkationen",
-                "topicCode": "tum_ma3081_lo5"
-            }
-        },
-        {
-            "id": "b5ece4bb-86c7-5329-adf0-91b5bdea887d",
-            "shortKey": "tum_ma3081_lo5_1",
-            "title": "Globale Bifurkationen und Shilnikov-Bedingung einordnen",
-            "titleEn": "Place Global Bifurcations and the Shilnikov Condition",
-            "description": "Die lernende Person kann globale Bifurkationen (homoklin/heteroklin) beschreiben, ihre Bedeutung für komplexe Dynamik erläutern und die Shilnikov-Bedingung in Beispielen einordnen.",
-            "descriptionEn": "The learner can describe global bifurcations (homoclinic/heteroclinic), explain their relevance for complex dynamics, and place the Shilnikov condition in examples.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Globale Bifurkationen",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "a0719cf2-8fac-5437-b878-3efa6b4f076a",
-                "885b0327-cfcc-5ed4-9a87-11d9c575f9be",
-                "419bad59-559c-5f0c-b4cd-ea5da07cc50e"
-            ],
-            "requires": [
-                "1923026d-4429-5619-b075-6f420beaf9a0"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Globale Bifurkationen",
-                "topicCode": "tum_ma3081_lo5_1"
-            }
-        },
-        {
-            "id": "e68442e1-b286-59cc-9ca7-93ea22c397da",
-            "shortKey": "tum_ma3081_lo5_2",
-            "title": "Melnikov-Methode zur Detektion von Chaos anwenden",
-            "titleEn": "Apply Melnikov’s Method to Detect Chaos",
-            "description": "Die lernende Person kann die Melnikov-Methode in Modellproblemen einsetzen, transversale Schnitte stabiler/instabiler Mannigfaltigkeiten nachweisen und daraus chaotische Dynamik motivieren.",
-            "descriptionEn": "The learner can use Melnikov’s method in model problems to establish transversal intersections of stable/unstable manifolds and motivate chaotic dynamics from this.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Globale Bifurkationen",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "624ad55f-a824-5664-a38b-917e6b78167b",
-                "8aa67714-0c06-5706-bd1b-4589f973e49a",
-                "1eeab15e-101b-50db-b585-b94b89ad1ece"
-            ],
-            "requires": [
-                "b5ece4bb-86c7-5329-adf0-91b5bdea887d"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Globale Bifurkationen",
-                "topicCode": "tum_ma3081_lo5_2"
-            }
-        },
-        {
-            "id": "bf7bc449-c806-52c4-9368-d726be03922c",
-            "shortKey": "tum_ma3081_lo6",
-            "title": "Chaotische Dynamik und symbolische Dynamik",
-            "titleEn": "Chaotic Dynamics and Symbolic Dynamics",
-            "description": "Zusammenfassender Cluster: Chaos (Horseshoe, seltsame Attraktoren), Symbolik und quantitative Begriffe (Lyapunov-Exponenten).",
-            "descriptionEn": "Summary cluster: chaos (horseshoes, strange attractors), symbolic dynamics, and quantitative notions (Lyapunov exponents).",
-            "core": true,
-            "weight": 1.3,
-            "phase": "Modul",
-            "area": "Chaos & Symbolik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "599a5516-00ad-5722-a112-0fc4e7582276",
-                "c312a4a9-d3b6-59ff-87b1-f4deeb1a0ba8"
-            ],
-            "requires": [
-                "e68442e1-b286-59cc-9ca7-93ea22c397da"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Chaos & Symbolik",
-                "topicCode": "tum_ma3081_lo6"
-            }
-        },
-        {
-            "id": "599a5516-00ad-5722-a112-0fc4e7582276",
-            "shortKey": "tum_ma3081_lo6_1",
-            "title": "Smale-Horseshoe und symbolische Dynamik verstehen",
-            "titleEn": "Understand the Smale Horseshoe and Symbolic Dynamics",
-            "description": "Die lernende Person kann die Smale-Horseshoe-Konstruktion erklären, transitive/hyperbolische Invariantenmengen einordnen und symbolische Dynamik als Kodierung komplexer Dynamik nutzen.",
-            "descriptionEn": "The learner can explain the Smale horseshoe construction, place transitive/hyperbolic invariant sets, and use symbolic dynamics as an encoding of complex dynamics.",
-            "core": true,
-            "weight": 0.65,
-            "phase": "Modul",
-            "area": "Chaos & Symbolik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "031f1ff5-f45a-5889-a649-e158f10ac47b",
-                "dd31e56f-6400-5628-8f83-0bfe936d2ab3",
-                "28bcd73c-6f78-5655-ad33-63d1ffc35afc"
-            ],
-            "requires": [
-                "e68442e1-b286-59cc-9ca7-93ea22c397da"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Chaos & Symbolik",
-                "topicCode": "tum_ma3081_lo6_1"
-            }
-        },
-        {
-            "id": "c312a4a9-d3b6-59ff-87b1-f4deeb1a0ba8",
-            "shortKey": "tum_ma3081_lo6_2",
-            "title": "Strange Attractors und Lyapunov-Exponenten analysieren",
-            "titleEn": "Analyze Strange Attractors and Lyapunov Exponents",
-            "description": "Die lernende Person kann Beispiele seltsamer Attraktoren diskutieren, Sensitivität und transitive Dynamik einordnen und Lyapunov-Exponenten als quantitative Chaos-Merkmale interpretieren.",
-            "descriptionEn": "The learner can discuss examples of strange attractors, place sensitivity and transitivity, and interpret Lyapunov exponents as quantitative indicators of chaos.",
-            "core": true,
-            "weight": 0.65,
-            "phase": "Modul",
-            "area": "Chaos & Symbolik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "629b37e6-7690-571d-bb40-1c2e6e061746",
-                "e14ba077-9da4-5b94-8081-ece97d77ece3",
-                "a9bf5328-87f0-54ce-a9a5-ffc378ab776f"
-            ],
-            "requires": [
-                "599a5516-00ad-5722-a112-0fc4e7582276"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Chaos & Symbolik",
-                "topicCode": "tum_ma3081_lo6_2"
-            }
-        },
-        {
-            "id": "387a9082-e090-533b-a1eb-0a38e65788f8",
-            "shortKey": "tum_ma3081_lo7",
-            "title": "Eindimensionale Dynamik: Unimodale und Kreisabbildungen",
-            "titleEn": "One-Dimensional Dynamics: Unimodal and Circle Maps",
-            "description": "Zusammenfassender Cluster: Dynamik eindimensionaler Abbildungen (unimodal, Kreisabbildungen) einschließlich Periodenstruktur und Rotationszahl.",
-            "descriptionEn": "Summary cluster: dynamics of one-dimensional maps (unimodal maps, circle maps) including period structure and the rotation number.",
-            "core": true,
-            "weight": 1.1,
-            "phase": "Modul",
-            "area": "Eindimensionale Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "b4e9b273-24dc-59f6-b541-2954e2dedfbc",
-                "603cabf1-4c82-5924-8bd0-f5033214d035"
-            ],
-            "requires": [
-                "612bccfd-d090-5b8f-8a3a-c72cb9ab6e6b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Eindimensionale Dynamik",
-                "topicCode": "tum_ma3081_lo7"
-            }
-        },
-        {
-            "id": "b4e9b273-24dc-59f6-b541-2954e2dedfbc",
-            "shortKey": "tum_ma3081_lo7_1",
-            "title": "Unimodale Abbildungen und Sharkovsky einordnen",
-            "titleEn": "Place Unimodal Maps and Sharkovsky’s Theorem",
-            "description": "Die lernende Person kann unimodale Abbildungen in Beispielen analysieren, Periodenstruktur diskutieren und die Aussage des Satzes von Sharkovsky zur Existenz periodischer Orbits einordnen.",
-            "descriptionEn": "The learner can analyze unimodal maps in examples, discuss period structure, and place the statement of Sharkovsky’s theorem on the existence of periodic orbits.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Eindimensionale Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "a9a349c3-b059-55d8-8a10-6c20026ae037",
-                "fceb49c5-d0f5-53fd-8647-050e112f4430",
-                "02bcc00b-1d41-5d16-be40-9efeffb990a4"
-            ],
-            "requires": [
-                "612bccfd-d090-5b8f-8a3a-c72cb9ab6e6b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Eindimensionale Dynamik",
-                "topicCode": "tum_ma3081_lo7_1"
-            }
-        },
-        {
-            "id": "603cabf1-4c82-5924-8bd0-f5033214d035",
-            "shortKey": "tum_ma3081_lo7_2",
-            "title": "Kreisabbildungen und Rotationszahl nutzen",
-            "titleEn": "Use Circle Maps and the Rotation Number",
-            "description": "Die lernende Person kann Kreisabbildungen einordnen, die Idee der Rotationszahl erklären und qualitative Phänomene (z.B. periodische Fenster/Locking) in Beispielen diskutieren.",
-            "descriptionEn": "The learner can place circle maps, explain the idea of the rotation number, and discuss qualitative phenomena (e.g., periodic windows/locking) in examples.",
-            "core": true,
-            "weight": 0.55,
-            "phase": "Modul",
-            "area": "Eindimensionale Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "1bbcbdf8-37d7-5968-ae80-10970174439c",
-                "e8a31452-53f3-52c5-898f-dbb2eb84bbf4",
-                "0dcbac73-5957-5f58-b6b9-1493842c513f"
-            ],
-            "requires": [
-                "b4e9b273-24dc-59f6-b541-2954e2dedfbc"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Eindimensionale Dynamik",
-                "topicCode": "tum_ma3081_lo7_2"
-            }
-        },
-        {
-            "id": "c5d9c36d-fcc5-5ae3-a2f8-a6aea41394e7",
-            "shortKey": "tum_ma3081_lo8",
-            "title": "Invariante Maße und Ergodentheorie",
-            "titleEn": "Invariant Measures and Ergodic Theory",
-            "description": "Zusammenfassender Cluster: Invariante Maße, Rekurrenz, Ergodizität, Mixing und Entropie als ergodische Perspektive auf Dynamik.",
-            "descriptionEn": "Summary cluster: invariant measures, recurrence, ergodicity, mixing, and entropy as an ergodic perspective on dynamics.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Ergodentheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "e170de14-b8aa-5520-a013-410d7130fb41",
-                "9109b8d5-6a2c-59ec-82cd-e4f250f2e48c"
-            ],
-            "requires": [
-                "c312a4a9-d3b6-59ff-87b1-f4deeb1a0ba8"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Ergodentheorie",
-                "topicCode": "tum_ma3081_lo8"
-            }
-        },
-        {
-            "id": "e170de14-b8aa-5520-a013-410d7130fb41",
-            "shortKey": "tum_ma3081_lo8_1",
-            "title": "Invariante Maße konstruieren und Rekurrenz verstehen",
-            "titleEn": "Construct Invariant Measures and Understand Recurrence",
-            "description": "Die lernende Person kann invariante Maße motivieren und konstruieren (z.B. Krylov-Bogoliubov), Poincaré-Rekurrenz einordnen und Konsequenzen für Langzeitverhalten diskutieren.",
-            "descriptionEn": "The learner can motivate and construct invariant measures (e.g., via Krylov–Bogoliubov), place Poincaré recurrence, and discuss consequences for long-term behavior.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Ergodentheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "d36638f8-2fed-5e72-b2fb-8b3593de5645",
-                "86d3a88b-43f4-5177-baf1-dc685ddcb5b6",
-                "21d0142e-1675-569a-8e9c-03b42ae8d753"
-            ],
-            "requires": [
-                "c312a4a9-d3b6-59ff-87b1-f4deeb1a0ba8"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Ergodentheorie",
-                "topicCode": "tum_ma3081_lo8_1"
-            }
-        },
-        {
-            "id": "9109b8d5-6a2c-59ec-82cd-e4f250f2e48c",
-            "shortKey": "tum_ma3081_lo8_2",
-            "title": "Ergodizität, Mixing und Entropie einordnen",
-            "titleEn": "Place Ergodicity, Mixing, and Entropy",
-            "description": "Die lernende Person kann Ergodizität und (punktweise) Ergodensätze erläutern, Mixing-Begriffe unterscheiden und Entropie als Maß für Komplexität dynamischer Systeme interpretieren.",
-            "descriptionEn": "The learner can explain ergodicity and pointwise ergodic theorems, distinguish mixing notions, and interpret entropy as a measure of dynamical complexity.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Ergodentheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "aabf47aa-92e6-5315-9c29-4425c2b552ff",
-                "4904c5b2-4f82-5029-9688-c6eaad05c358",
-                "cdaca2cc-f8d1-5123-b1b4-c45e14f3c02c"
-            ],
-            "requires": [
-                "e170de14-b8aa-5520-a013-410d7130fb41"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Ergodentheorie",
-                "topicCode": "tum_ma3081_lo8_2"
-            }
-        },
-        {
-            "id": "faa6ecb3-4fba-459a-a93c-eb97348c893e",
-            "shortKey": "tum_ma3081_lo1_1_1",
-            "title": "Stabilitätsbegriffe für Gleichgewichte und Fixpunkte formulieren",
-            "titleEn": "Formulate Stability Notions for Equilibria and Fixed Points",
-            "description": "Die lernende Person kann Lyapunov-, asymptotische und exponentielle Stabilität für Gleichgewichte bzw. Fixpunkte präzise formulieren.",
-            "descriptionEn": "The learner can precisely formulate Lyapunov, asymptotic, and exponential stability for equilibria or fixed points.",
-            "core": true,
-            "weight": 0.3,
-            "phase": "Modul",
-            "area": "Stabilität & Lyapunov",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "b50de797-2afb-5cc7-bb38-1763c73d350c",
-                "43494389-cee5-5a5d-937c-254013b65a56",
-                "a9ec0754-9aff-5670-9060-d468641725af"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Stabilität & Lyapunov",
-                "topicCode": "tum_ma3081_lo1_1_1"
-            }
-        },
-        {
-            "id": "77b5ff6d-5f15-4a01-8a5a-17b800c65fad",
-            "shortKey": "tum_ma3081_lo1_1_2",
-            "title": "Stabilität in Beispielen analysieren",
-            "titleEn": "Analyze Stability in Examples",
-            "description": "Die lernende Person kann Stabilitätsbegriffe in Beispielen für Flüsse oder Abbildungen anwenden und die Ergebnisse nachvollziehbar begründen.",
-            "descriptionEn": "The learner can apply stability notions to examples for flows or maps and justify the results coherently.",
-            "core": true,
-            "weight": 0.3,
-            "phase": "Modul",
-            "area": "Stabilität & Lyapunov",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [
-                "9ad336a2-b09f-5f98-96f0-54629d6034e1",
-                "78627d46-392b-52d9-98ab-58ca490b94da",
-                "54a0d153-00be-5ef9-bfd3-9837593694ef"
-            ],
-            "requires": [
-                "faa6ecb3-4fba-459a-a93c-eb97348c893e"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Stabilität & Lyapunov",
-                "topicCode": "tum_ma3081_lo1_1_2"
-            }
-        },
-        {
-            "id": "a38d1e6b-e289-5527-af12-0e69017c0e4e",
-            "shortKey": "tum_ma3081_memorize",
-            "title": "Kernaussagen des Moduls memorisieren",
-            "titleEn": "Memorize Key Module Statements",
-            "description": "Die lernende Person hat alle zentralen Definitionen und Sätze des Moduls verinnerlicht (geprüft z.B. durch SRS/Lernkarten).",
-            "descriptionEn": "The learner has internalized all key definitions and theorems of the module (verified e.g. via SRS/flashcards).",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:MA3081",
-                "srs-deck:ma3081"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/ma3081_deck.json"
-            },
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Gesamtkompetenz",
-                "topicCode": "tum_ma3081_memorize"
-            }
-        },
-        {
-            "id": "239197bf-7a96-5b6d-b98e-0bb8b455d60a",
-            "shortKey": "tum_ma3081_lo1_2_1",
-            "title": "Kennen: Lyapunovfunktionen konstruieren und verwenden",
-            "titleEn": "Know: Construct and Use Lyapunov Functions",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Lyapunovfunktionen konstruieren und verwenden' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Construct and Use Lyapunov Functions'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Stabilität & Lyapunov",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Stabilität & Lyapunov",
-                "topicCode": "tum_ma3081_lo1_2_1"
-            }
-        },
-        {
-            "id": "95ddfc21-078d-5560-9dff-c46294ce8fd1",
-            "shortKey": "tum_ma3081_lo1_2_2",
-            "title": "Verstehen: Lyapunovfunktionen konstruieren und verwenden",
-            "titleEn": "Understand: Construct and Use Lyapunov Functions",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Lyapunovfunktionen konstruieren und verwenden'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Construct and Use Lyapunov Functions'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Stabilität & Lyapunov",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "239197bf-7a96-5b6d-b98e-0bb8b455d60a"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Stabilität & Lyapunov",
-                "topicCode": "tum_ma3081_lo1_2_2"
-            }
-        },
-        {
-            "id": "1860da02-c6a7-50a3-88b7-7303acb52048",
-            "shortKey": "tum_ma3081_lo1_2_3",
-            "title": "Anwenden: Lyapunovfunktionen konstruieren und verwenden",
-            "titleEn": "Apply: Construct and Use Lyapunov Functions",
-            "description": "Die lernende Person wendet das Wissen zu 'Lyapunovfunktionen konstruieren und verwenden' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Construct and Use Lyapunov Functions' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Stabilität & Lyapunov",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "95ddfc21-078d-5560-9dff-c46294ce8fd1"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Stabilität & Lyapunov",
-                "topicCode": "tum_ma3081_lo1_2_3"
-            }
-        },
-        {
-            "id": "e8208f84-1327-511d-af84-51dbc4f13001",
-            "shortKey": "tum_ma3081_lo2_1_1",
-            "title": "Kennen: Poincaré-Abbildung für periodische Orbits einsetzen",
-            "titleEn": "Know: Use the Poincaré Map for Periodic Orbits",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Poincaré-Abbildung für periodische Orbits einsetzen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use the Poincaré Map for Periodic Orbits'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Lokale Theorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lokale Theorie",
-                "topicCode": "tum_ma3081_lo2_1_1"
-            }
-        },
-        {
-            "id": "e722085d-f964-57db-9563-b17d6ba97dbf",
-            "shortKey": "tum_ma3081_lo2_1_2",
-            "title": "Verstehen: Poincaré-Abbildung für periodische Orbits einsetzen",
-            "titleEn": "Understand: Use the Poincaré Map for Periodic Orbits",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Poincaré-Abbildung für periodische Orbits einsetzen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Use the Poincaré Map for Periodic Orbits'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Lokale Theorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "e8208f84-1327-511d-af84-51dbc4f13001"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lokale Theorie",
-                "topicCode": "tum_ma3081_lo2_1_2"
-            }
-        },
-        {
-            "id": "1bf3f24a-21cf-58c3-8189-0687a9fcc5cb",
-            "shortKey": "tum_ma3081_lo2_1_3",
-            "title": "Anwenden: Poincaré-Abbildung für periodische Orbits einsetzen",
-            "titleEn": "Apply: Use the Poincaré Map for Periodic Orbits",
-            "description": "Die lernende Person wendet das Wissen zu 'Poincaré-Abbildung für periodische Orbits einsetzen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Use the Poincaré Map for Periodic Orbits' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Lokale Theorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "e722085d-f964-57db-9563-b17d6ba97dbf"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lokale Theorie",
-                "topicCode": "tum_ma3081_lo2_1_3"
-            }
-        },
-        {
-            "id": "aef79897-b2ee-5b2d-9944-c8caae432339",
-            "shortKey": "tum_ma3081_lo2_2_1",
-            "title": "Kennen: Invariante Mannigfaltigkeiten und Hartman-Grobman einordnen",
-            "titleEn": "Know: Place Invariant Manifolds and the Hartman–Grobman Theorem",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Invariante Mannigfaltigkeiten und Hartman-Grobman einordnen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Place Invariant Manifolds and the Hartman–Grobman Theorem'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Lokale Theorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lokale Theorie",
-                "topicCode": "tum_ma3081_lo2_2_1"
-            }
-        },
-        {
-            "id": "ead4af29-f2fe-5819-a21d-3a99e8984564",
-            "shortKey": "tum_ma3081_lo2_2_2",
-            "title": "Verstehen: Invariante Mannigfaltigkeiten und Hartman-Grobman einordnen",
-            "titleEn": "Understand: Place Invariant Manifolds and the Hartman–Grobman Theorem",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Invariante Mannigfaltigkeiten und Hartman-Grobman einordnen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Place Invariant Manifolds and the Hartman–Grobman Theorem'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Lokale Theorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "aef79897-b2ee-5b2d-9944-c8caae432339"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lokale Theorie",
-                "topicCode": "tum_ma3081_lo2_2_2"
-            }
-        },
-        {
-            "id": "10693c75-3c4b-5f36-bde8-c06a6c1556a6",
-            "shortKey": "tum_ma3081_lo2_2_3",
-            "title": "Anwenden: Invariante Mannigfaltigkeiten und Hartman-Grobman einordnen",
-            "titleEn": "Apply: Place Invariant Manifolds and the Hartman–Grobman Theorem",
-            "description": "Die lernende Person wendet das Wissen zu 'Invariante Mannigfaltigkeiten und Hartman-Grobman einordnen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Place Invariant Manifolds and the Hartman–Grobman Theorem' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Lokale Theorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "ead4af29-f2fe-5819-a21d-3a99e8984564"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Lokale Theorie",
-                "topicCode": "tum_ma3081_lo2_2_3"
-            }
-        },
-        {
-            "id": "20328260-303c-545b-a246-3d300e9867ec",
-            "shortKey": "tum_ma3081_lo3_1_1",
-            "title": "Kennen: Hyperbolische Mengen und strukturelle Stabilität verstehen",
-            "titleEn": "Know: Understand Hyperbolic Sets and Structural Stability",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Hyperbolische Mengen und strukturelle Stabilität verstehen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Understand Hyperbolic Sets and Structural Stability'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Hyperbolische Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Hyperbolische Dynamik",
-                "topicCode": "tum_ma3081_lo3_1_1"
-            }
-        },
-        {
-            "id": "eb49e8de-4fad-5d1a-90f5-cca125c58d30",
-            "shortKey": "tum_ma3081_lo3_1_2",
-            "title": "Verstehen: Hyperbolische Mengen und strukturelle Stabilität verstehen",
-            "titleEn": "Understand: Understand Hyperbolic Sets and Structural Stability",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Hyperbolische Mengen und strukturelle Stabilität verstehen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Understand Hyperbolic Sets and Structural Stability'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Hyperbolische Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "20328260-303c-545b-a246-3d300e9867ec"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Hyperbolische Dynamik",
-                "topicCode": "tum_ma3081_lo3_1_2"
-            }
-        },
-        {
-            "id": "ca25ed90-2ac4-5f28-a82e-8796cb801d02",
-            "shortKey": "tum_ma3081_lo3_1_3",
-            "title": "Anwenden: Hyperbolische Mengen und strukturelle Stabilität verstehen",
-            "titleEn": "Apply: Understand Hyperbolic Sets and Structural Stability",
-            "description": "Die lernende Person wendet das Wissen zu 'Hyperbolische Mengen und strukturelle Stabilität verstehen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Understand Hyperbolic Sets and Structural Stability' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Hyperbolische Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "eb49e8de-4fad-5d1a-90f5-cca125c58d30"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Hyperbolische Dynamik",
-                "topicCode": "tum_ma3081_lo3_1_3"
-            }
-        },
-        {
-            "id": "96b3d368-488e-592b-b6ea-73b4dcb9451a",
-            "shortKey": "tum_ma3081_lo3_2_1",
-            "title": "Kennen: Anosov-Diffeomorphismen und Beispiele hyperbolischer Dynamik einordnen",
-            "titleEn": "Know: Place Anosov Diffeomorphisms and Examples of Hyperbolic Dynamics",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Anosov-Diffeomorphismen und Beispiele hyperbolischer Dynamik einordnen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Place Anosov Diffeomorphisms and Examples of Hyperbolic Dynamics'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Hyperbolische Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Hyperbolische Dynamik",
-                "topicCode": "tum_ma3081_lo3_2_1"
-            }
-        },
-        {
-            "id": "d432a434-f85a-5264-910e-c306a15e64d5",
-            "shortKey": "tum_ma3081_lo3_2_2",
-            "title": "Verstehen: Anosov-Diffeomorphismen und Beispiele hyperbolischer Dynamik einordnen",
-            "titleEn": "Understand: Place Anosov Diffeomorphisms and Examples of Hyperbolic Dynamics",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Anosov-Diffeomorphismen und Beispiele hyperbolischer Dynamik einordnen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Place Anosov Diffeomorphisms and Examples of Hyperbolic Dynamics'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Hyperbolische Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "96b3d368-488e-592b-b6ea-73b4dcb9451a"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Hyperbolische Dynamik",
-                "topicCode": "tum_ma3081_lo3_2_2"
-            }
-        },
-        {
-            "id": "80f51be2-3664-58a4-bfed-051cb331984b",
-            "shortKey": "tum_ma3081_lo3_2_3",
-            "title": "Anwenden: Anosov-Diffeomorphismen und Beispiele hyperbolischer Dynamik einordnen",
-            "titleEn": "Apply: Place Anosov Diffeomorphisms and Examples of Hyperbolic Dynamics",
-            "description": "Die lernende Person wendet das Wissen zu 'Anosov-Diffeomorphismen und Beispiele hyperbolischer Dynamik einordnen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Place Anosov Diffeomorphisms and Examples of Hyperbolic Dynamics' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Hyperbolische Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "d432a434-f85a-5264-910e-c306a15e64d5"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Hyperbolische Dynamik",
-                "topicCode": "tum_ma3081_lo3_2_3"
-            }
-        },
-        {
-            "id": "dc8b2a3e-a4e6-5427-bffd-302cd49ca0ce",
-            "shortKey": "tum_ma3081_lo4_1_1",
-            "title": "Kennen: Lokale Bifurkationen von Flüssen und Abbildungen analysieren",
-            "titleEn": "Know: Analyze Local Bifurcations of Flows and Maps",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Lokale Bifurkationen von Flüssen und Abbildungen analysieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Analyze Local Bifurcations of Flows and Maps'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Bifurkationstheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Bifurkationstheorie",
-                "topicCode": "tum_ma3081_lo4_1_1"
-            }
-        },
-        {
-            "id": "860c0430-5749-5ce3-b1f4-4c334b1a5bc0",
-            "shortKey": "tum_ma3081_lo4_1_2",
-            "title": "Verstehen: Lokale Bifurkationen von Flüssen und Abbildungen analysieren",
-            "titleEn": "Understand: Analyze Local Bifurcations of Flows and Maps",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Lokale Bifurkationen von Flüssen und Abbildungen analysieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Analyze Local Bifurcations of Flows and Maps'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Bifurkationstheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "dc8b2a3e-a4e6-5427-bffd-302cd49ca0ce"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Bifurkationstheorie",
-                "topicCode": "tum_ma3081_lo4_1_2"
-            }
-        },
-        {
-            "id": "2c26201e-a47c-50ee-b72f-066bceec3f80",
-            "shortKey": "tum_ma3081_lo4_1_3",
-            "title": "Anwenden: Lokale Bifurkationen von Flüssen und Abbildungen analysieren",
-            "titleEn": "Apply: Analyze Local Bifurcations of Flows and Maps",
-            "description": "Die lernende Person wendet das Wissen zu 'Lokale Bifurkationen von Flüssen und Abbildungen analysieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Analyze Local Bifurcations of Flows and Maps' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Bifurkationstheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "860c0430-5749-5ce3-b1f4-4c334b1a5bc0"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Bifurkationstheorie",
-                "topicCode": "tum_ma3081_lo4_1_3"
-            }
-        },
-        {
-            "id": "4e812ea6-ba6b-5e4a-b2b0-f28150153ad9",
-            "shortKey": "tum_ma3081_lo4_2_1",
-            "title": "Kennen: Normalformen und Zentrumsmannigfaltigkeiten nutzen",
-            "titleEn": "Know: Use Normal Forms and Center Manifolds",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Normalformen und Zentrumsmannigfaltigkeiten nutzen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Normal Forms and Center Manifolds'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Bifurkationstheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Bifurkationstheorie",
-                "topicCode": "tum_ma3081_lo4_2_1"
-            }
-        },
-        {
-            "id": "87cabc71-fb8d-5bd1-9970-d00af9c0c418",
-            "shortKey": "tum_ma3081_lo4_2_2",
-            "title": "Verstehen: Normalformen und Zentrumsmannigfaltigkeiten nutzen",
-            "titleEn": "Understand: Use Normal Forms and Center Manifolds",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Normalformen und Zentrumsmannigfaltigkeiten nutzen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Use Normal Forms and Center Manifolds'.",
-            "core": true,
-            "weight": 0.18,
-            "phase": "Modul",
-            "area": "Bifurkationstheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "4e812ea6-ba6b-5e4a-b2b0-f28150153ad9"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Bifurkationstheorie",
-                "topicCode": "tum_ma3081_lo4_2_2"
-            }
-        },
-        {
-            "id": "a0dea8af-8a42-571f-b974-a1119bb102fc",
-            "shortKey": "tum_ma3081_lo4_2_3",
-            "title": "Anwenden: Normalformen und Zentrumsmannigfaltigkeiten nutzen",
-            "titleEn": "Apply: Use Normal Forms and Center Manifolds",
-            "description": "Die lernende Person wendet das Wissen zu 'Normalformen und Zentrumsmannigfaltigkeiten nutzen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Use Normal Forms and Center Manifolds' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.24,
-            "phase": "Modul",
-            "area": "Bifurkationstheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "87cabc71-fb8d-5bd1-9970-d00af9c0c418"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Bifurkationstheorie",
-                "topicCode": "tum_ma3081_lo4_2_3"
-            }
-        },
-        {
-            "id": "a0719cf2-8fac-5437-b878-3efa6b4f076a",
-            "shortKey": "tum_ma3081_lo5_1_1",
-            "title": "Kennen: Globale Bifurkationen und Shilnikov-Bedingung einordnen",
-            "titleEn": "Know: Place Global Bifurcations and the Shilnikov Condition",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Globale Bifurkationen und Shilnikov-Bedingung einordnen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Place Global Bifurcations and the Shilnikov Condition'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Globale Bifurkationen",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Globale Bifurkationen",
-                "topicCode": "tum_ma3081_lo5_1_1"
-            }
-        },
-        {
-            "id": "885b0327-cfcc-5ed4-9a87-11d9c575f9be",
-            "shortKey": "tum_ma3081_lo5_1_2",
-            "title": "Verstehen: Globale Bifurkationen und Shilnikov-Bedingung einordnen",
-            "titleEn": "Understand: Place Global Bifurcations and the Shilnikov Condition",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Globale Bifurkationen und Shilnikov-Bedingung einordnen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Place Global Bifurcations and the Shilnikov Condition'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Globale Bifurkationen",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "a0719cf2-8fac-5437-b878-3efa6b4f076a"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Globale Bifurkationen",
-                "topicCode": "tum_ma3081_lo5_1_2"
-            }
-        },
-        {
-            "id": "419bad59-559c-5f0c-b4cd-ea5da07cc50e",
-            "shortKey": "tum_ma3081_lo5_1_3",
-            "title": "Anwenden: Globale Bifurkationen und Shilnikov-Bedingung einordnen",
-            "titleEn": "Apply: Place Global Bifurcations and the Shilnikov Condition",
-            "description": "Die lernende Person wendet das Wissen zu 'Globale Bifurkationen und Shilnikov-Bedingung einordnen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Place Global Bifurcations and the Shilnikov Condition' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Globale Bifurkationen",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "885b0327-cfcc-5ed4-9a87-11d9c575f9be"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Globale Bifurkationen",
-                "topicCode": "tum_ma3081_lo5_1_3"
-            }
-        },
-        {
-            "id": "624ad55f-a824-5664-a38b-917e6b78167b",
-            "shortKey": "tum_ma3081_lo5_2_1",
-            "title": "Kennen: Melnikov-Methode zur Detektion von Chaos anwenden",
-            "titleEn": "Know: Apply Melnikov’s Method to Detect Chaos",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Melnikov-Methode zur Detektion von Chaos anwenden' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply Melnikov’s Method to Detect Chaos'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Globale Bifurkationen",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Globale Bifurkationen",
-                "topicCode": "tum_ma3081_lo5_2_1"
-            }
-        },
-        {
-            "id": "8aa67714-0c06-5706-bd1b-4589f973e49a",
-            "shortKey": "tum_ma3081_lo5_2_2",
-            "title": "Verstehen: Melnikov-Methode zur Detektion von Chaos anwenden",
-            "titleEn": "Understand: Apply Melnikov’s Method to Detect Chaos",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Melnikov-Methode zur Detektion von Chaos anwenden'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Apply Melnikov’s Method to Detect Chaos'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Globale Bifurkationen",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "624ad55f-a824-5664-a38b-917e6b78167b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Globale Bifurkationen",
-                "topicCode": "tum_ma3081_lo5_2_2"
-            }
-        },
-        {
-            "id": "1eeab15e-101b-50db-b585-b94b89ad1ece",
-            "shortKey": "tum_ma3081_lo5_2_3",
-            "title": "Anwenden: Melnikov-Methode zur Detektion von Chaos anwenden",
-            "titleEn": "Apply: Apply Melnikov’s Method to Detect Chaos",
-            "description": "Die lernende Person wendet das Wissen zu 'Melnikov-Methode zur Detektion von Chaos anwenden' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Apply Melnikov’s Method to Detect Chaos' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Globale Bifurkationen",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "8aa67714-0c06-5706-bd1b-4589f973e49a"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Globale Bifurkationen",
-                "topicCode": "tum_ma3081_lo5_2_3"
-            }
-        },
-        {
-            "id": "031f1ff5-f45a-5889-a649-e158f10ac47b",
-            "shortKey": "tum_ma3081_lo6_1_1",
-            "title": "Kennen: Smale-Horseshoe und symbolische Dynamik verstehen",
-            "titleEn": "Know: Understand the Smale Horseshoe and Symbolic Dynamics",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Smale-Horseshoe und symbolische Dynamik verstehen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Understand the Smale Horseshoe and Symbolic Dynamics'.",
-            "core": true,
-            "weight": 0.195,
-            "phase": "Modul",
-            "area": "Chaos & Symbolik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Chaos & Symbolik",
-                "topicCode": "tum_ma3081_lo6_1_1"
-            }
-        },
-        {
-            "id": "dd31e56f-6400-5628-8f83-0bfe936d2ab3",
-            "shortKey": "tum_ma3081_lo6_1_2",
-            "title": "Verstehen: Smale-Horseshoe und symbolische Dynamik verstehen",
-            "titleEn": "Understand: Understand the Smale Horseshoe and Symbolic Dynamics",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Smale-Horseshoe und symbolische Dynamik verstehen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Understand the Smale Horseshoe and Symbolic Dynamics'.",
-            "core": true,
-            "weight": 0.195,
-            "phase": "Modul",
-            "area": "Chaos & Symbolik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "031f1ff5-f45a-5889-a649-e158f10ac47b"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Chaos & Symbolik",
-                "topicCode": "tum_ma3081_lo6_1_2"
-            }
-        },
-        {
-            "id": "28bcd73c-6f78-5655-ad33-63d1ffc35afc",
-            "shortKey": "tum_ma3081_lo6_1_3",
-            "title": "Anwenden: Smale-Horseshoe und symbolische Dynamik verstehen",
-            "titleEn": "Apply: Understand the Smale Horseshoe and Symbolic Dynamics",
-            "description": "Die lernende Person wendet das Wissen zu 'Smale-Horseshoe und symbolische Dynamik verstehen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Understand the Smale Horseshoe and Symbolic Dynamics' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.26,
-            "phase": "Modul",
-            "area": "Chaos & Symbolik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "dd31e56f-6400-5628-8f83-0bfe936d2ab3"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Chaos & Symbolik",
-                "topicCode": "tum_ma3081_lo6_1_3"
-            }
-        },
-        {
-            "id": "629b37e6-7690-571d-bb40-1c2e6e061746",
-            "shortKey": "tum_ma3081_lo6_2_1",
-            "title": "Kennen: Strange Attractors und Lyapunov-Exponenten analysieren",
-            "titleEn": "Know: Analyze Strange Attractors and Lyapunov Exponents",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Strange Attractors und Lyapunov-Exponenten analysieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Analyze Strange Attractors and Lyapunov Exponents'.",
-            "core": true,
-            "weight": 0.195,
-            "phase": "Modul",
-            "area": "Chaos & Symbolik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Chaos & Symbolik",
-                "topicCode": "tum_ma3081_lo6_2_1"
-            }
-        },
-        {
-            "id": "e14ba077-9da4-5b94-8081-ece97d77ece3",
-            "shortKey": "tum_ma3081_lo6_2_2",
-            "title": "Verstehen: Strange Attractors und Lyapunov-Exponenten analysieren",
-            "titleEn": "Understand: Analyze Strange Attractors and Lyapunov Exponents",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Strange Attractors und Lyapunov-Exponenten analysieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Analyze Strange Attractors and Lyapunov Exponents'.",
-            "core": true,
-            "weight": 0.195,
-            "phase": "Modul",
-            "area": "Chaos & Symbolik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "629b37e6-7690-571d-bb40-1c2e6e061746"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Chaos & Symbolik",
-                "topicCode": "tum_ma3081_lo6_2_2"
-            }
-        },
-        {
-            "id": "a9bf5328-87f0-54ce-a9a5-ffc378ab776f",
-            "shortKey": "tum_ma3081_lo6_2_3",
-            "title": "Anwenden: Strange Attractors und Lyapunov-Exponenten analysieren",
-            "titleEn": "Apply: Analyze Strange Attractors and Lyapunov Exponents",
-            "description": "Die lernende Person wendet das Wissen zu 'Strange Attractors und Lyapunov-Exponenten analysieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Analyze Strange Attractors and Lyapunov Exponents' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.26,
-            "phase": "Modul",
-            "area": "Chaos & Symbolik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "e14ba077-9da4-5b94-8081-ece97d77ece3"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Chaos & Symbolik",
-                "topicCode": "tum_ma3081_lo6_2_3"
-            }
-        },
-        {
-            "id": "a9a349c3-b059-55d8-8a10-6c20026ae037",
-            "shortKey": "tum_ma3081_lo7_1_1",
-            "title": "Kennen: Unimodale Abbildungen und Sharkovsky einordnen",
-            "titleEn": "Know: Place Unimodal Maps and Sharkovsky’s Theorem",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Unimodale Abbildungen und Sharkovsky einordnen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Place Unimodal Maps and Sharkovsky’s Theorem'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Eindimensionale Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Eindimensionale Dynamik",
-                "topicCode": "tum_ma3081_lo7_1_1"
-            }
-        },
-        {
-            "id": "fceb49c5-d0f5-53fd-8647-050e112f4430",
-            "shortKey": "tum_ma3081_lo7_1_2",
-            "title": "Verstehen: Unimodale Abbildungen und Sharkovsky einordnen",
-            "titleEn": "Understand: Place Unimodal Maps and Sharkovsky’s Theorem",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Unimodale Abbildungen und Sharkovsky einordnen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Place Unimodal Maps and Sharkovsky’s Theorem'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Eindimensionale Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "a9a349c3-b059-55d8-8a10-6c20026ae037"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Eindimensionale Dynamik",
-                "topicCode": "tum_ma3081_lo7_1_2"
-            }
-        },
-        {
-            "id": "02bcc00b-1d41-5d16-be40-9efeffb990a4",
-            "shortKey": "tum_ma3081_lo7_1_3",
-            "title": "Anwenden: Unimodale Abbildungen und Sharkovsky einordnen",
-            "titleEn": "Apply: Place Unimodal Maps and Sharkovsky’s Theorem",
-            "description": "Die lernende Person wendet das Wissen zu 'Unimodale Abbildungen und Sharkovsky einordnen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Place Unimodal Maps and Sharkovsky’s Theorem' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Eindimensionale Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "fceb49c5-d0f5-53fd-8647-050e112f4430"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Eindimensionale Dynamik",
-                "topicCode": "tum_ma3081_lo7_1_3"
-            }
-        },
-        {
-            "id": "1bbcbdf8-37d7-5968-ae80-10970174439c",
-            "shortKey": "tum_ma3081_lo7_2_1",
-            "title": "Kennen: Kreisabbildungen und Rotationszahl nutzen",
-            "titleEn": "Know: Use Circle Maps and the Rotation Number",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Kreisabbildungen und Rotationszahl nutzen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Circle Maps and the Rotation Number'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Eindimensionale Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Eindimensionale Dynamik",
-                "topicCode": "tum_ma3081_lo7_2_1"
-            }
-        },
-        {
-            "id": "e8a31452-53f3-52c5-898f-dbb2eb84bbf4",
-            "shortKey": "tum_ma3081_lo7_2_2",
-            "title": "Verstehen: Kreisabbildungen und Rotationszahl nutzen",
-            "titleEn": "Understand: Use Circle Maps and the Rotation Number",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Kreisabbildungen und Rotationszahl nutzen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Use Circle Maps and the Rotation Number'.",
-            "core": true,
-            "weight": 0.165,
-            "phase": "Modul",
-            "area": "Eindimensionale Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "1bbcbdf8-37d7-5968-ae80-10970174439c"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Eindimensionale Dynamik",
-                "topicCode": "tum_ma3081_lo7_2_2"
-            }
-        },
-        {
-            "id": "0dcbac73-5957-5f58-b6b9-1493842c513f",
-            "shortKey": "tum_ma3081_lo7_2_3",
-            "title": "Anwenden: Kreisabbildungen und Rotationszahl nutzen",
-            "titleEn": "Apply: Use Circle Maps and the Rotation Number",
-            "description": "Die lernende Person wendet das Wissen zu 'Kreisabbildungen und Rotationszahl nutzen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Use Circle Maps and the Rotation Number' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.22000000000000003,
-            "phase": "Modul",
-            "area": "Eindimensionale Dynamik",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "e8a31452-53f3-52c5-898f-dbb2eb84bbf4"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Eindimensionale Dynamik",
-                "topicCode": "tum_ma3081_lo7_2_3"
-            }
-        },
-        {
-            "id": "d36638f8-2fed-5e72-b2fb-8b3593de5645",
-            "shortKey": "tum_ma3081_lo8_1_1",
-            "title": "Kennen: Invariante Maße konstruieren und Rekurrenz verstehen",
-            "titleEn": "Know: Construct Invariant Measures and Understand Recurrence",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Invariante Maße konstruieren und Rekurrenz verstehen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Construct Invariant Measures and Understand Recurrence'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Ergodentheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Ergodentheorie",
-                "topicCode": "tum_ma3081_lo8_1_1"
-            }
-        },
-        {
-            "id": "86d3a88b-43f4-5177-baf1-dc685ddcb5b6",
-            "shortKey": "tum_ma3081_lo8_1_2",
-            "title": "Verstehen: Invariante Maße konstruieren und Rekurrenz verstehen",
-            "titleEn": "Understand: Construct Invariant Measures and Understand Recurrence",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Invariante Maße konstruieren und Rekurrenz verstehen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Construct Invariant Measures and Understand Recurrence'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Ergodentheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "d36638f8-2fed-5e72-b2fb-8b3593de5645"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Ergodentheorie",
-                "topicCode": "tum_ma3081_lo8_1_2"
-            }
-        },
-        {
-            "id": "21d0142e-1675-569a-8e9c-03b42ae8d753",
-            "shortKey": "tum_ma3081_lo8_1_3",
-            "title": "Anwenden: Invariante Maße konstruieren und Rekurrenz verstehen",
-            "titleEn": "Apply: Construct Invariant Measures and Understand Recurrence",
-            "description": "Die lernende Person wendet das Wissen zu 'Invariante Maße konstruieren und Rekurrenz verstehen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Construct Invariant Measures and Understand Recurrence' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Ergodentheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "86d3a88b-43f4-5177-baf1-dc685ddcb5b6"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Ergodentheorie",
-                "topicCode": "tum_ma3081_lo8_1_3"
-            }
-        },
-        {
-            "id": "aabf47aa-92e6-5315-9c29-4425c2b552ff",
-            "shortKey": "tum_ma3081_lo8_2_1",
-            "title": "Kennen: Ergodizität, Mixing und Entropie einordnen",
-            "titleEn": "Know: Place Ergodicity, Mixing, and Entropy",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Ergodizität, Mixing und Entropie einordnen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Place Ergodicity, Mixing, and Entropy'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Ergodentheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Ergodentheorie",
-                "topicCode": "tum_ma3081_lo8_2_1"
-            }
-        },
-        {
-            "id": "4904c5b2-4f82-5029-9688-c6eaad05c358",
-            "shortKey": "tum_ma3081_lo8_2_2",
-            "title": "Verstehen: Ergodizität, Mixing und Entropie einordnen",
-            "titleEn": "Understand: Place Ergodicity, Mixing, and Entropy",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Ergodizität, Mixing und Entropie einordnen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Place Ergodicity, Mixing, and Entropy'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Ergodentheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "aabf47aa-92e6-5315-9c29-4425c2b552ff"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Ergodentheorie",
-                "topicCode": "tum_ma3081_lo8_2_2"
-            }
-        },
-        {
-            "id": "cdaca2cc-f8d1-5123-b1b4-c45e14f3c02c",
-            "shortKey": "tum_ma3081_lo8_2_3",
-            "title": "Anwenden: Ergodizität, Mixing und Entropie einordnen",
-            "titleEn": "Apply: Place Ergodicity, Mixing, and Entropy",
-            "description": "Die lernende Person wendet das Wissen zu 'Ergodizität, Mixing und Entropie einordnen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Place Ergodicity, Mixing, and Entropy' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Ergodentheorie",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "4904c5b2-4f82-5029-9688-c6eaad05c358"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Ergodentheorie",
-                "topicCode": "tum_ma3081_lo8_2_3"
-            }
-        },
-        {
-            "id": "b50de797-2afb-5cc7-bb38-1763c73d350c",
-            "shortKey": "tum_ma3081_lo1_1_1_1",
-            "title": "Kennen: Stabilitätsbegriffe für Gleichgewichte und Fixpunkte formulieren",
-            "titleEn": "Know: Formulate Stability Notions for Equilibria and Fixed Points",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Stabilitätsbegriffe für Gleichgewichte und Fixpunkte formulieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Formulate Stability Notions for Equilibria and Fixed Points'.",
-            "core": true,
-            "weight": 0.09,
-            "phase": "Modul",
-            "area": "Stabilität & Lyapunov",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Stabilität & Lyapunov",
-                "topicCode": "tum_ma3081_lo1_1_1_1"
-            }
-        },
-        {
-            "id": "43494389-cee5-5a5d-937c-254013b65a56",
-            "shortKey": "tum_ma3081_lo1_1_1_2",
-            "title": "Verstehen: Stabilitätsbegriffe für Gleichgewichte und Fixpunkte formulieren",
-            "titleEn": "Understand: Formulate Stability Notions for Equilibria and Fixed Points",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Stabilitätsbegriffe für Gleichgewichte und Fixpunkte formulieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Formulate Stability Notions for Equilibria and Fixed Points'.",
-            "core": true,
-            "weight": 0.09,
-            "phase": "Modul",
-            "area": "Stabilität & Lyapunov",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "b50de797-2afb-5cc7-bb38-1763c73d350c"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Stabilität & Lyapunov",
-                "topicCode": "tum_ma3081_lo1_1_1_2"
-            }
-        },
-        {
-            "id": "a9ec0754-9aff-5670-9060-d468641725af",
-            "shortKey": "tum_ma3081_lo1_1_1_3",
-            "title": "Anwenden: Stabilitätsbegriffe für Gleichgewichte und Fixpunkte formulieren",
-            "titleEn": "Apply: Formulate Stability Notions for Equilibria and Fixed Points",
-            "description": "Die lernende Person wendet das Wissen zu 'Stabilitätsbegriffe für Gleichgewichte und Fixpunkte formulieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Formulate Stability Notions for Equilibria and Fixed Points' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.12,
-            "phase": "Modul",
-            "area": "Stabilität & Lyapunov",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "43494389-cee5-5a5d-937c-254013b65a56"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Stabilität & Lyapunov",
-                "topicCode": "tum_ma3081_lo1_1_1_3"
-            }
-        },
-        {
-            "id": "9ad336a2-b09f-5f98-96f0-54629d6034e1",
-            "shortKey": "tum_ma3081_lo1_1_2_1",
-            "title": "Kennen: Stabilität in Beispielen analysieren",
-            "titleEn": "Know: Analyze Stability in Examples",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Stabilität in Beispielen analysieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Analyze Stability in Examples'.",
-            "core": true,
-            "weight": 0.09,
-            "phase": "Modul",
-            "area": "Stabilität & Lyapunov",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Stabilität & Lyapunov",
-                "topicCode": "tum_ma3081_lo1_1_2_1"
-            }
-        },
-        {
-            "id": "78627d46-392b-52d9-98ab-58ca490b94da",
-            "shortKey": "tum_ma3081_lo1_1_2_2",
-            "title": "Verstehen: Stabilität in Beispielen analysieren",
-            "titleEn": "Understand: Analyze Stability in Examples",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Stabilität in Beispielen analysieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Analyze Stability in Examples'.",
-            "core": true,
-            "weight": 0.09,
-            "phase": "Modul",
-            "area": "Stabilität & Lyapunov",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "9ad336a2-b09f-5f98-96f0-54629d6034e1"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Stabilität & Lyapunov",
-                "topicCode": "tum_ma3081_lo1_1_2_2"
-            }
-        },
-        {
-            "id": "54a0d153-00be-5ef9-bfd3-9837593694ef",
-            "shortKey": "tum_ma3081_lo1_1_2_3",
-            "title": "Anwenden: Stabilität in Beispielen analysieren",
-            "titleEn": "Apply: Analyze Stability in Examples",
-            "description": "Die lernende Person wendet das Wissen zu 'Stabilität in Beispielen analysieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Analyze Stability in Examples' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.12,
-            "phase": "Modul",
-            "area": "Stabilität & Lyapunov",
-            "tags": [
-                "ects:9",
-                "module:MA3081"
-            ],
-            "contains": [],
-            "requires": [
-                "78627d46-392b-52d9-98ab-58ca490b94da"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3081",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Stabilität & Lyapunov",
-                "topicCode": "tum_ma3081_lo1_1_2_3"
-            }
-        }
-    ]
+  "title": "Dynamische Systeme (TUM, Modul MA3081)",
+  "titleEn": "Dynamical Systems (TUM, Module MA3081)",
+  "description": "Das Modul vertieft die mathematische Theorie dynamischer Systeme mit Fokus auf geometrische und topologische Eigenschaften von Lösungen nichtlinearer gewöhnlicher Differentialgleichungen sowie iterierter Abbildungen in endlich-dimensionalen Phasenräumen. Behandelt werden u.a. Stabilität und Lyapunovfunktionen, Poincaré-Abbildungen, stabile/instabile Mannigfaltigkeiten, hyperbolische Mengen und strukturelle Stabilität, lokale und globale Bifurkationen, sowie chaotische Dynamik, symbolische Dynamik und ergodische Aspekte (invariante Maße, Rekurrenz, Ergodizität, Entropie). 9 ECTS, angeboten im Sommersemester, Version 2021w, verantwortet von Kühn, Christian.",
+  "descriptionEn": "The module deepens the mathematical theory of dynamical systems with an emphasis on geometric and topological properties of solutions of nonlinear ordinary differential equations as well as iterated maps in finite-dimensional phase spaces. Topics include stability and Lyapunov functions, Poincaré maps, stable and unstable manifolds, hyperbolic sets and structural stability, local and global bifurcations, and chaotic dynamics including symbolic dynamics and ergodic aspects (invariant measures, recurrence, ergodicity, entropy). 9 ECTS, offered in the summer semester, version 2021w, responsible: Kühn, Christian.",
+  "landscapeId": "904174e1-a5e0-4146-a2b4-cd8e6eabea09",
+  "locale": "de-DE",
+  "subject": "Mathematik",
+  "frameworkId": "tum-ma3081",
+  "filters": [
+    {
+      "id": "BSc",
+      "label": "Bachelor Mathematik"
+    }
+  ],
+  "goals": [
+    {
+      "id": "eb6fe417-5b78-4c8a-9a9a-55a9d8e02ef5",
+      "title": "Dynamische Systeme – Gesamtmodul",
+      "titleEn": "Dynamical Systems – Full Module",
+      "description": "Nach erfolgreichem Abschluss können Studierende die mathematische Theorie dynamischer Systeme verstehen und anwenden, mit Schwerpunkt auf der Analyse geometrischer und topologischer Eigenschaften von Lösungen nichtlinearer gewöhnlicher Differentialgleichungen sowie iterierter Abbildungen in endlich-dimensionalen euklidischen Phasenräumen. Darüber hinaus können sie Elemente der Theorie von Systemen auf differenzierbaren Mannigfaltigkeiten sowie in unendlich-dimensionalen Phasenräumen einordnen.",
+      "descriptionEn": "After successful completion of the module the students are able to understand and apply the mathematical theory of dynamical systems stressing the analysis of geometric and topological properties of solutions of nonlinear ordinary differential equations as well as iterated maps in finite-dimensional Euclidean phase spaces. Furthermore the students are able to analyse elements for the theory of systems on differentiable manifolds and in infinite-dimensional phase spaces.",
+      "weight": 9.0,
+      "tags": [
+        "ects:9",
+        "workload:270h",
+        "presence:90h",
+        "level:master",
+        "language:en",
+        "module:MA3081",
+        "semester:SS",
+        "duration:1_semester",
+        "responsible:k_hn_christian"
+      ],
+      "contains": [
+        "b5c62c99-0982-5e36-8c2d-afced50272ca",
+        "47fbf825-ee74-5f82-893f-19d204f0101c",
+        "3ab0f6ac-ff8c-5163-ac8f-0a5c525e1fe1",
+        "44de45cd-dc60-5322-a5e5-6d924dfc5b54",
+        "ef08304a-3c61-5632-93b4-03c7eff0ae58",
+        "bf7bc449-c806-52c4-9368-d726be03922c",
+        "387a9082-e090-533b-a1eb-0a38e65788f8",
+        "c5d9c36d-fcc5-5ae3-a2f8-a6aea41394e7",
+        "a38d1e6b-e289-5527-af12-0e69017c0e4e"
+      ],
+      "requires": [
+        "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
+        "c8982665-86b6-5371-8682-852992cab2e7"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      },
+      "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA3081&description_version=2021w"
+    },
+    {
+      "id": "b5c62c99-0982-5e36-8c2d-afced50272ca",
+      "title": "Stabilität und Lyapunovtheorie",
+      "titleEn": "Stability and Lyapunov Theory",
+      "description": "Zusammenfassender Cluster: Stabilitätsbegriffe und Lyapunovfunktionen als zentrale Werkzeuge der qualitativen Dynamik.",
+      "descriptionEn": "Summary cluster: stability notions and Lyapunov functions as central tools of qualitative dynamics.",
+      "weight": 1.2,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "a704436d-7d15-51d2-9ee3-d2e7cc1962df",
+        "47c37263-b045-5f35-9559-f2c0a1343150"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a704436d-7d15-51d2-9ee3-d2e7cc1962df",
+      "title": "Stabilitätsbegriffe für Flüsse und Abbildungen anwenden",
+      "titleEn": "Apply Stability Notions for Flows and Maps",
+      "description": "Zusammenfassender Cluster: Stabilitätsbegriffe für Gleichgewichte/Fixpunkte formulieren und in Beispielen anwenden.",
+      "descriptionEn": "Summary cluster: formulate stability notions for equilibria/fixed points and apply them in examples.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "faa6ecb3-4fba-459a-a93c-eb97348c893e",
+        "77b5ff6d-5f15-4a01-8a5a-17b800c65fad"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "47c37263-b045-5f35-9559-f2c0a1343150",
+      "title": "Lyapunovfunktionen konstruieren und verwenden",
+      "titleEn": "Construct and Use Lyapunov Functions",
+      "description": "Die lernende Person kann Lyapunovfunktionen zur Stabilitätsanalyse einsetzen, geeignete Kandidaten begründen und typische Schlussweisen (z.B. Invarianzprinzip) in Aufgaben nachvollziehen.",
+      "descriptionEn": "The learner can use Lyapunov functions for stability analysis, justify suitable candidates, and follow standard reasoning patterns (e.g., invariance principles) in problems.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "239197bf-7a96-5b6d-b98e-0bb8b455d60a",
+        "95ddfc21-078d-5560-9dff-c46294ce8fd1",
+        "1860da02-c6a7-50a3-88b7-7303acb52048"
+      ],
+      "requires": [
+        "a704436d-7d15-51d2-9ee3-d2e7cc1962df"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "47fbf825-ee74-5f82-893f-19d204f0101c",
+      "title": "Poincaré-Abbildungen und invariante Mannigfaltigkeiten",
+      "titleEn": "Poincaré Maps and Invariant Manifolds",
+      "description": "Zusammenfassender Cluster: Poincaré-Abbildung, invariante Mannigfaltigkeiten und Hartman-Grobman als Werkzeuge der lokalen Theorie.",
+      "descriptionEn": "Summary cluster: Poincaré maps, invariant manifolds, and Hartman–Grobman as tools of local theory.",
+      "weight": 1.1,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "8fe1e6f5-649b-5714-a55c-ef128f2bf297",
+        "d4fe6023-ab12-5b93-8462-9164a6f77320"
+      ],
+      "requires": [
+        "47c37263-b045-5f35-9559-f2c0a1343150"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8fe1e6f5-649b-5714-a55c-ef128f2bf297",
+      "title": "Poincaré-Abbildung für periodische Orbits einsetzen",
+      "titleEn": "Use the Poincaré Map for Periodic Orbits",
+      "description": "Die lernende Person kann Poincaré-Abbildungen konstruieren und nutzen, um periodische Orbits zu analysieren, Stabilität über Monodromie/Multiplikatoren zu beurteilen und Beispiele zu bearbeiten.",
+      "descriptionEn": "The learner can construct and use Poincaré maps to analyze periodic orbits, assess stability via multipliers/monodromy, and work through examples.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "e8208f84-1327-511d-af84-51dbc4f13001",
+        "e722085d-f964-57db-9563-b17d6ba97dbf",
+        "1bf3f24a-21cf-58c3-8189-0687a9fcc5cb"
+      ],
+      "requires": [
+        "47c37263-b045-5f35-9559-f2c0a1343150"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d4fe6023-ab12-5b93-8462-9164a6f77320",
+      "title": "Invariante Mannigfaltigkeiten und Hartman-Grobman einordnen",
+      "titleEn": "Place Invariant Manifolds and the Hartman–Grobman Theorem",
+      "description": "Die lernende Person kann stabile/instabile Mannigfaltigkeiten für hyperbolische Fixpunkte beschreiben und das Hartman-Grobman-Theorem zur lokalen Topologie-Konjugation mit der Linearisierung nutzen.",
+      "descriptionEn": "The learner can describe stable/unstable manifolds for hyperbolic fixed points and use the Hartman–Grobman theorem to relate local dynamics to the linearization via topological conjugacy.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "aef79897-b2ee-5b2d-9944-c8caae432339",
+        "ead4af29-f2fe-5819-a21d-3a99e8984564",
+        "10693c75-3c4b-5f36-bde8-c06a6c1556a6"
+      ],
+      "requires": [
+        "8fe1e6f5-649b-5714-a55c-ef128f2bf297"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "3ab0f6ac-ff8c-5163-ac8f-0a5c525e1fe1",
+      "title": "Hyperbolische Dynamik und strukturelle Stabilität",
+      "titleEn": "Hyperbolic Dynamics and Structural Stability",
+      "description": "Zusammenfassender Cluster: Hyperbolische Mengen, strukturelle Stabilität und Anosov-Systeme als Kern der hyperbolischen Dynamik.",
+      "descriptionEn": "Summary cluster: hyperbolic sets, structural stability, and Anosov systems as core topics of hyperbolic dynamics.",
+      "weight": 1.1,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "510a55e6-f6a2-5e13-822e-f8691b818bcd",
+        "037a6667-629e-56b5-8402-570dda7d9e00"
+      ],
+      "requires": [
+        "d4fe6023-ab12-5b93-8462-9164a6f77320"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "510a55e6-f6a2-5e13-822e-f8691b818bcd",
+      "title": "Hyperbolische Mengen und strukturelle Stabilität verstehen",
+      "titleEn": "Understand Hyperbolic Sets and Structural Stability",
+      "description": "Die lernende Person kann hyperbolische Mengen definieren, strukturelle Stabilität einordnen und zentrale Konsequenzen (z.B. Persistenz unter Störungen) in Beispielen diskutieren.",
+      "descriptionEn": "The learner can define hyperbolic sets, place structural stability, and discuss key consequences (e.g., persistence under perturbations) in examples.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "20328260-303c-545b-a246-3d300e9867ec",
+        "eb49e8de-4fad-5d1a-90f5-cca125c58d30",
+        "ca25ed90-2ac4-5f28-a82e-8796cb801d02"
+      ],
+      "requires": [
+        "d4fe6023-ab12-5b93-8462-9164a6f77320"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "037a6667-629e-56b5-8402-570dda7d9e00",
+      "title": "Anosov-Diffeomorphismen und Beispiele hyperbolischer Dynamik einordnen",
+      "titleEn": "Place Anosov Diffeomorphisms and Examples of Hyperbolic Dynamics",
+      "description": "Die lernende Person kann Anosov-Diffeomorphismen als global hyperbolische Systeme charakterisieren, Beispiele diskutieren und ihre Rolle in der Theorie hyperbolischer Dynamik erklären.",
+      "descriptionEn": "The learner can characterize Anosov diffeomorphisms as globally hyperbolic systems, discuss examples, and explain their role in hyperbolic dynamics.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "96b3d368-488e-592b-b6ea-73b4dcb9451a",
+        "d432a434-f85a-5264-910e-c306a15e64d5",
+        "80f51be2-3664-58a4-bfed-051cb331984b"
+      ],
+      "requires": [
+        "510a55e6-f6a2-5e13-822e-f8691b818bcd"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "44de45cd-dc60-5322-a5e5-6d924dfc5b54",
+      "title": "Lokale Bifurkationen, Normalformen, Zentrumsmannigfaltigkeit",
+      "titleEn": "Local Bifurcations, Normal Forms, Center Manifolds",
+      "description": "Zusammenfassender Cluster: Lokale Bifurkationen in Flüssen/Abbildungen mit Normalformen und Zentrumsmannigfaltigkeit.",
+      "descriptionEn": "Summary cluster: local bifurcations in flows/maps using normal forms and center manifolds.",
+      "weight": 1.2,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "612bccfd-d090-5b8f-8a3a-c72cb9ab6e6b",
+        "1923026d-4429-5619-b075-6f420beaf9a0"
+      ],
+      "requires": [
+        "d4fe6023-ab12-5b93-8462-9164a6f77320"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "612bccfd-d090-5b8f-8a3a-c72cb9ab6e6b",
+      "title": "Lokale Bifurkationen von Flüssen und Abbildungen analysieren",
+      "titleEn": "Analyze Local Bifurcations of Flows and Maps",
+      "description": "Die lernende Person kann lokale Bifurkationen in Flüssen und Abbildungen identifizieren und deren qualitative Dynamik in Abhängigkeit eines Parameters beschreiben.",
+      "descriptionEn": "The learner can identify local bifurcations in flows and maps and describe the qualitative parameter-dependent dynamics.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "dc8b2a3e-a4e6-5427-bffd-302cd49ca0ce",
+        "860c0430-5749-5ce3-b1f4-4c334b1a5bc0",
+        "2c26201e-a47c-50ee-b72f-066bceec3f80"
+      ],
+      "requires": [
+        "d4fe6023-ab12-5b93-8462-9164a6f77320"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1923026d-4429-5619-b075-6f420beaf9a0",
+      "title": "Normalformen und Zentrumsmannigfaltigkeiten nutzen",
+      "titleEn": "Use Normal Forms and Center Manifolds",
+      "description": "Die lernende Person kann Normalformen zur lokalen Analyse heranziehen und Zentrumsmannigfaltigkeiten zur Dimensionsreduktion und Bifurkationsanalyse in Beispielen einsetzen.",
+      "descriptionEn": "The learner can use normal forms for local analysis and apply center manifolds for dimension reduction and bifurcation analysis in examples.",
+      "weight": 0.6,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "4e812ea6-ba6b-5e4a-b2b0-f28150153ad9",
+        "87cabc71-fb8d-5bd1-9970-d00af9c0c418",
+        "a0dea8af-8a42-571f-b974-a1119bb102fc"
+      ],
+      "requires": [
+        "612bccfd-d090-5b8f-8a3a-c72cb9ab6e6b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ef08304a-3c61-5632-93b4-03c7eff0ae58",
+      "title": "Globale Bifurkationen und Melnikov",
+      "titleEn": "Global Bifurcations and Melnikov’s Method",
+      "description": "Zusammenfassender Cluster: Globale Bifurkationen (u.a. Shilnikov) und Melnikov-Methode als Zugang zu komplexer Dynamik.",
+      "descriptionEn": "Summary cluster: global bifurcations (including Shilnikov) and Melnikov’s method as a route to complex dynamics.",
+      "weight": 1.0,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "b5ece4bb-86c7-5329-adf0-91b5bdea887d",
+        "e68442e1-b286-59cc-9ca7-93ea22c397da"
+      ],
+      "requires": [
+        "1923026d-4429-5619-b075-6f420beaf9a0"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b5ece4bb-86c7-5329-adf0-91b5bdea887d",
+      "title": "Globale Bifurkationen und Shilnikov-Bedingung einordnen",
+      "titleEn": "Place Global Bifurcations and the Shilnikov Condition",
+      "description": "Die lernende Person kann globale Bifurkationen (homoklin/heteroklin) beschreiben, ihre Bedeutung für komplexe Dynamik erläutern und die Shilnikov-Bedingung in Beispielen einordnen.",
+      "descriptionEn": "The learner can describe global bifurcations (homoclinic/heteroclinic), explain their relevance for complex dynamics, and place the Shilnikov condition in examples.",
+      "weight": 0.5,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "a0719cf2-8fac-5437-b878-3efa6b4f076a",
+        "885b0327-cfcc-5ed4-9a87-11d9c575f9be",
+        "419bad59-559c-5f0c-b4cd-ea5da07cc50e"
+      ],
+      "requires": [
+        "1923026d-4429-5619-b075-6f420beaf9a0"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e68442e1-b286-59cc-9ca7-93ea22c397da",
+      "title": "Melnikov-Methode zur Detektion von Chaos anwenden",
+      "titleEn": "Apply Melnikov’s Method to Detect Chaos",
+      "description": "Die lernende Person kann die Melnikov-Methode in Modellproblemen einsetzen, transversale Schnitte stabiler/instabiler Mannigfaltigkeiten nachweisen und daraus chaotische Dynamik motivieren.",
+      "descriptionEn": "The learner can use Melnikov’s method in model problems to establish transversal intersections of stable/unstable manifolds and motivate chaotic dynamics from this.",
+      "weight": 0.5,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "624ad55f-a824-5664-a38b-917e6b78167b",
+        "8aa67714-0c06-5706-bd1b-4589f973e49a",
+        "1eeab15e-101b-50db-b585-b94b89ad1ece"
+      ],
+      "requires": [
+        "b5ece4bb-86c7-5329-adf0-91b5bdea887d"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "bf7bc449-c806-52c4-9368-d726be03922c",
+      "title": "Chaotische Dynamik und symbolische Dynamik",
+      "titleEn": "Chaotic Dynamics and Symbolic Dynamics",
+      "description": "Zusammenfassender Cluster: Chaos (Horseshoe, seltsame Attraktoren), Symbolik und quantitative Begriffe (Lyapunov-Exponenten).",
+      "descriptionEn": "Summary cluster: chaos (horseshoes, strange attractors), symbolic dynamics, and quantitative notions (Lyapunov exponents).",
+      "weight": 1.3,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "599a5516-00ad-5722-a112-0fc4e7582276",
+        "c312a4a9-d3b6-59ff-87b1-f4deeb1a0ba8"
+      ],
+      "requires": [
+        "e68442e1-b286-59cc-9ca7-93ea22c397da"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "599a5516-00ad-5722-a112-0fc4e7582276",
+      "title": "Smale-Horseshoe und symbolische Dynamik verstehen",
+      "titleEn": "Understand the Smale Horseshoe and Symbolic Dynamics",
+      "description": "Die lernende Person kann die Smale-Horseshoe-Konstruktion erklären, transitive/hyperbolische Invariantenmengen einordnen und symbolische Dynamik als Kodierung komplexer Dynamik nutzen.",
+      "descriptionEn": "The learner can explain the Smale horseshoe construction, place transitive/hyperbolic invariant sets, and use symbolic dynamics as an encoding of complex dynamics.",
+      "weight": 0.65,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "031f1ff5-f45a-5889-a649-e158f10ac47b",
+        "dd31e56f-6400-5628-8f83-0bfe936d2ab3",
+        "28bcd73c-6f78-5655-ad33-63d1ffc35afc"
+      ],
+      "requires": [
+        "e68442e1-b286-59cc-9ca7-93ea22c397da"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "c312a4a9-d3b6-59ff-87b1-f4deeb1a0ba8",
+      "title": "Strange Attractors und Lyapunov-Exponenten analysieren",
+      "titleEn": "Analyze Strange Attractors and Lyapunov Exponents",
+      "description": "Die lernende Person kann Beispiele seltsamer Attraktoren diskutieren, Sensitivität und transitive Dynamik einordnen und Lyapunov-Exponenten als quantitative Chaos-Merkmale interpretieren.",
+      "descriptionEn": "The learner can discuss examples of strange attractors, place sensitivity and transitivity, and interpret Lyapunov exponents as quantitative indicators of chaos.",
+      "weight": 0.65,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "629b37e6-7690-571d-bb40-1c2e6e061746",
+        "e14ba077-9da4-5b94-8081-ece97d77ece3",
+        "a9bf5328-87f0-54ce-a9a5-ffc378ab776f"
+      ],
+      "requires": [
+        "599a5516-00ad-5722-a112-0fc4e7582276"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "387a9082-e090-533b-a1eb-0a38e65788f8",
+      "title": "Eindimensionale Dynamik: Unimodale und Kreisabbildungen",
+      "titleEn": "One-Dimensional Dynamics: Unimodal and Circle Maps",
+      "description": "Zusammenfassender Cluster: Dynamik eindimensionaler Abbildungen (unimodal, Kreisabbildungen) einschließlich Periodenstruktur und Rotationszahl.",
+      "descriptionEn": "Summary cluster: dynamics of one-dimensional maps (unimodal maps, circle maps) including period structure and the rotation number.",
+      "weight": 1.1,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "b4e9b273-24dc-59f6-b541-2954e2dedfbc",
+        "603cabf1-4c82-5924-8bd0-f5033214d035"
+      ],
+      "requires": [
+        "612bccfd-d090-5b8f-8a3a-c72cb9ab6e6b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b4e9b273-24dc-59f6-b541-2954e2dedfbc",
+      "title": "Unimodale Abbildungen und Sharkovsky einordnen",
+      "titleEn": "Place Unimodal Maps and Sharkovsky’s Theorem",
+      "description": "Die lernende Person kann unimodale Abbildungen in Beispielen analysieren, Periodenstruktur diskutieren und die Aussage des Satzes von Sharkovsky zur Existenz periodischer Orbits einordnen.",
+      "descriptionEn": "The learner can analyze unimodal maps in examples, discuss period structure, and place the statement of Sharkovsky’s theorem on the existence of periodic orbits.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "a9a349c3-b059-55d8-8a10-6c20026ae037",
+        "fceb49c5-d0f5-53fd-8647-050e112f4430",
+        "02bcc00b-1d41-5d16-be40-9efeffb990a4"
+      ],
+      "requires": [
+        "612bccfd-d090-5b8f-8a3a-c72cb9ab6e6b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "603cabf1-4c82-5924-8bd0-f5033214d035",
+      "title": "Kreisabbildungen und Rotationszahl nutzen",
+      "titleEn": "Use Circle Maps and the Rotation Number",
+      "description": "Die lernende Person kann Kreisabbildungen einordnen, die Idee der Rotationszahl erklären und qualitative Phänomene (z.B. periodische Fenster/Locking) in Beispielen diskutieren.",
+      "descriptionEn": "The learner can place circle maps, explain the idea of the rotation number, and discuss qualitative phenomena (e.g., periodic windows/locking) in examples.",
+      "weight": 0.55,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "1bbcbdf8-37d7-5968-ae80-10970174439c",
+        "e8a31452-53f3-52c5-898f-dbb2eb84bbf4",
+        "0dcbac73-5957-5f58-b6b9-1493842c513f"
+      ],
+      "requires": [
+        "b4e9b273-24dc-59f6-b541-2954e2dedfbc"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "c5d9c36d-fcc5-5ae3-a2f8-a6aea41394e7",
+      "title": "Invariante Maße und Ergodentheorie",
+      "titleEn": "Invariant Measures and Ergodic Theory",
+      "description": "Zusammenfassender Cluster: Invariante Maße, Rekurrenz, Ergodizität, Mixing und Entropie als ergodische Perspektive auf Dynamik.",
+      "descriptionEn": "Summary cluster: invariant measures, recurrence, ergodicity, mixing, and entropy as an ergodic perspective on dynamics.",
+      "weight": 1.0,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "e170de14-b8aa-5520-a013-410d7130fb41",
+        "9109b8d5-6a2c-59ec-82cd-e4f250f2e48c"
+      ],
+      "requires": [
+        "c312a4a9-d3b6-59ff-87b1-f4deeb1a0ba8"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e170de14-b8aa-5520-a013-410d7130fb41",
+      "title": "Invariante Maße konstruieren und Rekurrenz verstehen",
+      "titleEn": "Construct Invariant Measures and Understand Recurrence",
+      "description": "Die lernende Person kann invariante Maße motivieren und konstruieren (z.B. Krylov-Bogoliubov), Poincaré-Rekurrenz einordnen und Konsequenzen für Langzeitverhalten diskutieren.",
+      "descriptionEn": "The learner can motivate and construct invariant measures (e.g., via Krylov–Bogoliubov), place Poincaré recurrence, and discuss consequences for long-term behavior.",
+      "weight": 0.5,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "d36638f8-2fed-5e72-b2fb-8b3593de5645",
+        "86d3a88b-43f4-5177-baf1-dc685ddcb5b6",
+        "21d0142e-1675-569a-8e9c-03b42ae8d753"
+      ],
+      "requires": [
+        "c312a4a9-d3b6-59ff-87b1-f4deeb1a0ba8"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9109b8d5-6a2c-59ec-82cd-e4f250f2e48c",
+      "title": "Ergodizität, Mixing und Entropie einordnen",
+      "titleEn": "Place Ergodicity, Mixing, and Entropy",
+      "description": "Die lernende Person kann Ergodizität und (punktweise) Ergodensätze erläutern, Mixing-Begriffe unterscheiden und Entropie als Maß für Komplexität dynamischer Systeme interpretieren.",
+      "descriptionEn": "The learner can explain ergodicity and pointwise ergodic theorems, distinguish mixing notions, and interpret entropy as a measure of dynamical complexity.",
+      "weight": 0.5,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "aabf47aa-92e6-5315-9c29-4425c2b552ff",
+        "4904c5b2-4f82-5029-9688-c6eaad05c358",
+        "cdaca2cc-f8d1-5123-b1b4-c45e14f3c02c"
+      ],
+      "requires": [
+        "e170de14-b8aa-5520-a013-410d7130fb41"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "faa6ecb3-4fba-459a-a93c-eb97348c893e",
+      "title": "Stabilitätsbegriffe für Gleichgewichte und Fixpunkte formulieren",
+      "titleEn": "Formulate Stability Notions for Equilibria and Fixed Points",
+      "description": "Die lernende Person kann Lyapunov-, asymptotische und exponentielle Stabilität für Gleichgewichte bzw. Fixpunkte präzise formulieren.",
+      "descriptionEn": "The learner can precisely formulate Lyapunov, asymptotic, and exponential stability for equilibria or fixed points.",
+      "weight": 0.3,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "b50de797-2afb-5cc7-bb38-1763c73d350c",
+        "43494389-cee5-5a5d-937c-254013b65a56",
+        "a9ec0754-9aff-5670-9060-d468641725af"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "77b5ff6d-5f15-4a01-8a5a-17b800c65fad",
+      "title": "Stabilität in Beispielen analysieren",
+      "titleEn": "Analyze Stability in Examples",
+      "description": "Die lernende Person kann Stabilitätsbegriffe in Beispielen für Flüsse oder Abbildungen anwenden und die Ergebnisse nachvollziehbar begründen.",
+      "descriptionEn": "The learner can apply stability notions to examples for flows or maps and justify the results coherently.",
+      "weight": 0.3,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [
+        "9ad336a2-b09f-5f98-96f0-54629d6034e1",
+        "78627d46-392b-52d9-98ab-58ca490b94da",
+        "54a0d153-00be-5ef9-bfd3-9837593694ef"
+      ],
+      "requires": [
+        "faa6ecb3-4fba-459a-a93c-eb97348c893e"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a38d1e6b-e289-5527-af12-0e69017c0e4e",
+      "title": "Kernaussagen des Moduls memorisieren",
+      "titleEn": "Memorize Key Module Statements",
+      "description": "Die lernende Person hat alle zentralen Definitionen und Sätze des Moduls verinnerlicht (geprüft z.B. durch SRS/Lernkarten).",
+      "descriptionEn": "The learner has internalized all key definitions and theorems of the module (verified e.g. via SRS/flashcards).",
+      "weight": 0.5,
+      "tags": [
+        "module:MA3081",
+        "srs-deck:ma3081"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/ma3081_deck.json"
+      },
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "239197bf-7a96-5b6d-b98e-0bb8b455d60a",
+      "title": "Kennen: Lyapunovfunktionen konstruieren und verwenden",
+      "titleEn": "Know: Construct and Use Lyapunov Functions",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Lyapunovfunktionen konstruieren und verwenden' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Construct and Use Lyapunov Functions'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "95ddfc21-078d-5560-9dff-c46294ce8fd1",
+      "title": "Verstehen: Lyapunovfunktionen konstruieren und verwenden",
+      "titleEn": "Understand: Construct and Use Lyapunov Functions",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Lyapunovfunktionen konstruieren und verwenden'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Construct and Use Lyapunov Functions'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "239197bf-7a96-5b6d-b98e-0bb8b455d60a"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1860da02-c6a7-50a3-88b7-7303acb52048",
+      "title": "Anwenden: Lyapunovfunktionen konstruieren und verwenden",
+      "titleEn": "Apply: Construct and Use Lyapunov Functions",
+      "description": "Die lernende Person wendet das Wissen zu 'Lyapunovfunktionen konstruieren und verwenden' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Construct and Use Lyapunov Functions' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "95ddfc21-078d-5560-9dff-c46294ce8fd1"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e8208f84-1327-511d-af84-51dbc4f13001",
+      "title": "Kennen: Poincaré-Abbildung für periodische Orbits einsetzen",
+      "titleEn": "Know: Use the Poincaré Map for Periodic Orbits",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Poincaré-Abbildung für periodische Orbits einsetzen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use the Poincaré Map for Periodic Orbits'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e722085d-f964-57db-9563-b17d6ba97dbf",
+      "title": "Verstehen: Poincaré-Abbildung für periodische Orbits einsetzen",
+      "titleEn": "Understand: Use the Poincaré Map for Periodic Orbits",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Poincaré-Abbildung für periodische Orbits einsetzen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Use the Poincaré Map for Periodic Orbits'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "e8208f84-1327-511d-af84-51dbc4f13001"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1bf3f24a-21cf-58c3-8189-0687a9fcc5cb",
+      "title": "Anwenden: Poincaré-Abbildung für periodische Orbits einsetzen",
+      "titleEn": "Apply: Use the Poincaré Map for Periodic Orbits",
+      "description": "Die lernende Person wendet das Wissen zu 'Poincaré-Abbildung für periodische Orbits einsetzen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Use the Poincaré Map for Periodic Orbits' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "e722085d-f964-57db-9563-b17d6ba97dbf"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "aef79897-b2ee-5b2d-9944-c8caae432339",
+      "title": "Kennen: Invariante Mannigfaltigkeiten und Hartman-Grobman einordnen",
+      "titleEn": "Know: Place Invariant Manifolds and the Hartman–Grobman Theorem",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Invariante Mannigfaltigkeiten und Hartman-Grobman einordnen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Place Invariant Manifolds and the Hartman–Grobman Theorem'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ead4af29-f2fe-5819-a21d-3a99e8984564",
+      "title": "Verstehen: Invariante Mannigfaltigkeiten und Hartman-Grobman einordnen",
+      "titleEn": "Understand: Place Invariant Manifolds and the Hartman–Grobman Theorem",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Invariante Mannigfaltigkeiten und Hartman-Grobman einordnen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Place Invariant Manifolds and the Hartman–Grobman Theorem'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "aef79897-b2ee-5b2d-9944-c8caae432339"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "10693c75-3c4b-5f36-bde8-c06a6c1556a6",
+      "title": "Anwenden: Invariante Mannigfaltigkeiten und Hartman-Grobman einordnen",
+      "titleEn": "Apply: Place Invariant Manifolds and the Hartman–Grobman Theorem",
+      "description": "Die lernende Person wendet das Wissen zu 'Invariante Mannigfaltigkeiten und Hartman-Grobman einordnen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Place Invariant Manifolds and the Hartman–Grobman Theorem' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "ead4af29-f2fe-5819-a21d-3a99e8984564"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "20328260-303c-545b-a246-3d300e9867ec",
+      "title": "Kennen: Hyperbolische Mengen und strukturelle Stabilität verstehen",
+      "titleEn": "Know: Understand Hyperbolic Sets and Structural Stability",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Hyperbolische Mengen und strukturelle Stabilität verstehen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Understand Hyperbolic Sets and Structural Stability'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "eb49e8de-4fad-5d1a-90f5-cca125c58d30",
+      "title": "Verstehen: Hyperbolische Mengen und strukturelle Stabilität verstehen",
+      "titleEn": "Understand: Understand Hyperbolic Sets and Structural Stability",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Hyperbolische Mengen und strukturelle Stabilität verstehen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Understand Hyperbolic Sets and Structural Stability'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "20328260-303c-545b-a246-3d300e9867ec"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ca25ed90-2ac4-5f28-a82e-8796cb801d02",
+      "title": "Anwenden: Hyperbolische Mengen und strukturelle Stabilität verstehen",
+      "titleEn": "Apply: Understand Hyperbolic Sets and Structural Stability",
+      "description": "Die lernende Person wendet das Wissen zu 'Hyperbolische Mengen und strukturelle Stabilität verstehen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Understand Hyperbolic Sets and Structural Stability' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "eb49e8de-4fad-5d1a-90f5-cca125c58d30"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "96b3d368-488e-592b-b6ea-73b4dcb9451a",
+      "title": "Kennen: Anosov-Diffeomorphismen und Beispiele hyperbolischer Dynamik einordnen",
+      "titleEn": "Know: Place Anosov Diffeomorphisms and Examples of Hyperbolic Dynamics",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Anosov-Diffeomorphismen und Beispiele hyperbolischer Dynamik einordnen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Place Anosov Diffeomorphisms and Examples of Hyperbolic Dynamics'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d432a434-f85a-5264-910e-c306a15e64d5",
+      "title": "Verstehen: Anosov-Diffeomorphismen und Beispiele hyperbolischer Dynamik einordnen",
+      "titleEn": "Understand: Place Anosov Diffeomorphisms and Examples of Hyperbolic Dynamics",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Anosov-Diffeomorphismen und Beispiele hyperbolischer Dynamik einordnen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Place Anosov Diffeomorphisms and Examples of Hyperbolic Dynamics'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "96b3d368-488e-592b-b6ea-73b4dcb9451a"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "80f51be2-3664-58a4-bfed-051cb331984b",
+      "title": "Anwenden: Anosov-Diffeomorphismen und Beispiele hyperbolischer Dynamik einordnen",
+      "titleEn": "Apply: Place Anosov Diffeomorphisms and Examples of Hyperbolic Dynamics",
+      "description": "Die lernende Person wendet das Wissen zu 'Anosov-Diffeomorphismen und Beispiele hyperbolischer Dynamik einordnen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Place Anosov Diffeomorphisms and Examples of Hyperbolic Dynamics' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "d432a434-f85a-5264-910e-c306a15e64d5"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "dc8b2a3e-a4e6-5427-bffd-302cd49ca0ce",
+      "title": "Kennen: Lokale Bifurkationen von Flüssen und Abbildungen analysieren",
+      "titleEn": "Know: Analyze Local Bifurcations of Flows and Maps",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Lokale Bifurkationen von Flüssen und Abbildungen analysieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Analyze Local Bifurcations of Flows and Maps'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "860c0430-5749-5ce3-b1f4-4c334b1a5bc0",
+      "title": "Verstehen: Lokale Bifurkationen von Flüssen und Abbildungen analysieren",
+      "titleEn": "Understand: Analyze Local Bifurcations of Flows and Maps",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Lokale Bifurkationen von Flüssen und Abbildungen analysieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Analyze Local Bifurcations of Flows and Maps'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "dc8b2a3e-a4e6-5427-bffd-302cd49ca0ce"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "2c26201e-a47c-50ee-b72f-066bceec3f80",
+      "title": "Anwenden: Lokale Bifurkationen von Flüssen und Abbildungen analysieren",
+      "titleEn": "Apply: Analyze Local Bifurcations of Flows and Maps",
+      "description": "Die lernende Person wendet das Wissen zu 'Lokale Bifurkationen von Flüssen und Abbildungen analysieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Analyze Local Bifurcations of Flows and Maps' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "860c0430-5749-5ce3-b1f4-4c334b1a5bc0"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4e812ea6-ba6b-5e4a-b2b0-f28150153ad9",
+      "title": "Kennen: Normalformen und Zentrumsmannigfaltigkeiten nutzen",
+      "titleEn": "Know: Use Normal Forms and Center Manifolds",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Normalformen und Zentrumsmannigfaltigkeiten nutzen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Normal Forms and Center Manifolds'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "87cabc71-fb8d-5bd1-9970-d00af9c0c418",
+      "title": "Verstehen: Normalformen und Zentrumsmannigfaltigkeiten nutzen",
+      "titleEn": "Understand: Use Normal Forms and Center Manifolds",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Normalformen und Zentrumsmannigfaltigkeiten nutzen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Use Normal Forms and Center Manifolds'.",
+      "weight": 0.18,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "4e812ea6-ba6b-5e4a-b2b0-f28150153ad9"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a0dea8af-8a42-571f-b974-a1119bb102fc",
+      "title": "Anwenden: Normalformen und Zentrumsmannigfaltigkeiten nutzen",
+      "titleEn": "Apply: Use Normal Forms and Center Manifolds",
+      "description": "Die lernende Person wendet das Wissen zu 'Normalformen und Zentrumsmannigfaltigkeiten nutzen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Use Normal Forms and Center Manifolds' to concrete examples and tasks.",
+      "weight": 0.24,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "87cabc71-fb8d-5bd1-9970-d00af9c0c418"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a0719cf2-8fac-5437-b878-3efa6b4f076a",
+      "title": "Kennen: Globale Bifurkationen und Shilnikov-Bedingung einordnen",
+      "titleEn": "Know: Place Global Bifurcations and the Shilnikov Condition",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Globale Bifurkationen und Shilnikov-Bedingung einordnen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Place Global Bifurcations and the Shilnikov Condition'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "885b0327-cfcc-5ed4-9a87-11d9c575f9be",
+      "title": "Verstehen: Globale Bifurkationen und Shilnikov-Bedingung einordnen",
+      "titleEn": "Understand: Place Global Bifurcations and the Shilnikov Condition",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Globale Bifurkationen und Shilnikov-Bedingung einordnen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Place Global Bifurcations and the Shilnikov Condition'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "a0719cf2-8fac-5437-b878-3efa6b4f076a"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "419bad59-559c-5f0c-b4cd-ea5da07cc50e",
+      "title": "Anwenden: Globale Bifurkationen und Shilnikov-Bedingung einordnen",
+      "titleEn": "Apply: Place Global Bifurcations and the Shilnikov Condition",
+      "description": "Die lernende Person wendet das Wissen zu 'Globale Bifurkationen und Shilnikov-Bedingung einordnen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Place Global Bifurcations and the Shilnikov Condition' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "885b0327-cfcc-5ed4-9a87-11d9c575f9be"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "624ad55f-a824-5664-a38b-917e6b78167b",
+      "title": "Kennen: Melnikov-Methode zur Detektion von Chaos anwenden",
+      "titleEn": "Know: Apply Melnikov’s Method to Detect Chaos",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Melnikov-Methode zur Detektion von Chaos anwenden' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply Melnikov’s Method to Detect Chaos'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8aa67714-0c06-5706-bd1b-4589f973e49a",
+      "title": "Verstehen: Melnikov-Methode zur Detektion von Chaos anwenden",
+      "titleEn": "Understand: Apply Melnikov’s Method to Detect Chaos",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Melnikov-Methode zur Detektion von Chaos anwenden'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Apply Melnikov’s Method to Detect Chaos'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "624ad55f-a824-5664-a38b-917e6b78167b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1eeab15e-101b-50db-b585-b94b89ad1ece",
+      "title": "Anwenden: Melnikov-Methode zur Detektion von Chaos anwenden",
+      "titleEn": "Apply: Apply Melnikov’s Method to Detect Chaos",
+      "description": "Die lernende Person wendet das Wissen zu 'Melnikov-Methode zur Detektion von Chaos anwenden' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Apply Melnikov’s Method to Detect Chaos' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "8aa67714-0c06-5706-bd1b-4589f973e49a"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "031f1ff5-f45a-5889-a649-e158f10ac47b",
+      "title": "Kennen: Smale-Horseshoe und symbolische Dynamik verstehen",
+      "titleEn": "Know: Understand the Smale Horseshoe and Symbolic Dynamics",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Smale-Horseshoe und symbolische Dynamik verstehen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Understand the Smale Horseshoe and Symbolic Dynamics'.",
+      "weight": 0.195,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "dd31e56f-6400-5628-8f83-0bfe936d2ab3",
+      "title": "Verstehen: Smale-Horseshoe und symbolische Dynamik verstehen",
+      "titleEn": "Understand: Understand the Smale Horseshoe and Symbolic Dynamics",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Smale-Horseshoe und symbolische Dynamik verstehen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Understand the Smale Horseshoe and Symbolic Dynamics'.",
+      "weight": 0.195,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "031f1ff5-f45a-5889-a649-e158f10ac47b"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "28bcd73c-6f78-5655-ad33-63d1ffc35afc",
+      "title": "Anwenden: Smale-Horseshoe und symbolische Dynamik verstehen",
+      "titleEn": "Apply: Understand the Smale Horseshoe and Symbolic Dynamics",
+      "description": "Die lernende Person wendet das Wissen zu 'Smale-Horseshoe und symbolische Dynamik verstehen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Understand the Smale Horseshoe and Symbolic Dynamics' to concrete examples and tasks.",
+      "weight": 0.26,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "dd31e56f-6400-5628-8f83-0bfe936d2ab3"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "629b37e6-7690-571d-bb40-1c2e6e061746",
+      "title": "Kennen: Strange Attractors und Lyapunov-Exponenten analysieren",
+      "titleEn": "Know: Analyze Strange Attractors and Lyapunov Exponents",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Strange Attractors und Lyapunov-Exponenten analysieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Analyze Strange Attractors and Lyapunov Exponents'.",
+      "weight": 0.195,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e14ba077-9da4-5b94-8081-ece97d77ece3",
+      "title": "Verstehen: Strange Attractors und Lyapunov-Exponenten analysieren",
+      "titleEn": "Understand: Analyze Strange Attractors and Lyapunov Exponents",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Strange Attractors und Lyapunov-Exponenten analysieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Analyze Strange Attractors and Lyapunov Exponents'.",
+      "weight": 0.195,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "629b37e6-7690-571d-bb40-1c2e6e061746"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a9bf5328-87f0-54ce-a9a5-ffc378ab776f",
+      "title": "Anwenden: Strange Attractors und Lyapunov-Exponenten analysieren",
+      "titleEn": "Apply: Analyze Strange Attractors and Lyapunov Exponents",
+      "description": "Die lernende Person wendet das Wissen zu 'Strange Attractors und Lyapunov-Exponenten analysieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Analyze Strange Attractors and Lyapunov Exponents' to concrete examples and tasks.",
+      "weight": 0.26,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "e14ba077-9da4-5b94-8081-ece97d77ece3"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a9a349c3-b059-55d8-8a10-6c20026ae037",
+      "title": "Kennen: Unimodale Abbildungen und Sharkovsky einordnen",
+      "titleEn": "Know: Place Unimodal Maps and Sharkovsky’s Theorem",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Unimodale Abbildungen und Sharkovsky einordnen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Place Unimodal Maps and Sharkovsky’s Theorem'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "fceb49c5-d0f5-53fd-8647-050e112f4430",
+      "title": "Verstehen: Unimodale Abbildungen und Sharkovsky einordnen",
+      "titleEn": "Understand: Place Unimodal Maps and Sharkovsky’s Theorem",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Unimodale Abbildungen und Sharkovsky einordnen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Place Unimodal Maps and Sharkovsky’s Theorem'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "a9a349c3-b059-55d8-8a10-6c20026ae037"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "02bcc00b-1d41-5d16-be40-9efeffb990a4",
+      "title": "Anwenden: Unimodale Abbildungen und Sharkovsky einordnen",
+      "titleEn": "Apply: Place Unimodal Maps and Sharkovsky’s Theorem",
+      "description": "Die lernende Person wendet das Wissen zu 'Unimodale Abbildungen und Sharkovsky einordnen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Place Unimodal Maps and Sharkovsky’s Theorem' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "fceb49c5-d0f5-53fd-8647-050e112f4430"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1bbcbdf8-37d7-5968-ae80-10970174439c",
+      "title": "Kennen: Kreisabbildungen und Rotationszahl nutzen",
+      "titleEn": "Know: Use Circle Maps and the Rotation Number",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Kreisabbildungen und Rotationszahl nutzen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Circle Maps and the Rotation Number'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e8a31452-53f3-52c5-898f-dbb2eb84bbf4",
+      "title": "Verstehen: Kreisabbildungen und Rotationszahl nutzen",
+      "titleEn": "Understand: Use Circle Maps and the Rotation Number",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Kreisabbildungen und Rotationszahl nutzen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Use Circle Maps and the Rotation Number'.",
+      "weight": 0.165,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "1bbcbdf8-37d7-5968-ae80-10970174439c"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0dcbac73-5957-5f58-b6b9-1493842c513f",
+      "title": "Anwenden: Kreisabbildungen und Rotationszahl nutzen",
+      "titleEn": "Apply: Use Circle Maps and the Rotation Number",
+      "description": "Die lernende Person wendet das Wissen zu 'Kreisabbildungen und Rotationszahl nutzen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Use Circle Maps and the Rotation Number' to concrete examples and tasks.",
+      "weight": 0.22000000000000003,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "e8a31452-53f3-52c5-898f-dbb2eb84bbf4"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d36638f8-2fed-5e72-b2fb-8b3593de5645",
+      "title": "Kennen: Invariante Maße konstruieren und Rekurrenz verstehen",
+      "titleEn": "Know: Construct Invariant Measures and Understand Recurrence",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Invariante Maße konstruieren und Rekurrenz verstehen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Construct Invariant Measures and Understand Recurrence'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "86d3a88b-43f4-5177-baf1-dc685ddcb5b6",
+      "title": "Verstehen: Invariante Maße konstruieren und Rekurrenz verstehen",
+      "titleEn": "Understand: Construct Invariant Measures and Understand Recurrence",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Invariante Maße konstruieren und Rekurrenz verstehen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Construct Invariant Measures and Understand Recurrence'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "d36638f8-2fed-5e72-b2fb-8b3593de5645"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "21d0142e-1675-569a-8e9c-03b42ae8d753",
+      "title": "Anwenden: Invariante Maße konstruieren und Rekurrenz verstehen",
+      "titleEn": "Apply: Construct Invariant Measures and Understand Recurrence",
+      "description": "Die lernende Person wendet das Wissen zu 'Invariante Maße konstruieren und Rekurrenz verstehen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Construct Invariant Measures and Understand Recurrence' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "86d3a88b-43f4-5177-baf1-dc685ddcb5b6"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "aabf47aa-92e6-5315-9c29-4425c2b552ff",
+      "title": "Kennen: Ergodizität, Mixing und Entropie einordnen",
+      "titleEn": "Know: Place Ergodicity, Mixing, and Entropy",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Ergodizität, Mixing und Entropie einordnen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Place Ergodicity, Mixing, and Entropy'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4904c5b2-4f82-5029-9688-c6eaad05c358",
+      "title": "Verstehen: Ergodizität, Mixing und Entropie einordnen",
+      "titleEn": "Understand: Place Ergodicity, Mixing, and Entropy",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Ergodizität, Mixing und Entropie einordnen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Place Ergodicity, Mixing, and Entropy'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "aabf47aa-92e6-5315-9c29-4425c2b552ff"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "cdaca2cc-f8d1-5123-b1b4-c45e14f3c02c",
+      "title": "Anwenden: Ergodizität, Mixing und Entropie einordnen",
+      "titleEn": "Apply: Place Ergodicity, Mixing, and Entropy",
+      "description": "Die lernende Person wendet das Wissen zu 'Ergodizität, Mixing und Entropie einordnen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Place Ergodicity, Mixing, and Entropy' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "4904c5b2-4f82-5029-9688-c6eaad05c358"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b50de797-2afb-5cc7-bb38-1763c73d350c",
+      "title": "Kennen: Stabilitätsbegriffe für Gleichgewichte und Fixpunkte formulieren",
+      "titleEn": "Know: Formulate Stability Notions for Equilibria and Fixed Points",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Stabilitätsbegriffe für Gleichgewichte und Fixpunkte formulieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Formulate Stability Notions for Equilibria and Fixed Points'.",
+      "weight": 0.09,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "43494389-cee5-5a5d-937c-254013b65a56",
+      "title": "Verstehen: Stabilitätsbegriffe für Gleichgewichte und Fixpunkte formulieren",
+      "titleEn": "Understand: Formulate Stability Notions for Equilibria and Fixed Points",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Stabilitätsbegriffe für Gleichgewichte und Fixpunkte formulieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Formulate Stability Notions for Equilibria and Fixed Points'.",
+      "weight": 0.09,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "b50de797-2afb-5cc7-bb38-1763c73d350c"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a9ec0754-9aff-5670-9060-d468641725af",
+      "title": "Anwenden: Stabilitätsbegriffe für Gleichgewichte und Fixpunkte formulieren",
+      "titleEn": "Apply: Formulate Stability Notions for Equilibria and Fixed Points",
+      "description": "Die lernende Person wendet das Wissen zu 'Stabilitätsbegriffe für Gleichgewichte und Fixpunkte formulieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Formulate Stability Notions for Equilibria and Fixed Points' to concrete examples and tasks.",
+      "weight": 0.12,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "43494389-cee5-5a5d-937c-254013b65a56"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9ad336a2-b09f-5f98-96f0-54629d6034e1",
+      "title": "Kennen: Stabilität in Beispielen analysieren",
+      "titleEn": "Know: Analyze Stability in Examples",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Stabilität in Beispielen analysieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Analyze Stability in Examples'.",
+      "weight": 0.09,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "78627d46-392b-52d9-98ab-58ca490b94da",
+      "title": "Verstehen: Stabilität in Beispielen analysieren",
+      "titleEn": "Understand: Analyze Stability in Examples",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Stabilität in Beispielen analysieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Analyze Stability in Examples'.",
+      "weight": 0.09,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "9ad336a2-b09f-5f98-96f0-54629d6034e1"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "54a0d153-00be-5ef9-bfd3-9837593694ef",
+      "title": "Anwenden: Stabilität in Beispielen analysieren",
+      "titleEn": "Apply: Analyze Stability in Examples",
+      "description": "Die lernende Person wendet das Wissen zu 'Stabilität in Beispielen analysieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Analyze Stability in Examples' to concrete examples and tasks.",
+      "weight": 0.12,
+      "tags": [
+        "ects:9",
+        "module:MA3081"
+      ],
+      "contains": [],
+      "requires": [
+        "78627d46-392b-52d9-98ab-58ca490b94da"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    }
+  ]
 }

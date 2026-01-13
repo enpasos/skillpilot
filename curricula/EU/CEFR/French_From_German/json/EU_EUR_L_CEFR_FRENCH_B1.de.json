@@ -1,1099 +1,1293 @@
 {
-    "title": "Französisch B1 (Mittelstufe)",
-    "titleEn": "French (CEFR B1)",
-    "description": "Selbstständige Sprachverwendung; Meinungen äußern und komplexere Texte verstehen.",
-    "descriptionEn": "Independent language use; express opinions and understand complex texts.",
-    "landscapeId": "a707b6e7-a8c0-4d6b-8eaf-4bfc9bf77bf4",
-    "locale": "de-DE",
-    "subject": "Französisch",
-    "frameworkId": "cefr-français",
-    "goals": [
-        {
-            "id": "742cf035-7ffc-45e5-ab3b-7286bf9cf3d0",
-            "title": "Französisch B1 (Mittelstufe)",
-            "titleEn": "Level B1 - Course Structure",
-            "description": "Systematischer Aufbau in 12 Lektionen (Erzählen, Wünsche, Meinung).",
-            "descriptionEn": "Systematic structure in 12 lessons (Narration, Wishes, Opinion).",
-            "core": true,
-            "weight": 1,
-            "tags": [
-                "structure",
-                "B1",
-                "root"
-            ],
-            "contains": [
-                "cefr_fr_b1_module_01",
-                "cefr_fr_b1_module_02",
-                "cefr_fr_b1_module_03",
-                "cefr_fr_b1_module_04"
-            ],
-            "requires": [
-                "69af5a55-d21b-40ed-acd8-1abeeb1f9084"
-            ]
-        },
-        {
-            "id": "cefr_fr_b1_module_01",
-            "title": "Modul 1: Erzählen & Vergangenheit",
-            "titleEn": "Module 1: Narration & Past",
-            "description": "Vorvergangenheit, Geschichten, Berichte.",
-            "descriptionEn": "Pre-past, Stories, Reports.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_fr_b1_lesson_01",
-                "cefr_fr_b1_lesson_02",
-                "cefr_fr_b1_lesson_03"
-            ]
-        },
-        {
-            "id": "cefr_fr_b1_lesson_01",
-            "title": "Lektion 01: Die Vorvergangenheit",
-            "titleEn": "Lesson 01: The Pluperfect",
-            "description": "Zeitliche Abfolgen.",
-            "descriptionEn": "Sequence of tenses.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_fr_b1_l01_vocabulary",
-                "cefr_fr_b1_l01_vocabulary_rev",
-                "cefr_fr_b1_l01_grammar",
-                "cefr_fr_b1_l01_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_b1_l01_vocabulary",
-            "title": "L1: Wortschatz (Zeit) (Lesen)",
-            "titleEn": "L1: Vocabulary (Time) (Reading)",
-            "description": "Zeitangaben, Kausalität.",
-            "descriptionEn": "Time expressions, causality.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_1",
-                "select:l1_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l01_vocabulary_rev",
-            "title": "L1: Wortschatz (Zeit) (Schreiben)",
-            "titleEn": "L1: Vocabulary (Time) (Writing)",
-            "description": "Zeitangaben, Kausalität.",
-            "descriptionEn": "Time expressions, causality.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_1",
-                "select:l1_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l01_grammar",
-            "title": "Grammatik: Plus-que-parfait",
-            "titleEn": "Grammar: Pluperfect",
-            "description": "Bildung und Gebrauch (j'avais mangé).",
-            "descriptionEn": "Formation and use (j'avais mangé).",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l01_practice",
-            "title": "Sprechkompetenz: Rückblick",
-            "titleEn": "Speaking: Flashback",
-            "description": "Erzähle, was vorher geschah.",
-            "descriptionEn": "Tell what happened before.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_lesson_02",
-            "title": "Lektion 02: Geschichten erzählen",
-            "titleEn": "Lesson 02: Storytelling",
-            "description": "Spannend erzählen.",
-            "descriptionEn": "Tell exciting stories.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_fr_b1_l02_vocabulary",
-                "cefr_fr_b1_l02_vocabulary_rev",
-                "cefr_fr_b1_l02_grammar",
-                "cefr_fr_b1_l02_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_b1_l02_vocabulary",
-            "title": "L2: Wortschatz (Abenteuer) (Lesen)",
-            "titleEn": "L2: Vocabulary (Adventure) (Reading)",
-            "description": "Pannen, Überraschungen.",
-            "descriptionEn": "Mishaps, surprises.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_2",
-                "select:l2_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l02_vocabulary_rev",
-            "title": "L2: Wortschatz (Abenteuer) (Schreiben)",
-            "titleEn": "L2: Vocabulary (Adventure) (Writing)",
-            "description": "Pannen, Überraschungen.",
-            "descriptionEn": "Mishaps, surprises.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_2",
-                "select:l2_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l02_grammar",
-            "title": "Grammatik: Zeitenfolge",
-            "titleEn": "Grammar: Sequence of Tenses",
-            "description": "PC vs Imparfait vs PQP.",
-            "descriptionEn": "PC vs Imparfait vs PQP.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l02_practice",
-            "title": "Schreiben: Eine Anekdote",
-            "titleEn": "Writing: An Anecdote",
-            "description": "Schreibe eine kurze Geschichte.",
-            "descriptionEn": "Write a short story.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_lesson_03",
-            "title": "Lektion 03: Berichte",
-            "titleEn": "Lesson 03: Reports",
-            "description": "Nachrichten verstehen.",
-            "descriptionEn": "Understand news.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_fr_b1_l03_vocabulary",
-                "cefr_fr_b1_l03_vocabulary_rev",
-                "cefr_fr_b1_l03_grammar",
-                "cefr_fr_b1_l03_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_b1_l03_vocabulary",
-            "title": "L3: Wortschatz (Medien) (Lesen)",
-            "titleEn": "L3: Vocabulary (Media) (Reading)",
-            "description": "Unfall, Politik, Gesellschaft.",
-            "descriptionEn": "Accident, politics, society.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_3",
-                "select:l3_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l03_vocabulary_rev",
-            "title": "L3: Wortschatz (Medien) (Schreiben)",
-            "titleEn": "L3: Vocabulary (Media) (Writing)",
-            "description": "Unfall, Politik, Gesellschaft.",
-            "descriptionEn": "Accident, politics, society.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_3",
-                "select:l3_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l03_grammar",
-            "title": "Grammatik: Passiv",
-            "titleEn": "Grammar: Passive",
-            "description": "être + participe passé.",
-            "descriptionEn": "être + participe passé.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l03_practice",
-            "title": "Leseübung: Zeitung",
-            "titleEn": "Reading: Newspaper",
-            "description": "Lies einen Artikel.",
-            "descriptionEn": "Read an article.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_module_02",
-            "title": "Modul 2: Wünsche & Bedingungen",
-            "titleEn": "Module 2: Wishes & Conditions",
-            "description": "Träume, Ratschläge, Hypothesen.",
-            "descriptionEn": "Dreams, Advice, Hypotheses.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_fr_b1_lesson_04",
-                "cefr_fr_b1_lesson_05",
-                "cefr_fr_b1_lesson_06"
-            ]
-        },
-        {
-            "id": "cefr_fr_b1_lesson_04",
-            "title": "Lektion 04: Träume & Wünsche",
-            "titleEn": "Lesson 04: Dreams & Wishes",
-            "description": "Wünsche äußern.",
-            "descriptionEn": "Express wishes.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_fr_b1_l04_vocabulary",
-                "cefr_fr_b1_l04_vocabulary_rev",
-                "cefr_fr_b1_l04_grammar",
-                "cefr_fr_b1_l04_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_b1_l04_vocabulary",
-            "title": "L4: Wortschatz (Träume) (Lesen)",
-            "titleEn": "L4: Vocabulary (Dreams) (Reading)",
-            "description": "Lebensträume, Lotto.",
-            "descriptionEn": "Life dreams, lottery.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_4",
-                "select:l4_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l04_vocabulary_rev",
-            "title": "L4: Wortschatz (Träume) (Schreiben)",
-            "titleEn": "L4: Vocabulary (Dreams) (Writing)",
-            "description": "Lebensträume, Lotto.",
-            "descriptionEn": "Life dreams, lottery.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_4",
-                "select:l4_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l04_grammar",
-            "title": "Grammatik: Conditionnel Présent",
-            "titleEn": "Grammar: Conditional Present",
-            "description": "Höflichkeit und Wünsche.",
-            "descriptionEn": "Politeness and wishes.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l04_practice",
-            "title": "Sprechkompetenz: Wenn ich könnte",
-            "titleEn": "Speaking: If I Could",
-            "description": "Was würdest du tun?",
-            "descriptionEn": "What would you do?",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_lesson_05",
-            "title": "Lektion 05: Ratschläge",
-            "titleEn": "Lesson 05: Advice",
-            "description": "Empfehlungen geben.",
-            "descriptionEn": "Give recommendations.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_fr_b1_l05_vocabulary",
-                "cefr_fr_b1_l05_vocabulary_rev",
-                "cefr_fr_b1_l05_grammar",
-                "cefr_fr_b1_l05_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_b1_l05_vocabulary",
-            "title": "L5: Wortschatz (Probleme) (Lesen)",
-            "titleEn": "L5: Vocabulary (Problems) (Reading)",
-            "description": "Lösungen, Etikette.",
-            "descriptionEn": "Solutions, etiquette.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_5",
-                "select:l5_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l05_vocabulary_rev",
-            "title": "L5: Wortschatz (Probleme) (Schreiben)",
-            "titleEn": "L5: Vocabulary (Problems) (Writing)",
-            "description": "Lösungen, Etikette.",
-            "descriptionEn": "Solutions, etiquette.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_5",
-                "select:l5_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l05_grammar",
-            "title": "Grammatik: Modalverben Cond.",
-            "titleEn": "Grammar: Modal Verbs Cond.",
-            "description": "Tu devrais, Vous pourriez.",
-            "descriptionEn": "Tu devrais, Vous pourriez.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l05_practice",
-            "title": "Rollenspiel: Ratgeber",
-            "titleEn": "Roleplay: Advisor",
-            "description": "Gib einem Freund einen Rat.",
-            "descriptionEn": "Give advice to a friend.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_lesson_06",
-            "title": "Lektion 06: Hypothesen",
-            "titleEn": "Lesson 06: Hypotheses",
-            "description": "Was wäre wenn?",
-            "descriptionEn": "What if?",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_fr_b1_l06_vocabulary",
-                "cefr_fr_b1_l06_vocabulary_rev",
-                "cefr_fr_b1_l06_grammar",
-                "cefr_fr_b1_l06_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_b1_l06_vocabulary",
-            "title": "L6: Wortschatz (Fantasie) (Lesen)",
-            "titleEn": "L6: Vocabulary (Fantasy) (Reading)",
-            "description": "Gedankenspiele.",
-            "descriptionEn": "Mind games.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_6",
-                "select:l6_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l06_vocabulary_rev",
-            "title": "L6: Wortschatz (Fantasie) (Schreiben)",
-            "titleEn": "L6: Vocabulary (Fantasy) (Writing)",
-            "description": "Gedankenspiele.",
-            "descriptionEn": "Mind games.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_6",
-                "select:l6_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l06_grammar",
-            "title": "Grammatik: Si-Sätze (Typ 2)",
-            "titleEn": "Grammar: If-Clauses (Type 2)",
-            "description": "Si + Imparfait -> Conditionnel.",
-            "descriptionEn": "Si + Imparfait -> Conditionnel.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l06_practice",
-            "title": "Diskussion: Eine neue Welt",
-            "titleEn": "Discussion: A New World",
-            "description": "Wenn ich Präsident wäre...",
-            "descriptionEn": "If I were president...",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_module_03",
-            "title": "Modul 3: Gefühle & Meinung",
-            "titleEn": "Module 3: Feelings & Opinion",
-            "description": "Subjonctif, Emotionen, Debatte.",
-            "descriptionEn": "Subjunctive, Emotions, Debate.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_fr_b1_lesson_07",
-                "cefr_fr_b1_lesson_08",
-                "cefr_fr_b1_lesson_09"
-            ]
-        },
-        {
-            "id": "cefr_fr_b1_lesson_07",
-            "title": "Lektion 07: Notwendigkeit",
-            "titleEn": "Lesson 07: Necessity",
-            "description": "Forderungen stellen.",
-            "descriptionEn": "Make demands.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_fr_b1_l07_vocabulary",
-                "cefr_fr_b1_l07_vocabulary_rev",
-                "cefr_fr_b1_l07_grammar",
-                "cefr_fr_b1_l07_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_b1_l07_vocabulary",
-            "title": "L7: Wortschatz (Pflichten) (Lesen)",
-            "titleEn": "L7: Vocabulary (Duties) (Reading)",
-            "description": "Regeln, Aufgaben.",
-            "descriptionEn": "Rules, tasks.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_7",
-                "select:l7_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l07_vocabulary_rev",
-            "title": "L7: Wortschatz (Pflichten) (Schreiben)",
-            "titleEn": "L7: Vocabulary (Duties) (Writing)",
-            "description": "Regeln, Aufgaben.",
-            "descriptionEn": "Rules, tasks.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_7",
-                "select:l7_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l07_grammar",
-            "title": "Grammatik: Subjonctif (Intro)",
-            "titleEn": "Grammar: Subjunctive (Intro)",
-            "description": "Il faut que...",
-            "descriptionEn": "It is necessary that...",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l07_practice",
-            "title": "Sprechkompetenz: Forderungen",
-            "titleEn": "Speaking: Demands",
-            "description": "Sage, was getan werden muss.",
-            "descriptionEn": "Say what must be done.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_lesson_08",
-            "title": "Lektion 08: Gefühle",
-            "titleEn": "Lesson 08: Feelings",
-            "description": "Emotionen ausdrücken.",
-            "descriptionEn": "Express emotions.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_fr_b1_l08_vocabulary",
-                "cefr_fr_b1_l08_vocabulary_rev",
-                "cefr_fr_b1_l08_grammar",
-                "cefr_fr_b1_l08_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_b1_l08_vocabulary",
-            "title": "L8: Wortschatz (Emotionen) (Lesen)",
-            "titleEn": "L8: Vocabulary (Emotions) (Reading)",
-            "description": "Freude, Ärger, Angst.",
-            "descriptionEn": "Joy, anger, fear.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_8",
-                "select:l8_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l08_vocabulary_rev",
-            "title": "L8: Wortschatz (Emotionen) (Schreiben)",
-            "titleEn": "L8: Vocabulary (Emotions) (Writing)",
-            "description": "Freude, Ärger, Angst.",
-            "descriptionEn": "Joy, anger, fear.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_8",
-                "select:l8_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l08_grammar",
-            "title": "Grammatik: Subjonctif (Gefühle)",
-            "titleEn": "Grammar: Subjunctive (Feelings)",
-            "description": "Je suis content que...",
-            "descriptionEn": "I am happy that...",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l08_practice",
-            "title": "Interaktion: Reaktionen",
-            "titleEn": "Interaction: Reactions",
-            "description": "Reagiere auf Nachrichten.",
-            "descriptionEn": "React to news.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_lesson_09",
-            "title": "Lektion 09: Diskussionen",
-            "titleEn": "Lesson 09: Discussions",
-            "description": "Meinung äußern.",
-            "descriptionEn": "Express opinion.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_fr_b1_l09_vocabulary",
-                "cefr_fr_b1_l09_vocabulary_rev",
-                "cefr_fr_b1_l09_grammar",
-                "cefr_fr_b1_l09_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_b1_l09_vocabulary",
-            "title": "L9: Wortschatz (Debatte) (Lesen)",
-            "titleEn": "L9: Vocabulary (Debate) (Reading)",
-            "description": "Konnektoren, Argumente.",
-            "descriptionEn": "Connectors, arguments.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_9",
-                "select:l9_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l09_vocabulary_rev",
-            "title": "L9: Wortschatz (Debatte) (Schreiben)",
-            "titleEn": "L9: Vocabulary (Debate) (Writing)",
-            "description": "Konnektoren, Argumente.",
-            "descriptionEn": "Connectors, arguments.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_9",
-                "select:l9_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l09_grammar",
-            "title": "Grammatik: Meinung vs Zweifel",
-            "titleEn": "Grammar: Opinion vs Doubt",
-            "description": "Indikativ vs. Subjonctif.",
-            "descriptionEn": "Indicative vs. Subjunctive.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l09_practice",
-            "title": "Diskussion: Pro & Kontra",
-            "titleEn": "Discussion: Pros & Cons",
-            "description": "Diskutiere ein Thema.",
-            "descriptionEn": "Discuss a topic.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_module_04",
-            "title": "Modul 4: Kultur & Nuancen",
-            "titleEn": "Module 4: Culture & Nuance",
-            "description": "Indirekte Rede, Relativsätze, Kultur.",
-            "descriptionEn": "Indirect Speech, Relative Clauses, Culture.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_fr_b1_lesson_10",
-                "cefr_fr_b1_lesson_11",
-                "cefr_fr_b1_lesson_12"
-            ]
-        },
-        {
-            "id": "cefr_fr_b1_lesson_10",
-            "title": "Lektion 10: Indirekte Rede",
-            "titleEn": "Lesson 10: Indirect Speech",
-            "description": "Aussagen wiedergeben.",
-            "descriptionEn": "Report statements.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_fr_b1_l10_vocabulary",
-                "cefr_fr_b1_l10_vocabulary_rev",
-                "cefr_fr_b1_l10_grammar",
-                "cefr_fr_b1_l10_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_b1_l10_vocabulary",
-            "title": "L10: Wortschatz (Nachrichten) (Lesen)",
-            "titleEn": "L10: Vocabulary (News) (Reading)",
-            "description": "Interview, Zitat.",
-            "descriptionEn": "Interview, quote.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_10",
-                "select:l10_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l10_vocabulary_rev",
-            "title": "L10: Wortschatz (Nachrichten) (Schreiben)",
-            "titleEn": "L10: Vocabulary (News) (Writing)",
-            "description": "Interview, Zitat.",
-            "descriptionEn": "Interview, quote.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_10",
-                "select:l10_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l10_grammar",
-            "title": "Grammatik: Discours Indirect",
-            "titleEn": "Grammar: Indirect Speech",
-            "description": "Zeitenfolge (Concordance).",
-            "descriptionEn": "Sequence of tenses.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l10_practice",
-            "title": "Sprechkompetenz: Bericht",
-            "titleEn": "Speaking: Report",
-            "description": "Was hat er gesagt?",
-            "descriptionEn": "What did he say?",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_lesson_11",
-            "title": "Lektion 11: Beziehungen",
-            "titleEn": "Lesson 11: Relationships",
-            "description": "Genau beschreiben.",
-            "descriptionEn": "Describe precisely.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_fr_b1_l11_vocabulary",
-                "cefr_fr_b1_l11_vocabulary_rev",
-                "cefr_fr_b1_l11_grammar",
-                "cefr_fr_b1_l11_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_b1_l11_vocabulary",
-            "title": "L11: Wortschatz (Details) (Lesen)",
-            "titleEn": "L11: Vocabulary (Details) (Reading)",
-            "description": "Eigenschaften, Orte.",
-            "descriptionEn": "Characteristics, places.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_11",
-                "select:l11_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l11_vocabulary_rev",
-            "title": "L11: Wortschatz (Details) (Schreiben)",
-            "titleEn": "L11: Vocabulary (Details) (Writing)",
-            "description": "Eigenschaften, Orte.",
-            "descriptionEn": "Characteristics, places.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_11",
-                "select:l11_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l11_grammar",
-            "title": "Grammatik: Relativsätze",
-            "titleEn": "Grammar: Relative Clauses",
-            "description": "dont, où, ce qui.",
-            "descriptionEn": "whose, where, what.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l11_practice",
-            "title": "Rätsel: Wer ist das?",
-            "titleEn": "Riddle: Who is this?",
-            "description": "Beschreibe eine Person.",
-            "descriptionEn": "Describe a person.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_lesson_12",
-            "title": "Lektion 12: Abschluss B1",
-            "titleEn": "Lesson 12: Review B1",
-            "description": "Kulturprojekt.",
-            "descriptionEn": "Culture project.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "B1"
-            ],
-            "contains": [
-                "cefr_fr_b1_l12_vocabulary",
-                "cefr_fr_b1_l12_vocabulary_rev",
-                "cefr_fr_b1_l12_grammar",
-                "cefr_fr_b1_l12_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_b1_l12_vocabulary",
-            "title": "L12: Wortschatz (Kultur) (Lesen)",
-            "titleEn": "L12: Vocabulary (Culture) (Reading)",
-            "description": "Kunst, Film, Literatur.",
-            "descriptionEn": "Art, film, literature.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_12",
-                "select:l12_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l12_vocabulary_rev",
-            "title": "L12: Wortschatz (Kultur) (Schreiben)",
-            "titleEn": "L12: Vocabulary (Culture) (Writing)",
-            "description": "Kunst, Film, Literatur.",
-            "descriptionEn": "Art, film, literature.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_b1_french_deck",
-                "lesson_12",
-                "select:l12_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_b1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l12_grammar",
-            "title": "Grammatik: Gérondif",
-            "titleEn": "Grammar: Gerund",
-            "description": "En parlant (Art und Weise).",
-            "descriptionEn": "While speaking (Manner).",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_b1_l12_practice",
-            "title": "Projekt: Kulturkritik",
-            "titleEn": "Project: Cultural Review",
-            "description": "Stelle einen Film vor.",
-            "descriptionEn": "Present a movie.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        }
-    ]
+  "title": "Französisch B1 (Mittelstufe)",
+  "titleEn": "French (CEFR B1)",
+  "description": "Selbstständige Sprachverwendung; Meinungen äußern und komplexere Texte verstehen.",
+  "descriptionEn": "Independent language use; express opinions and understand complex texts.",
+  "landscapeId": "a707b6e7-a8c0-4d6b-8eaf-4bfc9bf77bf4",
+  "locale": "de-DE",
+  "subject": "Französisch",
+  "frameworkId": "cefr-français",
+  "goals": [
+    {
+      "id": "742cf035-7ffc-45e5-ab3b-7286bf9cf3d0",
+      "title": "Französisch B1 (Mittelstufe)",
+      "titleEn": "Level B1 - Course Structure",
+      "description": "Systematischer Aufbau in 12 Lektionen (Erzählen, Wünsche, Meinung).",
+      "descriptionEn": "Systematic structure in 12 lessons (Narration, Wishes, Opinion).",
+      "weight": 1,
+      "tags": [
+        "structure",
+        "B1",
+        "root"
+      ],
+      "contains": [
+        "cefr_fr_b1_module_01",
+        "cefr_fr_b1_module_02",
+        "cefr_fr_b1_module_03",
+        "cefr_fr_b1_module_04"
+      ],
+      "requires": [
+        "69af5a55-d21b-40ed-acd8-1abeeb1f9084"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_fr_b1_module_01",
+      "title": "Modul 1: Erzählen & Vergangenheit",
+      "titleEn": "Module 1: Narration & Past",
+      "description": "Vorvergangenheit, Geschichten, Berichte.",
+      "descriptionEn": "Pre-past, Stories, Reports.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_fr_b1_lesson_01",
+        "cefr_fr_b1_lesson_02",
+        "cefr_fr_b1_lesson_03"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_lesson_01",
+      "title": "Lektion 01: Die Vorvergangenheit",
+      "titleEn": "Lesson 01: The Pluperfect",
+      "description": "Zeitliche Abfolgen.",
+      "descriptionEn": "Sequence of tenses.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_fr_b1_l01_vocabulary",
+        "cefr_fr_b1_l01_vocabulary_rev",
+        "cefr_fr_b1_l01_grammar",
+        "cefr_fr_b1_l01_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l01_vocabulary",
+      "title": "L1: Wortschatz (Zeit) (Lesen)",
+      "titleEn": "L1: Vocabulary (Time) (Reading)",
+      "description": "Zeitangaben, Kausalität.",
+      "descriptionEn": "Time expressions, causality.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_1",
+        "select:l1_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l01_vocabulary_rev",
+      "title": "L1: Wortschatz (Zeit) (Schreiben)",
+      "titleEn": "L1: Vocabulary (Time) (Writing)",
+      "description": "Zeitangaben, Kausalität.",
+      "descriptionEn": "Time expressions, causality.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_1",
+        "select:l1_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l01_grammar",
+      "title": "Grammatik: Plus-que-parfait",
+      "titleEn": "Grammar: Pluperfect",
+      "description": "Bildung und Gebrauch (j'avais mangé).",
+      "descriptionEn": "Formation and use (j'avais mangé).",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l01_practice",
+      "title": "Sprechkompetenz: Rückblick",
+      "titleEn": "Speaking: Flashback",
+      "description": "Erzähle, was vorher geschah.",
+      "descriptionEn": "Tell what happened before.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_lesson_02",
+      "title": "Lektion 02: Geschichten erzählen",
+      "titleEn": "Lesson 02: Storytelling",
+      "description": "Spannend erzählen.",
+      "descriptionEn": "Tell exciting stories.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_fr_b1_l02_vocabulary",
+        "cefr_fr_b1_l02_vocabulary_rev",
+        "cefr_fr_b1_l02_grammar",
+        "cefr_fr_b1_l02_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l02_vocabulary",
+      "title": "L2: Wortschatz (Abenteuer) (Lesen)",
+      "titleEn": "L2: Vocabulary (Adventure) (Reading)",
+      "description": "Pannen, Überraschungen.",
+      "descriptionEn": "Mishaps, surprises.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_2",
+        "select:l2_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l02_vocabulary_rev",
+      "title": "L2: Wortschatz (Abenteuer) (Schreiben)",
+      "titleEn": "L2: Vocabulary (Adventure) (Writing)",
+      "description": "Pannen, Überraschungen.",
+      "descriptionEn": "Mishaps, surprises.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_2",
+        "select:l2_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l02_grammar",
+      "title": "Grammatik: Zeitenfolge",
+      "titleEn": "Grammar: Sequence of Tenses",
+      "description": "PC vs Imparfait vs PQP.",
+      "descriptionEn": "PC vs Imparfait vs PQP.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l02_practice",
+      "title": "Schreiben: Eine Anekdote",
+      "titleEn": "Writing: An Anecdote",
+      "description": "Schreibe eine kurze Geschichte.",
+      "descriptionEn": "Write a short story.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_lesson_03",
+      "title": "Lektion 03: Berichte",
+      "titleEn": "Lesson 03: Reports",
+      "description": "Nachrichten verstehen.",
+      "descriptionEn": "Understand news.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_fr_b1_l03_vocabulary",
+        "cefr_fr_b1_l03_vocabulary_rev",
+        "cefr_fr_b1_l03_grammar",
+        "cefr_fr_b1_l03_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l03_vocabulary",
+      "title": "L3: Wortschatz (Medien) (Lesen)",
+      "titleEn": "L3: Vocabulary (Media) (Reading)",
+      "description": "Unfall, Politik, Gesellschaft.",
+      "descriptionEn": "Accident, politics, society.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_3",
+        "select:l3_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l03_vocabulary_rev",
+      "title": "L3: Wortschatz (Medien) (Schreiben)",
+      "titleEn": "L3: Vocabulary (Media) (Writing)",
+      "description": "Unfall, Politik, Gesellschaft.",
+      "descriptionEn": "Accident, politics, society.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_3",
+        "select:l3_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l03_grammar",
+      "title": "Grammatik: Passiv",
+      "titleEn": "Grammar: Passive",
+      "description": "être + participe passé.",
+      "descriptionEn": "être + participe passé.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l03_practice",
+      "title": "Leseübung: Zeitung",
+      "titleEn": "Reading: Newspaper",
+      "description": "Lies einen Artikel.",
+      "descriptionEn": "Read an article.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_module_02",
+      "title": "Modul 2: Wünsche & Bedingungen",
+      "titleEn": "Module 2: Wishes & Conditions",
+      "description": "Träume, Ratschläge, Hypothesen.",
+      "descriptionEn": "Dreams, Advice, Hypotheses.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_fr_b1_lesson_04",
+        "cefr_fr_b1_lesson_05",
+        "cefr_fr_b1_lesson_06"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_lesson_04",
+      "title": "Lektion 04: Träume & Wünsche",
+      "titleEn": "Lesson 04: Dreams & Wishes",
+      "description": "Wünsche äußern.",
+      "descriptionEn": "Express wishes.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_fr_b1_l04_vocabulary",
+        "cefr_fr_b1_l04_vocabulary_rev",
+        "cefr_fr_b1_l04_grammar",
+        "cefr_fr_b1_l04_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l04_vocabulary",
+      "title": "L4: Wortschatz (Träume) (Lesen)",
+      "titleEn": "L4: Vocabulary (Dreams) (Reading)",
+      "description": "Lebensträume, Lotto.",
+      "descriptionEn": "Life dreams, lottery.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_4",
+        "select:l4_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l04_vocabulary_rev",
+      "title": "L4: Wortschatz (Träume) (Schreiben)",
+      "titleEn": "L4: Vocabulary (Dreams) (Writing)",
+      "description": "Lebensträume, Lotto.",
+      "descriptionEn": "Life dreams, lottery.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_4",
+        "select:l4_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l04_grammar",
+      "title": "Grammatik: Conditionnel Présent",
+      "titleEn": "Grammar: Conditional Present",
+      "description": "Höflichkeit und Wünsche.",
+      "descriptionEn": "Politeness and wishes.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l04_practice",
+      "title": "Sprechkompetenz: Wenn ich könnte",
+      "titleEn": "Speaking: If I Could",
+      "description": "Was würdest du tun?",
+      "descriptionEn": "What would you do?",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_lesson_05",
+      "title": "Lektion 05: Ratschläge",
+      "titleEn": "Lesson 05: Advice",
+      "description": "Empfehlungen geben.",
+      "descriptionEn": "Give recommendations.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_fr_b1_l05_vocabulary",
+        "cefr_fr_b1_l05_vocabulary_rev",
+        "cefr_fr_b1_l05_grammar",
+        "cefr_fr_b1_l05_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l05_vocabulary",
+      "title": "L5: Wortschatz (Probleme) (Lesen)",
+      "titleEn": "L5: Vocabulary (Problems) (Reading)",
+      "description": "Lösungen, Etikette.",
+      "descriptionEn": "Solutions, etiquette.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_5",
+        "select:l5_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l05_vocabulary_rev",
+      "title": "L5: Wortschatz (Probleme) (Schreiben)",
+      "titleEn": "L5: Vocabulary (Problems) (Writing)",
+      "description": "Lösungen, Etikette.",
+      "descriptionEn": "Solutions, etiquette.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_5",
+        "select:l5_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l05_grammar",
+      "title": "Grammatik: Modalverben Cond.",
+      "titleEn": "Grammar: Modal Verbs Cond.",
+      "description": "Tu devrais, Vous pourriez.",
+      "descriptionEn": "Tu devrais, Vous pourriez.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l05_practice",
+      "title": "Rollenspiel: Ratgeber",
+      "titleEn": "Roleplay: Advisor",
+      "description": "Gib einem Freund einen Rat.",
+      "descriptionEn": "Give advice to a friend.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_lesson_06",
+      "title": "Lektion 06: Hypothesen",
+      "titleEn": "Lesson 06: Hypotheses",
+      "description": "Was wäre wenn?",
+      "descriptionEn": "What if?",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_fr_b1_l06_vocabulary",
+        "cefr_fr_b1_l06_vocabulary_rev",
+        "cefr_fr_b1_l06_grammar",
+        "cefr_fr_b1_l06_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l06_vocabulary",
+      "title": "L6: Wortschatz (Fantasie) (Lesen)",
+      "titleEn": "L6: Vocabulary (Fantasy) (Reading)",
+      "description": "Gedankenspiele.",
+      "descriptionEn": "Mind games.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_6",
+        "select:l6_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l06_vocabulary_rev",
+      "title": "L6: Wortschatz (Fantasie) (Schreiben)",
+      "titleEn": "L6: Vocabulary (Fantasy) (Writing)",
+      "description": "Gedankenspiele.",
+      "descriptionEn": "Mind games.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_6",
+        "select:l6_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l06_grammar",
+      "title": "Grammatik: Si-Sätze (Typ 2)",
+      "titleEn": "Grammar: If-Clauses (Type 2)",
+      "description": "Si + Imparfait -> Conditionnel.",
+      "descriptionEn": "Si + Imparfait -> Conditionnel.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l06_practice",
+      "title": "Diskussion: Eine neue Welt",
+      "titleEn": "Discussion: A New World",
+      "description": "Wenn ich Präsident wäre...",
+      "descriptionEn": "If I were president...",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_module_03",
+      "title": "Modul 3: Gefühle & Meinung",
+      "titleEn": "Module 3: Feelings & Opinion",
+      "description": "Subjonctif, Emotionen, Debatte.",
+      "descriptionEn": "Subjunctive, Emotions, Debate.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_fr_b1_lesson_07",
+        "cefr_fr_b1_lesson_08",
+        "cefr_fr_b1_lesson_09"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_lesson_07",
+      "title": "Lektion 07: Notwendigkeit",
+      "titleEn": "Lesson 07: Necessity",
+      "description": "Forderungen stellen.",
+      "descriptionEn": "Make demands.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_fr_b1_l07_vocabulary",
+        "cefr_fr_b1_l07_vocabulary_rev",
+        "cefr_fr_b1_l07_grammar",
+        "cefr_fr_b1_l07_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l07_vocabulary",
+      "title": "L7: Wortschatz (Pflichten) (Lesen)",
+      "titleEn": "L7: Vocabulary (Duties) (Reading)",
+      "description": "Regeln, Aufgaben.",
+      "descriptionEn": "Rules, tasks.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_7",
+        "select:l7_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l07_vocabulary_rev",
+      "title": "L7: Wortschatz (Pflichten) (Schreiben)",
+      "titleEn": "L7: Vocabulary (Duties) (Writing)",
+      "description": "Regeln, Aufgaben.",
+      "descriptionEn": "Rules, tasks.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_7",
+        "select:l7_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l07_grammar",
+      "title": "Grammatik: Subjonctif (Intro)",
+      "titleEn": "Grammar: Subjunctive (Intro)",
+      "description": "Il faut que...",
+      "descriptionEn": "It is necessary that...",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l07_practice",
+      "title": "Sprechkompetenz: Forderungen",
+      "titleEn": "Speaking: Demands",
+      "description": "Sage, was getan werden muss.",
+      "descriptionEn": "Say what must be done.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_lesson_08",
+      "title": "Lektion 08: Gefühle",
+      "titleEn": "Lesson 08: Feelings",
+      "description": "Emotionen ausdrücken.",
+      "descriptionEn": "Express emotions.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_fr_b1_l08_vocabulary",
+        "cefr_fr_b1_l08_vocabulary_rev",
+        "cefr_fr_b1_l08_grammar",
+        "cefr_fr_b1_l08_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l08_vocabulary",
+      "title": "L8: Wortschatz (Emotionen) (Lesen)",
+      "titleEn": "L8: Vocabulary (Emotions) (Reading)",
+      "description": "Freude, Ärger, Angst.",
+      "descriptionEn": "Joy, anger, fear.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_8",
+        "select:l8_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l08_vocabulary_rev",
+      "title": "L8: Wortschatz (Emotionen) (Schreiben)",
+      "titleEn": "L8: Vocabulary (Emotions) (Writing)",
+      "description": "Freude, Ärger, Angst.",
+      "descriptionEn": "Joy, anger, fear.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_8",
+        "select:l8_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l08_grammar",
+      "title": "Grammatik: Subjonctif (Gefühle)",
+      "titleEn": "Grammar: Subjunctive (Feelings)",
+      "description": "Je suis content que...",
+      "descriptionEn": "I am happy that...",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l08_practice",
+      "title": "Interaktion: Reaktionen",
+      "titleEn": "Interaction: Reactions",
+      "description": "Reagiere auf Nachrichten.",
+      "descriptionEn": "React to news.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_lesson_09",
+      "title": "Lektion 09: Diskussionen",
+      "titleEn": "Lesson 09: Discussions",
+      "description": "Meinung äußern.",
+      "descriptionEn": "Express opinion.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_fr_b1_l09_vocabulary",
+        "cefr_fr_b1_l09_vocabulary_rev",
+        "cefr_fr_b1_l09_grammar",
+        "cefr_fr_b1_l09_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l09_vocabulary",
+      "title": "L9: Wortschatz (Debatte) (Lesen)",
+      "titleEn": "L9: Vocabulary (Debate) (Reading)",
+      "description": "Konnektoren, Argumente.",
+      "descriptionEn": "Connectors, arguments.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_9",
+        "select:l9_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l09_vocabulary_rev",
+      "title": "L9: Wortschatz (Debatte) (Schreiben)",
+      "titleEn": "L9: Vocabulary (Debate) (Writing)",
+      "description": "Konnektoren, Argumente.",
+      "descriptionEn": "Connectors, arguments.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_9",
+        "select:l9_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l09_grammar",
+      "title": "Grammatik: Meinung vs Zweifel",
+      "titleEn": "Grammar: Opinion vs Doubt",
+      "description": "Indikativ vs. Subjonctif.",
+      "descriptionEn": "Indicative vs. Subjunctive.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l09_practice",
+      "title": "Diskussion: Pro & Kontra",
+      "titleEn": "Discussion: Pros & Cons",
+      "description": "Diskutiere ein Thema.",
+      "descriptionEn": "Discuss a topic.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_module_04",
+      "title": "Modul 4: Kultur & Nuancen",
+      "titleEn": "Module 4: Culture & Nuance",
+      "description": "Indirekte Rede, Relativsätze, Kultur.",
+      "descriptionEn": "Indirect Speech, Relative Clauses, Culture.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_fr_b1_lesson_10",
+        "cefr_fr_b1_lesson_11",
+        "cefr_fr_b1_lesson_12"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_lesson_10",
+      "title": "Lektion 10: Indirekte Rede",
+      "titleEn": "Lesson 10: Indirect Speech",
+      "description": "Aussagen wiedergeben.",
+      "descriptionEn": "Report statements.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_fr_b1_l10_vocabulary",
+        "cefr_fr_b1_l10_vocabulary_rev",
+        "cefr_fr_b1_l10_grammar",
+        "cefr_fr_b1_l10_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l10_vocabulary",
+      "title": "L10: Wortschatz (Nachrichten) (Lesen)",
+      "titleEn": "L10: Vocabulary (News) (Reading)",
+      "description": "Interview, Zitat.",
+      "descriptionEn": "Interview, quote.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_10",
+        "select:l10_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l10_vocabulary_rev",
+      "title": "L10: Wortschatz (Nachrichten) (Schreiben)",
+      "titleEn": "L10: Vocabulary (News) (Writing)",
+      "description": "Interview, Zitat.",
+      "descriptionEn": "Interview, quote.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_10",
+        "select:l10_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l10_grammar",
+      "title": "Grammatik: Discours Indirect",
+      "titleEn": "Grammar: Indirect Speech",
+      "description": "Zeitenfolge (Concordance).",
+      "descriptionEn": "Sequence of tenses.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l10_practice",
+      "title": "Sprechkompetenz: Bericht",
+      "titleEn": "Speaking: Report",
+      "description": "Was hat er gesagt?",
+      "descriptionEn": "What did he say?",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_lesson_11",
+      "title": "Lektion 11: Beziehungen",
+      "titleEn": "Lesson 11: Relationships",
+      "description": "Genau beschreiben.",
+      "descriptionEn": "Describe precisely.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_fr_b1_l11_vocabulary",
+        "cefr_fr_b1_l11_vocabulary_rev",
+        "cefr_fr_b1_l11_grammar",
+        "cefr_fr_b1_l11_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l11_vocabulary",
+      "title": "L11: Wortschatz (Details) (Lesen)",
+      "titleEn": "L11: Vocabulary (Details) (Reading)",
+      "description": "Eigenschaften, Orte.",
+      "descriptionEn": "Characteristics, places.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_11",
+        "select:l11_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l11_vocabulary_rev",
+      "title": "L11: Wortschatz (Details) (Schreiben)",
+      "titleEn": "L11: Vocabulary (Details) (Writing)",
+      "description": "Eigenschaften, Orte.",
+      "descriptionEn": "Characteristics, places.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_11",
+        "select:l11_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l11_grammar",
+      "title": "Grammatik: Relativsätze",
+      "titleEn": "Grammar: Relative Clauses",
+      "description": "dont, où, ce qui.",
+      "descriptionEn": "whose, where, what.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l11_practice",
+      "title": "Rätsel: Wer ist das?",
+      "titleEn": "Riddle: Who is this?",
+      "description": "Beschreibe eine Person.",
+      "descriptionEn": "Describe a person.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_lesson_12",
+      "title": "Lektion 12: Abschluss B1",
+      "titleEn": "Lesson 12: Review B1",
+      "description": "Kulturprojekt.",
+      "descriptionEn": "Culture project.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "B1"
+      ],
+      "contains": [
+        "cefr_fr_b1_l12_vocabulary",
+        "cefr_fr_b1_l12_vocabulary_rev",
+        "cefr_fr_b1_l12_grammar",
+        "cefr_fr_b1_l12_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l12_vocabulary",
+      "title": "L12: Wortschatz (Kultur) (Lesen)",
+      "titleEn": "L12: Vocabulary (Culture) (Reading)",
+      "description": "Kunst, Film, Literatur.",
+      "descriptionEn": "Art, film, literature.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_12",
+        "select:l12_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l12_vocabulary_rev",
+      "title": "L12: Wortschatz (Kultur) (Schreiben)",
+      "titleEn": "L12: Vocabulary (Culture) (Writing)",
+      "description": "Kunst, Film, Literatur.",
+      "descriptionEn": "Art, film, literature.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_b1_french_deck",
+        "lesson_12",
+        "select:l12_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_b1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l12_grammar",
+      "title": "Grammatik: Gérondif",
+      "titleEn": "Grammar: Gerund",
+      "description": "En parlant (Art und Weise).",
+      "descriptionEn": "While speaking (Manner).",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_b1_l12_practice",
+      "title": "Projekt: Kulturkritik",
+      "titleEn": "Project: Cultural Review",
+      "description": "Stelle einen Film vor.",
+      "descriptionEn": "Present a movie.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    }
+  ]
 }

@@ -1,245 +1,234 @@
 {
-    "title": "Tensornetzwerke (TUM, Modul IN2388)",
-    "titleEn": "Tensor Networks (TUM, Module IN2388)",
-    "description": "Das Modul behandelt Grundlagen und grafische Darstellung von Tensornetzwerken, Approximationstheorie, Backpropagation durch Netzwerke sowie die Simulation stark korrelierter Quantensysteme und digitaler Quantencomputer. Außerdem werden Sampling und probabilistische Modellierung mit Tensornetzwerken behandelt.",
-    "descriptionEn": "The module covers fundamentals and graphical representations of tensor networks, approximation theory, backpropagation through networks, and simulation of strongly correlated quantum systems and digital quantum computers. It also addresses sampling and probabilistic modeling with tensor networks.",
-    "locale": "de-DE",
-    "subject": "TUM-Module",
-    "frameworkId": "tum-in2388",
-    "goals": [
-        {
-            "id": "84d3a05d-5025-525f-9b5c-2c0e38ab0477",
-            "shortKey": "tum_in2388_module",
-            "title": "Tensornetzwerke (IN2388)",
-            "titleEn": "Tensor Networks (IN2388)",
-            "description": "Die lernende Person kann Tensornetzwerkdarstellungen nutzen, um hochdimensionale Daten zu approximieren und Quantensysteme zu simulieren.",
-            "descriptionEn": "The learner can use tensor network representations to approximate high-dimensional data and simulate quantum systems.",
-            "core": true,
-            "weight": 5.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:IN2388",
-                "ects:5"
-            ],
-            "contains": [
-                "049714ca-7dfd-5560-97e8-80e36ba8152f",
-                "6d86b09d-615b-581a-a6a7-3868dd2b113d",
-                "a5a2d561-212a-5f3b-a275-10b241a8866c",
-                "26c06b38-18b3-5448-a0fe-4f2ef30f4797"
-            ],
-            "requires": [],
-            "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN2388"
-        },
-        {
-            "id": "049714ca-7dfd-5560-97e8-80e36ba8152f",
-            "shortKey": "tum_in2388_tensor_network_fundamentals",
-            "title": "Grundlagen der Tensornetzwerke",
-            "titleEn": "Tensor network fundamentals",
-            "description": "Die lernende Person kann Tensoren und Netzwerke grafisch darstellen.",
-            "descriptionEn": "The learner can represent tensors and networks graphically.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2388"
-            ],
-            "contains": [
-                "239dd8d5-5610-53ce-99f4-425082417244",
-                "704e625d-3a3e-592e-96b9-182a7abbf0b1"
-            ],
-            "requires": []
-        },
-        {
-            "id": "239dd8d5-5610-53ce-99f4-425082417244",
-            "shortKey": "tum_in2388_tensor_notation_and_contractions",
-            "title": "Tensornotation und Kontraktionen",
-            "titleEn": "Tensor notation and contractions",
-            "description": "Die lernende Person kann Tensordiagramme interpretieren und Kontraktionen berechnen.",
-            "descriptionEn": "The learner can interpret tensor diagrams and compute contractions.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2388"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "704e625d-3a3e-592e-96b9-182a7abbf0b1",
-            "shortKey": "tum_in2388_common_network_structures_mps_mpo_peps",
-            "title": "Gängige Netzwerkstrukturen (MPS, MPO, PEPS)",
-            "titleEn": "Common network structures (MPS, MPO, PEPS)",
-            "description": "Die lernende Person kann Standardarchitekturen und ihre Eigenschaften beschreiben.",
-            "descriptionEn": "The learner can describe standard network architectures and their properties.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2388"
-            ],
-            "contains": [],
-            "requires": [
-                "239dd8d5-5610-53ce-99f4-425082417244"
-            ]
-        },
-        {
-            "id": "6d86b09d-615b-581a-a6a7-3868dd2b113d",
-            "shortKey": "tum_in2388_approximation_theory_and_optimization",
-            "title": "Approximationstheorie und Optimierung",
-            "titleEn": "Approximation theory and optimization",
-            "description": "Die lernende Person kann Niedrigrang-Approximationen anwenden und Tensornetzwerke optimieren.",
-            "descriptionEn": "The learner can apply low-rank approximations and optimize tensor networks.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2388"
-            ],
-            "contains": [
-                "52cec7b8-32b9-5560-8aeb-d583f069e704",
-                "05e1a174-0667-5764-94ab-d0865059ef7c"
-            ],
-            "requires": [
-                "049714ca-7dfd-5560-97e8-80e36ba8152f"
-            ]
-        },
-        {
-            "id": "52cec7b8-32b9-5560-8aeb-d583f069e704",
-            "shortKey": "tum_in2388_low_rank_approximations_and_truncation",
-            "title": "Niedrigrang-Approximationen und Trunkierung",
-            "titleEn": "Low-rank approximations and truncation",
-            "description": "Die lernende Person kann Trunkierungen durchführen und Approximationsfehler abschätzen.",
-            "descriptionEn": "The learner can perform truncation and estimate approximation errors.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2388"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "05e1a174-0667-5764-94ab-d0865059ef7c",
-            "shortKey": "tum_in2388_backpropagation_through_tensor_network_operations",
-            "title": "Backpropagation durch Tensornetzwerk-Operationen",
-            "titleEn": "Backpropagation through tensor network operations",
-            "description": "Die lernende Person kann Gradienten berechnen und Tensornetzwerk-Modelle trainieren.",
-            "descriptionEn": "The learner can compute gradients and train tensor network models.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2388"
-            ],
-            "contains": [],
-            "requires": [
-                "52cec7b8-32b9-5560-8aeb-d583f069e704"
-            ]
-        },
-        {
-            "id": "a5a2d561-212a-5f3b-a275-10b241a8866c",
-            "shortKey": "tum_in2388_simulation_of_quantum_systems_and_circuits",
-            "title": "Simulation von Quantensystemen und -schaltungen",
-            "titleEn": "Simulation of quantum systems and circuits",
-            "description": "Die lernende Person kann Tensornetzwerke zur Simulation stark korrelierter Systeme und Quantenschaltungen einsetzen.",
-            "descriptionEn": "The learner can use tensor networks to simulate strongly correlated systems and quantum circuits.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2388"
-            ],
-            "contains": [
-                "190f888e-2044-5714-a501-1cb21428b2cd",
-                "c44068e5-c05f-51ba-b04f-0d10a8d7831b"
-            ],
-            "requires": [
-                "049714ca-7dfd-5560-97e8-80e36ba8152f"
-            ]
-        },
-        {
-            "id": "190f888e-2044-5714-a501-1cb21428b2cd",
-            "shortKey": "tum_in2388_simulation_of_many_body_quantum_systems",
-            "title": "Simulation von Vielteilchen-Quantensystemen",
-            "titleEn": "Simulation of many-body quantum systems",
-            "description": "Die lernende Person kann stark korrelierte Systeme mit Tensornetzwerken modellieren.",
-            "descriptionEn": "The learner can model strongly correlated systems with tensor networks.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2388"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "c44068e5-c05f-51ba-b04f-0d10a8d7831b",
-            "shortKey": "tum_in2388_simulation_of_digital_quantum_circuits",
-            "title": "Simulation digitaler Quantenschaltungen",
-            "titleEn": "Simulation of digital quantum circuits",
-            "description": "Die lernende Person kann Schaltungsdynamik mit Tensornetzwerk-Methoden simulieren.",
-            "descriptionEn": "The learner can simulate circuit dynamics using tensor network methods.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2388"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "26c06b38-18b3-5448-a0fe-4f2ef30f4797",
-            "shortKey": "tum_in2388_probabilistic_modeling_and_sampling",
-            "title": "Probabilistische Modellierung und Sampling",
-            "titleEn": "Probabilistic modeling and sampling",
-            "description": "Die lernende Person kann Tensornetzwerke für Sampling und Wahrscheinlichkeitsverteilungen nutzen.",
-            "descriptionEn": "The learner can use tensor networks for sampling and probability distributions.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2388"
-            ],
-            "contains": [
-                "79f01c57-9212-5bde-98cc-32dd4ce1e8e4"
-            ],
-            "requires": [
-                "049714ca-7dfd-5560-97e8-80e36ba8152f"
-            ]
-        },
-        {
-            "id": "79f01c57-9212-5bde-98cc-32dd4ce1e8e4",
-            "shortKey": "tum_in2388_sampling_from_tensor_network_models",
-            "title": "Sampling aus Tensornetzwerk-Modellen",
-            "titleEn": "Sampling from tensor network models",
-            "description": "Die lernende Person kann Stichproben erzeugen und probabilistische Ausgaben interpretieren.",
-            "descriptionEn": "The learner can generate samples and interpret probabilistic outputs.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN2388"
-            ],
-            "contains": [],
-            "requires": [
-                "239dd8d5-5610-53ce-99f4-425082417244"
-            ]
-        }
-    ]
+  "title": "Tensornetzwerke (TUM, Modul IN2388)",
+  "titleEn": "Tensor Networks (TUM, Module IN2388)",
+  "description": "Das Modul behandelt Grundlagen und grafische Darstellung von Tensornetzwerken, Approximationstheorie, Backpropagation durch Netzwerke sowie die Simulation stark korrelierter Quantensysteme und digitaler Quantencomputer. Außerdem werden Sampling und probabilistische Modellierung mit Tensornetzwerken behandelt.",
+  "descriptionEn": "The module covers fundamentals and graphical representations of tensor networks, approximation theory, backpropagation through networks, and simulation of strongly correlated quantum systems and digital quantum computers. It also addresses sampling and probabilistic modeling with tensor networks.",
+  "locale": "de-DE",
+  "subject": "TUM-Module",
+  "frameworkId": "tum-in2388",
+  "goals": [
+    {
+      "id": "84d3a05d-5025-525f-9b5c-2c0e38ab0477",
+      "title": "Tensornetzwerke (IN2388)",
+      "titleEn": "Tensor Networks (IN2388)",
+      "description": "Die lernende Person kann Tensornetzwerkdarstellungen nutzen, um hochdimensionale Daten zu approximieren und Quantensysteme zu simulieren.",
+      "descriptionEn": "The learner can use tensor network representations to approximate high-dimensional data and simulate quantum systems.",
+      "weight": 5.0,
+      "tags": [
+        "module:IN2388",
+        "ects:5"
+      ],
+      "contains": [
+        "049714ca-7dfd-5560-97e8-80e36ba8152f",
+        "6d86b09d-615b-581a-a6a7-3868dd2b113d",
+        "a5a2d561-212a-5f3b-a275-10b241a8866c",
+        "26c06b38-18b3-5448-a0fe-4f2ef30f4797"
+      ],
+      "requires": [],
+      "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN2388",
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "049714ca-7dfd-5560-97e8-80e36ba8152f",
+      "title": "Grundlagen der Tensornetzwerke",
+      "titleEn": "Tensor network fundamentals",
+      "description": "Die lernende Person kann Tensoren und Netzwerke grafisch darstellen.",
+      "descriptionEn": "The learner can represent tensors and networks graphically.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN2388"
+      ],
+      "contains": [
+        "239dd8d5-5610-53ce-99f4-425082417244",
+        "704e625d-3a3e-592e-96b9-182a7abbf0b1"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "239dd8d5-5610-53ce-99f4-425082417244",
+      "title": "Tensornotation und Kontraktionen",
+      "titleEn": "Tensor notation and contractions",
+      "description": "Die lernende Person kann Tensordiagramme interpretieren und Kontraktionen berechnen.",
+      "descriptionEn": "The learner can interpret tensor diagrams and compute contractions.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN2388"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "704e625d-3a3e-592e-96b9-182a7abbf0b1",
+      "title": "Gängige Netzwerkstrukturen (MPS, MPO, PEPS)",
+      "titleEn": "Common network structures (MPS, MPO, PEPS)",
+      "description": "Die lernende Person kann Standardarchitekturen und ihre Eigenschaften beschreiben.",
+      "descriptionEn": "The learner can describe standard network architectures and their properties.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN2388"
+      ],
+      "contains": [],
+      "requires": [
+        "239dd8d5-5610-53ce-99f4-425082417244"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6d86b09d-615b-581a-a6a7-3868dd2b113d",
+      "title": "Approximationstheorie und Optimierung",
+      "titleEn": "Approximation theory and optimization",
+      "description": "Die lernende Person kann Niedrigrang-Approximationen anwenden und Tensornetzwerke optimieren.",
+      "descriptionEn": "The learner can apply low-rank approximations and optimize tensor networks.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN2388"
+      ],
+      "contains": [
+        "52cec7b8-32b9-5560-8aeb-d583f069e704",
+        "05e1a174-0667-5764-94ab-d0865059ef7c"
+      ],
+      "requires": [
+        "049714ca-7dfd-5560-97e8-80e36ba8152f"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "52cec7b8-32b9-5560-8aeb-d583f069e704",
+      "title": "Niedrigrang-Approximationen und Trunkierung",
+      "titleEn": "Low-rank approximations and truncation",
+      "description": "Die lernende Person kann Trunkierungen durchführen und Approximationsfehler abschätzen.",
+      "descriptionEn": "The learner can perform truncation and estimate approximation errors.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN2388"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "05e1a174-0667-5764-94ab-d0865059ef7c",
+      "title": "Backpropagation durch Tensornetzwerk-Operationen",
+      "titleEn": "Backpropagation through tensor network operations",
+      "description": "Die lernende Person kann Gradienten berechnen und Tensornetzwerk-Modelle trainieren.",
+      "descriptionEn": "The learner can compute gradients and train tensor network models.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN2388"
+      ],
+      "contains": [],
+      "requires": [
+        "52cec7b8-32b9-5560-8aeb-d583f069e704"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a5a2d561-212a-5f3b-a275-10b241a8866c",
+      "title": "Simulation von Quantensystemen und -schaltungen",
+      "titleEn": "Simulation of quantum systems and circuits",
+      "description": "Die lernende Person kann Tensornetzwerke zur Simulation stark korrelierter Systeme und Quantenschaltungen einsetzen.",
+      "descriptionEn": "The learner can use tensor networks to simulate strongly correlated systems and quantum circuits.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN2388"
+      ],
+      "contains": [
+        "190f888e-2044-5714-a501-1cb21428b2cd",
+        "c44068e5-c05f-51ba-b04f-0d10a8d7831b"
+      ],
+      "requires": [
+        "049714ca-7dfd-5560-97e8-80e36ba8152f"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "190f888e-2044-5714-a501-1cb21428b2cd",
+      "title": "Simulation von Vielteilchen-Quantensystemen",
+      "titleEn": "Simulation of many-body quantum systems",
+      "description": "Die lernende Person kann stark korrelierte Systeme mit Tensornetzwerken modellieren.",
+      "descriptionEn": "The learner can model strongly correlated systems with tensor networks.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN2388"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "c44068e5-c05f-51ba-b04f-0d10a8d7831b",
+      "title": "Simulation digitaler Quantenschaltungen",
+      "titleEn": "Simulation of digital quantum circuits",
+      "description": "Die lernende Person kann Schaltungsdynamik mit Tensornetzwerk-Methoden simulieren.",
+      "descriptionEn": "The learner can simulate circuit dynamics using tensor network methods.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN2388"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "26c06b38-18b3-5448-a0fe-4f2ef30f4797",
+      "title": "Probabilistische Modellierung und Sampling",
+      "titleEn": "Probabilistic modeling and sampling",
+      "description": "Die lernende Person kann Tensornetzwerke für Sampling und Wahrscheinlichkeitsverteilungen nutzen.",
+      "descriptionEn": "The learner can use tensor networks for sampling and probability distributions.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN2388"
+      ],
+      "contains": [
+        "79f01c57-9212-5bde-98cc-32dd4ce1e8e4"
+      ],
+      "requires": [
+        "049714ca-7dfd-5560-97e8-80e36ba8152f"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "79f01c57-9212-5bde-98cc-32dd4ce1e8e4",
+      "title": "Sampling aus Tensornetzwerk-Modellen",
+      "titleEn": "Sampling from tensor network models",
+      "description": "Die lernende Person kann Stichproben erzeugen und probabilistische Ausgaben interpretieren.",
+      "descriptionEn": "The learner can generate samples and interpret probabilistic outputs.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN2388"
+      ],
+      "contains": [],
+      "requires": [
+        "239dd8d5-5610-53ce-99f4-425082417244"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    }
+  ],
+  "landscapeId": "8978db40-080f-5442-b3b0-c172b2dfd66d"
 }

@@ -1,562 +1,535 @@
 {
-    "title": "Quantenoptik (TUM, Modul NAT7001)",
-    "titleEn": "Quantum Optics (TUM, Module NAT7001)",
-    "description": "Dieses Modul gibt eine Einführung in das breite Gebiet der Quantenoptik. Behandelt werden unter anderem der Übergang von Strahlen- zu Wellenoptik, Gaußsche Strahlen, Feldquantisierung, Fock-Zustände, kohärente, gequetschte und thermische Zustände, Zwei-Niveau-Systeme, das Jaynes-Cummings-Modell und gekleidete Atome sowie messbare Konsequenzen des elektromagnetischen Vakuums. Wenn es die Zeit erlaubt, werden auch Aspekte von Korrelationen und Photonenstatistik sowie Themen der Quanteninformation wie Teleportation und Quantenkryptographie behandelt.",
-    "descriptionEn": "This module gives an introduction to the wide field of quantum optics. Subjects will include: from ray to wave optics, Gaussian beams, field quantization, Fock states, coherent states, squeezed states, thermal states, two-level systems, Jaynes-Cummings and dressed atoms as well as measurable consequences of the electromagnetic vacuum. If time permits, it will also touch aspects of correlations and photon statistics as well as topics on quantum information such as teleportation and quantum cryptography.",
-    "locale": "de-DE",
-    "subject": "TUM-Module",
-    "frameworkId": "tum-nat7001",
-    "goals": [
-        {
-            "id": "e221ae35-db80-575f-8581-cbee1c909164",
-            "shortKey": "tum_nat7001_module",
-            "title": "Quantenoptik (Modul NAT7001)",
-            "titleEn": "Quantum Optics (Module NAT7001)",
-            "description": "Die lernende Person kann zentrale Konzepte der Quantenoptik erklären und auf repräsentative Aufgaben aus dem Modulumfang anwenden.",
-            "descriptionEn": "The learner can explain core concepts of quantum optics and apply them to representative problems within the module scope.",
-            "core": true,
-            "weight": 10.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:NAT7001",
-                "ects:10"
-            ],
-            "contains": [
-                "48a9fc20-997f-58e2-bf0f-3347777f5cca",
-                "ab139a82-22f8-5eab-87d6-fdfd1b9307e1",
-                "795dd3cc-5b4e-5a66-b0c0-5c8d57990517",
-                "694fb15c-479f-5364-bcef-437653ee1b7e",
-                "3df161d3-3abb-54c8-82e6-f229f0dc24b2",
-                "5beb4124-a5d5-5e90-b578-b8d2e2cc32d1",
-                "0ba76ac0-855e-5492-8781-8542527451ff"
-            ],
-            "requires": [],
-            "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/NAT7001"
-        },
-        {
-            "id": "48a9fc20-997f-58e2-bf0f-3347777f5cca",
-            "shortKey": "tum_nat7001_optical_foundations",
-            "title": "Optische Grundlagen",
-            "titleEn": "Optical foundations",
-            "description": "Die lernende Person kann grundlegende Konzepte der klassischen Optik mit der Quantenoptik verknüpfen.",
-            "descriptionEn": "The learner can connect classical optics to quantum optics through key wave concepts.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [
-                "a310f8b4-1db5-5ca9-8c19-3b3bb36187df",
-                "cb79a8f1-aa3e-50bc-a132-9be232bbd38f"
-            ],
-            "requires": []
-        },
-        {
-            "id": "a310f8b4-1db5-5ca9-8c19-3b3bb36187df",
-            "shortKey": "tum_nat7001_ray_wave_transition",
-            "title": "Übergang von Strahlen- zu Wellenoptik",
-            "titleEn": "Ray to wave optics transition",
-            "description": "Die lernende Person kann erklären, wann Strahlenoptik nicht ausreicht, und Konsequenzen der Wellenoptik für einfache Aufbauten herleiten.",
-            "descriptionEn": "The learner can explain when ray optics is insufficient and derive wave-optics consequences for simple setups.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "cb79a8f1-aa3e-50bc-a132-9be232bbd38f",
-            "shortKey": "tum_nat7001_gaussian_beams",
-            "title": "Gaußsche Strahlen",
-            "titleEn": "Gaussian beams",
-            "description": "Die lernende Person kann Taillenradius, Rayleigh-Länge, Divergenz und Intensitätsprofile von Gauß-Strahlen berechnen.",
-            "descriptionEn": "The learner can calculate beam waist, Rayleigh range, divergence, and intensity profiles for Gaussian beams.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": [
-                "a310f8b4-1db5-5ca9-8c19-3b3bb36187df"
-            ]
-        },
-        {
-            "id": "ab139a82-22f8-5eab-87d6-fdfd1b9307e1",
-            "shortKey": "tum_nat7001_quantized_field",
-            "title": "Quantisiertes elektromagnetisches Feld",
-            "titleEn": "Quantized electromagnetic field",
-            "description": "Die lernende Person kann Licht als quantisierte Feldmoden modellieren und grundlegende Zustandsgrößen berechnen.",
-            "descriptionEn": "The learner can model light as quantized field modes and compute basic state properties.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [
-                "0e0a540f-3ccf-506e-a382-af59836f61a0",
-                "3fb1c060-e0ca-5b3b-a748-61e3864dbfa6",
-                "979fa623-a02e-5d0a-82d6-934d62f54656",
-                "847552a3-7bcb-5fb0-b032-ab034c6c5357",
-                "918ceccc-ed13-5332-bc9d-139b1e31c737"
-            ],
-            "requires": [
-                "48a9fc20-997f-58e2-bf0f-3347777f5cca"
-            ]
-        },
-        {
-            "id": "0e0a540f-3ccf-506e-a382-af59836f61a0",
-            "shortKey": "tum_nat7001_field_quantization",
-            "title": "Feldquantisierung und Modenoperatoren",
-            "titleEn": "Field quantization and mode operators",
-            "description": "Die lernende Person kann Erzeugungs- und Vernichtungsoperatoren für einen Modus ansetzen und Erwartungswerte der Photonenzahl berechnen.",
-            "descriptionEn": "The learner can set up creation and annihilation operators for a single mode and compute photon number expectations.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "3fb1c060-e0ca-5b3b-a748-61e3864dbfa6",
-            "shortKey": "tum_nat7001_fock_states",
-            "title": "Fock-Zustände",
-            "titleEn": "Fock states",
-            "description": "Die lernende Person kann Photonenstatistiken und Messergebnisse für Zahlzustände berechnen.",
-            "descriptionEn": "The learner can compute photon number statistics and measurement outcomes for number states.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": [
-                "0e0a540f-3ccf-506e-a382-af59836f61a0"
-            ]
-        },
-        {
-            "id": "979fa623-a02e-5d0a-82d6-934d62f54656",
-            "shortKey": "tum_nat7001_coherent_states",
-            "title": "Kohärente Zustände",
-            "titleEn": "Coherent states",
-            "description": "Die lernende Person kann Poisson-Photonenstatistik und Quadratur-Erwartungswerte für kohärente Zustände herleiten.",
-            "descriptionEn": "The learner can derive Poisson photon statistics and quadrature expectations for coherent states.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": [
-                "0e0a540f-3ccf-506e-a382-af59836f61a0"
-            ]
-        },
-        {
-            "id": "847552a3-7bcb-5fb0-b032-ab034c6c5357",
-            "shortKey": "tum_nat7001_squeezed_states",
-            "title": "Gequetschte Zustände",
-            "titleEn": "Squeezed states",
-            "description": "Die lernende Person kann Quadratur-Quetschung erklären und Varianzreduktionen mit einem Quetschparameter berechnen.",
-            "descriptionEn": "The learner can explain quadrature squeezing and compute variance reductions with a squeezing parameter.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": [
-                "0e0a540f-3ccf-506e-a382-af59836f61a0"
-            ]
-        },
-        {
-            "id": "918ceccc-ed13-5332-bc9d-139b1e31c737",
-            "shortKey": "tum_nat7001_thermal_states",
-            "title": "Thermische Zustände",
-            "titleEn": "Thermal states",
-            "description": "Die lernende Person kann thermische Photonenstatistik beschreiben und mittlere Photonenzahlen für einen Modus berechnen.",
-            "descriptionEn": "The learner can describe thermal photon statistics and compute mean photon numbers for a mode.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": [
-                "0e0a540f-3ccf-506e-a382-af59836f61a0"
-            ]
-        },
-        {
-            "id": "795dd3cc-5b4e-5a66-b0c0-5c8d57990517",
-            "shortKey": "tum_nat7001_light_matter",
-            "title": "Licht-Materie-Wechselwirkung in Zwei-Niveau-Systemen",
-            "titleEn": "Light-matter interaction in two-level systems",
-            "description": "Die lernende Person kann die quantisierte Licht-Atom-Wechselwirkung in einfachen Zwei-Niveau-Modellen analysieren.",
-            "descriptionEn": "The learner can analyze quantized light-atom interaction in basic two-level models.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [
-                "f9ba658e-fb1e-5475-8997-b18b99c9573e",
-                "6144bf91-b1ee-55d8-b0f4-bbc5e5147122"
-            ],
-            "requires": [
-                "ab139a82-22f8-5eab-87d6-fdfd1b9307e1"
-            ]
-        },
-        {
-            "id": "f9ba658e-fb1e-5475-8997-b18b99c9573e",
-            "shortKey": "tum_nat7001_two_level_dynamics",
-            "title": "Dynamik von Zwei-Niveau-Systemen",
-            "titleEn": "Two-level system dynamics",
-            "description": "Die lernende Person kann Rabi-Oszillationen lösen und Populationsdynamiken eines getriebenen Zwei-Niveau-Systems interpretieren.",
-            "descriptionEn": "The learner can solve for Rabi oscillations and interpret population dynamics of a driven two-level system.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "6144bf91-b1ee-55d8-b0f4-bbc5e5147122",
-            "shortKey": "tum_nat7001_jaynes_cummings",
-            "title": "Jaynes-Cummings-Modell",
-            "titleEn": "Jaynes-Cummings model",
-            "description": "Die lernende Person kann gekleidete Zustände, Rabi-Aufspaltung und Vakuum-Rabi-Oszillationen herleiten.",
-            "descriptionEn": "The learner can derive dressed states, Rabi splitting, and predict vacuum Rabi oscillations.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": [
-                "f9ba658e-fb1e-5475-8997-b18b99c9573e"
-            ]
-        },
-        {
-            "id": "694fb15c-479f-5364-bcef-437653ee1b7e",
-            "shortKey": "tum_nat7001_vacuum_effects",
-            "title": "Quanten-Vakuum-Effekte",
-            "titleEn": "Quantum vacuum effects",
-            "description": "Die lernende Person kann beobachtbare Effekte erklären, die auf Vakuumfluktuationen zurückgeführt werden.",
-            "descriptionEn": "The learner can explain observable effects attributed to vacuum fluctuations.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [
-                "ff446ff8-e744-5dfc-b7af-c833e9f8d08e",
-                "c47423a5-e8a2-5dc1-b2b5-60706dce1533",
-                "fa8d720d-7b82-5475-8207-70ac782e964f",
-                "bfc03a07-c5f2-5031-81d1-3ee4f5a8a88f"
-            ],
-            "requires": [
-                "ab139a82-22f8-5eab-87d6-fdfd1b9307e1"
-            ]
-        },
-        {
-            "id": "ff446ff8-e744-5dfc-b7af-c833e9f8d08e",
-            "shortKey": "tum_nat7001_spontaneous_emission",
-            "title": "Spontane Emission",
-            "titleEn": "Spontaneous emission",
-            "description": "Die lernende Person kann spontane Emission als vakuuminduzierten Prozess erklären und Zerfallsraten abschätzen.",
-            "descriptionEn": "The learner can explain spontaneous emission as a vacuum-induced process and estimate decay rates.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": [
-                "795dd3cc-5b4e-5a66-b0c0-5c8d57990517"
-            ]
-        },
-        {
-            "id": "c47423a5-e8a2-5dc1-b2b5-60706dce1533",
-            "shortKey": "tum_nat7001_purcell_effect",
-            "title": "Purcell-Effekt",
-            "titleEn": "Purcell effect",
-            "description": "Die lernende Person kann verstärkte Emission in Resonatoren quantifizieren und den Purcell-Faktor mit Modenvolumen und Q in Beziehung setzen.",
-            "descriptionEn": "The learner can quantify cavity-enhanced emission and relate the Purcell factor to mode volume and Q.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": [
-                "ff446ff8-e744-5dfc-b7af-c833e9f8d08e"
-            ]
-        },
-        {
-            "id": "fa8d720d-7b82-5475-8207-70ac782e964f",
-            "shortKey": "tum_nat7001_casimir_force",
-            "title": "Casimir-Kraft",
-            "titleEn": "Casimir force",
-            "description": "Die lernende Person kann den Ursprung der Casimir-Kraft erklären und ihre Abhängigkeit von der Geometrie beschreiben.",
-            "descriptionEn": "The learner can explain the origin of the Casimir force and describe its dependence on geometry.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "bfc03a07-c5f2-5031-81d1-3ee4f5a8a88f",
-            "shortKey": "tum_nat7001_lamb_shift",
-            "title": "Lamb-Verschiebung",
-            "titleEn": "Lamb shift",
-            "description": "Die lernende Person kann die Lamb-Verschiebung als vakuumbezogene Niveauverschiebung erklären und ihren physikalischen Ursprung skizzieren.",
-            "descriptionEn": "The learner can explain the Lamb shift as a vacuum-related level shift and outline its physical origin.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": [
-                "795dd3cc-5b4e-5a66-b0c0-5c8d57990517"
-            ]
-        },
-        {
-            "id": "3df161d3-3abb-54c8-82e6-f229f0dc24b2",
-            "shortKey": "tum_nat7001_coherence_correlations",
-            "title": "Kohärenz und Korrelationen",
-            "titleEn": "Coherence and correlations",
-            "description": "Die lernende Person kann Kohärenzeigenschaften von Licht analysieren und Korrelationsfunktionen interpretieren.",
-            "descriptionEn": "The learner can analyze coherence properties of light and interpret correlation functions.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [
-                "b66aa41f-90fa-5617-99e0-2dd1bf58fec4",
-                "555a6e4d-0b37-5d01-83d7-38ecd4ed010f"
-            ],
-            "requires": [
-                "ab139a82-22f8-5eab-87d6-fdfd1b9307e1"
-            ]
-        },
-        {
-            "id": "b66aa41f-90fa-5617-99e0-2dd1bf58fec4",
-            "shortKey": "tum_nat7001_coherence_functions",
-            "title": "Kohärenzfunktionen",
-            "titleEn": "Coherence functions",
-            "description": "Die lernende Person kann Kohärenzfunktionen erster und zweiter Ordnung g1 und g2 berechnen und interpretieren.",
-            "descriptionEn": "The learner can compute and interpret first- and second-order coherence functions g1 and g2.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "555a6e4d-0b37-5d01-83d7-38ecd4ed010f",
-            "shortKey": "tum_nat7001_photon_statistics",
-            "title": "Photonenstatistik und Korrelationen",
-            "titleEn": "Photon statistics and correlations",
-            "description": "Die lernende Person kann Poisson'sches, gebunchtes und antibunchtes Licht anhand von Korrelationsdaten unterscheiden.",
-            "descriptionEn": "The learner can distinguish Poissonian, bunched, and antibunched light via correlation data.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": [
-                "b66aa41f-90fa-5617-99e0-2dd1bf58fec4"
-            ]
-        },
-        {
-            "id": "5beb4124-a5d5-5e90-b578-b8d2e2cc32d1",
-            "shortKey": "tum_nat7001_experimental_qo",
-            "title": "Experimentelle Quantenoptik",
-            "titleEn": "Experimental quantum optics",
-            "description": "Die lernende Person kann theoretische Modelle mit experimentellen Realisierungen und Messungen verknüpfen.",
-            "descriptionEn": "The learner can relate theoretical models to experimental realizations and measurements.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [
-                "e1370900-495e-55bd-8e13-11fb1310cf4b",
-                "77f147b9-6491-5aa7-a1f6-7b46892b07b6"
-            ],
-            "requires": [
-                "795dd3cc-5b4e-5a66-b0c0-5c8d57990517"
-            ]
-        },
-        {
-            "id": "e1370900-495e-55bd-8e13-11fb1310cf4b",
-            "shortKey": "tum_nat7001_experimental_settings",
-            "title": "Experimentelle Aufbauten für quantisierte Licht-Atom-Wechselwirkung",
-            "titleEn": "Experimental settings for quantized light-atom interaction",
-            "description": "Die lernende Person kann Aufbauten zur Untersuchung von Vakuum-Rabi-Oszillationen und starker Kopplung beschreiben.",
-            "descriptionEn": "The learner can describe setups used for vacuum Rabi oscillations and strong coupling tests.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "77f147b9-6491-5aa7-a1f6-7b46892b07b6",
-            "shortKey": "tum_nat7001_qnd_photons",
-            "title": "Zerstörungsfreie Photonmessungen",
-            "titleEn": "Non-destructive photon measurements",
-            "description": "Die lernende Person kann Prinzipien von quanten-nicht-destruktiven (QND) Photonmessungen erklären.",
-            "descriptionEn": "The learner can explain principles of quantum non-demolition measurements of photons.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": [
-                "e1370900-495e-55bd-8e13-11fb1310cf4b"
-            ]
-        },
-        {
-            "id": "0ba76ac0-855e-5492-8781-8542527451ff",
-            "shortKey": "tum_nat7001_entanglement_qi",
-            "title": "Verschränkung und Quanteninformation",
-            "titleEn": "Entanglement and quantum information",
-            "description": "Die lernende Person kann quantenoptische Ressourcen mit Informationsaufgaben verknüpfen.",
-            "descriptionEn": "The learner can connect quantum-optical resources to information tasks.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [
-                "b23f1073-e5f9-58ff-b3e0-a8bc0ffe66cd",
-                "f4e6fce8-66a1-5de2-bf94-38de7bd95e12",
-                "95b899f1-f1bb-516c-b11c-98d88f82be82"
-            ],
-            "requires": [
-                "3df161d3-3abb-54c8-82e6-f229f0dc24b2"
-            ]
-        },
-        {
-            "id": "b23f1073-e5f9-58ff-b3e0-a8bc0ffe66cd",
-            "shortKey": "tum_nat7001_entangled_pairs",
-            "title": "Erzeugung verschränkter Photonenpaare",
-            "titleEn": "Entangled photon pair generation",
-            "description": "Die lernende Person kann typische Erzeugungsmethoden (z. B. SPDC) erklären und erwartete Korrelationen beschreiben.",
-            "descriptionEn": "The learner can explain typical generation methods (e.g., SPDC) and expected correlations.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": [
-                "5beb4124-a5d5-5e90-b578-b8d2e2cc32d1"
-            ]
-        },
-        {
-            "id": "f4e6fce8-66a1-5de2-bf94-38de7bd95e12",
-            "shortKey": "tum_nat7001_quantum_teleportation",
-            "title": "Quanten-Teleportation",
-            "titleEn": "Quantum teleportation",
-            "description": "Die lernende Person kann das Teleportationsprotokoll skizzieren und die benötigten Verschränkungsressourcen benennen.",
-            "descriptionEn": "The learner can outline the teleportation protocol and identify required entanglement resources.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": [
-                "b23f1073-e5f9-58ff-b3e0-a8bc0ffe66cd"
-            ]
-        },
-        {
-            "id": "95b899f1-f1bb-516c-b11c-98d88f82be82",
-            "shortKey": "tum_nat7001_quantum_cryptography",
-            "title": "Quantenkryptographie",
-            "titleEn": "Quantum cryptography",
-            "description": "Die lernende Person kann die Grundidee der QKD (z. B. BB84) erklären und die Rolle einzelner Photonen beschreiben.",
-            "descriptionEn": "The learner can explain the basic idea of QKD (e.g., BB84) and the role of single photons.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT7001"
-            ],
-            "contains": [],
-            "requires": []
-        }
-    ]
+  "title": "Quantenoptik (TUM, Modul NAT7001)",
+  "titleEn": "Quantum Optics (TUM, Module NAT7001)",
+  "description": "Dieses Modul gibt eine Einführung in das breite Gebiet der Quantenoptik. Behandelt werden unter anderem der Übergang von Strahlen- zu Wellenoptik, Gaußsche Strahlen, Feldquantisierung, Fock-Zustände, kohärente, gequetschte und thermische Zustände, Zwei-Niveau-Systeme, das Jaynes-Cummings-Modell und gekleidete Atome sowie messbare Konsequenzen des elektromagnetischen Vakuums. Wenn es die Zeit erlaubt, werden auch Aspekte von Korrelationen und Photonenstatistik sowie Themen der Quanteninformation wie Teleportation und Quantenkryptographie behandelt.",
+  "descriptionEn": "This module gives an introduction to the wide field of quantum optics. Subjects will include: from ray to wave optics, Gaussian beams, field quantization, Fock states, coherent states, squeezed states, thermal states, two-level systems, Jaynes-Cummings and dressed atoms as well as measurable consequences of the electromagnetic vacuum. If time permits, it will also touch aspects of correlations and photon statistics as well as topics on quantum information such as teleportation and quantum cryptography.",
+  "locale": "de-DE",
+  "subject": "TUM-Module",
+  "frameworkId": "tum-nat7001",
+  "goals": [
+    {
+      "id": "e221ae35-db80-575f-8581-cbee1c909164",
+      "title": "Quantenoptik (Modul NAT7001)",
+      "titleEn": "Quantum Optics (Module NAT7001)",
+      "description": "Die lernende Person kann zentrale Konzepte der Quantenoptik erklären und auf repräsentative Aufgaben aus dem Modulumfang anwenden.",
+      "descriptionEn": "The learner can explain core concepts of quantum optics and apply them to representative problems within the module scope.",
+      "weight": 10.0,
+      "tags": [
+        "module:NAT7001",
+        "ects:10"
+      ],
+      "contains": [
+        "48a9fc20-997f-58e2-bf0f-3347777f5cca",
+        "ab139a82-22f8-5eab-87d6-fdfd1b9307e1",
+        "795dd3cc-5b4e-5a66-b0c0-5c8d57990517",
+        "694fb15c-479f-5364-bcef-437653ee1b7e",
+        "3df161d3-3abb-54c8-82e6-f229f0dc24b2",
+        "5beb4124-a5d5-5e90-b578-b8d2e2cc32d1",
+        "0ba76ac0-855e-5492-8781-8542527451ff"
+      ],
+      "requires": [],
+      "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/NAT7001",
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "48a9fc20-997f-58e2-bf0f-3347777f5cca",
+      "title": "Optische Grundlagen",
+      "titleEn": "Optical foundations",
+      "description": "Die lernende Person kann grundlegende Konzepte der klassischen Optik mit der Quantenoptik verknüpfen.",
+      "descriptionEn": "The learner can connect classical optics to quantum optics through key wave concepts.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [
+        "a310f8b4-1db5-5ca9-8c19-3b3bb36187df",
+        "cb79a8f1-aa3e-50bc-a132-9be232bbd38f"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a310f8b4-1db5-5ca9-8c19-3b3bb36187df",
+      "title": "Übergang von Strahlen- zu Wellenoptik",
+      "titleEn": "Ray to wave optics transition",
+      "description": "Die lernende Person kann erklären, wann Strahlenoptik nicht ausreicht, und Konsequenzen der Wellenoptik für einfache Aufbauten herleiten.",
+      "descriptionEn": "The learner can explain when ray optics is insufficient and derive wave-optics consequences for simple setups.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "cb79a8f1-aa3e-50bc-a132-9be232bbd38f",
+      "title": "Gaußsche Strahlen",
+      "titleEn": "Gaussian beams",
+      "description": "Die lernende Person kann Taillenradius, Rayleigh-Länge, Divergenz und Intensitätsprofile von Gauß-Strahlen berechnen.",
+      "descriptionEn": "The learner can calculate beam waist, Rayleigh range, divergence, and intensity profiles for Gaussian beams.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [
+        "a310f8b4-1db5-5ca9-8c19-3b3bb36187df"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ab139a82-22f8-5eab-87d6-fdfd1b9307e1",
+      "title": "Quantisiertes elektromagnetisches Feld",
+      "titleEn": "Quantized electromagnetic field",
+      "description": "Die lernende Person kann Licht als quantisierte Feldmoden modellieren und grundlegende Zustandsgrößen berechnen.",
+      "descriptionEn": "The learner can model light as quantized field modes and compute basic state properties.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [
+        "0e0a540f-3ccf-506e-a382-af59836f61a0",
+        "3fb1c060-e0ca-5b3b-a748-61e3864dbfa6",
+        "979fa623-a02e-5d0a-82d6-934d62f54656",
+        "847552a3-7bcb-5fb0-b032-ab034c6c5357",
+        "918ceccc-ed13-5332-bc9d-139b1e31c737"
+      ],
+      "requires": [
+        "48a9fc20-997f-58e2-bf0f-3347777f5cca"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0e0a540f-3ccf-506e-a382-af59836f61a0",
+      "title": "Feldquantisierung und Modenoperatoren",
+      "titleEn": "Field quantization and mode operators",
+      "description": "Die lernende Person kann Erzeugungs- und Vernichtungsoperatoren für einen Modus ansetzen und Erwartungswerte der Photonenzahl berechnen.",
+      "descriptionEn": "The learner can set up creation and annihilation operators for a single mode and compute photon number expectations.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "3fb1c060-e0ca-5b3b-a748-61e3864dbfa6",
+      "title": "Fock-Zustände",
+      "titleEn": "Fock states",
+      "description": "Die lernende Person kann Photonenstatistiken und Messergebnisse für Zahlzustände berechnen.",
+      "descriptionEn": "The learner can compute photon number statistics and measurement outcomes for number states.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [
+        "0e0a540f-3ccf-506e-a382-af59836f61a0"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "979fa623-a02e-5d0a-82d6-934d62f54656",
+      "title": "Kohärente Zustände",
+      "titleEn": "Coherent states",
+      "description": "Die lernende Person kann Poisson-Photonenstatistik und Quadratur-Erwartungswerte für kohärente Zustände herleiten.",
+      "descriptionEn": "The learner can derive Poisson photon statistics and quadrature expectations for coherent states.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [
+        "0e0a540f-3ccf-506e-a382-af59836f61a0"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "847552a3-7bcb-5fb0-b032-ab034c6c5357",
+      "title": "Gequetschte Zustände",
+      "titleEn": "Squeezed states",
+      "description": "Die lernende Person kann Quadratur-Quetschung erklären und Varianzreduktionen mit einem Quetschparameter berechnen.",
+      "descriptionEn": "The learner can explain quadrature squeezing and compute variance reductions with a squeezing parameter.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [
+        "0e0a540f-3ccf-506e-a382-af59836f61a0"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "918ceccc-ed13-5332-bc9d-139b1e31c737",
+      "title": "Thermische Zustände",
+      "titleEn": "Thermal states",
+      "description": "Die lernende Person kann thermische Photonenstatistik beschreiben und mittlere Photonenzahlen für einen Modus berechnen.",
+      "descriptionEn": "The learner can describe thermal photon statistics and compute mean photon numbers for a mode.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [
+        "0e0a540f-3ccf-506e-a382-af59836f61a0"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "795dd3cc-5b4e-5a66-b0c0-5c8d57990517",
+      "title": "Licht-Materie-Wechselwirkung in Zwei-Niveau-Systemen",
+      "titleEn": "Light-matter interaction in two-level systems",
+      "description": "Die lernende Person kann die quantisierte Licht-Atom-Wechselwirkung in einfachen Zwei-Niveau-Modellen analysieren.",
+      "descriptionEn": "The learner can analyze quantized light-atom interaction in basic two-level models.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [
+        "f9ba658e-fb1e-5475-8997-b18b99c9573e",
+        "6144bf91-b1ee-55d8-b0f4-bbc5e5147122"
+      ],
+      "requires": [
+        "ab139a82-22f8-5eab-87d6-fdfd1b9307e1"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f9ba658e-fb1e-5475-8997-b18b99c9573e",
+      "title": "Dynamik von Zwei-Niveau-Systemen",
+      "titleEn": "Two-level system dynamics",
+      "description": "Die lernende Person kann Rabi-Oszillationen lösen und Populationsdynamiken eines getriebenen Zwei-Niveau-Systems interpretieren.",
+      "descriptionEn": "The learner can solve for Rabi oscillations and interpret population dynamics of a driven two-level system.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6144bf91-b1ee-55d8-b0f4-bbc5e5147122",
+      "title": "Jaynes-Cummings-Modell",
+      "titleEn": "Jaynes-Cummings model",
+      "description": "Die lernende Person kann gekleidete Zustände, Rabi-Aufspaltung und Vakuum-Rabi-Oszillationen herleiten.",
+      "descriptionEn": "The learner can derive dressed states, Rabi splitting, and predict vacuum Rabi oscillations.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [
+        "f9ba658e-fb1e-5475-8997-b18b99c9573e"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "694fb15c-479f-5364-bcef-437653ee1b7e",
+      "title": "Quanten-Vakuum-Effekte",
+      "titleEn": "Quantum vacuum effects",
+      "description": "Die lernende Person kann beobachtbare Effekte erklären, die auf Vakuumfluktuationen zurückgeführt werden.",
+      "descriptionEn": "The learner can explain observable effects attributed to vacuum fluctuations.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [
+        "ff446ff8-e744-5dfc-b7af-c833e9f8d08e",
+        "c47423a5-e8a2-5dc1-b2b5-60706dce1533",
+        "fa8d720d-7b82-5475-8207-70ac782e964f",
+        "bfc03a07-c5f2-5031-81d1-3ee4f5a8a88f"
+      ],
+      "requires": [
+        "ab139a82-22f8-5eab-87d6-fdfd1b9307e1"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ff446ff8-e744-5dfc-b7af-c833e9f8d08e",
+      "title": "Spontane Emission",
+      "titleEn": "Spontaneous emission",
+      "description": "Die lernende Person kann spontane Emission als vakuuminduzierten Prozess erklären und Zerfallsraten abschätzen.",
+      "descriptionEn": "The learner can explain spontaneous emission as a vacuum-induced process and estimate decay rates.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [
+        "795dd3cc-5b4e-5a66-b0c0-5c8d57990517"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "c47423a5-e8a2-5dc1-b2b5-60706dce1533",
+      "title": "Purcell-Effekt",
+      "titleEn": "Purcell effect",
+      "description": "Die lernende Person kann verstärkte Emission in Resonatoren quantifizieren und den Purcell-Faktor mit Modenvolumen und Q in Beziehung setzen.",
+      "descriptionEn": "The learner can quantify cavity-enhanced emission and relate the Purcell factor to mode volume and Q.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [
+        "ff446ff8-e744-5dfc-b7af-c833e9f8d08e"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "fa8d720d-7b82-5475-8207-70ac782e964f",
+      "title": "Casimir-Kraft",
+      "titleEn": "Casimir force",
+      "description": "Die lernende Person kann den Ursprung der Casimir-Kraft erklären und ihre Abhängigkeit von der Geometrie beschreiben.",
+      "descriptionEn": "The learner can explain the origin of the Casimir force and describe its dependence on geometry.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "bfc03a07-c5f2-5031-81d1-3ee4f5a8a88f",
+      "title": "Lamb-Verschiebung",
+      "titleEn": "Lamb shift",
+      "description": "Die lernende Person kann die Lamb-Verschiebung als vakuumbezogene Niveauverschiebung erklären und ihren physikalischen Ursprung skizzieren.",
+      "descriptionEn": "The learner can explain the Lamb shift as a vacuum-related level shift and outline its physical origin.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [
+        "795dd3cc-5b4e-5a66-b0c0-5c8d57990517"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "3df161d3-3abb-54c8-82e6-f229f0dc24b2",
+      "title": "Kohärenz und Korrelationen",
+      "titleEn": "Coherence and correlations",
+      "description": "Die lernende Person kann Kohärenzeigenschaften von Licht analysieren und Korrelationsfunktionen interpretieren.",
+      "descriptionEn": "The learner can analyze coherence properties of light and interpret correlation functions.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [
+        "b66aa41f-90fa-5617-99e0-2dd1bf58fec4",
+        "555a6e4d-0b37-5d01-83d7-38ecd4ed010f"
+      ],
+      "requires": [
+        "ab139a82-22f8-5eab-87d6-fdfd1b9307e1"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b66aa41f-90fa-5617-99e0-2dd1bf58fec4",
+      "title": "Kohärenzfunktionen",
+      "titleEn": "Coherence functions",
+      "description": "Die lernende Person kann Kohärenzfunktionen erster und zweiter Ordnung g1 und g2 berechnen und interpretieren.",
+      "descriptionEn": "The learner can compute and interpret first- and second-order coherence functions g1 and g2.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "555a6e4d-0b37-5d01-83d7-38ecd4ed010f",
+      "title": "Photonenstatistik und Korrelationen",
+      "titleEn": "Photon statistics and correlations",
+      "description": "Die lernende Person kann Poisson'sches, gebunchtes und antibunchtes Licht anhand von Korrelationsdaten unterscheiden.",
+      "descriptionEn": "The learner can distinguish Poissonian, bunched, and antibunched light via correlation data.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [
+        "b66aa41f-90fa-5617-99e0-2dd1bf58fec4"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "5beb4124-a5d5-5e90-b578-b8d2e2cc32d1",
+      "title": "Experimentelle Quantenoptik",
+      "titleEn": "Experimental quantum optics",
+      "description": "Die lernende Person kann theoretische Modelle mit experimentellen Realisierungen und Messungen verknüpfen.",
+      "descriptionEn": "The learner can relate theoretical models to experimental realizations and measurements.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [
+        "e1370900-495e-55bd-8e13-11fb1310cf4b",
+        "77f147b9-6491-5aa7-a1f6-7b46892b07b6"
+      ],
+      "requires": [
+        "795dd3cc-5b4e-5a66-b0c0-5c8d57990517"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e1370900-495e-55bd-8e13-11fb1310cf4b",
+      "title": "Experimentelle Aufbauten für quantisierte Licht-Atom-Wechselwirkung",
+      "titleEn": "Experimental settings for quantized light-atom interaction",
+      "description": "Die lernende Person kann Aufbauten zur Untersuchung von Vakuum-Rabi-Oszillationen und starker Kopplung beschreiben.",
+      "descriptionEn": "The learner can describe setups used for vacuum Rabi oscillations and strong coupling tests.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "77f147b9-6491-5aa7-a1f6-7b46892b07b6",
+      "title": "Zerstörungsfreie Photonmessungen",
+      "titleEn": "Non-destructive photon measurements",
+      "description": "Die lernende Person kann Prinzipien von quanten-nicht-destruktiven (QND) Photonmessungen erklären.",
+      "descriptionEn": "The learner can explain principles of quantum non-demolition measurements of photons.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [
+        "e1370900-495e-55bd-8e13-11fb1310cf4b"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0ba76ac0-855e-5492-8781-8542527451ff",
+      "title": "Verschränkung und Quanteninformation",
+      "titleEn": "Entanglement and quantum information",
+      "description": "Die lernende Person kann quantenoptische Ressourcen mit Informationsaufgaben verknüpfen.",
+      "descriptionEn": "The learner can connect quantum-optical resources to information tasks.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [
+        "b23f1073-e5f9-58ff-b3e0-a8bc0ffe66cd",
+        "f4e6fce8-66a1-5de2-bf94-38de7bd95e12",
+        "95b899f1-f1bb-516c-b11c-98d88f82be82"
+      ],
+      "requires": [
+        "3df161d3-3abb-54c8-82e6-f229f0dc24b2"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b23f1073-e5f9-58ff-b3e0-a8bc0ffe66cd",
+      "title": "Erzeugung verschränkter Photonenpaare",
+      "titleEn": "Entangled photon pair generation",
+      "description": "Die lernende Person kann typische Erzeugungsmethoden (z. B. SPDC) erklären und erwartete Korrelationen beschreiben.",
+      "descriptionEn": "The learner can explain typical generation methods (e.g., SPDC) and expected correlations.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [
+        "5beb4124-a5d5-5e90-b578-b8d2e2cc32d1"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f4e6fce8-66a1-5de2-bf94-38de7bd95e12",
+      "title": "Quanten-Teleportation",
+      "titleEn": "Quantum teleportation",
+      "description": "Die lernende Person kann das Teleportationsprotokoll skizzieren und die benötigten Verschränkungsressourcen benennen.",
+      "descriptionEn": "The learner can outline the teleportation protocol and identify required entanglement resources.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [
+        "b23f1073-e5f9-58ff-b3e0-a8bc0ffe66cd"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "95b899f1-f1bb-516c-b11c-98d88f82be82",
+      "title": "Quantenkryptographie",
+      "titleEn": "Quantum cryptography",
+      "description": "Die lernende Person kann die Grundidee der QKD (z. B. BB84) erklären und die Rolle einzelner Photonen beschreiben.",
+      "descriptionEn": "The learner can explain the basic idea of QKD (e.g., BB84) and the role of single photons.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT7001"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    }
+  ],
+  "landscapeId": "581031aa-8820-59ed-a462-7b5ba5d307af"
 }

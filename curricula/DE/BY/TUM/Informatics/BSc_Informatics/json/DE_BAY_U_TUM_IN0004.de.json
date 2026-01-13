@@ -1,312 +1,297 @@
 {
-    "title": "Einführung in die Rechnerarchitektur (TUM, Modul IN0004)",
-    "titleEn": "Introduction to Computer Organization and Technology - Computer Architecture (TUM, Module IN0004)",
-    "description": "Die lernende Person kann die Organisation von Computersystemen und grundlegende Hardware-Software-Interaktionen erklären.",
-    "descriptionEn": "The learner can explain computer system organization and basic hardware-software interactions.",
-    "locale": "de-DE",
-    "subject": "TUM-Module",
-    "frameworkId": "tum-in0004",
-    "goals": [
-        {
-            "id": "64fecb41-a7f0-54d8-9fce-e839f894ec7e",
-            "shortKey": "tum_in0004_module",
-            "title": "Einführung in die Rechnerarchitektur (IN0004)",
-            "titleEn": "Introduction to Computer Organization and Technology - Computer Architecture (IN0004)",
-            "description": "Die lernende Person kann die Organisation von Computersystemen und grundlegende Hardware-Software-Interaktionen erklären.",
-            "descriptionEn": "The learner can explain computer system organization and basic hardware-software interactions.",
-            "core": true,
-            "weight": 8.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:IN0004",
-                "ects:8"
-            ],
-            "contains": [
-                "d69709ec-09a3-5f91-8c49-b76d027a5d2a",
-                "d6da1d4c-8dad-5b86-a29e-95f224769145",
-                "cd4741ca-e1ea-5e99-b048-70204c68f6ee",
-                "960ef64a-6702-5d95-a5cb-28acddb57f0c",
-                "4a0cdc38-a34f-5ea1-bc3b-bed041dee925"
-            ],
-            "requires": [],
-            "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0004"
-        },
-        {
-            "id": "d69709ec-09a3-5f91-8c49-b76d027a5d2a",
-            "shortKey": "tum_in0004_computer_system_organization",
-            "title": "Organisation von Computersystemen",
-            "titleEn": "Computer system organization",
-            "description": "Die lernende Person kann die geschichtete Systemstruktur und den Unterrichtszyklus beschreiben.",
-            "descriptionEn": "The learner can describe layered system structure and the instruction cycle.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0004"
-            ],
-            "contains": [
-                "a5020e38-4ef4-5837-bc79-5e688e23bf64",
-                "dc88ee67-2bff-5a7b-89ec-e7dfc240869a"
-            ],
-            "requires": []
-        },
-        {
-            "id": "a5020e38-4ef4-5837-bc79-5e688e23bf64",
-            "shortKey": "tum_in0004_von_neumann_model_and_instruction_cycle",
-            "title": "Von Neumann-Modell und Lehrzyklus",
-            "titleEn": "Von Neumann model and instruction cycle",
-            "description": "Die lernende Person kann die Von-Neumann-Architektur und den Maschinenanweisungszyklus erklären.",
-            "descriptionEn": "The learner can explain the Von Neumann architecture and the machine instruction cycle.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0004"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "dc88ee67-2bff-5a7b-89ec-e7dfc240869a",
-            "shortKey": "tum_in0004_hardware_software_interface",
-            "title": "Hardware-Software-Schnittstelle",
-            "titleEn": "Hardware-software interface",
-            "description": "Die lernende Person kann beschreiben, wie Software mit Hardware-Abstraktionen interagiert.",
-            "descriptionEn": "The learner can describe how software interacts with hardware abstractions.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0004"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "d6da1d4c-8dad-5b86-a29e-95f224769145",
-            "shortKey": "tum_in0004_instruction_set_architecture_and_assembly",
-            "title": "Befehlssatzarchitektur und -assemblierung",
-            "titleEn": "Instruction set architecture and assembly",
-            "description": "Die lernende Person kann mit ISA-Konzepten und einfacher Assemblerprogrammierung arbeiten.",
-            "descriptionEn": "The learner can work with ISA concepts and simple assembly programming.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0004"
-            ],
-            "contains": [
-                "df9722a4-f91e-599e-8079-7cb624d44fcf",
-                "03b62893-db70-5c25-b89d-56c49825fd1f"
-            ],
-            "requires": [
-                "d69709ec-09a3-5f91-8c49-b76d027a5d2a"
-            ]
-        },
-        {
-            "id": "df9722a4-f91e-599e-8079-7cb624d44fcf",
-            "shortKey": "tum_in0004_isa_concepts_and_instructions",
-            "title": "ISA-Konzepte und Anweisungen",
-            "titleEn": "ISA concepts and instructions",
-            "description": "Die lernende Person kann Unterrichtsformate und Ausführungsverhalten beschreiben.",
-            "descriptionEn": "The learner can describe instruction formats and execution behavior.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0004"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "03b62893-db70-5c25-b89d-56c49825fd1f",
-            "shortKey": "tum_in0004_assembly_programming_and_calling_conventions",
-            "title": "Assembly-Programmierung und Aufrufkonventionen",
-            "titleEn": "Assembly programming and calling conventions",
-            "description": "Die lernende Person kann einfachen Assemblercode schreiben und Aufrufkonventionen anwenden.",
-            "descriptionEn": "The learner can write simple assembly code and apply calling conventions.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0004"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "cd4741ca-e1ea-5e99-b048-70204c68f6ee",
-            "shortKey": "tum_in0004_microprogramming_and_control",
-            "title": "Mikroprogrammierung und Steuerung",
-            "titleEn": "Microprogramming and control",
-            "description": "Die lernende Person kann erklären, wie Anweisungen in Steuergeräten umgesetzt werden.",
-            "descriptionEn": "The learner can explain how instructions are implemented in control units.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0004"
-            ],
-            "contains": [
-                "c9cc29fe-0729-50ad-b1cb-273a36022b01",
-                "580b1b83-7b96-5881-bbc0-cf942c5191bc"
-            ],
-            "requires": [
-                "d6da1d4c-8dad-5b86-a29e-95f224769145"
-            ]
-        },
-        {
-            "id": "c9cc29fe-0729-50ad-b1cb-273a36022b01",
-            "shortKey": "tum_in0004_microprogrammed_control",
-            "title": "Mikroprogrammierte Steuerung",
-            "titleEn": "Microprogrammed control",
-            "description": "Die lernende Person kann Mikroprogrammierungsprinzipien für die Befehlsausführung skizzieren.",
-            "descriptionEn": "The learner can outline microprogramming principles for instruction execution.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0004"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "580b1b83-7b96-5881-bbc0-cf942c5191bc",
-            "shortKey": "tum_in0004_instruction_implementation",
-            "title": "Umsetzung der Anweisung",
-            "titleEn": "Instruction implementation",
-            "description": "Die lernende Person kann nachvollziehen, wie Maschinenanweisungen auf der Mikroebene umgesetzt werden.",
-            "descriptionEn": "The learner can trace how machine instructions are realized at the micro level.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0004"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "960ef64a-6702-5d95-a5cb-28acddb57f0c",
-            "shortKey": "tum_in0004_digital_logic_and_hardware_design",
-            "title": "Digitale Logik und Hardwaredesign",
-            "titleEn": "Digital logic and hardware design",
-            "description": "Die lernende Person kann kombinatorische und sequentielle Schaltkreise modellieren.",
-            "descriptionEn": "The learner can model combinational and sequential circuits.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0004"
-            ],
-            "contains": [
-                "83e3a3df-49b7-5302-a23f-16dd5cb53fdb",
-                "a872f2ed-2e17-53c9-b94a-6906bb64ce45"
-            ],
-            "requires": []
-        },
-        {
-            "id": "83e3a3df-49b7-5302-a23f-16dd5cb53fdb",
-            "shortKey": "tum_in0004_combinational_and_sequential_circuits",
-            "title": "Kombinations- und Folgeschaltungen",
-            "titleEn": "Combinational and sequential circuits",
-            "description": "Die lernende Person kann Grundschaltungen und Zustandselemente analysieren.",
-            "descriptionEn": "The learner can analyze basic circuits and state elements.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0004"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "a872f2ed-2e17-53c9-b94a-6906bb64ce45",
-            "shortKey": "tum_in0004_vhdl_based_design",
-            "title": "VHDL-basiertes Design",
-            "titleEn": "VHDL-based design",
-            "description": "Die lernende Person kann das Hardwareverhalten mithilfe einer formalen Sprache wie VHDL beschreiben.",
-            "descriptionEn": "The learner can describe hardware behavior using a formal language such as VHDL.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0004"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "4a0cdc38-a34f-5ea1-bc3b-bed041dee925",
-            "shortKey": "tum_in0004_processor_and_system_architectures",
-            "title": "Prozessor- und Systemarchitekturen",
-            "titleEn": "Processor and system architectures",
-            "description": "Die lernende Person kann Prozessoren und Systemarchitekturen klassifizieren.",
-            "descriptionEn": "The learner can classify processors and system architectures.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0004"
-            ],
-            "contains": [
-                "c8f6b3d3-a98e-5b76-b7b8-81d96d7672a8",
-                "3a9b9c66-36d6-59be-9f3d-5571bf2834c4"
-            ],
-            "requires": [
-                "d69709ec-09a3-5f91-8c49-b76d027a5d2a"
-            ]
-        },
-        {
-            "id": "c8f6b3d3-a98e-5b76-b7b8-81d96d7672a8",
-            "shortKey": "tum_in0004_microprocessor_and_system_architectures",
-            "title": "Mikroprozessor- und Systemarchitekturen",
-            "titleEn": "Microprocessor and system architectures",
-            "description": "Die lernende Person kann Mikroprozessor- und Systemarchitekturkonzepte vergleichen.",
-            "descriptionEn": "The learner can compare microprocessor and system architecture concepts.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0004"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "3a9b9c66-36d6-59be-9f3d-5571bf2834c4",
-            "shortKey": "tum_in0004_memory_i_o_and_parallel_systems",
-            "title": "Speicher, E/A und parallele Systeme",
-            "titleEn": "Memory, I/O, and parallel systems",
-            "description": "Die lernende Person kann Speichersysteme, I/O sowie parallele oder verteilte Systeme auf hohem Niveau erklären.",
-            "descriptionEn": "The learner can explain memory systems, I/O, and parallel or distributed systems at a high level.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0004"
-            ],
-            "contains": [],
-            "requires": []
-        }
-    ]
+  "title": "Einführung in die Rechnerarchitektur (TUM, Modul IN0004)",
+  "titleEn": "Introduction to Computer Organization and Technology - Computer Architecture (TUM, Module IN0004)",
+  "description": "Die lernende Person kann die Organisation von Computersystemen und grundlegende Hardware-Software-Interaktionen erklären.",
+  "descriptionEn": "The learner can explain computer system organization and basic hardware-software interactions.",
+  "locale": "de-DE",
+  "subject": "TUM-Module",
+  "frameworkId": "tum-in0004",
+  "goals": [
+    {
+      "id": "64fecb41-a7f0-54d8-9fce-e839f894ec7e",
+      "title": "Einführung in die Rechnerarchitektur (IN0004)",
+      "titleEn": "Introduction to Computer Organization and Technology - Computer Architecture (IN0004)",
+      "description": "Die lernende Person kann die Organisation von Computersystemen und grundlegende Hardware-Software-Interaktionen erklären.",
+      "descriptionEn": "The learner can explain computer system organization and basic hardware-software interactions.",
+      "weight": 8.0,
+      "tags": [
+        "module:IN0004",
+        "ects:8"
+      ],
+      "contains": [
+        "d69709ec-09a3-5f91-8c49-b76d027a5d2a",
+        "d6da1d4c-8dad-5b86-a29e-95f224769145",
+        "cd4741ca-e1ea-5e99-b048-70204c68f6ee",
+        "960ef64a-6702-5d95-a5cb-28acddb57f0c",
+        "4a0cdc38-a34f-5ea1-bc3b-bed041dee925"
+      ],
+      "requires": [],
+      "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0004",
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d69709ec-09a3-5f91-8c49-b76d027a5d2a",
+      "title": "Organisation von Computersystemen",
+      "titleEn": "Computer system organization",
+      "description": "Die lernende Person kann die geschichtete Systemstruktur und den Unterrichtszyklus beschreiben.",
+      "descriptionEn": "The learner can describe layered system structure and the instruction cycle.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0004"
+      ],
+      "contains": [
+        "a5020e38-4ef4-5837-bc79-5e688e23bf64",
+        "dc88ee67-2bff-5a7b-89ec-e7dfc240869a"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a5020e38-4ef4-5837-bc79-5e688e23bf64",
+      "title": "Von Neumann-Modell und Lehrzyklus",
+      "titleEn": "Von Neumann model and instruction cycle",
+      "description": "Die lernende Person kann die Von-Neumann-Architektur und den Maschinenanweisungszyklus erklären.",
+      "descriptionEn": "The learner can explain the Von Neumann architecture and the machine instruction cycle.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0004"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "dc88ee67-2bff-5a7b-89ec-e7dfc240869a",
+      "title": "Hardware-Software-Schnittstelle",
+      "titleEn": "Hardware-software interface",
+      "description": "Die lernende Person kann beschreiben, wie Software mit Hardware-Abstraktionen interagiert.",
+      "descriptionEn": "The learner can describe how software interacts with hardware abstractions.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0004"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d6da1d4c-8dad-5b86-a29e-95f224769145",
+      "title": "Befehlssatzarchitektur und -assemblierung",
+      "titleEn": "Instruction set architecture and assembly",
+      "description": "Die lernende Person kann mit ISA-Konzepten und einfacher Assemblerprogrammierung arbeiten.",
+      "descriptionEn": "The learner can work with ISA concepts and simple assembly programming.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0004"
+      ],
+      "contains": [
+        "df9722a4-f91e-599e-8079-7cb624d44fcf",
+        "03b62893-db70-5c25-b89d-56c49825fd1f"
+      ],
+      "requires": [
+        "d69709ec-09a3-5f91-8c49-b76d027a5d2a"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "df9722a4-f91e-599e-8079-7cb624d44fcf",
+      "title": "ISA-Konzepte und Anweisungen",
+      "titleEn": "ISA concepts and instructions",
+      "description": "Die lernende Person kann Unterrichtsformate und Ausführungsverhalten beschreiben.",
+      "descriptionEn": "The learner can describe instruction formats and execution behavior.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0004"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "03b62893-db70-5c25-b89d-56c49825fd1f",
+      "title": "Assembly-Programmierung und Aufrufkonventionen",
+      "titleEn": "Assembly programming and calling conventions",
+      "description": "Die lernende Person kann einfachen Assemblercode schreiben und Aufrufkonventionen anwenden.",
+      "descriptionEn": "The learner can write simple assembly code and apply calling conventions.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0004"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "cd4741ca-e1ea-5e99-b048-70204c68f6ee",
+      "title": "Mikroprogrammierung und Steuerung",
+      "titleEn": "Microprogramming and control",
+      "description": "Die lernende Person kann erklären, wie Anweisungen in Steuergeräten umgesetzt werden.",
+      "descriptionEn": "The learner can explain how instructions are implemented in control units.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0004"
+      ],
+      "contains": [
+        "c9cc29fe-0729-50ad-b1cb-273a36022b01",
+        "580b1b83-7b96-5881-bbc0-cf942c5191bc"
+      ],
+      "requires": [
+        "d6da1d4c-8dad-5b86-a29e-95f224769145"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "c9cc29fe-0729-50ad-b1cb-273a36022b01",
+      "title": "Mikroprogrammierte Steuerung",
+      "titleEn": "Microprogrammed control",
+      "description": "Die lernende Person kann Mikroprogrammierungsprinzipien für die Befehlsausführung skizzieren.",
+      "descriptionEn": "The learner can outline microprogramming principles for instruction execution.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0004"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "580b1b83-7b96-5881-bbc0-cf942c5191bc",
+      "title": "Umsetzung der Anweisung",
+      "titleEn": "Instruction implementation",
+      "description": "Die lernende Person kann nachvollziehen, wie Maschinenanweisungen auf der Mikroebene umgesetzt werden.",
+      "descriptionEn": "The learner can trace how machine instructions are realized at the micro level.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0004"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "960ef64a-6702-5d95-a5cb-28acddb57f0c",
+      "title": "Digitale Logik und Hardwaredesign",
+      "titleEn": "Digital logic and hardware design",
+      "description": "Die lernende Person kann kombinatorische und sequentielle Schaltkreise modellieren.",
+      "descriptionEn": "The learner can model combinational and sequential circuits.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0004"
+      ],
+      "contains": [
+        "83e3a3df-49b7-5302-a23f-16dd5cb53fdb",
+        "a872f2ed-2e17-53c9-b94a-6906bb64ce45"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "83e3a3df-49b7-5302-a23f-16dd5cb53fdb",
+      "title": "Kombinations- und Folgeschaltungen",
+      "titleEn": "Combinational and sequential circuits",
+      "description": "Die lernende Person kann Grundschaltungen und Zustandselemente analysieren.",
+      "descriptionEn": "The learner can analyze basic circuits and state elements.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0004"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a872f2ed-2e17-53c9-b94a-6906bb64ce45",
+      "title": "VHDL-basiertes Design",
+      "titleEn": "VHDL-based design",
+      "description": "Die lernende Person kann das Hardwareverhalten mithilfe einer formalen Sprache wie VHDL beschreiben.",
+      "descriptionEn": "The learner can describe hardware behavior using a formal language such as VHDL.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0004"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4a0cdc38-a34f-5ea1-bc3b-bed041dee925",
+      "title": "Prozessor- und Systemarchitekturen",
+      "titleEn": "Processor and system architectures",
+      "description": "Die lernende Person kann Prozessoren und Systemarchitekturen klassifizieren.",
+      "descriptionEn": "The learner can classify processors and system architectures.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0004"
+      ],
+      "contains": [
+        "c8f6b3d3-a98e-5b76-b7b8-81d96d7672a8",
+        "3a9b9c66-36d6-59be-9f3d-5571bf2834c4"
+      ],
+      "requires": [
+        "d69709ec-09a3-5f91-8c49-b76d027a5d2a"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "c8f6b3d3-a98e-5b76-b7b8-81d96d7672a8",
+      "title": "Mikroprozessor- und Systemarchitekturen",
+      "titleEn": "Microprocessor and system architectures",
+      "description": "Die lernende Person kann Mikroprozessor- und Systemarchitekturkonzepte vergleichen.",
+      "descriptionEn": "The learner can compare microprocessor and system architecture concepts.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0004"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "3a9b9c66-36d6-59be-9f3d-5571bf2834c4",
+      "title": "Speicher, E/A und parallele Systeme",
+      "titleEn": "Memory, I/O, and parallel systems",
+      "description": "Die lernende Person kann Speichersysteme, I/O sowie parallele oder verteilte Systeme auf hohem Niveau erklären.",
+      "descriptionEn": "The learner can explain memory systems, I/O, and parallel or distributed systems at a high level.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0004"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    }
+  ],
+  "landscapeId": "ad5f3d97-de86-53fd-a041-4507136e95b9"
 }

@@ -1,408 +1,388 @@
 {
-    "title": "Grundlagen: Datenbanken (TUM, Modul IN0008)",
-    "titleEn": "Fundamentals of Databases (TUM, Module IN0008)",
-    "description": "Die lernende Person kann relationale Datenbanksysteme entwerfen, abfragen und bedienen.",
-    "descriptionEn": "The learner can design, query, and operate relational database systems.",
-    "locale": "de-DE",
-    "subject": "TUM-Module",
-    "frameworkId": "tum-in0008",
-    "goals": [
-        {
-            "id": "e7c8d839-5c11-5d5d-a9fc-e2abab7a0488",
-            "shortKey": "tum_in0008_module",
-            "title": "Grundlagen: Datenbanken (IN0008)",
-            "titleEn": "Fundamentals of Databases (IN0008)",
-            "description": "Die lernende Person kann relationale Datenbanksysteme entwerfen, abfragen und bedienen.",
-            "descriptionEn": "The learner can design, query, and operate relational database systems.",
-            "core": true,
-            "weight": 6.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:IN0008",
-                "ects:6"
-            ],
-            "contains": [
-                "54c5b7d3-a048-5328-84e7-b202309e88dc",
-                "f34c4d7f-444b-5144-98b4-ae9171f50dff",
-                "199aab23-0da8-5aa5-a5d0-af849727a58f",
-                "99eff445-cfa7-517b-ad6c-42b77b0bff34",
-                "093a1706-eeab-5cba-843c-485faa7b2cab",
-                "36735c67-db6c-54a2-9f0c-af41ad15bc8f",
-                "0f59d756-e6da-5483-ba25-0f53a0f4a08f"
-            ],
-            "requires": [],
-            "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0008"
-        },
-        {
-            "id": "54c5b7d3-a048-5328-84e7-b202309e88dc",
-            "shortKey": "tum_in0008_relational_model_and_sql",
-            "title": "Relationales Modell und SQL",
-            "titleEn": "Relational model and SQL",
-            "description": "Die lernende Person kann mit relationalen Datenmodellen und SQL arbeiten.",
-            "descriptionEn": "The learner can work with relational data models and SQL.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [
-                "a1487780-8d16-5ac8-b9dd-0820c48763fe",
-                "211b31e7-adfc-5ce3-906c-fe603194c60e"
-            ],
-            "requires": []
-        },
-        {
-            "id": "a1487780-8d16-5ac8-b9dd-0820c48763fe",
-            "shortKey": "tum_in0008_relational_concepts_and_integrity",
-            "title": "Relationale Konzepte und Integrität",
-            "titleEn": "Relational concepts and integrity",
-            "description": "Die lernende Person kann Beziehungen, Schlüssel und Integritätsbeschränkungen erklären.",
-            "descriptionEn": "The learner can explain relations, keys, and integrity constraints.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "211b31e7-adfc-5ce3-906c-fe603194c60e",
-            "shortKey": "tum_in0008_sql_querying",
-            "title": "SQL-Abfrage",
-            "titleEn": "SQL querying",
-            "description": "Die lernende Person kann SQL-Abfragen schreiben, einschließlich Verknüpfungen und Aggregationen.",
-            "descriptionEn": "The learner can write SQL queries, including joins and aggregations.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "f34c4d7f-444b-5144-98b4-ae9171f50dff",
-            "shortKey": "tum_in0008_database_design",
-            "title": "Datenbankdesign",
-            "titleEn": "Database design",
-            "description": "Die lernende Person kann Datenbanken von konzeptionellen bis hin zu physischen Schemata entwerfen.",
-            "descriptionEn": "The learner can design databases from conceptual to physical schemas.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [
-                "4804e401-3967-52f2-8f1d-27d53d3179d3",
-                "76fbd5f3-9d07-5cf2-917c-d302f1fbcc92"
-            ],
-            "requires": [
-                "54c5b7d3-a048-5328-84e7-b202309e88dc"
-            ]
-        },
-        {
-            "id": "4804e401-3967-52f2-8f1d-27d53d3179d3",
-            "shortKey": "tum_in0008_conceptual_and_logical_design",
-            "title": "Konzeptionelles und logisches Design",
-            "titleEn": "Conceptual and logical design",
-            "description": "Die lernende Person kann Schematwürfe aus konzeptionellen Modellen erstellen.",
-            "descriptionEn": "The learner can create schema designs from conceptual models.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "76fbd5f3-9d07-5cf2-917c-d302f1fbcc92",
-            "shortKey": "tum_in0008_normalization_and_design_theory",
-            "title": "Normalisierung und Designtheorie",
-            "titleEn": "Normalization and design theory",
-            "description": "Die lernende Person kann die relationale Designtheorie und Normalisierung anwenden.",
-            "descriptionEn": "The learner can apply relational design theory and normalization.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "199aab23-0da8-5aa5-a5d0-af849727a58f",
-            "shortKey": "tum_in0008_physical_storage_and_indexing",
-            "title": "Physische Speicherung und Indizierung",
-            "titleEn": "Physical storage and indexing",
-            "description": "Die lernende Person kann die Organisation und Indizes physischer Daten erklären.",
-            "descriptionEn": "The learner can explain physical data organization and indexes.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [
-                "94943a39-f728-59f8-b8ac-c36a3e966d1c",
-                "e615508d-8537-50f8-990f-815bf57ecb8f"
-            ],
-            "requires": [
-                "f34c4d7f-444b-5144-98b4-ae9171f50dff"
-            ]
-        },
-        {
-            "id": "94943a39-f728-59f8-b8ac-c36a3e966d1c",
-            "shortKey": "tum_in0008_storage_organization",
-            "title": "Lagerorganisation",
-            "titleEn": "Storage organization",
-            "description": "Die lernende Person kann Speicherlayouts und Zugriffsmethoden beschreiben.",
-            "descriptionEn": "The learner can describe storage layouts and access methods.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "e615508d-8537-50f8-990f-815bf57ecb8f",
-            "shortKey": "tum_in0008_index_structures",
-            "title": "Indexstrukturen",
-            "titleEn": "Index structures",
-            "description": "Die lernende Person kann Indexstrukturen und ihre Anwendungsfälle erklären.",
-            "descriptionEn": "The learner can explain index structures and their use cases.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "99eff445-cfa7-517b-ad6c-42b77b0bff34",
-            "shortKey": "tum_in0008_query_processing_and_optimization",
-            "title": "Abfrageverarbeitung und -optimierung",
-            "titleEn": "Query processing and optimization",
-            "description": "Die lernende Person kann die Ausführung und Optimierung von Abfragen verstehen.",
-            "descriptionEn": "The learner can understand query execution and optimization.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [
-                "6c0af7a9-26eb-5228-9e5c-05dae4212c4d",
-                "d4dd6ddb-61de-5314-aa92-7e4d0f711d26"
-            ],
-            "requires": [
-                "54c5b7d3-a048-5328-84e7-b202309e88dc"
-            ]
-        },
-        {
-            "id": "6c0af7a9-26eb-5228-9e5c-05dae4212c4d",
-            "shortKey": "tum_in0008_relational_algebra_and_query_plans",
-            "title": "Relationale Algebra und Abfragepläne",
-            "titleEn": "Relational algebra and query plans",
-            "description": "Die lernende Person kann Abfragen in relationale Algebra und Ausführungspläne übersetzen.",
-            "descriptionEn": "The learner can translate queries into relational algebra and execution plans.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "d4dd6ddb-61de-5314-aa92-7e4d0f711d26",
-            "shortKey": "tum_in0008_logical_and_physical_optimization",
-            "title": "Logische und physikalische Optimierung",
-            "titleEn": "Logical and physical optimization",
-            "description": "Die lernende Person kann grundlegende Optimierungstechniken für Abfragen erklären.",
-            "descriptionEn": "The learner can explain basic optimization techniques for queries.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "093a1706-eeab-5cba-843c-485faa7b2cab",
-            "shortKey": "tum_in0008_transactions_and_recovery",
-            "title": "Transaktionen und Wiederherstellung",
-            "titleEn": "Transactions and recovery",
-            "description": "Die lernende Person kann die Korrektheit in Mehrbenutzerumgebungen sicherstellen.",
-            "descriptionEn": "The learner can ensure correctness in multi-user environments.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [
-                "29d9f891-c10d-57db-a7e9-8e5cd0c3b920",
-                "9512820b-99ed-595e-bcb9-8a879ee445a1"
-            ],
-            "requires": [
-                "54c5b7d3-a048-5328-84e7-b202309e88dc"
-            ]
-        },
-        {
-            "id": "29d9f891-c10d-57db-a7e9-8e5cd0c3b920",
-            "shortKey": "tum_in0008_transaction_management_and_concurrency_control",
-            "title": "Transaktionsmanagement und Parallelitätskontrolle",
-            "titleEn": "Transaction management and concurrency control",
-            "description": "Die lernende Person kann Transaktionen, Isolation und Parallelitätskontrolle erklären.",
-            "descriptionEn": "The learner can explain transactions, isolation, and concurrency control.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "9512820b-99ed-595e-bcb9-8a879ee445a1",
-            "shortKey": "tum_in0008_recovery_and_backup",
-            "title": "Wiederherstellung und Backup",
-            "titleEn": "Recovery and backup",
-            "description": "Die lernende Person kann Wiederherstellung, Backup und Fehlerbehandlung erklären.",
-            "descriptionEn": "The learner can explain recovery, backup, and fault handling.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "36735c67-db6c-54a2-9f0c-af41ad15bc8f",
-            "shortKey": "tum_in0008_security_and_authorization",
-            "title": "Sicherheit und Autorisierung",
-            "titleEn": "Security and authorization",
-            "description": "Die lernende Person kann Sicherheitskontrollen in Datenbanksystemen anwenden.",
-            "descriptionEn": "The learner can apply security controls in database systems.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [
-                "26047308-5d99-5c5c-8cdc-4c2861b11b26",
-                "661bbf5e-6a45-5464-8112-6288125f6fa8"
-            ],
-            "requires": [
-                "54c5b7d3-a048-5328-84e7-b202309e88dc"
-            ]
-        },
-        {
-            "id": "26047308-5d99-5c5c-8cdc-4c2861b11b26",
-            "shortKey": "tum_in0008_authorization_mechanisms",
-            "title": "Autorisierungsmechanismen",
-            "titleEn": "Authorization mechanisms",
-            "description": "Die lernende Person kann Autorisierung und Zugriffskontrolle in Datenbanken anwenden.",
-            "descriptionEn": "The learner can apply authorization and access control in databases.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "661bbf5e-6a45-5464-8112-6288125f6fa8",
-            "shortKey": "tum_in0008_secure_multi_user_operation",
-            "title": "Sicherer Mehrbenutzerbetrieb",
-            "titleEn": "Secure multi-user operation",
-            "description": "Die lernende Person kann den sicheren Betrieb in Mehrbenutzerumgebungen erläutern.",
-            "descriptionEn": "The learner can explain secure operation in multi-user settings.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "0f59d756-e6da-5483-ba25-0f53a0f4a08f",
-            "shortKey": "tum_in0008_xml_data_modeling",
-            "title": "XML-Datenmodellierung",
-            "titleEn": "XML data modeling",
-            "description": "Die lernende Person kann Daten über das relationale Modell hinaus modellieren.",
-            "descriptionEn": "The learner can model data beyond the relational model.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [
-                "f5833b65-9a5a-5174-baea-10c6f3de21f4"
-            ],
-            "requires": []
-        },
-        {
-            "id": "f5833b65-9a5a-5174-baea-10c6f3de21f4",
-            "shortKey": "tum_in0008_xml_modeling_basics",
-            "title": "Grundlagen der XML-Modellierung",
-            "titleEn": "XML modeling basics",
-            "description": "Die lernende Person kann grundlegende XML-Datenmodellierungskonzepte beschreiben.",
-            "descriptionEn": "The learner can describe basic XML data modeling concepts.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0008"
-            ],
-            "contains": [],
-            "requires": []
-        }
-    ]
+  "title": "Grundlagen: Datenbanken (TUM, Modul IN0008)",
+  "titleEn": "Fundamentals of Databases (TUM, Module IN0008)",
+  "description": "Die lernende Person kann relationale Datenbanksysteme entwerfen, abfragen und bedienen.",
+  "descriptionEn": "The learner can design, query, and operate relational database systems.",
+  "locale": "de-DE",
+  "subject": "TUM-Module",
+  "frameworkId": "tum-in0008",
+  "goals": [
+    {
+      "id": "e7c8d839-5c11-5d5d-a9fc-e2abab7a0488",
+      "title": "Grundlagen: Datenbanken (IN0008)",
+      "titleEn": "Fundamentals of Databases (IN0008)",
+      "description": "Die lernende Person kann relationale Datenbanksysteme entwerfen, abfragen und bedienen.",
+      "descriptionEn": "The learner can design, query, and operate relational database systems.",
+      "weight": 6.0,
+      "tags": [
+        "module:IN0008",
+        "ects:6"
+      ],
+      "contains": [
+        "54c5b7d3-a048-5328-84e7-b202309e88dc",
+        "f34c4d7f-444b-5144-98b4-ae9171f50dff",
+        "199aab23-0da8-5aa5-a5d0-af849727a58f",
+        "99eff445-cfa7-517b-ad6c-42b77b0bff34",
+        "093a1706-eeab-5cba-843c-485faa7b2cab",
+        "36735c67-db6c-54a2-9f0c-af41ad15bc8f",
+        "0f59d756-e6da-5483-ba25-0f53a0f4a08f"
+      ],
+      "requires": [],
+      "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0008",
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "54c5b7d3-a048-5328-84e7-b202309e88dc",
+      "title": "Relationales Modell und SQL",
+      "titleEn": "Relational model and SQL",
+      "description": "Die lernende Person kann mit relationalen Datenmodellen und SQL arbeiten.",
+      "descriptionEn": "The learner can work with relational data models and SQL.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [
+        "a1487780-8d16-5ac8-b9dd-0820c48763fe",
+        "211b31e7-adfc-5ce3-906c-fe603194c60e"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a1487780-8d16-5ac8-b9dd-0820c48763fe",
+      "title": "Relationale Konzepte und Integrität",
+      "titleEn": "Relational concepts and integrity",
+      "description": "Die lernende Person kann Beziehungen, Schlüssel und Integritätsbeschränkungen erklären.",
+      "descriptionEn": "The learner can explain relations, keys, and integrity constraints.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "211b31e7-adfc-5ce3-906c-fe603194c60e",
+      "title": "SQL-Abfrage",
+      "titleEn": "SQL querying",
+      "description": "Die lernende Person kann SQL-Abfragen schreiben, einschließlich Verknüpfungen und Aggregationen.",
+      "descriptionEn": "The learner can write SQL queries, including joins and aggregations.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f34c4d7f-444b-5144-98b4-ae9171f50dff",
+      "title": "Datenbankdesign",
+      "titleEn": "Database design",
+      "description": "Die lernende Person kann Datenbanken von konzeptionellen bis hin zu physischen Schemata entwerfen.",
+      "descriptionEn": "The learner can design databases from conceptual to physical schemas.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [
+        "4804e401-3967-52f2-8f1d-27d53d3179d3",
+        "76fbd5f3-9d07-5cf2-917c-d302f1fbcc92"
+      ],
+      "requires": [
+        "54c5b7d3-a048-5328-84e7-b202309e88dc"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4804e401-3967-52f2-8f1d-27d53d3179d3",
+      "title": "Konzeptionelles und logisches Design",
+      "titleEn": "Conceptual and logical design",
+      "description": "Die lernende Person kann Schematwürfe aus konzeptionellen Modellen erstellen.",
+      "descriptionEn": "The learner can create schema designs from conceptual models.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "76fbd5f3-9d07-5cf2-917c-d302f1fbcc92",
+      "title": "Normalisierung und Designtheorie",
+      "titleEn": "Normalization and design theory",
+      "description": "Die lernende Person kann die relationale Designtheorie und Normalisierung anwenden.",
+      "descriptionEn": "The learner can apply relational design theory and normalization.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "199aab23-0da8-5aa5-a5d0-af849727a58f",
+      "title": "Physische Speicherung und Indizierung",
+      "titleEn": "Physical storage and indexing",
+      "description": "Die lernende Person kann die Organisation und Indizes physischer Daten erklären.",
+      "descriptionEn": "The learner can explain physical data organization and indexes.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [
+        "94943a39-f728-59f8-b8ac-c36a3e966d1c",
+        "e615508d-8537-50f8-990f-815bf57ecb8f"
+      ],
+      "requires": [
+        "f34c4d7f-444b-5144-98b4-ae9171f50dff"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "94943a39-f728-59f8-b8ac-c36a3e966d1c",
+      "title": "Lagerorganisation",
+      "titleEn": "Storage organization",
+      "description": "Die lernende Person kann Speicherlayouts und Zugriffsmethoden beschreiben.",
+      "descriptionEn": "The learner can describe storage layouts and access methods.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e615508d-8537-50f8-990f-815bf57ecb8f",
+      "title": "Indexstrukturen",
+      "titleEn": "Index structures",
+      "description": "Die lernende Person kann Indexstrukturen und ihre Anwendungsfälle erklären.",
+      "descriptionEn": "The learner can explain index structures and their use cases.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "99eff445-cfa7-517b-ad6c-42b77b0bff34",
+      "title": "Abfrageverarbeitung und -optimierung",
+      "titleEn": "Query processing and optimization",
+      "description": "Die lernende Person kann die Ausführung und Optimierung von Abfragen verstehen.",
+      "descriptionEn": "The learner can understand query execution and optimization.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [
+        "6c0af7a9-26eb-5228-9e5c-05dae4212c4d",
+        "d4dd6ddb-61de-5314-aa92-7e4d0f711d26"
+      ],
+      "requires": [
+        "54c5b7d3-a048-5328-84e7-b202309e88dc"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6c0af7a9-26eb-5228-9e5c-05dae4212c4d",
+      "title": "Relationale Algebra und Abfragepläne",
+      "titleEn": "Relational algebra and query plans",
+      "description": "Die lernende Person kann Abfragen in relationale Algebra und Ausführungspläne übersetzen.",
+      "descriptionEn": "The learner can translate queries into relational algebra and execution plans.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d4dd6ddb-61de-5314-aa92-7e4d0f711d26",
+      "title": "Logische und physikalische Optimierung",
+      "titleEn": "Logical and physical optimization",
+      "description": "Die lernende Person kann grundlegende Optimierungstechniken für Abfragen erklären.",
+      "descriptionEn": "The learner can explain basic optimization techniques for queries.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "093a1706-eeab-5cba-843c-485faa7b2cab",
+      "title": "Transaktionen und Wiederherstellung",
+      "titleEn": "Transactions and recovery",
+      "description": "Die lernende Person kann die Korrektheit in Mehrbenutzerumgebungen sicherstellen.",
+      "descriptionEn": "The learner can ensure correctness in multi-user environments.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [
+        "29d9f891-c10d-57db-a7e9-8e5cd0c3b920",
+        "9512820b-99ed-595e-bcb9-8a879ee445a1"
+      ],
+      "requires": [
+        "54c5b7d3-a048-5328-84e7-b202309e88dc"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "29d9f891-c10d-57db-a7e9-8e5cd0c3b920",
+      "title": "Transaktionsmanagement und Parallelitätskontrolle",
+      "titleEn": "Transaction management and concurrency control",
+      "description": "Die lernende Person kann Transaktionen, Isolation und Parallelitätskontrolle erklären.",
+      "descriptionEn": "The learner can explain transactions, isolation, and concurrency control.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9512820b-99ed-595e-bcb9-8a879ee445a1",
+      "title": "Wiederherstellung und Backup",
+      "titleEn": "Recovery and backup",
+      "description": "Die lernende Person kann Wiederherstellung, Backup und Fehlerbehandlung erklären.",
+      "descriptionEn": "The learner can explain recovery, backup, and fault handling.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "36735c67-db6c-54a2-9f0c-af41ad15bc8f",
+      "title": "Sicherheit und Autorisierung",
+      "titleEn": "Security and authorization",
+      "description": "Die lernende Person kann Sicherheitskontrollen in Datenbanksystemen anwenden.",
+      "descriptionEn": "The learner can apply security controls in database systems.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [
+        "26047308-5d99-5c5c-8cdc-4c2861b11b26",
+        "661bbf5e-6a45-5464-8112-6288125f6fa8"
+      ],
+      "requires": [
+        "54c5b7d3-a048-5328-84e7-b202309e88dc"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "26047308-5d99-5c5c-8cdc-4c2861b11b26",
+      "title": "Autorisierungsmechanismen",
+      "titleEn": "Authorization mechanisms",
+      "description": "Die lernende Person kann Autorisierung und Zugriffskontrolle in Datenbanken anwenden.",
+      "descriptionEn": "The learner can apply authorization and access control in databases.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "661bbf5e-6a45-5464-8112-6288125f6fa8",
+      "title": "Sicherer Mehrbenutzerbetrieb",
+      "titleEn": "Secure multi-user operation",
+      "description": "Die lernende Person kann den sicheren Betrieb in Mehrbenutzerumgebungen erläutern.",
+      "descriptionEn": "The learner can explain secure operation in multi-user settings.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0f59d756-e6da-5483-ba25-0f53a0f4a08f",
+      "title": "XML-Datenmodellierung",
+      "titleEn": "XML data modeling",
+      "description": "Die lernende Person kann Daten über das relationale Modell hinaus modellieren.",
+      "descriptionEn": "The learner can model data beyond the relational model.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [
+        "f5833b65-9a5a-5174-baea-10c6f3de21f4"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f5833b65-9a5a-5174-baea-10c6f3de21f4",
+      "title": "Grundlagen der XML-Modellierung",
+      "titleEn": "XML modeling basics",
+      "description": "Die lernende Person kann grundlegende XML-Datenmodellierungskonzepte beschreiben.",
+      "descriptionEn": "The learner can describe basic XML data modeling concepts.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0008"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    }
+  ],
+  "landscapeId": "88a38646-20b8-5d6e-975f-d69198a5b0df"
 }

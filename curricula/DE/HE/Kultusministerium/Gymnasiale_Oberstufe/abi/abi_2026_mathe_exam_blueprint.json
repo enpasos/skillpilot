@@ -6,7 +6,6 @@
     "KMK-Standards Mathematik",
     "Hessen Landesabitur 2026 Hinweise (Kap. 19.x)"
   ],
-
   "levels": {
     "GK": {
       "label": "grundlegendes Niveau (Grundkurs)",
@@ -24,25 +23,42 @@
       ]
     }
   },
-
   "domains": [
     {
       "id": "analysis",
       "label": "Analysis",
-      "curriculumTopicCodes": ["Q1", "Q1.1", "Q1.2", "Q1.3", "Q1.4"]
+      "curriculumTopicCodes": [
+        "Q1",
+        "Q1.1",
+        "Q1.2",
+        "Q1.3",
+        "Q1.4"
+      ]
     },
     {
       "id": "linalg_geo",
       "label": "Lineare Algebra / Analytische Geometrie",
-      "curriculumTopicCodes": ["Q2", "Q2.1", "Q2.2", "Q2.3", "Q2.4", "Q2.6"]
+      "curriculumTopicCodes": [
+        "Q2",
+        "Q2.1",
+        "Q2.2",
+        "Q2.3",
+        "Q2.4",
+        "Q2.6"
+      ]
     },
     {
       "id": "stoch",
       "label": "Stochastik",
-      "curriculumTopicCodes": ["Q3", "Q3.1", "Q3.2", "Q3.3", "Q3.4"]
+      "curriculumTopicCodes": [
+        "Q3",
+        "Q3.1",
+        "Q3.2",
+        "Q3.3",
+        "Q3.4"
+      ]
     }
   ],
-
   "calculatorModes": [
     {
       "id": "WTR",
@@ -67,7 +83,6 @@
       ]
     }
   ],
-
   "documentationRules": {
     "general": [
       "Wenn Teillösungen vom Rechner übernommen werden: schriftliche Erläuterungen erforderlich.",
@@ -75,7 +90,6 @@
     ],
     "referenceDoc": "Physik und Mathematik: Schreibweisen und Dokumentation von Lösungswegen (Hessen)"
   },
-
   "allowedAids": {
     "part1": [
       "Wörterbuch deutsche Rechtschreibung",
@@ -97,21 +111,50 @@
       "Schwerwiegende/gehäufte Verstöße gegen Rechtschreibung/Zeichensetzung: Abzug 1–2 Punkte (OAVO)."
     ]
   },
-
   "contentFocusByLevel": {
     "GK": {
-      "analysis": ["Q1.1", "Q1.2", "Q1.3", "Q1.4"],
-      "linalg_geo": ["Q2.1", "Q2.2", "Q2.3", "Q2.6"],
-      "stoch": ["Q3.1", "Q3.2", "Q3.3", "Q3.4"],
+      "analysis": [
+        "Q1.1",
+        "Q1.2",
+        "Q1.3",
+        "Q1.4"
+      ],
+      "linalg_geo": [
+        "Q2.1",
+        "Q2.2",
+        "Q2.3",
+        "Q2.6"
+      ],
+      "stoch": [
+        "Q3.1",
+        "Q3.2",
+        "Q3.3",
+        "Q3.4"
+      ],
       "notes": [
         "Q2.6: Normalenvektor Ebene mitbehandeln.",
         "Q2.3/Q2.6: Lagebeziehungen implizieren Winkelberechnung."
       ]
     },
     "LK": {
-      "analysis": ["Q1.1", "Q1.2", "Q1.3", "Q1.4"],
-      "linalg_geo": ["Q2.1", "Q2.2", "Q2.3", "Q2.4"],
-      "stoch": ["Q3.1", "Q3.2", "Q3.3", "Q3.4"],
+      "analysis": [
+        "Q1.1",
+        "Q1.2",
+        "Q1.3",
+        "Q1.4"
+      ],
+      "linalg_geo": [
+        "Q2.1",
+        "Q2.2",
+        "Q2.3",
+        "Q2.4"
+      ],
+      "stoch": [
+        "Q3.1",
+        "Q3.2",
+        "Q3.3",
+        "Q3.4"
+      ],
       "notes": [
         "Q1.3: Grenzwerte von Funktionen sind explizit zu thematisieren.",
         "Q2.3: Lagebeziehungen implizieren Winkelberechnung.",
@@ -119,12 +162,15 @@
       ]
     }
   },
-
   "examStructure": {
     "part1": {
       "id": "A",
       "label": "Prüfungsteil 1 (hilfsmittelfrei)",
-      "coversDomains": ["analysis", "linalg_geo", "stoch"],
+      "coversDomains": [
+        "analysis",
+        "linalg_geo",
+        "stoch"
+      ],
       "taskUnitBE": 5,
       "independenceRequired": true,
       "levels": {
@@ -132,17 +178,53 @@
           "toSolve": 5,
           "offered": {
             "mandatory": [
-              { "domain": "analysis", "niveau": 1, "count": 1 },
-              { "domain": "linalg_geo", "niveau": 1, "count": 1 },
-              { "domain": "stoch", "niveau": 1, "count": 1 }
+              {
+                "domain": "analysis",
+                "niveau": 1,
+                "count": 1
+              },
+              {
+                "domain": "linalg_geo",
+                "niveau": 1,
+                "count": 1
+              },
+              {
+                "domain": "stoch",
+                "niveau": 1,
+                "count": 1
+              }
             ],
             "optional": [
-              { "domain": "analysis", "niveau": 1, "count": 1 },
-              { "domain": "linalg_geo", "niveau": 1, "count": 1 },
-              { "domain": "stoch", "niveau": 1, "count": 1 },
-              { "domain": "analysis", "niveau": 2, "count": 1 },
-              { "domain": "linalg_geo", "niveau": 2, "count": 1 },
-              { "domain": "stoch", "niveau": 2, "count": 1 }
+              {
+                "domain": "analysis",
+                "niveau": 1,
+                "count": 1
+              },
+              {
+                "domain": "linalg_geo",
+                "niveau": 1,
+                "count": 1
+              },
+              {
+                "domain": "stoch",
+                "niveau": 1,
+                "count": 1
+              },
+              {
+                "domain": "analysis",
+                "niveau": 2,
+                "count": 1
+              },
+              {
+                "domain": "linalg_geo",
+                "niveau": 2,
+                "count": 1
+              },
+              {
+                "domain": "stoch",
+                "niveau": 2,
+                "count": 1
+              }
             ]
           },
           "selectionRule": [
@@ -156,14 +238,38 @@
           "toSolve": 6,
           "offered": {
             "mandatory": [
-              { "domain": "analysis", "niveau": 1, "count": 2 },
-              { "domain": "linalg_geo", "niveau": 1, "count": 1 },
-              { "domain": "stoch", "niveau": 1, "count": 1 }
+              {
+                "domain": "analysis",
+                "niveau": 1,
+                "count": 2
+              },
+              {
+                "domain": "linalg_geo",
+                "niveau": 1,
+                "count": 1
+              },
+              {
+                "domain": "stoch",
+                "niveau": 1,
+                "count": 1
+              }
             ],
             "optional": [
-              { "domain": "analysis", "niveau": 2, "count": 2 },
-              { "domain": "linalg_geo", "niveau": 2, "count": 2 },
-              { "domain": "stoch", "niveau": 2, "count": 2 }
+              {
+                "domain": "analysis",
+                "niveau": 2,
+                "count": 2
+              },
+              {
+                "domain": "linalg_geo",
+                "niveau": 2,
+                "count": 2
+              },
+              {
+                "domain": "stoch",
+                "niveau": 2,
+                "count": 2
+              }
             ]
           },
           "selectionRule": [
@@ -179,7 +285,6 @@
         "niveau2": "typisch AB2–AB3 (mehrschrittig, Modellieren/Argumentieren, Reflexion/Interpretation)"
       }
     },
-
     "part2": {
       "id": "B/C/D",
       "label": "Prüfungsteil 2 (mit Hilfsmitteln; WTR oder CAS)",
@@ -187,25 +292,76 @@
       "levels": {
         "GK": {
           "toSolveProposals": [
-            { "domain": "analysis", "chooseOneOf": ["B1", "B2"], "BE": 25 },
-            { "domain": "linalg_geo", "proposalId": "C", "mandatory": true, "BE": 15 },
-            { "domain": "stoch", "proposalId": "D", "mandatory": true, "BE": 15 }
+            {
+              "domain": "analysis",
+              "chooseOneOf": [
+                "B1",
+                "B2"
+              ],
+              "BE": 25
+            },
+            {
+              "domain": "linalg_geo",
+              "proposalId": "C",
+              "mandatory": true,
+              "BE": 15
+            },
+            {
+              "domain": "stoch",
+              "proposalId": "D",
+              "mandatory": true,
+              "BE": 15
+            }
           ],
           "BE": 55
         },
         "LK": {
           "toSolveProposals": [
-            { "domain": "analysis", "chooseOneOf": ["B1", "B2"], "BE": 30 },
-            { "domain": "linalg_geo", "proposalId": "C", "mandatory": true, "BE": 20 },
-            { "domain": "stoch", "proposalId": "D", "mandatory": true, "BE": 20 }
+            {
+              "domain": "analysis",
+              "chooseOneOf": [
+                "B1",
+                "B2"
+              ],
+              "BE": 30
+            },
+            {
+              "domain": "linalg_geo",
+              "proposalId": "C",
+              "mandatory": true,
+              "BE": 20
+            },
+            {
+              "domain": "stoch",
+              "proposalId": "D",
+              "mandatory": true,
+              "BE": 20
+            }
           ],
           "BE": 70
         },
         "LK_SfE": {
           "toSolveProposals": [
-            { "domain": "analysis", "chooseOneOf": ["B1", "B2"], "BE": 25 },
-            { "domain": "linalg_geo", "proposalId": "C", "mandatory": true, "BE": 20 },
-            { "domain": "stoch", "proposalId": "D", "mandatory": true, "BE": 20 }
+            {
+              "domain": "analysis",
+              "chooseOneOf": [
+                "B1",
+                "B2"
+              ],
+              "BE": 25
+            },
+            {
+              "domain": "linalg_geo",
+              "proposalId": "C",
+              "mandatory": true,
+              "BE": 20
+            },
+            {
+              "domain": "stoch",
+              "proposalId": "D",
+              "mandatory": true,
+              "BE": 20
+            }
           ],
           "BE": 65
         }
@@ -216,7 +372,6 @@
       ]
     }
   },
-
   "generationConstraints": {
     "mustCover": [
       "Alle drei Sachgebiete insgesamt (spätestens über Teil 1 + Teil 2).",
@@ -231,5 +386,6 @@
       "Aufgaben sollen Stellen enthalten, wo WTR/CAS sinnvoll ist (z.B. Ablehnungsbereich, kumulierte/inverse Verteilung, numerische Lösungen),",
       "aber immer mit Dokumentations-/Interpretationsanteil."
     ]
-  }
+  },
+  "landscapeId": "23ff9767-d189-5c01-a800-055d9489d9d2"
 }

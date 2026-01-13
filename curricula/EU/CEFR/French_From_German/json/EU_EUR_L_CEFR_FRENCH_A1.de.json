@@ -1,1096 +1,1291 @@
 {
-    "title": "Französisch A1 (Einstieg)",
-    "titleEn": "French (CEFR A1)",
-    "description": "Elementare Sprachverwendung; kann sich vorstellen, einfache Fragen beantworten.",
-    "descriptionEn": "Elementary language use; can introduce oneself, answer simple questions.",
-    "landscapeId": "c0a86413-a9a2-4d73-be17-acd485752ca7",
-    "locale": "de-DE",
-    "subject": "Französisch",
-    "frameworkId": "cefr-français",
-    "goals": [
-        {
-            "id": "5d319918-3472-47b4-9d10-f5fbe76fbfaf",
-            "title": "Französisch A1 (Einstieg)",
-            "titleEn": "Level A1 - Course Structure",
-            "description": "Systematischer Einstieg in 12 Lektionen.",
-            "descriptionEn": "Systematic introduction in 12 lessons.",
-            "core": true,
-            "weight": 1,
-            "tags": [
-                "structure",
-                "A1",
-                "root"
-            ],
-            "contains": [
-                "cefr_fr_a1_module_01",
-                "cefr_fr_a1_module_02",
-                "cefr_fr_a1_module_03",
-                "cefr_fr_a1_module_04"
-            ]
-        },
-        {
-            "id": "cefr_fr_a1_module_01",
-            "title": "Modul 1: Die Grundlagen",
-            "titleEn": "Module 1: The Basics",
-            "description": "Begrüßung, Familie, Café.",
-            "descriptionEn": "Greetings, Family, Café.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_fr_a1_lesson_01",
-                "cefr_fr_a1_lesson_02",
-                "cefr_fr_a1_lesson_03"
-            ]
-        },
-        {
-            "id": "cefr_fr_a1_lesson_01",
-            "title": "Lektion 01: Begrüßung",
-            "titleEn": "Lesson 01: Greetings",
-            "description": "Sich vorstellen und Hallo sagen.",
-            "descriptionEn": "Introduce yourself and say hello.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A1"
-            ],
-            "contains": [
-                "cefr_fr_a1_l01_vocabulary",
-                "cefr_fr_a1_l01_vocabulary_rev",
-                "cefr_fr_a1_l01_grammar",
-                "cefr_fr_a1_l01_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a1_l01_vocabulary",
-            "title": "L1: Wortschatz (Hallo) (Lesen)",
-            "titleEn": "L1: Vocabulary (Hello) (Reading)",
-            "description": "Begrüßungsfloskeln, Zahlen 1-10.",
-            "descriptionEn": "Greetings, Numbers 1-10.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_1",
-                "select:l1_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l01_vocabulary_rev",
-            "title": "L1: Wortschatz (Hallo) (Schreiben)",
-            "titleEn": "L1: Vocabulary (Hello) (Writing)",
-            "description": "Begrüßungsfloskeln, Zahlen 1-10.",
-            "descriptionEn": "Greetings, Numbers 1-10.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_1",
-                "select:l1_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l01_grammar",
-            "title": "Grammatik: être & Pronomen",
-            "titleEn": "Grammar: être & Pronouns",
-            "description": "Das Verb 'sein' (je suis, tu es).",
-            "descriptionEn": "The verb 'to be' (je suis, tu es).",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l01_practice",
-            "title": "Sprechkompetenz: Vorstellen",
-            "titleEn": "Speaking: Introduction",
-            "description": "Sage, wie du heißt.",
-            "descriptionEn": "Say what your name is.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_lesson_02",
-            "title": "Lektion 02: Familie",
-            "titleEn": "Lesson 02: Family",
-            "description": "Über Familie sprechen.",
-            "descriptionEn": "Talk about family.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A1"
-            ],
-            "contains": [
-                "cefr_fr_a1_l02_vocabulary",
-                "cefr_fr_a1_l02_vocabulary_rev",
-                "cefr_fr_a1_l02_grammar",
-                "cefr_fr_a1_l02_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a1_l02_vocabulary",
-            "title": "L2: Wortschatz (Familie) (Lesen)",
-            "titleEn": "L2: Vocabulary (Family) (Reading)",
-            "description": "Mutter, Vater, Bruder, Zahlen 11-20.",
-            "descriptionEn": "Mother, father, brother, Numbers 11-20.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_2",
-                "select:l2_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l02_vocabulary_rev",
-            "title": "L2: Wortschatz (Familie) (Schreiben)",
-            "titleEn": "L2: Vocabulary (Family) (Writing)",
-            "description": "Mutter, Vater, Bruder, Zahlen 11-20.",
-            "descriptionEn": "Mother, father, brother, Numbers 11-20.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_2",
-                "select:l2_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l02_grammar",
-            "title": "Grammatik: avoir & Artikel",
-            "titleEn": "Grammar: avoir & Articles",
-            "description": "Das Verb 'haben' und le/la/les.",
-            "descriptionEn": "The verb 'to have' and le/la/les.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l02_practice",
-            "title": "Sprechkompetenz: Familie",
-            "titleEn": "Speaking: Family",
-            "description": "Stelle ein Familienmitglied vor.",
-            "descriptionEn": "Introduce a family member.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_lesson_03",
-            "title": "Lektion 03: Im Café",
-            "titleEn": "Lesson 03: At the Café",
-            "description": "Etwas zu trinken bestellen.",
-            "descriptionEn": "Order something to drink.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A1"
-            ],
-            "contains": [
-                "cefr_fr_a1_l03_vocabulary",
-                "cefr_fr_a1_l03_vocabulary_rev",
-                "cefr_fr_a1_l03_grammar",
-                "cefr_fr_a1_l03_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a1_l03_vocabulary",
-            "title": "L3: Wortschatz (Café) (Lesen)",
-            "titleEn": "L3: Vocabulary (Café) (Reading)",
-            "description": "Kaffee, Croissant, Preise.",
-            "descriptionEn": "Coffee, croissant, prices.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_3",
-                "select:l3_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l03_vocabulary_rev",
-            "title": "L3: Wortschatz (Café) (Schreiben)",
-            "titleEn": "L3: Vocabulary (Café) (Writing)",
-            "description": "Kaffee, Croissant, Preise.",
-            "descriptionEn": "Coffee, croissant, prices.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_3",
-                "select:l3_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l03_grammar",
-            "title": "Grammatik: Höflichkeit",
-            "titleEn": "Grammar: Politeness",
-            "description": "Je voudrais... / S'il vous plaît.",
-            "descriptionEn": "I would like... / Please.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l03_practice",
-            "title": "Rollenspiel: Bestellen",
-            "titleEn": "Roleplay: Ordering",
-            "description": "Bestelle ein Getränk.",
-            "descriptionEn": "Order a drink.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_module_02",
-            "title": "Modul 2: Alltag",
-            "titleEn": "Module 2: Daily Life",
-            "description": "Stadt, Zuhause, Uhrzeit.",
-            "descriptionEn": "City, Home, Time.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_fr_a1_lesson_04",
-                "cefr_fr_a1_lesson_05",
-                "cefr_fr_a1_lesson_06"
-            ]
-        },
-        {
-            "id": "cefr_fr_a1_lesson_04",
-            "title": "Lektion 04: In der Stadt",
-            "titleEn": "Lesson 04: In the City",
-            "description": "Nach dem Weg fragen.",
-            "descriptionEn": "Ask for directions.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A1"
-            ],
-            "contains": [
-                "cefr_fr_a1_l04_vocabulary",
-                "cefr_fr_a1_l04_vocabulary_rev",
-                "cefr_fr_a1_l04_grammar",
-                "cefr_fr_a1_l04_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a1_l04_vocabulary",
-            "title": "L4: Wortschatz (Stadt) (Lesen)",
-            "titleEn": "L4: Vocabulary (City) (Reading)",
-            "description": "Orte, Richtungen, Transport.",
-            "descriptionEn": "Places, directions, transport.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_4",
-                "select:l4_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l04_vocabulary_rev",
-            "title": "L4: Wortschatz (Stadt) (Schreiben)",
-            "titleEn": "L4: Vocabulary (City) (Writing)",
-            "description": "Orte, Richtungen, Transport.",
-            "descriptionEn": "Places, directions, transport.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_4",
-                "select:l4_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l04_grammar",
-            "title": "Grammatik: Präpositionen",
-            "titleEn": "Grammar: Prepositions",
-            "description": "à, en, chez, dans.",
-            "descriptionEn": "à, en, chez, dans.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l04_practice",
-            "title": "Interaktion: Wegbeschreibung",
-            "titleEn": "Interaction: Directions",
-            "description": "Erkläre den Weg.",
-            "descriptionEn": "Give directions.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_lesson_05",
-            "title": "Lektion 05: Mein Zuhause",
-            "titleEn": "Lesson 05: My Home",
-            "description": "Wohnung beschreiben.",
-            "descriptionEn": "Describe apartment.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A1"
-            ],
-            "contains": [
-                "cefr_fr_a1_l05_vocabulary",
-                "cefr_fr_a1_l05_vocabulary_rev",
-                "cefr_fr_a1_l05_grammar",
-                "cefr_fr_a1_l05_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a1_l05_vocabulary",
-            "title": "L5: Wortschatz (Wohnen) (Lesen)",
-            "titleEn": "L5: Vocabulary (Housing) (Reading)",
-            "description": "Möbel, Zimmer, Adjektive.",
-            "descriptionEn": "Furniture, rooms, adjectives.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_5",
-                "select:l5_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l05_vocabulary_rev",
-            "title": "L5: Wortschatz (Wohnen) (Schreiben)",
-            "titleEn": "L5: Vocabulary (Housing) (Writing)",
-            "description": "Möbel, Zimmer, Adjektive.",
-            "descriptionEn": "Furniture, rooms, adjectives.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_5",
-                "select:l5_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l05_grammar",
-            "title": "Grammatik: Adjektive",
-            "titleEn": "Grammar: Adjectives",
-            "description": "Anpassung (grand/grande).",
-            "descriptionEn": "Agreement (grand/grande).",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l05_practice",
-            "title": "Schreiben: Mein Zimmer",
-            "titleEn": "Writing: My Room",
-            "description": "Beschreibe dein Zimmer.",
-            "descriptionEn": "Describe your room.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_lesson_06",
-            "title": "Lektion 06: Tagesablauf",
-            "titleEn": "Lesson 06: Daily Routine",
-            "description": "Uhrzeit und Aktivitäten.",
-            "descriptionEn": "Time and activities.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A1"
-            ],
-            "contains": [
-                "cefr_fr_a1_l06_vocabulary",
-                "cefr_fr_a1_l06_vocabulary_rev",
-                "cefr_fr_a1_l06_grammar",
-                "cefr_fr_a1_l06_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a1_l06_vocabulary",
-            "title": "L6: Wortschatz (Zeit) (Lesen)",
-            "titleEn": "L6: Vocabulary (Time) (Reading)",
-            "description": "Uhrzeit, Tageszeiten, Verben.",
-            "descriptionEn": "Time, time of day, verbs.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_6",
-                "select:l6_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l06_vocabulary_rev",
-            "title": "L6: Wortschatz (Zeit) (Schreiben)",
-            "titleEn": "L6: Vocabulary (Time) (Writing)",
-            "description": "Uhrzeit, Tageszeiten, Verben.",
-            "descriptionEn": "Time, time of day, verbs.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_6",
-                "select:l6_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l06_grammar",
-            "title": "Grammatik: Reflexive Verben",
-            "titleEn": "Grammar: Reflexive Verbs",
-            "description": "se laver, se lever.",
-            "descriptionEn": "se laver, se lever.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l06_practice",
-            "title": "Sprechkompetenz: Mein Tag",
-            "titleEn": "Speaking: My Day",
-            "description": "Was machst du morgens?",
-            "descriptionEn": "What do you do in the morning?",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_module_03",
-            "title": "Modul 3: Freizeit & Einkaufen",
-            "titleEn": "Module 3: Leisure & Shopping",
-            "description": "Kleidung, Hobbys, Essen.",
-            "descriptionEn": "Clothes, Hobbies, Food.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_fr_a1_lesson_07",
-                "cefr_fr_a1_lesson_08",
-                "cefr_fr_a1_lesson_09"
-            ]
-        },
-        {
-            "id": "cefr_fr_a1_lesson_07",
-            "title": "Lektion 07: Einkaufen",
-            "titleEn": "Lesson 07: Shopping",
-            "description": "Kleidung kaufen.",
-            "descriptionEn": "Buy clothes.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A1"
-            ],
-            "contains": [
-                "cefr_fr_a1_l07_vocabulary",
-                "cefr_fr_a1_l07_vocabulary_rev",
-                "cefr_fr_a1_l07_grammar",
-                "cefr_fr_a1_l07_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a1_l07_vocabulary",
-            "title": "L7: Wortschatz (Kleidung) (Lesen)",
-            "titleEn": "L7: Vocabulary (Clothes) (Reading)",
-            "description": "Kleidungsstücke, Farben, Preise.",
-            "descriptionEn": "Clothes, colors, prices.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_7",
-                "select:l7_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l07_vocabulary_rev",
-            "title": "L7: Wortschatz (Kleidung) (Schreiben)",
-            "titleEn": "L7: Vocabulary (Clothes) (Writing)",
-            "description": "Kleidungsstücke, Farben, Preise.",
-            "descriptionEn": "Clothes, colors, prices.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_7",
-                "select:l7_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l07_grammar",
-            "title": "Grammatik: Demonstrativ",
-            "titleEn": "Grammar: Demonstratives",
-            "description": "ce, cet, cette, ces.",
-            "descriptionEn": "ce, cet, cette, ces.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l07_practice",
-            "title": "Rollenspiel: Im Geschäft",
-            "titleEn": "Roleplay: In the Shop",
-            "description": "Kaufe ein T-Shirt.",
-            "descriptionEn": "Buy a t-shirt.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_lesson_08",
-            "title": "Lektion 08: Freizeit",
-            "titleEn": "Lesson 08: Leisure",
-            "description": "Hobbys und Wetter.",
-            "descriptionEn": "Hobbies and weather.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A1"
-            ],
-            "contains": [
-                "cefr_fr_a1_l08_vocabulary",
-                "cefr_fr_a1_l08_vocabulary_rev",
-                "cefr_fr_a1_l08_grammar",
-                "cefr_fr_a1_l08_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a1_l08_vocabulary",
-            "title": "L8: Wortschatz (Hobbys) (Lesen)",
-            "titleEn": "L8: Vocabulary (Hobbies) (Reading)",
-            "description": "Sport, Aktivitäten, Wetter.",
-            "descriptionEn": "Sports, activities, weather.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_8",
-                "select:l8_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l08_vocabulary_rev",
-            "title": "L8: Wortschatz (Hobbys) (Schreiben)",
-            "titleEn": "L8: Vocabulary (Hobbies) (Writing)",
-            "description": "Sport, Aktivitäten, Wetter.",
-            "descriptionEn": "Sports, activities, weather.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_8",
-                "select:l8_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l08_grammar",
-            "title": "Grammatik: Vorlieben",
-            "titleEn": "Grammar: Preferences",
-            "description": "aimer, détester + le/la.",
-            "descriptionEn": "aimer, détester + le/la.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l08_practice",
-            "title": "Sprechkompetenz: Hobbys",
-            "titleEn": "Speaking: Hobbies",
-            "description": "Was machst du gern?",
-            "descriptionEn": "What do you like to do?",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_lesson_09",
-            "title": "Lektion 09: Lebensmittel",
-            "titleEn": "Lesson 09: Groceries",
-            "description": "Auf dem Markt.",
-            "descriptionEn": "At the market.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A1"
-            ],
-            "contains": [
-                "cefr_fr_a1_l09_vocabulary",
-                "cefr_fr_a1_l09_vocabulary_rev",
-                "cefr_fr_a1_l09_grammar",
-                "cefr_fr_a1_l09_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a1_l09_vocabulary",
-            "title": "L9: Wortschatz (Essen) (Lesen)",
-            "titleEn": "L9: Vocabulary (Food) (Reading)",
-            "description": "Obst, Gemüse, Mengen.",
-            "descriptionEn": "Fruit, vegetables, quantities.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_9",
-                "select:l9_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l09_vocabulary_rev",
-            "title": "L9: Wortschatz (Essen) (Schreiben)",
-            "titleEn": "L9: Vocabulary (Food) (Writing)",
-            "description": "Obst, Gemüse, Mengen.",
-            "descriptionEn": "Fruit, vegetables, quantities.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_9",
-                "select:l9_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l09_grammar",
-            "title": "Grammatik: Mengen",
-            "titleEn": "Grammar: Quantities",
-            "description": "un kilo de, beaucoup de.",
-            "descriptionEn": "a kilo of, a lot of.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l09_practice",
-            "title": "Interaktion: Markt",
-            "titleEn": "Interaction: Market",
-            "description": "Kaufe Obst und Gemüse.",
-            "descriptionEn": "Buy fruits and vegetables.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_module_04",
-            "title": "Modul 4: Pläne & Reisen",
-            "titleEn": "Module 4: Plans & Travel",
-            "description": "Reisen, Berufe, Abschluss.",
-            "descriptionEn": "Travel, Jobs, Summary.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_fr_a1_lesson_10",
-                "cefr_fr_a1_lesson_11",
-                "cefr_fr_a1_lesson_12"
-            ]
-        },
-        {
-            "id": "cefr_fr_a1_lesson_10",
-            "title": "Lektion 10: Reisen",
-            "titleEn": "Lesson 10: Travel",
-            "description": "Urlaubspläne machen.",
-            "descriptionEn": "Making holiday plans.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A1"
-            ],
-            "contains": [
-                "cefr_fr_a1_l10_vocabulary",
-                "cefr_fr_a1_l10_vocabulary_rev",
-                "cefr_fr_a1_l10_grammar",
-                "cefr_fr_a1_l10_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a1_l10_vocabulary",
-            "title": "L10: Wortschatz (Reisen) (Lesen)",
-            "titleEn": "L10: Vocabulary (Travel) (Reading)",
-            "description": "Länder, Monate, Transport.",
-            "descriptionEn": "Countries, months, transport.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_10",
-                "select:l10_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l10_vocabulary_rev",
-            "title": "L10: Wortschatz (Reisen) (Schreiben)",
-            "titleEn": "L10: Vocabulary (Travel) (Writing)",
-            "description": "Länder, Monate, Transport.",
-            "descriptionEn": "Countries, months, transport.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_10",
-                "select:l10_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l10_grammar",
-            "title": "Grammatik: Futur Proche",
-            "titleEn": "Grammar: Near Future",
-            "description": "aller + Infinitiv (Je vais aller...).",
-            "descriptionEn": "aller + infinitive (Je vais aller...).",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l10_practice",
-            "title": "Sprechkompetenz: Pläne",
-            "titleEn": "Speaking: Plans",
-            "description": "Wohin fährst du?",
-            "descriptionEn": "Where are you going?",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_lesson_11",
-            "title": "Lektion 11: Fähigkeiten",
-            "titleEn": "Lesson 11: Abilities",
-            "description": "Was kannst du tun?",
-            "descriptionEn": "What can you do?",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A1"
-            ],
-            "contains": [
-                "cefr_fr_a1_l11_vocabulary",
-                "cefr_fr_a1_l11_vocabulary_rev",
-                "cefr_fr_a1_l11_grammar",
-                "cefr_fr_a1_l11_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a1_l11_vocabulary",
-            "title": "L11: Wortschatz (Berufe) (Lesen)",
-            "titleEn": "L11: Vocabulary (Jobs) (Reading)",
-            "description": "Berufe, Tätigkeiten.",
-            "descriptionEn": "Jobs, activities.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_11",
-                "select:l11_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l11_vocabulary_rev",
-            "title": "L11: Wortschatz (Berufe) (Schreiben)",
-            "titleEn": "L11: Vocabulary (Jobs) (Writing)",
-            "description": "Berufe, Tätigkeiten.",
-            "descriptionEn": "Jobs, activities.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_11",
-                "select:l11_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l11_grammar",
-            "title": "Grammatik: Modalverben",
-            "titleEn": "Grammar: Modal Verbs",
-            "description": "pouvoir, vouloir, devoir.",
-            "descriptionEn": "can, want, must.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l11_practice",
-            "title": "Sprechkompetenz: Fähigkeiten",
-            "titleEn": "Speaking: Abilities",
-            "description": "Sprich über deine Talente.",
-            "descriptionEn": "Talk about your talents.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_lesson_12",
-            "title": "Lektion 12: Abschluss A1",
-            "titleEn": "Lesson 12: Review A1",
-            "description": "Rückblick und Zusammenfassung.",
-            "descriptionEn": "Review and summary.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A1"
-            ],
-            "contains": [
-                "cefr_fr_a1_l12_vocabulary",
-                "cefr_fr_a1_l12_vocabulary_rev",
-                "cefr_fr_a1_l12_grammar",
-                "cefr_fr_a1_l12_practice"
-            ]
-        },
-        {
-            "id": "cefr_fr_a1_l12_vocabulary",
-            "title": "L12: Wortschatz (Review) (Lesen)",
-            "titleEn": "L12: Vocabulary (Review) (Reading)",
-            "description": "Wiederholung aller Themen.",
-            "descriptionEn": "Review of all topics.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_12",
-                "select:l12_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l12_vocabulary_rev",
-            "title": "L12: Wortschatz (Review) (Schreiben)",
-            "titleEn": "L12: Vocabulary (Review) (Writing)",
-            "description": "Wiederholung aller Themen.",
-            "descriptionEn": "Review of all topics.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a1_french_deck",
-                "lesson_12",
-                "select:l12_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a1_french_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l12_grammar",
-            "title": "Grammatik: Review",
-            "titleEn": "Grammar: Review",
-            "description": "Alle Strukturen + Passé Composé Intro.",
-            "descriptionEn": "All structures + Passé Composé Intro.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_fr_a1_l12_practice",
-            "title": "Abschlussprojekt",
-            "titleEn": "Final Project",
-            "description": "Stelle dich komplett vor.",
-            "descriptionEn": "Introduce yourself completely.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        }
-    ]
+  "title": "Französisch A1 (Einstieg)",
+  "titleEn": "French (CEFR A1)",
+  "description": "Elementare Sprachverwendung; kann sich vorstellen, einfache Fragen beantworten.",
+  "descriptionEn": "Elementary language use; can introduce oneself, answer simple questions.",
+  "landscapeId": "c0a86413-a9a2-4d73-be17-acd485752ca7",
+  "locale": "de-DE",
+  "subject": "Französisch",
+  "frameworkId": "cefr-français",
+  "goals": [
+    {
+      "id": "5d319918-3472-47b4-9d10-f5fbe76fbfaf",
+      "title": "Französisch A1 (Einstieg)",
+      "titleEn": "Level A1 - Course Structure",
+      "description": "Systematischer Einstieg in 12 Lektionen.",
+      "descriptionEn": "Systematic introduction in 12 lessons.",
+      "weight": 1,
+      "tags": [
+        "structure",
+        "A1",
+        "root"
+      ],
+      "contains": [
+        "cefr_fr_a1_module_01",
+        "cefr_fr_a1_module_02",
+        "cefr_fr_a1_module_03",
+        "cefr_fr_a1_module_04"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_module_01",
+      "title": "Modul 1: Die Grundlagen",
+      "titleEn": "Module 1: The Basics",
+      "description": "Begrüßung, Familie, Café.",
+      "descriptionEn": "Greetings, Family, Café.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_fr_a1_lesson_01",
+        "cefr_fr_a1_lesson_02",
+        "cefr_fr_a1_lesson_03"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_lesson_01",
+      "title": "Lektion 01: Begrüßung",
+      "titleEn": "Lesson 01: Greetings",
+      "description": "Sich vorstellen und Hallo sagen.",
+      "descriptionEn": "Introduce yourself and say hello.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A1"
+      ],
+      "contains": [
+        "cefr_fr_a1_l01_vocabulary",
+        "cefr_fr_a1_l01_vocabulary_rev",
+        "cefr_fr_a1_l01_grammar",
+        "cefr_fr_a1_l01_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l01_vocabulary",
+      "title": "L1: Wortschatz (Hallo) (Lesen)",
+      "titleEn": "L1: Vocabulary (Hello) (Reading)",
+      "description": "Begrüßungsfloskeln, Zahlen 1-10.",
+      "descriptionEn": "Greetings, Numbers 1-10.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_1",
+        "select:l1_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l01_vocabulary_rev",
+      "title": "L1: Wortschatz (Hallo) (Schreiben)",
+      "titleEn": "L1: Vocabulary (Hello) (Writing)",
+      "description": "Begrüßungsfloskeln, Zahlen 1-10.",
+      "descriptionEn": "Greetings, Numbers 1-10.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_1",
+        "select:l1_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l01_grammar",
+      "title": "Grammatik: être & Pronomen",
+      "titleEn": "Grammar: être & Pronouns",
+      "description": "Das Verb 'sein' (je suis, tu es).",
+      "descriptionEn": "The verb 'to be' (je suis, tu es).",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l01_practice",
+      "title": "Sprechkompetenz: Vorstellen",
+      "titleEn": "Speaking: Introduction",
+      "description": "Sage, wie du heißt.",
+      "descriptionEn": "Say what your name is.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_lesson_02",
+      "title": "Lektion 02: Familie",
+      "titleEn": "Lesson 02: Family",
+      "description": "Über Familie sprechen.",
+      "descriptionEn": "Talk about family.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A1"
+      ],
+      "contains": [
+        "cefr_fr_a1_l02_vocabulary",
+        "cefr_fr_a1_l02_vocabulary_rev",
+        "cefr_fr_a1_l02_grammar",
+        "cefr_fr_a1_l02_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l02_vocabulary",
+      "title": "L2: Wortschatz (Familie) (Lesen)",
+      "titleEn": "L2: Vocabulary (Family) (Reading)",
+      "description": "Mutter, Vater, Bruder, Zahlen 11-20.",
+      "descriptionEn": "Mother, father, brother, Numbers 11-20.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_2",
+        "select:l2_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l02_vocabulary_rev",
+      "title": "L2: Wortschatz (Familie) (Schreiben)",
+      "titleEn": "L2: Vocabulary (Family) (Writing)",
+      "description": "Mutter, Vater, Bruder, Zahlen 11-20.",
+      "descriptionEn": "Mother, father, brother, Numbers 11-20.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_2",
+        "select:l2_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l02_grammar",
+      "title": "Grammatik: avoir & Artikel",
+      "titleEn": "Grammar: avoir & Articles",
+      "description": "Das Verb 'haben' und le/la/les.",
+      "descriptionEn": "The verb 'to have' and le/la/les.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l02_practice",
+      "title": "Sprechkompetenz: Familie",
+      "titleEn": "Speaking: Family",
+      "description": "Stelle ein Familienmitglied vor.",
+      "descriptionEn": "Introduce a family member.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_lesson_03",
+      "title": "Lektion 03: Im Café",
+      "titleEn": "Lesson 03: At the Café",
+      "description": "Etwas zu trinken bestellen.",
+      "descriptionEn": "Order something to drink.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A1"
+      ],
+      "contains": [
+        "cefr_fr_a1_l03_vocabulary",
+        "cefr_fr_a1_l03_vocabulary_rev",
+        "cefr_fr_a1_l03_grammar",
+        "cefr_fr_a1_l03_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l03_vocabulary",
+      "title": "L3: Wortschatz (Café) (Lesen)",
+      "titleEn": "L3: Vocabulary (Café) (Reading)",
+      "description": "Kaffee, Croissant, Preise.",
+      "descriptionEn": "Coffee, croissant, prices.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_3",
+        "select:l3_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l03_vocabulary_rev",
+      "title": "L3: Wortschatz (Café) (Schreiben)",
+      "titleEn": "L3: Vocabulary (Café) (Writing)",
+      "description": "Kaffee, Croissant, Preise.",
+      "descriptionEn": "Coffee, croissant, prices.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_3",
+        "select:l3_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l03_grammar",
+      "title": "Grammatik: Höflichkeit",
+      "titleEn": "Grammar: Politeness",
+      "description": "Je voudrais... / S'il vous plaît.",
+      "descriptionEn": "I would like... / Please.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l03_practice",
+      "title": "Rollenspiel: Bestellen",
+      "titleEn": "Roleplay: Ordering",
+      "description": "Bestelle ein Getränk.",
+      "descriptionEn": "Order a drink.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_module_02",
+      "title": "Modul 2: Alltag",
+      "titleEn": "Module 2: Daily Life",
+      "description": "Stadt, Zuhause, Uhrzeit.",
+      "descriptionEn": "City, Home, Time.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_fr_a1_lesson_04",
+        "cefr_fr_a1_lesson_05",
+        "cefr_fr_a1_lesson_06"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_lesson_04",
+      "title": "Lektion 04: In der Stadt",
+      "titleEn": "Lesson 04: In the City",
+      "description": "Nach dem Weg fragen.",
+      "descriptionEn": "Ask for directions.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A1"
+      ],
+      "contains": [
+        "cefr_fr_a1_l04_vocabulary",
+        "cefr_fr_a1_l04_vocabulary_rev",
+        "cefr_fr_a1_l04_grammar",
+        "cefr_fr_a1_l04_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l04_vocabulary",
+      "title": "L4: Wortschatz (Stadt) (Lesen)",
+      "titleEn": "L4: Vocabulary (City) (Reading)",
+      "description": "Orte, Richtungen, Transport.",
+      "descriptionEn": "Places, directions, transport.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_4",
+        "select:l4_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l04_vocabulary_rev",
+      "title": "L4: Wortschatz (Stadt) (Schreiben)",
+      "titleEn": "L4: Vocabulary (City) (Writing)",
+      "description": "Orte, Richtungen, Transport.",
+      "descriptionEn": "Places, directions, transport.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_4",
+        "select:l4_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l04_grammar",
+      "title": "Grammatik: Präpositionen",
+      "titleEn": "Grammar: Prepositions",
+      "description": "à, en, chez, dans.",
+      "descriptionEn": "à, en, chez, dans.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l04_practice",
+      "title": "Interaktion: Wegbeschreibung",
+      "titleEn": "Interaction: Directions",
+      "description": "Erkläre den Weg.",
+      "descriptionEn": "Give directions.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_lesson_05",
+      "title": "Lektion 05: Mein Zuhause",
+      "titleEn": "Lesson 05: My Home",
+      "description": "Wohnung beschreiben.",
+      "descriptionEn": "Describe apartment.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A1"
+      ],
+      "contains": [
+        "cefr_fr_a1_l05_vocabulary",
+        "cefr_fr_a1_l05_vocabulary_rev",
+        "cefr_fr_a1_l05_grammar",
+        "cefr_fr_a1_l05_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l05_vocabulary",
+      "title": "L5: Wortschatz (Wohnen) (Lesen)",
+      "titleEn": "L5: Vocabulary (Housing) (Reading)",
+      "description": "Möbel, Zimmer, Adjektive.",
+      "descriptionEn": "Furniture, rooms, adjectives.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_5",
+        "select:l5_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l05_vocabulary_rev",
+      "title": "L5: Wortschatz (Wohnen) (Schreiben)",
+      "titleEn": "L5: Vocabulary (Housing) (Writing)",
+      "description": "Möbel, Zimmer, Adjektive.",
+      "descriptionEn": "Furniture, rooms, adjectives.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_5",
+        "select:l5_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l05_grammar",
+      "title": "Grammatik: Adjektive",
+      "titleEn": "Grammar: Adjectives",
+      "description": "Anpassung (grand/grande).",
+      "descriptionEn": "Agreement (grand/grande).",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l05_practice",
+      "title": "Schreiben: Mein Zimmer",
+      "titleEn": "Writing: My Room",
+      "description": "Beschreibe dein Zimmer.",
+      "descriptionEn": "Describe your room.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_lesson_06",
+      "title": "Lektion 06: Tagesablauf",
+      "titleEn": "Lesson 06: Daily Routine",
+      "description": "Uhrzeit und Aktivitäten.",
+      "descriptionEn": "Time and activities.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A1"
+      ],
+      "contains": [
+        "cefr_fr_a1_l06_vocabulary",
+        "cefr_fr_a1_l06_vocabulary_rev",
+        "cefr_fr_a1_l06_grammar",
+        "cefr_fr_a1_l06_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l06_vocabulary",
+      "title": "L6: Wortschatz (Zeit) (Lesen)",
+      "titleEn": "L6: Vocabulary (Time) (Reading)",
+      "description": "Uhrzeit, Tageszeiten, Verben.",
+      "descriptionEn": "Time, time of day, verbs.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_6",
+        "select:l6_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l06_vocabulary_rev",
+      "title": "L6: Wortschatz (Zeit) (Schreiben)",
+      "titleEn": "L6: Vocabulary (Time) (Writing)",
+      "description": "Uhrzeit, Tageszeiten, Verben.",
+      "descriptionEn": "Time, time of day, verbs.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_6",
+        "select:l6_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l06_grammar",
+      "title": "Grammatik: Reflexive Verben",
+      "titleEn": "Grammar: Reflexive Verbs",
+      "description": "se laver, se lever.",
+      "descriptionEn": "se laver, se lever.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l06_practice",
+      "title": "Sprechkompetenz: Mein Tag",
+      "titleEn": "Speaking: My Day",
+      "description": "Was machst du morgens?",
+      "descriptionEn": "What do you do in the morning?",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_module_03",
+      "title": "Modul 3: Freizeit & Einkaufen",
+      "titleEn": "Module 3: Leisure & Shopping",
+      "description": "Kleidung, Hobbys, Essen.",
+      "descriptionEn": "Clothes, Hobbies, Food.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_fr_a1_lesson_07",
+        "cefr_fr_a1_lesson_08",
+        "cefr_fr_a1_lesson_09"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_lesson_07",
+      "title": "Lektion 07: Einkaufen",
+      "titleEn": "Lesson 07: Shopping",
+      "description": "Kleidung kaufen.",
+      "descriptionEn": "Buy clothes.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A1"
+      ],
+      "contains": [
+        "cefr_fr_a1_l07_vocabulary",
+        "cefr_fr_a1_l07_vocabulary_rev",
+        "cefr_fr_a1_l07_grammar",
+        "cefr_fr_a1_l07_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l07_vocabulary",
+      "title": "L7: Wortschatz (Kleidung) (Lesen)",
+      "titleEn": "L7: Vocabulary (Clothes) (Reading)",
+      "description": "Kleidungsstücke, Farben, Preise.",
+      "descriptionEn": "Clothes, colors, prices.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_7",
+        "select:l7_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l07_vocabulary_rev",
+      "title": "L7: Wortschatz (Kleidung) (Schreiben)",
+      "titleEn": "L7: Vocabulary (Clothes) (Writing)",
+      "description": "Kleidungsstücke, Farben, Preise.",
+      "descriptionEn": "Clothes, colors, prices.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_7",
+        "select:l7_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l07_grammar",
+      "title": "Grammatik: Demonstrativ",
+      "titleEn": "Grammar: Demonstratives",
+      "description": "ce, cet, cette, ces.",
+      "descriptionEn": "ce, cet, cette, ces.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l07_practice",
+      "title": "Rollenspiel: Im Geschäft",
+      "titleEn": "Roleplay: In the Shop",
+      "description": "Kaufe ein T-Shirt.",
+      "descriptionEn": "Buy a t-shirt.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_lesson_08",
+      "title": "Lektion 08: Freizeit",
+      "titleEn": "Lesson 08: Leisure",
+      "description": "Hobbys und Wetter.",
+      "descriptionEn": "Hobbies and weather.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A1"
+      ],
+      "contains": [
+        "cefr_fr_a1_l08_vocabulary",
+        "cefr_fr_a1_l08_vocabulary_rev",
+        "cefr_fr_a1_l08_grammar",
+        "cefr_fr_a1_l08_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l08_vocabulary",
+      "title": "L8: Wortschatz (Hobbys) (Lesen)",
+      "titleEn": "L8: Vocabulary (Hobbies) (Reading)",
+      "description": "Sport, Aktivitäten, Wetter.",
+      "descriptionEn": "Sports, activities, weather.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_8",
+        "select:l8_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l08_vocabulary_rev",
+      "title": "L8: Wortschatz (Hobbys) (Schreiben)",
+      "titleEn": "L8: Vocabulary (Hobbies) (Writing)",
+      "description": "Sport, Aktivitäten, Wetter.",
+      "descriptionEn": "Sports, activities, weather.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_8",
+        "select:l8_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l08_grammar",
+      "title": "Grammatik: Vorlieben",
+      "titleEn": "Grammar: Preferences",
+      "description": "aimer, détester + le/la.",
+      "descriptionEn": "aimer, détester + le/la.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l08_practice",
+      "title": "Sprechkompetenz: Hobbys",
+      "titleEn": "Speaking: Hobbies",
+      "description": "Was machst du gern?",
+      "descriptionEn": "What do you like to do?",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_lesson_09",
+      "title": "Lektion 09: Lebensmittel",
+      "titleEn": "Lesson 09: Groceries",
+      "description": "Auf dem Markt.",
+      "descriptionEn": "At the market.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A1"
+      ],
+      "contains": [
+        "cefr_fr_a1_l09_vocabulary",
+        "cefr_fr_a1_l09_vocabulary_rev",
+        "cefr_fr_a1_l09_grammar",
+        "cefr_fr_a1_l09_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l09_vocabulary",
+      "title": "L9: Wortschatz (Essen) (Lesen)",
+      "titleEn": "L9: Vocabulary (Food) (Reading)",
+      "description": "Obst, Gemüse, Mengen.",
+      "descriptionEn": "Fruit, vegetables, quantities.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_9",
+        "select:l9_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l09_vocabulary_rev",
+      "title": "L9: Wortschatz (Essen) (Schreiben)",
+      "titleEn": "L9: Vocabulary (Food) (Writing)",
+      "description": "Obst, Gemüse, Mengen.",
+      "descriptionEn": "Fruit, vegetables, quantities.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_9",
+        "select:l9_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l09_grammar",
+      "title": "Grammatik: Mengen",
+      "titleEn": "Grammar: Quantities",
+      "description": "un kilo de, beaucoup de.",
+      "descriptionEn": "a kilo of, a lot of.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l09_practice",
+      "title": "Interaktion: Markt",
+      "titleEn": "Interaction: Market",
+      "description": "Kaufe Obst und Gemüse.",
+      "descriptionEn": "Buy fruits and vegetables.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_module_04",
+      "title": "Modul 4: Pläne & Reisen",
+      "titleEn": "Module 4: Plans & Travel",
+      "description": "Reisen, Berufe, Abschluss.",
+      "descriptionEn": "Travel, Jobs, Summary.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_fr_a1_lesson_10",
+        "cefr_fr_a1_lesson_11",
+        "cefr_fr_a1_lesson_12"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_lesson_10",
+      "title": "Lektion 10: Reisen",
+      "titleEn": "Lesson 10: Travel",
+      "description": "Urlaubspläne machen.",
+      "descriptionEn": "Making holiday plans.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A1"
+      ],
+      "contains": [
+        "cefr_fr_a1_l10_vocabulary",
+        "cefr_fr_a1_l10_vocabulary_rev",
+        "cefr_fr_a1_l10_grammar",
+        "cefr_fr_a1_l10_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l10_vocabulary",
+      "title": "L10: Wortschatz (Reisen) (Lesen)",
+      "titleEn": "L10: Vocabulary (Travel) (Reading)",
+      "description": "Länder, Monate, Transport.",
+      "descriptionEn": "Countries, months, transport.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_10",
+        "select:l10_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l10_vocabulary_rev",
+      "title": "L10: Wortschatz (Reisen) (Schreiben)",
+      "titleEn": "L10: Vocabulary (Travel) (Writing)",
+      "description": "Länder, Monate, Transport.",
+      "descriptionEn": "Countries, months, transport.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_10",
+        "select:l10_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l10_grammar",
+      "title": "Grammatik: Futur Proche",
+      "titleEn": "Grammar: Near Future",
+      "description": "aller + Infinitiv (Je vais aller...).",
+      "descriptionEn": "aller + infinitive (Je vais aller...).",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l10_practice",
+      "title": "Sprechkompetenz: Pläne",
+      "titleEn": "Speaking: Plans",
+      "description": "Wohin fährst du?",
+      "descriptionEn": "Where are you going?",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_lesson_11",
+      "title": "Lektion 11: Fähigkeiten",
+      "titleEn": "Lesson 11: Abilities",
+      "description": "Was kannst du tun?",
+      "descriptionEn": "What can you do?",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A1"
+      ],
+      "contains": [
+        "cefr_fr_a1_l11_vocabulary",
+        "cefr_fr_a1_l11_vocabulary_rev",
+        "cefr_fr_a1_l11_grammar",
+        "cefr_fr_a1_l11_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l11_vocabulary",
+      "title": "L11: Wortschatz (Berufe) (Lesen)",
+      "titleEn": "L11: Vocabulary (Jobs) (Reading)",
+      "description": "Berufe, Tätigkeiten.",
+      "descriptionEn": "Jobs, activities.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_11",
+        "select:l11_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l11_vocabulary_rev",
+      "title": "L11: Wortschatz (Berufe) (Schreiben)",
+      "titleEn": "L11: Vocabulary (Jobs) (Writing)",
+      "description": "Berufe, Tätigkeiten.",
+      "descriptionEn": "Jobs, activities.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_11",
+        "select:l11_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l11_grammar",
+      "title": "Grammatik: Modalverben",
+      "titleEn": "Grammar: Modal Verbs",
+      "description": "pouvoir, vouloir, devoir.",
+      "descriptionEn": "can, want, must.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l11_practice",
+      "title": "Sprechkompetenz: Fähigkeiten",
+      "titleEn": "Speaking: Abilities",
+      "description": "Sprich über deine Talente.",
+      "descriptionEn": "Talk about your talents.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_lesson_12",
+      "title": "Lektion 12: Abschluss A1",
+      "titleEn": "Lesson 12: Review A1",
+      "description": "Rückblick und Zusammenfassung.",
+      "descriptionEn": "Review and summary.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A1"
+      ],
+      "contains": [
+        "cefr_fr_a1_l12_vocabulary",
+        "cefr_fr_a1_l12_vocabulary_rev",
+        "cefr_fr_a1_l12_grammar",
+        "cefr_fr_a1_l12_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l12_vocabulary",
+      "title": "L12: Wortschatz (Review) (Lesen)",
+      "titleEn": "L12: Vocabulary (Review) (Reading)",
+      "description": "Wiederholung aller Themen.",
+      "descriptionEn": "Review of all topics.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_12",
+        "select:l12_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l12_vocabulary_rev",
+      "title": "L12: Wortschatz (Review) (Schreiben)",
+      "titleEn": "L12: Vocabulary (Review) (Writing)",
+      "description": "Wiederholung aller Themen.",
+      "descriptionEn": "Review of all topics.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a1_french_deck",
+        "lesson_12",
+        "select:l12_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a1_french_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l12_grammar",
+      "title": "Grammatik: Review",
+      "titleEn": "Grammar: Review",
+      "description": "Alle Strukturen + Passé Composé Intro.",
+      "descriptionEn": "All structures + Passé Composé Intro.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_fr_a1_l12_practice",
+      "title": "Abschlussprojekt",
+      "titleEn": "Final Project",
+      "description": "Stelle dich komplett vor.",
+      "descriptionEn": "Introduce yourself completely.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    }
+  ]
 }

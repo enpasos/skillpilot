@@ -1,1132 +1,1315 @@
 {
-    "title": "Englisch A2 (Grundlagen)",
-    "titleEn": "English (CEFR A2)",
-    "description": "Erweiterte Basiskenntnisse; kann Routinen beschreiben und Vergangenes erzählen.",
-    "descriptionEn": "Extended basic knowledge; can describe routines and tell about the past.",
-    "landscapeId": "18f3a380-4927-4483-9118-243890251703",
-    "locale": "de-DE",
-    "subject": "Englisch",
-    "frameworkId": "cefr-english",
-    "goals": [
-        {
-            "id": "2c0aa7e1-7e98-41f3-907f-af5d4d807f20",
-            "title": "Englisch A2 (Grundlagen)",
-            "titleEn": "Level A2 - Course Structure",
-            "description": "Erweiterte Basiskenntnisse; kann Routinen beschreiben und Vergangenes erzählen.",
-            "descriptionEn": "Systematic development of A2 competencies through lessons.",
-            "core": true,
-            "weight": 1,
-            "tags": [
-                "structure",
-                "A2",
-                "root"
-            ],
-            "contains": [
-                "cefr_a2_module_01",
-                "cefr_a2_module_02",
-                "cefr_a2_module_03",
-                "cefr_a2_module_04"
-            ],
-            "requires": [
-                "08b48ebe-94ea-40b6-872d-1db8d9defab3"
-            ]
-        },
-        {
-            "id": "cefr_a2_module_01",
-            "title": "Modul 1: Alltag & Vergangenheit",
-            "titleEn": "Module 1: Routine & Past",
-            "description": "Gegenwart und Vergangenheit erzählen.",
-            "descriptionEn": "Talking about present and past.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_a2_lesson_01",
-                "cefr_a2_lesson_02",
-                "cefr_a2_lesson_03"
-            ]
-        },
-        {
-            "id": "cefr_a2_lesson_01",
-            "title": "Lektion 01: Gerade jetzt & Immer",
-            "titleEn": "Lesson 01: Right Now & Always",
-            "description": "Unterschied: Jetzt vs. Normalerweise.",
-            "descriptionEn": "Difference: Now vs. Usually.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_a2_l01_vocabulary",
-                "cefr_a2_l01_vocabulary_rev",
-                "cefr_a2_l01_grammar",
-                "cefr_a2_l01_practice"
-            ]
-        },
-        {
-            "id": "cefr_a2_l01_vocabulary",
-            "title": "L1: Wortschatz (Actions) (Lesen)",
-            "titleEn": "L1: Vocabulary (Actions) (Reading)",
-            "description": "Verben für Aktivitäten.",
-            "descriptionEn": "Verbs for activities.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_1",
-                "select:l1_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l01_vocabulary_rev",
-            "title": "L1: Wortschatz (Actions) (Schreiben)",
-            "titleEn": "L1: Vocabulary (Actions) (Writing)",
-            "description": "Verben für Aktivitäten.",
-            "descriptionEn": "Verbs for activities.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_1",
-                "select:l1_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l01_grammar",
-            "title": "Grammatik: Present Continuous",
-            "titleEn": "Grammar: Present Continuous",
-            "description": "I am doing vs. I do.",
-            "descriptionEn": "I am doing vs. I do.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l01_practice",
-            "title": "Sprechkompetenz: Aktuell",
-            "titleEn": "Speaking: Currently",
-            "description": "Beschreiben, was gerade passiert.",
-            "descriptionEn": "Describe what is happening.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_lesson_02",
-            "title": "Lektion 02: War das schön?",
-            "titleEn": "Lesson 02: Was it nice?",
-            "description": "Vergangene Zustände (was/were).",
-            "descriptionEn": "Past states (was/were).",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_a2_l02_vocabulary",
-                "cefr_a2_l02_vocabulary_rev",
-                "cefr_a2_l02_grammar",
-                "cefr_a2_l02_practice"
-            ],
-            "requires": [
-                "cefr_a2_lesson_01"
-            ]
-        },
-        {
-            "id": "cefr_a2_l02_vocabulary",
-            "title": "L2: Wortschatz (Orte & Gefühle) (Lesen)",
-            "titleEn": "L2: Vocabulary (Places & Feelings) (Reading)",
-            "description": "Adjektive und Ortsangaben.",
-            "descriptionEn": "Adjectives and places.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_2",
-                "select:l2_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l02_vocabulary_rev",
-            "title": "L2: Wortschatz (Orte & Gefühle) (Schreiben)",
-            "titleEn": "L2: Vocabulary (Places & Feelings) (Writing)",
-            "description": "Adjektive und Ortsangaben.",
-            "descriptionEn": "Adjectives and places.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_2",
-                "select:l2_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l02_grammar",
-            "title": "Grammatik: Past Simple (be)",
-            "titleEn": "Grammar: Past Simple (be)",
-            "description": "I was, You were.",
-            "descriptionEn": "I was, You were.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l02_practice",
-            "title": "Sprechkompetenz: Gestern",
-            "titleEn": "Speaking: Yesterday",
-            "description": "Sagen, wo man war.",
-            "descriptionEn": "Say where you were.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_lesson_03",
-            "title": "Lektion 03: Wochenende & Urlaub",
-            "titleEn": "Lesson 03: Weekend & Holiday",
-            "description": "Erzählen, was man gemacht hat.",
-            "descriptionEn": "Tell what you did.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_a2_l03_vocabulary",
-                "cefr_a2_l03_vocabulary_rev",
-                "cefr_a2_l03_grammar",
-                "cefr_a2_l03_practice"
-            ],
-            "requires": [
-                "cefr_a2_lesson_02"
-            ]
-        },
-        {
-            "id": "cefr_a2_l03_vocabulary",
-            "title": "L3: Wortschatz (Urlaub) (Lesen)",
-            "titleEn": "L3: Vocabulary (Holiday) (Reading)",
-            "description": "Reiseaktivitäten.",
-            "descriptionEn": "Travel activities.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_3",
-                "select:l3_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l03_vocabulary_rev",
-            "title": "L3: Wortschatz (Urlaub) (Schreiben)",
-            "titleEn": "L3: Vocabulary (Holiday) (Writing)",
-            "description": "Reiseaktivitäten.",
-            "descriptionEn": "Travel activities.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_3",
-                "select:l3_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l03_grammar",
-            "title": "Grammatik: Past Simple",
-            "titleEn": "Grammar: Past Simple",
-            "description": "Regelmäßige Verben (-ed).",
-            "descriptionEn": "Regular verbs (-ed).",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l03_practice",
-            "title": "Sprechkompetenz: Erzählen",
-            "titleEn": "Speaking: Telling",
-            "description": "Vom Wochenende erzählen.",
-            "descriptionEn": "Tell about the weekend.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_module_02",
-            "title": "Modul 2: Unterwegs & Pläne",
-            "titleEn": "Module 2: Travel & Plans",
-            "description": "Reisen, Wege und Zukunft.",
-            "descriptionEn": "Travel, directions and future.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_a2_lesson_04",
-                "cefr_a2_lesson_05",
-                "cefr_a2_lesson_06"
-            ]
-        },
-        {
-            "id": "cefr_a2_lesson_04",
-            "title": "Lektion 04: Zukunftspläne",
-            "titleEn": "Lesson 04: Future Plans",
-            "description": "Pläne machen (going to).",
-            "descriptionEn": "Making plans (going to).",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_a2_l04_vocabulary",
-                "cefr_a2_l04_vocabulary_rev",
-                "cefr_a2_l04_grammar",
-                "cefr_a2_l04_practice"
-            ],
-            "requires": [
-                "cefr_a2_lesson_03"
-            ]
-        },
-        {
-            "id": "cefr_a2_l04_vocabulary",
-            "title": "L4: Wortschatz (Reise) (Lesen)",
-            "titleEn": "L4: Vocabulary (Travel) (Reading)",
-            "description": "Zeitangaben, Planung.",
-            "descriptionEn": "Time expressions, planning.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_4",
-                "select:l4_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l04_vocabulary_rev",
-            "title": "L4: Wortschatz (Reise) (Schreiben)",
-            "titleEn": "L4: Vocabulary (Travel) (Writing)",
-            "description": "Zeitangaben, Planung.",
-            "descriptionEn": "Time expressions, planning.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_4",
-                "select:l4_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l04_grammar",
-            "title": "Grammatik: Going to-Future",
-            "titleEn": "Grammar: Going to-Future",
-            "description": "I am going to visit...",
-            "descriptionEn": "I am going to visit...",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l04_practice",
-            "title": "Sprechkompetenz: Pläne",
-            "titleEn": "Speaking: Plans",
-            "description": "Über den nächsten Urlaub sprechen.",
-            "descriptionEn": "Talk about next holiday.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_lesson_05",
-            "title": "Lektion 05: Bewegung & Reise",
-            "titleEn": "Lesson 05: Movement & Travel",
-            "description": "Wege beschreiben.",
-            "descriptionEn": "Describing routes.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_a2_l05_vocabulary",
-                "cefr_a2_l05_vocabulary_rev",
-                "cefr_a2_l05_grammar",
-                "cefr_a2_l05_practice"
-            ],
-            "requires": [
-                "cefr_a2_lesson_04"
-            ]
-        },
-        {
-            "id": "cefr_a2_l05_vocabulary",
-            "title": "L5: Wortschatz (Transport) (Lesen)",
-            "titleEn": "L5: Vocabulary (Transport) (Reading)",
-            "description": "Zug, Bus, Richtungen.",
-            "descriptionEn": "Train, bus, directions.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_5",
-                "select:l5_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l05_vocabulary_rev",
-            "title": "L5: Wortschatz (Transport) (Schreiben)",
-            "titleEn": "L5: Vocabulary (Transport) (Writing)",
-            "description": "Zug, Bus, Richtungen.",
-            "descriptionEn": "Train, bus, directions.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_5",
-                "select:l5_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l05_grammar",
-            "title": "Grammatik: Prepositions",
-            "titleEn": "Grammar: Prepositions",
-            "description": "Bewegung: to, from, into.",
-            "descriptionEn": "Movement: to, from, into.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l05_practice",
-            "title": "Sprechkompetenz: Reisebericht",
-            "titleEn": "Speaking: Travel Report",
-            "description": "Reisewege beschreiben.",
-            "descriptionEn": "Describe travel routes.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_lesson_06",
-            "title": "Lektion 06: Fähigkeiten",
-            "titleEn": "Lesson 06: Skills",
-            "description": "Was man kann (can/can't).",
-            "descriptionEn": "What you can do (can/can't).",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_a2_l06_vocabulary",
-                "cefr_a2_l06_vocabulary_rev",
-                "cefr_a2_l06_grammar",
-                "cefr_a2_l06_practice"
-            ],
-            "requires": [
-                "cefr_a2_lesson_05"
-            ]
-        },
-        {
-            "id": "cefr_a2_l06_vocabulary",
-            "title": "L6: Wortschatz (Skills) (Lesen)",
-            "titleEn": "L6: Vocabulary (Skills) (Reading)",
-            "description": "Schwimmen, Fahren, Adverbien.",
-            "descriptionEn": "Swim, drive, adverbs.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_6",
-                "select:l6_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l06_vocabulary_rev",
-            "title": "L6: Wortschatz (Skills) (Schreiben)",
-            "titleEn": "L6: Vocabulary (Skills) (Writing)",
-            "description": "Schwimmen, Fahren, Adverbien.",
-            "descriptionEn": "Swim, drive, adverbs.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_6",
-                "select:l6_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l06_grammar",
-            "title": "Grammatik: Can & Adverbs",
-            "titleEn": "Grammar: Can & Adverbs",
-            "description": "Can you...? Quickly, well.",
-            "descriptionEn": "Can you...? Quickly, well.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l06_practice",
-            "title": "Sprechkompetenz: Talente",
-            "titleEn": "Speaking: Talents",
-            "description": "Sagen, was man gut kann.",
-            "descriptionEn": "Say what you can do well.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_module_03",
-            "title": "Modul 3: Essen & Vergleiche",
-            "titleEn": "Module 3: Food & Comparisons",
-            "description": "Einkaufen und Vergleichen.",
-            "descriptionEn": "Shopping and comparing.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_a2_lesson_07",
-                "cefr_a2_lesson_08",
-                "cefr_a2_lesson_09"
-            ]
-        },
-        {
-            "id": "cefr_a2_lesson_07",
-            "title": "Lektion 07: Im Restaurant",
-            "titleEn": "Lesson 07: At the Restaurant",
-            "description": "Bestellen und Mengen.",
-            "descriptionEn": "Ordering and quantities.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_a2_l07_vocabulary",
-                "cefr_a2_l07_vocabulary_rev",
-                "cefr_a2_l07_grammar",
-                "cefr_a2_l07_practice"
-            ],
-            "requires": [
-                "cefr_a2_lesson_06"
-            ]
-        },
-        {
-            "id": "cefr_a2_l07_vocabulary",
-            "title": "L7: Wortschatz (Essen II) (Lesen)",
-            "titleEn": "L7: Vocabulary (Food II) (Reading)",
-            "description": "Lebensmittel, Behälter.",
-            "descriptionEn": "Foods, containers.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_7",
-                "select:l7_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l07_vocabulary_rev",
-            "title": "L7: Wortschatz (Essen II) (Schreiben)",
-            "titleEn": "L7: Vocabulary (Food II) (Writing)",
-            "description": "Lebensmittel, Behälter.",
-            "descriptionEn": "Foods, containers.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_7",
-                "select:l7_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l07_grammar",
-            "title": "Grammatik: Some/Any",
-            "titleEn": "Grammar: Some/Any",
-            "description": "Zählbar/Unzählbar.",
-            "descriptionEn": "Countable/Uncountable.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l07_practice",
-            "title": "Sprechkompetenz: Einkauf",
-            "titleEn": "Speaking: Shopping",
-            "description": "Gespräch im Laden.",
-            "descriptionEn": "Conversation in a shop.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_lesson_08",
-            "title": "Lektion 08: Vergleiche",
-            "titleEn": "Lesson 08: Comparisons",
-            "description": "Besser, größer, teurer.",
-            "descriptionEn": "Better, bigger, more expensive.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_a2_l08_vocabulary",
-                "cefr_a2_l08_vocabulary_rev",
-                "cefr_a2_l08_grammar",
-                "cefr_a2_l08_practice"
-            ],
-            "requires": [
-                "cefr_a2_lesson_07"
-            ]
-        },
-        {
-            "id": "cefr_a2_l08_vocabulary",
-            "title": "L8: Wortschatz (Shopping) (Lesen)",
-            "titleEn": "L8: Vocabulary (Shopping) (Reading)",
-            "description": "Eigenschaften, Preise.",
-            "descriptionEn": "Attributes, prices.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_8",
-                "select:l8_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l08_vocabulary_rev",
-            "title": "L8: Wortschatz (Shopping) (Schreiben)",
-            "titleEn": "L8: Vocabulary (Shopping) (Writing)",
-            "description": "Eigenschaften, Preise.",
-            "descriptionEn": "Attributes, prices.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_8",
-                "select:l8_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l08_grammar",
-            "title": "Grammatik: Komparativ",
-            "titleEn": "Grammar: Comparative",
-            "description": "Bigger than, more X than.",
-            "descriptionEn": "Bigger than, more X than.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l08_practice",
-            "title": "Sprechkompetenz: Vergleich",
-            "titleEn": "Speaking: Comparing",
-            "description": "Zwei Dinge vergleichen.",
-            "descriptionEn": "Compare two things.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_lesson_09",
-            "title": "Lektion 09: Der/Die Beste",
-            "titleEn": "Lesson 09: The Best",
-            "description": "Superlative ausdrücken.",
-            "descriptionEn": "Expressing superlatives.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_a2_l09_vocabulary",
-                "cefr_a2_l09_vocabulary_rev",
-                "cefr_a2_l09_grammar",
-                "cefr_a2_l09_practice"
-            ],
-            "requires": [
-                "cefr_a2_lesson_08"
-            ]
-        },
-        {
-            "id": "cefr_a2_l09_vocabulary",
-            "title": "L9: Wortschatz (Meinung) (Lesen)",
-            "titleEn": "L9: Vocabulary (Opinion) (Reading)",
-            "description": "Rekorde, Meinung.",
-            "descriptionEn": "Records, opinion.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_9",
-                "select:l9_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l09_vocabulary_rev",
-            "title": "L9: Wortschatz (Meinung) (Schreiben)",
-            "titleEn": "L9: Vocabulary (Opinion) (Writing)",
-            "description": "Rekorde, Meinung.",
-            "descriptionEn": "Records, opinion.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_9",
-                "select:l9_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l09_grammar",
-            "title": "Grammatik: Superlativ",
-            "titleEn": "Grammar: Superlative",
-            "description": "The best, the most...",
-            "descriptionEn": "The best, the most...",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l09_practice",
-            "title": "Sprechkompetenz: Rekorde",
-            "titleEn": "Speaking: Records",
-            "description": "Über das Beste sprechen.",
-            "descriptionEn": "Talk about the best.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_module_04",
-            "title": "Modul 4: Geschichten & Details",
-            "titleEn": "Module 4: Stories & Details",
-            "description": "Präzise Beschreibungen.",
-            "descriptionEn": "Precise descriptions.",
-            "core": true,
-            "weight": 5,
-            "tags": [
-                "module"
-            ],
-            "contains": [
-                "cefr_a2_lesson_10",
-                "cefr_a2_lesson_11",
-                "cefr_a2_lesson_12"
-            ]
-        },
-        {
-            "id": "cefr_a2_lesson_10",
-            "title": "Lektion 10: Personen & Objekte",
-            "titleEn": "Lesson 10: People & Objects",
-            "description": "Beziehungen und Dinge.",
-            "descriptionEn": "Relationships and things.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_a2_l10_vocabulary",
-                "cefr_a2_l10_vocabulary_rev",
-                "cefr_a2_l10_grammar",
-                "cefr_a2_l10_practice"
-            ],
-            "requires": [
-                "cefr_a2_lesson_09"
-            ]
-        },
-        {
-            "id": "cefr_a2_l10_vocabulary",
-            "title": "L10: Wortschatz (Beziehung) (Lesen)",
-            "titleEn": "L10: Vocabulary (Relat.) (Reading)",
-            "description": "Leute, Interaktion.",
-            "descriptionEn": "People, interaction.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_10",
-                "select:l10_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l10_vocabulary_rev",
-            "title": "L10: Wortschatz (Beziehung) (Schreiben)",
-            "titleEn": "L10: Vocabulary (Relat.) (Writing)",
-            "description": "Leute, Interaktion.",
-            "descriptionEn": "People, interaction.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_10",
-                "select:l10_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l10_grammar",
-            "title": "Grammatik: Objektpronomen",
-            "titleEn": "Grammar: Object Pronouns",
-            "description": "Me, him, them, us.",
-            "descriptionEn": "Me, him, them, us.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l10_practice",
-            "title": "Sprechkompetenz: Bezugnahme",
-            "titleEn": "Speaking: Referencing",
-            "description": "Über uns/sie sprechen.",
-            "descriptionEn": "Talk about us/them.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_lesson_11",
-            "title": "Lektion 11: Kleidung & Stil",
-            "titleEn": "Lesson 11: Clothes & Style",
-            "description": "Kleidung beschreiben.",
-            "descriptionEn": "Describing clothes.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_a2_l11_vocabulary",
-                "cefr_a2_l11_vocabulary_rev",
-                "cefr_a2_l11_grammar",
-                "cefr_a2_l11_practice"
-            ],
-            "requires": [
-                "cefr_a2_lesson_10"
-            ]
-        },
-        {
-            "id": "cefr_a2_l11_vocabulary",
-            "title": "L11: Wortschatz (Mode) (Lesen)",
-            "titleEn": "L11: Vocabulary (Fashion) (Reading)",
-            "description": "Kleidung, Farben.",
-            "descriptionEn": "Clothes, colors.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_11",
-                "select:l11_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l11_vocabulary_rev",
-            "title": "L11: Wortschatz (Mode) (Schreiben)",
-            "titleEn": "L11: Vocabulary (Fashion) (Writing)",
-            "description": "Kleidung, Farben.",
-            "descriptionEn": "Clothes, colors.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_11",
-                "select:l11_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l11_grammar",
-            "title": "Grammatik: Present Continuous",
-            "titleEn": "Grammar: Present Continuous",
-            "description": "He is wearing...",
-            "descriptionEn": "He is wearing...",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l11_practice",
-            "title": "Sprechkompetenz: Outfit",
-            "titleEn": "Speaking: Outfit",
-            "description": "Outfit beschreiben.",
-            "descriptionEn": "Describe an outfit.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_lesson_12",
-            "title": "Lektion 12: Abschluss A2",
-            "titleEn": "Lesson 12: Completion A2",
-            "description": "Geschichten erzählen.",
-            "descriptionEn": "Telling stories.",
-            "core": true,
-            "weight": 10,
-            "tags": [
-                "lesson",
-                "A2"
-            ],
-            "contains": [
-                "cefr_a2_l12_vocabulary",
-                "cefr_a2_l12_vocabulary_rev",
-                "cefr_a2_l12_grammar",
-                "cefr_a2_l12_practice"
-            ],
-            "requires": [
-                "cefr_a2_lesson_11"
-            ]
-        },
-        {
-            "id": "cefr_a2_l12_vocabulary",
-            "title": "L12: Wortschatz (Mix) (Lesen)",
-            "titleEn": "L12: Vocabulary (Mix) (Reading)",
-            "description": "Wiederholung A2.",
-            "descriptionEn": "Review A2.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_12",
-                "select:l12_fwd"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l12_vocabulary_rev",
-            "title": "L12: Wortschatz (Mix) (Schreiben)",
-            "titleEn": "L12: Vocabulary (Mix) (Writing)",
-            "description": "Wiederholung A2.",
-            "descriptionEn": "Review A2.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "vocabulary",
-                "srs-deck:cefr_a2_english_deck",
-                "lesson_12",
-                "select:l12_rev"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/cefr_a2_english_deck.json"
-            },
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l12_grammar",
-            "title": "Grammatik: Storytelling",
-            "titleEn": "Grammar: Storytelling",
-            "description": "Zeitliche Abfolgen.",
-            "descriptionEn": "Time sequences.",
-            "core": true,
-            "weight": 2,
-            "tags": [
-                "grammar"
-            ],
-            "contains": []
-        },
-        {
-            "id": "cefr_a2_l12_practice",
-            "title": "Sprechkompetenz: Geschichte",
-            "titleEn": "Speaking: Story",
-            "description": "Erlebnis erzählen.",
-            "descriptionEn": "Tell an experience.",
-            "core": true,
-            "weight": 4,
-            "tags": [
-                "practice"
-            ],
-            "contains": []
-        }
-    ]
+  "title": "Englisch A2 (Grundlagen)",
+  "titleEn": "English (CEFR A2)",
+  "description": "Erweiterte Basiskenntnisse; kann Routinen beschreiben und Vergangenes erzählen.",
+  "descriptionEn": "Extended basic knowledge; can describe routines and tell about the past.",
+  "landscapeId": "18f3a380-4927-4483-9118-243890251703",
+  "locale": "de-DE",
+  "subject": "Englisch",
+  "frameworkId": "cefr-english",
+  "goals": [
+    {
+      "id": "2c0aa7e1-7e98-41f3-907f-af5d4d807f20",
+      "title": "Englisch A2 (Grundlagen)",
+      "titleEn": "Level A2 - Course Structure",
+      "description": "Erweiterte Basiskenntnisse; kann Routinen beschreiben und Vergangenes erzählen.",
+      "descriptionEn": "Systematic development of A2 competencies through lessons.",
+      "weight": 1,
+      "tags": [
+        "structure",
+        "A2",
+        "root"
+      ],
+      "contains": [
+        "cefr_a2_module_01",
+        "cefr_a2_module_02",
+        "cefr_a2_module_03",
+        "cefr_a2_module_04"
+      ],
+      "requires": [
+        "08b48ebe-94ea-40b6-872d-1db8d9defab3"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_a2_module_01",
+      "title": "Modul 1: Alltag & Vergangenheit",
+      "titleEn": "Module 1: Routine & Past",
+      "description": "Gegenwart und Vergangenheit erzählen.",
+      "descriptionEn": "Talking about present and past.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_a2_lesson_01",
+        "cefr_a2_lesson_02",
+        "cefr_a2_lesson_03"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_lesson_01",
+      "title": "Lektion 01: Gerade jetzt & Immer",
+      "titleEn": "Lesson 01: Right Now & Always",
+      "description": "Unterschied: Jetzt vs. Normalerweise.",
+      "descriptionEn": "Difference: Now vs. Usually.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_a2_l01_vocabulary",
+        "cefr_a2_l01_vocabulary_rev",
+        "cefr_a2_l01_grammar",
+        "cefr_a2_l01_practice"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l01_vocabulary",
+      "title": "L1: Wortschatz (Actions) (Lesen)",
+      "titleEn": "L1: Vocabulary (Actions) (Reading)",
+      "description": "Verben für Aktivitäten.",
+      "descriptionEn": "Verbs for activities.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_1",
+        "select:l1_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l01_vocabulary_rev",
+      "title": "L1: Wortschatz (Actions) (Schreiben)",
+      "titleEn": "L1: Vocabulary (Actions) (Writing)",
+      "description": "Verben für Aktivitäten.",
+      "descriptionEn": "Verbs for activities.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_1",
+        "select:l1_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l01_grammar",
+      "title": "Grammatik: Present Continuous",
+      "titleEn": "Grammar: Present Continuous",
+      "description": "I am doing vs. I do.",
+      "descriptionEn": "I am doing vs. I do.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l01_practice",
+      "title": "Sprechkompetenz: Aktuell",
+      "titleEn": "Speaking: Currently",
+      "description": "Beschreiben, was gerade passiert.",
+      "descriptionEn": "Describe what is happening.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_lesson_02",
+      "title": "Lektion 02: War das schön?",
+      "titleEn": "Lesson 02: Was it nice?",
+      "description": "Vergangene Zustände (was/were).",
+      "descriptionEn": "Past states (was/were).",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_a2_l02_vocabulary",
+        "cefr_a2_l02_vocabulary_rev",
+        "cefr_a2_l02_grammar",
+        "cefr_a2_l02_practice"
+      ],
+      "requires": [
+        "cefr_a2_lesson_01"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_a2_l02_vocabulary",
+      "title": "L2: Wortschatz (Orte & Gefühle) (Lesen)",
+      "titleEn": "L2: Vocabulary (Places & Feelings) (Reading)",
+      "description": "Adjektive und Ortsangaben.",
+      "descriptionEn": "Adjectives and places.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_2",
+        "select:l2_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l02_vocabulary_rev",
+      "title": "L2: Wortschatz (Orte & Gefühle) (Schreiben)",
+      "titleEn": "L2: Vocabulary (Places & Feelings) (Writing)",
+      "description": "Adjektive und Ortsangaben.",
+      "descriptionEn": "Adjectives and places.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_2",
+        "select:l2_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l02_grammar",
+      "title": "Grammatik: Past Simple (be)",
+      "titleEn": "Grammar: Past Simple (be)",
+      "description": "I was, You were.",
+      "descriptionEn": "I was, You were.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l02_practice",
+      "title": "Sprechkompetenz: Gestern",
+      "titleEn": "Speaking: Yesterday",
+      "description": "Sagen, wo man war.",
+      "descriptionEn": "Say where you were.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_lesson_03",
+      "title": "Lektion 03: Wochenende & Urlaub",
+      "titleEn": "Lesson 03: Weekend & Holiday",
+      "description": "Erzählen, was man gemacht hat.",
+      "descriptionEn": "Tell what you did.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_a2_l03_vocabulary",
+        "cefr_a2_l03_vocabulary_rev",
+        "cefr_a2_l03_grammar",
+        "cefr_a2_l03_practice"
+      ],
+      "requires": [
+        "cefr_a2_lesson_02"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_a2_l03_vocabulary",
+      "title": "L3: Wortschatz (Urlaub) (Lesen)",
+      "titleEn": "L3: Vocabulary (Holiday) (Reading)",
+      "description": "Reiseaktivitäten.",
+      "descriptionEn": "Travel activities.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_3",
+        "select:l3_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l03_vocabulary_rev",
+      "title": "L3: Wortschatz (Urlaub) (Schreiben)",
+      "titleEn": "L3: Vocabulary (Holiday) (Writing)",
+      "description": "Reiseaktivitäten.",
+      "descriptionEn": "Travel activities.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_3",
+        "select:l3_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l03_grammar",
+      "title": "Grammatik: Past Simple",
+      "titleEn": "Grammar: Past Simple",
+      "description": "Regelmäßige Verben (-ed).",
+      "descriptionEn": "Regular verbs (-ed).",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l03_practice",
+      "title": "Sprechkompetenz: Erzählen",
+      "titleEn": "Speaking: Telling",
+      "description": "Vom Wochenende erzählen.",
+      "descriptionEn": "Tell about the weekend.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_module_02",
+      "title": "Modul 2: Unterwegs & Pläne",
+      "titleEn": "Module 2: Travel & Plans",
+      "description": "Reisen, Wege und Zukunft.",
+      "descriptionEn": "Travel, directions and future.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_a2_lesson_04",
+        "cefr_a2_lesson_05",
+        "cefr_a2_lesson_06"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_lesson_04",
+      "title": "Lektion 04: Zukunftspläne",
+      "titleEn": "Lesson 04: Future Plans",
+      "description": "Pläne machen (going to).",
+      "descriptionEn": "Making plans (going to).",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_a2_l04_vocabulary",
+        "cefr_a2_l04_vocabulary_rev",
+        "cefr_a2_l04_grammar",
+        "cefr_a2_l04_practice"
+      ],
+      "requires": [
+        "cefr_a2_lesson_03"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_a2_l04_vocabulary",
+      "title": "L4: Wortschatz (Reise) (Lesen)",
+      "titleEn": "L4: Vocabulary (Travel) (Reading)",
+      "description": "Zeitangaben, Planung.",
+      "descriptionEn": "Time expressions, planning.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_4",
+        "select:l4_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l04_vocabulary_rev",
+      "title": "L4: Wortschatz (Reise) (Schreiben)",
+      "titleEn": "L4: Vocabulary (Travel) (Writing)",
+      "description": "Zeitangaben, Planung.",
+      "descriptionEn": "Time expressions, planning.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_4",
+        "select:l4_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l04_grammar",
+      "title": "Grammatik: Going to-Future",
+      "titleEn": "Grammar: Going to-Future",
+      "description": "I am going to visit...",
+      "descriptionEn": "I am going to visit...",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l04_practice",
+      "title": "Sprechkompetenz: Pläne",
+      "titleEn": "Speaking: Plans",
+      "description": "Über den nächsten Urlaub sprechen.",
+      "descriptionEn": "Talk about next holiday.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_lesson_05",
+      "title": "Lektion 05: Bewegung & Reise",
+      "titleEn": "Lesson 05: Movement & Travel",
+      "description": "Wege beschreiben.",
+      "descriptionEn": "Describing routes.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_a2_l05_vocabulary",
+        "cefr_a2_l05_vocabulary_rev",
+        "cefr_a2_l05_grammar",
+        "cefr_a2_l05_practice"
+      ],
+      "requires": [
+        "cefr_a2_lesson_04"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_a2_l05_vocabulary",
+      "title": "L5: Wortschatz (Transport) (Lesen)",
+      "titleEn": "L5: Vocabulary (Transport) (Reading)",
+      "description": "Zug, Bus, Richtungen.",
+      "descriptionEn": "Train, bus, directions.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_5",
+        "select:l5_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l05_vocabulary_rev",
+      "title": "L5: Wortschatz (Transport) (Schreiben)",
+      "titleEn": "L5: Vocabulary (Transport) (Writing)",
+      "description": "Zug, Bus, Richtungen.",
+      "descriptionEn": "Train, bus, directions.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_5",
+        "select:l5_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l05_grammar",
+      "title": "Grammatik: Prepositions",
+      "titleEn": "Grammar: Prepositions",
+      "description": "Bewegung: to, from, into.",
+      "descriptionEn": "Movement: to, from, into.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l05_practice",
+      "title": "Sprechkompetenz: Reisebericht",
+      "titleEn": "Speaking: Travel Report",
+      "description": "Reisewege beschreiben.",
+      "descriptionEn": "Describe travel routes.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_lesson_06",
+      "title": "Lektion 06: Fähigkeiten",
+      "titleEn": "Lesson 06: Skills",
+      "description": "Was man kann (can/can't).",
+      "descriptionEn": "What you can do (can/can't).",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_a2_l06_vocabulary",
+        "cefr_a2_l06_vocabulary_rev",
+        "cefr_a2_l06_grammar",
+        "cefr_a2_l06_practice"
+      ],
+      "requires": [
+        "cefr_a2_lesson_05"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_a2_l06_vocabulary",
+      "title": "L6: Wortschatz (Skills) (Lesen)",
+      "titleEn": "L6: Vocabulary (Skills) (Reading)",
+      "description": "Schwimmen, Fahren, Adverbien.",
+      "descriptionEn": "Swim, drive, adverbs.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_6",
+        "select:l6_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l06_vocabulary_rev",
+      "title": "L6: Wortschatz (Skills) (Schreiben)",
+      "titleEn": "L6: Vocabulary (Skills) (Writing)",
+      "description": "Schwimmen, Fahren, Adverbien.",
+      "descriptionEn": "Swim, drive, adverbs.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_6",
+        "select:l6_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l06_grammar",
+      "title": "Grammatik: Can & Adverbs",
+      "titleEn": "Grammar: Can & Adverbs",
+      "description": "Can you...? Quickly, well.",
+      "descriptionEn": "Can you...? Quickly, well.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l06_practice",
+      "title": "Sprechkompetenz: Talente",
+      "titleEn": "Speaking: Talents",
+      "description": "Sagen, was man gut kann.",
+      "descriptionEn": "Say what you can do well.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_module_03",
+      "title": "Modul 3: Essen & Vergleiche",
+      "titleEn": "Module 3: Food & Comparisons",
+      "description": "Einkaufen und Vergleichen.",
+      "descriptionEn": "Shopping and comparing.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_a2_lesson_07",
+        "cefr_a2_lesson_08",
+        "cefr_a2_lesson_09"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_lesson_07",
+      "title": "Lektion 07: Im Restaurant",
+      "titleEn": "Lesson 07: At the Restaurant",
+      "description": "Bestellen und Mengen.",
+      "descriptionEn": "Ordering and quantities.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_a2_l07_vocabulary",
+        "cefr_a2_l07_vocabulary_rev",
+        "cefr_a2_l07_grammar",
+        "cefr_a2_l07_practice"
+      ],
+      "requires": [
+        "cefr_a2_lesson_06"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_a2_l07_vocabulary",
+      "title": "L7: Wortschatz (Essen II) (Lesen)",
+      "titleEn": "L7: Vocabulary (Food II) (Reading)",
+      "description": "Lebensmittel, Behälter.",
+      "descriptionEn": "Foods, containers.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_7",
+        "select:l7_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l07_vocabulary_rev",
+      "title": "L7: Wortschatz (Essen II) (Schreiben)",
+      "titleEn": "L7: Vocabulary (Food II) (Writing)",
+      "description": "Lebensmittel, Behälter.",
+      "descriptionEn": "Foods, containers.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_7",
+        "select:l7_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l07_grammar",
+      "title": "Grammatik: Some/Any",
+      "titleEn": "Grammar: Some/Any",
+      "description": "Zählbar/Unzählbar.",
+      "descriptionEn": "Countable/Uncountable.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l07_practice",
+      "title": "Sprechkompetenz: Einkauf",
+      "titleEn": "Speaking: Shopping",
+      "description": "Gespräch im Laden.",
+      "descriptionEn": "Conversation in a shop.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_lesson_08",
+      "title": "Lektion 08: Vergleiche",
+      "titleEn": "Lesson 08: Comparisons",
+      "description": "Besser, größer, teurer.",
+      "descriptionEn": "Better, bigger, more expensive.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_a2_l08_vocabulary",
+        "cefr_a2_l08_vocabulary_rev",
+        "cefr_a2_l08_grammar",
+        "cefr_a2_l08_practice"
+      ],
+      "requires": [
+        "cefr_a2_lesson_07"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_a2_l08_vocabulary",
+      "title": "L8: Wortschatz (Shopping) (Lesen)",
+      "titleEn": "L8: Vocabulary (Shopping) (Reading)",
+      "description": "Eigenschaften, Preise.",
+      "descriptionEn": "Attributes, prices.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_8",
+        "select:l8_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l08_vocabulary_rev",
+      "title": "L8: Wortschatz (Shopping) (Schreiben)",
+      "titleEn": "L8: Vocabulary (Shopping) (Writing)",
+      "description": "Eigenschaften, Preise.",
+      "descriptionEn": "Attributes, prices.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_8",
+        "select:l8_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l08_grammar",
+      "title": "Grammatik: Komparativ",
+      "titleEn": "Grammar: Comparative",
+      "description": "Bigger than, more X than.",
+      "descriptionEn": "Bigger than, more X than.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l08_practice",
+      "title": "Sprechkompetenz: Vergleich",
+      "titleEn": "Speaking: Comparing",
+      "description": "Zwei Dinge vergleichen.",
+      "descriptionEn": "Compare two things.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_lesson_09",
+      "title": "Lektion 09: Der/Die Beste",
+      "titleEn": "Lesson 09: The Best",
+      "description": "Superlative ausdrücken.",
+      "descriptionEn": "Expressing superlatives.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_a2_l09_vocabulary",
+        "cefr_a2_l09_vocabulary_rev",
+        "cefr_a2_l09_grammar",
+        "cefr_a2_l09_practice"
+      ],
+      "requires": [
+        "cefr_a2_lesson_08"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_a2_l09_vocabulary",
+      "title": "L9: Wortschatz (Meinung) (Lesen)",
+      "titleEn": "L9: Vocabulary (Opinion) (Reading)",
+      "description": "Rekorde, Meinung.",
+      "descriptionEn": "Records, opinion.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_9",
+        "select:l9_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l09_vocabulary_rev",
+      "title": "L9: Wortschatz (Meinung) (Schreiben)",
+      "titleEn": "L9: Vocabulary (Opinion) (Writing)",
+      "description": "Rekorde, Meinung.",
+      "descriptionEn": "Records, opinion.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_9",
+        "select:l9_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l09_grammar",
+      "title": "Grammatik: Superlativ",
+      "titleEn": "Grammar: Superlative",
+      "description": "The best, the most...",
+      "descriptionEn": "The best, the most...",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l09_practice",
+      "title": "Sprechkompetenz: Rekorde",
+      "titleEn": "Speaking: Records",
+      "description": "Über das Beste sprechen.",
+      "descriptionEn": "Talk about the best.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_module_04",
+      "title": "Modul 4: Geschichten & Details",
+      "titleEn": "Module 4: Stories & Details",
+      "description": "Präzise Beschreibungen.",
+      "descriptionEn": "Precise descriptions.",
+      "weight": 5,
+      "tags": [
+        "module"
+      ],
+      "contains": [
+        "cefr_a2_lesson_10",
+        "cefr_a2_lesson_11",
+        "cefr_a2_lesson_12"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_lesson_10",
+      "title": "Lektion 10: Personen & Objekte",
+      "titleEn": "Lesson 10: People & Objects",
+      "description": "Beziehungen und Dinge.",
+      "descriptionEn": "Relationships and things.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_a2_l10_vocabulary",
+        "cefr_a2_l10_vocabulary_rev",
+        "cefr_a2_l10_grammar",
+        "cefr_a2_l10_practice"
+      ],
+      "requires": [
+        "cefr_a2_lesson_09"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_a2_l10_vocabulary",
+      "title": "L10: Wortschatz (Beziehung) (Lesen)",
+      "titleEn": "L10: Vocabulary (Relat.) (Reading)",
+      "description": "Leute, Interaktion.",
+      "descriptionEn": "People, interaction.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_10",
+        "select:l10_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l10_vocabulary_rev",
+      "title": "L10: Wortschatz (Beziehung) (Schreiben)",
+      "titleEn": "L10: Vocabulary (Relat.) (Writing)",
+      "description": "Leute, Interaktion.",
+      "descriptionEn": "People, interaction.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_10",
+        "select:l10_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l10_grammar",
+      "title": "Grammatik: Objektpronomen",
+      "titleEn": "Grammar: Object Pronouns",
+      "description": "Me, him, them, us.",
+      "descriptionEn": "Me, him, them, us.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l10_practice",
+      "title": "Sprechkompetenz: Bezugnahme",
+      "titleEn": "Speaking: Referencing",
+      "description": "Über uns/sie sprechen.",
+      "descriptionEn": "Talk about us/them.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_lesson_11",
+      "title": "Lektion 11: Kleidung & Stil",
+      "titleEn": "Lesson 11: Clothes & Style",
+      "description": "Kleidung beschreiben.",
+      "descriptionEn": "Describing clothes.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_a2_l11_vocabulary",
+        "cefr_a2_l11_vocabulary_rev",
+        "cefr_a2_l11_grammar",
+        "cefr_a2_l11_practice"
+      ],
+      "requires": [
+        "cefr_a2_lesson_10"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_a2_l11_vocabulary",
+      "title": "L11: Wortschatz (Mode) (Lesen)",
+      "titleEn": "L11: Vocabulary (Fashion) (Reading)",
+      "description": "Kleidung, Farben.",
+      "descriptionEn": "Clothes, colors.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_11",
+        "select:l11_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l11_vocabulary_rev",
+      "title": "L11: Wortschatz (Mode) (Schreiben)",
+      "titleEn": "L11: Vocabulary (Fashion) (Writing)",
+      "description": "Kleidung, Farben.",
+      "descriptionEn": "Clothes, colors.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_11",
+        "select:l11_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l11_grammar",
+      "title": "Grammatik: Present Continuous",
+      "titleEn": "Grammar: Present Continuous",
+      "description": "He is wearing...",
+      "descriptionEn": "He is wearing...",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l11_practice",
+      "title": "Sprechkompetenz: Outfit",
+      "titleEn": "Speaking: Outfit",
+      "description": "Outfit beschreiben.",
+      "descriptionEn": "Describe an outfit.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_lesson_12",
+      "title": "Lektion 12: Abschluss A2",
+      "titleEn": "Lesson 12: Completion A2",
+      "description": "Geschichten erzählen.",
+      "descriptionEn": "Telling stories.",
+      "weight": 10,
+      "tags": [
+        "lesson",
+        "A2"
+      ],
+      "contains": [
+        "cefr_a2_l12_vocabulary",
+        "cefr_a2_l12_vocabulary_rev",
+        "cefr_a2_l12_grammar",
+        "cefr_a2_l12_practice"
+      ],
+      "requires": [
+        "cefr_a2_lesson_11"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      }
+    },
+    {
+      "id": "cefr_a2_l12_vocabulary",
+      "title": "L12: Wortschatz (Mix) (Lesen)",
+      "titleEn": "L12: Vocabulary (Mix) (Reading)",
+      "description": "Wiederholung A2.",
+      "descriptionEn": "Review A2.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_12",
+        "select:l12_fwd"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l12_vocabulary_rev",
+      "title": "L12: Wortschatz (Mix) (Schreiben)",
+      "titleEn": "L12: Vocabulary (Mix) (Writing)",
+      "description": "Wiederholung A2.",
+      "descriptionEn": "Review A2.",
+      "weight": 2,
+      "tags": [
+        "vocabulary",
+        "srs-deck:cefr_a2_english_deck",
+        "lesson_12",
+        "select:l12_rev"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/cefr_a2_english_deck.json"
+      },
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l12_grammar",
+      "title": "Grammatik: Storytelling",
+      "titleEn": "Grammar: Storytelling",
+      "description": "Zeitliche Abfolgen.",
+      "descriptionEn": "Time sequences.",
+      "weight": 2,
+      "tags": [
+        "grammar"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    },
+    {
+      "id": "cefr_a2_l12_practice",
+      "title": "Sprechkompetenz: Geschichte",
+      "titleEn": "Speaking: Story",
+      "description": "Erlebnis erzählen.",
+      "descriptionEn": "Tell an experience.",
+      "weight": 4,
+      "tags": [
+        "practice"
+      ],
+      "contains": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "requires": []
+    }
+  ]
 }

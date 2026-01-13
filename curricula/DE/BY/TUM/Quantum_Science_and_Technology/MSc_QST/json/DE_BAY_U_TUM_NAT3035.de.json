@@ -1,636 +1,605 @@
 {
-    "title": "Quanteninformation (TUM, Modul NAT3035)",
-    "titleEn": "Quantum Information (TUM, Module NAT3035)",
-    "description": "Quanteninformation führt in die theoretischen Grundlagen der Quantenwissenschaft und -technologie ein. Behandelt werden Formalismus (Zustände, Kanäle, Messungen), Verschränkung und Nichtlokalität, Quantenkommunikationsprotokolle, Quantenrechnung und Algorithmen, Simulation und Metrologie sowie Dekohärenz und Fehlerkorrektur.",
-    "descriptionEn": "Quantum Information introduces the theoretical foundations of quantum science and technology. It covers formalism (states, channels, measurements), entanglement and nonlocality, quantum communication protocols, quantum computation and algorithms, simulation and metrology, and decoherence with error correction.",
-    "locale": "de-DE",
-    "subject": "TUM-Module",
-    "frameworkId": "tum-nat3035",
-    "goals": [
-        {
-            "id": "ee57132d-831a-5c54-b8bb-f8447aff9ec0",
-            "shortKey": "tum_nat3035_module",
-            "title": "Quanteninformation (Modul NAT3035)",
-            "titleEn": "Quantum Information (Module NAT3035)",
-            "description": "Die lernende Person kann zentrale Konzepte der Quanteninformation erklären und auf typische Anwendungen anwenden.",
-            "descriptionEn": "The learner can explain core concepts of quantum information and apply them to typical applications.",
-            "core": true,
-            "weight": 10.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:NAT3035",
-                "ects:10"
-            ],
-            "contains": [
-                "f426d947-45be-5726-994e-9dc9dd40b420",
-                "d0876090-5d72-52f1-8f67-d8c1f82d7ea6",
-                "561fcd7e-5029-5949-a0ed-024287aa8789",
-                "10eaa280-9edd-5ba9-b124-bb543fb52713",
-                "f4576880-25ae-5dd9-8d39-d88f085e03f6",
-                "54ff4cbf-1d3c-5759-aaf4-c9ab8e2dd4d6",
-                "38db5a36-9317-5ff3-ae10-6c581f0733b8"
-            ],
-            "requires": [],
-            "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/NAT3035"
-        },
-        {
-            "id": "f426d947-45be-5726-994e-9dc9dd40b420",
-            "shortKey": "tum_nat3035_foundations",
-            "title": "Grundlagen und Formalismus",
-            "titleEn": "Foundations and formalism",
-            "description": "Die lernende Person kann den grundlegenden Formalismus der Quanteninformation anwenden.",
-            "descriptionEn": "The learner can use the basic formalism of quantum information theory.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [
-                "d1cf3f3e-789d-5569-9f9e-6dbf98fc8d45",
-                "76daf960-bc57-5671-b2bd-9ca725a2a238",
-                "877922c1-cc8e-527a-ae49-4d370790d0e1",
-                "3ec0d3f6-82bc-53ea-9cb7-a6d796c7d8d2",
-                "887a54f6-e413-5828-8a88-cf88bd9e3615",
-                "aa5a5ec7-8d48-5d30-8869-17ef996d1502"
-            ],
-            "requires": []
-        },
-        {
-            "id": "d1cf3f3e-789d-5569-9f9e-6dbf98fc8d45",
-            "shortKey": "tum_nat3035_pure_mixed",
-            "title": "Reine und gemischte Zustände",
-            "titleEn": "Pure vs mixed states",
-            "description": "Die lernende Person kann reine und gemischte Zustände unterscheiden und mathematisch darstellen.",
-            "descriptionEn": "The learner can distinguish pure and mixed states and represent them mathematically.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "76daf960-bc57-5671-b2bd-9ca725a2a238",
-            "shortKey": "tum_nat3035_cp_maps",
-            "title": "Quantenentwicklung und vollständig positive Abbildungen",
-            "titleEn": "Quantum evolution and completely positive maps",
-            "description": "Die lernende Person kann unitäre Entwicklung, Kanäle und vollständig positive Abbildungen beschreiben.",
-            "descriptionEn": "The learner can describe unitary evolution, channels, and completely positive maps.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": [
-                "d1cf3f3e-789d-5569-9f9e-6dbf98fc8d45"
-            ]
-        },
-        {
-            "id": "877922c1-cc8e-527a-ae49-4d370790d0e1",
-            "shortKey": "tum_nat3035_measurements",
-            "title": "Messungen und POVMs",
-            "titleEn": "Measurements and POVMs",
-            "description": "Die lernende Person kann Quantenmessungen modellieren und Ergebnisstatistiken interpretieren.",
-            "descriptionEn": "The learner can model quantum measurements and interpret outcome statistics.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": [
-                "d1cf3f3e-789d-5569-9f9e-6dbf98fc8d45"
-            ]
-        },
-        {
-            "id": "3ec0d3f6-82bc-53ea-9cb7-a6d796c7d8d2",
-            "shortKey": "tum_nat3035_schmidt_purification",
-            "title": "Schmidt-Zerlegung und Purifikation",
-            "titleEn": "Schmidt decomposition and purification",
-            "description": "Die lernende Person kann Schmidt-Zerlegungen berechnen und Purifikationsmethoden nutzen.",
-            "descriptionEn": "The learner can compute Schmidt decompositions and use purification techniques.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": [
-                "d1cf3f3e-789d-5569-9f9e-6dbf98fc8d45"
-            ]
-        },
-        {
-            "id": "887a54f6-e413-5828-8a88-cf88bd9e3615",
-            "shortKey": "tum_nat3035_tomography_estimation",
-            "title": "Tomographie, Schätzung und Hypothesentests",
-            "titleEn": "Tomography, estimation, and hypothesis testing",
-            "description": "Die lernende Person kann grundlegende Methoden der Zustandsrekonstruktion und Schätzung erklären.",
-            "descriptionEn": "The learner can explain basic methods of quantum state tomography and estimation.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": [
-                "877922c1-cc8e-527a-ae49-4d370790d0e1"
-            ]
-        },
-        {
-            "id": "aa5a5ec7-8d48-5d30-8869-17ef996d1502",
-            "shortKey": "tum_nat3035_quantum_computation_basics",
-            "title": "Quantenmechanische Rechnungen",
-            "titleEn": "Quantum mechanical computations",
-            "description": "Die lernende Person kann Rechnungen durchführen, die für Quanteninformation relevant sind.",
-            "descriptionEn": "The learner can perform computations relevant to quantum information tasks.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "d0876090-5d72-52f1-8f67-d8c1f82d7ea6",
-            "shortKey": "tum_nat3035_entanglement",
-            "title": "Verschränkung und Nichtlokalität",
-            "titleEn": "Entanglement theory and nonlocality",
-            "description": "Die lernende Person kann Verschränkung in reinen und gemischten Zuständen analysieren.",
-            "descriptionEn": "The learner can analyze entanglement in pure and mixed states and its signatures.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [
-                "f6bb0d13-2833-50bb-b39d-1fdcb244332c",
-                "7377129a-a762-531b-8d8e-acd272aff326",
-                "c0f86475-86d1-54c9-91f6-794ad0ef4de5",
-                "eac2bb76-9af1-5f24-8f23-6d041daebba0"
-            ],
-            "requires": [
-                "f426d947-45be-5726-994e-9dc9dd40b420"
-            ]
-        },
-        {
-            "id": "f6bb0d13-2833-50bb-b39d-1fdcb244332c",
-            "shortKey": "tum_nat3035_entanglement_types",
-            "title": "Verschränkung in reinen und gemischten Zuständen",
-            "titleEn": "Pure and mixed-state entanglement",
-            "description": "Die lernende Person kann Verschränkung in reinen und gemischten Zuständen klassifizieren.",
-            "descriptionEn": "The learner can classify entanglement in pure and mixed states.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "7377129a-a762-531b-8d8e-acd272aff326",
-            "shortKey": "tum_nat3035_entanglement_entropy",
-            "title": "Verschränkungsentropie und Maße",
-            "titleEn": "Entanglement entropy and measures",
-            "description": "Die lernende Person kann Verschränkungsentropie und verwandte Maße berechnen.",
-            "descriptionEn": "The learner can compute entanglement entropy and related measures.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": [
-                "f6bb0d13-2833-50bb-b39d-1fdcb244332c"
-            ]
-        },
-        {
-            "id": "c0f86475-86d1-54c9-91f6-794ad0ef4de5",
-            "shortKey": "tum_nat3035_entanglement_distillation",
-            "title": "Verschränkungsumwandlung und Destillation",
-            "titleEn": "Entanglement conversion and distillation",
-            "description": "Die lernende Person kann Distillation, Umwandlung und Purifikation beschreiben.",
-            "descriptionEn": "The learner can describe distillation, conversion, and purification protocols.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": [
-                "7377129a-a762-531b-8d8e-acd272aff326"
-            ]
-        },
-        {
-            "id": "eac2bb76-9af1-5f24-8f23-6d041daebba0",
-            "shortKey": "tum_nat3035_bell_inequalities",
-            "title": "Bell-Ungleichungen und Nichtlokalität",
-            "titleEn": "Bell inequalities and nonlocality",
-            "description": "Die lernende Person kann Bell-Tests und deren Bedeutung für Nichtlokalität erklären.",
-            "descriptionEn": "The learner can explain Bell tests and their implications for nonlocality.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": [
-                "f6bb0d13-2833-50bb-b39d-1fdcb244332c"
-            ]
-        },
-        {
-            "id": "561fcd7e-5029-5949-a0ed-024287aa8789",
-            "shortKey": "tum_nat3035_communication",
-            "title": "Quantenkommunikation",
-            "titleEn": "Quantum communication protocols",
-            "description": "Die lernende Person kann erklären, wie Verschränkung Kommunikationsprotokolle ermöglicht.",
-            "descriptionEn": "The learner can explain how entanglement enables communication protocols.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [
-                "babda208-9cb6-5fb6-b33c-e9ff96e44f75",
-                "25c97fda-6b40-5515-96e1-b0230a45a806",
-                "b70751a4-2b6f-5238-b5f6-c4ad0b4fb920"
-            ],
-            "requires": [
-                "d0876090-5d72-52f1-8f67-d8c1f82d7ea6"
-            ]
-        },
-        {
-            "id": "babda208-9cb6-5fb6-b33c-e9ff96e44f75",
-            "shortKey": "tum_nat3035_dense_coding",
-            "title": "Dichte Kodierung",
-            "titleEn": "Dense coding",
-            "description": "Die lernende Person kann dichte Kodierung und ihre Ressourcen beschreiben.",
-            "descriptionEn": "The learner can explain dense coding and its resource requirements.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "25c97fda-6b40-5515-96e1-b0230a45a806",
-            "shortKey": "tum_nat3035_teleportation",
-            "title": "Quanten-Teleportation",
-            "titleEn": "Quantum teleportation",
-            "description": "Die lernende Person kann das Teleportationsprotokoll skizzieren und Ressourcen benennen.",
-            "descriptionEn": "The learner can outline the teleportation protocol and required resources.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "b70751a4-2b6f-5238-b5f6-c4ad0b4fb920",
-            "shortKey": "tum_nat3035_quantum_cryptography",
-            "title": "Quantenkryptographie (QKD)",
-            "titleEn": "Quantum cryptography (QKD)",
-            "description": "Die lernende Person kann grundlegende QKD-Protokolle erklären.",
-            "descriptionEn": "The learner can explain basic quantum key distribution protocols.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "10eaa280-9edd-5ba9-b124-bb543fb52713",
-            "shortKey": "tum_nat3035_computation",
-            "title": "Quantenrechnung und Algorithmen",
-            "titleEn": "Quantum computation and algorithms",
-            "description": "Die lernende Person kann Rechenmodelle und zentrale Algorithmen erklären.",
-            "descriptionEn": "The learner can explain computational models and key quantum algorithms.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [
-                "0962b17b-dd14-5cb7-9bfa-7d5d0448984d",
-                "f4ee60d1-4934-57ef-bd92-5b99464c179a"
-            ],
-            "requires": [
-                "f426d947-45be-5726-994e-9dc9dd40b420"
-            ]
-        },
-        {
-            "id": "0962b17b-dd14-5cb7-9bfa-7d5d0448984d",
-            "shortKey": "tum_nat3035_circuits",
-            "title": "Quantenschaltkreise und Gattermodell",
-            "titleEn": "Quantum circuits and gate model",
-            "description": "Die lernende Person kann Berechnungen mit Quantenschaltkreisen und Gattern modellieren.",
-            "descriptionEn": "The learner can model computations using quantum circuits and gates.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "f4ee60d1-4934-57ef-bd92-5b99464c179a",
-            "shortKey": "tum_nat3035_algorithms",
-            "title": "Deutsch-, Grover- und Shor-Algorithmen",
-            "titleEn": "Deutsch, Grover, and Shor algorithms",
-            "description": "Die lernende Person kann zentrale Schritte und Speedups dieser Algorithmen beschreiben.",
-            "descriptionEn": "The learner can describe core steps and speedups of standard algorithms.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": [
-                "0962b17b-dd14-5cb7-9bfa-7d5d0448984d"
-            ]
-        },
-        {
-            "id": "f4576880-25ae-5dd9-8d39-d88f085e03f6",
-            "shortKey": "tum_nat3035_simulation_metrology",
-            "title": "Quantensimulation und Metrologie",
-            "titleEn": "Quantum simulation and metrology",
-            "description": "Die lernende Person kann Simulation und Metrologie als Anwendungen der Quanteninformation erklären.",
-            "descriptionEn": "The learner can explain simulation and metrology as central applications.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [
-                "cf23b830-30d1-5422-9ce2-f76a3feb136a",
-                "c04405d7-9623-5f4f-9e63-d2a7408cf27e"
-            ],
-            "requires": [
-                "10eaa280-9edd-5ba9-b124-bb543fb52713"
-            ]
-        },
-        {
-            "id": "cf23b830-30d1-5422-9ce2-f76a3feb136a",
-            "shortKey": "tum_nat3035_simulation",
-            "title": "Grundlagen der Quantensimulation",
-            "titleEn": "Quantum simulation basics",
-            "description": "Die lernende Person kann erklären, wie Quantensysteme andere Quantensysteme simulieren.",
-            "descriptionEn": "The learner can explain how quantum systems simulate other quantum systems.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "c04405d7-9623-5f4f-9e63-d2a7408cf27e",
-            "shortKey": "tum_nat3035_metrology",
-            "title": "Quantenmetrologie und Schätzung",
-            "titleEn": "Quantum metrology and estimation",
-            "description": "Die lernende Person kann den Zusammenhang zwischen Präzision und Quantenressourcen erklären.",
-            "descriptionEn": "The learner can relate estimation precision to quantum resources.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "54ff4cbf-1d3c-5759-aaf4-c9ab8e2dd4d6",
-            "shortKey": "tum_nat3035_decoherence_ec",
-            "title": "Dekohärenz und Fehlerkorrektur",
-            "titleEn": "Decoherence and error correction",
-            "description": "Die lernende Person kann Dekohärenz und Gegenmaßnahmen für fragile Quanteninformation analysieren.",
-            "descriptionEn": "The learner can analyze decoherence and countermeasures for fragile quantum information.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [
-                "4da66070-a8c2-5b7b-b7d6-918b920c8ecb",
-                "63bb09c3-b60d-5892-b000-86875ba43781",
-                "ad1b13d7-004b-5d61-98b6-f5e0943631c9"
-            ],
-            "requires": [
-                "f426d947-45be-5726-994e-9dc9dd40b420"
-            ]
-        },
-        {
-            "id": "4da66070-a8c2-5b7b-b7d6-918b920c8ecb",
-            "shortKey": "tum_nat3035_decoherence",
-            "title": "Dekohärenzmechanismen",
-            "titleEn": "Decoherence mechanisms",
-            "description": "Die lernende Person kann Quellen und Folgen der Dekohärenz erklären.",
-            "descriptionEn": "The learner can explain sources and consequences of decoherence.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "63bb09c3-b60d-5892-b000-86875ba43781",
-            "shortKey": "tum_nat3035_lindblad",
-            "title": "Lindblad-Meistergleichung",
-            "titleEn": "Lindblad master equation",
-            "description": "Die lernende Person kann offene Quantensysteme mit Lindblad-Gleichungen modellieren.",
-            "descriptionEn": "The learner can model open-system dynamics using Lindblad equations.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": [
-                "4da66070-a8c2-5b7b-b7d6-918b920c8ecb"
-            ]
-        },
-        {
-            "id": "ad1b13d7-004b-5d61-98b6-f5e0943631c9",
-            "shortKey": "tum_nat3035_error_correction",
-            "title": "Fehlerkorrekturcodes und Strategien",
-            "titleEn": "Error correction codes and strategies",
-            "description": "Die lernende Person kann grundlegende Fehlerkorrekturschemata erklären.",
-            "descriptionEn": "The learner can explain elementary error correction schemes.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": [
-                "63bb09c3-b60d-5892-b000-86875ba43781"
-            ]
-        },
-        {
-            "id": "38db5a36-9317-5ff3-ae10-6c581f0733b8",
-            "shortKey": "tum_nat3035_advanced_topics",
-            "title": "Fortgeschrittene Themen",
-            "titleEn": "Advanced and optional topics",
-            "description": "Die lernende Person kann Bezüge der Quanteninformation zu fortgeschrittenen Themen herstellen.",
-            "descriptionEn": "The learner can relate quantum information to advanced topics in many-body physics.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [
-                "00c65d63-abf6-56ca-8608-39268d0961b0",
-                "67d92763-fe3a-5feb-a127-8bfc823e88a7",
-                "2785ba57-ed52-52b0-9357-13476fc694f4",
-                "25a48f71-67dc-5f74-a6d2-d0fb6501e892"
-            ],
-            "requires": [
-                "f426d947-45be-5726-994e-9dc9dd40b420"
-            ]
-        },
-        {
-            "id": "00c65d63-abf6-56ca-8608-39268d0961b0",
-            "shortKey": "tum_nat3035_many_body_entanglement",
-            "title": "Vielteilchen-Verschränkung",
-            "titleEn": "Many-body entanglement",
-            "description": "Die lernende Person kann Verschränkung in Vielteilchensystemen erklären.",
-            "descriptionEn": "The learner can explain entanglement in many-body systems.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": [
-                "d0876090-5d72-52f1-8f67-d8c1f82d7ea6"
-            ]
-        },
-        {
-            "id": "67d92763-fe3a-5feb-a127-8bfc823e88a7",
-            "shortKey": "tum_nat3035_topological_qc",
-            "title": "Topologische Quantenrechnung",
-            "titleEn": "Topological quantum computation",
-            "description": "Die lernende Person kann topologische Ansätze für robuste Quantenrechnung beschreiben.",
-            "descriptionEn": "The learner can describe topological approaches to robust quantum computation.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": [
-                "10eaa280-9edd-5ba9-b124-bb543fb52713"
-            ]
-        },
-        {
-            "id": "2785ba57-ed52-52b0-9357-13476fc694f4",
-            "shortKey": "tum_nat3035_quantum_complexity",
-            "title": "Quantenkomplexität",
-            "titleEn": "Quantum complexity",
-            "description": "Die lernende Person kann Komplexitätsklassen und Ressourcenskalierung erklären.",
-            "descriptionEn": "The learner can explain complexity classes and resource scaling in quantum computing.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": [
-                "10eaa280-9edd-5ba9-b124-bb543fb52713"
-            ]
-        },
-        {
-            "id": "25a48f71-67dc-5f74-a6d2-d0fb6501e892",
-            "shortKey": "tum_nat3035_tensor_networks",
-            "title": "Tensor-Netzwerke",
-            "titleEn": "Tensor networks",
-            "description": "Die lernende Person kann Tensor-Netzwerk-Darstellungen für Quantenzustände erläutern.",
-            "descriptionEn": "The learner can explain tensor-network representations for quantum states.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:NAT3035"
-            ],
-            "contains": [],
-            "requires": [
-                "d0876090-5d72-52f1-8f67-d8c1f82d7ea6"
-            ]
-        }
-    ]
+  "title": "Quanteninformation (TUM, Modul NAT3035)",
+  "titleEn": "Quantum Information (TUM, Module NAT3035)",
+  "description": "Quanteninformation führt in die theoretischen Grundlagen der Quantenwissenschaft und -technologie ein. Behandelt werden Formalismus (Zustände, Kanäle, Messungen), Verschränkung und Nichtlokalität, Quantenkommunikationsprotokolle, Quantenrechnung und Algorithmen, Simulation und Metrologie sowie Dekohärenz und Fehlerkorrektur.",
+  "descriptionEn": "Quantum Information introduces the theoretical foundations of quantum science and technology. It covers formalism (states, channels, measurements), entanglement and nonlocality, quantum communication protocols, quantum computation and algorithms, simulation and metrology, and decoherence with error correction.",
+  "locale": "de-DE",
+  "subject": "TUM-Module",
+  "frameworkId": "tum-nat3035",
+  "goals": [
+    {
+      "id": "ee57132d-831a-5c54-b8bb-f8447aff9ec0",
+      "title": "Quanteninformation (Modul NAT3035)",
+      "titleEn": "Quantum Information (Module NAT3035)",
+      "description": "Die lernende Person kann zentrale Konzepte der Quanteninformation erklären und auf typische Anwendungen anwenden.",
+      "descriptionEn": "The learner can explain core concepts of quantum information and apply them to typical applications.",
+      "weight": 10.0,
+      "tags": [
+        "module:NAT3035",
+        "ects:10"
+      ],
+      "contains": [
+        "f426d947-45be-5726-994e-9dc9dd40b420",
+        "d0876090-5d72-52f1-8f67-d8c1f82d7ea6",
+        "561fcd7e-5029-5949-a0ed-024287aa8789",
+        "10eaa280-9edd-5ba9-b124-bb543fb52713",
+        "f4576880-25ae-5dd9-8d39-d88f085e03f6",
+        "54ff4cbf-1d3c-5759-aaf4-c9ab8e2dd4d6",
+        "38db5a36-9317-5ff3-ae10-6c581f0733b8"
+      ],
+      "requires": [],
+      "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/NAT3035",
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f426d947-45be-5726-994e-9dc9dd40b420",
+      "title": "Grundlagen und Formalismus",
+      "titleEn": "Foundations and formalism",
+      "description": "Die lernende Person kann den grundlegenden Formalismus der Quanteninformation anwenden.",
+      "descriptionEn": "The learner can use the basic formalism of quantum information theory.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [
+        "d1cf3f3e-789d-5569-9f9e-6dbf98fc8d45",
+        "76daf960-bc57-5671-b2bd-9ca725a2a238",
+        "877922c1-cc8e-527a-ae49-4d370790d0e1",
+        "3ec0d3f6-82bc-53ea-9cb7-a6d796c7d8d2",
+        "887a54f6-e413-5828-8a88-cf88bd9e3615",
+        "aa5a5ec7-8d48-5d30-8869-17ef996d1502"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d1cf3f3e-789d-5569-9f9e-6dbf98fc8d45",
+      "title": "Reine und gemischte Zustände",
+      "titleEn": "Pure vs mixed states",
+      "description": "Die lernende Person kann reine und gemischte Zustände unterscheiden und mathematisch darstellen.",
+      "descriptionEn": "The learner can distinguish pure and mixed states and represent them mathematically.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "76daf960-bc57-5671-b2bd-9ca725a2a238",
+      "title": "Quantenentwicklung und vollständig positive Abbildungen",
+      "titleEn": "Quantum evolution and completely positive maps",
+      "description": "Die lernende Person kann unitäre Entwicklung, Kanäle und vollständig positive Abbildungen beschreiben.",
+      "descriptionEn": "The learner can describe unitary evolution, channels, and completely positive maps.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [
+        "d1cf3f3e-789d-5569-9f9e-6dbf98fc8d45"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "877922c1-cc8e-527a-ae49-4d370790d0e1",
+      "title": "Messungen und POVMs",
+      "titleEn": "Measurements and POVMs",
+      "description": "Die lernende Person kann Quantenmessungen modellieren und Ergebnisstatistiken interpretieren.",
+      "descriptionEn": "The learner can model quantum measurements and interpret outcome statistics.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [
+        "d1cf3f3e-789d-5569-9f9e-6dbf98fc8d45"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "3ec0d3f6-82bc-53ea-9cb7-a6d796c7d8d2",
+      "title": "Schmidt-Zerlegung und Purifikation",
+      "titleEn": "Schmidt decomposition and purification",
+      "description": "Die lernende Person kann Schmidt-Zerlegungen berechnen und Purifikationsmethoden nutzen.",
+      "descriptionEn": "The learner can compute Schmidt decompositions and use purification techniques.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [
+        "d1cf3f3e-789d-5569-9f9e-6dbf98fc8d45"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "887a54f6-e413-5828-8a88-cf88bd9e3615",
+      "title": "Tomographie, Schätzung und Hypothesentests",
+      "titleEn": "Tomography, estimation, and hypothesis testing",
+      "description": "Die lernende Person kann grundlegende Methoden der Zustandsrekonstruktion und Schätzung erklären.",
+      "descriptionEn": "The learner can explain basic methods of quantum state tomography and estimation.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [
+        "877922c1-cc8e-527a-ae49-4d370790d0e1"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "aa5a5ec7-8d48-5d30-8869-17ef996d1502",
+      "title": "Quantenmechanische Rechnungen",
+      "titleEn": "Quantum mechanical computations",
+      "description": "Die lernende Person kann Rechnungen durchführen, die für Quanteninformation relevant sind.",
+      "descriptionEn": "The learner can perform computations relevant to quantum information tasks.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d0876090-5d72-52f1-8f67-d8c1f82d7ea6",
+      "title": "Verschränkung und Nichtlokalität",
+      "titleEn": "Entanglement theory and nonlocality",
+      "description": "Die lernende Person kann Verschränkung in reinen und gemischten Zuständen analysieren.",
+      "descriptionEn": "The learner can analyze entanglement in pure and mixed states and its signatures.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [
+        "f6bb0d13-2833-50bb-b39d-1fdcb244332c",
+        "7377129a-a762-531b-8d8e-acd272aff326",
+        "c0f86475-86d1-54c9-91f6-794ad0ef4de5",
+        "eac2bb76-9af1-5f24-8f23-6d041daebba0"
+      ],
+      "requires": [
+        "f426d947-45be-5726-994e-9dc9dd40b420"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f6bb0d13-2833-50bb-b39d-1fdcb244332c",
+      "title": "Verschränkung in reinen und gemischten Zuständen",
+      "titleEn": "Pure and mixed-state entanglement",
+      "description": "Die lernende Person kann Verschränkung in reinen und gemischten Zuständen klassifizieren.",
+      "descriptionEn": "The learner can classify entanglement in pure and mixed states.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7377129a-a762-531b-8d8e-acd272aff326",
+      "title": "Verschränkungsentropie und Maße",
+      "titleEn": "Entanglement entropy and measures",
+      "description": "Die lernende Person kann Verschränkungsentropie und verwandte Maße berechnen.",
+      "descriptionEn": "The learner can compute entanglement entropy and related measures.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [
+        "f6bb0d13-2833-50bb-b39d-1fdcb244332c"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "c0f86475-86d1-54c9-91f6-794ad0ef4de5",
+      "title": "Verschränkungsumwandlung und Destillation",
+      "titleEn": "Entanglement conversion and distillation",
+      "description": "Die lernende Person kann Distillation, Umwandlung und Purifikation beschreiben.",
+      "descriptionEn": "The learner can describe distillation, conversion, and purification protocols.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [
+        "7377129a-a762-531b-8d8e-acd272aff326"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "eac2bb76-9af1-5f24-8f23-6d041daebba0",
+      "title": "Bell-Ungleichungen und Nichtlokalität",
+      "titleEn": "Bell inequalities and nonlocality",
+      "description": "Die lernende Person kann Bell-Tests und deren Bedeutung für Nichtlokalität erklären.",
+      "descriptionEn": "The learner can explain Bell tests and their implications for nonlocality.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [
+        "f6bb0d13-2833-50bb-b39d-1fdcb244332c"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "561fcd7e-5029-5949-a0ed-024287aa8789",
+      "title": "Quantenkommunikation",
+      "titleEn": "Quantum communication protocols",
+      "description": "Die lernende Person kann erklären, wie Verschränkung Kommunikationsprotokolle ermöglicht.",
+      "descriptionEn": "The learner can explain how entanglement enables communication protocols.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [
+        "babda208-9cb6-5fb6-b33c-e9ff96e44f75",
+        "25c97fda-6b40-5515-96e1-b0230a45a806",
+        "b70751a4-2b6f-5238-b5f6-c4ad0b4fb920"
+      ],
+      "requires": [
+        "d0876090-5d72-52f1-8f67-d8c1f82d7ea6"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "babda208-9cb6-5fb6-b33c-e9ff96e44f75",
+      "title": "Dichte Kodierung",
+      "titleEn": "Dense coding",
+      "description": "Die lernende Person kann dichte Kodierung und ihre Ressourcen beschreiben.",
+      "descriptionEn": "The learner can explain dense coding and its resource requirements.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "25c97fda-6b40-5515-96e1-b0230a45a806",
+      "title": "Quanten-Teleportation",
+      "titleEn": "Quantum teleportation",
+      "description": "Die lernende Person kann das Teleportationsprotokoll skizzieren und Ressourcen benennen.",
+      "descriptionEn": "The learner can outline the teleportation protocol and required resources.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b70751a4-2b6f-5238-b5f6-c4ad0b4fb920",
+      "title": "Quantenkryptographie (QKD)",
+      "titleEn": "Quantum cryptography (QKD)",
+      "description": "Die lernende Person kann grundlegende QKD-Protokolle erklären.",
+      "descriptionEn": "The learner can explain basic quantum key distribution protocols.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "10eaa280-9edd-5ba9-b124-bb543fb52713",
+      "title": "Quantenrechnung und Algorithmen",
+      "titleEn": "Quantum computation and algorithms",
+      "description": "Die lernende Person kann Rechenmodelle und zentrale Algorithmen erklären.",
+      "descriptionEn": "The learner can explain computational models and key quantum algorithms.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [
+        "0962b17b-dd14-5cb7-9bfa-7d5d0448984d",
+        "f4ee60d1-4934-57ef-bd92-5b99464c179a"
+      ],
+      "requires": [
+        "f426d947-45be-5726-994e-9dc9dd40b420"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0962b17b-dd14-5cb7-9bfa-7d5d0448984d",
+      "title": "Quantenschaltkreise und Gattermodell",
+      "titleEn": "Quantum circuits and gate model",
+      "description": "Die lernende Person kann Berechnungen mit Quantenschaltkreisen und Gattern modellieren.",
+      "descriptionEn": "The learner can model computations using quantum circuits and gates.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f4ee60d1-4934-57ef-bd92-5b99464c179a",
+      "title": "Deutsch-, Grover- und Shor-Algorithmen",
+      "titleEn": "Deutsch, Grover, and Shor algorithms",
+      "description": "Die lernende Person kann zentrale Schritte und Speedups dieser Algorithmen beschreiben.",
+      "descriptionEn": "The learner can describe core steps and speedups of standard algorithms.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [
+        "0962b17b-dd14-5cb7-9bfa-7d5d0448984d"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f4576880-25ae-5dd9-8d39-d88f085e03f6",
+      "title": "Quantensimulation und Metrologie",
+      "titleEn": "Quantum simulation and metrology",
+      "description": "Die lernende Person kann Simulation und Metrologie als Anwendungen der Quanteninformation erklären.",
+      "descriptionEn": "The learner can explain simulation and metrology as central applications.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [
+        "cf23b830-30d1-5422-9ce2-f76a3feb136a",
+        "c04405d7-9623-5f4f-9e63-d2a7408cf27e"
+      ],
+      "requires": [
+        "10eaa280-9edd-5ba9-b124-bb543fb52713"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "cf23b830-30d1-5422-9ce2-f76a3feb136a",
+      "title": "Grundlagen der Quantensimulation",
+      "titleEn": "Quantum simulation basics",
+      "description": "Die lernende Person kann erklären, wie Quantensysteme andere Quantensysteme simulieren.",
+      "descriptionEn": "The learner can explain how quantum systems simulate other quantum systems.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "c04405d7-9623-5f4f-9e63-d2a7408cf27e",
+      "title": "Quantenmetrologie und Schätzung",
+      "titleEn": "Quantum metrology and estimation",
+      "description": "Die lernende Person kann den Zusammenhang zwischen Präzision und Quantenressourcen erklären.",
+      "descriptionEn": "The learner can relate estimation precision to quantum resources.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "54ff4cbf-1d3c-5759-aaf4-c9ab8e2dd4d6",
+      "title": "Dekohärenz und Fehlerkorrektur",
+      "titleEn": "Decoherence and error correction",
+      "description": "Die lernende Person kann Dekohärenz und Gegenmaßnahmen für fragile Quanteninformation analysieren.",
+      "descriptionEn": "The learner can analyze decoherence and countermeasures for fragile quantum information.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [
+        "4da66070-a8c2-5b7b-b7d6-918b920c8ecb",
+        "63bb09c3-b60d-5892-b000-86875ba43781",
+        "ad1b13d7-004b-5d61-98b6-f5e0943631c9"
+      ],
+      "requires": [
+        "f426d947-45be-5726-994e-9dc9dd40b420"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4da66070-a8c2-5b7b-b7d6-918b920c8ecb",
+      "title": "Dekohärenzmechanismen",
+      "titleEn": "Decoherence mechanisms",
+      "description": "Die lernende Person kann Quellen und Folgen der Dekohärenz erklären.",
+      "descriptionEn": "The learner can explain sources and consequences of decoherence.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "63bb09c3-b60d-5892-b000-86875ba43781",
+      "title": "Lindblad-Meistergleichung",
+      "titleEn": "Lindblad master equation",
+      "description": "Die lernende Person kann offene Quantensysteme mit Lindblad-Gleichungen modellieren.",
+      "descriptionEn": "The learner can model open-system dynamics using Lindblad equations.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [
+        "4da66070-a8c2-5b7b-b7d6-918b920c8ecb"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ad1b13d7-004b-5d61-98b6-f5e0943631c9",
+      "title": "Fehlerkorrekturcodes und Strategien",
+      "titleEn": "Error correction codes and strategies",
+      "description": "Die lernende Person kann grundlegende Fehlerkorrekturschemata erklären.",
+      "descriptionEn": "The learner can explain elementary error correction schemes.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [
+        "63bb09c3-b60d-5892-b000-86875ba43781"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "38db5a36-9317-5ff3-ae10-6c581f0733b8",
+      "title": "Fortgeschrittene Themen",
+      "titleEn": "Advanced and optional topics",
+      "description": "Die lernende Person kann Bezüge der Quanteninformation zu fortgeschrittenen Themen herstellen.",
+      "descriptionEn": "The learner can relate quantum information to advanced topics in many-body physics.",
+      "weight": 2.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [
+        "00c65d63-abf6-56ca-8608-39268d0961b0",
+        "67d92763-fe3a-5feb-a127-8bfc823e88a7",
+        "2785ba57-ed52-52b0-9357-13476fc694f4",
+        "25a48f71-67dc-5f74-a6d2-d0fb6501e892"
+      ],
+      "requires": [
+        "f426d947-45be-5726-994e-9dc9dd40b420"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "00c65d63-abf6-56ca-8608-39268d0961b0",
+      "title": "Vielteilchen-Verschränkung",
+      "titleEn": "Many-body entanglement",
+      "description": "Die lernende Person kann Verschränkung in Vielteilchensystemen erklären.",
+      "descriptionEn": "The learner can explain entanglement in many-body systems.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [
+        "d0876090-5d72-52f1-8f67-d8c1f82d7ea6"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "67d92763-fe3a-5feb-a127-8bfc823e88a7",
+      "title": "Topologische Quantenrechnung",
+      "titleEn": "Topological quantum computation",
+      "description": "Die lernende Person kann topologische Ansätze für robuste Quantenrechnung beschreiben.",
+      "descriptionEn": "The learner can describe topological approaches to robust quantum computation.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [
+        "10eaa280-9edd-5ba9-b124-bb543fb52713"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "2785ba57-ed52-52b0-9357-13476fc694f4",
+      "title": "Quantenkomplexität",
+      "titleEn": "Quantum complexity",
+      "description": "Die lernende Person kann Komplexitätsklassen und Ressourcenskalierung erklären.",
+      "descriptionEn": "The learner can explain complexity classes and resource scaling in quantum computing.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [
+        "10eaa280-9edd-5ba9-b124-bb543fb52713"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "25a48f71-67dc-5f74-a6d2-d0fb6501e892",
+      "title": "Tensor-Netzwerke",
+      "titleEn": "Tensor networks",
+      "description": "Die lernende Person kann Tensor-Netzwerk-Darstellungen für Quantenzustände erläutern.",
+      "descriptionEn": "The learner can explain tensor-network representations for quantum states.",
+      "weight": 1.0,
+      "tags": [
+        "module:NAT3035"
+      ],
+      "contains": [],
+      "requires": [
+        "d0876090-5d72-52f1-8f67-d8c1f82d7ea6"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    }
+  ],
+  "landscapeId": "c48d0201-d24c-5379-bbb6-711639f35776"
 }

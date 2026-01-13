@@ -1,542 +1,515 @@
 {
-    "title": "Grundlagen: Rechnernetze und Verteilte Systeme (TUM, Modul IN0010)",
-    "titleEn": "Introduction to Computer Networking and Distributed Systems (TUM, Module IN0010)",
-    "description": "Die lernende Person kann Netzwerkarchitekturen, Protokolle und Grundlagen verteilter Systeme erklären.",
-    "descriptionEn": "The learner can explain network architectures, protocols, and distributed systems basics.",
-    "locale": "de-DE",
-    "subject": "TUM-Module",
-    "frameworkId": "tum-in0010",
-    "goals": [
-        {
-            "id": "8721534d-b37c-5f84-9bae-9e1cf77b51b9",
-            "shortKey": "tum_in0010_module",
-            "title": "Grundlagen: Rechnernetze und Verteilte Systeme (IN0010)",
-            "titleEn": "Introduction to Computer Networking and Distributed Systems (IN0010)",
-            "description": "Die lernende Person kann Netzwerkarchitekturen, Protokolle und Grundlagen verteilter Systeme erklären.",
-            "descriptionEn": "The learner can explain network architectures, protocols, and distributed systems basics.",
-            "core": true,
-            "weight": 6.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:IN0010",
-                "ects:6"
-            ],
-            "contains": [
-                "b10f31e9-8992-55e6-bbcd-f7a3c7b36b37",
-                "af7486e9-a658-58a8-aa96-f5649c76d059",
-                "80738166-51c6-5b6c-86d6-396dc9b2db15",
-                "c2f67383-52ee-565d-a13d-2d9b2fc519ed",
-                "3e775a4b-28c5-5cba-90b8-125a1a86c478",
-                "f301516b-05c7-585d-9589-458955f63dfb",
-                "974164a6-aa34-5587-af8a-39b000370cea",
-                "9d375af8-a2c8-56e8-9757-5fa3d5f10c9a",
-                "a753b947-51c0-5d3f-a986-1b8628c85367"
-            ],
-            "requires": [],
-            "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0010"
-        },
-        {
-            "id": "b10f31e9-8992-55e6-bbcd-f7a3c7b36b37",
-            "shortKey": "tum_in0010_network_overview_and_architecture",
-            "title": "Netzwerkübersicht und -architektur",
-            "titleEn": "Network overview and architecture",
-            "description": "Die lernende Person kann Netzwerkkomponenten, Topologien und Schichtmodelle beschreiben.",
-            "descriptionEn": "The learner can describe network components, topologies, and layered models.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [
-                "f134de7b-bc26-5d75-85a3-08134ad4bb9c",
-                "ef9a2eb4-02e5-59fe-ac81-51c77433a847"
-            ],
-            "requires": []
-        },
-        {
-            "id": "f134de7b-bc26-5d75-85a3-08134ad4bb9c",
-            "shortKey": "tum_in0010_internet_components_and_topologies",
-            "title": "Internetkomponenten und Topologien",
-            "titleEn": "Internet components and topologies",
-            "description": "Die lernende Person kann Router, Switches, Clients, Server und Netzwerktopologien identifizieren.",
-            "descriptionEn": "The learner can identify routers, switches, clients, servers, and network topologies.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "ef9a2eb4-02e5-59fe-ac81-51c77433a847",
-            "shortKey": "tum_in0010_layered_models",
-            "title": "Schichtmodelle",
-            "titleEn": "Layered models",
-            "description": "Die lernende Person kann OSI- und Internet-Layer-Modelle vergleichen.",
-            "descriptionEn": "The learner can compare OSI and Internet layer models.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "af7486e9-a658-58a8-aa96-f5649c76d059",
-            "shortKey": "tum_in0010_cross_layer_concepts",
-            "title": "Layerübergreifende Konzepte",
-            "titleEn": "Cross-layer concepts",
-            "description": "Die lernende Person kann schichtübergreifende gängige Netzwerkmechanismen erklären.",
-            "descriptionEn": "The learner can explain common networking mechanisms across layers.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [
-                "a81429b5-2deb-5e72-81c0-bbce936afc91",
-                "d74604b6-2909-59ff-81e5-c9710b55d8c3"
-            ],
-            "requires": [
-                "b10f31e9-8992-55e6-bbcd-f7a3c7b36b37"
-            ]
-        },
-        {
-            "id": "a81429b5-2deb-5e72-81c0-bbce936afc91",
-            "shortKey": "tum_in0010_addressing_and_routing_concepts",
-            "title": "Adressierungs- und Routingkonzepte",
-            "titleEn": "Addressing and routing concepts",
-            "description": "Die lernende Person kann Adressierung und Routing auf konzeptioneller Ebene erklären.",
-            "descriptionEn": "The learner can explain addressing and routing at a conceptual level.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "d74604b6-2909-59ff-81e5-c9710b55d8c3",
-            "shortKey": "tum_in0010_error_control_and_flow_management",
-            "title": "Fehlerkontrolle und Flussmanagement",
-            "titleEn": "Error control and flow management",
-            "description": "Die lernende Person kann Fehlererkennung, Flusskontrolle und Verbindungsmanagement beschreiben.",
-            "descriptionEn": "The learner can describe error detection, flow control, and connection management.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "80738166-51c6-5b6c-86d6-396dc9b2db15",
-            "shortKey": "tum_in0010_application_layer_protocols",
-            "title": "Protokolle der Anwendungsschicht",
-            "titleEn": "Application layer protocols",
-            "description": "Die lernende Person kann Protokolle und Dienste der Anwendungsschicht erklären.",
-            "descriptionEn": "The learner can explain application layer protocols and services.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [
-                "0186509b-2c77-5030-a7b8-0b78181e23ae",
-                "66e99132-1cb9-597b-9e34-d155888d24a2"
-            ],
-            "requires": [
-                "b10f31e9-8992-55e6-bbcd-f7a3c7b36b37"
-            ]
-        },
-        {
-            "id": "0186509b-2c77-5030-a7b8-0b78181e23ae",
-            "shortKey": "tum_in0010_web_and_email_protocols",
-            "title": "Web- und E-Mail-Protokolle",
-            "titleEn": "Web and email protocols",
-            "description": "Die lernende Person kann HTTP, DNS, SMTP und verwandte Protokolle beschreiben.",
-            "descriptionEn": "The learner can describe HTTP, DNS, SMTP, and related protocols.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "66e99132-1cb9-597b-9e34-d155888d24a2",
-            "shortKey": "tum_in0010_application_interfaces",
-            "title": "Anwendungsschnittstellen",
-            "titleEn": "Application interfaces",
-            "description": "Die lernende Person kann Schnittstellen und Servicemodelle der Anwendungsschicht erklären.",
-            "descriptionEn": "The learner can explain application layer interfaces and service models.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "c2f67383-52ee-565d-a13d-2d9b2fc519ed",
-            "shortKey": "tum_in0010_transport_layer",
-            "title": "Transportschicht",
-            "titleEn": "Transport layer",
-            "description": "Die lernende Person kann Transportprotokolle und deren Eigenschaften erklären.",
-            "descriptionEn": "The learner can explain transport protocols and their properties.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [
-                "f0232029-b48e-588c-9f57-7bda6acc637e",
-                "373c936c-e504-54d9-b731-c6c858a6e36d"
-            ],
-            "requires": [
-                "af7486e9-a658-58a8-aa96-f5649c76d059"
-            ]
-        },
-        {
-            "id": "f0232029-b48e-588c-9f57-7bda6acc637e",
-            "shortKey": "tum_in0010_tcp_and_udp_fundamentals",
-            "title": "TCP- und UDP-Grundlagen",
-            "titleEn": "TCP and UDP fundamentals",
-            "description": "Die lernende Person kann TCP und UDP und ihre Anwendungsfälle vergleichen.",
-            "descriptionEn": "The learner can compare TCP and UDP and their use cases.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "373c936c-e504-54d9-b731-c6c858a6e36d",
-            "shortKey": "tum_in0010_reliability_and_congestion",
-            "title": "Zuverlässigkeit und Überlastung",
-            "titleEn": "Reliability and congestion",
-            "description": "Die lernende Person kann Überlegungen zu Zuverlässigkeit, Fluss und Überlastung beschreiben.",
-            "descriptionEn": "The learner can describe reliability, flow, and congestion considerations.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "3e775a4b-28c5-5cba-90b8-125a1a86c478",
-            "shortKey": "tum_in0010_network_layer_and_routing",
-            "title": "Netzwerkschicht und Routing",
-            "titleEn": "Network layer and routing",
-            "description": "Die lernende Person kann IP- und Routing-Strategien erklären.",
-            "descriptionEn": "The learner can explain IP and routing strategies.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [
-                "77d32d06-0935-5c53-93ed-441e8ac2f5c0",
-                "4786e6c9-36f7-5f1c-acf0-a69d7b3c3718"
-            ],
-            "requires": [
-                "af7486e9-a658-58a8-aa96-f5649c76d059"
-            ]
-        },
-        {
-            "id": "77d32d06-0935-5c53-93ed-441e8ac2f5c0",
-            "shortKey": "tum_in0010_ip_addressing_and_routing",
-            "title": "IP-Adressierung und Routing",
-            "titleEn": "IP addressing and routing",
-            "description": "Die lernende Person kann IP-Adressierungs- und Routing-Funktionen erklären.",
-            "descriptionEn": "The learner can explain IP addressing and routing functions.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "4786e6c9-36f7-5f1c-acf0-a69d7b3c3718",
-            "shortKey": "tum_in0010_link_state_and_distance_vector",
-            "title": "Verbindungsstatus und Distanzvektor",
-            "titleEn": "Link state and distance vector",
-            "description": "Die lernende Person kann Link-State- und Distance-Vector-Routing-Protokolle vergleichen.",
-            "descriptionEn": "The learner can compare link state and distance vector routing protocols.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "f301516b-05c7-585d-9589-458955f63dfb",
-            "shortKey": "tum_in0010_link_and_physical_layers",
-            "title": "Link- und physikalische Schichten",
-            "titleEn": "Link and physical layers",
-            "description": "Die lernende Person kann untergeordnete Protokolle und Übertragungskonzepte erklären.",
-            "descriptionEn": "The learner can explain lower-layer protocols and transmission concepts.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [
-                "8fc684d6-d1b3-5303-bf54-31329c5b93cf",
-                "18bb55cd-68cf-5729-a1b2-e7df0d40227d"
-            ],
-            "requires": [
-                "b10f31e9-8992-55e6-bbcd-f7a3c7b36b37"
-            ]
-        },
-        {
-            "id": "8fc684d6-d1b3-5303-bf54-31329c5b93cf",
-            "shortKey": "tum_in0010_ethernet_and_wireless_lan",
-            "title": "Ethernet und WLAN",
-            "titleEn": "Ethernet and wireless LAN",
-            "description": "Die lernende Person kann die Grundlagen von Ethernet und WLAN beschreiben.",
-            "descriptionEn": "The learner can describe Ethernet and WLAN basics.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "18bb55cd-68cf-5729-a1b2-e7df0d40227d",
-            "shortKey": "tum_in0010_encoding_and_modulation",
-            "title": "Kodierung und Modulation",
-            "titleEn": "Encoding and modulation",
-            "description": "Die lernende Person kann die Kodierung und Modulation auf der physikalischen Ebene erklären.",
-            "descriptionEn": "The learner can explain encoding and modulation at the physical layer.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "974164a6-aa34-5587-af8a-39b000370cea",
-            "shortKey": "tum_in0010_distributed_systems",
-            "title": "Verteilte Systeme",
-            "titleEn": "Distributed systems",
-            "description": "Die lernende Person kann die Grundlagen von Middleware und Serviceintegration erklären.",
-            "descriptionEn": "The learner can explain middleware and service integration basics.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [
-                "8109478d-6579-5c52-8390-0cea3f46993d",
-                "c37a3e0d-6291-5500-9b9c-251b298532f5"
-            ],
-            "requires": [
-                "b10f31e9-8992-55e6-bbcd-f7a3c7b36b37"
-            ]
-        },
-        {
-            "id": "8109478d-6579-5c52-8390-0cea3f46993d",
-            "shortKey": "tum_in0010_middleware_and_rpc",
-            "title": "Middleware und RPC",
-            "titleEn": "Middleware and RPC",
-            "description": "Die lernende Person kann Middleware-Konzepte und RPC beschreiben.",
-            "descriptionEn": "The learner can describe middleware concepts and RPC.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "c37a3e0d-6291-5500-9b9c-251b298532f5",
-            "shortKey": "tum_in0010_web_services",
-            "title": "Webdienste",
-            "titleEn": "Web services",
-            "description": "Die lernende Person kann grundlegende Webservice-Konzepte erklären.",
-            "descriptionEn": "The learner can explain basic web service concepts.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "9d375af8-a2c8-56e8-9757-5fa3d5f10c9a",
-            "shortKey": "tum_in0010_network_management_and_security",
-            "title": "Netzwerkmanagement und Sicherheit",
-            "titleEn": "Network management and security",
-            "description": "Die lernende Person kann sich mit Netzwerkmanagementaufgaben und Sicherheitsmechanismen befassen.",
-            "descriptionEn": "The learner can address network management tasks and security mechanisms.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [
-                "6d6eec0f-0142-58c1-85bd-5ddb3b07b858",
-                "c8b2a875-107c-5939-b169-0cc56b754ee5"
-            ],
-            "requires": [
-                "b10f31e9-8992-55e6-bbcd-f7a3c7b36b37"
-            ]
-        },
-        {
-            "id": "6d6eec0f-0142-58c1-85bd-5ddb3b07b858",
-            "shortKey": "tum_in0010_network_management",
-            "title": "Netzwerkmanagement",
-            "titleEn": "Network management",
-            "description": "Die lernende Person kann Überwachungs- und Verwaltungsaufgaben für Netzwerke beschreiben.",
-            "descriptionEn": "The learner can describe monitoring and management tasks for networks.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "c8b2a875-107c-5939-b169-0cc56b754ee5",
-            "shortKey": "tum_in0010_security_mechanisms_and_protocols",
-            "title": "Sicherheitsmechanismen und Protokolle",
-            "titleEn": "Security mechanisms and protocols",
-            "description": "Die lernende Person kann grundlegende kryptografische Dienste und Netzwerksicherheitsprotokolle erklären.",
-            "descriptionEn": "The learner can explain basic cryptographic services and network security protocols.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "a753b947-51c0-5d3f-a986-1b8628c85367",
-            "shortKey": "tum_in0010_performance_analysis_and_protocol_implementation",
-            "title": "Leistungsanalyse und Protokollimplementierung",
-            "titleEn": "Performance analysis and protocol implementation",
-            "description": "Die lernende Person kann die Netzwerkleistung analysieren und Mechanismen implementieren.",
-            "descriptionEn": "The learner can analyze network performance and implement mechanisms.",
-            "core": true,
-            "weight": 2.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [
-                "9d307a08-f799-5d1b-a5f8-1d71f0c8507e",
-                "b3c9e28c-4271-55b5-8dfe-c1e6803d61bb"
-            ],
-            "requires": [
-                "af7486e9-a658-58a8-aa96-f5649c76d059"
-            ]
-        },
-        {
-            "id": "9d307a08-f799-5d1b-a5f8-1d71f0c8507e",
-            "shortKey": "tum_in0010_performance_calculation_by_layer",
-            "title": "Leistungsberechnung nach Schicht",
-            "titleEn": "Performance calculation by layer",
-            "description": "Die lernende Person kann Leistungsmetriken über Netzwerkebenen hinweg berechnen.",
-            "descriptionEn": "The learner can compute performance metrics across network layers.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        },
-        {
-            "id": "b3c9e28c-4271-55b5-8dfe-c1e6803d61bb",
-            "shortKey": "tum_in0010_protocol_mechanism_implementation",
-            "title": "Implementierung des Protokollmechanismus",
-            "titleEn": "Protocol mechanism implementation",
-            "description": "Die lernende Person kann ausgewählte Protokollmechanismen in Programmierübungen implementieren.",
-            "descriptionEn": "The learner can implement selected protocol mechanisms in programming exercises.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Kompetenz",
-            "tags": [
-                "module:IN0010"
-            ],
-            "contains": [],
-            "requires": []
-        }
-    ]
+  "title": "Grundlagen: Rechnernetze und Verteilte Systeme (TUM, Modul IN0010)",
+  "titleEn": "Introduction to Computer Networking and Distributed Systems (TUM, Module IN0010)",
+  "description": "Die lernende Person kann Netzwerkarchitekturen, Protokolle und Grundlagen verteilter Systeme erklären.",
+  "descriptionEn": "The learner can explain network architectures, protocols, and distributed systems basics.",
+  "locale": "de-DE",
+  "subject": "TUM-Module",
+  "frameworkId": "tum-in0010",
+  "goals": [
+    {
+      "id": "8721534d-b37c-5f84-9bae-9e1cf77b51b9",
+      "title": "Grundlagen: Rechnernetze und Verteilte Systeme (IN0010)",
+      "titleEn": "Introduction to Computer Networking and Distributed Systems (IN0010)",
+      "description": "Die lernende Person kann Netzwerkarchitekturen, Protokolle und Grundlagen verteilter Systeme erklären.",
+      "descriptionEn": "The learner can explain network architectures, protocols, and distributed systems basics.",
+      "weight": 6.0,
+      "tags": [
+        "module:IN0010",
+        "ects:6"
+      ],
+      "contains": [
+        "b10f31e9-8992-55e6-bbcd-f7a3c7b36b37",
+        "af7486e9-a658-58a8-aa96-f5649c76d059",
+        "80738166-51c6-5b6c-86d6-396dc9b2db15",
+        "c2f67383-52ee-565d-a13d-2d9b2fc519ed",
+        "3e775a4b-28c5-5cba-90b8-125a1a86c478",
+        "f301516b-05c7-585d-9589-458955f63dfb",
+        "974164a6-aa34-5587-af8a-39b000370cea",
+        "9d375af8-a2c8-56e8-9757-5fa3d5f10c9a",
+        "a753b947-51c0-5d3f-a986-1b8628c85367"
+      ],
+      "requires": [],
+      "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0010",
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b10f31e9-8992-55e6-bbcd-f7a3c7b36b37",
+      "title": "Netzwerkübersicht und -architektur",
+      "titleEn": "Network overview and architecture",
+      "description": "Die lernende Person kann Netzwerkkomponenten, Topologien und Schichtmodelle beschreiben.",
+      "descriptionEn": "The learner can describe network components, topologies, and layered models.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [
+        "f134de7b-bc26-5d75-85a3-08134ad4bb9c",
+        "ef9a2eb4-02e5-59fe-ac81-51c77433a847"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f134de7b-bc26-5d75-85a3-08134ad4bb9c",
+      "title": "Internetkomponenten und Topologien",
+      "titleEn": "Internet components and topologies",
+      "description": "Die lernende Person kann Router, Switches, Clients, Server und Netzwerktopologien identifizieren.",
+      "descriptionEn": "The learner can identify routers, switches, clients, servers, and network topologies.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ef9a2eb4-02e5-59fe-ac81-51c77433a847",
+      "title": "Schichtmodelle",
+      "titleEn": "Layered models",
+      "description": "Die lernende Person kann OSI- und Internet-Layer-Modelle vergleichen.",
+      "descriptionEn": "The learner can compare OSI and Internet layer models.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "af7486e9-a658-58a8-aa96-f5649c76d059",
+      "title": "Layerübergreifende Konzepte",
+      "titleEn": "Cross-layer concepts",
+      "description": "Die lernende Person kann schichtübergreifende gängige Netzwerkmechanismen erklären.",
+      "descriptionEn": "The learner can explain common networking mechanisms across layers.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [
+        "a81429b5-2deb-5e72-81c0-bbce936afc91",
+        "d74604b6-2909-59ff-81e5-c9710b55d8c3"
+      ],
+      "requires": [
+        "b10f31e9-8992-55e6-bbcd-f7a3c7b36b37"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a81429b5-2deb-5e72-81c0-bbce936afc91",
+      "title": "Adressierungs- und Routingkonzepte",
+      "titleEn": "Addressing and routing concepts",
+      "description": "Die lernende Person kann Adressierung und Routing auf konzeptioneller Ebene erklären.",
+      "descriptionEn": "The learner can explain addressing and routing at a conceptual level.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d74604b6-2909-59ff-81e5-c9710b55d8c3",
+      "title": "Fehlerkontrolle und Flussmanagement",
+      "titleEn": "Error control and flow management",
+      "description": "Die lernende Person kann Fehlererkennung, Flusskontrolle und Verbindungsmanagement beschreiben.",
+      "descriptionEn": "The learner can describe error detection, flow control, and connection management.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "80738166-51c6-5b6c-86d6-396dc9b2db15",
+      "title": "Protokolle der Anwendungsschicht",
+      "titleEn": "Application layer protocols",
+      "description": "Die lernende Person kann Protokolle und Dienste der Anwendungsschicht erklären.",
+      "descriptionEn": "The learner can explain application layer protocols and services.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [
+        "0186509b-2c77-5030-a7b8-0b78181e23ae",
+        "66e99132-1cb9-597b-9e34-d155888d24a2"
+      ],
+      "requires": [
+        "b10f31e9-8992-55e6-bbcd-f7a3c7b36b37"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0186509b-2c77-5030-a7b8-0b78181e23ae",
+      "title": "Web- und E-Mail-Protokolle",
+      "titleEn": "Web and email protocols",
+      "description": "Die lernende Person kann HTTP, DNS, SMTP und verwandte Protokolle beschreiben.",
+      "descriptionEn": "The learner can describe HTTP, DNS, SMTP, and related protocols.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "66e99132-1cb9-597b-9e34-d155888d24a2",
+      "title": "Anwendungsschnittstellen",
+      "titleEn": "Application interfaces",
+      "description": "Die lernende Person kann Schnittstellen und Servicemodelle der Anwendungsschicht erklären.",
+      "descriptionEn": "The learner can explain application layer interfaces and service models.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "c2f67383-52ee-565d-a13d-2d9b2fc519ed",
+      "title": "Transportschicht",
+      "titleEn": "Transport layer",
+      "description": "Die lernende Person kann Transportprotokolle und deren Eigenschaften erklären.",
+      "descriptionEn": "The learner can explain transport protocols and their properties.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [
+        "f0232029-b48e-588c-9f57-7bda6acc637e",
+        "373c936c-e504-54d9-b731-c6c858a6e36d"
+      ],
+      "requires": [
+        "af7486e9-a658-58a8-aa96-f5649c76d059"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f0232029-b48e-588c-9f57-7bda6acc637e",
+      "title": "TCP- und UDP-Grundlagen",
+      "titleEn": "TCP and UDP fundamentals",
+      "description": "Die lernende Person kann TCP und UDP und ihre Anwendungsfälle vergleichen.",
+      "descriptionEn": "The learner can compare TCP and UDP and their use cases.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "373c936c-e504-54d9-b731-c6c858a6e36d",
+      "title": "Zuverlässigkeit und Überlastung",
+      "titleEn": "Reliability and congestion",
+      "description": "Die lernende Person kann Überlegungen zu Zuverlässigkeit, Fluss und Überlastung beschreiben.",
+      "descriptionEn": "The learner can describe reliability, flow, and congestion considerations.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "3e775a4b-28c5-5cba-90b8-125a1a86c478",
+      "title": "Netzwerkschicht und Routing",
+      "titleEn": "Network layer and routing",
+      "description": "Die lernende Person kann IP- und Routing-Strategien erklären.",
+      "descriptionEn": "The learner can explain IP and routing strategies.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [
+        "77d32d06-0935-5c53-93ed-441e8ac2f5c0",
+        "4786e6c9-36f7-5f1c-acf0-a69d7b3c3718"
+      ],
+      "requires": [
+        "af7486e9-a658-58a8-aa96-f5649c76d059"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "77d32d06-0935-5c53-93ed-441e8ac2f5c0",
+      "title": "IP-Adressierung und Routing",
+      "titleEn": "IP addressing and routing",
+      "description": "Die lernende Person kann IP-Adressierungs- und Routing-Funktionen erklären.",
+      "descriptionEn": "The learner can explain IP addressing and routing functions.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4786e6c9-36f7-5f1c-acf0-a69d7b3c3718",
+      "title": "Verbindungsstatus und Distanzvektor",
+      "titleEn": "Link state and distance vector",
+      "description": "Die lernende Person kann Link-State- und Distance-Vector-Routing-Protokolle vergleichen.",
+      "descriptionEn": "The learner can compare link state and distance vector routing protocols.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f301516b-05c7-585d-9589-458955f63dfb",
+      "title": "Link- und physikalische Schichten",
+      "titleEn": "Link and physical layers",
+      "description": "Die lernende Person kann untergeordnete Protokolle und Übertragungskonzepte erklären.",
+      "descriptionEn": "The learner can explain lower-layer protocols and transmission concepts.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [
+        "8fc684d6-d1b3-5303-bf54-31329c5b93cf",
+        "18bb55cd-68cf-5729-a1b2-e7df0d40227d"
+      ],
+      "requires": [
+        "b10f31e9-8992-55e6-bbcd-f7a3c7b36b37"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8fc684d6-d1b3-5303-bf54-31329c5b93cf",
+      "title": "Ethernet und WLAN",
+      "titleEn": "Ethernet and wireless LAN",
+      "description": "Die lernende Person kann die Grundlagen von Ethernet und WLAN beschreiben.",
+      "descriptionEn": "The learner can describe Ethernet and WLAN basics.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "18bb55cd-68cf-5729-a1b2-e7df0d40227d",
+      "title": "Kodierung und Modulation",
+      "titleEn": "Encoding and modulation",
+      "description": "Die lernende Person kann die Kodierung und Modulation auf der physikalischen Ebene erklären.",
+      "descriptionEn": "The learner can explain encoding and modulation at the physical layer.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "974164a6-aa34-5587-af8a-39b000370cea",
+      "title": "Verteilte Systeme",
+      "titleEn": "Distributed systems",
+      "description": "Die lernende Person kann die Grundlagen von Middleware und Serviceintegration erklären.",
+      "descriptionEn": "The learner can explain middleware and service integration basics.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [
+        "8109478d-6579-5c52-8390-0cea3f46993d",
+        "c37a3e0d-6291-5500-9b9c-251b298532f5"
+      ],
+      "requires": [
+        "b10f31e9-8992-55e6-bbcd-f7a3c7b36b37"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "8109478d-6579-5c52-8390-0cea3f46993d",
+      "title": "Middleware und RPC",
+      "titleEn": "Middleware and RPC",
+      "description": "Die lernende Person kann Middleware-Konzepte und RPC beschreiben.",
+      "descriptionEn": "The learner can describe middleware concepts and RPC.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "c37a3e0d-6291-5500-9b9c-251b298532f5",
+      "title": "Webdienste",
+      "titleEn": "Web services",
+      "description": "Die lernende Person kann grundlegende Webservice-Konzepte erklären.",
+      "descriptionEn": "The learner can explain basic web service concepts.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9d375af8-a2c8-56e8-9757-5fa3d5f10c9a",
+      "title": "Netzwerkmanagement und Sicherheit",
+      "titleEn": "Network management and security",
+      "description": "Die lernende Person kann sich mit Netzwerkmanagementaufgaben und Sicherheitsmechanismen befassen.",
+      "descriptionEn": "The learner can address network management tasks and security mechanisms.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [
+        "6d6eec0f-0142-58c1-85bd-5ddb3b07b858",
+        "c8b2a875-107c-5939-b169-0cc56b754ee5"
+      ],
+      "requires": [
+        "b10f31e9-8992-55e6-bbcd-f7a3c7b36b37"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "6d6eec0f-0142-58c1-85bd-5ddb3b07b858",
+      "title": "Netzwerkmanagement",
+      "titleEn": "Network management",
+      "description": "Die lernende Person kann Überwachungs- und Verwaltungsaufgaben für Netzwerke beschreiben.",
+      "descriptionEn": "The learner can describe monitoring and management tasks for networks.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "c8b2a875-107c-5939-b169-0cc56b754ee5",
+      "title": "Sicherheitsmechanismen und Protokolle",
+      "titleEn": "Security mechanisms and protocols",
+      "description": "Die lernende Person kann grundlegende kryptografische Dienste und Netzwerksicherheitsprotokolle erklären.",
+      "descriptionEn": "The learner can explain basic cryptographic services and network security protocols.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "a753b947-51c0-5d3f-a986-1b8628c85367",
+      "title": "Leistungsanalyse und Protokollimplementierung",
+      "titleEn": "Performance analysis and protocol implementation",
+      "description": "Die lernende Person kann die Netzwerkleistung analysieren und Mechanismen implementieren.",
+      "descriptionEn": "The learner can analyze network performance and implement mechanisms.",
+      "weight": 2.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [
+        "9d307a08-f799-5d1b-a5f8-1d71f0c8507e",
+        "b3c9e28c-4271-55b5-8dfe-c1e6803d61bb"
+      ],
+      "requires": [
+        "af7486e9-a658-58a8-aa96-f5649c76d059"
+      ],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9d307a08-f799-5d1b-a5f8-1d71f0c8507e",
+      "title": "Leistungsberechnung nach Schicht",
+      "titleEn": "Performance calculation by layer",
+      "description": "Die lernende Person kann Leistungsmetriken über Netzwerkebenen hinweg berechnen.",
+      "descriptionEn": "The learner can compute performance metrics across network layers.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b3c9e28c-4271-55b5-8dfe-c1e6803d61bb",
+      "title": "Implementierung des Protokollmechanismus",
+      "titleEn": "Protocol mechanism implementation",
+      "description": "Die lernende Person kann ausgewählte Protokollmechanismen in Programmierübungen implementieren.",
+      "descriptionEn": "The learner can implement selected protocol mechanisms in programming exercises.",
+      "weight": 1.0,
+      "tags": [
+        "module:IN0010"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul"
+      }
+    }
+  ],
+  "landscapeId": "c67700e8-3101-5dbb-9340-7ca30ad553d5"
 }

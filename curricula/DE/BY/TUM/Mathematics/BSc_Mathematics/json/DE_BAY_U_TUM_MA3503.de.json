@@ -1,2028 +1,1573 @@
 {
-    "title": "Nichtlineare Optimierung (TUM, Modul MA3503)",
-    "titleEn": "Nonlinear Optimization (TUM, Module MA3503)",
-    "description": "Das Modul vertieft moderne nichtlineare Optimierung mit Blick auf Theorie und Numerik. Behandelt werden Beispiele praktischer nichtlinearer Optimierungsprobleme, ausgewählte fortgeschrittene Themen der unrestringierten Optimierung sowie insbesondere restringierte Optimierung mit detaillierter Optimalitätstheorie. Darüber hinaus werden wichtige Klassen numerischer Methoden (z.B. Sequential Quadratic Programming, Barrier-Methoden und Interior-Point-Verfahren) entwickelt und analysiert. Ergänzende Themen wie robuste Optimierung oder konenrestringierte Optimierung werden beispielhaft behandelt. Nach erfolgreichem Abschluss können Studierende Konvergenzeigenschaften von Optimierungsverfahren beurteilen und Optimierungstheorie und -methoden auf Aufgaben anwenden. 5 ECTS, angeboten im Wintersemester, Version 2023s, verantwortet von Ulbrich, Michael.",
-    "descriptionEn": "The module provides an in-depth treatment of modern nonlinear optimization from a theoretical and numerical perspective. Topics include examples of nonlinear optimization problems from practice, selected advanced topics in unconstrained optimization, and in particular constrained optimization with a detailed development of optimality theory. Important classes of numerical methods (e.g., sequential quadratic programming, barrier methods, and interior point algorithms) are developed and analyzed. Selected further topics such as robust optimization or cone-constrained optimization are covered in exemplary form. After successful completion, students can assess convergence properties of optimization methods and apply optimization theory and algorithms. 5 ECTS, offered in the winter semester, version 2023s, responsible: Ulbrich, Michael.",
-    "landscapeId": "2dfc2940-92f5-4f23-b171-826ea498e025",
-    "locale": "de-DE",
-    "subject": "Mathematik",
-    "frameworkId": "tum-ma3503",
-    "filters": [
-        {
-            "id": "BSc",
-            "label": "Bachelor Mathematik"
-        }
-    ],
-    "goals": [
-        {
-            "id": "df94a7dc-6778-56a6-ad97-9ea86cab6a99",
-            "shortKey": "tum_ma3503_module",
-            "title": "Nichtlineare Optimierung – Gesamtmodul",
-            "titleEn": "Nonlinear Optimization – Full Module",
-            "description": "Nach erfolgreichem Abschluss können Studierende Optimierungstheorie detailliert verstehen und fortgeschrittene theoretische und numerische Aspekte moderner nichtlinearer Optimierung beherrschen. Sie können Konvergenzeigenschaften von Optimierungsverfahren analysieren und bewerten sowie Optimierungstheorie und -methoden anwenden.",
-            "descriptionEn": "At the end of the module students are able to understand optimization theory in detail, to understand advanced theoretical and numerical aspects of modern nonlinear optimization, to assess and investigate the convergence properties of optimization methods and to apply optimization theory and methods.",
-            "core": true,
-            "weight": 5.0,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "ects:5",
-                "workload:150h",
-                "presence:45h",
-                "level:master",
-                "language:en",
-                "module:MA3503",
-                "semester:WS",
-                "duration:1_semester",
-                "responsible:ulbrich_michael"
-            ],
-            "contains": [
-                "3f92a4c9-919b-56c9-b941-7ac795f008be",
-                "3f6d5e19-33f0-5159-a3ce-ade28bc31f04",
-                "3c44c653-2c0a-5b05-aed8-d0eb9d2c6258",
-                "19d2a25a-1cc1-556f-9dcb-76cf036a6fb2",
-                "74e75865-db6b-539d-9928-0f559094ecc4",
-                "4e763ba1-bf3b-5bfe-8532-89547a12f020"
-            ],
-            "requires": [
-                "8eb1605b-fa70-511b-bbe4-28173d359c3b",
-                "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
-                "feaad1d5-022f-5ab3-93c3-001ac46de351",
-                "1e712ee7-a9d9-58d0-8eb9-e45098c14fbc",
-                "946f50cd-f6d9-5d1c-a79d-c06a302ce7be",
-                "b805ec8a-3357-56b6-a770-86490a3c8916"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Gesamtkompetenz",
-                "topicCode": "tum_ma3503_module"
-            },
-            "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA3503&description_version=2023s"
-        },
-        {
-            "id": "3f92a4c9-919b-56c9-b941-7ac795f008be",
-            "shortKey": "tum_ma3503_lo1",
-            "title": "Modellierung und Problemklassen",
-            "titleEn": "Modeling and Problem Classes",
-            "description": "Zusammenfassender Cluster: Praktische Beispiele nichtlinearer Optimierung und Einordnung typischer Problemklassen (unrestringiert/restringiert, glatt/konvex, etc.).",
-            "descriptionEn": "Summary cluster: practical examples of nonlinear optimization and classification of common problem classes (unconstrained/constrained, smooth/convex, etc.).",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "cfcf2f73-d04d-5a37-a3e3-c05f0a9b46bf",
-                "bf0cfed5-d543-5053-a42f-e5f00bbb45b6"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma3503_lo1"
-            }
-        },
-        {
-            "id": "cfcf2f73-d04d-5a37-a3e3-c05f0a9b46bf",
-            "shortKey": "tum_ma3503_lo1_1",
-            "title": "Nichtlineare Optimierungsprobleme modellieren und klassifizieren",
-            "titleEn": "Model and Classify Nonlinear Optimization Problems",
-            "description": "Die lernende Person kann praktische Aufgabenstellungen als nichtlineare Optimierungsprobleme formulieren (Ziel, Variablen, Nebenbedingungen) und sie nach Struktur (z.B. glatt/nichtglatt, konvex/nichtkonvex, Restriktionen) klassifizieren.",
-            "descriptionEn": "The learner can formulate practical tasks as nonlinear optimization problems (objective, variables, constraints) and classify them by structure (e.g., smooth/nonsmooth, convex/nonconvex, constrained/unconstrained).",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "f6e01784-f1f2-5d72-a431-da5aa8ae50c9",
-                "5534c0fa-a24f-569a-8db4-c1ebcc98c4ef",
-                "eedd6926-d4c4-5712-a268-e63f277a8673"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma3503_lo1_1"
-            }
-        },
-        {
-            "id": "bf0cfed5-d543-5053-a42f-e5f00bbb45b6",
-            "shortKey": "tum_ma3503_lo1_2",
-            "title": "Struktureigenschaften für Methodenwahl begründet nutzen",
-            "titleEn": "Use Structural Properties to Justify Method Choices",
-            "description": "Die lernende Person kann aus strukturellen Eigenschaften eines Problems geeignete Lösungsansätze ableiten (z.B. gradientenbasierte Methoden, Newton-artige Verfahren, Relaxationen) und die Wahl fachlich begründen.",
-            "descriptionEn": "The learner can derive suitable solution approaches from a problem’s structure (e.g., gradient-based methods, Newton-type methods, relaxations) and justify the choice.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "ec33e8f8-1959-5e92-8626-44e4319242fc",
-                "bf92a326-752b-5fd0-8c06-d907fe772744",
-                "5bc48464-e781-58af-9772-f733a09920fe"
-            ],
-            "requires": [
-                "cfcf2f73-d04d-5a37-a3e3-c05f0a9b46bf"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma3503_lo1_2"
-            }
-        },
-        {
-            "id": "3f6d5e19-33f0-5159-a3ce-ade28bc31f04",
-            "shortKey": "tum_ma3503_lo2",
-            "title": "Fortgeschrittene unrestringierte Optimierung",
-            "titleEn": "Advanced Unconstrained Optimization",
-            "description": "Zusammenfassender Cluster: Fortgeschrittene Aspekte der unrestringierten Optimierung, inkl. Optimalitätsbedingungen, Globalisierungsstrategien und Konvergenzanalyse.",
-            "descriptionEn": "Summary cluster: advanced aspects of unconstrained optimization including optimality conditions, globalization strategies, and convergence analysis.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "0c8337ad-e363-5cf4-acd3-cf1dc6c95306",
-                "3d0d3487-0542-55e9-afa0-a9d8e1fbb14f"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2"
-            }
-        },
-        {
-            "id": "0c8337ad-e363-5cf4-acd3-cf1dc6c95306",
-            "shortKey": "tum_ma3503_lo2_1",
-            "title": "Optimalitätsbedingungen und lokale Modelle in der unrestringierten Optimierung anwenden",
-            "titleEn": "Apply Optimality Conditions and Local Models in Unconstrained Optimization",
-            "description": "Die lernende Person kann notwendige und hinreichende Optimalitätsbedingungen (1./2. Ordnung) anwenden, lokale quadratische Modelle interpretieren und daraus Newton- bzw. Newton-artige Schritte herleiten.",
-            "descriptionEn": "The learner can apply necessary and sufficient optimality conditions (first/second order), interpret local quadratic models, and derive Newton or Newton-type steps.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "251677d2-b004-4193-9988-41e696785c77",
-                "4f0dd58a-99eb-4802-b956-89af2e217486",
-                "5e0bb065-a85f-4b3f-aed4-07172b3ad7d9"
-            ],
-            "requires": [
-                "bf0cfed5-d543-5053-a42f-e5f00bbb45b6"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2_1"
-            }
-        },
-        {
-            "id": "3d0d3487-0542-55e9-afa0-a9d8e1fbb14f",
-            "shortKey": "tum_ma3503_lo2_2",
-            "title": "Globalisierung und Konvergenz von Verfahren beurteilen",
-            "titleEn": "Assess Globalization and Convergence of Methods",
-            "description": "Die lernende Person kann Globalisierungsstrategien (z.B. Line Search, Trust Region) einordnen, Konvergenzbegriffe (global/lokal) verwenden und Konvergenzeigenschaften von Verfahren begründet analysieren.",
-            "descriptionEn": "The learner can place globalization strategies (e.g., line search, trust regions), use convergence notions (global/local), and analyze convergence properties of methods in a well-justified way.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "cfc8ae92-d607-5b9b-9d73-b29528f7cb89",
-                "d57de38a-d0bb-59dc-869d-c94518a4cb2f",
-                "525aeaae-8ae1-598f-a803-1a0790dadbbf"
-            ],
-            "requires": [
-                "0c8337ad-e363-5cf4-acd3-cf1dc6c95306"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2_2"
-            }
-        },
-        {
-            "id": "3c44c653-2c0a-5b05-aed8-d0eb9d2c6258",
-            "shortKey": "tum_ma3503_lo3",
-            "title": "Optimalitätstheorie für restringierte Optimierung",
-            "titleEn": "Optimality Theory for Constrained Optimization",
-            "description": "Zusammenfassender Cluster: Optimalitätsbedingungen (KKT), Regularitäts-/Constraint-Qualification-Konzepte und second-order theory für restringierte Probleme.",
-            "descriptionEn": "Summary cluster: optimality conditions (KKT), regularity/constraint qualification concepts, and second-order theory for constrained problems.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Restriktionen & KKT",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "49850306-9d29-560a-b602-731d85631fe1",
-                "b910e722-e012-54f3-8787-16e248a3572d"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Restriktionen & KKT",
-                "topicCode": "tum_ma3503_lo3"
-            }
-        },
-        {
-            "id": "49850306-9d29-560a-b602-731d85631fe1",
-            "shortKey": "tum_ma3503_lo3_1",
-            "title": "KKT-Bedingungen herleiten und anwenden",
-            "titleEn": "Derive and Apply KKT Conditions",
-            "description": "Die lernende Person kann Lagrange-Funktion und KKT-Bedingungen formulieren, geeignete Constraint Qualifications einordnen und KKT-Bedingungen in Beispielen zur Charakterisierung von Kandidatenlösungen anwenden.",
-            "descriptionEn": "The learner can formulate the Lagrangian and KKT conditions, place suitable constraint qualifications, and apply KKT conditions in examples to characterize candidate solutions.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Restriktionen & KKT",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "44c524af-2b42-53ec-9f40-be0c17e94488",
-                "41010160-a930-5bc9-b0f9-a71571ee080f",
-                "150b7656-f69d-5f18-beff-ef8b5da8c4f9"
-            ],
-            "requires": [
-                "3d0d3487-0542-55e9-afa0-a9d8e1fbb14f"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Restriktionen & KKT",
-                "topicCode": "tum_ma3503_lo3_1"
-            }
-        },
-        {
-            "id": "b910e722-e012-54f3-8787-16e248a3572d",
-            "shortKey": "tum_ma3503_lo3_2",
-            "title": "Second-order theory und Sensitivitätsaspekte einordnen",
-            "titleEn": "Place Second-Order Theory and Sensitivity Aspects",
-            "description": "Die lernende Person kann second-order Optimalitätsbedingungen für restringierte Probleme einordnen, den Einfluss aktiver Nebenbedingungen diskutieren und Sensitivitäts-/Regularitätsaspekte für Numerik motivieren.",
-            "descriptionEn": "The learner can place second-order optimality conditions for constrained problems, discuss the role of active constraints, and motivate sensitivity/regularity aspects relevant for numerical methods.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Restriktionen & KKT",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "fbced3c9-b9ce-554d-bec1-74b568a58dfe",
-                "35c422cb-a62c-548e-818f-e0bf65cd89b9",
-                "1dbaf46a-4dd4-50a2-8782-718658b3e160"
-            ],
-            "requires": [
-                "49850306-9d29-560a-b602-731d85631fe1"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Restriktionen & KKT",
-                "topicCode": "tum_ma3503_lo3_2"
-            }
-        },
-        {
-            "id": "19d2a25a-1cc1-556f-9dcb-76cf036a6fb2",
-            "shortKey": "tum_ma3503_lo4",
-            "title": "Numerische Methoden: SQP, Barrier, Interior Point",
-            "titleEn": "Numerical Methods: SQP, Barrier, Interior Point",
-            "description": "Zusammenfassender Cluster: Entwicklung und Analyse zentraler numerischer Verfahren für nichtlineare restringierte Optimierung (SQP, Barrier- und Interior-Point-Verfahren).",
-            "descriptionEn": "Summary cluster: development and analysis of key numerical methods for nonlinear constrained optimization (SQP, barrier, and interior point methods).",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "7c5fe884-fff7-5d49-a0ed-1b6f365504e4",
-                "4487cde6-5652-58f4-a434-63f7c76ecde5"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4"
-            }
-        },
-        {
-            "id": "7c5fe884-fff7-5d49-a0ed-1b6f365504e4",
-            "shortKey": "tum_ma3503_lo4_1",
-            "title": "SQP-Schritte und (quadratische) Teilprobleme formulieren",
-            "titleEn": "Formulate SQP Steps and Quadratic Subproblems",
-            "description": "Die lernende Person kann die Idee von SQP erläutern, ein quadratisches Teilproblem aus KKT-Linearisation ableiten und die Rolle von Lagrange-Multiplikatoren und Hessian-Approximationen erklären.",
-            "descriptionEn": "The learner can explain the idea of SQP, derive a quadratic subproblem from KKT linearization, and explain the role of Lagrange multipliers and Hessian approximations.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "508ffa08-2900-5a9e-b6f6-3ce615fd6c58",
-                "bda25d7b-44b9-5d27-9dda-b94d6017fb58",
-                "270e7159-610b-5e3e-91d2-c2574a4214d8"
-            ],
-            "requires": [
-                "b910e722-e012-54f3-8787-16e248a3572d"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4_1"
-            }
-        },
-        {
-            "id": "4487cde6-5652-58f4-a434-63f7c76ecde5",
-            "shortKey": "tum_ma3503_lo4_2",
-            "title": "Barrier- und Interior-Point-Methoden analysieren und anwenden",
-            "titleEn": "Analyze and Apply Barrier and Interior Point Methods",
-            "description": "Die lernende Person kann Barrier- und Interior-Point-Ideen erklären, zentrale KKT-/Zentralpfad-Gleichungen einordnen und Konvergenz- bzw. Komplexitätsaspekte in ausgewählten Beispielen diskutieren.",
-            "descriptionEn": "The learner can explain barrier and interior point ideas, place key KKT/central-path equations, and discuss convergence or complexity aspects on selected examples.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "dcb8582d-1f9a-4e01-859d-44a925c94479",
-                "3c138ce4-ab66-4fcf-bcad-4822b072138c",
-                "4ebd790c-4346-4087-af4c-b5c27d3daa83"
-            ],
-            "requires": [
-                "7c5fe884-fff7-5d49-a0ed-1b6f365504e4"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4_2"
-            }
-        },
-        {
-            "id": "74e75865-db6b-539d-9928-0f559094ecc4",
-            "shortKey": "tum_ma3503_lo5",
-            "title": "Ausgewählte weiterführende Themen",
-            "titleEn": "Selected Further Topics",
-            "description": "Zusammenfassender Cluster: Weiterführende Themen wie robuste Optimierung oder konenrestringierte Optimierung sowie deren algorithmische Einordnung.",
-            "descriptionEn": "Summary cluster: further topics such as robust optimization or cone-constrained optimization and their algorithmic placement.",
-            "core": true,
-            "weight": 1.0,
-            "phase": "Modul",
-            "area": "Weiterführendes",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "e2cf24ec-9521-5a71-ab48-de399458d230",
-                "deebd70e-c27d-5fc3-ac34-ede71805a338"
-            ],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Weiterführendes",
-                "topicCode": "tum_ma3503_lo5"
-            }
-        },
-        {
-            "id": "e2cf24ec-9521-5a71-ab48-de399458d230",
-            "shortKey": "tum_ma3503_lo5_1",
-            "title": "Robuste Optimierung in Grundzügen modellieren und interpretieren",
-            "titleEn": "Model and Interpret Robust Optimization at a Basic Level",
-            "description": "Die lernende Person kann Unsicherheiten in Optimierungsmodellen abbilden, robuste Formulierungen in Grundzügen erläutern und typische Effekte auf Lösungsmenge und Methodenwahl interpretieren.",
-            "descriptionEn": "The learner can represent uncertainty in optimization models, explain robust formulations at a basic level, and interpret typical effects on feasible sets and method choice.",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Weiterführendes",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "04cff298-7965-5e1b-acd9-62351ff16a79",
-                "18738d0d-e754-5dfe-9cd8-8e9652f9bab1",
-                "25cb202a-4cd6-50ae-834d-431d064e32f2"
-            ],
-            "requires": [
-                "4487cde6-5652-58f4-a434-63f7c76ecde5"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Weiterführendes",
-                "topicCode": "tum_ma3503_lo5_1"
-            }
-        },
-        {
-            "id": "deebd70e-c27d-5fc3-ac34-ede71805a338",
-            "shortKey": "tum_ma3503_lo5_2",
-            "title": "Konenrestringierte Optimierung einordnen und Beispiele analysieren",
-            "titleEn": "Place Cone-Constrained Optimization and Analyze Examples",
-            "description": "Die lernende Person kann konenrestringierte Probleme (z.B. SOCP) als Verallgemeinerung klassischer Restriktionen einordnen, Beispiele formulieren und geeignete algorithmische Ansätze (z.B. Interior Point) begründet verknüpfen.",
-            "descriptionEn": "The learner can place cone-constrained problems (e.g., SOCP) as a generalization of classical constraints, formulate examples, and connect them to suitable algorithmic approaches (e.g., interior point methods).",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Weiterführendes",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "787bf886-7e39-58e7-ace7-7a75079cf5f3",
-                "875be2b9-2d78-508d-902f-065f23224285",
-                "ead22f87-0fa4-574e-aeea-a1fc571c8019"
-            ],
-            "requires": [
-                "e2cf24ec-9521-5a71-ab48-de399458d230"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Weiterführendes",
-                "topicCode": "tum_ma3503_lo5_2"
-            }
-        },
-        {
-            "id": "dcb8582d-1f9a-4e01-859d-44a925c94479",
-            "shortKey": "tum_ma3503_lo4_2_1",
-            "title": "Barrier-Methoden formulieren",
-            "titleEn": "Formulate Barrier Methods",
-            "description": "Die lernende Person kann Ungleichungsnebenbedingungen über Barrierefunktionen (z.B. Log-Barriere) in ein glattes Teilproblem überführen und den Einfluss des Barrier-Parameters erklären.",
-            "descriptionEn": "The learner can turn inequality constraints into a smooth subproblem via barrier functions (e.g., log barrier) and explain the role of the barrier parameter.",
-            "core": true,
-            "weight": 0.17,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "9f154639-c3e0-5e13-9bf8-0fbb320b6447",
-                "ad8cb950-3931-5f6f-802f-8b813ed713ed",
-                "da3dd58a-65fc-59e8-a14d-eda10c2289cb"
-            ],
-            "requires": [
-                "7c5fe884-fff7-5d49-a0ed-1b6f365504e4"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4_2_1"
-            }
-        },
-        {
-            "id": "3c138ce4-ab66-4fcf-bcad-4822b072138c",
-            "shortKey": "tum_ma3503_lo4_2_2",
-            "title": "Zentralpfad und primal-duale Bedingungen einordnen",
-            "titleEn": "Relate the Central Path and Primal–Dual Conditions",
-            "description": "Die lernende Person kann den Zentralpfad und zugehörige primal-duale KKT-Gleichungen einordnen und typische Schrittgleichungen eines Interior-Point-Verfahrens beschreiben.",
-            "descriptionEn": "The learner can relate the central path and corresponding primal–dual KKT equations and describe typical step equations of an interior-point method.",
-            "core": true,
-            "weight": 0.17,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "d064fdce-12b8-5c24-a167-4f875f938d78",
-                "9e663c96-374b-5efb-b9f6-14e4b1aea35a",
-                "ab410426-2d9e-5ef3-92f0-fb00618efb77"
-            ],
-            "requires": [
-                "dcb8582d-1f9a-4e01-859d-44a925c94479"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4_2_2"
-            }
-        },
-        {
-            "id": "4ebd790c-4346-4087-af4c-b5c27d3daa83",
-            "shortKey": "tum_ma3503_lo4_2_3",
-            "title": "Konvergenz und Komplexität von Interior-Point-Methoden diskutieren",
-            "titleEn": "Discuss Convergence and Complexity of Interior-Point Methods",
-            "description": "Die lernende Person kann grundlegende Konvergenz- und Komplexitätsaussagen zu Interior-Point-Methoden erläutern und auf ausgewählte Beispiele anwenden.",
-            "descriptionEn": "The learner can explain basic convergence and complexity statements for interior-point methods and apply them to selected examples.",
-            "core": true,
-            "weight": 0.16,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "bf563de9-85f6-5070-b91d-6dd54dfec707",
-                "749f732a-4faf-5d0a-b6fc-070f1c6a5750",
-                "00e08e26-9168-5208-9370-4b047026d64a"
-            ],
-            "requires": [
-                "3c138ce4-ab66-4fcf-bcad-4822b072138c"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4_2_3"
-            }
-        },
-        {
-            "id": "251677d2-b004-4193-9988-41e696785c77",
-            "shortKey": "tum_ma3503_lo2_1_1",
-            "title": "Erstordnungs-Optimalitätsbedingungen anwenden",
-            "titleEn": "Apply First-Order Optimality Conditions",
-            "description": "Die lernende Person kann notwendige Erstordnungsbedingungen (z.B. $\\nabla f(x)=0$) anwenden und kritische Punkte in Beispielen bestimmen.",
-            "descriptionEn": "The learner can apply necessary first-order conditions (e.g., $\\nabla f(x)=0$) and determine critical points in examples.",
-            "core": true,
-            "weight": 0.17,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "4009fe5e-734c-5bc8-add2-12f6e9a29c41",
-                "08da46ff-b850-5200-a253-72671835b861",
-                "ccf2b853-33c9-5b7c-a5ef-8d2afbb51e29"
-            ],
-            "requires": [
-                "bf0cfed5-d543-5053-a42f-e5f00bbb45b6"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2_1_1"
-            }
-        },
-        {
-            "id": "4f0dd58a-99eb-4802-b956-89af2e217486",
-            "shortKey": "tum_ma3503_lo2_1_2",
-            "title": "Zweitordnungsbedingungen nutzen und Kritikalität klassifizieren",
-            "titleEn": "Use Second-Order Conditions and Classify Criticality",
-            "description": "Die lernende Person kann Zweitordnungsbedingungen (Hesse-Matrix) nutzen, um lokale Minima/Maxima/Sattelpunkte zu unterscheiden, und die Voraussetzungen erläutern.",
-            "descriptionEn": "The learner can use second-order conditions (Hessian) to distinguish local minima/maxima/saddles and explain the underlying assumptions.",
-            "core": true,
-            "weight": 0.17,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "79c76112-25e6-55e4-b368-a98e61306e4a",
-                "08822c6c-99f1-5004-bbdc-8c14f016680d",
-                "edab78f8-7564-5ced-bb8b-da8856836961"
-            ],
-            "requires": [
-                "251677d2-b004-4193-9988-41e696785c77"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2_1_2"
-            }
-        },
-        {
-            "id": "5e0bb065-a85f-4b3f-aed4-07172b3ad7d9",
-            "shortKey": "tum_ma3503_lo2_1_3",
-            "title": "Lokale quadratische Modelle und Newton-Schritte herleiten",
-            "titleEn": "Derive Local Quadratic Models and Newton Steps",
-            "description": "Die lernende Person kann lokale quadratische Modelle interpretieren und daraus Newton- bzw. Newton-artige Schritte herleiten und in Beispielen anwenden.",
-            "descriptionEn": "The learner can interpret local quadratic models and derive Newton or Newton-type steps and apply them in examples.",
-            "core": true,
-            "weight": 0.16,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [
-                "f6a6c0e3-d43e-576b-b042-686e501e7235",
-                "41c80534-671c-53db-8119-f028e1757fce",
-                "efe19a18-63e4-5dbb-911d-0d99a5bba732"
-            ],
-            "requires": [
-                "4f0dd58a-99eb-4802-b956-89af2e217486"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2_1_3"
-            }
-        },
-        {
-            "id": "4e763ba1-bf3b-5bfe-8532-89547a12f020",
-            "shortKey": "tum_ma3503_memorize",
-            "title": "Kernaussagen des Moduls memorisieren",
-            "titleEn": "Memorize Key Module Statements",
-            "description": "Die lernende Person hat alle zentralen Definitionen und Sätze des Moduls verinnerlicht (geprüft z.B. durch SRS/Lernkarten).",
-            "descriptionEn": "The learner has internalized all key definitions and theorems of the module (verified e.g. via SRS/flashcards).",
-            "core": true,
-            "weight": 0.5,
-            "phase": "Modul",
-            "area": "Gesamtkompetenz",
-            "tags": [
-                "module:MA3503",
-                "srs-deck:ma3503"
-            ],
-            "extendedData": {
-                "vocabularySource": "/data/ma3503_deck.json"
-            },
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Gesamtkompetenz",
-                "topicCode": "tum_ma3503_memorize"
-            }
-        },
-        {
-            "id": "f6e01784-f1f2-5d72-a431-da5aa8ae50c9",
-            "shortKey": "tum_ma3503_lo1_1_1",
-            "title": "Kennen: Nichtlineare Optimierungsprobleme modellieren und klassifizieren",
-            "titleEn": "Know: Model and Classify Nonlinear Optimization Problems",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Nichtlineare Optimierungsprobleme modellieren und klassifizieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Model and Classify Nonlinear Optimization Problems'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma3503_lo1_1_1"
-            }
-        },
-        {
-            "id": "5534c0fa-a24f-569a-8db4-c1ebcc98c4ef",
-            "shortKey": "tum_ma3503_lo1_1_2",
-            "title": "Verstehen: Nichtlineare Optimierungsprobleme modellieren und klassifizieren",
-            "titleEn": "Understand: Model and Classify Nonlinear Optimization Problems",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Nichtlineare Optimierungsprobleme modellieren und klassifizieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Model and Classify Nonlinear Optimization Problems'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "f6e01784-f1f2-5d72-a431-da5aa8ae50c9"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma3503_lo1_1_2"
-            }
-        },
-        {
-            "id": "eedd6926-d4c4-5712-a268-e63f277a8673",
-            "shortKey": "tum_ma3503_lo1_1_3",
-            "title": "Anwenden: Nichtlineare Optimierungsprobleme modellieren und klassifizieren",
-            "titleEn": "Apply: Model and Classify Nonlinear Optimization Problems",
-            "description": "Die lernende Person wendet das Wissen zu 'Nichtlineare Optimierungsprobleme modellieren und klassifizieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Model and Classify Nonlinear Optimization Problems' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "5534c0fa-a24f-569a-8db4-c1ebcc98c4ef"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma3503_lo1_1_3"
-            }
-        },
-        {
-            "id": "ec33e8f8-1959-5e92-8626-44e4319242fc",
-            "shortKey": "tum_ma3503_lo1_2_1",
-            "title": "Kennen: Struktureigenschaften für Methodenwahl begründet nutzen",
-            "titleEn": "Know: Use Structural Properties to Justify Method Choices",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Struktureigenschaften für Methodenwahl begründet nutzen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Structural Properties to Justify Method Choices'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma3503_lo1_2_1"
-            }
-        },
-        {
-            "id": "bf92a326-752b-5fd0-8c06-d907fe772744",
-            "shortKey": "tum_ma3503_lo1_2_2",
-            "title": "Verstehen: Struktureigenschaften für Methodenwahl begründet nutzen",
-            "titleEn": "Understand: Use Structural Properties to Justify Method Choices",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Struktureigenschaften für Methodenwahl begründet nutzen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Use Structural Properties to Justify Method Choices'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "ec33e8f8-1959-5e92-8626-44e4319242fc"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma3503_lo1_2_2"
-            }
-        },
-        {
-            "id": "5bc48464-e781-58af-9772-f733a09920fe",
-            "shortKey": "tum_ma3503_lo1_2_3",
-            "title": "Anwenden: Struktureigenschaften für Methodenwahl begründet nutzen",
-            "titleEn": "Apply: Use Structural Properties to Justify Method Choices",
-            "description": "Die lernende Person wendet das Wissen zu 'Struktureigenschaften für Methodenwahl begründet nutzen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Use Structural Properties to Justify Method Choices' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Modellierung",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "bf92a326-752b-5fd0-8c06-d907fe772744"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Modellierung",
-                "topicCode": "tum_ma3503_lo1_2_3"
-            }
-        },
-        {
-            "id": "cfc8ae92-d607-5b9b-9d73-b29528f7cb89",
-            "shortKey": "tum_ma3503_lo2_2_1",
-            "title": "Kennen: Globalisierung und Konvergenz von Verfahren beurteilen",
-            "titleEn": "Know: Assess Globalization and Convergence of Methods",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Globalisierung und Konvergenz von Verfahren beurteilen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Assess Globalization and Convergence of Methods'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2_2_1"
-            }
-        },
-        {
-            "id": "d57de38a-d0bb-59dc-869d-c94518a4cb2f",
-            "shortKey": "tum_ma3503_lo2_2_2",
-            "title": "Verstehen: Globalisierung und Konvergenz von Verfahren beurteilen",
-            "titleEn": "Understand: Assess Globalization and Convergence of Methods",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Globalisierung und Konvergenz von Verfahren beurteilen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Assess Globalization and Convergence of Methods'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "cfc8ae92-d607-5b9b-9d73-b29528f7cb89"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2_2_2"
-            }
-        },
-        {
-            "id": "525aeaae-8ae1-598f-a803-1a0790dadbbf",
-            "shortKey": "tum_ma3503_lo2_2_3",
-            "title": "Anwenden: Globalisierung und Konvergenz von Verfahren beurteilen",
-            "titleEn": "Apply: Assess Globalization and Convergence of Methods",
-            "description": "Die lernende Person wendet das Wissen zu 'Globalisierung und Konvergenz von Verfahren beurteilen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Assess Globalization and Convergence of Methods' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "d57de38a-d0bb-59dc-869d-c94518a4cb2f"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2_2_3"
-            }
-        },
-        {
-            "id": "44c524af-2b42-53ec-9f40-be0c17e94488",
-            "shortKey": "tum_ma3503_lo3_1_1",
-            "title": "Kennen: KKT-Bedingungen herleiten und anwenden",
-            "titleEn": "Know: Derive and Apply KKT Conditions",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'KKT-Bedingungen herleiten und anwenden' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Derive and Apply KKT Conditions'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Restriktionen & KKT",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Restriktionen & KKT",
-                "topicCode": "tum_ma3503_lo3_1_1"
-            }
-        },
-        {
-            "id": "41010160-a930-5bc9-b0f9-a71571ee080f",
-            "shortKey": "tum_ma3503_lo3_1_2",
-            "title": "Verstehen: KKT-Bedingungen herleiten und anwenden",
-            "titleEn": "Understand: Derive and Apply KKT Conditions",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'KKT-Bedingungen herleiten und anwenden'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Derive and Apply KKT Conditions'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Restriktionen & KKT",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "44c524af-2b42-53ec-9f40-be0c17e94488"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Restriktionen & KKT",
-                "topicCode": "tum_ma3503_lo3_1_2"
-            }
-        },
-        {
-            "id": "150b7656-f69d-5f18-beff-ef8b5da8c4f9",
-            "shortKey": "tum_ma3503_lo3_1_3",
-            "title": "Anwenden: KKT-Bedingungen herleiten und anwenden",
-            "titleEn": "Apply: Derive and Apply KKT Conditions",
-            "description": "Die lernende Person wendet das Wissen zu 'KKT-Bedingungen herleiten und anwenden' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Derive and Apply KKT Conditions' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Restriktionen & KKT",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "41010160-a930-5bc9-b0f9-a71571ee080f"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Restriktionen & KKT",
-                "topicCode": "tum_ma3503_lo3_1_3"
-            }
-        },
-        {
-            "id": "fbced3c9-b9ce-554d-bec1-74b568a58dfe",
-            "shortKey": "tum_ma3503_lo3_2_1",
-            "title": "Kennen: Second-order theory und Sensitivitätsaspekte einordnen",
-            "titleEn": "Know: Place Second-Order Theory and Sensitivity Aspects",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Second-order theory und Sensitivitätsaspekte einordnen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Place Second-Order Theory and Sensitivity Aspects'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Restriktionen & KKT",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Restriktionen & KKT",
-                "topicCode": "tum_ma3503_lo3_2_1"
-            }
-        },
-        {
-            "id": "35c422cb-a62c-548e-818f-e0bf65cd89b9",
-            "shortKey": "tum_ma3503_lo3_2_2",
-            "title": "Verstehen: Second-order theory und Sensitivitätsaspekte einordnen",
-            "titleEn": "Understand: Place Second-Order Theory and Sensitivity Aspects",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Second-order theory und Sensitivitätsaspekte einordnen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Place Second-Order Theory and Sensitivity Aspects'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Restriktionen & KKT",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "fbced3c9-b9ce-554d-bec1-74b568a58dfe"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Restriktionen & KKT",
-                "topicCode": "tum_ma3503_lo3_2_2"
-            }
-        },
-        {
-            "id": "1dbaf46a-4dd4-50a2-8782-718658b3e160",
-            "shortKey": "tum_ma3503_lo3_2_3",
-            "title": "Anwenden: Second-order theory und Sensitivitätsaspekte einordnen",
-            "titleEn": "Apply: Place Second-Order Theory and Sensitivity Aspects",
-            "description": "Die lernende Person wendet das Wissen zu 'Second-order theory und Sensitivitätsaspekte einordnen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Place Second-Order Theory and Sensitivity Aspects' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Restriktionen & KKT",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "35c422cb-a62c-548e-818f-e0bf65cd89b9"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Restriktionen & KKT",
-                "topicCode": "tum_ma3503_lo3_2_3"
-            }
-        },
-        {
-            "id": "508ffa08-2900-5a9e-b6f6-3ce615fd6c58",
-            "shortKey": "tum_ma3503_lo4_1_1",
-            "title": "Kennen: SQP-Schritte und (quadratische) Teilprobleme formulieren",
-            "titleEn": "Know: Formulate SQP Steps and Quadratic Subproblems",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'SQP-Schritte und (quadratische) Teilprobleme formulieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Formulate SQP Steps and Quadratic Subproblems'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4_1_1"
-            }
-        },
-        {
-            "id": "bda25d7b-44b9-5d27-9dda-b94d6017fb58",
-            "shortKey": "tum_ma3503_lo4_1_2",
-            "title": "Verstehen: SQP-Schritte und (quadratische) Teilprobleme formulieren",
-            "titleEn": "Understand: Formulate SQP Steps and Quadratic Subproblems",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'SQP-Schritte und (quadratische) Teilprobleme formulieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Formulate SQP Steps and Quadratic Subproblems'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "508ffa08-2900-5a9e-b6f6-3ce615fd6c58"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4_1_2"
-            }
-        },
-        {
-            "id": "270e7159-610b-5e3e-91d2-c2574a4214d8",
-            "shortKey": "tum_ma3503_lo4_1_3",
-            "title": "Anwenden: SQP-Schritte und (quadratische) Teilprobleme formulieren",
-            "titleEn": "Apply: Formulate SQP Steps and Quadratic Subproblems",
-            "description": "Die lernende Person wendet das Wissen zu 'SQP-Schritte und (quadratische) Teilprobleme formulieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Formulate SQP Steps and Quadratic Subproblems' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "bda25d7b-44b9-5d27-9dda-b94d6017fb58"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4_1_3"
-            }
-        },
-        {
-            "id": "04cff298-7965-5e1b-acd9-62351ff16a79",
-            "shortKey": "tum_ma3503_lo5_1_1",
-            "title": "Kennen: Robuste Optimierung in Grundzügen modellieren und interpretieren",
-            "titleEn": "Know: Model and Interpret Robust Optimization at a Basic Level",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Robuste Optimierung in Grundzügen modellieren und interpretieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Model and Interpret Robust Optimization at a Basic Level'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Weiterführendes",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Weiterführendes",
-                "topicCode": "tum_ma3503_lo5_1_1"
-            }
-        },
-        {
-            "id": "18738d0d-e754-5dfe-9cd8-8e9652f9bab1",
-            "shortKey": "tum_ma3503_lo5_1_2",
-            "title": "Verstehen: Robuste Optimierung in Grundzügen modellieren und interpretieren",
-            "titleEn": "Understand: Model and Interpret Robust Optimization at a Basic Level",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Robuste Optimierung in Grundzügen modellieren und interpretieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Model and Interpret Robust Optimization at a Basic Level'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Weiterführendes",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "04cff298-7965-5e1b-acd9-62351ff16a79"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Weiterführendes",
-                "topicCode": "tum_ma3503_lo5_1_2"
-            }
-        },
-        {
-            "id": "25cb202a-4cd6-50ae-834d-431d064e32f2",
-            "shortKey": "tum_ma3503_lo5_1_3",
-            "title": "Anwenden: Robuste Optimierung in Grundzügen modellieren und interpretieren",
-            "titleEn": "Apply: Model and Interpret Robust Optimization at a Basic Level",
-            "description": "Die lernende Person wendet das Wissen zu 'Robuste Optimierung in Grundzügen modellieren und interpretieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Model and Interpret Robust Optimization at a Basic Level' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Weiterführendes",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "18738d0d-e754-5dfe-9cd8-8e9652f9bab1"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Weiterführendes",
-                "topicCode": "tum_ma3503_lo5_1_3"
-            }
-        },
-        {
-            "id": "787bf886-7e39-58e7-ace7-7a75079cf5f3",
-            "shortKey": "tum_ma3503_lo5_2_1",
-            "title": "Kennen: Konenrestringierte Optimierung einordnen und Beispiele analysieren",
-            "titleEn": "Know: Place Cone-Constrained Optimization and Analyze Examples",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Konenrestringierte Optimierung einordnen und Beispiele analysieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Place Cone-Constrained Optimization and Analyze Examples'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Weiterführendes",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Weiterführendes",
-                "topicCode": "tum_ma3503_lo5_2_1"
-            }
-        },
-        {
-            "id": "875be2b9-2d78-508d-902f-065f23224285",
-            "shortKey": "tum_ma3503_lo5_2_2",
-            "title": "Verstehen: Konenrestringierte Optimierung einordnen und Beispiele analysieren",
-            "titleEn": "Understand: Place Cone-Constrained Optimization and Analyze Examples",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Konenrestringierte Optimierung einordnen und Beispiele analysieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Place Cone-Constrained Optimization and Analyze Examples'.",
-            "core": true,
-            "weight": 0.15,
-            "phase": "Modul",
-            "area": "Weiterführendes",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "787bf886-7e39-58e7-ace7-7a75079cf5f3"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Weiterführendes",
-                "topicCode": "tum_ma3503_lo5_2_2"
-            }
-        },
-        {
-            "id": "ead22f87-0fa4-574e-aeea-a1fc571c8019",
-            "shortKey": "tum_ma3503_lo5_2_3",
-            "title": "Anwenden: Konenrestringierte Optimierung einordnen und Beispiele analysieren",
-            "titleEn": "Apply: Place Cone-Constrained Optimization and Analyze Examples",
-            "description": "Die lernende Person wendet das Wissen zu 'Konenrestringierte Optimierung einordnen und Beispiele analysieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Place Cone-Constrained Optimization and Analyze Examples' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.2,
-            "phase": "Modul",
-            "area": "Weiterführendes",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "875be2b9-2d78-508d-902f-065f23224285"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Weiterführendes",
-                "topicCode": "tum_ma3503_lo5_2_3"
-            }
-        },
-        {
-            "id": "9f154639-c3e0-5e13-9bf8-0fbb320b6447",
-            "shortKey": "tum_ma3503_lo4_2_1_1",
-            "title": "Kennen: Barrier-Methoden formulieren",
-            "titleEn": "Know: Formulate Barrier Methods",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Barrier-Methoden formulieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Formulate Barrier Methods'.",
-            "core": true,
-            "weight": 0.051000000000000004,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4_2_1_1"
-            }
-        },
-        {
-            "id": "ad8cb950-3931-5f6f-802f-8b813ed713ed",
-            "shortKey": "tum_ma3503_lo4_2_1_2",
-            "title": "Verstehen: Barrier-Methoden formulieren",
-            "titleEn": "Understand: Formulate Barrier Methods",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Barrier-Methoden formulieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Formulate Barrier Methods'.",
-            "core": true,
-            "weight": 0.051000000000000004,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "9f154639-c3e0-5e13-9bf8-0fbb320b6447"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4_2_1_2"
-            }
-        },
-        {
-            "id": "da3dd58a-65fc-59e8-a14d-eda10c2289cb",
-            "shortKey": "tum_ma3503_lo4_2_1_3",
-            "title": "Anwenden: Barrier-Methoden formulieren",
-            "titleEn": "Apply: Formulate Barrier Methods",
-            "description": "Die lernende Person wendet das Wissen zu 'Barrier-Methoden formulieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Formulate Barrier Methods' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.068,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "ad8cb950-3931-5f6f-802f-8b813ed713ed"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4_2_1_3"
-            }
-        },
-        {
-            "id": "d064fdce-12b8-5c24-a167-4f875f938d78",
-            "shortKey": "tum_ma3503_lo4_2_2_1",
-            "title": "Kennen: Zentralpfad und primal-duale Bedingungen einordnen",
-            "titleEn": "Know: Relate the Central Path and Primal–Dual Conditions",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Zentralpfad und primal-duale Bedingungen einordnen' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Relate the Central Path and Primal–Dual Conditions'.",
-            "core": true,
-            "weight": 0.051000000000000004,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4_2_2_1"
-            }
-        },
-        {
-            "id": "9e663c96-374b-5efb-b9f6-14e4b1aea35a",
-            "shortKey": "tum_ma3503_lo4_2_2_2",
-            "title": "Verstehen: Zentralpfad und primal-duale Bedingungen einordnen",
-            "titleEn": "Understand: Relate the Central Path and Primal–Dual Conditions",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Zentralpfad und primal-duale Bedingungen einordnen'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Relate the Central Path and Primal–Dual Conditions'.",
-            "core": true,
-            "weight": 0.051000000000000004,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "d064fdce-12b8-5c24-a167-4f875f938d78"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4_2_2_2"
-            }
-        },
-        {
-            "id": "ab410426-2d9e-5ef3-92f0-fb00618efb77",
-            "shortKey": "tum_ma3503_lo4_2_2_3",
-            "title": "Anwenden: Zentralpfad und primal-duale Bedingungen einordnen",
-            "titleEn": "Apply: Relate the Central Path and Primal–Dual Conditions",
-            "description": "Die lernende Person wendet das Wissen zu 'Zentralpfad und primal-duale Bedingungen einordnen' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Relate the Central Path and Primal–Dual Conditions' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.068,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "9e663c96-374b-5efb-b9f6-14e4b1aea35a"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4_2_2_3"
-            }
-        },
-        {
-            "id": "bf563de9-85f6-5070-b91d-6dd54dfec707",
-            "shortKey": "tum_ma3503_lo4_2_3_1",
-            "title": "Kennen: Konvergenz und Komplexität von Interior-Point-Methoden diskutieren",
-            "titleEn": "Know: Discuss Convergence and Complexity of Interior-Point Methods",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Konvergenz und Komplexität von Interior-Point-Methoden diskutieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Discuss Convergence and Complexity of Interior-Point Methods'.",
-            "core": true,
-            "weight": 0.048,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4_2_3_1"
-            }
-        },
-        {
-            "id": "749f732a-4faf-5d0a-b6fc-070f1c6a5750",
-            "shortKey": "tum_ma3503_lo4_2_3_2",
-            "title": "Verstehen: Konvergenz und Komplexität von Interior-Point-Methoden diskutieren",
-            "titleEn": "Understand: Discuss Convergence and Complexity of Interior-Point Methods",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Konvergenz und Komplexität von Interior-Point-Methoden diskutieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Discuss Convergence and Complexity of Interior-Point Methods'.",
-            "core": true,
-            "weight": 0.048,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "bf563de9-85f6-5070-b91d-6dd54dfec707"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4_2_3_2"
-            }
-        },
-        {
-            "id": "00e08e26-9168-5208-9370-4b047026d64a",
-            "shortKey": "tum_ma3503_lo4_2_3_3",
-            "title": "Anwenden: Konvergenz und Komplexität von Interior-Point-Methoden diskutieren",
-            "titleEn": "Apply: Discuss Convergence and Complexity of Interior-Point Methods",
-            "description": "Die lernende Person wendet das Wissen zu 'Konvergenz und Komplexität von Interior-Point-Methoden diskutieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Discuss Convergence and Complexity of Interior-Point Methods' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.064,
-            "phase": "Modul",
-            "area": "Verfahren",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "749f732a-4faf-5d0a-b6fc-070f1c6a5750"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Verfahren",
-                "topicCode": "tum_ma3503_lo4_2_3_3"
-            }
-        },
-        {
-            "id": "4009fe5e-734c-5bc8-add2-12f6e9a29c41",
-            "shortKey": "tum_ma3503_lo2_1_1_1",
-            "title": "Kennen: Erstordnungs-Optimalitätsbedingungen anwenden",
-            "titleEn": "Know: Apply First-Order Optimality Conditions",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Erstordnungs-Optimalitätsbedingungen anwenden' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply First-Order Optimality Conditions'.",
-            "core": true,
-            "weight": 0.051000000000000004,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2_1_1_1"
-            }
-        },
-        {
-            "id": "08da46ff-b850-5200-a253-72671835b861",
-            "shortKey": "tum_ma3503_lo2_1_1_2",
-            "title": "Verstehen: Erstordnungs-Optimalitätsbedingungen anwenden",
-            "titleEn": "Understand: Apply First-Order Optimality Conditions",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Erstordnungs-Optimalitätsbedingungen anwenden'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Apply First-Order Optimality Conditions'.",
-            "core": true,
-            "weight": 0.051000000000000004,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "4009fe5e-734c-5bc8-add2-12f6e9a29c41"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2_1_1_2"
-            }
-        },
-        {
-            "id": "ccf2b853-33c9-5b7c-a5ef-8d2afbb51e29",
-            "shortKey": "tum_ma3503_lo2_1_1_3",
-            "title": "Anwenden: Erstordnungs-Optimalitätsbedingungen anwenden",
-            "titleEn": "Apply: Apply First-Order Optimality Conditions",
-            "description": "Die lernende Person wendet das Wissen zu 'Erstordnungs-Optimalitätsbedingungen anwenden' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Apply First-Order Optimality Conditions' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.068,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "08da46ff-b850-5200-a253-72671835b861"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2_1_1_3"
-            }
-        },
-        {
-            "id": "79c76112-25e6-55e4-b368-a98e61306e4a",
-            "shortKey": "tum_ma3503_lo2_1_2_1",
-            "title": "Kennen: Zweitordnungsbedingungen nutzen und Kritikalität klassifizieren",
-            "titleEn": "Know: Use Second-Order Conditions and Classify Criticality",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Zweitordnungsbedingungen nutzen und Kritikalität klassifizieren' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Second-Order Conditions and Classify Criticality'.",
-            "core": true,
-            "weight": 0.051000000000000004,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2_1_2_1"
-            }
-        },
-        {
-            "id": "08822c6c-99f1-5004-bbdc-8c14f016680d",
-            "shortKey": "tum_ma3503_lo2_1_2_2",
-            "title": "Verstehen: Zweitordnungsbedingungen nutzen und Kritikalität klassifizieren",
-            "titleEn": "Understand: Use Second-Order Conditions and Classify Criticality",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Zweitordnungsbedingungen nutzen und Kritikalität klassifizieren'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Use Second-Order Conditions and Classify Criticality'.",
-            "core": true,
-            "weight": 0.051000000000000004,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "79c76112-25e6-55e4-b368-a98e61306e4a"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2_1_2_2"
-            }
-        },
-        {
-            "id": "edab78f8-7564-5ced-bb8b-da8856836961",
-            "shortKey": "tum_ma3503_lo2_1_2_3",
-            "title": "Anwenden: Zweitordnungsbedingungen nutzen und Kritikalität klassifizieren",
-            "titleEn": "Apply: Use Second-Order Conditions and Classify Criticality",
-            "description": "Die lernende Person wendet das Wissen zu 'Zweitordnungsbedingungen nutzen und Kritikalität klassifizieren' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Use Second-Order Conditions and Classify Criticality' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.068,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "08822c6c-99f1-5004-bbdc-8c14f016680d"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2_1_2_3"
-            }
-        },
-        {
-            "id": "f6a6c0e3-d43e-576b-b042-686e501e7235",
-            "shortKey": "tum_ma3503_lo2_1_3_1",
-            "title": "Kennen: Lokale quadratische Modelle und Newton-Schritte herleiten",
-            "titleEn": "Know: Derive Local Quadratic Models and Newton Steps",
-            "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Lokale quadratische Modelle und Newton-Schritte herleiten' korrekt wieder.",
-            "descriptionEn": "The learner correctly states the definitions and statements regarding 'Derive Local Quadratic Models and Newton Steps'.",
-            "core": true,
-            "weight": 0.048,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB1",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2_1_3_1"
-            }
-        },
-        {
-            "id": "41c80534-671c-53db-8119-f028e1757fce",
-            "shortKey": "tum_ma3503_lo2_1_3_2",
-            "title": "Verstehen: Lokale quadratische Modelle und Newton-Schritte herleiten",
-            "titleEn": "Understand: Derive Local Quadratic Models and Newton Steps",
-            "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Lokale quadratische Modelle und Newton-Schritte herleiten'.",
-            "descriptionEn": "The learner explains the background and connections regarding 'Derive Local Quadratic Models and Newton Steps'.",
-            "core": true,
-            "weight": 0.048,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "f6a6c0e3-d43e-576b-b042-686e501e7235"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB2",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2_1_3_2"
-            }
-        },
-        {
-            "id": "efe19a18-63e4-5dbb-911d-0d99a5bba732",
-            "shortKey": "tum_ma3503_lo2_1_3_3",
-            "title": "Anwenden: Lokale quadratische Modelle und Newton-Schritte herleiten",
-            "titleEn": "Apply: Derive Local Quadratic Models and Newton Steps",
-            "description": "Die lernende Person wendet das Wissen zu 'Lokale quadratische Modelle und Newton-Schritte herleiten' auf konkrete Beispiele und Aufgaben an.",
-            "descriptionEn": "The learner applies the knowledge of 'Derive Local Quadratic Models and Newton Steps' to concrete examples and tasks.",
-            "core": true,
-            "weight": 0.064,
-            "phase": "Modul",
-            "area": "Unrestringiert",
-            "tags": [
-                "ects:5",
-                "module:MA3503"
-            ],
-            "contains": [],
-            "requires": [
-                "41c80534-671c-53db-8119-f028e1757fce"
-            ],
-            "examples": [],
-            "dimensionTags": {
-                "framework": "tum-ma3503",
-                "demandLevel": "AB3",
-                "processCompetencies": [],
-                "guidingIdeas": [],
-                "phase": "Modul",
-                "area": "Unrestringiert",
-                "topicCode": "tum_ma3503_lo2_1_3_3"
-            }
-        }
-    ]
+  "title": "Nichtlineare Optimierung (TUM, Modul MA3503)",
+  "titleEn": "Nonlinear Optimization (TUM, Module MA3503)",
+  "description": "Das Modul vertieft moderne nichtlineare Optimierung mit Blick auf Theorie und Numerik. Behandelt werden Beispiele praktischer nichtlinearer Optimierungsprobleme, ausgewählte fortgeschrittene Themen der unrestringierten Optimierung sowie insbesondere restringierte Optimierung mit detaillierter Optimalitätstheorie. Darüber hinaus werden wichtige Klassen numerischer Methoden (z.B. Sequential Quadratic Programming, Barrier-Methoden und Interior-Point-Verfahren) entwickelt und analysiert. Ergänzende Themen wie robuste Optimierung oder konenrestringierte Optimierung werden beispielhaft behandelt. Nach erfolgreichem Abschluss können Studierende Konvergenzeigenschaften von Optimierungsverfahren beurteilen und Optimierungstheorie und -methoden auf Aufgaben anwenden. 5 ECTS, angeboten im Wintersemester, Version 2023s, verantwortet von Ulbrich, Michael.",
+  "descriptionEn": "The module provides an in-depth treatment of modern nonlinear optimization from a theoretical and numerical perspective. Topics include examples of nonlinear optimization problems from practice, selected advanced topics in unconstrained optimization, and in particular constrained optimization with a detailed development of optimality theory. Important classes of numerical methods (e.g., sequential quadratic programming, barrier methods, and interior point algorithms) are developed and analyzed. Selected further topics such as robust optimization or cone-constrained optimization are covered in exemplary form. After successful completion, students can assess convergence properties of optimization methods and apply optimization theory and algorithms. 5 ECTS, offered in the winter semester, version 2023s, responsible: Ulbrich, Michael.",
+  "landscapeId": "2dfc2940-92f5-4f23-b171-826ea498e025",
+  "locale": "de-DE",
+  "subject": "Mathematik",
+  "frameworkId": "tum-ma3503",
+  "filters": [
+    {
+      "id": "BSc",
+      "label": "Bachelor Mathematik"
+    }
+  ],
+  "goals": [
+    {
+      "id": "df94a7dc-6778-56a6-ad97-9ea86cab6a99",
+      "title": "Nichtlineare Optimierung – Gesamtmodul",
+      "titleEn": "Nonlinear Optimization – Full Module",
+      "description": "Nach erfolgreichem Abschluss können Studierende Optimierungstheorie detailliert verstehen und fortgeschrittene theoretische und numerische Aspekte moderner nichtlinearer Optimierung beherrschen. Sie können Konvergenzeigenschaften von Optimierungsverfahren analysieren und bewerten sowie Optimierungstheorie und -methoden anwenden.",
+      "descriptionEn": "At the end of the module students are able to understand optimization theory in detail, to understand advanced theoretical and numerical aspects of modern nonlinear optimization, to assess and investigate the convergence properties of optimization methods and to apply optimization theory and methods.",
+      "weight": 5.0,
+      "tags": [
+        "ects:5",
+        "workload:150h",
+        "presence:45h",
+        "level:master",
+        "language:en",
+        "module:MA3503",
+        "semester:WS",
+        "duration:1_semester",
+        "responsible:ulbrich_michael"
+      ],
+      "contains": [
+        "3f92a4c9-919b-56c9-b941-7ac795f008be",
+        "3f6d5e19-33f0-5159-a3ce-ade28bc31f04",
+        "3c44c653-2c0a-5b05-aed8-d0eb9d2c6258",
+        "19d2a25a-1cc1-556f-9dcb-76cf036a6fb2",
+        "74e75865-db6b-539d-9928-0f559094ecc4",
+        "4e763ba1-bf3b-5bfe-8532-89547a12f020"
+      ],
+      "requires": [
+        "8eb1605b-fa70-511b-bbe4-28173d359c3b",
+        "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
+        "feaad1d5-022f-5ab3-93c3-001ac46de351",
+        "1e712ee7-a9d9-58d0-8eb9-e45098c14fbc",
+        "946f50cd-f6d9-5d1c-a79d-c06a302ce7be",
+        "b805ec8a-3357-56b6-a770-86490a3c8916"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      },
+      "sourceRef": "https://academics.nat.tum.de/ui/mhb/modules/detail?module_code=MA3503&description_version=2023s"
+    },
+    {
+      "id": "3f92a4c9-919b-56c9-b941-7ac795f008be",
+      "title": "Modellierung und Problemklassen",
+      "titleEn": "Modeling and Problem Classes",
+      "description": "Zusammenfassender Cluster: Praktische Beispiele nichtlinearer Optimierung und Einordnung typischer Problemklassen (unrestringiert/restringiert, glatt/konvex, etc.).",
+      "descriptionEn": "Summary cluster: practical examples of nonlinear optimization and classification of common problem classes (unconstrained/constrained, smooth/convex, etc.).",
+      "weight": 1.0,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "cfcf2f73-d04d-5a37-a3e3-c05f0a9b46bf",
+        "bf0cfed5-d543-5053-a42f-e5f00bbb45b6"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "cfcf2f73-d04d-5a37-a3e3-c05f0a9b46bf",
+      "title": "Nichtlineare Optimierungsprobleme modellieren und klassifizieren",
+      "titleEn": "Model and Classify Nonlinear Optimization Problems",
+      "description": "Die lernende Person kann praktische Aufgabenstellungen als nichtlineare Optimierungsprobleme formulieren (Ziel, Variablen, Nebenbedingungen) und sie nach Struktur (z.B. glatt/nichtglatt, konvex/nichtkonvex, Restriktionen) klassifizieren.",
+      "descriptionEn": "The learner can formulate practical tasks as nonlinear optimization problems (objective, variables, constraints) and classify them by structure (e.g., smooth/nonsmooth, convex/nonconvex, constrained/unconstrained).",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "f6e01784-f1f2-5d72-a431-da5aa8ae50c9",
+        "5534c0fa-a24f-569a-8db4-c1ebcc98c4ef",
+        "eedd6926-d4c4-5712-a268-e63f277a8673"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "bf0cfed5-d543-5053-a42f-e5f00bbb45b6",
+      "title": "Struktureigenschaften für Methodenwahl begründet nutzen",
+      "titleEn": "Use Structural Properties to Justify Method Choices",
+      "description": "Die lernende Person kann aus strukturellen Eigenschaften eines Problems geeignete Lösungsansätze ableiten (z.B. gradientenbasierte Methoden, Newton-artige Verfahren, Relaxationen) und die Wahl fachlich begründen.",
+      "descriptionEn": "The learner can derive suitable solution approaches from a problem’s structure (e.g., gradient-based methods, Newton-type methods, relaxations) and justify the choice.",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "ec33e8f8-1959-5e92-8626-44e4319242fc",
+        "bf92a326-752b-5fd0-8c06-d907fe772744",
+        "5bc48464-e781-58af-9772-f733a09920fe"
+      ],
+      "requires": [
+        "cfcf2f73-d04d-5a37-a3e3-c05f0a9b46bf"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "3f6d5e19-33f0-5159-a3ce-ade28bc31f04",
+      "title": "Fortgeschrittene unrestringierte Optimierung",
+      "titleEn": "Advanced Unconstrained Optimization",
+      "description": "Zusammenfassender Cluster: Fortgeschrittene Aspekte der unrestringierten Optimierung, inkl. Optimalitätsbedingungen, Globalisierungsstrategien und Konvergenzanalyse.",
+      "descriptionEn": "Summary cluster: advanced aspects of unconstrained optimization including optimality conditions, globalization strategies, and convergence analysis.",
+      "weight": 1.0,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "0c8337ad-e363-5cf4-acd3-cf1dc6c95306",
+        "3d0d3487-0542-55e9-afa0-a9d8e1fbb14f"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "0c8337ad-e363-5cf4-acd3-cf1dc6c95306",
+      "title": "Optimalitätsbedingungen und lokale Modelle in der unrestringierten Optimierung anwenden",
+      "titleEn": "Apply Optimality Conditions and Local Models in Unconstrained Optimization",
+      "description": "Die lernende Person kann notwendige und hinreichende Optimalitätsbedingungen (1./2. Ordnung) anwenden, lokale quadratische Modelle interpretieren und daraus Newton- bzw. Newton-artige Schritte herleiten.",
+      "descriptionEn": "The learner can apply necessary and sufficient optimality conditions (first/second order), interpret local quadratic models, and derive Newton or Newton-type steps.",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "251677d2-b004-4193-9988-41e696785c77",
+        "4f0dd58a-99eb-4802-b956-89af2e217486",
+        "5e0bb065-a85f-4b3f-aed4-07172b3ad7d9"
+      ],
+      "requires": [
+        "bf0cfed5-d543-5053-a42f-e5f00bbb45b6"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "3d0d3487-0542-55e9-afa0-a9d8e1fbb14f",
+      "title": "Globalisierung und Konvergenz von Verfahren beurteilen",
+      "titleEn": "Assess Globalization and Convergence of Methods",
+      "description": "Die lernende Person kann Globalisierungsstrategien (z.B. Line Search, Trust Region) einordnen, Konvergenzbegriffe (global/lokal) verwenden und Konvergenzeigenschaften von Verfahren begründet analysieren.",
+      "descriptionEn": "The learner can place globalization strategies (e.g., line search, trust regions), use convergence notions (global/local), and analyze convergence properties of methods in a well-justified way.",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "cfc8ae92-d607-5b9b-9d73-b29528f7cb89",
+        "d57de38a-d0bb-59dc-869d-c94518a4cb2f",
+        "525aeaae-8ae1-598f-a803-1a0790dadbbf"
+      ],
+      "requires": [
+        "0c8337ad-e363-5cf4-acd3-cf1dc6c95306"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "3c44c653-2c0a-5b05-aed8-d0eb9d2c6258",
+      "title": "Optimalitätstheorie für restringierte Optimierung",
+      "titleEn": "Optimality Theory for Constrained Optimization",
+      "description": "Zusammenfassender Cluster: Optimalitätsbedingungen (KKT), Regularitäts-/Constraint-Qualification-Konzepte und second-order theory für restringierte Probleme.",
+      "descriptionEn": "Summary cluster: optimality conditions (KKT), regularity/constraint qualification concepts, and second-order theory for constrained problems.",
+      "weight": 1.0,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "49850306-9d29-560a-b602-731d85631fe1",
+        "b910e722-e012-54f3-8787-16e248a3572d"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "49850306-9d29-560a-b602-731d85631fe1",
+      "title": "KKT-Bedingungen herleiten und anwenden",
+      "titleEn": "Derive and Apply KKT Conditions",
+      "description": "Die lernende Person kann Lagrange-Funktion und KKT-Bedingungen formulieren, geeignete Constraint Qualifications einordnen und KKT-Bedingungen in Beispielen zur Charakterisierung von Kandidatenlösungen anwenden.",
+      "descriptionEn": "The learner can formulate the Lagrangian and KKT conditions, place suitable constraint qualifications, and apply KKT conditions in examples to characterize candidate solutions.",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "44c524af-2b42-53ec-9f40-be0c17e94488",
+        "41010160-a930-5bc9-b0f9-a71571ee080f",
+        "150b7656-f69d-5f18-beff-ef8b5da8c4f9"
+      ],
+      "requires": [
+        "3d0d3487-0542-55e9-afa0-a9d8e1fbb14f"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "b910e722-e012-54f3-8787-16e248a3572d",
+      "title": "Second-order theory und Sensitivitätsaspekte einordnen",
+      "titleEn": "Place Second-Order Theory and Sensitivity Aspects",
+      "description": "Die lernende Person kann second-order Optimalitätsbedingungen für restringierte Probleme einordnen, den Einfluss aktiver Nebenbedingungen diskutieren und Sensitivitäts-/Regularitätsaspekte für Numerik motivieren.",
+      "descriptionEn": "The learner can place second-order optimality conditions for constrained problems, discuss the role of active constraints, and motivate sensitivity/regularity aspects relevant for numerical methods.",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "fbced3c9-b9ce-554d-bec1-74b568a58dfe",
+        "35c422cb-a62c-548e-818f-e0bf65cd89b9",
+        "1dbaf46a-4dd4-50a2-8782-718658b3e160"
+      ],
+      "requires": [
+        "49850306-9d29-560a-b602-731d85631fe1"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "19d2a25a-1cc1-556f-9dcb-76cf036a6fb2",
+      "title": "Numerische Methoden: SQP, Barrier, Interior Point",
+      "titleEn": "Numerical Methods: SQP, Barrier, Interior Point",
+      "description": "Zusammenfassender Cluster: Entwicklung und Analyse zentraler numerischer Verfahren für nichtlineare restringierte Optimierung (SQP, Barrier- und Interior-Point-Verfahren).",
+      "descriptionEn": "Summary cluster: development and analysis of key numerical methods for nonlinear constrained optimization (SQP, barrier, and interior point methods).",
+      "weight": 1.0,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "7c5fe884-fff7-5d49-a0ed-1b6f365504e4",
+        "4487cde6-5652-58f4-a434-63f7c76ecde5"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "7c5fe884-fff7-5d49-a0ed-1b6f365504e4",
+      "title": "SQP-Schritte und (quadratische) Teilprobleme formulieren",
+      "titleEn": "Formulate SQP Steps and Quadratic Subproblems",
+      "description": "Die lernende Person kann die Idee von SQP erläutern, ein quadratisches Teilproblem aus KKT-Linearisation ableiten und die Rolle von Lagrange-Multiplikatoren und Hessian-Approximationen erklären.",
+      "descriptionEn": "The learner can explain the idea of SQP, derive a quadratic subproblem from KKT linearization, and explain the role of Lagrange multipliers and Hessian approximations.",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "508ffa08-2900-5a9e-b6f6-3ce615fd6c58",
+        "bda25d7b-44b9-5d27-9dda-b94d6017fb58",
+        "270e7159-610b-5e3e-91d2-c2574a4214d8"
+      ],
+      "requires": [
+        "b910e722-e012-54f3-8787-16e248a3572d"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4487cde6-5652-58f4-a434-63f7c76ecde5",
+      "title": "Barrier- und Interior-Point-Methoden analysieren und anwenden",
+      "titleEn": "Analyze and Apply Barrier and Interior Point Methods",
+      "description": "Die lernende Person kann Barrier- und Interior-Point-Ideen erklären, zentrale KKT-/Zentralpfad-Gleichungen einordnen und Konvergenz- bzw. Komplexitätsaspekte in ausgewählten Beispielen diskutieren.",
+      "descriptionEn": "The learner can explain barrier and interior point ideas, place key KKT/central-path equations, and discuss convergence or complexity aspects on selected examples.",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "dcb8582d-1f9a-4e01-859d-44a925c94479",
+        "3c138ce4-ab66-4fcf-bcad-4822b072138c",
+        "4ebd790c-4346-4087-af4c-b5c27d3daa83"
+      ],
+      "requires": [
+        "7c5fe884-fff7-5d49-a0ed-1b6f365504e4"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "74e75865-db6b-539d-9928-0f559094ecc4",
+      "title": "Ausgewählte weiterführende Themen",
+      "titleEn": "Selected Further Topics",
+      "description": "Zusammenfassender Cluster: Weiterführende Themen wie robuste Optimierung oder konenrestringierte Optimierung sowie deren algorithmische Einordnung.",
+      "descriptionEn": "Summary cluster: further topics such as robust optimization or cone-constrained optimization and their algorithmic placement.",
+      "weight": 1.0,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "e2cf24ec-9521-5a71-ab48-de399458d230",
+        "deebd70e-c27d-5fc3-ac34-ede71805a338"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "e2cf24ec-9521-5a71-ab48-de399458d230",
+      "title": "Robuste Optimierung in Grundzügen modellieren und interpretieren",
+      "titleEn": "Model and Interpret Robust Optimization at a Basic Level",
+      "description": "Die lernende Person kann Unsicherheiten in Optimierungsmodellen abbilden, robuste Formulierungen in Grundzügen erläutern und typische Effekte auf Lösungsmenge und Methodenwahl interpretieren.",
+      "descriptionEn": "The learner can represent uncertainty in optimization models, explain robust formulations at a basic level, and interpret typical effects on feasible sets and method choice.",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "04cff298-7965-5e1b-acd9-62351ff16a79",
+        "18738d0d-e754-5dfe-9cd8-8e9652f9bab1",
+        "25cb202a-4cd6-50ae-834d-431d064e32f2"
+      ],
+      "requires": [
+        "4487cde6-5652-58f4-a434-63f7c76ecde5"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "deebd70e-c27d-5fc3-ac34-ede71805a338",
+      "title": "Konenrestringierte Optimierung einordnen und Beispiele analysieren",
+      "titleEn": "Place Cone-Constrained Optimization and Analyze Examples",
+      "description": "Die lernende Person kann konenrestringierte Probleme (z.B. SOCP) als Verallgemeinerung klassischer Restriktionen einordnen, Beispiele formulieren und geeignete algorithmische Ansätze (z.B. Interior Point) begründet verknüpfen.",
+      "descriptionEn": "The learner can place cone-constrained problems (e.g., SOCP) as a generalization of classical constraints, formulate examples, and connect them to suitable algorithmic approaches (e.g., interior point methods).",
+      "weight": 0.5,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "787bf886-7e39-58e7-ace7-7a75079cf5f3",
+        "875be2b9-2d78-508d-902f-065f23224285",
+        "ead22f87-0fa4-574e-aeea-a1fc571c8019"
+      ],
+      "requires": [
+        "e2cf24ec-9521-5a71-ab48-de399458d230"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "dcb8582d-1f9a-4e01-859d-44a925c94479",
+      "title": "Barrier-Methoden formulieren",
+      "titleEn": "Formulate Barrier Methods",
+      "description": "Die lernende Person kann Ungleichungsnebenbedingungen über Barrierefunktionen (z.B. Log-Barriere) in ein glattes Teilproblem überführen und den Einfluss des Barrier-Parameters erklären.",
+      "descriptionEn": "The learner can turn inequality constraints into a smooth subproblem via barrier functions (e.g., log barrier) and explain the role of the barrier parameter.",
+      "weight": 0.17,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "9f154639-c3e0-5e13-9bf8-0fbb320b6447",
+        "ad8cb950-3931-5f6f-802f-8b813ed713ed",
+        "da3dd58a-65fc-59e8-a14d-eda10c2289cb"
+      ],
+      "requires": [
+        "7c5fe884-fff7-5d49-a0ed-1b6f365504e4"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "3c138ce4-ab66-4fcf-bcad-4822b072138c",
+      "title": "Zentralpfad und primal-duale Bedingungen einordnen",
+      "titleEn": "Relate the Central Path and Primal–Dual Conditions",
+      "description": "Die lernende Person kann den Zentralpfad und zugehörige primal-duale KKT-Gleichungen einordnen und typische Schrittgleichungen eines Interior-Point-Verfahrens beschreiben.",
+      "descriptionEn": "The learner can relate the central path and corresponding primal–dual KKT equations and describe typical step equations of an interior-point method.",
+      "weight": 0.17,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "d064fdce-12b8-5c24-a167-4f875f938d78",
+        "9e663c96-374b-5efb-b9f6-14e4b1aea35a",
+        "ab410426-2d9e-5ef3-92f0-fb00618efb77"
+      ],
+      "requires": [
+        "dcb8582d-1f9a-4e01-859d-44a925c94479"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4ebd790c-4346-4087-af4c-b5c27d3daa83",
+      "title": "Konvergenz und Komplexität von Interior-Point-Methoden diskutieren",
+      "titleEn": "Discuss Convergence and Complexity of Interior-Point Methods",
+      "description": "Die lernende Person kann grundlegende Konvergenz- und Komplexitätsaussagen zu Interior-Point-Methoden erläutern und auf ausgewählte Beispiele anwenden.",
+      "descriptionEn": "The learner can explain basic convergence and complexity statements for interior-point methods and apply them to selected examples.",
+      "weight": 0.16,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "bf563de9-85f6-5070-b91d-6dd54dfec707",
+        "749f732a-4faf-5d0a-b6fc-070f1c6a5750",
+        "00e08e26-9168-5208-9370-4b047026d64a"
+      ],
+      "requires": [
+        "3c138ce4-ab66-4fcf-bcad-4822b072138c"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "251677d2-b004-4193-9988-41e696785c77",
+      "title": "Erstordnungs-Optimalitätsbedingungen anwenden",
+      "titleEn": "Apply First-Order Optimality Conditions",
+      "description": "Die lernende Person kann notwendige Erstordnungsbedingungen (z.B. $\\nabla f(x)=0$) anwenden und kritische Punkte in Beispielen bestimmen.",
+      "descriptionEn": "The learner can apply necessary first-order conditions (e.g., $\\nabla f(x)=0$) and determine critical points in examples.",
+      "weight": 0.17,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "4009fe5e-734c-5bc8-add2-12f6e9a29c41",
+        "08da46ff-b850-5200-a253-72671835b861",
+        "ccf2b853-33c9-5b7c-a5ef-8d2afbb51e29"
+      ],
+      "requires": [
+        "bf0cfed5-d543-5053-a42f-e5f00bbb45b6"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4f0dd58a-99eb-4802-b956-89af2e217486",
+      "title": "Zweitordnungsbedingungen nutzen und Kritikalität klassifizieren",
+      "titleEn": "Use Second-Order Conditions and Classify Criticality",
+      "description": "Die lernende Person kann Zweitordnungsbedingungen (Hesse-Matrix) nutzen, um lokale Minima/Maxima/Sattelpunkte zu unterscheiden, und die Voraussetzungen erläutern.",
+      "descriptionEn": "The learner can use second-order conditions (Hessian) to distinguish local minima/maxima/saddles and explain the underlying assumptions.",
+      "weight": 0.17,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "79c76112-25e6-55e4-b368-a98e61306e4a",
+        "08822c6c-99f1-5004-bbdc-8c14f016680d",
+        "edab78f8-7564-5ced-bb8b-da8856836961"
+      ],
+      "requires": [
+        "251677d2-b004-4193-9988-41e696785c77"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "5e0bb065-a85f-4b3f-aed4-07172b3ad7d9",
+      "title": "Lokale quadratische Modelle und Newton-Schritte herleiten",
+      "titleEn": "Derive Local Quadratic Models and Newton Steps",
+      "description": "Die lernende Person kann lokale quadratische Modelle interpretieren und daraus Newton- bzw. Newton-artige Schritte herleiten und in Beispielen anwenden.",
+      "descriptionEn": "The learner can interpret local quadratic models and derive Newton or Newton-type steps and apply them in examples.",
+      "weight": 0.16,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [
+        "f6a6c0e3-d43e-576b-b042-686e501e7235",
+        "41c80534-671c-53db-8119-f028e1757fce",
+        "efe19a18-63e4-5dbb-911d-0d99a5bba732"
+      ],
+      "requires": [
+        "4f0dd58a-99eb-4802-b956-89af2e217486"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4e763ba1-bf3b-5bfe-8532-89547a12f020",
+      "title": "Kernaussagen des Moduls memorisieren",
+      "titleEn": "Memorize Key Module Statements",
+      "description": "Die lernende Person hat alle zentralen Definitionen und Sätze des Moduls verinnerlicht (geprüft z.B. durch SRS/Lernkarten).",
+      "descriptionEn": "The learner has internalized all key definitions and theorems of the module (verified e.g. via SRS/flashcards).",
+      "weight": 0.5,
+      "tags": [
+        "module:MA3503",
+        "srs-deck:ma3503"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/ma3503_deck.json"
+      },
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f6e01784-f1f2-5d72-a431-da5aa8ae50c9",
+      "title": "Kennen: Nichtlineare Optimierungsprobleme modellieren und klassifizieren",
+      "titleEn": "Know: Model and Classify Nonlinear Optimization Problems",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Nichtlineare Optimierungsprobleme modellieren und klassifizieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Model and Classify Nonlinear Optimization Problems'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "5534c0fa-a24f-569a-8db4-c1ebcc98c4ef",
+      "title": "Verstehen: Nichtlineare Optimierungsprobleme modellieren und klassifizieren",
+      "titleEn": "Understand: Model and Classify Nonlinear Optimization Problems",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Nichtlineare Optimierungsprobleme modellieren und klassifizieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Model and Classify Nonlinear Optimization Problems'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "f6e01784-f1f2-5d72-a431-da5aa8ae50c9"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "eedd6926-d4c4-5712-a268-e63f277a8673",
+      "title": "Anwenden: Nichtlineare Optimierungsprobleme modellieren und klassifizieren",
+      "titleEn": "Apply: Model and Classify Nonlinear Optimization Problems",
+      "description": "Die lernende Person wendet das Wissen zu 'Nichtlineare Optimierungsprobleme modellieren und klassifizieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Model and Classify Nonlinear Optimization Problems' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "5534c0fa-a24f-569a-8db4-c1ebcc98c4ef"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ec33e8f8-1959-5e92-8626-44e4319242fc",
+      "title": "Kennen: Struktureigenschaften für Methodenwahl begründet nutzen",
+      "titleEn": "Know: Use Structural Properties to Justify Method Choices",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Struktureigenschaften für Methodenwahl begründet nutzen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Structural Properties to Justify Method Choices'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "bf92a326-752b-5fd0-8c06-d907fe772744",
+      "title": "Verstehen: Struktureigenschaften für Methodenwahl begründet nutzen",
+      "titleEn": "Understand: Use Structural Properties to Justify Method Choices",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Struktureigenschaften für Methodenwahl begründet nutzen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Use Structural Properties to Justify Method Choices'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "ec33e8f8-1959-5e92-8626-44e4319242fc"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "5bc48464-e781-58af-9772-f733a09920fe",
+      "title": "Anwenden: Struktureigenschaften für Methodenwahl begründet nutzen",
+      "titleEn": "Apply: Use Structural Properties to Justify Method Choices",
+      "description": "Die lernende Person wendet das Wissen zu 'Struktureigenschaften für Methodenwahl begründet nutzen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Use Structural Properties to Justify Method Choices' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "bf92a326-752b-5fd0-8c06-d907fe772744"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "cfc8ae92-d607-5b9b-9d73-b29528f7cb89",
+      "title": "Kennen: Globalisierung und Konvergenz von Verfahren beurteilen",
+      "titleEn": "Know: Assess Globalization and Convergence of Methods",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Globalisierung und Konvergenz von Verfahren beurteilen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Assess Globalization and Convergence of Methods'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d57de38a-d0bb-59dc-869d-c94518a4cb2f",
+      "title": "Verstehen: Globalisierung und Konvergenz von Verfahren beurteilen",
+      "titleEn": "Understand: Assess Globalization and Convergence of Methods",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Globalisierung und Konvergenz von Verfahren beurteilen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Assess Globalization and Convergence of Methods'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "cfc8ae92-d607-5b9b-9d73-b29528f7cb89"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "525aeaae-8ae1-598f-a803-1a0790dadbbf",
+      "title": "Anwenden: Globalisierung und Konvergenz von Verfahren beurteilen",
+      "titleEn": "Apply: Assess Globalization and Convergence of Methods",
+      "description": "Die lernende Person wendet das Wissen zu 'Globalisierung und Konvergenz von Verfahren beurteilen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Assess Globalization and Convergence of Methods' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "d57de38a-d0bb-59dc-869d-c94518a4cb2f"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "44c524af-2b42-53ec-9f40-be0c17e94488",
+      "title": "Kennen: KKT-Bedingungen herleiten und anwenden",
+      "titleEn": "Know: Derive and Apply KKT Conditions",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'KKT-Bedingungen herleiten und anwenden' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Derive and Apply KKT Conditions'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "41010160-a930-5bc9-b0f9-a71571ee080f",
+      "title": "Verstehen: KKT-Bedingungen herleiten und anwenden",
+      "titleEn": "Understand: Derive and Apply KKT Conditions",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'KKT-Bedingungen herleiten und anwenden'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Derive and Apply KKT Conditions'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "44c524af-2b42-53ec-9f40-be0c17e94488"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "150b7656-f69d-5f18-beff-ef8b5da8c4f9",
+      "title": "Anwenden: KKT-Bedingungen herleiten und anwenden",
+      "titleEn": "Apply: Derive and Apply KKT Conditions",
+      "description": "Die lernende Person wendet das Wissen zu 'KKT-Bedingungen herleiten und anwenden' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Derive and Apply KKT Conditions' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "41010160-a930-5bc9-b0f9-a71571ee080f"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "fbced3c9-b9ce-554d-bec1-74b568a58dfe",
+      "title": "Kennen: Second-order theory und Sensitivitätsaspekte einordnen",
+      "titleEn": "Know: Place Second-Order Theory and Sensitivity Aspects",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Second-order theory und Sensitivitätsaspekte einordnen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Place Second-Order Theory and Sensitivity Aspects'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "35c422cb-a62c-548e-818f-e0bf65cd89b9",
+      "title": "Verstehen: Second-order theory und Sensitivitätsaspekte einordnen",
+      "titleEn": "Understand: Place Second-Order Theory and Sensitivity Aspects",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Second-order theory und Sensitivitätsaspekte einordnen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Place Second-Order Theory and Sensitivity Aspects'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "fbced3c9-b9ce-554d-bec1-74b568a58dfe"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "1dbaf46a-4dd4-50a2-8782-718658b3e160",
+      "title": "Anwenden: Second-order theory und Sensitivitätsaspekte einordnen",
+      "titleEn": "Apply: Place Second-Order Theory and Sensitivity Aspects",
+      "description": "Die lernende Person wendet das Wissen zu 'Second-order theory und Sensitivitätsaspekte einordnen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Place Second-Order Theory and Sensitivity Aspects' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "35c422cb-a62c-548e-818f-e0bf65cd89b9"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "508ffa08-2900-5a9e-b6f6-3ce615fd6c58",
+      "title": "Kennen: SQP-Schritte und (quadratische) Teilprobleme formulieren",
+      "titleEn": "Know: Formulate SQP Steps and Quadratic Subproblems",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'SQP-Schritte und (quadratische) Teilprobleme formulieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Formulate SQP Steps and Quadratic Subproblems'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "bda25d7b-44b9-5d27-9dda-b94d6017fb58",
+      "title": "Verstehen: SQP-Schritte und (quadratische) Teilprobleme formulieren",
+      "titleEn": "Understand: Formulate SQP Steps and Quadratic Subproblems",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'SQP-Schritte und (quadratische) Teilprobleme formulieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Formulate SQP Steps and Quadratic Subproblems'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "508ffa08-2900-5a9e-b6f6-3ce615fd6c58"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "270e7159-610b-5e3e-91d2-c2574a4214d8",
+      "title": "Anwenden: SQP-Schritte und (quadratische) Teilprobleme formulieren",
+      "titleEn": "Apply: Formulate SQP Steps and Quadratic Subproblems",
+      "description": "Die lernende Person wendet das Wissen zu 'SQP-Schritte und (quadratische) Teilprobleme formulieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Formulate SQP Steps and Quadratic Subproblems' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "bda25d7b-44b9-5d27-9dda-b94d6017fb58"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "04cff298-7965-5e1b-acd9-62351ff16a79",
+      "title": "Kennen: Robuste Optimierung in Grundzügen modellieren und interpretieren",
+      "titleEn": "Know: Model and Interpret Robust Optimization at a Basic Level",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Robuste Optimierung in Grundzügen modellieren und interpretieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Model and Interpret Robust Optimization at a Basic Level'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "18738d0d-e754-5dfe-9cd8-8e9652f9bab1",
+      "title": "Verstehen: Robuste Optimierung in Grundzügen modellieren und interpretieren",
+      "titleEn": "Understand: Model and Interpret Robust Optimization at a Basic Level",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Robuste Optimierung in Grundzügen modellieren und interpretieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Model and Interpret Robust Optimization at a Basic Level'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "04cff298-7965-5e1b-acd9-62351ff16a79"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "25cb202a-4cd6-50ae-834d-431d064e32f2",
+      "title": "Anwenden: Robuste Optimierung in Grundzügen modellieren und interpretieren",
+      "titleEn": "Apply: Model and Interpret Robust Optimization at a Basic Level",
+      "description": "Die lernende Person wendet das Wissen zu 'Robuste Optimierung in Grundzügen modellieren und interpretieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Model and Interpret Robust Optimization at a Basic Level' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "18738d0d-e754-5dfe-9cd8-8e9652f9bab1"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "787bf886-7e39-58e7-ace7-7a75079cf5f3",
+      "title": "Kennen: Konenrestringierte Optimierung einordnen und Beispiele analysieren",
+      "titleEn": "Know: Place Cone-Constrained Optimization and Analyze Examples",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Konenrestringierte Optimierung einordnen und Beispiele analysieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Place Cone-Constrained Optimization and Analyze Examples'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "875be2b9-2d78-508d-902f-065f23224285",
+      "title": "Verstehen: Konenrestringierte Optimierung einordnen und Beispiele analysieren",
+      "titleEn": "Understand: Place Cone-Constrained Optimization and Analyze Examples",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Konenrestringierte Optimierung einordnen und Beispiele analysieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Place Cone-Constrained Optimization and Analyze Examples'.",
+      "weight": 0.15,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "787bf886-7e39-58e7-ace7-7a75079cf5f3"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ead22f87-0fa4-574e-aeea-a1fc571c8019",
+      "title": "Anwenden: Konenrestringierte Optimierung einordnen und Beispiele analysieren",
+      "titleEn": "Apply: Place Cone-Constrained Optimization and Analyze Examples",
+      "description": "Die lernende Person wendet das Wissen zu 'Konenrestringierte Optimierung einordnen und Beispiele analysieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Place Cone-Constrained Optimization and Analyze Examples' to concrete examples and tasks.",
+      "weight": 0.2,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "875be2b9-2d78-508d-902f-065f23224285"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9f154639-c3e0-5e13-9bf8-0fbb320b6447",
+      "title": "Kennen: Barrier-Methoden formulieren",
+      "titleEn": "Know: Formulate Barrier Methods",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Barrier-Methoden formulieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Formulate Barrier Methods'.",
+      "weight": 0.051000000000000004,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ad8cb950-3931-5f6f-802f-8b813ed713ed",
+      "title": "Verstehen: Barrier-Methoden formulieren",
+      "titleEn": "Understand: Formulate Barrier Methods",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Barrier-Methoden formulieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Formulate Barrier Methods'.",
+      "weight": 0.051000000000000004,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "9f154639-c3e0-5e13-9bf8-0fbb320b6447"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "da3dd58a-65fc-59e8-a14d-eda10c2289cb",
+      "title": "Anwenden: Barrier-Methoden formulieren",
+      "titleEn": "Apply: Formulate Barrier Methods",
+      "description": "Die lernende Person wendet das Wissen zu 'Barrier-Methoden formulieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Formulate Barrier Methods' to concrete examples and tasks.",
+      "weight": 0.068,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "ad8cb950-3931-5f6f-802f-8b813ed713ed"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "d064fdce-12b8-5c24-a167-4f875f938d78",
+      "title": "Kennen: Zentralpfad und primal-duale Bedingungen einordnen",
+      "titleEn": "Know: Relate the Central Path and Primal–Dual Conditions",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Zentralpfad und primal-duale Bedingungen einordnen' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Relate the Central Path and Primal–Dual Conditions'.",
+      "weight": 0.051000000000000004,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "9e663c96-374b-5efb-b9f6-14e4b1aea35a",
+      "title": "Verstehen: Zentralpfad und primal-duale Bedingungen einordnen",
+      "titleEn": "Understand: Relate the Central Path and Primal–Dual Conditions",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Zentralpfad und primal-duale Bedingungen einordnen'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Relate the Central Path and Primal–Dual Conditions'.",
+      "weight": 0.051000000000000004,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "d064fdce-12b8-5c24-a167-4f875f938d78"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ab410426-2d9e-5ef3-92f0-fb00618efb77",
+      "title": "Anwenden: Zentralpfad und primal-duale Bedingungen einordnen",
+      "titleEn": "Apply: Relate the Central Path and Primal–Dual Conditions",
+      "description": "Die lernende Person wendet das Wissen zu 'Zentralpfad und primal-duale Bedingungen einordnen' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Relate the Central Path and Primal–Dual Conditions' to concrete examples and tasks.",
+      "weight": 0.068,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "9e663c96-374b-5efb-b9f6-14e4b1aea35a"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "bf563de9-85f6-5070-b91d-6dd54dfec707",
+      "title": "Kennen: Konvergenz und Komplexität von Interior-Point-Methoden diskutieren",
+      "titleEn": "Know: Discuss Convergence and Complexity of Interior-Point Methods",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Konvergenz und Komplexität von Interior-Point-Methoden diskutieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Discuss Convergence and Complexity of Interior-Point Methods'.",
+      "weight": 0.048,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "749f732a-4faf-5d0a-b6fc-070f1c6a5750",
+      "title": "Verstehen: Konvergenz und Komplexität von Interior-Point-Methoden diskutieren",
+      "titleEn": "Understand: Discuss Convergence and Complexity of Interior-Point Methods",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Konvergenz und Komplexität von Interior-Point-Methoden diskutieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Discuss Convergence and Complexity of Interior-Point Methods'.",
+      "weight": 0.048,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "bf563de9-85f6-5070-b91d-6dd54dfec707"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "00e08e26-9168-5208-9370-4b047026d64a",
+      "title": "Anwenden: Konvergenz und Komplexität von Interior-Point-Methoden diskutieren",
+      "titleEn": "Apply: Discuss Convergence and Complexity of Interior-Point Methods",
+      "description": "Die lernende Person wendet das Wissen zu 'Konvergenz und Komplexität von Interior-Point-Methoden diskutieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Discuss Convergence and Complexity of Interior-Point Methods' to concrete examples and tasks.",
+      "weight": 0.064,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "749f732a-4faf-5d0a-b6fc-070f1c6a5750"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "4009fe5e-734c-5bc8-add2-12f6e9a29c41",
+      "title": "Kennen: Erstordnungs-Optimalitätsbedingungen anwenden",
+      "titleEn": "Know: Apply First-Order Optimality Conditions",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Erstordnungs-Optimalitätsbedingungen anwenden' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Apply First-Order Optimality Conditions'.",
+      "weight": 0.051000000000000004,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "08da46ff-b850-5200-a253-72671835b861",
+      "title": "Verstehen: Erstordnungs-Optimalitätsbedingungen anwenden",
+      "titleEn": "Understand: Apply First-Order Optimality Conditions",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Erstordnungs-Optimalitätsbedingungen anwenden'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Apply First-Order Optimality Conditions'.",
+      "weight": 0.051000000000000004,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "4009fe5e-734c-5bc8-add2-12f6e9a29c41"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "ccf2b853-33c9-5b7c-a5ef-8d2afbb51e29",
+      "title": "Anwenden: Erstordnungs-Optimalitätsbedingungen anwenden",
+      "titleEn": "Apply: Apply First-Order Optimality Conditions",
+      "description": "Die lernende Person wendet das Wissen zu 'Erstordnungs-Optimalitätsbedingungen anwenden' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Apply First-Order Optimality Conditions' to concrete examples and tasks.",
+      "weight": 0.068,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "08da46ff-b850-5200-a253-72671835b861"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "79c76112-25e6-55e4-b368-a98e61306e4a",
+      "title": "Kennen: Zweitordnungsbedingungen nutzen und Kritikalität klassifizieren",
+      "titleEn": "Know: Use Second-Order Conditions and Classify Criticality",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Zweitordnungsbedingungen nutzen und Kritikalität klassifizieren' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Use Second-Order Conditions and Classify Criticality'.",
+      "weight": 0.051000000000000004,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "08822c6c-99f1-5004-bbdc-8c14f016680d",
+      "title": "Verstehen: Zweitordnungsbedingungen nutzen und Kritikalität klassifizieren",
+      "titleEn": "Understand: Use Second-Order Conditions and Classify Criticality",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Zweitordnungsbedingungen nutzen und Kritikalität klassifizieren'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Use Second-Order Conditions and Classify Criticality'.",
+      "weight": 0.051000000000000004,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "79c76112-25e6-55e4-b368-a98e61306e4a"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "edab78f8-7564-5ced-bb8b-da8856836961",
+      "title": "Anwenden: Zweitordnungsbedingungen nutzen und Kritikalität klassifizieren",
+      "titleEn": "Apply: Use Second-Order Conditions and Classify Criticality",
+      "description": "Die lernende Person wendet das Wissen zu 'Zweitordnungsbedingungen nutzen und Kritikalität klassifizieren' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Use Second-Order Conditions and Classify Criticality' to concrete examples and tasks.",
+      "weight": 0.068,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "08822c6c-99f1-5004-bbdc-8c14f016680d"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "f6a6c0e3-d43e-576b-b042-686e501e7235",
+      "title": "Kennen: Lokale quadratische Modelle und Newton-Schritte herleiten",
+      "titleEn": "Know: Derive Local Quadratic Models and Newton Steps",
+      "description": "Die lernende Person gibt die Definitionen und Aussagen zu 'Lokale quadratische Modelle und Newton-Schritte herleiten' korrekt wieder.",
+      "descriptionEn": "The learner correctly states the definitions and statements regarding 'Derive Local Quadratic Models and Newton Steps'.",
+      "weight": 0.048,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "41c80534-671c-53db-8119-f028e1757fce",
+      "title": "Verstehen: Lokale quadratische Modelle und Newton-Schritte herleiten",
+      "titleEn": "Understand: Derive Local Quadratic Models and Newton Steps",
+      "description": "Die lernende Person erklärt die Hintergründe und Zusammenhänge zu 'Lokale quadratische Modelle und Newton-Schritte herleiten'.",
+      "descriptionEn": "The learner explains the background and connections regarding 'Derive Local Quadratic Models and Newton Steps'.",
+      "weight": 0.048,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "f6a6c0e3-d43e-576b-b042-686e501e7235"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "efe19a18-63e4-5dbb-911d-0d99a5bba732",
+      "title": "Anwenden: Lokale quadratische Modelle und Newton-Schritte herleiten",
+      "titleEn": "Apply: Derive Local Quadratic Models and Newton Steps",
+      "description": "Die lernende Person wendet das Wissen zu 'Lokale quadratische Modelle und Newton-Schritte herleiten' auf konkrete Beispiele und Aufgaben an.",
+      "descriptionEn": "The learner applies the knowledge of 'Derive Local Quadratic Models and Newton Steps' to concrete examples and tasks.",
+      "weight": 0.064,
+      "tags": [
+        "ects:5",
+        "module:MA3503"
+      ],
+      "contains": [],
+      "requires": [
+        "41c80534-671c-53db-8119-f028e1757fce"
+      ],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    }
+  ]
 }
