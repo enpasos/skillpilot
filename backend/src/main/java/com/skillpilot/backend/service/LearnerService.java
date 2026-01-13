@@ -971,6 +971,14 @@ public class LearnerService {
         }
         for (String childRef : goal.getContains()) {
             String childId = childRef;
+            // Normalize "landscapeId:goalId" references if valid
+            if (!allGoals.containsKey(childId) && childRef.contains(":")) {
+                String[] parts = childRef.split(":", 2);
+                if (parts.length == 2 && allGoals.containsKey(parts[1])) {
+                    childId = parts[1];
+                }
+            }
+
             if (result.add(childId)) { // Avoid cycles
                 collectDescendants(childId, allGoals, result);
             }
