@@ -19,6 +19,11 @@ npm run lint
 npm run build
 cd ..
 
+echo "--> Running Schema Validation"
+# Ensure jsonschema is installed (suppress output if already present)
+pip3 install -q jsonschema || echo "Warning: Failed to install jsonschema, validation might fail."
+python3 scripts/validate_schemas.py
+
 echo ""
 echo "=========================================="
 echo "Running Backend CI (backend)"
