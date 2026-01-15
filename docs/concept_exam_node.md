@@ -1,96 +1,98 @@
 # Concept: ExamProblem Node Type
 
 ## 1. Overview
-The `ExamProblem` is a new curriculum node type designed to represent complex, authentic assessment tasks (e.g., Abitur questions). Unlike standard learning goals which focus on skill acquisition, `ExamProblem` nodes focus on **application, evaluation, and diagnosis**.
+The `ExamProblem` represents a specific type of node in the curriculum graph focused on **application and assessment** (e.g., Abitur questions) rather than abstract skill acquisition.
 
-## 2. Data Structure Proposal
+## 2. Integration Strategy
+To maintain compatibility with the existing `LearningLandscape` graph and tools (which expect `goals`), `ExamProblem` will be implemented as a **specialized LearningGoal**.
 
-Existing curriculum nodes are primarily "Goals". The new `ExamProblem` will augment the schema with specific fields for task presentation and automated evaluation.
+### Schema Extension
+We will extend the existing `LearningGoal` schema in `landscape-runtime.schema.json` by adding an optional `examData` object. This avoids breaking existing loaders while strictly typing the new fields.
 
-### New JSON Fields
-
+**New Field (`examData`) in `LearningGoal`:**
 ```json
-{
-  "id": "uuid",
-  "type": "ExamProblem",  // Discriminator
-  "title": "A1 (Analysis, Niveau 1)",
-  "titleEn": "A1 (Calculus, Level 1)",
-  
-  // Task Content (Problem Statement)
-  "taskContent": {
-    "de": "Markdown string containing the problem description, LaTeX formulas ($...$), and image references (![Alt](path)).",
-    "en": "Translated markdown..."
-  },
-  
-  // Model Solution & Grading
-  "solutionContent": {
-     "de": "Markdown string with the model solution, expected steps, and grading breakdown.",
-     "en": "..."
-  },
-  
-  // Scoring configuration
-  "scoring": {
-    "maxPoints": 5,
-    "passingPoints": 3,  // Threshold for "Mastered" status
-    "steps": [
-       { "id": "step1", "points": 2, "description": "Nullstellenansatz" },
-       { "id": "step2", "points": 3, "description": "Extrema klassifiziert" }
-    ]
-  },
-
-  // Skill Dependencies (for remediation)
-  "requires": [
-    "skill-id-1", // e.g., Solving Quadratic Equations
-    "skill-id-2"  // e.g., Product Rule
-  ],
-
-  // Metadata
-  "meta": {
-    "domain": "Analysis",
-    "level": "GK",
-    "durationMinutes": 15
+"examData": {
+  "type": "object",
+  "required": ["taskContent", "solutionContent", "scoring"],
+  "properties": {
+    "taskContent": { "type": "string", "description": "Markdown with LaTeX/images" },
+    "taskContentEn": { "type": "string", "description": "English translation (optional)" },
+    "solutionContent": { "type": "string", "description": "Markdown with solution/grading steps" },
+    "solutionContentEn": { "type": "string", "description": "English translation (optional)" },
+    "scoring": {
+       "type": "object",
+       "required": ["maxPoints", "passingPoints", "steps"],
+       "properties": {
+         "maxPoints": { "type": "number" },
+         "passingPoints": { "type": "number" },
+         "steps": { 
+           "type": "array", 
+           "items": { "type": "object", "required": ["id", "points", "description"], "properties": { ... } } 
+         }
+       }
+    }
   }
 }
 ```
 
-## 3. Interaction Workflow (AI Chat)
+### JSON Structure Example
+The node sits within the standard `goals` array.
 
-The interaction follows a "Challenge-Evaluate-Feedback" loop.
+```json
+{
+  "id": "uuid-for-exam-variant",
+  "title": "A1 (Analysis)",
+  "titleEn": "A1 (Calculus)",
+  "description": "Exam task from 2026 sample.",
+  "weight": 1.0, 
+  "tags": ["GK", "Exam"],
+  "dimensionTags": { "phase": "Q3", "demandLevel": "AB1" }, 
+  "requires": ["skill-id-1"], // Standard gating
+  "contains": [],
+  "examData": {
+    "taskContent": "Berechnen Sie die Nullstellen von $f(x)$...",
+    "taskContentEn": "Calculate the roots of $f(x)$...",
+    "solutionContent": "Ansatz $f(x)=0$ liefert...",
+    "solutionContentEn": "Setting $f(x)=0$ yields...",
+    "scoring": {
+      "maxPoints": 5,
+      "passingPoints": 3,
+      "steps": [
+        { "id": "s1", "points": 2, "description": "Nullstellenansatz" },
+        { "id": "s2", "points": 3, "description": "Lösung" }
+      ]
+    }
+  }
+}
+```
 
-### Phase 1: Presentation
-1.  User selects the Exam Node.
-2.  System acts as "Proctor".
-3.  System displays **only** `taskContent` (rendered Markdown + Images).
-4.  System prompts: *"Here is your task. Please solve it and submit your solution. You can type it, upload a photo, or explain your steps."*
+## 3. Data & Semantics
 
-### Phase 2: Submission & AI Evaluation
-1.  User submits solution (Text/Image).
-2.  **AI Instructions:**
-    *   Compare User Submission vs. `solutionContent`.
-    *   Identify which `scoring.steps` were achieved.
-    *   Assign points for each step.
-    *   **CRITICAL:** Be strict but fair. Logic errors cost points; calculation slips might be penalized less depending on context.
-3.  AI generates an **Evaluation Report** (internal or presented?):
-    *   Score: X / Max
-    *   Feedback per step.
+### Localization
+We follow the existing pattern: `field` (Local, usually German) and `fieldEn` (English, optional). Browsers select the field based on the UI language setting.
 
-### Phase 3: Result & Remediation
-1.  **Case A: Perfect/Passing Score**
-    *   AI response: *"Excellent work. You achieved X/Y points. [Highlighted positive feedback]."*
-    *   Node Status -> **Mastered**.
-2.  **Case B: Low Score**
-    *   AI response: *"You achieved X/Y points. Here is the correction: [Show Walkthrough based on solutionContent]."*
-    *   **Diagnosis:** AI analyzes *why* points were lost.
-    *   **Remediation:** AI checks the `requires` list.
-        *   *"It seems you struggled with the Product Rule. I recommend reviewing [Link to Prereq Node]."*
-    *   Node Status -> **In Progress / Failed**.
+### `requires` Semantics
+*   **Access Control:** The `requires` field functions as a standard prerequisite. Information is locked until prerequisites are met (or deemed "ready").
+*   **Remediation:** If the user **fails** the exam (score < `passingPoints`), the generic `requires` list is used to generate specific review recommendations.
 
-## 4. Implementation Steps
+### Scoring vs. Mastery
+*   **Algorithm:** `Mastery = (AchievedPoints >= PassingPoints) ? 1.0 : 0.0`.
+*   **Nuance:** Partial mastery (0.5) could be considered if `AchievedPoints / MaxPoints > 0.5` but `< passingPoints`, but for now we settle on a binary Pass/Fail for the node status.
 
-1.  **Schema Update:** Allow `taskContent`, `solutionContent`, `scoring` in JSON loader.
-2.  **UI Update:** Ensure Markdown renderer handles the images referenced in these fields correctly.
-3.  **Prompt Engineering:** Update System Prompt to handle `ExamProblem` nodes specifically (Trigger "Proctor Mode").
-4.  **Content Migration:** Convert the provided `Klausurbeispiel2026_1` files into this JSON format.
+## 4. Asset Management
+*   **Storage:** Images (e.g., `image1.png`) are stored **alongside the curriculum JSON file** in the source repo (e.g., `curricula/.../json/assets/`).
+*   **Build:** The build process copies these assets to `public/data/assets/` or similar.
+*   **Reference:** Markdown uses relative paths: `![Sketch](./assets/image1.png)`. The frontend markdown renderer must resolve these relative to the curriculum base URL.
 
-## 5. Image Handling
-Images (`image1.de.png`, etc.) should be stored in a dedicated distinct assets directory (e.g., `.../assets/abi/2026_1/`) and referenced relative to the content root or via absolute mapped paths.
+## 5. Interaction Flow (AI "Proctor")
+1.  **Start:** User opens node. UI detects `examData` and switches to **Proctor Mode**.
+2.  **Task:** Display `taskContent`. Hide `solutionContent`.
+3.  **Input:** User enters text/image.
+4.  **Eval:** AI (Prompt) receives:
+    *   User Input
+    *   `solutionContent`
+    *   `scoring` schema
+    *   **Instruction:** "Grade the input against the solution. Assign points per step. Be strict."
+5.  **Feedback:**
+    *   AI returns structured JSON result: `{ "points": 4, "total": 5, "feedback": "...", "passed": true }`.
+    *   UI updates Mastery state locally and notifies Server.

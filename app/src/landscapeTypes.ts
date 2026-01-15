@@ -16,6 +16,22 @@ export interface LandscapeFilter {
   label: string
 }
 
+export interface ExamData {
+  taskContent: string
+  taskContentEn?: string
+  solutionContent: string
+  solutionContentEn?: string
+  scoring: {
+    maxPoints: number
+    passingPoints: number
+    steps: Array<{
+      id: string
+      points: number
+      description: string
+    }>
+  }
+}
+
 export interface LearningGoal {
   /** Original goal id (KC-oriented, may be German). */
   id: string
@@ -38,6 +54,7 @@ export interface LearningGoal {
   examples: string[]
   sourceRef?: string
   extendedData?: Record<string, unknown>
+  examData?: ExamData
 }
 
 export interface LearningLandscape {

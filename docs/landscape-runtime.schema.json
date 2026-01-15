@@ -161,6 +161,70 @@
         "extendedData": {
           "type": "object",
           "description": "Arbitrary extra data (e.g. SRS deck config)."
+        },
+        "examData": {
+          "type": "object",
+          "required": [
+            "taskContent",
+            "solutionContent",
+            "scoring"
+          ],
+          "properties": {
+            "taskContent": {
+              "type": "string",
+              "description": "Markdown with LaTeX/images"
+            },
+            "taskContentEn": {
+              "type": "string",
+              "description": "English translation (optional)"
+            },
+            "solutionContent": {
+              "type": "string",
+              "description": "Markdown with solution/grading steps"
+            },
+            "solutionContentEn": {
+              "type": "string",
+              "description": "English translation (optional)"
+            },
+            "scoring": {
+              "type": "object",
+              "required": [
+                "maxPoints",
+                "passingPoints",
+                "steps"
+              ],
+              "properties": {
+                "maxPoints": {
+                  "type": "number"
+                },
+                "passingPoints": {
+                  "type": "number"
+                },
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "points",
+                      "description"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "points": {
+                        "type": "number"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

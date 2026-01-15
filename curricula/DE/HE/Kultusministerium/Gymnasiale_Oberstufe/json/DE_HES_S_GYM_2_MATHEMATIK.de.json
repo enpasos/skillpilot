@@ -10245,10 +10245,7 @@
       "contains": [
         "2ef712f1-84fe-5395-b232-af7017163449",
         "eebf8986-8745-51cd-8c3d-b20ab23b7577",
-        "05891de6-3ab5-5b5a-8bdd-fef64ab23c29",
-        "b715567c-ac92-51fa-b308-85254644a971",
-        "770ad9dc-abbe-5504-9dad-10a4bd96b6bb",
-        "5d77e5a8-b9f0-50e4-b9d7-29ae847c8a37"
+        "770ad9dc-abbe-5504-9dad-10a4bd96b6bb"
       ],
       "requires": [],
       "dimensionTags": {
@@ -10258,10 +10255,10 @@
     },
     {
       "id": "2ef712f1-84fe-5395-b232-af7017163449",
-      "title": "Analysis (Niveau 1, hilfsmittelfrei)",
-      "titleEn": "Analysis (Level 1, without aids)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nGegeben ist $f(x)=x^3-2x$.\n\na) Bestimme $f'(x)$. (2 BE)  \nb) Bestimme die Gleichung der Tangente an $f$ im Punkt $x=1$. (3 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **Analysis, Part 1, Level 1 (5 BE)**. An example of such a task is:\n\nGiven $f(x)=x^3-2x$.\n\na) Determine $f'(x)$. (2 BE)  \nb) Determine the equation of the tangent to $f$ at $x=1$. (3 BE)",
+      "title": "A1 (Analysis, Niveau 2, 5 BE)",
+      "titleEn": "A1 (Analysis, Level 2, 5 BE)",
+      "description": "Untersuchung von $f(x) = \\frac{e^x}{x}$ (Grenzwerte, Extrema).",
+      "descriptionEn": "Investigation of $f(x) = \\frac{e^x}{x}$ (limits, extrema).",
       "weight": 1.0,
       "tags": [
         "LK"
@@ -10273,15 +10270,40 @@
       "dimensionTags": {
         "framework": "hessen-kc-2024",
         "phase": "Abitur",
-        "demandLevel": "AB1"
+        "demandLevel": "AB2"
+      },
+      "examData": {
+        "taskContent": "Gegeben ist die Funktion $f(x) = \\frac{e^x}{x}$ für $x > 0$.\nBestimmen Sie das Verhalten von $f$ für $x \\to 0$ und $x \\to \\infty$.\nSkizzieren Sie den Graphen unter Berücksichtigung des Extrempunktes (Rechnung erforderlich: $f'(x)=0$).",
+        "solutionContent": "**Grenzwerte:**\n$\\lim_{x \\to 0} f(x) = \\infty$ (Polstelle).\n$\\lim_{x \\to \\infty} f(x) = \\infty$ (da $e^x$ schneller wächst als $x$).\n\n**Extrempunkt:**\n$f'(x) = \\frac{e^x x - e^x}{x^2} = \\frac{e^x(x-1)}{x^2}$.\nNullstelle $x=1$. $f(1)=e$. VZW $- \\to +$ (Tiefpunkt).\n\n**Skizze:**\nVerlauf von oben kommend zum TP $(1|e)$, dann steil ansteigend.",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 2,
+              "description": "Grenzwerte bestimmt"
+            },
+            {
+              "id": "s2",
+              "points": 2,
+              "description": "Extrempunkt berechnet"
+            },
+            {
+              "id": "s3",
+              "points": 1,
+              "description": "Skizze erstellt"
+            }
+          ]
+        }
       }
     },
     {
       "id": "eebf8986-8745-51cd-8c3d-b20ab23b7577",
-      "title": "Analysis (Niveau 2, hilfsmittelfrei)",
-      "titleEn": "Analysis (Level 2, without aids)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nUntersuche den Grenzwert\n\n$$\n\\lim_{x\\to\\infty}\\left(\\ln(x)-\\ln(x+1)\\right)\n$$\n\nund deute das Ergebnis. (5 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **Analysis, Part 1, Level 2 (5 BE)**. An example of such a task is:\n\nInvestigate the limit\n\n$$\n\\lim_{x\\to\\infty}\\left(\\ln(x)-\\ln(x+1)\\right)\n$$\n\nand interpret the result. (5 BE)",
+      "title": "A2 (Analysis, Substitution, 5 BE)",
+      "titleEn": "A2 (Analysis, Substitution, 5 BE)",
+      "description": "Berechnung des Integrals $\\int_0^{\\sqrt{\\pi}} x \\cdot \\sin(x^2) \\, dx$.",
+      "descriptionEn": "Calculation of the integral $\\int_0^{\\sqrt{\\pi}} x \\cdot \\sin(x^2) \\, dx$.",
       "weight": 1.0,
       "tags": [
         "LK"
@@ -10295,74 +10317,39 @@
         "framework": "hessen-kc-2024",
         "phase": "Abitur",
         "demandLevel": "AB2"
-      }
-    },
-    {
-      "id": "05891de6-3ab5-5b5a-8bdd-fef64ab23c29",
-      "title": "Lineare Algebra/Geometrie (Niveau 1, hilfsmittelfrei)",
-      "titleEn": "Linear Algebra/Geometry (Level 1, without aids)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nGegeben sind die Geraden\n\n$$\ng:\\ \\vec x=\\begin{pmatrix}1\\\\0\\\\2\\end{pmatrix}+t\\begin{pmatrix}1\\\\2\\\\-1\\end{pmatrix},\\qquad\nh:\\ \\vec x=\\begin{pmatrix}2\\\\1\\\\0\\end{pmatrix}+s\\begin{pmatrix}2\\\\4\\\\-2\\end{pmatrix}.\n$$\n\na) Begründe, dass $g\\parallel h$ gilt. (3 BE)  \nb) Bestimme den Abstand der Geraden. (2 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **LA/AG, Part 1, Level 1 (5 BE)**. An example of such a task is:\n\nGiven the lines\n\n$$\ng:\\ \\vec x=\\begin{pmatrix}1\\\\0\\\\2\\end{pmatrix}+t\\begin{pmatrix}1\\\\2\\\\-1\\end{pmatrix},\\qquad\nh:\\ \\vec x=\\begin{pmatrix}2\\\\1\\\\0\\end{pmatrix}+s\\begin{pmatrix}2\\\\4\\\\-2\\end{pmatrix}.\n$$\n\na) Justify that $g\\parallel h$. (3 BE)  \nb) Determine the distance between the lines. (2 BE)",
-      "weight": 1.0,
-      "tags": [
-        "LK"
-      ],
-      "contains": [],
-      "requires": [
-        "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
-      ],
-      "dimensionTags": {
-        "framework": "hessen-kc-2024",
-        "phase": "Abitur",
-        "demandLevel": "AB1"
-      }
-    },
-    {
-      "id": "b715567c-ac92-51fa-b308-85254644a971",
-      "title": "Lineare Algebra/Geometrie (Niveau 2, hilfsmittelfrei)",
-      "titleEn": "Linear Algebra/Geometry (Level 2, without aids)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nGegeben sind die Ebenen $E_1: x+2y-z=3$ und $E_2: 2x-y+2z=4$.\n\na) Bestimme den Winkel zwischen $E_1$ und $E_2$. (3 BE)  \nb) Bestimme eine Gleichung der Schnittgeraden $E_1\\cap E_2$. (2 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **LA/AG, Part 1, Level 2 (5 BE)**. An example of such a task is:\n\nGiven the planes $E_1: x+2y-z=3$ and $E_2: 2x-y+2z=4$.\n\na) Determine the angle between $E_1$ and $E_2$. (3 BE)  \nb) Determine an equation of the intersection line $E_1\\cap E_2$. (2 BE)",
-      "weight": 1.0,
-      "tags": [
-        "LK"
-      ],
-      "contains": [],
-      "requires": [
-        "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
-      ],
-      "dimensionTags": {
-        "framework": "hessen-kc-2024",
-        "phase": "Abitur",
-        "demandLevel": "AB2"
+      },
+      "examData": {
+        "taskContent": "Berechnen Sie das Integral: $$\\int_0^{\\sqrt{\\pi}} x \\cdot \\sin(x^2) \\, dx$$\n(Hinweis: Substitution $z = x^2$).",
+        "solutionContent": "Substitution $z = x^2 \\Rightarrow dz = 2x dx \\Rightarrow x dx = \\frac{1}{2} dz$.\nGrenzen: $x=0 \\to z=0$, $x=\\sqrt{\\pi} \\to z=\\pi$.\n\n$$\\int_0^\\pi \\frac{1}{2} \\sin(z) dz = \\frac{1}{2} [-\\cos(z)]_0^\\pi$$\n$$= \\frac{1}{2} (-\\cos(\\pi) - (-\\cos(0))) = \\frac{1}{2} (1 + 1) = 1$$",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 2,
+              "description": "Substitution korrekt durchgeführt"
+            },
+            {
+              "id": "s2",
+              "points": 1,
+              "description": "Integrationsgrenzen angepasst"
+            },
+            {
+              "id": "s3",
+              "points": 2,
+              "description": "Stammfunktion und Wert berechnet"
+            }
+          ]
+        }
       }
     },
     {
       "id": "770ad9dc-abbe-5504-9dad-10a4bd96b6bb",
-      "title": "Stochastik (Niveau 1, hilfsmittelfrei)",
-      "titleEn": "Stochastics (Level 1, without aids)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nEin Test hat Sensitivität $0{,}95$ und Spezifität $0{,}90$. In einer Population sind $2\\%$ tatsächlich krank.\n\na) Bestimme $P(\\text{positiv})$. (3 BE)  \nb) Bestimme $P(\\text{krank}\\mid \\text{positiv})$. (2 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **Stochastics, Part 1, Level 1 (5 BE)**. An example of such a task is:\n\nA test has sensitivity $0{,}95$ and specificity $0{,}90$. In a population, $2\\%$ are actually ill.\n\na) Determine $P(\\text{positive})$. (3 BE)  \nb) Determine $P(\\text{ill}\\mid \\text{positive})$. (2 BE)",
-      "weight": 1.0,
-      "tags": [
-        "LK"
-      ],
-      "contains": [],
-      "requires": [
-        "4ab18312-0b43-461d-9154-3fba277baae7"
-      ],
-      "dimensionTags": {
-        "framework": "hessen-kc-2024",
-        "phase": "Abitur",
-        "demandLevel": "AB1"
-      }
-    },
-    {
-      "id": "5d77e5a8-b9f0-50e4-b9d7-29ae847c8a37",
-      "title": "Stochastik (Niveau 2, hilfsmittelfrei)",
-      "titleEn": "Stochastics (Level 2, without aids)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nBehauptung: „Wenn zwei Ereignisse die gleiche Wahrscheinlichkeit haben, sind sie unabhängig.“\n\nWiderlege die Behauptung durch ein Gegenbeispiel mit kurzer Begründung. (5 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **Stochastics, Part 1, Level 2 (5 BE)**. An example of such a task is:\n\nClaim: If two events have the same probability, they are independent.\n\nRefute the claim with a counterexample and a brief justification. (5 BE)",
+      "title": "A3 (Stochastik, Hypothesentest, 5 BE)",
+      "titleEn": "A3 (Stochastics, Hypothesis Testing, 5 BE)",
+      "description": "Fehler 1. Art beim Binomialtest und Änderung des kritischen Werts.",
+      "descriptionEn": "Type 1 error in binomial test and change of critical value.",
       "weight": 1.0,
       "tags": [
         "LK"
@@ -10375,6 +10362,21 @@
         "framework": "hessen-kc-2024",
         "phase": "Abitur",
         "demandLevel": "AB2"
+      },
+      "examData": {
+        "taskContent": "Ein Test für eine binomialverteilte Zufallsgröße $X$ ($n=100$) hat den Annahmebereich $A = \\{0, \\dots, k\\}$. Die Nullhypothese ist $H_0: p \\le 0,1$.\nBeschreiben Sie, wie sich die Fehlerwahrscheinlichkeit 1. Art verändert, wenn man den kritischen Wert $k$ vergrößert. Begründen Sie Ihre Aussage ohne Rechnung.",
+        "solutionContent": "**Hypothese:** $H_0: p \\le 0,1$.\nDer Fehler 1. Art ist die Wahrscheinlichkeit, dass $X$ im Ablehnungsbereich $\\bar{A} = \\{k+1, \\dots, 100\\}$ liegt, obwohl $H_0$ wahr ist.\nWenn $k$ vergrößert wird, verschiebt sich die Grenzen nach rechts, d.h. der Annahmebereich $A$ wird größer und der Ablehnungsbereich $\\bar{A}$ wird kleiner.\nDamit sinkt die Wahrscheinlichkeit, in den Ablehnungsbereich zu fallen.\n\n**Antwort:** Die Wahrscheinlichkeit für den Fehler 1. Art wird **kleiner**.",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "Korrekte logische Herleitung"
+            }
+          ]
+        }
       }
     },
     {
@@ -10389,8 +10391,7 @@
       ],
       "contains": [
         "bc60e300-96be-599a-89b6-8fcca380803d",
-        "971b981d-d8e0-5c4c-9b93-e401b19f32fc",
-        "9f3286cf-db96-58dd-8ad8-fc1e5fd71e43"
+        "971b981d-d8e0-5c4c-9b93-e401b19f32fc"
       ],
       "requires": [],
       "dimensionTags": {
@@ -10400,10 +10401,10 @@
     },
     {
       "id": "bc60e300-96be-599a-89b6-8fcca380803d",
-      "title": "Analysis B (mit Hilfsmitteln, 30 BE)",
-      "titleEn": "Analysis B (with aids, 30 BE)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 2 (30 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nGegeben ist\n\n$$\nf(x)=x\\cdot e^{-0{,}5x}\\quad (x\\ge 0).\n$$\n\na) Bestimme $f'(x)$ und den Ort des Maximums. (6 BE)  \nb) Berechne den maximalen Funktionswert. (3 BE)  \nc) Bestimme die Fläche $A=\\int_0^{6} f(x)\\,dx$. (6 BE)  \nd) Bestimme den Grenzwert $\\lim_{x\\to\\infty} f(x)$ und deute. (3 BE)  \ne) Gegeben sei die Schar $f_a(x)=x e^{-ax}$ mit $a>0$. Bestimme $a$ so, dass das Maximum bei $x=4$ liegt. (5 BE)  \nf) **WTR/CAS:** Bestimme näherungsweise $x$ mit\n\n$$\n\\int_0^{x} f(t)\\,dt = 1{,}5.\n$$\n\nDokumentiere Vorgehen (Integralgleichung, Tool-Schritte, Ergebnisprüfung). (7 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **Analysis, Part 2 (30 BE)**. An example of such a task is:\n\nGiven\n\n$$\nf(x)=x\\cdot e^{-0{,}5x}\\quad (x\\ge 0).\n$$\n\na) Determine $f'(x)$ and the location of the maximum. (6 BE)  \nb) Compute the maximum function value. (3 BE)  \nc) Determine the area $A=\\int_0^{6} f(x)\\,dx$. (6 BE)  \nd) Determine the limit $\\lim_{x\\to\\infty} f(x)$ and interpret it. (3 BE)  \ne) Given the family $f_a(x)=x e^{-ax}$ with $a>0$. Determine $a$ so that the maximum is at $x=4$. (5 BE)  \nf) **WTR/CAS:** Determine an approximate value of $x$ with\n\n$$\n\\int_0^{x} f(t)\\,dt = 1{,}5.\n$$\n\nDocument the procedure (integral equation, tool steps, result check). (7 BE)",
+      "title": "B1 (Analysis, Niveau 3 – \"Die Hängebrücke\", 35 BE)",
+      "titleEn": "B1 (Analysis, Level 3 – \"Suspension Bridge\", 35 BE)",
+      "description": "Kettenlinie $k(x) = 20(e^{0,02x}+e^{-0,02x})$ und Fahrbahn $f(x)$.",
+      "descriptionEn": "Catenary $k(x) = 20(e^{0,02x}+e^{-0,02x})$ and roadway $f(x)$.",
       "weight": 1.5,
       "tags": [
         "LK"
@@ -10417,14 +10418,54 @@
         "framework": "hessen-kc-2024",
         "phase": "Abitur",
         "demandLevel": "AB3"
+      },
+      "examData": {
+        "taskContent": "![Hängebrücke](/assets/abi/2026_1/image4.png)\n\nHaupttragseil (Kettenlinie): $k(x) = 20 \\cdot (e^{0,02x} + e^{-0,02x})$.\nFahrbahn (Parabel): $f(x) = -\\frac{1}{200}x^2 + 5$.\n($x$ in m, Bereich $-100 \\le x \\le 100$).\n\n1. **Geometrie:** Höhe der Pylone ($x=\\pm 100$) und tiefster Punkt des Seils. (5 BE)\n2. **Vertikal-Seile:** Bestimmen Sie die Länge der kürzesten und längsten Haltestrebe. (8 BE)\n3. **Winkel:** Unter welchem Winkel trifft das Tragseil auf die Pylone? (4 BE)\n4. **Material:** Berechnen Sie die Bogenlänge des Tragseils. (6 BE)\n5. **Fläche:** Berechnen Sie den Flächeninhalt zwischen Tragseil und Fahrbahn (Werbenetz). (6 BE)\n6. **Variation:** Zeigen Sie für $k_a(x) = \\frac{1}{a}(e^{ax}+e^{-ax})$: Je größer $a$, desto steiler der Anstieg am Rand. (6 BE)",
+        "solutionContent": "**1. Geometrie (5 BE)**\n$k(100) \\approx 150,5$m. $k(0) = 40$m.\n\n**2. Vertikal-Seile (8 BE)**\n$L(x) = k(x) - f(x)$. Min bei $x=0$: $35$m. Max bei $x=100$: $195,5$m.\n\n**3. Winkel (4 BE)**\n$k'(100) \\approx 2,90 \\Rightarrow \\alpha \\approx 71,0^\\circ$.\n\n**4. Material (6 BE)**\n$\\int_{-100}^{100} \\sqrt{1+k'(x)^2} dx \\approx 225,5$m.\n\n**5. Fläche (6 BE)**\n$\\int_{-100}^{100} (k(x)-f(x)) dx \\approx 19.550 \\, m^2$.\n\n**6. Variation (6 BE)**\n$k_a'(100) = e^{100a} - e^{-100a}$. Streng monoton wachsend für $a>0$.",
+        "scoring": {
+          "maxPoints": 35,
+          "passingPoints": 18,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "Höhe Pylone und Minimum"
+            },
+            {
+              "id": "s2",
+              "points": 8,
+              "description": "Minimale/Maximale Strebenlänge"
+            },
+            {
+              "id": "s3",
+              "points": 4,
+              "description": "Winkelberechnung"
+            },
+            {
+              "id": "s4",
+              "points": 6,
+              "description": "Bogenlänge"
+            },
+            {
+              "id": "s5",
+              "points": 6,
+              "description": "Flächeninhalt"
+            },
+            {
+              "id": "s6",
+              "points": 6,
+              "description": "Variation/Monotonie-Nachweis"
+            }
+          ]
+        }
       }
     },
     {
       "id": "971b981d-d8e0-5c4c-9b93-e401b19f32fc",
-      "title": "Lineare Algebra/Geometrie C (mit Hilfsmitteln, 20 BE)",
-      "titleEn": "Linear Algebra/Geometry C (with aids, 20 BE)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 2 (20 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n**Teil I: Raumgeometrie**\n\nGegeben sind $A(1,2,0)$, $B(5,2,2)$, $C(1,6,2)$. Ebene $E$ geht durch $A,B,C$.\n\na) Bestimme eine Koordinatenform von $E$. (5 BE)  \n\nb) Gegeben ist\n\n$$\ng:\\ \\vec x=\\begin{pmatrix}1\\\\2\\\\5\\end{pmatrix}+s\\begin{pmatrix}2\\\\0\\\\-1\\end{pmatrix}.\n$$\n\nUntersuche die Lage von $g$ zu $E$ und bestimme ggf. den Schnittpunkt. (5 BE)  \n\nc) Bestimme den Winkel zwischen $g$ und $E$. (4 BE)\n\n**Teil II: Übergangsprozess (Markov, Q2.4)**\n\nEin Prozess hat (Spalten-)Übergangsmatrix\n\n$$\nM=\\begin{pmatrix}0{,}8&0{,}3\\\\0{,}2&0{,}7\\end{pmatrix},\\quad v_{n+1}=Mv_n.\n$$\n\nd) Bestimme einen Fixvektor $v$ mit $Mv=v$ und $v_1+v_2=1$. (4 BE)  \ne) **WTR/CAS:** Berechne $v_{5}$ für $v_0=\\binom{1}{0}$ und interpretiere die Bedeutung. Dokumentiere Matrixpotenzen/Multiplikationsschritte. (2 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **LA/AG, Part 2 (20 BE)**. An example of such a task is:\n\n**Part I: Spatial geometry**\n\nGiven $A(1,2,0)$, $B(5,2,2)$, $C(1,6,2)$. Plane $E$ passes through $A,B,C$.\n\na) Determine a coordinate form of $E$. (5 BE)  \n\nb) Given\n\n$$\ng:\\ \\vec x=\\begin{pmatrix}1\\\\2\\\\5\\end{pmatrix}+s\\begin{pmatrix}2\\\\0\\\\-1\\end{pmatrix}.\n$$\n\nExamine the position of $g$ relative to $E$ and determine the intersection point if applicable. (5 BE)  \n\nc) Determine the angle between $g$ and $E$. (4 BE)\n\n**Part II: Transition process (Markov, Q2.4)**\n\nA process has the (column-)transition matrix\n\n$$\nM=\\begin{pmatrix}0{,}8&0{,}3\\\\0{,}2&0{,}7\\end{pmatrix},\\quad v_{n+1}=Mv_n.\n$$\n\nd) Determine a fixed vector $v$ with $Mv=v$ and $v_1+v_2=1$. (4 BE)  \ne) **WTR/CAS:** Compute $v_{5}$ for $v_0=\\binom{1}{0}$ and interpret the meaning. Document matrix powers/multiplication steps. (2 BE)",
+      "title": "C1 (Matrizen/Stochastik, Niveau 3 – \"Viren-Screening\", 35 BE)",
+      "titleEn": "C1 (Matrices/Stochastics, Level 3 – \"Virus Screening\", 35 BE)",
+      "description": "Virenpopulation (Übergangsmatrix) und Schnelltest (Bedingte Wahrscheinlichkeit).",
+      "descriptionEn": "Virus population (transition matrix) and rapid test (conditional probability).",
       "weight": 1.5,
       "tags": [
         "LK"
@@ -10437,26 +10478,46 @@
         "framework": "hessen-kc-2024",
         "phase": "Abitur",
         "demandLevel": "AB3"
-      }
-    },
-    {
-      "id": "9f3286cf-db96-58dd-8ad8-fc1e5fd71e43",
-      "title": "Stochastik D (mit Hilfsmitteln, 20 BE)",
-      "titleEn": "Stochastics D (with aids, 20 BE)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 2 (20 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nEin Hersteller behauptet: „Der Ausschussanteil liegt bei höchstens $p=0{,}03$.“  \nStichprobe: $n=200$, beobachtet $x=11$.\n\na) Formuliere $H_0$ und $H_1$ (einseitig) und gib das Modell $X$ an. (3 BE)  \nb) **WTR/CAS:** Bestimme den Ablehnungsbereich für $\\alpha=5\\%$  \n(kleinstes $k$ mit $P_{H_0}(X\\ge k)\\le 0{,}05$). Dokumentation Pflicht. (6 BE)  \nc) Triff die Testentscheidung und formuliere das Ergebnis im Kontext. (4 BE)  \nd) Erkläre Fehler 1. und 2. Art in diesem Kontext (je ein Satz pro Fehler). (4 BE)  \n\ne) **Normalverteilung inkl. inverse Fragestellung (WTR/CAS):**  \nEs sei $Y\\sim\\mathcal N(\\mu=50,\\sigma=4)$.  \nBestimme $P(46\\le Y\\le 58)$ und den Wert $c$, sodass $P(Y\\le c)=0{,}95$.  \nDokumentiere Vorgehen/Tool. (3 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **Stochastics, Part 2 (20 BE)**. An example of such a task is:\n\nA manufacturer claims: The defect rate is at most $p=0{,}03$.  \nSample: $n=200$, observed $x=11$.\n\na) Formulate $H_0$ and $H_1$ (one-sided) and specify the model $X$. (3 BE)  \nb) **WTR/CAS:** Determine the rejection region for $\\alpha=5\\%$  \n(smallest $k$ with $P_{H_0}(X\\ge k)\\le 0{,}05$). Documentation required. (6 BE)  \nc) Make the test decision and state the result in context. (4 BE)  \nd) Explain Type I and Type II errors in this context (one sentence per error). (4 BE)  \n\ne) **Normal distribution incl. inverse question (WTR/CAS):**  \nLet $Y\\sim\\mathcal N(\\mu=50,\\sigma=4)$.  \nDetermine $P(46\\le Y\\le 58)$ and the value $c$ such that $P(Y\\le c)=0{,}95$.  \nDocument the procedure/tool. (3 BE)",
-      "weight": 1.5,
-      "tags": [
-        "LK"
-      ],
-      "contains": [],
-      "requires": [
-        "4ab18312-0b43-461d-9154-3fba277baae7"
-      ],
-      "dimensionTags": {
-        "framework": "hessen-kc-2024",
-        "phase": "Abitur",
-        "demandLevel": "AB3"
+      },
+      "examData": {
+        "taskContent": "Matrix $M = \\begin{pmatrix} 0,6 & 0,1 & 0 \\\\ 0,3 & 0,7 & 0,2 \\\\ 0,1 & 0,2 & 0,8 \\end{pmatrix}$.\n\n**Teil A: Prozess (Lineare Algebra)**\n1. Interpretieren Sie die Spaltensummen. (3 BE)\n2. Start 10.000 (Typ A). Verteilung nach 10 Wochen? Stabiles Gleichgewicht? (8 BE)\n3. Inverses Problem: $\\vec{x}_{t+1} = (500, 800, 1000)^T$. Bestimmen Sie $\\vec{x}_t$. (5 BE)\n\n**Teil B: Testverfahren (Stochastik)**\n$P(C)=0,5\\%$. Sensitivität 99%, Falsch-Positiv 2%.\n1. Bestimmen Sie $P(T_{pos})$. (5 BE)\n2. Berechnen Sie $P(C | T_{pos})$. Interpretieren Sie das Ergebnis. (6 BE)\n3. Wie oft muss getestet werden, damit $P(C|Pos) > 90\\%$? (8 BE)",
+        "solutionContent": "**Teil A: Prozess**\n1. Spaltensummen = 1. Geschlossene Population.\n2. $\\vec{v}_{10} \\approx (1440, 3940, 4620)^T$. Fixvektor $\\approx (1053, 4210, 4737)^T$.\n3. $\\vec{x}_t = M^{-1}\\vec{x}_{t+1} \\approx (1389, -444, 1355)^T$. Negativ $\\Rightarrow$ unmöglich.\n\n**Teil B: Test**\n1. Satz totaler Wahrscheinlichkeit: $P(Pos) = 0,005\\cdot0,99 + 0,995\\cdot0,02 \\approx 2,5\\%$.\n2. Bayes: $P(C|Pos) = \\frac{0,005\\cdot0,99}{0,02485} \\approx 19,9\\%$.\n3. Bei $n=2$ Positiv-Resultaten steigt P auf $\\approx 92\\%$.",
+        "scoring": {
+          "maxPoints": 35,
+          "passingPoints": 18,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 3,
+              "description": "Interpretation Matrix"
+            },
+            {
+              "id": "s2",
+              "points": 8,
+              "description": "Prognose und Gleichgewicht"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "Inverses Problem (Widerspruch)"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Totale Wahrscheinlichkeit"
+            },
+            {
+              "id": "s5",
+              "points": 6,
+              "description": "Bedingte Wahrscheinlichkeit (Bayes)"
+            },
+            {
+              "id": "s6",
+              "points": 8,
+              "description": "Testoptimierung (n bestimmen)"
+            }
+          ]
+        }
       }
     },
     {
@@ -10500,9 +10561,7 @@
         "52470a68-dd71-5a8c-b312-e5faab22959f",
         "f2d5f069-a1fa-5df5-aa69-eb5e32865b95",
         "828178ed-12eb-5b15-b346-c6a18a2e38bf",
-        "5bdcd7bd-fa83-5bbe-8f40-b019f90c04d5",
-        "4414c5fa-ceaa-54f0-bbf2-d605f0d48431",
-        "2641019d-08a3-589c-a23a-772c80f3dd9f"
+        "4414c5fa-ceaa-54f0-bbf2-d605f0d48431"
       ],
       "requires": [],
       "dimensionTags": {
@@ -10512,10 +10571,10 @@
     },
     {
       "id": "52470a68-dd71-5a8c-b312-e5faab22959f",
-      "title": "Analysis (Niveau 1, hilfsmittelfrei)",
-      "titleEn": "Analysis (Level 1, without aids)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nGegeben ist die Funktion $f(x)=2x-1$.\n\na) Berechne $f(3)$ und $f(-2)$. (2 BE)  \nb) Bestimme die Nullstelle von $f$. (3 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **Analysis, Part 1, Level 1 (5 BE)**. An example of such a task is:\n\nGiven the function $f(x)=2x-1$.\n\na) Compute $f(3)$ and $f(-2)$. (2 BE)  \nb) Determine the zero of $f$. (3 BE)",
+      "title": "A1 (Analysis, Niveau 1, 5 BE)",
+      "titleEn": "A1 (Analysis, Level 1, 5 BE)",
+      "description": "Gegeben ist die Funktion $f(x) = (x^2 - 3) \\cdot e^x$. Bestimmen Sie Nullstellen und Extrema.",
+      "descriptionEn": "Given the function $f(x) = (x^2 - 3) \\cdot e^x$. Determine zeros and extrema.",
       "weight": 1.0,
       "tags": [
         "GK"
@@ -10528,14 +10587,44 @@
         "framework": "hessen-kc-2024",
         "phase": "Abitur",
         "demandLevel": "AB1"
+      },
+      "examData": {
+        "taskContent": "Gegeben ist die Funktion $f(x) = (x^2 - 3) \\cdot e^x$.\n\n1. Bestimmen Sie die Nullstellen von $f$. (2 BE)\n2. Untersuchen Sie $f$ auf lokale Extremstellen und bestimmen Sie deren Art. (3 BE)",
+        "solutionContent": "**1. Nullstellen (2 BE)**\n\nAnsatz: $f(x) = 0$.\nDa $e^x > 0$ für alle $x$, muss gelten:\n$$x^2 - 3 = 0 \\Rightarrow x_{1,2} = \\pm\\sqrt{3}$$\n\n**2. Extrema (3 BE)**\n\nAbleitung (Produktregel):\n$$f'(x) = 2x e^x + (x^2-3)e^x = e^x(x^2+2x-3)$$\n\nNotwendige Bedingung $f'(x)=0$:\n$$x^2+2x-3=0 \\Rightarrow x_1=1, x_2=-3$$\n\nVorzeichenwechsel von $f'$ (durch Parabel $x^2+2x-3$ bestimmt):\n* $x=-3$: VZW $+ \\to -$ (Hochpunkt)\n* $x=1$: VZW $- \\to +$ (Tiefpunkt)",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 2,
+              "description": "Nullstellen korrekt bestimmt"
+            },
+            {
+              "id": "s2",
+              "points": 1,
+              "description": "Ableitung korrekt gebildet"
+            },
+            {
+              "id": "s3",
+              "points": 1,
+              "description": "Nullstellen der Ableitung berechnet"
+            },
+            {
+              "id": "s4",
+              "points": 1,
+              "description": "Art der Extrema begründet"
+            }
+          ]
+        }
       }
     },
     {
       "id": "f2d5f069-a1fa-5df5-aa69-eb5e32865b95",
-      "title": "Analysis (Niveau 2, hilfsmittelfrei)",
-      "titleEn": "Analysis (Level 2, without aids)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nEin Rechteck hat Umfang $40$ cm.\n\na) Stelle die Fläche $A(x)$ als Funktion einer Seitenlänge $x$ auf. (2 BE)  \nb) Bestimme die Seitenlängen mit maximaler Fläche und begründe kurz. (3 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **Analysis, Part 1, Level 2 (5 BE)**. An example of such a task is:\n\nA rectangle has perimeter $40$ cm.\n\na) Express the area $A(x)$ as a function of a side length $x$. (2 BE)  \nb) Determine the side lengths with maximum area and justify briefly. (3 BE)",
+      "title": "A2 (Analysis, Niveau 2 - \"Der Deich\", 5 BE)",
+      "titleEn": "A2 (Analysis, Level 2 - \"The Dike\", 5 BE)",
+      "description": "Untersuchung eines Deichprofils $h(x) = x(5-x)$ auf Sichtlinienunterbrechung.",
+      "descriptionEn": "Investigation of a dike profile $h(x) = x(5-x)$ for line-of-sight interruption.",
       "weight": 1.0,
       "tags": [
         "GK"
@@ -10549,14 +10638,44 @@
         "framework": "hessen-kc-2024",
         "phase": "Abitur",
         "demandLevel": "AB2"
+      },
+      "examData": {
+        "taskContent": "![Deichskizze](/assets/abi/2026_1/image1.de.png)\n\nDer Querschnitt eines Deiches wird modelliert durch $h(x) = x \\cdot (5-x)$ für $0 \\le x \\le 5$. (Profil vereinfacht, Einheiten Meter).\nEin Beobachter steht im Punkt $P(-1|0)$ am Boden vor dem Deich.\nUntersuchen Sie rechnerisch, ob die direkte Sichtlinie vom Beobachter zur Deichspitze (Hochpunkt) durch das Deichprofil unterbrochen wird.",
+        "solutionContent": "**1. Koordinate der Spitze (Hochpunkt):**\n$$h'(x) = 5 - 2x = 0 \\Rightarrow x = 2,5$$\n$$h(2,5) = 2,5 \\cdot 2,5 = 6,25 \\Rightarrow S(2,5 | 6,25)$$\n\n**2. Sichtprüfung (Tangenten-Ansatz):**\nTangente von $P(-1|0)$ an $h(x)$. Steigung:\n$$\\frac{h(u) - 0}{u - (-1)} = h'(u) \\Rightarrow \\frac{5u - u^2}{u+1} = 5 - 2u$$\n$$5u - u^2 = (5 - 2u)(u + 1) \\Rightarrow u^2 + 2u - 5 = 0$$\n$u = -1 + \\sqrt{6} \\approx 1,45$.\n\n**Schlussfolgerung:** Die Tangente berührt bei $x \\approx 1,45$. Da der Deich bis $x=2,5$ weiter ansteigt (Wölbung), liegt die Spitze \"hinter\" der Wölbung und ist somit nicht sichtbar.\n**Ergebnis:** Die Sichtlinie wird unterbrochen.",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 1,
+              "description": "Hochpunkt bestimmt"
+            },
+            {
+              "id": "s2",
+              "points": 2,
+              "description": "Ansatz (Tangente/Sekante) aufgestellt"
+            },
+            {
+              "id": "s3",
+              "points": 1,
+              "description": "Rechnung durchgeführt"
+            },
+            {
+              "id": "s4",
+              "points": 1,
+              "description": "Interpretation im Sachkontext"
+            }
+          ]
+        }
       }
     },
     {
       "id": "828178ed-12eb-5b15-b346-c6a18a2e38bf",
-      "title": "Lineare Algebra/Geometrie (Niveau 1, hilfsmittelfrei)",
-      "titleEn": "Linear Algebra/Geometry (Level 1, without aids)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nGegeben sind die Punkte $A(1,2,0)$ und $B(5,0,2)$.\n\na) Bestimme den Richtungsvektor $\\overrightarrow{AB}$. (2 BE)  \nb) Gib eine Parametergleichung der Geraden $g$ durch $A$ und $B$ an. (3 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **LA/AG, Part 1, Level 1 (5 BE)**. An example of such a task is:\n\nGiven the points $A(1,2,0)$ and $B(5,0,2)$.\n\na) Determine the direction vector $\\overrightarrow{AB}$. (2 BE)  \nb) Give a parametric equation of the line $g$ through $A$ and $B$. (3 BE)",
+      "title": "A4 (Lineare Algebra, Niveau 1, 5 BE)",
+      "titleEn": "A4 (Linear Algebra, Level 1, 5 BE)",
+      "description": "Ebene $E: 2x_1 + 2x_2 - x_3 = 10$. Bestimmung der Spurpunkte und Skizze.",
+      "descriptionEn": "Plane $E: 2x_1 + 2x_2 - x_3 = 10$. Determination of trace points and sketch.",
       "weight": 1.0,
       "tags": [
         "GK"
@@ -10569,34 +10688,34 @@
         "framework": "hessen-kc-2024",
         "phase": "Abitur",
         "demandLevel": "AB1"
-      }
-    },
-    {
-      "id": "5bdcd7bd-fa83-5bbe-8f40-b019f90c04d5",
-      "title": "Lineare Algebra/Geometrie (Niveau 2, hilfsmittelfrei)",
-      "titleEn": "Linear Algebra/Geometry (Level 2, without aids)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nGegeben sind die Geraden\n\n$$\ng:\\ \\vec x=\\begin{pmatrix}1\\\\0\\\\2\\end{pmatrix}+t\\begin{pmatrix}2\\\\1\\\\0\\end{pmatrix},\\qquad\nh:\\ \\vec x=\\begin{pmatrix}3\\\\1\\\\2\\end{pmatrix}+s\\begin{pmatrix}4\\\\2\\\\0\\end{pmatrix}.\n$$\n\na) Untersuche, ob $g$ und $h$ parallel sind. (3 BE)  \nb) Bestimme den Winkel zwischen den Richtungsvektoren. (2 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **LA/AG, Part 1, Level 2 (5 BE)**. An example of such a task is:\n\nGiven the lines\n\n$$\ng:\\ \\vec x=\\begin{pmatrix}1\\\\0\\\\2\\end{pmatrix}+t\\begin{pmatrix}2\\\\1\\\\0\\end{pmatrix},\\qquad\nh:\\ \\vec x=\\begin{pmatrix}3\\\\1\\\\2\\end{pmatrix}+s\\begin{pmatrix}4\\\\2\\\\0\\end{pmatrix}.\n$$\n\na) Examine whether $g$ and $h$ are parallel. (3 BE)  \nb) Determine the angle between the direction vectors. (2 BE)",
-      "weight": 1.0,
-      "tags": [
-        "GK"
-      ],
-      "contains": [],
-      "requires": [
-        "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
-      ],
-      "dimensionTags": {
-        "framework": "hessen-kc-2024",
-        "phase": "Abitur",
-        "demandLevel": "AB2"
+      },
+      "examData": {
+        "taskContent": "Gegeben ist die Ebene $E: 2x_1 + 2x_2 - x_3 = 10$.\nBestimmen Sie die Koordinaten der Schnittpunkte der Ebene mit den drei Koordinatenachsen (Spurpunkte) und zeichnen Sie den Ausschnitt der Ebene in ein Koordinatensystem ein.",
+        "solutionContent": "**Spurpunkte bestimmen:**\n\n* $S_1$ (setze $x_2=x_3=0$): $2x_1 = 10 \\Rightarrow S_1(5|0|0)$\n* $S_2$ (setze $x_1=x_3=0$): $2x_2 = 10 \\Rightarrow S_2(0|5|0)$\n* $S_3$ (setze $x_1=x_2=0$): $-x_3 = 10 \\Rightarrow S_3(0|0|-10)$\n\n**Zeichnung:**\nKoordinatensystem zeichnen und das Dreieck $S_1 S_2 S_3$ markieren.",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 3,
+              "description": "Berechnung der drei Spurpunkte"
+            },
+            {
+              "id": "s2",
+              "points": 2,
+              "description": "Korrekte Skizze"
+            }
+          ]
+        }
       }
     },
     {
       "id": "4414c5fa-ceaa-54f0-bbf2-d605f0d48431",
-      "title": "Stochastik (Niveau 1, hilfsmittelfrei)",
-      "titleEn": "Stochastics (Level 1, without aids)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 1, Niveau 1 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nIn einer Urne liegen 3 rote und 2 blaue Kugeln. Es wird **zweimal mit Zurücklegen** gezogen.\n\na) Bestimme $P(\\text{rot, dann blau})$. (2 BE)  \nb) Bestimme $P(\\text{genau eine rote Kugel})$. (3 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **Stochastics, Part 1, Level 1 (5 BE)**. An example of such a task is:\n\nIn an urn there are 3 red and 2 blue balls. Draw **twice with replacement**.\n\na) Determine $P(\\text{red, then blue})$. (2 BE)  \nb) Determine $P(\\text{exactly one red ball})$. (3 BE)",
+      "title": "A3 (Stochastik, Niveau 1, 5 BE)",
+      "titleEn": "A3 (Stochastics, Level 1, 5 BE)",
+      "description": "Urne mit 2 roten und 3 schwarzen Kugeln, 3x Ziehen mit Zurücklegen.",
+      "descriptionEn": "Urn with 2 red and 3 black balls, drawing 3x with replacement.",
       "weight": 1.0,
       "tags": [
         "GK"
@@ -10609,26 +10728,36 @@
         "framework": "hessen-kc-2024",
         "phase": "Abitur",
         "demandLevel": "AB1"
-      }
-    },
-    {
-      "id": "2641019d-08a3-589c-a23a-772c80f3dd9f",
-      "title": "Stochastik (Niveau 2, hilfsmittelfrei)",
-      "titleEn": "Stochastics (Level 2, without aids)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 1, Niveau 2 (5 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nIn einer Klasse sind 60% der Lernenden mit dem Bus gekommen, 40% zu Fuß.  \nVon den Busfahrenden sind 10% zu spät, von den Fußgehenden 5% zu spät.\n\na) Bestimme $P(\\text{zu spät})$. (3 BE)  \nb) Bestimme $P(\\text{Bus}\\mid \\text{zu spät})$. (2 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **Stochastics, Part 1, Level 2 (5 BE)**. An example of such a task is:\n\nIn a class, 60% of learners came by bus, 40% on foot.  \nOf those who came by bus, 10% are late; of those who walked, 5% are late.\n\na) Determine $P(\\text{late})$. (3 BE)  \nb) Determine $P(\\text{bus}\\mid \\text{late})$. (2 BE)",
-      "weight": 1.0,
-      "tags": [
-        "GK"
-      ],
-      "contains": [],
-      "requires": [
-        "4ab18312-0b43-461d-9154-3fba277baae7"
-      ],
-      "dimensionTags": {
-        "framework": "hessen-kc-2024",
-        "phase": "Abitur",
-        "demandLevel": "AB2"
+      },
+      "examData": {
+        "taskContent": "In einer Urne liegen 2 rote und 3 schwarze Kugeln.\nEs wird dreimal *mit* Zurücklegen gezogen.\nGeben Sie einen Term an für die Wahrscheinlichkeit, dass...\n\n1. ...genau zwei rote Kugeln gezogen werden. (2 BE)\n2. ...die erste Kugel rot ist und danach nie wieder rot gezogen wird. (3 BE)",
+        "solutionContent": "**1. Genau zwei rote Kugeln (2 BE)**\nBinomialverteilung ($n=3, p=0,4$):\n$$P(X=2) = \\binom{3}{2} \\cdot \\left(\\frac{2}{5}\\right)^2 \\cdot \\left(\\frac{3}{5}\\right)^1 = 3 \\cdot \\frac{4}{25} \\cdot \\frac{3}{5} = \\frac{36}{125}$$\n\n**2. Erste Rot, danach nie wieder Rot (3 BE)**\nPfad: Rot – Schwarz – Schwarz.\n$$P = \\frac{2}{5} \\cdot \\frac{3}{5} \\cdot \\frac{3}{5} = \\frac{18}{125}$$",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 1,
+              "description": "Binomialkoeffizient/Faktor 3 erkannt"
+            },
+            {
+              "id": "s2",
+              "points": 1,
+              "description": "Wahrscheinlichkeiten für 2 Rote korrekt"
+            },
+            {
+              "id": "s3",
+              "points": 1,
+              "description": "Einzelwahrscheinlichkeiten Teil 2 korrekt"
+            },
+            {
+              "id": "s4",
+              "points": 2,
+              "description": "Produktregel für Teil 2 korrekt angewandt"
+            }
+          ]
+        }
       }
     },
     {
@@ -10643,8 +10772,7 @@
       ],
       "contains": [
         "0ba923a8-1641-51a7-b01e-7860bf97d513",
-        "147b8cd6-b659-5581-9875-45c3339b522b",
-        "7ed9c402-73a2-5eb2-ba74-fcc7f0ca756e"
+        "147b8cd6-b659-5581-9875-45c3339b522b"
       ],
       "requires": [],
       "dimensionTags": {
@@ -10654,10 +10782,10 @@
     },
     {
       "id": "0ba923a8-1641-51a7-b01e-7860bf97d513",
-      "title": "Analysis B (mit Hilfsmitteln, 25 BE)",
-      "titleEn": "Analysis B (with aids, 25 BE)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Analysis, Prüfungsteil 2 (25 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\n**Kontext:** Eine Zuflussrate in ein Becken (in $\\mathrm{m^3/h}$) sei\n\n$$\nr(t)=6t\\,e^{-0{,}5t}\\quad (t\\ge 0).\n$$\n\nZu Beginn sind $B(0)=2\\ \\mathrm{m^3}$ im Becken.\n\na) Bestimme $B(t)$ als Bestand (mit Anfangsbestand) und vereinfache so weit wie möglich. (7 BE)  \nb) Bestimme den Zeitpunkt, an dem $r(t)$ maximal ist, und interpretiere das Ergebnis. (6 BE)  \nc) Berechne die insgesamt bis $t=6$ zugeflossene Wassermenge. (4 BE)  \nd) Bestimme den Grenzwert $\\lim_{t\\to\\infty} r(t)$ und deute ihn. (4 BE)  \ne) **WTR/CAS:** Bestimme näherungsweise den Zeitpunkt $t$, zu dem $B(t)=20$ gilt.  \nDokumentiere Vorgehen (Gleichung, Tool-Schritte, Ergebnisprüfung). (4 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **Analysis, Part 2 (25 BE)**. An example of such a task is:\n\n**Context:** An inflow rate into a basin (in $\\mathrm{m^3/h}$) is\n\n$$\nr(t)=6t\\,e^{-0{,}5t}\\quad (t\\ge 0).\n$$\n\nInitially there are $B(0)=2\\ \\mathrm{m^3}$ in the basin.\n\na) Determine $B(t)$ as the volume (including initial volume) and simplify as far as possible. (7 BE)  \nb) Determine the time at which $r(t)$ is maximal and interpret the result. (6 BE)  \nc) Calculate the total amount of water that has flowed in by $t=6$. (4 BE)  \nd) Determine the limit $\\lim_{t\\to\\infty} r(t)$ and interpret it. (4 BE)  \ne) **WTR/CAS:** Determine an approximate time $t$ for which $B(t)=20$.  \nDocument the procedure (equation, tool steps, result check). (4 BE)",
+      "title": "B1 (Analysis, Niveau 2 – \"Das Algenwachstum\", 30 BE)",
+      "titleEn": "B1 (Analysis, Level 2 – \"Algae Growth\", 30 BE)",
+      "description": "Logistisches Wachstum $A(t) = \\frac{500}{1 + 49 \\cdot e^{-0{,}2 \\cdot t}}$.",
+      "descriptionEn": "Logistic growth $A(t) = \\frac{500}{1 + 49 \\cdot e^{-0{,}2 \\cdot t}}$.",
       "weight": 1.5,
       "tags": [
         "GK"
@@ -10671,14 +10799,49 @@
         "framework": "hessen-kc-2024",
         "phase": "Abitur",
         "demandLevel": "AB2"
+      },
+      "examData": {
+        "taskContent": "![Algenwachstum](/assets/abi/2026_1/image2.de.png)\n\nDas Wachstum eines Algenteppichs auf einem See wird modelliert durch die Funktion:\n$$A(t) = \\frac{500}{1 + 49 \\cdot e^{-0{,}2 \\cdot t}} \\quad (t \\ge 0)$$\n($t$ in Tagen seit Beobachtungsbeginn, $A(t)$ in $m^2$).\n\n1. **Anfangszustand:** Berechnen Sie die bedeckte Fläche zu Beginn ($t=0$). (3 BE)\n2. **Sättigung:** Bestimmen Sie den Grenzwert von $A(t)$ für $t \\to \\infty$ und interpretieren Sie diesen im Sachkontext \"See\". (4 BE)\n3. **Wachstumsgeschwindigkeit:** Bestimmen Sie den Zeitpunkt, an dem der Algenteppich am schnellsten wächst. Wie groß ist die Zunahme an diesem Tag (in $m^2/\\text{Tag}$)? (8 BE)\n4. **Rückschritt:** Durch Einsatz eines Mittels nimmt die Fläche ab Tag 30 exponentiell um 5% pro Tag ab. Stellen Sie $A_{neu}(t)$ auf und berechnen Sie, wann der Anfangswert wieder erreicht ist. (8 BE)\n5. **Bewertung:** Vergleichen Sie $A(t)$ für kleine $t$ mit exponentiellem Wachstum und nehmen Sie zur Kritik eines Experten Stellung. (7 BE)",
+        "solutionContent": "**1. Anfangszustand (3 BE)**\n$$A(0) = \\frac{500}{1+49} = 10 \\Rightarrow 10\\,m^2$$\n\n**2. Sättigung (4 BE)**\nGrenzwert 500. Die Fläche ist durch den See begrenzt.\n\n**3. Wachstumsgeschwindigkeit (8 BE)**\nWendepunkt bestimmen (GTR). $t \\approx 19,46$. Rate $A'(19,46) \\approx 25\\,m^2/d$.\n\n**4. Rückschritt (8 BE)**\n$A(30) \\approx 446,05$. $A_{neu}(t) = 446,05 \\cdot 0,95^{(t-30)}$.\n$10 = 446,05 \\cdot 0,95^k \\Rightarrow k \\approx 74$. Gesamtzeit $104$ Tage.\n\n**5. Bewertung (7 BE)**\nFür kleine $t$ ist der Nenner $\\approx 49 e^{-0,2t}$, also $A(t) \\approx \\text{const} \\cdot e^{0,2t}$. Das logistische Wachstum verhält sich anfangs fast exponentiell. Kritik ist kaum relevant.",
+        "scoring": {
+          "maxPoints": 30,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 3,
+              "description": "Berechnung Anfangszustand"
+            },
+            {
+              "id": "s2",
+              "points": 4,
+              "description": "Grenzwert und Interpretation"
+            },
+            {
+              "id": "s3",
+              "points": 8,
+              "description": "Maximales Wachstum (Zeitpunkt und Rate)"
+            },
+            {
+              "id": "s4",
+              "points": 8,
+              "description": "Modellierung Rückschritt und Zeitdauer"
+            },
+            {
+              "id": "s5",
+              "points": 7,
+              "description": "Vergleich mit exponentiellem Wachstum"
+            }
+          ]
+        }
       }
     },
     {
       "id": "147b8cd6-b659-5581-9875-45c3339b522b",
-      "title": "Lineare Algebra/Geometrie C (mit Hilfsmitteln, 15 BE)",
-      "titleEn": "Linear Algebra/Geometry C (with aids, 15 BE)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **LA/AG, Prüfungsteil 2 (15 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nGegeben sind $A(1,2,0)$, $B(5,2,2)$, $C(1,6,2)$.  \nDie Ebene $E$ geht durch $A,B,C$.\n\na) Bestimme eine Ebenengleichung von $E$ in Koordinatenform. (5 BE)  \nb) Untersuche, ob $P(3,4,1)$ auf $E$ liegt. (2 BE)  \nc) Bestimme den Winkel zwischen der Geraden\n\n$$\ng:\\ \\vec x=\\begin{pmatrix}1\\\\2\\\\5\\end{pmatrix}+s\\begin{pmatrix}2\\\\0\\\\-1\\end{pmatrix}\n$$\n\nund der Ebene $E$. (4 BE)  \nd) Bestimme den Abstand des Punktes $P(3,4,1)$ von $E$. (4 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **LA/AG, Part 2 (15 BE)**. An example of such a task is:\n\nGiven $A(1,2,0)$, $B(5,2,2)$, $C(1,6,2)$.  \nPlane $E$ passes through $A,B,C$.\n\na) Determine a plane equation of $E$ in coordinate form. (5 BE)  \nb) Check whether $P(3,4,1)$ lies on $E$. (2 BE)  \nc) Determine the angle between the line\n\n$$\ng:\\ \\vec x=\\begin{pmatrix}1\\\\2\\\\5\\end{pmatrix}+s\\begin{pmatrix}2\\\\0\\\\-1\\end{pmatrix}\n$$\n\nand the plane $E$. (4 BE)  \nd) Determine the distance of point $P(3,4,1)$ from $E$. (4 BE)",
+      "title": "C1 (Lineare Algebra, Niveau 2 - \"Das Solardach\", 25 BE)",
+      "titleEn": "C1 (Linear Algebra, Level 2 - \"The Solar Roof\", 25 BE)",
+      "description": "Dachfläche durch Punkte $A, B, C, D$. Schattenwurf und optimaler Sonnenwinkel.",
+      "descriptionEn": "Roof surface defined by points $A, B, C, D$. Cast shadow and optimal sun angle.",
       "weight": 1.5,
       "tags": [
         "GK"
@@ -10691,26 +10854,36 @@
         "framework": "hessen-kc-2024",
         "phase": "Abitur",
         "demandLevel": "AB2"
-      }
-    },
-    {
-      "id": "7ed9c402-73a2-5eb2-ba74-fcc7f0ca756e",
-      "title": "Stochastik D (mit Hilfsmitteln, 15 BE)",
-      "titleEn": "Stochastics D (with aids, 15 BE)",
-      "description": "Der Lernende kann Abituraufgaben lösen, die nach folgenden Vorgaben gestellt wurden: **Stochastik, Prüfungsteil 2 (15 BE)**. Ein Beispiel für eine solche Aufgabe ist:\n\nEin Hersteller behauptet: „Der Ausschussanteil liegt bei höchstens $p=0{,}03$.“  \nIn einer Stichprobe von $n=200$ Teilen werden $x=11$ Ausschussteile gefunden.\n\na) Modellieren Sie mit $X\\sim\\mathrm{Bin}(n,p)$ unter $H_0$ und formulieren Sie $H_0$ und $H_1$ (einseitig). (3 BE)  \nb) **WTR/CAS:** Bestimmen Sie den Ablehnungsbereich zum Signifikanzniveau $\\alpha=5\\%$  \n(kleinstes $k$ mit $P_{H_0}(X\\ge k)\\le 0{,}05$). Dokumentation Pflicht. (6 BE)  \nc) Treffen Sie die Testentscheidung für $x=11$ und formulieren Sie das Ergebnis im Kontext. (4 BE)  \nd) **Inverse Fragestellung (WTR/CAS):** Zeigen Sie an einem kurzen Beispiel, dass bei größerem Stichprobenumfang $n$ Prognose-/Konfidenzintervalle typischerweise enger werden.  \n(qualitativ + eine Tool-gestützte Beispielrechnung). (2 BE)",
-      "descriptionEn": "The learner can solve Abitur tasks that follow the specifications: **Stochastics, Part 2 (15 BE)**. An example of such a task is:\n\nA manufacturer claims: The defect rate is at most $p=0{,}03$.  \nIn a sample of $n=200$ items, $x=11$ defective items are found.\n\na) Model with $X\\sim\\mathrm{Bin}(n,p)$ under $H_0$ and formulate $H_0$ and $H_1$ (one-sided). (3 BE)  \nb) **WTR/CAS:** Determine the rejection region at significance level $\\alpha=5\\%$  \n(smallest $k$ with $P_{H_0}(X\\ge k)\\le 0{,}05$). Documentation required. (6 BE)  \nc) Make the test decision for $x=11$ and state the result in context. (4 BE)  \nd) **Inverse question (WTR/CAS):** Show with a brief example that with a larger sample size $n$, prediction/confidence intervals are typically narrower.  \n(qualitative + a tool-supported example calculation). (2 BE)",
-      "weight": 1.5,
-      "tags": [
-        "GK"
-      ],
-      "contains": [],
-      "requires": [
-        "4ab18312-0b43-461d-9154-3fba277baae7"
-      ],
-      "dimensionTags": {
-        "framework": "hessen-kc-2024",
-        "phase": "Abitur",
-        "demandLevel": "AB2"
+      },
+      "examData": {
+        "taskContent": "![Solardach](/assets/abi/2026_1/image3.de.png)\n\nEckpunkte einer Dachfläche: $A(10|0|3)$, $B(10|10|3)$, $C(0|10|6)$ und $D(0|0|6)$ (1 LE = 1m).\n\n1. Zeigen Sie, dass die Fläche ein Rechteck ist und bestimmen Sie eine Koordinatengleichung der Ebene. (6 BE)\n2. **Schattenwurf:** Ein Mast steht in $M(13|5|0)$ (Höhe 10m). Sonnenlicht $\\vec{v} = (-1, 0, -2)^T$. Prüfen Sie, ob der Schatten auf das Dach fällt. (7 BE)\n3. **Effizienz:** Bestimmen Sie den optimalen Sonnenstand (senkrecht) und den Winkel der aktuellen Strahlen zum Dach. (7 BE)\n4. **Montage:** 2m Blitzableiter senkrecht in $D$. Koordinaten der Spitze? (5 BE)",
+        "solutionContent": "**1. Rechteck und Ebene (6 BE)**\nSkalarprodukt $\\vec{AB} \\cdot \\vec{AD} = 0$, Längen gleich. Ebene $3x_1 + x_3 = 33$.\n\n**2. Schattenwurf (7 BE)**\nGerade $g: \\vec{x} = (13,5,10)^T + r(-1,0,-2)^T$. Schnitt mit $E$ bei $r=3,2$. Schnittpunkt $S(9,8 | 5 | 3,6)$.\n$0 \\le 9,8 \\le 10$ $\\Rightarrow$ Schatten auf dem Dach.\n\n**3. Effizienz (7 BE)**\nOptimal: parallel zu $\\vec{n}=(3,0,1)^T$. Winkel $\\cos \\alpha = 1/\\sqrt{2} \\Rightarrow \\alpha=45^\\circ$.\n\n**4. Montage (5 BE)**\n$D(0|0|6) + 2 \\cdot \\vec{n_0} \\approx (1,90 | 0 | 6,63)$.",
+        "scoring": {
+          "maxPoints": 25,
+          "passingPoints": 13,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 6,
+              "description": "Rechtecknachweis und Ebenengleichung"
+            },
+            {
+              "id": "s2",
+              "points": 7,
+              "description": "Schattenwurfprüfung (Gerade-Ebenen-Schnitt)"
+            },
+            {
+              "id": "s3",
+              "points": 7,
+              "description": "Winkelberechnung"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Blitzableiterspitze berechnet"
+            }
+          ]
+        }
       }
     }
   ]

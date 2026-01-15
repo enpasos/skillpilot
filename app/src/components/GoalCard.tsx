@@ -90,12 +90,46 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
 
       <div className="mt-2 text-sm text-text-primary leading-relaxed prose dark:prose-invert max-w-none">
-        <ReactMarkdown
-          remarkPlugins={[remarkMath]}
-          rehypePlugins={[rehypeKatex]}
-        >
-          {goal.description}
-        </ReactMarkdown>
+        {goal.examData ? (
+          <div className="space-y-6">
+            <div className="bg-blue-50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30">
+              <h3 className="text-sm font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wide mb-2 flex items-center gap-2">
+                <Target size={16} />
+                Prüfungsaufgabe
+              </h3>
+              <ReactMarkdown
+                remarkPlugins={[remarkMath]}
+                rehypePlugins={[rehypeKatex]}
+              >
+                {goal.examData.taskContent}
+              </ReactMarkdown>
+            </div>
+
+            {/* If Mastered, show Solution? Maybe later. For now, just Task. */}
+            {masteryValue >= 1 && (
+              <div className="bg-emerald-50 dark:bg-emerald-900/10 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900/30">
+                <h3 className="text-sm font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wide mb-2 flex items-center gap-2">
+                  <Check size={16} />
+                  Musterlösung
+                </h3>
+                <ReactMarkdown
+                  remarkPlugins={[remarkMath]}
+                  rehypePlugins={[rehypeKatex]}
+                >
+                  {goal.examData.solutionContent}
+                </ReactMarkdown>
+              </div>
+            )}
+
+          </div>
+        ) : (
+          <ReactMarkdown
+            remarkPlugins={[remarkMath]}
+            rehypePlugins={[rehypeKatex]}
+          >
+            {goal.description}
+          </ReactMarkdown>
+        )}
       </div>
 
       {showLearnerTools && (

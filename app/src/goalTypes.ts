@@ -33,6 +33,7 @@ export interface UiGoal {
   effectiveRequires?: string[]
   inheritedRequires?: string[]
   extendedData?: Record<string, unknown>
+  examData?: import('./landscapeTypes').ExamData
 }
 
 function demandLevelToNumber(level: string): number {
@@ -79,7 +80,8 @@ export function convertLearningGoal(
     examples: goal.examples ?? [],
     effectiveRequires: goal.requires ?? [],
     inheritedRequires: [],
-    extendedData: goal.extendedData
+    extendedData: goal.extendedData,
+    examData: goal.examData
   }
 }
 

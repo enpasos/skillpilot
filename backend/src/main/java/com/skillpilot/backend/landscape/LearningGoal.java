@@ -140,4 +140,14 @@ public class LearningGoal {
     public void setSourceRef(String sourceRef) {
         this.sourceRef = sourceRef;
     }
+
+    private ExamData examData;
+
+    public ExamData getExamData() {
+        return examData;
+    }
+
+    public void setExamData(ExamData examData) {
+        this.examData = examData;
+    }
 }
