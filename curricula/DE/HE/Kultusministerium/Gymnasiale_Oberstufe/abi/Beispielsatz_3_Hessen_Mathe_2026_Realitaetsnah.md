@@ -1,6 +1,6 @@
-# Landesabitur Mathematik – Beispielsatz 3 (Hessen) 2026
+# Landesabitur Mathematik (Hessen) 2026 – SkillPilot Beispielklausur 1
 
-## **GK & LK – Version „Realitätsnah & Komplex“ (Set 3)**
+## **GK & LK – Version „Realitätsnah & Komplex“ (Klausur 1)**
 
 > **Fokus:** Starke Kontextbezüge, komplexe Funktionsklassen (Produkt-/Verkettung), explizite Bildbeschreibungen.
 > **Leitidee:** Simuliert den "fiesen" Teil der Abituraufgaben, bei dem das Modellieren und der Umgang mit unerwarteten Funktionen im Vordergrund stehen.
@@ -14,7 +14,9 @@
 
 ---
 
-# A) Grundkurs (GK) – Beispielsatz 3
+<div style="page-break-after: always;"></div>
+
+# A) Grundkurs (GK) – SkillPilot Beispielklausur 1
 
 ## GK – Prüfungsteil 1 (hilfsmittelfrei)
 
@@ -49,6 +51,8 @@ Bestimmen Sie die Koordinaten der Schnittpunkte der Ebene mit den drei Koordinat
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 ## GK – Prüfungsteil 2 (mit Hilfsmitteln)
 
 ### **B1 (Analysis – "Das Algenwachstum", 30 BE)**
@@ -72,6 +76,8 @@ $$
 5. **Bewertung:** Ein Experte kritisiert das logistische Modell $A(t)$ für die Anfangsphase, da Algen bei guten Bedingungen eher exponentiell wachsen. 
    Vergleichen Sie $A(t)$ für kleine $t$ mit einer geeigneten Exponentialfunktion und nehmen Sie Stellung. (7 BE)
 
+<div style="page-break-after: always;"></div>
+
 ### **C1 (Lineare Algebra - "Das Solardach", 25 BE)**
 
 ![Abb. 3: Ein modernes Haus mit einem schrägen Pultdach. Auf dem Dach ist ein rechteckiges Modul montiert. Die Sonne scheint in einem bestimmten Vektor darauf.](image3.de.png)
@@ -89,7 +95,9 @@ In einem Modell (1 LE = 1 m) liegen die Eckpunkte einer Dachfläche in $A(10|0|3
 
 ---
 
-# B) Leistungskurs (LK) – Beispielsatz 3
+<div style="page-break-after: always;"></div>
+
+# B) Leistungskurs (LK) – SkillPilot Beispielklausur 1
 
 ## LK – Prüfungsteil 1 (hilfsmittelfrei)
 
@@ -111,11 +119,13 @@ Beschreiben Sie, wie sich die Fehlerwahrscheinlichkeit 1. Art verändert, wenn m
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 ## LK – Prüfungsteil 2 (mit Hilfsmitteln)
 
 ### **B1 (Analysis – "Die Hängebrücke", 35 BE)**
 
-*![Abb. 4: Eine komplexe Hängebrücke zwischen zwei Pylonen. Das Haupttragseil hängt durch, daran hängen vertikal weitere Seile, die die Fahrbahn halten. Die Fahrbahn ist leicht nach oben gewölbt.](image4.png)
+![Abb. 4: Eine komplexe Hängebrücke zwischen zwei Pylonen. Das Haupttragseil hängt durch, daran hängen vertikal weitere Seile, die die Fahrbahn halten. Die Fahrbahn ist leicht nach oben gewölbt.](image4.png)
 
 Das Haupttragseil einer Brücke wird durch die Funktion der Kettenlinie approximiert:
 
@@ -141,6 +151,8 @@ $$
    Berechnen Sie den Flächeninhalt. (6 BE)
 6. **Variation:** Bei Belastung senkt sich das Seil. Die neue Funktion ist $k_a(x) = \frac{1}{a} (e^{ax} + e^{-ax})$.
    Zeigen Sie allgemein: Je größer $a$, desto steiler der Anstieg bei $x=100$. (6 BE)
+
+<div style="page-break-after: always;"></div>
 
 ### **C1 (Matrizen/Stochastik – "Viren-Screening & Populationsdynamik", 35 BE)**
 
@@ -171,6 +183,8 @@ Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,00
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 ### Qualitäts-Check (Selbstprüfung):
 
 - **Komplexität:** LK Analysis umfasst jetzt $e$-Funktionen mit Summen (Kettenlinie) und Substitutionsintegrale.
@@ -191,11 +205,13 @@ Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,00
 
 > **Tuning‑Hinweise:** typische Maßnahmen, um eine Aufgabe **hoch** (↑) oder **runter** (↓) zu regeln, ohne neuen Stoff.
 
-<div style="font-size: 0.85em; line-height: 1.25;">
+<div style="page-break-after: always;"></div>
+
+**GK**
+
 <table>
   <thead>
     <tr>
-      <th>Kurs</th>
       <th>Teil</th>
       <th>Aufg.</th>
       <th>Dom.</th>
@@ -210,19 +226,42 @@ Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,00
     </tr>
   </thead>
   <tbody>
-    <tr><td>GK</td><td>1</td><td>A1</td><td>Ana</td><td>1</td><td>AB1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Standard-Produktregel.</td></tr>
-    <tr><td>GK</td><td>1</td><td>A2</td><td>Ana</td><td>2</td><td>AB2</td><td>1</td><td>1</td><td>1</td><td>2</td><td>0</td><td>„Sichtlinie“: Tangente vs. Sekante entscheidet.</td></tr>
-    <tr><td>GK</td><td>1</td><td>A3</td><td>Stoch</td><td>1</td><td>AB1-2</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>Ziehen mit Zurücklegen (Bernoulli-ähnlich).</td></tr>
-    <tr><td>GK</td><td>1</td><td>A4</td><td>LA/AG</td><td>1</td><td>AB1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Spurpunkte (Rezept).</td></tr>
-    <tr><td>GK</td><td>2</td><td>B1</td><td>Ana (Log)</td><td>—</td><td>AB2-3</td><td>1</td><td>2</td><td>2</td><td>2</td><td>2</td><td>↑ Logistisches Wachstum; Kritik am Modell (Transfer).</td></tr>
-    <tr><td>GK</td><td>2</td><td>C1</td><td>LA/AG</td><td>—</td><td>AB2</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>↑ Schattenwurf-Prüfung; ↓ Koordinaten gegeben.</td></tr>
-    <tr><td>LK</td><td>1</td><td>A1</td><td>Ana</td><td>2</td><td>AB2</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>Grenzwertbetrachtung (L'Hospital oder Standard).</td></tr>
-    <tr><td>LK</td><td>1</td><td>A2</td><td>Ana</td><td>2</td><td>AB2</td><td>2</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Substitution erforderlich.</td></tr>
-    <tr><td>LK</td><td>1</td><td>A3</td><td>Stoch</td><td>2</td><td>AB2</td><td>1</td><td>0</td><td>2</td><td>1</td><td>0</td><td>Logiktest (Fehler 1. Art).</td></tr>
-    <tr><td>LK</td><td>2</td><td>B1</td><td>Ana (Kette)</td><td>—</td><td>AB3</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>↑ Bogenlänge (Integral); ↓ Symmetrie nutzen.</td></tr>
-    <tr><td>LK</td><td>2</td><td>C1</td><td>Mat/Stoch</td><td>—</td><td>AB3</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>Kombination Matrix + Bayes (Falsch-Positiv-Rate).</td></tr>
+    <tr><td>1</td><td>A1</td><td>Ana</td><td>1</td><td>AB1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Standard-Produktregel.</td></tr>
+    <tr><td>1</td><td>A2</td><td>Ana</td><td>2</td><td>AB2</td><td>1</td><td>1</td><td>1</td><td>2</td><td>0</td><td>„Sichtlinie“: Tangente vs.<br>Sekante entscheidet.</td></tr>
+    <tr><td>1</td><td>A3</td><td>Stoch</td><td>1</td><td>AB1-2</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>Ziehen mit Zurücklegen<br>(Bernoulli-ähnlich).</td></tr>
+    <tr><td>1</td><td>A4</td><td>LA/AG</td><td>1</td><td>AB1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Spurpunkte (Rezept).</td></tr>
+    <tr><td>2</td><td>B1</td><td>Ana (Log)</td><td>—</td><td>AB2-3</td><td>1</td><td>2</td><td>2</td><td>2</td><td>2</td><td>↑ Logistisches Wachstum;<br>Kritik am Modell (Transfer).</td></tr>
+    <tr><td>2</td><td>C1</td><td>LA/AG</td><td>—</td><td>AB2</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>↑ Schattenwurf-Prüfung;<br>↓ Koordinaten gegeben.</td></tr>
   </tbody>
 </table>
-</div>
+
+<div style="page-break-after: always;"></div>
+
+**LK**
+
+<table>
+  <thead>
+    <tr>
+      <th>Teil</th>
+      <th>Aufg.</th>
+      <th>Dom.</th>
+      <th>Niv.</th>
+      <th>AB</th>
+      <th>E</th>
+      <th>M</th>
+      <th>B</th>
+      <th>Mo</th>
+      <th>T</th>
+      <th>Stellschr.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>A1</td><td>Ana</td><td>2</td><td>AB2</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>Grenzwert-betrachtung<br>(L'Hospital oder Standard).</td></tr>
+    <tr><td>1</td><td>A2</td><td>Ana</td><td>2</td><td>AB2</td><td>2</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Substitution erforderlich.</td></tr>
+    <tr><td>1</td><td>A3</td><td>Stoch</td><td>2</td><td>AB2</td><td>1</td><td>0</td><td>2</td><td>1</td><td>0</td><td>Logiktest<br>(Fehler 1. Art).</td></tr>
+    <tr><td>2</td><td>B1</td><td>Ana (Kette)</td><td>—</td><td>AB3</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>↑ Bogenlänge (Integral);<br>↓ Symmetrie nutzen.</td></tr>
+    <tr><td>2</td><td>C1</td><td>Mat/Stoch</td><td>—</td><td>AB3</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>Kombination Matrix + Bayes<br>(Falsch-Positiv-Rate).</td></tr>
+  </tbody>
+</table>
 
 ---
