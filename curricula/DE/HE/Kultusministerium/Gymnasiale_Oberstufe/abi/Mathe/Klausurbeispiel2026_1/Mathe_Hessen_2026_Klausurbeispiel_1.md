@@ -3,7 +3,7 @@
 ## **GK & LK – Version „Realitätsnah & Komplex“ (Klausur 1)**
 
 > **Fokus:** Starke Kontextbezüge, komplexe Funktionsklassen (Produkt-/Verkettung), explizite Bildbeschreibungen.
-> **Leitidee:** Simuliert den "fiesen" Teil der Abituraufgaben, bei dem das Modellieren und der Umgang mit unerwarteten Funktionen im Vordergrund stehen.
+> **Leitidee:** Simuliert den "fiesen" Teil der Abituraufgaben, bei dem das Modellieren und der Umgang mit unerwarteten Funktionen im Vordergrund stehen. 
 
 ---
 
@@ -22,7 +22,7 @@
 
 ### **A1 (Analysis, Niveau 1) – 5 BE**
 
-Gegeben ist die Funktion $f(x) = (x^2 - 4) \cdot e^x$.
+Gegeben ist die Funktion $f(x) = (x^2 - 3) \cdot e^x$.
 
 1. Bestimmen Sie die Nullstellen von $f$. (2 BE)
 2. Untersuchen Sie $f$ auf lokale Extremstellen und bestimmen Sie deren Art. (3 BE)
@@ -33,7 +33,7 @@ Gegeben ist die Funktion $f(x) = (x^2 - 4) \cdot e^x$.
 
 Der Querschnitt eines Deiches wird modelliert durch $h(x) = x \cdot (5-x)$ für $0 \le x \le 5$. (Profil vereinfacht, Einheiten Meter).
 Ein Beobachter steht im Punkt $P(-1|0)$ am Boden vor dem Deich.
-Entscheiden Sie durch Rechnung, ob der Beobachter die Spitze des Deiches (Hochpunkt) sehen kann.
+Untersuchen Sie rechnerisch, ob die direkte Sichtlinie vom Beobachter zur Deichspitze (Hochpunkt) durch das Deichprofil unterbrochen wird.
 
 ### **A3 (Stochastik, Niveau 1) – 5 BE**
 
@@ -85,7 +85,7 @@ $$
 In einem Modell (1 LE = 1 m) liegen die Eckpunkte einer Dachfläche in $A(10|0|3)$, $B(10|10|3)$, $C(0|10|6)$ und $D(0|0|6)$.
 
 1. Zeigen Sie, dass die Dachfläche ein Rechteck ist. Bestimmen Sie eine Koordinatengleichung der Ebene $E$, in der das Dach liegt. (6 BE)
-2. **Schattenwurf:** Ein 10 m hoher Mast steht im Punkt $M(15|5|0)$. Die Sonnenstrahlen fallen in Richtung $\vec{v} = \begin{pmatrix} -1 \\ 0 \\ -2 \end{pmatrix}$ ein.
+2. **Schattenwurf:** Ein 10 m hoher Mast steht im Punkt $M(13|5|0)$. Die Sonnenstrahlen fallen in Richtung $\vec{v} = \begin{pmatrix} -1 \\ 0 \\ -2 \end{pmatrix}$ ein.
    Prüfen Sie rechnerisch, ob der Schatten der Mastspitze auf die Dachfläche fällt. (7 BE)
 3. **Effizienz:** Sonnenlicht liefert die maximale Energie, wenn es senkrecht auf die Fläche trifft.
    Bestimmen Sie einen Vektor für den Sonnenstand, bei dem die Strahlen exakt senkrecht auf das Dach fallen.
@@ -130,7 +130,7 @@ Beschreiben Sie, wie sich die Fehlerwahrscheinlichkeit 1. Art verändert, wenn m
 Das Haupttragseil einer Brücke wird durch die Funktion der Kettenlinie approximiert:
 
 $$
-k(x) = 10 \cdot (e^{0,05x} + e^{-0,05x})
+k(x) = 20 \cdot (e^{0,02x} + e^{-0,02x})
 $$
 
 Die Fahrbahn verläuft (wegen der Wölbung) gemäß der Parabel:
@@ -263,5 +263,3 @@ Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,00
     <tr><td>2</td><td>C1</td><td>Mat/Stoch</td><td>—</td><td>AB3</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>Kombination Matrix + Bayes<br>(Falsch-Positiv-Rate).</td></tr>
   </tbody>
 </table>
-
----
