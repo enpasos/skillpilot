@@ -49,13 +49,22 @@ Geben Sie einen Term an für die Wahrscheinlichkeit, dass...
 Gegeben ist die Ebene $E: 2x_1 + 2x_2 - x_3 = 10$.
 Bestimmen Sie die Koordinaten der Schnittpunkte der Ebene mit den drei Koordinatenachsen (Spurpunkte) und zeichnen Sie den Ausschnitt der Ebene in ein Koordinatensystem ein.
 
+### **A5 (Stochastik, Niveau 1) – 5 BE**
+
+Ein Glücksrad hat drei Sektoren: Rot (50%), Blau (30%) und Gelb (20%).
+Es wird zweimal gedreht.
+Bestimmen Sie die Wahrscheinlichkeit, dass...
+
+1. ...zweimal die gleiche Farbe erscheint. (2 BE)
+2. ...mindestens einmal Gelb erscheint. (3 BE)
+
 ---
 
 <div style="page-break-after: always;"></div>
 
 ## GK – Prüfungsteil 2 (mit Hilfsmitteln)
 
-### **B1 (Analysis – "Das Algenwachstum", 30 BE)**
+### **B1 (Analysis – "Das Algenwachstum", 25 BE)**
 
 ![Abb. 2: Ein See von oben. In der Mitte breitet sich ein grüner Teppich (Algen) kreisförmig aus. Daneben ein Graph, der die Fläche A(t) zeigt: sigmoidaler Verlauf (S-Kurve).](image2.de.png)
 
@@ -72,13 +81,13 @@ $$
 3. **Wachstumsgeschwindigkeit:** Bestimmen Sie den Zeitpunkt, an dem der Algenteppich am schnellsten wächst. Wie groß ist die Zunahme an diesem Tag (in $m^2/\text{Tag}$)? (8 BE)
 4. **Rückschritt:** Durch den Einsatz eines biologischen Mittels ändert sich das Modell ab Tag 30. Die Fläche nimmt ab Tag 30 exponentiell um 5% pro Tag ab.
    Stellen Sie die neue Funktionsgleichung $A_{neu}(t)$ für $t \ge 30$ auf.
-   Berechnen Sie, wann die Fläche wieder auf den Anfangswert von $t=0$ gesunken ist. (8 BE)
+   Berechnen Sie, wann die Fläche wieder auf den Anfangswert von $t=0$ gesunken ist. (6 BE)
 5. **Bewertung:** Ein Experte kritisiert das logistische Modell $A(t)$ für die Anfangsphase, da Algen bei guten Bedingungen eher exponentiell wachsen. 
-   Vergleichen Sie $A(t)$ für kleine $t$ mit einer geeigneten Exponentialfunktion und nehmen Sie Stellung. (7 BE)
+   Vergleichen Sie $A(t)$ für kleine $t$ mit einer geeigneten Exponentialfunktion und nehmen Sie Stellung. (4 BE)
 
 <div style="page-break-after: always;"></div>
 
-### **C1 (Lineare Algebra - "Das Solardach", 25 BE)**
+### **C1 (Lineare Algebra - "Das Solardach", 15 BE)**
 
 ![Abb. 3: Ein modernes Haus mit einem schrägen Pultdach. Auf dem Dach ist ein rechteckiges Modul montiert. Die Sonne scheint in einem bestimmten Vektor darauf.](image3.de.png)
 
@@ -88,10 +97,7 @@ In einem Modell (1 LE = 1 m) liegen die Eckpunkte einer Dachfläche in $A(10|0|3
 2. **Schattenwurf:** Ein 10 m hoher Mast steht im Punkt $M(13|5|0)$. Die Sonnenstrahlen fallen in Richtung $\vec{v} = \begin{pmatrix} -1 \\ 0 \\ -2 \end{pmatrix}$ ein.
    Prüfen Sie rechnerisch, ob der Schatten der Mastspitze auf die Dachfläche fällt. (7 BE)
 3. **Effizienz:** Sonnenlicht liefert die maximale Energie, wenn es senkrecht auf die Fläche trifft.
-   Bestimmen Sie einen Vektor für den Sonnenstand, bei dem die Strahlen exakt senkrecht auf das Dach fallen.
-   Berechnen Sie den Winkel, unter dem die Sonnenstrahlen aus Teil 2 ($\vec{v}$) auf das Dach treffen. (7 BE)
-4. **Montage:** Auf dem Dach soll ein 2 m hoher Blitzableiter senkrecht zur Dachfläche im Punkt $D$ montiert werden.
-   Bestimmen Sie die Koordinaten der Spitze des Blitzableiters. (5 BE)
+   Bestimmen Sie einen Vektor für den Sonnenstand, bei dem die Strahlen exakt senkrecht auf das Dach fallen. (2 BE)
 
 ---
 
@@ -101,7 +107,7 @@ In einem Modell (1 LE = 1 m) liegen die Eckpunkte einer Dachfläche in $A(10|0|3
 
 ## LK – Prüfungsteil 1 (hilfsmittelfrei)
 
-### **A1 (Analysis, Niveau 2) – 5 BE**
+### **A1 (Analysis, Niveau 1) – 5 BE**
 
 Gegeben ist die Funktion $f(x) = \frac{e^x}{x}$ für $x > 0$.
 Bestimmen Sie das Verhalten von $f$ für $x \to 0$ und $x \to \infty$.
@@ -117,13 +123,30 @@ Berechnen Sie das Integral $\int_0^{\sqrt{\pi}} x \cdot \sin(x^2) \, dx$.
 Ein Test für eine binomialverteilte Zufallsgröße $X$ ($n=100$) hat den Annahmebereich $A = \{0, \dots, k\}$. Die Nullhypothese ist $H_0: p \le 0,1$.
 Beschreiben Sie, wie sich die Fehlerwahrscheinlichkeit 1. Art verändert, wenn man den kritischen Wert $k$ vergrößert. Begründen Sie Ihre Aussage ohne Rechnung.
 
+### **A4 (Lineare Algebra, Niveau 1) – 5 BE**
+
+Gegeben sind die Gerade $g: \vec{x} = \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} + r \cdot \begin{pmatrix} 2 \\ 0 \\ -1 \end{pmatrix}$ und die Ebene $E: x_1 + 2x_2 + 2x_3 = 10$.
+Untersuchen Sie die gegenseitige Lage von $g$ und $E$. Berechnen Sie gegebenenfalls den Schnittpunkt.
+
+### **A5 (Analysis, Niveau 1) – 5 BE**
+
+Gegeben ist $f(x) = e^{2x - 1}$.
+Bestimmen Sie die Ableitung $f'(x)$ und die Stammfunktion $F(x)$.
+Berechnen Sie den Wert von $f'(0,5)$.
+
+### **A6 (Stochastik, Niveau 1) – 5 BE**
+
+In einer Gruppe sind 60% weiblich ($W$). 20% der Personen sind weiblich und rauchen ($R$).
+Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällig ausgewählte Person raucht, unter der Bedingung, dass sie weiblich ist: $P_W(R)$.
+Interpretieren Sie das Ergebnis im Kontext.
+
 ---
 
 <div style="page-break-after: always;"></div>
 
 ## LK – Prüfungsteil 2 (mit Hilfsmitteln)
 
-### **B1 (Analysis – "Die Hängebrücke", 35 BE)**
+### **B1 (Analysis – "Die Hängebrücke", 30 BE)**
 
 ![Abb. 4: Eine komplexe Hängebrücke zwischen zwei Pylonen. Das Haupttragseil hängt durch, daran hängen vertikal weitere Seile, die die Fahrbahn halten. Die Fahrbahn ist leicht nach oben gewölbt.](image4.png)
 
@@ -145,18 +168,18 @@ $$
 2. **Vertikal-Seile:** Zwischen dem Tragseil $k(x)$ und der Fahrbahn $f(x)$ verlaufen vertikale Haltestreben.
    Bestimmen Sie die Länge der kürzesten und der längsten Haltestrebe im Bereich $-100 \le x \le 100$. (8 BE)
 3. **Winkel:** Unter welchem Winkel trifft das Tragseil auf die Pylone? (4 BE)
-4. **Material:** Berechnen Sie die Bogenlänge des Tragseils zwischen den Pylonen.
-   *(Hinweis: Ist die Formel $\int \sqrt{1+(f')^2}$ bekannt? Falls nicht, nutzen Sie eine Näherung durch 10 gleich lange Streckenzüge oder die CAS-Funktion `arcLen`)*. (6 BE)
-5. **Fläche/Anstrich:** Die Fläche zwischen Tragseil und Fahrbahn soll seitlich mit einem Werbenetz verhängt werden.
+   *(Hinweis: Ist die Formel $\int \sqrt{1+(f')^2}$ bekannt? Falls nicht, nutzen Sie eine Näherung durch 10 gleich lange Streckenzüge oder die CAS-Funktion `arcLen`)*. (5 BE)
+4. **Fläche/Anstrich:** Die Fläche zwischen Tragseil und Fahrbahn soll seitlich mit einem Werbenetz verhängt werden.
    Berechnen Sie den Flächeninhalt. (6 BE)
-6. **Variation:** Bei Belastung senkt sich das Seil. Die neue Funktion ist $k_a(x) = \frac{1}{a} (e^{ax} + e^{-ax})$.
+5. **Variation:** Bei Belastung senkt sich das Seil. Die neue Funktion ist $k_a(x) = \frac{1}{a} (e^{ax} + e^{-ax})$.
    Zeigen Sie allgemein: Je größer $a$, desto steiler der Anstieg bei $x=100$. (6 BE)
 
 <div style="page-break-after: always;"></div>
 
-### **C1 (Matrizen/Stochastik – "Viren-Screening & Populationsdynamik", 35 BE)**
+### **C1 (Lineare Algebra – "Populationsdynamik", 20 BE)**
 
-**Teil A: Prozess (Lineare Algebra)**
+![Abb. 5: Übergangsdiagrammvorstufe und ein Virus.](image5.png)
+
 Eine Virenpopulation mutiert zwischen den Zuständen A, B und C.
 Die Übergangsmatrix pro Woche lautet:
 
@@ -164,22 +187,30 @@ $$
 M = \begin{pmatrix} 0,6 & 0,1 & 0 \\ 0,3 & 0,7 & 0,2 \\ 0,1 & 0,2 & 0,8 \end{pmatrix}
 $$
 
-1. Interpretieren Sie die Spaltensummen von $M$. Handelt es sich um eine geschlossene Population? (3 BE)
-2. Zu Beginn sind 10.000 Viren vom Typ A vorhanden (Rest 0).
+1. **Systemverständnis:** Interpretieren Sie die Spaltensummen von $M$. Handelt es sich um eine geschlossene Population?
+   Zeichnen Sie ein Übergangsdiagramm für die Zustände A, B und C. (4 BE)
+2. **Prognose:** Zu Beginn sind 10.000 Viren vom Typ A vorhanden (Rest 0).
    Bestimmen Sie die Verteilung nach 10 Wochen.
    Untersuchen Sie, ob sich langfristig ein stabiles Gleichgewicht einstellt. (8 BE)
-3. **Inverses Problem:** In einer Probe fand man die Verteilung $\vec{x}_{t+1} = (500, 800, 1000)^T$.
-   Bestimmen Sie die Verteilung in der Woche davor. (5 BE)
+3. **Rekonstruktion:** In einer Probe fand man die Verteilung $\vec{x}_{t+1} = (500, 800, 1000)^T$.
+   Bestimmen Sie die Verteilung in der Woche davor.
+   Erläutern Sie, warum nicht jede beliebige Verteilung eine "Vorgänger"-Verteilung haben muss. (8 BE)
 
-**Teil B: Testverfahren (Stochastik)**
+<div style="page-break-after: always;"></div>
+
+### **D1 (Stochastik – "Viren-Screening & Testgüte", 20 BE)**
+
+![Abb. 6: Ein Baumdiagramm, das den Testablauf visualisiert. Erste Stufe: Infiziert (C) vs. Nicht-Infiziert. Zweite Stufe: Test Positiv (+) vs. Test Negativ (-).](image6.de.png)
+
 Ein Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).
 Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).
 
-1. Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (5 BE)
+1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (5 BE)
 2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.
    Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.
    Interpretieren Sie das (vermutlich schockierend niedrige) Ergebnis für die Teststrategie. (6 BE)
-3. **Testoptimierung:** Wie oft muss der Test bei einer Person wiederholt werden (unabhängig), damit bei lauter positiven Ergebnissen die Wahrscheinlichkeit für eine tatsächliche Infektion auf über 90% steigt? (8 BE)
+3. **Testoptimierung:** Wie oft muss der Test bei einer Person wiederholt werden (unabhängig), damit bei lauter positiven Ergebnissen die Wahrscheinlichkeit für eine tatsächliche Infektion auf über 90% steigt?
+   Diskutieren Sie die Annahme der "Unabhängigkeit" bei wiederholten Tests an derselben Person. (9 BE)
 
 ---
 
@@ -230,8 +261,10 @@ Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,00
     <tr><td>1</td><td>A2</td><td>Ana</td><td>2</td><td>AB2</td><td>1</td><td>1</td><td>1</td><td>2</td><td>0</td><td>„Sichtlinie“: Tangente vs.<br>Sekante entscheidet.</td></tr>
     <tr><td>1</td><td>A3</td><td>Stoch</td><td>1</td><td>AB1-2</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>Ziehen mit Zurücklegen<br>(Bernoulli-ähnlich).</td></tr>
     <tr><td>1</td><td>A4</td><td>LA/AG</td><td>1</td><td>AB1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Spurpunkte (Rezept).</td></tr>
+    <tr><td>1</td><td>A5</td><td>Stoch</td><td>1</td><td>AB1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Pfadregeln (Standard).</td></tr>
     <tr><td>2</td><td>B1</td><td>Ana (Log)</td><td>—</td><td>AB2-3</td><td>1</td><td>2</td><td>2</td><td>2</td><td>2</td><td>↑ Logistisches Wachstum;<br>Kritik am Modell (Transfer).</td></tr>
-    <tr><td>2</td><td>C1</td><td>LA/AG</td><td>—</td><td>AB2</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>↑ Schattenwurf-Prüfung;<br>↓ Koordinaten gegeben.</td></tr>
+    <tr><td>2</td><td>C1</td><td>LA/AG</td><td>—</td><td>AB2</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>↑ Schattenwurf-Prüfung.</td></tr>
+    <tr><td>2</td><td>D1</td><td>Stoch</td><td>—</td><td>AB2</td><td>1</td><td>1</td><td>1</td><td>2</td><td>2</td><td>Hypothesentest u. Fehlerart<br>(Kontextdeutung).</td></tr>
   </tbody>
 </table>
 
@@ -256,10 +289,16 @@ Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,00
     </tr>
   </thead>
   <tbody>
-    <tr><td>1</td><td>A1</td><td>Ana</td><td>2</td><td>AB2</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>Grenzwert-betrachtung<br>(L'Hospital oder Standard).</td></tr>
+    <tr><td>1</td><td>A1</td><td>Ana</td><td>1</td><td>AB1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Grenzwert-betrachtung<br>(Standardverfahren).</td></tr>
     <tr><td>1</td><td>A2</td><td>Ana</td><td>2</td><td>AB2</td><td>2</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Substitution erforderlich.</td></tr>
     <tr><td>1</td><td>A3</td><td>Stoch</td><td>2</td><td>AB2</td><td>1</td><td>0</td><td>2</td><td>1</td><td>0</td><td>Logiktest<br>(Fehler 1. Art).</td></tr>
+    <tr><td>1</td><td>A4</td><td>LA/AG</td><td>1</td><td>AB1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Lagebeziehung Gerade/Ebene<br>(Standardverfahren).</td></tr>
+    <tr><td>1</td><td>A5</td><td>Ana</td><td>1</td><td>AB1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Kettenregel + Stammfunktion<br>(Basiskalkül).</td></tr>
+    <tr><td>1</td><td>A6</td><td>Stoch</td><td>1</td><td>AB1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>Bed. Wkt. + Interpretation<br>(Kontextdeutung).</td></tr>
     <tr><td>2</td><td>B1</td><td>Ana (Kette)</td><td>—</td><td>AB3</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>↑ Bogenlänge (Integral);<br>↓ Symmetrie nutzen.</td></tr>
-    <tr><td>2</td><td>C1</td><td>Mat/Stoch</td><td>—</td><td>AB3</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>Kombination Matrix + Bayes<br>(Falsch-Positiv-Rate).</td></tr>
+    <tr><td>2</td><td>C1</td><td>LA/AG</td><td>—</td><td>AB3</td><td>2</td><td>1</td><td>1</td><td>2</td><td>2</td><td>Populationsmatrix (stabil?);<br>Rückrechnung LGS.</td></tr>
+    <tr><td>2</td><td>D1</td><td>Stoch</td><td>—</td><td>AB3</td><td>2</td><td>1</td><td>2</td><td>2</td><td>2</td><td>Bayes + Mehrfachtest;<br>Kritik Unabhängigkeit.</td></tr>
   </tbody>
 </table>
+
+---

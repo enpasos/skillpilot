@@ -184,6 +184,47 @@ Koordinatensystem zeichnen und das Dreieck $S_1 S_2 S_3$ markieren.
 
 ---
 
+### A5 (Stochastik) – 5 BE
+
+**Gegeben:** Glücksrad mit $P(R)=0,5$, $P(B)=0,3$, $P(G)=0,2$. $n=2$ Drehungen.
+
+**1. Zweimal gleiche Farbe (2 BE)**
+Mögliche Pfade: $RR, BB, GG$.
+Summenregel:
+
+$$
+P(E) = P(R) \cdot P(R) + P(B) \cdot P(B) + P(G) \cdot P(G)
+$$
+
+$$
+P(E) = 0,5^2 + 0,3^2 + 0,2^2 = 0,25 + 0,09 + 0,04 = 0,38
+$$
+
+**Ergebnis:** $38\%$.
+
+* **1 BE:** Ansatz (Summe der Quadrate).
+* **1 BE:** Ergebnis.
+
+**2. Mindestens einmal Gelb (3 BE)**
+Arbeit mit dem Gegenereignis: "Keinmal Gelb".
+Wahrscheinlichkeit für "Nicht Gelb" pro Drehung: $1 - 0,2 = 0,8$.
+
+$$
+P(\text{mind. } 1 \times G) = 1 - P(\text{kein } G) = 1 - 0,8^2
+$$
+
+$$
+= 1 - 0,64 = 0,36
+$$
+
+**Ergebnis:** $36\%$.
+
+* **1 BE:** Nutzung des Gegenereignisses (oder vollständige Summation).
+* **1 BE:** Rechnung.
+* **1 BE:** Ergebnis.
+
+---
+
 ## GK – Prüfungsteil 2 (mit Hilfsmitteln)
 
 ### B1 (Analysis – "Das Algenwachstum") – 30 BE
@@ -422,6 +463,99 @@ Da der Ablehnungsbereich $\bar{A}$ kleiner wird (die Grenze verschiebt sich nach
 
 * **5 BE:** Korrekte logische Herleitung.
 
+### A4 (Lineare Algebra) – 5 BE
+
+Gerade $g: \vec{x} = \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} + r \cdot \begin{pmatrix} 2 \\ 0 \\ -1 \end{pmatrix}$, Ebene $E: x_1 + 2x_2 + 2x_3 = 10$.
+
+**Untersuchung auf Schnittpunkt (Einsetzverfahren):**
+Die Koordinaten der Geraden lauten:
+$x_1 = 1 + 2r$
+$x_2 = 2$
+$x_3 = 3 - r$
+
+Einsetzen in die Ebenengleichung:
+
+$$
+1 \cdot (1 + 2r) + 2 \cdot (2) + 2 \cdot (3 - r) = 10
+$$
+
+$$
+1 + 2r + 4 + 6 - 2r = 10
+$$
+
+Zusammenfassen:
+
+$$
+11 = 10 \quad (\text{Widerspruch})
+$$
+
+**Schlussfolgerung:**
+Das Gleichungssystem hat keine Lösung. Die Gerade verläuft **echt parallel** zur Ebene.
+
+* **2 BE:** Einsetzen der Geradenkoordinaten in $E$.
+* **2 BE:** Korrekte Auflösung und Feststellung des Widerspruchs.
+* **1 BE:** Schlussfolgerung "echt parallel".
+
+### A5 (Analysis) – 5 BE
+
+Funktion: $f(x) = e^{2x - 1}$.
+
+**1. Ableitung und Stammfunktion (3 BE)**
+Ableitung mittels Kettenregel (innere Ableitung von $2x-1$ ist $2$):
+
+$$
+f'(x) = 2 \cdot e^{2x - 1}
+$$
+
+Stammfunktion mittels linearer Substitution (Umkehrung der Kettenregel, Faktor $1/2$):
+
+$$
+F(x) = \frac{1}{2} e^{2x - 1} + C
+$$
+
+**2. Wert berechnen (2 BE)**
+
+$$
+f'(0,5) = 2 \cdot e^{2 \cdot 0,5 - 1} = 2 \cdot e^{1 - 1} = 2 \cdot e^0
+$$
+
+Da $e^0 = 1$:
+
+$$
+f'(0,5) = 2
+$$
+
+* **1 BE:** Ableitung.
+* **1 BE:** Stammfunktion.
+* **1 BE:** Einsetzen.
+* **1 BE:** Ergebnis $2$ (ohne Taschenrechner gelöst).
+
+### A6 (Stochastik) – 5 BE
+
+Gegeben:
+$W$: Person ist weiblich. $P(W) = 0,6$.
+$R$: Person raucht.
+$W \cap R$: Person ist weiblich UND raucht. $P(W \cap R) = 0,2$ (20% der Gesamtgruppe).
+
+**Gesucht:** Bedingte Wahrscheinlichkeit $P_W(R)$ (Raucher unter der Bedingung Weiblich).
+
+**Rechnung:**
+
+$$
+P_W(R) = P(R | W) = \frac{P(W \cap R)}{P(W)}
+$$
+
+$$
+P_W(R) = \frac{0,2}{0,6} = \frac{2}{6} = \frac{1}{3}
+$$
+
+**Interpretation:**
+Die Wahrscheinlichkeit beträgt ca. $33,3\%$. Das bedeutet, dass innerhalb der Gruppe der Frauen jede dritte Person raucht.
+
+* **2 BE:** Formel für bedingte Wahrscheinlichkeit / Satz von Bayes.
+* **2 BE:** Rechnung und Ergebnis ($1/3$ oder $33,\bar{3}\%$).
+* **1 BE:** Sachbezogene Interpretation.
+
 ---
 
 ## LK – Prüfungsteil 2 (mit Hilfsmitteln)
@@ -526,7 +660,7 @@ Betrachte das Verhalten für wachsendes $a$:
 
 ---
 
-### C1 (Matrizen/Stochastik) – 35 BE
+### C1 (Matrizen – "Populationsdynamik") – 20 BE
 
 Matrix $M$ (Übergang A, B, C):
 
@@ -575,7 +709,9 @@ $$
 * **2 BE:** Ansatz mit Inverser.
 * **3 BE:** Rechnung und Erkennen des Widerspruchs (negative Viren).
 
-**Teil B: Testverfahren (Stochastik)**
+---
+
+### D1 (Stochastik – "Viren-Screening") – 20 BE
 
 Gegeben: $P(C) = 0,5\%$. Sensitivität 99%. Falsch-Positiv 2%.
 
@@ -618,9 +754,9 @@ Durch Probieren oder GTR-Tabelle:
 * $n=1: \approx 0,199$
 
 * $n=2:$
-  
+
 $$
-    \frac{0,005 \cdot 0,99^2}{0,005 \cdot 0,99^2 + 0,995 \cdot 0,02^2} \approx \frac{0,0049}{0,0049+0,0004} \approx 0,92
+\frac{0,005 \cdot 0,99^2}{0,005 \cdot 0,99^2 + 0,995 \cdot 0,02^2} \approx \frac{0,0049}{0,0049+0,0004} \approx 0,92
 $$
 
 **Antwort:** Bei **zwei** positiven Testergebnissen in Folge steigt die Wahrscheinlichkeit auf über 92%.

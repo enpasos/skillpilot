@@ -306,4 +306,25 @@ Wenn ihr Aufgaben **abiturähnlicher** machen wollt (ohne sie länger zu machen)
 
 ---
 
+
+---
+
+## 10. Erweiterung für „Realitätsnah & Komplex“ (Scenario-Focus)
+
+Für Klausurvarianten, die explizit **„Realitätsnah & Komplex“** simulieren sollen (z. B. Klausurbeispiel 1), gelten zusätzliche Design-Prinzipien:
+
+### 10.1 Komplexe Funktionsklassen
+- **Nicht-Standard-Funktionen**: Statt einfacher Polynome oder $e^{kx}$ Nutzung von **Summen/Produkten** ($f(x) \cdot g(x)$ oder $e^{x} + e^{-x}$).
+- **Konsequenz**: Ableitungen erfordern Produkt-/Kettenregel; Integrale erfordern Substitution oder Näherungsverfahren.
+- **Zweck**: Testet „strukturierte Zerlegung“ komplexer Terme statt bloßem Auswendiglernen.
+
+### 10.2 Explizite Bildbeschreibungen (Accessibility & Kontext)
+- Jede Aufgabe mit **Kontextbild** benötigt eine **explizite Bildbeschreibung** im Markdown (als `![Alt-Text](...)` oder Textblock).
+- **Zweck**: Stellt sicher, dass alle relevanten visuellen Informationen (Symmetrie, Schnittpunkte, qualitative Verläufe) auch textuell verfügbar sind (Simuliert „gründliches Lesen“).
+
+### 10.3 Strukturierung LK Teil 2
+- **Aufteilung statt Mischung**: Im LK Teil 2 kann eine große **Mischaufgabe** (z. B. Matrizen + Stochastik) oft besser in **zwei getrennte, tiefere Aufgaben** (z. B. C1 LinAlg + D1 Stochastik) zerlegt werden.
+- **Vorteil**: Erlaubt pro Domäne mehr Tiefe (AB3-Prozesskompetenz) und klarere Trennung der Bewertungskriterien.
+
 _Ende des Leitfadens._
+

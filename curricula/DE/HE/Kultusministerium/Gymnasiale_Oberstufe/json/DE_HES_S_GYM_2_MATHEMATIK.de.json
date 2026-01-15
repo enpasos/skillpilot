@@ -10245,7 +10245,10 @@
       "contains": [
         "2ef712f1-84fe-5395-b232-af7017163449",
         "eebf8986-8745-51cd-8c3d-b20ab23b7577",
-        "770ad9dc-abbe-5504-9dad-10a4bd96b6bb"
+        "770ad9dc-abbe-5504-9dad-10a4bd96b6bb",
+        "d1428383-7c50-4819-bf39-49774301551a",
+        "c5620909-0d2e-4375-a86d-91340156930b",
+        "f8915421-26c7-4402-ba45-31298467185c"
       ],
       "requires": [],
       "dimensionTags": {
@@ -10255,7 +10258,7 @@
     },
     {
       "id": "2ef712f1-84fe-5395-b232-af7017163449",
-      "title": "A1 (Analysis, Niveau 2, 5 BE)",
+      "title": "A1 (Analysis, Niveau 1, 5 BE)",
       "titleEn": "A1 (Analysis, Level 2, 5 BE)",
       "description": "Untersuchung von $f(x) = \\frac{e^x}{x}$ (Grenzwerte, Extrema).",
       "descriptionEn": "Investigation of $f(x) = \\frac{e^x}{x}$ (limits, extrema).",
@@ -10380,6 +10383,141 @@
       }
     },
     {
+      "id": "d1428383-7c50-4819-bf39-49774301551a",
+      "title": "A4 (Lineare Algebra, Niveau 1, 5 BE)",
+      "titleEn": "A4 (Linear Algebra, Level 1, 5 BE)",
+      "description": "Untersuchung von Geraden und Ebenen (Parallelität/Schnitt).",
+      "descriptionEn": "Investigation of lines and planes (parallelism/intersection).",
+      "weight": 1.0,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB1"
+      },
+      "examData": {
+        "taskContent": "Gegeben sind die Gerade $g: \\vec{x} = \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix} + r \\cdot \\begin{pmatrix} 2 \\\\ 0 \\\\ -1 \\end{pmatrix}$ und die Ebene $E: x_1 + 2x_2 + 2x_3 = 10$.\nUntersuchen Sie die gegenseitige Lage von $g$ und $E$. Berechnen Sie gegebenenfalls den Schnittpunkt.",
+        "solutionContent": "**Lageuntersuchung:**\nRichtungsvektor $\\vec{u} = (2, 0, -1)^T$, Normalenvektor $\\vec{n} = (1, 2, 2)^T$.\nSkalarprodukt: $\\vec{u} \\cdot \\vec{n} = 2\\cdot1 + 0\\cdot2 + (-1)\\cdot2 = 0$. $\\Rightarrow$ $g$ verläuft parallel zu $E$ oder liegt in $E$.\n**Punktprobe:**\nStützpunkt $P(1|2|3)$ in $E$ einsetzen: $1 + 2(2) + 2(3) = 1 + 4 + 6 = 11 \\neq 10$.\n**Ergebnis:** Die Gerade $g$ ist echt parallel zur Ebene $E$.",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 2,
+              "description": "Skalarprodukt/Parallelität geprüft"
+            },
+            {
+              "id": "s2",
+              "points": 2,
+              "description": "Punktprobe/Abstand durchgeführt"
+            },
+            {
+              "id": "s3",
+              "points": 1,
+              "description": "Korrekte Schlussfolgerung"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c5620909-0d2e-4375-a86d-91340156930b",
+      "title": "A5 (Analysis, Niveau 1, 5 BE)",
+      "titleEn": "A5 (Analysis, Level 1, 5 BE)",
+      "description": "Verketten von Funktionen (e-Funktion und Polynom).",
+      "descriptionEn": "Composition of functions (e-function and polynomial).",
+      "weight": 1.0,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB1"
+      },
+      "examData": {
+        "taskContent": "Gegeben ist $f(x) = e^{2x - 1}$.\nBestimmen Sie die Ableitung $f'(x)$ und die Stammfunktion $F(x)$.\nBerechnen Sie den Wert von $f'(0,5)$.",
+        "solutionContent": "**Ableitung:**\nKettenregel: $f'(x) = e^{2x - 1} \\cdot 2 = 2e^{2x - 1}$.\n**Stammfunktion:**\nLineare Substitution: $F(x) = \\frac{1}{2} e^{2x - 1}$.\n**Wert:**\n$f'(0,5) = 2e^{2(0,5) - 1} = 2e^0 = 2$.",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 2,
+              "description": "Ableitung korrekt"
+            },
+            {
+              "id": "s2",
+              "points": 2,
+              "description": "Stammfunktion korrekt"
+            },
+            {
+              "id": "s3",
+              "points": 1,
+              "description": "Wert korrekt berechnet"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "f8915421-26c7-4402-ba45-31298467185c",
+      "title": "A6 (Stochastik, Niveau 1, 5 BE)",
+      "titleEn": "A6 (Stochastics, Level 1, 5 BE)",
+      "description": "Bedingte Wahrscheinlichkeit (Vierfeldertafel).",
+      "descriptionEn": "Conditional probability (four-fold table).",
+      "weight": 1.0,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "4ab18312-0b43-461d-9154-3fba277baae7"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB1"
+      },
+      "examData": {
+        "taskContent": "In einer Gruppe sind 60% weiblich ($W$). 20% der Personen sind weiblich und rauchen ($R$).\nBestimmen Sie die Wahrscheinlichkeit, dass eine zufällig ausgewählte Person raucht, unter der Bedingung, dass sie weiblich ist: $P_W(R)$.\nInterpretieren Sie das Ergebnis im Kontext.",
+        "solutionContent": "Gegeben: $P(W) = 0,6$ und $P(W \\cap R) = 0,2$.\nGesucht: $P(R|W) = \\frac{P(W \\cap R)}{P(W)}$.\n\n$$P_W(R) = \\frac{0,2}{0,6} = \\frac{1}{3} \\approx 33,3\\%$$\n\n**Interpretation:** Ein Drittel der Frauen in der Gruppe raucht.",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 1,
+              "description": "Formel für bedingte Wahrscheinlichkeit"
+            },
+            {
+              "id": "s2",
+              "points": 2,
+              "description": "Einsetzen und Berechnung"
+            },
+            {
+              "id": "s3",
+              "points": 2,
+              "description": "Interpretation korrekt"
+            }
+          ]
+        }
+      }
+    },
+    {
       "id": "3cdb44da-e46e-504c-ad61-e04b282359d2",
       "title": "Teil 2: Mit Hilfsmitteln (LK)",
       "titleEn": "Part 2: With Aids (LK)",
@@ -10391,7 +10529,8 @@
       ],
       "contains": [
         "bc60e300-96be-599a-89b6-8fcca380803d",
-        "971b981d-d8e0-5c4c-9b93-e401b19f32fc"
+        "971b981d-d8e0-5c4c-9b93-e401b19f32fc",
+        "d2d2d2d2-d2d2-4d2d-8d2d-d2d2d2d2d2d2"
       ],
       "requires": [],
       "dimensionTags": {
@@ -10401,8 +10540,8 @@
     },
     {
       "id": "bc60e300-96be-599a-89b6-8fcca380803d",
-      "title": "B1 (Analysis, Niveau 3 – \"Die Hängebrücke\", 35 BE)",
-      "titleEn": "B1 (Analysis, Level 3 – \"Suspension Bridge\", 35 BE)",
+      "title": "B1 (Analysis – \"Die Hängebrücke\", 30 BE)",
+      "titleEn": "B1 (Analysis – \"Suspension Bridge\", 30 BE)",
       "description": "Kettenlinie $k(x) = 20(e^{0,02x}+e^{-0,02x})$ und Fahrbahn $f(x)$.",
       "descriptionEn": "Catenary $k(x) = 20(e^{0,02x}+e^{-0,02x})$ and roadway $f(x)$.",
       "weight": 1.5,
@@ -10420,11 +10559,11 @@
         "demandLevel": "AB3"
       },
       "examData": {
-        "taskContent": "![Hängebrücke](/assets/abi/2026_1/image4.png)\n\nHaupttragseil (Kettenlinie): $k(x) = 20 \\cdot (e^{0,02x} + e^{-0,02x})$.\nFahrbahn (Parabel): $f(x) = -\\frac{1}{200}x^2 + 5$.\n($x$ in m, Bereich $-100 \\le x \\le 100$).\n\n1. **Geometrie:** Höhe der Pylone ($x=\\pm 100$) und tiefster Punkt des Seils. (5 BE)\n2. **Vertikal-Seile:** Bestimmen Sie die Länge der kürzesten und längsten Haltestrebe. (8 BE)\n3. **Winkel:** Unter welchem Winkel trifft das Tragseil auf die Pylone? (4 BE)\n4. **Material:** Berechnen Sie die Bogenlänge des Tragseils. (6 BE)\n5. **Fläche:** Berechnen Sie den Flächeninhalt zwischen Tragseil und Fahrbahn (Werbenetz). (6 BE)\n6. **Variation:** Zeigen Sie für $k_a(x) = \\frac{1}{a}(e^{ax}+e^{-ax})$: Je größer $a$, desto steiler der Anstieg am Rand. (6 BE)",
-        "solutionContent": "**1. Geometrie (5 BE)**\n$k(100) \\approx 150,5$m. $k(0) = 40$m.\n\n**2. Vertikal-Seile (8 BE)**\n$L(x) = k(x) - f(x)$. Min bei $x=0$: $35$m. Max bei $x=100$: $195,5$m.\n\n**3. Winkel (4 BE)**\n$k'(100) \\approx 2,90 \\Rightarrow \\alpha \\approx 71,0^\\circ$.\n\n**4. Material (6 BE)**\n$\\int_{-100}^{100} \\sqrt{1+k'(x)^2} dx \\approx 225,5$m.\n\n**5. Fläche (6 BE)**\n$\\int_{-100}^{100} (k(x)-f(x)) dx \\approx 19.550 \\, m^2$.\n\n**6. Variation (6 BE)**\n$k_a'(100) = e^{100a} - e^{-100a}$. Streng monoton wachsend für $a>0$.",
+        "taskContent": "![Abb. 4: Eine komplexe Hängebrücke zwischen zwei Pylonen. Das Haupttragseil hängt durch, daran hängen vertikal weitere Seile, die die Fahrbahn halten. Die Fahrbahn ist leicht nach oben gewölbt.](/assets/abi/2026_1/image4.png)\n\nDas Haupttragseil einer Brücke wird durch die Funktion der Kettenlinie approximiert:\n\n$$\nk(x) = 20 \\cdot (e^{0,02x} + e^{-0,02x})\n$$\n\nDie Fahrbahn verläuft (wegen der Wölbung) gemäß der Parabel:\n\n$$\nf(x) = -\\frac{1}{200}x^2 + 5\n$$\n\n(Alle Angaben in Metern. Symmetrie zur y-Achse wird angenommen, Pylone bei $x = \\pm 100$).\n\n1. **Geometrie:** Bestimmen Sie die Höhe der Pylone (Aufhängepunkte des Seils bei $x=\\pm 100$) und den tiefsten Punkt des Seils. (5 BE)\n2. **Vertikal-Seile:** Zwischen dem Tragseil $k(x)$ und der Fahrbahn $f(x)$ verlaufen vertikale Haltestreben.\n   Bestimmen Sie die Länge der kürzesten und der längsten Haltestrebe im Bereich $-100 \\le x \\le 100$. (8 BE)\n3. **Winkel:** Unter welchem Winkel trifft das Tragseil auf die Pylone? (4 BE)\n   *(Hinweis: Ist die Formel $\\int \\sqrt{1+(f')^2}$ bekannt? Falls nicht, nutzen Sie eine Näherung durch 10 gleich lange Streckenzüge oder die CAS-Funktion `arcLen`)*. (5 BE)\n4. **Fläche/Anstrich:** Die Fläche zwischen Tragseil und Fahrbahn soll seitlich mit einem Werbenetz verhängt werden.\n   Berechnen Sie den Flächeninhalt. (6 BE)\n5. **Variation:** Bei Belastung senkt sich das Seil. Die neue Funktion ist $k_a(x) = \\frac{1}{a} (e^{ax} + e^{-ax})$.\n   Zeigen Sie allgemein: Je größer $a$, desto steiler der Anstieg bei $x=100$. (6 BE)",
+        "solutionContent": "**1. Geometrie (5 BE)**\n$k(100) \\approx 150,5$m. $k(0) = 40$m.\n\n**2. Vertikal-Seile (8 BE)**\n$L(x) = k(x) - f(x)$. Min bei $x=0$: $35$m. Max bei $x=100$: $195,5$m.\n\n**3. Winkel (4 BE)**\n$k'(100) \\approx 2,90 \\Rightarrow \\alpha \\approx 71,0^\\circ$.\n\n**4. Bogenlänge (5 BE)**\n$\\int_{-100}^{100} \\sqrt{1+k'(x)^2} dx \\approx 225,5$m.\n\n**5. Fläche (6 BE)**\n$\\int_{-100}^{100} (k(x)-f(x)) dx \\approx 19.550 \\, m^2$.\n\n**6. Variation (6 BE)**\n$k_a'(100) = e^{100a} - e^{-100a}$. Streng monoton wachsend für $a>0$.",
         "scoring": {
-          "maxPoints": 35,
-          "passingPoints": 18,
+          "maxPoints": 30,
+          "passingPoints": 15,
           "steps": [
             {
               "id": "s1",
@@ -10443,7 +10582,7 @@
             },
             {
               "id": "s4",
-              "points": 6,
+              "points": 5,
               "description": "Bogenlänge"
             },
             {
@@ -10462,10 +10601,10 @@
     },
     {
       "id": "971b981d-d8e0-5c4c-9b93-e401b19f32fc",
-      "title": "C1 (Matrizen/Stochastik, Niveau 3 – \"Viren-Screening\", 35 BE)",
-      "titleEn": "C1 (Matrices/Stochastics, Level 3 – \"Virus Screening\", 35 BE)",
-      "description": "Virenpopulation (Übergangsmatrix) und Schnelltest (Bedingte Wahrscheinlichkeit).",
-      "descriptionEn": "Virus population (transition matrix) and rapid test (conditional probability).",
+      "title": "C1 (Lineare Algebra – \"Populationsdynamik\", 20 BE)",
+      "titleEn": "C1 (Linear Algebra – \"Population Dynamics\", 20 BE)",
+      "description": "Virenpopulation (Übergangsmatrix) und Systemverständnis.",
+      "descriptionEn": "Virus population (transition matrix) and system understanding.",
       "weight": 1.5,
       "tags": [
         "LK"
@@ -10480,16 +10619,16 @@
         "demandLevel": "AB3"
       },
       "examData": {
-        "taskContent": "Matrix $M = \\begin{pmatrix} 0,6 & 0,1 & 0 \\\\ 0,3 & 0,7 & 0,2 \\\\ 0,1 & 0,2 & 0,8 \\end{pmatrix}$.\n\n**Teil A: Prozess (Lineare Algebra)**\n1. Interpretieren Sie die Spaltensummen. (3 BE)\n2. Start 10.000 (Typ A). Verteilung nach 10 Wochen? Stabiles Gleichgewicht? (8 BE)\n3. Inverses Problem: $\\vec{x}_{t+1} = (500, 800, 1000)^T$. Bestimmen Sie $\\vec{x}_t$. (5 BE)\n\n**Teil B: Testverfahren (Stochastik)**\n$P(C)=0,5\\%$. Sensitivität 99%, Falsch-Positiv 2%.\n1. Bestimmen Sie $P(T_{pos})$. (5 BE)\n2. Berechnen Sie $P(C | T_{pos})$. Interpretieren Sie das Ergebnis. (6 BE)\n3. Wie oft muss getestet werden, damit $P(C|Pos) > 90\\%$? (8 BE)",
-        "solutionContent": "**Teil A: Prozess**\n1. Spaltensummen = 1. Geschlossene Population.\n2. $\\vec{v}_{10} \\approx (1440, 3940, 4620)^T$. Fixvektor $\\approx (1053, 4210, 4737)^T$.\n3. $\\vec{x}_t = M^{-1}\\vec{x}_{t+1} \\approx (1389, -444, 1355)^T$. Negativ $\\Rightarrow$ unmöglich.\n\n**Teil B: Test**\n1. Satz totaler Wahrscheinlichkeit: $P(Pos) = 0,005\\cdot0,99 + 0,995\\cdot0,02 \\approx 2,5\\%$.\n2. Bayes: $P(C|Pos) = \\frac{0,005\\cdot0,99}{0,02485} \\approx 19,9\\%$.\n3. Bei $n=2$ Positiv-Resultaten steigt P auf $\\approx 92\\%$.",
+        "taskContent": "### **C1 (Lineare Algebra – \"Populationsdynamik\", 20 BE)**\n\n![Abb. 5: Übergangsdiagrammvorstufe und ein Virus.](/assets/abi/2026_1/image5.png)\n\nEine Virenpopulation mutiert zwischen den Zuständen A, B und C.\nDie Übergangsmatrix pro Woche lautet:\n\n$$\nM = \\begin{pmatrix} 0,6 & 0,1 & 0 \\\\ 0,3 & 0,7 & 0,2 \\\\ 0,1 & 0,2 & 0,8 \\end{pmatrix}\n$$\n\n1. **Systemverständnis:** Interpretieren Sie die Spaltensummen von $M$. Handelt es sich um eine geschlossene Population?\n   Zeichnen Sie ein Übergangsdiagramm für die Zustände A, B und C. (4 BE)\n2. **Prognose:** Zu Beginn sind 10.000 Viren vom Typ A vorhanden (Rest 0).\n   Bestimmen Sie die Verteilung nach 10 Wochen.\n   Untersuchen Sie, ob sich langfristig ein stabiles Gleichgewicht einstellt. (8 BE)\n3. **Rekonstruktion:** In einer Probe fand man die Verteilung $\\vec{x}_{t+1} = (500, 800, 1000)^T$. \n   Bestimmen Sie die Verteilung in der Woche davor.\n   Erläutern Sie, warum nicht jede beliebige Verteilung eine \"Vorgänger\"-Verteilung haben muss. (8 BE)",
+        "solutionContent": "**1. Systemverständnis (4 BE)**\nSpaltensummen = 1. Geschlossene Population.\nDiagramm: A->A, A->B, A->C(0), etc. Pfeile entsprechend Matrixeinträgen.\n\n**2. Prognose (8 BE)**\n$\\vec{v}_{10} \\approx (1440, 3940, 4620)^T$. Fixvektor $\\approx (1053, 4210, 4737)^T$.\n\n**3. Rekonstruktion (8 BE)**\n$\\vec{x}_t = M^{-1}\\vec{x}_{t+1} \\approx (1389, -444, 1355)^T$. Negativ $\\Rightarrow$ unmöglich.",
         "scoring": {
-          "maxPoints": 35,
-          "passingPoints": 18,
+          "maxPoints": 20,
+          "passingPoints": 10,
           "steps": [
             {
               "id": "s1",
-              "points": 3,
-              "description": "Interpretation Matrix"
+              "points": 4,
+              "description": "Interpretation Matrix und Diagramm"
             },
             {
               "id": "s2",
@@ -10498,23 +10637,53 @@
             },
             {
               "id": "s3",
-              "points": 5,
-              "description": "Inverses Problem (Widerspruch)"
-            },
+              "points": 8,
+              "description": "Rekonstruktion und Erläuterung"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "d2d2d2d2-d2d2-4d2d-8d2d-d2d2d2d2d2d2",
+      "title": "D1 (Stochastik – \"Viren-Screening & Testgüte\", 20 BE)",
+      "titleEn": "D1 (Stochastics – \"Virus Screening\", 20 BE)",
+      "description": "Schnelltest, bedingte Wahrscheinlichkeit und Testoptimierung.",
+      "descriptionEn": "Rapid test, conditional probability and test optimization.",
+      "weight": 1.5,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "4ab18312-0b43-461d-9154-3fba277baae7"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB3"
+      },
+      "examData": {
+        "taskContent": "![Abb. 6: Ein Baumdiagramm, das den Testablauf visualisiert. Erste Stufe: Infiziert (C) vs. Nicht-Infiziert. Zweite Stufe: Test Positiv (+) vs. Test Negativ (-).](/assets/abi/2026_1/image6.de.png)\n\nEin Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).\nDie Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).\n\n1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (5 BE)\n2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.\n   Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.\n   Interpretieren Sie das (vermutlich schockierend niedrige) Ergebnis für die Teststrategie. (6 BE)\n3. **Testoptimierung:** Wie oft muss der Test bei einer Person wiederholt werden (unabhängig), damit bei lauter positiven Ergebnissen die Wahrscheinlichkeit für eine tatsächliche Infektion auf über 90% steigt?\n   Diskutieren Sie die Annahme der \"Unabhängigkeit\" bei wiederholten Tests an derselben Person. (9 BE)",
+        "solutionContent": "**1. Testanalyse (5 BE)**\nSatz totaler Wahrscheinlichkeit: $P(Pos) = 0,005\\cdot0,99 + 0,995\\cdot0,02 \\approx 2,5\\%$.\n\n**2. Bedingte Wahrscheinlichkeit (6 BE)**\nBayes: $P(C|Pos) = \\frac{0,005\\cdot0,99}{0,02485} \\approx 19,9\\%$.\nInterpretation: Trotz positivem Test ist man wahrscheinlich gesund (80%).\n\n**3. Testoptimierung (9 BE)**\nNach n positiven Tests: $P(C|n\\times Pos) > 0,90$. Bei $n=2$ steigt P auf $\\approx 92\\%$.\nDiskussion: Unabhängigkeit ist fraglich (gleicher Testkit, gleiche Person, systematische Fehler).",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 10,
+          "steps": [
             {
-              "id": "s4",
+              "id": "s1",
               "points": 5,
               "description": "Totale Wahrscheinlichkeit"
             },
             {
-              "id": "s5",
+              "id": "s2",
               "points": 6,
               "description": "Bedingte Wahrscheinlichkeit (Bayes)"
             },
             {
-              "id": "s6",
-              "points": 8,
-              "description": "Testoptimierung (n bestimmen)"
+              "id": "s3",
+              "points": 9,
+              "description": "Testoptimierung und Diskussion"
             }
           ]
         }
@@ -10561,7 +10730,8 @@
         "52470a68-dd71-5a8c-b312-e5faab22959f",
         "f2d5f069-a1fa-5df5-aa69-eb5e32865b95",
         "828178ed-12eb-5b15-b346-c6a18a2e38bf",
-        "4414c5fa-ceaa-54f0-bbf2-d605f0d48431"
+        "4414c5fa-ceaa-54f0-bbf2-d605f0d48431",
+        "a5a5a5a5-a5a5-4a5a-8a5a-a5a5a5a5a5a5"
       ],
       "requires": [],
       "dimensionTags": {
@@ -10761,6 +10931,46 @@
       }
     },
     {
+      "id": "a5a5a5a5-a5a5-4a5a-8a5a-a5a5a5a5a5a5",
+      "title": "A5 (Stochastik, Niveau 1, 5 BE)",
+      "titleEn": "A5 (Stochastics, Level 1, 5 BE)",
+      "description": "Glücksrad (Pfadregel und Mindestens-Aufgabe).",
+      "descriptionEn": "Fortune wheel (path rule and 'at least' problem).",
+      "weight": 1.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "4ab18312-0b43-461d-9154-3fba277baae7"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB1"
+      },
+      "examData": {
+        "taskContent": "Ein Glücksrad hat drei Sektoren: Rot (50%), Blau (30%) und Gelb (20%).\nEs wird zweimal gedreht.\nBestimmen Sie die Wahrscheinlichkeit, dass...\n\n1. ...zweimal die gleiche Farbe erscheint. (2 BE)\n2. ...mindestens einmal Gelb erscheint. (3 BE)",
+        "solutionContent": "**1. Zweimal gleiche Farbe (2 BE)**\n$P(\\text{gleich}) = 0{,}5^2 + 0{,}3^2 + 0{,}2^2 = 0{,}25 + 0{,}09 + 0{,}04 = 0{,}38$.\n\n**2. Mindestens einmal Gelb (3 BE)**\nGegenereignis: \"Keinmal Gelb\" ($P(\\text{nicht Gelb}) = 0{,}8$).\n$P(\\text{min 1x Gelb}) = 1 - 0{,}8^2 = 1 - 0{,}64 = 0{,}36$.",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 2,
+              "description": "Pfadregel für gleiche Farben"
+            },
+            {
+              "id": "s2",
+              "points": 3,
+              "description": "Gegenereignis oder Addition für Gelb"
+            }
+          ]
+        }
+      }
+    },
+    {
       "id": "f13a3bae-88ed-53e9-b5a7-21179a264119",
       "title": "Teil 2: Mit Hilfsmitteln (GK)",
       "titleEn": "Part 2: With Aids (GK)",
@@ -10772,7 +10982,8 @@
       ],
       "contains": [
         "0ba923a8-1641-51a7-b01e-7860bf97d513",
-        "147b8cd6-b659-5581-9875-45c3339b522b"
+        "147b8cd6-b659-5581-9875-45c3339b522b",
+        "d1d1d1d1-d1d1-4d1d-8d1d-d1d1d1d1d1d1"
       ],
       "requires": [],
       "dimensionTags": {
@@ -10782,10 +10993,10 @@
     },
     {
       "id": "0ba923a8-1641-51a7-b01e-7860bf97d513",
-      "title": "B1 (Analysis, Niveau 2 – \"Das Algenwachstum\", 30 BE)",
-      "titleEn": "B1 (Analysis, Level 2 – \"Algae Growth\", 30 BE)",
-      "description": "Logistisches Wachstum $A(t) = \\frac{500}{1 + 49 \\cdot e^{-0{,}2 \\cdot t}}$.",
-      "descriptionEn": "Logistic growth $A(t) = \\frac{500}{1 + 49 \\cdot e^{-0{,}2 \\cdot t}}$.",
+      "title": "B1 (Analysis – \"Das Algenwachstum\", 25 BE)",
+      "titleEn": "B1 (Analysis – \"Algae Growth\", 25 BE)",
+      "description": "Logistisches Wachstum und Vergleich mit Exponentiell.",
+      "descriptionEn": "Logistic growth and comparison with exponential.",
       "weight": 1.5,
       "tags": [
         "GK"
@@ -10798,39 +11009,39 @@
       "dimensionTags": {
         "framework": "hessen-kc-2024",
         "phase": "Abitur",
-        "demandLevel": "AB2"
+        "demandLevel": "AB3"
       },
       "examData": {
-        "taskContent": "![Algenwachstum](/assets/abi/2026_1/image2.de.png)\n\nDas Wachstum eines Algenteppichs auf einem See wird modelliert durch die Funktion:\n$$A(t) = \\frac{500}{1 + 49 \\cdot e^{-0{,}2 \\cdot t}} \\quad (t \\ge 0)$$\n($t$ in Tagen seit Beobachtungsbeginn, $A(t)$ in $m^2$).\n\n1. **Anfangszustand:** Berechnen Sie die bedeckte Fläche zu Beginn ($t=0$). (3 BE)\n2. **Sättigung:** Bestimmen Sie den Grenzwert von $A(t)$ für $t \\to \\infty$ und interpretieren Sie diesen im Sachkontext \"See\". (4 BE)\n3. **Wachstumsgeschwindigkeit:** Bestimmen Sie den Zeitpunkt, an dem der Algenteppich am schnellsten wächst. Wie groß ist die Zunahme an diesem Tag (in $m^2/\\text{Tag}$)? (8 BE)\n4. **Rückschritt:** Durch Einsatz eines Mittels nimmt die Fläche ab Tag 30 exponentiell um 5% pro Tag ab. Stellen Sie $A_{neu}(t)$ auf und berechnen Sie, wann der Anfangswert wieder erreicht ist. (8 BE)\n5. **Bewertung:** Vergleichen Sie $A(t)$ für kleine $t$ mit exponentiellem Wachstum und nehmen Sie zur Kritik eines Experten Stellung. (7 BE)",
-        "solutionContent": "**1. Anfangszustand (3 BE)**\n$$A(0) = \\frac{500}{1+49} = 10 \\Rightarrow 10\\,m^2$$\n\n**2. Sättigung (4 BE)**\nGrenzwert 500. Die Fläche ist durch den See begrenzt.\n\n**3. Wachstumsgeschwindigkeit (8 BE)**\nWendepunkt bestimmen (GTR). $t \\approx 19,46$. Rate $A'(19,46) \\approx 25\\,m^2/d$.\n\n**4. Rückschritt (8 BE)**\n$A(30) \\approx 446,05$. $A_{neu}(t) = 446,05 \\cdot 0,95^{(t-30)}$.\n$10 = 446,05 \\cdot 0,95^k \\Rightarrow k \\approx 74$. Gesamtzeit $104$ Tage.\n\n**5. Bewertung (7 BE)**\nFür kleine $t$ ist der Nenner $\\approx 49 e^{-0,2t}$, also $A(t) \\approx \\text{const} \\cdot e^{0,2t}$. Das logistische Wachstum verhält sich anfangs fast exponentiell. Kritik ist kaum relevant.",
+        "taskContent": "![Abb. 2: Ein See von oben. In der Mitte breitet sich ein grüner Teppich (Algen) kreisförmig aus. Daneben ein Graph, der die Fläche A(t) zeigt: sigmoidaler Verlauf (S-Kurve).](/assets/abi/2026_1/image2.de.png)\n\nDas Wachstum eines Algenteppichs auf einem See wird modelliert durch die Funktion:\n\n$$\nA(t) = \\frac{500}{1 + 49 \\cdot e^{-0{,}2 \\cdot t}} \\quad (t \\ge 0)\n$$\n\n($t$ in Tagen seit Beobachtungsbeginn, $A(t)$ in $m^2$).\n\n1. **Anfangszustand:** Berechnen Sie die bedeckte Fläche zu Beginn ($t=0$). (3 BE)\n2. **Sättigung:** Bestimmen Sie den Grenzwert von $A(t)$ für $t \\to \\infty$ und interpretieren Sie diesen im Sachkontext \"See\". (4 BE)\n3. **Wachstumsgeschwindigkeit:** Bestimmen Sie den Zeitpunkt, an dem der Algenteppich am schnellsten wächst. Wie groß ist die Zunahme an diesem Tag (in $m^2/\\text{Tag}$)? (8 BE)\n4. **Rückschritt:** Durch den Einsatz eines biologischen Mittels ändert sich das Modell ab Tag 30. Die Fläche nimmt ab Tag 30 exponentiell um 5% pro Tag ab.\n   Stellen Sie die neue Funktionsgleichung $A_{neu}(t)$ für $t \\ge 30$ auf.\n   Berechnen Sie, wann die Fläche wieder auf den Anfangswert von $t=0$ gesunken ist. (6 BE)\n5. **Bewertung:** Ein Experte kritisiert das logistische Modell $A(t)$ für die Anfangsphase, da Algen bei guten Bedingungen eher exponentiell wachsen. \n   Vergleichen Sie $A(t)$ für kleine $t$ mit einer geeigneten Exponentialfunktion und nehmen Sie Stellung. (4 BE)",
+        "solutionContent": "**1. Anfangszustand (3 BE)**\n$A(0) = 10,0 \\, m^2$.\n\n**2. Sättigung (4 BE)**\nGrenzwert 500. See-Fläche ist begrenzt.\n\n**3. Wendepunkt (8 BE)**\n$t \\approx 19,46$. Zunahme ca. $25 \\, m^2/Tag$.\n\n**4. Rückschritt (6 BE)**\n$A(30) \\approx 446$. $A_{neu}(t) = 446 \\cdot 0,95^{t-30}$. $t \\approx 104$ Tage.\n\n**5. Bewertung (4 BE)**\nNenner $\\approx 49 e^{-0,2t}$. $A(t) \\approx \\text{const} \\cdot e^{0,2t}$. Anfangs sehr gut exponentiell genähert.",
         "scoring": {
-          "maxPoints": 30,
-          "passingPoints": 15,
+          "maxPoints": 25,
+          "passingPoints": 13,
           "steps": [
             {
               "id": "s1",
               "points": 3,
-              "description": "Berechnung Anfangszustand"
+              "description": "Anfangszustand"
             },
             {
               "id": "s2",
               "points": 4,
-              "description": "Grenzwert und Interpretation"
+              "description": "Grenzwert"
             },
             {
               "id": "s3",
               "points": 8,
-              "description": "Maximales Wachstum (Zeitpunkt und Rate)"
+              "description": "Maximales Wachstum"
             },
             {
               "id": "s4",
-              "points": 8,
-              "description": "Modellierung Rückschritt und Zeitdauer"
+              "points": 6,
+              "description": "Exponentielle Abnahme"
             },
             {
               "id": "s5",
-              "points": 7,
-              "description": "Vergleich mit exponentiellem Wachstum"
+              "points": 4,
+              "description": "Modell-Vergleich"
             }
           ]
         }
@@ -10838,10 +11049,10 @@
     },
     {
       "id": "147b8cd6-b659-5581-9875-45c3339b522b",
-      "title": "C1 (Lineare Algebra, Niveau 2 - \"Das Solardach\", 25 BE)",
-      "titleEn": "C1 (Linear Algebra, Level 2 - \"The Solar Roof\", 25 BE)",
-      "description": "Dachfläche durch Punkte $A, B, C, D$. Schattenwurf und optimaler Sonnenwinkel.",
-      "descriptionEn": "Roof surface defined by points $A, B, C, D$. Cast shadow and optimal sun angle.",
+      "title": "C1 (Lineare Algebra - \"Das Solardach\", 15 BE)",
+      "titleEn": "C1 (Linear Algebra - \"Solar Roof\", 15 BE)",
+      "description": "Schattenwurf und optimaler Sonnenwinkel.",
+      "descriptionEn": "Cast shadow and optimal sun angle.",
       "weight": 1.5,
       "tags": [
         "GK"
@@ -10856,31 +11067,71 @@
         "demandLevel": "AB2"
       },
       "examData": {
-        "taskContent": "![Solardach](/assets/abi/2026_1/image3.de.png)\n\nEckpunkte einer Dachfläche: $A(10|0|3)$, $B(10|10|3)$, $C(0|10|6)$ und $D(0|0|6)$ (1 LE = 1m).\n\n1. Zeigen Sie, dass die Fläche ein Rechteck ist und bestimmen Sie eine Koordinatengleichung der Ebene. (6 BE)\n2. **Schattenwurf:** Ein Mast steht in $M(13|5|0)$ (Höhe 10m). Sonnenlicht $\\vec{v} = (-1, 0, -2)^T$. Prüfen Sie, ob der Schatten auf das Dach fällt. (7 BE)\n3. **Effizienz:** Bestimmen Sie den optimalen Sonnenstand (senkrecht) und den Winkel der aktuellen Strahlen zum Dach. (7 BE)\n4. **Montage:** 2m Blitzableiter senkrecht in $D$. Koordinaten der Spitze? (5 BE)",
-        "solutionContent": "**1. Rechteck und Ebene (6 BE)**\nSkalarprodukt $\\vec{AB} \\cdot \\vec{AD} = 0$, Längen gleich. Ebene $3x_1 + x_3 = 33$.\n\n**2. Schattenwurf (7 BE)**\nGerade $g: \\vec{x} = (13,5,10)^T + r(-1,0,-2)^T$. Schnitt mit $E$ bei $r=3,2$. Schnittpunkt $S(9,8 | 5 | 3,6)$.\n$0 \\le 9,8 \\le 10$ $\\Rightarrow$ Schatten auf dem Dach.\n\n**3. Effizienz (7 BE)**\nOptimal: parallel zu $\\vec{n}=(3,0,1)^T$. Winkel $\\cos \\alpha = 1/\\sqrt{2} \\Rightarrow \\alpha=45^\\circ$.\n\n**4. Montage (5 BE)**\n$D(0|0|6) + 2 \\cdot \\vec{n_0} \\approx (1,90 | 0 | 6,63)$.",
+        "taskContent": "![Abb. 3: Ein modernes Haus mit einem schrägen Pultdach. Auf dem Dach ist ein rechteckiges Modul montiert. Die Sonne scheint in einem bestimmten Vektor darauf.](/assets/abi/2026_1/image3.de.png)\n\nIn einem Modell (1 LE = 1 m) liegen die Eckpunkte einer Dachfläche in $A(10|0|3)$, $B(10|10|3)$, $C(0|10|6)$ und $D(0|0|6)$.\n\n1. Zeigen Sie, dass die Dachfläche ein Rechteck ist. Bestimmen Sie eine Koordinatengleichung der Ebene $E$, in der das Dach liegt. (6 BE)\n2. **Schattenwurf:** Ein 10 m hoher Mast steht im Punkt $M(13|5|0)$. Die Sonnenstrahlen fallen in Richtung $\\vec{v} = \\begin{pmatrix} -1 \\\\ 0 \\\\ -2 \\end{pmatrix}$ ein.\n   Prüfen Sie rechnerisch, ob der Schatten der Mastspitze auf die Dachfläche fällt. (7 BE)\n3. **Effizienz:** Sonnenlicht liefert die maximale Energie, wenn es senkrecht auf die Fläche trifft.\n   Bestimmen Sie einen Vektor für den Sonnenstand, bei dem die Strahlen exakt senkrecht auf das Dach fallen. (2 BE)",
+        "solutionContent": "**1. Ebene (6 BE)**\nRechtecknachweis (Skalarprodukt=0, Längen). $E: 3x_1 + 10x_3 = 60$ (oder ähnlich).\n\n**2. Schattenwurf (7 BE)**\nGerade durch Mastspitze $S_M(13|5|10)$ mit $\\vec{v}$. Schnittpunkt mit $E$. $P(8|5|0)$.\n(Achtung: $P$ muss im Rechteck liegen. $0 \\le 8 \\le 10$ und $0 \\le 5 \\le 10$. Ja, Treffer).\n\n**3. Effizienz (2 BE)**\nNormalenvektor $\\vec{n} = (3, 0, 10)^T$ (oder vielfaches).",
         "scoring": {
-          "maxPoints": 25,
-          "passingPoints": 13,
+          "maxPoints": 15,
+          "passingPoints": 8,
           "steps": [
             {
               "id": "s1",
               "points": 6,
-              "description": "Rechtecknachweis und Ebenengleichung"
+              "description": "Rechteck und Ebenengleichung"
             },
             {
               "id": "s2",
               "points": 7,
-              "description": "Schattenwurfprüfung (Gerade-Ebenen-Schnitt)"
+              "description": "Schattenwurf (Schnittpunkt)"
             },
             {
               "id": "s3",
-              "points": 7,
-              "description": "Winkelberechnung"
+              "points": 2,
+              "description": "Normalenvektor"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "d1d1d1d1-d1d1-4d1d-8d1d-d1d1d1d1d1d1",
+      "title": "D1 (Stochastik – \"Viren-Screening\", 15 BE)",
+      "titleEn": "D1 (Stochastics – \"Virus Screening\", 15 BE)",
+      "description": "Hypothesentest und Fehlerarten.",
+      "descriptionEn": "Hypothesis testing and error types.",
+      "weight": 1.5,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "4ab18312-0b43-461d-9154-3fba277baae7"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB2"
+      },
+      "examData": {
+        "taskContent": "Ein Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).\nDie Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).\n\n1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (5 BE)\n2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.\n   Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.\n   Interpretieren Sie das (vermutlich schockierend niedrige) Ergebnis für die Teststrategie. (6 BE)\n3. **Testoptimierung:** Wie oft muss der Test bei einer Person wiederholt werden (unabhängig), damit bei lauter positiven Ergebnissen die Wahrscheinlichkeit für eine tatsächliche Infektion auf über 90% steigt? (4 BE)",
+        "solutionContent": "**1. Testanalyse (5 BE)**\n$P(Pos) \\approx 2,5\\%$.\n\n**2. Bayes (6 BE)**\n$P(C|Pos) \\approx 19,9\\%$.\n\n**3. Optimierung (4 BE)**\nMehrfachtestung zur Erhöhung der Sicherheit.",
+        "scoring": {
+          "maxPoints": 15,
+          "passingPoints": 8,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "Totale Wahrscheinlichkeit"
             },
             {
-              "id": "s4",
-              "points": 5,
-              "description": "Blitzableiterspitze berechnet"
+              "id": "s2",
+              "points": 6,
+              "description": "Bedingte Wahrscheinlichkeit"
+            },
+            {
+              "id": "s3",
+              "points": 4,
+              "description": "Wiederholung/Optimierung"
             }
           ]
         }
