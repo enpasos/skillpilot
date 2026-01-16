@@ -10307,8 +10307,8 @@
     },
     {
       "id": "eebf8986-8745-51cd-8c3d-b20ab23b7577",
-      "title": "A2 (Analysis, Substitution, 5 BE)",
-      "titleEn": "A2 (Analysis, Substitution, 5 BE)",
+      "title": "A2 (Analysis, Niveau 2, 5 BE)",
+      "titleEn": "A2 (Analysis, Level 2, 5 BE)",
       "description": "Berechnung des Integrals $\\int_0^{\\sqrt{\\pi}} x \\cdot \\sin(x^2) \\, dx$.",
       "descriptionEn": "Calculation of the integral $\\int_0^{\\sqrt{\\pi}} x \\cdot \\sin(x^2) \\, dx$.",
       "weight": 1.0,
@@ -10353,8 +10353,8 @@
     },
     {
       "id": "770ad9dc-abbe-5504-9dad-10a4bd96b6bb",
-      "title": "A3 (Stochastik, Hypothesentest, 5 BE)",
-      "titleEn": "A3 (Stochastics, Hypothesis Testing, 5 BE)",
+      "title": "A3 (Stochastik, Niveau 2, 5 BE)",
+      "titleEn": "A3 (Stochastics, Level 2, 5 BE)",
       "description": "Fehler 1. Art beim Binomialtest und Änderung des kritischen Werts.",
       "descriptionEn": "Type 1 error in binomial test and change of critical value.",
       "weight": 1.0,
@@ -10739,800 +10739,800 @@
         }
       }
     },
-  {
-    "id": "3d5e7f9a-2b4c-6d8e-0b1a-3f7c9b5e0d1a",
-    "title": "B2 (Analysis – \"Wirkstoffkonzentration\", 30 BE)",
-    "titleEn": "B2 (Analysis – \"Drug Concentration\", 30 BE)",
-    "description": "Funktionenschar, Extremwerte und Integral (AUC).",
-    "descriptionEn": "Function family, extrema and integral (AUC).",
-    "weight": 1.5,
-    "tags": [
-      "LK"
-    ],
-    "contains": [],
-    "requires": [
-      "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa",
-      "031b5000-16bb-430a-9c11-cb625f228bf4"
-    ],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur",
-      "demandLevel": "AB3"
+    {
+      "id": "3d5e7f9a-2b4c-6d8e-0b1a-3f7c9b5e0d1a",
+      "title": "B2 (Analysis – \"Wirkstoffkonzentration\", 30 BE)",
+      "titleEn": "B2 (Analysis – \"Drug Concentration\", 30 BE)",
+      "description": "Funktionenschar, Extremwerte und Integral (AUC).",
+      "descriptionEn": "Function family, extrema and integral (AUC).",
+      "weight": 1.5,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa",
+        "031b5000-16bb-430a-9c11-cb625f228bf4"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB3"
+      },
+      "examData": {
+        "taskContent": "Die Konzentration eines Medikaments im Blut wird modelliert durch die Funktionenschar:\n\n$$\nc_k(t) = 10 \\cdot t \\cdot e^{1 - k \\cdot t} \\quad (t \\ge 0, k > 0)\n$$\n\n($t$ in Stunden, $c_k(t)$ in mg/l).\n\n1. **Verlauf:** Untersuchen Sie das Verhalten für $t \\to \\infty$. Begründen Sie, dass die Konzentration für $t>0$ stets positiv ist. (4 BE)\n2. **Wirkungsmaximum:** Bestimmen Sie in Abhängigkeit von $k$ den Zeitpunkt der maximalen Konzentration und die Höhe der maximalen Konzentration.\n   Für welchen Parameter $k$ wird das Maximum genau nach 2 Stunden erreicht? (9 BE)\n3. **Abbaugeschwindigkeit:** Zeigen Sie, dass die Wendestelle der Funktion bei $t_W = \\frac{2}{k}$ liegt.\n   Interpretieren Sie die Bedeutung der Wendestelle im Kontext des Abbaus des Medikaments. (6 BE)\n4. **Gesamtmenge:** Das Integral $\\int_0^{\\infty} c_k(t) \\, dt$ ist ein Maß für die \"totale Exposition\" des Körpers (AUC = Area Under Curve).\n   Bestimmen Sie diesen Wert in Abhängigkeit von $k$.\n   Ein Arzt möchte die Exposition verdoppeln. Untersuchen Sie, wie er dafür den Parameter $k$ ändern muss. (11 BE)",
+        "solutionContent": "**1. Verlauf (4 BE)**\n$\\lim_{t \\to \\infty} c_k(t) = 0$ (e-Funktion dominiert). $t, k, e^x > 0 \\Rightarrow c_k(t) > 0$.\n**2. Maximum (9 BE)**\n$c_k'(t) = 10e^{1-kt}(1-kt) = 0 \\Rightarrow t = 1/k$. $c(1/k) = 10/k$. $t=2 \\Rightarrow k=0,5$.\n**3. Wendepunkt (6 BE)**\n$c_k''(t) = 10e^{1-kt}(-k(1-kt) - k) = 10k e^{1-kt}(kt-2) = 0 \\Rightarrow t=2/k$. Stärkste Abnahme.\n**4. Gesamtmenge (11 BE)**\nPartielle Integration. $\\int_0^{\\infty} c_k(t) dt = \\frac{10e}{k^2}$. Verdopplung: $k$ durch $k/\\sqrt{2}$ ersetzen.",
+        "scoring": {
+          "maxPoints": 30,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 4,
+              "description": "Grenzverhalten"
+            },
+            {
+              "id": "s2",
+              "points": 9,
+              "description": "Extrema berechnet"
+            },
+            {
+              "id": "s3",
+              "points": 6,
+              "description": "Wendepunkt"
+            },
+            {
+              "id": "s4",
+              "points": 11,
+              "description": "Integral und Parameter"
+            }
+          ]
+        }
+      }
     },
-    "examData": {
-      "taskContent": "Die Konzentration eines Medikaments im Blut wird modelliert durch die Funktionenschar:\n\n$$\nc_k(t) = 10 \\cdot t \\cdot e^{1 - k \\cdot t} \\quad (t \\ge 0, k > 0)\n$$\n\n($t$ in Stunden, $c_k(t)$ in mg/l).\n\n1. **Verlauf:** Untersuchen Sie das Verhalten für $t \\to \\infty$. Begründen Sie, dass die Konzentration für $t>0$ stets positiv ist. (4 BE)\n2. **Wirkungsmaximum:** Bestimmen Sie in Abhängigkeit von $k$ den Zeitpunkt der maximalen Konzentration und die Höhe der maximalen Konzentration.\n   Für welchen Parameter $k$ wird das Maximum genau nach 2 Stunden erreicht? (9 BE)\n3. **Abbaugeschwindigkeit:** Zeigen Sie, dass die Wendestelle der Funktion bei $t_W = \\frac{2}{k}$ liegt.\n   Interpretieren Sie die Bedeutung der Wendestelle im Kontext des Abbaus des Medikaments. (6 BE)\n4. **Gesamtmenge:** Das Integral $\\int_0^{\\infty} c_k(t) \\, dt$ ist ein Maß für die \"totale Exposition\" des Körpers (AUC = Area Under Curve).\n   Bestimmen Sie diesen Wert in Abhängigkeit von $k$.\n   Ein Arzt möchte die Exposition verdoppeln. Untersuchen Sie, wie er dafür den Parameter $k$ ändern muss. (11 BE)",
-      "solutionContent": "**1. Verlauf (4 BE)**\n$\\lim_{t \\to \\infty} c_k(t) = 0$ (e-Funktion dominiert). $t, k, e^x > 0 \\Rightarrow c_k(t) > 0$.\n**2. Maximum (9 BE)**\n$c_k'(t) = 10e^{1-kt}(1-kt) = 0 \\Rightarrow t = 1/k$. $c(1/k) = 10/k$. $t=2 \\Rightarrow k=0,5$.\n**3. Wendepunkt (6 BE)**\n$c_k''(t) = 10e^{1-kt}(-k(1-kt) - k) = 10k e^{1-kt}(kt-2) = 0 \\Rightarrow t=2/k$. Stärkste Abnahme.\n**4. Gesamtmenge (11 BE)**\nPartielle Integration. $\\int_0^{\\infty} c_k(t) dt = \\frac{10e}{k^2}$. Verdopplung: $k$ durch $k/\\sqrt{2}$ ersetzen.",
-      "scoring": {
-        "maxPoints": 30,
-        "passingPoints": 15,
-        "steps": [
-          {
-            "id": "s1",
-            "points": 4,
-            "description": "Grenzverhalten"
-          },
-          {
-            "id": "s2",
-            "points": 9,
-            "description": "Extrema berechnet"
-          },
-          {
-            "id": "s3",
-            "points": 6,
-            "description": "Wendepunkt"
-          },
-          {
-            "id": "s4",
-            "points": 11,
-            "description": "Integral und Parameter"
-          }
-        ]
+    {
+      "id": "971b981d-d8e0-5c4c-9b93-e401b19f32fc",
+      "title": "C1 (Lineare Algebra – \"Populationsdynamik\", 20 BE)",
+      "titleEn": "C1 (Linear Algebra – \"Population Dynamics\", 20 BE)",
+      "description": "Virenpopulation (Übergangsmatrix) und Systemverständnis.",
+      "descriptionEn": "Virus population (transition matrix) and system understanding.",
+      "weight": 1.5,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB3"
+      },
+      "examData": {
+        "taskContent": "### **C1 (Lineare Algebra – \"Populationsdynamik\", 20 BE)**\n\n![Abb. 5: Übergangsdiagrammvorstufe und ein Virus.](/assets/abi/2026_1/image5.png)\n\nEine Virenpopulation mutiert zwischen den Zuständen A, B und C.\nDie Übergangsmatrix pro Woche lautet:\n\n$$\nM = \\begin{pmatrix} 0,6 & 0,1 & 0 \\\\ 0,3 & 0,7 & 0,2 \\\\ 0,1 & 0,2 & 0,8 \\end{pmatrix}\n$$\n\n1. **Systemverständnis:** Interpretieren Sie die Spaltensummen von $M$. Handelt es sich um eine geschlossene Population?\n   Zeichnen Sie ein Übergangsdiagramm für die Zustände A, B und C. (4 BE)\n2. **Prognose:** Zu Beginn sind 10.000 Viren vom Typ A vorhanden (Rest 0).\n   Bestimmen Sie die Verteilung nach 10 Wochen.\n   Untersuchen Sie, ob sich langfristig ein stabiles Gleichgewicht einstellt. (8 BE)\n3. **Rekonstruktion:** In einer Probe fand man die Verteilung $\\vec{x}_{t+1} = (500, 800, 1000)^T$. \n   Bestimmen Sie die Verteilung in der Woche davor.\n   Erläutern Sie, warum nicht jede beliebige Verteilung eine \"Vorgänger\"-Verteilung haben muss. (8 BE)",
+        "solutionContent": "**1. Systemverständnis (4 BE)**\nSpaltensummen = 1. Geschlossene Population.\nDiagramm: A->A, A->B, A->C(0), etc. Pfeile entsprechend Matrixeinträgen.\n\n**2. Prognose (8 BE)**\n$\\vec{v}_{10} \\approx (1440, 3940, 4620)^T$. Fixvektor $\\approx (1053, 4210, 4737)^T$.\n\n**3. Rekonstruktion (8 BE)**\n$\\vec{x}_t = M^{-1}\\vec{x}_{t+1} \\approx (1389, -444, 1355)^T$. Negativ $\\Rightarrow$ unmöglich.",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 10,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 4,
+              "description": "Interpretation Matrix und Diagramm"
+            },
+            {
+              "id": "s2",
+              "points": 8,
+              "description": "Prognose und Gleichgewicht"
+            },
+            {
+              "id": "s3",
+              "points": 8,
+              "description": "Rekonstruktion und Erläuterung"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "d2d2d2d2-d2d2-4d2d-8d2d-d2d2d2d2d2d2",
+      "title": "D1 (Stochastik – \"Viren-Screening & Testgüte\", 20 BE)",
+      "titleEn": "D1 (Stochastics – \"Virus Screening\", 20 BE)",
+      "description": "Schnelltest, bedingte Wahrscheinlichkeit und Testoptimierung.",
+      "descriptionEn": "Rapid test, conditional probability and test optimization.",
+      "weight": 1.5,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "4ab18312-0b43-461d-9154-3fba277baae7"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB3"
+      },
+      "examData": {
+        "taskContent": "![Abb. 6: Ein Baumdiagramm, das den Testablauf visualisiert. Erste Stufe: Infiziert (C) vs. Nicht-Infiziert. Zweite Stufe: Test Positiv (+) vs. Test Negativ (-).](/assets/abi/2026_1/image6.de.png)\n\nEin Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).\nDie Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).\n\n1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (5 BE)\n2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.\n   Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.\n   Interpretieren Sie das (vermutlich schockierend niedrige) Ergebnis für die Teststrategie. (6 BE)\n3. **Testoptimierung:** Wie oft muss der Test bei einer Person wiederholt werden (unabhängig), damit bei lauter positiven Ergebnissen die Wahrscheinlichkeit für eine tatsächliche Infektion auf über 90% steigt?\n   Diskutieren Sie die Annahme der \"Unabhängigkeit\" bei wiederholten Tests an derselben Person. (9 BE)",
+        "solutionContent": "**1. Testanalyse (5 BE)**\nSatz totaler Wahrscheinlichkeit: $P(Pos) = 0,005\\cdot0,99 + 0,995\\cdot0,02 \\approx 2,5\\%$.\n\n**2. Bedingte Wahrscheinlichkeit (6 BE)**\nBayes: $P(C|Pos) = \\frac{0,005\\cdot0,99}{0,02485} \\approx 19,9\\%$.\nInterpretation: Trotz positivem Test ist man wahrscheinlich gesund (80%).\n\n**3. Testoptimierung (9 BE)**\nNach n positiven Tests: $P(C|n\\times Pos) > 0,90$. Bei $n=2$ steigt P auf $\\approx 92\\%$.\nDiskussion: Unabhängigkeit ist fraglich (gleicher Testkit, gleiche Person, systematische Fehler).",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 10,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "Totale Wahrscheinlichkeit"
+            },
+            {
+              "id": "s2",
+              "points": 6,
+              "description": "Bedingte Wahrscheinlichkeit (Bayes)"
+            },
+            {
+              "id": "s3",
+              "points": 9,
+              "description": "Testoptimierung und Diskussion"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "f204141c-c20b-504d-808c-6bcb426ce453",
+      "title": "Abiturprüfung Mathematik (GK)",
+      "titleEn": "Abitur Exam Mathematics (Basic Course)",
+      "description": "Der Lernende kann die schriftliche Abiturprüfung Mathematik im Grundkurs (80 BE) erfolgreich ablegen. Dies umfasst Teil 1 (hilfsmittelfrei, 25 BE) und Teil 2 (mit WTR/CAS, 55 BE).",
+      "descriptionEn": "The learner can successfully complete the written Abitur exam in Mathematics at basic level (80 BE). This includes Part 1 (without aids, 25 BE) and Part 2 (with calculator, 55 BE).",
+      "weight": 3.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [
+        "bdf27846-8d7a-5a48-a108-3e5a9660e62a",
+        "f13a3bae-88ed-53e9-b5a7-21179a264119"
+      ],
+      "requires": [
+        "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa",
+        "5079ea22-57d1-483b-b9cc-5bebefb77dbc",
+        "4ab18312-0b43-461d-9154-3fba277baae7",
+        "031b5000-16bb-430a-9c11-cb625f228bf4"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "phase": "Abitur"
+      },
+      "sourceRef": "Landesabitur 2026, Hinweise Kap. 19"
+    },
+    {
+      "id": "bdf27846-8d7a-5a48-a108-3e5a9660e62a",
+      "title": "Teil 1: Hilfsmittelfrei (GK)",
+      "titleEn": "Part 1: Without Aids (GK)",
+      "description": "Prüfungsteil 1 (25 BE): 5 Aufgaben à 5 BE – 3 Pflichtaufgaben Niveau 1 + 1 Wahlaufgabe Niveau 1 + 1 Wahlaufgabe Niveau 2.",
+      "descriptionEn": "Exam Part 1 (25 BE): 5 tasks à 5 BE – 3 mandatory level 1 + 1 choice level 1 + 1 choice level 2.",
+      "weight": 2.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [
+        "52470a68-dd71-5a8c-b312-e5faab22959f",
+        "f2d5f069-a1fa-5df5-aa69-eb5e32865b95",
+        "4414c5fa-ceaa-54f0-bbf2-d605f0d48431",
+        "828178ed-12eb-5b15-b346-c6a18a2e38bf",
+        "a5a5a5a5-a5a5-4a5a-8a5a-a5a5a5a5a5a5",
+        "8c2c7b50-6f7a-4c91-9e2b-3f4c6e5a1b3d",
+        "3b4e9d1a-5f8c-4a3b-2e1d-7f9a8c6b5e0d",
+        "9e1c4b7a-3f2d-8a5c-6b0e-1d7f9a3c5b8e",
+        "5a7f9b3c-1e2d-6a8b-4c0e-9d3f5a7b1c6e"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur"
+      }
+    },
+    {
+      "id": "52470a68-dd71-5a8c-b312-e5faab22959f",
+      "title": "A1 (Analysis, Niveau 1, 5 BE)",
+      "titleEn": "A1 (Analysis, Level 1, 5 BE)",
+      "description": "Gegeben ist die Funktion $f(x) = (x^2 - 3) \\cdot e^x$. Bestimmen Sie Nullstellen und Extrema.",
+      "descriptionEn": "Given the function $f(x) = (x^2 - 3) \\cdot e^x$. Determine zeros and extrema.",
+      "weight": 1.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB1"
+      },
+      "examData": {
+        "taskContent": "Gegeben ist die Funktion $f(x) = (x^2 - 3) \\cdot e^x$.\n\n1. Bestimmen Sie die Nullstellen von $f$. (2 BE)\n2. Untersuchen Sie $f$ auf lokale Extremstellen und bestimmen Sie deren Art. (3 BE)",
+        "solutionContent": "**1. Nullstellen (2 BE)**\n\nAnsatz: $f(x) = 0$.\nDa $e^x > 0$ für alle $x$, muss gelten:\n$$x^2 - 3 = 0 \\Rightarrow x_{1,2} = \\pm\\sqrt{3}$$\n\n**2. Extrema (3 BE)**\n\nAbleitung (Produktregel):\n$$f'(x) = 2x e^x + (x^2-3)e^x = e^x(x^2+2x-3)$$\n\nNotwendige Bedingung $f'(x)=0$:\n$$x^2+2x-3=0 \\Rightarrow x_1=1, x_2=-3$$\n\nVorzeichenwechsel von $f'$ (durch Parabel $x^2+2x-3$ bestimmt):\n* $x=-3$: VZW $+ \\to -$ (Hochpunkt)\n* $x=1$: VZW $- \\to +$ (Tiefpunkt)",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 2,
+              "description": "Nullstellen korrekt bestimmt"
+            },
+            {
+              "id": "s2",
+              "points": 1,
+              "description": "Ableitung korrekt gebildet"
+            },
+            {
+              "id": "s3",
+              "points": 1,
+              "description": "Nullstellen der Ableitung berechnet"
+            },
+            {
+              "id": "s4",
+              "points": 1,
+              "description": "Art der Extrema begründet"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "f2d5f069-a1fa-5df5-aa69-eb5e32865b95",
+      "title": "A2 (Analysis, Niveau 2 - \"Der Deich\", 5 BE)",
+      "titleEn": "A2 (Analysis, Level 2 - \"The Dike\", 5 BE)",
+      "description": "Untersuchung eines Deichprofils $h(x) = x(5-x)$ auf Sichtlinienunterbrechung.",
+      "descriptionEn": "Investigation of a dike profile $h(x) = x(5-x)$ for line-of-sight interruption.",
+      "weight": 1.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa",
+        "031b5000-16bb-430a-9c11-cb625f228bf4"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB2"
+      },
+      "examData": {
+        "taskContent": "![Deichskizze](/assets/abi/2026_1/image1.de.png)\n\nDer Querschnitt eines Deiches wird modelliert durch $h(x) = x \\cdot (5-x)$ für $0 \\le x \\le 5$. (Profil vereinfacht, Einheiten Meter).\nEin Beobachter steht im Punkt $P(-1|0)$ am Boden vor dem Deich.\nUntersuchen Sie rechnerisch, ob die direkte Sichtlinie vom Beobachter zur Deichspitze (Hochpunkt) durch das Deichprofil unterbrochen wird.",
+        "solutionContent": "**1. Koordinate der Spitze (Hochpunkt):**\n$$h'(x) = 5 - 2x = 0 \\Rightarrow x = 2,5$$\n$$h(2,5) = 2,5 \\cdot 2,5 = 6,25 \\Rightarrow S(2,5 | 6,25)$$\n\n**2. Sichtprüfung (Tangenten-Ansatz):**\nTangente von $P(-1|0)$ an $h(x)$. Steigung:\n$$\\frac{h(u) - 0}{u - (-1)} = h'(u) \\Rightarrow \\frac{5u - u^2}{u+1} = 5 - 2u$$\n$$5u - u^2 = (5 - 2u)(u + 1) \\Rightarrow u^2 + 2u - 5 = 0$$\n$u = -1 + \\sqrt{6} \\approx 1,45$.\n\n**Schlussfolgerung:** Die Tangente berührt bei $x \\approx 1,45$. Da der Deich bis $x=2,5$ weiter ansteigt (Wölbung), liegt die Spitze \"hinter\" der Wölbung und ist somit nicht sichtbar.\n**Ergebnis:** Die Sichtlinie wird unterbrochen.",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 1,
+              "description": "Hochpunkt bestimmt"
+            },
+            {
+              "id": "s2",
+              "points": 2,
+              "description": "Ansatz (Tangente/Sekante) aufgestellt"
+            },
+            {
+              "id": "s3",
+              "points": 1,
+              "description": "Rechnung durchgeführt"
+            },
+            {
+              "id": "s4",
+              "points": 1,
+              "description": "Interpretation im Sachkontext"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "828178ed-12eb-5b15-b346-c6a18a2e38bf",
+      "title": "A4 (Lineare Algebra, Niveau 1, 5 BE)",
+      "titleEn": "A4 (Linear Algebra, Level 1, 5 BE)",
+      "description": "Ebene $E: 2x_1 + 2x_2 - x_3 = 10$. Bestimmung der Spurpunkte und Skizze.",
+      "descriptionEn": "Plane $E: 2x_1 + 2x_2 - x_3 = 10$. Determination of trace points and sketch.",
+      "weight": 1.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB1"
+      },
+      "examData": {
+        "taskContent": "Gegeben ist die Ebene $E: 2x_1 + 2x_2 - x_3 = 10$.\nBestimmen Sie die Koordinaten der Schnittpunkte der Ebene mit den drei Koordinatenachsen (Spurpunkte) und zeichnen Sie den Ausschnitt der Ebene in ein Koordinatensystem ein.",
+        "solutionContent": "**Spurpunkte bestimmen:**\n\n* $S_1$ (setze $x_2=x_3=0$): $2x_1 = 10 \\Rightarrow S_1(5|0|0)$\n* $S_2$ (setze $x_1=x_3=0$): $2x_2 = 10 \\Rightarrow S_2(0|5|0)$\n* $S_3$ (setze $x_1=x_2=0$): $-x_3 = 10 \\Rightarrow S_3(0|0|-10)$\n\n**Zeichnung:**\nKoordinatensystem zeichnen und das Dreieck $S_1 S_2 S_3$ markieren.",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 3,
+              "description": "Berechnung der drei Spurpunkte"
+            },
+            {
+              "id": "s2",
+              "points": 2,
+              "description": "Korrekte Skizze"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "4414c5fa-ceaa-54f0-bbf2-d605f0d48431",
+      "title": "A3 (Stochastik, Niveau 1, 5 BE)",
+      "titleEn": "A3 (Stochastics, Level 1, 5 BE)",
+      "description": "Urne mit 2 roten und 3 schwarzen Kugeln, 3x Ziehen mit Zurücklegen.",
+      "descriptionEn": "Urn with 2 red and 3 black balls, drawing 3x with replacement.",
+      "weight": 1.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "4ab18312-0b43-461d-9154-3fba277baae7"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB1"
+      },
+      "examData": {
+        "taskContent": "In einer Urne liegen 2 rote und 3 schwarze Kugeln.\nEs wird dreimal *mit* Zurücklegen gezogen.\nGeben Sie einen Term an für die Wahrscheinlichkeit, dass...\n\n1. ...genau zwei rote Kugeln gezogen werden. (2 BE)\n2. ...die erste Kugel rot ist und danach nie wieder rot gezogen wird. (3 BE)",
+        "solutionContent": "**1. Genau zwei rote Kugeln (2 BE)**\nBinomialverteilung ($n=3, p=0,4$):\n$$P(X=2) = \\binom{3}{2} \\cdot \\left(\\frac{2}{5}\\right)^2 \\cdot \\left(\\frac{3}{5}\\right)^1 = 3 \\cdot \\frac{4}{25} \\cdot \\frac{3}{5} = \\frac{36}{125}$$\n\n**2. Erste Rot, danach nie wieder Rot (3 BE)**\nPfad: Rot – Schwarz – Schwarz.\n$$P = \\frac{2}{5} \\cdot \\frac{3}{5} \\cdot \\frac{3}{5} = \\frac{18}{125}$$",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 1,
+              "description": "Binomialkoeffizient/Faktor 3 erkannt"
+            },
+            {
+              "id": "s2",
+              "points": 1,
+              "description": "Wahrscheinlichkeiten für 2 Rote korrekt"
+            },
+            {
+              "id": "s3",
+              "points": 1,
+              "description": "Einzelwahrscheinlichkeiten Teil 2 korrekt"
+            },
+            {
+              "id": "s4",
+              "points": 2,
+              "description": "Produktregel für Teil 2 korrekt angewandt"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a5a5a5a5-a5a5-4a5a-8a5a-a5a5a5a5a5a5",
+      "title": "A5 (Stochastik, Niveau 1, 5 BE)",
+      "titleEn": "A5 (Stochastics, Level 1, 5 BE)",
+      "description": "Glücksrad (Pfadregel und Mindestens-Aufgabe).",
+      "descriptionEn": "Fortune wheel (path rule and 'at least' problem).",
+      "weight": 1.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "4ab18312-0b43-461d-9154-3fba277baae7"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB1"
+      },
+      "examData": {
+        "taskContent": "Ein Glücksrad hat drei Sektoren: Rot (50%), Blau (30%) und Gelb (20%).\nEs wird zweimal gedreht.\nBestimmen Sie die Wahrscheinlichkeit, dass...\n\n1. ...zweimal die gleiche Farbe erscheint. (2 BE)\n2. ...mindestens einmal Gelb erscheint. (3 BE)",
+        "solutionContent": "**1. Zweimal gleiche Farbe (2 BE)**\n$P(\\text{gleich}) = 0{,}5^2 + 0{,}3^2 + 0{,}2^2 = 0{,}25 + 0{,}09 + 0{,}04 = 0{,}38$.\n\n**2. Mindestens einmal Gelb (3 BE)**\nGegenereignis: \"Keinmal Gelb\" ($P(\\text{nicht Gelb}) = 0{,}8$).\n$P(\\text{min 1x Gelb}) = 1 - 0{,}8^2 = 1 - 0{,}64 = 0{,}36$.",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 2,
+              "description": "Pfadregel für gleiche Farben"
+            },
+            {
+              "id": "s2",
+              "points": 3,
+              "description": "Gegenereignis oder Addition für Gelb"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "8c2c7b50-6f7a-4c91-9e2b-3f4c6e5a1b3d",
+      "title": "A6 (Analysis, Niveau 1, 5 BE)",
+      "titleEn": "A6 (Analysis, Level 1, 5 BE)",
+      "description": "Graph der Ableitung f' und Interpretation.",
+      "descriptionEn": "Graph of derivative f' and interpretation.",
+      "weight": 1.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB1"
+      },
+      "examData": {
+        "taskContent": "Gegeben ist der Graph der Ableitungsfunktion $f'$ einer Polynomfunktion $f$.\nDer Graph von $f'$ ist eine nach oben geöffnete Parabel, die die x-Achse in den Punkten $x_1 = -2$ und $x_2 = 2$ schneidet.\n\n1. Begründen Sie, welche Steigung der Graph von $f$ an der Stelle $x=0$ hat. (2 BE)\n2. Bestimmen Sie die x-Koordinaten der lokalen Extremstellen von $f$ und geben Sie jeweils die Art des Extremums an. (3 BE)",
+        "solutionContent": "**1. Steigung bei x=0 (2 BE)**\nParabel durch $(-2|0)$ und $(2|0)$ ist symmetrisch. Scheitel bei $x=0$ (unten). $f'(0) < 0$.\n**2. Extremstellen (3 BE)**\nNullstellen von $f'$: $-2$ und $2$. VZW bei $-2$ ($+ \\to -$): Hochpunkt. VZW bei $2$ ($- \\to +$): Tiefpunkt.",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 2,
+              "description": "Steigung begründet"
+            },
+            {
+              "id": "s2",
+              "points": 3,
+              "description": "Extremstellen und Art"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "3b4e9d1a-5f8c-4a3b-2e1d-7f9a8c6b5e0d",
+      "title": "A7 (Lineare Algebra, Niveau 2, 5 BE)",
+      "titleEn": "A7 (Linear Algebra, Level 2, 5 BE)",
+      "description": "Punkteschar und rechtwinkliges Dreieck.",
+      "descriptionEn": "Set of points and right-angled triangle.",
+      "weight": 1.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB2"
+      },
+      "examData": {
+        "taskContent": "Gegeben sind die Punkte $A(2|0|0)$, $B(0|2|0)$ und eine Schar von Punkten $C_k(0|0|k)$ mit $k \\in \\mathbb{R}$.\nBestimmen Sie alle Werte für $k$, sodass das Dreieck $ABC_k$ im Punkt $C_k$ einen rechten Winkel hat.",
+        "solutionContent": "Rechter Winkel bei $C_k$: $\\vec{C_kA} \\cdot \\vec{C_kB} = 0$.\n$\\vec{C_kA} = (2, 0, -k)^T$, $\\vec{C_kB} = (0, 2, -k)^T$.\nSkalarprodukt: $0 + 0 + k^2 = 0 \\Rightarrow k=0$.",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "Berechnung k"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "9e1c4b7a-3f2d-8a5c-6b0e-1d7f9a3c5b8e",
+      "title": "A8 (Lineare Algebra, Niveau 1, 5 BE)",
+      "titleEn": "A8 (Linear Algebra, Level 1, 5 BE)",
+      "description": "Geradengleichung und Punktprobe.",
+      "descriptionEn": "Line equation and point check.",
+      "weight": 1.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB1"
+      },
+      "examData": {
+        "taskContent": "Gegeben sind die Punkte $P(1|2|3)$ und $Q(3|2|1)$.\n\n1. Stellen Sie eine Parametergleichung der Geraden $g$ durch $P$ und $Q$ auf. (3 BE)\n2. Prüfen Sie, ob der Punkt $R(5|2|-1)$ auf der Geraden $g$ liegt. (2 BE)",
+        "solutionContent": "**1. Gerade $g$ (3 BE)**\n$\\vec{x} = \\vec{OP} + r \\vec{PQ} = (1, 2, 3)^T + r(2, 0, -2)^T$.\n**2. Punktprobe (2 BE)**\n$(5, 2, -1)^T = (1, 2, 3)^T + r(2, 0, -2)^T \\Rightarrow r=2$. Liegt auf $g$.",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 3,
+              "description": "Geradengleichung"
+            },
+            {
+              "id": "s2",
+              "points": 2,
+              "description": "Punktprobe"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "5a7f9b3c-1e2d-6a8b-4c0e-9d3f5a7b1c6e",
+      "title": "A9 (Stochastik, Niveau 2, 5 BE)",
+      "titleEn": "A9 (Stochastics, Level 2, 5 BE)",
+      "description": "Fairness beim Gewinnspiel (Erwartungswert 0).",
+      "descriptionEn": "Fairness in a game (Expected value 0).",
+      "weight": 1.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "4ab18312-0b43-461d-9154-3fba277baae7"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB2"
+      },
+      "examData": {
+        "taskContent": "Bei einem Gewinnspiel beträgt der Einsatz $e$ Euro. Aus einer Urne mit 4 Gewinnerlosen und 6 Nieten wird ein Los gezogen.\nIst es ein Gewinnerlos, erhält man 10 Euro ausgezahlt. Ist es eine Niete, erhält man nichts.\nBestimmen Sie den Einsatz $e$ so, dass das Spiel fair ist (d.h. der Erwartungswert des Gewinns für den Spieler beträgt 0 Euro).",
+        "solutionContent": "E(Gewinn) = $0,4 \\cdot (10 - e) + 0,6 \\cdot (-e) = 0$.\n$4 - 0,4e - 0,6e = 0 \\Rightarrow 4 - e = 0 \\Rightarrow e = 4$ Euro.",
+        "scoring": {
+          "maxPoints": 5,
+          "passingPoints": 3,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "Einsatz berechnet"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "f13a3bae-88ed-53e9-b5a7-21179a264119",
+      "title": "Teil 2: Mit Hilfsmitteln (GK)",
+      "titleEn": "Part 2: With Aids (GK)",
+      "description": "Prüfungsteil 2 (55 BE): Analysis B (25 BE, Wahl), LA/AG C (15 BE, Pflicht), Stochastik D (15 BE, Pflicht). WTR/CAS erlaubt.",
+      "descriptionEn": "Exam Part 2 (55 BE): Analysis B (25 BE, choice), LA/AG C (15 BE, mandatory), Stochastics D (15 BE, mandatory). Calculator allowed.",
+      "weight": 2.0,
+      "tags": [
+        "GK"
+      ],
+      "contains": [
+        "0ba923a8-1641-51a7-b01e-7860bf97d513",
+        "2f4a8b6c-1e9d-3a5f-7b0e-8c2d4a6b1e3f",
+        "147b8cd6-b659-5581-9875-45c3339b522b",
+        "d1d1d1d1-d1d1-4d1d-8d1d-d1d1d1d1d1d1"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur"
+      }
+    },
+    {
+      "id": "0ba923a8-1641-51a7-b01e-7860bf97d513",
+      "title": "B1 (Analysis – \"Das Algenwachstum\", 25 BE)",
+      "titleEn": "B1 (Analysis – \"Algae Growth\", 25 BE)",
+      "description": "Logistisches Wachstum und Vergleich mit Exponentiell.",
+      "descriptionEn": "Logistic growth and comparison with exponential.",
+      "weight": 1.5,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa",
+        "031b5000-16bb-430a-9c11-cb625f228bf4"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB3"
+      },
+      "examData": {
+        "taskContent": "![Abb. 2: Ein See von oben. In der Mitte breitet sich ein grüner Teppich (Algen) kreisförmig aus. Daneben ein Graph, der die Fläche A(t) zeigt: sigmoidaler Verlauf (S-Kurve).](/assets/abi/2026_1/image2.de.png)\n\nDas Wachstum eines Algenteppichs auf einem See wird modelliert durch die Funktion:\n\n$$\nA(t) = \\frac{500}{1 + 49 \\cdot e^{-0{,}2 \\cdot t}} \\quad (t \\ge 0)\n$$\n\n($t$ in Tagen seit Beobachtungsbeginn, $A(t)$ in $m^2$).\n\n1. **Anfangszustand:** Berechnen Sie die bedeckte Fläche zu Beginn ($t=0$). (3 BE)\n2. **Sättigung:** Bestimmen Sie den Grenzwert von $A(t)$ für $t \\to \\infty$ und interpretieren Sie diesen im Sachkontext \"See\". (4 BE)\n3. **Wachstumsgeschwindigkeit:** Bestimmen Sie den Zeitpunkt, an dem der Algenteppich am schnellsten wächst. Wie groß ist die Zunahme an diesem Tag (in $m^2/\\text{Tag}$)? (8 BE)\n4. **Rückschritt:** Durch den Einsatz eines biologischen Mittels ändert sich das Modell ab Tag 30. Die Fläche nimmt ab Tag 30 exponentiell um 5% pro Tag ab.\n   Stellen Sie die neue Funktionsgleichung $A_{neu}(t)$ für $t \\ge 30$ auf.\n   Berechnen Sie, wann die Fläche wieder auf den Anfangswert von $t=0$ gesunken ist. (6 BE)\n5. **Bewertung:** Ein Experte kritisiert das logistische Modell $A(t)$ für die Anfangsphase, da Algen bei guten Bedingungen eher exponentiell wachsen. \n   Vergleichen Sie $A(t)$ für kleine $t$ mit einer geeigneten Exponentialfunktion und nehmen Sie Stellung. (4 BE)",
+        "solutionContent": "**1. Anfangszustand (3 BE)**\n$A(0) = 10,0 \\, m^2$.\n\n**2. Sättigung (4 BE)**\nGrenzwert 500. See-Fläche ist begrenzt.\n\n**3. Wendepunkt (8 BE)**\n$t \\approx 19,46$. Zunahme ca. $25 \\, m^2/Tag$.\n\n**4. Rückschritt (6 BE)**\n$A(30) \\approx 446$. $A_{neu}(t) = 446 \\cdot 0,95^{t-30}$. $t \\approx 104$ Tage.\n\n**5. Bewertung (4 BE)**\nNenner $\\approx 49 e^{-0,2t}$. $A(t) \\approx \\text{const} \\cdot e^{0,2t}$. Anfangs sehr gut exponentiell genähert.",
+        "scoring": {
+          "maxPoints": 25,
+          "passingPoints": 13,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 3,
+              "description": "Anfangszustand"
+            },
+            {
+              "id": "s2",
+              "points": 4,
+              "description": "Grenzwert"
+            },
+            {
+              "id": "s3",
+              "points": 8,
+              "description": "Maximales Wachstum"
+            },
+            {
+              "id": "s4",
+              "points": 6,
+              "description": "Exponentielle Abnahme"
+            },
+            {
+              "id": "s5",
+              "points": 4,
+              "description": "Modell-Vergleich"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "2f4a8b6c-1e9d-3a5f-7b0e-8c2d4a6b1e3f",
+      "title": "B2 (Analysis – \"Der Bremstest\", 25 BE)",
+      "titleEn": "B2 (Analysis – \"Brake Test\", 25 BE)",
+      "description": "Geschwindigkeitsprofil, Bremsweg und Extremwerte.",
+      "descriptionEn": "Velocity profile, braking distance and extreme values.",
+      "weight": 1.5,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa",
+        "031b5000-16bb-430a-9c11-cb625f228bf4"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB2"
+      },
+      "examData": {
+        "taskContent": "Ein Fahrzeug führt einen Bremstest durch. Die Geschwindigkeit wird für $0 \\le t \\le 10$ modelliert durch:\n\n$$\nv(t) = -\\frac{1}{40}t^3 + \\frac{3}{10}t^2 - \\frac{9}{4}t + 20\n$$\n\n($t$ in Sekunden, $v(t)$ in $m/s$).\n\n1. **Anfangsphase:** Bestimmen Sie die Geschwindigkeit zu Beginn ($t=0$) und zum Zeitpunkt $t=10$.\n   Berechnen Sie die Beschleunigung $a(t) = v'(t)$ zum Zeitpunkt $t=0$. (4 BE)\n2. **Extremwerte:** Bestimmen Sie den Zeitpunkt im Intervall $[0; 10]$, an dem die Geschwindigkeit am geringsten ist. (6 BE)\n3. **Bremsweg:** Die zurückgelegte Strecke entspricht dem Integral der Geschwindigkeitsfunktion.\n   Berechnen Sie die Strecke, die das Fahrzeug in den ersten 10 Sekunden zurücklegt.\n   Bestimmen Sie die Durchschnittsgeschwindigkeit in diesem Zeitraum. (8 BE)\n4. **Reaktion:** Ein Sensor überwacht die Bremswirkung. Er meldet ein Warnsignal (\"Brake Fading\"), sobald die Verzögerung (Bremskraft) im Verlauf des Bremsvorgangs **am geringsten** ist (lokales Maximum der Beschleunigung $a(t)$).\n   Ermitteln Sie rechnerisch den Zeitpunkt $t \\in [0; 10]$, an dem die Verzögerung am geringsten ist (lokales Maximum von $a(t)$), und geben Sie die dort herrschende Beschleunigung an. (7 BE)",
+        "solutionContent": "**1. Anfangsphase (4 BE)**\n$v(0) = 20$. $v(10) = 2,5$.\n$a(t) = -\\frac{3}{40}t^2 + \\frac{3}{5}t - \\frac{9}{4}$. $a(0) = -2,25 \\, m/s^2$.\n**2. Extremwerte (6 BE)**\n$v'(t) = 0$ hat im Intervall keine Lösung. Minimum am Rand $t=10$ ($v=2,5$).\n**3. Bremsweg (8 BE)**\nIntegral $\\int_0^{10} v(t) dt \\approx 118,75$ m. Durchschnitt $\\approx 11,9$ m/s.\n**4. Reaktion (7 BE)**\n$a'(t) = 0 \\Rightarrow -\\frac{6}{40}t + \\frac{3}{5} = 0 \\Rightarrow t=4$. $a(4) = -1,05 \\, m/s^2$.",
+        "scoring": {
+          "maxPoints": 25,
+          "passingPoints": 13,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 4,
+              "description": "Geschwindigkeit und Beschleunigung"
+            },
+            {
+              "id": "s2",
+              "points": 6,
+              "description": "Minimum der Geschwindigkeit"
+            },
+            {
+              "id": "s3",
+              "points": 8,
+              "description": "Strecke und Durchschnitt"
+            },
+            {
+              "id": "s4",
+              "points": 7,
+              "description": "Maximalbeschleunigung"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "147b8cd6-b659-5581-9875-45c3339b522b",
+      "title": "C1 (Lineare Algebra - \"Das Solardach\", 15 BE)",
+      "titleEn": "C1 (Linear Algebra - \"Solar Roof\", 15 BE)",
+      "description": "Schattenwurf und optimaler Sonnenwinkel.",
+      "descriptionEn": "Cast shadow and optimal sun angle.",
+      "weight": 1.5,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB2"
+      },
+      "examData": {
+        "taskContent": "![Abb. 3: Ein modernes Haus mit einem schrägen Pultdach. Auf dem Dach ist ein rechteckiges Modul montiert. Die Sonne scheint in einem bestimmten Vektor darauf.](/assets/abi/2026_1/image3.de.png)\n\nIn einem Modell (1 LE = 1 m) liegen die Eckpunkte einer Dachfläche in $A(10|0|3)$, $B(10|10|3)$, $C(0|10|6)$ und $D(0|0|6)$.\n\n1. Zeigen Sie, dass die Dachfläche ein Rechteck ist. Bestimmen Sie eine Koordinatengleichung der Ebene $E$, in der das Dach liegt. (6 BE)\n2. **Schattenwurf:** Ein 10 m hoher Mast steht im Punkt $M(13|5|0)$. Die Sonnenstrahlen fallen in Richtung $\\vec{v} = \\begin{pmatrix} -1 \\\\ 0 \\\\ -2 \\end{pmatrix}$ ein.\n   Prüfen Sie rechnerisch, ob der Schatten der Mastspitze auf die Dachfläche fällt. (7 BE)\n3. **Effizienz:** Sonnenlicht liefert die maximale Energie, wenn es senkrecht auf die Fläche trifft.\n   Bestimmen Sie einen Vektor für den Sonnenstand, bei dem die Strahlen exakt senkrecht auf das Dach fallen. (2 BE)",
+        "solutionContent": "**1. Ebene (6 BE)**\nRechtecknachweis (Skalarprodukt=0, Längen). $E: 3x_1 + 10x_3 = 60$ (oder ähnlich).\n\n**2. Schattenwurf (7 BE)**\nGerade durch Mastspitze $S_M(13|5|10)$ mit $\\vec{v}$. Schnittpunkt mit $E$. $P(8|5|0)$.\n(Achtung: $P$ muss im Rechteck liegen. $0 \\le 8 \\le 10$ und $0 \\le 5 \\le 10$. Ja, Treffer).\n\n**3. Effizienz (2 BE)**\nNormalenvektor $\\vec{n} = (3, 0, 10)^T$ (oder vielfaches).",
+        "scoring": {
+          "maxPoints": 15,
+          "passingPoints": 8,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 6,
+              "description": "Rechteck und Ebenengleichung"
+            },
+            {
+              "id": "s2",
+              "points": 7,
+              "description": "Schattenwurf (Schnittpunkt)"
+            },
+            {
+              "id": "s3",
+              "points": 2,
+              "description": "Normalenvektor"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "d1d1d1d1-d1d1-4d1d-8d1d-d1d1d1d1d1d1",
+      "title": "D1 (Stochastik – \"Viren-Screening\", 15 BE)",
+      "titleEn": "D1 (Stochastics – \"Virus Screening\", 15 BE)",
+      "description": "Hypothesentest und Fehlerarten.",
+      "descriptionEn": "Hypothesis testing and error types.",
+      "weight": 1.5,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "4ab18312-0b43-461d-9154-3fba277baae7"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "phase": "Abitur",
+        "demandLevel": "AB2"
+      },
+      "examData": {
+        "taskContent": "Ein Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).\nDie Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).\n\n1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (5 BE)\n2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.\n   Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.\n   Interpretieren Sie das (vermutlich schockierend niedrige) Ergebnis für die Teststrategie. (6 BE)\n3. **Testoptimierung:** Wie oft muss der Test bei einer Person wiederholt werden (unabhängig), damit bei lauter positiven Ergebnissen die Wahrscheinlichkeit für eine tatsächliche Infektion auf über 90% steigt? (4 BE)",
+        "solutionContent": "**1. Testanalyse (5 BE)**\n$P(Pos) \\approx 2,5\\%$.\n\n**2. Bayes (6 BE)**\n$P(C|Pos) \\approx 19,9\\%$.\n\n**3. Optimierung (4 BE)**\nMehrfachtestung zur Erhöhung der Sicherheit.",
+        "scoring": {
+          "maxPoints": 15,
+          "passingPoints": 8,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "Totale Wahrscheinlichkeit"
+            },
+            {
+              "id": "s2",
+              "points": 6,
+              "description": "Bedingte Wahrscheinlichkeit"
+            },
+            {
+              "id": "s3",
+              "points": 4,
+              "description": "Wiederholung/Optimierung"
+            }
+          ]
+        }
       }
     }
-  },
-  {
-    "id": "971b981d-d8e0-5c4c-9b93-e401b19f32fc",
-    "title": "C1 (Lineare Algebra – \"Populationsdynamik\", 20 BE)",
-    "titleEn": "C1 (Linear Algebra – \"Population Dynamics\", 20 BE)",
-    "description": "Virenpopulation (Übergangsmatrix) und Systemverständnis.",
-    "descriptionEn": "Virus population (transition matrix) and system understanding.",
-    "weight": 1.5,
-    "tags": [
-      "LK"
-    ],
-    "contains": [],
-    "requires": [
-      "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
-    ],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur",
-      "demandLevel": "AB3"
-    },
-    "examData": {
-      "taskContent": "### **C1 (Lineare Algebra – \"Populationsdynamik\", 20 BE)**\n\n![Abb. 5: Übergangsdiagrammvorstufe und ein Virus.](/assets/abi/2026_1/image5.png)\n\nEine Virenpopulation mutiert zwischen den Zuständen A, B und C.\nDie Übergangsmatrix pro Woche lautet:\n\n$$\nM = \\begin{pmatrix} 0,6 & 0,1 & 0 \\\\ 0,3 & 0,7 & 0,2 \\\\ 0,1 & 0,2 & 0,8 \\end{pmatrix}\n$$\n\n1. **Systemverständnis:** Interpretieren Sie die Spaltensummen von $M$. Handelt es sich um eine geschlossene Population?\n   Zeichnen Sie ein Übergangsdiagramm für die Zustände A, B und C. (4 BE)\n2. **Prognose:** Zu Beginn sind 10.000 Viren vom Typ A vorhanden (Rest 0).\n   Bestimmen Sie die Verteilung nach 10 Wochen.\n   Untersuchen Sie, ob sich langfristig ein stabiles Gleichgewicht einstellt. (8 BE)\n3. **Rekonstruktion:** In einer Probe fand man die Verteilung $\\vec{x}_{t+1} = (500, 800, 1000)^T$. \n   Bestimmen Sie die Verteilung in der Woche davor.\n   Erläutern Sie, warum nicht jede beliebige Verteilung eine \"Vorgänger\"-Verteilung haben muss. (8 BE)",
-      "solutionContent": "**1. Systemverständnis (4 BE)**\nSpaltensummen = 1. Geschlossene Population.\nDiagramm: A->A, A->B, A->C(0), etc. Pfeile entsprechend Matrixeinträgen.\n\n**2. Prognose (8 BE)**\n$\\vec{v}_{10} \\approx (1440, 3940, 4620)^T$. Fixvektor $\\approx (1053, 4210, 4737)^T$.\n\n**3. Rekonstruktion (8 BE)**\n$\\vec{x}_t = M^{-1}\\vec{x}_{t+1} \\approx (1389, -444, 1355)^T$. Negativ $\\Rightarrow$ unmöglich.",
-      "scoring": {
-        "maxPoints": 20,
-        "passingPoints": 10,
-        "steps": [
-          {
-            "id": "s1",
-            "points": 4,
-            "description": "Interpretation Matrix und Diagramm"
-          },
-          {
-            "id": "s2",
-            "points": 8,
-            "description": "Prognose und Gleichgewicht"
-          },
-          {
-            "id": "s3",
-            "points": 8,
-            "description": "Rekonstruktion und Erläuterung"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "d2d2d2d2-d2d2-4d2d-8d2d-d2d2d2d2d2d2",
-    "title": "D1 (Stochastik – \"Viren-Screening & Testgüte\", 20 BE)",
-    "titleEn": "D1 (Stochastics – \"Virus Screening\", 20 BE)",
-    "description": "Schnelltest, bedingte Wahrscheinlichkeit und Testoptimierung.",
-    "descriptionEn": "Rapid test, conditional probability and test optimization.",
-    "weight": 1.5,
-    "tags": [
-      "LK"
-    ],
-    "contains": [],
-    "requires": [
-      "4ab18312-0b43-461d-9154-3fba277baae7"
-    ],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur",
-      "demandLevel": "AB3"
-    },
-    "examData": {
-      "taskContent": "![Abb. 6: Ein Baumdiagramm, das den Testablauf visualisiert. Erste Stufe: Infiziert (C) vs. Nicht-Infiziert. Zweite Stufe: Test Positiv (+) vs. Test Negativ (-).](/assets/abi/2026_1/image6.de.png)\n\nEin Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).\nDie Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).\n\n1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (5 BE)\n2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.\n   Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.\n   Interpretieren Sie das (vermutlich schockierend niedrige) Ergebnis für die Teststrategie. (6 BE)\n3. **Testoptimierung:** Wie oft muss der Test bei einer Person wiederholt werden (unabhängig), damit bei lauter positiven Ergebnissen die Wahrscheinlichkeit für eine tatsächliche Infektion auf über 90% steigt?\n   Diskutieren Sie die Annahme der \"Unabhängigkeit\" bei wiederholten Tests an derselben Person. (9 BE)",
-      "solutionContent": "**1. Testanalyse (5 BE)**\nSatz totaler Wahrscheinlichkeit: $P(Pos) = 0,005\\cdot0,99 + 0,995\\cdot0,02 \\approx 2,5\\%$.\n\n**2. Bedingte Wahrscheinlichkeit (6 BE)**\nBayes: $P(C|Pos) = \\frac{0,005\\cdot0,99}{0,02485} \\approx 19,9\\%$.\nInterpretation: Trotz positivem Test ist man wahrscheinlich gesund (80%).\n\n**3. Testoptimierung (9 BE)**\nNach n positiven Tests: $P(C|n\\times Pos) > 0,90$. Bei $n=2$ steigt P auf $\\approx 92\\%$.\nDiskussion: Unabhängigkeit ist fraglich (gleicher Testkit, gleiche Person, systematische Fehler).",
-      "scoring": {
-        "maxPoints": 20,
-        "passingPoints": 10,
-        "steps": [
-          {
-            "id": "s1",
-            "points": 5,
-            "description": "Totale Wahrscheinlichkeit"
-          },
-          {
-            "id": "s2",
-            "points": 6,
-            "description": "Bedingte Wahrscheinlichkeit (Bayes)"
-          },
-          {
-            "id": "s3",
-            "points": 9,
-            "description": "Testoptimierung und Diskussion"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "f204141c-c20b-504d-808c-6bcb426ce453",
-    "title": "Abiturprüfung Mathematik (GK)",
-    "titleEn": "Abitur Exam Mathematics (Basic Course)",
-    "description": "Der Lernende kann die schriftliche Abiturprüfung Mathematik im Grundkurs (80 BE) erfolgreich ablegen. Dies umfasst Teil 1 (hilfsmittelfrei, 25 BE) und Teil 2 (mit WTR/CAS, 55 BE).",
-    "descriptionEn": "The learner can successfully complete the written Abitur exam in Mathematics at basic level (80 BE). This includes Part 1 (without aids, 25 BE) and Part 2 (with calculator, 55 BE).",
-    "weight": 3.0,
-    "tags": [
-      "GK"
-    ],
-    "contains": [
-      "bdf27846-8d7a-5a48-a108-3e5a9660e62a",
-      "f13a3bae-88ed-53e9-b5a7-21179a264119"
-    ],
-    "requires": [
-      "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa",
-      "5079ea22-57d1-483b-b9cc-5bebefb77dbc",
-      "4ab18312-0b43-461d-9154-3fba277baae7",
-      "031b5000-16bb-430a-9c11-cb625f228bf4"
-    ],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "demandLevel": "AB2",
-      "phase": "Abitur"
-    },
-    "sourceRef": "Landesabitur 2026, Hinweise Kap. 19"
-  },
-  {
-    "id": "bdf27846-8d7a-5a48-a108-3e5a9660e62a",
-    "title": "Teil 1: Hilfsmittelfrei (GK)",
-    "titleEn": "Part 1: Without Aids (GK)",
-    "description": "Prüfungsteil 1 (25 BE): 5 Aufgaben à 5 BE – 3 Pflichtaufgaben Niveau 1 + 1 Wahlaufgabe Niveau 1 + 1 Wahlaufgabe Niveau 2.",
-    "descriptionEn": "Exam Part 1 (25 BE): 5 tasks à 5 BE – 3 mandatory level 1 + 1 choice level 1 + 1 choice level 2.",
-    "weight": 2.0,
-    "tags": [
-      "GK"
-    ],
-    "contains": [
-      "52470a68-dd71-5a8c-b312-e5faab22959f",
-      "f2d5f069-a1fa-5df5-aa69-eb5e32865b95",
-      "4414c5fa-ceaa-54f0-bbf2-d605f0d48431",
-      "828178ed-12eb-5b15-b346-c6a18a2e38bf",
-      "a5a5a5a5-a5a5-4a5a-8a5a-a5a5a5a5a5a5",
-      "8c2c7b50-6f7a-4c91-9e2b-3f4c6e5a1b3d",
-      "3b4e9d1a-5f8c-4a3b-2e1d-7f9a8c6b5e0d",
-      "9e1c4b7a-3f2d-8a5c-6b0e-1d7f9a3c5b8e",
-      "5a7f9b3c-1e2d-6a8b-4c0e-9d3f5a7b1c6e"
-    ],
-    "requires": [],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur"
-    }
-  },
-  {
-    "id": "52470a68-dd71-5a8c-b312-e5faab22959f",
-    "title": "A1 (Analysis, Niveau 1, 5 BE)",
-    "titleEn": "A1 (Analysis, Level 1, 5 BE)",
-    "description": "Gegeben ist die Funktion $f(x) = (x^2 - 3) \\cdot e^x$. Bestimmen Sie Nullstellen und Extrema.",
-    "descriptionEn": "Given the function $f(x) = (x^2 - 3) \\cdot e^x$. Determine zeros and extrema.",
-    "weight": 1.0,
-    "tags": [
-      "GK"
-    ],
-    "contains": [],
-    "requires": [
-      "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa"
-    ],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur",
-      "demandLevel": "AB1"
-    },
-    "examData": {
-      "taskContent": "Gegeben ist die Funktion $f(x) = (x^2 - 3) \\cdot e^x$.\n\n1. Bestimmen Sie die Nullstellen von $f$. (2 BE)\n2. Untersuchen Sie $f$ auf lokale Extremstellen und bestimmen Sie deren Art. (3 BE)",
-      "solutionContent": "**1. Nullstellen (2 BE)**\n\nAnsatz: $f(x) = 0$.\nDa $e^x > 0$ für alle $x$, muss gelten:\n$$x^2 - 3 = 0 \\Rightarrow x_{1,2} = \\pm\\sqrt{3}$$\n\n**2. Extrema (3 BE)**\n\nAbleitung (Produktregel):\n$$f'(x) = 2x e^x + (x^2-3)e^x = e^x(x^2+2x-3)$$\n\nNotwendige Bedingung $f'(x)=0$:\n$$x^2+2x-3=0 \\Rightarrow x_1=1, x_2=-3$$\n\nVorzeichenwechsel von $f'$ (durch Parabel $x^2+2x-3$ bestimmt):\n* $x=-3$: VZW $+ \\to -$ (Hochpunkt)\n* $x=1$: VZW $- \\to +$ (Tiefpunkt)",
-      "scoring": {
-        "maxPoints": 5,
-        "passingPoints": 3,
-        "steps": [
-          {
-            "id": "s1",
-            "points": 2,
-            "description": "Nullstellen korrekt bestimmt"
-          },
-          {
-            "id": "s2",
-            "points": 1,
-            "description": "Ableitung korrekt gebildet"
-          },
-          {
-            "id": "s3",
-            "points": 1,
-            "description": "Nullstellen der Ableitung berechnet"
-          },
-          {
-            "id": "s4",
-            "points": 1,
-            "description": "Art der Extrema begründet"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "f2d5f069-a1fa-5df5-aa69-eb5e32865b95",
-    "title": "A2 (Analysis, Niveau 2 - \"Der Deich\", 5 BE)",
-    "titleEn": "A2 (Analysis, Level 2 - \"The Dike\", 5 BE)",
-    "description": "Untersuchung eines Deichprofils $h(x) = x(5-x)$ auf Sichtlinienunterbrechung.",
-    "descriptionEn": "Investigation of a dike profile $h(x) = x(5-x)$ for line-of-sight interruption.",
-    "weight": 1.0,
-    "tags": [
-      "GK"
-    ],
-    "contains": [],
-    "requires": [
-      "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa",
-      "031b5000-16bb-430a-9c11-cb625f228bf4"
-    ],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur",
-      "demandLevel": "AB2"
-    },
-    "examData": {
-      "taskContent": "![Deichskizze](/assets/abi/2026_1/image1.de.png)\n\nDer Querschnitt eines Deiches wird modelliert durch $h(x) = x \\cdot (5-x)$ für $0 \\le x \\le 5$. (Profil vereinfacht, Einheiten Meter).\nEin Beobachter steht im Punkt $P(-1|0)$ am Boden vor dem Deich.\nUntersuchen Sie rechnerisch, ob die direkte Sichtlinie vom Beobachter zur Deichspitze (Hochpunkt) durch das Deichprofil unterbrochen wird.",
-      "solutionContent": "**1. Koordinate der Spitze (Hochpunkt):**\n$$h'(x) = 5 - 2x = 0 \\Rightarrow x = 2,5$$\n$$h(2,5) = 2,5 \\cdot 2,5 = 6,25 \\Rightarrow S(2,5 | 6,25)$$\n\n**2. Sichtprüfung (Tangenten-Ansatz):**\nTangente von $P(-1|0)$ an $h(x)$. Steigung:\n$$\\frac{h(u) - 0}{u - (-1)} = h'(u) \\Rightarrow \\frac{5u - u^2}{u+1} = 5 - 2u$$\n$$5u - u^2 = (5 - 2u)(u + 1) \\Rightarrow u^2 + 2u - 5 = 0$$\n$u = -1 + \\sqrt{6} \\approx 1,45$.\n\n**Schlussfolgerung:** Die Tangente berührt bei $x \\approx 1,45$. Da der Deich bis $x=2,5$ weiter ansteigt (Wölbung), liegt die Spitze \"hinter\" der Wölbung und ist somit nicht sichtbar.\n**Ergebnis:** Die Sichtlinie wird unterbrochen.",
-      "scoring": {
-        "maxPoints": 5,
-        "passingPoints": 3,
-        "steps": [
-          {
-            "id": "s1",
-            "points": 1,
-            "description": "Hochpunkt bestimmt"
-          },
-          {
-            "id": "s2",
-            "points": 2,
-            "description": "Ansatz (Tangente/Sekante) aufgestellt"
-          },
-          {
-            "id": "s3",
-            "points": 1,
-            "description": "Rechnung durchgeführt"
-          },
-          {
-            "id": "s4",
-            "points": 1,
-            "description": "Interpretation im Sachkontext"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "828178ed-12eb-5b15-b346-c6a18a2e38bf",
-    "title": "A4 (Lineare Algebra, Niveau 1, 5 BE)",
-    "titleEn": "A4 (Linear Algebra, Level 1, 5 BE)",
-    "description": "Ebene $E: 2x_1 + 2x_2 - x_3 = 10$. Bestimmung der Spurpunkte und Skizze.",
-    "descriptionEn": "Plane $E: 2x_1 + 2x_2 - x_3 = 10$. Determination of trace points and sketch.",
-    "weight": 1.0,
-    "tags": [
-      "GK"
-    ],
-    "contains": [],
-    "requires": [
-      "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
-    ],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur",
-      "demandLevel": "AB1"
-    },
-    "examData": {
-      "taskContent": "Gegeben ist die Ebene $E: 2x_1 + 2x_2 - x_3 = 10$.\nBestimmen Sie die Koordinaten der Schnittpunkte der Ebene mit den drei Koordinatenachsen (Spurpunkte) und zeichnen Sie den Ausschnitt der Ebene in ein Koordinatensystem ein.",
-      "solutionContent": "**Spurpunkte bestimmen:**\n\n* $S_1$ (setze $x_2=x_3=0$): $2x_1 = 10 \\Rightarrow S_1(5|0|0)$\n* $S_2$ (setze $x_1=x_3=0$): $2x_2 = 10 \\Rightarrow S_2(0|5|0)$\n* $S_3$ (setze $x_1=x_2=0$): $-x_3 = 10 \\Rightarrow S_3(0|0|-10)$\n\n**Zeichnung:**\nKoordinatensystem zeichnen und das Dreieck $S_1 S_2 S_3$ markieren.",
-      "scoring": {
-        "maxPoints": 5,
-        "passingPoints": 3,
-        "steps": [
-          {
-            "id": "s1",
-            "points": 3,
-            "description": "Berechnung der drei Spurpunkte"
-          },
-          {
-            "id": "s2",
-            "points": 2,
-            "description": "Korrekte Skizze"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "4414c5fa-ceaa-54f0-bbf2-d605f0d48431",
-    "title": "A3 (Stochastik, Niveau 1, 5 BE)",
-    "titleEn": "A3 (Stochastics, Level 1, 5 BE)",
-    "description": "Urne mit 2 roten und 3 schwarzen Kugeln, 3x Ziehen mit Zurücklegen.",
-    "descriptionEn": "Urn with 2 red and 3 black balls, drawing 3x with replacement.",
-    "weight": 1.0,
-    "tags": [
-      "GK"
-    ],
-    "contains": [],
-    "requires": [
-      "4ab18312-0b43-461d-9154-3fba277baae7"
-    ],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur",
-      "demandLevel": "AB1"
-    },
-    "examData": {
-      "taskContent": "In einer Urne liegen 2 rote und 3 schwarze Kugeln.\nEs wird dreimal *mit* Zurücklegen gezogen.\nGeben Sie einen Term an für die Wahrscheinlichkeit, dass...\n\n1. ...genau zwei rote Kugeln gezogen werden. (2 BE)\n2. ...die erste Kugel rot ist und danach nie wieder rot gezogen wird. (3 BE)",
-      "solutionContent": "**1. Genau zwei rote Kugeln (2 BE)**\nBinomialverteilung ($n=3, p=0,4$):\n$$P(X=2) = \\binom{3}{2} \\cdot \\left(\\frac{2}{5}\\right)^2 \\cdot \\left(\\frac{3}{5}\\right)^1 = 3 \\cdot \\frac{4}{25} \\cdot \\frac{3}{5} = \\frac{36}{125}$$\n\n**2. Erste Rot, danach nie wieder Rot (3 BE)**\nPfad: Rot – Schwarz – Schwarz.\n$$P = \\frac{2}{5} \\cdot \\frac{3}{5} \\cdot \\frac{3}{5} = \\frac{18}{125}$$",
-      "scoring": {
-        "maxPoints": 5,
-        "passingPoints": 3,
-        "steps": [
-          {
-            "id": "s1",
-            "points": 1,
-            "description": "Binomialkoeffizient/Faktor 3 erkannt"
-          },
-          {
-            "id": "s2",
-            "points": 1,
-            "description": "Wahrscheinlichkeiten für 2 Rote korrekt"
-          },
-          {
-            "id": "s3",
-            "points": 1,
-            "description": "Einzelwahrscheinlichkeiten Teil 2 korrekt"
-          },
-          {
-            "id": "s4",
-            "points": 2,
-            "description": "Produktregel für Teil 2 korrekt angewandt"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "a5a5a5a5-a5a5-4a5a-8a5a-a5a5a5a5a5a5",
-    "title": "A5 (Stochastik, Niveau 1, 5 BE)",
-    "titleEn": "A5 (Stochastics, Level 1, 5 BE)",
-    "description": "Glücksrad (Pfadregel und Mindestens-Aufgabe).",
-    "descriptionEn": "Fortune wheel (path rule and 'at least' problem).",
-    "weight": 1.0,
-    "tags": [
-      "GK"
-    ],
-    "contains": [],
-    "requires": [
-      "4ab18312-0b43-461d-9154-3fba277baae7"
-    ],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur",
-      "demandLevel": "AB1"
-    },
-    "examData": {
-      "taskContent": "Ein Glücksrad hat drei Sektoren: Rot (50%), Blau (30%) und Gelb (20%).\nEs wird zweimal gedreht.\nBestimmen Sie die Wahrscheinlichkeit, dass...\n\n1. ...zweimal die gleiche Farbe erscheint. (2 BE)\n2. ...mindestens einmal Gelb erscheint. (3 BE)",
-      "solutionContent": "**1. Zweimal gleiche Farbe (2 BE)**\n$P(\\text{gleich}) = 0{,}5^2 + 0{,}3^2 + 0{,}2^2 = 0{,}25 + 0{,}09 + 0{,}04 = 0{,}38$.\n\n**2. Mindestens einmal Gelb (3 BE)**\nGegenereignis: \"Keinmal Gelb\" ($P(\\text{nicht Gelb}) = 0{,}8$).\n$P(\\text{min 1x Gelb}) = 1 - 0{,}8^2 = 1 - 0{,}64 = 0{,}36$.",
-      "scoring": {
-        "maxPoints": 5,
-        "passingPoints": 3,
-        "steps": [
-          {
-            "id": "s1",
-            "points": 2,
-            "description": "Pfadregel für gleiche Farben"
-          },
-          {
-            "id": "s2",
-            "points": 3,
-            "description": "Gegenereignis oder Addition für Gelb"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "8c2c7b50-6f7a-4c91-9e2b-3f4c6e5a1b3d",
-    "title": "A6 (Analysis, Niveau 1, 5 BE)",
-    "titleEn": "A6 (Analysis, Level 1, 5 BE)",
-    "description": "Graph der Ableitung f' und Interpretation.",
-    "descriptionEn": "Graph of derivative f' and interpretation.",
-    "weight": 1.0,
-    "tags": [
-      "GK"
-    ],
-    "contains": [],
-    "requires": [
-      "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa"
-    ],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur",
-      "demandLevel": "AB1"
-    },
-    "examData": {
-      "taskContent": "Gegeben ist der Graph der Ableitungsfunktion $f'$ einer Polynomfunktion $f$.\nDer Graph von $f'$ ist eine nach oben geöffnete Parabel, die die x-Achse in den Punkten $x_1 = -2$ und $x_2 = 2$ schneidet.\n\n1. Begründen Sie, welche Steigung der Graph von $f$ an der Stelle $x=0$ hat. (2 BE)\n2. Bestimmen Sie die x-Koordinaten der lokalen Extremstellen von $f$ und geben Sie jeweils die Art des Extremums an. (3 BE)",
-      "solutionContent": "**1. Steigung bei x=0 (2 BE)**\nParabel durch $(-2|0)$ und $(2|0)$ ist symmetrisch. Scheitel bei $x=0$ (unten). $f'(0) < 0$.\n**2. Extremstellen (3 BE)**\nNullstellen von $f'$: $-2$ und $2$. VZW bei $-2$ ($+ \\to -$): Hochpunkt. VZW bei $2$ ($- \\to +$): Tiefpunkt.",
-      "scoring": {
-        "maxPoints": 5,
-        "passingPoints": 3,
-        "steps": [
-          {
-            "id": "s1",
-            "points": 2,
-            "description": "Steigung begründet"
-          },
-          {
-            "id": "s2",
-            "points": 3,
-            "description": "Extremstellen und Art"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "3b4e9d1a-5f8c-4a3b-2e1d-7f9a8c6b5e0d",
-    "title": "A7 (Lineare Algebra, Niveau 2, 5 BE)",
-    "titleEn": "A7 (Linear Algebra, Level 2, 5 BE)",
-    "description": "Punkteschar und rechtwinkliges Dreieck.",
-    "descriptionEn": "Set of points and right-angled triangle.",
-    "weight": 1.0,
-    "tags": [
-      "GK"
-    ],
-    "contains": [],
-    "requires": [
-      "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
-    ],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur",
-      "demandLevel": "AB2"
-    },
-    "examData": {
-      "taskContent": "Gegeben sind die Punkte $A(2|0|0)$, $B(0|2|0)$ und eine Schar von Punkten $C_k(0|0|k)$ mit $k \\in \\mathbb{R}$.\nBestimmen Sie alle Werte für $k$, sodass das Dreieck $ABC_k$ im Punkt $C_k$ einen rechten Winkel hat.",
-      "solutionContent": "Rechter Winkel bei $C_k$: $\\vec{C_kA} \\cdot \\vec{C_kB} = 0$.\n$\\vec{C_kA} = (2, 0, -k)^T$, $\\vec{C_kB} = (0, 2, -k)^T$.\nSkalarprodukt: $0 + 0 + k^2 = 0 \\Rightarrow k=0$.",
-      "scoring": {
-        "maxPoints": 5,
-        "passingPoints": 3,
-        "steps": [
-          {
-            "id": "s1",
-            "points": 5,
-            "description": "Berechnung k"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "9e1c4b7a-3f2d-8a5c-6b0e-1d7f9a3c5b8e",
-    "title": "A8 (Lineare Algebra, Niveau 1, 5 BE)",
-    "titleEn": "A8 (Linear Algebra, Level 1, 5 BE)",
-    "description": "Geradengleichung und Punktprobe.",
-    "descriptionEn": "Line equation and point check.",
-    "weight": 1.0,
-    "tags": [
-      "GK"
-    ],
-    "contains": [],
-    "requires": [
-      "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
-    ],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur",
-      "demandLevel": "AB1"
-    },
-    "examData": {
-      "taskContent": "Gegeben sind die Punkte $P(1|2|3)$ und $Q(3|2|1)$.\n\n1. Stellen Sie eine Parametergleichung der Geraden $g$ durch $P$ und $Q$ auf. (3 BE)\n2. Prüfen Sie, ob der Punkt $R(5|2|-1)$ auf der Geraden $g$ liegt. (2 BE)",
-      "solutionContent": "**1. Gerade $g$ (3 BE)**\n$\\vec{x} = \\vec{OP} + r \\vec{PQ} = (1, 2, 3)^T + r(2, 0, -2)^T$.\n**2. Punktprobe (2 BE)**\n$(5, 2, -1)^T = (1, 2, 3)^T + r(2, 0, -2)^T \\Rightarrow r=2$. Liegt auf $g$.",
-      "scoring": {
-        "maxPoints": 5,
-        "passingPoints": 3,
-        "steps": [
-          {
-            "id": "s1",
-            "points": 3,
-            "description": "Geradengleichung"
-          },
-          {
-            "id": "s2",
-            "points": 2,
-            "description": "Punktprobe"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "5a7f9b3c-1e2d-6a8b-4c0e-9d3f5a7b1c6e",
-    "title": "A9 (Stochastik, Niveau 2, 5 BE)",
-    "titleEn": "A9 (Stochastics, Level 2, 5 BE)",
-    "description": "Fairness beim Gewinnspiel (Erwartungswert 0).",
-    "descriptionEn": "Fairness in a game (Expected value 0).",
-    "weight": 1.0,
-    "tags": [
-      "GK"
-    ],
-    "contains": [],
-    "requires": [
-      "4ab18312-0b43-461d-9154-3fba277baae7"
-    ],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur",
-      "demandLevel": "AB2"
-    },
-    "examData": {
-      "taskContent": "Bei einem Gewinnspiel beträgt der Einsatz $e$ Euro. Aus einer Urne mit 4 Gewinnerlosen und 6 Nieten wird ein Los gezogen.\nIst es ein Gewinnerlos, erhält man 10 Euro ausgezahlt. Ist es eine Niete, erhält man nichts.\nBestimmen Sie den Einsatz $e$ so, dass das Spiel fair ist (d.h. der Erwartungswert des Gewinns für den Spieler beträgt 0 Euro).",
-      "solutionContent": "E(Gewinn) = $0,4 \\cdot (10 - e) + 0,6 \\cdot (-e) = 0$.\n$4 - 0,4e - 0,6e = 0 \\Rightarrow 4 - e = 0 \\Rightarrow e = 4$ Euro.",
-      "scoring": {
-        "maxPoints": 5,
-        "passingPoints": 3,
-        "steps": [
-          {
-            "id": "s1",
-            "points": 5,
-            "description": "Einsatz berechnet"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "f13a3bae-88ed-53e9-b5a7-21179a264119",
-    "title": "Teil 2: Mit Hilfsmitteln (GK)",
-    "titleEn": "Part 2: With Aids (GK)",
-    "description": "Prüfungsteil 2 (55 BE): Analysis B (25 BE, Wahl), LA/AG C (15 BE, Pflicht), Stochastik D (15 BE, Pflicht). WTR/CAS erlaubt.",
-    "descriptionEn": "Exam Part 2 (55 BE): Analysis B (25 BE, choice), LA/AG C (15 BE, mandatory), Stochastics D (15 BE, mandatory). Calculator allowed.",
-    "weight": 2.0,
-    "tags": [
-      "GK"
-    ],
-    "contains": [
-      "0ba923a8-1641-51a7-b01e-7860bf97d513",
-      "2f4a8b6c-1e9d-3a5f-7b0e-8c2d4a6b1e3f",
-      "147b8cd6-b659-5581-9875-45c3339b522b",
-      "d1d1d1d1-d1d1-4d1d-8d1d-d1d1d1d1d1d1"
-    ],
-    "requires": [],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur"
-    }
-  },
-  {
-    "id": "0ba923a8-1641-51a7-b01e-7860bf97d513",
-    "title": "B1 (Analysis – \"Das Algenwachstum\", 25 BE)",
-    "titleEn": "B1 (Analysis – \"Algae Growth\", 25 BE)",
-    "description": "Logistisches Wachstum und Vergleich mit Exponentiell.",
-    "descriptionEn": "Logistic growth and comparison with exponential.",
-    "weight": 1.5,
-    "tags": [
-      "GK"
-    ],
-    "contains": [],
-    "requires": [
-      "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa",
-      "031b5000-16bb-430a-9c11-cb625f228bf4"
-    ],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur",
-      "demandLevel": "AB3"
-    },
-    "examData": {
-      "taskContent": "![Abb. 2: Ein See von oben. In der Mitte breitet sich ein grüner Teppich (Algen) kreisförmig aus. Daneben ein Graph, der die Fläche A(t) zeigt: sigmoidaler Verlauf (S-Kurve).](/assets/abi/2026_1/image2.de.png)\n\nDas Wachstum eines Algenteppichs auf einem See wird modelliert durch die Funktion:\n\n$$\nA(t) = \\frac{500}{1 + 49 \\cdot e^{-0{,}2 \\cdot t}} \\quad (t \\ge 0)\n$$\n\n($t$ in Tagen seit Beobachtungsbeginn, $A(t)$ in $m^2$).\n\n1. **Anfangszustand:** Berechnen Sie die bedeckte Fläche zu Beginn ($t=0$). (3 BE)\n2. **Sättigung:** Bestimmen Sie den Grenzwert von $A(t)$ für $t \\to \\infty$ und interpretieren Sie diesen im Sachkontext \"See\". (4 BE)\n3. **Wachstumsgeschwindigkeit:** Bestimmen Sie den Zeitpunkt, an dem der Algenteppich am schnellsten wächst. Wie groß ist die Zunahme an diesem Tag (in $m^2/\\text{Tag}$)? (8 BE)\n4. **Rückschritt:** Durch den Einsatz eines biologischen Mittels ändert sich das Modell ab Tag 30. Die Fläche nimmt ab Tag 30 exponentiell um 5% pro Tag ab.\n   Stellen Sie die neue Funktionsgleichung $A_{neu}(t)$ für $t \\ge 30$ auf.\n   Berechnen Sie, wann die Fläche wieder auf den Anfangswert von $t=0$ gesunken ist. (6 BE)\n5. **Bewertung:** Ein Experte kritisiert das logistische Modell $A(t)$ für die Anfangsphase, da Algen bei guten Bedingungen eher exponentiell wachsen. \n   Vergleichen Sie $A(t)$ für kleine $t$ mit einer geeigneten Exponentialfunktion und nehmen Sie Stellung. (4 BE)",
-      "solutionContent": "**1. Anfangszustand (3 BE)**\n$A(0) = 10,0 \\, m^2$.\n\n**2. Sättigung (4 BE)**\nGrenzwert 500. See-Fläche ist begrenzt.\n\n**3. Wendepunkt (8 BE)**\n$t \\approx 19,46$. Zunahme ca. $25 \\, m^2/Tag$.\n\n**4. Rückschritt (6 BE)**\n$A(30) \\approx 446$. $A_{neu}(t) = 446 \\cdot 0,95^{t-30}$. $t \\approx 104$ Tage.\n\n**5. Bewertung (4 BE)**\nNenner $\\approx 49 e^{-0,2t}$. $A(t) \\approx \\text{const} \\cdot e^{0,2t}$. Anfangs sehr gut exponentiell genähert.",
-      "scoring": {
-        "maxPoints": 25,
-        "passingPoints": 13,
-        "steps": [
-          {
-            "id": "s1",
-            "points": 3,
-            "description": "Anfangszustand"
-          },
-          {
-            "id": "s2",
-            "points": 4,
-            "description": "Grenzwert"
-          },
-          {
-            "id": "s3",
-            "points": 8,
-            "description": "Maximales Wachstum"
-          },
-          {
-            "id": "s4",
-            "points": 6,
-            "description": "Exponentielle Abnahme"
-          },
-          {
-            "id": "s5",
-            "points": 4,
-            "description": "Modell-Vergleich"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "2f4a8b6c-1e9d-3a5f-7b0e-8c2d4a6b1e3f",
-    "title": "B2 (Analysis – \"Der Bremstest\", 25 BE)",
-    "titleEn": "B2 (Analysis – \"Brake Test\", 25 BE)",
-    "description": "Geschwindigkeitsprofil, Bremsweg und Extremwerte.",
-    "descriptionEn": "Velocity profile, braking distance and extreme values.",
-    "weight": 1.5,
-    "tags": [
-      "GK"
-    ],
-    "contains": [],
-    "requires": [
-      "31be9ac9-f1af-4ce6-9856-41d2ec65e9aa",
-      "031b5000-16bb-430a-9c11-cb625f228bf4"
-    ],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur",
-      "demandLevel": "AB2"
-    },
-    "examData": {
-      "taskContent": "Ein Fahrzeug führt einen Bremstest durch. Die Geschwindigkeit wird für $0 \\le t \\le 10$ modelliert durch:\n\n$$\nv(t) = -\\frac{1}{40}t^3 + \\frac{3}{10}t^2 - \\frac{9}{4}t + 20\n$$\n\n($t$ in Sekunden, $v(t)$ in $m/s$).\n\n1. **Anfangsphase:** Bestimmen Sie die Geschwindigkeit zu Beginn ($t=0$) und zum Zeitpunkt $t=10$.\n   Berechnen Sie die Beschleunigung $a(t) = v'(t)$ zum Zeitpunkt $t=0$. (4 BE)\n2. **Extremwerte:** Bestimmen Sie den Zeitpunkt im Intervall $[0; 10]$, an dem die Geschwindigkeit am geringsten ist. (6 BE)\n3. **Bremsweg:** Die zurückgelegte Strecke entspricht dem Integral der Geschwindigkeitsfunktion.\n   Berechnen Sie die Strecke, die das Fahrzeug in den ersten 10 Sekunden zurücklegt.\n   Bestimmen Sie die Durchschnittsgeschwindigkeit in diesem Zeitraum. (8 BE)\n4. **Reaktion:** Ein Sensor überwacht die Bremswirkung. Er meldet ein Warnsignal (\"Brake Fading\"), sobald die Verzögerung (Bremskraft) im Verlauf des Bremsvorgangs **am geringsten** ist (lokales Maximum der Beschleunigung $a(t)$).\n   Ermitteln Sie rechnerisch den Zeitpunkt $t \\in [0; 10]$, an dem die Verzögerung am geringsten ist (lokales Maximum von $a(t)$), und geben Sie die dort herrschende Beschleunigung an. (7 BE)",
-      "solutionContent": "**1. Anfangsphase (4 BE)**\n$v(0) = 20$. $v(10) = 2,5$.\n$a(t) = -\\frac{3}{40}t^2 + \\frac{3}{5}t - \\frac{9}{4}$. $a(0) = -2,25 \\, m/s^2$.\n**2. Extremwerte (6 BE)**\n$v'(t) = 0$ hat im Intervall keine Lösung. Minimum am Rand $t=10$ ($v=2,5$).\n**3. Bremsweg (8 BE)**\nIntegral $\\int_0^{10} v(t) dt \\approx 118,75$ m. Durchschnitt $\\approx 11,9$ m/s.\n**4. Reaktion (7 BE)**\n$a'(t) = 0 \\Rightarrow -\\frac{6}{40}t + \\frac{3}{5} = 0 \\Rightarrow t=4$. $a(4) = -1,05 \\, m/s^2$.",
-      "scoring": {
-        "maxPoints": 25,
-        "passingPoints": 13,
-        "steps": [
-          {
-            "id": "s1",
-            "points": 4,
-            "description": "Geschwindigkeit und Beschleunigung"
-          },
-          {
-            "id": "s2",
-            "points": 6,
-            "description": "Minimum der Geschwindigkeit"
-          },
-          {
-            "id": "s3",
-            "points": 8,
-            "description": "Strecke und Durchschnitt"
-          },
-          {
-            "id": "s4",
-            "points": 7,
-            "description": "Maximalbeschleunigung"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "147b8cd6-b659-5581-9875-45c3339b522b",
-    "title": "C1 (Lineare Algebra - \"Das Solardach\", 15 BE)",
-    "titleEn": "C1 (Linear Algebra - \"Solar Roof\", 15 BE)",
-    "description": "Schattenwurf und optimaler Sonnenwinkel.",
-    "descriptionEn": "Cast shadow and optimal sun angle.",
-    "weight": 1.5,
-    "tags": [
-      "GK"
-    ],
-    "contains": [],
-    "requires": [
-      "5079ea22-57d1-483b-b9cc-5bebefb77dbc"
-    ],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur",
-      "demandLevel": "AB2"
-    },
-    "examData": {
-      "taskContent": "![Abb. 3: Ein modernes Haus mit einem schrägen Pultdach. Auf dem Dach ist ein rechteckiges Modul montiert. Die Sonne scheint in einem bestimmten Vektor darauf.](/assets/abi/2026_1/image3.de.png)\n\nIn einem Modell (1 LE = 1 m) liegen die Eckpunkte einer Dachfläche in $A(10|0|3)$, $B(10|10|3)$, $C(0|10|6)$ und $D(0|0|6)$.\n\n1. Zeigen Sie, dass die Dachfläche ein Rechteck ist. Bestimmen Sie eine Koordinatengleichung der Ebene $E$, in der das Dach liegt. (6 BE)\n2. **Schattenwurf:** Ein 10 m hoher Mast steht im Punkt $M(13|5|0)$. Die Sonnenstrahlen fallen in Richtung $\\vec{v} = \\begin{pmatrix} -1 \\\\ 0 \\\\ -2 \\end{pmatrix}$ ein.\n   Prüfen Sie rechnerisch, ob der Schatten der Mastspitze auf die Dachfläche fällt. (7 BE)\n3. **Effizienz:** Sonnenlicht liefert die maximale Energie, wenn es senkrecht auf die Fläche trifft.\n   Bestimmen Sie einen Vektor für den Sonnenstand, bei dem die Strahlen exakt senkrecht auf das Dach fallen. (2 BE)",
-      "solutionContent": "**1. Ebene (6 BE)**\nRechtecknachweis (Skalarprodukt=0, Längen). $E: 3x_1 + 10x_3 = 60$ (oder ähnlich).\n\n**2. Schattenwurf (7 BE)**\nGerade durch Mastspitze $S_M(13|5|10)$ mit $\\vec{v}$. Schnittpunkt mit $E$. $P(8|5|0)$.\n(Achtung: $P$ muss im Rechteck liegen. $0 \\le 8 \\le 10$ und $0 \\le 5 \\le 10$. Ja, Treffer).\n\n**3. Effizienz (2 BE)**\nNormalenvektor $\\vec{n} = (3, 0, 10)^T$ (oder vielfaches).",
-      "scoring": {
-        "maxPoints": 15,
-        "passingPoints": 8,
-        "steps": [
-          {
-            "id": "s1",
-            "points": 6,
-            "description": "Rechteck und Ebenengleichung"
-          },
-          {
-            "id": "s2",
-            "points": 7,
-            "description": "Schattenwurf (Schnittpunkt)"
-          },
-          {
-            "id": "s3",
-            "points": 2,
-            "description": "Normalenvektor"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "d1d1d1d1-d1d1-4d1d-8d1d-d1d1d1d1d1d1",
-    "title": "D1 (Stochastik – \"Viren-Screening\", 15 BE)",
-    "titleEn": "D1 (Stochastics – \"Virus Screening\", 15 BE)",
-    "description": "Hypothesentest und Fehlerarten.",
-    "descriptionEn": "Hypothesis testing and error types.",
-    "weight": 1.5,
-    "tags": [
-      "GK"
-    ],
-    "contains": [],
-    "requires": [
-      "4ab18312-0b43-461d-9154-3fba277baae7"
-    ],
-    "dimensionTags": {
-      "framework": "hessen-kc-2024",
-      "phase": "Abitur",
-      "demandLevel": "AB2"
-    },
-    "examData": {
-      "taskContent": "Ein Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).\nDie Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).\n\n1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (5 BE)\n2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.\n   Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.\n   Interpretieren Sie das (vermutlich schockierend niedrige) Ergebnis für die Teststrategie. (6 BE)\n3. **Testoptimierung:** Wie oft muss der Test bei einer Person wiederholt werden (unabhängig), damit bei lauter positiven Ergebnissen die Wahrscheinlichkeit für eine tatsächliche Infektion auf über 90% steigt? (4 BE)",
-      "solutionContent": "**1. Testanalyse (5 BE)**\n$P(Pos) \\approx 2,5\\%$.\n\n**2. Bayes (6 BE)**\n$P(C|Pos) \\approx 19,9\\%$.\n\n**3. Optimierung (4 BE)**\nMehrfachtestung zur Erhöhung der Sicherheit.",
-      "scoring": {
-        "maxPoints": 15,
-        "passingPoints": 8,
-        "steps": [
-          {
-            "id": "s1",
-            "points": 5,
-            "description": "Totale Wahrscheinlichkeit"
-          },
-          {
-            "id": "s2",
-            "points": 6,
-            "description": "Bedingte Wahrscheinlichkeit"
-          },
-          {
-            "id": "s3",
-            "points": 4,
-            "description": "Wiederholung/Optimierung"
-          }
-        ]
-      }
-    }
-  }
-]
+  ]
 }
