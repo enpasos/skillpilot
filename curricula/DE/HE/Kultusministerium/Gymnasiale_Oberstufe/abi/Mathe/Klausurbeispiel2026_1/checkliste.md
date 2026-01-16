@@ -4,9 +4,13 @@ Bezug: la26_abiturerlass_mathe.txt, SkillPilot_Niveausteuerung_Mathe_Hessen.md, 
 
 ## 1) Metadaten und Formalia
 - [ ] Jede Aufgabe hat eine eindeutige ID sowie course_level (GK/LK/LK_SfE), exam_part (A/B/C/D), domain (analysis/linalg_geo/stoch), niveau (1/2), allowed_tools und BE-Zuordnung.
+- [ ] Jede Aufgabe und Teilaufgabe hat eine Angabe der BEs.
+- [ ] Jede Aufgabe gibt das Niveau an.
 - [ ] Operatoren passen zum beabsichtigten Niveau (AB1-AB3).
 - [ ] Aufgaben sind innerhalb eines Prüfungsteils unabhängig (keine Abhängigkeiten zwischen Aufgaben).
 - [ ] Sprachliche Richtigkeit (Rechtschreibung/Zeichensetzung) ist gewährleistet (Vorbildfunktion, vgl. OAVO).
+- [ ] Wording ist unmissverständlich (keine Mehrdeutigkeiten in Auftrag, Bedingungen, Größen/Bezugssystemen).
+- [ ] Fremdwörter außerhalb des Lernkontexts, die nicht vorausgesetzt werden können, sind kurz erklärt.
 
 ## 2) Struktur Teil 1 (hilfsmittelfrei, 5 BE je Aufgabe)
 - [ ] GK: 9 Aufgaben angeboten (3 Pflicht Niveau 1: je Analysis/Linalg/Stoch; 3 Wahl Niveau 1; 3 Wahl Niveau 2).
@@ -48,10 +52,12 @@ Bezug: la26_abiturerlass_mathe.txt, SkillPilot_Niveausteuerung_Mathe_Hessen.md, 
 
 ## 7) Qualitäts-Check und Niveau-/Komplexitäts-Tabelle
 - [ ] Qualitäts-Check (Selbstprüfung) ist vorhanden und enthält konkrete, überprüfbare Aussagen zu Komplexität, Kontext und Fallen.
+- [ ] Wo eine Darstellung sinnvoll ist (z. B. Geometrie/Sachkontext), ist ein Bild vorhanden; keine unnötigen Bilder.
 - [ ] Niveau-/Komplexitäts-Tabelle (Abschnitt C) ist vorhanden und vollständig ausgefüllt.
 - [ ] Qualitäts-Check und Tabelle sind konsistent mit Niveau, Teil (A/B/C/D), Domain und BE-Zuordnung der Aufgaben.
 
 ## 8) Konsistenz von Aufgabe, Musterlösung, BEs
+- [ ] Der logische Fluss der Aufgaben ist fachlich korrekt (keine unzulässigen Sprünge, Annahmen und Verweise sind konsistent).
 - [ ] Musterlösung ist fachlich korrekt und vollständig; jeder BE ist einer klaren Teilleistung zugeordnet.
 - [ ] BE-Verteilung passt zur Aufgabenstruktur und zum geforderten Niveau.
 - [ ] Rechenweg, Kontextdeutung und Einheiten sind konsistent.

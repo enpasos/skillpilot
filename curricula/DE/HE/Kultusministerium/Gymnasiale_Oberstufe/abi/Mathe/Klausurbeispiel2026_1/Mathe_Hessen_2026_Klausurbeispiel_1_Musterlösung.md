@@ -1,4 +1,4 @@
-# Musterlösung: Landesabitur Mathematik (Hessen) 2026 – SkillPilot Beispielklausur 1
+# Musterlösung: Landesabitur Mathematik (Hessen) 2026 – SkillPilot Beispielklausur 1 (v2.0)
 
 ---
 
@@ -137,10 +137,7 @@ $a(0) = -2,25\,m/s^2$ (Fahrzeug bremst).
 
 **2. Extremwerte (6 BE)**
 $v'(t) = 0 \Rightarrow -\frac{3}{40}t^2 + \frac{6}{10}t - \frac{9}{4} = 0$.
-Lösungen (GTR/p-q): $t_1 = 4 - \sqrt{16-30}$ ... Moment, Diskriminante prüfen.
-Mit GTR/Solver: Minimum im Intervall suchen.
-Graph zeichnen: Funktion fällt zunächst, Minimum bei ca. $t=2$ ?
-Nein, $v'(t)$ hat Nullstelle bei $t=4$ ($v'(4) = -1,2+2,4-2,25 \ne 0$).
+Lösungen (GTR/p-q): Diskriminante prüfen.
 Rechnerische Prüfung $v'(t)=0$: $-0,075t^2 + 0,6t - 2,25 = 0 \Rightarrow t^2 - 8t + 30 = 0$.
 Diskriminante $64 - 120 < 0$. Keine Nullstelle. $v(t)$ ist streng monoton fallend.
 Kleinster Wert am Rand $t=10$ mit $v(10) = 2,5\,m/s$.
@@ -152,39 +149,56 @@ $s = V(10) - V(0) = -62,5 + 100 - 112,5 + 200 = 125\,m$.
 Durchschnitt: $\bar{v} = \frac{125}{10} = 12,5\,m/s$.
 
 **4. Reaktion (7 BE)**
-Gesucht: Minimum von $a(t)$ bzw. Wendepunkt von $v(t)$.
+Gesucht ist das lokale Extremum der Beschleunigung $a(t)$ bzw. der Wendepunkt von $v(t)$.
 $a'(t) = v''(t) = -\frac{3}{20}t + \frac{3}{5}$.
-$0 = -0,15t + 0,6 \Rightarrow t = 4$.
-Zum Zeitpunkt $t=4\,s$ ist die Verzögerung am größten.
+Notwendige Bedingung $a'(t) = 0$:
+$-\frac{3}{20}t + \frac{3}{5} = 0 \Rightarrow 0,6 = 0,15t \Rightarrow t = 4$.
+Überprüfung (z.B. $a''(4) < 0$ oder Vorzeichenwechsel): Es handelt sich um ein lokales Maximum der Beschleunigung (geringste Verzögerung).
+Beschleunigungswert: $a(4) = -\frac{3}{40}\cdot 16 + \frac{3}{5}\cdot 4 - 2,25 = -1,2 + 2,4 - 2,25 = -1,05 \, m/s^2$.
 
 ### C1 (Lineare Algebra - "Das Solardach") – 15 BE
 
 Eckpunkte: $A(10|0|3), B(10|10|3), C(0|10|6), D(0|0|6)$.
 
 **1. Rechteck und Ebene (5 BE)**
-$\vec{AB} \cdot \vec{AD} = 0$ (rechter Winkel). Längen gleich.
-Normalenvektor $\vec{n} = \begin{pmatrix} 3\\0\\1 \end{pmatrix}$.
-Ebene $E: 3x_1 + x_3 = 33$.
+$\vec{AB} = \begin{pmatrix} 0 \\ 10 \\ 0 \end{pmatrix}$, $\vec{AD} = \begin{pmatrix} -10 \\ 0 \\ 3 \end{pmatrix}$.
+$\vec{AB} \cdot \vec{AD} = 0$ (Rechteck).
+Normalenvektor $\vec{n} = \vec{AB} \times \vec{AD} = \begin{pmatrix} 30 \\ 0 \\ 100 \end{pmatrix}$. Gekürzt: $\vec{n} = \begin{pmatrix} 3 \\ 0 \\ 10 \end{pmatrix}$.
+Normalenform: $3x_1 + 10x_3 = c$. Punkt $A(10|0|3)$ einsetzen: $3\cdot 10 + 10\cdot 3 = 60$.
+Ebene $E: 3x_1 + 10x_3 = 60$.
 
 **2. Schattenwurf (5 BE)**
-Gerade durch Spitze $S_M(13|5|10)$ mit $\vec{v}=\begin{pmatrix}-1\\0\\-2\end{pmatrix}$.
-Schnitt mit $E$: $3(13-r) + (10-2r) = 33 \Rightarrow r=3,2$.
-Schnittpunkt $S(9,8|5|3,6)$.
-Da $0 \le 9,8 \le 10$ und $0 \le 5 \le 10$, liegt der Punkt auf dem Dach.
+Gerade $g: \vec{x} = \begin{pmatrix} 13 \\ 5 \\ 10 \end{pmatrix} + r \cdot \begin{pmatrix} -1 \\ 0 \\ -2 \end{pmatrix}$.
+Einsetzen in $E$: $3(13-r) + 10(10-2r) = 60$.
+$39 - 3r + 100 - 20r = 60 \Rightarrow 139 - 23r = 60 \Rightarrow 23r = 79 \Rightarrow r \approx 3,43$.
+Schattenpunkt $S$:
+$x_1 = 13 - 3,43 = 9,57$.
+$x_2 = 5 - 0 = 5$.
+$x_3 = 10 - 2(3,43) = 3,14$.
+Punktprobe Dachfläche: $0 \le 9,57 \le 10$ und $0 \le 5 \le 10$.
+**Ergebnis:** Der Schatten fällt auf die Dachfläche.
 
 **3. Effizienz (5 BE)**
-Winkel zwischen $\vec{v}$ und $\vec{n}$:
-$\cos \gamma = \frac{|-3-2|}{\sqrt{5}\sqrt{10}} = \frac{5}{\sqrt{50}} \approx 0,707 \Rightarrow 45^\circ$.
-Einfallswinkel zur Fläche beträgt ebenfalls $45^\circ$.
+Winkel $\gamma$ zwischen $\vec{v}=\begin{pmatrix}-1\\0\\-2\end{pmatrix}$ und $\vec{n}=\begin{pmatrix}3\\0\\10\end{pmatrix}$.
+$\cos \varphi = \frac{|\vec{v} \cdot \vec{n}|}{|\vec{v}| \cdot |\vec{n}|} = \frac{|-3 + 0 - 20|}{\sqrt{5} \cdot \sqrt{9 + 100}} = \frac{23}{\sqrt{5} \cdot \sqrt{109}} \approx 0,985$.
+Winkel zur Normalen: $\varphi \approx 9,9^\circ$.
+Einfallswinkel zur Dachfläche: $\alpha = 90^\circ - 9,9^\circ = 80,1^\circ$.
 
 ### D1 (Stochastik – "Viren-Screening") – 15 BE
 
-**1. Wahrscheinlichkeit Positiv (6 BE)**
+**1. Wahrscheinlichkeit Positiv (4 BE)**
 $P(T+) = 0,005 \cdot 0,99 + 0,995 \cdot 0,02 \approx 2,49\%$.
 
-**2. Bedingte Wahrscheinlichkeit (9 BE)**
+**2. Bedingte Wahrscheinlichkeit (6 BE)**
 $P(C|T+) = \frac{0,00495}{0,02485} \approx 19,9\%$.
 Interpretation: Wegen der geringen Prävalenz sind die meisten positiven Ergebnisse falsch-positiv. Ein einzelner Test ist kaum aussagekräftig.
+
+**3. Massen-Screening (5 BE)**
+Gesucht ist $n$ für $P(X \ge 1) > 0,99$ mit $p \approx 0,02485$.
+Ansatz: $1 - P(X=0) > 0,99 \Leftrightarrow 1 - (1-p)^n > 0,99 \Leftrightarrow (0,97515)^n < 0,01$.
+Logarithmieren: $n \cdot \ln(0,97515) < \ln(0,01)$.
+$n > \frac{\ln(0,01)}{\ln(0,97515)} \approx 182,8$.
+Es müssen mindestens 183 Personen getestet werden.
 
 ---
 
@@ -267,7 +281,11 @@ Max bei $x=100$: $195,5\,m$.
 $k'(100) \approx 2,90 \Rightarrow \alpha \approx 71^\circ$.
 
 **4. Fläche (7 BE)**
-$A = \int_{-100}^{100} (k(x)-f(x)) dx \approx 19.550\,m^2$.
+Integralfunktion: $A = \int_{-100}^{100} (k(x) - f(x)) \, dx$.
+Stammfunktion $K(x)$ zu $k(x) = 20(e^{0,02x} + e^{-0,02x})$ ist $1000(e^{0,02x} - e^{-0,02x})$.
+Wert $\int_{-100}^{100} k(x) dx = K(100) - K(-100) \approx 14.507,4$.
+Integral der Parabel $f(x)$ im gleichen Intervall liefert $\approx -2.333,3$.
+Differenzfläche: $14.507,4 - (-2.333,3) \approx 16.841 \, m^2$.
 
 **5. Variation (6 BE)**
 $k_a'(100) = e^{100a} - e^{-100a}$.
@@ -307,22 +325,33 @@ Der Parameter $k$ muss durch $\sqrt{2}$ geteilt (verkleinert) werden.
 Spaltensummen = 1 $\Rightarrow$ geschlossenes System.
 
 **2. Prognose (8 BE)**
-$\vec{v}_{10} = M^{10} \cdot \vec{v}_0 \approx (1440, 3940, 4620)^T$.
-Fixvektor bestimmen: $(1053, 4210, 4737)^T$.
+$\vec{v}_{10} = M^{10} \cdot \begin{pmatrix} 10000 \\ 0 \\ 0 \end{pmatrix} \approx \begin{pmatrix} 1128 \\ 4254 \\ 4618 \end{pmatrix}$ (gerundet).
+Langfristiges Gleichgewicht (Fixvektor): $\approx (1053, 4210, 4737)^T$.
 
 **3. Rekonstruktion (8 BE)**
-LGS $M \cdot \vec{x} = \vec{b}$ lösen oder $\vec{x} = M^{-1}\vec{b}$.
-Ergebnis enthält negative Werte $\Rightarrow$ Keine gültige Vorgängerverteilung (System gestört).
+LGS $M \cdot \vec{x}_t = \begin{pmatrix} 500 \\ 800 \\ 1000 \end{pmatrix}$ lösen.
+Lösung: $\vec{x}_t \approx \begin{pmatrix} 745 \\ 531 \\ 1024 \end{pmatrix}$.
+Interpretation: Da die Lösung aus positiven Werten besteht, existiert eine gültige Vorgängerverteilung (System war in diesem Schritt nicht gestört).
 
 ### D1 (Stochastik – "Viren-Screening") – 20 BE
 
-**1. Testanalyse (5 BE)**
+**1. Testanalyse (4 BE)**
 $P(T+) \approx 2,49\%$.
 
-**2. Bedingte Wahrscheinlichkeit (6 BE)**
+**2. Bedingte Wahrscheinlichkeit (5 BE)**
 $P(C|T+) \approx 19,9\%$.
 
-**3. Testoptimierung (9 BE)**
+**3. Testoptimierung (6 BE)**
 Bayes für $n$ Tests.
 Für $n=2$ steigt $P(C|2\times T+)$ auf ca. $92\%$.
 Kritik: Tests an derselben Person sind biochemisch oft abhängig (systematischer Fehler), daher ist die Rechnung $P^n$ in der Realität fragwürdig.
+
+**4. Kapazitätsplanung (5 BE)**
+$X$ ist $B_{2000; 0,02}$-verteilt (Anzahl Falsch-Positive).
+Gesucht ist $k$ für $P(X \le k) \ge 0,95$.
+Erwartungswert $\mu = 2000 \cdot 0,02 = 40$. Standardabweichung $\sigma = \sqrt{40 \cdot 0,98} \approx 6,26$.
+Näherung über Sigma-Regeln ($1,64\sigma$ für 95% einseitig) oder GTR kumulierte Binomialverteilung.
+GTR-Tabelle:
+$P(X \le 50) \approx 0,9506$.
+$P(X \le 49) \approx 0,935$.
+**Ergebnis:** Es muss mit bis zu $k=50$ falsch-positiven Ergebnissen gerechnet werden.

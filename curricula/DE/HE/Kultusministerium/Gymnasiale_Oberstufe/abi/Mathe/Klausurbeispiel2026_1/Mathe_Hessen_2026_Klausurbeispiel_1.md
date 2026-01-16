@@ -1,4 +1,4 @@
-# Landesabitur Mathematik (Hessen) 2026 – SkillPilot Beispielklausur 1
+# Landesabitur Mathematik (Hessen) 2026 – SkillPilot Beispielklausur 1 (v2.0)
 
 ## **GK & LK – Version „Realitätsnah & Komplex“ (Klausur 1)**
 
@@ -132,8 +132,8 @@ $$
 3.  **Bremsweg:** Die zurückgelegte Strecke entspricht dem Integral der Geschwindigkeitsfunktion.
     Berechnen Sie die Strecke, die das Fahrzeug in den ersten 10 Sekunden zurücklegt.
     Bestimmen Sie die Durchschnittsgeschwindigkeit in diesem Zeitraum. (8 BE)
-4.  **Reaktion:** Ein Sensor meldet "Gefahr", sobald die Verzögerung (negative Beschleunigung) am stärksten ist (Minimum der Beschleunigung / Wendepunkt von $v$).
-    Ermitteln Sie diesen Zeitpunkt rechnerisch. (7 BE)
+4.  **Reaktion:** Ein Sensor analysiert die Änderung der Bremskraft. Er meldet einen Statuswechsel, wenn die Beschleunigung $a(t)$ ein lokales Extremum erreicht (Wendepunkt der Geschwindigkeit $v$).
+    Ermitteln Sie diesen Zeitpunkt rechnerisch und geben Sie die dort herrschende Beschleunigung an. (7 BE)
 
 <div style="page-break-after: always;"></div>
 
@@ -156,10 +156,11 @@ In einem Modell (1 LE = 1 m) liegen die Eckpunkte einer Dachfläche in $A(10|0|3
 Ein Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).
 Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).
 
-1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (6 BE)
+1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (4 BE)
 2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.
    Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.
-   Interpretieren Sie das Ergebnis im Hinblick auf die Verlässlichkeit eines einzelnen Massentests. (9 BE)
+   Interpretieren Sie das Ergebnis im Hinblick auf die Verlässlichkeit eines einzelnen Massentests. (6 BE)
+3. **Massen-Screening:** Wie viele Personen müssen mindestens getestet werden, damit mit einer Wahrscheinlichkeit von mehr als 99% mindestens ein positives Testergebnis auftritt? (5 BE)
 
 ---
 
@@ -309,15 +310,16 @@ $$
 Ein Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).
 Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).
 
-1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (5 BE)
+1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (4 BE)
 2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.
    Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.
-   Interpretieren Sie das (vermutlich schockierend niedrige) Ergebnis für die Teststrategie. (6 BE)
+   Interpretieren Sie das (vermutlich schockierend niedrige) Ergebnis für die Teststrategie. (5 BE)
 3. **Testoptimierung:** Wie oft muss der Test bei einer Person wiederholt werden (unabhängig), damit bei lauter positiven Ergebnissen die Wahrscheinlichkeit für eine tatsächliche Infektion auf über 90% steigt?
-   Diskutieren Sie die Annahme der "Unabhängigkeit" bei wiederholten Tests an derselben Person. (9 BE)
+   Diskutieren Sie die Annahme der "Unabhängigkeit" bei wiederholten Tests an derselben Person. (6 BE)
+4. **Kapazitätsplanung:** Ein Labor wertet eine Serie von 2.000 Proben aus, die alle von nicht-infizierten Personen stammen (Szenario zur Überprüfung der Falsch-Positiv-Rate $p=0,02$).
+   Bestimmen Sie die kleinste Zahl $k$, sodass die Anzahl der falsch-positiven Ergebnisse mit einer Wahrscheinlichkeit von mindestens 95% im Intervall $[0; k]$ liegt. (5 BE)
 
-
-<div style="page-break-after: always;"></div>
+---
 
 ### Qualitäts-Check (Selbstprüfung):
 
