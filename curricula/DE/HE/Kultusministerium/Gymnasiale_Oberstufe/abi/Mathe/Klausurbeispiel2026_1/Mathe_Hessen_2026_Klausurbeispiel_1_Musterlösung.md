@@ -1,4 +1,4 @@
-# Musterlösung: Landesabitur Mathematik (Hessen) 2026 – SkillPilot Beispielklausur 1 (v2.0)
+# Musterlösung: Landesabitur Mathematik (Hessen) 2026 – SkillPilot Beispielklausur 1 (v2.2)
 
 ---
 
@@ -149,12 +149,13 @@ $s = V(10) - V(0) = -62,5 + 100 - 112,5 + 200 = 125\,m$.
 Durchschnitt: $\bar{v} = \frac{125}{10} = 12,5\,m/s$.
 
 **4. Reaktion (7 BE)**
-Gesucht ist das lokale Extremum der Beschleunigung $a(t)$ bzw. der Wendepunkt von $v(t)$.
-$a'(t) = v''(t) = -\frac{3}{20}t + \frac{3}{5}$.
-Notwendige Bedingung $a'(t) = 0$:
-$-\frac{3}{20}t + \frac{3}{5} = 0 \Rightarrow 0,6 = 0,15t \Rightarrow t = 4$.
-Überprüfung (z.B. $a''(4) < 0$ oder Vorzeichenwechsel): Es handelt sich um ein lokales Maximum der Beschleunigung (geringste Verzögerung).
-Beschleunigungswert: $a(4) = -\frac{3}{40}\cdot 16 + \frac{3}{5}\cdot 4 - 2,25 = -1,2 + 2,4 - 2,25 = -1,05 \, m/s^2$.
+Gesucht ist das **lokale Maximum der Beschleunigung** $a(t)$ (da $a(t)$ negativ ist, entspricht das Maximum dem Wert, der am nächsten bei 0 liegt $\to$ geringste Verzögerung). Dies entspricht der Wendestelle von $v(t)$.
+* $a(t) = -\frac{3}{40}t^2 + \frac{3}{5}t - \frac{9}{4}$.
+* Notwendige Bedingung $a'(t) = 0$:
+    $-\frac{3}{20}t + \frac{3}{5} = 0 \Rightarrow 0,15t = 0,6 \Rightarrow t = 4$.
+* Hinreichende Bedingung: $a''(t) = -\frac{3}{20} < 0 \Rightarrow$ Maximum bei $t=4$.
+* Funktionswert: $a(4) = -\frac{3}{40}\cdot 16 + \frac{3}{5}\cdot 4 - 2,25 = -1,2 + 2,4 - 2,25 = -1,05 \, m/s^2$.
+**Ergebnis:** Nach 4 Sekunden ist die Bremswirkung am schwächsten ("Fading"). Der Sensor schlägt an.
 
 ### C1 (Lineare Algebra - "Das Solardach") – 15 BE
 
@@ -162,25 +163,27 @@ Eckpunkte: $A(10|0|3), B(10|10|3), C(0|10|6), D(0|0|6)$.
 
 **1. Rechteck und Ebene (5 BE)**
 $\vec{AB} = \begin{pmatrix} 0 \\ 10 \\ 0 \end{pmatrix}$, $\vec{AD} = \begin{pmatrix} -10 \\ 0 \\ 3 \end{pmatrix}$.
-$\vec{AB} \cdot \vec{AD} = 0$ (Rechteck).
+$\vec{AB} \cdot \vec{AD} = 0$ (rechter Winkel bei A).
+Zusätzlich prüfen: $\vec{DC} = \begin{pmatrix} 0-0 \\ 10-0 \\ 6-6 \end{pmatrix} = \begin{pmatrix} 0 \\ 10 \\ 0 \end{pmatrix} = \vec{AB}$.
+Da $\vec{AB} = \vec{DC}$ und ein rechter Winkel vorliegt $\Rightarrow$ Rechteck.
 Normalenvektor $\vec{n} = \vec{AB} \times \vec{AD} = \begin{pmatrix} 30 \\ 0 \\ 100 \end{pmatrix}$. Gekürzt: $\vec{n} = \begin{pmatrix} 3 \\ 0 \\ 10 \end{pmatrix}$.
-Normalenform: $3x_1 + 10x_3 = c$. Punkt $A(10|0|3)$ einsetzen: $3\cdot 10 + 10\cdot 3 = 60$.
 Ebene $E: 3x_1 + 10x_3 = 60$.
 
 **2. Schattenwurf (5 BE)**
-Gerade $g: \vec{x} = \begin{pmatrix} 13 \\ 5 \\ 10 \end{pmatrix} + r \cdot \begin{pmatrix} -1 \\ 0 \\ -2 \end{pmatrix}$.
-Einsetzen in $E$: $3(13-r) + 10(10-2r) = 60$.
-$39 - 3r + 100 - 20r = 60 \Rightarrow 139 - 23r = 60 \Rightarrow 23r = 79 \Rightarrow r \approx 3,43$.
-Schattenpunkt $S$:
+Gerade $g: \vec{x} = \begin{pmatrix} 13 \\ 5 \\ 0 \end{pmatrix} + r \cdot \begin{pmatrix} -1 \\ 0 \\ -2 \end{pmatrix}$. (Fußpunkt $M(13|5|0)$, Spitze $S(13|5|10)$. Lichtstrahl beginnt bei S).
+$g_{Licht}: \vec{x} = \begin{pmatrix} 13 \\ 5 \\ 10 \end{pmatrix} + r \cdot \begin{pmatrix} -1 \\ 0 \\ -2 \end{pmatrix}$.
+Schnitt mit E: $3(13-r) + 10(10-2r) = 60$.
+$39 - 3r + 100 - 20r = 60 \Rightarrow 139 - 23r = 60 \Rightarrow 79 = 23r \Rightarrow r \approx 3,43$.
+Schattenpunkt $P_S$:
 $x_1 = 13 - 3,43 = 9,57$.
-$x_2 = 5 - 0 = 5$.
-$x_3 = 10 - 2(3,43) = 3,14$.
-Punktprobe Dachfläche: $0 \le 9,57 \le 10$ und $0 \le 5 \le 10$.
+$x_2 = 5$.
+$x_3 = 10 - 6,86 = 3,14$.
+Punktprobe: $0 \le 9,57 \le 10$ (x-Richtung des Daches) und $0 \le 5 \le 10$ (y-Richtung).
 **Ergebnis:** Der Schatten fällt auf die Dachfläche.
 
 **3. Effizienz (5 BE)**
 Winkel $\gamma$ zwischen $\vec{v}=\begin{pmatrix}-1\\0\\-2\end{pmatrix}$ und $\vec{n}=\begin{pmatrix}3\\0\\10\end{pmatrix}$.
-$\cos \varphi = \frac{|\vec{v} \cdot \vec{n}|}{|\vec{v}| \cdot |\vec{n}|} = \frac{|-3 + 0 - 20|}{\sqrt{5} \cdot \sqrt{9 + 100}} = \frac{23}{\sqrt{5} \cdot \sqrt{109}} \approx 0,985$.
+$\cos \varphi = \frac{|\vec{v} \cdot \vec{n}|}{|\vec{v}| \cdot |\vec{n}|} = \frac{|-3 + 0 - 20|}{\sqrt{5} \cdot \sqrt{109}} = \frac{23}{\sqrt{545}} \approx 0,985$.
 Winkel zur Normalen: $\varphi \approx 9,9^\circ$.
 Einfallswinkel zur Dachfläche: $\alpha = 90^\circ - 9,9^\circ = 80,1^\circ$.
 
@@ -323,6 +326,7 @@ Der Parameter $k$ muss durch $\sqrt{2}$ geteilt (verkleinert) werden.
 
 **1. Systemverständnis (4 BE)**
 Spaltensummen = 1 $\Rightarrow$ geschlossenes System.
+**Übergangsdiagramm:** 3 Knoten A, B, C. Pfeile von jedem Knoten zu den anderen entsprechend den Matrix-Spalten. (z.B. A geht zu 60% auf sich selbst, 30% zu B, 10% zu C).
 
 **2. Prognose (8 BE)**
 $\vec{v}_{10} = M^{10} \cdot \begin{pmatrix} 10000 \\ 0 \\ 0 \end{pmatrix} \approx \begin{pmatrix} 1128 \\ 4254 \\ 4618 \end{pmatrix}$ (gerundet).
@@ -333,25 +337,25 @@ LGS $M \cdot \vec{x}_t = \begin{pmatrix} 500 \\ 800 \\ 1000 \end{pmatrix}$ löse
 Lösung: $\vec{x}_t \approx \begin{pmatrix} 745 \\ 531 \\ 1024 \end{pmatrix}$.
 Interpretation: Da die Lösung aus positiven Werten besteht, existiert eine gültige Vorgängerverteilung (System war in diesem Schritt nicht gestört).
 
-### D1 (Stochastik – "Viren-Screening") – 20 BE
+### D1 (Stochastik – "Viren-Screening & Testgüte") – 20 BE
 
 **1. Testanalyse (4 BE)**
 $P(T+) \approx 2,49\%$.
 
 **2. Bedingte Wahrscheinlichkeit (5 BE)**
-$P(C|T+) \approx 19,9\%$.
+$P(C|T+) \approx 19,9\%$. (3 BE Rechnung, 2 BE Interpretation "Vorsicht bei Massentest").
 
 **3. Testoptimierung (6 BE)**
-Bayes für $n$ Tests.
-Für $n=2$ steigt $P(C|2\times T+)$ auf ca. $92\%$.
-Kritik: Tests an derselben Person sind biochemisch oft abhängig (systematischer Fehler), daher ist die Rechnung $P^n$ in der Realität fragwürdig.
+Bayes für $n$ Tests. Ziel $P(C | n \times \text{Positiv}) > 0,9$.
+Für $n=2$: $P \approx 92\%$.
+Also 1 Wiederholung (insgesamt 2 Tests) reicht rechnerisch aus.
+Kritik (1 BE): Tests an derselben Person sind biochemisch oft abhängig (systematischer Fehler), daher ist die Rechnung $P^n$ in der Realität fragwürdig.
 
 **4. Kapazitätsplanung (5 BE)**
 $X$ ist $B_{2000; 0,02}$-verteilt (Anzahl Falsch-Positive).
 Gesucht ist $k$ für $P(X \le k) \ge 0,95$.
-Erwartungswert $\mu = 2000 \cdot 0,02 = 40$. Standardabweichung $\sigma = \sqrt{40 \cdot 0,98} \approx 6,26$.
-Näherung über Sigma-Regeln ($1,64\sigma$ für 95% einseitig) oder GTR kumulierte Binomialverteilung.
-GTR-Tabelle:
+Erwartungswert $\mu = 40$. $\sigma \approx 6,26$.
+GTR kumulierte Binomialverteilung:
 $P(X \le 50) \approx 0,9506$.
 $P(X \le 49) \approx 0,935$.
 **Ergebnis:** Es muss mit bis zu $k=50$ falsch-positiven Ergebnissen gerechnet werden.
