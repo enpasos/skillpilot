@@ -1,4 +1,4 @@
-# Musterlösung: Landesabitur Mathematik (Hessen) 2026 – SkillPilot Beispielklausur 1 (v2.2)
+# Musterlösung: Landesabitur Mathematik (Hessen) 2026 – SkillPilot Beispielklausur 1 (v2.3)
 
 ---
 
@@ -6,7 +6,7 @@
 
 Diese Musterlösung dient als Erwartungshorizont für die Klausur. Die angegebenen Bewertungseinheiten (BE) sind auf die Vorgaben (GK 80 BE, LK 100 BE) abgestimmt.
 
-> **Hinweis zur Auswahl:** Diese Lösung deckt den **gesamten** Aufgabenpool ab. Bitte nur die Lösungen für die Aufgaben werten, die von der Lehrkraft für die Prüfung ausgewählt wurden.
+> **Hinweis zur Auswahl:** Diese Lösung deckt den **gesamten** Aufgabenpool ab. Bitte nur die Lösungen für die Aufgaben werten, die vom Prüfling zur Bearbeitung ausgewählt wurden.
 
 ---
 
@@ -44,8 +44,8 @@ Da der Berührpunkt $u \approx 1,45$ vor der Spitze $x=2,5$ liegt und der Deich 
 
 Urne: 2 Rot, 3 Schwarz ($n=3$, m.Z.).
 
-1.  **Genau 2 Rot:** $P(X=2) = \binom{3}{2} \cdot (\frac{2}{5})^2 \cdot \frac{3}{5} = 3 \cdot \frac{12}{125} = \frac{36}{125}$. (2 BE)
-2.  **Erst Rot, dann nie wieder:** $P = \frac{2}{5} \cdot \frac{3}{5} \cdot \frac{3}{5} = \frac{18}{125}$. (3 BE)
+1. **Genau 2 Rot:** $P(X=2) = \binom{3}{2} \cdot (\frac{2}{5})^2 \cdot \frac{3}{5} = 3 \cdot \frac{12}{125} = \frac{36}{125}$. (2 BE)
+2. **Erst Rot, dann nie wieder:** $P = \frac{2}{5} \cdot \frac{3}{5} \cdot \frac{3}{5} = \frac{18}{125}$. (3 BE)
 
 ### A4 (Lineare Algebra) – 5 BE
 
@@ -57,8 +57,8 @@ Spurpunkte: $S_1(5|0|0)$, $S_2(0|5|0)$, $S_3(0|0|-10)$.
 
 $P(R)=0,5; P(B)=0,3; P(G)=0,2$.
 
-1.  **Zweimal gleiche Farbe:** $0,5^2 + 0,3^2 + 0,2^2 = 0,25+0,09+0,04 = 0,38$. (2 BE)
-2.  **Mind. 1x Gelb:** $1 - P(\text{kein Gelb}) = 1 - 0,8^2 = 1 - 0,64 = 0,36$. (3 BE)
+1. **Zweimal gleiche Farbe:** $0,5^2 + 0,3^2 + 0,2^2 = 0,25+0,09+0,04 = 0,38$. (2 BE)
+2. **Mind. 1x Gelb:** $1 - P(\text{kein Gelb}) = 1 - 0,8^2 = 1 - 0,64 = 0,36$. (3 BE)
 
 ### A6 (Analysis) – 5 BE
 
@@ -69,6 +69,7 @@ Daraus folgt: $f'(0) < 0$. Der Graph von $f$ fällt an dieser Stelle.
 **2. Extrema (3 BE)**
 Nullstellen von $f'$ sind $x_1 = -2$ und $x_2 = 2$.
 Untersuchung Vorzeichenwechsel (da Parabel nach oben offen):
+
 * $x=-2$: $f'$ wechselt von positiv nach negativ ($\cap$) $\Rightarrow$ **Hochpunkt**.
 * $x=2$: $f'$ wechselt von negativ nach positiv ($\cup$) $\Rightarrow$ **Tiefpunkt**.
 
@@ -150,12 +151,13 @@ Durchschnitt: $\bar{v} = \frac{125}{10} = 12,5\,m/s$.
 
 **4. Reaktion (7 BE)**
 Gesucht ist das **lokale Maximum der Beschleunigung** $a(t)$ (da $a(t)$ negativ ist, entspricht das Maximum dem Wert, der am nächsten bei 0 liegt $\to$ geringste Verzögerung). Dies entspricht der Wendestelle von $v(t)$.
+
 * $a(t) = -\frac{3}{40}t^2 + \frac{3}{5}t - \frac{9}{4}$.
 * Notwendige Bedingung $a'(t) = 0$:
     $-\frac{3}{20}t + \frac{3}{5} = 0 \Rightarrow 0,15t = 0,6 \Rightarrow t = 4$.
 * Hinreichende Bedingung: $a''(t) = -\frac{3}{20} < 0 \Rightarrow$ Maximum bei $t=4$.
 * Funktionswert: $a(4) = -\frac{3}{40}\cdot 16 + \frac{3}{5}\cdot 4 - 2,25 = -1,2 + 2,4 - 2,25 = -1,05 \, m/s^2$.
-**Ergebnis:** Nach 4 Sekunden ist die Bremswirkung am schwächsten ("Fading"). Der Sensor schlägt an.
+  **Ergebnis:** Nach 4 Sekunden ist die Bremswirkung am schwächsten ("Fading"). Der Sensor schlägt an.
 
 ### C1 (Lineare Algebra - "Das Solardach") – 15 BE
 
@@ -166,26 +168,21 @@ $\vec{AB} = \begin{pmatrix} 0 \\ 10 \\ 0 \end{pmatrix}$, $\vec{AD} = \begin{pmat
 $\vec{AB} \cdot \vec{AD} = 0$ (rechter Winkel bei A).
 Zusätzlich prüfen: $\vec{DC} = \begin{pmatrix} 0-0 \\ 10-0 \\ 6-6 \end{pmatrix} = \begin{pmatrix} 0 \\ 10 \\ 0 \end{pmatrix} = \vec{AB}$.
 Da $\vec{AB} = \vec{DC}$ und ein rechter Winkel vorliegt $\Rightarrow$ Rechteck.
-Normalenvektor $\vec{n} = \vec{AB} \times \vec{AD} = \begin{pmatrix} 30 \\ 0 \\ 100 \end{pmatrix}$. Gekürzt: $\vec{n} = \begin{pmatrix} 3 \\ 0 \\ 10 \end{pmatrix}$.
-Ebene $E: 3x_1 + 10x_3 = 60$.
+Normalenvektor $\vec{n} = \overrightarrow{AB} \times \overrightarrow{AD} = (30, 0, 100)^T \sim (3, 0, 10)^T$.
+Ebene $E: 3x_1 + 10x_3 = 60$ (Punkt A eingesetzt: $3(10)+10(3)=60$).
 
 **2. Schattenwurf (5 BE)**
 Gerade $g: \vec{x} = \begin{pmatrix} 13 \\ 5 \\ 0 \end{pmatrix} + r \cdot \begin{pmatrix} -1 \\ 0 \\ -2 \end{pmatrix}$. (Fußpunkt $M(13|5|0)$, Spitze $S(13|5|10)$. Lichtstrahl beginnt bei S).
 $g_{Licht}: \vec{x} = \begin{pmatrix} 13 \\ 5 \\ 10 \end{pmatrix} + r \cdot \begin{pmatrix} -1 \\ 0 \\ -2 \end{pmatrix}$.
-Schnitt mit E: $3(13-r) + 10(10-2r) = 60$.
-$39 - 3r + 100 - 20r = 60 \Rightarrow 139 - 23r = 60 \Rightarrow 79 = 23r \Rightarrow r \approx 3,43$.
-Schattenpunkt $P_S$:
-$x_1 = 13 - 3,43 = 9,57$.
-$x_2 = 5$.
-$x_3 = 10 - 6,86 = 3,14$.
-Punktprobe: $0 \le 9,57 \le 10$ (x-Richtung des Daches) und $0 \le 5 \le 10$ (y-Richtung).
+Schnitt mit E: $3(13-r) + 10(10-2r) = 60 \Rightarrow 139 - 23r = 60 \Rightarrow r \approx 3,435$.
+Schattenpunkt $S_D \approx (9,565; 5; 3,130)$.
+Punkt liegt innerhalb der Rechtecksgrenzen von $x_1$ und $x_2$.
 **Ergebnis:** Der Schatten fällt auf die Dachfläche.
 
 **3. Effizienz (5 BE)**
 Winkel $\gamma$ zwischen $\vec{v}=\begin{pmatrix}-1\\0\\-2\end{pmatrix}$ und $\vec{n}=\begin{pmatrix}3\\0\\10\end{pmatrix}$.
-$\cos \varphi = \frac{|\vec{v} \cdot \vec{n}|}{|\vec{v}| \cdot |\vec{n}|} = \frac{|-3 + 0 - 20|}{\sqrt{5} \cdot \sqrt{109}} = \frac{23}{\sqrt{545}} \approx 0,985$.
-Winkel zur Normalen: $\varphi \approx 9,9^\circ$.
-Einfallswinkel zur Dachfläche: $\alpha = 90^\circ - 9,9^\circ = 80,1^\circ$.
+$\cos \gamma = \frac{|\vec{v} \cdot \vec{n}|}{|\vec{v}| \cdot |\vec{n}|} = \frac{23}{\sqrt{5} \cdot \sqrt{109}} \approx 0,9852 \Rightarrow \gamma \approx 9,9^\circ$.
+Einfallswinkel zur Dachfläche: $90^\circ - 9,9^\circ = 80,1^\circ$.
 
 ### D1 (Stochastik – "Viren-Screening") – 15 BE
 
@@ -210,30 +207,37 @@ Es müssen mindestens 183 Personen getestet werden.
 ## LK – Prüfungsteil 1 (hilfsmittelfrei)
 
 ### A1 (Analysis) – 5 BE
+
 Grenzwert $x\to 0$: $\infty$. $x\to \infty$: $\infty$.
 Tiefpunkt bei $(1|e)$.
 
 ### A2 (Analysis) – 5 BE
+
 Subst. $z=x^2$, $dz=2x dx$.
 $\int_0^\pi \frac{1}{2} \sin z \, dz = \frac{1}{2} [-\cos z]_0^\pi = 1$.
 
 ### A3 (Stochastik) – 5 BE
+
 Fehler 1. Art = $P(X \in \text{Ablehnungsbereich} | H_0)$.
 Größeres $k$ $\Rightarrow$ Annahmebereich größer $\Rightarrow$ Ablehnungsbereich kleiner.
 Wahrscheinlichkeit Fehler 1. Art sinkt.
 
 ### A4 (Lineare Algebra) – 5 BE
+
 Einsetzen von $g$ in $E$ führt zu $11=10$ (Widerspruch).
 Gerade ist echt parallel zur Ebene.
 
 ### A5 (Analysis) – 5 BE
+
 $f'(x) = 2e^{2x-1}$. $F(x) = 0,5e^{2x-1}$.
 $f'(0,5) = 2e^0 = 2$.
 
 ### A6 (Stochastik) – 5 BE
+
 $P_W(R) = \frac{P(W \cap R)}{P(W)} = \frac{0,2}{0,6} = \frac{1}{3} \approx 33,3\%$.
 
 ### A7 (Analysis) – 5 BE
+
 Punktsymmetrie zum Ursprung bedeutet: Flächeninhalte im Intervall $[-a, a]$ heben sich orientiert auf.
 $\int_{-3}^3 f(x) dx = 0$.
 Anwendung der Linearität des Integrals:
@@ -241,12 +245,14 @@ $\int_{-3}^3 (f(x) + 2) dx = \int_{-3}^3 f(x) dx + \int_{-3}^3 2 dx$.
 $= 0 + [2x]_{-3}^3 = 2(3) - 2(-3) = 6 + 6 = 12$.
 
 ### A8 (Lineare Algebra) – 5 BE
+
 Ziel: $\vec{m} = \vec{OM}$ durch $\vec{a}, \vec{c}$ ausdrücken.
 Da $M$ der Schnittpunkt der Diagonalen im Parallelogramm ist, ist $M$ der Mittelpunkt von $AC$.
 $\vec{m} = \vec{a} + \frac{1}{2}\vec{AC} = \vec{a} + \frac{1}{2}(\vec{c} - \vec{a}) = \vec{a} - \frac{1}{2}\vec{a} + \frac{1}{2}\vec{c} = \frac{1}{2}\vec{a} + \frac{1}{2}\vec{c}$.
 Dies entspricht der Formel für den Ortsvektor des Mittelpunktes der Strecke $\overline{AC}$.
 
 ### A9 (Lineare Algebra) – 5 BE
+
 Untersuchung auf Parallelität der Richtungsvektoren:
 $\begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} = k \cdot \begin{pmatrix} 1 \\ a \\ 0 \end{pmatrix}$.
 Zeile 1: $1 = k$.
@@ -259,6 +265,7 @@ Zeile 3: $2 = 1 + 0 \Rightarrow 2 = 1$ (Widerspruch).
 Der Punkt liegt nicht auf $g$, somit sind die Geraden **echt parallel** für $a=1$.
 
 ### A10 (Stochastik) – 5 BE
+
 Bernoulli-Kette der Länge $n$. Trefferwahrscheinlichkeit $p = \frac{1}{4} = 0,25$ (Raten bei 4 Optionen).
 Gesucht: $n$ so, dass $P(X \ge 1) > 0,99$.
 Über Gegenereignis ("Kein Treffer"): $1 - P(X=0) > 0,99$.
@@ -287,8 +294,8 @@ $k'(100) \approx 2,90 \Rightarrow \alpha \approx 71^\circ$.
 Integralfunktion: $A = \int_{-100}^{100} (k(x) - f(x)) \, dx$.
 Stammfunktion $K(x)$ zu $k(x) = 20(e^{0,02x} + e^{-0,02x})$ ist $1000(e^{0,02x} - e^{-0,02x})$.
 Wert $\int_{-100}^{100} k(x) dx = K(100) - K(-100) \approx 14.507,4$.
-Integral der Parabel $f(x)$ im gleichen Intervall liefert $\approx -2.333,3$.
-Differenzfläche: $14.507,4 - (-2.333,3) \approx 16.841 \, m^2$.
+Fläche $A = \int_{-100}^{100} (k(x) - f(x)) \, dx \approx 16840,8 \, m^2$.
+Ergebnis: $A \approx 16.841 \, m^2$.
 
 **5. Variation (6 BE)**
 $k_a'(100) = e^{100a} - e^{-100a}$.
@@ -329,13 +336,13 @@ Spaltensummen = 1 $\Rightarrow$ geschlossenes System.
 **Übergangsdiagramm:** 3 Knoten A, B, C. Pfeile von jedem Knoten zu den anderen entsprechend den Matrix-Spalten. (z.B. A geht zu 60% auf sich selbst, 30% zu B, 10% zu C).
 
 **2. Prognose (8 BE)**
-$\vec{v}_{10} = M^{10} \cdot \begin{pmatrix} 10000 \\ 0 \\ 0 \end{pmatrix} \approx \begin{pmatrix} 1128 \\ 4254 \\ 4618 \end{pmatrix}$ (gerundet).
-Langfristiges Gleichgewicht (Fixvektor): $\approx (1053, 4210, 4737)^T$.
+$\vec{v}_{10} \approx (1127,77; 4254,42; 4617,81)^T$.
+Stationäres Gleichgewicht: $\approx (1052,63; 4210,53; 4736,84)^T$.
 
 **3. Rekonstruktion (8 BE)**
 LGS $M \cdot \vec{x}_t = \begin{pmatrix} 500 \\ 800 \\ 1000 \end{pmatrix}$ lösen.
-Lösung: $\vec{x}_t \approx \begin{pmatrix} 745 \\ 531 \\ 1024 \end{pmatrix}$.
-Interpretation: Da die Lösung aus positiven Werten besteht, existiert eine gültige Vorgängerverteilung (System war in diesem Schritt nicht gestört).
+$\vec{x}_t = M^{-1} \vec{x}_{t+1} \approx (744,83; 531,03; 1024,14)^T$.
+Interpretation: Mathematisch existiert eine eindeutige Lösung mit ausschließlich positiven Komponenten.
 
 ### D1 (Stochastik – "Viren-Screening & Testgüte") – 20 BE
 

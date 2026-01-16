@@ -1,12 +1,15 @@
-# Landesabitur Mathematik (Hessen) 2026 – SkillPilot Beispielklausur 1 (v2.2)
+# Landesabitur Mathematik (Hessen) 2026 – SkillPilot Beispielklausur 1 (v2.3)
 
 ## **GK & LK – Version „Realitätsnah & Komplex“**
 
 > **Fokus:** Starke Kontextbezüge, komplexe Funktionsklassen (Produkt-/Verkettung), explizite Bildbeschreibungen.
 > **Leitidee:** Simuliert den **anspruchsvollen** Teil der Abituraufgaben, bei dem das Modellieren und der Umgang mit unerwarteten Funktionen im Vordergrund stehen.
-> **Hinweis zur Auswahl:** Dies ist der vollständige Aufgabenpool für Lehrkräfte.
-> * **GK:** Wählen Sie für Teil 1 aus den 9 Aufgaben (A1-A9) entsprechend der Strukturvorgaben aus.
-> * **LK:** Wählen Sie für Teil 1 aus den 10 Aufgaben (A1-A10) entsprechend der Strukturvorgaben aus.
+> 
+> **Hinweis zur Durchführung (gemäß Erlass):** Dies ist der vollständige Aufgabenpool.
+> 
+> * **GK (Teil 1):** Legen Sie alle 9 Aufgaben vor. Der Prüfling bearbeitet 5 Aufgaben: 4 Aufgaben aus Niveau 1 (3 Pflicht + 1 Wahl) und 1 Aufgabe aus Niveau 2.
+> * **LK (Teil 1):** Legen Sie alle 10 Aufgaben vor. Der Prüfling bearbeitet 6 Aufgaben: 4 Pflichtaufgaben (Niveau 1) und 2 Wahlaufgaben aus Niveau 2.
+> * **Teil 2:** Die Vorschläge C und D sind jeweils Pflicht. Zwischen B1 und B2 wählen die Prüflinge einen Vorschlag aus.
 
 ---
 
@@ -23,10 +26,13 @@
 
 ## GK – Prüfungsteil 1 (hilfsmittelfrei)
 
-**Auswahlregel für Schüler:** Bearbeiten Sie 5 Aufgaben.
-*(Hinweis für Lehrkräfte: Wählen Sie 3 Pflichtaufgaben (Niveau 1) und bieten Sie eine Wahlmöglichkeit aus den übrigen Aufgaben).*
+**Auswahlregel für Schüler:** Bearbeiten Sie insgesamt 5 Aufgaben.
+
+* **Pflicht:** A1, A4, A5.
+* **Wahl:** Wählen Sie **eine** Aufgabe aus dem Niveau-1-Pool (A3, A6, A8) und **eine** Aufgabe aus dem Niveau-2-Pool (A2, A7, A9).
 
 ### **A1 (Analysis) – 5 BE**
+
 > **[Modus: Pflicht | Niveau: 1 | Domain: Analysis | 5 BE]**
 
 Gegeben ist die Funktion $f(x) = (x^2 - 3) \cdot e^x$.
@@ -35,6 +41,7 @@ Gegeben ist die Funktion $f(x) = (x^2 - 3) \cdot e^x$.
 2. Untersuchen Sie $f$ auf lokale Extremstellen und bestimmen Sie deren Art. (3 BE)
 
 ### **A2 (Analysis - "Der Deich") – 5 BE**
+
 > **[Modus: Wahl | Niveau: 2 | Domain: Analysis | 5 BE]**
 
 ![Abb. 1: Skizze eines Deichquerschnitts. Die Kurve beginnt im Ursprung, steigt sanft an bis zu einem Maximum und fällt danach wieder ab zur x-Achse. Ein Beobachter steht im Punkt P(-1|0).](image1.de.png)
@@ -44,6 +51,7 @@ Ein Beobachter steht im Punkt $P(-1|0)$ am Boden vor dem Deich.
 Untersuchen Sie rechnerisch, ob die direkte Sichtlinie vom Beobachter zur Deichspitze (Hochpunkt) durch das Deichprofil unterbrochen wird.
 
 ### **A3 (Stochastik) – 5 BE**
+
 > **[Modus: Wahl | Niveau: 1 | Domain: Stochastik | 5 BE]**
 
 In einer Urne liegen 2 rote und 3 schwarze Kugeln.
@@ -54,12 +62,14 @@ Geben Sie einen Term an für die Wahrscheinlichkeit, dass...
 2. ...die erste Kugel rot ist und danach nie wieder rot gezogen wird. (3 BE)
 
 ### **A4 (Lineare Algebra) – 5 BE**
+
 > **[Modus: Pflicht | Niveau: 1 | Domain: Lineare Algebra | 5 BE]**
 
 Gegeben ist die Ebene $E: 2x_1 + 2x_2 - x_3 = 10$.
 Bestimmen Sie die Koordinaten der Schnittpunkte der Ebene mit den drei Koordinatenachsen (Spurpunkte) und zeichnen Sie den Ausschnitt der Ebene in ein Koordinatensystem ein.
 
 ### **A5 (Stochastik) – 5 BE**
+
 > **[Modus: Pflicht | Niveau: 1 | Domain: Stochastik | 5 BE]**
 
 Ein Glücksrad hat drei Sektoren: Rot (50%), Blau (30%) und Gelb (20%).
@@ -70,27 +80,33 @@ Bestimmen Sie die Wahrscheinlichkeit, dass...
 2. ...mindestens einmal Gelb erscheint. (3 BE)
 
 ### **A6 (Analysis) – 5 BE**
+
 > **[Modus: Wahl | Niveau: 1 | Domain: Analysis | 5 BE]**
 
 Gegeben ist der Graph der Ableitungsfunktion $f'$ einer Polynomfunktion $f$.
 Der Graph von $f'$ ist eine nach oben geöffnete Parabel, die die x-Achse in den Punkten $x_1 = -2$ und $x_2 = 2$ schneidet.
+
 1. Begründen Sie, welche Steigung der Graph von $f$ an der Stelle $x=0$ hat. (2 BE)
 2. Bestimmen Sie die x-Koordinaten der lokalen Extremstellen von $f$ und geben Sie jeweils die Art des Extremums an. (3 BE)
 
 ### **A7 (Lineare Algebra) – 5 BE**
+
 > **[Modus: Wahl | Niveau: 2 | Domain: Lineare Algebra | 5 BE]**
 
 Gegeben sind die Punkte $A(2|0|0)$, $B(0|2|0)$ und eine Schar von Punkten $C_k(0|0|k)$ mit $k \in \mathbb{R}$.
 Bestimmen Sie alle Werte für $k$, sodass das Dreieck $ABC_k$ im Punkt $C_k$ einen rechten Winkel hat.
 
 ### **A8 (Lineare Algebra) – 5 BE**
+
 > **[Modus: Wahl | Niveau: 1 | Domain: Lineare Algebra | 5 BE]**
 
 Gegeben sind die Punkte $P(1|2|3)$ und $Q(3|2|1)$.
+
 1. Stellen Sie eine Parametergleichung der Geraden $g$ durch $P$ und $Q$ auf. (3 BE)
 2. Prüfen Sie, ob der Punkt $R(5|2|-1)$ auf der Geraden $g$ liegt. (2 BE)
 
 ### **A9 (Stochastik) – 5 BE**
+
 > **[Modus: Wahl | Niveau: 2 | Domain: Stochastik | 5 BE]**
 
 Bei einem Gewinnspiel beträgt der Einsatz $e$ Euro. Aus einer Urne mit 4 Gewinnerlosen und 6 Nieten wird ein Los gezogen.
@@ -126,7 +142,7 @@ $$
 5. **Bewertung:** Ein Experte kritisiert das logistische Modell $A(t)$ für die Anfangsphase, da Algen bei guten Bedingungen eher exponentiell wachsen.
    Vergleichen Sie $A(t)$ für kleine $t$ mit einer geeigneten Exponentialfunktion und nehmen Sie Stellung. (4 BE)
 
-<div style="page-break-after: always;"></div>
+ 
 
 ### **B2 (Analysis – "Der Bremstest", 25 BE)**
 
@@ -138,14 +154,14 @@ $$
 
 ($t$ in Sekunden, $v(t)$ in $m/s$).
 
-1.  **Anfangsphase:** Bestimmen Sie die Geschwindigkeit zu Beginn ($t=0$) und zum Zeitpunkt $t=10$.
-    Berechnen Sie die Beschleunigung $a(t) = v'(t)$ zum Zeitpunkt $t=0$. (4 BE)
-2.  **Extremwerte:** Bestimmen Sie den Zeitpunkt im Intervall $[0; 10]$, an dem die Geschwindigkeit am geringsten ist. (6 BE)
-3.  **Bremsweg:** Die zurückgelegte Strecke entspricht dem Integral der Geschwindigkeitsfunktion.
-    Berechnen Sie die Strecke, die das Fahrzeug in den ersten 10 Sekunden zurücklegt.
-    Bestimmen Sie die Durchschnittsgeschwindigkeit in diesem Zeitraum. (8 BE)
-4.  **Reaktion:** Ein Sensor überwacht die Bremswirkung. Er meldet ein Warnsignal ("Brake Fading"), sobald die Verzögerung (Bremskraft) im Verlauf des Bremsvorgangs **am geringsten** ist (lokales Maximum der Beschleunigung $a(t)$).
-    Ermitteln Sie diesen Zeitpunkt rechnerisch und geben Sie die dort herrschende Beschleunigung an. (7 BE)
+1. **Anfangsphase:** Bestimmen Sie die Geschwindigkeit zu Beginn ($t=0$) und zum Zeitpunkt $t=10$.
+   Berechnen Sie die Beschleunigung $a(t) = v'(t)$ zum Zeitpunkt $t=0$. (4 BE)
+2. **Extremwerte:** Bestimmen Sie den Zeitpunkt im Intervall $[0; 10]$, an dem die Geschwindigkeit am geringsten ist. (6 BE)
+3. **Bremsweg:** Die zurückgelegte Strecke entspricht dem Integral der Geschwindigkeitsfunktion.
+   Berechnen Sie die Strecke, die das Fahrzeug in den ersten 10 Sekunden zurücklegt.
+   Bestimmen Sie die Durchschnittsgeschwindigkeit in diesem Zeitraum. (8 BE)
+4. **Reaktion:** Ein Sensor überwacht die Bremswirkung. Er meldet ein Warnsignal ("Brake Fading"), sobald die Verzögerung (Bremskraft) im Verlauf des Bremsvorgangs **am geringsten** ist (lokales Maximum der Beschleunigung $a(t)$).
+   Ermitteln Sie rechnerisch den Zeitpunkt $t \in [0; 10]$, an dem die Verzögerung am geringsten ist (lokales Maximum von $a(t)$), und geben Sie die dort herrschende Beschleunigung an. (7 BE)
 
 <div style="page-break-after: always;"></div>
 
@@ -159,7 +175,9 @@ In einem Modell (1 LE = 1 m) liegen die Eckpunkte einer Dachfläche in $A(10|0|3
 2. **Schattenwurf:** Ein 10 m hoher Mast steht im Punkt $M(13|5|0)$. Die Sonnenstrahlen fallen in Richtung $\vec{v} = \begin{pmatrix} -1 \\ 0 \\ -2 \end{pmatrix}$ ein.
    Prüfen Sie rechnerisch, ob der Schatten der Mastspitze auf die Dachfläche fällt. (5 BE)
 3. **Effizienz:** Sonnenlicht liefert die maximale Energie, wenn es senkrecht auf die Fläche trifft.
-   Berechnen Sie den Einfallswinkel des aktuellen Sonnenlichts bezüglich der Dachfläche. (5 BE)
+   Berechnen Sie den Einfallswinkel des aktuellen Sonnenlichts bezüglich der Dachfläche (Winkel zwischen Sonnenstrahl und Ebene). (5 BE)
+
+<div style="page-break-after: always;"></div>
 
 ### **D1 (Stochastik – "Viren-Screening", 15 BE)**
 
@@ -182,10 +200,13 @@ Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,00
 
 ## LK – Prüfungsteil 1 (hilfsmittelfrei)
 
-**Auswahlregel für Schüler:** Bearbeiten Sie 6 Aufgaben.
-*(Hinweis für Lehrkräfte: Wählen Sie 4 Pflichtaufgaben (Niveau 1) und bieten Sie eine Wahlmöglichkeit aus den übrigen Aufgaben).*
+**Auswahlregel für Schüler:** Bearbeiten Sie insgesamt 6 Aufgaben.
+
+* **Pflicht:** A1, A4, A5, A6.
+* **Wahl:** Wählen Sie **zwei** Aufgaben aus dem Niveau-2-Pool (A2, A3, A7, A8, A9, A10).
 
 ### **A1 (Analysis) – 5 BE**
+
 > **[Modus: Pflicht | Niveau: 1 | Domain: Analysis | 5 BE]**
 
 Gegeben ist die Funktion $f(x) = \frac{e^x}{x}$ für $x > 0$.
@@ -193,23 +214,27 @@ Bestimmen Sie das Verhalten von $f$ für $x \to 0$ und $x \to \infty$.
 Skizzieren Sie den Graphen unter Berücksichtigung des Extrempunktes (Rechnung erforderlich: $f'(x)=0$).
 
 ### **A2 (Analysis) – 5 BE**
+
 > **[Modus: Wahl | Niveau: 2 | Domain: Analysis | 5 BE]**
 
 Berechnen Sie das Integral $\int_0^{\sqrt{\pi}} x \cdot \sin(x^2) \, dx$.
 
 ### **A3 (Stochastik) – 5 BE**
+
 > **[Modus: Wahl | Niveau: 2 | Domain: Stochastik | 5 BE]**
 
 Ein Test für eine binomialverteilte Zufallsgröße $X$ ($n=100$) hat den Annahmebereich $A = \{0, \dots, k\}$. Die Nullhypothese ist $H_0: p \le 0,1$.
 Beschreiben Sie, wie sich die Fehlerwahrscheinlichkeit 1. Art verändert, wenn man den kritischen Wert $k$ vergrößert. Begründen Sie Ihre Aussage ohne Rechnung.
 
 ### **A4 (Lineare Algebra) – 5 BE**
+
 > **[Modus: Pflicht | Niveau: 1 | Domain: Lineare Algebra | 5 BE]**
 
 Gegeben sind die Gerade $g: \vec{x} = \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} + r \cdot \begin{pmatrix} 2 \\ 0 \\ -1 \end{pmatrix}$ und die Ebene $E: x_1 + 2x_2 + 2x_3 = 10$.
 Untersuchen Sie die gegenseitige Lage von $g$ und $E$. Berechnen Sie gegebenenfalls den Schnittpunkt.
 
 ### **A5 (Analysis) – 5 BE**
+
 > **[Modus: Pflicht | Niveau: 1 | Domain: Analysis | 5 BE]**
 
 Gegeben ist $f(x) = e^{2x - 1}$.
@@ -217,6 +242,7 @@ Bestimmen Sie die Ableitung $f'(x)$ und die Stammfunktion $F(x)$.
 Berechnen Sie den Wert von $f'(0,5)$.
 
 ### **A6 (Stochastik) – 5 BE**
+
 > **[Modus: Pflicht | Niveau: 1 | Domain: Stochastik | 5 BE]**
 
 In einer Gruppe sind 60% weiblich ($W$). 20% der Personen sind weiblich und rauchen ($R$).
@@ -224,24 +250,28 @@ Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällig ausgewählte Person ra
 Interpretieren Sie das Ergebnis im Kontext.
 
 ### **A7 (Analysis) – 5 BE**
+
 > **[Modus: Wahl | Niveau: 2 | Domain: Analysis | 5 BE]**
 
 Die Funktion $f$ ist punktsymmetrisch zum Ursprung und für alle $x$ definiert. Es gilt $\int_0^3 f(x) \, dx = 4$.
 Bestimmen Sie den Wert des Integrals $\int_{-3}^3 (f(x) + 2) \, dx$. Begründen Sie Ihren Rechenweg.
 
 ### **A8 (Lineare Algebra) – 5 BE**
+
 > **[Modus: Wahl | Niveau: 2 | Domain: Lineare Algebra | 5 BE]**
 
 Gegeben ist ein Parallelogramm $ABCD$ mit den Ortsvektoren $\vec{a}$, $\vec{b}$, $\vec{c}$ und $\vec{d}$. Der Diagonalenschnittpunkt ist $M$.
 Drücken Sie den Vektor $\vec{m} = \vec{OM}$ ausschließlich durch $\vec{a}$ und $\vec{c}$ aus und begründen Sie vektoriell, dass $M$ der Mittelpunkt der Strecke $AC$ ist.
 
 ### **A9 (Lineare Algebra) – 5 BE**
+
 > **[Modus: Wahl | Niveau: 2 | Domain: Lineare Algebra | 5 BE]**
 
 Gegeben sind die Gerade $g: \vec{x} = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + r \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}$ und die Geradenschar $h_a: \vec{x} = \begin{pmatrix} 0 \\ 1 \\ 2 \end{pmatrix} + s \begin{pmatrix} 1 \\ a \\ 0 \end{pmatrix}$.
 Untersuchen Sie, für welchen Parameter $a$ die Geraden $g$ und $h_a$ echt parallel zueinander sind.
 
 ### **A10 (Stochastik) – 5 BE**
+
 > **[Modus: Wahl | Niveau: 2 | Domain: Stochastik | 5 BE]**
 
 Ein Multiple-Choice-Test besteht aus $n$ Fragen mit je 4 Antwortmöglichkeiten, von denen genau eine richtig ist. Ein Kandidat rät bei allen Fragen (Bernoulli-Kette).
@@ -294,14 +324,14 @@ $$
 
 ($t$ in Stunden, $c_k(t)$ in mg/l).
 
-1.  **Verlauf:** Untersuchen Sie das Verhalten für $t \to \infty$. Begründen Sie, dass die Konzentration für $t>0$ stets positiv ist. (4 BE)
-2.  **Wirkungsmaximum:** Bestimmen Sie in Abhängigkeit von $k$ den Zeitpunkt der maximalen Konzentration und die Höhe der maximalen Konzentration.
-    Für welchen Parameter $k$ wird das Maximum genau nach 2 Stunden erreicht? (9 BE)
-3.  **Abbaugeschwindigkeit:** Zeigen Sie, dass die Wendestelle der Funktion bei $t_W = \frac{2}{k}$ liegt.
-    Interpretieren Sie die Bedeutung der Wendestelle im Kontext des Abbaus des Medikaments. (6 BE)
-4.  **Gesamtmenge:** Das Integral $\int_0^{\infty} c_k(t) \, dt$ ist ein Maß für die "totale Exposition" des Körpers (AUC = Area Under Curve).
-    Bestimmen Sie diesen Wert in Abhängigkeit von $k$.
-    Ein Arzt möchte die Exposition verdoppeln. Untersuchen Sie, wie er dafür den Parameter $k$ ändern muss. (11 BE)
+1. **Verlauf:** Untersuchen Sie das Verhalten für $t \to \infty$. Begründen Sie, dass die Konzentration für $t>0$ stets positiv ist. (4 BE)
+2. **Wirkungsmaximum:** Bestimmen Sie in Abhängigkeit von $k$ den Zeitpunkt der maximalen Konzentration und die Höhe der maximalen Konzentration.
+   Für welchen Parameter $k$ wird das Maximum genau nach 2 Stunden erreicht? (9 BE)
+3. **Abbaugeschwindigkeit:** Zeigen Sie, dass die Wendestelle der Funktion bei $t_W = \frac{2}{k}$ liegt.
+   Interpretieren Sie die Bedeutung der Wendestelle im Kontext des Abbaus des Medikaments. (6 BE)
+4. **Gesamtmenge:** Das Integral $\int_0^{\infty} c_k(t) \, dt$ ist ein Maß für die "totale Exposition" des Körpers (AUC = Area Under Curve).
+   Bestimmen Sie diesen Wert in Abhängigkeit von $k$.
+   Ein Arzt möchte die Exposition verdoppeln. Untersuchen Sie, wie er dafür den Parameter $k$ ändern muss. (11 BE)
 
 <div style="page-break-after: always;"></div>
 
@@ -340,6 +370,8 @@ Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,00
 4. **Kapazitätsplanung:** Ein Labor wertet eine Serie von 2.000 Proben aus (Falsch-Positiv-Rate $p=0,02$). Bestimmen Sie die kleinste Zahl $k$, sodass die Anzahl der falsch-positiven Ergebnisse mit einer Wahrscheinlichkeit von mindestens 95% im Intervall $[0; k]$ liegt. (5 BE)
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ### Qualitäts-Check (Selbstprüfung):
 
@@ -383,6 +415,10 @@ Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,00
   </thead>
   <tbody>
     <tr><td>1</td><td>A1</td><td>Ana</td><td>1</td><td>AB1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Standard-Produktregel.</td></tr>
+    <tr><td>1</td><td>A6</td><td>Ana</td><td>1</td><td>AB1-2</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>Ableitungsgraph interpretieren.</td></tr>
+    <tr><td>1</td><td>A7</td><td>LA</td><td>1</td><td>AB1-2</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>Skalarprodukt (rechter Winkel).</td></tr>
+    <tr><td>1</td><td>A8</td><td>LA</td><td>1</td><td>AB1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Punktprobe Gerade.</td></tr>
+    <tr><td>1</td><td>A9</td><td>Stoch</td><td>2</td><td>AB2</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>Erwartungswert (Fairness).</td></tr>
     <tr><td>1</td><td>A2</td><td>Ana</td><td>2</td><td>AB2</td><td>1</td><td>1</td><td>1</td><td>2</td><td>0</td><td>„Sichtlinie“: Tangente vs.<br>Sekante entscheidet.</td></tr>
     <tr><td>1</td><td>A3</td><td>Stoch</td><td>1</td><td>AB1-2</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>Ziehen mit Zurücklegen<br>(Bernoulli-ähnlich).</td></tr>
     <tr><td>1</td><td>A4</td><td>LA/AG</td><td>1</td><td>AB1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Spurpunkte (Rezept).</td></tr>
@@ -415,7 +451,11 @@ Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,00
     </tr>
   </thead>
   <tbody>
-    <tr><td>1</td><td>A1</td><td>Ana</td><td>1</td><td>AB1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Grenzwert-betrachtung<br>(Standardverfahren).</td></tr>
+    <tr><td>1</td><td>A1</td><td>Ana</td><td>1</td><td>AB1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Grenzwertbetrachtung.</td></tr>
+    <tr><td>1</td><td>A7</td><td>Ana</td><td>2</td><td>AB2</td><td>1</td><td>1</td><td>2</td><td>0</td><td>0</td><td>Integral-Eigenschaften (Symmetrie).</td></tr>
+    <tr><td>1</td><td>A8</td><td>LA</td><td>2</td><td>AB2</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>Vektorbeweis (Mittelpunkt).</td></tr>
+    <tr><td>1</td><td>A9</td><td>LA</td><td>2</td><td>AB2</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>Lagebeziehung (Parameter).</td></tr>
+    <tr><td>1</td><td>A10</td><td>Stoch</td><td>2</td><td>AB2</td><td>2</td><td>1</td><td>1</td><td>1</td><td>0</td><td>Ansatz n-Bestimmung.</td></tr>
     <tr><td>1</td><td>A2</td><td>Ana</td><td>2</td><td>AB2</td><td>2</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Substitution erforderlich.</td></tr>
     <tr><td>1</td><td>A3</td><td>Stoch</td><td>2</td><td>AB2</td><td>1</td><td>0</td><td>2</td><td>1</td><td>0</td><td>Logiktest<br>(Fehler 1. Art).</td></tr>
     <tr><td>1</td><td>A4</td><td>LA/AG</td><td>1</td><td>AB1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Lagebeziehung Gerade/Ebene<br>(Standardverfahren).</td></tr>
@@ -428,6 +468,4 @@ Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,00
   </tbody>
 </table>
 
---- 
-
-
+---
