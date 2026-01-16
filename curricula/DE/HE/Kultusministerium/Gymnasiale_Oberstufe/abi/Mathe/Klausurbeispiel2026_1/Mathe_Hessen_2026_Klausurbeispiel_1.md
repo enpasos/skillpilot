@@ -4,6 +4,9 @@
 
 > **Fokus:** Starke Kontextbezüge, komplexe Funktionsklassen (Produkt-/Verkettung), explizite Bildbeschreibungen.
 > **Leitidee:** Simuliert den "fiesen" Teil der Abituraufgaben, bei dem das Modellieren und der Umgang mit unerwarteten Funktionen im Vordergrund stehen. 
+> **Hinweis zur Auswahl:** Dies ist der vollständige Aufgabenpool für Lehrkräfte.
+> * **GK:** Wählen Sie für Teil 1 aus den 9 Aufgaben (A1-A9) entsprechend der Strukturvorgaben aus.
+> * **LK:** Wählen Sie für Teil 1 aus den 10 Aufgaben (A1-A10) entsprechend der Strukturvorgaben aus.
 
 ---
 
@@ -19,6 +22,8 @@
 # A) Grundkurs (GK) – SkillPilot Beispielklausur 1
 
 ## GK – Prüfungsteil 1 (hilfsmittelfrei)
+
+**Auswahlregel für Schüler:** Bearbeiten Sie 5 Aufgaben (Auswahl durch Lehrkraft).
 
 ### **A1 (Analysis, Niveau 1) – 5 BE**
 
@@ -58,6 +63,30 @@ Bestimmen Sie die Wahrscheinlichkeit, dass...
 1. ...zweimal die gleiche Farbe erscheint. (2 BE)
 2. ...mindestens einmal Gelb erscheint. (3 BE)
 
+### **A6 (Analysis, Niveau 1) – 5 BE**
+
+Gegeben ist der Graph der Ableitungsfunktion $f'$ einer Polynomfunktion $f$.
+Der Graph von $f'$ ist eine nach oben geöffnete Parabel, die die x-Achse in den Punkten $x_1 = -2$ und $x_2 = 2$ schneidet.
+1. Begründen Sie, welche Steigung der Graph von $f$ an der Stelle $x=0$ hat. (2 BE)
+2. Bestimmen Sie die x-Koordinaten der lokalen Extremstellen von $f$ und geben Sie jeweils die Art des Extremums an. (3 BE)
+
+### **A7 (Lineare Algebra, Niveau 2) – 5 BE**
+
+Gegeben sind die Punkte $A(2|0|0)$, $B(0|2|0)$ und eine Schar von Punkten $C_k(0|0|k)$ mit $k \in \mathbb{R}$.
+Bestimmen Sie alle Werte für $k$, sodass das Dreieck $ABC_k$ im Punkt $C_k$ einen rechten Winkel hat.
+
+### **A8 (Lineare Algebra, Niveau 1) – 5 BE**
+
+Gegeben sind die Punkte $P(1|2|3)$ und $Q(3|2|1)$.
+1. Stellen Sie eine Parametergleichung der Geraden $g$ durch $P$ und $Q$ auf. (3 BE)
+2. Prüfen Sie, ob der Punkt $R(5|2|-1)$ auf der Geraden $g$ liegt. (2 BE)
+
+### **A9 (Stochastik, Niveau 2) – 5 BE**
+
+Bei einem Gewinnspiel beträgt der Einsatz $e$ Euro. Aus einer Urne mit 4 Gewinnerlosen und 6 Nieten wird ein Los gezogen.
+Ist es ein Gewinnerlos, erhält man 10 Euro ausgezahlt. Ist es eine Niete, erhält man nichts.
+Bestimmen Sie den Einsatz $e$ so, dass das Spiel fair ist (d.h. der Erwartungswert des Gewinns für den Spieler beträgt 0 Euro).
+
 ---
 
 <div style="page-break-after: always;"></div>
@@ -87,17 +116,50 @@ $$
 
 <div style="page-break-after: always;"></div>
 
+### **B2 (Analysis – "Der Bremstest", 25 BE)**
+
+Ein Fahrzeug führt einen Bremstest durch. Die Geschwindigkeit wird für $0 \le t \le 10$ modelliert durch:
+
+$$
+v(t) = -\frac{1}{40}t^3 + \frac{3}{10}t^2 - \frac{9}{4}t + 20
+$$
+
+($t$ in Sekunden, $v(t)$ in $m/s$).
+
+1.  **Anfangsphase:** Bestimmen Sie die Geschwindigkeit zu Beginn ($t=0$) und zum Zeitpunkt $t=10$.
+    Berechnen Sie die Beschleunigung $a(t) = v'(t)$ zum Zeitpunkt $t=0$. (4 BE)
+2.  **Extremwerte:** Bestimmen Sie den Zeitpunkt im Intervall $[0; 10]$, an dem die Geschwindigkeit am geringsten ist. (6 BE)
+3.  **Bremsweg:** Die zurückgelegte Strecke entspricht dem Integral der Geschwindigkeitsfunktion.
+    Berechnen Sie die Strecke, die das Fahrzeug in den ersten 10 Sekunden zurücklegt.
+    Bestimmen Sie die Durchschnittsgeschwindigkeit in diesem Zeitraum. (8 BE)
+4.  **Reaktion:** Ein Sensor meldet "Gefahr", sobald die Verzögerung (negative Beschleunigung) am stärksten ist (Minimum der Beschleunigung / Wendepunkt von $v$).
+    Ermitteln Sie diesen Zeitpunkt rechnerisch. (7 BE)
+
+<div style="page-break-after: always;"></div>
+
 ### **C1 (Lineare Algebra - "Das Solardach", 15 BE)**
 
 ![Abb. 3: Ein modernes Haus mit einem schrägen Pultdach. Auf dem Dach ist ein rechteckiges Modul montiert. Die Sonne scheint in einem bestimmten Vektor darauf.](image3.de.png)
 
 In einem Modell (1 LE = 1 m) liegen die Eckpunkte einer Dachfläche in $A(10|0|3)$, $B(10|10|3)$, $C(0|10|6)$ und $D(0|0|6)$.
 
-1. Zeigen Sie, dass die Dachfläche ein Rechteck ist. Bestimmen Sie eine Koordinatengleichung der Ebene $E$, in der das Dach liegt. (6 BE)
+1. **Geometrie:** Zeigen Sie, dass die Dachfläche ein Rechteck ist. Bestimmen Sie eine Koordinatengleichung der Ebene $E$, in der das Dach liegt. (5 BE)
 2. **Schattenwurf:** Ein 10 m hoher Mast steht im Punkt $M(13|5|0)$. Die Sonnenstrahlen fallen in Richtung $\vec{v} = \begin{pmatrix} -1 \\ 0 \\ -2 \end{pmatrix}$ ein.
-   Prüfen Sie rechnerisch, ob der Schatten der Mastspitze auf die Dachfläche fällt. (7 BE)
+   Prüfen Sie rechnerisch, ob der Schatten der Mastspitze auf die Dachfläche fällt. (5 BE)
 3. **Effizienz:** Sonnenlicht liefert die maximale Energie, wenn es senkrecht auf die Fläche trifft.
-   Bestimmen Sie einen Vektor für den Sonnenstand, bei dem die Strahlen exakt senkrecht auf das Dach fallen. (2 BE)
+   Berechnen Sie den Einfallswinkel des aktuellen Sonnenlichts bezüglich der Dachfläche. (5 BE)
+
+### **D1 (Stochastik – "Viren-Screening", 15 BE)**
+
+![Abb. 6: Ein Baumdiagramm, das den Testablauf visualisiert. Erste Stufe: Infiziert (C) vs. Nicht-Infiziert. Zweite Stufe: Test Positiv (+) vs. Test Negativ (-).](image6.de.png)
+
+Ein Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).
+Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).
+
+1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (6 BE)
+2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.
+   Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.
+   Interpretieren Sie das Ergebnis im Hinblick auf die Verlässlichkeit eines einzelnen Massentests. (9 BE)
 
 ---
 
@@ -106,6 +168,8 @@ In einem Modell (1 LE = 1 m) liegen die Eckpunkte einer Dachfläche in $A(10|0|3
 # B) Leistungskurs (LK) – SkillPilot Beispielklausur 1
 
 ## LK – Prüfungsteil 1 (hilfsmittelfrei)
+
+**Auswahlregel für Schüler:** Bearbeiten Sie 6 Aufgaben (Auswahl durch Lehrkraft).
 
 ### **A1 (Analysis, Niveau 1) – 5 BE**
 
@@ -140,6 +204,26 @@ In einer Gruppe sind 60% weiblich ($W$). 20% der Personen sind weiblich und rauc
 Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällig ausgewählte Person raucht, unter der Bedingung, dass sie weiblich ist: $P_W(R)$.
 Interpretieren Sie das Ergebnis im Kontext.
 
+### **A7 (Analysis, Niveau 2) – 5 BE**
+
+Die Funktion $f$ ist punktsymmetrisch zum Ursprung und für alle $x$ definiert. Es gilt $\int_0^3 f(x) \, dx = 4$.
+Bestimmen Sie den Wert des Integrals $\int_{-3}^3 (f(x) + 2) \, dx$. Begründen Sie Ihren Rechenweg.
+
+### **A8 (Lineare Algebra, Niveau 2) – 5 BE**
+
+Gegeben ist ein Parallelogramm $ABCD$ mit den Ortsvektoren $\vec{a}$, $\vec{b}$, $\vec{c}$ und $\vec{d}$. Der Diagonalenschnittpunkt ist $M$.
+Drücken Sie den Vektor $\vec{m} = \vec{OM}$ ausschließlich durch $\vec{a}$ und $\vec{c}$ aus und begründen Sie vektoriell, dass $M$ der Mittelpunkt der Strecke $AC$ ist.
+
+### **A9 (Lineare Algebra, Niveau 2) – 5 BE**
+
+Gegeben sind die Gerade $g: \vec{x} = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + r \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}$ und die Geradenschar $h_a: \vec{x} = \begin{pmatrix} 0 \\ 1 \\ 2 \end{pmatrix} + s \begin{pmatrix} 1 \\ a \\ 0 \end{pmatrix}$.
+Untersuchen Sie, für welchen Parameter $a$ die Geraden $g$ und $h_a$ echt parallel zueinander sind.
+
+### **A10 (Stochastik, Niveau 2) – 5 BE**
+
+Ein Multiple-Choice-Test besteht aus $n$ Fragen mit je 4 Antwortmöglichkeiten, von denen genau eine richtig ist. Ein Kandidat rät bei allen Fragen (Bernoulli-Kette).
+Geben Sie einen Ansatz an, um die Mindestanzahl $n$ der Fragen zu bestimmen, damit die Wahrscheinlichkeit, **mindestens eine** Frage richtig zu beantworten, größer als 99% ist. (Rechnung muss nicht zu Ende geführt werden, Ansatz genügt).
+
 ---
 
 <div style="page-break-after: always;"></div>
@@ -168,11 +252,31 @@ $$
 2. **Vertikal-Seile:** Zwischen dem Tragseil $k(x)$ und der Fahrbahn $f(x)$ verlaufen vertikale Haltestreben.
    Bestimmen Sie die Länge der kürzesten und der längsten Haltestrebe im Bereich $-100 \le x \le 100$. (8 BE)
 3. **Winkel:** Unter welchem Winkel trifft das Tragseil auf die Pylone? (4 BE)
-   *(Hinweis: Ist die Formel $\int \sqrt{1+(f')^2}$ bekannt? Falls nicht, nutzen Sie eine Näherung durch 10 gleich lange Streckenzüge oder die CAS-Funktion `arcLen`)*. (5 BE)
 4. **Fläche/Anstrich:** Die Fläche zwischen Tragseil und Fahrbahn soll seitlich mit einem Werbenetz verhängt werden.
-   Berechnen Sie den Flächeninhalt. (6 BE)
+   Berechnen Sie den Flächeninhalt. (7 BE)
 5. **Variation:** Bei Belastung senkt sich das Seil. Die neue Funktion ist $k_a(x) = \frac{1}{a} (e^{ax} + e^{-ax})$.
-   Zeigen Sie allgemein: Je größer $a$, desto steiler der Anstieg bei $x=100$. (6 BE)
+   Zeigen Sie allgemein durch Rechnung oder Argumentation: Je größer der Parameter $a$ ($a>0$), desto steiler ist der Anstieg des Seils am Pylon ($x=100$). (6 BE)
+
+<div style="page-break-after: always;"></div>
+
+### **B2 (Analysis – "Wirkstoffkonzentration", 30 BE)**
+
+Die Konzentration eines Medikaments im Blut wird modelliert durch die Funktionenschar:
+
+$$
+c_k(t) = 10 \cdot t \cdot e^{1 - k \cdot t} \quad (t \ge 0, k > 0)
+$$
+
+($t$ in Stunden, $c_k(t)$ in mg/l).
+
+1.  **Verlauf:** Untersuchen Sie das Verhalten für $t \to \infty$. Begründen Sie, dass die Konzentration für $t>0$ stets positiv ist. (4 BE)
+2.  **Wirkungsmaximum:** Bestimmen Sie in Abhängigkeit von $k$ den Zeitpunkt der maximalen Konzentration und die Höhe der maximalen Konzentration.
+    Für welchen Parameter $k$ wird das Maximum genau nach 2 Stunden erreicht? (9 BE)
+3.  **Abbaugeschwindigkeit:** Zeigen Sie, dass die Wendestelle der Funktion bei $t_W = \frac{2}{k}$ liegt.
+    Interpretieren Sie die Bedeutung der Wendestelle im Kontext des Abbaus des Medikaments. (6 BE)
+4.  **Gesamtmenge:** Das Integral $\int_0^{\infty} c_k(t) \, dt$ ist ein Maß für die "totale Exposition" des Körpers (AUC = Area Under Curve).
+    Bestimmen Sie diesen Wert in Abhängigkeit von $k$.
+    Ein Arzt möchte die Exposition verdoppeln. Untersuchen Sie, wie er dafür den Parameter $k$ ändern muss. (11 BE)
 
 <div style="page-break-after: always;"></div>
 
@@ -212,7 +316,6 @@ Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,00
 3. **Testoptimierung:** Wie oft muss der Test bei einer Person wiederholt werden (unabhängig), damit bei lauter positiven Ergebnissen die Wahrscheinlichkeit für eine tatsächliche Infektion auf über 90% steigt?
    Diskutieren Sie die Annahme der "Unabhängigkeit" bei wiederholten Tests an derselben Person. (9 BE)
 
----
 
 <div style="page-break-after: always;"></div>
 
@@ -263,8 +366,9 @@ Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,00
     <tr><td>1</td><td>A4</td><td>LA/AG</td><td>1</td><td>AB1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Spurpunkte (Rezept).</td></tr>
     <tr><td>1</td><td>A5</td><td>Stoch</td><td>1</td><td>AB1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Pfadregeln (Standard).</td></tr>
     <tr><td>2</td><td>B1</td><td>Ana (Log)</td><td>—</td><td>AB2-3</td><td>1</td><td>2</td><td>2</td><td>2</td><td>2</td><td>↑ Logistisches Wachstum;<br>Kritik am Modell (Transfer).</td></tr>
+    <tr><td>2</td><td>B2</td><td>Ana (Poly)</td><td>—</td><td>AB2</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>↑ Wendepunkt (Kontext);<br>Integral als Strecke.</td></tr>
     <tr><td>2</td><td>C1</td><td>LA/AG</td><td>—</td><td>AB2</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>↑ Schattenwurf-Prüfung.</td></tr>
-    <tr><td>2</td><td>D1</td><td>Stoch</td><td>—</td><td>AB2</td><td>1</td><td>1</td><td>1</td><td>2</td><td>2</td><td>Hypothesentest u. Fehlerart<br>(Kontextdeutung).</td></tr>
+    <tr><td>2</td><td>D1</td><td>Stoch</td><td>—</td><td>AB2</td><td>1</td><td>1</td><td>1</td><td>2</td><td>2</td><td>Bedingte Wk. (Bayes);<br>Interpretation Screening.</td></tr>
   </tbody>
 </table>
 
@@ -295,10 +399,13 @@ Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,00
     <tr><td>1</td><td>A4</td><td>LA/AG</td><td>1</td><td>AB1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Lagebeziehung Gerade/Ebene<br>(Standardverfahren).</td></tr>
     <tr><td>1</td><td>A5</td><td>Ana</td><td>1</td><td>AB1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Kettenregel + Stammfunktion<br>(Basiskalkül).</td></tr>
     <tr><td>1</td><td>A6</td><td>Stoch</td><td>1</td><td>AB1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>Bed. Wkt. + Interpretation<br>(Kontextdeutung).</td></tr>
-    <tr><td>2</td><td>B1</td><td>Ana (Kette)</td><td>—</td><td>AB3</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>↑ Bogenlänge (Integral);<br>↓ Symmetrie nutzen.</td></tr>
+    <tr><td>2</td><td>B1</td><td>Ana (Kette)</td><td>—</td><td>AB3</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>↑ Parameter-Variation;<br>↓ Symmetrie nutzen.</td></tr>
+    <tr><td>2</td><td>B2</td><td>Ana (Schar)</td><td>—</td><td>AB3</td><td>2</td><td>2</td><td>2</td><td>1</td><td>1</td><td>↑ Allg. Parameter-Integration;<br>Optimierung von k.</td></tr>
     <tr><td>2</td><td>C1</td><td>LA/AG</td><td>—</td><td>AB3</td><td>2</td><td>1</td><td>1</td><td>2</td><td>2</td><td>Populationsmatrix (stabil?);<br>Rückrechnung LGS.</td></tr>
     <tr><td>2</td><td>D1</td><td>Stoch</td><td>—</td><td>AB3</td><td>2</td><td>1</td><td>2</td><td>2</td><td>2</td><td>Bayes + Mehrfachtest;<br>Kritik Unabhängigkeit.</td></tr>
   </tbody>
 </table>
 
----
+--- 
+
+
