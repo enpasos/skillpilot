@@ -142,8 +142,6 @@ $$
 5. **Bewertung:** Ein Experte kritisiert das logistische Modell $A(t)$ für die Anfangsphase, da Algen bei guten Bedingungen eher exponentiell wachsen.
    Vergleichen Sie $A(t)$ für kleine $t$ mit einer geeigneten Exponentialfunktion und nehmen Sie Stellung. (4 BE)
 
- 
-
 ### **B2 (Analysis – "Der Bremstest", 25 BE)**
 
 Ein Fahrzeug führt einen Bremstest durch. Die Geschwindigkeit wird für $0 \le t \le 10$ modelliert durch:
@@ -312,7 +310,7 @@ $$
 5. **Variation:** Bei Belastung senkt sich das Seil. Die neue Funktion ist $k_a(x) = \frac{1}{a} (e^{ax} + e^{-ax})$.
    Zeigen Sie allgemein durch Rechnung oder Argumentation: Je größer der Parameter $a$ ($a>0$), desto steiler ist der Anstieg des Seils am Pylon ($x=100$). (6 BE)
 
-<div style="page-break-after: always;"></div>
+ 
 
 ### **B2 (Analysis – "Wirkstoffkonzentration", 30 BE)**
 
