@@ -164,6 +164,7 @@ export const en = {
             githubLabel: "GitHub ID",
             githubPlaceholder: "Your GitHub Handle",
             publicNote: "GitHub ID is required and publicly visible. SkillPilot ID will be masked.",
+            connectPrompt: "To register as a champion, please connect your GitHub account.",
             toggleShow: "Champion Registration / Management",
             toggleHide: "Hide Section",
             submit: "Register",

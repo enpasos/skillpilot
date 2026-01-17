@@ -551,7 +551,7 @@ export const CurriculaView: React.FC = () => {
                   ) : (
                     <div className="flex flex-col items-center justify-center py-6 gap-4">
                       <p className="text-text-secondary text-sm">
-                        To register as a champion, please connect your GitHub account.
+                        {t.curriculaPage.registration.connectPrompt}
                       </p>
                       <button
                         type="button"
