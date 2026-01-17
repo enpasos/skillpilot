@@ -216,7 +216,7 @@ export const en = {
             empty: "No champions registered for this curriculum yet."
         },
         table: {
-            skillpilotId: "SkillPilot ID (first 5)",
+            skillpilotId: "SkillPilot ID",
             achievements: "Achievements",
             issues: "Issues",
             prs: "PRs"

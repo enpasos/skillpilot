@@ -216,7 +216,7 @@ export const de = {
             empty: "Noch keine Champions für dieses Curriculum registriert."
         },
         table: {
-            skillpilotId: "SkillPilot-ID (erste 5)",
+            skillpilotId: "SkillPilot-ID",
             achievements: "Erfolge",
             issues: "Issues",
             prs: "PRs"

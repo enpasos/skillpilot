@@ -264,7 +264,10 @@ public class CurriculaService {
         if (skillpilotId == null || skillpilotId.length() < 5) {
             return "Unknown";
         }
-        return skillpilotId.substring(0, 5);
+        if (skillpilotId.length() == 5) {
+            return skillpilotId;
+        }
+        return skillpilotId.substring(0, 5) + "...";
     }
 
     private long countChampionMastery(
