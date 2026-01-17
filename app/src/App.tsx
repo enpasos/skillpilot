@@ -263,7 +263,9 @@ const App: React.FC = () => {
     }
   }, [role, hasSession, navigate, isPublicRoute, location.search])
 
-  if (isPublicRoute) {
+  // Direct check for /curricula using window.location to handle OAuth redirect cache issues
+  // This ensures CurriculaView is rendered even if React Router state is out of sync
+  if (isPublicRoute || window.location.pathname.startsWith('/curricula')) {
     return (
       <Routes>
         <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
