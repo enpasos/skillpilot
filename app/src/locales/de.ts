@@ -135,6 +135,7 @@ export const de = {
         intro: {
             title: "Was ist ein Curriculum Champion?",
             description: "Champions übernehmen Verantwortung für ein Curriculum und sorgen dafür, dass es in der Praxis funktioniert.",
+            comicAlt: "Curriculum-Champion-Comic",
             panels: [
                 {
                     title: "Engagement",
@@ -163,6 +164,8 @@ export const de = {
             githubLabel: "GitHub-ID",
             githubPlaceholder: "Dein GitHub-Handle",
             publicNote: "GitHub-ID ist erforderlich und öffentlich sichtbar. SkillPilot-ID wird maskiert angezeigt.",
+            toggleShow: "Als Champion registrieren",
+            toggleHide: "Registrierung ausblenden",
             submit: "Registrieren",
             submitting: "Registriere...",
             success: "Danke für dein Engagement als Champion!",
@@ -213,7 +216,8 @@ export const de = {
             empty: "Noch keine Champions für dieses Curriculum registriert."
         },
         table: {
-            skillpilotId: "SkillPilot-ID",
+            skillpilotId: "SkillPilot-ID (erste 5)",
+            achievements: "Erfolge",
             issues: "Issues",
             prs: "PRs"
         },

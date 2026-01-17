@@ -4,10 +4,12 @@ import { CurriculumDropdown, type LandscapeSummary } from '../components/Curricu
 import { ThemeToggle } from '../components/ThemeToggle'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { useTranslation } from '../hooks/useTranslation'
+import { useLanguage } from '../contexts/LanguageContext'
 
 interface ChampionEntry {
   githubId: string
   skillpilotIdMasked: string
+  masteredCount: number
   issuesCount: number
   pullRequestsCount: number
   registeredAt?: string
@@ -49,11 +51,13 @@ export const CurriculaView: React.FC = () => {
   const [githubMessage, setGithubMessage] = useState('')
   const [championFilter, setChampionFilter] = useState<ChampionFilter>('with')
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>('all')
+  const [showRegistration, setShowRegistration] = useState(false)
   const [formState, setFormState] = useState({
     skillpilotId: '',
     githubId: '',
   })
   const t = useTranslation()
+  const { language } = useLanguage()
 
   const loadData = useCallback(() => {
     setLoading(true)
@@ -99,6 +103,8 @@ export const CurriculaView: React.FC = () => {
       schoolType: '',
     }))
   }, [data])
+
+  const championComicSrc = language === 'de' ? '/comic3/champion.de.png' : '/comic3/champion.en.png'
 
   const getCategory = useCallback((curriculum: CurriculumEntry): CategoryFilter => {
     const title = (curriculum.title ?? '').toUpperCase()
@@ -331,6 +337,14 @@ export const CurriculaView: React.FC = () => {
                 {t.curriculaPage.intro.description}
               </p>
             </div>
+            <div className="rounded-2xl border border-border-color bg-white/70 dark:bg-slate-900/40 p-4">
+              <img
+                src={championComicSrc}
+                alt={t.curriculaPage.intro.comicAlt}
+                className="w-full h-auto rounded-xl"
+                loading="lazy"
+              />
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {t.curriculaPage.intro.panels.map((panel, index) => (
                 <div
@@ -347,15 +361,27 @@ export const CurriculaView: React.FC = () => {
 
         <section className="bg-white/40 dark:bg-slate-800/40 backdrop-blur-md rounded-3xl border border-border-color p-6 md:p-8 shadow-xl">
           <div className="flex flex-col gap-6">
-            <div>
-              <h2 className="text-2xl font-semibold text-text-primary">
-                {t.curriculaPage.registration.title}
-              </h2>
-              <p className="text-text-secondary mt-2">
-                {t.curriculaPage.registration.description}
-              </p>
+            <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+              <div>
+                <h2 className="text-2xl font-semibold text-text-primary">
+                  {t.curriculaPage.registration.title}
+                </h2>
+                <p className="text-text-secondary mt-2">
+                  {t.curriculaPage.registration.description}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowRegistration((prev) => !prev)}
+                className="text-sm text-sky-700 dark:text-sky-300 underline underline-offset-4 decoration-sky-300 hover:decoration-sky-500"
+              >
+                {showRegistration
+                  ? t.curriculaPage.registration.toggleHide
+                  : t.curriculaPage.registration.toggleShow}
+              </button>
             </div>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            {showRegistration && (
+              <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-4">
                 <div className="flex flex-col gap-2">
                   <label className="text-sm font-medium text-text-primary">
@@ -455,7 +481,8 @@ export const CurriculaView: React.FC = () => {
               >
                 {submitting ? t.curriculaPage.registration.submitting : t.curriculaPage.registration.submit}
               </button>
-            </form>
+              </form>
+            )}
           </div>
         </section>
 
@@ -556,17 +583,52 @@ export const CurriculaView: React.FC = () => {
                         {t.curriculaPage.directory.noChampions}
                       </div>
                     ) : (
-                      <div className="flex flex-wrap gap-2 mt-2">
+                      <div className="mt-3 space-y-3">
                         {curriculum.champions.map((champion, index) => (
-                          <a
+                          <div
                             key={`${curriculum.curriculumId}-${champion.githubId}-${index}`}
-                            href={`https://github.com/${champion.githubId}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-xs font-medium text-sky-700 dark:text-sky-300 hover:underline"
+                            className="flex flex-col gap-3 rounded-xl border border-border-color bg-white/70 dark:bg-slate-900/40 p-3"
                           >
-                            @{champion.githubId}
-                          </a>
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                              <a
+                                href={`https://github.com/${champion.githubId}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-sm font-semibold text-sky-700 dark:text-sky-300 hover:underline"
+                              >
+                                @{champion.githubId}
+                              </a>
+                              <div className="text-xs text-text-secondary">
+                                {t.curriculaPage.table.skillpilotId}: {champion.skillpilotIdMasked}
+                              </div>
+                            </div>
+                            <div className="flex flex-wrap gap-4 text-xs text-text-secondary">
+                              <div className="flex flex-col">
+                                <span className="uppercase tracking-wider">
+                                  {t.curriculaPage.table.achievements}
+                                </span>
+                                <span className="text-sm font-semibold text-text-primary">
+                                  {champion.masteredCount}
+                                </span>
+                              </div>
+                              <div className="flex flex-col">
+                                <span className="uppercase tracking-wider">
+                                  {t.curriculaPage.table.issues}
+                                </span>
+                                <span className="text-sm font-semibold text-text-primary">
+                                  {champion.issuesCount}
+                                </span>
+                              </div>
+                              <div className="flex flex-col">
+                                <span className="uppercase tracking-wider">
+                                  {t.curriculaPage.table.prs}
+                                </span>
+                                <span className="text-sm font-semibold text-text-primary">
+                                  {champion.pullRequestsCount}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
                         ))}
                       </div>
                     )}

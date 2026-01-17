@@ -16,7 +16,7 @@ There is no limit to the number of champions for a single curriculum. Multiple c
 Aspiring champions register on the **"Curricula"** page (which will replace the current "Hall of Fame").
 **Registration Requirements:**
 *   SkillPilot ID
-*   GitHub ID
+*   **GitHub Account Verification:** Users must authenticate via GitHub OAuth to prove ownership of the account.
 *   GitHub ID is shown publicly; SkillPilot ID is displayed masked.
 
 ## The "Curricula" Page
@@ -26,7 +26,7 @@ This page serves as the central hub for curriculum maintenance.
 A four-panel cartoon (**Nano Banana Pro**) describes the Curriculum Champion concept.
 
 ### 2. Registration Action
-A button/form allows users to register as a champion by entering their SkillPilot ID and GitHub ID.
+A button **"Connect with GitHub"** initiates the OAuth flow to verify the GitHub identity and register as a champion.
 
 ### 3. Curriculum Directory
 A comprehensive list of all available curricula, including aggregated stats per curriculum:

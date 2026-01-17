@@ -46,7 +46,7 @@ public class CurriculaService {
     private final CurriculumChampionRepository championRepository;
 
     private final AtomicReference<CurriculaMetricsSnapshot> metricsSnapshot = new AtomicReference<>(
-            new CurriculaMetricsSnapshot(Collections.emptyMap(), null, Instant.now()));
+            new CurriculaMetricsSnapshot(Collections.emptyMap(), Collections.emptyMap(), null, Instant.now()));
 
     public CurriculaService(
             LandscapeService landscapeService,
@@ -70,7 +70,6 @@ public class CurriculaService {
         try {
             List<LandscapeSummary> baseCurricula = landscapeService.getBaseCurricula();
             Map<String, CurriculumMetrics> metricsByCurriculum = new HashMap<>();
-
             Map<String, Set<String>> goalToRoots = new HashMap<>();
 
             for (LandscapeSummary summary : baseCurricula) {
@@ -113,7 +112,15 @@ public class CurriculaService {
             }
 
             String defaultCurriculumId = selectDefaultCurriculum(metricsByCurriculum, baseCurricula);
-            metricsSnapshot.set(new CurriculaMetricsSnapshot(metricsByCurriculum, defaultCurriculumId, Instant.now()));
+            Map<String, Set<String>> immutableGoalToRoots = new HashMap<>();
+            for (Map.Entry<String, Set<String>> entry : goalToRoots.entrySet()) {
+                immutableGoalToRoots.put(entry.getKey(), Set.copyOf(entry.getValue()));
+            }
+            metricsSnapshot.set(new CurriculaMetricsSnapshot(
+                    metricsByCurriculum,
+                    Collections.unmodifiableMap(immutableGoalToRoots),
+                    defaultCurriculumId,
+                    Instant.now()));
             log.info("Curricula metrics snapshot refreshed. {} curricula.", metricsByCurriculum.size());
         } catch (Exception e) {
             log.error("Failed to refresh curricula metrics snapshot", e);
@@ -123,13 +130,15 @@ public class CurriculaService {
     public CurriculaSnapshot getSnapshot() {
         CurriculaMetricsSnapshot snapshot = metricsSnapshot.get();
         List<LandscapeSummary> baseCurricula = landscapeService.getBaseCurricula();
+        Map<String, Set<String>> goalToRoots = snapshot.goalToRoots();
+        Map<String, List<Mastery>> masteryCache = new HashMap<>();
         List<CurriculumOverview> result = new ArrayList<>();
 
         for (LandscapeSummary summary : baseCurricula) {
             String curriculumId = summary.getCurriculumId();
             CurriculumMetrics metrics = snapshot.metricsByCurriculum().getOrDefault(curriculumId,
                     new CurriculumMetrics(0, 0));
-            List<CurriculumChampionProfile> champions = loadChampions(curriculumId);
+            List<CurriculumChampionProfile> champions = loadChampions(curriculumId, goalToRoots, masteryCache);
             result.add(new CurriculumOverview(
                     curriculumId,
                     summary.getTitle(),
@@ -187,23 +196,39 @@ public class CurriculaService {
         champion.setPullRequestsCount(0);
 
         CurriculumChampion saved = championRepository.save(champion);
-        return new ChampionRegistrationResponse(toProfile(saved));
+        CurriculaMetricsSnapshot snapshot = metricsSnapshot.get();
+        Map<String, List<Mastery>> masteryCache = new HashMap<>();
+        CurriculumChampionProfile profile = toProfile(
+                saved,
+                saved.getCurriculumId(),
+                snapshot.goalToRoots(),
+                masteryCache);
+        return new ChampionRegistrationResponse(profile);
     }
 
-    private List<CurriculumChampionProfile> loadChampions(String curriculumId) {
+    private List<CurriculumChampionProfile> loadChampions(
+            String curriculumId,
+            Map<String, Set<String>> goalToRoots,
+            Map<String, List<Mastery>> masteryCache) {
         if (curriculumId == null || curriculumId.isBlank()) {
             return Collections.emptyList();
         }
         return championRepository.findByCurriculumIdOrderByCreatedAtAsc(curriculumId)
                 .stream()
-                .map(this::toProfile)
+                .map(champion -> toProfile(champion, curriculumId, goalToRoots, masteryCache))
                 .toList();
     }
 
-    private CurriculumChampionProfile toProfile(CurriculumChampion champion) {
+    private CurriculumChampionProfile toProfile(
+            CurriculumChampion champion,
+            String curriculumId,
+            Map<String, Set<String>> goalToRoots,
+            Map<String, List<Mastery>> masteryCache) {
+        long masteredCount = countChampionMastery(curriculumId, champion.getSkillpilotId(), goalToRoots, masteryCache);
         return new CurriculumChampionProfile(
                 champion.getGithubId(),
                 maskSkillpilotId(champion.getSkillpilotId()),
+                masteredCount,
                 champion.getIssuesCount(),
                 champion.getPullRequestsCount(),
                 champion.getCreatedAt());
@@ -233,7 +258,34 @@ public class CurriculaService {
         if (skillpilotId == null || skillpilotId.length() < 5) {
             return "Unknown";
         }
-        return skillpilotId.substring(0, 5) + "...";
+        return skillpilotId.substring(0, 5);
+    }
+
+    private long countChampionMastery(
+            String curriculumId,
+            String skillpilotId,
+            Map<String, Set<String>> goalToRoots,
+            Map<String, List<Mastery>> masteryCache) {
+        if (skillpilotId == null || skillpilotId.isBlank()) {
+            return 0;
+        }
+        if (goalToRoots == null || goalToRoots.isEmpty()) {
+            return 0;
+        }
+        List<Mastery> masteryEntries = masteryCache.computeIfAbsent(
+                skillpilotId,
+                id -> masteryRepository.findByLearner_SkillpilotId(id));
+        long count = 0;
+        for (Mastery mastery : masteryEntries) {
+            if (mastery.getValue() < MASTERY_THRESHOLD) {
+                continue;
+            }
+            Set<String> roots = goalToRoots.get(mastery.getGoalKey());
+            if (roots != null && roots.contains(curriculumId)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     private String selectDefaultCurriculum(Map<String, CurriculumMetrics> metricsByCurriculum,
@@ -259,6 +311,7 @@ public class CurriculaService {
 
     private record CurriculaMetricsSnapshot(
             Map<String, CurriculumMetrics> metricsByCurriculum,
+            Map<String, Set<String>> goalToRoots,
             String defaultCurriculumId,
             Instant lastUpdatedAt) {
     }
