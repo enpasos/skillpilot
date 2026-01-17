@@ -182,7 +182,25 @@ export const en = {
         directory: {
             title: "Curriculum Directory",
             description: "Browse the available curricula and their progress snapshots.",
-            noDescription: "No description available."
+            noDescription: "No description available.",
+            championsLabel: "Champions",
+            noChampions: "No champions registered yet.",
+            filters: {
+                championsLabel: "Champions",
+                categoryLabel: "Category",
+                champions: {
+                    with: "With champions",
+                    without: "Without champions",
+                    all: "All"
+                },
+                categories: {
+                    all: "All",
+                    school: "School",
+                    uni: "University",
+                    other: "Continuing Ed"
+                },
+                empty: "No curricula match these filters."
+            }
         },
         stats: {
             mastered: "Total mastered achievements in this curriculum:",

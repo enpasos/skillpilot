@@ -33,6 +33,8 @@ interface CurriculaData {
 
 const GITHUB_ID_PATTERN = /^[A-Za-z0-9-]{1,39}$/
 type ValidationStatus = 'idle' | 'checking' | 'valid' | 'invalid'
+type ChampionFilter = 'with' | 'without' | 'all'
+type CategoryFilter = 'all' | 'school' | 'uni' | 'other'
 
 export const CurriculaView: React.FC = () => {
   const [data, setData] = useState<CurriculaData | null>(null)
@@ -45,6 +47,8 @@ export const CurriculaView: React.FC = () => {
   const [githubStatus, setGithubStatus] = useState<ValidationStatus>('idle')
   const [skillpilotMessage, setSkillpilotMessage] = useState('')
   const [githubMessage, setGithubMessage] = useState('')
+  const [championFilter, setChampionFilter] = useState<ChampionFilter>('with')
+  const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>('all')
   const [formState, setFormState] = useState({
     skillpilotId: '',
     githubId: '',
@@ -77,10 +81,6 @@ export const CurriculaView: React.FC = () => {
     setSelectedCurriculumId((prev) => (prev ? prev : defaultId))
   }, [data])
 
-  const selectedCurriculum = useMemo(() => {
-    return data?.curricula.find((c) => c.curriculumId === selectedCurriculumId)
-  }, [data, selectedCurriculumId])
-
   const curriculumOptions = useMemo<LandscapeSummary[]>(() => {
     if (!data) {
       return []
@@ -99,6 +99,72 @@ export const CurriculaView: React.FC = () => {
       schoolType: '',
     }))
   }, [data])
+
+  const getCategory = useCallback((curriculum: CurriculumEntry): CategoryFilter => {
+    const title = (curriculum.title ?? '').toUpperCase()
+    const subject = (curriculum.subject ?? '').toUpperCase()
+    const combined = `${title} ${subject}`
+
+    const schoolKeywords = [
+      'GRUNDSCHULE',
+      'MITTELSCHULE',
+      'REALSCHULE',
+      'GYMNASIUM',
+      'FOS',
+      'BOS',
+      'WIRTSCHAFTSSCHULE',
+      'BERUFSOBERSCHULE',
+      'FACHOBERSCHULE',
+      'GYM',
+      'GESAMT',
+      'SEKUNDARSTUFE',
+      'SCHULE',
+    ]
+    if (schoolKeywords.some((keyword) => combined.includes(keyword))) {
+      return 'school'
+    }
+
+    const uniKeywords = [
+      'BACHELOR',
+      'MASTER',
+      'UNIVERSITÄT',
+      'UNIVERSITAET',
+      'UNIVERSITY',
+      'HOCHSCHULE',
+      'UNI',
+      'TUM',
+      'HEIDELBERG',
+      'MANNHEIM',
+      'DARMSTADT',
+    ]
+    if (uniKeywords.some((keyword) => combined.includes(keyword))) {
+      return 'uni'
+    }
+
+    const otherKeywords = ['CEFR', 'SPRACHE', 'LANGUAGE', 'WEITERBILDUNG']
+    if (otherKeywords.some((keyword) => combined.includes(keyword))) {
+      return 'other'
+    }
+
+    return 'other'
+  }, [])
+
+  const filteredCurricula = useMemo(() => {
+    if (!data) {
+      return []
+    }
+    return data.curricula.filter((curriculum) => {
+      const hasChampions = curriculum.champions.length > 0
+      const championMatch =
+        championFilter === 'all' ||
+        (championFilter === 'with' ? hasChampions : !hasChampions)
+
+      const categoryMatch =
+        categoryFilter === 'all' || getCategory(curriculum) === categoryFilter
+
+      return championMatch && categoryMatch
+    })
+  }, [data, championFilter, categoryFilter, getCategory])
 
   const validateGithubId = useCallback((value?: string) => {
     const normalized = (value ?? formState.githubId).trim().replace(/^@/, '')
@@ -394,126 +460,119 @@ export const CurriculaView: React.FC = () => {
         </section>
 
         <section className="space-y-4">
-          <div>
-            <h2 className="text-2xl font-semibold text-text-primary">
-              {t.curriculaPage.directory.title}
-            </h2>
-            <p className="text-text-secondary mt-2">
-              {t.curriculaPage.directory.description}
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {data.curricula.map((curriculum) => (
-              <div
-                key={curriculum.curriculumId}
-                className="rounded-2xl border border-border-color bg-white/40 dark:bg-slate-800/40 p-5"
-              >
-                <div className="text-lg font-semibold text-text-primary">
-                  {curriculum.title}
-                </div>
-                <div className="text-sm text-text-secondary mt-1">
-                  {curriculum.description || t.curriculaPage.directory.noDescription}
-                </div>
-                <div className="mt-3 flex flex-wrap gap-3 text-xs text-text-secondary">
-                  {curriculum.subject && (
-                    <span className="px-2 py-1 rounded-full border border-border-color bg-white/70 dark:bg-slate-900/40">
-                      {curriculum.subject}
-                    </span>
-                  )}
-                  {curriculum.region && (
-                    <span className="px-2 py-1 rounded-full border border-border-color bg-white/70 dark:bg-slate-900/40">
-                      {curriculum.region}
-                    </span>
-                  )}
-                  <span className="px-2 py-1 rounded-full border border-border-color bg-white/70 dark:bg-slate-900/40">
-                    {t.curriculaPage.stats.goals}: {curriculum.totalAtomicGoals}
-                  </span>
-                  <span className="px-2 py-1 rounded-full border border-border-color bg-white/70 dark:bg-slate-900/40">
-                    {t.curriculaPage.stats.masteredShort}: {curriculum.totalMastered}
-                  </span>
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h2 className="text-2xl font-semibold text-text-primary">
+                {t.curriculaPage.directory.title}
+              </h2>
+              <p className="text-text-secondary mt-2">
+                {t.curriculaPage.directory.description}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <div className="flex flex-col gap-1">
+                <span className="text-xs uppercase tracking-wider text-text-secondary">
+                  {t.curriculaPage.directory.filters.championsLabel}
+                </span>
+                <div className="flex gap-1 rounded-lg border border-border-color bg-input-bg p-1">
+                  {(['with', 'without', 'all'] as ChampionFilter[]).map((filter) => (
+                    <button
+                      key={filter}
+                      type="button"
+                      onClick={() => setChampionFilter(filter)}
+                      className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors ${championFilter === filter
+                        ? 'bg-sky-600 text-white shadow-sm'
+                        : 'text-text-secondary hover:bg-black/5 dark:hover:bg-white/5'
+                        }`}
+                    >
+                      {t.curriculaPage.directory.filters.champions[filter]}
+                    </button>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="space-y-4">
-          <div>
-            <h2 className="text-2xl font-semibold text-text-primary">
-              {t.curriculaPage.leaderboard.title}
-            </h2>
-            <p className="text-text-secondary mt-2">
-              {t.curriculaPage.leaderboard.description}
-            </p>
-          </div>
-
-          <div className="flex justify-center">
-            <div className="w-full max-w-md">
-              <CurriculumDropdown
-                currentLandscapeId={selectedCurriculumId}
-                onSelect={setSelectedCurriculumId}
-                landscapes={curriculumOptions}
-              />
+              <div className="flex flex-col gap-1">
+                <span className="text-xs uppercase tracking-wider text-text-secondary">
+                  {t.curriculaPage.directory.filters.categoryLabel}
+                </span>
+                <div className="flex gap-1 rounded-lg border border-border-color bg-input-bg p-1">
+                  {(['all', 'school', 'uni', 'other'] as CategoryFilter[]).map((filter) => (
+                    <button
+                      key={filter}
+                      type="button"
+                      onClick={() => setCategoryFilter(filter)}
+                      className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors ${categoryFilter === filter
+                        ? 'bg-sky-600 text-white shadow-sm'
+                        : 'text-text-secondary hover:bg-black/5 dark:hover:bg-white/5'
+                        }`}
+                    >
+                      {t.curriculaPage.directory.filters.categories[filter]}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-
-          {selectedCurriculum && (
-            <div className="bg-white/40 dark:bg-slate-800/40 backdrop-blur-md rounded-3xl border border-border-color p-6 md:p-8 shadow-2xl relative overflow-hidden transition-colors duration-300">
-              <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
-
-              <div className="relative z-10 flex flex-col md:flex-row justify-between items-center md:items-start space-y-6 md:space-y-0 mb-8 border-b border-border-color pb-8">
-                <div>
-                  <h3 className="text-2xl font-bold text-text-primary mb-1">{selectedCurriculum.title}</h3>
-                  <div className="text-sm text-text-secondary">
-                    {t.curriculaPage.stats.mastered} <span className="text-orange-600 dark:text-orange-400 font-mono">{selectedCurriculum.totalMastered}</span>
+          {filteredCurricula.length === 0 ? (
+            <div className="text-sm text-text-secondary">
+              {t.curriculaPage.directory.filters.empty}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {filteredCurricula.map((curriculum) => (
+                <div
+                  key={curriculum.curriculumId}
+                  className="rounded-2xl border border-border-color bg-white/40 dark:bg-slate-800/40 p-5"
+                >
+                  <div className="text-lg font-semibold text-text-primary">
+                    {curriculum.title}
                   </div>
-                </div>
-                <div className="text-right hidden md:block">
-                  <div className="text-xs text-text-secondary uppercase tracking-wider font-semibold">{t.curriculaPage.stats.goals}</div>
-                  <div className="text-3xl font-bold text-text-primary">{selectedCurriculum.totalAtomicGoals}</div>
-                </div>
-              </div>
-
-              {selectedCurriculum.champions.length === 0 ? (
-                <div className="text-text-secondary text-sm">
-                  {t.curriculaPage.leaderboard.empty}
-                </div>
-              ) : (
-                <div className="space-y-3">
-                  {selectedCurriculum.champions.map((champion, index) => (
-                    <div
-                      key={`${champion.githubId}-${index}`}
-                      className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-4 rounded-xl bg-slate-100/50 dark:bg-slate-700/30 border border-border-color"
-                    >
-                      <div>
-                        <div className="text-lg font-semibold text-text-primary">
+                  <div className="text-sm text-text-secondary mt-1">
+                    {curriculum.description || t.curriculaPage.directory.noDescription}
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-3 text-xs text-text-secondary">
+                    {curriculum.subject && (
+                      <span className="px-2 py-1 rounded-full border border-border-color bg-white/70 dark:bg-slate-900/40">
+                        {curriculum.subject}
+                      </span>
+                    )}
+                    {curriculum.region && (
+                      <span className="px-2 py-1 rounded-full border border-border-color bg-white/70 dark:bg-slate-900/40">
+                        {curriculum.region}
+                      </span>
+                    )}
+                    <span className="px-2 py-1 rounded-full border border-border-color bg-white/70 dark:bg-slate-900/40">
+                      {t.curriculaPage.stats.goals}: {curriculum.totalAtomicGoals}
+                    </span>
+                    <span className="px-2 py-1 rounded-full border border-border-color bg-white/70 dark:bg-slate-900/40">
+                      {t.curriculaPage.stats.masteredShort}: {curriculum.totalMastered}
+                    </span>
+                  </div>
+                  <div className="mt-4 border-t border-border-color pt-4">
+                    <div className="text-xs uppercase tracking-wider text-text-secondary">
+                      {t.curriculaPage.directory.championsLabel}
+                    </div>
+                    {curriculum.champions.length === 0 ? (
+                      <div className="text-xs text-text-secondary mt-2">
+                        {t.curriculaPage.directory.noChampions}
+                      </div>
+                    ) : (
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        {curriculum.champions.map((champion, index) => (
                           <a
+                            key={`${curriculum.curriculumId}-${champion.githubId}-${index}`}
                             href={`https://github.com/${champion.githubId}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hover:underline"
+                            className="text-xs font-medium text-sky-700 dark:text-sky-300 hover:underline"
                           >
                             @{champion.githubId}
                           </a>
-                        </div>
-                        <div className="text-xs text-text-secondary">
-                          {t.curriculaPage.table.skillpilotId}: {champion.skillpilotIdMasked}
-                        </div>
+                        ))}
                       </div>
-                      <div className="flex items-center gap-4 text-sm text-text-secondary">
-                        <div className="flex flex-col items-end">
-                          <span className="text-xs uppercase">{t.curriculaPage.table.issues}</span>
-                          <span className="text-lg font-bold text-text-primary">{champion.issuesCount}</span>
-                        </div>
-                        <div className="flex flex-col items-end">
-                          <span className="text-xs uppercase">{t.curriculaPage.table.prs}</span>
-                          <span className="text-lg font-bold text-text-primary">{champion.pullRequestsCount}</span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                    )}
+                  </div>
                 </div>
-              )}
+              ))}
             </div>
           )}
         </section>

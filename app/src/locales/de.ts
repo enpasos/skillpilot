@@ -182,7 +182,25 @@ export const de = {
         directory: {
             title: "Curriculum-Verzeichnis",
             description: "Alle Curricula mit aktuellen Fortschritts-Snapshots.",
-            noDescription: "Keine Beschreibung verfügbar."
+            noDescription: "Keine Beschreibung verfügbar.",
+            championsLabel: "Champions",
+            noChampions: "Noch keine Champions registriert.",
+            filters: {
+                championsLabel: "Champions",
+                categoryLabel: "Kategorie",
+                champions: {
+                    with: "Mit Champions",
+                    without: "Ohne Champions",
+                    all: "Alle"
+                },
+                categories: {
+                    all: "Alle",
+                    school: "Schule",
+                    uni: "Uni",
+                    other: "Weiterbildung"
+                },
+                empty: "Keine Curricula passen zu diesen Filtern."
+            }
         },
         stats: {
             mastered: "Insgesamt gemeisterte Erfolge in diesem Curriculum:",
