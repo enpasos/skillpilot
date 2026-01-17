@@ -10,7 +10,13 @@ public interface CurriculumChampionRepository extends JpaRepository<CurriculumCh
 
     Optional<CurriculumChampion> findByCurriculumIdAndGithubId(String curriculumId, String githubId);
 
+    Optional<CurriculumChampion> findByCurriculumIdAndTopicIdAndGithubId(String curriculumId, String topicId,
+            String githubId);
+
     Optional<CurriculumChampion> findByCurriculumIdAndSkillpilotId(String curriculumId, String skillpilotId);
+
+    Optional<CurriculumChampion> findByCurriculumIdAndTopicIdAndSkillpilotId(String curriculumId, String topicId,
+            String skillpilotId);
 
     List<CurriculumChampion> findByGithubId(String githubId);
 }

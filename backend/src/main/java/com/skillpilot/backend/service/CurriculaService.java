@@ -203,6 +203,11 @@ public class CurriculaService {
                     "curriculumId, skillpilotId, and githubId are required");
         }
 
+        String topicId = normalize(request.topicId());
+        if (topicId.isEmpty()) {
+            topicId = null;
+        }
+
         if (!GITHUB_ID_PATTERN.matcher(githubId).matches()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid GitHub ID");
         }
@@ -215,17 +220,20 @@ public class CurriculaService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unknown SkillPilot ID");
         }
 
-        if (championRepository.findByCurriculumIdAndGithubId(curriculumId, githubId).isPresent()) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "GitHub ID already registered for this curriculum");
+        if (championRepository.findByCurriculumIdAndTopicIdAndGithubId(curriculumId, topicId, githubId).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    "GitHub ID already registered for this curriculum/topic");
         }
 
-        if (championRepository.findByCurriculumIdAndSkillpilotId(curriculumId, skillpilotId).isPresent()) {
+        if (championRepository.findByCurriculumIdAndTopicIdAndSkillpilotId(curriculumId, topicId, skillpilotId)
+                .isPresent()) {
             throw new ResponseStatusException(HttpStatus.CONFLICT,
-                    "SkillPilot ID already registered for this curriculum");
+                    "SkillPilot ID already registered for this curriculum/topic");
         }
 
         CurriculumChampion champion = new CurriculumChampion();
         champion.setCurriculumId(curriculumId);
+        champion.setTopicId(topicId);
         champion.setSkillpilotId(skillpilotId);
         champion.setGithubId(githubId);
         champion.setIssuesCount(0);
@@ -267,6 +275,7 @@ public class CurriculaService {
                 : champion.getPullRequestsCount();
         return new CurriculumChampionProfile(
                 curriculumId,
+                champion.getTopicId(),
                 champion.getGithubId(),
                 maskSkillpilotId(champion.getSkillpilotId()),
                 masteredCount,
@@ -358,5 +367,15 @@ public class CurriculaService {
             Map<String, Set<String>> goalToRoots,
             String defaultCurriculumId,
             Instant lastUpdatedAt) {
+    }
+
+    public List<com.skillpilot.backend.api.TopicSummary> getTopics(String curriculumId) {
+        LearningLandscape root = landscapeService.getById(curriculumId);
+        if (root == null || root.getGoals() == null) {
+            return java.util.Collections.emptyList();
+        }
+        return root.getGoals().stream()
+                .map(g -> new com.skillpilot.backend.api.TopicSummary(g.getId(), g.getTitle()))
+                .toList();
     }
 }

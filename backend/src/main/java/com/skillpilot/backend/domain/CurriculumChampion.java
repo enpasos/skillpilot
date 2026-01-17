@@ -22,6 +22,9 @@ public class CurriculumChampion {
     @Column(name = "curriculum_id", nullable = false, length = 255)
     private String curriculumId;
 
+    @Column(name = "topic_id", nullable = true, length = 255)
+    private String topicId;
+
     @Column(name = "skillpilot_id", nullable = false, length = 80)
     private String skillpilotId;
 
@@ -52,6 +55,14 @@ public class CurriculumChampion {
 
     public void setCurriculumId(String curriculumId) {
         this.curriculumId = curriculumId;
+    }
+
+    public String getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
     }
 
     public String getSkillpilotId() {

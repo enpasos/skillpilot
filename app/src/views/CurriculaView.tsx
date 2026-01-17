@@ -17,6 +17,11 @@ interface ChampionEntry {
   registeredAt?: string
 }
 
+interface TopicSummary {
+  id: string
+  title: string
+}
+
 interface CurriculumEntry {
   curriculumId: string
   title: string
@@ -59,7 +64,9 @@ export const CurriculaView: React.FC = () => {
   const [formState, setFormState] = useState({
     skillpilotId: '',
     githubId: '',
+    topicId: '',
   })
+  const [topics, setTopics] = useState<TopicSummary[]>([])
   const t = useTranslation()
   const { language } = useLanguage()
 
@@ -207,6 +214,17 @@ export const CurriculaView: React.FC = () => {
     })
   }, [data, championFilter, categoryFilter, getCategory])
 
+  useEffect(() => {
+    if (!selectedCurriculumId) {
+      setTopics([])
+      return
+    }
+    fetch(`/api/ui/curricula/${selectedCurriculumId}/topics`)
+      .then(res => res.json())
+      .then(setTopics)
+      .catch(err => console.error("Failed to load topics", err))
+  }, [selectedCurriculumId])
+
 
 
   const validateSkillpilotId = useCallback(async (value?: string) => {
@@ -268,6 +286,7 @@ export const CurriculaView: React.FC = () => {
           curriculumId: selectedCurriculumId,
           skillpilotId: trimmedSkillpilotId,
           githubId: 'oauth', // Backend ignores this
+          topicId: formState.topicId || null,
         }),
       })
       if (!res.ok) {
@@ -458,6 +477,24 @@ export const CurriculaView: React.FC = () => {
                       onSelect={setSelectedCurriculumId}
                       landscapes={curriculumOptions}
                     />
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <label className="text-sm font-medium text-text-primary">
+                      {t.curriculaPage.registration.scopeLabel}
+                    </label>
+                    <select
+                      value={formState.topicId}
+                      onChange={(e) => setFormState(prev => ({ ...prev, topicId: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl border border-border-color bg-white/70 dark:bg-slate-900/40 text-text-primary appearance-none invalid:text-text-secondary"
+                    >
+                      <option value="">{t.curriculaPage.registration.entireCurriculum}</option>
+                      {topics.map(topic => (
+                        <option key={topic.id} value={topic.id}>
+                          {topic.title}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
                   {user ? (

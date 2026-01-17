@@ -48,7 +48,8 @@ public class ChampionController {
         ChampionRegistrationRequest secureRequest = new ChampionRegistrationRequest(
                 request.curriculumId(),
                 request.skillpilotId(),
-                githubId);
+                githubId,
+                request.topicId());
 
         return curriculaService.registerChampion(secureRequest);
     }

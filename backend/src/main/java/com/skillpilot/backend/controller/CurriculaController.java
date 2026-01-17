@@ -34,4 +34,10 @@ public class CurriculaController {
     public CurriculaSnapshot getHallOfFame() {
         return curriculaService.getSnapshot();
     }
+
+    @GetMapping("/curricula/{curriculumId}/topics")
+    public java.util.List<com.skillpilot.backend.api.TopicSummary> getTopics(
+            @org.springframework.web.bind.annotation.PathVariable String curriculumId) {
+        return curriculaService.getTopics(curriculumId);
+    }
 }
