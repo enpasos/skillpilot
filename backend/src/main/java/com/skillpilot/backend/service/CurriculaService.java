@@ -153,14 +153,13 @@ public class CurriculaService {
 
         String curriculumId = normalize(request.curriculumId());
         String skillpilotId = normalize(request.skillpilotId());
-        String githubId = normalize(request.githubId());
+        String githubId = normalizeGithubId(request.githubId());
 
         if (curriculumId.isEmpty() || skillpilotId.isEmpty() || githubId.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "curriculumId, skillpilotId, and githubId are required");
         }
 
-        String githubIdNormalized = githubId.toLowerCase();
-        if (!GITHUB_ID_PATTERN.matcher(githubIdNormalized).matches()) {
+        if (!GITHUB_ID_PATTERN.matcher(githubId).matches()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid GitHub ID");
         }
 
@@ -172,7 +171,7 @@ public class CurriculaService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unknown SkillPilot ID");
         }
 
-        if (championRepository.findByCurriculumIdAndGithubId(curriculumId, githubIdNormalized).isPresent()) {
+        if (championRepository.findByCurriculumIdAndGithubId(curriculumId, githubId).isPresent()) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "GitHub ID already registered for this curriculum");
         }
 
@@ -183,7 +182,7 @@ public class CurriculaService {
         CurriculumChampion champion = new CurriculumChampion();
         champion.setCurriculumId(curriculumId);
         champion.setSkillpilotId(skillpilotId);
-        champion.setGithubId(githubIdNormalized);
+        champion.setGithubId(githubId);
         champion.setIssuesCount(0);
         champion.setPullRequestsCount(0);
 
@@ -220,6 +219,14 @@ public class CurriculaService {
             return "";
         }
         return value.trim();
+    }
+
+    private String normalizeGithubId(String value) {
+        String trimmed = normalize(value);
+        if (trimmed.startsWith("@")) {
+            trimmed = trimmed.substring(1);
+        }
+        return trimmed.toLowerCase();
     }
 
     private String maskSkillpilotId(String skillpilotId) {

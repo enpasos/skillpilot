@@ -99,7 +99,10 @@ export const CurriculaView: React.FC = () => {
     setSubmitError('')
     setSubmitSuccess('')
 
-    if (!selectedCurriculumId || !formState.skillpilotId || !formState.githubId) {
+    const trimmedSkillpilotId = formState.skillpilotId.trim()
+    const trimmedGithubId = formState.githubId.trim().replace(/^@/, '')
+
+    if (!selectedCurriculumId || !trimmedSkillpilotId || !trimmedGithubId) {
       setSubmitError(t.curriculaPage.registration.errors.required)
       return
     }
@@ -112,12 +115,18 @@ export const CurriculaView: React.FC = () => {
       },
       body: JSON.stringify({
         curriculumId: selectedCurriculumId,
-        skillpilotId: formState.skillpilotId,
-        githubId: formState.githubId,
+        skillpilotId: trimmedSkillpilotId,
+        githubId: trimmedGithubId,
       }),
     })
       .then(async (res) => {
         if (!res.ok) {
+          const contentType = res.headers.get('content-type') ?? ''
+          if (contentType.includes('application/json')) {
+            const data = await res.json().catch(() => null)
+            const message = data?.message || data?.error
+            throw new Error(message || t.curriculaPage.registration.errors.failed)
+          }
           const text = await res.text()
           throw new Error(text || t.curriculaPage.registration.errors.failed)
         }
