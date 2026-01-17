@@ -1,0 +1,67 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-curriculum-champion-schema
+      author: skillpilot
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: curriculum_champion
+      changes:
+        - createTable:
+            tableName: curriculum_champion
+            columns:
+              - column:
+                  name: id
+                  type: VARCHAR(36)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: curriculum_id
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: skillpilot_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_curriculum_champion_learner
+                    references: learner(skillpilot_id)
+              - column:
+                  name: github_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: issues_count
+                  type: INT
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: pull_requests_count
+                  type: INT
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+        - addUniqueConstraint:
+            tableName: curriculum_champion
+            columnNames: curriculum_id, github_id
+            constraintName: uq_curriculum_champion_curriculum_github
+        - addUniqueConstraint:
+            tableName: curriculum_champion
+            columnNames: curriculum_id, skillpilot_id
+            constraintName: uq_curriculum_champion_curriculum_skillpilot
+        - createIndex:
+            tableName: curriculum_champion
+            indexName: idx_curriculum_champion_curriculum
+            columns:
+              - column:
+                  name: curriculum_id

@@ -1,5 +1,8 @@
 # Hall of Fame - Planning Notes
 
+> Deprecated: The Hall of Fame concept has been replaced by Curriculum Champions.
+> See `docs/curriculum_champions.md` for the current design.
+
 ## Goals
 - Add a public "Hall of Fame" page reachable from the landing page.
 - Show per curriculum the top 3 learners by number of **atomic goals achieved**.

@@ -1,0 +1,258 @@
+package com.skillpilot.backend.service;
+
+import com.skillpilot.backend.api.ChampionRegistrationRequest;
+import com.skillpilot.backend.api.ChampionRegistrationResponse;
+import com.skillpilot.backend.api.CurriculaSnapshot;
+import com.skillpilot.backend.api.CurriculumChampionProfile;
+import com.skillpilot.backend.api.CurriculumOverview;
+import com.skillpilot.backend.domain.CurriculumChampion;
+import com.skillpilot.backend.domain.Mastery;
+import com.skillpilot.backend.landscape.LandscapeService;
+import com.skillpilot.backend.landscape.LearningGoal;
+import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.LandscapeSummary;
+import com.skillpilot.backend.repository.CurriculumChampionRepository;
+import com.skillpilot.backend.repository.LearnerRepository;
+import com.skillpilot.backend.repository.MasteryRepository;
+import jakarta.annotation.PostConstruct;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.regex.Pattern;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+@Service
+public class CurriculaService {
+
+    private static final Logger log = LoggerFactory.getLogger(CurriculaService.class);
+    private static final double MASTERY_THRESHOLD = 0.9;
+    private static final Pattern GITHUB_ID_PATTERN = Pattern.compile("^[A-Za-z0-9-]{1,39}$");
+
+    private final LandscapeService landscapeService;
+    private final MasteryRepository masteryRepository;
+    private final LearnerRepository learnerRepository;
+    private final CurriculumChampionRepository championRepository;
+
+    private final AtomicReference<CurriculaMetricsSnapshot> metricsSnapshot = new AtomicReference<>(
+            new CurriculaMetricsSnapshot(Collections.emptyMap(), null, Instant.now()));
+
+    public CurriculaService(
+            LandscapeService landscapeService,
+            MasteryRepository masteryRepository,
+            LearnerRepository learnerRepository,
+            CurriculumChampionRepository championRepository) {
+        this.landscapeService = landscapeService;
+        this.masteryRepository = masteryRepository;
+        this.learnerRepository = learnerRepository;
+        this.championRepository = championRepository;
+    }
+
+    @PostConstruct
+    public void init() {
+        refreshMetrics();
+    }
+
+    @Scheduled(fixedRate = 600000)
+    public void refreshMetrics() {
+        log.info("Refreshing curricula metrics snapshot...");
+        try {
+            List<LandscapeSummary> baseCurricula = landscapeService.getBaseCurricula();
+            Map<String, CurriculumMetrics> metricsByCurriculum = new HashMap<>();
+
+            Map<String, Set<String>> goalToRoots = new HashMap<>();
+
+            for (LandscapeSummary summary : baseCurricula) {
+                String curriculumId = summary.getCurriculumId();
+                if (curriculumId == null) {
+                    continue;
+                }
+                long totalAtomicGoals = 0;
+                List<LearningLandscape> closure = landscapeService.getClosure(curriculumId);
+                for (LearningLandscape landscape : closure) {
+                    if (landscape.getGoals() == null) {
+                        continue;
+                    }
+                    for (LearningGoal goal : landscape.getGoals()) {
+                        if (goal.getContains() == null || goal.getContains().isEmpty()) {
+                            totalAtomicGoals++;
+                            goalToRoots.computeIfAbsent(goal.getId(), key -> new HashSet<>()).add(curriculumId);
+                        }
+                    }
+                }
+                metricsByCurriculum.put(curriculumId, new CurriculumMetrics(totalAtomicGoals, 0));
+            }
+
+            List<Mastery> allMastery = masteryRepository.findAllByValueGreaterThanEqual(MASTERY_THRESHOLD);
+            Map<String, Long> totalMastered = new HashMap<>();
+            for (Mastery mastery : allMastery) {
+                String goalId = mastery.getGoalKey();
+                Set<String> roots = goalToRoots.get(goalId);
+                if (roots == null) {
+                    continue;
+                }
+                for (String rootId : roots) {
+                    totalMastered.merge(rootId, 1L, Long::sum);
+                }
+            }
+
+            for (Map.Entry<String, CurriculumMetrics> entry : metricsByCurriculum.entrySet()) {
+                long mastered = totalMastered.getOrDefault(entry.getKey(), 0L);
+                metricsByCurriculum.put(entry.getKey(), new CurriculumMetrics(entry.getValue().totalAtomicGoals(), mastered));
+            }
+
+            String defaultCurriculumId = selectDefaultCurriculum(metricsByCurriculum, baseCurricula);
+            metricsSnapshot.set(new CurriculaMetricsSnapshot(metricsByCurriculum, defaultCurriculumId, Instant.now()));
+            log.info("Curricula metrics snapshot refreshed. {} curricula.", metricsByCurriculum.size());
+        } catch (Exception e) {
+            log.error("Failed to refresh curricula metrics snapshot", e);
+        }
+    }
+
+    public CurriculaSnapshot getSnapshot() {
+        CurriculaMetricsSnapshot snapshot = metricsSnapshot.get();
+        List<LandscapeSummary> baseCurricula = landscapeService.getBaseCurricula();
+        List<CurriculumOverview> result = new ArrayList<>();
+
+        for (LandscapeSummary summary : baseCurricula) {
+            String curriculumId = summary.getCurriculumId();
+            CurriculumMetrics metrics = snapshot.metricsByCurriculum().getOrDefault(curriculumId,
+                    new CurriculumMetrics(0, 0));
+            List<CurriculumChampionProfile> champions = loadChampions(curriculumId);
+            result.add(new CurriculumOverview(
+                    curriculumId,
+                    summary.getTitle(),
+                    summary.getDescription(),
+                    summary.getSubject(),
+                    summary.getCountry(),
+                    summary.getRegion(),
+                    metrics.totalAtomicGoals(),
+                    metrics.totalMastered(),
+                    champions));
+        }
+
+        result.sort(Comparator.comparing(CurriculumOverview::title, String.CASE_INSENSITIVE_ORDER));
+        return new CurriculaSnapshot(result, snapshot.defaultCurriculumId(), snapshot.lastUpdatedAt());
+    }
+
+    public ChampionRegistrationResponse registerChampion(ChampionRegistrationRequest request) {
+        if (request == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Request body required");
+        }
+
+        String curriculumId = normalize(request.curriculumId());
+        String skillpilotId = normalize(request.skillpilotId());
+        String githubId = normalize(request.githubId());
+
+        if (curriculumId.isEmpty() || skillpilotId.isEmpty() || githubId.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "curriculumId, skillpilotId, and githubId are required");
+        }
+
+        String githubIdNormalized = githubId.toLowerCase();
+        if (!GITHUB_ID_PATTERN.matcher(githubIdNormalized).matches()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid GitHub ID");
+        }
+
+        if (!isValidCurriculum(curriculumId)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unknown curriculumId");
+        }
+
+        if (!learnerRepository.existsById(skillpilotId)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unknown SkillPilot ID");
+        }
+
+        if (championRepository.findByCurriculumIdAndGithubId(curriculumId, githubIdNormalized).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "GitHub ID already registered for this curriculum");
+        }
+
+        if (championRepository.findByCurriculumIdAndSkillpilotId(curriculumId, skillpilotId).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "SkillPilot ID already registered for this curriculum");
+        }
+
+        CurriculumChampion champion = new CurriculumChampion();
+        champion.setCurriculumId(curriculumId);
+        champion.setSkillpilotId(skillpilotId);
+        champion.setGithubId(githubIdNormalized);
+        champion.setIssuesCount(0);
+        champion.setPullRequestsCount(0);
+
+        CurriculumChampion saved = championRepository.save(champion);
+        return new ChampionRegistrationResponse(toProfile(saved));
+    }
+
+    private List<CurriculumChampionProfile> loadChampions(String curriculumId) {
+        if (curriculumId == null || curriculumId.isBlank()) {
+            return Collections.emptyList();
+        }
+        return championRepository.findByCurriculumIdOrderByCreatedAtAsc(curriculumId)
+                .stream()
+                .map(this::toProfile)
+                .toList();
+    }
+
+    private CurriculumChampionProfile toProfile(CurriculumChampion champion) {
+        return new CurriculumChampionProfile(
+                champion.getGithubId(),
+                maskSkillpilotId(champion.getSkillpilotId()),
+                champion.getIssuesCount(),
+                champion.getPullRequestsCount(),
+                champion.getCreatedAt());
+    }
+
+    private boolean isValidCurriculum(String curriculumId) {
+        return landscapeService.getBaseCurricula().stream()
+                .anyMatch(summary -> curriculumId.equals(summary.getCurriculumId()));
+    }
+
+    private String normalize(String value) {
+        if (value == null) {
+            return "";
+        }
+        return value.trim();
+    }
+
+    private String maskSkillpilotId(String skillpilotId) {
+        if (skillpilotId == null || skillpilotId.length() < 5) {
+            return "Unknown";
+        }
+        return skillpilotId.substring(0, 5) + "...";
+    }
+
+    private String selectDefaultCurriculum(Map<String, CurriculumMetrics> metricsByCurriculum,
+            List<LandscapeSummary> baseCurricula) {
+        String bestId = null;
+        long bestScore = -1;
+        for (LandscapeSummary summary : baseCurricula) {
+            String curriculumId = summary.getCurriculumId();
+            long score = metricsByCurriculum.getOrDefault(curriculumId, new CurriculumMetrics(0, 0)).totalMastered();
+            if (score > bestScore) {
+                bestScore = score;
+                bestId = curriculumId;
+            }
+        }
+        if (bestId != null) {
+            return bestId;
+        }
+        return baseCurricula.isEmpty() ? null : baseCurricula.get(0).getCurriculumId();
+    }
+
+    private record CurriculumMetrics(long totalAtomicGoals, long totalMastered) {
+    }
+
+    private record CurriculaMetricsSnapshot(
+            Map<String, CurriculumMetrics> metricsByCurriculum,
+            String defaultCurriculumId,
+            Instant lastUpdatedAt) {
+    }
+}

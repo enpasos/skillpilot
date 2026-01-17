@@ -6,7 +6,7 @@ import { TrainerView } from './views/TrainerView'
 import { LegalView } from './views/LegalView'
 import { PrivacyView } from './views/PrivacyView'
 import { ImprintView } from './views/ImprintView'
-import { HallOfFameView } from './views/HallOfFameView'
+import { CurriculaView } from './views/CurriculaView'
 import { WhitepaperView } from './views/WhitepaperView'
 import { StoryView } from './views/StoryView'
 import { UsersView } from './views/UsersView'
@@ -21,6 +21,7 @@ import { useLanguage } from './contexts/LanguageContext'
 type Role = 'learner' | 'trainer' | 'explorer'
 
 const PUBLIC_PATHS = new Set([
+  '/curricula',
   '/hall-of-fame',
   '/privacy',
   '/imprint',
@@ -140,10 +141,10 @@ const App: React.FC = () => {
     let description = defaultDescription
 
     if (isPublicPath) {
-      if (path === '/hall-of-fame') {
-        const hofTitle = t.startPage.cards.hallOfFame?.title || 'Hall of Fame'
-        title = `${hofTitle} | ${baseTitle}`
-        description = t.hallOfFamePage.subtitle || defaultDescription
+      if (path === '/curricula' || path === '/hall-of-fame') {
+        const curriculaTitle = t.startPage.cards.curricula?.title || 'Curricula'
+        title = `${curriculaTitle} | ${baseTitle}`
+        description = t.curriculaPage.subtitle || defaultDescription
       } else if (path === '/whitepaper' || path.startsWith('/whitepaper/')) {
         const whitepaperTitle = t.startPage.cards.whitepaper.title || 'Whitepaper'
         title = `${whitepaperTitle} | ${baseTitle}`
@@ -252,7 +253,8 @@ const App: React.FC = () => {
         <Route path="/legal" element={<LegalView />} />
         <Route path="/privacy" element={<PrivacyView />} />
         <Route path="/imprint" element={<ImprintView />} />
-        <Route path="/hall-of-fame" element={<HallOfFameView />} />
+        <Route path="/curricula" element={<CurriculaView />} />
+        <Route path="/hall-of-fame" element={<Navigate to="/curricula" replace />} />
         <Route path="/stats" element={<StatsView />} />
         <Route path="/users" element={<UsersView />} />
         <Route path="/successes" element={<SuccessView />} />

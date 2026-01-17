@@ -17,6 +17,7 @@ Aspiring champions register on the **"Curricula"** page (which will replace the 
 **Registration Requirements:**
 *   SkillPilot ID
 *   GitHub ID
+*   GitHub ID is shown publicly; SkillPilot ID is displayed masked.
 
 ## The "Curricula" Page
 This page serves as the central hub for curriculum maintenance.
@@ -28,13 +29,14 @@ A four-panel cartoon (**Nano Banana Pro**) describes the Curriculum Champion con
 A button/form allows users to register as a champion by entering their SkillPilot ID and GitHub ID.
 
 ### 3. Curriculum Directory
-A comprehensive list of all available curricula.
+A comprehensive list of all available curricula, including aggregated stats per curriculum:
+*   Total atomic goals
+*   Total mastered achievements (count of mastered goals across all learners in the curriculum)
 
 ### 4. Champion Leaderboard
 For each curriculum, a list of registered champions is displayed with the following metrics:
 *   **GitHub ID**
 *   **SkillPilot ID:** Masked (First 5 characters + "...")
-*   **Curriculum Mastery:** The achievements/progress for *this specific curriculum* (derived from the SkillPilot ID).
 *   **GitHub Contributions:**
     *   Number of Issues
     *   Number of Pull Requests (PRs)

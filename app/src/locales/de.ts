@@ -14,9 +14,9 @@ export const de = {
                 title: "Cockpit",
                 description: "Verfolge deinen Fortschritt im Cockpit."
             },
-            hallOfFame: {
-                title: "Hall of Fame",
-                description: "Die erfolgreichsten Lerner der Community."
+            curricula: {
+                title: "Curriculum Champions",
+                description: "Curricula praktisch machen und voranbringen."
             }
         },
         login: {
@@ -126,22 +126,73 @@ export const de = {
             text: "Wähle links 'All' aus, um Ziele für die ganze Klasse zu planen.\nOder wähle einen einzelnen Schüler aus, um dessen Lernstand einzusehen oder zu bewerten."
         }
     },
-    hallOfFamePage: {
-        subtitle: "Wir feiern die engagiertesten Lerner auf SkillPilot.",
+    curriculaPage: {
+        subtitle: "Champions bringen Curricula in die Praxis und treiben sie voran.",
         noData: {
-            title: "Noch keine Champions. Sei der Erste!",
-            button: "Jetzt lernen"
+            title: "Noch keine Curricula verfügbar.",
+            button: "Zurück zur Startseite"
+        },
+        intro: {
+            title: "Was ist ein Curriculum Champion?",
+            description: "Champions übernehmen Verantwortung für ein Curriculum und sorgen dafür, dass es in der Praxis funktioniert.",
+            panels: [
+                {
+                    title: "Engagement",
+                    text: "Mach das Curriculum in deinem Kontext praktisch nutzbar."
+                },
+                {
+                    title: "Durchlernen",
+                    text: "Lerne das Curriculum selbst durch und sammle Punkte."
+                },
+                {
+                    title: "Verbessern",
+                    text: "Eröffne Issues und Pull Requests für Inhalte und Tools."
+                },
+                {
+                    title: "Vernetzen",
+                    text: "Verbinde Lehrende, Lernende und Curriculum-Owner."
+                }
+            ]
+        },
+        registration: {
+            title: "Als Champion registrieren",
+            description: "Wähle ein Curriculum und melde dich als Champion an.",
+            curriculumLabel: "Curriculum",
+            skillpilotLabel: "SkillPilot-ID",
+            skillpilotPlaceholder: "Deine SkillPilot-ID",
+            githubLabel: "GitHub-ID",
+            githubPlaceholder: "Dein GitHub-Handle",
+            publicNote: "GitHub-ID ist erforderlich und öffentlich sichtbar. SkillPilot-ID wird maskiert angezeigt.",
+            submit: "Registrieren",
+            submitting: "Registriere...",
+            success: "Danke für dein Engagement als Champion!",
+            errors: {
+                required: "Bitte alle Felder ausfüllen.",
+                failed: "Registrierung fehlgeschlagen."
+            }
+        },
+        directory: {
+            title: "Curriculum-Verzeichnis",
+            description: "Alle Curricula mit aktuellen Fortschritts-Snapshots.",
+            noDescription: "Keine Beschreibung verfügbar."
         },
         stats: {
-            mastered: "Insgesamt gemeisterte Ziele aller Lerner:",
+            mastered: "Insgesamt gemeisterte Erfolge in diesem Curriculum:",
+            masteredShort: "Gemeistert",
             goals: "Ziele gesamt"
         },
+        leaderboard: {
+            title: "Champion-Übersicht",
+            description: "Champions, die dieses Curriculum voranbringen.",
+            empty: "Noch keine Champions für dieses Curriculum registriert."
+        },
         table: {
-            learnerId: "Lerner-ID",
-            goals: "ZIELE"
+            skillpilotId: "SkillPilot-ID",
+            issues: "Issues",
+            prs: "PRs"
         },
         back: "Zurück zu SkillPilot",
-        loading: "Lade Hall of Fame..."
+        loading: "Lade Curricula..."
     },
     usersPage: {
         title: "SkillPilot-IDs",

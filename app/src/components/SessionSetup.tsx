@@ -263,18 +263,18 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                 </div>
               </button>
 
-              {/* Card 3: Hall of Fame */}
+              {/* Card 3: Curricula */}
               <Link
-                to="/hall-of-fame"
+                to="/curricula"
                 className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 dark:bg-slate-800/50 p-6 hover:shadow-lg hover:border-amber-400/50 transition-all duration-300"
               >
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-lg font-semibold text-text-primary group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors flex items-center gap-2">
-                      {t.startPage.cards.hallOfFame?.title || "Hall of Fame"} <Trophy size={18} className="text-amber-500" />
+                      {t.startPage.cards.curricula?.title || 'Curricula'} <Trophy size={18} className="text-amber-500" />
                     </h3>
                     <p className="text-sm text-text-secondary mt-1">
-                      {t.startPage.cards.hallOfFame?.description || "Top learners."}
+                      {t.startPage.cards.curricula?.description || 'Curriculum champions.'}
                     </p>
                   </div>
                   <ArrowRight className="text-text-secondary group-hover:translate-x-1 group-hover:text-amber-500 transition-all" />
