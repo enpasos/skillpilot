@@ -405,10 +405,10 @@ export const CurriculaView: React.FC = () => {
             <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
               <div>
                 <h2 className="text-2xl font-semibold text-text-primary">
-                  {t.curriculaPage.registration.title}
+                  Champion Registration & Management
                 </h2>
                 <p className="text-text-secondary mt-2">
-                  {t.curriculaPage.registration.description}
+                  Register as a champion or manage your existing championships.
                 </p>
               </div>
               <button
