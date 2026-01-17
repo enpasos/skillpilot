@@ -28,6 +28,7 @@ This job validates the React/TypeScript frontend application located in the `app
         -   **Duplicates**: Ensures no Goal ID is defined more than once within the same landscape (allows duplicates across multi-language files if they share the `landscapeId`).
         -   **Implicit Global Lookup**: Verifies that cross-landscape references (without `LANDSCAPE:` prefix) can be uniquely resolved to a single global goal.
         -   **Schema**: Validates that goals use allowed phases (e.g., `S1`, `Q1`, `Pflichtbereich`, `Modul`).
+        -   **Curriculum Manifest Sync**: Ensures `curricula/curriculum_manifest.json` exists, lists only valid root curricula, and matches the computed root set.
 3.  **Lint (`npm run lint`)**:
     -   Runs ESLint to enforce code quality, coding standards, and catch potential errors (e.g., unused variables, React hook dependency issues).
 4.  **Build (`npm run build`)**:
@@ -49,6 +50,7 @@ This job focuses on the integrity of the data (curriculum JSON files) rather tha
         -   **Missing IDs**: Detects any broken links.
         -   **Duplicates**: Ensures no Goal ID is defined more than once within the same landscape.
         -   **Schema**: Validates that goals use allowed phases.
+        -   **Curriculum Manifest Sync**: Ensures `curricula/curriculum_manifest.json` is present and aligned with root curricula.
 
 ### 3. Backend CI (`backend-ci`)
 This job validates the Java/Spring Boot backend located in the `backend` directory.

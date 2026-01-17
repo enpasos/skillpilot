@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { LearningLandscape } from '../src/landscapeTypes'
 import { convertLearningGoal, type UiGoal } from '../src/goalTypes'
@@ -51,10 +51,12 @@ const kompetenzPattern = /^(K[1-6](\.[0-9]+)?|PK[0-9]+(_[A-ZÄÖÜ]+)?)$/
 interface ParsedLandscape {
   file: string
   landscapeId: string
+  title: string
   goals: UiGoal[]
 }
 
 const curriculaDir = join(process.cwd(), '../curricula')
+const curriculumManifestPath = join(curriculaDir, 'curriculum_manifest.json')
 
 function getAllJsonFiles(dir: string, fileList: string[] = []): string[] {
   const files = readdirSync(dir, { withFileTypes: true })
@@ -74,13 +76,37 @@ const landscapeFiles = getAllJsonFiles(curriculaDir)
 
 const issues: Issue[] = []
 const parsedLandscapes: ParsedLandscape[] = []
+const landscapeById = new Map<string, ParsedLandscape>()
+const titlesByLandscapeId = new Map<string, Set<string>>()
 
 for (const file of landscapeFiles) {
   try {
     const raw = readFileSync(file, 'utf8')
     const json = JSON.parse(raw) as LearningLandscape
-    const goals = (json.goals ?? []).map((goal) => convertLearningGoal(goal))
-    parsedLandscapes.push({ file, landscapeId: json.landscapeId, goals })
+    const landscapeId = json.landscapeId ?? (json as { id?: string }).id
+    if (!landscapeId || !Array.isArray(json.goals)) {
+      continue
+    }
+    const goals = json.goals.map((goal) => convertLearningGoal(goal))
+    const entry = {
+      file,
+      landscapeId,
+      title: json.title ?? '',
+      goals,
+    }
+    parsedLandscapes.push(entry)
+    if (!landscapeById.has(landscapeId)) {
+      landscapeById.set(landscapeId, entry)
+    }
+    const titleSet = titlesByLandscapeId.get(landscapeId) ?? new Set<string>()
+    if (entry.title) {
+      titleSet.add(entry.title)
+    }
+    const titleEn = (json as { titleEn?: string }).titleEn
+    if (titleEn) {
+      titleSet.add(titleEn)
+    }
+    titlesByLandscapeId.set(landscapeId, titleSet)
   } catch (error) {
     issues.push({
       level: 'error',
@@ -91,6 +117,8 @@ for (const file of landscapeFiles) {
 
 const globalGoalMap = new Map<string, { goal: UiGoal; landscapeId: string; sourceFile: string }>()
 const guidMap = new Map<string, string[]>()
+const goalIdToLandscapeId = new Map<string, string>()
+const ambiguousGoalIds = new Set<string>()
 
 for (const landscape of parsedLandscapes) {
   for (const goal of landscape.goals) {
@@ -114,6 +142,16 @@ for (const landscape of parsedLandscapes) {
       guidMap.set(goal.id, [])
     }
     guidMap.get(goal.id)!.push(landscape.landscapeId)
+
+    if (!ambiguousGoalIds.has(goal.id)) {
+      const existing = goalIdToLandscapeId.get(goal.id)
+      if (!existing) {
+        goalIdToLandscapeId.set(goal.id, landscape.landscapeId)
+      } else if (existing !== landscape.landscapeId) {
+        goalIdToLandscapeId.delete(goal.id)
+        ambiguousGoalIds.add(goal.id)
+      }
+    }
   }
 }
 
@@ -303,6 +341,201 @@ function validateLandscape(landscape: ParsedLandscape) {
 }
 
 parsedLandscapes.forEach(validateLandscape)
+
+const rootGoalByLandscape = new Map<string, string>()
+const moduleLandscapeIds = new Set<string>()
+
+const getRootGoal = (landscape: ParsedLandscape): UiGoal | undefined => {
+  if (!landscape.goals.length) return undefined
+  const root = landscape.goals.find((goal) => goal.tags?.includes('root'))
+  return root ?? landscape.goals[0]
+}
+
+const isModuleLandscape = (landscape: ParsedLandscape): boolean => {
+  const rootGoal = getRootGoal(landscape)
+  const tags = rootGoal?.tags ?? []
+  for (const tag of tags) {
+    if (!tag) continue
+    const normalized = tag.toLowerCase()
+    if (normalized.startsWith('module:') || normalized.startsWith('modul:')) {
+      return true
+    }
+  }
+  const title = (landscape.title ?? '').toLowerCase()
+  return /\bmodul\b/.test(title) || /\bmodule\b/.test(title)
+}
+
+const resolveLandscapeReference = (ref: string, currentLandscapeId: string) => {
+  if (ref.includes(':')) {
+    const [landscapeId, goalId] = ref.split(':', 2)
+    return { landscapeId: landscapeId || currentLandscapeId, goalId }
+  }
+  const mappedLandscapeId = goalIdToLandscapeId.get(ref)
+  return { landscapeId: mappedLandscapeId ?? currentLandscapeId, goalId: ref }
+}
+
+for (const [landscapeId, landscape] of landscapeById.entries()) {
+  const rootGoal = getRootGoal(landscape)
+  if (rootGoal?.id) {
+    rootGoalByLandscape.set(landscapeId, rootGoal.id)
+  }
+  if (isModuleLandscape(landscape)) {
+    moduleLandscapeIds.add(landscapeId)
+  }
+}
+
+const referencedLandscapeIds = new Set<string>()
+for (const [landscapeId, landscape] of landscapeById.entries()) {
+  for (const goal of landscape.goals) {
+    for (const ref of goal.contains ?? []) {
+      if (typeof ref !== 'string') continue
+      const { landscapeId: targetLandscapeId, goalId } = resolveLandscapeReference(ref, landscapeId)
+      if (!targetLandscapeId || targetLandscapeId === landscapeId) continue
+      const rootId = rootGoalByLandscape.get(targetLandscapeId)
+      if (rootId && rootId === goalId) {
+        referencedLandscapeIds.add(targetLandscapeId)
+      }
+    }
+  }
+}
+
+const computedCurriculumIds = new Set(
+  Array.from(landscapeById.keys()).filter(
+    (id) => !referencedLandscapeIds.has(id) && !moduleLandscapeIds.has(id),
+  ),
+)
+
+const formatIdList = (ids: string[]) => {
+  if (ids.length === 0) return ''
+  const preview = ids.slice(0, 10).join(', ')
+  return ids.length > 10 ? `${preview}, ... (${ids.length} total)` : preview
+}
+
+if (!existsSync(curriculumManifestPath)) {
+  issues.push({
+    level: 'error',
+    message: `[curriculum_manifest] Missing manifest file at ${curriculumManifestPath}`,
+  })
+} else {
+  try {
+    const manifestRaw = readFileSync(curriculumManifestPath, 'utf8')
+    const manifest = JSON.parse(manifestRaw) as { curricula?: unknown }
+    if (!Array.isArray(manifest.curricula)) {
+      issues.push({
+        level: 'error',
+        message: '[curriculum_manifest] Expected "curricula" array of landscape IDs',
+      })
+    } else {
+      const manifestIds: string[] = []
+      const manifestTitles = new Map<string, string>()
+
+      manifest.curricula.forEach((entry, index) => {
+        if (typeof entry === 'string') {
+          issues.push({
+            level: 'error',
+            message: `[curriculum_manifest] Entry ${index} must be an object with id/title (found string)`,
+          })
+          return
+        }
+        if (!entry || typeof entry !== 'object') {
+          issues.push({
+            level: 'error',
+            message: `[curriculum_manifest] Entry ${index} must be an object with id/title`,
+          })
+          return
+        }
+
+        const entryObj = entry as { id?: unknown; landscapeId?: unknown; curriculumId?: unknown; title?: unknown }
+        const rawId = entryObj.id ?? entryObj.landscapeId ?? entryObj.curriculumId
+        if (typeof rawId !== 'string' || rawId.trim() === '') {
+          issues.push({
+            level: 'error',
+            message: `[curriculum_manifest] Entry ${index} missing id`,
+          })
+          return
+        }
+
+        const id = rawId.trim()
+        manifestIds.push(id)
+
+        const rawTitle = entryObj.title
+        if (typeof rawTitle !== 'string' || rawTitle.trim() === '') {
+          issues.push({
+            level: 'error',
+            message: `[curriculum_manifest] Entry ${index} (${id}) missing title`,
+          })
+        } else if (!manifestTitles.has(id)) {
+          manifestTitles.set(id, rawTitle.trim())
+        }
+      })
+
+      const manifestSet = new Set(manifestIds)
+
+      if (manifestSet.size !== manifestIds.length) {
+        issues.push({
+          level: 'error',
+          message: '[curriculum_manifest] Duplicate curriculum IDs found',
+        })
+      }
+
+      const unknownIds = manifestIds.filter((id) => !landscapeById.has(id))
+      if (unknownIds.length) {
+        issues.push({
+          level: 'error',
+          message: `[curriculum_manifest] Unknown curriculum IDs: ${formatIdList(unknownIds)}`,
+        })
+      }
+
+      const moduleIds = manifestIds.filter((id) => moduleLandscapeIds.has(id))
+      if (moduleIds.length) {
+        issues.push({
+          level: 'error',
+          message: `[curriculum_manifest] Module landscapes cannot be curricula: ${formatIdList(moduleIds)}`,
+        })
+      }
+
+      const referencedIds = manifestIds.filter((id) => referencedLandscapeIds.has(id))
+      if (referencedIds.length) {
+        issues.push({
+          level: 'error',
+          message: `[curriculum_manifest] Contained landscapes cannot be curricula: ${formatIdList(referencedIds)}`,
+        })
+      }
+
+      const missingInManifest = Array.from(computedCurriculumIds).filter((id) => !manifestSet.has(id))
+      if (missingInManifest.length) {
+        issues.push({
+          level: 'error',
+          message: `[curriculum_manifest] Missing root curricula: ${formatIdList(missingInManifest)}`,
+        })
+      }
+
+      const formatTitleList = (titles: string[]) => {
+        if (titles.length === 0) return ''
+        const preview = titles.slice(0, 5).join(' | ')
+        return titles.length > 5 ? `${preview} | ... (${titles.length} total)` : preview
+      }
+
+      for (const id of manifestIds) {
+        const manifestTitle = manifestTitles.get(id)
+        if (!manifestTitle) continue
+        const expectedTitles = titlesByLandscapeId.get(id)
+        if (!expectedTitles || expectedTitles.size === 0) continue
+        if (!expectedTitles.has(manifestTitle)) {
+          issues.push({
+            level: 'error',
+            message: `[curriculum_manifest] Title mismatch for ${id}. Expected one of: ${formatTitleList(Array.from(expectedTitles))}`,
+          })
+        }
+      }
+    }
+  } catch (error) {
+    issues.push({
+      level: 'error',
+      message: `[curriculum_manifest] Failed to parse: ${String(error)}`,
+    })
+  }
+}
 
 const errorCount = issues.filter((issue) => issue.level === 'error').length
 const warningCount = issues.length - errorCount

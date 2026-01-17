@@ -424,7 +424,8 @@ and Layer C provides a **unified, sprachbasiertes Interface** auf diese Struktur
 To keep the architecture transparent and repo-friendly, we use simple JSON files during the PoC:
 
 - **Layer A (landscapes)**
-  - Stored under `landscapes/<landscapeId>.<locale>.json`.
+  - Stored under `curricula/` (e.g. `curricula/<...>/json/<file>.json`).
+  - Root curricula are explicitly listed in `curricula/curriculum_manifest.json` and validated in CI.
   - Generated from the TypeScript source via `npm run export:landscape` (see `scripts/exportLandscape.ts`).
   - Fields follow `LearningLandscape` / `LearningGoal` in `src/landscapeTypes.ts`.
   - `shortKey` is an ASCII identifier derived from `id` and should be used for cross-layer references (Layer B/C).

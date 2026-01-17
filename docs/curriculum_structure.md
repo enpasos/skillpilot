@@ -34,6 +34,23 @@ SkillPilot structures the learning experience through four distinct levels, movi
 The complete set of all possible modules, subjects, and learning objectives defined by the curriculum authority (e.g., ministry or university). This represents the "search space" of what *can* be learned.
 *   *Example:* All available subjects in the Hessian upper secondary school (Math, Physics, History, Latin, etc.) or all modules in the Physics Bachelor's catalog.
 
+#### Curriculum Manifest (Root Curricula)
+Only explicitly declared root curricula are selectable in the UI and valid for Champion registration. These are listed in `curricula/curriculum_manifest.json` with readable titles.
+
+Example:
+```json
+{
+  "curricula": [
+    { "id": "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da", "title": "Gymnasiale Oberstufe (DE, HE, G9, Sekundarstufe II)" }
+  ]
+}
+```
+
+Rules:
+*   Each ID must exist as a landscape in `curricula/`.
+*   IDs must not be module landscapes or contained sub-landscapes.
+*   The manifest must match the computed set of root curricula; CI fails if it does not.
+
 ### Level 2: Personal Curriculum  
 A subset of the Base Curriculum selected for a specific learner. This accounts for choices allowed by the curriculum, such as electives, specializations, or major/minor combinations.
 *   *Example:* A student chooses "Physics" and "Math" as advanced courses (Leistungskurse) and "History" as a basic course, while omitting "Latin".

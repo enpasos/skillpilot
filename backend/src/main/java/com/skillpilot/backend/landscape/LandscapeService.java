@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -35,6 +36,7 @@ public class LandscapeService {
     private volatile Map<String, LearningLandscape> cachedById = Collections.emptyMap();
     private volatile Map<String, LearningLandscape> cachedByLegacyId = Collections.emptyMap();
     private volatile Map<String, String> goalIdToLandscapeId = Collections.emptyMap();
+    private volatile Set<String> curriculumManifest = Collections.emptySet();
 
     public LandscapeService(LandscapeProperties properties, ObjectMapper objectMapper) {
         this.properties = properties;
@@ -197,6 +199,10 @@ public class LandscapeService {
                         log.debug("Skipping non-landscape JSON file {}: missing landscapeId", file);
                         continue;
                     }
+                    if (!root.has("goals") || !root.get("goals").isArray()) {
+                        log.debug("Skipping non-landscape JSON file {}: missing goals array", file);
+                        continue;
+                    }
 
                     LearningLandscape landscape = objectMapper.treeToValue(root, LearningLandscape.class);
                     if (!StringUtils.hasText(landscape.getLandscapeId())) {
@@ -257,6 +263,7 @@ public class LandscapeService {
         cachedById = Collections.unmodifiableMap(byId);
         cachedByLegacyId = Collections.unmodifiableMap(byLegacyId);
         goalIdToLandscapeId = Collections.unmodifiableMap(goalIndex);
+        curriculumManifest = loadCurriculumManifest(dir, cachedById);
         log.info("Loaded {} landscapes and {} goals from {}", loaded.size(), goalIndex.size(), dir);
     }
 
@@ -266,7 +273,6 @@ public class LandscapeService {
 
     public LandscapeOverviewResponse getOverview(String lang) {
         List<LandscapeSummary> summaries = new ArrayList<>();
-        Map<String, Object> hierarchy = new HashMap<>();
 
         for (LearningLandscape ll : cachedLandscapes) {
             String country = ll.getCountry();
@@ -311,44 +317,34 @@ public class LandscapeService {
                     country, region, mappedType, mappedSubject, ll.getLocale(),
                     ll.getFilters() != null ? ll.getFilters() : new ArrayList<>()));
 
-            // Build hierarchy
-            // Note: mappedLevel (p5) is not available in LearningLandscape yet, defaulting
-            // to mappedSubject or empty?
-            // In legacy: p5 was Level. p6 was Subject.
-            // In new: Grade is inside the curriculum structure, not top level metadata
-            // usually?
-            // Wait, new curricula have ONE file per Subject (e.g. Math), covering ALL
-            // grades.
-            // Legacy curricula were often split by module/level.
-            // Let's use mappedSubject as the leaf node for now.
-
-            Map<String, Object> countryMap = (Map<String, Object>) hierarchy.computeIfAbsent(country,
-                    k -> new HashMap<>());
-            Map<String, Object> regionMap = (Map<String, Object>) countryMap.computeIfAbsent(region,
-                    k -> new HashMap<>());
-            Map<String, Object> typeMap = (Map<String, Object>) regionMap.computeIfAbsent(mappedType,
-                    k -> new HashMap<>());
-
-            // For now, put subject in a "All" bucket if we don't have a specific
-            // level/grade level property in LearningLandscape
-            String level = "General";
-            List<String> subjects = (List<String>) typeMap.computeIfAbsent(level, k -> new ArrayList<>());
-
-            if (!subjects.contains(mappedSubject)) {
-                subjects.add(mappedSubject);
-            }
         }
 
-        // Filter out non-root curricula (those that are contained in others)
-        Set<String> referencedIds = getReferencedLandscapeIds();
-        List<LandscapeSummary> rootSummaries = summaries.stream()
-                .filter(s -> !referencedIds.contains(s.getCurriculumId()))
-                .filter(s -> {
-                    LearningLandscape landscape = cachedById.get(s.getCurriculumId());
-                    return landscape == null || !isModuleLandscape(landscape);
-                })
-                .collect(Collectors.toList());
+        List<LandscapeSummary> rootSummaries;
+        if (!curriculumManifest.isEmpty()) {
+            Map<String, LandscapeSummary> byId = new HashMap<>();
+            for (LandscapeSummary summary : summaries) {
+                byId.putIfAbsent(summary.getCurriculumId(), summary);
+            }
+            rootSummaries = new ArrayList<>();
+            for (String id : curriculumManifest) {
+                LandscapeSummary summary = byId.get(id);
+                if (summary != null) {
+                    rootSummaries.add(summary);
+                }
+            }
+        } else {
+            // Filter out non-root curricula (those that are contained in others)
+            Set<String> referencedIds = getReferencedLandscapeIds();
+            rootSummaries = summaries.stream()
+                    .filter(s -> !referencedIds.contains(s.getCurriculumId()))
+                    .filter(s -> {
+                        LearningLandscape landscape = cachedById.get(s.getCurriculumId());
+                        return landscape == null || !isModuleLandscape(landscape);
+                    })
+                    .collect(Collectors.toList());
+        }
 
+        Map<String, Object> hierarchy = buildHierarchy(rootSummaries);
         return new LandscapeOverviewResponse(rootSummaries, hierarchy);
     }
 
@@ -438,6 +434,102 @@ public class LandscapeService {
         // as sub-landscapes in others. This keeps AI and Explorer in sync
         // without hardcoding specific curriculum IDs.
         return getOverview().getSummaries();
+    }
+
+    private Map<String, Object> buildHierarchy(List<LandscapeSummary> summaries) {
+        Map<String, Object> hierarchy = new HashMap<>();
+        for (LandscapeSummary summary : summaries) {
+            String country = summary.getCountry();
+            String region = summary.getRegion();
+            String mappedType = summary.getType();
+            String mappedSubject = summary.getSubject();
+
+            if (country == null) {
+                country = "Unknown";
+            }
+            if (region == null) {
+                region = "Unknown";
+            }
+            if (mappedType == null) {
+                mappedType = "Other";
+            }
+            if (mappedSubject == null) {
+                mappedSubject = "General";
+            }
+
+            @SuppressWarnings("unchecked")
+            Map<String, Object> countryMap = (Map<String, Object>) hierarchy.computeIfAbsent(country,
+                    k -> new HashMap<>());
+            @SuppressWarnings("unchecked")
+            Map<String, Object> regionMap = (Map<String, Object>) countryMap.computeIfAbsent(region,
+                    k -> new HashMap<>());
+            @SuppressWarnings("unchecked")
+            Map<String, Object> typeMap = (Map<String, Object>) regionMap.computeIfAbsent(mappedType,
+                    k -> new HashMap<>());
+
+            String level = "General";
+            @SuppressWarnings("unchecked")
+            List<String> subjects = (List<String>) typeMap.computeIfAbsent(level, k -> new ArrayList<>());
+
+            if (!subjects.contains(mappedSubject)) {
+                subjects.add(mappedSubject);
+            }
+        }
+        return hierarchy;
+    }
+
+    private Set<String> loadCurriculumManifest(Path dir, Map<String, LearningLandscape> byId) {
+        Path manifestPath = dir.resolve("curriculum_manifest.json");
+        if (!Files.exists(manifestPath)) {
+            log.info("Curriculum manifest not found at {}", manifestPath);
+            return Collections.emptySet();
+        }
+
+        try {
+            JsonNode root = objectMapper.readTree(manifestPath.toFile());
+            JsonNode curricula = root != null ? root.get("curricula") : null;
+            if (curricula == null || !curricula.isArray()) {
+                log.warn("Curriculum manifest missing curricula array: {}", manifestPath);
+                return Collections.emptySet();
+            }
+
+            Set<String> ids = new LinkedHashSet<>();
+            for (JsonNode node : curricula) {
+                String id = null;
+                if (node.isTextual()) {
+                    id = node.asText();
+                } else if (node.isObject()) {
+                    JsonNode idNode = node.get("id");
+                    if (idNode == null || !idNode.isTextual()) {
+                        idNode = node.get("landscapeId");
+                    }
+                    if (idNode == null || !idNode.isTextual()) {
+                        idNode = node.get("curriculumId");
+                    }
+                    if (idNode != null && idNode.isTextual()) {
+                        id = idNode.asText();
+                    } else {
+                        log.warn("Curriculum manifest entry missing id: {}", node);
+                        continue;
+                    }
+                } else {
+                    log.warn("Curriculum manifest entry is not a string/object: {}", node);
+                    continue;
+                }
+                if (!StringUtils.hasText(id)) {
+                    continue;
+                }
+                if (!byId.containsKey(id)) {
+                    log.warn("Curriculum manifest references unknown landscape: {}", id);
+                    continue;
+                }
+                ids.add(id);
+            }
+            return Collections.unmodifiableSet(ids);
+        } catch (Exception e) {
+            log.error("Failed to read curriculum manifest {}", manifestPath, e);
+            return Collections.emptySet();
+        }
     }
 
     public LearningLandscape findCurriculumByTopic(String topic) {
