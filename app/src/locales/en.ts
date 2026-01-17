@@ -166,9 +166,17 @@ export const en = {
             submit: "Register",
             submitting: "Registering...",
             success: "Thanks for championing this curriculum!",
+            validation: {
+                skillpilotChecking: "Checking SkillPilot ID...",
+                skillpilotValid: "SkillPilot ID verified.",
+                githubValid: "GitHub ID verified."
+            },
             errors: {
                 required: "Please fill in all fields.",
-                failed: "Registration failed."
+                failed: "Registration failed.",
+                invalidGithub: "Invalid GitHub ID.",
+                unknownSkillpilot: "SkillPilot ID not found.",
+                validationRequired: "Please validate SkillPilot and GitHub IDs before registering."
             }
         },
         directory: {

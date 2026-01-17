@@ -166,9 +166,17 @@ export const de = {
             submit: "Registrieren",
             submitting: "Registriere...",
             success: "Danke für dein Engagement als Champion!",
+            validation: {
+                skillpilotChecking: "SkillPilot-ID wird geprüft...",
+                skillpilotValid: "SkillPilot-ID bestätigt.",
+                githubValid: "GitHub-ID bestätigt."
+            },
             errors: {
                 required: "Bitte alle Felder ausfüllen.",
-                failed: "Registrierung fehlgeschlagen."
+                failed: "Registrierung fehlgeschlagen.",
+                invalidGithub: "Ungültige GitHub-ID.",
+                unknownSkillpilot: "SkillPilot-ID nicht gefunden.",
+                validationRequired: "Bitte SkillPilot- und GitHub-ID vor der Registrierung prüfen."
             }
         },
         directory: {

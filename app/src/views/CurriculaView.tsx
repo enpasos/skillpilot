@@ -32,6 +32,9 @@ interface CurriculaData {
   lastUpdatedAt: string
 }
 
+const GITHUB_ID_PATTERN = /^[A-Za-z0-9-]{1,39}$/
+type ValidationStatus = 'idle' | 'checking' | 'valid' | 'invalid'
+
 export const CurriculaView: React.FC = () => {
   const [data, setData] = useState<CurriculaData | null>(null)
   const [selectedCurriculumId, setSelectedCurriculumId] = useState<string>('')
@@ -39,6 +42,10 @@ export const CurriculaView: React.FC = () => {
   const [submitError, setSubmitError] = useState<string>('')
   const [submitSuccess, setSubmitSuccess] = useState<string>('')
   const [submitting, setSubmitting] = useState(false)
+  const [skillpilotStatus, setSkillpilotStatus] = useState<ValidationStatus>('idle')
+  const [githubStatus, setGithubStatus] = useState<ValidationStatus>('idle')
+  const [skillpilotMessage, setSkillpilotMessage] = useState('')
+  const [githubMessage, setGithubMessage] = useState('')
   const [formState, setFormState] = useState({
     skillpilotId: '',
     githubId: '',
@@ -94,7 +101,54 @@ export const CurriculaView: React.FC = () => {
     }))
   }, [data])
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const validateGithubId = useCallback((value?: string) => {
+    const normalized = (value ?? formState.githubId).trim().replace(/^@/, '')
+    if (!normalized) {
+      setGithubStatus('invalid')
+      setGithubMessage(t.curriculaPage.registration.errors.required)
+      return false
+    }
+    if (!GITHUB_ID_PATTERN.test(normalized)) {
+      setGithubStatus('invalid')
+      setGithubMessage(t.curriculaPage.registration.errors.invalidGithub)
+      return false
+    }
+    setGithubStatus('valid')
+    setGithubMessage('')
+    return true
+  }, [formState.githubId, t])
+
+  const validateSkillpilotId = useCallback(async (value?: string) => {
+    const trimmed = (value ?? formState.skillpilotId).trim()
+    if (!trimmed) {
+      setSkillpilotStatus('invalid')
+      setSkillpilotMessage(t.curriculaPage.registration.errors.required)
+      return false
+    }
+
+    setSkillpilotStatus('checking')
+    setSkillpilotMessage(t.curriculaPage.registration.validation.skillpilotChecking)
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase ? `${apiBase}/api/ui/learners/${trimmed}` : `/api/ui/learners/${trimmed}`
+      const res = await fetch(url)
+      if (res.ok) {
+        setSkillpilotStatus('valid')
+        setSkillpilotMessage('')
+        return true
+      }
+      setSkillpilotStatus('invalid')
+      setSkillpilotMessage(t.curriculaPage.registration.errors.unknownSkillpilot)
+      return false
+    } catch (err) {
+      console.error('Failed to validate SkillPilot ID', err)
+      setSkillpilotStatus('invalid')
+      setSkillpilotMessage(t.curriculaPage.registration.errors.unknownSkillpilot)
+      return false
+    }
+  }, [formState.skillpilotId, t])
+
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
     setSubmitError('')
     setSubmitSuccess('')
@@ -107,46 +161,53 @@ export const CurriculaView: React.FC = () => {
       return
     }
 
+    const githubOk = githubStatus === 'valid' ? true : validateGithubId(trimmedGithubId)
+    const skillpilotOk = await validateSkillpilotId(trimmedSkillpilotId)
+    if (!githubOk || !skillpilotOk) {
+      setSubmitError(t.curriculaPage.registration.errors.validationRequired)
+      return
+    }
+
     setSubmitting(true)
-    fetch('/api/ui/curricula/champions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        curriculumId: selectedCurriculumId,
-        skillpilotId: trimmedSkillpilotId,
-        githubId: trimmedGithubId,
-      }),
-    })
-      .then(async (res) => {
-        if (!res.ok) {
-          const contentType = res.headers.get('content-type') ?? ''
-          if (contentType.includes('application/json')) {
-            const data = await res.json().catch(() => null)
-            const message = data?.message || data?.error
-            throw new Error(message || t.curriculaPage.registration.errors.failed)
-          }
-          const text = await res.text()
-          throw new Error(text || t.curriculaPage.registration.errors.failed)
+    try {
+      const res = await fetch('/api/ui/curricula/champions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          curriculumId: selectedCurriculumId,
+          skillpilotId: trimmedSkillpilotId,
+          githubId: trimmedGithubId,
+        }),
+      })
+      if (!res.ok) {
+        const contentType = res.headers.get('content-type') ?? ''
+        if (contentType.includes('application/json')) {
+          const data = await res.json().catch(() => null)
+          const message = data?.message || data?.error
+          throw new Error(message || t.curriculaPage.registration.errors.failed)
         }
-        return res.json()
-      })
-      .then(() => {
-        setSubmitSuccess(t.curriculaPage.registration.success)
-        setFormState((prev) => ({
-          ...prev,
-          skillpilotId: '',
-          githubId: '',
-        }))
-        loadData()
-      })
-      .catch((err) => {
-        setSubmitError(err.message || t.curriculaPage.registration.errors.failed)
-      })
-      .finally(() => {
-        setSubmitting(false)
-      })
+        const text = await res.text()
+        throw new Error(text || t.curriculaPage.registration.errors.failed)
+      }
+      await res.json()
+      setSubmitSuccess(t.curriculaPage.registration.success)
+      setFormState((prev) => ({
+        ...prev,
+        skillpilotId: '',
+        githubId: '',
+      }))
+      setSkillpilotStatus('idle')
+      setGithubStatus('idle')
+      setSkillpilotMessage('')
+      setGithubMessage('')
+      loadData()
+    } catch (err) {
+      setSubmitError((err as Error).message || t.curriculaPage.registration.errors.failed)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (loading) {
@@ -248,15 +309,36 @@ export const CurriculaView: React.FC = () => {
                     </label>
                     <input
                       value={formState.skillpilotId}
-                      onChange={(event) =>
+                      onChange={(event) => {
                         setFormState((prev) => ({
                           ...prev,
                           skillpilotId: event.target.value,
                         }))
-                      }
+                        setSkillpilotStatus('idle')
+                        setSkillpilotMessage('')
+                      }}
+                      onBlur={() => {
+                        if (formState.skillpilotId.trim()) {
+                          validateSkillpilotId()
+                        }
+                      }}
                       className="w-full px-3 py-2 rounded-xl border border-border-color bg-white/70 dark:bg-slate-900/40 text-text-primary"
                       placeholder={t.curriculaPage.registration.skillpilotPlaceholder}
                     />
+                    {skillpilotStatus !== 'idle' && (
+                      <div
+                        className={`text-xs ${skillpilotStatus === 'invalid'
+                          ? 'text-red-500'
+                          : skillpilotStatus === 'checking'
+                            ? 'text-text-secondary'
+                            : 'text-emerald-500'
+                          }`}
+                      >
+                        {skillpilotStatus === 'valid'
+                          ? t.curriculaPage.registration.validation.skillpilotValid
+                          : skillpilotMessage}
+                      </div>
+                    )}
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-medium text-text-primary">
@@ -264,15 +346,31 @@ export const CurriculaView: React.FC = () => {
                     </label>
                     <input
                       value={formState.githubId}
-                      onChange={(event) =>
+                      onChange={(event) => {
                         setFormState((prev) => ({
                           ...prev,
                           githubId: event.target.value,
                         }))
-                      }
+                        setGithubStatus('idle')
+                        setGithubMessage('')
+                      }}
+                      onBlur={() => {
+                        if (formState.githubId.trim()) {
+                          validateGithubId()
+                        }
+                      }}
                       className="w-full px-3 py-2 rounded-xl border border-border-color bg-white/70 dark:bg-slate-900/40 text-text-primary"
                       placeholder={t.curriculaPage.registration.githubPlaceholder}
                     />
+                    {githubStatus !== 'idle' && (
+                      <div
+                        className={`text-xs ${githubStatus === 'invalid' ? 'text-red-500' : 'text-emerald-500'}`}
+                      >
+                        {githubStatus === 'valid'
+                          ? t.curriculaPage.registration.validation.githubValid
+                          : githubMessage}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
