@@ -34,9 +34,10 @@ public class SecurityConfig {
         }
 
         private org.springframework.security.web.authentication.AuthenticationSuccessHandler authenticationSuccessHandler() {
-                SimpleUrlAuthenticationSuccessHandler handler = new SimpleUrlAuthenticationSuccessHandler();
-                handler.setDefaultTargetUrl("/curricula?auth_success=true");
-                handler.setAlwaysUseDefaultTargetUrl(true);
-                return handler;
+                return (request, response, authentication) -> {
+                        // Add timestamp to URL to bypass service worker cache
+                        String redirectUrl = "/curricula?auth_success=true&t=" + System.currentTimeMillis();
+                        response.sendRedirect(redirectUrl);
+                };
         }
 }
