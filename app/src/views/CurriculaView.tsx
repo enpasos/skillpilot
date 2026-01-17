@@ -5,8 +5,10 @@ import { ThemeToggle } from '../components/ThemeToggle'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { useTranslation } from '../hooks/useTranslation'
 import { useLanguage } from '../contexts/LanguageContext'
+import { ConfirmModal } from '../components/ConfirmModal'
 
 interface ChampionEntry {
+  curriculumId: string
   githubId: string
   skillpilotIdMasked: string
   masteredCount: number
@@ -33,7 +35,7 @@ interface CurriculaData {
   lastUpdatedAt: string
 }
 
-const GITHUB_ID_PATTERN = /^[A-Za-z0-9-]{1,39}$/
+
 type ValidationStatus = 'idle' | 'checking' | 'valid' | 'invalid'
 type ChampionFilter = 'with' | 'without' | 'all'
 type CategoryFilter = 'all' | 'school' | 'uni' | 'other'
@@ -46,18 +48,51 @@ export const CurriculaView: React.FC = () => {
   const [submitSuccess, setSubmitSuccess] = useState<string>('')
   const [submitting, setSubmitting] = useState(false)
   const [skillpilotStatus, setSkillpilotStatus] = useState<ValidationStatus>('idle')
-  const [githubStatus, setGithubStatus] = useState<ValidationStatus>('idle')
   const [skillpilotMessage, setSkillpilotMessage] = useState('')
-  const [githubMessage, setGithubMessage] = useState('')
+
   const [championFilter, setChampionFilter] = useState<ChampionFilter>('with')
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>('all')
   const [showRegistration, setShowRegistration] = useState(false)
+  const [user, setUser] = useState<{ githubId: string; champions: ChampionEntry[] } | null>(null)
+  const [showDeregisterModal, setShowDeregisterModal] = useState(false)
+  const [selectedDeregisterIds, setSelectedDeregisterIds] = useState<string[]>([])
   const [formState, setFormState] = useState({
     skillpilotId: '',
     githubId: '',
   })
   const t = useTranslation()
   const { language } = useLanguage()
+
+  const fetchUser = useCallback(async () => {
+    try {
+      const res = await fetch('/api/ui/curricula/champions/me')
+      if (res.ok) {
+        const champions: ChampionEntry[] = await res.json()
+        if (champions.length > 0) {
+          setUser({ githubId: champions[0].githubId, champions })
+        } else {
+          // Even if no champions, if call succeeds we are auth'd, but we don't know the ID easily unless we parse it or backend returns it wrapped
+          // For MVP, if list empty, we rely on user adding themselves to see state? 
+          // Actually backend returns list. To get ID we might need a separate /me endpoint or just parse from the list?
+          // If list is empty, we don't know the github ID. 
+          // Let's assume for now valid user might have 0 champions.
+          setUser({ githubId: 'GitHub User', champions: [] })
+        }
+      }
+    } catch (e) {
+      console.debug('Not authenticated', e)
+    }
+  }, [])
+
+  useEffect(() => {
+    fetchUser()
+    const url = new URL(window.location.href)
+    if (url.searchParams.get('auth_success')) {
+      // Clear param
+      window.history.replaceState({}, '', '/curricula')
+      fetchUser()
+    }
+  }, [fetchUser])
 
   const loadData = useCallback(() => {
     setLoading(true)
@@ -172,22 +207,7 @@ export const CurriculaView: React.FC = () => {
     })
   }, [data, championFilter, categoryFilter, getCategory])
 
-  const validateGithubId = useCallback((value?: string) => {
-    const normalized = (value ?? formState.githubId).trim().replace(/^@/, '')
-    if (!normalized) {
-      setGithubStatus('invalid')
-      setGithubMessage(t.curriculaPage.registration.errors.required)
-      return false
-    }
-    if (!GITHUB_ID_PATTERN.test(normalized)) {
-      setGithubStatus('invalid')
-      setGithubMessage(t.curriculaPage.registration.errors.invalidGithub)
-      return false
-    }
-    setGithubStatus('valid')
-    setGithubMessage('')
-    return true
-  }, [formState.githubId, t])
+
 
   const validateSkillpilotId = useCallback(async (value?: string) => {
     const trimmed = (value ?? formState.skillpilotId).trim()
@@ -225,23 +245,21 @@ export const CurriculaView: React.FC = () => {
     setSubmitSuccess('')
 
     const trimmedSkillpilotId = formState.skillpilotId.trim()
-    const trimmedGithubId = formState.githubId.trim().replace(/^@/, '')
 
-    if (!selectedCurriculumId || !trimmedSkillpilotId || !trimmedGithubId) {
+    if (!selectedCurriculumId || !trimmedSkillpilotId) {
       setSubmitError(t.curriculaPage.registration.errors.required)
       return
     }
 
-    const githubOk = githubStatus === 'valid' ? true : validateGithubId(trimmedGithubId)
     const skillpilotOk = await validateSkillpilotId(trimmedSkillpilotId)
-    if (!githubOk || !skillpilotOk) {
+    if (!skillpilotOk) {
       setSubmitError(t.curriculaPage.registration.errors.validationRequired)
       return
     }
 
     setSubmitting(true)
     try {
-      const res = await fetch('/api/ui/curricula/champions', {
+      const res = await fetch('/api/ui/curricula/champions/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -249,7 +267,7 @@ export const CurriculaView: React.FC = () => {
         body: JSON.stringify({
           curriculumId: selectedCurriculumId,
           skillpilotId: trimmedSkillpilotId,
-          githubId: trimmedGithubId,
+          githubId: 'oauth', // Backend ignores this
         }),
       })
       if (!res.ok) {
@@ -270,14 +288,37 @@ export const CurriculaView: React.FC = () => {
         githubId: '',
       }))
       setSkillpilotStatus('idle')
-      setGithubStatus('idle')
       setSkillpilotMessage('')
-      setGithubMessage('')
       loadData()
+      fetchUser()
     } catch (err) {
       setSubmitError((err as Error).message || t.curriculaPage.registration.errors.failed)
     } finally {
       setSubmitting(false)
+    }
+  }
+
+  const handleConnect = () => {
+    window.location.href = '/oauth2/authorization/github'
+  }
+
+  const handleDeregister = async () => {
+    if (selectedDeregisterIds.length === 0) return
+
+    try {
+      const res = await fetch('/api/ui/curricula/champions/deregister', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(selectedDeregisterIds)
+      })
+      if (res.ok) {
+        setShowDeregisterModal(false)
+        setSelectedDeregisterIds([])
+        fetchUser()
+        loadData()
+      }
+    } catch (e) {
+      console.error("Deregister failed", e)
     }
   }
 
@@ -382,107 +423,146 @@ export const CurriculaView: React.FC = () => {
             </div>
             {showRegistration && (
               <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-4">
-                <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium text-text-primary">
-                    {t.curriculaPage.registration.curriculumLabel}
-                  </label>
-                  <CurriculumDropdown
-                    currentLandscapeId={selectedCurriculumId}
-                    onSelect={setSelectedCurriculumId}
-                    landscapes={curriculumOptions}
-                  />
-                </div>
-                <div className="grid gap-4 md:grid-cols-2">
+                <div className="space-y-4">
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-medium text-text-primary">
-                      {t.curriculaPage.registration.skillpilotLabel}
+                      {t.curriculaPage.registration.curriculumLabel}
                     </label>
-                    <input
-                      value={formState.skillpilotId}
-                      onChange={(event) => {
-                        setFormState((prev) => ({
-                          ...prev,
-                          skillpilotId: event.target.value,
-                        }))
-                        setSkillpilotStatus('idle')
-                        setSkillpilotMessage('')
-                      }}
-                      onBlur={() => {
-                        if (formState.skillpilotId.trim()) {
-                          validateSkillpilotId()
-                        }
-                      }}
-                      className="w-full px-3 py-2 rounded-xl border border-border-color bg-white/70 dark:bg-slate-900/40 text-text-primary"
-                      placeholder={t.curriculaPage.registration.skillpilotPlaceholder}
+                    <CurriculumDropdown
+                      currentLandscapeId={selectedCurriculumId}
+                      onSelect={setSelectedCurriculumId}
+                      landscapes={curriculumOptions}
                     />
-                    {skillpilotStatus !== 'idle' && (
-                      <div
-                        className={`text-xs ${skillpilotStatus === 'invalid'
-                          ? 'text-red-500'
-                          : skillpilotStatus === 'checking'
-                            ? 'text-text-secondary'
-                            : 'text-emerald-500'
-                          }`}
-                      >
-                        {skillpilotStatus === 'valid'
-                          ? t.curriculaPage.registration.validation.skillpilotValid
-                          : skillpilotMessage}
-                      </div>
-                    )}
                   </div>
-                  <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium text-text-primary">
-                      {t.curriculaPage.registration.githubLabel}
-                    </label>
-                    <input
-                      value={formState.githubId}
-                      onChange={(event) => {
-                        setFormState((prev) => ({
-                          ...prev,
-                          githubId: event.target.value,
-                        }))
-                        setGithubStatus('idle')
-                        setGithubMessage('')
-                      }}
-                      onBlur={() => {
-                        if (formState.githubId.trim()) {
-                          validateGithubId()
-                        }
-                      }}
-                      className="w-full px-3 py-2 rounded-xl border border-border-color bg-white/70 dark:bg-slate-900/40 text-text-primary"
-                      placeholder={t.curriculaPage.registration.githubPlaceholder}
-                    />
-                    {githubStatus !== 'idle' && (
-                      <div
-                        className={`text-xs ${githubStatus === 'invalid' ? 'text-red-500' : 'text-emerald-500'}`}
-                      >
-                        {githubStatus === 'valid'
-                          ? t.curriculaPage.registration.validation.githubValid
-                          : githubMessage}
+
+                  {user ? (
+                    <>
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <div className="flex flex-col gap-2">
+                          <label className="text-sm font-medium text-text-primary">
+                            {t.curriculaPage.registration.skillpilotLabel}
+                          </label>
+                          <input
+                            value={formState.skillpilotId}
+                            onChange={(event) => {
+                              setFormState((prev) => ({
+                                ...prev,
+                                skillpilotId: event.target.value,
+                              }))
+                              setSkillpilotStatus('idle')
+                              setSkillpilotMessage('')
+                            }}
+                            onBlur={() => {
+                              if (formState.skillpilotId.trim()) {
+                                validateSkillpilotId()
+                              }
+                            }}
+                            className="w-full px-3 py-2 rounded-xl border border-border-color bg-white/70 dark:bg-slate-900/40 text-text-primary"
+                            placeholder={t.curriculaPage.registration.skillpilotPlaceholder}
+                          />
+                          {skillpilotStatus !== 'idle' && (
+                            <div
+                              className={`text-xs ${skillpilotStatus === 'invalid'
+                                ? 'text-red-500'
+                                : skillpilotStatus === 'checking'
+                                  ? 'text-text-secondary'
+                                  : 'text-emerald-500'
+                                }`}
+                            >
+                              {skillpilotStatus === 'valid'
+                                ? t.curriculaPage.registration.validation.skillpilotValid
+                                : skillpilotMessage}
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex flex-col gap-2 justify-center">
+                          <span className="text-sm text-text-secondary">Logged in as GitHub user</span>
+                        </div>
                       </div>
-                    )}
-                  </div>
+                      {submitError && (
+                        <div className="text-sm text-red-500">{submitError}</div>
+                      )}
+                      {submitSuccess && (
+                        <div className="text-sm text-emerald-500">{submitSuccess}</div>
+                      )}
+                      <div className="flex gap-4">
+                        <button
+                          type="submit"
+                          disabled={submitting}
+                          className="flex-1 inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/30 hover:bg-amber-500/30 transition-colors"
+                        >
+                          {submitting ? t.curriculaPage.registration.submitting : t.curriculaPage.registration.submit}
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setShowDeregisterModal(true)}
+                          className="px-5 py-2.5 rounded-full bg-red-500/10 text-red-700 dark:text-red-400 border border-red-500/20 hover:bg-red-500/20 transition-colors text-sm"
+                        >
+                          Stop Championship
+                        </button>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center py-6 gap-4">
+                      <p className="text-text-secondary text-sm">
+                        To register as a champion, please connect your GitHub account.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={handleConnect}
+                        className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#24292F] text-white hover:bg-[#24292F]/90 transition-colors font-medium"
+                      >
+                        Connect with GitHub
+                      </button>
+                    </div>
+                  )}
+
                 </div>
-              </div>
-              <p className="text-xs text-text-secondary">
-                {t.curriculaPage.registration.publicNote}
-              </p>
-              {submitError && (
-                <div className="text-sm text-red-500">{submitError}</div>
-              )}
-              {submitSuccess && (
-                <div className="text-sm text-emerald-500">{submitSuccess}</div>
-              )}
-              <button
-                type="submit"
-                disabled={submitting}
-                className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/30 hover:bg-amber-500/30 transition-colors"
-              >
-                {submitting ? t.curriculaPage.registration.submitting : t.curriculaPage.registration.submit}
-              </button>
               </form>
             )}
+
+            <ConfirmModal
+              isOpen={showDeregisterModal}
+              onClose={() => setShowDeregisterModal(false)}
+              onConfirm={handleDeregister}
+              title="Stop Championship"
+              confirmText="Bestätigen"
+              confirmClassName="bg-red-600 hover:bg-red-700"
+            >
+              <div className="space-y-4">
+                <p>Select the championships you want to end:</p>
+                {user?.champions.length === 0 ? (
+                  <p className="text-gray-500 italic">No active championships found.</p>
+                ) : (
+                  <div className="space-y-2 max-h-60 overflow-y-auto">
+                    {user?.champions.map(c => {
+                      const curriculum = data?.curricula.find(curr => curr.curriculumId === c.curriculumId)
+                      return (
+                        <label key={c.curriculumId} className="flex items-center gap-2 cursor-pointer hover:bg-white/5 dark:hover:bg-slate-800 p-2 rounded transition-colors">
+                          <input type="checkbox"
+                            checked={selectedDeregisterIds.includes(c.curriculumId)}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                setSelectedDeregisterIds([...selectedDeregisterIds, c.curriculumId])
+                              } else {
+                                setSelectedDeregisterIds(selectedDeregisterIds.filter(id => id !== c.curriculumId))
+                              }
+                            }}
+                            className="rounded border-gray-300 text-sky-600 focus:ring-sky-500"
+                          />
+                          <span className="text-text-primary text-sm flex-1">{curriculum?.title || c.curriculumId}</span>
+                          <span className="text-xs text-text-secondary bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded">
+                            {c.masteredCount} goals
+                          </span>
+                        </label>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+            </ConfirmModal>
+
           </div>
         </section>
 

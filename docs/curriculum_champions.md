@@ -19,6 +19,14 @@ Aspiring champions register on the **"Curricula"** page (which will replace the 
 *   **GitHub Account Verification:** Users must authenticate via GitHub OAuth to prove ownership of the account.
 *   GitHub ID is shown publicly; SkillPilot ID is displayed masked.
 
+## Stop Championship Process (Resignation)
+Champions can resign from their role at any time.
+**Process:**
+1.  **Initiate:** User clicks "Stop Championship".
+2.  **Verify Identity:** User must authenticate via **GitHub OAuth** to prove ownership of the GitHub ID associated with the championships.
+3.  **Select Curricula:** The system displays all active championships for the authenticated GitHub user. The user selects one or more to end.
+4.  **Confirm:** User confirms the deregistration. The system then removes the champion assignment.
+
 ## The "Curricula" Page
 This page serves as the central hub for curriculum maintenance.
 

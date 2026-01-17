@@ -111,7 +111,8 @@ public class CurriculaService {
 
             for (Map.Entry<String, CurriculumMetrics> entry : metricsByCurriculum.entrySet()) {
                 long mastered = totalMastered.getOrDefault(entry.getKey(), 0L);
-                metricsByCurriculum.put(entry.getKey(), new CurriculumMetrics(entry.getValue().totalAtomicGoals(), mastered));
+                metricsByCurriculum.put(entry.getKey(),
+                        new CurriculumMetrics(entry.getValue().totalAtomicGoals(), mastered));
             }
 
             String defaultCurriculumId = selectDefaultCurriculum(metricsByCurriculum, baseCurricula);
@@ -158,6 +159,36 @@ public class CurriculaService {
         return new CurriculaSnapshot(result, snapshot.defaultCurriculumId(), snapshot.lastUpdatedAt());
     }
 
+    public List<CurriculumChampionProfile> getChampionsByGithubId(String githubId) {
+        if (githubId == null || githubId.isBlank()) {
+            return Collections.emptyList();
+        }
+        String normalizedId = normalizeGithubId(githubId);
+        Map<String, List<Mastery>> masteryCache = new HashMap<>();
+        CurriculaMetricsSnapshot snapshot = metricsSnapshot.get();
+
+        return championRepository.findByGithubId(normalizedId).stream()
+                .map(champion -> toProfile(
+                        champion,
+                        champion.getCurriculumId(),
+                        snapshot.goalToRoots(),
+                        masteryCache))
+                .toList();
+    }
+
+    public void deregisterChampions(String githubId, List<String> curriculumIds) {
+        if (githubId == null || githubId.isBlank() || curriculumIds == null || curriculumIds.isEmpty()) {
+            return;
+        }
+        String normalizedGithubId = normalizeGithubId(githubId);
+        for (String curriculumId : curriculumIds) {
+            championRepository.findByCurriculumIdAndGithubId(curriculumId, normalizedGithubId)
+                    .ifPresent(championRepository::delete);
+        }
+        // Force refresh metrics after modification
+        refreshMetrics();
+    }
+
     public ChampionRegistrationResponse registerChampion(ChampionRegistrationRequest request) {
         if (request == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Request body required");
@@ -168,7 +199,8 @@ public class CurriculaService {
         String githubId = normalizeGithubId(request.githubId());
 
         if (curriculumId.isEmpty() || skillpilotId.isEmpty() || githubId.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "curriculumId, skillpilotId, and githubId are required");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "curriculumId, skillpilotId, and githubId are required");
         }
 
         if (!GITHUB_ID_PATTERN.matcher(githubId).matches()) {
@@ -188,7 +220,8 @@ public class CurriculaService {
         }
 
         if (championRepository.findByCurriculumIdAndSkillpilotId(curriculumId, skillpilotId).isPresent()) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "SkillPilot ID already registered for this curriculum");
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    "SkillPilot ID already registered for this curriculum");
         }
 
         CurriculumChampion champion = new CurriculumChampion();
@@ -230,8 +263,10 @@ public class CurriculaService {
         long masteredCount = countChampionMastery(curriculumId, champion.getSkillpilotId(), goalToRoots, masteryCache);
         GitHubStatsService.GitHubStats stats = githubStatsService.getStats(champion.getGithubId());
         int issuesCount = stats.issuesCount() >= 0 ? stats.issuesCount() : champion.getIssuesCount();
-        int pullRequestsCount = stats.pullRequestsCount() >= 0 ? stats.pullRequestsCount() : champion.getPullRequestsCount();
+        int pullRequestsCount = stats.pullRequestsCount() >= 0 ? stats.pullRequestsCount()
+                : champion.getPullRequestsCount();
         return new CurriculumChampionProfile(
+                curriculumId,
                 champion.getGithubId(),
                 maskSkillpilotId(champion.getSkillpilotId()),
                 masteredCount,

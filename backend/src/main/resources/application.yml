@@ -29,6 +29,13 @@ spring:
     health:
       probes:
         enabled: true
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: ${GITHUB_CLIENT_ID}
+            clientSecret: ${GITHUB_CLIENT_SECRET}
 
 skillpilot:
   landscapes:
@@ -41,6 +48,7 @@ skillpilot:
       max-body-chars: ${SKILLPILOT_AI_TRACE_MAX_BODY_CHARS:50000}
   security:
     signing-secret: ${SKILLPILOT_SIGNING_SECRET:default-insecure-secret-change-me}
+
 
 springdoc:
   api-docs:
