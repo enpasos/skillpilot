@@ -25,11 +25,18 @@ public class SecurityConfig {
                                 .oauth2Login(oauth2 -> oauth2
                                                 // Redirect to frontend on success.
                                                 // In production, this URL should be dynamic/configurable.
-                                                .defaultSuccessUrl("/curricula?auth_success=true", true))
+                                                .successHandler(authenticationSuccessHandler()))
                                 .exceptionHandling(e -> e
                                                 .authenticationEntryPoint(
                                                                 new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)));
 
                 return http.build();
+        }
+
+        private org.springframework.security.web.authentication.AuthenticationSuccessHandler authenticationSuccessHandler() {
+                SimpleUrlAuthenticationSuccessHandler handler = new SimpleUrlAuthenticationSuccessHandler();
+                handler.setDefaultTargetUrl("/curricula?auth_success=true");
+                handler.setAlwaysUseDefaultTargetUrl(true);
+                return handler;
         }
 }

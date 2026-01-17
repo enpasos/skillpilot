@@ -387,12 +387,10 @@ public class CurriculaService {
             return List.of(new com.skillpilot.backend.api.TopicSummary(rootGoal.getId(), rootGoal.getTitle()));
         }
 
-        // Resolve children IDs to Goal objects
-        Map<String, LearningGoal> goalMap = landscape.getGoals().stream()
-                .collect(java.util.stream.Collectors.toMap(LearningGoal::getId, g -> g));
-
+        // Resolve children IDs to Goal objects using global lookup
+        // because children might be in different files (referenced modules)
         return childrenIds.stream()
-                .map(goalMap::get)
+                .map(id -> landscapeService.getGoalDefinition(id))
                 .filter(java.util.Objects::nonNull)
                 .map(g -> new com.skillpilot.backend.api.TopicSummary(g.getId(), g.getTitle()))
                 .toList();
