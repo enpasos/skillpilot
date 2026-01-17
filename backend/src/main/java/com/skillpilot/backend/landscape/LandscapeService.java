@@ -13,6 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -342,6 +343,10 @@ public class LandscapeService {
         Set<String> referencedIds = getReferencedLandscapeIds();
         List<LandscapeSummary> rootSummaries = summaries.stream()
                 .filter(s -> !referencedIds.contains(s.getCurriculumId()))
+                .filter(s -> {
+                    LearningLandscape landscape = cachedById.get(s.getCurriculumId());
+                    return landscape == null || !isModuleLandscape(landscape);
+                })
                 .collect(Collectors.toList());
 
         return new LandscapeOverviewResponse(rootSummaries, hierarchy);
@@ -376,6 +381,42 @@ public class LandscapeService {
             }
         }
         return referenced;
+    }
+
+    private boolean isModuleLandscape(LearningLandscape landscape) {
+        if (landscape == null) {
+            return false;
+        }
+        LearningGoal rootGoal = getRootGoal(landscape);
+        if (rootGoal != null && rootGoal.getTags() != null) {
+            for (String tag : rootGoal.getTags()) {
+                if (tag == null) {
+                    continue;
+                }
+                String normalized = tag.toLowerCase(Locale.ROOT);
+                if (normalized.startsWith("module:") || normalized.startsWith("modul:")) {
+                    return true;
+                }
+            }
+        }
+        String title = landscape.getTitle();
+        if (title == null || title.isBlank()) {
+            return false;
+        }
+        String normalizedTitle = title.toLowerCase(Locale.ROOT);
+        return normalizedTitle.matches(".*\\bmodul\\b.*") || normalizedTitle.matches(".*\\bmodule\\b.*");
+    }
+
+    private LearningGoal getRootGoal(LearningLandscape landscape) {
+        if (landscape == null || landscape.getGoals() == null || landscape.getGoals().isEmpty()) {
+            return null;
+        }
+        for (LearningGoal g : landscape.getGoals()) {
+            if (g.getTags() != null && g.getTags().contains("root")) {
+                return g;
+            }
+        }
+        return landscape.getGoals().get(0);
     }
 
     private String getRootGoalId(LearningLandscape l) {
