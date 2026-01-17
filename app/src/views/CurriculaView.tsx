@@ -421,6 +421,31 @@ export const CurriculaView: React.FC = () => {
                   : t.curriculaPage.registration.toggleShow}
               </button>
             </div>
+
+            {!showRegistration && user && user.champions.length > 0 && (
+              <div className="flex items-center justify-between p-4 rounded-2xl bg-sky-50 dark:bg-sky-900/20 border border-sky-100 dark:border-sky-800">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-sky-100 dark:bg-sky-800 rounded-full">
+                    <svg className="w-5 h-5 text-sky-600 dark:text-sky-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-sky-900 dark:text-sky-200">
+                      You are a champion for {user.champions.length} curriculum{user.champions.length !== 1 ? 's' : ''}
+                    </p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowDeregisterModal(true)}
+                  className="text-sm font-medium text-red-600 dark:text-red-400 hover:text-red-700 hover:underline"
+                >
+                  Stop Championship
+                </button>
+              </div>
+            )}
+
             {showRegistration && (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-4">
@@ -437,6 +462,26 @@ export const CurriculaView: React.FC = () => {
 
                   {user ? (
                     <>
+                      {user.champions.length > 0 && (
+                        <div className="mb-6 p-4 rounded-2xl bg-sky-50 dark:bg-sky-900/20 border border-sky-100 dark:border-sky-800">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <h3 className="font-semibold text-sky-900 dark:text-sky-300">Active Championships</h3>
+                              <p className="text-sm text-sky-700 dark:text-sky-400">
+                                You are a champion for {user.champions.length} curriculum{user.champions.length !== 1 ? 's' : ''}.
+                              </p>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => setShowDeregisterModal(true)}
+                              className="px-4 py-2 rounded-full bg-white dark:bg-slate-800 text-red-600 dark:text-red-400 text-sm font-medium shadow-sm hover:shadow transition-all border border-transparent hover:border-red-200"
+                            >
+                              Stop Championship
+                            </button>
+                          </div>
+                        </div>
+                      )}
+
                       <div className="grid gap-4 md:grid-cols-2">
                         <div className="flex flex-col gap-2">
                           <label className="text-sm font-medium text-text-primary">
@@ -724,7 +769,7 @@ export const CurriculaView: React.FC = () => {
             {t.curriculaPage.back}
           </Link>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   )
 }
