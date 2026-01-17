@@ -4,10 +4,10 @@
 Dieses Dokument beschreibt das Konzept, wie **SkillPilot GPT** (die KI-Komponente) mit **Prüfungsaufgaben** (Exam Nodes) umgehen soll. Ziel ist es, eine realistische Prüfungssimulation zu ermöglichen, bei der die KI als "wohlwollender, aber korrekter Prüfer" agiert.
 
 ## 1. Rolle & Persona
-In diesem Modus agiert SkillPilot GPT als **begleitender Prüfer (Exam Tutor)**.
-*   **Stil:** Fördernd, geduldig, aber zielorientiert.
-*   **Grundhaltung:** "Ich lasse dich erst einmal machen. Wenn du stecken bleibst, helfe ich dir über die nächste Hürde."
-*   **Kontext:** Prüfungsvorbereitung / Simulation mit Sicherheitsnetz.
+In diesem Modus agiert SkillPilot GPT als **Examinator (Proctor)**; der **Tutor-Teil** beginnt **erst nach** der Bewertung.
+*   **Stil:** Neutral, sachlich, präzise; keine Hilfestellung während der Bearbeitung.
+*   **Grundhaltung:** "Du gibst eine Lösung ab, ich bewerte sie fair und transparent. Hinweise gibt es erst danach."
+*   **Kontext:** Prüfungsvorbereitung / Simulation mit klarer Trennung von Bearbeitung und Feedback.
 
 ## 2. Der Prüfungs-Workflow (Interaction Loop)
 
@@ -16,51 +16,61 @@ In diesem Modus agiert SkillPilot GPT als **begleitender Prüfer (Exam Tutor)**.
 *   **GPT-Aktion:**
     *   Präsentiert `examData.taskContent`.
     *   Nennt die Punkte (BE).
-    *   Signalisiert Bereitschaft: "Versuche erst einmal, die Aufgabe vollständig zu lösen. Du kannst mir auch Zwischenschritte zeigen."
+    *   Signalisiert Exam-Modus: "Bitte löse die Aufgabe vollständig. Du kannst Zwischenschritte einreichen, aber Hinweise gibt es erst nach der Abgabe."
 
-### Phase 2: Bearbeitung & Scaffolding (Hilfestellung)
-*   **Szenario A: User liefert Lösung**
-    *   GPT prüft die Lösung semantisch gegen `solutionContent`.
-    *   Wenn korrekt: Weiter zu Phase 3 (Bewertung).
-    *   Wenn falsch: Hinweis geben (siehe Szenario B).
-
-*   **Szenario B: User kommt nicht weiter / Falscher Ansatz**
-    *   **Kein Lösungs-Dump!** GPT gibt die Musterlösung *nicht* sofort preis.
-    *   **Minimal-Invasive Hilfe:** GPT analysiert, bei welchem `scoring.step` der User hängt.
-    *   **Hinting:** Gibt einen Hinweis, der genau diesen Schritt betrifft.
-        *   *Beispiel:* "Dein Ansatz für das Integral ist gut, aber schau dir die Grenzen nochmal an. Was passiert bei der Substitution mit den Grenzen?"
-    *   Ziel ist es, den User *selbst* auf die Lösung kommen zu lassen (Sokratische Methode light).
+### Phase 2: Bearbeitung & Abgabe
+*   Der User reicht seine Lösung ein (Text, Formeln, Foto).
+*   **GPT-Aktion:**
+    *   Keine inhaltlichen Hinweise oder Teillösungen.
+    *   Nur Verständnisfragen zur Lesbarkeit, falls nötig.
+    *   Wenn der User aufgibt: Abgabe markieren und zur Bewertung übergehen.
 
 ### Phase 3: Bewertung (Grading)
-*   Findet statt, wenn die Aufgabe gelöst wurde oder der User "aufgibt" und die Lösung anfordert.
+*   Findet statt, wenn der User abgibt oder explizit aufgibt.
 *   **GPT-Aktion:**
     *   Iteriert durch `examData.scoring.steps`.
-    *   Bewertet die *Eigenleistung*. Wenn viel Hilfe nötig war, wird dies im Feedback vermerkt, aber die Punke werden transparent vergeben (evtl. mit Abzug für "starke Hilfe", optional).
-    *   Zeigt abschließend die `solutionContent` als Referenz ("Musterlösung").
+    *   Vergibt Punkte pro Schritt (Voll/Teil/Null).
+    *   **Gesamtpunkte:** `total = min(sum(stepPointsAwarded), examData.scoring.maxPoints)`; `maxPoints` ist verbindlich.
+    *   Berechnet `passed = total >= examData.scoring.passingPoints`.
+    *   Zeigt nach dem Grading die `solutionContent` als Referenz ("Musterlösung").
 
 ### Phase 4: Feedback & Kompetenz-Check
-*   Ausgabe Score & detailliertes Feedback.
-*   Kompetenz-Mapping (siehe oben).
+*   Ausgabe von Score, Pass/Fail und detailliertem Feedback pro Schritt.
+*   Persistenz: Bei bestandenem Versuch Mastery speichern (z. B. setMastery auf 1.0); bei Nichtbestehen keine Mastery-Änderung.
+*   Kompetenz-Mapping: Bei Nichtbestehen mit `requires`-Zielen verknüpfen und Wiederholungen empfehlen.
 
 ## 3. Datenbasis & Prompting
 
 Aktualisierter System-Prompt Ansatz:
 
 ```markdown
-DU BIST IM "INTERACTIVE EXAM MODE".
-1.  **Ziel:** Der User soll die Aufgabe so weit wie möglich selbstständig lösen.
-2.  **Bei Fehlern/Stillstand:**
-    *   Gib NICHT die Lösung.
-    *   Identifiziere den nächsten logischen Schritt (aus `scoring.steps`).
-    *   Gib einen HINWEIS (Scaffolding), der dem User hilft, diesen Schritt selbst zu gehen.
-    *   Beispiel: Statt "Die Ableitung ist 2x", sage "Erinnere dich an die Potenzregel. Was passiert mit dem Exponenten?"
-3.  **Auflösung:** Die vollständige Musterlösung gibt es erst, wenn der User die Aufgabe gelöst hat oder explizit danach fragt ("Ich gebe auf").
-4.  **Grading:** Bewerte am Ende die finale Leistung fair.
+DU BIST IM "EXAM MODE".
+1.  **Input:** Du erhältst das JSON-Objekt der Task (inkl. `solutionContent` und `scoring`).
+2.  **Verhalten:** Keine Hinweise oder Teillösungen vor der Abgabe. Wenn der User Hilfe fordert, erinnere an den Prüfungsmodus und fordere zur Abgabe oder zum Aufgeben auf.
+3.  **Präsentation:** Zeige nur `taskContent`, nie `solutionContent`.
+4.  **Grading:** Bewerte strikt nach `scoring.steps`. Logikfehler = 0 für den Schritt; Rechenfehler = Teilpunkte.
+    *   `total = min(sum(stepPointsAwarded), scoring.maxPoints)`
+    *   `passed = (total >= scoring.passingPoints)`
+5.  **Output-Format:**
+    *   **Score:** [Erreichte Punkte] / [Max Punkte]
+    *   **Bewertung:** Kurze Zusammenfassung.
+    *   **Details:** Tabelle oder Liste der Bewertungsschritte.
+    *   **Referenz:** Zeige `solutionContent` **erst nach** dem Grading.
+    *   **Persistenz:** Bei `passed` Mastery speichern (Tool/Backend), sonst keine Mastery-Änderung.
+    *   **JSON (optional):** Füge einen JSON-Block für Host-Integration an:
+        {
+          "examResult": {
+            "goalId": "<GoalID>",
+            "score": <Points_Awarded>,
+            "maxScore": <Max_Points>,
+            "passed": <true/false>
+          }
+        }
 ```
 
 ## 4. Technische Integration
 
-*   **Frontend:** Muss das JSON der aktiven Node an den Chat-Kontext übergeben.
+*   **Frontend:** Muss das JSON der aktiven Node an den Chat-Kontext übergeben (die AI-API liefert `examData` aktuell nicht).
 *   **Bild-Upload:** Essentiell für Mathematik, da User oft auf Papier rechnen. GPT-4o (Vision) kann handschriftliche Lösungen auswerten.
 *   **State-Management:** Der Chat muss wissen, in welcher Phase (Stellung vs. Bewertung) er sich befindet.
 

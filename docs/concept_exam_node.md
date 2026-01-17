@@ -76,8 +76,8 @@ We follow the existing pattern: `field` (Local, usually German) and `fieldEn` (E
 *   **Remediation:** If the user **fails** the exam (score < `passingPoints`), the generic `requires` list is used to generate specific review recommendations.
 
 ### Scoring vs. Mastery
-*   **Algorithm:** `Mastery = (AchievedPoints >= PassingPoints) ? 1.0 : 0.0`.
-*   **Nuance:** Partial mastery (0.5) could be considered if `AchievedPoints / MaxPoints > 0.5` but `< passingPoints`, but for now we settle on a binary Pass/Fail for the node status.
+*   **Algorithm:** Pass/Fail is based on `AchievedPoints >= PassingPoints`. If passed, set mastery to 1.0; if not, leave mastery unchanged unless the host explicitly requires a reset.
+*   **Nuance:** Partial mastery (0.5) could be considered if `AchievedPoints / MaxPoints > 0.5` but `< passingPoints`. For now we only mark pass (1.0) and do not record partials.
 
 ## 4. Asset Management
 *   **Storage:** Images (e.g., `image1.png`) are stored **alongside the curriculum JSON file** in the source repo (e.g., `curricula/.../json/assets/`).
@@ -85,6 +85,8 @@ We follow the existing pattern: `field` (Local, usually German) and `fieldEn` (E
 *   **Reference:** Markdown uses relative paths: `![Sketch](./assets/image1.png)`. The frontend markdown renderer must resolve these relative to the curriculum base URL.
 
 ## 5. Interaction Flow (AI "Proctor")
+Implementation note: The current AI API responses do not include `examData`. The proctor flow requires the host UI to inject the full goal object with `examData` into the GPT context.
+
 1.  **Start:** User opens node. UI detects `examData` and switches to **Proctor Mode**.
 2.  **Task:** Display `taskContent`. Hide `solutionContent`.
 3.  **Input:** User enters text/image.
@@ -92,7 +94,8 @@ We follow the existing pattern: `field` (Local, usually German) and `fieldEn` (E
     *   User Input
     *   `solutionContent`
     *   `scoring` schema
-    *   **Instruction:** "Grade the input against the solution. Assign points per step. Be strict."
+    *   **Instruction:** "Grade per step. `total = min(sum(stepPointsAwarded), scoring.maxPoints)`. `passed = (total >= scoring.passingPoints)`. No hints before submission."
 5.  **Feedback:**
-    *   AI returns structured JSON result: `{ "points": 4, "total": 5, "feedback": "...", "passed": true }`.
-    *   UI updates Mastery state locally and notifies Server.
+    *   AI returns structured JSON result (optional for host integration): `{ "examResult": { "goalId": "<GoalID>", "score": 4, "maxScore": 5, "passed": true } }`.
+    *   Show the solution after grading.
+    *   If passed, update mastery to 1.0. If failed, leave mastery unchanged and provide remediation.
