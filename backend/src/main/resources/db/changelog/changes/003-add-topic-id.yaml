@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-add-topic-id
+      author: enpasos
+      changes:
+        - addColumn:
+            tableName: curriculum_champion
+            columns:
+              - column:
+                  name: topic_id
+                  type: VARCHAR(255)
+        - dropUniqueConstraint:
+            tableName: curriculum_champion
+            constraintName: uq_curriculum_champion_curriculum_github
+        - dropUniqueConstraint:
+            tableName: curriculum_champion
+            constraintName: uq_curriculum_champion_curriculum_skillpilot
