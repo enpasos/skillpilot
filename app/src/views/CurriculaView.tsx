@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { CurriculumDropdown, type LandscapeSummary } from '../components/CurriculumDropdown'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { useTranslation } from '../hooks/useTranslation'
@@ -39,7 +40,6 @@ export const CurriculaView: React.FC = () => {
   const [submitSuccess, setSubmitSuccess] = useState<string>('')
   const [submitting, setSubmitting] = useState(false)
   const [formState, setFormState] = useState({
-    curriculumId: '',
     skillpilotId: '',
     githubId: '',
   })
@@ -69,32 +69,37 @@ export const CurriculaView: React.FC = () => {
     }
     const defaultId = data.defaultCurriculumId || data.curricula[0].curriculumId
     setSelectedCurriculumId((prev) => (prev ? prev : defaultId))
-    setFormState((prev) => ({
-      ...prev,
-      curriculumId: prev.curriculumId || defaultId,
-    }))
   }, [data])
-
-  useEffect(() => {
-    if (!selectedCurriculumId) {
-      return
-    }
-    setFormState((prev) => ({
-      ...prev,
-      curriculumId: selectedCurriculumId,
-    }))
-  }, [selectedCurriculumId])
 
   const selectedCurriculum = useMemo(() => {
     return data?.curricula.find((c) => c.curriculumId === selectedCurriculumId)
   }, [data, selectedCurriculumId])
+
+  const curriculumOptions = useMemo<LandscapeSummary[]>(() => {
+    if (!data) {
+      return []
+    }
+    return data.curricula.map((curriculum) => ({
+      curriculumId: curriculum.curriculumId,
+      filename: curriculum.curriculumId,
+      country: curriculum.country ?? '',
+      region: curriculum.region ?? '',
+      type: '',
+      level: '',
+      subject: curriculum.subject ?? '',
+      locale: '',
+      description: curriculum.description,
+      title: curriculum.title,
+      schoolType: '',
+    }))
+  }, [data])
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault()
     setSubmitError('')
     setSubmitSuccess('')
 
-    if (!formState.curriculumId || !formState.skillpilotId || !formState.githubId) {
+    if (!selectedCurriculumId || !formState.skillpilotId || !formState.githubId) {
       setSubmitError(t.curriculaPage.registration.errors.required)
       return
     }
@@ -106,7 +111,7 @@ export const CurriculaView: React.FC = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        curriculumId: formState.curriculumId,
+        curriculumId: selectedCurriculumId,
         skillpilotId: formState.skillpilotId,
         githubId: formState.githubId,
       }),
@@ -216,59 +221,50 @@ export const CurriculaView: React.FC = () => {
               </p>
             </div>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid gap-4 md:grid-cols-3">
+              <div className="space-y-4">
                 <div className="flex flex-col gap-2">
                   <label className="text-sm font-medium text-text-primary">
                     {t.curriculaPage.registration.curriculumLabel}
                   </label>
-                  <select
-                    value={formState.curriculumId}
-                    onChange={(event) =>
-                      setFormState((prev) => ({
-                        ...prev,
-                        curriculumId: event.target.value,
-                      }))
-                    }
-                    className="w-full px-3 py-2 rounded-xl border border-border-color bg-white/70 dark:bg-slate-900/40 text-text-primary"
-                  >
-                    {data.curricula.map((curriculum) => (
-                      <option key={curriculum.curriculumId} value={curriculum.curriculumId}>
-                        {curriculum.title}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium text-text-primary">
-                    {t.curriculaPage.registration.skillpilotLabel}
-                  </label>
-                  <input
-                    value={formState.skillpilotId}
-                    onChange={(event) =>
-                      setFormState((prev) => ({
-                        ...prev,
-                        skillpilotId: event.target.value,
-                      }))
-                    }
-                    className="w-full px-3 py-2 rounded-xl border border-border-color bg-white/70 dark:bg-slate-900/40 text-text-primary"
-                    placeholder={t.curriculaPage.registration.skillpilotPlaceholder}
+                  <CurriculumDropdown
+                    currentLandscapeId={selectedCurriculumId}
+                    onSelect={setSelectedCurriculumId}
+                    landscapes={curriculumOptions}
                   />
                 </div>
-                <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium text-text-primary">
-                    {t.curriculaPage.registration.githubLabel}
-                  </label>
-                  <input
-                    value={formState.githubId}
-                    onChange={(event) =>
-                      setFormState((prev) => ({
-                        ...prev,
-                        githubId: event.target.value,
-                      }))
-                    }
-                    className="w-full px-3 py-2 rounded-xl border border-border-color bg-white/70 dark:bg-slate-900/40 text-text-primary"
-                    placeholder={t.curriculaPage.registration.githubPlaceholder}
-                  />
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div className="flex flex-col gap-2">
+                    <label className="text-sm font-medium text-text-primary">
+                      {t.curriculaPage.registration.skillpilotLabel}
+                    </label>
+                    <input
+                      value={formState.skillpilotId}
+                      onChange={(event) =>
+                        setFormState((prev) => ({
+                          ...prev,
+                          skillpilotId: event.target.value,
+                        }))
+                      }
+                      className="w-full px-3 py-2 rounded-xl border border-border-color bg-white/70 dark:bg-slate-900/40 text-text-primary"
+                      placeholder={t.curriculaPage.registration.skillpilotPlaceholder}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label className="text-sm font-medium text-text-primary">
+                      {t.curriculaPage.registration.githubLabel}
+                    </label>
+                    <input
+                      value={formState.githubId}
+                      onChange={(event) =>
+                        setFormState((prev) => ({
+                          ...prev,
+                          githubId: event.target.value,
+                        }))
+                      }
+                      className="w-full px-3 py-2 rounded-xl border border-border-color bg-white/70 dark:bg-slate-900/40 text-text-primary"
+                      placeholder={t.curriculaPage.registration.githubPlaceholder}
+                    />
+                  </div>
                 </div>
               </div>
               <p className="text-xs text-text-secondary">
@@ -346,23 +342,12 @@ export const CurriculaView: React.FC = () => {
           </div>
 
           <div className="flex justify-center">
-            <div className="relative inline-block w-full max-w-md">
-              <select
-                value={selectedCurriculumId}
-                onChange={(e) => setSelectedCurriculumId(e.target.value)}
-                className="block w-full px-4 py-3 bg-white/50 dark:bg-slate-800/80 border border-border-color rounded-xl appearance-none focus:outline-none focus:ring-2 focus:ring-orange-500 text-text-primary shadow-xl backdrop-blur-sm transition-all"
-              >
-                {data.curricula.map((curriculum) => (
-                  <option key={curriculum.curriculumId} value={curriculum.curriculumId}>
-                    {curriculum.title}
-                  </option>
-                ))}
-              </select>
-              <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-text-secondary">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
+            <div className="w-full max-w-md">
+              <CurriculumDropdown
+                currentLandscapeId={selectedCurriculumId}
+                onSelect={setSelectedCurriculumId}
+                landscapes={curriculumOptions}
+              />
             </div>
           </div>
 
