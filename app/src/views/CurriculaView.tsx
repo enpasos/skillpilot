@@ -608,7 +608,7 @@ export const CurriculaView: React.FC = () => {
                                   {t.curriculaPage.table.achievements}
                                 </span>
                                 <span className="text-sm font-semibold text-text-primary">
-                                  {champion.masteredCount}
+                                  {champion.masteredCount ?? 0}
                                 </span>
                               </div>
                               <div className="flex flex-col">

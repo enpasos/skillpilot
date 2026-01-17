@@ -44,6 +44,7 @@ public class CurriculaService {
     private final MasteryRepository masteryRepository;
     private final LearnerRepository learnerRepository;
     private final CurriculumChampionRepository championRepository;
+    private final GitHubStatsService githubStatsService;
 
     private final AtomicReference<CurriculaMetricsSnapshot> metricsSnapshot = new AtomicReference<>(
             new CurriculaMetricsSnapshot(Collections.emptyMap(), Collections.emptyMap(), null, Instant.now()));
@@ -52,11 +53,13 @@ public class CurriculaService {
             LandscapeService landscapeService,
             MasteryRepository masteryRepository,
             LearnerRepository learnerRepository,
-            CurriculumChampionRepository championRepository) {
+            CurriculumChampionRepository championRepository,
+            GitHubStatsService githubStatsService) {
         this.landscapeService = landscapeService;
         this.masteryRepository = masteryRepository;
         this.learnerRepository = learnerRepository;
         this.championRepository = championRepository;
+        this.githubStatsService = githubStatsService;
     }
 
     @PostConstruct
@@ -225,12 +228,15 @@ public class CurriculaService {
             Map<String, Set<String>> goalToRoots,
             Map<String, List<Mastery>> masteryCache) {
         long masteredCount = countChampionMastery(curriculumId, champion.getSkillpilotId(), goalToRoots, masteryCache);
+        GitHubStatsService.GitHubStats stats = githubStatsService.getStats(champion.getGithubId());
+        int issuesCount = stats.issuesCount() >= 0 ? stats.issuesCount() : champion.getIssuesCount();
+        int pullRequestsCount = stats.pullRequestsCount() >= 0 ? stats.pullRequestsCount() : champion.getPullRequestsCount();
         return new CurriculumChampionProfile(
                 champion.getGithubId(),
                 maskSkillpilotId(champion.getSkillpilotId()),
                 masteredCount,
-                champion.getIssuesCount(),
-                champion.getPullRequestsCount(),
+                issuesCount,
+                pullRequestsCount,
                 champion.getCreatedAt());
     }
 
