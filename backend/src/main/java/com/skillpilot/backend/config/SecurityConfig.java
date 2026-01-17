@@ -25,8 +25,7 @@ public class SecurityConfig {
                                 .oauth2Login(oauth2 -> oauth2
                                                 // Redirect to frontend on success.
                                                 // In production, this URL should be dynamic/configurable.
-                                                .successHandler(new SimpleUrlAuthenticationSuccessHandler(
-                                                                "/curricula?auth_success=true")))
+                                                .defaultSuccessUrl("/curricula?auth_success=true", true))
                                 .exceptionHandling(e -> e
                                                 .authenticationEntryPoint(
                                                                 new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)));

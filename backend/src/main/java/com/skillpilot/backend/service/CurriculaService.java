@@ -370,11 +370,30 @@ public class CurriculaService {
     }
 
     public List<com.skillpilot.backend.api.TopicSummary> getTopics(String curriculumId) {
-        LearningLandscape root = landscapeService.getById(curriculumId);
-        if (root == null || root.getGoals() == null) {
+        LearningLandscape landscape = landscapeService.getById(curriculumId);
+        if (landscape == null || landscape.getGoals() == null || landscape.getGoals().isEmpty()) {
             return java.util.Collections.emptyList();
         }
-        return root.getGoals().stream()
+
+        // Find root goal (similar to LandscapeService logic)
+        LearningGoal rootGoal = landscape.getGoals().stream()
+                .filter(g -> g.getTags() != null && g.getTags().contains("root"))
+                .findFirst()
+                .orElse(landscape.getGoals().get(0));
+
+        List<String> childrenIds = rootGoal.getContains();
+        if (childrenIds == null || childrenIds.isEmpty()) {
+            // Fallback to returning the root itself if no children
+            return List.of(new com.skillpilot.backend.api.TopicSummary(rootGoal.getId(), rootGoal.getTitle()));
+        }
+
+        // Resolve children IDs to Goal objects
+        Map<String, LearningGoal> goalMap = landscape.getGoals().stream()
+                .collect(java.util.stream.Collectors.toMap(LearningGoal::getId, g -> g));
+
+        return childrenIds.stream()
+                .map(goalMap::get)
+                .filter(java.util.Objects::nonNull)
                 .map(g -> new com.skillpilot.backend.api.TopicSummary(g.getId(), g.getTitle()))
                 .toList();
     }
