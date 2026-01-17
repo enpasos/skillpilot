@@ -86,13 +86,20 @@ const App: React.FC = () => {
   })
   const navigate = useNavigate()
   const location = useLocation()
+  // Use window.location as fallback for initial load after OAuth redirect (SPA cache issue)
+  const actualPath = window.location.pathname
   const normalizedPath = location.pathname === '/' ? '/' : location.pathname.replace(/\/+$/, '')
-  const isWhitepaperRoute = normalizedPath === '/whitepaper' || normalizedPath.startsWith('/whitepaper/')
-  const isStoryRoute = normalizedPath === '/story' || normalizedPath.startsWith('/story/')
+  const normalizedActualPath = actualPath === '/' ? '/' : actualPath.replace(/\/+$/, '')
+  const isWhitepaperRoute = normalizedPath === '/whitepaper' || normalizedPath.startsWith('/whitepaper/') ||
+    normalizedActualPath === '/whitepaper' || normalizedActualPath.startsWith('/whitepaper/')
+  const isStoryRoute = normalizedPath === '/story' || normalizedPath.startsWith('/story/') ||
+    normalizedActualPath === '/story' || normalizedActualPath.startsWith('/story/')
 
   // Allow public routes to render without session
+  // Check both React Router location AND actual window.location for reliability after OAuth redirects
   const isPublicRoute =
     PUBLIC_PATHS.has(normalizedPath) ||
+    PUBLIC_PATHS.has(normalizedActualPath) ||
     isWhitepaperRoute ||
     isStoryRoute
 
@@ -100,6 +107,18 @@ const App: React.FC = () => {
   // console.log('Routing State:', { normalizedPath, isPublicRoute, hasSession })
 
   const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId })
+
+  // Handle OAuth success redirect at App level
+  // This is needed because after OAuth redirect, the SPA might be loaded from service worker cache
+  // with the wrong initial route. We force navigation to ensure the URL and rendered component match.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('auth_success') && window.location.pathname.startsWith('/curricula')) {
+      // Force a navigation to ensure React Router is in sync with the actual URL
+      navigate('/curricula', { replace: true })
+    }
+  }, [navigate])
+
   const availableLandscapes = useMemo(
     () =>
       core.landscapeEntries.map((e) => ({
