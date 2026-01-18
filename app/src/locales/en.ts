@@ -169,6 +169,8 @@ export const en = {
             connectPrompt: "To register as a champion, you need a GitHub ID and a SkillPilot ID.",
             createGithub: "No GitHub account? Create one here.",
             noSkillpilotId: "No SkillPilot ID? Create one on the Start Page.",
+            generateId: "Generate ID",
+            generated: "ID generated",
             toggleShow: "Champion Registration / Management",
             toggleHide: "Hide Section",
             submit: "Register",

@@ -321,6 +321,29 @@ export const CurriculaView: React.FC = () => {
     }
   }
 
+  const generateNewId = async () => {
+    setSkillpilotStatus('checking')
+    setSkillpilotMessage(t.curriculaPage.registration.validation.skillpilotChecking)
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase ? `${apiBase}/api/ui/learners` : '/api/ui/learners'
+      const res = await fetch(url, { method: 'POST' })
+      if (!res.ok) throw new Error(`Server ${res.status}`)
+      const data = await res.json()
+      const id = data.state?.skillpilotId || data.skillpilotId || data.learnerId || data.id
+      if (!id) throw new Error('No ID in response')
+
+      const newId = String(id)
+      setFormState(prev => ({ ...prev, skillpilotId: newId }))
+      setSkillpilotStatus('valid')
+      setSkillpilotMessage(t.curriculaPage.registration.generated)
+    } catch (err) {
+      console.error('Failed to generate ID', err)
+      setSkillpilotStatus('invalid')
+      setSkillpilotMessage(t.curriculaPage.registration.errors.failed)
+    }
+  }
+
   const handleConnect = () => {
     window.location.href = '/oauth2/authorization/github'
   }
@@ -528,28 +551,35 @@ export const CurriculaView: React.FC = () => {
                           <label className="text-sm font-medium text-text-primary">
                             {t.curriculaPage.registration.skillpilotLabel}
                           </label>
-                          <input
-                            value={formState.skillpilotId}
-                            onChange={(event) => {
-                              setFormState((prev) => ({
-                                ...prev,
-                                skillpilotId: event.target.value,
-                              }))
-                              setSkillpilotStatus('idle')
-                              setSkillpilotMessage('')
-                            }}
-                            onBlur={() => {
-                              if (formState.skillpilotId.trim()) {
-                                validateSkillpilotId()
-                              }
-                            }}
-                            className="w-full px-3 py-2 rounded-xl border border-border-color bg-white/70 dark:bg-slate-900/40 text-text-primary"
-                            placeholder={t.curriculaPage.registration.skillpilotPlaceholder}
-                          />
+                          <div className="flex gap-2">
+                            <input
+                              value={formState.skillpilotId}
+                              onChange={(event) => {
+                                setFormState((prev) => ({
+                                  ...prev,
+                                  skillpilotId: event.target.value,
+                                }))
+                                setSkillpilotStatus('idle')
+                                setSkillpilotMessage('')
+                              }}
+                              onBlur={() => {
+                                if (formState.skillpilotId.trim()) {
+                                  validateSkillpilotId()
+                                }
+                              }}
+                              className="w-full px-3 py-2 rounded-xl border border-border-color bg-white/70 dark:bg-slate-900/40 text-text-primary"
+                              placeholder={t.curriculaPage.registration.skillpilotPlaceholder}
+                            />
+                            <button
+                              type="button"
+                              onClick={generateNewId}
+                              className="px-3 py-2 rounded-xl bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 text-xs font-medium hover:bg-sky-200 dark:hover:bg-sky-900/50 transition-colors whitespace-nowrap"
+                            >
+                              {t.curriculaPage.registration.generateId}
+                            </button>
+                          </div>
                           <div className="flex justify-between items-start">
-                            <a href="/" target="_blank" className="text-xs text-sky-600 dark:text-sky-400 hover:underline mt-1 block">
-                              {t.curriculaPage.registration.noSkillpilotId}
-                            </a>
+                            <div />
                             {skillpilotStatus !== 'idle' && (
                               <div
                                 className={`text-xs mt-1 ${skillpilotStatus === 'invalid'
