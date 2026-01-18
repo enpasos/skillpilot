@@ -12,33 +12,32 @@ This project is an invitation to the community to jointly build and bring to lif
 
  
 
-## 🤖 Help Train the Agent!
+## Choose your path
 
-We do not view the SkillPilot AI Agent as a finished software product, but as an **apprentice**. It is currently learning its job as a trainer. We are currently working on teaching it four essential skills:
+### Learners & teachers
+*   [Schnellstart (DE)](https://skillpilot.com/story/de)
+*   [Quickstart (EN)](https://skillpilot.com/story/en)
+*   [Live app](https://skillpilot.com)
 
-![SkillPilot AI Agent In Training](https://enpasos.github.io/skillpilot/comic2/SkillPilot_Agent_In_Training.en.jpg)
+### Curriculum champions
+*   [Curricula & Champions](https://skillpilot.com/curricula)
+*   [Champion guide](curriculum_champions.md)
 
-1.  **The Right Tone (Chat Persona):** A good trainer doesn't rattle off data. It must learn to speak the learner's language, motivate, and communicate at eye level.
-2.  **The Wire to the Base (Backend Interaction):** The agent must not hallucinate who it is talking to. It needs to sync perfectly with "Mission Control". This is a two-way street: the backend communication must also work seamlessly to support the AI.
-3.  **Navigating the Jungle (Curriculum):** Curricula are complex. The agent learns to use filters (e.g., "Math Advanced Course") to show a clear path. Simultaneously, we need to adjust the curriculum models to meet the agent's needs.
-4.  **The Pedagogical Spark (Didactics):** The supreme discipline. The agent should not give away the answer, but guide. It learns to ask smart counter-questions so that the learner has an "Aha!" moment themselves.
+### Institutions & ministries
+*   [Whitepaper (EN)](https://skillpilot.com/whitepaper/en)
+*   [Whitepaper (DE)](https://skillpilot.com/whitepaper/de)
+*   [Data & Privacy](data_concept.md)
 
-### 🚩 Call for Contributions
+### Developers & designers of SkillPilot
+*   [Graph Architecture](graph_mathematical_definition.md)
+*   [Production Pipeline](graph_production_pipeline.md)
+*   [Import/Export](export_import.md)
 
-We invite you to participate in the training of the AI Agent!
+## Contribute
 
-*   **Roleplay**: Slip into the role of a learner.
-*   **Explore**: Use the SkillPilot Chat for any curriculum.
-*   **Observe**: Watch closely what doesn't fit—where is it too robotic? Where does it get lost?
-*   **Report**: Open [Issues](https://github.com/enpasos/skillpilot/issues) in this project for identified weaknesses.
+*   **Curriculum Champions:** Start at [skillpilot.com/curricula](https://skillpilot.com/curricula)
+*   **Developers & designers:** Open Issues/PRs at [github.com/enpasos/skillpilot/issues](https://github.com/enpasos/skillpilot/issues)
 
-
-## 📚 Whitepaper
-
-For a detailed introduction and the vision behind SkillPilot, please refer to the Whitepaper:
-
-*   [**Read Whitepaper (English)**](https://skillpilot.com/whitepaper/en)
-*   [**Whitepaper lesen (Deutsch)**](https://skillpilot.com/whitepaper/de)
 
 ## 🌐 Live 
 
