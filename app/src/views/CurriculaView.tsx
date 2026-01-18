@@ -9,6 +9,8 @@ import { ConfirmModal } from '../components/ConfirmModal'
 
 interface ChampionEntry {
   curriculumId: string
+  topicId?: string
+  topicTitle?: string
   githubId: string
   skillpilotIdMasked: string
   masteredCount: number
@@ -760,6 +762,11 @@ export const CurriculaView: React.FC = () => {
                               >
                                 @{champion.githubId}
                               </a>
+                              {champion.topicTitle && (
+                                <div className="text-xs font-medium text-amber-600 dark:text-amber-400">
+                                  📚 {champion.topicTitle}
+                                </div>
+                              )}
                               <div className="text-xs text-text-secondary">
                                 {t.curriculaPage.table.skillpilotId}: {champion.skillpilotIdMasked}
                               </div>

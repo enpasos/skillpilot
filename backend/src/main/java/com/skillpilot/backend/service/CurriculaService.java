@@ -273,9 +273,20 @@ public class CurriculaService {
         int issuesCount = stats.issuesCount() >= 0 ? stats.issuesCount() : champion.getIssuesCount();
         int pullRequestsCount = stats.pullRequestsCount() >= 0 ? stats.pullRequestsCount()
                 : champion.getPullRequestsCount();
+
+        // Resolve topic title if topicId is set
+        String topicTitle = null;
+        if (champion.getTopicId() != null && !champion.getTopicId().isEmpty()) {
+            LearningGoal goal = landscapeService.getGoalDefinition(champion.getTopicId());
+            if (goal != null) {
+                topicTitle = goal.getTitle();
+            }
+        }
+
         return new CurriculumChampionProfile(
                 curriculumId,
                 champion.getTopicId(),
+                topicTitle,
                 champion.getGithubId(),
                 maskSkillpilotId(champion.getSkillpilotId()),
                 masteredCount,
