@@ -5,7 +5,7 @@ from pathlib import Path
 # Setup paths
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
-SOURCE_DIR = PROJECT_ROOT / "docs" / "story2"
+SOURCE_DIR = PROJECT_ROOT / "docs" / "quickstart"
 DEST_DIR = PROJECT_ROOT / "app" / "public"
 
 def main():

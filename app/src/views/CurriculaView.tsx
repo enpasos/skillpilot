@@ -546,20 +546,25 @@ export const CurriculaView: React.FC = () => {
                             className="w-full px-3 py-2 rounded-xl border border-border-color bg-white/70 dark:bg-slate-900/40 text-text-primary"
                             placeholder={t.curriculaPage.registration.skillpilotPlaceholder}
                           />
-                          {skillpilotStatus !== 'idle' && (
-                            <div
-                              className={`text-xs ${skillpilotStatus === 'invalid'
-                                ? 'text-red-500'
-                                : skillpilotStatus === 'checking'
-                                  ? 'text-text-secondary'
-                                  : 'text-emerald-500'
-                                }`}
-                            >
-                              {skillpilotStatus === 'valid'
-                                ? t.curriculaPage.registration.validation.skillpilotValid
-                                : skillpilotMessage}
-                            </div>
-                          )}
+                          <div className="flex justify-between items-start">
+                            <a href="/" target="_blank" className="text-xs text-sky-600 dark:text-sky-400 hover:underline mt-1 block">
+                              {t.curriculaPage.registration.noSkillpilotId}
+                            </a>
+                            {skillpilotStatus !== 'idle' && (
+                              <div
+                                className={`text-xs mt-1 ${skillpilotStatus === 'invalid'
+                                  ? 'text-red-500'
+                                  : skillpilotStatus === 'checking'
+                                    ? 'text-text-secondary'
+                                    : 'text-emerald-500'
+                                  }`}
+                              >
+                                {skillpilotStatus === 'valid'
+                                  ? t.curriculaPage.registration.validation.skillpilotValid
+                                  : skillpilotMessage}
+                              </div>
+                            )}
+                          </div>
                         </div>
                         <div className="flex flex-col gap-2 justify-center">
                           <span className="text-sm text-text-secondary">Logged in as GitHub user</span>
@@ -601,6 +606,14 @@ export const CurriculaView: React.FC = () => {
                       >
                         Connect with GitHub
                       </button>
+                      <a
+                        href="https://github.com/signup"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-sky-600 dark:text-sky-400 hover:underline"
+                      >
+                        {t.curriculaPage.registration.createGithub}
+                      </a>
                     </div>
                   )}
 
