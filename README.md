@@ -16,7 +16,7 @@ This project is an invitation to the community to jointly build and bring to lif
 
 - **Learners & teachers:** Start with the Schnellstart/Quickstart and the live app.
 - **Curriculum champions:** Keep curricula practical and up to date via the Champions program.
-- **Institutions & ministries:** Get the big picture via the Whitepaper.
+- **High-level overview (institutions, ministries, etc.):** Get the big picture via the Whitepaper.
 - **Developers & designers of SkillPilot:** Dive into the technical docs and UI/UX.
 
 Quick links:
@@ -40,7 +40,9 @@ Report issues and submit PRs at [github.com/enpasos/skillpilot/issues](https://g
 
 ## 📚 Documentation
 
-The full technical documentation is available here:
+Docs are organized by intent: concept foundations, runtime workflows, pipelines, QA/CI, deployment, dev references, and security.
+
+The full documentation is available here:
 
 *   [**SkillPilot Documentation**](https://enpasos.github.io/skillpilot/)
 
