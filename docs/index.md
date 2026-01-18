@@ -27,12 +27,11 @@ This project is an invitation to the community to jointly build and bring to lif
 *   [Whitepaper (EN)](https://skillpilot.com/whitepaper/en)
 *   [Whitepaper (DE)](https://skillpilot.com/whitepaper/de)
 
+## Inside this documentation
+
+The docs here are organized by intent: concept-level foundations (competence graph and didactics), then runtime workflows, followed by operational topics like pipelines, QA/CI, deployment, developer references, and security.
+
 ## Contribute
 
-*   **Curriculum Champions:** Start at [skillpilot.com/curricula](https://skillpilot.com/curricula)
+*   **Curriculum Champions:** Start with the Curricula & Champions entry above.
 *   **Developers & designers:** Open Issues/PRs at [github.com/enpasos/skillpilot/issues](https://github.com/enpasos/skillpilot/issues)
-
-
-## 🌐 Live 
-
-Visit us at **[skillpilot.com](https://skillpilot.com)**.
