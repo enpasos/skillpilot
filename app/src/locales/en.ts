@@ -205,6 +205,7 @@ export const en = {
                     uni: "University",
                     other: "Continuing Ed"
                 },
+                scopeLabel: "Topics",
                 empty: "No curricula match these filters."
             }
         },
@@ -254,5 +255,8 @@ export const en = {
             empty: "No time series data yet.",
             lastUpdated: "Updated"
         }
+    },
+    common: {
+        more: "more"
     }
 }

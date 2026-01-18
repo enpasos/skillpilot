@@ -5,6 +5,7 @@ import com.skillpilot.backend.api.ChampionRegistrationResponse;
 import com.skillpilot.backend.api.CurriculaSnapshot;
 import com.skillpilot.backend.api.CurriculumChampionProfile;
 import com.skillpilot.backend.api.CurriculumOverview;
+import com.skillpilot.backend.api.TopicSummary;
 import com.skillpilot.backend.domain.CurriculumChampion;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.landscape.LandscapeService;
@@ -143,6 +144,9 @@ public class CurriculaService {
             CurriculumMetrics metrics = snapshot.metricsByCurriculum().getOrDefault(curriculumId,
                     new CurriculumMetrics(0, 0));
             List<CurriculumChampionProfile> champions = loadChampions(curriculumId, goalToRoots, masteryCache);
+            List<String> topLevelTopics = getTopics(curriculumId).stream()
+                    .map(TopicSummary::title)
+                    .toList();
             result.add(new CurriculumOverview(
                     curriculumId,
                     summary.getTitle(),
@@ -152,6 +156,7 @@ public class CurriculaService {
                     summary.getRegion(),
                     metrics.totalAtomicGoals(),
                     metrics.totalMastered(),
+                    topLevelTopics,
                     champions));
         }
 
@@ -274,12 +279,26 @@ public class CurriculaService {
         int pullRequestsCount = stats.pullRequestsCount() >= 0 ? stats.pullRequestsCount()
                 : champion.getPullRequestsCount();
 
-        // Resolve topic title if topicId is set
+        // Resolve topic title and total goals if topicId is set
         String topicTitle = null;
+        long totalTopicGoals = 0;
+
         if (champion.getTopicId() != null && !champion.getTopicId().isEmpty()) {
             LearningGoal goal = landscapeService.getGoalDefinition(champion.getTopicId());
             if (goal != null) {
                 topicTitle = goal.getTitle();
+                totalTopicGoals = countTotalAtomicGoals(goal);
+            }
+        } else {
+            // If no topic selected, use total count of curriculum?
+            // We can get this from overview if needed, but for now let's reuse recursive
+            // logic or just get it from curriculum root
+            // Actually, for "Entire Curriculum", users usually want to see the total
+            // number.
+            // We can fetch the root landscape and count.
+            LearningLandscape landscape = landscapeService.getById(curriculumId);
+            if (landscape != null) {
+                totalTopicGoals = landscape.getGoals().stream().mapToLong(this::countTotalAtomicGoals).sum();
             }
         }
 
@@ -290,9 +309,21 @@ public class CurriculaService {
                 champion.getGithubId(),
                 maskSkillpilotId(champion.getSkillpilotId()),
                 masteredCount,
+                totalTopicGoals,
                 issuesCount,
                 pullRequestsCount,
                 champion.getCreatedAt());
+    }
+
+    private long countTotalAtomicGoals(LearningGoal goal) {
+        if (goal.getContains() == null || goal.getContains().isEmpty()) {
+            return 1; // It's an atomic goal
+        }
+        return goal.getContains().stream()
+                .map(id -> landscapeService.getGoalDefinition(id))
+                .filter(java.util.Objects::nonNull)
+                .mapToLong(this::countTotalAtomicGoals)
+                .sum();
     }
 
     private boolean isValidCurriculum(String curriculumId) {

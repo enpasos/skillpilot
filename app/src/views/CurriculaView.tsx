@@ -14,6 +14,7 @@ interface ChampionEntry {
   githubId: string
   skillpilotIdMasked: string
   masteredCount: number
+  totalTopicGoals?: number
   issuesCount: number
   pullRequestsCount: number
   registeredAt?: string
@@ -33,6 +34,7 @@ interface CurriculumEntry {
   region?: string
   totalAtomicGoals: number
   totalMastered: number
+  topLevelTopics?: string[]
   champions: ChampionEntry[]
 }
 
@@ -738,6 +740,37 @@ export const CurriculaView: React.FC = () => {
                       {t.curriculaPage.stats.masteredShort}: {curriculum.totalMastered}
                     </span>
                   </div>
+                  <div className="mt-4 flex justify-between items-end">
+                    <div className="text-xs text-text-secondary">
+                      {/* Spacer or additional info */}
+                    </div>
+                  </div>
+
+                  {/* Topics Preview */}
+                  <div className="mt-4 border-t border-border-color pt-3">
+                    <div className="text-xs uppercase tracking-wider text-text-secondary mb-2">
+                      {t.curriculaPage.directory.filters.scopeLabel || 'Topics'}
+                    </div>
+                    {curriculum.topLevelTopics && curriculum.topLevelTopics.length > 0 ? (
+                      <div className="flex flex-wrap gap-2">
+                        {curriculum.topLevelTopics.slice(0, 5).map((topic, idx) => (
+                          <span key={idx} className="inline-flex items-center rounded-md bg-sky-50 dark:bg-sky-900/30 px-2 py-1 text-xs font-medium text-sky-700 dark:text-sky-300 ring-1 ring-inset ring-sky-700/10 dark:ring-sky-300/20">
+                            {topic}
+                          </span>
+                        ))}
+                        {curriculum.topLevelTopics.length > 5 && (
+                          <span className="text-xs text-text-secondary italic">
+                            +{curriculum.topLevelTopics.length - 5} {language === 'de' ? 'weitere' : 'more'}
+                          </span>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="text-xs text-text-secondary italic">
+                        No topics available.
+                      </div>
+                    )}
+                  </div>
+
                   <div className="mt-4 border-t border-border-color pt-4">
                     <div className="text-xs uppercase tracking-wider text-text-secondary">
                       {t.curriculaPage.directory.championsLabel}
@@ -778,6 +811,7 @@ export const CurriculaView: React.FC = () => {
                                 </span>
                                 <span className="text-sm font-semibold text-text-primary">
                                   {champion.masteredCount ?? 0}
+                                  {champion.totalTopicGoals ? ` / ${champion.totalTopicGoals}` : ''}
                                 </span>
                               </div>
                               <div className="flex flex-col">

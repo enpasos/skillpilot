@@ -205,6 +205,7 @@ export const de = {
                     uni: "Uni",
                     other: "Weiterbildung"
                 },
+                scopeLabel: "Themen",
                 empty: "Keine Curricula passen zu diesen Filtern."
             }
         },
@@ -254,5 +255,8 @@ export const de = {
             empty: "Noch keine Zeitreihendaten.",
             lastUpdated: "Aktualisiert"
         }
+    },
+    common: {
+        more: "weitere"
     }
 }
