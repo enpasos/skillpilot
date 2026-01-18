@@ -20,7 +20,14 @@ export default defineConfig(({ mode }) => {
           cleanupOutdatedCaches: true,
           clientsClaim: true,
           skipWaiting: true,
-          navigateFallbackDenylist: [/^\/.*\.pdf$/]
+          // Exclude patterns from service worker navigation caching
+          // This ensures OAuth redirect to /curricula makes a real network request
+          navigateFallbackDenylist: [
+            /^\/.*\.pdf$/,
+            /^\/curricula\?auth_success/,
+            /^\/oauth2/,
+            /^\/login/
+          ]
         },
         manifest: {
           name: 'SkillPilot',
