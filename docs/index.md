@@ -21,7 +21,7 @@ This project is an invitation to the community to jointly build and bring to lif
 
 ### Curriculum champions
 *   [Curricula & Champions](https://skillpilot.com/curricula)
-*   [Champion guide](curriculum_champions.md)
+*   [Champion guide](qa-ci/champion-guide.md)
 
 ### High-level overview
 *   [Whitepaper (EN)](https://skillpilot.com/whitepaper/en)

@@ -108,7 +108,7 @@ Rules:
 * Use **inherited requires** rather than repeating edges on every leaf.
 * Avoid transitive redundancy.
 
-Reference: `docs/requires_relation_checks.md`
+Reference: `../qa-ci/relation-checks.md`
 
 ---
 

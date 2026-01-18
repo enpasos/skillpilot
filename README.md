@@ -33,7 +33,7 @@ The primary way to contribute is to become a **Curriculum Champion**:
 *   Improve content and tooling via issues and pull requests.
 
 Start here: [skillpilot.com/curricula](https://skillpilot.com/curricula)  
-More details: [Curriculum Champions doc](https://enpasos.github.io/skillpilot/curriculum_champions/)
+More details: [Champion Guide](https://enpasos.github.io/skillpilot/qa-ci/champion-guide/)
 
 ## Contribute as a Developer or Designer
 Report issues and submit PRs at [github.com/enpasos/skillpilot/issues](https://github.com/enpasos/skillpilot/issues).
