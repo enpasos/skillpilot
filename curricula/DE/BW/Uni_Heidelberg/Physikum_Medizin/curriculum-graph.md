@@ -13,10 +13,12 @@ into a SkillPilot competence graph.
 ### PDFs
 - `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/HeiCuMed_Vorklinische_Kurse.pdf`
 - `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/Studienordnung_Medizin_Heidelberg_1._und_2._Studienjahr_Staatsexamen__2020-09-29_.pdf`
+- `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/impp/GK_physik_Mai2014_2.pdf`
 
 ### Raw text extracts (phase 0)
 - `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/HeiCuMed_Vorklinische_Kurse.raw.txt`
 - `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/Studienordnung_Medizin_Heidelberg_1._und_2._Studienjahr_Staatsexamen__2020-09-29_.raw.txt`
+- `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/impp/GK_physik_Mai2014_2.raw.txt`
 
 The raw extracts are the canonical working input for the structured outline below.
 
@@ -78,6 +80,15 @@ FS2
   - Analyze experimental data and discuss results using scientific argumentation.
 - Exam node
   - Physik Leistungsnachweis (3-hour written exam).
+- IMPP detail (GK-1 Physik, Mai 2014)
+  - 1 Grundbegriffe des Messens und der quantitativen Beschreibung (1.1-1.4)
+  - 2 Mechanik (2.1-2.8)
+  - 3 Struktur der Materie (3.1-3.2)
+  - 4 Waermelehre (4.1-4.6)
+  - 5 Elektrizitaetslehre (5.1-5.10)
+  - 6 Schwingungen und Wellen (6.1-6.4)
+  - 7 Optik (7.1-7.4)
+  - 8 Ionisierende Strahlung (8.1-8.4)
 
 5) Integrierter Kurs 2. Fachsemester (Zellen, Gewebe und Funktionen)
 
