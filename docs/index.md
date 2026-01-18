@@ -15,8 +15,8 @@ This project is an invitation to the community to jointly build and bring to lif
 ## Choose your path
 
 ### Learners & teachers
-*   [Schnellstart (DE)](https://skillpilot.com/story/de)
-*   [Quickstart (EN)](https://skillpilot.com/story/en)
+*   [Schnellstart (DE)](quickstart/story.de.md)
+*   [Quickstart (EN)](quickstart/story.en.md)
 *   [Live app](https://skillpilot.com)
 
 ### Curriculum champions
@@ -24,8 +24,8 @@ This project is an invitation to the community to jointly build and bring to lif
 *   [Champion guide](qa-ci/champion-guide.md)
 
 ### High-level overview
-*   [Whitepaper (EN)](https://skillpilot.com/whitepaper/en)
-*   [Whitepaper (DE)](https://skillpilot.com/whitepaper/de)
+*   [Whitepaper (EN)](whitepaper/whitepaper.en.md)
+*   [Whitepaper (DE)](whitepaper/whitepaper.de.md)
 
 ## Inside this documentation
 
