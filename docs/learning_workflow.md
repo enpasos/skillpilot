@@ -1,6 +1,6 @@
-# The SkillPilot Learning Process
+# Learning Workflow
 
-This document describes the end-to-end flow of how learning is organized and executed in SkillPilot, from static data to individual mastery.
+This document describes the end-to-end workflow of how learning is organized and executed in SkillPilot, from static data to individual mastery.
 
 ## 1. Data Foundation: Curricula & Modules
 The world of SkillPilot is built from **Curricula** (e.g., "Gymnasiale Oberstufe Hessen") and **Modules** (e.g., "Math Q1", "Physics Mechanics").

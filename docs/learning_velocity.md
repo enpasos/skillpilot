@@ -1,30 +1,45 @@
-# Learning Velocity
+# Learning Velocity (Concept)
 
-## Overview
-Learning Velocity is a metric designed to track a learner's consistency and speed over time. By visualizing how many atomic learning goals are mastered each week, SkillPilot encourages a consistent learning habit ("Don't break the chain").
+## Purpose
+Learning Velocity is a didactic metric that reflects a learner's **consistency and momentum** over time.
+It is designed to encourage steady practice ("don't break the chain") rather than short bursts.
 
-## Metric Definition
-**Learning Velocity** is defined as the density of atomic learning achievements over time.
+## Definition
+Learning Velocity is the count of newly mastered **atomic** goals per time unit.
 
-*   **Atomic Goals Only:** Only "leaf" nodes in the competence tree count directly. This prevents distortion from mastering large container goals that consist of many smaller parts.
-*   **Threshold:** A goal is considered "mastered" for this metric when its mastery value reaches **0.9** (90%) or higher.
-*   **Time Basis:** The visualization groups achievements by calendar week (ISO Week).
+**Default definition:**
+*   **Atomic goals only:** Only leaf nodes count (no containers), to avoid inflation.
+*   **Mastery threshold:** A goal is counted when mastery reaches **0.9** or higher.
+*   **Time basis:** Group by calendar week (ISO week).
 
-## Visualization
-The Learning Velocity is visualized via a **Progress Popover** accessible from the Learner View header.
+Formally, for week `w`:
 
-### Access
-Click on the **"Mastered Goals"** statistic (the green number with a checkmark icon) in the top header bar of the Learning View.
+```
+velocity(w) = | { g is atomic | mastery[g] >= 0.9 and achieved_at(g) in week w } |
+```
 
-### Components
-1.  **Velocity Chart (Bar Chart):**
-    *   Displays the number of goals mastered per week for the **last 8 weeks**.
-    *   Helping learners visualize their recent intensity and spot gaps in their learning schedule.
-2.  **Recent Achievements:**
-    *   Lists the **5 most recently mastered goals** with their completion dates.
-    *   Provides immediate confirmation of recent progress.
+## Interpretation
+* A stable sequence of non-zero weeks indicates consistent learning habits.
+* Peaks can indicate sprint phases; gaps often signal interruptions or overload.
+* Velocity is **not** a grading metric; it is a behavioral and motivational indicator.
 
-## Technical Implementation
-*   **Data Source:** The backend tracks the `updatedAt` timestamp for every mastery entry.
-*   **API:** The frontend fetches history data via `GET /api/ui/learners/{id}/history`.
-*   **Privacy:** Timestamps are stored pseudonymously on the server alongside the mastery values.
+## Recommended presentation (conceptual)
+* **Weekly bar chart** over a recent window (e.g., last 8–12 weeks).
+* **Recent achievements list** to reinforce tangible progress.
+
+This is an example of presentation; UI specifics are intentionally flexible.
+
+## Design principles
+1. **Fairness:** Avoid counting container goals directly; only atomic goals count.
+2. **Stability:** Use fixed time buckets to make progress visible and comparable.
+3. **Motivation:** Keep the metric simple enough to be understood at a glance.
+
+## Caveats
+* Bulk imports or late updates can create artificial spikes.
+* Learners with different time budgets are not directly comparable.
+* Context switches (new curriculum or new phase) may temporarily reduce velocity.
+
+## Optional extensions (future)
+* Moving average or trend line for smoothing.
+* Separate velocity per subject or phase.
+* Alerts for long inactivity gaps (opt-in).

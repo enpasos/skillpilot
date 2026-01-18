@@ -1,10 +1,10 @@
-# Learning Strategies & Autopilot
+# Frontier Goal Selection Strategies & Autopilot
 
-This document describes the goal selection strategies and the "Autopilot" automated learning mode in SkillPilot.
+This document describes the frontier goal selection strategies and the "Autopilot" automated learning mode in SkillPilot.
 
-## 1. Goal Selection Strategies (Auswahlpriorisierung)
+## 1. Frontier Goal Selection Strategies (Auswahlpriorisierung)
 
-The system offers different strategies for prioritizing the "Next Steps" (Frontier Goals) displayed to the learner. This helps cater to different learning styles.
+The system offers different strategies for prioritizing the "Next Steps" (Frontier Goals) displayed to the learner. This helps cater to different learning styles and pacing preferences.
 
 ### Strategy 1: Random (Abwechslung)
 *   **Concept**: Provides variety by shuffling the available next steps.

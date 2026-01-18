@@ -23,15 +23,9 @@ This project is an invitation to the community to jointly build and bring to lif
 *   [Curricula & Champions](https://skillpilot.com/curricula)
 *   [Champion guide](curriculum_champions.md)
 
-### Institutions & ministries
+### High-level overview
 *   [Whitepaper (EN)](https://skillpilot.com/whitepaper/en)
 *   [Whitepaper (DE)](https://skillpilot.com/whitepaper/de)
-*   [Data & Privacy](data_concept.md)
-
-### Developers & designers of SkillPilot
-*   [Graph Architecture](graph_mathematical_definition.md)
-*   [Production Pipeline](graph_production_pipeline.md)
-*   [Import/Export](export_import.md)
 
 ## Contribute
 
