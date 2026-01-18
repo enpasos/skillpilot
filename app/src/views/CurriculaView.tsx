@@ -723,22 +723,30 @@ export const CurriculaView: React.FC = () => {
                     {curriculum.description || t.curriculaPage.directory.noDescription}
                   </div>
                   <div className="mt-3 flex flex-wrap gap-3 text-xs text-text-secondary">
-                    {curriculum.subject && (
-                      <span className="px-2 py-1 rounded-full border border-border-color bg-white/70 dark:bg-slate-900/40">
-                        {curriculum.subject}
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {/* Hiding redundant tags as per feedback
+                    <span className="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 text-xs font-medium text-text-secondary">
+                      {curriculum.title}
+                    </span>
+                    {curriculum.country && (
+                      <span className="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 text-xs font-medium text-text-secondary">
+                        {curriculum.country}
+                        {curriculum.region ? ` / ${curriculum.region}` : ''}
                       </span>
                     )}
-                    {curriculum.region && (
-                      <span className="px-2 py-1 rounded-full border border-border-color bg-white/70 dark:bg-slate-900/40">
-                        {curriculum.region}
-                      </span>
-                    )}
-                    <span className="px-2 py-1 rounded-full border border-border-color bg-white/70 dark:bg-slate-900/40">
+                    <span className="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 text-xs font-medium text-text-secondary">
                       {t.curriculaPage.stats.goals}: {curriculum.totalAtomicGoals}
                     </span>
-                    <span className="px-2 py-1 rounded-full border border-border-color bg-white/70 dark:bg-slate-900/40">
+                     */}
+                    </div>
+
+                    <div className="mt-2 flex items-center">
+                      {/* Hiding Mastered badge
+                    <span className="inline-flex items-center rounded-full bg-emerald-50 dark:bg-emerald-900/30 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:text-emerald-400 ring-1 ring-inset ring-emerald-600/20 dark:ring-emerald-500/30">
                       {t.curriculaPage.stats.masteredShort}: {curriculum.totalMastered}
                     </span>
+                    */}
+                    </div>
                   </div>
                   <div className="mt-4 flex justify-between items-end">
                     <div className="text-xs text-text-secondary">
