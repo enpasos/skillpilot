@@ -753,16 +753,11 @@ export const CurriculaView: React.FC = () => {
                     </div>
                     {curriculum.topLevelTopics && curriculum.topLevelTopics.length > 0 ? (
                       <div className="flex flex-wrap gap-2">
-                        {curriculum.topLevelTopics.slice(0, 5).map((topic, idx) => (
+                        {curriculum.topLevelTopics.map((topic, idx) => (
                           <span key={idx} className="inline-flex items-center rounded-md bg-sky-50 dark:bg-sky-900/30 px-2 py-1 text-xs font-medium text-sky-700 dark:text-sky-300 ring-1 ring-inset ring-sky-700/10 dark:ring-sky-300/20">
                             {topic}
                           </span>
                         ))}
-                        {curriculum.topLevelTopics.length > 5 && (
-                          <span className="text-xs text-text-secondary italic">
-                            +{curriculum.topLevelTopics.length - 5} {language === 'de' ? 'weitere' : 'more'}
-                          </span>
-                        )}
                       </div>
                     ) : (
                       <div className="text-xs text-text-secondary italic">
