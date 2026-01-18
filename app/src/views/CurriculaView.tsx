@@ -724,20 +724,9 @@ export const CurriculaView: React.FC = () => {
                   </div>
                   <div className="mt-3 flex flex-wrap gap-3 text-xs text-text-secondary">
                     <div className="mt-2 flex flex-wrap gap-2">
-                      {/* Hiding redundant tags as per feedback
-                    <span className="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 text-xs font-medium text-text-secondary">
-                      {curriculum.title}
-                    </span>
-                    {curriculum.country && (
                       <span className="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 text-xs font-medium text-text-secondary">
-                        {curriculum.country}
-                        {curriculum.region ? ` / ${curriculum.region}` : ''}
+                        {t.curriculaPage.stats.goals}: {curriculum.totalAtomicGoals}
                       </span>
-                    )}
-                    <span className="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 text-xs font-medium text-text-secondary">
-                      {t.curriculaPage.stats.goals}: {curriculum.totalAtomicGoals}
-                    </span>
-                     */}
                     </div>
 
                     <div className="mt-2 flex items-center">
