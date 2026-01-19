@@ -207,7 +207,7 @@ SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als St
 * Gymnasiale Mittelstufe (G9, Sekundarstufe I)
 
 ### Hochschule (Bologna-relevant)
-* Uni Heidelberg: Bachelor Biowissenschaften, Master Molecular BioSciences
+* Uni Heidelberg: Bachelor Biowissenschaften, Master Molecular BioSciences, Physikum Medizin
 * Uni Mannheim: Bachelor BWL, Bachelor Jura, Master Jura
 * TU Darmstadt: Bachelor Informatik
 * TU München: Bachelor Informatik, Bachelor Mathematik, Bachelor Physik, Master Quantenwissenschaft und -technologie, Master Theoretische und Mathematische Physik, Executive Master of Business Administration (MBA)
