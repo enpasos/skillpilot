@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (DE)
 
-**Version:** 1.0.9
+**Version:** 1.0.10
 **Datum:** Januar 2026
 **Projekt:** SkillPilot
 
@@ -11,6 +11,8 @@
 SkillPilot dockt an **bestehende Curricula** an und nutzt sie als **Source of Truth** (z.B. staatliche Lehrpläne, Modulhandbücher, Standards wie CEFR). SkillPilot ersetzt diese Standards nicht, sondern übersetzt sie in einen maschinenlesbaren **Skill-Graph**. Lernende, Lehrkräfte und ein KI-Tutor nutzen diesen als maschinenlesbare Landkarte. So kann der Lernende von seinem aktuellen **Skill-Stand** sicher zu seinen **Skill-Zielen** navigieren. Der KI-Tutor führt dabei dialogisch – und stützt sich für Lernstand, Regeln und nächste Schritte auf die **exakte Backend-Logik**.
 
 Dazu erfasst das System Lernerfolge auf atomaren Skill-Zielen und leitet daraus den **Beherrschungsgrad** für übergeordnete Themen ab. Auf dieser Basis führt der Weg über die **nächsten erreichbaren Skill-Ziele** systematisch hin zu den individuellen Bildungszielen.
+
+Die Qualitätssicherung erfolgt offen: über ein **Champion-Programm** aus der Praxis sowie über den **Open-Source-Workflow** (Issues/PRs).
 
 
 
@@ -205,7 +207,7 @@ SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als St
 * Gymnasiale Mittelstufe (G9, Sekundarstufe I)
 
 ### Hochschule (Bologna-relevant)
-* Uni Heidelberg: Bachelor Biowissenschaften, Master Molecular BioSciences
+* Uni Heidelberg: Bachelor Biowissenschaften, Master Molecular BioSciences, Physikum Medizin
 * Uni Mannheim: Bachelor BWL, Bachelor Jura, Master Jura
 * TU Darmstadt: Bachelor Informatik
 * TU München: Bachelor Informatik, Bachelor Mathematik, Bachelor Physik, Master Quantenwissenschaft und -technologie, Master Theoretische und Mathematische Physik, Executive Master of Business Administration (MBA)
@@ -237,8 +239,13 @@ SkillPilot wird als **Open Source** unter der **Apache-2.0-Lizenz** veröffentli
 * Die Kopplung von Content an Skillziele ist perspektivisch möglich.
 * Offene Schnittstellen ermöglichen Beiträge und Integration.
 
-**Governance (aktuell über GitHub):**
-* Diskussionen/Feedback laufen über **GitHub Issues**.
+**Curriculum Champions (Praxisanker):**
+* Champions übernehmen Verantwortung für ein Curriculum oder einen **klaren Themen-Scope**.
+* Sie **lernen das Curriculum durch**, sammeln Praxisfeedback und bündeln es in Issues/PRs.
+* Sichtbarkeit schafft Verantwortung: Champion-Profile zeigen Engagement (z.B. Issues/PRs) und Fortschritt.
+
+**Governance & Qualitätssicherung (aktuell über GitHub + Champion-Programm):**
+* Feedback fließt über **GitHub Issues** und wird häufig durch Champions initiiert.
 * Änderungen am Curriculum/Graph laufen über **Pull Requests** (Review in GitHub).
 * **Versionierung** erfolgt über die GitHub-Historie; **Curriculaquellen** sind referenziert.
 * Weitergehende Governance-Mechanismen (z.B. Fachreview-Gremien, QA-Prozesse, Overlays) sind perspektivisch möglich.

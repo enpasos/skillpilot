@@ -273,7 +273,11 @@
       "titleEn": "Credit Security Law (Cluster)",
       "description": "Bürgschaft, Sicherungsübereignung (noch nicht tief modelliert).",
       "descriptionEn": "Suretyship, Security Transfer of Title (not yet deeply modeled).",
-      "contains": [],
+      "contains": [
+        "fb52554e-3bf1-4c1c-aa62-8951e43675f9",
+        "23b55953-2bb4-42cd-bf4d-8b070a2e9ce9",
+        "a01a26d0-681d-46d7-94ab-860c621659f1"
+      ],
       "requires": [],
       "dimensionTags": {
         "phase": "GLOBAL"
@@ -286,7 +290,11 @@
       "titleEn": "Economic Analysis (Cluster)",
       "description": "Coase-Theorem, Effizienz.",
       "descriptionEn": "Coase Theorem, Efficiency.",
-      "contains": [],
+      "contains": [
+        "8edc4784-e7f5-45b3-be3b-066e4e8e885a",
+        "d65ce770-c69a-43fa-9387-a27eded74602",
+        "78f278ec-af46-4eb2-a227-e5065947726e"
+      ],
       "requires": [],
       "dimensionTags": {
         "phase": "GLOBAL"
@@ -320,7 +328,10 @@
       "titleEn": "Elective: International Business Law",
       "description": "Int. Vertragsrecht, Int. Unternehmensrecht.",
       "descriptionEn": "Int. Contract Law, Int. Corporate Law.",
-      "contains": [],
+      "contains": [
+        "fd701add-7f3a-480b-88b7-05b7e29633aa",
+        "c9e6e2fb-8842-44e7-a10c-ce7cd6a5a32a"
+      ],
       "requires": [],
       "dimensionTags": {
         "phase": "GLOBAL"
@@ -333,7 +344,10 @@
       "titleEn": "Elective: Banking and Capital Markets Law",
       "description": "Bankvertragsrecht, Börsenrecht.",
       "descriptionEn": "Banking Contract Law, Stock Exchange Law.",
-      "contains": [],
+      "contains": [
+        "eaf4cb6b-86dd-4cf2-bbe5-078f062d9caa",
+        "78b5490e-9941-437c-b9e5-0b540e6abff5"
+      ],
       "requires": [],
       "dimensionTags": {
         "phase": "GLOBAL"
@@ -346,7 +360,10 @@
       "titleEn": "Elective: Corporate Law (Advanced)",
       "description": "Aktienrecht, Konzernrecht.",
       "descriptionEn": "Stock Corporation Law, Group Law.",
-      "contains": [],
+      "contains": [
+        "730fc9b1-9fb7-4ce2-a1c3-03dc30cd46fc",
+        "9b0be3fe-f48b-4b31-8ee6-03b40bce1206"
+      ],
       "requires": [],
       "dimensionTags": {
         "phase": "GLOBAL"
@@ -359,7 +376,10 @@
       "titleEn": "Elective: Competition and Antitrust Law",
       "description": "UWG, GWB.",
       "descriptionEn": "Unfair Competition Act (UWG), Act against Restraints of Competition (GWB).",
-      "contains": [],
+      "contains": [
+        "13595783-ec56-4e1a-bf48-74215aae405c",
+        "c608b1af-e88f-47d4-b3d2-160042d1a9d9"
+      ],
       "requires": [],
       "dimensionTags": {
         "phase": "GLOBAL"
@@ -372,7 +392,10 @@
       "titleEn": "Elective: Insolvency Law",
       "description": "Unternehmenssanierung.",
       "descriptionEn": "Corporate Restructuring.",
-      "contains": [],
+      "contains": [
+        "a7ea27fe-d9ad-47aa-8322-3ca54ba83daf",
+        "06224d76-fa74-45c3-bccf-d7fca4256ed7"
+      ],
       "requires": [],
       "dimensionTags": {
         "phase": "GLOBAL"
@@ -385,7 +408,10 @@
       "titleEn": "Elective: Corporate Tax Law",
       "description": "Einkommensteuer, Körperschaftsteuer.",
       "descriptionEn": "Income Tax, Corporate Tax.",
-      "contains": [],
+      "contains": [
+        "a9a4392f-ee80-46ac-9121-39ff5007899e",
+        "5008cd01-1ad0-4a28-a410-3dfe5723734e"
+      ],
       "requires": [],
       "dimensionTags": {
         "phase": "GLOBAL"
@@ -398,8 +424,351 @@
       "titleEn": "Elective: Balance Sheet Law",
       "description": "Handelsbilanzrecht.",
       "descriptionEn": "Commercial Balance Sheet Law.",
+      "contains": [
+        "b439f786-fc64-452a-8a90-ec8060ec0d25",
+        "25125424-02cf-4098-8e4f-3a00d33a4663"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "fb52554e-3bf1-4c1c-aa62-8951e43675f9",
+      "title": "Bürgschaft (§§ 765 ff.)",
+      "titleEn": "Suretyship (§§ 765 ff.)",
+      "description": "Skill: Kann Voraussetzungen und Akzessorietät der Bürgschaft prüfen.",
+      "descriptionEn": "Skill: Can examine requirements and accessory nature of suretyship.",
       "contains": [],
       "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "23b55953-2bb4-42cd-bf4d-8b070a2e9ce9",
+      "title": "Sicherungsübereignung",
+      "titleEn": "Security Transfer of Title",
+      "description": "Skill: Kann Zweck, Struktur und typische Risiken der Sicherungsübereignung erklären.",
+      "descriptionEn": "Skill: Can explain purpose, structure, and typical risks of security transfer of title.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "a01a26d0-681d-46d7-94ab-860c621659f1",
+      "title": "Eigentumsvorbehalt",
+      "titleEn": "Retention of Title",
+      "description": "Skill: Kann einfachen und erweiterten Eigentumsvorbehalt unterscheiden und prüfen.",
+      "descriptionEn": "Skill: Can distinguish and examine simple and extended retention of title.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "8edc4784-e7f5-45b3-be3b-066e4e8e885a",
+      "title": "Coase-Theorem & Transaktionskosten",
+      "titleEn": "Coase Theorem & Transaction Costs",
+      "description": "Skill: Kann das Coase-Theorem erklären und die Rolle von Transaktionskosten einordnen.",
+      "descriptionEn": "Skill: Can explain the Coase theorem and the role of transaction costs.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "d65ce770-c69a-43fa-9387-a27eded74602",
+      "title": "Effizienzbegriffe (Pareto/Kaldor-Hicks)",
+      "titleEn": "Efficiency Concepts (Pareto/Kaldor-Hicks)",
+      "description": "Skill: Kann Pareto- und Kaldor-Hicks-Effizienz unterscheiden.",
+      "descriptionEn": "Skill: Can distinguish Pareto and Kaldor-Hicks efficiency.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "78f278ec-af46-4eb2-a227-e5065947726e",
+      "title": "Externalitäten & Internalisierung",
+      "titleEn": "Externalities & Internalization",
+      "description": "Skill: Kann negative/positive Externalitäten erkennen und Internalisierungsinstrumente benennen.",
+      "descriptionEn": "Skill: Can identify negative/positive externalities and name internalization instruments.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "fd701add-7f3a-480b-88b7-05b7e29633aa",
+      "title": "UN-Kaufrecht (CISG) Grundlagen",
+      "titleEn": "CISG Basics",
+      "description": "Skill: Kann Anwendungsbereich und Grundstruktur des UN-Kaufrechts skizzieren.",
+      "descriptionEn": "Skill: Can outline scope and basic structure of the CISG.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "c9e6e2fb-8842-44e7-a10c-ce7cd6a5a32a",
+      "title": "Internationale Vertragsgestaltung & Rechtswahl",
+      "titleEn": "International Contract Drafting & Choice of Law",
+      "description": "Skill: Kann Grundzüge von Rechtswahlklauseln und Streitbeilegung benennen.",
+      "descriptionEn": "Skill: Can name basics of choice-of-law clauses and dispute resolution.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "eaf4cb6b-86dd-4cf2-bbe5-078f062d9caa",
+      "title": "Bankvertragsrecht (Konto, Kredit)",
+      "titleEn": "Bank Contract Law (Account, Credit)",
+      "description": "Skill: Kann typische Bankverträge und Pflichten skizzieren.",
+      "descriptionEn": "Skill: Can outline typical bank contracts and duties.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "78b5490e-9941-437c-b9e5-0b540e6abff5",
+      "title": "Kapitalmarktaufsicht & Prospektpflicht",
+      "titleEn": "Capital Market Supervision & Prospectus Duty",
+      "description": "Skill: Kann Ziele der Kapitalmarktaufsicht und Grundzüge der Prospektpflicht erklären.",
+      "descriptionEn": "Skill: Can explain goals of capital market supervision and basics of prospectus duties.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "730fc9b1-9fb7-4ce2-a1c3-03dc30cd46fc",
+      "title": "Aktienrecht: Organe & Beschlussfassung",
+      "titleEn": "Stock Corporation Law: Organs & Resolutions",
+      "description": "Skill: Kann Aufgaben von Vorstand, Aufsichtsrat und HV sowie Beschlussmechanik skizzieren.",
+      "descriptionEn": "Skill: Can outline duties of board, supervisory board, shareholders’ meeting and resolution mechanics.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "9b0be3fe-f48b-4b31-8ee6-03b40bce1206",
+      "title": "Konzernrecht: Beherrschungsverträge",
+      "titleEn": "Group Law: Control Agreements",
+      "description": "Skill: Kann Zweck und Grundzüge von Beherrschungsverträgen einordnen.",
+      "descriptionEn": "Skill: Can classify purpose and basics of control agreements.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "13595783-ec56-4e1a-bf48-74215aae405c",
+      "title": "UWG: Unlautere Handlungen",
+      "titleEn": "UWG: Unfair Acts",
+      "description": "Skill: Kann typische unlautere Handlungen und deren Prüfung skizzieren.",
+      "descriptionEn": "Skill: Can outline typical unfair acts and their assessment.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "c608b1af-e88f-47d4-b3d2-160042d1a9d9",
+      "title": "Kartellverbot (GWB/Art. 101 AEUV)",
+      "titleEn": "Cartel Prohibition (GWB/Art. 101 TFEU)",
+      "description": "Skill: Kann Grundzüge des Kartellverbots und der Freistellung benennen.",
+      "descriptionEn": "Skill: Can name basics of cartel prohibition and exemption.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "a7ea27fe-d9ad-47aa-8322-3ca54ba83daf",
+      "title": "Insolvenzantrag & Eröffnungsverfahren",
+      "titleEn": "Insolvency Petition & Opening Proceedings",
+      "description": "Skill: Kann Voraussetzungen und Ablauf des Eröffnungsverfahrens skizzieren.",
+      "descriptionEn": "Skill: Can outline requirements and steps of the opening proceedings.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "06224d76-fa74-45c3-bccf-d7fca4256ed7",
+      "title": "Insolvenzgründe & Anfechtung",
+      "titleEn": "Insolvency Grounds & Avoidance",
+      "description": "Skill: Kann Insolvenzgründe (Zahlungsunfähigkeit, Überschuldung) und Grundzüge der Anfechtung benennen.",
+      "descriptionEn": "Skill: Can name insolvency grounds (illiquidity, over-indebtedness) and basics of avoidance.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "a9a4392f-ee80-46ac-9121-39ff5007899e",
+      "title": "Besteuerung von Kapitalgesellschaften (KSt)",
+      "titleEn": "Taxation of Corporations (Corporate Tax)",
+      "description": "Skill: Kann Grundzüge der Körperschaftsteuer erläutern.",
+      "descriptionEn": "Skill: Can explain basics of corporate tax.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "5008cd01-1ad0-4a28-a410-3dfe5723734e",
+      "title": "Gewerbesteuer & Gewinnermittlung",
+      "titleEn": "Trade Tax & Profit Determination",
+      "description": "Skill: Kann Grundzüge der Gewerbesteuer und der Gewinnermittlung nennen.",
+      "descriptionEn": "Skill: Can name basics of trade tax and profit determination.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "b439f786-fc64-452a-8a90-ec8060ec0d25",
+      "title": "GoB & Bilanzierungsgrundsätze",
+      "titleEn": "GoB & Accounting Principles",
+      "description": "Skill: Kann zentrale Grundsätze ordnungsmäßiger Buchführung (GoB) erklären.",
+      "descriptionEn": "Skill: Can explain key principles of proper accounting (GoB).",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
+      "dimensionTags": {
+        "phase": "GLOBAL"
+      },
+      "weight": 0.0
+    },
+    {
+      "id": "25125424-02cf-4098-8e4f-3a00d33a4663",
+      "title": "Ansatz & Bewertung in der Handelsbilanz",
+      "titleEn": "Recognition & Measurement in Commercial Accounts",
+      "description": "Skill: Kann Ansatz- und Bewertungsfragen in der Handelsbilanz grob einordnen.",
+      "descriptionEn": "Skill: Can roughly classify recognition and measurement issues in commercial accounts.",
+      "contains": [],
+      "requires": [],
+      "tags": [
+        "atomic",
+        "skill"
+      ],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
