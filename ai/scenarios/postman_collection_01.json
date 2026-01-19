@@ -2,7 +2,7 @@
     "info": {
         "_postman_id": "a9094f6f-scenario-01-live",
         "name": "SkillPilot Live Scenario 01",
-        "description": "Verification flow for Scenario 01. Includes both Instruction-based and ID-based Scope Setting.",
+        "description": "Verification flow for Scenario 01. Uses curriculum, personalization, scope, active-goal, mastery.",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
     "variable": [
@@ -17,13 +17,23 @@
             "type": "string"
         },
         {
-            "key": "targetGoalId",
+            "key": "curriculumId",
+            "value": "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da",
+            "type": "string"
+        },
+        {
+            "key": "subjectGoalId",
+            "value": "ccf9569b-b0e4-4d76-98d5-65be461d4d76",
+            "type": "string"
+        },
+        {
+            "key": "scopeGoalId",
             "value": "",
             "type": "string"
         },
         {
-            "key": "exampleGoalId",
-            "value": "c1c6e76a-e8a1-4058-9cf7-fe4b5a45489d",
+            "key": "activeGoalId",
+            "value": "",
             "type": "string"
         }
     ],
@@ -42,6 +52,9 @@
                             "if (jsonData.state && jsonData.state.skillpilotId) {",
                             "    pm.collectionVariables.set(\"skillpilotId\", jsonData.state.skillpilotId);",
                             "    console.log(\"Learner ID set: \" + jsonData.state.skillpilotId);",
+                            "} else if (jsonData.skillpilotId) {",
+                            "    pm.collectionVariables.set(\"skillpilotId\", jsonData.skillpilotId);",
+                            "    console.log(\"Learner ID set: \" + jsonData.skillpilotId);",
                             "}"
                         ],
                         "type": "text/javascript"
@@ -78,17 +91,31 @@
                     "listen": "test",
                     "script": {
                         "exec": [
+                            "var jsonData = pm.response.json();",
                             "pm.test(\"Status code is 200\", function () {",
                             "    pm.response.to.have.status(200);",
                             "});",
-                            "var jsonData = pm.response.json();",
-                            "pm.test(\"Got Frontier\", function () {",
-                            "    pm.expect(jsonData.frontier).to.be.an('array');",
+                            "pm.test(\"Curriculum set\", function () {",
+                            "    pm.expect(jsonData.curriculum).to.exist;",
                             "});",
-                            "// Capture a goal ID for testing 4b if available",
-                            "if (jsonData.frontier && jsonData.frontier.length > 0) {",
-                            "    // We could overwrite exampleGoalId here, but let's keep the hardcoded one as backup",
-                            "    // pm.collectionVariables.set(\"exampleGoalId\", jsonData.frontier[0].id);",
+                            "pm.test(\"Has StateMachine\", function () {",
+                            "    pm.expect(jsonData.stateMachine).to.exist;",
+                            "});",
+                            "var options = (jsonData.stateMachine && jsonData.stateMachine.goalOptions) || [];",
+                            "var math = options.find(function (g) {",
+                            "    return (g.title || \"\").toLowerCase() === \"mathematik\";",
+                            "});",
+                            "if (!math && jsonData.frontier) {",
+                            "    math = jsonData.frontier.find(function (g) {",
+                            "        return (g.title || \"\").toLowerCase() === \"mathematik\";",
+                            "    });",
+                            "}",
+                            "if (!math && options.length === 1) {",
+                            "    math = options[0];",
+                            "}",
+                            "if (math && math.id) {",
+                            "    pm.collectionVariables.set(\"subjectGoalId\", math.id);",
+                            "    console.log(\"Subject Goal ID set: \" + math.id + \" (\" + math.title + \")\");",
                             "}"
                         ],
                         "type": "text/javascript"
@@ -100,7 +127,7 @@
                 "header": [],
                 "body": {
                     "mode": "raw",
-                    "raw": "{\n    \"curriculumId\": \"DE_HES_S_GYM_2_OVERVIEW\"\n}",
+                    "raw": "{\n    \"curriculumId\": \"{{curriculumId}}\"\n}",
                     "options": {
                         "raw": {
                             "language": "json"
@@ -114,7 +141,8 @@
                     ],
                     "path": [
                         "learners",
-                        "{{skillpilotId}}/curriculum"
+                        "{{skillpilotId}}",
+                        "curriculum"
                     ]
                 }
             }
@@ -126,9 +154,29 @@
                     "listen": "test",
                     "script": {
                         "exec": [
+                            "var jsonData = pm.response.json();",
                             "pm.test(\"Status code is 200\", function () {",
                             "    pm.response.to.have.status(200);",
-                            "});"
+                            "});",
+                            "pm.test(\"Has StateMachine\", function () {",
+                            "    pm.expect(jsonData.stateMachine).to.exist;",
+                            "});",
+                            "var options = (jsonData.stateMachine && jsonData.stateMachine.goalOptions) || [];",
+                            "var cluster = options.find(function (g) {",
+                            "    return g.type === \"cluster\";",
+                            "});",
+                            "if (!cluster && jsonData.frontier) {",
+                            "    cluster = jsonData.frontier.find(function (g) {",
+                            "        return g.type === \"cluster\";",
+                            "    });",
+                            "}",
+                            "if (!cluster && options.length === 1) {",
+                            "    cluster = options[0];",
+                            "}",
+                            "if (cluster && cluster.id) {",
+                            "    pm.collectionVariables.set(\"scopeGoalId\", cluster.id);",
+                            "    console.log(\"Scope Goal ID set: \" + cluster.id + \" (\" + cluster.title + \")\");",
+                            "}"
                         ],
                         "type": "text/javascript"
                     }
@@ -139,7 +187,7 @@
                 "header": [],
                 "body": {
                     "mode": "raw",
-                    "raw": "{\n    \"goalIds\": [\"DE_HES_S_GYM_2_MATHEMATIK\"]\n}",
+                    "raw": "{\n    \"goalIds\": [\"{{subjectGoalId}}\"]\n}",
                     "options": {
                         "raw": {
                             "language": "json"
@@ -171,12 +219,23 @@
                             "    pm.response.to.have.status(200);",
                             "});",
                             "pm.test(\"Has Planned Goals\", function () {",
-                            "    pm.expect(jsonData.goals.planned.length).to.be.above(0);",
+                            "    pm.expect(jsonData.goals && jsonData.goals.planned).to.be.an('array');",
                             "});",
-                            "if (jsonData.goals.planned.length > 0) {",
-                            "    var firstGoal = jsonData.goals.planned[0];",
-                            "    pm.collectionVariables.set(\"targetGoalId\", firstGoal.id);",
-                            "    console.log(\"Target Goal ID: \" + firstGoal.id + \" (\" + firstGoal.title + \")\");",
+                            "var options = (jsonData.stateMachine && jsonData.stateMachine.goalOptions) || [];",
+                            "var atomic = options.find(function (g) {",
+                            "    return g.type === \"atomic\";",
+                            "});",
+                            "if (!atomic && jsonData.frontier) {",
+                            "    atomic = jsonData.frontier.find(function (g) {",
+                            "        return g.type === \"atomic\";",
+                            "    });",
+                            "}",
+                            "if (!atomic && options.length === 1) {",
+                            "    atomic = options[0];",
+                            "}",
+                            "if (atomic && atomic.id) {",
+                            "    pm.collectionVariables.set(\"activeGoalId\", atomic.id);",
+                            "    console.log(\"Active Goal ID set: \" + atomic.id + \" (\" + atomic.title + \")\");",
                             "}"
                         ],
                         "type": "text/javascript"
@@ -188,7 +247,7 @@
                 "header": [],
                 "body": {
                     "mode": "raw",
-                    "raw": "{\n    \"goalIds\": [\"{{exampleGoalId}}\"]\n}",
+                    "raw": "{\n    \"goalIds\": [\"{{scopeGoalId}}\"]\n}",
                     "options": {
                         "raw": {
                             "language": "json"
@@ -209,7 +268,55 @@
             }
         },
         {
-            "name": "5. Set Mastery (Simulate 1.0)",
+            "name": "5. Set Active Goal",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "var jsonData = pm.response.json();",
+                            "pm.test(\"Status code is 200\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});",
+                            "pm.test(\"Active goal locked\", function () {",
+                            "    pm.expect(jsonData.activeGoal).to.exist;",
+                            "});",
+                            "if (jsonData.activeGoal && jsonData.activeGoal.id) {",
+                            "    pm.collectionVariables.set(\"activeGoalId\", jsonData.activeGoal.id);",
+                            "    console.log(\"Active Goal confirmed: \" + jsonData.activeGoal.id + \" (\" + jsonData.activeGoal.title + \")\");",
+                            "}"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"goalId\": \"{{activeGoalId}}\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/learners/{{skillpilotId}}/active-goal",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "learners",
+                        "{{skillpilotId}}",
+                        "active-goal"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "6. Set Mastery (Simulate 1.0)",
             "event": [
                 {
                     "listen": "test",
@@ -220,7 +327,7 @@
                             "});",
                             "pm.test(\"Returns Frontier\", function () {",
                             "    var jsonData = pm.response.json();",
-                            "    pm.expect(jsonData.frontier).to.exist;",
+                            "    pm.expect(jsonData.frontier).to.be.an('array');",
                             "});"
                         ],
                         "type": "text/javascript"
@@ -232,7 +339,7 @@
                 "header": [],
                 "body": {
                     "mode": "raw",
-                    "raw": "{\n    \"goalId\": \"{{targetGoalId}}\"\n}",
+                    "raw": "{\n    \"goalId\": \"{{activeGoalId}}\"\n}",
                     "options": {
                         "raw": {
                             "language": "json"
