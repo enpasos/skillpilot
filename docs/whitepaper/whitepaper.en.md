@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (EN)
 
-**Version:** 1.0.9 
+**Version:** 1.0.10 
 **Date:** January 2026
 **Project:** SkillPilot
 
@@ -11,6 +11,8 @@
 SkillPilot connects to **existing curricula** and uses them as the **source of truth** (e.g., state curricula, module handbooks, standards like CEFR). SkillPilot does not replace these standards; it translates them into a machine-readable **skill graph**. Learners, teachers, and an AI tutor use this as a machine-readable map. This allows the learner to move safely from their current **skill state** to their **skill goals**. The AI tutor leads the dialogue – relying on the **exact backend logic** for learning status, rules, and next steps.
 
 To achieve this, the system records learning achievements on atomic skill goals and derives the **mastery level** for higher-level topics. On this basis, the path via the **next attainable skill goals** leads systematically to individual educational objectives.
+
+Quality assurance is anchored in a practice-driven **Champion program** and the **open-source workflow** (Issues/PRs).
 
 ![SkillPilot Cartoon](../comic1/SkillPilot_Comic.en.jpg)
 
@@ -253,7 +255,13 @@ SkillPilot is released as **open source** under the **Apache-2.0 license** - an 
 * Open interfaces enable contributions and integration.
 
 **Governance (currently via GitHub):**
-* Discussion/feedback runs through **GitHub Issues**.
+**Curriculum Champions (practice anchor):**
+* Champions take responsibility for a curriculum or a **clearly scoped topic area**.
+* They work through the curriculum, gather practice feedback, and channel it into Issues/PRs.
+* Visibility creates accountability: Champion profiles show engagement (e.g., Issues/PRs) and progress.
+
+**Governance & quality assurance (currently via GitHub + Champion program):**
+* Feedback flows through **GitHub Issues**, often initiated by champions.
 * Changes to the curriculum/graph run through **pull requests** (review on GitHub).
 * **Versioning** follows GitHub history; **curriculum sources** are referenced.
 * More advanced governance mechanisms (e.g., expert review boards, QA processes, overlays) are possible in the future.
