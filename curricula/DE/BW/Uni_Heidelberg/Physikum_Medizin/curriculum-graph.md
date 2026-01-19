@@ -14,13 +14,26 @@ into a SkillPilot competence graph.
 - `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/HeiCuMed_Vorklinische_Kurse.pdf`
 - `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/Studienordnung_Medizin_Heidelberg_1._und_2._Studienjahr_Staatsexamen__2020-09-29_.pdf`
 - `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/impp/GK_physik_Mai2014_2.pdf`
+- `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/impp/GK_physiol_Januar2014.pdf`
+- `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/impp/GK_anat_Januar2014.pdf`
+- `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/impp/GK_biol_Januar2014.pdf`
+- `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/impp/GK_ch_bch_Januar2014.pdf`
+- `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/impp/gk08n_2.pdf`
 
 ### Raw text extracts (phase 0)
 - `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/HeiCuMed_Vorklinische_Kurse.raw.txt`
 - `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/Studienordnung_Medizin_Heidelberg_1._und_2._Studienjahr_Staatsexamen__2020-09-29_.raw.txt`
 - `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/impp/GK_physik_Mai2014_2.raw.txt`
+- `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/impp/GK_physiol_Januar2014.raw.txt`
+- `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/impp/GK_anat_Januar2014.raw.txt`
+- `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/impp/GK_biol_Januar2014.raw.txt`
+- `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/impp/GK_ch_bch_Januar2014.raw.txt`
+- `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/input/impp/gk08n_2.raw.txt`
 
-The raw extracts are the canonical working input for the structured outline below.
+The raw extracts are retained for auditability; structured extraction uses PDF layout data.
+
+### 0.1 Data Extraction Scripts
+- `tmp/parse_impp_layout.py`: PDF layout extraction to structured JSON (`impp_*.json`) for all IMPP catalogs above.
 
 ## Step 1: Structured outline (in progress)
 
@@ -121,6 +134,9 @@ FS2
   - Explain muscle physiology (sliding filament theory, muscle mechanics).
 - Atomic goals (skills)
   - Apply basic physiology practical methods to validate core concepts.
+- IMPP detail (GK-1 Physiologie, Januar 2014)
+  - 1 Allgemeine und Zellphysiologie (1.1-1.6)
+  - 13 Muskulatur (13.1-13.3)
 
 5d) Humangenetik
 - Atomic goals (understanding)
@@ -179,6 +195,17 @@ FS3
   - Perform and interpret lung function tests and spiroergometry.
   - Perform and interpret renal clearance measurements.
   - Integrate physiology with biochemistry and anatomy for vegetative systems.
+- IMPP detail (GK-1 Physiologie, Januar 2014)
+  - 2 Blut und Immunsystem (2.1-2.5)
+  - 3 Herz (3.1-3.4)
+  - 4 Blutkreislauf (4.1-4.5)
+  - 5 Atmung (5.1-5.10)
+  - 6 Arbeits- und Leistungsphysiologie (6.1-6.3)
+  - 7 Ernährung, Verdauungstrakt, Leber (7.1-7.6)
+  - 8 Energie- und Wärmehaushalt (8.1-8.2)
+  - 9 Wasser- und Elektrolythaushalt, Nierenfunktion (9.1-9.2)
+  - 10 Hormonelle Regulation (10.1-10.3)
+  - 11 Sexualentwicklung und Reproduktionsphysiologie (11.1-11.11)
 
 - Exam node
   - Integrierter Kurs 3: written MC exam plus practical protocol review.
@@ -217,6 +244,15 @@ FS4
   - Perform and interpret audiometry and nystagmus assessment.
   - Perform and interpret reflex tests, EMG, evoked potentials, EEG.
   - Perform muscle mechanics experiments and diagnostics.
+- IMPP detail (GK-1 Physiologie, Januar 2014)
+  - 12 Funktionsprinzipien des Nervensystems (12.1-12.6)
+  - 14 Vegetatives Nervensystem (VNS) (14.1-14.3)
+  - 15 Motorik (15.1-15.9)
+  - 16 Somatoviszerale Sensorik (16.1-16.6)
+  - 17 Visuelles System (17.1-17.4)
+  - 18 Auditorisches System (18.1-18.5)
+  - 19 Chemische Sinne (19.1-19.3)
+  - 20 Integrative Leistungen des Zentralnervensystems (20.1-20.2)
 
 - Exam node
   - Integrierter Kurs 4: written MC exam plus practical protocol review.
