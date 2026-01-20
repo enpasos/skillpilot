@@ -84,7 +84,7 @@ So werden Sprünge vermieden und Lernen bleibt im Bereich sinnvoller nächster S
 
 Der Skill-Graph liefert die Route, doch Lernende interagieren nicht mit Datensätzen, sondern brauchen einen Reiseleiter. Diese Rolle übernimmt der **KI-Tutor** (SkillPilot GPT). Er dient als intuitive Schnittstelle, die die abstrakten Instruktionen des Graphen in natürliche, motivierende Sprache übersetzt.
 
-![Der KI-Tutor](../comic4/Tutor.de.png)
+![Der KI-Tutor](Tutor.de.png)
 
 Der Tutor ist dabei keine „Black Box“, sondern agiert strikt auf Basis der Backend-Logik: Er empfängt vom Graphen das nächste Ziel und die erlaubten Übergänge, verpackt diese aber in einen didaktisch sinnvollen Dialog. So wird aus der „exakten Buchhaltung“ ein persönliches Lernerlebnis.
 
@@ -110,7 +110,7 @@ Learning Velocity zeigt, wie viele **atomare Ziele** pro Woche neu als gemeister
 
 <img src="velocity.de.png" alt="Lerngeschwindigkeit im Überblick" width="400" />
 
-### 3.2 Der hybride Lernkreislauf: Verstehen + Memorieren + Üben
+### 3.3 Der hybride Lernkreislauf: Verstehen + Memorieren + Üben
 
 Nicht jedes Lernziel lernt man gleich: Konzepte brauchen Verständnis und Anwendung, Fakten brauchen Wiederholung – und viele Skills brauchen **aktives Tun** (z.B. Programmieren, Rechnen, Schreiben).
 

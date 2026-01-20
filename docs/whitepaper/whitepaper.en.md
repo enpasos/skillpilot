@@ -81,7 +81,7 @@ This avoids jumps and keeps learning in the zone of sensible next steps.
 
 The skill graph provides the route, but learners do not interact with datasets; they need a guide. This role is taken by the **AI Tutor** (SkillPilot GPT). It serves as an intuitive interface that translates the abstract instructions of the graph into natural, motivating language.
 
-![The AI Tutor](../comic4/Tutor.en.png)
+![The AI Tutor](Tutor.en.png)
 
 The tutor is not a "black box" but acts strictly based on backend logic: it receives the next goal and allowed transitions from the graph, illustrating them in a didactically meaningful dialogue. This turns "exact bookkeeping" into a personal learning experience.
 
@@ -107,7 +107,7 @@ Learning velocity shows how many **atomic goals** are newly mastered per week - 
 
 <img src="velocity.en.png" alt="Learning velocity overview" width="400" />
 
-### 3.2 The Hybrid Learning Loop: Understanding + Memorizing + Practice
+### 3.3 The Hybrid Learning Loop: Understanding + Memorizing + Practice
 
 Not every learning goal is learned the same way: concepts need understanding and application, facts need repetition - and many skills need **active doing** (e.g., programming, calculating, writing).
 
