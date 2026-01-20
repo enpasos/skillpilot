@@ -19,6 +19,7 @@ interface SessionSetupProps {
 import { useTranslation } from '../hooks/useTranslation'
 import { LanguageToggle } from './LanguageToggle'
 import { useLanguage } from '../contexts/LanguageContext'
+import { AudioPlayer } from './AudioPlayer'
 
 export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skillpilotId, setSkillpilotId, onStart }) => {
   const t = useTranslation()
@@ -207,6 +208,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         </div>
 
         <div className="w-full space-y-4">
+
+          {/* New Audio Player Section */}
+          <div className="flex justify-center w-full">
+            <AudioPlayer />
+          </div>
 
 
           {!showLogin ? (
