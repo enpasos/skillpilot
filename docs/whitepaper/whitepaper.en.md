@@ -62,7 +62,7 @@ This is about:
 
 * **Operationalization:** learning outcomes are broken down into atomic skill goals (without changing the standard).
 * **Traceability:** each skill remains traceable to source/section/version.
-* **Navigability:** prerequisites and hierarchies are modeled explicitly so paths are plannable (didactic prereqs possibly as **overlays**).
+* **Navigability:** prerequisites and hierarchies are modeled explicitly so paths are plannable (didactic prereqs possibly as **overlays**). The graph does not enforce rigid paths: It supports an **'Optimistic Mode'** for browsing and looking ahead, but can switch to a **'Pessimistic Mode'** for certificates, strictly checking prerequisites.
 * **Governance:** changes currently run via GitHub (Issues/PRs), versioning via GitHub history (see section 6).
 
 #### Map: Nodes & Edges
@@ -75,7 +75,7 @@ This is about:
 #### Frontier: Next Reachable Steps
 
 SkillPilot computes the **frontier**: skills whose prerequisites are met but not yet mastered.  
-This avoids jumps and keeps learning in the zone of sensible next steps.
+This avoids jumps and keeps learning in the zone of sensible next steps. We call this boundary of current knowledge the **Frontier** (didactically: Zone of Proximal Development according to Vygotsky). It marks exactly the skills that are learnable next.
 
 ### 3.2 The Interaction Layer: The AI Tutor
 

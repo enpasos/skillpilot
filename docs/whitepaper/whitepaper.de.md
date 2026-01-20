@@ -65,7 +65,7 @@ Dabei geht es um:
 
 * **Operationalisierung:** Learning Outcomes werden in atomare Skill-Ziele zerlegt (ohne den Standard zu verändern).
 * **Traceability:** Jeder Skill bleibt auf Quelle/Abschnitt/Version zurückführbar.
-* **Navigierbarkeit:** Prereqs und Hierarchien werden explizit modelliert, damit Pfade planbar werden (didaktische Prereqs ggf. als **Overlay**).
+* **Navigierbarkeit:** Prereqs und Hierarchien werden explizit modelliert, damit Pfade planbar werden (didaktische Prereqs ggf. als **Overlay**). Der Graph erzwingt keine starren Pfade: Er unterstützt einen **„Optimistischen Modus“** zum Stöbern und Vorlernen, kann aber für Zertifikate in einen **„Pessimistischer Modus“** schalten, der Voraussetzungen strikt prüft.
 * **Governance:** Änderungen laufen aktuell über GitHub (Issues/PRs), Versionierung über die GitHub-Historie (siehe Abschnitt 6).
 
 #### Landkarte: Knoten & Kanten
@@ -78,7 +78,7 @@ Dabei geht es um:
 #### Frontier: Nächste erreichbare Schritte
 
 SkillPilot berechnet die **Frontier**: Skills, deren Voraussetzungen erfüllt sind, die aber noch nicht beherrscht werden.  
-So werden Sprünge vermieden und Lernen bleibt im Bereich sinnvoller nächster Schritte.
+So werden Sprünge vermieden und Lernen bleibt im Bereich sinnvoller nächster Schritte. Diese Grenze des aktuellen Wissens nennen wir die **Frontier** (didaktisch: Zone der nächsten Entwicklung nach Wygotski). Sie markiert exakt die Skills, die als Nächstes lernbar sind.
 
 ### 3.2 Der Interaktions-Layer: Der KI-Tutor
 
