@@ -59,6 +59,8 @@ SkillPilot ersetzt lineare Listen durch einen vernetzten Graphen.
 
 SkillPilot „erfindet“ keine Curricula: Lehrpläne, Modulhandbücher oder Standards dienen als **Rohinput** und werden in einen Skill-Graph übersetzt.
 
+Die Integrität des Graphen wird durch eine formale mathematische Spezifikation sichergestellt (Acyclicity, Effective Requires, Transitive Minimality), die Zirkelbezüge verhindert und Abhängigkeiten logisch validiert.
+
 Dabei geht es um:
 
 * **Operationalisierung:** Learning Outcomes werden in atomare Skill-Ziele zerlegt (ohne den Standard zu verändern).
@@ -77,6 +79,14 @@ Dabei geht es um:
 
 SkillPilot berechnet die **Frontier**: Skills, deren Voraussetzungen erfüllt sind, die aber noch nicht beherrscht werden.  
 So werden Sprünge vermieden und Lernen bleibt im Bereich sinnvoller nächster Schritte.
+
+### 3.2 Der Interaktions-Layer: Der KI-Tutor
+
+Der Skill-Graph liefert die Route, doch Lernende interagieren nicht mit Datensätzen, sondern brauchen einen Reiseleiter. Diese Rolle übernimmt der **KI-Tutor** (SkillPilot GPT). Er dient als intuitive Schnittstelle, die die abstrakten Instruktionen des Graphen in natürliche, motivierende Sprache übersetzt.
+
+![Der KI-Tutor](../comic4/Tutor.de.png)
+
+Der Tutor ist dabei keine „Black Box“, sondern agiert strikt auf Basis der Backend-Logik: Er empfängt vom Graphen das nächste Ziel und die erlaubten Übergänge, verpackt diese aber in einen didaktisch sinnvollen Dialog. So wird aus der „exakten Buchhaltung“ ein persönliches Lernerlebnis.
 
 #### Fokus statt Ablenkung
 
@@ -219,7 +229,7 @@ Bologna/EHEA setzt im Hochschulraum den Rahmen für **Outcomes, Transparenz, Ane
 
 - **Learning Outcomes / Kompetenzen:** Beitrag: Outcomes als Skill-Graph navigierbar machen; Fortschritt sichtbar. Grenze/Voraussetzung: Saubere Modellierung, Quellenbezug, Versionierung.
 - **Credits/Workload (ECTS-Logik):** Beitrag: Pfade/Prereqs und Workload-Transparenz unterstützen. Grenze/Voraussetzung: **Keine Credit-Vergabe**; Regeln bleiben institutionell.
-- **Anerkennung/Mobilität:** Beitrag: Evidenz + signierte Exporte als Vorbereitung/Unterstützung. Grenze/Voraussetzung: Anerkennung bleibt formaler Prozess.
+- **Anerkennung/Mobilität:** Beitrag: Evidenz + signierte Exporte als Vorbereitung/Unterstützung. Wie in Kapitel 4.2 beschrieben, liefern die signierten Exporte die technische Grundlage (Evidenz), um informelles Lernen in formale Anerkennungsprozesse zu überführen. Grenze/Voraussetzung: Anerkennung bleibt formaler Prozess.
 - **Qualitätssicherung:** Beitrag: Signale über Hürden/Pfade für Lehrentwicklung. Grenze/Voraussetzung: QA-Prozesse + transparente KI-Regeln nötig.
 
 ---
@@ -246,5 +256,7 @@ SkillPilot wird als **Open Source** unter der **Apache-2.0-Lizenz** veröffentli
 
 **Initiator:**  
 Träger ist die **enpasos GmbH**. Wir laden Partner ein, SkillPilot gemeinsam weiterzuentwickeln – fachlich, didaktisch und technisch.
+
+Starten Sie direkt Ihren Piloten: Eine Anleitung für den 5-Minuten-Start finden Sie unter https://skillpilot.com/quickstart.
 
 ---

@@ -56,6 +56,8 @@ SkillPilot replaces linear lists with a connected graph.
 
 SkillPilot does not "invent" curricula: curricula, module handbooks, or standards serve as **raw input** and are translated into a skill graph.
 
+The integrity of the graph is ensured by a formal mathematical specification (Acyclicity, Effective Requires, Transitive Minimality), which prevents circular references and logically validates dependencies.
+
 This is about:
 
 * **Operationalization:** learning outcomes are broken down into atomic skill goals (without changing the standard).
@@ -75,7 +77,15 @@ This is about:
 SkillPilot computes the **frontier**: skills whose prerequisites are met but not yet mastered.  
 This avoids jumps and keeps learning in the zone of sensible next steps.
 
-#### Focus Instead of Distraction
+### 3.2 The Interaction Layer: The AI Tutor
+
+The skill graph provides the route, but learners do not interact with datasets; they need a guide. This role is taken by the **AI Tutor** (SkillPilot GPT). It serves as an intuitive interface that translates the abstract instructions of the graph into natural, motivating language.
+
+![The AI Tutor](../comic4/Tutor.en.png)
+
+The tutor is not a "black box" but acts strictly based on backend logic: it receives the next goal and allowed transitions from the graph, illustrating them in a didactically meaningful dialogue. This turns "exact bookkeeping" into a personal learning experience.
+
+### 3.3 The Hybrid Learning Loop: Understanding + Memorizing + Practice
 
 The graph acts as a **focus filter**: from the total set, only the content that fits the goal and current state is shown - the **next feasible step** instead of "everything at once".
 
@@ -215,7 +225,7 @@ Bologna/EHEA sets the framework for **outcomes, transparency, recognition, and q
 
 - **Learning outcomes / competencies:** Contribution: Make outcomes navigable as a skill graph; progress visible. Limit/prerequisite: Clean modeling, source references, versioning.
 - **Credits/workload (ECTS logic):** Contribution: Support paths/prereqs and workload transparency. Limit/prerequisite: **No credit awarding**; rules remain institutional.
-- **Recognition/mobility:** Contribution: Evidence + signed exports as preparation/support. Limit/prerequisite: Recognition remains a formal process.
+- **Recognition/mobility:** Contribution: Evidence + signed exports as preparation/support. As described in Chapter 4.2, the signed exports provide the technical basis (evidence) to transfer informal learning into formal recognition processes. Limit/prerequisite: Recognition remains a formal process.
 - **Quality assurance:** Contribution: Signals about hurdles/paths for curriculum development. Limit/prerequisite: QA processes + transparent AI rules required.
 
 ---
@@ -242,5 +252,7 @@ SkillPilot is released as **open source** under the **Apache-2.0 license** - an 
 
 **Initiator:**  
 The legal entity behind SkillPilot is **enpasos GmbH**. We invite partners to develop SkillPilot further together - in content, didactics, and technology.
+
+Start your pilot directly: A guide for the 5-minute start can be found at https://skillpilot.com/quickstart.
 
 ---
