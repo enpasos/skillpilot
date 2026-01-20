@@ -77,11 +77,11 @@ This is about:
 SkillPilot computes the **frontier**: skills whose prerequisites are met but not yet mastered.  
 This avoids jumps and keeps learning in the zone of sensible next steps. We call this boundary of current knowledge the **Frontier** (didactically: Zone of Proximal Development according to Vygotsky). It marks exactly the skills that are learnable next.
 
+![The AI Tutor](Tutor.en.png)
+
 ### 3.2 The Interaction Layer: The AI Tutor
 
 The skill graph provides the route, but learners do not interact with datasets; they need a guide. This role is taken by the **AI Tutor** (SkillPilot GPT). It serves as an intuitive interface that translates the abstract instructions of the graph into natural, motivating language.
-
-![The AI Tutor](Tutor.en.png)
 
 The tutor is not a "black box" but acts strictly based on backend logic: it receives the next goal and allowed transitions from the graph, illustrating them in a didactically meaningful dialogue. This turns "exact bookkeeping" into a personal learning experience.
 
@@ -253,6 +253,6 @@ SkillPilot is released as **open source** under the **Apache-2.0 license** - an 
 **Initiator:**  
 The legal entity behind SkillPilot is **enpasos GmbH**. We invite partners to develop SkillPilot further together - in content, didactics, and technology.
 
-Start your pilot immediately and without registration: A guide for the 5-minute start can be found at https://skillpilot.com/quickstart.
+Start your pilot immediately and without registration (ID-based): A guide for the 5-minute start can be found at https://skillpilot.com/quickstart.
 
 ---

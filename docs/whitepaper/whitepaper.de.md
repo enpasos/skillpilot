@@ -80,11 +80,11 @@ Dabei geht es um:
 SkillPilot berechnet die **Frontier**: Skills, deren Voraussetzungen erfüllt sind, die aber noch nicht beherrscht werden.  
 So werden Sprünge vermieden und Lernen bleibt im Bereich sinnvoller nächster Schritte. Diese Grenze des aktuellen Wissens nennen wir die **Frontier** (didaktisch: Zone der nächsten Entwicklung nach Wygotski). Sie markiert exakt die Skills, die als Nächstes lernbar sind.
 
+![Der KI-Tutor](Tutor.de.png)
+
 ### 3.2 Der Interaktions-Layer: Der KI-Tutor
 
 Der Skill-Graph liefert die Route, doch Lernende interagieren nicht mit Datensätzen, sondern brauchen einen Reiseleiter. Diese Rolle übernimmt der **KI-Tutor** (SkillPilot GPT). Er dient als intuitive Schnittstelle, die die abstrakten Instruktionen des Graphen in natürliche, motivierende Sprache übersetzt.
-
-![Der KI-Tutor](Tutor.de.png)
 
 Der Tutor ist dabei keine „Black Box“, sondern agiert strikt auf Basis der Backend-Logik: Er empfängt vom Graphen das nächste Ziel und die erlaubten Übergänge, verpackt diese aber in einen didaktisch sinnvollen Dialog. So wird aus der „exakten Buchhaltung“ ein persönliches Lernerlebnis.
 
@@ -257,6 +257,6 @@ SkillPilot wird als **Open Source** unter der **Apache-2.0-Lizenz** veröffentli
 **Initiator:**  
 Träger ist die **enpasos GmbH**. Wir laden Partner ein, SkillPilot gemeinsam weiterzuentwickeln – fachlich, didaktisch und technisch.
 
-Starten Sie sofort und ohne Anmeldung Ihren Piloten: Eine Anleitung für den 5-Minuten-Start finden Sie unter https://skillpilot.com/quickstart.
+Starten Sie sofort und ohne Anmeldung (ID-basiert) Ihren Piloten: Eine Anleitung für den 5-Minuten-Start finden Sie unter https://skillpilot.com/quickstart.
 
 ---
