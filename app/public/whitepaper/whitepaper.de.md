@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (DE)
 
-**Version:** 1.0.12
+**Version:** 1.0.13
 **Datum:** Januar 2026
 **Projekt:** SkillPilot
 
@@ -47,13 +47,15 @@ Daraus ergibt sich der Ansatz für **SkillPilot** fast von selbst: Es entsteht a
 
 ---
 
-## 3. Die Technologie: Der Skill-Graph
+## 3. Das Produkt: Wie SkillPilot funktioniert
+
+### 3.1 Die Technologie: Der Skill-Graph (Source of Truth & Frontier)
 
 SkillPilot ersetzt lineare Listen durch einen vernetzten Graphen.
 
 ![Beispiel-Visualisierung des Skill-Graphen](graph_example.de.png)
 
-### 3.1 Andocken an bestehende Curricula (Rohinput & Traceability)
+#### Andocken an bestehende Curricula (Rohinput & Traceability)
 
 SkillPilot „erfindet“ keine Curricula: Lehrpläne, Modulhandbücher oder Standards dienen als **Rohinput** und werden in einen Skill-Graph übersetzt.
 
@@ -62,25 +64,25 @@ Dabei geht es um:
 * **Operationalisierung:** Learning Outcomes werden in atomare Skill-Ziele zerlegt (ohne den Standard zu verändern).
 * **Traceability:** Jeder Skill bleibt auf Quelle/Abschnitt/Version zurückführbar.
 * **Navigierbarkeit:** Prereqs und Hierarchien werden explizit modelliert, damit Pfade planbar werden (didaktische Prereqs ggf. als **Overlay**).
-* **Governance:** Änderungen laufen aktuell über GitHub (Issues/PRs), Versionierung über die GitHub-Historie (siehe Abschnitt 10).
+* **Governance:** Änderungen laufen aktuell über GitHub (Issues/PRs), Versionierung über die GitHub-Historie (siehe Abschnitt 6).
 
-### 3.2 Landkarte: Knoten & Kanten
+#### Landkarte: Knoten & Kanten
 
 * **Knoten:** atomare Skills („kann X erklären/anwenden“) und Cluster (Themen/Module).
 * **Kanten:**
   * **Prerequisites:** „A vor B“
   * **Contains/Part-of:** „X umfasst Y und Z“
 
-### 3.3 Frontier: Nächste erreichbare Schritte
+#### Frontier: Nächste erreichbare Schritte
 
 SkillPilot berechnet die **Frontier**: Skills, deren Voraussetzungen erfüllt sind, die aber noch nicht beherrscht werden.  
 So werden Sprünge vermieden und Lernen bleibt im Bereich sinnvoller nächster Schritte.
 
-### 3.4 Fokus statt Ablenkung
+#### Fokus statt Ablenkung
 
 Der Graph dient als **Fokus-Filter**: Aus der Gesamtmenge werden nur die Inhalte gezeigt, die zum Ziel und zum aktuellen Stand passen – der **nächste machbare Schritt** statt „alles auf einmal“.
 
-### 3.5 Mastery: Fortschritt als Evidenzmodell
+#### Mastery: Fortschritt als Evidenzmodell
 
 ![Lernerfolg im personalisierten Curriculum](mastery.de.png)
 
@@ -92,15 +94,13 @@ Der Graph dient als **Fokus-Filter**: Aus der Gesamtmenge werden nur die Inhalte
 
 > SkillPilot macht Fortschritt sichtbar – die Institution entscheidet, welche Evidenz welche Konsequenz hat.
 
-### 3.6 Lerngeschwindigkeit (Learning Velocity)
+#### Lerngeschwindigkeit (Learning Velocity)
 
 Learning Velocity zeigt, wie viele **atomare Ziele** pro Woche neu als gemeistert gelten – als einfacher Rhythmus- und Kontinuitätsindikator.
 
 <img src="velocity.de.png" alt="Lerngeschwindigkeit im Überblick" width="400" />
 
---- 
-
-## 4. Der hybride Lernkreislauf: Verstehen + Memorieren + Üben
+### 3.2 Der hybride Lernkreislauf: Verstehen + Memorieren + Üben
 
 Nicht jedes Lernziel lernt man gleich: Konzepte brauchen Verständnis und Anwendung, Fakten brauchen Wiederholung – und viele Skills brauchen **aktives Tun** (z.B. Programmieren, Rechnen, Schreiben).
 
@@ -116,48 +116,49 @@ SkillPilot integriert dafür eine **Flashcard Drill Engine** (SRS):
 Ergänzend braucht es weitere Lernmodi für „Doing“-Skills: Der Tutor soll Lernende in passende **Practice-Formate** schicken (z.B. Aufgabenserien, Programmieraufgaben, Schreib-/Sprechübungen) und sie anschließend im Chat bei Auswertung, Feedback und Transfer begleiten.
 
 ---
-## 5. Datenansatz: Security & Privacy by Design
+
+## 4. Vertrauensarchitektur: Security & Integrity
+
+### 4.1 Datenansatz: Privacy by Design & Souveränität
 
 Ein zentraler Pfeiler von SkillPilot ist **Datentrennung**.
 
 ![Schematische Darstellung der Datentrennung](architecture.de.png)
 
-### 5.1 Pseudonym statt Identität
+#### Pseudonym statt Identität
 
 Der **SkillPilot-Server** kennt Lernende ausschließlich als Pseudonym (`skillpilotId`).  
 Auf dem Server werden nur technisch notwendige Metadaten gespeichert, z.B. der Lernfortschritt im Graphen.
 
-### 5.2 Dialoginhalt ist entkoppelt
+#### Dialoginhalt ist entkoppelt
 
 Der Dialoginhalt (Tutor-Gespräche) ist vom SkillPilot-Server entkoppelt. So bleibt der zentrale Datenbestand minimal.
 
 **Empfehlung für Bildungsinstitutionen:**  
 Klare Guidelines, welche Daten im Tutor-Chat nicht hineingehören (sensibles Privates) und wie Lernende sicher unterstützt werden.
 
-### 5.3 Zuordnung in der Institution (lokal)
+#### Zuordnung in der Institution (lokal)
 
 Die Zuordnung „Wer ist welches Pseudonym?“ liegt bei der Institution/Lehrkraft und wird **lokal** gespeichert (z.B. in geschützter Ablage) – nicht zentral.
 
-### 5.4 KI-Frontend / Provider-Wahl (Souveränität)
+#### KI-Frontend / Provider-Wahl (Souveränität)
 
 Der Tutor-Dialog findet im jeweiligen KI-Frontend statt (aktuell: ChatGPT als Referenz-Integration) und unterliegt dessen Betriebs- und Datenschutzrahmen.  
 Für Kontexte mit höheren Souveränitätsanforderungen sind alternative KI-Backends bis hin zu lokalen Modellen vorgesehen. Voraussetzung ist, dass sie die benötigten Eigenschaften (Tool-Nutzung, Stabilität, Struktur, Didaktik) zuverlässig erfüllen.
 
----
-
-## 6. Nachweiskette (Chain of Custody): Integrität & Nachvollziehbarkeit
+### 4.2 Nachweiskette (Chain of Custody): Integrität & Nachvollziehbarkeit
 
 Damit Lernstände **portabel** und **prüfbar** bleiben, nutzt SkillPilot ein **Chain-of-Custody**-Pattern.
 
 * Tutor-Instanzen authentisieren sich gegenüber dem Backend.
 * Schreibrechte für Fortschritts-Updates erhalten nur **autorisierte Akteure** (aktuelles Muster: der Tutor als schreibender Akteur).
 
-### 6.1 Signierte Exporte
+#### Signierte Exporte
 
 Lernende können Profil + Fortschritt exportieren.  
 Der Server **signiert** diese Exporte kryptografisch, sodass Offline-Manipulation erkennbar ist.
 
-### 6.2 Herkunftsnachweis beim Import
+#### Herkunftsnachweis beim Import
 
 Beim Import (z.B. Wechsel, Backup) kann die komplette **Herkunftskette** mitgeführt werden. So wird sichtbar, ob ein Stand weitergeführt oder von außen übernommen wurde.
 
@@ -165,7 +166,9 @@ Beim Import (z.B. Wechsel, Backup) kann die komplette **Herkunftskette** mitgef�
 
 --- 
 
-## 7. Status quo: Verfügbare Inhalte (Beispiele)
+## 5. Das Ökosystem: Inhalte & Standards
+
+### 5.1 Status quo: Verfügbare Inhalte (Beispiele)
 
 SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als Startpunkt. Wichtig ist dabei die **Qualitätsstufe**:
 
@@ -177,7 +180,9 @@ SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als St
 
 **Aktueller Stand:** Alle Curricula befinden sich derzeit in **Stufe 1**; QS-Häkchen wurden noch nicht vergeben. Den aktuellen Stand kannst Du unter https://skillpilot.com/curricula anschauen. 
 
-### Schule (Bayern & Hessen)
+Der QS-Prozess bezieht sich nicht nur auf Curricula: Der SkillPilot KI‑Tutor wird im laufenden Betrieb kontinuierlich qualifiziert, damit die Nutzung über reale Curricula hinweg zuverlässig und didaktisch sinnvoll bleibt.
+
+#### Schule (Bayern & Hessen)
 
 **Bayern:**
 * Grundschule (Alle Fächer, Jgst 1–4)
@@ -191,13 +196,13 @@ SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als St
 * Gymnasiale Oberstufe (G9, Sekundarstufe II)
 * Gymnasiale Mittelstufe (G9, Sekundarstufe I)
 
-### Hochschule (Bologna-relevant)
+#### Hochschule (Bologna-relevant)
 * Uni Heidelberg: Bachelor Biowissenschaften, Master Molecular BioSciences, Physikum Medizin
 * Uni Mannheim: Bachelor BWL, Bachelor Jura, Master Jura
 * TU Darmstadt: Bachelor Informatik
 * TU München: Bachelor Informatik, Bachelor Mathematik, Bachelor Physik, Master Quantenwissenschaft und -technologie, Master Theoretische und Mathematische Physik, Executive Master of Business Administration (MBA)
 
-### Sprachen (CEFR A1–C2)
+#### Sprachen (CEFR A1–C2)
 * Englisch (A1–C2)
 * Französisch (A1–C2)
 
@@ -208,33 +213,7 @@ Die hier gelisteten Curricula befinden sich damit aktuell in **Stufe 1 (KI-abgel
 
 Die Inhalte sind erweiterbar und versioniert; Quellenbezüge sind dokumentiert, und Änderungen laufen aktuell über GitHub (Issues/PRs).
 
----
-
-## 8. Der KI-Tutor: Ein Agent „in Ausbildung“
-
-Der SkillPilot KI-Tutor ist kein fertiges Produkt, sondern ein **Trainer in Ausbildung**. Im Rahmen des QS-Prozesses geht es nicht nur darum, Curricula praktisch nutzbar zu machen, sondern den SkillPilot KI-Tutor insgesamt im Einsatz zu qualifizieren.
-
-Vier Fähigkeiten sind zentral:
-
-![SkillPilot KI Agent In Ausbildung](../comic2/SkillPilot_Agent_In_Training.de.jpg)
-
-1. **Tonart (Chat Persona)**  
-   Motivieren, verständlich erklären, auf Augenhöhe bleiben.
-
-2. **Mission Control (Backend-Interaktion)**  
-   Lernstand, Regeln und nächste Schritte werden **nicht geraten**, sondern aus dem Backend bezogen.
-
-3. **Curriculum-Navigation**  
-   Komplexe Curricula werden per Filter (z.B. Track, Niveau) auf sinnvolle Pfade reduziert. Der Agent nutzt die vom Backend bereitgestellte **maschinenlesbare Landkarte**, deren Qualität und Feinschliff durch menschliche Experten (Curriculum Champions) sichergestellt wird.
-
-4. **Didaktik**  
-   Nicht vorsagen, sondern führen: gute Fragen, Fehler sichtbar machen, Transfer fördern – bis zum „Aha“.
-
-**Qualitätsprinzip:** SkillPilot ist primär **formativ** (Feedback/Üben/Orientierung). Für **High-stakes** (Noten, Anerkennung) braucht es institutionelle Regeln und ggf. Human-in-the-loop.
-
----
-
-## 9. SkillPilot im Kontext Bologna/EHEA (Kurzüberblick)
+### 5.2 SkillPilot im Kontext Bologna/EHEA (Kurzüberblick)
 
 Bologna/EHEA setzt im Hochschulraum den Rahmen für **Outcomes, Transparenz, Anerkennung und Qualität**. SkillPilot kann diese Ziele unterstützen – ersetzt aber keine institutionellen Entscheidungen.
 
@@ -245,7 +224,7 @@ Bologna/EHEA setzt im Hochschulraum den Rahmen für **Outcomes, Transparenz, Ane
 
 ---
 
-## 10. Offener Ansatz: Open Source, Governance & Einladung
+## 6. Governance & Community: Open Source & Einladung
 
 SkillPilot wird als **Open Source** unter der **Apache-2.0-Lizenz** veröffentlicht – als Einladung, bestehende Akteure einzubinden statt zu verdrängen:
 

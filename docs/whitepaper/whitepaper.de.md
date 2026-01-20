@@ -100,29 +100,7 @@ Learning Velocity zeigt, wie viele **atomare Ziele** pro Woche neu als gemeister
 
 <img src="velocity.de.png" alt="Lerngeschwindigkeit im Überblick" width="400" />
 
-### 3.2 Der KI-Tutor: Ein Agent „in Ausbildung“ (Mission Control)
-
-Der SkillPilot KI-Tutor ist kein fertiges Produkt, sondern ein **Trainer in Ausbildung**. Im Rahmen des QS-Prozesses geht es nicht nur darum, Curricula praktisch nutzbar zu machen, sondern den SkillPilot KI-Tutor insgesamt im Einsatz zu qualifizieren.
-
-Vier Fähigkeiten sind zentral:
-
-![SkillPilot KI Agent In Ausbildung](../comic2/SkillPilot_Agent_In_Training.de.jpg)
-
-1. **Tonart (Chat Persona)**  
-   Motivieren, verständlich erklären, auf Augenhöhe bleiben.
-
-2. **Mission Control (Backend-Interaktion)**  
-   Lernstand, Regeln und nächste Schritte werden **nicht geraten**, sondern aus dem Backend bezogen.
-
-3. **Curriculum-Navigation**  
-   Komplexe Curricula werden per Filter (z.B. Track, Niveau) auf sinnvolle Pfade reduziert. Der Agent nutzt die vom Backend bereitgestellte **maschinenlesbare Landkarte**, deren Qualität und Feinschliff durch menschliche Experten (Curriculum Champions) sichergestellt wird.
-
-4. **Didaktik**  
-   Nicht vorsagen, sondern führen: gute Fragen, Fehler sichtbar machen, Transfer fördern – bis zum „Aha“.
-
-**Qualitätsprinzip:** SkillPilot ist primär **formativ** (Feedback/Üben/Orientierung). Für **High-stakes** (Noten, Anerkennung) braucht es institutionelle Regeln und ggf. Human-in-the-loop.
-
-### 3.3 Der hybride Lernkreislauf: Verstehen + Memorieren + Üben
+### 3.2 Der hybride Lernkreislauf: Verstehen + Memorieren + Üben
 
 Nicht jedes Lernziel lernt man gleich: Konzepte brauchen Verständnis und Anwendung, Fakten brauchen Wiederholung – und viele Skills brauchen **aktives Tun** (z.B. Programmieren, Rechnen, Schreiben).
 
@@ -201,6 +179,8 @@ SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als St
    Ein Curriculum Champion hat ein Curriculum oder einen Baustein davon selbst in SkillPilot gemastered, die Fehler im Curriculum und SkillPilot bereinigt und ein **QS-Häkchen** vergeben. Von diesen QS-Häkchen kann es mehrere geben.
 
 **Aktueller Stand:** Alle Curricula befinden sich derzeit in **Stufe 1**; QS-Häkchen wurden noch nicht vergeben. Den aktuellen Stand kannst Du unter https://skillpilot.com/curricula anschauen. 
+
+Der QS-Prozess bezieht sich nicht nur auf Curricula: Der SkillPilot KI‑Tutor wird im laufenden Betrieb kontinuierlich qualifiziert, damit die Nutzung über reale Curricula hinweg zuverlässig und didaktisch sinnvoll bleibt.
 
 #### Schule (Bayern & Hessen)
 

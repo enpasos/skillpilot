@@ -97,29 +97,7 @@ Learning velocity shows how many **atomic goals** are newly mastered per week - 
 
 <img src="velocity.en.png" alt="Learning velocity overview" width="400" />
 
-### 3.2 The AI Tutor: An Agent "In Training" (Mission Control)
-
-The SkillPilot AI tutor is not a finished product but a **trainer in training**. The QA process is not only about making each curriculum practically usable, but about qualifying the SkillPilot AI tutor as a whole in real-world use.
-
-Four abilities are central:
-
-![SkillPilot AI Agent In Training](../comic2/SkillPilot_Agent_In_Training.en.jpg)
-
-1. **Tone (Chat Persona)**  
-   Motivate, explain clearly, meet learners at eye level.
-
-2. **Mission Control (Backend Interaction)**  
-   Learning state, rules, and next steps are **not guessed** but pulled from the backend.
-
-3. **Curriculum Navigation**  
-   Complex curricula are reduced to meaningful paths via filters (e.g., track, level). The agent uses the **machine-readable map** provided by the backend, whose quality and refinement is ensured by human experts (Curriculum Champions).
-
-4. **Didactics**  
-   Do not spoon-feed, but guide: good questions, make errors visible, foster transfer - until the "aha" moment.
-
-**Quality principle:** SkillPilot is primarily **formative** (feedback/practice/orientation). For **high-stakes** (grades, recognition), institutional rules and possibly human-in-the-loop are required.
-
-### 3.3 The Hybrid Learning Loop: Understanding + Memorizing + Practice
+### 3.2 The Hybrid Learning Loop: Understanding + Memorizing + Practice
 
 Not every learning goal is learned the same way: concepts need understanding and application, facts need repetition - and many skills need **active doing** (e.g., programming, calculating, writing).
 
@@ -198,6 +176,8 @@ SkillPilot is not just a concept: it already contains curricula/standards as sta
    A Curriculum Champion has mastered a curriculum or a module inside SkillPilot, cleaned errors in the curriculum and SkillPilot, and awarded a **QA checkmark**. A curriculum can collect multiple QA checkmarks.
 
 **Current status:** All curricula are currently in **Stage 1**; no QA checkmarks yet. You can see the current status at https://skillpilot.com/curricula.
+
+The QA process does not only cover curricula: the SkillPilot AI tutor is continuously qualified in real-world use so that the experience remains reliable and didactically sound across curricula.
 
 #### Schools (Bavaria & Hesse, Germany)
 **Bavaria:**
