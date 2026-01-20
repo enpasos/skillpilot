@@ -4,19 +4,15 @@
 
 SkillPilot verwendet Strukturen und Kompetenzbeschreibungen aus staatlichen Kerncurricula und Lehrplänen (z.B. des Landes Hessen).
 
-### Urheberrechtliche Einordnung (Deutschland)
-Die in diesem Projekt verwendeten Kompetenzstrukturen basieren auf amtlichen Kerncurricula deutscher Bundesländer sowie **Studien- und Prüfungsordnungen deutscher Hochschulen** (z.B. TU München). Sie werden als **amtliche Werke gemäß § 5 UrhG (Deutschland)** angesehen.
+### Urheberrechtliche Hinweise (Deutschland)
 
-> **§ 5 UrhG Amtliche Werke**
-> (1) Gesetze, Verordnungen, amtliche Erlasse und Bekanntmachungen sowie Entscheidungen und amtlich verfasste Leitsätze zu Entscheidungen genießen keinen urheberrechtlichen Schutz.
+SkillPilot leitet Lernziel- und Kompetenzstrukturen aus öffentlich zugänglichen, amtlich veröffentlichten Quellen ab (z. B. Kerncurricula/Lehrpläne der Länder sowie Studien- und Prüfungsordnungen öffentlicher Hochschulen). Die jeweiligen Quellen werden angegeben und verlinkt.
 
-Da Lehrpläne (Schule) sowie Studien- und Prüfungsordnungen (Hochschule) als Verwaltungsvorschriften bzw. Satzungen von Trägern öffentlicher Gewalt veröffentlicht werden, um verbindliche Lern- und Prüfungsinhalte festzulegen, sind sie gemeinfrei. Dies gilt auch für amtliche Modulhandbücher, soweit sie Teil der Akkreditierung oder Prüfungsordnung sind.
+SkillPilot stellt diese Inhalte überwiegend als eigene Strukturierung und Zusammenfassung dar und gibt keinen offiziellen Wortlaut wieder. Maßgeblich bleiben die Originaldokumente der jeweiligen Herausgeber.
 
-### Geltungsbereich
-Diese Einschätzung bezieht sich explizit auf den **deutschen Rechtsraum**. Für Curricula aus anderen Ländern muss die jeweilige nationale Rechtslage (z.B. Crown Copyright in UK, Public Domain in USA) gesondert geprüft werden.
+Wo ausnahmsweise Originalauszüge angezeigt werden, sind diese als solche gekennzeichnet und mit Quellenangabe versehen; der Wortlaut wird dabei nicht inhaltlich verändert.
 
-### Abgrenzung
-Diese Einordnung bezieht sich auf die **Struktur und die textlichen Kompetenzbeschreibungen**. Sollten Originaldokumente urheberrechtlich geschützte Drittinhalte (z.B. Beispieltexte, Gedichte, Bilder) enthalten, werden diese **nicht** in SkillPilot übernommen. SkillPilot bildet lediglich die abstrakte Lernziellandschaft ab.
+Drittinhalte in Originaldokumenten (z. B. Bilder, Beispieltexte, Gedichte) werden nicht übernommen.
 
 **Keine Übernahme von Lehrmaterialien:**
 SkillPilot enthält **keine konkreten Vorlesungsskripte, Folien oder Unterrichtsmaterialien** von Lehrenden. Die Vermittlung der Inhalte erfolgt ausschließlich durch die jeweiligen Lehrer:innen, Professor:innen oder generativ durch die KI. Wir bilden lediglich den Rahmen (das "Was") ab, nicht den urheberrechtlich geschützten Inhalt der Vermittlung (das "Wie").
