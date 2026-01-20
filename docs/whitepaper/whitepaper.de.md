@@ -65,7 +65,7 @@ Dabei geht es um:
 
 * **Operationalisierung:** Learning Outcomes werden in atomare Skill-Ziele zerlegt (ohne den Standard zu verändern).
 * **Traceability:** Jeder Skill bleibt auf Quelle/Abschnitt/Version zurückführbar.
-* **Navigierbarkeit:** Prereqs und Hierarchien werden explizit modelliert, damit Pfade planbar werden (didaktische Prereqs ggf. als **Overlay**). Der Graph erzwingt keine starren Pfade: Er unterstützt einen **„Optimistischen Modus“** zum Stöbern und Vorlernen, kann aber für Zertifikate in einen **„Pessimistischer Modus“** schalten, der Voraussetzungen strikt prüft.
+* **Navigierbarkeit:** Prereqs und Hierarchien werden explizit modelliert, damit Pfade planbar werden (didaktische Prereqs ggf. als **Overlay**). Der Graph erzwingt keine starren Pfade: Er unterstützt pädagogische Flexibilität: Im **„Optimistischen Modus“** darf vor gelernt und gestöbert werden (Exploration), während für Zertifikate der **„Pessimistische Modus“** prüft, ob alle Lücken im Fundament geschlossen sind.
 * **Governance:** Änderungen laufen aktuell über GitHub (Issues/PRs), Versionierung über die GitHub-Historie (siehe Abschnitt 6).
 
 #### Landkarte: Knoten & Kanten
@@ -90,7 +90,7 @@ Der Tutor ist dabei keine „Black Box“, sondern agiert strikt auf Basis der B
 
 #### Fokus statt Ablenkung
 
-Der Graph dient als **Fokus-Filter**: Aus der Gesamtmenge werden nur die Inhalte gezeigt, die zum Ziel und zum aktuellen Stand passen – der **nächste machbare Schritt** statt „alles auf einmal“.
+Die in Kapitel 3.1 berechnete **Frontier** dient dem Tutor als **Fokus-Filter**: Aus der Gesamtmenge werden nur die Inhalte gezeigt, die zum Ziel und zum aktuellen Stand passen – der **nächste machbare Schritt** statt „alles auf einmal“.
 
 #### Mastery: Fortschritt als Evidenzmodell
 
@@ -257,6 +257,6 @@ SkillPilot wird als **Open Source** unter der **Apache-2.0-Lizenz** veröffentli
 **Initiator:**  
 Träger ist die **enpasos GmbH**. Wir laden Partner ein, SkillPilot gemeinsam weiterzuentwickeln – fachlich, didaktisch und technisch.
 
-Starten Sie direkt Ihren Piloten: Eine Anleitung für den 5-Minuten-Start finden Sie unter https://skillpilot.com/quickstart.
+Starten Sie sofort und ohne Anmeldung Ihren Piloten: Eine Anleitung für den 5-Minuten-Start finden Sie unter https://skillpilot.com/quickstart.
 
 ---

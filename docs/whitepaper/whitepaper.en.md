@@ -62,7 +62,7 @@ This is about:
 
 * **Operationalization:** learning outcomes are broken down into atomic skill goals (without changing the standard).
 * **Traceability:** each skill remains traceable to source/section/version.
-* **Navigability:** prerequisites and hierarchies are modeled explicitly so paths are plannable (didactic prereqs possibly as **overlays**). The graph does not enforce rigid paths: It supports an **'Optimistic Mode'** for browsing and looking ahead, but can switch to a **'Pessimistic Mode'** for certificates, strictly checking prerequisites.
+* **Navigability:** prerequisites and hierarchies are modeled explicitly so paths are plannable (didactic prereqs possibly as **overlays**). The graph does not enforce rigid paths: It supports pedagogical flexibility: In **'Optimistic Mode'** browsing and exploration are allowed, while for certificates the **'Pessimistic Mode'** checks if all gaps in the foundation are closed.
 * **Governance:** changes currently run via GitHub (Issues/PRs), versioning via GitHub history (see section 6).
 
 #### Map: Nodes & Edges
@@ -87,7 +87,7 @@ The tutor is not a "black box" but acts strictly based on backend logic: it rece
 
 ### 3.3 The Hybrid Learning Loop: Understanding + Memorizing + Practice
 
-The graph acts as a **focus filter**: from the total set, only the content that fits the goal and current state is shown - the **next feasible step** instead of "everything at once".
+The **Frontier** calculated in Chapter 3.1 serves as a **focus filter** for the tutor: from the total set, only the content that fits the goal and current state is shown - the **next feasible step** instead of "everything at once".
 
 #### Mastery: Progress as an Evidence Model
 
@@ -253,6 +253,6 @@ SkillPilot is released as **open source** under the **Apache-2.0 license** - an 
 **Initiator:**  
 The legal entity behind SkillPilot is **enpasos GmbH**. We invite partners to develop SkillPilot further together - in content, didactics, and technology.
 
-Start your pilot directly: A guide for the 5-minute start can be found at https://skillpilot.com/quickstart.
+Start your pilot immediately and without registration: A guide for the 5-minute start can be found at https://skillpilot.com/quickstart.
 
 ---
