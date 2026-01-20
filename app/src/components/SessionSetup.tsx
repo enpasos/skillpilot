@@ -211,7 +211,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
           {/* New Audio Player Section */}
           <div className="flex justify-center w-full">
-            <AudioPlayer />
+            <AudioPlayer key={language} />
           </div>
 
 

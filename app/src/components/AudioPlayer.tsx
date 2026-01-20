@@ -26,17 +26,10 @@ export const AudioPlayer: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [progress, setProgress] = useState(0)
 
-  // Detect if audio ended or language changed
+  // Detect if audio ended
   useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
-
-    // When language changes, reset
-    setIsPlaying(false)
-    setProgress(0)
-    audio.pause()
-    audio.currentTime = 0
-    // src will update automatically via render
 
     const updateProgress = () => {
       if (audio.duration) {
@@ -56,7 +49,7 @@ export const AudioPlayer: React.FC = () => {
       audio.removeEventListener('timeupdate', updateProgress)
       audio.removeEventListener('ended', handleEnded)
     }
-  }, [language])
+  }, [])
 
   // Handle Play/Pause
   const togglePlay = () => {
