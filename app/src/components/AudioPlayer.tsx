@@ -1,10 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { Play, Pause, Volume2 } from 'lucide-react'
+import { useLanguage } from '../contexts/LanguageContext'
 
 // Define the available audio sources
 const AUDIO_SOURCES = {
   de: '/audio/intro-de.m4a',
-  en: '/audio/intro-en.m4a', // Placeholder or future file
+  en: '/audio/intro-en.m4a',
 }
 
 const NOTEBOOKLM_LABEL = {
@@ -19,16 +20,23 @@ const SUBTITLE = {
 
 export const AudioPlayer: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement>(null)
+  const { language } = useLanguage()
 
   // State
   const [isPlaying, setIsPlaying] = useState(false)
   const [progress, setProgress] = useState(0)
-  const [language, setLanguage] = useState<'de' | 'en'>('de')
 
-  // Detect if audio ended
+  // Detect if audio ended or language changed
   useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
+
+    // When language changes, reset
+    setIsPlaying(false)
+    setProgress(0)
+    audio.pause()
+    audio.currentTime = 0
+    // src will update automatically via render
 
     const updateProgress = () => {
       if (audio.duration) {
@@ -59,19 +67,6 @@ export const AudioPlayer: React.FC = () => {
       audioRef.current.play()
     }
     setIsPlaying(!isPlaying)
-  }
-
-  // Handle Language Switch
-  const switchLanguage = (lang: 'de' | 'en') => {
-    if (lang === language) return
-    setLanguage(lang)
-    setIsPlaying(false)
-    setProgress(0)
-    if (audioRef.current) {
-      audioRef.current.pause()
-      audioRef.current.currentTime = 0
-      // We rely on the `src` prop updating in the audio tag
-    }
   }
 
   // Seek handler
@@ -106,23 +101,6 @@ export const AudioPlayer: React.FC = () => {
             <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-100 truncate">
               {NOTEBOOKLM_LABEL[language]}
             </h4>
-            <div className="flex items-center gap-1">
-              {/* Language Toggles */}
-              <button
-                onClick={() => switchLanguage('de')}
-                className={`text-[10px] font-bold px-1.5 py-0.5 rounded transition-colors ${language === 'de' ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-              >
-                DE
-              </button>
-              <div className="w-px h-3 bg-slate-300 dark:bg-slate-600 mx-0.5"></div>
-              <button
-                onClick={() => switchLanguage('en')}
-                className={`text-[10px] font-bold px-1.5 py-0.5 rounded transition-colors ${language === 'en' ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-              >
-                EN
-              </button>
-            </div>
-
           </div>
           <p className="text-xs text-slate-500 dark:text-slate-400 mb-3 block">
             {SUBTITLE[language]}
