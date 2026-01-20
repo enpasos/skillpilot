@@ -14,13 +14,9 @@ SkillPilot verwendet Strukturen und Kompetenzbeschreibungen aus staatlichen Kern
 
 ### Urheberrechtliche Hinweise (Deutschland)
 
-SkillPilot leitet Lernziel- und Kompetenzstrukturen aus öffentlich zugänglichen, amtlich veröffentlichten Quellen ab (z. B. Kerncurricula/Lehrpläne der Länder sowie Studien- und Prüfungsordnungen öffentlicher Hochschulen). Die jeweiligen Quellen werden angegeben und verlinkt.
+SkillPilot bildet Lernziele und Kompetenzstrukturen auf Grundlage öffentlich zugänglicher, amtlich veröffentlichter Curricula und Ordnungen im SkillPilot-Graphen ab. Dabei können Bezeichnungen, Zuschnitte und Formulierungen angepasst werden, soweit dies für eine konsistente Nutzung im Kontext von SkillPilot erforderlich ist.
 
-SkillPilot stellt diese Inhalte überwiegend als eigene Strukturierung und Zusammenfassung dar und gibt keinen offiziellen Wortlaut wieder. Maßgeblich bleiben die Originaldokumente der jeweiligen Herausgeber.
-
-Wo ausnahmsweise Originalauszüge angezeigt werden, sind diese als solche gekennzeichnet und mit Quellenangabe versehen; der Wortlaut wird dabei nicht inhaltlich verändert.
-
-Drittinhalte in Originaldokumenten (z. B. Bilder, Beispieltexte, Gedichte) werden nicht übernommen.
+SkillPilot ist keine amtliche Veröffentlichung und erhebt keinen Anspruch auf wortlautgetreue oder vollständige Wiedergabe. Maßgeblich bleiben die jeweiligen Originaldokumente; die Quellen werden angegeben und verlinkt.
 
 **Keine Übernahme von Lehrmaterialien:**
 SkillPilot enthält **keine konkreten Vorlesungsskripte, Folien oder Unterrichtsmaterialien** von Lehrenden. Die Vermittlung der Inhalte erfolgt ausschließlich durch die jeweiligen Lehrer:innen, Professor:innen oder generativ durch die KI. Wir bilden lediglich den Rahmen (das "Was") ab, nicht den urheberrechtlich geschützten Inhalt der Vermittlung (das "Wie").
@@ -104,13 +100,9 @@ SkillPilot uses structures and competency descriptions from official core curric
 
 ### Copyright notice (Germany)
 
-SkillPilot derives learning-goal and competency structures from publicly accessible, officially published sources (e.g., core curricula/syllabi of German federal states and study/examination regulations of public universities). Sources are cited and linked.
+SkillPilot models learning goals and competency structures in the SkillPilot graph based on publicly accessible, officially published curricula and regulations. Names, scopes, and wording may be adjusted where necessary for consistent use within SkillPilot.
 
-SkillPilot primarily provides its own structuring and summaries and does not present an official wording. The original documents published by the respective authorities remain authoritative.
-
-Where excerpts of original documents are displayed, they are clearly labeled as such and include a source reference; the wording is not substantively altered.
-
-Third-party content contained in original documents (e.g., images, sample texts, poems) is not included.
+SkillPilot is not an official publication and makes no claim to reproduce the wording verbatim or in full. The original documents remain authoritative; sources are cited and linked.
 
 **No Inclusion of Teaching Materials:**
 SkillPilot contains **no specific lecture notes, slides, or teaching materials** from instructors. The transmission of content is carried out exclusively by the respective teachers, professors, or generatively by AI. We only map the framework (the "What"), not the copyright-protected content of the delivery (the "How").
