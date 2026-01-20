@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { Play, Pause, Volume2, Globe } from 'lucide-react'
+import { Play, Pause, Volume2 } from 'lucide-react'
 
 // Define the available audio sources
 const AUDIO_SOURCES = {

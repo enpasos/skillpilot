@@ -59,11 +59,13 @@ SkillPilot ersetzt lineare Listen durch einen vernetzten Graphen.
 
 SkillPilot „erfindet“ keine Curricula: Lehrpläne, Modulhandbücher oder Standards dienen als **Rohinput** und werden in einen Skill-Graph übersetzt.
 
+Die Integrität des Graphen wird durch eine formale mathematische Spezifikation sichergestellt (Acyclicity, Effective Requires, Transitive Minimality), die Zirkelbezüge verhindert und Abhängigkeiten logisch validiert.
+
 Dabei geht es um:
 
 * **Operationalisierung:** Learning Outcomes werden in atomare Skill-Ziele zerlegt (ohne den Standard zu verändern).
 * **Traceability:** Jeder Skill bleibt auf Quelle/Abschnitt/Version zurückführbar.
-* **Navigierbarkeit:** Prereqs und Hierarchien werden explizit modelliert, damit Pfade planbar werden (didaktische Prereqs ggf. als **Overlay**).
+* **Navigierbarkeit:** Prereqs und Hierarchien werden explizit modelliert, damit Pfade planbar werden (didaktische Prereqs ggf. als **Overlay**). Der Graph erzwingt keine starren Pfade: Er unterstützt pädagogische Flexibilität: Im **„Optimistischen Modus“** darf vor gelernt und gestöbert werden (Exploration), während für Zertifikate der **„Pessimistische Modus“** prüft, ob alle Lücken im Fundament geschlossen sind.
 * **Governance:** Änderungen laufen aktuell über GitHub (Issues/PRs), Versionierung über die GitHub-Historie (siehe Abschnitt 6).
 
 #### Landkarte: Knoten & Kanten
@@ -76,11 +78,19 @@ Dabei geht es um:
 #### Frontier: Nächste erreichbare Schritte
 
 SkillPilot berechnet die **Frontier**: Skills, deren Voraussetzungen erfüllt sind, die aber noch nicht beherrscht werden.  
-So werden Sprünge vermieden und Lernen bleibt im Bereich sinnvoller nächster Schritte.
+So werden Sprünge vermieden und Lernen bleibt im Bereich sinnvoller nächster Schritte. Diese Grenze des aktuellen Wissens nennen wir die **Frontier** (didaktisch: Zone der nächsten Entwicklung nach Wygotski). Sie markiert exakt die Skills, die als Nächstes lernbar sind.
+
+![Der KI-Tutor](Tutor.de.png)
+
+### 3.2 Der Interaktions-Layer: Der KI-Tutor
+
+Der Skill-Graph liefert die Route, doch Lernende interagieren nicht mit Datensätzen, sondern brauchen einen Reiseleiter. Diese Rolle übernimmt der **KI-Tutor** (SkillPilot GPT). Er dient als intuitive Schnittstelle, die die abstrakten Instruktionen des Graphen in natürliche, motivierende Sprache übersetzt.
+
+Der Tutor ist dabei keine „Black Box“, sondern agiert strikt auf Basis der Backend-Logik: Er empfängt vom Graphen das nächste Ziel und die erlaubten Übergänge, verpackt diese aber in einen didaktisch sinnvollen Dialog. So wird aus der „exakten Buchhaltung“ ein persönliches Lernerlebnis.
 
 #### Fokus statt Ablenkung
 
-Der Graph dient als **Fokus-Filter**: Aus der Gesamtmenge werden nur die Inhalte gezeigt, die zum Ziel und zum aktuellen Stand passen – der **nächste machbare Schritt** statt „alles auf einmal“.
+Die in Kapitel 3.1 berechnete **Frontier** dient dem Tutor als **Fokus-Filter**: Aus der Gesamtmenge werden nur die Inhalte gezeigt, die zum Ziel und zum aktuellen Stand passen – der **nächste machbare Schritt** statt „alles auf einmal“.
 
 #### Mastery: Fortschritt als Evidenzmodell
 
@@ -100,7 +110,7 @@ Learning Velocity zeigt, wie viele **atomare Ziele** pro Woche neu als gemeister
 
 <img src="velocity.de.png" alt="Lerngeschwindigkeit im Überblick" width="400" />
 
-### 3.2 Der hybride Lernkreislauf: Verstehen + Memorieren + Üben
+### 3.3 Der hybride Lernkreislauf: Verstehen + Memorieren + Üben
 
 Nicht jedes Lernziel lernt man gleich: Konzepte brauchen Verständnis und Anwendung, Fakten brauchen Wiederholung – und viele Skills brauchen **aktives Tun** (z.B. Programmieren, Rechnen, Schreiben).
 
@@ -219,7 +229,7 @@ Bologna/EHEA setzt im Hochschulraum den Rahmen für **Outcomes, Transparenz, Ane
 
 - **Learning Outcomes / Kompetenzen:** Beitrag: Outcomes als Skill-Graph navigierbar machen; Fortschritt sichtbar. Grenze/Voraussetzung: Saubere Modellierung, Quellenbezug, Versionierung.
 - **Credits/Workload (ECTS-Logik):** Beitrag: Pfade/Prereqs und Workload-Transparenz unterstützen. Grenze/Voraussetzung: **Keine Credit-Vergabe**; Regeln bleiben institutionell.
-- **Anerkennung/Mobilität:** Beitrag: Evidenz + signierte Exporte als Vorbereitung/Unterstützung. Grenze/Voraussetzung: Anerkennung bleibt formaler Prozess.
+- **Anerkennung/Mobilität:** Beitrag: Evidenz + signierte Exporte als Vorbereitung/Unterstützung. Wie in Kapitel 4.2 beschrieben, liefern die signierten Exporte die technische Grundlage (Evidenz), um informelles Lernen in formale Anerkennungsprozesse zu überführen. Grenze/Voraussetzung: Anerkennung bleibt formaler Prozess.
 - **Qualitätssicherung:** Beitrag: Signale über Hürden/Pfade für Lehrentwicklung. Grenze/Voraussetzung: QA-Prozesse + transparente KI-Regeln nötig.
 
 ---
@@ -246,5 +256,7 @@ SkillPilot wird als **Open Source** unter der **Apache-2.0-Lizenz** veröffentli
 
 **Initiator:**  
 Träger ist die **enpasos GmbH**. Wir laden Partner ein, SkillPilot gemeinsam weiterzuentwickeln – fachlich, didaktisch und technisch.
+
+Starten Sie sofort und ohne Anmeldung (ID-basiert) Ihren Piloten: Eine Anleitung für den 5-Minuten-Start finden Sie unter https://skillpilot.com/quickstart.
 
 ---
