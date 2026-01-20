@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (DE)
 
-**Version:** 1.0.11
+**Version:** 1.0.12
 **Datum:** Januar 2026
 **Projekt:** SkillPilot
 
@@ -47,36 +47,13 @@ Daraus ergibt sich der Ansatz für **SkillPilot** fast von selbst: Es entsteht a
 
 ---
 
-## 3. Der KI-Tutor: Ein Agent „in Ausbildung“
-
-Der SkillPilot KI-Tutor ist kein fertiges Produkt, sondern ein **Trainer in Ausbildung**. Vier Fähigkeiten sind zentral:
-
-![SkillPilot KI Agent In Ausbildung](../comic2/SkillPilot_Agent_In_Training.de.jpg)
-
-1. **Tonart (Chat Persona)**  
-   Motivieren, verständlich erklären, auf Augenhöhe bleiben.
-
-2. **Mission Control (Backend-Interaktion)**  
-   Lernstand, Regeln und nächste Schritte werden **nicht geraten**, sondern aus dem Backend bezogen.
-
-3. **Curriculum-Navigation**  
-   Komplexe Curricula werden per Filter (z.B. Track, Niveau) auf sinnvolle Pfade reduziert. Der Agent nutzt die vom Backend bereitgestellte **maschinenlesbare Landkarte**, deren Qualität und Feinschliff durch menschliche Experten (Curriculum Champions) sichergestellt wird.
-
-4. **Didaktik**  
-   Nicht vorsagen, sondern führen: gute Fragen, Fehler sichtbar machen, Transfer fördern – bis zum „Aha“.
-
-**Qualitätsprinzip:** SkillPilot ist primär **formativ** (Feedback/Üben/Orientierung). Für **High-stakes** (Noten, Anerkennung) braucht es institutionelle Regeln und ggf. Human-in-the-loop.
-
----
- 
-
-## 4. Die Technologie: Der Skill-Graph
+## 3. Die Technologie: Der Skill-Graph
 
 SkillPilot ersetzt lineare Listen durch einen vernetzten Graphen.
 
 ![Beispiel-Visualisierung des Skill-Graphen](graph_example.de.png)
 
-### 4.1 Andocken an bestehende Curricula (Rohinput & Traceability)
+### 3.1 Andocken an bestehende Curricula (Rohinput & Traceability)
 
 SkillPilot „erfindet“ keine Curricula: Lehrpläne, Modulhandbücher oder Standards dienen als **Rohinput** und werden in einen Skill-Graph übersetzt.
 
@@ -87,23 +64,23 @@ Dabei geht es um:
 * **Navigierbarkeit:** Prereqs und Hierarchien werden explizit modelliert, damit Pfade planbar werden (didaktische Prereqs ggf. als **Overlay**).
 * **Governance:** Änderungen laufen aktuell über GitHub (Issues/PRs), Versionierung über die GitHub-Historie (siehe Abschnitt 10).
 
-### 4.2 Landkarte: Knoten & Kanten
+### 3.2 Landkarte: Knoten & Kanten
 
 * **Knoten:** atomare Skills („kann X erklären/anwenden“) und Cluster (Themen/Module).
 * **Kanten:**
   * **Prerequisites:** „A vor B“
   * **Contains/Part-of:** „X umfasst Y und Z“
 
-### 4.3 Frontier: Nächste erreichbare Schritte
+### 3.3 Frontier: Nächste erreichbare Schritte
 
 SkillPilot berechnet die **Frontier**: Skills, deren Voraussetzungen erfüllt sind, die aber noch nicht beherrscht werden.  
 So werden Sprünge vermieden und Lernen bleibt im Bereich sinnvoller nächster Schritte.
 
-### 4.4 Fokus statt Ablenkung
+### 3.4 Fokus statt Ablenkung
 
 Der Graph dient als **Fokus-Filter**: Aus der Gesamtmenge werden nur die Inhalte gezeigt, die zum Ziel und zum aktuellen Stand passen – der **nächste machbare Schritt** statt „alles auf einmal“.
 
-### 4.5 Mastery: Fortschritt als Evidenzmodell
+### 3.5 Mastery: Fortschritt als Evidenzmodell
 
 ![Lernerfolg im personalisierten Curriculum](mastery.de.png)
 
@@ -115,7 +92,7 @@ Der Graph dient als **Fokus-Filter**: Aus der Gesamtmenge werden nur die Inhalte
 
 > SkillPilot macht Fortschritt sichtbar – die Institution entscheidet, welche Evidenz welche Konsequenz hat.
 
-### 4.6 Lerngeschwindigkeit (Learning Velocity)
+### 3.6 Lerngeschwindigkeit (Learning Velocity)
 
 Learning Velocity zeigt, wie viele **atomare Ziele** pro Woche neu als gemeistert gelten – als einfacher Rhythmus- und Kontinuitätsindikator.
 
@@ -123,7 +100,7 @@ Learning Velocity zeigt, wie viele **atomare Ziele** pro Woche neu als gemeister
 
 --- 
 
-## 5. Der hybride Lernkreislauf: Verstehen + Memorieren + Üben
+## 4. Der hybride Lernkreislauf: Verstehen + Memorieren + Üben
 
 Nicht jedes Lernziel lernt man gleich: Konzepte brauchen Verständnis und Anwendung, Fakten brauchen Wiederholung – und viele Skills brauchen **aktives Tun** (z.B. Programmieren, Rechnen, Schreiben).
 
@@ -139,48 +116,48 @@ SkillPilot integriert dafür eine **Flashcard Drill Engine** (SRS):
 Ergänzend braucht es weitere Lernmodi für „Doing“-Skills: Der Tutor soll Lernende in passende **Practice-Formate** schicken (z.B. Aufgabenserien, Programmieraufgaben, Schreib-/Sprechübungen) und sie anschließend im Chat bei Auswertung, Feedback und Transfer begleiten.
 
 ---
-## 6. Datenansatz: Security & Privacy by Design
+## 5. Datenansatz: Security & Privacy by Design
 
 Ein zentraler Pfeiler von SkillPilot ist **Datentrennung**.
 
 ![Schematische Darstellung der Datentrennung](architecture.de.png)
 
-### 6.1 Pseudonym statt Identität
+### 5.1 Pseudonym statt Identität
 
 Der **SkillPilot-Server** kennt Lernende ausschließlich als Pseudonym (`skillpilotId`).  
 Auf dem Server werden nur technisch notwendige Metadaten gespeichert, z.B. der Lernfortschritt im Graphen.
 
-### 6.2 Dialoginhalt ist entkoppelt
+### 5.2 Dialoginhalt ist entkoppelt
 
 Der Dialoginhalt (Tutor-Gespräche) ist vom SkillPilot-Server entkoppelt. So bleibt der zentrale Datenbestand minimal.
 
 **Empfehlung für Bildungsinstitutionen:**  
 Klare Guidelines, welche Daten im Tutor-Chat nicht hineingehören (sensibles Privates) und wie Lernende sicher unterstützt werden.
 
-### 6.3 Zuordnung in der Institution (lokal)
+### 5.3 Zuordnung in der Institution (lokal)
 
 Die Zuordnung „Wer ist welches Pseudonym?“ liegt bei der Institution/Lehrkraft und wird **lokal** gespeichert (z.B. in geschützter Ablage) – nicht zentral.
 
-### 6.4 KI-Frontend / Provider-Wahl (Souveränität)
+### 5.4 KI-Frontend / Provider-Wahl (Souveränität)
 
 Der Tutor-Dialog findet im jeweiligen KI-Frontend statt (aktuell: ChatGPT als Referenz-Integration) und unterliegt dessen Betriebs- und Datenschutzrahmen.  
 Für Kontexte mit höheren Souveränitätsanforderungen sind alternative KI-Backends bis hin zu lokalen Modellen vorgesehen. Voraussetzung ist, dass sie die benötigten Eigenschaften (Tool-Nutzung, Stabilität, Struktur, Didaktik) zuverlässig erfüllen.
 
 ---
 
-## 7. Nachweiskette (Chain of Custody): Integrität & Nachvollziehbarkeit
+## 6. Nachweiskette (Chain of Custody): Integrität & Nachvollziehbarkeit
 
 Damit Lernstände **portabel** und **prüfbar** bleiben, nutzt SkillPilot ein **Chain-of-Custody**-Pattern.
 
 * Tutor-Instanzen authentisieren sich gegenüber dem Backend.
 * Schreibrechte für Fortschritts-Updates erhalten nur **autorisierte Akteure** (aktuelles Muster: der Tutor als schreibender Akteur).
 
-### 7.1 Signierte Exporte
+### 6.1 Signierte Exporte
 
 Lernende können Profil + Fortschritt exportieren.  
 Der Server **signiert** diese Exporte kryptografisch, sodass Offline-Manipulation erkennbar ist.
 
-### 7.2 Herkunftsnachweis beim Import
+### 6.2 Herkunftsnachweis beim Import
 
 Beim Import (z.B. Wechsel, Backup) kann die komplette **Herkunftskette** mitgeführt werden. So wird sichtbar, ob ein Stand weitergeführt oder von außen übernommen wurde.
 
@@ -188,7 +165,7 @@ Beim Import (z.B. Wechsel, Backup) kann die komplette **Herkunftskette** mitgef�
 
 --- 
 
-## 8. Status quo: Verfügbare Inhalte (Beispiele)
+## 7. Status quo: Verfügbare Inhalte (Beispiele)
 
 SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als Startpunkt. Wichtig ist dabei die **Qualitätsstufe**:
 
@@ -233,6 +210,30 @@ Die Inhalte sind erweiterbar und versioniert; Quellenbezüge sind dokumentiert, 
 
 ---
 
+## 8. Der KI-Tutor: Ein Agent „in Ausbildung“
+
+Der SkillPilot KI-Tutor ist kein fertiges Produkt, sondern ein **Trainer in Ausbildung**. Im Rahmen des QS-Prozesses geht es nicht nur darum, Curricula praktisch nutzbar zu machen, sondern den SkillPilot KI-Tutor insgesamt im Einsatz zu qualifizieren.
+
+Vier Fähigkeiten sind zentral:
+
+![SkillPilot KI Agent In Ausbildung](../comic2/SkillPilot_Agent_In_Training.de.jpg)
+
+1. **Tonart (Chat Persona)**  
+   Motivieren, verständlich erklären, auf Augenhöhe bleiben.
+
+2. **Mission Control (Backend-Interaktion)**  
+   Lernstand, Regeln und nächste Schritte werden **nicht geraten**, sondern aus dem Backend bezogen.
+
+3. **Curriculum-Navigation**  
+   Komplexe Curricula werden per Filter (z.B. Track, Niveau) auf sinnvolle Pfade reduziert. Der Agent nutzt die vom Backend bereitgestellte **maschinenlesbare Landkarte**, deren Qualität und Feinschliff durch menschliche Experten (Curriculum Champions) sichergestellt wird.
+
+4. **Didaktik**  
+   Nicht vorsagen, sondern führen: gute Fragen, Fehler sichtbar machen, Transfer fördern – bis zum „Aha“.
+
+**Qualitätsprinzip:** SkillPilot ist primär **formativ** (Feedback/Üben/Orientierung). Für **High-stakes** (Noten, Anerkennung) braucht es institutionelle Regeln und ggf. Human-in-the-loop.
+
+---
+
 ## 9. SkillPilot im Kontext Bologna/EHEA (Kurzüberblick)
 
 Bologna/EHEA setzt im Hochschulraum den Rahmen für **Outcomes, Transparenz, Anerkennung und Qualität**. SkillPilot kann diese Ziele unterstützen – ersetzt aber keine institutionellen Entscheidungen.
@@ -253,6 +254,7 @@ SkillPilot wird als **Open Source** unter der **Apache-2.0-Lizenz** veröffentli
 * Offene Schnittstellen ermöglichen Beiträge und Integration.
 
 **Curriculum Champions (Praxisanker):**
+![Curriculum Champion Comic](../comic3/champion.de.png)
 * Champions übernehmen Verantwortung für ein Curriculum oder einen **klaren Themen-Scope**.
 * Sie **lernen das Curriculum durch**, sammeln Praxisfeedback und bündeln es in Issues/PRs.
 * Sichtbarkeit schafft Verantwortung: Champion-Profile zeigen Engagement (z.B. Issues/PRs) und Fortschritt.

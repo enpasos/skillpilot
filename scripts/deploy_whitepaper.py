@@ -35,11 +35,14 @@ def deploy_whitepaper():
     comic1_dest = os.path.join(project_root, "app", "public", "comic1")
     comic2_src = os.path.join(project_root, "docs", "comic2")
     comic2_dest = os.path.join(project_root, "app", "public", "comic2")
+    comic3_src = os.path.join(project_root, "docs", "comic3")
+    comic3_dest = os.path.join(project_root, "app", "public", "comic3")
 
     total = 0
     total += copy_assets(whitepaper_src, whitepaper_dest, {".md", ".png", ".jpg", ".jpeg"})
     total += copy_assets(comic1_src, comic1_dest, {".png", ".jpg", ".jpeg"})
     total += copy_assets(comic2_src, comic2_dest, {".png", ".jpg", ".jpeg"})
+    total += copy_assets(comic3_src, comic3_dest, {".png", ".jpg", ".jpeg"})
 
     print(f"Deployment complete. {total} whitepaper assets deployed.")
 

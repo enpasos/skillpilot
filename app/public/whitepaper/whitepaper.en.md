@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (EN)
 
-**Version:** 1.0.10 
+**Version:** 1.0.12 
 **Date:** January 2026
 **Project:** SkillPilot
 
@@ -63,35 +63,13 @@ Additional AI systems (e.g., Gemini, and later local models) will be connected a
 
 ---
 
-## 3. The AI Tutor: An Agent "In Training"
-
-The SkillPilot AI tutor is not a finished product but a **trainer in training**. Four abilities are central:
-
-![SkillPilot AI Agent In Training](../comic2/SkillPilot_Agent_In_Training.en.jpg)
-
-1. **Tone (Chat Persona)**  
-   Motivate, explain clearly, meet learners at eye level.
-
-2. **Mission Control (Backend Interaction)**  
-   Learning state, rules, and next steps are **not guessed** but pulled from the backend.
-
-3. **Curriculum Navigation**  
-   Complex curricula are reduced to meaningful paths via filters (e.g., track, level). The curriculum remains the reference; only the **machine-readable mapping** is improved (granularity, references, dependencies).
-
-4. **Didactics**  
-   Do not spoon-feed, but guide: good questions, make errors visible, foster transfer - until the "aha" moment.
-
-**Quality principle:** SkillPilot is primarily **formative** (feedback/practice/orientation). For **high-stakes** (grades, recognition), institutional rules and possibly human-in-the-loop are required.
-
---- 
-
-## 4. The Technology: The Skill Graph
+## 3. The Technology: The Skill Graph
 
 SkillPilot replaces linear lists with a connected graph.
 
 ![Example visualization of the skill graph](graph_example.en.png)
 
-### 4.1 Plugging into Existing Curricula (Raw Input & Traceability)
+### 3.1 Plugging into Existing Curricula (Raw Input & Traceability)
 
 SkillPilot does not "invent" curricula: curricula, module handbooks, or standards serve as **raw input** and are translated into a skill graph.
 
@@ -102,23 +80,23 @@ This is about:
 * **Navigability:** prerequisites and hierarchies are modeled explicitly so paths are plannable (didactic prereqs possibly as **overlays**).
 * **Governance:** changes currently run via GitHub (Issues/PRs), versioning via GitHub history (see section 10).
 
-### 4.2 Map: Nodes & Edges
+### 3.2 Map: Nodes & Edges
 
 * **Nodes:** atomic skills ("can explain/apply X") and atomic clusters (topics/modules).
 * **Edges:**
   * **Prerequisites:** "A before B"
   * **Contains/Part-of:** "X includes Y and Z"
 
-### 4.3 Frontier: Next Reachable Steps
+### 3.3 Frontier: Next Reachable Steps
 
 SkillPilot computes the **frontier**: skills whose prerequisites are met but not yet mastered.  
 This avoids jumps and keeps learning in the zone of sensible next steps.
 
-### 4.4 Focus Instead of Distraction
+### 3.4 Focus Instead of Distraction
 
 The graph acts as a **focus filter**: from the total set, only the content that fits the goal and current state is shown - the **next feasible step** instead of "everything at once".
 
-### 4.5 Mastery: Progress as an Evidence Model
+### 3.5 Mastery: Progress as an Evidence Model
 
 ![Learning Success in Personalized Curriculum](mastery.en.png)
 
@@ -130,7 +108,7 @@ The graph acts as a **focus filter**: from the total set, only the content that 
 
 > SkillPilot makes progress visible - the institution decides which evidence has which consequences.
 
-### 4.6 Learning Velocity
+### 3.6 Learning Velocity
 
 Learning velocity shows how many **atomic goals** are newly mastered per week - a simple indicator of rhythm and continuity.
 
@@ -138,7 +116,7 @@ Learning velocity shows how many **atomic goals** are newly mastered per week - 
 
 ---
 
-## 5. The Hybrid Learning Loop: Understanding + Memorizing + Practice
+## 4. The Hybrid Learning Loop: Understanding + Memorizing + Practice
 
 Not every learning goal is learned the same way: concepts need understanding and application, facts need repetition - and many skills need **active doing** (e.g., programming, calculating, writing).
 
@@ -155,48 +133,48 @@ In addition, other learning modes are needed for "doing" skills: the tutor shoul
 
 ---
 
-## 6. Data Approach: Security & Privacy by Design
+## 5. Data Approach: Security & Privacy by Design
 
 A central pillar of SkillPilot is **data separation**.
 
 ![Schematic representation of data separation](architecture.en.png)
 
-### 6.1 Pseudonym Instead of Identity
+### 5.1 Pseudonym Instead of Identity
 
 The **SkillPilot server** knows learners only as a pseudonym (`skillpilotId`).  
 On the server, only technically necessary metadata are stored, e.g., learning progress in the graph.
 
-### 6.2 Dialog Content Is Decoupled
+### 5.2 Dialog Content Is Decoupled
 
 The dialog content (tutor conversations) is decoupled from the SkillPilot server, keeping the central data store minimal.
 
 **Recommendation for educational institutions:**  
 Clear guidelines on which data should not be shared in tutor chats (sensitive personal data) and how learners are supported safely.
 
-### 6.3 Mapping Inside the Institution (Local)
+### 5.3 Mapping Inside the Institution (Local)
 
 The mapping "who is which pseudonym?" stays with the institution/teacher and is stored **locally** (e.g., in protected storage) - not centrally.
 
-### 6.4 AI Frontend / Provider Choice (Sovereignty)
+### 5.4 AI Frontend / Provider Choice (Sovereignty)
 
 The tutor dialog happens in the respective AI frontend (currently: ChatGPT as the reference integration) and is subject to its operational and privacy framework.  
 For contexts with higher sovereignty requirements, alternative AI backends up to local models are planned. They must reliably meet the required properties (tool use, stability, structure, didactics).
 
 ---
 
-## 7. Chain of Custody: Integrity & Traceability
+## 6. Chain of Custody: Integrity & Traceability
 
 To keep learning states **portable** and **verifiable**, SkillPilot uses a **chain-of-custody** pattern.
 
 * Tutor instances authenticate to the backend.
 * Write access for progress updates is granted only to **authorized actors** (current pattern: the tutor as the writing actor).
 
-### 7.1 Signed Exports
+### 6.1 Signed Exports
 
 Learners can export profile + progress.  
 The server **cryptographically signs** these exports so offline manipulation is detectable.
 
-### 7.2 Data Provenance on Import
+### 6.2 Data Provenance on Import
 
 On import (e.g., transfer, backup), the full **provenance chain** can be carried along. This makes it visible whether a state was continued or taken from elsewhere.
 
@@ -204,7 +182,7 @@ On import (e.g., transfer, backup), the full **provenance chain** can be carried
 
 ---
 
-## 8. Status Quo: Available Content (Examples)
+## 7. Status Quo: Available Content (Examples)
 
 SkillPilot is not just a concept: it already contains curricula/standards as starting points. The key is the **quality stage**:
 
@@ -245,6 +223,30 @@ The content is extensible and versioned; source references are documented, and c
 
 ---
 
+## 8. The AI Tutor: An Agent "In Training"
+
+The SkillPilot AI tutor is not a finished product but a **trainer in training**. The QA process is not only about making each curriculum practically usable, but about qualifying the SkillPilot AI tutor as a whole in real-world use.
+
+Four abilities are central:
+
+![SkillPilot AI Agent In Training](../comic2/SkillPilot_Agent_In_Training.en.jpg)
+
+1. **Tone (Chat Persona)**  
+   Motivate, explain clearly, meet learners at eye level.
+
+2. **Mission Control (Backend Interaction)**  
+   Learning state, rules, and next steps are **not guessed** but pulled from the backend.
+
+3. **Curriculum Navigation**  
+   Complex curricula are reduced to meaningful paths via filters (e.g., track, level). The curriculum remains the reference; only the **machine-readable mapping** is improved (granularity, references, dependencies).
+
+4. **Didactics**  
+   Do not spoon-feed, but guide: good questions, make errors visible, foster transfer - until the "aha" moment.
+
+**Quality principle:** SkillPilot is primarily **formative** (feedback/practice/orientation). For **high-stakes** (grades, recognition), institutional rules and possibly human-in-the-loop are required.
+
+---
+
 ## 9. SkillPilot in the Bologna/EHEA Context (Short Overview)
 
 Bologna/EHEA sets the framework for **outcomes, transparency, recognition, and quality** in higher education. SkillPilot can support these goals, but it does not replace institutional decisions.
@@ -266,6 +268,7 @@ SkillPilot is released as **open source** under the **Apache-2.0 license** - an 
 
 **Governance (currently via GitHub):**
 **Curriculum Champions (practice anchor):**
+![Curriculum Champion comic](../comic3/champion.en.png)
 * Champions take responsibility for a curriculum or a **clearly scoped topic area**.
 * They work through the curriculum, gather practice feedback, and channel it into Issues/PRs.
 * Visibility creates accountability: Champion profiles show engagement (e.g., Issues/PRs) and progress.
