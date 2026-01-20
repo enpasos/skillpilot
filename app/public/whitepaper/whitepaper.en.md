@@ -206,7 +206,15 @@ On import (e.g., transfer, backup), the full **provenance chain** can be carried
 
 ## 8. Status Quo: Available Content (Examples)
 
-SkillPilot is not just a concept: it already contains curricula/standards as starting points that reflect **official requirements**.
+SkillPilot is not just a concept: it already contains curricula/standards as starting points. The key is the **quality stage**:
+
+1. **Stage 1 – AI-derived draft**  
+   Learning goals in SkillPilot are derived from publicly accessible, official curricula/regulations. We cite the sources; SkillPilot provides its own structuring and summary – not official wording.  
+   Outcome: The curriculum exists and is visible in the UI.
+2. **Stage 2 – QA by Curriculum Champion**  
+   A Curriculum Champion has mastered a curriculum or a module inside SkillPilot, cleaned errors in the curriculum and SkillPilot, and awarded a **QA checkmark**. A curriculum can collect multiple QA checkmarks.
+
+**Current status:** All curricula are currently in **Stage 1**; no QA checkmarks yet. You can see the current status at https://skillpilot.com/curricula.
 
 ### Schools (Bavaria & Hesse, Germany)
 **Bavaria:**
@@ -230,6 +238,8 @@ SkillPilot is not just a concept: it already contains curricula/standards as sta
 ### Languages (CEFR A1-C2)
 * English (A1-C2)
 * French (A1-C2)
+
+The listed curricula are currently in **Stage 1 (AI-derived)**. The process to move them to **Stage 2** runs via the **Curriculum Champion** process.
 
 The content is extensible and versioned; source references are documented, and changes currently flow through GitHub (Issues/PRs).
 

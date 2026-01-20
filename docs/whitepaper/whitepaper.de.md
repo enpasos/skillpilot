@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (DE)
 
-**Version:** 1.0.10
+**Version:** 1.0.11
 **Datum:** Januar 2026
 **Projekt:** SkillPilot
 
@@ -60,7 +60,7 @@ Der SkillPilot KI-Tutor ist kein fertiges Produkt, sondern ein **Trainer in Ausb
    Lernstand, Regeln und nächste Schritte werden **nicht geraten**, sondern aus dem Backend bezogen.
 
 3. **Curriculum-Navigation**  
-   Komplexe Curricula werden per Filter (z.B. Track, Niveau) auf sinnvolle Pfade reduziert. Das Curriculum bleibt Referenz; verbessert wird nur die **maschinenlesbare Abbildung** (Granularität, Verweise, Abhängigkeiten).
+   Komplexe Curricula werden per Filter (z.B. Track, Niveau) auf sinnvolle Pfade reduziert. Der Agent nutzt die vom Backend bereitgestellte **maschinenlesbare Landkarte**, deren Qualität und Feinschliff durch menschliche Experten (Curriculum Champions) sichergestellt wird.
 
 4. **Didaktik**  
    Nicht vorsagen, sondern führen: gute Fragen, Fehler sichtbar machen, Transfer fördern – bis zum „Aha“.
@@ -190,7 +190,15 @@ Beim Import (z.B. Wechsel, Backup) kann die komplette **Herkunftskette** mitgef�
 
 ## 8. Status quo: Verfügbare Inhalte (Beispiele)
 
-SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als Startpunkt, die **offizielle Vorgaben** abbilden.
+SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als Startpunkt. Wichtig ist dabei die **Qualitätsstufe**:
+
+1. **Stufe 1 – KI-abgeleiteter Rohstand**  
+   Lernziele in SkillPilot sind aus öffentlich zugänglichen, amtlichen Curricula/Ordnungen abgeleitet. Wir geben die Quellen an; SkillPilot bietet eine eigene Strukturierung und Zusammenfassung – kein offizieller Wortlaut.  
+   Ergebnis: Das Curriculum existiert und wird in der Oberfläche angezeigt.
+2. **Stufe 2 – QS durch Curriculum Champion**  
+   Ein Curriculum Champion hat ein Curriculum oder einen Baustein davon selbst in SkillPilot gemastered, die Fehler im Curriculum und SkillPilot bereinigt und ein **QS-Häkchen** vergeben. Von diesen QS-Häkchen kann es mehrere geben.
+
+**Aktueller Stand:** Alle Curricula befinden sich derzeit in **Stufe 1**; QS-Häkchen wurden noch nicht vergeben. Den aktuellen Stand kannst Du unter https://skillpilot.com/curricula anschauen. 
 
 ### Schule (Bayern & Hessen)
 
@@ -215,6 +223,11 @@ SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als St
 ### Sprachen (CEFR A1–C2)
 * Englisch (A1–C2)
 * Französisch (A1–C2)
+
+Die hier gelisteten Curricula befinden sich damit aktuell in **Stufe 1 (KI-abgeleitet)**. Der Prozess, sie in **Stufe 2** zu überführen, läuft über den **Curriculum Champion Prozess**.
+
+> [!IMPORTANT]
+> Wir laden dazu ein, diesen Prozess aktiv mitzugestalten: **[Werde Curriculum Champion](https://skillpilot.com/curricula)** und hilf dabei, die Qualität und Praxisnähe deines Fachbereichs sicherzustellen.
 
 Die Inhalte sind erweiterbar und versioniert; Quellenbezüge sind dokumentiert, und Änderungen laufen aktuell über GitHub (Issues/PRs).
 
