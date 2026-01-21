@@ -3,6 +3,7 @@ import { Check, Target, Send } from 'lucide-react'
 import type { UiGoal as Goal } from '../goalTypes'
 
 import { MasteryBar } from './MasteryBar'
+import { isMastered } from '../goalUiUtils'
 
 interface GoalCardProps {
   goal: Goal
@@ -39,7 +40,8 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
   // Detect if Atomic Goal (no children)
   const isAtomic = !goal.contains || goal.contains.length === 0
-  const canSetActive = Boolean(onSetActive && isAtomic && masteryValue < 1 && (isFrontier || isActive))
+  const mastered = isMastered(masteryValue)
+  const canSetActive = Boolean(onSetActive && isAtomic && !mastered && (isFrontier || isActive))
   const activeActionLabel = isActive
     ? 'Zum aktiven Lernziel springen'
     : 'Als aktuelles Lernziel auswählen'
@@ -49,7 +51,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   let iconColor = "text-red-500"
   let strokeWidth = 2
 
-  if (masteryValue >= 1) {
+  if (mastered) {
     StatusIcon = Check
     iconColor = "text-emerald-500"
     strokeWidth = 3
@@ -101,16 +103,16 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                 remarkPlugins={[remarkMath]}
                 rehypePlugins={[rehypeKatex]}
               >
-                {goal.examData.taskContent}
-              </ReactMarkdown>
-            </div>
+            {goal.examData.taskContent}
+          </ReactMarkdown>
+        </div>
 
-            {/* If Mastered, show Solution? Maybe later. For now, just Task. */}
-            {masteryValue >= 1 && (
-              <div className="bg-emerald-50 dark:bg-emerald-900/10 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900/30">
-                <h3 className="text-sm font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wide mb-2 flex items-center gap-2">
-                  <Check size={16} />
-                  Musterlösung
+        {/* If Mastered, show Solution? Maybe later. For now, just Task. */}
+        {mastered && (
+          <div className="bg-emerald-50 dark:bg-emerald-900/10 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900/30">
+            <h3 className="text-sm font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wide mb-2 flex items-center gap-2">
+              <Check size={16} />
+              Musterlösung
                 </h3>
                 <ReactMarkdown
                   remarkPlugins={[remarkMath]}
@@ -136,7 +138,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
         <div className="mt-4 space-y-4">
 
           {/* Frontier Recommendations (When Mastered) */}
-          {masteryValue >= 1 && nextCandidates.length > 0 && onSetActive && (
+          {mastered && nextCandidates.length > 0 && onSetActive && (
             <div className="bg-amber-50 dark:bg-amber-900/10 rounded-xl p-4 border border-amber-100 dark:border-amber-900/30">
               <h3 className="text-xs font-bold text-amber-700 dark:text-amber-500 uppercase tracking-wide mb-3">
                 Nächste Schritte
@@ -160,7 +162,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
 
           {/* Action Buttons Row (Only if NOT Mastered) */}
-          {isAtomic && !isActive && onSetActive && masteryValue < 1 && isFrontier && (
+          {isAtomic && !isActive && onSetActive && !mastered && isFrontier && (
             <div className="flex justify-end">
               <button
                 onClick={() => onSetActive(goal.id)}

@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Pattern;
@@ -273,7 +274,12 @@ public class CurriculaService {
             String curriculumId,
             Map<String, Set<String>> goalToRoots,
             Map<String, List<Mastery>> masteryCache) {
-        long masteredCount = countChampionMastery(curriculumId, champion.getSkillpilotId(), goalToRoots, masteryCache);
+        long masteredCount = countChampionMastery(
+                curriculumId,
+                champion.getTopicId(),
+                champion.getSkillpilotId(),
+                goalToRoots,
+                masteryCache);
         GitHubStatsService.GitHubStats stats = githubStatsService.getStats(champion.getGithubId());
         int issuesCount = stats.issuesCount() >= 0 ? stats.issuesCount() : champion.getIssuesCount();
         int pullRequestsCount = stats.pullRequestsCount() >= 0 ? stats.pullRequestsCount()
@@ -316,12 +322,15 @@ public class CurriculaService {
     }
 
     private long countTotalAtomicGoals(LearningGoal goal) {
+        if (goal == null) {
+            return 0;
+        }
         if (goal.getContains() == null || goal.getContains().isEmpty()) {
             return 1; // It's an atomic goal
         }
         return goal.getContains().stream()
-                .map(id -> landscapeService.getGoalDefinition(id))
-                .filter(java.util.Objects::nonNull)
+                .map(this::resolveGoal)
+                .filter(Objects::nonNull)
                 .mapToLong(this::countTotalAtomicGoals)
                 .sum();
     }
@@ -358,18 +367,46 @@ public class CurriculaService {
 
     private long countChampionMastery(
             String curriculumId,
+            String topicId,
             String skillpilotId,
             Map<String, Set<String>> goalToRoots,
             Map<String, List<Mastery>> masteryCache) {
         if (skillpilotId == null || skillpilotId.isBlank()) {
             return 0;
         }
-        if (goalToRoots == null || goalToRoots.isEmpty()) {
-            return 0;
-        }
         List<Mastery> masteryEntries = masteryCache.computeIfAbsent(
                 skillpilotId,
                 id -> masteryRepository.findByLearner_SkillpilotId(id));
+
+        if (topicId != null && !topicId.isBlank()) {
+            Set<String> atomicIds = collectAtomicGoalIds(topicId);
+            if (atomicIds.isEmpty()) {
+                return 0;
+            }
+            if (goalToRoots != null && !goalToRoots.isEmpty() && curriculumId != null && !curriculumId.isBlank()) {
+                atomicIds.removeIf(id -> {
+                    Set<String> roots = goalToRoots.get(id);
+                    return roots == null || !roots.contains(curriculumId);
+                });
+            }
+            if (atomicIds.isEmpty()) {
+                return 0;
+            }
+            long count = 0;
+            for (Mastery mastery : masteryEntries) {
+                if (mastery.getValue() < MASTERY_THRESHOLD) {
+                    continue;
+                }
+                if (atomicIds.contains(mastery.getGoalKey())) {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        if (goalToRoots == null || goalToRoots.isEmpty()) {
+            return 0;
+        }
         long count = 0;
         for (Mastery mastery : masteryEntries) {
             if (mastery.getValue() < MASTERY_THRESHOLD) {
@@ -381,6 +418,50 @@ public class CurriculaService {
             }
         }
         return count;
+    }
+
+    private Set<String> collectAtomicGoalIds(String rootGoalId) {
+        Set<String> atomic = new HashSet<>();
+        collectAtomicGoalIds(rootGoalId, atomic, new HashSet<>());
+        return atomic;
+    }
+
+    private void collectAtomicGoalIds(String goalRef, Set<String> atomic, Set<String> visiting) {
+        LearningGoal goal = resolveGoal(goalRef);
+        if (goal == null) {
+            return;
+        }
+        String goalId = goal.getId();
+        if (!visiting.add(goalId)) {
+            return;
+        }
+        List<String> contains = goal.getContains();
+        if (contains == null || contains.isEmpty()) {
+            atomic.add(goalId);
+        } else {
+            for (String childRef : contains) {
+                collectAtomicGoalIds(childRef, atomic, visiting);
+            }
+        }
+        visiting.remove(goalId);
+    }
+
+    private LearningGoal resolveGoal(String goalRef) {
+        if (goalRef == null || goalRef.isBlank()) {
+            return null;
+        }
+        LearningGoal direct = landscapeService.getGoalDefinition(goalRef);
+        if (direct != null) {
+            return direct;
+        }
+        int idx = goalRef.indexOf(':');
+        if (idx >= 0 && idx < goalRef.length() - 1) {
+            String suffix = goalRef.substring(idx + 1);
+            if (!suffix.isBlank()) {
+                return landscapeService.getGoalDefinition(suffix);
+            }
+        }
+        return null;
     }
 
     private String selectDefaultCurriculum(Map<String, CurriculumMetrics> metricsByCurriculum,

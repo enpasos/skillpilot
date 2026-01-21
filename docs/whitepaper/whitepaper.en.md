@@ -177,7 +177,7 @@ On import (e.g., transfer, backup), the full **provenance chain** can be carried
 
 ### 5.1 Status Quo: Available Content (Examples)
 
-![QA Status (EN/DE)](qa.de.png)
+![QA Status](qa.en.png)
 
 SkillPilot is not just a concept: it already contains curricula/standards as starting points. The key is the **quality stage**:
 

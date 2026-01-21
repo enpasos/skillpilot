@@ -3,6 +3,7 @@ import { Target, Send, Check, Play } from 'lucide-react'
 import { useTranslation } from '../hooks/useTranslation'
 import type { UiGoal } from '../goalTypes'
 import { sortGoalsTopologically } from '../utils/goalSorter'
+import { isMastered } from '../goalUiUtils'
 
 interface TreeNodeProps {
   goalId: string
@@ -120,6 +121,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
 
   const hasChildren = sortedChildren.length > 0
   const mastery = getMastery(goal.id)
+  const mastered = isMastered(mastery)
   const isPlanned = plannedGoals.has(goal.id)
   const isSelected = selectedId === goal.id
   const isFrontier = frontierIds?.has(goal.id)
@@ -157,7 +159,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             title={`${t.tooltips.progress}: ${(mastery * 100).toFixed(0)}%`}
           >
             <div
-              className={`h-full ${mastery >= 1 ? 'bg-emerald-500' : 'bg-sky-500'}`}
+              className={`h-full ${mastered ? 'bg-emerald-500' : 'bg-sky-500'}`}
               style={{ width: `${mastery * 100}%` }}
             />
           </div>
@@ -167,14 +169,14 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           <div
             className={`mr-1 ${isDimmed
               ? 'text-slate-300 dark:text-slate-600'
-              : mastery >= 1
+              : mastered
                 ? 'text-emerald-500'
                 : isFrontier
                   ? 'text-sky-500 animate-pulse' // Highlight Frontier Icon
                   : 'text-red-500'
               }`}
           >
-            {mastery >= 1 ? (
+            {mastered ? (
               <Check size={16} strokeWidth={3} />
             ) : activeGoalId === goal.id ? (
               <Send size={16} className="text-amber-500" />
@@ -192,7 +194,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             ? 'text-slate-300 dark:text-slate-600' // Dimmed (Outside Scope)
             : isPlanned
               ? 'text-slate-900 dark:text-slate-100 font-medium' // Planned (Focus)
-              : mastery >= 1
+              : mastered
                 ? 'text-slate-500 dark:text-slate-400' // Mastered (Normal Scope)
                 : isFrontier
                   ? 'text-sky-600 dark:text-sky-400 font-semibold' // Frontier (Highlighted)

@@ -11,6 +11,7 @@ import { GoalCard } from '../components/GoalCard'
 import { FlashcardDrill } from '../components/srs/FlashcardDrill'
 import { ProgressPopover } from '../components/ProgressPopover'
 import { useLanguage } from '../contexts/LanguageContext'
+import { isMastered } from '../goalUiUtils'
 
 import type { UiGoal } from '../goalTypes'
 import type { Learner, FrontierGoal } from '../learnerTypes'
@@ -134,7 +135,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       // Atomic Goal
       if (!g.contains || g.contains.length === 0) {
         totalAtomic++
-        if (getMastery(id) >= 1) {
+        if (isMastered(getMastery(id))) {
           masteredAtomic++
         }
       } else {
@@ -171,7 +172,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         const g = goalIndexAll.get(id)
         if (g && (!g.contains || g.contains.length === 0)) {
           totalAtomic++
-          if (getMastery(id) >= 1) {
+          if (isMastered(getMastery(id))) {
             masteredAtomic++
           }
         }
@@ -226,7 +227,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         for (const reqId of g.requires) {
           // Check if requirement is visible? Usually yes.
           // Check mastery.
-          if (getMastery(reqId) < 1) {
+          if (!isMastered(getMastery(reqId))) {
             return false // Blocked by prerequisite
           }
         }
@@ -244,7 +245,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         }
 
         const m = getMastery(id)
-        if (m < 1) {
+        if (!isMastered(m)) {
           ids.add(id)
           return true // Found frontier, branch is active
         }
@@ -458,7 +459,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
     // Check if active goal is mastered
     const currentMastery = getMastery(learnerData.activeGoalId)
-    if (currentMastery >= 1) {
+    if (isMastered(currentMastery)) {
       if (atomicFrontierOptions.length > 0) {
         const next = atomicFrontierOptions[0]
         if (next.id !== learnerData.activeGoalId) {

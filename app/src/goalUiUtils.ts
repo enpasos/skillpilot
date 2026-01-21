@@ -5,6 +5,12 @@ export function levelLabel(level: number) {
   return `Level ${level}`
 }
 
+export const MASTERED_THRESHOLD = 0.9
+
+export function isMastered(value: number): boolean {
+  return value >= MASTERED_THRESHOLD
+}
+
 export function masteryColorClass(value: number): string {
   const v = Math.max(0, Math.min(1, value))
   if (v >= 0.75) return 'bg-mastery-high'
