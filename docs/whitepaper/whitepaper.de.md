@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (DE)
 
-**Version:** 1.0.13
+**Version:** 1.0.14
 **Datum:** Januar 2026
 **Projekt:** SkillPilot
 
@@ -179,6 +179,8 @@ Beim Import (z.B. Wechsel, Backup) kann die komplette **Herkunftskette** mitgef�
 ## 5. Das Ökosystem: Inhalte & Standards
 
 ### 5.1 Status quo: Verfügbare Inhalte (Beispiele)
+
+![QA-Status (EN/DE)](qa.de.png)
 
 SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als Startpunkt. Wichtig ist dabei die **Qualitätsstufe**:
 

@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (EN)
 
-**Version:** 1.0.13
+**Version:** 1.0.14
 **Date:** January 2026
 **Project:** SkillPilot
 
@@ -176,6 +176,8 @@ On import (e.g., transfer, backup), the full **provenance chain** can be carried
 ## 5. The Ecosystem: Content & Standards
 
 ### 5.1 Status Quo: Available Content (Examples)
+
+![QA Status (EN/DE)](qa.de.png)
 
 SkillPilot is not just a concept: it already contains curricula/standards as starting points. The key is the **quality stage**:
 
