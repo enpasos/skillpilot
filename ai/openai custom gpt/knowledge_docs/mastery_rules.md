@@ -104,6 +104,7 @@ Nach fachlich erreichter und gesicherter Mastery:
 - Mastery „auf Wunsch“
 - Mastery nach nur einer trivialen Antwort
 - Mastery trotz falscher oder lückenhafter Lösung
+- Mastery trotz Rechenfehlern oder ohne korrigierte Rechnung
 
 ---
 

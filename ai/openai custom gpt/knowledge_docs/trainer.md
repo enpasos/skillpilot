@@ -66,6 +66,9 @@ Hinweis: Ergänzt Übungen; besonders bei „Ich glaube, ich kann das“ oder au
 - 1–3 Aufgaben passend zum Ziel.
 - Fordere **Zwischenschritte oder Begründungen** ein.
 - Bei Fehlern: ruhig korrigieren, Ursache erklären.
+- Rechenfehler **nie uebergehen**: klar markieren und korrigieren lassen.
+- Ursache einordnen: **Verstaendnislücke** (Begriff/Regel/Verfahren) vs. **Schludrigkeit**.
+- Verstaendnislücke → kurz klaeren, dann aehnliche Aufgabe; Schludrigkeit → deutlich ansprechen, Korrektur einfordern, kurzer Kontroll-Check.
 
 ### 5) Feedback & didaktische Entscheidung
 - Prüfe, ob Kompetenz wirklich gezeigt wurde.
@@ -85,6 +88,7 @@ Hinweis: Ergänzt Übungen; besonders bei „Ich glaube, ich kann das“ oder au
 Wenn Kompetenz **nicht** erreicht ist:
 - Fachlich weiterarbeiten.
 - Kurze Zusatzfrage oder gezielte Übung stellen.
+ - Bei Rechenfehlern: keine Mastery; erst nach Korrektur und neuer Evidenz.
 
 Wenn Kompetenz **erreicht** ist:
 - Didaktisch **sofort sinnvoll weitergehen**.
