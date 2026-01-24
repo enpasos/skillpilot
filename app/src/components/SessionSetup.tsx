@@ -360,7 +360,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                         setSkillpilotId(event.target.value.trim())
                         setHasCheckedId(false) // Hide dropdown while typing
                       }}
-                      onBlur={() => checkLearner(skillpilotId.trim())}
+                      onBlur={() => {
+                        if (!hasCheckedId) {
+                          checkLearner(skillpilotId.trim())
+                        }
+                      }}
                       className="rounded border border-border-color bg-input-bg px-3 py-2 text-sm text-text-primary font-mono focus:border-sky-400 transition-colors"
                       placeholder=""
                       required
