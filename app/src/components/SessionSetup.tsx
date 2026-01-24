@@ -111,12 +111,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         const data = await res.json()
         if (data.selectedCurriculum) {
           setSelectedLandscapeId(data.selectedCurriculum)
-        } else {
+        } else if (!selectedLandscapeId) {
           setSelectedLandscapeId('')
         }
-      } else {
+      } else if (!selectedLandscapeId) {
         // If learner not found (404), we assume it's a new ID (or invalid, but we let them try)
-        // and reset selection
+        // and reset selection only if none chosen yet.
         setSelectedLandscapeId('')
       }
     } catch {
@@ -416,7 +416,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                     <div className="pt-4">
                       <button
                         type="submit"
-                        disabled={(role === 'learner' && !skillpilotId.trim()) || loading || !selectedLandscapeId}
+                        disabled={(role === 'learner' && !skillpilotId.trim()) || !selectedLandscapeId}
                         className="w-full rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 hover:border-sky-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {role === 'trainer' ? t.startPage.login.dashboardButton : t.startPage.login.startButton}
