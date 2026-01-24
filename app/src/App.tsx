@@ -28,6 +28,7 @@ const PUBLIC_PATHS = new Set([
   '/legal',
   '/whitepaper',
   '/story',
+  '/quickstart',
   '/users',
   '/stats',
   '/successes',
@@ -94,6 +95,8 @@ const App: React.FC = () => {
     normalizedActualPath === '/whitepaper' || normalizedActualPath.startsWith('/whitepaper/')
   const isStoryRoute = normalizedPath === '/story' || normalizedPath.startsWith('/story/') ||
     normalizedActualPath === '/story' || normalizedActualPath.startsWith('/story/')
+  const isQuickstartRoute = normalizedPath === '/quickstart' || normalizedPath.startsWith('/quickstart/') ||
+    normalizedActualPath === '/quickstart' || normalizedActualPath.startsWith('/quickstart/')
 
   // Allow public routes to render without session
   // Check both React Router location AND actual window.location for reliability after OAuth redirects
@@ -101,7 +104,8 @@ const App: React.FC = () => {
     PUBLIC_PATHS.has(normalizedPath) ||
     PUBLIC_PATHS.has(normalizedActualPath) ||
     isWhitepaperRoute ||
-    isStoryRoute
+    isStoryRoute ||
+    isQuickstartRoute
 
   // DEBUG: Check why landing page might be empty
   // console.log('Routing State:', { normalizedPath, isPublicRoute, hasSession })
@@ -134,7 +138,10 @@ const App: React.FC = () => {
     const rawPath = location.pathname || '/'
     const path = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '')
     const view = path.split('/')[1] || ''
-    const isPublicPath = PUBLIC_PATHS.has(path) || path === '/whitepaper' || path.startsWith('/whitepaper/')
+    const isPublicPath = PUBLIC_PATHS.has(path) ||
+      path === '/whitepaper' || path.startsWith('/whitepaper/') ||
+      path === '/story' || path.startsWith('/story/') ||
+      path === '/quickstart' || path.startsWith('/quickstart/')
     const isGoalView = GOAL_VIEWS.has(view)
     const hasAccess = hasSession || isPublicPath || path === '/'
     const baseTitle = 'SkillPilot'
@@ -280,6 +287,7 @@ const App: React.FC = () => {
         <Route path="/users" element={<UsersView />} />
         <Route path="/successes" element={<SuccessView />} />
         <Route path="/story/:lang?" element={<StoryView />} />
+        <Route path="/quickstart/:lang?" element={<StoryView />} />
       </Routes>
     )
   }
@@ -459,6 +467,7 @@ const App: React.FC = () => {
       <Route path="/privacy" element={<PrivacyView />} />
       <Route path="/imprint" element={<ImprintView />} />
       <Route path="/story/:lang?" element={<StoryView />} />
+      <Route path="/quickstart/:lang?" element={<StoryView />} />
       <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
 
       <Route path="/" element={<Navigate to="/explorer" />} />

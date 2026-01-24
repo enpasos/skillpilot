@@ -20,8 +20,8 @@ This project is an invitation to the community to jointly build and bring to lif
 - **Developers & designers of SkillPilot:** Dive into the technical docs and UI/UX.
 
 Quick links:
-*   [Schnellstart (DE)](https://skillpilot.com/story/de)
-*   [Quickstart (EN)](https://skillpilot.com/story/en)
+*   [Schnellstart (DE)](https://skillpilot.com/quickstart/de)
+*   [Quickstart (EN)](https://skillpilot.com/quickstart/en)
 *   [Curricula / Champions](https://skillpilot.com/curricula)
 *   [Whitepaper](https://skillpilot.com/whitepaper/en)
 

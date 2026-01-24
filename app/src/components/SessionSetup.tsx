@@ -199,7 +199,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
             </h1>
           </div>
           <Link
-            to={`/story/${language}`}
+            to={`/quickstart/${language}`}
             className="flex items-center gap-2 text-text-secondary hover:text-sky-500 transition-colors"
           >
 

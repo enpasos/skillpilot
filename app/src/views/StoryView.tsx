@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 
@@ -32,6 +32,7 @@ const convertHtmlImagesToMarkdown = (markdown: string) => (
 export const StoryView: React.FC = () => {
     const { language } = useLanguage()
     const { lang } = useParams()
+    const location = useLocation()
     const activeLanguage = useMemo(() => resolveLanguage(lang, language), [lang, language])
     const [content, setContent] = useState('')
     const [loadState, setLoadState] = useState<LoadState>('loading')
@@ -81,6 +82,7 @@ export const StoryView: React.FC = () => {
         }
 
     const switchLanguage = activeLanguage === 'en' ? 'de' : 'en'
+    const basePath = location.pathname.startsWith('/quickstart') ? '/quickstart' : '/story'
 
     return (
         <div className="min-h-screen bg-chat-bg text-text-primary px-4 py-6 sm:px-6 lg:px-10 flex justify-center transition-colors">
@@ -92,7 +94,7 @@ export const StoryView: React.FC = () => {
                     </Link>
                     <div className="flex items-center gap-4 text-sm">
                         <Link
-                            to={`/story/${switchLanguage}`}
+                            to={`${basePath}/${switchLanguage}`}
                             className="text-sky-500 hover:text-sky-400 transition-colors"
                         >
                             {labels.switchLabel}

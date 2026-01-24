@@ -255,6 +255,6 @@ SkillPilot is released as **open source** under the **Apache-2.0 license** - an 
 **Initiator:**  
 The legal entity behind SkillPilot is **enpasos GmbH**. We invite partners to develop SkillPilot further together - in content, didactics, and technology.
 
-Start your pilot immediately and without registration (ID-based): A guide for the 5-minute start can be found at https://skillpilot.com/quickstart.
+Start your pilot immediately and without registration (ID-based): A guide for the 5-minute start can be found at https://skillpilot.com/quickstart/en.
 
 ---
