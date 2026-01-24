@@ -111,13 +111,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         const data = await res.json()
         if (data.selectedCurriculum) {
           setSelectedLandscapeId(data.selectedCurriculum)
-        } else if (!selectedLandscapeId) {
-          setSelectedLandscapeId('')
         }
-      } else if (!selectedLandscapeId) {
-        // If learner not found (404), we assume it's a new ID (or invalid, but we let them try)
-        // and reset selection only if none chosen yet.
-        setSelectedLandscapeId('')
       }
     } catch {
       // Ignore errors, just means we can't pre-fill
