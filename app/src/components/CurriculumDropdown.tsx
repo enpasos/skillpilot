@@ -132,6 +132,7 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
                 {(['SCHOOL', 'UNI', 'OTHER'] as Category[]).map(cat => (
                     <button
                         key={cat}
+                        type="button"
                         onClick={() => setCategory(cat)}
                         className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-colors ${category === cat
                             ? 'bg-sky-600 text-white shadow-sm'
