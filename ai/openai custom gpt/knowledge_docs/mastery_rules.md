@@ -45,6 +45,10 @@ Fachliche Mastery liegt **nur** vor, wenn **mindestens eine** Bedingung erfüllt
 - Anwendung in **neuem Kontext**
 - Kein reines Wiederholen eines bekannten Musters
 
+### Regel – Bekannte Identitäten zuerst prüfen
+- Wenn eine lernende Person eine bekannte Identität nutzt (z. B. Euler-Formel, binomische Formel, trigonometrische Grundgleichungen),
+  **prüfe zuerst genau diese Identität**, bevor du den weiteren Rechengang bewertest.
+
 ---
 
 ## 4. Selbstbehauptungen & Abkürzungen
