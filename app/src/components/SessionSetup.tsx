@@ -133,24 +133,26 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
     const effectiveId = role === 'learner' ? skillpilotId.trim() : ''
 
+    if (role === 'learner' && selectedLandscapeId) {
+      // Save selection to backend before navigation so learner state is in sync.
+      try {
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const url = apiBase ? `${apiBase}/api/ui/learners/${effectiveId}/curriculum` : `/api/ui/learners/${effectiveId}/curriculum`
+        await fetch(url, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ curriculumId: selectedLandscapeId })
+        })
+      } catch (e) {
+        console.error('Failed to save curriculum', e)
+      }
+    }
+
     if (role === 'trainer' && selectedLandscapeId) {
       localStorage.setItem('skillpilot_trainer_landscape', selectedLandscapeId)
     }
 
-    // Navigate immediately; persist selection in the background to avoid double-clicks.
     onStart(effectiveId, selectedLandscapeId, role || undefined)
-
-    if (role === 'learner' && selectedLandscapeId) {
-      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-      const url = apiBase ? `${apiBase}/api/ui/learners/${effectiveId}/curriculum` : `/api/ui/learners/${effectiveId}/curriculum`
-      void fetch(url, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ curriculumId: selectedLandscapeId })
-      }).catch((e) => {
-        console.error('Failed to save curriculum', e)
-      })
-    }
   }
 
   // Effect to restore trainer selection when role changes
