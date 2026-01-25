@@ -37,6 +37,10 @@ public class LandscapeService {
     private volatile Map<String, LearningLandscape> cachedByLegacyId = Collections.emptyMap();
     private volatile Map<String, String> goalIdToLandscapeId = Collections.emptyMap();
     private volatile Set<String> curriculumManifest = Collections.emptySet();
+    private volatile long lastLoadedFingerprint = -1L;
+    private volatile long lastReloadCheck = 0L;
+    private final Object reloadLock = new Object();
+    private static final long RELOAD_CHECK_INTERVAL_MS = 2000L;
 
     public LandscapeService(LandscapeProperties properties, ObjectMapper objectMapper) {
         this.properties = properties;
@@ -45,18 +49,22 @@ public class LandscapeService {
     }
 
     public List<LearningLandscape> getAll() {
+        ensureFresh();
         return cachedLandscapes;
     }
 
     public LearningLandscape getById(String landscapeId) {
+        ensureFresh();
         return cachedById.get(landscapeId);
     }
 
     public String getLandscapeIdForGoal(String goalId) {
+        ensureFresh();
         return goalIdToLandscapeId.get(goalId);
     }
 
     public com.skillpilot.backend.landscape.LearningGoal getGoalDefinition(String goalId) {
+        ensureFresh();
         String landscapeId = goalIdToLandscapeId.get(goalId);
         if (landscapeId == null)
             return null;
@@ -70,10 +78,12 @@ public class LandscapeService {
     }
 
     public List<LearningLandscape> getClosure(String rootId) {
+        ensureFresh();
         return getClosure(rootId, "de");
     }
 
     public List<LearningLandscape> getClosure(String rootId, String lang) {
+        ensureFresh();
         LearningLandscape root = getById(rootId);
         if (root == null) {
             return Collections.emptyList();
@@ -172,6 +182,7 @@ public class LandscapeService {
             cachedLandscapes = Collections.emptyList();
             cachedById = Collections.emptyMap();
             goalIdToLandscapeId = Collections.emptyMap();
+            lastLoadedFingerprint = -1L;
             return;
         }
 
@@ -179,6 +190,7 @@ public class LandscapeService {
         Map<String, LearningLandscape> byId = new HashMap<>();
         Map<String, LearningLandscape> byLegacyId = new HashMap<>();
         Map<String, String> goalIndex = new HashMap<>();
+        long maxLastModified = 0L;
 
         try {
             List<Path> files = Files.walk(dir)
@@ -188,6 +200,14 @@ public class LandscapeService {
                     .sorted()
                     .collect(Collectors.toList());
             for (Path file : files) {
+                try {
+                    long lastModified = Files.getLastModifiedTime(file).toMillis();
+                    if (lastModified > maxLastModified) {
+                        maxLastModified = lastModified;
+                    }
+                } catch (IOException e) {
+                    log.debug("Could not read lastModified for {}", file, e);
+                }
                 try {
                     JsonNode root = objectMapper.readTree(file.toFile());
                     if (root == null || !root.isObject()) {
@@ -264,6 +284,7 @@ public class LandscapeService {
         cachedByLegacyId = Collections.unmodifiableMap(byLegacyId);
         goalIdToLandscapeId = Collections.unmodifiableMap(goalIndex);
         curriculumManifest = loadCurriculumManifest(dir, cachedById);
+        lastLoadedFingerprint = maxLastModified;
         log.info("Loaded {} landscapes and {} goals from {}", loaded.size(), goalIndex.size(), dir);
     }
 
@@ -272,6 +293,7 @@ public class LandscapeService {
     }
 
     public LandscapeOverviewResponse getOverview(String lang) {
+        ensureFresh();
         List<LandscapeSummary> summaries = new ArrayList<>();
 
         for (LearningLandscape ll : cachedLandscapes) {
@@ -478,6 +500,50 @@ public class LandscapeService {
         return hierarchy;
     }
 
+    private void ensureFresh() {
+        long now = System.currentTimeMillis();
+        if (now - lastReloadCheck < RELOAD_CHECK_INTERVAL_MS) {
+            return;
+        }
+        lastReloadCheck = now;
+        Path dir = Path.of(properties.getDirectory()).toAbsolutePath().normalize();
+        long latest = getLatestTimestamp(dir);
+        if (latest <= lastLoadedFingerprint) {
+            return;
+        }
+        synchronized (reloadLock) {
+            if (latest <= lastLoadedFingerprint) {
+                return;
+            }
+            log.info("Landscape files changed ({} > {}), reloading...", latest, lastLoadedFingerprint);
+            loadLandscapes();
+        }
+    }
+
+    private long getLatestTimestamp(Path dir) {
+        if (!Files.isDirectory(dir)) {
+            return -1L;
+        }
+        try {
+            return Files.walk(dir)
+                    .filter(Files::isRegularFile)
+                    .filter(p -> StringUtils.hasText(p.getFileName().toString()))
+                    .filter(p -> p.getFileName().toString().endsWith(".json"))
+                    .mapToLong(p -> {
+                        try {
+                            return Files.getLastModifiedTime(p).toMillis();
+                        } catch (IOException e) {
+                            return 0L;
+                        }
+                    })
+                    .max()
+                    .orElse(0L);
+        } catch (IOException e) {
+            log.warn("Failed to scan landscape directory for changes: {}", dir, e);
+            return lastLoadedFingerprint;
+        }
+    }
+
     private Set<String> loadCurriculumManifest(Path dir, Map<String, LearningLandscape> byId) {
         Path manifestPath = dir.resolve("curriculum_manifest.json");
         if (!Files.exists(manifestPath)) {
@@ -597,6 +663,7 @@ public class LandscapeService {
     }
 
     public List<com.skillpilot.backend.api.FrontierGoal> findGoalsByTopic(String landscapeId, String query) {
+        ensureFresh();
         if (landscapeId == null || query == null || query.isBlank()) {
             return Collections.emptyList();
         }
