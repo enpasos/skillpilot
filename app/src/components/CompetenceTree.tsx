@@ -4,6 +4,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import type { UiGoal } from '../goalTypes'
 import { sortGoalsTopologically } from '../utils/goalSorter'
 import { isMastered } from '../goalUiUtils'
+import { InlineMathText } from './InlineMathText'
 
 interface TreeNodeProps {
   goalId: string
@@ -189,7 +190,9 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           </div>
         )}
 
-        <span
+        <InlineMathText
+          text={goal.title}
+          title={goal.title}
           className={`text-sm truncate flex-1 transition-colors ${isDimmed
             ? 'text-slate-300 dark:text-slate-600' // Dimmed (Outside Scope)
             : isPlanned
@@ -200,10 +203,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                   ? 'text-sky-600 dark:text-sky-400 font-semibold' // Frontier (Highlighted)
                   : 'text-slate-700 dark:text-slate-200' // Open (Normal Scope)
             }`}
-          title={goal.title}
-        >
-          {goal.title}
-        </span>
+        />
 
         {aggregatedPlannedGoals ? (
           <div className="flex items-center gap-1 text-slate-500">

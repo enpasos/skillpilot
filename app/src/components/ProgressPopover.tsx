@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { Check, Activity, X } from 'lucide-react'
 import type { UiGoal } from '../goalTypes'
 import { useTranslation } from '../hooks/useTranslation'
+import { InlineMathText } from './InlineMathText'
 
 interface MasteryHistoryEntry {
     goalId: string
@@ -219,9 +220,11 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
                                                 <Check size={12} strokeWidth={3} />
                                             </div>
                                             <div className="flex-1 min-w-0">
-                                                <div className="font-medium text-slate-700 dark:text-slate-200 truncate" title={item.title}>
-                                                    {item.title}
-                                                </div>
+                                                <InlineMathText
+                                                    text={item.title}
+                                                    title={item.title}
+                                                    className="font-medium text-slate-700 dark:text-slate-200 truncate"
+                                                />
                                                 <div className="text-xs text-slate-400">{item.date}</div>
                                             </div>
                                         </div>

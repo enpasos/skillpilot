@@ -10,6 +10,7 @@ import { LogoutButton } from '../components/LogoutButton'
 import { GoalCard } from '../components/GoalCard'
 import { FlashcardDrill } from '../components/srs/FlashcardDrill'
 import { ProgressPopover } from '../components/ProgressPopover'
+import { InlineMathText } from '../components/InlineMathText'
 import { useLanguage } from '../contexts/LanguageContext'
 import { isMastered } from '../goalUiUtils'
 
@@ -910,7 +911,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             {currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
               <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6">
                 <div className="mb-6 border-b border-border-color pb-4">
-                  <h1 className="text-2xl font-bold text-sky-600 dark:text-sky-400 mb-2">{currentGoal.title}</h1>
+                  <h1 className="text-2xl font-bold text-sky-600 dark:text-sky-400 mb-2">
+                    <InlineMathText text={currentGoal.title} />
+                  </h1>
                   <p className="text-text-secondary">{currentGoal.description}</p>
                 </div>
                 <FlashcardDrill
@@ -973,9 +976,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                           {idx + 1}
                         </span>
                         <div>
-                          <span className="font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors line-clamp-2">
-                            {candidate.title}
-                          </span>
+                          <InlineMathText
+                            text={candidate.title}
+                            className="font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors line-clamp-2"
+                          />
                         </div>
                       </button>
                     ))}

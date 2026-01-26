@@ -4,6 +4,7 @@ import type { UiGoal as Goal } from '../goalTypes'
 
 import { MasteryBar } from './MasteryBar'
 import { isMastered } from '../goalUiUtils'
+import { InlineMathText } from './InlineMathText'
 
 interface GoalCardProps {
   goal: Goal
@@ -65,7 +66,9 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   return (
     <div className="bg-sidebar-bg border border-border-color rounded-3xl p-5 shadow-none dark:shadow-card-2xl transition-colors relative group">
       <div className="flex items-start justify-between gap-2 mb-2">
-        <h2 className="text-2xl font-semibold text-text-primary leading-tight pr-8">{goal.title}</h2>
+        <h2 className="text-2xl font-semibold text-text-primary leading-tight pr-8">
+          <InlineMathText text={goal.title} />
+        </h2>
         <div className="flex items-center gap-2 shrink-0">
           {isAtomic && (
             canSetActive ? (
@@ -150,9 +153,10 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                     onClick={() => onSetActive(candidate.id)}
                     className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-amber-200 dark:border-amber-900/50 hover:border-amber-400 dark:hover:border-amber-500 transition-colors text-left group/item"
                   >
-                    <span className="text-sm font-medium text-slate-700 dark:text-slate-200 group-hover/item:text-amber-600 dark:group-hover/item:text-amber-400">
-                      {candidate.title}
-                    </span>
+                    <InlineMathText
+                      text={candidate.title}
+                      className="text-sm font-medium text-slate-700 dark:text-slate-200 group-hover/item:text-amber-600 dark:group-hover/item:text-amber-400"
+                    />
                     <Send size={14} className="text-amber-400 opacity-0 group-hover/item:opacity-100 transition-opacity" />
                   </button>
                 ))}

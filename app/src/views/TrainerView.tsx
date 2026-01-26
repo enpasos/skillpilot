@@ -4,6 +4,7 @@ import { GoalCard } from '../components/GoalCard'
 import { NeighborSection } from '../components/NeighborSection'
 import { ClassSetup } from '../components/ClassSetup'
 import { ConfirmModal } from '../components/ConfirmModal'
+import { InlineMathText } from '../components/InlineMathText'
 import { LogoutButton } from '../components/LogoutButton'
 import { useCompetenceGraph } from '../hooks/useCompetenceGraph'
 import type { LandscapeEntry } from '../hooks/useLandscapes'
@@ -549,7 +550,13 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       <aside className="w-1/3 min-w-[320px] border-r border-border-color flex flex-col bg-sidebar-bg">
         <div className="p-4 border-b border-border-color bg-sidebar-bg">
           <div className="text-xs uppercase text-text-secondary font-bold mb-1">{t.currentContext}</div>
-          <div className="font-medium text-text-primary truncate mb-2">{currentGoal?.title}</div>
+          {currentGoal && (
+            <InlineMathText
+              text={currentGoal.title}
+              title={currentGoal.title}
+              className="font-medium text-text-primary truncate mb-2"
+            />
+          )}
         </div>
         <div className="flex-1 p-2 overflow-y-auto">
           <CompetenceTree

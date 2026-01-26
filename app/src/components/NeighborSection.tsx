@@ -1,6 +1,7 @@
 import React from 'react'
 import type { UiGoal as Goal } from '../goalTypes'
 import { masteryColorClass } from '../goalUiUtils'
+import { InlineMathText } from './InlineMathText'
 
 interface NeighborSectionProps {
   title: string
@@ -46,7 +47,10 @@ export const NeighborSection: React.FC<NeighborSectionProps> = ({
                   }`}
               >
                 <div className="min-w-0">
-                  <div className="font-semibold text-text-primary">{goal.title}</div>
+                  <InlineMathText
+                    text={goal.title}
+                    className="font-semibold text-text-primary"
+                  />
                 </div>
                 {showMastery && <MasteryDot value={value} />}
               </button>
