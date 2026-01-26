@@ -387,7 +387,12 @@ public class LearnerService {
             List<String> requires = effectiveRequires.getOrDefault(goal.getId(), goal.getRequires());
             if (requires != null) {
                 for (String reqId : requires) {
-                    Double reqMastery = effectiveMastery.getOrDefault(reqId, 0.0);
+                    String resolvedReqId = resolveGoalRef(reqId, allGoals);
+                    if (resolvedReqId == null) {
+                        // Ignore prerequisites not present in the filtered goal set
+                        continue;
+                    }
+                    Double reqMastery = effectiveMastery.getOrDefault(resolvedReqId, 0.0);
                     if (reqMastery < 0.9) {
                         prerequisitesMet = false;
                         break;
@@ -420,10 +425,9 @@ public class LearnerService {
         Map<String, LearningGoal> allStructuralGoals = getFilteredGoals(curriculumId, "{}");
 
         Map<String, Double> masteryMap = getMastery(skillpilotId);
-        // We use Structural Goals for mastery calculation to ensure hidden
-        // prerequisites are found.
-        Map<String, Double> effectiveMastery = computeEffectiveMastery(allStructuralGoals, masteryMap);
-        Map<String, List<String>> effectiveRequires = computeEffectiveRequires(allStructuralGoals);
+        // Optimistic mode: apply filters first, then evaluate requires/mastery
+        Map<String, Double> effectiveMastery = computeEffectiveMastery(allFilteredGoals, masteryMap);
+        Map<String, List<String>> effectiveRequires = computeEffectiveRequires(allFilteredGoals);
 
         // Calculate Scope (Plan + Descendants + Prerequisites)
         List<String> plannedIds = getPlannedGoals(skillpilotId);
@@ -466,14 +470,19 @@ public class LearnerService {
             List<String> requires = effectiveRequires.getOrDefault(goal.getId(), goal.getRequires());
             if (requires != null) {
                 for (String reqId : requires) {
+                    String resolvedReqId = resolveGoalRef(reqId, allFilteredGoals);
+                    if (resolvedReqId == null) {
+                        // Ignore prerequisites that are filtered out or unknown in the current focus
+                        continue;
+                    }
                     // PRAGMATIC FILTERING:
                     // If a prerequisite is NOT in scope (and we have a restricted scope), ignore
                     // it.
-                    if (!plannedIds.isEmpty() && !scope.contains(reqId)) {
+                    if (!plannedIds.isEmpty() && !scope.contains(resolvedReqId)) {
                         continue;
                     }
 
-                    Double reqMastery = effectiveMastery.getOrDefault(reqId, 0.0);
+                    Double reqMastery = effectiveMastery.getOrDefault(resolvedReqId, 0.0);
                     if (reqMastery < 0.9) {
                         prerequisitesMet = false;
                         break;
@@ -986,6 +995,28 @@ public class LearnerService {
         memo.put(goalId, result);
         visiting.remove(goalId);
         return result;
+    }
+
+    private String resolveGoalRef(String ref, Map<String, LearningGoal> allGoals) {
+        if (ref == null || ref.isBlank() || allGoals == null || allGoals.isEmpty()) {
+            return null;
+        }
+        if (allGoals.containsKey(ref)) {
+            return ref;
+        }
+        if (ref.contains(":")) {
+            String[] parts = ref.split(":", 2);
+            if (parts.length == 2 && allGoals.containsKey(parts[1])) {
+                return parts[1];
+            }
+        }
+        String suffix = ":" + ref;
+        for (String key : allGoals.keySet()) {
+            if (key.endsWith(suffix)) {
+                return key;
+            }
+        }
+        return null;
     }
 
     private void collectDescendants(String goalId, Map<String, LearningGoal> allGoals, Set<String> result) {

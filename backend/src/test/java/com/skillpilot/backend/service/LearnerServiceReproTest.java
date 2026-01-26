@@ -174,6 +174,66 @@ public class LearnerServiceReproTest {
     }
 
     @Test
+    void testFilteredPrereqDoesNotBlockAtomicFrontier() throws Exception {
+        try {
+            // Setup:
+            // - Visible atomic requires a hidden (filtered-out) prerequisite.
+            // - Filter is "LK", hidden prereq is "GK".
+            // Expected: Visible atomic remains in frontier (optimistic filtering).
+
+            Map<String, Object> personalConfig = new HashMap<>();
+            personalConfig.put("test-landscape", Map.of("selected", true, "filterId", "LK"));
+            String configJson = new ObjectMapper().writeValueAsString(personalConfig);
+
+            learner.setSelectedCurriculum("test-landscape");
+            learner.setPersonalCurriculum(configJson);
+
+            LearningGoal hidden = goal("Hidden", null, null);
+            hidden.setTags(List.of("GK"));
+
+            LearningGoal visible = goal("Visible", List.of("Hidden"), null);
+            visible.setTags(List.of("LK"));
+
+            LearningGoal cluster = goal("Cluster", null, List.of("Hidden", "Visible"));
+            cluster.setTags(List.of("LK"));
+
+            LearningLandscape landscape = new LearningLandscape();
+            landscape.setLandscapeId("test-landscape");
+            landscape.setTitle("Test");
+            landscape.setDescription("Desc");
+            landscape.setCountry("DE");
+            landscape.setRegion("HES");
+            landscape.setSchoolType("GYM");
+            landscape.setSubject("Math");
+            landscape.setLocale("de-DE");
+            landscape.setGoals(List.of(cluster, hidden, visible));
+
+            when(landscapeService.getById("test-landscape")).thenReturn(landscape);
+            when(landscapeService.getClosure("test-landscape")).thenReturn(List.of(landscape));
+
+            // Plan: Cluster
+            when(plannedGoalRepository.findByLearner_SkillpilotId("test-learner"))
+                    .thenReturn(List.of(new com.skillpilot.backend.domain.PlannedGoal(learner, "Cluster")));
+
+            // Mastery: None
+            when(masteryRepository.findByLearner_SkillpilotId("test-learner")).thenReturn(Collections.emptyList());
+
+            // Run getRichFrontier
+            List<FrontierGoal> frontier = learnerService.getRichFrontier("test-learner");
+
+            System.out.println("DEBUG: testFilteredPrereqDoesNotBlockAtomicFrontier Frontier: " + frontier);
+
+            // Assertions
+            assertThat(frontier).isNotEmpty();
+            assertThat(frontier).anyMatch(g -> g.id().equals("Visible"));
+            assertThat(frontier).anyMatch(g -> g.id().equals("Visible") && "atomic".equals(g.type()));
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
     void testPhantomPlannedGoalReturnsTopLevel() throws Exception {
         try {
             // Setup: Plan is "PhantomID" (does not exist in Landscape).
