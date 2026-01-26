@@ -3,6 +3,7 @@ package com.skillpilot.backend.service;
 import com.skillpilot.backend.events.LearnerStateChangedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
@@ -76,6 +77,31 @@ public class SseService {
             }
         } else {
             log.debug("No active SSE emitters for learner: {}", id);
+        }
+    }
+
+    @Scheduled(fixedRate = 25000)
+    public void sendHeartbeat() {
+        long now = System.currentTimeMillis();
+        for (Map.Entry<String, java.util.List<SseEmitter>> entry : emitters.entrySet()) {
+            java.util.List<SseEmitter> userEmitters = entry.getValue();
+            if (userEmitters == null || userEmitters.isEmpty()) {
+                emitters.remove(entry.getKey());
+                continue;
+            }
+            for (SseEmitter emitter : userEmitters) {
+                try {
+                    emitter.send(SseEmitter.event()
+                            .name("heartbeat")
+                            .data(Map.of("timestamp", now)));
+                } catch (IOException e) {
+                    log.warn("Failed to send SSE heartbeat", e);
+                    userEmitters.remove(emitter);
+                }
+            }
+            if (userEmitters.isEmpty()) {
+                emitters.remove(entry.getKey());
+            }
         }
     }
 }

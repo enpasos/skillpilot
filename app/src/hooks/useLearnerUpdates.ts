@@ -2,6 +2,10 @@ import { useEffect, useRef } from 'react'
 
 export function useLearnerUpdates(skillpilotId: string, onUpdate: () => void) {
     const onUpdateRef = useRef(onUpdate)
+    const eventSourceRef = useRef<EventSource | null>(null)
+    const retryTimeoutRef = useRef<number | null>(null)
+    const retryDelayRef = useRef<number>(1000)
+    const lastEventRef = useRef<number>(0)
 
     useEffect(() => {
         onUpdateRef.current = onUpdate
@@ -18,44 +22,81 @@ export function useLearnerUpdates(skillpilotId: string, onUpdate: () => void) {
 
         console.log('[SSE] Attempting to connect to:', url)
 
-        // Using native EventSource
-        const eventSource = new EventSource(url)
-
-        eventSource.onopen = () => {
-            console.log('[SSE] ✅ Connection OPENED, readyState:', eventSource.readyState)
+        const triggerUpdate = () => {
+            lastEventRef.current = Date.now()
+            onUpdateRef.current?.()
         }
 
-        // Listen for the custom "connected" event from backend
-        eventSource.addEventListener('connected', (event) => {
-            console.log('[SSE] 🔗 Received "connected" event:', event.data)
-        })
-
-        // Listen for the custom "message" event (named event, not default)
-        eventSource.addEventListener('message', (event) => {
-            console.log('[SSE] 📨 Received "message" event:', event.data)
-            if (onUpdateRef.current) {
-                console.log('[SSE] 🔄 Triggering onUpdate callback')
-                onUpdateRef.current()
-            }
-        })
-
-        // Default onmessage handler (for unnamed events)
-        eventSource.onmessage = (event) => {
-            console.log('[SSE] 📩 Received default message event:', event.data)
-            if (onUpdateRef.current) {
-                onUpdateRef.current()
+        const clearRetry = () => {
+            if (retryTimeoutRef.current !== null) {
+                window.clearTimeout(retryTimeoutRef.current)
+                retryTimeoutRef.current = null
             }
         }
 
-        eventSource.onerror = (err) => {
-            console.warn('[SSE] ❌ Connection error, readyState:', eventSource.readyState, err)
-            // EventSource automatically reconnects on error
+        const connect = () => {
+            clearRetry()
+            const eventSource = new EventSource(url)
+            eventSourceRef.current = eventSource
+
+            eventSource.onopen = () => {
+                console.log('[SSE] ✅ Connection OPENED, readyState:', eventSource.readyState)
+                retryDelayRef.current = 1000
+                lastEventRef.current = Date.now()
+            }
+
+            eventSource.addEventListener('connected', (event) => {
+                console.log('[SSE] 🔗 Received "connected" event:', event.data)
+                triggerUpdate()
+            })
+
+            eventSource.addEventListener('heartbeat', (event) => {
+                console.log('[SSE] 💓 Heartbeat', event.data)
+                lastEventRef.current = Date.now()
+            })
+
+            eventSource.onmessage = (event) => {
+                console.log('[SSE] 📩 Received message event:', event.data)
+                triggerUpdate()
+            }
+
+            eventSource.onerror = (err) => {
+                console.warn('[SSE] ❌ Connection error, readyState:', eventSource.readyState, err)
+                eventSource.close()
+                eventSourceRef.current = null
+                const delay = retryDelayRef.current
+                retryDelayRef.current = Math.min(retryDelayRef.current * 2, 30000)
+                retryTimeoutRef.current = window.setTimeout(connect, delay)
+            }
         }
+
+        connect()
+
+        const watchdogId = window.setInterval(() => {
+            const ageMs = Date.now() - lastEventRef.current
+            if (ageMs > 60000) {
+                console.warn('[SSE] ⚠️ No heartbeat for', ageMs, 'ms; reconnecting')
+                eventSourceRef.current?.close()
+                eventSourceRef.current = null
+                connect()
+            }
+        }, 30000)
+
+        const handleVisibility = () => {
+            if (document.visibilityState === 'visible') {
+                console.log('[SSE] 👀 Tab visible; forcing refresh')
+                triggerUpdate()
+            }
+        }
+        document.addEventListener('visibilitychange', handleVisibility)
 
         return () => {
             console.log('[SSE] 🔌 Closing connection')
-            eventSource.close()
+            eventSourceRef.current?.close()
+            eventSourceRef.current = null
+            clearRetry()
+            window.clearInterval(watchdogId)
+            document.removeEventListener('visibilitychange', handleVisibility)
         }
     }, [skillpilotId])
 }
-

@@ -26,6 +26,7 @@ The backend uses an event-driven approach to decouple the business logic from th
     - Maintains a concurrent map of active `SseEmitter`s keyed by `skillpilotId`.
     - Implements an `@EventListener` for `LearnerStateChangedEvent`.
     - When an event is received, it looks up the emitter for the target learner and pushes a JSON notification.
+    - **Heartbeat**: sends a `heartbeat` event every ~25s to keep connections alive through proxies and load balancers.
 4.  **API Endpoint (`UpdateController`)**:
     - `GET /api/ui/updates/{skillpilotId}`
     - Returns `text/event-stream`.
@@ -37,7 +38,9 @@ The frontend manages the connection lifecycle and reacts to incoming events.
 1.  **Hook (`useLearnerUpdates`)**:
     - Accepts `skillpilotId`.
     - Opens an `EventSource` connection to `/api/ui/updates/{skillpilotId}`.
-    - Handles automatic reconnection (native to `EventSource`).
+    - Uses explicit reconnect with exponential backoff on errors.
+    - Listens for `heartbeat` to detect stale connections.
+    - No polling (to avoid load).
 2.  **Consumption**:
     - Listens for specific event types.
     - Triggers `refreshMastery()` or other data re-fetch logic in `useLearnerProgress` when a notification is received.
@@ -52,11 +55,14 @@ The frontend manages the connection lifecycle and reacts to incoming events.
 data: {"type": "MASTERY_UPDATE", "timestamp": 123456789}
 
 data: {"type": "ACTIVE_GOAL_UPDATE", "timestamp": 123456799}
+
+event: heartbeat
+data: {"timestamp": 123456820}
 ```
 
 ### Security Considerations
 - The SSE endpoint must be secured similarly to other learner endpoints (currently based on `skillpilotId` knowledge, future JWT integration).
-- Heartbeats should be sent (or comment lines) to keep the connection alive ensuring proxies don't kill it.
+- Heartbeats are sent periodically to keep the connection alive and to let the client detect stale streams.
 
 ## 5. Scalability Considerations
 
