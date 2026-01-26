@@ -3,7 +3,7 @@ import { useLearnerUpdates } from '../hooks/useLearnerUpdates'
 import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
-import { Settings, Upload, Download, Menu, X, Target, Send, Check } from 'lucide-react'
+import { Settings, Upload, Download, Menu, X, Target, Send, Check, MoveRight } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -801,6 +801,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               <span className="flex items-center gap-1 font-bold text-red-500" title={t.learner.totalInContext}>
                 {stats.totalAtomic} <Target size={16} />
               </span>
+              <MoveRight size={12} className="text-slate-400" />
               <button
                 className="text-slate-400 dark:text-slate-500 flex items-center gap-1 text-[10px] hover:text-sky-500 transition-colors"
                 onClick={revealActiveGoal}
@@ -808,6 +809,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               >
                 <Send size={16} className="text-amber-500" />
               </button>
+              <MoveRight size={12} className="text-slate-400" />
               <ProgressPopover skillpilotId={skillpilotId} goalIndexAll={goalIndexAll}>
                 <button
                   className="flex items-center gap-1 font-bold text-emerald-500 hover:text-emerald-400 transition-colors"
