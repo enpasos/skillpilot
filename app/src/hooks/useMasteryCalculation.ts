@@ -52,8 +52,7 @@ export function useMasteryCalculation(
           })
         }
 
-        visited.remove(gId)
-        const result = weightSum > 0 ? masterySum / weightSum : 0
+        visited.delete(gId)
         masteryCache.set(gId, { masterySum, weightSum })
         return { masterySum, weightSum }
       }

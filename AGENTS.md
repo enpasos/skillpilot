@@ -98,6 +98,10 @@ Semantics (the “meaning”) of those fields is:
 - `weight`  
   Relative importance of this goal for **progress and later grading**.  
   Used to compute weighted averages over sets of goals (e.g. all E1 core goals).
+  - **Hessen Math (Gymnasiale Oberstufe, KC 2024):**  
+    Atomic goals use `weight = 1`.  
+    Cluster goals use `weight = (# of unique atomic descendants)` so progress is proportional to actual goal count.  
+    If a goal appears under multiple parents, clusters count that atomic goal only once (set‑union) to avoid double counting.
 
 - `requires`  
   List of IDs that are **didactic prerequisites** for this goal.  

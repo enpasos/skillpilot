@@ -126,6 +126,10 @@ Hessian math landscape as a concrete reference.
 - Example: `1.5`
 - Used by: `app/src/hooks/useMasteryCalculation.ts` (weighted aggregation)
 - Status: used
+- Notes:
+  - **Hessen Math (Gymnasiale Oberstufe, KC 2024):** atomic goals use `weight = 1`.  
+    Cluster goals use `weight = (# of unique atomic descendants)` so progress is proportional to actual goal count.  
+    If a goal appears under multiple parents, clusters count that atomic goal only once (set‑union) to avoid double counting.
 
 ### tags
 - Type: string[]
