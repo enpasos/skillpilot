@@ -11,49 +11,54 @@ export function useMasteryCalculation(
       if (!masteryMap) return 0
 
       // Cache for the duration of a single top-level call
-      const masteryCache = new Map<string, number>()
+      const masteryCache = new Map<string, { masterySum: number; weightSum: number }>()
 
       const getMasteryRecursive = (
         gId: string,
         visited: Set<string> = new Set(),
-      ): number => {
+      ): { masterySum: number; weightSum: number } => {
         if (masteryCache.has(gId)) {
           return masteryCache.get(gId)!
         }
-        if (visited.has(gId)) return 0 // Circular dependency
+        if (visited.has(gId)) return { masterySum: 0, weightSum: 0 } // Circular dependency
 
         visited.add(gId)
         const goal = goalIndexAll.get(gId)
-        if (!goal) return 0
+        if (!goal) return { masterySum: 0, weightSum: 0 }
 
-        let result: number
+        let masterySum = 0
+        let weightSum = 0
+
         if (!goal.contains || goal.contains.length === 0) {
+          let masteryValue = 0
           // Priority: Check direct UUID match first (new backend standard)
           if (masteryMap[gId] !== undefined) {
-            result = masteryMap[gId]
+            masteryValue = masteryMap[gId]
           } else {
             // Fallback: Check shortKey (legacy standard)
             const key = goalShortKeyMap.get(gId)
-            result = key ? masteryMap[key] ?? 0 : 0
+            masteryValue = key ? masteryMap[key] ?? 0 : 0
           }
+          const weight = goal.weight ?? 1
+          masterySum = masteryValue * weight
+          weightSum = weight
         } else {
-          let totalWeightedMastery = 0
-          let totalWeight = 0
           goal.contains.forEach((childId) => {
             const childGoal = goalIndexAll.get(childId)
-            if (childGoal) {
-              const childMastery = getMasteryRecursive(childId, new Set(visited))
-              const childWeight = childGoal.weight ?? 1
-              totalWeightedMastery += childMastery * childWeight
-              totalWeight += childWeight
-            }
+            if (!childGoal) return
+            const childTotals = getMasteryRecursive(childId, new Set(visited))
+            masterySum += childTotals.masterySum
+            weightSum += childTotals.weightSum
           })
-          result = totalWeight > 0 ? totalWeightedMastery / totalWeight : 0
         }
-        masteryCache.set(gId, result)
-        return result
+
+        visited.remove(gId)
+        const result = weightSum > 0 ? masterySum / weightSum : 0
+        masteryCache.set(gId, { masterySum, weightSum })
+        return { masterySum, weightSum }
       }
-      return getMasteryRecursive(goalId)
+      const totals = getMasteryRecursive(goalId)
+      return totals.weightSum > 0 ? totals.masterySum / totals.weightSum : 0
     },
     [goalIndexAll, goalShortKeyMap],
   )

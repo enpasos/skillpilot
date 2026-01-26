@@ -97,7 +97,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const { neighbors } = useCompetenceGraph(currentGoal, landscapeGoals)
 
   // --- MASTERY CALCULATION ---
-  const masteryCache = useMemo(() => new Map<string, number>(), [])
+  const masteryCache = useMemo(() => new Map<string, { masterySum: number; weightSum: number }>(), [])
   const getStudentMastery = useCallback(
     (goalId: string): number => {
       // For __ALL__ students view, studentMasteryMap will not be directly used at this top level
@@ -105,19 +105,22 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       const studentMasteryMap = masteryByStudent.get(currentLearnerId)
       if (currentLearnerId !== '__ALL__' && !studentMasteryMap) return 0
 
-      const getMasteryRecursive = (gId: string, visited: Set<string> = new Set()): number => {
+      const getMasteryRecursive = (gId: string, visited: Set<string> = new Set()): { masterySum: number; weightSum: number } => {
         if (masteryCache.has(gId)) return masteryCache.get(gId)!
-        if (visited.has(gId)) return 0 // Circular dependency
+        if (visited.has(gId)) return { masterySum: 0, weightSum: 0 } // Circular dependency
 
         visited.add(gId)
         const goal = goalIndexAll.get(gId)
-        if (!goal) return 0
+        if (!goal) return { masterySum: 0, weightSum: 0 }
 
-        let result: number
+        let masterySum = 0
+        let weightSum = 0
+
         if (!goal.contains || goal.contains.length === 0) {
+          let masteryValue = 0
           if (currentLearnerId === '__ALL__') {
             const key = goalShortKeyMap.get(gId)
-            if (!key) return 0
+            if (!key) return { masterySum: 0, weightSum: 0 }
             let totalMasteryForGoal = 0
             let studentsCounted = 0
             masteryByStudent.forEach((studentMap) => {
@@ -125,30 +128,30 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               totalMasteryForGoal += studentMastery
               studentsCounted++
             })
-            result = studentsCounted > 0 ? totalMasteryForGoal / studentsCounted : 0
+            masteryValue = studentsCounted > 0 ? totalMasteryForGoal / studentsCounted : 0
           } else {
             // Existing logic for single student view
             const key = goalShortKeyMap.get(gId)
-            result = key ? studentMasteryMap?.[key] ?? 0 : 0
+            masteryValue = key ? studentMasteryMap?.[key] ?? 0 : 0
           }
+          const weight = goal.weight ?? 1
+          masterySum = masteryValue * weight
+          weightSum = weight
         } else {
-          let totalWeightedMastery = 0
-          let totalWeight = 0
           goal.contains.forEach((childId) => {
             const childGoal = goalIndexAll.get(childId)
             if (childGoal) {
-              const childMastery = getMasteryRecursive(childId, new Set(visited))
-              const childWeight = childGoal.weight ?? 1
-              totalWeightedMastery += childMastery * childWeight
-              totalWeight += childWeight
+              const childTotals = getMasteryRecursive(childId, new Set(visited))
+              masterySum += childTotals.masterySum
+              weightSum += childTotals.weightSum
             }
           })
-          result = totalWeight > 0 ? totalWeightedMastery / totalWeight : 0
         }
-        masteryCache.set(gId, result)
-        return result
+        masteryCache.set(gId, { masterySum, weightSum })
+        return { masterySum, weightSum }
       }
-      return getMasteryRecursive(goalId)
+      const totals = getMasteryRecursive(goalId)
+      return totals.weightSum > 0 ? totals.masterySum / totals.weightSum : 0
     },
     [currentLearnerId, masteryByStudent, goalIndexAll, goalShortKeyMap, masteryCache],
   )
