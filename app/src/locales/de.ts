@@ -95,6 +95,7 @@ export const de = {
         myGoals: "Meine Lernziele",
         marked: "markiert",
         completed: "abgeschlossen",
+        totalInContext: "Ziele im Kontext",
         of: "von",
         includesDataFrom: "Enthält Daten von",
         nextSteps: "Als nächste Lernziele stehen dir offen:",

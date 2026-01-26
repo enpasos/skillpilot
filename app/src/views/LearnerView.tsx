@@ -798,6 +798,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           <div className="flex-1 min-w-0 mr-2">
             <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate">{t.learner.myGoals}</h2>
             <div className="text-xs flex items-center gap-2 mt-1">
+              <span className="flex items-center gap-1 font-bold text-red-500" title={t.learner.totalInContext}>
+                {stats.totalAtomic} <Target size={16} />
+              </span>
+              <button
+                className="text-slate-400 dark:text-slate-500 flex items-center gap-1 text-[10px] hover:text-sky-500 transition-colors"
+                onClick={revealActiveGoal}
+                title="Gehe zum aktiven Ziel / Go to active goal"
+              >
+                <Send size={16} className="text-amber-500" />
+              </button>
               <ProgressPopover skillpilotId={skillpilotId} goalIndexAll={goalIndexAll}>
                 <button
                   className="flex items-center gap-1 font-bold text-emerald-500 hover:text-emerald-400 transition-colors"
@@ -806,16 +816,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   {stats.masteredAtomic} <Check size={16} strokeWidth={3} />
                 </button>
               </ProgressPopover>
-              <button
-                className="text-slate-400 dark:text-slate-500 flex items-center gap-1 text-[10px] hover:text-sky-500 transition-colors"
-                onClick={revealActiveGoal}
-                title="Gehe zum aktiven Ziel / Go to active goal"
-              >
-                <Send size={16} className="text-amber-500" />
-              </button>
-              <span className="flex items-center gap-1 font-bold text-red-500" title="Total">
-                {stats.totalAtomic} <Target size={16} />
-              </span>
             </div>
           </div>
           <div className="flex items-center gap-1 shrink-0">
