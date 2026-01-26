@@ -22,12 +22,10 @@ type Role = 'learner' | 'trainer' | 'explorer'
 
 const PUBLIC_PATHS = new Set([
   '/curricula',
-  '/hall-of-fame',
   '/privacy',
   '/imprint',
   '/legal',
   '/whitepaper',
-  '/story',
   '/quickstart',
   '/users',
   '/stats',
@@ -93,8 +91,6 @@ const App: React.FC = () => {
   const normalizedActualPath = actualPath === '/' ? '/' : actualPath.replace(/\/+$/, '')
   const isWhitepaperRoute = normalizedPath === '/whitepaper' || normalizedPath.startsWith('/whitepaper/') ||
     normalizedActualPath === '/whitepaper' || normalizedActualPath.startsWith('/whitepaper/')
-  const isStoryRoute = normalizedPath === '/story' || normalizedPath.startsWith('/story/') ||
-    normalizedActualPath === '/story' || normalizedActualPath.startsWith('/story/')
   const isQuickstartRoute = normalizedPath === '/quickstart' || normalizedPath.startsWith('/quickstart/') ||
     normalizedActualPath === '/quickstart' || normalizedActualPath.startsWith('/quickstart/')
 
@@ -104,7 +100,6 @@ const App: React.FC = () => {
     PUBLIC_PATHS.has(normalizedPath) ||
     PUBLIC_PATHS.has(normalizedActualPath) ||
     isWhitepaperRoute ||
-    isStoryRoute ||
     isQuickstartRoute
 
   // DEBUG: Check why landing page might be empty
@@ -140,7 +135,6 @@ const App: React.FC = () => {
     const view = path.split('/')[1] || ''
     const isPublicPath = PUBLIC_PATHS.has(path) ||
       path === '/whitepaper' || path.startsWith('/whitepaper/') ||
-      path === '/story' || path.startsWith('/story/') ||
       path === '/quickstart' || path.startsWith('/quickstart/')
     const isGoalView = GOAL_VIEWS.has(view)
     const hasAccess = hasSession || isPublicPath || path === '/'
@@ -167,7 +161,7 @@ const App: React.FC = () => {
     let description = defaultDescription
 
     if (isPublicPath) {
-      if (path === '/curricula' || path === '/hall-of-fame') {
+      if (path === '/curricula') {
         const curriculaTitle = t.startPage.cards.curricula?.title || 'Curricula'
         title = `${curriculaTitle} | ${baseTitle}`
         description = t.curriculaPage.subtitle || defaultDescription
@@ -282,11 +276,9 @@ const App: React.FC = () => {
         <Route path="/privacy" element={<PrivacyView />} />
         <Route path="/imprint" element={<ImprintView />} />
         <Route path="/curricula" element={<CurriculaView />} />
-        <Route path="/hall-of-fame" element={<Navigate to="/curricula" replace />} />
         <Route path="/stats" element={<StatsView />} />
         <Route path="/users" element={<UsersView />} />
         <Route path="/successes" element={<SuccessView />} />
-        <Route path="/story/:lang?" element={<StoryView />} />
         <Route path="/quickstart/:lang?" element={<StoryView />} />
       </Routes>
     )
@@ -466,7 +458,6 @@ const App: React.FC = () => {
       <Route path="/legal" element={<LegalView />} />
       <Route path="/privacy" element={<PrivacyView />} />
       <Route path="/imprint" element={<ImprintView />} />
-      <Route path="/story/:lang?" element={<StoryView />} />
       <Route path="/quickstart/:lang?" element={<StoryView />} />
       <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
 
