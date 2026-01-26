@@ -24,7 +24,7 @@
       "titleEn": "Mathematics",
       "description": "Oberziel über alle Kursphasen hinweg: Die lernende Person kann die im Kerncurriculum beschriebenen Kompetenzen in allen Themenfeldern sicher anwenden.",
       "descriptionEn": "Overarching goal across all course phases: The learner can safely apply the competencies described in the core curriculum in all topic areas.",
-      "weight": 303.0,
+      "weight": 304.0,
       "tags": [
         "GK",
         "LK"
@@ -101,7 +101,7 @@
       "titleEn": "Grade 12",
       "description": "Bündelt Q1 und Q2 der Qualifikationsphase.",
       "descriptionEn": "Bundles Q1 and Q2 of the qualification phase.",
-      "weight": 80.0,
+      "weight": 81.0,
       "tags": [
         "GK",
         "LK"
@@ -8974,7 +8974,7 @@
       "titleEn": "Q2 Analytic Geometry, Linear Algebra and Deepening of Analysis",
       "description": "Überblicksknoten für Q2.1 Vertiefung der Analysis, Q2.2 Orientieren und Bewegen im Raum, Q2.3 Geraden und Ebenen im Raum, Q2.4 Matrizen für Übergangsprozesse sowie Q2.5 Matrizen für lineare geometrische Abbildungen.",
       "descriptionEn": "Overview node for Q2.1 Deepening of Calculus, Q2.2 Orientation and Movement in Space, Q2.3 Lines and Planes in Space, Q2.4 Matrices for Transition Processes, and Q2.5 Matrices for Linear Geometric Mappings.",
-      "weight": 56.0,
+      "weight": 57.0,
       "tags": [
         "GK",
         "LK"
@@ -9804,7 +9804,7 @@
       "titleEn": "Q2.3 Lines and Planes in Space",
       "description": "Geraden und Ebenen mit Vektorgleichungen und Koordinaten beschreiben, Lagebeziehungen (schneidend, parallel, windschief) untersuchen, Schnittpunkte, Winkel und Abstände berechnen und Anwendungen bearbeiten.",
       "descriptionEn": "Describing lines and planes with vector equations and coordinates, investigating positional relationships (intersecting, parallel, skew), calculating intersection points, angles, and distances, and working on applications.",
-      "weight": 14.0,
+      "weight": 15.0,
       "tags": [
         "GK",
         "LK"
@@ -9964,7 +9964,9 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "df8dcdcf-9ee4-5023-9e3d-c6aa59965820"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
         "demandLevel": "AB1",
@@ -9991,7 +9993,9 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "87bb51dc-610e-55a1-897c-7d617a984afb"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
         "demandLevel": "AB1",
@@ -10018,7 +10022,11 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "592b90b8-fa68-5939-b76f-0def9bd6235b",
+        "87bb51dc-610e-55a1-897c-7d617a984afb",
+        "8a2a937d-f502-5d0e-a8ac-8d198f61f07f"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
         "demandLevel": "AB1",
@@ -10045,7 +10053,9 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "8a2a937d-f502-5d0e-a8ac-8d198f61f07f"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
         "demandLevel": "AB1",
@@ -10072,7 +10082,10 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "592b90b8-fa68-5939-b76f-0def9bd6235b",
+        "87bb51dc-610e-55a1-897c-7d617a984afb"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
         "demandLevel": "AB1",
@@ -10244,13 +10257,74 @@
       "titleEn": "In-depth investigations in space (advanced course)",
       "description": "Die lernende Person kann komplexere räumliche Situationen mit mehreren Geraden und Ebenen (z. B. Polyeder, Projektionen, Schnittfiguren) modellieren und mithilfe vektorieller Argumente begründen.",
       "descriptionEn": "The learner can model more complex spatial situations with multiple lines and planes (e.g., polyhedra, projections, intersection figures) and justify them using vector arguments.",
+      "weight": 2.0,
+      "tags": [
+        "LK"
+      ],
+      "contains": [
+        "c732df7d-8441-5b50-9909-f3ea32f29b6b",
+        "7dd5a012-f9bb-5791-a054-d0f47590e622"
+      ],
+      "requires": [
+        "309a4b8c-e603-4b4b-bc5f-d6ad0877da50"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2"
+      },
+      "sourceRef": "KC2024, S.51, Q2.3 LK"
+    },
+    {
+      "id": "c732df7d-8441-5b50-9909-f3ea32f29b6b",
+      "title": "Schnittgerade zweier Ebenen bestimmen (LK)",
+      "titleEn": "Determine the intersection line of two planes (advanced course)",
+      "description": "Die lernende Person kann die Schnittgerade zweier Ebenen berechnen, in Parameterform angeben und die Lage begründen.",
+      "descriptionEn": "The learner can compute the intersection line of two planes, state it in parametric form, and justify the configuration.",
       "weight": 1.0,
       "tags": [
         "LK"
       ],
       "contains": [],
       "requires": [
-        "309a4b8c-e603-4b4b-bc5f-d6ad0877da50"
+        "dcdd8a42-2318-4a60-8c01-04e210a53164",
+        "29d78e3d-c666-4ba2-b00b-91e9428a5cf7"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2"
+      },
+      "sourceRef": "KC2024, S.51, Q2.3 LK"
+    },
+    {
+      "id": "7dd5a012-f9bb-5791-a054-d0f47590e622",
+      "title": "Schnittfiguren von Ebenen mit Polyedern bestimmen (LK)",
+      "titleEn": "Determine plane sections of polyhedra (advanced course)",
+      "description": "Die lernende Person kann die Schnittfigur einer Ebene mit einem Polyeder (z. B. Quader/Prisma) konstruieren, Eckpunkte bestimmen und die Figur beschreiben.",
+      "descriptionEn": "The learner can construct the intersection figure of a plane with a polyhedron (e.g., cuboid/prism), determine vertices, and describe the figure.",
+      "weight": 1.0,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "dcdd8a42-2318-4a60-8c01-04e210a53164",
+        "5539d167-80c3-4563-b0ef-cc888e279945"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
