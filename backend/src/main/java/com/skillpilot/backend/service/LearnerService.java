@@ -375,6 +375,7 @@ public class LearnerService {
         Map<String, List<String>> effectiveRequires = computeEffectiveRequires(allGoals);
         Map<String, Double> masteryMap = getMastery(skillpilotId);
         Map<String, Double> effectiveMastery = computeEffectiveMastery(allGoals, masteryMap);
+        Map<String, Double> effectivePrereqMastery = computeEffectivePrereqMastery(allGoals, masteryMap);
 
         List<String> frontier = new ArrayList<>();
         for (LearningGoal goal : allGoals.values()) {
@@ -392,7 +393,7 @@ public class LearnerService {
                         // Ignore prerequisites not present in the filtered goal set
                         continue;
                     }
-                    Double reqMastery = effectiveMastery.getOrDefault(resolvedReqId, 0.0);
+                    Double reqMastery = effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0);
                     if (reqMastery < 0.9) {
                         prerequisitesMet = false;
                         break;
@@ -428,6 +429,7 @@ public class LearnerService {
         // Optimistic mode: apply filters first, then evaluate requires/mastery
         Map<String, Double> effectiveMastery = computeEffectiveMastery(allFilteredGoals, masteryMap);
         Map<String, List<String>> effectiveRequires = computeEffectiveRequires(allFilteredGoals);
+        Map<String, Double> effectivePrereqMastery = computeEffectivePrereqMastery(allFilteredGoals, masteryMap);
 
         // Calculate Scope (Plan + Descendants + Prerequisites)
         List<String> plannedIds = getPlannedGoals(skillpilotId);
@@ -482,7 +484,7 @@ public class LearnerService {
                         continue;
                     }
 
-                    Double reqMastery = effectiveMastery.getOrDefault(resolvedReqId, 0.0);
+                    Double reqMastery = effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0);
                     if (reqMastery < 0.9) {
                         prerequisitesMet = false;
                         break;
@@ -566,6 +568,78 @@ public class LearnerService {
         visiting.remove(goalId);
         cache.put(goalId, effective);
         return effective;
+    }
+
+    private Map<String, Double> computeEffectivePrereqMastery(Map<String, LearningGoal> allGoals,
+            Map<String, Double> masteryMap) {
+        Map<String, Double> cache = new HashMap<>();
+        Set<String> visiting = new HashSet<>();
+        for (String goalId : allGoals.keySet()) {
+            computeEffectivePrereqMastery(goalId, allGoals, masteryMap, cache, visiting);
+        }
+        return cache;
+    }
+
+    private double computeEffectivePrereqMastery(String goalId, Map<String, LearningGoal> allGoals,
+            Map<String, Double> masteryMap, Map<String, Double> cache, Set<String> visiting) {
+        Double cached = cache.get(goalId);
+        if (cached != null) {
+            return cached;
+        }
+        if (visiting.contains(goalId)) {
+            return masteryMap.getOrDefault(goalId, 0.0);
+        }
+        visiting.add(goalId);
+
+        LearningGoal goal = allGoals.get(goalId);
+        double mastery = masteryMap.getOrDefault(goalId, 0.0);
+        double effective = mastery;
+
+        if (goal != null && goal.getContains() != null && !goal.getContains().isEmpty()) {
+            List<String> childIds = new ArrayList<>();
+            boolean hasCoreChild = false;
+            for (String childRef : goal.getContains()) {
+                String childId = resolveGoalRef(childRef, allGoals);
+                if (childId == null) {
+                    continue;
+                }
+                childIds.add(childId);
+                LearningGoal child = allGoals.get(childId);
+                if (child != null && isCoreForPrereqs(child)) {
+                    hasCoreChild = true;
+                }
+            }
+
+            List<Double> childValues = new ArrayList<>();
+            for (String childId : childIds) {
+                LearningGoal child = allGoals.get(childId);
+                if (child == null) {
+                    continue;
+                }
+                if (hasCoreChild && !isCoreForPrereqs(child)) {
+                    continue;
+                }
+                childValues.add(computeEffectivePrereqMastery(childId, allGoals, masteryMap, cache, visiting));
+            }
+            if (!childValues.isEmpty()) {
+                effective = childValues.stream().min(Double::compareTo).orElse(mastery);
+            }
+        }
+
+        visiting.remove(goalId);
+        cache.put(goalId, effective);
+        return effective;
+    }
+
+    private boolean isCoreForPrereqs(LearningGoal goal) {
+        if (goal == null) {
+            return false;
+        }
+        List<String> tags = goal.getTags();
+        if (tags == null || tags.isEmpty()) {
+            return true;
+        }
+        return tags.contains("GK");
     }
 
     @Transactional(readOnly = true)
