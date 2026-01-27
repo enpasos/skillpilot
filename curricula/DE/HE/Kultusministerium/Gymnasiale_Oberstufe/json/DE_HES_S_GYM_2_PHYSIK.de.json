@@ -26,8 +26,7 @@
       "descriptionEn": "Overarching goal: The learner can apply central physical basic concepts from mechanics to modern quantum physics and explain their significance for technology and society.",
       "weight": 1.2,
       "tags": [
-        "GK",
-        "LK"
+        "GK"
       ],
       "contains": [
         "25bd8476-0c87-4777-b9f5-0bba9ad1b06e",
@@ -880,7 +879,8 @@
         "f4edf9d2-5237-46fc-ac78-ee881dd870e1",
         "32c22bcd-639c-4441-8f7f-2061d5176616",
         "bda3add4-967c-4a42-83a4-db52a45bcf4f",
-        "298c09af-5c8f-4909-993e-335d381d0fd1"
+        "298c09af-5c8f-4909-993e-335d381d0fd1",
+        "ad9d1b14-5690-4160-9ca8-b98d182d2c36"
       ],
       "requires": [
         "44882cb3-dca4-432c-ac29-5f081315844e"
@@ -971,10 +971,10 @@
     },
     {
       "id": "298c09af-5c8f-4909-993e-335d381d0fd1",
-      "title": "Entropieerzeugung und Wirkungsgrad erklären",
-      "titleEn": "Explain Entropy Generation and Efficiency",
-      "description": "Die lernende Person kann Entropie als Maß für die Richtung natürlicher Abläufe deuten und anhand idealisierter und realer Wärmekraftmaschinen den Wirkungsgrad qualitativ erklären.",
-      "descriptionEn": "The learner can interpret entropy as a measure for the direction of natural progressions and qualitatively explain efficiency using idealized and real heat engines.",
+      "title": "Entropieerzeugung und Zeitpfeil erklären",
+      "titleEn": "Explain Entropy Generation and Arrow of Time",
+      "description": "Die lernende Person kann Entropie als Maß für die Richtung natürlicher Abläufe deuten, Entropieerzeugung bei irreversiblen Prozessen erläutern und den Zusammenhang zum Zeitpfeil beschreiben.",
+      "descriptionEn": "The learner can interpret entropy as a measure for the direction of natural processes, explain entropy generation in irreversible processes, and describe the connection to the arrow of time.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -983,6 +983,29 @@
       "contains": [],
       "requires": [
         "bda3add4-967c-4a42-83a4-db52a45bcf4f"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "ad9d1b14-5690-4160-9ca8-b98d182d2c36",
+      "title": "Wirkungsgrad von Wärmekraftmaschinen erklären",
+      "titleEn": "Explain Efficiency of Heat Engines",
+      "description": "Die lernende Person kann den Wirkungsgrad idealisierter und realer Wärmekraftmaschinen qualitativ erläutern und den Einfluss irreversibler Prozesse beschreiben.",
+      "descriptionEn": "The learner can qualitatively explain the efficiency of idealized and real heat engines and describe the influence of irreversible processes.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "298c09af-5c8f-4909-993e-335d381d0fd1"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -1264,8 +1287,8 @@
       "id": "f2a9d97f-c5f8-4756-94b0-1194abd0a37b",
       "title": "Kondensator und Feld im Plattenkondensator",
       "titleEn": "Capacitor and Field in Parallel-Plate Capacitor",
-      "description": "Die lernende Person kann den Plattenkondensator als Beispiel eines homogenen elektrischen Feldes beschreiben, die Feldstärke im Kondensator bestimmen und die Kapazität qualitativ von Geometrie und Dielektrikum abhängig machen.",
-      "descriptionEn": "The learner can describe the parallel-plate capacitor as an example of a homogeneous electric field, determine the field strength in the capacitor, and qualitatively make capacitance dependent on geometry and dielectric.",
+      "description": "Die lernende Person kann den Plattenkondensator als Beispiel eines homogenen elektrischen Feldes beschreiben, die Feldstärke im Kondensator bestimmen und die Kapazität mit $C=\\varepsilon_0\\varepsilon_r\\frac{A}{d}$ berechnen sowie ihre Abhängigkeit von Geometrie und Dielektrikum erläutern.",
+      "descriptionEn": "The learner can describe the parallel-plate capacitor as an example of a homogeneous electric field, determine the field strength in the capacitor, and calculate capacitance using $C=\\varepsilon_0\\varepsilon_r\\frac{A}{d}$ as well as explain its dependence on geometry and dielectric.",
       "weight": 1,
       "tags": [
         "GK",
@@ -2332,6 +2355,7 @@
         "9bb72d60-7474-4c51-b283-65b82d625337",
         "2e2659e2-f559-4776-8b25-3ee80b757fdd",
         "b56b7131-6454-40f6-b0e4-7839ea558a98",
+        "a5de652f-8fb5-4fda-b7f5-2c0371ba54b0",
         "457837a5-3f19-485a-87b0-504f97aa121d",
         "474a1fa6-d211-4b1c-bfa6-e7134326ba7e"
       ],
@@ -2515,6 +2539,7 @@
       "contains": [
         "39decefe-e120-40ab-8fbb-e55792ba4d18",
         "9fb3e6a0-83de-4ff2-b154-f4ef2960bd67",
+        "78c8b1ac-c98e-4c37-baa6-ec3a835aa720",
         "5cecd7d4-956a-4e8d-939a-7f849a08fa5b",
         "416d771a-8a53-4536-856b-b12e8b1e4892",
         "7c9063c3-ee17-4cbd-8606-4f08e5486296"
@@ -2572,6 +2597,28 @@
       "contains": [],
       "requires": [
         "39decefe-e120-40ab-8fbb-e55792ba4d18"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      }
+    },
+    {
+      "id": "78c8b1ac-c98e-4c37-baa6-ec3a835aa720",
+      "title": "Berechnungen im Potenzialtopf (LK)",
+      "titleEn": "Calculations in the Potential Well (advanced course)",
+      "description": "Die lernende Person kann für den unendlichen Potenzialtopf diskrete Energiewerte $E_n$ bestimmen und Wahrscheinlichkeiten $P(x_1 \\le x \\le x_2)=\\int_{x_1}^{x_2} |\\psi(x)|^2\\,dx$ berechnen.",
+      "descriptionEn": "The learner can determine discrete energy values $E_n$ for the infinite potential well and calculate probabilities $P(x_1 \\le x \\le x_2)=\\int_{x_1}^{x_2} |\\psi(x)|^2\\,dx$.",
+      "weight": 1.15,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "9fb3e6a0-83de-4ff2-b154-f4ef2960bd67"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -3065,8 +3112,8 @@
       "id": "87c6a06d-2ecc-4222-86f4-5675325cc6db",
       "title": "Transistor und einfache Schaltungen",
       "titleEn": "Transistor and Simple Circuits",
-      "description": "Die lernende Person kann Aufbau und Grundfunktion eines bipolaren Transistors qualitativ beschreiben und einfache Schaltungen wie Schalter- oder Verstärkerschaltungen interpretieren.",
-      "descriptionEn": "The learner can qualitatively describe the structure and basic function of a bipolar transistor and interpret simple circuits like switch or amplifier circuits.",
+      "description": "Die lernende Person kann Aufbau und Grundfunktion eines bipolaren Transistors qualitativ beschreiben und einfache Schaltungen wie Schalter-, Verstärker- oder Flip-Flop-Schaltungen interpretieren.",
+      "descriptionEn": "The learner can qualitatively describe the structure and basic function of a bipolar transistor and interpret simple circuits such as switch, amplifier, or flip-flop circuits.",
       "weight": 1.15,
       "tags": [
         "GK",
@@ -3841,6 +3888,29 @@
         "guidingIdeas": [
           "LI_MATERIE"
         ],
+        "phase": "Q3"
+      }
+    },
+    {
+      "id": "a5de652f-8fb5-4fda-b7f5-2c0371ba54b0",
+      "title": "Bragg-Bedingung anwenden (LK)",
+      "titleEn": "Apply Bragg's Condition (advanced course)",
+      "description": "Die lernende Person kann die Bragg-Bedingung $n\\cdot\\lambda=2d\\sin(\\theta)$ anwenden, Netzebenenabstände oder Wellenlängen berechnen und Ergebnisse bei Elektronen- oder Röntgenbeugung deuten.",
+      "descriptionEn": "The learner can apply Bragg's condition $n\\cdot\\lambda=2d\\sin(\\theta)$, calculate lattice plane spacings or wavelengths, and interpret results for electron or X-ray diffraction.",
+      "weight": 1.1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "a0ff15f1-a634-4403-973c-b480fc410138",
+        "b56b7131-6454-40f6-b0e4-7839ea558a98"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
         "phase": "Q3"
       }
     },
