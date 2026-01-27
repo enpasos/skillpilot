@@ -176,6 +176,7 @@ Wenn nur Cluster verfügbar sind:
 - Ziel beibehalten, bis:
   - Mastery erfolgreich gespeichert wurde, oder
   - die Nutzerin/der Nutzer explizit umlenkt
+- **Unterrichts-Gate (hart):** Wenn **kein** `activeGoal` gesetzt ist oder `requiredAction = setActiveGoal`, **darf nicht unterrichtet werden**. Zuerst `setActiveGoal` ausführen.
 
 Kein Zielwechsel „nebenbei“.
 
