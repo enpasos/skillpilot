@@ -360,6 +360,49 @@ public class LearnerServiceReproTest {
         }
     }
 
+    @Test
+    void getLearnerState_shouldOfferScopeExpansionWhenScopeCompleted() {
+        LearningLandscape landscape = new LearningLandscape();
+        landscape.setLandscapeId(curriculumId);
+        landscape.setTitle("Test Curriculum");
+        landscape.setDescription("Test Description");
+        landscape.setCountry("DE");
+        landscape.setRegion("HES");
+        landscape.setSchoolType("GYM");
+        landscape.setSubject("Math");
+        landscape.setLocale("de-DE");
+
+        LearningGoal root = goal("ROOT", null, List.of("YEAR_12", "YEAR_13"));
+        LearningGoal year12 = goal("YEAR_12", null, List.of("Y12_A", "Y12_B"));
+        LearningGoal year13 = goal("YEAR_13", null, List.of("Y13_A"));
+        LearningGoal y12a = goal("Y12_A", null, null);
+        LearningGoal y12b = goal("Y12_B", null, null);
+        LearningGoal y13a = goal("Y13_A", null, null);
+
+        landscape.setGoals(List.of(root, year12, year13, y12a, y12b, y13a));
+
+        when(landscapeService.getById(curriculumId)).thenReturn(landscape);
+        when(landscapeService.getClosure(curriculumId)).thenReturn(List.of(landscape));
+        when(landscapeService.getOverview())
+                .thenReturn(new com.skillpilot.backend.api.LandscapeOverviewResponse(
+                        Collections.emptyList(), Collections.emptyMap()));
+
+        // Plan: Year 12
+        when(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .thenReturn(List.of(new com.skillpilot.backend.domain.PlannedGoal(learner, "YEAR_12")));
+
+        // Mastery: Year 12 atomic goals are mastered
+        com.skillpilot.backend.domain.Mastery m1 = new com.skillpilot.backend.domain.Mastery(learner, "Y12_A", 1.0);
+        com.skillpilot.backend.domain.Mastery m2 = new com.skillpilot.backend.domain.Mastery(learner, "Y12_B", 1.0);
+        when(masteryRepository.findByLearner_SkillpilotId(learnerId)).thenReturn(List.of(m1, m2));
+
+        com.skillpilot.backend.api.UnifiedLearnerStateResponse state = learnerService.getLearnerState(learnerId);
+
+        assertThat(state.frontier()).isEmpty();
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("setScope");
+        assertThat(state.stateMachine().goalOptions()).anyMatch(g -> g.id().equals("YEAR_13"));
+    }
+
     private LearningGoal goal(String id, List<String> requires, List<String> contains) {
         LearningGoal g = new LearningGoal();
         g.setId(id);

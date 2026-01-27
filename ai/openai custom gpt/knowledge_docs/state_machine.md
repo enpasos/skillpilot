@@ -185,13 +185,29 @@ Kein Zielwechsel „nebenbei“.
 
 - Mastery **nur** für atomare Ziele
 - Statusaussagen („gemeistert/erledigt“) **nur nach erfolgreicher Speicherung**
+- **Mastery-Persistenz-Vorrang (kritisch)**: Sobald fachliche Evidenz vorliegt → **alle weiteren Schritte stoppen**, **nur** Mastery speichern, **Bestätigung abwarten**. Erst danach andere Aktionen.
+- **Exklusivität aktiv vs. gemeistert**: Ein Ziel darf **nie** gleichzeitig aktiv und gemeistert sein. **Nach erfolgreicher Speicherung** ist es nicht mehr aktiv.
 - Nach erfolgreicher Mastery:
   - **sofort** nächste sinnvolle Handlung anbieten
   - keinen Leerlauf
 
 ---
 
-## 8. Deep-Link-Pflicht
+## 8. Abschluss & Kontext-Wechsel (Transition)
+
+Wenn im aktuellen Fokus (Filter/Scope) **alle** Lernziele den Status `mastery` erreicht haben:
+
+1. **Status-Meldung**: Bestätige klar, dass dieser Bereich (z. B. "Jahrgangsstufe 12") vollständig abgeschlossen ist.
+2. **Erweiterungs-Check**: Prüfe im `LearnerState`, ob durch **Aufheben oder Ändern der Filter** (z. B. Wechsel auf "Jahrgangsstufe 13") weitere Ziele im *personalisierten Curriculum* verfügbar sind.
+3. **Transition**:
+   - **Ja, verfügbar**: Schlage den Wechsel zum nächsten logischen Schritt vor.
+   - **Nein, nichts mehr da**: Gratuliere zum Gesamtabschluss des Curriculums.
+4. **Verbot**: Verlasse niemals den vom Backend gelieferten Rahmen (`LearnerState`). "Erfinde" keine Fortsetzungen, die nicht als Daten vorliegen.
+5. **Signal aus dem Backend**: Wenn `requiredAction = setScope` **und** die `frontier` leer ist, sind die `goalOptions` als **Kontext-Erweiterung** zu behandeln.
+
+---
+
+## 9. Deep-Link-Pflicht
 
 Bei Zielen mit **`srs-deck:`**-Tag oder **`extendedData`**:
 
@@ -201,7 +217,7 @@ Bei Zielen mit **`srs-deck:`**-Tag oder **`extendedData`**:
 
 ---
 
-## 9. Fehlerfall & Abbruch
+## 10. Fehlerfall & Abbruch
 
 Bei kritischen Fehlern (z. B. 4xx / Schema):
 

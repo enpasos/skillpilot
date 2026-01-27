@@ -721,6 +721,7 @@ public class LearnerService {
             nextAllowedActions.add("setCurriculum");
         }
         List<String> activeFilters = new ArrayList<>();
+        boolean personalizationRequired = false;
         if (curriculumId != null) {
             // Extract active filters from ALL configured landscapes (Aggregation)
             // This handles the case where personalization is on a child subject (e.g. Math
@@ -747,7 +748,7 @@ public class LearnerService {
                 // Ignore parsing errors
             }
 
-            boolean personalizationRequired = needsPersonalization(frontier, activeFilters);
+            personalizationRequired = needsPersonalization(frontier, activeFilters);
             nextAllowedActions.add("setPersonalization");
             if (!personalizationRequired) {
                 nextAllowedActions.add("setScope");
@@ -772,8 +773,17 @@ public class LearnerService {
             learningState = LearningState.TEACHING;
         }
 
+        List<FrontierGoal> scopeExpansionOptions = Collections.emptyList();
+        if (curriculumId != null && !personalizationRequired && activeGoal == null
+                && frontier.isEmpty() && !plannedIds.isEmpty()) {
+            Map<String, LearningGoal> structuralGoals = getFilteredGoals(curriculumId, "{}");
+            Set<String> scope = computeScope(plannedIds, structuralGoals, Collections.emptyMap());
+            scopeExpansionOptions = buildScopeExpansionOptions(curriculumId, allGoals, structuralGoals, scope,
+                    plannedIds);
+        }
+
         StateMachineInfo stateMachine = buildStateMachineInfo(curriculumId, frontier, frontierAtomic, activeGoal,
-                learningState, activeFilters);
+                learningState, activeFilters, scopeExpansionOptions);
 
         return new UnifiedLearnerStateResponse(learner.getSkillpilotId(), curriculumSummary, frontier,
                 new LearnerGoals(plannedRich, masteredCount, totalCount), nextAllowedActions, activeFilters,
@@ -788,7 +798,7 @@ public class LearnerService {
 
     private StateMachineInfo buildStateMachineInfo(String curriculumId, List<FrontierGoal> frontier,
             List<FrontierGoal> frontierAtomic, FrontierGoal activeGoal, LearningState learningState,
-            List<String> activeFilters) {
+            List<String> activeFilters, List<FrontierGoal> scopeExpansionOptions) {
         String state = curriculumId == null ? "SETUP" : learningState.name();
         String requiredAction = "getFrontier";
         List<FrontierGoal> goalOptions = Collections.emptyList();
@@ -809,9 +819,95 @@ public class LearnerService {
         } else if (!frontier.isEmpty()) {
             requiredAction = "setScope";
             goalOptions = frontier;
+        } else if (scopeExpansionOptions != null && !scopeExpansionOptions.isEmpty()) {
+            requiredAction = "setScope";
+            goalOptions = scopeExpansionOptions;
         }
 
         return new StateMachineInfo(state, requiredAction, goalOptions, curriculumOptions, activeGoal);
+    }
+
+    private List<FrontierGoal> buildScopeExpansionOptions(String curriculumId, Map<String, LearningGoal> filteredGoals,
+            Map<String, LearningGoal> structuralGoals, Set<String> scope, List<String> plannedIds) {
+        if (plannedIds == null || plannedIds.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        Map<String, Set<String>> parentMap = buildParentMap(structuralGoals);
+        LinkedHashSet<String> candidateIds = new LinkedHashSet<>();
+
+        for (String plannedId : plannedIds) {
+            if (!structuralGoals.containsKey(plannedId)) {
+                continue;
+            }
+            Set<String> parents = parentMap.getOrDefault(plannedId, Collections.emptySet());
+            for (String parentId : parents) {
+                LearningGoal parent = structuralGoals.get(parentId);
+                if (parent == null || parent.getContains() == null) {
+                    continue;
+                }
+                for (String childRef : parent.getContains()) {
+                    String childId = resolveGoalRef(childRef, structuralGoals);
+                    if (childId == null || scope.contains(childId)) {
+                        continue;
+                    }
+                    if (!filteredGoals.containsKey(childId)) {
+                        continue;
+                    }
+                    candidateIds.add(childId);
+                }
+            }
+        }
+
+        List<FrontierGoal> result = new ArrayList<>();
+        for (String id : candidateIds) {
+            LearningGoal g = filteredGoals.get(id);
+            if (g == null) {
+                continue;
+            }
+            String type = (g.getContains() != null && !g.getContains().isEmpty()) ? "cluster" : "atomic";
+            result.add(new FrontierGoal(
+                    g.getId(),
+                    g.getTitle(),
+                    g.getDescription(),
+                    type,
+                    "Scope expansion",
+                    g.getTags()));
+        }
+
+        if (!result.isEmpty()) {
+            return result;
+        }
+
+        // Fallback: Offer top-level modules not already in scope
+        List<FrontierGoal> topLevel = getTopLevelModules(curriculumId, filteredGoals);
+        return topLevel.stream()
+                .filter(g -> !scope.contains(g.id()))
+                .map(g -> new FrontierGoal(
+                        g.id(),
+                        g.title(),
+                        g.description(),
+                        g.type(),
+                        "Scope expansion",
+                        g.tags()))
+                .toList();
+    }
+
+    private Map<String, Set<String>> buildParentMap(Map<String, LearningGoal> allGoals) {
+        Map<String, Set<String>> parentMap = new HashMap<>();
+        for (LearningGoal parent : allGoals.values()) {
+            if (parent.getContains() == null) {
+                continue;
+            }
+            for (String childRef : parent.getContains()) {
+                String childId = resolveGoalRef(childRef, allGoals);
+                if (childId == null) {
+                    continue;
+                }
+                parentMap.computeIfAbsent(childId, k -> new LinkedHashSet<>()).add(parent.getId());
+            }
+        }
+        return parentMap;
     }
 
     private boolean needsPersonalization(List<FrontierGoal> frontier, List<String> activeFilters) {

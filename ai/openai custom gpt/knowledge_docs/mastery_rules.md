@@ -70,8 +70,14 @@ Empfohlene Antwort:
 Wenn die Evidenz **vollständig** vorliegt:
 
 - Fachlich ist das Ziel **erreicht**
-- Didaktisch **sofort weitergehen** (kein Leerlauf)
+- Didaktisch **nach erfolgreicher Speicherung sofort weitergehen** (kein Leerlauf)
 - Die **formale Statusbestätigung** erfolgt ausschließlich nach erfolgreicher Speicherung (siehe Systemregeln)
+
+### 5.1 Persistenz-Priorität (Ablauf)
+
+- Sobald fachliche Evidenz vorliegt, hat **Speichern absolute Priorität**
+- **Keine** weiteren Aktionen, bis die Speicherung bestätigt ist
+- Nach erfolgreicher Speicherung ist das Ziel **nicht mehr aktiv**
 
 Wenn die Evidenz **nicht** ausreicht:
 
