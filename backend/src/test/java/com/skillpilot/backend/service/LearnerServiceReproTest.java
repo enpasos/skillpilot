@@ -372,14 +372,17 @@ public class LearnerServiceReproTest {
         landscape.setSubject("Math");
         landscape.setLocale("de-DE");
 
-        LearningGoal root = goal("ROOT", null, List.of("YEAR_12", "YEAR_13"));
+        LearningGoal root = goal("ROOT", null, List.of("YEAR_11", "YEAR_12", "YEAR_13"));
+        LearningGoal year11 = goal("YEAR_11", null, List.of("Y11_A", "Y11_B"));
         LearningGoal year12 = goal("YEAR_12", null, List.of("Y12_A", "Y12_B"));
         LearningGoal year13 = goal("YEAR_13", null, List.of("Y13_A"));
+        LearningGoal y11a = goal("Y11_A", null, null);
+        LearningGoal y11b = goal("Y11_B", null, null);
         LearningGoal y12a = goal("Y12_A", null, null);
         LearningGoal y12b = goal("Y12_B", null, null);
         LearningGoal y13a = goal("Y13_A", null, null);
 
-        landscape.setGoals(List.of(root, year12, year13, y12a, y12b, y13a));
+        landscape.setGoals(List.of(root, year11, year12, year13, y11a, y11b, y12a, y12b, y13a));
 
         when(landscapeService.getById(curriculumId)).thenReturn(landscape);
         when(landscapeService.getClosure(curriculumId)).thenReturn(List.of(landscape));
@@ -392,15 +395,20 @@ public class LearnerServiceReproTest {
                 .thenReturn(List.of(new com.skillpilot.backend.domain.PlannedGoal(learner, "YEAR_12")));
 
         // Mastery: Year 12 atomic goals are mastered
-        com.skillpilot.backend.domain.Mastery m1 = new com.skillpilot.backend.domain.Mastery(learner, "Y12_A", 1.0);
-        com.skillpilot.backend.domain.Mastery m2 = new com.skillpilot.backend.domain.Mastery(learner, "Y12_B", 1.0);
-        when(masteryRepository.findByLearner_SkillpilotId(learnerId)).thenReturn(List.of(m1, m2));
+        com.skillpilot.backend.domain.Mastery m1 = new com.skillpilot.backend.domain.Mastery(learner, "Y11_A", 1.0);
+        com.skillpilot.backend.domain.Mastery m2 = new com.skillpilot.backend.domain.Mastery(learner, "Y11_B", 1.0);
+        com.skillpilot.backend.domain.Mastery m3 = new com.skillpilot.backend.domain.Mastery(learner, "Y12_A", 1.0);
+        com.skillpilot.backend.domain.Mastery m4 = new com.skillpilot.backend.domain.Mastery(learner, "Y12_B", 1.0);
+        when(masteryRepository.findByLearner_SkillpilotId(learnerId)).thenReturn(List.of(m1, m2, m3, m4));
 
         com.skillpilot.backend.api.UnifiedLearnerStateResponse state = learnerService.getLearnerState(learnerId);
 
         assertThat(state.frontier()).isEmpty();
         assertThat(state.stateMachine().requiredAction()).isEqualTo("setScope");
         assertThat(state.stateMachine().goalOptions()).anyMatch(g -> g.id().equals("YEAR_13"));
+        assertThat(state.stateMachine().goalOptions()).noneMatch(g -> g.id().equals("YEAR_11"));
+        assertThat(state.goals().mastered_count()).isEqualTo(2);
+        assertThat(state.goals().total_count()).isEqualTo(2);
     }
 
     private LearningGoal goal(String id, List<String> requires, List<String> contains) {

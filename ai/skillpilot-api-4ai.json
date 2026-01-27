@@ -417,9 +417,28 @@
                         }
                     },
                     "mastered_count": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Mastered atomic goals in the current focus (scope if set, otherwise personalized curriculum)."
                     },
                     "total_count": {
+                        "type": "integer",
+                        "description": "Total atomic goals in the current focus (scope if set, otherwise personalized curriculum)."
+                    },
+                    "personalized": {
+                        "$ref": "#/components/schemas/GoalStats"
+                    },
+                    "scope": {
+                        "$ref": "#/components/schemas/GoalStats"
+                    }
+                }
+            },
+            "GoalStats": {
+                "type": "object",
+                "properties": {
+                    "mastered_atomic": {
+                        "type": "integer"
+                    },
+                    "total_atomic": {
                         "type": "integer"
                     }
                 }

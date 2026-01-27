@@ -710,11 +710,20 @@ public class LearnerService {
         }
 
         Map<String, Double> mastery = getMastery(skillpilotId);
-        long masteredCount = mastery.values().stream().filter(v -> v >= 0.9).count();
-        long totalCount = 0;
-        if (curriculumId != null) {
-            totalCount = allGoals.size();
+        Map<String, LearningGoal> structuralGoals = Collections.emptyMap();
+        Set<String> scope = Collections.emptySet();
+        if (curriculumId != null && !plannedIds.isEmpty()) {
+            structuralGoals = getFilteredGoals(curriculumId, "{}");
+            scope = computeScope(plannedIds, structuralGoals, Collections.emptyMap());
         }
+
+        com.skillpilot.backend.api.GoalStats personalizedStats = computeAtomicStats(allGoals, null, mastery);
+        com.skillpilot.backend.api.GoalStats scopeStats = plannedIds.isEmpty()
+                ? null
+                : computeAtomicStats(allGoals, scope, mastery);
+        com.skillpilot.backend.api.GoalStats focusStats = (scopeStats != null && scopeStats.total_atomic() > 0)
+                ? scopeStats
+                : personalizedStats;
 
         List<String> nextAllowedActions = new ArrayList<>();
         if (curriculumId == null) {
@@ -776,17 +785,26 @@ public class LearnerService {
         List<FrontierGoal> scopeExpansionOptions = Collections.emptyList();
         if (curriculumId != null && !personalizationRequired && activeGoal == null
                 && frontier.isEmpty() && !plannedIds.isEmpty()) {
-            Map<String, LearningGoal> structuralGoals = getFilteredGoals(curriculumId, "{}");
-            Set<String> scope = computeScope(plannedIds, structuralGoals, Collections.emptyMap());
-            scopeExpansionOptions = buildScopeExpansionOptions(curriculumId, allGoals, structuralGoals, scope,
-                    plannedIds);
+            Map<String, Double> effectiveMastery = computeEffectiveMastery(allGoals, mastery);
+            Map<String, LearningGoal> structuralForExpansion = structuralGoals;
+            if (structuralForExpansion == null || structuralForExpansion.isEmpty()) {
+                structuralForExpansion = getFilteredGoals(curriculumId, "{}");
+            }
+            Set<String> scopeForExpansion = scope;
+            if (scopeForExpansion == null || scopeForExpansion.isEmpty()) {
+                scopeForExpansion = computeScope(plannedIds, structuralForExpansion, Collections.emptyMap());
+            }
+            scopeExpansionOptions = buildScopeExpansionOptions(curriculumId, allGoals, structuralForExpansion,
+                    scopeForExpansion, plannedIds, effectiveMastery);
         }
 
         StateMachineInfo stateMachine = buildStateMachineInfo(curriculumId, frontier, frontierAtomic, activeGoal,
                 learningState, activeFilters, scopeExpansionOptions);
 
         return new UnifiedLearnerStateResponse(learner.getSkillpilotId(), curriculumSummary, frontier,
-                new LearnerGoals(plannedRich, masteredCount, totalCount), nextAllowedActions, activeFilters,
+                new LearnerGoals(plannedRich, focusStats.mastered_atomic(), focusStats.total_atomic(),
+                        personalizedStats, scopeStats),
+                nextAllowedActions, activeFilters,
                 learner.getCopySources(), learningState.name(), activeGoal, stateMachine);
     }
 
@@ -828,7 +846,8 @@ public class LearnerService {
     }
 
     private List<FrontierGoal> buildScopeExpansionOptions(String curriculumId, Map<String, LearningGoal> filteredGoals,
-            Map<String, LearningGoal> structuralGoals, Set<String> scope, List<String> plannedIds) {
+            Map<String, LearningGoal> structuralGoals, Set<String> scope, List<String> plannedIds,
+            Map<String, Double> effectiveMastery) {
         if (plannedIds == null || plannedIds.isEmpty()) {
             return Collections.emptyList();
         }
@@ -852,6 +871,9 @@ public class LearnerService {
                         continue;
                     }
                     if (!filteredGoals.containsKey(childId)) {
+                        continue;
+                    }
+                    if (effectiveMastery != null && effectiveMastery.getOrDefault(childId, 0.0) >= 0.9) {
                         continue;
                     }
                     candidateIds.add(childId);
@@ -883,6 +905,7 @@ public class LearnerService {
         List<FrontierGoal> topLevel = getTopLevelModules(curriculumId, filteredGoals);
         return topLevel.stream()
                 .filter(g -> !scope.contains(g.id()))
+                .filter(g -> effectiveMastery == null || effectiveMastery.getOrDefault(g.id(), 0.0) < 0.9)
                 .map(g -> new FrontierGoal(
                         g.id(),
                         g.title(),
@@ -925,6 +948,30 @@ public class LearnerService {
             }
         }
         return false;
+    }
+
+    private com.skillpilot.backend.api.GoalStats computeAtomicStats(Map<String, LearningGoal> goals,
+            Set<String> scope, Map<String, Double> mastery) {
+        if (goals == null || goals.isEmpty()) {
+            return new com.skillpilot.backend.api.GoalStats(0, 0);
+        }
+
+        long total = 0;
+        long mastered = 0;
+        for (LearningGoal g : goals.values()) {
+            if (g.getContains() != null && !g.getContains().isEmpty()) {
+                continue;
+            }
+            if (scope != null && !scope.isEmpty() && !scope.contains(g.getId())) {
+                continue;
+            }
+            total++;
+            if (mastery.getOrDefault(g.getId(), 0.0) >= 0.9) {
+                mastered++;
+            }
+        }
+
+        return new com.skillpilot.backend.api.GoalStats(mastered, total);
     }
 
     @Transactional
