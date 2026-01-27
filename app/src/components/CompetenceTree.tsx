@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Target, Send, Check, Play, ArrowBigLeft } from 'lucide-react'
+import { Target, Send, Check, Play, ArrowBigLeft, Diamond } from 'lucide-react'
 import { useTranslation } from '../hooks/useTranslation'
 import type { UiGoal } from '../goalTypes'
 import { sortGoalsTopologically } from '../utils/goalSorter'
@@ -224,7 +224,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
               }`}
             title={isPlanned ? t.tooltips.removeFromList : t.tooltips.addToList}
           >
-            <ArrowBigLeft size={16} />
+            {isPlanned ? <ArrowBigLeft size={16} /> : <Diamond size={16} className="text-slate-300" />}
           </button>
         )}
       </div>
