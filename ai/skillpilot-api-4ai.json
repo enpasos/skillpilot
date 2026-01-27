@@ -10,6 +10,11 @@
             "url": "https://skillpilot.com"
         }
     ],
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ],
     "paths": {
         "/api/ai/learners": {
             "post": {
@@ -294,6 +299,13 @@
         }
     },
     "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "API key"
+            }
+        },
         "schemas": {
             "CreateLearnerRequest": {
                 "type": "object",

@@ -88,7 +88,7 @@ The GPT willconsult this file to understand the pedagogical "Training Loop".
 In the **Aktionen** section:
 
 1.  Click **"Create new action"**.
-2.  **Authentication:** None (or API Key if you configured one).
+2.  **Authentication:** API Key (Bearer). Use the same value as `skillpilot.ai.api-key` on the backend.
 3.  **Schema:** **Do not use the URL import.** Instead, copy and paste the **Optimized JSON** below directly into the schema box. This version contains specific instructions for the AI (like "Use UUIDs") that are missing from the raw server export.
 
 *(See Section 7 for the JSON content)*

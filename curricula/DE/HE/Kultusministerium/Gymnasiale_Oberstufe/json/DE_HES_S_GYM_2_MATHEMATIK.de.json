@@ -24,7 +24,7 @@
       "titleEn": "Mathematics",
       "description": "Oberziel über alle Kursphasen hinweg: Die lernende Person kann die im Kerncurriculum beschriebenen Kompetenzen in allen Themenfeldern sicher anwenden.",
       "descriptionEn": "Overarching goal across all course phases: The learner can safely apply the competencies described in the core curriculum in all topic areas.",
-      "weight": 304.0,
+      "weight": 306.0,
       "tags": [
         "GK",
         "LK"
@@ -139,7 +139,7 @@
       "titleEn": "Grade 13",
       "description": "Bündelt Q3 und Q4 der Qualifikationsphase sowie die Abiturprüfung.",
       "descriptionEn": "Bundles Q3 and Q4 of the qualification phase as well as the Abitur examination.",
-      "weight": 81.0,
+      "weight": 83.0,
       "tags": [
         "GK",
         "LK"
@@ -179,7 +179,7 @@
       "titleEn": "Q3 Stochastics",
       "description": "Zusammenfassender Cluster für die Themenfelder Q3.1 bis Q3.5: Grundlagen der Stochastik, Wahrscheinlichkeitsverteilungen, Hypothesentests, Prognose- und Konfidenzintervalle sowie Statistik.",
       "descriptionEn": "Summarizing cluster for topics Q3.1 to Q3.5: basic stochastics, probability distributions, hypothesis tests, prediction and confidence intervals, and statistics.",
-      "weight": 38.0,
+      "weight": 40.0,
       "tags": [
         "GK",
         "LK"
@@ -5982,20 +5982,22 @@
       "id": "a82c250d-dd94-4230-85cb-06c9aa01591b",
       "title": "Q3.1 Grundlegende Begriffe und Methoden der Stochastik",
       "titleEn": "Q3.1 Basic Concepts and Methods of Stochastics",
-      "description": "Clusterknoten für grundlegende Begriffe der Stochastik (Ereignisse, Baumdiagramme, Vierfeldertafeln, bedingte Wahrscheinlichkeiten, einfache Zählverfahren).",
-      "descriptionEn": "Cluster node for basic terms of stochastics (events, tree diagrams, four-field tables, conditional probabilities, simple counting methods).",
-      "weight": 6.0,
+      "description": "Clusterknoten für die Q3.1-Grundlagen der Stochastik: statistischer Wahrscheinlichkeitsbegriff, Ergebnisraum/Ereignisse, Baumdiagramme und Pfadregeln, Ereignisverknüpfungen und Mengenkalkül, bedingte Wahrscheinlichkeiten und Unabhängigkeit, kombinatorische Zählverfahren sowie Laplace-Wahrscheinlichkeiten mit und ohne Zurücklegen - jeweils mit konkreten Beispielrechnungen.",
+      "descriptionEn": "Cluster node for Q3.1 stochastics foundations: statistical concept of probability, sample space/events, tree diagrams and path rules, event operations and set calculus, conditional probabilities and independence, combinatorial counting methods, and Laplace probabilities with and without replacement - always with concrete worked examples.",
+      "weight": 8.0,
       "tags": [
         "GK",
         "LK"
       ],
       "contains": [
+        "faf8c993-921e-4b5e-ac24-2b2d6f831195",
+        "2b08930e-344c-4611-b113-382e0c035d89",
         "27498f3c-120d-4290-b32e-b3d2bf22106f",
         "40ca79f4-de7b-4508-843a-7fcc68e0dc78",
         "7c6b894d-8580-4edd-82e9-356fe13ba30f",
         "2906a295-5321-4512-af07-0b3bf94f058c",
-        "2b08930e-344c-4611-b113-382e0c035d89",
-        "a798cfc5-066c-47f0-aee4-8c0b8e80e230"
+        "a798cfc5-066c-47f0-aee4-8c0b8e80e230",
+        "7ad95166-5300-4e97-974b-5e2a1db6948f"
       ],
       "requires": [],
       "dimensionTags": {
@@ -6015,11 +6017,39 @@
       "sourceRef": "KC2024, S.54, Q3.1"
     },
     {
+      "id": "faf8c993-921e-4b5e-ac24-2b2d6f831195",
+      "title": "Statistischen Wahrscheinlichkeitsbegriff anwenden",
+      "titleEn": "Apply the statistical concept of probability",
+      "description": "Die lernende Person kann absolute und relative Häufigkeiten bestimmen, daraus Wahrscheinlichkeiten schätzen und das empirische Gesetz der großen Zahlen an konkreten Beispielrechnungen (z. B. viele Münzwürfe) erläutern.",
+      "descriptionEn": "The learner can compute absolute and relative frequencies, estimate probabilities from them, and explain the empirical law of large numbers using concrete worked examples (e.g., many coin tosses).",
+      "weight": 1.0,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "sourceRef": "KC2024, S.54, Q3.1"
+    },
+    {
       "id": "27498f3c-120d-4290-b32e-b3d2bf22106f",
       "title": "Ereignisse darstellen und Baumdiagramme nutzen",
       "titleEn": "Represent events and use tree diagrams",
-      "description": "Die lernende Person kann Ereignisse und Pfade in Zufallsexperimenten strukturieren, Baumdiagramme anlegen und Wahrscheinlichkeiten entlang der Pfade berechnen.",
-      "descriptionEn": "The learner can structure events and paths in random experiments, create tree diagrams, and calculate probabilities along the paths.",
+      "description": "Die lernende Person kann mehrstufige Zufallsexperimente in Baumdiagrammen darstellen, Pfadregeln anwenden und Wahrscheinlichkeiten an konkreten Beispielrechnungen berechnen.",
+      "descriptionEn": "The learner can represent multi-stage random experiments with tree diagrams, apply path rules, and compute probabilities using concrete worked examples.",
       "weight": 1.0,
       "tags": [
         "GK",
@@ -6048,8 +6078,8 @@
       "id": "40ca79f4-de7b-4508-843a-7fcc68e0dc78",
       "title": "Vierfeldertafeln interpretieren",
       "titleEn": "Interpret four-fold tables",
-      "description": "Die lernende Person kann Vierfeldertafeln erstellen, relativen und absoluten Häufigkeiten zuordnen und Wahrscheinlichkeiten für Kombinationen von Ereignissen ablesen.",
-      "descriptionEn": "The learner can create four-field tables, assign relative and absolute frequencies, and read probabilities for combinations of events.",
+      "description": "Die lernende Person kann Ereignisse als Mengen darstellen und verknüpfen (Und, Oder, exklusives Oder, Gegenereignis, Differenz), Wahrscheinlichkeiten für Vereinigungs- und Schnittmengen an konkreten Beispielen bestimmen und dies in Vier- bzw. Mehrfeldertafeln darstellen.",
+      "descriptionEn": "The learner can represent events as sets and combine them (AND, OR, exclusive OR, complement, difference), compute probabilities for unions and intersections in concrete examples, and represent them in four- or multi-field tables.",
       "weight": 1.0,
       "tags": [
         "GK",
@@ -6078,8 +6108,8 @@
       "id": "7c6b894d-8580-4edd-82e9-356fe13ba30f",
       "title": "Bedingte Wahrscheinlichkeiten berechnen",
       "titleEn": "Calculate conditional probabilities",
-      "description": "Die lernende Person kann mithilfe von Baumdiagrammen oder Vierfeldertafeln bedingte Wahrscheinlichkeiten bestimmen, Formeln anwenden und Aussagen interpretieren.",
-      "descriptionEn": "The learner can determine conditional probabilities using tree diagrams or four-field tables, apply formulas, and interpret statements.",
+      "description": "Die lernende Person kann bedingte Wahrscheinlichkeiten in Sachzusammenhängen identifizieren, mit Baumdiagrammen sowie Vier- oder Mehrfeldertafeln (absolute/relative Häufigkeiten) berechnen und stochastische Unabhängigkeit an konkreten Beispielen prüfen.",
+      "descriptionEn": "The learner can identify conditional probabilities in context, compute them with tree diagrams and four- or multi-field tables (absolute/relative frequencies), and check stochastic independence using concrete examples.",
       "weight": 1.0,
       "tags": [
         "GK",
@@ -6108,8 +6138,8 @@
       "id": "2906a295-5321-4512-af07-0b3bf94f058c",
       "title": "Zählverfahren systematisch anwenden",
       "titleEn": "Apply counting methods systematically",
-      "description": "Die lernende Person kann kombinatorische Probleme analysieren, passende Zählverfahren (Permutation, Variation, Kombination) auswählen und Wahrscheinlichkeiten daraus ableiten.",
-      "descriptionEn": "The learner can analyze combinatorial problems, select appropriate counting methods (permutation, variation, combination), and derive probabilities from them.",
+      "description": "Die lernende Person kann kombinatorische Zählprobleme mit der Produktregel lösen, geordnete Stichproben mit und ohne Zurücklegen sowie ungeordnete Stichproben ohne Zurücklegen unterscheiden und an konkreten Beispielen mit Fakultät und Binomialkoeffizient rechnen.",
+      "descriptionEn": "The learner can solve combinatorial counting problems using the product rule, distinguish ordered samples with and without replacement and unordered samples without replacement, and compute concrete examples using factorials and binomial coefficients.",
       "weight": 1.0,
       "tags": [
         "GK",
@@ -6136,10 +6166,10 @@
     },
     {
       "id": "2b08930e-344c-4611-b113-382e0c035d89",
-      "title": "Diskrete Zufallsexperimente modellieren",
-      "titleEn": "Model discrete random experiments",
-      "description": "Die lernende Person kann passende Wahrscheinlichkeitsmodelle (z. B. Gleichverteilung, hypergeometrisch) auswählen, Zufallsexperimente beschreiben und Modellgrenzen benennen.",
-      "descriptionEn": "The learner can select appropriate probability models (e.g., uniform distribution, hypergeometric), describe random experiments, and name model limits.",
+      "title": "Zufallsexperimente beschreiben und Laplace-Wahrscheinlichkeiten vergleichen",
+      "titleEn": "Describe random experiments and compare Laplace probabilities",
+      "description": "Die lernende Person kann Zufallsexperimente mit Ergebnis, Ergebnismenge und Ereignis beschreiben, Laplace-Wahrscheinlichkeiten bestimmen und sie an konkreten Beispielrechnungen (z. B. vierfacher Münzwurf: Anzahl \"Kopf\") mit relativen Häufigkeiten vergleichen.",
+      "descriptionEn": "The learner can describe random experiments using outcome, sample space, and event, compute Laplace probabilities, and compare them with relative frequencies in concrete worked examples (e.g., number of heads in four coin tosses).",
       "weight": 1.0,
       "tags": [
         "GK",
@@ -6147,15 +6177,14 @@
       ],
       "contains": [],
       "requires": [
-        "7c6b894d-8580-4edd-82e9-356fe13ba30f",
-        "2906a295-5321-4512-af07-0b3bf94f058c"
+        "faf8c993-921e-4b5e-ac24-2b2d6f831195"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
-        "demandLevel": "AB2",
+        "demandLevel": "AB1",
         "processCompetencies": [
-          "K2.3",
-          "K6.2"
+          "K2.1",
+          "K4.2"
         ],
         "guidingIdeas": [
           "L4",
@@ -6167,21 +6196,22 @@
     },
     {
       "id": "a798cfc5-066c-47f0-aee4-8c0b8e80e230",
-      "title": "Hypergeometrische Verteilung anwenden (LK)",
-      "titleEn": "Apply hypergeometric distribution (advanced course)",
-      "description": "Die lernende Person kann hypergeometrische Modelle formulieren, Unterschiede zur Binomialverteilung erklären und Wahrscheinlichkeiten für Ziehungen ohne Zurücklegen berechnen.",
-      "descriptionEn": "The learner can formulate hypergeometric models, explain differences to the binomial distribution, and calculate probabilities for draws without replacement.",
+      "title": "Laplace-Wahrscheinlichkeiten ohne Zurücklegen (hypergeometrisch)",
+      "titleEn": "Laplace probabilities without replacement (hypergeometric)",
+      "description": "Die lernende Person kann Laplace-Wahrscheinlichkeiten bei Ziehungen ohne Zurücklegen mit Zählverfahren berechnen (z. B. Urnen- oder Lottoprobleme), das hypergeometrische Modell begründen und Ergebnisse an konkreten Beispielen prüfen.",
+      "descriptionEn": "The learner can compute Laplace probabilities for draws without replacement using counting methods (e.g., urn or lottery problems), justify the hypergeometric model, and verify results on concrete examples.",
       "weight": 1.0,
       "tags": [
+        "GK",
         "LK"
       ],
       "contains": [],
       "requires": [
-        "2b08930e-344c-4611-b113-382e0c035d89"
+        "2906a295-5321-4512-af07-0b3bf94f058c"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
-        "demandLevel": "AB3",
+        "demandLevel": "AB2",
         "processCompetencies": [
           "K2.3",
           "K3.3"
@@ -6192,7 +6222,38 @@
         ],
         "phase": "Q3"
       },
-      "sourceRef": "KC2024, S.54, Q3.1 LK"
+      "sourceRef": "KC2024, S.54, Q3.1"
+    },
+    {
+      "id": "7ad95166-5300-4e97-974b-5e2a1db6948f",
+      "title": "Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell)",
+      "titleEn": "Laplace probabilities with replacement (binomial model)",
+      "description": "Die lernende Person kann bei Ziehungen mit Zurücklegen Wahrscheinlichkeiten mit dem Binomialkoeffizienten berechnen (z. B. Urne mit Zurücklegen), Ergebnisse an konkreten Beispielen rechnen und das Modell mit dem Ziehen ohne Zurücklegen vergleichen (z. B. bei großer Urne).",
+      "descriptionEn": "The learner can compute probabilities for draws with replacement using the binomial coefficient (e.g., an urn with replacement), work through concrete examples, and compare the model with draws without replacement (e.g., for large urns).",
+      "weight": 1.0,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "2906a295-5321-4512-af07-0b3bf94f058c",
+        "a798cfc5-066c-47f0-aee4-8c0b8e80e230"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "sourceRef": "KC2024, S.54, Q3.1"
     },
     {
       "id": "8123874e-19be-453a-a93c-3aa91ec4e79d",
