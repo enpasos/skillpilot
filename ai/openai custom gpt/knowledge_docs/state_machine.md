@@ -204,7 +204,7 @@ Wenn im aktuellen Fokus (Filter/Scope) **alle** Lernziele den Status `mastery` e
    - **Ja, verfügbar**: Schlage den Wechsel zum nächsten logischen Schritt vor.
    - **Nein, nichts mehr da**: Gratuliere zum Gesamtabschluss des Curriculums.
 4. **Verbot**: Verlasse niemals den vom Backend gelieferten Rahmen (`LearnerState`). "Erfinde" keine Fortsetzungen, die nicht als Daten vorliegen.
-5. **Signal aus dem Backend**: Wenn `requiredAction = setScope` **und** die `frontier` leer ist, sind die `goalOptions` als **Kontext-Erweiterung** zu behandeln.
+5. **Signal aus dem Backend**: Wenn `requiredAction = setScope` **und** die `frontier` leer ist, sind die `goalOptions` als **Kontext-Wechsel** zu behandeln (Scope wird ersetzt, nicht erweitert).
 
 ---
 

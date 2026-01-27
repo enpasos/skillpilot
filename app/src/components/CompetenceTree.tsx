@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Target, Send, Check, Play } from 'lucide-react'
+import { Target, Send, Check, Play, ArrowBigLeft } from 'lucide-react'
 import { useTranslation } from '../hooks/useTranslation'
 import type { UiGoal } from '../goalTypes'
 import { sortGoalsTopologically } from '../utils/goalSorter'
@@ -209,7 +209,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           <div className="flex items-center gap-1 text-slate-500">
             {plannedCount > 0 && (
               <>
-                <span className="text-amber-400">★</span>
+                <ArrowBigLeft size={14} className="text-amber-400" />
                 <span className="text-xs">{plannedCount}</span>
               </>
             )}
@@ -224,7 +224,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
               }`}
             title={isPlanned ? t.tooltips.removeFromList : t.tooltips.addToList}
           >
-            ★
+            <ArrowBigLeft size={16} />
           </button>
         )}
       </div>

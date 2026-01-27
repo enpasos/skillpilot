@@ -990,10 +990,9 @@ public class LearnerService {
                     "goalIds must not be empty. String instructions are no longer supported.");
         }
 
-        Set<String> newPlanned = new java.util.HashSet<>(getPlannedGoals(skillpilotId));
-        newPlanned.addAll(goalIds);
+        // Scope selection is exclusive: replace planned goals with the new scope.
+        Set<String> newPlanned = new java.util.HashSet<>(goalIds);
         setPlannedGoals(skillpilotId, newPlanned);
-        // learner.setActiveGoalId(null); // Keep active goal when broadening scope
         learner.setLearningState(LearningState.FRONTIER);
         learnerRepository.save(learner);
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "SCOPE_UPDATE"));
