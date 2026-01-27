@@ -209,7 +209,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           <div className="flex items-center gap-1 text-slate-500">
             {plannedCount > 0 && (
               <>
-                <ArrowBigLeft size={14} className="text-amber-400" />
+                <SquareArrowLeft size={14} className="text-red-500" />
                 <span className="text-xs">{plannedCount}</span>
               </>
             )}
