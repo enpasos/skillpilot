@@ -69,6 +69,18 @@ public class LearnerAiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse setActiveGoal(@PathVariable String skillpilotId,
             @Valid @RequestBody ActiveGoalRequest request) {
+        UnifiedLearnerStateResponse state = learnerService.getLearnerState(skillpilotId);
+        String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
+        boolean redirect = Boolean.TRUE.equals(request.redirect());
+        if (!"setActiveGoal".equals(requiredAction)) {
+            if ("setMastery".equals(requiredAction) && redirect) {
+                // Allow explicit user redirect while an active goal is locked.
+            } else if (requiredAction != null) {
+                throw new org.springframework.web.server.ResponseStatusException(
+                        org.springframework.http.HttpStatus.CONFLICT,
+                        "Required action is " + requiredAction + ". Follow stateMachine.requiredAction.");
+            }
+        }
         learnerService.setActiveGoal(skillpilotId, request.goalId());
         return learnerService.getLearnerState(skillpilotId);
     }

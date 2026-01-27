@@ -115,7 +115,7 @@
             "post": {
                 "operationId": "setActiveGoal",
                 "summary": "Lock an atomic goal for teaching",
-                "description": "Selects the current atomic goal (use stateMachine.goalOptions or filter frontier by type=atomic) and locks the session until mastery. If an active goal is already set, this replaces it (explicit redirect).",
+                "description": "Selects the current atomic goal (use stateMachine.goalOptions or filter frontier by type=atomic) and locks the session until mastery. Only call when stateMachine.requiredAction is setActiveGoal. If the user explicitly requests a redirect while requiredAction is setMastery, set redirect=true.",
                 "parameters": [
                     {
                         "name": "skillpilotId",
@@ -155,7 +155,7 @@
             "post": {
                 "operationId": "setMastery",
                 "summary": "Update mastery and get next steps",
-                "description": "Updates mastery for the active goal and immediately returns the new frontier plus state (stateMachine, nextAllowedActions, learningState, activeGoal). If a goal is already active, you may omit goalId and the server will use the active goal.",
+                "description": "Updates mastery for the active goal and immediately returns the new frontier plus state (stateMachine, nextAllowedActions, learningState, activeGoal). If an active goal is already set, call setMastery immediately and omit goalId (or send an empty body); do NOT call setActiveGoal again.",
                 "parameters": [
                     {
                         "name": "skillpilotId",
@@ -371,6 +371,10 @@
                     "goalId": {
                         "type": "string",
                         "description": "Atomic goal UUID to lock as the current learning target."
+                    },
+                    "redirect": {
+                        "type": "boolean",
+                        "description": "Set to true only when the user explicitly requests switching away from the current active goal while requiredAction is setMastery."
                     }
                 },
                 "required": [
@@ -532,14 +536,19 @@
             "MasteryUpdateRequest": {
                 "type": "object",
                 "properties": {
+                    "mastery": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "number",
+                            "format": "double"
+                        },
+                        "description": "Optional map with a single entry {goalId: value} for partial mastery (0.0–1.0). If omitted, defaults to 1.0 for the active goal or the provided goalId."
+                    },
                     "goalId": {
                         "type": "string",
-                        "description": "The UUID of the single goal to set to 1.0 (Mastered). MUST be an Atomic Goal (no children)."
+                        "description": "Optional when an active goal is already set. The UUID of the single goal to set to 1.0 (Mastered) unless a mastery map is provided. MUST be an Atomic Goal (no children)."
                     }
-                },
-                "required": [
-                    "goalId"
-                ]
+                }
             },
             "MasteryResponse": {
                 "type": "object",
