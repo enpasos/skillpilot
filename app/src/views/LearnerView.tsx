@@ -333,17 +333,35 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   )
 
+  const refreshPlanned = useCallback(async () => {
+    if (!skillpilotId) return
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned` : `/api/ui/learners/${skillpilotId}/planned`
+      const res = await fetch(url)
+      if (res.ok) {
+        const data = await res.json()
+        if (data.goals && Array.isArray(data.goals)) {
+          setPlannedGoals(new Set(data.goals))
+        }
+      }
+    } catch (e) {
+      console.warn('Failed to load planned goals', e)
+    }
+  }, [skillpilotId])
+
   const handleSseUpdate = useCallback(async () => {
     console.log('[SSE] 🔄 Triggering full refresh...')
-    // Refresh both mastery data AND learner state in parallel
+    // Refresh mastery data, learner state, AND planned goals (scope) in parallel
     await Promise.all([
       refreshState(true),
+      refreshPlanned(),
       onRefresh?.()
     ])
     // Increment counter to force CompetenceTree re-render
     setRefreshCounter(c => c + 1)
     console.log('[SSE] ✅ Refresh complete')
-  }, [refreshState, onRefresh])
+  }, [refreshState, refreshPlanned, onRefresh])
 
   useLearnerUpdates(skillpilotId, handleSseUpdate)
 
@@ -362,21 +380,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   // Load planned goals from backend
   React.useEffect(() => {
     if (!skillpilotId) return
-    const fetchPlanned = async () => {
-      try {
-        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned` : `/api/ui/learners/${skillpilotId}/planned`
-        const res = await fetch(url)
-        if (res.ok) {
-          const data = await res.json()
-          if (data.goals && Array.isArray(data.goals)) {
-            setPlannedGoals(new Set(data.goals))
-          }
-        }
-      } catch (e) {
-        console.warn('Failed to load planned goals', e)
-      }
-    }
+
+    // fetchPlanned now handled by refreshPlanned
+    refreshPlanned()
+
     const fetchLearnerData = async () => {
       try {
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
@@ -391,9 +398,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       }
     }
 
-    fetchPlanned()
     fetchLearnerData()
-  }, [skillpilotId])
+  }, [skillpilotId, refreshPlanned])
 
   const handleSetActiveGoal = useCallback(async (goalId: string) => {
     if (!skillpilotId) return;
