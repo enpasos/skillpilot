@@ -286,7 +286,16 @@ const App: React.FC = () => {
     )
   }
 
+  console.log('[App] Render check', {
+    hasSession,
+    normalizedPath,
+    selectedLandscapeId: core.selectedLandscapeId,
+    loadingLandscapes: core.loadingLandscapes,
+    pendingLandscapeId
+  })
+
   if (!hasSession || normalizedPath === '/') {
+    console.log('[App] → Showing SessionSetup (first block: no session or root path)')
     return (
       <SessionSetup
         role={role}
@@ -330,6 +339,7 @@ const App: React.FC = () => {
   // If we have a session but no landscape selected (and not pending), show SessionSetup to let user pick one.
   // This effectively acts as the "Login/Start" screen when context is missing.
   if (!core.selectedLandscapeId && !core.loadingLandscapes && !pendingLandscapeId) {
+    console.log('[App] → Showing SessionSetup (second block: no landscape selected)')
     return (
       <SessionSetup
         role={role}
