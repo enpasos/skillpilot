@@ -210,6 +210,56 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [effectiveActiveGoalId, parentMap, onSelectGoal, selectedId])
 
+  // Reveal Scope (Planned Goals) Logic
+  const revealScope = useCallback(() => {
+    if (!parentMap || plannedGoals.size === 0) return
+    // Get the first (and typically only) planned goal as target
+    const targetId = Array.from(plannedGoals)[0]
+    if (!targetId) return
+
+    const ancestors = new Set<string>()
+
+    // Find all ancestors to expand
+    const queue = [targetId]
+    while (queue.length > 0) {
+      const current = queue.pop()!
+      const parents = parentMap.get(current)
+      if (parents) {
+        parents.forEach(p => {
+          if (!ancestors.has(p)) {
+            ancestors.add(p)
+            queue.push(p)
+          }
+        })
+      }
+    }
+    setForcedExpandedIds(ancestors)
+    if (targetId !== selectedId) {
+      onSelectGoal(targetId)
+    }
+  }, [parentMap, plannedGoals, onSelectGoal, selectedId])
+
+  // Auto-reveal scope on start if no active goal exists but scope is set
+  const hasAutoRevealedScope = useRef(false)
+  useEffect(() => {
+    // Only run once on initial load
+    if (hasAutoRevealedScope.current) return
+    // Wait until data is loaded
+    if (!parentMap || parentMap.size === 0) return
+
+    // If there's an active goal, reveal that instead
+    if (effectiveActiveGoalId) {
+      hasAutoRevealedScope.current = true
+      return
+    }
+
+    // If there's a scope but no active goal, reveal the scope
+    if (plannedGoals.size > 0) {
+      hasAutoRevealedScope.current = true
+      revealScope()
+    }
+  }, [effectiveActiveGoalId, plannedGoals, parentMap, revealScope])
+
   // Frontier Logic: Identify the "Next Actionable" goal in every branch.
   // Assumption: Content is sequential within containers.
   const frontierIds = useMemo(() => {
@@ -805,9 +855,17 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           <div className="flex-1 min-w-0 mr-2">
             <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate">{t.learner.myGoals}</h2>
             <div className="text-xs flex items-center gap-2 mt-1">
-              <span className="flex items-center gap-1 font-bold text-red-500" title={t.learner.totalInContext}>
+              <button
+                className="flex items-center gap-1 font-bold text-red-500 hover:text-red-400 transition-colors"
+                onClick={revealScope}
+                disabled={plannedGoals.size === 0}
+                title={plannedGoals.size > 0
+                  ? (language === 'de' ? 'Gehe zum markierten Scope' : 'Go to marked scope')
+                  : t.learner.totalInContext
+                }
+              >
                 {stats.totalAtomic} <Target size={16} />
-              </span>
+              </button>
               <MoveRight size={12} className="text-slate-400" />
               <button
                 className="text-slate-400 dark:text-slate-500 flex items-center gap-1 text-[10px] hover:text-sky-500 transition-colors"
