@@ -850,7 +850,7 @@ export const CurriculaView: React.FC = () => {
                                 </span>
                               </div>
                               <div className="flex flex-col">
-                                <span className="uppercase tracking-wider">
+                                <span className="uppercase tracking-wider" title="GitHub Issues">
                                   {t.curriculaPage.table.issues}
                                 </span>
                                 <span className="text-sm font-semibold text-text-primary">
@@ -858,7 +858,7 @@ export const CurriculaView: React.FC = () => {
                                 </span>
                               </div>
                               <div className="flex flex-col">
-                                <span className="uppercase tracking-wider">
+                                <span className="uppercase tracking-wider" title="GitHub Pull Requests">
                                   {t.curriculaPage.table.prs}
                                 </span>
                                 <span className="text-sm font-semibold text-text-primary">
