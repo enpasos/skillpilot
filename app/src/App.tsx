@@ -294,7 +294,7 @@ const App: React.FC = () => {
     pendingLandscapeId
   })
 
-  if (!hasSession || normalizedPath === '/') {
+  if (!hasSession || (normalizedPath === '/' && !pendingLandscapeId)) {
     console.log('[App] → Showing SessionSetup (first block: no session or root path)')
     return (
       <SessionSetup
