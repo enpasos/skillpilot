@@ -7,5 +7,6 @@ public record LearnerGoals(
                 long mastered_count,
                 long total_count,
                 GoalStats personalized,
-                GoalStats scope) {
+                GoalStats scope,
+                boolean scope_completed) {
 }

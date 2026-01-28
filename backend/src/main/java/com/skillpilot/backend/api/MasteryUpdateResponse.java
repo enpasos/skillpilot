@@ -7,5 +7,6 @@ public record MasteryUpdateResponse(
                 List<String> nextAllowedActions,
                 String learningState,
                 FrontierGoal activeGoal,
-                StateMachineInfo stateMachine) {
+                StateMachineInfo stateMachine,
+                LearnerGoals goals) {
 }

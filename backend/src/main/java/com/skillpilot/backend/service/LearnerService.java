@@ -147,7 +147,8 @@ public class LearnerService {
                             state.nextAllowedActions(),
                             state.learningState(),
                             state.activeGoal(),
-                            state.stateMachine());
+                            state.stateMachine(),
+                            state.goals());
                 }
                 throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
                         "goalId must be an atomic goal from the current frontier.");
@@ -190,7 +191,8 @@ public class LearnerService {
                 state.nextAllowedActions(),
                 state.learningState(),
                 state.activeGoal(),
-                state.stateMachine());
+                state.stateMachine(),
+                state.goals());
     }
 
     @Transactional(readOnly = true)
@@ -724,6 +726,9 @@ public class LearnerService {
         com.skillpilot.backend.api.GoalStats focusStats = (scopeStats != null && scopeStats.total_atomic() > 0)
                 ? scopeStats
                 : personalizedStats;
+        boolean scopeCompleted = scopeStats != null
+                && scopeStats.total_atomic() > 0
+                && scopeStats.mastered_atomic() >= scopeStats.total_atomic();
 
         List<String> nextAllowedActions = new ArrayList<>();
         if (curriculumId == null) {
@@ -803,7 +808,7 @@ public class LearnerService {
 
         return new UnifiedLearnerStateResponse(learner.getSkillpilotId(), curriculumSummary, frontier,
                 new LearnerGoals(plannedRich, focusStats.mastered_atomic(), focusStats.total_atomic(),
-                        personalizedStats, scopeStats),
+                        personalizedStats, scopeStats, scopeCompleted),
                 nextAllowedActions, activeFilters,
                 learner.getCopySources(), learningState.name(), activeGoal, stateMachine);
     }
