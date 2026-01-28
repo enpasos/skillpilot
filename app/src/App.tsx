@@ -294,6 +294,7 @@ const App: React.FC = () => {
         skillpilotId={skillpilotId}
         setSkillpilotId={setSkillpilotId}
         onStart={(id, landscapeId, forceRole, forceGoalId) => {
+          console.log('[App] onStart called (first block)', { id, landscapeId, forceRole, forceGoalId, currentRole: role })
           const activeRole = forceRole || role
           if (!activeRole) return
           setSkillpilotId(id)
@@ -336,6 +337,7 @@ const App: React.FC = () => {
         skillpilotId={skillpilotId}
         setSkillpilotId={setSkillpilotId}
         onStart={(id, landscapeId, forceRole, forceGoalId) => {
+          console.log('[App] onStart called (second block)', { id, landscapeId, forceRole, forceGoalId, currentRole: role })
           const activeRole = forceRole || role
           if (!activeRole) return
           setSkillpilotId(id)
