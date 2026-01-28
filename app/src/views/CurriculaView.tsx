@@ -841,7 +841,7 @@ export const CurriculaView: React.FC = () => {
                             </div>
                             <div className="flex flex-wrap gap-4 text-xs text-text-secondary">
                               <div className="flex flex-col">
-                                <span className="uppercase tracking-wider">
+                                <span className="uppercase tracking-wider" title={language === 'de' ? 'In der Rolle Lernender Lernziele nachvollzogen' : 'Learning goals completed as a learner'}>
                                   {t.curriculaPage.table.achievements}
                                 </span>
                                 <span className="text-sm font-semibold text-text-primary">
@@ -850,7 +850,7 @@ export const CurriculaView: React.FC = () => {
                                 </span>
                               </div>
                               <div className="flex flex-col">
-                                <span className="uppercase tracking-wider" title="GitHub Issues">
+                                <span className="uppercase tracking-wider" title={language === 'de' ? 'GitHub Issues mit Hinweisen auf Fehler/Schwächen erstellt' : 'GitHub issues created to report errors or weaknesses'}>
                                   {t.curriculaPage.table.issues}
                                 </span>
                                 <span className="text-sm font-semibold text-text-primary">
@@ -858,7 +858,7 @@ export const CurriculaView: React.FC = () => {
                                 </span>
                               </div>
                               <div className="flex flex-col">
-                                <span className="uppercase tracking-wider" title="GitHub Pull Requests">
+                                <span className="uppercase tracking-wider" title={language === 'de' ? 'GitHub Pull-Requests mit Lösungsvorschlägen erstellt' : 'GitHub pull requests created with proposed solutions'}>
                                   {t.curriculaPage.table.prs}
                                 </span>
                                 <span className="text-sm font-semibold text-text-primary">
