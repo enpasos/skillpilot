@@ -24,7 +24,7 @@
       "titleEn": "Mathematics",
       "description": "Oberziel über alle Kursphasen hinweg: Die lernende Person kann die im Kerncurriculum beschriebenen Kompetenzen in allen Themenfeldern sicher anwenden.",
       "descriptionEn": "Overarching goal across all course phases: The learner can safely apply the competencies described in the core curriculum in all topic areas.",
-      "weight": 319.0,
+      "weight": 321.0,
       "tags": [
         "GK",
         "LK"
@@ -139,7 +139,7 @@
       "titleEn": "Grade 13",
       "description": "Bündelt Q3 und Q4 der Qualifikationsphase sowie die Abiturprüfung.",
       "descriptionEn": "Bundles Q3 and Q4 of the qualification phase as well as the Abitur examination.",
-      "weight": 93.0,
+      "weight": 95.0,
       "tags": [
         "GK",
         "LK"
@@ -179,7 +179,7 @@
       "titleEn": "Q3 Stochastics",
       "description": "Zusammenfassender Cluster für die Themenfelder Q3.1 bis Q3.5: Grundlagen der Stochastik, Wahrscheinlichkeitsverteilungen, Hypothesentests, Prognose- und Konfidenzintervalle sowie Statistik.",
       "descriptionEn": "Summarizing cluster for topics Q3.1 to Q3.5: basic stochastics, probability distributions, hypothesis tests, prediction and confidence intervals, and statistics.",
-      "weight": 49.0,
+      "weight": 51.0,
       "tags": [
         "GK",
         "LK"
@@ -431,7 +431,7 @@
       "titleEn": "Structure justifications and proofs",
       "description": "Die lernende Person kann Argumentationsketten gliedern, Beweisschemata (z. B. direkte Beweise, Beweise durch Widerspruch) anwenden und Ergebnisse verständlich präsentieren.",
       "descriptionEn": "The learner can structure chains of argument, apply proof schemes (e.g. direct proofs, proofs by contradiction) and present results clearly.",
-      "weight": 10.0,
+      "weight": 12.0,
       "tags": [
         "GK",
         "LK"
@@ -6489,7 +6489,7 @@
       "titleEn": "Q3.2 Probability Distributions (Overview)",
       "description": "Lernziele zu diskreten Wahrscheinlichkeitsverteilungen, insbesondere Zufallsgrößen, Bernoulli-Ketten und binomialverteilte Zufallsgrößen.",
       "descriptionEn": "Learning objectives on discrete probability distributions, especially random variables, Bernoulli chains, and binomial distributed random variables.",
-      "weight": 10.0,
+      "weight": 12.0,
       "tags": [
         "GK",
         "LK"
@@ -6501,7 +6501,9 @@
         "9e6499c1-52a8-43bb-9f80-b37f5fc6801f",
         "26cbeace-0ebb-4e7e-b320-6de78d6100ed",
         "2abfedb2-6e23-4d0f-8701-e1c5b8f2aea0",
+        "46eadb86-072f-4939-8f32-6467aa2b7272",
         "7a6e9aad-1169-4419-b833-c1eaa1f0a224",
+        "9b05b724-9b70-40c3-bb19-ac32cbb76f86",
         "130dd768-2951-41f5-87bf-732133c2a122",
         "f9cb74fe-3b83-4175-b653-4cbba7777f6c",
         "543ec1f7-923d-4c0c-911c-2ab09f78894c"
@@ -6706,6 +6708,35 @@
       "sourceRef": "KC2024, S.55, Q3.2 Bullet 3"
     },
     {
+      "id": "46eadb86-072f-4939-8f32-6467aa2b7272",
+      "title": "Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)",
+      "titleEn": "Compute relative dispersion of binomial distributions (advanced course)",
+      "description": "Die lernende Person kann die relative Streuung (Variationskoeffizient) $\\sigma/\\mu$ einer Binomialverteilung berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
+      "descriptionEn": "The learner can compute the relative dispersion (coefficient of variation) $\\sigma/\\mu$ of a binomial distribution and show that for fixed $p$ it decreases as $n$ grows (e.g. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
+      "weight": 1.0,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "2abfedb2-6e23-4d0f-8701-e1c5b8f2aea0"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "sourceRef": "KC2024, S.55, Q3.2 LK"
+    },
+    {
       "id": "7a6e9aad-1169-4419-b833-c1eaa1f0a224",
       "title": "Binomialverteilungen in Kontexten nutzen",
       "titleEn": "Use binomial distributions in contexts",
@@ -6737,6 +6768,35 @@
       "sourceRef": "KC2024, S.55, Q3.2 Bullet 4"
     },
     {
+      "id": "9b05b724-9b70-40c3-bb19-ac32cbb76f86",
+      "title": "Dichtefunktion der Normalverteilung angeben und deuten",
+      "titleEn": "State and interpret the normal distribution density",
+      "description": "Die lernende Person kann die Dichtefunktion der Normalverteilung $f(x)=\\frac{1}{\\sigma\\sqrt{2\\pi}}\\,e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}$ angeben, die Rolle der Parameter $\\mu$ und $\\sigma$ erläutern und grundlegende Eigenschaften (Symmetrie, Fläche = 1) interpretieren.",
+      "descriptionEn": "The learner can state the normal distribution density $f(x)=\\frac{1}{\\sigma\\sqrt{2\\pi}}\\,e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}$, explain the role of the parameters $\\mu$ and $\\sigma$, and interpret basic properties (symmetry, total area 1).",
+      "weight": 1.0,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "9e982b23-fb58-4cd2-95e3-58464adf6e64"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "sourceRef": "KC2024, S.55, Q3.2 LK"
+    },
+    {
       "id": "130dd768-2951-41f5-87bf-732133c2a122",
       "title": "Mit der Normalverteilung rechnen",
       "titleEn": "Compute with the normal distribution",
@@ -6748,7 +6808,9 @@
       ],
       "contains": [],
       "requires": [
-        "9e982b23-fb58-4cd2-95e3-58464adf6e64"
+        "9e982b23-fb58-4cd2-95e3-58464adf6e64",
+        "2abfedb2-6e23-4d0f-8701-e1c5b8f2aea0",
+        "9b05b724-9b70-40c3-bb19-ac32cbb76f86"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
