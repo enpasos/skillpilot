@@ -80,6 +80,8 @@ const App: React.FC = () => {
     if (storedRole === 'learner') return !!storedId
     return true
   })
+  // Track pending landscape selection to prevent SessionSetup re-mount during navigation
+  const [pendingLandscapeId, setPendingLandscapeId] = useState<string | null>(null)
   const [, setLearnerMeta] = useState<{ lastUpdated: string }>({
     lastUpdated: new Date().toISOString(),
   })
@@ -300,6 +302,7 @@ const App: React.FC = () => {
           localStorage.setItem('skillpilot_id', id)
           localStorage.setItem('skillpilot_role', activeRole)
           if (landscapeId) {
+            setPendingLandscapeId(landscapeId)
             core.setSelectedLandscapeId(landscapeId)
           }
           const search = landscapeId ? `?l=${landscapeId}` : ''
@@ -323,9 +326,9 @@ const App: React.FC = () => {
     )
   }
 
-  // If we have a session but no landscape selected, show SessionSetup to let user pick one.
+  // If we have a session but no landscape selected (and not pending), show SessionSetup to let user pick one.
   // This effectively acts as the "Login/Start" screen when context is missing.
-  if (!core.selectedLandscapeId && !core.loadingLandscapes) {
+  if (!core.selectedLandscapeId && !core.loadingLandscapes && !pendingLandscapeId) {
     return (
       <SessionSetup
         role={role}
@@ -341,6 +344,7 @@ const App: React.FC = () => {
           localStorage.setItem('skillpilot_id', id)
           localStorage.setItem('skillpilot_role', activeRole)
           if (landscapeId) {
+            setPendingLandscapeId(landscapeId)
             core.setSelectedLandscapeId(landscapeId)
           }
           const search = landscapeId ? `?l=${landscapeId}` : ''
