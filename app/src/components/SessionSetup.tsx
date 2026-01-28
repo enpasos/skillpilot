@@ -29,6 +29,10 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     if (role === 'trainer') {
       return localStorage.getItem('skillpilot_trainer_landscape') || ''
     }
+    // Restore learner's last selection from local storage for faster startup
+    if (role === 'learner') {
+      return localStorage.getItem('skillpilot_learner_landscape') || ''
+    }
     return ''
   })
   // Use location (ensure import is added)
@@ -147,6 +151,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       localStorage.setItem('skillpilot_trainer_landscape', selectedLandscapeId)
     }
 
+    // Save learner curriculum to localStorage for faster startup next time
+    if (role === 'learner' && selectedLandscapeId) {
+      localStorage.setItem('skillpilot_learner_landscape', selectedLandscapeId)
+    }
+
     onStart(effectiveId, selectedLandscapeId, role || undefined)
   }
 
@@ -243,8 +252,15 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                 onClick={() => {
                   setRole('learner')
                   const id = localStorage.getItem('skillpilot_id')
+                  const savedLandscape = localStorage.getItem('skillpilot_learner_landscape')
                   if (id) {
                     setSkillpilotId(id)
+                    // If we have a saved landscape, set it immediately and mark as checked
+                    if (savedLandscape) {
+                      setSelectedLandscapeId(savedLandscape)
+                      setHasCheckedId(true)
+                    }
+                    // Still check learner to get latest data from server (non-blocking update)
                     checkLearner(id)
                   }
                   setShowLogin(true)
