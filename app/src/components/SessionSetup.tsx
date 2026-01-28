@@ -129,16 +129,17 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
     if (role === 'learner' && selectedLandscapeId) {
       // Save selection to backend before navigation so learner state is in sync.
+      // Save selection to backend non-blocking (fire and forget)
       try {
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
         const url = apiBase ? `${apiBase}/api/ui/learners/${effectiveId}/curriculum` : `/api/ui/learners/${effectiveId}/curriculum`
-        await fetch(url, {
+        fetch(url, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ curriculumId: selectedLandscapeId })
-        })
+        }).catch(e => console.error('Failed to save curriculum silently', e))
       } catch (e) {
-        console.error('Failed to save curriculum', e)
+        console.error('Failed to initiate save curriculum', e)
       }
     }
 
