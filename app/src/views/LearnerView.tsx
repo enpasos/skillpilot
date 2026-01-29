@@ -54,6 +54,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [frontierOptions, setFrontierOptions] = useState<FrontierGoal[]>([])
   const [stateActiveGoalId, setStateActiveGoalId] = useState<string | null>(null)
   const [stateRequiredAction, setStateRequiredAction] = useState<string | null>(null)
+  const [backendStats, setBackendStats] = useState<{ masteredAtomic: number; totalAtomic: number } | null>(null)
   const [isSetupOpen, setIsSetupOpen] = useState(false)
   const [personalConfig, setPersonalConfig] = useState<Record<string, { selected: boolean; filterId?: string }>>({})
 
@@ -120,6 +121,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   // Calculate statistics: Total Atomic and Mastered Atomic
   // Relative to Focus (Planned Subtree) if active, otherwise Global Visible.
   const stats = useMemo(() => {
+    // In global mode (no planned goals), prefer backend stats for consistency with GPT
+    if (plannedGoals.size === 0 && backendStats) {
+      return backendStats
+    }
+
+    // Local calculation for scope mode or fallback
     let totalAtomic = 0
     let masteredAtomic = 0
     const visited = new Set<string>()
@@ -148,28 +155,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       // Focus Mode: Count only within planned subtrees
       plannedGoals.forEach(id => countRecursive(id))
     } else {
-      // Global Mode: Count all visible root goals and their descendants
+      // Global Mode: Local fallback if backend stats not available
       visibleGoals.forEach(id => {
-        // We iterate visibleGoals set which contains flattened IDs. 
-        // We just need to check if it is atomic.
-        // BUT visibleGoals contains EVERYTHING visible.
-        // So we can just iterate visibleGoals directly.
-
-        // Wait, visibleGoals is a Set of ALL visible IDs (flattened). 
-        // So we don't need recursion if we just iterate the Set.
-
-        // Let's stick to recursion from Roots to be safe? 
-        // Actually, visibleGoals set is computed recursively in previous hook.
-        // So iterating visibleGoals and checking if atomic is O(N) and correct.
-
-        // HOWEVER, for consistency with the "Planned Subtree" logic (which needs recursion 
-        // because plannedGoals only contains the top node, not the whole subtree in a flat set 
-        // unless we built it), we should use the same approach or rely on the previous hook.
-
-        // Simplest: 
-        // If plannedGoals > 0: Recursion on planned IDs.
-        // Else: Iteration on visibleGoals Set (check if atomic).
-
         const g = goalIndexAll.get(id)
         if (g && (!g.contains || g.contains.length === 0)) {
           totalAtomic++
@@ -181,7 +168,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
 
     return { totalAtomic, masteredAtomic }
-  }, [plannedGoals, goalIndexAll, visibleGoals, getMastery])
+  }, [plannedGoals, goalIndexAll, visibleGoals, getMastery, backendStats])
 
 
   // Reveal Active Goal Logic
@@ -374,6 +361,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           }
           setStateActiveGoalId(data.activeGoal?.id ?? data.stateMachine?.activeGoal?.id ?? null)
           setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
+          // Store backend-computed stats for consistency with GPT
+          if (data.goals) {
+            setBackendStats({
+              masteredAtomic: data.goals.mastered_count ?? 0,
+              totalAtomic: data.goals.total_count ?? 0
+            })
+          }
         }
       } catch (e) {
         console.warn('Failed to load learner state', e)

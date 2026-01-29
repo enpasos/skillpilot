@@ -42,14 +42,22 @@ export interface StateMachineInfo {
   activeGoal?: FrontierGoal;
 }
 
+export interface GoalStats {
+  mastered_atomic: number;
+  total_atomic: number;
+}
+
 export interface UnifiedLearnerStateResponse {
   skillpilotId: string;
   curriculum: { landscapeId: string; title: string };
   frontier: FrontierGoal[];
   goals: {
     planned: FrontierGoal[];
-    masteredCount: number;
-    totalCount: number;
+    mastered_count: number;
+    total_count: number;
+    personalized?: GoalStats;
+    scope?: GoalStats;
+    scope_completed?: boolean;
   };
   nextAllowedActions: string[];
   activeFilters: string[];
