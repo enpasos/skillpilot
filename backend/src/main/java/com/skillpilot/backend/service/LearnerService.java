@@ -502,7 +502,8 @@ public class LearnerService {
                         goal.getDescription(),
                         type,
                         "Prerequisites met",
-                        goal.getTags()));
+                        goal.getTags(),
+                        null));
             }
         }
 
@@ -704,10 +705,11 @@ public class LearnerService {
                         g.getDescription(),
                         type,
                         "Planned",
-                        g.getTags()));
+                        g.getTags(),
+                        null));
             } else {
                 // True unknown (deleted or invalid ID)
-                plannedRich.add(new FrontierGoal(pid, "Unknown Goal", "", "unknown", "Planned", null));
+                plannedRich.add(new FrontierGoal(pid, "Unknown Goal", "", "unknown", "Planned", null, null));
             }
         }
 
@@ -899,7 +901,8 @@ public class LearnerService {
                     g.getDescription(),
                     type,
                     "Scope expansion",
-                    g.getTags()));
+                    g.getTags(),
+                    null));
         }
 
         if (!result.isEmpty()) {
@@ -917,7 +920,8 @@ public class LearnerService {
                         g.description(),
                         g.type(),
                         "Scope expansion",
-                        g.tags()))
+                        g.tags(),
+                        g.examData()))
                 .toList();
     }
 
@@ -1044,10 +1048,11 @@ public class LearnerService {
             }
         }
         if (g == null) {
-            return new FrontierGoal(goalId, "Unknown Goal", "", "unknown", "Active", null);
+            return new FrontierGoal(goalId, "Unknown Goal", "", "unknown", "Active", null, null);
         }
         String type = (g.getContains() != null && !g.getContains().isEmpty()) ? "cluster" : "atomic";
-        return new FrontierGoal(g.getId(), g.getTitle(), g.getDescription(), type, "Active", g.getTags());
+        return new FrontierGoal(g.getId(), g.getTitle(), g.getDescription(), type, "Active", g.getTags(),
+                g.getExamData());
     }
 
     private void ensureLearnerExists(String skillpilotId) {
@@ -1319,7 +1324,8 @@ public class LearnerService {
                                 child.getDescription(),
                                 type,
                                 "Module",
-                                child.getTags()));
+                                child.getTags(),
+                                null));
                     }
                 }
                 // If we found a container, we assume it's the root and we returned its

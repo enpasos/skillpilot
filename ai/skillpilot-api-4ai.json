@@ -430,6 +430,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "examData": {
+            "$ref": "#/components/schemas/ExamData"
           }
         }
       },
@@ -779,6 +782,57 @@
           "requires": [
             "987fcdeb-51a2-43f1-a567-987654321000"
           ]
+        }
+      },
+      "ExamScoringStep": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "points": {
+            "type": "number"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "ExamScoring": {
+        "type": "object",
+        "properties": {
+          "maxPoints": {
+            "type": "number"
+          },
+          "passingPoints": {
+            "type": "number"
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExamScoringStep"
+            }
+          }
+        }
+      },
+      "ExamData": {
+        "type": "object",
+        "properties": {
+          "taskContent": {
+            "type": "string"
+          },
+          "taskContentEn": {
+            "type": "string"
+          },
+          "solutionContent": {
+            "type": "string"
+          },
+          "solutionContentEn": {
+            "type": "string"
+          },
+          "scoring": {
+            "$ref": "#/components/schemas/ExamScoring"
+          }
         }
       }
     }

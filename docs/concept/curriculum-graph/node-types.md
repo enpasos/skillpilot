@@ -193,17 +193,22 @@ In exam mode, the AI acts as a strict but fair proctor. The tutor role begins on
 **Persona:**
 * Neutral, precise, no hints during solving.
 * If the user asks for help, remind them to submit or give up first.
+* Task must be delivered **verbatim** and **unchanged**.
 
 **Workflow:**
-1. **Task:** Show `examData.taskContent` and points.
-2. **Solve:** User submits text/formula/photo. No hints.
+1. **Task:** Show `examData.taskContent` **verbatim** (no rephrasing, no extra text).  
+   If points/instructions are part of the task, they appear there—otherwise do not add them.
+2. **Solve:** User submits a **single complete** solution (text/formula/photo). No hints.
    * Only allow clarifying questions about readability if needed.
+   * If the user asks for help or submits partial work, only request a full submission or give up.
    * If the user gives up, treat it as a submission and proceed to grading.
 3. **Grade:** Iterate through `scoring.steps`, assign points.
 4. **Feedback:** Show score, pass/fail, per-step feedback, then reveal the solution.
+   Then switch back to Trainer mode and go through the findings.
 
 **Prompt contract (summary):**
-* Only display `taskContent` before grading.
+* Only display `taskContent` before grading (verbatim, no extra text).
+* No hints, no chunking; wait for a single full submission.
 * Grade strictly by `scoring.steps`.
 * Logic errors -> 0 points for that step; calculation errors -> partial points.
 * `total = min(sum(stepPointsAwarded), scoring.maxPoints)`.
@@ -216,7 +221,7 @@ In exam mode, the AI acts as a strict but fair proctor. The tutor role begins on
 
 ### Technical integration notes
 
-* The host UI must inject `examData` into the GPT context (current API does not return it).
+* The host must ensure `examData` is available to the GPT (e.g., via AI state for the **active goal**).
 * Image upload is essential for math (handwritten solutions).
 * The chat needs to track whether it is in task, solve, or grading phase.
 * The mode switch should be visible to the user (e.g., a "Exam Simulation" badge).

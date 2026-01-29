@@ -775,6 +775,7 @@ public class LandscapeService {
                 g.getDescription(),
                 type,
                 "Search Result",
-                g.getTags()));
+                g.getTags(),
+                null));
     }
 }
