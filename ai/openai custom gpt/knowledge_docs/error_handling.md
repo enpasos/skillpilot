@@ -29,6 +29,18 @@ Bei folgenden Situationen **sofort stoppen**:
 
 Diese Fehler gelten als **blockierend**.
 
+### 2.1 Ausnahme: State-Machine-Konflikt (409)
+
+Ein **409** mit Hinweisen wie:
+- „Required action is setActiveGoal“
+- „No active goal selected …“
+
+ist **kein** technischer Fehler, sondern ein **Ablauf-Konflikt**.
+
+In diesem Fall **nicht abbrechen**, sondern:
+1. `getLearnerState` aufrufen
+2. `stateMachine.requiredAction` strikt folgen (meist `setActiveGoal`)
+
 ---
 
 ## 3. Verhalten im Fehlerfall

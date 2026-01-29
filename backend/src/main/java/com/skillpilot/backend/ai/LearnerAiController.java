@@ -87,7 +87,7 @@ public class LearnerAiController {
 
     @PostMapping("/{skillpilotId}/mastery")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
-    public MasteryUpdateResponse setMastery(
+    public org.springframework.http.ResponseEntity<?> setMastery(
             @PathVariable String skillpilotId,
             @RequestBody(required = false) MasteryUpdateRequest request) {
 
@@ -102,7 +102,26 @@ public class LearnerAiController {
             effectiveRequest = new MasteryUpdateRequest(newMap, effectiveRequest.goalId());
         }
 
-        return learnerService.setMastery(skillpilotId, effectiveRequest);
+        UnifiedLearnerStateResponse state = learnerService.getLearnerState(skillpilotId);
+        String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
+        if (requiredAction != null && !"setMastery".equals(requiredAction)) {
+            return org.springframework.http.ResponseEntity
+                    .status(org.springframework.http.HttpStatus.CONFLICT)
+                    .body(state);
+        }
+
+        try {
+            MasteryUpdateResponse response = learnerService.setMastery(skillpilotId, effectiveRequest);
+            return org.springframework.http.ResponseEntity.ok(response);
+        } catch (org.springframework.web.server.ResponseStatusException e) {
+            if (org.springframework.http.HttpStatus.CONFLICT.equals(e.getStatusCode())) {
+                UnifiedLearnerStateResponse conflictState = learnerService.getLearnerState(skillpilotId);
+                return org.springframework.http.ResponseEntity
+                        .status(org.springframework.http.HttpStatus.CONFLICT)
+                        .body(conflictState);
+            }
+            throw e;
+        }
     }
 
     @PostMapping("/{skillpilotId}/curriculum")

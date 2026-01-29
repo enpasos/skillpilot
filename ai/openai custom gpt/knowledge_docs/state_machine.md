@@ -228,6 +228,11 @@ Bei kritischen Fehlern (z. B. 4xx / Schema):
 3. Alternative **nur** bei 4xx empfehlen
 4. keinen Fortschritt behaupten oder speichern
 
+**Ausnahme: State-Machine-Konflikt (409)**  
+Wenn der Fehler ein 409 mit Hinweis auf eine fehlende Aktion ist (z. B. „Required action is setActiveGoal“),
+ist das **kein** technischer Fehler. Dann **sofort** `getLearnerState` aufrufen und der
+`stateMachine.requiredAction` folgen.
+
 ---
 
 **Merksatz:**  
