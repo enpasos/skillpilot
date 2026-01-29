@@ -208,8 +208,8 @@ Es müssen mindestens 183 Personen getestet werden.
 
 ### A1 (Analysis) – 5 BE
 
-Grenzwert $x\to 0$: $\infty$. $x\to \infty$: $\infty$.
-Tiefpunkt bei $(1|e)$.
+$x\to 0$: $\infty$, $x\to \infty$: $\infty$.
+$f'(x)=\\frac{e^x(x-1)}{x^2}$, Tiefpunkt bei $(1|e)$.
 
 ### A2 (Analysis) – 5 BE
 

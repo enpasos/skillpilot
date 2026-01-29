@@ -11631,8 +11631,8 @@
       "id": "2ef712f1-84fe-5395-b232-af7017163449",
       "title": "A1 (Analysis, Niveau 1, 5 BE) (LK)",
       "titleEn": "A1 (Analysis, Level 2, 5 BE)",
-      "description": "Untersuchung von $f(x) = \\frac{e^x}{x}$ (Grenzwerte, Extrema).",
-      "descriptionEn": "Investigation of $f(x) = \\frac{e^x}{x}$ (limits, extrema).",
+      "description": "Untersuchung von $f(x) = \\frac{e^x}{x}$ (Grenzwerte für $x \\to 0$ und $x \\to \\infty$, Extremum, Skizze).",
+      "descriptionEn": "Investigation of $f(x) = \\frac{e^x}{x}$ (limits as $x \\to 0$ and $x \\to \\infty$, extremum, sketch).",
       "weight": 1.0,
       "tags": [
         "LK"
@@ -11647,7 +11647,7 @@
         "demandLevel": "AB2"
       },
       "examData": {
-        "taskContent": "Gegeben ist die Funktion $f(x) = \\frac{e^x}{x}$ für $x > 0$.\nBestimmen Sie das Verhalten von $f$ für $x \\to 0$ und $x \\to \\infty$.\nSkizzieren Sie den Graphen unter Berücksichtigung des Extrempunktes (Rechnung erforderlich: $f'(x)=0$).",
+        "taskContent": "Gegeben ist die Funktion $f(x) = \\frac{e^x}{x}$ für $x > 0$.\nBestimmen Sie das Verhalten von $f$ für $x \\to 0$ und $x \\to \\infty$.\nBerechnen Sie das Extremum und skizzieren Sie den Graphen.",
         "solutionContent": "**Grenzwerte:**\n$\\lim_{x \\to 0} f(x) = \\infty$ (Polstelle).\n$\\lim_{x \\to \\infty} f(x) = \\infty$ (da $e^x$ schneller wächst als $x$).\n\n**Extrempunkt:**\n$f'(x) = \\frac{e^x x - e^x}{x^2} = \\frac{e^x(x-1)}{x^2}$.\nNullstelle $x=1$. $f(1)=e$. VZW $- \\to +$ (Tiefpunkt).\n\n**Skizze:**\nVerlauf von oben kommend zum TP $(1|e)$, dann steil ansteigend.",
         "scoring": {
           "maxPoints": 5,
@@ -11656,7 +11656,7 @@
             {
               "id": "s1",
               "points": 2,
-              "description": "Grenzwerte bestimmt"
+              "description": "Grenzwerte für $x \\to 0$ und $x \\to \\infty$ bestimmt"
             },
             {
               "id": "s2",

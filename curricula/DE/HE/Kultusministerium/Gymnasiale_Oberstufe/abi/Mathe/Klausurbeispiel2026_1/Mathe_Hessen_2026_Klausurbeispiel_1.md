@@ -209,7 +209,7 @@ Die Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,00
 
 Gegeben ist die Funktion $f(x) = \frac{e^x}{x}$ für $x > 0$.
 Bestimmen Sie das Verhalten von $f$ für $x \to 0$ und $x \to \infty$.
-Skizzieren Sie den Graphen unter Berücksichtigung des Extrempunktes (Rechnung erforderlich: $f'(x)=0$).
+Berechnen Sie das Extremum und skizzieren Sie den Graphen.
 
 ### **A2 (Analysis) – 5 BE**
 
