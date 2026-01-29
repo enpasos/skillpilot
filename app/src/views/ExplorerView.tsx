@@ -158,6 +158,7 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
             masteryValue={getMastery(currentGoal.id)}
             onMasteryChange={currentGoal.contains?.length > 0 ? undefined : onMasteryChange}
             showLearnerTools={showLearnerTools}
+            showDetails={true}
           />
           {children}
           {children}

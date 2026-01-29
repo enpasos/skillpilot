@@ -11,6 +11,7 @@ interface GoalCardProps {
   masteryValue: number
   onMasteryChange?: (id: string, value: number) => void
   showLearnerTools: boolean
+  showDetails?: boolean
   isPlanned?: boolean
   isActive?: boolean
 
@@ -29,6 +30,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   masteryValue,
   onMasteryChange,
   showLearnerTools,
+  showDetails = false,
   isPlanned = false,
   isActive = false,
 
@@ -136,6 +138,76 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           </ReactMarkdown>
         )}
       </div>
+
+      {/* Detail Information Section - only shown in Explorer view */}
+      {showDetails && (
+        <div className="mt-4 space-y-3 text-[11px] text-text-secondary border-t border-border-color pt-4">
+          {/* Tags */}
+          {goal.tags && goal.tags.length > 0 && (
+            <div className="flex flex-wrap gap-1.5">
+              <span className="font-semibold text-text-primary">Tags:</span>
+              {goal.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-2 py-0.5 rounded-full bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Source Reference */}
+          {goal.sourceRef && (
+            <div>
+              <span className="font-semibold text-text-primary">Quelle: </span>
+              <span>{goal.sourceRef}</span>
+            </div>
+          )}
+
+          {/* Leitideen */}
+          {goal.leitideen && goal.leitideen.length > 0 && (
+            <div className="flex flex-wrap gap-1.5">
+              <span className="font-semibold text-text-primary">Leitideen:</span>
+              {goal.leitideen.map((li) => (
+                <span
+                  key={li}
+                  className="px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300"
+                >
+                  {li}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Kompetenzen */}
+          {goal.kompetenzen && goal.kompetenzen.length > 0 && (
+            <div className="flex flex-wrap gap-1.5">
+              <span className="font-semibold text-text-primary">Kompetenzen:</span>
+              {goal.kompetenzen.map((k) => (
+                <span
+                  key={k}
+                  className="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300"
+                >
+                  {k}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Examples */}
+          {goal.examples && goal.examples.length > 0 && (
+            <div>
+              <span className="font-semibold text-text-primary">Beispiele:</span>
+              <ul className="mt-1 ml-4 list-disc space-y-0.5">
+                {goal.examples.map((ex, idx) => (
+                  <li key={idx}>{ex}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
 
       {showLearnerTools && (
         <div className="mt-4 space-y-4">
