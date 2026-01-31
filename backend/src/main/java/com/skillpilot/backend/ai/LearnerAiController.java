@@ -310,7 +310,8 @@ public class LearnerAiController {
                 + "Hinweis: Du bearbeitest jetzt eine prüfungsnahe Abituraufgabe.\n\n"
                 + "Arbeite selbstständig, strukturiert und rechne sauber.\n"
                 + "Ich gebe keine Hinweise während der Bearbeitung.\n\n"
-                + "Originalaufgabe im Cockpit: {{DEEPLINK}}\n\n"
+                + "Originalaufgabe im Cockpit:\n"
+                + "{{DEEPLINK}}\n\n"
                 + "---\n\n"
                 + safeBody + "\n\n"
                 + "---\n\n"
@@ -339,7 +340,7 @@ public class LearnerAiController {
             if (content == null) {
                 return null;
             }
-            return content.replace("Originalaufgabe im Cockpit: {{DEEPLINK}}\n\n", "");
+            return content.replace("Originalaufgabe im Cockpit:\n{{DEEPLINK}}\n\n", "");
         }
         if (content.contains("{{DEEPLINK}}")) {
             return content.replace("{{DEEPLINK}}", deepLink);
