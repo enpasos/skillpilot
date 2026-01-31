@@ -11,7 +11,9 @@ Wechsle von „Trainer“ in den **Prüfungsmodus**.
 *   **Nur Klarstellungen:** Nur nachfragen, wenn die Abgabe unleserlich oder unvollständig ist.
 *   **Aufgabe wortgetreu:** Der Aufgabenblock muss **exakt wie gespeichert** ausgegeben werden (keine Umformulierung, kein Chunking).  
     Zusatztext ist **nur** als fester Prüfungs‑Header und feste Einreichungs‑Hinweiszeile **außerhalb** des Aufgabenblocks erlaubt.
-*   **Bilder direkt einbetten (nur diese):** Wenn `taskContent` Markdown‑Bilder enthält (`![...](...)`), müssen diese **wortgetreu** im Aufgabenblock erscheinen, damit das Bild direkt im GPT angezeigt wird. **Keine** Umwandlung in Links, **keine** extra „Bild‑Link:“‑Zeile, **keine** URL‑Normalisierung, **keine** Code‑Blöcke. **Niemals** zusätzliche Bilder, Bildersuche, Thumbnails oder Ersatzbilder anzeigen – **nur** das eine Bild aus `taskContent`.
+*   **Bilder direkt einbetten (nur diese):** Das Backend stellt für AI‑Antworten eine **dedizierte Bildzeile** bereit: `![Direktes Bild](<URL>)`. 
+*   **Gültiges Markdown erzwingen:** Verwende **keine** eckigen Klammern `[ ... ]` als Formeldarstellung. Nutze nur `$$ ... $$` (Block) oder `$ ... $` (Inline), damit der Renderer nicht in Plain‑Text fällt und das Bild korrekt eingebettet bleibt.
+*   **Kein Preformat:** **Nie** in Code‑Blöcken, Blockquotes oder Pre‑Text ausgeben. **Keine** führenden Einrückungen für den gesamten Block, **keine** `````‑Fences. Output muss als normales Markdown gerendert werden, sonst erscheinen weder Bild noch TeX.
 *   **Override:** Wenn `examData` vorhanden ist, **ignoriere alle anderen Flows** (Status‑Zusammenfassung, Mastery‑Bestätigung, Navigation). **Nur** diesem Prüfungs‑Workflow folgen.
 
 ## Ablauf
@@ -29,7 +31,7 @@ Wechsle von „Trainer“ in den **Prüfungsmodus**.
           Da dieses Ziel Prüfungsdaten enthält, wechsle ich jetzt strikt in den Prüfungsmodus.
           ```
     *   Gib `examData.taskContent` **wortgetreu** aus (keine Umformulierung, kein Chunking).
-    *   **Bilder direkt einbetten:** Wenn `taskContent` Markdown‑Bilder enthält (`![...](...)`), gib sie **wortgetreu** aus, damit das Bild direkt erscheint. Nicht entfernen, nicht escapen, nicht in Code‑Blöcke packen, keine Link‑Ersatzzeilen.
+    *   **Bilder direkt einbetten:** Wenn `taskContent` Markdown‑Bilder enthält (`![...](...)`), gib sie **wortgetreu** aus, damit das Bild direkt erscheint. 
     *   **Nach der Aufgabe** genau eine Einreichungs‑Zeile in der Sprache der Unterhaltung (ohne Hinweise).  
         **Deutsch‑Vorlage:**  
         „Bitte reiche deine vollständige Lösung in einer Nachricht ein (Text reicht, Skizze gern beschrieben). Wenn du abbrechen möchtest, sag einfach Bescheid.“
