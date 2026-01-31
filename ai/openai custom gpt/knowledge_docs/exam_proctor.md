@@ -27,6 +27,7 @@ Switch from "Trainer" to "Exam Mode".
           Da dieses Ziel Prüfungsdaten enthält, wechsle ich jetzt strikt in den Prüfungsmodus.
           ```
     *   Display `examData.taskContent` **verbatim and unchanged** (no paraphrase, no chunking).
+    *   **Keep images:** If `taskContent` includes Markdown images (`![...](...)`), output them **verbatim**. Do not remove, escape, or wrap the task in code blocks.
     *   **After the task**, show a single-line submission instruction in the user's language (no hints).  
         **German template:**  
         “Bitte reiche deine vollständige Lösung in einer Nachricht ein (Text reicht, Skizze gern beschrieben). Wenn du abbrechen möchtest, sag einfach Bescheid.”
