@@ -342,7 +342,7 @@ public class LearnerAiController {
             return content.replace("Originalaufgabe im Cockpit: {{DEEPLINK}}\n\n", "");
         }
         if (content.contains("{{DEEPLINK}}")) {
-            return content.replace("{{DEEPLINK}}", "[" + "Aufgabe im Cockpit öffnen" + "](" + deepLink + ")");
+            return content.replace("{{DEEPLINK}}", deepLink);
         }
         String marker = "![Direktes Bild](";
         int imageIndex = content.indexOf(marker);
@@ -351,10 +351,10 @@ public class LearnerAiController {
             if (lineEnd > 0) {
                 String imageLine = content.substring(imageIndex, lineEnd).trim();
                 String rest = content.substring(lineEnd).trim();
-                return imageLine + "\n\n[Aufgabe im Cockpit öffnen](" + deepLink + ")\n\n" + rest;
+                return imageLine + "\n\nOriginalaufgabe im Cockpit: " + deepLink + "\n\n" + rest;
             }
         }
-        return "[Aufgabe im Cockpit öffnen](" + deepLink + ")\n\n" + content.trim();
+        return "Originalaufgabe im Cockpit: " + deepLink + "\n\n" + content.trim();
     }
 
     private DeepLinkContext buildDeepLinkContext(UnifiedLearnerStateResponse state, String baseUrl) {
