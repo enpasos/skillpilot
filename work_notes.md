@@ -9,9 +9,9 @@
 
 **Kerngedanken im aktuellen Regelwerk:**
 - Proctor-Modus wird **nur** aktiviert, wenn das aktuelle Ziel `examData` enthaelt.
-- Workflow: Task zeigen -> Nutzer loest -> bewerten mit `examData.solutionContent` und `examData.scoring` -> Ergebnis + Loesung -> ggf. Trainer-Mode fuer Nacharbeit.
-- In `node-types.md` steht: "Show `examData.taskContent` and points" (Aufgabe + Punkte).
-- In `exam_proctor.md` steht: "Display **only** the `examData.taskContent`" (ohne Zusatz).
+- Workflow: kurzer Proctor-Header -> Task **verbatim** -> Einreichungs-Hinweis -> Nutzer loest -> bewerten mit `examData.solutionContent` und `examData.scoring` -> Ergebnis + Loesung -> ggf. Trainer-Mode fuer Nacharbeit.
+- In `node-types.md` steht: Task **verbatim**; zusaetzlich kurzer Proctor‑Header + fixer Einreichungs‑Hinweis ausserhalb des Aufgabenblocks.
+- In `exam_proctor.md` steht: Task **verbatim**, **Header + Einreichungs‑Hinweis erlaubt** (keine Hinweise, kein Chunking).
 - Hinweis: **AI API liefert aktuell kein `examData`** (Proctor-Modus nur, wenn Host die vollen Goal-Daten injiziert).
 
 ## 2) Beobachtetes Problem (Screenshot)
@@ -22,8 +22,9 @@
 
 ## 3) Gaps / Inkonsistenzen
 
-1) **Kein Verbatim-Pass-Through als harte Regel**
-   - Es fehlt explizit: "Task exakt wie hinterlegt, ohne Umformulierung, ohne Chunking, ohne Zusatztext".
+1) **Verbatim-Pass-Through als harte Regel**
+   - Task exakt wie hinterlegt, ohne Umformulierung, ohne Chunking.
+   - Zusatztext nur als fixer Proctor‑Header + Einreichungs‑Hinweis.
 
 2) **Doku-Drift**
    - `node-types.md`: "Task + Punkte" vs. `exam_proctor.md`: "nur TaskContent".
@@ -37,6 +38,7 @@
 
 ### A) Verhalten im Proctor-Modus (neue harte Regeln)
 **Zielbild:**
+- Kurzer Proctor‑Header (Lernstand geladen, Proctor‑Modus, Aktives Ziel).
 - Aufgabe **genau wie hinterlegt** anzeigen.
 - **Keine** Hilfen, **keine** Re-Formulierungen, **kein** Chunking, **keine** Zwischenfragen.
 - Pruefling gibt **eine** zusammenhaengende Loesung ab.
@@ -44,8 +46,9 @@
 - Ergebnis mitteilen und **danach** gemeinsam die Findings durchgehen.
 
 **Konkret fuer `exam_proctor.md`:**
-- "Display ONLY `examData.taskContent`, unchanged." (keine Einleitung, keine Zusatzsaetze).
-- "Do not split, paraphrase, or scaffold." (explizit).
+- "Display `examData.taskContent` verbatim." (keine Umformulierung, kein Chunking).
+- Proctor‑Header erlaubt (kurz, neutral, Aktives Ziel).
+- Einreichungs‑Hinweis nach dem Task erlaubt (fixe Zeile).
 - "Wait for a single full submission; if user asks for help, only say: 'Bitte gib deine Loesung vollstaendig ab oder gib auf.'"
 - Nach Bewertung: Findings strukturiert zurueckgeben, dann gemeinsame Durchsprache.
 
@@ -70,13 +73,14 @@ Ohne diese Aenderung bleibt das System im Trainer-Modus, selbst wenn die Regeln 
 
 ## 6) Umsetzung (durchgeführt)
 
-- **Proctor-Regeln verschärft**: `ai/openai custom gpt/knowledge_docs/exam_proctor.md`
-  - Task wird **verbatim** ausgegeben (ohne Zusatztext / Chunking)
+- **Proctor-Regeln angepasst**: `ai/openai custom gpt/knowledge_docs/exam_proctor.md`
+  - Proctor‑Header + Einreichungs‑Hinweis erlaubt (ausserhalb des Aufgabenblocks)
+  - Task wird **verbatim** ausgegeben (ohne Umformulierung / Chunking)
   - Einmalige Gesamtabgabe gefordert
   - Nach Bewertung: Findings-Review im Trainer-Modus
 
 - **Konzept-Doku konsistent gemacht**: `docs/concept/curriculum-graph/node-types.md`
-  - Verbatim-Task, keine Zusatztexte
+  - Verbatim-Task + kurzer Proctor‑Header + fixer Einreichungs‑Hinweis
   - Single-Submission-Flow
   - Findings-Review nach Bewertung
 
