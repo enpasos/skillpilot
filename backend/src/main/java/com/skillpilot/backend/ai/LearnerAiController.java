@@ -19,9 +19,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.extensions.Extension;
 import io.swagger.v3.oas.annotations.extensions.ExtensionProperty;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping(value = "/api/ai/learners", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -37,7 +41,8 @@ public class LearnerAiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public CreateLearnerResponse createLearner(@RequestBody(required = false) CreateLearnerRequest request) {
         Learner learner = learnerService.createLearner(request);
-        UnifiedLearnerStateResponse state = learnerService.getLearnerState(learner.getSkillpilotId());
+        UnifiedLearnerStateResponse state = withAbsoluteExamAssetUrls(
+                learnerService.getLearnerState(learner.getSkillpilotId()));
 
         // Optimization: If a curriculum is already selected (e.g. via topic),
         // don't return the huge list of available landscapes to save tokens.
@@ -54,7 +59,7 @@ public class LearnerAiController {
     @GetMapping("/{skillpilotId}/state")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse getLearnerState(@PathVariable String skillpilotId) {
-        return learnerService.getLearnerState(skillpilotId);
+        return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
     }
 
     @PostMapping("/{skillpilotId}/scope")
@@ -62,7 +67,7 @@ public class LearnerAiController {
 
     public UnifiedLearnerStateResponse setScope(@PathVariable String skillpilotId, @RequestBody ScopeRequest request) {
         learnerService.setScope(skillpilotId, request.goalIds());
-        return learnerService.getLearnerState(skillpilotId);
+        return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
     }
 
     @PostMapping("/{skillpilotId}/active-goal")
@@ -82,7 +87,7 @@ public class LearnerAiController {
             }
         }
         learnerService.setActiveGoal(skillpilotId, request.goalId());
-        return learnerService.getLearnerState(skillpilotId);
+        return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
     }
 
     @PostMapping("/{skillpilotId}/mastery")
@@ -112,13 +117,13 @@ public class LearnerAiController {
 
         try {
             MasteryUpdateResponse response = learnerService.setMastery(skillpilotId, effectiveRequest);
-            return org.springframework.http.ResponseEntity.ok(response);
+            return org.springframework.http.ResponseEntity.ok(withAbsoluteExamAssetUrls(response));
         } catch (org.springframework.web.server.ResponseStatusException e) {
             if (org.springframework.http.HttpStatus.CONFLICT.equals(e.getStatusCode())) {
                 UnifiedLearnerStateResponse conflictState = learnerService.getLearnerState(skillpilotId);
                 return org.springframework.http.ResponseEntity
                         .status(org.springframework.http.HttpStatus.CONFLICT)
-                        .body(conflictState);
+                        .body(withAbsoluteExamAssetUrls(conflictState));
             }
             throw e;
         }
@@ -129,7 +134,7 @@ public class LearnerAiController {
     public UnifiedLearnerStateResponse setCurriculum(@PathVariable String skillpilotId,
             @RequestBody UpdateCurriculumRequest request) {
         learnerService.setCurriculum(skillpilotId, request.getCurriculumId());
-        return learnerService.getLearnerState(skillpilotId);
+        return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
     }
 
     @PostMapping("/{skillpilotId}/personalization")
@@ -138,6 +143,119 @@ public class LearnerAiController {
     public UnifiedLearnerStateResponse setPersonalization(@PathVariable String skillpilotId,
             @RequestBody com.skillpilot.backend.api.PersonalizationRequest request) {
         learnerService.setPersonalCurriculum(skillpilotId, request.config(), request.goalIds(), request.filters());
-        return learnerService.getLearnerState(skillpilotId);
+        return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
+    }
+
+    private UnifiedLearnerStateResponse withAbsoluteExamAssetUrls(UnifiedLearnerStateResponse state) {
+        if (state == null) {
+            return null;
+        }
+        String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
+        baseUrl = baseUrl.replaceAll("/+$", "");
+        if (baseUrl.isBlank()) {
+            return state;
+        }
+
+        com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(state.activeGoal(), baseUrl);
+        List<com.skillpilot.backend.api.FrontierGoal> frontier = rewriteExamData(state.frontier(), baseUrl);
+        com.skillpilot.backend.api.StateMachineInfo sm = state.stateMachine();
+        com.skillpilot.backend.api.StateMachineInfo smUpdated = sm == null ? null
+                : new com.skillpilot.backend.api.StateMachineInfo(
+                        sm.state(),
+                        sm.requiredAction(),
+                        rewriteExamData(sm.goalOptions(), baseUrl),
+                        sm.curriculumOptions(),
+                        rewriteExamData(sm.activeGoal(), baseUrl));
+
+        return new UnifiedLearnerStateResponse(
+                state.skillpilotId(),
+                state.curriculum(),
+                frontier,
+                state.goals(),
+                state.nextAllowedActions(),
+                state.activeFilters(),
+                state.copySources(),
+                state.learningState(),
+                activeGoal,
+                smUpdated);
+    }
+
+    private MasteryUpdateResponse withAbsoluteExamAssetUrls(MasteryUpdateResponse response) {
+        if (response == null) {
+            return null;
+        }
+        String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
+        baseUrl = baseUrl.replaceAll("/+$", "");
+        if (baseUrl.isBlank()) {
+            return response;
+        }
+        List<com.skillpilot.backend.api.FrontierGoal> frontier = rewriteExamData(response.frontier(), baseUrl);
+        com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(response.activeGoal(), baseUrl);
+        com.skillpilot.backend.api.StateMachineInfo sm = response.stateMachine();
+        com.skillpilot.backend.api.StateMachineInfo smUpdated = sm == null ? null
+                : new com.skillpilot.backend.api.StateMachineInfo(
+                        sm.state(),
+                        sm.requiredAction(),
+                        rewriteExamData(sm.goalOptions(), baseUrl),
+                        sm.curriculumOptions(),
+                        rewriteExamData(sm.activeGoal(), baseUrl));
+
+        return new MasteryUpdateResponse(
+                frontier,
+                response.nextAllowedActions(),
+                response.learningState(),
+                activeGoal,
+                smUpdated,
+                response.goals());
+    }
+
+    private List<com.skillpilot.backend.api.FrontierGoal> rewriteExamData(
+            List<com.skillpilot.backend.api.FrontierGoal> goals,
+            String baseUrl) {
+        if (goals == null || goals.isEmpty()) {
+            return goals;
+        }
+        return goals.stream()
+                .map(goal -> rewriteExamData(goal, baseUrl))
+                .toList();
+    }
+
+    private com.skillpilot.backend.api.FrontierGoal rewriteExamData(
+            com.skillpilot.backend.api.FrontierGoal goal,
+            String baseUrl) {
+        if (goal == null || goal.examData() == null) {
+            return goal;
+        }
+        com.skillpilot.backend.landscape.ExamData exam = goal.examData();
+        com.skillpilot.backend.landscape.ExamData updated = new com.skillpilot.backend.landscape.ExamData();
+        updated.setTaskContent(rewriteAssetLinks(exam.getTaskContent(), baseUrl));
+        updated.setTaskContentEn(rewriteAssetLinks(exam.getTaskContentEn(), baseUrl));
+        updated.setSolutionContent(rewriteAssetLinks(exam.getSolutionContent(), baseUrl));
+        updated.setSolutionContentEn(rewriteAssetLinks(exam.getSolutionContentEn(), baseUrl));
+        updated.setScoring(exam.getScoring());
+
+        return new com.skillpilot.backend.api.FrontierGoal(
+                goal.id(),
+                goal.title(),
+                goal.description(),
+                goal.type(),
+                goal.reason(),
+                goal.tags(),
+                updated);
+    }
+
+    private String rewriteAssetLinks(String content, String baseUrl) {
+        if (content == null || content.isBlank()) {
+            return content;
+        }
+        Pattern pattern = Pattern.compile("\\((/assets/[^)]+)\\)");
+        Matcher matcher = pattern.matcher(content);
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            String path = matcher.group(1);
+            matcher.appendReplacement(sb, "(" + baseUrl + path + ")");
+        }
+        matcher.appendTail(sb);
+        return sb.toString();
     }
 }
