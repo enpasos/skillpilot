@@ -308,8 +308,12 @@ public class LearnerAiController {
                 + "Hinweis: Du bearbeitest jetzt eine prüfungsnahe Abituraufgabe.\n\n"
                 + "Arbeite selbstständig, strukturiert und rechne sauber.\n"
                 + "Ich gebe keine Hinweise während der Bearbeitung.\n\n"
+                + "Originalaufgabe im Cockpit: {{DEEPLINK}}\n\n"
                 + "---\n\n"
-                + safeBody;
+                + safeBody + "\n\n"
+                + "---\n\n"
+                + "Bitte reiche deine vollständige Lösung in einer Nachricht ein (Text reicht, Skizze gern beschrieben).\n"
+                + "Wenn du abbrechen möchtest, sag einfach Bescheid.";
     }
 
     private String convertInlineMathToParens(String content) {
@@ -330,7 +334,13 @@ public class LearnerAiController {
 
     private String injectDeepLink(String content, String deepLink) {
         if (content == null || content.isBlank() || deepLink == null || deepLink.isBlank()) {
-            return content;
+            if (content == null) {
+                return null;
+            }
+            return content.replace("Originalaufgabe im Cockpit: {{DEEPLINK}}\n\n", "");
+        }
+        if (content.contains("{{DEEPLINK}}")) {
+            return content.replace("{{DEEPLINK}}", "[" + "Aufgabe im Cockpit öffnen" + "](" + deepLink + ")");
         }
         String marker = "![Direktes Bild](";
         int imageIndex = content.indexOf(marker);
