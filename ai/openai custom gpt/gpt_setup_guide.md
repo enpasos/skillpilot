@@ -31,7 +31,7 @@ Open **Create → New GPT → Konfigurieren** and fill out the fields as follows
 
 ### 2.2 Hinweise (System Instructions)
 
-In the GPT builder, paste the **entire** content of `ai/openai custom gpt/system_instructions_v5.md` into **Hinweise** (plain text, unchanged).
+In the GPT builder, paste the **entire** content of `ai/openai custom gpt/system_instructions.md` into **Hinweise** (plain text, unchanged).
 
 *Note: These instructions are critical for ensuring the AI uses UUIDs correctly and understands the difference between Frontier and Planned goals.*
 

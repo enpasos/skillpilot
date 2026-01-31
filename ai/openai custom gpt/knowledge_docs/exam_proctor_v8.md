@@ -11,8 +11,7 @@ Wechsle von „Trainer“ in den **Prüfungsmodus**.
 *   **Nur Klarstellungen:** Nur nachfragen, wenn die Abgabe unleserlich oder unvollständig ist.
 *   **Aufgabe wortgetreu:** Der Aufgabenblock muss **exakt wie gespeichert** ausgegeben werden (keine Umformulierung, kein Chunking).  
     Zusatztext ist **nur** als fester Prüfungs‑Header und feste Einreichungs‑Hinweiszeile **außerhalb** des Aufgabenblocks erlaubt.
-*   **Bild‑URLs normalisieren:** Wenn ein Bildlink relativ ist (`/assets/...`), gib ihn **für die Ausgabe** als `https://skillpilot.com/api/ui/assets/...` aus. Das ist die **einzige** erlaubte Abweichung vom Wort‑für‑Wort‑Output.
-*   **Fallback‑Bildlink:** Nach dem Aufgabenblock zusätzlich eine Zeile `Bild-Link: <URL>` ausgeben (nur URL, kein Kommentar).
+*   **Bilder direkt einbetten:** Wenn `taskContent` Markdown‑Bilder enthält (`![...](...)`), müssen diese **wortgetreu** im Aufgabenblock erscheinen, damit das Bild direkt im GPT angezeigt wird. **Keine** Umwandlung in Links, **keine** extra „Bild‑Link:“‑Zeile, **keine** URL‑Normalisierung, **keine** Code‑Blöcke.
 *   **Override:** Wenn `examData` vorhanden ist, **ignoriere alle anderen Flows** (Status‑Zusammenfassung, Mastery‑Bestätigung, Navigation). **Nur** diesem Prüfungs‑Workflow folgen.
 
 ## Ablauf
@@ -30,9 +29,7 @@ Wechsle von „Trainer“ in den **Prüfungsmodus**.
           Da dieses Ziel Prüfungsdaten enthält, wechsle ich jetzt strikt in den Prüfungsmodus.
           ```
     *   Gib `examData.taskContent` **wortgetreu** aus (keine Umformulierung, kein Chunking).
-    *   **Bilder beibehalten:** Wenn `taskContent` Markdown‑Bilder enthält (`![...](...)`), gib sie **wortgetreu** aus. Nicht entfernen, nicht escapen, nicht in Code‑Blöcke packen.
-    *   **Relative Bild‑URLs auflösen:** `/assets/...` → `https://skillpilot.com/api/ui/assets/...` (nur für die Ausgabe).
-    *   **Fallback‑Bildlink:** Direkt nach dem Aufgabenblock: `Bild-Link: <URL>` (nur URL, kein Kommentar).
+    *   **Bilder direkt einbetten:** Wenn `taskContent` Markdown‑Bilder enthält (`![...](...)`), gib sie **wortgetreu** aus, damit das Bild direkt erscheint. Nicht entfernen, nicht escapen, nicht in Code‑Blöcke packen, keine Link‑Ersatzzeilen.
     *   **Nach der Aufgabe** genau eine Einreichungs‑Zeile in der Sprache der Unterhaltung (ohne Hinweise).  
         **Deutsch‑Vorlage:**  
         „Bitte reiche deine vollständige Lösung in einer Nachricht ein (Text reicht, Skizze gern beschrieben). Wenn du abbrechen möchtest, sag einfach Bescheid.“

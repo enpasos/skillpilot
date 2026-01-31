@@ -255,7 +255,8 @@ public class LearnerAiController {
         StringBuffer sb = new StringBuffer();
         while (matcher.find()) {
             String path = matcher.group(1);
-            matcher.appendReplacement(sb, "(" + assetBase + path + ")");
+            String normalized = path.startsWith("/assets/") ? path.substring("/assets".length()) : path;
+            matcher.appendReplacement(sb, "(" + assetBase + normalized + ")");
         }
         matcher.appendTail(sb);
         return sb.toString();
