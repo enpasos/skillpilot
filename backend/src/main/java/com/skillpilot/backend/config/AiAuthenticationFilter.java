@@ -24,7 +24,12 @@ public class AiAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
-        if (apiKey != null && !apiKey.isBlank() && request.getRequestURI().startsWith("/api/ai")) {
+        String requestUri = request.getRequestURI();
+        if (apiKey != null && !apiKey.isBlank() && requestUri.startsWith("/api/ai")) {
+            if (requestUri.startsWith("/api/ai/assets/")) {
+                filterChain.doFilter(request, response);
+                return;
+            }
             String authHeader = request.getHeader("Authorization");
             if (authHeader == null || !authHeader.startsWith("Bearer ") || !authHeader.substring(7).equals(apiKey)) {
                 boolean hasBearer = authHeader != null && authHeader.startsWith("Bearer ");
