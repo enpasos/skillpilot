@@ -295,7 +295,8 @@ public class LearnerAiController {
         }
         String normalized = "![Direktes Bild](" + firstUrl + ")\n\n" + stripped;
         if ("bc60e300-96be-599a-89b6-8fcca380803d".equals(goalId)) {
-            normalized = buildExamPackagedContent(firstUrl, stripped);
+            String inlineFixed = convertInlineMathToParens(stripped);
+            normalized = buildExamPackagedContent(firstUrl, inlineFixed);
         }
         return normalized;
     }
@@ -309,6 +310,22 @@ public class LearnerAiController {
                 + "Ich gebe keine Hinweise während der Bearbeitung.\n\n"
                 + "---\n\n"
                 + safeBody;
+    }
+
+    private String convertInlineMathToParens(String content) {
+        if (content == null || content.isBlank()) {
+            return content;
+        }
+        Pattern pattern = Pattern.compile("(?<!\\$)\\$(?!\\$)(.+?)(?<!\\$)\\$(?!\\$)");
+        Matcher matcher = pattern.matcher(content);
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            String inner = matcher.group(1).trim();
+            String replacement = "\\\\(" + inner + "\\\\)";
+            matcher.appendReplacement(sb, Matcher.quoteReplacement(replacement));
+        }
+        matcher.appendTail(sb);
+        return sb.toString();
     }
 
     private String injectDeepLink(String content, String deepLink) {
