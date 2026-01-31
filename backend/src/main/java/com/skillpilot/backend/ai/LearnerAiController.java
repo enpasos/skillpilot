@@ -230,9 +230,9 @@ public class LearnerAiController {
         }
         com.skillpilot.backend.landscape.ExamData exam = goal.examData();
         com.skillpilot.backend.landscape.ExamData updated = new com.skillpilot.backend.landscape.ExamData();
-        updated.setTaskContent(normalizeTaskContentForAi(goal.id(),
+        updated.setTaskContent(normalizeTaskContentForAi(goal.id(), goal.title(),
                 rewriteAssetLinks(exam.getTaskContent(), assetBase)));
-        updated.setTaskContentEn(normalizeTaskContentForAi(goal.id(),
+        updated.setTaskContentEn(normalizeTaskContentForAi(goal.id(), goal.title(),
                 rewriteAssetLinks(exam.getTaskContentEn(), assetBase)));
         updated.setSolutionContent(rewriteAssetLinks(exam.getSolutionContent(), assetBase));
         updated.setSolutionContentEn(rewriteAssetLinks(exam.getSolutionContentEn(), assetBase));
@@ -264,7 +264,7 @@ public class LearnerAiController {
         return sb.toString();
     }
 
-    private String normalizeTaskContentForAi(String goalId, String content) {
+    private String normalizeTaskContentForAi(String goalId, String title, String content) {
         if (content == null || content.isBlank()) {
             return content;
         }
@@ -285,16 +285,25 @@ public class LearnerAiController {
         }
         String normalized = "![Direktes Bild](" + firstUrl + ")\n\n" + stripped;
         if ("bc60e300-96be-599a-89b6-8fcca380803d".equals(goalId)) {
-            normalized = wrapWithSeparators(convertDisplayMath(normalized));
+            String converted = convertDisplayMath(stripped);
+            normalized = buildExamPackagedContent(firstUrl, title, converted);
         }
         return normalized;
     }
 
-    private String wrapWithSeparators(String content) {
-        if (content == null || content.isBlank()) {
-            return content;
-        }
-        return "---\n\n" + content.trim() + "\n\n---";
+    private String buildExamPackagedContent(String imageUrl, String title, String body) {
+        String safeTitle = title == null ? "" : title;
+        String safeBody = body == null ? "" : body.trim();
+        return "![Direktes Bild](" + imageUrl + ")\n\n"
+                + "**Lernstand geladen. Prüfungsmodus aktiv.**\n"
+                + "**Aktives Ziel:** *" + safeTitle + "*\n\n"
+                + "---\n\n"
+                + "### Aufgabe (bitte vollständig bearbeiten)\n\n"
+                + safeBody + "\n\n"
+                + "---\n\n"
+                + "**Hinweis zur Abgabe:**\n"
+                + "Bearbeite die Aufgabe wie in einer Klausur. Rechenwege und Begruendungen angeben. "
+                + "Sobald du fertig bist, sende deine vollstaendige Loesung hier ein.";
     }
 
     private String convertDisplayMath(String content) {
