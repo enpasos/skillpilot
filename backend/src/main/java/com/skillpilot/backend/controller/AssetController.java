@@ -57,15 +57,51 @@ public class AssetController {
             return classpath;
         }
 
+        if (!relativePath.contains(".")) {
+            Resource withExtension = resolveWithExtension(relativePath);
+            if (withExtension != null && withExtension.exists()) {
+                return withExtension;
+            }
+        }
+
         if (!externalAssetsDir.isEmpty()) {
             String normalized = externalAssetsDir.endsWith("/") ? externalAssetsDir : externalAssetsDir + "/";
             Resource external = resourceLoader.getResource("file:" + normalized + relativePath);
             if (external.exists()) {
                 return external;
             }
+
+            if (!relativePath.contains(".")) {
+                Resource externalWithExtension = resolveExternalWithExtension(normalized, relativePath);
+                if (externalWithExtension != null && externalWithExtension.exists()) {
+                    return externalWithExtension;
+                }
+            }
         }
 
         return classpath;
+    }
+
+    private Resource resolveWithExtension(String relativePath) {
+        String[] extensions = new String[] { ".png", ".jpg", ".jpeg", ".gif", ".webp" };
+        for (String ext : extensions) {
+            Resource candidate = resourceLoader.getResource("classpath:/static/assets/" + relativePath + ext);
+            if (candidate.exists()) {
+                return candidate;
+            }
+        }
+        return null;
+    }
+
+    private Resource resolveExternalWithExtension(String baseDir, String relativePath) {
+        String[] extensions = new String[] { ".png", ".jpg", ".jpeg", ".gif", ".webp" };
+        for (String ext : extensions) {
+            Resource candidate = resourceLoader.getResource("file:" + baseDir + relativePath + ext);
+            if (candidate.exists()) {
+                return candidate;
+            }
+        }
+        return null;
     }
 
     private String extractPath(HttpServletRequest request) {

@@ -283,10 +283,10 @@ public class LearnerAiController {
         if (firstUrl == null || firstUrl.isBlank()) {
             return content;
         }
-        String normalized = "![Direktes Bild](" + firstUrl + ")\n\n" + stripped;
+        String normalized = "![Direktes Bild](" + stripImageExtension(firstUrl) + ")\n\n" + stripped;
         if ("bc60e300-96be-599a-89b6-8fcca380803d".equals(goalId)) {
             String converted = convertDisplayMath(stripped);
-            normalized = buildExamPackagedContent(firstUrl, converted);
+            normalized = buildExamPackagedContent(stripImageExtension(firstUrl), converted);
         }
         return normalized;
     }
@@ -307,5 +307,24 @@ public class LearnerAiController {
         }
         matcher.appendTail(sb);
         return sb.toString();
+    }
+
+    private String stripImageExtension(String url) {
+        if (url == null || url.isBlank()) {
+            return url;
+        }
+        int queryIndex = url.indexOf('?');
+        int hashIndex = url.indexOf('#');
+        int cutIndex = queryIndex >= 0 ? queryIndex : (hashIndex >= 0 ? hashIndex : url.length());
+        String base = url.substring(0, cutIndex);
+        String suffix = url.substring(cutIndex);
+        String lower = base.toLowerCase();
+        String[] extensions = new String[] { ".png", ".jpg", ".jpeg", ".gif", ".webp" };
+        for (String ext : extensions) {
+            if (lower.endsWith(ext)) {
+                return base.substring(0, base.length() - ext.length()) + suffix;
+            }
+        }
+        return url;
     }
 }
