@@ -11,6 +11,7 @@ import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.service.LearnerService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,9 @@ import java.util.regex.Pattern;
 public class LearnerAiController {
 
     private final LearnerService learnerService;
+
+    @Value("${skillpilot.public-base-url:https://skillpilot.com}")
+    private String publicBaseUrl;
 
     public LearnerAiController(LearnerService learnerService) {
         this.learnerService = learnerService;
@@ -150,8 +154,7 @@ public class LearnerAiController {
         if (state == null) {
             return null;
         }
-        String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
-        baseUrl = baseUrl.replaceAll("/+$", "");
+        String baseUrl = resolveBaseUrl();
         if (baseUrl.isBlank()) {
             return state;
         }
@@ -186,8 +189,7 @@ public class LearnerAiController {
         if (response == null) {
             return null;
         }
-        String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
-        baseUrl = baseUrl.replaceAll("/+$", "");
+        String baseUrl = resolveBaseUrl();
         if (baseUrl.isBlank()) {
             return response;
         }
@@ -393,6 +395,15 @@ public class LearnerAiController {
         } catch (Exception e) {
             return value;
         }
+    }
+
+    private String resolveBaseUrl() {
+        String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
+        baseUrl = baseUrl == null ? "" : baseUrl.replaceAll("/+$", "");
+        if (baseUrl.isBlank()) {
+            baseUrl = publicBaseUrl == null ? "" : publicBaseUrl.trim().replaceAll("/+$", "");
+        }
+        return baseUrl;
     }
 
     private record DeepLinkContext(String baseUrl, String skillpilotId, String curriculumId) {
