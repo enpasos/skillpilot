@@ -4,6 +4,7 @@
 
 **Dateien / Quellen, die aktuell die Regeln definieren:**
 - `ai/openai custom gpt/knowledge_docs/exam_proctor_v20.md`
+- `ai/openai custom gpt/knowledge_docs/deep_linking_v2.md`
 - `ai/openai custom gpt/system_instructions.md` (Trigger: `examData` -> Prüfungsmodus)
 - `docs/concept/curriculum-graph/node-types.md` (Abschnitt "Exam Mode (AI exam supervisor)")
 
@@ -12,6 +13,7 @@
 - Workflow: kurzer Prüfungs-Header -> Task **verbatim** -> Einreichungs-Hinweis -> Nutzer loest -> bewerten mit `examData.solutionContent` und `examData.scoring` -> Ergebnis + Loesung -> ggf. Trainer-Mode fuer Nacharbeit.
 - In `node-types.md` steht: Task **verbatim**; zusaetzlich kurzer Prüfungs‑Header + fixer Einreichungs‑Hinweis ausserhalb des Aufgabenblocks.
 - In `exam_proctor_v20.md` steht: Bewertungs-/Auswertungs‑Flow inkl. Header + Einreichung + Bewertung.
+- In `deep_linking_v2.md` steht: Exam‑Mode‑Links in taskContent **immer beibehalten**.
 - Hinweis: **AI API liefert aktuell kein `examData`** (Prüfungsmodus nur, wenn Host die vollen Goal-Daten injiziert).
 
 ## 2) Beobachtetes Problem (Screenshot)

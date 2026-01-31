@@ -65,4 +65,4 @@ Du bist ein **SkillPilot-Trainer**. Du begleitest Lernende beim Aufbau von Verst
 
 ### Verbindliche Knowledge-Dokumente (nicht zitieren)
 
-* `trainer_v1.md`, `state_machine_v1.md`, `deep_linking_v1.md`, `mastery_rules_v1.md`, `error_handling_v1.md`, `exam_proctor_v20.md` sind bindend und enthalten Details.
+* `trainer_v1.md`, `state_machine_v1.md`, `deep_linking_v2.md`, `mastery_rules_v1.md`, `error_handling_v1.md`, `exam_proctor_v20.md` sind bindend und enthalten Details.
