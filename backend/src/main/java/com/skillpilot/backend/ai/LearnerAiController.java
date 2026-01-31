@@ -155,17 +155,18 @@ public class LearnerAiController {
         if (baseUrl.isBlank()) {
             return state;
         }
+        String assetBase = baseUrl + "/api/ui/assets";
 
-        com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(state.activeGoal(), baseUrl);
-        List<com.skillpilot.backend.api.FrontierGoal> frontier = rewriteExamData(state.frontier(), baseUrl);
+        com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(state.activeGoal(), assetBase);
+        List<com.skillpilot.backend.api.FrontierGoal> frontier = rewriteExamData(state.frontier(), assetBase);
         com.skillpilot.backend.api.StateMachineInfo sm = state.stateMachine();
         com.skillpilot.backend.api.StateMachineInfo smUpdated = sm == null ? null
                 : new com.skillpilot.backend.api.StateMachineInfo(
                         sm.state(),
                         sm.requiredAction(),
-                        rewriteExamData(sm.goalOptions(), baseUrl),
+                        rewriteExamData(sm.goalOptions(), assetBase),
                         sm.curriculumOptions(),
-                        rewriteExamData(sm.activeGoal(), baseUrl));
+                        rewriteExamData(sm.activeGoal(), assetBase));
 
         return new UnifiedLearnerStateResponse(
                 state.skillpilotId(),
@@ -189,16 +190,17 @@ public class LearnerAiController {
         if (baseUrl.isBlank()) {
             return response;
         }
-        List<com.skillpilot.backend.api.FrontierGoal> frontier = rewriteExamData(response.frontier(), baseUrl);
-        com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(response.activeGoal(), baseUrl);
+        String assetBase = baseUrl + "/api/ui/assets";
+        List<com.skillpilot.backend.api.FrontierGoal> frontier = rewriteExamData(response.frontier(), assetBase);
+        com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(response.activeGoal(), assetBase);
         com.skillpilot.backend.api.StateMachineInfo sm = response.stateMachine();
         com.skillpilot.backend.api.StateMachineInfo smUpdated = sm == null ? null
                 : new com.skillpilot.backend.api.StateMachineInfo(
                         sm.state(),
                         sm.requiredAction(),
-                        rewriteExamData(sm.goalOptions(), baseUrl),
+                        rewriteExamData(sm.goalOptions(), assetBase),
                         sm.curriculumOptions(),
-                        rewriteExamData(sm.activeGoal(), baseUrl));
+                        rewriteExamData(sm.activeGoal(), assetBase));
 
         return new MasteryUpdateResponse(
                 frontier,
@@ -211,27 +213,27 @@ public class LearnerAiController {
 
     private List<com.skillpilot.backend.api.FrontierGoal> rewriteExamData(
             List<com.skillpilot.backend.api.FrontierGoal> goals,
-            String baseUrl) {
+            String assetBase) {
         if (goals == null || goals.isEmpty()) {
             return goals;
         }
         return goals.stream()
-                .map(goal -> rewriteExamData(goal, baseUrl))
+                .map(goal -> rewriteExamData(goal, assetBase))
                 .toList();
     }
 
     private com.skillpilot.backend.api.FrontierGoal rewriteExamData(
             com.skillpilot.backend.api.FrontierGoal goal,
-            String baseUrl) {
+            String assetBase) {
         if (goal == null || goal.examData() == null) {
             return goal;
         }
         com.skillpilot.backend.landscape.ExamData exam = goal.examData();
         com.skillpilot.backend.landscape.ExamData updated = new com.skillpilot.backend.landscape.ExamData();
-        updated.setTaskContent(rewriteAssetLinks(exam.getTaskContent(), baseUrl));
-        updated.setTaskContentEn(rewriteAssetLinks(exam.getTaskContentEn(), baseUrl));
-        updated.setSolutionContent(rewriteAssetLinks(exam.getSolutionContent(), baseUrl));
-        updated.setSolutionContentEn(rewriteAssetLinks(exam.getSolutionContentEn(), baseUrl));
+        updated.setTaskContent(rewriteAssetLinks(exam.getTaskContent(), assetBase));
+        updated.setTaskContentEn(rewriteAssetLinks(exam.getTaskContentEn(), assetBase));
+        updated.setSolutionContent(rewriteAssetLinks(exam.getSolutionContent(), assetBase));
+        updated.setSolutionContentEn(rewriteAssetLinks(exam.getSolutionContentEn(), assetBase));
         updated.setScoring(exam.getScoring());
 
         return new com.skillpilot.backend.api.FrontierGoal(
@@ -244,7 +246,7 @@ public class LearnerAiController {
                 updated);
     }
 
-    private String rewriteAssetLinks(String content, String baseUrl) {
+    private String rewriteAssetLinks(String content, String assetBase) {
         if (content == null || content.isBlank()) {
             return content;
         }
@@ -253,7 +255,7 @@ public class LearnerAiController {
         StringBuffer sb = new StringBuffer();
         while (matcher.find()) {
             String path = matcher.group(1);
-            matcher.appendReplacement(sb, "(" + baseUrl + path + ")");
+            matcher.appendReplacement(sb, "(" + assetBase + path + ")");
         }
         matcher.appendTail(sb);
         return sb.toString();
