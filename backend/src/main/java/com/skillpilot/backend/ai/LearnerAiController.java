@@ -230,8 +230,8 @@ public class LearnerAiController {
         }
         com.skillpilot.backend.landscape.ExamData exam = goal.examData();
         com.skillpilot.backend.landscape.ExamData updated = new com.skillpilot.backend.landscape.ExamData();
-        updated.setTaskContent(rewriteAssetLinks(exam.getTaskContent(), assetBase));
-        updated.setTaskContentEn(rewriteAssetLinks(exam.getTaskContentEn(), assetBase));
+        updated.setTaskContent(normalizeTaskContentForAi(rewriteAssetLinks(exam.getTaskContent(), assetBase)));
+        updated.setTaskContentEn(normalizeTaskContentForAi(rewriteAssetLinks(exam.getTaskContentEn(), assetBase)));
         updated.setSolutionContent(rewriteAssetLinks(exam.getSolutionContent(), assetBase));
         updated.setSolutionContentEn(rewriteAssetLinks(exam.getSolutionContentEn(), assetBase));
         updated.setScoring(exam.getScoring());
@@ -260,5 +260,27 @@ public class LearnerAiController {
         }
         matcher.appendTail(sb);
         return sb.toString();
+    }
+
+    private String normalizeTaskContentForAi(String content) {
+        if (content == null || content.isBlank()) {
+            return content;
+        }
+        Pattern imagePattern = Pattern.compile("!\\[[^\\]]*\\]\\(([^)]+)\\)");
+        Matcher matcher = imagePattern.matcher(content);
+        String firstUrl = null;
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            if (firstUrl == null) {
+                firstUrl = matcher.group(1);
+            }
+            matcher.appendReplacement(sb, "");
+        }
+        matcher.appendTail(sb);
+        String stripped = sb.toString().replaceAll("(?m)^\\s*$\\n?", "").trim();
+        if (firstUrl == null || firstUrl.isBlank()) {
+            return content;
+        }
+        return "![Direktes Bild](" + firstUrl + ")\n\n" + stripped;
     }
 }
