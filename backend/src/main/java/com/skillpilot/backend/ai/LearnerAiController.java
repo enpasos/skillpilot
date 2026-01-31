@@ -230,8 +230,10 @@ public class LearnerAiController {
         }
         com.skillpilot.backend.landscape.ExamData exam = goal.examData();
         com.skillpilot.backend.landscape.ExamData updated = new com.skillpilot.backend.landscape.ExamData();
-        updated.setTaskContent(normalizeTaskContentForAi(rewriteAssetLinks(exam.getTaskContent(), assetBase)));
-        updated.setTaskContentEn(normalizeTaskContentForAi(rewriteAssetLinks(exam.getTaskContentEn(), assetBase)));
+        updated.setTaskContent(normalizeTaskContentForAi(goal.id(),
+                rewriteAssetLinks(exam.getTaskContent(), assetBase)));
+        updated.setTaskContentEn(normalizeTaskContentForAi(goal.id(),
+                rewriteAssetLinks(exam.getTaskContentEn(), assetBase)));
         updated.setSolutionContent(rewriteAssetLinks(exam.getSolutionContent(), assetBase));
         updated.setSolutionContentEn(rewriteAssetLinks(exam.getSolutionContentEn(), assetBase));
         updated.setScoring(exam.getScoring());
@@ -262,7 +264,7 @@ public class LearnerAiController {
         return sb.toString();
     }
 
-    private String normalizeTaskContentForAi(String content) {
+    private String normalizeTaskContentForAi(String goalId, String content) {
         if (content == null || content.isBlank()) {
             return content;
         }
@@ -281,6 +283,30 @@ public class LearnerAiController {
         if (firstUrl == null || firstUrl.isBlank()) {
             return content;
         }
-        return "![Direktes Bild](" + firstUrl + ")\n\n" + stripped;
+        String normalized = "![Direktes Bild](" + firstUrl + ")\n\n" + stripped;
+        if ("bc60e300-96be-599a-89b6-8fcca380803d".equals(goalId)) {
+            normalized = wrapWithSeparators(convertDisplayMath(normalized));
+        }
+        return normalized;
+    }
+
+    private String wrapWithSeparators(String content) {
+        if (content == null || content.isBlank()) {
+            return content;
+        }
+        return "---\n\n" + content.trim() + "\n\n---";
+    }
+
+    private String convertDisplayMath(String content) {
+        Pattern pattern = Pattern.compile("\\$\\$(.+?)\\$\\$", Pattern.DOTALL);
+        Matcher matcher = pattern.matcher(content);
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            String inner = matcher.group(1).trim();
+            String replacement = "[\n" + inner + "\n]";
+            matcher.appendReplacement(sb, Matcher.quoteReplacement(replacement));
+        }
+        matcher.appendTail(sb);
+        return sb.toString();
     }
 }
