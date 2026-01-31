@@ -178,9 +178,6 @@ public class LearnerService {
         masteryRepository.save(mastery);
 
         // Return the new frontier and state immediately
-        if (masteryValue >= 0.9) {
-            learner.setActiveGoalId(null);
-        }
         learner.setLearningState(LearningState.FRONTIER);
         learnerRepository.save(learner);
 
@@ -714,6 +711,9 @@ public class LearnerService {
         }
 
         Map<String, Double> mastery = getMastery(skillpilotId);
+        String activeGoalId = learner.getActiveGoalId();
+        boolean activeGoalMastered = activeGoalId != null && !activeGoalId.isBlank()
+                && mastery.getOrDefault(activeGoalId, 0.0) >= 0.9;
         Map<String, LearningGoal> structuralGoals = Collections.emptyMap();
         Set<String> scope = Collections.emptySet();
         if (curriculumId != null && !plannedIds.isEmpty()) {
@@ -769,7 +769,7 @@ public class LearnerService {
             if (!personalizationRequired) {
                 nextAllowedActions.add("setScope");
                 nextAllowedActions.add("getFrontier");
-                if (learner.getActiveGoalId() != null && !learner.getActiveGoalId().isBlank()) {
+                if (learner.getActiveGoalId() != null && !learner.getActiveGoalId().isBlank() && !activeGoalMastered) {
                     nextAllowedActions.add("setMastery");
                 } else if (!frontierAtomic.isEmpty()) {
                     nextAllowedActions.add("setActiveGoal");
@@ -777,15 +777,17 @@ public class LearnerService {
             }
         }
 
-        String activeGoalId = learner.getActiveGoalId();
         FrontierGoal activeGoal = resolveActiveGoal(activeGoalId, allGoals);
         LearningState learningState = learner.getLearningState();
         if (learningState == null) {
-            learningState = (activeGoalId == null || activeGoalId.isBlank()) ? LearningState.FRONTIER
+            learningState = (activeGoalId == null || activeGoalId.isBlank() || activeGoalMastered)
+                    ? LearningState.FRONTIER
                     : LearningState.TEACHING;
-        } else if ((activeGoalId == null || activeGoalId.isBlank()) && learningState == LearningState.TEACHING) {
+        } else if ((activeGoalId == null || activeGoalId.isBlank() || activeGoalMastered)
+                && learningState == LearningState.TEACHING) {
             learningState = LearningState.FRONTIER;
-        } else if (activeGoalId != null && !activeGoalId.isBlank() && learningState == LearningState.FRONTIER) {
+        } else if (activeGoalId != null && !activeGoalId.isBlank() && !activeGoalMastered
+                && learningState == LearningState.FRONTIER) {
             learningState = LearningState.TEACHING;
         }
 
@@ -806,7 +808,7 @@ public class LearnerService {
         }
 
         StateMachineInfo stateMachine = buildStateMachineInfo(curriculumId, frontier, frontierAtomic, activeGoal,
-                learningState, activeFilters, scopeExpansionOptions);
+                activeGoalMastered, learningState, activeFilters, scopeExpansionOptions);
 
         return new UnifiedLearnerStateResponse(learner.getSkillpilotId(), curriculumSummary, frontier,
                 new LearnerGoals(plannedRich, focusStats.mastered_atomic(), focusStats.total_atomic(),
@@ -822,8 +824,8 @@ public class LearnerService {
     }
 
     private StateMachineInfo buildStateMachineInfo(String curriculumId, List<FrontierGoal> frontier,
-            List<FrontierGoal> frontierAtomic, FrontierGoal activeGoal, LearningState learningState,
-            List<String> activeFilters, List<FrontierGoal> scopeExpansionOptions) {
+            List<FrontierGoal> frontierAtomic, FrontierGoal activeGoal, boolean activeGoalMastered,
+            LearningState learningState, List<String> activeFilters, List<FrontierGoal> scopeExpansionOptions) {
         String state = curriculumId == null ? "SETUP" : learningState.name();
         String requiredAction = "getFrontier";
         List<FrontierGoal> goalOptions = Collections.emptyList();
@@ -832,7 +834,7 @@ public class LearnerService {
         if (curriculumId == null) {
             requiredAction = "setCurriculum";
             curriculumOptions = getAvailableBaseCurricula();
-        } else if (activeGoal != null) {
+        } else if (activeGoal != null && !activeGoalMastered) {
             requiredAction = "setMastery";
             goalOptions = List.of(activeGoal);
         } else if (needsPersonalization(frontier, activeFilters)) {
