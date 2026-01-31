@@ -303,7 +303,13 @@ public class LearnerAiController {
 
     private String buildExamPackagedContent(String imageUrl, String body) {
         String safeBody = body == null ? "" : body.trim();
-        return "![Direktes Bild](" + imageUrl + ")\n\n" + safeBody;
+        return "![Direktes Bild](" + imageUrl + ")\n\n"
+                + "**Prüfungsmodus – Mathematik LK (Analysis)**\n\n"
+                + "Hinweis: Du bearbeitest jetzt eine prüfungsnahe Abituraufgabe.\n\n"
+                + "Arbeite selbstständig, strukturiert und rechne sauber.\n"
+                + "Ich gebe keine Hinweise während der Bearbeitung.\n\n"
+                + "---\n\n"
+                + safeBody;
     }
 
     private String convertDisplayMath(String content) {
