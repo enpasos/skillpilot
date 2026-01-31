@@ -22,8 +22,8 @@ public class WebConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/static/assets/")
                 .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS).cachePublic());
 
-        // API-facing asset path (bypasses SPA fallback on the main host)
-        registry.addResourceHandler("/api/ui/assets/**", "/api/ai/assets/**")
+        // AI-facing asset path (bypasses SPA fallback on the main host)
+        registry.addResourceHandler("/ai-assets/**")
                 .addResourceLocations("classpath:/static/assets/")
                 .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS).cachePublic());
 

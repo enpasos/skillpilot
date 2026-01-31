@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 @RestController
-@RequestMapping({"/api/ui/assets", "/api/ai/assets"})
+@RequestMapping({"/ai-assets"})
 public class AssetController {
 
     private static final AntPathMatcher PATH_MATCHER = new AntPathMatcher();

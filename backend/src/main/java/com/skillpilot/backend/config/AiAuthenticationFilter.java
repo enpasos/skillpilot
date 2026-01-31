@@ -26,10 +26,6 @@ public class AiAuthenticationFilter extends OncePerRequestFilter {
 
         String requestUri = request.getRequestURI();
         if (apiKey != null && !apiKey.isBlank() && requestUri.startsWith("/api/ai")) {
-            if (requestUri.startsWith("/api/ai/assets/")) {
-                filterChain.doFilter(request, response);
-                return;
-            }
             String authHeader = request.getHeader("Authorization");
             if (authHeader == null || !authHeader.startsWith("Bearer ") || !authHeader.substring(7).equals(apiKey)) {
                 boolean hasBearer = authHeader != null && authHeader.startsWith("Bearer ");

@@ -155,7 +155,7 @@ public class LearnerAiController {
         if (baseUrl.isBlank()) {
             return state;
         }
-        String assetBase = baseUrl + "/api/ai/assets";
+        String assetBase = baseUrl + "/ai-assets";
 
         com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(state.activeGoal(), assetBase);
         List<com.skillpilot.backend.api.FrontierGoal> frontier = rewriteExamData(state.frontier(), assetBase);
@@ -190,7 +190,7 @@ public class LearnerAiController {
         if (baseUrl.isBlank()) {
             return response;
         }
-        String assetBase = baseUrl + "/api/ai/assets";
+        String assetBase = baseUrl + "/ai-assets";
         List<com.skillpilot.backend.api.FrontierGoal> frontier = rewriteExamData(response.frontier(), assetBase);
         com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(response.activeGoal(), assetBase);
         com.skillpilot.backend.api.StateMachineInfo sm = response.stateMachine();
