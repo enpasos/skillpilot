@@ -286,24 +286,14 @@ public class LearnerAiController {
         String normalized = "![Direktes Bild](" + firstUrl + ")\n\n" + stripped;
         if ("bc60e300-96be-599a-89b6-8fcca380803d".equals(goalId)) {
             String converted = convertDisplayMath(stripped);
-            normalized = buildExamPackagedContent(firstUrl, title, converted);
+            normalized = buildExamPackagedContent(firstUrl, converted);
         }
         return normalized;
     }
 
-    private String buildExamPackagedContent(String imageUrl, String title, String body) {
-        String safeTitle = title == null ? "" : title;
+    private String buildExamPackagedContent(String imageUrl, String body) {
         String safeBody = body == null ? "" : body.trim();
-        return "![Direktes Bild](" + imageUrl + ")\n\n"
-                + "**Lernstand geladen. Prüfungsmodus aktiv.**\n"
-                + "**Aktives Ziel:** *" + safeTitle + "*\n\n"
-                + "---\n\n"
-                + "### Aufgabe (bitte vollständig bearbeiten)\n\n"
-                + safeBody + "\n\n"
-                + "---\n\n"
-                + "**Hinweis zur Abgabe:**\n"
-                + "Bearbeite die Aufgabe wie in einer Klausur. Rechenwege und Begruendungen angeben. "
-                + "Sobald du fertig bist, sende deine vollstaendige Loesung hier ein.";
+        return "![Direktes Bild](" + imageUrl + ")\n\n" + safeBody;
     }
 
     private String convertDisplayMath(String content) {
