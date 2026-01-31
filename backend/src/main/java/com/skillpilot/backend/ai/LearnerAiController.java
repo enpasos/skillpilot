@@ -160,17 +160,16 @@ public class LearnerAiController {
         }
         String assetBase = baseUrl + "/ai-assets";
 
-        DeepLinkContext deepLinkContext = buildDeepLinkContext(state, baseUrl);
-        com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(state.activeGoal(), assetBase, deepLinkContext);
-        List<com.skillpilot.backend.api.FrontierGoal> frontier = rewriteExamData(state.frontier(), assetBase, deepLinkContext);
+        com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(state.activeGoal(), assetBase);
+        List<com.skillpilot.backend.api.FrontierGoal> frontier = rewriteExamData(state.frontier(), assetBase);
         com.skillpilot.backend.api.StateMachineInfo sm = state.stateMachine();
         com.skillpilot.backend.api.StateMachineInfo smUpdated = sm == null ? null
                 : new com.skillpilot.backend.api.StateMachineInfo(
                         sm.state(),
                         sm.requiredAction(),
-                        rewriteExamData(sm.goalOptions(), assetBase, deepLinkContext),
+                        rewriteExamData(sm.goalOptions(), assetBase),
                         sm.curriculumOptions(),
-                        rewriteExamData(sm.activeGoal(), assetBase, deepLinkContext));
+                        rewriteExamData(sm.activeGoal(), assetBase));
 
         return new UnifiedLearnerStateResponse(
                 state.skillpilotId(),
@@ -194,17 +193,16 @@ public class LearnerAiController {
             return response;
         }
         String assetBase = baseUrl + "/ai-assets";
-        DeepLinkContext deepLinkContext = buildDeepLinkContext(response, baseUrl);
-        List<com.skillpilot.backend.api.FrontierGoal> frontier = rewriteExamData(response.frontier(), assetBase, deepLinkContext);
-        com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(response.activeGoal(), assetBase, deepLinkContext);
+        List<com.skillpilot.backend.api.FrontierGoal> frontier = rewriteExamData(response.frontier(), assetBase);
+        com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(response.activeGoal(), assetBase);
         com.skillpilot.backend.api.StateMachineInfo sm = response.stateMachine();
         com.skillpilot.backend.api.StateMachineInfo smUpdated = sm == null ? null
                 : new com.skillpilot.backend.api.StateMachineInfo(
                         sm.state(),
                         sm.requiredAction(),
-                        rewriteExamData(sm.goalOptions(), assetBase, deepLinkContext),
+                        rewriteExamData(sm.goalOptions(), assetBase),
                         sm.curriculumOptions(),
-                        rewriteExamData(sm.activeGoal(), assetBase, deepLinkContext));
+                        rewriteExamData(sm.activeGoal(), assetBase));
 
         return new MasteryUpdateResponse(
                 frontier,
@@ -217,20 +215,18 @@ public class LearnerAiController {
 
     private List<com.skillpilot.backend.api.FrontierGoal> rewriteExamData(
             List<com.skillpilot.backend.api.FrontierGoal> goals,
-            String assetBase,
-            DeepLinkContext deepLinkContext) {
+            String assetBase) {
         if (goals == null || goals.isEmpty()) {
             return goals;
         }
         return goals.stream()
-                .map(goal -> rewriteExamData(goal, assetBase, deepLinkContext))
+                .map(goal -> rewriteExamData(goal, assetBase))
                 .toList();
     }
 
     private com.skillpilot.backend.api.FrontierGoal rewriteExamData(
             com.skillpilot.backend.api.FrontierGoal goal,
-            String assetBase,
-            DeepLinkContext deepLinkContext) {
+            String assetBase) {
         if (goal == null || goal.examData() == null) {
             return goal;
         }
@@ -240,12 +236,6 @@ public class LearnerAiController {
                 rewriteAssetLinks(exam.getTaskContent(), assetBase)));
         updated.setTaskContentEn(normalizeTaskContentForAi(goal.id(), goal.title(),
                 rewriteAssetLinks(exam.getTaskContentEn(), assetBase)));
-        if (deepLinkContext != null && deepLinkContext.isComplete()) {
-            updated.setTaskContent(
-                    injectDeepLink(updated.getTaskContent(), buildDeepLink(deepLinkContext, goal.id())));
-            updated.setTaskContentEn(
-                    injectDeepLink(updated.getTaskContentEn(), buildDeepLink(deepLinkContext, goal.id())));
-        }
         updated.setSolutionContent(rewriteAssetLinks(exam.getSolutionContent(), assetBase));
         updated.setSolutionContentEn(rewriteAssetLinks(exam.getSolutionContentEn(), assetBase));
         updated.setScoring(exam.getScoring());
@@ -310,8 +300,6 @@ public class LearnerAiController {
                 + "Hinweis: Du bearbeitest jetzt eine prüfungsnahe Abituraufgabe.\n\n"
                 + "Arbeite selbstständig, strukturiert und rechne sauber.\n"
                 + "Ich gebe keine Hinweise während der Bearbeitung.\n\n"
-                + "Originalaufgabe im Cockpit:\n"
-                + "{{DEEPLINK}}\n\n"
                 + "---\n\n"
                 + safeBody + "\n\n"
                 + "---\n\n"
@@ -335,69 +323,6 @@ public class LearnerAiController {
         return sb.toString();
     }
 
-    private String injectDeepLink(String content, String deepLink) {
-        if (content == null || content.isBlank() || deepLink == null || deepLink.isBlank()) {
-            if (content == null) {
-                return null;
-            }
-            return content.replace("Originalaufgabe im Cockpit:\n{{DEEPLINK}}\n\n", "");
-        }
-        if (content.contains("{{DEEPLINK}}")) {
-            return content.replace("{{DEEPLINK}}", deepLink);
-        }
-        String marker = "![Direktes Bild](";
-        int imageIndex = content.indexOf(marker);
-        if (imageIndex >= 0) {
-            int lineEnd = content.indexOf('\n', imageIndex);
-            if (lineEnd > 0) {
-                String imageLine = content.substring(imageIndex, lineEnd).trim();
-                String rest = content.substring(lineEnd).trim();
-                return imageLine + "\n\nOriginalaufgabe im Cockpit: " + deepLink + "\n\n" + rest;
-            }
-        }
-        return "Originalaufgabe im Cockpit: " + deepLink + "\n\n" + content.trim();
-    }
-
-    private DeepLinkContext buildDeepLinkContext(UnifiedLearnerStateResponse state, String baseUrl) {
-        if (state == null || baseUrl == null || baseUrl.isBlank()) {
-            return null;
-        }
-        String curriculumId = state.curriculum() == null ? null : state.curriculum().getCurriculumId();
-        return new DeepLinkContext(baseUrl, state.skillpilotId(), curriculumId);
-    }
-
-    private DeepLinkContext buildDeepLinkContext(MasteryUpdateResponse response, String baseUrl) {
-        if (response == null || baseUrl == null || baseUrl.isBlank()) {
-            return null;
-        }
-        return null;
-    }
-
-    private String buildDeepLink(DeepLinkContext ctx, String goalId) {
-        if (ctx == null || !ctx.isComplete() || goalId == null || goalId.isBlank()) {
-            return null;
-        }
-        StringBuilder sb = new StringBuilder();
-        sb.append(ctx.baseUrl());
-        if (!ctx.baseUrl().endsWith("/")) {
-            sb.append('/');
-        }
-        sb.append("?skillpilotId=").append(urlEncode(ctx.skillpilotId()));
-        if (ctx.curriculumId() != null && !ctx.curriculumId().isBlank()) {
-            sb.append("&l=").append(urlEncode(ctx.curriculumId()));
-        }
-        sb.append("&goal=").append(urlEncode(goalId));
-        return sb.toString();
-    }
-
-    private String urlEncode(String value) {
-        try {
-            return java.net.URLEncoder.encode(value, java.nio.charset.StandardCharsets.UTF_8.toString());
-        } catch (Exception e) {
-            return value;
-        }
-    }
-
     private String resolveBaseUrl() {
         String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
         baseUrl = baseUrl == null ? "" : baseUrl.replaceAll("/+$", "");
@@ -405,12 +330,6 @@ public class LearnerAiController {
             baseUrl = publicBaseUrl == null ? "" : publicBaseUrl.trim().replaceAll("/+$", "");
         }
         return baseUrl;
-    }
-
-    private record DeepLinkContext(String baseUrl, String skillpilotId, String curriculumId) {
-        boolean isComplete() {
-            return baseUrl != null && !baseUrl.isBlank() && skillpilotId != null && !skillpilotId.isBlank();
-        }
     }
 
 }
