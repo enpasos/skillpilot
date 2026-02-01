@@ -296,7 +296,7 @@ $$
 Die Fahrbahn verläuft (wegen der Wölbung) gemäß der Parabel:
 
 $$
-f(x) = -\frac{1}{200}x^2 + 5
+f(x) = -0,0005x^2 + 10
 $$
 
 (Alle Angaben in Metern. Symmetrie zur y-Achse wird angenommen, Pylone bei $x = \pm 100$).

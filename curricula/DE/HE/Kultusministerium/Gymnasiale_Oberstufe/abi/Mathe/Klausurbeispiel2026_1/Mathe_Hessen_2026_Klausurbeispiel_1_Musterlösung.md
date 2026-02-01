@@ -281,13 +281,13 @@ $1 - 0,75^n > 0,99 \Leftrightarrow 0,75^n < 0,01$.
 **1. Geometrie (5 BE)**
 y-Koordinate der Aufhängepunkte: $k(100) \approx 150,5\,m$.
 Tiefster Punkt: $k(0) = 40\,m$.
-Fahrbahn bei $x=100$: $f(100) = -45\,m$.
-Pylone über Fahrbahn: $k(100) - f(100) \approx 195,5\,m$.
+Fahrbahn bei $x=100$: $f(100) = 5\,m$.
+Pylone über Fahrbahn: $k(100) - f(100) \approx 145,5\,m$.
 
 **2. Vertikal-Seile (8 BE)**
 Differenz $d(x) = k(x) - f(x)$.
-Min bei $x=0$: $35\,m$.
-Max bei $x=100$: $195,5\,m$.
+Min bei $x=0$: $30\,m$.
+Max bei $x=100$: $145,5\,m$.
 
 **3. Winkel (4 BE)**
 $k'(100) \approx 2,90 \Rightarrow \alpha \approx 71^\circ$.
@@ -296,8 +296,9 @@ $k'(100) \approx 2,90 \Rightarrow \alpha \approx 71^\circ$.
 Integralfunktion: $A = \int_{-100}^{100} (k(x) - f(x)) \, dx$.
 Stammfunktion $K(x)$ zu $k(x) = 20(e^{0,02x} + e^{-0,02x})$ ist $1000(e^{0,02x} - e^{-0,02x})$.
 Wert $\int_{-100}^{100} k(x) dx = K(100) - K(-100) \approx 14.507,4$.
-Fläche $A = \int_{-100}^{100} (k(x) - f(x)) \, dx \approx 16840,8 \, m^2$.
-Ergebnis: $A \approx 16.841 \, m^2$.
+Wert $\int_{-100}^{100} f(x) dx \approx 1.666,7$.
+Fläche $A = \int_{-100}^{100} (k(x) - f(x)) \, dx \approx 12.840,8 \, m^2$.
+Ergebnis: $A \approx 12.841 \, m^2$.
 
 **5. Variation (6 BE)**
 $k_a'(100) = e^{100a} - e^{-100a}$.
