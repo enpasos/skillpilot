@@ -281,8 +281,6 @@ $1 - 0,75^n > 0,99 \Leftrightarrow 0,75^n < 0,01$.
 **1. Geometrie (5 BE)**
 y-Koordinate der Aufhängepunkte: $k(100) \approx 75,2\,m$.
 Tiefster Punkt: $k(0) = 20\,m$.
-Fahrbahn bei $x=100$: $f(100) = 5\,m$.
-Pylone über Fahrbahn: $k(100) - f(100) \approx 70,2\,m$.
 
 **2. Vertikal-Seile (8 BE)**
 Differenz $d(x) = k(x) - f(x)$.

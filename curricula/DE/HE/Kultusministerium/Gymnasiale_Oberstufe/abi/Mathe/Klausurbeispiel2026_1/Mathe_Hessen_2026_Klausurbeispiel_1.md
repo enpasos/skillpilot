@@ -293,7 +293,7 @@ $$
 k(x) = 10 \cdot (e^{0,02x} + e^{-0,02x})
 $$
 
-Die Fahrbahn verläuft (wegen der Wölbung) gemäß der Parabel:
+Die x‑Achse beschreibt die Wasseroberfläche (Höhe 0). Die Fahrbahn verläuft (wegen der Wölbung) gemäß der Parabel:
 
 $$
 f(x) = -0,0005x^2 + 10
@@ -301,7 +301,7 @@ $$
 
 (Alle Angaben in Metern. Symmetrie zur y-Achse wird angenommen, Pylone bei $x = \pm 100$).
 
-1. **Geometrie:** Bestimmen Sie die y‑Koordinate der Aufhängepunkte des Seils bei $x=\pm 100$ und den tiefsten Punkt des Seils. Wie hoch ragen die Pylone über die Fahrbahn hinaus? (5 BE)
+1. **Geometrie:** Bestimmen Sie die Gesamthöhe der Pylone über dem Wasserspiegel (y‑Koordinate der Aufhängepunkte des Seils bei $x=\pm 100$) sowie den tiefsten Punkt des Tragseils. (5 BE)
 2. **Vertikal-Seile:** Zwischen dem Tragseil $k(x)$ und der Fahrbahn $f(x)$ verlaufen vertikale Haltestreben.
    Bestimmen Sie die Länge der kürzesten und der längsten Haltestrebe im Bereich $-100 \le x \le 100$. (8 BE)
 3. **Winkel:** Unter welchem Winkel trifft das Tragseil auf die Pylone? (4 BE)
