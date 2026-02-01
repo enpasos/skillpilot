@@ -165,7 +165,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   const mastered = isMastered(mastery)
   const isPlanned = plannedGoals.has(goal.id)
   const isSelected = selectedId === goal.id
-  const isFrontier = frontierIds?.has(goal.id)
+  // Frontier highlighting is intentionally disabled (we only mark active goal + mastery).
 
   // Propagate: If I am in the subtree (passed from parent) OR I am the start of the plan
   const selfInSubtree = isInPlannedSubtree || isPlanned
@@ -220,18 +220,13 @@ const TreeNode: React.FC<TreeNodeProps> = ({
               ? 'text-slate-300 dark:text-slate-600'
               : mastered
                 ? 'text-emerald-500'
-                : isFrontier
-                  ? 'text-sky-500 animate-pulse' // Highlight Frontier Icon
-                  : 'text-red-500'
+                : 'text-red-500'
               }`}
           >
             {mastered ? (
               <Check size={16} strokeWidth={3} />
             ) : activeGoalId === goal.id ? (
               <Send size={16} className="text-amber-500" />
-            ) : isFrontier ? (
-              // Use Play or Zap for Frontier
-              <Play size={16} fill="currentColor" strokeWidth={0} />
             ) : (
               <Target size={16} />
             )}
@@ -247,9 +242,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
               ? 'text-slate-900 dark:text-slate-100 font-medium' // Planned (Focus)
               : mastered
                 ? 'text-slate-500 dark:text-slate-400' // Mastered (Normal Scope)
-                : isFrontier
-                  ? 'text-sky-600 dark:text-sky-400 font-semibold' // Frontier (Highlighted)
-                  : 'text-slate-700 dark:text-slate-200' // Open (Normal Scope)
+                : 'text-slate-700 dark:text-slate-200' // Open (Normal Scope)
             }`}
         />
 
