@@ -58,9 +58,6 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   }, [forcedExpandedIds, goalId])
 
 
-  /* eslint-disable react-hooks/exhaustive-deps */
-  // We disable exhaustive-deps for sortedChildren to avoid complex dependency cycles with filtered lists
-
   const getVisibleChildrenIds = React.useCallback((parentId: string) => {
     const parent = allGoals.get(parentId)
     const childIds = parent?.contains ?? []
@@ -124,9 +121,6 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     return sorted.map(g => g.id)
   }, [visibleChildren, allGoals])
 
-  if (!goal) return null
-
-  const hasChildren = sortedChildren.length > 0
   const mastery = React.useMemo(() => {
     if (!goal) return 0
     const masteryCache = new Map<string, { masterySum: number; weightSum: number }>()
@@ -165,6 +159,9 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     const totals = getFilteredTotals(goal.id)
     return totals.weightSum > 0 ? totals.masterySum / totals.weightSum : 0
   }, [goal, allGoals, getMastery, getVisibleChildrenIds])
+  if (!goal) return null
+
+  const hasChildren = sortedChildren.length > 0
   const mastered = isMastered(mastery)
   const isPlanned = plannedGoals.has(goal.id)
   const isSelected = selectedId === goal.id
@@ -177,6 +174,9 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   const isDimmed = hasActivePlan && !selfInSubtree
 
   const plannedCount = aggregatedPlannedGoals?.get(goal.id) ?? 0
+
+  const shouldShowFilterBadge = depth === 1 && activeFilter && activeFilter !== 'all'
+  const displayTitle = shouldShowFilterBadge ? `${goal.title} (${activeFilter})` : goal.title
 
   return (
     <div className="">
@@ -234,8 +234,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
         )}
 
         <InlineMathText
-          text={goal.title}
-          title={goal.title}
+          text={displayTitle}
+          title={displayTitle}
           className={`text-sm truncate flex-1 transition-colors ${isDimmed
             ? 'text-slate-300 dark:text-slate-600' // Dimmed (Outside Scope)
             : isPlanned

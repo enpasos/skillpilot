@@ -54,7 +54,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [frontierOptions, setFrontierOptions] = useState<FrontierGoal[]>([])
   const [stateActiveGoalId, setStateActiveGoalId] = useState<string | null>(null)
   const [stateRequiredAction, setStateRequiredAction] = useState<string | null>(null)
-  const [backendStats, setBackendStats] = useState<{ masteredAtomic: number; totalAtomic: number } | null>(null)
+  const [backendStats, setBackendStats] = useState<{
+    masteredAtomic: number
+    totalAtomic: number
+    personalizedMasteredAtomic?: number
+    personalizedTotalAtomic?: number
+  } | null>(null)
   const [isSetupOpen, setIsSetupOpen] = useState(false)
   const [personalConfig, setPersonalConfig] = useState<Record<string, { selected: boolean; filterId?: string }>>({})
 
@@ -123,6 +128,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const stats = useMemo(() => {
     // In global mode (no planned goals), prefer backend stats for consistency with GPT
     if (plannedGoals.size === 0 && backendStats) {
+      const hasPersonalConfig = Object.keys(personalConfig).length > 0
+      if (hasPersonalConfig && backendStats.personalizedTotalAtomic !== undefined) {
+        return {
+          totalAtomic: backendStats.personalizedTotalAtomic,
+          masteredAtomic: backendStats.personalizedMasteredAtomic ?? 0
+        }
+      }
       return backendStats
     }
 
@@ -168,7 +180,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
 
     return { totalAtomic, masteredAtomic }
-  }, [plannedGoals, goalIndexAll, visibleGoals, getMastery, backendStats])
+  }, [plannedGoals, goalIndexAll, visibleGoals, getMastery, backendStats, personalConfig])
 
 
   // Reveal Active Goal Logic
@@ -365,7 +377,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           if (data.goals) {
             setBackendStats({
               masteredAtomic: data.goals.mastered_count ?? 0,
-              totalAtomic: data.goals.total_count ?? 0
+              totalAtomic: data.goals.total_count ?? 0,
+              personalizedMasteredAtomic: data.goals.personalized?.mastered_atomic,
+              personalizedTotalAtomic: data.goals.personalized?.total_atomic,
             })
           }
         }
