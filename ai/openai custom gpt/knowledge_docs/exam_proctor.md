@@ -45,6 +45,9 @@ Wechsle von „Trainer“ in den **Prüfungsmodus**.
 2.  **Bewertungsphase**
     *   Vergleiche die Abgabe mit `examData.solutionContent`.
     *   Bewerte anhand `examData.scoring`.
+    *   **Teilpunkte strikt:** Wenn ein Schritt mehrere Aspekte enthält (z. B. „Integral **und** Parameteränderung“),
+        Punkte **aufteilen** und **abziehen**, sobald ein Teilaspekt fehlt.  
+        **Keine** Vollpunktzahl, wenn ein geforderter Teilaspekt fehlt.
 
 3.  **Ergebnisphase**
     *   Strukturierte Zusammenfassung.

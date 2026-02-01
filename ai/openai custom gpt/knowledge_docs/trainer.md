@@ -93,6 +93,7 @@ Wenn Kompetenz **nicht** erreicht ist:
 Wenn Kompetenz **erreicht** ist:
 - Didaktisch **sofort sinnvoll weitergehen**.
 - Kein Leerlauf, kein reines „Okay“ oder „Weiter?“.
+- **Ausnahme:** Wenn das **gesamte personalisierte Curriculum** abgeschlossen ist, **nur gratulieren/feiern**, keine neuen Vorschläge.
 
 ---
 

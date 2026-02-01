@@ -63,17 +63,20 @@ const TreeNode: React.FC<TreeNodeProps> = ({
 
   const children = goal?.contains || []
 
-  // Check if this level has any "Positive Selection" (at least one sibling explicitly selected).
-  const hasPositiveSibling = personalConfig && Object.keys(personalConfig).length > 0 && children.some(childId => {
-    const c = allGoals.get(childId)
-    if (!c) return false
-    const config = (c.landscapeId ? personalConfig[c.landscapeId] : undefined) ?? personalConfig[c.id]
-    return config?.selected === true
-  })
+  const getVisibleChildrenIds = React.useCallback((parentId: string) => {
+    const parent = allGoals.get(parentId)
+    const childIds = parent?.contains ?? []
+    if (childIds.length === 0) return []
 
-  // Memoize visibleChildren computation to stabilize dependency for sortedChildren
-  const visibleChildren = React.useMemo(() => {
-    return children.filter((childId) => {
+    // Check if this level has any "Positive Selection" (at least one sibling explicitly selected).
+    const hasPositiveSibling = personalConfig && Object.keys(personalConfig).length > 0 && childIds.some(childId => {
+      const c = allGoals.get(childId)
+      if (!c) return false
+      const config = (c.landscapeId ? personalConfig[c.landscapeId] : undefined) ?? personalConfig[c.id]
+      return config?.selected === true
+    })
+
+    return childIds.filter((childId) => {
       // 1. Filter by active activeFilter (e.g. "GK", "LK")
       if (activeFilter && activeFilter !== 'all') {
         const child = allGoals.get(childId)
@@ -102,7 +105,12 @@ const TreeNode: React.FC<TreeNodeProps> = ({
 
       return true
     })
-  }, [children, activeFilter, allGoals, personalConfig, hasPositiveSibling])
+  }, [activeFilter, allGoals, personalConfig])
+
+  // Memoize visibleChildren computation to stabilize dependency for sortedChildren
+  const visibleChildren = React.useMemo(() => {
+    return getVisibleChildrenIds(goalId)
+  }, [getVisibleChildrenIds, goalId])
 
   // Sort visible children
   const sortedChildren = React.useMemo(() => {
@@ -121,7 +129,44 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   if (!goal) return null
 
   const hasChildren = sortedChildren.length > 0
-  const mastery = getMastery(goal.id)
+  const mastery = React.useMemo(() => {
+    if (!goal) return 0
+    const masteryCache = new Map<string, { masterySum: number; weightSum: number }>()
+
+    const getFilteredTotals = (gId: string, visited: Set<string> = new Set()) => {
+      if (masteryCache.has(gId)) return masteryCache.get(gId)!
+      if (visited.has(gId)) return { masterySum: 0, weightSum: 0 }
+
+      visited.add(gId)
+      const g = allGoals.get(gId)
+      if (!g) return { masterySum: 0, weightSum: 0 }
+
+      let masterySum = 0
+      let weightSum = 0
+      const childrenIds = g.contains ?? []
+
+      if (childrenIds.length === 0) {
+        const masteryValue = getMastery(gId)
+        const weight = g.weight ?? 1
+        masterySum = masteryValue * weight
+        weightSum = weight
+      } else {
+        const filteredChildren = getVisibleChildrenIds(gId)
+        filteredChildren.forEach((childId) => {
+          const childTotals = getFilteredTotals(childId, new Set(visited))
+          masterySum += childTotals.masterySum
+          weightSum += childTotals.weightSum
+        })
+      }
+
+      visited.delete(gId)
+      masteryCache.set(gId, { masterySum, weightSum })
+      return { masterySum, weightSum }
+    }
+
+    const totals = getFilteredTotals(goal.id)
+    return totals.weightSum > 0 ? totals.masterySum / totals.weightSum : 0
+  }, [goal, allGoals, getMastery, getVisibleChildrenIds])
   const mastered = isMastered(mastery)
   const isPlanned = plannedGoals.has(goal.id)
   const isSelected = selectedId === goal.id
@@ -154,7 +199,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           <span className="text-[10px]">{isExpanded ? '▼' : '▶'}</span>
         </button>
 
-        {children.length > 0 && (
+        {hasChildren && (
           <div
             className="w-12 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden flex-shrink-0"
             title={`${t.tooltips.progress}: ${(mastery * 100).toFixed(0)}%`}
@@ -166,7 +211,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           </div>
         )}
 
-        {children.length === 0 && (
+        {!hasChildren && (
           <div
             className={`mr-1 ${isDimmed
               ? 'text-slate-300 dark:text-slate-600'

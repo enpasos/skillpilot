@@ -220,6 +220,13 @@ Wenn im aktuellen Fokus (Filter/Scope) **alle** Lernziele den Status `mastery` e
 5. **Signal aus dem Backend**: Wenn `requiredAction = setScope` **und** die `frontier` leer ist, sind die `goalOptions` als **Kontext-Wechsel** zu behandeln (Scope wird ersetzt, nicht erweitert).
 6. **Scope-Completion Flag**: Wenn `goals.scope_completed = true`, muss der Scope explizit als **abgeschlossen** bestätigt werden, bevor ein neuer Scope gesetzt wird.
 
+### 8.1 Gesamtabschluss (personalisiertes Curriculum)
+
+Wenn `goals.personalized.mastered_atomic == goals.personalized.total_atomic`:
+
+- **Nur feiern/gratulieren**, keine weiteren Vorschläge
+- **Kein** Scope-/Filter‑Wechsel vorschlagen
+
 ---
 
 ## 9. Deep-Link-Pflicht
