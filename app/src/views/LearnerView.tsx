@@ -95,6 +95,54 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     })
   }, [rootGoals, personalConfig])
 
+  // Determine effective active filter based on personal config for current landscape
+  const effectiveActiveFilter = useMemo(() => {
+    const config = personalConfig[landscapeId]
+    if (config?.filterId) return config.filterId
+    return activeFilter
+  }, [landscapeId, personalConfig, activeFilter])
+
+  const getVisibleChildIds = useCallback((parentId: string) => {
+    const parent = goalIndexAll.get(parentId)
+    const childIds = parent?.contains ?? []
+    if (childIds.length === 0) return []
+
+    const hasConfig = Object.keys(personalConfig).length > 0
+    const hasPositiveSibling = hasConfig && childIds.some(childId => {
+      const c = goalIndexAll.get(childId)
+      if (!c) return false
+      const cfg = (c.landscapeId ? personalConfig[c.landscapeId] : undefined) ?? personalConfig[c.id]
+      return cfg?.selected === true
+    })
+
+    return childIds.filter((childId) => {
+      const child = goalIndexAll.get(childId)
+      if (!child) return false
+
+      // 1) Global active filter (e.g. "GK", "LK")
+      if (effectiveActiveFilter && effectiveActiveFilter !== 'all') {
+        if (child.tags && child.tags.length > 0 && !child.tags.includes(effectiveActiveFilter)) {
+          return false
+        }
+      }
+
+      // 2) Personal curriculum selection + per-landscape filterId
+      if (hasConfig) {
+        const cfg = (child.landscapeId ? personalConfig[child.landscapeId] : undefined) ?? personalConfig[child.id]
+        if (cfg) {
+          if (cfg.selected !== true) return false
+          if (cfg.filterId && child.tags && child.tags.length > 0 && !child.tags.includes(cfg.filterId)) {
+            return false
+          }
+        } else if (hasPositiveSibling) {
+          return false
+        }
+      }
+
+      return true
+    })
+  }, [goalIndexAll, personalConfig, effectiveActiveFilter])
+
   const visibleGoals = useMemo(() => {
     const visible = new Set<string>()
     const stack = [...visibleRootGoals]
@@ -113,28 +161,23 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
       if (visible.has(g.id)) continue
       visible.add(g.id)
-      if (g.contains && g.contains.length > 0) {
-        g.contains.forEach((childId) => {
-          const child = goalIndexAll.get(childId)
-          if (child) stack.push(child)
-        })
-      }
+      const childIds = getVisibleChildIds(g.id)
+      childIds.forEach((childId) => {
+        const child = goalIndexAll.get(childId)
+        if (child) stack.push(child)
+      })
     }
     return visible
-  }, [visibleRootGoals, goalIndexAll, personalConfig])
+  }, [visibleRootGoals, goalIndexAll, personalConfig, getVisibleChildIds])
 
   // Calculate statistics: Total Atomic and Mastered Atomic
   // Relative to Focus (Planned Subtree) if active, otherwise Global Visible.
   const stats = useMemo(() => {
-    // In global mode (no planned goals), prefer backend stats for consistency with GPT
-    if (plannedGoals.size === 0 && backendStats) {
-      const hasPersonalConfig = Object.keys(personalConfig).length > 0
-      if (hasPersonalConfig && backendStats.personalizedTotalAtomic !== undefined) {
-        return {
-          totalAtomic: backendStats.personalizedTotalAtomic,
-          masteredAtomic: backendStats.personalizedMasteredAtomic ?? 0
-        }
-      }
+    const hasPersonalConfig = Object.keys(personalConfig).length > 0
+    const hasActiveFilter = !!effectiveActiveFilter && effectiveActiveFilter !== 'all'
+
+    // In global mode (no planned goals), prefer backend stats only when no filters are active
+    if (plannedGoals.size === 0 && backendStats && !hasPersonalConfig && !hasActiveFilter) {
       return backendStats
     }
 
@@ -180,7 +223,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
 
     return { totalAtomic, masteredAtomic }
-  }, [plannedGoals, goalIndexAll, visibleGoals, getMastery, backendStats, personalConfig])
+  }, [plannedGoals, goalIndexAll, visibleGoals, getMastery, backendStats, personalConfig, effectiveActiveFilter])
 
 
   // Reveal Active Goal Logic
@@ -664,13 +707,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
 
 
-
-  // Determine effective active filter based on personal config for current landscape
-  const effectiveActiveFilter = useMemo(() => {
-    const config = personalConfig[landscapeId]
-    if (config?.filterId) return config.filterId
-    return activeFilter
-  }, [landscapeId, personalConfig, activeFilter])
 
   const handleExport = useCallback(async () => {
     if (!skillpilotId) return
