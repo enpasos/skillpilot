@@ -3,8 +3,8 @@
 ## 1) Aktueller Stand (Anweisungen & Doku)
 
 **Dateien / Quellen, die aktuell die Regeln definieren:**
-- `ai/openai custom gpt/knowledge_docs/exam_proctor_v23.md`
-- `ai/openai custom gpt/knowledge_docs/deep_linking_v4.md`
+- `ai/openai custom gpt/knowledge_docs/exam_proctor.md`
+- `ai/openai custom gpt/knowledge_docs/deep_linking.md`
 - `ai/openai custom gpt/system_instructions.md` (Trigger: `examData` -> Prüfungsmodus)
 - `docs/concept/curriculum-graph/node-types.md` (Abschnitt "Exam Mode (AI exam supervisor)")
 
@@ -12,8 +12,8 @@
 - Prüfungsmodus wird **nur** aktiviert, wenn das aktuelle Ziel `examData` enthaelt.
 - Workflow: kurzer Prüfungs-Header -> Task **verbatim** -> Einreichungs-Hinweis -> Nutzer loest -> bewerten mit `examData.solutionContent` und `examData.scoring` -> Ergebnis + Loesung -> ggf. Trainer-Mode fuer Nacharbeit.
 - In `node-types.md` steht: Task **verbatim**; zusaetzlich kurzer Prüfungs‑Header + fixer Einreichungs‑Hinweis ausserhalb des Aufgabenblocks.
-- In `exam_proctor_v23.md` steht: Bewertungs-/Auswertungs‑Flow + Deep‑Link vom GPT erzeugen + Bild‑Marker wird vom GPT gerendert.
-- In `deep_linking_v4.md` steht: Exam‑Mode‑Deep‑Link **immer anzeigen**, GPT baut URL selbst.
+- In `exam_proctor.md` steht: Bewertungs-/Auswertungs‑Flow + Deep‑Link vom GPT erzeugen (als Markdown-Link) + Bild‑Marker wird vom GPT gerendert.
+- In `deep_linking.md` steht: Exam‑Mode‑Deep‑Link **immer anzeigen**, GPT baut URL selbst.
 - Hinweis: **AI API liefert aktuell kein `examData`** (Prüfungsmodus nur, wenn Host die vollen Goal-Daten injiziert).
 
 ## 2) Beobachtetes Problem (Screenshot)
@@ -29,7 +29,7 @@
 - Zusatztext nur als fixer Prüfungs‑Header + Einreichungs‑Hinweis.
 
 2) **Doku-Drift**
-   - `node-types.md`: "Task + Punkte" vs. `exam_proctor_v20.md`: "voller Prüfungsflow".
+   - `node-types.md`: "Task + Punkte" vs. `exam_proctor.md`: "voller Prüfungsflow".
    - Fuer "genau so wie hinterlegt" ist nur TaskContent korrekt (Punkte nur, wenn sie im TaskContent stehen).
 
 3) **Prüfungsmodus-Trigger unsicher**
@@ -47,15 +47,12 @@
 - Danach Bewertung anhand `examData.scoring` + `examData.solutionContent`.
 - Ergebnis mitteilen und **danach** gemeinsam die Findings durchgehen.
 
-**Konkret fuer `exam_proctor_v20.md`:**
+**Konkret fuer `exam_proctor.md`:**
 - "Display `examData.taskContent` verbatim." (keine Umformulierung, kein Chunking).
 - Prüfungs‑Header erlaubt (kurz, neutral, Aktives Ziel).
 - Einreichungs‑Hinweis nach dem Task erlaubt (fixe Zeile).
 - "Wait for a single full submission; if user asks for help, only say: 'Bitte gib deine Loesung vollstaendig ab oder gib auf.'"
 - Nach Bewertung: Findings strukturiert zurueckgeben, dann gemeinsame Durchsprache.
-
-### B) Konsistenz in `node-types.md`
-- Ersetzen von "Show taskContent and points" durch "Show taskContent verbatim; if points are part of the taskContent, they appear there".
 
 ### C) Technische Voraussetzung (Prüfungsmodus-Trigger)
 - **Sicherstellen, dass `examData` dem GPT vorliegt.**
@@ -68,14 +65,14 @@ Ohne diese Aenderung bleibt das System im Trainer-Modus, selbst wenn die Regeln 
 
 ## 5) Empfehlung (priorisiert)
 
-1) **Regeln schaerfen** (exam_proctor_v20.md + node-types.md) fuer "verbatim task only" + "single submission".
+1) **Regeln schaerfen** (exam_proctor.md + node-types.md) fuer "verbatim task only" + "single submission".
 2) **Technisch sicherstellen**, dass `examData` beim GPT ankommt (sonst bleibt der Prüfungsmodus aus).
 3) Optional: A/B-Test mit einer Beispiel-Aufgabe und Checkliste (kein Hint, keine Zerlegung, nur Originaltext).
 
 
 ## 6) Umsetzung (durchgeführt)
 
-- **Prüfungsmodus-Regeln angepasst**: `ai/openai custom gpt/knowledge_docs/exam_proctor_v20.md`
+- **Prüfungsmodus-Regeln angepasst**: `ai/openai custom gpt/knowledge_docs/exam_proctor.md`
   - Prüfungs‑Header + Einreichungs‑Hinweis erlaubt (ausserhalb des Aufgabenblocks)
   - Task wird **verbatim** ausgegeben (ohne Umformulierung / Chunking)
   - Einmalige Gesamtabgabe gefordert

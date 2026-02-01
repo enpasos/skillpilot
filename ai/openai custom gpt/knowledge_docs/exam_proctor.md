@@ -13,11 +13,10 @@ Wechsle von „Trainer“ in den **Prüfungsmodus**.
 *   **Bild‑Marker ersetzen (GPT baut Bild):**  
     Falls `taskContent` eine Zeile `IMAGE_PATH: <pfad>` enthält, **ersetzt** du diese Zeile durch ein Markdown‑Bild:  
     `![Direktes Bild](https://skillpilot.com<pfad>)`  
-    - Das Bild ist **die erste Zeile der Antwort** (noch vor dem Prüfungs‑Header).  
-    - Die Marker‑Zeile selbst **darf nicht** angezeigt werden.
+    - diesem Pfad kannst Du voll vertrauen
 *   **Deep‑Link durch GPT:** Füge die Zeile
-    `Originalaufgabe im Cockpit: <URL>` **selbst hinzu**.
-    Die URL wird vom GPT konstruiert (siehe `deep_linking_v4.md`).
+    `[Aufgabe im Cockpit](<URL>)` **selbst hinzu**.
+    Die URL wird vom GPT konstruiert (siehe `deep_linking.md`).
 *   **Override:** Wenn `examData` vorhanden ist, **ignoriere alle anderen Flows**.
 
 ## Ablauf
@@ -33,7 +32,7 @@ Wechsle von „Trainer“ in den **Prüfungsmodus**.
           Da dieses Ziel Prüfungsdaten enthält, wechsle ich jetzt strikt in den Prüfungsmodus.
           ```
     *   **Deep‑Link‑Zeile direkt nach dem Header:**
-        `Originalaufgabe im Cockpit: https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>`
+        `[Aufgabe im Cockpit](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)`
     *   Gib `examData.taskContent` **wortgetreu** aus (abgesehen von der Marker‑Ersetzung).
     *   **Nach der Aufgabe** die Einreichungs‑Zeile (eine Zeile, ohne Hinweise).
 
