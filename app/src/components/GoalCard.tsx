@@ -77,11 +77,11 @@ export const GoalCard: React.FC<GoalCardProps> = ({
               <button
                 type="button"
                 onClick={() => (isActive ? onRevealActive?.() : onSetActive?.(goal.id))}
-                className="shrink-0 text-amber-500 hover:text-amber-400 transition-colors cursor-pointer"
+                className={`shrink-0 transition-colors cursor-pointer ${isActive ? 'text-amber-500 hover:text-amber-400' : 'text-red-500 hover:text-red-400'}`}
                 title={activeActionLabel}
                 aria-label={activeActionLabel}
               >
-                <Send size={28} strokeWidth={2} />
+                {isActive ? <Send size={28} strokeWidth={2} /> : <Target size={28} strokeWidth={2} />}
               </button>
             ) : (
               <div className={`shrink-0 ${iconColor}`}>
