@@ -307,8 +307,9 @@ $$
 3. **Winkel:** Unter welchem Winkel trifft das Tragseil auf die Pylone? (4 BE)
 4. **Fläche/Anstrich:** Die Fläche zwischen Tragseil und Fahrbahn soll seitlich mit einem Werbenetz verhängt werden.
    Berechnen Sie den Flächeninhalt. (7 BE)
-5. **Variation:** Bei Belastung senkt sich das Seil. Die neue Funktion ist $k_a(x) = \frac{1}{a} (e^{ax} + e^{-ax})$.
-   Zeigen Sie allgemein durch Rechnung oder Argumentation: Je größer der Parameter $a$ ($a>0$), desto steiler ist der Anstieg des Seils am Pylon ($x=100$). (6 BE)
+5. **Variation:** Bei Belastung ändert sich die Form des Seils. Die neue Funktion ist
+   $k_a(x) = \frac{1}{5a} (e^{ax} + e^{-ax})$ mit $a>0$ (für $a=0{,}02$ erhält man das Seil aus Teilaufgabe 1).
+   Zeigen Sie allgemein durch Rechnung oder Argumentation: Je größer der Parameter $a$, desto steiler ist der Anstieg des Seils am Pylon ($x=100$). (6 BE)
 
  
 

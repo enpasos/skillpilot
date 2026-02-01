@@ -299,7 +299,7 @@ Fläche $A = \int_{-100}^{100} (k(x) - f(x)) \, dx \approx 5.587,1 \, m^2$.
 Ergebnis: $A \approx 5.587 \, m^2$.
 
 **5. Variation (6 BE)**
-$k_a'(100) = e^{100a} - e^{-100a}$.
+$k_a'(100) = \frac{1}{5}(e^{100a} - e^{-100a})$.
 Für wachsendes $a$ wächst der erste Term (Minuend) und fällt der zweite (Subtrahend), somit wächst die Differenz (Steigung) streng monoton.
 
 ### B2 (Analysis – "Wirkstoffkonzentration") – 30 BE
