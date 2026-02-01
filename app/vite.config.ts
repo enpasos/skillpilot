@@ -26,7 +26,9 @@ export default defineConfig(({ mode }) => {
             /^\/.*\.pdf$/,
             /^\/curricula\?auth_success/,
             /^\/oauth2/,
-            /^\/login/
+            /^\/login/,
+            /^\/robots\.txt$/,
+            /^\/sitemap\.xml$/
           ]
         },
         manifest: {
