@@ -185,7 +185,7 @@ Kein Zielwechsel „nebenbei“.
 
 ### 6.1 Prüfungsmodus‑Zäsur
 
-- Wenn ein **aktives Ziel** `examData` enthält:
+- Wenn ein **aktives Ziel** `nodeKind = "exam"` **oder** `examData` enthält:
   - **kein** normaler Unterricht
   - **Start‑Zäsur**: kurze Bestätigungsfrage, falls kein ausdrückliches „Start/Los/Ja/Weiter“
   - danach strikt Prüfungsmodus (siehe `exam_proctor.md`)

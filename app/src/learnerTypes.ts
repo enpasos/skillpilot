@@ -30,6 +30,7 @@ export interface FrontierGoal {
   title: string;
   description: string;
   type: 'atomic' | 'cluster';
+  nodeKind?: 'exam' | 'tutor' | 'memory';
   reason: string;
   tags?: string[];
 }

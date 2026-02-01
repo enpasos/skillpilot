@@ -133,6 +133,9 @@ public class LandscapeService {
                 gc.setExamples(g.getExamples());
                 gc.setSourceRef(g.getSourceRef());
                 gc.setExtendedData(g.getExtendedData());
+                gc.setType(g.getType());
+                gc.setNodeKind(g.getNodeKind());
+                gc.setExamData(g.getExamData());
 
                 // Localize Goal Title/Desc
                 gc.setTitle(StringUtils.hasText(g.getTitleEn()) ? g.getTitleEn() : g.getTitle());
@@ -769,11 +772,16 @@ public class LandscapeService {
             return;
         }
         String type = (g.getContains() != null && !g.getContains().isEmpty()) ? "cluster" : "atomic";
+        String nodeKind = g.getNodeKind();
+        if (nodeKind == null || nodeKind.isBlank()) {
+            nodeKind = (g.getExamData() != null) ? "exam" : "tutor";
+        }
         results.add(new com.skillpilot.backend.api.FrontierGoal(
                 g.getId(),
                 g.getTitle(),
                 g.getDescription(),
                 type,
+                nodeKind,
                 "Search Result",
                 g.getTags(),
                 null));

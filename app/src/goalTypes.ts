@@ -34,6 +34,10 @@ export interface UiGoal {
   inheritedRequires?: string[]
   extendedData?: Record<string, unknown>
   examData?: import('./landscapeTypes').ExamData
+  /** Explicit node type ("atomic" | "cluster"), optional for backward compatibility. */
+  type?: 'atomic' | 'cluster'
+  /** Explicit node kind ("exam" | "tutor" | "memory"), optional for backward compatibility. */
+  nodeKind?: 'exam' | 'tutor' | 'memory'
 }
 
 function demandLevelToNumber(level: string): number {
@@ -60,6 +64,8 @@ export function convertLearningGoal(
   }
 
   const dim = goal.dimensionTags
+  const nodeType = goal.type ?? ((goal.contains && goal.contains.length > 0) ? 'cluster' : 'atomic')
+  const nodeKind = goal.nodeKind ?? (goal.examData ? 'exam' : 'tutor')
   return {
     id: goal.id,
     landscapeId: origin?.landscapeId,
@@ -81,7 +87,9 @@ export function convertLearningGoal(
     effectiveRequires: goal.requires ?? [],
     inheritedRequires: [],
     extendedData: goal.extendedData,
-    examData: goal.examData
+    examData: goal.examData,
+    type: nodeType,
+    nodeKind
   }
 }
 

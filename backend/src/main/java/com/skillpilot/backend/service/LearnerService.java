@@ -492,12 +492,13 @@ public class LearnerService {
             }
 
             if (prerequisitesMet) {
-                String type = (goal.getContains() != null && !goal.getContains().isEmpty()) ? "cluster" : "atomic";
+                String type = resolveNodeType(goal);
                 frontier.add(new FrontierGoal(
                         goal.getId(),
                         goal.getTitle(),
                         goal.getDescription(),
                         type,
+                        resolveNodeKind(goal),
                         "Prerequisites met",
                         goal.getTags(),
                         null));
@@ -695,18 +696,19 @@ public class LearnerService {
             }
 
             if (g != null) {
-                String type = (g.getContains() != null && !g.getContains().isEmpty()) ? "cluster" : "atomic";
+                String type = resolveNodeType(g);
                 plannedRich.add(new FrontierGoal(
                         g.getId(),
                         g.getTitle(),
                         g.getDescription(),
                         type,
+                        resolveNodeKind(g),
                         "Planned",
                         g.getTags(),
                         null));
             } else {
                 // True unknown (deleted or invalid ID)
-                plannedRich.add(new FrontierGoal(pid, "Unknown Goal", "", "unknown", "Planned", null, null));
+                plannedRich.add(new FrontierGoal(pid, "Unknown Goal", "", "unknown", null, "Planned", null, null));
             }
         }
 
@@ -896,12 +898,13 @@ public class LearnerService {
             if (g == null) {
                 continue;
             }
-            String type = (g.getContains() != null && !g.getContains().isEmpty()) ? "cluster" : "atomic";
+            String type = resolveNodeType(g);
             result.add(new FrontierGoal(
                     g.getId(),
                     g.getTitle(),
                     g.getDescription(),
                     type,
+                    resolveNodeKind(g),
                     "Scope expansion",
                     g.getTags(),
                     null));
@@ -921,6 +924,7 @@ public class LearnerService {
                         g.title(),
                         g.description(),
                         g.type(),
+                        g.nodeKind(),
                         "Scope expansion",
                         g.tags(),
                         g.examData()))
@@ -970,7 +974,7 @@ public class LearnerService {
         long total = 0;
         long mastered = 0;
         for (LearningGoal g : goals.values()) {
-            if (g.getContains() != null && !g.getContains().isEmpty()) {
+            if ("cluster".equals(resolveNodeType(g))) {
                 continue;
             }
             if (scope != null && !scope.isEmpty() && !scope.contains(g.getId())) {
@@ -983,6 +987,32 @@ public class LearnerService {
         }
 
         return new com.skillpilot.backend.api.GoalStats(mastered, total);
+    }
+
+    private String resolveNodeType(LearningGoal goal) {
+        if (goal == null) {
+            return "atomic";
+        }
+        String type = goal.getType();
+        if (type != null && !type.isBlank()) {
+            return type;
+        }
+        String resolved = (goal.getContains() != null && !goal.getContains().isEmpty()) ? "cluster" : "atomic";
+        goal.setType(resolved);
+        return resolved;
+    }
+
+    private String resolveNodeKind(LearningGoal goal) {
+        if (goal == null) {
+            return "tutor";
+        }
+        String kind = goal.getNodeKind();
+        if (kind != null && !kind.isBlank()) {
+            return kind;
+        }
+        String resolved = (goal.getExamData() != null) ? "exam" : "tutor";
+        goal.setNodeKind(resolved);
+        return resolved;
     }
 
     @Transactional
@@ -1050,10 +1080,11 @@ public class LearnerService {
             }
         }
         if (g == null) {
-            return new FrontierGoal(goalId, "Unknown Goal", "", "unknown", "Active", null, null);
+            return new FrontierGoal(goalId, "Unknown Goal", "", "unknown", null, "Active", null, null);
         }
-        String type = (g.getContains() != null && !g.getContains().isEmpty()) ? "cluster" : "atomic";
-        return new FrontierGoal(g.getId(), g.getTitle(), g.getDescription(), type, "Active", g.getTags(),
+        String type = resolveNodeType(g);
+        return new FrontierGoal(g.getId(), g.getTitle(), g.getDescription(), type, resolveNodeKind(g), "Active",
+                g.getTags(),
                 g.getExamData());
     }
 
@@ -1318,13 +1349,13 @@ public class LearnerService {
                     String childId = childRef;
                     LearningGoal child = allGoals.get(childId);
                     if (child != null) {
-                        String type = (child.getContains() != null && !child.getContains().isEmpty()) ? "cluster"
-                                : "atomic";
+                        String type = resolveNodeType(child);
                         roots.add(new FrontierGoal(
                                 child.getId(),
                                 child.getTitle(),
                                 child.getDescription(),
                                 type,
+                                resolveNodeKind(child),
                                 "Module",
                                 child.getTags(),
                                 null));

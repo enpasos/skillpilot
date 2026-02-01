@@ -7,6 +7,7 @@ public record FrontierGoal(
                 String title,
                 String description,
                 String type, // "atomic" or "cluster"
+                String nodeKind, // "exam" | "tutor" | "memory"
                 String reason,
                 java.util.List<String> tags,
                 ExamData examData) {

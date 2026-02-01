@@ -266,6 +266,7 @@ public class LearnerAiController {
                 goal.title(),
                 goal.description(),
                 goal.type(),
+                goal.nodeKind(),
                 goal.reason(),
                 goal.tags(),
                 updated);

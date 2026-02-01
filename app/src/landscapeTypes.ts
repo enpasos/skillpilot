@@ -55,6 +55,10 @@ export interface LearningGoal {
   sourceRef?: string
   extendedData?: Record<string, unknown>
   examData?: ExamData
+  /** Explicit node type ("atomic" | "cluster"), optional for backward compatibility. */
+  type?: 'atomic' | 'cluster'
+  /** Explicit node kind ("exam" | "tutor" | "memory"), optional for backward compatibility. */
+  nodeKind?: 'exam' | 'tutor' | 'memory'
 }
 
 export interface LearningLandscape {

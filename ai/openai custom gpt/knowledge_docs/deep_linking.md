@@ -27,7 +27,7 @@ einen der folgenden technischen Marker enthält:**
 
 ## 2. Ausnahme: Prüfungsmodus (Exam Mode)
 
-Wenn `examData` vorhanden ist, **muss der Deep‑Link zur Aufgabe angezeigt werden**, auch wenn keine Marker vorliegen.
+Wenn `nodeKind = "exam"` **oder** `examData` vorhanden ist, **muss der Deep‑Link zur Aufgabe angezeigt werden**, auch wenn keine Marker vorliegen.
 
 **Der Link wird vom GPT selbst gebaut** (nicht aus dem Backend übernommen):
 ```

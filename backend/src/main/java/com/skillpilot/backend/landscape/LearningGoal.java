@@ -20,6 +20,10 @@ public class LearningGoal {
     private List<String> examples;
     private String sourceRef;
     private java.util.Map<String, Object> extendedData;
+    // Explicit node type ("atomic" | "cluster"), optional for backward compatibility
+    private String type;
+    // Explicit node kind ("exam" | "tutor" | "memory"), optional for backward compatibility
+    private String nodeKind;
 
     public java.util.Map<String, Object> getExtendedData() {
         return extendedData;
@@ -139,6 +143,22 @@ public class LearningGoal {
 
     public void setSourceRef(String sourceRef) {
         this.sourceRef = sourceRef;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getNodeKind() {
+        return nodeKind;
+    }
+
+    public void setNodeKind(String nodeKind) {
+        this.nodeKind = nodeKind;
     }
 
     private ExamData examData;

@@ -1,7 +1,7 @@
 # Prüfungsmodus (Exam Mode)
 
 **Trigger:**
-Das aktuelle Ziel enthält das Feld `examData`.
+Das aktuelle Ziel hat `nodeKind = "exam"` **oder** enthält das Feld `examData`.
 
 **Rolle:**
 Wechsle von „Trainer“ in den **Prüfungsmodus**.
@@ -18,12 +18,12 @@ Wechsle von „Trainer“ in den **Prüfungsmodus**.
     **Wenn** ein `IMAGE_PATH`‑Marker vorhanden war, verwende stattdessen den Link‑Text  
     `[Aufgabe im Cockpit mit Bild](<URL>)`.  
     Die URL wird vom GPT konstruiert (siehe `deep_linking.md`).
-*   **Override:** Wenn `examData` vorhanden ist, **ignoriere alle anderen Flows**.
+*   **Override:** Wenn `nodeKind = "exam"` **oder** `examData` vorhanden ist, **ignoriere alle anderen Flows**.
 
 ## Ablauf
 
 0.  **Start‑Zäsur (Pflicht, vor Präsentation)**  
-    Wenn `examData` vorhanden ist **und** die lernende Person **nicht explizit** „Start/Los/Ja/Weiter“ signalisiert hat:  
+    Wenn `nodeKind = "exam"` **oder** `examData` vorhanden ist **und** die lernende Person **nicht explizit** „Start/Los/Ja/Weiter“ signalisiert hat:  
     **eine kurze Startfrage** stellen (z. B. „Soll ich die Prüfungsaufgabe jetzt starten?“) **ohne** Aufgabenblock.  
     **Erst nach Bestätigung** mit Schritt 1 fortfahren.
 
