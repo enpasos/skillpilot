@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Target, Send, Check, Play, Square, SquareX } from 'lucide-react'
+import { Target, Send, Check, Square, SquareX } from 'lucide-react'
 import { useTranslation } from '../hooks/useTranslation'
 import type { UiGoal } from '../goalTypes'
 import { sortGoalsTopologically } from '../utils/goalSorter'
