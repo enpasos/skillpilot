@@ -290,7 +290,7 @@ Geben Sie einen Ansatz an, um die Mindestanzahl $n$ der Fragen zu bestimmen, dam
 Das Haupttragseil einer Brücke wird durch die Funktion der Kettenlinie approximiert:
 
 $$
-k(x) = 20 \cdot (e^{0,02x} + e^{-0,02x})
+k(x) = 10 \cdot (e^{0,02x} + e^{-0,02x})
 $$
 
 Die Fahrbahn verläuft (wegen der Wölbung) gemäß der Parabel:
