@@ -61,8 +61,6 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   /* eslint-disable react-hooks/exhaustive-deps */
   // We disable exhaustive-deps for sortedChildren to avoid complex dependency cycles with filtered lists
 
-  const children = goal?.contains || []
-
   const getVisibleChildrenIds = React.useCallback((parentId: string) => {
     const parent = allGoals.get(parentId)
     const childIds = parent?.contains ?? []
