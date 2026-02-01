@@ -33,6 +33,7 @@ import java.util.regex.Pattern;
 public class LearnerAiController {
 
     private final LearnerService learnerService;
+    private static final String IMAGE_PATH_PREFIX = "IMAGE_PATH: ";
 
     @Value("${skillpilot.public-base-url:https://skillpilot.com}")
     private String publicBaseUrl;
@@ -285,17 +286,24 @@ public class LearnerAiController {
         if (firstUrl == null || firstUrl.isBlank()) {
             return content;
         }
-        String normalized = "![Direktes Bild](" + firstUrl + ")\n\n" + stripped;
+        String relativePath = toRelativeAssetPath(firstUrl);
+        if (relativePath == null || relativePath.isBlank()) {
+            return content;
+        }
+        String normalized = IMAGE_PATH_PREFIX + relativePath + "\n\n" + stripped;
         if ("bc60e300-96be-599a-89b6-8fcca380803d".equals(goalId)) {
             String inlineFixed = convertInlineMathToParens(stripped);
-            normalized = buildExamPackagedContent(firstUrl, inlineFixed);
+            normalized = buildExamPackagedContent(relativePath, inlineFixed);
         }
         return normalized;
     }
 
-    private String buildExamPackagedContent(String imageUrl, String body) {
+    private String buildExamPackagedContent(String imagePath, String body) {
         String safeBody = body == null ? "" : body.trim();
-        return "![Direktes Bild](" + imageUrl + ")\n\n"
+        String imageLine = (imagePath == null || imagePath.isBlank())
+                ? ""
+                : IMAGE_PATH_PREFIX + imagePath + "\n\n";
+        return imageLine
                 + "**Prüfungsmodus – Mathematik LK (Analysis)**\n\n"
                 + "Hinweis: Du bearbeitest jetzt eine prüfungsnahe Abituraufgabe.\n\n"
                 + "Arbeite selbstständig, strukturiert und rechne sauber.\n"
@@ -321,6 +329,27 @@ public class LearnerAiController {
         }
         matcher.appendTail(sb);
         return sb.toString();
+    }
+
+    private String toRelativeAssetPath(String url) {
+        if (url == null || url.isBlank()) {
+            return null;
+        }
+        String trimmed = url.trim();
+        if (trimmed.startsWith("/")) {
+            return trimmed;
+        }
+        try {
+            java.net.URI uri = java.net.URI.create(trimmed);
+            String path = uri.getPath();
+            if (path == null || path.isBlank()) {
+                return null;
+            }
+            String query = uri.getQuery();
+            return query == null || query.isBlank() ? path : path + "?" + query;
+        } catch (IllegalArgumentException ex) {
+            return null;
+        }
     }
 
     private String resolveBaseUrl() {

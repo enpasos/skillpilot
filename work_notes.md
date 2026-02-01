@@ -3,7 +3,7 @@
 ## 1) Aktueller Stand (Anweisungen & Doku)
 
 **Dateien / Quellen, die aktuell die Regeln definieren:**
-- `ai/openai custom gpt/knowledge_docs/exam_proctor_v22.md`
+- `ai/openai custom gpt/knowledge_docs/exam_proctor_v23.md`
 - `ai/openai custom gpt/knowledge_docs/deep_linking_v4.md`
 - `ai/openai custom gpt/system_instructions.md` (Trigger: `examData` -> Prüfungsmodus)
 - `docs/concept/curriculum-graph/node-types.md` (Abschnitt "Exam Mode (AI exam supervisor)")
@@ -12,7 +12,7 @@
 - Prüfungsmodus wird **nur** aktiviert, wenn das aktuelle Ziel `examData` enthaelt.
 - Workflow: kurzer Prüfungs-Header -> Task **verbatim** -> Einreichungs-Hinweis -> Nutzer loest -> bewerten mit `examData.solutionContent` und `examData.scoring` -> Ergebnis + Loesung -> ggf. Trainer-Mode fuer Nacharbeit.
 - In `node-types.md` steht: Task **verbatim**; zusaetzlich kurzer Prüfungs‑Header + fixer Einreichungs‑Hinweis ausserhalb des Aufgabenblocks.
-- In `exam_proctor_v22.md` steht: Bewertungs-/Auswertungs‑Flow + Deep‑Link vom GPT erzeugen.
+- In `exam_proctor_v23.md` steht: Bewertungs-/Auswertungs‑Flow + Deep‑Link vom GPT erzeugen + Bild‑Marker wird vom GPT gerendert.
 - In `deep_linking_v4.md` steht: Exam‑Mode‑Deep‑Link **immer anzeigen**, GPT baut URL selbst.
 - Hinweis: **AI API liefert aktuell kein `examData`** (Prüfungsmodus nur, wenn Host die vollen Goal-Daten injiziert).
 
