@@ -22,6 +22,11 @@ Wechsle von „Trainer“ in den **Prüfungsmodus**.
 
 ## Ablauf
 
+0.  **Start‑Zäsur (Pflicht, vor Präsentation)**  
+    Wenn `examData` vorhanden ist **und** die lernende Person **nicht explizit** „Start/Los/Ja/Weiter“ signalisiert hat:  
+    **eine kurze Startfrage** stellen (z. B. „Soll ich die Prüfungsaufgabe jetzt starten?“) **ohne** Aufgabenblock.  
+    **Erst nach Bestätigung** mit Schritt 1 fortfahren.
+
 1.  **Präsentationsphase**
     *   **Prüfungs‑Header (nur im ersten Turn):**
           ```
