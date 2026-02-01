@@ -162,8 +162,10 @@ public class LearnerAiController {
         String assetBase = baseUrl + "/ai-assets";
 
         com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(state.activeGoal(), assetBase);
-        List<com.skillpilot.backend.api.FrontierGoal> frontier = rewriteExamData(state.frontier(), assetBase);
         com.skillpilot.backend.api.StateMachineInfo sm = state.stateMachine();
+        List<com.skillpilot.backend.api.FrontierGoal> frontier = filterFrontierForAi(
+                rewriteExamData(state.frontier(), assetBase),
+                sm);
         com.skillpilot.backend.api.StateMachineInfo smUpdated = sm == null ? null
                 : new com.skillpilot.backend.api.StateMachineInfo(
                         sm.state(),
@@ -194,9 +196,11 @@ public class LearnerAiController {
             return response;
         }
         String assetBase = baseUrl + "/ai-assets";
-        List<com.skillpilot.backend.api.FrontierGoal> frontier = rewriteExamData(response.frontier(), assetBase);
-        com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(response.activeGoal(), assetBase);
         com.skillpilot.backend.api.StateMachineInfo sm = response.stateMachine();
+        List<com.skillpilot.backend.api.FrontierGoal> frontier = filterFrontierForAi(
+                rewriteExamData(response.frontier(), assetBase),
+                sm);
+        com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(response.activeGoal(), assetBase);
         com.skillpilot.backend.api.StateMachineInfo smUpdated = sm == null ? null
                 : new com.skillpilot.backend.api.StateMachineInfo(
                         sm.state(),
@@ -223,6 +227,22 @@ public class LearnerAiController {
         return goals.stream()
                 .map(goal -> rewriteExamData(goal, assetBase))
                 .toList();
+    }
+
+    private List<com.skillpilot.backend.api.FrontierGoal> filterFrontierForAi(
+            List<com.skillpilot.backend.api.FrontierGoal> frontier,
+            com.skillpilot.backend.api.StateMachineInfo sm) {
+        if (frontier == null || frontier.isEmpty() || sm == null) {
+            return frontier;
+        }
+        if (!"setActiveGoal".equals(sm.requiredAction())) {
+            return frontier;
+        }
+        // When the next action is to set an active goal, keep atomic goals only.
+        List<com.skillpilot.backend.api.FrontierGoal> atomic = frontier.stream()
+                .filter(goal -> "atomic".equals(goal.type()))
+                .toList();
+        return atomic.isEmpty() ? frontier : atomic;
     }
 
     private com.skillpilot.backend.api.FrontierGoal rewriteExamData(

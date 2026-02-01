@@ -163,6 +163,9 @@ Wenn nur Cluster verfügbar sind:
 - „egal“, „such du aus“ oder sinngleiche Aussagen gelten als Zustimmung zur automatischen Auswahl.
 - **Kein** `setActiveGoal`, bevor `setScope` die atomaren Ziele liefert
 
+**Wichtig:** Sobald **mindestens ein** atomareres Ziel verfügbar ist, dürfen **keine** Cluster‑Knoten als Alternative vorgeschlagen werden.
+Wenn **genau ein** atomareres Ziel verfügbar ist, **automatisch** dieses Ziel wählen (kein Rückfrage‑Menü).
+
 ### 5.3 Nach Scope
 
 - aus den neuen Zielen **ein atomareres Ziel** wählen
