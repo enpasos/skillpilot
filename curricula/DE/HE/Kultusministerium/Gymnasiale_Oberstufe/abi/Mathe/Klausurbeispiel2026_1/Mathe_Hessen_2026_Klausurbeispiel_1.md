@@ -301,7 +301,7 @@ $$
 
 (Alle Angaben in Metern. Symmetrie zur y-Achse wird angenommen, Pylone bei $x = \pm 100$).
 
-1. **Geometrie:** Bestimmen Sie die Höhe der Pylone (Aufhängepunkte des Seils bei $x=\pm 100$) und den tiefsten Punkt des Seils. (5 BE)
+1. **Geometrie:** Bestimmen Sie die y‑Koordinate der Aufhängepunkte des Seils bei $x=\pm 100$ und den tiefsten Punkt des Seils. Wie hoch ragen die Pylone über die Fahrbahn hinaus? (5 BE)
 2. **Vertikal-Seile:** Zwischen dem Tragseil $k(x)$ und der Fahrbahn $f(x)$ verlaufen vertikale Haltestreben.
    Bestimmen Sie die Länge der kürzesten und der längsten Haltestrebe im Bereich $-100 \le x \le 100$. (8 BE)
 3. **Winkel:** Unter welchem Winkel trifft das Tragseil auf die Pylone? (4 BE)

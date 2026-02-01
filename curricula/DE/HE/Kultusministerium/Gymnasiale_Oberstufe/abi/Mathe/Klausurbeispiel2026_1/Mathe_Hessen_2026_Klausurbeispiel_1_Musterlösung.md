@@ -279,8 +279,10 @@ $1 - 0,75^n > 0,99 \Leftrightarrow 0,75^n < 0,01$.
 ### B1 (Analysis – "Die Hängebrücke") – 30 BE
 
 **1. Geometrie (5 BE)**
-Pylonhöhe: $k(100) \approx 150,5\,m$.
+y-Koordinate der Aufhängepunkte: $k(100) \approx 150,5\,m$.
 Tiefster Punkt: $k(0) = 40\,m$.
+Fahrbahn bei $x=100$: $f(100) = -45\,m$.
+Pylone über Fahrbahn: $k(100) - f(100) \approx 195,5\,m$.
 
 **2. Vertikal-Seile (8 BE)**
 Differenz $d(x) = k(x) - f(x)$.
