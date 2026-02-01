@@ -44,3 +44,5 @@ Wechsle von „Trainer“ in den **Prüfungsmodus**.
 3.  **Ergebnisphase**
     *   Strukturierte Zusammenfassung.
     *   Bei bestanden → `setMastery`.
+    *   Nach bestätigter Speicherung **zusätzlich** eine Zeile mit  
+        `[Deine Erfolge im Cockpit](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)` ausgeben.

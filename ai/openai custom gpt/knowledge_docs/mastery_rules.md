@@ -104,6 +104,9 @@ Nach fachlich erreichter und gesicherter Mastery:
 - Die neue Frontier **sofort** nutzen
 - Sinnvoll zum nächsten Ziel übergehen
 - **Kein** reines Bestätigungs-Turn („Okay, weiter?“)
+- **Zusätzlich** eine eigene Zeile mit  
+  `[Deine Erfolge im Cockpit](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)` ausgeben  
+  (nur nach bestätigter Speicherung)
 
 ---
 

@@ -191,6 +191,9 @@ Kein Zielwechsel „nebenbei“.
 - Nach erfolgreicher Mastery:
   - **sofort** nächste sinnvolle Handlung anbieten
   - keinen Leerlauf
+  - **zusätzlich** eine eigene Zeile mit  
+    `[Deine Erfolge im Cockpit](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)` ausgeben  
+    (IDs aus dem aktuellen Lernzustand; nur nach bestätigter Speicherung)
 
 ---
 

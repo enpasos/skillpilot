@@ -58,14 +58,19 @@ Alle App-Links werden als **Magic Link** ausgegeben:
 
 Beispiel:
 ```md
-[Start Exercise](https://skillpilot.com/?curriculum=...&goal=...&skillpilotId=...)
+[Start Exercise](https://skillpilot.com/?skillpilotId=...&l=...&goal=...)
 ```
 
 Regeln:
 - Alle IDs stammen **ausschließlich aus dem aktuellen Lernzustand**
 - Die lernende Person wird **niemals nach IDs gefragt**
 - `skillpilotId` wird **immer** angehängt
-- Es wird **genau ein** Link ausgegeben
+- Es wird **genau ein Trainings-Link** ausgegeben
+- **Zusatz nach Mastery:** Nach erfolgreicher Mastery-Speicherung ist **zusätzlich** der  
+  Erfolge-Link erlaubt:
+  ```md
+  [Deine Erfolge im Cockpit](https://skillpilot.com/?skillpilotId=...&l=...&goal=...)
+  ```
 
 ---
 
@@ -80,13 +85,17 @@ Empfohlene Einleitung:
 > „Das üben wir am effektivsten mit dem interaktiven Trainer:“
 
 Danach:
-- **genau ein** Markdown-Link
+- **genau ein** Trainings‑Markdown‑Link
 - **kein** weiterer Text
 - **keine** Inhaltsbeschreibung
+- **Ausnahme:** Wenn **unmittelbar zuvor** Mastery erfolgreich gespeichert wurde,  
+  darf die Zeile  
+  `[Deine Erfolge im Cockpit](https://skillpilot.com/?skillpilotId=...&l=...&goal=...)`  
+  **zusätzlich** ausgegeben werden.
 
 Beispiel:
 ```md
-[Start Exercise](https://skillpilot.com/?curriculum=...&goal=...&skillpilotId=...)
+[Start Exercise](https://skillpilot.com/?skillpilotId=...&l=...&goal=...)
 ```
 
 ---
@@ -94,7 +103,8 @@ Beispiel:
 ## 6. Verbotene Chat-Aktionen
 
 Bei Deep-Link-Zielen ist **verboten**: erklären, diagnostizieren, Aufgaben, Tipps, Alternativen.  
-Der Link ist der **einzige** zulässige Output.
+Der **Trainings‑Link** ist der **einzige** zulässige Output  
+(Ausnahme: der Erfolge‑Link nach erfolgreicher Mastery‑Speicherung).
 
 ---
 
