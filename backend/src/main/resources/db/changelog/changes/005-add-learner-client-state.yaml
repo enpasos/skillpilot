@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 005-add-learner-client-state
+      author: skillpilot
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: learner_client_state
+      changes:
+        - createTable:
+            tableName: learner_client_state
+            columns:
+              - column:
+                  name: skillpilot_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_client_state_learner
+                    references: learner(skillpilot_id)
+              - column:
+                  name: node_id
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: client_state
+                  type: TEXT
+              - column:
+                  name: client_state_updated_at
+                  type: TIMESTAMP
+        - addPrimaryKey:
+            tableName: learner_client_state
+            columnNames: skillpilot_id, node_id
+            constraintName: pk_learner_client_state

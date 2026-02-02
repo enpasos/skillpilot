@@ -3,12 +3,15 @@ package com.skillpilot.backend.service;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.domain.CopySource;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.domain.LearnerClientState;
+import com.skillpilot.backend.domain.LearnerClientStateId;
 import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.MasteryId;
 import com.skillpilot.backend.domain.PlannedGoal;
 import java.time.Instant;
 import com.skillpilot.backend.repository.LearnerRepository;
+import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
 import com.skillpilot.backend.landscape.LandscapeService;
@@ -35,6 +38,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.CreateLearnerRequest;
 import com.skillpilot.backend.api.ClientStateRequest;
 import com.skillpilot.backend.api.ClientStateResponse;
+import com.skillpilot.backend.api.ClientStateSnapshot;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
@@ -47,12 +51,14 @@ import org.springframework.beans.factory.annotation.Value;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
+import com.fasterxml.jackson.core.type.TypeReference;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Service
 public class LearnerService {
 
     private final LearnerRepository learnerRepository;
+    private final LearnerClientStateRepository learnerClientStateRepository;
     private final MasteryRepository masteryRepository;
     private final PlannedGoalRepository plannedGoalRepository;
     private final LandscapeService landscapeService;
@@ -65,12 +71,14 @@ public class LearnerService {
 
     public LearnerService(
             LearnerRepository learnerRepository,
+            LearnerClientStateRepository learnerClientStateRepository,
             MasteryRepository masteryRepository,
             PlannedGoalRepository plannedGoalRepository,
             LandscapeService landscapeService,
             ObjectMapper objectMapper,
             ApplicationEventPublisher eventPublisher) {
         this.learnerRepository = learnerRepository;
+        this.learnerClientStateRepository = learnerClientStateRepository;
         this.masteryRepository = masteryRepository;
         this.plannedGoalRepository = plannedGoalRepository;
         this.landscapeService = landscapeService;
@@ -93,8 +101,33 @@ public class LearnerService {
         return createLearner(null);
     }
 
+    @Transactional(readOnly = true)
+    public ClientStateSnapshot getClientState(String skillpilotId, String nodeId) {
+        ensureLearnerExists(skillpilotId);
+        LearnerClientStateId id = new LearnerClientStateId(skillpilotId, nodeId);
+        LearnerClientState stored = learnerClientStateRepository.findById(id).orElse(null);
+
+        Map<String, Object> state = Collections.emptyMap();
+        Instant updatedAt = null;
+        if (stored != null && stored.getClientState() != null && !stored.getClientState().isBlank()) {
+            try {
+                state = objectMapper.readValue(
+                        stored.getClientState(),
+                        new TypeReference<Map<String, Object>>() {
+                        });
+                updatedAt = stored.getClientStateUpdatedAt();
+            } catch (Exception e) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR,
+                        "Stored client state is invalid");
+            }
+        }
+
+        return new ClientStateSnapshot(updatedAt, state);
+    }
+
     @Transactional
-    public ClientStateResponse upsertClientState(String skillpilotId, ClientStateRequest request) {
+    public ClientStateResponse upsertClientState(String skillpilotId, String nodeId, ClientStateRequest request) {
         Learner learner = learnerRepository.findById(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
 
@@ -103,9 +136,11 @@ public class LearnerService {
         }
 
         Instant incomingAt = request.updatedAt() != null ? request.updatedAt() : Instant.now();
-        Instant existingAt = learner.getClientStateUpdatedAt();
-        if (existingAt != null && request.updatedAt() != null && request.updatedAt().isBefore(existingAt)) {
-            return new ClientStateResponse("ok", existingAt, 0);
+        LearnerClientStateId id = new LearnerClientStateId(skillpilotId, nodeId);
+        LearnerClientState existing = learnerClientStateRepository.findById(id).orElse(null);
+        if (existing != null && existing.getClientStateUpdatedAt() != null
+                && request.updatedAt() != null && request.updatedAt().isBefore(existing.getClientStateUpdatedAt())) {
+            return new ClientStateResponse("ok", existing.getClientStateUpdatedAt(), 0);
         }
 
         String json = "{}";
@@ -120,9 +155,12 @@ public class LearnerService {
             storedKeys = request.srsState().size();
         }
 
-        learner.setClientState(json);
-        learner.setClientStateUpdatedAt(incomingAt);
-        learnerRepository.save(learner);
+        LearnerClientState record = existing != null
+                ? existing
+                : new LearnerClientState(learner, nodeId, json, incomingAt);
+        record.setClientState(json);
+        record.setClientStateUpdatedAt(incomingAt);
+        learnerClientStateRepository.save(record);
 
         return new ClientStateResponse("ok", Instant.now(), storedKeys);
     }

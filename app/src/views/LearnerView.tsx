@@ -757,22 +757,17 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [skillpilotId])
 
-  const syncClientData = useCallback(async (): Promise<boolean> => {
-    if (!skillpilotId) return false
+  const syncClientData = useCallback(async (nodeId: string): Promise<boolean> => {
+    if (!skillpilotId || !nodeId) return false
     const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/client-state` : `/api/ui/learners/${skillpilotId}/client-state`
+    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/client-state/${nodeId}` : `/api/ui/learners/${skillpilotId}/client-state/${nodeId}`
+    const lastSyncKey = `srs_state_last_sync_${skillpilotId}_${nodeId}`
+    const storageKey = `srs_state_${skillpilotId}_${nodeId}`
 
-    const prefix = `srs_state_${skillpilotId}_`
-    const srsState: Record<string, unknown> = {}
-
+    let srsState: Record<string, unknown> = {}
     try {
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i)
-        if (key && key.startsWith(prefix)) {
-          const val = localStorage.getItem(key)
-          if (val) srsState[key] = JSON.parse(val)
-        }
-      }
+      const stored = localStorage.getItem(storageKey)
+      if (stored) srsState = JSON.parse(stored)
     } catch (e) {
       console.warn("Error collecting local SRS state for sync", e)
     }
@@ -787,7 +782,19 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         })
       })
 
-      if (res.ok) return true
+      if (res.ok) {
+        try {
+          const data = await res.json()
+          if (data && data.savedAt) {
+            localStorage.setItem(lastSyncKey, String(data.savedAt))
+          } else {
+            localStorage.setItem(lastSyncKey, new Date().toISOString())
+          }
+        } catch {
+          localStorage.setItem(lastSyncKey, new Date().toISOString())
+        }
+        return true
+      }
       if (res.status === 404) {
         console.warn('Client-state sync endpoint not available on backend.')
         return false

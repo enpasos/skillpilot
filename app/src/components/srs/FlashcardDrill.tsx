@@ -21,7 +21,7 @@ interface FlashcardDrillProps {
     goalIndexAll?: Map<string, UiGoal>
     getMastery?: (goalId: string) => number
     masteryVersion?: number
-    onSync?: () => Promise<boolean>
+    onSync?: (goalId: string) => Promise<boolean>
 }
 
 interface VocabData {
@@ -53,10 +53,10 @@ const UI_TEXT = {
         progress: "Your Progress",
         localData: "Local Data", // Not used explicitly anymore as we always force local
         localDataTooltip: "Saved in this browser.",
-        sync: "Sync",
-        syncing: "Syncing...",
-        syncSuccess: "Synced",
-        syncFailed: "Sync failed",
+        sync: "Save",
+        syncing: "Saving...",
+        syncSuccess: "Saved",
+        syncFailed: "Save failed",
         box0Tooltip: "New cards. Start here.",
         box1Tooltip: "Learning. Repeat < 3 days.",
         box2Tooltip: "Consolidating. Repeat 3-10 days.",
@@ -91,10 +91,10 @@ const UI_TEXT = {
         progress: "Dein Fortschritt",
         localData: "Lokale Daten",
         localDataTooltip: "In diesem Browser gespeichert.",
-        sync: "Sync",
-        syncing: "Synchronisiere...",
-        syncSuccess: "Synchronisiert",
-        syncFailed: "Sync fehlgeschlagen",
+        sync: "Speichern",
+        syncing: "Speichere...",
+        syncSuccess: "Gespeichert",
+        syncFailed: "Speichern fehlgeschlagen",
         box0Tooltip: "Neue Karten. Startpunkt.",
         box1Tooltip: "Lernen. Wdh. < 3 Tage.",
         box2Tooltip: "Festigen. Wdh. 3-10 Tage.",
@@ -238,6 +238,33 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
 
                 setVocabData(data)
 
+                // Restore latest server state for this node (if newer than local)
+                const lastSyncKey = `srs_state_last_sync_${skillPilotId}_${goalId}`
+                const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+                const syncUrl = apiBase
+                    ? `${apiBase}/api/ui/learners/${skillPilotId}/client-state/${goalId}`
+                    : `/api/ui/learners/${skillPilotId}/client-state/${goalId}`
+                try {
+                    const res = await fetch(syncUrl)
+                    if (res.ok) {
+                        const payload = await res.json()
+                        if (payload && payload.srsState && Object.keys(payload.srsState).length > 0) {
+                            const updatedAt = payload.updatedAt ? Date.parse(payload.updatedAt) : 0
+                            const localLast = localStorage.getItem(lastSyncKey)
+                            const localLastAt = localLast ? Date.parse(localLast) : 0
+                            if (!updatedAt || !localLastAt || updatedAt > localLastAt) {
+                                const storageKey = `srs_state_${skillPilotId}_${goalId}`
+                                localStorage.setItem(storageKey, JSON.stringify(payload.srsState))
+                                if (payload.updatedAt) {
+                                    localStorage.setItem(lastSyncKey, String(payload.updatedAt))
+                                }
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.warn('Client-state restore error', e)
+                }
+
                 // Load State Dynamically using goalId (User Request)
                 const storageKey = `srs_state_${skillPilotId}_${goalId}`
                 let loadedState: Record<string, ReviewItem> = {}
@@ -305,7 +332,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
         setSyncInFlight(true)
         setSyncStatus('syncing')
         try {
-            const ok = await onSync()
+            const ok = await onSync(goalId)
             setSyncStatus(ok ? 'success' : 'error')
         } catch (e) {
             console.warn('SRS sync error', e)
@@ -339,7 +366,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
 
         const updatedSrsState = { ...srsState, [currentCard.id]: newState }
         setSrsState(updatedSrsState)
-        const storageKey = `srs_state_${skillPilotId}_${vocabData?.deckId || 'unknown'}`
+        const storageKey = `srs_state_${skillPilotId}_${goalId}`
         localStorage.setItem(storageKey, JSON.stringify(updatedSrsState))
 
         setSessionStats(prev => {

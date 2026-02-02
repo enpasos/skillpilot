@@ -5,11 +5,12 @@ This document defines the backend contract for syncing **local SRS flashcard pro
 ## Endpoint
 
 ```
-PUT /api/ui/learners/{skillpilotId}/client-state
+GET /api/ui/learners/{skillpilotId}/client-state/{nodeId}
+PUT /api/ui/learners/{skillpilotId}/client-state/{nodeId}
 ```
 
 ## Purpose
-- Persist **local SRS progress** periodically (e.g., after 20 cards) or on-demand.
+- Persist **local SRS progress** per memorization node (`nodeId`) periodically (e.g., after 20 cards) or on-demand.
 - Keep the backend **PII-free**; the only identifier is the pseudonymous `skillpilotId`.
 - Allow later recovery or cross-device continuity via **export/import**.
 
@@ -23,7 +24,7 @@ PUT /api/ui/learners/{skillpilotId}/client-state
 {
   "updatedAt": "2026-02-02T19:30:00.000Z",
   "srsState": {
-    "srs_state_<skillpilotId>_<goalId>": {
+    "hes_analysis_c01": {
       "id": "hes_analysis_c01",
       "interval": 3,
       "easeFactor": 2.4,
@@ -31,7 +32,7 @@ PUT /api/ui/learners/{skillpilotId}/client-state
       "nextReview": 1706892870000,
       "lastReviewed": 1706806470000
     },
-    "srs_state_<skillpilotId>_<goalId>": {
+    "hes_funbas_c02": {
       "id": "hes_funbas_c02",
       "interval": 1,
       "easeFactor": 2.3,
@@ -43,9 +44,28 @@ PUT /api/ui/learners/{skillpilotId}/client-state
 ```
 
 Notes:
-- The `srsState` object mirrors the local storage entries and is treated as **opaque** by the backend.
-- Keys use the browser convention: `srs_state_${skillpilotId}_${goalId}`.
+- `nodeId` is the memorization node (learning goal) ID.
+- The `srsState` object mirrors the **per-node** local storage entry and is treated as **opaque** by the backend.
 - Fields inside each entry follow the SRS model (`interval`, `easeFactor`, `repetitions`, `nextReview`, optional `lastReviewed`).
+
+## Read (GET)
+
+**200 OK**
+```json
+{
+  "updatedAt": "2026-02-02T19:30:00.000Z",
+  "srsState": {
+    "hes_analysis_c01": {
+      "id": "hes_analysis_c01",
+      "interval": 3,
+      "easeFactor": 2.4,
+      "repetitions": 2,
+      "nextReview": 1706892870000,
+      "lastReviewed": 1706806470000
+    }
+  }
+}
+```
 
 ## Response
 
@@ -62,7 +82,7 @@ Notes:
 - If the endpoint is not implemented on the backend. The client should silently keep local storage and continue.
 
 ## Backend Storage Recommendation
-- Store as a JSON blob per learner (e.g., column `clientState` or collection `client_state`).
+- Store as a JSON blob **per learner + nodeId** (e.g., table `learner_client_state`).
 - Prefer **last-write-wins** using `updatedAt`.
 - No PII in payload; do not add names/emails.
 
@@ -72,5 +92,5 @@ Notes:
 
 ## Client Behavior
 - Auto-sync after every **20** reviewed cards.
-- Manual **Sync** button available in the UI.
+- Manual **Save** button available in the UI.
 - On sync failure, UI indicates an error but continues to work locally.

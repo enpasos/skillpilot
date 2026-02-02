@@ -17,6 +17,7 @@ import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.LearningLandscape;
 import com.skillpilot.backend.repository.LearnerRepository;
+import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
 import java.nio.file.Files;
@@ -54,6 +55,7 @@ public class LearnerFrontierInvariantTest {
 
     private LearnerService learnerService;
     private LearnerRepository learnerRepository;
+    private LearnerClientStateRepository learnerClientStateRepository;
     private MasteryRepository masteryRepository;
     private PlannedGoalRepository plannedGoalRepository;
     private ApplicationEventPublisher eventPublisher;
@@ -70,12 +72,14 @@ public class LearnerFrontierInvariantTest {
     @BeforeEach
     void setUp() throws Exception {
         learnerRepository = mock(LearnerRepository.class);
+        learnerClientStateRepository = mock(LearnerClientStateRepository.class);
         masteryRepository = mock(MasteryRepository.class);
         plannedGoalRepository = mock(PlannedGoalRepository.class);
         eventPublisher = mock(ApplicationEventPublisher.class);
 
         learnerService = new LearnerService(
                 learnerRepository,
+                learnerClientStateRepository,
                 masteryRepository,
                 plannedGoalRepository,
                 landscapeService,
