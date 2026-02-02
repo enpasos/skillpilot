@@ -12191,26 +12191,31 @@
         "demandLevel": "AB3"
       },
       "examData": {
-        "taskContent": "![Abb. 6: Ein Baumdiagramm, das den Testablauf visualisiert. Erste Stufe: Infiziert (C) vs. Nicht-Infiziert. Zweite Stufe: Test Positiv (+) vs. Test Negativ (-).](/assets/abi/2026_1/image6.de.png)\n\nEin Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).\nDie Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).\n\n1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (5 BE)\n2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.\n   Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.\n   Interpretieren Sie das (vermutlich schockierend niedrige) Ergebnis für die Teststrategie. (6 BE)\n3. **Testoptimierung:** Wie oft muss der Test bei einer Person wiederholt werden (unabhängig), damit bei lauter positiven Ergebnissen die Wahrscheinlichkeit für eine tatsächliche Infektion auf über 90% steigt?\n   Diskutieren Sie die Annahme der \"Unabhängigkeit\" bei wiederholten Tests an derselben Person. (9 BE)",
-        "solutionContent": "**1. Testanalyse (5 BE)**\nSatz totaler Wahrscheinlichkeit: $P(Pos) = 0,005\\cdot0,99 + 0,995\\cdot0,02 \\approx 2,5\\%$.\n\n**2. Bedingte Wahrscheinlichkeit (6 BE)**\nBayes: $P(C|Pos) = \\frac{0,005\\cdot0,99}{0,02485} \\approx 19,9\\%$.\nInterpretation: Trotz positivem Test ist man wahrscheinlich gesund (80%).\n\n**3. Testoptimierung (9 BE)**\nNach n positiven Tests: $P(C|n\\times Pos) > 0,90$. Bei $n=2$ steigt P auf $\\approx 92\\%$.\nDiskussion: Unabhängigkeit ist fraglich (gleicher Testkit, gleiche Person, systematische Fehler).",
+        "taskContent": "![Abb. 6: Ein Baumdiagramm, das den Testablauf visualisiert. Erste Stufe: Infiziert (C) vs. Nicht-Infiziert. Zweite Stufe: Test Positiv (+) vs. Test Negativ (-).](/assets/abi/2026_1/image6.de.png)\n\nEin Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).\nDie Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).\n\n1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (4 BE)\n2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.\n   Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.\n   Interpretieren Sie das Ergebnis für die Teststrategie. (5 BE)\n3. **Testoptimierung:** Wie oft muss der Test bei einer Person wiederholt werden (unabhängig), damit bei lauter positiven Ergebnissen die Wahrscheinlichkeit für eine tatsächliche Infektion auf über 90% steigt? (6 BE)\n4. **Kapazitätsplanung:** Ein Labor wertet eine Serie von 2.000 Proben aus (Falsch-Positiv-Rate $p=0,02$). Bestimmen Sie die kleinste Zahl $k$, sodass die Anzahl der falsch-positiven Ergebnisse mit einer Wahrscheinlichkeit von mindestens 95% im Intervall $[0; k]$ liegt. (5 BE)",
+        "solutionContent": "**1. Testanalyse (4 BE)**\n$P(T+) = 0,005 \\cdot 0,99 + 0,995 \\cdot 0,02 \\approx 2,49\\%$.\n\n**2. Bedingte Wahrscheinlichkeit (5 BE)**\n$P(C|T+) = \\frac{0,00495}{0,02485} \\approx 19,9\\%$.\nInterpretation: Trotz positivem Test ist eine Infektion weiterhin unwahrscheinlich (Massentest problematisch).\n\n**3. Testoptimierung (6 BE)**\nBei $n$ unabhängigen Tests:\n$P(C|n \\times Pos) = \\frac{0,005 \\cdot 0,99^n}{0,005 \\cdot 0,99^n + 0,995 \\cdot 0,02^n}$.\nFür $n=2$ ergibt sich $\\approx 92\\% > 90\\%$.\nErgebnis: Eine Wiederholung (insgesamt 2 Tests) reicht rechnerisch aus. Hinweis: Unabhängigkeit ist in der Praxis fraglich.\n\n**4. Kapazitätsplanung (5 BE)**\n$X \\sim B_{2000; 0,02}$. Gesucht ist das kleinste $k$ mit $P(X \\le k) \\ge 0,95$.\nRechnerisch: $P(X \\le 50) \\approx 0,9506$, $P(X \\le 49) \\approx 0,935$.\n**Ergebnis:** $k = 50$.",
         "scoring": {
           "maxPoints": 20,
           "passingPoints": 10,
           "steps": [
             {
               "id": "s1",
-              "points": 5,
+              "points": 4,
               "description": "Totale Wahrscheinlichkeit"
             },
             {
               "id": "s2",
-              "points": 6,
+              "points": 5,
               "description": "Bedingte Wahrscheinlichkeit (Bayes)"
             },
             {
               "id": "s3",
-              "points": 9,
-              "description": "Testoptimierung und Diskussion"
+              "points": 6,
+              "description": "Testoptimierung"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Kapazitätsplanung"
             }
           ]
         }
@@ -12816,15 +12821,15 @@
         "demandLevel": "AB2"
       },
       "examData": {
-        "taskContent": "![Abb. 6: Ein Baumdiagramm, das den Testablauf visualisiert. Erste Stufe: Infiziert (C) vs. Nicht-Infiziert. Zweite Stufe: Test Positiv (+) vs. Test Negativ (-).](/assets/abi/2026_1/image6.de.png)\n\nEin Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).\nDie Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).\n\n1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (5 BE)\n2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.\n   Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.\n   Interpretieren Sie das (vermutlich schockierend niedrige) Ergebnis für die Teststrategie. (6 BE)\n3. **Testoptimierung:** Wie oft muss der Test bei einer Person wiederholt werden (unabhängig), damit bei lauter positiven Ergebnissen die Wahrscheinlichkeit für eine tatsächliche Infektion auf über 90% steigt? (4 BE)",
-        "solutionContent": "**1. Testanalyse (5 BE)**\nSatz der totalen Wahrscheinlichkeit:\n$P(Pos) = 0,005 \\cdot 0,99 + 0,995 \\cdot 0,02 \\approx 2,5\\%$.\n\n**2. Bedingte Wahrscheinlichkeit (6 BE)**\nSatz von Bayes:\n$P(C|Pos) = \\frac{0,005 \\cdot 0,99}{0,02485} \\approx 19,9\\%$.\nInterpretation: Trotz positivem Test liegt die Wahrscheinlichkeit für eine Infektion nur bei ca. 20\\%.\n\n**3. Testoptimierung (4 BE)**\nBei $n$ unabhängigen Tests:\n$P(C|n \\times Pos) = \\frac{0,005 \\cdot 0,99^n}{0,005 \\cdot 0,99^n + 0,995 \\cdot 0,02^n}$.\nBei $n=2$:\n$P(C|2\\times Pos) \\approx 92,5\\% > 90\\%$.\n**Ergebnis:** Der Test muss **einmal wiederholt** werden (insgesamt 2 Tests).",
+        "taskContent": "![Abb. 6: Ein Baumdiagramm, das den Testablauf visualisiert. Erste Stufe: Infiziert (C) vs. Nicht-Infiziert. Zweite Stufe: Test Positiv (+) vs. Test Negativ (-).](/assets/abi/2026_1/image6.de.png)\n\nEin Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).\nDie Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).\n\n1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (4 BE)\n2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.\n   Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.\n   Interpretieren Sie das Ergebnis im Hinblick auf die Verlässlichkeit eines einzelnen Massentests. (6 BE)\n3. **Massen-Screening:** Wie viele Personen müssen mindestens getestet werden, damit mit einer Wahrscheinlichkeit von mehr als 99% mindestens ein positives Testergebnis auftritt? (5 BE)",
+        "solutionContent": "**1. Testanalyse (4 BE)**\nSatz der totalen Wahrscheinlichkeit:\n$P(T+) = 0,005 \\cdot 0,99 + 0,995 \\cdot 0,02 \\approx 2,49\\%$.\n\n**2. Bedingte Wahrscheinlichkeit (6 BE)**\nSatz von Bayes:\n$P(C|T+) = \\frac{0,005 \\cdot 0,99}{0,02485} \\approx 19,9\\%$.\nInterpretation: Wegen der geringen Prävalenz sind die meisten positiven Ergebnisse falsch-positiv. Ein einzelner Test ist kaum aussagekräftig.\n\n**3. Massen-Screening (5 BE)**\nGesucht ist $n$ mit $1-(1-p)^n > 0,99$ und $p \\approx 0,02485$.\n$(0,97515)^n < 0,01 \\Rightarrow n > \\frac{\\ln(0,01)}{\\ln(0,97515)} \\approx 182,8$.\n**Ergebnis:** Es müssen mindestens 183 Personen getestet werden.",
         "scoring": {
           "maxPoints": 15,
           "passingPoints": 8,
           "steps": [
             {
               "id": "s1",
-              "points": 5,
+              "points": 4,
               "description": "Totale Wahrscheinlichkeit"
             },
             {
@@ -12834,8 +12839,8 @@
             },
             {
               "id": "s3",
-              "points": 4,
-              "description": "Wiederholung/Optimierung"
+              "points": 5,
+              "description": "Massen-Screening"
             }
           ]
         }
