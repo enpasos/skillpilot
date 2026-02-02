@@ -22,11 +22,7 @@ Wechsle von „Trainer“ in den **Prüfungsmodus**.
 
 ## Ablauf
 
-0.  **Start‑Zäsur (optional, vor Präsentation)**  
-    **Nur** wenn der/die Lernende **explizit** den Start einer Prüfungsaufgabe verlangt **und** aktuell **kein** aktives Prüfungs‑Ziel läuft.  
-    In allen anderen Fällen (insb. geladenes aktives Prüfungs‑Ziel oder zuvor gewählt) **direkt starten**, **keine** Rückfrage.
-
-1.  **Präsentationsphase**
+1.  **Präsentationsphase (sofort)**
     *   **Prüfungs‑Header (nur im ersten Turn):**
           ```
           Super, dein Lernstand ist geladen 👍
