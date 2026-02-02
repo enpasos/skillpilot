@@ -72,8 +72,13 @@ public class SseService {
                     if (event.getNodeId() != null && !event.getNodeId().isBlank()) {
                         payload.put("nodeId", event.getNodeId());
                     }
+                    String eventName = "message";
+                    if ("CLIENT_STATE_UPDATED".equals(event.getChangeType())
+                            && event.getNodeId() != null && !event.getNodeId().isBlank()) {
+                        eventName = "client-state";
+                    }
                     emitter.send(SseEmitter.event()
-                            .name("message")
+                            .name(eventName)
                             .data(payload));
                 } catch (IOException e) {
                     log.warn("Failed to send SSE event", e);

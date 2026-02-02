@@ -40,6 +40,17 @@ export function useLearnerUpdates(skillpilotId: string, onUpdate: (payload?: Sse
             }
         }
 
+        const handleEvent = (raw: string) => {
+            console.log('[SSE] 📩 Received event:', raw)
+            let payload: SsePayload | undefined
+            try {
+                payload = JSON.parse(raw) as SsePayload
+            } catch {
+                payload = undefined
+            }
+            triggerUpdate(payload)
+        }
+
         const connect = () => {
             clearRetry()
             const eventSource = new EventSource(url)
@@ -62,15 +73,12 @@ export function useLearnerUpdates(skillpilotId: string, onUpdate: (payload?: Sse
             })
 
             eventSource.onmessage = (event) => {
-                console.log('[SSE] 📩 Received message event:', event.data)
-                let payload: SsePayload | undefined
-                try {
-                    payload = JSON.parse(event.data) as SsePayload
-                } catch {
-                    payload = undefined
-                }
-                triggerUpdate(payload)
+                handleEvent(event.data)
             }
+
+            eventSource.addEventListener('client-state', (event) => {
+                handleEvent((event as MessageEvent).data)
+            })
 
             eventSource.onerror = (err) => {
                 console.warn('[SSE] ❌ Connection error, readyState:', eventSource.readyState, err)
