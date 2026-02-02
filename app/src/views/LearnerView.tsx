@@ -1034,6 +1034,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   }}
                   skillPilotId={skillpilotId}
                   titleOverride={currentGoal.title}
+                  goalIndexAll={goalIndexAll}
+                  getMastery={getMastery}
+                  masteryVersion={refreshCounter}
                   filterTags={(() => {
                     const tags = currentGoal.tags || []
                     const selectTags = tags.filter(t => t.startsWith('select:'))

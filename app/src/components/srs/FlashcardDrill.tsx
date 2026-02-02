@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { CheckCircle, BrainCircuit } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
+import type { UiGoal } from '../../goalTypes'
+import { MASTERED_THRESHOLD } from '../../goalUiUtils'
 
 import { calculateReview, INITIAL_DECK_STATE, type ReviewItem } from './srsLogic'
 
@@ -16,6 +18,9 @@ interface FlashcardDrillProps {
     titleOverride?: string
     filterTags?: string[]
     goalId: string
+    goalIndexAll?: Map<string, UiGoal>
+    getMastery?: (goalId: string) => number
+    masteryVersion?: number
 }
 
 interface VocabData {
@@ -101,7 +106,7 @@ const UI_TEXT = {
     }
 }
 
-export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleOverride, filterTags, goalId }: FlashcardDrillProps) {
+export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleOverride, filterTags, goalId, goalIndexAll, getMastery, masteryVersion }: FlashcardDrillProps) {
     const { language } = useLanguage()
     const t = language === 'de' ? UI_TEXT.de : UI_TEXT.en
 
@@ -150,6 +155,72 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
                     data.cards = data.cards.filter(card =>
                         card.tags && card.tags.some(tag => filterTags.includes(tag))
                     )
+                }
+
+                if (goalIndexAll && getMastery) {
+                    const masteryCache = new Map<string, { masterySum: number; weightSum: number }>()
+
+                    const getAggregatedMastery = (gId: string, visited: Set<string> = new Set()): number => {
+                        if (masteryCache.has(gId)) {
+                            const cached = masteryCache.get(gId)!
+                            return cached.weightSum > 0 ? cached.masterySum / cached.weightSum : 0
+                        }
+                        if (visited.has(gId)) return 0
+
+                        visited.add(gId)
+                        const goal = goalIndexAll.get(gId)
+                        if (!goal) return getMastery(gId) ?? 0
+
+                        let masterySum = 0
+                        let weightSum = 0
+
+                        if (!goal.contains || goal.contains.length === 0) {
+                            const masteryValue = getMastery(gId) ?? 0
+                            const weight = goal.weight ?? 1
+                            masterySum = masteryValue * weight
+                            weightSum = weight
+                        } else {
+                            goal.contains.forEach((childId) => {
+                                const child = goalIndexAll.get(childId)
+                                if (!child) return
+                                const childMastery = getAggregatedMastery(childId, new Set(visited))
+                                const weight = child.weight ?? 1
+                                masterySum += childMastery * weight
+                                weightSum += weight
+                            })
+                        }
+
+                        visited.delete(gId)
+                        masteryCache.set(gId, { masterySum, weightSum })
+                        return weightSum > 0 ? masterySum / weightSum : 0
+                    }
+
+                    const getGoalMastery = (gId: string): number => {
+                        const goal = goalIndexAll.get(gId)
+                        if (!goal) return getMastery(gId) ?? 0
+                        if (!goal.contains || goal.contains.length === 0) return getMastery(gId) ?? 0
+                        return getAggregatedMastery(gId)
+                    }
+
+                    const isRequirementMet = (reqId: string): boolean => {
+                        return getGoalMastery(reqId) >= MASTERED_THRESHOLD
+                    }
+
+                    const isGoalUnlocked = (goalId: string): boolean => {
+                        const goal = goalIndexAll.get(goalId)
+                        if (!goal) return true
+                        const reqs = (goal.effectiveRequires && goal.effectiveRequires.length > 0)
+                            ? goal.effectiveRequires
+                            : (goal.requires ?? [])
+                        if (!reqs || reqs.length === 0) return true
+                        return reqs.every(isRequirementMet)
+                    }
+
+                    data.cards = data.cards.filter((card) => {
+                        const goalTags = (card.tags ?? []).filter((tag) => tag.startsWith('goal:'))
+                        if (goalTags.length === 0) return true
+                        return goalTags.some((tag) => isGoalUnlocked(tag.slice(5)))
+                    })
                 }
 
                 setVocabData(data)
@@ -209,7 +280,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
 
         loadData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dataSourceUrl, filterTags?.join(','), reloadTrigger, goalId, skillPilotId])
+    }, [dataSourceUrl, filterTags?.join(','), reloadTrigger, goalId, skillPilotId, masteryVersion, goalIndexAll, getMastery])
     // Initialize: Fetch Data -> Then Queue
 
 
