@@ -1081,7 +1081,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   <h1 className="text-2xl font-bold text-sky-600 dark:text-sky-400 mb-2">
                     <InlineMathText text={currentGoal.title} />
                   </h1>
-                  <p className="text-text-secondary">{currentGoal.description}</p>
+                  {currentGoal.description ? (
+                    <p className="text-text-secondary">{currentGoal.description}</p>
+                  ) : null}
                 </div>
                 <FlashcardDrill
                   key={`${currentGoal.id}:${srsReloadCounter}`}
