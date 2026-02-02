@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { CheckCircle, BrainCircuit } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import type { UiGoal } from '../../goalTypes'
@@ -102,7 +102,7 @@ const UI_TEXT = {
         box3Tooltip: "Gemeistert. Wdh. > 10 Tage.",
         speedMemorization: "Speed Memorization – Sei ehrlich zu Dir selbst!",
         progressTooltip: "Sitzungsfortschritt: {0}/{1}",
-        readyForReview: "Bereit für heute: {0}. 20 Stück zu schaffen ist super!",
+        readyForReview: "Bereit für heute: {0}.",
         tapToFlip: "Zum Umdrehen tippen",
         showAnswer: "Antwort zeigen",
         again: "Nochmal",
@@ -129,8 +129,10 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
     const [isFlipped, setIsFlipped] = useState(false)
     const [sessionStats, setSessionStats] = useState({ reviewed: 0 })
     const [reloadTrigger, setReloadTrigger] = useState(0)
-    const [syncStatus, setSyncStatus] = useState<'idle' | 'syncing' | 'success' | 'error'>('idle')
     const [syncInFlight, setSyncInFlight] = useState(false)
+    const latestStateRef = useRef<Record<string, ReviewItem>>({})
+    const pendingSyncRef = useRef(false)
+    const finishedAutoSaveRef = useRef(false)
 
     const [stats, setStats] = useState({
         total: 0,
@@ -143,6 +145,42 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
 
     const [error, setError] = useState<string | null>(null)
 
+    useEffect(() => {
+        latestStateRef.current = srsState
+    }, [srsState])
+
+    const sendBackgroundSync = useCallback(() => {
+        if (!pendingSyncRef.current) return
+        if (!skillPilotId || !goalId) return
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const url = apiBase
+            ? `${apiBase}/api/ui/learners/${skillPilotId}/client-state/${goalId}`
+            : `/api/ui/learners/${skillPilotId}/client-state/${goalId}`
+        const payload = JSON.stringify({
+            updatedAt: new Date().toISOString(),
+            srsState: latestStateRef.current
+        })
+
+        if (navigator.sendBeacon) {
+            const blob = new Blob([payload], { type: 'application/json' })
+            navigator.sendBeacon(url, blob)
+            pendingSyncRef.current = false
+            return
+        }
+
+        try {
+            fetch(url, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: payload,
+                keepalive: true
+            })
+            pendingSyncRef.current = false
+        } catch (e) {
+            console.warn('Background sync failed', e)
+        }
+    }, [goalId, skillPilotId])
+
     // Reset and Load
     useEffect(() => {
         setVocabData(null)
@@ -151,9 +189,26 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
         setIsFlipped(false)
         setSessionStats({ reviewed: 0 })
         setSrsState({}) // Clear state
-        setSyncStatus('idle')
         setSyncInFlight(false)
     }, [dataSourceUrl, goalId]) // Reset on goal change
+
+    useEffect(() => {
+        const handleVisibility = () => {
+            if (document.visibilityState === 'hidden') {
+                sendBackgroundSync()
+            }
+        }
+        const handleBeforeUnload = () => {
+            sendBackgroundSync()
+        }
+        document.addEventListener('visibilitychange', handleVisibility)
+        window.addEventListener('beforeunload', handleBeforeUnload)
+        return () => {
+            document.removeEventListener('visibilitychange', handleVisibility)
+            window.removeEventListener('beforeunload', handleBeforeUnload)
+            sendBackgroundSync()
+        }
+    }, [sendBackgroundSync])
 
     // Initialize: Fetch Data -> Load State -> Then Queue
     useEffect(() => {
@@ -331,18 +386,27 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
     const triggerSync = async () => {
         if (!onSync || syncInFlight) return
         setSyncInFlight(true)
-        setSyncStatus('syncing')
         try {
             const ok = await onSync(goalId)
-            setSyncStatus(ok ? 'success' : 'error')
+            if (ok) pendingSyncRef.current = false
         } catch (e) {
             console.warn('SRS sync error', e)
-            setSyncStatus('error')
         } finally {
             setSyncInFlight(false)
-            setTimeout(() => setSyncStatus('idle'), 2000)
         }
     }
+
+    useEffect(() => {
+        if (!isFinished) {
+            finishedAutoSaveRef.current = false
+            return
+        }
+        if (finishedAutoSaveRef.current) return
+        if (!pendingSyncRef.current) return
+        if (!onSync) return
+        finishedAutoSaveRef.current = true
+        void triggerSync()
+    }, [isFinished, onSync])
 
     const handleRate = (quality: number) => {
         if (!currentCard) return
@@ -369,6 +433,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
         setSrsState(updatedSrsState)
         const storageKey = `srs_state_${skillPilotId}_${goalId}`
         localStorage.setItem(storageKey, JSON.stringify(updatedSrsState))
+        pendingSyncRef.current = true
 
         setSessionStats(prev => {
             const nextReviewed = prev.reviewed + 1
@@ -480,30 +545,6 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
             <div className="w-full mb-6">
                 <div className="flex justify-between items-end mb-2 px-1">
                     <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{t.progress}</span>
-                    <div className="flex items-center gap-2">
-                        <div className="group relative flex items-center gap-1 text-[10px] text-gray-400 cursor-help">
-                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                            {t.localData}
-                            <div className="absolute top-full right-0 mt-1 w-48 bg-gray-800 text-white p-2 rounded text-xs z-50 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                                {t.localDataTooltip}
-                            </div>
-                        </div>
-                        {onSync && (
-                            <button
-                                type="button"
-                                onClick={triggerSync}
-                                className="text-[10px] text-sky-500 hover:text-sky-600"
-                            >
-                                {syncStatus === 'syncing' ? t.syncing : t.sync}
-                            </button>
-                        )}
-                        {syncStatus === 'success' && (
-                            <span className="text-[10px] text-green-500">{t.syncSuccess}</span>
-                        )}
-                        {syncStatus === 'error' && (
-                            <span className="text-[10px] text-red-500">{t.syncFailed}</span>
-                        )}
-                    </div>
                 </div>
 
                 <div className="grid grid-cols-4 gap-1 h-16 w-full">
