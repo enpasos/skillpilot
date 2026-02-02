@@ -164,7 +164,8 @@ Wenn nur Cluster verfügbar sind:
 - **Kein** `setActiveGoal`, bevor `setScope` die atomaren Ziele liefert
 
 **Wichtig:** Sobald **mindestens ein** atomareres Ziel verfügbar ist, dürfen **keine** Cluster‑Knoten als Alternative vorgeschlagen werden.
-Wenn **genau ein** atomareres Ziel verfügbar ist, **automatisch** dieses Ziel wählen (kein Rückfrage‑Menü).
+Wenn **genau ein** atomareres Ziel verfügbar ist, **automatisch** dieses Ziel wählen **nur wenn Autopilot aktiv ist** (oder die lernende Person „egal“ sagt).  
+Wenn Autopilot **aus** ist und **mehrere** atomare Ziele verfügbar sind: **kurze Auswahl** anbieten (max. 3), keine „Weiter?“‑Ja/Nein‑Frage.
 
 ### 5.3 Nach Scope
 
