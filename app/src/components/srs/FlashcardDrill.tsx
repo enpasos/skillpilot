@@ -22,6 +22,7 @@ interface FlashcardDrillProps {
     getMastery?: (goalId: string) => number
     masteryVersion?: number
     onSync?: (goalId: string) => Promise<boolean>
+    reloadSignal?: number
 }
 
 interface VocabData {
@@ -115,7 +116,7 @@ const UI_TEXT = {
     }
 }
 
-export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleOverride, filterTags, goalId, goalIndexAll, getMastery, masteryVersion, onSync }: FlashcardDrillProps) {
+export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleOverride, filterTags, goalId, goalIndexAll, getMastery, masteryVersion, onSync, reloadSignal }: FlashcardDrillProps) {
     const { language } = useLanguage()
     const t = language === 'de' ? UI_TEXT.de : UI_TEXT.en
 
@@ -320,7 +321,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
 
         loadData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dataSourceUrl, filterTags?.join(','), reloadTrigger, goalId, skillPilotId, masteryVersion, goalIndexAll, getMastery])
+    }, [dataSourceUrl, filterTags?.join(','), reloadTrigger, goalId, skillPilotId, masteryVersion, goalIndexAll, getMastery, reloadSignal])
     // Initialize: Fetch Data -> Then Queue
 
 

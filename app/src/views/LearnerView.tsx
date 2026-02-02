@@ -451,7 +451,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [skillpilotId])
 
-  const handleSseUpdate = useCallback(async () => {
+  const [srsReloadCounter, setSrsReloadCounter] = useState(0)
+
+  const handleSseUpdate = useCallback(async (payload?: { type?: string; nodeId?: string }) => {
+    if (payload?.type === 'CLIENT_STATE_UPDATED' && payload?.nodeId) {
+      if (currentGoal?.id === payload.nodeId) {
+        setSrsReloadCounter(c => c + 1)
+      }
+      return
+    }
+
     console.log('[SSE] 🔄 Triggering full refresh...')
     // Refresh mastery data, learner state, AND planned goals (scope) in parallel
     await Promise.all([
@@ -462,7 +471,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     // Increment counter to force CompetenceTree re-render
     setRefreshCounter(c => c + 1)
     console.log('[SSE] ✅ Refresh complete')
-  }, [refreshState, refreshPlanned, onRefresh])
+  }, [refreshState, refreshPlanned, onRefresh, currentGoal?.id])
 
   useLearnerUpdates(skillpilotId, handleSseUpdate)
 
@@ -1075,7 +1084,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   <p className="text-text-secondary">{currentGoal.description}</p>
                 </div>
                 <FlashcardDrill
-                  key={currentGoal.id}
+                  key={`${currentGoal.id}:${srsReloadCounter}`}
                   goalId={currentGoal.id}
                   dataSourceUrl={currentGoal.extendedData?.vocabularySource as string | undefined}
                   onComplete={() => {
@@ -1088,6 +1097,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   getMastery={getMastery}
                   masteryVersion={refreshCounter}
                   onSync={syncClientData}
+                  reloadSignal={srsReloadCounter}
                   filterTags={(() => {
                     const tags = currentGoal.tags || []
                     const selectTags = tags.filter(t => t.startsWith('select:'))

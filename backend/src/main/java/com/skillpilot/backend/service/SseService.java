@@ -66,11 +66,15 @@ public class SseService {
             // Send to all connected clients for this user
             for (SseEmitter emitter : userEmitters) {
                 try {
+                    Map<String, Object> payload = new java.util.HashMap<>();
+                    payload.put("type", event.getChangeType());
+                    payload.put("timestamp", System.currentTimeMillis());
+                    if (event.getNodeId() != null && !event.getNodeId().isBlank()) {
+                        payload.put("nodeId", event.getNodeId());
+                    }
                     emitter.send(SseEmitter.event()
                             .name("message")
-                            .data(Map.of(
-                                    "type", event.getChangeType(),
-                                    "timestamp", System.currentTimeMillis())));
+                            .data(payload));
                 } catch (IOException e) {
                     log.warn("Failed to send SSE event", e);
                 }

@@ -1,6 +1,12 @@
 import { useEffect, useRef } from 'react'
 
-export function useLearnerUpdates(skillpilotId: string, onUpdate: () => void) {
+type SsePayload = {
+    type?: string
+    timestamp?: number
+    nodeId?: string
+}
+
+export function useLearnerUpdates(skillpilotId: string, onUpdate: (payload?: SsePayload) => void) {
     const onUpdateRef = useRef(onUpdate)
     const eventSourceRef = useRef<EventSource | null>(null)
     const retryTimeoutRef = useRef<number | null>(null)
@@ -22,9 +28,9 @@ export function useLearnerUpdates(skillpilotId: string, onUpdate: () => void) {
 
         console.log('[SSE] Attempting to connect to:', url)
 
-        const triggerUpdate = () => {
+        const triggerUpdate = (payload?: SsePayload) => {
             lastEventRef.current = Date.now()
-            onUpdateRef.current?.()
+            onUpdateRef.current?.(payload)
         }
 
         const clearRetry = () => {
@@ -57,7 +63,13 @@ export function useLearnerUpdates(skillpilotId: string, onUpdate: () => void) {
 
             eventSource.onmessage = (event) => {
                 console.log('[SSE] 📩 Received message event:', event.data)
-                triggerUpdate()
+                let payload: SsePayload | undefined
+                try {
+                    payload = JSON.parse(event.data) as SsePayload
+                } catch {
+                    payload = undefined
+                }
+                triggerUpdate(payload)
             }
 
             eventSource.onerror = (err) => {

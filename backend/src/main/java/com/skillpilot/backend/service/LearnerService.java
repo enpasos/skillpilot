@@ -162,6 +162,7 @@ public class LearnerService {
         record.setClientStateUpdatedAt(incomingAt);
         learnerClientStateRepository.save(record);
 
+        eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "CLIENT_STATE_UPDATED", nodeId));
         return new ClientStateResponse("ok", Instant.now(), storedKeys);
     }
 
