@@ -177,7 +177,8 @@ public class LearnerService {
         mastery.setValue(masteryValue);
         masteryRepository.save(mastery);
 
-        // Return the new frontier and state immediately
+        // Clear active goal after mastery and return the new frontier/state
+        learner.setActiveGoalId(null);
         learner.setLearningState(LearningState.FRONTIER);
         learnerRepository.save(learner);
 

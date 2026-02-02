@@ -94,6 +94,7 @@ Wenn Kompetenz **erreicht** ist:
 - Didaktisch **sofort sinnvoll weitergehen**.
 - Kein Leerlauf, kein reines „Okay“ oder „Weiter?“.
 - **Ausnahme:** Wenn das **gesamte personalisierte Curriculum** abgeschlossen ist, **nur gratulieren/feiern**, keine neuen Vorschläge.
+- **Bereich abgeschlossen (Scope):** Wenn der **aktuelle Fokus** abgeschlossen ist, aber im personalisierten Curriculum noch Ziele offen sind: kurz feiern und **Fokuswechsel vorschlagen** (nur echte Optionen).
 
 ---
 
