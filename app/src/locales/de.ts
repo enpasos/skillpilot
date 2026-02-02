@@ -43,7 +43,7 @@ export const de = {
             }
         },
         banner: {
-            text: "**SkillPilot ist kostenlos.**\nDu benötigst lediglich einen ChatGPT-Account.\n\n**Hinweis zur App:** Die ChatGPT-App unterstützt komplexe GPT-Funktionen leider oft nicht korrekt. Wir können die Funktionalität dort nicht garantieren und empfehlen den **Webbrowser**."
+            text: "**SkillPilot ist kostenlos.**\nDu benötigst lediglich einen ChatGPT-Account.\n\n**Tipp:** Für die beste Verbindung zum Lernstand empfehlen wir **ChatGPT im Browser**. Die ChatGPT-App funktioniert für Text und Fotos, aber nicht zuverlässig mit Spracheingabe."
         },
         links: {
             statistics: "Statistiken",

@@ -21,6 +21,7 @@ interface FlashcardDrillProps {
     goalIndexAll?: Map<string, UiGoal>
     getMastery?: (goalId: string) => number
     masteryVersion?: number
+    onSync?: () => Promise<boolean>
 }
 
 interface VocabData {
@@ -52,6 +53,10 @@ const UI_TEXT = {
         progress: "Your Progress",
         localData: "Local Data", // Not used explicitly anymore as we always force local
         localDataTooltip: "Saved in this browser.",
+        sync: "Sync",
+        syncing: "Syncing...",
+        syncSuccess: "Synced",
+        syncFailed: "Sync failed",
         box0Tooltip: "New cards. Start here.",
         box1Tooltip: "Learning. Repeat < 3 days.",
         box2Tooltip: "Consolidating. Repeat 3-10 days.",
@@ -86,6 +91,10 @@ const UI_TEXT = {
         progress: "Dein Fortschritt",
         localData: "Lokale Daten",
         localDataTooltip: "In diesem Browser gespeichert.",
+        sync: "Sync",
+        syncing: "Synchronisiere...",
+        syncSuccess: "Synchronisiert",
+        syncFailed: "Sync fehlgeschlagen",
         box0Tooltip: "Neue Karten. Startpunkt.",
         box1Tooltip: "Lernen. Wdh. < 3 Tage.",
         box2Tooltip: "Festigen. Wdh. 3-10 Tage.",
@@ -106,7 +115,7 @@ const UI_TEXT = {
     }
 }
 
-export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleOverride, filterTags, goalId, goalIndexAll, getMastery, masteryVersion }: FlashcardDrillProps) {
+export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleOverride, filterTags, goalId, goalIndexAll, getMastery, masteryVersion, onSync }: FlashcardDrillProps) {
     const { language } = useLanguage()
     const t = language === 'de' ? UI_TEXT.de : UI_TEXT.en
 
@@ -119,6 +128,8 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
     const [isFlipped, setIsFlipped] = useState(false)
     const [sessionStats, setSessionStats] = useState({ reviewed: 0 })
     const [reloadTrigger, setReloadTrigger] = useState(0)
+    const [syncStatus, setSyncStatus] = useState<'idle' | 'syncing' | 'success' | 'error'>('idle')
+    const [syncInFlight, setSyncInFlight] = useState(false)
 
     const [stats, setStats] = useState({
         total: 0,
@@ -139,6 +150,8 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
         setIsFlipped(false)
         setSessionStats({ reviewed: 0 })
         setSrsState({}) // Clear state
+        setSyncStatus('idle')
+        setSyncInFlight(false)
     }, [dataSourceUrl, goalId]) // Reset on goal change
 
     // Initialize: Fetch Data -> Load State -> Then Queue
@@ -287,6 +300,22 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
     const currentCard = queue[currentCardIndex]
     const isFinished = currentCardIndex >= queue.length
 
+    const triggerSync = async () => {
+        if (!onSync || syncInFlight) return
+        setSyncInFlight(true)
+        setSyncStatus('syncing')
+        try {
+            const ok = await onSync()
+            setSyncStatus(ok ? 'success' : 'error')
+        } catch (e) {
+            console.warn('SRS sync error', e)
+            setSyncStatus('error')
+        } finally {
+            setSyncInFlight(false)
+            setTimeout(() => setSyncStatus('idle'), 2000)
+        }
+    }
+
     const handleRate = (quality: number) => {
         if (!currentCard) return
 
@@ -313,7 +342,13 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
         const storageKey = `srs_state_${skillPilotId}_${vocabData?.deckId || 'unknown'}`
         localStorage.setItem(storageKey, JSON.stringify(updatedSrsState))
 
-        setSessionStats(prev => ({ reviewed: prev.reviewed + 1 }))
+        setSessionStats(prev => {
+            const nextReviewed = prev.reviewed + 1
+            if (onSync && nextReviewed % 20 === 0) {
+                void triggerSync()
+            }
+            return { reviewed: nextReviewed }
+        })
 
         // Optimistic Update for UI Feedback
         setStats(prev => {
@@ -417,12 +452,29 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
             <div className="w-full mb-6">
                 <div className="flex justify-between items-end mb-2 px-1">
                     <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{t.progress}</span>
-                    <div className="group relative flex items-center gap-1 text-[10px] text-gray-400 cursor-help">
-                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                        {t.localData}
-                        <div className="absolute top-full right-0 mt-1 w-48 bg-gray-800 text-white p-2 rounded text-xs z-50 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                            {t.localDataTooltip}
+                    <div className="flex items-center gap-2">
+                        <div className="group relative flex items-center gap-1 text-[10px] text-gray-400 cursor-help">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                            {t.localData}
+                            <div className="absolute top-full right-0 mt-1 w-48 bg-gray-800 text-white p-2 rounded text-xs z-50 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                                {t.localDataTooltip}
+                            </div>
                         </div>
+                        {onSync && (
+                            <button
+                                type="button"
+                                onClick={triggerSync}
+                                className="text-[10px] text-sky-500 hover:text-sky-600"
+                            >
+                                {syncStatus === 'syncing' ? t.syncing : t.sync}
+                            </button>
+                        )}
+                        {syncStatus === 'success' && (
+                            <span className="text-[10px] text-green-500">{t.syncSuccess}</span>
+                        )}
+                        {syncStatus === 'error' && (
+                            <span className="text-[10px] text-red-500">{t.syncFailed}</span>
+                        )}
                     </div>
                 </div>
 

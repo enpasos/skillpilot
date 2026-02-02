@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004-add-client-state-column
+      author: skillpilot
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: learner
+        - not:
+            - columnExists:
+                tableName: learner
+                columnName: client_state
+      changes:
+        - addColumn:
+            tableName: learner
+            columns:
+              - column:
+                  name: client_state
+                  type: TEXT
+
+  - changeSet:
+      id: 004-add-client-state-updated-at
+      author: skillpilot
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: learner
+        - not:
+            - columnExists:
+                tableName: learner
+                columnName: client_state_updated_at
+      changes:
+        - addColumn:
+            tableName: learner
+            columns:
+              - column:
+                  name: client_state_updated_at
+                  type: TIMESTAMP

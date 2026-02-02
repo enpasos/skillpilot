@@ -757,6 +757,49 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [skillpilotId])
 
+  const syncClientData = useCallback(async (): Promise<boolean> => {
+    if (!skillpilotId) return false
+    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/client-state` : `/api/ui/learners/${skillpilotId}/client-state`
+
+    const prefix = `srs_state_${skillpilotId}_`
+    const srsState: Record<string, unknown> = {}
+
+    try {
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i)
+        if (key && key.startsWith(prefix)) {
+          const val = localStorage.getItem(key)
+          if (val) srsState[key] = JSON.parse(val)
+        }
+      }
+    } catch (e) {
+      console.warn("Error collecting local SRS state for sync", e)
+    }
+
+    try {
+      const res = await fetch(url, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          updatedAt: new Date().toISOString(),
+          srsState
+        })
+      })
+
+      if (res.ok) return true
+      if (res.status === 404) {
+        console.warn('Client-state sync endpoint not available on backend.')
+        return false
+      }
+      console.warn('Client-state sync failed', res.status, res.statusText)
+      return false
+    } catch (e) {
+      console.warn('Client-state sync error', e)
+      return false
+    }
+  }, [skillpilotId])
+
   const handleImportClick = () => {
     fileInputRef.current?.click();
   }
@@ -1037,6 +1080,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   goalIndexAll={goalIndexAll}
                   getMastery={getMastery}
                   masteryVersion={refreshCounter}
+                  onSync={syncClientData}
                   filterTags={(() => {
                     const tags = currentGoal.tags || []
                     const selectTags = tags.filter(t => t.startsWith('select:'))

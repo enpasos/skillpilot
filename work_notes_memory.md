@@ -30,6 +30,7 @@ Eine Karte ist „verfügbar“, wenn das zugeordnete Lernziel freigeschaltet is
 ## SRS-State / Persistenz
 - Aktuell: pro Mem-Knoten `srs_state_${skillPilotId}_${goalId}`.
 - Neu: **ein** SRS-Key für den einzigen Mem-Knoten.
+- **Zwischensync**: nach je 20 Karten (oder manuell per Button) wird der lokale SRS-State ans Backend gesendet (`PUT /api/ui/learners/{id}/client-state`).
 - Offene Frage: **Migration** der alten SRS-States
   - Option 1: einmalig zusammenführen.
   - Option 2: neu starten (Reset).
@@ -50,3 +51,31 @@ Eine Karte ist „verfügbar“, wenn das zugeordnete Lernziel freigeschaltet is
 3. **Single Mem-Knoten** in `DE_HES_S_GYM_2_MATHEMATIK.de.json` anlegen.
 4. **UI-Filter** in `FlashcardDrill` erweitern (Freischaltung prüfen).
 5. **Optional**: Migrationsskript für lokale SRS-States.
+
+## Review: Memory Plan
+### Strengths
+- Clear Goal Definition: The "Zielbild" section concisely states the objective (one deck, one node, dynamic unlocking).
+- Well-Defined Unlock Logic: The prerequisite gating using `effectiveRequires` + mastery threshold is sound and aligns with graph semantics.
+- Options Documented: Both tag-based and field-based mapping are presented with pros, making the trade-off explicit.
+- Decisions Captured: "Offene Entscheidungen" lists the key choices (reset migration, 0.9 threshold, tag-based mapping) for traceability.
+- Actionable Next Steps: The 5-step plan provides a clear implementation path.
+
+### Suggestions / Questions
+| Area | Feedback |
+| --- | --- |
+| Migration | "Reset (keine Zusammenführung)" is noted, but the plan doesn't address how to communicate this to users. Consider a UI notice or changelog entry. |
+| SRS Key Naming | "ein SRS-Key für den einzigen Mem-Knoten" – document the proposed key format explicitly (e.g., `srs_state_${skillPilotId}_MATH_MASTER`). |
+| Sync Granularity | "Zwischensync nach je 20 Karten" – count-based vs time-based? Consider a `beforeunload` sync fallback for browser closes. |
+| nodeKind Integration | If available, explicitly set `nodeKind: \"memory\"` in the single mem-node to align with schema. |
+| Deep-Link Behavior | If `nodeKind: \"memory\"`, clarify whether GPT treats it like `srs-deck:` (deep-link, no chat teaching). |
+| Deck File Location | `/data/hes_math_master_deck.json` – confirm this is `app/public/data/` and curriculum-specific. |
+
+### Minor Edits
+- Line 13: "0.9 (optional 0.8)" – if the decision is 0.9, remove "optional 0.8" to avoid ambiguity.
+- Term consistency: "Mem-Knoten" vs "Memorisierungs-Knoten" – pick one term.
+
+### Summary
+The plan is solid and ready for implementation. Recommended next refinements:
+- Add explicit `nodeKind: \"memory\"` to the planned node definition.
+- Document the SRS key naming convention.
+- Add a `beforeunload` sync fallback for robustness.

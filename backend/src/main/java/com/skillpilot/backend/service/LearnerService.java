@@ -33,6 +33,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.CreateLearnerRequest;
+import com.skillpilot.backend.api.ClientStateRequest;
+import com.skillpilot.backend.api.ClientStateResponse;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
@@ -89,6 +91,40 @@ public class LearnerService {
     @Transactional
     public Learner createLearner() {
         return createLearner(null);
+    }
+
+    @Transactional
+    public ClientStateResponse upsertClientState(String skillpilotId, ClientStateRequest request) {
+        Learner learner = learnerRepository.findById(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+
+        if (request == null) {
+            return new ClientStateResponse("ok", Instant.now(), 0);
+        }
+
+        Instant incomingAt = request.updatedAt() != null ? request.updatedAt() : Instant.now();
+        Instant existingAt = learner.getClientStateUpdatedAt();
+        if (existingAt != null && request.updatedAt() != null && request.updatedAt().isBefore(existingAt)) {
+            return new ClientStateResponse("ok", existingAt, 0);
+        }
+
+        String json = "{}";
+        int storedKeys = 0;
+        if (request.srsState() != null) {
+            try {
+                json = objectMapper.writeValueAsString(request.srsState());
+            } catch (Exception e) {
+                throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "Invalid client state payload");
+            }
+            storedKeys = request.srsState().size();
+        }
+
+        learner.setClientState(json);
+        learner.setClientStateUpdatedAt(incomingAt);
+        learnerRepository.save(learner);
+
+        return new ClientStateResponse("ok", Instant.now(), storedKeys);
     }
 
     @Transactional(readOnly = true)
@@ -1438,6 +1474,10 @@ public class LearnerService {
         if (data.learner() != null) {
             existing.setSelectedCurriculum(data.learner().getSelectedCurriculum());
             existing.setPersonalCurriculum(data.learner().getPersonalCurriculum());
+            if (data.learner().getClientState() != null) {
+                existing.setClientState(data.learner().getClientState());
+                existing.setClientStateUpdatedAt(data.learner().getClientStateUpdatedAt());
+            }
             learnerRepository.save(existing);
         }
 

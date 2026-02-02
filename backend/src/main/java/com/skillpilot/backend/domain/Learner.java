@@ -31,6 +31,12 @@ public class Learner {
     @Column(name = "personal_curriculum", columnDefinition = "TEXT")
     private String personalCurriculum;
 
+    @Column(name = "client_state", columnDefinition = "TEXT")
+    private String clientState;
+
+    @Column(name = "client_state_updated_at")
+    private Instant clientStateUpdatedAt;
+
     @Column(name = "active_goal_id")
     private String activeGoalId;
 
@@ -70,6 +76,22 @@ public class Learner {
 
     public void setPersonalCurriculum(String personalCurriculum) {
         this.personalCurriculum = personalCurriculum;
+    }
+
+    public String getClientState() {
+        return clientState;
+    }
+
+    public void setClientState(String clientState) {
+        this.clientState = clientState;
+    }
+
+    public Instant getClientStateUpdatedAt() {
+        return clientStateUpdatedAt;
+    }
+
+    public void setClientStateUpdatedAt(Instant clientStateUpdatedAt) {
+        this.clientStateUpdatedAt = clientStateUpdatedAt;
     }
 
     public java.util.Set<CopySource> getCopySources() {
