@@ -644,7 +644,7 @@ public class LearnerService {
         return tags.contains("GK");
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public UnifiedLearnerStateResponse getLearnerState(String skillpilotId) {
         Learner learner = getLearner(skillpilotId);
         String curriculumId = learner.getSelectedCurriculum();
@@ -717,6 +717,16 @@ public class LearnerService {
         String activeGoalId = learner.getActiveGoalId();
         boolean activeGoalMastered = activeGoalId != null && !activeGoalId.isBlank()
                 && mastery.getOrDefault(activeGoalId, 0.0) >= 0.9;
+        if (activeGoalMastered) {
+            // Persistently clear stale active goals.
+            learner.setActiveGoalId(null);
+            learner.setLearningState(LearningState.FRONTIER);
+            learnerRepository.save(learner);
+            eventPublisher.publishEvent(
+                    new LearnerStateChangedEvent(this, skillpilotId, "ACTIVE_GOAL_CLEARED_STALE"));
+            activeGoalId = null;
+            activeGoalMastered = false;
+        }
         Map<String, LearningGoal> structuralGoals = Collections.emptyMap();
         Set<String> scope = Collections.emptySet();
         if (curriculumId != null && !plannedIds.isEmpty()) {
@@ -772,7 +782,7 @@ public class LearnerService {
             if (!personalizationRequired) {
                 nextAllowedActions.add("setScope");
                 nextAllowedActions.add("getFrontier");
-                if (learner.getActiveGoalId() != null && !learner.getActiveGoalId().isBlank() && !activeGoalMastered) {
+                if (activeGoalId != null && !activeGoalId.isBlank() && !activeGoalMastered) {
                     nextAllowedActions.add("setMastery");
                 } else if (!frontierAtomic.isEmpty()) {
                     nextAllowedActions.add("setActiveGoal");
