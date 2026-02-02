@@ -30,7 +30,7 @@ $x=1$: VZW $- \to +$ (Tiefpunkt).
 
 ### A2 (Analysis - "Der Deich") – 5 BE
 
-**Modell:** $h(x) = 5x - x^2$. Beobachter $P(-1|0)$.
+**Modell:** $h(x) = 5x - x^2$. Beobachter $P(-1|0)$ (Körpergröße vernachlässigt).
 
 **1. Spitze:** $h'(x)=5-2x=0 \Rightarrow x=2,5$. $S(2,5|6,25)$.
 **2. Sichtlinie:** Tangente von $P$ an den Graphen legen.

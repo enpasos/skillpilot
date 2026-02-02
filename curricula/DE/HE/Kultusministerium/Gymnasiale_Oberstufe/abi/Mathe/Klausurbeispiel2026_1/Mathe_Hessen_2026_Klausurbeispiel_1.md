@@ -48,6 +48,7 @@ Gegeben ist die Funktion $f(x) = (x^2 - 3) \cdot e^x$.
 
 Der Querschnitt eines Deiches wird modelliert durch $h(x) = x \cdot (5-x)$ für $0 \le x \le 5$. (Profil vereinfacht, Einheiten Meter).
 Ein Beobachter steht im Punkt $P(-1|0)$ am Boden vor dem Deich.
+Die Körpergröße des Beobachters ist zu vernachlässigen; die Sichtlinie beginnt im Punkt $P$ auf dem Boden.
 Untersuchen Sie rechnerisch, ob die direkte Sichtlinie vom Beobachter zur Deichspitze (Hochpunkt) durch das Deichprofil unterbrochen wird.
 
 ### **A3 (Stochastik) – 5 BE**

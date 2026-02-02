@@ -12368,7 +12368,7 @@
         "demandLevel": "AB2"
       },
       "examData": {
-        "taskContent": "![Deichskizze](/assets/abi/2026_1/image1.de.png)\n\nDer Querschnitt eines Deiches wird modelliert durch $h(x) = x \\cdot (5-x)$ für $0 \\le x \\le 5$. (Profil vereinfacht, Einheiten Meter).\nEin Beobachter steht im Punkt $P(-1|0)$ am Boden vor dem Deich.\nUntersuchen Sie rechnerisch, ob die direkte Sichtlinie vom Beobachter zur Deichspitze (Hochpunkt) durch das Deichprofil unterbrochen wird.",
+        "taskContent": "![Deichskizze](/assets/abi/2026_1/image1.de.png)\n\nDer Querschnitt eines Deiches wird modelliert durch $h(x) = x \\cdot (5-x)$ für $0 \\le x \\le 5$. (Profil vereinfacht, Einheiten Meter).\nEin Beobachter steht im Punkt $P(-1|0)$ am Boden vor dem Deich.\nDie Körpergröße des Beobachters ist zu vernachlässigen; die Sichtlinie beginnt im Punkt $P$ auf dem Boden.\nUntersuchen Sie rechnerisch, ob die direkte Sichtlinie vom Beobachter zur Deichspitze (Hochpunkt) durch das Deichprofil unterbrochen wird.",
         "solutionContent": "**1. Koordinate der Spitze (Hochpunkt):**\n$$h'(x) = 5 - 2x = 0 \\Rightarrow x = 2,5$$\n$$h(2,5) = 2,5 \\cdot 2,5 = 6,25 \\Rightarrow S(2,5 | 6,25)$$\n\n**2. Sichtprüfung (Tangenten-Ansatz):**\nTangente von $P(-1|0)$ an $h(x)$. Steigung:\n$$\\frac{h(u) - 0}{u - (-1)} = h'(u) \\Rightarrow \\frac{5u - u^2}{u+1} = 5 - 2u$$\n$$5u - u^2 = (5 - 2u)(u + 1) \\Rightarrow u^2 + 2u - 5 = 0$$\n$u = -1 + \\sqrt{6} \\approx 1,45$.\n\n**Schlussfolgerung:** Die Tangente berührt bei $x \\approx 1,45$. Da der Deich bis $x=2,5$ weiter ansteigt (Wölbung), liegt die Spitze \"hinter\" der Wölbung und ist somit nicht sichtbar.\n**Ergebnis:** Die Sichtlinie wird unterbrochen.",
         "scoring": {
           "maxPoints": 5,
