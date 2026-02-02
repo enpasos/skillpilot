@@ -11765,7 +11765,7 @@
       },
       "examData": {
         "taskContent": "Gegeben sind die Gerade $g: \\vec{x} = \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix} + r \\cdot \\begin{pmatrix} 2 \\\\ 0 \\\\ -1 \\end{pmatrix}$ und die Ebene $E: x_1 + 2x_2 + 2x_3 = 10$.\nUntersuchen Sie die gegenseitige Lage von $g$ und $E$. Berechnen Sie gegebenenfalls den Schnittpunkt.",
-        "solutionContent": "**Lageuntersuchung:**\nRichtungsvektor $\\vec{u} = (2, 0, -1)^T$, Normalenvektor $\\vec{n} = (1, 2, 2)^T$.\nSkalarprodukt: $\\vec{u} \\cdot \\vec{n} = 2\\cdot1 + 0\\cdot2 + (-1)\\cdot2 = 0$. $\\Rightarrow$ $g$ verläuft parallel zu $E$ oder liegt in $E$.\n**Punktprobe:**\nStützpunkt $P(1|2|3)$ in $E$ einsetzen: $1 + 2(2) + 2(3) = 1 + 4 + 6 = 11 \\neq 10$.\n**Ergebnis:** Die Gerade $g$ ist echt parallel zur Ebene $E$.",
+        "solutionContent": "**Lageuntersuchung:**\nRichtungsvektor $\\vec{u} = (2, 0, -1)^T$, Normalenvektor $\\vec{n} = (1, 2, 2)^T$.\nSkalarprodukt: $\\vec{u} \\cdot \\vec{n} = 2\\cdot1 + 0\\cdot2 + (-1)\\cdot2 = 0$. $\\Rightarrow$ $g$ verläuft parallel zu $E$ oder liegt in $E$.\n\n**Punktprobe:**\nStützpunkt $P(1|2|3)$ in $E$ einsetzen: $1 + 2(2) + 2(3) = 1 + 4 + 6 = 11 \\neq 10$.\n\n**Ergebnis:** Die Gerade $g$ ist echt parallel zur Ebene $E$.",
         "scoring": {
           "maxPoints": 5,
           "passingPoints": 3,
@@ -11808,7 +11808,7 @@
       },
       "examData": {
         "taskContent": "Gegeben ist $f(x) = e^{2x - 1}$.\nBestimmen Sie die Ableitung $f'(x)$ und die Stammfunktion $F(x)$.\nBerechnen Sie den Wert von $f'(0,5)$.",
-        "solutionContent": "**Ableitung:**\nKettenregel: $f'(x) = e^{2x - 1} \\cdot 2 = 2e^{2x - 1}$.\n**Stammfunktion:**\nLineare Substitution: $F(x) = \\frac{1}{2} e^{2x - 1}$.\n**Wert:**\n$f'(0,5) = 2e^{2(0,5) - 1} = 2e^0 = 2$.",
+        "solutionContent": "**Ableitung:**\nKettenregel: $f'(x) = e^{2x - 1} \\cdot 2 = 2e^{2x - 1}$.\n\n**Stammfunktion:**\nLineare Substitution: $F(x) = \\frac{1}{2} e^{2x - 1}$.\n\n**Wert:**\n$f'(0,5) = 2e^{2(0,5) - 1} = 2e^0 = 2$.",
         "scoring": {
           "maxPoints": 5,
           "passingPoints": 3,
@@ -11894,7 +11894,7 @@
       },
       "examData": {
         "taskContent": "Die Funktion $f$ ist punktsymmetrisch zum Ursprung und für alle $x$ definiert. Es gilt $\\int_0^3 f(x) \\, dx = 4$.\nBestimmen Sie den Wert des Integrals $\\int_{-3}^3 (f(x) + 2) \\, dx$. Begründen Sie Ihren Rechenweg.",
-        "solutionContent": "**1. Symmetrie (2 BE)**\nPunktsymmetrie $\\Rightarrow \\int_{-3}^3 f(x) dx = 0$.\n**2. Rechnung (3 BE)**\n$\\int_{-3}^3 (f(x)+2) dx = \\int_{-3}^3 f(x) dx + \\int_{-3}^3 2 dx = 0 + [2x]_{-3}^3 = 2(3) - 2(-3) = 12$.",
+        "solutionContent": "**1. Symmetrie (2 BE)**\nPunktsymmetrie $\\Rightarrow \\int_{-3}^3 f(x) dx = 0$.\n\n**2. Rechnung (3 BE)**\n$\\int_{-3}^3 (f(x)+2) dx = \\int_{-3}^3 f(x) dx + \\int_{-3}^3 2 dx = 0 + [2x]_{-3}^3 = 2(3) - 2(-3) = 12$.",
         "scoring": {
           "maxPoints": 5,
           "passingPoints": 3,
@@ -11960,7 +11960,7 @@
       },
       "examData": {
         "taskContent": "Gegeben sind die Gerade $g: \\vec{x} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix} + r \\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}$ und die Geradenschar $h_a: \\vec{x} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 2 \\end{pmatrix} + s \\begin{pmatrix} 1 \\\\ a \\\\ 0 \\end{pmatrix}$.\nUntersuchen Sie, für welchen Parameter $a$ die Geraden $g$ und $h_a$ echt parallel zueinander sind.",
-        "solutionContent": "**1. Parallelität (Richtungsvektoren)**\n$\\vec{u} = (1, 1, 0)^T$, $\\vec{v} = (1, a, 0)^T$. Kollinear, wenn $a=1$.\n**2. Echt parallel (Punktprobe)**\nLiegt $P(1|0|1)$ auf $h_1$? $(1, 0, 1)^T = (0, 1, 2)^T + s(1, 1, 0)^T$. Zeile 3: $1 = 2$ (Widerspruch). Echt parallel.",
+        "solutionContent": "**1. Parallelität (Richtungsvektoren)**\n$\\vec{u} = (1, 1, 0)^T$, $\\vec{v} = (1, a, 0)^T$. Kollinear, wenn $a=1$.\n\n**2. Echt parallel (Punktprobe)**\nLiegt $P(1|0|1)$ auf $h_1$? $(1, 0, 1)^T = (0, 1, 2)^T + s(1, 1, 0)^T$. Zeile 3: $1 = 2$ (Widerspruch). Echt parallel.",
         "scoring": {
           "maxPoints": 5,
           "passingPoints": 3,
@@ -12101,7 +12101,7 @@
       },
       "examData": {
         "taskContent": "Die Konzentration eines Medikaments im Blut wird modelliert durch die Funktionenschar:\n\n$$\nc_k(t) = 10 \\cdot t \\cdot e^{1 - k \\cdot t} \\quad (t \\ge 0, k > 0)\n$$\n\n($t$ in Stunden, $c_k(t)$ in mg/l).\n\n1. **Verlauf:** Untersuchen Sie das Verhalten für $t \\to \\infty$. Begründen Sie, dass die Konzentration für $t>0$ stets positiv ist. (4 BE)\n2. **Wirkungsmaximum:** Bestimmen Sie in Abhängigkeit von $k$ den Zeitpunkt der maximalen Konzentration und die Höhe der maximalen Konzentration.\n   Für welchen Parameter $k$ wird das Maximum genau nach 2 Stunden erreicht? (9 BE)\n3. **Abbaugeschwindigkeit:** Zeigen Sie, dass die Wendestelle der Funktion bei $t_W = \\frac{2}{k}$ liegt.\n   Interpretieren Sie die Bedeutung der Wendestelle im Kontext des Abbaus des Medikaments. (6 BE)\n4. **Gesamtmenge:** Das Integral $\\int_0^{\\infty} c_k(t) \\, dt$ ist ein Maß für die \"totale Exposition\" des Körpers (AUC = Area Under Curve).\n   Bestimmen Sie diesen Wert in Abhängigkeit von $k$.\n   Ein Arzt möchte die Exposition verdoppeln. Untersuchen Sie, wie er dafür den Parameter $k$ ändern muss. (11 BE)",
-        "solutionContent": "**1. Verlauf (4 BE)**\n$\\lim_{t \\to \\infty} c_k(t) = 0$ (e-Funktion dominiert). $t, k, e^x > 0 \\Rightarrow c_k(t) > 0$.\n**2. Maximum (9 BE)**\n$c_k'(t) = 10e^{1-kt}(1-kt) = 0 \\Rightarrow t = 1/k$. $c(1/k) = 10/k$. $t=2 \\Rightarrow k=0,5$.\n**3. Wendepunkt (6 BE)**\n$c_k''(t) = 10e^{1-kt}(-k(1-kt) - k) = 10k e^{1-kt}(kt-2) = 0 \\Rightarrow t=2/k$. Stärkste Abnahme.\n**4. Gesamtmenge (11 BE)**\nPartielle Integration. $\\int_0^{\\infty} c_k(t) dt = \\frac{10e}{k^2}$. Verdopplung: $k$ durch $k/\\sqrt{2}$ ersetzen.",
+        "solutionContent": "**1. Verlauf (4 BE)**\n$\\lim_{t \\to \\infty} c_k(t) = 0$ (e-Funktion dominiert). $t, k, e^x > 0 \\Rightarrow c_k(t) > 0$.\n\n**2. Maximum (9 BE)**\n$c_k'(t) = 10e^{1-kt}(1-kt) = 0 \\Rightarrow t = 1/k$. $c(1/k) = 10/k$. $t=2 \\Rightarrow k=0,5$.\n\n**3. Wendepunkt (6 BE)**\n$c_k''(t) = 10e^{1-kt}(-k(1-kt) - k) = 10k e^{1-kt}(kt-2) = 0 \\Rightarrow t=2/k$. Stärkste Abnahme.\n\n**4. Gesamtmenge (11 BE)**\nPartielle Integration. $\\int_0^{\\infty} c_k(t) dt = \\frac{10e}{k^2}$. Verdopplung: $k$ durch $k/\\sqrt{2}$ ersetzen.",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 15,
@@ -12337,7 +12337,7 @@
       },
       "examData": {
         "taskContent": "![Deichskizze](/assets/abi/2026_1/image1.de.png)\n\nDer Querschnitt eines Deiches wird modelliert durch $h(x) = x \\cdot (5-x)$ für $0 \\le x \\le 5$. (Profil vereinfacht, Einheiten Meter).\nEin Beobachter steht im Punkt $P(-1|0)$ am Boden vor dem Deich.\nDie Körpergröße des Beobachters ist zu vernachlässigen; die Sichtlinie beginnt im Punkt $P$ auf dem Boden.\nUntersuchen Sie rechnerisch, ob die direkte Sichtlinie vom Beobachter zur Deichspitze (Hochpunkt) durch das Deichprofil unterbrochen wird.",
-        "solutionContent": "**1. Koordinate der Spitze (Hochpunkt):**\n$$h'(x) = 5 - 2x = 0 \\Rightarrow x = 2,5$$\n$$h(2,5) = 2,5 \\cdot 2,5 = 6,25 \\Rightarrow S(2,5 | 6,25)$$\n\n**2. Sichtprüfung (Tangenten-Ansatz):**\nTangente von $P(-1|0)$ an $h(x)$. Steigung:\n$$\\frac{h(u) - 0}{u - (-1)} = h'(u) \\Rightarrow \\frac{5u - u^2}{u+1} = 5 - 2u$$\n$$5u - u^2 = (5 - 2u)(u + 1) \\Rightarrow u^2 + 2u - 5 = 0$$\n$u = -1 + \\sqrt{6} \\approx 1,45$.\n\n**Schlussfolgerung:** Die Tangente berührt bei $x \\approx 1,45$. Da der Deich bis $x=2,5$ weiter ansteigt (Wölbung), liegt die Spitze \"hinter\" der Wölbung und ist somit nicht sichtbar.\n**Ergebnis:** Die Sichtlinie wird unterbrochen.",
+        "solutionContent": "**1. Koordinate der Spitze (Hochpunkt):**\n$$h'(x) = 5 - 2x = 0 \\Rightarrow x = 2,5$$\n$$h(2,5) = 2,5 \\cdot 2,5 = 6,25 \\Rightarrow S(2,5 | 6,25)$$\n\n**2. Sichtprüfung (Tangenten-Ansatz):**\nTangente von $P(-1|0)$ an $h(x)$. Steigung:\n$$\\frac{h(u) - 0}{u - (-1)} = h'(u) \\Rightarrow \\frac{5u - u^2}{u+1} = 5 - 2u$$\n$$5u - u^2 = (5 - 2u)(u + 1) \\Rightarrow u^2 + 2u - 5 = 0$$\n$u = -1 + \\sqrt{6} \\approx 1,45$.\n\n**Schlussfolgerung:** Die Tangente berührt bei $x \\approx 1,45$. Da der Deich bis $x=2,5$ weiter ansteigt (Wölbung), liegt die Spitze \"hinter\" der Wölbung und ist somit nicht sichtbar.\n\n**Ergebnis:** Die Sichtlinie wird unterbrochen.",
         "scoring": {
           "maxPoints": 5,
           "passingPoints": 3,
@@ -12509,7 +12509,7 @@
       },
       "examData": {
         "taskContent": "Gegeben ist der Graph der Ableitungsfunktion $f'$ einer Polynomfunktion $f$.\nDer Graph von $f'$ ist eine nach oben geöffnete Parabel, die die x-Achse in den Punkten $x_1 = -2$ und $x_2 = 2$ schneidet.\n\n1. Begründen Sie, welche Steigung der Graph von $f$ an der Stelle $x=0$ hat. (2 BE)\n2. Bestimmen Sie die x-Koordinaten der lokalen Extremstellen von $f$ und geben Sie jeweils die Art des Extremums an. (3 BE)",
-        "solutionContent": "**1. Steigung bei x=0 (2 BE)**\nParabel durch $(-2|0)$ und $(2|0)$ ist symmetrisch. Scheitel bei $x=0$ (unten). $f'(0) < 0$.\n**2. Extremstellen (3 BE)**\nNullstellen von $f'$: $-2$ und $2$. VZW bei $-2$ ($+ \\to -$): Hochpunkt. VZW bei $2$ ($- \\to +$): Tiefpunkt.",
+        "solutionContent": "**1. Steigung bei x=0 (2 BE)**\nParabel durch $(-2|0)$ und $(2|0)$ ist symmetrisch. Scheitel bei $x=0$ (unten). $f'(0) < 0$.\n\n**2. Extremstellen (3 BE)**\nNullstellen von $f'$: $-2$ und $2$. VZW bei $-2$ ($+ \\to -$): Hochpunkt. VZW bei $2$ ($- \\to +$): Tiefpunkt.",
         "scoring": {
           "maxPoints": 5,
           "passingPoints": 3,
@@ -12580,7 +12580,7 @@
       },
       "examData": {
         "taskContent": "Gegeben sind die Punkte $P(1|2|3)$ und $Q(3|2|1)$.\n\n1. Stellen Sie eine Parametergleichung der Geraden $g$ durch $P$ und $Q$ auf. (3 BE)\n2. Prüfen Sie, ob der Punkt $R(5|2|-1)$ auf der Geraden $g$ liegt. (2 BE)",
-        "solutionContent": "**1. Gerade $g$ (3 BE)**\n$\\vec{x} = \\vec{OP} + r \\vec{PQ} = (1, 2, 3)^T + r(2, 0, -2)^T$.\n**2. Punktprobe (2 BE)**\n$(5, 2, -1)^T = (1, 2, 3)^T + r(2, 0, -2)^T \\Rightarrow r=2$. Liegt auf $g$.",
+        "solutionContent": "**1. Gerade $g$ (3 BE)**\n$\\vec{x} = \\vec{OP} + r \\vec{PQ} = (1, 2, 3)^T + r(2, 0, -2)^T$.\n\n**2. Punktprobe (2 BE)**\n$(5, 2, -1)^T = (1, 2, 3)^T + r(2, 0, -2)^T \\Rightarrow r=2$. Liegt auf $g$.",
         "scoring": {
           "maxPoints": 5,
           "passingPoints": 3,
@@ -12726,7 +12726,7 @@
       },
       "examData": {
         "taskContent": "Ein Fahrzeug führt einen Bremstest durch. Die Geschwindigkeit wird für $0 \\le t \\le 10$ modelliert durch:\n\n$$\nv(t) = -\\frac{1}{40}t^3 + \\frac{3}{10}t^2 - \\frac{9}{4}t + 20\n$$\n\n($t$ in Sekunden, $v(t)$ in $m/s$).\n\n1. **Anfangsphase:** Bestimmen Sie die Geschwindigkeit zu Beginn ($t=0$) und zum Zeitpunkt $t=10$.\n   Berechnen Sie die Beschleunigung $a(t) = v'(t)$ zum Zeitpunkt $t=0$. (4 BE)\n2. **Extremwerte:** Bestimmen Sie den Zeitpunkt im Intervall $[0; 10]$, an dem die Geschwindigkeit am geringsten ist. (6 BE)\n3. **Bremsweg:** Die zurückgelegte Strecke entspricht dem Integral der Geschwindigkeitsfunktion.\n   Berechnen Sie die Strecke, die das Fahrzeug in den ersten 10 Sekunden zurücklegt.\n   Bestimmen Sie die Durchschnittsgeschwindigkeit in diesem Zeitraum. (8 BE)\n4. **Reaktion:** Ein Sensor überwacht die Bremswirkung. Er meldet ein Warnsignal (\"Brake Fading\"), sobald die Verzögerung (Bremskraft) im Verlauf des Bremsvorgangs **am geringsten** ist (lokales Maximum der Beschleunigung $a(t)$).\n   Ermitteln Sie rechnerisch den Zeitpunkt $t \\in [0; 10]$, an dem die Verzögerung am geringsten ist (lokales Maximum von $a(t)$), und geben Sie die dort herrschende Beschleunigung an. (7 BE)",
-        "solutionContent": "**1. Anfangsphase (4 BE)**\n$v(0) = 20$. $v(10) = 2,5$.\n$a(t) = -\\frac{3}{40}t^2 + \\frac{3}{5}t - \\frac{9}{4}$. $a(0) = -2,25 \\, m/s^2$.\n**2. Extremwerte (6 BE)**\n$v'(t) = 0$ hat im Intervall keine Lösung. Minimum am Rand $t=10$ ($v=2,5$).\n**3. Bremsweg (8 BE)**\nIntegral $\\int_0^{10} v(t) dt \\approx 125$ m. Durchschnitt $\\approx 12,5$ m/s.\n**4. Reaktion (7 BE)**\n$a'(t) = 0 \\Rightarrow -\\frac{6}{40}t + \\frac{3}{5} = 0 \\Rightarrow t=4$. $a(4) = -1,05 \\, m/s^2$.",
+        "solutionContent": "**1. Anfangsphase (4 BE)**\n$v(0) = 20$. $v(10) = 2,5$.\n$a(t) = -\\frac{3}{40}t^2 + \\frac{3}{5}t - \\frac{9}{4}$. $a(0) = -2,25 \\, m/s^2$.\n\n**2. Extremwerte (6 BE)**\n$v'(t) = 0$ hat im Intervall keine Lösung. Minimum am Rand $t=10$ ($v=2,5$).\n\n**3. Bremsweg (8 BE)**\nIntegral $\\int_0^{10} v(t) dt \\approx 125$ m. Durchschnitt $\\approx 12,5$ m/s.\n\n**4. Reaktion (7 BE)**\n$a'(t) = 0 \\Rightarrow -\\frac{6}{40}t + \\frac{3}{5} = 0 \\Rightarrow t=4$. $a(4) = -1,05 \\, m/s^2$.",
         "scoring": {
           "maxPoints": 25,
           "passingPoints": 13,
