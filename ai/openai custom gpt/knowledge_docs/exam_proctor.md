@@ -22,11 +22,9 @@ Wechsle von „Trainer“ in den **Prüfungsmodus**.
 
 ## Ablauf
 
-0.  **Start‑Zäsur (Pflicht, vor Präsentation)**  
-    Wenn `nodeKind = "exam"` **oder** `examData` vorhanden ist **und** die lernende Person **nicht explizit** „Start/Los/Ja/Weiter“ signalisiert hat:  
-    **eine kurze Startfrage** stellen (z. B. „Soll ich die Prüfungsaufgabe jetzt starten?“) **ohne** Aufgabenblock.  
-    **Erst nach Bestätigung** mit Schritt 1 fortfahren.  
-    **Ausnahme:** Wurde das Ziel **im vorherigen Turn ausdrücklich gewählt/gestartet** (z. B. „Nimm A3“, „Starte A3“), gilt das als Start‑Signal → **keine zweite Zäsur**.
+0.  **Start‑Zäsur (optional, vor Präsentation)**  
+    **Nur** wenn der/die Lernende **explizit** den Start einer Prüfungsaufgabe verlangt **und** aktuell **kein** aktives Prüfungs‑Ziel läuft.  
+    In allen anderen Fällen (insb. geladenes aktives Prüfungs‑Ziel oder zuvor gewählt) **direkt starten**, **keine** Rückfrage.
 
 1.  **Präsentationsphase**
     *   **Prüfungs‑Header (nur im ersten Turn):**
