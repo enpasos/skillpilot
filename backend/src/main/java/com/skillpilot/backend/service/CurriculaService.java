@@ -376,13 +376,18 @@ public class CurriculaService {
                 return 0;
             }
             if (goalToRoots != null && !goalToRoots.isEmpty() && curriculumId != null && !curriculumId.isBlank()) {
+                final String finalCurriculumId = curriculumId;
                 atomicIds.removeIf(id -> {
                     Set<String> roots = goalToRoots.get(id);
                     // DEBUG LOG
                     if ("1194630c-8ddf-402e-9fa4-def3efd38e02".equals(id)) {
                         log.info("DEBUG: Checking removal for suspicious ID {}. Roots: {}", id, roots);
                     }
-                    return roots == null || !roots.contains(curriculumId);
+                    // Fallback: if cache misses, check reachability dynamically
+                    if (roots == null || !roots.contains(finalCurriculumId)) {
+                        return !isReachable(finalCurriculumId, id);
+                    }
+                    return false;
                 });
             }
             log.info("DEBUG: atomicIds size after filter: {}", atomicIds.size());
