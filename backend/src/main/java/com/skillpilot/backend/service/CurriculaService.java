@@ -389,7 +389,26 @@ public class CurriculaService {
                 if (mastery.getValue() < MASTERY_THRESHOLD) {
                     continue;
                 }
-                if (atomicIds.contains(mastery.getGoalKey())) {
+                String goalKey = normalize(mastery.getGoalKey()).toLowerCase();
+                // Also check unnormalized in case keys are Case Sensitive in map (unlikely for
+                // UUIDs but possible if logic changes)
+                // Actually, atomicIds comes from goal definitions. Goal definitions are usually
+                // lowercase UUIDs from JSON.
+                // But let's check both or just normalize. Since we don't control atomicIds case
+                // here easily without re-collecting,
+                // and JSON IDs are lowercase, we assume atomicIds contains lowercase.
+                // However, 'collectAtomicGoalIds' returns what's in the JSON.
+                // Best practice: check if atomicIds contains the normalized key.
+                // But wait, atomicIds is a Set<String>. If it contains uppercase, and we check
+                // lowercase, it fails.
+                // The JSON parser usually preserves case. The standard UUIDs are lowercase.
+                // If DB has uppercase, we need to normalize DB value to lowercase.
+                // We should also ensure atomicIds are treated case-insensitively or we risk
+                // mismatch if JSON has uppercase (which we verified it doesn't generally, but
+                // safe is safe).
+                // For now, the hypothesis is DB has uppercase/dirty, JSON has canonical
+                // lowercase.
+                if (atomicIds.contains(goalKey) || atomicIds.contains(mastery.getGoalKey())) {
                     count++;
                 }
             }
@@ -404,7 +423,13 @@ public class CurriculaService {
             if (mastery.getValue() < MASTERY_THRESHOLD) {
                 continue;
             }
-            Set<String> roots = goalToRoots.get(mastery.getGoalKey());
+            String goalKey = normalize(mastery.getGoalKey()).toLowerCase();
+            // Try normalized first (canonical), then raw
+            Set<String> roots = goalToRoots.get(goalKey);
+            if (roots == null) {
+                roots = goalToRoots.get(mastery.getGoalKey());
+            }
+
             if (roots != null && roots.contains(curriculumId)) {
                 count++;
             }
