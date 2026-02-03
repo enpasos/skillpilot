@@ -1819,16 +1819,40 @@ public class LearnerService {
 
     @Transactional(readOnly = true)
     public List<com.skillpilot.backend.api.MasteryHistoryEntry> getHistory(String skillpilotId) {
-        ensureLearnerExists(skillpilotId);
+        Learner learner = getLearner(skillpilotId);
+        String curriculumId = learner.getSelectedCurriculum();
+        Map<String, LearningGoal> goals = Collections.emptyMap();
+        if (curriculumId != null && !curriculumId.isBlank()) {
+            goals = getFilteredGoals(curriculumId, "{}");
+        }
+        final Set<String> goalIds = goals.isEmpty() ? Collections.emptySet() : new HashSet<>(goals.keySet());
         return masteryRepository.findByLearner_SkillpilotId(skillpilotId)
                 .stream()
                 .filter(m -> m.getValue() >= 0.9) // Only mastered goals count for velocity
+                .filter(m -> isKnownHistoryGoal(m.getGoalKey(), goalIds))
                 .map(m -> new com.skillpilot.backend.api.MasteryHistoryEntry(
                         m.getGoalKey(),
                         m.getUpdatedAt(),
                         m.getValue()))
                 .sorted((a, b) -> b.timestamp().compareTo(a.timestamp())) // Newest first
                 .toList();
+    }
+
+    private boolean isKnownHistoryGoal(String goalKey, Set<String> goalIds) {
+        if (goalIds == null || goalIds.isEmpty()) {
+            return true;
+        }
+        if (goalIds.contains(goalKey)) {
+            return true;
+        }
+        if (goalKey != null) {
+            int idx = goalKey.indexOf(':');
+            if (idx >= 0 && idx < goalKey.length() - 1) {
+                String suffix = goalKey.substring(idx + 1);
+                return goalIds.contains(suffix);
+            }
+        }
+        return false;
     }
 
     @Transactional
