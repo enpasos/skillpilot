@@ -85,6 +85,10 @@ SkillPilot unterscheidet drei **Knotentypen**, die verschiedene Lernmodi abbilde
 
 Im Curriculum **Gymnasiale Oberstufe (DE, HE, G9, Sekundarstufe II) – Mathematik (QS Stufe 2)** werden **alle drei Knotentypen** eingesetzt.
 
+
+<div style="page-break-after: always;"></div>
+
+
 ![Exam-Knoten (Beispiel)](examnode.de.png)
 
 **Formale Spezifikation:** Die mathematische Definition des Graphen (u.a. Acyclicity, Effective Requires) ist öffentlich dokumentiert:  
@@ -192,6 +196,10 @@ Beim Import (z.B. Wechsel, Backup) kann die komplette **Herkunftskette** mitgef�
 
 --- 
 
+
+<div style="page-break-after: always;"></div>
+
+
 ## 5. Das Ökosystem: Inhalte & Standards
 
 ### 5.1 Status quo: Verfügbare Inhalte (Beispiele)
@@ -206,8 +214,14 @@ SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als St
 2. **Stufe 2 – QS durch Curriculum Champion**  
    Ein Curriculum Champion hat ein Curriculum oder einen Baustein davon selbst in SkillPilot gemastered, die Fehler im Curriculum und SkillPilot bereinigt und ein **QS-Häkchen** vergeben. Von diesen QS-Häkchen kann es mehrere geben.
 
-**Aktueller Stand:** Das Fach **Mathematik** für **Gymnasiale Oberstufe (Hessen, G9, Sekundarstufe II)** hat inzwischen **Stufe 2** erreicht. Alle übrigen Curricula befinden sich derzeit in **Stufe 1**. Den aktuellen Stand kannst Du unter https://skillpilot.com/curricula anschauen.  
+**Aktueller Stand:** Das Fach **Mathematik** für **Gymnasiale Oberstufe (Hessen, G9, Sekundarstufe II)** hat inzwischen **Stufe 2** erreicht. Alle übrigen Curricula befinden sich derzeit in **Stufe 1**. Der aktuelle Stand ist unter https://skillpilot.com/curricula einsehbar.  
 ![QS-Beispiel Mathematik (Stufe 2)](champion.de.png)
+
+**Curriculum Champions (Praxisanker):**  
+![Curriculum Champion Comic](../comic3/champion.de.png)  
+* Champions übernehmen Verantwortung für ein Curriculum oder einen **klaren Themen-Scope**.
+* Sie **lernen das Curriculum durch**, sammeln Praxisfeedback und bündeln es in Issues/PRs.
+* Sichtbarkeit schafft Verantwortung: Champion-Profile zeigen Engagement (z.B. Issues/PRs) und Fortschritt.
 
 Der QS-Prozess bezieht sich nicht nur auf Curricula: Der SkillPilot KI‑Tutor wird im laufenden Betrieb kontinuierlich qualifiziert, damit die Nutzung über reale Curricula hinweg zuverlässig und didaktisch sinnvoll bleibt.
 
@@ -260,12 +274,6 @@ SkillPilot wird als **Open Source** unter der **Apache-2.0-Lizenz** veröffentli
 * Institutionen behalten **Souveränität** über Curricula und Inhalte.
 * Die Kopplung von Content an Skillziele ist perspektivisch möglich.
 * Offene Schnittstellen ermöglichen Beiträge und Integration.
-
-**Curriculum Champions (Praxisanker):**
-![Curriculum Champion Comic](../comic3/champion.de.png)
-* Champions übernehmen Verantwortung für ein Curriculum oder einen **klaren Themen-Scope**.
-* Sie **lernen das Curriculum durch**, sammeln Praxisfeedback und bündeln es in Issues/PRs.
-* Sichtbarkeit schafft Verantwortung: Champion-Profile zeigen Engagement (z.B. Issues/PRs) und Fortschritt.
 
 **Governance & Qualitätssicherung (aktuell über GitHub + Champion-Programm):**
 * Feedback fließt über **GitHub Issues** und wird häufig durch Champions initiiert.
