@@ -93,6 +93,12 @@ public class CurriculaService {
                     }
                     for (LearningGoal goal : landscape.getGoals()) {
                         if (goal.getContains() == null || goal.getContains().isEmpty()) {
+                            // Exclude memorization goals - their mastery is calculated dynamically from
+                            // flashcards
+                            List<String> tags = goal.getTags();
+                            if (tags != null && tags.contains("memorization")) {
+                                continue;
+                            }
                             totalAtomicGoals++;
                             goalToRoots.computeIfAbsent(goal.getId(), key -> new HashSet<>()).add(curriculumId);
                             // DEBUG: Check if this is one of the suspect goals
@@ -438,16 +444,9 @@ public class CurriculaService {
                 if (atomicIds.contains(goalKey) || atomicIds.contains(mastery.getGoalKey())) {
                     count++;
                 } else {
-                    // Log ALL suspect IDs that fail to match
-                    if ("1194630c-8ddf-402e-9fa4-def3efd38e02".equals(goalKey) ||
-                            "840d3a44-3663-4102-b399-617e47e1c765".equals(goalKey) ||
-                            "d0bf8574-890e-4f55-ac80-c3167b7a5309".equals(goalKey) ||
-                            "5e4a153c-5f45-42eb-ac5e-9855984e29c2".equals(goalKey) ||
-                            "999c8b41-75b3-4a84-814d-4c2f129fe7df".equals(goalKey)) {
-                        log.info(
-                                "DEBUG COUNT: Suspect mastery NOT matched! goalKey={}, raw={}, atomicIds.contains(goalKey)={}, atomicIds.contains(raw)={}",
-                                goalKey, mastery.getGoalKey(), atomicIds.contains(goalKey),
-                                atomicIds.contains(mastery.getGoalKey()));
+                    // Log non-matching masteries for Math topic
+                    if ("ccf9569b-b0e4-4d76-98d5-65be461d4d76".equals(topicId)) {
+                        log.info("DEBUG MATH MISMATCH: Mastery {} not in atomicIds", goalKey);
                     }
                 }
             }
@@ -530,7 +529,12 @@ public class CurriculaService {
         }
         List<String> contains = goal.getContains();
         if (contains == null || contains.isEmpty()) {
-            atomic.add(goalId);
+            // Exclude memorization goals - their mastery is calculated dynamically from
+            // flashcards
+            List<String> tags = goal.getTags();
+            if (tags == null || !tags.contains("memorization")) {
+                atomic.add(goalId);
+            }
         } else {
             for (String childRef : contains) {
                 collectAtomicGoalIds(childRef, atomic, visiting);
