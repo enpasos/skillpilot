@@ -6,6 +6,7 @@ import { LanguageToggle } from '../components/LanguageToggle'
 import { useTranslation } from '../hooks/useTranslation'
 import { useLanguage } from '../contexts/LanguageContext'
 import { ConfirmModal } from '../components/ConfirmModal'
+import { BadgeCheck, Trophy } from 'lucide-react'
 
 interface ChampionEntry {
   curriculumId: string
@@ -73,6 +74,10 @@ export const CurriculaView: React.FC = () => {
   const [topics, setTopics] = useState<TopicSummary[]>([])
   const t = useTranslation()
   const { language } = useLanguage()
+  const isChampionCertified = useCallback((champion: ChampionEntry) => {
+    if (!champion.totalTopicGoals || champion.totalTopicGoals <= 0) return false
+    return champion.masteredCount >= champion.totalTopicGoals
+  }, [])
 
   const fetchUser = useCallback(async () => {
     try {
@@ -759,9 +764,20 @@ export const CurriculaView: React.FC = () => {
                   key={curriculum.curriculumId}
                   className="rounded-2xl border border-border-color bg-white/40 dark:bg-slate-800/40 p-5"
                 >
-                  <div className="text-lg font-semibold text-text-primary">
-                    {curriculum.title}
-                  </div>
+                  {(() => {
+                    const hasCurriculumCertificate = curriculum.champions.some(
+                      (champion) =>
+                        !champion.topicTitle && isChampionCertified(champion)
+                    )
+                    return (
+                      <div className="text-lg font-semibold text-text-primary flex items-center gap-2">
+                        <span>{curriculum.title}</span>
+                        {hasCurriculumCertificate && (
+                          <BadgeCheck className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                        )}
+                      </div>
+                    )
+                  })()}
                   <div className="text-sm text-text-secondary mt-1">
                     {curriculum.description || t.curriculaPage.directory.noDescription}
                   </div>
@@ -794,8 +810,17 @@ export const CurriculaView: React.FC = () => {
                     {curriculum.topLevelTopics && curriculum.topLevelTopics.length > 0 ? (
                       <div className="flex flex-wrap gap-2">
                         {curriculum.topLevelTopics.map((topic, idx) => (
-                          <span key={idx} className="inline-flex items-center rounded-md bg-sky-50 dark:bg-sky-900/30 px-2 py-1 text-xs font-medium text-sky-700 dark:text-sky-300 ring-1 ring-inset ring-sky-700/10 dark:ring-sky-300/20">
+                          <span
+                            key={idx}
+                            className="inline-flex items-center gap-1.5 rounded-md bg-sky-50 dark:bg-sky-900/30 px-2 py-1 text-xs font-medium text-sky-700 dark:text-sky-300 ring-1 ring-inset ring-sky-700/10 dark:ring-sky-300/20"
+                          >
                             {topic}
+                            {curriculum.champions.some(
+                              (champion) =>
+                                champion.topicTitle === topic && isChampionCertified(champion),
+                            ) && (
+                              <BadgeCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                            )}
                           </span>
                         ))}
                       </div>
@@ -822,17 +847,25 @@ export const CurriculaView: React.FC = () => {
                             className="flex flex-col gap-3 rounded-xl border border-border-color bg-white/70 dark:bg-slate-900/40 p-3"
                           >
                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                              <a
-                                href={`https://github.com/${champion.githubId}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-sm font-semibold text-sky-700 dark:text-sky-300 hover:underline"
-                              >
-                                @{champion.githubId}
-                              </a>
+                              <div className="flex items-center gap-2">
+                                <a
+                                  href={`https://github.com/${champion.githubId}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-sm font-semibold text-sky-700 dark:text-sky-300 hover:underline"
+                                >
+                                  @{champion.githubId}
+                                </a>
+                                {isChampionCertified(champion) && (
+                                  <Trophy className="h-4 w-4 text-amber-500" />
+                                )}
+                              </div>
                               {champion.topicTitle && (
-                                <div className="text-xs font-medium text-amber-600 dark:text-amber-400">
-                                  📚 {champion.topicTitle}
+                                <div className="text-xs font-medium text-amber-600 dark:text-amber-400 flex items-center gap-1">
+                                  <span>📚 {champion.topicTitle}</span>
+                                  {isChampionCertified(champion) && (
+                                    <BadgeCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                                  )}
                                 </div>
                               )}
                               <div className="text-xs text-text-secondary">

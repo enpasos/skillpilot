@@ -46,6 +46,7 @@ public class CurriculaService {
     private final LearnerRepository learnerRepository;
     private final CurriculumChampionRepository championRepository;
     private final GitHubStatsService githubStatsService;
+    private final LearnerService learnerService;
 
     private final AtomicReference<CurriculaMetricsSnapshot> metricsSnapshot = new AtomicReference<>(
             new CurriculaMetricsSnapshot(Collections.emptyMap(), Collections.emptyMap(), null, Instant.now()));
@@ -55,12 +56,14 @@ public class CurriculaService {
             MasteryRepository masteryRepository,
             LearnerRepository learnerRepository,
             CurriculumChampionRepository championRepository,
-            GitHubStatsService githubStatsService) {
+            GitHubStatsService githubStatsService,
+            LearnerService learnerService) {
         this.landscapeService = landscapeService;
         this.masteryRepository = masteryRepository;
         this.learnerRepository = learnerRepository;
         this.championRepository = championRepository;
         this.githubStatsService = githubStatsService;
+        this.learnerService = learnerService;
     }
 
     @PostConstruct
@@ -93,12 +96,6 @@ public class CurriculaService {
                     }
                     for (LearningGoal goal : landscape.getGoals()) {
                         if (goal.getContains() == null || goal.getContains().isEmpty()) {
-                            // Exclude memorization goals - their mastery is calculated dynamically from
-                            // flashcards
-                            List<String> tags = goal.getTags();
-                            if (tags != null && tags.contains("memorization")) {
-                                continue;
-                            }
                             totalAtomicGoals++;
                             goalToRoots.computeIfAbsent(goal.getId(), key -> new HashSet<>()).add(curriculumId);
                             // DEBUG: Check if this is one of the suspect goals
@@ -454,7 +451,10 @@ public class CurriculaService {
                 log.info("DEBUG MATH: masteryEntries={}, thresholdFiltered={}, processed={}, matched={}",
                         masteryEntries.size(), thresholdFilteredCount, processedCount, count);
             }
-            return count;
+            // Add SRS/flashcard mastery count (these goals have dynamic mastery not stored
+            // in DB)
+            long srsMastery = learnerService.countSrsMastery(skillpilotId, atomicIds);
+            return count + srsMastery;
         }
 
         // Curriculum-wide counting (no topicId)
@@ -529,12 +529,7 @@ public class CurriculaService {
         }
         List<String> contains = goal.getContains();
         if (contains == null || contains.isEmpty()) {
-            // Exclude memorization goals - their mastery is calculated dynamically from
-            // flashcards
-            List<String> tags = goal.getTags();
-            if (tags == null || !tags.contains("memorization")) {
-                atomic.add(goalId);
-            }
+            atomic.add(goalId);
         } else {
             for (String childRef : contains) {
                 collectAtomicGoalIds(childRef, atomic, visiting);

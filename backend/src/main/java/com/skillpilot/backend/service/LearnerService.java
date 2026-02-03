@@ -336,6 +336,52 @@ public class LearnerService {
         return result;
     }
 
+    /**
+     * Count how many SRS/flashcard goals in the given set are mastered by the user.
+     * Used by CurriculaService for champion mastery counting.
+     *
+     * @param skillpilotId the user's skillpilot ID
+     * @param goalIds      the set of goal IDs to check
+     * @return count of mastered SRS goals
+     */
+    public long countSrsMastery(String skillpilotId, Set<String> goalIds) {
+        if (skillpilotId == null || goalIds == null || goalIds.isEmpty()) {
+            return 0;
+        }
+        long count = 0;
+        long now = System.currentTimeMillis();
+        for (String goalId : goalIds) {
+            LearningGoal goal = landscapeService.getGoalDefinition(goalId);
+            if (goal == null || !isSrsGoal(goal)) {
+                continue;
+            }
+            String source = getVocabularySource(goal);
+            if (source == null || source.isBlank()) {
+                continue;
+            }
+            List<SrsCard> cards = loadSrsDeckCards(source);
+            if (cards.isEmpty()) {
+                continue;
+            }
+            List<String> filterTags = getSrsFilterTags(goal);
+            List<SrsCard> filtered = cards;
+            if (!filterTags.isEmpty()) {
+                filtered = cards.stream()
+                        .filter(card -> card.tags != null
+                                && card.tags.stream().anyMatch(filterTags::contains))
+                        .collect(Collectors.toList());
+            }
+            if (filtered.isEmpty()) {
+                continue;
+            }
+            Map<String, Object> srsState = loadSrsState(skillpilotId, goalId);
+            if (isSrsMasteredToday(filtered, srsState, now)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     private Map<String, MasteryEntryDTO> applySrsMasteryOverlayWithTimestamps(String skillpilotId,
             Map<String, LearningGoal> goals,
             Map<String, MasteryEntryDTO> mastery) {
