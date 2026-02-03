@@ -6,6 +6,7 @@ public record CurriculumChampionProfile(
         String curriculumId,
         String topicId,
         String topicTitle,
+        String topicTitleEn,
         String githubId,
         String skillpilotIdMasked,
         long masteredCount,

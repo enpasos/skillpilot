@@ -31,6 +31,7 @@ export function useSrsMastery(
   goals: UiGoal[],
   skillpilotId: string,
   reloadSignal = 0,
+  language: 'de' | 'en' = 'de',
 ) {
   const [masteryByGoal, setMasteryByGoal] = useState<SrsMasteryMap>({})
   const [timerTick, setTimerTick] = useState(0)
@@ -75,7 +76,17 @@ export function useSrsMastery(
         continue
       }
 
-      const source = goal.extendedData?.vocabularySource
+      const extendedData = goal.extendedData as {
+        vocabularySource?: string
+        vocabularySourceEn?: string
+      } | undefined
+      const sourceDe = typeof extendedData?.vocabularySource === 'string'
+        ? extendedData.vocabularySource
+        : undefined
+      const sourceEn = typeof extendedData?.vocabularySourceEn === 'string'
+        ? extendedData.vocabularySourceEn
+        : undefined
+      const source = language === 'en' ? (sourceEn ?? sourceDe) : (sourceDe ?? sourceEn)
       if (typeof source !== 'string' || source.length === 0) {
         continue
       }
@@ -133,7 +144,7 @@ export function useSrsMastery(
         setTimerTick((prev) => prev + 1)
       }, delay)
     }
-  }, [goals, loadDeck, skillpilotId])
+  }, [goals, loadDeck, skillpilotId, language])
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect

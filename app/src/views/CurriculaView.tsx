@@ -12,6 +12,7 @@ interface ChampionEntry {
   curriculumId: string
   topicId?: string
   topicTitle?: string
+  topicTitleEn?: string
   githubId: string
   skillpilotIdMasked: string
   masteredCount: number
@@ -24,18 +25,22 @@ interface ChampionEntry {
 interface TopicSummary {
   id: string
   title: string
+  titleEn?: string
 }
 
 interface CurriculumEntry {
   curriculumId: string
   title: string
+  titleEn?: string
   description?: string
+  descriptionEn?: string
   subject?: string
   country?: string
   region?: string
   totalAtomicGoals: number
   totalMastered: number
   topLevelTopics?: string[]
+  topLevelTopicsEn?: string[]
   champions: ChampionEntry[]
 }
 
@@ -74,6 +79,27 @@ export const CurriculaView: React.FC = () => {
   const [topics, setTopics] = useState<TopicSummary[]>([])
   const t = useTranslation()
   const { language } = useLanguage()
+  const getCurriculumTitle = useCallback((curriculum: CurriculumEntry) => {
+    return language === 'en'
+      ? (curriculum.titleEn || curriculum.title)
+      : curriculum.title
+  }, [language])
+  const getCurriculumDescription = useCallback((curriculum: CurriculumEntry) => {
+    const fallback = curriculum.description ?? ''
+    return language === 'en'
+      ? (curriculum.descriptionEn || fallback)
+      : fallback
+  }, [language])
+  const getTopicLabel = useCallback((topic: TopicSummary) => {
+    return language === 'en'
+      ? (topic.titleEn || topic.title)
+      : topic.title
+  }, [language])
+  const getChampionTopicTitle = useCallback((champion: ChampionEntry) => {
+    return language === 'en'
+      ? (champion.topicTitleEn || champion.topicTitle)
+      : champion.topicTitle
+  }, [language])
   const isChampionCertified = useCallback((champion: ChampionEntry) => {
     if (!champion.totalTopicGoals || champion.totalTopicGoals <= 0) return false
     return champion.masteredCount >= champion.totalTopicGoals
@@ -149,18 +175,19 @@ export const CurriculaView: React.FC = () => {
       level: '',
       subject: curriculum.subject ?? '',
       locale: '',
-      description: curriculum.description,
-      title: curriculum.title,
+      description: getCurriculumDescription(curriculum),
+      title: getCurriculumTitle(curriculum),
       schoolType: '',
     }))
-  }, [data])
+  }, [data, getCurriculumDescription, getCurriculumTitle])
 
   const championComicSrc = language === 'de' ? '/comic3/champion.de.png' : '/comic3/champion.en.png'
 
   const getCategory = useCallback((curriculum: CurriculumEntry): CategoryFilter => {
     const title = (curriculum.title ?? '').toUpperCase()
+    const titleEn = (curriculum.titleEn ?? '').toUpperCase()
     const subject = (curriculum.subject ?? '').toUpperCase()
-    const combined = `${title} ${subject}`
+    const combined = `${title} ${titleEn} ${subject}`
 
     const schoolKeywords = [
       'GRUNDSCHULE',
@@ -523,7 +550,7 @@ export const CurriculaView: React.FC = () => {
                       <option value="">{t.curriculaPage.registration.entireCurriculum}</option>
                       {topics.map(topic => (
                         <option key={topic.id} value={topic.id}>
-                          {topic.title}
+                          {getTopicLabel(topic)}
                         </option>
                       ))}
                     </select>
@@ -769,9 +796,10 @@ export const CurriculaView: React.FC = () => {
                       (champion) =>
                         !champion.topicTitle && isChampionCertified(champion)
                     )
+                    const curriculumTitle = getCurriculumTitle(curriculum)
                     return (
                       <div className="text-lg font-semibold text-text-primary flex items-center gap-2">
-                        <span>{curriculum.title}</span>
+                        <span>{curriculumTitle}</span>
                         {hasCurriculumCertificate && (
                           <BadgeCheck className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                         )}
@@ -779,7 +807,7 @@ export const CurriculaView: React.FC = () => {
                     )
                   })()}
                   <div className="text-sm text-text-secondary mt-1">
-                    {curriculum.description || t.curriculaPage.directory.noDescription}
+                    {getCurriculumDescription(curriculum) || t.curriculaPage.directory.noDescription}
                   </div>
                   <div className="mt-3 flex flex-wrap gap-3 text-xs text-text-secondary">
                     <div className="mt-2 flex flex-wrap gap-2">
@@ -807,12 +835,18 @@ export const CurriculaView: React.FC = () => {
                     <div className="text-xs uppercase tracking-wider text-text-secondary mb-2">
                       {t.curriculaPage.directory.filters.scopeLabel || 'Topics'}
                     </div>
-                    {curriculum.topLevelTopics && curriculum.topLevelTopics.length > 0 ? (
+                    {(() => {
+                      const topics = language === 'en'
+                        ? (curriculum.topLevelTopicsEn && curriculum.topLevelTopicsEn.length > 0
+                          ? curriculum.topLevelTopicsEn
+                          : curriculum.topLevelTopics)
+                        : curriculum.topLevelTopics
+                      return topics && topics.length > 0 ? (
                       <div className="flex flex-wrap gap-2">
-                        {curriculum.topLevelTopics.map((topic, idx) => {
+                        {topics.map((topic, idx) => {
                           const certified = curriculum.champions.some(
                             (champion) =>
-                              champion.topicTitle === topic && isChampionCertified(champion),
+                              getChampionTopicTitle(champion) === topic && isChampionCertified(champion),
                           )
                           const pillClass = certified
                             ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 ring-emerald-700/10 dark:ring-emerald-300/20 font-semibold'
@@ -834,7 +868,8 @@ export const CurriculaView: React.FC = () => {
                       <div className="text-xs text-text-secondary italic">
                         No topics available.
                       </div>
-                    )}
+                    )
+                    })()}
                   </div>
 
                   <div className="mt-4 border-t border-border-color pt-4">
@@ -866,14 +901,14 @@ export const CurriculaView: React.FC = () => {
                                   <Trophy className="h-4 w-4 text-amber-500" />
                                 )}
                               </div>
-                              {champion.topicTitle && (
+                              {getChampionTopicTitle(champion) && (
                                 <span
                                   className={`inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${isChampionCertified(champion)
                                     ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 ring-emerald-700/10 dark:ring-emerald-300/20'
                                     : 'bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 ring-sky-700/10 dark:ring-sky-300/20'
                                     }`}
                                 >
-                                  {champion.topicTitle}
+                                  {getChampionTopicTitle(champion)}
                                   {isChampionCertified(champion) && (
                                     <BadgeCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                                   )}

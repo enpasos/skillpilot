@@ -147,19 +147,39 @@ public class CurriculaService {
             CurriculumMetrics metrics = snapshot.metricsByCurriculum().getOrDefault(curriculumId,
                     new CurriculumMetrics(0, 0));
             List<CurriculumChampionProfile> champions = loadChampions(curriculumId, goalToRoots, masteryCache);
-            List<String> topLevelTopics = getTopics(curriculumId).stream()
+            List<TopicSummary> topicSummaries = getTopics(curriculumId);
+            List<String> topLevelTopics = topicSummaries.stream()
                     .map(TopicSummary::title)
                     .toList();
+            List<String> topLevelTopicsEn = topicSummaries.stream()
+                    .map(TopicSummary::titleEn)
+                    .toList();
+            LearningLandscape landscape = landscapeService.getById(curriculumId);
+            String titleEn = null;
+            String descriptionEn = null;
+            if (landscape != null) {
+                titleEn = landscape.getTitleEn();
+                descriptionEn = landscape.getDescriptionEn();
+            }
+            if (titleEn == null || titleEn.isBlank()) {
+                titleEn = summary.getTitle();
+            }
+            if (descriptionEn == null || descriptionEn.isBlank()) {
+                descriptionEn = summary.getDescription();
+            }
             result.add(new CurriculumOverview(
                     curriculumId,
                     summary.getTitle(),
+                    titleEn,
                     summary.getDescription(),
+                    descriptionEn,
                     summary.getSubject(),
                     summary.getCountry(),
                     summary.getRegion(),
                     metrics.totalAtomicGoals(),
                     metrics.totalMastered(),
                     topLevelTopics,
+                    topLevelTopicsEn,
                     champions));
         }
 
@@ -289,12 +309,15 @@ public class CurriculaService {
 
         // Resolve topic title and total goals if topicId is set
         String topicTitle = null;
+        String topicTitleEn = null;
         long totalTopicGoals = 0;
 
         if (champion.getTopicId() != null && !champion.getTopicId().isEmpty()) {
             LearningGoal goal = landscapeService.getGoalDefinition(champion.getTopicId());
             if (goal != null) {
                 topicTitle = goal.getTitle();
+                String candidateEn = goal.getTitleEn();
+                topicTitleEn = (candidateEn != null && !candidateEn.isBlank()) ? candidateEn : topicTitle;
                 Set<String> atomicIds = collectAtomicGoalIds(goal.getId());
                 if (goalToRoots != null && !goalToRoots.isEmpty() && curriculumId != null && !curriculumId.isBlank()) {
                     atomicIds.removeIf(id -> {
@@ -312,6 +335,7 @@ public class CurriculaService {
                 curriculumId,
                 champion.getTopicId(),
                 topicTitle,
+                topicTitleEn,
                 champion.getGithubId(),
                 maskSkillpilotId(champion.getSkillpilotId()),
                 masteredCount,
@@ -545,7 +569,15 @@ public class CurriculaService {
         List<String> childrenIds = rootGoal.getContains();
         if (childrenIds == null || childrenIds.isEmpty()) {
             // Fallback to returning the root itself if no children
-            return List.of(new com.skillpilot.backend.api.TopicSummary(rootGoal.getId(), rootGoal.getTitle()));
+            String rootTitle = rootGoal.getTitle();
+            String rootTitleEn = rootGoal.getTitleEn();
+            if (rootTitleEn == null || rootTitleEn.isBlank()) {
+                rootTitleEn = rootTitle;
+            }
+            return List.of(new com.skillpilot.backend.api.TopicSummary(
+                    rootGoal.getId(),
+                    rootTitle,
+                    rootTitleEn));
         }
 
         // Resolve children IDs to Goal objects using global lookup
@@ -553,7 +585,17 @@ public class CurriculaService {
         return childrenIds.stream()
                 .map(id -> landscapeService.getGoalDefinition(id))
                 .filter(java.util.Objects::nonNull)
-                .map(g -> new com.skillpilot.backend.api.TopicSummary(g.getId(), g.getTitle()))
+                .map(g -> {
+                    String title = g.getTitle();
+                    String titleEn = g.getTitleEn();
+                    if (titleEn == null || titleEn.isBlank()) {
+                        titleEn = title;
+                    }
+                    return new com.skillpilot.backend.api.TopicSummary(
+                            g.getId(),
+                            title,
+                            titleEn);
+                })
                 .toList();
     }
 }

@@ -87,15 +87,29 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const selectedId = currentGoal?.id ?? rootGoals[0]?.id ?? ''
   const effectiveActiveGoalId = stateActiveGoalId ?? learnerData?.activeGoalId ?? null
 
+  const getSrsSource = useCallback((goal: UiGoal) => {
+    const extendedData = goal.extendedData as {
+      vocabularySource?: string
+      vocabularySourceEn?: string
+    } | undefined
+    const sourceDe = typeof extendedData?.vocabularySource === 'string'
+      ? extendedData.vocabularySource
+      : undefined
+    const sourceEn = typeof extendedData?.vocabularySourceEn === 'string'
+      ? extendedData.vocabularySourceEn
+      : undefined
+    return language === 'en' ? (sourceEn ?? sourceDe) : (sourceDe ?? sourceEn)
+  }, [language])
+
   const srsGoals = useMemo(() => {
     return Array.from(goalIndexAll.values()).filter((goal) => {
       if (landscapeId && goal.landscapeId && goal.landscapeId !== landscapeId) return false
       if (!goal.tags || !goal.tags.some((tag) => tag.startsWith('srs-deck'))) return false
-      return typeof goal.extendedData?.vocabularySource === 'string'
+      return typeof getSrsSource(goal) === 'string'
     })
-  }, [goalIndexAll, landscapeId])
+  }, [goalIndexAll, landscapeId, getSrsSource])
 
-  const srsMasteryByGoal = useSrsMastery(srsGoals, skillpilotId, srsMasteryTick)
+  const srsMasteryByGoal = useSrsMastery(srsGoals, skillpilotId, srsMasteryTick, language)
 
   const getEffectiveMastery = useCallback((goalId: string) => {
     const override = srsMasteryByGoal[goalId]
@@ -1265,7 +1279,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 <FlashcardDrill
                   key={currentGoal.id}
                   goalId={currentGoal.id}
-                  dataSourceUrl={currentGoal.extendedData?.vocabularySource as string | undefined}
+                  dataSourceUrl={getSrsSource(currentGoal)}
                   skillPilotId={skillpilotId}
                   titleOverride={currentGoal.title}
                   onSync={syncClientData}
