@@ -823,6 +823,9 @@ export const CurriculaView: React.FC = () => {
                               className={`inline-flex items-center rounded-md px-2 py-1 text-xs ${pillClass} ring-1 ring-inset`}
                             >
                               {topic}
+                              {certified && (
+                                <BadgeCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                              )}
                             </span>
                           )
                         })}
@@ -871,6 +874,9 @@ export const CurriculaView: React.FC = () => {
                                     }`}
                                 >
                                   {champion.topicTitle}
+                                  {isChampionCertified(champion) && (
+                                    <BadgeCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                                  )}
                                 </span>
                               )}
                               <div className="text-xs text-text-secondary">
