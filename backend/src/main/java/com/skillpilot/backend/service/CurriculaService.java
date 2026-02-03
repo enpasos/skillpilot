@@ -408,10 +408,14 @@ public class CurriculaService {
                 return 0;
             }
             long count = 0;
+            int processedCount = 0;
+            int thresholdFilteredCount = 0;
             for (Mastery mastery : masteryEntries) {
                 if (mastery.getValue() < MASTERY_THRESHOLD) {
+                    thresholdFilteredCount++;
                     continue;
                 }
+                processedCount++;
                 String goalKey = normalize(mastery.getGoalKey()).toLowerCase();
                 // Also check unnormalized in case keys are Case Sensitive in map (unlikely for
                 // UUIDs but possible if logic changes)
@@ -446,6 +450,10 @@ public class CurriculaService {
                                 atomicIds.contains(mastery.getGoalKey()));
                     }
                 }
+            }
+            if ("ccf9569b-b0e4-4d76-98d5-65be461d4d76".equals(topicId)) {
+                log.info("DEBUG MATH: masteryEntries={}, thresholdFiltered={}, processed={}, matched={}",
+                        masteryEntries.size(), thresholdFilteredCount, processedCount, count);
             }
             return count;
         }
