@@ -24,7 +24,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Pattern;
@@ -293,19 +292,17 @@ public class CurriculaService {
             LearningGoal goal = landscapeService.getGoalDefinition(champion.getTopicId());
             if (goal != null) {
                 topicTitle = goal.getTitle();
-                totalTopicGoals = countTotalAtomicGoals(goal);
+                Set<String> atomicIds = collectAtomicGoalIds(goal.getId());
+                if (goalToRoots != null && !goalToRoots.isEmpty() && curriculumId != null && !curriculumId.isBlank()) {
+                    atomicIds.removeIf(id -> {
+                        Set<String> roots = goalToRoots.get(id);
+                        return roots == null || !roots.contains(curriculumId);
+                    });
+                }
+                totalTopicGoals = atomicIds.size();
             }
         } else {
-            // If no topic selected, use total count of curriculum?
-            // We can get this from overview if needed, but for now let's reuse recursive
-            // logic or just get it from curriculum root
-            // Actually, for "Entire Curriculum", users usually want to see the total
-            // number.
-            // We can fetch the root landscape and count.
-            LearningLandscape landscape = landscapeService.getById(curriculumId);
-            if (landscape != null) {
-                totalTopicGoals = landscape.getGoals().stream().mapToLong(this::countTotalAtomicGoals).sum();
-            }
+            totalTopicGoals = countAtomicGoalsForCurriculum(curriculumId, goalToRoots);
         }
 
         return new CurriculumChampionProfile(
@@ -321,18 +318,13 @@ public class CurriculaService {
                 champion.getCreatedAt());
     }
 
-    private long countTotalAtomicGoals(LearningGoal goal) {
-        if (goal == null) {
+    private long countAtomicGoalsForCurriculum(String curriculumId, Map<String, Set<String>> goalToRoots) {
+        if (curriculumId == null || curriculumId.isBlank() || goalToRoots == null || goalToRoots.isEmpty()) {
             return 0;
         }
-        if (goal.getContains() == null || goal.getContains().isEmpty()) {
-            return 1; // It's an atomic goal
-        }
-        return goal.getContains().stream()
-                .map(this::resolveGoal)
-                .filter(Objects::nonNull)
-                .mapToLong(this::countTotalAtomicGoals)
-                .sum();
+        return goalToRoots.entrySet().stream()
+                .filter(entry -> entry.getValue().contains(curriculumId))
+                .count();
     }
 
     private boolean isValidCurriculum(String curriculumId) {
