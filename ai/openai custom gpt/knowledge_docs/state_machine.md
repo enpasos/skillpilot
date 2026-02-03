@@ -195,6 +195,10 @@ Kein Zielwechsel „nebenbei“.
 ## 7. Mastery-Phase (Ablauf)
 
 - Mastery **nur** für atomare Ziele
+- **SRS/Memorisierung (Tag `srs-deck:` oder `memorization`)**:  
+  **keine** Mastery-Entscheidung im Chat.  
+  Status entsteht **automatisch** durch den Tages‑SRS‑Status (keine fälligen Karten).  
+  → **Kein** `setMastery` für diese Ziele.
 - Statusaussagen („gemeistert/erledigt“) **nur nach erfolgreicher Speicherung**
 - **Mastery-Persistenz-Vorrang (kritisch)**: Sobald fachliche Evidenz vorliegt → **alle weiteren Schritte stoppen**, **nur** Mastery speichern, **Bestätigung abwarten**. Erst danach andere Aktionen.
 - **Exklusivität aktiv vs. gemeistert**: Ein Ziel darf **nie** gleichzeitig aktiv und gemeistert sein. **Nach erfolgreicher Speicherung** ist es nicht mehr aktiv.

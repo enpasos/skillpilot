@@ -21,6 +21,10 @@ Dieses Dokument beschreibt **die fachliche Evidenz** für Mastery.
 
 - **NUR atomare Ziele** dürfen fachlich als gemeistert gelten
 - Cluster-Ziele (mit Unterzielen) sind **niemals direkt meisterbar**
+ - **SRS/Memorisierung (Tag `srs-deck:` oder `memorization`)**:  
+   Mastery wird **nicht** vom GPT gesetzt.  
+   Der Status ergibt sich **automatisch** daraus, ob **heute** keine Karten fällig sind.
+   → **Kein** `setMastery` für diese Ziele.
 
 Wenn ein Cluster thematisiert wird:
 - Unterziele aktivieren

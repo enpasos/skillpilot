@@ -84,6 +84,9 @@ Hinweis: Ergänzt Übungen; besonders bei „Ich glaube, ich kann das“ oder au
   - **zwei unabhängigen Checks** (z.B. Begriff + Anwendung), oder
   - **einem mehrstufigen Transfer-Task**.
 - Selbstbehauptungen („Kann ich“, „Weiß ich“) zählen **nicht**.
+ - **SRS/Memorisierung (Tag `srs-deck:` oder `memorization`)**:  
+   **keine** Mastery-Entscheidung im Chat.  
+   Der Status ergibt sich **automatisch** daraus, ob **heute** keine Karten fällig sind.
 
 Wenn Kompetenz **nicht** erreicht ist:
 - Fachlich weiterarbeiten.
