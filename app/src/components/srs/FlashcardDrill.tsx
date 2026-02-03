@@ -147,6 +147,7 @@ export function FlashcardDrill({
     const latestStateRef = useRef<Record<string, ReviewItem>>({})
     const pendingSyncRef = useRef(false)
     const finishedAutoSaveRef = useRef(false)
+    const syncedAllCaughtUpRef = useRef(false)
 
     const [stats, setStats] = useState({
         total: 0,
@@ -162,6 +163,19 @@ export function FlashcardDrill({
     useEffect(() => {
         latestStateRef.current = srsState
     }, [srsState])
+
+    const triggerSync = useCallback(async () => {
+        if (!onSync || syncInFlight) return
+        setSyncInFlight(true)
+        try {
+            const ok = await onSync(goalId)
+            if (ok) pendingSyncRef.current = false
+        } catch (e) {
+            console.warn('SRS sync error', e)
+        } finally {
+            setSyncInFlight(false)
+        }
+    }, [goalId, onSync, syncInFlight])
 
     const sendBackgroundSync = useCallback(() => {
         if (!pendingSyncRef.current) return
@@ -204,6 +218,7 @@ export function FlashcardDrill({
         setSessionStats({ reviewed: 0 })
         setSrsState({}) // Clear state
         setSyncInFlight(false)
+        syncedAllCaughtUpRef.current = false
     }, [dataSourceUrl, goalId]) // Reset on goal change
 
     useEffect(() => {
@@ -319,6 +334,17 @@ export function FlashcardDrill({
 
                 setQueue(dueCards.slice(0, 20))
 
+                if (
+                    dueCardsCount === 0
+                    && totalCards > 0
+                    && onSync
+                    && !syncedAllCaughtUpRef.current
+                ) {
+                    syncedAllCaughtUpRef.current = true
+                    pendingSyncRef.current = true
+                    void triggerSync()
+                }
+
             } catch (e) {
                 console.error("Error loading vocab data", e)
                 setError("Card load error.")
@@ -327,25 +353,12 @@ export function FlashcardDrill({
 
         loadData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dataSourceUrl, filterTags?.join(','), reloadTrigger, goalId, skillPilotId, reloadSignal])
+    }, [dataSourceUrl, filterTags?.join(','), reloadTrigger, goalId, skillPilotId, reloadSignal, onSync, triggerSync])
     // Initialize: Fetch Data -> Then Queue
 
 
     const currentCard = queue[currentCardIndex]
     const isFinished = currentCardIndex >= queue.length
-
-    const triggerSync = useCallback(async () => {
-        if (!onSync || syncInFlight) return
-        setSyncInFlight(true)
-        try {
-            const ok = await onSync(goalId)
-            if (ok) pendingSyncRef.current = false
-        } catch (e) {
-            console.warn('SRS sync error', e)
-        } finally {
-            setSyncInFlight(false)
-        }
-    }, [goalId, onSync, syncInFlight])
 
     useEffect(() => {
         if (!isFinished) {
@@ -399,6 +412,11 @@ export function FlashcardDrill({
         localStorage.setItem(storageKey, JSON.stringify(updatedSrsState))
         pendingSyncRef.current = true
         onStateChange?.()
+
+        const willFinish = currentCardIndex + 1 >= queue.length
+        if (willFinish) {
+            void triggerSync()
+        }
 
         setSessionStats(prev => {
             const nextReviewed = prev.reviewed + 1
