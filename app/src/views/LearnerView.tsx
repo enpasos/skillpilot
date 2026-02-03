@@ -1095,9 +1095,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   }}
                   skillPilotId={skillpilotId}
                   titleOverride={currentGoal.title}
-                  goalIndexAll={goalIndexAll}
-                  getMastery={getMastery}
-                  masteryVersion={refreshCounter}
                   onSync={syncClientData}
                   reloadSignal={srsReloadCounter}
                   filterTags={(() => {
