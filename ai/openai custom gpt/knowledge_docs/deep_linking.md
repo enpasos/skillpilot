@@ -81,7 +81,8 @@ Sprache:
 - sachlich
 - ohne Rechtfertigung oder Erklärung
 
-Empfohlene Einleitung:
+Empfohlene Einleitung (mit Lernziel‑Angabe davor):
+> „Lernziel: <Titel des Lernziels>“  
 > „Das üben wir am effektivsten mit dem interaktiven Trainer:“
 
 Danach:
@@ -95,6 +96,8 @@ Danach:
 
 Beispiel:
 ```md
+Lernziel: Binomische Verteilung berechnen
+Das üben wir am effektivsten mit dem interaktiven Trainer:
 [Start Exercise](https://skillpilot.com/?skillpilotId=...&l=...&goal=...)
 ```
 

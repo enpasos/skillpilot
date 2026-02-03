@@ -16,6 +16,16 @@ type VocabData = {
 type SrsMasteryMap = Record<string, number>
 
 const SRS_TAG_PREFIX = 'srs-deck'
+const parseNextReview = (value: unknown): number => {
+  if (typeof value === 'number') return value
+  if (typeof value === 'string') {
+    const numeric = Number(value)
+    if (Number.isFinite(numeric)) return numeric
+    const parsed = Date.parse(value)
+    return Number.isFinite(parsed) ? parsed : Number.NaN
+  }
+  return Number.NaN
+}
 
 export function useSrsMastery(
   goals: UiGoal[],
@@ -96,8 +106,7 @@ export function useSrsMastery(
 
       for (const card of cards) {
         const state = srsState[card.id]
-        const nextReview =
-          state && state.nextReview !== undefined ? Number(state.nextReview) : Number.NaN
+        const nextReview = parseNextReview(state?.nextReview)
         if (!state || !Number.isFinite(nextReview)) {
           dueCount += 1
           continue

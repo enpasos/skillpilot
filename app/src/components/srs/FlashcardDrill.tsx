@@ -110,6 +110,17 @@ const UI_TEXT = {
     }
 }
 
+const parseNextReview = (value: unknown): number => {
+    if (typeof value === 'number') return value
+    if (typeof value === 'string') {
+        const numeric = Number(value)
+        if (Number.isFinite(numeric)) return numeric
+        const parsed = Date.parse(value)
+        return Number.isFinite(parsed) ? parsed : Number.NaN
+    }
+    return Number.NaN
+}
+
 export function FlashcardDrill({
     dataSourceUrl,
     skillPilotId,
@@ -277,18 +288,20 @@ export function FlashcardDrill({
 
                 const dueCards = data.cards.filter(card => {
                     const state = loadedState[card.id]
+                    const interval = state ? Number(state.interval) : Number.NaN
+                    const nextReview = parseNextReview(state?.nextReview)
 
-                    if (!state) {
+                    if (!state || !Number.isFinite(interval) || !Number.isFinite(nextReview)) {
                         b0++
                         dueCardsCount++
                         return true
-                    } else {
-                        if (state.interval < 3) b1++
-                        else if (state.interval <= 10) b2++
-                        else b3++
                     }
 
-                    if (state.nextReview <= now) {
+                    if (interval < 3) b1++
+                    else if (interval <= 10) b2++
+                    else b3++
+
+                    if (nextReview <= now) {
                         dueCardsCount++
                         return true
                     }
@@ -349,7 +362,20 @@ export function FlashcardDrill({
     const handleRate = (quality: number) => {
         if (!currentCard) return
 
-        const previousState = srsState[currentCard.id] || { ...INITIAL_DECK_STATE, id: currentCard.id, nextReview: 0 }
+        const rawState = srsState[currentCard.id]
+        const previousState = rawState
+            ? {
+                id: currentCard.id,
+                nextReview: parseNextReview(rawState.nextReview),
+                interval: Number.isFinite(Number(rawState.interval))
+                    ? Number(rawState.interval)
+                    : INITIAL_DECK_STATE.interval,
+                repetition: Number.isFinite(Number(rawState.repetition))
+                    ? Number(rawState.repetition)
+                    : INITIAL_DECK_STATE.repetition,
+                ef: Number.isFinite(Number(rawState.ef)) ? Number(rawState.ef) : INITIAL_DECK_STATE.ef
+            }
+            : { ...INITIAL_DECK_STATE, id: currentCard.id, nextReview: 0 }
 
         const result = calculateReview(
             quality,
