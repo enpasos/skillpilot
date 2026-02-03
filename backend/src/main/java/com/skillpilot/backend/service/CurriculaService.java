@@ -83,6 +83,10 @@ public class CurriculaService {
                 }
                 long totalAtomicGoals = 0;
                 List<LearningLandscape> closure = landscapeService.getClosure(curriculumId);
+                // DEBUG: Log closure size for the specific curriculum
+                if ("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da".equals(curriculumId)) {
+                    log.info("DEBUG refreshMetrics: Closure size for Overview curriculum: {}", closure.size());
+                }
                 for (LearningLandscape landscape : closure) {
                     if (landscape.getGoals() == null) {
                         continue;
@@ -91,6 +95,15 @@ public class CurriculaService {
                         if (goal.getContains() == null || goal.getContains().isEmpty()) {
                             totalAtomicGoals++;
                             goalToRoots.computeIfAbsent(goal.getId(), key -> new HashSet<>()).add(curriculumId);
+                            // DEBUG: Check if this is one of the suspect goals
+                            if ("1194630c-8ddf-402e-9fa4-def3efd38e02".equals(goal.getId()) ||
+                                    "840d3a44-3663-4102-b399-617e47e1c765".equals(goal.getId()) ||
+                                    "d0bf8574-890e-4f55-ac80-c3167b7a5309".equals(goal.getId()) ||
+                                    "5e4a153c-5f45-42eb-ac5e-9855984e29c2".equals(goal.getId()) ||
+                                    "999c8b41-75b3-4a84-814d-4c2f129fe7df".equals(goal.getId())) {
+                                log.info("DEBUG refreshMetrics: ADDED suspect goal {} to goalToRoots for curriculum {}",
+                                        goal.getId(), curriculumId);
+                            }
                         }
                     }
                 }
