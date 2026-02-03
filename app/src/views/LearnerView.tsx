@@ -78,6 +78,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const fileInputRef = useRef<HTMLInputElement>(null)
   const srsCompletionRef = useRef<Record<string, number>>({})
   const srsCompletionInFlightRef = useRef<Set<string>>(new Set())
+  const fullRefreshInFlightRef = useRef(false)
+  const lastFullRefreshAtRef = useRef(0)
 
   const { language } = useLanguage();
   const t = useTranslation();
@@ -525,16 +527,26 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       return
     }
 
+    const now = Date.now()
+    if (fullRefreshInFlightRef.current) return
+    if (now - lastFullRefreshAtRef.current < 800) return
+
+    fullRefreshInFlightRef.current = true
+    lastFullRefreshAtRef.current = now
     console.log('[SSE] 🔄 Triggering full refresh...')
     // Refresh mastery data, learner state, AND planned goals (scope) in parallel
-    await Promise.all([
-      refreshState(true),
-      refreshPlanned(),
-      onRefresh?.()
-    ])
-    // Increment counter to force CompetenceTree re-render
-    setRefreshCounter(c => c + 1)
-    console.log('[SSE] ✅ Refresh complete')
+    try {
+      await Promise.all([
+        refreshState(true),
+        refreshPlanned(),
+        onRefresh?.()
+      ])
+      // Increment counter to force CompetenceTree re-render
+      setRefreshCounter(c => c + 1)
+      console.log('[SSE] ✅ Refresh complete')
+    } finally {
+      fullRefreshInFlightRef.current = false
+    }
   }, [refreshState, refreshPlanned, onRefresh, currentGoal?.id])
 
   useLearnerUpdates(skillpilotId, handleSseUpdate)
@@ -1251,7 +1263,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   ) : null}
                 </div>
                 <FlashcardDrill
-                  key={`${currentGoal.id}:${srsReloadCounter}`}
+                  key={currentGoal.id}
                   goalId={currentGoal.id}
                   dataSourceUrl={currentGoal.extendedData?.vocabularySource as string | undefined}
                   skillPilotId={skillpilotId}
