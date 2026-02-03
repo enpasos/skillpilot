@@ -96,15 +96,17 @@ export function useSrsMastery(
 
       for (const card of cards) {
         const state = srsState[card.id]
-        if (!state || typeof state.nextReview !== 'number') {
+        const nextReview =
+          state && state.nextReview !== undefined ? Number(state.nextReview) : Number.NaN
+        if (!state || !Number.isFinite(nextReview)) {
           dueCount += 1
           continue
         }
-        if (state.nextReview <= now) {
+        if (nextReview <= now) {
           dueCount += 1
           continue
         }
-        if (state.nextReview < nextDueAt) nextDueAt = state.nextReview
+        if (nextReview < nextDueAt) nextDueAt = nextReview
       }
 
       results[goal.id] = cards.length > 0 && dueCount === 0 ? 1 : 0
