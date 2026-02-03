@@ -190,6 +190,49 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     return visible
   }, [visibleRootGoals, goalIndexAll, personalConfig, getVisibleChildIds])
 
+  const getFilteredMastery = useCallback(
+    (goalId: string) => {
+      const masteryCache = new Map<string, { masterySum: number; weightSum: number }>()
+
+      const compute = (
+        gId: string,
+        visited: Set<string> = new Set(),
+      ): { masterySum: number; weightSum: number } => {
+        if (masteryCache.has(gId)) return masteryCache.get(gId)!
+        if (visited.has(gId)) return { masterySum: 0, weightSum: 0 }
+
+        visited.add(gId)
+        const goal = goalIndexAll.get(gId)
+        if (!goal) return { masterySum: 0, weightSum: 0 }
+
+        let masterySum = 0
+        let weightSum = 0
+        const children = getVisibleChildIds(gId)
+
+        if (!goal.contains || goal.contains.length === 0 || children.length === 0) {
+          const masteryValue = getEffectiveMastery(gId)
+          const weight = goal.weight ?? 1
+          masterySum = masteryValue * weight
+          weightSum = weight
+        } else {
+          children.forEach((childId) => {
+            const childTotals = compute(childId, new Set(visited))
+            masterySum += childTotals.masterySum
+            weightSum += childTotals.weightSum
+          })
+        }
+
+        visited.delete(gId)
+        masteryCache.set(gId, { masterySum, weightSum })
+        return { masterySum, weightSum }
+      }
+
+      const totals = compute(goalId)
+      return totals.weightSum > 0 ? totals.masterySum / totals.weightSum : 0
+    },
+    [goalIndexAll, getEffectiveMastery, getVisibleChildIds],
+  )
+
   // Calculate statistics: Total Atomic and Mastered Atomic
   // Relative to Focus (Planned Subtree) if active, otherwise Global Visible.
   const stats = useMemo(() => {
@@ -1222,7 +1265,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             ) : (
               <GoalCard
                 goal={currentGoal}
-                masteryValue={getEffectiveMastery(currentGoal.id)}
+                masteryValue={
+                  currentGoal.contains && currentGoal.contains.length > 0
+                    ? getFilteredMastery(currentGoal.id)
+                    : getEffectiveMastery(currentGoal.id)
+                }
                 showLearnerTools={true}
                 isPlanned={plannedGoals.has(currentGoal.id)}
                 isActive={effectiveActiveGoalId === currentGoal.id}

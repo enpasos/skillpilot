@@ -820,7 +820,7 @@ export const CurriculaView: React.FC = () => {
                           return (
                             <span
                               key={idx}
-                              className={`inline-flex items-center rounded-md px-2 py-1 text-xs ${pillClass} ring-1 ring-inset`}
+                              className={`inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs ${pillClass} ring-1 ring-inset`}
                             >
                               {topic}
                               {certified && (
@@ -868,7 +868,7 @@ export const CurriculaView: React.FC = () => {
                               </div>
                               {champion.topicTitle && (
                                 <span
-                                  className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${isChampionCertified(champion)
+                                  className={`inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${isChampionCertified(champion)
                                     ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 ring-emerald-700/10 dark:ring-emerald-300/20'
                                     : 'bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 ring-sky-700/10 dark:ring-sky-300/20'
                                     }`}
