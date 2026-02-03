@@ -378,9 +378,14 @@ public class CurriculaService {
             if (goalToRoots != null && !goalToRoots.isEmpty() && curriculumId != null && !curriculumId.isBlank()) {
                 atomicIds.removeIf(id -> {
                     Set<String> roots = goalToRoots.get(id);
+                    // DEBUG LOG
+                    if ("1194630c-8ddf-402e-9fa4-def3efd38e02".equals(id)) {
+                        log.info("DEBUG: Checking removal for suspicious ID {}. Roots: {}", id, roots);
+                    }
                     return roots == null || !roots.contains(curriculumId);
                 });
             }
+            log.info("DEBUG: atomicIds size after filter: {}", atomicIds.size());
             if (atomicIds.isEmpty()) {
                 return 0;
             }
@@ -410,6 +415,21 @@ public class CurriculaService {
                 // lowercase.
                 if (atomicIds.contains(goalKey) || atomicIds.contains(mastery.getGoalKey())) {
                     count++;
+                } else {
+                    if (atomicIds.contains("1194630c-8ddf-402e-9fa4-def3efd38e02")) {
+                        // Only log if we expect it to be there
+                        if ("1194630c-8ddf-402e-9fa4-def3efd38e02".equals(goalKey)
+                                || "1194630c-8ddf-402e-9fa4-def3efd38e02".equals(mastery.getGoalKey())) {
+                            log.info(
+                                    "DEBUG: Failed to match suspicious ID. goalKey: {}, mastery: {}, atomicIds contains it: {}",
+                                    goalKey, mastery.getGoalKey(), atomicIds.contains(goalKey));
+                        }
+                    }
+                    // Log missing matches for the specific missing IDs
+                    if ("1194630c-8ddf-402e-9fa4-def3efd38e02".equals(goalKey)) {
+                        log.info("DEBUG: Targeted ID check fail. AtomicIDs contains normalized? {}. Contains raw? {}",
+                                atomicIds.contains(goalKey), atomicIds.contains(mastery.getGoalKey()));
+                    }
                 }
             }
             return count;
@@ -430,7 +450,13 @@ public class CurriculaService {
                 roots = goalToRoots.get(mastery.getGoalKey());
             }
 
-            if (roots != null && roots.contains(curriculumId)) {
+            // Fallback: Dynamic linkage check if cache missed
+            if (roots == null || !roots.contains(curriculumId)) {
+                if (isReachable(curriculumId, goalKey)) {
+                    count++;
+                    continue;
+                }
+            } else if (roots.contains(curriculumId)) {
                 count++;
             } else {
                 if ("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da".equals(curriculumId)) {
@@ -440,6 +466,27 @@ public class CurriculaService {
             }
         }
         return count;
+    }
+
+    private boolean isReachable(String curriculumId, String goalKey) {
+        if (curriculumId == null || goalKey == null) {
+            return false;
+        }
+        // Check if the goal belongs to a landscape that is in the closure of the
+        // curriculum
+        String landscapeId = landscapeService.getLandscapeIdForGoal(goalKey);
+        if (landscapeId == null) {
+            return false;
+        }
+
+        // This is expensive so we only do it on cache miss
+        List<LearningLandscape> closure = landscapeService.getClosure(curriculumId);
+        for (LearningLandscape l : closure) {
+            if (l.getLandscapeId().equals(landscapeId)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private Set<String> collectAtomicGoalIds(String rootGoalId) {
