@@ -85,7 +85,7 @@ In the curriculum **Upper Secondary School (DE, HE, G9, Secondary II) – Mathem
 ![Exam Node (Example)](examnode.en.png)
 
 **Formal specification:** The mathematical definition of the graph (e.g., acyclicity, Effective Requires) is publicly documented:  
-https://enpasos.github.io/skillpilot/concept/curriculum-graph/graph-definition/
+[Graph definition](https://enpasos.github.io/skillpilot/concept/curriculum-graph/graph-definition/)
 
 #### Frontier: Next Reachable Steps
 
@@ -203,7 +203,7 @@ SkillPilot is not just a concept: it already contains curricula/standards as sta
 2. **Stage 2 – QA by Curriculum Champion**  
    A Curriculum Champion has mastered a curriculum or a module inside SkillPilot, cleaned errors in the curriculum and SkillPilot, and awarded a **QA checkmark**. A curriculum can collect multiple QA checkmarks.
 
-**Current status:** The subject **Mathematics** for **Gymnasiale Oberstufe (DE, HE, G9, Secondary II)** has now reached **Stage 2**. All other curricula are currently in **Stage 1**. The current status is visible at https://skillpilot.com/curricula.  
+**Current status:** The subject **Mathematics** for **Gymnasiale Oberstufe (DE, HE, G9, Secondary II)** has now reached **Stage 2**. All other curricula are currently in **Stage 1**. The current status is visible in the [Curriculum Directory](https://skillpilot.com/curricula).  
 ![QA Example Mathematics (Stage 2)](champion.en.png)
 
 **Curriculum Champions (practice anchor):**  
@@ -272,12 +272,12 @@ SkillPilot is released as **open source** under the **Apache-2.0 license** - an 
 **Initiator:**  
 The legal entity behind SkillPilot is **enpasos GmbH**. We invite partners to develop SkillPilot further together - in content, didactics, and technology.
 
-Start your pilot immediately and without registration **(ID-based)**: A guide for the 5-minute start can be found at https://skillpilot.com/quickstart/en.  
+Start your pilot immediately and without registration **(ID-based)**: A guide for the 5-minute start can be found in the [Quickstart](https://skillpilot.com/quickstart/en).  
 Note: Your **ID is the only key** to your data - store it safely.
 
 **More transparency:**  
-GitHub: https://github.com/enpasos/skillpilot  
-Documentation: https://enpasos.github.io/skillpilot/  
-Graph definition: https://enpasos.github.io/skillpilot/concept/curriculum-graph/graph-definition/
+[GitHub](https://github.com/enpasos/skillpilot)  
+[Documentation](https://enpasos.github.io/skillpilot/)  
+[Graph definition](https://enpasos.github.io/skillpilot/concept/curriculum-graph/graph-definition/)
 
 ---

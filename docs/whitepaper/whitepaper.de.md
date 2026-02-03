@@ -1,20 +1,18 @@
 # SkillPilot Whitepaper (DE)
 
-**Version:** 1.0.15
+**Version:** 1.0.16
 **Datum:** Februar 2026
 **Projekt:** SkillPilot
 
 ---
 
-## Zusammenfassung 
+## Zusammenfassung
 
 SkillPilot dockt an **bestehende Curricula** an und nutzt sie als **Source of Truth** (z.B. staatliche Lehrpläne, Modulhandbücher, Standards wie CEFR). SkillPilot ersetzt diese Standards nicht, sondern übersetzt sie in einen maschinenlesbaren **Skill-Graph**. Lernende, Lehrkräfte und ein KI-Tutor nutzen diesen als maschinenlesbare Landkarte. So kann der Lernende von seinem aktuellen **Skill-Stand** sicher zu seinen **Skill-Zielen** navigieren. Der KI-Tutor führt dabei dialogisch – und stützt sich für Lernstand, Regeln und nächste Schritte auf die **exakte Backend-Logik**.
 
 Dazu erfasst das System Lernerfolge auf atomaren Skill-Zielen und leitet daraus den **Beherrschungsgrad** für übergeordnete Themen ab. Auf dieser Basis führt der Weg über die **nächsten erreichbaren Skill-Ziele** systematisch hin zu den individuellen Bildungszielen.
 
 Die Qualitätssicherung erfolgt offen: über ein **Champion-Programm** aus der Praxis sowie über den **Open-Source-Workflow** (Issues/PullRequests).
-
-
 
 ![SkillPilot Comic](../comic1/SkillPilot_Comic.de.jpg)
 
@@ -31,7 +29,6 @@ Bildung folgt Curricula, die staatlich vorgegeben oder durch **Akkreditierung** 
 Das führt zu Überforderung bei einigen, Langeweile bei anderen – und zu hohem Aufwand, Lernstände und nächste Schritte sauber zu erfassen.
 
 SkillPilot schließt diese **Tool-Lücke**: outcome-orientierte Navigation im Curriculum, ohne dass Lehrende zu „Buchhalter:innen“ werden. SkillPilot setzt dabei **auf dem geltenden Curriculum auf** – es schafft keine neuen Standards, sondern macht bestehende Standards operational und navigierbar.
-
 
 ---
 
@@ -79,20 +76,18 @@ Dabei geht es um:
 
 SkillPilot unterscheidet drei **Knotentypen**, die verschiedene Lernmodi abbilden:
 
-* **Tutorial:** Alle Stoffthemen werden vom KI‑Tutor erklärt und eingeübt.
-* **Memorize:** Einzelne Fakten werden gezielt memoriert (Flashcards/SRS).
-* **Exam:** Abitur‑Aufgaben werden selbstständig gelöst (z. B. Foto aus Heft/Zettel), sofort bewertet (Punkte, bestanden/nicht bestanden, Fehler) und anschließend erklärt.
+* **Verstehen:** Alle Stoffthemen werden vom KI‑Tutor erklärt und eingeübt.
+* **Sich merken:** Einzelne Fakten werden gezielt memoriert (modernes Karteikastenprinzip).
+* **Selbstständig Probleme lösen:** Abitur‑Aufgaben werden selbstständig gelöst (z. B. auf einem Zettel, mit Handy fotographiert und hochgeladen), sofort bewertet (Punkte, bestanden/nicht bestanden, Fehler) und anschließend erklärt.
 
-Im Curriculum **Gymnasiale Oberstufe (DE, HE, G9, Sekundarstufe II) – Mathematik (QS Stufe 2)** werden **alle drei Knotentypen** eingesetzt.
-
+Im Curriculum **Gymnasiale Oberstufe (DE, HE, G9, Sekundarstufe II) – Mathematik (QS Stufe 2)** beispielsweise werden **alle drei Knotentypen** eingesetzt.
 
 <div style="page-break-after: always;"></div>
 
-
-![Exam-Knoten (Beispiel)](examnode.de.png)
+![Exam-Knoten (Beispiel)](nodetypes.de.png)
 
 **Formale Spezifikation:** Die mathematische Definition des Graphen (u.a. Acyclicity, Effective Requires) ist öffentlich dokumentiert:  
-https://enpasos.github.io/skillpilot/concept/curriculum-graph/graph-definition/
+[Graph-Definition](https://enpasos.github.io/skillpilot/concept/curriculum-graph/graph-definition/)
 
 #### Frontier: Nächste erreichbare Schritte
 
@@ -132,11 +127,9 @@ Learning Velocity zeigt, wie viele **atomare Ziele** pro Woche neu als gemeister
 
 ### 3.3 Der hybride Lernkreislauf: Verstehen + Memorieren + Üben
 
-Nicht jedes Lernziel lernt man gleich: Konzepte brauchen Verständnis und Anwendung, Fakten brauchen Wiederholung – und viele Skills brauchen **aktives Tun** (z.B. Programmieren, Rechnen, Schreiben).
+Nicht jedes Lernziel lernt man gleich: Konzepte brauchen Verständnis und Anwendung, Fakten brauchen Wiederholung – und viele Skills brauchen **aktives Tun** (z.B. Programmieren, Rechnen, Schreiben), und selbstständig ein Problem bearbeiten haben wir in den Prüfungen.
 
-Der Skill-Graph modelliert Verständnis und Abhängigkeiten. Für reines Auswendiglernen (Vokabeln, Formeln, Fakten) ist **Spaced Repetition** effizienter.
-
-<img src="memorize.de.png" alt="Hybrider Lernkreislauf" width="400" />
+Während beim Verstehen oder auch bei der Bewertung und Erklären von Prüfungen die Interaktion mit einem Tutor hilfreich sind, funktioniert reines Auswendiglernen (Vokabeln, Formeln, Fakten) per modernem Karteikasten a la **Spaced Repetition** effizienter.
 
 SkillPilot integriert dafür eine **Flashcard Drill Engine** (SRS):
 
@@ -196,9 +189,7 @@ Beim Import (z.B. Wechsel, Backup) kann die komplette **Herkunftskette** mitgef�
 
 --- 
 
-
 <div style="page-break-after: always;"></div>
-
 
 ## 5. Das Ökosystem: Inhalte & Standards
 
@@ -212,13 +203,13 @@ SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als St
    Lernziele in SkillPilot sind aus öffentlich zugänglichen, amtlichen Curricula/Ordnungen abgeleitet. Wir geben die Quellen an; SkillPilot bietet eine eigene Strukturierung und Zusammenfassung – kein offizieller Wortlaut.  
    Ergebnis: Das Curriculum existiert und wird in der Oberfläche angezeigt.
 2. **Stufe 2 – QS durch Curriculum Champion**  
-   Ein Curriculum Champion hat ein Curriculum oder einen Baustein davon selbst in SkillPilot gemastered, die Fehler im Curriculum und SkillPilot bereinigt und ein **QS-Häkchen** vergeben. Von diesen QS-Häkchen kann es mehrere geben.
+   Ein Curriculum Champion hat ein Curriculum oder einen Baustein davon selbst in SkillPilot gemastered, die Fehler im Curriculum und SkillPilot bereinigt und ein **QS-Häkchen** vergeben. Von diesen QS-Häkchen kann es mehrere geben. <img src="champion.de.png" alt="QS-Beispiel Mathematik (Stufe 2)"width="400" />
 
-**Aktueller Stand:** Das Fach **Mathematik** für **Gymnasiale Oberstufe (Hessen, G9, Sekundarstufe II)** hat inzwischen **Stufe 2** erreicht. Alle übrigen Curricula befinden sich derzeit in **Stufe 1**. Der aktuelle Stand ist unter https://skillpilot.com/curricula einsehbar.  
-![QS-Beispiel Mathematik (Stufe 2)](champion.de.png)
+**Aktueller Stand:** Das Fach **Mathematik** für **Gymnasiale Oberstufe (Hessen, G9, Sekundarstufe II)** hat inzwischen **Stufe 2** erreicht. Alle übrigen Curricula befinden sich derzeit in **Stufe 1**. Der aktuelle Stand ist im [Curriculum-Verzeichnis](https://skillpilot.com/curricula) einsehbar.  
 
 **Curriculum Champions (Praxisanker):**  
 ![Curriculum Champion Comic](../comic3/champion.de.png)  
+
 * Champions übernehmen Verantwortung für ein Curriculum oder einen **klaren Themen-Scope**.
 * Sie **lernen das Curriculum durch**, sammeln Praxisfeedback und bündeln es in Issues/PRs.
 * Sichtbarkeit schafft Verantwortung: Champion-Profile zeigen Engagement (z.B. Issues/PRs) und Fortschritt.
@@ -228,6 +219,7 @@ Der QS-Prozess bezieht sich nicht nur auf Curricula: Der SkillPilot KI‑Tutor w
 #### Schule (Bayern & Hessen)
 
 **Bayern:**
+
 * Grundschule (Alle Fächer, Jgst 1–4)
 * Mittelschule (Alle Fächer, Jgst 5–10)
 * Realschule (Alle Fächer, Jgst 5–10)
@@ -236,22 +228,24 @@ Der QS-Prozess bezieht sich nicht nur auf Curricula: Der SkillPilot KI‑Tutor w
 * Wirtschaftsschule
 
 **Hessen:**
+
 * Gymnasiale Oberstufe (G9, Sekundarstufe II)
 * Gymnasiale Mittelstufe (G9, Sekundarstufe I)
 
 #### Hochschule (Bologna-relevant)
+
 * Uni Heidelberg: Bachelor Biowissenschaften, Master Molecular BioSciences, Physikum Medizin
 * Uni Mannheim: Bachelor BWL, Bachelor Jura, Master Jura
 * TU Darmstadt: Bachelor Informatik
 * TU München: Bachelor Informatik, Bachelor Mathematik, Bachelor Physik, Master Quantenwissenschaft und -technologie, Master Theoretische und Mathematische Physik, Executive Master of Business Administration (MBA)
 
 #### Sprachen (CEFR A1–C2)
+
 * Englisch (A1–C2)
 * Französisch (A1–C2)
 
 Die hier gelisteten Curricula befinden sich damit aktuell in **Stufe 1 (KI-abgeleitet)**. Der Prozess, sie in **Stufe 2** zu überführen, läuft über den **Curriculum Champion Prozess**.
 
-> [!IMPORTANT]
 > Wir laden dazu ein, diesen Prozess aktiv mitzugestalten: **[Werde Curriculum Champion](https://skillpilot.com/curricula)** und hilf dabei, die Qualität und Praxisnähe deines Fachbereichs sicherzustellen.
 
 Die Inhalte sind erweiterbar und versioniert; Quellenbezüge sind dokumentiert, und Änderungen laufen aktuell über GitHub (Issues/PRs).
@@ -276,6 +270,7 @@ SkillPilot wird als **Open Source** unter der **Apache-2.0-Lizenz** veröffentli
 * Offene Schnittstellen ermöglichen Beiträge und Integration.
 
 **Governance & Qualitätssicherung (aktuell über GitHub + Champion-Programm):**
+
 * Feedback fließt über **GitHub Issues** und wird häufig durch Champions initiiert.
 * Änderungen am Curriculum/Graph laufen über **Pull Requests** (Review in GitHub).
 * **Versionierung** erfolgt über die GitHub-Historie; **Curriculaquellen** sind referenziert.
@@ -284,12 +279,12 @@ SkillPilot wird als **Open Source** unter der **Apache-2.0-Lizenz** veröffentli
 **Initiator:**  
 Träger ist die **enpasos GmbH**. Wir laden Partner ein, SkillPilot gemeinsam weiterzuentwickeln – fachlich, didaktisch und technisch.
 
-Starten Sie sofort und anmeldefrei **(ID-basiert)** Ihren Piloten: Eine Anleitung für den 5-Minuten-Start finden Sie unter https://skillpilot.com/quickstart/de.  
+Starten Sie sofort und anmeldefrei **(ID-basiert)** Ihren Piloten: Eine Anleitung für den 5-Minuten-Start finden Sie im [Kurzstart](https://skillpilot.com/quickstart/de).  
 Hinweis: Ihre **ID ist der einzige Schlüssel** zu Ihren Daten – speichern Sie sie gut.
 
 **Mehr Transparenz:**  
-GitHub: https://github.com/enpasos/skillpilot  
-Dokumentation: https://enpasos.github.io/skillpilot/  
-Graph-Definition: https://enpasos.github.io/skillpilot/concept/curriculum-graph/graph-definition/
+[GitHub](https://github.com/enpasos/skillpilot)  
+[Dokumentation](https://enpasos.github.io/skillpilot/)  
+[Graph-Definition](https://enpasos.github.io/skillpilot/concept/curriculum-graph/graph-definition/)
 
 ---
