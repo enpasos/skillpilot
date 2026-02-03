@@ -436,66 +436,52 @@ public class CurriculaService {
                 } else {
                     // Log ALL suspect IDs that fail to match
                     if ("1194630c-8ddf-402e-9fa4-def3efd38e02".equals(goalKey) ||
-                        "840d3a44-3663-4102-b399-617e47e1c765".equals(goalKey) ||
-                        "d0bf8574-890e-4f55-ac80-c3167b7a5309".equals(goalKey) ||
-                        "5e4a153c-5f45-42eb-ac5e-9855984e29c2".equals(goalKey) ||
-                        "999c8b41-75b3-4a84-814d-4c2f129fe7df".equals(goalKey)) {
-                        log.info("DEBUG COUNT: Suspect mastery NOT matched! goalKey={}, raw={}, atomicIds.contains(goalKey)={}, atomicIds.contains(raw)={}",
-                            goalKey, mastery.getGoalKey(), atomicIds.contains(goalKey), atomicIds.contains(mastery.getGoalKey()));
-                    }
-                }
-                    if (atomicIds.contains("1194630c-8ddf-402e-9fa4-def3efd38e02")) {
-                        // Only log if we expect it to be there
-                        if ("1194630c-8ddf-402e-9fa4-def3efd38e02".equals(goalKey)
-                                || "1194630c-8ddf-402e-9fa4-def3efd38e02".equals(mastery.getGoalKey())) {
-                            log.info(
-                                    "DEBUG: Failed to match suspicious ID. goalKey: {}, mastery: {}, atomicIds contains it: {}",
-                                    goalKey, mastery.getGoalKey(), atomicIds.contains(goalKey));
-                        }
-                    }
-                    // Log missing matches for the specific missing IDs
-                    if ("1194630c-8ddf-402e-9fa4-def3efd38e02".equals(goalKey)) {
-                        log.info("DEBUG: Targeted ID check fail. AtomicIDs contains normalized? {}. Contains raw? {}",
-                                atomicIds.contains(goalKey), atomicIds.contains(mastery.getGoalKey()));
+                            "840d3a44-3663-4102-b399-617e47e1c765".equals(goalKey) ||
+                            "d0bf8574-890e-4f55-ac80-c3167b7a5309".equals(goalKey) ||
+                            "5e4a153c-5f45-42eb-ac5e-9855984e29c2".equals(goalKey) ||
+                            "999c8b41-75b3-4a84-814d-4c2f129fe7df".equals(goalKey)) {
+                        log.info(
+                                "DEBUG COUNT: Suspect mastery NOT matched! goalKey={}, raw={}, atomicIds.contains(goalKey)={}, atomicIds.contains(raw)={}",
+                                goalKey, mastery.getGoalKey(), atomicIds.contains(goalKey),
+                                atomicIds.contains(mastery.getGoalKey()));
                     }
                 }
             }
             return count;
         }
 
-    if(goalToRoots==null||goalToRoots.isEmpty())
-
-    {
-        return 0;
-    }
-    long count = 0;for(
-    Mastery mastery:masteryEntries)
-    {
-        if (mastery.getValue() < MASTERY_THRESHOLD) {
-            continue;
+        // Curriculum-wide counting (no topicId)
+        if (goalToRoots == null || goalToRoots.isEmpty()) {
+            return 0;
         }
-        String goalKey = normalize(mastery.getGoalKey()).toLowerCase();
-        // Try normalized first (canonical), then raw
-        Set<String> roots = goalToRoots.get(goalKey);
-        if (roots == null) {
-            roots = goalToRoots.get(mastery.getGoalKey());
-        }
-
-        // Fallback: Dynamic linkage check if cache missed
-        if (roots == null || !roots.contains(curriculumId)) {
-            if (isReachable(curriculumId, goalKey)) {
-                count++;
+        long count = 0;
+        for (Mastery mastery : masteryEntries) {
+            if (mastery.getValue() < MASTERY_THRESHOLD) {
                 continue;
             }
-        } else if (roots.contains(curriculumId)) {
-            count++;
-        } else {
-            if ("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da".equals(curriculumId)) {
-                log.info("Mastery skipped for ID: {} (Normalized: {}) Roots: {}", mastery.getGoalKey(), goalKey,
-                        roots);
+            String goalKey = normalize(mastery.getGoalKey()).toLowerCase();
+            // Try normalized first (canonical), then raw
+            Set<String> roots = goalToRoots.get(goalKey);
+            if (roots == null) {
+                roots = goalToRoots.get(mastery.getGoalKey());
+            }
+
+            // Fallback: Dynamic linkage check if cache missed
+            if (roots == null || !roots.contains(curriculumId)) {
+                if (isReachable(curriculumId, goalKey)) {
+                    count++;
+                    continue;
+                }
+            } else if (roots.contains(curriculumId)) {
+                count++;
+            } else {
+                if ("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da".equals(curriculumId)) {
+                    log.info("Mastery skipped for ID: {} (Normalized: {}) Roots: {}", mastery.getGoalKey(), goalKey,
+                            roots);
+                }
             }
         }
-    }return count;
+        return count;
     }
 
     private boolean isReachable(String curriculumId, String goalKey) {
