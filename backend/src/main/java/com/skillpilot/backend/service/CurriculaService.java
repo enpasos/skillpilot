@@ -432,6 +432,11 @@ public class CurriculaService {
 
             if (roots != null && roots.contains(curriculumId)) {
                 count++;
+            } else {
+                if ("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da".equals(curriculumId)) {
+                    log.info("Mastery skipped for ID: {} (Normalized: {}) Roots: {}", mastery.getGoalKey(), goalKey,
+                            roots);
+                }
             }
         }
         return count;
