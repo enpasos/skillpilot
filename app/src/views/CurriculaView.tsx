@@ -809,20 +809,23 @@ export const CurriculaView: React.FC = () => {
                     </div>
                     {curriculum.topLevelTopics && curriculum.topLevelTopics.length > 0 ? (
                       <div className="flex flex-wrap gap-2">
-                        {curriculum.topLevelTopics.map((topic, idx) => (
-                          <span
-                            key={idx}
-                            className="inline-flex items-center gap-1.5 rounded-md bg-sky-50 dark:bg-sky-900/30 px-2 py-1 text-xs font-medium text-sky-700 dark:text-sky-300 ring-1 ring-inset ring-sky-700/10 dark:ring-sky-300/20"
-                          >
-                            {topic}
-                            {curriculum.champions.some(
-                              (champion) =>
-                                champion.topicTitle === topic && isChampionCertified(champion),
-                            ) && (
-                              <BadgeCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
-                            )}
-                          </span>
-                        ))}
+                        {curriculum.topLevelTopics.map((topic, idx) => {
+                          const certified = curriculum.champions.some(
+                            (champion) =>
+                              champion.topicTitle === topic && isChampionCertified(champion),
+                          )
+                          const pillClass = certified
+                            ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 ring-emerald-700/10 dark:ring-emerald-300/20 font-semibold'
+                            : 'bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 ring-sky-700/10 dark:ring-sky-300/20'
+                          return (
+                            <span
+                              key={idx}
+                              className={`inline-flex items-center rounded-md px-2 py-1 text-xs ${pillClass} ring-1 ring-inset`}
+                            >
+                              {topic}
+                            </span>
+                          )
+                        })}
                       </div>
                     ) : (
                       <div className="text-xs text-text-secondary italic">
@@ -861,12 +864,14 @@ export const CurriculaView: React.FC = () => {
                                 )}
                               </div>
                               {champion.topicTitle && (
-                                <div className="text-xs font-medium text-amber-600 dark:text-amber-400 flex items-center gap-1">
-                                  <span>📚 {champion.topicTitle}</span>
-                                  {isChampionCertified(champion) && (
-                                    <BadgeCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
-                                  )}
-                                </div>
+                                <span
+                                  className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${isChampionCertified(champion)
+                                    ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 ring-emerald-700/10 dark:ring-emerald-300/20'
+                                    : 'bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 ring-sky-700/10 dark:ring-sky-300/20'
+                                    }`}
+                                >
+                                  {champion.topicTitle}
+                                </span>
                               )}
                               <div className="text-xs text-text-secondary">
                                 {t.curriculaPage.table.skillpilotId}: {champion.skillpilotIdMasked}
