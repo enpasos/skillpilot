@@ -681,13 +681,16 @@ public class LearnerService {
     }
 
     @Transactional
-    public void setPreferences(String skillpilotId, String learningStrategy, Boolean autoPilot) {
+    public void setPreferences(String skillpilotId, String learningStrategy, Boolean autoPilot, Boolean strictMode) {
         Learner learner = getLearner(skillpilotId);
         if (learningStrategy != null) {
             learner.setLearningStrategy(learningStrategy);
         }
         if (autoPilot != null) {
             learner.setAutoPilot(autoPilot);
+        }
+        if (strictMode != null) {
+            learner.setStrictMode(strictMode);
         }
     }
 
@@ -839,6 +842,9 @@ public class LearnerService {
             return Collections.emptyList();
         }
 
+        // Check if strict mode is enabled
+        boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
+
         // 1. Get Filtered Goals (for display/frontier candidates)
         Map<String, LearningGoal> allFilteredGoals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
 
@@ -853,6 +859,14 @@ public class LearnerService {
         Map<String, List<String>> effectiveRequires = computeEffectiveRequires(allFilteredGoals);
         Map<String, Double> effectivePrereqMastery = computeEffectivePrereqMastery(allFilteredGoals, masteryMap);
 
+        // For strict mode: compute global effective requires and prereq mastery
+        Map<String, List<String>> globalEffectiveRequires = strictMode
+                ? computeEffectiveRequires(allStructuralGoals)
+                : effectiveRequires;
+        Map<String, Double> globalEffectivePrereqMastery = strictMode
+                ? computeEffectivePrereqMastery(allStructuralGoals, masteryMap)
+                : effectivePrereqMastery;
+
         // Calculate Scope (Plan + Descendants + Prerequisites)
         List<String> plannedIds = getPlannedGoals(skillpilotId);
 
@@ -864,6 +878,7 @@ public class LearnerService {
 
         System.out.println("DEBUG_SKILLPILOT: getRichFrontier - Plan: " + plannedIds);
         System.out.println("DEBUG_SKILLPILOT: getRichFrontier - Scope Size: " + scope.size());
+        System.out.println("DEBUG_SKILLPILOT: getRichFrontier - Strict Mode: " + strictMode);
         if (!plannedIds.isEmpty() && scope.size() < 10) {
             System.out.println("DEBUG_SKILLPILOT: Scope Content: " + scope);
         }
@@ -891,22 +906,37 @@ public class LearnerService {
             }
 
             boolean prerequisitesMet = true;
-            List<String> requires = effectiveRequires.getOrDefault(goal.getId(), goal.getRequires());
+            // In strict mode, use global requires; otherwise use filtered requires
+            List<String> requires = strictMode
+                    ? globalEffectiveRequires.getOrDefault(goal.getId(), goal.getRequires())
+                    : effectiveRequires.getOrDefault(goal.getId(), goal.getRequires());
             if (requires != null) {
                 for (String reqId : requires) {
-                    String resolvedReqId = resolveGoalRef(reqId, allFilteredGoals);
+                    // In strict mode, resolve against ALL structural goals
+                    Map<String, LearningGoal> lookupMap = strictMode ? allStructuralGoals : allFilteredGoals;
+                    String resolvedReqId = resolveGoalRef(reqId, lookupMap);
                     if (resolvedReqId == null) {
-                        // Ignore prerequisites that are filtered out or unknown in the current focus
-                        continue;
-                    }
-                    // PRAGMATIC FILTERING:
-                    // If a prerequisite is NOT in scope (and we have a restricted scope), ignore
-                    // it.
-                    if (!plannedIds.isEmpty() && !scope.contains(resolvedReqId)) {
+                        if (strictMode) {
+                            // In strict mode, unknown prerequisite means blocked
+                            prerequisitesMet = false;
+                            break;
+                        }
+                        // Optimistic: ignore prerequisites that are filtered out or unknown
                         continue;
                     }
 
-                    Double reqMastery = effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0);
+                    // In strict mode, do NOT skip out-of-scope prerequisites
+                    if (!strictMode && !plannedIds.isEmpty() && !scope.contains(resolvedReqId)) {
+                        // PRAGMATIC FILTERING (optimistic mode only):
+                        // If a prerequisite is NOT in scope (and we have a restricted scope), ignore
+                        // it.
+                        continue;
+                    }
+
+                    // In strict mode, use global mastery; otherwise use filtered prereq mastery
+                    Double reqMastery = strictMode
+                            ? globalEffectivePrereqMastery.getOrDefault(resolvedReqId, 0.0)
+                            : effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0);
                     if (reqMastery < 0.9) {
                         prerequisitesMet = false;
                         break;

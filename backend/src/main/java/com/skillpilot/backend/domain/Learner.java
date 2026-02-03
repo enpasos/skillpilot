@@ -50,6 +50,9 @@ public class Learner {
     @Column(name = "auto_pilot")
     private Boolean autoPilot = false;
 
+    @Column(name = "strict_mode")
+    private Boolean strictMode = false;
+
     @jakarta.persistence.ElementCollection(fetch = jakarta.persistence.FetchType.EAGER)
     @jakarta.persistence.CollectionTable(name = "learner_copy_sources", joinColumns = @jakarta.persistence.JoinColumn(name = "learner_id"))
     private java.util.Set<CopySource> copySources = new java.util.HashSet<>();
@@ -134,6 +137,14 @@ public class Learner {
         this.autoPilot = autoPilot;
     }
 
+    public Boolean getStrictMode() {
+        return strictMode;
+    }
+
+    public void setStrictMode(Boolean strictMode) {
+        this.strictMode = strictMode;
+    }
+
     // Needed for JPA toolchain to set generated ID
     public void setSkillpilotId(String skillpilotId) {
         this.skillpilotId = skillpilotId;
@@ -152,6 +163,9 @@ public class Learner {
         }
         if (this.autoPilot == null) {
             this.autoPilot = false;
+        }
+        if (this.strictMode == null) {
+            this.strictMode = false;
         }
     }
 }

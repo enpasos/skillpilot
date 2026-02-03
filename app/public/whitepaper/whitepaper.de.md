@@ -1,7 +1,7 @@
 # SkillPilot Whitepaper (DE)
 
-**Version:** 1.0.14
-**Datum:** Januar 2026
+**Version:** 1.0.15
+**Datum:** Februar 2026
 **Projekt:** SkillPilot
 
 ---
@@ -12,7 +12,7 @@ SkillPilot dockt an **bestehende Curricula** an und nutzt sie als **Source of Tr
 
 Dazu erfasst das System Lernerfolge auf atomaren Skill-Zielen und leitet daraus den **Beherrschungsgrad** für übergeordnete Themen ab. Auf dieser Basis führt der Weg über die **nächsten erreichbaren Skill-Ziele** systematisch hin zu den individuellen Bildungszielen.
 
-Die Qualitätssicherung erfolgt offen: über ein **Champion-Programm** aus der Praxis sowie über den **Open-Source-Workflow** (Issues/PRs).
+Die Qualitätssicherung erfolgt offen: über ein **Champion-Programm** aus der Praxis sowie über den **Open-Source-Workflow** (Issues/PullRequests).
 
 
 
@@ -65,7 +65,7 @@ Dabei geht es um:
 
 * **Operationalisierung:** Learning Outcomes werden in atomare Skill-Ziele zerlegt (ohne den Standard zu verändern).
 * **Traceability:** Jeder Skill bleibt auf Quelle/Abschnitt/Version zurückführbar.
-* **Navigierbarkeit:** Prereqs und Hierarchien werden explizit modelliert, damit Pfade planbar werden (didaktische Prereqs ggf. als **Overlay**). Der Graph erzwingt keine starren Pfade: Er unterstützt pädagogische Flexibilität: Im **„Optimistischen Modus“** darf vor gelernt und gestöbert werden (Exploration), während für Zertifikate der **„Pessimistische Modus“** prüft, ob alle Lücken im Fundament geschlossen sind.
+* **Navigierbarkeit:** Prereqs und Hierarchien werden explizit modelliert, damit Pfade planbar werden (didaktische Prereqs ggf. als **Overlay**). Der Graph erzwingt keine starren Pfade: Er unterstützt pädagogische Flexibilität. Der **Optimistische Modus** prüft Voraussetzungen nur **innerhalb des gewählten Filters** (z.B. Jahrgang), sodass ein Einstieg direkt im Themenjahr möglich ist, ohne dass Lücken aus Vorjahren blockieren. Erst wenn Lernende scheitern, schaltet der Tutor zur Diagnose in den **Pessimistischen Modus**, um die Lücke im Fundament zu finden.
 * **Governance:** Änderungen laufen aktuell über GitHub (Issues/PRs), Versionierung über die GitHub-Historie (siehe Abschnitt 6).
 
 #### Landkarte: Knoten & Kanten
@@ -75,10 +75,30 @@ Dabei geht es um:
   * **Prerequisites:** „A vor B“
   * **Contains/Part-of:** „X umfasst Y und Z“
 
+#### Drei Knotentypen in der Praxis
+
+SkillPilot unterscheidet drei **Knotentypen**, die verschiedene Lernmodi abbilden:
+
+* **Tutorial:** Alle Stoffthemen werden vom KI‑Tutor erklärt und eingeübt.
+* **Memorize:** Einzelne Fakten werden gezielt memoriert (Flashcards/SRS).
+* **Exam:** Abitur‑Aufgaben werden selbstständig gelöst (z. B. Foto aus Heft/Zettel), sofort bewertet (Punkte, bestanden/nicht bestanden, Fehler) und anschließend erklärt.
+
+Im Curriculum **Gymnasiale Oberstufe (DE, HE, G9, Sekundarstufe II) – Mathematik (QS Stufe 2)** werden **alle drei Knotentypen** eingesetzt.
+
+
+<div style="page-break-after: always;"></div>
+
+
+![Exam-Knoten (Beispiel)](examnode.de.png)
+
+**Formale Spezifikation:** Die mathematische Definition des Graphen (u.a. Acyclicity, Effective Requires) ist öffentlich dokumentiert:  
+https://enpasos.github.io/skillpilot/concept/curriculum-graph/graph-definition/
+
 #### Frontier: Nächste erreichbare Schritte
 
 SkillPilot berechnet die **Frontier**: Skills, deren Voraussetzungen erfüllt sind, die aber noch nicht beherrscht werden.  
 So werden Sprünge vermieden und Lernen bleibt im Bereich sinnvoller nächster Schritte. Diese Grenze des aktuellen Wissens nennen wir die **Frontier** (didaktisch: Zone der nächsten Entwicklung nach Wygotski). Sie markiert exakt die Skills, die als Nächstes lernbar sind.
+Die **Frontier ist keine KI-Empfehlung**, sondern die mathematisch berechnete Menge aller logisch freigeschalteten Lernziele.
 
 ![Der KI-Tutor](Tutor.de.png)
 
@@ -176,6 +196,10 @@ Beim Import (z.B. Wechsel, Backup) kann die komplette **Herkunftskette** mitgef�
 
 --- 
 
+
+<div style="page-break-after: always;"></div>
+
+
 ## 5. Das Ökosystem: Inhalte & Standards
 
 ### 5.1 Status quo: Verfügbare Inhalte (Beispiele)
@@ -190,7 +214,14 @@ SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als St
 2. **Stufe 2 – QS durch Curriculum Champion**  
    Ein Curriculum Champion hat ein Curriculum oder einen Baustein davon selbst in SkillPilot gemastered, die Fehler im Curriculum und SkillPilot bereinigt und ein **QS-Häkchen** vergeben. Von diesen QS-Häkchen kann es mehrere geben.
 
-**Aktueller Stand:** Alle Curricula befinden sich derzeit in **Stufe 1**; QS-Häkchen wurden noch nicht vergeben. Den aktuellen Stand kannst Du unter https://skillpilot.com/curricula anschauen. 
+**Aktueller Stand:** Das Fach **Mathematik** für **Gymnasiale Oberstufe (Hessen, G9, Sekundarstufe II)** hat inzwischen **Stufe 2** erreicht. Alle übrigen Curricula befinden sich derzeit in **Stufe 1**. Der aktuelle Stand ist unter https://skillpilot.com/curricula einsehbar.  
+![QS-Beispiel Mathematik (Stufe 2)](champion.de.png)
+
+**Curriculum Champions (Praxisanker):**  
+![Curriculum Champion Comic](../comic3/champion.de.png)  
+* Champions übernehmen Verantwortung für ein Curriculum oder einen **klaren Themen-Scope**.
+* Sie **lernen das Curriculum durch**, sammeln Praxisfeedback und bündeln es in Issues/PRs.
+* Sichtbarkeit schafft Verantwortung: Champion-Profile zeigen Engagement (z.B. Issues/PRs) und Fortschritt.
 
 Der QS-Prozess bezieht sich nicht nur auf Curricula: Der SkillPilot KI‑Tutor wird im laufenden Betrieb kontinuierlich qualifiziert, damit die Nutzung über reale Curricula hinweg zuverlässig und didaktisch sinnvoll bleibt.
 
@@ -244,12 +275,6 @@ SkillPilot wird als **Open Source** unter der **Apache-2.0-Lizenz** veröffentli
 * Die Kopplung von Content an Skillziele ist perspektivisch möglich.
 * Offene Schnittstellen ermöglichen Beiträge und Integration.
 
-**Curriculum Champions (Praxisanker):**
-![Curriculum Champion Comic](../comic3/champion.de.png)
-* Champions übernehmen Verantwortung für ein Curriculum oder einen **klaren Themen-Scope**.
-* Sie **lernen das Curriculum durch**, sammeln Praxisfeedback und bündeln es in Issues/PRs.
-* Sichtbarkeit schafft Verantwortung: Champion-Profile zeigen Engagement (z.B. Issues/PRs) und Fortschritt.
-
 **Governance & Qualitätssicherung (aktuell über GitHub + Champion-Programm):**
 * Feedback fließt über **GitHub Issues** und wird häufig durch Champions initiiert.
 * Änderungen am Curriculum/Graph laufen über **Pull Requests** (Review in GitHub).
@@ -259,6 +284,12 @@ SkillPilot wird als **Open Source** unter der **Apache-2.0-Lizenz** veröffentli
 **Initiator:**  
 Träger ist die **enpasos GmbH**. Wir laden Partner ein, SkillPilot gemeinsam weiterzuentwickeln – fachlich, didaktisch und technisch.
 
-Starten Sie sofort und ohne Anmeldung (ID-basiert) Ihren Piloten: Eine Anleitung für den 5-Minuten-Start finden Sie unter https://skillpilot.com/quickstart/de.
+Starten Sie sofort und anmeldefrei **(ID-basiert)** Ihren Piloten: Eine Anleitung für den 5-Minuten-Start finden Sie unter https://skillpilot.com/quickstart/de.  
+Hinweis: Ihre **ID ist der einzige Schlüssel** zu Ihren Daten – speichern Sie sie gut.
+
+**Mehr Transparenz:**  
+GitHub: https://github.com/enpasos/skillpilot  
+Dokumentation: https://enpasos.github.io/skillpilot/  
+Graph-Definition: https://enpasos.github.io/skillpilot/concept/curriculum-graph/graph-definition/
 
 ---

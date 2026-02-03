@@ -128,7 +128,8 @@ public class LearnerUiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public void updatePreferences(@PathVariable String skillpilotId,
             @RequestBody com.skillpilot.backend.api.PreferencesRequest request) {
-        learnerService.setPreferences(skillpilotId, request.learningStrategy(), request.autoPilot());
+        learnerService.setPreferences(skillpilotId, request.learningStrategy(), request.autoPilot(),
+                request.strictMode());
     }
 
     @PutMapping("/{skillpilotId}/personal-curriculum")

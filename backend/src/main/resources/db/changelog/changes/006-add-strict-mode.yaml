@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 006-add-strict-mode
+      author: skillpilot
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - columnExists:
+                tableName: learner
+                columnName: strict_mode
+      changes:
+        - addColumn:
+            tableName: learner
+            columns:
+              - column:
+                  name: strict_mode
+                  type: BOOLEAN
+                  defaultValueBoolean: false

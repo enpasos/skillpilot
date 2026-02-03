@@ -26,7 +26,8 @@ interface PersonalCurriculumSetupProps {
     rootLandscapeId?: string
     initialStrategy?: 'RANDOM' | 'SEQUENTIAL'
     initialAutoPilot?: boolean
-    onPreferencesChange?: (strategy: 'RANDOM' | 'SEQUENTIAL', autoPilot: boolean) => void
+    initialStrictMode?: boolean
+    onPreferencesChange?: (strategy: 'RANDOM' | 'SEQUENTIAL', autoPilot: boolean, strictMode: boolean) => void
 }
 
 export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = ({
@@ -38,6 +39,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     rootLandscapeId,
     initialStrategy = 'RANDOM',
     initialAutoPilot = false,
+    initialStrictMode = false,
     onPreferencesChange,
 }) => {
     const computedInitial = React.useMemo(() => {
@@ -52,6 +54,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const [config, setConfig] = useState<PersonalCurriculumConfig>(computedInitial)
     const [strategy, setStrategy] = useState<'RANDOM' | 'SEQUENTIAL'>(initialStrategy)
     const [autoPilot, setAutoPilot] = useState<boolean>(initialAutoPilot)
+    const [strictMode, setStrictMode] = useState<boolean>(initialStrictMode)
     const [expanded, setExpanded] = useState<Set<string>>(new Set())
 
     // Update config when initialConfig changes (e.g. loaded from backend)
@@ -62,16 +65,22 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     useEffect(() => {
         setStrategy(initialStrategy)
         setAutoPilot(initialAutoPilot)
-    }, [initialStrategy, initialAutoPilot])
+        setStrictMode(initialStrictMode)
+    }, [initialStrategy, initialAutoPilot, initialStrictMode])
 
     const handleStrategyChange = (newStrategy: 'RANDOM' | 'SEQUENTIAL') => {
         setStrategy(newStrategy)
-        onPreferencesChange?.(newStrategy, autoPilot)
+        onPreferencesChange?.(newStrategy, autoPilot, strictMode)
     }
 
     const handleAutoPilotChange = (newAutoPilot: boolean) => {
         setAutoPilot(newAutoPilot)
-        onPreferencesChange?.(strategy, newAutoPilot)
+        onPreferencesChange?.(strategy, newAutoPilot, strictMode)
+    }
+
+    const handleStrictModeChange = (newStrictMode: boolean) => {
+        setStrictMode(newStrictMode)
+        onPreferencesChange?.(strategy, autoPilot, newStrictMode)
     }
 
     const toggleSelection = (landscapeId: string, isRoot: boolean) => {
@@ -267,6 +276,19 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                     <div>
                                         <span className="text-sm font-medium text-text-primary">Autopilot aktivieren</span>
                                         <p className="text-xs text-text-secondary">Startet automatisch das nächste Ziel nach Abschluss.</p>
+                                    </div>
+                                </label>
+
+                                <label className="flex items-center gap-2 cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        checked={strictMode}
+                                        onChange={(e) => handleStrictModeChange(e.target.checked)}
+                                        className="w-4 h-4 rounded text-amber-600 focus:ring-amber-500 border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-600"
+                                    />
+                                    <div>
+                                        <span className="text-sm font-medium text-text-primary">Strict Mode aktivieren</span>
+                                        <p className="text-xs text-text-secondary">Prüft alle Voraussetzungen global, auch außerhalb deines aktuellen Fokus.</p>
                                     </div>
                                 </label>
                             </div>

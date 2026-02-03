@@ -21,6 +21,7 @@ export interface Learner {
   personalCurriculum: string;
   learningStrategy?: 'RANDOM' | 'SEQUENTIAL';
   autoPilot?: boolean;
+  strictMode?: boolean;
   copySources: CopySource[];
   activeGoalId?: string;
 }

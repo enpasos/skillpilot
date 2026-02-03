@@ -1,7 +1,7 @@
 # SkillPilot Whitepaper (EN)
 
-**Version:** 1.0.14
-**Date:** January 2026
+**Version:** 1.0.15
+**Date:** February 2026
 **Project:** SkillPilot
 
 ---
@@ -62,7 +62,7 @@ This is about:
 
 * **Operationalization:** learning outcomes are broken down into atomic skill goals (without changing the standard).
 * **Traceability:** each skill remains traceable to source/section/version.
-* **Navigability:** prerequisites and hierarchies are modeled explicitly so paths are plannable (didactic prereqs possibly as **overlays**). The graph does not enforce rigid paths: It supports pedagogical flexibility: In **'Optimistic Mode'** browsing and exploration are allowed, while for certificates the **'Pessimistic Mode'** checks if all gaps in the foundation are closed.
+* **Navigability:** prerequisites and hierarchies are modeled explicitly so paths are plannable (didactic prereqs possibly as **overlays**). The graph does not enforce rigid paths: It supports pedagogical flexibility. The **Optimistic Mode** checks prerequisites only **within the selected filter** (e.g., grade level), allowing learners to enter directly in the target year without blocking due to gaps from earlier years. When learners struggle, the tutor switches to diagnostic **Pessimistic Mode** to identify the missing foundation.
 * **Governance:** changes currently run via GitHub (Issues/PRs), versioning via GitHub history (see section 6).
 
 #### Map: Nodes & Edges
@@ -72,10 +72,26 @@ This is about:
   * **Prerequisites:** "A before B"
   * **Contains/Part-of:** "X includes Y and Z"
 
+#### Three Node Types in Practice
+
+SkillPilot distinguishes three **node types** that reflect different learning modes:
+
+* **Tutorial:** All subject topics are explained and practiced with the AI tutor.
+* **Memorize:** Individual facts are memorized (flashcards/SRS).
+* **Exam:** Abitur-style tasks are solved independently (e.g., photo from notebook/paper), immediately graded (points, pass/fail, errors), and then explained.
+
+In the curriculum **Upper Secondary School (DE, HE, G9, Secondary II) – Mathematics (QA Stage 2)**, **all three node types** are used.
+
+![Exam Node (Example)](examnode.en.png)
+
+**Formal specification:** The mathematical definition of the graph (e.g., acyclicity, Effective Requires) is publicly documented:  
+https://enpasos.github.io/skillpilot/concept/curriculum-graph/graph-definition/
+
 #### Frontier: Next Reachable Steps
 
 SkillPilot computes the **frontier**: skills whose prerequisites are met but not yet mastered.  
 This avoids jumps and keeps learning in the zone of sensible next steps. We call this boundary of current knowledge the **Frontier** (didactically: Zone of Proximal Development according to Vygotsky). It marks exactly the skills that are learnable next.
+The **frontier is not an AI recommendation**, but the mathematically computed set of all logically unlocked learning goals.
 
 ![The AI Tutor](Tutor.en.png)
 
@@ -187,7 +203,14 @@ SkillPilot is not just a concept: it already contains curricula/standards as sta
 2. **Stage 2 – QA by Curriculum Champion**  
    A Curriculum Champion has mastered a curriculum or a module inside SkillPilot, cleaned errors in the curriculum and SkillPilot, and awarded a **QA checkmark**. A curriculum can collect multiple QA checkmarks.
 
-**Current status:** All curricula are currently in **Stage 1**; no QA checkmarks yet. You can see the current status at https://skillpilot.com/curricula.
+**Current status:** The subject **Mathematics** for **Gymnasiale Oberstufe (DE, HE, G9, Secondary II)** has now reached **Stage 2**. All other curricula are currently in **Stage 1**. The current status is visible at https://skillpilot.com/curricula.  
+![QA Example Mathematics (Stage 2)](champion.en.png)
+
+**Curriculum Champions (practice anchor):**  
+![Curriculum Champion comic](../comic3/champion.en.png)  
+* Champions take responsibility for a curriculum or a **clearly scoped topic area**.
+* They work through the curriculum, gather practice feedback, and channel it into Issues/PRs.
+* Visibility creates accountability: Champion profiles show engagement (e.g., Issues/PRs) and progress.
 
 The QA process does not only cover curricula: the SkillPilot AI tutor is continuously qualified in real-world use so that the experience remains reliable and didactically sound across curricula.
 
@@ -240,12 +263,6 @@ SkillPilot is released as **open source** under the **Apache-2.0 license** - an 
 * Coupling content to skill goals is possible in the future.
 * Open interfaces enable contributions and integration.
 
-**Curriculum Champions (practice anchor):**
-![Curriculum Champion comic](../comic3/champion.en.png)
-* Champions take responsibility for a curriculum or a **clearly scoped topic area**.
-* They work through the curriculum, gather practice feedback, and channel it into Issues/PRs.
-* Visibility creates accountability: Champion profiles show engagement (e.g., Issues/PRs) and progress.
-
 **Governance & quality assurance (currently via GitHub + Champion program):**
 * Feedback flows through **GitHub Issues**, often initiated by champions.
 * Changes to the curriculum/graph run through **pull requests** (review on GitHub).
@@ -255,6 +272,12 @@ SkillPilot is released as **open source** under the **Apache-2.0 license** - an 
 **Initiator:**  
 The legal entity behind SkillPilot is **enpasos GmbH**. We invite partners to develop SkillPilot further together - in content, didactics, and technology.
 
-Start your pilot immediately and without registration (ID-based): A guide for the 5-minute start can be found at https://skillpilot.com/quickstart/en.
+Start your pilot immediately and without registration **(ID-based)**: A guide for the 5-minute start can be found at https://skillpilot.com/quickstart/en.  
+Note: Your **ID is the only key** to your data - store it safely.
+
+**More transparency:**  
+GitHub: https://github.com/enpasos/skillpilot  
+Documentation: https://enpasos.github.io/skillpilot/  
+Graph definition: https://enpasos.github.io/skillpilot/concept/curriculum-graph/graph-definition/
 
 ---

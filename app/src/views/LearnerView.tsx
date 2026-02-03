@@ -785,8 +785,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [skillpilotId, refreshState])
 
   // Save preferences to backend
-  const handlePreferencesChange = useCallback(async (strategy: 'RANDOM' | 'SEQUENTIAL', autoPilot: boolean) => {
-    setLearnerData(prev => prev ? { ...prev, learningStrategy: strategy, autoPilot } : null)
+  const handlePreferencesChange = useCallback(async (strategy: 'RANDOM' | 'SEQUENTIAL', autoPilot: boolean, strictMode: boolean) => {
+    setLearnerData(prev => prev ? { ...prev, learningStrategy: strategy, autoPilot, strictMode } : null)
 
     if (!skillpilotId) return
     try {
@@ -795,12 +795,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       await fetch(url, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ learningStrategy: strategy, autoPilot })
+        body: JSON.stringify({ learningStrategy: strategy, autoPilot, strictMode })
       })
+      // Refresh state to reflect strict mode changes in frontier
+      await refreshState(true)
     } catch (e) {
       console.warn('Failed to save preferences', e)
     }
-  }, [skillpilotId])
+  }, [skillpilotId, refreshState])
 
   // Save preferences to backend
 
@@ -1362,6 +1364,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         rootLandscapeId={rootLandscapeId}
         initialStrategy={learnerData?.learningStrategy}
         initialAutoPilot={learnerData?.autoPilot}
+        initialStrictMode={learnerData?.strictMode}
         onPreferencesChange={handlePreferencesChange}
       />
 

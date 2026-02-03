@@ -337,9 +337,9 @@ g \in G_F \setminus M_F \ \middle|\
 \right\}.
 $$
 
-### 12.3 Pessimistic mode
+### 12.3 Pessimistic mode or strict mode
 
-In **pessimistic mode**, candidate goals are still restricted to the filtered set, but prerequisites are enforced **globally** (including nodes outside the filter).
+In **pessimistic mode** or **strict mode**, candidate goals are still restricted to the filtered set, but prerequisites are enforced **globally** (including nodes outside the filter).
 
 Let $R_{eff}$ be computed on the full graph $(G,C,R_d)$. Then:
 
