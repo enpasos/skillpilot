@@ -73,7 +73,7 @@ public class CurriculaService {
 
     @Scheduled(fixedRate = 600000)
     public void refreshMetrics() {
-        log.info("Refreshing curricula metrics snapshot...");
+        log.debug("Refreshing curricula metrics snapshot...");
         try {
             List<LandscapeSummary> baseCurricula = landscapeService.getBaseCurricula();
             Map<String, CurriculumMetrics> metricsByCurriculum = new HashMap<>();
@@ -86,10 +86,6 @@ public class CurriculaService {
                 }
                 long totalAtomicGoals = 0;
                 List<LearningLandscape> closure = landscapeService.getClosure(curriculumId);
-                // DEBUG: Log closure size for the specific curriculum
-                if ("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da".equals(curriculumId)) {
-                    log.info("DEBUG refreshMetrics: Closure size for Overview curriculum: {}", closure.size());
-                }
                 for (LearningLandscape landscape : closure) {
                     if (landscape.getGoals() == null) {
                         continue;
@@ -98,15 +94,6 @@ public class CurriculaService {
                         if (goal.getContains() == null || goal.getContains().isEmpty()) {
                             totalAtomicGoals++;
                             goalToRoots.computeIfAbsent(goal.getId(), key -> new HashSet<>()).add(curriculumId);
-                            // DEBUG: Check if this is one of the suspect goals
-                            if ("1194630c-8ddf-402e-9fa4-def3efd38e02".equals(goal.getId()) ||
-                                    "840d3a44-3663-4102-b399-617e47e1c765".equals(goal.getId()) ||
-                                    "d0bf8574-890e-4f55-ac80-c3167b7a5309".equals(goal.getId()) ||
-                                    "5e4a153c-5f45-42eb-ac5e-9855984e29c2".equals(goal.getId()) ||
-                                    "999c8b41-75b3-4a84-814d-4c2f129fe7df".equals(goal.getId())) {
-                                log.info("DEBUG refreshMetrics: ADDED suspect goal {} to goalToRoots for curriculum {}",
-                                        goal.getId(), curriculumId);
-                            }
                         }
                     }
                 }
@@ -142,7 +129,7 @@ public class CurriculaService {
                     Collections.unmodifiableMap(immutableGoalToRoots),
                     defaultCurriculumId,
                     Instant.now()));
-            log.info("Curricula metrics snapshot refreshed. {} curricula.", metricsByCurriculum.size());
+            log.debug("Curricula metrics snapshot refreshed. {} curricula.", metricsByCurriculum.size());
         } catch (Exception e) {
             log.error("Failed to refresh curricula metrics snapshot", e);
         }
@@ -395,10 +382,6 @@ public class CurriculaService {
                 final String finalCurriculumId = curriculumId;
                 atomicIds.removeIf(id -> {
                     Set<String> roots = goalToRoots.get(id);
-                    // DEBUG LOG
-                    if ("1194630c-8ddf-402e-9fa4-def3efd38e02".equals(id)) {
-                        log.info("DEBUG: Checking removal for suspicious ID {}. Roots: {}", id, roots);
-                    }
                     // Fallback: if cache misses, check reachability dynamically
                     if (roots == null || !roots.contains(finalCurriculumId)) {
                         return !isReachable(finalCurriculumId, id);
@@ -406,50 +389,18 @@ public class CurriculaService {
                     return false;
                 });
             }
-            log.info("DEBUG: atomicIds size after filter: {}", atomicIds.size());
             if (atomicIds.isEmpty()) {
                 return 0;
             }
             long count = 0;
-            int processedCount = 0;
-            int thresholdFilteredCount = 0;
             for (Mastery mastery : masteryEntries) {
                 if (mastery.getValue() < MASTERY_THRESHOLD) {
-                    thresholdFilteredCount++;
                     continue;
                 }
-                processedCount++;
                 String goalKey = normalize(mastery.getGoalKey()).toLowerCase();
-                // Also check unnormalized in case keys are Case Sensitive in map (unlikely for
-                // UUIDs but possible if logic changes)
-                // Actually, atomicIds comes from goal definitions. Goal definitions are usually
-                // lowercase UUIDs from JSON.
-                // But let's check both or just normalize. Since we don't control atomicIds case
-                // here easily without re-collecting,
-                // and JSON IDs are lowercase, we assume atomicIds contains lowercase.
-                // However, 'collectAtomicGoalIds' returns what's in the JSON.
-                // Best practice: check if atomicIds contains the normalized key.
-                // But wait, atomicIds is a Set<String>. If it contains uppercase, and we check
-                // lowercase, it fails.
-                // The JSON parser usually preserves case. The standard UUIDs are lowercase.
-                // If DB has uppercase, we need to normalize DB value to lowercase.
-                // We should also ensure atomicIds are treated case-insensitively or we risk
-                // mismatch if JSON has uppercase (which we verified it doesn't generally, but
-                // safe is safe).
-                // For now, the hypothesis is DB has uppercase/dirty, JSON has canonical
-                // lowercase.
                 if (atomicIds.contains(goalKey) || atomicIds.contains(mastery.getGoalKey())) {
                     count++;
-                } else {
-                    // Log non-matching masteries for Math topic
-                    if ("ccf9569b-b0e4-4d76-98d5-65be461d4d76".equals(topicId)) {
-                        log.info("DEBUG MATH MISMATCH: Mastery {} not in atomicIds", goalKey);
-                    }
                 }
-            }
-            if ("ccf9569b-b0e4-4d76-98d5-65be461d4d76".equals(topicId)) {
-                log.info("DEBUG MATH: masteryEntries={}, thresholdFiltered={}, processed={}, matched={}",
-                        masteryEntries.size(), thresholdFilteredCount, processedCount, count);
             }
             // Add SRS/flashcard mastery count (these goals have dynamic mastery not stored
             // in DB)
@@ -481,11 +432,6 @@ public class CurriculaService {
                 }
             } else if (roots.contains(curriculumId)) {
                 count++;
-            } else {
-                if ("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da".equals(curriculumId)) {
-                    log.info("Mastery skipped for ID: {} (Normalized: {}) Roots: {}", mastery.getGoalKey(), goalKey,
-                            roots);
-                }
             }
         }
         return count;

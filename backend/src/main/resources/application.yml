@@ -5,6 +5,9 @@ server:
 logging:
   file:
     name: logs/skillpilot.log
+  level:
+    root: INFO
+    com.skillpilot.backend: INFO
   logback:
     rollingpolicy:
       max-file-size: 10MB
