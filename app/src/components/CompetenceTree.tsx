@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Target, Send, Check, Square, SquareX, CreditCard } from 'lucide-react'
+import { Target, Send, Check, Square, SquareX } from 'lucide-react'
 import { useTranslation } from '../hooks/useTranslation'
 import type { UiGoal } from '../goalTypes'
 import { sortGoalsTopologically } from '../utils/goalSorter'
@@ -182,7 +182,6 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     : (activeFilter && activeFilter !== 'all' ? activeFilter : undefined)
   const shouldShowFilterBadge = depth === 1 && !!effectiveFilterLabel
   const displayTitle = shouldShowFilterBadge ? `${goal.title} (${effectiveFilterLabel})` : goal.title
-  const isMemorization = (goal.tags ?? []).includes('memorization') || goal.nodeKind === 'memory'
 
   return (
     <div className="">
@@ -234,23 +233,18 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           </div>
         )}
 
-        <div className="flex items-center gap-1 flex-1 min-w-0">
-          <InlineMathText
-            text={displayTitle}
-            title={displayTitle}
-            className={`text-sm truncate flex-1 min-w-0 transition-colors ${isDimmed
-              ? 'text-slate-300 dark:text-slate-600' // Dimmed (Outside Scope)
-              : isPlanned
-                ? 'text-slate-900 dark:text-slate-100 font-medium' // Planned (Focus)
-                : mastered
-                  ? 'text-slate-500 dark:text-slate-400' // Mastered (Normal Scope)
-                  : 'text-slate-700 dark:text-slate-200' // Open (Normal Scope)
-              }`}
-          />
-          {isMemorization && (
-            <CreditCard size={14} className="text-slate-400 dark:text-slate-500 shrink-0" />
-          )}
-        </div>
+        <InlineMathText
+          text={displayTitle}
+          title={displayTitle}
+          className={`text-sm truncate flex-1 transition-colors ${isDimmed
+            ? 'text-slate-300 dark:text-slate-600' // Dimmed (Outside Scope)
+            : isPlanned
+              ? 'text-slate-900 dark:text-slate-100 font-medium' // Planned (Focus)
+              : mastered
+                ? 'text-slate-500 dark:text-slate-400' // Mastered (Normal Scope)
+                : 'text-slate-700 dark:text-slate-200' // Open (Normal Scope)
+            }`}
+        />
 
         {aggregatedPlannedGoals ? (
           <div className="flex items-center gap-1 text-slate-500">
