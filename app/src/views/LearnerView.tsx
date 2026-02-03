@@ -76,6 +76,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
 
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const srsCompletionRef = useRef<Record<string, number>>({})
+  const srsCompletionInFlightRef = useRef<Set<string>>(new Set())
 
   const { language } = useLanguage();
   const t = useTranslation();
@@ -877,6 +879,34 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       return false
     }
   }, [skillpilotId])
+
+  useEffect(() => {
+    const goalId = currentGoal?.id
+    if (!goalId) return
+    if (!currentGoal?.tags?.some((tag) => tag.startsWith('srs-deck'))) return
+
+    const mastery = srsMasteryByGoal[goalId]
+    if (mastery === undefined) return
+
+    const previous = srsCompletionRef.current[goalId]
+    if (previous === mastery) return
+    srsCompletionRef.current[goalId] = mastery
+
+    if (mastery < 1) return
+    if (srsCompletionInFlightRef.current.has(goalId)) return
+
+    srsCompletionInFlightRef.current.add(goalId)
+    void (async () => {
+      try {
+        await syncClientData(goalId)
+        await refreshState(true)
+        onRefresh?.()
+        setRefreshCounter((count) => count + 1)
+      } finally {
+        srsCompletionInFlightRef.current.delete(goalId)
+      }
+    })()
+  }, [currentGoal?.id, currentGoal?.tags, srsMasteryByGoal, refreshState, onRefresh, syncClientData])
 
   const handleImportClick = () => {
     fileInputRef.current?.click();
