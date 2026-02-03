@@ -9,7 +9,6 @@ import rehypeKatex from 'rehype-katex'
 import 'katex/dist/katex.min.css'
 
 interface FlashcardDrillProps {
-    onComplete: () => void
     dataSourceUrl?: string
     skillPilotId: string
     titleOverride?: string
@@ -17,6 +16,7 @@ interface FlashcardDrillProps {
     goalId: string
     onSync?: (goalId: string) => Promise<boolean>
     reloadSignal?: number
+    onStateChange?: () => void
 }
 
 interface VocabData {
@@ -110,7 +110,16 @@ const UI_TEXT = {
     }
 }
 
-export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleOverride, filterTags, goalId, onSync, reloadSignal }: FlashcardDrillProps) {
+export function FlashcardDrill({
+    dataSourceUrl,
+    skillPilotId,
+    titleOverride,
+    filterTags,
+    goalId,
+    onSync,
+    reloadSignal,
+    onStateChange
+}: FlashcardDrillProps) {
     const { language } = useLanguage()
     const t = language === 'de' ? UI_TEXT.de : UI_TEXT.en
 
@@ -258,6 +267,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
                 } catch (e) { console.error("Storage load error", e) }
 
                 setSrsState(loadedState)
+                onStateChange?.()
 
                 // Process Queue
                 const now = Date.now()
@@ -311,7 +321,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
     const currentCard = queue[currentCardIndex]
     const isFinished = currentCardIndex >= queue.length
 
-    const triggerSync = async () => {
+    const triggerSync = useCallback(async () => {
         if (!onSync || syncInFlight) return
         setSyncInFlight(true)
         try {
@@ -322,7 +332,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
         } finally {
             setSyncInFlight(false)
         }
-    }
+    }, [goalId, onSync, syncInFlight])
 
     useEffect(() => {
         if (!isFinished) {
@@ -334,7 +344,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
         if (!onSync) return
         finishedAutoSaveRef.current = true
         void triggerSync()
-    }, [isFinished, onSync])
+    }, [isFinished, onSync, triggerSync])
 
     const handleRate = (quality: number) => {
         if (!currentCard) return
@@ -362,6 +372,7 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
         const storageKey = `srs_state_${skillPilotId}_${goalId}`
         localStorage.setItem(storageKey, JSON.stringify(updatedSrsState))
         pendingSyncRef.current = true
+        onStateChange?.()
 
         setSessionStats(prev => {
             const nextReviewed = prev.reviewed + 1
@@ -434,9 +445,6 @@ export function FlashcardDrill({ onComplete, dataSourceUrl, skillPilotId, titleO
                     </div>
                 </div>
                 <p className="text-gray-500 mb-6">{titleOverride || vocabData?.title || 'Loading...'} - {t.noneDue}</p>
-                <button onClick={onComplete} className="bg-sky-500 text-white px-6 py-2 rounded-full hover:bg-sky-600">
-                    {t.back}
-                </button>
             </div>
         )
     }

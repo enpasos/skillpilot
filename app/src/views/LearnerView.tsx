@@ -13,6 +13,8 @@ import { ProgressPopover } from '../components/ProgressPopover'
 import { InlineMathText } from '../components/InlineMathText'
 import { useLanguage } from '../contexts/LanguageContext'
 import { isMastered } from '../goalUiUtils'
+import { useSrsMastery } from '../hooks/useSrsMastery'
+import { getSrsFilterTagsForGoal } from '../utils/srsTags'
 
 import type { UiGoal } from '../goalTypes'
 import type { Learner, FrontierGoal } from '../learnerTypes'
@@ -70,6 +72,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   // Refresh counter to force CompetenceTree re-render on SSE updates
   const [refreshCounter, setRefreshCounter] = useState(0);
+  const [srsMasteryTick, setSrsMasteryTick] = useState(0);
 
 
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -79,6 +82,21 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const selectedId = currentGoal?.id ?? rootGoals[0]?.id ?? ''
   const effectiveActiveGoalId = stateActiveGoalId ?? learnerData?.activeGoalId ?? null
+
+  const srsGoals = useMemo(() => {
+    return Array.from(goalIndexAll.values()).filter((goal) => {
+      if (landscapeId && goal.landscapeId && goal.landscapeId !== landscapeId) return false
+      if (!goal.tags || !goal.tags.some((tag) => tag.startsWith('srs-deck'))) return false
+      return typeof goal.extendedData?.vocabularySource === 'string'
+    })
+  }, [goalIndexAll, landscapeId])
+
+  const srsMasteryByGoal = useSrsMastery(srsGoals, skillpilotId, srsMasteryTick)
+
+  const getEffectiveMastery = useCallback((goalId: string) => {
+    const override = srsMasteryByGoal[goalId]
+    return override !== undefined ? override : getMastery(goalId)
+  }, [srsMasteryByGoal, getMastery])
 
   // Filter root goals based on Personal Curriculum (Level 2)
   const visibleRootGoals = useMemo(() => {
@@ -198,7 +216,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       // Atomic Goal
       if (!g.contains || g.contains.length === 0) {
         totalAtomic++
-        if (isMastered(getMastery(id))) {
+        if (isMastered(getEffectiveMastery(id))) {
           masteredAtomic++
         }
       } else {
@@ -215,7 +233,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         const g = goalIndexAll.get(id)
         if (g && (!g.contains || g.contains.length === 0)) {
           totalAtomic++
-          if (isMastered(getMastery(id))) {
+          if (isMastered(getEffectiveMastery(id))) {
             masteredAtomic++
           }
         }
@@ -223,7 +241,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
 
     return { totalAtomic, masteredAtomic }
-  }, [plannedGoals, goalIndexAll, visibleGoals, getMastery, backendStats, personalConfig, effectiveActiveFilter])
+  }, [plannedGoals, goalIndexAll, visibleGoals, getEffectiveMastery, backendStats, personalConfig, effectiveActiveFilter])
 
 
   // Reveal Active Goal Logic
@@ -320,7 +338,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         for (const reqId of g.requires) {
           // Check if requirement is visible? Usually yes.
           // Check mastery.
-          if (!isMastered(getMastery(reqId))) {
+          if (!isMastered(getEffectiveMastery(reqId))) {
             return false // Blocked by prerequisite
           }
         }
@@ -337,7 +355,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           }
         }
 
-        const m = getMastery(id)
+        const m = getEffectiveMastery(id)
         if (!isMastered(m)) {
           ids.add(id)
           return true // Found frontier, branch is active
@@ -365,7 +383,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     visibleRootGoals.forEach(r => check(r.id))
 
     return ids
-  }, [visibleRootGoals, goalIndexAll, getMastery, visibleGoals, activeFilter])
+  }, [visibleRootGoals, goalIndexAll, getEffectiveMastery, visibleGoals, activeFilter])
 
   const atomicFrontierOptions = useMemo(() => {
     const atomic = frontierOptions.filter((candidate) => candidate.type === 'atomic')
@@ -455,6 +473,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const handleSseUpdate = useCallback(async (payload?: { type?: string; nodeId?: string }) => {
     if (payload?.type === 'CLIENT_STATE_UPDATED' && payload?.nodeId) {
+      setSrsMasteryTick(c => c + 1)
       if (currentGoal?.id === payload.nodeId) {
         setSrsReloadCounter(c => c + 1)
       }
@@ -575,7 +594,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (!learnerData?.autoPilot || !learnerData?.activeGoalId) return
 
     // Check if active goal is mastered
-    const currentMastery = getMastery(learnerData.activeGoalId)
+    const currentMastery = getEffectiveMastery(learnerData.activeGoalId)
     if (isMastered(currentMastery)) {
       if (atomicFrontierOptions.length > 0) {
         const next = atomicFrontierOptions[0]
@@ -585,7 +604,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         }
       }
     }
-  }, [learnerData?.autoPilot, learnerData?.activeGoalId, getMastery, atomicFrontierOptions, handleSetActiveGoal])
+  }, [learnerData?.autoPilot, learnerData?.activeGoalId, getEffectiveMastery, atomicFrontierOptions, handleSetActiveGoal])
 
   const togglePlan = useCallback(async (id: string) => {
     // Single Goal Mode:
@@ -1008,7 +1027,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             key={`competence-tree-${refreshCounter}`}
             rootGoals={visibleRootGoals}
             allGoals={goalIndexAll}
-            getMastery={getMastery}
+            getMastery={getEffectiveMastery}
             plannedGoals={plannedGoals}
             onTogglePlan={togglePlan}
             onSelect={onSelectGoal}
@@ -1089,26 +1108,18 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   key={`${currentGoal.id}:${srsReloadCounter}`}
                   goalId={currentGoal.id}
                   dataSourceUrl={currentGoal.extendedData?.vocabularySource as string | undefined}
-                  onComplete={() => {
-                    // Refresh mastery if needed or just show confetti
-                    onRefresh?.()
-                  }}
                   skillPilotId={skillpilotId}
                   titleOverride={currentGoal.title}
                   onSync={syncClientData}
                   reloadSignal={srsReloadCounter}
-                  filterTags={(() => {
-                    const tags = currentGoal.tags || []
-                    const selectTags = tags.filter(t => t.startsWith('select:'))
-                    if (selectTags.length > 0) return selectTags
-                    return tags.filter(t => !t.startsWith('srs-deck') && !['structure', 'root', 'module', 'lesson', 'vocabulary', 'grammar', 'practice', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'].includes(t))
-                  })()}
+                  filterTags={getSrsFilterTagsForGoal(currentGoal)}
+                  onStateChange={() => setSrsMasteryTick(c => c + 1)}
                 />
               </div>
             ) : (
               <GoalCard
                 goal={currentGoal}
-                masteryValue={getMastery(currentGoal.id)}
+                masteryValue={getEffectiveMastery(currentGoal.id)}
                 showLearnerTools={true}
                 isPlanned={plannedGoals.has(currentGoal.id)}
                 isActive={effectiveActiveGoalId === currentGoal.id}
