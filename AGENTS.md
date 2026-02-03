@@ -133,7 +133,9 @@ The UI maintains a **mastery value per goal**:
 
 This is currently:
 
-- set **manually via UI controls** (slider + quick buttons),
+- set **manually via UI controls** (slider + quick buttons) **for non‑SRS goals**,
+- **auto‑derived for SRS/memorization goals** (`srs-deck:*` / `memorization`):  
+  a memorization goal is treated as mastered **only if no cards are due today**,
 - aggregated per **filtered goal set** into:
   - average mastery over core goals (weighted by `weight`),
   - average mastery over extension goals.
@@ -373,6 +375,9 @@ Layer B describes, for a fixed Layer‑A graph, the **state of a concrete learne
 
 - For each learner ℓ and goal g:
   - `mastery_ℓ[g] ∈ [0,1]` as in Section 4 (0, 0.5, 1 currently in the UI).
+- **SRS/memorization goals** are an exception:  
+  their mastery is **computed from the SRS state** (no cards due today)  
+  and **not** manually set by a tutor or LLM.
 - Optional:
   - history of visited goals, tasks, timestamps,
   - teacher comments / annotations,

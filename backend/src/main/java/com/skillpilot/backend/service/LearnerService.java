@@ -30,6 +30,8 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import java.util.concurrent.ConcurrentHashMap;
+import java.io.InputStream;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
@@ -53,6 +55,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import com.fasterxml.jackson.core.type.TypeReference;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
+import org.springframework.core.io.ClassPathResource;
 
 @Service
 public class LearnerService {
@@ -65,6 +68,22 @@ public class LearnerService {
 
     private final ObjectMapper objectMapper;
     private final ApplicationEventPublisher eventPublisher;
+    private final Map<String, List<SrsCard>> srsDeckCache = new ConcurrentHashMap<>();
+
+    private static final Set<String> SRS_FILTER_EXCLUDE = Set.of(
+            "structure",
+            "root",
+            "module",
+            "lesson",
+            "vocabulary",
+            "grammar",
+            "practice",
+            "A1",
+            "A2",
+            "B1",
+            "B2",
+            "C1",
+            "C2");
 
     @Value("${skillpilot.security.signing-secret}")
     private String signingSecret;
@@ -84,6 +103,278 @@ public class LearnerService {
         this.landscapeService = landscapeService;
         this.objectMapper = objectMapper;
         this.eventPublisher = eventPublisher;
+    }
+
+    private static final class SrsCard {
+        private final String id;
+        private final List<String> tags;
+
+        private SrsCard(String id, List<String> tags) {
+            this.id = id;
+            this.tags = tags;
+        }
+    }
+
+    private static Long parseNextReview(Object value) {
+        if (value instanceof Number number) {
+            return number.longValue();
+        }
+        if (value instanceof String text) {
+            String trimmed = text.trim();
+            if (trimmed.isEmpty()) {
+                return null;
+            }
+            try {
+                return Long.parseLong(trimmed);
+            } catch (NumberFormatException ignored) {
+                // Fallback to ISO-8601 timestamp.
+            }
+            try {
+                return Instant.parse(trimmed).toEpochMilli();
+            } catch (Exception ignored) {
+                return null;
+            }
+        }
+        return null;
+    }
+
+    private boolean isSrsGoal(LearningGoal goal) {
+        if (goal == null) {
+            return false;
+        }
+        Map<String, Object> extended = goal.getExtendedData();
+        if (extended != null && extended.get("vocabularySource") instanceof String) {
+            return true;
+        }
+        List<String> tags = goal.getTags();
+        if (tags == null) {
+            return false;
+        }
+        for (String tag : tags) {
+            if (tag == null) {
+                continue;
+            }
+            if (tag.startsWith("srs-deck") || "memorization".equals(tag)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private String getVocabularySource(LearningGoal goal) {
+        if (goal == null) {
+            return null;
+        }
+        Map<String, Object> extended = goal.getExtendedData();
+        if (extended == null) {
+            return null;
+        }
+        Object source = extended.get("vocabularySource");
+        return source instanceof String ? (String) source : null;
+    }
+
+    private List<String> getSrsFilterTags(LearningGoal goal) {
+        List<String> tags = goal != null ? goal.getTags() : null;
+        if (tags == null || tags.isEmpty()) {
+            return Collections.emptyList();
+        }
+        List<String> selectTags = new ArrayList<>();
+        for (String tag : tags) {
+            if (tag != null && tag.startsWith("select:")) {
+                selectTags.add(tag);
+            }
+        }
+        if (!selectTags.isEmpty()) {
+            return selectTags;
+        }
+        List<String> filtered = new ArrayList<>();
+        for (String tag : tags) {
+            if (tag == null) {
+                continue;
+            }
+            if (tag.startsWith("srs-deck")) {
+                continue;
+            }
+            if (SRS_FILTER_EXCLUDE.contains(tag)) {
+                continue;
+            }
+            filtered.add(tag);
+        }
+        return filtered;
+    }
+
+    private List<SrsCard> loadSrsDeckCards(String vocabularySource) {
+        if (vocabularySource == null || vocabularySource.isBlank()) {
+            return Collections.emptyList();
+        }
+        return srsDeckCache.computeIfAbsent(vocabularySource, source -> {
+            if (source.startsWith("http://") || source.startsWith("https://")) {
+                return Collections.emptyList();
+            }
+            String normalized = source.startsWith("/") ? source.substring(1) : source;
+            if (!normalized.startsWith("data/")) {
+                normalized = "data/" + normalized;
+            }
+            String resourcePath = "static/" + normalized;
+            ClassPathResource resource = new ClassPathResource(resourcePath);
+            if (!resource.exists()) {
+                return Collections.emptyList();
+            }
+            try (InputStream inputStream = resource.getInputStream()) {
+                Map<String, Object> data = objectMapper.readValue(
+                        inputStream,
+                        new TypeReference<Map<String, Object>>() {
+                        });
+                Object cardsObj = data.get("cards");
+                if (!(cardsObj instanceof List<?> cardsRaw)) {
+                    return Collections.emptyList();
+                }
+                List<SrsCard> cards = new ArrayList<>();
+                for (Object raw : cardsRaw) {
+                    if (!(raw instanceof Map<?, ?> cardMap)) {
+                        continue;
+                    }
+                    Object idObj = cardMap.get("id");
+                    if (idObj == null) {
+                        continue;
+                    }
+                    String id = String.valueOf(idObj);
+                    Object tagsObj = cardMap.get("tags");
+                    List<String> tags = null;
+                    if (tagsObj instanceof List<?> tagList) {
+                        List<String> collected = new ArrayList<>();
+                        for (Object tag : tagList) {
+                            if (tag != null) {
+                                collected.add(String.valueOf(tag));
+                            }
+                        }
+                        tags = collected;
+                    }
+                    cards.add(new SrsCard(id, tags));
+                }
+                return cards;
+            } catch (Exception e) {
+                return Collections.emptyList();
+            }
+        });
+    }
+
+    private Map<String, Object> loadSrsState(String skillpilotId, String nodeId) {
+        LearnerClientStateId id = new LearnerClientStateId(skillpilotId, nodeId);
+        LearnerClientState stored = learnerClientStateRepository.findById(id).orElse(null);
+        if (stored == null || stored.getClientState() == null || stored.getClientState().isBlank()) {
+            return Collections.emptyMap();
+        }
+        try {
+            return objectMapper.readValue(
+                    stored.getClientState(),
+                    new TypeReference<Map<String, Object>>() {
+                    });
+        } catch (Exception e) {
+            return Collections.emptyMap();
+        }
+    }
+
+    private boolean isSrsMasteredToday(List<SrsCard> cards, Map<String, Object> srsState, long now) {
+        if (cards == null || cards.isEmpty()) {
+            return false;
+        }
+        if (srsState == null || srsState.isEmpty()) {
+            return false;
+        }
+        for (SrsCard card : cards) {
+            Object rawState = srsState.get(card.id);
+            if (!(rawState instanceof Map<?, ?> stateMap)) {
+                return false;
+            }
+            Object nextReviewValue = stateMap.get("nextReview");
+            Long nextReview = parseNextReview(nextReviewValue);
+            if (nextReview == null || nextReview <= now) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private Map<String, Double> applySrsMasteryOverlay(String skillpilotId,
+            Map<String, LearningGoal> goals,
+            Map<String, Double> mastery) {
+        if (goals == null || goals.isEmpty()) {
+            return mastery;
+        }
+        Map<String, Double> result = new HashMap<>(mastery);
+        long now = System.currentTimeMillis();
+        for (LearningGoal goal : goals.values()) {
+            if (!isSrsGoal(goal)) {
+                continue;
+            }
+            String source = getVocabularySource(goal);
+            if (source == null || source.isBlank()) {
+                continue;
+            }
+            List<SrsCard> cards = loadSrsDeckCards(source);
+            if (cards.isEmpty()) {
+                result.put(goal.getId(), 0.0);
+                continue;
+            }
+            List<String> filterTags = getSrsFilterTags(goal);
+            List<SrsCard> filtered = cards;
+            if (!filterTags.isEmpty()) {
+                filtered = cards.stream()
+                        .filter(card -> card.tags != null
+                                && card.tags.stream().anyMatch(filterTags::contains))
+                        .collect(Collectors.toList());
+            }
+            if (filtered.isEmpty()) {
+                result.put(goal.getId(), 0.0);
+                continue;
+            }
+            Map<String, Object> srsState = loadSrsState(skillpilotId, goal.getId());
+            boolean masteredToday = isSrsMasteredToday(filtered, srsState, now);
+            result.put(goal.getId(), masteredToday ? 1.0 : 0.0);
+        }
+        return result;
+    }
+
+    private Map<String, MasteryEntryDTO> applySrsMasteryOverlayWithTimestamps(String skillpilotId,
+            Map<String, LearningGoal> goals,
+            Map<String, MasteryEntryDTO> mastery) {
+        if (goals == null || goals.isEmpty()) {
+            return mastery;
+        }
+        Map<String, MasteryEntryDTO> result = new HashMap<>(mastery);
+        long now = System.currentTimeMillis();
+        Instant nowInstant = Instant.ofEpochMilli(now);
+        for (LearningGoal goal : goals.values()) {
+            if (!isSrsGoal(goal)) {
+                continue;
+            }
+            String source = getVocabularySource(goal);
+            if (source == null || source.isBlank()) {
+                continue;
+            }
+            List<SrsCard> cards = loadSrsDeckCards(source);
+            if (cards.isEmpty()) {
+                result.put(goal.getId(), new MasteryEntryDTO(0.0, nowInstant));
+                continue;
+            }
+            List<String> filterTags = getSrsFilterTags(goal);
+            List<SrsCard> filtered = cards;
+            if (!filterTags.isEmpty()) {
+                filtered = cards.stream()
+                        .filter(card -> card.tags != null
+                                && card.tags.stream().anyMatch(filterTags::contains))
+                        .collect(Collectors.toList());
+            }
+            if (filtered.isEmpty()) {
+                result.put(goal.getId(), new MasteryEntryDTO(0.0, nowInstant));
+                continue;
+            }
+            Map<String, Object> srsState = loadSrsState(skillpilotId, goal.getId());
+            boolean masteredToday = isSrsMasteredToday(filtered, srsState, now);
+            result.put(goal.getId(), new MasteryEntryDTO(masteredToday ? 1.0 : 0.0, nowInstant));
+        }
+        return result;
     }
 
     @Transactional
@@ -168,24 +459,34 @@ public class LearnerService {
 
     @Transactional(readOnly = true)
     public Map<String, Double> getMastery(String skillpilotId) {
-        ensureLearnerExists(skillpilotId);
+        Learner learner = getLearner(skillpilotId);
         List<Mastery> mastered = masteryRepository.findByLearner_SkillpilotId(skillpilotId);
         Map<String, Double> result = new HashMap<>();
         for (Mastery m : mastered) {
             result.put(m.getGoalKey(), m.getValue());
         }
-        return result;
+        String curriculumId = learner.getSelectedCurriculum();
+        Map<String, LearningGoal> goals = Collections.emptyMap();
+        if (curriculumId != null) {
+            goals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
+        }
+        return applySrsMasteryOverlay(skillpilotId, goals, result);
     }
 
     @Transactional(readOnly = true)
     public Map<String, MasteryEntryDTO> getMasteryWithTimestamps(String skillpilotId) {
-        ensureLearnerExists(skillpilotId);
+        Learner learner = getLearner(skillpilotId);
         List<Mastery> mastered = masteryRepository.findByLearner_SkillpilotId(skillpilotId);
         Map<String, MasteryEntryDTO> result = new HashMap<>();
         for (Mastery m : mastered) {
             result.put(m.getGoalKey(), new MasteryEntryDTO(m.getValue(), m.getUpdatedAt()));
         }
-        return result;
+        String curriculumId = learner.getSelectedCurriculum();
+        Map<String, LearningGoal> goals = Collections.emptyMap();
+        if (curriculumId != null) {
+            goals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
+        }
+        return applySrsMasteryOverlayWithTimestamps(skillpilotId, goals, result);
     }
 
     @Transactional

@@ -762,6 +762,49 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           console.warn("Error collecting local stats for export", e)
         }
 
+        const parseTimestamp = (value: unknown) => {
+          if (!value) return 0
+          const numeric = Number(value)
+          if (Number.isFinite(numeric)) return numeric
+          const parsed = Date.parse(String(value))
+          return Number.isFinite(parsed) ? parsed : 0
+        }
+
+        // Merge in server-stored SRS state (important for multi-device exports)
+        try {
+          const srsNodes = srsGoals.filter((goal) => goal.tags?.some((tag) => tag.startsWith('srs-deck')))
+          await Promise.all(
+            srsNodes.map(async (goal) => {
+              const nodeId = goal.id
+              const syncUrl = apiBase
+                ? `${apiBase}/api/ui/learners/${skillpilotId}/client-state/${nodeId}`
+                : `/api/ui/learners/${skillpilotId}/client-state/${nodeId}`
+              try {
+                const stateRes = await fetch(syncUrl)
+                if (!stateRes.ok) return
+                const payload = await stateRes.json()
+                const serverState = payload?.srsState
+                if (!serverState || Object.keys(serverState).length === 0) return
+
+                const lastSyncKey = `srs_state_last_sync_${skillpilotId}_${nodeId}`
+                const localLast = localStorage.getItem(lastSyncKey)
+                const localLastAt = parseTimestamp(localLast)
+                const serverUpdatedAt = parseTimestamp(payload?.updatedAt)
+
+                const storageKey = `srs_state_${skillpilotId}_${nodeId}`
+                const existing = (clientData.srsState as Record<string, unknown>)[storageKey]
+                if (!existing || serverUpdatedAt > localLastAt) {
+                  (clientData.srsState as Record<string, unknown>)[storageKey] = serverState
+                }
+              } catch (err) {
+                console.warn('Error fetching server SRS state for export', err)
+              }
+            })
+          )
+        } catch (e) {
+          console.warn('Error merging server SRS state for export', e)
+        }
+
         const exportPayload = {
           version: "2.0",
           exportedAt: new Date().toISOString(),
@@ -783,7 +826,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     } catch (e) {
       console.error("Export error", e)
     }
-  }, [skillpilotId])
+  }, [skillpilotId, srsGoals])
 
   const syncClientData = useCallback(async (nodeId: string): Promise<boolean> => {
     if (!skillpilotId || !nodeId) return false
@@ -874,6 +917,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               console.log("Restoring SRS State...")
               const srsState = (clientDataToRestore as Record<string, unknown>).srsState as Record<string, unknown>
               let restoreCount = 0;
+              const goalStateMap = new Map<string, Record<string, unknown>>();
 
               // Regex to parse old keys: srs_state_{OLD_ID}_{GOAL_ID}
               // We assume ID does not contain underscores (UUIDs are hyphens).
@@ -891,10 +935,39 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   const newKey = `srs_state_${skillpilotId}_${goalId}`
 
                   localStorage.setItem(newKey, JSON.stringify(value))
+                  if (value && typeof value === 'object') {
+                    goalStateMap.set(goalId, value as Record<string, unknown>)
+                  }
                   restoreCount++;
                 }
               })
               console.log(`Restored ${restoreCount} SRS state entries.`)
+
+              // Persist restored SRS state to backend for memory nodes
+              const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+              await Promise.all(
+                Array.from(goalStateMap.entries()).map(async ([goalId, state]) => {
+                  const syncUrl = apiBase
+                    ? `${apiBase}/api/ui/learners/${skillpilotId}/client-state/${goalId}`
+                    : `/api/ui/learners/${skillpilotId}/client-state/${goalId}`
+                  try {
+                    const res = await fetch(syncUrl, {
+                      method: 'PUT',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({
+                        updatedAt: new Date().toISOString(),
+                        srsState: state
+                      })
+                    })
+                    if (res.ok) {
+                      const lastSyncKey = `srs_state_last_sync_${skillpilotId}_${goalId}`
+                      localStorage.setItem(lastSyncKey, new Date().toISOString())
+                    }
+                  } catch (err) {
+                    console.warn('Failed to persist imported SRS state', err)
+                  }
+                })
+              )
             } catch (err) {
               console.error("Error restoring local state", err)
             }
