@@ -76,7 +76,8 @@
         "242f0487-4bef-46e0-a6e8-ce8872de8f24",
         "44882cb3-dca4-432c-ac29-5f081315844e",
         "98c7a125-e2fb-41a5-92e1-d8407ee0fedf",
-        "3f0058c3-11c7-48dd-8427-cc6fd1dde0fd"
+        "3f0058c3-11c7-48dd-8427-cc6fd1dde0fd",
+        "26ce9245-53f1-424e-a3aa-0c71997d9307"
       ],
       "requires": [],
       "dimensionTags": {
@@ -96,6 +97,36 @@
         ],
         "phase": "E"
       }
+    },
+    {
+      "id": "26ce9245-53f1-424e-a3aa-0c71997d9307",
+      "title": "Lernkarten - E-Phase",
+      "titleEn": "Flashcards - E-Phase",
+      "description": "",
+      "descriptionEn": "",
+      "weight": 0.5,
+      "tags": [
+        "GK",
+        "LK",
+        "srs-deck:hes_phys_mechanics_ephase",
+        "memorization"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/hes_physic_flashcards_e_phase_deck.de.json"
+      },
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_ENERGIE"
+        ],
+        "phase": "E"
+      },
+      "sourceRef": "KC2024: E-Phase (Memorization Deck: Mechanics & Thermodynamics)"
     },
     {
       "id": "af70212d-e318-462d-a53f-fee8f05697d6",
@@ -284,8 +315,37 @@
       "id": "ff07337f-24bd-4148-8fa7-7a750d7ae5f8",
       "title": "Newtons Axiome und Inertialsysteme",
       "titleEn": "Newton's Axioms and Inertial Systems",
-      "description": "Die lernende Person kann die drei Newtonschen Axiome formulieren, an Beispielen deuten und Inertialsysteme von nicht-inertialen Bezugssystemen unterscheiden.",
-      "descriptionEn": "The learner can formulate the three Newton's axioms, interpret them using examples, and distinguish inertial systems from non-inertial reference systems.",
+      "description": "Cluster für die drei Newtonschen Axiome sowie Inertialsysteme.",
+      "descriptionEn": "Cluster for the three Newton's axioms and inertial systems.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "31b6e9ae-003a-474d-8055-e92f4fc3acc3",
+        "be89ee6a-d11d-4970-8c39-bb0c84edac56",
+        "d6550712-7460-446a-96ff-e7599c8f4fb7",
+        "2808ec13-5b8b-4fb9-9b1a-7792146995b7",
+        "4e327e2e-8ad6-4fc0-8c6e-46189e0ceea4"
+      ],
+      "requires": [
+        "d00d74e7-4fce-48e2-9d00-49f52082f8e6"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "31b6e9ae-003a-474d-8055-e92f4fc3acc3",
+      "title": "Newtons 1. Axiom (Trägheitsprinzip)",
+      "titleEn": "Newton's First Law (Principle of Inertia)",
+      "description": "Die lernende Person kann das Trägheitsprinzip formulieren und an einfachen Situationen deuten.",
+      "descriptionEn": "The learner can formulate the principle of inertia and interpret it in simple situations.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -294,6 +354,100 @@
       "contains": [],
       "requires": [
         "d00d74e7-4fce-48e2-9d00-49f52082f8e6"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "be89ee6a-d11d-4970-8c39-bb0c84edac56",
+      "title": "Newtons 2. Axiom (Grundgleichung der Mechanik)",
+      "titleEn": "Newton's Second Law (Fundamental Equation of Mechanics)",
+      "description": "Die lernende Person kann den Zusammenhang zwischen Kraft, Masse und Beschleunigung als Newtons zweites Axiom formulieren und deuten.",
+      "descriptionEn": "The learner can formulate and interpret the relationship between force, mass, and acceleration as Newton's second law.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "31b6e9ae-003a-474d-8055-e92f4fc3acc3"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "d6550712-7460-446a-96ff-e7599c8f4fb7",
+      "title": "Newtons 3. Axiom (Wechselwirkungsprinzip)",
+      "titleEn": "Newton's Third Law (Action-Reaction)",
+      "description": "Die lernende Person kann das Wechselwirkungsprinzip formulieren und an Beispielen erläutern.",
+      "descriptionEn": "The learner can formulate the action-reaction principle and explain it with examples.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "be89ee6a-d11d-4970-8c39-bb0c84edac56"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "2808ec13-5b8b-4fb9-9b1a-7792146995b7",
+      "title": "Inertialsysteme und Bezugssysteme",
+      "titleEn": "Inertial and Non-Inertial Reference Frames",
+      "description": "Die lernende Person kann Inertialsysteme definieren und von nicht-inertialen Bezugssystemen unterscheiden.",
+      "descriptionEn": "The learner can define inertial frames and distinguish them from non-inertial reference frames.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "31b6e9ae-003a-474d-8055-e92f4fc3acc3"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "4e327e2e-8ad6-4fc0-8c6e-46189e0ceea4",
+      "title": "Die drei Newtonschen Axiome benennen und erklären",
+      "titleEn": "Name and Explain the Three Newton's Laws",
+      "description": "Die lernende Person kann die drei Newtonschen Axiome benennen und in eigenen Worten erklären.",
+      "descriptionEn": "The learner can name the three Newton's laws and explain them in their own words.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "31b6e9ae-003a-474d-8055-e92f4fc3acc3",
+        "be89ee6a-d11d-4970-8c39-bb0c84edac56",
+        "d6550712-7460-446a-96ff-e7599c8f4fb7"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -316,7 +470,7 @@
       ],
       "contains": [],
       "requires": [
-        "ff07337f-24bd-4148-8fa7-7a750d7ae5f8"
+        "be89ee6a-d11d-4970-8c39-bb0c84edac56"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -1185,7 +1339,8 @@
       ],
       "contains": [
         "e7db6cca-346a-493c-bcd5-294468f4223b",
-        "98141a21-f5a2-4fea-a277-226d5f144ff6"
+        "98141a21-f5a2-4fea-a277-226d5f144ff6",
+        "88e7bae1-d35c-4b03-b7bb-79a3445dafd6"
       ],
       "requires": [],
       "dimensionTags": {
@@ -1205,6 +1360,36 @@
         ],
         "phase": "Q1"
       }
+    },
+    {
+      "id": "88e7bae1-d35c-4b03-b7bb-79a3445dafd6",
+      "title": "Lernkarten - Q1",
+      "titleEn": "Flashcards - Q1",
+      "description": "",
+      "descriptionEn": "",
+      "weight": 0.5,
+      "tags": [
+        "GK",
+        "LK",
+        "srs-deck:hes_phys_fields_q1",
+        "memorization"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/hes_physic_flashcards_q1_deck.de.json"
+      },
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q1"
+      },
+      "sourceRef": "KC2024: Q1 (Memorization Deck: Electric & Magnetic Fields)"
     },
     {
       "id": "e7db6cca-346a-493c-bcd5-294468f4223b",
@@ -1555,7 +1740,8 @@
       "contains": [
         "b0cb1efa-0661-4871-853c-a436398d26ad",
         "25e2a8a8-7827-4997-b625-5f000213b9f9",
-        "ddcea38e-61a0-441b-9632-3b6f7860c466"
+        "ddcea38e-61a0-441b-9632-3b6f7860c466",
+        "43fd27ed-2cf7-4139-91d9-9a83f9129a50"
       ],
       "requires": [
         "98141a21-f5a2-4fea-a277-226d5f144ff6"
@@ -1574,6 +1760,36 @@
         ],
         "phase": "Q2"
       }
+    },
+    {
+      "id": "43fd27ed-2cf7-4139-91d9-9a83f9129a50",
+      "title": "Lernkarten - Q2",
+      "titleEn": "Flashcards - Q2",
+      "description": "",
+      "descriptionEn": "",
+      "weight": 0.5,
+      "tags": [
+        "GK",
+        "LK",
+        "srs-deck:hes_phys_waves_q2",
+        "memorization"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/hes_physic_flashcards_q2_deck.de.json"
+      },
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q2"
+      },
+      "sourceRef": "KC2024: Q2 (Memorization Deck: Oscillations, Induction, Waves)"
     },
     {
       "id": "b0cb1efa-0661-4871-853c-a436398d26ad",
@@ -2025,7 +2241,8 @@
       "contains": [
         "8e73be49-37c9-4d95-8b01-4e76371ccd4e",
         "82e3a037-6865-4e3c-90aa-9dcd3f032df7",
-        "1362c3c8-fa69-45b8-88fe-98a1584ef625"
+        "1362c3c8-fa69-45b8-88fe-98a1584ef625",
+        "d8cd0a8c-7dfd-46d9-8bee-09f1e069edb8"
       ],
       "requires": [],
       "dimensionTags": {
@@ -2042,6 +2259,36 @@
         ],
         "phase": "Q3"
       }
+    },
+    {
+      "id": "d8cd0a8c-7dfd-46d9-8bee-09f1e069edb8",
+      "title": "Lernkarten - Q3",
+      "titleEn": "Flashcards - Q3",
+      "description": "",
+      "descriptionEn": "",
+      "weight": 0.5,
+      "tags": [
+        "GK",
+        "LK",
+        "srs-deck:hes_phys_quantum_q3",
+        "memorization"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/hes_physic_flashcards_q3_deck.de.json"
+      },
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_MATERIE"
+        ],
+        "phase": "Q3"
+      },
+      "sourceRef": "KC2024: Q3 (Memorization Deck: Quantum & Atomic Physics)"
     },
     {
       "id": "8e73be49-37c9-4d95-8b01-4e76371ccd4e",
@@ -2517,7 +2764,8 @@
         "302b9bb2-3976-40f8-a29e-d467959f6710",
         "45db17b1-0a4a-4e3a-9aa9-8e2c137db501",
         "d39d69b4-e1cb-47be-a2f2-e952606b78d4",
-        "20f81ea0-4c40-4c1b-9e14-886911af77d5"
+        "20f81ea0-4c40-4c1b-9e14-886911af77d5",
+        "1fc1878d-6e28-44f5-bc68-f0c11aedbe14"
       ],
       "requires": [],
       "dimensionTags": {
@@ -2534,6 +2782,36 @@
         ],
         "phase": "Q4"
       }
+    },
+    {
+      "id": "1fc1878d-6e28-44f5-bc68-f0c11aedbe14",
+      "title": "Lernkarten - Q4",
+      "titleEn": "Flashcards - Q4",
+      "description": "",
+      "descriptionEn": "",
+      "weight": 0.5,
+      "tags": [
+        "GK",
+        "LK",
+        "srs-deck:hes_phys_structure_q4",
+        "memorization"
+      ],
+      "extendedData": {
+        "vocabularySource": "/data/hes_physic_flashcards_q4_deck.de.json"
+      },
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "Q4"
+      },
+      "sourceRef": "KC2024: Q4 (Memorization Deck: Structure of Matter)"
     },
     {
       "id": "3c9d71e4-322d-40a6-a038-cd6990ddce49",
