@@ -27,76 +27,79 @@ SkillPilot models learning goals as nodes in a competence graph. This document d
 **Goal:** Maximize retention while minimizing time-on-task.
 
 **Key principles:**
-1. **Event-based:** The current level is derived from the full history (event sourcing).
-2. **Gentle regression:** Failure reduces level but does not reset it to zero.
-3. **Exponential intervals:** Successful reviews increase spacing over time.
+1. **SM-2 scheduling:** Reviews follow the SuperMemo-2 algorithm.
+2. **Stateful per card:** Each card stores its current interval, repetition count, easiness factor, and next review date.
+3. **Quality-driven:** User ratings map to quality scores and directly update the SM-2 state.
 
-### Data model (abstract)
+**Implementation note:** The current implementation supports **SM-2 only**. The model is intentionally simple and can be extended later (e.g., event-sourced histories, leech detection, or alternative SRS algorithms) without changing the goal schema.
 
-Each card keeps a history of review events:
-* `timestamp`: when the review happened
-* `result`: `SUCCESS`, `FAILURE`, or `EASY`
+### Data model (implemented)
 
-### Level calculation
+Each card stores a compact state (no event history):
+* `interval`: days until next review
+* `repetition`: consecutive successful reviews
+* `ef`: easiness factor
+* `nextReview`: timestamp (ms) for the next scheduled review
 
-Whenever a card status is needed, compute the current level `L` from the history:
+### Rating scale (UI)
 
-1. Initialize `L = 0`.
-2. Sort history chronologically.
-3. For each event:
-   * `SUCCESS` -> `L = L + 1`
-   * `EASY` -> `L = L + 2` (bonus for strong recall)
-   * `FAILURE` -> `L = ceil(L * 0.5)` (gentle regression)
-4. `L` never falls below 0.
+The four buttons map to SM-2 quality scores:
+* **nochmal** -> `1`
+* **schwer** -> `3`
+* **gut** -> `4`
+* **einfach** -> `5`
 
-### Scheduling intervals
+### Scheduling logic (SM-2)
 
-After computing `L`, determine the next review date based on the interval table.
+Rules applied on each review:
+* If `quality >= 3`, increment `repetition`. Set `interval = 1` when the previous repetition was `0`, `interval = 6` when it was `1`, otherwise `interval = round(lastInterval * ef)`. Update `ef` with the SM-2 formula and clamp to `>= 1.3`.
+* If `quality < 3`, set `repetition = 0`, `interval = 1`, keep `ef` unchanged.
+* Set `nextReview = now + interval * 24h`.
 
-| Level (L) | Interval (days) | Phase |
-| --- | --- | --- |
-| 0 | 0 (today) | acquisition |
-| 1 | 1 | consolidation |
-| 2 | 3 | consolidation |
-| 3 | 7 | long-term memory |
-| 4 | 16 | long-term memory |
-| 5 | 35 | maintenance |
-| n > 5 | `I_(n-1) * 2.5` | maintenance |
+### Due and mastery semantics
 
-**Rule of thumb:** `I_n ~= I_(n-1) * 2.5` for `n > 5`.
+* A card is **due** if `nextReview <= now` or if it has no stored state yet.
+* A memorization goal is treated as **mastered** when **no cards are due today**.
 
-### Leech detection (stuck cards)
+### Queue order
 
-Mark a card as `SUSPENDED` if:
-* More than 3 `FAILURE` events appear in the last 5 reviews, **or**
-* The level drops from `> 2` to `< 2` more than 3 times.
+Due cards are **shuffled per session** before taking up to 20 cards for a drill.
 
-The user should revise or rewrite the card before it returns to the review queue.
+### Example timeline (always perfect recall)
 
-### Pseudocode
+If the learner always answers **einfach** (`quality = 5`), intervals grow quickly. The UI boxes map to the current `interval`:
+* **Neu**: no stored state yet
+* **Lernen**: `interval < 3`
+* **Wdh**: `interval <= 10`
+* **Meister**: `interval > 10`
+
+Timeline for a single card:
+* Day 0 (first review): `interval = 1` → **Lernen**
+* Day 1: `interval = 6` → **Wdh**
+* Day 7: `interval = 16` → **Meister**
+* Day 23: `interval ≈ 45` → **Meister**
+* Day 68: `interval ≈ 131` → **Meister**
+* Day 199: `interval ≈ 393` → **Meister**
+
+These numbers come from `interval = round(lastInterval * ef)` with `ef` starting at `2.5` and increasing by `0.1` on each perfect review, so values are rounded.
+
+### Pseudocode (SM-2)
 
 ```text
-function getCardStatus(card, user):
-  history = loadHistory(card, user)
-  level = 0
+function review(cardState, quality):
+  if quality >= 3:
+    repetition = cardState.repetition + 1
+    if cardState.repetition == 0: interval = 1
+    else if cardState.repetition == 1: interval = 6
+    else interval = round(cardState.interval * cardState.ef)
+    ef = max(1.3, cardState.ef + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)))
+  else:
+    repetition = 0
+    interval = 1
+    ef = cardState.ef
 
-  for event in history (sorted ascending by date):
-    if event.isSuccess():
-      level = level + 1
-    else if event.isEasy():
-      level = level + 2
-    else if event.isFailure():
-      level = max(0, ceil(level * 0.5))
-
-  lastSuccessDate = getLastSuccessDate(history)
-  intervalDays = calculateInterval(level)
-  dueDate = lastSuccessDate + intervalDays
-
-  return {
-    currentLevel: level,
-    isDue: (today >= dueDate),
-    nextReview: dueDate
-  }
+  nextReview = now + interval * 24h
+  return { interval, repetition, ef, nextReview }
 ```
 
 ## Exam
