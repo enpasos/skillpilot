@@ -363,19 +363,19 @@ export function FlashcardDrill({
     const isFinished = currentCardIndex >= queue.length
 
     useEffect(() => {
-        if (!isFinished || queue.length === 0) {
+        if (!isFinished || queue.length === 0 || stats.due === 0) {
             autoReloadRef.current = false
             return
         }
         if (autoReloadRef.current) return
         autoReloadRef.current = true
-        // Auto-advance to the next batch / all-caught-up view (no extra click).
+        // Auto-advance to the next batch (no extra click).
         setQueue([])
         setCurrentCardIndex(0)
         reviewedCountRef.current = 0
         setIsFlipped(false)
         setReloadTrigger(prev => prev + 1)
-    }, [isFinished, queue.length])
+    }, [isFinished, queue.length, stats.due])
 
     useEffect(() => {
         if (!onStateChange) return
@@ -488,7 +488,9 @@ export function FlashcardDrill({
 
     if (!vocabData) return <div className="p-8 text-center">{t.loading}</div>
 
-    if (queue.length === 0 && currentCardIndex === 0) {
+    const allCaughtUp = stats.total > 0 && stats.due === 0
+
+    if (allCaughtUp) {
         return (
             <div className="flex flex-col items-center justify-center p-8 text-center h-[60vh]">
                 <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
@@ -513,14 +515,6 @@ export function FlashcardDrill({
                     </div>
                 </div>
                 <p className="text-gray-500 mb-6">{titleOverride || vocabData?.title || 'Loading...'} - {t.noneDue}</p>
-            </div>
-        )
-    }
-
-    if (isFinished) {
-        return (
-            <div className="flex flex-col items-center justify-center p-8 text-center h-[60vh]">
-                <p className="text-gray-500">{t.loading}</p>
             </div>
         )
     }
