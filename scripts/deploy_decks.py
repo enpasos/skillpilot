@@ -1,4 +1,5 @@
 import os
+import re
 import shutil
 
 def deploy_decks():
@@ -14,6 +15,8 @@ def deploy_decks():
         print(f"Created target directory: {target_dir}")
 
     count = 0
+    deck_pattern = re.compile(r"_deck([._][a-z]{2})?\.json$", re.IGNORECASE)
+
     for root, dirs, files in os.walk(curricula_dir):
         # We only care about 'json' directories directly under a curriculum folder usually, 
         # but walking everything is safe as long as filename matches.
@@ -22,7 +25,7 @@ def deploy_decks():
             continue
             
         for file in files:
-            if not file.endswith("_deck.json"):
+            if not deck_pattern.search(file):
                 continue
 
             source_path = os.path.join(root, file)

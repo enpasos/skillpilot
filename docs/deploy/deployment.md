@@ -51,7 +51,7 @@ echo "Fertig!"
 ## Why this order?
 
 1.  **`git pull`**: Ensures we have the latest `json` curriculum files and the `deploy_decks.py` script.
-2.  **`deploy_decks.py`**: Must run **before** `npm run build`. This script places the `cefr_*_deck.json` files into `app/public/data/`.
+2.  **`deploy_decks.py`**: Must run **before** `npm run build`. This script places all deck files matching `_deck*.json` (including locale suffixes like `_deck.de.json` or `_deck_en.json`) into `app/public/data/`.
 3.  **`deploy_whitepaper.py`**: Must run **before** `npm run build`. This script places the Whitepaper Markdown and images into `app/public/`.
 4.  **`npm run build`**: The build process parses the `public/` directory and bundles assets. By having the decks and whitepaper assets in place first, we ensure they are available in the final production build.
 5.  **`systemctl restart`**: Reloads the backend (Spring Boot) or web server to serve the new application.
