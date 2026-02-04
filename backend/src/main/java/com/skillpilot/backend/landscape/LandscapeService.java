@@ -135,7 +135,7 @@ public class LandscapeService {
                 gc.setExtendedData(g.getExtendedData());
                 gc.setType(g.getType());
                 gc.setNodeKind(g.getNodeKind());
-                gc.setExamData(g.getExamData());
+                gc.setExamData(localizeExamData(g.getExamData(), lang));
 
                 // Localize Goal Title/Desc
                 gc.setTitle(StringUtils.hasText(g.getTitleEn()) ? g.getTitleEn() : g.getTitle());
@@ -149,6 +149,27 @@ public class LandscapeService {
             copy.setGoals(localizedGoals);
         }
 
+        return copy;
+    }
+
+    private ExamData localizeExamData(ExamData original, String lang) {
+        if (original == null) {
+            return null;
+        }
+        if (!"en".equals(lang)) {
+            return original;
+        }
+
+        ExamData copy = new ExamData();
+        copy.setTaskContent(StringUtils.hasText(original.getTaskContentEn())
+                ? original.getTaskContentEn()
+                : original.getTaskContent());
+        copy.setTaskContentEn(original.getTaskContentEn());
+        copy.setSolutionContent(StringUtils.hasText(original.getSolutionContentEn())
+                ? original.getSolutionContentEn()
+                : original.getSolutionContent());
+        copy.setSolutionContentEn(original.getSolutionContentEn());
+        copy.setScoring(original.getScoring());
         return copy;
     }
 

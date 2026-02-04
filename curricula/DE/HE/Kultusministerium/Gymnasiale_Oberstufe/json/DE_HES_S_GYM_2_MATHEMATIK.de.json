@@ -11672,7 +11672,9 @@
               "description": "Skizze erstellt"
             }
           ]
-        }
+        },
+        "taskContentEn": "Given the function $f(x) = \\frac{e^x}{x}$ for $x > 0$.\nDetermine the behavior of $f$ as $x \\to 0$ and $x \\to \\infty$.\nCompute the extremum and sketch the graph.",
+        "solutionContentEn": "**Limits:**\n$\\lim_{x \\to 0} f(x) = \\infty$ (vertical asymptote).\n$\\lim_{x \\to \\infty} f(x) = \\infty$ (since $e^x$ grows faster than $x$).\n\n**Extremum:**\n$f'(x) = \\frac{e^x x - e^x}{x^2} = \\frac{e^x(x-1)}{x^2}$.\nZero at $x=1$. $f(1)=e$. Sign change $- \\to +$ (minimum).\n\n**Sketch:**\nFrom above down to the minimum at $(1|e)$, then rising steeply."
       }
     },
     {
@@ -11715,7 +11717,9 @@
               "description": "Stammfunktion und Wert berechnet"
             }
           ]
-        }
+        },
+        "taskContentEn": "Compute the integral: $$\\int_0^{\\sqrt{\\pi}} x \\cdot \\sin(x^2) \\, dx$$\n(Hint: substitution $z = x^2$).",
+        "solutionContentEn": "Substitution $z = x^2 \\Rightarrow dz = 2x dx \\Rightarrow x dx = \\frac{1}{2} dz$.\nBounds: $x=0 \\to z=0$, $x=\\sqrt{\\pi} \\to z=\\pi$.\n\n$$\\int_0^\\pi \\frac{1}{2} \\sin(z) dz = \\frac{1}{2} [-\\cos(z)]_0^\\pi$$\n$$= \\frac{1}{2} (-\\cos(\\pi) - (-\\cos(0))) = \\frac{1}{2} (1 + 1) = 1$$"
       }
     },
     {
@@ -11748,7 +11752,9 @@
               "description": "Korrekte logische Herleitung"
             }
           ]
-        }
+        },
+        "taskContentEn": "A test for a binomial random variable $X$ ($n=100$) has the acceptance region $A = \\{0, \\dots, k\\}$. The null hypothesis is $H_0: p \\le 0.1$.\nDescribe how the type I error probability changes when the critical value $k$ is increased. Justify your answer without calculation.",
+        "solutionContentEn": "**Hypothesis:** $H_0: p \\le 0.1$.\nType I error is the probability that $X$ lies in the rejection region $\\bar{A} = \\{k+1, \\dots, 100\\}$ even though $H_0$ is true.\nIf $k$ is increased, the acceptance region $A$ becomes larger and the rejection region $\\bar{A}$ becomes smaller.\nTherefore the probability of falling into the rejection region decreases.\n\n**Answer:** The type I error probability becomes **smaller**."
       }
     },
     {
@@ -11791,7 +11797,9 @@
               "description": "Korrekte Schlussfolgerung"
             }
           ]
-        }
+        },
+        "taskContentEn": "Given the line $g: \\vec{x} = \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix} + r \\cdot \\begin{pmatrix} 2 \\\\ 0 \\\\ -1 \\end{pmatrix}$ and the plane $E: x_1 + 2x_2 + 2x_3 = 10$.\nExamine the relative position of $g$ and $E$. If applicable, compute the intersection point.",
+        "solutionContentEn": "**Position check:**\nDirection vector $\\vec{u} = (2, 0, -1)^T$, normal vector $\\vec{n} = (1, 2, 2)^T$.\nDot product: $\\vec{u} \\cdot \\vec{n} = 2\\cdot1 + 0\\cdot2 + (-1)\\cdot2 = 0$. $\\Rightarrow$ $g$ is parallel to $E$ or lies in $E$.\n\n**Point test:**\nSupport point $P(1|2|3)$ in $E$: $1 + 2(2) + 2(3) = 1 + 4 + 6 = 11 \\neq 10$.\n\n**Result:** The line $g$ is strictly parallel to the plane $E$."
       }
     },
     {
@@ -11834,7 +11842,9 @@
               "description": "Wert korrekt berechnet"
             }
           ]
-        }
+        },
+        "taskContentEn": "Given $f(x) = e^{2x - 1}$.\nDetermine the derivative $f'(x)$ and an antiderivative $F(x)$.\nCompute the value of $f'(0.5)$.",
+        "solutionContentEn": "**Derivative:**\nChain rule: $f'(x) = e^{2x - 1} \\cdot 2 = 2e^{2x - 1}$.\n\n**Antiderivative:**\nLinear substitution: $F(x) = \\frac{1}{2} e^{2x - 1}$.\n\n**Value:**\n$f'(0.5) = 2e^{2(0.5) - 1} = 2e^0 = 2$."
       }
     },
     {
@@ -11877,7 +11887,9 @@
               "description": "Interpretation korrekt"
             }
           ]
-        }
+        },
+        "taskContentEn": "In a group, 60% are female ($W$). 20% of the people are female and smoke ($R$).\nDetermine the probability that a randomly selected person smokes given that she is female: $P_W(R)$.\nInterpret the result in context.",
+        "solutionContentEn": "Given: $P(W) = 0.6$ and $P(W \\cap R) = 0.2$.\nWe seek: $P(R|W) = \\frac{P(W \\cap R)}{P(W)}$.\n\n$$P_W(R) = \\frac{0.2}{0.6} = \\frac{1}{3} \\approx 33.3\\%$$\n\n**Interpretation:** One third of the women in the group smoke."
       }
     },
     {
@@ -11910,7 +11922,9 @@
               "description": "Berechnung mit Begründung"
             }
           ]
-        }
+        },
+        "taskContentEn": "The function $f$ is point-symmetric about the origin and is defined for all $x$. It holds that $\\int_0^3 f(x) \\, dx = 4$.\nDetermine the value of the integral $\\int_{-3}^3 (f(x) + 2) \\, dx$. Justify your reasoning.",
+        "solutionContentEn": "**1. Symmetry (2 BE)**\nPoint symmetry $\\Rightarrow \\int_{-3}^3 f(x) \\, dx = 0$.\n\n**2. Calculation (3 BE)**\n$\\int_{-3}^3 (f(x)+2) dx = \\int_{-3}^3 f(x) dx + \\int_{-3}^3 2 dx = 0 + [2x]_{-3}^3 = 2(3) - 2(-3) = 12$."
       }
     },
     {
@@ -11943,7 +11957,9 @@
               "description": "Herleitung und Begründung"
             }
           ]
-        }
+        },
+        "taskContentEn": "Given a parallelogram $ABCD$ with the position vectors $\\vec{a}$, $\\vec{b}$, $\\vec{c}$ and $\\vec{d}$. The diagonals intersect at $M$.\nExpress the vector $\\vec{m} = \\vec{OM}$ solely in terms of $\\vec{a}$ and $\\vec{c}$ and justify vectorially that $M$ is the midpoint of segment $AC$.",
+        "solutionContentEn": "$\\vec{m} = \\vec{a} + \\frac{1}{2}\\vec{AC} = \\vec{a} + \\frac{1}{2}(\\vec{c}-\\vec{a}) = \\frac{1}{2}(\\vec{a}+\\vec{c})$.\nSince $\\vec{AM} = \\vec{m}-\\vec{a} = \\frac{1}{2}(\\vec{c}-\\vec{a}) = \\frac{1}{2}\\vec{AC}$, $M$ is the midpoint."
       }
     },
     {
@@ -11976,7 +11992,9 @@
               "description": "Parameterbestimmung und Prüfung"
             }
           ]
-        }
+        },
+        "taskContentEn": "Given the line $g: \\vec{x} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix} + r \\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}$ and the family of lines $h_a: \\vec{x} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 2 \\end{pmatrix} + s \\begin{pmatrix} 1 \\\\ a \\\\ 0 \\end{pmatrix}$.\nDetermine for which parameter $a$ the lines $g$ and $h_a$ are strictly parallel.",
+        "solutionContentEn": "**1. Parallelism (direction vectors)**\n$\\vec{u} = (1, 1, 0)^T$, $\\vec{v} = (1, a, 0)^T$. Collinear when $a=1$.\n\n**2. Strictly parallel (point test)**\nDoes $P(1|0|1)$ lie on $h_1$? $(1, 0, 1)^T = (0, 1, 2)^T + s(1, 1, 0)^T$. Third component: $1 = 2$ (contradiction). Thus strictly parallel."
       }
     },
     {
@@ -12009,7 +12027,9 @@
               "description": "Ansatzformel korrekt"
             }
           ]
-        }
+        },
+        "taskContentEn": "A multiple-choice test consists of $n$ questions with 4 answer options each, exactly one of which is correct. A candidate guesses all questions (Bernoulli chain).\nProvide a setup to determine the minimum number $n$ of questions so that the probability of **at least one** correct answer is greater than 99%. (You do not need to finish the calculation; the setup is sufficient.)",
+        "solutionContentEn": "$p=0.25$. $P(X \\ge 1) > 0.99 \\Rightarrow 1 - P(X=0) > 0.99$.\n$1 - 0.75^n > 0.99 \\Rightarrow 0.75^n < 0.01$.\nSetup is sufficient (logarithm)."
       }
     },
     {
@@ -12084,7 +12104,9 @@
               "description": "Variation/Monotonie-Nachweis"
             }
           ]
-        }
+        },
+        "taskContentEn": "![Fig. 4: A complex suspension bridge between two pylons. The main cable sags, with vertical hangers holding the roadway. The roadway is slightly cambered upward.](/assets/abi/2026_1/image4.png)\n\nThe main cable of a bridge is approximated by the catenary function:\n\n$$\nk(x) = 10 \\cdot (e^{0,02x} + e^{-0,02x})\n$$\n\nThe x-axis represents the water surface (height 0). The roadway (due to its camber) follows the parabola:\n\n$$\nf(x) = -0,0005x^2 + 10\n$$\n\n(All measurements in meters. Symmetry about the y-axis is assumed; pylons at $x = \\pm 100$).\n\n1. **Geometry:** Determine the total height of the pylons above the water level (y-coordinate of the cable attachment points at $x=\\pm 100$) and the lowest point of the main cable. (5 BE)\n2. **Vertical cables:** Between the main cable $k(x)$ and the roadway $f(x)$ run vertical hangers.\n   Determine the length of the shortest and longest hanger for $-100 \\le x \\le 100$. (8 BE)\n3. **Angle:** At what angle does the main cable meet the pylons? (4 BE)\n4. **Area/covering:** The area between the main cable and the roadway is to be covered on the sides with an advertising net.\n   Compute the area. (7 BE)\n5. **Variation:** Under load the cable shape changes. The new function is $k_a(x) = \\frac{1}{5a} (e^{ax} + e^{-ax})$ with $a>0$ (for $a=0{,}02$ you get the cable from part 1).\n   Show in general, by calculation or argument, that the larger the parameter $a$, the steeper the rise of the cable at the pylon ($x=100$). (6 BE)",
+        "solutionContentEn": "**1. Geometry (5 BE)**\n$k(100) \\approx 75.2$ m. $k(0) = 20$ m.\n\n**2. Vertical cables (8 BE)**\n$L(x) = k(x) - f(x)$. Min at $x=0$: $10$ m. Max at $x=100$: $70.2$ m.\n\n**3. Angle (4 BE)**\n$k'(100) \\approx 1.45 \\Rightarrow \\alpha \\approx 55.4^\\circ$.\n\n**4. Area (7 BE)**\n$\\int_{-100}^{100} (k(x)-f(x)) dx \\approx 5,587.1 \\, m^2$.\n\n**5. Variation (6 BE)**\n$k_a'(100) = \\frac{1}{5}(e^{100a} - e^{-100a})$. Strictly increasing for $a>0$."
       }
     },
     {
@@ -12132,7 +12154,9 @@
               "description": "Integral und Parameter"
             }
           ]
-        }
+        },
+        "taskContentEn": "The concentration of a medication in the blood is modeled by the family of functions:\n\n$$\nc_k(t) = 10 \\cdot t \\cdot e^{1 - k \\cdot t} \\quad (t \\ge 0, k > 0)\n$$\n\n($t$ in hours, $c_k(t)$ in mg/l).\n\n1. **Behavior:** Investigate the behavior as $t \\to \\infty$. Justify that the concentration is always positive for $t>0$. (4 BE)\n2. **Maximum effect:** Determine, as a function of $k$, the time of maximum concentration and the maximum concentration value.\n   For which parameter $k$ is the maximum reached exactly after 2 hours? (9 BE)\n3. **Decay rate:** Show that the inflection point of the function is at $t_W = \\frac{2}{k}$.\n   Interpret the meaning of the inflection point in the context of the drug's decay. (6 BE)\n4. **Total exposure:** The integral $\\int_0^{\\infty} c_k(t) \\, dt$ is a measure of the body's \"total exposure\" (AUC = Area Under Curve).\n   Determine this value as a function of $k$.\n   A doctor wants to double the exposure. Investigate how the parameter $k$ must be changed. (11 BE)",
+        "solutionContentEn": "**1. Behavior (4 BE)**\n$\\lim_{t \\to \\infty} c_k(t) = 0$ (exponential dominates). $t, k, e^x > 0 \\Rightarrow c_k(t) > 0$.\n\n**2. Maximum (9 BE)**\n$c_k'(t) = 10e^{1-kt}(1-kt) = 0 \\Rightarrow t = 1/k$. $c(1/k) = 10/k$. $t=2 \\Rightarrow k=0.5$.\n\n**3. Inflection point (6 BE)**\n$c_k''(t) = 10e^{1-kt}(-k(1-kt) - k) = 10k e^{1-kt}(kt-2) = 0 \\Rightarrow t=2/k$. Strongest decrease.\n\n**4. Total exposure (11 BE)**\nIntegration by parts. $\\int_0^{\\infty} c_k(t) dt = \\frac{10e}{k^2}$. Doubling: replace $k$ by $k/\\sqrt{2}$."
       }
     },
     {
@@ -12175,7 +12199,9 @@
               "description": "Rekonstruktion und Erläuterung"
             }
           ]
-        }
+        },
+        "taskContentEn": "### **C1 (Linear Algebra – \"Population Dynamics\", 20 BE)**\n\n![Fig. 5: A draft transition diagram and a virus.](/assets/abi/2026_1/image5.png)\n\nA virus population mutates between states A, B and C.\nThe weekly transition matrix is:\n\n$$\nM = \\begin{pmatrix} 0,6 & 0,1 & 0 \\\\ 0,3 & 0,7 & 0,2 \\\\ 0,1 & 0,2 & 0,8 \\end{pmatrix}\n$$\n\n1. **System understanding:** Interpret the column sums of $M$. Is this a closed population?\n   Draw a transition diagram for states A, B and C. (4 BE)\n2. **Forecast:** Initially there are 10,000 viruses of type A (others 0).\n   Determine the distribution after 10 weeks.\n   Investigate whether a stable long-term equilibrium is reached. (8 BE)\n3. **Reconstruction:** In a sample, the distribution $\\vec{x}_{t+1} = (500, 800, 1000)^T$ was found.\n   Determine the distribution in the previous week.\n   Explain why not every arbitrary distribution must have a \"predecessor\" distribution. (8 BE)",
+        "solutionContentEn": "**1. System understanding (4 BE)**\nColumn sums = 1. Closed population.\nDiagram: A->A, A->B, A->C (0), etc. Arrows according to matrix entries.\n\n**2. Forecast (8 BE)**\n$\\vec{v}_{10} \\approx (1440, 3940, 4620)^T$. Fixed vector $\\approx (1053, 4210, 4737)^T$.\n\n**3. Reconstruction (8 BE)**\n$\\vec{x}_t = M^{-1}\\vec{x}_{t+1} \\approx (1389, -444, 1355)^T$. Negative component $\\Rightarrow$ impossible."
       }
     },
     {
@@ -12223,7 +12249,9 @@
               "description": "Kapazitätsplanung"
             }
           ]
-        }
+        },
+        "taskContentEn": "![Fig. 6: A tree diagram visualizing the test procedure. First stage: infected (C) vs. not infected. Second stage: test positive (+) vs. test negative (-).](/assets/abi/2026_1/image6.en.png)\n\nA rapid test for type C reacts positive for 99% of infected samples (sensitivity), but also for 2% of non-infected samples (false-positive rate).\nThe prevalence of type C in the overall population is 0.5% ($P(C) = 0.005$).\n\n1. **Test analysis:** Determine the probability that a random sample tests positive. (4 BE)\n2. **Conditional probability:** A person receives a positive test result.\n   Compute the probability that they *actually* have virus type C.\n   Interpret the result for the testing strategy. (5 BE)\n3. **Test optimization:** How many times must the test be repeated independently for one person so that, given all positive results, the probability of a true infection exceeds 90%? (6 BE)\n4. **Capacity planning:** A lab processes a batch of 2,000 samples (false-positive rate $p=0.02$). Determine the smallest number $k$ such that the number of false positives lies in the interval $[0; k]$ with probability at least 95%. (5 BE)",
+        "solutionContentEn": "**1. Test analysis (4 BE)**\n$P(T+) = 0.005 \\cdot 0.99 + 0.995 \\cdot 0.02 \\approx 2.49\\%$.\n\n**2. Conditional probability (5 BE)**\n$P(C|T+) = \\frac{0.00495}{0.02485} \\approx 19.9\\%$.\nInterpretation: Even with a positive test, infection is still unlikely (mass testing is problematic).\n\n**3. Test optimization (6 BE)**\nFor $n$ independent tests:\n$P(C|n \\times Pos) = \\frac{0.005 \\cdot 0.99^n}{0.005 \\cdot 0.99^n + 0.995 \\cdot 0.02^n}$.\nFor $n=2$ this gives $\\approx 92\\% > 90\\%$.\nResult: One repetition (2 tests total) is sufficient mathematically. Note: independence is questionable in practice.\n\n**4. Capacity planning (5 BE)**\n$X \\sim B_{2000; 0.02}$. Find the smallest $k$ with $P(X \\le k) \\ge 0.95$.\nNumerically: $P(X \\le 50) \\approx 0.9506$, $P(X \\le 49) \\approx 0.935$.\n**Result:** $k = 50$."
       }
     },
     {
@@ -12325,7 +12353,9 @@
               "description": "Art der Extrema begründet"
             }
           ]
-        }
+        },
+        "taskContentEn": "Given the function $f(x) = (x^2 - 3) \\cdot e^x$.\n\n1. Determine the zeros of $f$. (2 BE)\n2. Investigate $f$ for local extrema and determine their type. (3 BE)",
+        "solutionContentEn": "**1. Zeros (2 BE)**\n\nAnsatz: $f(x) = 0$.\nSince $e^x > 0$ for all $x$, we must have:\n$$x^2 - 3 = 0 \\Rightarrow x_{1,2} = \\pm\\sqrt{3}$$\n\n**2. Extrema (3 BE)**\n\nDerivative (product rule):\n$$f'(x) = 2x e^x + (x^2-3)e^x = e^x(x^2+2x-3)$$\n\nNecessary condition $f'(x)=0$:\n$$x^2+2x-3=0 \\Rightarrow x_1=1, x_2=-3$$\n\nSign change of $f'$ (determined by the parabola $x^2+2x-3$):\n* $x=-3$: sign change $+ \\to -$ (local maximum)\n* $x=1$: sign change $- \\to +$ (local minimum)"
       }
     },
     {
@@ -12373,7 +12403,9 @@
               "description": "Interpretation im Sachkontext"
             }
           ]
-        }
+        },
+        "taskContentEn": "![Dike sketch](/assets/abi/2026_1/image1.en.png)\n\nThe cross-section of a dike is modeled by $h(x) = x \\cdot (5-x)$ for $0 \\le x \\le 5$. (Profile simplified, units in meters).\nAn observer stands at point $P(-1|0)$ on the ground in front of the dike.\nThe observer's height can be neglected; the line of sight starts at point $P$ on the ground.\nDetermine mathematically whether the direct line of sight from the observer to the dike crest (maximum) is blocked by the dike profile.",
+        "solutionContentEn": "**1. Crest coordinates (maximum):**\n$$h'(x) = 5 - 2x = 0 \\Rightarrow x = 2.5$$\n$$h(2.5) = 2.5 \\cdot 2.5 = 6.25 \\Rightarrow S(2.5 | 6.25)$$\n\n**2. Line of sight check (tangent approach):**\nTangent from $P(-1|0)$ to $h(x)$. Slope:\n$$\\frac{h(u) - 0}{u - (-1)} = h'(u) \\Rightarrow \\frac{5u - u^2}{u+1} = 5 - 2u$$\n$$5u - u^2 = (5 - 2u)(u + 1) \\Rightarrow u^2 + 2u - 5 = 0$$\n$u = -1 + \\sqrt{6} \\approx 1.45$.\n\n**Conclusion:** The tangent touches at $x \\approx 1.45$. Since the dike continues to rise until $x=2.5$, the crest lies \"behind\" the curvature and is not visible.\n\n**Result:** The line of sight is blocked."
       }
     },
     {
@@ -12411,7 +12443,9 @@
               "description": "Korrekte Skizze"
             }
           ]
-        }
+        },
+        "taskContentEn": "Given the plane $E: 2x_1 + 2x_2 - x_3 = 10$.\nDetermine the coordinates of the intercepts of the plane with the three coordinate axes and sketch the triangular section of the plane in a coordinate system.",
+        "solutionContentEn": "**Determine intercepts:**\n\n* $S_1$ (set $x_2=x_3=0$): $2x_1 = 10 \\Rightarrow S_1(5|0|0)$\n* $S_2$ (set $x_1=x_3=0$): $2x_2 = 10 \\Rightarrow S_2(0|5|0)$\n* $S_3$ (set $x_1=x_2=0$): $-x_3 = 10 \\Rightarrow S_3(0|0|-10)$\n\n**Sketch:**\nDraw the coordinate system and mark the triangle $S_1 S_2 S_3$."
       }
     },
     {
@@ -12459,7 +12493,9 @@
               "description": "Produktregel für Teil 2 korrekt angewandt"
             }
           ]
-        }
+        },
+        "taskContentEn": "An urn contains 2 red and 3 black balls.\nThree draws are made *with* replacement.\nGive an expression for the probability that...\n\n1. ...exactly two red balls are drawn. (2 BE)\n2. ...the first ball is red and no red ball is drawn thereafter. (3 BE)",
+        "solutionContentEn": "**1. Exactly two red balls (2 BE)**\nBinomial distribution ($n=3, p=0.4$):\n$$P(X=2) = \\binom{3}{2} \\cdot \\left(\\frac{2}{5}\\right)^2 \\cdot \\left(\\frac{3}{5}\\right)^1 = 3 \\cdot \\frac{4}{25} \\cdot \\frac{3}{5} = \\frac{36}{125}$$\n\n**2. First red, then never red again (3 BE)**\nPath: Red – Black – Black.\n$$P = \\frac{2}{5} \\cdot \\frac{3}{5} \\cdot \\frac{3}{5} = \\frac{18}{125}$$"
       }
     },
     {
@@ -12497,7 +12533,9 @@
               "description": "Gegenereignis oder Addition für Gelb"
             }
           ]
-        }
+        },
+        "taskContentEn": "A fortune wheel has three sectors: Red (50%), Blue (30%) and Yellow (20%).\nIt is spun twice.\nDetermine the probability that...\n\n1. ...the same color occurs twice. (2 BE)\n2. ...yellow occurs at least once. (3 BE)",
+        "solutionContentEn": "**1. Same color twice (2 BE)**\n$P(\\text{same}) = 0.5^2 + 0.3^2 + 0.2^2 = 0.25 + 0.09 + 0.04 = 0.38$.\n\n**2. At least one yellow (3 BE)**\nComplement: \"no yellow\" ($P(\\text{not yellow}) = 0.8$).\n$P(\\text{at least 1 yellow}) = 1 - 0.8^2 = 1 - 0.64 = 0.36$."
       }
     },
     {
@@ -12535,7 +12573,9 @@
               "description": "Extremstellen und Art"
             }
           ]
-        }
+        },
+        "taskContentEn": "Given is the graph of the derivative function $f'$ of a polynomial function $f$.\nThe graph of $f'$ is an upward-opening parabola that intersects the x-axis at $x_1 = -2$ and $x_2 = 2$.\n\n1. Justify the slope of the graph of $f$ at $x=0$. (2 BE)\n2. Determine the x-coordinates of the local extrema of $f$ and state the type of each extremum. (3 BE)",
+        "solutionContentEn": "**1. Slope at x=0 (2 BE)**\nThe parabola through $(-2|0)$ and $(2|0)$ is symmetric. Vertex at $x=0$ (below). $f'(0) < 0$.\n\n**2. Extrema (3 BE)**\nZeros of $f'$: $-2$ and $2$. Sign change at $-2$ ($+ \\to -$): local maximum. Sign change at $2$ ($- \\to +$): local minimum."
       }
     },
     {
@@ -12568,7 +12608,9 @@
               "description": "Berechnung k"
             }
           ]
-        }
+        },
+        "taskContentEn": "Given the points $A(2|0|0)$, $B(0|2|0)$ and a family of points $C_k(0|0|k)$ with $k \\in \\mathbb{R}$.\nDetermine all values of $k$ such that the triangle $ABC_k$ has a right angle at point $C_k$.",
+        "solutionContentEn": "Right angle at $C_k$: $\\vec{C_kA} \\cdot \\vec{C_kB} = 0$.\n$\\vec{C_kA} = (2, 0, -k)^T$, $\\vec{C_kB} = (0, 2, -k)^T$.\nDot product: $0 + 0 + k^2 = 0 \\Rightarrow k=0$."
       }
     },
     {
@@ -12606,7 +12648,9 @@
               "description": "Punktprobe"
             }
           ]
-        }
+        },
+        "taskContentEn": "Given the points $P(1|2|3)$ and $Q(3|2|1)$.\n\n1. Set up a parametric equation of the line $g$ through $P$ and $Q$. (3 BE)\n2. Check whether the point $R(5|2|-1)$ lies on the line $g$. (2 BE)",
+        "solutionContentEn": "**1. Line $g$ (3 BE)**\n$\\vec{x} = \\vec{OP} + r \\, \\vec{PQ} = (1, 2, 3)^T + r(2, 0, -2)^T$.\n\n**2. Point test (2 BE)**\n$(5, 2, -1)^T = (1, 2, 3)^T + r(2, 0, -2)^T \\Rightarrow r=2$. Lies on $g$."
       }
     },
     {
@@ -12639,7 +12683,9 @@
               "description": "Einsatz berechnet"
             }
           ]
-        }
+        },
+        "taskContentEn": "In a prize draw, the stake is $e$ euros. A ticket is drawn from an urn with 4 winning tickets and 6 blanks.\nIf it is a winning ticket, you receive 10 euros. If it is a blank, you receive nothing.\nDetermine the stake $e$ such that the game is fair (i.e., the expected gain for the player is 0 euros).",
+        "solutionContentEn": "Expected gain = $0.4 \\cdot (10 - e) + 0.6 \\cdot (-e) = 0$.\n$4 - 0.4e - 0.6e = 0 \\Rightarrow 4 - e = 0 \\Rightarrow e = 4$ euros."
       }
     },
     {
@@ -12714,7 +12760,9 @@
               "description": "Modell-Vergleich"
             }
           ]
-        }
+        },
+        "taskContentEn": "![Fig. 2: A lake seen from above. In the center a green carpet (algae) spreads in a circular shape. Next to it a graph showing the area A(t): sigmoidal (S-shaped) curve.](/assets/abi/2026_1/image2.en.png)\n\nThe growth of an algae mat on a lake is modeled by the function:\n\n$$\nA(t) = \\frac{500}{1 + 49 \\cdot e^{-0{,}2 \\cdot t}} \\quad (t \\ge 0)\n$$\n\n($t$ in days since the start of observation, $A(t)$ in $m^2$).\n\n1. **Initial state:** Compute the covered area at the start ($t=0$). (3 BE)\n2. **Saturation:** Determine the limit of $A(t)$ as $t \\to \\infty$ and interpret it in the context of the lake. (4 BE)\n3. **Growth rate:** Determine the time at which the algae mat grows fastest. What is the increase on that day (in $m^2/\\text{day}$)? (8 BE)\n4. **Decline:** Due to a biological agent, the model changes from day 30 onward. From day 30, the area decreases exponentially by 5% per day.\n   Set up the new function $A_{neu}(t)$ for $t \\ge 30$.\n   Calculate when the area has dropped back to the initial value at $t=0$. (6 BE)\n5. **Assessment:** An expert criticizes the logistic model $A(t)$ for the initial phase, since under good conditions algae tend to grow exponentially.\n   Compare $A(t)$ for small $t$ with a suitable exponential function and take a position. (4 BE)",
+        "solutionContentEn": "**1. Initial state (3 BE)**\n$A(0) = 10.0 \\, m^2$.\n\n**2. Saturation (4 BE)**\nLimit 500. The lake area is finite.\n\n**3. Inflection point (8 BE)**\n$t \\approx 19.46$. Increase about $25 \\, m^2/\\text{day}$.\n\n**4. Decline (6 BE)**\n$A(30) \\approx 446$. $A_{neu}(t) = 446 \\cdot 0.95^{t-30}$. $t \\approx 104$ days.\n\n**5. Assessment (4 BE)**\nDenominator $\\approx 49 e^{-0.2t}$. $A(t) \\approx \\text{const} \\cdot e^{0.2t}$. Initially well approximated by exponential growth."
       }
     },
     {
@@ -12762,7 +12810,9 @@
               "description": "Maximalbeschleunigung"
             }
           ]
-        }
+        },
+        "taskContentEn": "A vehicle performs a braking test. The velocity for $0 \\le t \\le 10$ is modeled by:\n\n$$\nv(t) = -\\frac{1}{40}t^3 + \\frac{3}{10}t^2 - \\frac{9}{4}t + 20\n$$\n\n($t$ in seconds, $v(t)$ in $m/s$).\n\n1. **Initial phase:** Determine the velocity at the start ($t=0$) and at $t=10$.\n   Compute the acceleration $a(t) = v'(t)$ at $t=0$. (4 BE)\n2. **Extrema:** Determine the time in the interval $[0; 10]$ at which the velocity is minimal. (6 BE)\n3. **Braking distance:** The distance traveled equals the integral of the velocity function.\n   Compute the distance the vehicle travels in the first 10 seconds.\n   Determine the average speed over this period. (8 BE)\n4. **Response:** A sensor monitors the braking effect. It issues a warning signal (\"brake fading\") as soon as the deceleration (braking force) is **lowest** during braking (local maximum of the acceleration $a(t)$).\n   Determine the time $t \\in [0; 10]$ at which the deceleration is lowest (local maximum of $a(t)$), and state the acceleration there. (7 BE)",
+        "solutionContentEn": "**1. Initial phase (4 BE)**\n$v(0) = 20$. $v(10) = 2.5$.\n$a(t) = -\\frac{3}{40}t^2 + \\frac{3}{5}t - \\frac{9}{4}$. $a(0) = -2.25 \\, m/s^2$.\n\n**2. Extrema (6 BE)**\n$v'(t) = 0$ has no solution in the interval. Minimum at the boundary $t=10$ ($v=2.5$).\n\n**3. Braking distance (8 BE)**\nIntegral $\\int_0^{10} v(t) dt \\approx 125$ m. Average $\\approx 12.5$ m/s.\n\n**4. Response (7 BE)**\n$a'(t) = 0 \\Rightarrow -\\frac{6}{40}t + \\frac{3}{5} = 0 \\Rightarrow t=4$. $a(4) = -1.05 \\, m/s^2$."
       }
     },
     {
@@ -12805,7 +12855,9 @@
               "description": "Normalenvektor"
             }
           ]
-        }
+        },
+        "taskContentEn": "![Fig. 3: A modern house with a slanted single-pitch roof. A rectangular module is mounted on the roof. Sunlight hits it with a given vector direction.](/assets/abi/2026_1/image3.en.png)\n\nIn a model (1 length unit = 1 m), the corner points of a roof surface are $A(10|0|3)$, $B(10|10|3)$, $C(0|10|6)$ and $D(0|0|6)$.\n\n1. Show that the roof surface is a rectangle. Determine a coordinate equation of the plane $E$ in which the roof lies. (6 BE)\n2. **Shadow:** A 10 m high mast stands at point $M(13|5|0)$. The sun rays fall in direction $\\vec{v} = \\begin{pmatrix} -1 \\\\ 0 \\\\ -2 \\end{pmatrix}$.\n   Check mathematically whether the shadow of the mast tip falls onto the roof surface. (7 BE)\n3. **Efficiency:** Sunlight delivers maximum energy when it hits the surface perpendicularly.\n   Determine a vector for the sun position at which the rays are exactly perpendicular to the roof. (2 BE)",
+        "solutionContentEn": "**1. Plane (6 BE)**\nRectangle proof (dot product = 0, lengths). $E: 3x_1 + 10x_3 = 60$ (or equivalent).\n\n**2. Shadow (7 BE)**\nLine through mast tip $S_M(13|5|10)$ with direction $\\vec{v}$. Intersection with $E$: $P(8|5|0)$.\n(Check: $0 \\le 8 \\le 10$ and $0 \\le 5 \\le 10$. Yes, hits the roof.)\n\n**3. Efficiency (2 BE)**\nNormal vector $\\vec{n} = (3, 0, 10)^T$ (or any multiple)."
       }
     },
     {
@@ -12848,7 +12900,9 @@
               "description": "Massen-Screening"
             }
           ]
-        }
+        },
+        "taskContentEn": "![Fig. 6: A tree diagram visualizing the test procedure. First stage: infected (C) vs. not infected. Second stage: test positive (+) vs. test negative (-).](/assets/abi/2026_1/image6.en.png)\n\nA rapid test for type C reacts positive for 99% of infected samples (sensitivity), but also for 2% of non-infected samples (false-positive rate).\nThe prevalence of type C in the overall population is 0.5% ($P(C) = 0.005$).\n\n1. **Test analysis:** Determine the probability that a random sample tests positive. (4 BE)\n2. **Conditional probability:** A person receives a positive test result.\n   Compute the probability that they *actually* have virus type C.\n   Interpret the result with regard to the reliability of a single mass test. (6 BE)\n3. **Mass screening:** How many people must be tested at minimum so that, with probability greater than 99%, at least one positive test result occurs? (5 BE)",
+        "solutionContentEn": "**1. Test analysis (4 BE)**\nLaw of total probability:\n$P(T+) = 0.005 \\cdot 0.99 + 0.995 \\cdot 0.02 \\approx 2.49\\%$.\n\n**2. Conditional probability (6 BE)**\nBayes' theorem:\n$P(C|T+) = \\frac{0.005 \\cdot 0.99}{0.02485} \\approx 19.9\\%$.\nInterpretation: Due to the low prevalence, most positive results are false positives. A single test is hardly conclusive.\n\n**3. Mass screening (5 BE)**\nFind $n$ with $1-(1-p)^n > 0.99$ and $p \\approx 0.02485$.\n$(0.97515)^n < 0.01 \\Rightarrow n > \\frac{\\ln(0.01)}{\\ln(0.97515)} \\approx 182.8$.\n**Result:** At least 183 people must be tested."
       }
     },
     {

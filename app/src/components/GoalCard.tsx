@@ -5,6 +5,7 @@ import type { UiGoal as Goal } from '../goalTypes'
 import { MasteryBar } from './MasteryBar'
 import { isMastered } from '../goalUiUtils'
 import { InlineMathText } from './InlineMathText'
+import { useLanguage } from '../contexts/LanguageContext'
 
 interface GoalCardProps {
   goal: Goal
@@ -39,6 +40,9 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   nextCandidates = [],
   isFrontier = false
 }) => {
+  const { language } = useLanguage()
+  const examTaskLabel = language === 'en' ? 'Exam Task' : 'Prüfungsaufgabe'
+  const solutionLabel = language === 'en' ? 'Sample Solution' : 'Musterlösung'
   const handleChange = onMasteryChange ?? (() => { })
 
   // Detect if Atomic Goal (no children)
@@ -102,7 +106,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
             <div className="bg-blue-50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30">
               <h3 className="text-sm font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wide mb-2 flex items-center gap-2">
                 <Target size={16} />
-                Prüfungsaufgabe
+                {examTaskLabel}
               </h3>
               <ReactMarkdown
                 remarkPlugins={[remarkMath]}
@@ -117,7 +121,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           <div className="bg-emerald-50 dark:bg-emerald-900/10 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900/30">
             <h3 className="text-sm font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wide mb-2 flex items-center gap-2">
               <Check size={16} />
-              Musterlösung
+              {solutionLabel}
                 </h3>
                 <ReactMarkdown
                   remarkPlugins={[remarkMath]}
