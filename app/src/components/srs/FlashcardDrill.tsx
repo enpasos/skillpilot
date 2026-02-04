@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { CheckCircle, BrainCircuit } from 'lucide-react'
+import { CheckCircle } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import { calculateReview, INITIAL_DECK_STATE, type ReviewItem } from './srsLogic'
 
@@ -141,13 +141,15 @@ export function FlashcardDrill({
     const [queue, setQueue] = useState<VocabData['cards']>([])
     const [currentCardIndex, setCurrentCardIndex] = useState(0)
     const [isFlipped, setIsFlipped] = useState(false)
-    const [sessionStats, setSessionStats] = useState({ reviewed: 0 })
+    const reviewedCountRef = useRef(0)
     const [reloadTrigger, setReloadTrigger] = useState(0)
     const [syncInFlight, setSyncInFlight] = useState(false)
     const latestStateRef = useRef<Record<string, ReviewItem>>({})
     const pendingSyncRef = useRef(false)
     const finishedAutoSaveRef = useRef(false)
     const syncedAllCaughtUpRef = useRef(false)
+    const autoReloadRef = useRef(false)
+    const lastMasteryRef = useRef<number | null>(null)
 
     const [stats, setStats] = useState({
         total: 0,
@@ -215,7 +217,7 @@ export function FlashcardDrill({
         setQueue([])
         setCurrentCardIndex(0)
         setIsFlipped(false)
-        setSessionStats({ reviewed: 0 })
+        reviewedCountRef.current = 0
         setSrsState({}) // Clear state
         setSyncInFlight(false)
         syncedAllCaughtUpRef.current = false
@@ -361,6 +363,30 @@ export function FlashcardDrill({
     const isFinished = currentCardIndex >= queue.length
 
     useEffect(() => {
+        if (!isFinished || queue.length === 0) {
+            autoReloadRef.current = false
+            return
+        }
+        if (autoReloadRef.current) return
+        autoReloadRef.current = true
+        // Auto-advance to the next batch / all-caught-up view (no extra click).
+        setQueue([])
+        setCurrentCardIndex(0)
+        reviewedCountRef.current = 0
+        setIsFlipped(false)
+        setReloadTrigger(prev => prev + 1)
+    }, [isFinished, queue.length])
+
+    useEffect(() => {
+        if (!onStateChange) return
+        if (stats.total <= 0) return
+        const mastery = stats.due === 0 ? 1 : 0
+        if (lastMasteryRef.current === mastery) return
+        lastMasteryRef.current = mastery
+        onStateChange()
+    }, [stats.due, stats.total, onStateChange])
+
+    useEffect(() => {
         if (!isFinished) {
             finishedAutoSaveRef.current = false
             return
@@ -418,13 +444,11 @@ export function FlashcardDrill({
             void triggerSync()
         }
 
-        setSessionStats(prev => {
-            const nextReviewed = prev.reviewed + 1
-            if (onSync && nextReviewed % 20 === 0) {
-                void triggerSync()
-            }
-            return { reviewed: nextReviewed }
-        })
+        const nextReviewed = reviewedCountRef.current + 1
+        reviewedCountRef.current = nextReviewed
+        if (onSync && nextReviewed % 20 === 0) {
+            void triggerSync()
+        }
 
         // Optimistic Update for UI Feedback
         setStats(prev => {
@@ -496,22 +520,7 @@ export function FlashcardDrill({
     if (isFinished) {
         return (
             <div className="flex flex-col items-center justify-center p-8 text-center h-[60vh]">
-                <BrainCircuit className="w-16 h-16 text-sky-500 mb-4" />
-                <h2 className="text-2xl font-bold mb-2">{t.sessionComplete}</h2>
-                <p className="text-gray-500 mb-6">{t.reviewed.replace('{0}', sessionStats.reviewed.toString())}</p>
-                <button
-                    onClick={() => {
-                        // Soft Reload: Reset state and trigger re-fetch
-                        setQueue([])
-                        setCurrentCardIndex(0)
-                        setSessionStats({ reviewed: 0 })
-                        setIsFlipped(false)
-                        setReloadTrigger(prev => prev + 1)
-                    }}
-                    className="bg-sky-500 text-white px-6 py-2 rounded-full hover:bg-sky-600"
-                >
-                    {t.continue}
-                </button>
+                <p className="text-gray-500">{t.loading}</p>
             </div>
         )
     }
