@@ -44,7 +44,8 @@
           "PK1_EXPERIMENTIEREN",
           "PK2_MODELLIEREN",
           "PK3_MATHEMATISIEREN",
-          "PK4_KOMMUNIZIEREN"
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
         ],
         "guidingIdeas": [
           "LI_BEWEGUNG",
@@ -93,7 +94,8 @@
           "LI_ENERGIE"
         ],
         "basicConcepts": [
-          "BC_ERHALTUNG_GLEICHGEWICHT"
+          "KONZEPT_ERHALTUNG_GLEICHGEWICHT",
+          "KONZEPT_MATHEMATISIEREN"
         ],
         "phase": "E"
       }
@@ -144,7 +146,8 @@
         "3c52943a-6d01-45a6-b429-18bc9132b4e1",
         "d00d74e7-4fce-48e2-9d00-49f52082f8e6",
         "17dcaf0e-088d-49d0-8c79-ae2cce5611d4",
-        "7ff5ae5e-2959-45af-aa6e-73aaaf128440"
+        "7ff5ae5e-2959-45af-aa6e-73aaaf128440",
+        "hes_phys_e_videoanalyse"
       ],
       "requires": [],
       "dimensionTags": {
@@ -153,6 +156,32 @@
         "processCompetencies": [
           "PK1_EXPERIMENTIEREN",
           "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "hes_phys_e_videoanalyse",
+      "title": "Methode: Videoanalyse von Bewegungen",
+      "titleEn": "Method: Video Analysis of Motion",
+      "description": "Digitale Erfassung von Ortskoordinaten in Videos zur Erstellung von t-s- und t-v-Diagrammen (z. B. beim Wurf).",
+      "descriptionEn": "Digital capture of position data in videos to create t-s and t-v graphs (e.g., for projectile motion).",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
         ],
         "guidingIdeas": [
           "LI_BEWEGUNG"
@@ -492,7 +521,9 @@
         "GK",
         "LK"
       ],
-      "contains": [],
+      "contains": [
+        "hes_phys_e_energy_entwertung"
+      ],
       "requires": [
         "0436c8fc-b849-4cab-84d7-32e92c0d94a9"
       ],
@@ -501,6 +532,30 @@
         "demandLevel": "AB2",
         "processCompetencies": [],
         "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "hes_phys_e_energy_entwertung",
+      "title": "Energieentwertung vs. Energieverbrauch",
+      "titleEn": "Energy Degradation vs. Energy Consumption",
+      "description": "Abgrenzung alltagssprachlicher \"Energieverbrauch\" von physikalischer Energieerhaltung und Entropieerzeugung.",
+      "descriptionEn": "Distinguish everyday \"energy consumption\" from physical energy conservation and entropy production.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_ENERGIE"
+        ],
         "phase": "E"
       }
     },
@@ -716,7 +771,8 @@
         "3d235018-9f4f-471f-9b76-ffb7f7b80ee3",
         "47aaa21d-6d71-4ba8-9d5c-44bc83018764",
         "75e2ff92-cec5-4d14-b346-1b9cc3bd05bf",
-        "a0c409cd-15c7-411f-b952-dd12ae441052"
+        "a0c409cd-15c7-411f-b952-dd12ae441052",
+        "hes_phys_e_chaos"
       ],
       "requires": [
         "9994fc3c-5af6-4ae5-85a9-c4b7d7a2abb0"
@@ -848,6 +904,35 @@
         "demandLevel": "AB2",
         "processCompetencies": [],
         "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "hes_phys_e_chaos",
+      "title": "Grenzen der Vorhersagbarkeit (Chaos)",
+      "titleEn": "Limits of Predictability (Chaos)",
+      "description": "Deterministisches Chaos in mechanischen Systemen. Verständnis, dass kleine Änderungen der Anfangsbedingungen zu großen Abweichungen führen (Schmetterlingseffekt).",
+      "descriptionEn": "Deterministic chaos in mechanical systems. Understanding that small changes in initial conditions lead to large deviations (butterfly effect).",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "basicConcepts": [
+          "KONZEPT_ZUFALL_DETERMINIERTHEIT"
+        ],
         "phase": "E"
       }
     },
@@ -1357,7 +1442,8 @@
           "LI_ENERGIE"
         ],
         "basicConcepts": [
-          "BC_SUPERPOSITION_KOMPONENTEN"
+          "KONZEPT_SUPERPOSITION",
+          "KONZEPT_ERHALTUNG_GLEICHGEWICHT"
         ],
         "phase": "Q1"
       }
@@ -1415,7 +1501,9 @@
         "10de95ed-5eaa-4868-8070-b462a1d6d805",
         "33f80f1a-8d83-4322-93a3-ed2169adc1e2",
         "33d33ffd-7337-44af-b6ba-521129c80784",
-        "5277de22-78fd-4c40-b21d-53249006daae"
+        "hes_phys_q1_method_dgl",
+        "5277de22-78fd-4c40-b21d-53249006daae",
+        "hes_phys_q1_rel_preview"
       ],
       "requires": [
         "44882cb3-dca4-432c-ac29-5f081315844e"
@@ -1560,7 +1648,9 @@
         "GK",
         "LK"
       ],
-      "contains": [],
+      "contains": [
+        "hes_phys_q1_braun"
+      ],
       "requires": [
         "87d529ab-0a87-4214-9560-a5e102ba6e87",
         "0436c8fc-b849-4cab-84d7-32e92c0d94a9"
@@ -1570,6 +1660,33 @@
         "demandLevel": "AB2",
         "processCompetencies": [],
         "guidingIdeas": [],
+        "phase": "Q1"
+      }
+    },
+    {
+      "id": "hes_phys_q1_braun",
+      "title": "Braunsche Röhre (Oszilloskop)",
+      "titleEn": "Cathode-Ray Tube (Oscilloscope)",
+      "description": "Anwendung der Ablenkung von Elektronen im elektrischen Feld zur Funktionsweise des Oszilloskops; magnetische Ablenkung qualitativ einordnen.",
+      "descriptionEn": "Application of electron deflection in electric fields to explain oscilloscope operation; magnetic deflection qualitatively.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [
+        "87d529ab-0a87-4214-9560-a5e102ba6e87"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
         "phase": "Q1"
       }
     },
@@ -1590,6 +1707,7 @@
         "97af421c-cf9d-4f1a-86e9-f25ee1e4afd9",
         "30adb86b-0fc1-4d41-880f-2dd65645e2cf",
         "f11d6674-dd8c-43b9-93c3-76dc3d6eb75c",
+        "hes_phys_q1_mrt",
         "4f9e692f-66b8-4c9f-9f0d-c34b8b1eff82",
         "4c9d72cf-da5c-4afa-aeab-c8e5317f5a13",
         "bcefc6c3-dd78-4d12-8498-863af2997ee8",
@@ -1728,6 +1846,33 @@
       }
     },
     {
+      "id": "hes_phys_q1_mrt",
+      "title": "Kernspintomografie (MRT)",
+      "titleEn": "Magnetic Resonance Imaging (MRI)",
+      "description": "Anwendung von starken Magnetfeldern und Resonanz in der Medizintechnik. Funktionsprinzip qualitativ verstehen.",
+      "descriptionEn": "Application of strong magnetic fields and resonance in medical technology. Qualitative understanding of the operating principle.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [
+        "b9f32c77-7e8b-441f-9952-144fe86f9119"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "phase": "Q1"
+      }
+    },
+    {
       "id": "e8742831-c9d4-41c3-be12-c0320cdcbee3",
       "title": "Q2 Schwingungen, Induktion und mechanische Wellen",
       "titleEn": "Q2 Oscillations, Induction, and Mechanical Waves",
@@ -1758,6 +1903,10 @@
         "guidingIdeas": [
           "LI_WELLEN",
           "LI_ENERGIE"
+        ],
+        "basicConcepts": [
+          "KONZEPT_SUPERPOSITION",
+          "KONZEPT_MATHEMATISIEREN"
         ],
         "phase": "Q2"
       }
@@ -1965,7 +2114,8 @@
         "2a16c3e4-757b-44a1-92ef-10f9a8919ece",
         "3f1941e2-8c5d-4c79-9033-10ee92148d2a",
         "7996337e-d3dd-4f43-a864-888bad0bc099",
-        "6850cc7a-3679-4d02-818a-54708a380b70"
+        "6850cc7a-3679-4d02-818a-54708a380b70",
+        "hes_phys_q2_wirbelstroeme"
       ],
       "requires": [
         "b0cb1efa-0661-4871-853c-a436398d26ad"
@@ -1977,6 +2127,33 @@
           "PK2_MODELLIEREN",
           "PK3_MATHEMATISIEREN"
         ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q2"
+      }
+    },
+    {
+      "id": "hes_phys_q2_wirbelstroeme",
+      "title": "Wirbelströme und Waltenhofen-Pendel",
+      "titleEn": "Eddy Currents and Waltenhofen Pendulum",
+      "description": "Induktion in massiven Leitern. Anwendung als Wirbelstrombremse und Vermeidung durch Blechpakete in Transformatoren.",
+      "descriptionEn": "Induction in bulk conductors. Application as eddy-current braking and reduction by laminated transformer cores.",
+      "weight": 1.05,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [
+        "f44ef8ce-bcdf-4436-9a57-ba68d11395a1"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
         "guidingIdeas": [
           "LI_FELDER",
           "LI_ENERGIE"
@@ -2115,6 +2292,7 @@
         "8eb24087-a99a-45de-a576-7a6a0a0510c8",
         "b9ccac36-475a-4e75-a269-7903617d7c7d",
         "9c68d527-e7c9-4a15-b7de-08ce06ebb7f3",
+        "hes_phys_q2_ultraschall",
         "24a45385-bdfd-4681-a240-d039778c4025",
         "f398a325-3859-4ac9-9428-c2261075fc83",
         "1fd7e6b4-cbc7-4ac7-94b5-c08412f724cc",
@@ -2193,7 +2371,9 @@
         "GK",
         "LK"
       ],
-      "contains": [],
+      "contains": [
+        "hes_phys_q2_anc"
+      ],
       "requires": [
         "b9ccac36-475a-4e75-a269-7903617d7c7d"
       ],
@@ -2202,6 +2382,58 @@
         "demandLevel": "AB2",
         "processCompetencies": [],
         "guidingIdeas": [],
+        "phase": "Q2"
+      }
+    },
+    {
+      "id": "hes_phys_q2_anc",
+      "title": "Interferenz in der Technik (ANC)",
+      "titleEn": "Interference in Technology (ANC)",
+      "description": "Active Noise Cancellation (Antischall) als destruktive Interferenz. Bewertung von Lärmschutzmaßnahmen.",
+      "descriptionEn": "Active noise cancellation (anti-noise) as destructive interference. Evaluation of noise protection measures.",
+      "weight": 1.05,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN"
+        ],
+        "phase": "Q2"
+      }
+    },
+    {
+      "id": "hes_phys_q2_ultraschall",
+      "title": "Ultraschall in Medizin und Technik",
+      "titleEn": "Ultrasound in Medicine and Technology",
+      "description": "Ultraschallortung und Bildgebung als Anwendung mechanischer Wellen. Reflexion, Laufzeit und Aufloesung qualitativ einordnen.",
+      "descriptionEn": "Ultrasound ranging and imaging as applications of mechanical waves. Qualitatively relate reflection, travel time, and resolution.",
+      "weight": 1.05,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [
+        "b9ccac36-475a-4e75-a269-7903617d7c7d"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_WELLEN"
+        ],
         "phase": "Q2"
       }
     },
@@ -2257,6 +2489,10 @@
         "guidingIdeas": [
           "LI_WELLEN",
           "LI_MATERIE"
+        ],
+        "basicConcepts": [
+          "KONZEPT_SUPERPOSITION",
+          "KONZEPT_ZUFALL_DETERMINIERTHEIT"
         ],
         "phase": "Q3"
       }
@@ -2781,6 +3017,9 @@
           "LI_MATERIE",
           "LI_TECHNIK"
         ],
+        "basicConcepts": [
+          "KONZEPT_ZUFALL_DETERMINIERTHEIT"
+        ],
         "phase": "Q4"
       }
     },
@@ -2831,7 +3070,8 @@
         "78c8b1ac-c98e-4c37-baa6-ec3a835aa720",
         "5cecd7d4-956a-4e8d-939a-7f849a08fa5b",
         "416d771a-8a53-4536-856b-b12e8b1e4892",
-        "7c9063c3-ee17-4cbd-8606-4f08e5486296"
+        "7c9063c3-ee17-4cbd-8606-4f08e5486296",
+        "hes_phys_q4_antimatter"
       ],
       "requires": [
         "1362c3c8-fa69-45b8-88fe-98a1584ef625"
@@ -2864,15 +3104,44 @@
         "GK",
         "LK"
       ],
-      "contains": [],
+      "contains": [
+        "hes_phys_q4_potential_limits"
+      ],
       "requires": [
         "98a78f99-2b91-4d08-8fc7-f7b063e877b7"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB3",
-        "processCompetencies": [],
+        "processCompetencies": [
+          "PK3_MATHEMATISIEREN"
+        ],
         "guidingIdeas": [],
+        "phase": "Q4"
+      }
+    },
+    {
+      "id": "hes_phys_q4_potential_limits",
+      "title": "Grenzen des Potentialtopf-Modells",
+      "titleEn": "Limits of the Potential Well Model",
+      "description": "Unterschiede zwischen idealisiertem Kastenpotential und realem Coulomb-Potential im Atom; Aussagegrenzen des Modells.",
+      "descriptionEn": "Differences between the idealized infinite well and the real Coulomb potential in atoms; limits of the model.",
+      "weight": 1.15,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE"
+        ],
         "phase": "Q4"
       }
     },
@@ -2985,6 +3254,30 @@
         "demandLevel": "AB3",
         "processCompetencies": [],
         "guidingIdeas": [],
+        "phase": "Q4"
+      }
+    },
+    {
+      "id": "hes_phys_q4_antimatter",
+      "title": "Antimaterie und Paarvernichtung",
+      "titleEn": "Antimatter and Pair Annihilation",
+      "description": "Existenz von Antiteilchen (Positron). Paarvernichtung als Energiequelle für die PET-Diagnostik (E=mc²).",
+      "descriptionEn": "Existence of antiparticles (positron). Pair annihilation as an energy source for PET diagnostics (E=mc²).",
+      "weight": 1.15,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "b5cb8f4c-bc0f-44e7-ade4-3b0cd3563655"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_MATERIE"
+        ],
         "phase": "Q4"
       }
     },
@@ -3200,7 +3493,9 @@
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
-        "processCompetencies": [],
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
         "guidingIdeas": [],
         "phase": "Q4"
       }
@@ -3486,7 +3781,8 @@
         "072ca990-6ed1-47ba-ba97-057538cf2231",
         "8228b040-3333-4fa4-97a8-f04e8c3699ef",
         "cf22e1d9-1357-4ead-ba5f-2287d2641eff",
-        "7797ade7-69c5-45fe-9528-0548a516c46a"
+        "7797ade7-69c5-45fe-9528-0548a516c46a",
+        "hes_phys_q4_art"
       ],
       "requires": [
         "44882cb3-dca4-432c-ac29-5f081315844e"
@@ -3501,6 +3797,31 @@
         "guidingIdeas": [
           "LI_KOSMOS",
           "LI_ENERGIE"
+        ],
+        "phase": "Q4"
+      }
+    },
+    {
+      "id": "hes_phys_q4_art",
+      "title": "Allgemeine Relativitätstheorie (Qualitativ)",
+      "titleEn": "General Relativity (Qualitative)",
+      "description": "Zusammenhang von Masse und Raumkrümmung. Gravitation als geometrische Eigenschaft der Raumzeit. Schwarze Löcher.",
+      "descriptionEn": "Connection between mass and curvature of space. Gravity as a geometric property of spacetime. Black holes.",
+      "weight": 1.15,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "44882cb3-dca4-432c-ac29-5f081315844e"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_KOSMOS"
         ],
         "phase": "Q4"
       }
@@ -3585,7 +3906,9 @@
         "GK",
         "LK"
       ],
-      "contains": [],
+      "contains": [
+        "hes_phys_q4_hrd"
+      ],
       "requires": [
         "b53bf31f-0cce-4831-b2cd-89e8b5bbe869"
       ],
@@ -3594,6 +3917,31 @@
         "demandLevel": "AB2",
         "processCompetencies": [],
         "guidingIdeas": [],
+        "phase": "Q4"
+      }
+    },
+    {
+      "id": "hes_phys_q4_hrd",
+      "title": "Hertzsprung-Russell-Diagramm (HRD)",
+      "titleEn": "Hertzsprung–Russell Diagram (HRD)",
+      "description": "Zustandsdiagramm der Sterne (Leuchtkraft vs. Temperatur) zur Einordnung der Sternentwicklung (Hauptreihe, Rote Riesen, Weiße Zwerge).",
+      "descriptionEn": "Stellar diagram (luminosity vs. temperature) for classifying stellar evolution (main sequence, red giants, white dwarfs).",
+      "weight": 1.15,
+      "tags": [
+        "LK",
+        "Method"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_KOSMOS"
+        ],
         "phase": "Q4"
       }
     },
@@ -3717,7 +4065,8 @@
       ],
       "contains": [],
       "requires": [
-        "ce2bafec-2a6d-4191-84c5-79c61e0f0284"
+        "ce2bafec-2a6d-4191-84c5-79c61e0f0284",
+        "hes_phys_q1_method_dgl"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -3725,6 +4074,30 @@
         "processCompetencies": [
           "PK1_EXPERIMENTIEREN",
           "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER"
+        ],
+        "phase": "Q1"
+      }
+    },
+    {
+      "id": "hes_phys_q1_method_dgl",
+      "title": "Methode: Differenzialgleichungen lösen",
+      "titleEn": "Method: Solve Differential Equations",
+      "description": "Lineare Differenzialgleichungen 1. Ordnung in Physik-Kontexten (z. B. RC-Entladung) lösen und Ergebnisse interpretieren.",
+      "descriptionEn": "Solve linear first-order differential equations in physics contexts (e.g., RC discharge) and interpret results.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK3_MATHEMATISIEREN"
         ],
         "guidingIdeas": [
           "LI_FELDER"
@@ -3744,7 +4117,8 @@
       ],
       "contains": [],
       "requires": [
-        "8dc20eba-73f3-46db-80b8-9f3eb306ad86"
+        "8dc20eba-73f3-46db-80b8-9f3eb306ad86",
+        "hes_phys_q1_rel_preview"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -3755,6 +4129,28 @@
         ],
         "guidingIdeas": [
           "LI_FELDER"
+        ],
+        "phase": "Q1"
+      }
+    },
+    {
+      "id": "hes_phys_q1_rel_preview",
+      "title": "Grenzen der klassischen Mechanik (v -> c)",
+      "titleEn": "Limits of Classical Mechanics (v -> c)",
+      "description": "Qualitative Einfuehrung in relativistische Effekte bei hohen Geschwindigkeiten und die Grenzen klassischer Modelle.",
+      "descriptionEn": "Qualitative introduction to relativistic effects at high speeds and the limits of classical models.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
         ],
         "phase": "Q1"
       }
@@ -3800,7 +4196,8 @@
       ],
       "contains": [],
       "requires": [
-        "30adb86b-0fc1-4d41-880f-2dd65645e2cf"
+        "30adb86b-0fc1-4d41-880f-2dd65645e2cf",
+        "hes_phys_q1_rel_preview"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -3850,8 +4247,8 @@
       "id": "fd1423c1-8288-42d5-9591-860ec4c13a86",
       "title": "Teilchenbeschleuniger (Zyklotron/Synchrotron)",
       "titleEn": "Particle Accelerator (Cyclotron/Synchrotron)",
-      "description": "Die lernende Person kann Prinzip und Grenzen rotierender Teilchenbeschleuniger erläutern.",
-      "descriptionEn": "The learner can explain the principle and limits of rotating particle accelerators.",
+      "description": "Die lernende Person kann Prinzip und Grenzen von Zyklotron und Synchrotron (rotierende Teilchenbeschleuniger) erläutern.",
+      "descriptionEn": "The learner can explain the principle and limits of cyclotrons and synchrotrons (rotating particle accelerators).",
       "weight": 1,
       "tags": [
         "LK"
@@ -3887,7 +4284,8 @@
       ],
       "contains": [],
       "requires": [
-        "58df26f9-3f19-4d46-8ab7-37c1d898e3d3"
+        "58df26f9-3f19-4d46-8ab7-37c1d898e3d3",
+        "hes_phys_q1_method_dgl"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
