@@ -470,9 +470,7 @@
       "contains": [
         "ff07337f-24bd-4148-8fa7-7a750d7ae5f8",
         "0436c8fc-b849-4cab-84d7-32e92c0d94a9",
-        "fa204429-674f-466d-b049-a6de19a50579",
-        "f9c16720-ee4e-4bd4-b4a5-e9c12b910fab",
-        "3428ea3e-05fc-4cef-a3f7-5d723c9cc756"
+        "hes_phys_e_erhaltungssaetze"
       ],
       "requires": [
         "af70212d-e318-462d-a53f-fee8f05697d6",
@@ -491,6 +489,42 @@
         ],
         "basicConcepts": [
           "BC_MATHEMATISIEREN_VORHERSAGEN"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "hes_phys_e_erhaltungssaetze",
+      "title": "Erhaltungssätze",
+      "titleEn": "Conservation Laws",
+      "description": "Cluster zu Erhaltungssätzen: Energie- und Impulserhaltung sowie Anwendungen in Stoßprozessen.",
+      "descriptionEn": "Cluster on conservation laws: energy and momentum conservation and applications in collision processes.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "fa204429-674f-466d-b049-a6de19a50579",
+        "f9c16720-ee4e-4bd4-b4a5-e9c12b910fab",
+        "3428ea3e-05fc-4cef-a3f7-5d723c9cc756",
+        "hes_phys_e_inelastische_stoesse",
+        "hes_phys_e_energieerhaltung_newton",
+        "hes_phys_e_impulserhaltung_newton"
+      ],
+      "requires": [
+        "ff07337f-24bd-4148-8fa7-7a750d7ae5f8"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_ENERGIE"
         ],
         "phase": "E"
       }
@@ -858,10 +892,10 @@
     },
     {
       "id": "3428ea3e-05fc-4cef-a3f7-5d723c9cc756",
-      "title": "Elastische und inelastische Stöße",
-      "titleEn": "Elastic and Inelastic Collisions",
-      "description": "Die lernende Person kann elastische und inelastische Stöße in einer Dimension mithilfe von Energie- und Impulserhaltung analysieren und die auftretenden Energieumwandlungen beschreiben.",
-      "descriptionEn": "The learner can analyze elastic and inelastic collisions in one dimension using energy and momentum conservation and describe the occurring energy conversions.",
+      "title": "Elastische Stöße",
+      "titleEn": "Elastic Collisions",
+      "description": "Die lernende Person kann elastische Stöße in einer Dimension mithilfe von Energie- und Impulserhaltung analysieren und die Erhaltung der kinetischen Energie begründen.",
+      "descriptionEn": "The learner can analyze elastic collisions in one dimension using energy and momentum conservation and justify the conservation of kinetic energy.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -869,13 +903,92 @@
       ],
       "contains": [],
       "requires": [
-        "f9c16720-ee4e-4bd4-b4a5-e9c12b910fab"
+        "f9c16720-ee4e-4bd4-b4a5-e9c12b910fab",
+        "fa204429-674f-466d-b049-a6de19a50579"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
         "processCompetencies": [],
         "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "hes_phys_e_inelastische_stoesse",
+      "title": "Inelastische Stöße",
+      "titleEn": "Inelastic Collisions",
+      "description": "Die lernende Person kann inelastische Stöße in einer Dimension mithilfe der Impulserhaltung analysieren und Energieumwandlungen qualitativ beschreiben.",
+      "descriptionEn": "The learner can analyze inelastic collisions in one dimension using momentum conservation and qualitatively describe energy transformations.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "f9c16720-ee4e-4bd4-b4a5-e9c12b910fab",
+        "fa204429-674f-466d-b049-a6de19a50579"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "hes_phys_e_energieerhaltung_newton",
+      "title": "Energieerhaltung aus Newtonschen Axiomen (LK)",
+      "titleEn": "Energy Conservation from Newton's Laws (Advanced Course)",
+      "description": "Die lernende Person kann die Energieerhaltung aus Newtonschen Axiomen herleiten und die Voraussetzungen der Herleitung benennen.",
+      "descriptionEn": "The learner can derive energy conservation from Newton's laws and state the assumptions of the derivation.",
+      "weight": 0.9,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "ff07337f-24bd-4148-8fa7-7a750d7ae5f8",
+        "fa204429-674f-466d-b049-a6de19a50579"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "hes_phys_e_impulserhaltung_newton",
+      "title": "Impulserhaltung aus Newtonschen Axiomen (LK)",
+      "titleEn": "Momentum Conservation from Newton's Laws (Advanced Course)",
+      "description": "Die lernende Person kann die Impulserhaltung aus Newtonschen Axiomen herleiten und den Geltungsbereich diskutieren.",
+      "descriptionEn": "The learner can derive momentum conservation from Newton's laws and discuss its domain of validity.",
+      "weight": 0.9,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "ff07337f-24bd-4148-8fa7-7a750d7ae5f8",
+        "f9c16720-ee4e-4bd4-b4a5-e9c12b910fab"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
         "phase": "E"
       }
     },
