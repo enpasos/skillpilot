@@ -94,6 +94,61 @@
       }
     },
     {
+      "id": "hes_phys_e_messunsicherheit",
+      "title": "Methode: Messunsicherheit und Fehleranalyse",
+      "titleEn": "Method: Measurement Uncertainty and Error Analysis",
+      "description": "Die lernende Person kann Messabweichungen beschreiben, Unsicherheiten angeben, Fehlerquellen benennen und einfache Messreihen auswerten.",
+      "descriptionEn": "The learner can describe measurement deviations, state uncertainties, identify error sources, and evaluate simple series of measurements.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "hes_phys_e_linearisierung",
+      "title": "Methode: Linearisierung von Messkurven",
+      "titleEn": "Method: Linearizing Measurement Curves",
+      "description": "Die lernende Person kann nichtlineare Messdaten durch geeignete Transformationen linearisieren, Geraden anpassen und Parameter deuten (z. B. $s\\sim t^2$, Einstein-Gerade).",
+      "descriptionEn": "The learner can linearize nonlinear measurement data by suitable transformations, fit straight lines, and interpret parameters (e.g., $s\\sim t^2$, Einstein plot).",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method"
+      ],
+      "contains": [],
+      "requires": [
+        "hes_phys_e_messunsicherheit"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_MATERIE"
+        ],
+        "phase": "E"
+      }
+    },
+    {
       "id": "25bd8476-0c87-4777-b9f5-0bba9ad1b06e",
       "title": "Einführungsphase Mechanik",
       "titleEn": "Introductory Phase Mechanics",
@@ -106,6 +161,8 @@
       ],
       "contains": [
         "hes_phys_intro_motivation",
+        "hes_phys_e_messunsicherheit",
+        "hes_phys_e_linearisierung",
         "af70212d-e318-462d-a53f-fee8f05697d6",
         "52c3d2e8-6634-4806-b84b-3709e3c4aef1",
         "9994fc3c-5af6-4ae5-85a9-c4b7d7a2abb0",
@@ -177,12 +234,14 @@
         "LK"
       ],
       "contains": [
+        "hes_phys_e_sportphysik",
         "e8160c09-a013-4146-80e6-b0e5dedd8fc6",
         "3c52943a-6d01-45a6-b429-18bc9132b4e1",
         "d00d74e7-4fce-48e2-9d00-49f52082f8e6",
         "17dcaf0e-088d-49d0-8c79-ae2cce5611d4",
         "7ff5ae5e-2959-45af-aa6e-73aaaf128440",
-        "hes_phys_e_videoanalyse"
+        "hes_phys_e_videoanalyse",
+        "hes_phys_e_verkehr_sicherheit"
       ],
       "requires": [
         "hes_phys_intro_motivation"
@@ -193,6 +252,60 @@
         "processCompetencies": [
           "PK1_EXPERIMENTIEREN",
           "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "hes_phys_e_sportphysik",
+      "title": "Sportphysik: Bewegungsoptimierung",
+      "titleEn": "Sports Physics: Optimizing Motion",
+      "description": "Bewegungen im Sport (z. B. Wurf, Sprung, Sprint) als Einstieg: Die lernende Person kann Bewegungsabläufe qualitativ beschreiben, Einflussgrößen benennen und Optimierungen begründen.",
+      "descriptionEn": "Sports motions (e.g., throws, jumps, sprints) as an entry point: the learner can qualitatively describe motion sequences, name influencing factors, and justify optimizations.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [
+        "hes_phys_intro_motivation"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "hes_phys_e_verkehr_sicherheit",
+      "title": "Physik im Straßenverkehr: Sicherheitsabstände bewerten",
+      "titleEn": "Physics in Road Traffic: Evaluating Safe Distances",
+      "description": "Die lernende Person kann Reaktions- und Bremswege qualitativ und mithilfe einfacher Modelle beurteilen und daraus Sicherheitsabstände in Alltagssituationen bewerten.",
+      "descriptionEn": "The learner can assess reaction and braking distances qualitatively and using simple models and evaluate safe distances in everyday situations.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [
+        "d00d74e7-4fce-48e2-9d00-49f52082f8e6"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
         ],
         "guidingIdeas": [
           "LI_BEWEGUNG"
@@ -213,7 +326,9 @@
         "Method"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "hes_phys_e_messunsicherheit"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",
@@ -238,7 +353,9 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "hes_phys_e_sportphysik"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",
@@ -612,7 +729,9 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "hes_phys_q4_smartphone_anker"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",
@@ -633,7 +752,9 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "hes_phys_q4_smartphone_anker"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",
@@ -924,6 +1045,7 @@
         "3d235018-9f4f-471f-9b76-ffb7f7b80ee3",
         "47aaa21d-6d71-4ba8-9d5c-44bc83018764",
         "75e2ff92-cec5-4d14-b346-1b9cc3bd05bf",
+        "hes_phys_e_tabellenkalkulation",
         "a0c409cd-15c7-411f-b952-dd12ae441052",
         "hes_phys_e_chaos"
       ],
@@ -1038,6 +1160,35 @@
       }
     },
     {
+      "id": "hes_phys_e_tabellenkalkulation",
+      "title": "Methode: Modellbildung mit Tabellenkalkulation",
+      "titleEn": "Method: Modeling with Spreadsheets",
+      "description": "Die lernende Person kann Bewegungen schrittweise in einer Tabellenkalkulation modellieren, Parameter variieren und Simulationsergebnisse interpretieren.",
+      "descriptionEn": "The learner can model motions stepwise in a spreadsheet, vary parameters, and interpret simulation results.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method"
+      ],
+      "contains": [],
+      "requires": [
+        "47aaa21d-6d71-4ba8-9d5c-44bc83018764"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E"
+      }
+    },
+    {
       "id": "a0c409cd-15c7-411f-b952-dd12ae441052",
       "title": "Numerische Simulation von Bewegungen",
       "titleEn": "Numerical Simulation of Motions",
@@ -1050,7 +1201,8 @@
       ],
       "contains": [],
       "requires": [
-        "75e2ff92-cec5-4d14-b346-1b9cc3bd05bf"
+        "75e2ff92-cec5-4d14-b346-1b9cc3bd05bf",
+        "hes_phys_e_tabellenkalkulation"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -1281,7 +1433,8 @@
         "bda3add4-967c-4a42-83a4-db52a45bcf4f",
         "298c09af-5c8f-4909-993e-335d381d0fd1",
         "hes_phys_e_energy_entwertung",
-        "ad9d1b14-5690-4160-9ca8-b98d182d2c36"
+        "ad9d1b14-5690-4160-9ca8-b98d182d2c36",
+        "hes_phys_e_klima_bewertung"
       ],
       "requires": [
         "44882cb3-dca4-432c-ac29-5f081315844e"
@@ -1413,6 +1566,35 @@
         "demandLevel": "AB2",
         "processCompetencies": [],
         "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "hes_phys_e_klima_bewertung",
+      "title": "Bewertung von Energiesparmaßnahmen und Klimawandel",
+      "titleEn": "Evaluating Energy Saving Measures and Climate Change",
+      "description": "Die lernende Person kann Wirkungsgrade, Energieumwandlungen und Wärmeverluste nutzen, um Energiesparmaßnahmen zu beurteilen und deren Bedeutung für Klimaschutz zu diskutieren.",
+      "descriptionEn": "The learner can use efficiencies, energy conversions, and heat losses to evaluate energy-saving measures and discuss their relevance for climate protection.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [
+        "ad9d1b14-5690-4160-9ca8-b98d182d2c36"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_MATERIE"
+        ],
         "phase": "E"
       }
     },
@@ -2869,6 +3051,7 @@
         "LK"
       ],
       "contains": [
+        "hes_phys_q3_solarzellen_anker",
         "b5cb8f4c-bc0f-44e7-ade4-3b0cd3563655",
         "7372d1e4-1a5f-413e-aee0-b81536bd44f1",
         "a0ff15f1-a634-4403-973c-b480fc410138",
@@ -2894,6 +3077,31 @@
       }
     },
     {
+      "id": "hes_phys_q3_solarzellen_anker",
+      "title": "Wie funktionieren Solarzellen und Lichtsensoren?",
+      "titleEn": "How Do Solar Cells and Light Sensors Work?",
+      "description": "Einstieg in die Quantenphysik über Alltagsanwendungen: Die lernende Person kann die Funktionsidee von Solarzellen und Lichtsensoren beschreiben und offene Fragen formulieren.",
+      "descriptionEn": "Entry into quantum physics via everyday applications: the learner can describe the basic idea of solar cells and light sensors and formulate guiding questions.",
+      "weight": 1.1,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q3"
+      }
+    },
+    {
       "id": "b5cb8f4c-bc0f-44e7-ade4-3b0cd3563655",
       "title": "Energie und Impuls von Photonen",
       "titleEn": "Energy and Momentum of Photons",
@@ -2906,7 +3114,8 @@
       ],
       "contains": [],
       "requires": [
-        "b9ca584e-75e5-43b2-98b5-218930594dfa"
+        "b9ca584e-75e5-43b2-98b5-218930594dfa",
+        "hes_phys_q3_solarzellen_anker"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -3540,7 +3749,8 @@
         "0c3fbca9-66e4-479a-a098-430028135c5f",
         "d2e00a16-f794-47c1-9c0a-8501e8ac1d3d",
         "9d10db5a-f1e0-4caf-9c37-6e05e4f9d4fb",
-        "183ca145-5504-4d67-9e18-af6ca29fb0e9"
+        "183ca145-5504-4d67-9e18-af6ca29fb0e9",
+        "hes_phys_q4_kernenergie_bewertung"
       ],
       "requires": [
         "3c9d71e4-322d-40a6-a038-cd6990ddce49"
@@ -3775,6 +3985,7 @@
         "mandatory": false
       },
       "contains": [
+        "hes_phys_q4_smartphone_anker",
         "8ea7e1ac-10a6-4522-9b87-ac9dfb29d285",
         "11e0caff-b958-4a9b-b31a-ff5203857bae",
         "0c41072f-076e-4b9c-8502-862881b617b5",
@@ -3793,6 +4004,31 @@
           "PK1_EXPERIMENTIEREN",
           "PK2_MODELLIEREN"
         ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+        "LI_TECHNIK"
+      ],
+      "phase": "Q4"
+      }
+    },
+    {
+      "id": "hes_phys_q4_smartphone_anker",
+      "title": "Vom Sand zum Smartphone: Die digitale Revolution",
+      "titleEn": "From Sand to Smartphone: The Digital Revolution",
+      "description": "Einstieg in die Festkörperphysik: Die lernende Person kann den Weg vom Rohstoff Silizium zu Mikrochip, Sensorik und Kommunikationstechnologie beschreiben.",
+      "descriptionEn": "Entry into solid state physics: the learner can describe the path from raw silicon to microchips, sensors, and communication technology.",
+      "weight": 1.15,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
         "guidingIdeas": [
           "LI_MATERIE",
           "LI_TECHNIK"
@@ -5095,7 +5331,8 @@
       ],
       "contains": [],
       "requires": [
-        "7372d1e4-1a5f-413e-aee0-b81536bd44f1"
+        "7372d1e4-1a5f-413e-aee0-b81536bd44f1",
+        "hes_phys_e_linearisierung"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -5225,6 +5462,37 @@
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB3",
         "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_MATERIE",
+        "LI_ENERGIE"
+      ],
+      "phase": "Q4"
+      }
+    },
+    {
+      "id": "hes_phys_q4_kernenergie_bewertung",
+      "title": "Beurteilung von Strahlungsrisiken und Kernenergie",
+      "titleEn": "Assessing Radiation Risks and Nuclear Energy",
+      "description": "Die lernende Person kann Strahlungsrisiken, Schutzmaßnahmen und Nutzenabwägungen von Kernenergie sachlich beurteilen und Argumente mit physikalischen Grundlagen stützen.",
+      "descriptionEn": "The learner can assess radiation risks, protection measures, and benefit-risk tradeoffs of nuclear energy and support arguments with physical principles.",
+      "weight": 1.15,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [
+        "e8148d5c-fa8e-4fc3-9018-5d96328a3f9e",
+        "9d10db5a-f1e0-4caf-9c37-6e05e4f9d4fb",
+        "b53bf31f-0cce-4831-b2cd-89e8b5bbe869"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
         "guidingIdeas": [
           "LI_MATERIE",
           "LI_ENERGIE"
