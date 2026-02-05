@@ -449,8 +449,6 @@ export function FlashcardDrill({
         const storageKey = `srs_state_${skillPilotId}_${goalId}`
         localStorage.setItem(storageKey, JSON.stringify(updatedSrsState))
         pendingSyncRef.current = true
-        onStateChange?.()
-
         const willFinish = currentCardIndex + 1 >= queue.length
         if (willFinish) {
             void triggerSync()

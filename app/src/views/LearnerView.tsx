@@ -1287,7 +1287,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   onSync={syncClientData}
                   reloadSignal={srsReloadCounter}
                   filterTags={getSrsFilterTagsForGoal(currentGoal)}
-                  onStateChange={() => setSrsMasteryTick(c => c + 1)}
+                  onStateChange={() => {
+                    setSrsMasteryTick(c => c + 1)
+                    setRefreshCounter(c => c + 1)
+                  }}
                 />
               </div>
             ) : (
