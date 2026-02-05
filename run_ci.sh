@@ -23,6 +23,8 @@ echo "--> Running Schema Validation"
 # Ensure jsonschema is installed (suppress output if already present)
 pip3 install -q jsonschema || echo "Warning: Failed to install jsonschema, validation might fail."
 python3 scripts/validate_schemas.py
+echo "--> Validating Curriculum Goal IDs (UUIDs)"
+python3 scripts/validate_goal_ids_uuid.py
 
 echo ""
 echo "=========================================="

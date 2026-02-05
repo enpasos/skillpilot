@@ -73,6 +73,8 @@ jobs:
         run: pip install jsonschema
       - name: Validate Schemas
         run: cd .. && python scripts/validate_schemas.py
+      - name: Validate Curriculum Goal IDs (UUIDs)
+        run: cd .. && python scripts/validate_goal_ids_uuid.py
 
   backend-ci:
     runs-on: ubuntu-latest
