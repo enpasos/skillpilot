@@ -60,7 +60,7 @@
       }
     },
     {
-      "id": "hes_phys_intro_motivation",
+      "id": "4b56b5c6-0e7b-4486-aa8f-7d5be7f085a5",
       "title": "Warum Physik? – Weltverständnis & Zukunft",
       "titleEn": "Why Physics? – Understanding the World & Future",
       "description": "Der 'Big Picture'-Einstieg: Warum das Smartphone funktioniert, wie Ärzte ohne Skalpell in den Körper schauen (MRT), warum Sterne leuchten und wie wir die Energiekrise lösen. Überblick über die Relevanz der Themenfelder von der Mechanik bis zur Quantenphysik für dein Leben.",
@@ -94,11 +94,11 @@
       }
     },
     {
-      "id": "hes_phys_e_messunsicherheit",
+      "id": "7252f084-398f-47d6-a5ba-1f7c78cd7559",
       "title": "Methode: Messunsicherheit und Fehleranalyse",
       "titleEn": "Method: Measurement Uncertainty and Error Analysis",
-      "description": "Die lernende Person kann Messabweichungen beschreiben, Unsicherheiten angeben, Fehlerquellen benennen und einfache Messreihen auswerten.",
-      "descriptionEn": "The learner can describe measurement deviations, state uncertainties, identify error sources, and evaluate simple series of measurements.",
+      "description": "Die lernende Person kann Messabweichungen beschreiben, Unsicherheiten angeben, systematische und zufällige Fehler unterscheiden sowie signifikante Stellen und Mittelwertbildung nutzen.",
+      "descriptionEn": "The learner can describe measurement deviations, state uncertainties, distinguish systematic and random errors, and use significant figures and averaging.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -114,13 +114,14 @@
           "PK1_EXPERIMENTIEREN"
         ],
         "guidingIdeas": [
-          "LI_BEWEGUNG"
+          "LI_BEWEGUNG",
+          "LI_MATERIE"
         ],
         "phase": "E"
       }
     },
     {
-      "id": "hes_phys_e_linearisierung",
+      "id": "564f27e0-d344-4704-b603-6b08bc3dd3fd",
       "title": "Methode: Linearisierung von Messkurven",
       "titleEn": "Method: Linearizing Measurement Curves",
       "description": "Die lernende Person kann nichtlineare Messdaten durch geeignete Transformationen linearisieren, Geraden anpassen und Parameter deuten (z. B. $s\\sim t^2$, Einstein-Gerade).",
@@ -133,7 +134,7 @@
       ],
       "contains": [],
       "requires": [
-        "hes_phys_e_messunsicherheit"
+        "7252f084-398f-47d6-a5ba-1f7c78cd7559"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -160,9 +161,9 @@
         "LK"
       ],
       "contains": [
-        "hes_phys_intro_motivation",
-        "hes_phys_e_messunsicherheit",
-        "hes_phys_e_linearisierung",
+        "4b56b5c6-0e7b-4486-aa8f-7d5be7f085a5",
+        "7252f084-398f-47d6-a5ba-1f7c78cd7559",
+        "564f27e0-d344-4704-b603-6b08bc3dd3fd",
         "af70212d-e318-462d-a53f-fee8f05697d6",
         "52c3d2e8-6634-4806-b84b-3709e3c4aef1",
         "9994fc3c-5af6-4ae5-85a9-c4b7d7a2abb0",
@@ -234,17 +235,17 @@
         "LK"
       ],
       "contains": [
-        "hes_phys_e_sportphysik",
+        "e1eed8db-6e65-4cdd-98b0-e190d4137371",
         "e8160c09-a013-4146-80e6-b0e5dedd8fc6",
         "3c52943a-6d01-45a6-b429-18bc9132b4e1",
         "d00d74e7-4fce-48e2-9d00-49f52082f8e6",
         "17dcaf0e-088d-49d0-8c79-ae2cce5611d4",
         "7ff5ae5e-2959-45af-aa6e-73aaaf128440",
-        "hes_phys_e_videoanalyse",
-        "hes_phys_e_verkehr_sicherheit"
+        "ff253340-7856-4e9c-ab40-d40c1353fa6c",
+        "1eb4a590-2801-49e6-b8b7-2881540dd660"
       ],
       "requires": [
-        "hes_phys_intro_motivation"
+        "4b56b5c6-0e7b-4486-aa8f-7d5be7f085a5"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -260,7 +261,7 @@
       }
     },
     {
-      "id": "hes_phys_e_sportphysik",
+      "id": "e1eed8db-6e65-4cdd-98b0-e190d4137371",
       "title": "Sportphysik: Bewegungsoptimierung",
       "titleEn": "Sports Physics: Optimizing Motion",
       "description": "Bewegungen im Sport (z. B. Wurf, Sprung, Sprint) als Einstieg: Die lernende Person kann Bewegungsabläufe qualitativ beschreiben, Einflussgrößen benennen und Optimierungen begründen.",
@@ -273,7 +274,7 @@
       ],
       "contains": [],
       "requires": [
-        "hes_phys_intro_motivation"
+        "4b56b5c6-0e7b-4486-aa8f-7d5be7f085a5"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -286,7 +287,7 @@
       }
     },
     {
-      "id": "hes_phys_e_verkehr_sicherheit",
+      "id": "1eb4a590-2801-49e6-b8b7-2881540dd660",
       "title": "Physik im Straßenverkehr: Sicherheitsabstände bewerten",
       "titleEn": "Physics in Road Traffic: Evaluating Safe Distances",
       "description": "Die lernende Person kann Reaktions- und Bremswege qualitativ und mithilfe einfacher Modelle beurteilen und daraus Sicherheitsabstände in Alltagssituationen bewerten.",
@@ -314,7 +315,7 @@
       }
     },
     {
-      "id": "hes_phys_e_videoanalyse",
+      "id": "ff253340-7856-4e9c-ab40-d40c1353fa6c",
       "title": "Methode: Videoanalyse von Bewegungen",
       "titleEn": "Method: Video Analysis of Motion",
       "description": "Digitale Erfassung von Ortskoordinaten in Videos zur Erstellung von t-s- und t-v-Diagrammen (z. B. beim Wurf).",
@@ -327,7 +328,7 @@
       ],
       "contains": [],
       "requires": [
-        "hes_phys_e_messunsicherheit"
+        "7252f084-398f-47d6-a5ba-1f7c78cd7559"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -354,7 +355,7 @@
       ],
       "contains": [],
       "requires": [
-        "hes_phys_e_sportphysik"
+        "e1eed8db-6e65-4cdd-98b0-e190d4137371"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -469,8 +470,7 @@
       ],
       "contains": [
         "ff07337f-24bd-4148-8fa7-7a750d7ae5f8",
-        "0436c8fc-b849-4cab-84d7-32e92c0d94a9",
-        "hes_phys_e_erhaltungssaetze"
+        "e26447c4-36a3-43ef-b400-ca918754f3b0"
       ],
       "requires": [
         "af70212d-e318-462d-a53f-fee8f05697d6",
@@ -494,7 +494,7 @@
       }
     },
     {
-      "id": "hes_phys_e_erhaltungssaetze",
+      "id": "e26447c4-36a3-43ef-b400-ca918754f3b0",
       "title": "Erhaltungssätze",
       "titleEn": "Conservation Laws",
       "description": "Cluster zu Erhaltungssätzen: Energie- und Impulserhaltung sowie Anwendungen in Stoßprozessen.",
@@ -505,12 +505,12 @@
         "LK"
       ],
       "contains": [
+        "75c8920f-757e-47bf-be3a-a5901eb52334",
         "fa204429-674f-466d-b049-a6de19a50579",
-        "f9c16720-ee4e-4bd4-b4a5-e9c12b910fab",
+        "80b09455-fba6-452b-9104-0eda23df3111",
         "3428ea3e-05fc-4cef-a3f7-5d723c9cc756",
-        "hes_phys_e_inelastische_stoesse",
-        "hes_phys_e_energieerhaltung_newton",
-        "hes_phys_e_impulserhaltung_newton"
+        "b36bb565-f304-47c4-b44e-012dd9ff7a1a",
+        "0c7a1a3d-ca41-4795-8b60-0ba555e1b804"
       ],
       "requires": [
         "ff07337f-24bd-4148-8fa7-7a750d7ae5f8"
@@ -530,6 +530,36 @@
       }
     },
     {
+      "id": "75c8920f-757e-47bf-be3a-a5901eb52334",
+      "title": "Mechanische Arbeit als Energieänderung",
+      "titleEn": "Mechanical Work as Energy Change",
+      "description": "Arbeit (W) als Prozessgröße verstehen: Energie wird durch verrichtete Arbeit übertragen oder umgewandelt ($W = \\Delta E$). Beispiel: Hubarbeit $W = F \\cdot s$ führt zu potenzieller Energie.",
+      "descriptionEn": "Understand work (W) as a process quantity: energy is transferred or transformed by work ($W = \\Delta E$). Example: lifting work $W = F \\cdot s$ leads to potential energy.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Concept"
+      ],
+      "contains": [],
+      "requires": [
+        "0436c8fc-b849-4cab-84d7-32e92c0d94a9"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_BEWEGUNG"
+        ],
+        "basicConcepts": [
+          "KONZEPT_ERHALTUNG_GLEICHGEWICHT"
+        ],
+        "phase": "E"
+      }
+    },
+    {
       "id": "ff07337f-24bd-4148-8fa7-7a750d7ae5f8",
       "title": "Newtons Axiome und Inertialsysteme",
       "titleEn": "Newton's Axioms and Inertial Systems",
@@ -542,8 +572,11 @@
       ],
       "contains": [
         "31b6e9ae-003a-474d-8055-e92f4fc3acc3",
+        "08ef9ae5-e076-4a3f-b330-36417c7471eb",
         "be89ee6a-d11d-4970-8c39-bb0c84edac56",
+        "0436c8fc-b849-4cab-84d7-32e92c0d94a9",
         "d6550712-7460-446a-96ff-e7599c8f4fb7",
+        "8ed5596c-2d5e-4b6e-8885-d7e8097afd25",
         "2808ec13-5b8b-4fb9-9b1a-7792146995b7",
         "4e327e2e-8ad6-4fc0-8c6e-46189e0ceea4"
       ],
@@ -572,6 +605,29 @@
       "contains": [],
       "requires": [
         "d00d74e7-4fce-48e2-9d00-49f52082f8e6"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "08ef9ae5-e076-4a3f-b330-36417c7471eb",
+      "title": "Newtons 1. Axiom anwenden",
+      "titleEn": "Apply Newton's First Law",
+      "description": "Die lernende Person kann das Trägheitsprinzip auf Alltagssituationen anwenden und Kräftegleichgewicht von gleichförmiger Bewegung abgrenzen.",
+      "descriptionEn": "The learner can apply the principle of inertia to everyday situations and distinguish force equilibrium from uniform motion.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "31b6e9ae-003a-474d-8055-e92f4fc3acc3"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -618,6 +674,29 @@
       "contains": [],
       "requires": [
         "be89ee6a-d11d-4970-8c39-bb0c84edac56"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "8ed5596c-2d5e-4b6e-8885-d7e8097afd25",
+      "title": "Newtons 3. Axiom anwenden",
+      "titleEn": "Apply Newton's Third Law",
+      "description": "Die lernende Person kann das Wechselwirkungsprinzip in Alltagssituationen anwenden und Kräftepaare korrekt zuordnen.",
+      "descriptionEn": "The learner can apply the action-reaction principle in everyday situations and correctly assign force pairs.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "d6550712-7460-446a-96ff-e7599c8f4fb7"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -700,8 +779,8 @@
     },
     {
       "id": "fa204429-674f-466d-b049-a6de19a50579",
-      "title": "Energie und Energieerhaltung",
-      "titleEn": "Energy and Conservation of Energy",
+      "title": "Energie",
+      "titleEn": "Energy",
       "description": "Die lernende Person kann kinetische und potenzielle Energie unterscheiden, die Energie eines Körpers berechnen und die Energieerhaltung in energetisch abgeschlossenen Systemen begründen.",
       "descriptionEn": "The learner can distinguish between kinetic and potential energy, calculate the energy of a body, and justify energy conservation in energetically closed systems.",
       "weight": 0.9,
@@ -710,11 +789,11 @@
         "LK"
       ],
       "contains": [
-        "hes_phys_e_mechanische_energie",
-        "hes_phys_e_kinetische_energie",
-        "hes_phys_e_potentielle_energie",
-        "hes_phys_e_reibungsenergie",
-        "hes_phys_e_energieerhaltung"
+        "fa86f7ee-98df-439f-b96c-e39de02ec054",
+        "10ae3ebb-b1e0-4ec5-b396-5286c9fc1425",
+        "99bbf33e-74f5-4f33-98e2-e4e6661d8648",
+        "14cf1aa0-303b-4dcd-b3b6-26a6d8ab6934",
+        "9aeaf941-baef-43fb-8077-50d37e600c26"
       ],
       "requires": [
         "0436c8fc-b849-4cab-84d7-32e92c0d94a9"
@@ -728,7 +807,7 @@
       }
     },
     {
-      "id": "hes_phys_e_mechanische_energie",
+      "id": "fa86f7ee-98df-439f-b96c-e39de02ec054",
       "title": "Mechanische Energie",
       "titleEn": "Mechanical Energy",
       "description": "Die lernende Person kann die mechanische Energie als Summe aus kinetischer und potenzieller Energie beschreiben und einfache Beispiele deuten.",
@@ -740,8 +819,9 @@
       ],
       "contains": [],
       "requires": [
-        "hes_phys_e_kinetische_energie",
-        "hes_phys_e_potentielle_energie"
+        "75c8920f-757e-47bf-be3a-a5901eb52334",
+        "10ae3ebb-b1e0-4ec5-b396-5286c9fc1425",
+        "99bbf33e-74f5-4f33-98e2-e4e6661d8648"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -752,7 +832,7 @@
       }
     },
     {
-      "id": "hes_phys_e_kinetische_energie",
+      "id": "10ae3ebb-b1e0-4ec5-b396-5286c9fc1425",
       "title": "Kinetische Energie",
       "titleEn": "Kinetic Energy",
       "description": "Die lernende Person kann die kinetische Energie $E_\\mathrm{k}=\\frac{1}{2}mv^2$ berechnen und die Abhängigkeit von Masse und Geschwindigkeit erläutern.",
@@ -764,7 +844,7 @@
       ],
       "contains": [],
       "requires": [
-        "hes_phys_q4_smartphone_anker"
+        "75834916-4ae4-40d8-b6b7-e84956d4d02e"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -775,7 +855,7 @@
       }
     },
     {
-      "id": "hes_phys_e_potentielle_energie",
+      "id": "99bbf33e-74f5-4f33-98e2-e4e6661d8648",
       "title": "Potenzielle Energie",
       "titleEn": "Potential Energy",
       "description": "Die lernende Person kann potenzielle Energie in Feldern (z. B. im Gravitationsfeld) beschreiben, einfache Fälle berechnen und die Abhängigkeit von Lage und Bezugssystem erläutern.",
@@ -787,7 +867,7 @@
       ],
       "contains": [],
       "requires": [
-        "hes_phys_q4_smartphone_anker"
+        "75834916-4ae4-40d8-b6b7-e84956d4d02e"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -798,7 +878,7 @@
       }
     },
     {
-      "id": "hes_phys_e_reibungsenergie",
+      "id": "14cf1aa0-303b-4dcd-b3b6-26a6d8ab6934",
       "title": "Reibungsenergie",
       "titleEn": "Frictional Energy",
       "description": "Die lernende Person kann Reibungsenergie als Umwandlung mechanischer Energie in innere Energie deuten und einfache Energieumwandlungen qualitativ beschreiben.",
@@ -810,7 +890,7 @@
       ],
       "contains": [],
       "requires": [
-        "hes_phys_e_energieerhaltung"
+        "9aeaf941-baef-43fb-8077-50d37e600c26"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -821,7 +901,7 @@
       }
     },
     {
-      "id": "hes_phys_e_energieerhaltung",
+      "id": "9aeaf941-baef-43fb-8077-50d37e600c26",
       "title": "Energieerhaltung",
       "titleEn": "Energy Conservation",
       "description": "Die lernende Person kann die Energieerhaltung in abgeschlossenen Systemen formulieren und einfache Energieumwandlungen bilanziell beschreiben.",
@@ -833,7 +913,7 @@
       ],
       "contains": [],
       "requires": [
-        "hes_phys_e_mechanische_energie"
+        "fa86f7ee-98df-439f-b96c-e39de02ec054"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -844,7 +924,7 @@
       }
     },
     {
-      "id": "hes_phys_e_energy_entwertung",
+      "id": "2c02c403-1629-4aec-9729-efcebe4d585f",
       "title": "Energieentwertung vs. Energieverbrauch",
       "titleEn": "Energy Degradation vs. Energy Consumption",
       "description": "Abgrenzung alltagssprachlicher \"Energieverbrauch\" von physikalischer Energieerhaltung und Entropieerzeugung.",
@@ -869,10 +949,10 @@
     },
     {
       "id": "f9c16720-ee4e-4bd4-b4a5-e9c12b910fab",
-      "title": "Impuls und seine Erhaltung",
-      "titleEn": "Momentum and its Conservation",
-      "description": "Die lernende Person kann den Impuls als Erhaltungsgröße einführen, einfache Rückstoßsituationen beschreiben und den Zusammenhang zwischen Impuls- und Energieerhaltung qualitativ erklären.",
-      "descriptionEn": "The learner can introduce momentum as a conserved quantity, describe simple recoil situations, and qualitatively explain the connection between momentum and energy conservation.",
+      "title": "Impulserhaltung",
+      "titleEn": "Momentum Conservation",
+      "description": "Die lernende Person kann den Impuls als Erhaltungsgröße nutzen, einfache Rückstoßsituationen beschreiben und Impulserhaltung qualitativ begründen.",
+      "descriptionEn": "The learner can use momentum as a conserved quantity, describe simple recoil situations, and qualitatively justify momentum conservation.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -887,6 +967,34 @@
         "demandLevel": "AB2",
         "processCompetencies": [],
         "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "80b09455-fba6-452b-9104-0eda23df3111",
+      "title": "Impuls",
+      "titleEn": "Momentum",
+      "description": "Cluster zum Impuls: Impulserhaltung, Kraftstoß und inelastische Stöße.",
+      "descriptionEn": "Cluster on momentum: momentum conservation, impulse, and inelastic collisions.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "f9c16720-ee4e-4bd4-b4a5-e9c12b910fab",
+        "9bd4fd50-6da2-48cf-bcdd-5a23a92cb80c",
+        "c17eef04-4355-475a-9d05-4d60b1c22cdb",
+        "e65ea17b-332b-4fe1-922f-57c4f9708332"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
         "phase": "E"
       }
     },
@@ -915,7 +1023,61 @@
       }
     },
     {
-      "id": "hes_phys_e_inelastische_stoesse",
+      "id": "9bd4fd50-6da2-48cf-bcdd-5a23a92cb80c",
+      "title": "Kraftstoß",
+      "titleEn": "Impulse (Force-Time)",
+      "description": "Die lernende Person kann den Kraftstoß als Produkt aus Kraft und Einwirkdauer beschreiben und mit Impulsänderungen verknüpfen.",
+      "descriptionEn": "The learner can describe impulse as the product of force and interaction time and relate it to changes in momentum.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "f9c16720-ee4e-4bd4-b4a5-e9c12b910fab"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "e65ea17b-332b-4fe1-922f-57c4f9708332",
+      "title": "Unfallphysik: Kraftstoß und Knautschzone",
+      "titleEn": "Crash Physics: Impulse and Crumple Zones",
+      "description": "Anwendung des Impulses auf Verkehrsunfälle. Zusammenhang zwischen Kraftstoß und Verletzungsrisiko; Bedeutung von Knautschzonen und Sicherheitsabständen.",
+      "descriptionEn": "Apply momentum to traffic accidents. Relation between impulse and injury risk; relevance of crumple zones and safe distances.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [
+        "9bd4fd50-6da2-48cf-bcdd-5a23a92cb80c"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_TECHNIK"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "c17eef04-4355-475a-9d05-4d60b1c22cdb",
       "title": "Inelastische Stöße",
       "titleEn": "Inelastic Collisions",
       "description": "Die lernende Person kann inelastische Stöße in einer Dimension mithilfe der Impulserhaltung analysieren und Energieumwandlungen qualitativ beschreiben.",
@@ -939,7 +1101,7 @@
       }
     },
     {
-      "id": "hes_phys_e_energieerhaltung_newton",
+      "id": "b36bb565-f304-47c4-b44e-012dd9ff7a1a",
       "title": "Energieerhaltung aus Newtonschen Axiomen (LK)",
       "titleEn": "Energy Conservation from Newton's Laws (Advanced Course)",
       "description": "Die lernende Person kann die Energieerhaltung aus Newtonschen Axiomen herleiten und die Voraussetzungen der Herleitung benennen.",
@@ -966,7 +1128,7 @@
       }
     },
     {
-      "id": "hes_phys_e_impulserhaltung_newton",
+      "id": "0c7a1a3d-ca41-4795-8b60-0ba555e1b804",
       "title": "Impulserhaltung aus Newtonschen Axiomen (LK)",
       "titleEn": "Momentum Conservation from Newton's Laws (Advanced Course)",
       "description": "Die lernende Person kann die Impulserhaltung aus Newtonschen Axiomen herleiten und den Geltungsbereich diskutieren.",
@@ -1158,9 +1320,9 @@
         "3d235018-9f4f-471f-9b76-ffb7f7b80ee3",
         "47aaa21d-6d71-4ba8-9d5c-44bc83018764",
         "75e2ff92-cec5-4d14-b346-1b9cc3bd05bf",
-        "hes_phys_e_tabellenkalkulation",
+        "21d1f798-7651-4d62-836f-7e0d780157c6",
         "a0c409cd-15c7-411f-b952-dd12ae441052",
-        "hes_phys_e_chaos"
+        "db45855c-f0c2-4c01-9ba5-1929edd72f2b"
       ],
       "requires": [
         "9994fc3c-5af6-4ae5-85a9-c4b7d7a2abb0"
@@ -1273,7 +1435,7 @@
       }
     },
     {
-      "id": "hes_phys_e_tabellenkalkulation",
+      "id": "21d1f798-7651-4d62-836f-7e0d780157c6",
       "title": "Methode: Modellbildung mit Tabellenkalkulation",
       "titleEn": "Method: Modeling with Spreadsheets",
       "description": "Die lernende Person kann Bewegungen schrittweise in einer Tabellenkalkulation modellieren, Parameter variieren und Simulationsergebnisse interpretieren.",
@@ -1315,7 +1477,7 @@
       "contains": [],
       "requires": [
         "75e2ff92-cec5-4d14-b346-1b9cc3bd05bf",
-        "hes_phys_e_tabellenkalkulation"
+        "21d1f798-7651-4d62-836f-7e0d780157c6"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -1326,7 +1488,7 @@
       }
     },
     {
-      "id": "hes_phys_e_chaos",
+      "id": "db45855c-f0c2-4c01-9ba5-1929edd72f2b",
       "title": "Grenzen der Vorhersagbarkeit (Chaos)",
       "titleEn": "Limits of Predictability (Chaos)",
       "description": "Deterministisches Chaos in mechanischen Systemen. Verständnis, dass kleine Änderungen der Anfangsbedingungen zu großen Abweichungen führen (Schmetterlingseffekt).",
@@ -1545,9 +1707,9 @@
         "32c22bcd-639c-4441-8f7f-2061d5176616",
         "bda3add4-967c-4a42-83a4-db52a45bcf4f",
         "298c09af-5c8f-4909-993e-335d381d0fd1",
-        "hes_phys_e_energy_entwertung",
+        "2c02c403-1629-4aec-9729-efcebe4d585f",
         "ad9d1b14-5690-4160-9ca8-b98d182d2c36",
-        "hes_phys_e_klima_bewertung"
+        "b1736d6b-4bd4-4cc9-99eb-539bbccb27a4"
       ],
       "requires": [
         "44882cb3-dca4-432c-ac29-5f081315844e"
@@ -1683,7 +1845,7 @@
       }
     },
     {
-      "id": "hes_phys_e_klima_bewertung",
+      "id": "b1736d6b-4bd4-4cc9-99eb-539bbccb27a4",
       "title": "Bewertung von Energiesparmaßnahmen und Klimawandel",
       "titleEn": "Evaluating Energy Saving Measures and Climate Change",
       "description": "Die lernende Person kann Wirkungsgrade, Energieumwandlungen und Wärmeverluste nutzen, um Energiesparmaßnahmen zu beurteilen und deren Bedeutung für Klimaschutz zu diskutieren.",
@@ -1950,9 +2112,9 @@
         "10de95ed-5eaa-4868-8070-b462a1d6d805",
         "33f80f1a-8d83-4322-93a3-ed2169adc1e2",
         "33d33ffd-7337-44af-b6ba-521129c80784",
-        "hes_phys_q1_method_dgl",
+        "9e048bfc-694b-4557-8eea-a288383b5d73",
         "5277de22-78fd-4c40-b21d-53249006daae",
-        "hes_phys_q1_rel_preview"
+        "5ac6578f-8df1-4950-8db9-95650562809b"
       ],
       "requires": [
         "44882cb3-dca4-432c-ac29-5f081315844e"
@@ -2098,7 +2260,7 @@
         "LK"
       ],
       "contains": [
-        "hes_phys_q1_braun"
+        "eea19d9d-44b9-45c9-ba59-411af80c378a"
       ],
       "requires": [
         "87d529ab-0a87-4214-9560-a5e102ba6e87",
@@ -2113,7 +2275,7 @@
       }
     },
     {
-      "id": "hes_phys_q1_braun",
+      "id": "eea19d9d-44b9-45c9-ba59-411af80c378a",
       "title": "Braunsche Röhre (Oszilloskop)",
       "titleEn": "Cathode-Ray Tube (Oscilloscope)",
       "description": "Anwendung der Ablenkung von Elektronen im elektrischen Feld zur Funktionsweise des Oszilloskops; magnetische Ablenkung qualitativ einordnen.",
@@ -2156,7 +2318,7 @@
         "97af421c-cf9d-4f1a-86e9-f25ee1e4afd9",
         "30adb86b-0fc1-4d41-880f-2dd65645e2cf",
         "f11d6674-dd8c-43b9-93c3-76dc3d6eb75c",
-        "hes_phys_q1_mrt",
+        "83a987a4-c805-4315-810b-020d7ec6c15b",
         "4f9e692f-66b8-4c9f-9f0d-c34b8b1eff82",
         "4c9d72cf-da5c-4afa-aeab-c8e5317f5a13",
         "bcefc6c3-dd78-4d12-8498-863af2997ee8",
@@ -2295,7 +2457,7 @@
       }
     },
     {
-      "id": "hes_phys_q1_mrt",
+      "id": "83a987a4-c805-4315-810b-020d7ec6c15b",
       "title": "Kernspintomografie (MRT)",
       "titleEn": "Magnetic Resonance Imaging (MRI)",
       "description": "Anwendung von starken Magnetfeldern und Resonanz in der Medizintechnik. Funktionsprinzip qualitativ verstehen.",
@@ -2564,7 +2726,7 @@
         "3f1941e2-8c5d-4c79-9033-10ee92148d2a",
         "7996337e-d3dd-4f43-a864-888bad0bc099",
         "6850cc7a-3679-4d02-818a-54708a380b70",
-        "hes_phys_q2_wirbelstroeme"
+        "1d9dfcef-ebb7-48dd-9f08-541d49547a60"
       ],
       "requires": [
         "b0cb1efa-0661-4871-853c-a436398d26ad"
@@ -2584,7 +2746,7 @@
       }
     },
     {
-      "id": "hes_phys_q2_wirbelstroeme",
+      "id": "1d9dfcef-ebb7-48dd-9f08-541d49547a60",
       "title": "Wirbelströme und Waltenhofen-Pendel",
       "titleEn": "Eddy Currents and Waltenhofen Pendulum",
       "description": "Induktion in massiven Leitern. Anwendung als Wirbelstrombremse und Vermeidung durch Blechpakete in Transformatoren.",
@@ -2741,7 +2903,8 @@
         "8eb24087-a99a-45de-a576-7a6a0a0510c8",
         "b9ccac36-475a-4e75-a269-7903617d7c7d",
         "9c68d527-e7c9-4a15-b7de-08ce06ebb7f3",
-        "hes_phys_q2_ultraschall",
+        "773ca1f4-285b-45c2-8eb7-ca570de6f69b",
+        "6ab1e863-28b4-4b20-8714-dea49fcfa969",
         "24a45385-bdfd-4681-a240-d039778c4025",
         "f398a325-3859-4ac9-9428-c2261075fc83",
         "1fd7e6b4-cbc7-4ac7-94b5-c08412f724cc",
@@ -2821,7 +2984,7 @@
         "LK"
       ],
       "contains": [
-        "hes_phys_q2_anc"
+        "72a14c28-87a7-4a23-ab63-9af52c30bca9"
       ],
       "requires": [
         "b9ccac36-475a-4e75-a269-7903617d7c7d"
@@ -2835,7 +2998,7 @@
       }
     },
     {
-      "id": "hes_phys_q2_anc",
+      "id": "72a14c28-87a7-4a23-ab63-9af52c30bca9",
       "title": "Interferenz in der Technik (ANC)",
       "titleEn": "Interference in Technology (ANC)",
       "description": "Active Noise Cancellation (Antischall) als destruktive Interferenz. Bewertung von Lärmschutzmaßnahmen.",
@@ -2861,7 +3024,7 @@
       }
     },
     {
-      "id": "hes_phys_q2_ultraschall",
+      "id": "773ca1f4-285b-45c2-8eb7-ca570de6f69b",
       "title": "Ultraschall in Medizin und Technik",
       "titleEn": "Ultrasound in Medicine and Technology",
       "description": "Ultraschallortung und Bildgebung als Anwendung mechanischer Wellen. Reflexion, Laufzeit und Aufloesung qualitativ einordnen.",
@@ -2882,6 +3045,33 @@
         "processCompetencies": [],
         "guidingIdeas": [
           "LI_WELLEN"
+        ],
+        "phase": "Q2"
+      }
+    },
+    {
+      "id": "6ab1e863-28b4-4b20-8714-dea49fcfa969",
+      "title": "Doppler-Effekt in der Medizin",
+      "titleEn": "Doppler Effect in Medicine",
+      "description": "Nutzung von Ultraschall und Doppler-Effekt zur Messung von Strömungsgeschwindigkeiten (z. B. Blutfluss). Frequenzverschiebung bei bewegtem Sender/Empfänger.",
+      "descriptionEn": "Use of ultrasound and the Doppler effect to measure flow velocities (e.g., blood flow). Frequency shift for moving source/receiver.",
+      "weight": 1.05,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [
+        "8eb24087-a99a-45de-a576-7a6a0a0510c8"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
         ],
         "phase": "Q2"
       }
@@ -3164,7 +3354,7 @@
         "LK"
       ],
       "contains": [
-        "hes_phys_q3_solarzellen_anker",
+        "c9871b6b-9511-4aac-903d-db5249642f10",
         "b5cb8f4c-bc0f-44e7-ade4-3b0cd3563655",
         "7372d1e4-1a5f-413e-aee0-b81536bd44f1",
         "a0ff15f1-a634-4403-973c-b480fc410138",
@@ -3190,7 +3380,7 @@
       }
     },
     {
-      "id": "hes_phys_q3_solarzellen_anker",
+      "id": "c9871b6b-9511-4aac-903d-db5249642f10",
       "title": "Wie funktionieren Solarzellen und Lichtsensoren?",
       "titleEn": "How Do Solar Cells and Light Sensors Work?",
       "description": "Einstieg in die Quantenphysik über Alltagsanwendungen: Die lernende Person kann die Funktionsidee von Solarzellen und Lichtsensoren beschreiben und offene Fragen formulieren.",
@@ -3228,7 +3418,7 @@
       "contains": [],
       "requires": [
         "b9ca584e-75e5-43b2-98b5-218930594dfa",
-        "hes_phys_q3_solarzellen_anker"
+        "c9871b6b-9511-4aac-903d-db5249642f10"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -3547,7 +3737,7 @@
         "5cecd7d4-956a-4e8d-939a-7f849a08fa5b",
         "416d771a-8a53-4536-856b-b12e8b1e4892",
         "7c9063c3-ee17-4cbd-8606-4f08e5486296",
-        "hes_phys_q4_antimatter"
+        "db649343-95e5-44a7-a58a-28af67a3ecb6"
       ],
       "requires": [
         "1362c3c8-fa69-45b8-88fe-98a1584ef625"
@@ -3581,7 +3771,7 @@
         "LK"
       ],
       "contains": [
-        "hes_phys_q4_potential_limits"
+        "c0572098-807f-460c-b2a7-cc36b3e4024a"
       ],
       "requires": [
         "98a78f99-2b91-4d08-8fc7-f7b063e877b7"
@@ -3597,7 +3787,7 @@
       }
     },
     {
-      "id": "hes_phys_q4_potential_limits",
+      "id": "c0572098-807f-460c-b2a7-cc36b3e4024a",
       "title": "Grenzen des Potentialtopf-Modells",
       "titleEn": "Limits of the Potential Well Model",
       "description": "Unterschiede zwischen idealisiertem Kastenpotential und realem Coulomb-Potential im Atom; Aussagegrenzen des Modells.",
@@ -3734,7 +3924,7 @@
       }
     },
     {
-      "id": "hes_phys_q4_antimatter",
+      "id": "db649343-95e5-44a7-a58a-28af67a3ecb6",
       "title": "Antimaterie und Paarvernichtung",
       "titleEn": "Antimatter and Pair Annihilation",
       "description": "Existenz von Antiteilchen (Positron). Paarvernichtung als Energiequelle für die PET-Diagnostik (E=mc²).",
@@ -3863,7 +4053,7 @@
         "d2e00a16-f794-47c1-9c0a-8501e8ac1d3d",
         "9d10db5a-f1e0-4caf-9c37-6e05e4f9d4fb",
         "183ca145-5504-4d67-9e18-af6ca29fb0e9",
-        "hes_phys_q4_kernenergie_bewertung"
+        "81d10b3d-9b64-43b9-900e-c546f37f5d82"
       ],
       "requires": [
         "3c9d71e4-322d-40a6-a038-cd6990ddce49"
@@ -4098,7 +4288,7 @@
         "mandatory": false
       },
       "contains": [
-        "hes_phys_q4_smartphone_anker",
+        "75834916-4ae4-40d8-b6b7-e84956d4d02e",
         "8ea7e1ac-10a6-4522-9b87-ac9dfb29d285",
         "11e0caff-b958-4a9b-b31a-ff5203857bae",
         "0c41072f-076e-4b9c-8502-862881b617b5",
@@ -4119,13 +4309,13 @@
         ],
         "guidingIdeas": [
           "LI_MATERIE",
-        "LI_TECHNIK"
-      ],
-      "phase": "Q4"
+          "LI_TECHNIK"
+        ],
+        "phase": "Q4"
       }
     },
     {
-      "id": "hes_phys_q4_smartphone_anker",
+      "id": "75834916-4ae4-40d8-b6b7-e84956d4d02e",
       "title": "Vom Sand zum Smartphone: Die digitale Revolution",
       "titleEn": "From Sand to Smartphone: The Digital Revolution",
       "description": "Einstieg in die Festkörperphysik: Die lernende Person kann den Weg vom Rohstoff Silizium zu Mikrochip, Sensorik und Kommunikationstechnologie beschreiben.",
@@ -4285,7 +4475,7 @@
         "8228b040-3333-4fa4-97a8-f04e8c3699ef",
         "cf22e1d9-1357-4ead-ba5f-2287d2641eff",
         "7797ade7-69c5-45fe-9528-0548a516c46a",
-        "hes_phys_q4_art"
+        "2c3538f6-1b3e-4212-9af1-8fdee3e2a2c5"
       ],
       "requires": [
         "44882cb3-dca4-432c-ac29-5f081315844e"
@@ -4305,7 +4495,7 @@
       }
     },
     {
-      "id": "hes_phys_q4_art",
+      "id": "2c3538f6-1b3e-4212-9af1-8fdee3e2a2c5",
       "title": "Allgemeine Relativitätstheorie (Qualitativ)",
       "titleEn": "General Relativity (Qualitative)",
       "description": "Zusammenhang von Masse und Raumkrümmung. Gravitation als geometrische Eigenschaft der Raumzeit. Schwarze Löcher.",
@@ -4410,7 +4600,7 @@
         "LK"
       ],
       "contains": [
-        "hes_phys_q4_hrd"
+        "ca04b765-58b8-46e8-8b96-b4195c9d4a0c"
       ],
       "requires": [
         "b53bf31f-0cce-4831-b2cd-89e8b5bbe869"
@@ -4424,7 +4614,7 @@
       }
     },
     {
-      "id": "hes_phys_q4_hrd",
+      "id": "ca04b765-58b8-46e8-8b96-b4195c9d4a0c",
       "title": "Hertzsprung-Russell-Diagramm (HRD)",
       "titleEn": "Hertzsprung–Russell Diagram (HRD)",
       "description": "Zustandsdiagramm der Sterne (Leuchtkraft vs. Temperatur) zur Einordnung der Sternentwicklung (Hauptreihe, Rote Riesen, Weiße Zwerge).",
@@ -4569,7 +4759,7 @@
       "contains": [],
       "requires": [
         "ce2bafec-2a6d-4191-84c5-79c61e0f0284",
-        "hes_phys_q1_method_dgl"
+        "9e048bfc-694b-4557-8eea-a288383b5d73"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -4585,7 +4775,7 @@
       }
     },
     {
-      "id": "hes_phys_q1_method_dgl",
+      "id": "9e048bfc-694b-4557-8eea-a288383b5d73",
       "title": "Methode: Differenzialgleichungen lösen",
       "titleEn": "Method: Solve Differential Equations",
       "description": "Lineare Differenzialgleichungen 1. Ordnung in Physik-Kontexten (z. B. RC-Entladung) lösen und Ergebnisse interpretieren.",
@@ -4621,7 +4811,7 @@
       "contains": [],
       "requires": [
         "8dc20eba-73f3-46db-80b8-9f3eb306ad86",
-        "hes_phys_q1_rel_preview"
+        "5ac6578f-8df1-4950-8db9-95650562809b"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -4637,7 +4827,7 @@
       }
     },
     {
-      "id": "hes_phys_q1_rel_preview",
+      "id": "5ac6578f-8df1-4950-8db9-95650562809b",
       "title": "Grenzen der klassischen Mechanik (v -> c)",
       "titleEn": "Limits of Classical Mechanics (v -> c)",
       "description": "Qualitative Einfuehrung in relativistische Effekte bei hohen Geschwindigkeiten und die Grenzen klassischer Modelle.",
@@ -4700,7 +4890,7 @@
       "contains": [],
       "requires": [
         "30adb86b-0fc1-4d41-880f-2dd65645e2cf",
-        "hes_phys_q1_rel_preview"
+        "5ac6578f-8df1-4950-8db9-95650562809b"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -4788,7 +4978,7 @@
       "contains": [],
       "requires": [
         "58df26f9-3f19-4d46-8ab7-37c1d898e3d3",
-        "hes_phys_q1_method_dgl"
+        "9e048bfc-694b-4557-8eea-a288383b5d73"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -5445,7 +5635,7 @@
       "contains": [],
       "requires": [
         "7372d1e4-1a5f-413e-aee0-b81536bd44f1",
-        "hes_phys_e_linearisierung"
+        "564f27e0-d344-4704-b603-6b08bc3dd3fd"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -5577,13 +5767,13 @@
         "processCompetencies": [],
         "guidingIdeas": [
           "LI_MATERIE",
-        "LI_ENERGIE"
-      ],
-      "phase": "Q4"
+          "LI_ENERGIE"
+        ],
+        "phase": "Q4"
       }
     },
     {
-      "id": "hes_phys_q4_kernenergie_bewertung",
+      "id": "81d10b3d-9b64-43b9-900e-c546f37f5d82",
       "title": "Beurteilung von Strahlungsrisiken und Kernenergie",
       "titleEn": "Assessing Radiation Risks and Nuclear Energy",
       "description": "Die lernende Person kann Strahlungsrisiken, Schutzmaßnahmen und Nutzenabwägungen von Kernenergie sachlich beurteilen und Argumente mit physikalischen Grundlagen stützen.",
