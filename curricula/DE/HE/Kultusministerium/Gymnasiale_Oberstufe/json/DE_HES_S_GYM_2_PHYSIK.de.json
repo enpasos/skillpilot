@@ -60,6 +60,40 @@
       }
     },
     {
+      "id": "hes_phys_intro_motivation",
+      "title": "Warum Physik? – Weltverständnis & Zukunft",
+      "titleEn": "Why Physics? – Understanding the World & Future",
+      "description": "Der 'Big Picture'-Einstieg: Warum das Smartphone funktioniert, wie Ärzte ohne Skalpell in den Körper schauen (MRT), warum Sterne leuchten und wie wir die Energiekrise lösen. Überblick über die Relevanz der Themenfelder von der Mechanik bis zur Quantenphysik für dein Leben.",
+      "descriptionEn": "The 'Big Picture' intro: Why smartphones work, how doctors see inside bodies without scalpels (MRI), why stars shine, and how to solve energy crises. Overview of the relevance of topics from mechanics to quantum physics for your life.",
+      "weight": 1.0,
+      "tags": [
+        "GK",
+        "LK",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_ENERGIE",
+          "LI_TECHNIK",
+          "LI_KOSMOS"
+        ],
+        "basicConcepts": [
+          "KONZEPT_SYSTEM",
+          "KONZEPT_ENERGIE"
+        ],
+        "phase": "E"
+      }
+    },
+    {
       "id": "25bd8476-0c87-4777-b9f5-0bba9ad1b06e",
       "title": "Einführungsphase Mechanik",
       "titleEn": "Introductory Phase Mechanics",
@@ -71,6 +105,7 @@
         "LK"
       ],
       "contains": [
+        "hes_phys_intro_motivation",
         "af70212d-e318-462d-a53f-fee8f05697d6",
         "52c3d2e8-6634-4806-b84b-3709e3c4aef1",
         "9994fc3c-5af6-4ae5-85a9-c4b7d7a2abb0",
@@ -149,7 +184,9 @@
         "7ff5ae5e-2959-45af-aa6e-73aaaf128440",
         "hes_phys_e_videoanalyse"
       ],
-      "requires": [],
+      "requires": [
+        "hes_phys_intro_motivation"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",
@@ -3878,7 +3915,7 @@
     {
       "id": "20f81ea0-4c40-4c1b-9e14-886911af77d5",
       "title": "Astrophysik",
-      "titleEn": "Astrophysik",
+      "titleEn": "Astrophysics",
       "description": "Cluster zur Astrophysik: Struktur des Sonnensystems, Kosmologie, größere Strukturen, Rotverschiebung, Urknall, dunkle Materie und Energie sowie Sternentwicklung.",
       "descriptionEn": "Cluster on astrophysics: structure of the solar system, cosmology, larger structures, redshift, Big Bang, dark matter and energy, and stellar evolution.",
       "weight": 1.15,
@@ -5017,13 +5054,7 @@
         "demandLevel": "AB3",
         "processCompetencies": [],
         "guidingIdeas": [
-          "LI_BEWEGUNG",
-          "LI_ENERGIE",
-          "LI_FELDER",
-          "LI_WELLEN",
-          "LI_MATERIE",
-          "LI_TECHNIK",
-          "LI_KOSMOS"
+          "LI_WELLEN"
         ],
         "phase": "Q2"
       }
@@ -5047,13 +5078,7 @@
         "demandLevel": "AB3",
         "processCompetencies": [],
         "guidingIdeas": [
-          "LI_BEWEGUNG",
-          "LI_ENERGIE",
-          "LI_FELDER",
-          "LI_WELLEN",
-          "LI_MATERIE",
-          "LI_TECHNIK",
-          "LI_KOSMOS"
+          "LI_WELLEN"
         ],
         "phase": "Q3"
       }
@@ -5077,13 +5102,8 @@
         "demandLevel": "AB3",
         "processCompetencies": [],
         "guidingIdeas": [
-          "LI_BEWEGUNG",
-          "LI_ENERGIE",
-          "LI_FELDER",
           "LI_WELLEN",
-          "LI_MATERIE",
-          "LI_TECHNIK",
-          "LI_KOSMOS"
+          "LI_MATERIE"
         ],
         "phase": "Q3"
       }
@@ -5107,13 +5127,8 @@
         "demandLevel": "AB3",
         "processCompetencies": [],
         "guidingIdeas": [
-          "LI_BEWEGUNG",
-          "LI_ENERGIE",
-          "LI_FELDER",
           "LI_WELLEN",
-          "LI_MATERIE",
-          "LI_TECHNIK",
-          "LI_KOSMOS"
+          "LI_MATERIE"
         ],
         "phase": "Q3"
       }
@@ -5137,23 +5152,17 @@
         "demandLevel": "AB3",
         "processCompetencies": [],
         "guidingIdeas": [
-          "LI_BEWEGUNG",
-          "LI_ENERGIE",
-          "LI_FELDER",
-          "LI_WELLEN",
-          "LI_MATERIE",
-          "LI_TECHNIK",
-          "LI_KOSMOS"
+          "LI_MATERIE"
         ],
         "phase": "Q3"
       }
     },
     {
       "id": "474a1fa6-d211-4b1c-bfa6-e7134326ba7e",
-      "title": "Laserprinzip",
-      "titleEn": "Laser Principle",
-      "description": "Besetzungsinversion und Resonatorprinzip erklären.",
-      "descriptionEn": "Explain population inversion and resonator principle.",
+      "title": "Laserprinzip (Vertiefung: Resonator-Moden)",
+      "titleEn": "Laser Principle (Advanced: Resonator Modes)",
+      "description": "Die lernende Person kann das Resonatorprinzip und die Modenbildung im Laser erläutern und deren Bedeutung für die Lichtverstärkung deuten.",
+      "descriptionEn": "The learner can explain the resonator principle and mode formation in lasers and interpret their relevance for light amplification.",
       "weight": 1.1,
       "tags": [
         "LK"
@@ -5167,13 +5176,8 @@
         "demandLevel": "AB3",
         "processCompetencies": [],
         "guidingIdeas": [
-          "LI_BEWEGUNG",
-          "LI_ENERGIE",
-          "LI_FELDER",
           "LI_WELLEN",
-          "LI_MATERIE",
-          "LI_TECHNIK",
-          "LI_KOSMOS"
+          "LI_MATERIE"
         ],
         "phase": "Q3"
       }
@@ -5197,13 +5201,8 @@
         "demandLevel": "AB3",
         "processCompetencies": [],
         "guidingIdeas": [
-          "LI_BEWEGUNG",
-          "LI_ENERGIE",
-          "LI_FELDER",
-          "LI_WELLEN",
           "LI_MATERIE",
-          "LI_TECHNIK",
-          "LI_KOSMOS"
+          "LI_ENERGIE"
         ],
         "phase": "Q4"
       }
@@ -5227,13 +5226,8 @@
         "demandLevel": "AB3",
         "processCompetencies": [],
         "guidingIdeas": [
-          "LI_BEWEGUNG",
-          "LI_ENERGIE",
-          "LI_FELDER",
-          "LI_WELLEN",
           "LI_MATERIE",
-          "LI_TECHNIK",
-          "LI_KOSMOS"
+          "LI_ENERGIE"
         ],
         "phase": "Q4"
       }
@@ -5257,12 +5251,6 @@
         "demandLevel": "AB3",
         "processCompetencies": [],
         "guidingIdeas": [
-          "LI_BEWEGUNG",
-          "LI_ENERGIE",
-          "LI_FELDER",
-          "LI_WELLEN",
-          "LI_MATERIE",
-          "LI_TECHNIK",
           "LI_KOSMOS"
         ],
         "phase": "Q4"
@@ -5287,12 +5275,6 @@
         "demandLevel": "AB3",
         "processCompetencies": [],
         "guidingIdeas": [
-          "LI_BEWEGUNG",
-          "LI_ENERGIE",
-          "LI_FELDER",
-          "LI_WELLEN",
-          "LI_MATERIE",
-          "LI_TECHNIK",
           "LI_KOSMOS"
         ],
         "phase": "Q4"
