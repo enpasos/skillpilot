@@ -6,8 +6,8 @@ export interface DimensionTags {
   processCompetencies: string[]
   guidingIdeas: string[]
   phase: string
-  area: string
-  topicCode: string
+  area?: string
+  topicCode?: string
 }
 
 
@@ -35,13 +35,14 @@ export interface ExamData {
 export interface LearningGoal {
   /** Original goal id (KC-oriented, may be German). */
   id: string
-  /** Short, ASCII-only key that is stable across languages and UIs. */
-  shortKey: string
+  /** Short, ASCII-only key that is stable across languages and UIs. Optional in older landscape files. */
+  shortKey?: string
   /** Localized title shown to learners (German in the current landscape). */
   title: string
   /** Localized description, typically “Die lernende Person kann …”. */
   description: string
-  core: boolean
+  /** Optional in older landscape files; runtime derives a fallback from tags/courseLevel. */
+  core?: boolean
   weight: number
   tags?: string[]
   dimensionTags: DimensionTags
@@ -51,7 +52,7 @@ export interface LearningGoal {
   kompetenzen?: string[]
   requires: string[]
   contains: string[]
-  examples: string[]
+  examples?: string[]
   sourceRef?: string
   extendedData?: Record<string, unknown>
   examData?: ExamData

@@ -66,6 +66,7 @@ export function convertLearningGoal(
   const dim = goal.dimensionTags
   const nodeType = goal.type ?? ((goal.contains && goal.contains.length > 0) ? 'cluster' : 'atomic')
   const nodeKind = goal.nodeKind ?? (goal.examData ? 'exam' : 'tutor')
+  const inferredCore = typeof goal.core === 'boolean' ? goal.core : tags.includes('GK')
   return {
     id: goal.id,
     landscapeId: origin?.landscapeId,
@@ -75,7 +76,7 @@ export function convertLearningGoal(
     themenfeld: dim?.topicCode ?? '',
     area: dim?.area ?? '',
     level: demandLevelToNumber(dim?.demandLevel ?? ''),
-    core: goal.core,
+    core: inferredCore,
     weight: goal.weight,
     tags,
     leitideen: (dim?.guidingIdeas as Leitidee[]) ?? [],
