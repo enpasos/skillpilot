@@ -150,6 +150,33 @@
       }
     },
     {
+      "id": "5194a210-9853-4318-8b27-545233267923",
+      "title": "Methode: Digitale Messwerterfassung & Analyse",
+      "titleEn": "Method: Digital Data Acquisition & Analysis",
+      "description": "Einsatz digitaler Werkzeuge (Sensoren, Videoanalyse) vs. analoge Messung. Umgang mit Messunsicherheiten (systematisch vs. zufällig) und signifikanten Stellen.",
+      "descriptionEn": "Use of digital tools (sensors, video analysis) vs. analog measurement. Handling measurement uncertainties (systematic vs. random) and significant figures.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method",
+        "Measurement"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E"
+      }
+    },
+    {
       "id": "25bd8476-0c87-4777-b9f5-0bba9ad1b06e",
       "title": "Einführungsphase Mechanik",
       "titleEn": "Introductory Phase Mechanics",
@@ -164,6 +191,7 @@
         "4b56b5c6-0e7b-4486-aa8f-7d5be7f085a5",
         "7252f084-398f-47d6-a5ba-1f7c78cd7559",
         "564f27e0-d344-4704-b603-6b08bc3dd3fd",
+        "5194a210-9853-4318-8b27-545233267923",
         "af70212d-e318-462d-a53f-fee8f05697d6",
         "52c3d2e8-6634-4806-b84b-3709e3c4aef1",
         "9994fc3c-5af6-4ae5-85a9-c4b7d7a2abb0",
@@ -328,6 +356,7 @@
       ],
       "contains": [],
       "requires": [
+        "5194a210-9853-4318-8b27-545233267923",
         "7252f084-398f-47d6-a5ba-1f7c78cd7559"
       ],
       "dimensionTags": {
@@ -2322,6 +2351,7 @@
         "4f9e692f-66b8-4c9f-9f0d-c34b8b1eff82",
         "4c9d72cf-da5c-4afa-aeab-c8e5317f5a13",
         "bcefc6c3-dd78-4d12-8498-863af2997ee8",
+        "c8160274-1234-4567-89ab-cdef01234567",
         "fd1423c1-8288-42d5-9591-860ec4c13a86"
       ],
       "requires": [
@@ -3357,6 +3387,7 @@
         "c9871b6b-9511-4aac-903d-db5249642f10",
         "b5cb8f4c-bc0f-44e7-ade4-3b0cd3563655",
         "7372d1e4-1a5f-413e-aee0-b81536bd44f1",
+        "b3456789-1234-4321-abcd-ef1234567890",
         "a0ff15f1-a634-4403-973c-b480fc410138",
         "855a56c6-d007-4e83-af9a-9aad06853092",
         "a75cd921-a02b-424d-9a4d-fae33f921ee5",
@@ -3448,6 +3479,36 @@
         "demandLevel": "AB2",
         "processCompetencies": [],
         "guidingIdeas": [],
+        "phase": "Q3"
+      }
+    },
+    {
+      "id": "b3456789-1234-4321-abcd-ef1234567890",
+      "title": "Methode: Naturkonstanten bestimmen (Linearisierung)",
+      "titleEn": "Method: Determining Natural Constants (Linearization)",
+      "description": "Anwendung der Linearisierung ($y=mx+b$) auf die Einstein-Gleichung ($E_{kin} = h \\cdot f - W_A$), um das Plancksche Wirkungsquantum $h$ experimentell aus Messdaten zu gewinnen.",
+      "descriptionEn": "Applying linearization to Einstein's equation to experimentally determine Planck's constant h from measurement data.",
+      "weight": 1.1,
+      "tags": [
+        "GK",
+        "LK",
+        "Method",
+        "Measurement"
+      ],
+      "contains": [],
+      "requires": [
+        "564f27e0-d344-4704-b603-6b08bc3dd3fd",
+        "7372d1e4-1a5f-413e-aee0-b81536bd44f1"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE"
+        ],
         "phase": "Q3"
       }
     },
@@ -3735,6 +3796,7 @@
         "9fb3e6a0-83de-4ff2-b154-f4ef2960bd67",
         "78c8b1ac-c98e-4c37-baa6-ec3a835aa720",
         "5cecd7d4-956a-4e8d-939a-7f849a08fa5b",
+        "f7a2b9c3-4d5e-6f78-9012-345678901234",
         "416d771a-8a53-4536-856b-b12e8b1e4892",
         "7c9063c3-ee17-4cbd-8606-4f08e5486296",
         "db649343-95e5-44a7-a58a-28af67a3ecb6"
@@ -3876,6 +3938,39 @@
         "demandLevel": "AB3",
         "processCompetencies": [],
         "guidingIdeas": [],
+        "phase": "Q4"
+      }
+    },
+    {
+      "id": "f7a2b9c3-4d5e-6f78-9012-345678901234",
+      "title": "Das Messproblem in der Quantenphysik",
+      "titleEn": "The Measurement Problem in Quantum Physics",
+      "description": "Erkenntnis, dass Messung kein passives Ablesen ist, sondern den Zustand des Systems präpariert oder verändert (Kollaps der Wellenfunktion). Abgrenzung zur klassischen Messunsicherheit.",
+      "descriptionEn": "Realization that measurement is not passive reading but prepares or changes the state of the system. Distinction from classical measurement uncertainty.",
+      "weight": 1.15,
+      "tags": [
+        "GK",
+        "LK",
+        "Concept",
+        "Measurement"
+      ],
+      "contains": [],
+      "requires": [
+        "5cecd7d4-956a-4e8d-939a-7f849a08fa5b",
+        "5194a210-9853-4318-8b27-545233267923"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE"
+        ],
+        "basicConcepts": [
+          "KONZEPT_ZUFALL_DETERMINIERTHEIT"
+        ],
         "phase": "Q4"
       }
     },
@@ -4932,6 +5027,36 @@
         "guidingIdeas": [
           "LI_FELDER",
           "LI_ENERGIE"
+        ],
+        "phase": "Q1"
+      }
+    },
+    {
+      "id": "c8160274-1234-4567-89ab-cdef01234567",
+      "title": "Methode: Messung unsichtbarer Feldgrößen (B-Feld)",
+      "titleEn": "Method: Measuring Invisible Field Quantities (B-Field)",
+      "description": "Nutzung physikalischer Effekte zur Messung der magnetischen Flussdichte B: Hall-Sonden (Q1) und Induktionsspulen/Fluxmeter (Q2).",
+      "descriptionEn": "Using physical effects to measure magnetic flux density B: Hall probes (Q1) and induction coils/fluxmeters (Q2).",
+      "weight": 1.0,
+      "tags": [
+        "GK",
+        "LK",
+        "Method",
+        "Measurement"
+      ],
+      "contains": [],
+      "requires": [
+        "bcefc6c3-dd78-4d12-8498-863af2997ee8",
+        "f44ef8ce-bcdf-4436-9a57-ba68d11395a1"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER"
         ],
         "phase": "Q1"
       }
