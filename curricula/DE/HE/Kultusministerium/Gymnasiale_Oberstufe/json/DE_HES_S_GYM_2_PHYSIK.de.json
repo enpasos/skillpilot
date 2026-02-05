@@ -201,7 +201,9 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "hes_phys_e_kinetische_energie"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",
@@ -522,10 +524,103 @@
         "LK"
       ],
       "contains": [
-        "hes_phys_e_energy_entwertung"
+        "hes_phys_e_mechanische_energie",
+        "hes_phys_e_kinetische_energie",
+        "hes_phys_e_reibungsenergie",
+        "hes_phys_e_energieerhaltung"
       ],
       "requires": [
         "0436c8fc-b849-4cab-84d7-32e92c0d94a9"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "hes_phys_e_mechanische_energie",
+      "title": "Mechanische Energie",
+      "titleEn": "Mechanical Energy",
+      "description": "Die lernende Person kann die mechanische Energie als Summe aus kinetischer und potenzieller Energie beschreiben und einfache Beispiele deuten.",
+      "descriptionEn": "The learner can describe mechanical energy as the sum of kinetic and potential energy and interpret simple examples.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "hes_phys_e_kinetische_energie"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "hes_phys_e_kinetische_energie",
+      "title": "Kinetische Energie",
+      "titleEn": "Kinetic Energy",
+      "description": "Die lernende Person kann die kinetische Energie $E_\\mathrm{k}=\\frac{1}{2}mv^2$ berechnen und die Abhängigkeit von Masse und Geschwindigkeit erläutern.",
+      "descriptionEn": "The learner can calculate kinetic energy $E_k=\\frac{1}{2}mv^2$ and explain its dependence on mass and velocity.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "hes_phys_e_reibungsenergie",
+      "title": "Reibungsenergie",
+      "titleEn": "Frictional Energy",
+      "description": "Die lernende Person kann Reibungsenergie als Umwandlung mechanischer Energie in innere Energie deuten und einfache Energieumwandlungen qualitativ beschreiben.",
+      "descriptionEn": "The learner can interpret frictional energy as the conversion of mechanical energy into internal energy and qualitatively describe simple energy conversions.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "hes_phys_e_energieerhaltung"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "hes_phys_e_energieerhaltung",
+      "title": "Energieerhaltung",
+      "titleEn": "Energy Conservation",
+      "description": "Die lernende Person kann die Energieerhaltung in abgeschlossenen Systemen formulieren und einfache Energieumwandlungen bilanziell beschreiben.",
+      "descriptionEn": "The learner can formulate energy conservation in closed systems and describe simple energy transformations using balances.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "hes_phys_e_mechanische_energie"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -1127,6 +1222,7 @@
         "32c22bcd-639c-4441-8f7f-2061d5176616",
         "bda3add4-967c-4a42-83a4-db52a45bcf4f",
         "298c09af-5c8f-4909-993e-335d381d0fd1",
+        "hes_phys_e_energy_entwertung",
         "ad9d1b14-5690-4160-9ca8-b98d182d2c36"
       ],
       "requires": [
