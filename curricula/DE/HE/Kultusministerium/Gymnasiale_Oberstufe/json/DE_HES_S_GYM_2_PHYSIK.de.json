@@ -524,6 +524,7 @@
       "contains": [
         "hes_phys_e_mechanische_energie",
         "hes_phys_e_kinetische_energie",
+        "hes_phys_e_potentielle_energie",
         "hes_phys_e_reibungsenergie",
         "hes_phys_e_energieerhaltung"
       ],
@@ -551,7 +552,8 @@
       ],
       "contains": [],
       "requires": [
-        "hes_phys_e_kinetische_energie"
+        "hes_phys_e_kinetische_energie",
+        "hes_phys_e_potentielle_energie"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -567,6 +569,27 @@
       "titleEn": "Kinetic Energy",
       "description": "Die lernende Person kann die kinetische Energie $E_\\mathrm{k}=\\frac{1}{2}mv^2$ berechnen und die Abhängigkeit von Masse und Geschwindigkeit erläutern.",
       "descriptionEn": "The learner can calculate kinetic energy $E_k=\\frac{1}{2}mv^2$ and explain its dependence on mass and velocity.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "hes_phys_e_potentielle_energie",
+      "title": "Potenzielle Energie",
+      "titleEn": "Potential Energy",
+      "description": "Die lernende Person kann potenzielle Energie in Feldern (z. B. im Gravitationsfeld) beschreiben, einfache Fälle berechnen und die Abhängigkeit von Lage und Bezugssystem erläutern.",
+      "descriptionEn": "The learner can describe potential energy in fields (e.g., gravitational field), calculate simple cases, and explain its dependence on position and reference system.",
       "weight": 0.9,
       "tags": [
         "GK",
