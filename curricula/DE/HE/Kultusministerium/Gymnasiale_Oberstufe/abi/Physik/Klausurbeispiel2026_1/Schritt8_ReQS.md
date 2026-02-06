@@ -19,9 +19,10 @@ Datum: 2026-02-06
 | F-011 | Ergänzung Standardmodell/Elementarteilchen in Q4_OPTIONAL | behoben | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json` |
 | F-012 | Leitideen-Schärfung Kernphysik (Technikbezug) | behoben | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json` |
 | F-013 | Integration Klausurbeispiel 2026/1 in Landscape (`examData`) | behoben | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json` |
+| F-014 | LaTeX-Indexkorrektur (`_{...}` bei Mehrbuchstaben-Indizes) | behoben | `Physik_Hessen_2026_Klausurbeispiel_1.md`, `Physik_Hessen_2026_Klausurbeispiel_1_Musterloesung.md`, `Schritt7_Finding_Bearbeitung.md` |
 
 ## Freigabestatus
 
-- Aktueller Status: erledigt (bezogen auf F-001 bis F-013)
+- Aktueller Status: erledigt (bezogen auf F-001 bis F-014)
 - Offene Punkte:
   - keine

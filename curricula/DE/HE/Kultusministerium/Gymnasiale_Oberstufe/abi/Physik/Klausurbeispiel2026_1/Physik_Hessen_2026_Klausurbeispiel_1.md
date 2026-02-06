@@ -217,7 +217,7 @@
 
 1. Bestimmen Sie aus Material 1 eine lineare Beziehung zwischen $U_g$ und $f$ und daraus $h$ und $W_A$. (8 BE)
 2. Stellen Sie mit Material 2 ein **Energiestufenmodell** dar und berechnen Sie zwei mögliche Emissionswellenlängen für Übergänge in den Grundzustand. (7 BE)
-3. Für Elektronen mit $E_kin = 4,0 eV$: Berechnen Sie die De-Broglie-Wellenlänge und diskutieren Sie den Bezug zur Interferenzfähigkeit an Kristallen. (5 BE)
+3. Für Elektronen mit $E_{kin} = 4,0 eV$: Berechnen Sie die De-Broglie-Wellenlänge und diskutieren Sie den Bezug zur Interferenzfähigkeit an Kristallen. (5 BE)
 4. Nutzen Sie Material 3 zur LK-Erweiterung: linearisieren Sie den Zusammenhang zwischen $\sqrt{f_{K\alpha}}$ und $Z$ und bestimmen Sie daraus den Abschirmparameter in einem Modell $f_{K\alpha} \approx (Z - \sigma)^2$. (7 BE)
 5. Begründen Sie die Grenzen dieses vereinfachten Moseley-Modells. (3 BE)
 
@@ -228,7 +228,7 @@
 **Material 1 (Röntgenröhre):**
 
 - Beschleunigungsspannung: $U = 120 kV$
-- gemessene Grenzwellenlänge: $\lambda_min = 0,0105 nm$
+- gemessene Grenzwellenlänge: $\lambda_{min} = 0,0105 nm$
 
 **Material 2 (Abschwächung in zwei Materialien):**
 

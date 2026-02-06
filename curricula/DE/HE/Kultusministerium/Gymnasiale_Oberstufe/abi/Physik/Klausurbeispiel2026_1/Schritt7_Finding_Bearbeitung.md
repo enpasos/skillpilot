@@ -141,3 +141,19 @@ Datum: 2026-02-06
   - GK- und LK-Untercluster mit je vier Vorschlagszielen (A-D) ergänzt.
   - Für alle 8 Vorschlagsziele wurden `examData.taskContent`, `examData.solutionContent` sowie ein BE-`scoring`-Raster aus dem Klausurbeispiel hinterlegt.
   - Referenzielle Konsistenz (`contains`/`requires`) und JSON-Syntax wurden validiert.
+
+### F-014
+
+- Status: geschlossen
+- Geplante Änderungen:
+  - Mehrbuchstaben-Indizes in Klausurbeispiel 1 auf geklammerte LaTeX-Form bringen.
+  - Problemfälle systematisch suchen und nicht nur `\\lambda_min` einzeln korrigieren.
+- Ergebnis:
+  - In Aufgabenblatt und Musterlösung wurden alle gefundenen betroffenen Terme korrigiert:
+    - `\\lambda_min` -> `\\lambda_{min}`
+    - `E_kin` -> `E_{kin}`
+    - `U_ind` -> `U_{ind}`
+    - `E_pot` -> `E_{pot}`
+    - `f_res` -> `f_{res}`
+    - `E_max` -> `E_{max}`
+  - Nachprüfung auf verbleibende ungekapselte Mehrbuchstaben-Indizes in den beiden Hauptdokumenten: keine fachlichen Treffer mehr.

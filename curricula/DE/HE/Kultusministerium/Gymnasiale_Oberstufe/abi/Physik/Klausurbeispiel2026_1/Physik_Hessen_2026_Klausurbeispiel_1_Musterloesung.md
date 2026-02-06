@@ -30,13 +30,13 @@ Bezug zur Aufgabenfassung: `Physik_Hessen_2026_Klausurbeispiel_1.md`
    **7 BE**
 
 3. Induktionsgesetz (Betrag, lineare Änderung von $B$ vorausgesetzt):  
-   $U_ind = A_S \cdot |\Delta B / \Delta t| = 0.040 \cdot |(0.006 - 0.024)/0.12| = 0.0060 V = 6.0 mV$  
+   $U_{ind} = A_S \cdot |\Delta B / \Delta t| = 0.040 \cdot |(0.006 - 0.024)/0.12| = 0.0060 V = 6.0 mV$  
    Lenz-Regel (Richtung): Da das durch die Schleife tretende äußere Magnetfeld im Betrag abnimmt, muss der Induktionsstrom ein Magnetfeld erzeugen, das das ursprüngliche äußere Feld stützt.  
    **6 BE**
 
 4. Zeitabweichung $\pm 10 \%$:  
-   - bei $t = 0.108 s$: $U_ind \approx 6.67 mV$  
-   - bei $t = 0.132 s$: $U_ind \approx 5.45 mV$  
+   - bei $t = 0.108 s$: $U_{ind} \approx 6.67 mV$  
+   - bei $t = 0.132 s$: $U_{ind} \approx 5.45 mV$  
    Beide Werte liegen über $4.0 mV$ -> Auslösung robust.  
    **4 BE**
 
@@ -83,7 +83,7 @@ Bezug zur Aufgabenfassung: `Physik_Hessen_2026_Klausurbeispiel_1.md`
    **8 BE**
 
 3. De-Broglie-Wellenlänge:  
-   $\lambda = h / \sqrt{2 m_e E_kin}$ mit $E_kin = 3.2 eV$.  
+   $\lambda = h / \sqrt{2 m_e E_{kin}}$ mit $E_{kin} = 3.2 eV$.  
    $\lambda \approx 6.86e-10 m = 0.686 nm$.  
    Vergleich mit $0.30 nm$: gleiche Größenordnung, daher Interferenz-/Beugungseffekte an atomaren Strukturen plausibel.  
    **8 BE**
@@ -127,7 +127,7 @@ Bezug zur Aufgabenfassung: `Physik_Hessen_2026_Klausurbeispiel_1.md`
 
 1. Feldstärke: $E = U/d = 2400/0.006 = 4.0e5 V/m$.  
    Potenzielle Energieänderung auf Strecke $s=0.040 m$:  
-   $\Delta E_pot = q E s = e \cdot 4.0e5 \cdot 0.040 = 2.56e-15 J = 16.0 keV$.  
+   $\Delta E_{pot} = q E s = e \cdot 4.0e5 \cdot 0.040 = 2.56e-15 J = 16.0 keV$.  
    **7 BE**
 
 2. Regressionsfunktion aus Material 2:  
@@ -159,7 +159,7 @@ Bezug zur Aufgabenfassung: `Physik_Hessen_2026_Klausurbeispiel_1.md`
    Interpretation: moderate Dämpfung pro Periode.  
    **7 BE**
 
-2. Resonanzfrequenz aus Material 2: $f_res \approx 1.6 Hz$.  
+2. Resonanzfrequenz aus Material 2: $f_{res} \approx 1.6 Hz$.  
    Besonders wirksamer Tilgerbereich: etwa um $1.4$ bis $1.8 Hz$ mit Schwerpunkt nahe $1.6 Hz$.  
    **6 BE**
 
@@ -195,7 +195,7 @@ Bezug zur Aufgabenfassung: `Physik_Hessen_2026_Klausurbeispiel_1.md`
    Zwei davon genügen, sauber begründet.  
    **7 BE**
 
-3. De-Broglie für $E_kin = 4.0 eV$:  
+3. De-Broglie für $E_{kin} = 4.0 eV$:  
    $\lambda \approx 6.13e-10 m = 0.613 nm$.  
    Damit liegt die Wellenlänge im Bereich atomarer Gitterabstände -> Interferenz an Kristallen ist zu erwarten.  
    **5 BE**
@@ -216,9 +216,9 @@ Bezug zur Aufgabenfassung: `Physik_Hessen_2026_Klausurbeispiel_1.md`
 ### Vorschlag D (LK) - 30 BE
 
 1. Maximale Photonenergie aus Beschleunigungsspannung:  
-   $E_max = eU = 120 keV = 1.92e-14 J$.  
-   Aus Grenzwellenlänge $\lambda_min = 0.0105 nm$:  
-   $E = hc/\lambda_min \approx 118 keV$.  
+   $E_{max} = eU = 120 keV = 1.92e-14 J$.  
+   Aus Grenzwellenlänge $\lambda_{min} = 0.0105 nm$:  
+   $E = hc/\lambda_{min} \approx 118 keV$.  
    Abweichung ~$1.6 \%$, damit konsistent im Rahmen eines realen Mess-/Rundungsfehlers.  
    **7 BE**
 
