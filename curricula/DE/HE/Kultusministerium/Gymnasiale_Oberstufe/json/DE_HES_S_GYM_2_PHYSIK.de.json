@@ -938,10 +938,10 @@
     },
     {
       "id": "99bbf33e-74f5-4f33-98e2-e4e6661d8648",
-      "title": "Potenzielle Energie und Felder",
-      "titleEn": "Potential Energy and Fields",
-      "description": "Die lernende Person kann potenzielle Energie in Feldern (z. B. im Gravitationsfeld) beschreiben, einfache Fälle berechnen und die Abhängigkeit von Lage und Bezugssystem erläutern.",
-      "descriptionEn": "The learner can describe potential energy in fields (e.g., gravitational field), calculate simple cases, and explain its dependence on position and reference system.",
+      "title": "Potenzielle Energie und Potential",
+      "titleEn": "Potential Energy and Potential",
+      "description": "Die lernende Person kann potenzielle Energie über ein Potential beschreiben, einfache Fälle (z. B. im Gravitationsfeld) berechnen und die Abhängigkeit von Lage und Bezugssystem erläutern.",
+      "descriptionEn": "The learner can describe potential energy via a potential, calculate simple cases (e.g., in a gravitational field), and explain its dependence on position and reference system.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -949,7 +949,7 @@
       ],
       "contains": [],
       "requires": [
-        "4831acd5-1106-4437-ae1e-630b3c653d27"
+        "50609800-0132-4fb4-8ffe-918fa3b90869"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -1185,9 +1185,9 @@
     },
     {
       "id": "b36bb565-f304-47c4-b44e-012dd9ff7a1a",
-      "title": "Energieerhaltung aus Newtonschen Axiomen (LK)",
+      "title": "Erhaltung der mechanischen Energie tiefer verstehen (LK)",
       "titleEn": "Energy Conservation from Newton's Laws (Advanced Course)",
-      "description": "Die lernende Person kann die Energieerhaltung aus Newtonschen Axiomen herleiten und die Voraussetzungen der Herleitung benennen. Hinweis: Starte mit der Grundgleichung, skalarmultipliziere mit der Geschwindigkeit, beachte bei der kinetischen Energie konstante Masse und führe für die potenzielle Energie zwei sich aufhebende Operationen aus (integriere diesen Teil über die Zeit t und leite nach t ab), um auf die Erhaltung der mechanischen Energie zu gelangen.",
+      "description": "Die lernende Person kann die Energieerhaltung aus den Newtonschen Axiomen herleiten und die Voraussetzungen dieser Herleitung benennen. Ausgangspunkt ist die Grundgleichung der Mechanik, die mit der Geschwindigkeit skalar multipliziert wird. Dabei ist für die kinetische Energie eine konstante Masse vorausgesetzt. Für konservative Kräfte wird die Kraft als Gradient eines Potenzials aufgefasst, sodass sich der entsprechende Term als Zeitableitung der potenziellen Energie schreiben lässt. Auf diese Weise gelangt die lernende Person zur Erhaltung der mechanischen Energie.",
       "descriptionEn": "The learner can derive energy conservation from Newton's laws and state the assumptions of the derivation. Hint: Start from the fundamental equation, take the scalar product with velocity, treat mass as constant for kinetic energy, and for potential energy use two canceling operations (integrate this part over time t and differentiate with respect to t) to obtain conservation of mechanical energy.",
       "weight": 0.9,
       "tags": [
@@ -1197,8 +1197,9 @@
       "requires": [
         "ff07337f-24bd-4148-8fa7-7a750d7ae5f8",
         "2808ec13-5b8b-4fb9-9b1a-7792146995b7",
-        "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3:e2b6b4d1-02db-4a27-948e-ecfbdb44dab3",
-        "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3:79761314-8dc4-450c-a3a6-4d196a991274"
+        "99bbf33e-74f5-4f33-98e2-e4e6661d8648",
+        "e2b6b4d1-02db-4a27-948e-ecfbdb44dab3",
+        "79761314-8dc4-450c-a3a6-4d196a991274"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -1614,8 +1615,9 @@
       "contains": [
         "c8f00161-bb59-48e1-8180-1c6874de8a01",
         "4831acd5-1106-4437-ae1e-630b3c653d27",
-        "99bbf33e-74f5-4f33-98e2-e4e6661d8648",
         "06012d22-7495-4b9d-8ea5-bea7c8dc45e5",
+        "50609800-0132-4fb4-8ffe-918fa3b90869",
+        "99bbf33e-74f5-4f33-98e2-e4e6661d8648",
         "10d6ba07-317b-4dd1-9c10-682388139ce7",
         "b4d1380d-1ff4-44d2-b1fd-822ea00e69cb",
         "cfc70433-3b78-4fcd-b031-e3dcb5420eb1"
@@ -1697,6 +1699,29 @@
       "contains": [],
       "requires": [
         "4831acd5-1106-4437-ae1e-630b3c653d27"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "50609800-0132-4fb4-8ffe-918fa3b90869",
+      "title": "Gravitationskraft und Gravitationspotential",
+      "titleEn": "Gravitational Force and Gravitational Potential",
+      "description": "Der Lernende versteht die Gravitationskraft als konservative Kraft, die aus einem Potential abgeleitet ist. Das wird im Rahmen der mathematischen Möglichkeiten der Oberstufe erklärt.",
+      "descriptionEn": "The learner understands gravitational force as a conservative force derived from a potential. This is explained within the mathematical scope of upper secondary level.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "06012d22-7495-4b9d-8ea5-bea7c8dc45e5"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",

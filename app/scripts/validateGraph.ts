@@ -53,6 +53,7 @@ const PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID = 'b36bb565-f304-47c4-b44e-012dd9ff7
 const PHYSICS_ENERGY_CLUSTER_GOAL_ID = 'fa204429-674f-466d-b049-a6de19a50579'
 const PHYSICS_NEWTON_INERTIAL_CLUSTER_GOAL_ID = 'ff07337f-24bd-4148-8fa7-7a750d7ae5f8'
 const PHYSICS_INERTIAL_SYSTEMS_GOAL_ID = '2808ec13-5b8b-4fb9-9b1a-7792146995b7'
+const PHYSICS_POTENTIAL_ENERGY_AND_POTENTIAL_GOAL_ID = '99bbf33e-74f5-4f33-98e2-e4e6661d8648'
 
 const MATH_LANDSCAPE_ID = '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3'
 const MATH_DIFFERENTIATION_GOAL_ID = 'e2b6b4d1-02db-4a27-948e-ecfbdb44dab3'
@@ -397,21 +398,28 @@ function validateLandscape(landscape: ParsedLandscape) {
         `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require ${PHYSICS_INERTIAL_SYSTEMS_GOAL_ID} (Inertialsysteme und Bezugssysteme)`,
       )
     }
+    if (!refsIncludeGoal(requires, PHYSICS_POTENTIAL_ENERGY_AND_POTENTIAL_GOAL_ID)) {
+      addIssue(
+        'error',
+        landscape.landscapeId,
+        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require ${PHYSICS_POTENTIAL_ENERGY_AND_POTENTIAL_GOAL_ID} (Potenzielle Energie und Potential)`,
+      )
+    }
 
     const requiredMathDiff = `${MATH_LANDSCAPE_ID}:${MATH_DIFFERENTIATION_GOAL_ID}`
     const requiredMathInt = `${MATH_LANDSCAPE_ID}:${MATH_INTEGRATION_GOAL_ID}`
-    if (!requires.includes(requiredMathDiff)) {
+    if (!refsIncludeGoal(requires, MATH_DIFFERENTIATION_GOAL_ID)) {
       addIssue(
         'error',
         landscape.landscapeId,
-        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require ${requiredMathDiff}`,
+        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require ${MATH_DIFFERENTIATION_GOAL_ID} (or ${requiredMathDiff})`,
       )
     }
-    if (!requires.includes(requiredMathInt)) {
+    if (!refsIncludeGoal(requires, MATH_INTEGRATION_GOAL_ID)) {
       addIssue(
         'error',
         landscape.landscapeId,
-        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require ${requiredMathInt}`,
+        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require ${MATH_INTEGRATION_GOAL_ID} (or ${requiredMathInt})`,
       )
     }
   }
