@@ -97,8 +97,11 @@ export const buildAbi26CockpitUrl = (context: Abi26CampaignContext, skillpilotId
 export const buildAbi26StartPrompt = (skillpilotId: string, context: Abi26CampaignContext) => {
   const levelLabel = context.courseLevel === 'LK' ? 'Leistungskurs (LK)' : 'Grundkurs (GK)'
   const focus = context.courseLevel === 'LK'
-    ? 'Abiturprüfung Mathematik (LK), Fokus B1 "Die Hängebrücke"'
-    : 'Abiturprüfung Mathematik (GK), Fokus B1 "Das Algenwachstum"'
+    ? 'Abiturprüfung Mathematik (LK)'
+    : 'Abiturprüfung Mathematik (GK)'
+  const activeGoal = context.courseLevel === 'LK'
+    ? 'B1 (Analysis - "Die Hängebrücke")'
+    : 'B1 (Analysis - "Das Algenwachstum")'
   return [
     'Bitte arbeite mit mir in meinem persönlichen SkillPilot-Kontext:',
     `- SkillPilot-ID: ${skillpilotId}`,
@@ -106,8 +109,8 @@ export const buildAbi26StartPrompt = (skillpilotId: string, context: Abi26Campai
     '- Schulbereich: Gymnasiale Oberstufe',
     '- Fach: Mathematik',
     `- Kursniveau: ${levelLabel}`,
-    `- Fokus: Abi 2026 / Klausurbeispiel 1 (${focus})`,
-    '',
-    'Starte mit einer kurzen Standortanalyse zu meinem aktuellen Frontier und schlage mir danach die nächsten 3 sinnvollen Schritte vor.',
+    `- Fokus: ${focus}`,
+    `- Aktives Lernziel: ${activeGoal}`,
+    'Starte direkt im Prüfungsmodus',
   ].join('\n')
 }

@@ -341,7 +341,13 @@ export const Abi26MatheStartView: React.FC = () => {
                   <li>Sprache: Deutsch</li>
                 </ul>
               </div>
-              <p className="text-xs text-text-secondary">Du entscheidest jetzt selbst, ob du ins Cockpit oder direkt in den Chat springst.</p>
+              <p className="text-xs text-text-secondary">
+                Du entscheidest jetzt selbst, ob du ins Cockpit oder direkt in den Chat springst.
+                {' '}
+                Du kannst auch beides parallel öffnen: im Chat arbeiten und im Cockpit die Updates beobachten.
+                {' '}
+                Wenn du den Link auf deinem Handy öffnest, kannst du Aufgaben auf Papier lösen, mit dem Handy abfotografieren und einfach im Chat hochladen.
+              </p>
               {copiedState === 'id' && (
                 <p className="text-xs text-emerald-600 dark:text-emerald-400">ID wurde in die Zwischenablage kopiert.</p>
               )}
