@@ -3,17 +3,17 @@
 ## Allgemeine Hinweise
 
 - Aufgabenart: materialgebundene Aufgabe.
-- Hilfsmittel: Woerterbuch der deutschen Rechtschreibung, eingefuehrter Taschenrechner, die den Pruefungsaufgaben beigefuegte mathematisch-naturwissenschaftliche Formelsammlung (oder eine Druckausgabe derselben) und eine eingefuehrte Formelsammlung (ohne Herleitungen, weitergehende physikalische Erklaerungen, Beispielaufgaben), Operatorenliste.
+- Hilfsmittel: Wörterbuch der deutschen Rechtschreibung, eingeführter Taschenrechner, die den Prüfungsaufgaben beigefügte mathematisch-naturwissenschaftliche Formelsammlung (oder eine Druckausgabe derselben) und eine eingeführte Formelsammlung (ohne Herleitungen, weitergehende physikalische Erklärungen, Beispielaufgaben), Operatorenliste.
 - Sprachliche Richtigkeit ist Teil der Bewertung.
-- Dieses Dokument ist ein Aufgabenentwurf (ohne Musterloesung).
+- Dieses Dokument ist ein Aufgabenentwurf (ohne Musterlösung).
 
 ---
 
 ## A) Grundkurs (GK)
 
-**Auswahlregel GK:** Es werden vier Vorschlaege $A$, $B$, $C$, $D$ angeboten. Es sind drei Vorschlaege zu bearbeiten.
+**Auswahlregel GK:** Es werden vier Vorschläge $A$, $B$, $C$, $D$ angeboten. Es sind drei Vorschläge zu bearbeiten.
 
-### Vorschlag A (GK) - Felder und Induktion im Sensorpruefstand (Q1.1/Q1.2/Q1.3, 25 BE)
+### Vorschlag A (GK) - Felder und Induktion im Sensorprüfstand (Q1.1/Q1.2/Q1.3, 25 BE)
 
 **Material 1 (Plattenkondensator und Test-Ion):**
 
@@ -30,15 +30,15 @@
 
 **Material 3 (Induktionsschleife):**
 
-- Schleifenflaeche: $A_S = 0{,}030 \, m^2$
-- Magnetische Flussdichte steigt gleichmaessig von $4 \, mT$ auf $22 \, mT$ in $0{,}09 \, s$.
+- Schleifenfläche: $A_S = 0{,}030 \, m^2$
+- Magnetische Flussdichte steigt gleichmäßig von $4 \, mT$ auf $22 \, mT$ in $0{,}09 \, s$.
 
 **Aufgaben:**
 
-1. Berechnen Sie die elektrische Feldstaerke $E$ und die Aenderung der potenziellen Energie des Ions auf der Strecke $s$. (7 BE)
-2. Bestimmen Sie aus Material 2 eine lineare Naeherung $B(I)$ und schaetzen Sie $B$ fuer $I = 1{,}6 \, A$. (6 BE)
+1. Berechnen Sie die elektrische Feldstärke $E$ und die Änderung der potenziellen Energie des Ions auf der Strecke $s$. (7 BE)
+2. Bestimmen Sie aus Material 2 eine lineare Näherung $B(I)$ und schätzen Sie $B$ für $I = 1{,}6 \, A$. (6 BE)
 3. Berechnen Sie den Betrag der induzierten Spannung aus Material 3 und geben Sie mithilfe der Lenz-Regel die Stromrichtung qualitativ an. (7 BE)
-4. Ein Auswertebaustein schaltet sicher ab $5{,}0 \, mV$. Beurteilen Sie die Robustheit der Ausloesung bei einer Zeitabweichung von $\pm 8\%$. (5 BE)
+4. Ein Auswertebaustein schaltet sicher ab $5{,}0 \, mV$. Beurteilen Sie die Robustheit der Auslösung bei einer Zeitabweichung von $\pm 8\%$. (5 BE)
 
 ---
 
@@ -56,7 +56,7 @@
 - Schallgeschwindigkeit: $c = 340 \, m/s$
 - Drohnengeschwindigkeit: $v_S = 17 \, m/s$
 
-**Material 3 (Wellen an einer Grenzflaeche):**
+**Material 3 (Wellen an einer Grenzfläche):**
 
 - Bereich 1: $v_1 = 2{,}4 \, m/s$
 - Bereich 2: $v_2 = 1{,}6 \, m/s$
@@ -65,10 +65,10 @@
 
 **Aufgaben:**
 
-1. Bestimmen Sie aus Material 1 Periodendauer und Frequenz. Geben Sie eine moegliche Funktionsgleichung $y(t)$ an. (6 BE)
-2. Berechnen Sie fuer Material 2 die beobachtete Frequenz bei Annaeherung und bei Entfernung der Drohne. Deuten Sie den Unterschied. (6 BE)
-3. Berechnen Sie aus Material 3 die Wellenlaengen $\lambda_1$ und $\lambda_2$ sowie den Brechungswinkel $\alpha_2$. (8 BE)
-4. In Bereich 2 wird eine stehende Welle mit einem Knotenabstand von $0{,}26 \, m$ beobachtet. Pruefen Sie die Konsistenz mit Ihrer Berechnung aus Teilaufgabe 3. (5 BE)
+1. Bestimmen Sie aus Material 1 Periodendauer und Frequenz. Geben Sie eine mögliche Funktionsgleichung $y(t)$ an. (6 BE)
+2. Berechnen Sie für Material 2 die beobachtete Frequenz bei Annäherung und bei Entfernung der Drohne. Deuten Sie den Unterschied. (6 BE)
+3. Berechnen Sie aus Material 3 die Wellenlängen $\lambda_1$ und $\lambda_2$ sowie den Brechungswinkel $\alpha_2$. (8 BE)
+4. In Bereich 2 wird eine stehende Welle mit einem Knotenabstand von $0{,}26 \, m$ beobachtet. Prüfen Sie die Konsistenz mit Ihrer Berechnung aus Teilaufgabe 3. (5 BE)
 
 ---
 
@@ -76,8 +76,8 @@
 
 **Material 1 (Compton-Messung):**
 
-- Einfallende Wellenlaenge: $\lambda_0 = 71{,}0 \, pm$
-- Gemessene gestreute Wellenlaengen:
+- Einfallende Wellenlänge: $\lambda_0 = 71{,}0 \, pm$
+- Gemessene gestreute Wellenlängen:
 
 | Streuwinkel $\theta$ | $30^\circ$ | $60^\circ$ | $90^\circ$ |
 |---|---:|---:|---:|
@@ -97,9 +97,9 @@
 
 **Aufgaben:**
 
-1. Berechnen Sie fuer $\lambda_0$ die Photonenergie und den Photonenimpuls. (8 BE)
-2. Bestimmen Sie fuer $\theta = 90^\circ$ die Compton-Verschiebung $\Delta \lambda$ und die Energiedifferenz zwischen einfallendem und gestreutem Photon. (8 BE)
-3. Erlaeutern Sie den Begriff **Energiestufenmodell** und ordnen Sie die Linien aus Material 3 geeigneten Uebergaengen aus Material 2 zu. (9 BE)
+1. Berechnen Sie für $\lambda_0$ die Photonenergie und den Photonenimpuls. (8 BE)
+2. Bestimmen Sie für $\theta = 90^\circ$ die Compton-Verschiebung $\Delta \lambda$ und die Energiedifferenz zwischen einfallendem und gestreutem Photon. (8 BE)
+3. Erläutern Sie den Begriff **Energiestufenmodell** und ordnen Sie die Linien aus Material 3 geeigneten Übergängen aus Material 2 zu. (9 BE)
 
 ---
 
@@ -109,7 +109,7 @@
 
 | Linie | H$\alpha$ | H$\beta$ | H$\gamma$ |
 |---|---:|---:|---:|
-| Wellenlaenge $\lambda$ (nm) | 656 | 486 | 434 |
+| Wellenlänge $\lambda$ (nm) | 656 | 486 | 434 |
 
 **Material 2 (Rydberg-Beziehung):**
 
@@ -123,16 +123,16 @@ $$
 
 **Aufgaben:**
 
-1. Berechnen Sie fuer die drei Linien aus Material 1 jeweils die Photonenergie in $eV$. (8 BE)
-2. Bestimmen Sie mit Material 2 die zugehoerigen oberen Hauptquantenzahlen $n$ der Uebergaenge auf $n=2$. (7 BE)
-3. Beschreiben Sie am Beispiel der Balmer-Serie das **Energiestufenmodell** und begruenden Sie, warum nur diskrete Linien auftreten. (6 BE)
-4. Ein Elektron besitzt $E_{kin} = 2{,}5 \, eV$. Berechnen Sie die De-Broglie-Wellenlaenge und vergleichen Sie mit einem typischen Atomabstand von $0{,}30 \, nm$. (4 BE)
+1. Berechnen Sie für die drei Linien aus Material 1 jeweils die Photonenergie in $eV$. (8 BE)
+2. Bestimmen Sie mit Material 2 die zugehörigen oberen Hauptquantenzahlen $n$ der Übergänge auf $n=2$. (7 BE)
+3. Beschreiben Sie am Beispiel der Balmer-Serie das **Energiestufenmodell** und begründen Sie, warum nur diskrete Linien auftreten. (6 BE)
+4. Ein Elektron besitzt $E_{kin} = 2{,}5 \, eV$. Berechnen Sie die De-Broglie-Wellenlänge und vergleichen Sie mit einem typischen Atomabstand von $0{,}30 \, nm$. (4 BE)
 
 ---
 
 ## B) Leistungskurs (LK)
 
-**Auswahlregel LK:** Es werden vier Vorschlaege $A$, $B$, $C$, $D$ angeboten. Es sind drei Vorschlaege zu bearbeiten.
+**Auswahlregel LK:** Es werden vier Vorschläge $A$, $B$, $C$, $D$ angeboten. Es sind drei Vorschläge zu bearbeiten.
 
 ### Vorschlag A (LK) - Feldregelung und Transformatorwirkungsgrad (Q1.1/Q1.2/Q1.3, 30 BE)
 
@@ -148,25 +148,25 @@ $$
 |---|---:|---:|---:|---:|---:|
 | Flussdichte $B$ (mT) | 9,6 | 15,1 | 20,7 | 26,0 | 31,8 |
 
-**Material 3 (Transformator-Pruefstand):**
+**Material 3 (Transformator-Prüfstand):**
 
 - Windungszahlen: $N_1 = 800$, $N_2 = 120$
-- Primaerspannung: $U_1 = 230 \, V$
-- Gemessene Sekundaerspannung: $U_{2,meas} = 31{,}5 \, V$
-- Sekundaerstrom unter Last: $I_2 = 1{,}6 \, A$
-- Primaerstrom unter Last: $I_1 = 0{,}30 \, A$
+- Primärspannung: $U_1 = 230 \, V$
+- Gemessene Sekundärspannung: $U_{2,meas} = 31{,}5 \, V$
+- Sekundärstrom unter Last: $I_2 = 1{,}6 \, A$
+- Primärstrom unter Last: $I_1 = 0{,}30 \, A$
 
 **Aufgaben:**
 
-1. Berechnen Sie die Feldstaerke $E$ aus Material 1 und die Geschwindigkeit $v$ fuer geradlinigen Durchgang bei $I = 1{,}9 \, A$ mit der Bedingung $v = E/B$. (7 BE)
-2. Bestimmen Sie aus Material 2 eine lineare Naeherung $B(I)$ und bewerten Sie die Abweichung des letzten Messpunkts vom Modell. (7 BE)
-3. Berechnen Sie die ideale Sekundaerspannung $U_{2,ideal}$ und vergleichen Sie mit $U_{2,meas}$. (7 BE)
+1. Berechnen Sie die Feldstärke $E$ aus Material 1 und die Geschwindigkeit $v$ für geradlinigen Durchgang bei $I = 1{,}9 \, A$ mit der Bedingung $v = E/B$. (7 BE)
+2. Bestimmen Sie aus Material 2 eine lineare Näherung $B(I)$ und bewerten Sie die Abweichung des letzten Messpunkts vom Modell. (7 BE)
+3. Berechnen Sie die ideale Sekundärspannung $U_{2,ideal}$ und vergleichen Sie mit $U_{2,meas}$. (7 BE)
 4. Bestimmen Sie den Wirkungsgrad $\eta = P_2/P_1$ unter Last und deuten Sie das Ergebnis. (6 BE)
-5. Nennen Sie zwei fachlich begruendete Modellgrenzen des idealen Transformatormodells. (3 BE)
+5. Nennen Sie zwei fachlich begründete Modellgrenzen des idealen Transformatormodells. (3 BE)
 
 ---
 
-### Vorschlag B (LK) - Schwingungsdiagnostik mit Grenzflaechenanalyse (Q2.1/Q2.2/Q2.3, 30 BE)
+### Vorschlag B (LK) - Schwingungsdiagnostik mit Grenzflächenanalyse (Q2.1/Q2.2/Q2.3, 30 BE)
 
 **Material 1 (freie Schwingung, Spitzenwerte):**
 
@@ -178,20 +178,20 @@ $$
 
 | Anregungsfrequenz $f$ (Hz) | 1,4 | 1,6 | 1,8 | 2,0 | 2,2 |
 |---|---:|---:|---:|---:|---:|
-| stationaere Amplitude $A$ (mm) | 2,8 | 5,9 | 8,7 | 6,1 | 3,4 |
+| stationäre Amplitude $A$ (mm) | 2,8 | 5,9 | 8,7 | 6,1 | 3,4 |
 
 **Material 3 (Wellenwege und Schwebung):**
 
-- Grenzflaeche: $v_1 = 68 \, m/s$, $v_2 = 44 \, m/s$, $\alpha_1 = 32^\circ$
-- Zwei Anregungen fuer Schwebungstest: $f_1 = 47 \, Hz$, $f_2 = 50 \, Hz$
+- Grenzfläche: $v_1 = 68 \, m/s$, $v_2 = 44 \, m/s$, $\alpha_1 = 32^\circ$
+- Zwei Anregungen für Schwebungstest: $f_1 = 47 \, Hz$, $f_2 = 50 \, Hz$
 
 **Aufgaben:**
 
-1. Bestimmen Sie aus Material 1 ein geeignetes Daempfungsmass (z. B. logarithmisches Dekrement) und interpretieren Sie es physikalisch. (7 BE)
-2. Ermitteln Sie aus Material 2 Resonanzfrequenz und eine Abschaetzung der Guete $Q$ ueber die Halbwertsbreite. (6 BE)
-3. Modellieren Sie die Dynamik qualitativ mit einem Feder-Masse-Daempfer-Modell und begruenden Sie die Rollen von $m$, $D$ und $b$. (6 BE)
-4. Berechnen Sie den Brechungswinkel $\alpha_2$ an der Grenzflaeche aus Material 3 und diskutieren Sie die Auswirkung erhoehter Daempfung auf Interferenzbeobachtungen. (7 BE)
-5. Bestimmen Sie Schwebungsfrequenz und Schwebungsperiode aus Material 3 und bewerten Sie den diagnostischen Nutzen fuer die Zustandsueberwachung. (4 BE)
+1. Bestimmen Sie aus Material 1 ein geeignetes Dämpfungsmaß (z. B. logarithmisches Dekrement) und interpretieren Sie es physikalisch. (7 BE)
+2. Ermitteln Sie aus Material 2 Resonanzfrequenz und eine Abschätzung der Güte $Q$ über die Halbwertsbreite. (6 BE)
+3. Modellieren Sie die Dynamik qualitativ mit einem Feder-Masse-Dämpfer-Modell und begründen Sie die Rollen von $m$, $D$ und $b$. (6 BE)
+4. Berechnen Sie den Brechungswinkel $\alpha_2$ an der Grenzfläche aus Material 3 und diskutieren Sie die Auswirkung erhöhter Dämpfung auf Interferenzbeobachtungen. (7 BE)
+5. Bestimmen Sie Schwebungsfrequenz und Schwebungsperiode aus Material 3 und bewerten Sie den diagnostischen Nutzen für die Zustandsüberwachung. (4 BE)
 
 ---
 
@@ -199,13 +199,13 @@ $$
 
 **Material 1 (Compton-Datensatz):**
 
-- Einfallende Wellenlaenge: $\lambda_0 = 71{,}0 \, pm$
+- Einfallende Wellenlänge: $\lambda_0 = 71{,}0 \, pm$
 
 | Streuwinkel $\theta$ | $30^\circ$ | $60^\circ$ | $90^\circ$ |
 |---|---:|---:|---:|
-| Gemessene Wellenlaenge $\lambda'$ (pm) | 71,3 | 72,2 | 73,4 |
+| Gemessene Wellenlänge $\lambda'$ (pm) | 71,3 | 72,2 | 73,4 |
 
-- Compton-Wellenlaenge: $\lambda_C = 2{,}43 \, pm$
+- Compton-Wellenlänge: $\lambda_C = 2{,}43 \, pm$
 
 **Material 2 (Energieniveaus eines Atoms):**
 
@@ -222,20 +222,20 @@ $$
 
 **Aufgaben:**
 
-1. Berechnen Sie fuer $\theta = 60^\circ$ und $\theta = 90^\circ$ die gemessene Compton-Verschiebung und vergleichen Sie mit $\Delta \lambda = \lambda_C(1-\cos\theta)$. (8 BE)
-2. Stellen Sie mit Material 2 ein **Energiestufenmodell** dar und berechnen Sie zwei Emissionswellenlaengen fuer Uebergaenge in den Grundzustand. (7 BE)
-3. Fuer Elektronen mit $E_{kin} = 6{,}0 \, eV$: Berechnen Sie die De-Broglie-Wellenlaenge und interpretieren Sie den Bezug zu atomaren Gitterabstaenden. (5 BE)
+1. Berechnen Sie für $\theta = 60^\circ$ und $\theta = 90^\circ$ die gemessene Compton-Verschiebung und vergleichen Sie mit $\Delta \lambda = \lambda_C(1-\cos\theta)$. (8 BE)
+2. Stellen Sie mit Material 2 ein **Energiestufenmodell** dar und berechnen Sie zwei Emissionswellenlängen für Übergänge in den Grundzustand. (7 BE)
+3. Für Elektronen mit $E_{kin} = 6{,}0 \, eV$: Berechnen Sie die De-Broglie-Wellenlänge und interpretieren Sie den Bezug zu atomaren Gitterabständen. (5 BE)
 4. Linearisieren Sie mit Material 3 den Zusammenhang zwischen $\sqrt{f_{K\alpha}}$ und $Z$ und bestimmen Sie den Abschirmparameter $\sigma$ in einem Modell $f_{K\alpha} \propto (Z-\sigma)^2$. (7 BE)
-5. Begruenden Sie Grenzen des verwendeten vereinfachten Moseley-Modells. (3 BE)
+5. Begründen Sie Grenzen des verwendeten vereinfachten Moseley-Modells. (3 BE)
 
 ---
 
-### Vorschlag D (LK) - Roentgen-Qualitaetssicherung in der Batteriezellpruefung (Q3.3/Q3.2, 30 BE)
+### Vorschlag D (LK) - Röntgen-Qualitätssicherung in der Batteriezellprüfung (Q3.3/Q3.2, 30 BE)
 
-**Material 1 (Roentgenroehre):**
+**Material 1 (Röntgenröhre):**
 
 - Beschleunigungsspannung: $U = 100 \, kV$
-- Gemessene Grenzwellenlaenge: $\lambda_{min} = 0{,}0128 \, nm$
+- Gemessene Grenzwellenlänge: $\lambda_{min} = 0{,}0128 \, nm$
 
 **Material 2 (Transmission in zwei Materialien):**
 
@@ -256,14 +256,14 @@ $$
 
 **Aufgaben:**
 
-1. Berechnen Sie die maximale Photonenergie aus $U$ und pruefen Sie die Konsistenz mit $\lambda_{min}$ ueber $E = hc/\lambda$. (6 BE)
-2. Bestimmen Sie fuer CFRP und Al jeweils einen linearen Schwaechungskoeffizienten $\mu$ aus Material 2 und vergleichen Sie die Materialien quantitativ. (7 BE)
-3. Berechnen Sie fuer beide Materialien die Halbwertsdicke $d_{1/2} = \ln 2 / \mu$ und deuten Sie den Unterschied. (6 BE)
-4. Berechnen Sie mit dem Bragg-Gesetz die Wellenlaenge der charakteristischen Linie und ordnen Sie sie qualitativ ein. (5 BE)
+1. Berechnen Sie die maximale Photonenergie aus $U$ und prüfen Sie die Konsistenz mit $\lambda_{min}$ über $E = hc/\lambda$. (6 BE)
+2. Bestimmen Sie für CFRP und Al jeweils einen linearen Schwächungskoeffizienten $\mu$ aus Material 2 und vergleichen Sie die Materialien quantitativ. (7 BE)
+3. Berechnen Sie für beide Materialien die Halbwertsdicke $d_{1/2} = \ln 2 / \mu$ und deuten Sie den Unterschied. (6 BE)
+4. Berechnen Sie mit dem Bragg-Gesetz die Wellenlänge der charakteristischen Linie und ordnen Sie sie qualitativ ein. (5 BE)
 5. Beurteilen Sie die Nachweisbarkeit des Defekts aus Material 4 und diskutieren Sie den Zielkonflikt zwischen Durchdringung, Kontrast und Strahlenschutz. (6 BE)
 
 ---
 
 ## Hinweis zur weiteren Bearbeitung
 
-Der naechste Schritt ist die Erstellung der Musterloesung mit konsistentem BE-Raster je Vorschlag und der Abschluss-QS gegen die Checkliste.
+Der nächste Schritt ist die Erstellung der Musterlösung mit konsistentem BE-Raster je Vorschlag und der Abschluss-QS gegen die Checkliste.

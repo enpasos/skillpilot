@@ -1,11 +1,11 @@
-# Landesabitur Physik (Hessen) 2026 - SkillPilot Klausurbeispiel 2 (Musterloesung, Entwurf)
+# Landesabitur Physik (Hessen) 2026 - SkillPilot Klausurbeispiel 2 (Musterlösung, Entwurf)
 
 Bezug zur Aufgabenfassung: `Physik_Hessen_2026_Klausurbeispiel_2.md`
 
-## Bewertungsgrundsaetze
+## Bewertungsgrundsätze
 
-- Rundungsabweichungen im ueblichen Rahmen sind zu akzeptieren.
-- Fachlich korrekte alternative Loesungswege sind gleichwertig zu bewerten.
+- Rundungsabweichungen im üblichen Rahmen sind zu akzeptieren.
+- Fachlich korrekte alternative Lösungswege sind gleichwertig zu bewerten.
 - Bei Folgefehlern: kein Doppelabzug, sofern der Folgeweg methodisch korrekt ist.
 - Wo gefordert, sind physikalische Deutung und Bewertung explizit zu bepunkten.
 - Sinnvolle Rundung entsprechend der signifikanten Stellen der Eingangsgrößen wird erwartet (in der Regel 2 bis 3 signifikante Stellen).
@@ -16,7 +16,7 @@ Bezug zur Aufgabenfassung: `Physik_Hessen_2026_Klausurbeispiel_2.md`
 
 ### Vorschlag A (GK) - 25 BE
 
-1. Feldstaerke:
+1. Feldstärke:
 
 $$
 E = \frac{U}{d} = \frac{1800 \, V}{0{,}0050 \, m} = 3{,}6 \cdot 10^5 \, V/m
@@ -30,7 +30,7 @@ $$
 
 **7 BE**
 
-2. Lineare Naeherung (z. B. Regression):
+2. Lineare Näherung (z. B. Regression):
 
 $$
 B(I) \approx 13{,}8 \, \frac{mT}{A} \cdot I + 0{,}19 \, mT
@@ -59,7 +59,7 @@ Lenz-Deutung: Da der magnetische Fluss zunimmt, wirkt der Induktionsstrom so, da
 - $t = 0{,}09 \cdot 0{,}92 = 0{,}0828 \, s \Rightarrow U_{ind} \approx 6{,}52 \, mV$
 - $t = 0{,}09 \cdot 1{,}08 = 0{,}0972 \, s \Rightarrow U_{ind} \approx 5{,}56 \, mV$
 
-Beide Werte liegen ueber $5{,}0 \, mV$ -> Ausloesung robust.
+Beide Werte liegen über $5{,}0 \, mV$ -> Auslösung robust.
 
 **5 BE**
 
@@ -73,7 +73,7 @@ $$
 T = 1{,}6 \, s, \qquad f = \frac{1}{T} = 0{,}625 \, Hz
 $$
 
-Moeglicher Ansatz (in cm):
+Möglicher Ansatz (in cm):
 
 $$
 y(t) = 6 \sin\left(\frac{2\pi}{1{,}6} t\right)
@@ -91,11 +91,11 @@ $$
 f_{weg} = f_0 \frac{c}{c+v_S} = 680 \cdot \frac{340}{340+17} \approx 648 \, Hz
 $$
 
-Deutung: Bei Annaeherung steigt, bei Entfernung sinkt die beobachtete Frequenz.
+Deutung: Bei Annäherung steigt, bei Entfernung sinkt die beobachtete Frequenz.
 
 **6 BE**
 
-3. Wellenlaengen:
+3. Wellenlängen:
 
 $$
 \lambda_1 = \frac{v_1}{f} = \frac{2{,}4}{3{,}0} = 0{,}80 \, m, \qquad
@@ -161,11 +161,11 @@ $$
 \Delta E \approx 0{,}57 \, keV
 $$
 
-(Diese Energie geht naeherungsweise in kinetische Energie des Rueckstoss-Elektrons.)
+(Diese Energie geht näherungsweise in kinetische Energie des Rückstoß-Elektrons.)
 
 **8 BE**
 
-3. Energiestufenmodell: Elektronen koennen nur diskrete Energieniveaus einnehmen; Uebergaenge erzeugen/absorbieren Photonen mit $\Delta E = h f = hc/\lambda$.
+3. Energiestufenmodell: Elektronen können nur diskrete Energieniveaus einnehmen; Übergänge erzeugen/absorbieren Photonen mit $\Delta E = h f = hc/\lambda$.
 
 Mit Material 2:
 
@@ -203,11 +203,11 @@ ergibt sich:
 - $486 \, nm \Rightarrow n \approx 4$
 - $434 \, nm \Rightarrow n \approx 5$
 
-Also Uebergaenge $3 \to 2$, $4 \to 2$, $5 \to 2$.
+Also Übergänge $3 \to 2$, $4 \to 2$, $5 \to 2$.
 
 **7 BE**
 
-3. Energiestufenmodell-Deutung: Die diskreten Linien folgen aus diskreten Energiedifferenzen zwischen zulaessigen Zustaenden; kontinuierliche Emission waere nur bei kontinuierlichem Energiespektrum zu erwarten, was hier nicht vorliegt.
+3. Energiestufenmodell-Deutung: Die diskreten Linien folgen aus diskreten Energiedifferenzen zwischen zulässigen Zuständen; kontinuierliche Emission wäre nur bei kontinuierlichem Energiespektrum zu erwarten, was hier nicht vorliegt.
 
 **6 BE**
 
@@ -221,7 +221,7 @@ $$
 \lambda \approx 7{,}76 \cdot 10^{-10} \, m = 0{,}776 \, nm
 $$
 
-Vergleich mit $0{,}30 \, nm$: gleiche Groessenordnung -> Welleneffekte an atomaren Strukturen sind plausibel.
+Vergleich mit $0{,}30 \, nm$: gleiche Größenordnung -> Welleneffekte an atomaren Strukturen sind plausibel.
 
 **4 BE**
 
@@ -231,7 +231,7 @@ Vergleich mit $0{,}30 \, nm$: gleiche Groessenordnung -> Welleneffekte an atomar
 
 ### Vorschlag A (LK) - 30 BE
 
-1. Feldstaerke:
+1. Feldstärke:
 
 $$
 E = \frac{U}{d} = \frac{2700}{0{,}0045} = 6{,}0 \cdot 10^5 \, V/m
@@ -251,7 +251,7 @@ $$
 B(I) \approx 13{,}88 \, \frac{mT}{A} I - 0{,}20 \, mT
 $$
 
-Der letzte Messpunkt liegt nur leicht ueber dem Modellwert; das ist mit Messunsicherheit bzw. beginnender Nichtlinearitaet vereinbar.
+Der letzte Messpunkt liegt nur leicht über dem Modellwert; das ist mit Messunsicherheit bzw. beginnender Nichtlinearität vereinbar.
 
 **7 BE**
 
@@ -287,7 +287,7 @@ Deutung: Reale Verluste sind deutlich vorhanden, aber das System arbeitet noch e
 
 **6 BE**
 
-5. Modellgrenzen: Streufluss, Kupferverluste, Kernverluste (Hysterese/Wirbelstroeme), Last- und Temperaturabhaengigkeit.
+5. Modellgrenzen: Streufluss, Kupferverluste, Kernverluste (Hysterese/Wirbelströme), Last- und Temperaturabhängigkeit.
 
 **3 BE**
 
@@ -295,19 +295,19 @@ Deutung: Reale Verluste sind deutlich vorhanden, aber das System arbeitet noch e
 
 ### Vorschlag B (LK) - 30 BE
 
-1. Logarithmisches Dekrement (z. B. ueber 4 Peaks):
+1. Logarithmisches Dekrement (z. B. über 4 Peaks):
 
 $$
 \delta = \frac{1}{3}\ln\left(\frac{A_1}{A_4}\right) = \frac{1}{3}\ln\left(\frac{14{,}0}{7{,}6}\right) \approx 0{,}204
 $$
 
-Interpretation: mittlere Daempfung pro Schwingungsperiode.
+Interpretation: mittlere Dämpfung pro Schwingungsperiode.
 
 **7 BE**
 
 2. Resonanz bei Maximum der Amplitude: $f_{res} \approx 1{,}8 \, Hz$.
 
-Halbwertsbreite (hier naeherungsweise aus dem Bereich um halbe Maximalamplitude):
+Halbwertsbreite (hier näherungsweise aus dem Bereich um halbe Maximalamplitude):
 
 $$
 \Delta f \approx 2{,}0 - 1{,}6 = 0{,}4 \, Hz
@@ -325,9 +325,9 @@ $$
 m y'' + b y' + D y = F_0 \sin(\omega t)
 $$
 
-- $m$: Traegheit, verschiebt Eigenfrequenz
-- $D$: Rueckstellstaerke, bestimmt Eigenfrequenz
-- $b$: Dissipation, beeinflusst Peakhoehe und Resonanzbreite
+- $m$: Trägheit, verschiebt Eigenfrequenz
+- $D$: Rückstellstärke, bestimmt Eigenfrequenz
+- $b$: Dissipation, beeinflusst Peakhöhe und Resonanzbreite
 
 **6 BE**
 
@@ -341,7 +341,7 @@ $$
 \sin\alpha_2 = \frac{44}{68}\sin 32^\circ \approx 0{,}343 \Rightarrow \alpha_2 \approx 20{,}1^\circ
 $$
 
-Erhoehte Daempfung reduziert Interferenzkontrast und damit die Auswertbarkeit feiner Muster.
+Erhöhte Dämpfung reduziert Interferenzkontrast und damit die Auswertbarkeit feiner Muster.
 
 **7 BE**
 
@@ -355,7 +355,7 @@ $$
 T_{Schwebung} = \frac{1}{f_{Schwebung}} = 0{,}333 \, s
 $$
 
-Diagnostischer Nutzen: Schwebungen machen kleine Frequenzabweichungen sichtbar und eignen sich zur Zustandsueberwachung.
+Diagnostischer Nutzen: Schwebungen machen kleine Frequenzabweichungen sichtbar und eignen sich zur Zustandsüberwachung.
 
 **4 BE**
 
@@ -377,27 +377,27 @@ $$
 - $60^\circ$: $\Delta\lambda_{theo}=2{,}43(1-0{,}5)=1{,}215 \, pm$
 - $90^\circ$: $\Delta\lambda_{theo}=2{,}43(1-0)=2{,}43 \, pm$
 
-Messung und Theorie stimmen gut ueberein.
+Messung und Theorie stimmen gut überein.
 
 **8 BE**
 
-2. Energiestufenmodell mit Uebergaengen in den Grundzustand:
+2. Energiestufenmodell mit Übergängen in den Grundzustand:
 
 - $E_1 \to E_0$: $\Delta E = 10{,}2 \, eV \Rightarrow \lambda \approx 121{,}6 \, nm$
 - $E_2 \to E_0$: $\Delta E = 12{,}09 \, eV \Rightarrow \lambda \approx 102{,}6 \, nm$
 - $E_3 \to E_0$: $\Delta E = 12{,}75 \, eV \Rightarrow \lambda \approx 97{,}3 \, nm$
 
-Zwei sauber begruendete Uebergaenge genuegen.
+Zwei sauber begründete Übergänge genügen.
 
 **7 BE**
 
-3. De-Broglie fuer $E_{kin}=6{,}0 \, eV$:
+3. De-Broglie für $E_{kin}=6{,}0 \, eV$:
 
 $$
 \lambda = \frac{h}{\sqrt{2m_eE_{kin}}} \approx 5{,}01 \cdot 10^{-10} \, m = 0{,}501 \, nm
 $$
 
-Interpretation: atomare Gitterabstaende sind aehnlich gross -> Beugung/Interferenz ist zu erwarten.
+Interpretation: atomare Gitterabstände sind ähnlich groß -> Beugung/Interferenz ist zu erwarten.
 
 **5 BE**
 
@@ -421,7 +421,7 @@ $$
 
 **7 BE**
 
-5. Modellgrenzen: kleine Datenbasis, effektive Abschirmung nicht streng konstant, Mehr-Elektronen- und relativistische Effekte vernachlaessigt.
+5. Modellgrenzen: kleine Datenbasis, effektive Abschirmung nicht streng konstant, Mehr-Elektronen- und relativistische Effekte vernachlässigt.
 
 **3 BE**
 
@@ -435,7 +435,7 @@ $$
 E_{max} = eU = 100 \, keV
 $$
 
-Aus Grenzwellenlaenge:
+Aus Grenzwellenlänge:
 
 $$
 E = \frac{1240 \, eV\,nm}{0{,}0128 \, nm} \approx 96{,}9 \, keV
@@ -456,7 +456,7 @@ $$
 - $\mu_{CFRP} \approx 0{,}060 \, mm^{-1}$
 - $\mu_{Al} \approx 0{,}150 \, mm^{-1}$
 
-Al schwaecht ca. $2{,}5$-mal staerker.
+Al schwächt ca. $2{,}5$-mal stärker.
 
 **7 BE**
 
@@ -469,7 +469,7 @@ $$
 - $d_{1/2,CFRP} \approx 11{,}5 \, mm$
 - $d_{1/2,Al} \approx 4{,}62 \, mm$
 
-Deutung: Aluminium reduziert die Intensitaet pro Dicke deutlich staerker.
+Deutung: Aluminium reduziert die Intensität pro Dicke deutlich stärker.
 
 **6 BE**
 
@@ -479,7 +479,7 @@ $$
 \lambda = 2d_G\sin\theta = 2\cdot 201\,pm \cdot \sin(18{,}4^\circ) \approx 127\,pm = 0{,}127\,nm
 $$
 
-Einordnung: kurzwelliger Roentgenbereich.
+Einordnung: kurzwelliger Röntgenbereich.
 
 **5 BE**
 
@@ -489,7 +489,7 @@ $$
 \text{SNR} \approx \frac{9}{2{,}5} = 3{,}6
 $$
 
--> prinzipiell gut nachweisbar. Fachliche Bewertung: Hoehere Spannung verbessert Durchdringung, kann aber Kontrast senken und Strahlenschutzanforderungen erhoehen.
+-> prinzipiell gut nachweisbar. Fachliche Bewertung: Höhere Spannung verbessert Durchdringung, kann aber Kontrast senken und Strahlenschutzanforderungen erhöhen.
 
 **6 BE**
 
