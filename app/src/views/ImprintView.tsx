@@ -31,7 +31,7 @@ export const ImprintView: React.FC = () => {
 
                     <p>
                         <strong>{language === 'en' ? 'Address:' : 'Anschrift:'}</strong><br />
-                        Haintürchenstr. 2<br />
+                        Heuhohlweg 42<br />
                         D-61462 Königstein
                     </p>
 

@@ -34,7 +34,8 @@
         "1e7501da-1ba6-4d10-9831-205a49a8e3e8",
         "e8742831-c9d4-41c3-be12-c0320cdcbee3",
         "2613c187-1d02-4953-9163-e9cbb471aebe",
-        "52ae8c00-635e-46c0-b4d4-35f823284eae"
+        "52ae8c00-635e-46c0-b4d4-35f823284eae",
+        "0286093c-479f-413f-9df2-8740c0680071"
       ],
       "requires": [],
       "dimensionTags": {
@@ -65,7 +66,7 @@
       "titleEn": "Why Physics? – Understanding the World & Future",
       "description": "Der 'Big Picture'-Einstieg: Warum das Smartphone funktioniert, wie Ärzte ohne Skalpell in den Körper schauen (MRT), warum Sterne leuchten und wie wir die Energiekrise lösen. Überblick über die Relevanz der Themenfelder von der Mechanik bis zur Quantenphysik für dein Leben.",
       "descriptionEn": "The 'Big Picture' intro: Why smartphones work, how doctors see inside bodies without scalpels (MRI), why stars shine, and how to solve energy crises. Overview of the relevance of topics from mechanics to quantum physics for your life.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "GK",
         "LK",
@@ -3779,10 +3780,22 @@
         "GK",
         "LK"
       ],
+      "extendedData": {
+        "q4OptionalSelection": {
+          "poolId": "Q4_OPTIONAL",
+          "minClusters": 2,
+          "appliesTo": [
+            "GK",
+            "LK"
+          ],
+          "enforcementHint": "frontend_or_backend_rule"
+        }
+      },
       "contains": [
         "3c9d71e4-322d-40a6-a038-cd6990ddce49",
         "b552b7c0-4c43-402e-8fbd-8e02f1d5ea31",
         "302b9bb2-3976-40f8-a29e-d467959f6710",
+        "7f23c899-542d-4001-ae57-97a41dc61dce",
         "45db17b1-0a4a-4e3a-9aa9-8e2c137db501",
         "d39d69b4-e1cb-47be-a2f2-e952606b78d4",
         "20f81ea0-4c40-4c1b-9e14-886911af77d5",
@@ -4221,7 +4234,8 @@
         ],
         "guidingIdeas": [
           "LI_MATERIE",
-          "LI_ENERGIE"
+          "LI_ENERGIE",
+          "LI_TECHNIK"
         ],
         "phase": "Q4"
       }
@@ -5124,7 +5138,7 @@
       "titleEn": "Method: Measuring Invisible Field Quantities (B-Field)",
       "description": "Nutzung physikalischer Effekte zur Messung der magnetischen Flussdichte B: Hall-Sonden (Q1) und Induktionsspulen/Fluxmeter (Q2).",
       "descriptionEn": "Using physical effects to measure magnetic flux density B: Hall probes (Q1) and induction coils/fluxmeters (Q2).",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "GK",
         "LK",
@@ -5582,7 +5596,8 @@
         ],
         "guidingIdeas": [
           "LI_MATERIE",
-          "LI_ENERGIE"
+          "LI_ENERGIE",
+          "LI_TECHNIK"
         ],
         "phase": "Q4"
       }
@@ -6036,7 +6051,152 @@
         ],
         "guidingIdeas": [
           "LI_MATERIE",
+          "LI_ENERGIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "Q4"
+      }
+    },
+    {
+      "id": "7f23c899-542d-4001-ae57-97a41dc61dce",
+      "title": "Elementarteilchen und Standardmodell",
+      "titleEn": "Elementary Particles and Standard Model",
+      "description": "Cluster zur modernen Teilchenphysik: Quarks, Leptonen, fundamentale Wechselwirkungen und aktuelle Forschungsperspektiven.",
+      "descriptionEn": "Cluster on modern particle physics: quarks, leptons, fundamental interactions, and current research perspectives.",
+      "weight": 1.15,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "extendedData": {
+        "selectionPool": "Q4_OPTIONAL",
+        "mandatory": false
+      },
+      "contains": [
+        "23faeb9a-56f6-429b-9625-53b4a6793968",
+        "abae2f22-b531-4948-a618-a93f9f2895c5",
+        "f58b34b9-d9a4-4aa7-bf1f-e9428139e0fe",
+        "1a0ff9c2-208e-4b1d-8404-80b8d621609b"
+      ],
+      "requires": [
+        "3c9d71e4-322d-40a6-a038-cd6990ddce49"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "Q4"
+      }
+    },
+    {
+      "id": "23faeb9a-56f6-429b-9625-53b4a6793968",
+      "title": "Standardmodell: Teilchenfamilien",
+      "titleEn": "Standard Model: Particle Families",
+      "description": "Die lernende Person kann das Standardmodell als Ordnungsschema beschreiben und Quarks, Leptonen sowie deren grundlegende Eigenschaften benennen.",
+      "descriptionEn": "The learner can describe the Standard Model as an organizing scheme and name quarks, leptons, and their basic properties.",
+      "weight": 1.1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "3c9d71e4-322d-40a6-a038-cd6990ddce49"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_MATERIE"
+        ],
+        "phase": "Q4"
+      }
+    },
+    {
+      "id": "abae2f22-b531-4948-a618-a93f9f2895c5",
+      "title": "Hadronen aus Quarks deuten",
+      "titleEn": "Interpret Hadrons from Quarks",
+      "description": "Die lernende Person kann Protonen, Neutronen und ausgewählte Mesonen als Quark-Systeme beschreiben und die Bedeutung der Quarkstruktur für Materiemodelle erläutern.",
+      "descriptionEn": "The learner can describe protons, neutrons, and selected mesons as quark systems and explain the relevance of quark structure for models of matter.",
+      "weight": 1.1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "23faeb9a-56f6-429b-9625-53b4a6793968"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_MATERIE"
+        ],
+        "phase": "Q4"
+      }
+    },
+    {
+      "id": "f58b34b9-d9a4-4aa7-bf1f-e9428139e0fe",
+      "title": "Fundamentale Wechselwirkungen",
+      "titleEn": "Fundamental Interactions",
+      "description": "Die lernende Person kann die vier fundamentalen Wechselwirkungen unterscheiden und deren Rolle bei atomaren, nuklearen und kosmischen Prozessen qualitativ erklären.",
+      "descriptionEn": "The learner can distinguish the four fundamental interactions and qualitatively explain their role in atomic, nuclear, and cosmic processes.",
+      "weight": 1.1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "abae2f22-b531-4948-a618-a93f9f2895c5"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_MATERIE",
           "LI_ENERGIE"
+        ],
+        "phase": "Q4"
+      }
+    },
+    {
+      "id": "1a0ff9c2-208e-4b1d-8404-80b8d621609b",
+      "title": "Teilchenphysik in der Forschung (CERN)",
+      "titleEn": "Particle Physics in Research (CERN)",
+      "description": "Die lernende Person kann Ziele und Methoden aktueller Teilchenphysik (z. B. Beschleunigerexperimente) erläutern und Chancen sowie Grenzen großer Forschungsanlagen bewerten.",
+      "descriptionEn": "The learner can explain goals and methods of current particle physics (e.g., accelerator experiments) and evaluate opportunities and limits of large research facilities.",
+      "weight": 1.1,
+      "tags": [
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [
+        "f58b34b9-d9a4-4aa7-bf1f-e9428139e0fe"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_TECHNIK"
         ],
         "phase": "Q4"
       }
@@ -6087,6 +6247,612 @@
           "LI_KOSMOS"
         ],
         "phase": "Q4"
+      }
+    },
+    {
+      "id": "0286093c-479f-413f-9df2-8740c0680071",
+      "title": "Abiturprüfung Physik (Klausurbeispiel 2026/1)",
+      "titleEn": "Abitur Exam Physics (Sample Exam 2026/1)",
+      "description": "Bündelt das SkillPilot-Klausurbeispiel 2026/1 für die schriftliche Abiturprüfung Physik in Hessen mit getrennten GK- und LK-Vorschlägen.",
+      "descriptionEn": "Bundles the SkillPilot sample exam 2026/1 for the written Abitur exam in Physics in Hesse with separate basic and advanced course proposals.",
+      "weight": 12,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "0366ca7b-5a40-4645-8841-8af9d435e4d0",
+        "525a3fa2-49e9-4d36-aba5-b78434e03bf9"
+      ],
+      "requires": [
+        "25bd8476-0c87-4777-b9f5-0bba9ad1b06e",
+        "1e7501da-1ba6-4d10-9831-205a49a8e3e8",
+        "e8742831-c9d4-41c3-be12-c0320cdcbee3",
+        "2613c187-1d02-4953-9163-e9cbb471aebe"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_ENERGIE",
+          "LI_FELDER",
+          "LI_WELLEN",
+          "LI_MATERIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "Abitur"
+      },
+      "sourceRef": "Landesabitur 2026 Physik, SkillPilot Klausurbeispiel 1"
+    },
+    {
+      "id": "0366ca7b-5a40-4645-8841-8af9d435e4d0",
+      "title": "Abiturprüfung Physik (GK) - Vorschläge A bis D",
+      "titleEn": "Abitur Exam Physics (Basic Course) - Proposals A to D",
+      "description": "Materialgebundene Vorschläge A-D für den Grundkurs. Auswahlregel: 4 angeboten, 3 zu bearbeiten.",
+      "descriptionEn": "Material-based proposals A-D for the basic course. Selection rule: 4 offered, 3 to be solved.",
+      "weight": 10,
+      "tags": [
+        "GK"
+      ],
+      "contains": [
+        "465b932f-58c1-4207-ae33-352c80e4ade3",
+        "99f47b55-8284-4505-9efd-9c8e41e5a42f",
+        "c1a90089-00e5-4939-9d15-142f16e3d28d",
+        "d65a44f6-41da-44f1-8c47-5ecccf0c9535"
+      ],
+      "requires": [
+        "1e7501da-1ba6-4d10-9831-205a49a8e3e8",
+        "e8742831-c9d4-41c3-be12-c0320cdcbee3",
+        "2613c187-1d02-4953-9163-e9cbb471aebe"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_WELLEN",
+          "LI_MATERIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "Abitur"
+      },
+      "sourceRef": "Landesabitur 2026 Physik (GK), Auswahlmodus A-D"
+    },
+    {
+      "id": "525a3fa2-49e9-4d36-aba5-b78434e03bf9",
+      "title": "Abiturprüfung Physik (LK) - Vorschläge A bis D",
+      "titleEn": "Abitur Exam Physics (Advanced Course) - Proposals A to D",
+      "description": "Materialgebundene Vorschläge A-D für den Leistungskurs. Auswahlregel: 4 angeboten, 3 zu bearbeiten.",
+      "descriptionEn": "Material-based proposals A-D for the advanced course. Selection rule: 4 offered, 3 to be solved.",
+      "weight": 12,
+      "tags": [
+        "LK"
+      ],
+      "contains": [
+        "90933b59-35b7-445e-aab8-7e74a5a47928",
+        "cbf8326c-54f3-4967-b481-33e482c83df2",
+        "07dc73c7-fce8-4d58-a64d-58d5b8117338",
+        "c4f98384-f18c-426e-9eeb-47d935c54961"
+      ],
+      "requires": [
+        "1e7501da-1ba6-4d10-9831-205a49a8e3e8",
+        "e8742831-c9d4-41c3-be12-c0320cdcbee3",
+        "2613c187-1d02-4953-9163-e9cbb471aebe"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_WELLEN",
+          "LI_MATERIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "Abitur"
+      },
+      "sourceRef": "Landesabitur 2026 Physik (LK), Auswahlmodus A-D"
+    },
+    {
+      "id": "465b932f-58c1-4207-ae33-352c80e4ade3",
+      "title": "Vorschlag A (GK) - Felder und Induktion",
+      "titleEn": "Proposal A (Basic Course) - Fields and Induction",
+      "description": "Q1.1/Q1.2/Q1.3, 25 BE.",
+      "descriptionEn": "Q1.1/Q1.2/Q1.3, 25 points.",
+      "weight": 1,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_ENERGIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Material 1 (kapazitiver Abstandssensor):**\n\n- Plattenfläche: $A = 0,020 m^2$\n- Anfangsabstand: $d_0 = 4,0 mm$\n- Abstand unter Last: $d_1 = 3,5 mm$\n- Dielektrikum: $\\varepsilon_r = 2,3$\n\n**Material 2 (Kalibrierung Spule):**\n\n| Strom $I$ (A) | 0,5 | 1,0 | 1,5 | 2,0 |\n|---|---:|---:|---:|---:|\n| Flussdichte $B$ (mT) | 7 | 14 | 20 | 27 |\n\n**Material 3 (Induktionsschleife in der Fahrbahn):**\n\n- Fläche der Schleife: $A_S = 0,040 m^2$\n- Magnetische Flussdichte sinkt während der Einfahrt gleichmäßig (linear) von $24 mT$ auf $6 mT$ in $0,12 s$.\n\n**Aufgaben:**\n\n1. Berechnen Sie $C_0$ und $C_1$ des Plattenkondensators mit $C = \\varepsilon_0 \\varepsilon_r A / d$. Bestimmen Sie die prozentuale Änderung. (8 BE)\n2. Werten Sie Material 2 aus und bestimmen Sie eine geeignete lineare Näherung $B(I)$. Schätzen Sie $B$ für $I = 1,8 A$. (7 BE)\n3. Berechnen Sie den Betrag der induzierten Spannung in der Fahrbahnschleife mit dem Induktionsgesetz und bestimmen Sie unter Nutzung der Lenz'schen Regel die Richtung des Induktionsstroms während der Einfahrt. (6 BE)\n4. Der Detektor löst sicher ab $4,0 mV$ aus. Beurteilen Sie, ob die Auslösung auch bei einer Zeitabweichung von $\\pm 10 \\%$ robust bleibt. (4 BE)",
+        "solutionContent": "1. $C = \\varepsilon_0 \\varepsilon_r A / d$  \n   $C_0 = 8.854e-12 \\cdot 2.3 \\cdot 0.020 / 0.0040 \\approx 1.018e-10 F = 102 pF$  \n   $C_1 = 8.854e-12 \\cdot 2.3 \\cdot 0.020 / 0.0035 \\approx 1.164e-10 F = 116 pF$  \n   Prozentuale Änderung: $((C_1 - C_0)/C_0) \\cdot 100 \\% = 14.3 \\%$ (Zunahme).  \n   (Akzeptiert sind äquivalente, sinnvoll gerundete Darstellungen, z. B. $1.0e-10 F$ bzw. $1.2e-10 F$.)  \n   **8 BE**\n\n2. Lineare Näherung aus den Daten, z. B. Regressionsgerade:  \n   $B(I) \\approx 13.2 \\cdot I + 0.5$ (mT).  \n   Damit: $B(1.8 A) \\approx 24.3 mT$.  \n   (Alternative mit Randpunkten $B(I) \\approx 13.33 I + 0.33$ ebenfalls akzeptabel.)  \n   **7 BE**\n\n3. Induktionsgesetz (Betrag, lineare Änderung von $B$ vorausgesetzt):  \n   $U_ind = A_S \\cdot |\\Delta B / \\Delta t| = 0.040 \\cdot |(0.006 - 0.024)/0.12| = 0.0060 V = 6.0 mV$  \n   Lenz-Regel (Richtung): Da das durch die Schleife tretende äußere Magnetfeld im Betrag abnimmt, muss der Induktionsstrom ein Magnetfeld erzeugen, das das ursprüngliche äußere Feld stützt.  \n   **6 BE**\n\n4. Zeitabweichung $\\pm 10 \\%$:  \n   - bei $t = 0.108 s$: $U_ind \\approx 6.67 mV$  \n   - bei $t = 0.132 s$: $U_ind \\approx 5.45 mV$  \n   Beide Werte liegen über $4.0 mV$ -> Auslösung robust.  \n   **4 BE**",
+        "scoring": {
+          "maxPoints": 25,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 8,
+              "description": "Kapazitätsänderung eines Plattenkondensators berechnet"
+            },
+            {
+              "id": "s2",
+              "points": 7,
+              "description": "Lineare Näherung B(I) bestimmt und B(1,8 A) geschätzt"
+            },
+            {
+              "id": "s3",
+              "points": 6,
+              "description": "Induzierte Spannung berechnet und Stromrichtung mit Lenz-Regel bestimmt"
+            },
+            {
+              "id": "s4",
+              "points": 4,
+              "description": "Robustheit der Auslösung bei Zeitabweichung beurteilt"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "99f47b55-8284-4505-9efd-9c8e41e5a42f",
+      "title": "Vorschlag B (GK) - Schwingungen und Wellen",
+      "titleEn": "Proposal B (Basic Course) - Oscillations and Waves",
+      "description": "Q2.1/Q2.2/Q2.3, 25 BE.",
+      "descriptionEn": "Q2.1/Q2.2/Q2.3, 25 points.",
+      "weight": 1,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_BEWEGUNG"
+        ],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Material 1 (Boje, vertikale Auslenkung):**\n\n| Zeit $t$ (s) | 0,0 | 0,5 | 1,0 | 1,5 | 2,0 |\n|---|---:|---:|---:|---:|---:|\n| Auslenkung $y$ (cm) | 0,0 | 8,0 | 0,0 | -8,0 | 0,0 |\n\n**Material 2 (Resonanzversuch, gleiche Anregung, zwei Dämpfungen):**\n\n| Frequenz $f$ (Hz) | 0,7 | 0,9 | 1,1 | 1,3 | 1,5 |\n|---|---:|---:|---:|---:|---:|\n| Amplitude schwach gedämpft (cm) | 2,0 | 4,5 | 7,8 | 5,0 | 2,6 |\n| Amplitude stark gedämpft (cm) | 1,8 | 3,0 | 4,2 | 3,4 | 2,1 |\n\n**Material 3 (Grenzfläche Flachwasser/Tiefwasser):**\n\n- Ausbreitungsgeschwindigkeit vor der Kante: $v_1 = 1,6 m/s$\n- Ausbreitungsgeschwindigkeit nach der Kante: $v_2 = 1,1 m/s$\n- Frequenz: $f = 2,5 Hz$\n- Einfallswinkel zur Lotgeraden: $\\alpha_1 = 35^\\circ$\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 Periodendauer und Frequenz der Schwingung. Geben Sie eine mögliche Funktionsgleichung $y(t)$ an. (6 BE)\n2. Ermitteln Sie aus Material 2 die Resonanzfrequenz und erklären Sie den Einfluss der Dämpfung auf die Resonanzkurve. (7 BE)\n3. Berechnen Sie für Material 3 die Wellenlängen $\\lambda_1$ und $\\lambda_2$ sowie den Brechungswinkel $\\alpha_2$. (8 BE)\n4. In einem Teilbecken werden stehende Wellen beobachtet. Der Abstand benachbarter Knoten beträgt $0,32 m$. Bestimmen Sie die zugehörige Wellenlänge und interpretieren Sie das Ergebnis. (4 BE)",
+        "solutionContent": "1. Aus Material 1:  \n   Eine volle Periode läuft von $t=0$ bis $t=2.0 s$, also $T = 2.0 s$, $f = 1/T = 0.50 Hz$.  \n   Mögliche Funktionsgleichung (in cm): $y(t) = 8 \\cdot \\sin(\\pi t)$.  \n   **6 BE**\n\n2. Resonanzfrequenz aus Material 2: Maximum bei $f \\approx 1.1 Hz$ (beide Dämpfungsfälle).  \n   Deutung: Höhere Dämpfung senkt die Maximalamplitude und verbreitert die Resonanzkurve (geringere Schärfe).  \n   **7 BE**\n\n3. $\\lambda_1 = v_1/f = 1.6/2.5 = 0.64 m$, $\\lambda_2 = v_2/f = 1.1/2.5 = 0.44 m$.  \n   Brechung (Wellenoptik): $\\sin(\\alpha_2)/\\sin(\\alpha_1) = v_2/v_1$.  \n   $\\sin(\\alpha_2) = (1.1/1.6) \\cdot \\sin(35^\\circ) = 0.394$ -> $\\alpha_2 \\approx 23.2^\\circ$.  \n   **8 BE**\n\n4. Bei stehenden Wellen gilt Knotenabstand $= \\lambda/2$.  \n   $\\lambda = 2 \\cdot 0.32 m = 0.64 m$.  \n   Interpretation: passt konsistent zur in Teilaufgabe 3 berechneten Wellenlänge im ersten Bereich.  \n   **4 BE**",
+        "scoring": {
+          "maxPoints": 25,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 6,
+              "description": "Periodendauer, Frequenz und Funktionsansatz bestimmt"
+            },
+            {
+              "id": "s2",
+              "points": 7,
+              "description": "Resonanzfrequenz ermittelt und Dämpfungseinfluss erklärt"
+            },
+            {
+              "id": "s3",
+              "points": 8,
+              "description": "Wellenlängen und Brechungswinkel berechnet"
+            },
+            {
+              "id": "s4",
+              "points": 4,
+              "description": "Stehende Welle interpretiert"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c1a90089-00e5-4939-9d15-142f16e3d28d",
+      "title": "Vorschlag C (GK) - Fotoeffekt und Energiestufen",
+      "titleEn": "Proposal C (Basic Course) - Photoelectric Effect and Energy Levels",
+      "description": "Q3.1/Q3.2, 25 BE.",
+      "descriptionEn": "Q3.1/Q3.2, 25 points.",
+      "weight": 1,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_WELLEN"
+        ],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Material 1 (Messung am Fotoelement):**\n\n| Frequenz $f$ ($10^14 Hz$) | 5,5 | 6,0 | 6,5 | 7,0 |\n|---|---:|---:|---:|---:|\n| Gegenspannung $U_g$ (V) | 0,19 | 0,39 | 0,60 | 0,80 |\n\n**Material 2 (Spektrallinien einer Entladungslampe):**\n\n- $\\lambda_1 = 589 nm$\n- $\\lambda_2 = 546 nm$\n- $\\lambda_3 = 436 nm$\n\n**Material 3 (vereinfachtes Energiestufenmodell eines Atoms):**\n\n- $E_0 = -5,1 eV$\n- $E_1 = -3,0 eV$\n- $E_2 = -1,9 eV$\n\n**Aufgaben:**\n\n1. Nutzen Sie Material 1 und bestimmen Sie mit zwei geeigneten Messpunkten eine Näherung für das Plancksche Wirkungsquantum $h$ sowie die Austrittsarbeit $W_A$. (9 BE)\n2. Erklären Sie den Begriff **Energiestufenmodell** und ordnen Sie Material 2 geeigneten Übergängen aus Material 3 zu. Begründen Sie Ihre Zuordnung über Energiedifferenzen. (8 BE)\n3. Elektronen besitzen eine kinetische Energie von $3,2 eV$. Berechnen Sie ihre De-Broglie-Wellenlänge und vergleichen Sie diese mit einem typischen Atomabstand von $0,30 nm$. (8 BE)",
+        "solutionContent": "1. Modellgleichung Fotoeffekt: $U_g = (h/e) \\cdot f - W_A/e$.  \n   Regressionsauswertung (alle 4 Punkte):  \n   $m \\approx 4.08e-15 V/Hz$, $b \\approx -2.055 V$.  \n   Damit $h \\approx e*m = 6.54e-34 J s$, $W_A \\approx -e*b = 2.06 eV$.  \n   (Mit zwei geeigneten Punkten sind nahe Werte ebenfalls korrekt.)  \n   **9 BE**\n\n2. Begriff Energiestufenmodell: Elektronen können nur diskrete Energieniveaus einnehmen; Photonen bei Übergängen haben Energien $\\Delta E = h f = hc/\\lambda$.  \n   Mit Material 3:  \n   - $E_1 \\rightarrow E_0$: $\\Delta E = 2.1 eV$ -> $\\lambda \\approx 1240/2.1 = 590 nm$ (nahe 589 nm).  \n   - $E_2 \\rightarrow E_0$: $\\Delta E = 3.2 eV$ -> $\\lambda \\approx 388 nm$ (kurzwelliger Bereich).  \n   - $E_2 \\rightarrow E_1$: $\\Delta E = 1.1 eV$ -> $\\lambda \\approx 1127 nm$ (IR, nicht sichtbar).  \n   Deutung: Das vereinfachte Modell bildet die sichtbaren Linien nur teilweise ab; weitere Niveaus/Feinstruktur fehlen.  \n   **8 BE**\n\n3. De-Broglie-Wellenlänge:  \n   $\\lambda = h / \\sqrt{2 m_e E_kin}$ mit $E_kin = 3.2 eV$.  \n   $\\lambda \\approx 6.86e-10 m = 0.686 nm$.  \n   Vergleich mit $0.30 nm$: gleiche Größenordnung, daher Interferenz-/Beugungseffekte an atomaren Strukturen plausibel.  \n   **8 BE**",
+        "scoring": {
+          "maxPoints": 25,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 9,
+              "description": "Lineare Auswertung des Fotoeffekts mit Bestimmung von h und WA"
+            },
+            {
+              "id": "s2",
+              "points": 8,
+              "description": "Energiestufenmodell dargestellt und Übergänge berechnet"
+            },
+            {
+              "id": "s3",
+              "points": 8,
+              "description": "De-Broglie-Wellenlänge berechnet und eingeordnet"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "d65a44f6-41da-44f1-8c47-5ecccf0c9535",
+      "title": "Vorschlag D (GK) - Franck-Hertz und Energiestufen",
+      "titleEn": "Proposal D (Basic Course) - Franck-Hertz and Energy Levels",
+      "description": "Q3.2/Q3.1, 25 BE.",
+      "descriptionEn": "Q3.2/Q3.1, 25 points.",
+      "weight": 1,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_ENERGIE"
+        ],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Material 1 (Lage der Strommaxima im Franck-Hertz-Versuch):**\n\n| Beschleunigungsspannung der Strommaxima $U_{\\max}$ (V) | 5,1 | 10,2 | 15,3 | 20,4 | 25,5 |\n|---|---:|---:|---:|---:|---:|\n\n**Material 2 (Spektrallinie von Quecksilber):**\n\n- Dominante Emissionslinie: $\\lambda = 254 \\, nm$\n\n**Material 3 (Prüffall):**\n\n- Als kompatibel gelten Messung und Modell, wenn die relative Abweichung unter $15 \\%$ liegt.\n- Messunsicherheit des Spannungsabstands: $\\Delta U = 5,1 \\pm 0,3 \\, V$.\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 den mittleren Spannungsabstand $\\Delta U$ zwischen benachbarten Maxima und berechnen Sie daraus die Anregungsenergie $\\Delta E = e \\cdot \\Delta U$ in eV. (8 BE)\n2. Berechnen Sie aus Material 2 die Photonenergie $E_\\gamma = \\frac{h \\cdot c}{\\lambda}$ in eV und vergleichen Sie sie mit der Anregungsenergie aus Teilaufgabe 1. (8 BE)\n3. Erklären Sie qualitativ den periodischen Verlauf des Anodenstroms im Franck-Hertz-Versuch (Anstieg/Abfall der Maxima). (5 BE)\n4. Beurteilen Sie mit Material 3, ob die Messung im Rahmen der Unsicherheit mit dem Energiestufenmodell kompatibel ist. (4 BE)",
+        "solutionContent": "1. Aus Material 1 ergeben sich gleiche Spannungsabstände:  \n   $\\Delta U = 10.2-5.1 = 15.3-10.2 = 20.4-15.3 = 25.5-20.4 = 5.1 \\, V$.  \n   Damit ist der mittlere Abstand $\\Delta U_{\\text{mittel}} = 5.1 \\, V$.  \n   Anregungsenergie: $\\Delta E = e \\cdot \\Delta U = 5.1 \\, eV$ (entspricht $8.17 \\cdot 10^{-19} \\, J$).  \n   **8 BE**\n\n2. Photonenergie aus Material 2:  \n   $E_\\gamma = \\frac{h \\cdot c}{\\lambda} \\approx \\frac{1240 \\, eV \\cdot nm}{254 \\, nm} = 4.88 \\, eV$.  \n   Vergleich mit Teilaufgabe 1: $\\Delta E \\approx 5.1 \\, eV$.  \n   Abweichung: $0.22 \\, eV$, relativ etwa $\\frac{0.22}{4.88} \\approx 4.5 \\%$.  \n   Das ist eine gute Übereinstimmung im Modellkontext.  \n   **8 BE**\n\n3. Qualitative Deutung des periodischen Stromverlaufs:  \n   Bei kleiner Spannung erreichen Elektronen den Auffänger und der Strom steigt.  \n   Sobald die Elektronen die Anregungsenergie erreichen, geben sie in unelastischen Stößen Energie an Atome ab und verlieren Geschwindigkeit -> der Anodenstrom fällt ab.  \n   Bei weiter steigender Spannung wiederholt sich der Prozess periodisch, daher entstehen aufeinanderfolgende Maxima/Minima.  \n   **5 BE**\n\n4. Unsicherheitsprüfung mit Material 3:  \n   $\\Delta U = 5.1 \\pm 0.3 \\, V \\Rightarrow \\Delta E \\in [4.8, 5.4] \\, eV$.  \n   Relativer Abstand zur Spektrallinie $E_\\gamma = 4.88 \\, eV$:  \n   - unten: $\\frac{|4.8-4.88|}{4.88} \\approx 1.6 \\%$  \n   - oben: $\\frac{|5.4-4.88|}{4.88} \\approx 10.7 \\%$  \n   Beide Werte liegen unter der in Material 3 vorgegebenen Toleranz von $15 \\%$ -> Messung und Energiestufenmodell sind im Unsicherheitsbereich kompatibel.  \n   **4 BE**",
+        "scoring": {
+          "maxPoints": 25,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 8,
+              "description": "Spannungsabstand und Anregungsenergie aus Messdaten bestimmt"
+            },
+            {
+              "id": "s2",
+              "points": 8,
+              "description": "Photonenergie berechnet und mit Anregungsenergie verglichen"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "Periodischer Stromverlauf im Franck-Hertz-Versuch qualitativ erklärt"
+            },
+            {
+              "id": "s4",
+              "points": 4,
+              "description": "Kompatibilität mit Toleranzkriterium beurteilt"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "90933b59-35b7-445e-aab8-7e74a5a47928",
+      "title": "Vorschlag A (LK) - Adaptive Ladespur (Felder/Induktion)",
+      "titleEn": "Proposal A (Advanced Course) - Adaptive Charging Lane (Fields/Induction)",
+      "description": "Q1.1/Q1.2/Q1.3, 30 BE.",
+      "descriptionEn": "Q1.1/Q1.2/Q1.3, 30 points.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_ENERGIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Material 1 (Feldbereich eines Plattenkondensators):**\n\n- Plattenabstand $d = 6,0 mm$\n- Spannung $U = 2,4 kV$\n- Sensor-Ion mit Ladung $q = e$\n- wirksame Feldstrecke $s = 4,0 cm$\n\n**Material 2 (Messung Magnetfeld einer Leiterschleife):**\n\n| Strom $I$ (A) | 0,8 | 1,2 | 1,6 | 2,0 | 2,4 |\n|---|---:|---:|---:|---:|---:|\n| $B$ (mT) | 10 | 15 | 20 | 25 | 31 |\n\n**Material 3 (zeitlicher Flussverlauf in einer Induktionsspule):**\n\n- $\\Phi(0) = 0$\n- linearer Anstieg auf $\\Phi = 1,8 mWb$ bis $t = 40 ms$\n- linearer Abfall auf $\\Phi = 0,3 mWb$ bis $t = 100 ms$\n\n**Aufgaben:**\n\n1. Bestimmen Sie die Feldstärke $E$ im Kondensator und die Änderung der elektrischen potenziellen Energie des Ions auf der Strecke $s$. (7 BE)\n2. Ermitteln Sie aus Material 2 eine lineare Modellfunktion $B(I)$ und diskutieren Sie die Abweichung des letzten Messpunkts im Hinblick auf Messunsicherheit oder Modellgrenze. (7 BE)\n3. Berechnen Sie für beide Zeitabschnitte aus Material 3 die induzierte Spannung einer $N = 250$ Windungen umfassenden Spule. (7 BE)\n4. Herleitung: Zeigen Sie für gekreuzte Felder die Bedingung $v = E/B$ für geradlinigen Durchgang eines Ions. Wenden Sie die Beziehung mit den Daten aus Material 1 und 2 an ($I = 2,0 A$). (6 BE)\n5. Beurteilen Sie die Eignung des Modells für den Realeinsatz (mindestens zwei fachliche Grenzen benennen). (3 BE)",
+        "solutionContent": "1. Feldstärke: $E = U/d = 2400/0.006 = 4.0e5 V/m$.  \n   Potenzielle Energieänderung auf Strecke $s=0.040 m$:  \n   $\\Delta E_pot = q E s = e \\cdot 4.0e5 \\cdot 0.040 = 2.56e-15 J = 16.0 keV$.  \n   **7 BE**\n\n2. Regressionsfunktion aus Material 2:  \n   $B(I) \\approx 13.0 I - 0.6$ (mT).  \n   Diskussion letzter Punkt: Messwert $31 mT$ bei $2.4 A$ liegt leicht über Modellwert $30.6 mT$; mögliche Ursachen sind Messunsicherheit oder beginnende Nichtlinearität.  \n   **7 BE**\n\n3. Induktion mit $U = N \\cdot |\\Delta \\Phi / \\Delta t|$, $N=250$:  \n   - Abschnitt 1 ($0 \\rightarrow 1.8 mWb$ in $40 ms$): $U_1 = 11.25 V$.  \n   - Abschnitt 2 ($1.8 \\rightarrow 0.3 mWb$ in $60 ms$): $U_2 = 6.25 V$ (Betrag).  \n   **7 BE**\n\n4. Herleitung gekreuzte Felder:  \n   Für geradlinigen Durchgang gilt Kräftegleichgewicht $qE = qvB$ -> $v = E/B$.  \n   Mit $I=2.0 A$: $B \\approx 25.4 mT = 2.54e-2 T$.  \n   $v = 4.0e5 / 2.54e-2 \\approx 1.57e7 m/s$.  \n   **6 BE**\n\n5. Modellgrenzen (mindestens zwei):  \n   Inhomogenität von $E$/$B$ an Rändern, Temperaturdrift, Wirbelströme, endliche Sensorantwort, mechanische Toleranzen.  \n   **3 BE**",
+        "scoring": {
+          "maxPoints": 30,
+          "passingPoints": 18,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 7,
+              "description": "Feldstärke und Beschleunigungsspannung bestimmt"
+            },
+            {
+              "id": "s2",
+              "points": 7,
+              "description": "Messdaten linearisert und Hall-Sensor kalibriert"
+            },
+            {
+              "id": "s3",
+              "points": 7,
+              "description": "Induzierte Spannung aus Flussverlauf ermittelt"
+            },
+            {
+              "id": "s4",
+              "points": 6,
+              "description": "Geschwindigkeitsfilter hergeleitet und berechnet"
+            },
+            {
+              "id": "s5",
+              "points": 3,
+              "description": "Modellgrenzen reflektiert"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cbf8326c-54f3-4967-b481-33e482c83df2",
+      "title": "Vorschlag B (LK) - Aktives Schwingungsmanagement",
+      "titleEn": "Proposal B (Advanced Course) - Active Oscillation Management",
+      "description": "Q2.1/Q2.2/Q2.3, 30 BE.",
+      "descriptionEn": "Q2.1/Q2.2/Q2.3, 30 points.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_BEWEGUNG",
+          "LI_TECHNIK"
+        ],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Material 1 (freie Schwingung, Spitzenwerte):**\n\n| Peaknummer $n$ | 1 | 2 | 3 | 4 |\n|---|---:|---:|---:|---:|\n| Amplitude $A_n$ (mm) | 12,0 | 9,8 | 8,0 | 6,6 |\n\n**Material 2 (erzwungene Schwingung):**\n\n| Anregungsfrequenz $f$ (Hz) | 1,2 | 1,4 | 1,6 | 1,8 | 2,0 |\n|---|---:|---:|---:|---:|---:|\n| stationäre Amplitude $A$ (mm) | 3,1 | 6,4 | 9,0 | 6,8 | 3,9 |\n\n**Material 3 (Wellen an Grenzfläche, Seil-Wellenleiter):**\n\n- Abschnitt 1: Ausbreitungsgeschwindigkeit $v_1 = 72 m/s$\n- Abschnitt 2: Ausbreitungsgeschwindigkeit $v_2 = 48 m/s$\n- Einfallswinkel zur Lotgeraden $\\alpha_1 = 30^\\circ$\n- Hinweis: Ein Schwingungstilger ist ein zusätzliches schwingfähiges System, das bei Resonanz Energie aus der Hauptschwingung aufnimmt.\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 ein geeignetes Dämpfungsmaß (z. B. logarithmisches Dekrement) und interpretieren Sie das Ergebnis physikalisch. (7 BE)\n2. Ermitteln Sie aus Material 2 die Resonanzfrequenz und bewerten Sie, in welchem Frequenzbereich ein Schwingungstilger bzw. eine Dämpfungsmaßnahme besonders wirksam sein muss. (6 BE)\n3. Modellieren Sie die Schwingungsantwort qualitativ mit einem Feder-Masse-Dämpfer-Modell und begründen Sie die Rolle der Parameter $m$, $D$, $b$. (6 BE)\n4. Berechnen Sie für Material 3 den Brechungswinkel $\\alpha_2$ und diskutieren Sie, wie sich eine erhöhte Dämpfung auf Interferenzerscheinungen im zweiten Abschnitt auswirkt. (7 BE)\n5. Vergleichen Sie zwei Maßnahmen (Masseerhöhung vs. Dämpfungserhöhung) hinsichtlich Resonanzreduktion und Komfort. (4 BE)",
+        "solutionContent": "1. Logarithmisches Dekrement (z. B. über vier Peaks):  \n   $\\delta = (1/3) \\cdot \\ln(A_1/A_4) = (1/3) \\cdot \\ln(12.0/6.6) \\approx 0.199$.  \n   Interpretation: moderate Dämpfung pro Periode.  \n   **7 BE**\n\n2. Resonanzfrequenz aus Material 2: $f_res \\approx 1.6 Hz$.  \n   Besonders wirksamer Tilgerbereich: etwa um $1.4$ bis $1.8 Hz$ mit Schwerpunkt nahe $1.6 Hz$.  \n   **6 BE**\n\n3. Qualitatives Modell: $m y'' + b y' + D y = F_0 \\sin(\\omega t)$.  \n   - $m$: trägt Trägheit/eigene Zeitkonstante,  \n   - $D$: bestimmt Rückstellkraft und Eigenfrequenz,  \n   - $b$: bestimmt Dissipation, Peakhöhe und Resonanzbreite.  \n   **6 BE**\n\n4. Brechung: $\\sin(\\alpha_2)/\\sin(\\alpha_1) = v_2/v_1 = 48/72$.  \n   $\\alpha_2 \\approx 19.5^\\circ$.  \n   Bei größerer Dämpfung nimmt Kohärenz wirksam ab; Interferenzmaxima werden flacher und schlechter auflösbar.  \n   **7 BE**\n\n5. Vergleich:  \n   - Masseerhöhung: senkt Eigenfrequenz, kann Lasten/Komfort negativ beeinflussen.  \n   - Dämpfungserhöhung: reduziert Peakamplituden direkt, wirkt oft robuster bei variabler Anregung; kann aber Energieverluste erhöhen.  \n   **4 BE**",
+        "scoring": {
+          "maxPoints": 30,
+          "passingPoints": 18,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 7,
+              "description": "Dämpfungsmaß bestimmt und interpretiert"
+            },
+            {
+              "id": "s2",
+              "points": 6,
+              "description": "Resonanzfrequenz und wirksamer Tilgerbereich bewertet"
+            },
+            {
+              "id": "s3",
+              "points": 6,
+              "description": "Feder-Masse-Dämpfer-Modell qualitativ begründet"
+            },
+            {
+              "id": "s4",
+              "points": 7,
+              "description": "Brechung und Interferenzwirkung bei Dämpfung analysiert"
+            },
+            {
+              "id": "s5",
+              "points": 4,
+              "description": "Maßnahmenvergleich begründet bewertet"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "07dc73c7-fce8-4d58-a64d-58d5b8117338",
+      "title": "Vorschlag C (LK) - Quantenanalyse einer Spektrallampe",
+      "titleEn": "Proposal C (Advanced Course) - Quantum Analysis of a Spectral Lamp",
+      "description": "Q3.1/Q3.2, 30 BE.",
+      "descriptionEn": "Q3.1/Q3.2, 30 points.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_WELLEN"
+        ],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Material 1 (Fotoeffekt-Messreihe):**\n\n| $f$ ($10^14 Hz$) | 5,2 | 5,8 | 6,4 | 7,0 |\n|---|---:|---:|---:|---:|\n| $U_g$ (V) | 0,04 | 0,29 | 0,54 | 0,79 |\n\n**Material 2 (Energieniveaus, vereinfachtes Atommodell):**\n\n- $E_0 = -5,4 eV$\n- $E_1 = -3,2 eV$\n- $E_2 = -2,1 eV$\n- $E_3 = -1,5 eV$\n\n**Material 3 (Moseley-Datensatz, K-alpha-Linie):**\n\n| Ordnungszahl $Z$ | 29 | 30 | 32 |\n|---|---:|---:|---:|\n| Frequenz $f_{K\\alpha}$ ($10^18 Hz$) | 1,95 | 2,10 | 2,42 |\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 eine lineare Beziehung zwischen $U_g$ und $f$ und daraus $h$ und $W_A$. (8 BE)\n2. Stellen Sie mit Material 2 ein **Energiestufenmodell** dar und berechnen Sie zwei mögliche Emissionswellenlängen für Übergänge in den Grundzustand. (7 BE)\n3. Für Elektronen mit $E_kin = 4,0 eV$: Berechnen Sie die De-Broglie-Wellenlänge und diskutieren Sie den Bezug zur Interferenzfähigkeit an Kristallen. (5 BE)\n4. Nutzen Sie Material 3 zur LK-Erweiterung: linearisieren Sie den Zusammenhang zwischen $\\sqrt{f_{K\\alpha}}$ und $Z$ und bestimmen Sie daraus den Abschirmparameter in einem Modell $f_{K\\alpha} \\approx (Z - \\sigma)^2$. (7 BE)\n5. Begründen Sie die Grenzen dieses vereinfachten Moseley-Modells. (3 BE)",
+        "solutionContent": "1. Regressionsansatz $U_g = (h/e) f - W_A/e$:  \n   $m \\approx 4.167e-15 V/Hz$, $b \\approx -2.127 V$.  \n   $h \\approx e m = 6.68e-34 J s$, $W_A \\approx 2.13 eV$.  \n   **8 BE**\n\n2. Energiestufenmodell (Material 2), Übergänge in den Grundzustand:  \n   - $E_1 \\rightarrow E_0$: $\\Delta E = 2.2 eV$ -> $\\lambda \\approx 1240/2.2 = 564 nm$  \n   - $E_2 \\rightarrow E_0$: $\\Delta E = 3.3 eV$ -> $\\lambda \\approx 376 nm$  \n   - $E_3 \\rightarrow E_0$: $\\Delta E = 3.9 eV$ -> $\\lambda \\approx 318 nm$  \n   Zwei davon genügen, sauber begründet.  \n   **7 BE**\n\n3. De-Broglie für $E_kin = 4.0 eV$:  \n   $\\lambda \\approx 6.13e-10 m = 0.613 nm$.  \n   Damit liegt die Wellenlänge im Bereich atomarer Gitterabstände -> Interferenz an Kristallen ist zu erwarten.  \n   **5 BE**\n\n4. Moseley-Linearisation mit $Y = \\sqrt{f_{K\\alpha}}$:  \n   Für die Linearisierung ist ein Plot $\\sqrt{f_{K\\alpha}}$ gegen $Z$ (oder äquivalent $Z$ gegen $\\sqrt{f_{K\\alpha}}$) erforderlich.  \n   Ein Plot $f_{K\\alpha}$ gegen $Z$ ist nicht linear und gilt nicht als Linearisierung.  \n   Lineare Anpassung $Y = a Z + c$ liefert näherungsweise  \n   $a \\approx 5.31e7 (Hz^0.5)$ und $c \\approx -1.44e8 (Hz^0.5)$.  \n   Mit $Y = a (Z - \\sigma)$ folgt $\\sigma = -c/a \\approx 2.70$.  \n   **7 BE**\n\n5. Modellgrenzen: sehr kleine Datenbasis, effektive Abschirmung nicht exakt konstant, Mehr-Elektronen- und relativistische Effekte im einfachen Modell vernachlässigt.  \n   **3 BE**",
+        "scoring": {
+          "maxPoints": 30,
+          "passingPoints": 18,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 8,
+              "description": "Lineare Fotoeffekt-Auswertung mit h und WA"
+            },
+            {
+              "id": "s2",
+              "points": 7,
+              "description": "Energiestufenmodell und Emissionswellenlängen bestimmt"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "De-Broglie-Wellenlänge berechnet und interpretiert"
+            },
+            {
+              "id": "s4",
+              "points": 7,
+              "description": "Moseley-Linearisation und Abschirmparameter bestimmt"
+            },
+            {
+              "id": "s5",
+              "points": 3,
+              "description": "Modellgrenzen begründet"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c4f98384-f18c-426e-9eeb-47d935c54961",
+      "title": "Vorschlag D (LK) - Röntgen-CT in der Werkstoffprüfung",
+      "titleEn": "Proposal D (Advanced Course) - X-ray CT in Materials Testing",
+      "description": "Q3.3/Q3.2, 30 BE.",
+      "descriptionEn": "Q3.3/Q3.2, 30 points.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Material 1 (Röntgenröhre):**\n\n- Beschleunigungsspannung: $U = 120 kV$\n- gemessene Grenzwellenlänge: $\\lambda_min = 0,0105 nm$\n\n**Material 2 (Abschwächung in zwei Materialien):**\n\n| Dicke $d$ (mm) | 1 | 2 | 3 | 4 |\n|---|---:|---:|---:|---:|\n| $I/I_0$ in Al | 0,80 | 0,64 | 0,51 | 0,41 |\n| $I/I_0$ in Stahl | 0,62 | 0,38 | 0,24 | 0,15 |\n\n**Material 3 (Kristallanalyse einer charakteristischen Linie):**\n\n- Gitterabstand $d_G = 201 pm$\n- Maximum 1. Ordnung bei $\\theta = 16,8^\\circ$\n\n**Aufgaben:**\n\n1. Berechnen Sie aus Material 1 die maximale Photonenergie und prüfen Sie die Konsistenz mit der Grenzwellenlänge über $E = h c / \\lambda$. (7 BE)\n2. Bestimmen Sie für Al und Stahl jeweils einen linearen Schwächungskoeffizienten $\\mu$ aus Material 2 und vergleichen Sie die Materialien quantitativ. (7 BE)\n3. Berechnen Sie mit Material 3 die Wellenlänge der charakteristischen Linie über das Bragg-Gesetz. Ordnen Sie die Linie qualitativ in das Spektrum ein. (6 BE)\n4. Eine Einschlussstelle im Stahlbauteil erhöht lokal die Transmission um $11 \\%$. Das CT-System hat eine relative Messunsicherheit von $\\pm 3 \\%$. Beurteilen Sie die Nachweisbarkeit belastbar. (6 BE)\n5. Bewerten Sie den Einsatz höherer Beschleunigungsspannungen im Spannungsfeld aus Durchdringung, Kontrast und Strahlenschutz. (4 BE)",
+        "solutionContent": "1. Maximale Photonenergie aus Beschleunigungsspannung:  \n   $E_max = eU = 120 keV = 1.92e-14 J$.  \n   Aus Grenzwellenlänge $\\lambda_min = 0.0105 nm$:  \n   $E = hc/\\lambda_min \\approx 118 keV$.  \n   Abweichung ~$1.6 \\%$, damit konsistent im Rahmen eines realen Mess-/Rundungsfehlers.  \n   **7 BE**\n\n2. $I/I_0 = \\exp(-\\mu d)$ (Regression auf Logarithmus):  \n   - Aluminium: $\\mu_{Al} \\approx 0.223 mm^-1$  \n   - Stahl: $\\mu_{St} \\approx 0.472 mm^-1$  \n   Vergleich: Stahl schwächt etwa $2.1$-mal stärker als Aluminium.  \n   **7 BE**\n\n3. Bragg-Gesetz (1. Ordnung): $\\lambda = 2 d_G \\sin(\\theta)$  \n   $\\lambda = 2 \\cdot 201 pm \\cdot \\sin(16.8^\\circ) \\approx 116 pm = 0.116 nm$.  \n   Qualitativ: charakteristische Linie im kurzwelligen Röntgenbereich.  \n   **6 BE**\n\n4. Nachweisbarkeit bei $11 \\%$ Signalzuwachs und $\\pm 3 \\%$ relativer Unsicherheit:  \n   Signal liegt deutlich über der Unsicherheit ($SNR \\approx 11/3 \\approx 3.7$), daher prinzipiell nachweisbar; für belastbare Freigabe sind Wiederholmessung/Kalibration sinnvoll.  \n   **6 BE**\n\n5. Bewertung höherer Spannung:  \n   Vorteile: bessere Durchdringung, kürzere Grenzwellenlänge.  \n   Nachteile: geringerer Materialkontrast bei feinen Defekten, höhere Dosis/Strahlenschutzaufwand, mehr Streustrahlung.  \n   **4 BE**",
+        "scoring": {
+          "maxPoints": 30,
+          "passingPoints": 18,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 7,
+              "description": "Grenzwellenlänge und maximale Photonenergie konsistent geprüft"
+            },
+            {
+              "id": "s2",
+              "points": 7,
+              "description": "Schwächungskoeffizienten bestimmt und verglichen"
+            },
+            {
+              "id": "s3",
+              "points": 6,
+              "description": "Bragg-Gesetz angewendet und Linie eingeordnet"
+            },
+            {
+              "id": "s4",
+              "points": 6,
+              "description": "Nachweisbarkeit unter Messunsicherheit beurteilt"
+            },
+            {
+              "id": "s5",
+              "points": 4,
+              "description": "Spannungswahl unter Zielkonflikten bewertet"
+            }
+          ]
+        }
       }
     }
   ]
