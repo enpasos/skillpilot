@@ -15,6 +15,7 @@ import {
   type Abi26CourseLevel,
 } from '../utils/abi26MatheCampaign'
 import { trackCampaignEvent } from '../utils/campaignTracking'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -32,6 +33,7 @@ const copyText = async (value: string) => {
 }
 
 export const Abi26MatheStartView: React.FC = () => {
+  const { setLanguage } = useLanguage()
   const location = useLocation()
   const params = useMemo(() => new URLSearchParams(location.search), [location.search])
   const initialContext = useMemo(() => extractAbi26CampaignContext(params), [params])
@@ -57,6 +59,11 @@ export const Abi26MatheStartView: React.FC = () => {
     () => (skillpilotId ? buildAbi26StartPrompt(skillpilotId, context) : ''),
     [skillpilotId, context],
   )
+
+  useEffect(() => {
+    // Campaign entry should always start in German.
+    setLanguage('de')
+  }, [setLanguage])
 
   useEffect(() => {
     trackCampaignEvent('page_view', {
@@ -108,9 +115,40 @@ export const Abi26MatheStartView: React.FC = () => {
         throw new Error('Das Cockpit konnte nicht vorkonfiguriert werden (Scope).')
       }
 
+      const closureRes = await fetch(
+        toApi(`/api/ui/landscapes/${encodeURIComponent(ABI26_MATH_CURRICULUM_ID)}/closure?lang=de`),
+      )
+      if (!closureRes.ok) {
+        throw new Error('Das Cockpit konnte nicht vorkonfiguriert werden (Landschaftsstruktur).')
+      }
+
+      const closure = (await closureRes.json()) as Array<{ landscapeId?: string }>
+      const closureLandscapeIds = Array.isArray(closure)
+        ? closure.map((entry) => String(entry?.landscapeId || '').trim()).filter(Boolean)
+        : []
+
+      const personalConfig: Record<string, { selected: boolean; filterId: Abi26CourseLevel }> = {}
+      const targetLandscapeIds = new Set<string>([ABI26_MATH_CURRICULUM_ID, ...closureLandscapeIds])
+      targetLandscapeIds.forEach((landscapeId) => {
+        personalConfig[landscapeId] = { selected: true, filterId: courseLevel }
+      })
+
+      const personalCurriculumRes = await fetch(
+        toApi(`/api/ui/learners/${encodeURIComponent(id)}/personal-curriculum`),
+        {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(personalConfig),
+        },
+      )
+      if (!personalCurriculumRes.ok) {
+        throw new Error('Das Cockpit konnte nicht vorkonfiguriert werden (Kursniveau).')
+      }
+
       localStorage.setItem('skillpilot_id', id)
       localStorage.setItem('skillpilot_role', 'learner')
       localStorage.setItem('skillpilot_learner_landscape', ABI26_MATH_CURRICULUM_ID)
+      localStorage.setItem('skillpilot_lang', 'de')
       saveAbi26CampaignContext({ ...context, skillpilotId: id })
 
       const url = buildAbi26CockpitUrl(context, id)
@@ -337,6 +375,9 @@ export const Abi26MatheStartView: React.FC = () => {
               <ExternalLink size={14} />
             </a>
           </div>
+          <p className="mt-2 text-xs text-text-secondary">
+            Der Button kopiert den kompletten Starttext in die Zwischenablage. Danach im SkillPilot GPT einfach einfügen.
+          </p>
           {copiedState === 'prompt' && (
             <p className="mt-2 text-xs text-emerald-600 dark:text-emerald-400">Startprompt wurde kopiert.</p>
           )}
