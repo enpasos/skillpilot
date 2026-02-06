@@ -23,6 +23,7 @@ interface GoalCardProps {
 }
 
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 
@@ -109,7 +110,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                 {examTaskLabel}
               </h3>
               <ReactMarkdown
-                remarkPlugins={[remarkMath]}
+                remarkPlugins={[remarkGfm, remarkMath]}
                 rehypePlugins={[rehypeKatex]}
               >
             {goal.examData.taskContent}
@@ -124,7 +125,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
               {solutionLabel}
                 </h3>
                 <ReactMarkdown
-                  remarkPlugins={[remarkMath]}
+                  remarkPlugins={[remarkGfm, remarkMath]}
                   rehypePlugins={[rehypeKatex]}
                 >
                   {goal.examData.solutionContent}
@@ -135,7 +136,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           </div>
         ) : (
           <ReactMarkdown
-            remarkPlugins={[remarkMath]}
+            remarkPlugins={[remarkGfm, remarkMath]}
             rehypePlugins={[rehypeKatex]}
           >
             {goal.description}
