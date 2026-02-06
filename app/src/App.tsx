@@ -12,6 +12,7 @@ import { StoryView } from './views/StoryView'
 import { UsersView } from './views/UsersView'
 import { StatsView } from './views/StatsView'
 import { SuccessView } from './views/SuccessView'
+import { Abi26MatheStartView } from './views/Abi26MatheStartView'
 
 import { SessionSetup } from './components/SessionSetup'
 import { useAppCore } from './hooks/useAppCore'
@@ -30,6 +31,7 @@ const PUBLIC_PATHS = new Set([
   '/users',
   '/stats',
   '/successes',
+  '/start',
 ])
 const GOAL_VIEWS = new Set(['learner', 'trainer', 'explorer'])
 const MAX_DESCRIPTION_LENGTH = 160
@@ -95,6 +97,8 @@ const App: React.FC = () => {
     normalizedActualPath === '/whitepaper' || normalizedActualPath.startsWith('/whitepaper/')
   const isQuickstartRoute = normalizedPath === '/quickstart' || normalizedPath.startsWith('/quickstart/') ||
     normalizedActualPath === '/quickstart' || normalizedActualPath.startsWith('/quickstart/')
+  const isStartRoute = normalizedPath === '/start' || normalizedPath.startsWith('/start/') ||
+    normalizedActualPath === '/start' || normalizedActualPath.startsWith('/start/')
 
   // Allow public routes to render without session
   // Check both React Router location AND actual window.location for reliability after OAuth redirects
@@ -102,7 +106,8 @@ const App: React.FC = () => {
     PUBLIC_PATHS.has(normalizedPath) ||
     PUBLIC_PATHS.has(normalizedActualPath) ||
     isWhitepaperRoute ||
-    isQuickstartRoute
+    isQuickstartRoute ||
+    isStartRoute
 
   // DEBUG: Check why landing page might be empty
   // console.log('Routing State:', { normalizedPath, isPublicRoute, hasSession })
@@ -137,7 +142,8 @@ const App: React.FC = () => {
     const view = path.split('/')[1] || ''
     const isPublicPath = PUBLIC_PATHS.has(path) ||
       path === '/whitepaper' || path.startsWith('/whitepaper/') ||
-      path === '/quickstart' || path.startsWith('/quickstart/')
+      path === '/quickstart' || path.startsWith('/quickstart/') ||
+      path === '/start' || path.startsWith('/start/')
     const isGoalView = GOAL_VIEWS.has(view)
     const hasAccess = hasSession || isPublicPath || path === '/'
     const baseTitle = 'SkillPilot'
@@ -181,6 +187,11 @@ const App: React.FC = () => {
       } else if (path === '/successes') {
         title = `Successes | ${baseTitle}`
         description = 'Total number of mastered learning goals.'
+      } else if (path === '/start' || path.startsWith('/start/')) {
+        title = `Abi 2026 Mathe Hessen | ${baseTitle}`
+        description = language === 'en'
+          ? 'Create your free SkillPilot ID and start directly in your Abitur cockpit.'
+          : 'Kostenlose SkillPilot-ID erstellen und direkt im Abi-Cockpit starten.'
       } else if (path === '/privacy') {
         title = `${t.startPage.footer.privacy} | ${baseTitle}`
         description = privacyDescription
@@ -282,6 +293,8 @@ const App: React.FC = () => {
         <Route path="/users" element={<UsersView />} />
         <Route path="/successes" element={<SuccessView />} />
         <Route path="/quickstart/:lang?" element={<StoryView />} />
+        <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
+        <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
       </Routes>
     )
   }
@@ -476,6 +489,8 @@ const App: React.FC = () => {
       <Route path="/imprint" element={<ImprintView />} />
       <Route path="/quickstart/:lang?" element={<StoryView />} />
       <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
+      <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
+      <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
 
       <Route path="/" element={<Navigate to="/explorer" />} />
     </Routes>

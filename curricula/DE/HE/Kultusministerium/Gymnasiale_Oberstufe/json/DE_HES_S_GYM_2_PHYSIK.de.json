@@ -851,6 +851,7 @@
         "75c8920f-757e-47bf-be3a-a5901eb52334",
         "fa86f7ee-98df-439f-b96c-e39de02ec054",
         "10ae3ebb-b1e0-4ec5-b396-5286c9fc1425",
+        "9e8a79bc-e739-4381-9188-08ad7a5e713f",
         "99bbf33e-74f5-4f33-98e2-e4e6661d8648",
         "14cf1aa0-303b-4dcd-b3b6-26a6d8ab6934",
         "9aeaf941-baef-43fb-8077-50d37e600c26",
@@ -882,7 +883,7 @@
       "requires": [
         "75c8920f-757e-47bf-be3a-a5901eb52334",
         "10ae3ebb-b1e0-4ec5-b396-5286c9fc1425",
-        "99bbf33e-74f5-4f33-98e2-e4e6661d8648"
+        "9e8a79bc-e739-4381-9188-08ad7a5e713f"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -914,9 +915,32 @@
       }
     },
     {
+      "id": "9e8a79bc-e739-4381-9188-08ad7a5e713f",
+      "title": "Potenzielle Energie (Lageenergie)",
+      "titleEn": "Potential Energy (Positional Energy)",
+      "description": "Die lernende Person kann potenzielle Energie als Lageenergie in einfachen mechanischen Situationen beschreiben und einfache Fälle ohne Feldbegriff berechnen.",
+      "descriptionEn": "The learner can describe potential energy as positional energy in simple mechanical situations and calculate simple cases without using the field concept.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "10ae3ebb-b1e0-4ec5-b396-5286c9fc1425"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
       "id": "99bbf33e-74f5-4f33-98e2-e4e6661d8648",
-      "title": "Potenzielle Energie",
-      "titleEn": "Potential Energy",
+      "title": "Potenzielle Energie und Felder",
+      "titleEn": "Potential Energy and Fields",
       "description": "Die lernende Person kann potenzielle Energie in Feldern (z. B. im Gravitationsfeld) beschreiben, einfache Fälle berechnen und die Abhängigkeit von Lage und Bezugssystem erläutern.",
       "descriptionEn": "The learner can describe potential energy in fields (e.g., gravitational field), calculate simple cases, and explain its dependence on position and reference system.",
       "weight": 0.9,
@@ -925,7 +949,9 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "4831acd5-1106-4437-ae1e-630b3c653d27"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",
@@ -1162,8 +1188,8 @@
       "id": "b36bb565-f304-47c4-b44e-012dd9ff7a1a",
       "title": "Energieerhaltung aus Newtonschen Axiomen (LK)",
       "titleEn": "Energy Conservation from Newton's Laws (Advanced Course)",
-      "description": "Die lernende Person kann die Energieerhaltung aus Newtonschen Axiomen herleiten und die Voraussetzungen der Herleitung benennen.",
-      "descriptionEn": "The learner can derive energy conservation from Newton's laws and state the assumptions of the derivation.",
+      "description": "Die lernende Person kann die Energieerhaltung aus Newtonschen Axiomen herleiten und die Voraussetzungen der Herleitung benennen. Hinweis: Starte mit der Grundgleichung, skalarmultipliziere mit der Geschwindigkeit, beachte bei der kinetischen Energie konstante Masse und führe für die potenzielle Energie zwei sich aufhebende Operationen aus (integriere diesen Teil über die Zeit t und leite nach t ab), um auf die Erhaltung der mechanischen Energie zu gelangen.",
+      "descriptionEn": "The learner can derive energy conservation from Newton's laws and state the assumptions of the derivation. Hint: Start from the fundamental equation, take the scalar product with velocity, treat mass as constant for kinetic energy, and for potential energy use two canceling operations (integrate this part over time t and differentiate with respect to t) to obtain conservation of mechanical energy.",
       "weight": 0.9,
       "tags": [
         "LK"
