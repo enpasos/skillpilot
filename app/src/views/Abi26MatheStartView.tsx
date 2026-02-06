@@ -143,6 +143,18 @@ export const Abi26MatheStartView: React.FC = () => {
         throw new Error('Das Cockpit konnte nicht vorkonfiguriert werden (Kursniveau).')
       }
 
+      const activeGoalRes = await fetch(
+        toApi(`/api/ui/learners/${encodeURIComponent(id)}/active-goal`),
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ goalId: selectedFocusId }),
+        },
+      )
+      if (!activeGoalRes.ok) {
+        throw new Error('Das Cockpit konnte nicht vorkonfiguriert werden (Fokus).')
+      }
+
       localStorage.setItem('skillpilot_id', id)
       localStorage.setItem('skillpilot_role', 'learner')
       localStorage.setItem('skillpilot_learner_landscape', ABI26_MATH_CURRICULUM_ID)

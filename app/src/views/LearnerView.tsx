@@ -4,7 +4,7 @@ import { useLearnerUpdates } from '../hooks/useLearnerUpdates'
 import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
-import { Settings, Upload, Download, Menu, X, Target, Send, Check, MoveRight, Copy, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react'
+import { Settings, Upload, Download, Menu, X, Target, Send, Check, MoveRight } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -18,9 +18,6 @@ import { useSrsMastery } from '../hooks/useSrsMastery'
 import { getSrsFilterTagsForGoal } from '../utils/srsTags'
 import {
   ABI26_CAMPAIGN_SLUG,
-  ABI26_FEEDBACK_URL,
-  ABI26_GPT_URL,
-  buildAbi26StartPrompt,
   extractAbi26CampaignContext,
   loadAbi26CampaignContext,
   saveAbi26CampaignContext,
@@ -106,27 +103,17 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const hasPersistedCampaignForLearner =
     persistedCampaignContext?.slug === ABI26_CAMPAIGN_SLUG &&
     persistedCampaignContext.skillpilotId === skillpilotId
-  const showAbi26Banner = hasAbi26Marker || hasPersistedCampaignForLearner
+  const isAbi26CampaignSession = hasAbi26Marker || hasPersistedCampaignForLearner
   const campaignContext = useMemo(() => {
     if (hasAbi26Marker) return { ...queryCampaignContext, skillpilotId }
     if (hasPersistedCampaignForLearner && persistedCampaignContext) return persistedCampaignContext
     return null
   }, [hasAbi26Marker, queryCampaignContext, hasPersistedCampaignForLearner, persistedCampaignContext, skillpilotId])
-  const [campaignPromptCopied, setCampaignPromptCopied] = useState(false)
-  const [isAbi26BannerExpanded, setIsAbi26BannerExpanded] = useState(true)
 
   const selectedId = currentGoal?.id ?? rootGoals[0]?.id ?? ''
   const effectiveActiveGoalId = stateActiveGoalId ?? learnerData?.activeGoalId ?? null
-  const campaignPrompt = useMemo(
-    () => (campaignContext ? buildAbi26StartPrompt(skillpilotId, campaignContext) : ''),
-    [campaignContext, skillpilotId],
-  )
   const hasTrackedCampaignOpenRef = useRef(false)
   const hasAppliedCampaignFilterRef = useRef(false)
-
-  useEffect(() => {
-    setCampaignPromptCopied(false)
-  }, [campaignPrompt])
 
   const getSrsSource = useCallback((goal: UiGoal) => {
     const extendedData = goal.extendedData as {
@@ -610,46 +597,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [campaignContext])
 
   useEffect(() => {
-    if (!showAbi26Banner) return
+    if (!isAbi26CampaignSession) return
     if (language === 'de') return
     setLanguage('de')
     localStorage.setItem('skillpilot_lang', 'de')
-  }, [showAbi26Banner, language, setLanguage])
+  }, [isAbi26CampaignSession, language, setLanguage])
 
   useEffect(() => {
     if (!campaignContext || hasTrackedCampaignOpenRef.current) return
     hasTrackedCampaignOpenRef.current = true
     trackCampaignEvent('cockpit_opened', {
-      start: ABI26_CAMPAIGN_SLUG,
-      source: campaignContext.source,
-      campaign: campaignContext.campaign,
-      medium: campaignContext.medium,
-      courseLevel: campaignContext.courseLevel,
-      location: 'cockpit',
-    }, skillpilotId)
-  }, [campaignContext, skillpilotId])
-
-  const handleCopyCampaignPrompt = useCallback(async () => {
-    if (!campaignContext || !campaignPrompt) return
-    try {
-      await navigator.clipboard.writeText(campaignPrompt)
-      setCampaignPromptCopied(true)
-      trackCampaignEvent('gpt_prompt_copied', {
-        start: ABI26_CAMPAIGN_SLUG,
-        source: campaignContext.source,
-        campaign: campaignContext.campaign,
-        medium: campaignContext.medium,
-        courseLevel: campaignContext.courseLevel,
-        location: 'cockpit',
-      }, skillpilotId)
-    } catch {
-      // Ignore copy failures silently.
-    }
-  }, [campaignContext, campaignPrompt, skillpilotId])
-
-  const handleCampaignGptStartClick = useCallback(() => {
-    if (!campaignContext) return
-    trackCampaignEvent('gpt_start_clicked', {
       start: ABI26_CAMPAIGN_SLUG,
       source: campaignContext.source,
       campaign: campaignContext.campaign,
@@ -881,7 +838,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [skillpilotId, refreshState])
 
   useEffect(() => {
-    if (!showAbi26Banner || !campaignContext || !rootLandscapeId) return
+    if (!isAbi26CampaignSession || !campaignContext || !rootLandscapeId) return
     if (hasAppliedCampaignFilterRef.current) return
 
     const current = personalConfig[rootLandscapeId]
@@ -898,7 +855,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         filterId: campaignContext.courseLevel,
       },
     })
-  }, [showAbi26Banner, campaignContext, rootLandscapeId, personalConfig, handleConfigChange])
+  }, [isAbi26CampaignSession, campaignContext, rootLandscapeId, personalConfig, handleConfigChange])
 
   useEffect(() => {
     hasAppliedCampaignFilterRef.current = false
@@ -1387,74 +1344,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         )}
         {currentGoal ? (
           <div className="w-full max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-500">
-            {showAbi26Banner && campaignContext && (
-              <div className="mb-5 rounded-xl border border-sky-200 bg-sky-50/80 p-4 text-slate-800 dark:border-sky-500/30 dark:bg-sky-900/20 dark:text-slate-100">
-                <div className="flex items-start justify-between gap-3">
-                  <h2 className="text-lg font-bold text-sky-700 dark:text-sky-300">Was dich hier erwartet</h2>
-                  <button
-                    type="button"
-                    onClick={() => setIsAbi26BannerExpanded((prev) => !prev)}
-                    aria-expanded={isAbi26BannerExpanded}
-                    className="inline-flex items-center gap-1 rounded-full border border-sky-300/60 bg-white px-2.5 py-1 text-xs font-semibold text-sky-700 hover:border-sky-400 dark:border-sky-500/40 dark:bg-slate-900/40 dark:text-sky-300"
-                  >
-                    {isAbi26BannerExpanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
-                    {isAbi26BannerExpanded ? 'Einklappen' : 'Ausklappen'}
-                  </button>
-                </div>
-                <p className="mt-2 text-sm text-slate-700 dark:text-slate-200">
-                  Dein Cockpit ist auf <strong>Abi 2026 Mathematik Hessen</strong> vorkonfiguriert.
-                </p>
-                {isAbi26BannerExpanded && (
-                  <>
-                    <p className="mt-2 text-sm text-slate-700 dark:text-slate-200">
-                      Du siehst deinen Lernpfad, relevante nächste Schritte im Frontier und startest direkt im Fokusbereich Klausurbeispiel 1.
-                    </p>
-                    <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
-                      <span className="rounded-full border border-sky-300/50 bg-white px-2 py-1 dark:bg-slate-900/40">Kurs: {campaignContext.courseLevel}</span>
-                      <span className="rounded-full border border-sky-300/50 bg-white px-2 py-1 dark:bg-slate-900/40">Scope: Abiturprüfung Mathematik</span>
-                      <span className="rounded-full border border-sky-300/50 bg-white px-2 py-1 dark:bg-slate-900/40">Fokus: Klausurbeispiel 1</span>
-                    </div>
-                    <div className="mt-4 rounded-lg border border-sky-200/70 bg-white p-3 text-xs text-slate-700 dark:border-sky-500/30 dark:bg-slate-900/40 dark:text-slate-200">
-                      <p className="font-semibold text-sky-700 dark:text-sky-300">So startest du mit SkillPilot GPT</p>
-                      <pre className="mt-2 whitespace-pre-wrap font-mono leading-relaxed">{campaignPrompt}</pre>
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        <button
-                          type="button"
-                          onClick={handleCopyCampaignPrompt}
-                          className="inline-flex items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-3 py-1.5 text-xs font-semibold text-white hover:border-sky-400 hover:bg-sky-500"
-                        >
-                          <Copy size={12} />
-                          Startprompt kopieren
-                        </button>
-                        <a
-                          href={ABI26_GPT_URL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={handleCampaignGptStartClick}
-                          className="inline-flex items-center gap-2 rounded-full border border-border-color bg-white px-3 py-1.5 text-xs font-semibold text-text-primary hover:border-sky-400 dark:bg-slate-800"
-                        >
-                          Mit SkillPilot GPT starten
-                          <ExternalLink size={12} />
-                        </a>
-                      </div>
-                      <p className="mt-2 text-[11px] text-slate-600 dark:text-slate-300">
-                        &#39;Startprompt kopieren&#39; kopiert den kompletten Starttext in deine Zwischenablage, damit du ihn direkt in SkillPilot GPT einfuegen kannst.
-                      </p>
-                      {campaignPromptCopied && (
-                        <p className="mt-2 text-xs text-emerald-600 dark:text-emerald-400">Startprompt wurde kopiert.</p>
-                      )}
-                    </div>
-                    <p className="mt-3 text-xs text-slate-700 dark:text-slate-200">
-                      Kostenlos, Open Source, Verbesserungsvorschlaege willkommen.
-                      {' '}
-                      <a href={ABI26_FEEDBACK_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-sky-700 hover:text-sky-600 dark:text-sky-300">
-                        Feedback geben
-                      </a>
-                    </p>
-                  </>
-                )}
-              </div>
-            )}
             {/* Check for SRS Tag */}
             {currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
               <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6">
