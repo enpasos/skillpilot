@@ -81,8 +81,6 @@ export const Abi26MatheStartView: React.FC = () => {
     setError(null)
     setCopiedState('none')
 
-    const popup = window.open('about:blank', '_blank')
-
     try {
       const createRes = await fetch(toApi('/api/ui/learners'), { method: 'POST' })
       if (!createRes.ok) {
@@ -164,25 +162,7 @@ export const Abi26MatheStartView: React.FC = () => {
         scopeGoalId: selectedScopeId,
         focusGoalId: selectedFocusId,
       }, id)
-
-      if (popup) {
-        popup.location.href = url
-      } else {
-        const opened = window.open(url, '_blank')
-        if (!opened) {
-          window.location.assign(url)
-        }
-      }
-
-      trackCampaignEvent('cockpit_opened', {
-        start: ABI26_CAMPAIGN_SLUG,
-        source: context.source,
-        campaign: context.campaign,
-        medium: context.medium,
-        courseLevel: context.courseLevel,
-      }, id)
     } catch (e) {
-      popup?.close()
       const message = e instanceof Error ? e.message : 'Unbekannter Fehler'
       setError(message)
     } finally {
@@ -221,6 +201,18 @@ export const Abi26MatheStartView: React.FC = () => {
     }, skillpilotId || undefined)
   }
 
+  const handleCockpitStartClicked = () => {
+    if (!skillpilotId) return
+    trackCampaignEvent('cockpit_opened', {
+      start: ABI26_CAMPAIGN_SLUG,
+      source: context.source,
+      campaign: context.campaign,
+      medium: context.medium,
+      courseLevel: context.courseLevel,
+      location: 'start-page',
+    }, skillpilotId)
+  }
+
   return (
     <div className="min-h-screen bg-chat-bg text-text-primary px-4 py-8 sm:px-6">
       <div className="mx-auto w-full max-w-3xl space-y-6">
@@ -229,14 +221,16 @@ export const Abi26MatheStartView: React.FC = () => {
             <Send size={14} />
             Abi 2026 Mathe Hessen
           </div>
-          <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-800 dark:text-slate-100 sm:text-4xl">
-            In 60 Sekunden zu deinem Mathe-Abi-Cockpit
-          </h1>
-          <p className="mt-4 text-sm text-text-secondary leading-relaxed">
-            Du erhältst sofort eine pseudonyme SkillPilot-ID ohne Registrierung, ein vorkonfiguriertes Cockpit
-            für <strong>Gymnasiale Oberstufe Hessen, Mathematik</strong> und einen Startprompt für SkillPilot GPT
-            in deinem persönlichen Kontext.
-          </p>
+          <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-800 dark:text-slate-100 sm:text-4xl">In 60 Sekunden zu deinem Mathe-Abi-Cockpit</h1>
+          <p className="mt-4 text-sm text-text-secondary leading-relaxed">Du probierst hier in Ruhe aus: erst ID erstellen, dann optional im nächsten Schritt ins Cockpit oder zu SkillPilot GPT.</p>
+          <div className="mt-4 rounded-lg border border-border-color bg-slate-50 px-3 py-3 text-xs text-text-secondary dark:bg-slate-800/40">
+            <p className="font-semibold text-text-primary">Was dich hier erwartet</p>
+            <ul className="mt-2 list-disc pl-5 space-y-1">
+              <li>Pseudonyme SkillPilot-ID ohne Registrierung</li>
+              <li>Vorkonfiguriertes Abi-Setup für Hessen Mathematik</li>
+              <li>Danach zwei getrennte Optionen: Cockpit oder SkillPilot GPT (jeweils neues Tab)</li>
+            </ul>
+          </div>
           <p className="mt-3 rounded-lg border border-emerald-300/40 bg-emerald-50 px-3 py-2 text-xs text-emerald-900 dark:border-emerald-600/30 dark:bg-emerald-900/20 dark:text-emerald-200">
             SkillPilot ist kostenlos, Open Source, Verbesserungsvorschläge willkommen.
           </p>
@@ -248,6 +242,7 @@ export const Abi26MatheStartView: React.FC = () => {
         </div>
 
         <div className="rounded-2xl border border-border-color bg-white/80 dark:bg-slate-900/70 p-6 shadow-sm">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Schnellpersonalisierung für Dich</h2>
           <div className="flex flex-wrap items-center gap-2 text-xs text-text-secondary">
             <span className="rounded-full border border-border-color px-2 py-1">Bundesland: Hessen</span>
             <span className="rounded-full border border-border-color px-2 py-1">Bereich: Gymnasiale Oberstufe</span>
@@ -324,17 +319,17 @@ export const Abi26MatheStartView: React.FC = () => {
                   </button>
                 </div>
               </div>
-              {cockpitUrl && (
-                <a
-                  href={cockpitUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-sky-600 hover:text-sky-500 dark:text-sky-400"
-                >
-                  Cockpit jetzt öffnen
-                  <ExternalLink size={14} />
-                </a>
-              )}
+              <div className="rounded-md border border-border-color bg-white px-3 py-2 text-xs text-text-secondary dark:bg-slate-900">
+                <p className="font-semibold text-text-primary">Vorkonfiguriert für dich:</p>
+                <ul className="mt-1 list-disc pl-5 space-y-1">
+                  <li>Curriculum: Mathematik Oberstufe Hessen (KC 2024)</li>
+                  <li>Kursniveau: {courseLevel}</li>
+                  <li>Scope: Abiturprüfung Mathematik</li>
+                  <li>Fokus: Klausurbeispiel 1</li>
+                  <li>Sprache: Deutsch</li>
+                </ul>
+              </div>
+              <p className="text-xs text-text-secondary">Du entscheidest jetzt selbst, ob du ins Cockpit oder direkt in den Chat springst.</p>
               {copiedState === 'id' && (
                 <p className="text-xs text-emerald-600 dark:text-emerald-400">ID wurde in die Zwischenablage kopiert.</p>
               )}
@@ -342,46 +337,58 @@ export const Abi26MatheStartView: React.FC = () => {
           )}
         </div>
 
-        <div className="rounded-2xl border border-border-color bg-white/80 dark:bg-slate-900/70 p-6 shadow-sm">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">So startest du mit SkillPilot GPT</h2>
-          <p className="mt-2 text-sm text-text-secondary">
-            Kopiere den Startprompt mit deiner persönlichen SkillPilot-ID und starte danach den SkillPilot GPT.
-          </p>
-          <div className="mt-4 rounded-lg border border-border-color bg-slate-50 p-3 text-xs leading-relaxed text-text-secondary dark:bg-slate-800/40">
-            {skillpilotId ? (
-              <pre className="whitespace-pre-wrap font-mono">{startPrompt}</pre>
-            ) : (
-              <span>Der Startprompt wird verfügbar, sobald deine SkillPilot-ID erstellt wurde.</span>
+        {skillpilotId && (
+          <div className="rounded-2xl border border-border-color bg-white/80 dark:bg-slate-900/70 p-6 shadow-sm">
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">1. Sprung ins Cockpit</h2>
+            <p className="mt-2 text-sm text-text-secondary">Öffnet dein vorkonfiguriertes Lern-Cockpit in einem neuen Browser-Tab.</p>
+            {cockpitUrl && (
+              <a
+                href={cockpitUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleCockpitStartClicked}
+                className="mt-4 inline-flex items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:border-sky-400 hover:bg-sky-500"
+              >
+                Cockpit im neuen Tab öffnen
+                <ExternalLink size={14} />
+              </a>
             )}
           </div>
-          <div className="mt-4 flex flex-wrap gap-2">
-            <button
-              type="button"
-              onClick={handleCopyPrompt}
-              disabled={!skillpilotId}
-              className="inline-flex items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:border-sky-400 hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              <Copy size={14} />
-              Startprompt kopieren
-            </button>
-            <a
-              href={ABI26_GPT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleGptStartClicked}
-              className="inline-flex items-center gap-2 rounded-full border border-border-color bg-white px-4 py-2 text-sm font-semibold text-text-primary hover:border-sky-400 dark:bg-slate-800"
-            >
-              Mit SkillPilot GPT starten
-              <ExternalLink size={14} />
-            </a>
+        )}
+
+        {skillpilotId && (
+          <div className="rounded-2xl border border-border-color bg-white/80 dark:bg-slate-900/70 p-6 shadow-sm">
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">2. Sprung in SkillPilot GPT</h2>
+            <p className="mt-2 text-sm text-text-secondary">Kopiere den Startprompt mit deiner ID und öffne den Chat in einem neuen Browser-Tab.</p>
+            <div className="mt-4 rounded-lg border border-border-color bg-slate-50 p-3 text-xs leading-relaxed text-text-secondary dark:bg-slate-800/40">
+              <pre className="whitespace-pre-wrap font-mono">{startPrompt}</pre>
+            </div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={handleCopyPrompt}
+                className="inline-flex items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:border-sky-400 hover:bg-sky-500"
+              >
+                <Copy size={14} />
+                Startprompt kopieren
+              </button>
+              <a
+                href={ABI26_GPT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleGptStartClicked}
+                className="inline-flex items-center gap-2 rounded-full border border-border-color bg-white px-4 py-2 text-sm font-semibold text-text-primary hover:border-sky-400 dark:bg-slate-800"
+              >
+                SkillPilot GPT im neuen Tab öffnen
+                <ExternalLink size={14} />
+              </a>
+            </div>
+            <p className="mt-2 text-xs text-text-secondary">Der Button kopiert den kompletten Starttext in die Zwischenablage. Danach im SkillPilot GPT einfach einfügen.</p>
+            {copiedState === 'prompt' && (
+              <p className="mt-2 text-xs text-emerald-600 dark:text-emerald-400">Startprompt wurde kopiert.</p>
+            )}
           </div>
-          <p className="mt-2 text-xs text-text-secondary">
-            Der Button kopiert den kompletten Starttext in die Zwischenablage. Danach im SkillPilot GPT einfach einfügen.
-          </p>
-          {copiedState === 'prompt' && (
-            <p className="mt-2 text-xs text-emerald-600 dark:text-emerald-400">Startprompt wurde kopiert.</p>
-          )}
-        </div>
+        )}
 
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border-color bg-white/80 dark:bg-slate-900/70 p-4 text-xs text-text-secondary">
           <span>Kostenlos, Open Source, Verbesserungsvorschläge willkommen.</span>
