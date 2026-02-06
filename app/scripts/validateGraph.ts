@@ -48,6 +48,16 @@ const allowedLeitideen = new Set([
 ])
 const kompetenzPattern = /^(K[1-6](\.[0-9]+)?|PK[0-9]+(_[A-ZÄÖÜ]+)?)$/
 
+const PHYSICS_LANDSCAPE_ID = '24f2ca0f-b94a-444e-bb70-677cb6f85c02'
+const PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID = 'b36bb565-f304-47c4-b44e-012dd9ff7a1a'
+const PHYSICS_ENERGY_CLUSTER_GOAL_ID = 'fa204429-674f-466d-b049-a6de19a50579'
+const PHYSICS_NEWTON_INERTIAL_CLUSTER_GOAL_ID = 'ff07337f-24bd-4148-8fa7-7a750d7ae5f8'
+const PHYSICS_INERTIAL_SYSTEMS_GOAL_ID = '2808ec13-5b8b-4fb9-9b1a-7792146995b7'
+
+const MATH_LANDSCAPE_ID = '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3'
+const MATH_DIFFERENTIATION_GOAL_ID = 'e2b6b4d1-02db-4a27-948e-ecfbdb44dab3'
+const MATH_INTEGRATION_GOAL_ID = '79761314-8dc4-450c-a3a6-4d196a991274'
+
 interface ParsedLandscape {
   file: string
   landscapeId: string
@@ -165,6 +175,21 @@ function parseReference(raw: string, currentLandscape: string) {
     return { landscapeId: landscape || currentLandscape, goalId }
   }
   return { landscapeId: currentLandscape, goalId: raw }
+}
+
+function refMatchesGoal(ref: string, goalId: string): boolean {
+  if (ref === goalId) {
+    return true
+  }
+  if (!ref.includes(':')) {
+    return false
+  }
+  const [, refGoalId] = ref.split(':', 2)
+  return refGoalId === goalId
+}
+
+function refsIncludeGoal(refs: string[], goalId: string): boolean {
+  return refs.some((ref) => refMatchesGoal(ref, goalId))
 }
 
 function validateLandscape(landscape: ParsedLandscape) {
@@ -338,6 +363,58 @@ function validateLandscape(landscape: ParsedLandscape) {
     effectiveEdges.set(goal.id, edges)
   }
   detectCycles(effectiveEdges, 'effective_requires (with inheritance)')
+
+  if (landscape.landscapeId === PHYSICS_LANDSCAPE_ID) {
+    const goal = localMap.get(PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID)
+    if (!goal) {
+      addIssue(
+        'error',
+        landscape.landscapeId,
+        `Missing invariant goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} (Energieerhaltung aus Newtonschen Axiomen (LK))`,
+      )
+      return
+    }
+
+    const requires = goal.requires ?? []
+    if (refsIncludeGoal(requires, PHYSICS_ENERGY_CLUSTER_GOAL_ID)) {
+      addIssue(
+        'error',
+        landscape.landscapeId,
+        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must not require ${PHYSICS_ENERGY_CLUSTER_GOAL_ID} (Energie)`,
+      )
+    }
+    if (!refsIncludeGoal(requires, PHYSICS_NEWTON_INERTIAL_CLUSTER_GOAL_ID)) {
+      addIssue(
+        'error',
+        landscape.landscapeId,
+        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require ${PHYSICS_NEWTON_INERTIAL_CLUSTER_GOAL_ID} (Newtons Axiome und Inertialsysteme)`,
+      )
+    }
+    if (!refsIncludeGoal(requires, PHYSICS_INERTIAL_SYSTEMS_GOAL_ID)) {
+      addIssue(
+        'error',
+        landscape.landscapeId,
+        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require ${PHYSICS_INERTIAL_SYSTEMS_GOAL_ID} (Inertialsysteme und Bezugssysteme)`,
+      )
+    }
+
+    const requiredMathDiff = `${MATH_LANDSCAPE_ID}:${MATH_DIFFERENTIATION_GOAL_ID}`
+    const requiredMathInt = `${MATH_LANDSCAPE_ID}:${MATH_INTEGRATION_GOAL_ID}`
+    if (!requires.includes(requiredMathDiff)) {
+      addIssue(
+        'error',
+        landscape.landscapeId,
+        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require ${requiredMathDiff}`,
+      )
+    }
+    if (!requires.includes(requiredMathInt)) {
+      addIssue(
+        'error',
+        landscape.landscapeId,
+        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require ${requiredMathInt}`,
+      )
+    }
+  }
 }
 
 parsedLandscapes.forEach(validateLandscape)
