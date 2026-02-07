@@ -22,8 +22,8 @@ public class SpaController {
     @RequestMapping(value = {
             "/curricula/**",
             "/learner/**",
+            "/whitepaper",
             "/whitepaper/{path:[^\\.]*}",
-            "/whitepaper/**",
             "/quickstart",
             "/quickstart/**",
             "/start",
