@@ -115,9 +115,33 @@ public class LearnerAiController {
         UnifiedLearnerStateResponse state = learnerService.getLearnerState(skillpilotId);
         String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
         if (requiredAction != null && !"setMastery".equals(requiredAction)) {
-            return org.springframework.http.ResponseEntity
-                    .status(org.springframework.http.HttpStatus.CONFLICT)
-                    .body(state);
+            // Recovery path:
+            // If the conversation already selected a goal but the backend active goal was not
+            // persisted, allow /mastery to auto-lock that goal first.
+            if ("setActiveGoal".equals(requiredAction)) {
+                String selectedGoalId = extractGoalIdFromMasteryRequest(effectiveRequest);
+                if (selectedGoalId != null && !selectedGoalId.isBlank()) {
+                    try {
+                        learnerService.setActiveGoal(skillpilotId, selectedGoalId);
+                        state = learnerService.getLearnerState(skillpilotId);
+                        requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
+                    } catch (org.springframework.web.server.ResponseStatusException e) {
+                        if (org.springframework.http.HttpStatus.CONFLICT.equals(e.getStatusCode())
+                                || org.springframework.http.HttpStatus.BAD_REQUEST.equals(e.getStatusCode())) {
+                            UnifiedLearnerStateResponse conflictState = learnerService.getLearnerState(skillpilotId);
+                            return org.springframework.http.ResponseEntity
+                                    .status(org.springframework.http.HttpStatus.CONFLICT)
+                                    .body(withAbsoluteExamAssetUrls(conflictState));
+                        }
+                        throw e;
+                    }
+                }
+            }
+            if (requiredAction != null && !"setMastery".equals(requiredAction)) {
+                return org.springframework.http.ResponseEntity
+                        .status(org.springframework.http.HttpStatus.CONFLICT)
+                        .body(withAbsoluteExamAssetUrls(state));
+            }
         }
 
         try {
@@ -132,6 +156,22 @@ public class LearnerAiController {
             }
             throw e;
         }
+    }
+
+    private String extractGoalIdFromMasteryRequest(MasteryUpdateRequest request) {
+        if (request == null) {
+            return null;
+        }
+        if (request.goalId() != null && !request.goalId().isBlank()) {
+            return request.goalId().trim();
+        }
+        if (request.mastery() != null && request.mastery().size() == 1) {
+            String key = request.mastery().keySet().iterator().next();
+            if (key != null && !key.isBlank()) {
+                return key.trim();
+            }
+        }
+        return null;
     }
 
     @PostMapping("/{skillpilotId}/curriculum")
