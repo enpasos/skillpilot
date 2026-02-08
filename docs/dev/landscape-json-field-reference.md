@@ -150,6 +150,7 @@ Hessian math landscape as a concrete reference.
 - Used by: topological sorting in `app/src/utils/goalSorter.ts` and prerequisite views in `app/src/hooks/useCompetenceGraph.ts`
 - Status: used
 - Notes: cross-landscape references of the form `<landscapeId>:<goalId>` are normalized in `app/src/hooks/useLandscapes.ts`
+- Related design note: sibling ordering in "Meine Lernziele" is specified in `docs/dev/my-goals-node-ordering.md`
 
 ### examples
 - Type: string[] (task or exercise IDs)

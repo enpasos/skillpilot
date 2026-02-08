@@ -115,7 +115,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
       .filter((g): g is UiGoal => !!g)
 
     // Sort topologically + alphabetical
-    const sorted = sortGoalsTopologically(goals)
+    const sorted = sortGoalsTopologically(goals, { allGoalsById: allGoals })
 
     // Return IDs
     return sorted.map(g => g.id)

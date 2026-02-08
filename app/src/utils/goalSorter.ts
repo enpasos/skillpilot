@@ -1,57 +1,193 @@
 import type { UiGoal } from '../goalTypes'
 
-export function sortGoalsTopologically(goals: UiGoal[]): UiGoal[] {
-    // 1. Initialize working set and result
-    const remaining = new Set(goals)
-    const result: UiGoal[] = []
+export interface GoalSortOptions {
+  allGoalsById?: Map<string, UiGoal>
+  minAbsoluteSupport?: number
+  minRelativeSupport?: number
+  locale?: string
+}
 
-    // Safety break counter
-    let safety = goals.length + 1
+const DEFAULT_MIN_ABSOLUTE_SUPPORT = 2
+const DEFAULT_MIN_RELATIVE_SUPPORT = 0.25
+const DEFAULT_LOCALE = 'de-DE'
 
-    while (remaining.size > 0 && safety > 0) {
-        safety--
-        const available: UiGoal[] = []
+type SoftMatrix = Map<string, Map<string, number>>
 
-        // 2. Find nodes with no remaining dependencies within the set
-        for (const g of remaining) {
-            // Check if any of g's requirements are still in the remaining set
-            const hasUnmetDependency = g.requires.some(reqId => {
-                // We only care if the requirement is one of the *current siblings* we are sorting.
-                // If the requirement is outside this list (e.g. parent, or filtered out), we ignore it for sorting.
-                // BUT: iterating the whole 'remaining' set for every check is O(N^2).
-                // Since N is small (siblings list), this is acceptable.
-                // Optimisation: We check if 'reqId' is in 'remaining'.
-                // However, 'remaining' contains objects. We need to check IDs.
-                // Let's create a Set of IDs for the current 'remaining' to make this fast? 
-                // Or just iterate. Given N < 50 usually, iteration is fine.
-                for (const other of remaining) {
-                    if (other.id === reqId) return true
-                }
-                return false
-            })
+const normalizeRefId = (ref: string) => {
+  if (typeof ref !== 'string') return ref
+  const idx = ref.indexOf(':')
+  if (idx >= 0 && idx < ref.length - 1) return ref.slice(idx + 1)
+  return ref
+}
 
-            if (!hasUnmetDependency) {
-                available.push(g)
-            }
+const getDescendants = (
+  goalId: string,
+  allGoalsById: Map<string, UiGoal>,
+  memo: Map<string, Set<string>>,
+  visiting: Set<string>,
+): Set<string> => {
+  const cached = memo.get(goalId)
+  if (cached) return cached
+  if (visiting.has(goalId)) return new Set<string>()
+
+  visiting.add(goalId)
+  const descendants = new Set<string>()
+  const goal = allGoalsById.get(goalId)
+
+  for (const childRef of goal?.contains ?? []) {
+    const childId = normalizeRefId(childRef)
+    if (!allGoalsById.has(childId)) continue
+    descendants.add(childId)
+    const childDescendants = getDescendants(childId, allGoalsById, memo, visiting)
+    childDescendants.forEach((id) => descendants.add(id))
+  }
+
+  visiting.delete(goalId)
+  memo.set(goalId, descendants)
+  return descendants
+}
+
+const buildSoftMatrix = (
+  goals: UiGoal[],
+  allGoalsById: Map<string, UiGoal>,
+  minAbsoluteSupport: number,
+  minRelativeSupport: number,
+): SoftMatrix => {
+  const matrix: SoftMatrix = new Map()
+  const descendantMemo = new Map<string, Set<string>>()
+  const visiting = new Set<string>()
+  const descendantsByGoal = new Map<string, Set<string>>()
+  const providersByGoal = new Map<string, Set<string>>()
+  const requireBearingDescendantsByGoal = new Map<string, number>()
+
+  goals.forEach((goal) => {
+    const descendants = getDescendants(goal.id, allGoalsById, descendantMemo, visiting)
+    descendantsByGoal.set(goal.id, descendants)
+
+    const providers = new Set(descendants)
+    providers.add(goal.id)
+    providersByGoal.set(goal.id, providers)
+
+    const requireBearingDescendants = Array.from(descendants).reduce((count, descendantId) => {
+      const descendant = allGoalsById.get(descendantId)
+      return descendant && descendant.requires.length > 0 ? count + 1 : count
+    }, 0)
+    requireBearingDescendantsByGoal.set(goal.id, requireBearingDescendants)
+  })
+
+  for (const sourceGoal of goals) {
+    const sourceMap = new Map<string, number>()
+    matrix.set(sourceGoal.id, sourceMap)
+
+    for (const targetGoal of goals) {
+      if (sourceGoal.id === targetGoal.id) continue
+
+      const providers = providersByGoal.get(sourceGoal.id) ?? new Set<string>()
+      const demanders = descendantsByGoal.get(targetGoal.id) ?? new Set<string>()
+
+      let support = 0
+      for (const demanderId of demanders) {
+        const demander = allGoalsById.get(demanderId)
+        if (!demander) continue
+        for (const req of demander.requires) {
+          if (providers.has(normalizeRefId(req))) {
+            support += 1
+          }
         }
+      }
 
-        // 3. If no nodes are available, we have a cycle. Break it by picking the alphabetically first ones.
-        if (available.length === 0) {
-            available.push(...Array.from(remaining))
-            // Logic below will sort them and clear remaining, effectively handling the cycle/rest by name
-        }
+      const withRequires = requireBearingDescendantsByGoal.get(targetGoal.id) ?? 0
+      const ratio = support / Math.max(1, withRequires)
+      const qualifies = support >= minAbsoluteSupport && ratio >= minRelativeSupport
+      sourceMap.set(targetGoal.id, qualifies ? support : 0)
+    }
+  }
 
-        // 4. Sort the available batch alphabetically
-        available.sort((a, b) => a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: 'base' }))
+  return matrix
+}
 
-        // 5. Add to result and remove from remaining
-        for (const g of available) {
-            result.push(g)
-            remaining.delete(g)
-        }
+const getSoftSupport = (matrix: SoftMatrix, fromId: string, toId: string) =>
+  matrix.get(fromId)?.get(toId) ?? 0
 
-        // If we dumped everything due to cycle, remaining is empty, loop terminates.
+export function sortGoalsTopologically(goals: UiGoal[], options: GoalSortOptions = {}): UiGoal[] {
+  if (goals.length <= 1) return goals
+
+  const allGoalsById = options.allGoalsById ?? new Map(goals.map((goal) => [goal.id, goal]))
+  const minAbsoluteSupport = options.minAbsoluteSupport ?? DEFAULT_MIN_ABSOLUTE_SUPPORT
+  const minRelativeSupport = options.minRelativeSupport ?? DEFAULT_MIN_RELATIVE_SUPPORT
+  const locale = options.locale ?? DEFAULT_LOCALE
+
+  const collator = new Intl.Collator(locale, { numeric: true, sensitivity: 'base' })
+  const siblingIds = new Set(goals.map((goal) => goal.id))
+  const goalById = new Map(goals.map((goal) => [goal.id, goal]))
+
+  const adjacency = new Map<string, Set<string>>()
+  const inDegree = new Map<string, number>()
+  goals.forEach((goal) => {
+    adjacency.set(goal.id, new Set())
+    inDegree.set(goal.id, 0)
+  })
+
+  // Hard edges: direct sibling requirements define the topological constraints.
+  goals.forEach((goal) => {
+    goal.requires.forEach((reqRef) => {
+      const reqId = normalizeRefId(reqRef)
+      if (!siblingIds.has(reqId) || reqId === goal.id) return
+      const neighbors = adjacency.get(reqId)
+      if (!neighbors || neighbors.has(goal.id)) return
+      neighbors.add(goal.id)
+      inDegree.set(goal.id, (inDegree.get(goal.id) ?? 0) + 1)
+    })
+  })
+
+  const softMatrix = buildSoftMatrix(goals, allGoalsById, minAbsoluteSupport, minRelativeSupport)
+
+  const scoreAgainstRemaining = (candidateId: string, remaining: Set<string>) => {
+    let score = 0
+    for (const otherId of remaining) {
+      if (otherId === candidateId) continue
+      score += getSoftSupport(softMatrix, candidateId, otherId)
+      score -= getSoftSupport(softMatrix, otherId, candidateId)
+    }
+    return score
+  }
+
+  const compareTitleThenId = (aId: string, bId: string) => {
+    const a = goalById.get(aId)
+    const b = goalById.get(bId)
+    const byTitle = collator.compare(a?.title ?? '', b?.title ?? '')
+    if (byTitle !== 0) return byTitle
+    return aId.localeCompare(bId)
+  }
+
+  const rankCandidates = (candidateIds: string[], remaining: Set<string>) =>
+    [...candidateIds].sort((aId, bId) => {
+      const scoreDiff = scoreAgainstRemaining(bId, remaining) - scoreAgainstRemaining(aId, remaining)
+      if (scoreDiff !== 0) return scoreDiff
+      return compareTitleThenId(aId, bId)
+    })
+
+  const remaining = new Set(goals.map((goal) => goal.id))
+  const result: UiGoal[] = []
+
+  while (remaining.size > 0) {
+    const available = Array.from(remaining).filter((goalId) => (inDegree.get(goalId) ?? 0) === 0)
+    const candidates = available.length > 0 ? available : Array.from(remaining)
+    const nextId = rankCandidates(candidates, remaining)[0]
+
+    const nextGoal = goalById.get(nextId)
+    if (!nextGoal) {
+      remaining.delete(nextId)
+      continue
     }
 
-    return result
+    result.push(nextGoal)
+    remaining.delete(nextId)
+
+    for (const neighborId of adjacency.get(nextId) ?? []) {
+      inDegree.set(neighborId, (inDegree.get(neighborId) ?? 0) - 1)
+    }
+  }
+
+  return result
 }
