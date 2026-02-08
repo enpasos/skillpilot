@@ -13,11 +13,64 @@ const DEFAULT_LOCALE = 'de-DE'
 
 type SoftMatrix = Map<string, Map<string, number>>
 
+const MANUAL_ORDER_TAG_PREFIX = 'order:'
+const MANUAL_ORDER_KEYS = ['treeOrder', 'sortOrder', 'displayOrder', 'order', 'position']
+
 const normalizeRefId = (ref: string) => {
   if (typeof ref !== 'string') return ref
   const idx = ref.indexOf(':')
   if (idx >= 0 && idx < ref.length - 1) return ref.slice(idx + 1)
   return ref
+}
+
+const parseFiniteNumber = (value: unknown): number | undefined => {
+  if (typeof value === 'number' && Number.isFinite(value)) return value
+  if (typeof value === 'string') {
+    const parsed = Number.parseFloat(value)
+    if (Number.isFinite(parsed)) return parsed
+  }
+  return undefined
+}
+
+const getManualOrder = (goal: UiGoal): number | undefined => {
+  const extended = goal.extendedData as Record<string, unknown> | undefined
+  if (extended) {
+    for (const key of MANUAL_ORDER_KEYS) {
+      const parsed = parseFiniteNumber(extended[key])
+      if (parsed !== undefined) return parsed
+    }
+  }
+
+  for (const tag of goal.tags ?? []) {
+    if (!tag.startsWith(MANUAL_ORDER_TAG_PREFIX)) continue
+    const parsed = parseFiniteNumber(tag.slice(MANUAL_ORDER_TAG_PREFIX.length))
+    if (parsed !== undefined) return parsed
+  }
+
+  return undefined
+}
+
+const phaseRankMap: Record<string, number> = {
+  E: 100,
+  Q1: 110,
+  Q2: 120,
+  Q3: 130,
+  Q4: 140,
+  Abitur: 150,
+  GLOBAL: 900,
+}
+
+const getPhaseRank = (phase: string): number | undefined => {
+  const direct = phaseRankMap[phase]
+  if (direct !== undefined) return direct
+
+  const sMatch = /^S(\d{1,2})$/.exec(phase)
+  if (sMatch) return 300 + Number.parseInt(sMatch[1], 10)
+
+  const jMatch = /^J(\d{1,2})$/.exec(phase)
+  if (jMatch) return 500 + Number.parseInt(jMatch[1], 10)
+
+  return undefined
 }
 
 const getDescendants = (
@@ -120,6 +173,8 @@ export function sortGoalsTopologically(goals: UiGoal[], options: GoalSortOptions
   const collator = new Intl.Collator(locale, { numeric: true, sensitivity: 'base' })
   const siblingIds = new Set(goals.map((goal) => goal.id))
   const goalById = new Map(goals.map((goal) => [goal.id, goal]))
+  const manualOrderById = new Map(goals.map((goal) => [goal.id, getManualOrder(goal)]))
+  const phaseRankById = new Map(goals.map((goal) => [goal.id, getPhaseRank(goal.phase)]))
 
   const adjacency = new Map<string, Set<string>>()
   const inDegree = new Map<string, number>()
@@ -160,8 +215,29 @@ export function sortGoalsTopologically(goals: UiGoal[], options: GoalSortOptions
     return aId.localeCompare(bId)
   }
 
+  const compareConfiguredOrder = (aId: string, bId: string) => {
+    const aManual = manualOrderById.get(aId)
+    const bManual = manualOrderById.get(bId)
+    const aHasManual = aManual !== undefined
+    const bHasManual = bManual !== undefined
+    if (aHasManual && bHasManual && aManual !== bManual) return aManual - bManual
+    if (aHasManual !== bHasManual) return aHasManual ? -1 : 1
+
+    const aPhase = phaseRankById.get(aId)
+    const bPhase = phaseRankById.get(bId)
+    const aHasPhase = aPhase !== undefined
+    const bHasPhase = bPhase !== undefined
+    if (aHasPhase && bHasPhase && aPhase !== bPhase) return aPhase - bPhase
+    if (aHasPhase !== bHasPhase) return aHasPhase ? -1 : 1
+
+    return 0
+  }
+
   const rankCandidates = (candidateIds: string[], remaining: Set<string>) =>
     [...candidateIds].sort((aId, bId) => {
+      const configuredOrderDiff = compareConfiguredOrder(aId, bId)
+      if (configuredOrderDiff !== 0) return configuredOrderDiff
+
       const scoreDiff = scoreAgainstRemaining(bId, remaining) - scoreAgainstRemaining(aId, remaining)
       if (scoreDiff !== 0) return scoreDiff
       return compareTitleThenId(aId, bId)

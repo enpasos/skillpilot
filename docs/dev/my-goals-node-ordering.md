@@ -15,6 +15,10 @@ Eine Reihenfolge, die drei Dinge kombiniert:
 2. Subknoten-Abhängigkeiten dürfen die Reihenfolge **unterstützend** verbessern.
 3. Bei Gleichstand bleibt die Reihenfolge alphabetisch und deterministisch.
 
+Zusätzlich gibt es eine explizite Steuerungsmöglichkeit für gewünschte Reihenfolgen (z. B. E, Q1, Q2, Q3, Q4, Abitur):
+- manuell pro Knoten über `extendedData` oder `tags`
+- danach automatisch über Phasen-Reihenfolge
+
 ## Wichtige Invariante: keine Zyklen als Fachfall
 - SkillPilot-Graphen sind als DAG modelliert (`requires`, `contains`, `effective requires`) und werden in CI validiert:
   - `app/scripts/validateGraph.ts`
@@ -43,10 +47,27 @@ Damit werden einzelne Ausreißer nicht überbewertet.
 2. Erzeuge Soft-Signal-Matrix `S` über Subknoten (nur Scores, keine Zwangskanten).
 3. Kahn-Toposort über `R_hard`.
 4. Wenn mehrere Knoten gleichzeitig verfügbar sind (`inDegree = 0`):
-   - berechne `softScore(v) = outgoingSoft(v, remaining) - incomingSoft(v, remaining)`
+   - zuerst manuelle Reihenfolge (falls gesetzt)
+   - dann Phasen-Reihenfolge (`E < Q1 < Q2 < Q3 < Q4 < Abitur`)
+   - danach `softScore(v) = outgoingSoft(v, remaining) - incomingSoft(v, remaining)`
    - wähle höchsten `softScore`
    - bei Gleichstand: alphabetisch nach `title` (`locale: de-DE`, `numeric: true`, `sensitivity: base`)
    - finaler Tie-Break: `id` (stabile Deterministik)
+
+## Manuelle Steuerung
+Unterstützte manuelle Order-Felder (aufsteigend, kleiner = früher):
+- `extendedData.treeOrder`
+- `extendedData.sortOrder`
+- `extendedData.displayOrder`
+- `extendedData.order`
+- `extendedData.position`
+
+Alternative über Tag:
+- `order:<number>` (z. B. `order:10`)
+
+Hinweis:
+- Manuelle Order wirkt nur als Auswahl unter aktuell verfügbaren Knoten der Toposort-Stufe.
+- Harte `requires` werden weiterhin nie verletzt.
 
 ## Warum das ausgewogen ist
 - **Didaktische Korrektheit**: harte Voraussetzungen werden immer respektiert.
