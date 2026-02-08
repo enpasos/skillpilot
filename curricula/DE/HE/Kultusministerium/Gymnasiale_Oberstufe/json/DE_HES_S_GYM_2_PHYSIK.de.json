@@ -1257,6 +1257,8 @@
         "a0eaf01d-1e13-470e-8ee3-ba1d56c9e3c1",
         "34ce5341-b5d8-44e7-af62-955811d284e3",
         "039d3172-6e7a-4ad2-baa6-33b381aacd0a",
+        "506b4816-5225-4532-b292-5dce4c01707b",
+        "792b4e75-223c-4fc8-a338-3343b29c83bd",
         "889eb43a-4aae-4c2d-b999-6c76303587bb"
       ],
       "requires": [
@@ -1347,10 +1349,10 @@
     },
     {
       "id": "039d3172-6e7a-4ad2-baa6-33b381aacd0a",
-      "title": "Kreisbewegung und Zentripetalkraft",
-      "titleEn": "Circular Motion and Centripetal Force",
-      "description": "Die lernende Person kann gleichförmige Kreisbewegungen mithilfe der Zentripetalkraft beschreiben und einfache Situationen wie Kurvenfahrten mit Haftreibung quantitativ analysieren.",
-      "descriptionEn": "The learner can describe uniform circular motions using centripetal force and quantitatively analyze simple situations such as cornering with static friction.",
+      "title": "Zentripetalkraft herleiten",
+      "titleEn": "Derive Centripetal Force",
+      "description": "Die lernende Person kann den Zusammenhang der Zentripetalkraft für gleichförmige Kreisbewegungen herleiten und die Abhängigkeit von Masse, Geschwindigkeit und Radius erklären.",
+      "descriptionEn": "The learner can derive the relation for centripetal force in uniform circular motion and explain its dependence on mass, speed, and radius.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -1359,6 +1361,53 @@
       "contains": [],
       "requires": [
         "34ce5341-b5d8-44e7-af62-955811d284e3"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "506b4816-5225-4532-b292-5dce4c01707b",
+      "title": "Kreisbewegung mit Zentripetalkraft anwenden",
+      "titleEn": "Apply Circular Motion with Centripetal Force",
+      "description": "Die lernende Person kann gleichförmige Kreisbewegungen mithilfe der Zentripetalkraft beschreiben und quantitativ analysieren.",
+      "descriptionEn": "The learner can describe and quantitatively analyze uniform circular motions using centripetal force.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "039d3172-6e7a-4ad2-baa6-33b381aacd0a"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "792b4e75-223c-4fc8-a338-3343b29c83bd",
+      "title": "Kurvenfahrten mit Haftreibung analysieren",
+      "titleEn": "Analyze Cornering with Static Friction",
+      "description": "Die lernende Person kann einfache Situationen wie Kurvenfahrten mit Haftreibung mithilfe der Zentripetalkraft quantitativ analysieren.",
+      "descriptionEn": "The learner can quantitatively analyze simple situations such as cornering with static friction using centripetal force.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "506b4816-5225-4532-b292-5dce4c01707b",
+        "3d235018-9f4f-471f-9b76-ffb7f7b80ee3"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -1381,7 +1430,7 @@
       ],
       "contains": [],
       "requires": [
-        "039d3172-6e7a-4ad2-baa6-33b381aacd0a"
+        "506b4816-5225-4532-b292-5dce4c01707b"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -1745,7 +1794,7 @@
       ],
       "contains": [],
       "requires": [
-        "039d3172-6e7a-4ad2-baa6-33b381aacd0a",
+        "506b4816-5225-4532-b292-5dce4c01707b",
         "06012d22-7495-4b9d-8ea5-bea7c8dc45e5"
       ],
       "dimensionTags": {
@@ -2031,7 +2080,7 @@
       ],
       "contains": [],
       "requires": [
-        "039d3172-6e7a-4ad2-baa6-33b381aacd0a"
+        "506b4816-5225-4532-b292-5dce4c01707b"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
