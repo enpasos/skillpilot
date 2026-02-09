@@ -82,7 +82,7 @@ bash run_ci.sh
     -   `npm run lint`
     -   `npm run build`
 2.  Navigate to `backend` and run:
-    -   `./gradlew check`
+    -   `GRADLE_USER_HOME=backend/.gradle-ci ./gradlew clean check --no-daemon`
 3.  Report success if all steps pass.
 
 **Requirements**:

@@ -32,7 +32,10 @@ echo "Running Backend CI (backend)"
 echo "=========================================="
 cd backend
 chmod +x gradlew
-./gradlew check
+# Run backend check in a CI-like, isolated Gradle home to avoid stale local state.
+# This makes local results closer to GitHub Actions (fresh workspace behavior).
+export GRADLE_USER_HOME="$(pwd)/.gradle-ci"
+./gradlew clean check --no-daemon
 cd ..
 
 echo ""
