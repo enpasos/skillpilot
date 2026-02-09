@@ -1,6 +1,7 @@
 # SkillPilot – Your Personal Learning Navigator
 
 [![CI](https://github.com/enpasos/skillpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/enpasos/skillpilot/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
  
 
 SkillPilot navigates you through complex learning landscapes, modeling curricula as a dependency graph to provide personalized learning paths and track your mastery.
