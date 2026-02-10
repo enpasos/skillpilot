@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlashcardFlipCard } from '../components/srs/FlashcardFlipCard'
 import { LanguageToggle } from '../components/LanguageToggle'
 
@@ -35,6 +35,12 @@ interface DeckSaveResponse {
 }
 
 const DECK_FILE_PATTERN = /_deck([._][a-z]{2})?\.json$/i
+const DONE_STATE_PREFIX = 'flashcard_editor_done'
+const HIDE_DONE_PREFIX = 'flashcard_editor_hide_done'
+
+const deckScopedStorageKey = (prefix: string, deckPath: string): string => {
+  return `${prefix}:${encodeURIComponent(deckPath)}`
+}
 
 const asRecord = (value: unknown): Record<string, unknown> => {
   if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
@@ -184,6 +190,10 @@ export const FlashcardEditorView: React.FC = () => {
   const [dirtyEn, setDirtyEn] = useState(false)
   const [statusMessage, setStatusMessage] = useState<string | null>(null)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [doneCardIds, setDoneCardIds] = useState<Set<string>>(new Set())
+  const [hideDoneCards, setHideDoneCards] = useState(false)
+  const frontTextareaRef = useRef<HTMLTextAreaElement | null>(null)
+  const backTextareaRef = useRef<HTMLTextAreaElement | null>(null)
 
   const hasDirtyChanges = dirtyDe || dirtyEn
 
@@ -226,9 +236,10 @@ export const FlashcardEditorView: React.FC = () => {
 
   const visibleCardIds = useMemo(() => {
     const term = search.trim().toLowerCase()
-    if (!term) return cardIds
-
     return cardIds.filter((cardId) => {
+      if (hideDoneCards && doneCardIds.has(cardId)) return false
+      if (!term) return true
+
       const deCard = deCardById.get(cardId)
       const enCard = enCardById.get(cardId)
       const targetCard = activeLanguage === 'de' ? (deCard ?? enCard) : (enCard ?? deCard)
@@ -246,7 +257,15 @@ export const FlashcardEditorView: React.FC = () => {
 
       return haystack.includes(term)
     })
-  }, [activeLanguage, cardIds, deCardById, enCardById, search])
+  }, [activeLanguage, cardIds, deCardById, doneCardIds, enCardById, hideDoneCards, search])
+
+  const doneVisibleCount = useMemo(() => {
+    let count = 0
+    cardIds.forEach((cardId) => {
+      if (doneCardIds.has(cardId)) count += 1
+    })
+    return count
+  }, [cardIds, doneCardIds])
 
   const pairDiagnostics = useMemo(() => {
     const missingInEn: string[] = []
@@ -271,6 +290,7 @@ export const FlashcardEditorView: React.FC = () => {
   const activeCard = selectedCardId ? (activeCardById.get(selectedCardId) ?? null) : null
   const pairedCard = selectedCardId ? (pairedCardById.get(selectedCardId) ?? null) : null
   const previewCard = activeCard ?? pairedCard
+  const isSelectedCardDone = selectedCardId ? doneCardIds.has(selectedCardId) : false
 
   const confirmDiscardChanges = useCallback(() => {
     if (!hasDirtyChanges) return true
@@ -353,14 +373,74 @@ export const FlashcardEditorView: React.FC = () => {
   }, [loadSelectedDecks, selectedDePath, selectedEnPath])
 
   useEffect(() => {
+    if (!selectedDePath) {
+      setDoneCardIds(new Set())
+      setHideDoneCards(false)
+      return
+    }
+
+    const doneKey = deckScopedStorageKey(DONE_STATE_PREFIX, selectedDePath)
+    const hideKey = deckScopedStorageKey(HIDE_DONE_PREFIX, selectedDePath)
+
+    try {
+      const rawDone = localStorage.getItem(doneKey)
+      const parsedDone = rawDone ? JSON.parse(rawDone) : []
+      if (Array.isArray(parsedDone)) {
+        const normalized = parsedDone.filter((entry): entry is string => typeof entry === 'string')
+        setDoneCardIds(new Set(normalized))
+      } else {
+        setDoneCardIds(new Set())
+      }
+    } catch {
+      setDoneCardIds(new Set())
+    }
+
+    try {
+      const rawHide = localStorage.getItem(hideKey)
+      setHideDoneCards(rawHide === '1')
+    } catch {
+      setHideDoneCards(false)
+    }
+  }, [selectedDePath])
+
+  useEffect(() => {
+    if (!selectedDePath) return
+    const doneKey = deckScopedStorageKey(DONE_STATE_PREFIX, selectedDePath)
+    const serialized = JSON.stringify(Array.from(doneCardIds))
+    localStorage.setItem(doneKey, serialized)
+  }, [doneCardIds, selectedDePath])
+
+  useEffect(() => {
+    if (!selectedDePath) return
+    const hideKey = deckScopedStorageKey(HIDE_DONE_PREFIX, selectedDePath)
+    localStorage.setItem(hideKey, hideDoneCards ? '1' : '0')
+  }, [hideDoneCards, selectedDePath])
+
+  useEffect(() => {
+    if (doneCardIds.size === 0) return
+    const validIds = new Set(cardIds)
+    setDoneCardIds((previous) => {
+      const filtered = new Set<string>()
+      previous.forEach((cardId) => {
+        if (validIds.has(cardId)) filtered.add(cardId)
+      })
+      return filtered.size === previous.size ? previous : filtered
+    })
+  }, [cardIds, doneCardIds.size])
+
+  useEffect(() => {
     if (cardIds.length === 0) {
       setSelectedCardId('')
       return
     }
-    if (!selectedCardId || !cardIds.includes(selectedCardId)) {
-      setSelectedCardId(cardIds[0])
+    if (visibleCardIds.length === 0) {
+      setSelectedCardId('')
+      return
     }
-  }, [cardIds, selectedCardId])
+    if (!selectedCardId || !visibleCardIds.includes(selectedCardId)) {
+      setSelectedCardId(visibleCardIds[0])
+    }
+  }, [cardIds.length, selectedCardId, visibleCardIds])
 
   useEffect(() => {
     if (activeLanguage === 'en' && !selectedEnPath) {
@@ -478,11 +558,67 @@ export const FlashcardEditorView: React.FC = () => {
     [updateActiveDeck],
   )
 
+  const toggleCardDone = useCallback((cardId: string) => {
+    setDoneCardIds((previous) => {
+      const next = new Set(previous)
+      if (next.has(cardId)) {
+        next.delete(cardId)
+      } else {
+        next.add(cardId)
+      }
+      return next
+    })
+  }, [])
+
+  const insertSnippet = useCallback(
+    (field: 'front' | 'back', snippet: string) => {
+      if (!activeCard) return
+
+      const textarea = field === 'front' ? frontTextareaRef.current : backTextareaRef.current
+      const currentValue = activeCard[field]
+
+      if (!textarea) {
+        updateSelectedCard((card) => ({ ...card, [field]: `${currentValue}${snippet}` }))
+        return
+      }
+
+      const start = textarea.selectionStart ?? currentValue.length
+      const end = textarea.selectionEnd ?? currentValue.length
+      const nextValue = `${currentValue.slice(0, start)}${snippet}${currentValue.slice(end)}`
+      const cursor = start + snippet.length
+
+      updateSelectedCard((card) => ({ ...card, [field]: nextValue }))
+
+      requestAnimationFrame(() => {
+        textarea.focus()
+        textarea.setSelectionRange(cursor, cursor)
+      })
+    },
+    [activeCard, updateSelectedCard],
+  )
+
+  const handleEditorShortcut = useCallback(
+    (event: React.KeyboardEvent<HTMLTextAreaElement>, field: 'front' | 'back') => {
+      if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+        event.preventDefault()
+        insertSnippet(field, '\n\n')
+      }
+    },
+    [insertSnippet],
+  )
+
   const handleCardIdChange = useCallback(
     (value: string) => {
       const currentId = selectedCardId
       if (!currentId) return
       updateSelectedCard((card) => ({ ...card, id: value }))
+      setDoneCardIds((previous) => {
+        if (!previous.has(currentId)) return previous
+        const next = new Set(previous)
+        next.delete(currentId)
+        if (value.trim()) next.add(value.trim())
+        return next
+      })
       setSelectedCardId(value)
     },
     [selectedCardId, updateSelectedCard],
@@ -522,6 +658,12 @@ export const FlashcardEditorView: React.FC = () => {
 
     const remainingCards = activeDeck.cards.filter((card) => card.id !== activeCard.id)
     updateActiveDeck((deck) => ({ ...deck, cards: remainingCards }))
+    setDoneCardIds((previous) => {
+      if (!previous.has(activeCard.id)) return previous
+      const next = new Set(previous)
+      next.delete(activeCard.id)
+      return next
+    })
     if (remainingCards.length > 0) {
       setSelectedCardId(remainingCards[0].id)
     } else {
@@ -640,37 +782,64 @@ export const FlashcardEditorView: React.FC = () => {
             <div className="mt-2 text-xs text-text-secondary">
               {visibleCardIds.length} von {cardIds.length} Karten
             </div>
+            <label className="mt-2 flex items-center gap-2 text-xs text-text-secondary cursor-pointer select-none">
+              <input
+                type="checkbox"
+                checked={hideDoneCards}
+                onChange={(event) => setHideDoneCards(event.target.checked)}
+                className="h-4 w-4 accent-sky-600"
+              />
+              Erledigte ausblenden ({doneVisibleCount})
+            </label>
 
             <div className="mt-3 space-y-2 max-h-[65vh] overflow-y-auto pr-1">
               {visibleCardIds.map((cardId) => {
                 const existsInDe = deCardById.has(cardId)
                 const existsInEn = enCardById.has(cardId)
+                const isDone = doneCardIds.has(cardId)
                 const card = activeLanguage === 'de'
                   ? (deCardById.get(cardId) ?? enCardById.get(cardId))
                   : (enCardById.get(cardId) ?? deCardById.get(cardId))
 
                 return (
-                  <button
+                  <div
                     key={cardId}
-                    type="button"
-                    onClick={() => {
-                      setSelectedCardId(cardId)
-                      setIsFlipped(false)
-                    }}
                     className={`w-full text-left rounded-lg border px-3 py-2 transition-colors ${selectedCardId === cardId
                       ? 'border-sky-500 bg-sky-50 dark:bg-sky-950/30'
                       : 'border-border-color hover:bg-slate-100 dark:hover:bg-slate-800'
                       }`}
                   >
-                    <div className="text-xs font-mono text-sky-700 dark:text-sky-300 break-all">{cardId}</div>
-                    <div className="text-xs text-text-secondary truncate">{card?.category || 'Ohne Kategorie'}</div>
+                    <div className="flex items-start gap-2">
+                      <input
+                        type="checkbox"
+                        checked={isDone}
+                        onChange={() => toggleCardDone(cardId)}
+                        aria-label={`Karte ${cardId} als erledigt markieren`}
+                        className="mt-0.5 h-4 w-4 accent-sky-600"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedCardId(cardId)
+                          setIsFlipped(false)
+                        }}
+                        className="min-w-0 flex-1 text-left"
+                      >
+                        <div className={`text-xs font-mono break-all ${isDone ? 'text-emerald-700 dark:text-emerald-300 line-through' : 'text-sky-700 dark:text-sky-300'}`}>
+                          {cardId}
+                        </div>
+                        <div className={`text-xs truncate ${isDone ? 'text-emerald-700/80 dark:text-emerald-300/80' : 'text-text-secondary'}`}>
+                          {card?.category || 'Ohne Kategorie'}
+                        </div>
+                      </button>
+                    </div>
                     {selectedEnPath ? (
                       <div className="mt-1 flex gap-1 text-[10px]">
                         {!existsInDe ? <span className="rounded bg-amber-100 text-amber-800 px-1.5 py-0.5">fehlt DE</span> : null}
                         {!existsInEn ? <span className="rounded bg-amber-100 text-amber-800 px-1.5 py-0.5">fehlt EN</span> : null}
                       </div>
                     ) : null}
-                  </button>
+                  </div>
                 )
               })}
             </div>
@@ -804,6 +973,18 @@ export const FlashcardEditorView: React.FC = () => {
 
                 {activeCard ? (
                   <>
+                    <label className="flex items-center gap-2 text-sm text-text-secondary cursor-pointer select-none">
+                      <input
+                        type="checkbox"
+                        checked={isSelectedCardDone}
+                        onChange={() => {
+                          if (selectedCardId) toggleCardDone(selectedCardId)
+                        }}
+                        className="h-4 w-4 accent-sky-600"
+                      />
+                      Karte als erledigt markieren (Haken erneut klicken zum Entfernen)
+                    </label>
+
                     <div className="space-y-2">
                       <label className="block text-xs font-semibold uppercase tracking-wide text-text-secondary">
                         id
@@ -849,25 +1030,53 @@ export const FlashcardEditorView: React.FC = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="block text-xs font-semibold uppercase tracking-wide text-text-secondary">
-                        front (Markdown/LaTeX)
-                      </label>
+                      <div className="flex items-center justify-between gap-2">
+                        <label className="block text-xs font-semibold uppercase tracking-wide text-text-secondary">
+                          front (Markdown/LaTeX)
+                        </label>
+                        <button
+                          type="button"
+                          onClick={() => insertSnippet('front', '\n\n')}
+                          className="rounded border border-border-color px-2 py-1 text-[11px] font-semibold text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-800"
+                        >
+                          Absatz
+                        </button>
+                      </div>
                       <textarea
+                        ref={frontTextareaRef}
                         value={activeCard.front}
                         onChange={(event) => updateSelectedCard((card) => ({ ...card, front: event.target.value }))}
+                        onKeyDown={(event) => handleEditorShortcut(event, 'front')}
                         className="w-full min-h-[130px] rounded-lg border border-border-color bg-chat-bg px-3 py-2 text-sm font-mono"
                       />
+                      <div className="text-[11px] text-text-secondary">
+                        Enter = neue Zeile, Ctrl/Cmd+Enter = Absatz
+                      </div>
                     </div>
 
                     <div className="space-y-2">
-                      <label className="block text-xs font-semibold uppercase tracking-wide text-text-secondary">
-                        back (Markdown/LaTeX)
-                      </label>
+                      <div className="flex items-center justify-between gap-2">
+                        <label className="block text-xs font-semibold uppercase tracking-wide text-text-secondary">
+                          back (Markdown/LaTeX)
+                        </label>
+                        <button
+                          type="button"
+                          onClick={() => insertSnippet('back', '\n\n')}
+                          className="rounded border border-border-color px-2 py-1 text-[11px] font-semibold text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-800"
+                        >
+                          Absatz
+                        </button>
+                      </div>
                       <textarea
+                        ref={backTextareaRef}
                         value={activeCard.back}
                         onChange={(event) => updateSelectedCard((card) => ({ ...card, back: event.target.value }))}
+                        onKeyDown={(event) => handleEditorShortcut(event, 'back')}
                         className="w-full min-h-[160px] rounded-lg border border-border-color bg-chat-bg px-3 py-2 text-sm font-mono"
                       />
+                      <div className="text-[11px] text-text-secondary">
+                        Enter = neue Zeile, Ctrl/Cmd+Enter = Absatz
+                      </div>
                     </div>
                   </>
                 ) : (
