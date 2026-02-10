@@ -79,7 +79,7 @@ export const LegalWaiverModal: React.FC = () => {
                         disabled={!accepted}
                         className={`w-full py-3 rounded-md font-bold text-base transition-colors ${accepted
                             ? 'bg-sky-600 text-white hover:bg-sky-500'
-                            : 'bg-slate-700/50 text-slate-400 cursor-not-allowed'
+                            : 'bg-slate-300 text-slate-700 dark:bg-slate-700 dark:text-slate-100 cursor-not-allowed'
                             }`}
                     >
                         Bestätigen & Fortfahren

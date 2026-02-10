@@ -13,6 +13,7 @@ import { UsersView } from './views/UsersView'
 import { StatsView } from './views/StatsView'
 import { SuccessView } from './views/SuccessView'
 import { Abi26MatheStartView } from './views/Abi26MatheStartView'
+import { FlashcardEditorView } from './views/FlashcardEditorView'
 
 import { SessionSetup } from './components/SessionSetup'
 import { useAppCore } from './hooks/useAppCore'
@@ -32,6 +33,7 @@ const PUBLIC_PATHS = new Set([
   '/stats',
   '/successes',
   '/start',
+  '/flashcard-editor',
 ])
 const GOAL_VIEWS = new Set(['learner', 'trainer', 'explorer'])
 const MAX_DESCRIPTION_LENGTH = 160
@@ -187,6 +189,11 @@ const App: React.FC = () => {
       } else if (path === '/successes') {
         title = `Successes | ${baseTitle}`
         description = 'Total number of mastered learning goals.'
+      } else if (path === '/flashcard-editor') {
+        title = `Flashcard Editor | ${baseTitle}`
+        description = language === 'en'
+          ? 'Local flashcard deck editor with live front/back preview.'
+          : 'Lokaler Flashcard-Deck-Editor mit Live-Vorschau für Vorder- und Rückseite.'
       } else if (path === '/start' || path.startsWith('/start/')) {
         title = `Abi 2026 Mathe Hessen | ${baseTitle}`
         description = language === 'en'
@@ -293,6 +300,7 @@ const App: React.FC = () => {
         <Route path="/users" element={<UsersView />} />
         <Route path="/successes" element={<SuccessView />} />
         <Route path="/quickstart/:lang?" element={<StoryView />} />
+        <Route path="/flashcard-editor" element={<FlashcardEditorView />} />
         <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
         <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
       </Routes>

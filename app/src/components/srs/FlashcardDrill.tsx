@@ -2,11 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { CheckCircle } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import { calculateReview, INITIAL_DECK_STATE, type ReviewItem } from './srsLogic'
-
-import ReactMarkdown from 'react-markdown'
-import remarkMath from 'remark-math'
-import rehypeKatex from 'rehype-katex'
-import 'katex/dist/katex.min.css'
+import { FlashcardFlipCard } from './FlashcardFlipCard'
 
 interface FlashcardDrillProps {
     dataSourceUrl?: string
@@ -638,61 +634,14 @@ export function FlashcardDrill({
             </div>
 
             {/* Card Area */}
-            <div className="relative w-full aspect-[4/3]" style={{ perspective: '1000px' }}>
-                <div
-                    className="w-full h-full relative cursor-pointer"
-                    onClick={() => setIsFlipped(!isFlipped)}
-                    style={{
-                        transformStyle: 'preserve-3d',
-                        transition: 'transform 0.6s',
-                        transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
-                    }}
-                >
-                    {/* Front */}
-                    <div
-                        className="absolute inset-0 bg-white dark:bg-slate-800 rounded-2xl shadow-xl border-2 border-gray-100 dark:border-slate-700 flex flex-col items-center justify-center p-6 text-center"
-                        style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
-                    >
-                        <span className="text-xs font-bold text-sky-500 uppercase tracking-wider mb-2">{currentCard.category}</span>
-                        <div className="w-full text-center text-lg md:text-xl font-bold text-gray-800 dark:text-gray-100 flex flex-col items-center justify-center">
-                            <ReactMarkdown
-                                remarkPlugins={[remarkMath]}
-                                rehypePlugins={[rehypeKatex]}
-                                components={{
-                                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                                    p: ({ node: _node, ...props }) => <p className="m-0" {...props} />
-                                }}
-                            >
-                                {currentCard.front}
-                            </ReactMarkdown>
-                        </div>
-                        <p className="text-gray-400 text-sm mt-4 italic">{t.tapToFlip}</p>
-                    </div>
-
-                    {/* Back */}
-                    <div
-                        className="absolute inset-0 bg-sky-50 dark:bg-slate-900 rounded-2xl shadow-xl border-2 border-sky-200 dark:border-sky-900 flex flex-col items-center justify-center p-6 text-center"
-                        style={{
-                            transform: 'rotateY(180deg)',
-                            backfaceVisibility: 'hidden',
-                            WebkitBackfaceVisibility: 'hidden'
-                        }}
-                    >
-                        <div className="w-full text-center text-base md:text-lg font-bold text-sky-700 dark:text-sky-300 flex flex-col items-center justify-center">
-                            <ReactMarkdown
-                                remarkPlugins={[remarkMath]}
-                                rehypePlugins={[rehypeKatex]}
-                                components={{
-                                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                                    p: ({ node: _node, ...props }) => <p className="m-0" {...props} />
-                                }}
-                            >
-                                {currentCard.back}
-                            </ReactMarkdown>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <FlashcardFlipCard
+                category={currentCard.category}
+                front={currentCard.front}
+                back={currentCard.back}
+                isFlipped={isFlipped}
+                onFlip={() => setIsFlipped(!isFlipped)}
+                tapToFlipText={t.tapToFlip}
+            />
 
             {/* Controls */}
             <div className="mt-8 grid grid-cols-4 gap-3 w-full">
