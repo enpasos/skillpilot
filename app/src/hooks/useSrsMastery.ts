@@ -42,7 +42,7 @@ export function useSrsMastery(
   const loadDeck = useCallback(async (url: string) => {
     const cache = deckCacheRef.current
     if (!cache.has(url)) {
-      const promise = fetch(url)
+      const promise = fetch(url, { cache: 'no-store' })
         .then((res) => (res.ok ? res.json() : null))
         .then((data) => (data && Array.isArray(data.cards) ? (data as VocabData) : null))
         .catch(() => null)

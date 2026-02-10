@@ -30,7 +30,6 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
-import java.util.concurrent.ConcurrentHashMap;
 import java.io.InputStream;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -55,7 +54,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import com.fasterxml.jackson.core.type.TypeReference;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 @Service
 public class LearnerService {
@@ -65,10 +64,10 @@ public class LearnerService {
     private final MasteryRepository masteryRepository;
     private final PlannedGoalRepository plannedGoalRepository;
     private final LandscapeService landscapeService;
+    private final DeckResourceService deckResourceService;
 
     private final ObjectMapper objectMapper;
     private final ApplicationEventPublisher eventPublisher;
-    private final Map<String, List<SrsCard>> srsDeckCache = new ConcurrentHashMap<>();
 
     private static final Set<String> SRS_FILTER_EXCLUDE = Set.of(
             "structure",
@@ -94,6 +93,7 @@ public class LearnerService {
             MasteryRepository masteryRepository,
             PlannedGoalRepository plannedGoalRepository,
             LandscapeService landscapeService,
+            DeckResourceService deckResourceService,
             ObjectMapper objectMapper,
             ApplicationEventPublisher eventPublisher) {
         this.learnerRepository = learnerRepository;
@@ -101,6 +101,7 @@ public class LearnerService {
         this.masteryRepository = masteryRepository;
         this.plannedGoalRepository = plannedGoalRepository;
         this.landscapeService = landscapeService;
+        this.deckResourceService = deckResourceService;
         this.objectMapper = objectMapper;
         this.eventPublisher = eventPublisher;
     }
@@ -207,56 +208,46 @@ public class LearnerService {
         if (vocabularySource == null || vocabularySource.isBlank()) {
             return Collections.emptyList();
         }
-        return srsDeckCache.computeIfAbsent(vocabularySource, source -> {
-            if (source.startsWith("http://") || source.startsWith("https://")) {
+        Resource resource = deckResourceService.resolveDeckResource(vocabularySource);
+        if (resource == null || !resource.exists()) {
+            return Collections.emptyList();
+        }
+        try (InputStream inputStream = resource.getInputStream()) {
+            Map<String, Object> data = objectMapper.readValue(
+                    inputStream,
+                    new TypeReference<Map<String, Object>>() {
+                    });
+            Object cardsObj = data.get("cards");
+            if (!(cardsObj instanceof List<?> cardsRaw)) {
                 return Collections.emptyList();
             }
-            String normalized = source.startsWith("/") ? source.substring(1) : source;
-            if (!normalized.startsWith("data/")) {
-                normalized = "data/" + normalized;
-            }
-            String resourcePath = "static/" + normalized;
-            ClassPathResource resource = new ClassPathResource(resourcePath);
-            if (!resource.exists()) {
-                return Collections.emptyList();
-            }
-            try (InputStream inputStream = resource.getInputStream()) {
-                Map<String, Object> data = objectMapper.readValue(
-                        inputStream,
-                        new TypeReference<Map<String, Object>>() {
-                        });
-                Object cardsObj = data.get("cards");
-                if (!(cardsObj instanceof List<?> cardsRaw)) {
-                    return Collections.emptyList();
+            List<SrsCard> cards = new ArrayList<>();
+            for (Object raw : cardsRaw) {
+                if (!(raw instanceof Map<?, ?> cardMap)) {
+                    continue;
                 }
-                List<SrsCard> cards = new ArrayList<>();
-                for (Object raw : cardsRaw) {
-                    if (!(raw instanceof Map<?, ?> cardMap)) {
-                        continue;
-                    }
-                    Object idObj = cardMap.get("id");
-                    if (idObj == null) {
-                        continue;
-                    }
-                    String id = String.valueOf(idObj);
-                    Object tagsObj = cardMap.get("tags");
-                    List<String> tags = null;
-                    if (tagsObj instanceof List<?> tagList) {
-                        List<String> collected = new ArrayList<>();
-                        for (Object tag : tagList) {
-                            if (tag != null) {
-                                collected.add(String.valueOf(tag));
-                            }
+                Object idObj = cardMap.get("id");
+                if (idObj == null) {
+                    continue;
+                }
+                String id = String.valueOf(idObj);
+                Object tagsObj = cardMap.get("tags");
+                List<String> tags = null;
+                if (tagsObj instanceof List<?> tagList) {
+                    List<String> collected = new ArrayList<>();
+                    for (Object tag : tagList) {
+                        if (tag != null) {
+                            collected.add(String.valueOf(tag));
                         }
-                        tags = collected;
                     }
-                    cards.add(new SrsCard(id, tags));
+                    tags = collected;
                 }
-                return cards;
-            } catch (Exception e) {
-                return Collections.emptyList();
+                cards.add(new SrsCard(id, tags));
             }
-        });
+            return cards;
+        } catch (Exception e) {
+            return Collections.emptyList();
+        }
     }
 
     private Map<String, Object> loadSrsState(String skillpilotId, String nodeId) {

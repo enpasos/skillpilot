@@ -58,6 +58,7 @@ public class LearnerFrontierInvariantTest {
     private LearnerClientStateRepository learnerClientStateRepository;
     private MasteryRepository masteryRepository;
     private PlannedGoalRepository plannedGoalRepository;
+    private DeckResourceService deckResourceService;
     private ApplicationEventPublisher eventPublisher;
     private Learner learner;
 
@@ -75,6 +76,7 @@ public class LearnerFrontierInvariantTest {
         learnerClientStateRepository = mock(LearnerClientStateRepository.class);
         masteryRepository = mock(MasteryRepository.class);
         plannedGoalRepository = mock(PlannedGoalRepository.class);
+        deckResourceService = mock(DeckResourceService.class);
         eventPublisher = mock(ApplicationEventPublisher.class);
 
         learnerService = new LearnerService(
@@ -83,6 +85,7 @@ public class LearnerFrontierInvariantTest {
                 masteryRepository,
                 plannedGoalRepository,
                 landscapeService,
+                deckResourceService,
                 objectMapper,
                 eventPublisher);
 

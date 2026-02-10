@@ -254,7 +254,7 @@ export function FlashcardDrill({
 
         const loadData = async () => {
             try {
-                const res = await fetch(dataSourceUrl)
+                const res = await fetch(dataSourceUrl, { cache: 'no-store' })
                 if (!res.ok) throw new Error("Failed to load vocab")
                 const data: VocabData = await res.json()
 

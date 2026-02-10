@@ -34,6 +34,7 @@ public class LearnerServiceReproTest {
     private LearnerClientStateRepository learnerClientStateRepository;
     private MasteryRepository masteryRepository;
     private PlannedGoalRepository plannedGoalRepository;
+    private DeckResourceService deckResourceService;
     private ApplicationEventPublisher eventPublisher;
 
     // Promoted to class field
@@ -49,6 +50,7 @@ public class LearnerServiceReproTest {
         learnerClientStateRepository = mock(LearnerClientStateRepository.class);
         masteryRepository = mock(MasteryRepository.class);
         plannedGoalRepository = mock(PlannedGoalRepository.class);
+        deckResourceService = mock(DeckResourceService.class);
         eventPublisher = mock(ApplicationEventPublisher.class);
 
         learnerService = new LearnerService(
@@ -57,6 +59,7 @@ public class LearnerServiceReproTest {
                 masteryRepository,
                 plannedGoalRepository,
                 landscapeService,
+                deckResourceService,
                 new ObjectMapper(),
                 eventPublisher);
 
