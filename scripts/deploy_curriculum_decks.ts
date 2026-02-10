@@ -14,6 +14,7 @@ const TARGET_DIR = path.join(ROOT_DIR, 'app/public/data')
 
 const PHYSICS_DECK_FILES = [
   'hes_physic_flashcards_e_phase_deck.de.json',
+  'hes_physic_flashcards_e_phase_deck.en.json',
   'hes_physic_flashcards_q1_deck.de.json',
   'hes_physic_flashcards_q2_deck.de.json',
   'hes_physic_flashcards_q3_deck.de.json',
