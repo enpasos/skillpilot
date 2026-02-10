@@ -458,8 +458,8 @@
         "phase": "E"
       },
       "examData": {
-        "taskContent": "**Material 1 (Messfahrt auf gerader Strecke):**\n\n| Zeit t (s) | 0.0 | 0.5 | 1.0 | 1.5 | 2.0 |\n|---|---:|---:|---:|---:|---:|\n| Weg s (m) | 0.0 | 0.4 | 1.6 | 3.6 | 6.4 |\n\n**Material 2 (Fallversuch):**\n\n- Abwurfhöhe: h = 20.0 m\n- Erdbeschleunigung: g = 9.81 m/s^2\n- Luftwiderstand wird vernachlässigt.\n\n**Material 3 (Bremsen im Stadtverkehr):**\n\n- Anfangsgeschwindigkeit: v0 = 50 km/h\n- Reaktionszeit: tR = 0.80 s\n- mittlere Bremsverzögerung: aB = 6.5 m/s^2\n- verfügbare Strecke bis Hindernis: 24 m\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1, ob eine gleichförmige oder gleichmäßig beschleunigte Bewegung vorliegt, und berechnen Sie die Beschleunigung. (6 BE)\n2. Bestimmen Sie die Geschwindigkeit bei t = 2.0 s und bei t = 1.2 s. (7 BE)\n3. Berechnen Sie für Material 2 die Fallzeit und die Aufprallgeschwindigkeit. (6 BE)\n4. Prüfen Sie mit Material 3, ob das Fahrzeug vor dem Hindernis anhalten kann. (6 BE)",
-        "solutionContent": "1. Die Wegwerte wachsen quadratisch mit der Zeit (s ~ t^2), also gleichmäßig beschleunigt.\n\nMit s = 0.5 a t^2 folgt bei t = 2.0 s:\n\na = 2 s / t^2 = 2 * 6.4 / 4 = 3.2 m/s^2.\n\n**6 BE**\n\n2. Bei Start aus Ruhe gilt v(t) = a t.\n\nv(2.0 s) = 3.2 * 2.0 = 6.4 m/s.\n\nv(1.2 s) = 3.2 * 1.2 = 3.84 m/s.\n\n**7 BE**\n\n3. Fallzeit:\n\nt = sqrt(2 h / g) = sqrt(40 / 9.81) = 2.02 s.\n\nAufprallgeschwindigkeit:\n\nv = g t = 9.81 * 2.02 = 19.8 m/s.\n\n**6 BE**\n\n4. v0 = 50 km/h = 13.89 m/s.\n\nReaktionsweg: sR = v0 tR = 13.89 * 0.80 = 11.1 m.\n\nBremsweg: sB = v0^2 / (2 aB) = 13.89^2 / (13.0) = 14.8 m.\n\nAnhalteweg: sA = sR + sB = 25.9 m.\n\nDa 25.9 m > 24 m, reicht die Strecke nicht aus.\n\n**6 BE**",
+        "taskContent": "**Material 1 (Messfahrt auf gerader Strecke):**\n\n| Zeit $t$ (s) | 0.0 | 0.5 | 1.0 | 1.5 | 2.0 |\n|---|---:|---:|---:|---:|---:|\n| Weg $s$ (m) | 0.0 | 0.4 | 1.6 | 3.6 | 6.4 |\n\n**Material 2 (Fallversuch):**\n\n- Abwurfhöhe: $h=20.0\\,\\mathrm{m}$\n- Erdbeschleunigung: $g=9.81\\,\\mathrm{m/s^2}$\n- Luftwiderstand wird vernachlässigt.\n\n**Material 3 (Bremsen im Stadtverkehr):**\n\n- Anfangsgeschwindigkeit: $v_0=50\\,\\mathrm{km/h}$\n- Reaktionszeit: $t_R=0.80\\,\\mathrm{s}$\n- mittlere Bremsverzögerung: $a_B=6.5\\,\\mathrm{m/s^2}$\n- verfügbare Strecke bis Hindernis: $24\\,\\mathrm{m}$\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1, ob eine gleichförmige oder gleichmäßig beschleunigte Bewegung vorliegt, und berechnen Sie die Beschleunigung. (6 BE)\n2. Bestimmen Sie die Geschwindigkeit bei $t=2.0\\,\\mathrm{s}$ und bei $t=1.2\\,\\mathrm{s}$. (7 BE)\n3. Berechnen Sie für Material 2 die Fallzeit und die Aufprallgeschwindigkeit. (6 BE)\n4. Prüfen Sie mit Material 3, ob das Fahrzeug vor dem Hindernis anhalten kann. (6 BE)",
+        "solutionContent": "1. Die Wegwerte steigen quadratisch mit der Zeit ($s\\propto t^2$). Damit liegt eine gleichmäßig beschleunigte Bewegung vor.\n\n$$\ns(t)=\\frac12 a t^2\n$$\n\nMit $s(2.0\\,\\mathrm{s})=6.4\\,\\mathrm{m}$ folgt:\n\n$$\na=\\frac{2s}{t^2}=\\frac{2\\cdot 6.4}{(2.0)^2}=3.2\\,\\mathrm{m/s^2}\n$$\n\n**6 BE**\n\n2. Bei Start aus Ruhe gilt $v(t)=a\\,t$.\n\n$$\nv(2.0\\,\\mathrm{s})=3.2\\cdot 2.0=6.4\\,\\mathrm{m/s}\n$$\n\n$$\nv(1.2\\,\\mathrm{s})=3.2\\cdot 1.2=3.84\\,\\mathrm{m/s}\n$$\n\n**7 BE**\n\n3. Für den freien Fall:\n\n$$\nt_F=\\sqrt{\\frac{2h}{g}}=\\sqrt{\\frac{40.0}{9.81}}=2.02\\,\\mathrm{s}\n$$\n\n$$\nv_A=g\\,t_F=9.81\\cdot 2.02=19.8\\,\\mathrm{m/s}\n$$\n\n**6 BE**\n\n4. Umrechnung der Anfangsgeschwindigkeit:\n\n$$\nv_0=50\\,\\mathrm{km/h}=13.89\\,\\mathrm{m/s}\n$$\n\nReaktionsweg:\n\n$$\ns_R=v_0 t_R=13.89\\cdot 0.80=11.1\\,\\mathrm{m}\n$$\n\nBremsweg:\n\n$$\ns_B=\\frac{v_0^2}{2a_B}=\\frac{13.89^2}{2\\cdot 6.5}=14.8\\,\\mathrm{m}\n$$\n\nAnhalteweg:\n\n$$\ns_A=s_R+s_B=11.1+14.8=25.9\\,\\mathrm{m}\n$$\n\nDa $25.9\\,\\mathrm{m}>24\\,\\mathrm{m}$, reicht die Strecke nicht aus.\n\n**6 BE**",
         "scoring": {
           "maxPoints": 25,
           "passingPoints": 15,
@@ -472,7 +472,7 @@
             {
               "id": "s2",
               "points": 7,
-              "description": "Geschwindigkeiten aus dem Modell berechnet"
+              "description": "Geschwindigkeiten aus dem Modell korrekt berechnet"
             },
             {
               "id": "s3",
@@ -482,7 +482,7 @@
             {
               "id": "s4",
               "points": 6,
-              "description": "Anhalteweg berechnet und Sicherheit fachlich beurteilt"
+              "description": "Anhalteweg berechnet und sicherheitsbezogen bewertet"
             }
           ]
         }
@@ -518,8 +518,8 @@
         "phase": "E"
       },
       "examData": {
-        "taskContent": "**Material 1 (Kiste auf schiefer Ebene):**\n\n- Masse: m = 15.0 kg\n- Neigungswinkel: alpha = 18°\n- Haftreibungskoeffizient: muH = 0.30\n- Gleitreibungskoeffizient: muG = 0.22\n\n**Material 2 (Aufzug):**\n\n- Masse der Person: mP = 70 kg\n- Aufwärtsbeschleunigung: a = 1.2 m/s^2\n\n**Material 3 (Zugfahrzeug und Anhänger):**\n\n- Das Zugfahrzeug zieht den Anhänger mit einer Kraft von 1.8 kN nach vorn.\n\n**Aufgaben:**\n\n1. Berechnen Sie die Hangabtriebskraft und die maximale Haftreibung. Entscheiden Sie, ob die Kiste von allein rutscht. (7 BE)\n2. Falls die Kiste rutscht: Berechnen Sie die Beschleunigung entlang der schiefen Ebene. (6 BE)\n3. Berechnen Sie die Kraft, mit der die Person im Aufzug auf die Waage drückt. (6 BE)\n4. Formulieren Sie mit Material 3 das Wechselwirkungsprinzip (3. Newtonsches Axiom) für Fahrzeug und Anhänger. (6 BE)",
-        "solutionContent": "1. Hangabtriebskraft:\n\nFH = m g sin(alpha) = 15.0 * 9.81 * sin(18°) = 45.5 N.\n\nNormalkraft:\n\nFN = m g cos(alpha) = 15.0 * 9.81 * cos(18°) = 139.9 N.\n\nMaximale Haftreibung:\n\nFR,H,max = muH * FN = 0.30 * 139.9 = 42.0 N.\n\nDa FH > FR,H,max, rutscht die Kiste.\n\n**7 BE**\n\n2. Gleitreibung:\n\nFR,G = muG * FN = 0.22 * 139.9 = 30.8 N.\n\nResultierende Kraft hangabwärts:\n\nFres = FH - FR,G = 45.5 - 30.8 = 14.7 N.\n\na = Fres / m = 14.7 / 15.0 = 0.98 m/s^2.\n\n**6 BE**\n\n3. Aufzug nach oben beschleunigt:\n\nN = mP (g + a) = 70 * (9.81 + 1.2) = 770.7 N.\n\nDie Waage zeigt damit etwa 771 N (entspricht ca. 78.6 kg-Anzeige).\n\n**6 BE**\n\n4. Fahrzeug auf Anhänger: F(Fahrzeug->Anhänger) = 1.8 kN nach vorn.\n\nAnhänger auf Fahrzeug: F(Anhänger->Fahrzeug) = 1.8 kN nach hinten.\n\nKräfte sind gleich groß und entgegengesetzt gerichtet, aber wirken auf verschiedene Körper.\n\n**6 BE**",
+        "taskContent": "**Material 1 (Kiste auf schiefer Ebene):**\n\n- Masse: $m=15.0\\,\\mathrm{kg}$\n- Neigungswinkel: $\\alpha=18^\\circ$\n- Haftreibungskoeffizient: $\\mu_H=0.30$\n- Gleitreibungskoeffizient: $\\mu_G=0.22$\n\n**Material 2 (Aufzug):**\n\n- Masse der Person: $m_P=70\\,\\mathrm{kg}$\n- Aufwärtsbeschleunigung: $a=1.2\\,\\mathrm{m/s^2}$\n\n**Material 3 (Zugfahrzeug und Anhänger):**\n\n- Das Zugfahrzeug zieht den Anhänger mit einer Kraft von $1.8\\,\\mathrm{kN}$ nach vorn.\n\n**Aufgaben:**\n\n1. Berechnen Sie die Hangabtriebskraft und die maximale Haftreibung. Entscheiden Sie, ob die Kiste von allein rutscht. (7 BE)\n2. Falls die Kiste rutscht: Berechnen Sie die Beschleunigung entlang der schiefen Ebene. (6 BE)\n3. Berechnen Sie die Kraft, mit der die Person im Aufzug auf die Waage drückt. (6 BE)\n4. Formulieren Sie mit Material 3 das Wechselwirkungsprinzip (3. Newtonsches Axiom) für Fahrzeug und Anhänger. (6 BE)",
+        "solutionContent": "1. Hangabtriebskraft:\n\n$$\nF_H=m g\\sin\\alpha=15.0\\cdot 9.81\\cdot \\sin(18^\\circ)=45.5\\,\\mathrm{N}\n$$\n\nNormalkraft:\n\n$$\nF_N=m g\\cos\\alpha=15.0\\cdot 9.81\\cdot \\cos(18^\\circ)=139.9\\,\\mathrm{N}\n$$\n\nMaximale Haftreibung:\n\n$$\nF_{R,H,\\max}=\\mu_H F_N=0.30\\cdot 139.9=42.0\\,\\mathrm{N}\n$$\n\nDa $F_H>F_{R,H,\\max}$, rutscht die Kiste.\n\n**7 BE**\n\n2. Gleitreibung:\n\n$$\nF_{R,G}=\\mu_G F_N=0.22\\cdot 139.9=30.8\\,\\mathrm{N}\n$$\n\nResultierende Kraft hangabwärts:\n\n$$\nF_\\mathrm{res}=F_H-F_{R,G}=45.5-30.8=14.7\\,\\mathrm{N}\n$$\n\nBeschleunigung:\n\n$$\na=\\frac{F_\\mathrm{res}}{m}=\\frac{14.7}{15.0}=0.98\\,\\mathrm{m/s^2}\n$$\n\n**6 BE**\n\n3. Bei Aufwärtsbeschleunigung gilt für die Normalkraft $N$:\n\n$$\nN=m_P(g+a)=70\\,(9.81+1.2)=770.7\\,\\mathrm{N}\n$$\n\nDie Waage zeigt damit etwa $771\\,\\mathrm{N}$ (entspricht ca. $78.6\\,\\mathrm{kg}$-Anzeige).\n\n**6 BE**\n\n4. Wechselwirkungsprinzip:\n\n$$\n\\vec F_{1}=1.8\\,\\mathrm{kN}\\ \\text{(Fahrzeug auf Anhänger, nach vorn)}\n$$\n\n$$\n\\vec F_{2}=1.8\\,\\mathrm{kN}\\ \\text{(Anhänger auf Fahrzeug, nach hinten)}\n$$\n\nDie Kräfte sind gleich groß, entgegengesetzt gerichtet und greifen an verschiedenen Körpern an.\n\n**6 BE**",
         "scoring": {
           "maxPoints": 25,
           "passingPoints": 15,
@@ -579,8 +579,8 @@
         "phase": "E"
       },
       "examData": {
-        "taskContent": "**Material 1 (Stoß auf Luftkissenbahn):**\n\n- Wagen 1: m1 = 0.60 kg, v1 = 2.5 m/s\n- Wagen 2: m2 = 0.90 kg, v2 = 0\n- Beide Wagen koppeln nach dem Stoß (vollständig inelastisch).\n\n**Material 2 (Federpuffer):**\n\n- Federkonstante: k = 320 N/m\n\n**Material 3 (Crash-Simulation):**\n\n- Fahrzeugmasse: m = 1200 kg\n- Geschwindigkeit vor dem Aufprall: v0 = 50 km/h\n- Variante A: Abbremszeit 0.12 s\n- Variante B: Abbremszeit 0.06 s\n\n**Aufgaben:**\n\n1. Berechnen Sie die gemeinsame Geschwindigkeit direkt nach dem Stoß (Material 1). (6 BE)\n2. Vergleichen Sie die kinetische Energie vor und nach dem Stoß. Bestimmen Sie den Energieverlust. (7 BE)\n3. Die gekoppelte Masse läuft mit der Geschwindigkeit aus Teilaufgabe 1 auf den Federpuffer (Material 2). Berechnen Sie die maximale Federkompression. (6 BE)\n4. Berechnen Sie für Material 3 die mittlere Aufprallkraft in Variante A und B und bewerten Sie die Bedeutung der längeren Abbremszeit. (6 BE)",
-        "solutionContent": "1. Impulserhaltung:\n\nv' = (m1 v1 + m2 v2) / (m1 + m2) = (0.60 * 2.5 + 0) / 1.50 = 1.0 m/s.\n\n**6 BE**\n\n2. Vor dem Stoß:\n\nEkin,vor = 0.5 * 0.60 * 2.5^2 = 1.875 J.\n\nNach dem Stoß:\n\nEkin,nach = 0.5 * 1.50 * 1.0^2 = 0.75 J.\n\nEnergieverlust:\n\nDeltaE = 1.875 - 0.75 = 1.125 J (etwa 60 % Verlust).\n\n**7 BE**\n\n3. 0.5 (m1+m2) v'^2 = 0.5 k x^2.\n\n0.75 = 0.5 * 320 * x^2 => x = sqrt(1.5/320) = 0.068 m.\n\nMaximale Kompression: x = 6.8 cm.\n\n**6 BE**\n\n4. v0 = 13.89 m/s.\n\nMittlere Kraft F = m Delta v / Delta t.\n\nVariante A:\n\nFA = 1200 * 13.89 / 0.12 = 1.39e5 N.\n\nVariante B:\n\nFB = 1200 * 13.89 / 0.06 = 2.78e5 N.\n\nDie halbierte Abbremszeit verdoppelt die mittlere Kraft. Längere Abbremszeit reduziert Belastungen deutlich.\n\n**6 BE**",
+        "taskContent": "**Material 1 (Stoß auf Luftkissenbahn):**\n\n- Wagen 1: $m_1=0.60\\,\\mathrm{kg}$, $v_1=2.5\\,\\mathrm{m/s}$\n- Wagen 2: $m_2=0.90\\,\\mathrm{kg}$, $v_2=0$\n- Beide Wagen koppeln nach dem Stoß (vollständig inelastisch).\n\n**Material 2 (Crash-Simulation):**\n\n- Fahrzeugmasse: $m=1200\\,\\mathrm{kg}$\n- Geschwindigkeit vor dem Aufprall: $v_0=50\\,\\mathrm{km/h}$\n- Variante A: Abbremszeit $\\Delta t_A=0.12\\,\\mathrm{s}$\n- Variante B: Abbremszeit $\\Delta t_B=0.06\\,\\mathrm{s}$\n\n**Material 3 (Rückhaltesystem):**\n\n- Masse einer Person: $m_P=75\\,\\mathrm{kg}$\n- Relativgeschwindigkeit vor dem Abbremsen: $v_P=13.9\\,\\mathrm{m/s}$\n- ohne Airbag/Gurtstraffer: $\\Delta t_S=0.040\\,\\mathrm{s}$\n- mit Airbag/Gurtstraffer: $\\Delta t_A=0.18\\,\\mathrm{s}$\n\n**Aufgaben:**\n\n1. Berechnen Sie die gemeinsame Geschwindigkeit direkt nach dem Stoß (Material 1). (6 BE)\n2. Vergleichen Sie die kinetische Energie vor und nach dem Stoß. Bestimmen Sie den Energieverlust. (7 BE)\n3. Berechnen Sie für Material 2 die mittlere Aufprallkraft in Variante A und B. (6 BE)\n4. Berechnen Sie mit Material 3 die mittlere Kraft auf die Person in beiden Varianten und bewerten Sie den Sicherheitsgewinn. (6 BE)",
+        "solutionContent": "1. Impulserhaltung beim vollständig inelastischen Stoß:\n\n$$\nv' = \\frac{m_1 v_1 + m_2 v_2}{m_1+m_2}\n=\\frac{0.60\\cdot 2.5+0}{1.50}=1.0\\,\\mathrm{m/s}\n$$\n\n**6 BE**\n\n2. Kinetische Energie vor dem Stoß:\n\n$$\nE_{\\mathrm{kin,vor}}=\\frac12 m_1 v_1^2=\\frac12\\cdot 0.60\\cdot 2.5^2=1.875\\,\\mathrm{J}\n$$\n\nKinetische Energie nach dem Stoß:\n\n$$\nE_{\\mathrm{kin,nach}}=\\frac12 (m_1+m_2) v'^2=\\frac12\\cdot 1.50\\cdot 1.0^2=0.75\\,\\mathrm{J}\n$$\n\nEnergieverlust:\n\n$$\n\\Delta E=E_{\\mathrm{kin,vor}}-E_{\\mathrm{kin,nach}}=1.125\\,\\mathrm{J}\n$$\n\nDas entspricht ca. $60\\,\\%$ Verlust.\n\n**7 BE**\n\n3. Umrechnung: $v_0=50\\,\\mathrm{km/h}=13.89\\,\\mathrm{m/s}$.\n\nMit\n\n$$\n\\bar F = \\frac{m\\,\\Delta v}{\\Delta t}\n$$\n\nfolgt:\n\n$$\n\\bar F_A=\\frac{1200\\cdot 13.89}{0.12}=1.39\\cdot 10^5\\,\\mathrm{N}\n$$\n\n$$\n\\bar F_B=\\frac{1200\\cdot 13.89}{0.06}=2.78\\cdot 10^5\\,\\mathrm{N}\n$$\n\n**6 BE**\n\n4. Für die Person gilt analog:\n\n$$\n\\bar F_S=\\frac{75\\cdot 13.9}{0.040}=2.61\\cdot 10^4\\,\\mathrm{N}\n$$\n\n$$\n\\bar F_A=\\frac{75\\cdot 13.9}{0.18}=5.79\\cdot 10^3\\,\\mathrm{N}\n$$\n\nDie mittlere Kraft sinkt um etwa den Faktor $4.5$. Längere Abbremszeit durch Airbag/Gurtstraffer reduziert die Belastung deutlich.\n\n**6 BE**",
         "scoring": {
           "maxPoints": 25,
           "passingPoints": 15,
@@ -588,22 +588,22 @@
             {
               "id": "s1",
               "points": 6,
-              "description": "Stoßgeschwindigkeit mit Impulserhaltung bestimmt"
+              "description": "Stoßgeschwindigkeit mit Impulserhaltung korrekt bestimmt"
             },
             {
               "id": "s2",
               "points": 7,
-              "description": "Energiebilanz vor und nach Stoß korrekt erstellt"
+              "description": "Energiebilanz vor und nach dem Stoß korrekt erstellt"
             },
             {
               "id": "s3",
               "points": 6,
-              "description": "Federkompression korrekt aus Energieansatz berechnet"
+              "description": "Mittlere Kräfte in der Crash-Simulation korrekt berechnet"
             },
             {
               "id": "s4",
               "points": 6,
-              "description": "Kraftvergleich aus Abbremszeiten fachlich korrekt bewertet"
+              "description": "Personenbelastung berechnet und Sicherheitsgewinn fachlich bewertet"
             }
           ]
         }
@@ -641,8 +641,8 @@
         "phase": "E"
       },
       "examData": {
-        "taskContent": "**Material 1 (Kurvenfahrt):**\n\n- Fahrzeugmasse: m = 1200 kg\n- Radius der Kurve: r = 45 m\n- Geschwindigkeit: v = 12.0 m/s\n\n**Material 2 (Satellit in niedriger Erdumlaufbahn):**\n\n- Bahnhöhe: h = 400 km\n- Erdradius: rE = 6.37e6 m\n- Gravitationsparameter der Erde: mu = 3.986e14 m^3/s^2\n\n**Material 3 (Gas im Zylinder):**\n\n- Anfangszustand: p1 = 1.00 bar, V1 = 200 mL, T1 = 293 K\n- Isotherme Kompression auf V2 = 120 mL\n- Danach isochore Erwärmung auf T3 = 330 K\n\n**Aufgaben:**\n\n1. Berechnen Sie die Zentripetalbeschleunigung und die dafür notwendige Zentripetalkraft (Material 1). (7 BE)\n2. Bestimmen Sie den minimalen Reibungskoeffizienten mu_min für die Kurvenfahrt ohne Rutschen (Material 1). (6 BE)\n3. Berechnen Sie die Bahngeschwindigkeit des Satelliten (Material 2). (6 BE)\n4. Bestimmen Sie den Druck p2 nach der isothermen Kompression und den Druck p3 nach der isochoren Erwärmung (Material 3). (6 BE)",
-        "solutionContent": "1. Zentripetalbeschleunigung:\n\naC = v^2 / r = 12.0^2 / 45 = 3.20 m/s^2.\n\nZentripetalkraft:\n\nFC = m aC = 1200 * 3.20 = 3840 N.\n\n**7 BE**\n\n2. Reibung muss die Zentripetalkraft liefern:\n\nmu_min = FC / (m g) = aC / g = 3.20 / 9.81 = 0.326.\n\nAlso mindestens mu_min ~ 0.33.\n\n**6 BE**\n\n3. Radius der Bahn:\n\nr = rE + h = 6.37e6 + 4.00e5 = 6.77e6 m.\n\nBahngeschwindigkeit:\n\nv = sqrt(mu / r) = sqrt(3.986e14 / 6.77e6) = 7.67e3 m/s.\n\n**6 BE**\n\n4. Isotherm gilt p1 V1 = p2 V2:\n\np2 = p1 * V1 / V2 = 1.00 * 200/120 = 1.67 bar.\n\nIsochor gilt p/T = konstant:\n\np3 = p2 * T3 / T2 mit T2 = T1 = 293 K.\n\np3 = 1.67 * 330/293 = 1.88 bar.\n\n**6 BE**",
+        "taskContent": "**Material 1 (Kurvenfahrt):**\n\n- Fahrzeugmasse: $m=1200\\,\\mathrm{kg}$\n- Radius der Kurve: $r=45\\,\\mathrm{m}$\n- Geschwindigkeit: $v=12.0\\,\\mathrm{m/s}$\n\n**Material 2 (Satellit in niedriger Erdumlaufbahn):**\n\n- Bahnhöhe: $h=400\\,\\mathrm{km}$\n- Erdradius: $r_E=6.37\\cdot 10^6\\,\\mathrm{m}$\n- Gravitationsparameter der Erde: $\\mu=3.986\\cdot 10^{14}\\,\\mathrm{m^3/s^2}$\n\n**Material 3 (Gas im Zylinder):**\n\n- Anfangszustand: $p_1=1.00\\,\\mathrm{bar}$, $V_1=200\\,\\mathrm{mL}$, $T_1=293\\,\\mathrm{K}$\n- isotherme Kompression auf $V_2=120\\,\\mathrm{mL}$\n- danach isochore Erwärmung auf $T_3=330\\,\\mathrm{K}$\n\n**Aufgaben:**\n\n1. Berechnen Sie die Zentripetalbeschleunigung und die dafür notwendige Zentripetalkraft (Material 1). (7 BE)\n2. Bestimmen Sie den minimalen Reibungskoeffizienten $\\mu_{\\min}$ für die Kurvenfahrt ohne Rutschen (Material 1). (6 BE)\n3. Berechnen Sie die Bahngeschwindigkeit des Satelliten (Material 2). (6 BE)\n4. Bestimmen Sie den Druck $p_2$ nach der isothermen Kompression und den Druck $p_3$ nach der isochoren Erwärmung (Material 3). (6 BE)",
+        "solutionContent": "1. Zentripetalbeschleunigung:\n\n$$\na_c=\\frac{v^2}{r}=\\frac{12.0^2}{45}=3.20\\,\\mathrm{m/s^2}\n$$\n\nZentripetalkraft:\n\n$$\nF_c=m a_c=1200\\cdot 3.20=3840\\,\\mathrm{N}\n$$\n\n**7 BE**\n\n2. Für ebene Kurvenfahrt muss die Haftreibung $F_c$ liefern:\n\n$$\n\\mu_{\\min}=\\frac{F_c}{m g}=\\frac{a_c}{g}=\\frac{3.20}{9.81}=0.326\n$$\n\nAlso mindestens $\\mu_{\\min}\\approx 0.33$.\n\n**6 BE**\n\n3. Bahnradius:\n\n$$\nr=r_E+h=6.37\\cdot 10^6+4.00\\cdot 10^5=6.77\\cdot 10^6\\,\\mathrm{m}\n$$\n\nKreisbahngeschwindigkeit:\n\n$$\nv=\\sqrt{\\frac{\\mu}{r}}=\\sqrt{\\frac{3.986\\cdot 10^{14}}{6.77\\cdot 10^6}}=7.67\\cdot 10^3\\,\\mathrm{m/s}\n$$\n\n**6 BE**\n\n4. Isotherm gilt $p_1V_1=p_2V_2$:\n\n$$\np_2=p_1\\frac{V_1}{V_2}=1.00\\cdot \\frac{200}{120}=1.67\\,\\mathrm{bar}\n$$\n\nIsochor gilt $\\frac{p}{T}=\\text{konstant}$:\n\n$$\np_3=p_2\\frac{T_3}{T_2}=1.67\\cdot \\frac{330}{293}=1.88\\,\\mathrm{bar}\n$$\n\n**6 BE**",
         "scoring": {
           "maxPoints": 25,
           "passingPoints": 15,
@@ -650,22 +650,22 @@
             {
               "id": "s1",
               "points": 7,
-              "description": "Zentripetalbeschleunigung und Kraft korrekt berechnet"
+              "description": "Zentripetalbeschleunigung und Zentripetalkraft korrekt berechnet"
             },
             {
               "id": "s2",
               "points": 6,
-              "description": "Reibungsbedingung für Kurvenfahrt korrekt bestimmt"
+              "description": "Reibungsbedingung für die Kurvenfahrt korrekt bestimmt"
             },
             {
               "id": "s3",
               "points": 6,
-              "description": "Bahngeschwindigkeit mit Gravitationsmodell korrekt berechnet"
+              "description": "Bahngeschwindigkeit mit dem Gravitationsmodell korrekt berechnet"
             },
             {
               "id": "s4",
               "points": 6,
-              "description": "Druckänderungen in zwei Zustandsänderungen korrekt berechnet"
+              "description": "Druckänderungen in beiden Zustandsänderungen korrekt berechnet"
             }
           ]
         }
@@ -702,8 +702,8 @@
         "phase": "E"
       },
       "examData": {
-        "taskContent": "**Material 1 (v-t-Messreihe eines Testfahrzeugs):**\n\n| Zeit t (s) | 0 | 2 | 4 | 6 | 8 | 10 |\n|---|---:|---:|---:|---:|---:|---:|\n| Geschwindigkeit v (m/s) | 0.0 | 3.2 | 6.4 | 8.0 | 8.0 | 4.0 |\n\n**Material 2 (Abwurf von einer Kante):**\n\n- Austritt horizontal mit der Geschwindigkeit aus der Konstantfahrtphase\n- Kantenhöhe: h = 1.25 m\n- Luftwiderstand wird vernachlässigt.\n\n**Material 3 (Messunsicherheiten):**\n\n- Geschwindigkeitsunsicherheit: Delta v = +/- 0.20 m/s\n- Unsicherheit der Flugzeitbestimmung: Delta t = +/- 0.03 s\n\n**Aufgaben:**\n\n1. Bestimmen Sie für die drei Bewegungsphasen geeignete Beschleunigungen und charakterisieren Sie die Phasen physikalisch. (7 BE)\n2. Bestimmen Sie die in 0 bis 10 s zurückgelegte Gesamtstrecke aus dem v-t-Diagramm. (6 BE)\n3. Berechnen Sie für Material 2 die Wurfweite. (7 BE)\n4. Bestimmen Sie aus Material 3 ein Intervall für die mögliche Wurfweite. (6 BE)\n5. Nennen Sie zwei fachlich begründete Modellgrenzen der Rechnung. (4 BE)",
-        "solutionContent": "1. Phase I (0-4 s): linearer Anstieg 0 -> 6.4 m/s:\n\na1 = Delta v / Delta t = 6.4/4 = 1.6 m/s^2.\n\nPhase II (4-8 s): v = konstant 8.0 m/s, also a2 = 0.\n\nPhase III (8-10 s): 8.0 -> 4.0 m/s:\n\na3 = (4.0 - 8.0)/2 = -2.0 m/s^2.\n\n**7 BE**\n\n2. Strecke = Fläche unter v(t):\n\ns1 = 0.5 * 4 * 6.4 = 12.8 m.\n\ns2 = 4 * 8.0 = 32.0 m.\n\ns3 = (8.0 + 4.0)/2 * 2 = 12.0 m.\n\nsGes = 12.8 + 32.0 + 12.0 = 56.8 m.\n\n**6 BE**\n\n3. Horizontalgeschwindigkeit aus Phase II: vX = 8.0 m/s.\n\nFallzeit:\n\ntF = sqrt(2 h / g) = sqrt(2*1.25/9.81) = 0.505 s.\n\nWurfweite:\n\nx = vX tF = 8.0 * 0.505 = 4.04 m.\n\n**7 BE**\n\n4. Intervallabschätzung:\n\nxMin = (8.0 - 0.20) * (0.505 - 0.03) = 3.71 m.\n\nxMax = (8.0 + 0.20) * (0.505 + 0.03) = 4.39 m.\n\nMögliches Intervall: x in [3.71 m, 4.39 m].\n\n**6 BE**\n\n5. Beispielhafte Modellgrenzen:\n\n- Luftwiderstand und Wind werden vernachlässigt.\n- Der Übergang von Fahr- zu Wurfphase ist idealisiert (keine Rotations- oder Kantenverluste).\n- Messpunkte sind diskret, nicht kontinuierlich.\n\nZwei korrekt begründete Grenzen genügen.\n\n**4 BE**",
+        "taskContent": "**Material 1 ($v$-$t$-Messreihe eines Testfahrzeugs):**\n\n| Zeit $t$ (s) | 0 | 2 | 4 | 6 | 8 | 10 |\n|---|---:|---:|---:|---:|---:|---:|\n| Geschwindigkeit $v$ (m/s) | 0.0 | 3.2 | 6.4 | 8.0 | 8.0 | 4.0 |\n\n**Material 2 (Abwurf von einer Kante):**\n\n- horizontaler Austritt mit der Geschwindigkeit aus der Konstantfahrtphase\n- Kantenhöhe: $h=1.25\\,\\mathrm{m}$\n- Luftwiderstand wird vernachlässigt.\n\n**Material 3 (Messunsicherheiten):**\n\n- Geschwindigkeitsunsicherheit: $\\Delta v=\\pm 0.20\\,\\mathrm{m/s}$\n- Unsicherheit der Flugzeitbestimmung: $\\Delta t=\\pm 0.03\\,\\mathrm{s}$\n\n**Aufgaben:**\n\n1. Bestimmen Sie für die drei Bewegungsphasen geeignete Beschleunigungen und charakterisieren Sie die Phasen physikalisch. (7 BE)\n2. Bestimmen Sie die in $0$ bis $10\\,\\mathrm{s}$ zurückgelegte Gesamtstrecke aus dem $v$-$t$-Diagramm. (6 BE)\n3. Berechnen Sie für Material 2 die Wurfweite. (7 BE)\n4. Bestimmen Sie aus Material 3 ein Intervall für die mögliche Wurfweite. (6 BE)\n5. Nennen Sie zwei fachlich begründete Modellgrenzen der Rechnung. (4 BE)",
+        "solutionContent": "1. Phase I ($0$-$4\\,\\mathrm{s}$):\n\n$$\na_1=\\frac{\\Delta v}{\\Delta t}=\\frac{6.4-0}{4}=1.6\\,\\mathrm{m/s^2}\n$$\n\nPhase II ($4$-$8\\,\\mathrm{s}$): $v=8.0\\,\\mathrm{m/s}$ konstant, also $a_2=0$.\n\nPhase III ($8$-$10\\,\\mathrm{s}$):\n\n$$\na_3=\\frac{4.0-8.0}{2}=-2.0\\,\\mathrm{m/s^2}\n$$\n\n**7 BE**\n\n2. Strecke = Fläche unter dem $v$-$t$-Graphen:\n\n$$\ns_1=\\frac12\\cdot 4\\cdot 6.4=12.8\\,\\mathrm{m}\n$$\n\n$$\ns_2=4\\cdot 8.0=32.0\\,\\mathrm{m}\n$$\n\n$$\ns_3=\\frac{8.0+4.0}{2}\\cdot 2=12.0\\,\\mathrm{m}\n$$\n\n$$\ns_\\mathrm{ges}=12.8+32.0+12.0=56.8\\,\\mathrm{m}\n$$\n\n**6 BE**\n\n3. Aus der Konstantfahrtphase: $v_x=8.0\\,\\mathrm{m/s}$.\n\nFallzeit:\n\n$$\nt_F=\\sqrt{\\frac{2h}{g}}=\\sqrt{\\frac{2\\cdot 1.25}{9.81}}=0.505\\,\\mathrm{s}\n$$\n\nWurfweite:\n\n$$\nx=v_x t_F=8.0\\cdot 0.505=4.04\\,\\mathrm{m}\n$$\n\n**7 BE**\n\n4. Intervallabschätzung:\n\n$$\nx_{\\min}=(8.0-0.20)\\,(0.505-0.03)=3.71\\,\\mathrm{m}\n$$\n\n$$\nx_{\\max}=(8.0+0.20)\\,(0.505+0.03)=4.39\\,\\mathrm{m}\n$$\n\nDamit $x\\in[3.71\\,\\mathrm{m},\\,4.39\\,\\mathrm{m}]$.\n\n**6 BE**\n\n5. Mögliche Modellgrenzen (zwei genügen):\n\n- Luftwiderstand und Wind werden vernachlässigt.\n- Der Übergang von Fahr- zu Wurfphase wird idealisiert (keine Rotations- oder Kantenverluste).\n- Messpunkte sind diskret und nicht kontinuierlich.\n\n**4 BE**",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 18,
@@ -711,17 +711,17 @@
             {
               "id": "s1",
               "points": 7,
-              "description": "Phasenbeschleunigungen korrekt bestimmt und interpretiert"
+              "description": "Phasenbeschleunigungen korrekt bestimmt und physikalisch interpretiert"
             },
             {
               "id": "s2",
               "points": 6,
-              "description": "Gesamtstrecke aus v-t-Diagramm korrekt berechnet"
+              "description": "Gesamtstrecke aus dem v-t-Diagramm korrekt berechnet"
             },
             {
               "id": "s3",
               "points": 7,
-              "description": "Wurfweite aus Mehrphasenmodell korrekt berechnet"
+              "description": "Wurfweite aus dem Mehrphasenmodell korrekt berechnet"
             },
             {
               "id": "s4",
@@ -731,7 +731,7 @@
             {
               "id": "s5",
               "points": 4,
-              "description": "Modellgrenzen reflektiert"
+              "description": "Modellgrenzen fachlich reflektiert"
             }
           ]
         }
@@ -739,18 +739,19 @@
     },
     {
       "id": "80fe6c96-c34c-4ba6-93d9-c6105764b221",
-      "title": "Vorschlag B (LK) - Stoß, Dissipation und Federmodell",
-      "titleEn": "Proposal B (Advanced Course) - Collision, Dissipation, and Spring Model",
-      "description": "E.2 Erhaltungssätze mit erweiterten Modellannahmen, 30 BE.",
-      "descriptionEn": "E.2 conservation laws with extended model assumptions, 30 points.",
+      "title": "Vorschlag B (LK) - Überhöhte Kurve und Grenzgeschwindigkeiten",
+      "titleEn": "Proposal B (Advanced Course) - Banked Curve and Speed Limits",
+      "description": "E.3 vertiefte Modellierung von Kurvenfahrten auf der Rennstrecke, 30 BE.",
+      "descriptionEn": "E.3 advanced modeling of race-track cornering, 30 points.",
       "weight": 1,
       "tags": [
         "LK"
       ],
       "contains": [],
       "requires": [
-        "52c3d2e8-6634-4806-b84b-3709e3c4aef1",
-        "e26447c4-36a3-43ef-b400-ca918754f3b0"
+        "a109d4fe-04fb-5e2d-8b66-ba5acafce7cd",
+        "3d235018-9f4f-471f-9b76-ffb7f7b80ee3",
+        "52c3d2e8-6634-4806-b84b-3709e3c4aef1"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -767,36 +768,36 @@
         "phase": "E"
       },
       "examData": {
-        "taskContent": "**Material 1 (1D-Stoß zweier Wagen):**\n\n- Wagen 1: m1 = 0.40 kg, u1 = 5.0 m/s\n- Wagen 2: m2 = 0.60 kg, u2 = 0\n- Stoßkoeffizient: e = 0.50\n\n**Material 2 (Reibstrecke und Feder):**\n\n- Nach dem Stoß läuft Wagen 2 auf horizontaler Bahn.\n- Reibkoeffizient: mu = 0.08\n- Strecke bis zur Feder: d = 0.35 m\n- Federkonstante: k = 450 N/m\n- Reibung wirkt auch während der Federkompression.\n\n**Material 3 (Sensitivität):**\n\n- mu kann zwischen 0.06 und 0.10 variieren.\n\n**Aufgaben:**\n\n1. Bestimmen Sie die Geschwindigkeiten v1' und v2' direkt nach dem Stoß. (8 BE)\n2. Berechnen Sie den Verlust an kinetischer Energie im Stoßprozess. (6 BE)\n3. Berechnen Sie die maximale Federkompression x unter Berücksichtigung der Reibung. (7 BE)\n4. Bestimmen Sie x für mu = 0.06 und mu = 0.10 und vergleichen Sie die Sensitivität. (5 BE)\n5. Nennen Sie eine Messgröße, deren genauere Bestimmung den Modellfehler am stärksten reduzieren würde, und begründen Sie kurz. (4 BE)",
-        "solutionContent": "1. Impulserhaltung:\n\nm1 u1 + m2 u2 = m1 v1' + m2 v2' -> 2.0 = 0.4 v1' + 0.6 v2'.\n\nStoßkoeffizient:\n\nv2' - v1' = e (u1 - u2) = 2.5.\n\nLoesung:\n\nv1' = 0.50 m/s, v2' = 3.00 m/s.\n\n**8 BE**\n\n2. Kinetische Energie vorher:\n\nEvor = 0.5 * 0.40 * 5.0^2 = 5.0 J.\n\nNachher:\n\nEnach = 0.5 * 0.40 * 0.50^2 + 0.5 * 0.60 * 3.0^2 = 2.75 J.\n\nVerlust:\n\nDeltaE = 5.0 - 2.75 = 2.25 J.\n\n**6 BE**\n\n3. Startenergie von Wagen 2: E0 = 2.70 J.\n\nReibarbeit bis zur Feder:\n\nWR,vor = mu m2 g d = 0.08 * 0.60 * 9.81 * 0.35 = 0.165 J.\n\nVerbleibend an Federkontakt: E1 = 2.535 J.\n\nMit Reibung waehrend Kompression:\n\nE1 = 0.5 k x^2 + mu m2 g x.\n\n2.535 = 225 x^2 + 0.471 x.\n\nx = 0.105 m.\n\n**7 BE**\n\n4. Fuer mu = 0.06 folgt x = 0.106 m.\n\nFuer mu = 0.10 folgt x = 0.104 m.\n\nAenderung nur etwa +/- 1 mm, also geringe Sensitivitaet in diesem Bereich.\n\n**5 BE**\n\n5. Besonders einflussreich ist die Genauigkeit von v2' (bzw. u1/e), da die Anfangsenergie quadratisch von der Geschwindigkeit abhaengt. Kleine Geschwindigkeitsfehler wirken stark auf x.\n\n**4 BE**",
+        "taskContent": "**Material 1 (Autorennstrecke, überhöhte Kurve):**\n\n- Fahrzeugmasse: $m=900\\,\\mathrm{kg}$\n- Kurvenradius: $r=80\\,\\mathrm{m}$\n- Überhöhungswinkel: $\\beta=17^\\circ$\n- Erdbeschleunigung: $g=9.81\\,\\mathrm{m/s^2}$\n\n**Material 2 (Haftreibung):**\n\n- trockene Strecke: $\\mu_{H,\\mathrm{trocken}}=0.30$\n- nasse Strecke: $\\mu_{H,\\mathrm{nass}}=0.10$\n\n**Material 3 (Telemetrie):**\n\n- geplante Kurvengeschwindigkeit: $v_{\\mathrm{plan}}=34\\,\\mathrm{m/s}$\n\n**Aufgaben:**\n\n1. Leiten Sie für den reibungsfreien Fall die Entwurfsgeschwindigkeit $v_0$ her und berechnen Sie sie. (7 BE)\n2. Berechnen Sie für trockene Strecke die zulässigen Grenzgeschwindigkeiten $v_{\\min}$ und $v_{\\max}$. (8 BE)\n3. Berechnen Sie für nasse Strecke $v_{\\min}$ und $v_{\\max}$ und vergleichen Sie den sicheren Geschwindigkeitsbereich mit Teilaufgabe 2. (6 BE)\n4. Bestimmen Sie den erforderlichen Haftreibungskoeffizienten $\\mu_{\\mathrm{erf}}$ für $v_{\\mathrm{plan}}$ und bewerten Sie die physikalische Plausibilität. (5 BE)\n5. Nennen Sie zwei Modellgrenzen und erläutern Sie kurz deren Bedeutung für reale Rennbedingungen. (4 BE)",
+        "solutionContent": "1. Reibungsfrei liefert allein die Normalkraft die Zentripetalkraft:\n\n$$\n\\tan\\beta=\\frac{v_0^2}{rg}\n\\quad\\Rightarrow\\quad\nv_0=\\sqrt{rg\\tan\\beta}\n$$\n\n$$\nv_0=\\sqrt{80\\cdot 9.81\\cdot \\tan(17^\\circ)}=15.5\\,\\mathrm{m/s}\n$$\n\nDas entspricht etwa $55.8\\,\\mathrm{km/h}$.\n\n**7 BE**\n\n2. Mit Haftreibung ergeben sich für eine überhöhte Kurve:\n\n$$\nv_{\\max}=\\sqrt{rg\\,\\frac{\\sin\\beta+\\mu\\cos\\beta}{\\cos\\beta-\\mu\\sin\\beta}}\n$$\n\n$$\nv_{\\min}=\\sqrt{rg\\,\\frac{\\sin\\beta-\\mu\\cos\\beta}{\\cos\\beta+\\mu\\sin\\beta}}\n$$\n\nFür $\\mu=0.30$:\n\n$$\nv_{\\max}=22.9\\,\\mathrm{m/s}\\;(\\approx 82.4\\,\\mathrm{km/h})\n$$\n\n$$\nv_{\\min}=2.0\\,\\mathrm{m/s}\\;(\\approx 7.3\\,\\mathrm{km/h})\n$$\n\n**8 BE**\n\n3. Für $\\mu=0.10$:\n\n$$\nv_{\\max}=18.1\\,\\mathrm{m/s}\\;(\\approx 65.2\\,\\mathrm{km/h})\n$$\n\n$$\nv_{\\min}=12.5\\,\\mathrm{m/s}\\;(\\approx 45.0\\,\\mathrm{km/h})\n$$\n\nDer sichere Bereich wird bei Nässe deutlich enger und nach oben abgesenkt.\n\n**6 BE**\n\n4. Für hohe Geschwindigkeiten (Tendenz nach außen/oben) gilt:\n\n$$\n\\mu_{\\mathrm{erf}}=\\frac{k\\cos\\beta-\\sin\\beta}{\\cos\\beta+k\\sin\\beta},\n\\qquad k=\\frac{v^2}{rg}\n$$\n\nMit $v=v_{\\mathrm{plan}}=34\\,\\mathrm{m/s}$ erhält man:\n\n$$\n\\mu_{\\mathrm{erf}}\\approx 0.80\n$$\n\nDas ist für normale Reifen-Fahrbahn-Kontakte im Schulmodell nicht plausibel; die Geschwindigkeit ist zu hoch.\n\n**5 BE**\n\n5. Mögliche Modellgrenzen (zwei genügen):\n\n- Kein aerodynamischer Abtrieb berücksichtigt.\n- Konstanter Reibungskoeffizient trotz Temperatur, Reifenverschleiß und Nässegradienten.\n- Keine Lastverlagerung (Nick/Roll) im Fahrzeugmodell.\n\nDiese Effekte verändern in der Praxis die tatsächlich fahrbaren Grenzgeschwindigkeiten.\n\n**4 BE**",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 18,
           "steps": [
             {
               "id": "s1",
-              "points": 8,
-              "description": "Stoßgleichungen korrekt aufgestellt und gelöst"
+              "points": 7,
+              "description": "Reibungsfreie Entwurfsgeschwindigkeit korrekt hergeleitet und berechnet"
             },
             {
               "id": "s2",
-              "points": 6,
-              "description": "Energieverlust korrekt bilanziert"
+              "points": 8,
+              "description": "Grenzgeschwindigkeiten für trockene Strecke korrekt bestimmt"
             },
             {
               "id": "s3",
-              "points": 7,
-              "description": "Federkompression mit Reibung korrekt berechnet"
+              "points": 6,
+              "description": "Grenzgeschwindigkeiten für nasse Strecke korrekt bestimmt und verglichen"
             },
             {
               "id": "s4",
               "points": 5,
-              "description": "Sensitivitätsanalyse fachlich korrekt durchgeführt"
+              "description": "Erforderlichen Reibungskoeffizienten berechnet und plausibel bewertet"
             },
             {
               "id": "s5",
               "points": 4,
-              "description": "Dominante Unsicherheitsquelle plausibel begründet"
+              "description": "Modellgrenzen fachlich korrekt reflektiert"
             }
           ]
         }
@@ -833,8 +834,8 @@
         "phase": "E"
       },
       "examData": {
-        "taskContent": "**Material 1 (Erdorbits):**\n\n- Gravitationsparameter Erde: mu = 3.986e14 m^3/s^2\n- Erdradius: rE = 6.37e6 m\n- Orbit 1: h1 = 400 km\n- Orbit 2: h2 = 2000 km\n\n**Aufgaben:**\n\n1. Berechnen Sie die Bahngeschwindigkeiten v1 und v2 in den beiden Kreisbahnen. (7 BE)\n2. Berechnen Sie die Umlaufzeiten T1 und T2. (6 BE)\n3. Berechnen Sie die spezifischen Orbitalenergien epsilon1 und epsilon2 mit epsilon = -mu/(2r) und die notwendige Energiedifferenz Delta epsilon fuer einen Bahnwechsel von Orbit 1 nach Orbit 2. (7 BE)\n4. Bestimmen Sie die Fluchtgeschwindigkeit im Orbit 1 und vergleichen Sie diese mit der dortigen Kreisbahngeschwindigkeit. (6 BE)\n5. Nennen Sie zwei fachlich begruendete Grenzen dieses Modells fuer reale Missionsplanung. (4 BE)",
-        "solutionContent": "1. Radien:\n\nr1 = rE + h1 = 6.77e6 m, r2 = 8.37e6 m.\n\nKreisbahngeschwindigkeit:\n\nv = sqrt(mu/r).\n\nv1 = 7.67e3 m/s, v2 = 6.90e3 m/s.\n\n**7 BE**\n\n2. Umlaufzeit:\n\nT = 2 pi sqrt(r^3/mu).\n\nT1 = 5.54e3 s = 92.4 min.\n\nT2 = 7.62e3 s = 127.0 min.\n\n**6 BE**\n\n3. Spezifische Energien:\n\nepsilon1 = -mu/(2 r1) = -2.94e7 J/kg.\n\nepsilon2 = -mu/(2 r2) = -2.38e7 J/kg.\n\nErforderliche Energieerhoehung:\n\nDelta epsilon = epsilon2 - epsilon1 = +5.63e6 J/kg.\n\n**7 BE**\n\n4. Fluchtgeschwindigkeit in r1:\n\nvesc = sqrt(2 mu/r1) = 1.085e4 m/s.\n\nVergleich zur Kreisbahn:\n\nDelta v = vesc - v1 = 3.18e3 m/s.\n\n**6 BE**\n\n5. Modellgrenzen (Beispiele):\n\n- Keine Atmosphaereneffekte und kein Luftwiderstand.\n- Erde als punktfoermiges, kugelsymmetrisches Zentralfeld modelliert.\n- Stoerungen durch Mond, Sonne und J2-Anteil fehlen.\n\nZwei korrekt begruendete Punkte genuegen.\n\n**4 BE**",
+        "taskContent": "**Material 1 (Erdorbits):**\n\n- Gravitationsparameter der Erde: $\\mu=3.986\\cdot 10^{14}\\,\\mathrm{m^3/s^2}$\n- Erdradius: $r_E=6.37\\cdot 10^6\\,\\mathrm{m}$\n- Orbit 1: $h_1=400\\,\\mathrm{km}$\n- Orbit 2: $h_2=2000\\,\\mathrm{km}$\n\n**Aufgaben:**\n\n1. Berechnen Sie die Bahngeschwindigkeiten $v_1$ und $v_2$ in den beiden Kreisbahnen. (7 BE)\n2. Berechnen Sie die Umlaufzeiten $T_1$ und $T_2$. (6 BE)\n3. Berechnen Sie die spezifischen Orbitalenergien $\\varepsilon_1$ und $\\varepsilon_2$ mit\n$\\varepsilon=-\\frac{\\mu}{2r}$\nund die notwendige Energiedifferenz $\\Delta\\varepsilon$ für einen Bahnwechsel von Orbit 1 nach Orbit 2. (7 BE)\n4. Bestimmen Sie die Fluchtgeschwindigkeit im Orbit 1 und vergleichen Sie diese mit der dortigen Kreisbahngeschwindigkeit. (6 BE)\n5. Nennen Sie zwei fachlich begründete Grenzen dieses Modells für reale Missionsplanung. (4 BE)",
+        "solutionContent": "1. Bahnradien:\n\n$$\nr_1=r_E+h_1=6.77\\cdot 10^6\\,\\mathrm{m},\\qquad\nr_2=r_E+h_2=8.37\\cdot 10^6\\,\\mathrm{m}\n$$\n\nKreisbahngeschwindigkeit:\n\n$$\nv=\\sqrt{\\frac{\\mu}{r}}\n$$\n\n$$\nv_1=7.67\\cdot 10^3\\,\\mathrm{m/s},\\qquad\nv_2=6.90\\cdot 10^3\\,\\mathrm{m/s}\n$$\n\n**7 BE**\n\n2. Umlaufzeit:\n\n$$\nT=2\\pi\\sqrt{\\frac{r^3}{\\mu}}\n$$\n\n$$\nT_1=5.54\\cdot 10^3\\,\\mathrm{s}=92.4\\,\\mathrm{min}\n$$\n\n$$\nT_2=7.62\\cdot 10^3\\,\\mathrm{s}=127.0\\,\\mathrm{min}\n$$\n\n**6 BE**\n\n3. Spezifische Energien:\n\n$$\n\\varepsilon_1=-\\frac{\\mu}{2r_1}=-2.94\\cdot 10^7\\,\\mathrm{J/kg}\n$$\n\n$$\n\\varepsilon_2=-\\frac{\\mu}{2r_2}=-2.38\\cdot 10^7\\,\\mathrm{J/kg}\n$$\n\nErforderliche Erhöhung:\n\n$$\n\\Delta\\varepsilon=\\varepsilon_2-\\varepsilon_1=+5.63\\cdot 10^6\\,\\mathrm{J/kg}\n$$\n\n**7 BE**\n\n4. Fluchtgeschwindigkeit in $r_1$:\n\n$$\nv_\\mathrm{esc}=\\sqrt{\\frac{2\\mu}{r_1}}=1.085\\cdot 10^4\\,\\mathrm{m/s}\n$$\n\nDifferenz zur Kreisbahngeschwindigkeit:\n\n$$\n\\Delta v=v_\\mathrm{esc}-v_1=3.18\\cdot 10^3\\,\\mathrm{m/s}\n$$\n\n**6 BE**\n\n5. Modellgrenzen (zwei genügen):\n\n- Keine Atmosphäreneffekte und kein Luftwiderstand.\n- Erde als kugelsymmetrisches Zentralfeld (Punktmassenmodell).\n- Störungen durch Mond/Sonne sowie Abplattungseffekte (z. B. $J_2$) fehlen.\n\n**4 BE**",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 18,
@@ -900,8 +901,8 @@
         "phase": "E"
       },
       "examData": {
-        "taskContent": "**Material 1 (Vereinfachter Gasprozess):**\n\n- Stoffmenge: n = 0.80 mol\n- Zustand A: pA = 1.20 bar, TA = 300 K\n- A -> B: isochore Erwaermung bis pB = 1.80 bar\n- B -> C: isobare Expansion bei pB bis VC = 22.0 L\n- Molare Waermekapazitaeten: Cv = 20.8 J/(mol K), Cp = 29.1 J/(mol K)\n\n**Material 2 (Schwungrad):**\n\n- Traegheitsmoment: J = 0.32 kg m^2\n- Winkelgeschwindigkeit steigt von 6 rad/s auf 18 rad/s in 3.0 s\n\n**Material 3 (Messwerte eines Zyklus):**\n\n- Zugefuehrte Waerme pro Zyklus: Qin,meas = 6.2 kJ\n- Nutzarbeit an der Welle pro Zyklus: Wshaft = 0.82 kJ\n\n**Aufgaben:**\n\n1. Berechnen Sie das Volumen VA und die Temperatur TB. (6 BE)\n2. Berechnen Sie die Temperatur TC, die Expansionsarbeit WBC und die zugefuehrte Waerme QAB + QBC des idealisierten Prozesses. (8 BE)\n3. Berechnen Sie die Aenderung der Rotationsenergie und das mittlere Beschleunigungsmoment des Schwungrads. (6 BE)\n4. Berechnen Sie den gemessenen Wirkungsgrad eta = Wshaft/Qin,meas. Vergleichen Sie ihn mit dem Carnot-Grenzwert fuer Tmin = 300 K und Tmax = TC. (7 BE)\n5. Nennen und begruenden Sie zwei Massnahmen zur Verbesserung des Gesamtwirkungsgrads im realen Aufbau. (3 BE)",
-        "solutionContent": "1. Aus pV = nRT:\n\nVA = n R TA / pA = 0.80 * 8.314 * 300 / 1.20e5 = 0.0166 m^3 = 16.6 L.\n\nIsochor A -> B: p/T = konstant.\n\nTB = TA * pB/pA = 300 * 1.80/1.20 = 450 K.\n\n**6 BE**\n\n2. Zustand C:\n\nTC = pB VC / (nR) = 1.80e5 * 0.0220 / (0.80 * 8.314) = 5.96e2 K = 596 K.\n\nArbeit B -> C (isobar):\n\nWBC = pB (VC - VB) = 1.80e5 * (0.0220 - 0.0166) = 9.67e2 J.\n\nWaermezufuhr:\n\nQAB = n Cv (TB - TA) = 0.80 * 20.8 * (450-300) = 2.50 kJ.\n\nQBC = n Cp (TC - TB) = 0.80 * 29.1 * (596-450) = 3.39 kJ.\n\nQAB + QBC = 5.89 kJ.\n\n**8 BE**\n\n3. Rotationsenergie:\n\nDelta Erot = 0.5 J (omega2^2 - omega1^2)\n= 0.5 * 0.32 * (18^2 - 6^2)\n= 46.1 J.\n\nMittlere Winkelbeschleunigung:\n\nalpha = (18 - 6)/3.0 = 4.0 rad/s^2.\n\nMittleres Moment:\n\ntau = J alpha = 0.32 * 4.0 = 1.28 N m.\n\n**6 BE**\n\n4. Gemessener Wirkungsgrad:\n\neta = Wshaft / Qin,meas = 0.82/6.2 = 0.132 = 13.2 %.\n\nCarnot-Grenzwert:\n\netaC = 1 - Tmin/Tmax = 1 - 300/596 = 0.497 = 49.7 %.\n\nDer reale Wirkungsgrad liegt deutlich unter dem theoretischen Grenzwert.\n\n**7 BE**\n\n5. Moegliche Massnahmen (zwei genuegen):\n\n- Reibungsverluste im mechanischen Teil reduzieren (Lager, Ausrichtung, Schmierung).\n- Thermische Verluste senken (bessere Isolation, geringere Leckagen).\n- Prozessfuehrung verbessern (naeher an reversible Expansion/Kompression).\n\n**3 BE**",
+        "taskContent": "**Material 1 (Vereinfachter Gasprozess):**\n\n- Stoffmenge: $n=0.80\\,\\mathrm{mol}$\n- Zustand A: $p_A=1.20\\,\\mathrm{bar}$, $T_A=300\\,\\mathrm{K}$\n- $A\\to B$: isochore Erwärmung bis $p_B=1.80\\,\\mathrm{bar}$\n- $B\\to C$: isobare Expansion bei $p_B$ bis $V_C=22.0\\,\\mathrm{L}$\n- molare Wärmekapazitäten: $C_V=20.8\\,\\mathrm{J/(mol\\,K)}$, $C_P=29.1\\,\\mathrm{J/(mol\\,K)}$\n\n**Material 2 (Schwungrad):**\n\n- Trägheitsmoment: $J=0.32\\,\\mathrm{kg\\,m^2}$\n- Winkelgeschwindigkeit steigt von $6\\,\\mathrm{rad/s}$ auf $18\\,\\mathrm{rad/s}$ in $3.0\\,\\mathrm{s}$\n\n**Material 3 (Messwerte eines Zyklus):**\n\n- zugeführte Wärme pro Zyklus: $Q_{\\mathrm{in,meas}}=6.2\\,\\mathrm{kJ}$\n- Nutzarbeit an der Welle pro Zyklus: $W_{\\mathrm{shaft}}=0.82\\,\\mathrm{kJ}$\n\n**Aufgaben:**\n\n1. Berechnen Sie das Volumen $V_A$ und die Temperatur $T_B$. (6 BE)\n2. Berechnen Sie die Temperatur $T_C$, die Expansionsarbeit $W_{BC}$ und die zugeführte Wärme $Q_{AB}+Q_{BC}$ des idealisierten Prozesses. (8 BE)\n3. Berechnen Sie die Änderung der Rotationsenergie und das mittlere Beschleunigungsmoment des Schwungrads. (6 BE)\n4. Berechnen Sie den gemessenen Wirkungsgrad $\\eta=\\frac{W_{\\mathrm{shaft}}}{Q_{\\mathrm{in,meas}}}$.\nVergleichen Sie ihn mit dem Carnot-Grenzwert für $T_{\\min}=300\\,\\mathrm{K}$ und $T_{\\max}=T_C$. (7 BE)\n5. Nennen und begründen Sie zwei Maßnahmen zur Verbesserung des Gesamtwirkungsgrads im realen Aufbau. (3 BE)",
+        "solutionContent": "1. Mit dem idealen Gasgesetz $pV=nRT$:\n\n$$\nV_A=\\frac{nRT_A}{p_A}=\\frac{0.80\\cdot 8.314\\cdot 300}{1.20\\cdot 10^5}\n=0.0166\\,\\mathrm{m^3}=16.6\\,\\mathrm{L}\n$$\n\nIsochor gilt $\\frac{p}{T}=\\text{konstant}$:\n\n$$\nT_B=T_A\\frac{p_B}{p_A}=300\\cdot \\frac{1.80}{1.20}=450\\,\\mathrm{K}\n$$\n\n**6 BE**\n\n2. Zustand C:\n\n$$\nT_C=\\frac{p_BV_C}{nR}=\\frac{1.80\\cdot 10^5\\cdot 0.0220}{0.80\\cdot 8.314}\n=596\\,\\mathrm{K}\n$$\n\nArbeit bei isobarer Expansion:\n\n$$\nW_{BC}=p_B(V_C-V_B)=1.80\\cdot 10^5\\,(0.0220-0.0166)=9.67\\cdot 10^2\\,\\mathrm{J}\n$$\n\nWärmezufuhr:\n\n$$\nQ_{AB}=nC_V(T_B-T_A)=0.80\\cdot 20.8\\cdot (450-300)=2.50\\,\\mathrm{kJ}\n$$\n\n$$\nQ_{BC}=nC_P(T_C-T_B)=0.80\\cdot 29.1\\cdot (596-450)=3.39\\,\\mathrm{kJ}\n$$\n\n$$\nQ_{AB}+Q_{BC}=5.89\\,\\mathrm{kJ}\n$$\n\n**8 BE**\n\n3. Änderung der Rotationsenergie:\n\n$$\n\\Delta E_\\mathrm{rot}=\\frac12 J(\\omega_2^2-\\omega_1^2)\n=\\frac12\\cdot 0.32\\,(18^2-6^2)=46.1\\,\\mathrm{J}\n$$\n\nMittlere Winkelbeschleunigung:\n\n$$\n\\alpha=\\frac{18-6}{3.0}=4.0\\,\\mathrm{rad/s^2}\n$$\n\nMittleres Moment:\n\n$$\n\\tau=J\\alpha=0.32\\cdot 4.0=1.28\\,\\mathrm{N\\,m}\n$$\n\n**6 BE**\n\n4. Gemessener Wirkungsgrad:\n\n$$\n\\eta=\\frac{W_{\\mathrm{shaft}}}{Q_{\\mathrm{in,meas}}}=\\frac{0.82}{6.2}=0.132=13.2\\,\\%\n$$\n\nCarnot-Grenzwert:\n\n$$\n\\eta_C=1-\\frac{T_{\\min}}{T_{\\max}}=1-\\frac{300}{596}=0.497=49.7\\,\\%\n$$\n\nDer reale Wirkungsgrad liegt deutlich unter dem theoretischen Grenzwert.\n\n**7 BE**\n\n5. Mögliche Maßnahmen (zwei genügen):\n\n- Reibungsverluste im mechanischen Teil reduzieren (Lager, Ausrichtung, Schmierung).\n- Thermische Verluste senken (bessere Isolation, geringere Leckagen).\n- Prozessführung verbessern (näher an reversible Zustandsänderungen).\n\n**3 BE**",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 18,
