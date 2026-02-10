@@ -15,9 +15,10 @@ Wichtig:
 
 - Hauptknoten Mechanik: `25bd8476-0c87-4777-b9f5-0bba9ad1b06e`
 - Uebungsknoten: `56df0c93-e489-4534-9063-a98c6ff2411c`
-- GK-Sammelknoten: `f02dcb66-48ca-4c48-995e-04fc626158b5`
-- LK-Sammelknoten: `c611dca5-a45e-4b6a-aca2-c8f652f95534`
-- Aktuelle Vorschlaege: GK A-D (`835...`, `57e...`, `cbd...`, `a0b...`), LK A-D (`73c...`, `80f...`, `6df...`, `ab0...`)
+- Direkte Unterknoten unter dem Uebungsknoten (ohne GK/LK-Zwischenebene):
+  - GK: `835...`, `57e...`, `cbd...`, `a0b...`
+  - LK: `73c...`, `80f...`, `6df...`, `ab0...`
+- Titelkonvention: keine Praefixe wie `Vorschlag A (LK) -`, stattdessen direkt der Themenname.
 
 ## 3) Harte Scope-Regeln (fachlich)
 
@@ -60,6 +61,7 @@ Nicht zulaessig:
 
 - Aktuelle Klausurknoten inhaltlich ueberarbeiten (nicht nur minimal patchen).
 - Aufgaben sollen materialgebunden, selbsterklaerend und selbstaendig bearbeitbar sein.
+- Story-Regel: Eine Aufgabe = eine Gesamtstory. Alle Materialien und Teilaufgaben muessen eindeutig zum selben Szenario gehoeren.
 - Keine Copy/Paste-Strukturen aus Abi-Referenzen.
 
 ### Schritt 4: Musterloesung + Bewertung
@@ -80,6 +82,7 @@ Nicht zulaessig:
 ### Schritt 6: JSON-Integration
 
 - Vorzugsweise bestehende Vorschlags-IDs beibehalten und Inhalte aktualisieren.
+- Strukturvorgabe: Nur ein Clusterknoten `Uebungen E-Phase Mechanik`; GK/LK-Sammelknoten entfallen.
 - `requires` je Vorschlag gegen Scope pruefen (nur zulaessige E-Phase-Mechanik-Goals referenzieren).
 - Nur dann neue IDs anlegen, wenn Struktur fachlich zwingend geaendert werden muss.
 
@@ -97,7 +100,10 @@ Nicht zulaessig:
 Ein PR ist fuer diesen Abschnitt nur dann fertig, wenn alle Punkte erfuellt sind:
 
 - [ ] Uebungsknoten unter `Einführungsphase Mechanik` ist fachlich strikt innerhalb der E-Phase-Mechanik-Skills.
+- [ ] Keine GK/LK-Zwischenebene im Baum unter dem Uebungsknoten; die 8 Aufgaben haengen direkt darunter.
 - [ ] Alle 8 Vorschlaege (GK A-D, LK A-D) sind fachlich sauber und abiturorientiert.
+- [ ] Aufgabentitel sind themenorientiert benannt (ohne `Vorschlag ...`-Praefix).
+- [ ] Story-Regel eingehalten: pro Aufgabe genau eine Gesamtstory, keine unverbundenen Szenarien.
 - [ ] Kein unzulaessiges Thema (insb. keine Federaufgaben) in diesem Abschnitt.
 - [ ] Alle Formeln in LaTeX, keine ASCII-Formelersatzsyntax.
 - [ ] Deutsche Rechtschreibung im Fliesstext mit Umlauten und konsistenter Fachsprache.
