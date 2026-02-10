@@ -3,9 +3,10 @@
 # Bricht das Skript ab, wenn ein Befehl fehlschlägt (Wichtig für Sicherheit!)
 set -e
 
-# WICHTIG: Der erste Slash / macht den Pfad absolut
-# Passen Sie diesen Pfad gegebenenfalls an Ihre Umgebung an
-cd /home/enpasos/skillpilot
+# Robust: always deploy from the repository that contains this script.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+cd "${PROJECT_ROOT}"
 
 echo "Hole Updates..."
 git pull
