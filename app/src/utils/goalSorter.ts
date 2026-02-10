@@ -15,6 +15,16 @@ type SoftMatrix = Map<string, Map<string, number>>
 
 const MANUAL_ORDER_TAG_PREFIX = 'order:'
 const MANUAL_ORDER_KEYS = ['treeOrder', 'sortOrder', 'displayOrder', 'order', 'position']
+const WHY_TITLE_PREFIXES = ['warum', 'why']
+const FLASHCARD_TAG_PREFIX = 'srs-deck:'
+const FLASHCARD_TAG = 'memorization'
+const FLASHCARD_TITLE_TOKENS = ['lernkarten', 'flashcards']
+const EXERCISE_TITLE_TOKENS = ['übungen', 'uebungen', 'abi-training', 'vorschlag', 'klausur']
+
+const LEARNING_FLOW_BUCKET_WHY = 0
+const LEARNING_FLOW_BUCKET_TUTORIAL = 1
+const LEARNING_FLOW_BUCKET_FLASHCARD = 2
+const LEARNING_FLOW_BUCKET_EXERCISE = 3
 
 const normalizeRefId = (ref: string) => {
   if (typeof ref !== 'string') return ref
@@ -30,6 +40,41 @@ const parseFiniteNumber = (value: unknown): number | undefined => {
     if (Number.isFinite(parsed)) return parsed
   }
   return undefined
+}
+
+const normalizeText = (value: string): string =>
+  value.normalize('NFKC').toLocaleLowerCase(DEFAULT_LOCALE)
+
+const hasAnyToken = (value: string, tokens: string[]) => tokens.some((token) => value.includes(token))
+
+const isWhyIntroGoal = (goal: UiGoal) => {
+  const title = normalizeText(goal.title ?? '').trimStart()
+  return WHY_TITLE_PREFIXES.some((prefix) => title.startsWith(prefix))
+}
+
+const isFlashcardGoal = (goal: UiGoal) => {
+  if (goal.nodeKind === 'memory') return true
+
+  const tags = goal.tags ?? []
+  if (tags.some((tag) => tag === FLASHCARD_TAG || tag.startsWith(FLASHCARD_TAG_PREFIX))) return true
+
+  const title = normalizeText(goal.title ?? '')
+  return hasAnyToken(title, FLASHCARD_TITLE_TOKENS)
+}
+
+const isExerciseGoal = (goal: UiGoal) => {
+  if (goal.nodeKind === 'exam') return true
+  if (goal.examData) return true
+
+  const title = normalizeText(goal.title ?? '')
+  return hasAnyToken(title, EXERCISE_TITLE_TOKENS)
+}
+
+const getLearningFlowBucket = (goal: UiGoal): number => {
+  if (isWhyIntroGoal(goal)) return LEARNING_FLOW_BUCKET_WHY
+  if (isFlashcardGoal(goal)) return LEARNING_FLOW_BUCKET_FLASHCARD
+  if (isExerciseGoal(goal)) return LEARNING_FLOW_BUCKET_EXERCISE
+  return LEARNING_FLOW_BUCKET_TUTORIAL
 }
 
 const getManualOrder = (goal: UiGoal): number | undefined => {
@@ -174,6 +219,7 @@ export function sortGoalsTopologically(goals: UiGoal[], options: GoalSortOptions
   const siblingIds = new Set(goals.map((goal) => goal.id))
   const goalById = new Map(goals.map((goal) => [goal.id, goal]))
   const manualOrderById = new Map(goals.map((goal) => [goal.id, getManualOrder(goal)]))
+  const learningFlowBucketById = new Map(goals.map((goal) => [goal.id, getLearningFlowBucket(goal)]))
   const phaseRankById = new Map(goals.map((goal) => [goal.id, getPhaseRank(goal.phase)]))
 
   const adjacency = new Map<string, Set<string>>()
@@ -222,6 +268,10 @@ export function sortGoalsTopologically(goals: UiGoal[], options: GoalSortOptions
     const bHasManual = bManual !== undefined
     if (aHasManual && bHasManual && aManual !== bManual) return aManual - bManual
     if (aHasManual !== bHasManual) return aHasManual ? -1 : 1
+
+    const aLearningFlow = learningFlowBucketById.get(aId) ?? LEARNING_FLOW_BUCKET_TUTORIAL
+    const bLearningFlow = learningFlowBucketById.get(bId) ?? LEARNING_FLOW_BUCKET_TUTORIAL
+    if (aLearningFlow !== bLearningFlow) return aLearningFlow - bLearningFlow
 
     const aPhase = phaseRankById.get(aId)
     const bPhase = phaseRankById.get(bId)

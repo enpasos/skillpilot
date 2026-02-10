@@ -15,6 +15,12 @@ Eine Reihenfolge, die drei Dinge kombiniert:
 2. Subknoten-Abhängigkeiten dürfen die Reihenfolge **unterstützend** verbessern.
 3. Bei Gleichstand bleibt die Reihenfolge alphabetisch und deterministisch.
 
+Zusätzliche didaktische Leitlinie innerhalb einer Topo-Stufe (unter demselben Cluster):
+1. ganz zuerst `Warum ...?`-Einstiegsknoten,
+2. danach normale Tutorial-/Themenknoten,
+3. danach Flashcard-/Memorisierungsknoten,
+4. zuletzt Übungs-/Prüfungsknoten.
+
 Zusätzlich gibt es eine explizite Steuerungsmöglichkeit für gewünschte Reihenfolgen (z. B. E, Q1, Q2, Q3, Q4, Abitur):
 - manuell pro Knoten über `extendedData` oder `tags`
 - danach automatisch über Phasen-Reihenfolge
@@ -48,6 +54,11 @@ Damit werden einzelne Ausreißer nicht überbewertet.
 3. Kahn-Toposort über `R_hard`.
 4. Wenn mehrere Knoten gleichzeitig verfügbar sind (`inDegree = 0`):
    - zuerst manuelle Reihenfolge (falls gesetzt)
+   - dann Lernfluss-Bucket:
+     - `why` (Titel beginnt mit „Warum“/„Why“)
+     - `tutorial` (Standard)
+     - `flashcards` (`memorization`, `srs-deck:*`, Titel wie „Lernkarten/Flashcards“)
+     - `exercises` (`examData`/`nodeKind=exam`, Titel wie „Übungen/Abi-Training/Vorschlag/Klausur“)
    - dann Phasen-Reihenfolge (`E < Q1 < Q2 < Q3 < Q4 < Abitur`)
    - danach `softScore(v) = outgoingSoft(v, remaining) - incomingSoft(v, remaining)`
    - wähle höchsten `softScore`
@@ -68,6 +79,7 @@ Alternative über Tag:
 Hinweis:
 - Manuelle Order wirkt nur als Auswahl unter aktuell verfügbaren Knoten der Toposort-Stufe.
 - Harte `requires` werden weiterhin nie verletzt.
+- Lernfluss-Buckets wirken ebenfalls nur innerhalb einer verfügbaren Toposort-Stufe.
 
 ## Warum das ausgewogen ist
 - **Didaktische Korrektheit**: harte Voraussetzungen werden immer respektiert.
@@ -94,7 +106,8 @@ Hinweis: Für Subknoten-Signale braucht der Sorter Zugriff auf `allGoals`, nicht
 
 ## Akzeptanzkriterien
 1. Wenn `B` direkt `A` braucht (unter Geschwistern), steht `A` vor `B`.
-2. Wenn keine harten oder weichen Signale vorliegen, gilt reine Alphabet-Sortierung.
-3. Weiche Signale dürfen nur innerhalb gleich verfügbarer Knoten entscheiden.
-4. Ergebnis ist bei gleicher Eingabe immer identisch.
-5. Das Verhalten bleibt kompatibel mit den DAG-Validierungsregeln in CI.
+2. Wenn keine harten/weichen Signale und keine Lernfluss-Unterschiede vorliegen, gilt reine Alphabet-Sortierung.
+3. Unter gleich verfügbaren Knoten gilt didaktisch: `Warum ...?` vor Tutorial vor Flashcards vor Übungen.
+4. Weiche Signale dürfen nur innerhalb gleich verfügbarer Knoten entscheiden.
+5. Ergebnis ist bei gleicher Eingabe immer identisch.
+6. Das Verhalten bleibt kompatibel mit den DAG-Validierungsregeln in CI.
