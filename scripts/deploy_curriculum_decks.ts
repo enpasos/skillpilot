@@ -10,7 +10,10 @@ const SOURCE_DIR = path.join(
   ROOT_DIR,
   'curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json',
 )
-const TARGET_DIR = path.join(ROOT_DIR, 'app/public/data')
+const TARGET_DIRS = [
+  path.join(ROOT_DIR, 'app/public/data'),
+  path.join(ROOT_DIR, 'backend/src/main/resources/static/data'),
+]
 
 const PHYSICS_DECK_FILES = [
   'hes_physic_flashcards_e_phase_deck.de.json',
@@ -27,23 +30,29 @@ function deployDecks() {
     process.exit(1)
   }
 
-  fs.mkdirSync(TARGET_DIR, { recursive: true })
+  for (const targetDir of TARGET_DIRS) {
+    fs.mkdirSync(targetDir, { recursive: true })
+  }
 
   let copied = 0
   for (const fileName of PHYSICS_DECK_FILES) {
     const sourcePath = path.join(SOURCE_DIR, fileName)
-    const targetPath = path.join(TARGET_DIR, fileName)
 
     if (!fs.existsSync(sourcePath)) {
       console.error(`Missing source deck file: ${sourcePath}`)
       process.exit(1)
     }
 
-    fs.copyFileSync(sourcePath, targetPath)
-    copied++
+    for (const targetDir of TARGET_DIRS) {
+      const targetPath = path.join(targetDir, fileName)
+      fs.copyFileSync(sourcePath, targetPath)
+      copied++
+    }
   }
 
-  console.log(`Deployed ${copied} physics deck file(s) to ${TARGET_DIR}`)
+  console.log(
+    `Deployed ${copied} physics deck copy operations to ${TARGET_DIRS.join(', ')}`,
+  )
 }
 
 deployDecks()
