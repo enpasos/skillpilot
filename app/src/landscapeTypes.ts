@@ -32,6 +32,19 @@ export interface ExamData {
   }
 }
 
+export interface OerContent {
+  source: string
+  link?: string
+  sections?: string[]
+  description?: string
+}
+
+export interface ExperimentData {
+  title: string
+  description: string
+  equipment: string[]
+}
+
 export interface LearningGoal {
   /** Original goal id (KC-oriented, may be German). */
   id: string
@@ -56,6 +69,8 @@ export interface LearningGoal {
   sourceRef?: string
   extendedData?: Record<string, unknown>
   examData?: ExamData
+  oerContent?: OerContent
+  experimentData?: ExperimentData
   /** Explicit node type ("atomic" | "cluster"), optional for backward compatibility. */
   type?: 'atomic' | 'cluster'
   /** Explicit node kind ("exam" | "tutor" | "memory"), optional for backward compatibility. */

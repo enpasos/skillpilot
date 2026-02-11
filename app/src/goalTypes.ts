@@ -34,6 +34,8 @@ export interface UiGoal {
   inheritedRequires?: string[]
   extendedData?: Record<string, unknown>
   examData?: import('./landscapeTypes').ExamData
+  oerContent?: import('./landscapeTypes').OerContent
+  experimentData?: import('./landscapeTypes').ExperimentData
   /** Explicit node type ("atomic" | "cluster"), optional for backward compatibility. */
   type?: 'atomic' | 'cluster'
   /** Explicit node kind ("exam" | "tutor" | "memory"), optional for backward compatibility. */
@@ -89,6 +91,8 @@ export function convertLearningGoal(
     inheritedRequires: [],
     extendedData: goal.extendedData,
     examData: goal.examData,
+    oerContent: goal.oerContent,
+    experimentData: goal.experimentData,
     type: nodeType,
     nodeKind
   }
