@@ -162,6 +162,14 @@
           "type": "object",
           "description": "Arbitrary extra data (e.g. SRS deck config)."
         },
+        "oerContent": {
+          "$ref": "#/$defs/oerContent",
+          "description": "Optional Open Educational Resource metadata."
+        },
+        "experimentData": {
+          "$ref": "#/$defs/experimentData",
+          "description": "Optional structured experiment description."
+        },
         "examData": {
           "type": "object",
           "required": [
@@ -224,6 +232,52 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "oerContent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source"
+      ],
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "link": {
+          "type": "string"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "experimentData": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "description"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "equipment": {
+          "type": "array",
+          "items": {
+            "type": "string"
           }
         }
       }
