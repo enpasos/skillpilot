@@ -120,3 +120,26 @@ Ein PR ist fuer diesen Abschnitt nur dann fertig, wenn alle Punkte erfuellt sind
 - LK B: Autorennstrecke mit ueberhoehter Kurve und `v_max` (Benutzeridee)
 - LK C: Orbitaldynamik + Energiebilanzen
 - LK D: Thermodynamik + Drehbewegung + Wirkungsgradbewertung
+
+## 7) Nachtrag TeX-Rendering fuer ChatGPT (2026-02-12)
+
+Problembeobachtung:
+- Im Cockpit werden Formeln korrekt gerendert (ReactMarkdown + `remark-math` + `rehype-katex`).
+- In der ChatGPT-Ausgabe wurden Teile aus `examData.taskContent`/`examData.solutionContent` teilweise roh angezeigt (z. B. `$v$`, `$\\Delta v$`).
+
+Ursache:
+- AI-Responses liefen ohne allgemeine Delimiter-Normalisierung.
+- Eine Sonderbehandlung existierte nur fuer eine einzelne Goal-ID (`bc60e300-96be-599a-89b6-8fcca380803d`), nicht fuer Physik-Aufgaben allgemein.
+
+Technische Anpassung:
+- Datei: `backend/src/main/java/com/skillpilot/backend/ai/LearnerAiController.java`
+- Anpassungen:
+  - Allgemeine Normalisierung fuer AI-Examtexte eingefuehrt:
+    - Inline-Math: `$...$` -> `\\(...\\)`
+    - Display-Math: `$$...$$` -> `\\[...\\]`
+  - Normalisierung wird jetzt fuer `taskContent`, `taskContentEn`, `solutionContent`, `solutionContentEn` angewendet.
+  - Bestehende Bildlink-Normalisierung (`/assets/...` -> `/ai-assets/...`) bleibt unveraendert.
+
+Nutzen:
+- Ein robustes, ChatGPT-freundlicheres Rohformat fuer mathematische Inhalte.
+- Weniger renderer-abhaengige Unterschiede zwischen Cockpit und ChatGPT-Ausgabe.

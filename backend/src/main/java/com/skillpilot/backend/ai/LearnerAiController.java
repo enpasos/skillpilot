@@ -293,12 +293,14 @@ public class LearnerAiController {
         }
         com.skillpilot.backend.landscape.ExamData exam = goal.examData();
         com.skillpilot.backend.landscape.ExamData updated = new com.skillpilot.backend.landscape.ExamData();
-        updated.setTaskContent(normalizeTaskContentForAi(goal.id(), goal.title(),
+        updated.setTaskContent(normalizeTaskContentForAi(goal.id(),
                 rewriteAssetLinks(exam.getTaskContent(), assetBase)));
-        updated.setTaskContentEn(normalizeTaskContentForAi(goal.id(), goal.title(),
+        updated.setTaskContentEn(normalizeTaskContentForAi(goal.id(),
                 rewriteAssetLinks(exam.getTaskContentEn(), assetBase)));
-        updated.setSolutionContent(rewriteAssetLinks(exam.getSolutionContent(), assetBase));
-        updated.setSolutionContentEn(rewriteAssetLinks(exam.getSolutionContentEn(), assetBase));
+        updated.setSolutionContent(normalizeMathDelimitersForChat(
+                rewriteAssetLinks(exam.getSolutionContent(), assetBase)));
+        updated.setSolutionContentEn(normalizeMathDelimitersForChat(
+                rewriteAssetLinks(exam.getSolutionContentEn(), assetBase)));
         updated.setScoring(exam.getScoring());
 
         return new com.skillpilot.backend.api.FrontierGoal(
@@ -328,7 +330,7 @@ public class LearnerAiController {
         return sb.toString();
     }
 
-    private String normalizeTaskContentForAi(String goalId, String title, String content) {
+    private String normalizeTaskContentForAi(String goalId, String content) {
         if (content == null || content.isBlank()) {
             return content;
         }
@@ -343,18 +345,17 @@ public class LearnerAiController {
             matcher.appendReplacement(sb, "");
         }
         matcher.appendTail(sb);
-        String stripped = sb.toString().replaceAll("(?m)^\\s*$\\n?", "").trim();
+        String stripped = normalizeMathDelimitersForChat(sb.toString().replaceAll("(?m)^\\s*$\\n?", "").trim());
         if (firstUrl == null || firstUrl.isBlank()) {
-            return content;
+            return stripped;
         }
         String relativePath = toRelativeAssetPath(firstUrl);
         if (relativePath == null || relativePath.isBlank()) {
-            return content;
+            return stripped;
         }
         String normalized = IMAGE_PATH_PREFIX + relativePath + "\n\n" + stripped;
         if ("bc60e300-96be-599a-89b6-8fcca380803d".equals(goalId)) {
-            String inlineFixed = convertInlineMathToParens(stripped);
-            normalized = buildExamPackagedContent(relativePath, inlineFixed);
+            normalized = buildExamPackagedContent(relativePath, stripped);
         }
         return normalized;
     }
@@ -376,11 +377,35 @@ public class LearnerAiController {
                 + "Wenn du abbrechen möchtest, sag einfach Bescheid.";
     }
 
+    private String normalizeMathDelimitersForChat(String content) {
+        if (content == null || content.isBlank()) {
+            return content;
+        }
+        String displayFixed = convertDisplayMathToBrackets(content);
+        return convertInlineMathToParens(displayFixed);
+    }
+
+    private String convertDisplayMathToBrackets(String content) {
+        if (content == null || content.isBlank()) {
+            return content;
+        }
+        Pattern pattern = Pattern.compile("(?s)(?<!\\\\)\\$\\$(.+?)(?<!\\\\)\\$\\$");
+        Matcher matcher = pattern.matcher(content);
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            String inner = matcher.group(1).trim();
+            String replacement = "\\\\[\n" + inner + "\n\\\\]";
+            matcher.appendReplacement(sb, Matcher.quoteReplacement(replacement));
+        }
+        matcher.appendTail(sb);
+        return sb.toString();
+    }
+
     private String convertInlineMathToParens(String content) {
         if (content == null || content.isBlank()) {
             return content;
         }
-        Pattern pattern = Pattern.compile("(?<!\\$)\\$(?!\\$)(.+?)(?<!\\$)\\$(?!\\$)");
+        Pattern pattern = Pattern.compile("(?<!\\\\)(?<!\\$)\\$(?!\\$)(.+?)(?<!\\\\)\\$(?!\\$)");
         Matcher matcher = pattern.matcher(content);
         StringBuffer sb = new StringBuffer();
         while (matcher.find()) {
