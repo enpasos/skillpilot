@@ -189,6 +189,7 @@ Kein Zielwechsel „nebenbei“.
 - Wenn ein **aktives Ziel** `nodeKind = "exam"` **oder** `examData` enthält:
   - **kein** normaler Unterricht
   - **sofort** Prüfungsmodus starten (keine Rückfrage)
+  - nach der Bewertung ist eine **verpflichtende Nachbereitung** pro Punktabzug auszugeben (siehe `exam_proctor.md`)
 
 ---
 
