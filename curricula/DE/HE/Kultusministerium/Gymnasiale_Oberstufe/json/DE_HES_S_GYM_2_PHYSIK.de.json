@@ -797,7 +797,14 @@
       "contains": [],
       "requires": [
         "98c7a125-e2fb-41a5-92e1-d8407ee0fedf",
-        "3f0058c3-11c7-48dd-8427-cc6fd1dde0fd"
+        "3f0058c3-11c7-48dd-8427-cc6fd1dde0fd",
+        "72492ee6-e67f-499a-b97f-fcbc37bded83",
+        "ca1adad6-2184-4079-bca2-12227f01815b",
+        "920630bb-5cce-41c4-9352-309edc1a0401",
+        "407d7fcb-3948-4886-8c59-d324f875065d",
+        "745cfd6f-2907-49d1-a126-7a5767864ec7",
+        "d6f5fcdf-b032-4d55-9643-850378d61a82",
+        "cecebbb6-2ad4-43c5-b9ce-4b80f5cd870c"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -2577,6 +2584,7 @@
         "f4edf9d2-5237-46fc-ac78-ee881dd870e1",
         "32c22bcd-639c-4441-8f7f-2061d5176616",
         "bda3add4-967c-4a42-83a4-db52a45bcf4f",
+        "fb8bf11c-65b4-4354-af70-2941f6d72043",
         "298c09af-5c8f-4909-993e-335d381d0fd1",
         "2c02c403-1629-4aec-9729-efcebe4d585f",
         "ad9d1b14-5690-4160-9ca8-b98d182d2c36",
@@ -2745,6 +2753,223 @@
       }
     },
     {
+      "id": "fb8bf11c-65b4-4354-af70-2941f6d72043",
+      "title": "Thermodynamische Prozessrechnung",
+      "titleEn": "Thermodynamic Process Calculations",
+      "description": "Cluster zur quantitativen Thermodynamik in der E-Phase: Zustandsgleichung, Zustandsänderungen, Prozessarbeit, Wärmemengen, Energiebilanz und Wirkungsgradvergleich.",
+      "descriptionEn": "Cluster for quantitative thermodynamics in E-phase: equation of state, state changes, process work, heat quantities, energy balance, and efficiency comparison.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "72492ee6-e67f-499a-b97f-fcbc37bded83",
+        "ca1adad6-2184-4079-bca2-12227f01815b",
+        "920630bb-5cce-41c4-9352-309edc1a0401",
+        "407d7fcb-3948-4886-8c59-d324f875065d",
+        "745cfd6f-2907-49d1-a126-7a5767864ec7",
+        "d6f5fcdf-b032-4d55-9643-850378d61a82"
+      ],
+      "requires": [
+        "bda3add4-967c-4a42-83a4-db52a45bcf4f"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_MATERIE"
+        ],
+        "phase": "E"
+      },
+      "sourceRef": "SkillPilot-Ergänzung: Quantitative Brücke für die Übung \"Thermodynamik und Rotationssystem\""
+    },
+    {
+      "id": "72492ee6-e67f-499a-b97f-fcbc37bded83",
+      "title": "Zustandsgrößen und ideales Gasgesetz anwenden",
+      "titleEn": "Apply State Variables and Ideal Gas Law",
+      "description": "Die lernende Person kann Zustandsgrößen (p, V, T, n) mit SI-Einheiten sicher verwenden und das ideale Gasgesetz pV = nRT zur Berechnung fehlender Größen anwenden.",
+      "descriptionEn": "The learner can safely use state variables (p, V, T, n) with SI units and apply the ideal gas law pV = nRT to calculate missing quantities.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "f4edf9d2-5237-46fc-ac78-ee881dd870e1"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_MATERIE"
+        ],
+        "phase": "E"
+      },
+      "sourceRef": "SkillPilot-Ergänzung: Rechenfundament für E-Phase Thermodynamikaufgaben"
+    },
+    {
+      "id": "ca1adad6-2184-4079-bca2-12227f01815b",
+      "title": "Isochore, isobare und isotherme Zustandsänderungen berechnen",
+      "titleEn": "Calculate Isochoric, Isobaric, and Isothermal State Changes",
+      "description": "Die lernende Person kann isochore, isobare und isotherme Zustandsänderungen im p-V-T-Zusammenhang unterscheiden und fehlende Größen rechnerisch bestimmen.",
+      "descriptionEn": "The learner can distinguish isochoric, isobaric, and isothermal state changes in the p-V-T relation and determine missing quantities computationally.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "72492ee6-e67f-499a-b97f-fcbc37bded83"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_MATERIE"
+        ],
+        "phase": "E"
+      },
+      "sourceRef": "SkillPilot-Ergänzung: Rechenfundament für thermodynamische Prozessmodelle"
+    },
+    {
+      "id": "920630bb-5cce-41c4-9352-309edc1a0401",
+      "title": "Prozessarbeit bei Volumenänderungen bestimmen",
+      "titleEn": "Determine Process Work for Volume Changes",
+      "description": "Die lernende Person kann die Prozessarbeit bei Volumenänderungen in einfachen Fällen (insbesondere isobare Prozesse) berechnen und im p-V-Diagramm als Fläche deuten.",
+      "descriptionEn": "The learner can calculate process work for volume changes in simple cases (especially isobaric processes) and interpret it as area in the p-V diagram.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "ca1adad6-2184-4079-bca2-12227f01815b",
+        "75c8920f-757e-47bf-be3a-a5901eb52334"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE"
+        ],
+        "phase": "E"
+      },
+      "sourceRef": "SkillPilot-Ergänzung: Rechenfundament für Arbeitstermine in Gasprozessen"
+    },
+    {
+      "id": "407d7fcb-3948-4886-8c59-d324f875065d",
+      "title": "Wärmemengen mit C_V und C_P berechnen",
+      "titleEn": "Calculate Heat Quantities with C_V and C_P",
+      "description": "Die lernende Person kann bei isochoren und isobaren Prozessen Wärmemengen mit Q = n·C_V·ΔT bzw. Q = n·C_P·ΔT berechnen und die Bedeutung der Wärmekapazitäten erläutern.",
+      "descriptionEn": "The learner can calculate heat quantities for isochoric and isobaric processes with Q = n·C_V·ΔT and Q = n·C_P·ΔT and explain the meaning of heat capacities.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "ca1adad6-2184-4079-bca2-12227f01815b"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_MATERIE"
+        ],
+        "phase": "E"
+      },
+      "sourceRef": "SkillPilot-Ergänzung: Rechenfundament für Wärmeterme in Prozessaufgaben"
+    },
+    {
+      "id": "745cfd6f-2907-49d1-a126-7a5767864ec7",
+      "title": "Ersten Hauptsatz in Prozessen quantitativ bilanzieren",
+      "titleEn": "Quantitatively Balance the First Law in Processes",
+      "description": "Die lernende Person kann für einfache Gasprozesse Energiegrößen konsistent bilanzieren (Q, W, ΔU) und den ersten Hauptsatz rechnerisch anwenden.",
+      "descriptionEn": "The learner can consistently balance energy quantities (Q, W, ΔU) for simple gas processes and apply the first law computationally.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "920630bb-5cce-41c4-9352-309edc1a0401",
+        "407d7fcb-3948-4886-8c59-d324f875065d",
+        "bda3add4-967c-4a42-83a4-db52a45bcf4f"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE"
+        ],
+        "phase": "E"
+      },
+      "sourceRef": "SkillPilot-Ergänzung: Quantitative Vertiefung zum ersten Hauptsatz"
+    },
+    {
+      "id": "d6f5fcdf-b032-4d55-9643-850378d61a82",
+      "title": "Wirkungsgrad und Carnot-Grenze quantitativ vergleichen",
+      "titleEn": "Quantitatively Compare Efficiency and Carnot Limit",
+      "description": "Die lernende Person kann den Wirkungsgrad realer Prozesse aus Messdaten berechnen, mit dem Carnot-Grenzwert vergleichen und die Abweichung fachlich begründen.",
+      "descriptionEn": "The learner can calculate the efficiency of real processes from measured data, compare it with the Carnot limit, and justify deviations scientifically.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "745cfd6f-2907-49d1-a126-7a5767864ec7",
+        "ad9d1b14-5690-4160-9ca8-b98d182d2c36"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK3_MATHEMATISIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "E"
+      },
+      "sourceRef": "SkillPilot-Ergänzung: Rechenfundament für den Vergleich realer und idealer Wirkungsgrade"
+    },
+    {
       "id": "3f0058c3-11c7-48dd-8427-cc6fd1dde0fd",
       "title": "Drehbewegungen",
       "titleEn": "Rotational Motions",
@@ -2759,6 +2984,7 @@
         "e857266b-028a-44ec-bb33-26d9ca15ff20",
         "fee9630c-fcc5-41ec-a545-eb7ced345d17",
         "cc36f2e9-164a-419e-8fc4-d99877392e39",
+        "cecebbb6-2ad4-43c5-b9ce-4b80f5cd870c",
         "3a97ba17-23fe-4a8c-a7d8-5a58e2ccf9d3",
         "c30480e0-0d9c-479b-9352-78b36a9aadf5"
       ],
@@ -2847,6 +3073,35 @@
         "guidingIdeas": [],
         "phase": "E"
       }
+    },
+    {
+      "id": "cecebbb6-2ad4-43c5-b9ce-4b80f5cd870c",
+      "title": "Rotationsenergie und Beschleunigungsmoment berechnen",
+      "titleEn": "Calculate Rotational Energy and Acceleration Torque",
+      "description": "Die lernende Person kann aus Trägheitsmoment und Winkelgeschwindigkeit die Rotationsenergie bestimmen sowie bei vorgegebener Winkelbeschleunigung das mittlere Beschleunigungsmoment berechnen.",
+      "descriptionEn": "The learner can determine rotational energy from moment of inertia and angular velocity and calculate the mean acceleration torque for a given angular acceleration.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "cc36f2e9-164a-419e-8fc4-d99877392e39"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_ENERGIE"
+        ],
+        "phase": "E"
+      },
+      "sourceRef": "SkillPilot-Ergänzung: Quantitative Brücke zur Übung \"Thermodynamik und Rotationssystem\""
     },
     {
       "id": "3a97ba17-23fe-4a8c-a7d8-5a58e2ccf9d3",
