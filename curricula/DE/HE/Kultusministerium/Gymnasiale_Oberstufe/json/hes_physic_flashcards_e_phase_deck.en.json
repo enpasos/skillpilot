@@ -973,6 +973,234 @@
         "goal:c30480e0-0d9c-479b-9352-78b36a9aadf5",
         "coverage:auto"
       ]
+    },
+    {
+      "id": "hes_phys_e_cov_071",
+      "front": "Thermodynamics (E phase): core formula set",
+      "back": "Core content:\n\n$pV=nRT$, process types (isochoric/isobaric/isothermal), volume work, heat quantities with $C_V/C_P$, energy balance (1st law), efficiency and Carnot reference",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:fb8bf11c-65b4-4354-af70-2941f6d72043",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_072",
+      "front": "Ideal gas law (formula and constant value)",
+      "back": "$pV=nRT$\n\n$R=8.314\\,\\mathrm{J\\,(mol\\,K)^{-1}}$",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:72492ee6-e67f-499a-b97f-fcbc37bded83",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_073",
+      "front": "State variables in the ideal gas law + SI units",
+      "back": "$p$: pressure in Pa\n\n$V$: volume in $m^3$\n\n$T$: temperature in K\n\n$n$: amount of substance in mol",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:72492ee6-e67f-499a-b97f-fcbc37bded83",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_074",
+      "front": "Process types: constant quantity",
+      "back": "Isochoric: $V=\\text{constant}$\n\nIsobaric: $p=\\text{constant}$\n\nIsothermal: $T=\\text{constant}$",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:ca1adad6-2184-4079-bca2-12227f01815b",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_075",
+      "front": "Process types: basic relations (ideal gas)",
+      "back": "Isochoric: $\\frac{p}{T}=\\text{constant}$\n\nIsobaric: $\\frac{V}{T}=\\text{constant}$\n\nIsothermal: $pV=\\text{constant}$",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:ca1adad6-2184-4079-bca2-12227f01815b",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_076",
+      "front": "Volume work: general and isobaric",
+      "back": "$W=\\int_{V_0}^{V_1}p\\,dV$\n\nIsobaric: $W=p\\,\\Delta V$\n\nIn a $p$-$V$ diagram: area under the process curve",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:920630bb-5cce-41c4-9352-309edc1a0401",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_077",
+      "front": "1st law (used sign convention)",
+      "back": "$\\Delta U = Q + W$\n\nHere, $W$ is work done on the system.",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:745cfd6f-2907-49d1-a126-7a5767864ec7",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_078",
+      "front": "Heat quantities for isochoric/isobaric processes",
+      "back": "Isochoric: $Q=n\\,C_V\\,\\Delta T$\n\nIsobaric: $Q=n\\,C_P\\,\\Delta T$",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:407d7fcb-3948-4886-8c59-d324f875065d",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_079",
+      "front": "Relation of molar heat capacities (ideal gas)",
+      "back": "$C_P - C_V = R$",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:407d7fcb-3948-4886-8c59-d324f875065d",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_080",
+      "front": "Monatomic ideal gas: $C_V$ and $C_P$",
+      "back": "$C_V=\\frac{3}{2}R$\n\n$C_P=\\frac{5}{2}R$",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:407d7fcb-3948-4886-8c59-d324f875065d",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_081",
+      "front": "Monatomic ideal gas: ratio $Q_P$ to $Q_V$",
+      "back": "For equal $n$ and $\\Delta T$:\n\n$\\frac{Q_P}{Q_V}=\\frac{C_P}{C_V}=\\frac{5}{3}$",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:407d7fcb-3948-4886-8c59-d324f875065d",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_082",
+      "front": "Efficiency (real process)",
+      "back": "$\\eta=\\frac{W_\\text{useful}}{Q_\\text{in}}$",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:d6f5fcdf-b032-4d55-9643-850378d61a82",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_083",
+      "front": "Carnot efficiency limit",
+      "back": "$\\eta_C=1-\\frac{T_\\text{cold}}{T_\\text{hot}}$",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:d6f5fcdf-b032-4d55-9643-850378d61a82",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_084",
+      "front": "Comparison of real efficiency with Carnot limit",
+      "back": "$\\eta \\le \\eta_C$",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:d6f5fcdf-b032-4d55-9643-850378d61a82",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_085",
+      "front": "Micro-macro relation of the gas constant",
+      "back": "$R = k_B \\cdot N_A$",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:72492ee6-e67f-499a-b97f-fcbc37bded83",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_086",
+      "front": "Temperature and mean kinetic energy (monatomic ideal gas)",
+      "back": "$\\langle E_\\text{kin}\\rangle=\\frac{3}{2}k_B T$",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:72492ee6-e67f-499a-b97f-fcbc37bded83",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_087",
+      "front": "Pressure in the particle model (mnemonic)",
+      "back": "Pressure is caused by momentum transfer of particles to the container wall.",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:72492ee6-e67f-499a-b97f-fcbc37bded83",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_088",
+      "front": "Pressure-volume-energy relation",
+      "back": "$\\mathrm{Pa}\\cdot\\mathrm{m^3}=\\mathrm{N\\,m}=\\mathrm{J}$",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:72492ee6-e67f-499a-b97f-fcbc37bded83",
+        "coverage:auto"
+      ]
+    },
+    {
+      "id": "hes_phys_e_cov_089",
+      "front": "Rotational motion: core formula set",
+      "back": "$E_\\text{rot}=\\frac12 J\\omega^2$\n\n$\\alpha=\\frac{\\Delta\\omega}{\\Delta t}$\n\n$M=J\\alpha$",
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:cecebbb6-2ad4-43c5-b9ce-4b80f5cd870c",
+        "coverage:auto"
+      ]
     }
   ],
   "landscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02"
