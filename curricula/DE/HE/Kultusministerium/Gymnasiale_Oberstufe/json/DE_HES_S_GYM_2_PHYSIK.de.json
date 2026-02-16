@@ -1782,8 +1782,7 @@
         "ff07337f-24bd-4148-8fa7-7a750d7ae5f8",
         "2808ec13-5b8b-4fb9-9b1a-7792146995b7",
         "99bbf33e-74f5-4f33-98e2-e4e6661d8648",
-        "e2b6b4d1-02db-4a27-948e-ecfbdb44dab3",
-        "79761314-8dc4-450c-a3a6-4d196a991274"
+        "e2b6b4d1-02db-4a27-948e-ecfbdb44dab3"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -2584,6 +2583,7 @@
       ],
       "contains": [
         "f4edf9d2-5237-46fc-ac78-ee881dd870e1",
+        "3397a2f6-7262-4f99-84a8-493edec02841",
         "32c22bcd-639c-4441-8f7f-2061d5176616",
         "bda3add4-967c-4a42-83a4-db52a45bcf4f",
         "af83fb24-2498-4de2-ab45-ea0485a4b1b2",
@@ -2594,7 +2594,7 @@
         "b1736d6b-4bd4-4cc9-99eb-539bbccb27a4"
       ],
       "requires": [
-        "44882cb3-dca4-432c-ac29-5f081315844e"
+        "75c8920f-757e-47bf-be3a-a5901eb52334"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -2632,6 +2632,42 @@
         "processCompetencies": [],
         "guidingIdeas": [],
         "phase": "E"
+      }
+    },
+    {
+      "id": "3397a2f6-7262-4f99-84a8-493edec02841",
+      "title": "Kinetische Gastheorie & Temperatur",
+      "titleEn": "Kinetic Gas Theory & Temperature",
+      "description": "Die lernende Person kann den Zusammenhang zwischen absoluter Temperatur und der mittleren kinetischen Energie der Teilchen erklären (mikroskopisches Modell).",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "f4edf9d2-5237-46fc-ac78-ee881dd870e1"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_ENERGIE"
+        ],
+        "phase": "E"
+      },
+      "oerContent": {
+        "source": "Physik Libre v0.97",
+        "link": "https://physikbuch.schule/thermodynamics.html#kinetische-gastheorie",
+        "sections": [
+          "14.11 Kinetische Gastheorie",
+          "14.11.3 Mittlere kinetische Energie"
+        ],
+        "description": "Herleitung des Zusammenhangs von Druck, Temperatur und Teilchengeschwindigkeit."
       }
     },
     {
@@ -2793,6 +2829,7 @@
       "contains": [
         "72492ee6-e67f-499a-b97f-fcbc37bded83",
         "ca1adad6-2184-4079-bca2-12227f01815b",
+        "e96bfa16-1513-450a-88d4-8353120fc49c",
         "920630bb-5cce-41c4-9352-309edc1a0401",
         "407d7fcb-3948-4886-8c59-d324f875065d",
         "745cfd6f-2907-49d1-a126-7a5767864ec7",
@@ -2875,6 +2912,41 @@
         "phase": "E"
       },
       "sourceRef": "SkillPilot-Ergänzung: Rechenfundament für thermodynamische Prozessmodelle"
+    },
+    {
+      "id": "e96bfa16-1513-450a-88d4-8353120fc49c",
+      "title": "Adiabatische Zustandsänderungen",
+      "titleEn": "Adiabatic Processes",
+      "description": "Die lernende Person kann adiabatische Prozesse (ohne Wärmeaustausch) beschreiben, im p-V-Diagramm skizzieren und qualitativ von isothermen Prozessen abgrenzen.",
+      "weight": 0.9,
+      "tags": [
+        "LK",
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "ca1adad6-2184-4079-bca2-12227f01815b"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE"
+        ],
+        "phase": "E"
+      },
+      "oerContent": {
+        "source": "Physik Libre v0.97",
+        "link": "https://physikbuch.schule/thermodynamics.html#adiabatische-zustandsanderung-im-p-v-diagramm",
+        "sections": [
+          "14.12.7 Adiabatische Zustandsänderung",
+          "14.12.9 Adiabate im p-V-Diagramm"
+        ],
+        "description": "Erklärung der Zustandsänderung ohne Wärmeaustausch und Vergleich der Kurvensteilheit zur Isothermen."
+      }
     },
     {
       "id": "920630bb-5cce-41c4-9352-309edc1a0401",
