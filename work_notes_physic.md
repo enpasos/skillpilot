@@ -68,3 +68,22 @@ Contains-Hierarchie im E-Phasen-Knoten KC-nah strukturieren (E.1 bis E.7), ohne 
 5. Nach jeder weiteren Änderung erneut:
    - `npm run validate:graph` (in `app/`)
    - Leaf-Vergleich im E-Teilbaum (keine atomaren Knoten verlieren).
+
+## Update 2026-02-16 (Reihenfolge + E.6-Voraussetzung)
+Anlass:
+1. E.6 Thermodynamik soll inhaltlich E.2 als Voraussetzung haben.
+2. Die sichtbare Reihenfolge im Baum soll E.1 bis E.7 sein (unabhängig von reinen Requires-Heuristiken).
+
+Umgesetzt:
+1. `E.6 Grundlagen der Thermodynamik` (`98c7a125-...`) `requires` erweitert um:
+   - `52c3d2e8-...` (`E.2 Newton'sche Axiome und Erhaltungssätze`)
+2. E-Phasen-Root `contains` explizit auf diese Reihenfolge gesetzt:
+   - `E.1, E.2, E.3, E.4, E.5, E.6, E.7, Methoden, Lernkarten, Übungen`
+3. Für stabile UI-Sortierung (`sortGoalsTopologically`) `extendedData.treeOrder` gesetzt:
+   - E.1=1, E.2=2, E.3=3, E.4=4, E.5=5, E.6=6, E.7=7, Methoden=8, Lernkarten=9, Übungen=10.
+
+Verifikation:
+1. Sortierfunktion liefert unter dem E-Root jetzt:
+   - `E.1 -> E.2 -> E.3 -> E.4 -> E.5 -> E.6 -> E.7 -> Methoden -> Lernkarten -> Übungen`
+2. Graph-Validierung:
+   - `npm run validate:graph` in `app/` -> `✅ 587 landscape(s) passed validation.`
