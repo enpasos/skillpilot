@@ -57,7 +57,6 @@ const PHYSICS_POTENTIAL_ENERGY_AND_POTENTIAL_GOAL_ID = '99bbf33e-74f5-4f33-98e2-
 
 const MATH_LANDSCAPE_ID = '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3'
 const MATH_DIFFERENTIATION_GOAL_ID = 'e2b6b4d1-02db-4a27-948e-ecfbdb44dab3'
-const MATH_INTEGRATION_GOAL_ID = '79761314-8dc4-450c-a3a6-4d196a991274'
 
 interface ParsedLandscape {
   file: string
@@ -407,19 +406,11 @@ function validateLandscape(landscape: ParsedLandscape) {
     }
 
     const requiredMathDiff = `${MATH_LANDSCAPE_ID}:${MATH_DIFFERENTIATION_GOAL_ID}`
-    const requiredMathInt = `${MATH_LANDSCAPE_ID}:${MATH_INTEGRATION_GOAL_ID}`
     if (!refsIncludeGoal(requires, MATH_DIFFERENTIATION_GOAL_ID)) {
       addIssue(
         'error',
         landscape.landscapeId,
         `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require ${MATH_DIFFERENTIATION_GOAL_ID} (or ${requiredMathDiff})`,
-      )
-    }
-    if (!refsIncludeGoal(requires, MATH_INTEGRATION_GOAL_ID)) {
-      addIssue(
-        'error',
-        landscape.landscapeId,
-        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require ${MATH_INTEGRATION_GOAL_ID} (or ${requiredMathInt})`,
       )
     }
   }

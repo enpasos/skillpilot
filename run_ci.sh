@@ -5,9 +5,7 @@ echo "=========================================="
 echo "Running Frontend CI (app)"
 echo "=========================================="
 cd app
-# Using 'npm install' instead of 'npm ci' to be friendlier to local environments
-# (npm ci removes node_modules, which might be slow/undesirable locally)
-npm install
+npm ci
 
 echo "--> Running Graph Validation"
 npm run validate:graph
