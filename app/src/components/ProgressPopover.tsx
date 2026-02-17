@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import { Check, Activity, X } from 'lucide-react'
 import type { UiGoal } from '../goalTypes'
@@ -15,12 +15,14 @@ interface ProgressPopoverProps {
     skillpilotId: string
     children: React.ReactNode
     goalIndexAll: Map<string, UiGoal> // To look up titles
+    refreshSignal?: number
 }
 
 export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
     skillpilotId,
     children,
-    goalIndexAll
+    goalIndexAll,
+    refreshSignal = 0
 }) => {
     // Explicitly casting to any to bypass potential TS issues with the hook signature during build if not updated
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -66,7 +68,7 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
         }
     }, [isOpen])
 
-    const fetchHistory = async () => {
+    const fetchHistory = useCallback(async () => {
         setLoading(true)
         try {
             const res = await fetch(`/api/ui/learners/${skillpilotId}/history`)
@@ -79,7 +81,12 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
         } finally {
             setLoading(false)
         }
-    }
+    }, [skillpilotId])
+
+    useEffect(() => {
+        if (!isOpen) return
+        void fetchHistory()
+    }, [isOpen, refreshSignal, fetchHistory])
 
     const toggleOpen = () => {
         if (!isOpen) {
@@ -91,7 +98,6 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
                     left: rect.left + window.scrollX
                 })
             }
-            fetchHistory()
             setIsOpen(true)
         } else {
             setIsOpen(false)

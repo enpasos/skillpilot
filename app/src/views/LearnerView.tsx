@@ -80,6 +80,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   // Refresh counter to force CompetenceTree re-render on SSE updates
   const [refreshCounter, setRefreshCounter] = useState(0);
+  const [velocityRefreshCounter, setVelocityRefreshCounter] = useState(0);
   const [srsMasteryTick, setSrsMasteryTick] = useState(0);
 
 
@@ -563,6 +564,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const handleSseUpdate = useCallback(async (payload?: { type?: string; nodeId?: string }) => {
     if (payload?.type === 'CLIENT_STATE_UPDATED' && payload?.nodeId) {
       setSrsMasteryTick(c => c + 1)
+      setVelocityRefreshCounter(c => c + 1)
       if (currentGoal?.id === payload.nodeId) {
         setSrsReloadCounter(c => c + 1)
       }
@@ -585,6 +587,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       ])
       // Increment counter to force CompetenceTree re-render
       setRefreshCounter(c => c + 1)
+      setVelocityRefreshCounter(c => c + 1)
       console.log('[SSE] ✅ Refresh complete')
     } finally {
       fullRefreshInFlightRef.current = false
@@ -1248,7 +1251,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 <Send size={16} className="text-amber-500" />
               </button>
               <MoveRight size={12} className="text-slate-400" />
-              <ProgressPopover skillpilotId={skillpilotId} goalIndexAll={goalIndexAll}>
+              <ProgressPopover
+                skillpilotId={skillpilotId}
+                goalIndexAll={goalIndexAll}
+                refreshSignal={velocityRefreshCounter}
+              >
                 <button
                   className="flex items-center gap-1 font-bold text-emerald-500 hover:text-emerald-400 transition-colors"
                   title={t.learner.completed}
