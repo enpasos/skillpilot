@@ -103,8 +103,40 @@
       "id": "7252f084-398f-47d6-a5ba-1f7c78cd7559",
       "title": "Methode: Messunsicherheit und Fehleranalyse",
       "titleEn": "Method: Measurement Uncertainty and Error Analysis",
-      "description": "Die lernende Person kann Messabweichungen beschreiben, Unsicherheiten angeben, systematische und zufällige Fehler unterscheiden sowie signifikante Stellen und Mittelwertbildung nutzen.",
-      "descriptionEn": "The learner can describe measurement deviations, state uncertainties, distinguish systematic and random errors, and use significant figures and averaging.",
+      "description": "Cluster der Basiskompetenzen zur Fehleranalyse: Fehlerarten unterscheiden, Unsicherheiten angeben, signifikante Stellen anwenden und Messreihen auswerten.",
+      "descriptionEn": "Cluster of core error-analysis competences: distinguish error types, state uncertainties, use significant figures, and evaluate data series.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method"
+      ],
+      "contains": [
+        "3b0eb865-add0-40bd-ac09-c7b9a5d48101",
+        "a8f3c44e-cb0a-4132-8b2f-a6a4c747353c",
+        "0e9bf3d7-3544-441c-a69a-5eadfd88a743",
+        "4301eed4-ae8a-4d49-a943-debad3eff691"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_MATERIE"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "3b0eb865-add0-40bd-ac09-c7b9a5d48101",
+      "title": "Messabweichungen und Fehlerarten unterscheiden",
+      "titleEn": "Distinguish Measurement Deviations and Error Types",
+      "description": "Die lernende Person kann Messabweichungen systematisch erfassen und systematische von zufälligen Fehlern unterscheiden.",
+      "descriptionEn": "The learner can systematically identify measurement deviations and distinguish systematic from random errors.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -113,6 +145,93 @@
       ],
       "contains": [],
       "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_MATERIE"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "a8f3c44e-cb0a-4132-8b2f-a6a4c747353c",
+      "title": "Messunsicherheiten angeben",
+      "titleEn": "State Measurement Uncertainties",
+      "description": "Die lernende Person kann Messwerte mit geeigneten Unsicherheiten angeben und die Angabe fachgerecht notieren.",
+      "descriptionEn": "The learner can state measured values with suitable uncertainties and record them correctly.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method"
+      ],
+      "contains": [],
+      "requires": [
+        "3b0eb865-add0-40bd-ac09-c7b9a5d48101"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_MATERIE"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "0e9bf3d7-3544-441c-a69a-5eadfd88a743",
+      "title": "Signifikante Stellen korrekt verwenden",
+      "titleEn": "Use Significant Figures Correctly",
+      "description": "Die lernende Person kann signifikante Stellen in Rechenergebnissen korrekt bestimmen und konsistent anwenden.",
+      "descriptionEn": "The learner can determine significant figures in computed results correctly and apply them consistently.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method"
+      ],
+      "contains": [],
+      "requires": [
+        "a8f3c44e-cb0a-4132-8b2f-a6a4c747353c"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_MATERIE"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "4301eed4-ae8a-4d49-a943-debad3eff691",
+      "title": "Mittelwert und Streuung aus Messreihen bestimmen",
+      "titleEn": "Determine Mean and Spread from Data Series",
+      "description": "Die lernende Person kann aus einer Messreihe Mittelwerte bestimmen und die Streuung zur qualitativen Unsicherheitsbewertung nutzen.",
+      "descriptionEn": "The learner can determine mean values from a data series and use spread for qualitative uncertainty assessment.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method"
+      ],
+      "contains": [],
+      "requires": [
+        "a8f3c44e-cb0a-4132-8b2f-a6a4c747353c"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",
@@ -159,8 +278,39 @@
       "id": "5194a210-9853-4318-8b27-545233267923",
       "title": "Methode: Digitale Messwerterfassung & Analyse",
       "titleEn": "Method: Digital Data Acquisition & Analysis",
-      "description": "Einsatz digitaler Werkzeuge (Sensoren, Videoanalyse) vs. analoge Messung. Umgang mit Messunsicherheiten (systematisch vs. zufällig) und signifikanten Stellen.",
-      "descriptionEn": "Use of digital tools (sensors, video analysis) vs. analog measurement. Handling measurement uncertainties (systematic vs. random) and significant figures.",
+      "description": "Cluster zur digitalen Messpraxis: Verfahren vergleichen, Messdaten erfassen und inklusive Unsicherheiten auswerten.",
+      "descriptionEn": "Cluster for digital measurement practice: compare methods, acquire data, and analyze including uncertainties.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method",
+        "Measurement"
+      ],
+      "contains": [
+        "b9f0ed69-5a49-48e3-ae61-6769eeda8bf8",
+        "24afdbac-34e2-4e83-a26e-5ea94ab857ac",
+        "fdff694c-3cfa-4b5d-aa3c-16042962ddb8"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "b9f0ed69-5a49-48e3-ae61-6769eeda8bf8",
+      "title": "Digitale und analoge Messverfahren vergleichen",
+      "titleEn": "Compare Digital and Analog Measurement Methods",
+      "description": "Die lernende Person kann digitale und analoge Messverfahren in Bezug auf Einsatzbereich, Auflösung und typische Fehlerquellen vergleichen.",
+      "descriptionEn": "The learner can compare digital and analog measurement methods regarding use cases, resolution, and typical error sources.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -170,6 +320,65 @@
       ],
       "contains": [],
       "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "24afdbac-34e2-4e83-a26e-5ea94ab857ac",
+      "title": "Digitale Messdaten mit Sensoren erfassen",
+      "titleEn": "Acquire Digital Measurement Data with Sensors",
+      "description": "Die lernende Person kann mit digitalen Sensoren Messdaten strukturiert erfassen und für die Auswertung bereitstellen.",
+      "descriptionEn": "The learner can acquire measurement data with digital sensors in a structured way and prepare it for analysis.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method",
+        "Measurement"
+      ],
+      "contains": [],
+      "requires": [
+        "b9f0ed69-5a49-48e3-ae61-6769eeda8bf8"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "fdff694c-3cfa-4b5d-aa3c-16042962ddb8",
+      "title": "Digitale Messdaten auswerten und Unsicherheiten berücksichtigen",
+      "titleEn": "Analyze Digital Data and Account for Uncertainties",
+      "description": "Die lernende Person kann digitale Messdaten auswerten und dabei systematische und zufällige Unsicherheiten nachvollziehbar berücksichtigen.",
+      "descriptionEn": "The learner can analyze digital measurement data while transparently accounting for systematic and random uncertainties.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Method",
+        "Measurement"
+      ],
+      "contains": [],
+      "requires": [
+        "24afdbac-34e2-4e83-a26e-5ea94ab857ac",
+        "7252f084-398f-47d6-a5ba-1f7c78cd7559"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",
@@ -899,8 +1108,61 @@
       "id": "e1eed8db-6e65-4cdd-98b0-e190d4137371",
       "title": "Sportphysik: Bewegungsoptimierung",
       "titleEn": "Sports Physics: Optimizing Motion",
-      "description": "Bewegungen im Sport (z. B. Wurf, Sprung, Sprint) als Einstieg: Die lernende Person kann Bewegungsabläufe qualitativ beschreiben, Einflussgrößen benennen und Optimierungen begründen.",
-      "descriptionEn": "Sports motions (e.g., throws, jumps, sprints) as an entry point: the learner can qualitatively describe motion sequences, name influencing factors, and justify optimizations.",
+      "description": "Cluster zur Sportphysik: Bewegungsanalyse und physikalisch begründete Optimierung in Alltagssport-Kontexten.",
+      "descriptionEn": "Sports physics cluster: motion analysis and physically justified optimization in everyday sports contexts.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [
+        "a90cadc6-9a1c-4df5-bcd5-9222aeddbbdc",
+        "a48a8e60-5fa0-4357-90d7-440042920849"
+      ],
+      "requires": [
+        "4b56b5c6-0e7b-4486-aa8f-7d5be7f085a5"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "a90cadc6-9a1c-4df5-bcd5-9222aeddbbdc",
+      "title": "Bewegungsabläufe im Sport qualitativ analysieren",
+      "titleEn": "Qualitatively Analyze Sports Motion Sequences",
+      "description": "Die lernende Person kann Bewegungsabläufe in Sportsituationen qualitativ beschreiben und relevante Einflussgrößen benennen.",
+      "descriptionEn": "The learner can qualitatively describe motion sequences in sports contexts and identify relevant influencing factors.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "a48a8e60-5fa0-4357-90d7-440042920849",
+      "title": "Optimierungen in Sportsituationen physikalisch begründen",
+      "titleEn": "Physically Justify Optimizations in Sports Contexts",
+      "description": "Die lernende Person kann Optimierungsvorschläge für Sportsituationen fachlich begründen und auf einfache Modelle stützen.",
+      "descriptionEn": "The learner can justify optimization proposals for sports contexts and support them with simple physical models.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -909,7 +1171,7 @@
       ],
       "contains": [],
       "requires": [
-        "4b56b5c6-0e7b-4486-aa8f-7d5be7f085a5"
+        "a90cadc6-9a1c-4df5-bcd5-9222aeddbbdc"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -1376,19 +1638,19 @@
       "id": "4e327e2e-8ad6-4fc0-8c6e-46189e0ceea4",
       "title": "Die drei Newtonschen Axiome benennen und erklären",
       "titleEn": "Name and Explain the Three Newton's Laws",
-      "description": "Die lernende Person kann die drei Newtonschen Axiome benennen und in eigenen Worten erklären.",
-      "descriptionEn": "The learner can name the three Newton's laws and explain them in their own words.",
+      "description": "Cluster zur zusammenfassenden Wiederholung der drei Newtonschen Axiome.",
+      "descriptionEn": "Cluster for consolidated review of Newton's three laws.",
       "weight": 0.9,
       "tags": [
         "GK",
         "LK"
       ],
-      "contains": [],
-      "requires": [
+      "contains": [
         "31b6e9ae-003a-474d-8055-e92f4fc3acc3",
         "be89ee6a-d11d-4970-8c39-bb0c84edac56",
         "d6550712-7460-446a-96ff-e7599c8f4fb7"
       ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",
@@ -2570,15 +2832,83 @@
       "id": "aa2de3a3-f1ad-4f4b-9ed6-9894d27f0e2a",
       "title": "Astronomische Weltbilder vergleichen (GK)",
       "titleEn": "Compare Astronomical Worldviews (Basic Course)",
-      "description": "Die lernende Person kann historische astronomische Weltbilder (z. B. ptolemäisch, kopernikanisch, newtonsch) zeitlich grob einordnen und vergleichen. Sie kann erklären, worin sich das geozentrische und das heliozentrische Weltbild unterscheiden und warum die Gravitationsphysik nach Isaac Newton zu einem besseren Verständnis der Planetenbewegung im Sonnensystem geführt hat.",
-      "descriptionEn": "The learner can roughly place and compare historical astronomical worldviews (e.g., Ptolemaic, Copernican, Newtonian) in time. They can explain the differences between the geocentric and heliocentric worldview and why Newtonian gravitational physics led to a better understanding of planetary motion in the solar system.",
+      "description": "Cluster zum historischen Vergleich astronomischer Weltbilder im Grundkurs.",
+      "descriptionEn": "Cluster for historical comparison of astronomical worldviews in the basic course.",
+      "weight": 0.9,
+      "tags": [
+        "GK"
+      ],
+      "contains": [
+        "e543c153-2598-4f4e-a41b-9b52274fc5ab",
+        "89fcbe4b-309f-404e-afca-28ae977ae578",
+        "3c47ef22-05c5-4353-9453-b7815386a487"
+      ],
+      "requires": [
+        "06012d22-7495-4b9d-8ea5-bea7c8dc45e5"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "e543c153-2598-4f4e-a41b-9b52274fc5ab",
+      "title": "Astronomische Weltbilder zeitlich einordnen (GK)",
+      "titleEn": "Chronologically Classify Astronomical Worldviews (Basic Course)",
+      "description": "Die lernende Person kann zentrale astronomische Weltbilder (ptolemäisch, kopernikanisch, newtonsch) grob zeitlich einordnen.",
+      "descriptionEn": "The learner can roughly classify key astronomical worldviews (Ptolemaic, Copernican, Newtonian) chronologically.",
+      "weight": 0.9,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "89fcbe4b-309f-404e-afca-28ae977ae578",
+      "title": "Geozentrisches und heliozentrisches Weltbild vergleichen (GK)",
+      "titleEn": "Compare Geocentric and Heliocentric Worldviews (Basic Course)",
+      "description": "Die lernende Person kann geozentrisches und heliozentrisches Weltbild anhand zentraler Strukturmerkmale vergleichen.",
+      "descriptionEn": "The learner can compare geocentric and heliocentric worldviews using key structural features.",
       "weight": 0.9,
       "tags": [
         "GK"
       ],
       "contains": [],
       "requires": [
-        "06012d22-7495-4b9d-8ea5-bea7c8dc45e5"
+        "e543c153-2598-4f4e-a41b-9b52274fc5ab"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "3c47ef22-05c5-4353-9453-b7815386a487",
+      "title": "Newtons Beitrag zur Erklärung von Planetenbewegungen erläutern (GK)",
+      "titleEn": "Explain Newton's Contribution to Planetary Motion (Basic Course)",
+      "description": "Die lernende Person kann erläutern, warum Newtons Gravitationsphysik ein vertieftes Verständnis der Planetenbewegung ermöglicht.",
+      "descriptionEn": "The learner can explain why Newtonian gravitational physics enables a deeper understanding of planetary motion.",
+      "weight": 0.9,
+      "tags": [
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "89fcbe4b-309f-404e-afca-28ae977ae578"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -2592,15 +2922,83 @@
       "id": "566d9268-e1d6-4454-b8c9-71030a5e5fc6",
       "title": "Astronomische Weltbilder vergleichen (LK)",
       "titleEn": "Compare Astronomical Worldviews (Advanced Course)",
-      "description": "Die lernende Person kann die Entwicklung des astronomischen Weltbildes von der Antike bis zur Neuzeit (Ptolemäus -> Kopernikus -> Kepler -> Newton) fachlich und zeitlich einordnen. Sie kann erläutern, wie Johannes Kepler die Planetenbewegung erstmals korrekt beschreibt und wie Isaac Newton diese Bewegung mithilfe der Gravitationsphysik kausal erklärt. Dabei kann sie den Übergang von geometrischen Modellen zu einer dynamischen, physikalisch begründeten Beschreibung des Sonnensystems darstellen.",
-      "descriptionEn": "The learner can classify the development of the astronomical worldview from antiquity to modern times (Ptolemy -> Copernicus -> Kepler -> Newton) in subject-specific and chronological terms. They can explain how Johannes Kepler first described planetary motion correctly and how Isaac Newton causally explained this motion using gravitational physics. They can present the transition from geometric models to a dynamic, physically grounded description of the solar system.",
+      "description": "Cluster zur vertieften historischen und fachlichen Einordnung astronomischer Weltbilder im Leistungskurs.",
+      "descriptionEn": "Cluster for advanced historical and conceptual classification of astronomical worldviews in the advanced course.",
+      "weight": 0.9,
+      "tags": [
+        "LK"
+      ],
+      "contains": [
+        "77efb394-bab0-43c8-8773-503180a5f86f",
+        "da596646-5da9-416e-9219-7d9d40403978",
+        "6b0a502c-a141-4d8f-b910-7c7cf483363d"
+      ],
+      "requires": [
+        "06012d22-7495-4b9d-8ea5-bea7c8dc45e5"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "77efb394-bab0-43c8-8773-503180a5f86f",
+      "title": "Entwicklung astronomischer Weltbilder rekonstruieren (LK)",
+      "titleEn": "Reconstruct Development of Astronomical Worldviews (Advanced Course)",
+      "description": "Die lernende Person kann die Entwicklung des astronomischen Weltbildes von Ptolemäus bis Newton fachlich und zeitlich strukturieren.",
+      "descriptionEn": "The learner can structure the development of astronomical worldviews from Ptolemy to Newton in subject-specific and chronological terms.",
+      "weight": 0.9,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "da596646-5da9-416e-9219-7d9d40403978",
+      "title": "Keplers Beschreibung und Newtons Erklärung unterscheiden (LK)",
+      "titleEn": "Distinguish Kepler's Description and Newton's Explanation (Advanced Course)",
+      "description": "Die lernende Person kann den Unterschied zwischen Keplers kinematischer Beschreibung und Newtons dynamischer Erklärung fachlich darstellen.",
+      "descriptionEn": "The learner can present the difference between Kepler's kinematic description and Newton's dynamic explanation.",
       "weight": 0.9,
       "tags": [
         "LK"
       ],
       "contains": [],
       "requires": [
-        "06012d22-7495-4b9d-8ea5-bea7c8dc45e5"
+        "77efb394-bab0-43c8-8773-503180a5f86f"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "6b0a502c-a141-4d8f-b910-7c7cf483363d",
+      "title": "Übergang von geometrischen zu dynamischen Modellen darstellen (LK)",
+      "titleEn": "Describe Transition from Geometric to Dynamic Models (Advanced Course)",
+      "description": "Die lernende Person kann den Übergang von geometrischen Weltmodellen zu einer physikalisch begründeten dynamischen Beschreibung erläutern.",
+      "descriptionEn": "The learner can explain the transition from geometric world models to a physically grounded dynamic description.",
+      "weight": 0.9,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "da596646-5da9-416e-9219-7d9d40403978"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -3356,8 +3754,67 @@
       "id": "b1736d6b-4bd4-4cc9-99eb-539bbccb27a4",
       "title": "Bewertung von Energiesparmaßnahmen und Klimawandel",
       "titleEn": "Evaluating Energy Saving Measures and Climate Change",
-      "description": "Die lernende Person kann Wirkungsgrade, Energieumwandlungen und Wärmeverluste nutzen, um Energiesparmaßnahmen zu beurteilen und deren Bedeutung für Klimaschutz zu diskutieren.",
-      "descriptionEn": "The learner can use efficiencies, energy conversions, and heat losses to evaluate energy-saving measures and discuss their relevance for climate protection.",
+      "description": "Cluster zur fachlichen Bewertung von Energieeffizienzmaßnahmen und deren klimapolitischer Einordnung.",
+      "descriptionEn": "Cluster for scientific evaluation of energy-efficiency measures and their climate-policy interpretation.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [
+        "7a5dcba6-4878-4e64-816b-c1e3ab797c93",
+        "a905db70-c1a1-4884-8bc0-6323b97375a3"
+      ],
+      "requires": [
+        "ad9d1b14-5690-4160-9ca8-b98d182d2c36"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_MATERIE"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "7a5dcba6-4878-4e64-816b-c1e3ab797c93",
+      "title": "Energiesparmaßnahmen physikalisch bewerten",
+      "titleEn": "Physically Evaluate Energy Saving Measures",
+      "description": "Die lernende Person kann Energiesparmaßnahmen mit Wirkungsgraden, Energieumwandlungen und Verlustmechanismen physikalisch bewerten.",
+      "descriptionEn": "The learner can physically evaluate energy-saving measures using efficiencies, energy conversions, and loss mechanisms.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_MATERIE"
+        ],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "a905db70-c1a1-4884-8bc0-6323b97375a3",
+      "title": "Klimawirkungen von Energieentscheidungen fachlich diskutieren",
+      "titleEn": "Discuss Climate Impacts of Energy Decisions Scientifically",
+      "description": "Die lernende Person kann Ergebnisse physikalischer Bewertungen auf Klimawirkungen beziehen und fachlich begründet diskutieren.",
+      "descriptionEn": "The learner can relate results of physical evaluations to climate impacts and discuss them with scientific reasoning.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -3366,7 +3823,7 @@
       ],
       "contains": [],
       "requires": [
-        "ad9d1b14-5690-4160-9ca8-b98d182d2c36"
+        "7a5dcba6-4878-4e64-816b-c1e3ab797c93"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -3796,8 +4253,56 @@
       "id": "c30480e0-0d9c-479b-9352-78b36a9aadf5",
       "title": "Anwendungsbeispiele für Drehbewegungen deuten",
       "titleEn": "Interpret Application Examples for Rotational Motions",
-      "description": "Die lernende Person kann anwendungsbezogene Beispiele wie Pirouetten, Fahrraddynamik oder Kreiselstabilisierung mithilfe der Konzepte Drehmoment, Drehimpuls und Trägheitsmoment qualitativ erklären.",
-      "descriptionEn": "The learner can qualitatively explain application-oriented examples such as pirouettes, bicycle dynamics, or gyroscope stabilization using the concepts of torque, angular momentum, and moment of inertia.",
+      "description": "Cluster zu kontextspezifischen Deutungen von Drehbewegungen in Sport und Technik.",
+      "descriptionEn": "Cluster for context-specific interpretations of rotational motion in sports and technology.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "ca8ac7d0-0c82-4880-9511-f81d9f35e9d4",
+        "633a03ff-0132-4aae-9889-18b065ebac83",
+        "66edd135-95e3-4e5a-b8f8-4f2fddcabdc8"
+      ],
+      "requires": [
+        "3a97ba17-23fe-4a8c-a7d8-5a58e2ccf9d3"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "ca8ac7d0-0c82-4880-9511-f81d9f35e9d4",
+      "title": "Pirouetten mit Drehimpuls deuten",
+      "titleEn": "Interpret Pirouettes Using Angular Momentum",
+      "description": "Die lernende Person kann Pirouetten durch Erhaltung des Drehimpulses und Änderungen des Trägheitsmoments qualitativ erklären.",
+      "descriptionEn": "The learner can qualitatively explain pirouettes through conservation of angular momentum and changes in moment of inertia.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "633a03ff-0132-4aae-9889-18b065ebac83",
+      "title": "Fahrraddynamik mit Kreiselwirkung erklären",
+      "titleEn": "Explain Bicycle Dynamics with Gyroscopic Effects",
+      "description": "Die lernende Person kann Stabilität und Lenkverhalten von Fahrrädern mit Drehmomenten und Kreiselwirkung qualitativ deuten.",
+      "descriptionEn": "The learner can qualitatively interpret bicycle stability and steering behavior using torques and gyroscopic effects.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -3805,7 +4310,30 @@
       ],
       "contains": [],
       "requires": [
-        "3a97ba17-23fe-4a8c-a7d8-5a58e2ccf9d3"
+        "ca8ac7d0-0c82-4880-9511-f81d9f35e9d4"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      }
+    },
+    {
+      "id": "66edd135-95e3-4e5a-b8f8-4f2fddcabdc8",
+      "title": "Kreiselstabilisierung technisch begründen",
+      "titleEn": "Technically Justify Gyroscopic Stabilization",
+      "description": "Die lernende Person kann Kreiselstabilisierung in technischen Anwendungen mithilfe von Drehimpuls- und Drehmomentargumenten begründen.",
+      "descriptionEn": "The learner can justify gyroscopic stabilization in technical applications using angular momentum and torque arguments.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "633a03ff-0132-4aae-9889-18b065ebac83"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -4227,8 +4755,56 @@
       "id": "f11d6674-dd8c-43b9-93c3-76dc3d6eb75c",
       "title": "Technische Anwendungen magnetischer Felder",
       "titleEn": "Technical Applications of Magnetic Fields",
-      "description": "Die lernende Person kann Anwendungen wie Geschwindigkeitsfilter, Hall-Effekt und Teilchenbeschleuniger qualitativ mit Lorentzkraft, Flussdichte und Bahnformen begründen.",
-      "descriptionEn": "The learner can qualitatively justify applications such as velocity filters, Hall effect, and particle accelerators using Lorentz force, flux density, and trajectory shapes.",
+      "description": "Cluster zu technischen Anwendungen magnetischer Felder in Sensorik, Filterung und Beschleunigerphysik.",
+      "descriptionEn": "Cluster for technical applications of magnetic fields in sensing, filtering, and accelerator physics.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "47c4036c-43af-43f3-b2cd-2e649af5caab",
+        "c8cb2c58-7894-4567-8f81-df61f702d414",
+        "6fd4d868-c7f3-4c06-9c57-2a4690cd858e"
+      ],
+      "requires": [
+        "30adb86b-0fc1-4d41-880f-2dd65645e2cf"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1"
+      }
+    },
+    {
+      "id": "47c4036c-43af-43f3-b2cd-2e649af5caab",
+      "title": "Hall-Effekt technisch einordnen",
+      "titleEn": "Classify the Hall Effect in Technical Contexts",
+      "description": "Die lernende Person kann den Hall-Effekt qualitativ erklären und seinen Nutzen für Sensorik und Messverfahren darstellen.",
+      "descriptionEn": "The learner can qualitatively explain the Hall effect and describe its use in sensing and measurement applications.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1"
+      }
+    },
+    {
+      "id": "c8cb2c58-7894-4567-8f81-df61f702d414",
+      "title": "Geschwindigkeitsfilter mit Lorentzkraft deuten",
+      "titleEn": "Interpret Velocity Filters Using Lorentz Force",
+      "description": "Die lernende Person kann das Funktionsprinzip von Geschwindigkeitsfiltern mithilfe von Lorentzkraft und Feldüberlagerung qualitativ deuten.",
+      "descriptionEn": "The learner can qualitatively interpret the operating principle of velocity filters using Lorentz force and field superposition.",
       "weight": 1,
       "tags": [
         "GK",
@@ -4236,7 +4812,30 @@
       ],
       "contains": [],
       "requires": [
-        "30adb86b-0fc1-4d41-880f-2dd65645e2cf"
+        "47c4036c-43af-43f3-b2cd-2e649af5caab"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1"
+      }
+    },
+    {
+      "id": "6fd4d868-c7f3-4c06-9c57-2a4690cd858e",
+      "title": "Teilchenbeschleuniger-Anwendungen fachlich begründen",
+      "titleEn": "Scientifically Justify Particle Accelerator Applications",
+      "description": "Die lernende Person kann typische Anwendungen von Teilchenbeschleunigern mithilfe von Feld- und Bahnargumenten fachlich begründen.",
+      "descriptionEn": "The learner can scientifically justify typical particle accelerator applications using field and trajectory arguments.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "c8cb2c58-7894-4567-8f81-df61f702d414"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -7762,8 +8361,70 @@
       "id": "81d10b3d-9b64-43b9-900e-c546f37f5d82",
       "title": "Beurteilung von Strahlungsrisiken und Kernenergie",
       "titleEn": "Assessing Radiation Risks and Nuclear Energy",
-      "description": "Die lernende Person kann Strahlungsrisiken, Schutzmaßnahmen und Nutzenabwägungen von Kernenergie sachlich beurteilen und Argumente mit physikalischen Grundlagen stützen.",
-      "descriptionEn": "The learner can assess radiation risks, protection measures, and benefit-risk tradeoffs of nuclear energy and support arguments with physical principles.",
+      "description": "Cluster zur fachlichen Bewertung von Strahlungsrisiken und kernenergetischen Entscheidungen.",
+      "descriptionEn": "Cluster for scientific evaluation of radiation risks and nuclear-energy decisions.",
+      "weight": 1.15,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [
+        "5bb5c8ee-561f-48db-af7a-5b845170125a",
+        "acf58900-191a-4a68-8da1-0fc132737a58"
+      ],
+      "requires": [
+        "e8148d5c-fa8e-4fc3-9018-5d96328a3f9e",
+        "b53bf31f-0cce-4831-b2cd-89e8b5bbe869"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_ENERGIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "Q4"
+      }
+    },
+    {
+      "id": "5bb5c8ee-561f-48db-af7a-5b845170125a",
+      "title": "Strahlungsrisiken mit physikalischen Größen beurteilen",
+      "titleEn": "Assess Radiation Risks Using Physical Quantities",
+      "description": "Die lernende Person kann Strahlungsrisiken anhand physikalischer Größen wie Dosis, Aktivität und Abschirmung fachlich beurteilen.",
+      "descriptionEn": "The learner can assess radiation risks using physical quantities such as dose, activity, and shielding.",
+      "weight": 1.15,
+      "tags": [
+        "GK",
+        "LK",
+        "Context"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_ENERGIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "Q4"
+      }
+    },
+    {
+      "id": "acf58900-191a-4a68-8da1-0fc132737a58",
+      "title": "Kernenergieoptionen mit physikalischen Kriterien bewerten",
+      "titleEn": "Evaluate Nuclear Energy Options with Physical Criteria",
+      "description": "Die lernende Person kann Optionen der Kernenergienutzung mit physikalischen Kriterien und Unsicherheiten strukturiert bewerten.",
+      "descriptionEn": "The learner can evaluate nuclear energy options in a structured way using physical criteria and uncertainties.",
       "weight": 1.15,
       "tags": [
         "GK",
@@ -7772,8 +8433,7 @@
       ],
       "contains": [],
       "requires": [
-        "e8148d5c-fa8e-4fc3-9018-5d96328a3f9e",
-        "b53bf31f-0cce-4831-b2cd-89e8b5bbe869"
+        "5bb5c8ee-561f-48db-af7a-5b845170125a"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
