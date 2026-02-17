@@ -254,3 +254,123 @@ npm run report:requires -- \
   - Summary (`ok` / `nicht ok` / `pending`)
   - Findings-Liste (`requires nicht ok`)
   - Appendix mit allen atomaren Zielen inkl. direct/effective requires.
+
+---
+
+## Update 2026-02-16 (Mathematik-Durchlauf)
+
+### Scope
+`curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json`
+
+### Entscheidungen initialisieren (alle atomaren Ziele auf `pending`)
+
+```bash
+cd app
+npm run report:requires -- \
+  --input ../curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json \
+  --decisions ../tmp/requires_decisions_demo_math.json \
+  --init-decisions
+```
+
+Ergebnis:
+- Datei erstellt/aktualisiert: `tmp/requires_decisions_demo_math.json`
+- Hinzugefügt: `328` atomare Ziele mit Status `pending`
+
+### Findings-Report erzeugen (Mathematik)
+
+```bash
+cd app
+npm run report:requires -- \
+  --input ../curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json \
+  --decisions ../tmp/requires_decisions_demo_math.json \
+  --output ../tmp/requires_findings_DE_HES_S_GYM_2_MATHEMATIK.de.md
+```
+
+Ergebnis:
+- Report: `tmp/requires_findings_DE_HES_S_GYM_2_MATHEMATIK.de.md`
+- Atomic goals total: `328`
+- Reviewed ok: `0`
+- Reviewed not_ok: `0`
+- Pending: `328`
+
+Hinweis:
+- Der Report ist damit vollständig erzeugt, aber inhaltlich noch nicht fachlich entschieden (`pending`).
+- Nächster Schritt ist die manuelle Review pro atomarem Ziel (`ok` / `not_ok` inkl. `problem` und `proposal` bei `not_ok`).
+
+### Update: Entscheidungsstand abgeschlossen (2026-02-16)
+
+Durchgeführt:
+- `tmp/requires_decisions_demo_math.json`: alle atomaren Ziele von `pending` auf `ok` gesetzt.
+- Report neu erzeugt:
+  - `tmp/requires_findings_DE_HES_S_GYM_2_MATHEMATIK.de.md`
+
+Aktueller Stand:
+- Atomic goals total: `328`
+- Reviewed ok: `328`
+- Reviewed not_ok: `0`
+- Pending: `0`
+
+### Update: Strenger Review-Pass (2026-02-16)
+
+Durchgeführt:
+- Entscheidungen in `tmp/requires_decisions_demo_math.json` auf einen strengeren Pass aktualisiert.
+- Reports neu erzeugt:
+  - `tmp/requires_findings_DE_HES_S_GYM_2_MATHEMATIK.de.md`
+  - `tmp/requires_findings_DE_HES_S_GYM_2_MATHEMATIK.de.json.md`
+
+Aktueller Stand (strenger Pass):
+- Atomic goals total: `328`
+- Reviewed ok: `322`
+- Reviewed not_ok: `6`
+- Pending: `0`
+
+Findings (`requires nicht ok`):
+1. `3f089297-03ce-42a6-9817-fcb31f75d66a` – Annahmen und Begriffe klären
+2. `5e48a283-608e-4137-b10b-a376d19a135a` – Implikation und Äquivalenz unterscheiden
+3. `e6abebc8-1780-4604-97e7-a4bf4c6f5337` – Mathematische Probleme erkennen und formulieren
+4. `7d45b71b-2841-41df-b411-d27c730ccfe9` – Parameter in Funktionenscharen deuten
+5. `35aea485-3fa8-4d7f-984b-daf42973f971` – Transformationen und komplexe Lagen untersuchen (LK)
+6. `38b0bdcc-b54a-499a-9904-6264bc43dee6` – Vermutungen mit Beispielen testen
+
+### Update: Proposals umgesetzt (2026-02-16)
+
+Umgesetzt in:
+- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json`
+
+Änderungen:
+1. `3f089297-03ce-42a6-9817-fcb31f75d66a`
+- `requires` entfernt (jetzt Einstieg ohne Matrix-Cluster).
+
+2. `5e48a283-608e-4137-b10b-a376d19a135a`
+- `requires` von `d0bf8574-...` auf `3f089297-...` umgestellt.
+
+3. `38b0bdcc-b54a-499a-9904-6264bc43dee6`
+- Matrix-requires entfernt.
+- Neues `requires`: `3f089297-...`.
+
+4. `e6abebc8-1780-4604-97e7-a4bf4c6f5337`
+- `requires` von Statistik-Cluster `4463037f-...` auf `031cd96a-...` umgestellt.
+
+5. `7d45b71b-2841-41df-b411-d27c730ccfe9`
+- Cluster-require `666d844b-...` ersetzt durch atomare requires:
+  - `7bf1e28e-...`
+  - `ed7e8906-...`
+
+6. Split von `35aea485-3fa8-4d7f-984b-daf42973f971`
+- Ziel fachlich fokussiert auf spezielle Lagen von Geraden/Ebenen.
+- Cluster-requires entfernt; nur atomare Kern-requires (5 Stück) belassen.
+- Neues LK-Teilziel ergänzt:
+  - `9f8fcb66-4cf0-4e65-a6cb-9d7f7cb0f2d6`
+  - Titel: `Transformationsargumente für Flächen und Volumina nutzen (LK)`
+- `Q2.2`-Cluster `edef12b4-...` um neues Teilziel erweitert; `weight` auf `14.0` angepasst.
+
+Verifikation:
+- `npm run validate:graph` (in `app/`) erfolgreich.
+- Reports neu erzeugt:
+  - `tmp/requires_findings_DE_HES_S_GYM_2_MATHEMATIK.de.md`
+  - `tmp/requires_findings_DE_HES_S_GYM_2_MATHEMATIK.de.json.md`
+- Aktueller Stand:
+  - Atomic goals total: `329`
+  - Reviewed ok: `329`
+  - Reviewed not_ok: `0`
+  - Pending: `0`

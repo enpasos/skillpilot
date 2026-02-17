@@ -434,9 +434,7 @@
         "LK"
       ],
       "contains": [],
-      "requires": [
-        "a82ae89e-d0f2-4615-81ec-78c79117958d"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
         "demandLevel": "AB1",
@@ -548,7 +546,7 @@
       ],
       "contains": [],
       "requires": [
-        "d0bf8574-890e-4f55-ac80-c3167b7a5309"
+        "3f089297-03ce-42a6-9817-fcb31f75d66a"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
@@ -662,8 +660,7 @@
       ],
       "contains": [],
       "requires": [
-        "5e4a153c-5f45-42eb-ac5e-9855984e29c2",
-        "1194630c-8ddf-402e-9fa4-def3efd38e02"
+        "3f089297-03ce-42a6-9817-fcb31f75d66a"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
@@ -7871,7 +7868,8 @@
       ],
       "contains": [],
       "requires": [
-        "666d844b-96ca-46f2-bf0a-235a73426e27"
+        "7bf1e28e-9e70-4c71-a87a-7d5e67d424ba",
+        "ed7e8906-d5a5-4ca7-8566-89b5b3034414"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
@@ -8131,7 +8129,7 @@
       ],
       "contains": [],
       "requires": [
-        "4463037f-9e55-4179-8d30-d40d1903c418"
+        "031cd96a-eef8-41f3-82e4-224f92b6f97f"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
@@ -9795,7 +9793,7 @@
       "titleEn": "Q2.2 Orientation and Movement in Space",
       "description": "Räumliche Koordinatensysteme, Vektoren im Raum, Skalarprodukt, Längen, Abstände und Winkel zur Beschreibung und Analyse von Bewegungen und Körpern im Raum.",
       "descriptionEn": "Spatial coordinate systems, vectors in space, scalar product, lengths, distances, and angles for describing and analyzing movements and bodies in space.",
-      "weight": 13.0,
+      "weight": 14.0,
       "tags": [
         "GK",
         "LK"
@@ -9806,7 +9804,8 @@
         "ac9f05b9-1308-4b9a-9a80-f76f3697c8a5",
         "1afea31b-6fad-435a-9f8c-dfd4eea3e975",
         "6fc94e4d-8ed9-417a-9181-875537a22b57",
-        "35aea485-3fa8-4d7f-984b-daf42973f971"
+        "35aea485-3fa8-4d7f-984b-daf42973f971",
+        "9f8fcb66-4cf0-4e65-a6cb-9d7f7cb0f2d6"
       ],
       "requires": [],
       "dimensionTags": {
@@ -10210,26 +10209,53 @@
     },
     {
       "id": "35aea485-3fa8-4d7f-984b-daf42973f971",
-      "title": "Transformationen und komplexe Lagen untersuchen (LK)",
-      "titleEn": "Investigate transformations and complex positions (advanced course)",
-      "description": "Die lernende Person kann spezielle Lagen von Geraden und Ebenen begründen, vektorielle Transformationsargumente nutzen und daraus Folgerungen für Flächen- oder Volumenberechnungen ziehen.",
-      "descriptionEn": "The learner can justify special positions of lines and planes, use vector transformation arguments, and draw conclusions for area or volume calculations.",
+      "title": "Spezielle Lagen von Geraden und Ebenen begründen (LK)",
+      "titleEn": "Justify special positions of lines and planes (advanced course)",
+      "description": "Die lernende Person kann besondere Lagebeziehungen von Geraden und Ebenen im Raum analysieren, rechnerisch begründen und die Ergebnisse geometrisch interpretieren.",
+      "descriptionEn": "The learner can analyze special positional relationships of lines and planes in space, justify them computationally, and interpret the results geometrically.",
       "weight": 1.0,
       "tags": [
         "LK"
       ],
       "contains": [],
       "requires": [
-        "6fc94e4d-8ed9-417a-9181-875537a22b57",
-        "1afea31b-6fad-435a-9f8c-dfd4eea3e975",
         "29d78e3d-c666-4ba2-b00b-91e9428a5cf7",
-        "dcdd8a42-2318-4a60-8c01-04e210a53164",
         "bad20033-7b35-4cab-869b-99b7590d8b0f",
         "5539d167-80c3-4563-b0ef-cc888e279945",
         "e6be9c6e-4397-4936-8f3f-ea978a7ab20c",
-        "d3dc75f8-3cfe-4e04-aa8c-4b083e4b3115",
-        "309a4b8c-e603-4b4b-bc5f-d6ad0877da50",
-        "e9f24ef5-7fe5-4033-8f8a-092cb9da9aa2"
+        "d3dc75f8-3cfe-4e04-aa8c-4b083e4b3115"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2"
+      },
+      "sourceRef": "KC2024, S.50, Q2.2 LK"
+    },
+    {
+      "id": "9f8fcb66-4cf0-4e65-a6cb-9d7f7cb0f2d6",
+      "title": "Transformationsargumente für Flächen und Volumina nutzen (LK)",
+      "titleEn": "Use transformation arguments for areas and volumes (advanced course)",
+      "description": "Die lernende Person kann vektorielle Transformationsargumente auf räumliche Konfigurationen anwenden und daraus Folgerungen für Flächen- oder Volumenberechnungen begründet ableiten.",
+      "descriptionEn": "The learner can apply vector transformation arguments to spatial configurations and derive justified conclusions for area or volume calculations.",
+      "weight": 1.0,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "35aea485-3fa8-4d7f-984b-daf42973f971",
+        "1afea31b-6fad-435a-9f8c-dfd4eea3e975",
+        "5539d167-80c3-4563-b0ef-cc888e279945",
+        "d3dc75f8-3cfe-4e04-aa8c-4b083e4b3115"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
