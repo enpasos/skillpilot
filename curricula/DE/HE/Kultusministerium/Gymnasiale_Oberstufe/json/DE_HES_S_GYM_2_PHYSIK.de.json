@@ -4422,6 +4422,8 @@
         "LK"
       ],
       "contains": [
+        "hes_phys_q1_charge_phenomena",
+        "hes_phys_q1_current_definition",
         "87d529ab-0a87-4214-9560-a5e102ba6e87",
         "2506276a-8365-4192-bd54-675378eca830",
         "f2a9d97f-c5f8-4756-94b0-1194abd0a37b",
@@ -4452,6 +4454,73 @@
       }
     },
     {
+      "id": "hes_phys_q1_charge_phenomena",
+      "title": "Ladungsphänomene und Reibungselektrizität",
+      "titleEn": "Charge Phenomena and Frictional Electricity",
+      "description": "Phänomenologischer Einstieg: Anziehung und Abstoßung, Ladungstrennung durch Reibung (Ballon, Haare) und der qualitative Kraftbegriff.",
+      "descriptionEn": "Phenomenological entry: attraction and repulsion, charge separation through friction (balloon, hair), and the qualitative concept of force.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Phenomenon"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER"
+        ],
+        "phase": "Q1"
+      },
+      "oerContent": {
+        "source": "Physik Libre v0.97",
+        "link": "https://physikbuch.schule/electricity.html#ladung-und-reibungselektrizitaet",
+        "sections": [
+          "12.1 Ladung und Reibungselektrizität"
+        ]
+      }
+    },
+    {
+      "id": "hes_phys_q1_current_definition",
+      "title": "Stromstärke als Ladungstransport",
+      "titleEn": "Current as Charge Transport",
+      "description": "Definition der Stromstärke als pro Zeit fließende Ladung ($I = \\Delta Q / \\Delta t$). Verknüpfung von Coulomb und Ampere.",
+      "descriptionEn": "Definition of electric current as charge flowing per time ($I = \\Delta Q / \\Delta t$), linking coulomb and ampere.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "hes_phys_q1_charge_phenomena"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER"
+        ],
+        "phase": "Q1"
+      },
+      "oerContent": {
+        "source": "Physik Libre v0.97",
+        "link": "https://physikbuch.schule/electricity.html#elektrischer-strom",
+        "sections": [
+          "12.6 Elektrischer Strom"
+        ]
+      }
+    },
+    {
       "id": "87d529ab-0a87-4214-9560-a5e102ba6e87",
       "title": "Radialsymmetrische elektrische Felder",
       "titleEn": "Radially Symmetric Electric Fields",
@@ -4464,7 +4533,7 @@
       ],
       "contains": [],
       "requires": [
-        "4831acd5-1106-4437-ae1e-630b3c653d27"
+        "hes_phys_q1_current_definition"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -4510,8 +4579,7 @@
       ],
       "contains": [],
       "requires": [
-        "2506276a-8365-4192-bd54-675378eca830",
-        "7ff5ae5e-2959-45af-aa6e-73aaaf128440"
+        "2506276a-8365-4192-bd54-675378eca830"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -4582,8 +4650,8 @@
         "eea19d9d-44b9-45c9-ba59-411af80c378a"
       ],
       "requires": [
-        "87d529ab-0a87-4214-9560-a5e102ba6e87",
-        "0436c8fc-b849-4cab-84d7-32e92c0d94a9"
+        "f2a9d97f-c5f8-4756-94b0-1194abd0a37b",
+        "52c3d2e8-6634-4806-b84b-3709e3c4aef1"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -7303,8 +7371,8 @@
     },
     {
       "id": "9e048bfc-694b-4557-8eea-a288383b5d73",
-      "title": "Methode: Lösungsansatz für Differenzialgleichungen (Exponentialansatz)",
-      "titleEn": "Method: Exponential Ansatz for Differential Equations",
+      "title": "Methode: Lösungsansatz für DGL (Exponentialfunktion)",
+      "titleEn": "Method: Ansatz for ODEs (Exponential Function)",
       "description": "Die lernende Person kann bei einfachen physikalischen Differenzialgleichungen (z. B. RC-Entladung) einen Exponentialansatz wählen und die Lösung durch Ableiten überprüfen.",
       "descriptionEn": "The learner can choose an exponential ansatz for simple physics differential equations (e.g., RC discharge) and verify the solution by differentiation.",
       "weight": 1,
@@ -7313,7 +7381,9 @@
         "Method"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "ce2bafec-2a6d-4191-84c5-79c61e0f0284"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
