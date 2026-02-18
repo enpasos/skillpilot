@@ -7303,13 +7303,14 @@
     },
     {
       "id": "9e048bfc-694b-4557-8eea-a288383b5d73",
-      "title": "Methode: Differenzialgleichungen lösen",
-      "titleEn": "Method: Solve Differential Equations",
-      "description": "Lineare Differenzialgleichungen 1. Ordnung in Physik-Kontexten (z. B. RC-Entladung) lösen und Ergebnisse interpretieren.",
-      "descriptionEn": "Solve linear first-order differential equations in physics contexts (e.g., RC discharge) and interpret results.",
+      "title": "Methode: Lösungsansatz für Differenzialgleichungen (Exponentialansatz)",
+      "titleEn": "Method: Exponential Ansatz for Differential Equations",
+      "description": "Die lernende Person kann bei einfachen physikalischen Differenzialgleichungen (z. B. RC-Entladung) einen Exponentialansatz wählen und die Lösung durch Ableiten überprüfen.",
+      "descriptionEn": "The learner can choose an exponential ansatz for simple physics differential equations (e.g., RC discharge) and verify the solution by differentiation.",
       "weight": 1,
       "tags": [
-        "LK"
+        "LK",
+        "Method"
       ],
       "contains": [],
       "requires": [],
@@ -7329,16 +7330,15 @@
       "id": "5277de22-78fd-4c40-b21d-53249006daae",
       "title": "Linearbeschleuniger modellieren",
       "titleEn": "Model Linear Accelerator",
-      "description": "Die lernende Person kann lineare Beschleunigerketten und relativistische Effekte qualitativ erläutern.",
-      "descriptionEn": "The learner can qualitatively explain linear accelerator chains and relativistic effects.",
+      "description": "Die lernende Person kann lineare Beschleunigerketten klassisch modellieren und den Übergang zu relativistischen Korrekturen bei sehr hohen Geschwindigkeiten begründen.",
+      "descriptionEn": "The learner can model linear accelerator stages classically and justify the transition to relativistic corrections at very high speeds.",
       "weight": 1,
       "tags": [
         "LK"
       ],
       "contains": [],
       "requires": [
-        "8dc20eba-73f3-46db-80b8-9f3eb306ad86",
-        "5ac6578f-8df1-4950-8db9-95650562809b"
+        "8dc20eba-73f3-46db-80b8-9f3eb306ad86"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -7355,16 +7355,18 @@
     },
     {
       "id": "5ac6578f-8df1-4950-8db9-95650562809b",
-      "title": "Grenzen der klassischen Mechanik (v -> c)",
-      "titleEn": "Limits of Classical Mechanics (v -> c)",
-      "description": "Qualitative Einführung in relativistische Effekte bei hohen Geschwindigkeiten und die Grenzen klassischer Modelle.",
-      "descriptionEn": "Qualitative introduction to relativistic effects at high speeds and the limits of classical models.",
+      "title": "Exkurs: Relativistische Massenzunahme (Linearbeschleuniger)",
+      "titleEn": "Excursus: Relativistic Mass Increase (Linear Accelerator)",
+      "description": "Die lernende Person kann am Beispiel des Linearbeschleunigers erläutern, warum klassische Formeln bei v -> c an Grenzen stoßen, und die relativistische Massenzunahme als Phänomen einordnen (ohne vertiefte Relativitätstheorie).",
+      "descriptionEn": "Using the linear accelerator as an example, the learner can explain why classical formulas reach limits as v -> c and classify relativistic mass increase as a phenomenon (without full relativity theory).",
       "weight": 1,
       "tags": [
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "5277de22-78fd-4c40-b21d-53249006daae"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -7416,8 +7418,7 @@
       ],
       "contains": [],
       "requires": [
-        "30adb86b-0fc1-4d41-880f-2dd65645e2cf",
-        "5ac6578f-8df1-4950-8db9-95650562809b"
+        "30adb86b-0fc1-4d41-880f-2dd65645e2cf"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
