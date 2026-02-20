@@ -4426,16 +4426,13 @@
         "hes_phys_q1_current_definition",
         "87d529ab-0a87-4214-9560-a5e102ba6e87",
         "2506276a-8365-4192-bd54-675378eca830",
-        "f2a9d97f-c5f8-4756-94b0-1194abd0a37b",
-        "ce2bafec-2a6d-4191-84c5-79c61e0f0284",
+        "hes_phys_q1_capacitor_cluster",
         "c662a457-2362-4037-999c-5f96bb8cb38d",
         "8dc20eba-73f3-46db-80b8-9f3eb306ad86",
         "7ccd6418-e582-43cc-9adc-892b2211e2a4",
         "653a9072-5b70-4535-b1f8-c54d578502d4",
         "10de95ed-5eaa-4868-8070-b462a1d6d805",
-        "33f80f1a-8d83-4322-93a3-ed2169adc1e2",
-        "33d33ffd-7337-44af-b6ba-521129c80784",
-        "9e048bfc-694b-4557-8eea-a288383b5d73"
+        "33f80f1a-8d83-4322-93a3-ed2169adc1e2"
       ],
       "requires": [],
       "dimensionTags": {
@@ -4561,6 +4558,38 @@
         "demandLevel": "AB1",
         "processCompetencies": [],
         "guidingIdeas": [],
+        "phase": "Q1"
+      }
+    },
+    {
+      "id": "hes_phys_q1_capacitor_cluster",
+      "title": "Kondensator",
+      "titleEn": "Capacitor",
+      "description": "Cluster zum Kondensator: Feld und Kapazität des Plattenkondensators, Auf- und Entladevorgänge sowie die Modellierung über die Differentialgleichung des RC-Kreises.",
+      "descriptionEn": "Cluster on capacitors: field and capacitance of parallel-plate capacitors, charging/discharging processes, and modeling via the differential equation of the RC circuit.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "f2a9d97f-c5f8-4756-94b0-1194abd0a37b",
+        "ce2bafec-2a6d-4191-84c5-79c61e0f0284",
+        "33d33ffd-7337-44af-b6ba-521129c80784",
+        "9e048bfc-694b-4557-8eea-a288383b5d73"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER"
+        ],
         "phase": "Q1"
       }
     },
