@@ -4422,16 +4422,14 @@
         "LK"
       ],
       "contains": [
-        "hes_phys_q1_charge_phenomena",
-        "hes_phys_q1_current_definition",
+        "02c17e1d-e72e-415d-9dc7-8af455734a85",
+        "01894678-aaba-425d-bfd7-99fcd2af96e4",
         "87d529ab-0a87-4214-9560-a5e102ba6e87",
         "2506276a-8365-4192-bd54-675378eca830",
-        "hes_phys_q1_capacitor_cluster",
+        "8f15d181-f194-4bc8-b452-3c12e19b5fdb",
         "c662a457-2362-4037-999c-5f96bb8cb38d",
         "8dc20eba-73f3-46db-80b8-9f3eb306ad86",
-        "7ccd6418-e582-43cc-9adc-892b2211e2a4",
         "653a9072-5b70-4535-b1f8-c54d578502d4",
-        "10de95ed-5eaa-4868-8070-b462a1d6d805",
         "33f80f1a-8d83-4322-93a3-ed2169adc1e2"
       ],
       "requires": [],
@@ -4449,7 +4447,7 @@
       }
     },
     {
-      "id": "hes_phys_q1_charge_phenomena",
+      "id": "02c17e1d-e72e-415d-9dc7-8af455734a85",
       "title": "Ladungsphänomene und Reibungselektrizität",
       "titleEn": "Charge Phenomena and Frictional Electricity",
       "description": "Phänomenologischer Einstieg: Anziehung und Abstoßung, Ladungstrennung durch Reibung (Ballon, Haare) und der qualitative Kraftbegriff.",
@@ -4482,7 +4480,7 @@
       }
     },
     {
-      "id": "hes_phys_q1_current_definition",
+      "id": "01894678-aaba-425d-bfd7-99fcd2af96e4",
       "title": "Stromstärke als Ladungstransport",
       "titleEn": "Current as Charge Transport",
       "description": "Definition der Stromstärke als pro Zeit fließende Ladung ($I = \\Delta Q / \\Delta t$). Verknüpfung von Coulomb und Ampere.",
@@ -4494,7 +4492,7 @@
       ],
       "contains": [],
       "requires": [
-        "hes_phys_q1_charge_phenomena"
+        "02c17e1d-e72e-415d-9dc7-8af455734a85"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -4528,7 +4526,7 @@
       ],
       "contains": [],
       "requires": [
-        "hes_phys_q1_current_definition"
+        "01894678-aaba-425d-bfd7-99fcd2af96e4"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -4562,11 +4560,11 @@
       }
     },
     {
-      "id": "hes_phys_q1_capacitor_cluster",
+      "id": "8f15d181-f194-4bc8-b452-3c12e19b5fdb",
       "title": "Kondensator",
       "titleEn": "Capacitor",
-      "description": "Cluster zum Kondensator: Feld und Kapazität des Plattenkondensators, Auf- und Entladevorgänge sowie die Modellierung über die Differentialgleichung des RC-Kreises.",
-      "descriptionEn": "Cluster on capacitors: field and capacitance of parallel-plate capacitors, charging/discharging processes, and modeling via the differential equation of the RC circuit.",
+      "description": "Cluster zum Kondensator: Feld und Kapazität des Plattenkondensators, Polarisation und Dielektrika, Auf- und Entladevorgänge sowie die Modellierung über die Differentialgleichung des RC-Kreises.",
+      "descriptionEn": "Cluster on capacitors: field and capacitance of parallel-plate capacitors, polarization and dielectrics, charging/discharging processes, and modeling via the differential equation of the RC circuit.",
       "weight": 1,
       "tags": [
         "GK",
@@ -4575,6 +4573,7 @@
       "contains": [
         "f2a9d97f-c5f8-4756-94b0-1194abd0a37b",
         "ce2bafec-2a6d-4191-84c5-79c61e0f0284",
+        "10de95ed-5eaa-4868-8070-b462a1d6d805",
         "33d33ffd-7337-44af-b6ba-521129c80784",
         "9e048bfc-694b-4557-8eea-a288383b5d73"
       ],
@@ -7260,33 +7259,6 @@
           "LI_KOSMOS"
         ],
         "phase": "Q4"
-      }
-    },
-    {
-      "id": "7ccd6418-e582-43cc-9adc-892b2211e2a4",
-      "title": "Feldkonzept und Flächenladungsdichte verknüpfen",
-      "titleEn": "Link Field Concept and Surface Charge Density",
-      "description": "Die lernende Person kann den Feldbegriff formal fassen, Flächenladungsdichten bestimmen und daraus Feldlinienbilder herleiten.",
-      "descriptionEn": "The learner can formally conceptualize the field concept, determine surface charge densities, and derive field line diagrams from them.",
-      "weight": 1,
-      "tags": [
-        "LK"
-      ],
-      "contains": [],
-      "requires": [
-        "87d529ab-0a87-4214-9560-a5e102ba6e87"
-      ],
-      "dimensionTags": {
-        "framework": "hessen-kc-2024-physics",
-        "demandLevel": "AB2",
-        "processCompetencies": [
-          "PK1_EXPERIMENTIEREN",
-          "PK2_MODELLIEREN"
-        ],
-        "guidingIdeas": [
-          "LI_FELDER"
-        ],
-        "phase": "Q1"
       }
     },
     {
