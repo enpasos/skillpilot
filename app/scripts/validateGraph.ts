@@ -41,12 +41,13 @@ const allowedLeitideen = new Set([
   'BIO_STOFF_ENERGIE',
   'BIO_STEUERUNG_REGELUNG',
   'BIO_ENTWICKLUNG',
+  'BIO_INFORMATION_KOMMUNIKATION',
   'WW_POLITIK',
   'WW_WIRTSCHAFT',
   'WW_GESELLSCHAFT',
   'WW_NACHHALTIGKEIT',
 ])
-const kompetenzPattern = /^(K[1-6](\.[0-9]+)?|PK[0-9]+(_[A-ZÄÖÜ]+)?)$/
+const kompetenzPattern = /^(PK[0-9]+(_[A-ZÄÖÜ]+)?|K(1[0-4]|[1-9])(\.[0-9]+)?|E(1[0-7]|[1-9])(\.[0-9]+)?|B(1[0-2]|[1-9])(\.[0-9]+)?)$/
 
 const PHYSICS_LANDSCAPE_ID = '24f2ca0f-b94a-444e-bb70-677cb6f85c02'
 const PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID = 'b36bb565-f304-47c4-b44e-012dd9ff7a1a'
