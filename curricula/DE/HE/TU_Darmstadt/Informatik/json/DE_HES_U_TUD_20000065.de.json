@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000065",
   "goals": [
     {
+      "id": "2ed9d96a-5175-5ff2-9d3c-030f3a6e5759",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000065",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "c7343918-0853-5c1e-b24a-3d96ed2a87e8",
       "title": "TK1: Verteilte Systeme und Algorithmen",
       "titleEn": "TK1: Verteilte Systeme und Algorithmen",
       "description": "Erfolgreicher Abschluss des Moduls \"TK1: Verteilte Systeme und Algorithmen\".",
       "descriptionEn": "Successful completion of module \"TK1: Verteilte Systeme und Algorithmen\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-0065",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "2ed9d96a-5175-5ff2-9d3c-030f3a6e5759"
+      ],
+      "contains": [
+        "2ed9d96a-5175-5ff2-9d3c-030f3a6e5759"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

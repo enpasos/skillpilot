@@ -20,7 +20,7 @@
       "titleEn": "Projective Geometry 1 – Full Module",
       "description": "Nach erfolgreichem Abschluss können Studierende sehen, wie projektive Geometrie eine breite Grundlage für viele (scheinbar) unterschiedliche geometrische Strukturen bildet. Sie können einen projektiven Standpunkt auf verschiedene geometrische Strukturen anwenden und verstehen die Rolle von Transformationsgruppen und Algebra in diesem Kontext.",
       "descriptionEn": "After successful completion of the module students are able to see how projective geometry forms a broad basis for many (seemingly) different geometric structures. They are able to apply a projective viewpoint to various geometric structures. They understand the role of transformation groups and algebra in this context.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:richter_gebert_j_rgen"
       ],
       "contains": [
+        "d1d657e0-0859-58cb-8e97-2a7158410495",
         "9f74e103-74f3-5641-b8e1-464d7dbfc1a2",
         "60c6bb94-d633-5bc3-bf8b-0a9a8b0da1b7",
         "03aabd59-7cfe-5d71-a770-e4cd1576e424",
@@ -44,6 +45,7 @@
         "81037105-f9e2-5704-a978-8047df718c66"
       ],
       "requires": [
+        "d1d657e0-0859-58cb-8e97-2a7158410495",
         "8eb1605b-fa70-511b-bbe4-28173d359c3b",
         "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
         "834d5562-2d6c-5a80-8702-722337eb3fa4"
@@ -379,7 +381,7 @@
       "titleEn": "Real and Complex Projective Geometry",
       "description": "Zusammenfassender Cluster: Projektive Geometrie über R und C und der Umgang mit typischen Objekten und Argumenten in beiden Settings.",
       "descriptionEn": "Summary cluster: projective geometry over R and C and working with typical objects and arguments in both settings.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3203"
@@ -696,6 +698,28 @@
       }
     },
     {
+      "id": "d1d657e0-0859-58cb-8e97-2a7158410495",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3203",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "81037105-f9e2-5704-a978-8047df718c66",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -710,7 +734,9 @@
         "vocabularySource": "/data/ma3203_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "d1d657e0-0859-58cb-8e97-2a7158410495"
+      ],
       "dimensionTags": {
         "framework": "tum-ma3203",
         "demandLevel": "AB1",

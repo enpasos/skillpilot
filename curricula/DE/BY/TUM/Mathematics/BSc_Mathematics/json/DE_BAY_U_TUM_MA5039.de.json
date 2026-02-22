@@ -20,7 +20,7 @@
       "titleEn": "Fourier and Laplace Transforms – Full Module",
       "description": "Zusammenfassender Cluster: Grundlagen und Anwendungen der Fourier- und Laplace-Transformation.",
       "descriptionEn": "Summary cluster: fundamentals and applications of Fourier and Laplace transforms.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -32,12 +32,15 @@
         "responsible:lasser_rupert"
       ],
       "contains": [
+        "19df18a1-608c-531c-b17e-13ea310b4a1c",
         "0ac690ef-1a1f-4f02-9203-b83c746de06b",
         "771fd69b-4fd4-42d1-a6ee-86bdff60213b",
         "955e4065-2743-4e62-87eb-f7b2935207cf",
         "be9f3221-7ac4-5c06-924c-b7763cf4fbf2"
       ],
-      "requires": [],
+      "requires": [
+        "19df18a1-608c-531c-b17e-13ea310b4a1c"
+      ],
       "dimensionTags": {
         "framework": "tum-ma5039",
         "demandLevel": "AB2",
@@ -53,7 +56,7 @@
       "titleEn": "Define the Fourier Transform and Use Basic Properties",
       "description": "Die lernende Person kann die Fourier-Transformation definieren, grundlegende Eigenschaften (z.B. Linearität, Verschiebung, Skalierung) erläutern und in einfachen Beispielen anwenden.",
       "descriptionEn": "The learner can define the Fourier transform, explain basic properties (e.g., linearity, shift, scaling), and apply them in simple examples.",
-      "weight": 3.0,
+      "weight": 3,
       "tags": [
         "ects:9",
         "module:MA5039"
@@ -78,7 +81,7 @@
       "titleEn": "Use the Fourier Transform for Function Approximation",
       "description": "Die lernende Person kann Fourier-Koeffizienten bzw. Spektren zur Approximation von Funktionen nutzen und die Güte der Approximation in einfachen Situationen begründen.",
       "descriptionEn": "The learner can use Fourier coefficients or spectra to approximate functions and justify the quality of the approximation in simple settings.",
-      "weight": 3.0,
+      "weight": 3,
       "tags": [
         "ects:9",
         "module:MA5039"
@@ -105,7 +108,7 @@
       "titleEn": "Define the Laplace Transform and Apply It in Examples",
       "description": "Die lernende Person kann die Laplace-Transformation als Integraltransform definieren und sie in einfachen Beispielen zur Berechnung oder Vereinfachung von Ausdrücken einsetzen.",
       "descriptionEn": "The learner can define the Laplace transform as an integral transform and use it in simple examples to compute or simplify expressions.",
-      "weight": 3.0,
+      "weight": 3,
       "tags": [
         "ects:9",
         "module:MA5039"
@@ -119,6 +122,28 @@
       "dimensionTags": {
         "framework": "tum-ma5039",
         "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
+      "id": "19df18a1-608c-531c-b17e-13ea310b4a1c",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma5039",
+        "demandLevel": "AB1",
         "processCompetencies": [],
         "guidingIdeas": [],
         "phase": "Modul"
@@ -139,7 +164,9 @@
         "vocabularySource": "/data/ma5039_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "19df18a1-608c-531c-b17e-13ea310b4a1c"
+      ],
       "dimensionTags": {
         "framework": "tum-ma5039",
         "demandLevel": "AB1",

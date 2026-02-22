@@ -10,14 +10,36 @@
   "subject": "Polnisch",
   "goals": [
     {
+      "id": "22cafb13-f570-501c-b7e6-1455f9db04e9",
+      "title": "Warum Polnisch? - Relevanz und Orientierung",
+      "titleEn": "Why Polnisch? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Polnisch für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Polnisch matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "44807e72-96c6-576e-bd89-43954a0e281a",
       "title": "Jahrgangsstufe 11",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "22cafb13-f570-501c-b7e6-1455f9db04e9"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,7 +50,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -39,13 +61,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "de5177a9-8ab6-5212-8df4-3caa69d1f465",
       "title": "Polnisch (Gymnasium)",
       "contains": [
+        "22cafb13-f570-501c-b7e6-1455f9db04e9",
         "44807e72-96c6-576e-bd89-43954a0e281a",
         "fe788439-8cf6-5974-9027-317cc4be0555",
         "05cf291b-4511-5083-ac04-ace963b1461b"
@@ -57,8 +80,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "22cafb13-f570-501c-b7e6-1455f9db04e9"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

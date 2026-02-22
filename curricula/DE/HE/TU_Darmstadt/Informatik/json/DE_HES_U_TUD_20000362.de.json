@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000362",
   "goals": [
     {
+      "id": "629333db-14ca-5370-adde-0d2c8fab5fc3",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000362",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "7d4fcba5-f419-5728-8f11-8d4528ddf688",
       "title": "Formale Methoden der Informationssicherheit",
       "titleEn": "Formale Methoden der Informationssicherheit",
       "description": "Erfolgreicher Abschluss des Moduls \"Formale Methoden der Informationssicherheit\".",
       "descriptionEn": "Successful completion of module \"Formale Methoden der Informationssicherheit\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-0362",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "629333db-14ca-5370-adde-0d2c8fab5fc3"
+      ],
+      "contains": [
+        "629333db-14ca-5370-adde-0d2c8fab5fc3"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

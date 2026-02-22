@@ -20,7 +20,7 @@
       "titleEn": "Algebra 2 – Full Module",
       "description": "Zusammenfassender Cluster: Grundideen der kommutativen Algebra und Beziehungen zu affinen Varietäten.",
       "descriptionEn": "Summary cluster: basic ideas of commutative algebra and relations to affine varieties.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,13 +33,16 @@
         "responsible:kemper_gregor"
       ],
       "contains": [
+        "c1ef9b40-ac32-5da6-a987-156f70005d4f",
         "485954f8-d577-4f88-ad14-3df2a069640b",
         "3b5c21c2-3dde-4191-8fa9-1a0e25c38151",
         "198aa126-9883-4d89-b0f2-663bd2851df3",
         "fabcbc99-df16-412b-919b-1cf93dbd5c31",
         "cd6359d6-4db2-585b-affc-6db5ae68f335"
       ],
-      "requires": [],
+      "requires": [
+        "c1ef9b40-ac32-5da6-a987-156f70005d4f"
+      ],
       "dimensionTags": {
         "framework": "tum-ma5120",
         "demandLevel": "AB2",
@@ -157,6 +160,28 @@
       }
     },
     {
+      "id": "c1ef9b40-ac32-5da6-a987-156f70005d4f",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma5120",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "cd6359d6-4db2-585b-affc-6db5ae68f335",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -171,7 +196,9 @@
         "vocabularySource": "/data/ma5120_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "c1ef9b40-ac32-5da6-a987-156f70005d4f"
+      ],
       "dimensionTags": {
         "framework": "tum-ma5120",
         "demandLevel": "AB1",

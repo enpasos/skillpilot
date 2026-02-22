@@ -10,14 +10,36 @@
   "subject": "Spanisch",
   "goals": [
     {
+      "id": "54ebc139-4bc5-5a91-80ad-c0e0e2ddf011",
+      "title": "Warum Spanisch? - Relevanz und Orientierung",
+      "titleEn": "Why Spanisch? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Spanisch für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Spanisch matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "ec5fbbf4-0a70-54ca-a34d-b14b94764220",
       "title": "Jahrgangsstufe 11",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "54ebc139-4bc5-5a91-80ad-c0e0e2ddf011"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,7 +50,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -39,13 +61,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "637b2a24-7825-5943-95c9-c04d120ea9cc",
       "title": "Spanisch (Fachoberschule)",
       "contains": [
+        "54ebc139-4bc5-5a91-80ad-c0e0e2ddf011",
         "ec5fbbf4-0a70-54ca-a34d-b14b94764220",
         "3c1b13f8-8554-58fc-b879-d0e44f0b28e6",
         "b906dad0-d0c0-5d50-8a0a-b5e9d2bba6fd"
@@ -57,8 +80,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "54ebc139-4bc5-5a91-80ad-c0e0e2ddf011"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

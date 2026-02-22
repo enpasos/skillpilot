@@ -9,13 +9,35 @@
   "frameworkId": "tud-20001116",
   "goals": [
     {
+      "id": "ff12e3e9-8930-5bb3-8519-4eec107e8e2e",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20001116",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "430d0f7a-2249-58a9-90ef-6ebf14b1572a",
       "title": "Hands-On HCI",
       "titleEn": "Hands-On HCI",
       "description": "Erfolgreicher Abschluss des Moduls \"Hands-On HCI\".",
       "descriptionEn": "Successful completion of module \"Hands-On HCI\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-1116",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "ff12e3e9-8930-5bb3-8519-4eec107e8e2e"
+      ],
+      "contains": [
+        "ff12e3e9-8930-5bb3-8519-4eec107e8e2e"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

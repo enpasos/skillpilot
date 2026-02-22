@@ -14,7 +14,7 @@
       "titleEn": "Modellierung, Spezifikation und Semantik",
       "description": "Die lernende Person kann: Nach erfolgreicher Teilnahme an der Veranstaltung kennen Studierende grundlegende Konzepte und Methoden aus den Bereichen Modellierung, Spezifikation und Semantik; Prädikatenlogik und algebraische Konzepte zur Präzisierung von informell gegebenen Sachverhalten verwenden und die Angemessenheit formaler Modelle von Systemen beurteilen; diskrete Modelle schrittweise erstellen, mit den dabei notwendigen Entwurfsentscheidungen umgehen und während der formalen Modellierung als Hilfestellung auch informelle Notationen und Graphiken sinnvoll einsetzen; kennen eine Auswahl relevanter, formaler Spezifikationssprachen und mindestens eine solche Sprache einsetzen; verstehen die Trennung zwischen Syntax und Semantik formaler Sprachen und sowohl Aussagen über konkrete Programme und Spezifikationen als auch einfache Metaaussagen über Programmier- und Spezifikationssprachen beweisen; Systemanforderungen denotationell formalisieren und die Angemessenheit solcher Formalisierungen beurteilen.",
       "descriptionEn": "Die lernende Person kann: Nach erfolgreicher Teilnahme an der Veranstaltung kennen Studierende grundlegende Konzepte und Methoden aus den Bereichen Modellierung, Spezifikation und Semantik; Prädikatenlogik und algebraische Konzepte zur Präzisierung von informell gegebenen Sachverhalten verwenden und die Angemessenheit formaler Modelle von Systemen beurteilen; diskrete Modelle schrittweise erstellen, mit den dabei notwendigen Entwurfsentscheidungen umgehen und während der formalen Modellierung als Hilfestellung auch informelle Notationen und Graphiken sinnvoll einsetzen; kennen eine Auswahl relevanter, formaler Spezifikationssprachen und mindestens eine solche Sprache einsetzen; verstehen die Trennung zwischen Syntax und Semantik formaler Sprachen und sowohl Aussagen über konkrete Programme und Spezifikationen als auch einfache Metaaussagen über Programmier- und Spezifikationssprachen beweisen; Systemanforderungen denotationell formalisieren und die Angemessenheit solcher Formalisierungen beurteilen.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "ects:5",
         "module:20-00-0013",
@@ -27,8 +27,11 @@
         "guidingIdeas": [],
         "phase": "Pflichtbereich"
       },
-      "requires": [],
+      "requires": [
+        "de3fa9b1-e117-594d-a1cf-b6964a8b96df"
+      ],
       "contains": [
+        "de3fa9b1-e117-594d-a1cf-b6964a8b96df",
         "261e2316-04bf-5770-ab21-d8ff66bf6d21",
         "8e528556-a207-5a53-bd6d-245e03a757aa",
         "edb27b74-c182-5baa-ae8b-4e9a134544a3",
@@ -50,6 +53,27 @@
       }
     },
     {
+      "id": "de3fa9b1-e117-594d-a1cf-b6964a8b96df",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000013",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Pflichtbereich"
+      }
+    },
+    {
       "id": "261e2316-04bf-5770-ab21-d8ff66bf6d21",
       "title": "Modellierung, Spezifikation und Semantik – Lernziel 1",
       "titleEn": "Modellierung, Spezifikation und Semantik – Learning Outcome 1",
@@ -68,7 +92,9 @@
         "guidingIdeas": [],
         "phase": "Pflichtbereich"
       },
-      "requires": [],
+      "requires": [
+        "de3fa9b1-e117-594d-a1cf-b6964a8b96df"
+      ],
       "contains": [],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
     },

@@ -10,14 +10,36 @@
   "subject": "Französisch",
   "goals": [
     {
+      "id": "86e9e6b9-9859-5e8e-83ae-3e6362f476af",
+      "title": "Warum Französisch? - Relevanz und Orientierung",
+      "titleEn": "Why Französisch? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Französisch für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Französisch matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "a4e43b99-4f5e-5a72-9c8d-0b9be0126246",
       "title": "Jahrgangsstufe 12",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "86e9e6b9-9859-5e8e-83ae-3e6362f476af"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,13 +50,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "1b3586cf-1c0a-5346-aa46-c4124c9adb0e",
       "title": "Französisch (Berufsoberschule)",
       "contains": [
+        "86e9e6b9-9859-5e8e-83ae-3e6362f476af",
         "a4e43b99-4f5e-5a72-9c8d-0b9be0126246",
         "8d940cdf-0a98-5413-b020-316628f1eec3"
       ],
@@ -45,8 +68,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "86e9e6b9-9859-5e8e-83ae-3e6362f476af"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

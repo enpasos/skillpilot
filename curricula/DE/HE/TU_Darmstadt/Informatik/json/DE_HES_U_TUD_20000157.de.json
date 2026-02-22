@@ -14,7 +14,7 @@
       "titleEn": "Computer Vision",
       "description": "Die lernende Person kann Grundlagen der Computer Vision erläutern, Bild- und Videoanalyseverfahren erklären und grundlegende Bildanalyseaufgaben praktisch umsetzen.",
       "descriptionEn": "Die lernende Person kann Grundlagen der Computer Vision erläutern, Bild- und Videoanalyseverfahren erklären und grundlegende Bildanalyseaufgaben praktisch umsetzen.",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
         "ects:6",
         "module:20-00-0157",
@@ -27,8 +27,11 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
+      "requires": [
+        "10b69471-7db7-53ec-a729-fa374d189e33"
+      ],
       "contains": [
+        "10b69471-7db7-53ec-a729-fa374d189e33",
         "fac6997e-7e02-5858-bb9c-7e38f7e550ef",
         "44d70a46-3c27-5bbd-9eaa-da785b716b3d",
         "bc249df6-db2e-524a-8bcb-bf2c3f9e5cf4"
@@ -44,12 +47,33 @@
       }
     },
     {
+      "id": "10b69471-7db7-53ec-a729-fa374d189e33",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000157",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "fac6997e-7e02-5858-bb9c-7e38f7e550ef",
       "title": "Computer Vision – Lernziel 1",
       "titleEn": "Computer Vision – Lernziel 1",
       "description": "Die lernende Person kann die Grundlagen der Computer Vision erläutern.",
       "descriptionEn": "Die lernende Person kann die Grundlagen der Computer Vision erläutern.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "ects:6",
         "module:20-00-0157",
@@ -62,7 +86,9 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
+      "requires": [
+        "10b69471-7db7-53ec-a729-fa374d189e33"
+      ],
       "contains": [],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
     },
@@ -72,7 +98,7 @@
       "titleEn": "Computer Vision – Lernziel 2",
       "description": "Die lernende Person kann grundlegende Techniken der Bild- und Videoanalyse erklären, einschließlich ihrer Annahmen, mathematischen Formulierungen und Algorithmen.",
       "descriptionEn": "Die lernende Person kann grundlegende Techniken der Bild- und Videoanalyse erklären, einschließlich ihrer Annahmen, mathematischen Formulierungen und Algorithmen.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "ects:6",
         "module:20-00-0157",
@@ -95,7 +121,7 @@
       "titleEn": "Computer Vision – Lernziel 3",
       "description": "Die lernende Person kann grundlegende Bildanalyseaufgaben mit realistischen Bilddaten praktisch umsetzen.",
       "descriptionEn": "Die lernende Person kann grundlegende Bildanalyseaufgaben mit realistischen Bilddaten praktisch umsetzen.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "ects:6",
         "module:20-00-0157",

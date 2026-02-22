@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000216",
   "goals": [
     {
+      "id": "d86831c9-f7e9-57e8-bcdb-c80cd031b8a2",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000216",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "2bd0c0db-0e34-55df-84da-9eb717407a48",
       "title": "3D Animation & Visualisierung",
       "titleEn": "3D Animation & Visualisierung",
       "description": "Erfolgreicher Abschluss des Moduls \"3D Animation & Visualisierung\".",
       "descriptionEn": "Successful completion of module \"3D Animation & Visualisierung\".",
-      "weight": 3.0,
+      "weight": 3,
       "tags": [
+        "root",
         "ects:3",
         "module:20-00-0216",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "d86831c9-f7e9-57e8-bcdb-c80cd031b8a2"
+      ],
+      "contains": [
+        "d86831c9-f7e9-57e8-bcdb-c80cd031b8a2"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

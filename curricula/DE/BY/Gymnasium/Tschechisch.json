@@ -10,14 +10,36 @@
   "subject": "Tschechisch",
   "goals": [
     {
+      "id": "c09a1fe9-529b-5022-a541-a073b28f3d76",
+      "title": "Warum Tschechisch? - Relevanz und Orientierung",
+      "titleEn": "Why Tschechisch? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Tschechisch für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Tschechisch matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "fada773b-c6bb-5574-bffc-728e0cb78052",
       "title": "Jahrgangsstufe 11",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "c09a1fe9-529b-5022-a541-a073b28f3d76"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,7 +50,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -39,13 +61,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "31ccde1c-6733-5e7b-888c-885111a2ce59",
       "title": "Tschechisch (Gymnasium)",
       "contains": [
+        "c09a1fe9-529b-5022-a541-a073b28f3d76",
         "fada773b-c6bb-5574-bffc-728e0cb78052",
         "7fd2f437-be58-5f8b-acef-4e8b6b6113a5",
         "983cd7b4-717c-5871-b4d1-b6b0681153b2"
@@ -57,8 +80,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "c09a1fe9-529b-5022-a541-a073b28f3d76"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

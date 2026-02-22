@@ -13,12 +13,13 @@
       "titleEn": "IT Security (IN0042)",
       "description": "Die lernende Person kann grundlegende Methoden zum Schutz von Systemen und Daten anwenden.",
       "descriptionEn": "The learner can apply fundamental methods to protect systems and data.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:IN0042",
         "ects:5"
       ],
       "contains": [
+        "ef299b80-68ca-54d0-8e91-33eb7cbc0536",
         "fe82afe8-b455-507b-bc0e-0eb2f8cf7370",
         "8196c592-76ae-5f72-8ad4-8f3efdf93949",
         "5fb6f4c8-4d3d-54f9-a156-619261cafd6f",
@@ -26,7 +27,9 @@
         "25e2c8d7-3473-5631-9ea6-ff336235bbaa",
         "0cd58fac-1798-547f-9c8b-2141ca8a54c4"
       ],
-      "requires": [],
+      "requires": [
+        "ef299b80-68ca-54d0-8e91-33eb7cbc0536"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0042",
       "dimensionTags": {
         "phase": "Modul"
@@ -38,7 +41,7 @@
       "titleEn": "Security foundations",
       "description": "Die lernende Person kann zentrale Sicherheitsziele und Bedrohungsmodelle erläutern.",
       "descriptionEn": "The learner can explain core security goals and threat models.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0042"
       ],
@@ -52,17 +55,40 @@
       }
     },
     {
+      "id": "ef299b80-68ca-54d0-8e91-33eb7cbc0536",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-in0042",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "9bd75a9b-4201-552c-a480-a74f03be2f64",
       "title": "Sicherheitskonzepte und -ziele",
       "titleEn": "Security concepts and goals",
       "description": "Die lernende Person kann Vertraulichkeit, Integrität und Verfügbarkeit definieren.",
       "descriptionEn": "The learner can define confidentiality, integrity, and availability.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0042"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "ef299b80-68ca-54d0-8e91-33eb7cbc0536"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -73,7 +99,7 @@
       "titleEn": "Threats and attacks",
       "description": "Die lernende Person kann häufige Bedrohungen und Angriffsarten beschreiben.",
       "descriptionEn": "The learner can describe common threats and attack types.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0042"
       ],
@@ -89,7 +115,7 @@
       "titleEn": "Applied cryptography",
       "description": "Die lernende Person kann grundlegende kryptografische Methoden und Protokolle anwenden.",
       "descriptionEn": "The learner can use basic cryptographic methods and protocols.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0042"
       ],
@@ -110,7 +136,7 @@
       "titleEn": "Symmetric and public-key basics",
       "description": "Die lernende Person kann symmetrische Verschlüsselung, Public-Key-Verschlüsselung und Schlüsselaustausch erklären.",
       "descriptionEn": "The learner can explain symmetric encryption, public-key encryption, and key exchange.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0042"
       ],
@@ -126,7 +152,7 @@
       "titleEn": "Cryptographic services and protocols",
       "description": "Die lernende Person kann kryptografische Dienste und Protokollanwendungsfälle beschreiben.",
       "descriptionEn": "The learner can describe cryptographic services and protocol use cases.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0042"
       ],
@@ -142,7 +168,7 @@
       "titleEn": "Authentication and access control",
       "description": "Die lernende Person kann Zugriffsmechanismen entwerfen und anwenden.",
       "descriptionEn": "The learner can design and apply access mechanisms.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0042"
       ],
@@ -163,7 +189,7 @@
       "titleEn": "Identification and authentication",
       "description": "Die lernende Person kann Identifikations- und Authentifizierungsmechanismen erklären.",
       "descriptionEn": "The learner can explain identification and authentication mechanisms.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0042"
       ],
@@ -179,7 +205,7 @@
       "titleEn": "Authorization models",
       "description": "Die lernende Person kann Zugangskontrollkonzepte und -richtlinien anwenden.",
       "descriptionEn": "The learner can apply access control concepts and policies.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0042"
       ],
@@ -195,7 +221,7 @@
       "titleEn": "System security",
       "description": "Die lernende Person kann Schutzmechanismen auf Systemebene analysieren.",
       "descriptionEn": "The learner can analyze system-level protection mechanisms.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0042"
       ],
@@ -216,7 +242,7 @@
       "titleEn": "Secure system design",
       "description": "Die lernende Person kann Prinzipien des sicheren Systemdesigns anwenden.",
       "descriptionEn": "The learner can apply principles of secure system design.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0042"
       ],
@@ -232,7 +258,7 @@
       "titleEn": "Protection mechanisms",
       "description": "Die lernende Person kann grundlegende Schutz- und Härtungsmechanismen beschreiben.",
       "descriptionEn": "The learner can describe basic protection and hardening mechanisms.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0042"
       ],
@@ -248,7 +274,7 @@
       "titleEn": "Network security",
       "description": "Die lernende Person kann vernetzte Systeme sichern.",
       "descriptionEn": "The learner can secure networked systems.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0042"
       ],
@@ -269,7 +295,7 @@
       "titleEn": "Firewall concepts",
       "description": "Die lernende Person kann Firewall-Architekturen und -Richtlinien erklären.",
       "descriptionEn": "The learner can explain firewall architectures and policies.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0042"
       ],
@@ -285,7 +311,7 @@
       "titleEn": "Network security protocols",
       "description": "Die lernende Person kann Protokolle zur sicheren Kommunikation beschreiben.",
       "descriptionEn": "The learner can describe protocols for secure communication.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0042"
       ],
@@ -301,7 +327,7 @@
       "titleEn": "Risk and security management",
       "description": "Die lernende Person kann Sicherheitsrisiken in Organisationen verwalten.",
       "descriptionEn": "The learner can manage security risks in organizations.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0042"
       ],
@@ -322,7 +348,7 @@
       "titleEn": "IT risk management",
       "description": "Die lernende Person kann grundlegende Methoden des IT-Risikomanagements anwenden.",
       "descriptionEn": "The learner can apply basic IT risk management methods.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0042"
       ],
@@ -338,7 +364,7 @@
       "titleEn": "Security management processes",
       "description": "Die lernende Person kann betriebliche Sicherheitsmanagementpraktiken skizzieren.",
       "descriptionEn": "The learner can outline operational security management practices.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0042"
       ],

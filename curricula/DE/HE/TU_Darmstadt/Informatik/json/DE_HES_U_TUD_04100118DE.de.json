@@ -14,7 +14,7 @@
       "titleEn": "Mathematics I for Computer Science",
       "description": "Die lernende Person beherrscht die Grundlagen der Mathematik für Informatiker: Mengenlehre, Algebraische Strukturen, Lineare Algebra und Analysis (Folgen).",
       "descriptionEn": "The learner masters the foundations of mathematics for computer scientists: Set theory, algebraic structures, linear algebra, and analysis (sequences).",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "module:04-10-0118/de",
@@ -22,6 +22,7 @@
         "root"
       ],
       "contains": [
+        "2d796ab8-133c-5d42-b76b-6f5f0cbbab16",
         "f9c46d81-0882-560e-9958-e383054441ca",
         "060a76f6-f4bc-546b-96e1-214aa167d680",
         "3c3a189f-95b6-575f-94ad-588f53c66ba5",
@@ -31,7 +32,9 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": []
+      "requires": [
+        "2d796ab8-133c-5d42-b76b-6f5f0cbbab16"
+      ]
     },
     {
       "id": "f9c46d81-0882-560e-9958-e383054441ca",
@@ -53,6 +56,27 @@
       "requires": []
     },
     {
+      "id": "2d796ab8-133c-5d42-b76b-6f5f0cbbab16",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "framework": "tud-04100118de",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "392908ef-0323-50b1-8307-56621c6cb8fc",
       "title": "Mengenoperationen anwenden",
       "titleEn": "Apply Set Operations",
@@ -64,7 +88,9 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
+      "requires": [
+        "2d796ab8-133c-5d42-b76b-6f5f0cbbab16"
+      ],
       "contains": []
     },
     {
@@ -72,7 +98,7 @@
       "title": "Eigenschaften von Funktionen & Relationen",
       "titleEn": "Properties of Functions & Relations",
       "description": "Unterscheidung von injektiv, surjektiv, bijektiv. Äquivalenzrelationen erkennen und Äquivalenzklassen bilden.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "competence:understand"
       ],
@@ -88,7 +114,7 @@
       "titleEn": "Algebraic Structures & Number Theory",
       "description": "Gruppen, Ringe, Körper und Kryptographie-Grundlagen.",
       "descriptionEn": "Groups, rings, fields, and calligraphy basics.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "topic:algebra"
       ],
@@ -106,7 +132,7 @@
       "title": "Strukturen identifizieren (Gruppe, Ring, Körper)",
       "titleEn": "Identify Structures (Group, Ring, Field)",
       "description": "Prüfen, ob eine gegebene Menge mit Verknüpfung eine Gruppe, ein Ring oder ein Körper ist (Axiome prüfen).",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "competence:analyze"
       ],
@@ -121,7 +147,7 @@
       "title": "Modulare Arithmetik & RSA",
       "titleEn": "Modular Arithmetic & RSA",
       "description": "Rechnen in Z/nZ, Euklidischer Algorithmus und Durchführung des RSA-Verfahrens.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "competence:apply"
       ],
@@ -137,7 +163,7 @@
       "titleEn": "Vector Spaces & Linear Maps",
       "description": "Abstrakte Konzepte der Linearen Algebra.",
       "descriptionEn": "Abstract concepts of Linear Algebra.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "topic:linalg"
       ],
@@ -202,7 +228,7 @@
       "titleEn": "Matrices & Algorithms",
       "description": "Rechnen mit Matrizen und Lösen von LGS.",
       "descriptionEn": "Matrix calculus and solving linear systems.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "topic:linalg"
       ],
@@ -220,7 +246,7 @@
       "title": "Gauß-Algorithmus anwenden",
       "titleEn": "Apply Gaussian Elimination",
       "description": "Lineare Gleichungssysteme systematisch lösen und Lösungsraum angeben.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "competence:apply"
       ],
@@ -235,7 +261,7 @@
       "title": "Determinanten & Eigenwerte",
       "titleEn": "Determinants & Eigenvalues",
       "description": "Determinanten berechnen (Laplace, Sarrus) und Eigenwerte/Eigenvektoren bestimmen.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "competence:apply"
       ],
@@ -284,7 +310,7 @@
       "title": "Konvergenz untersuchen",
       "titleEn": "Investigate Convergence",
       "description": "Grenzwerte von Folgen berechnen, Konvergenzkriterien (Monotonie, Cauchy) anwenden.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "competence:analyze"
       ],

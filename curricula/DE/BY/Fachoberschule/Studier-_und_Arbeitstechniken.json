@@ -20,8 +20,28 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
+    },
+    {
+      "id": "40391732-1fe0-59ca-81d8-5a677af280bb",
+      "title": "Warum Studier- und Arbeitstechniken? - Relevanz und Orientierung",
+      "titleEn": "Why Studier- und Arbeitstechniken? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Studier- und Arbeitstechniken für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Studier- und Arbeitstechniken matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
     },
     {
       "id": "81b5fd4f-d770-59d7-b26c-2afe225921b2",
@@ -30,9 +50,11 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
+      "requires": [
+        "40391732-1fe0-59ca-81d8-5a677af280bb"
+      ],
       "contains": [],
-      "weight": 0.0
+      "weight": 0
     },
     {
       "id": "8b4e07a6-9983-5aa1-b298-4450f9063f2e",
@@ -43,7 +65,7 @@
       },
       "requires": [],
       "contains": [],
-      "weight": 0.0
+      "weight": 0
     },
     {
       "id": "c0cf7db3-8c45-5904-a864-d9a820bd8ced",
@@ -59,7 +81,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -71,7 +93,7 @@
       },
       "requires": [],
       "contains": [],
-      "weight": 0.0
+      "weight": 0
     },
     {
       "id": "04187438-7126-594c-9d13-82d8da0a23d5",
@@ -82,7 +104,7 @@
       },
       "requires": [],
       "contains": [],
-      "weight": 0.0
+      "weight": 0
     },
     {
       "id": "6700bc30-11b2-53d1-9521-4dad50051ef1",
@@ -93,7 +115,7 @@
       },
       "requires": [],
       "contains": [],
-      "weight": 0.0
+      "weight": 0
     },
     {
       "id": "5e2b0afa-36ad-5485-b5de-71d54d5d40bd",
@@ -104,7 +126,7 @@
       },
       "requires": [],
       "contains": [],
-      "weight": 0.0
+      "weight": 0
     },
     {
       "id": "af222ba8-25d3-5983-b6d1-4e7315b90e21",
@@ -115,7 +137,7 @@
       },
       "requires": [],
       "contains": [],
-      "weight": 0.0
+      "weight": 0
     },
     {
       "id": "a23a9929-bf81-59ba-9d99-45c7b421da90",
@@ -130,7 +152,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -142,7 +164,7 @@
       },
       "requires": [],
       "contains": [],
-      "weight": 0.0
+      "weight": 0
     },
     {
       "id": "ead933dd-808c-5381-98df-a737cce2c91b",
@@ -153,7 +175,7 @@
       },
       "requires": [],
       "contains": [],
-      "weight": 0.0
+      "weight": 0
     },
     {
       "id": "bd976a55-9a63-5354-89d2-ada54eddb917",
@@ -164,7 +186,7 @@
       },
       "requires": [],
       "contains": [],
-      "weight": 0.0
+      "weight": 0
     },
     {
       "id": "0107354f-864c-5004-b62c-e62082a77466",
@@ -175,7 +197,7 @@
       },
       "requires": [],
       "contains": [],
-      "weight": 0.0
+      "weight": 0
     },
     {
       "id": "951991c0-515d-524b-83e6-178b78287785",
@@ -189,13 +211,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "a0cb796b-cf47-578c-807c-6645348e22e4",
       "title": "Studier- und Arbeitstechniken (Fachoberschule)",
       "contains": [
+        "40391732-1fe0-59ca-81d8-5a677af280bb",
         "951991c0-515d-524b-83e6-178b78287785"
       ],
       "tags": [
@@ -205,8 +228,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "40391732-1fe0-59ca-81d8-5a677af280bb"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000130",
   "goals": [
     {
+      "id": "bf959b76-76f6-5829-a946-8d57c5c7e864",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000130",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "0ba5a41b-1fd7-5b35-ae26-2eb74dd049c7",
       "title": "Seminar Telekooperation",
       "titleEn": "Seminar Telekooperation",
       "description": "Erfolgreicher Abschluss des Moduls \"Seminar Telekooperation\".",
       "descriptionEn": "Successful completion of module \"Seminar Telekooperation\".",
-      "weight": 3.0,
+      "weight": 3,
       "tags": [
+        "root",
         "ects:3",
         "module:20-00-0130",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "bf959b76-76f6-5829-a946-8d57c5c7e864"
+      ],
+      "contains": [
+        "bf959b76-76f6-5829-a946-8d57c5c7e864"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

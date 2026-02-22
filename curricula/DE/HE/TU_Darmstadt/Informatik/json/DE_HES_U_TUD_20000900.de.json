@@ -14,7 +14,7 @@
       "titleEn": "Digitaltechnik",
       "description": "Die lernende Person kann: verstehen nach erfolgreichem Besuch der Veranstaltung die Konzepte und Grundelemente der digitalen Logik sowie ihre technologische Realisierung; diese Kenntnisse selbständig anwenden, um zielgerichtet kombinatorische und sequentielle Schaltungen zu konstruieren und in einer Hardware-Beschreibungssprache zu implementieren; digitale Schaltungen bezüglich funktionaler und nicht-funktionaler Eigenschaften analysieren.",
       "descriptionEn": "Die lernende Person kann: verstehen nach erfolgreichem Besuch der Veranstaltung die Konzepte und Grundelemente der digitalen Logik sowie ihre technologische Realisierung; diese Kenntnisse selbständig anwenden, um zielgerichtet kombinatorische und sequentielle Schaltungen zu konstruieren und in einer Hardware-Beschreibungssprache zu implementieren; digitale Schaltungen bezüglich funktionaler und nicht-funktionaler Eigenschaften analysieren.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "ects:5",
         "module:20-00-0900",
@@ -27,8 +27,11 @@
         "guidingIdeas": [],
         "phase": "Pflichtbereich"
       },
-      "requires": [],
+      "requires": [
+        "f84aedb6-8902-5b4d-a2f7-96bf79f41d92"
+      ],
       "contains": [
+        "f84aedb6-8902-5b4d-a2f7-96bf79f41d92",
         "7b2f0834-90b5-503b-a0d8-04f7b09ad677",
         "9bcd6699-faa7-5a6a-9c12-9c5eee5c5f16",
         "284fef8c-55a0-5b7a-9ad8-190ee7c0de91"
@@ -41,6 +44,27 @@
           "Sie können diese Kenntnisse selbständig anwenden, um zielgerichtet kombinatorische und sequentielle Schaltungen zu konstruieren und in einer Hardware-Beschreibungssprache zu implementieren.",
           "Sie können digitale Schaltungen bezüglich funktionaler und nicht-funktionaler Eigenschaften analysieren."
         ]
+      }
+    },
+    {
+      "id": "f84aedb6-8902-5b4d-a2f7-96bf79f41d92",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000900",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Pflichtbereich"
       }
     },
     {
@@ -62,7 +86,9 @@
         "guidingIdeas": [],
         "phase": "Pflichtbereich"
       },
-      "requires": [],
+      "requires": [
+        "f84aedb6-8902-5b4d-a2f7-96bf79f41d92"
+      ],
       "contains": [],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
     },

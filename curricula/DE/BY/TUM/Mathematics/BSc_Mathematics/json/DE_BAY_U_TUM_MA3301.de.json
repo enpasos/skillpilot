@@ -20,7 +20,7 @@
       "titleEn": "Numerics of Differential Equations – Full Module",
       "description": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, Basisalgorithmen zur Numerik gewöhnlicher und einfacher partieller Differentialgleichungen zu verstehen, zu beurteilen und anzuwenden. Sie verstehen Grundtechniken zur Beschreibung von Diskretisierungsfehlern und können diese anwenden. Sie haben gelernt, algorithmisch zu denken und komplexe Algorithmen am Computer zu realisieren.",
       "descriptionEn": "After successful completion of the module students are able to understand, assess, and apply basic algorithms for the numerical treatment of ordinary and simple partial differential equations. They understand fundamental techniques to describe discretization errors and can apply them. They have learned to think algorithmically and to implement complex algorithms on a computer.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:junge_oliver"
       ],
       "contains": [
+        "a2084162-81c6-58fb-bcc8-d1dacaef059d",
         "c42ff922-d417-5a61-82b4-43250be56308",
         "c90c4c36-97c1-51d4-8c43-dfbb086e2338",
         "58f60b7a-ccee-53e9-b49a-c92d82fd7ce0",
@@ -44,6 +45,7 @@
         "894cfb28-8f4a-5307-bad4-fba2cb1fe564"
       ],
       "requires": [
+        "a2084162-81c6-58fb-bcc8-d1dacaef059d",
         "8eb1605b-fa70-511b-bbe4-28173d359c3b",
         "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
         "feaad1d5-022f-5ab3-93c3-001ac46de351",
@@ -296,7 +298,7 @@
       "titleEn": "Boundary Value Problems and Optimal Control (Outlook)",
       "description": "Zusammenfassender Cluster: Ausblick auf numerische Ansätze für Randwertprobleme und optimale Steuerung im Kontext von Differentialgleichungen.",
       "descriptionEn": "Summary cluster: an outlook on numerical approaches to boundary value problems and optimal control in the context of differential equations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3301"
@@ -530,7 +532,7 @@
       "titleEn": "PDE Numerics III: Spectral Methods",
       "description": "Zusammenfassender Cluster: Spektralmethoden als hochgenaue Ansätze für 1D-Probleme und deren numerische Eigenschaften.",
       "descriptionEn": "Summary cluster: spectral methods as high-accuracy approaches for 1D problems and their numerical properties.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3301"
@@ -924,6 +926,28 @@
       }
     },
     {
+      "id": "a2084162-81c6-58fb-bcc8-d1dacaef059d",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3301",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "894cfb28-8f4a-5307-bad4-fba2cb1fe564",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -938,7 +962,9 @@
         "vocabularySource": "/data/ma3301_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "a2084162-81c6-58fb-bcc8-d1dacaef059d"
+      ],
       "dimensionTags": {
         "framework": "tum-ma3301",
         "demandLevel": "AB1",

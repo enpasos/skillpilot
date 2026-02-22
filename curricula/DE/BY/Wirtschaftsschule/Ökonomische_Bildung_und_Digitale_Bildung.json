@@ -10,14 +10,36 @@
   "subject": "Ökonomische Bildung und Digitale Bildung",
   "goals": [
     {
+      "id": "4f946484-a080-5b8c-b899-bc54c7e71db7",
+      "title": "Warum Ökonomische Bildung und Digitale Bildung? - Relevanz und Orientierung",
+      "titleEn": "Why Ökonomische Bildung und Digitale Bildung? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Ökonomische Bildung und Digitale Bildung für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Ökonomische Bildung und Digitale Bildung matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "2a913b50-024d-56a0-8481-aaca38178361",
       "title": "Jahrgangsstufe 7",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "4f946484-a080-5b8c-b899-bc54c7e71db7"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,7 +50,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -39,7 +61,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -50,13 +72,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "ffcefde7-c9aa-57be-be90-8413d94fa37b",
       "title": "Ökonomische Bildung und Digitale Bildung (Wirtschaftsschule)",
       "contains": [
+        "4f946484-a080-5b8c-b899-bc54c7e71db7",
         "2a913b50-024d-56a0-8481-aaca38178361",
         "a6c00719-c132-5fc0-b34a-e6a974c3fbb6",
         "cb428ff2-ef5b-50d2-8e57-24cbaea285e6",
@@ -69,8 +92,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "4f946484-a080-5b8c-b899-bc54c7e71db7"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

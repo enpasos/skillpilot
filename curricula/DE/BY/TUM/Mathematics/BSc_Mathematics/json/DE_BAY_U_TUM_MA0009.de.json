@@ -20,7 +20,7 @@
       "titleEn": "Introduction to Probability and Statistics – Full Module",
       "description": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage,<br>- grundlegende Modelle, Konzepte und Methoden aus Wahrscheinlichkeitstheorie und Statistik zu verstehen und mathematisch präzise wiederzugeben,<br>- Zusammenhänge zwischen diesen Konzepten zu diskutieren und zu beweisen, anhand von Beispielen zu erläutern und Aufgaben mit Hilfe der kennengelernten Konzepte und erlernten Methoden zu lösen,<br>- einfache Zufallsexperimente und statistische Verfahren zu modellieren und am Computer umzusetzen,<br>- statistische Daten und Verfahren zu interpretieren, Daten grafisch darzustellen und die Aussage von Zufallsexperimenten zu bewerten.",
       "descriptionEn": "After successfully completing the module, students are able to:<br>- understand fundamental models, concepts, and methods from probability theory and statistics and reproduce them with mathematical precision,<br>- discuss and prove relationships between these concepts, explain them using examples, and solve problems using the introduced concepts and methods,<br>- model simple random experiments and statistical procedures and implement them on a computer,<br>- interpret statistical data and methods, visualize data graphically, and assess the informative value of random experiments.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:rolles_silke"
       ],
       "contains": [
+        "66f03a30-daef-5a6d-ac69-1b118fddd268",
         "87ffa264-856d-550e-970d-cb284655f8cc",
         "d845c153-ff53-5bdf-a0a8-4b627a9e8b72",
         "ca2e92a7-660e-5fbb-b7bb-91874da57da7",
@@ -44,6 +45,7 @@
         "d0d511a2-8585-558c-abbf-f4ed332a44f8"
       ],
       "requires": [
+        "66f03a30-daef-5a6d-ac69-1b118fddd268",
         "8eb1605b-fa70-511b-bbe4-28173d359c3b",
         "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
         "feaad1d5-022f-5ab3-93c3-001ac46de351"
@@ -220,7 +222,7 @@
       "titleEn": "Expectation, Variance, and Covariance",
       "description": "Zusammenfassender Cluster: Erwartungswert, Varianz, Kovarianz/Korrelation und Rechenregeln für Zufallsvariablen.",
       "descriptionEn": "Summary cluster: expectation, variance, covariance/correlation, and calculation rules for random variables.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA0009"
@@ -301,7 +303,7 @@
       "titleEn": "Multivariate Random Variables and the Change-of-Variables Formula",
       "description": "Zusammenfassender Cluster: multivariate Zufallsvariablen, Rand- und bedingte Verteilungen sowie Transformationssatz (Jacobi) für Dichten.",
       "descriptionEn": "Summary cluster: multivariate random variables, marginal and conditional distributions, and the change-of-variables formula (Jacobian) for densities.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA0009"
@@ -381,7 +383,7 @@
       "titleEn": "Limit Theorems",
       "description": "Zusammenfassender Cluster: Konvergenzbegriffe für Zufallsvariablen sowie zentrale Grenzwertsätze (LLN, CLT) und deren Anwendung.",
       "descriptionEn": "Summary cluster: notions of convergence for random variables and central limit theorems (LLN, CLT) and their applications.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA0009"
@@ -543,7 +545,7 @@
       "titleEn": "Statistical Hypothesis Testing",
       "description": "Zusammenfassender Cluster: Testprobleme, Fehler 1./2. Art, Teststatistiken, p-Werte und Interpretation von Testergebnissen.",
       "descriptionEn": "Summary cluster: hypothesis tests, type I/II errors, test statistics, p-values, and interpretation of test results.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA0009"
@@ -623,7 +625,7 @@
       "titleEn": "Data Analysis with R: Transformation, Visualization, Simulation",
       "description": "Zusammenfassender Cluster: Einführung in R, Datenaufbereitung und Visualisierung, Simulation von Zufallsexperimenten sowie Umsetzung und Vergleich statistischer Verfahren.",
       "descriptionEn": "Summary cluster: introduction to R, data wrangling and visualization, simulation of random experiments, and implementing and comparing statistical methods.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA0009"
@@ -1358,6 +1360,28 @@
       }
     },
     {
+      "id": "66f03a30-daef-5a6d-ac69-1b118fddd268",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma0009",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "d0d511a2-8585-558c-abbf-f4ed332a44f8",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -1372,7 +1396,9 @@
         "vocabularySource": "/data/ma0009_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "66f03a30-daef-5a6d-ac69-1b118fddd268"
+      ],
       "dimensionTags": {
         "framework": "tum-ma0009",
         "demandLevel": "AB1",

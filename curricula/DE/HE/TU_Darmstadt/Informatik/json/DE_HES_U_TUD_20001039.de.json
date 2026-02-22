@@ -9,13 +9,35 @@
   "frameworkId": "tud-20001039",
   "goals": [
     {
+      "id": "3c8f75c9-45c9-5874-97a1-ee3cf0a73696",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20001039",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "bbc313ef-700b-573f-84a2-a148934c18bd",
       "title": "Advanced Data Management Systems",
       "titleEn": "Advanced Data Management Systems",
       "description": "Erfolgreicher Abschluss des Moduls \"Advanced Data Management Systems\".",
       "descriptionEn": "Successful completion of module \"Advanced Data Management Systems\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-1039",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "3c8f75c9-45c9-5874-97a1-ee3cf0a73696"
+      ],
+      "contains": [
+        "3c8f75c9-45c9-5874-97a1-ee3cf0a73696"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

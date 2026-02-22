@@ -14,7 +14,7 @@
       "titleEn": "Scientific Computing",
       "description": "Die lernende Person kann Modelle und Simulationen konzipieren, implementieren und validieren sowie geeignete numerische Verfahren auswählen.",
       "descriptionEn": "Die lernende Person kann Modelle und Simulationen konzipieren, implementieren und validieren sowie geeignete numerische Verfahren auswählen.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "ects:5",
         "module:20-00-1156",
@@ -27,8 +27,11 @@
         "guidingIdeas": [],
         "phase": "Wahlpflichtbereich"
       },
-      "requires": [],
+      "requires": [
+        "08ca0c65-7356-580c-b383-f2ed08ea3ee3"
+      ],
       "contains": [
+        "08ca0c65-7356-580c-b383-f2ed08ea3ee3",
         "88304d9d-cd3e-56c4-8fd0-9d9656c66a0f",
         "b1b7b6f2-5ee3-59d3-8362-535922a42344",
         "af855a19-10ff-525f-b239-5743be74b696",
@@ -43,6 +46,27 @@
           "Sie kennen die wesentlichen Schritte zum Aufbau solcher Simulationssysteme (Problemspezifikation, Modellbildung und Parameteridentifikation, Modellanalyse, Implementierung und Validierung) und können mit diesen erste Simulationen konstruieren, die gegebene Anforderungen erfüllen.",
           "Hierbei wird die Fähigkeit erlernt für grundlegende Aufgabenstellungen in der Simulation geeignete numerische Verfahren auszuwählen und anzuwenden."
         ]
+      }
+    },
+    {
+      "id": "08ca0c65-7356-580c-b383-f2ed08ea3ee3",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20001156",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlpflichtbereich"
       }
     },
     {
@@ -64,7 +88,9 @@
         "guidingIdeas": [],
         "phase": "Wahlpflichtbereich"
       },
-      "requires": [],
+      "requires": [
+        "08ca0c65-7356-580c-b383-f2ed08ea3ee3"
+      ],
       "contains": [],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
     },

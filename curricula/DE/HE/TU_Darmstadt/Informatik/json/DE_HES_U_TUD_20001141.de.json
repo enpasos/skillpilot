@@ -14,7 +14,7 @@
       "titleEn": "Erfolgreich ins Informatik-Studium starten (eiiss)",
       "description": "Die lernende Person kann: Die Veranstaltung zielt darauf ab, dass die Studierenden ihr Studium selbstorganisiert strukturieren und planen, sodass sie zielorientiert studieren; sind am Ende des Moduls in der Lage die Grundstruktur des Studiums zu erkennen sowie die Anforderungen der Studienfächer abzuschätzen und dementsprechend ihr Studium zu optimieren; sind sie in der Lage verschiedene Vorgehensweisen beim Lernen an der Universität zu reflektieren und auf ihr eigenes Lernverhalten zu übertragen.",
       "descriptionEn": "Die lernende Person kann: Die Veranstaltung zielt darauf ab, dass die Studierenden ihr Studium selbstorganisiert strukturieren und planen, sodass sie zielorientiert studieren; sind am Ende des Moduls in der Lage die Grundstruktur des Studiums zu erkennen sowie die Anforderungen der Studienfächer abzuschätzen und dementsprechend ihr Studium zu optimieren; sind sie in der Lage verschiedene Vorgehensweisen beim Lernen an der Universität zu reflektieren und auf ihr eigenes Lernverhalten zu übertragen.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:1",
         "module:20-00-1141",
@@ -27,8 +27,11 @@
         "guidingIdeas": [],
         "phase": "Pflichtbereich"
       },
-      "requires": [],
+      "requires": [
+        "0b960b2b-2711-5461-a3db-99133fb3f8f1"
+      ],
       "contains": [
+        "0b960b2b-2711-5461-a3db-99133fb3f8f1",
         "7f2c07f9-2723-5129-9f61-acb8994c651c",
         "40424335-4061-5757-a6b1-31fe7310ca42",
         "60d54817-9925-52c3-bdb5-18446aa51ca8"
@@ -41,6 +44,27 @@
           "Die Studierenden sind am Ende des Moduls in der Lage die Grundstruktur des Studiums zu erkennen sowie die Anforderungen der Studienfächer abzuschätzen und dementsprechend ihr Studium zu optimieren.",
           "Weiterhin sind sie in der Lage verschiedene Vorgehensweisen beim Lernen an der Universität zu reflektieren und auf ihr eigenes Lernverhalten zu übertragen."
         ]
+      }
+    },
+    {
+      "id": "0b960b2b-2711-5461-a3db-99133fb3f8f1",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20001141",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Pflichtbereich"
       }
     },
     {
@@ -62,7 +86,9 @@
         "guidingIdeas": [],
         "phase": "Pflichtbereich"
       },
-      "requires": [],
+      "requires": [
+        "0b960b2b-2711-5461-a3db-99133fb3f8f1"
+      ],
       "contains": [],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
     },

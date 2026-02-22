@@ -10,14 +10,36 @@
   "subject": "Theater und Film",
   "goals": [
     {
+      "id": "6150a69e-64ac-5d4b-a0df-db48e0f77e56",
+      "title": "Warum Theater und Film? - Relevanz und Orientierung",
+      "titleEn": "Why Theater und Film? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Theater und Film für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Theater und Film matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "243bbf88-d491-5354-bdfc-692a75f1e33c",
       "title": "Jahrgangsstufe 12",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "6150a69e-64ac-5d4b-a0df-db48e0f77e56"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,13 +50,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "eed54cf1-ee67-5ca4-a0a7-b60161ac7783",
       "title": "Theater und Film (Gymnasium)",
       "contains": [
+        "6150a69e-64ac-5d4b-a0df-db48e0f77e56",
         "243bbf88-d491-5354-bdfc-692a75f1e33c",
         "60668833-2450-531a-84cd-0af2732df725"
       ],
@@ -45,8 +68,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "6150a69e-64ac-5d4b-a0df-db48e0f77e56"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

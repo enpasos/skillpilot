@@ -20,7 +20,7 @@
       "titleEn": "Functional Analysis – Full Module",
       "description": "Nach dem erfolgreichen Abschluss des Moduls können die Studierenden grundlegende theoretische Techniken der Funktionalanalysis zum Analysieren linearer Funktionale und Operatoren auf Banach- und Hilberträumen anwenden. Insbesondere können sie Spektren kompakter selbstadjungierter Operatoren analysieren, Dualität verstehen und Konzepte schwacher und schwach*-Konvergenz in Banachräumen anwenden.",
       "descriptionEn": "After successfully completing the module, students can understand and apply basic theoretical techniques to analyze linear functionals and operators on Banach and Hilbert spaces. In particular, they can analyze spectra of compact selfadjoint operators, understand the notion of duality, and apply concepts of weak and weak* convergence in Banach spaces.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:matthes_daniel"
       ],
       "contains": [
+        "dacc0367-d785-59b8-86a6-13ad42858f1e",
         "01a8aef2-0073-56cb-9187-17b9faa7a00f",
         "4006541b-d445-520a-ad23-722cf12ae1ae",
         "857af9e5-7616-54c3-a892-a8e3f5abfc73",
@@ -42,6 +43,7 @@
         "190694aa-7aef-5924-8929-bcd5708ef46b"
       ],
       "requires": [
+        "dacc0367-d785-59b8-86a6-13ad42858f1e",
         "8eb1605b-fa70-511b-bbe4-28173d359c3b",
         "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
         "feaad1d5-022f-5ab3-93c3-001ac46de351"
@@ -377,7 +379,7 @@
       "titleEn": "Spectral Theory of Compact Selfadjoint Operators",
       "description": "Zusammenfassender Cluster: Spektraltheorie für kompakte selbstadjungierte Operatoren als zentrale Anwendung der Hilbertraumtheorie.",
       "descriptionEn": "Summary cluster: spectral theory for compact selfadjoint operators as a central application of Hilbert space theory.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "ects:9",
         "module:MA3001"
@@ -404,7 +406,7 @@
       "titleEn": "Work with Compact and Selfadjoint Operators",
       "description": "Die lernende Person kann kompakte Operatoren und Selbstadjungiertheit in Hilberträumen einordnen und grundlegende Eigenschaften sowie Beispiele sicher verwenden.",
       "descriptionEn": "The learner can place compact operators and selfadjointness in Hilbert spaces and confidently use basic properties and examples.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3001"
@@ -432,7 +434,7 @@
       "titleEn": "Analyze Spectra of Compact Selfadjoint Operators",
       "description": "Die lernende Person kann Spektren kompakter selbstadjungierter Operatoren beschreiben, Eigenwerte/-vektoren bestimmen und den Spektralsatz in Beispielen anwenden.",
       "descriptionEn": "The learner can describe spectra of compact selfadjoint operators, determine eigenvalues/eigenvectors, and apply the spectral theorem in examples.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3001"
@@ -459,7 +461,7 @@
       "titleEn": "Introduction to Unbounded Operators",
       "description": "Zusammenfassender Cluster: Kurzer Einstieg in unbeschränkte Operatoren und die Besonderheiten von Definitionsbereichen.",
       "descriptionEn": "Summary cluster: a brief introduction to unbounded operators and the role of domains.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3001"
@@ -696,6 +698,28 @@
       }
     },
     {
+      "id": "dacc0367-d785-59b8-86a6-13ad42858f1e",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3001",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "190694aa-7aef-5924-8929-bcd5708ef46b",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -710,7 +734,9 @@
         "vocabularySource": "/data/ma3001_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "dacc0367-d785-59b8-86a6-13ad42858f1e"
+      ],
       "dimensionTags": {
         "framework": "tum-ma3001",
         "demandLevel": "AB1",

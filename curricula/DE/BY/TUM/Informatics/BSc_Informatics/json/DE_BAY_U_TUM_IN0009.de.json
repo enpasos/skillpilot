@@ -13,12 +13,13 @@
       "titleEn": "Basic Principles: Operating Systems and System Software (IN0009)",
       "description": "Die lernende Person kann Betriebssystemkonzepte und Systemsoftwarekomponenten erklären.",
       "descriptionEn": "The learner can explain operating system concepts and system software components.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:IN0009",
         "ects:5"
       ],
       "contains": [
+        "9cbf7a2d-e949-5b37-8bd4-ff853db87b32",
         "b39fa704-698a-53e8-b11c-0bcf870bcefe",
         "9b62569b-d84e-5ee9-a2ac-8f95d003916d",
         "f9375ba0-76ae-59c1-91f0-0297701b991c",
@@ -26,7 +27,9 @@
         "fdff28e9-cb27-5e8a-be19-d09e928275ee",
         "5d751181-aeec-5608-bc1b-101b22a5b4f2"
       ],
-      "requires": [],
+      "requires": [
+        "9cbf7a2d-e949-5b37-8bd4-ff853db87b32"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0009",
       "dimensionTags": {
         "phase": "Modul"
@@ -38,7 +41,7 @@
       "titleEn": "Operating system fundamentals",
       "description": "Die lernende Person kann Betriebssystemrollen und Abstraktionen beschreiben.",
       "descriptionEn": "The learner can describe OS roles and abstractions.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0009"
       ],
@@ -52,17 +55,40 @@
       }
     },
     {
+      "id": "9cbf7a2d-e949-5b37-8bd4-ff853db87b32",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-in0009",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "c6bfde8d-b7c8-5ca1-b4cc-2ffe45ebacd9",
       "title": "Betriebssystemstruktur und Dienste",
       "titleEn": "OS structure and services",
       "description": "Die lernende Person kann Betriebssystemdienste und die mehrschichtige Organisation erklären.",
       "descriptionEn": "The learner can explain OS services and layered organization.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0009"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "9cbf7a2d-e949-5b37-8bd4-ff853db87b32"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -73,7 +99,7 @@
       "titleEn": "System interfaces",
       "description": "Die lernende Person kann Systemaufrufe und Betriebssystemschnittstellen beschreiben.",
       "descriptionEn": "The learner can describe system calls and OS interfaces.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0009"
       ],
@@ -89,7 +115,7 @@
       "titleEn": "Processes and concurrency",
       "description": "Die lernende Person kann Prozesse und Parallelitätsherausforderungen verwalten.",
       "descriptionEn": "The learner can manage processes and concurrency challenges.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0009"
       ],
@@ -110,7 +136,7 @@
       "titleEn": "Process management",
       "description": "Die lernende Person kann Prozesszustände und Planungsgrundlagen beschreiben.",
       "descriptionEn": "The learner can describe process states and scheduling basics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0009"
       ],
@@ -126,7 +152,7 @@
       "titleEn": "Synchronization and deadlocks",
       "description": "Die lernende Person kann Synchronisation, gegenseitigen Ausschluss und Deadlocks analysieren.",
       "descriptionEn": "The learner can analyze synchronization, mutual exclusion, and deadlocks.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0009"
       ],
@@ -142,7 +168,7 @@
       "titleEn": "Memory and resource management",
       "description": "Die lernende Person kann Speicherverwaltungskonzepte erklären.",
       "descriptionEn": "The learner can explain memory management concepts.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0009"
       ],
@@ -163,7 +189,7 @@
       "titleEn": "Address spaces and allocation",
       "description": "Die lernende Person kann Speicherzuordnung und Adressräume beschreiben.",
       "descriptionEn": "The learner can describe memory allocation and address spaces.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0009"
       ],
@@ -179,7 +205,7 @@
       "titleEn": "Virtual memory basics",
       "description": "Die lernende Person kann virtuelle Speicherkonzepte und Paging auf hohem Niveau erklären.",
       "descriptionEn": "The learner can explain virtual memory concepts and paging at a high level.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0009"
       ],
@@ -195,7 +221,7 @@
       "titleEn": "System programming and I/O",
       "description": "Die lernende Person kann Low-Level-Systemprogramme implementieren und I/O verwalten.",
       "descriptionEn": "The learner can implement low-level system programs and handle I/O.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0009"
       ],
@@ -216,7 +242,7 @@
       "titleEn": "Low-level programming in C",
       "description": "Die lernende Person kann Code auf Systemebene in C für Prozesse und Kommunikation schreiben.",
       "descriptionEn": "The learner can write system-level code in C for processes and communication.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0009"
       ],
@@ -232,7 +258,7 @@
       "titleEn": "I/O and device interaction",
       "description": "Die lernende Person kann I/O-Management und Geräteinteraktion beschreiben.",
       "descriptionEn": "The learner can describe I/O management and device interaction.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0009"
       ],
@@ -248,7 +274,7 @@
       "titleEn": "System software toolchain",
       "description": "Die lernende Person kann beschreiben, wie Systemsoftware Programme erstellt und ausführt.",
       "descriptionEn": "The learner can describe how system software builds and runs programs.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0009"
       ],
@@ -269,7 +295,7 @@
       "titleEn": "Compiler, linker, loader roles",
       "description": "Die lernende Person kann die Kompilierungs-, Verknüpfungs- und Ladephasen erklären.",
       "descriptionEn": "The learner can explain compilation, linking, and loading stages.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0009"
       ],
@@ -285,7 +311,7 @@
       "titleEn": "Libraries and build integration",
       "description": "Die lernende Person kann die Bibliotheksintegration beschreiben und Arbeitsabläufe erstellen.",
       "descriptionEn": "The learner can describe library integration and build workflows.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0009"
       ],
@@ -301,7 +327,7 @@
       "titleEn": "Formal models for concurrency",
       "description": "Die lernende Person kann abstrakte Modelle verwenden, um Überlegungen zur Parallelität anzustellen.",
       "descriptionEn": "The learner can use abstract models to reason about concurrency.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0009"
       ],
@@ -322,7 +348,7 @@
       "titleEn": "Petri nets and formal models",
       "description": "Die lernende Person kann Petri-Netze und ihre Verwendung für die Parallelitätsmodellierung erklären.",
       "descriptionEn": "The learner can explain Petri nets and their use for concurrency modeling.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0009"
       ],
@@ -338,7 +364,7 @@
       "titleEn": "Parallel programming concepts",
       "description": "Die lernende Person kann Kernkonzepte der parallelen Programmierung beschreiben.",
       "descriptionEn": "The learner can describe core concepts of parallel programming.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0009"
       ],

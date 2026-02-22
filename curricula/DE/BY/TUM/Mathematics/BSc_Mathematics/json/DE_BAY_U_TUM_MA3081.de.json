@@ -20,7 +20,7 @@
       "titleEn": "Dynamical Systems – Full Module",
       "description": "Nach erfolgreichem Abschluss können Studierende die mathematische Theorie dynamischer Systeme verstehen und anwenden, mit Schwerpunkt auf der Analyse geometrischer und topologischer Eigenschaften von Lösungen nichtlinearer gewöhnlicher Differentialgleichungen sowie iterierter Abbildungen in endlich-dimensionalen euklidischen Phasenräumen. Darüber hinaus können sie Elemente der Theorie von Systemen auf differenzierbaren Mannigfaltigkeiten sowie in unendlich-dimensionalen Phasenräumen einordnen.",
       "descriptionEn": "After successful completion of the module the students are able to understand and apply the mathematical theory of dynamical systems stressing the analysis of geometric and topological properties of solutions of nonlinear ordinary differential equations as well as iterated maps in finite-dimensional Euclidean phase spaces. Furthermore the students are able to analyse elements for the theory of systems on differentiable manifolds and in infinite-dimensional phase spaces.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:k_hn_christian"
       ],
       "contains": [
+        "ac56f06e-e189-563b-8b54-57aef797fa6a",
         "b5c62c99-0982-5e36-8c2d-afced50272ca",
         "47fbf825-ee74-5f82-893f-19d204f0101c",
         "3ab0f6ac-ff8c-5163-ac8f-0a5c525e1fe1",
@@ -44,6 +45,7 @@
         "a38d1e6b-e289-5527-af12-0e69017c0e4e"
       ],
       "requires": [
+        "ac56f06e-e189-563b-8b54-57aef797fa6a",
         "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
         "c8982665-86b6-5371-8682-852992cab2e7"
       ],
@@ -377,7 +379,7 @@
       "titleEn": "Global Bifurcations and Melnikov’s Method",
       "description": "Zusammenfassender Cluster: Globale Bifurkationen (u.a. Shilnikov) und Melnikov-Methode als Zugang zu komplexer Dynamik.",
       "descriptionEn": "Summary cluster: global bifurcations (including Shilnikov) and Melnikov’s method as a route to complex dynamics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3081"
@@ -617,7 +619,7 @@
       "titleEn": "Invariant Measures and Ergodic Theory",
       "description": "Zusammenfassender Cluster: Invariante Maße, Rekurrenz, Ergodizität, Mixing und Entropie als ergodische Perspektive auf Dynamik.",
       "descriptionEn": "Summary cluster: invariant measures, recurrence, ergodicity, mixing, and entropy as an ergodic perspective on dynamics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3081"
@@ -744,6 +746,28 @@
       }
     },
     {
+      "id": "ac56f06e-e189-563b-8b54-57aef797fa6a",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3081",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "a38d1e6b-e289-5527-af12-0e69017c0e4e",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -758,7 +782,9 @@
         "vocabularySource": "/data/ma3081_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "ac56f06e-e189-563b-8b54-57aef797fa6a"
+      ],
       "dimensionTags": {
         "framework": "tum-ma3081",
         "demandLevel": "AB1",

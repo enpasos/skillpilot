@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000449",
   "goals": [
     {
+      "id": "c3d8c76d-7654-5f64-a468-345dc8b539a3",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000449",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "f52385c0-a0f0-5d02-9072-2bc12668fea7",
       "title": "Probabilistische Graphische Modelle",
       "titleEn": "Probabilistische Graphische Modelle",
       "description": "Erfolgreicher Abschluss des Moduls \"Probabilistische Graphische Modelle\".",
       "descriptionEn": "Successful completion of module \"Probabilistische Graphische Modelle\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-0449",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "c3d8c76d-7654-5f64-a468-345dc8b539a3"
+      ],
+      "contains": [
+        "c3d8c76d-7654-5f64-a468-345dc8b539a3"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

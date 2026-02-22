@@ -20,7 +20,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
 @RequestMapping(value = "/api/ui/landscapes", produces = MediaType.APPLICATION_JSON_VALUE)
-@CrossOrigin(origins = "${cors.allowed-origins:http://localhost:5173}")
+@CrossOrigin(origins = "${cors.allowed-origins:http://localhost:5173,http://127.0.0.1:5173,http://localhost:5174,http://127.0.0.1:5174}")
 public class LandscapeUiController {
 
     private final LandscapeService landscapeService;

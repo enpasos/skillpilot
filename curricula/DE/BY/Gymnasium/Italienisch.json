@@ -10,14 +10,36 @@
   "subject": "Italienisch",
   "goals": [
     {
+      "id": "fcb79ea5-e777-50a0-927a-72edc5dfb4c5",
+      "title": "Warum Italienisch? - Relevanz und Orientierung",
+      "titleEn": "Why Italienisch? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Italienisch für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Italienisch matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "a6a8a7eb-30a9-5337-a02d-33a7f8be17a8",
       "title": "Jahrgangsstufe 8",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "fcb79ea5-e777-50a0-927a-72edc5dfb4c5"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,7 +50,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -39,7 +61,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -50,7 +72,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -61,7 +83,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -72,13 +94,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "36bfe00a-bc24-51c3-a637-75e1dfcfcd61",
       "title": "Italienisch (Gymnasium)",
       "contains": [
+        "fcb79ea5-e777-50a0-927a-72edc5dfb4c5",
         "a6a8a7eb-30a9-5337-a02d-33a7f8be17a8",
         "171c1c85-16bd-521a-ad1d-b9d3d1b5e8b9",
         "9c91106a-0182-5ac0-af41-fd34580ecb81",
@@ -93,8 +116,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "fcb79ea5-e777-50a0-927a-72edc5dfb4c5"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

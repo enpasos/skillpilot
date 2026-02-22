@@ -14,7 +14,7 @@
       "titleEn": "Teamprojekt Softwareentwicklung",
       "description": "Die lernende Person kann: Umsetzung kleinerer Programmierprojekte über einen längeren Zeitraum (~ 6 Monate) in einem kleinen Team (4 bis 5 Personen); Systematische Organisation und Planung von Softwareprojekten; Ermittlung und Dokumentation von Projektanforderungen; Systematische Durchführung grundlegender, dem Projekt angemessener, Qualitätssicherung; Effektiver Einsatz grundlegender Softwarewerkzeuge (z.B. Testwerkzeuge, Versionskontrollsysteme und Projektplanungswerkzeuge); Projektpräsentation für Außenstehende im Rahmen eines kurzen Vortrags sowie Darlegung des Projektstands.",
       "descriptionEn": "Die lernende Person kann: Umsetzung kleinerer Programmierprojekte über einen längeren Zeitraum (~ 6 Monate) in einem kleinen Team (4 bis 5 Personen); Systematische Organisation und Planung von Softwareprojekten; Ermittlung und Dokumentation von Projektanforderungen; Systematische Durchführung grundlegender, dem Projekt angemessener, Qualitätssicherung; Effektiver Einsatz grundlegender Softwarewerkzeuge (z.B. Testwerkzeuge, Versionskontrollsysteme und Projektplanungswerkzeuge); Projektpräsentation für Außenstehende im Rahmen eines kurzen Vortrags sowie Darlegung des Projektstands.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "module:20-00-1155",
@@ -27,8 +27,11 @@
         "guidingIdeas": [],
         "phase": "Pflichtbereich"
       },
-      "requires": [],
+      "requires": [
+        "236f71af-38d3-5a59-9994-4b4490be3f8d"
+      ],
       "contains": [
+        "236f71af-38d3-5a59-9994-4b4490be3f8d",
         "30161713-c899-5e5d-ac49-d2c035e3320f",
         "9e86d28a-27a2-569d-a23c-5fa569970b94",
         "574a8a63-c45f-5140-94f4-be6903ad4ed4",
@@ -50,6 +53,27 @@
       }
     },
     {
+      "id": "236f71af-38d3-5a59-9994-4b4490be3f8d",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20001155",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Pflichtbereich"
+      }
+    },
+    {
       "id": "30161713-c899-5e5d-ac49-d2c035e3320f",
       "title": "Teamprojekt Softwareentwicklung – Lernziel 1",
       "titleEn": "Teamprojekt Softwareentwicklung – Learning Outcome 1",
@@ -68,7 +92,9 @@
         "guidingIdeas": [],
         "phase": "Pflichtbereich"
       },
-      "requires": [],
+      "requires": [
+        "236f71af-38d3-5a59-9994-4b4490be3f8d"
+      ],
       "contains": [],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
     },

@@ -20,7 +20,7 @@
       "titleEn": "Analysis 1 – Full Module",
       "description": "Nach dem erfolgreichen Abschluss des Moduls besitzen die Studierenden Rechenfertigkeiten im Reellen und Komplexen. Sie verfügen über eine anschauliche Vorstellung und ein theoretisches Verständnis von Funktionen einer reellen Veränderlichen. Sie kennen Grundbegriffe (z.B. Grenzwert, Stetigkeit, Ableitung, Integral) und grundlegende Methoden (z.B. Bestimmung des Konvergenzverhaltens von Reihen, Taylorapproximation, Separationsmethode zur Lösung einfacher Differentialgleichungen) der Analysis und sind in der Lage, die erworbenen Kenntnisse erfolgreich auf einfache Problemstellungen anzuwenden.",
       "descriptionEn": "After successfully completing the module, students have computational skills in the real and complex numbers. They have an intuitive picture and a theoretical understanding of functions of a real variable. They know fundamental concepts (e.g., limit, continuity, derivative, integral) and basic methods (e.g., determining the convergence of series, Taylor approximation, separation of variables for solving simple differential equations) of analysis and are able to apply what they have learned to simple problems.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:friesecke_gero"
       ],
       "contains": [
+        "252b0451-63fa-5358-ae39-6893a47a6b1f",
         "087a51d1-33db-5ad3-9746-dda805b42d15",
         "60864323-c33f-52a5-bd69-cb83a47ea376",
         "2d048f7d-12df-58b6-8679-52dab93632f7",
@@ -48,7 +49,9 @@
         "1a2a1a91-f96c-5d2e-8621-bca298b7799d",
         "698ad1ba-3522-5a29-ad99-91e5f5be4167"
       ],
-      "requires": [],
+      "requires": [
+        "252b0451-63fa-5358-ae39-6893a47a6b1f"
+      ],
       "dimensionTags": {
         "framework": "tum-ma0001",
         "demandLevel": "AB2",
@@ -246,7 +249,7 @@
       "titleEn": "Real Numbers and Completeness",
       "description": "Die lernende Person kann die Ordnungseigenschaften der reellen Zahlen nutzen, Supremum/Infimum anwenden und das Vollständigkeitsaxiom in Begründungen einsetzen.",
       "descriptionEn": "The learner can use order properties of the real numbers, work with supremum/infimum, and apply the completeness axiom in arguments.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA0001"
@@ -430,7 +433,7 @@
       "titleEn": "Sequences, Limits, and Convergence",
       "description": "Die lernende Person kann Grenzwerte von Folgen mit der $\\varepsilon-N$-Definition begründen und zentrale Konvergenzresultate anwenden.",
       "descriptionEn": "The learner can justify limits of sequences using the $\\varepsilon-N$ definition and apply central convergence results.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA0001"
@@ -1010,7 +1013,7 @@
       "titleEn": "Integral Calculus",
       "description": "Die lernende Person kann das Integral als Grenzwert von Summen einordnen und Integrale mit grundlegenden Rechenverfahren bestimmen.",
       "descriptionEn": "The learner can interpret the integral as a limit of sums and compute integrals using basic techniques.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA0001"
@@ -1666,6 +1669,28 @@
       }
     },
     {
+      "id": "252b0451-63fa-5358-ae39-6893a47a6b1f",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma0001",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "698ad1ba-3522-5a29-ad99-91e5f5be4167",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -1681,7 +1706,9 @@
         "vocabularySource": "/data/ma0001_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "252b0451-63fa-5358-ae39-6893a47a6b1f"
+      ],
       "dimensionTags": {
         "framework": "tum-ma0001",
         "demandLevel": "AB1",

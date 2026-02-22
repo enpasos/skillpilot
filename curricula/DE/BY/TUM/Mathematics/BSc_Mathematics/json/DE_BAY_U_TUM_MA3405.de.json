@@ -20,7 +20,7 @@
       "titleEn": "Insurance Mathematics 1 – Full Module",
       "description": "Nach erfolgreichem Abschluss können Studierende die wichtigsten stochastischen Methoden in der Praxis der Schaden-/Unfallversicherung (Non-Life) verstehen und anwenden, insbesondere für Tarifierung, Reservierung und Rückversicherung.",
       "descriptionEn": "After successful completion of the module, students are able to understand and apply the main stochastic methods in the practice of (non-life) insurance, in particular for pricing, reserving, and reinsurance.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:scherer_matthias"
       ],
       "contains": [
+        "27e7867b-bd3c-5841-8fdb-d8e1568d4d0d",
         "33c72944-ff39-5295-962c-889950b6e71c",
         "9534030a-eee7-5857-a985-1e95cc3a387d",
         "ab537682-579f-5e03-9626-94dac504f738",
@@ -44,6 +45,7 @@
         "ea5bb892-9ab6-5b12-850e-1de53fde317f"
       ],
       "requires": [
+        "27e7867b-bd3c-5841-8fdb-d8e1568d4d0d",
         "ef775418-c971-542f-87fe-07bd9c995bb1"
       ],
       "dimensionTags": {
@@ -61,7 +63,7 @@
       "titleEn": "Foundations and Data in Non-Life Insurance",
       "description": "Zusammenfassender Cluster: Grundbegriffe der Schadenversicherung, Datenstrukturen und Trennung von Frequenz- und Severity-Modellierung.",
       "descriptionEn": "Summary cluster: basic notions of non-life insurance, data structures, and separating frequency and severity modeling.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3405"
@@ -604,7 +606,7 @@
       "titleEn": "Regulation and Solvency II (Overview)",
       "description": "Zusammenfassender Cluster: Überblick über Solvency II und die Rolle quantitativer Risikomodelle in der Regulierung.",
       "descriptionEn": "Summary cluster: overview of Solvency II and the role of quantitative risk models in regulation.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3405"
@@ -808,6 +810,28 @@
       }
     },
     {
+      "id": "27e7867b-bd3c-5841-8fdb-d8e1568d4d0d",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3405",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "ea5bb892-9ab6-5b12-850e-1de53fde317f",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -822,7 +846,9 @@
         "vocabularySource": "/data/ma3405_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "27e7867b-bd3c-5841-8fdb-d8e1568d4d0d"
+      ],
       "dimensionTags": {
         "framework": "tum-ma3405",
         "demandLevel": "AB1",

@@ -20,7 +20,7 @@
       "titleEn": "Statistical Computing – Full Module",
       "description": "Nach erfolgreichem Abschluss können Studierende Zufallsvariablen in R mit (auch komplexeren) Algorithmen simulieren und die Korrektheit mit grafischen Checks überprüfen. Sie können multivariate Datensätze in R effektiv visualisieren und auf Basis von Bootstrap-, Jackknife- und Permutationsmethoden geeignete Inferenzverfahren entwickeln. Sie können Bayes’sche Inferenz mit MCMC-Algorithmen durchführen oder frequentistische Inferenzprobleme mit Monte-Carlo-Methoden lösen und Likelihood-Maximierung mit fortgeschrittenen Optimierungsalgorithmen umsetzen.",
       "descriptionEn": "After successful completion of the course, students can simulate random variables in R using complex algorithms and graphical checks for correctness. They can effectively visualize real multivariate datasets and develop statistical inference procedures based on bootstrap, jackknife, and permutation methods. They can perform Bayesian inference using MCMC algorithms and solve complex frequentist inference problems using Monte Carlo methods. They can also perform statistical likelihood maximization using advanced optimization algorithms.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "ects:5",
         "workload:150h",
@@ -33,6 +33,7 @@
         "responsible:ankerst_donna"
       ],
       "contains": [
+        "494faba8-e3e8-55d8-b16c-129723419a7a",
         "8fefc061-e269-5767-8be2-f1f9cea44ba5",
         "c5b2e0fa-6d33-520b-998c-871d20aaf852",
         "36cefef8-b065-5ac9-be11-b0e6104edea6",
@@ -41,6 +42,7 @@
         "d827c2f5-e417-5abd-aee6-665eac83c17a"
       ],
       "requires": [
+        "494faba8-e3e8-55d8-b16c-129723419a7a",
         "ef775418-c971-542f-87fe-07bd9c995bb1"
       ],
       "dimensionTags": {
@@ -58,7 +60,7 @@
       "titleEn": "Simulation and Random Variables in R",
       "description": "Zusammenfassender Cluster: Erzeugung von Zufallsvariablen mit algorithmischen Verfahren und Validierung der Simulation in R.",
       "descriptionEn": "Summary cluster: generating random variables using algorithmic methods and validating simulations in R.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3404"
@@ -134,7 +136,7 @@
       "titleEn": "Visualization of Multivariate Data",
       "description": "Zusammenfassender Cluster: Effektive Visualisierung multivariater Datensätze in R und Interpretation von Mustern, Ausreißern und Zusammenhängen.",
       "descriptionEn": "Summary cluster: effective visualization of multivariate datasets in R and interpretation of patterns, outliers, and relationships.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3404"
@@ -212,7 +214,7 @@
       "titleEn": "Monte Carlo Methods and Inference",
       "description": "Zusammenfassender Cluster: Monte-Carlo-Integration, Varianzschätzung und MC-basierte frequentistische Inferenz in R.",
       "descriptionEn": "Summary cluster: Monte Carlo integration, variance estimation, and MC-based frequentist inference in R.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3404"
@@ -290,7 +292,7 @@
       "titleEn": "Resampling: Bootstrap, Jackknife, Permutation Tests",
       "description": "Zusammenfassender Cluster: Resampling-basierte Inferenzverfahren (Bootstrap, Jackknife, Permutationstests) und deren Anwendung in R.",
       "descriptionEn": "Summary cluster: resampling-based inference (bootstrap, jackknife, permutation tests) and their application in R.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3404"
@@ -368,7 +370,7 @@
       "titleEn": "MCMC and Optimization in Statistical Modeling",
       "description": "Zusammenfassender Cluster: Bayes’sche Inferenz via MCMC sowie Optimierung zur Likelihood-Maximierung in statistischen Modellen.",
       "descriptionEn": "Summary cluster: Bayesian inference via MCMC and optimization for likelihood maximization in statistical models.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3404"
@@ -522,6 +524,28 @@
       }
     },
     {
+      "id": "494faba8-e3e8-55d8-b16c-129723419a7a",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3404",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "d827c2f5-e417-5abd-aee6-665eac83c17a",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -536,7 +560,9 @@
         "vocabularySource": "/data/ma3404_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "494faba8-e3e8-55d8-b16c-129723419a7a"
+      ],
       "dimensionTags": {
         "framework": "tum-ma3404",
         "demandLevel": "AB1",

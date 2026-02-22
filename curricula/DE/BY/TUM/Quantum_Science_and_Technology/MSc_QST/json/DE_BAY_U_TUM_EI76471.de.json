@@ -13,19 +13,22 @@
       "titleEn": "Quantum Information Theory (EI76471)",
       "description": "Die lernende Person kann Quantenkommunikationssysteme informationstheoretisch modellieren und Kodierungssätze anwenden.",
       "descriptionEn": "The learner can model quantum communication systems using information-theoretic concepts and apply coding theorems.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:EI76471",
         "ects:5"
       ],
       "contains": [
+        "a0d5e23f-bd53-5a6c-a408-56eb6f5659a6",
         "0ca18197-9574-5cd5-8868-2ab3bdc33f70",
         "1cecb12d-1e0a-59f5-8b77-b6f69920d015",
         "2b29733a-f480-5215-ab9d-e970f61fcdc7",
         "b49bf20d-b43f-5642-bba9-6281933cb643",
         "54c299d6-39e2-5f38-b7f5-0e8bbf6d86e3"
       ],
-      "requires": [],
+      "requires": [
+        "a0d5e23f-bd53-5a6c-a408-56eb6f5659a6"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/EI76471",
       "dimensionTags": {
         "phase": "Modul"
@@ -37,7 +40,7 @@
       "titleEn": "Foundations of quantum information modeling",
       "description": "Die lernende Person kann Quanteninformationstheorie mit Shannon-Konzepten und operativen Beschreibungen verbinden.",
       "descriptionEn": "The learner can relate quantum information theory to classical Shannon concepts and operational descriptions.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:EI76471"
       ],
@@ -51,17 +54,40 @@
       }
     },
     {
+      "id": "a0d5e23f-bd53-5a6c-a408-56eb6f5659a6",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-ei76471",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "7e72a59d-a1fd-5f4f-a7d4-6594477367d4",
       "title": "Operationelle Beschreibung endlichdimensionaler Quantensysteme",
       "titleEn": "Operational description of finite-dimensional quantum systems",
       "description": "Die lernende Person kann endlichdimensionale Quantensysteme operativ modellieren.",
       "descriptionEn": "The learner can model finite-dimensional quantum systems with an operational approach.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI76471"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "a0d5e23f-bd53-5a6c-a408-56eb6f5659a6"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -72,7 +98,7 @@
       "titleEn": "Connections to classical information theory",
       "description": "Die lernende Person kann Quantenmodelle mit klassischen informationstheoretischen Größen verknüpfen.",
       "descriptionEn": "The learner can relate quantum models to classical information-theoretic quantities.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI76471"
       ],
@@ -88,7 +114,7 @@
       "titleEn": "Quantum hypothesis testing",
       "description": "Die lernende Person kann Hypothesentests im Quantenkontext analysieren.",
       "descriptionEn": "The learner can analyze hypothesis tests in the quantum setting.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:EI76471"
       ],
@@ -108,7 +134,7 @@
       "titleEn": "Quantum hypothesis tests and Stein's lemma",
       "description": "Die lernende Person kann das Quanten-Stein-Lemma zur Zustandsdiskriminierung anwenden.",
       "descriptionEn": "The learner can apply quantum Stein's lemma to discriminate states.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI76471"
       ],
@@ -124,7 +150,7 @@
       "titleEn": "Source coding for quantum sources",
       "description": "Die lernende Person kann gedächtnislose Quantenquellen komprimieren.",
       "descriptionEn": "The learner can compress memoryless quantum sources.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:EI76471"
       ],
@@ -144,7 +170,7 @@
       "titleEn": "Compression of memoryless quantum sources",
       "description": "Die lernende Person kann Schumacher-Kompression und verwandte Resultate erklären.",
       "descriptionEn": "The learner can explain Schumacher compression and related results.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI76471"
       ],
@@ -160,7 +186,7 @@
       "titleEn": "Channel coding for quantum channels",
       "description": "Die lernende Person kann Kodierungssätze für klassische Kommunikation über Quantenkanäle analysieren.",
       "descriptionEn": "The learner can analyze coding theorems for classical communication over quantum channels.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:EI76471"
       ],
@@ -181,7 +207,7 @@
       "titleEn": "Classical messages over semiclassical and quantum channels",
       "description": "Die lernende Person kann die Übertragung klassischer Nachrichten über gedächtnislose Kanäle beschreiben.",
       "descriptionEn": "The learner can describe transmission of classical messages over memoryless channels.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI76471"
       ],
@@ -197,7 +223,7 @@
       "titleEn": "Coding theorems for memoryless quantum channels",
       "description": "Die lernende Person kann Kodierungssätze und Beweisstrategien für Quantenkanäle skizzieren.",
       "descriptionEn": "The learner can outline coding theorems and proof strategies for quantum channels.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI76471"
       ],
@@ -215,7 +241,7 @@
       "titleEn": "Advanced topics and communication resources",
       "description": "Die lernende Person kann fortgeschrittene Themen wie Sicherheit und Verschränkung als Ressourcen erklären.",
       "descriptionEn": "The learner can describe advanced topics such as security and entanglement-based resources.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:EI76471"
       ],
@@ -236,7 +262,7 @@
       "titleEn": "Information-theoretic security for quantum channels",
       "description": "Die lernende Person kann Sicherheitskonzepte für Quantenkanäle und -quellen erläutern.",
       "descriptionEn": "The learner can explain security concepts for quantum channels and sources.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI76471"
       ],
@@ -252,7 +278,7 @@
       "titleEn": "Entanglement theory and resource generation protocols",
       "description": "Die lernende Person kann Verschränkung als Ressource und zugehörige Protokolle beschreiben.",
       "descriptionEn": "The learner can describe entanglement-based resources and protocols for generating communication resources.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI76471"
       ],

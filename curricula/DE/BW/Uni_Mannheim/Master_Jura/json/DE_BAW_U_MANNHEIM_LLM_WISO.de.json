@@ -12,9 +12,12 @@
       "description": "Mind. 24 ECTS aus dem MMM (Accounting, Marketing, Management).",
       "descriptionEn": "At least 24 ECTS from MMM (Accounting, Marketing, Management).",
       "contains": [
+        "a66cdb45-aab4-5757-9784-76f07a80e63e",
         "5344b9db-849e-4b1e-87d7-2e8985a62367"
       ],
-      "requires": [],
+      "requires": [
+        "a66cdb45-aab4-5757-9784-76f07a80e63e"
+      ],
       "tags": [
         "Wahlpflicht",
         "BWL"
@@ -22,7 +25,27 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "weight": 0.0
+      "weight": 0
+    },
+    {
+      "id": "a66cdb45-aab4-5757-9784-76f07a80e63e",
+      "title": "Warum Fach? - Relevanz und Orientierung",
+      "titleEn": "Why this subject? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach dieses Fach für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why this subject matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
     },
     {
       "id": "5344b9db-849e-4b1e-87d7-2e8985a62367",
@@ -31,11 +54,13 @@
       "description": "Individuelle Wahl aus dem MMM-Katalog (z.B. ACC 5XX, MKT 5XX).",
       "descriptionEn": "Individual choice from MMM catalog (e.g. ACC 5XX, MKT 5XX).",
       "contains": [],
-      "requires": [],
+      "requires": [
+        "a66cdb45-aab4-5757-9784-76f07a80e63e"
+      ],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "weight": 0.0
+      "weight": 0
     }
   ]
 }

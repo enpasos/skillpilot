@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000204",
   "goals": [
     {
+      "id": "140e6838-5570-5e8a-a9e7-888056970492",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000204",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "fc8d715c-a889-58db-901f-6e8cf7faceee",
       "title": "Aktuelle Themen der Entwicklung und Anwendung moderner Robotersysteme",
       "titleEn": "Aktuelle Themen der Entwicklung und Anwendung moderner Robotersysteme",
       "description": "Erfolgreicher Abschluss des Moduls \"Aktuelle Themen der Entwicklung und Anwendung moderner Robotersysteme\".",
       "descriptionEn": "Successful completion of module \"Aktuelle Themen der Entwicklung und Anwendung moderner Robotersysteme\".",
-      "weight": 3.0,
+      "weight": 3,
       "tags": [
+        "root",
         "ects:3",
         "module:20-00-0204",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "140e6838-5570-5e8a-a9e7-888056970492"
+      ],
+      "contains": [
+        "140e6838-5570-5e8a-a9e7-888056970492"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

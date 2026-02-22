@@ -20,7 +20,7 @@
       "titleEn": "Linear Algebra 1 – Full Module",
       "description": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, mit grundlegenden axiomatischen Strukturen abstrakt und rechnerisch umzugehen und diese in verschiedenen Kontexten anzuwenden. Sie können die zugehörige mathematische Sprechweise verwenden und mit geometrischen Anschauungen verbinden.<br>Sie haben erste Erfahrungen im Abstrahieren gesammelt und grundlegende Fähigkeiten im exakten Argumentieren für mathematische Beweisführungen erworben. Die Studierenden können zwischen Algebra und Matrizenkalkül übersetzen. Die Studierenden verstehen zentrale Strukturen der Linearen Algebra und können mit ihnen arbeiten, indem sie Vektorräume als solche erkennen und die gelernten Tatsachen und Methoden auf sie anwenden.",
       "descriptionEn": "After successfully completing the module, students are able to work with basic axiomatic structures both abstractly and computationally and apply them in different contexts. They can use the appropriate mathematical language and connect it with geometric intuition.<br>They have gained first experience in abstraction and acquired fundamental skills in precise reasoning for mathematical proofs. Students can translate between algebra and matrix calculus. They understand central structures of linear algebra and can work with them by recognizing vector spaces as such and applying the learned facts and methods to them.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:kemper_gregor"
       ],
       "contains": [
+        "483747bc-04fa-5b29-8c66-97cb090a0a48",
         "3f9ec5bd-12bc-58d9-924f-a3d226ca0704",
         "4c348f9f-8b9c-5245-9f59-84f42b1befc2",
         "8e4852eb-f2a6-563d-9f73-88265e4b0748",
@@ -40,7 +41,9 @@
         "2d872290-7fca-5cba-a42c-14a1774f7560",
         "59f070f9-c232-58db-b791-3885818fdb90"
       ],
-      "requires": [],
+      "requires": [
+        "483747bc-04fa-5b29-8c66-97cb090a0a48"
+      ],
       "dimensionTags": {
         "framework": "tum-ma0004",
         "demandLevel": "AB2",
@@ -1098,6 +1101,28 @@
       }
     },
     {
+      "id": "483747bc-04fa-5b29-8c66-97cb090a0a48",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma0004",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "59f070f9-c232-58db-b791-3885818fdb90",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -1112,7 +1137,9 @@
         "vocabularySource": "/data/ma0004_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "483747bc-04fa-5b29-8c66-97cb090a0a48"
+      ],
       "dimensionTags": {
         "framework": "tum-ma0004",
         "demandLevel": "AB1",

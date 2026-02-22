@@ -9,13 +9,35 @@
   "frameworkId": "tud-18sm2280",
   "goals": [
     {
+      "id": "2da734f0-1c17-5f45-afba-7a5176c71359",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-18sm2280",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "b93f39f8-ef48-59b5-80ec-eabb28fac3fc",
       "title": "Software Defined Networking",
       "titleEn": "Software Defined Networking",
       "description": "Erfolgreicher Abschluss des Moduls \"Software Defined Networking\".",
       "descriptionEn": "Successful completion of module \"Software Defined Networking\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:18-sm-2280",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "2da734f0-1c17-5f45-afba-7a5176c71359"
+      ],
+      "contains": [
+        "2da734f0-1c17-5f45-afba-7a5176c71359"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

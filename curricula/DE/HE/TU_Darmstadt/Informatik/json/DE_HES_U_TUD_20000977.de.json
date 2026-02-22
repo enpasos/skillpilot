@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000977",
   "goals": [
     {
+      "id": "9b938783-f144-51fe-8c33-3d952cd99be6",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000977",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "1cc4dde7-d821-5683-8a50-bf929d8af945",
       "title": "Fortgeschrittenes Multithreading in C++",
       "titleEn": "Fortgeschrittenes Multithreading in C++",
       "description": "Erfolgreicher Abschluss des Moduls \"Fortgeschrittenes Multithreading in C++\".",
       "descriptionEn": "Successful completion of module \"Fortgeschrittenes Multithreading in C++\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-0977",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "9b938783-f144-51fe-8c33-3d952cd99be6"
+      ],
+      "contains": [
+        "9b938783-f144-51fe-8c33-3d952cd99be6"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

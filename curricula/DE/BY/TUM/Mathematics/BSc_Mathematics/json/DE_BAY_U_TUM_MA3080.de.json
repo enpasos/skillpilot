@@ -20,7 +20,7 @@
       "titleEn": "Nonlinear Dynamics: Foundations – Full Module",
       "description": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, die grundlegende mathematische Theorie endlich-dimensionaler kontinuierlicher sowie diskreter dynamischer Systeme zu verstehen und die wichtigsten Elemente deren abstrakter analytischer Behandlung zu beherrschen. Des Weiteren können sie die Grundlagen von Stabilitätstheorie, Bifurkationstheorie und chaotischer Dynamik im Rahmen konkreter Fallbeispiele anwenden.",
       "descriptionEn": "After successful completion of the module, students are able to understand the fundamental mathematical theory of finite-dimensional continuous as well as discrete dynamical systems and master the key elements of their abstract analytic treatment. Moreover, students are able to apply the basics of stability theory, bifurcation theory, and chaotic dynamics in concrete case studies.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "ects:5",
         "workload:150h",
@@ -33,6 +33,7 @@
         "responsible:k_hn_christian"
       ],
       "contains": [
+        "f4542880-73e5-56d3-92b7-f5e1f58c8b4f",
         "5a3cee2c-f7b8-5d84-bd1a-d13a594f9025",
         "f7662bc3-7609-54c0-bcd6-ba4c1484ddc4",
         "4873c18c-bfb0-5ef5-a829-87dd7ee274c9",
@@ -41,6 +42,7 @@
         "e5f92492-eef1-54f3-afc3-e3c85f3d4b7e"
       ],
       "requires": [
+        "f4542880-73e5-56d3-92b7-f5e1f58c8b4f",
         "8eb1605b-fa70-511b-bbe4-28173d359c3b",
         "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
         "c18dbc1a-e398-5053-8bec-f566af8be089",
@@ -61,7 +63,7 @@
       "titleEn": "Phase Space Analysis and Stability",
       "description": "Zusammenfassender Cluster: Elemente der Phasenraumanalyse (Gleichgewichte, periodische Orbits, invariante Mengen) und Stabilitätskonzepte.",
       "descriptionEn": "Summary cluster: elements of phase space analysis (equilibria, periodic orbits, invariant sets) and concepts of stability.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3080"
@@ -137,7 +139,7 @@
       "titleEn": "Linearization and Local Dynamics",
       "description": "Zusammenfassender Cluster: Linearisierung als zentrales Werkzeug zur Analyse lokaler Dynamik und Stabilität in kontinuierlichen und diskreten Systemen.",
       "descriptionEn": "Summary cluster: linearization as a key tool to analyze local dynamics and stability in continuous and discrete systems.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3080"
@@ -217,7 +219,7 @@
       "titleEn": "Planar Dynamics and Poincaré–Bendixson",
       "description": "Zusammenfassender Cluster: Qualitative Theorie planarer Systeme einschließlich Poincaré-Bendixson als Werkzeug für Grenzzyklen.",
       "descriptionEn": "Summary cluster: qualitative theory of planar systems including Poincaré–Bendixson as a tool for limit cycles.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3080"
@@ -297,7 +299,7 @@
       "titleEn": "Continuous Bifurcations: Fold and Hopf",
       "description": "Zusammenfassender Cluster: Stationäre Bifurkationen (Fold/Saddle-Node, Hopf) und ihre Interpretation über Normalformen und Bifurkationsdiagramme.",
       "descriptionEn": "Summary cluster: steady-state bifurcations (fold/saddle-node, Hopf) and their interpretation via normal forms and bifurcation diagrams.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3080"
@@ -377,7 +379,7 @@
       "titleEn": "Perturbations, Chaos, and Applications",
       "description": "Zusammenfassender Cluster: Perturbationsmethoden (Asymptotik, multiple Skalen) sowie Beispiele chaotischer Dynamik und Anwendungen in Natur- und Ingenieurwissenschaften.",
       "descriptionEn": "Summary cluster: perturbation methods (asymptotics, multiple scales), examples of chaotic dynamics, and applications in engineering and the natural sciences.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3080"
@@ -452,6 +454,28 @@
       }
     },
     {
+      "id": "f4542880-73e5-56d3-92b7-f5e1f58c8b4f",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3080",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "e5f92492-eef1-54f3-afc3-e3c85f3d4b7e",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -466,7 +490,9 @@
         "vocabularySource": "/data/ma3080_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "f4542880-73e5-56d3-92b7-f5e1f58c8b4f"
+      ],
       "dimensionTags": {
         "framework": "tum-ma3080",
         "demandLevel": "AB1",

@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000953",
   "goals": [
     {
+      "id": "9a47b60a-17fd-5bfa-a74a-f61324db2942",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000953",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "0f4b545e-8731-5729-909e-19a47a939974",
       "title": "Multithreading in C++",
       "titleEn": "Multithreading in C++",
       "description": "Erfolgreicher Abschluss des Moduls \"Multithreading in C++\".",
       "descriptionEn": "Successful completion of module \"Multithreading in C++\".",
-      "weight": 10.0,
+      "weight": 10,
       "tags": [
+        "root",
         "ects:10",
         "module:20-00-0953",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "9a47b60a-17fd-5bfa-a74a-f61324db2942"
+      ],
+      "contains": [
+        "9a47b60a-17fd-5bfa-a74a-f61324db2942"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

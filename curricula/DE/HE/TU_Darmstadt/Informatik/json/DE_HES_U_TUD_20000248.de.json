@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000248",
   "goals": [
     {
+      "id": "f4859e90-3c77-52bd-abc4-9f6b8e55c09b",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000248",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "8d7e69bf-4260-50cb-a333-9bf9df0876e4",
       "title": "Robotik-Projektpraktikum",
       "titleEn": "Robotik-Projektpraktikum",
       "description": "Erfolgreicher Abschluss des Moduls \"Robotik-Projektpraktikum\".",
       "descriptionEn": "Successful completion of module \"Robotik-Projektpraktikum\".",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
+        "root",
         "ects:9",
         "module:20-00-0248",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "f4859e90-3c77-52bd-abc4-9f6b8e55c09b"
+      ],
+      "contains": [
+        "f4859e90-3c77-52bd-abc4-9f6b8e55c09b"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

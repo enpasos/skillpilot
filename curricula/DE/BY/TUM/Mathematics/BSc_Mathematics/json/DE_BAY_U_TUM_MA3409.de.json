@@ -20,7 +20,7 @@
       "titleEn": "Applied Regression – Full Module",
       "description": "Nach erfolgreichem Abschluss können Studierende reale Datenprobleme mit geeigneten Regressionsmodellen lösen. Sie können lineare, logistische und Poisson-Regression modellieren, Diagnostik und Modellauswahl durchführen sowie Survival-Regression und lineare Mixed-Models für Zeit-bis-Ereignis- bzw. longitudinale Daten anwenden. Sie können Regressionsmodelle in R implementieren, visualisieren und die Ergebnisse fachlich interpretieren.",
       "descriptionEn": "After successful completion of the module, students are able to solve real applied data problems using appropriate regression models. They can model linear, logistic, and Poisson regression, perform diagnostics and model selection, and apply survival regression and linear mixed models for time-to-event and longitudinal data. They can implement regression analyses in R, visualize results, and interpret model outputs.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "ects:5",
         "workload:150h",
@@ -33,6 +33,7 @@
         "responsible:ankerst_donna"
       ],
       "contains": [
+        "c52733c4-3adb-5c0d-8bd9-49891c38f079",
         "33ba7e20-a027-5e8e-a01d-87fbbf9b3879",
         "cb269655-05c2-5339-bb70-bd8b96c05d9b",
         "76cbcd4e-22ae-5adc-8eaf-ce4ae1d03d82",
@@ -41,6 +42,7 @@
         "ec1a0f1e-feed-5767-864a-c22288c1c4a1"
       ],
       "requires": [
+        "c52733c4-3adb-5c0d-8bd9-49891c38f079",
         "ef775418-c971-542f-87fe-07bd9c995bb1"
       ],
       "dimensionTags": {
@@ -58,7 +60,7 @@
       "titleEn": "Linear Regression: Modeling and Interpretation",
       "description": "Zusammenfassender Cluster: Spezifikation, Schätzung und Interpretation einfacher und multipler linearer Regressionsmodelle für kontinuierliche Zielgrößen.",
       "descriptionEn": "Summary cluster: specifying, fitting, and interpreting simple and multiple linear regression models for continuous outcomes.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3409"
@@ -134,7 +136,7 @@
       "titleEn": "Diagnostics and Model Selection",
       "description": "Zusammenfassender Cluster: Modellannahmen prüfen, Diagnostik durchführen und Modelle strukturiert auswählen bzw. vergleichen.",
       "descriptionEn": "Summary cluster: checking model assumptions, performing diagnostics, and selecting/comparing models systematically.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3409"
@@ -212,7 +214,7 @@
       "titleEn": "GLMs: Logistic and Poisson Regression",
       "description": "Zusammenfassender Cluster: Generalisierte lineare Modelle für binäre und Zähldaten (Logit- und Poisson-Regression) inklusive Interpretation und Modellprüfung.",
       "descriptionEn": "Summary cluster: generalized linear models for binary and count data (logistic and Poisson regression), including interpretation and model checks.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3409"
@@ -290,7 +292,7 @@
       "titleEn": "Survival Regression for Time-to-Event Data",
       "description": "Zusammenfassender Cluster: Regression für Zeit-bis-Ereignis-Daten mit Zensierung, inklusive Interpretation und Modellannahmen.",
       "descriptionEn": "Summary cluster: regression for time-to-event data with censoring, including interpretation and model assumptions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3409"
@@ -368,7 +370,7 @@
       "titleEn": "Linear Mixed Models for Longitudinal Data",
       "description": "Zusammenfassender Cluster: Lineare Mixed-Models mit Random Effects für wiederholte Messungen und longitudinale Datenanalyse.",
       "descriptionEn": "Summary cluster: linear mixed models with random effects for repeated measurements and longitudinal data analysis.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3409"
@@ -603,6 +605,28 @@
       }
     },
     {
+      "id": "c52733c4-3adb-5c0d-8bd9-49891c38f079",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3409",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "ec1a0f1e-feed-5767-864a-c22288c1c4a1",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -617,7 +641,9 @@
         "vocabularySource": "/data/ma3409_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "c52733c4-3adb-5c0d-8bd9-49891c38f079"
+      ],
       "dimensionTags": {
         "framework": "tum-ma3409",
         "demandLevel": "AB1",

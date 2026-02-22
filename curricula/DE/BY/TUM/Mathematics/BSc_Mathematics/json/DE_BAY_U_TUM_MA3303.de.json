@@ -20,7 +20,7 @@
       "titleEn": "Numerical Methods for Partial Differential Equations – Full Module",
       "description": "Nach erfolgreichem Abschluss können Studierende numerische Lösungstechniken für partielle Differentialgleichungen verstehen und anwenden, insbesondere im Kontext von Finite-Elemente-Verfahren für elliptische Randwertprobleme. Sie können Fehler- und Adaptivitätskonzepte einordnen und besitzen Programmierfertigkeiten, um entsprechende Software zu handhaben.",
       "descriptionEn": "After successful completion of the module students are able to understand and apply numerical solution techniques for partial differential equations, in particular finite element methods for elliptic boundary value problems. They can place concepts of error analysis and adaptivity and have programming skills to handle corresponding software.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:junge_oliver"
       ],
       "contains": [
+        "ffa4bf8e-c27d-5a25-9879-50d0d80e3bb0",
         "adfa31cd-90fe-5930-8e43-4738989b3efc",
         "420ac80e-d898-5f14-8002-f95fdaac3807",
         "ffed2165-60a6-5a11-a2df-e4ace9b64cd9",
@@ -44,6 +45,7 @@
         "1237df49-4032-5a69-95ce-a6b3c1a863f9"
       ],
       "requires": [
+        "ffa4bf8e-c27d-5a25-9879-50d0d80e3bb0",
         "6202cf26-6e1f-5eff-a0ee-f2965764d3ae",
         "9da88d73-34df-5c7a-9bf2-14b001783b26"
       ],
@@ -371,7 +373,7 @@
       "titleEn": "Adaptive Mesh Refinement",
       "description": "Zusammenfassender Cluster: Adaptivitäts-Zyklus (Solve–Estimate–Mark–Refine), Markierungsstrategien und praktische Umsetzung adaptiver FE-Methoden.",
       "descriptionEn": "Summary cluster: the adaptivity loop (solve–estimate–mark–refine), marking strategies, and practical implementation of adaptive FE methods.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3303"
@@ -1116,6 +1118,28 @@
       }
     },
     {
+      "id": "ffa4bf8e-c27d-5a25-9879-50d0d80e3bb0",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3303",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "1237df49-4032-5a69-95ce-a6b3c1a863f9",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -1130,7 +1154,9 @@
         "vocabularySource": "/data/ma3303_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "ffa4bf8e-c27d-5a25-9879-50d0d80e3bb0"
+      ],
       "dimensionTags": {
         "framework": "tum-ma3303",
         "demandLevel": "AB1",

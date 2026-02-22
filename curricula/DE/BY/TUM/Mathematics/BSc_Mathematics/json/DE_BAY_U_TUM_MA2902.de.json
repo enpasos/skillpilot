@@ -20,7 +20,7 @@
       "titleEn": "Mathematical Modeling: Case Studies – Full Module",
       "description": "Nach dem erfolgreichen Abschluss des Moduls ist der Studierende in der Lage, die mathematische Modellbildung anhand spezifischer Probleme aus den Natur-, Ingenieur-, Lebens- und Wirtschaftswissenschaften zu verstehen und Techniken zur Bearbeitung solcher Probleme im inhaltlich interdisziplinären Kontext anzuwenden.",
       "descriptionEn": "After successful completion of the module, students are able to understand mathematical modeling based on specific problems from the natural, engineering, life, and economic sciences and to apply techniques for working on such problems in an interdisciplinary context.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:wolf_michael_marc"
       ],
       "contains": [
+        "5b5453d5-fa49-5554-8b29-54fbf56952cd",
         "d012bbbe-b52e-552e-b890-065c18820431",
         "4b2de55d-770c-5416-849f-b88482a57e61",
         "01923271-7344-592e-a00b-084240626436",
@@ -44,6 +45,7 @@
         "13596409-5edf-5452-a47a-5c05cf2dc156"
       ],
       "requires": [
+        "5b5453d5-fa49-5554-8b29-54fbf56952cd",
         "8eb1605b-fa70-511b-bbe4-28173d359c3b",
         "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
         "feaad1d5-022f-5ab3-93c3-001ac46de351"
@@ -529,7 +531,7 @@
       "titleEn": "Interdisciplinary Communication and Documentation",
       "description": "Zusammenfassender Cluster: Ergebnisse verständlich kommunizieren, Dokumentation erstellen und im interdisziplinären Kontext argumentieren.",
       "descriptionEn": "Summary cluster: communicating results clearly, producing documentation, and arguing in an interdisciplinary context.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA2902"
@@ -680,6 +682,28 @@
       }
     },
     {
+      "id": "5b5453d5-fa49-5554-8b29-54fbf56952cd",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "13596409-5edf-5452-a47a-5c05cf2dc156",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -694,7 +718,9 @@
         "vocabularySource": "/data/ma2902_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "5b5453d5-fa49-5554-8b29-54fbf56952cd"
+      ],
       "dimensionTags": {
         "framework": "tum-ma2902",
         "demandLevel": "AB1",

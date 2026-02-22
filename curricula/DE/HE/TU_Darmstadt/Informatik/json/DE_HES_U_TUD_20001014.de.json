@@ -9,13 +9,35 @@
   "frameworkId": "tud-20001014",
   "goals": [
     {
+      "id": "fa7a8f37-ba4f-51be-8342-346516cf688a",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20001014",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "e2f1f6a0-79b3-531f-bd45-ab0d9aa31409",
       "title": "Deep Learning für medizinische Bildgebung",
       "titleEn": "Deep Learning für medizinische Bildgebung",
       "description": "Erfolgreicher Abschluss des Moduls \"Deep Learning für medizinische Bildgebung\".",
       "descriptionEn": "Successful completion of module \"Deep Learning für medizinische Bildgebung\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-1014",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "fa7a8f37-ba4f-51be-8342-346516cf688a"
+      ],
+      "contains": [
+        "fa7a8f37-ba4f-51be-8342-346516cf688a"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

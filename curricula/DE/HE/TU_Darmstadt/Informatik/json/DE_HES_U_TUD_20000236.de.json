@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000236",
   "goals": [
     {
+      "id": "6c581440-7125-5232-bbe0-d3406e9a775b",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000236",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "d6ee71ff-cbbb-508a-9225-bd301b99eca2",
       "title": "Serious Games Praktikum",
       "titleEn": "Serious Games Praktikum",
       "description": "Erfolgreicher Abschluss des Moduls \"Serious Games Praktikum\".",
       "descriptionEn": "Successful completion of module \"Serious Games Praktikum\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-0236",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "6c581440-7125-5232-bbe0-d3406e9a775b"
+      ],
+      "contains": [
+        "6c581440-7125-5232-bbe0-d3406e9a775b"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000794",
   "goals": [
     {
+      "id": "ec990f1a-a846-5184-bf90-0aa3f336ef77",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000794",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "35c5515b-8572-52bc-9992-d380f0a01244",
       "title": "Formale Spezifikation und Verifikation von Software",
       "titleEn": "Formale Spezifikation und Verifikation von Software",
       "description": "Erfolgreicher Abschluss des Moduls \"Formale Spezifikation und Verifikation von Software\".",
       "descriptionEn": "Successful completion of module \"Formale Spezifikation und Verifikation von Software\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-0794",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "ec990f1a-a846-5184-bf90-0aa3f336ef77"
+      ],
+      "contains": [
+        "ec990f1a-a846-5184-bf90-0aa3f336ef77"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

@@ -13,18 +13,21 @@
       "titleEn": "Quantum Computing with Superconducting Qubits: Basic Concepts (NAT3036)",
       "description": "Die lernende Person kann supraleitende Qubit-Hardware erklären, Algorithmen auf Hardware abbilden und Anforderungen der Fehlertoleranz mit Experimenten verknüpfen.",
       "descriptionEn": "The learner can explain superconducting qubit hardware, map algorithms to hardware, and relate fault-tolerance requirements to experiments.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:NAT3036",
         "ects:5"
       ],
       "contains": [
+        "d1af3e40-0e93-5b61-b0dc-5d83605f5ea5",
         "2b49f5cb-04a0-519d-958e-aba73297a1e9",
         "d63a787c-eb03-514a-9225-6449c1b98f27",
         "919b68d6-7945-5c82-a142-2834c0abb81b",
         "c29a4dcf-d836-56a9-ae82-5f79c8431b0c"
       ],
-      "requires": [],
+      "requires": [
+        "d1af3e40-0e93-5b61-b0dc-5d83605f5ea5"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/NAT3036",
       "dimensionTags": {
         "phase": "Modul"
@@ -36,7 +39,7 @@
       "titleEn": "Quantum algorithms and hardware mapping",
       "description": "Die lernende Person kann grundlegende Quantenalgorithmen mit Hardware-Restriktionen verknüpfen.",
       "descriptionEn": "The learner can relate core quantum algorithms to hardware constraints.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3036"
       ],
@@ -50,17 +53,40 @@
       }
     },
     {
+      "id": "d1af3e40-0e93-5b61-b0dc-5d83605f5ea5",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-nat3036",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "3cd1cca2-f033-5131-995a-47e67c0388d1",
       "title": "Kernprotokolle und algorithmische Bausteine",
       "titleEn": "Core protocols and algorithmic building blocks",
       "description": "Die lernende Person kann Teleportation, Grover und QFT als motivierende Beispiele beschreiben.",
       "descriptionEn": "The learner can describe teleportation, Grover, and QFT as motivating examples.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3036"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "d1af3e40-0e93-5b61-b0dc-5d83605f5ea5"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -71,7 +97,7 @@
       "titleEn": "Hardware-aware algorithm mapping",
       "description": "Die lernende Person kann Algorithmen auf native Gatter und Konnektivität abbilden.",
       "descriptionEn": "The learner can map algorithms onto native gate sets and connectivity.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3036"
       ],
@@ -89,7 +115,7 @@
       "titleEn": "Superconducting qubit hardware",
       "description": "Die lernende Person kann supraleitende Schaltkreise und deren Betrieb beschreiben.",
       "descriptionEn": "The learner can describe superconducting circuits and their operation.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3036"
       ],
@@ -108,7 +134,7 @@
       "titleEn": "Qubit types and couplers",
       "description": "Die lernende Person kann Transmon-, Fluxonium- und Kopplerelemente vergleichen.",
       "descriptionEn": "The learner can compare transmon, fluxonium, and coupling elements.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3036"
       ],
@@ -124,7 +150,7 @@
       "titleEn": "Control and readout techniques",
       "description": "Die lernende Person kann Mikrowellensteuerung und Messschemata erklären.",
       "descriptionEn": "The learner can explain microwave control and measurement schemes.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3036"
       ],
@@ -142,7 +168,7 @@
       "titleEn": "Characterization and benchmarking",
       "description": "Die lernende Person kann Qubits und Gatter mit Charakterisierungsmethoden bewerten.",
       "descriptionEn": "The learner can evaluate qubits and gates using characterization methods.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3036"
       ],
@@ -161,7 +187,7 @@
       "titleEn": "Coherence and noise metrics",
       "description": "Die lernende Person kann T1/T2 und Fehlermetriken interpretieren.",
       "descriptionEn": "The learner can interpret T1/T2 and error metrics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3036"
       ],
@@ -177,7 +203,7 @@
       "titleEn": "Gate and processor benchmarking",
       "description": "Die lernende Person kann Benchmarking- und Kalibrierkonzepte anwenden.",
       "descriptionEn": "The learner can apply benchmarking and calibration concepts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3036"
       ],
@@ -195,7 +221,7 @@
       "titleEn": "Error correction and scaling",
       "description": "Die lernende Person kann QEC-Codes und Fehlertoleranzschwellen erklären.",
       "descriptionEn": "The learner can explain QEC codes and fault-tolerance thresholds.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3036"
       ],
@@ -214,7 +240,7 @@
       "titleEn": "Codes and decoding basics",
       "description": "Die lernende Person kann Surface Codes und Decoding-Schritte skizzieren.",
       "descriptionEn": "The learner can outline surface codes and decoding steps.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3036"
       ],
@@ -230,7 +256,7 @@
       "titleEn": "Scaling challenges and platform comparison",
       "description": "Die lernende Person kann supraleitende Plattformen mit Ionen- und Atomplattformen vergleichen.",
       "descriptionEn": "The learner can compare superconducting platforms to ions and atoms for scaling.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3036"
       ],

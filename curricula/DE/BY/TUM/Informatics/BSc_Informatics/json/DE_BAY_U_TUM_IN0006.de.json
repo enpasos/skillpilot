@@ -13,12 +13,13 @@
       "titleEn": "Introduction to Software Engineering (IN0006)",
       "description": "Die lernende Person kann Software-Engineering-Methoden über den gesamten Software-Lebenszyklus hinweg anwenden.",
       "descriptionEn": "The learner can apply software engineering methods across the software lifecycle.",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
         "module:IN0006",
         "ects:6"
       ],
       "contains": [
+        "ed786107-328c-593b-ab79-4c1f70b64827",
         "74389ce3-0e26-5ea2-a973-c79138b226ba",
         "71d3b351-44d5-5706-941e-18dc7668fd1c",
         "d7142b5b-c8b6-51d7-bf0d-43beab2bf02e",
@@ -28,7 +29,9 @@
         "991c3b37-c3fe-5ec1-b1ff-fffb9a881d3e",
         "6cec7883-9c71-5e53-9d16-e9119c291e76"
       ],
-      "requires": [],
+      "requires": [
+        "ed786107-328c-593b-ab79-4c1f70b64827"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0006",
       "dimensionTags": {
         "phase": "Modul"
@@ -40,7 +43,7 @@
       "titleEn": "Foundations and cloud context",
       "description": "Die lernende Person kann grundlegende Software-Engineering-Konzepte und Cloud-Grundlagen erklären.",
       "descriptionEn": "The learner can explain core software engineering concepts and cloud basics.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0006"
       ],
@@ -54,17 +57,40 @@
       }
     },
     {
+      "id": "ed786107-328c-593b-ab79-4c1f70b64827",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-in0006",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "60ae999d-a73c-56d7-9fc7-de074f03328d",
       "title": "Entwicklungsmethoden und Modellierung",
       "titleEn": "Development methods and modeling",
       "description": "Die lernende Person kann Entwicklungsmethoden, Modellierungstechniken und Abstraktionsprinzipien beschreiben.",
       "descriptionEn": "The learner can describe development methods, modeling techniques, and abstraction principles.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0006"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "ed786107-328c-593b-ab79-4c1f70b64827"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -75,7 +101,7 @@
       "titleEn": "Cloud infrastructure and service models",
       "description": "Die lernende Person kann Cloud-Infrastruktur- und Servicemodelle auf einem grundlegenden Niveau erklären.",
       "descriptionEn": "The learner can explain cloud infrastructure and service models at a basic level.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0006"
       ],
@@ -91,7 +117,7 @@
       "titleEn": "Requirements and architecture",
       "description": "Die lernende Person kann Anforderungen ableiten und Architekturstile vergleichen.",
       "descriptionEn": "The learner can derive requirements and compare architectural styles.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0006"
       ],
@@ -112,7 +138,7 @@
       "titleEn": "Functional and non-functional requirements",
       "description": "Die lernende Person kann funktionale und nichtfunktionale Anforderungen ermitteln und unterscheiden.",
       "descriptionEn": "The learner can elicit and distinguish functional and non-functional requirements.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0006"
       ],
@@ -128,7 +154,7 @@
       "titleEn": "Architectural styles and deployment",
       "description": "Die lernende Person kann Client-Server-, mehrschichtige, monolithische und Microservice-Architekturen vergleichen.",
       "descriptionEn": "The learner can compare client-server, layered, monolithic, and microservice architectures.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0006"
       ],
@@ -144,7 +170,7 @@
       "titleEn": "System design and data management",
       "description": "Die lernende Person kann modulare Systeme und Datenmanagementlösungen entwerfen.",
       "descriptionEn": "The learner can design modular systems and data management solutions.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0006"
       ],
@@ -165,7 +191,7 @@
       "titleEn": "Modularity and design patterns",
       "description": "Die lernende Person kann Modularisierung und gängige Entwurfsmuster anwenden.",
       "descriptionEn": "The learner can apply modularization and common design patterns.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0006"
       ],
@@ -181,7 +207,7 @@
       "titleEn": "Data management solutions",
       "description": "Die lernende Person kann Datenmanagementansätze für das Systemdesign bewerten.",
       "descriptionEn": "The learner can evaluate data management approaches for system design.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0006"
       ],
@@ -197,7 +223,7 @@
       "titleEn": "Performance, concurrency, scalability",
       "description": "Die lernende Person kann auf nichtfunktionale Designprobleme eingehen.",
       "descriptionEn": "The learner can address non-functional design concerns.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0006"
       ],
@@ -218,7 +244,7 @@
       "titleEn": "Performance optimization",
       "description": "Die lernende Person kann Strategien zur Leistungsoptimierung identifizieren und anwenden.",
       "descriptionEn": "The learner can identify and apply performance optimization strategies.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0006"
       ],
@@ -234,7 +260,7 @@
       "titleEn": "Concurrency and scalability",
       "description": "Die lernende Person kann Parallelitätskontroll- und Skalierbarkeitstechniken anwenden.",
       "descriptionEn": "The learner can apply concurrency control and scalability techniques.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0006"
       ],
@@ -250,7 +276,7 @@
       "titleEn": "Security, reliability, availability",
       "description": "Die lernende Person kann Systeme mit Blick auf Sicherheit und Zuverlässigkeit entwerfen.",
       "descriptionEn": "The learner can design systems with security and dependability in mind.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0006"
       ],
@@ -271,7 +297,7 @@
       "titleEn": "Secure system design",
       "description": "Die lernende Person kann Prinzipien für den sicheren Systementwurf anwenden.",
       "descriptionEn": "The learner can apply principles for secure system design.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0006"
       ],
@@ -287,7 +313,7 @@
       "titleEn": "Reliability and availability",
       "description": "Die lernende Person kann Techniken für Zuverlässigkeit und Hochverfügbarkeit beschreiben.",
       "descriptionEn": "The learner can describe techniques for reliability and high availability.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0006"
       ],
@@ -303,7 +329,7 @@
       "titleEn": "Testing and analysis",
       "description": "Die lernende Person kann die Softwarequalität durch Tests und Analysen überprüfen.",
       "descriptionEn": "The learner can verify software quality through testing and analysis.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0006"
       ],
@@ -324,7 +350,7 @@
       "titleEn": "Testing methods and automation",
       "description": "Die lernende Person kann Unit-, Integrations- und automatisierte Testmethoden anwenden.",
       "descriptionEn": "The learner can apply unit, integration, and automated testing methods.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0006"
       ],
@@ -340,7 +366,7 @@
       "titleEn": "Static and dynamic analysis",
       "description": "Die lernende Person kann statische und dynamische Programmanalysetechniken anwenden.",
       "descriptionEn": "The learner can use static and dynamic program analysis techniques.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0006"
       ],
@@ -356,7 +382,7 @@
       "titleEn": "DevOps and operations",
       "description": "Die lernende Person kann Softwarebereitstellungs- und Betriebsabläufe verwalten.",
       "descriptionEn": "The learner can manage software delivery and operations workflows.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0006"
       ],
@@ -377,7 +403,7 @@
       "titleEn": "Version control and CI/CD",
       "description": "Die lernende Person kann Versionskontrolle, Build-Systeme und CI/CD-Pipelines verwenden.",
       "descriptionEn": "The learner can use version control, build systems, and CI/CD pipelines.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0006"
       ],
@@ -393,7 +419,7 @@
       "titleEn": "Deployment and monitoring",
       "description": "Die lernende Person kann Bereitstellungsmodelle, Containerisierung und Überwachungspraktiken anwenden.",
       "descriptionEn": "The learner can apply deployment models, containerization, and monitoring practices.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0006"
       ],
@@ -409,7 +435,7 @@
       "titleEn": "Quality assurance and project management",
       "description": "Die lernende Person kann Qualitätsmethoden und Projektmanagement-Grundlagen anwenden.",
       "descriptionEn": "The learner can apply quality methods and project management basics.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0006"
       ],
@@ -430,7 +456,7 @@
       "titleEn": "Quality assurance techniques",
       "description": "Die lernende Person kann Überprüfungen, Refactoring und Verifizierung nutzen, um die Qualität zu verbessern.",
       "descriptionEn": "The learner can use reviews, refactoring, and verification to improve quality.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0006"
       ],
@@ -446,7 +472,7 @@
       "titleEn": "Project management fundamentals",
       "description": "Die lernende Person kann grundlegende Projektplanungs- und Managementpraktiken anwenden.",
       "descriptionEn": "The learner can apply basic project planning and management practices.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0006"
       ],

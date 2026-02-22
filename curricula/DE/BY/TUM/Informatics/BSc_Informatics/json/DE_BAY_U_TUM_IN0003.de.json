@@ -13,18 +13,21 @@
       "titleEn": "Functional Programming and Verification (IN0003)",
       "description": "Die lernende Person kann in einem funktionalen Stil programmieren und grundlegende Verifizierungstechniken anwenden.",
       "descriptionEn": "The learner can program in a functional style and apply basic verification techniques.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:IN0003",
         "ects:5"
       ],
       "contains": [
+        "880e0f6a-bb2c-5ab8-8783-b3d43548d3d1",
         "a636622a-8cb2-5621-8150-31c90b0b7a2e",
         "96a2b60d-ee14-5070-8a3b-3af99ce473a9",
         "d8258dfd-ef75-5147-bc8e-03b286c6427e",
         "20fb2041-2051-5aa9-af82-3662b9e7cf2f"
       ],
-      "requires": [],
+      "requires": [
+        "880e0f6a-bb2c-5ab8-8783-b3d43548d3d1"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0003",
       "dimensionTags": {
         "phase": "Modul"
@@ -36,7 +39,7 @@
       "titleEn": "Verification of imperative programs",
       "description": "Die lernende Person kann über die Richtigkeit und Beendigung imperativer Programme nachdenken.",
       "descriptionEn": "The learner can reason about correctness and termination of imperative programs.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0003"
       ],
@@ -50,17 +53,40 @@
       }
     },
     {
+      "id": "880e0f6a-bb2c-5ab8-8783-b3d43548d3d1",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-in0003",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "a6b57374-d0db-53fb-8417-65d835ad1915",
       "title": "Hoare- und Floyd-Verifizierung",
       "titleEn": "Hoare and Floyd verification",
       "description": "Die lernende Person kann die Hoare- oder Floyd-Logik anwenden, um die teilweise Richtigkeit zu beweisen.",
       "descriptionEn": "The learner can apply Hoare or Floyd logic to prove partial correctness.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0003"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "880e0f6a-bb2c-5ab8-8783-b3d43548d3d1"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -71,7 +97,7 @@
       "titleEn": "Termination and procedures",
       "description": "Die lernende Person kann über einen Abbruch streiten und einfache Vorgehensweisen überprüfen.",
       "descriptionEn": "The learner can argue about termination and verify simple procedures.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0003"
       ],
@@ -87,7 +113,7 @@
       "titleEn": "Functional programming foundations",
       "description": "Die lernende Person kann grundlegende funktionale Programmierkonzepte anwenden.",
       "descriptionEn": "The learner can use core functional programming concepts.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0003"
       ],
@@ -106,7 +132,7 @@
       "titleEn": "Values, variables, and functions",
       "description": "Die lernende Person kann Funktionen definieren und Ausdrücke in einer funktionalen Sprache bewerten.",
       "descriptionEn": "The learner can define functions and evaluate expressions in a functional language.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0003"
       ],
@@ -122,7 +148,7 @@
       "titleEn": "Data structures and pattern matching",
       "description": "Die lernende Person kann Daten modellieren und mithilfe von Mustervergleichen verarbeiten.",
       "descriptionEn": "The learner can model data and use pattern matching to process it.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0003"
       ],
@@ -138,7 +164,7 @@
       "titleEn": "Higher-order and polymorphic programming",
       "description": "Die lernende Person kann fortgeschrittene funktionale Abstraktionsmechanismen nutzen.",
       "descriptionEn": "The learner can use advanced functional abstraction mechanisms.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0003"
       ],
@@ -159,7 +185,7 @@
       "titleEn": "Higher-order functions and polymorphic types",
       "description": "Die lernende Person kann Funktionen höherer Ordnung definieren und polymorphe Typisierung verwenden.",
       "descriptionEn": "The learner can define higher-order functions and use polymorphic typing.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0003"
       ],
@@ -175,7 +201,7 @@
       "titleEn": "Modules, structures, and functors",
       "description": "Die lernende Person kann Programme mithilfe von Modulen, Strukturen und Funktoren organisieren.",
       "descriptionEn": "The learner can organize programs using modules, structures, and functors.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0003"
       ],
@@ -191,7 +217,7 @@
       "titleEn": "Semantics and verification of functional programs",
       "description": "Die lernende Person kann funktionale Semantik mit Verifikationsaufgaben verbinden.",
       "descriptionEn": "The learner can connect functional semantics with verification tasks.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0003"
       ],
@@ -212,7 +238,7 @@
       "titleEn": "Semantics of functional programs",
       "description": "Die lernende Person kann die semantischen Grundlagen der funktionalen Programmbewertung erläutern.",
       "descriptionEn": "The learner can explain the semantic basis of functional program evaluation.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0003"
       ],
@@ -228,7 +254,7 @@
       "titleEn": "Verification of functional programs",
       "description": "Die lernende Person kann Verifizierungstechniken auf funktionalen Code anwenden.",
       "descriptionEn": "The learner can apply verification techniques to functional code.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0003"
       ],

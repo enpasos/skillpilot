@@ -20,7 +20,7 @@
       "titleEn": "Geometry – Full Module",
       "description": "Die Vorlesung deckt ausgewählte grundlegende Themen aus projektiver Geometrie, Differentialgeometrie und kombinatorischer Geometrie ab und legt Wert auf Querbezüge sowie die Visualisierung geometrischer Objekte. Nach dem erfolgreichen Abschluss des Moduls Geometrie sind die Studierenden in der Lage, grundlegende Konzepte (u.a. Darstellung von Objekten und geometrischen Operationen, Durchführen von Transformationen sowie Berechnen charakteristischer Maßzahlen) sachgerecht anzuwenden. Insbesondere können sie geometrische Objekte mit Methoden der Algebra, Analysis und Kombinatorik formal beschreiben und Berechnungen an diesen Objekten durchführen. Die Studierenden kennen Visualisierungsmöglichkeiten geometrischer Objekte und können diese einsetzen.",
       "descriptionEn": "The course covers selected fundamental topics from projective geometry, differential geometry, and combinatorial geometry and emphasizes connections between these areas as well as visualization of geometric objects. After successfully completing the module, students are able to apply core concepts of geometry (including representing objects and geometric operations, carrying out transformations, and computing characteristic invariants) appropriately. In particular, they can formally describe geometric objects using methods from algebra, analysis, and combinatorics and perform computations with these objects. Students know ways to visualize geometric objects and can carry them out.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:richter_gebert_j_rgen"
       ],
       "contains": [
+        "4073e214-5265-5d1c-b144-1d7052e29c9b",
         "a81ce684-8033-50a1-9dee-d1b3a4456642",
         "889b0996-5ae9-5124-8782-f6eb4da6b47c",
         "28dc011f-2cd4-5359-b5b4-64a35416e5b0",
@@ -44,6 +45,7 @@
         "09ffbdb8-2b35-5a31-8399-8b944e059713"
       ],
       "requires": [
+        "4073e214-5265-5d1c-b144-1d7052e29c9b",
         "8eb1605b-fa70-511b-bbe4-28173d359c3b",
         "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
         "feaad1d5-022f-5ab3-93c3-001ac46de351"
@@ -456,7 +458,7 @@
       "titleEn": "Combinatorial Geometry: Incidence Systems and Matroids",
       "description": "Zusammenfassender Cluster: Inzidenzstrukturen und Matroide als kombinatorische Modelle geometrischer Zusammenhänge.",
       "descriptionEn": "Summary cluster: incidence structures and matroids as combinatorial models of geometric relations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA2011"
@@ -532,7 +534,7 @@
       "titleEn": "Polytopes, Face Lattices, and the Euler Characteristic",
       "description": "Zusammenfassender Cluster: Polytope, Seitenverband und Euler-Charakteristik als zentrale Werkzeuge der kombinatorischen Geometrie.",
       "descriptionEn": "Summary cluster: polytopes, face lattices, and the Euler characteristic as central tools of combinatorial geometry.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA2011"
@@ -689,6 +691,28 @@
       }
     },
     {
+      "id": "4073e214-5265-5d1c-b144-1d7052e29c9b",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2011",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "09ffbdb8-2b35-5a31-8399-8b944e059713",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -703,7 +727,9 @@
         "vocabularySource": "/data/ma2011_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "4073e214-5265-5d1c-b144-1d7052e29c9b"
+      ],
       "dimensionTags": {
         "framework": "tum-ma2011",
         "demandLevel": "AB1",

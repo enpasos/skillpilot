@@ -10,14 +10,36 @@
   "subject": "Italienisch",
   "goals": [
     {
+      "id": "fcb79ea5-e777-50a0-927a-72edc5dfb4c5",
+      "title": "Warum Italienisch? - Relevanz und Orientierung",
+      "titleEn": "Why Italienisch? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Italienisch für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Italienisch matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "69748f24-7bbc-5e5f-8e9e-b9767d9434f2",
       "title": "Jahrgangsstufe 12",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "fcb79ea5-e777-50a0-927a-72edc5dfb4c5"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,13 +50,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "c2c0f7df-8de9-5c5c-9da0-fad372b2f1ce",
       "title": "Italienisch (Fachoberschule)",
       "contains": [
+        "fcb79ea5-e777-50a0-927a-72edc5dfb4c5",
         "69748f24-7bbc-5e5f-8e9e-b9767d9434f2",
         "192e3b45-afd0-57e0-92db-3d35c6c616e1"
       ],
@@ -45,8 +68,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "fcb79ea5-e777-50a0-927a-72edc5dfb4c5"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

@@ -20,7 +20,7 @@
       "titleEn": "Insurance Mathematics 2 – Full Module",
       "description": "Nach erfolgreichem Abschluss können Studierende typische Lebensversicherungsprodukte und die zugehörigen Risiken beschreiben, Grundbegriffe der Survival Analysis anwenden und biometrische Größen (Sterblichkeit, Invalidität) berechnen. Sie kennen zentrale Regelwerke der Lebensversicherung, können Barwerte, Prämien und Reserven für Standardprodukte bestimmen und Reserven mit verschiedenen etablierten Methoden berechnen. Im Pensionsbereich können sie Pensionsverpflichtungen nach deutschen und internationalen Rechnungslegungsprinzipien bewerten. Darüber hinaus können sie grundlegende aktuariell-mathematische Prinzipien der privaten Krankenversicherung in Deutschland anwenden und Rahmenbedingungen berücksichtigen.",
       "descriptionEn": "After successful completion of the module, students are able to describe typical life insurance products and the risks associated with them, understand basic notions of survival analysis, and compute actuarial decrements. They know key directives of life insurance regulation, can calculate net present values of typical life insurance products, compute premiums and allocate costs, and calculate reserves using established methods. With respect to pension mathematics, students are able to apply actuarial methods to value pension liabilities under both German and international accounting principles. Moreover, they are able to apply and analyze fundamental actuarial calculation principles of German private health insurance and take into account the regulatory, economic, and legal framework conditions influencing pricing.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:scherer_matthias"
       ],
       "contains": [
+        "2368d296-445a-5cc1-b995-889406fe7994",
         "0dc3a090-49be-5eae-9192-143b0903bfb9",
         "96a95f83-e4d1-5b05-b7a3-15e48df5364d",
         "4a450529-647d-5ffb-8d67-5711b481d7ce",
@@ -44,6 +45,7 @@
         "7ab4e14d-5610-5be8-8a97-f7c91cd6084e"
       ],
       "requires": [
+        "2368d296-445a-5cc1-b995-889406fe7994",
         "ef775418-c971-542f-87fe-07bd9c995bb1",
         "9b59f402-0e4b-515b-a396-9344e590c2b0"
       ],
@@ -138,7 +140,7 @@
       "titleEn": "Discounting, Present Values, and Actuarial Calculations",
       "description": "Zusammenfassender Cluster: Diskontfaktoren, Barwerte und klassische aktuariell-symbolische Rechenweisen für Lebensversicherungszahlungen.",
       "descriptionEn": "Summary cluster: discount factors, present values, and classical actuarial-symbolic calculations for life insurance cashflows.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3406"
@@ -372,7 +374,7 @@
       "titleEn": "Probabilistic Models, Stochastic Mortality, and Replication",
       "description": "Zusammenfassender Cluster: Moderne probabilistische Ansätze, stochastische Mortalitätsmodelle und die Idee der Replikation von Verpflichtungen.",
       "descriptionEn": "Summary cluster: modern probabilistic approaches, stochastic mortality models, and the idea of replicating liabilities.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3406"
@@ -528,7 +530,7 @@
       "titleEn": "International Pension Accounting",
       "description": "Zusammenfassender Cluster: Bewertung nach international anerkannten Rechnungslegungsprinzipien (z.B. PUC-Methode), Kostenkomponenten und aktuarieller Gewinn/Verlust.",
       "descriptionEn": "Summary cluster: valuation under internationally accepted accounting principles (e.g., projected unit credit), cost components, and actuarial gains/losses.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3406"
@@ -1131,6 +1133,28 @@
       }
     },
     {
+      "id": "2368d296-445a-5cc1-b995-889406fe7994",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3406",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "7ab4e14d-5610-5be8-8a97-f7c91cd6084e",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -1145,7 +1169,9 @@
         "vocabularySource": "/data/ma3406_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "2368d296-445a-5cc1-b995-889406fe7994"
+      ],
       "dimensionTags": {
         "framework": "tum-ma3406",
         "demandLevel": "AB1",

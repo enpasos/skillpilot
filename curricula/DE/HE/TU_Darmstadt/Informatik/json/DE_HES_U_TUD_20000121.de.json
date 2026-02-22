@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000121",
   "goals": [
     {
+      "id": "2d2dad4f-34ba-537b-8240-cc09f0477384",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000121",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "313f787c-291a-592e-aa31-7826c96617e9",
       "title": "Ubiquitous Computing in Geschäftsprozessen",
       "titleEn": "Ubiquitous Computing in Geschäftsprozessen",
       "description": "Erfolgreicher Abschluss des Moduls \"Ubiquitous Computing in Geschäftsprozessen\".",
       "descriptionEn": "Successful completion of module \"Ubiquitous Computing in Geschäftsprozessen\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-0121",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "2d2dad4f-34ba-537b-8240-cc09f0477384"
+      ],
+      "contains": [
+        "2d2dad4f-34ba-537b-8240-cc09f0477384"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

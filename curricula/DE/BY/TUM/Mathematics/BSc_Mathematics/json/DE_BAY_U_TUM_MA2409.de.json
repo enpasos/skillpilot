@@ -20,7 +20,7 @@
       "titleEn": "Probability Theory – Full Module",
       "description": "Nach erfolgreichem Abschluss können Studierende maßtheoretische Wahrscheinlichkeitstheorie verstehen und anwenden. Insbesondere beherrschen sie die Theorie von Folgen i.i.d. Zufallsvariablen (Gesetze der großen Zahlen, zentraler Grenzwertsatz) sowie grundlegende Resultate der Martingaltheorie.",
       "descriptionEn": "After successful completion of the module students are able to understand and apply measure-theoretic probability theory. In particular, they master the theory of sequences of i.i.d. random variables (laws of large numbers, central limit theorem) and fundamental results from martingale theory.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:rolles_silke"
       ],
       "contains": [
+        "eb9a38bb-52c9-5ba7-a5fe-8b6203c45147",
         "83d0cf0e-33f5-50fb-97cb-352e46de566c",
         "7fc2f8bd-2692-58b6-b261-8e0aead9d50c",
         "26e8d7e5-a5af-5305-9de7-5161cd321106",
@@ -44,6 +45,7 @@
         "524ecac4-7d7c-543a-a21e-1fdabffbb08a"
       ],
       "requires": [
+        "eb9a38bb-52c9-5ba7-a5fe-8b6203c45147",
         "8eb1605b-fa70-511b-bbe4-28173d359c3b",
         "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
         "c18dbc1a-e398-5053-8bec-f566af8be089",
@@ -64,7 +66,7 @@
       "titleEn": "Independence and Sigma-Algebras",
       "description": "Zusammenfassender Cluster: Unabhängigkeit von Sigma-Algebren und Zufallsvariablen sowie deren Einsatz in Beweis- und Modellierungsargumenten.",
       "descriptionEn": "Summary cluster: independence of sigma-algebras and random variables and its use in proofs and modeling arguments.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA2409"
@@ -218,7 +220,7 @@
       "titleEn": "Borel–Cantelli and Kolmogorov’s 0–1 Law",
       "description": "Zusammenfassender Cluster: Borel–Cantelli-Lemmas und 0–1-Gesetze als Werkzeuge für fast-sichere Aussagen über Folgen und Ereignisse.",
       "descriptionEn": "Summary cluster: the Borel–Cantelli lemmas and 0–1 laws as tools for almost-sure statements about sequences and events.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA2409"
@@ -607,7 +609,7 @@
       "titleEn": "Optional Stopping Theorem and Applications",
       "description": "Zusammenfassender Cluster: Optional-Stopping-Theorem, Bedingungen und Anwendungen auf Stoppzeiten (z.B. Ruinprobleme, hitting times in einfachen Modellen).",
       "descriptionEn": "Summary cluster: the optional stopping theorem, conditions, and applications to stopping times (e.g., ruin problems, hitting times in basic models).",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA2409"
@@ -734,6 +736,28 @@
       }
     },
     {
+      "id": "eb9a38bb-52c9-5ba7-a5fe-8b6203c45147",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2409",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "524ecac4-7d7c-543a-a21e-1fdabffbb08a",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -748,7 +772,9 @@
         "vocabularySource": "/data/ma2409_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "eb9a38bb-52c9-5ba7-a5fe-8b6203c45147"
+      ],
       "dimensionTags": {
         "framework": "tum-ma2409",
         "demandLevel": "AB1",

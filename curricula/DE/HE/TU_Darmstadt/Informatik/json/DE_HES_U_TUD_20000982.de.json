@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000982",
   "goals": [
     {
+      "id": "79305280-a215-5597-9272-5cdc94d38a06",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000982",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "c0891224-44d4-5603-ae0c-4380e14e2f77",
       "title": "Schutz in vernetzten Systemen—Vertrauen, Widerstandsfähigkeit und Privatheit",
       "titleEn": "Schutz in vernetzten Systemen—Vertrauen, Widerstandsfähigkeit und Privatheit",
       "description": "Erfolgreicher Abschluss des Moduls \"Schutz in vernetzten Systemen—Vertrauen, Widerstandsfähigkeit und Privatheit\".",
       "descriptionEn": "Successful completion of module \"Schutz in vernetzten Systemen—Vertrauen, Widerstandsfähigkeit und Privatheit\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-0982",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "79305280-a215-5597-9272-5cdc94d38a06"
+      ],
+      "contains": [
+        "79305280-a215-5597-9272-5cdc94d38a06"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

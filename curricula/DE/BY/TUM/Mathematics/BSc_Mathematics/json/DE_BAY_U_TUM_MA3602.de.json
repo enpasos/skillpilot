@@ -20,7 +20,7 @@
       "titleEn": "Applications of Mathematical Biology – Full Module",
       "description": "Nach erfolgreichem Abschluss können Studierende biomathematische Fachartikel weitgehend selbstständig lesen, eine grundlegende Literaturrecherche durchführen und die wichtigsten Datenbanken für biomathematische Arbeiten nutzen. Sie können ein gegebenes Problem strukturiert angehen, Standardmodelle auswählen und diese an die konkrete Fragestellung anpassen.",
       "descriptionEn": "Upon successful completion of the module, students are able to read most biomathematical journal articles, perform a basic literature search, and use the most important databases for biomathematical papers. Finally, they are able to approach a given problem in a structured way, know standard models, and adapt them to the problem under consideration.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -32,6 +32,7 @@
         "duration:1_semester"
       ],
       "contains": [
+        "66a6e14d-3f7d-5450-8a63-a6b4202cebbe",
         "ab0dd5e5-ebcc-5cce-abff-b5b3513f841b",
         "74349416-9c3d-51da-9711-2c4464253168",
         "1013dfa6-5fd9-50ee-94ea-a49e63fd2088",
@@ -43,6 +44,7 @@
         "35bb29f3-dc07-51a5-b5a7-48abb01c1ea0"
       ],
       "requires": [
+        "66a6e14d-3f7d-5450-8a63-a6b4202cebbe",
         "8eb1605b-fa70-511b-bbe4-28173d359c3b",
         "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
         "feaad1d5-022f-5ab3-93c3-001ac46de351"
@@ -138,7 +140,7 @@
       "titleEn": "Singular Perturbation Theory and Asymptotics",
       "description": "Zusammenfassender Cluster: Zeitmaßstabtrennung, Skalenanalyse und asymptotische Verfahren zur Behandlung kleiner Parameter in biologischen Modellen.",
       "descriptionEn": "Summary cluster: time-scale separation, scaling analysis, and asymptotic methods to handle small parameters in biological models.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3602"
@@ -843,6 +845,28 @@
       }
     },
     {
+      "id": "66a6e14d-3f7d-5450-8a63-a6b4202cebbe",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3602",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "35bb29f3-dc07-51a5-b5a7-48abb01c1ea0",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -857,7 +881,9 @@
         "vocabularySource": "/data/ma3602_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "66a6e14d-3f7d-5450-8a63-a6b4202cebbe"
+      ],
       "dimensionTags": {
         "framework": "tum-ma3602",
         "demandLevel": "AB1",

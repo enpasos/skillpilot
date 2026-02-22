@@ -10,14 +10,36 @@
   "subject": "Französisch",
   "goals": [
     {
+      "id": "86e9e6b9-9859-5e8e-83ae-3e6362f476af",
+      "title": "Warum Französisch? - Relevanz und Orientierung",
+      "titleEn": "Why Französisch? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Französisch für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Französisch matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "649aec72-83aa-54e7-9ad8-cd6b503c7b1c",
       "title": "Jahrgangsstufe 7",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "86e9e6b9-9859-5e8e-83ae-3e6362f476af"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,7 +50,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -39,7 +61,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -50,13 +72,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "6d20f382-b018-5258-a250-7e0f30726805",
       "title": "Französisch (Realschule)",
       "contains": [
+        "86e9e6b9-9859-5e8e-83ae-3e6362f476af",
         "649aec72-83aa-54e7-9ad8-cd6b503c7b1c",
         "96c69de2-3932-5f76-92bd-466e48a49aa3",
         "a68e7b5a-ba41-5c3b-b6c6-040ca1b46f56",
@@ -69,8 +92,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "86e9e6b9-9859-5e8e-83ae-3e6362f476af"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

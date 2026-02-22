@@ -14,7 +14,7 @@
       "titleEn": "Mathematik II für Informatik",
       "description": "Die lernende Person kann: Beherrschung der wichtigsten Konvergenzkriterien für Reihen und ihrer Anwendung; Sicherheit im Umgang mit elementaren Funktionen wie Exponentialfunktion, Winkelfunktionen und Logarithmus; Verständnis topologischer Grundbegriffe und ihrer Verwendung; Verständnis des Begriffs der Differenzierbarkeit und Beherrschung der Differentiationsregeln; Verständnis des Riemann-Integrals und Beherrschung einfacher Integrationstechniken; Verständnis der Differentiation von Funktionen mehrerer reeller Variablen; Fähigkeit, Extremwertsaufgaben für Funktionen in mehreren Variablen zu lösen; Befähigung, einfache gewöhnliche Differentialgleichungen und Lösungsmethoden dafür zu handhaben.",
       "descriptionEn": "Die lernende Person kann: Beherrschung der wichtigsten Konvergenzkriterien für Reihen und ihrer Anwendung; Sicherheit im Umgang mit elementaren Funktionen wie Exponentialfunktion, Winkelfunktionen und Logarithmus; Verständnis topologischer Grundbegriffe und ihrer Verwendung; Verständnis des Begriffs der Differenzierbarkeit und Beherrschung der Differentiationsregeln; Verständnis des Riemann-Integrals und Beherrschung einfacher Integrationstechniken; Verständnis der Differentiation von Funktionen mehrerer reeller Variablen; Fähigkeit, Extremwertsaufgaben für Funktionen in mehreren Variablen zu lösen; Befähigung, einfache gewöhnliche Differentialgleichungen und Lösungsmethoden dafür zu handhaben.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "module:04-10-0119/de",
@@ -27,8 +27,11 @@
         "guidingIdeas": [],
         "phase": "Pflichtbereich"
       },
-      "requires": [],
+      "requires": [
+        "8cb90ac7-9f96-5ad3-a5e8-5c05783b596d"
+      ],
       "contains": [
+        "8cb90ac7-9f96-5ad3-a5e8-5c05783b596d",
         "b38d0250-1e69-5387-af78-044d76453a23",
         "ee77c529-6b74-5eb5-a8b5-0a1ec2692004",
         "335e935c-9b29-53ed-a7f3-569ef2d4827c",
@@ -54,6 +57,27 @@
       }
     },
     {
+      "id": "8cb90ac7-9f96-5ad3-a5e8-5c05783b596d",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-04100119de",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Pflichtbereich"
+      }
+    },
+    {
       "id": "b38d0250-1e69-5387-af78-044d76453a23",
       "title": "Mathematik II für Informatik – Lernziel 1",
       "titleEn": "Mathematik II für Informatik – Learning Outcome 1",
@@ -72,7 +96,9 @@
         "guidingIdeas": [],
         "phase": "Pflichtbereich"
       },
-      "requires": [],
+      "requires": [
+        "8cb90ac7-9f96-5ad3-a5e8-5c05783b596d"
+      ],
       "contains": [],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
     },

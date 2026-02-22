@@ -9,13 +9,35 @@
   "frameworkId": "tud-20001123",
   "goals": [
     {
+      "id": "80cfdc15-6ccf-5436-be03-89a764cac860",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20001123",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "981a9623-fc18-5a57-82d4-2212a6556dc2",
       "title": "Informationssicherheitsmanagement",
       "titleEn": "Informationssicherheitsmanagement",
       "description": "Erfolgreicher Abschluss des Moduls \"Informationssicherheitsmanagement\".",
       "descriptionEn": "Successful completion of module \"Informationssicherheitsmanagement\".",
-      "weight": 3.0,
+      "weight": 3,
       "tags": [
+        "root",
         "ects:3",
         "module:20-00-1123",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "80cfdc15-6ccf-5436-be03-89a764cac860"
+      ],
+      "contains": [
+        "80cfdc15-6ccf-5436-be03-89a764cac860"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

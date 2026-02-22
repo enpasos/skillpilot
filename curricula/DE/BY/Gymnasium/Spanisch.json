@@ -10,14 +10,36 @@
   "subject": "Spanisch",
   "goals": [
     {
+      "id": "54ebc139-4bc5-5a91-80ad-c0e0e2ddf011",
+      "title": "Warum Spanisch? - Relevanz und Orientierung",
+      "titleEn": "Why Spanisch? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Spanisch für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Spanisch matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "f8d78a75-66ef-5d45-923f-bb9e6fcdcdd5",
       "title": "Jahrgangsstufe 8",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "54ebc139-4bc5-5a91-80ad-c0e0e2ddf011"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,7 +50,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -39,7 +61,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -50,7 +72,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -61,7 +83,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -72,13 +94,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "9c473dcf-ca94-5733-a7ac-b82072e3357b",
       "title": "Spanisch (Gymnasium)",
       "contains": [
+        "54ebc139-4bc5-5a91-80ad-c0e0e2ddf011",
         "f8d78a75-66ef-5d45-923f-bb9e6fcdcdd5",
         "f374e910-3fd9-5a04-99c6-4010ab592518",
         "0ad9079d-0c0e-5fbb-9815-4ca034fcd9fa",
@@ -93,8 +116,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "54ebc139-4bc5-5a91-80ad-c0e0e2ddf011"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

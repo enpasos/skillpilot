@@ -20,7 +20,7 @@
       "titleEn": "Studying Mathematics – Full Module",
       "description": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden mit der für die Mathematik eigenen Arbeits- und Denkweise vertraut und können mathematische Sachverhalte (der Analysis und der Linearen Algebra) sowohl in schriftlicher als auch in mündlicher Form angemessen bearbeiten bzw. kommunizieren. Sie sind in der Lage, klar definierte Aufgaben (z.B. Beweise von mathematischen Lemmas und Sätzen, Berechnen von mathematischen Ausdrücken, Bestimmen und Charakterisierung von mathematischen Strukturen) strukturiert und selbstständig unter Zuhilfenahme geeigneter Hilfsmittel (z.B. Skripten, Fachliteratur) zu bearbeiten und diese Bearbeitung mathematisch korrekt schriftlich zu dokumentieren. Sie können die Aufgaben auf die zugrundeliegenden mathematischen Problemstellungen (z.B. Charakterisierung von definierenden Eigenschaften, Zeigen von mathematischen Aussagen) hin untersuchen und erkennen, welche Beweisstrategien (z.B. direkter Beweis, Kontraposition, Induktion) bei konkreten Aufgabenstellungen zielführend sind. Die Studierenden können sich selbstständig in verschiedene Aufgabenstellungen einarbeiten und einen Lösungsansatz entwickeln.<br>Desweiteren können die Studierenden grundlegende mathematische Arbeitstechniken und Standardverfahren anwenden: Sie können mathematische Symbole, wie z.B. Quantoren, in Beweisen sicher einsetzen sowie Beweistechniken wie Induktion, direkter Beweis, Kontraposition und Widerspruchsbeweis zielsicher und problemorientiert anwenden.<br>Die Studierenden sind zudem in der Lage, mündlich ein klar umrissenes mathematisches, fachliches Thema/Problem (z.B. einen mathematischen Beweis) einer fachlichen Öffentlichkeit in einer angemessenen Form zu präsentieren, zu diskutieren und dabei Strukturen in der korrekten mathematischen Sprache zu benennen. Sie haben zudem erste Erfahrungen, in einem Team zu interagieren und mathematische Fragestellungen aus verschiedenen Sichtweisen zu diskutieren.",
       "descriptionEn": "After successfully completing the module, students are familiar with the way of working and thinking that is specific to mathematics and can appropriately work with and communicate mathematical content (in analysis and linear algebra) both in written and oral form. They are able to work on clearly defined tasks (e.g., proving mathematical lemmas and theorems, computing mathematical expressions, determining and characterizing mathematical structures) in a structured and independent manner using suitable resources (e.g., scripts, textbooks) and to document their work in mathematically correct written form. They can analyze tasks with respect to the underlying mathematical problems (e.g., characterizing defining properties, proving statements) and recognize which proof strategies (e.g., direct proof, proof by contraposition, induction) are appropriate for concrete tasks. Students can familiarize themselves independently with various tasks and develop an approach to a solution.<br>Furthermore, students can apply basic mathematical working techniques and standard procedures: they can use mathematical symbols such as quantifiers securely in proofs and apply proof techniques such as induction, direct proof, proof by contraposition, and proof by contradiction in a goal-oriented and problem-oriented way.<br>Students are also able to present and discuss a clearly delineated mathematical topic/problem (e.g., a mathematical proof) to a professional audience in an appropriate manner, naming structures in correct mathematical language. They also have initial experience interacting in a team and discussing mathematical questions from different perspectives.",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
         "ects:6",
         "workload:180h",
@@ -33,6 +33,7 @@
         "responsible:lindemann_florian"
       ],
       "contains": [
+        "78d7f471-f43b-5076-9dd7-2c90933168c7",
         "ff31ed75-8b38-5e6b-b856-cdefea387724",
         "343af324-6353-5832-8d0d-5766feeeb89a",
         "128abc92-d923-5a82-8e26-8292550a8060",
@@ -41,7 +42,9 @@
         "f5a3ee3e-f30c-57fe-a39d-7f1fd25e190a",
         "701c12d0-a108-5acb-955f-5e17f53698ee"
       ],
-      "requires": [],
+      "requires": [
+        "78d7f471-f43b-5076-9dd7-2c90933168c7"
+      ],
       "dimensionTags": {
         "framework": "tum-ma0006",
         "demandLevel": "AB2",
@@ -210,7 +213,7 @@
       "titleEn": "Working Techniques and Standard Procedures",
       "description": "Zusammenfassender Cluster: Abschätzungen, Anwenden geeigneter Lemmas/Theoreme und Existenzbeweise sowie typische Standardverfahren (z.B. de l’Hospital, Matrizenumformungen, Diagonalisierung/Trigonalisierung).",
       "descriptionEn": "Summary cluster: estimates, applying suitable lemmas/theorems and existence proofs, as well as standard procedures (e.g., l'Hôpital's rule, matrix transformations, diagonalization/triangularization).",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:6",
         "module:MA0006"
@@ -1407,6 +1410,28 @@
       }
     },
     {
+      "id": "78d7f471-f43b-5076-9dd7-2c90933168c7",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma0006",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "701c12d0-a108-5acb-955f-5e17f53698ee",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -1421,7 +1446,9 @@
         "vocabularySource": "/data/ma0006_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "78d7f471-f43b-5076-9dd7-2c90933168c7"
+      ],
       "dimensionTags": {
         "framework": "tum-ma0006",
         "demandLevel": "AB1",

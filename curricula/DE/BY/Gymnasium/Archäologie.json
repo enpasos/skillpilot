@@ -10,14 +10,36 @@
   "subject": "Archäologie",
   "goals": [
     {
+      "id": "f3220c8f-2228-5364-a830-44d4ec0dab67",
+      "title": "Warum Archäologie? - Relevanz und Orientierung",
+      "titleEn": "Why Archäologie? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Archäologie für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Archäologie matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "c46de1ce-55e9-5de0-a4a8-0ee38a48e217",
       "title": "Jahrgangsstufe 12",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "f3220c8f-2228-5364-a830-44d4ec0dab67"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,13 +50,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "b0cf4912-98dd-55a7-a6d4-c45aec5d6f5f",
       "title": "Archäologie (Gymnasium)",
       "contains": [
+        "f3220c8f-2228-5364-a830-44d4ec0dab67",
         "c46de1ce-55e9-5de0-a4a8-0ee38a48e217",
         "431af919-dba6-55fb-a3b4-14203fdaee99"
       ],
@@ -45,8 +68,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "f3220c8f-2228-5364-a830-44d4ec0dab67"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

@@ -20,7 +20,7 @@
       "titleEn": "Fundamentals of Programming (Exercises & Laboratory) – Full Module",
       "description": "Nach erfolgreicher Teilnahme beherrschen Studierende die Programmiersprache Java (oder eine ähnliche objektorientierte Sprache) und das Programmieren im Kleinen. Sie können Programme eigenständig entwickeln und dabei wesentliche Konzepte der Informatik auf einem grundlegenden, praxis-orientierten, aber wissenschaftlichen Niveau anwenden; der gleichzeitige Besuch von IN0001 wird empfohlen.",
       "descriptionEn": "After successful completion, students master Java (or a similar object-oriented language) and small-scale programming. They can develop programs independently and apply core concepts of computer science at a foundational, practice-oriented yet scientific level; taking IN0001 in parallel is recommended.",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
         "ects:6",
         "workload:180h",
@@ -33,6 +33,7 @@
         "responsible:seidl_helmut"
       ],
       "contains": [
+        "46bd225f-2266-5c44-8484-699abd17107e",
         "213ba33a-6933-53e1-8e89-eade69032973",
         "5662e6a7-3ad9-5909-9ee1-86d5b8fe1e01",
         "1459f474-41cb-554b-a7c0-37c9b3492596",
@@ -43,7 +44,9 @@
         "f03a4a97-4455-5a5e-a53a-798b8fa32985",
         "66bbee34-2e71-540c-9895-29d5495596bb"
       ],
-      "requires": [],
+      "requires": [
+        "46bd225f-2266-5c44-8484-699abd17107e"
+      ],
       "dimensionTags": {
         "framework": "tum-in0002",
         "demandLevel": "AB2",
@@ -1095,6 +1098,28 @@
       }
     },
     {
+      "id": "46bd225f-2266-5c44-8484-699abd17107e",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-in0002",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "66bbee34-2e71-540c-9895-29d5495596bb",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -1109,7 +1134,9 @@
         "vocabularySource": "/data/in0002_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "46bd225f-2266-5c44-8484-699abd17107e"
+      ],
       "dimensionTags": {
         "framework": "tum-in0002",
         "demandLevel": "AB1",

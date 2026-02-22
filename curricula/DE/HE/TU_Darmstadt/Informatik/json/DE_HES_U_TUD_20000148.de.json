@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000148",
   "goals": [
     {
+      "id": "00d28317-1c08-53fa-bf39-6abda9064b48",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000148",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "26907c33-d6b3-5f38-b97c-371f727ae0d0",
       "title": "Algorithmische Modellierung / Grundlagen des Operations Research",
       "titleEn": "Algorithmische Modellierung / Grundlagen des Operations Research",
       "description": "Erfolgreicher Abschluss des Moduls \"Algorithmische Modellierung / Grundlagen des Operations Research\".",
       "descriptionEn": "Successful completion of module \"Algorithmische Modellierung / Grundlagen des Operations Research\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-0148",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "00d28317-1c08-53fa-bf39-6abda9064b48"
+      ],
+      "contains": [
+        "00d28317-1c08-53fa-bf39-6abda9064b48"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

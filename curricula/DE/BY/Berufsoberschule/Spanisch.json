@@ -10,14 +10,36 @@
   "subject": "Spanisch",
   "goals": [
     {
+      "id": "54ebc139-4bc5-5a91-80ad-c0e0e2ddf011",
+      "title": "Warum Spanisch? - Relevanz und Orientierung",
+      "titleEn": "Why Spanisch? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Spanisch für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Spanisch matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "e74ba91b-3440-5443-89af-1270dc27b1d8",
       "title": "Jahrgangsstufe 12",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "54ebc139-4bc5-5a91-80ad-c0e0e2ddf011"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,13 +50,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "ea39a279-62fe-5868-b1b3-52f10da7a738",
       "title": "Spanisch (Berufsoberschule)",
       "contains": [
+        "54ebc139-4bc5-5a91-80ad-c0e0e2ddf011",
         "e74ba91b-3440-5443-89af-1270dc27b1d8",
         "6616303f-9779-54c1-8c76-88b4af1432f3"
       ],
@@ -45,8 +68,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "54ebc139-4bc5-5a91-80ad-c0e0e2ddf011"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

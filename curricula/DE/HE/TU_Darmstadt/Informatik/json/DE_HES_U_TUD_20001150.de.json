@@ -14,7 +14,7 @@
       "titleEn": "Probabilistische Methoden der Informatik",
       "description": "Die lernende Person kann: kennen nach erfolgreichem Besuch der Veranstaltung die grundlegenden probabilistischen Fragestellungen in den Kerngebieten der Informatik; probabilistische Methoden selbständig in Informatikproblemen zur Analyse und Synthese von Algorithmen, Software, Hardware, Informatik-Anwendungen, Data Science und in der künstlichen Intelligenz selbständig anwenden und in einer geeigneten Programmiersprache implementieren.",
       "descriptionEn": "Die lernende Person kann: kennen nach erfolgreichem Besuch der Veranstaltung die grundlegenden probabilistischen Fragestellungen in den Kerngebieten der Informatik; probabilistische Methoden selbständig in Informatikproblemen zur Analyse und Synthese von Algorithmen, Software, Hardware, Informatik-Anwendungen, Data Science und in der künstlichen Intelligenz selbständig anwenden und in einer geeigneten Programmiersprache implementieren.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "ects:5",
         "module:20-00-1150",
@@ -27,8 +27,11 @@
         "guidingIdeas": [],
         "phase": "Pflichtbereich"
       },
-      "requires": [],
+      "requires": [
+        "d6f3370c-437f-5cfe-8e40-2fa9fc6dd769"
+      ],
       "contains": [
+        "d6f3370c-437f-5cfe-8e40-2fa9fc6dd769",
         "3375feb6-9686-567d-9f2d-58d9fe8adf4e",
         "ad182148-fa36-533b-8cc8-211e580b9cad"
       ],
@@ -39,6 +42,27 @@
           "Studierende kennen nach erfolgreichem Besuch der Veranstaltung die grundlegenden probabilistischen Fragestellungen in den Kerngebieten der Informatik.",
           "Sie können probabilistische Methoden selbständig in Informatikproblemen zur Analyse und Synthese von Algorithmen, Software, Hardware, Informatik-Anwendungen, Data Science und in der künstlichen Intelligenz selbständig anwenden und in einer geeigneten Programmiersprache implementieren."
         ]
+      }
+    },
+    {
+      "id": "d6f3370c-437f-5cfe-8e40-2fa9fc6dd769",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20001150",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Pflichtbereich"
       }
     },
     {
@@ -60,7 +84,9 @@
         "guidingIdeas": [],
         "phase": "Pflichtbereich"
       },
-      "requires": [],
+      "requires": [
+        "d6f3370c-437f-5cfe-8e40-2fa9fc6dd769"
+      ],
       "contains": [],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
     },

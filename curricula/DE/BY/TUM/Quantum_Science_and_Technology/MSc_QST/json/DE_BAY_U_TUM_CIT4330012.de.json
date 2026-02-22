@@ -13,18 +13,21 @@
       "titleEn": "Software for Quantum Computing (CIT4330012)",
       "description": "Die lernende Person kann Anwendungen des Quantum Computing bewerten und Software-Tools zum Entwurf, zur Simulation, zur Kompilierung und zur Verifikation von Quantenschaltungen nutzen.",
       "descriptionEn": "The learner can evaluate quantum computing applications and use software tools to design, simulate, compile, and verify quantum circuits.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:CIT4330012",
         "ects:5"
       ],
       "contains": [
+        "d88053ca-225c-5d6b-91ae-f1b6378c3798",
         "4e9f8305-2301-5490-aa94-c2795c4f22b7",
         "45d57982-09ae-5637-9f77-835f0e8f0ce7",
         "d3266aaa-0203-53fd-93e0-77fbc6661991",
         "8e48547e-2479-5a7d-bd88-e4108c24aec6"
       ],
-      "requires": [],
+      "requires": [
+        "d88053ca-225c-5d6b-91ae-f1b6378c3798"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/CIT4330012",
       "dimensionTags": {
         "phase": "Modul"
@@ -36,7 +39,7 @@
       "titleEn": "Quantum computing paradigm and suitability",
       "description": "Die lernende Person kann Quantum- und klassische Berechnung gegenüberstellen und die Eignung von Anwendungen beurteilen.",
       "descriptionEn": "The learner can contrast quantum vs classical computing and assess application suitability.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4330012"
       ],
@@ -50,17 +53,40 @@
       }
     },
     {
+      "id": "d88053ca-225c-5d6b-91ae-f1b6378c3798",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-cit4330012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "b21dd050-55fe-57d4-a9bf-06d9549378fe",
       "title": "Quantum- vs. klassische Berechnung",
       "titleEn": "Quantum vs classical computation",
       "description": "Die lernende Person kann erklären, wie sich Quantum Computing von klassischen Modellen unterscheidet.",
       "descriptionEn": "The learner can explain how quantum computation differs from classical models.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330012"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "d88053ca-225c-5d6b-91ae-f1b6378c3798"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -71,7 +97,7 @@
       "titleEn": "Application suitability assessment",
       "description": "Die lernende Person kann beurteilen, ob ein Problem von Quantum-Computing-Ansätzen profitiert.",
       "descriptionEn": "The learner can judge whether a problem benefits from quantum approaches.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330012"
       ],
@@ -89,7 +115,7 @@
       "titleEn": "Design flow and data structures",
       "description": "Die lernende Person kann Design-Flows und Datenstrukturen für Quantum-Software anwenden.",
       "descriptionEn": "The learner can apply design flows and data structures for quantum software.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4330012"
       ],
@@ -108,7 +134,7 @@
       "titleEn": "Quantum application design flow",
       "description": "Die lernende Person kann die Schritte von Algorithmus bis Hardware-Implementierung darstellen.",
       "descriptionEn": "The learner can outline the steps from algorithm to implementation on hardware.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330012"
       ],
@@ -124,7 +150,7 @@
       "titleEn": "Data structures for quantum design",
       "description": "Die lernende Person kann Datenstrukturen für Schaltungen, Zustände und Entscheidungsdiagramme nutzen.",
       "descriptionEn": "The learner can use data structures for circuits, states, and decision diagrams.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330012"
       ],
@@ -142,7 +168,7 @@
       "titleEn": "Core software tools",
       "description": "Die lernende Person kann Tools für Simulation, Kompilierung und Verifikation einsetzen.",
       "descriptionEn": "The learner can use software tools for simulation, compilation, and verification.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4330012"
       ],
@@ -161,7 +187,7 @@
       "titleEn": "Circuit simulation and verification",
       "description": "Die lernende Person kann Quantenschaltungen simulieren und funktionale Korrektheit prüfen.",
       "descriptionEn": "The learner can simulate circuits and verify functional correctness.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330012"
       ],
@@ -177,7 +203,7 @@
       "titleEn": "Compilation and mapping to hardware",
       "description": "Die lernende Person kann Schaltungen kompilieren und auf Zielhardware abbilden.",
       "descriptionEn": "The learner can compile circuits and map them to target devices.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330012"
       ],
@@ -195,7 +221,7 @@
       "titleEn": "Hands-on implementation",
       "description": "Die lernende Person kann Quantenschaltungen in Software-Toolchains implementieren und ausführen.",
       "descriptionEn": "The learner can implement and execute quantum circuits in software toolchains.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4330012"
       ],
@@ -214,7 +240,7 @@
       "titleEn": "Implementing circuits in toolkits",
       "description": "Die lernende Person kann Schaltungen in Tools wie Qiskit-ähnlichen Umgebungen realisieren.",
       "descriptionEn": "The learner can realize circuits with tools such as Qiskit-like environments.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330012"
       ],
@@ -230,7 +256,7 @@
       "titleEn": "Executing and evaluating results",
       "description": "Die lernende Person kann Schaltungen auf Simulatoren oder Hardware ausführen und Ergebnisse analysieren.",
       "descriptionEn": "The learner can run circuits on simulators or hardware and analyze outputs.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330012"
       ],

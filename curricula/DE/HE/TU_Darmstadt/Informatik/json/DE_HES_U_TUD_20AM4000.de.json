@@ -9,13 +9,35 @@
   "frameworkId": "tud-20am4000",
   "goals": [
     {
+      "id": "d0c183f4-ab9b-5867-a61c-3269c755052f",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20am4000",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Bachelorarbeit"
+      }
+    },
+    {
       "id": "0726398e-bfc3-5854-b1df-f7efe1c10888",
       "title": "Bachelorarbeit Informatik",
       "titleEn": "Bachelorarbeit Informatik",
       "description": "Erfolgreicher Abschluss des Moduls \"Bachelorarbeit Informatik\".",
       "descriptionEn": "Successful completion of module \"Bachelorarbeit Informatik\".",
-      "weight": 12.0,
+      "weight": 12,
       "tags": [
+        "root",
         "ects:12",
         "module:20-AM-4000",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Bachelorarbeit"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "d0c183f4-ab9b-5867-a61c-3269c755052f"
+      ],
+      "contains": [
+        "d0c183f4-ab9b-5867-a61c-3269c755052f"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

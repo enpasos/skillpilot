@@ -62,6 +62,26 @@ const MATH_DIFFERENTIATION_GOAL_ID = 'e2b6b4d1-02db-4a27-948e-ecfbdb44dab3'
 const RULE_REQUIRES_ANCESTOR = 'GVR-001'
 const RULE_PHASE_MONOTONIC = 'GVR-002'
 const RULE_REQUIRES_DIRECT_CONTAINER = 'GVR-003'
+const RULE_FIRST_ATOMIC_IS_WARUM = 'GVR-004'
+const RULE_ATOMIC_TRANSITIVE_TO_WARUM = 'GVR-005'
+const motivationRuleLandscapeIds = new Set<string>([
+  '3e56aa75-c76c-4de5-883b-0aac98297846', // DE_HES_S_GYM_2_BIOLOGIE
+  '2f391ba2-ba1e-40e4-a8d2-dff049516c13', // DE_HES_S_GYM_2_CHEMIE
+  '7651cbe2-5fb8-464d-b0c4-3e830cda41dd', // DE_HES_S_GYM_2_CHINESISCH
+  'f1ba2118-853f-4aa0-bef5-4f749bc621ed', // DE_HES_S_GYM_2_DEUTSCH
+  'bc2124fa-2974-46cc-85e7-2392e61250e1', // DE_HES_S_GYM_2_ENGLISCH
+  '30acd190-609c-4109-8ee7-06fc5594af19', // DE_HES_S_GYM_2_FRANZOESISCH
+  'bdc89685-73d3-446c-af5a-eaf642c07463', // DE_HES_S_GYM_2_GESCHICHTE
+  'c7209caa-18e5-4dd8-b68f-dd86e228d045', // DE_HES_S_GYM_2_GRIECHISCH
+  'c1a02ddd-736d-4975-920b-18b03aff147f', // DE_HES_S_GYM_2_INFORMATIK
+  'fe28bda8-03f3-4c4a-8286-7fcfce4eeac1', // DE_HES_S_GYM_2_LATEIN
+  MATH_LANDSCAPE_ID, // DE_HES_S_GYM_2_MATHEMATIK
+  'a8c23058-6998-49f2-9f3b-a85e951d5ab0', // DE_HES_S_GYM_2_MUSIK
+  PHYSICS_LANDSCAPE_ID, // DE_HES_S_GYM_2_PHYSIK
+  '1d0e9f8f-0087-49e4-8ea2-976e5a89b165', // DE_HES_S_GYM_2_POLITIKWIRTSCHAFT
+  '936efc61-a4d5-49fd-8694-085d1347db80', // DE_HES_S_GYM_2_SPANISCH
+  'a334a745-1d67-4e1d-86a5-dadc04f144d2', // DE_HES_S_GYM_2_WIRTSCHAFT
+])
 // Default is strict. Set VALIDATE_GRAPH_STRICT_RULES=0 for temporary warn-only rollout mode.
 const strictGraphRules = process.env.VALIDATE_GRAPH_STRICT_RULES !== '0'
 const graphRuleIssueLevel: Issue['level'] = strictGraphRules ? 'error' : 'warn'
@@ -216,6 +236,40 @@ function getComparablePhaseRank(phase: string): number | null {
   if (jMatch) return 200 + Number(jMatch[1])
 
   return null
+}
+
+function isAtomicGoal(goal: UiGoal): boolean {
+  if (goal.type === 'atomic') return true
+  if (goal.type === 'cluster') return false
+  return (goal.contains?.length ?? 0) === 0
+}
+
+function isWarumGoal(goal: UiGoal): boolean {
+  const title = goal.title ?? ''
+  return /^\s*(warum|why)\b/i.test(title)
+}
+
+function hasPathToTarget(startId: string, targetId: string, edgeMap: Map<string, string[]>): boolean {
+  if (startId === targetId) return true
+  const visited = new Set<string>()
+  const stack = [startId]
+
+  while (stack.length > 0) {
+    const current = stack.pop()
+    if (!current || visited.has(current)) continue
+    visited.add(current)
+
+    for (const next of edgeMap.get(current) ?? []) {
+      if (next === targetId) {
+        return true
+      }
+      if (!visited.has(next)) {
+        stack.push(next)
+      }
+    }
+  }
+
+  return false
 }
 
 function validateLandscape(landscape: ParsedLandscape) {
@@ -473,6 +527,48 @@ function validateLandscape(landscape: ParsedLandscape) {
       )
     })
   })
+
+  // GVR-004 / GVR-005:
+  // Motivation anchor rollout: first atomic node must be a "Warum"/"Why" node.
+  // All other atomic nodes must reach this anchor transitively via effective requires.
+  if (motivationRuleLandscapeIds.has(landscape.landscapeId)) {
+    const atomicGoals = landscape.goals.filter(isAtomicGoal)
+    let motivationAnchor: UiGoal | undefined
+
+    if (atomicGoals.length === 0) {
+      addIssue(
+        graphRuleIssueLevel,
+        landscape.landscapeId,
+        `[${RULE_FIRST_ATOMIC_IS_WARUM}] Landscape has no atomic nodes; cannot validate motivation anchor rule.`,
+      )
+    } else {
+      motivationAnchor = atomicGoals[0]
+      const anchorLabel = `${motivationAnchor.id} (${motivationAnchor.title})`
+      if (!isWarumGoal(motivationAnchor)) {
+        addIssue(
+          graphRuleIssueLevel,
+          landscape.landscapeId,
+          `[${RULE_FIRST_ATOMIC_IS_WARUM}] First atomic node ${anchorLabel} is not a "Warum"/"Why" motivation node.`,
+        )
+      }
+    }
+
+    if (motivationAnchor && isWarumGoal(motivationAnchor)) {
+      const anchorId = motivationAnchor.id
+      const anchorLabel = `${anchorId} (${motivationAnchor.title})`
+      atomicGoals.forEach((goal) => {
+        if (goal.id === anchorId) return
+
+        if (!hasPathToTarget(goal.id, anchorId, effectiveEdges)) {
+          addIssue(
+            graphRuleIssueLevel,
+            landscape.landscapeId,
+            `[${RULE_ATOMIC_TRANSITIVE_TO_WARUM}] Atomic node ${goal.id} (${goal.title}) has no transitive effective-requires path to motivation anchor ${anchorLabel}.`,
+          )
+        }
+      })
+    }
+  }
 
   if (landscape.landscapeId === PHYSICS_LANDSCAPE_ID) {
     const goal = localMap.get(PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID)

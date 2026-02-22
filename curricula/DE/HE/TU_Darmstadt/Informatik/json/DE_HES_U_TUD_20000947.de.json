@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000947",
   "goals": [
     {
+      "id": "000fb54e-7de4-58a0-ac3b-de5da0b2eb94",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000947",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "b0ce6608-f16d-570b-a7f7-c61b46935358",
       "title": "Deep Learning für Natural Language Processing",
       "titleEn": "Deep Learning für Natural Language Processing",
       "description": "Erfolgreicher Abschluss des Moduls \"Deep Learning für Natural Language Processing\".",
       "descriptionEn": "Successful completion of module \"Deep Learning für Natural Language Processing\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-0947",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "000fb54e-7de4-58a0-ac3b-de5da0b2eb94"
+      ],
+      "contains": [
+        "000fb54e-7de4-58a0-ac3b-de5da0b2eb94"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

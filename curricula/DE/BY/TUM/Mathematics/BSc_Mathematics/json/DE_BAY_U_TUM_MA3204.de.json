@@ -20,7 +20,7 @@
       "titleEn": "Projective Geometry 2 – Full Module",
       "description": "Nach erfolgreichem Abschluss sind die Studierenden in der Lage, fortgeschrittene algebraische Techniken (z.B. Tensor- bzw. Clifford-Algebra) auf geometrische Probleme anzuwenden, passende Werkzeuge für konkrete Situationen auszuwählen und kombinatorische Methoden (z.B. orientierte Matroide, Polytopen) in ausgewählten Beispielen einzusetzen. Sie verstehen das Zusammenspiel geometrischer, kombinatorischer und algebraischer Strukturen in den behandelten Themen.",
       "descriptionEn": "After successful completion of the module students are able to apply advanced algebraic techniques (e.g., tensor or Clifford algebra) to geometric problems and decide what tools are most appropriate for a specific situation. They are also able to apply combinatorial methods (e.g., oriented matroids, polytopes) to selected geometric problems. They understand the interplay of geometric, combinatorial, and algebraic structures in the topics covered.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "ects:5",
         "workload:150h",
@@ -33,6 +33,7 @@
         "responsible:richter_gebert_j_rgen"
       ],
       "contains": [
+        "91fdd3ed-2915-5e0e-b547-65e7e170795c",
         "b9ef5503-3e62-5f7e-8086-69e32f3cba5f",
         "4679b416-5b52-544a-a92e-0785d65338d2",
         "02868f11-5c5e-59af-ab9a-eb47fe304494",
@@ -41,6 +42,7 @@
         "f1c1e4d0-f15d-5bf7-b850-2eb52e88ee81"
       ],
       "requires": [
+        "91fdd3ed-2915-5e0e-b547-65e7e170795c",
         "834d5562-2d6c-5a80-8702-722337eb3fa4",
         "18433727-e8bf-4bc0-bf0a-4a8f48773e59"
       ],
@@ -59,7 +61,7 @@
       "titleEn": "Tensor Diagram Calculus",
       "description": "Zusammenfassender Cluster: Tensor-Diagramme als Sprache multilinearer Algebra und deren Einsatz zur Modellierung geometrischer Strukturen.",
       "descriptionEn": "Summary cluster: tensor diagrams as a language of multilinear algebra and their use for modeling geometric structures.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3204"
@@ -135,7 +137,7 @@
       "titleEn": "Clifford Algebra and Circle Geometry",
       "description": "Zusammenfassender Cluster: Clifford-Algebra als Werkzeug zur Darstellung geometrischer Operationen und zur Bearbeitung ausgewählter Probleme der Kreisgeometrie.",
       "descriptionEn": "Summary cluster: Clifford algebra as a tool to represent geometric operations and to treat selected problems in circle geometry.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3204"
@@ -211,7 +213,7 @@
       "titleEn": "Rigidity Theory",
       "description": "Zusammenfassender Cluster: Modellierung und Analyse von Starrheitsproblemen in Geometrie und Graphen-Frameworks.",
       "descriptionEn": "Summary cluster: modeling and analyzing rigidity problems in geometry and graph-based frameworks.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3204"
@@ -287,7 +289,7 @@
       "titleEn": "Combinatorial Projective Geometry and Polytopes",
       "description": "Zusammenfassender Cluster: Kombinatorische Methoden (Inzidenzstrukturen, orientierte Matroide) und Polytoptheorie als Zugänge zu projektiven Fragestellungen.",
       "descriptionEn": "Summary cluster: combinatorial methods (incidence structures, oriented matroids) and polytope theory as approaches to projective questions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3204"
@@ -363,7 +365,7 @@
       "titleEn": "Projective Algebraic and Hyperbolic Geometry",
       "description": "Zusammenfassender Cluster: Ausgewählte Themen der projektiven algebraischen Geometrie und der hyperbolischen Geometrie sowie die Verknüpfung algebraischer, kombinatorischer und geometrischer Sichtweisen.",
       "descriptionEn": "Summary cluster: selected topics from projective algebraic geometry and hyperbolic geometry, and connecting algebraic, combinatorial, and geometric viewpoints.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3204"
@@ -517,6 +519,28 @@
       }
     },
     {
+      "id": "91fdd3ed-2915-5e0e-b547-65e7e170795c",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3204",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "f1c1e4d0-f15d-5bf7-b850-2eb52e88ee81",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -531,7 +555,9 @@
         "vocabularySource": "/data/ma3204_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "91fdd3ed-2915-5e0e-b547-65e7e170795c"
+      ],
       "dimensionTags": {
         "framework": "tum-ma3204",
         "demandLevel": "AB1",

@@ -13,18 +13,21 @@
       "titleEn": "Introduction to Graphene and 2D Materials (NAT7026)",
       "description": "Die lernende Person kann elektronische Struktur und experimentelle Techniken für Graphen und Moire-Materialien erklären.",
       "descriptionEn": "The learner can explain electronic structure and experimental techniques for graphene and moire materials.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:NAT7026",
         "ects:5"
       ],
       "contains": [
+        "a53d0151-646e-57ff-81c3-36b2f08c12e7",
         "f2db6b82-1339-5b8d-83ef-34d3c813450f",
         "a2bec7c2-a034-5768-be9b-c8be4c723ad2",
         "aed41114-8d46-52f8-b761-485be3af3406",
         "3f2a6688-ec17-53ae-83d3-0f9ecb61e9d8"
       ],
-      "requires": [],
+      "requires": [
+        "a53d0151-646e-57ff-81c3-36b2f08c12e7"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/NAT7026",
       "dimensionTags": {
         "phase": "Modul"
@@ -36,7 +39,7 @@
       "titleEn": "Experimental techniques and transport",
       "description": "Die lernende Person kann zentrale Nano-Fertigungs- und Charakterisierungsmethoden anwenden.",
       "descriptionEn": "The learner can apply key nano-fabrication and characterization methods.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7026"
       ],
@@ -50,17 +53,40 @@
       }
     },
     {
+      "id": "a53d0151-646e-57ff-81c3-36b2f08c12e7",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-nat7026",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "6b44e6b6-5329-5049-a169-994e155e30fa",
       "title": "Nanofabrikation und Charakterisierung",
       "titleEn": "Nanofabrication and characterization",
       "description": "Die lernende Person kann Fertigung, Mikroskopie und kryogene Techniken beschreiben.",
       "descriptionEn": "The learner can describe fabrication, microscopy, and cryogenic techniques.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7026"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "a53d0151-646e-57ff-81c3-36b2f08c12e7"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -71,7 +97,7 @@
       "titleEn": "Electronic transport models",
       "description": "Die lernende Person kann Drude-, Hall- und Boltzmann-Transportkonzepte anwenden.",
       "descriptionEn": "The learner can apply Drude, Hall, and Boltzmann transport concepts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7026"
       ],
@@ -89,7 +115,7 @@
       "titleEn": "Electronic structure and Dirac physics",
       "description": "Die lernende Person kann Bandstrukturen und Dirac-Fermionen in Graphen modellieren.",
       "descriptionEn": "The learner can model band structures and Dirac fermions in graphene.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7026"
       ],
@@ -108,7 +134,7 @@
       "titleEn": "Tight-binding band structure",
       "description": "Die lernende Person kann Bandstrukturen für Graphen und verwandte Materialien berechnen.",
       "descriptionEn": "The learner can compute band structures for graphene and related materials.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7026"
       ],
@@ -124,7 +150,7 @@
       "titleEn": "Dirac equation and pseudospin",
       "description": "Die lernende Person kann masselose Dirac-Fermionen und Pseudospin-Textur erklären.",
       "descriptionEn": "The learner can explain massless Dirac fermions and pseudospin texture.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7026"
       ],
@@ -142,7 +168,7 @@
       "titleEn": "Topology and moire superlattices",
       "description": "Die lernende Person kann topologische Effekte und Moire-Band-Engineering erklären.",
       "descriptionEn": "The learner can explain topological effects and moire band engineering.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7026"
       ],
@@ -161,7 +187,7 @@
       "titleEn": "Quantum Hall and topological concepts",
       "description": "Die lernende Person kann Berry-Phase, Chern-Zahlen und topologische Isolatoren erklären.",
       "descriptionEn": "The learner can explain Berry phase, Chern numbers, and topological insulators.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7026"
       ],
@@ -177,7 +203,7 @@
       "titleEn": "Moire patterns and flat bands",
       "description": "Die lernende Person kann Moire-Supergitter, Hofstadter-Physik und flache Bänder erklären.",
       "descriptionEn": "The learner can explain moire superlattices, Hofstadter physics, and flat bands.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7026"
       ],
@@ -195,7 +221,7 @@
       "titleEn": "Correlation effects and phase transitions",
       "description": "Die lernende Person kann korrelierte Phasen in verdrehtem Bilayer-Graphen analysieren.",
       "descriptionEn": "The learner can analyze correlated phases in twisted bilayer graphene.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7026"
       ],
@@ -214,7 +240,7 @@
       "titleEn": "Symmetry breaking and phase transitions",
       "description": "Die lernende Person kann Symmetriebrechung und Viele-Teilchen-Grundzustände beschreiben.",
       "descriptionEn": "The learner can describe symmetry breaking and many-body ground states.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7026"
       ],
@@ -230,7 +256,7 @@
       "titleEn": "Strong correlations and superconductivity",
       "description": "Die lernende Person kann Hubbard-Physik, Supraleitung und stranges metallisches Verhalten erklären.",
       "descriptionEn": "The learner can explain Hubbard physics, superconductivity, and strange metallicity.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7026"
       ],

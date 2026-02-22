@@ -10,14 +10,36 @@
   "subject": "Türkisch",
   "goals": [
     {
+      "id": "6c64be22-b9bf-56ca-8567-77db47daa1ce",
+      "title": "Warum Türkisch? - Relevanz und Orientierung",
+      "titleEn": "Why Türkisch? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Türkisch für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Türkisch matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "845a6fd4-7b92-59e9-859d-e20aa2926740",
       "title": "Jahrgangsstufe 11",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "6c64be22-b9bf-56ca-8567-77db47daa1ce"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,7 +50,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -39,13 +61,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "787538cb-b8cc-51f5-9a57-7043c8535510",
       "title": "Türkisch (Gymnasium)",
       "contains": [
+        "6c64be22-b9bf-56ca-8567-77db47daa1ce",
         "845a6fd4-7b92-59e9-859d-e20aa2926740",
         "46c1ebb3-a713-5f32-bcc6-e8a28079ea7c",
         "b77d61da-dd18-5ddb-bd22-33a8143bb553"
@@ -57,8 +80,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "6c64be22-b9bf-56ca-8567-77db47daa1ce"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

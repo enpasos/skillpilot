@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000489",
   "goals": [
     {
+      "id": "f4e412ed-5bb9-50d3-b4bf-0b9bd30dd5ff",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000489",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "79581e9d-52b9-5b51-90fd-779fd77f205b",
       "title": "Capturing Reality",
       "titleEn": "Capturing Reality",
       "description": "Erfolgreicher Abschluss des Moduls \"Capturing Reality\".",
       "descriptionEn": "Successful completion of module \"Capturing Reality\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-0489",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "f4e412ed-5bb9-50d3-b4bf-0b9bd30dd5ff"
+      ],
+      "contains": [
+        "f4e412ed-5bb9-50d3-b4bf-0b9bd30dd5ff"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

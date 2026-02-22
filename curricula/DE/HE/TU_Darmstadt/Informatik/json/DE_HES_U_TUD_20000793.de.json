@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000793",
   "goals": [
     {
+      "id": "dbcd1bc2-b0d3-5363-8a2d-db787b2aa933",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000793",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "90dc3d4b-7b8d-5661-9295-45ff0b9ad5ce",
       "title": "User-Centered Design in Visual Computing",
       "titleEn": "User-Centered Design in Visual Computing",
       "description": "Erfolgreicher Abschluss des Moduls \"User-Centered Design in Visual Computing\".",
       "descriptionEn": "Successful completion of module \"User-Centered Design in Visual Computing\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-0793",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "dbcd1bc2-b0d3-5363-8a2d-db787b2aa933"
+      ],
+      "contains": [
+        "dbcd1bc2-b0d3-5363-8a2d-db787b2aa933"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

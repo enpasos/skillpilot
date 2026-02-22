@@ -14,7 +14,7 @@
       "titleEn": "Informatik und Gesellschaft",
       "description": "Die lernende Person kann: Kenntnisse zu Computer- und Informationsethik, technikphilosophischen Grundlagen, Spannungsfeldern der Informatik mit der Gesellschaft; Kenntnisse von verschiedenen ethischen Leitlinien und Fähigkeit der kritischen Bewertung solcher Regelwerke; Kenntnisse über Lösungsansätze zum ethischen und sozialen Umgang mit Informatik; Methodenwissen zur Implementation von ethischen Regelwerken in Prozesse oder Organisationen der Informatik; Befähigung, die eigene Rolle als Informatiker*in kritisch zu reflektieren; Fähigkeit, Sachverhalte aus der Sicht der Informatik hinsichtlich ethischer und gesellschaftlicher Kriterien zu bewerten und ggf. Verbesserungsvorschläge zu entwickeln.",
       "descriptionEn": "Die lernende Person kann: Kenntnisse zu Computer- und Informationsethik, technikphilosophischen Grundlagen, Spannungsfeldern der Informatik mit der Gesellschaft; Kenntnisse von verschiedenen ethischen Leitlinien und Fähigkeit der kritischen Bewertung solcher Regelwerke; Kenntnisse über Lösungsansätze zum ethischen und sozialen Umgang mit Informatik; Methodenwissen zur Implementation von ethischen Regelwerken in Prozesse oder Organisationen der Informatik; Befähigung, die eigene Rolle als Informatiker*in kritisch zu reflektieren; Fähigkeit, Sachverhalte aus der Sicht der Informatik hinsichtlich ethischer und gesellschaftlicher Kriterien zu bewerten und ggf. Verbesserungsvorschläge zu entwickeln.",
-      "weight": 3.0,
+      "weight": 3,
       "tags": [
         "ects:3",
         "module:20-00-1153",
@@ -27,8 +27,11 @@
         "guidingIdeas": [],
         "phase": "Pflichtbereich"
       },
-      "requires": [],
+      "requires": [
+        "23033b5b-8dcc-5753-bc90-31d43f416d3b"
+      ],
       "contains": [
+        "23033b5b-8dcc-5753-bc90-31d43f416d3b",
         "c3f62463-92dd-594a-a1b1-2aed4ec256e6",
         "6515a525-003e-5991-8c4f-f7ebd295313e",
         "a5e9396e-c9d3-5ac8-bae3-2b9ffaa08c16",
@@ -50,6 +53,27 @@
       }
     },
     {
+      "id": "23033b5b-8dcc-5753-bc90-31d43f416d3b",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20001153",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Pflichtbereich"
+      }
+    },
+    {
       "id": "c3f62463-92dd-594a-a1b1-2aed4ec256e6",
       "title": "Informatik und Gesellschaft – Lernziel 1",
       "titleEn": "Informatik und Gesellschaft – Learning Outcome 1",
@@ -68,7 +92,9 @@
         "guidingIdeas": [],
         "phase": "Pflichtbereich"
       },
-      "requires": [],
+      "requires": [
+        "23033b5b-8dcc-5753-bc90-31d43f416d3b"
+      ],
       "contains": [],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/modul_descriptions.md"
     },

@@ -10,14 +10,36 @@
   "subject": "Englisch",
   "goals": [
     {
+      "id": "60827dde-1e79-5d24-9199-8e3b1db2020a",
+      "title": "Warum Englisch? - Relevanz und Orientierung",
+      "titleEn": "Why Englisch? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Englisch für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Englisch matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "111b740a-b005-5e29-8b88-68c81737692f",
       "title": "Jahrgangsstufe 5",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "60827dde-1e79-5d24-9199-8e3b1db2020a"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,7 +50,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -39,7 +61,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -50,7 +72,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -61,7 +83,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -72,13 +94,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "8d1a15b3-db1a-589b-87a4-3701ed0d7c1b",
       "title": "Englisch (Realschule)",
       "contains": [
+        "60827dde-1e79-5d24-9199-8e3b1db2020a",
         "111b740a-b005-5e29-8b88-68c81737692f",
         "69b55655-117f-5360-bf4f-13420f9f3bfc",
         "37770a1d-5cf4-5d8b-b173-a64058ad805d",
@@ -93,8 +116,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "60827dde-1e79-5d24-9199-8e3b1db2020a"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

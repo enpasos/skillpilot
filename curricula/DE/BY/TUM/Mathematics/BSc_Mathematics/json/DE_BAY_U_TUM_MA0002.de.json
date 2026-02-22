@@ -20,7 +20,7 @@
       "titleEn": "Analysis 2 – Full Module",
       "description": "Nach dem erfolgreichen Abschluss des Moduls besitzen die Studierenden ein theoretisches Verständnis der Grundbegriffe der reellen Analysis im Mehrdimensionalen (z.B. Differentiation im Mehrdimensionalen) sowie über zentrale Sätze (z.B. Satz über implizite Funktionen, Banach'scher Fixpunktsatz) und haben Theorie und Verfahren zur Lösung von Differentialgleichungen erlernt. Sie sind in der Lage die erlernten Theorien, Methoden und Verfahren in Beispielsituationen sicher anzuwenden und mit diesen Zusammenhänge herzustellen.",
       "descriptionEn": "After successfully completing the module, students have a theoretical understanding of the basic concepts of real multivariable analysis (e.g., differentiation in several variables) as well as central theorems (e.g., the implicit function theorem, Banach's fixed point theorem) and have learned theory and methods for solving differential equations. They are able to apply the learned theories, methods, and procedures confidently in example situations and to connect them.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:warzel_simone"
       ],
       "contains": [
+        "92b7332a-07ec-5d68-90c9-9f0c7ce44917",
         "5bcee5a0-2a43-52b0-a56c-69868dedd2fa",
         "ab2024b2-dc24-5006-a797-9242d3786adc",
         "f8ea37f9-8439-5f79-893c-3cdcfa747169",
@@ -45,6 +46,7 @@
         "8204c8f0-a468-5c7c-b6e9-128c8508950c"
       ],
       "requires": [
+        "92b7332a-07ec-5d68-90c9-9f0c7ce44917",
         "8eb1605b-fa70-511b-bbe4-28173d359c3b",
         "feaad1d5-022f-5ab3-93c3-001ac46de351"
       ],
@@ -998,6 +1000,28 @@
       }
     },
     {
+      "id": "92b7332a-07ec-5d68-90c9-9f0c7ce44917",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma0002",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "8204c8f0-a468-5c7c-b6e9-128c8508950c",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -1013,7 +1037,9 @@
         "vocabularySource": "/data/ma0002_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "92b7332a-07ec-5d68-90c9-9f0c7ce44917"
+      ],
       "dimensionTags": {
         "framework": "tum-ma0002",
         "demandLevel": "AB1",

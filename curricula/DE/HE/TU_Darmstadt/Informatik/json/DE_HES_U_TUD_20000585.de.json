@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000585",
   "goals": [
     {
+      "id": "83d8cf58-fdb9-5b92-b720-eac1f4f49bc8",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000585",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "0296a7e7-1c59-5b27-b1c3-1dca610f022b",
       "title": "Kryptoplexität",
       "titleEn": "Kryptoplexität",
       "description": "Erfolgreicher Abschluss des Moduls \"Kryptoplexität\".",
       "descriptionEn": "Successful completion of module \"Kryptoplexität\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-0585",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "83d8cf58-fdb9-5b92-b720-eac1f4f49bc8"
+      ],
+      "contains": [
+        "83d8cf58-fdb9-5b92-b720-eac1f4f49bc8"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

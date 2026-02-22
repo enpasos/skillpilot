@@ -20,7 +20,7 @@
       "titleEn": "Analysis 3 – Full Module",
       "description": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, das Lebesgue-Integral in einem allgemeinen maßtheoretischen Kontext und hinsichtlich seiner grundlegenden Eigenschaften (Satz von Fubini, Transformationsformel und Konvergenzsätze) sicher zu handhaben. Sie kennen die Lebesgue-Räume und ihre grundlegenden Eigenschaften, elementare Eigenschaften von Hilberträumen, und sie können die Integralsätze von Gauss und Stokes anwenden.",
       "descriptionEn": "After successfully completing the module, students are able to handle the Lebesgue integral in a general measure-theoretic context and with respect to its fundamental properties (Fubini’s theorem, the change-of-variables formula, and convergence theorems) confidently. They know Lebesgue spaces and their basic properties, elementary properties of Hilbert spaces, and they can apply Gauss’ and Stokes’ integral theorems.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:warzel_simone"
       ],
       "contains": [
+        "cb274e2a-4c11-589a-8d6b-e260c8ad3e2a",
         "2e67cc0f-b498-5303-a16a-364ca2209038",
         "ad8506d3-1f34-53bd-afbc-98a5625ab1ad",
         "2482e23a-0593-5dcb-bc90-c81d7d2029f6",
@@ -44,6 +45,7 @@
         "726e2984-2f60-547f-baad-5be65f2bcaf7"
       ],
       "requires": [
+        "cb274e2a-4c11-589a-8d6b-e260c8ad3e2a",
         "8eb1605b-fa70-511b-bbe4-28173d359c3b",
         "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
         "feaad1d5-022f-5ab3-93c3-001ac46de351"
@@ -63,7 +65,7 @@
       "titleEn": "Sigma-Algebra and Borel Sigma-Algebra",
       "description": "Zusammenfassender Cluster: messbare Räume (σ-Algebren) und die Borel-σ-Algebra als Grundlage der Maßtheorie.",
       "descriptionEn": "Summary cluster: measurable spaces (σ-algebras) and the Borel σ-algebra as the basis of measure theory.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA0003"
@@ -373,7 +375,7 @@
       "titleEn": "Change-of-Variables Formula",
       "description": "Zusammenfassender Cluster: Transformationsformel für Integrale in $\\mathbb{R}^n$ (Jacobi-Determinante) und typische Koordinatentransformationen.",
       "descriptionEn": "Summary cluster: change-of-variables formula for integrals in $\\mathbb{R}^n$ (Jacobian determinant) and typical coordinate transformations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA0003"
@@ -607,7 +609,7 @@
       "titleEn": "Surface Integrals and the Gauss and Stokes Theorems",
       "description": "Zusammenfassender Cluster: Oberflächenintegrale und klassische Integralsätze von Gauss (Divergenzsatz) und Stokes als Werkzeuge der Vektoranalysis.",
       "descriptionEn": "Summary cluster: surface integrals and the classical integral theorems of Gauss (divergence theorem) and Stokes as tools of vector analysis.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA0003"
@@ -998,6 +1000,28 @@
       }
     },
     {
+      "id": "cb274e2a-4c11-589a-8d6b-e260c8ad3e2a",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma0003",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "726e2984-2f60-547f-baad-5be65f2bcaf7",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -1012,7 +1036,9 @@
         "vocabularySource": "/data/ma0003_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "cb274e2a-4c11-589a-8d6b-e260c8ad3e2a"
+      ],
       "dimensionTags": {
         "framework": "tum-ma0003",
         "demandLevel": "AB1",

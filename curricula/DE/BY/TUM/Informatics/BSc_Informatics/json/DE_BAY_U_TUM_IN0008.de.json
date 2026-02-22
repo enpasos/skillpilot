@@ -13,12 +13,13 @@
       "titleEn": "Fundamentals of Databases (IN0008)",
       "description": "Die lernende Person kann relationale Datenbanksysteme entwerfen, abfragen und bedienen.",
       "descriptionEn": "The learner can design, query, and operate relational database systems.",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
         "module:IN0008",
         "ects:6"
       ],
       "contains": [
+        "3c06a2c6-2767-55dd-a0dd-18e43fef9ecb",
         "54c5b7d3-a048-5328-84e7-b202309e88dc",
         "f34c4d7f-444b-5144-98b4-ae9171f50dff",
         "199aab23-0da8-5aa5-a5d0-af849727a58f",
@@ -27,7 +28,9 @@
         "36735c67-db6c-54a2-9f0c-af41ad15bc8f",
         "0f59d756-e6da-5483-ba25-0f53a0f4a08f"
       ],
-      "requires": [],
+      "requires": [
+        "3c06a2c6-2767-55dd-a0dd-18e43fef9ecb"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0008",
       "dimensionTags": {
         "phase": "Modul"
@@ -39,7 +42,7 @@
       "titleEn": "Relational model and SQL",
       "description": "Die lernende Person kann mit relationalen Datenmodellen und SQL arbeiten.",
       "descriptionEn": "The learner can work with relational data models and SQL.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0008"
       ],
@@ -53,17 +56,40 @@
       }
     },
     {
+      "id": "3c06a2c6-2767-55dd-a0dd-18e43fef9ecb",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-in0008",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "a1487780-8d16-5ac8-b9dd-0820c48763fe",
       "title": "Relationale Konzepte und Integrität",
       "titleEn": "Relational concepts and integrity",
       "description": "Die lernende Person kann Beziehungen, Schlüssel und Integritätsbeschränkungen erklären.",
       "descriptionEn": "The learner can explain relations, keys, and integrity constraints.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0008"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "3c06a2c6-2767-55dd-a0dd-18e43fef9ecb"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -74,7 +100,7 @@
       "titleEn": "SQL querying",
       "description": "Die lernende Person kann SQL-Abfragen schreiben, einschließlich Verknüpfungen und Aggregationen.",
       "descriptionEn": "The learner can write SQL queries, including joins and aggregations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0008"
       ],
@@ -90,7 +116,7 @@
       "titleEn": "Database design",
       "description": "Die lernende Person kann Datenbanken von konzeptionellen bis hin zu physischen Schemata entwerfen.",
       "descriptionEn": "The learner can design databases from conceptual to physical schemas.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0008"
       ],
@@ -111,7 +137,7 @@
       "titleEn": "Conceptual and logical design",
       "description": "Die lernende Person kann Schematwürfe aus konzeptionellen Modellen erstellen.",
       "descriptionEn": "The learner can create schema designs from conceptual models.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0008"
       ],
@@ -127,7 +153,7 @@
       "titleEn": "Normalization and design theory",
       "description": "Die lernende Person kann die relationale Designtheorie und Normalisierung anwenden.",
       "descriptionEn": "The learner can apply relational design theory and normalization.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0008"
       ],
@@ -143,7 +169,7 @@
       "titleEn": "Physical storage and indexing",
       "description": "Die lernende Person kann die Organisation und Indizes physischer Daten erklären.",
       "descriptionEn": "The learner can explain physical data organization and indexes.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0008"
       ],
@@ -164,7 +190,7 @@
       "titleEn": "Storage organization",
       "description": "Die lernende Person kann Speicherlayouts und Zugriffsmethoden beschreiben.",
       "descriptionEn": "The learner can describe storage layouts and access methods.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0008"
       ],
@@ -180,7 +206,7 @@
       "titleEn": "Index structures",
       "description": "Die lernende Person kann Indexstrukturen und ihre Anwendungsfälle erklären.",
       "descriptionEn": "The learner can explain index structures and their use cases.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0008"
       ],
@@ -196,7 +222,7 @@
       "titleEn": "Query processing and optimization",
       "description": "Die lernende Person kann die Ausführung und Optimierung von Abfragen verstehen.",
       "descriptionEn": "The learner can understand query execution and optimization.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0008"
       ],
@@ -217,7 +243,7 @@
       "titleEn": "Relational algebra and query plans",
       "description": "Die lernende Person kann Abfragen in relationale Algebra und Ausführungspläne übersetzen.",
       "descriptionEn": "The learner can translate queries into relational algebra and execution plans.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0008"
       ],
@@ -233,7 +259,7 @@
       "titleEn": "Logical and physical optimization",
       "description": "Die lernende Person kann grundlegende Optimierungstechniken für Abfragen erklären.",
       "descriptionEn": "The learner can explain basic optimization techniques for queries.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0008"
       ],
@@ -249,7 +275,7 @@
       "titleEn": "Transactions and recovery",
       "description": "Die lernende Person kann die Korrektheit in Mehrbenutzerumgebungen sicherstellen.",
       "descriptionEn": "The learner can ensure correctness in multi-user environments.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0008"
       ],
@@ -270,7 +296,7 @@
       "titleEn": "Transaction management and concurrency control",
       "description": "Die lernende Person kann Transaktionen, Isolation und Parallelitätskontrolle erklären.",
       "descriptionEn": "The learner can explain transactions, isolation, and concurrency control.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0008"
       ],
@@ -286,7 +312,7 @@
       "titleEn": "Recovery and backup",
       "description": "Die lernende Person kann Wiederherstellung, Backup und Fehlerbehandlung erklären.",
       "descriptionEn": "The learner can explain recovery, backup, and fault handling.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0008"
       ],
@@ -302,7 +328,7 @@
       "titleEn": "Security and authorization",
       "description": "Die lernende Person kann Sicherheitskontrollen in Datenbanksystemen anwenden.",
       "descriptionEn": "The learner can apply security controls in database systems.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0008"
       ],
@@ -323,7 +349,7 @@
       "titleEn": "Authorization mechanisms",
       "description": "Die lernende Person kann Autorisierung und Zugriffskontrolle in Datenbanken anwenden.",
       "descriptionEn": "The learner can apply authorization and access control in databases.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0008"
       ],
@@ -339,7 +365,7 @@
       "titleEn": "Secure multi-user operation",
       "description": "Die lernende Person kann den sicheren Betrieb in Mehrbenutzerumgebungen erläutern.",
       "descriptionEn": "The learner can explain secure operation in multi-user settings.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0008"
       ],
@@ -355,7 +381,7 @@
       "titleEn": "XML data modeling",
       "description": "Die lernende Person kann Daten über das relationale Modell hinaus modellieren.",
       "descriptionEn": "The learner can model data beyond the relational model.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0008"
       ],
@@ -373,7 +399,7 @@
       "titleEn": "XML modeling basics",
       "description": "Die lernende Person kann grundlegende XML-Datenmodellierungskonzepte beschreiben.",
       "descriptionEn": "The learner can describe basic XML data modeling concepts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0008"
       ],

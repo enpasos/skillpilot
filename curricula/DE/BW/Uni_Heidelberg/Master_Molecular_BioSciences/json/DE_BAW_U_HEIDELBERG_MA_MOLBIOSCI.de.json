@@ -14,7 +14,7 @@
       "titleEn": "Master Molecular BioSciences (M.Sc.)",
       "description": "Kompetenzgraph basierend auf dem Modulhandbuch Master of Science – Molecular BioSciences (Universität Heidelberg, Stand 2025-10-30).",
       "descriptionEn": "Competence graph based on the module handbook Master of Science – Molecular BioSciences (Heidelberg University, version 2025-10-30).",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "root",
         "Master",
@@ -28,8 +28,11 @@
         "guidingIdeas": [],
         "phase": "GLOBAL"
       },
-      "requires": [],
+      "requires": [
+        "23f6c92d-f1b3-5548-9d35-4ec032c973ad"
+      ],
       "contains": [
+        "23f6c92d-f1b3-5548-9d35-4ec032c973ad",
         "f985b2b6-842e-5a1a-b3fa-3db89d45a90a",
         "999a41de-d725-5633-a2d3-53ae1601dddf",
         "65bf97f9-5c97-5d0c-b936-8fcff0e258b8",
@@ -43,7 +46,7 @@
       "titleEn": "Semester 1",
       "description": "Module im Semester 1 des Studienplans.",
       "descriptionEn": "Modules in semester 1 of the study plan.",
-      "weight": 30.0,
+      "weight": 30,
       "tags": [
         "cluster"
       ],
@@ -67,7 +70,7 @@
       "titleEn": "Semester 2",
       "description": "Module im Semester 2 des Studienplans.",
       "descriptionEn": "Modules in semester 2 of the study plan.",
-      "weight": 30.0,
+      "weight": 30,
       "tags": [
         "cluster"
       ],
@@ -91,7 +94,7 @@
       "titleEn": "Semester 3",
       "description": "Module im Semester 3 des Studienplans.",
       "descriptionEn": "Modules in semester 3 of the study plan.",
-      "weight": 30.0,
+      "weight": 30,
       "tags": [
         "cluster"
       ],
@@ -115,7 +118,7 @@
       "titleEn": "Semester 4",
       "description": "Module im Semester 4 des Studienplans.",
       "descriptionEn": "Modules in semester 4 of the study plan.",
-      "weight": 30.0,
+      "weight": 30,
       "tags": [
         "cluster"
       ],
@@ -138,7 +141,7 @@
       "titleEn": "Genome structure and organization",
       "description": "Die Studierenden können die Struktur und Organisation von Genomen beschreiben und zentrale Konzepte einordnen.",
       "descriptionEn": "Students can describe genome structure and organization and classify core concepts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -157,12 +160,33 @@
       "sourceRef": "Modulhandbuch Molecular BioSciences MA (2025-10-30), Modul FrontI"
     },
     {
+      "id": "23f6c92d-f1b3-5548-9d35-4ec032c973ad",
+      "title": "Warum Molecular BioSciences? - Relevanz und Orientierung",
+      "titleEn": "Why Molecular BioSciences? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Molecular BioSciences für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Molecular BioSciences matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "uni-heidelberg-molecular-biosciences-ma-2025-10-30",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL"
+      }
+    },
+    {
       "id": "68cc41bd-2642-4086-99d0-3ce7cb888db9",
       "title": "Struktur und Organisation von Genomen beschreiben",
       "titleEn": "Describe genome structure and organization",
       "description": "Die Studierenden können die Struktur und Organisation von Genomen beschreiben.",
       "descriptionEn": "Students can describe genome structure and organization.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -173,7 +197,9 @@
         "guidingIdeas": [],
         "phase": "S1"
       },
-      "requires": [],
+      "requires": [
+        "23f6c92d-f1b3-5548-9d35-4ec032c973ad"
+      ],
       "contains": [],
       "sourceRef": "Modulhandbuch Molecular BioSciences MA (2025-10-30), Modul FrontI"
     },
@@ -183,7 +209,7 @@
       "titleEn": "Classify core concepts of genome organization",
       "description": "Die Studierenden können zentrale Konzepte zur Genomstruktur und -organisation einordnen.",
       "descriptionEn": "Students can classify core concepts related to genome structure and organization.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -204,7 +230,7 @@
       "titleEn": "Regulation of gene expression",
       "description": "Die Studierenden können Mechanismen der Regulation der Genexpression erläutern und Beispiele analysieren.",
       "descriptionEn": "Students can explain mechanisms of gene expression regulation and analyze examples.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -228,7 +254,7 @@
       "titleEn": "Explain mechanisms of gene expression regulation",
       "description": "Die Studierenden können Mechanismen der Regulation der Genexpression erläutern.",
       "descriptionEn": "Students can explain mechanisms of gene expression regulation.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -249,7 +275,7 @@
       "titleEn": "Analyze examples of gene expression regulation",
       "description": "Die Studierenden können Beispiele zur Regulation der Genexpression analysieren.",
       "descriptionEn": "Students can analyze examples of gene expression regulation.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -270,7 +296,7 @@
       "titleEn": "Proteome – concepts and applications",
       "description": "Die Studierenden können den Begriff Proteom erläutern und grundlegende Ansätze der Proteomik benennen.",
       "descriptionEn": "Students can explain the concept of the proteome and name basic proteomics approaches.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -294,7 +320,7 @@
       "titleEn": "Explain the term proteome",
       "description": "Die Studierenden können den Begriff Proteom erläutern.",
       "descriptionEn": "Students can explain the term proteome.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -315,7 +341,7 @@
       "titleEn": "Name basic approaches in proteomics",
       "description": "Die Studierenden können grundlegende Ansätze der Proteomik benennen.",
       "descriptionEn": "Students can name basic approaches in proteomics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -336,7 +362,7 @@
       "titleEn": "Interactome – concepts and applications",
       "description": "Die Studierenden können den Begriff Interactom erläutern und grundlegende Strategien zur Analyse von Interaktionen skizzieren.",
       "descriptionEn": "Students can explain the concept of the interactome and outline basic strategies for interaction analysis.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -360,7 +386,7 @@
       "titleEn": "Explain the term interactome",
       "description": "Die Studierenden können den Begriff Interactom erläutern.",
       "descriptionEn": "Students can explain the term interactome.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -381,7 +407,7 @@
       "titleEn": "Outline strategies for interaction analysis",
       "description": "Die Studierenden können grundlegende Strategien zur Analyse von Interaktionen skizzieren.",
       "descriptionEn": "Students can outline basic strategies for analyzing interactions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -402,7 +428,7 @@
       "titleEn": "Cell organization and dynamics",
       "description": "Die Studierenden können Prinzipien der Zellorganisation und Zelldynamik beschreiben und auf Fragestellungen anwenden.",
       "descriptionEn": "Students can describe principles of cell organization and dynamics and apply them to questions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -426,7 +452,7 @@
       "titleEn": "Describe principles of cell organization and dynamics",
       "description": "Die Studierenden können Prinzipien der Zellorganisation und Zelldynamik beschreiben.",
       "descriptionEn": "Students can describe principles of cell organization and cell dynamics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -447,7 +473,7 @@
       "titleEn": "Apply cell organization and dynamics to questions",
       "description": "Die Studierenden können Prinzipien der Zellorganisation und Zelldynamik auf Fragestellungen anwenden.",
       "descriptionEn": "Students can apply principles of cell organization and cell dynamics to questions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -468,7 +494,7 @@
       "titleEn": "Methods spectrum for biological questions",
       "description": "Die Studierenden können ein breites methodisches Spektrum zur Bearbeitung biologischer Fragestellungen auswählen und begründen.",
       "descriptionEn": "Students can select and justify a broad spectrum of methods to address biological questions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -492,7 +518,7 @@
       "titleEn": "Select methods for biological questions",
       "description": "Die Studierenden können geeignete Methoden zur Bearbeitung biologischer Fragestellungen auswählen.",
       "descriptionEn": "Students can select suitable methods for addressing biological questions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -513,7 +539,7 @@
       "titleEn": "Justify method selection",
       "description": "Die Studierenden können ihre Methodenauswahl begründen.",
       "descriptionEn": "Students can justify their method selection.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -534,7 +560,7 @@
       "titleEn": "Apply and reflect on new methods",
       "description": "Die Studierenden können neue wissenschaftliche Methoden zielgerichtet anwenden und deren Einsatz kritisch reflektieren.",
       "descriptionEn": "Students can apply new scientific methods purposefully and critically reflect on their use.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -558,7 +584,7 @@
       "titleEn": "Apply new scientific methods",
       "description": "Die Studierenden können neue wissenschaftliche Methoden zielgerichtet anwenden.",
       "descriptionEn": "Students can apply new scientific methods purposefully.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -579,7 +605,7 @@
       "titleEn": "Critically reflect on the use of new methods",
       "description": "Die Studierenden können den Einsatz neuer wissenschaftlicher Methoden kritisch reflektieren.",
       "descriptionEn": "Students can critically reflect on the use of new scientific methods.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -600,7 +626,7 @@
       "titleEn": "Critically analyze scientific content",
       "description": "Die Studierenden können wissenschaftliche Inhalte kritisch analysieren, fachlich einordnen und den Bezug zum aktuellen Forschungsstand herstellen.",
       "descriptionEn": "Students can critically analyze scientific content, classify it academically, and relate it to the current state of research.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -625,7 +651,7 @@
       "titleEn": "Critically analyze scientific content",
       "description": "Die Studierenden können wissenschaftliche Inhalte kritisch analysieren.",
       "descriptionEn": "Students can critically analyze scientific content.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -646,7 +672,7 @@
       "titleEn": "Classify scientific content",
       "description": "Die Studierenden können wissenschaftliche Inhalte fachlich einordnen.",
       "descriptionEn": "Students can classify scientific content in a subject-specific way.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -667,7 +693,7 @@
       "titleEn": "Relate content to the current state of research",
       "description": "Die Studierenden können den Bezug wissenschaftlicher Inhalte zum aktuellen Forschungsstand herstellen.",
       "descriptionEn": "Students can relate scientific content to the current state of research.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -688,7 +714,7 @@
       "titleEn": "Literature search and English abstract",
       "description": "Die Studierenden können relevante wissenschaftliche Literatur recherchieren, auswerten und Kernaussagen in einem englischsprachigen Abstract zusammenfassen und präsentieren.",
       "descriptionEn": "Students can search and evaluate relevant scientific literature and summarize key messages in an English abstract and present it.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -714,7 +740,7 @@
       "titleEn": "Search relevant scientific literature",
       "description": "Die Studierenden können relevante wissenschaftliche Literatur recherchieren.",
       "descriptionEn": "Students can search for relevant scientific literature.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -735,7 +761,7 @@
       "titleEn": "Evaluate literature",
       "description": "Die Studierenden können recherchierte wissenschaftliche Literatur auswerten.",
       "descriptionEn": "Students can evaluate scientific literature they have found.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -758,7 +784,7 @@
       "titleEn": "Summarize an English abstract",
       "description": "Die Studierenden können Kernaussagen in einem englischsprachigen Abstract zusammenfassen.",
       "descriptionEn": "Students can summarize key statements in an English abstract.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -781,7 +807,7 @@
       "titleEn": "Present an abstract",
       "description": "Die Studierenden können Inhalte eines englischsprachigen Abstracts präsentieren.",
       "descriptionEn": "Students can present the content of an English abstract.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -804,7 +830,7 @@
       "titleEn": "In-depth major and theory knowledge",
       "description": "Die Studierenden können zentrale theoretische Grundlagen der Molekularen Biowissenschaften erläutern und vertieftes Wissen im gewählten Major anwenden.",
       "descriptionEn": "Students can explain key theoretical foundations of molecular biosciences and apply in-depth knowledge in their chosen major.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -828,7 +854,7 @@
       "titleEn": "Explain theoretical foundations of molecular biosciences",
       "description": "Die Studierenden können zentrale theoretische Grundlagen der Molekularen Biowissenschaften erläutern.",
       "descriptionEn": "Students can explain key theoretical foundations of molecular biosciences.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -849,7 +875,7 @@
       "titleEn": "Apply knowledge in the chosen major",
       "description": "Die Studierenden können vertieftes Wissen im gewählten Major anwenden.",
       "descriptionEn": "Students can apply advanced knowledge in their chosen major.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -870,7 +896,7 @@
       "titleEn": "Experimental techniques, quality control and data analysis",
       "description": "Die Studierenden können anspruchsvolle experimentelle Techniken sicher anwenden, Erfolgskontrollen durchführen und Daten eigenständig auswerten.",
       "descriptionEn": "Students can safely apply advanced experimental techniques, perform quality controls, and analyze data independently.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -895,7 +921,7 @@
       "titleEn": "Apply advanced experimental techniques",
       "description": "Die Studierenden können anspruchsvolle experimentelle Techniken sicher anwenden.",
       "descriptionEn": "Students can safely apply advanced experimental techniques.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -916,7 +942,7 @@
       "titleEn": "Perform quality and success controls",
       "description": "Die Studierenden können geeignete Erfolgskontrollen durchführen.",
       "descriptionEn": "Students can perform appropriate quality and success controls.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -937,7 +963,7 @@
       "titleEn": "Evaluate data independently",
       "description": "Die Studierenden können Daten eigenständig auswerten.",
       "descriptionEn": "Students can evaluate data independently.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -958,7 +984,7 @@
       "titleEn": "Frontiers in BioSciences I (FrontI)",
       "description": "Modul Frontiers in BioSciences I (FrontI) (Code FrontI, 15 LP, empfohlenes Fachsemester 1).",
       "descriptionEn": "Module Frontiers in BioSciences I (FrontI) (code FrontI, 15 CP, recommended semester 1).",
-      "weight": 15.0,
+      "weight": 15,
       "tags": [
         "PM"
       ],
@@ -991,7 +1017,7 @@
       "titleEn": "Organization and development of the nervous system",
       "description": "Die Studierenden können zentrale Konzepte der Organisation und Entwicklung des Nervensystems erläutern.",
       "descriptionEn": "Students can explain core concepts of nervous system organization and development.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1012,7 +1038,7 @@
       "titleEn": "Organization and development of organs",
       "description": "Die Studierenden können grundlegende Prinzipien der Organentwicklung beschreiben und einordnen.",
       "descriptionEn": "Students can describe and classify basic principles of organ development.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -1036,7 +1062,7 @@
       "titleEn": "Describe principles of organ development",
       "description": "Die Studierenden können grundlegende Prinzipien der Organentwicklung beschreiben.",
       "descriptionEn": "Students can describe basic principles of organ development.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1057,7 +1083,7 @@
       "titleEn": "Classify principles of organ development",
       "description": "Die Studierenden können grundlegende Prinzipien der Organentwicklung einordnen.",
       "descriptionEn": "Students can classify basic principles of organ development.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1078,7 +1104,7 @@
       "titleEn": "Developmental biology",
       "description": "Die Studierenden können grundlegende Konzepte der Entwicklungsbiologie erläutern und auf Beispiele anwenden.",
       "descriptionEn": "Students can explain basic concepts of developmental biology and apply them to examples.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -1102,7 +1128,7 @@
       "titleEn": "Explain core concepts of developmental biology",
       "description": "Die Studierenden können grundlegende Konzepte der Entwicklungsbiologie erläutern.",
       "descriptionEn": "Students can explain basic concepts of developmental biology.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1123,7 +1149,7 @@
       "titleEn": "Apply developmental biology to examples",
       "description": "Die Studierenden können Konzepte der Entwicklungsbiologie auf Beispiele anwenden.",
       "descriptionEn": "Students can apply concepts of developmental biology to examples.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1144,7 +1170,7 @@
       "titleEn": "Stem cells",
       "description": "Die Studierenden können Eigenschaften, Potenziale und Anwendungen von Stammzellen erläutern.",
       "descriptionEn": "Students can explain properties, potentials, and applications of stem cells.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1165,7 +1191,7 @@
       "titleEn": "Oncology",
       "description": "Die Studierenden können grundlegende Konzepte der Onkologie erläutern und molekulare Mechanismen einordnen.",
       "descriptionEn": "Students can explain basic concepts of oncology and classify molecular mechanisms.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -1189,7 +1215,7 @@
       "titleEn": "Explain basic concepts of oncology",
       "description": "Die Studierenden können grundlegende Konzepte der Onkologie erläutern.",
       "descriptionEn": "Students can explain basic concepts of oncology.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1210,7 +1236,7 @@
       "titleEn": "Classify molecular mechanisms in oncology",
       "description": "Die Studierenden können molekulare Mechanismen der Onkologie einordnen.",
       "descriptionEn": "Students can classify molecular mechanisms in oncology.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1231,7 +1257,7 @@
       "titleEn": "Host–pathogen relationships",
       "description": "Die Studierenden können zentrale Mechanismen von Wirt-Pathogen-Beziehungen beschreiben und Beispiele analysieren.",
       "descriptionEn": "Students can describe key mechanisms of host–pathogen relationships and analyze examples.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -1255,7 +1281,7 @@
       "titleEn": "Describe mechanisms of host–pathogen relationships",
       "description": "Die Studierenden können zentrale Mechanismen von Wirt-Pathogen-Beziehungen beschreiben.",
       "descriptionEn": "Students can describe key mechanisms of host–pathogen relationships.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1276,7 +1302,7 @@
       "titleEn": "Analyze examples of host–pathogen relationships",
       "description": "Die Studierenden können Beispiele zu Wirt-Pathogen-Beziehungen analysieren.",
       "descriptionEn": "Students can analyze examples of host–pathogen relationships.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1297,7 +1323,7 @@
       "titleEn": "Parasitology",
       "description": "Die Studierenden können grundlegende Konzepte der Parasitologie erläutern.",
       "descriptionEn": "Students can explain basic concepts of parasitology.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1318,7 +1344,7 @@
       "titleEn": "Virology",
       "description": "Die Studierenden können grundlegende Konzepte der Virologie erläutern.",
       "descriptionEn": "Students can explain basic concepts of virology.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1339,7 +1365,7 @@
       "titleEn": "Systems biology",
       "description": "Die Studierenden können Ziele und Grundideen der Systembiologie erläutern und Beispiele einordnen.",
       "descriptionEn": "Students can explain aims and core ideas of systems biology and classify examples.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -1363,7 +1389,7 @@
       "titleEn": "Explain goals and core ideas of systems biology",
       "description": "Die Studierenden können Ziele und Grundideen der Systembiologie erläutern.",
       "descriptionEn": "Students can explain the goals and core ideas of systems biology.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1384,7 +1410,7 @@
       "titleEn": "Classify examples in systems biology",
       "description": "Die Studierenden können Beispiele der Systembiologie einordnen.",
       "descriptionEn": "Students can classify examples in systems biology.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1405,7 +1431,7 @@
       "titleEn": "Epigenetics",
       "description": "Die Studierenden können grundlegende Mechanismen epigenetischer Regulation erläutern.",
       "descriptionEn": "Students can explain basic mechanisms of epigenetic regulation.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1426,7 +1452,7 @@
       "titleEn": "Ecological systems",
       "description": "Die Studierenden können grundlegende Konzepte ökologischer Systeme erläutern und auf Fallbeispiele beziehen.",
       "descriptionEn": "Students can explain basic concepts of ecological systems and relate them to case studies.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -1450,7 +1476,7 @@
       "titleEn": "Explain core concepts of ecological systems",
       "description": "Die Studierenden können grundlegende Konzepte ökologischer Systeme erläutern.",
       "descriptionEn": "Students can explain basic concepts of ecological systems.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1471,7 +1497,7 @@
       "titleEn": "Relate ecological concepts to case studies",
       "description": "Die Studierenden können Konzepte ökologischer Systeme auf Fallbeispiele beziehen.",
       "descriptionEn": "Students can relate concepts of ecological systems to case studies.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1492,7 +1518,7 @@
       "titleEn": "Evolution",
       "description": "Die Studierenden können grundlegende Prinzipien der Evolution erläutern und in biologische Zusammenhänge einordnen.",
       "descriptionEn": "Students can explain basic principles of evolution and place them in biological contexts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -1516,7 +1542,7 @@
       "titleEn": "Explain basic principles of evolution",
       "description": "Die Studierenden können grundlegende Prinzipien der Evolution erläutern.",
       "descriptionEn": "Students can explain basic principles of evolution.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1537,7 +1563,7 @@
       "titleEn": "Classify evolution in biological contexts",
       "description": "Die Studierenden können Evolution in biologische Zusammenhänge einordnen.",
       "descriptionEn": "Students can classify evolution in biological contexts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1558,7 +1584,7 @@
       "titleEn": "Theory-to-practice transfer in the lab",
       "description": "Die Studierenden können theoretisch vermittelte Inhalte praxisnah umsetzen, insbesondere durch Anwendung im begleitenden Praktikum.",
       "descriptionEn": "Students can implement theoretical content in practice, especially through application in the accompanying lab course.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -1582,7 +1608,7 @@
       "titleEn": "Implement theoretical content in practice",
       "description": "Die Studierenden können theoretisch vermittelte Inhalte praxisnah umsetzen.",
       "descriptionEn": "Students can implement theoretically taught content in practice.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1603,7 +1629,7 @@
       "titleEn": "Apply theory in the accompanying practical course",
       "description": "Die Studierenden können theoretisch vermittelte Inhalte im begleitenden Praktikum anwenden.",
       "descriptionEn": "Students can apply theoretically taught content in the accompanying practical course.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1624,7 +1650,7 @@
       "titleEn": "Independently explore new topics",
       "description": "Die Studierenden können neue Themengebiete eigenständig erschließen und sich gezielt in komplexe Fragestellungen einarbeiten.",
       "descriptionEn": "Students can independently explore new topics and work their way into complex questions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -1648,7 +1674,7 @@
       "titleEn": "Explore new topics independently",
       "description": "Die Studierenden können neue Themengebiete eigenständig erschließen.",
       "descriptionEn": "Students can explore new topics independently.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1669,7 +1695,7 @@
       "titleEn": "Work into complex questions",
       "description": "Die Studierenden können sich gezielt in komplexe Fragestellungen einarbeiten.",
       "descriptionEn": "Students can work into complex questions in a targeted way.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1690,7 +1716,7 @@
       "titleEn": "Apply methods flexibly and context-sensitively",
       "description": "Die Studierenden können erworbene fachspezifische Methoden flexibel und kontextsensitiv anwenden.",
       "descriptionEn": "Students can apply acquired discipline-specific methods flexibly and context-sensitively.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1711,7 +1737,7 @@
       "titleEn": "Problem solving and using new knowledge",
       "description": "Die Studierenden können neues Wissen methodisch sicher nutzen und Problemlösungen in breiteren fachlichen Zusammenhängen entwickeln.",
       "descriptionEn": "Students can use new knowledge methodologically and develop solutions in broader disciplinary contexts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -1735,7 +1761,7 @@
       "titleEn": "Use new knowledge methodically and safely",
       "description": "Die Studierenden können neues Wissen methodisch sicher nutzen.",
       "descriptionEn": "Students can use new knowledge methodically and safely.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1756,7 +1782,7 @@
       "titleEn": "Develop solutions in broader contexts",
       "description": "Die Studierenden können Problemlösungen in breiteren fachlichen Zusammenhängen entwickeln.",
       "descriptionEn": "Students can develop solutions in broader subject-specific contexts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1777,7 +1803,7 @@
       "titleEn": "Practical qualifications in the major",
       "description": "Die Studierenden können erweiterte praktische Qualifikationen zu Fragestellungen ihres gewählten Majors nachweisen und reflektieren.",
       "descriptionEn": "Students can demonstrate and reflect on extended practical qualifications related to questions in their chosen major.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -1801,7 +1827,7 @@
       "titleEn": "Demonstrate practical qualifications in the major",
       "description": "Die Studierenden können erweiterte praktische Qualifikationen zu Fragestellungen ihres gewählten Majors nachweisen.",
       "descriptionEn": "Students can demonstrate advanced practical qualifications related to questions in their chosen major.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1822,7 +1848,7 @@
       "titleEn": "Reflect on practical qualifications",
       "description": "Die Studierenden können ihre praktischen Qualifikationen reflektieren.",
       "descriptionEn": "Students can reflect on their practical qualifications.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1843,7 +1869,7 @@
       "titleEn": "Contextualize scientific relationships",
       "description": "Die Studierenden können wissenschaftliche Zusammenhänge fachlich fundiert einordnen und kritisch bewerten.",
       "descriptionEn": "Students can contextualize scientific relationships in a well-founded way and evaluate them critically.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -1867,7 +1893,7 @@
       "titleEn": "Classify scientific relationships",
       "description": "Die Studierenden können wissenschaftliche Zusammenhänge fachlich fundiert einordnen.",
       "descriptionEn": "Students can classify scientific relationships in a well-founded way.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1888,7 +1914,7 @@
       "titleEn": "Critically evaluate scientific relationships",
       "description": "Die Studierenden können wissenschaftliche Zusammenhänge kritisch bewerten.",
       "descriptionEn": "Students can critically evaluate scientific relationships.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1909,7 +1935,7 @@
       "titleEn": "Literature search and abstract in English",
       "description": "Die Studierenden können weiterführende wissenschaftliche Literatur recherchieren, auswerten und wesentliche Inhalte in einem englischsprachigen Abstract strukturiert zusammenfassen und präsentieren.",
       "descriptionEn": "Students can search and evaluate advanced scientific literature and summarize essential content in an English abstract and present it.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -1935,7 +1961,7 @@
       "titleEn": "Search advanced scientific literature",
       "description": "Die Studierenden können weiterführende wissenschaftliche Literatur recherchieren.",
       "descriptionEn": "Students can search advanced scientific literature.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1956,7 +1982,7 @@
       "titleEn": "Evaluate literature",
       "description": "Die Studierenden können weiterführende wissenschaftliche Literatur auswerten.",
       "descriptionEn": "Students can evaluate advanced scientific literature.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -1979,7 +2005,7 @@
       "titleEn": "Summarize an English abstract in a structured way",
       "description": "Die Studierenden können wesentliche Inhalte strukturiert in einem englischsprachigen Abstract zusammenfassen.",
       "descriptionEn": "Students can summarize essential content in a structured English abstract.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2002,7 +2028,7 @@
       "titleEn": "Present an abstract",
       "description": "Die Studierenden können wesentliche Inhalte eines englischsprachigen Abstracts präsentieren.",
       "descriptionEn": "Students can present the essential content of an English abstract.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2025,7 +2051,7 @@
       "titleEn": "Communicate in interdisciplinary contexts",
       "description": "Die Studierenden können wissenschaftliche Inhalte analytisch durchdringen, anwendungsorientiert bearbeiten und in interdisziplinären Kontexten kommunizieren.",
       "descriptionEn": "Students can analyze scientific content, work on it in an application-oriented way, and communicate in interdisciplinary contexts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -2050,7 +2076,7 @@
       "titleEn": "Analyze scientific content deeply",
       "description": "Die Studierenden können wissenschaftliche Inhalte analytisch durchdringen.",
       "descriptionEn": "Students can analyze scientific content deeply.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2071,7 +2097,7 @@
       "titleEn": "Work on scientific content in an application-oriented way",
       "description": "Die Studierenden können wissenschaftliche Inhalte anwendungsorientiert bearbeiten.",
       "descriptionEn": "Students can work on scientific content in an application-oriented way.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2092,7 +2118,7 @@
       "titleEn": "Communicate scientific content interdisciplinarily",
       "description": "Die Studierenden können wissenschaftliche Inhalte in interdisziplinären Kontexten kommunizieren.",
       "descriptionEn": "Students can communicate scientific content in interdisciplinary contexts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2113,7 +2139,7 @@
       "titleEn": "Frontiers in BioSciences II (FrontII)",
       "description": "Modul Frontiers in BioSciences II (FrontII) (Code FrontII, 15 LP, empfohlenes Fachsemester 1).",
       "descriptionEn": "Module Frontiers in BioSciences II (FrontII) (code FrontII, 15 CP, recommended semester 1).",
-      "weight": 15.0,
+      "weight": 15,
       "tags": [
         "PM"
       ],
@@ -2155,7 +2181,7 @@
       "titleEn": "Deepen specialist knowledge in the major",
       "description": "Die Studierenden können biologisches Spezialwissen im gewählten Major aufbauen, vertiefen und anwenden.",
       "descriptionEn": "Students can build, deepen, and apply specialist biological knowledge in their chosen major.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -2180,7 +2206,7 @@
       "titleEn": "Build specialist knowledge in the major",
       "description": "Die Studierenden können biologisches Spezialwissen im gewählten Major aufbauen.",
       "descriptionEn": "Students can build specialist knowledge in their chosen major.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2201,7 +2227,7 @@
       "titleEn": "Deepen specialist knowledge in the major",
       "description": "Die Studierenden können biologisches Spezialwissen im gewählten Major vertiefen.",
       "descriptionEn": "Students can deepen specialist knowledge in their chosen major.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2222,7 +2248,7 @@
       "titleEn": "Apply specialist knowledge in the major",
       "description": "Die Studierenden können biologisches Spezialwissen im gewählten Major anwenden.",
       "descriptionEn": "Students can apply specialist knowledge in their chosen major.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2243,7 +2269,7 @@
       "titleEn": "Time management and self-responsible action",
       "description": "Die Studierenden können qualitatives und operatives Zeitmanagement nutzen und eigenverantwortlich zielorientiert handeln.",
       "descriptionEn": "Students can use qualitative and operational time management and act independently and goal-oriented.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -2267,7 +2293,7 @@
       "titleEn": "Use time management",
       "description": "Die Studierenden können qualitatives und operatives Zeitmanagement nutzen.",
       "descriptionEn": "Students can use qualitative and operational time management.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2288,7 +2314,7 @@
       "titleEn": "Act responsibly and goal-oriented",
       "description": "Die Studierenden können eigenverantwortlich zielorientiert handeln.",
       "descriptionEn": "Students can act responsibly and in a goal-oriented manner.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2309,7 +2335,7 @@
       "titleEn": "Presentation techniques and media competence",
       "description": "Die Studierenden können Präsentationstechniken einsetzen und Medienkompetenz für wissenschaftliche Kommunikation aufbauen.",
       "descriptionEn": "Students can use presentation techniques and build media competence for scientific communication.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -2333,7 +2359,7 @@
       "titleEn": "Use presentation techniques",
       "description": "Die Studierenden können Präsentationstechniken einsetzen.",
       "descriptionEn": "Students can use presentation techniques.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2354,7 +2380,7 @@
       "titleEn": "Build media competence for scientific communication",
       "description": "Die Studierenden können Medienkompetenz für wissenschaftliche Kommunikation aufbauen.",
       "descriptionEn": "Students can build media competence for scientific communication.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2375,7 +2401,7 @@
       "titleEn": "Language and communication competence",
       "description": "Die Studierenden können ihre Sprachkompetenz und Kommunikationsfähigkeiten durch Vorträge und Diskussionen gezielt ausbauen.",
       "descriptionEn": "Students can deliberately develop language skills and communication abilities through talks and discussions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -2399,7 +2425,7 @@
       "titleEn": "Develop language skills purposefully",
       "description": "Die Studierenden können ihre Sprachkompetenz gezielt ausbauen.",
       "descriptionEn": "Students can develop their language skills purposefully.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2420,7 +2446,7 @@
       "titleEn": "Develop communication skills through presentations and discussions",
       "description": "Die Studierenden können ihre Kommunikationsfähigkeiten durch Vorträge und Diskussionen gezielt ausbauen.",
       "descriptionEn": "Students can develop their communication skills through presentations and discussions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2441,7 +2467,7 @@
       "titleEn": "Classify complex biological systems in the major",
       "description": "Die Studierenden können Wissen zur komplexen Organisation biologischer Systeme im Major kritisch einordnen und anwenden.",
       "descriptionEn": "Students can critically classify and apply knowledge about the complex organization of biological systems within the major.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -2465,7 +2491,7 @@
       "titleEn": "Classify complex organization of biological systems in the major",
       "description": "Die Studierenden können Wissen zur komplexen Organisation biologischer Systeme im Major kritisch einordnen.",
       "descriptionEn": "Students can critically classify knowledge about the complex organization of biological systems in their major.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2486,7 +2512,7 @@
       "titleEn": "Apply knowledge about complex systems in the major",
       "description": "Die Studierenden können Wissen zur komplexen Organisation biologischer Systeme im Major anwenden.",
       "descriptionEn": "Students can apply knowledge about the complex organization of biological systems in their major.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2507,7 +2533,7 @@
       "titleEn": "Transfer theory into practice",
       "description": "Die Studierenden können theoretisch erlernte Konzepte praktisch umsetzen, insbesondere im begleitenden Praktikum.",
       "descriptionEn": "Students can implement theoretical concepts in practice, especially in the accompanying lab course.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -2531,7 +2557,7 @@
       "titleEn": "Implement theoretical concepts in practice",
       "description": "Die Studierenden können theoretisch erlernte Konzepte praktisch umsetzen.",
       "descriptionEn": "Students can implement theoretically learned concepts in practice.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2552,7 +2578,7 @@
       "titleEn": "Apply theory in the accompanying practical course",
       "description": "Die Studierenden können theoretisch erlernte Konzepte im begleitenden Praktikum anwenden.",
       "descriptionEn": "Students can apply theoretically learned concepts in the accompanying practical course.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2573,7 +2599,7 @@
       "titleEn": "Independently explore new fields",
       "description": "Die Studierenden können neue Themenfelder selbstständig erschließen, sich an aktuellen Fragestellungen orientieren und neue Erkenntnisse in ihr Fachwissen integrieren.",
       "descriptionEn": "Students can explore new fields independently, orient themselves to current questions, and integrate new findings into their expertise.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -2598,7 +2624,7 @@
       "titleEn": "Explore new subject areas independently",
       "description": "Die Studierenden können neue Themenfelder selbstständig erschließen.",
       "descriptionEn": "Students can explore new subject areas independently.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2619,7 +2645,7 @@
       "titleEn": "Orient to current research questions",
       "description": "Die Studierenden können sich an aktuellen Fragestellungen orientieren.",
       "descriptionEn": "Students can orient their work to current research questions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2640,7 +2666,7 @@
       "titleEn": "Integrate new findings into own knowledge",
       "description": "Die Studierenden können neue Erkenntnisse in ihr Fachwissen integrieren.",
       "descriptionEn": "Students can integrate new findings into their subject knowledge.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2661,7 +2687,7 @@
       "titleEn": "Use methods flexibly for complex problems",
       "description": "Die Studierenden können fachspezifische Methoden flexibel und kontextgerecht anwenden, auch zur Lösung neuartiger oder komplexer Fragestellungen.",
       "descriptionEn": "Students can apply discipline-specific methods flexibly and appropriately, including for novel or complex questions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2682,7 +2708,7 @@
       "titleEn": "Link interdisciplinarily and solve problems",
       "description": "Die Studierenden können Problemlösungsansätze im wissenschaftlichen Arbeiten entwickeln und Methoden sowie Erkenntnisse interdisziplinär verknüpfen.",
       "descriptionEn": "Students can develop problem-solving approaches in scientific work and link methods and insights interdisciplinarily.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -2706,7 +2732,7 @@
       "titleEn": "Develop problem-solving approaches in scientific work",
       "description": "Die Studierenden können Problemlösungsansätze im wissenschaftlichen Arbeiten entwickeln.",
       "descriptionEn": "Students can develop problem-solving approaches in scientific work.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2727,7 +2753,7 @@
       "titleEn": "Link methods and insights interdisciplinarily",
       "description": "Die Studierenden können Methoden sowie Erkenntnisse interdisziplinär verknüpfen.",
       "descriptionEn": "Students can link methods and insights interdisciplinarily.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2748,7 +2774,7 @@
       "titleEn": "Practical qualifications via problem tasks",
       "description": "Die Studierenden können praktische Qualifikationen im Major durch die Bearbeitung konkreter biologischer Problemstellungen erwerben und reflektieren.",
       "descriptionEn": "Students can acquire and reflect on practical qualifications in the major by working on concrete biological problems.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -2772,7 +2798,7 @@
       "titleEn": "Acquire practical qualifications through problem tasks",
       "description": "Die Studierenden können praktische Qualifikationen im Major durch die Bearbeitung konkreter biologischer Problemstellungen erwerben.",
       "descriptionEn": "Students can acquire practical qualifications in their major by working on concrete biological problem tasks.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2793,7 +2819,7 @@
       "titleEn": "Reflect on practical qualifications",
       "description": "Die Studierenden können erworbene praktische Qualifikationen reflektieren.",
       "descriptionEn": "Students can reflect on acquired practical qualifications.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2814,7 +2840,7 @@
       "titleEn": "Handle publications professionally",
       "description": "Die Studierenden können wissenschaftliche Publikationen gezielt recherchieren, zentrale Inhalte kritisch erfassen und deren Aussagekraft reflektieren.",
       "descriptionEn": "Students can search for publications purposefully, critically capture key content, and reflect on their significance.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -2839,7 +2865,7 @@
       "titleEn": "Search for scientific publications",
       "description": "Die Studierenden können wissenschaftliche Publikationen gezielt recherchieren.",
       "descriptionEn": "Students can search for scientific publications in a targeted way.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2860,7 +2886,7 @@
       "titleEn": "Critically capture key content",
       "description": "Die Studierenden können zentrale Inhalte wissenschaftlicher Publikationen kritisch erfassen.",
       "descriptionEn": "Students can critically capture key content of scientific publications.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2881,7 +2907,7 @@
       "titleEn": "Reflect on the validity of publications",
       "description": "Die Studierenden können die Aussagekraft wissenschaftlicher Publikationen reflektieren.",
       "descriptionEn": "Students can reflect on the validity of scientific publications.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2902,7 +2928,7 @@
       "titleEn": "Develop and present a scientific talk",
       "description": "Die Studierenden können einen wissenschaftlichen Vortrag auf Grundlage ihres Spezialwissens entwickeln, adressatengerecht präsentieren und im fachlichen Diskurs vertreten.",
       "descriptionEn": "Students can develop a scientific talk based on their specialist knowledge, present it appropriately, and defend it in academic discussion.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -2927,7 +2953,7 @@
       "titleEn": "Develop a scientific talk",
       "description": "Die Studierenden können einen wissenschaftlichen Vortrag entwickeln.",
       "descriptionEn": "Students can develop a scientific talk.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2948,7 +2974,7 @@
       "titleEn": "Present a talk to a specific audience",
       "description": "Die Studierenden können einen wissenschaftlichen Vortrag adressatengerecht präsentieren.",
       "descriptionEn": "Students can present a scientific talk to a specific audience.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2969,7 +2995,7 @@
       "titleEn": "Defend a talk in scientific discussion",
       "description": "Die Studierenden können einen wissenschaftlichen Vortrag im fachlichen Diskurs vertreten.",
       "descriptionEn": "Students can defend a scientific talk in scientific discussion.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -2990,7 +3016,7 @@
       "titleEn": "Develop own scientific questions",
       "description": "Die Studierenden können eigene wissenschaftliche Fragestellungen und Ideen entwickeln und methodisch durchdacht strukturieren.",
       "descriptionEn": "Students can develop their own scientific questions and ideas and structure them methodically.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -3014,7 +3040,7 @@
       "titleEn": "Develop own scientific research questions",
       "description": "Die Studierenden können eigene wissenschaftliche Fragestellungen und Ideen entwickeln.",
       "descriptionEn": "Students can develop their own scientific research questions and ideas.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3035,7 +3061,7 @@
       "titleEn": "Structure questions methodically",
       "description": "Die Studierenden können eigene wissenschaftliche Fragestellungen methodisch durchdacht strukturieren.",
       "descriptionEn": "Students can structure their own scientific research questions methodically.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3056,7 +3082,7 @@
       "titleEn": "Focus BioSciences I (FocI)",
       "description": "Modul Focus BioSciences I (FocI) (Code FocI, 15 LP, empfohlenes Fachsemester 2).",
       "descriptionEn": "Module Focus BioSciences I (FocI) (code FocI, 15 CP, recommended semester 2).",
-      "weight": 15.0,
+      "weight": 15,
       "tags": [
         "PM"
       ],
@@ -3094,7 +3120,7 @@
       "titleEn": "Deepen specialist knowledge in the major",
       "description": "Die Studierenden können ihr Wissen zur Organisation biologischer Systeme im gewählten Major vertiefen und in theoretischen wie praktischen Kontexten anwenden.",
       "descriptionEn": "Students can deepen their knowledge about biological system organization in the chosen major and apply it in theoretical and practical contexts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -3118,7 +3144,7 @@
       "titleEn": "Deepen knowledge on the organization of biological systems",
       "description": "Die Studierenden können ihr Wissen zur Organisation biologischer Systeme im gewählten Major vertiefen.",
       "descriptionEn": "Students can deepen their knowledge of the organization of biological systems in their chosen major.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3139,7 +3165,7 @@
       "titleEn": "Apply knowledge in theory and practice",
       "description": "Die Studierenden können ihr Wissen in theoretischen wie praktischen Kontexten anwenden.",
       "descriptionEn": "Students can apply their knowledge in both theoretical and practical contexts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3160,7 +3186,7 @@
       "titleEn": "Use experimental methods purposefully",
       "description": "Die Studierenden können theoretische Konzepte in die Praxis übertragen und experimentelle Methoden im Praktikum gezielt einsetzen.",
       "descriptionEn": "Students can transfer theoretical concepts into practice and use experimental methods purposefully in the lab course.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -3184,7 +3210,7 @@
       "titleEn": "Transfer theoretical concepts into practice",
       "description": "Die Studierenden können theoretische Konzepte in die Praxis übertragen.",
       "descriptionEn": "Students can transfer theoretical concepts into practice.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3205,7 +3231,7 @@
       "titleEn": "Apply experimental methods purposefully in the practical course",
       "description": "Die Studierenden können experimentelle Methoden im Praktikum gezielt einsetzen.",
       "descriptionEn": "Students can apply experimental methods purposefully in the practical course.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3226,7 +3252,7 @@
       "titleEn": "Explore new topics and critically assess literature",
       "description": "Die Studierenden können neue Themengebiete erschließen, relevante Informationen recherchieren und kritisch bewerten.",
       "descriptionEn": "Students can explore new topics, research relevant information, and assess it critically.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -3251,7 +3277,7 @@
       "titleEn": "Explore new topics",
       "description": "Die Studierenden können neue Themengebiete erschließen.",
       "descriptionEn": "Students can explore new topics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3272,7 +3298,7 @@
       "titleEn": "Search for relevant information",
       "description": "Die Studierenden können relevante Informationen recherchieren.",
       "descriptionEn": "Students can search for relevant information.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3293,7 +3319,7 @@
       "titleEn": "Critically evaluate information",
       "description": "Die Studierenden können recherchierte Informationen kritisch bewerten.",
       "descriptionEn": "Students can critically evaluate the information they have found.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3314,7 +3340,7 @@
       "titleEn": "Apply methods flexibly, also interdisciplinarily",
       "description": "Die Studierenden können fachspezifische Methoden flexibel anwenden, auch bei neuartigen oder interdisziplinären Fragestellungen.",
       "descriptionEn": "Students can apply discipline-specific methods flexibly, including for novel or interdisciplinary questions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3335,7 +3361,7 @@
       "titleEn": "Practical qualifications in the major",
       "description": "Die Studierenden können praktische Qualifikationen anhand konkreter wissenschaftlicher Problemstellungen im Major nachweisen.",
       "descriptionEn": "Students can demonstrate practical qualifications based on concrete scientific problems in the major.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3356,7 +3382,7 @@
       "titleEn": "Systematically analyze publications",
       "description": "Die Studierenden können wissenschaftliche Publikationen systematisch analysieren, zentrale Aussagen erfassen und Relevanz sowie Aussagekraft kritisch diskutieren.",
       "descriptionEn": "Students can systematically analyze publications, capture key claims, and critically discuss relevance and strength of evidence.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -3381,7 +3407,7 @@
       "titleEn": "Analyze publications systematically",
       "description": "Die Studierenden können wissenschaftliche Publikationen systematisch analysieren.",
       "descriptionEn": "Students can analyze scientific publications systematically.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3402,7 +3428,7 @@
       "titleEn": "Capture key statements",
       "description": "Die Studierenden können zentrale Aussagen wissenschaftlicher Publikationen erfassen.",
       "descriptionEn": "Students can capture key statements of scientific publications.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3423,7 +3449,7 @@
       "titleEn": "Discuss relevance and validity critically",
       "description": "Die Studierenden können Relevanz sowie Aussagekraft wissenschaftlicher Publikationen kritisch diskutieren.",
       "descriptionEn": "Students can critically discuss the relevance and validity of scientific publications.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3444,7 +3470,7 @@
       "titleEn": "Conceive and defend a talk",
       "description": "Die Studierenden können einen wissenschaftlichen Vortrag eigenständig konzipieren, angemessen präsentieren und im fachlichen Austausch vertreten.",
       "descriptionEn": "Students can independently conceive a scientific talk, present it appropriately, and defend it in academic exchange.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -3469,7 +3495,7 @@
       "titleEn": "Conceive a scientific talk",
       "description": "Die Studierenden können einen wissenschaftlichen Vortrag eigenständig konzipieren.",
       "descriptionEn": "Students can conceive a scientific talk independently.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3490,7 +3516,7 @@
       "titleEn": "Present a talk appropriately",
       "description": "Die Studierenden können einen wissenschaftlichen Vortrag angemessen präsentieren.",
       "descriptionEn": "Students can present a scientific talk appropriately.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3511,7 +3537,7 @@
       "titleEn": "Defend a talk in professional exchange",
       "description": "Die Studierenden können einen wissenschaftlichen Vortrag im fachlichen Austausch vertreten.",
       "descriptionEn": "Students can defend a scientific talk in professional exchange.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3532,7 +3558,7 @@
       "titleEn": "Write a project proposal",
       "description": "Die Studierenden können eigene Forschungsideen entwickeln und strukturiert als wissenschaftlichen Projektvorschlag (Project Proposal) darstellen.",
       "descriptionEn": "Students can develop research ideas and present them in a structured scientific project proposal.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -3556,7 +3582,7 @@
       "titleEn": "Develop a research idea for a project proposal",
       "description": "Die Studierenden können eine Forschungsidee für einen wissenschaftlichen Projektvorschlag entwickeln.",
       "descriptionEn": "Students can develop a research idea for a scientific project proposal.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3577,7 +3603,7 @@
       "titleEn": "Write a structured project proposal",
       "description": "Die Studierenden können eine Forschungsidee strukturiert als wissenschaftlichen Projektvorschlag (Project Proposal) darstellen.",
       "descriptionEn": "Students can present a research idea as a structured scientific project proposal.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3598,7 +3624,7 @@
       "titleEn": "Develop research ideas",
       "description": "Die Studierenden können eigene Forschungsideen entwickeln und diese methodisch sinnvoll strukturieren.",
       "descriptionEn": "Students can develop their own research ideas and structure them methodically.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -3622,7 +3648,7 @@
       "titleEn": "Develop own research ideas",
       "description": "Die Studierenden können eigene Forschungsideen entwickeln.",
       "descriptionEn": "Students can develop their own research ideas.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3643,7 +3669,7 @@
       "titleEn": "Structure research ideas methodically",
       "description": "Die Studierenden können eigene Forschungsideen methodisch sinnvoll strukturieren.",
       "descriptionEn": "Students can structure their research ideas methodically.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3664,7 +3690,7 @@
       "titleEn": "Focus BioSciences II (FocII)",
       "description": "Modul Focus BioSciences II (FocII) (Code FocII, 15 LP, empfohlenes Fachsemester 2).",
       "descriptionEn": "Module Focus BioSciences II (FocII) (code FocII, 15 CP, recommended semester 2).",
-      "weight": 15.0,
+      "weight": 15,
       "tags": [
         "PM"
       ],
@@ -3698,7 +3724,7 @@
       "titleEn": "Research-oriented practice in the major",
       "description": "Die Studierenden können forschungsnahe praktische Kompetenzen im gewählten Major aufbauen und im Laboralltag anwenden.",
       "descriptionEn": "Students can build research-oriented practical competences in the chosen major and apply them in lab work.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -3722,7 +3748,7 @@
       "titleEn": "Build research-related practical competencies in the major",
       "description": "Die Studierenden können forschungsnahe praktische Kompetenzen im gewählten Major aufbauen.",
       "descriptionEn": "Students can build research-related practical competencies in their chosen major.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3743,7 +3769,7 @@
       "titleEn": "Apply practical competencies in everyday lab work",
       "description": "Die Studierenden können forschungsnahe praktische Kompetenzen im Laboralltag anwenden.",
       "descriptionEn": "Students can apply research-related practical competencies in everyday lab work.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3764,7 +3790,7 @@
       "titleEn": "Translate a question into an experimental design",
       "description": "Die Studierenden können eine wissenschaftliche Fragestellung in ein experimentelles Design überführen und geeignete Methoden auswählen.",
       "descriptionEn": "Students can translate a scientific question into an experimental design and select appropriate methods.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -3788,7 +3814,7 @@
       "titleEn": "Translate a question into an experimental design",
       "description": "Die Studierenden können eine wissenschaftliche Fragestellung in ein experimentelles Design überführen.",
       "descriptionEn": "Students can translate a scientific question into an experimental design.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3809,7 +3835,7 @@
       "titleEn": "Select suitable methods",
       "description": "Die Studierenden können geeignete Methoden auswählen.",
       "descriptionEn": "Students can select suitable methods.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3830,7 +3856,7 @@
       "titleEn": "Plan, organize, and conduct experiments",
       "description": "Die Studierenden können Experimente weitgehend selbstständig planen, organisieren und durchführen.",
       "descriptionEn": "Students can plan, organize, and conduct experiments largely independently.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -3855,7 +3881,7 @@
       "titleEn": "Plan experiments",
       "description": "Die Studierenden können Experimente weitgehend selbstständig planen.",
       "descriptionEn": "Students can plan experiments largely independently.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3876,7 +3902,7 @@
       "titleEn": "Organize experiments",
       "description": "Die Studierenden können Experimente weitgehend selbstständig organisieren.",
       "descriptionEn": "Students can organize experiments largely independently.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3897,7 +3923,7 @@
       "titleEn": "Conduct experiments",
       "description": "Die Studierenden können Experimente weitgehend selbstständig durchführen.",
       "descriptionEn": "Students can conduct experiments largely independently.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3918,7 +3944,7 @@
       "titleEn": "Work self-organized and manage time",
       "description": "Die Studierenden können selbstorganisiert und zielgerichtet in komplexen Forschungsvorhaben arbeiten und Zeitmanagement anwenden.",
       "descriptionEn": "Students can work self-organized and goal-oriented in complex research projects and apply time management.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -3942,7 +3968,7 @@
       "titleEn": "Work self-organized in complex research projects",
       "description": "Die Studierenden können selbstorganisiert und zielgerichtet in komplexen Forschungsvorhaben arbeiten.",
       "descriptionEn": "Students can work self-organized and goal-oriented in complex research projects.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3963,7 +3989,7 @@
       "titleEn": "Apply time management in research projects",
       "description": "Die Studierenden können Zeitmanagement in komplexen Forschungsvorhaben anwenden.",
       "descriptionEn": "Students can apply time management in complex research projects.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -3984,7 +4010,7 @@
       "titleEn": "Problem-solving strategies and networked thinking",
       "description": "Die Studierenden können Problemlösungsstrategien entwickeln, reflektieren und kreativ sowie vernetzt im Erkenntnisprozess anwenden.",
       "descriptionEn": "Students can develop and reflect on problem-solving strategies and apply them creatively and in a networked way.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -4009,7 +4035,7 @@
       "titleEn": "Develop problem-solving strategies",
       "description": "Die Studierenden können Problemlösungsstrategien entwickeln.",
       "descriptionEn": "Students can develop problem-solving strategies.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4030,7 +4056,7 @@
       "titleEn": "Reflect on problem-solving strategies",
       "description": "Die Studierenden können Problemlösungsstrategien reflektieren.",
       "descriptionEn": "Students can reflect on problem-solving strategies.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4051,7 +4077,7 @@
       "titleEn": "Apply problem-solving strategies creatively and in a networked way",
       "description": "Die Studierenden können Problemlösungsstrategien kreativ sowie vernetzt im Erkenntnisprozess anwenden.",
       "descriptionEn": "Students can apply problem-solving strategies creatively and in a networked way within the process of gaining knowledge.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4072,7 +4098,7 @@
       "titleEn": "Data analysis, statistics, and good scientific practice",
       "description": "Die Studierenden können Daten statistisch auswerten und dabei die Prinzipien der guten wissenschaftlichen Praxis einhalten.",
       "descriptionEn": "Students can analyze data statistically and adhere to the principles of good scientific practice.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -4096,7 +4122,7 @@
       "titleEn": "Analyze data statistically",
       "description": "Die Studierenden können Daten statistisch auswerten.",
       "descriptionEn": "Students can analyze data statistically.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4117,7 +4143,7 @@
       "titleEn": "Follow good scientific practice",
       "description": "Die Studierenden können Prinzipien der guten wissenschaftlichen Praxis einhalten.",
       "descriptionEn": "Students can follow principles of good scientific practice.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4138,7 +4164,7 @@
       "titleEn": "Documentation and reports with software tools",
       "description": "Die Studierenden können wissenschaftliche Dokumentationen und Forschungsberichte mit professioneller Software (z. B. Origin, R, GraphPad, Illustrator) erstellen.",
       "descriptionEn": "Students can create scientific documentation and research reports using professional software (e.g., Origin, R, GraphPad, Illustrator).",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -4162,7 +4188,7 @@
       "titleEn": "Create scientific documentation",
       "description": "Die Studierenden können wissenschaftliche Dokumentationen erstellen.",
       "descriptionEn": "Students can create scientific documentation.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4183,7 +4209,7 @@
       "titleEn": "Create research reports using software",
       "description": "Die Studierenden können Forschungsberichte mit professioneller Software (z. B. Origin, R, GraphPad, Illustrator) erstellen.",
       "descriptionEn": "Students can create research reports using professional software (e.g., Origin, R, GraphPad, Illustrator).",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4204,7 +4230,7 @@
       "titleEn": "Present and defend results",
       "description": "Die Studierenden können wissenschaftliche Inhalte strukturiert vortragen, adressatengerecht präsentieren und im Dialog mit Fachpublikum verteidigen.",
       "descriptionEn": "Students can present scientific content in a structured way, tailor it to the audience, and defend it in dialogue with a specialist audience.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -4229,7 +4255,7 @@
       "titleEn": "Present scientific content in a structured way",
       "description": "Die Studierenden können wissenschaftliche Inhalte strukturiert vortragen.",
       "descriptionEn": "Students can present scientific content in a structured way.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4250,7 +4276,7 @@
       "titleEn": "Present scientific content to a specific audience",
       "description": "Die Studierenden können wissenschaftliche Inhalte adressatengerecht präsentieren.",
       "descriptionEn": "Students can present scientific content to a specific audience.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4271,7 +4297,7 @@
       "titleEn": "Defend scientific content in dialogue",
       "description": "Die Studierenden können wissenschaftliche Inhalte im Dialog mit Fachpublikum verteidigen.",
       "descriptionEn": "Students can defend scientific content in dialogue with a professional audience.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4292,7 +4318,7 @@
       "titleEn": "Biolab (Biolab)",
       "description": "Modul Biolab (Biolab) (Code Biolab, 15 LP, empfohlenes Fachsemester 3).",
       "descriptionEn": "Module Biolab (Biolab) (code Biolab, 15 CP, recommended semester 3).",
-      "weight": 15.0,
+      "weight": 15,
       "tags": [
         "PM"
       ],
@@ -4325,7 +4351,7 @@
       "titleEn": "Research practice on complex questions",
       "description": "Die Studierenden können eigenverantwortlich an komplexen (auch inter- und intradisziplinären) Fragestellungen im Major arbeiten.",
       "descriptionEn": "Students can work independently on complex (also inter- and intradisciplinary) questions within their major.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4346,7 +4372,7 @@
       "titleEn": "Analyze questions and derive a research design",
       "description": "Die Studierenden können wissenschaftliche Fragestellungen analysieren, kontextualisieren und in ein methodisch fundiertes Forschungsdesign überführen.",
       "descriptionEn": "Students can analyze and contextualize scientific questions and translate them into a methodologically sound research design.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -4371,7 +4397,7 @@
       "titleEn": "Analyze scientific questions",
       "description": "Die Studierenden können wissenschaftliche Fragestellungen analysieren.",
       "descriptionEn": "Students can analyze scientific questions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4392,7 +4418,7 @@
       "titleEn": "Contextualize questions",
       "description": "Die Studierenden können wissenschaftliche Fragestellungen kontextualisieren.",
       "descriptionEn": "Students can contextualize scientific questions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4413,7 +4439,7 @@
       "titleEn": "Derive a research design from questions",
       "description": "Die Studierenden können Fragestellungen in ein methodisch fundiertes Forschungsdesign überführen.",
       "descriptionEn": "Students can translate questions into a methodologically sound research design.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4434,7 +4460,7 @@
       "titleEn": "Plan, organize, and conduct research projects",
       "description": "Die Studierenden können Forschungsprojekte eigenverantwortlich planen, organisieren und durchführen und moderne experimentelle Techniken angemessen auswählen.",
       "descriptionEn": "Students can plan, organize, and conduct research projects independently and choose modern experimental techniques appropriately.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -4460,7 +4486,7 @@
       "titleEn": "Plan research projects",
       "description": "Die Studierenden können Forschungsprojekte eigenverantwortlich planen.",
       "descriptionEn": "Students can plan research projects independently.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4481,7 +4507,7 @@
       "titleEn": "Organize research projects",
       "description": "Die Studierenden können Forschungsprojekte eigenverantwortlich organisieren.",
       "descriptionEn": "Students can organize research projects independently.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4502,7 +4528,7 @@
       "titleEn": "Conduct research projects",
       "description": "Die Studierenden können Forschungsprojekte eigenverantwortlich durchführen.",
       "descriptionEn": "Students can conduct research projects independently.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4523,7 +4549,7 @@
       "titleEn": "Select modern experimental techniques",
       "description": "Die Studierenden können moderne experimentelle Techniken angemessen auswählen.",
       "descriptionEn": "Students can select modern experimental techniques appropriately.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4544,7 +4570,7 @@
       "titleEn": "Manage time and resource plans",
       "description": "Die Studierenden können Zeit- und Ressourcenpläne steuern, den Arbeitsprozess kritisch reflektieren und optimieren.",
       "descriptionEn": "Students can manage time and resource plans, critically reflect on their workflow, and optimize it.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -4569,7 +4595,7 @@
       "titleEn": "Manage time and resource plans",
       "description": "Die Studierenden können Zeit- und Ressourcenpläne steuern.",
       "descriptionEn": "Students can manage time and resource plans.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4590,7 +4616,7 @@
       "titleEn": "Reflect on the work process critically",
       "description": "Die Studierenden können den Arbeitsprozess kritisch reflektieren.",
       "descriptionEn": "Students can reflect on the work process critically.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4611,7 +4637,7 @@
       "titleEn": "Optimize the work process",
       "description": "Die Studierenden können den Arbeitsprozess optimieren.",
       "descriptionEn": "Students can optimize the work process.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4632,7 +4658,7 @@
       "titleEn": "Get up to speed and integrate literature",
       "description": "Die Studierenden können sich strukturiert in neue Themengebiete einarbeiten, Fachliteratur recherchieren, kritisch bewerten und in den Forschungsprozess integrieren.",
       "descriptionEn": "Students can get up to speed in new fields in a structured way, search for literature, assess it critically, and integrate it into their research.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -4658,7 +4684,7 @@
       "titleEn": "Work into new topics",
       "description": "Die Studierenden können sich strukturiert in neue Themengebiete einarbeiten.",
       "descriptionEn": "Students can work into new topics in a structured way.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4679,7 +4705,7 @@
       "titleEn": "Search relevant literature",
       "description": "Die Studierenden können Fachliteratur recherchieren.",
       "descriptionEn": "Students can search relevant literature.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4700,7 +4726,7 @@
       "titleEn": "Critically evaluate literature",
       "description": "Die Studierenden können Fachliteratur kritisch bewerten.",
       "descriptionEn": "Students can critically evaluate literature.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4721,7 +4747,7 @@
       "titleEn": "Integrate literature into the research process",
       "description": "Die Studierenden können Literatur und Erkenntnisse in den Forschungsprozess integrieren.",
       "descriptionEn": "Students can integrate literature and findings into the research process.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4742,7 +4768,7 @@
       "titleEn": "Problem solving under uncertainty",
       "description": "Die Studierenden können Problemlösungsstrategien entwickeln, kreative Denkansätze nutzen und auch unter unsicheren Bedingungen forschungsbezogene Entscheidungen treffen.",
       "descriptionEn": "Students can develop problem-solving strategies, use creative thinking approaches, and make research-related decisions even under uncertainty.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -4767,7 +4793,7 @@
       "titleEn": "Develop problem-solving strategies",
       "description": "Die Studierenden können Problemlösungsstrategien entwickeln.",
       "descriptionEn": "Students can develop problem-solving strategies.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4788,7 +4814,7 @@
       "titleEn": "Use creative thinking approaches",
       "description": "Die Studierenden können kreative Denkansätze nutzen.",
       "descriptionEn": "Students can use creative thinking approaches.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4809,7 +4835,7 @@
       "titleEn": "Make decisions under uncertainty",
       "description": "Die Studierenden können auch unter unsicheren Bedingungen forschungsbezogene Entscheidungen treffen.",
       "descriptionEn": "Students can make research-related decisions under uncertain conditions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4830,7 +4856,7 @@
       "titleEn": "Evaluate, statistically validate and document results",
       "description": "Die Studierenden können experimentelle Ergebnisse unter Berücksichtigung guter wissenschaftlicher Praxis auswerten, statistisch absichern und dokumentieren.",
       "descriptionEn": "Students can evaluate experimental results, statistically validate them, and document them while considering good scientific practice.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -4855,7 +4881,7 @@
       "titleEn": "Evaluate experimental results",
       "description": "Die Studierenden können experimentelle Ergebnisse unter Berücksichtigung guter wissenschaftlicher Praxis auswerten.",
       "descriptionEn": "Students can evaluate experimental results while considering good scientific practice.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4876,7 +4902,7 @@
       "titleEn": "Validate results statistically",
       "description": "Die Studierenden können experimentelle Ergebnisse statistisch absichern.",
       "descriptionEn": "Students can validate experimental results statistically.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4897,7 +4923,7 @@
       "titleEn": "Document results",
       "description": "Die Studierenden können experimentelle Ergebnisse dokumentieren.",
       "descriptionEn": "Students can document experimental results.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4918,7 +4944,7 @@
       "titleEn": "Create a project report with data visualization",
       "description": "Die Studierenden können eine Abschlussarbeit oder einen Projektbericht inklusive Abbildungen und Datenvisualisierung mit professioneller Software erstellen.",
       "descriptionEn": "Students can create a thesis-level report or project report including figures and data visualization using professional software.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -4943,7 +4969,7 @@
       "titleEn": "Write a project report or thesis",
       "description": "Die Studierenden können einen Projektbericht oder eine Abschlussarbeit verfassen.",
       "descriptionEn": "Students can write a project report or a thesis.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4964,7 +4990,7 @@
       "titleEn": "Create figures and data visualizations",
       "description": "Die Studierenden können Abbildungen und Datenvisualisierungen erstellen.",
       "descriptionEn": "Students can create figures and data visualizations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -4985,7 +5011,7 @@
       "titleEn": "Use professional software for report creation",
       "description": "Die Studierenden können professionelle Software zur Erstellung von Berichten (inkl. Visualisierung) einsetzen.",
       "descriptionEn": "Students can use professional software to create reports (including visualizations).",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5006,7 +5032,7 @@
       "titleEn": "Present and discuss results",
       "description": "Die Studierenden können Forschungsergebnisse mündlich präsentieren und im kritischen Dialog mit Fachpublikum diskutieren (z. B. Kolloquium, Seminar, Poster).",
       "descriptionEn": "Students can present research results orally and discuss them in critical dialogue with a specialist audience (e.g., colloquium, seminar, poster).",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -5030,7 +5056,7 @@
       "titleEn": "Present research results orally",
       "description": "Die Studierenden können Forschungsergebnisse mündlich präsentieren.",
       "descriptionEn": "Students can present research results orally.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5051,7 +5077,7 @@
       "titleEn": "Discuss research results in dialogue",
       "description": "Die Studierenden können Forschungsergebnisse im kritischen Dialog mit Fachpublikum diskutieren.",
       "descriptionEn": "Students can discuss research results in critical dialogue with a professional audience.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5072,7 +5098,7 @@
       "titleEn": "Integrate external research contexts",
       "description": "Die Studierenden können durch Integration externer Forschungskontexte (z. B. Auslandspraktikum, Industriekooperation) ihre Kompetenzen international und praxisrelevant weiterentwickeln.",
       "descriptionEn": "Students can further develop their competences internationally and in a practice-relevant way by integrating external research contexts (e.g., internship abroad, industry cooperation).",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -5096,7 +5122,7 @@
       "titleEn": "Integrate external research contexts",
       "description": "Die Studierenden können externe Forschungskontexte (z. B. Auslandspraktikum, Industriekooperation) integrieren.",
       "descriptionEn": "Students can integrate external research contexts (e.g., international internships, industry collaborations).",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5117,7 +5143,7 @@
       "titleEn": "Develop competencies internationally and practice-oriented",
       "description": "Die Studierenden können ihre Kompetenzen international und praxisrelevant weiterentwickeln.",
       "descriptionEn": "Students can develop their competencies in an international and practice-oriented way.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5138,7 +5164,7 @@
       "titleEn": "Working in BioSciences (WIB)",
       "description": "Modul Working in BioSciences (WIB) (Code WIB, 15 LP, empfohlenes Fachsemester 3).",
       "descriptionEn": "Module Working in BioSciences (WIB) (code WIB, 15 CP, recommended semester 3).",
-      "weight": 15.0,
+      "weight": 15,
       "tags": [
         "PM"
       ],
@@ -5173,7 +5199,7 @@
       "titleEn": "Independent scientific work in the major",
       "description": "Die Studierenden können ein Arbeitsthema aus dem Major eigenständig nach wissenschaftlichen Methoden bearbeiten.",
       "descriptionEn": "Students can work independently on a topic from their major using scientific methods.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5194,7 +5220,7 @@
       "titleEn": "Thesis with an English abstract",
       "description": "Die Studierenden können Ergebnisse schriftlich in einer Masterarbeit dokumentieren und eine englischsprachige Zusammenfassung erstellen.",
       "descriptionEn": "Students can document results in a written master's thesis and create an English abstract.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -5218,7 +5244,7 @@
       "titleEn": "Document results in the master's thesis",
       "description": "Die Studierenden können Ergebnisse schriftlich in einer Masterarbeit dokumentieren.",
       "descriptionEn": "Students can document results in writing in a master's thesis.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5239,7 +5265,7 @@
       "titleEn": "Create an English summary",
       "description": "Die Studierenden können eine englischsprachige Zusammenfassung erstellen.",
       "descriptionEn": "Students can create an English summary.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5260,7 +5286,7 @@
       "titleEn": "Defense: present and defend results",
       "description": "Die Studierenden können die Ergebnisse der Masterarbeit in einer Disputation vorstellen, verteidigen und den größeren Kontext erläutern.",
       "descriptionEn": "Students can present and defend their thesis results in a defense and explain the broader context.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -5285,7 +5311,7 @@
       "titleEn": "Present results in the disputation",
       "description": "Die Studierenden können die Ergebnisse der Masterarbeit in einer Disputation vorstellen.",
       "descriptionEn": "Students can present the results of the master's thesis in a disputation.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5306,7 +5332,7 @@
       "titleEn": "Defend results in the disputation",
       "description": "Die Studierenden können die Ergebnisse der Masterarbeit in einer Disputation verteidigen.",
       "descriptionEn": "Students can defend the results of the master's thesis in a disputation.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5327,7 +5353,7 @@
       "titleEn": "Explain the broader context",
       "description": "Die Studierenden können in der Disputation den größeren Kontext der Masterarbeit erläutern.",
       "descriptionEn": "Students can explain the broader context of the master's thesis in the disputation.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5348,7 +5374,7 @@
       "titleEn": "Plan, execute, and document a complex project",
       "description": "Die Studierenden können ein komplexes wissenschaftliches Projekt selbstständig planen, durchführen und dokumentieren.",
       "descriptionEn": "Students can plan, execute, and document a complex scientific project independently.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -5373,7 +5399,7 @@
       "titleEn": "Plan a complex project",
       "description": "Die Studierenden können ein komplexes wissenschaftliches Projekt selbstständig planen.",
       "descriptionEn": "Students can plan a complex scientific project independently.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5394,7 +5420,7 @@
       "titleEn": "Conduct a complex project",
       "description": "Die Studierenden können ein komplexes wissenschaftliches Projekt selbstständig durchführen.",
       "descriptionEn": "Students can conduct a complex scientific project independently.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5415,7 +5441,7 @@
       "titleEn": "Document the project",
       "description": "Die Studierenden können ein komplexes wissenschaftliches Projekt dokumentieren.",
       "descriptionEn": "Students can document a complex scientific project.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5436,7 +5462,7 @@
       "titleEn": "Develop research questions",
       "description": "Die Studierenden können eigene Forschungsfragen entwickeln und systematisch bearbeiten.",
       "descriptionEn": "Students can develop research questions and work on them systematically.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -5460,7 +5486,7 @@
       "titleEn": "Develop own research questions",
       "description": "Die Studierenden können eigene Forschungsfragen entwickeln.",
       "descriptionEn": "Students can develop their own research questions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5481,7 +5507,7 @@
       "titleEn": "Work on research questions systematically",
       "description": "Die Studierenden können eigene Forschungsfragen systematisch bearbeiten.",
       "descriptionEn": "Students can work on their research questions systematically.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5502,7 +5528,7 @@
       "titleEn": "Apply methods and analyze data",
       "description": "Die Studierenden können geeignete Methoden zur Analyse und Auswertung experimenteller oder theoretischer Daten anwenden.",
       "descriptionEn": "Students can apply appropriate methods to analyze and evaluate experimental or theoretical data.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -5526,7 +5552,7 @@
       "titleEn": "Apply methods for data analysis",
       "description": "Die Studierenden können geeignete Methoden zur Analyse experimenteller oder theoretischer Daten anwenden.",
       "descriptionEn": "Students can apply suitable methods for analyzing experimental or theoretical data.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5547,7 +5573,7 @@
       "titleEn": "Evaluate data",
       "description": "Die Studierenden können experimentelle oder theoretische Daten auswerten.",
       "descriptionEn": "Students can evaluate experimental or theoretical data.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5568,7 +5594,7 @@
       "titleEn": "Structure work and document with software",
       "description": "Die Studierenden können ihre Forschungsarbeit schriftlich strukturieren, reflektiert darstellen und mit geeigneter Software (z. B. LaTeX, Word, R, GraphPad) dokumentieren.",
       "descriptionEn": "Students can structure and reflectively present their research work in writing and document it using suitable software (e.g., LaTeX, Word, R, GraphPad).",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -5593,7 +5619,7 @@
       "titleEn": "Structure the written research work",
       "description": "Die Studierenden können ihre Forschungsarbeit schriftlich strukturieren.",
       "descriptionEn": "Students can structure their research work in writing.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5614,7 +5640,7 @@
       "titleEn": "Present the research work reflectively",
       "description": "Die Studierenden können ihre Forschungsarbeit reflektiert darstellen.",
       "descriptionEn": "Students can present their research work reflectively.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5635,7 +5661,7 @@
       "titleEn": "Document the work using suitable software",
       "description": "Die Studierenden können ihre Forschungsarbeit mit geeigneter Software (z. B. LaTeX, Word, R, GraphPad) dokumentieren.",
       "descriptionEn": "Students can document their research work using suitable software (e.g., LaTeX, Word, R, GraphPad).",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5656,7 +5682,7 @@
       "titleEn": "Create visualizations and diagrams",
       "description": "Die Studierenden können wissenschaftliche Visualisierungen und Diagramme fachgerecht erstellen.",
       "descriptionEn": "Students can create scientific visualizations and diagrams professionally.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5677,7 +5703,7 @@
       "titleEn": "Present and discuss results (also in English)",
       "description": "Die Studierenden können Ergebnisse adressatengerecht präsentieren und wissenschaftlich diskutieren, insbesondere auch auf Englisch.",
       "descriptionEn": "Students can present results appropriately and discuss them scientifically, especially in English.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -5702,7 +5728,7 @@
       "titleEn": "Present results to a specific audience",
       "description": "Die Studierenden können Ergebnisse adressatengerecht präsentieren.",
       "descriptionEn": "Students can present results to a specific audience.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5723,7 +5749,7 @@
       "titleEn": "Discuss results scientifically",
       "description": "Die Studierenden können Ergebnisse wissenschaftlich diskutieren.",
       "descriptionEn": "Students can discuss results scientifically.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5744,7 +5770,7 @@
       "titleEn": "Present and discuss results in English",
       "description": "Die Studierenden können Ergebnisse insbesondere auch auf Englisch präsentieren und diskutieren.",
       "descriptionEn": "Students can present and discuss results in English.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -5768,7 +5794,7 @@
       "titleEn": "Present results in English",
       "description": "Die Studierenden können Ergebnisse auf Englisch präsentieren.",
       "descriptionEn": "Students can present results in English.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5789,7 +5815,7 @@
       "titleEn": "Discuss results in English",
       "description": "Die Studierenden können Ergebnisse auf Englisch diskutieren.",
       "descriptionEn": "Students can discuss results in English.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5810,7 +5836,7 @@
       "titleEn": "Place results in the research context",
       "description": "Die Studierenden können ihr Projekt im Kontext aktueller Forschung verorten, kritisch bewerten und in interdisziplinäre oder gesellschaftliche Zusammenhänge einordnen.",
       "descriptionEn": "Students can locate their project within current research, evaluate it critically, and place it in interdisciplinary or societal contexts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "cluster"
       ],
@@ -5835,7 +5861,7 @@
       "titleEn": "Position the project within current research",
       "description": "Die Studierenden können ihr Projekt im Kontext aktueller Forschung verorten.",
       "descriptionEn": "Students can position their project within current research.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5856,7 +5882,7 @@
       "titleEn": "Critically evaluate the project",
       "description": "Die Studierenden können ihr Projekt kritisch bewerten.",
       "descriptionEn": "Students can critically evaluate their project.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5877,7 +5903,7 @@
       "titleEn": "Classify the project in interdisciplinary or societal contexts",
       "description": "Die Studierenden können ihr Projekt in interdisziplinäre oder gesellschaftliche Zusammenhänge einordnen.",
       "descriptionEn": "Students can classify their project in interdisciplinary or societal contexts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "atomic"
       ],
@@ -5898,7 +5924,7 @@
       "titleEn": "Master's Thesis (MA)",
       "description": "Modul Masterarbeit (MA) (Code MA, 30 LP, empfohlenes Fachsemester 4).",
       "descriptionEn": "Module Master's Thesis (MA) (code MA, 30 CP, recommended semester 4).",
-      "weight": 30.0,
+      "weight": 30,
       "tags": [
         "PM"
       ],

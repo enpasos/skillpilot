@@ -9,13 +9,35 @@
   "frameworkId": "tud-18su2020",
   "goals": [
     {
+      "id": "91d14979-bf80-5772-add7-3a517ea3fdab",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-18su2020",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "e0089db9-9aa1-5964-9691-2015b587f12b",
       "title": "Echtzeitsysteme",
       "titleEn": "Echtzeitsysteme",
       "description": "Erfolgreicher Abschluss des Moduls \"Echtzeitsysteme\".",
       "descriptionEn": "Successful completion of module \"Echtzeitsysteme\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:18-su-2020",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "91d14979-bf80-5772-add7-3a517ea3fdab"
+      ],
+      "contains": [
+        "91d14979-bf80-5772-add7-3a517ea3fdab"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

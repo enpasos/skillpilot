@@ -12,18 +12,41 @@
       "description": "30 ECTS: Entweder Auslandssemester oder MCBL-Kurse + Schlüsselqualifikationen.",
       "descriptionEn": "30 ECTS: Either semester abroad or MCBL courses + key qualifications.",
       "contains": [
+        "6b0a29d1-898e-5742-8b30-880905e90db2",
         "b5535083-19fc-44e0-abae-34898262a323",
         "4d0fd551-3c86-4041-8f9e-91033e1ae93c",
         "193801f3-6c18-437f-a3ec-3ef18e1e589c"
       ],
-      "requires": [],
+      "requires": [
+        "6b0a29d1-898e-5742-8b30-880905e90db2"
+      ],
       "tags": [
         "International"
       ],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "weight": 0.0
+      "weight": 0
+    },
+    {
+      "id": "6b0a29d1-898e-5742-8b30-880905e90db2",
+      "title": "Warum Fach? - Relevanz und Orientierung",
+      "titleEn": "Why this subject? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach dieses Fach für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why this subject matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
     },
     {
       "id": "b5535083-19fc-44e0-abae-34898262a323",
@@ -32,11 +55,13 @@
       "description": "Ein Semester an einer Partnerhochschule (30 ECTS).",
       "descriptionEn": "One semester at a partner university (30 ECTS).",
       "contains": [],
-      "requires": [],
+      "requires": [
+        "6b0a29d1-898e-5742-8b30-880905e90db2"
+      ],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "weight": 0.0
+      "weight": 0
     },
     {
       "id": "4d0fd551-3c86-4041-8f9e-91033e1ae93c",
@@ -49,7 +74,7 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "weight": 0.0
+      "weight": 0
     },
     {
       "id": "193801f3-6c18-437f-a3ec-3ef18e1e589c",
@@ -62,7 +87,7 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "weight": 0.0
+      "weight": 0
     }
   ]
 }

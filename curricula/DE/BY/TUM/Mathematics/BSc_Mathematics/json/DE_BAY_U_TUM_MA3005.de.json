@@ -20,7 +20,7 @@
       "titleEn": "Partial Differential Equations – Full Module",
       "description": "Nach erfolgreichem Abschluss können Studierende grundlegende Methoden zur Behandlung partieller Differentialgleichungen verstehen, anwenden und analysieren. Insbesondere können sie PDE-Typen unterscheiden und deren grundlegende Eigenschaften einordnen. Sie verstehen klassische und schwache (variationale) Lösungsbegriffe für elliptische PDEs inklusive Fragen von Existenz, Eindeutigkeit, Wohlgestelltheit und Regularität und können strukturelle Eigenschaften (z.B. mittels Maximumprinzipien) untersuchen.",
       "descriptionEn": "After successful completion of the module, students are able to understand, apply, and analyze basic methods to treat partial differential equations. In particular, they can distinguish different types of PDEs and understand their basic properties. They understand concepts of classical and weak (variational) solutions to elliptic PDEs, including questions of existence, uniqueness, and well-posedness as well as regularity of solutions. Moreover, they can analyze structural properties of such solutions, e.g., by applying maximum principles.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:friesecke_gero"
       ],
       "contains": [
+        "13c27c10-6b04-5d0b-8d01-9215e3414904",
         "cd13a36f-8898-5221-824a-37a42c765d53",
         "28b31232-ae50-5613-99d1-5f72b527b0ae",
         "1394999b-37f3-5be8-bdac-c61ae506bcd8",
@@ -42,6 +43,7 @@
         "08b5d067-e177-5b0e-94ec-36ee95cc318a"
       ],
       "requires": [
+        "13c27c10-6b04-5d0b-8d01-9215e3414904",
         "8eb1605b-fa70-511b-bbe4-28173d359c3b",
         "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
         "c18dbc1a-e398-5053-8bec-f566af8be089"
@@ -583,6 +585,28 @@
       }
     },
     {
+      "id": "13c27c10-6b04-5d0b-8d01-9215e3414904",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3005",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "08b5d067-e177-5b0e-94ec-36ee95cc318a",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -597,7 +621,9 @@
         "vocabularySource": "/data/ma3005_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "13c27c10-6b04-5d0b-8d01-9215e3414904"
+      ],
       "dimensionTags": {
         "framework": "tum-ma3005",
         "demandLevel": "AB1",

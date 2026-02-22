@@ -9,13 +9,35 @@
   "frameworkId": "tud-20001025",
   "goals": [
     {
+      "id": "1bd10c8d-22e7-559e-9e14-a2c74eeed778",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20001025",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "a86900d3-04bb-5d2f-a699-a47e23cb1fe1",
       "title": "Sicherheitskritische Mensch-Computer-Interaktion",
       "titleEn": "Sicherheitskritische Mensch-Computer-Interaktion",
       "description": "Erfolgreicher Abschluss des Moduls \"Sicherheitskritische Mensch-Computer-Interaktion\".",
       "descriptionEn": "Successful completion of module \"Sicherheitskritische Mensch-Computer-Interaktion\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-1025",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "1bd10c8d-22e7-559e-9e14-a2c74eeed778"
+      ],
+      "contains": [
+        "1bd10c8d-22e7-559e-9e14-a2c74eeed778"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

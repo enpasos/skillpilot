@@ -13,18 +13,21 @@
       "titleEn": "Photonic Quantum Technologies (CIT4430005)",
       "description": "Die lernende Person kann Prinzipien der Quantenphotonik erklären und photonenbasierte Plattformen für Kommunikation und Computing analysieren.",
       "descriptionEn": "The learner can explain quantum photonics principles and analyze photonic platforms for communication and computing.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:CIT4430005",
         "ects:5"
       ],
       "contains": [
+        "b62428c9-ad36-5953-8930-5b7819bd48c0",
         "cfc27fbc-2c74-52fc-81c3-8aca7d09e0fb",
         "286fe79d-5708-5ec9-97aa-05e743559550",
         "30fa7be0-b435-5339-a2d0-8514e996d379",
         "0471e4dd-30e2-5935-80ca-3d975e9e7a31"
       ],
-      "requires": [],
+      "requires": [
+        "b62428c9-ad36-5953-8930-5b7819bd48c0"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/CIT4430005",
       "dimensionTags": {
         "phase": "Modul"
@@ -36,7 +39,7 @@
       "titleEn": "Quantum photonics fundamentals",
       "description": "Die lernende Person kann Einzelphotonen, Verschränkung und optische Quantenzustände beschreiben.",
       "descriptionEn": "The learner can describe single photons, entanglement, and basic optical quantum states.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4430005"
       ],
@@ -50,17 +53,40 @@
       }
     },
     {
+      "id": "b62428c9-ad36-5953-8930-5b7819bd48c0",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-cit4430005",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "e70ffcbc-f7d7-50dd-89a8-9b6270d794a0",
       "title": "Einzelphotonen- und verschränkte Zustände",
       "titleEn": "Single-photon and entangled states",
       "description": "Die lernende Person kann Einzelphotonenquellen und verschränkte Photonen-Zustände charakterisieren.",
       "descriptionEn": "The learner can characterize single-photon sources and entangled photonic states.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4430005"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "b62428c9-ad36-5953-8930-5b7819bd48c0"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -71,7 +97,7 @@
       "titleEn": "Coherent light-matter interaction",
       "description": "Die lernende Person kann Resonator-QED und kohärente Kopplungsmechanismen erklären.",
       "descriptionEn": "The learner can explain resonator QED and coherent coupling mechanisms.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4430005"
       ],
@@ -89,7 +115,7 @@
       "titleEn": "Semiconductor photonic platforms",
       "description": "Die lernende Person kann halbleiterbasierte Photonquellen und Qubits bewerten.",
       "descriptionEn": "The learner can evaluate semiconductor-based photon sources and qubits.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4430005"
       ],
@@ -108,7 +134,7 @@
       "titleEn": "Optically active semiconductor qubits",
       "description": "Die lernende Person kann Halbleiter-Spin- und Defekt-Qubits vergleichen.",
       "descriptionEn": "The learner can compare semiconductor spin and defect-based qubits.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4430005"
       ],
@@ -124,7 +150,7 @@
       "titleEn": "Photon generation and detection",
       "description": "Die lernende Person kann erklären, wie Quantenlicht erzeugt und detektiert wird.",
       "descriptionEn": "The learner can explain how quantum light is generated and detected.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4430005"
       ],
@@ -142,7 +168,7 @@
       "titleEn": "Photonic quantum communication",
       "description": "Die lernende Person kann photonenbasierte Protokolle für Kommunikation und Networking anwenden.",
       "descriptionEn": "The learner can apply photonic protocols for communication and networking.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4430005"
       ],
@@ -161,7 +187,7 @@
       "titleEn": "Quantum communication protocols",
       "description": "Die lernende Person kann QKD- und Verschränkungsverteilungsprotokolle beschreiben.",
       "descriptionEn": "The learner can describe QKD and entanglement distribution protocols.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4430005"
       ],
@@ -177,7 +203,7 @@
       "titleEn": "Performance analysis of photonic devices",
       "description": "Die lernende Person kann Effizienz, Verluste und Rauschen in photonischen Systemen analysieren.",
       "descriptionEn": "The learner can analyze efficiency, losses, and noise in photonic systems.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4430005"
       ],
@@ -195,7 +221,7 @@
       "titleEn": "Photonic quantum computing",
       "description": "Die lernende Person kann photonische Gatter und Architekturen beschreiben.",
       "descriptionEn": "The learner can describe photonic gates and architectures.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4430005"
       ],
@@ -214,7 +240,7 @@
       "titleEn": "Photonic gates and circuits",
       "description": "Die lernende Person kann erklären, wie photonische Gatter implementiert werden.",
       "descriptionEn": "The learner can explain how photonic gates are implemented.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4430005"
       ],
@@ -230,7 +256,7 @@
       "titleEn": "Scalability and integration challenges",
       "description": "Die lernende Person kann Integrations- und Skalierungsfragen photonischer Prozessoren diskutieren.",
       "descriptionEn": "The learner can discuss integration and scaling issues for photonic processors.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4430005"
       ],

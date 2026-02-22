@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000140",
   "goals": [
     {
+      "id": "f183bebc-6daf-5b26-b36d-0960d8c33950",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000140",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "573199aa-4b69-5626-9498-e4f4d2595702",
       "title": "Geometrische Methoden des CAE/CAD",
       "titleEn": "Geometrische Methoden des CAE/CAD",
       "description": "Erfolgreicher Abschluss des Moduls \"Geometrische Methoden des CAE/CAD\".",
       "descriptionEn": "Successful completion of module \"Geometrische Methoden des CAE/CAD\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-0140",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "f183bebc-6daf-5b26-b36d-0960d8c33950"
+      ],
+      "contains": [
+        "f183bebc-6daf-5b26-b36d-0960d8c33950"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

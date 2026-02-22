@@ -13,18 +13,21 @@
       "titleEn": "Tensor Networks (IN2388)",
       "description": "Die lernende Person kann Tensornetzwerkdarstellungen nutzen, um hochdimensionale Daten zu approximieren und Quantensysteme zu simulieren.",
       "descriptionEn": "The learner can use tensor network representations to approximate high-dimensional data and simulate quantum systems.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:IN2388",
         "ects:5"
       ],
       "contains": [
+        "70cd6097-5f37-5309-a1f4-c577f05646e7",
         "049714ca-7dfd-5560-97e8-80e36ba8152f",
         "6d86b09d-615b-581a-a6a7-3868dd2b113d",
         "a5a2d561-212a-5f3b-a275-10b241a8866c",
         "26c06b38-18b3-5448-a0fe-4f2ef30f4797"
       ],
-      "requires": [],
+      "requires": [
+        "70cd6097-5f37-5309-a1f4-c577f05646e7"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN2388",
       "dimensionTags": {
         "phase": "Modul"
@@ -36,7 +39,7 @@
       "titleEn": "Tensor network fundamentals",
       "description": "Die lernende Person kann Tensoren und Netzwerke grafisch darstellen.",
       "descriptionEn": "The learner can represent tensors and networks graphically.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2388"
       ],
@@ -50,17 +53,40 @@
       }
     },
     {
+      "id": "70cd6097-5f37-5309-a1f4-c577f05646e7",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-in2388",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "239dd8d5-5610-53ce-99f4-425082417244",
       "title": "Tensornotation und Kontraktionen",
       "titleEn": "Tensor notation and contractions",
       "description": "Die lernende Person kann Tensordiagramme interpretieren und Kontraktionen berechnen.",
       "descriptionEn": "The learner can interpret tensor diagrams and compute contractions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2388"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "70cd6097-5f37-5309-a1f4-c577f05646e7"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -71,7 +97,7 @@
       "titleEn": "Common network structures (MPS, MPO, PEPS)",
       "description": "Die lernende Person kann Standardarchitekturen und ihre Eigenschaften beschreiben.",
       "descriptionEn": "The learner can describe standard network architectures and their properties.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2388"
       ],
@@ -89,7 +115,7 @@
       "titleEn": "Approximation theory and optimization",
       "description": "Die lernende Person kann Niedrigrang-Approximationen anwenden und Tensornetzwerke optimieren.",
       "descriptionEn": "The learner can apply low-rank approximations and optimize tensor networks.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2388"
       ],
@@ -110,7 +136,7 @@
       "titleEn": "Low-rank approximations and truncation",
       "description": "Die lernende Person kann Trunkierungen durchführen und Approximationsfehler abschätzen.",
       "descriptionEn": "The learner can perform truncation and estimate approximation errors.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2388"
       ],
@@ -126,7 +152,7 @@
       "titleEn": "Backpropagation through tensor network operations",
       "description": "Die lernende Person kann Gradienten berechnen und Tensornetzwerk-Modelle trainieren.",
       "descriptionEn": "The learner can compute gradients and train tensor network models.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2388"
       ],
@@ -144,7 +170,7 @@
       "titleEn": "Simulation of quantum systems and circuits",
       "description": "Die lernende Person kann Tensornetzwerke zur Simulation stark korrelierter Systeme und Quantenschaltungen einsetzen.",
       "descriptionEn": "The learner can use tensor networks to simulate strongly correlated systems and quantum circuits.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2388"
       ],
@@ -165,7 +191,7 @@
       "titleEn": "Simulation of many-body quantum systems",
       "description": "Die lernende Person kann stark korrelierte Systeme mit Tensornetzwerken modellieren.",
       "descriptionEn": "The learner can model strongly correlated systems with tensor networks.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2388"
       ],
@@ -181,7 +207,7 @@
       "titleEn": "Simulation of digital quantum circuits",
       "description": "Die lernende Person kann Schaltungsdynamik mit Tensornetzwerk-Methoden simulieren.",
       "descriptionEn": "The learner can simulate circuit dynamics using tensor network methods.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2388"
       ],
@@ -197,7 +223,7 @@
       "titleEn": "Probabilistic modeling and sampling",
       "description": "Die lernende Person kann Tensornetzwerke für Sampling und Wahrscheinlichkeitsverteilungen nutzen.",
       "descriptionEn": "The learner can use tensor networks for sampling and probability distributions.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2388"
       ],
@@ -217,7 +243,7 @@
       "titleEn": "Sampling from tensor network models",
       "description": "Die lernende Person kann Stichproben erzeugen und probabilistische Ausgaben interpretieren.",
       "descriptionEn": "The learner can generate samples and interpret probabilistic outputs.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2388"
       ],

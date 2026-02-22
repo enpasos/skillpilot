@@ -10,14 +10,36 @@
   "subject": "Französisch",
   "goals": [
     {
+      "id": "86e9e6b9-9859-5e8e-83ae-3e6362f476af",
+      "title": "Warum Französisch? - Relevanz und Orientierung",
+      "titleEn": "Why Französisch? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Französisch für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Französisch matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "6a2a91e4-349b-5c17-b486-46d2513b2611",
       "title": "Jahrgangsstufe 11",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "86e9e6b9-9859-5e8e-83ae-3e6362f476af"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,7 +50,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -39,13 +61,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "e3e1d051-0d07-5f6e-ab94-3674b206b234",
       "title": "Französisch (Fachoberschule)",
       "contains": [
+        "86e9e6b9-9859-5e8e-83ae-3e6362f476af",
         "6a2a91e4-349b-5c17-b486-46d2513b2611",
         "1a073f71-8bcd-5aaa-bb65-9d3e144fcadc",
         "1982d150-190b-5b14-baad-1483df4de775"
@@ -57,8 +80,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "86e9e6b9-9859-5e8e-83ae-3e6362f476af"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

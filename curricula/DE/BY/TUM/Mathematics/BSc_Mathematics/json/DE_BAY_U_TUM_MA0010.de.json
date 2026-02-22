@@ -20,7 +20,7 @@
       "titleEn": "Introduction to Programming – Full Module",
       "description": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, sicher mit der verwendeten Programmierumgebung umzugehen. Sie kennen grundlegende Befehle und Operatoren und besitzen die Fähigkeit, einfache Programmieraufgaben zu lösen. Weiterhin kennen die Studierenden die verfügbaren Möglichkeiten zur graphischen Darstellung von Ergebnissen.",
       "descriptionEn": "After successfully completing the module, students are able to confidently use the programming environment used in the course. They know basic commands and operators and are able to solve simple programming tasks. They are also familiar with the available options for graphical visualization of results.",
-      "weight": 3.0,
+      "weight": 3,
       "tags": [
         "ects:3",
         "workload:90h",
@@ -33,13 +33,16 @@
         "responsible:ullmann_elisabeth"
       ],
       "contains": [
+        "618d8d1a-c54a-5a61-9a83-472fc0cb7a50",
         "8c3cfca8-fc60-5ec1-ac28-bc2b29fb65c9",
         "ffb5abe4-4c97-5a35-9ef5-315d48cf76be",
         "add32d57-7520-55b6-94a5-8672ccc46577",
         "5fe8f91e-7bdb-5927-8e98-c94a7c6c394d",
         "a82f2c6b-ca4c-5778-9c96-0849ca0ca8b1"
       ],
-      "requires": [],
+      "requires": [
+        "618d8d1a-c54a-5a61-9a83-472fc0cb7a50"
+      ],
       "dimensionTags": {
         "framework": "tum-ma0010",
         "demandLevel": "AB2",
@@ -131,7 +134,7 @@
       "titleEn": "Control Structures and Functions",
       "description": "Zusammenfassender Cluster: bedingte Anweisungen, Schleifen sowie Funktionen/Prozeduren zur strukturierten Lösung einfacher Aufgaben.",
       "descriptionEn": "Summary cluster: conditional statements, loops, and functions/procedures for structured solutions to simple tasks.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:3",
         "module:MA0010"
@@ -917,6 +920,28 @@
       }
     },
     {
+      "id": "618d8d1a-c54a-5a61-9a83-472fc0cb7a50",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma0010",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "a82f2c6b-ca4c-5778-9c96-0849ca0ca8b1",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -931,7 +956,9 @@
         "vocabularySource": "/data/ma0010_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "618d8d1a-c54a-5a61-9a83-472fc0cb7a50"
+      ],
       "dimensionTags": {
         "framework": "tum-ma0010",
         "demandLevel": "AB1",

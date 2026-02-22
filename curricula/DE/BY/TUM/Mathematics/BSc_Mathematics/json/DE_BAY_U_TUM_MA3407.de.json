@@ -20,7 +20,7 @@
       "titleEn": "Financial Mathematics 1 – Full Module",
       "description": "Nach erfolgreichem Abschluss können Studierende die Grundlagen der mathematischen Finanzmathematik und der Portfoliooptimierung in diskreter Zeit verstehen. Sie können Finanzderivate in Ein- und Mehrperiodenmärkten bewerten, Modelle und Bewertungsformeln numerisch implementieren und Portfolios anhand von Risiko-Rendite-Profilen beurteilen und steuern.",
       "descriptionEn": "At the end of the module students are able to understand the fundamentals of mathematical finance and portfolio optimization in discrete time and will be able to evaluate financial derivatives in single- and multi-period financial markets. Moreover, students are able to implement different numerical methods and pricing formulas. They know mean–variance theory and understand the background and impact of efficient portfolios and the CAPM. They also know important risk measures and can evaluate and manage portfolios according to their risk–return profiles.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:zagst_rudi"
       ],
       "contains": [
+        "f6f4b24a-a6bf-5d5e-969c-112628f08287",
         "03ce338b-6352-53e1-9438-02b8b66e7a04",
         "bd967e9a-7e2b-5e1e-8550-4b8ef07302c2",
         "de1d8938-f0c0-5696-9747-456668eb1a20",
@@ -44,6 +45,7 @@
         "e4475ad5-9cc3-540c-a4b7-46177a223ba8"
       ],
       "requires": [
+        "f6f4b24a-a6bf-5d5e-969c-112628f08287",
         "ef775418-c971-542f-87fe-07bd9c995bb1"
       ],
       "dimensionTags": {
@@ -371,7 +373,7 @@
       "titleEn": "Numerical Implementation of Pricing Models",
       "description": "Zusammenfassender Cluster: Implementierung diskreter Bewertungsmodelle (z.B. Binomialbaum) und Überprüfung numerischer Ergebnisse.",
       "descriptionEn": "Summary cluster: implementing discrete pricing models (e.g., binomial trees) and validating numerical results.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3407"
@@ -898,6 +900,28 @@
       }
     },
     {
+      "id": "f6f4b24a-a6bf-5d5e-969c-112628f08287",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3407",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "e4475ad5-9cc3-540c-a4b7-46177a223ba8",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -912,7 +936,9 @@
         "vocabularySource": "/data/ma3407_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "f6f4b24a-a6bf-5d5e-969c-112628f08287"
+      ],
       "dimensionTags": {
         "framework": "tum-ma3407",
         "demandLevel": "AB1",

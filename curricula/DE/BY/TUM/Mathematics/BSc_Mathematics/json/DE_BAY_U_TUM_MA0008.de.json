@@ -20,7 +20,7 @@
       "titleEn": "Numerical Analysis – Full Module",
       "description": "Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, algorithmisch-numerische Denkweisen anhand von Basisalgorithmen der Numerischen Mathematik zu verstehen. Sie beherrschen Grundtechniken zur Beurteilung von Effizienz und Genauigkeit numerischer Algorithmen und ihrer Realisierung in Computerprogrammen (in numerischen Programmiersprachen, z.B. MATLAB oder Julia) sowie zur Abschätzung von Approximationsfehlern.",
       "descriptionEn": "After successfully completing the module, students are able to understand algorithmic and numerical ways of thinking using basic algorithms of numerical mathematics. They master fundamental techniques for assessing the efficiency and accuracy of numerical algorithms and their implementation in computer programs (in numerical programming languages such as MATLAB or Julia), as well as for estimating approximation errors.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:ullmann_elisabeth"
       ],
       "contains": [
+        "3a74239c-c964-5a19-be0d-d24e73a6b0a2",
         "3310b32b-64d2-50bb-881f-b6b38fce6d4e",
         "45984319-69e1-5e70-be59-b8e142d810df",
         "064abf89-2ef7-594a-940b-43852dac4daf",
@@ -43,6 +44,7 @@
         "5bdae2a8-1106-5835-9938-306ead552af5"
       ],
       "requires": [
+        "3a74239c-c964-5a19-be0d-d24e73a6b0a2",
         "8eb1605b-fa70-511b-bbe4-28173d359c3b",
         "feaad1d5-022f-5ab3-93c3-001ac46de351",
         "684c912e-f23b-41f2-9ffe-3ac205ae67fe"
@@ -62,7 +64,7 @@
       "titleEn": "Matrix Factorizations and Linear Systems",
       "description": "Zusammenfassender Cluster: Matrixfaktorisierungen und ihre Anwendung zur Lösung linearer Gleichungssysteme als Grundbausteine numerischer Algorithmen.",
       "descriptionEn": "Summary cluster: matrix factorizations and their use for solving linear systems as core building blocks of numerical algorithms.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "ects:9",
         "module:MA0008"
@@ -86,7 +88,7 @@
       "titleEn": "Apply LU, QR, and Cholesky Factorizations",
       "description": "Die lernende Person kann LU- (mit Pivotisierung), QR- und Cholesky-Zerlegungen berechnen und ihre Rolle beim numerischen Lösen linearer Probleme erklären.",
       "descriptionEn": "The learner can compute LU (with pivoting), QR, and Cholesky factorizations and explain their role in numerically solving linear problems.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA0008"
@@ -111,7 +113,7 @@
       "titleEn": "Numerically Solve Linear Systems",
       "description": "Die lernende Person kann lineare Gleichungssysteme mit Faktorisierungen lösen, Aufwand und Genauigkeit abschätzen und typische Problemfälle (z.B. schlecht konditionierte Matrizen) erkennen.",
       "descriptionEn": "The learner can solve linear systems using factorizations, estimate computational cost and accuracy, and recognize typical issues (e.g., ill-conditioned matrices).",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA0008"
@@ -138,7 +140,7 @@
       "titleEn": "Least Squares and Data Fitting",
       "description": "Zusammenfassender Cluster: Ausgleichsrechnung und Least-Squares-Probleme als numerische Modellierung überbestimmter linearer Systeme.",
       "descriptionEn": "Summary cluster: data fitting and least squares problems as numerical models of overdetermined linear systems.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA0008"
@@ -450,7 +452,7 @@
       "titleEn": "Quadrature (Numerical Integration)",
       "description": "Zusammenfassender Cluster: Numerische Integration (Quadraturregeln) und Verfahren zur Fehlerabschätzung und Effizienzbewertung.",
       "descriptionEn": "Summary cluster: numerical integration (quadrature rules) and methods for error estimation and efficiency assessment.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA0008"
@@ -752,6 +754,28 @@
       }
     },
     {
+      "id": "3a74239c-c964-5a19-be0d-d24e73a6b0a2",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma0008",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "5bdae2a8-1106-5835-9938-306ead552af5",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -766,7 +790,9 @@
         "vocabularySource": "/data/ma0008_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "3a74239c-c964-5a19-be0d-d24e73a6b0a2"
+      ],
       "dimensionTags": {
         "framework": "tum-ma0008",
         "demandLevel": "AB1",

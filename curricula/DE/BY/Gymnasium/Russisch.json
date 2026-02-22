@@ -10,14 +10,36 @@
   "subject": "Russisch",
   "goals": [
     {
+      "id": "37df8430-2f97-50f8-a852-84e0be2da04e",
+      "title": "Warum Russisch? - Relevanz und Orientierung",
+      "titleEn": "Why Russisch? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Russisch für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Russisch matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "9cbf13bd-be33-5065-8bf9-fccd417ffde3",
       "title": "Jahrgangsstufe 8",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "37df8430-2f97-50f8-a852-84e0be2da04e"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,7 +50,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -39,7 +61,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -50,7 +72,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -61,7 +83,7 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
@@ -72,13 +94,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "012e0bc6-3a26-5714-9b24-b680c39c4c67",
       "title": "Russisch (Gymnasium)",
       "contains": [
+        "37df8430-2f97-50f8-a852-84e0be2da04e",
         "9cbf13bd-be33-5065-8bf9-fccd417ffde3",
         "1870e5d4-820b-5b5f-977c-18b057650f8f",
         "7734c2e5-082e-5627-890e-3a7a4d6ba087",
@@ -93,8 +116,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "37df8430-2f97-50f8-a852-84e0be2da04e"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

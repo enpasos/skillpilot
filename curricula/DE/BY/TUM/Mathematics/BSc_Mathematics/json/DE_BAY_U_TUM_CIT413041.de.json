@@ -20,7 +20,7 @@
       "titleEn": "Discrete Optimization – Full Module",
       "description": "Nach erfolgreichem Abschluss des Moduls haben die Studierenden ein solides Wissen über die grundlegenden Konzepte der diskreten Optimierung. Insbesondere erkennen sie relevante mathematische Strukturen der linearen ganzzahligen und kombinatorischen Optimierung und können diese für effiziente Lösungsverfahren ausnutzen. Außerdem sind die Studierenden in der Lage, reale Probleme als Probleme der diskreten Optimierung zu modellieren und Spezialfälle zu identifizieren, die effizient lösbar sind.",
       "descriptionEn": "After successful completion of the module students have solid knowledge of the fundamental concepts of discrete optimization. In particular, they recognize relevant mathematical structures in integer linear and combinatorial optimization and can exploit them for efficient solution methods. Moreover, students are able to model real problems as discrete optimization problems and identify special cases that can be solved efficiently.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:weltge_stefan"
       ],
       "contains": [
+        "7a0edbd9-c9b4-5fe9-b747-899806ba9884",
         "c93c61d6-74c3-5a8f-bb85-35f46a10205a",
         "3a3c9971-42b9-5477-b8e4-69c49d4146d5",
         "42bc95a2-082e-5702-9ec1-4044701c528f",
@@ -44,6 +45,7 @@
         "e0f7e0dc-516e-5675-bcd8-863ea0fbba18"
       ],
       "requires": [
+        "7a0edbd9-c9b4-5fe9-b747-899806ba9884",
         "feaad1d5-022f-5ab3-93c3-001ac46de351",
         "1e712ee7-a9d9-58d0-8eb9-e45098c14fbc",
         "946f50cd-f6d9-5d1c-a79d-c06a302ce7be",
@@ -64,7 +66,7 @@
       "titleEn": "Foundations of Complexity Theory",
       "description": "Zusammenfassender Cluster: Komplexitätsmodelle, Reduktionen und grundlegende Klassen als Basis für die Analyse diskreter Optimierungsprobleme.",
       "descriptionEn": "Summary cluster: computational models, reductions, and basic complexity classes as a basis for analyzing discrete optimization problems.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:CIT413041"
@@ -218,7 +220,7 @@
       "titleEn": "Linear Diophantine Systems and Lattices",
       "description": "Zusammenfassender Cluster: Ganzzahlige Lösungen linearer Systeme, Gitterstrukturen und deren Nutzung in der ganzzahligen Optimierung.",
       "descriptionEn": "Summary cluster: integer solutions of linear systems, lattice structures, and their use in integer optimization.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:CIT413041"
@@ -894,6 +896,28 @@
       }
     },
     {
+      "id": "7a0edbd9-c9b4-5fe9-b747-899806ba9884",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-cit413041",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "e0f7e0dc-516e-5675-bcd8-863ea0fbba18",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -908,7 +932,9 @@
         "vocabularySource": "/data/cit413041_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "7a0edbd9-c9b4-5fe9-b747-899806ba9884"
+      ],
       "dimensionTags": {
         "framework": "tum-cit413041",
         "demandLevel": "AB1",

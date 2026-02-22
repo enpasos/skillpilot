@@ -20,7 +20,7 @@
       "titleEn": "Algebra – Full Module",
       "description": "Das Modul vermittelt die Grundlagen der Theorie der Gruppen, Ringe und Körper (u.a. Untergruppen, Faktorgruppen, Gruppenaktionen, Ideale, Primideale, eindeutige Primzerlegung, Körpererweiterungen, endliche Körper, Galoistheorie). Nach dem erfolgreichen Abschluss des Moduls sind die Studierenden in der Lage, mit verschiedenen axiomatischen Strukturen abstrakt und rechnerisch umzugehen und dies in verschiedenen Kontexten anzuwenden. Sie können moderne algebraische Sprechweisen verwenden und zu Aussagen über algebraische Strukturen eigene Beweise entwickeln. Diese Strukturen umfassen Gruppen, Ringe und Körper. Die Studierenden sind in der Lage, solche Strukturen zu erkennen und dann die gelernten Sätze und Methoden auf sie anzuwenden.",
       "descriptionEn": "The module introduces the foundations of the theory of groups, rings, and fields (including subgroups, quotient groups, group actions, ideals, prime ideals, unique factorization, field extensions, finite fields, and Galois theory). After successfully completing the module, students are able to work with various axiomatic structures abstractly and computationally and apply them in different contexts. They can use modern algebraic language and develop their own proofs about algebraic structures. These structures include groups, rings, and fields. Students are able to recognize such structures and then apply the theorems and methods learned to them.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:kemper_gregor"
       ],
       "contains": [
+        "63d84836-6560-5cb9-adad-5ec5a5d14ec8",
         "2321eb2c-70bc-5dce-bf7e-02ef531cde8e",
         "29f5dc8a-14ef-56cf-b9ee-3e5fe58de0c4",
         "48d48ea5-7bea-5312-919b-1d470dd9ef25",
@@ -44,6 +45,7 @@
         "531e7691-628b-5beb-82aa-059635ba291c"
       ],
       "requires": [
+        "63d84836-6560-5cb9-adad-5ec5a5d14ec8",
         "feaad1d5-022f-5ab3-93c3-001ac46de351",
         "1e712ee7-a9d9-58d0-8eb9-e45098c14fbc",
         "946f50cd-f6d9-5d1c-a79d-c06a302ce7be"
@@ -218,7 +220,7 @@
       "titleEn": "Group Actions and Solvable Groups",
       "description": "Zusammenfassender Cluster: Gruppenaktionen als Werkzeug und auflösbare Gruppen als wichtige Strukturklasse mit Blick auf Anwendungen.",
       "descriptionEn": "Summary cluster: group actions as a tool and solvable groups as an important class of structures with applications in mind.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA2010"
@@ -771,6 +773,28 @@
       }
     },
     {
+      "id": "63d84836-6560-5cb9-adad-5ec5a5d14ec8",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2010",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "531e7691-628b-5beb-82aa-059635ba291c",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -785,7 +809,9 @@
         "vocabularySource": "/data/ma2010_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "63d84836-6560-5cb9-adad-5ec5a5d14ec8"
+      ],
       "dimensionTags": {
         "framework": "tum-ma2010",
         "demandLevel": "AB1",

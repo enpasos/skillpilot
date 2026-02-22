@@ -13,12 +13,13 @@
       "titleEn": "Numerical Programming (IN0019)",
       "description": "Die lernende Person kann numerische Algorithmen für zentrale Rechenprobleme implementieren und analysieren.",
       "descriptionEn": "The learner can implement and analyze numerical algorithms for core computational problems.",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
         "module:IN0019",
         "ects:6"
       ],
       "contains": [
+        "e9fed315-08c2-5030-9f9c-de579c7d3f95",
         "0153ce16-8ca9-59c9-9b74-97e77618c1f6",
         "74c1ee34-1616-595b-88be-cb282e2d2d36",
         "6f8acba1-1f70-55b3-aea7-a985390f0307",
@@ -27,7 +28,9 @@
         "9902b99d-8fe4-5d3b-96c6-06e94e565a70",
         "82ec64c5-9337-5904-af9b-921d3a033d44"
       ],
-      "requires": [],
+      "requires": [
+        "e9fed315-08c2-5030-9f9c-de579c7d3f95"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0019",
       "dimensionTags": {
         "phase": "Modul"
@@ -39,7 +42,7 @@
       "titleEn": "Floating point and error analysis",
       "description": "Die lernende Person kann über numerische Fehler und Stabilität nachdenken.",
       "descriptionEn": "The learner can reason about numerical errors and stability.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0019"
       ],
@@ -53,17 +56,40 @@
       }
     },
     {
+      "id": "e9fed315-08c2-5030-9f9c-de579c7d3f95",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-in0019",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "6c705b9a-dcc0-57fe-8588-2bccd3aaa33a",
       "title": "Gleitkommadarstellung",
       "titleEn": "Floating point representation",
       "description": "Die lernende Person kann Gleitkommaformate und Rundungsfehler erklären.",
       "descriptionEn": "The learner can explain floating point formats and rounding errors.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0019"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "e9fed315-08c2-5030-9f9c-de579c7d3f95"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -74,7 +100,7 @@
       "titleEn": "Conditioning and stability",
       "description": "Die lernende Person kann Konditionierung und numerische Stabilität analysieren.",
       "descriptionEn": "The learner can analyze conditioning and numerical stability.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0019"
       ],
@@ -90,7 +116,7 @@
       "titleEn": "Interpolation and approximation",
       "description": "Die lernende Person kann Funktionen mithilfe von Interpolationsverfahren approximieren.",
       "descriptionEn": "The learner can approximate functions using interpolation methods.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0019"
       ],
@@ -111,7 +137,7 @@
       "titleEn": "Polynomial and spline interpolation",
       "description": "Die lernende Person kann Polynominterpolations- und Spline-Methoden anwenden.",
       "descriptionEn": "The learner can apply polynomial interpolation and spline methods.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0019"
       ],
@@ -127,7 +153,7 @@
       "titleEn": "Trigonometric interpolation and FFT",
       "description": "Die lernende Person kann die trigonometrische Interpolation und die FFT nutzen.",
       "descriptionEn": "The learner can use trigonometric interpolation and the FFT.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0019"
       ],
@@ -143,7 +169,7 @@
       "titleEn": "Numerical integration",
       "description": "Die lernende Person kann Integrale mithilfe numerischer Regeln approximieren.",
       "descriptionEn": "The learner can approximate integrals using numerical rules.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0019"
       ],
@@ -164,7 +190,7 @@
       "titleEn": "Composite rules and extrapolation",
       "description": "Die lernende Person kann zusammengesetzte Integrationsregeln und Extrapolation anwenden.",
       "descriptionEn": "The learner can apply composite integration rules and extrapolation.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0019"
       ],
@@ -180,7 +206,7 @@
       "titleEn": "Gaussian quadrature",
       "description": "Die lernende Person kann Gauß-Quadraturmethoden anwenden.",
       "descriptionEn": "The learner can apply Gauss quadrature methods.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0019"
       ],
@@ -196,7 +222,7 @@
       "titleEn": "Linear systems and least squares",
       "description": "Die lernende Person kann lineare Systeme numerisch lösen.",
       "descriptionEn": "The learner can solve linear systems numerically.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0019"
       ],
@@ -217,7 +243,7 @@
       "titleEn": "Gaussian elimination and LR factorization",
       "description": "Die lernende Person kann Gaußsche Eliminierung, Pivotierung und LR-Faktorisierung anwenden.",
       "descriptionEn": "The learner can apply Gaussian elimination, pivoting, and LR factorization.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0019"
       ],
@@ -233,7 +259,7 @@
       "titleEn": "Least squares problems",
       "description": "Die lernende Person kann Kleinste-Quadrate-Probleme lösen und Lösungen analysieren.",
       "descriptionEn": "The learner can solve least squares problems and analyze solutions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0019"
       ],
@@ -249,7 +275,7 @@
       "titleEn": "Ordinary differential equations",
       "description": "Die lernende Person kann ODEs mit numerischen Methoden lösen.",
       "descriptionEn": "The learner can solve ODEs with numerical methods.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0019"
       ],
@@ -270,7 +296,7 @@
       "titleEn": "Euler and Runge-Kutta methods",
       "description": "Die lernende Person kann Euler- und Runge-Kutta-Schemata anwenden.",
       "descriptionEn": "The learner can apply Euler and Runge-Kutta schemes.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0019"
       ],
@@ -286,7 +312,7 @@
       "titleEn": "Stability and multistep methods",
       "description": "Die lernende Person kann Stabilität analysieren und mehrstufige Methoden anwenden.",
       "descriptionEn": "The learner can analyze stability and use multistep methods.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0019"
       ],
@@ -302,7 +328,7 @@
       "titleEn": "Iterative methods and nonlinear equations",
       "description": "Die lernende Person kann iterative Schemata für lineare und nichtlineare Probleme anwenden.",
       "descriptionEn": "The learner can apply iterative schemes for linear and nonlinear problems.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0019"
       ],
@@ -323,7 +349,7 @@
       "titleEn": "Jacobi and Gauss-Seidel methods",
       "description": "Die lernende Person kann Entspannungsmethoden wie Jacobi und Gauss-Seidel anwenden.",
       "descriptionEn": "The learner can apply relaxation methods such as Jacobi and Gauss-Seidel.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0019"
       ],
@@ -339,7 +365,7 @@
       "titleEn": "Fixed-point and Newton methods",
       "description": "Die lernende Person kann nichtlineare Gleichungen mithilfe der Festkomma-Iteration und der Newton-Methode lösen.",
       "descriptionEn": "The learner can solve nonlinear equations using fixed-point iteration and Newton's method.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0019"
       ],
@@ -355,7 +381,7 @@
       "titleEn": "Eigenvalue problems",
       "description": "Die lernende Person kann Eigenwerte und Eigenvektoren numerisch berechnen.",
       "descriptionEn": "The learner can compute eigenvalues and eigenvectors numerically.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0019"
       ],
@@ -376,7 +402,7 @@
       "titleEn": "Power iteration and conditioning",
       "description": "Die lernende Person kann Power-Iteration anwenden und Konditionierung analysieren.",
       "descriptionEn": "The learner can apply power iteration and analyze conditioning.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0019"
       ],
@@ -392,7 +418,7 @@
       "titleEn": "QR algorithm and reductions",
       "description": "Die lernende Person kann den QR-Algorithmus und Reduktionstechniken anwenden.",
       "descriptionEn": "The learner can apply the QR algorithm and reduction techniques.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0019"
       ],

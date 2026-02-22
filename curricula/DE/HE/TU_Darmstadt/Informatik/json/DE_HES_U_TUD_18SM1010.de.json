@@ -9,13 +9,35 @@
   "frameworkId": "tud-18sm1010",
   "goals": [
     {
+      "id": "d4cf114e-c721-5ef3-9ddb-027bdaa703d6",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-18sm1010",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "96f62f83-93ea-536e-9341-d06052e0ed59",
       "title": "Kommunikationsnetze I",
       "titleEn": "Kommunikationsnetze I",
       "description": "Erfolgreicher Abschluss des Moduls \"Kommunikationsnetze I\".",
       "descriptionEn": "Successful completion of module \"Kommunikationsnetze I\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:18-sm-1010",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "d4cf114e-c721-5ef3-9ddb-027bdaa703d6"
+      ],
+      "contains": [
+        "d4cf114e-c721-5ef3-9ddb-027bdaa703d6"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

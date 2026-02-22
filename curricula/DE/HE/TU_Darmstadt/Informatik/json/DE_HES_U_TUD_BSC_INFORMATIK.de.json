@@ -14,7 +14,7 @@
       "titleEn": "B.Sc. Informatik – Gesamtstudiengang (TU Darmstadt)",
       "description": "Kompetenzgraph basierend auf curriculum_bachelor_informatik (TU Darmstadt, B.Sc. Informatik, Stand 2023).",
       "descriptionEn": "Competence graph based on curriculum_bachelor_informatik (TU Darmstadt, B.Sc. Informatics, 2023).",
-      "weight": 180.0,
+      "weight": 180,
       "tags": [
         "ects:180",
         "level:bachelor",
@@ -30,8 +30,11 @@
         "guidingIdeas": [],
         "phase": "Programm"
       },
-      "requires": [],
+      "requires": [
+        "e76f1548-89cb-5ea4-99b1-20c079f48008"
+      ],
       "contains": [
+        "e76f1548-89cb-5ea4-99b1-20c079f48008",
         "477bb019-8ccc-5947-b875-996e33588c4d",
         "cf21fdb4-ac34-5faf-a2c0-11a70dcb3a06",
         "0933a2bf-bbc8-5842-b4d0-e295a75889ad"
@@ -39,12 +42,33 @@
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     },
     {
+      "id": "e76f1548-89cb-5ea4-99b1-20c079f48008",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tu-darmstadt-bsc-informatik-2023",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Programm"
+      }
+    },
+    {
       "id": "477bb019-8ccc-5947-b875-996e33588c4d",
       "title": "A. Pflichtbereich",
       "titleEn": "A. Pflichtbereich",
       "description": "Modulbereich: A. Pflichtbereich.",
       "descriptionEn": "Module group: A. Pflichtbereich.",
-      "weight": 114.0,
+      "weight": 114,
       "tags": [
         "program:bsc_informatik",
         "cluster",
@@ -88,7 +112,7 @@
       "titleEn": "B. Wahlpflichtbereich",
       "description": "Modulbereich: B. Wahlpflichtbereich.",
       "descriptionEn": "Module group: B. Wahlpflichtbereich.",
-      "weight": 24.0,
+      "weight": 24,
       "tags": [
         "program:bsc_informatik",
         "cluster",
@@ -117,7 +141,7 @@
       "titleEn": "Künstliche Intelligenz",
       "description": "Modulbereich: Künstliche Intelligenz.",
       "descriptionEn": "Module group: Künstliche Intelligenz.",
-      "weight": 0.0,
+      "weight": 0,
       "tags": [
         "program:bsc_informatik",
         "cluster"
@@ -158,7 +182,7 @@
       "titleEn": "Cybersicherheit und Privatheit",
       "description": "Modulbereich: Cybersicherheit und Privatheit.",
       "descriptionEn": "Module group: Cybersicherheit und Privatheit.",
-      "weight": 0.0,
+      "weight": 0,
       "tags": [
         "program:bsc_informatik",
         "cluster"
@@ -201,7 +225,7 @@
       "titleEn": "Komplexe vernetzte Systeme",
       "description": "Modulbereich: Komplexe vernetzte Systeme.",
       "descriptionEn": "Module group: Komplexe vernetzte Systeme.",
-      "weight": 0.0,
+      "weight": 0,
       "tags": [
         "program:bsc_informatik",
         "cluster"
@@ -234,7 +258,7 @@
       "titleEn": "Software und Hardware",
       "description": "Modulbereich: Software und Hardware.",
       "descriptionEn": "Module group: Software und Hardware.",
-      "weight": 0.0,
+      "weight": 0,
       "tags": [
         "program:bsc_informatik",
         "cluster"
@@ -284,7 +308,7 @@
       "titleEn": "Theorie",
       "description": "Modulbereich: Theorie.",
       "descriptionEn": "Module group: Theorie.",
-      "weight": 0.0,
+      "weight": 0,
       "tags": [
         "program:bsc_informatik",
         "cluster"
@@ -314,7 +338,7 @@
       "titleEn": "Wahlbereich Fachprüfungen",
       "description": "Modulbereich: Wahlbereich Fachprüfungen.",
       "descriptionEn": "Module group: Wahlbereich Fachprüfungen.",
-      "weight": 0.0,
+      "weight": 0,
       "tags": [
         "program:bsc_informatik",
         "cluster"
@@ -342,7 +366,7 @@
       "titleEn": "Praktika, Projektpraktika und ähnliche Veranstaltungen",
       "description": "Modulbereich: Praktika, Projektpraktika und ähnliche Veranstaltungen.",
       "descriptionEn": "Module group: Praktika, Projektpraktika und ähnliche Veranstaltungen.",
-      "weight": 0.0,
+      "weight": 0,
       "tags": [
         "program:bsc_informatik",
         "cluster"
@@ -370,7 +394,7 @@
       "titleEn": "Seminare",
       "description": "Modulbereich: Seminare.",
       "descriptionEn": "Module group: Seminare.",
-      "weight": 0.0,
+      "weight": 0,
       "tags": [
         "program:bsc_informatik",
         "cluster"
@@ -398,7 +422,7 @@
       "titleEn": "Praktikum in der Lehre",
       "description": "Modulbereich: Praktikum in der Lehre.",
       "descriptionEn": "Module group: Praktikum in der Lehre.",
-      "weight": 0.0,
+      "weight": 0,
       "tags": [
         "program:bsc_informatik",
         "cluster"
@@ -424,7 +448,7 @@
       "titleEn": "Bachelorarbeit",
       "description": "Modulbereich: Bachelorarbeit.",
       "descriptionEn": "Module group: Bachelorarbeit.",
-      "weight": 12.0,
+      "weight": 12,
       "tags": [
         "program:bsc_informatik",
         "cluster",
@@ -449,7 +473,7 @@
       "titleEn": "Wahlbereich Studienbegleitende Leistungen",
       "description": "Modulbereich: Wahlbereich Studienbegleitende Leistungen.",
       "descriptionEn": "Module group: Wahlbereich Studienbegleitende Leistungen.",
-      "weight": 0.0,
+      "weight": 0,
       "tags": [
         "program:bsc_informatik",
         "cluster"
@@ -476,7 +500,7 @@
       "titleEn": "C. Wahlbereich",
       "description": "Modulbereich: C. Wahlbereich.",
       "descriptionEn": "Module group: C. Wahlbereich.",
-      "weight": 42.0,
+      "weight": 42,
       "tags": [
         "program:bsc_informatik",
         "cluster",

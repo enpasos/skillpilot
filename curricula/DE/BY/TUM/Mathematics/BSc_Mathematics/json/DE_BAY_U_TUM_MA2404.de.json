@@ -20,7 +20,7 @@
       "titleEn": "Markov Chains – Full Module",
       "description": "Nach dem erfolgreichen Abschluss des Moduls ist der Studierende in der Lage, die Markov-Eigenschaft anzuwenden, Eigenschaften von Markovketten wie z.B. Irreduzibilität, Aperiodizität und Rekurrenz zu untersuchen, stationäre Verteilungen zu berechnen sowie den Konvergenzsatz und den Ergodensatz anzuwenden.",
       "descriptionEn": "After successful completion of the module, students are able to apply the Markov property, analyze properties of Markov chains such as irreducibility, aperiodicity, and recurrence, compute stationary distributions, and apply convergence and ergodic theorems.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "ects:5",
         "workload:150h",
@@ -33,6 +33,7 @@
         "responsible:rolles_silke"
       ],
       "contains": [
+        "5b21ee4e-d3e1-5348-9a5d-292109af7693",
         "b2ca5747-3a07-5d3b-b833-2df19262efa7",
         "dbcbf3eb-a681-537e-966b-82a15e44c11c",
         "94a8c284-4a6c-5f87-b9d7-f346afea8e7f",
@@ -41,6 +42,7 @@
         "c08f8043-f9f0-5e7e-bfee-e11ef415b8e1"
       ],
       "requires": [
+        "5b21ee4e-d3e1-5348-9a5d-292109af7693",
         "ef775418-c971-542f-87fe-07bd9c995bb1"
       ],
       "dimensionTags": {
@@ -58,7 +60,7 @@
       "titleEn": "Markov Property and Transitions",
       "description": "Zusammenfassender Cluster: Markov-Eigenschaft, Übergangsmatrix, Mehr-Schritt-Übergänge und Chapman–Kolmogorov-Gleichung.",
       "descriptionEn": "Summary cluster: the Markov property, transition matrices, multi-step transitions, and the Chapman–Kolmogorov equation.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA2404"
@@ -132,7 +134,7 @@
       "titleEn": "Filtrations, Stopping Times, and the Strong Markov Property",
       "description": "Zusammenfassender Cluster: Filtrierung, Stoppzeiten, Eintrittszeiten und Anwendung der starken Markov-Eigenschaft.",
       "descriptionEn": "Summary cluster: filtrations, stopping times, hitting times, and using the strong Markov property.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA2404"
@@ -208,7 +210,7 @@
       "titleEn": "Structure of Markov Chains: Classes, Recurrence, and Aperiodicity",
       "description": "Zusammenfassender Cluster: Kommunizierende Klassen, Abgeschlossenheit, Irreduzibilität, Rekurrenz/Transienz, Wiederkehrzeiten, Absorption und Aperiodizität.",
       "descriptionEn": "Summary cluster: communicating classes, closedness, irreducibility, recurrence/transience, return times, absorption, and aperiodicity.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA2404"
@@ -286,7 +288,7 @@
       "titleEn": "Stationary Distributions and Long-Term Behavior",
       "description": "Zusammenfassender Cluster: Invariante/stationäre Verteilungen, Konvergenzsatz, Ergodensatz sowie positive- und Nullrekurrenz.",
       "descriptionEn": "Summary cluster: invariant/stationary distributions, convergence theorems, ergodic theorems, and positive vs. null recurrence.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA2404"
@@ -362,7 +364,7 @@
       "titleEn": "Time Reversal, Detailed Balance, and Model Examples",
       "description": "Zusammenfassender Cluster: Zeitumkehr und detailed balance (Reversibilität) sowie Anwendung der Theorie auf klassische Beispiele.",
       "descriptionEn": "Summary cluster: time reversal and detailed balance (reversibility) and applying the theory to classical examples.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA2404"
@@ -1025,6 +1027,28 @@
       }
     },
     {
+      "id": "5b21ee4e-d3e1-5348-9a5d-292109af7693",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2404",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "c08f8043-f9f0-5e7e-bfee-e11ef415b8e1",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -1039,7 +1063,9 @@
         "vocabularySource": "/data/ma2404_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "5b21ee4e-d3e1-5348-9a5d-292109af7693"
+      ],
       "dimensionTags": {
         "framework": "tum-ma2404",
         "demandLevel": "AB1",

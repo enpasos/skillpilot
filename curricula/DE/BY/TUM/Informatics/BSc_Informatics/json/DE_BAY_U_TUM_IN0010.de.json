@@ -13,12 +13,13 @@
       "titleEn": "Introduction to Computer Networking and Distributed Systems (IN0010)",
       "description": "Die lernende Person kann Netzwerkarchitekturen, Protokolle und Grundlagen verteilter Systeme erklären.",
       "descriptionEn": "The learner can explain network architectures, protocols, and distributed systems basics.",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
         "module:IN0010",
         "ects:6"
       ],
       "contains": [
+        "b3b0cda5-4d5e-590d-89ea-6a3bde33a2ac",
         "b10f31e9-8992-55e6-bbcd-f7a3c7b36b37",
         "af7486e9-a658-58a8-aa96-f5649c76d059",
         "80738166-51c6-5b6c-86d6-396dc9b2db15",
@@ -29,7 +30,9 @@
         "9d375af8-a2c8-56e8-9757-5fa3d5f10c9a",
         "a753b947-51c0-5d3f-a986-1b8628c85367"
       ],
-      "requires": [],
+      "requires": [
+        "b3b0cda5-4d5e-590d-89ea-6a3bde33a2ac"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0010",
       "dimensionTags": {
         "phase": "Modul"
@@ -41,7 +44,7 @@
       "titleEn": "Network overview and architecture",
       "description": "Die lernende Person kann Netzwerkkomponenten, Topologien und Schichtmodelle beschreiben.",
       "descriptionEn": "The learner can describe network components, topologies, and layered models.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0010"
       ],
@@ -55,17 +58,40 @@
       }
     },
     {
+      "id": "b3b0cda5-4d5e-590d-89ea-6a3bde33a2ac",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-in0010",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "f134de7b-bc26-5d75-85a3-08134ad4bb9c",
       "title": "Internetkomponenten und Topologien",
       "titleEn": "Internet components and topologies",
       "description": "Die lernende Person kann Router, Switches, Clients, Server und Netzwerktopologien identifizieren.",
       "descriptionEn": "The learner can identify routers, switches, clients, servers, and network topologies.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "b3b0cda5-4d5e-590d-89ea-6a3bde33a2ac"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -76,7 +102,7 @@
       "titleEn": "Layered models",
       "description": "Die lernende Person kann OSI- und Internet-Layer-Modelle vergleichen.",
       "descriptionEn": "The learner can compare OSI and Internet layer models.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],
@@ -92,7 +118,7 @@
       "titleEn": "Cross-layer concepts",
       "description": "Die lernende Person kann schichtübergreifende gängige Netzwerkmechanismen erklären.",
       "descriptionEn": "The learner can explain common networking mechanisms across layers.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0010"
       ],
@@ -113,7 +139,7 @@
       "titleEn": "Addressing and routing concepts",
       "description": "Die lernende Person kann Adressierung und Routing auf konzeptioneller Ebene erklären.",
       "descriptionEn": "The learner can explain addressing and routing at a conceptual level.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],
@@ -129,7 +155,7 @@
       "titleEn": "Error control and flow management",
       "description": "Die lernende Person kann Fehlererkennung, Flusskontrolle und Verbindungsmanagement beschreiben.",
       "descriptionEn": "The learner can describe error detection, flow control, and connection management.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],
@@ -145,7 +171,7 @@
       "titleEn": "Application layer protocols",
       "description": "Die lernende Person kann Protokolle und Dienste der Anwendungsschicht erklären.",
       "descriptionEn": "The learner can explain application layer protocols and services.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0010"
       ],
@@ -166,7 +192,7 @@
       "titleEn": "Web and email protocols",
       "description": "Die lernende Person kann HTTP, DNS, SMTP und verwandte Protokolle beschreiben.",
       "descriptionEn": "The learner can describe HTTP, DNS, SMTP, and related protocols.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],
@@ -182,7 +208,7 @@
       "titleEn": "Application interfaces",
       "description": "Die lernende Person kann Schnittstellen und Servicemodelle der Anwendungsschicht erklären.",
       "descriptionEn": "The learner can explain application layer interfaces and service models.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],
@@ -198,7 +224,7 @@
       "titleEn": "Transport layer",
       "description": "Die lernende Person kann Transportprotokolle und deren Eigenschaften erklären.",
       "descriptionEn": "The learner can explain transport protocols and their properties.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0010"
       ],
@@ -219,7 +245,7 @@
       "titleEn": "TCP and UDP fundamentals",
       "description": "Die lernende Person kann TCP und UDP und ihre Anwendungsfälle vergleichen.",
       "descriptionEn": "The learner can compare TCP and UDP and their use cases.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],
@@ -235,7 +261,7 @@
       "titleEn": "Reliability and congestion",
       "description": "Die lernende Person kann Überlegungen zu Zuverlässigkeit, Fluss und Überlastung beschreiben.",
       "descriptionEn": "The learner can describe reliability, flow, and congestion considerations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],
@@ -251,7 +277,7 @@
       "titleEn": "Network layer and routing",
       "description": "Die lernende Person kann IP- und Routing-Strategien erklären.",
       "descriptionEn": "The learner can explain IP and routing strategies.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0010"
       ],
@@ -272,7 +298,7 @@
       "titleEn": "IP addressing and routing",
       "description": "Die lernende Person kann IP-Adressierungs- und Routing-Funktionen erklären.",
       "descriptionEn": "The learner can explain IP addressing and routing functions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],
@@ -288,7 +314,7 @@
       "titleEn": "Link state and distance vector",
       "description": "Die lernende Person kann Link-State- und Distance-Vector-Routing-Protokolle vergleichen.",
       "descriptionEn": "The learner can compare link state and distance vector routing protocols.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],
@@ -304,7 +330,7 @@
       "titleEn": "Link and physical layers",
       "description": "Die lernende Person kann untergeordnete Protokolle und Übertragungskonzepte erklären.",
       "descriptionEn": "The learner can explain lower-layer protocols and transmission concepts.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0010"
       ],
@@ -325,7 +351,7 @@
       "titleEn": "Ethernet and wireless LAN",
       "description": "Die lernende Person kann die Grundlagen von Ethernet und WLAN beschreiben.",
       "descriptionEn": "The learner can describe Ethernet and WLAN basics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],
@@ -341,7 +367,7 @@
       "titleEn": "Encoding and modulation",
       "description": "Die lernende Person kann die Kodierung und Modulation auf der physikalischen Ebene erklären.",
       "descriptionEn": "The learner can explain encoding and modulation at the physical layer.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],
@@ -357,7 +383,7 @@
       "titleEn": "Distributed systems",
       "description": "Die lernende Person kann die Grundlagen von Middleware und Serviceintegration erklären.",
       "descriptionEn": "The learner can explain middleware and service integration basics.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0010"
       ],
@@ -378,7 +404,7 @@
       "titleEn": "Middleware and RPC",
       "description": "Die lernende Person kann Middleware-Konzepte und RPC beschreiben.",
       "descriptionEn": "The learner can describe middleware concepts and RPC.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],
@@ -394,7 +420,7 @@
       "titleEn": "Web services",
       "description": "Die lernende Person kann grundlegende Webservice-Konzepte erklären.",
       "descriptionEn": "The learner can explain basic web service concepts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],
@@ -410,7 +436,7 @@
       "titleEn": "Network management and security",
       "description": "Die lernende Person kann sich mit Netzwerkmanagementaufgaben und Sicherheitsmechanismen befassen.",
       "descriptionEn": "The learner can address network management tasks and security mechanisms.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0010"
       ],
@@ -431,7 +457,7 @@
       "titleEn": "Network management",
       "description": "Die lernende Person kann Überwachungs- und Verwaltungsaufgaben für Netzwerke beschreiben.",
       "descriptionEn": "The learner can describe monitoring and management tasks for networks.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],
@@ -447,7 +473,7 @@
       "titleEn": "Security mechanisms and protocols",
       "description": "Die lernende Person kann grundlegende kryptografische Dienste und Netzwerksicherheitsprotokolle erklären.",
       "descriptionEn": "The learner can explain basic cryptographic services and network security protocols.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],
@@ -463,7 +489,7 @@
       "titleEn": "Performance analysis and protocol implementation",
       "description": "Die lernende Person kann die Netzwerkleistung analysieren und Mechanismen implementieren.",
       "descriptionEn": "The learner can analyze network performance and implement mechanisms.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0010"
       ],
@@ -484,7 +510,7 @@
       "titleEn": "Performance calculation by layer",
       "description": "Die lernende Person kann Leistungsmetriken über Netzwerkebenen hinweg berechnen.",
       "descriptionEn": "The learner can compute performance metrics across network layers.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],
@@ -500,7 +526,7 @@
       "titleEn": "Protocol mechanism implementation",
       "description": "Die lernende Person kann ausgewählte Protokollmechanismen in Programmierübungen implementieren.",
       "descriptionEn": "The learner can implement selected protocol mechanisms in programming exercises.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0010"
       ],

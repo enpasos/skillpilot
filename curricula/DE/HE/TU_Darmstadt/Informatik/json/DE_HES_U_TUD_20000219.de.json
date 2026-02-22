@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000219",
   "goals": [
     {
+      "id": "d1d507bb-a13d-5a6b-9230-a69a94b0d9a5",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000219",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "8ff3a98c-186d-5dc1-a4f5-79d6beb53b85",
       "title": "IT-Sicherheit",
       "titleEn": "IT-Sicherheit",
       "description": "Erfolgreicher Abschluss des Moduls \"IT-Sicherheit\".",
       "descriptionEn": "Successful completion of module \"IT-Sicherheit\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-0219",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "d1d507bb-a13d-5a6b-9230-a69a94b0d9a5"
+      ],
+      "contains": [
+        "d1d507bb-a13d-5a6b-9230-a69a94b0d9a5"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

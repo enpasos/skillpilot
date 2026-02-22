@@ -13,12 +13,13 @@
       "titleEn": "Introduction to Informatics (IN0001)",
       "description": "Die lernende Person kann grundlegende Computerkonzepte erklären und grundlegende Programme in einer objektorientierten Sprache implementieren.",
       "descriptionEn": "The learner can explain foundational computing concepts and implement basic programs in an object-oriented language.",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
         "module:IN0001",
         "ects:6"
       ],
       "contains": [
+        "a3cf57ca-1eba-5280-af9e-840e0a0e27bd",
         "2e0f93d4-5a1f-508a-a8b0-c03c4c70c6a2",
         "d35351a7-9892-5cfb-bffc-450c923d666a",
         "5e38a18b-1a31-5b4c-b487-9035e30e4533",
@@ -26,7 +27,9 @@
         "99f7f796-6a24-5e59-b640-1e2bc158d5e1",
         "57e54c6f-c4e4-5af7-becf-5541abc993cc"
       ],
-      "requires": [],
+      "requires": [
+        "a3cf57ca-1eba-5280-af9e-840e0a0e27bd"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0001",
       "dimensionTags": {
         "phase": "Modul"
@@ -38,7 +41,7 @@
       "titleEn": "Computing concepts and imperative programming",
       "description": "Die lernende Person kann Probleme, Algorithmen und Programme in Beziehung setzen und imperative Konstrukte verwenden.",
       "descriptionEn": "The learner can relate problems, algorithms, and programs and use imperative constructs.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0001"
       ],
@@ -53,17 +56,40 @@
       }
     },
     {
+      "id": "a3cf57ca-1eba-5280-af9e-840e0a0e27bd",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-in0001",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "ecc476fc-b853-5a13-a012-c39e8f1dbe42",
       "title": "Problem, Algorithmus, Programm",
       "titleEn": "Problem, algorithm, program",
       "description": "Die lernende Person kann Probleme, Algorithmen und Programme definieren und unterscheiden und Probleme Algorithmen zuordnen.",
       "descriptionEn": "The learner can define and distinguish problems, algorithms, and programs and map problems to algorithms.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0001"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "a3cf57ca-1eba-5280-af9e-840e0a0e27bd"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -74,7 +100,7 @@
       "titleEn": "Imperative control structures",
       "description": "Die lernende Person kann Reihenfolge, Auswahl und Iteration verwenden, um kleine Programme zu erstellen.",
       "descriptionEn": "The learner can use sequence, selection, and iteration to build small programs.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0001"
       ],
@@ -90,7 +116,7 @@
       "titleEn": "Basic efficiency reasoning",
       "description": "Die lernende Person kann auf einem grundlegenden Niveau über die Zeit- und Raumnutzung nachdenken.",
       "descriptionEn": "The learner can reason about time and space use at a basic level.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0001"
       ],
@@ -106,7 +132,7 @@
       "titleEn": "Syntax and semantics of programs",
       "description": "Die lernende Person kann die formale Syntax und grundlegende Ausführungsmodelle für Programme beschreiben.",
       "descriptionEn": "The learner can describe formal syntax and basic execution models for programs.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0001"
       ],
@@ -127,7 +153,7 @@
       "titleEn": "Regular expressions and context-free grammars",
       "description": "Die lernende Person kann reguläre Ausdrücke und kontextfreie Grammatiken verwenden, um die Syntax festzulegen.",
       "descriptionEn": "The learner can use regular expressions and context-free grammars to specify syntax.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0001"
       ],
@@ -143,7 +169,7 @@
       "titleEn": "Control-flow and program semantics",
       "description": "Die lernende Person kann Kontrollflussdiagramme interpretieren und grundlegende Programmsemantik erklären.",
       "descriptionEn": "The learner can interpret control-flow graphs and explain basic program semantics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0001"
       ],
@@ -159,7 +185,7 @@
       "titleEn": "Elementary data structures and algorithms",
       "description": "Die lernende Person kann grundlegende Datentypen, Arrays und einfache Algorithmen verwenden.",
       "descriptionEn": "The learner can use basic data types, arrays, and simple algorithms.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0001"
       ],
@@ -180,7 +206,7 @@
       "titleEn": "Numbers, strings, and arrays",
       "description": "Die lernende Person kann Zahlen, Zeichenfolgen und Arrays darstellen und manipulieren.",
       "descriptionEn": "The learner can represent and manipulate numbers, strings, and arrays.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0001"
       ],
@@ -196,7 +222,7 @@
       "titleEn": "Insertion sort",
       "description": "Die lernende Person kann die Einfügesortierung implementieren und ihr Verhalten erklären.",
       "descriptionEn": "The learner can implement insertion sort and explain its behavior.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0001"
       ],
@@ -212,7 +238,7 @@
       "titleEn": "Recursion and search",
       "description": "Die lernende Person kann rekursive Lösungen entwerfen und deren Verhalten analysieren.",
       "descriptionEn": "The learner can design recursive solutions and analyze their behavior.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0001"
       ],
@@ -233,7 +259,7 @@
       "titleEn": "Binary search",
       "description": "Die lernende Person kann die binäre Suche implementieren und deren Richtigkeit analysieren.",
       "descriptionEn": "The learner can implement binary search and analyze its correctness.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0001"
       ],
@@ -249,7 +275,7 @@
       "titleEn": "Types of recursion",
       "description": "Die lernende Person kann gängige Rekursionsmuster identifizieren und rekursive Aufrufe verfolgen.",
       "descriptionEn": "The learner can identify common recursion patterns and trace recursive calls.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0001"
       ],
@@ -265,7 +291,7 @@
       "titleEn": "Object-oriented programming",
       "description": "Die lernende Person kann zentrale objektorientierte Konzepte anwenden, um Programme zu strukturieren.",
       "descriptionEn": "The learner can apply core object-oriented concepts to structure programs.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0001"
       ],
@@ -287,7 +313,7 @@
       "titleEn": "Classes, objects, and methods",
       "description": "Die lernende Person kann Klassen definieren und Objekte und Methoden effektiv nutzen.",
       "descriptionEn": "The learner can define classes and use objects and methods effectively.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0001"
       ],
@@ -303,7 +329,7 @@
       "titleEn": "Inheritance and interfaces",
       "description": "Die lernende Person kann Vererbung, abstrakte Klassen und Schnittstellen anwenden.",
       "descriptionEn": "The learner can apply inheritance, abstract classes, and interfaces.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0001"
       ],
@@ -319,7 +345,7 @@
       "titleEn": "Polymorphism",
       "description": "Die lernende Person kann Polymorphismus und dynamischen Versand bei der Programmgestaltung nutzen.",
       "descriptionEn": "The learner can use polymorphism and dynamic dispatch in program design.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0001"
       ],
@@ -335,7 +361,7 @@
       "titleEn": "Programming in the large and concurrency",
       "description": "Die lernende Person kann die Programmierung auf größere Systeme und grundlegende Parallelität beziehen.",
       "descriptionEn": "The learner can relate programming to larger systems and basic concurrency.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0001"
       ],
@@ -356,7 +382,7 @@
       "titleEn": "Programming in the large",
       "description": "Die lernende Person kann Modularisierung und einen breiteren gesellschaftlichen oder ethischen Kontext beschreiben.",
       "descriptionEn": "The learner can describe modularization and broader societal or ethical context.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0001"
       ],
@@ -372,7 +398,7 @@
       "titleEn": "Threads and basic concurrency",
       "description": "Die lernende Person kann Threads erstellen und grundlegende Probleme mit der Parallelität erklären.",
       "descriptionEn": "The learner can create threads and explain basic concurrency issues.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0001"
       ],

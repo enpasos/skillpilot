@@ -13,17 +13,20 @@
       "titleEn": "Advanced Concepts of Quantum Computing (IN2400)",
       "description": "Die lernende Person kann fortgeschrittene Konzepte des Quantum Computing wie QFT, Shor-Algorithmus, Quantenoperationen und Fehlerkorrektur anwenden.",
       "descriptionEn": "The learner can apply advanced quantum computing concepts such as the quantum Fourier transform, Shor's algorithm, quantum operations, and error correction.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:IN2400",
         "ects:5"
       ],
       "contains": [
+        "24a4e769-568c-5c5f-bc87-b79b0bbeccf4",
         "ec00c4a6-1d87-52c9-814e-9db277a2ef2f",
         "20e59db1-4dce-5ba2-baac-d62b14f6c969",
         "552a584c-b92a-5afa-a68a-97cc0ab7e080"
       ],
-      "requires": [],
+      "requires": [
+        "24a4e769-568c-5c5f-bc87-b79b0bbeccf4"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN2400",
       "dimensionTags": {
         "phase": "Modul"
@@ -35,7 +38,7 @@
       "titleEn": "Quantum Fourier transform and period finding",
       "description": "Die lernende Person kann die Quanten-Fouriertransformation in algorithmischen Zusammenhängen erklären und einsetzen.",
       "descriptionEn": "The learner can explain and use the quantum Fourier transform in algorithmic settings.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2400"
       ],
@@ -49,17 +52,40 @@
       }
     },
     {
+      "id": "24a4e769-568c-5c5f-bc87-b79b0bbeccf4",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-in2400",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "0d249783-951f-5003-a627-b8599f31c860",
       "title": "Grundlagen der Quanten-Fouriertransformation",
       "titleEn": "Quantum Fourier transform fundamentals",
       "description": "Die lernende Person kann QFT-Schaltungen herleiten, implementieren und Ergebnisse interpretieren.",
       "descriptionEn": "The learner can derive and implement the QFT circuit and interpret its outputs.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2400"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "24a4e769-568c-5c5f-bc87-b79b0bbeccf4"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -70,7 +96,7 @@
       "titleEn": "Period finding and Shor's algorithm",
       "description": "Die lernende Person kann QFT-basierte Periodenfindung mit der Ganzzahlfaktorisierung verbinden.",
       "descriptionEn": "The learner can connect QFT-based period finding to integer factorization.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2400"
       ],
@@ -88,7 +114,7 @@
       "titleEn": "Advanced quantum operations",
       "description": "Die lernende Person kann Quantenoperationen über unitäre Gatter hinaus modellieren.",
       "descriptionEn": "The learner can model quantum operations beyond unitary gates.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2400"
       ],
@@ -107,7 +133,7 @@
       "titleEn": "Quantum operations and channels",
       "description": "Die lernende Person kann CPTP-Abbildungen beschreiben und Quantenoperationen kombinieren.",
       "descriptionEn": "The learner can describe CPTP maps and compose quantum operations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2400"
       ],
@@ -123,7 +149,7 @@
       "titleEn": "Circuit synthesis for advanced algorithms",
       "description": "Die lernende Person kann Schaltungsstrukturen für fortgeschrittene Algorithmen entwerfen.",
       "descriptionEn": "The learner can design circuit structures for advanced algorithms.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2400"
       ],
@@ -139,7 +165,7 @@
       "titleEn": "Quantum error correction",
       "description": "Die lernende Person kann Fehlermodelle erklären und Fehlerkorrektur-Formalismen anwenden.",
       "descriptionEn": "The learner can explain error models and apply error correction formalisms.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2400"
       ],
@@ -160,7 +186,7 @@
       "titleEn": "Error models and syndrome extraction",
       "description": "Die lernende Person kann Fehler modellieren und Syndrommessungen beschreiben.",
       "descriptionEn": "The learner can model errors and describe syndrome measurement.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2400"
       ],
@@ -178,7 +204,7 @@
       "titleEn": "Stabilizer formalism and codes",
       "description": "Die lernende Person kann den Stabilisatorformalismus zur Beschreibung von Codes nutzen.",
       "descriptionEn": "The learner can use the stabilizer formalism to describe quantum codes.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2400"
       ],

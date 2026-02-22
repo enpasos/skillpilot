@@ -26,12 +26,15 @@
         "level:master"
       ],
       "contains": [
+        "47ef2e2f-23dc-585e-bf58-91690db0e843",
         "f08ff23e-a997-5a38-8390-4b03606685dd",
         "9da574c5-ad08-5e8b-8968-69e0010a18b5",
         "6b4b8ff2-9789-5d20-9699-371070f5f724",
         "6fae7b63-8570-52a8-9824-9df59aa62c73"
       ],
-      "requires": [],
+      "requires": [
+        "47ef2e2f-23dc-585e-bf58-91690db0e843"
+      ],
       "dimensionTags": {
         "phase": "Curriculum"
       }
@@ -141,7 +144,7 @@
       "titleEn": "Quantum Mechanical Basics of NMR-Spectroscopy (Module CH3034)",
       "description": "In dieser Vorlesung werden grundlegende quantenmechanische Konzepte vorgestellt, die die Grundlage für das Verständnis und die Gestaltung fortgeschrittener Kernspinresonanzexperimente bilden. Es werden verschiedene Ansätze diskutiert, wie man Spinsysteme beschreibt, wie man sie initialisiert, wie man ihre zeitliche Entwicklung berechnet und wie man Erwartungswerte experimentell interessanter Observablen erhält: (a) Zustandsfunktionen und Schrödinger-Gleichung, (b) Magnetisierungsvektoren und die Bloch-Gleichungen, (c) Dichteoperator und Liouville-von-Neumann-Gleichung und (d) kartesischer Produktoperatorformalismus. Ein wichtiges Ziel der Vorlesung besteht darin, die Verbindungen zwischen diesen verschiedenen Formalismen herzustellen, die Situationen zu klären, in denen sie anwendbar sind, und auch die Grenzen, in denen sie nicht anwendbar sind.Wichtige Begriffe des Hamilton-Operators mit rotierendem Rahmen werden eingeführt, wie z. B. Frequenzversätze, Hochfrequenzimpulse und J-Kopplungen. Darüber hinaus werden die Konzepte der Average Hamiltonian Theory diskutiert (effektiver Propagator, effektiver Hamiltonian, Average Hamiltonian, Toggleing Frame), die leistungsstarke Werkzeuge für die Analyse und den Entwurf moderner Mehrfachpulssequenzen bereitstellen. Konkrete Beispiele, die mit diesen Ansätzen analysiert werden, sind das Stern-Gerlach-Experiment, die Präzession eines Spin-½-Teilchens in einem externen Magnetfeld, die Auswirkungen chemischer Verschiebung, Pulse und Kopplungen sowie Kohärenztransfer in TOCSY- und INEPT-Experimenten.",
       "descriptionEn": "In this lecture, fundamental quantum-mechanical concepts are introduced that form the basis for the understanding and the design of advanced nuclear magnetic resonance experiments. A number of different approaches are discussed how to describe spin systems, how to initialize them, how to calculate their time evolution and how to obtain expectation values of experimentally interesting observables: (a) state functions and Schrödinger equation, (b) magnetization vectors and the Bloch equations, (c) density operator and Liouville-von Neumann equation and (d) Cartesian product operator formalism. An important goal of the lecture is to establish the links between these different formalisms, to clarify the situations in which they are applicable and also the limits where they cannot be applied. Important terms of the rotating frame Hamiltonian are introduced such as frequency offsets, radiofrequency pulses and J couplings. In addition, the concepts of Average Hamiltonian Theory are discussed (effective propagator, effective Hamiltonian, average Hamiltonian, toggling frame), which provide powerful tools for the analysis and the design of modern multiple-pulse sequences. Concrete examples that are analyzed using these approaches include the Stern-Gerlach experiment, the precession of a spin ½ particle in an external magnetic field, the effects of chemical shift, pulses and couplings and coherence transfer in TOCSY and INEPT-type experiments.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:CH3034",
         "ects:5"
@@ -162,17 +165,41 @@
       }
     },
     {
+      "id": "47ef2e2f-23dc-585e-bf58-91690db0e843",
+      "title": "Warum Quantum Science and Technology? - Relevanz und Orientierung",
+      "titleEn": "Why Quantum Science and Technology? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Quantum Science and Technology für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Quantum Science and Technology matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "MSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Curriculum",
+        "framework": "tum-msc-qst",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "ec000efe-8ab4-5692-9a23-c24ef37d2601",
       "title": "Nach erfolgreichem Abschluss dieses Moduls sind Studierende in der Lage, die Grundkonzepte und mathematischen Beschreibungen der Quantenmechanik auf die NMR-Spektroskopie anzuwenden",
       "titleEn": "Upon successful completion of this module, students are able to apply the basic concepts and mathematical descriptions of quantum mechanics to NMR spectroscopy",
       "description": "Nach erfolgreichem Abschluss dieses Moduls sind Studierende in der Lage, die Grundkonzepte und mathematischen Beschreibungen der Quantenmechanik auf die NMR-Spektroskopie anzuwenden. Sie sind in der Lage, bekannte NMR-Experimente zu analysieren. Darüber hinaus sind sie in der Lage, verschiedene Arten und Konzepte zur mathematischen Beschreibung dieser NMR-Experimente zu bewerten. Endlich sind sie auch in der Lage, neue NMR-Experimente zu erstellen.",
       "descriptionEn": "Upon successful completion of this module, students are able to apply the basic concepts and mathematical descriptions of quantum mechanics to NMR spectroscopy. They are able to analyze known NMR experiments. Furthermore they are able to evaluate different ways and concepts of mathematically describing these NMR experiments. Finally they are also able to create new NMR experiments.",
-      "weight": 0.0,
+      "weight": 0,
       "tags": [
         "module:CH3034"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "47ef2e2f-23dc-585e-bf58-91690db0e843"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -183,7 +210,7 @@
       "titleEn": "In this lecture, fundamental quantum-mechanical concepts are introduced that for",
       "description": "In dieser Vorlesung werden grundlegende quantenmechanische Konzepte vorgestellt, die die Grundlage für das Verständnis und die Gestaltung fortgeschrittener Kernspinresonanzexperimente bilden.",
       "descriptionEn": "In this lecture, fundamental quantum-mechanical concepts are introduced that form the basis for the understanding and the design of advanced nuclear magnetic resonance experiments.",
-      "weight": 0.0,
+      "weight": 0,
       "tags": [
         "module:CH3034"
       ],
@@ -199,7 +226,7 @@
       "titleEn": "A number of different approaches are discussed how to describe spin systems, how",
       "description": "Es werden verschiedene Ansätze diskutiert, wie man Spinsysteme beschreibt, wie man sie initialisiert, wie man ihre zeitliche Entwicklung berechnet und wie man Erwartungswerte experimentell interessanter Observablen erhält: (a) Zustandsfunktionen und Schrödinger-Gleichung, (b) Magnetisierungsvektoren und die Bloch-Gleichungen, (c) Dichteoperator und Liouville-von-Neumann-Gleichung und (d) kartesischer Produktoperatorformalismus.",
       "descriptionEn": "A number of different approaches are discussed how to describe spin systems, how to initialize them, how to calculate their time evolution and how to obtain expectation values of experimentally interesting observables: (a) state functions and Schrödinger equation, (b) magnetization vectors and the Bloch equations, (c) density operator and Liouville-von Neumann equation and (d) Cartesian product operator formalism.",
-      "weight": 0.0,
+      "weight": 0,
       "tags": [
         "module:CH3034"
       ],
@@ -215,7 +242,7 @@
       "titleEn": "An important goal of the lecture is to establish the links between these differe",
       "description": "Ein wichtiges Ziel der Vorlesung besteht darin, die Verbindungen zwischen diesen verschiedenen Formalismen herzustellen, die Situationen zu klären, in denen sie anwendbar sind, und auch die Grenzen, in denen sie nicht anwendbar sind.",
       "descriptionEn": "An important goal of the lecture is to establish the links between these different formalisms, to clarify the situations in which they are applicable and also the limits where they cannot be applied.",
-      "weight": 0.0,
+      "weight": 0,
       "tags": [
         "module:CH3034"
       ],
@@ -231,7 +258,7 @@
       "titleEn": "Important terms of the rotating frame Hamiltonian are introduced such as frequen",
       "description": "Wichtige Begriffe des Hamilton-Operators mit rotierendem Rahmen werden eingeführt, wie z. B. Frequenzversätze, Hochfrequenzimpulse und J-Kopplungen.",
       "descriptionEn": "Important terms of the rotating frame Hamiltonian are introduced such as frequency offsets, radiofrequency pulses and J couplings.",
-      "weight": 0.0,
+      "weight": 0,
       "tags": [
         "module:CH3034"
       ],
@@ -247,7 +274,7 @@
       "titleEn": "In addition, the concepts of Average Hamiltonian Theory are discussed (effective",
       "description": "Darüber hinaus werden die Konzepte der Average Hamiltonian Theory diskutiert (effektiver Propagator, effektiver Hamiltonian, Average Hamiltonian, Toggleing Frame), die leistungsstarke Werkzeuge für die Analyse und den Entwurf moderner Mehrfachpulssequenzen bereitstellen.",
       "descriptionEn": "In addition, the concepts of Average Hamiltonian Theory are discussed (effective propagator, effective Hamiltonian, average Hamiltonian, toggling frame), which provide powerful tools for the analysis and the design of modern multiple-pulse sequences.",
-      "weight": 0.0,
+      "weight": 0,
       "tags": [
         "module:CH3034"
       ],
@@ -263,7 +290,7 @@
       "titleEn": "Concrete examples that are analyzed using these approaches include the Stern-Ger",
       "description": "Konkrete Beispiele, die mit diesen Ansätzen analysiert werden, sind das Stern-Gerlach-Experiment, die Präzession eines Spin-½-Teilchens in einem externen Magnetfeld, die Auswirkungen chemischer Verschiebung, Pulse und Kopplungen sowie Kohärenztransfer in TOCSY- und INEPT-Experimenten.",
       "descriptionEn": "Concrete examples that are analyzed using these approaches include the Stern-Gerlach experiment, the precession of a spin ½ particle in an external magnetic field, the effects of chemical shift, pulses and couplings and coherence transfer in TOCSY and INEPT-type experiments.",
-      "weight": 0.0,
+      "weight": 0,
       "tags": [
         "module:CH3034"
       ],
@@ -279,7 +306,7 @@
       "titleEn": "Symmetry and Group Theory (CH3337)",
       "description": "Die lernende Person kann Gruppen- und Symmetrieargumente nutzen, um molekulare und festkörperphysikalische Systeme zu analysieren.",
       "descriptionEn": "The learner can use group theory and symmetry arguments to analyze molecular and solid-state systems.",
-      "weight": 4.0,
+      "weight": 4,
       "tags": [
         "module:CH3337",
         "ects:4"
@@ -301,7 +328,7 @@
       "titleEn": "Group theory foundations",
       "description": "Die lernende Person kann Gruppen definieren und grundlegende Symmetrieoperationen sowie Darstellungen anwenden.",
       "descriptionEn": "The learner can define groups and apply basic symmetry operations and representations.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CH3337"
       ],
@@ -320,7 +347,7 @@
       "titleEn": "Group axioms, subgroups, and symmetry operations",
       "description": "Die lernende Person kann Symmetrieoperationen klassifizieren und Untergruppen sowie Erzeuger bestimmen.",
       "descriptionEn": "The learner can classify symmetry operations and identify subgroups and generators.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CH3337"
       ],
@@ -336,7 +363,7 @@
       "titleEn": "Representations and character tables",
       "description": "Die lernende Person kann Darstellungen aufbauen und Charaktertafeln für Punktgruppen nutzen.",
       "descriptionEn": "The learner can build representations and read character tables for point groups.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CH3337"
       ],
@@ -354,7 +381,7 @@
       "titleEn": "Molecular symmetry and spectroscopy",
       "description": "Die lernende Person kann Moleküle nach Punktgruppen klassifizieren und spektrale Aktivität vorhersagen.",
       "descriptionEn": "The learner can classify molecules by point groups and predict spectroscopic activity.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CH3337"
       ],
@@ -373,7 +400,7 @@
       "titleEn": "Point group classification of molecules",
       "description": "Die lernende Person kann Symmetrieelemente bestimmen und die Punktgruppe eines Moleküls ableiten.",
       "descriptionEn": "The learner can determine point groups and symmetry elements of molecules.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CH3337"
       ],
@@ -389,7 +416,7 @@
       "titleEn": "Vibrational modes and selection rules",
       "description": "Die lernende Person kann Normalmoden herleiten und IR-/Raman-Aktivität aus Symmetrie ableiten.",
       "descriptionEn": "The learner can derive normal modes and relate symmetry to IR/Raman activity.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CH3337"
       ],
@@ -407,7 +434,7 @@
       "titleEn": "Symmetry in quantum chemistry and solids",
       "description": "Die lernende Person kann Symmetrie auf quantenmechanische Modelle und Festkörperstrukturen anwenden.",
       "descriptionEn": "The learner can apply symmetry to quantum-mechanical models and solid-state structures.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CH3337"
       ],
@@ -426,7 +453,7 @@
       "titleEn": "Symmetry in quantum mechanics and MO theory",
       "description": "Die lernende Person kann Symmetrieargumente zur Vereinfachung der MO-Analyse und von Quantenzuständen nutzen.",
       "descriptionEn": "The learner can use symmetry to simplify MO analysis and quantum states.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CH3337"
       ],
@@ -442,7 +469,7 @@
       "titleEn": "Crystal and lattice symmetry",
       "description": "Die lernende Person kann Raumgruppen beschreiben und deren Einfluss auf Festkörpereigenschaften erklären.",
       "descriptionEn": "The learner can describe space-group symmetry and its effect on solid-state properties.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CH3337"
       ],
@@ -460,7 +487,7 @@
       "titleEn": "Software for Quantum Computing (CIT4330012)",
       "description": "Die lernende Person kann Anwendungen des Quantum Computing bewerten und Software-Tools zum Entwurf, zur Simulation, zur Kompilierung und zur Verifikation von Quantenschaltungen nutzen.",
       "descriptionEn": "The learner can evaluate quantum computing applications and use software tools to design, simulate, compile, and verify quantum circuits.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:CIT4330012",
         "ects:5"
@@ -483,7 +510,7 @@
       "titleEn": "Quantum computing paradigm and suitability",
       "description": "Die lernende Person kann Quantum- und klassische Berechnung gegenüberstellen und die Eignung von Anwendungen beurteilen.",
       "descriptionEn": "The learner can contrast quantum vs classical computing and assess application suitability.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4330012"
       ],
@@ -502,7 +529,7 @@
       "titleEn": "Quantum vs classical computation",
       "description": "Die lernende Person kann erklären, wie sich Quantum Computing von klassischen Modellen unterscheidet.",
       "descriptionEn": "The learner can explain how quantum computation differs from classical models.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330012"
       ],
@@ -518,7 +545,7 @@
       "titleEn": "Application suitability assessment",
       "description": "Die lernende Person kann beurteilen, ob ein Problem von Quantum-Computing-Ansätzen profitiert.",
       "descriptionEn": "The learner can judge whether a problem benefits from quantum approaches.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330012"
       ],
@@ -536,7 +563,7 @@
       "titleEn": "Design flow and data structures",
       "description": "Die lernende Person kann Design-Flows und Datenstrukturen für Quantum-Software anwenden.",
       "descriptionEn": "The learner can apply design flows and data structures for quantum software.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4330012"
       ],
@@ -555,7 +582,7 @@
       "titleEn": "Quantum application design flow",
       "description": "Die lernende Person kann die Schritte von Algorithmus bis Hardware-Implementierung darstellen.",
       "descriptionEn": "The learner can outline the steps from algorithm to implementation on hardware.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330012"
       ],
@@ -571,7 +598,7 @@
       "titleEn": "Data structures for quantum design",
       "description": "Die lernende Person kann Datenstrukturen für Schaltungen, Zustände und Entscheidungsdiagramme nutzen.",
       "descriptionEn": "The learner can use data structures for circuits, states, and decision diagrams.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330012"
       ],
@@ -589,7 +616,7 @@
       "titleEn": "Core software tools",
       "description": "Die lernende Person kann Tools für Simulation, Kompilierung und Verifikation einsetzen.",
       "descriptionEn": "The learner can use software tools for simulation, compilation, and verification.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4330012"
       ],
@@ -608,7 +635,7 @@
       "titleEn": "Circuit simulation and verification",
       "description": "Die lernende Person kann Quantenschaltungen simulieren und funktionale Korrektheit prüfen.",
       "descriptionEn": "The learner can simulate circuits and verify functional correctness.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330012"
       ],
@@ -624,7 +651,7 @@
       "titleEn": "Compilation and mapping to hardware",
       "description": "Die lernende Person kann Schaltungen kompilieren und auf Zielhardware abbilden.",
       "descriptionEn": "The learner can compile circuits and map them to target devices.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330012"
       ],
@@ -642,7 +669,7 @@
       "titleEn": "Hands-on implementation",
       "description": "Die lernende Person kann Quantenschaltungen in Software-Toolchains implementieren und ausführen.",
       "descriptionEn": "The learner can implement and execute quantum circuits in software toolchains.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4330012"
       ],
@@ -661,7 +688,7 @@
       "titleEn": "Implementing circuits in toolkits",
       "description": "Die lernende Person kann Schaltungen in Tools wie Qiskit-ähnlichen Umgebungen realisieren.",
       "descriptionEn": "The learner can realize circuits with tools such as Qiskit-like environments.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330012"
       ],
@@ -677,7 +704,7 @@
       "titleEn": "Executing and evaluating results",
       "description": "Die lernende Person kann Schaltungen auf Simulatoren oder Hardware ausführen und Ergebnisse analysieren.",
       "descriptionEn": "The learner can run circuits on simulators or hardware and analyze outputs.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330012"
       ],
@@ -695,7 +722,7 @@
       "titleEn": "Design Automation and Simulation for Microfluidic Devices (CIT4330013)",
       "description": "Die lernende Person kann mikrofluidische Lab-on-a-Chip-Geräte von Anforderungen bis Prototypen entwerfen, simulieren und bewerten.",
       "descriptionEn": "The learner can design, simulate, and evaluate microfluidic lab-on-chip devices from application requirements to prototyping.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:CIT4330013",
         "ects:5"
@@ -718,7 +745,7 @@
       "titleEn": "Microfluidics applications and platforms",
       "description": "Die lernende Person kann Anwendungen analysieren und geeignete Mikrofluidik-Plattformen auswählen.",
       "descriptionEn": "The learner can analyze applications and select suitable microfluidic platforms.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4330013"
       ],
@@ -737,7 +764,7 @@
       "titleEn": "Application potential and use cases",
       "description": "Die lernende Person kann Einsatzfelder identifizieren, in denen Mikrofluidik Vorteile bietet.",
       "descriptionEn": "The learner can identify domains where microfluidics offers advantages.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330013"
       ],
@@ -753,7 +780,7 @@
       "titleEn": "Platform types and components",
       "description": "Die lernende Person kann kontinuierliche und digitale Mikrofluidikplattformen sowie deren Komponenten vergleichen.",
       "descriptionEn": "The learner can compare continuous-flow and digital microfluidic platforms and components.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330013"
       ],
@@ -771,7 +798,7 @@
       "titleEn": "Design automation workflow",
       "description": "Die lernende Person kann Designschritte und Automatisierungsmethoden für mikrofluidische Layouts anwenden.",
       "descriptionEn": "The learner can apply design steps and automation methods for microfluidic layouts.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4330013"
       ],
@@ -790,7 +817,7 @@
       "titleEn": "Layout synthesis and channel design",
       "description": "Die lernende Person kann Kanäle dimensionieren und fluidische Verbindungen planen.",
       "descriptionEn": "The learner can dimension channels and plan fluidic connections.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330013"
       ],
@@ -806,7 +833,7 @@
       "titleEn": "Control of flow, mixing, and incubation",
       "description": "Die lernende Person kann Steuerparameter für Mischen, Heizen und Timing spezifizieren.",
       "descriptionEn": "The learner can specify control parameters for mixing, heating, and timing.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330013"
       ],
@@ -824,7 +851,7 @@
       "titleEn": "Simulation methods",
       "description": "Die lernende Person kann Transport modellieren und Geräte mittels Simulation bewerten.",
       "descriptionEn": "The learner can model transport and evaluate devices using simulations.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4330013"
       ],
@@ -843,7 +870,7 @@
       "titleEn": "Flow and transport modeling",
       "description": "Die lernende Person kann druckgetriebenen Fluss und Diffusion modellieren.",
       "descriptionEn": "The learner can model pressure-driven flow and diffusion effects.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330013"
       ],
@@ -859,7 +886,7 @@
       "titleEn": "Simulation tools and validation",
       "description": "Die lernende Person kann Simulationswerkzeuge nutzen, um Leistung und Randbedingungen zu bewerten.",
       "descriptionEn": "The learner can use simulation tools to assess performance and constraints.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330013"
       ],
@@ -877,7 +904,7 @@
       "titleEn": "Fabrication and prototyping",
       "description": "Die lernende Person kann Fertigungsschritte und die Integration zu Prototypen skizzieren.",
       "descriptionEn": "The learner can outline fabrication steps and integration into prototypes.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4330013"
       ],
@@ -896,7 +923,7 @@
       "titleEn": "Fabrication processes and materials",
       "description": "Die lernende Person kann gängige Fertigungsverfahren für Mikrofluidik-Chips beschreiben.",
       "descriptionEn": "The learner can describe common fabrication approaches for microfluidic chips.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330013"
       ],
@@ -912,7 +939,7 @@
       "titleEn": "Testing and iteration",
       "description": "Die lernende Person kann Testverfahren planen und Designs anhand der Ergebnisse verbessern.",
       "descriptionEn": "The learner can plan testing procedures and refine designs based on results.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4330013"
       ],
@@ -930,7 +957,7 @@
       "titleEn": "Photonic Quantum Technologies (CIT4430005)",
       "description": "Die lernende Person kann Prinzipien der Quantenphotonik erklären und photonenbasierte Plattformen für Kommunikation und Computing analysieren.",
       "descriptionEn": "The learner can explain quantum photonics principles and analyze photonic platforms for communication and computing.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:CIT4430005",
         "ects:5"
@@ -953,7 +980,7 @@
       "titleEn": "Quantum photonics fundamentals",
       "description": "Die lernende Person kann Einzelphotonen, Verschränkung und optische Quantenzustände beschreiben.",
       "descriptionEn": "The learner can describe single photons, entanglement, and basic optical quantum states.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4430005"
       ],
@@ -972,7 +999,7 @@
       "titleEn": "Single-photon and entangled states",
       "description": "Die lernende Person kann Einzelphotonenquellen und verschränkte Photonen-Zustände charakterisieren.",
       "descriptionEn": "The learner can characterize single-photon sources and entangled photonic states.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4430005"
       ],
@@ -988,7 +1015,7 @@
       "titleEn": "Coherent light-matter interaction",
       "description": "Die lernende Person kann Resonator-QED und kohärente Kopplungsmechanismen erklären.",
       "descriptionEn": "The learner can explain resonator QED and coherent coupling mechanisms.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4430005"
       ],
@@ -1006,7 +1033,7 @@
       "titleEn": "Semiconductor photonic platforms",
       "description": "Die lernende Person kann halbleiterbasierte Photonquellen und Qubits bewerten.",
       "descriptionEn": "The learner can evaluate semiconductor-based photon sources and qubits.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4430005"
       ],
@@ -1025,7 +1052,7 @@
       "titleEn": "Optically active semiconductor qubits",
       "description": "Die lernende Person kann Halbleiter-Spin- und Defekt-Qubits vergleichen.",
       "descriptionEn": "The learner can compare semiconductor spin and defect-based qubits.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4430005"
       ],
@@ -1041,7 +1068,7 @@
       "titleEn": "Photon generation and detection",
       "description": "Die lernende Person kann erklären, wie Quantenlicht erzeugt und detektiert wird.",
       "descriptionEn": "The learner can explain how quantum light is generated and detected.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4430005"
       ],
@@ -1059,7 +1086,7 @@
       "titleEn": "Photonic quantum communication",
       "description": "Die lernende Person kann photonenbasierte Protokolle für Kommunikation und Networking anwenden.",
       "descriptionEn": "The learner can apply photonic protocols for communication and networking.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4430005"
       ],
@@ -1078,7 +1105,7 @@
       "titleEn": "Quantum communication protocols",
       "description": "Die lernende Person kann QKD- und Verschränkungsverteilungsprotokolle beschreiben.",
       "descriptionEn": "The learner can describe QKD and entanglement distribution protocols.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4430005"
       ],
@@ -1094,7 +1121,7 @@
       "titleEn": "Performance analysis of photonic devices",
       "description": "Die lernende Person kann Effizienz, Verluste und Rauschen in photonischen Systemen analysieren.",
       "descriptionEn": "The learner can analyze efficiency, losses, and noise in photonic systems.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4430005"
       ],
@@ -1112,7 +1139,7 @@
       "titleEn": "Photonic quantum computing",
       "description": "Die lernende Person kann photonische Gatter und Architekturen beschreiben.",
       "descriptionEn": "The learner can describe photonic gates and architectures.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:CIT4430005"
       ],
@@ -1131,7 +1158,7 @@
       "titleEn": "Photonic gates and circuits",
       "description": "Die lernende Person kann erklären, wie photonische Gatter implementiert werden.",
       "descriptionEn": "The learner can explain how photonic gates are implemented.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4430005"
       ],
@@ -1147,7 +1174,7 @@
       "titleEn": "Scalability and integration challenges",
       "description": "Die lernende Person kann Integrations- und Skalierungsfragen photonischer Prozessoren diskutieren.",
       "descriptionEn": "The learner can discuss integration and scaling issues for photonic processors.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:CIT4430005"
       ],
@@ -1165,7 +1192,7 @@
       "titleEn": "Simulation of Quantum Devices (EI70760)",
       "description": "Die lernende Person kann quantennanoelektronische Bauelemente modellieren und numerische Simulationen ihres Verhaltens implementieren.",
       "descriptionEn": "The learner can model quantum nanoelectronic devices and implement numerical simulations of their behavior.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:EI70760",
         "ects:5"
@@ -1187,7 +1214,7 @@
       "titleEn": "Quantum device modeling",
       "description": "Die lernende Person kann physikalische Modelle für nanoskalige Quantenbauelemente formulieren.",
       "descriptionEn": "The learner can formulate physical models for nanoscale quantum devices.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:EI70760"
       ],
@@ -1206,7 +1233,7 @@
       "titleEn": "Schrodinger equation for nanodevices",
       "description": "Die lernende Person kann Schrödinger-Gleichungen für eingeschlossene Strukturen aufstellen.",
       "descriptionEn": "The learner can set up Schrodinger equations for confined structures.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI70760"
       ],
@@ -1222,7 +1249,7 @@
       "titleEn": "Device physics and boundary conditions",
       "description": "Die lernende Person kann Bauelementparameter und Randbedingungen festlegen.",
       "descriptionEn": "The learner can specify device parameters and boundary conditions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI70760"
       ],
@@ -1240,7 +1267,7 @@
       "titleEn": "Numerical solution methods",
       "description": "Die lernende Person kann numerische Verfahren zur Lösung der Modellgleichungen anwenden.",
       "descriptionEn": "The learner can apply numerical techniques to solve model equations.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:EI70760"
       ],
@@ -1259,7 +1286,7 @@
       "titleEn": "Discretization and eigenvalue problems",
       "description": "Die lernende Person kann Gleichungen diskretisieren und Eigenzustände berechnen.",
       "descriptionEn": "The learner can discretize equations and solve for states.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI70760"
       ],
@@ -1275,7 +1302,7 @@
       "titleEn": "Quantum transport simulations",
       "description": "Die lernende Person kann Transportprozesse mit geeigneten numerischen Methoden modellieren.",
       "descriptionEn": "The learner can model transport using appropriate numerical methods.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI70760"
       ],
@@ -1293,7 +1320,7 @@
       "titleEn": "Implementation and validation",
       "description": "Die lernende Person kann grundlegende Simulationscodes implementieren und Ergebnisse validieren.",
       "descriptionEn": "The learner can implement basic simulation codes and validate results.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:EI70760"
       ],
@@ -1312,7 +1339,7 @@
       "titleEn": "Coding basic simulators",
       "description": "Die lernende Person kann einfache numerische Solver programmieren.",
       "descriptionEn": "The learner can implement simple numerical solvers.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI70760"
       ],
@@ -1328,7 +1355,7 @@
       "titleEn": "Result interpretation and verification",
       "description": "Die lernende Person kann Simulationsergebnisse interpretieren und Modellkonsistenz prüfen.",
       "descriptionEn": "The learner can interpret outputs and check model consistency.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI70760"
       ],
@@ -1346,7 +1373,7 @@
       "titleEn": "Current Topics in Photonic Quantum Technologies (EI77006)",
       "description": "Die lernende Person kann neue Forschungsthemen der Quantenphotonik selbständig erschließen und kritisch präsentieren.",
       "descriptionEn": "The learner can independently explore new research topics in photonic quantum technologies and present critical analyses.",
-      "weight": 3.0,
+      "weight": 3,
       "tags": [
         "module:EI77006",
         "ects:3"
@@ -1368,7 +1395,7 @@
       "titleEn": "Literature research and topic selection",
       "description": "Die lernende Person kann relevante Forschungsfragen und Quellen identifizieren.",
       "descriptionEn": "The learner can identify relevant research questions and sources.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:EI77006"
       ],
@@ -1387,7 +1414,7 @@
       "titleEn": "Finding and summarizing papers",
       "description": "Die lernende Person kann aktuelle Publikationen finden und zusammenfassen.",
       "descriptionEn": "The learner can locate and summarize current publications.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI77006"
       ],
@@ -1403,7 +1430,7 @@
       "titleEn": "Positioning research in the field",
       "description": "Die lernende Person kann Ergebnisse im Stand der Forschung einordnen.",
       "descriptionEn": "The learner can place findings within the state of the art.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI77006"
       ],
@@ -1421,7 +1448,7 @@
       "titleEn": "Critical evaluation",
       "description": "Die lernende Person kann Methoden, Ergebnisse und Grenzen von Studien beurteilen.",
       "descriptionEn": "The learner can assess methods, results, and limitations of studies.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:EI77006"
       ],
@@ -1440,7 +1467,7 @@
       "titleEn": "Assessing experimental and theoretical methods",
       "description": "Die lernende Person kann Methoden und Annahmen kritisch prüfen.",
       "descriptionEn": "The learner can critique methodologies and assumptions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI77006"
       ],
@@ -1456,7 +1483,7 @@
       "titleEn": "Comparing approaches and results",
       "description": "Die lernende Person kann konkurrierende Ansätze vergleichen.",
       "descriptionEn": "The learner can compare competing approaches and results.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI77006"
       ],
@@ -1474,7 +1501,7 @@
       "titleEn": "Scientific presentation",
       "description": "Die lernende Person kann einen klaren wissenschaftlichen Vortrag vorbereiten und halten.",
       "descriptionEn": "The learner can prepare and deliver a clear scientific talk.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:EI77006"
       ],
@@ -1493,7 +1520,7 @@
       "titleEn": "Structuring and visualizing a talk",
       "description": "Die lernende Person kann Vorträge strukturieren und verständliche Visualisierungen erstellen.",
       "descriptionEn": "The learner can structure presentations and create clear visuals.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI77006"
       ],
@@ -1509,7 +1536,7 @@
       "titleEn": "Responding to questions and discussion",
       "description": "Die lernende Person kann Fragen beantworten und Interpretationen verteidigen.",
       "descriptionEn": "The learner can answer questions and defend interpretations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI77006"
       ],
@@ -1527,7 +1554,7 @@
       "titleEn": "Quantum Computing with Superconducting Qubits: Basic Concepts (NAT3036)",
       "description": "Die lernende Person kann supraleitende Qubit-Hardware erklären, Algorithmen auf Hardware abbilden und Anforderungen der Fehlertoleranz mit Experimenten verknüpfen.",
       "descriptionEn": "The learner can explain superconducting qubit hardware, map algorithms to hardware, and relate fault-tolerance requirements to experiments.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:NAT3036",
         "ects:5"
@@ -1550,7 +1577,7 @@
       "titleEn": "Quantum algorithms and hardware mapping",
       "description": "Die lernende Person kann grundlegende Quantenalgorithmen mit Hardware-Restriktionen verknüpfen.",
       "descriptionEn": "The learner can relate core quantum algorithms to hardware constraints.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3036"
       ],
@@ -1569,7 +1596,7 @@
       "titleEn": "Core protocols and algorithmic building blocks",
       "description": "Die lernende Person kann Teleportation, Grover und QFT als motivierende Beispiele beschreiben.",
       "descriptionEn": "The learner can describe teleportation, Grover, and QFT as motivating examples.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3036"
       ],
@@ -1585,7 +1612,7 @@
       "titleEn": "Hardware-aware algorithm mapping",
       "description": "Die lernende Person kann Algorithmen auf native Gatter und Konnektivität abbilden.",
       "descriptionEn": "The learner can map algorithms onto native gate sets and connectivity.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3036"
       ],
@@ -1603,7 +1630,7 @@
       "titleEn": "Superconducting qubit hardware",
       "description": "Die lernende Person kann supraleitende Schaltkreise und deren Betrieb beschreiben.",
       "descriptionEn": "The learner can describe superconducting circuits and their operation.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3036"
       ],
@@ -1622,7 +1649,7 @@
       "titleEn": "Qubit types and couplers",
       "description": "Die lernende Person kann Transmon-, Fluxonium- und Kopplerelemente vergleichen.",
       "descriptionEn": "The learner can compare transmon, fluxonium, and coupling elements.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3036"
       ],
@@ -1638,7 +1665,7 @@
       "titleEn": "Control and readout techniques",
       "description": "Die lernende Person kann Mikrowellensteuerung und Messschemata erklären.",
       "descriptionEn": "The learner can explain microwave control and measurement schemes.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3036"
       ],
@@ -1656,7 +1683,7 @@
       "titleEn": "Characterization and benchmarking",
       "description": "Die lernende Person kann Qubits und Gatter mit Charakterisierungsmethoden bewerten.",
       "descriptionEn": "The learner can evaluate qubits and gates using characterization methods.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3036"
       ],
@@ -1675,7 +1702,7 @@
       "titleEn": "Coherence and noise metrics",
       "description": "Die lernende Person kann T1/T2 und Fehlermetriken interpretieren.",
       "descriptionEn": "The learner can interpret T1/T2 and error metrics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3036"
       ],
@@ -1691,7 +1718,7 @@
       "titleEn": "Gate and processor benchmarking",
       "description": "Die lernende Person kann Benchmarking- und Kalibrierkonzepte anwenden.",
       "descriptionEn": "The learner can apply benchmarking and calibration concepts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3036"
       ],
@@ -1709,7 +1736,7 @@
       "titleEn": "Error correction and scaling",
       "description": "Die lernende Person kann QEC-Codes und Fehlertoleranzschwellen erklären.",
       "descriptionEn": "The learner can explain QEC codes and fault-tolerance thresholds.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3036"
       ],
@@ -1728,7 +1755,7 @@
       "titleEn": "Codes and decoding basics",
       "description": "Die lernende Person kann Surface Codes und Decoding-Schritte skizzieren.",
       "descriptionEn": "The learner can outline surface codes and decoding steps.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3036"
       ],
@@ -1744,7 +1771,7 @@
       "titleEn": "Scaling challenges and platform comparison",
       "description": "Die lernende Person kann supraleitende Plattformen mit Ionen- und Atomplattformen vergleichen.",
       "descriptionEn": "The learner can compare superconducting platforms to ions and atoms for scaling.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3036"
       ],
@@ -1762,7 +1789,7 @@
       "titleEn": "Current Topics in Quantum Networks (NAT5008m)",
       "description": "Die lernende Person kann aktuelle Forschung zu Quantennetzwerken analysieren und Ergebnisse präsentieren.",
       "descriptionEn": "The learner can analyze current research in quantum networks and communicate findings in presentations.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:NAT5008m",
         "ects:5"
@@ -1785,7 +1812,7 @@
       "titleEn": "Research literacy and presentation",
       "description": "Die lernende Person kann aktuelle Arbeiten lesen, zusammenfassen und präsentieren.",
       "descriptionEn": "The learner can read, summarize, and present recent papers.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5008m"
       ],
@@ -1804,7 +1831,7 @@
       "titleEn": "Weekly paper analysis",
       "description": "Die lernende Person kann Kernergebnisse aus zugewiesenen Arbeiten herausarbeiten.",
       "descriptionEn": "The learner can extract key results from assigned papers.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5008m"
       ],
@@ -1820,7 +1847,7 @@
       "titleEn": "Scientific presentation preparation",
       "description": "Die lernende Person kann klare Präsentationen von Forschungsergebnissen erstellen.",
       "descriptionEn": "The learner can prepare clear presentations of research findings.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5008m"
       ],
@@ -1838,7 +1865,7 @@
       "titleEn": "Quantum network hardware and scaling",
       "description": "Die lernende Person kann Hardwareplattformen und Skalierungsprobleme vergleichen.",
       "descriptionEn": "The learner can compare hardware platforms and scaling challenges.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5008m"
       ],
@@ -1857,7 +1884,7 @@
       "titleEn": "Hardware platforms for networking",
       "description": "Die lernende Person kann Atome, Ionen, supraleitende Schaltkreise und Festkörperplattformen vergleichen.",
       "descriptionEn": "The learner can compare atoms, ions, superconducting circuits, and solid-state platforms.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5008m"
       ],
@@ -1873,7 +1900,7 @@
       "titleEn": "Nanofabrication and scaling challenges",
       "description": "Die lernende Person kann Fertigungsansätze und Skalierungsgrenzen beschreiben.",
       "descriptionEn": "The learner can describe fabrication approaches and scalability limits.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5008m"
       ],
@@ -1891,7 +1918,7 @@
       "titleEn": "Distributed quantum information",
       "description": "Die lernende Person kann Protokolle für verteilte Quantenverarbeitung erläutern.",
       "descriptionEn": "The learner can explain protocols for distributed quantum processing.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5008m"
       ],
@@ -1910,7 +1937,7 @@
       "titleEn": "Entanglement distribution and memories",
       "description": "Die lernende Person kann Verschränkungsverteilung und die Rolle von Quantenspeichern erklären.",
       "descriptionEn": "The learner can explain entanglement distribution and quantum memory roles.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5008m"
       ],
@@ -1926,7 +1953,7 @@
       "titleEn": "Communication and computation protocols",
       "description": "Die lernende Person kann Protokolle für Quantenkommunikation und verteiltes Rechnen beschreiben.",
       "descriptionEn": "The learner can describe protocols for quantum communication and distributed computing.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5008m"
       ],
@@ -1944,7 +1971,7 @@
       "titleEn": "State-of-the-art assessment",
       "description": "Die lernende Person kann Trends und offene Herausforderungen bewerten.",
       "descriptionEn": "The learner can evaluate trends and open challenges.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5008m"
       ],
@@ -1963,7 +1990,7 @@
       "titleEn": "Evaluating recent developments",
       "description": "Die lernende Person kann die Bedeutung aktueller Ergebnisse einschätzen.",
       "descriptionEn": "The learner can assess the significance of recent results.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5008m"
       ],
@@ -1979,7 +2006,7 @@
       "titleEn": "Identifying open challenges",
       "description": "Die lernende Person kann zentrale offene Probleme benennen.",
       "descriptionEn": "The learner can articulate key open problems.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5008m"
       ],
@@ -1997,7 +2024,7 @@
       "titleEn": "Cavity-, Circuit- and Waveguide QED (NAT5030m)",
       "description": "Die lernende Person kann Literatur zu quantenmechanischer Licht-Materie-Wechselwirkung verstehen und aktuelle Forschungstrends vermitteln.",
       "descriptionEn": "The learner can understand quantum light-matter interaction literature and communicate current research trends.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:NAT5030m",
         "ects:5"
@@ -2019,7 +2046,7 @@
       "titleEn": "Fundamentals of light-matter interaction",
       "description": "Die lernende Person kann grundlegende QED-Modelle für Hohlräume, Schaltkreise und Wellenleiter erklären.",
       "descriptionEn": "The learner can explain core QED models for cavities, circuits, and waveguides.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5030m"
       ],
@@ -2038,7 +2065,7 @@
       "titleEn": "Jaynes-Cummings and related models",
       "description": "Die lernende Person kann grundlegende QED-Hamiltonoperatoren und Kopplungsregime beschreiben.",
       "descriptionEn": "The learner can describe basic QED Hamiltonians and coupling regimes.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5030m"
       ],
@@ -2054,7 +2081,7 @@
       "titleEn": "Coupling regimes and decay processes",
       "description": "Die lernende Person kann schwache/starke Kopplung und Verlustmechanismen unterscheiden.",
       "descriptionEn": "The learner can differentiate weak/strong coupling and loss mechanisms.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5030m"
       ],
@@ -2072,7 +2099,7 @@
       "titleEn": "Current research in QED platforms",
       "description": "Die lernende Person kann Themen der Forschung zu Cavity-, Circuit- und Waveguide-QED identifizieren.",
       "descriptionEn": "The learner can identify state-of-the-art topics in cavity, circuit, and waveguide QED.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5030m"
       ],
@@ -2091,7 +2118,7 @@
       "titleEn": "Quantum information and simulation schemes",
       "description": "Die lernende Person kann aktuelle Schemata für Verarbeitung und Simulation beschreiben.",
       "descriptionEn": "The learner can describe recent schemes for processing and simulation.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5030m"
       ],
@@ -2107,7 +2134,7 @@
       "titleEn": "Experimental implementations",
       "description": "Die lernende Person kann experimentelle Aufbauten und Fortschritte zusammenfassen.",
       "descriptionEn": "The learner can summarize experimental advances and setups.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5030m"
       ],
@@ -2125,7 +2152,7 @@
       "titleEn": "Scientific communication",
       "description": "Die lernende Person kann Literatur kritisch lesen und Ergebnisse präsentieren.",
       "descriptionEn": "The learner can critically read literature and present results.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5030m"
       ],
@@ -2144,7 +2171,7 @@
       "titleEn": "Critical reading of papers",
       "description": "Die lernende Person kann aktuelle Publikationen interpretieren und kritisch beurteilen.",
       "descriptionEn": "The learner can interpret and critique current publications.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5030m"
       ],
@@ -2160,7 +2187,7 @@
       "titleEn": "Presenting results to non-experts",
       "description": "Die lernende Person kann Ergebnisse verständlich für ein breites Publikum erklären.",
       "descriptionEn": "The learner can explain findings to a broad audience.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5030m"
       ],
@@ -2178,7 +2205,7 @@
       "titleEn": "Quantum Optics (Module NAT7001)",
       "description": "Die lernende Person kann zentrale Konzepte der Quantenoptik erklären und auf repräsentative Aufgaben aus dem Modulumfang anwenden.",
       "descriptionEn": "The learner can explain core concepts of quantum optics and apply them to representative problems within the module scope.",
-      "weight": 10.0,
+      "weight": 10,
       "tags": [
         "module:NAT7001",
         "ects:10"
@@ -2204,7 +2231,7 @@
       "titleEn": "Optical foundations",
       "description": "Die lernende Person kann grundlegende Konzepte der klassischen Optik mit der Quantenoptik verknüpfen.",
       "descriptionEn": "The learner can connect classical optics to quantum optics through key wave concepts.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7001"
       ],
@@ -2223,7 +2250,7 @@
       "titleEn": "Ray to wave optics transition",
       "description": "Die lernende Person kann erklären, wann Strahlenoptik nicht ausreicht, und Konsequenzen der Wellenoptik für einfache Aufbauten herleiten.",
       "descriptionEn": "The learner can explain when ray optics is insufficient and derive wave-optics consequences for simple setups.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2239,7 +2266,7 @@
       "titleEn": "Gaussian beams",
       "description": "Die lernende Person kann Taillenradius, Rayleigh-Länge, Divergenz und Intensitätsprofile von Gauß-Strahlen berechnen.",
       "descriptionEn": "The learner can calculate beam waist, Rayleigh range, divergence, and intensity profiles for Gaussian beams.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2257,7 +2284,7 @@
       "titleEn": "Quantized electromagnetic field",
       "description": "Die lernende Person kann Licht als quantisierte Feldmoden modellieren und grundlegende Zustandsgrößen berechnen.",
       "descriptionEn": "The learner can model light as quantized field modes and compute basic state properties.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7001"
       ],
@@ -2281,7 +2308,7 @@
       "titleEn": "Field quantization and mode operators",
       "description": "Die lernende Person kann Erzeugungs- und Vernichtungsoperatoren für einen Modus ansetzen und Erwartungswerte der Photonenzahl berechnen.",
       "descriptionEn": "The learner can set up creation and annihilation operators for a single mode and compute photon number expectations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2297,7 +2324,7 @@
       "titleEn": "Fock states",
       "description": "Die lernende Person kann Photonenstatistiken und Messergebnisse für Zahlzustände berechnen.",
       "descriptionEn": "The learner can compute photon number statistics and measurement outcomes for number states.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2315,7 +2342,7 @@
       "titleEn": "Coherent states",
       "description": "Die lernende Person kann Poisson-Photonenstatistik und Quadratur-Erwartungswerte für kohärente Zustände herleiten.",
       "descriptionEn": "The learner can derive Poisson photon statistics and quadrature expectations for coherent states.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2333,7 +2360,7 @@
       "titleEn": "Squeezed states",
       "description": "Die lernende Person kann Quadratur-Quetschung erklären und Varianzreduktionen mit einem Quetschparameter berechnen.",
       "descriptionEn": "The learner can explain quadrature squeezing and compute variance reductions with a squeezing parameter.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2351,7 +2378,7 @@
       "titleEn": "Thermal states",
       "description": "Die lernende Person kann thermische Photonenstatistik beschreiben und mittlere Photonenzahlen für einen Modus berechnen.",
       "descriptionEn": "The learner can describe thermal photon statistics and compute mean photon numbers for a mode.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2369,7 +2396,7 @@
       "titleEn": "Light-matter interaction in two-level systems",
       "description": "Die lernende Person kann die quantisierte Licht-Atom-Wechselwirkung in einfachen Zwei-Niveau-Modellen analysieren.",
       "descriptionEn": "The learner can analyze quantized light-atom interaction in basic two-level models.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7001"
       ],
@@ -2390,7 +2417,7 @@
       "titleEn": "Two-level system dynamics",
       "description": "Die lernende Person kann Rabi-Oszillationen lösen und Populationsdynamiken eines getriebenen Zwei-Niveau-Systems interpretieren.",
       "descriptionEn": "The learner can solve for Rabi oscillations and interpret population dynamics of a driven two-level system.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2406,7 +2433,7 @@
       "titleEn": "Jaynes-Cummings model",
       "description": "Die lernende Person kann gekleidete Zustände, Rabi-Aufspaltung und Vakuum-Rabi-Oszillationen herleiten.",
       "descriptionEn": "The learner can derive dressed states, Rabi splitting, and predict vacuum Rabi oscillations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2424,7 +2451,7 @@
       "titleEn": "Quantum vacuum effects",
       "description": "Die lernende Person kann beobachtbare Effekte erklären, die auf Vakuumfluktuationen zurückgeführt werden.",
       "descriptionEn": "The learner can explain observable effects attributed to vacuum fluctuations.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7001"
       ],
@@ -2447,7 +2474,7 @@
       "titleEn": "Spontaneous emission",
       "description": "Die lernende Person kann spontane Emission als vakuuminduzierten Prozess erklären und Zerfallsraten abschätzen.",
       "descriptionEn": "The learner can explain spontaneous emission as a vacuum-induced process and estimate decay rates.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2465,7 +2492,7 @@
       "titleEn": "Purcell effect",
       "description": "Die lernende Person kann verstärkte Emission in Resonatoren quantifizieren und den Purcell-Faktor mit Modenvolumen und Q in Beziehung setzen.",
       "descriptionEn": "The learner can quantify cavity-enhanced emission and relate the Purcell factor to mode volume and Q.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2483,7 +2510,7 @@
       "titleEn": "Casimir force",
       "description": "Die lernende Person kann den Ursprung der Casimir-Kraft erklären und ihre Abhängigkeit von der Geometrie beschreiben.",
       "descriptionEn": "The learner can explain the origin of the Casimir force and describe its dependence on geometry.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2499,7 +2526,7 @@
       "titleEn": "Lamb shift",
       "description": "Die lernende Person kann die Lamb-Verschiebung als vakuumbezogene Niveauverschiebung erklären und ihren physikalischen Ursprung skizzieren.",
       "descriptionEn": "The learner can explain the Lamb shift as a vacuum-related level shift and outline its physical origin.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2517,7 +2544,7 @@
       "titleEn": "Coherence and correlations",
       "description": "Die lernende Person kann Kohärenzeigenschaften von Licht analysieren und Korrelationsfunktionen interpretieren.",
       "descriptionEn": "The learner can analyze coherence properties of light and interpret correlation functions.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7001"
       ],
@@ -2538,7 +2565,7 @@
       "titleEn": "Coherence functions",
       "description": "Die lernende Person kann Kohärenzfunktionen erster und zweiter Ordnung g1 und g2 berechnen und interpretieren.",
       "descriptionEn": "The learner can compute and interpret first- and second-order coherence functions g1 and g2.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2554,7 +2581,7 @@
       "titleEn": "Photon statistics and correlations",
       "description": "Die lernende Person kann Poisson'sches, gebunchtes und antibunchtes Licht anhand von Korrelationsdaten unterscheiden.",
       "descriptionEn": "The learner can distinguish Poissonian, bunched, and antibunched light via correlation data.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2572,7 +2599,7 @@
       "titleEn": "Experimental quantum optics",
       "description": "Die lernende Person kann theoretische Modelle mit experimentellen Realisierungen und Messungen verknüpfen.",
       "descriptionEn": "The learner can relate theoretical models to experimental realizations and measurements.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7001"
       ],
@@ -2593,7 +2620,7 @@
       "titleEn": "Experimental settings for quantized light-atom interaction",
       "description": "Die lernende Person kann Aufbauten zur Untersuchung von Vakuum-Rabi-Oszillationen und starker Kopplung beschreiben.",
       "descriptionEn": "The learner can describe setups used for vacuum Rabi oscillations and strong coupling tests.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2609,7 +2636,7 @@
       "titleEn": "Non-destructive photon measurements",
       "description": "Die lernende Person kann Prinzipien von quanten-nicht-destruktiven (QND) Photonmessungen erklären.",
       "descriptionEn": "The learner can explain principles of quantum non-demolition measurements of photons.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2627,7 +2654,7 @@
       "titleEn": "Entanglement and quantum information",
       "description": "Die lernende Person kann quantenoptische Ressourcen mit Informationsaufgaben verknüpfen.",
       "descriptionEn": "The learner can connect quantum-optical resources to information tasks.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7001"
       ],
@@ -2649,7 +2676,7 @@
       "titleEn": "Entangled photon pair generation",
       "description": "Die lernende Person kann typische Erzeugungsmethoden (z. B. SPDC) erklären und erwartete Korrelationen beschreiben.",
       "descriptionEn": "The learner can explain typical generation methods (e.g., SPDC) and expected correlations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2667,7 +2694,7 @@
       "titleEn": "Quantum teleportation",
       "description": "Die lernende Person kann das Teleportationsprotokoll skizzieren und die benötigten Verschränkungsressourcen benennen.",
       "descriptionEn": "The learner can outline the teleportation protocol and identify required entanglement resources.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2685,7 +2712,7 @@
       "titleEn": "Quantum cryptography",
       "description": "Die lernende Person kann die Grundidee der QKD (z. B. BB84) erklären und die Rolle einzelner Photonen beschreiben.",
       "descriptionEn": "The learner can explain the basic idea of QKD (e.g., BB84) and the role of single photons.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7001"
       ],
@@ -2701,7 +2728,7 @@
       "titleEn": "Ultra-Cold Quantum Gases (NAT7003)",
       "description": "Die lernende Person kann die Präparation ultrakalter Gase beschreiben und interagierende Bose-Gase sowie Gittermodelle analysieren.",
       "descriptionEn": "The learner can describe ultracold gas preparation and analyze interacting Bose gases and lattice systems.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:NAT7003",
         "ects:5"
@@ -2723,7 +2750,7 @@
       "titleEn": "Cooling, trapping, and statistics",
       "description": "Die lernende Person kann Laser-Kühlung, Fallen und Quantenstatistik erklären.",
       "descriptionEn": "The learner can explain laser cooling, trapping, and quantum statistics.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7003"
       ],
@@ -2742,7 +2769,7 @@
       "titleEn": "Laser cooling and trapping methods",
       "description": "Die lernende Person kann zentrale Techniken zur Präparation ultrakalter Atome beschreiben.",
       "descriptionEn": "The learner can describe key techniques for preparing ultracold atoms.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7003"
       ],
@@ -2758,7 +2785,7 @@
       "titleEn": "Quantum statistics and Bose-Einstein condensation",
       "description": "Die lernende Person kann Bose-Kondensation und Thermodynamik erklären.",
       "descriptionEn": "The learner can explain Bose condensation and thermodynamics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7003"
       ],
@@ -2776,7 +2803,7 @@
       "titleEn": "Interacting Bose gases",
       "description": "Die lernende Person kann Wechselwirkungen modellieren und resultierende Phänomene erklären.",
       "descriptionEn": "The learner can model interactions and resulting phenomena.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7003"
       ],
@@ -2795,7 +2822,7 @@
       "titleEn": "Low-energy scattering and mean-field theory",
       "description": "Die lernende Person kann Streukonzepte und die Groß-Pitaevskii-Theorie herleiten.",
       "descriptionEn": "The learner can derive scattering concepts and Gross-Pitaevskii theory.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7003"
       ],
@@ -2811,7 +2838,7 @@
       "titleEn": "Superfluidity and nonlinear excitations",
       "description": "Die lernende Person kann Superfluidität, Solitonen und Wirbel erklären.",
       "descriptionEn": "The learner can explain superfluidity, solitons, and vortices.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7003"
       ],
@@ -2829,7 +2856,7 @@
       "titleEn": "Lattice systems and strong correlations",
       "description": "Die lernende Person kann optische Gitter und korrelierte Phasen analysieren.",
       "descriptionEn": "The learner can analyze optical lattices and correlated phases.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7003"
       ],
@@ -2848,7 +2875,7 @@
       "titleEn": "Optical lattices and Mott transition",
       "description": "Die lernende Person kann Gitterpotenziale und Mott-Übergänge erklären.",
       "descriptionEn": "The learner can explain lattice potentials and Mott transitions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7003"
       ],
@@ -2864,7 +2891,7 @@
       "titleEn": "Coherence and applications",
       "description": "Die lernende Person kann Kohärenzeigenschaften und Anwendungen in der Quanten-Simulation beschreiben.",
       "descriptionEn": "The learner can describe coherence properties and quantum simulation uses.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7003"
       ],
@@ -2882,7 +2909,7 @@
       "titleEn": "Introduction to Graphene and 2D Materials (NAT7026)",
       "description": "Die lernende Person kann elektronische Struktur und experimentelle Techniken für Graphen und Moire-Materialien erklären.",
       "descriptionEn": "The learner can explain electronic structure and experimental techniques for graphene and moire materials.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:NAT7026",
         "ects:5"
@@ -2905,7 +2932,7 @@
       "titleEn": "Experimental techniques and transport",
       "description": "Die lernende Person kann zentrale Nano-Fertigungs- und Charakterisierungsmethoden anwenden.",
       "descriptionEn": "The learner can apply key nano-fabrication and characterization methods.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7026"
       ],
@@ -2924,7 +2951,7 @@
       "titleEn": "Nanofabrication and characterization",
       "description": "Die lernende Person kann Fertigung, Mikroskopie und kryogene Techniken beschreiben.",
       "descriptionEn": "The learner can describe fabrication, microscopy, and cryogenic techniques.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7026"
       ],
@@ -2940,7 +2967,7 @@
       "titleEn": "Electronic transport models",
       "description": "Die lernende Person kann Drude-, Hall- und Boltzmann-Transportkonzepte anwenden.",
       "descriptionEn": "The learner can apply Drude, Hall, and Boltzmann transport concepts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7026"
       ],
@@ -2958,7 +2985,7 @@
       "titleEn": "Electronic structure and Dirac physics",
       "description": "Die lernende Person kann Bandstrukturen und Dirac-Fermionen in Graphen modellieren.",
       "descriptionEn": "The learner can model band structures and Dirac fermions in graphene.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7026"
       ],
@@ -2977,7 +3004,7 @@
       "titleEn": "Tight-binding band structure",
       "description": "Die lernende Person kann Bandstrukturen für Graphen und verwandte Materialien berechnen.",
       "descriptionEn": "The learner can compute band structures for graphene and related materials.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7026"
       ],
@@ -2993,7 +3020,7 @@
       "titleEn": "Dirac equation and pseudospin",
       "description": "Die lernende Person kann masselose Dirac-Fermionen und Pseudospin-Textur erklären.",
       "descriptionEn": "The learner can explain massless Dirac fermions and pseudospin texture.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7026"
       ],
@@ -3011,7 +3038,7 @@
       "titleEn": "Topology and moire superlattices",
       "description": "Die lernende Person kann topologische Effekte und Moire-Band-Engineering erklären.",
       "descriptionEn": "The learner can explain topological effects and moire band engineering.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7026"
       ],
@@ -3030,7 +3057,7 @@
       "titleEn": "Quantum Hall and topological concepts",
       "description": "Die lernende Person kann Berry-Phase, Chern-Zahlen und topologische Isolatoren erklären.",
       "descriptionEn": "The learner can explain Berry phase, Chern numbers, and topological insulators.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7026"
       ],
@@ -3046,7 +3073,7 @@
       "titleEn": "Moire patterns and flat bands",
       "description": "Die lernende Person kann Moire-Supergitter, Hofstadter-Physik und flache Bänder erklären.",
       "descriptionEn": "The learner can explain moire superlattices, Hofstadter physics, and flat bands.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7026"
       ],
@@ -3064,7 +3091,7 @@
       "titleEn": "Correlation effects and phase transitions",
       "description": "Die lernende Person kann korrelierte Phasen in verdrehtem Bilayer-Graphen analysieren.",
       "descriptionEn": "The learner can analyze correlated phases in twisted bilayer graphene.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7026"
       ],
@@ -3083,7 +3110,7 @@
       "titleEn": "Symmetry breaking and phase transitions",
       "description": "Die lernende Person kann Symmetriebrechung und Viele-Teilchen-Grundzustände beschreiben.",
       "descriptionEn": "The learner can describe symmetry breaking and many-body ground states.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7026"
       ],
@@ -3099,7 +3126,7 @@
       "titleEn": "Strong correlations and superconductivity",
       "description": "Die lernende Person kann Hubbard-Physik, Supraleitung und stranges metallisches Verhalten erklären.",
       "descriptionEn": "The learner can explain Hubbard physics, superconductivity, and strange metallicity.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7026"
       ],
@@ -3117,7 +3144,7 @@
       "titleEn": "Surface Physics (PH2127)",
       "description": "Die lernende Person kann Oberflächenstruktur, elektronische Eigenschaften und experimentelle Sonden von Oberflächen beschreiben.",
       "descriptionEn": "The learner can describe surface structure, electronic properties, and experimental probes of surfaces.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:PH2127",
         "ects:5"
@@ -3140,7 +3167,7 @@
       "titleEn": "Surface structure and reconstruction",
       "description": "Die lernende Person kann Oberflächenkristallographie und Rekonstruktionen analysieren.",
       "descriptionEn": "The learner can analyze surface crystallography and reconstructions.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:PH2127"
       ],
@@ -3159,7 +3186,7 @@
       "titleEn": "Surface symmetry and reconstruction patterns",
       "description": "Die lernende Person kann Oberflächen-Einheitszellen und Rekonstruktionsmotive identifizieren.",
       "descriptionEn": "The learner can identify surface unit cells and reconstruction motifs.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:PH2127"
       ],
@@ -3175,7 +3202,7 @@
       "titleEn": "Defects and adsorption sites",
       "description": "Die lernende Person kann Defekte und Adsorption auf Oberflächen beschreiben.",
       "descriptionEn": "The learner can describe defects and adsorption on surfaces.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:PH2127"
       ],
@@ -3193,7 +3220,7 @@
       "titleEn": "Surface electronic properties",
       "description": "Die lernende Person kann Oberflächenzustände und Änderungen der Austrittsarbeit erklären.",
       "descriptionEn": "The learner can explain surface states and work-function changes.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:PH2127"
       ],
@@ -3212,7 +3239,7 @@
       "titleEn": "Surface states and band bending",
       "description": "Die lernende Person kann elektronische Oberflächenzustände und Bandbiegung analysieren.",
       "descriptionEn": "The learner can analyze electronic surface states and band bending.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:PH2127"
       ],
@@ -3228,7 +3255,7 @@
       "titleEn": "Adsorption and charge transfer",
       "description": "Die lernende Person kann Ladungstransfer und Adsorptionseffekte beschreiben.",
       "descriptionEn": "The learner can describe charge transfer and adsorption effects.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:PH2127"
       ],
@@ -3246,7 +3273,7 @@
       "titleEn": "Surface characterization methods",
       "description": "Die lernende Person kann Konzepte zentraler Oberflächenmessmethoden anwenden.",
       "descriptionEn": "The learner can use concepts of key surface probes.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:PH2127"
       ],
@@ -3265,7 +3292,7 @@
       "titleEn": "Scanning probe methods (STM/AFM)",
       "description": "Die lernende Person kann Funktionsprinzipien von STM und AFM erklären.",
       "descriptionEn": "The learner can explain imaging principles of STM and AFM.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:PH2127"
       ],
@@ -3281,7 +3308,7 @@
       "titleEn": "Diffraction and spectroscopy",
       "description": "Die lernende Person kann LEED- und spektroskopische Techniken beschreiben.",
       "descriptionEn": "The learner can describe LEED and spectroscopic techniques.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:PH2127"
       ],
@@ -3299,7 +3326,7 @@
       "titleEn": "Thin films and interfaces",
       "description": "Die lernende Person kann Dünnfilmwachstum und Grenzflächenphänomene erklären.",
       "descriptionEn": "The learner can explain thin-film growth and interface phenomena.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:PH2127"
       ],
@@ -3318,7 +3345,7 @@
       "titleEn": "Growth modes and epitaxy",
       "description": "Die lernende Person kann Schicht- und Inselwachstum beschreiben.",
       "descriptionEn": "The learner can describe layer-by-layer and island growth.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:PH2127"
       ],
@@ -3334,7 +3361,7 @@
       "titleEn": "Interface effects and applications",
       "description": "Die lernende Person kann Grenzflächeneigenschaften mit Geräteverhalten verknüpfen.",
       "descriptionEn": "The learner can relate interface properties to device behavior.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:PH2127"
       ],
@@ -3352,7 +3379,7 @@
       "titleEn": "Nanotechnology (PH2141)",
       "description": "Die lernende Person kann Nanofertigung, Eigenschaften von Nanomaterialien und Charakterisierungsmethoden erklären.",
       "descriptionEn": "The learner can explain nanofabrication, nanomaterials properties, and characterization methods.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:PH2141",
         "ects:5"
@@ -3375,7 +3402,7 @@
       "titleEn": "Nanofabrication methods",
       "description": "Die lernende Person kann Top-down- und Bottom-up-Fertigungsansätze vergleichen.",
       "descriptionEn": "The learner can compare top-down and bottom-up fabrication approaches.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:PH2141"
       ],
@@ -3394,7 +3421,7 @@
       "titleEn": "Lithography, etching, deposition",
       "description": "Die lernende Person kann gängige Lithografie- und Abscheideverfahren skizzieren.",
       "descriptionEn": "The learner can outline common lithography and deposition methods.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:PH2141"
       ],
@@ -3410,7 +3437,7 @@
       "titleEn": "Self-assembly and bottom-up synthesis",
       "description": "Die lernende Person kann Bottom-up-Assemblierungstechniken beschreiben.",
       "descriptionEn": "The learner can describe bottom-up assembly techniques.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:PH2141"
       ],
@@ -3428,7 +3455,7 @@
       "titleEn": "Nanomaterials and properties",
       "description": "Die lernende Person kann größenabhängige Eigenschaften von Nanomaterialien analysieren.",
       "descriptionEn": "The learner can analyze size-dependent properties of nanomaterials.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:PH2141"
       ],
@@ -3447,7 +3474,7 @@
       "titleEn": "Quantum dots, nanowires, and 2D materials",
       "description": "Die lernende Person kann zentrale Klassen von Nanomaterialien beschreiben.",
       "descriptionEn": "The learner can describe key nanomaterial classes.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:PH2141"
       ],
@@ -3463,7 +3490,7 @@
       "titleEn": "Quantum confinement and size effects",
       "description": "Die lernende Person kann Konfinierung und Oberflächeneffekte erklären.",
       "descriptionEn": "The learner can explain confinement and surface effects.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:PH2141"
       ],
@@ -3481,7 +3508,7 @@
       "titleEn": "Characterization techniques",
       "description": "Die lernende Person kann geeignete Charakterisierungsmethoden auswählen.",
       "descriptionEn": "The learner can select appropriate characterization methods.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:PH2141"
       ],
@@ -3500,7 +3527,7 @@
       "titleEn": "Electron and scanning probe microscopy",
       "description": "Die lernende Person kann Prinzipien von SEM/TEM/AFM erklären.",
       "descriptionEn": "The learner can explain SEM/TEM/AFM principles.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:PH2141"
       ],
@@ -3516,7 +3543,7 @@
       "titleEn": "Optical and electrical measurements",
       "description": "Die lernende Person kann spektroskopische und Transportmessungen beschreiben.",
       "descriptionEn": "The learner can describe spectroscopic and transport measurements.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:PH2141"
       ],
@@ -3534,7 +3561,7 @@
       "titleEn": "Applications and integration",
       "description": "Die lernende Person kann Nanotechnologie mit Geräteanwendungen verknüpfen.",
       "descriptionEn": "The learner can relate nanotechnology to device applications.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:PH2141"
       ],
@@ -3553,7 +3580,7 @@
       "titleEn": "Nanoelectronics and sensors",
       "description": "Die lernende Person kann Anwendungen in Elektronik und Sensorik beschreiben.",
       "descriptionEn": "The learner can describe nanotech applications in electronics and sensing.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:PH2141"
       ],
@@ -3569,7 +3596,7 @@
       "titleEn": "Nanophotonics and bioapplications",
       "description": "Die lernende Person kann photonik- und biomedizinische Anwendungen diskutieren.",
       "descriptionEn": "The learner can discuss photonic and biomedical uses.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:PH2141"
       ],
@@ -3587,7 +3614,7 @@
       "titleEn": "Introduction to Quantum Computing (IN2381)",
       "description": "Die lernende Person kann den mathematischen Formalismus des Quantum Computing erklären, einfache Quantenalgorithmen analysieren und grundlegende Quantenschaltungen entwerfen.",
       "descriptionEn": "The learner can explain the mathematical foundations of quantum computing and design simple quantum algorithms and circuits.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:IN2381",
         "ects:5"
@@ -3611,7 +3638,7 @@
       "titleEn": "Quantum mechanics formalism for computing",
       "description": "Die lernende Person kann den Zustands- und Operatorformalismus für Qubits und Messungen anwenden.",
       "descriptionEn": "The learner can use the state and operator formalism for qubits and measurements.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2381"
       ],
@@ -3630,7 +3657,7 @@
       "titleEn": "Qubit states and Dirac notation",
       "description": "Die lernende Person kann Ein- und Mehrqubit-Zustände darstellen und Amplituden berechnen.",
       "descriptionEn": "The learner can represent single- and multi-qubit states and compute amplitudes.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2381"
       ],
@@ -3646,7 +3673,7 @@
       "titleEn": "Quantum measurements and probabilities",
       "description": "Die lernende Person kann Messungen modellieren und Ergebnisstatistiken berechnen.",
       "descriptionEn": "The learner can model measurements and compute outcome statistics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2381"
       ],
@@ -3664,7 +3691,7 @@
       "titleEn": "Quantum circuits and gates",
       "description": "Die lernende Person kann Schaltungen aus elementaren Quantengattern aufbauen.",
       "descriptionEn": "The learner can build circuits from elementary quantum gates.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2381"
       ],
@@ -3685,7 +3712,7 @@
       "titleEn": "Single- and two-qubit gates",
       "description": "Die lernende Person kann gängige Gatter anwenden und ihre Matrixdarstellungen verstehen.",
       "descriptionEn": "The learner can use common gates and understand their matrix representations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2381"
       ],
@@ -3701,7 +3728,7 @@
       "titleEn": "Circuit construction and execution",
       "description": "Die lernende Person kann Schaltungen für einfache Aufgaben entwerfen und Ausgaben vorhersagen.",
       "descriptionEn": "The learner can design circuits for simple tasks and predict outputs.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2381"
       ],
@@ -3719,7 +3746,7 @@
       "titleEn": "Entanglement and communication protocols",
       "description": "Die lernende Person kann Verschränkung und ihre Rolle in grundlegenden Protokollen erklären.",
       "descriptionEn": "The learner can explain entanglement and its role in basic protocols.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2381"
       ],
@@ -3740,7 +3767,7 @@
       "titleEn": "Bell inequalities and nonlocality",
       "description": "Die lernende Person kann Bell-Tests erklären und ihre Konsequenzen für Nichtlokalität beschreiben.",
       "descriptionEn": "The learner can explain Bell tests and their implications.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2381"
       ],
@@ -3756,7 +3783,7 @@
       "titleEn": "Quantum teleportation",
       "description": "Die lernende Person kann das Teleportationsprotokoll skizzieren und benötigte Ressourcen benennen.",
       "descriptionEn": "The learner can outline the teleportation protocol and required resources.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2381"
       ],
@@ -3774,7 +3801,7 @@
       "titleEn": "Fundamental quantum algorithms",
       "description": "Die lernende Person kann zentrale Quantenalgorithmen und ihre Beschleunigungen analysieren.",
       "descriptionEn": "The learner can analyze core quantum algorithms and their speedups.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2381"
       ],
@@ -3794,7 +3821,7 @@
       "titleEn": "Grover search and basic algorithmic ideas",
       "description": "Die lernende Person kann Grovers Algorithmus beschreiben und dessen Komplexität analysieren.",
       "descriptionEn": "The learner can describe Grover's algorithm and analyze its complexity.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2381"
       ],
@@ -3810,7 +3837,7 @@
       "titleEn": "Software tools and applications",
       "description": "Die lernende Person kann grundlegende Software-Tools für Quantenschaltungen nutzen und Einsatzfelder einschätzen.",
       "descriptionEn": "The learner can use basic software tools for quantum circuits and assess application areas.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2381"
       ],
@@ -3831,7 +3858,7 @@
       "titleEn": "Circuit simulation with Qiskit or Cirq",
       "description": "Die lernende Person kann einfache Schaltungen in gängigen Toolkits implementieren und ausführen.",
       "descriptionEn": "The learner can implement and run simple circuits in common toolkits.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2381"
       ],
@@ -3849,7 +3876,7 @@
       "titleEn": "Use cases and limitations of quantum computing",
       "description": "Die lernende Person kann Anwendungsdomänen benennen und Grenzen diskutieren.",
       "descriptionEn": "The learner can identify application domains and discuss limitations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2381"
       ],
@@ -3865,7 +3892,7 @@
       "titleEn": "Tensor Networks (IN2388)",
       "description": "Die lernende Person kann Tensornetzwerkdarstellungen nutzen, um hochdimensionale Daten zu approximieren und Quantensysteme zu simulieren.",
       "descriptionEn": "The learner can use tensor network representations to approximate high-dimensional data and simulate quantum systems.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:IN2388",
         "ects:5"
@@ -3888,7 +3915,7 @@
       "titleEn": "Tensor network fundamentals",
       "description": "Die lernende Person kann Tensoren und Netzwerke grafisch darstellen.",
       "descriptionEn": "The learner can represent tensors and networks graphically.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2388"
       ],
@@ -3907,7 +3934,7 @@
       "titleEn": "Tensor notation and contractions",
       "description": "Die lernende Person kann Tensordiagramme interpretieren und Kontraktionen berechnen.",
       "descriptionEn": "The learner can interpret tensor diagrams and compute contractions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2388"
       ],
@@ -3923,7 +3950,7 @@
       "titleEn": "Common network structures (MPS, MPO, PEPS)",
       "description": "Die lernende Person kann Standardarchitekturen und ihre Eigenschaften beschreiben.",
       "descriptionEn": "The learner can describe standard network architectures and their properties.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2388"
       ],
@@ -3941,7 +3968,7 @@
       "titleEn": "Approximation theory and optimization",
       "description": "Die lernende Person kann Niedrigrang-Approximationen anwenden und Tensornetzwerke optimieren.",
       "descriptionEn": "The learner can apply low-rank approximations and optimize tensor networks.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2388"
       ],
@@ -3962,7 +3989,7 @@
       "titleEn": "Low-rank approximations and truncation",
       "description": "Die lernende Person kann Trunkierungen durchführen und Approximationsfehler abschätzen.",
       "descriptionEn": "The learner can perform truncation and estimate approximation errors.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2388"
       ],
@@ -3978,7 +4005,7 @@
       "titleEn": "Backpropagation through tensor network operations",
       "description": "Die lernende Person kann Gradienten berechnen und Tensornetzwerk-Modelle trainieren.",
       "descriptionEn": "The learner can compute gradients and train tensor network models.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2388"
       ],
@@ -3996,7 +4023,7 @@
       "titleEn": "Simulation of quantum systems and circuits",
       "description": "Die lernende Person kann Tensornetzwerke zur Simulation stark korrelierter Systeme und Quantenschaltungen einsetzen.",
       "descriptionEn": "The learner can use tensor networks to simulate strongly correlated systems and quantum circuits.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2388"
       ],
@@ -4017,7 +4044,7 @@
       "titleEn": "Simulation of many-body quantum systems",
       "description": "Die lernende Person kann stark korrelierte Systeme mit Tensornetzwerken modellieren.",
       "descriptionEn": "The learner can model strongly correlated systems with tensor networks.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2388"
       ],
@@ -4033,7 +4060,7 @@
       "titleEn": "Simulation of digital quantum circuits",
       "description": "Die lernende Person kann Schaltungsdynamik mit Tensornetzwerk-Methoden simulieren.",
       "descriptionEn": "The learner can simulate circuit dynamics using tensor network methods.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2388"
       ],
@@ -4049,7 +4076,7 @@
       "titleEn": "Probabilistic modeling and sampling",
       "description": "Die lernende Person kann Tensornetzwerke für Sampling und Wahrscheinlichkeitsverteilungen nutzen.",
       "descriptionEn": "The learner can use tensor networks for sampling and probability distributions.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2388"
       ],
@@ -4069,7 +4096,7 @@
       "titleEn": "Sampling from tensor network models",
       "description": "Die lernende Person kann Stichproben erzeugen und probabilistische Ausgaben interpretieren.",
       "descriptionEn": "The learner can generate samples and interpret probabilistic outputs.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2388"
       ],
@@ -4087,7 +4114,7 @@
       "titleEn": "Advanced Concepts of Quantum Computing (IN2400)",
       "description": "Die lernende Person kann fortgeschrittene Konzepte des Quantum Computing wie QFT, Shor-Algorithmus, Quantenoperationen und Fehlerkorrektur anwenden.",
       "descriptionEn": "The learner can apply advanced quantum computing concepts such as the quantum Fourier transform, Shor's algorithm, quantum operations, and error correction.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:IN2400",
         "ects:5"
@@ -4109,7 +4136,7 @@
       "titleEn": "Quantum Fourier transform and period finding",
       "description": "Die lernende Person kann die Quanten-Fouriertransformation in algorithmischen Zusammenhängen erklären und einsetzen.",
       "descriptionEn": "The learner can explain and use the quantum Fourier transform in algorithmic settings.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2400"
       ],
@@ -4128,7 +4155,7 @@
       "titleEn": "Quantum Fourier transform fundamentals",
       "description": "Die lernende Person kann QFT-Schaltungen herleiten, implementieren und Ergebnisse interpretieren.",
       "descriptionEn": "The learner can derive and implement the QFT circuit and interpret its outputs.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2400"
       ],
@@ -4144,7 +4171,7 @@
       "titleEn": "Period finding and Shor's algorithm",
       "description": "Die lernende Person kann QFT-basierte Periodenfindung mit der Ganzzahlfaktorisierung verbinden.",
       "descriptionEn": "The learner can connect QFT-based period finding to integer factorization.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2400"
       ],
@@ -4162,7 +4189,7 @@
       "titleEn": "Advanced quantum operations",
       "description": "Die lernende Person kann Quantenoperationen über unitäre Gatter hinaus modellieren.",
       "descriptionEn": "The learner can model quantum operations beyond unitary gates.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2400"
       ],
@@ -4181,7 +4208,7 @@
       "titleEn": "Quantum operations and channels",
       "description": "Die lernende Person kann CPTP-Abbildungen beschreiben und Quantenoperationen kombinieren.",
       "descriptionEn": "The learner can describe CPTP maps and compose quantum operations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2400"
       ],
@@ -4197,7 +4224,7 @@
       "titleEn": "Circuit synthesis for advanced algorithms",
       "description": "Die lernende Person kann Schaltungsstrukturen für fortgeschrittene Algorithmen entwerfen.",
       "descriptionEn": "The learner can design circuit structures for advanced algorithms.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2400"
       ],
@@ -4213,7 +4240,7 @@
       "titleEn": "Quantum error correction",
       "description": "Die lernende Person kann Fehlermodelle erklären und Fehlerkorrektur-Formalismen anwenden.",
       "descriptionEn": "The learner can explain error models and apply error correction formalisms.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN2400"
       ],
@@ -4234,7 +4261,7 @@
       "titleEn": "Error models and syndrome extraction",
       "description": "Die lernende Person kann Fehler modellieren und Syndrommessungen beschreiben.",
       "descriptionEn": "The learner can model errors and describe syndrome measurement.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2400"
       ],
@@ -4252,7 +4279,7 @@
       "titleEn": "Stabilizer formalism and codes",
       "description": "Die lernende Person kann den Stabilisatorformalismus zur Beschreibung von Codes nutzen.",
       "descriptionEn": "The learner can use the stabilizer formalism to describe quantum codes.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN2400"
       ],
@@ -4270,7 +4297,7 @@
       "titleEn": "Quantum Information Theory (EI76471)",
       "description": "Die lernende Person kann Quantenkommunikationssysteme informationstheoretisch modellieren und Kodierungssätze anwenden.",
       "descriptionEn": "The learner can model quantum communication systems using information-theoretic concepts and apply coding theorems.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:EI76471",
         "ects:5"
@@ -4294,7 +4321,7 @@
       "titleEn": "Foundations of quantum information modeling",
       "description": "Die lernende Person kann Quanteninformationstheorie mit Shannon-Konzepten und operativen Beschreibungen verbinden.",
       "descriptionEn": "The learner can relate quantum information theory to classical Shannon concepts and operational descriptions.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:EI76471"
       ],
@@ -4313,7 +4340,7 @@
       "titleEn": "Operational description of finite-dimensional quantum systems",
       "description": "Die lernende Person kann endlichdimensionale Quantensysteme operativ modellieren.",
       "descriptionEn": "The learner can model finite-dimensional quantum systems with an operational approach.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI76471"
       ],
@@ -4329,7 +4356,7 @@
       "titleEn": "Connections to classical information theory",
       "description": "Die lernende Person kann Quantenmodelle mit klassischen informationstheoretischen Größen verknüpfen.",
       "descriptionEn": "The learner can relate quantum models to classical information-theoretic quantities.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI76471"
       ],
@@ -4345,7 +4372,7 @@
       "titleEn": "Quantum hypothesis testing",
       "description": "Die lernende Person kann Hypothesentests im Quantenkontext analysieren.",
       "descriptionEn": "The learner can analyze hypothesis tests in the quantum setting.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:EI76471"
       ],
@@ -4365,7 +4392,7 @@
       "titleEn": "Quantum hypothesis tests and Stein's lemma",
       "description": "Die lernende Person kann das Quanten-Stein-Lemma zur Zustandsdiskriminierung anwenden.",
       "descriptionEn": "The learner can apply quantum Stein's lemma to discriminate states.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI76471"
       ],
@@ -4381,7 +4408,7 @@
       "titleEn": "Source coding for quantum sources",
       "description": "Die lernende Person kann gedächtnislose Quantenquellen komprimieren.",
       "descriptionEn": "The learner can compress memoryless quantum sources.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:EI76471"
       ],
@@ -4401,7 +4428,7 @@
       "titleEn": "Compression of memoryless quantum sources",
       "description": "Die lernende Person kann Schumacher-Kompression und verwandte Resultate erklären.",
       "descriptionEn": "The learner can explain Schumacher compression and related results.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI76471"
       ],
@@ -4417,7 +4444,7 @@
       "titleEn": "Channel coding for quantum channels",
       "description": "Die lernende Person kann Kodierungssätze für klassische Kommunikation über Quantenkanäle analysieren.",
       "descriptionEn": "The learner can analyze coding theorems for classical communication over quantum channels.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:EI76471"
       ],
@@ -4438,7 +4465,7 @@
       "titleEn": "Classical messages over semiclassical and quantum channels",
       "description": "Die lernende Person kann die Übertragung klassischer Nachrichten über gedächtnislose Kanäle beschreiben.",
       "descriptionEn": "The learner can describe transmission of classical messages over memoryless channels.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI76471"
       ],
@@ -4454,7 +4481,7 @@
       "titleEn": "Coding theorems for memoryless quantum channels",
       "description": "Die lernende Person kann Kodierungssätze und Beweisstrategien für Quantenkanäle skizzieren.",
       "descriptionEn": "The learner can outline coding theorems and proof strategies for quantum channels.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI76471"
       ],
@@ -4472,7 +4499,7 @@
       "titleEn": "Advanced topics and communication resources",
       "description": "Die lernende Person kann fortgeschrittene Themen wie Sicherheit und Verschränkung als Ressourcen erklären.",
       "descriptionEn": "The learner can describe advanced topics such as security and entanglement-based resources.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:EI76471"
       ],
@@ -4493,7 +4520,7 @@
       "titleEn": "Information-theoretic security for quantum channels",
       "description": "Die lernende Person kann Sicherheitskonzepte für Quantenkanäle und -quellen erläutern.",
       "descriptionEn": "The learner can explain security concepts for quantum channels and sources.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI76471"
       ],
@@ -4509,7 +4536,7 @@
       "titleEn": "Entanglement theory and resource generation protocols",
       "description": "Die lernende Person kann Verschränkung als Ressource und zugehörige Protokolle beschreiben.",
       "descriptionEn": "The learner can describe entanglement-based resources and protocols for generating communication resources.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:EI76471"
       ],
@@ -4525,7 +4552,7 @@
       "titleEn": "Advanced Topics in Quantum Information Theory (NAT3011)",
       "description": "Die lernende Person kann fortgeschrittene Konzepte der Quanteninformationstheorie anwenden und kritisch einordnen.",
       "descriptionEn": "The learner can apply advanced concepts of quantum information theory, including entanglement, protocols, simulation, and verification.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:NAT3011",
         "ects:5"
@@ -4549,7 +4576,7 @@
       "titleEn": "Foundations of quantum information theory",
       "description": "Die lernende Person kann Kernkonzepte der Quanteninformationstheorie in fortgeschrittenen Kontexten anwenden.",
       "descriptionEn": "The learner can apply core concepts of quantum information theory in advanced settings.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3011"
       ],
@@ -4567,7 +4594,7 @@
       "titleEn": "Core concepts and formalism",
       "description": "Die lernende Person kann zentrale QIT-Konzepte und formale Werkzeuge erläutern.",
       "descriptionEn": "The learner can explain core QIT concepts and formal tools.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3011"
       ],
@@ -4583,7 +4610,7 @@
       "titleEn": "Quantum communication protocols",
       "description": "Die lernende Person kann fortgeschrittene Kommunikationsprotokolle und ihre Ressourcen erklären.",
       "descriptionEn": "The learner can explain advanced quantum communication protocols and resources.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3011"
       ],
@@ -4603,7 +4630,7 @@
       "titleEn": "Key protocols and resources",
       "description": "Die lernende Person kann zentrale Protokolle und benötigte Ressourcen beschreiben.",
       "descriptionEn": "The learner can explain key communication protocols and the resources they require.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3011"
       ],
@@ -4619,7 +4646,7 @@
       "titleEn": "Entanglement theory",
       "description": "Die lernende Person kann bipartite und multipartite Verschränkung analysieren.",
       "descriptionEn": "The learner can analyze bipartite and multipartite entanglement.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3011"
       ],
@@ -4640,7 +4667,7 @@
       "titleEn": "Bipartite entanglement",
       "description": "Die lernende Person kann bipartite Verschränkung charakterisieren und quantifizieren.",
       "descriptionEn": "The learner can characterize and quantify bipartite entanglement.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3011"
       ],
@@ -4656,7 +4683,7 @@
       "titleEn": "Multipartite entanglement",
       "description": "Die lernende Person kann Strukturen und Maße multipartiter Verschränkung beschreiben.",
       "descriptionEn": "The learner can describe multipartite entanglement structures and measures.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3011"
       ],
@@ -4674,7 +4701,7 @@
       "titleEn": "Quantum computing and advantage",
       "description": "Die lernende Person kann Quantencomputing-Konzepte mit quantenmechanischem Vorteil verknüpfen.",
       "descriptionEn": "The learner can relate quantum computing concepts to computational advantage.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3011"
       ],
@@ -4695,7 +4722,7 @@
       "titleEn": "Quantum computing concepts and algorithms",
       "description": "Die lernende Person kann Konzepte und algorithmische Ideen des Quantencomputings erläutern.",
       "descriptionEn": "The learner can explain quantum computing concepts and algorithmic ideas.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3011"
       ],
@@ -4711,7 +4738,7 @@
       "titleEn": "Classical simulation and quantum advantage",
       "description": "Die lernende Person kann klassische Simulationen mit Aussagen zum Quanten-Vorteil vergleichen.",
       "descriptionEn": "The learner can compare classical simulation methods with quantum advantage claims.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3011"
       ],
@@ -4729,7 +4756,7 @@
       "titleEn": "Verification of quantum processors",
       "description": "Die lernende Person kann Herausforderungen und Methoden der Verifizierung erklären.",
       "descriptionEn": "The learner can explain challenges and methods for verifying quantum processors.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3011"
       ],
@@ -4749,7 +4776,7 @@
       "titleEn": "Verification challenges and methods",
       "description": "Die lernende Person kann Verifizierungsprobleme benennen und Lösungsansätze skizzieren.",
       "descriptionEn": "The learner can describe verification problems and possible approaches.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3011"
       ],
@@ -4765,7 +4792,7 @@
       "titleEn": "Theoretical Quantum Optics (NAT3013)",
       "description": "Die lernende Person kann Quanten-Licht-Materie-Wechselwirkungen und offene Quantensysteme modellieren.",
       "descriptionEn": "The learner can model quantum light-matter interactions and open quantum systems and apply these tools to key quantum optical effects.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:NAT3013",
         "ects:5"
@@ -4791,7 +4818,7 @@
       "titleEn": "Light-matter interaction fundamentals",
       "description": "Die lernende Person kann semiklassische Wechselwirkungen und Quantenzustände des Lichts beschreiben.",
       "descriptionEn": "The learner can describe semi-classical interactions and quantum states of light.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3013"
       ],
@@ -4810,7 +4837,7 @@
       "titleEn": "Semi-classical light-matter interaction",
       "description": "Die lernende Person kann semiklassische Modelle der Licht-Materie-Wechselwirkung erklären.",
       "descriptionEn": "The learner can explain semi-classical models of light-matter interaction.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3013"
       ],
@@ -4826,7 +4853,7 @@
       "titleEn": "Quantum states of light",
       "description": "Die lernende Person kann kohärente, gequetschte und weitere nichtklassische Zustände beschreiben.",
       "descriptionEn": "The learner can describe coherent, squeezed, and other nonclassical states of light.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3013"
       ],
@@ -4842,7 +4869,7 @@
       "titleEn": "Cavity QED and atom-photon models",
       "description": "Die lernende Person kann Hohlraum-QED-Modelle auf Atom-Photon-Wechselwirkungen anwenden.",
       "descriptionEn": "The learner can apply cavity QED models to atom-photon interactions.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3013"
       ],
@@ -4863,7 +4890,7 @@
       "titleEn": "Jaynes-Cummings model",
       "description": "Die lernende Person kann das Jaynes-Cummings-Modell herleiten und interpretieren.",
       "descriptionEn": "The learner can derive and interpret the Jaynes-Cummings model.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3013"
       ],
@@ -4879,7 +4906,7 @@
       "titleEn": "Cavity QED effects",
       "description": "Die lernende Person kann starke Kopplungseffekte in der Hohlraum-QED erklären.",
       "descriptionEn": "The learner can explain strong coupling effects in cavity QED.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3013"
       ],
@@ -4897,7 +4924,7 @@
       "titleEn": "Open quantum systems",
       "description": "Die lernende Person kann Dissipation und Rauschen in quantenoptischen Systemen modellieren.",
       "descriptionEn": "The learner can model dissipation and noise in quantum optical systems.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3013"
       ],
@@ -4918,7 +4945,7 @@
       "titleEn": "Master equation techniques",
       "description": "Die lernende Person kann Mastergleichungen für offene Systemdynamik anwenden.",
       "descriptionEn": "The learner can apply master equations to open-system dynamics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3013"
       ],
@@ -4934,7 +4961,7 @@
       "titleEn": "Quantum Langevin equations",
       "description": "Die lernende Person kann Langevin-Gleichungen zur Beschreibung von Rauschen verwenden.",
       "descriptionEn": "The learner can use Langevin equations to describe noise and damping.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3013"
       ],
@@ -4952,7 +4979,7 @@
       "titleEn": "Quantum optical effects and measurements",
       "description": "Die lernende Person kann Photodetektion, Korrelationen und nichtlineare Prozesse analysieren.",
       "descriptionEn": "The learner can analyze photodetection, correlations, and nonlinear processes.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3013"
       ],
@@ -4973,7 +5000,7 @@
       "titleEn": "Photodetection and correlations",
       "description": "Die lernende Person kann Korrelationsfunktionen berechnen und Messschemata interpretieren.",
       "descriptionEn": "The learner can compute correlation functions and interpret photodetection schemes.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3013"
       ],
@@ -4989,7 +5016,7 @@
       "titleEn": "Nonlinear processes and EIT",
       "description": "Die lernende Person kann nichtlineare Prozesse, EIT und langsames Licht erklären.",
       "descriptionEn": "The learner can explain nonlinear optical processes, EIT, and slow light.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3013"
       ],
@@ -5005,7 +5032,7 @@
       "titleEn": "Optomechanics and laser cooling",
       "description": "Die lernende Person kann quantenoptische Werkzeuge auf optomechanische Systeme anwenden.",
       "descriptionEn": "The learner can apply quantum optics tools to optomechanical systems and cooling.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3013"
       ],
@@ -5026,7 +5053,7 @@
       "titleEn": "Optomechanical systems",
       "description": "Die lernende Person kann optomechanische Kopplung und Dynamik beschreiben.",
       "descriptionEn": "The learner can describe optomechanical coupling and dynamics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3013"
       ],
@@ -5042,7 +5069,7 @@
       "titleEn": "Laser cooling and trapping",
       "description": "Die lernende Person kann Mechanismen der Laserkühlung und des Einfangs erklären.",
       "descriptionEn": "The learner can explain laser cooling and trapping mechanisms.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3013"
       ],
@@ -5058,7 +5085,7 @@
       "titleEn": "Phase-space methods and laser theory",
       "description": "Die lernende Person kann Phasenraum-Methoden nutzen und Lasertheorie verstehen.",
       "descriptionEn": "The learner can use phase-space methods and understand laser theory.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3013"
       ],
@@ -5079,7 +5106,7 @@
       "titleEn": "Phase-space methods",
       "description": "Die lernende Person kann Phasenraumdarstellungen in der Quantenoptik anwenden.",
       "descriptionEn": "The learner can apply phase-space representations to quantum optics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3013"
       ],
@@ -5095,7 +5122,7 @@
       "titleEn": "Laser theory",
       "description": "Die lernende Person kann Grundzüge der Lasertheorie und Schwellverhalten erklären.",
       "descriptionEn": "The learner can explain basic laser theory and threshold behavior.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3013"
       ],
@@ -5113,7 +5140,7 @@
       "titleEn": "Numerical simulation of quantum optics",
       "description": "Die lernende Person kann quantenoptische Systeme numerisch simulieren.",
       "descriptionEn": "The learner can implement numerical simulations of quantum optical systems.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3013"
       ],
@@ -5133,7 +5160,7 @@
       "titleEn": "Numerical modeling with Python or Matlab",
       "description": "Die lernende Person kann quantenoptische Dynamik mit Standardwerkzeugen simulieren.",
       "descriptionEn": "The learner can simulate quantum optical dynamics using standard numerical tools.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3013"
       ],
@@ -5149,7 +5176,7 @@
       "titleEn": "Entanglement in Many-Body System (NAT5018m)",
       "description": "Die lernende Person kann Verschränkung in Vielteilchensystemen analysieren und Forschungsergebnisse im Seminar kommunizieren.",
       "descriptionEn": "The learner can analyze entanglement in many-body systems and communicate research results in a seminar setting.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:NAT5018m",
         "ects:5"
@@ -5172,7 +5199,7 @@
       "titleEn": "Entanglement measures and diagnostics",
       "description": "Die lernende Person kann quantitative Maße zur Charakterisierung von Verschränkung nutzen.",
       "descriptionEn": "The learner can use quantitative measures to characterize entanglement.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5018m"
       ],
@@ -5191,7 +5218,7 @@
       "titleEn": "Measures of entanglement",
       "description": "Die lernende Person kann grundlegende Verschränkungsmaße definieren und vergleichen.",
       "descriptionEn": "The learner can define and compare standard entanglement measures.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5018m"
       ],
@@ -5207,7 +5234,7 @@
       "titleEn": "Computable measures and entanglement negativity",
       "description": "Die lernende Person kann berechenbare Maße wie die Verschränkungsnegativität anwenden.",
       "descriptionEn": "The learner can apply computable measures such as entanglement negativity.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5018m"
       ],
@@ -5223,7 +5250,7 @@
       "titleEn": "Entanglement structure in one-dimensional systems",
       "description": "Die lernende Person kann Verschränkungsstrukturen in 1D-Systemen und Tensor-Netzwerken einordnen.",
       "descriptionEn": "The learner can relate entanglement structure to 1D systems and tensor network models.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5018m"
       ],
@@ -5244,7 +5271,7 @@
       "titleEn": "Area laws and matrix product states",
       "description": "Die lernende Person kann Flächengesetze und MPS-Darstellungen in 1D-Systemen erklären.",
       "descriptionEn": "The learner can explain area laws and MPS representations in 1D systems.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5018m"
       ],
@@ -5260,7 +5287,7 @@
       "titleEn": "Entanglement spectra in one dimension",
       "description": "Die lernende Person kann Verschränkungsspektren für 1D-Phasen interpretieren.",
       "descriptionEn": "The learner can interpret entanglement spectra for 1D phases.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5018m"
       ],
@@ -5278,7 +5305,7 @@
       "titleEn": "Topological entanglement and order",
       "description": "Die lernende Person kann entanglement-basierte Diagnostik topologischer Phasen erläutern.",
       "descriptionEn": "The learner can use entanglement-based diagnostics for topological phases.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5018m"
       ],
@@ -5299,7 +5326,7 @@
       "titleEn": "Topological entanglement entropy",
       "description": "Die lernende Person kann topologische Verschränkungsentropie erklären und einordnen.",
       "descriptionEn": "The learner can explain topological entanglement entropy and its meaning.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5018m"
       ],
@@ -5315,7 +5342,7 @@
       "titleEn": "Detecting topological order via entanglement",
       "description": "Die lernende Person kann Verfahren beschreiben, die topologische Ordnung über Verschränkung sichtbar machen.",
       "descriptionEn": "The learner can describe how entanglement reveals topological order at finite temperature.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5018m"
       ],
@@ -5333,7 +5360,7 @@
       "titleEn": "Research and presentation skills",
       "description": "Die lernende Person kann Seminarinhalte recherchieren und effektiv präsentieren.",
       "descriptionEn": "The learner can prepare and communicate seminar content effectively.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5018m"
       ],
@@ -5352,7 +5379,7 @@
       "titleEn": "Literature review and topic synthesis",
       "description": "Die lernende Person kann Literatur auswerten und ein Thema strukturiert aufbereiten.",
       "descriptionEn": "The learner can synthesize research literature into a coherent seminar topic.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5018m"
       ],
@@ -5368,7 +5395,7 @@
       "titleEn": "Scientific presentation and discussion",
       "description": "Die lernende Person kann Ergebnisse klar präsentieren und fachlich diskutieren.",
       "descriptionEn": "The learner can present results clearly and discuss them scientifically.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5018m"
       ],
@@ -5386,7 +5413,7 @@
       "titleEn": "Advanced Topics in the Theory of Quantum Matter (NAT5020m)",
       "description": "Die lernende Person kann fortgeschrittene Themen der Quantenmaterie analysieren und Forschungsergebnisse präsentieren.",
       "descriptionEn": "The learner can analyze advanced topics in non-equilibrium quantum many-body physics and communicate research-based insights.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:NAT5020m",
         "ects:5"
@@ -5410,7 +5437,7 @@
       "titleEn": "Semiclassical dynamics and Boltzmann transport",
       "description": "Die lernende Person kann kinetische Theorie für Transport in klassischen und quantenmechanischen Systemen anwenden.",
       "descriptionEn": "The learner can apply kinetic theory to transport in classical and quantum systems.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5020m"
       ],
@@ -5429,7 +5456,7 @@
       "titleEn": "Boltzmann equation and transport",
       "description": "Die lernende Person kann die Boltzmann-Gleichung für Teilchen-, Ladungs- und Energietransport nutzen.",
       "descriptionEn": "The learner can use the Boltzmann equation for particle, charge, and energy transport.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5020m"
       ],
@@ -5445,7 +5472,7 @@
       "titleEn": "Linear response and topological effects",
       "description": "Die lernende Person kann kinetische Theorie mit linearer Antwort und topologischen Effekten verknüpfen.",
       "descriptionEn": "The learner can relate kinetic theory to linear response, sum rules, and topological effects.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5020m"
       ],
@@ -5461,7 +5488,7 @@
       "titleEn": "Integrable models out of equilibrium",
       "description": "Die lernende Person kann Konzepte der Integrabilität für nichtgleichgewichtigen Transport anwenden.",
       "descriptionEn": "The learner can apply integrability concepts to non-equilibrium transport.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5020m"
       ],
@@ -5480,7 +5507,7 @@
       "titleEn": "Integrability and transport in 1D systems",
       "description": "Die lernende Person kann integrabilitätsbasierten Transport in Vielteilchensystemen erklären.",
       "descriptionEn": "The learner can explain integrability-based transport in many-body systems.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5020m"
       ],
@@ -5496,7 +5523,7 @@
       "titleEn": "Generalized hydrodynamics",
       "description": "Die lernende Person kann die Grundidee der generalisierten Hydrodynamik skizzieren.",
       "descriptionEn": "The learner can outline generalized hydrodynamics for integrable models.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5020m"
       ],
@@ -5514,7 +5541,7 @@
       "titleEn": "Hydrodynamic transport in constrained systems",
       "description": "Die lernende Person kann Transport in Systemen mit Erhaltungseinschränkungen analysieren.",
       "descriptionEn": "The learner can analyze transport in systems with conservation constraints.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5020m"
       ],
@@ -5533,7 +5560,7 @@
       "titleEn": "Diffusive and unconventional hydrodynamics",
       "description": "Die lernende Person kann diffusive und ungewöhnliche Hydrodynamik voneinander unterscheiden.",
       "descriptionEn": "The learner can distinguish diffusive and constrained hydrodynamic behavior.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5020m"
       ],
@@ -5549,7 +5576,7 @@
       "titleEn": "Methods for constrained transport",
       "description": "Die lernende Person kann Methoden für hydrodynamischen Transport in beschränkten Systemen zusammenfassen.",
       "descriptionEn": "The learner can summarize methods for hydrodynamic transport in constrained systems.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5020m"
       ],
@@ -5567,7 +5594,7 @@
       "titleEn": "Quantum many-body dynamics and thermalization",
       "description": "Die lernende Person kann Thermalisation und deren Ausbleiben in Vielteilchensystemen analysieren.",
       "descriptionEn": "The learner can analyze thermalization and its breakdown in quantum many-body systems.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5020m"
       ],
@@ -5586,7 +5613,7 @@
       "titleEn": "Thermalization signatures and ETH",
       "description": "Die lernende Person kann Thermalisation und die Eigenzustandsthermalisierungshypothese erläutern.",
       "descriptionEn": "The learner can explain thermalization signatures and the eigenstate thermalization hypothesis.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5020m"
       ],
@@ -5602,7 +5629,7 @@
       "titleEn": "Avoiding thermalization (MBL, scars)",
       "description": "Die lernende Person kann Mechanismen wie Many-Body-Localization und Quanten-Scars beschreiben.",
       "descriptionEn": "The learner can describe mechanisms such as many-body localization and quantum scars.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5020m"
       ],
@@ -5620,7 +5647,7 @@
       "titleEn": "Research and presentation skills",
       "description": "Die lernende Person kann Literatur recherchieren und fortgeschrittene Themen präsentieren.",
       "descriptionEn": "The learner can conduct literature research and present advanced topics.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5020m"
       ],
@@ -5639,7 +5666,7 @@
       "titleEn": "Literature research and topic framing",
       "description": "Die lernende Person kann ein Thema anhand von Forschungsliteratur fokussieren.",
       "descriptionEn": "The learner can prepare a focused topic using research literature.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5020m"
       ],
@@ -5655,7 +5682,7 @@
       "titleEn": "Seminar presentation and discussion",
       "description": "Die lernende Person kann fortgeschrittene Inhalte präsentieren und diskutieren.",
       "descriptionEn": "The learner can present advanced material and engage in discussion.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5020m"
       ],
@@ -5673,7 +5700,7 @@
       "titleEn": "Condensed Matter Many-Body Physics and Field Theory 2 (NAT7011)",
       "description": "Die lernende Person kann feldtheoretische Werkzeuge auf fortgeschrittene Probleme der Vielteilchenphysik anwenden.",
       "descriptionEn": "The learner can apply field-theoretical tools to advanced problems in condensed matter many-body physics.",
-      "weight": 10.0,
+      "weight": 10,
       "tags": [
         "module:NAT7011",
         "ects:10"
@@ -5698,7 +5725,7 @@
       "titleEn": "Field-theory tools and renormalization",
       "description": "Die lernende Person kann Pfadintegrale, Diagramme und RG-Methoden einsetzen.",
       "descriptionEn": "The learner can use path integrals, diagrams, and renormalization group methods.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7011"
       ],
@@ -5717,7 +5744,7 @@
       "titleEn": "Path integrals and diagrammatic techniques",
       "description": "Die lernende Person kann Pfadintegrale und Feynman-Diagramme für Vielteilchensysteme verwenden.",
       "descriptionEn": "The learner can use path-integral formulations and Feynman diagrams for many-body systems.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7011"
       ],
@@ -5733,7 +5760,7 @@
       "titleEn": "Renormalization group flows and fixed points",
       "description": "Die lernende Person kann RG-Transformationen erklären und perturbative Rechnungen durchführen.",
       "descriptionEn": "The learner can explain RG transformations and perform perturbative RG calculations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7011"
       ],
@@ -5751,7 +5778,7 @@
       "titleEn": "Fermi liquids and linear response",
       "description": "Die lernende Person kann geladene Fermi-Flüssigkeiten und Transportantwort analysieren.",
       "descriptionEn": "The learner can analyze charged Fermi liquids and transport response.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7011"
       ],
@@ -5772,7 +5799,7 @@
       "titleEn": "Charged Fermi liquids and screening",
       "description": "Die lernende Person kann RPA-Abschirmung und Plasmamoden analysieren.",
       "descriptionEn": "The learner can apply RPA screening and analyze plasma modes.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7011"
       ],
@@ -5788,7 +5815,7 @@
       "titleEn": "Linear response theory and Kubo formalism",
       "description": "Die lernende Person kann Antwortfunktionen und Kubo-Formeln für Transport nutzen.",
       "descriptionEn": "The learner can use response functions and Kubo formulas for transport.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7011"
       ],
@@ -5806,7 +5833,7 @@
       "titleEn": "Superconductivity and charged superfluids",
       "description": "Die lernende Person kann BCS-Theorie und Ginzburg-Landau-Beschreibungen analysieren.",
       "descriptionEn": "The learner can analyze BCS theory and Ginzburg-Landau descriptions.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7011"
       ],
@@ -5827,7 +5854,7 @@
       "titleEn": "BCS theory and mean-field approaches",
       "description": "Die lernende Person kann BCS-Theorie und Mean-Field-Methoden formulieren.",
       "descriptionEn": "The learner can formulate BCS theory and related mean-field treatments.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7011"
       ],
@@ -5843,7 +5870,7 @@
       "titleEn": "Ginzburg-Landau theory and Anderson-Higgs mechanism",
       "description": "Die lernende Person kann Meissner-Effekt und Anderson-Higgs-Mechanismus erklären.",
       "descriptionEn": "The learner can explain the Meissner effect and Anderson-Higgs mechanism.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7011"
       ],
@@ -5861,7 +5888,7 @@
       "titleEn": "Quantum magnetism and Hubbard models",
       "description": "Die lernende Person kann Magnetismus in Hubbard- und Heisenberg-Systemen modellieren.",
       "descriptionEn": "The learner can model magnetism in Hubbard and Heisenberg systems.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7011"
       ],
@@ -5882,7 +5909,7 @@
       "titleEn": "Hubbard and Heisenberg models",
       "description": "Die lernende Person kann Phasen der Hubbard- und Heisenberg-Modelle analysieren.",
       "descriptionEn": "The learner can analyze phases of the Hubbard and Heisenberg models.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7011"
       ],
@@ -5898,7 +5925,7 @@
       "titleEn": "Field-theory approaches and RVB states",
       "description": "Die lernende Person kann Sigma-Modelle und RVB-Konzepte auf frustrierte Magneten anwenden.",
       "descriptionEn": "The learner can apply sigma-models and RVB concepts to frustrated magnets.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7011"
       ],
@@ -5916,7 +5943,7 @@
       "titleEn": "Topological phases and quantum Hall physics",
       "description": "Die lernende Person kann topologische Ordnung und Quanten-Hall-Effekte analysieren.",
       "descriptionEn": "The learner can analyze topological order and quantum Hall effects.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7011"
       ],
@@ -5937,7 +5964,7 @@
       "titleEn": "Topological invariants and edge states",
       "description": "Die lernende Person kann Berry-/Zak-Phasen berechnen und Randzustände einordnen.",
       "descriptionEn": "The learner can compute Berry/Zak phases and relate them to edge states.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7011"
       ],
@@ -5953,7 +5980,7 @@
       "titleEn": "Integer and fractional quantum Hall effects",
       "description": "Die lernende Person kann QHE-Phänomene und Chern-Simons-Beschreibungen erklären.",
       "descriptionEn": "The learner can explain QHE phenomena and Chern-Simons descriptions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7011"
       ],
@@ -5971,7 +5998,7 @@
       "titleEn": "Strong correlations and lattice gauge theories",
       "description": "Die lernende Person kann Kondo-Physik und exotische korrelierte Systeme analysieren.",
       "descriptionEn": "The learner can analyze Kondo physics and exotic correlated systems.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7011"
       ],
@@ -5992,7 +6019,7 @@
       "titleEn": "Kondo physics and heavy fermions",
       "description": "Die lernende Person kann Kondo-Abschirmung und schwere Fermionen erklären.",
       "descriptionEn": "The learner can explain Kondo screening and heavy fermion behavior.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7011"
       ],
@@ -6008,7 +6035,7 @@
       "titleEn": "Lattice gauge theories and doped Hubbard model",
       "description": "Die lernende Person kann Gittereichtheorien und dotierte Hubbard-Systeme beschreiben.",
       "descriptionEn": "The learner can describe lattice gauge approaches and doped Hubbard physics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7011"
       ],
@@ -6026,7 +6053,7 @@
       "titleEn": "Experimental Quantum Computing and Quantum Error Correction (NAT7030)",
       "description": "Die lernende Person kann experimentelle Quantenplattformen erklären und Fehlerkorrekturkonzepte anwenden.",
       "descriptionEn": "The learner can explain experimental quantum computing platforms and apply quantum error correction concepts.",
-      "weight": 10.0,
+      "weight": 10,
       "tags": [
         "module:NAT7030",
         "ects:10"
@@ -6050,7 +6077,7 @@
       "titleEn": "Quantum circuits and gate operations",
       "description": "Die lernende Person kann Qubits, Gatter und Schaltungsmodelle für Experimente beschreiben.",
       "descriptionEn": "The learner can describe qubits, gates, and circuit models used in experiments.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7030"
       ],
@@ -6069,7 +6096,7 @@
       "titleEn": "Qubits, gates, and circuit descriptions",
       "description": "Die lernende Person kann elementare Gatter und Schaltungen beschreiben.",
       "descriptionEn": "The learner can describe elementary quantum gates and circuits.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7030"
       ],
@@ -6085,7 +6112,7 @@
       "titleEn": "Universal gate sets and logical operations",
       "description": "Die lernende Person kann universelle Gattermengen und logische Operationen erläutern.",
       "descriptionEn": "The learner can explain universal gate sets and logical operations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7030"
       ],
@@ -6103,7 +6130,7 @@
       "titleEn": "Quantum computing hardware platforms",
       "description": "Die lernende Person kann führende experimentelle Plattformen vergleichen.",
       "descriptionEn": "The learner can compare leading experimental platforms.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7030"
       ],
@@ -6124,7 +6151,7 @@
       "titleEn": "Superconducting qubits",
       "description": "Die lernende Person kann Architekturen und Kontrolle supraleitender Qubits skizzieren.",
       "descriptionEn": "The learner can outline superconducting qubit architectures and control.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7030"
       ],
@@ -6140,7 +6167,7 @@
       "titleEn": "Trapped ions and neutral atoms",
       "description": "Die lernende Person kann Ionenfallen- und Neutralatom-Plattformen beschreiben.",
       "descriptionEn": "The learner can describe trapped-ion and neutral-atom platforms.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7030"
       ],
@@ -6156,7 +6183,7 @@
       "titleEn": "Quantum error models",
       "description": "Die lernende Person kann Rauschquellen und Fehlerkanäle in Experimenten beschreiben.",
       "descriptionEn": "The learner can describe noise sources and error channels in experiments.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7030"
       ],
@@ -6177,7 +6204,7 @@
       "titleEn": "Error channels and noise characterization",
       "description": "Die lernende Person kann Fehler modellieren und Rauschen charakterisieren.",
       "descriptionEn": "The learner can model quantum errors and characterize noise.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7030"
       ],
@@ -6193,7 +6220,7 @@
       "titleEn": "Syndrome extraction and diagnostics",
       "description": "Die lernende Person kann Syndrommessungen und Diagnostik erklären.",
       "descriptionEn": "The learner can explain syndrome measurement and diagnostics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7030"
       ],
@@ -6211,7 +6238,7 @@
       "titleEn": "Quantum error correction codes",
       "description": "Die lernende Person kann experimentelle Codes vergleichen und Fehlertoleranz einordnen.",
       "descriptionEn": "The learner can compare experimental QEC codes and fault tolerance.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7030"
       ],
@@ -6232,7 +6259,7 @@
       "titleEn": "Repetition, surface, and color codes",
       "description": "Die lernende Person kann gängige Codes aus Experimenten beschreiben.",
       "descriptionEn": "The learner can describe common codes used in experiments.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7030"
       ],
@@ -6248,7 +6275,7 @@
       "titleEn": "qLDPC codes and fault-tolerant thresholds",
       "description": "Die lernende Person kann qLDPC-Codes und Fehlertoleranzschwellen erläutern.",
       "descriptionEn": "The learner can explain qLDPC codes and fault-tolerance concepts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7030"
       ],
@@ -6266,7 +6293,7 @@
       "titleEn": "Experimental progress and evaluation",
       "description": "Die lernende Person kann aktuelle experimentelle Fortschritte in der Fehlerkorrektur bewerten.",
       "descriptionEn": "The learner can analyze recent experimental advances in QEC.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT7030"
       ],
@@ -6286,7 +6313,7 @@
       "titleEn": "Evaluating experimental QEC demonstrations",
       "description": "Die lernende Person kann Experimente beurteilen und ihre Grenzen diskutieren.",
       "descriptionEn": "The learner can assess experimental results and limitations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT7030"
       ],
@@ -6302,7 +6329,7 @@
       "titleEn": "Functional Analysis (MA3001)",
       "description": "Die lernende Person kann zentrale Werkzeuge der Funktionalanalysis nutzen, um lineare Funktionale und Operatoren auf Banach- und Hilbert-Räumen zu untersuchen.",
       "descriptionEn": "The learner can use core tools of functional analysis to study linear functionals and operators on Banach and Hilbert spaces.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "module:MA3001",
         "ects:9"
@@ -6327,7 +6354,7 @@
       "titleEn": "Normed, Banach, and Hilbert spaces",
       "description": "Die lernende Person kann normierte Räume definieren und Banach- sowie Hilbert-Strukturen unterscheiden.",
       "descriptionEn": "The learner can define normed spaces and distinguish Banach and Hilbert structures.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:MA3001"
       ],
@@ -6346,7 +6373,7 @@
       "titleEn": "Banach spaces and completeness",
       "description": "Die lernende Person kann Vollständigkeit erklären und Banachraum-Eigenschaften in Beispielen nachweisen.",
       "descriptionEn": "The learner can explain completeness and verify Banach space properties in examples.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA3001"
       ],
@@ -6362,7 +6389,7 @@
       "titleEn": "Hilbert spaces, inner products, and orthogonality",
       "description": "Die lernende Person kann mit Skalarprodukten, Orthogonalität und Projektionen in Hilberträumen arbeiten.",
       "descriptionEn": "The learner can work with inner products, orthogonality, and projections in Hilbert spaces.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA3001"
       ],
@@ -6380,7 +6407,7 @@
       "titleEn": "Bounded linear operators and fundamental theorems",
       "description": "Die lernende Person kann beschränkte lineare Operatoren analysieren und zentrale Existenzsätze anwenden.",
       "descriptionEn": "The learner can analyze bounded linear operators and apply key existence theorems.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:MA3001"
       ],
@@ -6401,7 +6428,7 @@
       "titleEn": "Bounded operators and operator norms",
       "description": "Die lernende Person kann Operatornormen berechnen und Beschränktheit bestimmen.",
       "descriptionEn": "The learner can compute operator norms and determine boundedness.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA3001"
       ],
@@ -6417,7 +6444,7 @@
       "titleEn": "Open mapping and bounded inverse theorems",
       "description": "Die lernende Person kann den Satz der offenen Abbildung und seine Folgerungen anwenden.",
       "descriptionEn": "The learner can apply the open mapping theorem and related consequences.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA3001"
       ],
@@ -6435,7 +6462,7 @@
       "titleEn": "Duality and Hahn-Banach",
       "description": "Die lernende Person kann Dualräume und Erweiterungssätze für lineare Funktionale nutzen.",
       "descriptionEn": "The learner can use dual spaces and extension principles for linear functionals.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:MA3001"
       ],
@@ -6456,7 +6483,7 @@
       "titleEn": "Dual spaces and linear functionals",
       "description": "Die lernende Person kann Dualräume identifizieren und lineare Funktionale interpretieren.",
       "descriptionEn": "The learner can identify dual spaces and interpret linear functionals.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA3001"
       ],
@@ -6472,7 +6499,7 @@
       "titleEn": "Hahn-Banach extension theorems",
       "description": "Die lernende Person kann Hahn-Banach zur Fortsetzung von Funktionalen und zur Separierung von Mengen anwenden.",
       "descriptionEn": "The learner can apply Hahn-Banach to extend functionals and separate sets.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA3001"
       ],
@@ -6490,7 +6517,7 @@
       "titleEn": "Weak and weak* convergence",
       "description": "Die lernende Person kann schwache und schwach* Topologien und Konvergenz analysieren.",
       "descriptionEn": "The learner can analyze weak and weak* topologies and convergence.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:MA3001"
       ],
@@ -6511,7 +6538,7 @@
       "titleEn": "Weak convergence in Banach spaces",
       "description": "Die lernende Person kann schwache Konvergenz mithilfe beschränkter linearer Funktionale testen.",
       "descriptionEn": "The learner can test weak convergence using bounded linear functionals.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA3001"
       ],
@@ -6527,7 +6554,7 @@
       "titleEn": "Weak* convergence and duality",
       "description": "Die lernende Person kann schwache und schwach* Konvergenz unterscheiden und Kompaktheitsergebnisse nutzen.",
       "descriptionEn": "The learner can distinguish weak and weak* convergence and use compactness results.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA3001"
       ],
@@ -6545,7 +6572,7 @@
       "titleEn": "Spectral theory of compact selfadjoint operators",
       "description": "Die lernende Person kann Spektren kompakter selbstadjungierter Operatoren in Hilberträumen analysieren.",
       "descriptionEn": "The learner can analyze spectra of compact selfadjoint operators in Hilbert spaces.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:MA3001"
       ],
@@ -6566,7 +6593,7 @@
       "titleEn": "Compact operators and spectral properties",
       "description": "Die lernende Person kann kompakte Operatoren charakterisieren und deren Spektrum bestimmen.",
       "descriptionEn": "The learner can characterize compact operators and their spectra.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA3001"
       ],
@@ -6582,7 +6609,7 @@
       "titleEn": "Selfadjoint operators and spectral decompositions",
       "description": "Die lernende Person kann die Spektralzerlegung kompakter selbstadjungierter Operatoren anwenden.",
       "descriptionEn": "The learner can apply spectral decomposition for compact selfadjoint operators.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA3001"
       ],
@@ -6600,7 +6627,7 @@
       "titleEn": "Introduction to unbounded operators",
       "description": "Die lernende Person kann grundlegende Begriffe unbeschränkter Operatoren und ihrer Definitionsbereiche erläutern.",
       "descriptionEn": "The learner can explain basic notions of unbounded operators and their domains.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA3001"
       ],
@@ -6618,7 +6645,7 @@
       "titleEn": "Seminar: Advanced Topics of Quantum Computing (NAT5040m)",
       "description": "Die lernende Person kann ein fortgeschrittenes Thema des Quantencomputings untersuchen, theoretisch analysieren und Ergebnisse kommunizieren.",
       "descriptionEn": "The learner can investigate an advanced quantum computing topic, analyze its theory, and communicate results.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:NAT5040m",
         "ects:5"
@@ -6641,7 +6668,7 @@
       "titleEn": "Seminar orientation and goals",
       "description": "Die lernende Person kann übergeordnete Ziele und Herausforderungen im Quantencomputing erklären.",
       "descriptionEn": "The learner can explain overarching goals and challenges in quantum computing.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6659,7 +6686,7 @@
       "titleEn": "Quantum computing landscape and challenges",
       "description": "Die lernende Person kann zentrale Herausforderungen wie Skalierung, Rauschen und algorithmische Grenzen zusammenfassen.",
       "descriptionEn": "The learner can summarize key challenges such as scalability, noise, and algorithmic limits.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6675,7 +6702,7 @@
       "titleEn": "Advanced topic exploration",
       "description": "Die lernende Person kann ein ausgewähltes fortgeschrittenes Thema vertiefen und einordnen.",
       "descriptionEn": "The learner can study and contextualize a selected advanced topic.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6704,7 +6731,7 @@
       "titleEn": "Quantum hardware and physical realizations",
       "description": "Die lernende Person kann wichtige Hardware-Plattformen und ihre Trade-offs beschreiben.",
       "descriptionEn": "The learner can describe major hardware platforms and their trade-offs.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6720,7 +6747,7 @@
       "titleEn": "Quantum circuits and models of computation",
       "description": "Die lernende Person kann Schaltungsmodelle erklären, die in fortgeschrittenen Algorithmen verwendet werden.",
       "descriptionEn": "The learner can explain circuit models used in advanced algorithms.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6736,7 +6763,7 @@
       "titleEn": "Quantum simulation",
       "description": "Die lernende Person kann die Simulation von Quantensystemen mit Quantencomputern erklären.",
       "descriptionEn": "The learner can explain simulation of quantum systems using quantum computers.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6752,7 +6779,7 @@
       "titleEn": "Tensor network methods",
       "description": "Die lernende Person kann Tensornetzwerk-Ansätze für Simulation und Kompression erläutern.",
       "descriptionEn": "The learner can explain tensor network approaches for simulation and compression.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6768,7 +6795,7 @@
       "titleEn": "Qubitization and quantum eigenvalue transformation",
       "description": "Die lernende Person kann Qubitisierung und QET als algorithmische Bausteine skizzieren.",
       "descriptionEn": "The learner can outline qubitization and QET as algorithmic primitives.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6784,7 +6811,7 @@
       "titleEn": "Variational algorithms and quantum machine learning",
       "description": "Die lernende Person kann variationale Methoden und Lernanwendungen beschreiben.",
       "descriptionEn": "The learner can describe variational methods and learning applications.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6800,7 +6827,7 @@
       "titleEn": "Quantum optimization",
       "description": "Die lernende Person kann Optimierungsprobleme formulieren und Quantenansätze erläutern.",
       "descriptionEn": "The learner can explain optimization formulations and quantum approaches.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6816,7 +6843,7 @@
       "titleEn": "Quantum error correction",
       "description": "Die lernende Person kann Fehlermodelle und grundlegende Korrekturideen erklären.",
       "descriptionEn": "The learner can explain error models and basic correction ideas.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6832,7 +6859,7 @@
       "titleEn": "Quantum cellular automata",
       "description": "Die lernende Person kann zelluläre Automaten in Quantenkontexten beschreiben.",
       "descriptionEn": "The learner can describe cellular automata models in quantum settings.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6848,7 +6875,7 @@
       "titleEn": "Quantum cryptography",
       "description": "Die lernende Person kann kryptographische Grundideen und Sicherheitsaspekte erläutern.",
       "descriptionEn": "The learner can explain cryptographic primitives and security ideas.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6864,7 +6891,7 @@
       "titleEn": "Research and communication",
       "description": "Die lernende Person kann eine fokussierte Literaturrecherche durchführen und Ergebnisse präsentieren.",
       "descriptionEn": "The learner can conduct a focused literature review and present findings.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6885,7 +6912,7 @@
       "titleEn": "Literature study and critical evaluation",
       "description": "Die lernende Person kann Fachartikel zusammenfassen und kritisch bewerten.",
       "descriptionEn": "The learner can summarize and critique research papers.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6901,7 +6928,7 @@
       "titleEn": "Seminar presentation and discussion",
       "description": "Die lernende Person kann Ergebnisse klar präsentieren und Fragen beantworten.",
       "descriptionEn": "The learner can present results clearly and respond to questions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6919,7 +6946,7 @@
       "titleEn": "Implementation or analysis",
       "description": "Die lernende Person kann eine ausgewählte Methode implementieren oder theoretisch analysieren.",
       "descriptionEn": "The learner can implement or analyze a selected quantum algorithm or method.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6940,7 +6967,7 @@
       "titleEn": "Algorithm implementation or simulation",
       "description": "Die lernende Person kann einen gewählten Algorithmus implementieren oder eine Simulation durchführen.",
       "descriptionEn": "The learner can implement a chosen algorithm or run a simulation.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6956,7 +6983,7 @@
       "titleEn": "Theoretical analysis of the selected method",
       "description": "Die lernende Person kann Annahmen, Komplexität und Grenzen erläutern.",
       "descriptionEn": "The learner can explain assumptions, complexity, and limitations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -6972,7 +6999,7 @@
       "titleEn": "Quantum Hardware (Module NAT3034)",
       "description": "Die lernende Person kann zentrale Konzepte der Quantenhardware erklären und grundlegende Eigenschaften wichtiger Hardware-Plattformen analysieren.",
       "descriptionEn": "The learner can explain core concepts of quantum hardware and analyze key properties of major hardware platforms.",
-      "weight": 10.0,
+      "weight": 10,
       "tags": [
         "module:NAT3034",
         "ects:10"
@@ -6997,7 +7024,7 @@
       "titleEn": "Foundations and motivation",
       "description": "Die lernende Person kann grundlegende Begriffe der Quantenhardware einordnen und Motivation sowie Anwendungen benennen.",
       "descriptionEn": "The learner can situate key concepts of quantum hardware and name motivations and applications.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3034"
       ],
@@ -7018,7 +7045,7 @@
       "titleEn": "Quantum 1.0 vs Quantum 2.0",
       "description": "Die lernende Person kann historische und moderne Quantentechnologien unterscheiden und deren Ziele einordnen.",
       "descriptionEn": "The learner can distinguish historical and modern quantum technologies and relate them to hardware goals.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7034,7 +7061,7 @@
       "titleEn": "Two-level system and harmonic oscillator",
       "description": "Die lernende Person kann grundlegende Quantensysteme modellieren, die als Qubits oder Resonatoren dienen.",
       "descriptionEn": "The learner can model basic quantum systems used as qubits and resonators.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7050,7 +7077,7 @@
       "titleEn": "Superposition, entanglement, relaxation, and dephasing",
       "description": "Die lernende Person kann Kohärenz- und Dekohärenzprozesse für Qubits erklären.",
       "descriptionEn": "The learner can explain coherence and decoherence processes relevant for qubits.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7068,7 +7095,7 @@
       "titleEn": "Quantum vs classical information and applications",
       "description": "Die lernende Person kann Quanten- und klassische Information vergleichen und Anwendungen benennen.",
       "descriptionEn": "The learner can contrast quantum and classical information and name key application areas.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7084,7 +7111,7 @@
       "titleEn": "Light-matter interaction and QED",
       "description": "Die lernende Person kann Licht-Materie-Wechselwirkung in Hohlraum- und Schaltkreis-QED analysieren.",
       "descriptionEn": "The learner can analyze light-matter interaction in cavity and circuit QED settings.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3034"
       ],
@@ -7107,7 +7134,7 @@
       "titleEn": "Quantization of the electromagnetic field and photon states",
       "description": "Die lernende Person kann Feldquantisierung und Eigenschaften von Photonenzuständen beschreiben.",
       "descriptionEn": "The learner can describe field quantization and properties of photon states.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7123,7 +7150,7 @@
       "titleEn": "Photon sources, detectors, and entangled photons",
       "description": "Die lernende Person kann Erzeugung, Detektion und Verschränkung von Photonen erklären.",
       "descriptionEn": "The learner can explain how photons are generated, detected, and entangled.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7141,7 +7168,7 @@
       "titleEn": "Two-level atoms, dipole moments, Jaynes-Cummings, and Rabi dynamics",
       "description": "Die lernende Person kann Atom-Feld-Kopplung modellieren und Rabi-Oszillationen vorhersagen.",
       "descriptionEn": "The learner can model atom-field coupling and predict Rabi oscillations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7159,7 +7186,7 @@
       "titleEn": "Cavity and circuit QED, cooperativity, and AC Stark effect",
       "description": "Die lernende Person kann starke Kopplungskriterien und cavity-induzierte Niveauverschiebungen erklären.",
       "descriptionEn": "The learner can explain strong coupling criteria and cavity-induced level shifts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7177,7 +7204,7 @@
       "titleEn": "Superconducting quantum circuits",
       "description": "Die lernende Person kann supraleitende Hardwareplattformen für Qubits analysieren.",
       "descriptionEn": "The learner can analyze superconducting hardware platforms for qubits.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3034"
       ],
@@ -7201,7 +7228,7 @@
       "titleEn": "Superconducting resonators and quality factors",
       "description": "Die lernende Person kann Resonatorgeometrie mit Frequenz und Qualitätsfaktor verknüpfen.",
       "descriptionEn": "The learner can relate resonator geometry to frequency and quality factor.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7217,7 +7244,7 @@
       "titleEn": "Josephson junction qubits and anharmonicity",
       "description": "Die lernende Person kann erklären, wie Josephson-Kontakte nichtlineare Qubits ermöglichen.",
       "descriptionEn": "The learner can explain how Josephson junctions create nonlinear qubits.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7235,7 +7262,7 @@
       "titleEn": "Qubit Hamiltonian engineering",
       "description": "Die lernende Person kann effektive Hamiltonianen für supraleitende Qubits herleiten.",
       "descriptionEn": "The learner can derive effective Hamiltonians for superconducting qubits.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7253,7 +7280,7 @@
       "titleEn": "Single- and two-qubit gates with control and readout",
       "description": "Die lernende Person kann Gate-Operationen und Messschemata für supraleitende Qubits skizzieren.",
       "descriptionEn": "The learner can outline gate operations and measurement schemes for superconducting qubits.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7271,7 +7298,7 @@
       "titleEn": "Decoherence mechanisms in superconducting circuits",
       "description": "Die lernende Person kann dominante Dekohärenzkanäle und Gegenmaßnahmen benennen.",
       "descriptionEn": "The learner can identify dominant decoherence channels and mitigation strategies.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7289,7 +7316,7 @@
       "titleEn": "Semiconductor quantum circuits",
       "description": "Die lernende Person kann Halbleiterplattformen für Qubits und Resonatoren analysieren.",
       "descriptionEn": "The learner can analyze semiconductor platforms for qubits and resonators.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3034"
       ],
@@ -7312,7 +7339,7 @@
       "titleEn": "Semiconductor qubits (quantum dots, donors, defects)",
       "description": "Die lernende Person kann erklären, wie Halbleiter-Qubits realisiert und kontrolliert werden.",
       "descriptionEn": "The learner can explain how semiconductor qubits are realized and controlled.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7328,7 +7355,7 @@
       "titleEn": "Resonators and coupling strength in semiconductors",
       "description": "Die lernende Person kann Geräteparameter mit Kopplungsstärke und Kontrolltreue verknüpfen.",
       "descriptionEn": "The learner can relate device parameters to coupling strength and control fidelity.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7346,7 +7373,7 @@
       "titleEn": "Gate operations, control, and readout",
       "description": "Die lernende Person kann Gate- und Messschemata für Halbleiter-Qubits skizzieren.",
       "descriptionEn": "The learner can outline gate and measurement schemes for semiconductor qubits.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7364,7 +7391,7 @@
       "titleEn": "Decoherence and dephasing in semiconductors",
       "description": "Die lernende Person kann Rauschquellen und Dephasierungsmechanismen in Halbleitersystemen beschreiben.",
       "descriptionEn": "The learner can describe noise sources and dephasing mechanisms in semiconductor devices.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7382,7 +7409,7 @@
       "titleEn": "Atoms and quantum gases",
       "description": "Die lernende Person kann erklären, wie ultrakalte Atome und Quantengase als Hardwareplattformen genutzt werden.",
       "descriptionEn": "The learner can explain how ultracold atoms and quantum gases are used as hardware platforms.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3034"
       ],
@@ -7404,7 +7431,7 @@
       "titleEn": "Ultracold gas preparation",
       "description": "Die lernende Person kann Laserkühlung, Einfangen und Verdampfungskühlung beschreiben.",
       "descriptionEn": "The learner can describe laser cooling, trapping, and evaporative cooling techniques.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7420,7 +7447,7 @@
       "titleEn": "Interactions and optical lattices",
       "description": "Die lernende Person kann Wechselwirkungen in optischen Gittern erklären und steuern.",
       "descriptionEn": "The learner can explain interactions in optical lattices and their control.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7438,7 +7465,7 @@
       "titleEn": "Bose-Hubbard and Hubbard models",
       "description": "Die lernende Person kann Gittermodelle auf ultrakalte Atomsysteme anwenden.",
       "descriptionEn": "The learner can apply lattice models to describe cold-atom systems.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7456,7 +7483,7 @@
       "titleEn": "Quantum sensing",
       "description": "Die lernende Person kann Hardwarekonzepte der Quantensensorik und ihre Grenzen erklären.",
       "descriptionEn": "The learner can explain hardware concepts for quantum sensing and their limits.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3034"
       ],
@@ -7480,7 +7507,7 @@
       "titleEn": "Noise sources and sensitivity limits (SQL)",
       "description": "Die lernende Person kann Rauschquellen analysieren und sie mit der Standardquantengrenze verknüpfen.",
       "descriptionEn": "The learner can analyze noise sources and relate them to the standard quantum limit.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7496,7 +7523,7 @@
       "titleEn": "Optomechanics and position measurements",
       "description": "Die lernende Person kann optomechanische Messungen und Positionsauslese beschreiben.",
       "descriptionEn": "The learner can describe optomechanical sensing and position readout.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7514,7 +7541,7 @@
       "titleEn": "Quantum backaction and shot noise",
       "description": "Die lernende Person kann Quantenrückwirkung und Schrotrauschen als Messgrenzen erklären.",
       "descriptionEn": "The learner can explain measurement backaction and shot-noise limits.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7532,7 +7559,7 @@
       "titleEn": "NV centers and spin-qubit sensors",
       "description": "Die lernende Person kann Sensorik mit Defektzentren in Diamant und Halbleitern beschreiben.",
       "descriptionEn": "The learner can describe sensing with defect centers in diamond and semiconductors.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7548,7 +7575,7 @@
       "titleEn": "Beyond SQL with squeezing and QND",
       "description": "Die lernende Person kann erklären, wie Squeezing und quanten-nicht-destruktive Messungen das SQL übertreffen.",
       "descriptionEn": "The learner can explain how squeezing and quantum non-demolition techniques surpass the SQL.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3034"
       ],
@@ -7566,7 +7593,7 @@
       "titleEn": "Quantum Information (Module NAT3035)",
       "description": "Die lernende Person kann zentrale Konzepte der Quanteninformation erklären und auf typische Anwendungen anwenden.",
       "descriptionEn": "The learner can explain core concepts of quantum information and apply them to typical applications.",
-      "weight": 10.0,
+      "weight": 10,
       "tags": [
         "module:NAT3035",
         "ects:10"
@@ -7592,7 +7619,7 @@
       "titleEn": "Foundations and formalism",
       "description": "Die lernende Person kann den grundlegenden Formalismus der Quanteninformation anwenden.",
       "descriptionEn": "The learner can use the basic formalism of quantum information theory.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3035"
       ],
@@ -7615,7 +7642,7 @@
       "titleEn": "Pure vs mixed states",
       "description": "Die lernende Person kann reine und gemischte Zustände unterscheiden und mathematisch darstellen.",
       "descriptionEn": "The learner can distinguish pure and mixed states and represent them mathematically.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -7631,7 +7658,7 @@
       "titleEn": "Quantum evolution and completely positive maps",
       "description": "Die lernende Person kann unitäre Entwicklung, Kanäle und vollständig positive Abbildungen beschreiben.",
       "descriptionEn": "The learner can describe unitary evolution, channels, and completely positive maps.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -7649,7 +7676,7 @@
       "titleEn": "Measurements and POVMs",
       "description": "Die lernende Person kann Quantenmessungen modellieren und Ergebnisstatistiken interpretieren.",
       "descriptionEn": "The learner can model quantum measurements and interpret outcome statistics.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -7667,7 +7694,7 @@
       "titleEn": "Schmidt decomposition and purification",
       "description": "Die lernende Person kann Schmidt-Zerlegungen berechnen und Purifikationsmethoden nutzen.",
       "descriptionEn": "The learner can compute Schmidt decompositions and use purification techniques.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -7685,7 +7712,7 @@
       "titleEn": "Tomography, estimation, and hypothesis testing",
       "description": "Die lernende Person kann grundlegende Methoden der Zustandsrekonstruktion und Schätzung erklären.",
       "descriptionEn": "The learner can explain basic methods of quantum state tomography and estimation.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -7703,7 +7730,7 @@
       "titleEn": "Quantum mechanical computations",
       "description": "Die lernende Person kann Rechnungen durchführen, die für Quanteninformation relevant sind.",
       "descriptionEn": "The learner can perform computations relevant to quantum information tasks.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -7719,7 +7746,7 @@
       "titleEn": "Entanglement theory and nonlocality",
       "description": "Die lernende Person kann Verschränkung in reinen und gemischten Zuständen analysieren.",
       "descriptionEn": "The learner can analyze entanglement in pure and mixed states and its signatures.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3035"
       ],
@@ -7742,7 +7769,7 @@
       "titleEn": "Pure and mixed-state entanglement",
       "description": "Die lernende Person kann Verschränkung in reinen und gemischten Zuständen klassifizieren.",
       "descriptionEn": "The learner can classify entanglement in pure and mixed states.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -7758,7 +7785,7 @@
       "titleEn": "Entanglement entropy and measures",
       "description": "Die lernende Person kann Verschränkungsentropie und verwandte Maße berechnen.",
       "descriptionEn": "The learner can compute entanglement entropy and related measures.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -7776,7 +7803,7 @@
       "titleEn": "Entanglement conversion and distillation",
       "description": "Die lernende Person kann Distillation, Umwandlung und Purifikation beschreiben.",
       "descriptionEn": "The learner can describe distillation, conversion, and purification protocols.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -7794,7 +7821,7 @@
       "titleEn": "Bell inequalities and nonlocality",
       "description": "Die lernende Person kann Bell-Tests und deren Bedeutung für Nichtlokalität erklären.",
       "descriptionEn": "The learner can explain Bell tests and their implications for nonlocality.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -7812,7 +7839,7 @@
       "titleEn": "Quantum communication protocols",
       "description": "Die lernende Person kann erklären, wie Verschränkung Kommunikationsprotokolle ermöglicht.",
       "descriptionEn": "The learner can explain how entanglement enables communication protocols.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3035"
       ],
@@ -7834,7 +7861,7 @@
       "titleEn": "Dense coding",
       "description": "Die lernende Person kann dichte Kodierung und ihre Ressourcen beschreiben.",
       "descriptionEn": "The learner can explain dense coding and its resource requirements.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -7850,7 +7877,7 @@
       "titleEn": "Quantum teleportation",
       "description": "Die lernende Person kann das Teleportationsprotokoll skizzieren und Ressourcen benennen.",
       "descriptionEn": "The learner can outline the teleportation protocol and required resources.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -7866,7 +7893,7 @@
       "titleEn": "Quantum cryptography (QKD)",
       "description": "Die lernende Person kann grundlegende QKD-Protokolle erklären.",
       "descriptionEn": "The learner can explain basic quantum key distribution protocols.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -7882,7 +7909,7 @@
       "titleEn": "Quantum computation and algorithms",
       "description": "Die lernende Person kann Rechenmodelle und zentrale Algorithmen erklären.",
       "descriptionEn": "The learner can explain computational models and key quantum algorithms.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3035"
       ],
@@ -7903,7 +7930,7 @@
       "titleEn": "Quantum circuits and gate model",
       "description": "Die lernende Person kann Berechnungen mit Quantenschaltkreisen und Gattern modellieren.",
       "descriptionEn": "The learner can model computations using quantum circuits and gates.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -7919,7 +7946,7 @@
       "titleEn": "Deutsch, Grover, and Shor algorithms",
       "description": "Die lernende Person kann zentrale Schritte und Speedups dieser Algorithmen beschreiben.",
       "descriptionEn": "The learner can describe core steps and speedups of standard algorithms.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -7937,7 +7964,7 @@
       "titleEn": "Quantum simulation and metrology",
       "description": "Die lernende Person kann Simulation und Metrologie als Anwendungen der Quanteninformation erklären.",
       "descriptionEn": "The learner can explain simulation and metrology as central applications.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3035"
       ],
@@ -7958,7 +7985,7 @@
       "titleEn": "Quantum simulation basics",
       "description": "Die lernende Person kann erklären, wie Quantensysteme andere Quantensysteme simulieren.",
       "descriptionEn": "The learner can explain how quantum systems simulate other quantum systems.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -7974,7 +8001,7 @@
       "titleEn": "Quantum metrology and estimation",
       "description": "Die lernende Person kann den Zusammenhang zwischen Präzision und Quantenressourcen erklären.",
       "descriptionEn": "The learner can relate estimation precision to quantum resources.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -7990,7 +8017,7 @@
       "titleEn": "Decoherence and error correction",
       "description": "Die lernende Person kann Dekohärenz und Gegenmaßnahmen für fragile Quanteninformation analysieren.",
       "descriptionEn": "The learner can analyze decoherence and countermeasures for fragile quantum information.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3035"
       ],
@@ -8012,7 +8039,7 @@
       "titleEn": "Decoherence mechanisms",
       "description": "Die lernende Person kann Quellen und Folgen der Dekohärenz erklären.",
       "descriptionEn": "The learner can explain sources and consequences of decoherence.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -8028,7 +8055,7 @@
       "titleEn": "Lindblad master equation",
       "description": "Die lernende Person kann offene Quantensysteme mit Lindblad-Gleichungen modellieren.",
       "descriptionEn": "The learner can model open-system dynamics using Lindblad equations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -8046,7 +8073,7 @@
       "titleEn": "Error correction codes and strategies",
       "description": "Die lernende Person kann grundlegende Fehlerkorrekturschemata erklären.",
       "descriptionEn": "The learner can explain elementary error correction schemes.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -8064,7 +8091,7 @@
       "titleEn": "Advanced and optional topics",
       "description": "Die lernende Person kann Bezüge der Quanteninformation zu fortgeschrittenen Themen herstellen.",
       "descriptionEn": "The learner can relate quantum information to advanced topics in many-body physics.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT3035"
       ],
@@ -8087,7 +8114,7 @@
       "titleEn": "Many-body entanglement",
       "description": "Die lernende Person kann Verschränkung in Vielteilchensystemen erklären.",
       "descriptionEn": "The learner can explain entanglement in many-body systems.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -8105,7 +8132,7 @@
       "titleEn": "Topological quantum computation",
       "description": "Die lernende Person kann topologische Ansätze für robuste Quantenrechnung beschreiben.",
       "descriptionEn": "The learner can describe topological approaches to robust quantum computation.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -8123,7 +8150,7 @@
       "titleEn": "Quantum complexity",
       "description": "Die lernende Person kann Komplexitätsklassen und Ressourcenskalierung erklären.",
       "descriptionEn": "The learner can explain complexity classes and resource scaling in quantum computing.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],
@@ -8141,7 +8168,7 @@
       "titleEn": "Tensor networks",
       "description": "Die lernende Person kann Tensor-Netzwerk-Darstellungen für Quantenzustände erläutern.",
       "descriptionEn": "The learner can explain tensor-network representations for quantum states.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT3035"
       ],

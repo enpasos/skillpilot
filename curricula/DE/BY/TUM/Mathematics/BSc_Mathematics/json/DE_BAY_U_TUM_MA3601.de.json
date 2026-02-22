@@ -20,7 +20,7 @@
       "titleEn": "Mathematical Models in Biology – Full Module",
       "description": "Nach erfolgreichem Abschluss können Studierende Zusammenhänge zwischen Ergebnissen aus unterschiedlichen Modellansätzen (stochastisch/deterministisch, diskret/kontinuierlich) beurteilen und für ein betrachtetes System ein angemessenes Beschreibungsniveau wählen. Außerdem können sie mathematische Modelle für biologische Systeme auf Basis analytischer, stochastischer oder diskreter Strukturen formulieren.",
       "descriptionEn": "After successful completion of the module, students are able to evaluate the connection of results obtained with different modeling approaches (stochastic/deterministic, discrete/continuous) and to choose an appropriate level of description for the system under observation. Furthermore, they can formulate mathematical models for biological systems based on analytic, stochastic, or discrete mathematical structures.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -32,6 +32,7 @@
         "duration:1_semester"
       ],
       "contains": [
+        "a590ecd7-a8ae-58da-9c50-35beac99bb27",
         "7ff29535-f157-5ed1-a252-61f8b87e6723",
         "1ba0a5b8-1f44-5414-a652-4c57d0d4f751",
         "aa1d331c-b3b6-558e-8da7-baccf2b68a4f",
@@ -43,6 +44,7 @@
         "32869f8a-63bf-5fe7-877a-8f75b0e6b1dc"
       ],
       "requires": [
+        "a590ecd7-a8ae-58da-9c50-35beac99bb27",
         "8eb1605b-fa70-511b-bbe4-28173d359c3b",
         "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
         "feaad1d5-022f-5ab3-93c3-001ac46de351",
@@ -63,7 +65,7 @@
       "titleEn": "Modeling Approaches in Mathematical Biology",
       "description": "Zusammenfassender Cluster: Modellklassen (stochastisch/deterministisch, diskret/kontinuierlich) unterscheiden und Modellannahmen sowie Ergebnisse im biologischen Kontext interpretieren.",
       "descriptionEn": "Summary cluster: distinguish model classes (stochastic/deterministic, discrete/continuous) and interpret assumptions and results in a biological context.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3601"
@@ -295,7 +297,7 @@
       "titleEn": "Galton–Watson Branching Processes",
       "description": "Zusammenfassender Cluster: Verzweigungsprozesse zur Modellierung von Reproduktion, Wachstum und Extinktion in Populationen.",
       "descriptionEn": "Summary cluster: branching processes to model reproduction, growth, and extinction in populations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA3601"
@@ -844,6 +846,28 @@
       }
     },
     {
+      "id": "a590ecd7-a8ae-58da-9c50-35beac99bb27",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3601",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "32869f8a-63bf-5fe7-877a-8f75b0e6b1dc",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -858,7 +882,9 @@
         "vocabularySource": "/data/ma3601_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "a590ecd7-a8ae-58da-9c50-35beac99bb27"
+      ],
       "dimensionTags": {
         "framework": "tum-ma3601",
         "demandLevel": "AB1",

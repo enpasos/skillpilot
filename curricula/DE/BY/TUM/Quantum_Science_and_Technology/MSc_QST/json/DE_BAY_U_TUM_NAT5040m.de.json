@@ -13,18 +13,21 @@
       "titleEn": "Seminar: Advanced Topics of Quantum Computing (NAT5040m)",
       "description": "Die lernende Person kann ein fortgeschrittenes Thema des Quantencomputings untersuchen, theoretisch analysieren und Ergebnisse kommunizieren.",
       "descriptionEn": "The learner can investigate an advanced quantum computing topic, analyze its theory, and communicate results.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "module:NAT5040m",
         "ects:5"
       ],
       "contains": [
+        "265b04b4-6ecc-58dd-a2ed-a405d69bd5c0",
         "bc5260ae-8067-5535-abcb-5646d9d04bec",
         "9045e23c-8418-53ce-9087-5d48a1ca78c8",
         "ded07f4f-4368-54ac-987f-7b5d422367c0",
         "de757bd0-d028-59a4-821c-3d0fed7be5a9"
       ],
-      "requires": [],
+      "requires": [
+        "265b04b4-6ecc-58dd-a2ed-a405d69bd5c0"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/NAT5040m",
       "dimensionTags": {
         "phase": "Modul"
@@ -36,7 +39,7 @@
       "titleEn": "Seminar orientation and goals",
       "description": "Die lernende Person kann übergeordnete Ziele und Herausforderungen im Quantencomputing erklären.",
       "descriptionEn": "The learner can explain overarching goals and challenges in quantum computing.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5040m"
       ],
@@ -49,17 +52,40 @@
       }
     },
     {
+      "id": "265b04b4-6ecc-58dd-a2ed-a405d69bd5c0",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-nat5040m",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "ca979f00-2107-5178-9097-a1c726d98ffd",
       "title": "Landschaft und Herausforderungen des Quantencomputings",
       "titleEn": "Quantum computing landscape and challenges",
       "description": "Die lernende Person kann zentrale Herausforderungen wie Skalierung, Rauschen und algorithmische Grenzen zusammenfassen.",
       "descriptionEn": "The learner can summarize key challenges such as scalability, noise, and algorithmic limits.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "265b04b4-6ecc-58dd-a2ed-a405d69bd5c0"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -70,7 +96,7 @@
       "titleEn": "Advanced topic exploration",
       "description": "Die lernende Person kann ein ausgewähltes fortgeschrittenes Thema vertiefen und einordnen.",
       "descriptionEn": "The learner can study and contextualize a selected advanced topic.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5040m"
       ],
@@ -99,7 +125,7 @@
       "titleEn": "Quantum hardware and physical realizations",
       "description": "Die lernende Person kann wichtige Hardware-Plattformen und ihre Trade-offs beschreiben.",
       "descriptionEn": "The learner can describe major hardware platforms and their trade-offs.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -115,7 +141,7 @@
       "titleEn": "Quantum circuits and models of computation",
       "description": "Die lernende Person kann Schaltungsmodelle erklären, die in fortgeschrittenen Algorithmen verwendet werden.",
       "descriptionEn": "The learner can explain circuit models used in advanced algorithms.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -131,7 +157,7 @@
       "titleEn": "Quantum simulation",
       "description": "Die lernende Person kann die Simulation von Quantensystemen mit Quantencomputern erklären.",
       "descriptionEn": "The learner can explain simulation of quantum systems using quantum computers.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -147,7 +173,7 @@
       "titleEn": "Tensor network methods",
       "description": "Die lernende Person kann Tensornetzwerk-Ansätze für Simulation und Kompression erläutern.",
       "descriptionEn": "The learner can explain tensor network approaches for simulation and compression.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -163,7 +189,7 @@
       "titleEn": "Qubitization and quantum eigenvalue transformation",
       "description": "Die lernende Person kann Qubitisierung und QET als algorithmische Bausteine skizzieren.",
       "descriptionEn": "The learner can outline qubitization and QET as algorithmic primitives.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -179,7 +205,7 @@
       "titleEn": "Variational algorithms and quantum machine learning",
       "description": "Die lernende Person kann variationale Methoden und Lernanwendungen beschreiben.",
       "descriptionEn": "The learner can describe variational methods and learning applications.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -195,7 +221,7 @@
       "titleEn": "Quantum optimization",
       "description": "Die lernende Person kann Optimierungsprobleme formulieren und Quantenansätze erläutern.",
       "descriptionEn": "The learner can explain optimization formulations and quantum approaches.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -211,7 +237,7 @@
       "titleEn": "Quantum error correction",
       "description": "Die lernende Person kann Fehlermodelle und grundlegende Korrekturideen erklären.",
       "descriptionEn": "The learner can explain error models and basic correction ideas.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -227,7 +253,7 @@
       "titleEn": "Quantum cellular automata",
       "description": "Die lernende Person kann zelluläre Automaten in Quantenkontexten beschreiben.",
       "descriptionEn": "The learner can describe cellular automata models in quantum settings.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -243,7 +269,7 @@
       "titleEn": "Quantum cryptography",
       "description": "Die lernende Person kann kryptographische Grundideen und Sicherheitsaspekte erläutern.",
       "descriptionEn": "The learner can explain cryptographic primitives and security ideas.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -259,7 +285,7 @@
       "titleEn": "Research and communication",
       "description": "Die lernende Person kann eine fokussierte Literaturrecherche durchführen und Ergebnisse präsentieren.",
       "descriptionEn": "The learner can conduct a focused literature review and present findings.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5040m"
       ],
@@ -280,7 +306,7 @@
       "titleEn": "Literature study and critical evaluation",
       "description": "Die lernende Person kann Fachartikel zusammenfassen und kritisch bewerten.",
       "descriptionEn": "The learner can summarize and critique research papers.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -296,7 +322,7 @@
       "titleEn": "Seminar presentation and discussion",
       "description": "Die lernende Person kann Ergebnisse klar präsentieren und Fragen beantworten.",
       "descriptionEn": "The learner can present results clearly and respond to questions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -314,7 +340,7 @@
       "titleEn": "Implementation or analysis",
       "description": "Die lernende Person kann eine ausgewählte Methode implementieren oder theoretisch analysieren.",
       "descriptionEn": "The learner can implement or analyze a selected quantum algorithm or method.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:NAT5040m"
       ],
@@ -335,7 +361,7 @@
       "titleEn": "Algorithm implementation or simulation",
       "description": "Die lernende Person kann einen gewählten Algorithmus implementieren oder eine Simulation durchführen.",
       "descriptionEn": "The learner can implement a chosen algorithm or run a simulation.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],
@@ -351,7 +377,7 @@
       "titleEn": "Theoretical analysis of the selected method",
       "description": "Die lernende Person kann Annahmen, Komplexität und Grenzen erläutern.",
       "descriptionEn": "The learner can explain assumptions, complexity, and limitations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:NAT5040m"
       ],

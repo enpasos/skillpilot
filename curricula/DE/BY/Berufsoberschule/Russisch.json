@@ -10,14 +10,36 @@
   "subject": "Russisch",
   "goals": [
     {
+      "id": "37df8430-2f97-50f8-a852-84e0be2da04e",
+      "title": "Warum Russisch? - Relevanz und Orientierung",
+      "titleEn": "Why Russisch? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Russisch für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Russisch matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "c9138345-0156-5430-85bc-e76c0dd69d67",
       "title": "Jahrgangsstufe 12",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "37df8430-2f97-50f8-a852-84e0be2da04e"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,13 +50,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "1983941c-be7f-5362-a98a-f17ce623a50f",
       "title": "Russisch (Berufsoberschule)",
       "contains": [
+        "37df8430-2f97-50f8-a852-84e0be2da04e",
         "c9138345-0156-5430-85bc-e76c0dd69d67",
         "a2dcd4f3-2f2e-56f4-bc27-847c5d4420f7"
       ],
@@ -45,8 +68,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "37df8430-2f97-50f8-a852-84e0be2da04e"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

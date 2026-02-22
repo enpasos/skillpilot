@@ -20,7 +20,7 @@
       "titleEn": "Introduction to Informatics for Students of Mathematics – Full Module",
       "description": "Nach erfolgreichem Abschluss verstehen Studierende wesentliche Konzepte der Informatik (z.B. Algorithmen, Syntax/Semantik, Effizienz) und können sie in überschaubaren Programmieraufgaben anwenden. Sie können in Java oder einer ähnlichen objektorientierten Sprache algorithmische Probleme lösen, grundlegende Datenstrukturen implementieren und einfache verteilte oder nebenläufige Anwendungen programmieren. Sie verstehen die zugrundeliegenden Konzepte so, dass sie andere imperative und/oder objektorientierte Programmiersprachen eigenständig erschließen können.",
       "descriptionEn": "After successful completion, students understand essential concepts of computer science (e.g., algorithms, syntax/semantics, efficiency) and can apply them to manageable programming tasks. They can solve algorithmic problems in Java or a similar object-oriented language, implement basic data structures, and program simple distributed or concurrent applications. They understand the underlying concepts well enough to independently learn other imperative and/or object-oriented programming languages.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -34,6 +34,7 @@
         "responsible:groh_georg"
       ],
       "contains": [
+        "c956aec8-e8fe-5a3d-a3f0-c61cd509d1a1",
         "292760a9-604e-5997-97c3-369c8849087b",
         "2646d262-6991-5b46-8a2d-ca85cd470319",
         "3b073736-5c9a-5228-98d5-ec8ce6d3369b",
@@ -44,7 +45,9 @@
         "50453793-8120-53be-bbf2-725a4b873ae6",
         "018e1b18-147d-591d-b100-ade71e02a53f"
       ],
-      "requires": [],
+      "requires": [
+        "c956aec8-e8fe-5a3d-a3f0-c61cd509d1a1"
+      ],
       "dimensionTags": {
         "framework": "tum-cit123000",
         "demandLevel": "AB2",
@@ -60,7 +63,7 @@
       "titleEn": "Fundamentals: Problem – Algorithm – Program",
       "description": "Zusammenfassender Cluster: Informatik-Grundbegriffe, algorithmisches Denken und erste Effizienzüberlegungen.",
       "descriptionEn": "Summary cluster: core CS concepts, algorithmic thinking, and first notions of efficiency.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:CIT123000"
@@ -292,7 +295,7 @@
       "titleEn": "Program Semantics: Control Flow and Execution",
       "description": "Zusammenfassender Cluster: Programmausführung über Kontrollflussdiagramme modellieren und Semantik-Argumente nachvollziehen.",
       "descriptionEn": "Summary cluster: model program execution using control-flow diagrams and follow semantic reasoning.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:CIT123000"
@@ -1039,6 +1042,28 @@
       }
     },
     {
+      "id": "c956aec8-e8fe-5a3d-a3f0-c61cd509d1a1",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-cit123000",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "018e1b18-147d-591d-b100-ade71e02a53f",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -1053,7 +1078,9 @@
         "vocabularySource": "/data/cit123000_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "c956aec8-e8fe-5a3d-a3f0-c61cd509d1a1"
+      ],
       "dimensionTags": {
         "framework": "tum-cit123000",
         "demandLevel": "AB1",

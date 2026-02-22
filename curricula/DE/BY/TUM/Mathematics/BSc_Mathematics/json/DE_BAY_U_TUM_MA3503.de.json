@@ -20,7 +20,7 @@
       "titleEn": "Nonlinear Optimization – Full Module",
       "description": "Nach erfolgreichem Abschluss können Studierende Optimierungstheorie detailliert verstehen und fortgeschrittene theoretische und numerische Aspekte moderner nichtlinearer Optimierung beherrschen. Sie können Konvergenzeigenschaften von Optimierungsverfahren analysieren und bewerten sowie Optimierungstheorie und -methoden anwenden.",
       "descriptionEn": "At the end of the module students are able to understand optimization theory in detail, to understand advanced theoretical and numerical aspects of modern nonlinear optimization, to assess and investigate the convergence properties of optimization methods and to apply optimization theory and methods.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "ects:5",
         "workload:150h",
@@ -33,6 +33,7 @@
         "responsible:ulbrich_michael"
       ],
       "contains": [
+        "fb817c24-95a2-5927-b612-5baf1064142b",
         "3f92a4c9-919b-56c9-b941-7ac795f008be",
         "3f6d5e19-33f0-5159-a3ce-ade28bc31f04",
         "3c44c653-2c0a-5b05-aed8-d0eb9d2c6258",
@@ -41,6 +42,7 @@
         "4e763ba1-bf3b-5bfe-8532-89547a12f020"
       ],
       "requires": [
+        "fb817c24-95a2-5927-b612-5baf1064142b",
         "8eb1605b-fa70-511b-bbe4-28173d359c3b",
         "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
         "feaad1d5-022f-5ab3-93c3-001ac46de351",
@@ -63,7 +65,7 @@
       "titleEn": "Modeling and Problem Classes",
       "description": "Zusammenfassender Cluster: Praktische Beispiele nichtlinearer Optimierung und Einordnung typischer Problemklassen (unrestringiert/restringiert, glatt/konvex, etc.).",
       "descriptionEn": "Summary cluster: practical examples of nonlinear optimization and classification of common problem classes (unconstrained/constrained, smooth/convex, etc.).",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3503"
@@ -139,7 +141,7 @@
       "titleEn": "Advanced Unconstrained Optimization",
       "description": "Zusammenfassender Cluster: Fortgeschrittene Aspekte der unrestringierten Optimierung, inkl. Optimalitätsbedingungen, Globalisierungsstrategien und Konvergenzanalyse.",
       "descriptionEn": "Summary cluster: advanced aspects of unconstrained optimization including optimality conditions, globalization strategies, and convergence analysis.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3503"
@@ -217,7 +219,7 @@
       "titleEn": "Optimality Theory for Constrained Optimization",
       "description": "Zusammenfassender Cluster: Optimalitätsbedingungen (KKT), Regularitäts-/Constraint-Qualification-Konzepte und second-order theory für restringierte Probleme.",
       "descriptionEn": "Summary cluster: optimality conditions (KKT), regularity/constraint qualification concepts, and second-order theory for constrained problems.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3503"
@@ -295,7 +297,7 @@
       "titleEn": "Numerical Methods: SQP, Barrier, Interior Point",
       "description": "Zusammenfassender Cluster: Entwicklung und Analyse zentraler numerischer Verfahren für nichtlineare restringierte Optimierung (SQP, Barrier- und Interior-Point-Verfahren).",
       "descriptionEn": "Summary cluster: development and analysis of key numerical methods for nonlinear constrained optimization (SQP, barrier, and interior point methods).",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3503"
@@ -373,7 +375,7 @@
       "titleEn": "Selected Further Topics",
       "description": "Zusammenfassender Cluster: Weiterführende Themen wie robuste Optimierung oder konenrestringierte Optimierung sowie deren algorithmische Einordnung.",
       "descriptionEn": "Summary cluster: further topics such as robust optimization or cone-constrained optimization and their algorithmic placement.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA3503"
@@ -608,6 +610,28 @@
       }
     },
     {
+      "id": "fb817c24-95a2-5927-b612-5baf1064142b",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma3503",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "4e763ba1-bf3b-5bfe-8532-89547a12f020",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -622,7 +646,9 @@
         "vocabularySource": "/data/ma3503_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "fb817c24-95a2-5927-b612-5baf1064142b"
+      ],
       "dimensionTags": {
         "framework": "tum-ma3503",
         "demandLevel": "AB1",

@@ -20,7 +20,7 @@
       "titleEn": "Introduction to Informatics – Full Module",
       "description": "Nach erfolgreichem Abschluss verstehen Studierende die wesentlichen Konzepte der Informatik (z.B. Algorithmen, Syntax/Semantik, Effizienz) auf einem grundlegenden, praxis-orientierten, aber wissenschaftlichen Niveau und können verantwortungsvoll mit ihnen umgehen. Sie können in Java oder einer ähnlichen objektorientierten Sprache überschaubare algorithmische Probleme lösen, grundlegende Datenstrukturen implementieren und einfache verteilte oder nebenläufige Anwendungen programmieren. Empfohlen ist der gleichzeitige Besuch des Programmierpraktikums IN0002.",
       "descriptionEn": "After successful completion, students understand essential concepts of computer science (e.g., algorithms, syntax/semantics, efficiency) at a foundational, practice-oriented yet scientific level and can use them responsibly. They can solve manageable algorithmic problems in Java or a similar object-oriented language, implement basic data structures, and program simple distributed or concurrent applications. The programming lab IN0002 is recommended to be taken in parallel.",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
         "ects:6",
         "workload:180h",
@@ -33,6 +33,7 @@
         "responsible:seidl_helmut"
       ],
       "contains": [
+        "4e36a173-e725-56ef-9222-a7707e1cf41c",
         "1f077044-154b-5061-b41a-3efad6243143",
         "91cc21a8-8cba-546f-8859-0a3d4c967ef4",
         "f40f8550-3e74-5572-88ad-845d7036335e",
@@ -43,7 +44,9 @@
         "8de6cc03-ecf3-5b57-b7f7-ea12383c473d",
         "9cce90da-9902-59a3-89c3-a84b69624d2b"
       ],
-      "requires": [],
+      "requires": [
+        "4e36a173-e725-56ef-9222-a7707e1cf41c"
+      ],
       "dimensionTags": {
         "framework": "tum-in0001",
         "demandLevel": "AB2",
@@ -1111,6 +1114,28 @@
       }
     },
     {
+      "id": "4e36a173-e725-56ef-9222-a7707e1cf41c",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-in0001",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "9cce90da-9902-59a3-89c3-a84b69624d2b",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -1125,7 +1150,9 @@
         "vocabularySource": "/data/in0001_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "4e36a173-e725-56ef-9222-a7707e1cf41c"
+      ],
       "dimensionTags": {
         "framework": "tum-in0001",
         "demandLevel": "AB1",

@@ -10,14 +10,36 @@
   "subject": "Tastschreiben (Lehrgang)",
   "goals": [
     {
+      "id": "61f440ec-bf4f-5f81-93ba-16f8c1156d38",
+      "title": "Warum Tastschreiben (Lehrgang)? - Relevanz und Orientierung",
+      "titleEn": "Why Tastschreiben (Lehrgang)? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Tastschreiben (Lehrgang) für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Tastschreiben (Lehrgang) matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "GLOBAL",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "8de158a5-05fc-503c-9e25-fbc140c70301",
       "title": "Jahrgangsstufe 5",
       "contains": [],
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "61f440ec-bf4f-5f81-93ba-16f8c1156d38"
+      ],
+      "weight": 0,
       "description": ""
     },
     {
@@ -28,13 +50,14 @@
         "phase": "GLOBAL"
       },
       "requires": [],
-      "weight": 0.0,
+      "weight": 0,
       "description": ""
     },
     {
       "id": "0aa51f9e-f876-5dd5-979f-4c3c5f925bd0",
       "title": "Tastschreiben (Lehrgang) (Mittelschule)",
       "contains": [
+        "61f440ec-bf4f-5f81-93ba-16f8c1156d38",
         "8de158a5-05fc-503c-9e25-fbc140c70301",
         "0c49dcff-720f-5039-81a3-3bbb71752d5d"
       ],
@@ -45,8 +68,10 @@
       "dimensionTags": {
         "phase": "GLOBAL"
       },
-      "requires": [],
-      "weight": 0.0,
+      "requires": [
+        "61f440ec-bf4f-5f81-93ba-16f8c1156d38"
+      ],
+      "weight": 0,
       "description": ""
     }
   ],

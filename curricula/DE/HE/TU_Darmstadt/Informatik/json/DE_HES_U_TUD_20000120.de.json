@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000120",
   "goals": [
     {
+      "id": "57313871-6a6a-5bda-9c97-b913c2c554be",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000120",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "f343ba62-3b79-5782-8be6-a30adacd1b32",
       "title": "TK3: Ubiquitous / Mobile Computing",
       "titleEn": "TK3: Ubiquitous / Mobile Computing",
       "description": "Erfolgreicher Abschluss des Moduls \"TK3: Ubiquitous / Mobile Computing\".",
       "descriptionEn": "Successful completion of module \"TK3: Ubiquitous / Mobile Computing\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-0120",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "57313871-6a6a-5bda-9c97-b913c2c554be"
+      ],
+      "contains": [
+        "57313871-6a6a-5bda-9c97-b913c2c554be"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]

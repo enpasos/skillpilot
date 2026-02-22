@@ -20,7 +20,7 @@
       "titleEn": "Introduction to Optimization – Full Module",
       "description": "Nach der erfolgreichen Teilnahme am Modul beherrschen die Studierenden die vermittelten grundlegenden Konzepte und Methoden der unrestringierten nichtlinearen Optimierung, der Konvexität und der linearen Optimierung. Die Studierenden können in der Praxis auftretende Aufgabenstellungen in der einschlägigen mathematischen Fachsprache als Optimierungsproblem modellieren und klassifizieren. Sie sind in der Lage, problemabhängig Optimalitätsbedingungen der unrestringierten und linearen Optimierung herzuleiten. Die Studierenden besitzen ein geometrisches Verständnis für die Konzepte und Methoden der unrestringierten nichtlinearen Optimierung, der Konvexität und der linearen Optimierung und können die in diesem Kontext auftretenden innermathematischen und angewandten Fragestellungen analysieren und lösen. Die Studierenden kennen die sach- und fachgerechten Optimierungsverfahren (z.B. global konvergente Abstiegsverfahren, Newton-Verfahren, Newton-artige Methoden und Simplex-Verfahren) und können diese im richtigen Kontext anwenden. Sie sind in der Lage, den Rechenaufwand und das Konvergenzverhalten von Optimierungsmethoden zu analysieren und zu bewerten.",
       "descriptionEn": "After successfully completing the module, students master the fundamental concepts and methods of unconstrained nonlinear optimization, convexity, and linear optimization. They can model and classify real-world tasks as optimization problems in the appropriate mathematical language. Depending on the problem, they are able to derive optimality conditions for unconstrained and linear optimization. They develop a geometric understanding of the underlying concepts and methods and can analyze and solve mathematical and applied questions arising in this context. Students are familiar with appropriate optimization algorithms (e.g., globally convergent descent methods, Newton’s method, Newton-type methods, and the simplex method) and can apply them in the right context. They can analyze and evaluate the computational effort and convergence behavior of optimization methods.",
-      "weight": 9.0,
+      "weight": 9,
       "tags": [
         "ects:9",
         "workload:270h",
@@ -33,6 +33,7 @@
         "responsible:ulbrich_michael"
       ],
       "contains": [
+        "5b8ad4d5-6870-5f2c-b3c6-466cfc23ac88",
         "f4711b83-4672-5a09-bd86-7c0e84db6db3",
         "62fcb5aa-5b01-5f58-bbad-34d101c6d30a",
         "eea443e7-d3ef-56ea-a9a5-17253cd650a7",
@@ -44,6 +45,7 @@
         "1ccf2391-a538-587c-a5b8-793dad4f0011"
       ],
       "requires": [
+        "5b8ad4d5-6870-5f2c-b3c6-466cfc23ac88",
         "8eb1605b-fa70-511b-bbe4-28173d359c3b",
         "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
         "feaad1d5-022f-5ab3-93c3-001ac46de351"
@@ -63,7 +65,7 @@
       "titleEn": "Modeling and Classification of Optimization Problems",
       "description": "Zusammenfassender Cluster: Praktische Fragestellungen als Optimierungsprobleme modellieren und nach Struktur und Lösungsansätzen klassifizieren.",
       "descriptionEn": "Summary cluster: modeling real-world tasks as optimization problems and classifying them by structure and suitable solution approaches.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:9",
         "module:MA2012"
@@ -680,6 +682,28 @@
       }
     },
     {
+      "id": "5b8ad4d5-6870-5f2c-b3c6-466cfc23ac88",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma2012",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "1ccf2391-a538-587c-a5b8-793dad4f0011",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -694,7 +718,9 @@
         "vocabularySource": "/data/ma2012_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "5b8ad4d5-6870-5f2c-b3c6-466cfc23ac88"
+      ],
       "dimensionTags": {
         "framework": "tum-ma2012",
         "demandLevel": "AB1",

@@ -13,12 +13,13 @@
       "titleEn": "Analysis for Informatics (MA0902)",
       "description": "Die lernende Person kann Kernkonzepte der Realanalyse und Infinitesimalrechnung anwenden.",
       "descriptionEn": "The learner can apply core concepts of real analysis and calculus.",
-      "weight": 8.0,
+      "weight": 8,
       "tags": [
         "module:MA0902",
         "ects:8"
       ],
       "contains": [
+        "a7e7ae82-f29a-5d98-9d8c-f488bb2e4af3",
         "eb3b9174-2b06-5545-9b65-e1bf19828b8b",
         "2c1a2fc3-1d4d-5e86-9635-af8a123dee1a",
         "36fdf29d-badc-501c-8f03-6f914346a2b1",
@@ -27,7 +28,9 @@
         "d50f6449-3f49-5e7d-a71a-09f7f7066522",
         "a7d7625b-d457-54f5-a244-043106af6c63"
       ],
-      "requires": [],
+      "requires": [
+        "a7e7ae82-f29a-5d98-9d8c-f488bb2e4af3"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/MA0902",
       "dimensionTags": {
         "phase": "Modul"
@@ -39,7 +42,7 @@
       "titleEn": "Real numbers and sequences",
       "description": "Die lernende Person kann über reelle Zahlen und Folgenkonvergenz nachdenken.",
       "descriptionEn": "The learner can reason about real numbers and sequence convergence.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:MA0902"
       ],
@@ -53,17 +56,40 @@
       }
     },
     {
+      "id": "a7e7ae82-f29a-5d98-9d8c-f488bb2e4af3",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-ma0902",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "ec3a6e74-0012-5273-90c8-45d8331b20fa",
       "title": "Ordnung und Vollständigkeit",
       "titleEn": "Order and completeness",
       "description": "Die lernende Person kann Ordnungseigenschaften, Infimum/Supremum und Dichte verwenden.",
       "descriptionEn": "The learner can use order properties, infimum/supremum, and density.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA0902"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "a7e7ae82-f29a-5d98-9d8c-f488bb2e4af3"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -74,7 +100,7 @@
       "titleEn": "Sequence convergence and asymptotics",
       "description": "Die lernende Person kann Konvergenz, Monotonie und asymptotisches Verhalten von Sequenzen analysieren.",
       "descriptionEn": "The learner can analyze convergence, monotonicity, and asymptotic behavior of sequences.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA0902"
       ],
@@ -90,7 +116,7 @@
       "titleEn": "Series",
       "description": "Die lernende Person kann die Konvergenz von Reihen analysieren.",
       "descriptionEn": "The learner can analyze convergence of series.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:MA0902"
       ],
@@ -111,7 +137,7 @@
       "titleEn": "Convergence tests",
       "description": "Die lernende Person kann Konvergenz- und absolute Konvergenztests für Reihen anwenden.",
       "descriptionEn": "The learner can apply convergence and absolute convergence tests for series.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA0902"
       ],
@@ -127,7 +153,7 @@
       "titleEn": "Power series and Cauchy product",
       "description": "Die lernende Person kann mit Potenzreihen und Cauchy-Produkten arbeiten.",
       "descriptionEn": "The learner can work with power series and Cauchy products.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA0902"
       ],
@@ -143,7 +169,7 @@
       "titleEn": "Continuity and functions",
       "description": "Die lernende Person kann Kontinuitätskonzepte auf Funktionen anwenden.",
       "descriptionEn": "The learner can apply continuity concepts to functions.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:MA0902"
       ],
@@ -164,7 +190,7 @@
       "titleEn": "Continuity and extrema",
       "description": "Die lernende Person kann den Zwischenwertsatz anwenden und Extrema analysieren.",
       "descriptionEn": "The learner can apply the intermediate value theorem and analyze extrema.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA0902"
       ],
@@ -180,7 +206,7 @@
       "titleEn": "Inverse functions and compactness",
       "description": "Die lernende Person kann Umkehrfunktionen und kompaktheitsbasierte Ergebnisse analysieren.",
       "descriptionEn": "The learner can analyze inverse functions and compactness-based results.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA0902"
       ],
@@ -196,7 +222,7 @@
       "titleEn": "Differential calculus in one variable",
       "description": "Die lernende Person kann Ableitungen berechnen und Funktionen analysieren.",
       "descriptionEn": "The learner can compute derivatives and analyze functions.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:MA0902"
       ],
@@ -217,7 +243,7 @@
       "titleEn": "Derivative rules and mean value theorem",
       "description": "Die lernende Person kann Ableitungsregeln und den Mittelwertsatz anwenden.",
       "descriptionEn": "The learner can apply derivative rules and the mean value theorem.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA0902"
       ],
@@ -233,7 +259,7 @@
       "titleEn": "Taylor series and l'Hospital",
       "description": "Die lernende Person kann Taylor-Reihen und die l'Hospital-Regel zur Analyse verwenden.",
       "descriptionEn": "The learner can use Taylor series and l'Hospital's rule for analysis.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA0902"
       ],
@@ -249,7 +275,7 @@
       "titleEn": "Integral calculus in one variable",
       "description": "Die lernende Person kann Integrale berechnen und anwenden.",
       "descriptionEn": "The learner can compute and apply integrals.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:MA0902"
       ],
@@ -270,7 +296,7 @@
       "titleEn": "Fundamental theorem and antiderivatives",
       "description": "Die lernende Person kann den Grundsatz anwenden und Stammfunktionen finden.",
       "descriptionEn": "The learner can apply the fundamental theorem and find antiderivatives.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA0902"
       ],
@@ -286,7 +312,7 @@
       "titleEn": "Integration techniques and improper integrals",
       "description": "Die lernende Person kann Substitution, partielle Integration und unechte Integrale verwenden.",
       "descriptionEn": "The learner can use substitution, integration by parts, and improper integrals.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA0902"
       ],
@@ -302,7 +328,7 @@
       "titleEn": "Multivariable calculus",
       "description": "Die lernende Person kann Ableitungen in mehreren Variablen berechnen.",
       "descriptionEn": "The learner can compute derivatives in several variables.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:MA0902"
       ],
@@ -323,7 +349,7 @@
       "titleEn": "Partial derivatives and gradient",
       "description": "Die lernende Person kann partielle Ableitungen, Gradienten und Hesse-Funktionen berechnen.",
       "descriptionEn": "The learner can compute partial derivatives, gradients, and Hessians.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA0902"
       ],
@@ -339,7 +365,7 @@
       "titleEn": "Local extrema and curves",
       "description": "Die lernende Person kann lokale Extrema und einfache Kurveneigenschaften analysieren.",
       "descriptionEn": "The learner can analyze local extrema and simple curve properties.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA0902"
       ],
@@ -355,7 +381,7 @@
       "titleEn": "Differential equations",
       "description": "Die lernende Person kann grundlegende gewöhnliche Differentialgleichungen lösen.",
       "descriptionEn": "The learner can solve basic ordinary differential equations.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:MA0902"
       ],
@@ -376,7 +402,7 @@
       "titleEn": "ODE classification and examples",
       "description": "Die lernende Person kann ODEs klassifizieren und grundlegende Beispiele interpretieren.",
       "descriptionEn": "The learner can classify ODEs and interpret basic examples.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA0902"
       ],
@@ -392,7 +418,7 @@
       "titleEn": "Separable and linear ODEs",
       "description": "Die lernende Person kann trennbare und lineare Differentialgleichungen lösen.",
       "descriptionEn": "The learner can solve separable and linear differential equations.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:MA0902"
       ],

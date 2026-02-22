@@ -13,19 +13,22 @@
       "titleEn": "Introduction to Computer Organization and Technology - Computer Architecture (IN0004)",
       "description": "Die lernende Person kann die Organisation von Computersystemen und grundlegende Hardware-Software-Interaktionen erklären.",
       "descriptionEn": "The learner can explain computer system organization and basic hardware-software interactions.",
-      "weight": 8.0,
+      "weight": 8,
       "tags": [
         "module:IN0004",
         "ects:8"
       ],
       "contains": [
+        "ed028d44-851b-516d-b389-77b6c11efed8",
         "d69709ec-09a3-5f91-8c49-b76d027a5d2a",
         "d6da1d4c-8dad-5b86-a29e-95f224769145",
         "cd4741ca-e1ea-5e99-b048-70204c68f6ee",
         "960ef64a-6702-5d95-a5cb-28acddb57f0c",
         "4a0cdc38-a34f-5ea1-bc3b-bed041dee925"
       ],
-      "requires": [],
+      "requires": [
+        "ed028d44-851b-516d-b389-77b6c11efed8"
+      ],
       "sourceRef": "https://academics.nat.tum.de/org/mh/details/mod/IN0004",
       "dimensionTags": {
         "phase": "Modul"
@@ -37,7 +40,7 @@
       "titleEn": "Computer system organization",
       "description": "Die lernende Person kann die geschichtete Systemstruktur und den Unterrichtszyklus beschreiben.",
       "descriptionEn": "The learner can describe layered system structure and the instruction cycle.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0004"
       ],
@@ -51,17 +54,40 @@
       }
     },
     {
+      "id": "ed028d44-851b-516d-b389-77b6c11efed8",
+      "title": "Warum TUM-Module? - Relevanz und Orientierung",
+      "titleEn": "Why TUM-Module? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach TUM-Module für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why TUM-Module matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "phase": "Modul",
+        "framework": "tum-in0004",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": []
+      }
+    },
+    {
       "id": "a5020e38-4ef4-5837-bc79-5e688e23bf64",
       "title": "Von Neumann-Modell und Lehrzyklus",
       "titleEn": "Von Neumann model and instruction cycle",
       "description": "Die lernende Person kann die Von-Neumann-Architektur und den Maschinenanweisungszyklus erklären.",
       "descriptionEn": "The learner can explain the Von Neumann architecture and the machine instruction cycle.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0004"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "ed028d44-851b-516d-b389-77b6c11efed8"
+      ],
       "dimensionTags": {
         "phase": "Modul"
       }
@@ -72,7 +98,7 @@
       "titleEn": "Hardware-software interface",
       "description": "Die lernende Person kann beschreiben, wie Software mit Hardware-Abstraktionen interagiert.",
       "descriptionEn": "The learner can describe how software interacts with hardware abstractions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0004"
       ],
@@ -88,7 +114,7 @@
       "titleEn": "Instruction set architecture and assembly",
       "description": "Die lernende Person kann mit ISA-Konzepten und einfacher Assemblerprogrammierung arbeiten.",
       "descriptionEn": "The learner can work with ISA concepts and simple assembly programming.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0004"
       ],
@@ -109,7 +135,7 @@
       "titleEn": "ISA concepts and instructions",
       "description": "Die lernende Person kann Unterrichtsformate und Ausführungsverhalten beschreiben.",
       "descriptionEn": "The learner can describe instruction formats and execution behavior.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0004"
       ],
@@ -125,7 +151,7 @@
       "titleEn": "Assembly programming and calling conventions",
       "description": "Die lernende Person kann einfachen Assemblercode schreiben und Aufrufkonventionen anwenden.",
       "descriptionEn": "The learner can write simple assembly code and apply calling conventions.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0004"
       ],
@@ -141,7 +167,7 @@
       "titleEn": "Microprogramming and control",
       "description": "Die lernende Person kann erklären, wie Anweisungen in Steuergeräten umgesetzt werden.",
       "descriptionEn": "The learner can explain how instructions are implemented in control units.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0004"
       ],
@@ -162,7 +188,7 @@
       "titleEn": "Microprogrammed control",
       "description": "Die lernende Person kann Mikroprogrammierungsprinzipien für die Befehlsausführung skizzieren.",
       "descriptionEn": "The learner can outline microprogramming principles for instruction execution.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0004"
       ],
@@ -178,7 +204,7 @@
       "titleEn": "Instruction implementation",
       "description": "Die lernende Person kann nachvollziehen, wie Maschinenanweisungen auf der Mikroebene umgesetzt werden.",
       "descriptionEn": "The learner can trace how machine instructions are realized at the micro level.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0004"
       ],
@@ -194,7 +220,7 @@
       "titleEn": "Digital logic and hardware design",
       "description": "Die lernende Person kann kombinatorische und sequentielle Schaltkreise modellieren.",
       "descriptionEn": "The learner can model combinational and sequential circuits.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0004"
       ],
@@ -213,7 +239,7 @@
       "titleEn": "Combinational and sequential circuits",
       "description": "Die lernende Person kann Grundschaltungen und Zustandselemente analysieren.",
       "descriptionEn": "The learner can analyze basic circuits and state elements.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0004"
       ],
@@ -229,7 +255,7 @@
       "titleEn": "VHDL-based design",
       "description": "Die lernende Person kann das Hardwareverhalten mithilfe einer formalen Sprache wie VHDL beschreiben.",
       "descriptionEn": "The learner can describe hardware behavior using a formal language such as VHDL.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0004"
       ],
@@ -245,7 +271,7 @@
       "titleEn": "Processor and system architectures",
       "description": "Die lernende Person kann Prozessoren und Systemarchitekturen klassifizieren.",
       "descriptionEn": "The learner can classify processors and system architectures.",
-      "weight": 2.0,
+      "weight": 2,
       "tags": [
         "module:IN0004"
       ],
@@ -266,7 +292,7 @@
       "titleEn": "Microprocessor and system architectures",
       "description": "Die lernende Person kann Mikroprozessor- und Systemarchitekturkonzepte vergleichen.",
       "descriptionEn": "The learner can compare microprocessor and system architecture concepts.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0004"
       ],
@@ -282,7 +308,7 @@
       "titleEn": "Memory, I/O, and parallel systems",
       "description": "Die lernende Person kann Speichersysteme, I/O sowie parallele oder verteilte Systeme auf hohem Niveau erklären.",
       "descriptionEn": "The learner can explain memory systems, I/O, and parallel or distributed systems at a high level.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "module:IN0004"
       ],

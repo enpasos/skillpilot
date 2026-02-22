@@ -20,7 +20,7 @@
       "titleEn": "Mathematical Foundations – Full Module",
       "description": "Nach dem erfolgreichen Abschluss des Moduls verfügen die Studierenden über ein vertieftes, umfassendes und integriertes Verständnis der Grundlagen der Analysis sowie der Linearen Algebra und damit über die wesentlichen Zusammenhänge zwischen diesen mathematischen Teilgebieten.<br>Sie sind in der Lage:<br>- Interferenzen zwischen der Linearen Algebra und der Analysis zu identifizieren,<br>- Problemstellungen vor dem Hintergrund möglicher Zusammenhänge mit fachlicher Plausibilität zu lösen,<br>- die einzelnen Teilgebiete (Lineare Algebra, Analysis) hinsichtlich ihres Beitrages zur Lösung mathematischer Fragestellungen einzuschätzen und deren Methoden lösungsorientiert anzuwenden,<br>- sich eigenverantwortlich mit den Zusammenhängen innerhalb eines Teilgebiets auseinanderzusetzen sowie Querverbindungen zwischen mathematischen Teilgebieten zu erkennen und daraus eigenständig Überlegungen anzustellen.",
       "descriptionEn": "After successfully completing the module, students have a deep, comprehensive, and integrated understanding of the foundations of analysis and linear algebra and thus of the essential connections between these mathematical subfields.<br>They are able to:<br>- identify interactions between linear algebra and analysis,<br>- solve problems plausibly in view of possible connections between concepts,<br>- assess the contribution of each subfield (linear algebra, analysis) to solving mathematical problems and apply its methods in a solution-oriented manner,<br>- independently engage with connections within a subfield and recognize cross-links between subfields and draw their own conclusions.",
-      "weight": 5.0,
+      "weight": 5,
       "tags": [
         "ects:5",
         "workload:150h",
@@ -33,6 +33,7 @@
         "responsible:weltge_stefan"
       ],
       "contains": [
+        "bed6b46f-1aff-506a-b1ba-5745612cbfed",
         "daad13d1-c88a-5e68-8019-aa9245f269bf",
         "88f7f01e-1953-5fdc-a4a4-98d4f2259f4c",
         "9b8a2b66-2ece-57ed-b4b4-effe900c7601",
@@ -41,6 +42,7 @@
         "d96e970e-29c6-5f99-96fb-a07dbb89d013"
       ],
       "requires": [
+        "bed6b46f-1aff-506a-b1ba-5745612cbfed",
         "8eb1605b-fa70-511b-bbe4-28173d359c3b",
         "47bdbccd-a2bf-5d65-bcbe-d575cc905d6e",
         "feaad1d5-022f-5ab3-93c3-001ac46de351"
@@ -60,7 +62,7 @@
       "titleEn": "Overview and Comparison: Analysis and Linear Algebra",
       "description": "Zusammenfassender Cluster: zentrale Begriffe und Methoden der Analysis und der Linearen Algebra im Überblick sowie Analogien und Unterschiede zwischen beiden Teilgebieten.",
       "descriptionEn": "Summary cluster: key concepts and methods of analysis and linear algebra at a glance, as well as analogies and differences between the two areas.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA0007"
@@ -138,7 +140,7 @@
       "titleEn": "Equation Systems and Solvability Criteria",
       "description": "Zusammenfassender Cluster: Lösbarkeit linearer Gleichungssysteme (Rang/Determinante) vs. nichtlinearer Systeme (Linearisation/Jacobi) und Vergleich der Vorgehensweisen.",
       "descriptionEn": "Summary cluster: solvability of linear systems (rank/determinant) versus nonlinear systems (linearization/Jacobian) and a comparison of the approaches.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA0007"
@@ -213,7 +215,7 @@
       "titleEn": "Density and Stability Arguments",
       "description": "Zusammenfassender Cluster: Offenheit/Dichtheit von Mengen in Matrizenräumen und Nutzung von Stetigkeit/Approximation (z.B. invertierbare oder diagonalisierbare Matrizen).",
       "descriptionEn": "Summary cluster: openness/density of sets in matrix spaces and using continuity/approximation (e.g., invertible or diagonalizable matrices).",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA0007"
@@ -288,7 +290,7 @@
       "titleEn": "Linear Differential Equations and the Matrix Exponential",
       "description": "Zusammenfassender Cluster: lineare Systeme $x'(t)=A x(t)$, Matrixexponentialfunktion $e^{At}$ und Verbindung zu Eigenwerten/Normalformen.",
       "descriptionEn": "Summary cluster: linear systems $x'(t)=A x(t)$, the matrix exponential $e^{At}$, and the connection to eigenvalues/normal forms.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA0007"
@@ -362,7 +364,7 @@
       "titleEn": "Fourier Theory and Orthogonal Projections",
       "description": "Zusammenfassender Cluster: Fourier-Reihen als Entwicklung in orthogonalen Systemen; Skalarprodukt, Projektion und beste Approximation als Brücke zwischen Analysis und Linearer Algebra.",
       "descriptionEn": "Summary cluster: Fourier series as expansions in orthogonal systems; inner products, projections, and best approximation as a bridge between analysis and linear algebra.",
-      "weight": 1.0,
+      "weight": 1,
       "tags": [
         "ects:5",
         "module:MA0007"
@@ -940,6 +942,28 @@
       }
     },
     {
+      "id": "bed6b46f-1aff-506a-b1ba-5745612cbfed",
+      "title": "Warum Mathematik? - Relevanz und Orientierung",
+      "titleEn": "Why Mathematik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Mathematik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Mathematik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "BSc",
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tum-ma0007",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Modul"
+      }
+    },
+    {
       "id": "d96e970e-29c6-5f99-96fb-a07dbb89d013",
       "title": "Kernaussagen des Moduls memorisieren",
       "titleEn": "Memorize Key Module Statements",
@@ -954,7 +978,9 @@
         "vocabularySource": "/data/ma0007_deck.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "bed6b46f-1aff-506a-b1ba-5745612cbfed"
+      ],
       "dimensionTags": {
         "framework": "tum-ma0007",
         "demandLevel": "AB1",

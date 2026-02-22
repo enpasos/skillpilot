@@ -9,13 +9,35 @@
   "frameworkId": "tud-20000682",
   "goals": [
     {
+      "id": "f28da625-cb97-53f3-a1dd-c674036eaf2f",
+      "title": "Warum Informatik? - Relevanz und Orientierung",
+      "titleEn": "Why Informatik? - Relevance and Orientation",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erläutern, warum das Fach Informatik für den eigenen Alltag, gesellschaftliche Teilhabe sowie Studium und Beruf relevant ist und wie das systematische Erarbeiten dieses Curriculums einen nachhaltigen Kompetenzaufbau unterstützt.",
+      "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how systematically working through this curriculum supports sustainable competence growth.",
+      "weight": 1,
+      "tags": [
+        "Motivation",
+        "Orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "tud-20000682",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Wahlbereich"
+      }
+    },
+    {
       "id": "46d0e927-67af-50f7-8471-02f9167762e1",
       "title": "Physikalisch-basierte Animation",
       "titleEn": "Physikalisch-basierte Animation",
       "description": "Erfolgreicher Abschluss des Moduls \"Physikalisch-basierte Animation\".",
       "descriptionEn": "Successful completion of module \"Physikalisch-basierte Animation\".",
-      "weight": 6.0,
+      "weight": 6,
       "tags": [
+        "root",
         "ects:6",
         "module:20-00-0682",
         "program:bsc_informatik"
@@ -27,8 +49,12 @@
         "guidingIdeas": [],
         "phase": "Wahlbereich"
       },
-      "requires": [],
-      "contains": [],
+      "requires": [
+        "f28da625-cb97-53f3-a1dd-c674036eaf2f"
+      ],
+      "contains": [
+        "f28da625-cb97-53f3-a1dd-c674036eaf2f"
+      ],
       "sourceRef": "curricula/DE/HE/TU_Darmstadt/Informatik/input/curriculum_bachelor_informatik"
     }
   ]
