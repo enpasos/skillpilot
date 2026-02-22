@@ -18,6 +18,14 @@ function normalizeGoalId(ref: string) {
   return ref
 }
 
+function refsMatch(a: string, b: string): boolean {
+  return normalizeGoalId(a) === normalizeGoalId(b)
+}
+
+function isSelfRef(ref: string, goalId: string): boolean {
+  return normalizeGoalId(ref) === goalId
+}
+
 export function normalizeLandscape(raw: LearningLandscape | undefined): LandscapeEntry | null {
   if (!raw || !Array.isArray(raw.goals)) return null
   return {
@@ -65,10 +73,12 @@ function applyEffectiveRequires(entries: LandscapeEntry[]): LandscapeEntry[] {
 
     const effectiveSet = new Set<string>(direct)
     fromParents.forEach((req) => effectiveSet.add(req))
-    effectiveSet.delete(goalId) // avoid self through inheritance
-    const inherited = Array.from(fromParents).filter((req) => !direct.includes(req))
+    const effective = Array.from(effectiveSet).filter((req) => !isSelfRef(req, goalId))
+    const inherited = Array.from(fromParents).filter(
+      (req) => !isSelfRef(req, goalId) && !direct.some((directReq) => refsMatch(directReq, req)),
+    )
 
-    const result = { effective: Array.from(effectiveSet), inherited }
+    const result = { effective, inherited }
     memo.set(goalId, result)
     visiting.delete(goalId)
     return result

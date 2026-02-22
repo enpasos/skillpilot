@@ -64,6 +64,8 @@ const RULE_PHASE_MONOTONIC = 'GVR-002'
 const RULE_REQUIRES_DIRECT_CONTAINER = 'GVR-003'
 const RULE_FIRST_ATOMIC_IS_WARUM = 'GVR-004'
 const RULE_ATOMIC_TRANSITIVE_TO_WARUM = 'GVR-005'
+const RULE_REQUIRES_DIRECT_CHILD = 'GVR-006'
+const HESSEN_GYM_OVERVIEW_LANDSCAPE_ID = 'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da'
 const motivationRuleLandscapeIds = new Set<string>([
   '3e56aa75-c76c-4de5-883b-0aac98297846', // DE_HES_S_GYM_2_BIOLOGIE
   '2f391ba2-ba1e-40e4-a8d2-dff049516c13', // DE_HES_S_GYM_2_CHEMIE
@@ -81,6 +83,10 @@ const motivationRuleLandscapeIds = new Set<string>([
   '1d0e9f8f-0087-49e4-8ea2-976e5a89b165', // DE_HES_S_GYM_2_POLITIKWIRTSCHAFT
   '936efc61-a4d5-49fd-8694-085d1347db80', // DE_HES_S_GYM_2_SPANISCH
   'a334a745-1d67-4e1d-86a5-dadc04f144d2', // DE_HES_S_GYM_2_WIRTSCHAFT
+])
+const noDirectChildRequireRuleLandscapeIds = new Set<string>([
+  ...motivationRuleLandscapeIds,
+  HESSEN_GYM_OVERVIEW_LANDSCAPE_ID, // DE_HES_S_GYM_2_OVERVIEW
 ])
 // Default is strict. Set VALIDATE_GRAPH_STRICT_RULES=0 for temporary warn-only rollout mode.
 const strictGraphRules = process.env.VALIDATE_GRAPH_STRICT_RULES !== '0'
@@ -455,6 +461,35 @@ function validateLandscape(landscape: ParsedLandscape) {
       }
     })
   })
+
+  // GVR-006:
+  // A goal must not directly require one of its direct contains-children.
+  // This is the inverse anti-pattern of GVR-003 and creates inconsistent graph semantics.
+  if (noDirectChildRequireRuleLandscapeIds.has(landscape.landscapeId)) {
+    landscape.goals.forEach((goal) => {
+      const directChildren = new Set(
+        (goal.contains ?? [])
+          .map((rawChild) => parseReference(rawChild, landscape.landscapeId))
+          .filter((parsed) => parsed.landscapeId === landscape.landscapeId && localMap.has(parsed.goalId))
+          .map((parsed) => parsed.goalId),
+      )
+
+      goal.requires.forEach((rawReq) => {
+        const parsed = parseReference(rawReq, landscape.landscapeId)
+        if (parsed.landscapeId !== landscape.landscapeId || !localMap.has(parsed.goalId)) return
+        if (!directChildren.has(parsed.goalId)) return
+
+        const reqGoal = localMap.get(parsed.goalId)
+        const reqLabel = reqGoal ? `${reqGoal.id} (${reqGoal.title})` : parsed.goalId
+        const goalLabel = `${goal.id} (${goal.title})`
+        addIssue(
+          graphRuleIssueLevel,
+          landscape.landscapeId,
+          `[${RULE_REQUIRES_DIRECT_CHILD}] Goal ${goalLabel} requires its direct child ${reqLabel}.`,
+        )
+      })
+    })
+  }
 
   const effectiveMemo = new Map<string, string[]>()
   const visiting = new Set<string>()

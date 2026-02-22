@@ -35,6 +35,12 @@ interface RequiresFlowMapProps {
 const MAX_LEFT_NODES = 7
 const MAX_RIGHT_NODES = 7
 
+const isAtomicGoal = (goal: Goal): boolean => {
+  if (goal.type === 'atomic') return true
+  if (goal.type === 'cluster') return false
+  return (goal.contains?.length ?? 0) === 0
+}
+
 export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
   language,
   currentGoal,
@@ -53,6 +59,8 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
   const markerId = useId().replace(/:/g, '')
   const [connectors, setConnectors] = useState<Connector[]>([])
   const [showConnectors, setShowConnectors] = useState(false)
+  const [nodeFilter, setNodeFilter] = useState<'all' | 'atomic'>('all')
+  const atomicOnly = nodeFilter === 'atomic'
 
   const leftNodes = useMemo<FlowNode[]>(() => {
     const ids = new Set<string>()
@@ -70,13 +78,17 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
       merged.push({ goal, kind: 'inherited' })
     })
 
-    return merged
-  }, [requires, inheritedRequires])
+    return atomicOnly ? merged.filter((node) => isAtomicGoal(node.goal)) : merged
+  }, [requires, inheritedRequires, atomicOnly])
+
+  const rightNodes = useMemo<Goal[]>(() => {
+    return atomicOnly ? forward.filter(isAtomicGoal) : forward
+  }, [forward, atomicOnly])
 
   const leftVisible = leftNodes.slice(0, MAX_LEFT_NODES)
-  const rightVisible = forward.slice(0, MAX_RIGHT_NODES)
+  const rightVisible = rightNodes.slice(0, MAX_RIGHT_NODES)
   const leftOverflow = Math.max(0, leftNodes.length - leftVisible.length)
-  const rightOverflow = Math.max(0, forward.length - rightVisible.length)
+  const rightOverflow = Math.max(0, rightNodes.length - rightVisible.length)
 
   useEffect(() => {
     const updateLayoutMode = () => {
@@ -183,6 +195,9 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
       noIncoming: 'No prerequisites in view',
       noOutgoing: 'No follow-up goals in view',
       plusMore: '+{{count}} more',
+      nodeFilterLabel: 'node filter',
+      filterAll: 'all',
+      filterAtomic: 'atomic',
     }
     : {
       title: 'Requires-Flow (Prototyp)',
@@ -196,6 +211,9 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
       noIncoming: 'Keine Voraussetzungen im Fokus',
       noOutgoing: 'Keine Folgeziele im Fokus',
       plusMore: '+{{count}} weitere',
+      nodeFilterLabel: 'Zielfilter',
+      filterAll: 'alle',
+      filterAtomic: 'nur atomare',
     }
 
   return (
@@ -205,10 +223,41 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
           <h3 className="text-sm font-semibold text-text-primary">{labels.title}</h3>
           <p className="text-[11px] text-text-secondary">{labels.subtitle}</p>
         </div>
-        <div className="flex items-center gap-2 text-[10px] text-text-secondary">
-          <LegendSwatch className="bg-sky-500" label={labels.direct} />
-          <LegendSwatch className="bg-slate-400" label={labels.inherited} dashed />
-          <LegendSwatch className="bg-emerald-500" label={labels.unlocks} />
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 text-[10px] text-text-secondary">
+            <span>{labels.nodeFilterLabel}</span>
+            <div className="flex rounded-full border border-border-color bg-input-bg p-0.5">
+              <button
+                type="button"
+                aria-pressed={nodeFilter === 'all'}
+                onClick={() => setNodeFilter('all')}
+                className={`rounded-full px-2 py-1 text-[10px] uppercase tracking-wide transition-colors ${
+                  nodeFilter === 'all'
+                    ? 'bg-sky-600 text-white'
+                    : 'text-text-secondary hover:text-text-primary'
+                }`}
+              >
+                {labels.filterAll}
+              </button>
+              <button
+                type="button"
+                aria-pressed={nodeFilter === 'atomic'}
+                onClick={() => setNodeFilter('atomic')}
+                className={`rounded-full px-2 py-1 text-[10px] uppercase tracking-wide transition-colors ${
+                  nodeFilter === 'atomic'
+                    ? 'bg-sky-600 text-white'
+                    : 'text-text-secondary hover:text-text-primary'
+                }`}
+              >
+                {labels.filterAtomic}
+              </button>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 text-[10px] text-text-secondary">
+            <LegendSwatch className="bg-sky-500" label={labels.direct} />
+            <LegendSwatch className="bg-slate-400" label={labels.inherited} dashed />
+            <LegendSwatch className="bg-emerald-500" label={labels.unlocks} />
+          </div>
         </div>
       </div>
 

@@ -23,6 +23,7 @@ This is the single source of truth for algorithmic graph validation in CI.
 | `GVR-003` | A goal must not directly require its direct `contains` parent (most frequent deadlock source). | Local landscape | `error` |
 | `GVR-004` | First atomic node must be a motivation anchor (`Warum`/`Why`). | Rollout subset (`DE_HES_S_GYM_2_*`, excluding `OVERVIEW`) | `error` |
 | `GVR-005` | Every atomic node must have a transitive path to the motivation anchor via effective `requires`. | Rollout subset (`DE_HES_S_GYM_2_*`, excluding `OVERVIEW`) | `error` |
+| `GVR-006` | A goal must not directly require one of its direct `contains` children (inverse anti-pattern of `GVR-003`). | Rollout subset (`DE_HES_S_GYM_2_*`, including `OVERVIEW`) | `error` |
 
 ## Core validator checks (always active, fail CI)
 
@@ -79,3 +80,14 @@ Effective-requires graph means:
 - direct `requires`
 - plus inherited `requires` from `contains` ancestors
 - then transitive reachability over these effective edges
+
+## Direct-child prerequisite rule (`GVR-006`)
+
+- Scope is controlled in `app/scripts/validateGraph.ts` via `noDirectChildRequireRuleLandscapeIds`.
+- Current rollout scope: Hessen Gymnasiale Oberstufe subject landscapes (`DE_HES_S_GYM_2_*`) including `DE_HES_S_GYM_2_OVERVIEW`.
+- Current issue level: follows global `GVR-*` strictness (`error` by default, `warn` with `VALIDATE_GRAPH_STRICT_RULES=0`).
+
+Validation semantics:
+
+- For a goal `A`, collect direct local `contains` children.
+- If any direct local `requires` target is also in that direct child set, emit `GVR-006`.
