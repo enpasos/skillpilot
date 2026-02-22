@@ -59,6 +59,13 @@ const PHYSICS_POTENTIAL_ENERGY_AND_POTENTIAL_GOAL_ID = '99bbf33e-74f5-4f33-98e2-
 const MATH_LANDSCAPE_ID = '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3'
 const MATH_DIFFERENTIATION_GOAL_ID = 'e2b6b4d1-02db-4a27-948e-ecfbdb44dab3'
 
+const RULE_REQUIRES_ANCESTOR = 'GVR-001'
+const RULE_PHASE_MONOTONIC = 'GVR-002'
+const RULE_REQUIRES_DIRECT_CONTAINER = 'GVR-003'
+// Default is strict. Set VALIDATE_GRAPH_STRICT_RULES=0 for temporary warn-only rollout mode.
+const strictGraphRules = process.env.VALIDATE_GRAPH_STRICT_RULES !== '0'
+const graphRuleIssueLevel: Issue['level'] = strictGraphRules ? 'error' : 'warn'
+
 interface ParsedLandscape {
   file: string
   landscapeId: string
@@ -191,6 +198,24 @@ function refMatchesGoal(ref: string, goalId: string): boolean {
 
 function refsIncludeGoal(refs: string[], goalId: string): boolean {
   return refs.some((ref) => refMatchesGoal(ref, goalId))
+}
+
+function getComparablePhaseRank(phase: string): number | null {
+  const upper = phase.toUpperCase()
+  if (upper === 'E') return 10
+  if (upper === 'Q1') return 11
+  if (upper === 'Q2') return 12
+  if (upper === 'Q3') return 13
+  if (upper === 'Q4') return 14
+  if (upper === 'ABITUR') return 15
+
+  const sMatch = upper.match(/^S(\d{1,2})$/)
+  if (sMatch) return 100 + Number(sMatch[1])
+
+  const jMatch = upper.match(/^J(\d{1,2})$/)
+  if (jMatch) return 200 + Number(jMatch[1])
+
+  return null
 }
 
 function validateLandscape(landscape: ParsedLandscape) {
@@ -327,6 +352,56 @@ function validateLandscape(landscape: ParsedLandscape) {
     })
   }
 
+  const ancestorMemo = new Map<string, Set<string>>()
+  const ancestorVisiting = new Set<string>()
+  const getAncestors = (goalId: string): Set<string> => {
+    const cached = ancestorMemo.get(goalId)
+    if (cached) return cached
+    if (ancestorVisiting.has(goalId)) return new Set<string>()
+
+    ancestorVisiting.add(goalId)
+    const result = new Set<string>()
+    for (const parentId of parentMap.get(goalId) ?? []) {
+      result.add(parentId)
+      getAncestors(parentId).forEach((ancestorId) => result.add(ancestorId))
+    }
+    ancestorVisiting.delete(goalId)
+    ancestorMemo.set(goalId, result)
+    return result
+  }
+
+  // GVR-001 / GVR-003:
+  // A goal must not require one of its contains-ancestors.
+  // The direct-parent case gets a dedicated rule because it is the most common deadlock source.
+  landscape.goals.forEach((goal) => {
+    const directParents = new Set(parentMap.get(goal.id) ?? [])
+    const ancestors = getAncestors(goal.id)
+    goal.requires.forEach((rawReq) => {
+      const parsed = parseReference(rawReq, landscape.landscapeId)
+      if (parsed.landscapeId !== landscape.landscapeId || !localMap.has(parsed.goalId)) return
+      const reqId = parsed.goalId
+      const reqGoal = localMap.get(reqId)
+      const reqLabel = reqGoal ? `${reqGoal.id} (${reqGoal.title})` : reqId
+      const goalLabel = `${goal.id} (${goal.title})`
+
+      if (directParents.has(reqId)) {
+        addIssue(
+          graphRuleIssueLevel,
+          landscape.landscapeId,
+          `[${RULE_REQUIRES_DIRECT_CONTAINER}] Goal ${goalLabel} requires its direct container ${reqLabel}.`,
+        )
+        return
+      }
+      if (ancestors.has(reqId)) {
+        addIssue(
+          graphRuleIssueLevel,
+          landscape.landscapeId,
+          `[${RULE_REQUIRES_ANCESTOR}] Goal ${goalLabel} requires ancestor ${reqLabel}.`,
+        )
+      }
+    })
+  })
+
   const effectiveMemo = new Map<string, string[]>()
   const visiting = new Set<string>()
   const computeEffectiveRequires = (goalId: string): string[] => {
@@ -364,6 +439,40 @@ function validateLandscape(landscape: ParsedLandscape) {
     effectiveEdges.set(goal.id, edges)
   }
   detectCycles(effectiveEdges, 'effective_requires (with inheritance)')
+
+  // GVR-002:
+  // For comparable phase systems (E/Q*/Abitur, S*, J*), prerequisites must not point to later phases.
+  const reportedPhaseViolations = new Set<string>()
+  landscape.goals.forEach((goal) => {
+    const goalRank = getComparablePhaseRank(goal.phase)
+    if (goalRank === null) return
+
+    computeEffectiveRequires(goal.id).forEach((rawReq) => {
+      const parsed = parseReference(rawReq, landscape.landscapeId)
+      if (parsed.landscapeId !== landscape.landscapeId || !localMap.has(parsed.goalId)) return
+      const reqGoal = localMap.get(parsed.goalId)
+      if (!reqGoal) return
+
+      const reqRank = getComparablePhaseRank(reqGoal.phase)
+      if (reqRank === null || reqRank <= goalRank) return
+
+      const dedupeKey = `${goal.id}->${reqGoal.id}`
+      if (reportedPhaseViolations.has(dedupeKey)) return
+      reportedPhaseViolations.add(dedupeKey)
+
+      const isDirect = goal.requires.some((rawDirectReq) => {
+        const parsedDirect = parseReference(rawDirectReq, landscape.landscapeId)
+        return parsedDirect.landscapeId === landscape.landscapeId && parsedDirect.goalId === reqGoal.id
+      })
+      const edgeType = isDirect ? 'direct' : 'inherited/effective'
+
+      addIssue(
+        graphRuleIssueLevel,
+        landscape.landscapeId,
+        `[${RULE_PHASE_MONOTONIC}] Goal ${goal.id} (${goal.title}, phase ${goal.phase}) has ${edgeType} prerequisite ${reqGoal.id} (${reqGoal.title}, phase ${reqGoal.phase}), which points to a later phase.`,
+      )
+    })
+  })
 
   if (landscape.landscapeId === PHYSICS_LANDSCAPE_ID) {
     const goal = localMap.get(PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID)
@@ -616,6 +725,7 @@ if (!existsSync(curriculumManifestPath)) {
 
 const errorCount = issues.filter((issue) => issue.level === 'error').length
 const warningCount = issues.length - errorCount
+const hasGraphRuleMessages = issues.some((issue) => issue.message.includes('[GVR-'))
 
 if (issues.length === 0) {
   console.log(`✅ ${parsedLandscapes.length} landscape(s) passed validation.`)
@@ -624,6 +734,11 @@ if (issues.length === 0) {
   for (const issue of issues) {
     const tag = issue.level === 'error' ? '❌' : '⚠️'
     console.log(`${tag} ${issue.message}`)
+  }
+  if (hasGraphRuleMessages && !strictGraphRules) {
+    console.log(
+      '\nℹ️ Legacy warn mode active (VALIDATE_GRAPH_STRICT_RULES=0). GVR rules are not failing in this run. See docs/qa-ci/graph-validation-rules.md',
+    )
   }
   console.log(`\n${errorCount} error(s), ${warningCount} warning(s).`)
   process.exit(errorCount > 0 ? 1 : 0)

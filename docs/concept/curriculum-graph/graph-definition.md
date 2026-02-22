@@ -4,6 +4,9 @@ This document defines the SkillPilot curriculum graph as a mathematical structur
 
 The intent is that independent implementations interpret and validate graphs in the same way.
 
+> Normative vs implementation: this document is the conceptual/normative definition.  
+> The currently enforced CI validator profile (including rollout severities and runtime rule IDs) is documented in `docs/qa-ci/graph-validation-rules.md`.
+
 ---
 
 ## 1. Notation and conventions
@@ -227,6 +230,8 @@ Often, prerequisites SHOULD be modeled between peer concepts rather than between
 
 If your product needs exceptions, treat this as a heuristic.
 
+In the current validator profile, the ancestor cases are covered by rollout rules `GVR-001` and `GVR-003` (see `docs/qa-ci/graph-validation-rules.md`).
+
 ### 8.3 Optional: At most one parent per node (tree/forest mode)
 
 If you want a strict tree/forest hierarchy, enforce:
@@ -270,6 +275,8 @@ $$
 $$
 
 If the system supports remedial or non-linear paths, violations of this rule may be allowed as explicit exceptions.
+
+In the current validator profile, this check is implemented as rule `GVR-002` (strict by default; temporary warn mode via `VALIDATE_GRAPH_STRICT_RULES=0`).
 
 ---
 

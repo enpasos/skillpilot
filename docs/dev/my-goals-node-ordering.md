@@ -28,7 +28,7 @@ Zusätzlich gibt es eine explizite Steuerungsmöglichkeit für gewünschte Reihe
 ## Wichtige Invariante: keine Zyklen als Fachfall
 - SkillPilot-Graphen sind als DAG modelliert (`requires`, `contains`, `effective requires`) und werden in CI validiert:
   - `app/scripts/validateGraph.ts`
-  - `docs/qa-ci/relation-checks.md`
+  - `docs/qa-ci/graph-validation-rules.md`
 - Deshalb behandeln wir Zyklen **nicht** als normalen Produktfall.
 - Konsequenz für das Design: Nur harte `requires` werden als Topo-Zwang verwendet; Subknoten-Signale sind reine Tie-Breaker (soft ranking), keine zusätzlichen harten Kanten.
 
