@@ -9,7 +9,29 @@ Diese Datei dokumentiert den Fortschritt der didaktischen Validierung des hessis
 *Noch keine Knoten validiert. Der Graph wird ab den Wurzelknoten (Ziele ohne `requires`) traversiert.*
 
 ### Frontier (Nächste mögliche Knoten)
-*Wird beim Start dynamisch aus der JSON generiert (Knoten ohne `requires`).*
+- [ ] [4b56b5c6-0e7b-4486-aa8f-7d5be7f085a5] Warum Physik? – Weltverständnis & Zukunft
+- [ ] [7252f084-398f-47d6-a5ba-1f7c78cd7559] Methode: Messunsicherheit und Fehleranalyse
+- [ ] [3b0eb865-add0-40bd-ac09-c7b9a5d48101] Messabweichungen und Fehlerarten unterscheiden
+- [ ] [5194a210-9853-4318-8b27-545233267923] Methode: Digitale Messwerterfassung & Analyse
+- [ ] [b9f0ed69-5a49-48e3-ae61-6769eeda8bf8] Digitale und analoge Messverfahren vergleichen
+- [ ] [541b3c87-270a-4efe-96ff-c85c1a024330] Methoden in der E-Phase
+- [ ] [25bd8476-0c87-4777-b9f5-0bba9ad1b06e] Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen
+- [ ] [26ce9245-53f1-424e-a3aa-0c71997d9307] Lernkarten - E-Phase
+- [ ] [56df0c93-e489-4534-9063-a98c6ff2411c] Übungen E-Phase
+- [ ] [a90cadc6-9a1c-4df5-bcd5-9222aeddbbdc] Bewegungsabläufe im Sport qualitativ analysieren
+- [ ] [e26447c4-36a3-43ef-b400-ca918754f3b0] Erhaltungssätze
+- [ ] [4e327e2e-8ad6-4fc0-8c6e-46189e0ceea4] Die drei Newtonschen Axiome benennen und erklären
+- [ ] [fa204429-674f-466d-b049-a6de19a50579] Energie
+- [ ] [10ae3ebb-b1e0-4ec5-b396-5286c9fc1425] Kinetische Energie
+- [ ] [80b09455-fba6-452b-9104-0eda23df3111] Impuls
+- [ ] [242f0487-4bef-46e0-a6e8-ce8872de8f24] E.4 Weitere Bewegungen
+- [ ] [db45855c-f0c2-4c01-9ba5-1929edd72f2b] Grenzen der Vorhersagbarkeit (Chaos)
+- [ ] [44882cb3-dca4-432c-ac29-5f081315844e] E.5 Gravitation
+- [ ] [e543c153-2598-4f4e-a41b-9b52274fc5ab] Astronomische Weltbilder zeitlich einordnen (GK)
+- [ ] [77efb394-bab0-43c8-8773-503180a5f86f] Entwicklung astronomischer Weltbilder rekonstruieren (LK)
+- [ ] [7a5dcba6-4878-4e64-816b-c1e3ab797c93] Energiesparmaßnahmen physikalisch bewerten
+- [ ] [3f0058c3-11c7-48dd-8427-cc6fd1dde0fd] E.7 Drehbewegungen
+- [ ] [ca8ac7d0-0c82-4880-9511-f81d9f35e9d4] Pirouetten mit Drehimpuls deuten
 
 ## 2. Akkumuliertes Wissen (State of the Learner)
 *Was weiß die simulierte lernende Person an diesem Punkt?*
