@@ -76,6 +76,8 @@ export const de = {
         externalRequires: "Externe Voraussetzungen",
         contains: "Unterziele (contains)",
         nextSteps: "Nächste Schritte (Ziele, die dieses benötigen)",
+        nextStepsDirect: "Nächste Schritte (direkt)",
+        nextStepsInherited: "Nächste Schritte (vererbt)",
         requiresFlowToggleLabel: "Requires-Flow",
         requiresFlowStateOn: "an",
         requiresFlowStateOff: "aus",
@@ -86,7 +88,8 @@ export const de = {
         emptyRequires: "Keine direkten Voraussetzungen",
         emptyInherited: "Keine vererbten Voraussetzungen",
         emptyContains: "Keine Unterziele",
-        emptyNextSteps: "Keine direkten Folgeziele"
+        emptyNextSteps: "Keine direkten Folgeziele",
+        emptyNextStepsInherited: "Keine vererbten Folgeziele"
     },
     tooltips: {
         progress: "Fortschritt",

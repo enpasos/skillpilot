@@ -25,7 +25,8 @@ interface RequiresFlowMapProps {
   currentGoal: Goal
   requires: Goal[]
   inheritedRequires: Goal[]
-  forward: Goal[]
+  forwardDirect: Goal[]
+  forwardInherited: Goal[]
   getMastery: (goalId: string) => number
   onNavigate: (id: string) => void
   masteredThreshold?: number
@@ -34,6 +35,12 @@ interface RequiresFlowMapProps {
 
 const MAX_LEFT_NODES = 7
 const MAX_RIGHT_NODES = 7
+
+const CONNECTOR_COLORS = {
+  direct: 'rgb(2 132 199)', // sky-600
+  inherited: 'rgb(100 116 139)', // slate-500
+  unlocks: 'rgb(5 150 105)', // emerald-600
+} as const
 
 const isAtomicGoal = (goal: Goal): boolean => {
   if (goal.type === 'atomic') return true
@@ -46,7 +53,8 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
   currentGoal,
   requires,
   inheritedRequires,
-  forward,
+  forwardDirect,
+  forwardInherited,
   getMastery,
   onNavigate,
   masteredThreshold = 0.8,
@@ -81,9 +89,24 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
     return atomicOnly ? merged.filter((node) => isAtomicGoal(node.goal)) : merged
   }, [requires, inheritedRequires, atomicOnly])
 
-  const rightNodes = useMemo<Goal[]>(() => {
-    return atomicOnly ? forward.filter(isAtomicGoal) : forward
-  }, [forward, atomicOnly])
+  const rightNodes = useMemo<FlowNode[]>(() => {
+    const ids = new Set<string>()
+    const merged: FlowNode[] = []
+
+    forwardDirect.forEach((goal) => {
+      if (ids.has(goal.id)) return
+      ids.add(goal.id)
+      merged.push({ goal, kind: 'direct' })
+    })
+
+    forwardInherited.forEach((goal) => {
+      if (ids.has(goal.id)) return
+      ids.add(goal.id)
+      merged.push({ goal, kind: 'inherited' })
+    })
+
+    return atomicOnly ? merged.filter((node) => isAtomicGoal(node.goal)) : merged
+  }, [forwardDirect, forwardInherited, atomicOnly])
 
   const leftVisible = leftNodes.slice(0, MAX_LEFT_NODES)
   const rightVisible = rightNodes.slice(0, MAX_RIGHT_NODES)
@@ -140,14 +163,17 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
         })
       })
 
-      rightVisible.forEach((goal) => {
+      rightVisible.forEach(({ goal, kind }) => {
         const el = rightRefs.current.get(goal.id)
         if (!el) return
         const rect = el.getBoundingClientRect()
         const toX = rect.left - containerRect.left
         const toY = rect.top - containerRect.top + rect.height / 2
 
-        const active = goal.requires.every((reqId) => getMastery(reqId) >= masteredThreshold)
+        const relevantRequires = goal.effectiveRequires && goal.effectiveRequires.length > 0
+          ? goal.effectiveRequires
+          : goal.requires
+        const active = relevantRequires.every((reqId) => getMastery(reqId) >= masteredThreshold)
 
         nextConnectors.push({
           id: `right-${goal.id}`,
@@ -156,6 +182,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
           toX,
           toY,
           kind: 'outbound',
+          inherited: kind === 'inherited',
           active,
         })
       })
@@ -184,7 +211,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
 
   const labels = language === 'en'
     ? {
-      title: 'Requires Flow (Prototype)',
+      title: 'Requires Flow',
       subtitle: 'Direct prerequisites and unlocked next goals around the current node.',
       direct: 'direct',
       inherited: 'inherited',
@@ -192,6 +219,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
       unmet: 'open',
       met: 'met',
       unlocks: 'unlocks',
+      unlocksInherited: 'unlocks (inherited)',
       noIncoming: 'No prerequisites in view',
       noOutgoing: 'No follow-up goals in view',
       plusMore: '+{{count}} more',
@@ -200,7 +228,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
       filterAtomic: 'atomic',
     }
     : {
-      title: 'Requires-Flow (Prototyp)',
+      title: 'Requires-Flow',
       subtitle: 'Direkte/vererbte Voraussetzungen und nächste freischaltbare Ziele.',
       direct: 'direkt',
       inherited: 'vererbt',
@@ -208,6 +236,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
       unmet: 'offen',
       met: 'erfüllt',
       unlocks: 'schaltet frei',
+      unlocksInherited: 'schaltet frei (vererbt)',
       noIncoming: 'Keine Voraussetzungen im Fokus',
       noOutgoing: 'Keine Folgeziele im Fokus',
       plusMore: '+{{count}} weitere',
@@ -254,9 +283,10 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
             </div>
           </div>
           <div className="flex items-center gap-2 text-[10px] text-text-secondary">
-            <LegendSwatch className="bg-sky-500" label={labels.direct} />
-            <LegendSwatch className="bg-slate-400" label={labels.inherited} dashed />
-            <LegendSwatch className="bg-emerald-500" label={labels.unlocks} />
+            <LegendSwatch className="bg-sky-600" label={labels.direct} />
+            <LegendSwatch className="text-slate-500" label={labels.inherited} dashed />
+            <LegendSwatch className="bg-emerald-600" label={labels.unlocks} />
+            <LegendSwatch className="text-emerald-600" label={labels.unlocksInherited} dashed />
           </div>
         </div>
       </div>
@@ -266,7 +296,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
           <svg className="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-visible" aria-hidden="true">
             <defs>
               <marker
-                id={markerId}
+                id={`${markerId}-direct`}
                 markerWidth="7"
                 markerHeight="7"
                 refX="6"
@@ -274,27 +304,53 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
                 orient="auto"
                 markerUnits="strokeWidth"
               >
-                <path d="M0,0 L7,3.5 L0,7 z" fill="currentColor" />
+                <path d="M0,0 L7,3.5 L0,7 z" fill={CONNECTOR_COLORS.direct} />
+              </marker>
+              <marker
+                id={`${markerId}-inherited`}
+                markerWidth="7"
+                markerHeight="7"
+                refX="6"
+                refY="3.5"
+                orient="auto"
+                markerUnits="strokeWidth"
+              >
+                <path d="M0,0 L7,3.5 L0,7 z" fill={CONNECTOR_COLORS.inherited} />
+              </marker>
+              <marker
+                id={`${markerId}-unlocks`}
+                markerWidth="7"
+                markerHeight="7"
+                refX="6"
+                refY="3.5"
+                orient="auto"
+                markerUnits="strokeWidth"
+              >
+                <path d="M0,0 L7,3.5 L0,7 z" fill={CONNECTOR_COLORS.unlocks} />
               </marker>
             </defs>
             {connectors.map((line) => {
               const curve = Math.max(42, Math.abs(line.toX - line.fromX) * 0.32)
               const d = `M ${line.fromX} ${line.fromY} C ${line.fromX + curve} ${line.fromY}, ${line.toX - curve} ${line.toY}, ${line.toX} ${line.toY}`
-              const tone = line.active
-                ? line.kind === 'outbound'
-                  ? 'text-emerald-500/90'
-                  : 'text-sky-500/90'
-                : 'text-slate-400/80'
+              const palette = line.kind === 'outbound'
+                ? 'unlocks'
+                : line.inherited
+                  ? 'inherited'
+                  : 'direct'
+              const strokeColor = CONNECTOR_COLORS[palette]
+              const baseOpacity = palette === 'inherited' ? 0.82 : 0.9
+              const opacity = line.active ? baseOpacity + 0.06 : baseOpacity
+              const strokeWidth = line.active ? 2.35 : 1.95
               return (
                 <path
                   key={line.id}
                   d={d}
                   fill="none"
-                  className={tone}
-                  stroke="currentColor"
-                  strokeWidth={line.active ? 2.25 : 1.5}
+                  stroke={strokeColor}
+                  opacity={opacity}
+                  strokeWidth={strokeWidth}
                   strokeDasharray={line.inherited ? '5 4' : undefined}
-                  markerEnd={`url(#${markerId})`}
+                  markerEnd={`url(#${markerId}-${palette})`}
                 />
               )
             })}
@@ -352,14 +408,18 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
             {rightVisible.length === 0 && (
               <EmptyFlowLabel label={labels.noOutgoing} />
             )}
-            {rightVisible.map((goal) => {
-              const unlocked = goal.requires.every((reqId) => getMastery(reqId) >= masteredThreshold)
+            {rightVisible.map(({ goal, kind }) => {
+              const relevantRequires = goal.effectiveRequires && goal.effectiveRequires.length > 0
+                ? goal.effectiveRequires
+                : goal.requires
+              const unlocked = relevantRequires.every((reqId) => getMastery(reqId) >= masteredThreshold)
+              const kindLabel = kind === 'inherited' ? labels.unlocksInherited : labels.unlocks
               return (
                 <FlowNodeButton
                   key={goal.id}
                   goal={goal}
                   side="right"
-                  suffix={labels.unlocks}
+                  suffix={kindLabel}
                   status={unlocked ? labels.met : labels.unmet}
                   statusClass={unlocked ? 'text-emerald-600 dark:text-emerald-300' : 'text-slate-500 dark:text-slate-300'}
                   onClick={onNavigate}
@@ -438,7 +498,11 @@ const OverflowLabel: React.FC<{ text: string }> = ({ text }) => {
 const LegendSwatch: React.FC<{ className: string; label: string; dashed?: boolean }> = ({ className, label, dashed = false }) => {
   return (
     <span className="inline-flex items-center gap-1.5">
-      <span className={`inline-block h-0.5 w-5 ${className} ${dashed ? 'border-t border-dashed border-current bg-transparent text-slate-400' : ''}`} />
+      <span
+        className={`inline-block w-5 ${dashed
+          ? `h-0 border-t border-dashed border-current bg-transparent ${className}`
+          : `h-0.5 ${className}`}`}
+      />
       <span>{label}</span>
     </span>
   )

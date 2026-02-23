@@ -613,9 +613,18 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
                   />
 
                   <NeighborSection
-                    title={tExp.nextSteps}
+                    title={tExp.nextStepsDirect ?? tExp.nextSteps}
                     emptyLabel={tExp.emptyNextSteps}
-                    goals={neighbors.forward}
+                    goals={neighbors.directForward}
+                    getMastery={getStudentMastery}
+                    onClick={handleSelectGoal}
+                    highlightForward
+                    showMastery
+                  />
+                  <NeighborSection
+                    title={tExp.nextStepsInherited ?? tExp.nextSteps}
+                    emptyLabel={tExp.emptyNextStepsInherited ?? tExp.emptyNextSteps}
+                    goals={neighbors.inheritedForward}
                     getMastery={getStudentMastery}
                     onClick={handleSelectGoal}
                     highlightForward
@@ -658,9 +667,18 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
               />
 
               <NeighborSection
-                title={tExp.nextSteps}
+                title={tExp.nextStepsDirect ?? tExp.nextSteps}
                 emptyLabel={tExp.emptyNextSteps}
-                goals={neighbors.forward}
+                goals={neighbors.directForward}
+                getMastery={getStudentMastery}
+                onClick={handleSelectGoal}
+                highlightForward
+                showMastery
+              />
+              <NeighborSection
+                title={tExp.nextStepsInherited ?? tExp.nextSteps}
+                emptyLabel={tExp.emptyNextStepsInherited ?? tExp.emptyNextSteps}
+                goals={neighbors.inheritedForward}
                 getMastery={getStudentMastery}
                 onClick={handleSelectGoal}
                 highlightForward

@@ -76,6 +76,8 @@ export const en = {
         externalRequires: "External Prerequisites",
         contains: "Sub-goals (contains)",
         nextSteps: "Next Steps (goals requiring this)",
+        nextStepsDirect: "Next Steps (direct)",
+        nextStepsInherited: "Next Steps (inherited)",
         requiresFlowToggleLabel: "Requires Flow",
         requiresFlowStateOn: "on",
         requiresFlowStateOff: "off",
@@ -86,7 +88,8 @@ export const en = {
         emptyRequires: "No direct prerequisites",
         emptyInherited: "No inherited prerequisites",
         emptyContains: "No sub-goals",
-        emptyNextSteps: "No direct follow-up goals"
+        emptyNextSteps: "No direct follow-up goals",
+        emptyNextStepsInherited: "No inherited follow-up goals"
     },
     tooltips: {
         progress: "Progress",

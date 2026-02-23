@@ -185,7 +185,8 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
             currentGoal={currentGoal}
             requires={neighbors.requires}
             inheritedRequires={neighbors.inheritedRequires}
-            forward={neighbors.forward}
+            forwardDirect={neighbors.directForward}
+            forwardInherited={neighbors.inheritedForward}
             getMastery={getMastery}
             onNavigate={onNavigate}
           />
@@ -254,9 +255,18 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
               showMastery={showLearnerTools}
             />
             <NeighborSection
-              title={t.nextSteps}
+              title={t.nextStepsDirect ?? t.nextSteps}
               emptyLabel={t.emptyNextSteps}
-              goals={neighbors.forward}
+              goals={neighbors.directForward}
+              getMastery={getMastery}
+              onClick={onNavigate}
+              highlightForward
+              showMastery={showLearnerTools}
+            />
+            <NeighborSection
+              title={t.nextStepsInherited ?? t.nextSteps}
+              emptyLabel={t.emptyNextStepsInherited ?? t.emptyNextSteps}
+              goals={neighbors.inheritedForward}
               getMastery={getMastery}
               onClick={onNavigate}
               highlightForward
