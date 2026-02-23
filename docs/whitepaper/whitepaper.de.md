@@ -133,6 +133,10 @@ Typischer Causalflow beim Lernen:
 
 **Verstehen, wozu es relevant ist** -> **geführtes Kennenlernen und Verstehen aufbauen** -> **parallel memorisieren** -> **eigenständig Lösungen erarbeiten**.
 
+[Requires-Flow (PDF, DE)](requires-flow.de.pdf)
+
+Bemerkenswert: Diese Darstellung lässt sich in der SkillPilot GUI automatisch generieren und als PDF exportieren.
+
 Während beim Verstehen oder auch bei der Bewertung und Erklären von Prüfungen die Interaktion mit einem Tutor hilfreich sind, funktioniert reines Auswendiglernen (Vokabeln, Formeln, Fakten) per modernem Karteikasten a la **Spaced Repetition** effizienter.
 
 SkillPilot integriert dafür eine **Flashcard Drill Engine** (SRS):

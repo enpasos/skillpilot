@@ -131,6 +131,10 @@ Typical causal flow of learning:
 
 **Understand why this is relevant for me** -> **build understanding through guided familiarization** -> **memorize in parallel** -> **independently develop solutions**.
 
+[Requires Flow (PDF, EN)](requires-flow.en.pdf)
+
+Notably, this visualization can be generated automatically in the SkillPilot GUI and exported directly as PDF.
+
 The skill graph models understanding and dependencies. For pure memorization (vocabulary, formulas, facts), **spaced repetition** is more efficient.
 
 <img src="memorize.en.png" alt="Hybrid learning loop" width="400" />
