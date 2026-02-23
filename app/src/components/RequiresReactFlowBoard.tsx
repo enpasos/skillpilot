@@ -111,6 +111,20 @@ const nodeTypes = {
     requiresNode: RequiresNodeTarget,
 }
 
+const CURRENT_NODE_WIDTH = 300
+const DEFAULT_NODE_WIDTH = 256
+const CURRENT_NODE_HEIGHT = 120
+const DEFAULT_NODE_HEIGHT = 70
+
+function getNodeWidth(nodeData: RequiresNodeData): number {
+    return nodeData.isCurrent ? CURRENT_NODE_WIDTH : DEFAULT_NODE_WIDTH
+}
+
+function getNodeHeight(nodeData: RequiresNodeData): number {
+    if (nodeData.isCurrent) return CURRENT_NODE_HEIGHT
+    return DEFAULT_NODE_HEIGHT
+}
+
 // ------------------------------------------------------------------
 // Transitive Reduction
 // ------------------------------------------------------------------
@@ -152,20 +166,22 @@ async function getElkLayout(
     edges: Edge[],
     direction: 'LR' | 'TB'
 ): Promise<{ nodes: Node[]; edges: Edge[] }> {
+    const layerSpacing = direction === 'TB' ? '36' : '80'
+
     const elkGraph = {
         id: 'root',
         layoutOptions: {
             'elk.algorithm': 'layered',
             'elk.direction': direction === 'LR' ? 'RIGHT' : 'DOWN',
             'elk.spacing.nodeNode': '40',
-            'elk.layered.spacing.nodeNodeBetweenLayers': '80',
+            'elk.layered.spacing.nodeNodeBetweenLayers': layerSpacing,
             'elk.layered.nodePlacement.strategy': 'NETWORK_SIMPLEX',
             'elk.layered.crossingMinimization.strategy': 'LAYER_SWEEP',
         },
         children: nodes.map((node) => ({
             id: node.id,
-            width: node.data.isCurrent ? 300 : 256,
-            height: node.data.isCurrent ? 120 : 70,
+            width: getNodeWidth(node.data as RequiresNodeData),
+            height: getNodeHeight(node.data as RequiresNodeData),
         })),
         edges: edges.map((edge) => ({
             id: edge.id,
@@ -236,7 +252,7 @@ const InnerRequiresFlow: React.FC<RequiresReactFlowBoardProps> = ({
     const [layoutKey, setLayoutKey] = useState(0)
 
     // Stable key to detect real changes (avoids re-layout on every render)
-    const dataFingerprint = `${currentGoal.id}-${flow.nodes.length}-${flow.edges.length}-${direction}-${masteredThreshold}`
+    const dataFingerprint = `${currentGoal.id}-${flow.nodes.length}-${flow.edges.length}-${direction}-${masteredThreshold}-${showMastery ? 1 : 0}`
 
     useEffect(() => {
         let cancelled = false
@@ -342,8 +358,9 @@ const InnerRequiresFlow: React.FC<RequiresReactFlowBoardProps> = ({
         // ── 1. Bounding box ───────────────────────────────────────
         let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity
         liveNodes.forEach(n => {
-            const w = n.measured?.width ?? n.width ?? (n.data.isCurrent ? 300 : 256)
-            const h = n.measured?.height ?? n.height ?? (n.data.isCurrent ? 120 : 70)
+            const nodeData = n.data as unknown as RequiresNodeData
+            const w = n.measured?.width ?? n.width ?? getNodeWidth(nodeData)
+            const h = n.measured?.height ?? n.height ?? getNodeHeight(nodeData)
             if (n.position.x < minX) minX = n.position.x
             if (n.position.y < minY) minY = n.position.y
             if (n.position.x + w > maxX) maxX = n.position.x + w
@@ -383,10 +400,13 @@ const InnerRequiresFlow: React.FC<RequiresReactFlowBoardProps> = ({
             const targetNode = liveNodes.find(n => n.id === e.target)
             if (!sourceNode || !targetNode || !sourceNode.position || !targetNode.position) return
 
-            const sW = sourceNode.measured?.width ?? sourceNode.width ?? (sourceNode.data.isCurrent ? 300 : 256)
-            const sH = sourceNode.measured?.height ?? sourceNode.height ?? (sourceNode.data.isCurrent ? 120 : 70)
-            const tW = targetNode.measured?.width ?? targetNode.width ?? (targetNode.data.isCurrent ? 300 : 256)
-            const tH = targetNode.measured?.height ?? targetNode.height ?? (targetNode.data.isCurrent ? 120 : 70)
+            const sourceNodeData = sourceNode.data as unknown as RequiresNodeData
+            const targetNodeData = targetNode.data as unknown as RequiresNodeData
+
+            const sW = sourceNode.measured?.width ?? sourceNode.width ?? getNodeWidth(sourceNodeData)
+            const sH = sourceNode.measured?.height ?? sourceNode.height ?? getNodeHeight(sourceNodeData)
+            const tW = targetNode.measured?.width ?? targetNode.width ?? getNodeWidth(targetNodeData)
+            const tH = targetNode.measured?.height ?? targetNode.height ?? getNodeHeight(targetNodeData)
 
             let sourceX: number, sourceY: number, targetX: number, targetY: number
             if (direction === 'LR') {
@@ -417,9 +437,10 @@ const InnerRequiresFlow: React.FC<RequiresReactFlowBoardProps> = ({
 
         // Node rectangles only (no text in SVG)
         liveNodes.forEach(n => {
-            const isCurrent = (n.data as unknown as RequiresNodeData).isCurrent
-            const w = n.measured?.width ?? n.width ?? (isCurrent ? 300 : 256)
-            const h = n.measured?.height ?? n.height ?? (isCurrent ? 120 : 70)
+            const nodeData = n.data as unknown as RequiresNodeData
+            const isCurrent = nodeData.isCurrent
+            const w = n.measured?.width ?? n.width ?? getNodeWidth(nodeData)
+            const h = n.measured?.height ?? n.height ?? getNodeHeight(nodeData)
 
             const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect')
             rect.setAttribute('x', `${n.position.x}`)
@@ -465,8 +486,8 @@ const InnerRequiresFlow: React.FC<RequiresReactFlowBoardProps> = ({
             liveNodes.forEach(n => {
                 const nodeData = n.data as unknown as RequiresNodeData
                 const isCurrent = nodeData.isCurrent
-                const w = n.measured?.width ?? n.width ?? (isCurrent ? 300 : 256)
-                const h = n.measured?.height ?? n.height ?? (isCurrent ? 120 : 70)
+                const w = n.measured?.width ?? n.width ?? getNodeWidth(nodeData)
+                const h = n.measured?.height ?? n.height ?? getNodeHeight(nodeData)
                 // SVG viewBox starts at minX,minY but PDF starts at 0,0
                 const px = n.position.x - minX
                 const py = n.position.y - minY
