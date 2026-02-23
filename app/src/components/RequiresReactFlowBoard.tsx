@@ -315,16 +315,31 @@ const InnerRequiresFlow: React.FC<RequiresReactFlowBoardProps> = ({
 
     const flowRef = useRef<HTMLDivElement>(null)
 
-    const handleExportPdf = useCallback(() => {
+    const handleExportPdf = useCallback(async () => {
         if (!layoutedNodes || !layoutedEdges) return
 
-        // Fetch LIVE nodes directly from the React Flow instance
         const liveNodes = getNodes()
         const liveEdges = getEdges()
 
-        const svgElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+        // ── 0. Load Inter font ────────────────────────────────────
+        let interFontBase64: string | null = null
+        try {
+            const resp = await fetch('/fonts/Inter-SemiBold.ttf?v=2')
+            const buf = await resp.arrayBuffer()
+            const bytes = new Uint8Array(buf)
+            // Validate TTF signature: starts with 0x00010000 or 'true'
+            if (bytes.length > 4 && (bytes[0] === 0x00 || bytes[0] === 0x74)) {
+                let binary = ''
+                bytes.forEach(b => { binary += String.fromCharCode(b) })
+                interFontBase64 = btoa(binary)
+            } else {
+                console.warn('Font file is not a valid TTF – falling back to Helvetica')
+            }
+        } catch {
+            console.warn('Could not load Inter font – falling back to Helvetica')
+        }
 
-        // 1. Calculate bounding box for the SVG using live nodes
+        // ── 1. Bounding box ───────────────────────────────────────
         let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity
         liveNodes.forEach(n => {
             const w = n.measured?.width ?? n.width ?? (n.data.isCurrent ? 300 : 256)
@@ -335,21 +350,17 @@ const InnerRequiresFlow: React.FC<RequiresReactFlowBoardProps> = ({
             if (n.position.y + h > maxY) maxY = n.position.y + h
         })
         const padding = 50
-        minX -= padding
-        minY -= padding
-        maxX += padding
-        maxY += padding
+        minX -= padding; minY -= padding; maxX += padding; maxY += padding
         const width = maxX - minX
         const height = maxY - minY
 
+        // ── 2. Build geometry-only SVG (no text) ──────────────────
+        const svgElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
         svgElement.setAttribute('viewBox', `${minX} ${minY} ${width} ${height}`)
         svgElement.setAttribute('width', `${width}`)
         svgElement.setAttribute('height', `${height}`)
 
-        // 2. Draw Edges manually
-        const edgesGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g')
-
-        // Add marker defs manually
+        // Arrow marker
         const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs')
         const marker = document.createElementNS('http://www.w3.org/2000/svg', 'marker')
         marker.setAttribute('id', 'pdf-arrow')
@@ -366,32 +377,27 @@ const InnerRequiresFlow: React.FC<RequiresReactFlowBoardProps> = ({
         defs.appendChild(marker)
         svgElement.appendChild(defs)
 
+        // Edges
         liveEdges.forEach(e => {
             const sourceNode = liveNodes.find(n => n.id === e.source)
             const targetNode = liveNodes.find(n => n.id === e.target)
             if (!sourceNode || !targetNode || !sourceNode.position || !targetNode.position) return
 
-            // Calculate precise connection points based on direction
-            let sourceX, sourceY, targetX, targetY
             const sW = sourceNode.measured?.width ?? sourceNode.width ?? (sourceNode.data.isCurrent ? 300 : 256)
             const sH = sourceNode.measured?.height ?? sourceNode.height ?? (sourceNode.data.isCurrent ? 120 : 70)
             const tW = targetNode.measured?.width ?? targetNode.width ?? (targetNode.data.isCurrent ? 300 : 256)
             const tH = targetNode.measured?.height ?? targetNode.height ?? (targetNode.data.isCurrent ? 120 : 70)
 
+            let sourceX: number, sourceY: number, targetX: number, targetY: number
             if (direction === 'LR') {
-                sourceX = sourceNode.position.x + sW
-                sourceY = sourceNode.position.y + sH / 2
-                targetX = targetNode.position.x
-                targetY = targetNode.position.y + tH / 2
+                sourceX = sourceNode.position.x + sW; sourceY = sourceNode.position.y + sH / 2
+                targetX = targetNode.position.x; targetY = targetNode.position.y + tH / 2
             } else {
-                sourceX = sourceNode.position.x + sW / 2
-                sourceY = sourceNode.position.y + sH
-                targetX = targetNode.position.x + tW / 2
-                targetY = targetNode.position.y
+                sourceX = sourceNode.position.x + sW / 2; sourceY = sourceNode.position.y + sH
+                targetX = targetNode.position.x + tW / 2; targetY = targetNode.position.y
             }
 
-            // Create smooth curve (bezier)
-            let pathString = ''
+            let pathString: string
             if (direction === 'LR') {
                 const cX = sourceX + (targetX - sourceX) / 2
                 pathString = `M ${sourceX},${sourceY} C ${cX},${sourceY} ${cX},${targetY} ${targetX},${targetY}`
@@ -400,148 +406,103 @@ const InnerRequiresFlow: React.FC<RequiresReactFlowBoardProps> = ({
                 pathString = `M ${sourceX},${sourceY} C ${sourceX},${cY} ${targetX},${cY} ${targetX},${targetY}`
             }
 
-            const newPath = document.createElementNS('http://www.w3.org/2000/svg', 'path')
-            newPath.setAttribute('d', pathString)
-            newPath.setAttribute('fill', 'none')
-            newPath.setAttribute('stroke', '#94a3b8')
-            newPath.setAttribute('stroke-width', '1.5')
-            newPath.setAttribute('marker-end', 'url(#pdf-arrow)')
-            edgesGroup.appendChild(newPath)
+            const p = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+            p.setAttribute('d', pathString)
+            p.setAttribute('fill', 'none')
+            p.setAttribute('stroke', '#94a3b8')
+            p.setAttribute('stroke-width', '1.5')
+            p.setAttribute('marker-end', 'url(#pdf-arrow)')
+            svgElement.appendChild(p)
         })
 
-        svgElement.appendChild(edgesGroup)
-
-        // 3. Draw nodes manually as pure SVG objects
-        const nodesGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g')
+        // Node rectangles only (no text in SVG)
         liveNodes.forEach(n => {
-            const nodeData = n.data as unknown as RequiresNodeData
-            const isCurrent = nodeData.isCurrent
+            const isCurrent = (n.data as unknown as RequiresNodeData).isCurrent
             const w = n.measured?.width ?? n.width ?? (isCurrent ? 300 : 256)
             const h = n.measured?.height ?? n.height ?? (isCurrent ? 120 : 70)
-            const x = n.position.x
-            const y = n.position.y
 
-            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g')
-
-            // Background rect
             const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect')
-            rect.setAttribute('x', `${x}`)
-            rect.setAttribute('y', `${y}`)
+            rect.setAttribute('x', `${n.position.x}`)
+            rect.setAttribute('y', `${n.position.y}`)
             rect.setAttribute('width', `${w}`)
             rect.setAttribute('height', `${h}`)
             rect.setAttribute('rx', '12')
-            rect.setAttribute('fill', isCurrent ? '#f0f9ff' : '#ffffff') // sky-50 for current
-            rect.setAttribute('stroke', isCurrent ? '#38bdf8' : '#cbd5e1') // sky-400 or slate-300
+            rect.setAttribute('fill', isCurrent ? '#f0f9ff' : '#ffffff')
+            rect.setAttribute('stroke', isCurrent ? '#38bdf8' : '#cbd5e1')
             rect.setAttribute('stroke-width', '1')
-            g.appendChild(rect)
+            svgElement.appendChild(rect)
+        })
 
-            // Title text with simple word wrap
-            const title = document.createElementNS('http://www.w3.org/2000/svg', 'text')
-            title.setAttribute('x', `${x + 12}`)
-            title.setAttribute('y', `${y + (isCurrent ? 26 : 20)}`)
-            title.setAttribute('fill', '#0f172a') // slate-900
-            title.setAttribute('font-family', 'sans-serif')
-            title.setAttribute('font-size', isCurrent ? '14' : '12')
-            title.setAttribute('font-weight', 'bold')
+        // ── 3. Create PDF and render SVG geometry ─────────────────
+        const orientation = width > height ? 'landscape' : 'portrait'
+        const doc = new jsPDF({ orientation, unit: 'pt', format: [width, height] })
 
-            const words = nodeData.goal.title.split(' ')
-            let line = ''
-            let lineY = 0
-            const maxChars = isCurrent ? 55 : 48
-            words.forEach((word: string) => {
-                if ((line + word).length > maxChars && line.length > 0) {
-                    const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan')
-                    tspan.setAttribute('x', `${x + 12}`)
-                    tspan.setAttribute('dy', lineY === 0 ? '0' : '1.2em')
-                    tspan.textContent = line.trim()
-                    title.appendChild(tspan)
-                    line = word + ' '
-                    lineY++
-                } else {
-                    line += word + ' '
+        // Register Inter font (with graceful fallback to Helvetica)
+        let fontAvailable = false
+        if (interFontBase64) {
+            try {
+                doc.addFileToVFS('Inter-SemiBold.ttf', interFontBase64)
+                doc.addFont('Inter-SemiBold.ttf', 'Inter', 'normal')
+                fontAvailable = true
+            } catch (e) {
+                console.warn('Could not register Inter font – falling back to Helvetica', e)
+            }
+        }
+
+        // Render geometry (rects + edges) as vector
+        await doc.svg(svgElement, { x: 0, y: 0, width, height })
+
+        // ── 4. Add text via jsPDF native API (uses registered Inter font) ─
+        if (fontAvailable) {
+            doc.setFont('Inter')
+        }
+
+        try {
+            // Verify font metrics are usable before rendering all nodes
+            doc.setFontSize(12)
+            doc.splitTextToSize('test', 100)
+
+            liveNodes.forEach(n => {
+                const nodeData = n.data as unknown as RequiresNodeData
+                const isCurrent = nodeData.isCurrent
+                const w = n.measured?.width ?? n.width ?? (isCurrent ? 300 : 256)
+                const h = n.measured?.height ?? n.height ?? (isCurrent ? 120 : 70)
+                // SVG viewBox starts at minX,minY but PDF starts at 0,0
+                const px = n.position.x - minX
+                const py = n.position.y - minY
+
+                // Title
+                const fontSize = isCurrent ? 13 : 11
+                doc.setFontSize(fontSize)
+                doc.setTextColor(15, 23, 42) // #0f172a
+                const maxW = w - (isCurrent ? 26 : 26)
+                const titleLines: string[] = doc.splitTextToSize(nodeData.goal.title, maxW)
+                doc.text(titleLines, px + 12, py + (isCurrent ? 26 : 21))
+
+                // Description (current node only)
+                if (isCurrent && nodeData.goal.description) {
+                    doc.setFontSize(10)
+                    doc.setTextColor(100, 116, 139) // #64748b
+                    const descLines: string[] = doc.splitTextToSize(String(nodeData.goal.description), w - 24)
+                    const descY = py + 28 + titleLines.length * 16 + 8
+                    doc.text(descLines, px + 12, descY)
+                }
+
+                // Status label
+                if (nodeData.showMastery && !isCurrent) {
+                    doc.setFontSize(9)
+                    doc.setTextColor(100, 116, 139) // #64748b
+                    const label = nodeData.mastered ? nodeData.labels.met : nodeData.labels.unmet
+                    doc.text(label, px + 12, py + h - 10)
                 }
             })
-            if (line.trim()) {
-                const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan')
-                tspan.setAttribute('x', `${x + 12}`)
-                tspan.setAttribute('dy', lineY === 0 ? '0' : '1.2em')
-                tspan.textContent = line.trim()
-                title.appendChild(tspan)
-            }
-            g.appendChild(title)
+        } catch (textErr) {
+            console.warn('Could not render text in PDF (font metadata issue) – exporting geometry only', textErr)
+        }
 
-            // Current Goal description
-            if (isCurrent && nodeData.goal.description) {
-                const desc = document.createElementNS('http://www.w3.org/2000/svg', 'text')
-                // Place below title
-                desc.setAttribute('x', `${x + 12}`)
-                desc.setAttribute('y', `${y + 28 + (lineY + 1) * 16 + 8}`)
-                desc.setAttribute('fill', '#64748b') // slate-500
-                desc.setAttribute('font-family', 'sans-serif')
-                desc.setAttribute('font-size', '11')
+        doc.save(`requires-flow-${currentGoal.title || currentGoal.id}.pdf`)
 
-                const descWords = String(nodeData.goal.description).split(' ')
-                let dLine = ''
-                let dLineY = 0
-                const dMaxChars = 50 // approx
-                descWords.forEach((word: string) => {
-                    if ((dLine + word).length > dMaxChars && dLine.length > 0) {
-                        const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan')
-                        tspan.setAttribute('x', `${x + 12}`)
-                        tspan.setAttribute('dy', dLineY === 0 ? '0' : '1.2em')
-                        tspan.textContent = dLine.trim()
-                        desc.appendChild(tspan)
-                        dLine = word + ' '
-                        dLineY++
-                    } else {
-                        dLine += word + ' '
-                    }
-                })
-                if (dLine.trim()) {
-                    const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan')
-                    tspan.setAttribute('x', `${x + 12}`)
-                    tspan.setAttribute('dy', dLineY === 0 ? '0' : '1.2em')
-                    tspan.textContent = dLine.trim()
-                    desc.appendChild(tspan)
-                }
-                g.appendChild(desc)
-            }
-
-            // Status label
-            if (nodeData.showMastery && !isCurrent) {
-                const status = document.createElementNS('http://www.w3.org/2000/svg', 'text')
-                status.setAttribute('x', `${x + 12}`)
-                status.setAttribute('y', `${y + h - 16}`)
-                status.setAttribute('font-family', 'sans-serif')
-                status.setAttribute('font-size', '10')
-                status.setAttribute('fill', '#64748b') // slate-500
-                const statLabel = nodeData.mastered ? nodeData.labels.met : nodeData.labels.unmet
-                status.textContent = statLabel
-                g.appendChild(status)
-            }
-
-            nodesGroup.appendChild(g)
-        })
-        svgElement.appendChild(nodesGroup)
-
-        // 4. Render to PDF using svg2pdf
-        const orientation = width > height ? 'landscape' : 'portrait'
-        const doc = new jsPDF({
-            orientation,
-            unit: 'pt',
-            format: [width, height]
-        })
-
-        doc.svg(svgElement, {
-            x: 0,
-            y: 0,
-            width,
-            height
-        }).then(() => {
-            doc.save(`requires-flow-${currentGoal.title || currentGoal.id}.pdf`)
-        })
-
-    }, [layoutedNodes, layoutedEdges, currentGoal])
+    }, [layoutedNodes, layoutedEdges, currentGoal, direction, getNodes, getEdges])
 
     if (!layoutedNodes || !layoutedEdges) {
         return (
