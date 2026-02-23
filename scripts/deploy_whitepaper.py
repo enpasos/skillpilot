@@ -1,5 +1,16 @@
 import os
+import re
 import shutil
+
+
+PAGE_BREAK_DIV_PATTERN = re.compile(
+    r'^[ \t]*<div\s+style=["\']page-break-after:\s*always;?["\']\s*>\s*</div>\s*\r?\n?',
+    re.IGNORECASE | re.MULTILINE
+)
+
+
+def sanitize_markdown_for_web_gui(content):
+    return PAGE_BREAK_DIV_PATTERN.sub("", content)
 
 
 def copy_assets(source_dir, target_dir, allowed_extensions):
@@ -19,7 +30,14 @@ def copy_assets(source_dir, target_dir, allowed_extensions):
         ext = os.path.splitext(name)[1].lower()
         if ext not in allowed_extensions:
             continue
-        shutil.copy2(source_path, os.path.join(target_dir, name))
+        target_path = os.path.join(target_dir, name)
+        if ext == ".md":
+            with open(source_path, "r", encoding="utf-8") as source_file:
+                source_content = source_file.read()
+            with open(target_path, "w", encoding="utf-8") as target_file:
+                target_file.write(sanitize_markdown_for_web_gui(source_content))
+        else:
+            shutil.copy2(source_path, target_path)
         count += 1
 
     print(f"Deployed {count} assets to {target_dir}")
@@ -39,7 +57,7 @@ def deploy_whitepaper():
     comic3_dest = os.path.join(project_root, "app", "public", "comic3")
 
     total = 0
-    total += copy_assets(whitepaper_src, whitepaper_dest, {".md", ".png", ".jpg", ".jpeg"})
+    total += copy_assets(whitepaper_src, whitepaper_dest, {".md", ".png", ".jpg", ".jpeg", ".svg", ".pdf"})
     total += copy_assets(comic1_src, comic1_dest, {".png", ".jpg", ".jpeg"})
     total += copy_assets(comic2_src, comic2_dest, {".png", ".jpg", ".jpeg"})
     total += copy_assets(comic3_src, comic3_dest, {".png", ".jpg", ".jpeg"})

@@ -127,17 +127,27 @@ Learning Velocity zeigt, wie viele **atomare Ziele** pro Woche neu als gemeister
 
 ### 3.3 Der hybride Lernkreislauf: Verstehen + Memorieren + Üben
 
-Nicht jedes Lernziel lernt man gleich: Konzepte brauchen Verständnis und Anwendung, Fakten brauchen Wiederholung – und viele Skills brauchen **aktives Tun** (z.B. Programmieren, Rechnen, Schreiben), und selbstständig ein Problem bearbeiten haben wir in den Prüfungen.
+Nicht jedes Lernziel lernt man gleich: Konzepte brauchen Verständnis und Anwendung, Fakten brauchen Wiederholung, und viele Skills brauchen **aktives Tun** (z.B. Programmieren, Rechnen, Schreiben). In Prüfungen wird genau dieses selbstständige Problemlösen verlangt.
 
-Typischer Causalflow beim Lernen:
+**Der Weg zur Prüfungsreife ("Mach mich fit fürs Abi")**
+In der Praxis lernen Schüler:innen selten isolierte Einzelthemen, sondern verfolgen ein übergreifendes Endziel. Die typische Herangehensweise ist das Abstecken eines festen Kontextes – beispielsweise „Leistungskurs Physik, Hessen, Abiturvorbereitung“.
+Sobald dieser Kontext in SkillPilot definiert ist, bündelt das System aus der Gesamt-Landkarte alle relevanten Lernrouten, die zu den verlangten Klausurfähigkeiten führen. Lernende werden vom Tutor systematisch entlang dieser Routen dorthin geführt.
 
-**Verstehen, wozu es relevant ist** -> **geführtes Kennenlernen und Verstehen aufbauen** -> **parallel memorisieren** -> **eigenständig Lösungen erarbeiten**.
+**Die Systematik der Lernpfade (Die didaktische Route)**
+Innerhalb dieses Curriculums ist der Weg nicht dem Zufall überlassen. Jede einzelne Themen-Route folgt einer klaren didaktischen Struktur. Das finale Ziel jeder Route ist immer die Befähigung, komplexe Aufgaben und Lösungen selbstständig zu erarbeiten. Alle Lernziele davor dienen dazu, die Fähigkeiten dafür systematisch aufzubauen.
 
-<img src="requires-flow.de-1.png" alt="Requires-Flow (DE)" width="420" />
+Eine typische Route durchläuft dabei stets die folgenden Phasen:
+1. **Motivation ("Warum lernen wir das?")**: Jede Route beginnt mit der Einordnung, wozu das Thema überhaupt relevant ist.
+2. **Verstehen (Guided Learning)**: Im sokratischen Dialog mit dem KI-Tutor wird das neue Konzept geführt kennengelernt und das Verständnis Schritt für Schritt aufgebaut.
+3. **Memorieren (Drill)**: Parallel zum Verstehen werden notwendige Fakten und Formeln über das integrierte Flashcard-System gefestigt.
+4. **Anwenden (Mastery)**: Am Ende der Route steht die eigenständige Bearbeitung komplexer Problemstellungen auf Prüfungsniveau (z.B. abfotografierte Rechenwege), bei der der Tutor nur noch bewertet und Feedback gibt.
 
-Bemerkenswert: Diese Darstellung lässt sich in der SkillPilot GUI automatisch generieren und als PDF exportieren.
+Hier ein Beispiel für eine einfache Route aus Motivation/Verstehen/Anwenden (Memorisieren läuft parallel), wie es in SkillPilot visualisiert wird und als PDF exportierbar ist.
 
-Während beim Verstehen oder auch bei der Bewertung und Erklären von Prüfungen die Interaktion mit einem Tutor hilfreich sind, funktioniert reines Auswendiglernen (Vokabeln, Formeln, Fakten) per modernem Karteikasten a la **Spaced Repetition** effizienter.
+<img src="requires-flow.de.svg" alt="Requires-Flow (DE)" width="420" />
+
+
+Während beim Verstehen sowie beim Bewerten und Erklären von Prüfungsleistungen die Interaktion mit einem Tutor hilft, funktioniert reines Auswendiglernen (Vokabeln, Formeln, Fakten) per modernem Karteikasten a la **Spaced Repetition** effizienter.
 
 SkillPilot integriert dafür eine **Flashcard Drill Engine** (SRS):
 
@@ -145,6 +155,12 @@ SkillPilot integriert dafür eine **Flashcard Drill Engine** (SRS):
 * **Memorisier-Loop:** Die Drill Engine optimiert *wie* wiederholt wird (Intervalle, Priorisierung; z.B. SuperMemo-2).
 
 Ergänzend braucht es weitere Lernmodi für „Doing“-Skills: Der Tutor soll Lernende in passende **Practice-Formate** schicken (z.B. Aufgabenserien, Programmieraufgaben, Schreib-/Sprechübungen) und sie anschließend im Chat bei Auswertung, Feedback und Transfer begleiten.
+
+#### Technische Ableitungen: Ziel-Route in Backend, UI und Tutor
+
+* **Backend (didaktische Routenlogik):** Die Ziel-Route ist keine freie KI-Berechnung, sondern eine im Curriculum modellierte topologische Route unter DAG-Constraints. Das bedeutet: Die menschlichen Lehrplan-Autor:innen (Champions) behalten die volle pädagogische Kontrolle, da die KI den vorgegebenen Pfad nicht eigenmächtig verlassen oder verändern darf. Für jedes Fernziel sind die vorgelagerten Knoten (Motivation, Verstehen, Memorieren, Anwenden) als `requires` explizit vorgeschaltet.
+* **UI/UX (Routen-Visualisierung):** Lernende wählen ihren Zielkontext (z.B. LK Physik) und ein Fernziel. Die Oberfläche blendet irrelevante Bereiche aus und hebt die didaktische Route zum Ziel klar hervor.
+* **KI-Tutor (Didaktischer Kontext):** Der Tutor arbeitet strikt auf Basis dieser vorgegebenen Route und erklärt transparent, warum der aktuelle Schritt der logische nächste Halt auf dem Weg zur Prüfungsreife ist.
 
 ---
 
@@ -211,7 +227,9 @@ SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als St
    Lernziele in SkillPilot sind aus öffentlich zugänglichen, amtlichen Curricula/Ordnungen abgeleitet. Wir geben die Quellen an; SkillPilot bietet eine eigene Strukturierung und Zusammenfassung – kein offizieller Wortlaut.  
    Ergebnis: Das Curriculum existiert und wird in der Oberfläche angezeigt.
 2. **Stufe 2 – QS durch Curriculum Champion**  
-   Ein Curriculum Champion hat ein Curriculum oder einen Baustein davon selbst in SkillPilot gemastered, die Fehler im Curriculum und SkillPilot bereinigt und ein **QS-Häkchen** vergeben. Von diesen QS-Häkchen kann es mehrere geben. <img src="champion.de.png" alt="QS-Beispiel Mathematik (Stufe 2)"width="400" />
+   Ein Curriculum Champion hat ein Curriculum oder einen Baustein davon selbst in SkillPilot gemastered, die Fehler im Curriculum und SkillPilot bereinigt und ein **QS-Häkchen** vergeben. Von diesen QS-Häkchen kann es mehrere geben. 
+   <img src="champion.de.png" alt="QS-Beispiel Mathematik (Stufe 2)"width="400" />
+
 
 **Aktueller Stand:** Das Fach **Mathematik** für **Gymnasiale Oberstufe (Hessen, G9, Sekundarstufe II)** hat inzwischen **Stufe 2** erreicht. Alle übrigen Curricula befinden sich derzeit in **Stufe 1**. Der aktuelle Stand ist im [Curriculum-Verzeichnis](https://skillpilot.com/curricula) einsehbar.  
 

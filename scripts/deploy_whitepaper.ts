@@ -11,7 +11,7 @@ const MAPPINGS = [
     {
         source: path.join(ROOT_DIR, 'docs', 'whitepaper'),
         target: path.join(ROOT_DIR, 'app', 'public', 'whitepaper'),
-        extensions: ['.md', '.png', '.jpg', '.jpeg']
+        extensions: ['.md', '.png', '.jpg', '.jpeg', '.svg', '.pdf']
     },
     {
         source: path.join(ROOT_DIR, 'docs', 'comic1'),
@@ -24,6 +24,12 @@ const MAPPINGS = [
         extensions: ['.png', '.jpg', '.jpeg']
     }
 ];
+
+const PAGE_BREAK_DIV_REGEX = /^[ \t]*<div\s+style=["']page-break-after:\s*always;?["']\s*>\s*<\/div>\s*\r?\n?/gim;
+
+const sanitizeMarkdownForWebGui = (content: string) => (
+    content.replace(PAGE_BREAK_DIV_REGEX, '')
+);
 
 function copyAssets(sourceDir: string, targetDir: string, allowedExtensions: string[]) {
     if (!fs.existsSync(sourceDir)) {
@@ -48,7 +54,13 @@ function copyAssets(sourceDir: string, targetDir: string, allowedExtensions: str
         if (stat.isFile()) {
             const ext = path.extname(name).toLowerCase();
             if (allowedExtensions.includes(ext)) {
-                fs.copyFileSync(sourcePath, path.join(targetDir, name));
+                const targetPath = path.join(targetDir, name);
+                if (ext === '.md') {
+                    const sourceContent = fs.readFileSync(sourcePath, 'utf8');
+                    fs.writeFileSync(targetPath, sanitizeMarkdownForWebGui(sourceContent), 'utf8');
+                } else {
+                    fs.copyFileSync(sourcePath, targetPath);
+                }
                 count++;
             }
         }

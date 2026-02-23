@@ -62,12 +62,12 @@ This is about:
 
 * **Operationalization:** learning outcomes are broken down into atomic skill goals (without changing the standard).
 * **Traceability:** each skill remains traceable to source/section/version.
-* **Navigability:** prerequisites and hierarchies are modeled explicitly so paths are plannable (didactic prereqs possibly as **overlays**). The graph does not enforce rigid paths: It supports pedagogical flexibility. The **Optimistic Mode** checks prerequisites only **within the selected filter** (e.g., grade level), allowing learners to enter directly in the target year without blocking due to gaps from earlier years. When learners struggle, the tutor switches to diagnostic **Pessimistic Mode** to identify the missing foundation.
-* **Governance:** changes currently run via GitHub (Issues/PRs), versioning via GitHub history (see section 6).
+* **Navigability:** prerequisites and hierarchies are modeled explicitly so paths are plannable (didactic prereqs possibly as **overlay**). The graph does not enforce rigid paths: it supports pedagogical flexibility. In **Optimistic Mode**, prerequisites are checked only **inside the selected filter** (e.g., grade level), so learners can start directly in the selected year without being blocked by gaps from earlier years. If learners struggle, the tutor switches to diagnostic **Pessimistic Mode** to find the missing foundation.
+* **Governance:** changes currently run via GitHub (Issues/PRs), with versioning through GitHub history (see section 6).
 
 #### Map: Nodes & Edges
 
-* **Nodes:** atomic skills ("can explain/apply X") and atomic clusters (topics/modules).
+* **Nodes:** atomic skills ("can explain/apply X") and clusters (topics/modules).
 * **Edges:**
   * **Prerequisites:** "A before B"
   * **Contains/Part-of:** "X includes Y and Z"
@@ -76,9 +76,9 @@ This is about:
 
 SkillPilot distinguishes three **node types** that reflect different learning modes:
 
-* **Tutorial:** All subject topics are explained and practiced with the AI tutor.
-* **Memorize:** Individual facts are memorized (flashcards/SRS).
-* **Exam:** Abitur-style tasks are solved independently (e.g., photo from notebook/paper), immediately graded (points, pass/fail, errors), and then explained.
+* **Understanding:** Subject topics are explained and practiced with the AI tutor.
+* **Memorization:** Individual facts are memorized in a targeted way (modern flashcard principle).
+* **Independent problem solving:** Final-exam tasks are solved independently (e.g., on paper, photographed, and uploaded), immediately graded (points, pass/fail, errors), and then explained.
 
 In the curriculum **Upper Secondary School (DE, HE, G9, Secondary II) – Mathematics (QA Stage 2)**, **all three node types** are used.
 
@@ -101,9 +101,9 @@ The skill graph provides the route, but learners do not interact with datasets; 
 
 The tutor is not a "black box" but acts strictly based on backend logic: it receives the next goal and allowed transitions from the graph, illustrating them in a didactically meaningful dialogue. This turns "exact bookkeeping" into a personal learning experience.
 
-### 3.3 The Hybrid Learning Loop: Understanding + Memorizing + Practice
+#### Focus Instead of Distraction
 
-The **Frontier** calculated in Chapter 3.1 serves as a **focus filter** for the tutor: from the total set, only the content that fits the goal and current state is shown - the **next feasible step** instead of "everything at once".
+The **frontier** calculated in chapter 3.1 serves as a **focus filter** for the tutor: from the full set, only content that fits the goal and current state is shown - the **next feasible step** instead of "everything at once".
 
 #### Mastery: Progress as an Evidence Model
 
@@ -125,13 +125,29 @@ Learning velocity shows how many **atomic goals** are newly mastered per week - 
 
 ### 3.3 The Hybrid Learning Loop: Understanding + Memorizing + Practice
 
-Not every learning goal is learned the same way: concepts need understanding and application, facts need repetition - and many skills need **active doing** (e.g., programming, calculating, writing).
+Not every learning goal is learned the same way: concepts need understanding and application, facts need repetition, and many skills require **active doing** (e.g., programming, calculating, writing). In assessments, this kind of independent problem solving is exactly what counts.
 
-Typical causal flow of learning:
+**The Path to Exam Readiness ("Get me ready for finals")**
+In practice, students rarely learn isolated topics. They usually pursue an overarching end goal. The typical approach is to define a fixed context - for example, "Advanced Physics Course, Hesse, Final Exam Preparation."
+As soon as this context is defined in SkillPilot, the system bundles all relevant learning routes from the full landscape that lead to the required exam competencies. Learners are then guided by the tutor systematically along these routes.
 
+**The System of Learning Paths (The didactic route)**
+Within this curriculum, the path is not left to chance. Each individual topic route follows a clear didactic structure. The final goal of each route is always the ability to independently solve complex tasks and solutions. All prior goals systematically build up the capabilities required for that.
+
+A typical route consistently goes through the following phases:
+1. **Motivation ("Why are we learning this?")**: Each route starts with framing why the topic is relevant at all.
+2. **Understanding (Guided Learning):** In Socratic dialogue with the AI tutor, the new concept is introduced with guidance and understanding is built step by step.
+3. **Memorization (Drill):** In parallel with understanding, required facts and formulas are reinforced through the integrated flashcard system.
+4. **Application (Mastery):** At the end of the route, learners independently solve complex exam-level problems (e.g., photographed handwritten steps), while the tutor only evaluates and provides feedback.
+
+Short form of the route:
 **Understand why this is relevant for me** -> **build understanding through guided familiarization** -> **memorize in parallel** -> **independently develop solutions**.
 
-The skill graph models understanding and dependencies. For pure memorization (vocabulary, formulas, facts), **spaced repetition** is more efficient.
+Here is one example for motivation/understanding/application, as visualized in SkillPilot and exportable as PDF.
+
+<img src="requires-flow.en.svg" alt="Requires Flow (EN)" width="420" />
+
+While tutor interaction is valuable for understanding and for evaluating/explaining exam solutions, pure memorization (vocabulary, formulas, facts) is more efficient with **spaced repetition**.
 
 <img src="memorize.en.png" alt="Hybrid learning loop" width="400" />
 
@@ -141,6 +157,12 @@ SkillPilot integrates a **flashcard drill engine** (SRS):
 * **Memorization loop:** the drill engine optimizes *how* to repeat (intervals, prioritization; e.g., SuperMemo-2).
 
 In addition, other learning modes are needed for "doing" skills: the tutor should send learners into suitable **practice formats** (e.g., problem sets, programming tasks, writing/speaking exercises) and then guide them back in chat for evaluation, feedback, and transfer.
+
+#### Technical Implications: Target Route in Backend, UI, and Tutor
+
+* **Backend (didactic route logic):** The target route is not a free AI computation. It is a topological route modeled in the curriculum under DAG constraints. This means human curriculum authors (champions) retain full pedagogical control, because the AI is not allowed to leave or alter the predefined path on its own. For each long-term goal, upstream nodes (motivation, understanding, memorization, application) are explicitly configured as `requires`.
+* **UI/UX (route visualization):** Learners select their target context (e.g., advanced physics) and a long-term goal. The interface fades irrelevant areas and clearly highlights the didactic route toward the goal.
+* **AI tutor (didactic context):** The tutor operates strictly on this predefined route and explains transparently why the current step is the logical next stop on the way to exam readiness.
 
 ---
 
