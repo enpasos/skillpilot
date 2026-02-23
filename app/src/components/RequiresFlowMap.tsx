@@ -1,6 +1,7 @@
 import React, { useEffect, useId, useMemo, useRef, useState } from 'react'
 import type { UiGoal as Goal } from '../goalTypes'
 import { InlineMathText } from './InlineMathText'
+import { RequiresReactFlowBoard } from './RequiresReactFlowBoard'
 
 type PrereqKind = 'direct' | 'inherited'
 
@@ -437,11 +438,10 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
                 type="button"
                 aria-pressed={nodeFilter === 'all'}
                 onClick={() => setNodeFilter('all')}
-                className={`rounded-full px-2 py-1 text-[10px] uppercase tracking-wide transition-colors ${
-                  nodeFilter === 'all'
+                className={`rounded-full px-2 py-1 text-[10px] uppercase tracking-wide transition-colors ${nodeFilter === 'all'
                     ? 'bg-sky-600 text-white'
                     : 'text-text-secondary hover:text-text-primary'
-                }`}
+                  }`}
               >
                 {labels.filterAll}
               </button>
@@ -449,11 +449,10 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
                 type="button"
                 aria-pressed={nodeFilter === 'atomic'}
                 onClick={() => setNodeFilter('atomic')}
-                className={`rounded-full px-2 py-1 text-[10px] uppercase tracking-wide transition-colors ${
-                  nodeFilter === 'atomic'
+                className={`rounded-full px-2 py-1 text-[10px] uppercase tracking-wide transition-colors ${nodeFilter === 'atomic'
                     ? 'bg-sky-600 text-white'
                     : 'text-text-secondary hover:text-text-primary'
-                }`}
+                  }`}
               >
                 {labels.filterAtomic}
               </button>
@@ -535,9 +534,8 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
         )}
 
         <div
-          className={`relative z-10 grid grid-cols-1 gap-3 ${
-            compact ? '' : 'lg:grid-cols-[minmax(0,1fr)_minmax(340px,460px)_minmax(0,1fr)] lg:items-center lg:gap-x-10'
-          }`}
+          className={`relative z-10 grid grid-cols-1 gap-3 ${compact ? '' : 'lg:grid-cols-[minmax(0,1fr)_minmax(340px,460px)_minmax(0,1fr)] lg:items-center lg:gap-x-10'
+            }`}
         >
           <FlowColumn title={language === 'en' ? 'Requires' : 'Voraussetzungen'}>
             {leftVisible.length === 0 && (
@@ -644,10 +642,9 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
         )}
 
         {fullPrerequisiteFlow.nodes.length > 0 && (
-          <PrerequisiteFlowBoard
+          <RequiresReactFlowBoard
             currentGoal={currentGoal}
             flow={fullPrerequisiteFlow}
-            compact={compact}
             getMastery={getMastery}
             masteredThreshold={masteredThreshold}
             onNavigate={onNavigate}
@@ -664,227 +661,6 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
         )}
       </div>
     </section>
-  )
-}
-
-interface PrerequisiteFlowBoardProps {
-  currentGoal: Goal
-  flow: FullPrerequisiteFlowData
-  compact: boolean
-  getMastery: (goalId: string) => number
-  masteredThreshold: number
-  onNavigate: (id: string) => void
-  labels: {
-    current: string
-    direct: string
-    inherited: string
-    transitive: string
-    met: string
-    unmet: string
-    fullFlowLevel: string
-  }
-}
-
-type PrerequisiteFlowConnector = {
-  id: string
-  d: string
-  relation: PrereqKind
-  active: boolean
-}
-
-const PrerequisiteFlowBoard: React.FC<PrerequisiteFlowBoardProps> = ({
-  currentGoal,
-  flow,
-  compact,
-  getMastery,
-  masteredThreshold,
-  onNavigate,
-  labels,
-}) => {
-  const containerRef = useRef<HTMLDivElement | null>(null)
-  const nodeRefs = useRef<Map<string, HTMLButtonElement>>(new Map())
-  const [connectors, setConnectors] = useState<PrerequisiteFlowConnector[]>([])
-  const [showConnectors, setShowConnectors] = useState(false)
-  const markerId = useId().replace(/:/g, '')
-
-  useEffect(() => {
-    const updateLayoutMode = () => {
-      setShowConnectors(!compact && window.matchMedia('(min-width: 1024px)').matches)
-    }
-
-    updateLayoutMode()
-    window.addEventListener('resize', updateLayoutMode)
-    return () => window.removeEventListener('resize', updateLayoutMode)
-  }, [compact])
-
-  useEffect(() => {
-    if (!showConnectors || flow.edges.length === 0) {
-      const raf = requestAnimationFrame(() => setConnectors([]))
-      return () => cancelAnimationFrame(raf)
-    }
-
-    const compute = () => {
-      const container = containerRef.current
-      if (!container) {
-        setConnectors([])
-        return
-      }
-
-      const containerRect = container.getBoundingClientRect()
-
-      const nextConnectors: PrerequisiteFlowConnector[] = []
-      flow.edges.forEach((edge) => {
-        const source = nodeRefs.current.get(edge.fromId)
-        const target = nodeRefs.current.get(edge.toId)
-        if (!source || !target) return
-
-        const sourceRect = source.getBoundingClientRect()
-        const targetRect = target.getBoundingClientRect()
-        const fromX = sourceRect.right - containerRect.left
-        const fromY = sourceRect.top - containerRect.top + sourceRect.height / 2
-        const toX = targetRect.left - containerRect.left
-        const toY = targetRect.top - containerRect.top + targetRect.height / 2
-        const curve = Math.max(42, Math.abs(toX - fromX) * 0.34)
-        const d = `M ${fromX} ${fromY} C ${fromX + curve} ${fromY}, ${toX - curve} ${toY}, ${toX} ${toY}`
-        nextConnectors.push({
-          id: edge.id,
-          d,
-          relation: edge.relation,
-          active: getMastery(edge.fromId) >= masteredThreshold,
-        })
-      })
-
-      setConnectors(nextConnectors)
-    }
-
-    const raf = requestAnimationFrame(compute)
-    const ro = new ResizeObserver(() => {
-      requestAnimationFrame(compute)
-    })
-
-    if (containerRef.current) ro.observe(containerRef.current)
-    nodeRefs.current.forEach((el) => ro.observe(el))
-    window.addEventListener('resize', compute)
-
-    return () => {
-      cancelAnimationFrame(raf)
-      ro.disconnect()
-      window.removeEventListener('resize', compute)
-    }
-  }, [showConnectors, flow.edges, flow.nodes, getMastery, masteredThreshold])
-
-  const relationLabel = (relation: PrerequisiteRelationToCurrent): string => {
-    if (relation === 'direct') return labels.direct
-    if (relation === 'inherited') return labels.inherited
-    return labels.transitive
-  }
-
-  return (
-    <div ref={containerRef} className="relative overflow-x-auto pb-1">
-      {showConnectors && connectors.length > 0 && (
-        <svg className="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-visible" aria-hidden="true">
-          <defs>
-            <marker
-              id={`${markerId}-direct`}
-              markerWidth="7"
-              markerHeight="7"
-              refX="6"
-              refY="3.5"
-              orient="auto"
-              markerUnits="strokeWidth"
-            >
-              <path d="M0,0 L7,3.5 L0,7 z" fill={CONNECTOR_COLORS.direct} />
-            </marker>
-            <marker
-              id={`${markerId}-inherited`}
-              markerWidth="7"
-              markerHeight="7"
-              refX="6"
-              refY="3.5"
-              orient="auto"
-              markerUnits="strokeWidth"
-            >
-              <path d="M0,0 L7,3.5 L0,7 z" fill={CONNECTOR_COLORS.inherited} />
-            </marker>
-          </defs>
-          {connectors.map((connector) => {
-            const color = connector.relation === 'direct' ? CONNECTOR_COLORS.direct : CONNECTOR_COLORS.inherited
-            const opacity = connector.active ? 0.9 : 0.72
-            return (
-              <path
-                key={connector.id}
-                d={connector.d}
-                fill="none"
-                stroke={color}
-                strokeWidth={connector.active ? 2.05 : 1.75}
-                strokeDasharray={connector.relation === 'inherited' ? '5 4' : undefined}
-                opacity={opacity}
-                markerEnd={`url(#${markerId}-${connector.relation})`}
-              />
-            )
-          })}
-        </svg>
-      )}
-
-      <div className="relative z-10 flex min-w-[780px] items-start gap-3">
-        {flow.orderedLevels.map((level) => {
-          const nodesInLevel = flow.nodesByLevel.get(level) ?? []
-          return (
-            <div key={`level-${level}`} className="w-64 shrink-0 space-y-2 rounded-xl border border-border-color bg-chat-bg p-2.5">
-              <h5 className="text-[10px] font-semibold uppercase tracking-wide text-text-secondary">
-                {labels.fullFlowLevel.replace('{{level}}', String(level))}
-              </h5>
-              <div className="space-y-1.5">
-                {nodesInLevel.map((node) => {
-                  const mastered = getMastery(node.goal.id) >= masteredThreshold
-                  return (
-                    <FlowNodeButton
-                      key={node.goal.id}
-                      goal={node.goal}
-                      side="left"
-                      suffix={relationLabel(node.relationToCurrent)}
-                      status={mastered ? labels.met : labels.unmet}
-                      statusClass={mastered ? 'text-emerald-600 dark:text-emerald-300' : 'text-amber-600 dark:text-amber-300'}
-                      onClick={onNavigate}
-                      registerRef={(el) => {
-                        if (el) {
-                          nodeRefs.current.set(node.goal.id, el)
-                        } else {
-                          nodeRefs.current.delete(node.goal.id)
-                        }
-                      }}
-                    />
-                  )
-                })}
-              </div>
-            </div>
-          )
-        })}
-
-        <div className="w-[340px] shrink-0 rounded-2xl border border-sky-400/60 bg-sky-500/10 p-3 shadow-sm">
-          <div className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-sky-600 dark:text-sky-300">
-            {labels.current}
-          </div>
-          <button
-            type="button"
-            ref={(el) => {
-              if (el) {
-                nodeRefs.current.set(currentGoal.id, el)
-              } else {
-                nodeRefs.current.delete(currentGoal.id)
-              }
-            }}
-            onClick={() => onNavigate(currentGoal.id)}
-            className="w-full text-left hover:text-sky-500"
-          >
-            <InlineMathText text={currentGoal.title} className="text-sm font-semibold text-text-primary" />
-            {currentGoal.description && (
-              <InlineMathText text={currentGoal.description} className="mt-1 line-clamp-4 text-[11px] text-text-secondary" />
-            )}
-          </button>
-        </div>
-      </div>
-    </div>
   )
 }
 
