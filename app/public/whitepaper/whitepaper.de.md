@@ -129,6 +129,10 @@ Learning Velocity zeigt, wie viele **atomare Ziele** pro Woche neu als gemeister
 
 Nicht jedes Lernziel lernt man gleich: Konzepte brauchen Verständnis und Anwendung, Fakten brauchen Wiederholung – und viele Skills brauchen **aktives Tun** (z.B. Programmieren, Rechnen, Schreiben), und selbstständig ein Problem bearbeiten haben wir in den Prüfungen.
 
+Typischer Causalflow beim Lernen:
+
+**Verstehen, wozu es relevant ist** -> **geführtes Kennenlernen und Verstehen aufbauen** -> **parallel memorisieren** -> **eigenständig Lösungen erarbeiten**.
+
 Während beim Verstehen oder auch bei der Bewertung und Erklären von Prüfungen die Interaktion mit einem Tutor hilfreich sind, funktioniert reines Auswendiglernen (Vokabeln, Formeln, Fakten) per modernem Karteikasten a la **Spaced Repetition** effizienter.
 
 SkillPilot integriert dafür eine **Flashcard Drill Engine** (SRS):

@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (EN)
 
-**Version:** 1.0.15
+**Version:** 1.0.17
 **Date:** February 2026
 **Project:** SkillPilot
 
@@ -126,6 +126,10 @@ Learning velocity shows how many **atomic goals** are newly mastered per week - 
 ### 3.3 The Hybrid Learning Loop: Understanding + Memorizing + Practice
 
 Not every learning goal is learned the same way: concepts need understanding and application, facts need repetition - and many skills need **active doing** (e.g., programming, calculating, writing).
+
+Typical causal flow of learning:
+
+**Understand why this is relevant for me** -> **build understanding through guided familiarization** -> **memorize in parallel** -> **independently develop solutions**.
 
 The skill graph models understanding and dependencies. For pure memorization (vocabulary, formulas, facts), **spaced repetition** is more efficient.
 

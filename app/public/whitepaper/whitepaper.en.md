@@ -127,6 +127,10 @@ Learning velocity shows how many **atomic goals** are newly mastered per week - 
 
 Not every learning goal is learned the same way: concepts need understanding and application, facts need repetition - and many skills need **active doing** (e.g., programming, calculating, writing).
 
+Typical causal flow of learning:
+
+**Understand why this is relevant for me** -> **build understanding through guided familiarization** -> **memorize in parallel** -> **independently develop solutions**.
+
 The skill graph models understanding and dependencies. For pure memorization (vocabulary, formulas, facts), **spaced repetition** is more efficient.
 
 <img src="memorize.en.png" alt="Hybrid learning loop" width="400" />
