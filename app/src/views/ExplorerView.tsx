@@ -110,16 +110,14 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
                 aria-checked={showRequiresFlow}
                 aria-label={t.requiresFlowToggleLabel}
                 onClick={() => setShowRequiresFlow((value) => !value)}
-                className={`relative inline-flex h-5 w-10 items-center rounded-full border transition-colors ${
-                  showRequiresFlow
+                className={`relative inline-flex h-5 w-10 items-center rounded-full border transition-colors ${showRequiresFlow
                     ? 'border-sky-500 bg-sky-500/80'
                     : 'border-border-color bg-input-bg'
-                }`}
+                  }`}
               >
                 <span
-                  className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform ${
-                    showRequiresFlow ? 'translate-x-5' : 'translate-x-0.5'
-                  }`}
+                  className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform ${showRequiresFlow ? 'translate-x-5' : 'translate-x-0.5'
+                    }`}
                 />
               </button>
               <span className="text-[10px] font-semibold uppercase tracking-wide text-text-secondary">
@@ -192,6 +190,7 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
             getMastery={getMastery}
             onNavigate={onNavigate}
             goalIndexAll={goalIndexAll}
+            showMastery={showLearnerTools}
           />
         </main>
       ) : (

@@ -55,6 +55,7 @@ interface RequiresFlowMapProps {
   onNavigate: (id: string) => void
   masteredThreshold?: number
   compact?: boolean
+  showMastery?: boolean
 }
 
 const MAX_LEFT_NODES = 7
@@ -105,6 +106,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
   onNavigate,
   masteredThreshold = 0.8,
   compact = false,
+  showMastery = true,
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const centerRef = useRef<HTMLDivElement | null>(null)
@@ -113,7 +115,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
   const markerId = useId().replace(/:/g, '')
   const [connectors, setConnectors] = useState<Connector[]>([])
   const [showConnectors, setShowConnectors] = useState(false)
-  const [nodeFilter, setNodeFilter] = useState<'all' | 'atomic'>('all')
+  const [nodeFilter, setNodeFilter] = useState<'all' | 'atomic'>('atomic')
   const atomicOnly = nodeFilter === 'atomic'
 
   const leftNodes = useMemo<FlowNode[]>(() => {
@@ -439,8 +441,8 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
                 aria-pressed={nodeFilter === 'all'}
                 onClick={() => setNodeFilter('all')}
                 className={`rounded-full px-2 py-1 text-[10px] uppercase tracking-wide transition-colors ${nodeFilter === 'all'
-                    ? 'bg-sky-600 text-white'
-                    : 'text-text-secondary hover:text-text-primary'
+                  ? 'bg-sky-600 text-white'
+                  : 'text-text-secondary hover:text-text-primary'
                   }`}
               >
                 {labels.filterAll}
@@ -450,8 +452,8 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
                 aria-pressed={nodeFilter === 'atomic'}
                 onClick={() => setNodeFilter('atomic')}
                 className={`rounded-full px-2 py-1 text-[10px] uppercase tracking-wide transition-colors ${nodeFilter === 'atomic'
-                    ? 'bg-sky-600 text-white'
-                    : 'text-text-secondary hover:text-text-primary'
+                  ? 'bg-sky-600 text-white'
+                  : 'text-text-secondary hover:text-text-primary'
                   }`}
               >
                 {labels.filterAtomic}
@@ -554,6 +556,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
                   status={met ? labels.met : labels.unmet}
                   statusClass={met ? 'text-emerald-600 dark:text-emerald-300' : 'text-amber-600 dark:text-amber-300'}
                   onClick={onNavigate}
+                  showMastery={showMastery}
                   registerRef={(el) => {
                     if (el) {
                       leftRefs.current.set(goal.id, el)
@@ -598,6 +601,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
                   status={unlocked ? labels.met : labels.unmet}
                   statusClass={unlocked ? 'text-emerald-600 dark:text-emerald-300' : 'text-slate-500 dark:text-slate-300'}
                   onClick={onNavigate}
+                  showMastery={showMastery}
                   registerRef={(el) => {
                     if (el) {
                       rightRefs.current.set(goal.id, el)
@@ -648,6 +652,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
             getMastery={getMastery}
             masteredThreshold={masteredThreshold}
             onNavigate={onNavigate}
+            showMastery={showMastery}
             labels={{
               current: labels.current,
               direct: labels.direct,
@@ -680,6 +685,7 @@ interface FlowNodeButtonProps {
   status: string
   statusClass: string
   onClick: (id: string) => void
+  showMastery: boolean
   registerRef: (el: HTMLButtonElement | null) => void
 }
 
@@ -690,6 +696,7 @@ const FlowNodeButton: React.FC<FlowNodeButtonProps> = ({
   status,
   statusClass,
   onClick,
+  showMastery,
   registerRef,
 }) => {
   return (
@@ -702,7 +709,7 @@ const FlowNodeButton: React.FC<FlowNodeButtonProps> = ({
       <InlineMathText text={goal.title} className="block text-xs font-semibold text-text-primary" />
       <div className={`mt-1 flex items-center gap-2 text-[10px] text-text-secondary ${side === 'right' ? 'lg:justify-end' : ''}`}>
         <span className="rounded-full bg-sidebar-bg px-1.5 py-0.5">{suffix}</span>
-        <span className={statusClass}>{status}</span>
+        {showMastery && <span className={statusClass}>{status}</span>}
       </div>
     </button>
   )

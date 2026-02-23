@@ -187,6 +187,7 @@ export default defineConfig(({ mode }) => {
           cleanupOutdatedCaches: true,
           clientsClaim: true,
           skipWaiting: true,
+          maximumFileSizeToCacheInBytes: 5000000,
           // Exclude patterns from service worker navigation caching
           // This ensures OAuth redirect to /curricula makes a real network request
           navigateFallbackDenylist: [

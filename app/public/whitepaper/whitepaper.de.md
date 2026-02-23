@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (DE)
 
-**Version:** 1.0.16
+**Version:** 1.0.17
 **Datum:** Februar 2026
 **Projekt:** SkillPilot
 
