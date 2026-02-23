@@ -33,6 +33,7 @@ interface ExplorerViewProps {
   onFilterChange: (value: string) => void
   onLogout?: () => void
   children?: React.ReactNode
+  goalIndexAll: Map<string, Goal>
 }
 
 export const ExplorerView: React.FC<ExplorerViewProps> = ({
@@ -50,6 +51,7 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
   onFilterChange,
   onLogout,
   children,
+  goalIndexAll,
 }) => {
   console.log('[ExplorerView] Render. currentGoal:', currentGoal?.id)
   const hasFilters = availableFilters.length > 0
@@ -189,6 +191,7 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
             forwardInherited={neighbors.inheritedForward}
             getMastery={getMastery}
             onNavigate={onNavigate}
+            goalIndexAll={goalIndexAll}
           />
         </main>
       ) : (

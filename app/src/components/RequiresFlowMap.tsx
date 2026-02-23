@@ -9,6 +9,28 @@ type FlowNode = {
   kind: PrereqKind
 }
 
+type PrerequisiteRelationToCurrent = 'direct' | 'inherited' | 'transitive'
+
+type FullPrerequisiteNode = {
+  goal: Goal
+  level: number
+  relationToCurrent: PrerequisiteRelationToCurrent
+}
+
+type FullPrerequisiteEdge = {
+  id: string
+  fromId: string
+  toId: string
+  relation: PrereqKind
+}
+
+type FullPrerequisiteFlowData = {
+  nodes: FullPrerequisiteNode[]
+  nodesByLevel: Map<number, FullPrerequisiteNode[]>
+  orderedLevels: number[]
+  edges: FullPrerequisiteEdge[]
+}
+
 type Connector = {
   id: string
   fromX: number
@@ -27,6 +49,7 @@ interface RequiresFlowMapProps {
   inheritedRequires: Goal[]
   forwardDirect: Goal[]
   forwardInherited: Goal[]
+  goalIndexAll: Map<string, Goal>
   getMastery: (goalId: string) => number
   onNavigate: (id: string) => void
   masteredThreshold?: number
@@ -48,6 +71,27 @@ const isAtomicGoal = (goal: Goal): boolean => {
   return (goal.contains?.length ?? 0) === 0
 }
 
+const normalizeGoalRef = (ref: string): string => {
+  const idx = ref.indexOf(':')
+  if (idx >= 0 && idx < ref.length - 1) {
+    return ref.slice(idx + 1)
+  }
+  return ref
+}
+
+const refsMatch = (a: string, b: string): boolean => normalizeGoalRef(a) === normalizeGoalRef(b)
+
+const resolveGoalRef = (ref: string, goalIndexAll: Map<string, Goal>): Goal | undefined => {
+  return goalIndexAll.get(ref) ?? goalIndexAll.get(normalizeGoalRef(ref))
+}
+
+const getEffectiveRequiresRefs = (goal: Goal): string[] => {
+  if (goal.effectiveRequires && goal.effectiveRequires.length > 0) {
+    return goal.effectiveRequires
+  }
+  return goal.requires
+}
+
 export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
   language,
   currentGoal,
@@ -55,6 +99,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
   inheritedRequires,
   forwardDirect,
   forwardInherited,
+  goalIndexAll,
   getMastery,
   onNavigate,
   masteredThreshold = 0.8,
@@ -112,6 +157,122 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
   const rightVisible = rightNodes.slice(0, MAX_RIGHT_NODES)
   const leftOverflow = Math.max(0, leftNodes.length - leftVisible.length)
   const rightOverflow = Math.max(0, rightNodes.length - rightVisible.length)
+
+  const fullPrerequisiteFlow = useMemo<FullPrerequisiteFlowData>(() => {
+    if (goalIndexAll.size === 0) {
+      return { nodes: [], nodesByLevel: new Map(), orderedLevels: [], edges: [] }
+    }
+
+    const allNodes = new Map<string, Goal>()
+    const allEdges = new Map<string, FullPrerequisiteEdge>()
+    const outgoing = new Map<string, Set<string>>()
+
+    const walkPrerequisites = (goal: Goal, stack: Set<string>) => {
+      if (stack.has(goal.id)) return
+      stack.add(goal.id)
+
+      getEffectiveRequiresRefs(goal).forEach((ref) => {
+        const prereqGoal = resolveGoalRef(ref, goalIndexAll)
+        if (!prereqGoal || prereqGoal.id === goal.id) return
+
+        allNodes.set(prereqGoal.id, prereqGoal)
+
+        const relation: PrereqKind = goal.requires.some((directRef) => refsMatch(directRef, prereqGoal.id))
+          ? 'direct'
+          : 'inherited'
+        const edgeId = `${prereqGoal.id}->${goal.id}`
+        allEdges.set(edgeId, { id: edgeId, fromId: prereqGoal.id, toId: goal.id, relation })
+
+        const targets = outgoing.get(prereqGoal.id) ?? new Set<string>()
+        targets.add(goal.id)
+        outgoing.set(prereqGoal.id, targets)
+
+        walkPrerequisites(prereqGoal, stack)
+      })
+
+      stack.delete(goal.id)
+    }
+
+    walkPrerequisites(currentGoal, new Set<string>())
+
+    const currentDirectIds = new Set(currentGoal.requires.map((ref) => normalizeGoalRef(ref)))
+    const currentEffectiveIds = new Set(getEffectiveRequiresRefs(currentGoal).map((ref) => normalizeGoalRef(ref)))
+
+    const levelMemo = new Map<string, number>()
+    const levelStack = new Set<string>()
+
+    const computeLevel = (goalId: string): number => {
+      if (goalId === currentGoal.id) return 0
+      const cached = levelMemo.get(goalId)
+      if (cached !== undefined) return cached
+      if (levelStack.has(goalId)) return 1
+
+      levelStack.add(goalId)
+      const targets = outgoing.get(goalId)
+      let level = 1
+      if (targets && targets.size > 0) {
+        targets.forEach((targetId) => {
+          const candidate = 1 + computeLevel(targetId)
+          if (candidate > level) level = candidate
+        })
+      }
+      levelStack.delete(goalId)
+      levelMemo.set(goalId, level)
+      return level
+    }
+
+    const nodes = Array.from(allNodes.values())
+      .filter((goal) => !atomicOnly || isAtomicGoal(goal))
+      .map((goal) => {
+        const normalizedId = normalizeGoalRef(goal.id)
+        let relationToCurrent: PrerequisiteRelationToCurrent = 'transitive'
+        if (currentDirectIds.has(normalizedId)) {
+          relationToCurrent = 'direct'
+        } else if (currentEffectiveIds.has(normalizedId)) {
+          relationToCurrent = 'inherited'
+        }
+
+        return {
+          goal,
+          level: computeLevel(goal.id),
+          relationToCurrent,
+        }
+      })
+      .sort((a, b) => {
+        if (a.level !== b.level) return b.level - a.level
+        return a.goal.title.localeCompare(b.goal.title)
+      })
+
+    const visibleIds = new Set(nodes.map((node) => node.goal.id))
+    const edges = Array.from(allEdges.values())
+      .filter((edge) => visibleIds.has(edge.fromId) && (edge.toId === currentGoal.id || visibleIds.has(edge.toId)))
+      .sort((a, b) => {
+        const byFrom = a.fromId.localeCompare(b.fromId)
+        if (byFrom !== 0) return byFrom
+        return a.toId.localeCompare(b.toId)
+      })
+
+    const nodesByLevel = new Map<number, FullPrerequisiteNode[]>()
+    nodes.forEach((node) => {
+      const bucket = nodesByLevel.get(node.level) ?? []
+      bucket.push(node)
+      nodesByLevel.set(node.level, bucket)
+    })
+    nodesByLevel.forEach((bucket) => bucket.sort((a, b) => a.goal.title.localeCompare(b.goal.title)))
+
+    return {
+      nodes,
+      nodesByLevel,
+      orderedLevels: Array.from(nodesByLevel.keys()).sort((a, b) => b - a),
+      edges,
+    }
+  }, [goalIndexAll, currentGoal, atomicOnly])
+
+  const openPrerequisiteCount = useMemo(() => (
+    fullPrerequisiteFlow.nodes.reduce((count, node) => (
+      getMastery(node.goal.id) >= masteredThreshold ? count : count + 1
+    ), 0)
+  ), [fullPrerequisiteFlow.nodes, getMastery, masteredThreshold])
 
   useEffect(() => {
     const updateLayoutMode = () => {
@@ -226,6 +387,14 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
       nodeFilterLabel: 'node filter',
       filterAll: 'all',
       filterAtomic: 'atomic',
+      transitive: 'transitive',
+      fullFlowTitle: 'Full Prerequisite Flow',
+      fullFlowSubtitle: 'All direct, inherited, and transitive prerequisites of the current goal as one flow.',
+      fullFlowSummary: '{{nodes}} prerequisites · {{edges}} links',
+      fullFlowSummaryOpen: '{{count}} prerequisites still open',
+      fullFlowSummaryDone: 'all prerequisites are met',
+      fullFlowNoPrereqs: 'No prerequisites in this flow',
+      fullFlowLevel: 'Level {{level}}',
     }
     : {
       title: 'Requires-Flow',
@@ -243,6 +412,14 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
       nodeFilterLabel: 'Zielfilter',
       filterAll: 'alle',
       filterAtomic: 'nur atomare',
+      transitive: 'transitiv',
+      fullFlowTitle: 'Gesamtflow der Vorbedingungen',
+      fullFlowSubtitle: 'Alle direkten, vererbten und transitiven Vorbedingungen des aktuellen Ziels als ein Flow.',
+      fullFlowSummary: '{{nodes}} Vorbedingungen · {{edges}} Verknüpfungen',
+      fullFlowSummaryOpen: '{{count}} Vorbedingungen noch offen',
+      fullFlowSummaryDone: 'alle Vorbedingungen erfüllt',
+      fullFlowNoPrereqs: 'Keine Vorbedingungen in diesem Flow',
+      fullFlowLevel: 'Stufe {{level}}',
     }
 
   return (
@@ -439,7 +616,275 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
           </FlowColumn>
         </div>
       </div>
+
+      <div className="mt-4 rounded-xl border border-border-color bg-input-bg/50 p-3">
+        <div className="mb-2">
+          <h4 className="text-[11px] font-semibold uppercase tracking-wide text-text-secondary">
+            {labels.fullFlowTitle}
+          </h4>
+          <p className="mt-0.5 text-[11px] text-text-secondary">{labels.fullFlowSubtitle}</p>
+          {fullPrerequisiteFlow.nodes.length > 0 && (
+            <>
+              <p className="mt-1 text-[10px] text-text-secondary">
+                {labels.fullFlowSummary
+                  .replace('{{nodes}}', String(fullPrerequisiteFlow.nodes.length))
+                  .replace('{{edges}}', String(fullPrerequisiteFlow.edges.length))}
+              </p>
+              <p className="text-[10px] text-text-secondary">
+                {openPrerequisiteCount > 0
+                  ? labels.fullFlowSummaryOpen.replace('{{count}}', String(openPrerequisiteCount))
+                  : labels.fullFlowSummaryDone}
+              </p>
+            </>
+          )}
+        </div>
+
+        {fullPrerequisiteFlow.nodes.length === 0 && (
+          <EmptyFlowLabel label={labels.fullFlowNoPrereqs} />
+        )}
+
+        {fullPrerequisiteFlow.nodes.length > 0 && (
+          <PrerequisiteFlowBoard
+            currentGoal={currentGoal}
+            flow={fullPrerequisiteFlow}
+            compact={compact}
+            getMastery={getMastery}
+            masteredThreshold={masteredThreshold}
+            onNavigate={onNavigate}
+            labels={{
+              current: labels.current,
+              direct: labels.direct,
+              inherited: labels.inherited,
+              transitive: labels.transitive,
+              met: labels.met,
+              unmet: labels.unmet,
+              fullFlowLevel: labels.fullFlowLevel,
+            }}
+          />
+        )}
+      </div>
     </section>
+  )
+}
+
+interface PrerequisiteFlowBoardProps {
+  currentGoal: Goal
+  flow: FullPrerequisiteFlowData
+  compact: boolean
+  getMastery: (goalId: string) => number
+  masteredThreshold: number
+  onNavigate: (id: string) => void
+  labels: {
+    current: string
+    direct: string
+    inherited: string
+    transitive: string
+    met: string
+    unmet: string
+    fullFlowLevel: string
+  }
+}
+
+type PrerequisiteFlowConnector = {
+  id: string
+  d: string
+  relation: PrereqKind
+  active: boolean
+}
+
+const PrerequisiteFlowBoard: React.FC<PrerequisiteFlowBoardProps> = ({
+  currentGoal,
+  flow,
+  compact,
+  getMastery,
+  masteredThreshold,
+  onNavigate,
+  labels,
+}) => {
+  const containerRef = useRef<HTMLDivElement | null>(null)
+  const nodeRefs = useRef<Map<string, HTMLButtonElement>>(new Map())
+  const [connectors, setConnectors] = useState<PrerequisiteFlowConnector[]>([])
+  const [showConnectors, setShowConnectors] = useState(false)
+  const markerId = useId().replace(/:/g, '')
+
+  useEffect(() => {
+    const updateLayoutMode = () => {
+      setShowConnectors(!compact && window.matchMedia('(min-width: 1024px)').matches)
+    }
+
+    updateLayoutMode()
+    window.addEventListener('resize', updateLayoutMode)
+    return () => window.removeEventListener('resize', updateLayoutMode)
+  }, [compact])
+
+  useEffect(() => {
+    if (!showConnectors || flow.edges.length === 0) {
+      const raf = requestAnimationFrame(() => setConnectors([]))
+      return () => cancelAnimationFrame(raf)
+    }
+
+    const compute = () => {
+      const container = containerRef.current
+      if (!container) {
+        setConnectors([])
+        return
+      }
+
+      const containerRect = container.getBoundingClientRect()
+
+      const nextConnectors: PrerequisiteFlowConnector[] = []
+      flow.edges.forEach((edge) => {
+        const source = nodeRefs.current.get(edge.fromId)
+        const target = nodeRefs.current.get(edge.toId)
+        if (!source || !target) return
+
+        const sourceRect = source.getBoundingClientRect()
+        const targetRect = target.getBoundingClientRect()
+        const fromX = sourceRect.right - containerRect.left
+        const fromY = sourceRect.top - containerRect.top + sourceRect.height / 2
+        const toX = targetRect.left - containerRect.left
+        const toY = targetRect.top - containerRect.top + targetRect.height / 2
+        const curve = Math.max(42, Math.abs(toX - fromX) * 0.34)
+        const d = `M ${fromX} ${fromY} C ${fromX + curve} ${fromY}, ${toX - curve} ${toY}, ${toX} ${toY}`
+        nextConnectors.push({
+          id: edge.id,
+          d,
+          relation: edge.relation,
+          active: getMastery(edge.fromId) >= masteredThreshold,
+        })
+      })
+
+      setConnectors(nextConnectors)
+    }
+
+    const raf = requestAnimationFrame(compute)
+    const ro = new ResizeObserver(() => {
+      requestAnimationFrame(compute)
+    })
+
+    if (containerRef.current) ro.observe(containerRef.current)
+    nodeRefs.current.forEach((el) => ro.observe(el))
+    window.addEventListener('resize', compute)
+
+    return () => {
+      cancelAnimationFrame(raf)
+      ro.disconnect()
+      window.removeEventListener('resize', compute)
+    }
+  }, [showConnectors, flow.edges, flow.nodes, getMastery, masteredThreshold])
+
+  const relationLabel = (relation: PrerequisiteRelationToCurrent): string => {
+    if (relation === 'direct') return labels.direct
+    if (relation === 'inherited') return labels.inherited
+    return labels.transitive
+  }
+
+  return (
+    <div ref={containerRef} className="relative overflow-x-auto pb-1">
+      {showConnectors && connectors.length > 0 && (
+        <svg className="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-visible" aria-hidden="true">
+          <defs>
+            <marker
+              id={`${markerId}-direct`}
+              markerWidth="7"
+              markerHeight="7"
+              refX="6"
+              refY="3.5"
+              orient="auto"
+              markerUnits="strokeWidth"
+            >
+              <path d="M0,0 L7,3.5 L0,7 z" fill={CONNECTOR_COLORS.direct} />
+            </marker>
+            <marker
+              id={`${markerId}-inherited`}
+              markerWidth="7"
+              markerHeight="7"
+              refX="6"
+              refY="3.5"
+              orient="auto"
+              markerUnits="strokeWidth"
+            >
+              <path d="M0,0 L7,3.5 L0,7 z" fill={CONNECTOR_COLORS.inherited} />
+            </marker>
+          </defs>
+          {connectors.map((connector) => {
+            const color = connector.relation === 'direct' ? CONNECTOR_COLORS.direct : CONNECTOR_COLORS.inherited
+            const opacity = connector.active ? 0.9 : 0.72
+            return (
+              <path
+                key={connector.id}
+                d={connector.d}
+                fill="none"
+                stroke={color}
+                strokeWidth={connector.active ? 2.05 : 1.75}
+                strokeDasharray={connector.relation === 'inherited' ? '5 4' : undefined}
+                opacity={opacity}
+                markerEnd={`url(#${markerId}-${connector.relation})`}
+              />
+            )
+          })}
+        </svg>
+      )}
+
+      <div className="relative z-10 flex min-w-[780px] items-start gap-3">
+        {flow.orderedLevels.map((level) => {
+          const nodesInLevel = flow.nodesByLevel.get(level) ?? []
+          return (
+            <div key={`level-${level}`} className="w-64 shrink-0 space-y-2 rounded-xl border border-border-color bg-chat-bg p-2.5">
+              <h5 className="text-[10px] font-semibold uppercase tracking-wide text-text-secondary">
+                {labels.fullFlowLevel.replace('{{level}}', String(level))}
+              </h5>
+              <div className="space-y-1.5">
+                {nodesInLevel.map((node) => {
+                  const mastered = getMastery(node.goal.id) >= masteredThreshold
+                  return (
+                    <FlowNodeButton
+                      key={node.goal.id}
+                      goal={node.goal}
+                      side="left"
+                      suffix={relationLabel(node.relationToCurrent)}
+                      status={mastered ? labels.met : labels.unmet}
+                      statusClass={mastered ? 'text-emerald-600 dark:text-emerald-300' : 'text-amber-600 dark:text-amber-300'}
+                      onClick={onNavigate}
+                      registerRef={(el) => {
+                        if (el) {
+                          nodeRefs.current.set(node.goal.id, el)
+                        } else {
+                          nodeRefs.current.delete(node.goal.id)
+                        }
+                      }}
+                    />
+                  )
+                })}
+              </div>
+            </div>
+          )
+        })}
+
+        <div className="w-[340px] shrink-0 rounded-2xl border border-sky-400/60 bg-sky-500/10 p-3 shadow-sm">
+          <div className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-sky-600 dark:text-sky-300">
+            {labels.current}
+          </div>
+          <button
+            type="button"
+            ref={(el) => {
+              if (el) {
+                nodeRefs.current.set(currentGoal.id, el)
+              } else {
+                nodeRefs.current.delete(currentGoal.id)
+              }
+            }}
+            onClick={() => onNavigate(currentGoal.id)}
+            className="w-full text-left hover:text-sky-500"
+          >
+            <InlineMathText text={currentGoal.title} className="text-sm font-semibold text-text-primary" />
+            {currentGoal.description && (
+              <InlineMathText text={currentGoal.description} className="mt-1 line-clamp-4 text-[11px] text-text-secondary" />
+            )}
+          </button>
+        </div>
+      </div>
+    </div>
   )
 }
 

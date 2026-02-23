@@ -489,6 +489,7 @@ const App: React.FC = () => {
             onMasteryChange={core.handleMasteryChange}
             showLearnerTools={core.showLearnerTools}
             onLogout={handleLogout}
+            goalIndexAll={core.goalIndexAll}
           />
         }
       />
