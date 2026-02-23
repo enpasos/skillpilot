@@ -133,7 +133,7 @@ Typischer Causalflow beim Lernen:
 
 **Verstehen, wozu es relevant ist** -> **geführtes Kennenlernen und Verstehen aufbauen** -> **parallel memorisieren** -> **eigenständig Lösungen erarbeiten**.
 
-[Requires-Flow (PDF, DE)](requires-flow.de.pdf)
+<img src="requires-flow.de-1.png" alt="Requires-Flow (DE)" width="420" />
 
 Bemerkenswert: Diese Darstellung lässt sich in der SkillPilot GUI automatisch generieren und als PDF exportieren.
 

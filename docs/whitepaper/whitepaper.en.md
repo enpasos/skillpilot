@@ -131,7 +131,7 @@ Typical causal flow of learning:
 
 **Understand why this is relevant for me** -> **build understanding through guided familiarization** -> **memorize in parallel** -> **independently develop solutions**.
 
-[Requires Flow (PDF, EN)](requires-flow.en.pdf)
+<img src="requires-flow.en-1.png" alt="Requires Flow (EN)" width="420" />
 
 Notably, this visualization can be generated automatically in the SkillPilot GUI and exported directly as PDF.
 
