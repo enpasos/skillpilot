@@ -14,6 +14,7 @@ import { StatsView } from './views/StatsView'
 import { SuccessView } from './views/SuccessView'
 import { Abi26MatheStartView } from './views/Abi26MatheStartView'
 import { FlashcardEditorView } from './views/FlashcardEditorView'
+import { GraphEditorView } from './views/GraphEditorView'
 
 import { SessionSetup } from './components/SessionSetup'
 import { useAppCore } from './hooks/useAppCore'
@@ -34,6 +35,7 @@ const PUBLIC_PATHS = new Set([
   '/successes',
   '/start',
   '/flashcard-editor',
+  '/graph-editor',
 ])
 const GOAL_VIEWS = new Set(['learner', 'trainer', 'explorer'])
 const MAX_DESCRIPTION_LENGTH = 160
@@ -194,6 +196,11 @@ const App: React.FC = () => {
         description = language === 'en'
           ? 'Local flashcard deck editor with live front/back preview.'
           : 'Lokaler Flashcard-Deck-Editor mit Live-Vorschau für Vorder- und Rückseite.'
+      } else if (path === '/graph-editor') {
+        title = `Graph Editor | ${baseTitle}`
+        description = language === 'en'
+          ? 'Local graph editor to refactor requires relations to atomic goals.'
+          : 'Lokaler Graph-Editor zum Umbau von requires-Relationen auf atomare Ziele.'
       } else if (path === '/start' || path.startsWith('/start/')) {
         title = `Abi 2026 Mathe Hessen | ${baseTitle}`
         description = language === 'en'
@@ -301,6 +308,7 @@ const App: React.FC = () => {
         <Route path="/successes" element={<SuccessView />} />
         <Route path="/quickstart/:lang?" element={<StoryView />} />
         <Route path="/flashcard-editor" element={<FlashcardEditorView />} />
+        <Route path="/graph-editor" element={<GraphEditorView />} />
         <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
         <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
       </Routes>

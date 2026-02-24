@@ -53,6 +53,7 @@ const PHYSICS_LANDSCAPE_ID = '24f2ca0f-b94a-444e-bb70-677cb6f85c02'
 const PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID = 'b36bb565-f304-47c4-b44e-012dd9ff7a1a'
 const PHYSICS_ENERGY_CLUSTER_GOAL_ID = 'fa204429-674f-466d-b049-a6de19a50579'
 const PHYSICS_NEWTON_INERTIAL_CLUSTER_GOAL_ID = 'ff07337f-24bd-4148-8fa7-7a750d7ae5f8'
+const PHYSICS_NEWTON_SECOND_LAW_GOAL_ID = 'be89ee6a-d11d-4970-8c39-bb0c84edac56'
 const PHYSICS_INERTIAL_SYSTEMS_GOAL_ID = '2808ec13-5b8b-4fb9-9b1a-7792146995b7'
 const PHYSICS_POTENTIAL_ENERGY_AND_POTENTIAL_GOAL_ID = '99bbf33e-74f5-4f33-98e2-e4e6661d8648'
 
@@ -624,11 +625,15 @@ function validateLandscape(landscape: ParsedLandscape) {
         `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must not require ${PHYSICS_ENERGY_CLUSTER_GOAL_ID} (Energie)`,
       )
     }
-    if (!refsIncludeGoal(requires, PHYSICS_NEWTON_INERTIAL_CLUSTER_GOAL_ID)) {
+    const hasNewtonPrereq =
+      refsIncludeGoal(requires, PHYSICS_NEWTON_INERTIAL_CLUSTER_GOAL_ID)
+      || refsIncludeGoal(requires, PHYSICS_NEWTON_SECOND_LAW_GOAL_ID)
+
+    if (!hasNewtonPrereq) {
       addIssue(
         'error',
         landscape.landscapeId,
-        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require ${PHYSICS_NEWTON_INERTIAL_CLUSTER_GOAL_ID} (Newtons Axiome und Inertialsysteme)`,
+        `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require either ${PHYSICS_NEWTON_INERTIAL_CLUSTER_GOAL_ID} (Newtons Axiome und Inertialsysteme) or ${PHYSICS_NEWTON_SECOND_LAW_GOAL_ID} (Newtons 2. Axiom)`,
       )
     }
     if (!refsIncludeGoal(requires, PHYSICS_INERTIAL_SYSTEMS_GOAL_ID)) {

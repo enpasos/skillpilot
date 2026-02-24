@@ -7,6 +7,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 import tailwindcss from '@tailwindcss/vite'
 
 const DECK_FILE_PATTERN = /_deck([._][a-z]{2})?\.json$/i
+const LANDSCAPE_JSON_FILE_PATTERN = /\.json$/i
 const APP_ROOT = process.cwd()
 const REPO_ROOT = path.resolve(APP_ROOT, '..')
 const CURRICULA_ROOT = path.resolve(REPO_ROOT, 'curricula')
@@ -38,6 +39,21 @@ const resolveDeckAbsolutePath = (candidatePath: string): string | null => {
   return absolutePath
 }
 
+const resolveLandscapeAbsolutePath = (candidatePath: string): string | null => {
+  const sanitizedPath = candidatePath.trim().replace(/\\/g, '/').replace(/^\/+/, '')
+  if (!sanitizedPath.startsWith('curricula/')) return null
+
+  const absolutePath = path.resolve(REPO_ROOT, sanitizedPath)
+  if (!isPathInside(absolutePath, CURRICULA_ROOT)) return null
+  if (path.basename(path.dirname(absolutePath)) !== 'json') return null
+
+  const fileName = path.basename(absolutePath)
+  if (!LANDSCAPE_JSON_FILE_PATTERN.test(fileName)) return null
+  if (DECK_FILE_PATTERN.test(fileName)) return null
+
+  return absolutePath
+}
+
 const collectDeckFiles = async (directory: string, result: string[]): Promise<void> => {
   const entries = await fs.readdir(directory, { withFileTypes: true })
 
@@ -53,6 +69,41 @@ const collectDeckFiles = async (directory: string, result: string[]): Promise<vo
     if (path.basename(path.dirname(absolutePath)) !== 'json') continue
     if (!DECK_FILE_PATTERN.test(entry.name)) continue
     if (!isPathInside(absolutePath, CURRICULA_ROOT)) continue
+
+    const relativeToRepo = path.relative(REPO_ROOT, absolutePath)
+    result.push(toPosixPath(relativeToRepo))
+  }
+}
+
+const isLandscapePayload = (value: unknown): boolean => {
+  const record = asRecord(value)
+  return typeof record.landscapeId === 'string' && Array.isArray(record.goals)
+}
+
+const collectLandscapeFiles = async (directory: string, result: string[]): Promise<void> => {
+  const entries = await fs.readdir(directory, { withFileTypes: true })
+
+  for (const entry of entries) {
+    const absolutePath = path.join(directory, entry.name)
+
+    if (entry.isDirectory()) {
+      await collectLandscapeFiles(absolutePath, result)
+      continue
+    }
+
+    if (!entry.isFile()) continue
+    if (path.basename(path.dirname(absolutePath)) !== 'json') continue
+    if (!LANDSCAPE_JSON_FILE_PATTERN.test(entry.name)) continue
+    if (DECK_FILE_PATTERN.test(entry.name)) continue
+    if (!isPathInside(absolutePath, CURRICULA_ROOT)) continue
+
+    try {
+      const content = await fs.readFile(absolutePath, 'utf8')
+      const parsed = JSON.parse(content)
+      if (!isLandscapePayload(parsed)) continue
+    } catch {
+      continue
+    }
 
     const relativeToRepo = path.relative(REPO_ROOT, absolutePath)
     result.push(toPosixPath(relativeToRepo))
@@ -86,12 +137,86 @@ const deckEditorDevPlugin = {
   configureServer(server: ViteDevServer) {
     server.middlewares.use((req: IncomingMessage, res: ServerResponse, next: (err?: unknown) => void) => {
       const requestUrl = new URL(req.url ?? '/', 'http://localhost')
-      if (!requestUrl.pathname.startsWith('/__deck-editor')) {
+      if (!requestUrl.pathname.startsWith('/__deck-editor') && !requestUrl.pathname.startsWith('/__graph-editor')) {
         next()
         return
       }
 
       void (async () => {
+        if (requestUrl.pathname === '/__graph-editor/list') {
+          if (req.method !== 'GET') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const files: string[] = []
+          await collectLandscapeFiles(CURRICULA_ROOT, files)
+          files.sort((left, right) => left.localeCompare(right))
+          sendJson(res, 200, { files })
+          return
+        }
+
+        if (requestUrl.pathname === '/__graph-editor/load') {
+          if (req.method !== 'GET') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const pathParam = requestUrl.searchParams.get('path') ?? ''
+          const absolutePath = resolveLandscapeAbsolutePath(pathParam)
+          if (!absolutePath) {
+            sendJson(res, 400, { error: 'Invalid landscape path.' })
+            return
+          }
+
+          const fileContent = await fs.readFile(absolutePath, 'utf8')
+          const landscape = JSON.parse(fileContent)
+          if (!isLandscapePayload(landscape)) {
+            sendJson(res, 400, { error: 'File is not a valid landscape JSON.' })
+            return
+          }
+
+          sendJson(res, 200, {
+            path: toPosixPath(path.relative(REPO_ROOT, absolutePath)),
+            landscape,
+          })
+          return
+        }
+
+        if (requestUrl.pathname === '/__graph-editor/save') {
+          if (req.method !== 'PUT') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const payload = asRecord(await readJsonBody(req))
+          const pathParam = typeof payload.path === 'string' ? payload.path : ''
+          const absolutePath = resolveLandscapeAbsolutePath(pathParam)
+          if (!absolutePath) {
+            sendJson(res, 400, { error: 'Invalid landscape path.' })
+            return
+          }
+
+          if (!Object.prototype.hasOwnProperty.call(payload, 'landscape')) {
+            sendJson(res, 400, { error: 'Missing landscape payload.' })
+            return
+          }
+
+          const landscapePayload = payload.landscape
+          if (!isLandscapePayload(landscapePayload)) {
+            sendJson(res, 400, { error: 'Invalid landscape payload.' })
+            return
+          }
+
+          const serializedLandscape = `${JSON.stringify(landscapePayload, null, 2)}\n`
+          await fs.writeFile(absolutePath, serializedLandscape, 'utf8')
+
+          sendJson(res, 200, {
+            path: toPosixPath(path.relative(REPO_ROOT, absolutePath)),
+          })
+          return
+        }
+
         if (requestUrl.pathname === '/__deck-editor/list') {
           if (req.method !== 'GET') {
             sendJson(res, 405, { error: 'Method not allowed' })
@@ -162,7 +287,7 @@ const deckEditorDevPlugin = {
 
         sendJson(res, 404, { error: 'Not found' })
       })().catch((error: unknown) => {
-        const message = error instanceof Error ? error.message : 'Deck editor request failed.'
+        const message = error instanceof Error ? error.message : 'Editor request failed.'
         sendJson(res, 500, { error: message })
       })
     })

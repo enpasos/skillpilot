@@ -166,6 +166,103 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
       return { nodes: [], nodesByLevel: new Map(), orderedLevels: [], edges: [] }
     }
 
+    const atomicDescendantsMemo = new Map<string, Goal[]>()
+    const getAtomicDescendants = (goal: Goal, stack: Set<string> = new Set()): Goal[] => {
+      const cached = atomicDescendantsMemo.get(goal.id)
+      if (cached) return cached
+      if (stack.has(goal.id)) return []
+
+      stack.add(goal.id)
+      let result: Goal[]
+      if (isAtomicGoal(goal)) {
+        result = [goal]
+      } else {
+        const deduped = new Map<string, Goal>()
+        goal.contains.forEach((childRef) => {
+          const child = resolveGoalRef(childRef, goalIndexAll)
+          if (!child || child.id === goal.id) return
+          getAtomicDescendants(child, stack).forEach((atomicGoal) => {
+            deduped.set(atomicGoal.id, atomicGoal)
+          })
+        })
+        result = Array.from(deduped.values())
+      }
+      stack.delete(goal.id)
+
+      atomicDescendantsMemo.set(goal.id, result)
+      return result
+    }
+
+    const upsertPrerequisite = (
+      bucket: Map<string, { goal: Goal; relation: PrereqKind }>,
+      item: { goal: Goal; relation: PrereqKind },
+    ) => {
+      const existing = bucket.get(item.goal.id)
+      if (!existing || (existing.relation === 'inherited' && item.relation === 'direct')) {
+        bucket.set(item.goal.id, item)
+      }
+    }
+
+    const expandDirectPrerequisites = (goal: Goal): Goal[] => {
+      const expanded = new Map<string, Goal>()
+      goal.requires.forEach((ref) => {
+        const prereqGoal = resolveGoalRef(ref, goalIndexAll)
+        if (!prereqGoal || prereqGoal.id === goal.id) return
+
+        if (!atomicOnly || isAtomicGoal(prereqGoal)) {
+          expanded.set(prereqGoal.id, prereqGoal)
+          return
+        }
+
+        const atomicDescendants = getAtomicDescendants(prereqGoal).filter((atomicGoal) => atomicGoal.id !== goal.id)
+        if (atomicDescendants.length === 0) {
+          // Fallback: keep the original prerequisite if the cluster has no atomic children.
+          expanded.set(prereqGoal.id, prereqGoal)
+          return
+        }
+
+        atomicDescendants.forEach((atomicGoal) => {
+          expanded.set(atomicGoal.id, atomicGoal)
+        })
+      })
+      return Array.from(expanded.values())
+    }
+
+    const expandEffectivePrerequisites = (goal: Goal): Array<{ goal: Goal; relation: PrereqKind }> => {
+      const expanded = new Map<string, { goal: Goal; relation: PrereqKind }>()
+      getEffectiveRequiresRefs(goal).forEach((ref) => {
+        const prereqGoal = resolveGoalRef(ref, goalIndexAll)
+        if (!prereqGoal || prereqGoal.id === goal.id) return
+
+        const relation: PrereqKind = goal.requires.some((directRef) => refsMatch(directRef, prereqGoal.id))
+          ? 'direct'
+          : 'inherited'
+
+        if (!atomicOnly || isAtomicGoal(prereqGoal)) {
+          upsertPrerequisite(expanded, { goal: prereqGoal, relation })
+          return
+        }
+
+        const atomicDescendants = getAtomicDescendants(prereqGoal).filter((atomicGoal) => atomicGoal.id !== goal.id)
+        if (atomicDescendants.length === 0) {
+          // Fallback: keep the original prerequisite if the cluster has no atomic children.
+          upsertPrerequisite(expanded, { goal: prereqGoal, relation })
+          return
+        }
+
+        atomicDescendants.forEach((atomicGoal) => {
+          upsertPrerequisite(expanded, { goal: atomicGoal, relation })
+        })
+      })
+      return Array.from(expanded.values())
+    }
+
+    const shouldRenderInAtomicMode = (goal: Goal): boolean => {
+      if (isAtomicGoal(goal)) return true
+      // Data-safety fallback: avoid dropping prerequisite paths when cluster metadata is incomplete.
+      return getAtomicDescendants(goal).length === 0
+    }
+
     const allNodes = new Map<string, Goal>()
     const allEdges = new Map<string, FullPrerequisiteEdge>()
     const outgoing = new Map<string, Set<string>>()
@@ -174,15 +271,11 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
       if (stack.has(goal.id)) return
       stack.add(goal.id)
 
-      getEffectiveRequiresRefs(goal).forEach((ref) => {
-        const prereqGoal = resolveGoalRef(ref, goalIndexAll)
+      expandEffectivePrerequisites(goal).forEach(({ goal: prereqGoal, relation }) => {
         if (!prereqGoal || prereqGoal.id === goal.id) return
 
         allNodes.set(prereqGoal.id, prereqGoal)
 
-        const relation: PrereqKind = goal.requires.some((directRef) => refsMatch(directRef, prereqGoal.id))
-          ? 'direct'
-          : 'inherited'
         const edgeId = `${prereqGoal.id}->${goal.id}`
         allEdges.set(edgeId, { id: edgeId, fromId: prereqGoal.id, toId: goal.id, relation })
 
@@ -198,8 +291,10 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
 
     walkPrerequisites(currentGoal, new Set<string>())
 
-    const currentDirectIds = new Set(currentGoal.requires.map((ref) => normalizeGoalRef(ref)))
-    const currentEffectiveIds = new Set(getEffectiveRequiresRefs(currentGoal).map((ref) => normalizeGoalRef(ref)))
+    const currentDirectIds = new Set(expandDirectPrerequisites(currentGoal).map((goal) => normalizeGoalRef(goal.id)))
+    const currentEffectiveIds = new Set(
+      expandEffectivePrerequisites(currentGoal).map(({ goal }) => normalizeGoalRef(goal.id)),
+    )
 
     const levelMemo = new Map<string, number>()
     const levelStack = new Set<string>()
@@ -225,7 +320,7 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
     }
 
     const nodes = Array.from(allNodes.values())
-      .filter((goal) => !atomicOnly || isAtomicGoal(goal))
+      .filter((goal) => !atomicOnly || shouldRenderInAtomicMode(goal))
       .map((goal) => {
         const normalizedId = normalizeGoalRef(goal.id)
         let relationToCurrent: PrerequisiteRelationToCurrent = 'transitive'
