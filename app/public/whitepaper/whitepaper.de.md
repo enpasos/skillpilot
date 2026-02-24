@@ -142,7 +142,7 @@ Eine typische Route durchläuft dabei stets die folgenden Phasen:
 
 Hier ein Beispiel für eine einfache Route aus Motivation/Verstehen/Anwenden (Memorisieren läuft parallel), wie es in SkillPilot visualisiert wird und als PDF exportierbar ist.
 
-<img src="requires-flow.de.svg" alt="Requires-Flow (DE)" width="420" />
+<img src="requires-flow.de.svg" alt="Requires-Flow (DE)" width="600" />
 
 
 Während beim Verstehen sowie beim Bewerten und Erklären von Prüfungsleistungen die Interaktion mit einem Tutor hilft, funktioniert reines Auswendiglernen (Vokabeln, Formeln, Fakten) per modernem Karteikasten a la **Spaced Repetition** effizienter.
