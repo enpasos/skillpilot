@@ -147,7 +147,7 @@ Short form of the route:
 
 Here is one example for motivation/understanding/application, as visualized in SkillPilot and exportable as PDF.
 
-<img src="requires-flow.en.svg" alt="Requires Flow (EN)" width="420" />
+<img src="requires-flow.en.svg" alt="Requires Flow (EN)" width="600" />
 
 While tutor interaction is valuable for understanding and for evaluating/explaining exam solutions, pure memorization (vocabulary, formulas, facts) is more efficient with **spaced repetition**.
 
