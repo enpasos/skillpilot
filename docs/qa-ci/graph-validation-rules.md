@@ -24,6 +24,7 @@ This is the single source of truth for algorithmic graph validation in CI.
 | `GVR-004` | First atomic node must be a motivation anchor (`Warum`/`Why`). | Rollout subset (`DE_HES_S_GYM_2_*`, excluding `OVERVIEW`) | `error` |
 | `GVR-005` | Every atomic node must have a transitive path to the motivation anchor via effective `requires`. | Rollout subset (`DE_HES_S_GYM_2_*`, excluding `OVERVIEW`) | `error` |
 | `GVR-006` | A goal must not directly require one of its direct `contains` children (inverse anti-pattern of `GVR-003`). | Rollout subset (`DE_HES_S_GYM_2_*`, including `OVERVIEW`) | `error` |
+| `GVR-007` | MIT OCW module atomic goals must include intensive source-link coverage (`concept` + `practice` + `assessment`) in `extendedData.sourceLinks`. | MIT OCW module landscapes (`frameworkId` starts with `mit-ocw-` and root tagged `module:*`) | `error` |
 
 ## Core validator checks (always active, fail CI)
 
@@ -91,3 +92,16 @@ Validation semantics:
 
 - For a goal `A`, collect direct local `contains` children.
 - If any direct local `requires` target is also in that direct child set, emit `GVR-006`.
+
+## MIT OCW source-linking rule (`GVR-007`)
+
+- Scope: landscapes with top-level `frameworkId` starting with `mit-ocw-` and a root node tagged `module:*` (or `modul:*`).
+- Current issue level: follows global `GVR-*` strictness (`error` by default, `warn` with `VALIDATE_GRAPH_STRICT_RULES=0`).
+
+Validation semantics for each atomic goal:
+
+- `extendedData.sourceLinks` must exist and include at least one link of type:
+  - `concept`
+  - `practice`
+  - `assessment`
+- Required source-link types must include at least one valid OCW course URL (`https://ocw.mit.edu/courses/...`).

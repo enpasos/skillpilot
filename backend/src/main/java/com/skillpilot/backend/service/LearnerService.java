@@ -533,10 +533,12 @@ public class LearnerService {
 
         String activeGoalId = learner.getActiveGoalId();
         String requestedGoalId = request.goalId();
-        if (requestedGoalId == null || requestedGoalId.isBlank()) {
-            if (request.mastery() != null && request.mastery().size() == 1) {
-                requestedGoalId = request.mastery().keySet().iterator().next();
-            }
+        Map.Entry<String, Double> masteryEntry = null;
+        if (request.mastery() != null && request.mastery().size() == 1) {
+            masteryEntry = request.mastery().entrySet().iterator().next();
+        }
+        if ((requestedGoalId == null || requestedGoalId.isBlank()) && masteryEntry != null) {
+            requestedGoalId = masteryEntry.getKey();
         }
 
         String effectiveGoalId = (activeGoalId != null && !activeGoalId.isBlank())
@@ -553,7 +555,17 @@ public class LearnerService {
             boolean allowed = frontierAtomic.stream().anyMatch(goal -> goal.id().equals(effectiveGoalId));
             if (!allowed) {
                 Map<String, Double> masterySnapshot = getMastery(skillpilotId);
-                if (masterySnapshot.getOrDefault(effectiveGoalId, 0.0) >= 0.9) {
+                double currentMastery = masterySnapshot.getOrDefault(effectiveGoalId, 0.0);
+                boolean explicitCorrection = masteryEntry != null
+                        && masteryEntry.getValue() != null
+                        && effectiveGoalId.equals(masteryEntry.getKey())
+                        && masteryEntry.getValue() < currentMastery;
+
+                // Allow explicit correction (e.g. reset from 1.0 to 0.0) even if the goal
+                // is currently outside the frontier.
+                if (explicitCorrection) {
+                    // continue with save flow
+                } else if (currentMastery >= 0.9) {
                     UnifiedLearnerStateResponse state = getLearnerState(skillpilotId);
                     return new MasteryUpdateResponse(
                             state.frontier(),
@@ -562,18 +574,16 @@ public class LearnerService {
                             state.activeGoal(),
                             state.stateMachine(),
                             state.goals());
+                } else {
+                    throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                            "goalId must be an atomic goal from the current frontier.");
                 }
-                throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
-                        "goalId must be an atomic goal from the current frontier.");
             }
         }
 
         double masteryValue = 1.0;
-        if (request.mastery() != null && request.mastery().size() == 1) {
-            Map.Entry<String, Double> entry = request.mastery().entrySet().iterator().next();
-            if (effectiveGoalId.equals(entry.getKey()) && entry.getValue() != null) {
-                masteryValue = entry.getValue();
-            }
+        if (masteryEntry != null && effectiveGoalId.equals(masteryEntry.getKey()) && masteryEntry.getValue() != null) {
+            masteryValue = masteryEntry.getValue();
         }
 
         // Prevent mastery on Cluster Goals (goals that contain other goals)

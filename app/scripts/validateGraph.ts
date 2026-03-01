@@ -66,6 +66,7 @@ const RULE_REQUIRES_DIRECT_CONTAINER = 'GVR-003'
 const RULE_FIRST_ATOMIC_IS_WARUM = 'GVR-004'
 const RULE_ATOMIC_TRANSITIVE_TO_WARUM = 'GVR-005'
 const RULE_REQUIRES_DIRECT_CHILD = 'GVR-006'
+const RULE_MIT_ATOMIC_SOURCE_LINKS = 'GVR-007'
 const HESSEN_GYM_OVERVIEW_LANDSCAPE_ID = 'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da'
 const motivationRuleLandscapeIds = new Set<string>([
   '3e56aa75-c76c-4de5-883b-0aac98297846', // DE_HES_S_GYM_2_BIOLOGIE
@@ -97,6 +98,7 @@ interface ParsedLandscape {
   file: string
   landscapeId: string
   title: string
+  frameworkId?: string
   goals: UiGoal[]
 }
 
@@ -137,6 +139,7 @@ for (const file of landscapeFiles) {
       file,
       landscapeId,
       title: json.title ?? '',
+      frameworkId: (json as { frameworkId?: string }).frameworkId,
       goals,
     }
     parsedLandscapes.push(entry)
@@ -604,6 +607,80 @@ function validateLandscape(landscape: ParsedLandscape) {
         }
       })
     }
+  }
+
+  // GVR-007:
+  // MIT OCW atomic goals must provide intensive source linking:
+  // - extendedData.sourceLinks includes concept/practice/assessment
+  // - required links point to OCW course pages
+  const isMitOcwLandscape = (landscape.frameworkId ?? '').startsWith('mit-ocw-')
+  const rootGoal = landscape.goals.find((goal) => goal.tags?.includes('root')) ?? landscape.goals[0]
+  const rootTags = rootGoal?.tags ?? []
+  const isMitOcwModuleLandscape = rootTags.some((tag) => {
+    const normalized = (tag ?? '').toLowerCase()
+    return normalized.startsWith('module:') || normalized.startsWith('modul:')
+  })
+
+  if (isMitOcwLandscape && isMitOcwModuleLandscape) {
+    const requiredSourceTypes = ['concept', 'practice', 'assessment']
+
+    landscape.goals
+      .filter((goal) => isAtomicGoal(goal))
+      .forEach((goal) => {
+        const goalLabel = `${goal.id} (${goal.title})`
+        const extData = (goal.extendedData ?? {}) as Record<string, unknown>
+        const rawSourceLinks = extData.sourceLinks
+
+        if (!Array.isArray(rawSourceLinks) || rawSourceLinks.length === 0) {
+          addIssue(
+            graphRuleIssueLevel,
+            landscape.landscapeId,
+            `[${RULE_MIT_ATOMIC_SOURCE_LINKS}] Atomic goal ${goalLabel} is missing extendedData.sourceLinks.`,
+          )
+          return
+        }
+
+        const sourceLinks = rawSourceLinks
+          .filter((item): item is Record<string, unknown> => !!item && typeof item === 'object')
+        const typeToLinkCount = new Map<string, number>()
+        const typeHasValidOcwCourseUrl = new Map<string, boolean>()
+
+        sourceLinks.forEach((link) => {
+          const type = typeof link.type === 'string' ? link.type.trim().toLowerCase() : ''
+          const url = typeof link.url === 'string' ? link.url : ''
+
+          if (!type) return
+          typeToLinkCount.set(type, (typeToLinkCount.get(type) ?? 0) + 1)
+
+          const isValidOcwCourseUrl = url.startsWith('https://ocw.mit.edu/courses/')
+          if (!typeHasValidOcwCourseUrl.has(type)) {
+            typeHasValidOcwCourseUrl.set(type, isValidOcwCourseUrl)
+          } else if (isValidOcwCourseUrl) {
+            typeHasValidOcwCourseUrl.set(type, true)
+          }
+        })
+
+        requiredSourceTypes.forEach((requiredType) => {
+          const linkCount = typeToLinkCount.get(requiredType) ?? 0
+
+          if (linkCount === 0) {
+            addIssue(
+              graphRuleIssueLevel,
+              landscape.landscapeId,
+              `[${RULE_MIT_ATOMIC_SOURCE_LINKS}] Atomic goal ${goalLabel} is missing source link type "${requiredType}".`,
+            )
+            return
+          }
+
+          if (!typeHasValidOcwCourseUrl.get(requiredType)) {
+            addIssue(
+              graphRuleIssueLevel,
+              landscape.landscapeId,
+              `[${RULE_MIT_ATOMIC_SOURCE_LINKS}] Atomic goal ${goalLabel} has no valid OCW course URL for "${requiredType}" links.`,
+            )
+          }
+        })
+      })
   }
 
   if (landscape.landscapeId === PHYSICS_LANDSCAPE_ID) {

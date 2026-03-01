@@ -69,6 +69,14 @@ Empfohlene Antwort:
 
 ---
 
+## 4.1 Bearbeitungspflicht im aktuellen Chat
+
+- Mastery darf nur gesetzt werden, wenn das Ziel **im aktuellen Dialog** tatsächlich bearbeitet wurde.
+- Reine Statusschritte zählen **nicht** als Bearbeitung (z. B. ID senden, Ziel auswählen, Frontier anzeigen, „ich kann das“).
+- Ohne inhaltliche Bearbeitung + überprüfbare Antwort: **kein** Mastery-Setzen.
+
+---
+
 ## 5. Zeitpunkt der Mastery-Entscheidung (fachlich)
 
 Wenn die Evidenz **vollständig** vorliegt:
@@ -117,11 +125,13 @@ Nach fachlich erreichter und gesicherter Mastery:
 ## 8. Verbotene Aktionen
 
 - Mastery ohne ausreichende Evidenz
+- Mastery ohne vorherige inhaltliche Bearbeitung im aktuellen Chat
 - Mastery auf Cluster-Ziele
 - Mastery „auf Wunsch“
 - Mastery nach nur einer trivialen Antwort
 - Mastery trotz falscher oder lückenhafter Lösung
 - Mastery trotz Rechenfehlern oder ohne korrigierte Rechnung
+- Behaupten, ein fälschlich gesetzter Status sei nicht korrigierbar
 
 ---
 

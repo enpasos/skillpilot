@@ -160,7 +160,7 @@
       "post": {
         "operationId": "setMastery",
         "summary": "Update mastery and get next steps",
-        "description": "Updates mastery for the active goal and immediately returns the new frontier plus state (stateMachine, nextAllowedActions, learningState, activeGoal). If an active goal is already set, call setMastery immediately and omit goalId (or send an empty body); do NOT call setActiveGoal again.",
+        "description": "Updates mastery for the active goal and returns the new frontier and state. Call only after real content work on the active goal in this conversation. AI agents must send an explicit mastery map with one entry {goalId: value} and must not rely on empty-request defaults.",
         "parameters": [
           {
             "name": "skillpilotId",
@@ -582,11 +582,11 @@
               "type": "number",
               "format": "double"
             },
-            "description": "Optional map with a single entry {goalId: value} for partial mastery (0.0–1.0). If omitted, defaults to 1.0 for the active goal or the provided goalId."
+            "description": "Map with a single entry {goalId: value} for mastery updates (0.0-1.0). AI agents should always provide this field explicitly."
           },
           "goalId": {
             "type": "string",
-            "description": "Optional when an active goal is already set. The UUID of the single goal to set to 1.0 (Mastered) unless a mastery map is provided. MUST be an Atomic Goal (no children)."
+            "description": "Optional helper: UUID of the target atomic goal (no children). AI agents should still provide explicit mastery values via the mastery map."
           }
         }
       },
