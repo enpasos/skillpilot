@@ -137,12 +137,12 @@ Reference: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S
 - `18.01SC`: 7/7 atomic goals have `concept+practice+assessment` links (100%).
 - `18.02SC`: 6/6 atomic goals have `concept+practice+assessment` links (100%).
 - `18.05`: 7/7 atomic goals have `concept+practice+assessment` links (100%).
-- `18.06`: 6/6 atomic goals have `concept+practice+assessment` links (100%).
+- `18.06`: 70/70 atomic goals have `concept+practice+assessment` links (100%).
 - `6.100L`: 7/7 atomic goals have `concept+practice+assessment` links (100%).
 - `6.0002`: 6/6 atomic goals have `concept+practice+assessment` links (100%).
 - `6.006`: 6/6 atomic goals have `concept+practice+assessment` links (100%).
 - `FOUNDATIONS`: 1/1 atomic goals have `concept+practice+assessment` links (100%, non-module orientation goal).
-- Average source links per atomic goal across all implemented MIT OCW modules: `4.0` (45 atomic goals).
+- Average source links per atomic goal across all implemented MIT OCW modules: `4.0` (109 atomic goals).
 
 ## Progress Log
 - 2026-03-01: Plan extracted, schema/validator constraints checked, actionable backlog defined in this file.
@@ -152,3 +152,4 @@ Reference: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S
 - 2026-03-01: Extended the same atomic source-linking depth to `6.0002` and `6.006` and introduced CI enforcement rule `GVR-007` for MIT OCW module landscapes.
 - 2026-03-01: Aligned the `FOUNDATIONS` atomic orientation goal with the same source-linking schema (`extendedData.sourceLinks`).
 - 2026-03-01: Completed Phase 4 frontier walkthrough via automated test (`MitOcwFrontierWalkthroughTest`), confirmed coherent first-path unlock order for math and CS, and recorded that no dependency micro-adjustments are currently needed.
+- 2026-03-01: Rebuilt `US_MAS_U_MIT_OCW_18_06.en.json` from `input/18.06-spring-2010` to Hessen-like granularity (93 goals total, 70 atomics, layered unit/topic/atomic DAG) and revalidated with schema check, graph validator, and `MitOcwFrontierWalkthroughTest`.
