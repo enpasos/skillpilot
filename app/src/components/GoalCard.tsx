@@ -36,6 +36,7 @@ type GoalSourceLink = {
 }
 
 type GoalProvenance = {
+  sourceTitle?: string
   sourceUrl?: string
   sourceLicense?: string
   sourceLicenseUrl?: string
@@ -88,6 +89,7 @@ const extractSourceMetadata = (goal: Goal): { provenance: GoalProvenance; helpfu
   const conceptLink = rawLinks.find((link) => link.type?.toLowerCase() === 'concept')
 
   const provenance: GoalProvenance = {
+    sourceTitle: readString(provenanceRaw?.sourceTitle),
     sourceUrl: readString(provenanceRaw?.sourceUrl) ?? readString(goal.sourceRef) ?? conceptLink?.url,
     sourceLicense: readString(provenanceRaw?.license) ?? extractLicenseFromTags(goal.tags) ?? licenseLink?.license,
     sourceLicenseUrl: readString(provenanceRaw?.licenseUrl) ?? licenseLink?.url,
@@ -127,6 +129,12 @@ export const GoalCard: React.FC<GoalCardProps> = ({
     ? 'Zum aktiven Lernziel springen'
     : 'Als aktuelles Lernziel auswählen'
   const { provenance, helpfulLinks } = extractSourceMetadata(goal)
+  const sourceLinkLabel = provenance.sourceTitle || (language === 'en' ? 'Course page' : 'Kursseite')
+  const showExplicitSourceUrl = Boolean(
+    provenance.sourceUrl &&
+    provenance.sourceTitle &&
+    provenance.sourceTitle.toLowerCase().includes('kerncurriculum gymnasiale oberstufe'),
+  )
 
   // Determine Status Icon
   let StatusIcon = Target
@@ -221,7 +229,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
       {(provenance.sourceUrl || provenance.sourceLicense) && (
         <div className="mt-3 text-xs text-text-secondary">
           {provenance.sourceUrl && (
-            <span>
+            <div>
               <span className="font-medium text-text-primary">{language === 'en' ? 'Curriculum source: ' : 'Curriculum-Quelle: '}</span>
               <a
                 href={provenance.sourceUrl}
@@ -229,9 +237,12 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                 rel="noopener noreferrer"
                 className="underline decoration-dotted hover:decoration-solid"
               >
-                {language === 'en' ? 'Course page' : 'Kursseite'}
+                {sourceLinkLabel}
               </a>
-            </span>
+              {showExplicitSourceUrl && (
+                <div className="mt-1 break-all">{provenance.sourceUrl}</div>
+              )}
+            </div>
           )}
           {provenance.sourceLicense && (
             <span className={provenance.sourceUrl ? 'ml-3' : ''}>
