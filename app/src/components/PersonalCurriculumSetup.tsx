@@ -150,9 +150,9 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 
     // Separate Root and Children
     const rootLandscape = availableLandscapes.find(l => l.landscapeId === rootLandscapeId)
+    // Preserve backend order to reflect the authored curriculum/module sequence.
     const childrenLandscapes = availableLandscapes
         .filter(l => l.landscapeId !== rootLandscapeId)
-        .sort((a, b) => (a.subject || a.title).localeCompare(b.subject || b.title))
 
     const renderNode = (landscape: LandscapeSummary, isRoot: boolean) => {
         const isSelected = config[landscape.landscapeId]?.selected ?? false

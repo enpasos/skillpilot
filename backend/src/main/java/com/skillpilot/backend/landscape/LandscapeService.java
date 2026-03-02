@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -89,7 +90,9 @@ public class LandscapeService {
             return Collections.emptyList();
         }
 
-        Map<String, LearningLandscape> closure = new HashMap<>();
+        // Keep traversal insertion order so frontend module lists remain stable and
+        // follow curriculum authoring order (root contains order).
+        Map<String, LearningLandscape> closure = new LinkedHashMap<>();
         collectClosure(root, closure);
 
         // Localize the results
