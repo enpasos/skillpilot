@@ -158,6 +158,8 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         const isSelected = config[landscape.landscapeId]?.selected ?? false
         const currentFilter = config[landscape.landscapeId]?.filterId ?? ''
         const hasFilters = landscape.filters && landscape.filters.length > 0
+        const showFilterControls = Boolean(hasFilters && (isRoot || !rootLandscape))
+        const isExpandable = isRoot || showFilterControls
 
         return (
             <div key={landscape.landscapeId} className="flex flex-col">
@@ -167,7 +169,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 >
                     <button
                         onClick={() => toggleExpand(landscape.landscapeId)}
-                        className={`p-1 rounded hover:bg-gray-200 dark:hover:bg-slate-700 text-text-secondary ${!hasFilters && !isRoot ? 'invisible' : ''}`}
+                        className={`p-1 rounded hover:bg-gray-200 dark:hover:bg-slate-700 text-text-secondary ${!isExpandable ? 'invisible' : ''}`}
                     >
                         {(expanded.has(landscape.landscapeId) || isRoot) ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
                     </button>
@@ -187,7 +189,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     </span>
                 </div>
 
-                {hasFilters && (expanded.has(landscape.landscapeId) || isRoot) && (
+                {showFilterControls && (expanded.has(landscape.landscapeId) || isRoot) && (
                     <div className="ml-11 flex flex-col gap-1 mt-1 mb-2 border-l-2 border-border-color pl-2">
                         {landscape.filters!.map(f => (
                             <label
