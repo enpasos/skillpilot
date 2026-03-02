@@ -41,13 +41,13 @@ class MitOcwFrontierWalkthroughTest {
     private static final String LANDSCAPE_6_100L = "157803a5-e13c-5ab9-9d9d-fd6a060e6023";
 
     private static final String FOUNDATIONS_WHY_ID = "9c136002-6239-5228-84be-2956c8f597a0";
-    private static final String WHY_18_01SC_ID = "2474b833-a0e0-5b5d-8839-e444510f6222";
-    private static final String WHY_18_02SC_ID = "da8f126a-e675-5270-9f97-ca9cd1aec86d";
-    private static final String WHY_18_05_ID = "aea67ca0-ed08-5dd2-a350-a19b3f468320";
-    private static final String WHY_18_06_ID = "67ef22cf-325a-51af-8187-336b6cfd7f49";
-    private static final String WHY_6_100L_ID = "3ec331f0-86de-550f-866f-7fa34d6e6dd6";
-    private static final String WHY_6_0002_ID = "d44953c6-bc2b-580d-b67a-82ff71a4424f";
-    private static final String WHY_6_006_ID = "6acd4dfe-d488-57d3-8c1d-e96cdce84a7a";
+    private static final String ENTRY_18_01SC_ID = "f9b9191b-5623-571b-a742-a628bc4b1f75";
+    private static final String ENTRY_18_02SC_ID = "2c4a2a63-d3ff-5660-8e8e-d0fa245925cf";
+    private static final String ENTRY_18_05_ID = "b9c6db12-600e-5f2b-993c-a1cb37c94122";
+    private static final String ENTRY_18_06_ID = "814257f7-9324-5893-962f-66d28ebd90e9";
+    private static final String ENTRY_6_100L_ID = "ec426731-189b-5d35-b053-9b0c5417d069";
+    private static final String ENTRY_6_0002_ID = "502f3476-c8e1-5f70-9b6c-c1757cb6eb8b";
+    private static final String ENTRY_6_006_ID = "e005ee72-bf4e-5d18-8cbc-569a0ae753d8";
 
     private static ObjectMapper objectMapper;
     private static LandscapeService landscapeService;
@@ -106,39 +106,41 @@ class MitOcwFrontierWalkthroughTest {
         Set<String> frontierBeforeFoundation = frontierIds();
 
         assertThat(frontierBeforeFoundation).contains(FOUNDATIONS_WHY_ID);
-        assertThat(frontierBeforeFoundation).doesNotContain(WHY_18_01SC_ID, WHY_6_100L_ID);
+        assertThat(frontierBeforeFoundation).doesNotContain(ENTRY_18_01SC_ID, ENTRY_6_100L_ID);
 
         setMasteredGoals(Set.of(FOUNDATIONS_WHY_ID));
         Set<String> frontierAfterFoundation = frontierIds();
 
-        assertThat(frontierAfterFoundation).contains(WHY_18_01SC_ID, WHY_6_100L_ID);
+        assertThat(frontierAfterFoundation).contains(ENTRY_18_01SC_ID, ENTRY_6_100L_ID);
         assertThat(frontierAfterFoundation).doesNotContain(
-                WHY_18_02SC_ID,
-                WHY_18_05_ID,
-                WHY_18_06_ID,
-                WHY_6_0002_ID,
-                WHY_6_006_ID);
+                ENTRY_18_02SC_ID,
+                ENTRY_18_05_ID,
+                ENTRY_18_06_ID,
+                ENTRY_6_0002_ID,
+                ENTRY_6_006_ID);
     }
 
     @Test
     void mathTrackSequenceIsCoherentForFirstModuleTransitions() {
         Set<String> masteryAfter1801 = new HashSet<>();
         masteryAfter1801.add(FOUNDATIONS_WHY_ID);
+        masteryAfter1801.add(ENTRY_18_01SC_ID);
         masteryAfter1801.addAll(atomicGoalIdsForLandscape(LANDSCAPE_18_01SC));
 
         setMasteredGoals(masteryAfter1801);
         Set<String> frontierAfter1801 = frontierIds();
 
-        assertThat(frontierAfter1801).contains(WHY_18_02SC_ID, WHY_18_06_ID);
-        assertThat(frontierAfter1801).doesNotContain(WHY_18_05_ID);
+        assertThat(frontierAfter1801).contains(ENTRY_18_02SC_ID, ENTRY_18_06_ID);
+        assertThat(frontierAfter1801).doesNotContain(ENTRY_18_05_ID);
 
         Set<String> masteryAfter1802 = new HashSet<>(masteryAfter1801);
+        masteryAfter1802.add(ENTRY_18_02SC_ID);
         masteryAfter1802.addAll(atomicGoalIdsForLandscape(LANDSCAPE_18_02SC));
 
         setMasteredGoals(masteryAfter1802);
         Set<String> frontierAfter1802 = frontierIds();
 
-        assertThat(frontierAfter1802).contains(WHY_18_05_ID);
+        assertThat(frontierAfter1802).contains(ENTRY_18_05_ID);
     }
 
     @Test
@@ -146,15 +148,16 @@ class MitOcwFrontierWalkthroughTest {
         setMasteredGoals(Set.of(FOUNDATIONS_WHY_ID));
         Set<String> frontierAfterFoundation = frontierIds();
 
-        assertThat(frontierAfterFoundation).doesNotContain(WHY_6_0002_ID, WHY_6_006_ID);
+        assertThat(frontierAfterFoundation).doesNotContain(ENTRY_6_0002_ID, ENTRY_6_006_ID);
 
         Set<String> masteryAfter6100l = new HashSet<>();
         masteryAfter6100l.add(FOUNDATIONS_WHY_ID);
+        masteryAfter6100l.add(ENTRY_6_100L_ID);
         masteryAfter6100l.addAll(atomicGoalIdsForLandscape(LANDSCAPE_6_100L));
         setMasteredGoals(masteryAfter6100l);
 
         Set<String> frontierAfter6100l = frontierIds();
-        assertThat(frontierAfter6100l).contains(WHY_6_0002_ID, WHY_6_006_ID);
+        assertThat(frontierAfter6100l).contains(ENTRY_6_0002_ID, ENTRY_6_006_ID);
     }
 
     private void setMasteredGoals(Set<String> goalIds) {

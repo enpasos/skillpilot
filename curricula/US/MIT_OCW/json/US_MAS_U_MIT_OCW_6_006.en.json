@@ -27,7 +27,7 @@
       "titleEn": "6.006 Introduction to Algorithms",
       "description": "The learner can complete the 6.006 sequence from formal problem modeling to algorithmic trade-off analysis.",
       "descriptionEn": "The learner can complete the 6.006 sequence from formal problem modeling to algorithmic trade-off analysis.",
-      "weight": 6,
+      "weight": 15,
       "tags": [
         "root",
         "module:6.006",
@@ -35,16 +35,16 @@
         "CS",
         "license:CC-BY-NC-SA-4.0"
       ],
-      "requires": [
-        "ec426731-189b-5d35-b053-9b0c5417d069"
-      ],
+      "requires": [],
       "contains": [
         "6acd4dfe-d488-57d3-8c1d-e96cdce84a7a",
         "0b1575ab-408b-5256-ba96-25beef90f628",
         "6922ff7f-8489-5c00-9b91-02c450584253",
         "e8319cfe-b096-519c-a212-763ef3153963",
         "ae60df5f-8712-58ba-849d-764f1e07d8a8",
-        "995e87f2-d8aa-545e-88f0-e5190ddde806"
+        "995e87f2-d8aa-545e-88f0-e5190ddde806",
+        "02ab68ed-c857-52c3-9248-f2a903d45d74",
+        "29f2fb1c-be03-58e3-abca-4c45457bb7ab"
       ],
       "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
       "dimensionTags": {
@@ -55,6 +55,47 @@
         "phase": "Module",
         "area": "Computer Science",
         "topicCode": "6.006"
+      },
+      "extendedData": {
+        "treeOrder": 1,
+        "sourceLinks": [
+          {
+            "id": "ocw:e005ee72-bf4e-5d18-8cbc-569a0ae753d8:concept",
+            "type": "concept",
+            "title": "6.006 Introduction to Algorithms - concept source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "course-overview",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:e005ee72-bf4e-5d18-8cbc-569a0ae753d8:practice",
+            "type": "practice",
+            "title": "6.006 Introduction to Algorithms - practice source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:e005ee72-bf4e-5d18-8cbc-569a0ae753d8:assessment",
+            "type": "assessment",
+            "title": "6.006 Introduction to Algorithms - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/mit6_006s20_q3_pdf/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:e005ee72-bf4e-5d18-8cbc-569a0ae753d8:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ]
       }
     },
     {
@@ -96,7 +137,7 @@
             "id": "ocw:mit_ocw_6_006_why:practice",
             "type": "practice",
             "title": "6.006 Introduction to Algorithms - practice",
-            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/problem-sets/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
             "resourceType": "problem-set",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -105,7 +146,7 @@
             "id": "ocw:mit_ocw_6_006_why:assessment",
             "type": "assessment",
             "title": "6.006 Introduction to Algorithms - assessment",
-            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/exams/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
             "resourceType": "exam",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -114,12 +155,13 @@
             "id": "ocw:mit_ocw_6_006_why:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
           }
-        ]
+        ],
+        "treeOrder": 2
       }
     },
     {
@@ -128,15 +170,19 @@
       "titleEn": "Computational problem modeling",
       "description": "The learner can model computational problems precisely and select suitable formal representations.",
       "descriptionEn": "The learner can model computational problems precisely and select suitable formal representations.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "CORE",
-        "CS"
+        "CS",
+        "cluster:topic"
       ],
       "requires": [
         "6acd4dfe-d488-57d3-8c1d-e96cdce84a7a"
       ],
-      "contains": [],
+      "contains": [
+        "b2a693f5-c86c-5013-8a8b-c1f15b8548fe",
+        "3ac89412-0ded-5a1a-880c-10bfa006e4f1"
+      ],
       "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/lecture-notes/",
       "dimensionTags": {
         "framework": "mit-ocw-6-006",
@@ -162,7 +208,7 @@
             "id": "ocw:mit_ocw_6_006_problem_modeling:practice",
             "type": "practice",
             "title": "6.006 Introduction to Algorithms - practice",
-            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/problem-sets/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
             "resourceType": "problem-set",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -171,7 +217,7 @@
             "id": "ocw:mit_ocw_6_006_problem_modeling:assessment",
             "type": "assessment",
             "title": "6.006 Introduction to Algorithms - assessment",
-            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/exams/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
             "resourceType": "exam",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -180,12 +226,13 @@
             "id": "ocw:mit_ocw_6_006_problem_modeling:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
           }
-        ]
+        ],
+        "treeOrder": 3
       }
     },
     {
@@ -194,15 +241,19 @@
       "titleEn": "Core data structures for algorithms",
       "description": "The learner can choose and apply key data structures based on problem constraints and operation costs.",
       "descriptionEn": "The learner can choose and apply key data structures based on problem constraints and operation costs.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "CORE",
-        "CS"
+        "CS",
+        "cluster:topic"
       ],
       "requires": [
         "0b1575ab-408b-5256-ba96-25beef90f628"
       ],
-      "contains": [],
+      "contains": [
+        "8f91e21a-ff7f-5d74-a7eb-3aeb0604d7b2",
+        "2ad6a613-59db-596b-a1cb-37940319589e"
+      ],
       "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
       "dimensionTags": {
         "framework": "mit-ocw-6-006",
@@ -228,7 +279,7 @@
             "id": "ocw:mit_ocw_6_006_data_structures:practice",
             "type": "practice",
             "title": "6.006 Introduction to Algorithms - practice",
-            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/problem-sets/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
             "resourceType": "problem-set",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -237,7 +288,7 @@
             "id": "ocw:mit_ocw_6_006_data_structures:assessment",
             "type": "assessment",
             "title": "6.006 Introduction to Algorithms - assessment",
-            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/exams/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
             "resourceType": "exam",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -246,12 +297,13 @@
             "id": "ocw:mit_ocw_6_006_data_structures:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
           }
-        ]
+        ],
+        "treeOrder": 6
       }
     },
     {
@@ -260,15 +312,19 @@
       "titleEn": "Algorithmic paradigms",
       "description": "The learner can compare and apply major algorithmic paradigms to representative classes of problems.",
       "descriptionEn": "The learner can compare and apply major algorithmic paradigms to representative classes of problems.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "CORE",
-        "CS"
+        "CS",
+        "cluster:topic"
       ],
       "requires": [
         "6922ff7f-8489-5c00-9b91-02c450584253"
       ],
-      "contains": [],
+      "contains": [
+        "89b38d81-5109-5392-acfc-1ef93ddb6942",
+        "6ede2471-bc05-514a-8b2e-bf17c037b465"
+      ],
       "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/lecture-notes/",
       "dimensionTags": {
         "framework": "mit-ocw-6-006",
@@ -294,7 +350,7 @@
             "id": "ocw:mit_ocw_6_006_algorithmic_paradigms:practice",
             "type": "practice",
             "title": "6.006 Introduction to Algorithms - practice",
-            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/problem-sets/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
             "resourceType": "problem-set",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -303,7 +359,7 @@
             "id": "ocw:mit_ocw_6_006_algorithmic_paradigms:assessment",
             "type": "assessment",
             "title": "6.006 Introduction to Algorithms - assessment",
-            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/exams/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
             "resourceType": "exam",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -312,12 +368,13 @@
             "id": "ocw:mit_ocw_6_006_algorithmic_paradigms:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
           }
-        ]
+        ],
+        "treeOrder": 9
       }
     },
     {
@@ -326,16 +383,20 @@
       "titleEn": "Runtime and performance analysis",
       "description": "The learner can analyze runtime behavior and justify complexity statements with appropriate asymptotic reasoning.",
       "descriptionEn": "The learner can analyze runtime behavior and justify complexity statements with appropriate asymptotic reasoning.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "CORE",
-        "CS"
+        "CS",
+        "cluster:topic"
       ],
       "requires": [
         "e8319cfe-b096-519c-a212-763ef3153963"
       ],
-      "contains": [],
-      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/exams/",
+      "contains": [
+        "6aca971d-0ae7-51f6-9aa3-c2dd36b2412a",
+        "0ce0fcc8-da49-525b-a948-d78881ac229d"
+      ],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
       "dimensionTags": {
         "framework": "mit-ocw-6-006",
         "demandLevel": "AB2",
@@ -351,7 +412,7 @@
             "id": "ocw:mit_ocw_6_006_runtime_analysis:concept",
             "type": "concept",
             "title": "Runtime and performance analysis - concept source",
-            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/exams/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
             "resourceType": "lecture-notes",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -360,7 +421,7 @@
             "id": "ocw:mit_ocw_6_006_runtime_analysis:practice",
             "type": "practice",
             "title": "6.006 Introduction to Algorithms - practice",
-            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/problem-sets/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
             "resourceType": "problem-set",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -369,7 +430,7 @@
             "id": "ocw:mit_ocw_6_006_runtime_analysis:assessment",
             "type": "assessment",
             "title": "6.006 Introduction to Algorithms - assessment",
-            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/exams/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
             "resourceType": "exam",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -378,12 +439,13 @@
             "id": "ocw:mit_ocw_6_006_runtime_analysis:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
           }
-        ]
+        ],
+        "treeOrder": 12
       }
     },
     {
@@ -392,16 +454,20 @@
       "titleEn": "Algorithmic trade-offs",
       "description": "The learner can evaluate and communicate time-memory-complexity trade-offs when selecting algorithmic solutions.",
       "descriptionEn": "The learner can evaluate and communicate time-memory-complexity trade-offs when selecting algorithmic solutions.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "CORE",
-        "CS"
+        "CS",
+        "cluster:topic"
       ],
       "requires": [
         "ae60df5f-8712-58ba-849d-764f1e07d8a8"
       ],
-      "contains": [],
-      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/exams/",
+      "contains": [
+        "6cee4f19-7b28-5cf9-bfea-f811d3fb952a",
+        "eb69d942-fba5-565c-b405-891b8fec194e"
+      ],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
       "dimensionTags": {
         "framework": "mit-ocw-6-006",
         "demandLevel": "AB3",
@@ -417,7 +483,7 @@
             "id": "ocw:mit_ocw_6_006_tradeoffs:concept",
             "type": "concept",
             "title": "Algorithmic trade-offs - concept source",
-            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/exams/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
             "resourceType": "lecture-notes",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -426,7 +492,7 @@
             "id": "ocw:mit_ocw_6_006_tradeoffs:practice",
             "type": "practice",
             "title": "6.006 Introduction to Algorithms - practice",
-            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/problem-sets/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
             "resourceType": "problem-set",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -435,7 +501,7 @@
             "id": "ocw:mit_ocw_6_006_tradeoffs:assessment",
             "type": "assessment",
             "title": "6.006 Introduction to Algorithms - assessment",
-            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/exams/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
             "resourceType": "exam",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -444,7 +510,1114 @@
             "id": "ocw:mit_ocw_6_006_tradeoffs:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 15
+      }
+    },
+    {
+      "id": "b2a693f5-c86c-5013-8a8b-c1f15b8548fe",
+      "title": "Formalize computational problems and interfaces",
+      "titleEn": "Formalize computational problems and interfaces",
+      "description": "The learner can formalize computational problems, define input/output interfaces, and select suitable representations.",
+      "descriptionEn": "The learner can formalize computational problems, define input/output interfaces, and select suitable representations.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "6acd4dfe-d488-57d3-8c1d-e96cdce84a7a"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-1-algorithms-and-computation/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.006"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:formalize-computational-problems-and-interfaces:concept",
+            "type": "concept",
+            "title": "Formalize computational problems and interfaces - concept source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-1-algorithms-and-computation/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:formalize-computational-problems-and-interfaces:practice",
+            "type": "practice",
+            "title": "Formalize computational problems and interfaces - practice source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:formalize-computational-problems-and-interfaces:assessment",
+            "type": "assessment",
+            "title": "Formalize computational problems and interfaces - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:formalize-computational-problems-and-interfaces:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 4
+      }
+    },
+    {
+      "id": "3ac89412-0ded-5a1a-880c-10bfa006e4f1",
+      "title": "Choose abstract data-model assumptions",
+      "titleEn": "Choose abstract data-model assumptions",
+      "description": "The learner can choose abstract data-model assumptions that align complexity guarantees with target use cases.",
+      "descriptionEn": "The learner can choose abstract data-model assumptions that align complexity guarantees with target use cases.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "b2a693f5-c86c-5013-8a8b-c1f15b8548fe"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-2-data-structures-and-dynamic-arrays/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.006"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:choose-abstract-data-model-assumptions:concept",
+            "type": "concept",
+            "title": "Choose abstract data-model assumptions - concept source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-2-data-structures-and-dynamic-arrays/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:choose-abstract-data-model-assumptions:practice",
+            "type": "practice",
+            "title": "Choose abstract data-model assumptions - practice source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:choose-abstract-data-model-assumptions:assessment",
+            "type": "assessment",
+            "title": "Choose abstract data-model assumptions - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:choose-abstract-data-model-assumptions:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 5
+      }
+    },
+    {
+      "id": "8f91e21a-ff7f-5d74-a7eb-3aeb0604d7b2",
+      "title": "Implement and analyze tree-based structures",
+      "titleEn": "Implement and analyze tree-based structures",
+      "description": "The learner can implement core tree-based structures and reason about update/query cost trade-offs.",
+      "descriptionEn": "The learner can implement core tree-based structures and reason about update/query cost trade-offs.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "0b1575ab-408b-5256-ba96-25beef90f628"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-6-binary-trees-part-1/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.006"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:implement-and-analyze-tree-based-structures:concept",
+            "type": "concept",
+            "title": "Implement and analyze tree-based structures - concept source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-6-binary-trees-part-1/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:implement-and-analyze-tree-based-structures:practice",
+            "type": "practice",
+            "title": "Implement and analyze tree-based structures - practice source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:implement-and-analyze-tree-based-structures:assessment",
+            "type": "assessment",
+            "title": "Implement and analyze tree-based structures - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:implement-and-analyze-tree-based-structures:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 7
+      }
+    },
+    {
+      "id": "2ad6a613-59db-596b-a1cb-37940319589e",
+      "title": "Use heaps and balanced sets for priority workflows",
+      "titleEn": "Use heaps and balanced sets for priority workflows",
+      "description": "The learner can apply heaps or balanced search structures to support efficient priority and set operations.",
+      "descriptionEn": "The learner can apply heaps or balanced search structures to support efficient priority and set operations.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "8f91e21a-ff7f-5d74-a7eb-3aeb0604d7b2"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-8-binary-heaps/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.006"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:use-heaps-and-balanced-sets-for-priority-workflows:concept",
+            "type": "concept",
+            "title": "Use heaps and balanced sets for priority workflows - concept source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-8-binary-heaps/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:use-heaps-and-balanced-sets-for-priority-workflows:practice",
+            "type": "practice",
+            "title": "Use heaps and balanced sets for priority workflows - practice source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:use-heaps-and-balanced-sets-for-priority-workflows:assessment",
+            "type": "assessment",
+            "title": "Use heaps and balanced sets for priority workflows - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:use-heaps-and-balanced-sets-for-priority-workflows:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 8
+      }
+    },
+    {
+      "id": "89b38d81-5109-5392-acfc-1ef93ddb6942",
+      "title": "Apply divide-and-conquer and graph-search paradigms",
+      "titleEn": "Apply divide-and-conquer and graph-search paradigms",
+      "description": "The learner can apply divide-and-conquer and graph-search paradigms to representative problem classes.",
+      "descriptionEn": "The learner can apply divide-and-conquer and graph-search paradigms to representative problem classes.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "6922ff7f-8489-5c00-9b91-02c450584253"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-10-depth-first-search/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.006"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:apply-divide-and-conquer-and-graph-search-paradigms:concept",
+            "type": "concept",
+            "title": "Apply divide-and-conquer and graph-search paradigms - concept source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-10-depth-first-search/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:apply-divide-and-conquer-and-graph-search-paradigms:practice",
+            "type": "practice",
+            "title": "Apply divide-and-conquer and graph-search paradigms - practice source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:apply-divide-and-conquer-and-graph-search-paradigms:assessment",
+            "type": "assessment",
+            "title": "Apply divide-and-conquer and graph-search paradigms - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:apply-divide-and-conquer-and-graph-search-paradigms:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 10
+      }
+    },
+    {
+      "id": "6ede2471-bc05-514a-8b2e-bf17c037b465",
+      "title": "Apply dynamic programming decomposition patterns",
+      "titleEn": "Apply dynamic programming decomposition patterns",
+      "description": "The learner can set up dynamic-programming states/recurrences and optimize transition structure choices.",
+      "descriptionEn": "The learner can set up dynamic-programming states/recurrences and optimize transition structure choices.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "89b38d81-5109-5392-acfc-1ef93ddb6942"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-16-dynamic-programming-part-2-lcs-lis-coins/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.006"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:apply-dynamic-programming-decomposition-patterns:concept",
+            "type": "concept",
+            "title": "Apply dynamic programming decomposition patterns - concept source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-16-dynamic-programming-part-2-lcs-lis-coins/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:apply-dynamic-programming-decomposition-patterns:practice",
+            "type": "practice",
+            "title": "Apply dynamic programming decomposition patterns - practice source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:apply-dynamic-programming-decomposition-patterns:assessment",
+            "type": "assessment",
+            "title": "Apply dynamic programming decomposition patterns - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:apply-dynamic-programming-decomposition-patterns:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 11
+      }
+    },
+    {
+      "id": "6aca971d-0ae7-51f6-9aa3-c2dd36b2412a",
+      "title": "Derive asymptotic runtime bounds from recurrences",
+      "titleEn": "Derive asymptotic runtime bounds from recurrences",
+      "description": "The learner can derive asymptotic runtime bounds and justify dominant-term approximations for algorithm growth.",
+      "descriptionEn": "The learner can derive asymptotic runtime bounds and justify dominant-term approximations for algorithm growth.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "e8319cfe-b096-519c-a212-763ef3153963"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-19-complexity/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.006"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:derive-asymptotic-runtime-bounds-from-recurrences:concept",
+            "type": "concept",
+            "title": "Derive asymptotic runtime bounds from recurrences - concept source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-19-complexity/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:derive-asymptotic-runtime-bounds-from-recurrences:practice",
+            "type": "practice",
+            "title": "Derive asymptotic runtime bounds from recurrences - practice source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:derive-asymptotic-runtime-bounds-from-recurrences:assessment",
+            "type": "assessment",
+            "title": "Derive asymptotic runtime bounds from recurrences - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:derive-asymptotic-runtime-bounds-from-recurrences:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 13
+      }
+    },
+    {
+      "id": "0ce0fcc8-da49-525b-a948-d78881ac229d",
+      "title": "Evaluate shortest-path algorithm complexity trade-offs",
+      "titleEn": "Evaluate shortest-path algorithm complexity trade-offs",
+      "description": "The learner can compare shortest-path algorithm choices using input constraints and complexity implications.",
+      "descriptionEn": "The learner can compare shortest-path algorithm choices using input constraints and complexity implications.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "6aca971d-0ae7-51f6-9aa3-c2dd36b2412a"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-13-dijkstra/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.006"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:evaluate-shortest-path-algorithm-complexity-trade-offs:concept",
+            "type": "concept",
+            "title": "Evaluate shortest-path algorithm complexity trade-offs - concept source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-13-dijkstra/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:evaluate-shortest-path-algorithm-complexity-trade-offs:practice",
+            "type": "practice",
+            "title": "Evaluate shortest-path algorithm complexity trade-offs - practice source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:evaluate-shortest-path-algorithm-complexity-trade-offs:assessment",
+            "type": "assessment",
+            "title": "Evaluate shortest-path algorithm complexity trade-offs - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:evaluate-shortest-path-algorithm-complexity-trade-offs:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 14
+      }
+    },
+    {
+      "id": "6cee4f19-7b28-5cf9-bfea-f811d3fb952a",
+      "title": "Balance time-memory trade-offs across algorithm families",
+      "titleEn": "Balance time-memory trade-offs across algorithm families",
+      "description": "The learner can evaluate time-memory trade-offs across algorithm families and explain decision consequences.",
+      "descriptionEn": "The learner can evaluate time-memory trade-offs across algorithm families and explain decision consequences.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "ae60df5f-8712-58ba-849d-764f1e07d8a8"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-20-course-review/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-006",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.006"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:balance-time-memory-trade-offs-across-algorithm-families:concept",
+            "type": "concept",
+            "title": "Balance time-memory trade-offs across algorithm families - concept source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/lecture-20-course-review/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:balance-time-memory-trade-offs-across-algorithm-families:practice",
+            "type": "practice",
+            "title": "Balance time-memory trade-offs across algorithm families - practice source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:balance-time-memory-trade-offs-across-algorithm-families:assessment",
+            "type": "assessment",
+            "title": "Balance time-memory trade-offs across algorithm families - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:balance-time-memory-trade-offs-across-algorithm-families:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 16
+      }
+    },
+    {
+      "id": "eb69d942-fba5-565c-b405-891b8fec194e",
+      "title": "Synthesize problem-session and quiz feedback loops",
+      "titleEn": "Synthesize problem-session and quiz feedback loops",
+      "description": "The learner can use problem-session and quiz feedback to revise strategy selection and improve solution robustness.",
+      "descriptionEn": "The learner can use problem-session and quiz feedback to revise strategy selection and improve solution robustness.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "6cee4f19-7b28-5cf9-bfea-f811d3fb952a"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/problem-session-5/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-006",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.006"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:synthesize-problem-session-and-quiz-feedback-loops:concept",
+            "type": "concept",
+            "title": "Synthesize problem-session and quiz feedback loops - concept source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/problem-session-5/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:synthesize-problem-session-and-quiz-feedback-loops:practice",
+            "type": "practice",
+            "title": "Synthesize problem-session and quiz feedback loops - practice source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:synthesize-problem-session-and-quiz-feedback-loops:assessment",
+            "type": "assessment",
+            "title": "Synthesize problem-session and quiz feedback loops - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:synthesize-problem-session-and-quiz-feedback-loops:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 17
+      }
+    },
+    {
+      "id": "d6ddd384-5e7e-57d7-9899-562acf3cc89d",
+      "title": "Extract strategy corrections from quiz review artifacts",
+      "titleEn": "Extract strategy corrections from quiz review artifacts",
+      "description": "The learner can extract actionable strategy corrections from quiz review artifacts and apply them to new problems.",
+      "descriptionEn": "The learner can extract actionable strategy corrections from quiz review artifacts and apply them to new problems.",
+      "weight": 1,
+      "tags": [
+        "module:6.006",
+        "CORE",
+        "CS",
+        "license:CC-BY-NC-SA-4.0",
+        "atomic"
+      ],
+      "requires": [
+        "995e87f2-d8aa-545e-88f0-e5190ddde806"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/quiz-3-review/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.006"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:extract-strategy-corrections-from-quiz-review-artifacts:concept",
+            "type": "concept",
+            "title": "Extract strategy corrections from quiz review artifacts - concept source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/quiz-3-review/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:extract-strategy-corrections-from-quiz-review-artifacts:practice",
+            "type": "practice",
+            "title": "Extract strategy corrections from quiz review artifacts - practice source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:extract-strategy-corrections-from-quiz-review-artifacts:assessment",
+            "type": "assessment",
+            "title": "Extract strategy corrections from quiz review artifacts - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:extract-strategy-corrections-from-quiz-review-artifacts:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 19
+      }
+    },
+    {
+      "id": "82363e2b-116f-5b31-bee5-905205a774d3",
+      "title": "Generalize problem-session methods to unseen instances",
+      "titleEn": "Generalize problem-session methods to unseen instances",
+      "description": "The learner can generalize methods from problem sessions to unseen algorithmic instances with justified adaptations.",
+      "descriptionEn": "The learner can generalize methods from problem sessions to unseen algorithmic instances with justified adaptations.",
+      "weight": 1,
+      "tags": [
+        "module:6.006",
+        "CORE",
+        "CS",
+        "license:CC-BY-NC-SA-4.0",
+        "atomic"
+      ],
+      "requires": [
+        "d6ddd384-5e7e-57d7-9899-562acf3cc89d"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/problem-session-5/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.006"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:generalize-problem-session-methods-to-unseen-instances:concept",
+            "type": "concept",
+            "title": "Generalize problem-session methods to unseen instances - concept source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/problem-session-5/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:generalize-problem-session-methods-to-unseen-instances:practice",
+            "type": "practice",
+            "title": "Generalize problem-session methods to unseen instances - practice source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:generalize-problem-session-methods-to-unseen-instances:assessment",
+            "type": "assessment",
+            "title": "Generalize problem-session methods to unseen instances - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:generalize-problem-session-methods-to-unseen-instances:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 20
+      }
+    },
+    {
+      "id": "02ab68ed-c857-52c3-9248-f2a903d45d74",
+      "title": "Quiz and problem-session integration",
+      "titleEn": "Quiz and problem-session integration",
+      "description": "The learner can integrate quiz review and problem-session feedback into algorithm strategy improvements.",
+      "descriptionEn": "The learner can integrate quiz review and problem-session feedback into algorithm strategy improvements.",
+      "weight": 2,
+      "tags": [
+        "module:6.006",
+        "CORE",
+        "CS",
+        "license:CC-BY-NC-SA-4.0",
+        "cluster:crosscutting"
+      ],
+      "requires": [
+        "995e87f2-d8aa-545e-88f0-e5190ddde806"
+      ],
+      "contains": [
+        "d6ddd384-5e7e-57d7-9899-562acf3cc89d",
+        "82363e2b-116f-5b31-bee5-905205a774d3"
+      ],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.006"
+      },
+      "extendedData": {
+        "treeOrder": 18,
+        "sourceLinks": [
+          {
+            "id": "ocw:02ab68ed-c857-52c3-9248-f2a903d45d74:concept",
+            "type": "concept",
+            "title": "Quiz and problem-session integration - concept source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "course-overview",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:02ab68ed-c857-52c3-9248-f2a903d45d74:practice",
+            "type": "practice",
+            "title": "Quiz and problem-session integration - practice source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:02ab68ed-c857-52c3-9248-f2a903d45d74:assessment",
+            "type": "assessment",
+            "title": "Quiz and problem-session integration - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/mit6_006s20_q3_pdf/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:02ab68ed-c857-52c3-9248-f2a903d45d74:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ]
+      }
+    },
+    {
+      "id": "6738a38f-3414-5693-a24a-a829ecb598c9",
+      "title": "Build study plans from resource index structures",
+      "titleEn": "Build study plans from resource index structures",
+      "description": "The learner can build study plans from the resource index and prioritize weak algorithm areas systematically.",
+      "descriptionEn": "The learner can build study plans from the resource index and prioritize weak algorithm areas systematically.",
+      "weight": 1,
+      "tags": [
+        "module:6.006",
+        "CORE",
+        "CS",
+        "license:CC-BY-NC-SA-4.0",
+        "atomic"
+      ],
+      "requires": [
+        "02ab68ed-c857-52c3-9248-f2a903d45d74"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/resource-index/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.006"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:build-study-plans-from-resource-index-structures:concept",
+            "type": "concept",
+            "title": "Build study plans from resource index structures - concept source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/resource-index/",
+            "resourceType": "course-page",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:build-study-plans-from-resource-index-structures:practice",
+            "type": "practice",
+            "title": "Build study plans from resource index structures - practice source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:build-study-plans-from-resource-index-structures:assessment",
+            "type": "assessment",
+            "title": "Build study plans from resource index structures - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:build-study-plans-from-resource-index-structures:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 22
+      }
+    },
+    {
+      "id": "ff46d875-a5c2-57a2-ab45-b966ba1f1762",
+      "title": "Use targeted practice-problem sets for skill closure",
+      "titleEn": "Use targeted practice-problem sets for skill closure",
+      "description": "The learner can use targeted practice-problem sets to close skill gaps identified during performance analysis.",
+      "descriptionEn": "The learner can use targeted practice-problem sets to close skill gaps identified during performance analysis.",
+      "weight": 1,
+      "tags": [
+        "module:6.006",
+        "CORE",
+        "CS",
+        "license:CC-BY-NC-SA-4.0",
+        "atomic"
+      ],
+      "requires": [
+        "6738a38f-3414-5693-a24a-a829ecb598c9"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/practice-problems/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.006"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:use-targeted-practice-problem-sets-for-skill-closure:concept",
+            "type": "concept",
+            "title": "Use targeted practice-problem sets for skill closure - concept source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/practice-problems/",
+            "resourceType": "course-page",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:use-targeted-practice-problem-sets-for-skill-closure:practice",
+            "type": "practice",
+            "title": "Use targeted practice-problem sets for skill closure - practice source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:use-targeted-practice-problem-sets-for-skill-closure:assessment",
+            "type": "assessment",
+            "title": "Use targeted practice-problem sets for skill closure - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/quizzes/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_006:use-targeted-practice-problem-sets-for-skill-closure:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 23
+      }
+    },
+    {
+      "id": "29f2fb1c-be03-58e3-abca-4c45457bb7ab",
+      "title": "Resource indexing and deliberate practice workflow",
+      "titleEn": "Resource indexing and deliberate practice workflow",
+      "description": "The learner can use resource indexing to build deliberate algorithm practice routines across course themes.",
+      "descriptionEn": "The learner can use resource indexing to build deliberate algorithm practice routines across course themes.",
+      "weight": 2,
+      "tags": [
+        "module:6.006",
+        "CORE",
+        "CS",
+        "license:CC-BY-NC-SA-4.0",
+        "cluster:crosscutting"
+      ],
+      "requires": [
+        "02ab68ed-c857-52c3-9248-f2a903d45d74"
+      ],
+      "contains": [
+        "6738a38f-3414-5693-a24a-a829ecb598c9",
+        "ff46d875-a5c2-57a2-ab45-b966ba1f1762"
+      ],
+      "sourceRef": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-006",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.006"
+      },
+      "extendedData": {
+        "treeOrder": 21,
+        "sourceLinks": [
+          {
+            "id": "ocw:29f2fb1c-be03-58e3-abca-4c45457bb7ab:concept",
+            "type": "concept",
+            "title": "Resource indexing and deliberate practice workflow - concept source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "resourceType": "course-overview",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:29f2fb1c-be03-58e3-abca-4c45457bb7ab:practice",
+            "type": "practice",
+            "title": "Resource indexing and deliberate practice workflow - practice source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:29f2fb1c-be03-58e3-abca-4c45457bb7ab:assessment",
+            "type": "assessment",
+            "title": "Resource indexing and deliberate practice workflow - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/mit6_006s20_q3_pdf/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:29f2fb1c-be03-58e3-abca-4c45457bb7ab:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"

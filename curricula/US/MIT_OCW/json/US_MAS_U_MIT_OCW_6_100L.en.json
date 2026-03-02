@@ -27,7 +27,7 @@
       "titleEn": "6.100L Intro to CS and Python",
       "description": "The learner can complete the 6.100L sequence from Python basics to consistent problem-solving practice.",
       "descriptionEn": "The learner can complete the 6.100L sequence from Python basics to consistent problem-solving practice.",
-      "weight": 7,
+      "weight": 17,
       "tags": [
         "root",
         "module:6.100L",
@@ -43,7 +43,9 @@
         "84ee9069-ca0d-5ae8-b8fb-b69007c9c196",
         "6abe92b7-791c-5835-b739-3550d7e822a5",
         "b14c9023-03f7-5a67-aaff-c24d8cc70c0c",
-        "f0dc1ac0-b588-5b2a-bc6c-c6d30cc9ec53"
+        "f0dc1ac0-b588-5b2a-bc6c-c6d30cc9ec53",
+        "4eca5f86-7483-5f97-accf-8860706d9ba9",
+        "abfd0a24-e3ca-52c8-8637-c296aebce7be"
       ],
       "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
       "dimensionTags": {
@@ -54,6 +56,47 @@
         "phase": "Module",
         "area": "Computer Science",
         "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "treeOrder": 1,
+        "sourceLinks": [
+          {
+            "id": "ocw:ec426731-189b-5d35-b053-9b0c5417d069:concept",
+            "type": "concept",
+            "title": "6.100L Intro to CS and Python - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "course-overview",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:ec426731-189b-5d35-b053-9b0c5417d069:practice",
+            "type": "practice",
+            "title": "6.100L Intro to CS and Python - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/programming-assignments-with-examples/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:ec426731-189b-5d35-b053-9b0c5417d069:assessment",
+            "type": "assessment",
+            "title": "6.100L Intro to CS and Python - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/problem-sets/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:ec426731-189b-5d35-b053-9b0c5417d069:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ]
       }
     },
     {
@@ -104,7 +147,7 @@
             "id": "ocw:mit_ocw_6_100l_why:assessment",
             "type": "assessment",
             "title": "6.100L Introduction to CS and Python - assessment",
-            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/problem-sets/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
             "resourceType": "problem-set",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -113,12 +156,13 @@
             "id": "ocw:mit_ocw_6_100l_why:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
           }
-        ]
+        ],
+        "treeOrder": 2
       }
     },
     {
@@ -127,16 +171,20 @@
       "titleEn": "Python basics and data types",
       "description": "The learner can use core Python syntax, variables, and data types in small programs.",
       "descriptionEn": "The learner can use core Python syntax, variables, and data types in small programs.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "CORE",
-        "CS"
+        "CS",
+        "cluster:topic"
       ],
       "requires": [
         "3ec331f0-86de-550f-866f-7fa34d6e6dd6"
       ],
-      "contains": [],
-      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-slides-code/",
+      "contains": [
+        "df61e344-2b9d-5ac3-ad47-a4c96d676c40",
+        "5373a275-ee31-5c08-9446-73b482654a02"
+      ],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/material-by-lecture/",
       "dimensionTags": {
         "framework": "mit-ocw-6-100l",
         "demandLevel": "AB2",
@@ -152,7 +200,7 @@
             "id": "ocw:mit_ocw_6_100l_python_basics:concept",
             "type": "concept",
             "title": "Python basics and data types - concept source",
-            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-slides-code/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/material-by-lecture/",
             "resourceType": "lecture-notes",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -170,7 +218,7 @@
             "id": "ocw:mit_ocw_6_100l_python_basics:assessment",
             "type": "assessment",
             "title": "6.100L Introduction to CS and Python - assessment",
-            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/problem-sets/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
             "resourceType": "problem-set",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -179,12 +227,13 @@
             "id": "ocw:mit_ocw_6_100l_python_basics:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
           }
-        ]
+        ],
+        "treeOrder": 3
       }
     },
     {
@@ -193,16 +242,20 @@
       "titleEn": "Control flow",
       "description": "The learner can use conditionals and branching logic to control program behavior.",
       "descriptionEn": "The learner can use conditionals and branching logic to control program behavior.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "CORE",
-        "CS"
+        "CS",
+        "cluster:topic"
       ],
       "requires": [
         "3fcead85-ebb2-5995-94ca-8510167b7cc3"
       ],
-      "contains": [],
-      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-slides-code/",
+      "contains": [
+        "fdcc7e91-676f-515a-ac60-0cf71c4cc654",
+        "fb3cfafa-5637-54a1-af9f-23015c4ab01a"
+      ],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/material-by-lecture/",
       "dimensionTags": {
         "framework": "mit-ocw-6-100l",
         "demandLevel": "AB2",
@@ -218,7 +271,7 @@
             "id": "ocw:mit_ocw_6_100l_control_flow:concept",
             "type": "concept",
             "title": "Control flow - concept source",
-            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-slides-code/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/material-by-lecture/",
             "resourceType": "lecture-notes",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -236,7 +289,7 @@
             "id": "ocw:mit_ocw_6_100l_control_flow:assessment",
             "type": "assessment",
             "title": "6.100L Introduction to CS and Python - assessment",
-            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/problem-sets/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
             "resourceType": "problem-set",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -245,12 +298,13 @@
             "id": "ocw:mit_ocw_6_100l_control_flow:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
           }
-        ]
+        ],
+        "treeOrder": 6
       }
     },
     {
@@ -259,16 +313,20 @@
       "titleEn": "Iteration and search",
       "description": "The learner can solve iterative tasks and basic search problems using loops and systematic refinement.",
       "descriptionEn": "The learner can solve iterative tasks and basic search problems using loops and systematic refinement.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "CORE",
-        "CS"
+        "CS",
+        "cluster:topic"
       ],
       "requires": [
         "3547201d-f8b1-5d46-bfe3-4dfdb3f87c22"
       ],
-      "contains": [],
-      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-slides-code/",
+      "contains": [
+        "973e2747-3591-5575-b985-e81b75610bc5",
+        "22a6a331-64ed-513f-9796-c5e693ab4ff2"
+      ],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/material-by-lecture/",
       "dimensionTags": {
         "framework": "mit-ocw-6-100l",
         "demandLevel": "AB2",
@@ -284,7 +342,7 @@
             "id": "ocw:mit_ocw_6_100l_iteration_search:concept",
             "type": "concept",
             "title": "Iteration and search - concept source",
-            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-slides-code/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/material-by-lecture/",
             "resourceType": "lecture-notes",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -302,7 +360,7 @@
             "id": "ocw:mit_ocw_6_100l_iteration_search:assessment",
             "type": "assessment",
             "title": "6.100L Introduction to CS and Python - assessment",
-            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/problem-sets/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
             "resourceType": "problem-set",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -311,12 +369,13 @@
             "id": "ocw:mit_ocw_6_100l_iteration_search:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
           }
-        ]
+        ],
+        "treeOrder": 9
       }
     },
     {
@@ -325,16 +384,20 @@
       "titleEn": "Functions and abstraction",
       "description": "The learner can decompose programs into reusable functions and apply abstraction principles.",
       "descriptionEn": "The learner can decompose programs into reusable functions and apply abstraction principles.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "CORE",
-        "CS"
+        "CS",
+        "cluster:topic"
       ],
       "requires": [
         "84ee9069-ca0d-5ae8-b8fb-b69007c9c196"
       ],
-      "contains": [],
-      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-slides-code/",
+      "contains": [
+        "3b87a2b0-8c28-5100-abfb-adf7accdcfa9",
+        "cb782ee9-0099-55db-bbc4-45c0ac3aff5d"
+      ],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/material-by-lecture/",
       "dimensionTags": {
         "framework": "mit-ocw-6-100l",
         "demandLevel": "AB2",
@@ -350,7 +413,7 @@
             "id": "ocw:mit_ocw_6_100l_functions:concept",
             "type": "concept",
             "title": "Functions and abstraction - concept source",
-            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-slides-code/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/material-by-lecture/",
             "resourceType": "lecture-notes",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -368,7 +431,7 @@
             "id": "ocw:mit_ocw_6_100l_functions:assessment",
             "type": "assessment",
             "title": "6.100L Introduction to CS and Python - assessment",
-            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/problem-sets/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
             "resourceType": "problem-set",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -377,12 +440,13 @@
             "id": "ocw:mit_ocw_6_100l_functions:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
           }
-        ]
+        ],
+        "treeOrder": 12
       }
     },
     {
@@ -391,16 +455,20 @@
       "titleEn": "Core data structures",
       "description": "The learner can use strings, lists, and tuples to model and transform data in beginner-level programs.",
       "descriptionEn": "The learner can use strings, lists, and tuples to model and transform data in beginner-level programs.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "CORE",
-        "CS"
+        "CS",
+        "cluster:topic"
       ],
       "requires": [
         "6abe92b7-791c-5835-b739-3550d7e822a5"
       ],
-      "contains": [],
-      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-slides-code/",
+      "contains": [
+        "b53e8ff8-390b-535e-9bca-b34ff24fb360",
+        "4981fdc2-b881-5f6d-a2ba-537b34f4eeff"
+      ],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/material-by-lecture/",
       "dimensionTags": {
         "framework": "mit-ocw-6-100l",
         "demandLevel": "AB2",
@@ -416,7 +484,7 @@
             "id": "ocw:mit_ocw_6_100l_data_structures:concept",
             "type": "concept",
             "title": "Core data structures - concept source",
-            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-slides-code/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/material-by-lecture/",
             "resourceType": "lecture-notes",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -434,7 +502,7 @@
             "id": "ocw:mit_ocw_6_100l_data_structures:assessment",
             "type": "assessment",
             "title": "6.100L Introduction to CS and Python - assessment",
-            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/problem-sets/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
             "resourceType": "problem-set",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -443,12 +511,13 @@
             "id": "ocw:mit_ocw_6_100l_data_structures:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
           }
-        ]
+        ],
+        "treeOrder": 15
       }
     },
     {
@@ -457,16 +526,20 @@
       "titleEn": "Practice loop with finger exercises",
       "description": "The learner can improve coding fluency through repeated finger exercises and problem-set style practice.",
       "descriptionEn": "The learner can improve coding fluency through repeated finger exercises and problem-set style practice.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "CORE",
         "CS",
-        "practice"
+        "practice",
+        "cluster:topic"
       ],
       "requires": [
         "b14c9023-03f7-5a67-aaff-c24d8cc70c0c"
       ],
-      "contains": [],
+      "contains": [
+        "85a735d5-212c-561b-9e03-4efee065be27",
+        "517fc74d-9cbf-5024-8d61-3ce207deb978"
+      ],
       "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
       "dimensionTags": {
         "framework": "mit-ocw-6-100l",
@@ -501,7 +574,7 @@
             "id": "ocw:mit_ocw_6_100l_practice_loop:assessment",
             "type": "assessment",
             "title": "6.100L Introduction to CS and Python - assessment",
-            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/problem-sets/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
             "resourceType": "problem-set",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -510,7 +583,1252 @@
             "id": "ocw:mit_ocw_6_100l_practice_loop:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 18
+      }
+    },
+    {
+      "id": "df61e344-2b9d-5ac3-ad47-a4c96d676c40",
+      "title": "Use core Python syntax and variable bindings",
+      "titleEn": "Use core Python syntax and variable bindings",
+      "description": "The learner can write small Python programs with variables, expressions, and typed values using correct syntax.",
+      "descriptionEn": "The learner can write small Python programs with variables, expressions, and typed values using correct syntax.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "3ec331f0-86de-550f-866f-7fa34d6e6dd6"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-1-introduction/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:use-core-python-syntax-and-variable-bindings:concept",
+            "type": "concept",
+            "title": "Use core Python syntax and variable bindings - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-1-introduction/",
+            "resourceType": "lecture-notes",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:use-core-python-syntax-and-variable-bindings:practice",
+            "type": "practice",
+            "title": "Use core Python syntax and variable bindings - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:use-core-python-syntax-and-variable-bindings:assessment",
+            "type": "assessment",
+            "title": "Use core Python syntax and variable bindings - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:use-core-python-syntax-and-variable-bindings:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 4
+      }
+    },
+    {
+      "id": "5373a275-ee31-5c08-9446-73b482654a02",
+      "title": "Process strings and branch on input conditions",
+      "titleEn": "Process strings and branch on input conditions",
+      "description": "The learner can process string inputs/outputs and implement branching logic for conditional behavior.",
+      "descriptionEn": "The learner can process string inputs/outputs and implement branching logic for conditional behavior.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "df61e344-2b9d-5ac3-ad47-a4c96d676c40"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-2-strings-inputoutput-branching/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:process-strings-and-branch-on-input-conditions:concept",
+            "type": "concept",
+            "title": "Process strings and branch on input conditions - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-2-strings-inputoutput-branching/",
+            "resourceType": "lecture-notes",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:process-strings-and-branch-on-input-conditions:practice",
+            "type": "practice",
+            "title": "Process strings and branch on input conditions - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:process-strings-and-branch-on-input-conditions:assessment",
+            "type": "assessment",
+            "title": "Process strings and branch on input conditions - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:process-strings-and-branch-on-input-conditions:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 5
+      }
+    },
+    {
+      "id": "fdcc7e91-676f-515a-ac60-0cf71c4cc654",
+      "title": "Build loop-based iterative control structures",
+      "titleEn": "Build loop-based iterative control structures",
+      "description": "The learner can implement while/for loop control structures and reason about loop invariants and termination.",
+      "descriptionEn": "The learner can implement while/for loop control structures and reason about loop invariants and termination.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "3fcead85-ebb2-5995-94ca-8510167b7cc3"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-3-iteration/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:build-loop-based-iterative-control-structures:concept",
+            "type": "concept",
+            "title": "Build loop-based iterative control structures - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-3-iteration/",
+            "resourceType": "lecture-notes",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:build-loop-based-iterative-control-structures:practice",
+            "type": "practice",
+            "title": "Build loop-based iterative control structures - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:build-loop-based-iterative-control-structures:assessment",
+            "type": "assessment",
+            "title": "Build loop-based iterative control structures - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:build-loop-based-iterative-control-structures:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 7
+      }
+    },
+    {
+      "id": "fb3cfafa-5637-54a1-af9f-23015c4ab01a",
+      "title": "Combine string traversal with search-by-testing",
+      "titleEn": "Combine string traversal with search-by-testing",
+      "description": "The learner can combine loops and conditionals to traverse strings and perform guess-and-check style searches.",
+      "descriptionEn": "The learner can combine loops and conditionals to traverse strings and perform guess-and-check style searches.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "fdcc7e91-676f-515a-ac60-0cf71c4cc654"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-4-loops-over-strings-guess-and-check-binary/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:combine-string-traversal-with-search-by-testing:concept",
+            "type": "concept",
+            "title": "Combine string traversal with search-by-testing - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-4-loops-over-strings-guess-and-check-binary/",
+            "resourceType": "lecture-notes",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:combine-string-traversal-with-search-by-testing:practice",
+            "type": "practice",
+            "title": "Combine string traversal with search-by-testing - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:combine-string-traversal-with-search-by-testing:assessment",
+            "type": "assessment",
+            "title": "Combine string traversal with search-by-testing - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:combine-string-traversal-with-search-by-testing:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 8
+      }
+    },
+    {
+      "id": "973e2747-3591-5575-b985-e81b75610bc5",
+      "title": "Use approximation methods with floating-point limits",
+      "titleEn": "Use approximation methods with floating-point limits",
+      "description": "The learner can design approximation loops with stopping criteria while handling floating-point precision issues.",
+      "descriptionEn": "The learner can design approximation loops with stopping criteria while handling floating-point precision issues.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "3547201d-f8b1-5d46-bfe3-4dfdb3f87c22"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-5-floats-and-approximation-methods/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:use-approximation-methods-with-floating-point-limits:concept",
+            "type": "concept",
+            "title": "Use approximation methods with floating-point limits - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-5-floats-and-approximation-methods/",
+            "resourceType": "lecture-notes",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:use-approximation-methods-with-floating-point-limits:practice",
+            "type": "practice",
+            "title": "Use approximation methods with floating-point limits - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:use-approximation-methods-with-floating-point-limits:assessment",
+            "type": "assessment",
+            "title": "Use approximation methods with floating-point limits - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:use-approximation-methods-with-floating-point-limits:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 10
+      }
+    },
+    {
+      "id": "22a6a331-64ed-513f-9796-c5e693ab4ff2",
+      "title": "Apply bisection search to monotonic decision spaces",
+      "titleEn": "Apply bisection search to monotonic decision spaces",
+      "description": "The learner can apply bisection search to monotonic problems and compare convergence against linear scanning.",
+      "descriptionEn": "The learner can apply bisection search to monotonic problems and compare convergence against linear scanning.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "973e2747-3591-5575-b985-e81b75610bc5"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-6-bisection-search/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:apply-bisection-search-to-monotonic-decision-spaces:concept",
+            "type": "concept",
+            "title": "Apply bisection search to monotonic decision spaces - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-6-bisection-search/",
+            "resourceType": "lecture-notes",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:apply-bisection-search-to-monotonic-decision-spaces:practice",
+            "type": "practice",
+            "title": "Apply bisection search to monotonic decision spaces - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:apply-bisection-search-to-monotonic-decision-spaces:assessment",
+            "type": "assessment",
+            "title": "Apply bisection search to monotonic decision spaces - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:apply-bisection-search-to-monotonic-decision-spaces:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 11
+      }
+    },
+    {
+      "id": "3b87a2b0-8c28-5100-abfb-adf7accdcfa9",
+      "title": "Decompose logic into reusable function units",
+      "titleEn": "Decompose logic into reusable function units",
+      "description": "The learner can decompose large tasks into reusable functions with documented parameters and return contracts.",
+      "descriptionEn": "The learner can decompose large tasks into reusable functions with documented parameters and return contracts.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "84ee9069-ca0d-5ae8-b8fb-b69007c9c196"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-7-decomposition-abstraction-functions/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:decompose-logic-into-reusable-function-units:concept",
+            "type": "concept",
+            "title": "Decompose logic into reusable function units - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-7-decomposition-abstraction-functions/",
+            "resourceType": "lecture-notes",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:decompose-logic-into-reusable-function-units:practice",
+            "type": "practice",
+            "title": "Decompose logic into reusable function units - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:decompose-logic-into-reusable-function-units:assessment",
+            "type": "assessment",
+            "title": "Decompose logic into reusable function units - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:decompose-logic-into-reusable-function-units:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 13
+      }
+    },
+    {
+      "id": "cb782ee9-0099-55db-bbc4-45c0ac3aff5d",
+      "title": "Treat functions as first-class program objects",
+      "titleEn": "Treat functions as first-class program objects",
+      "description": "The learner can pass functions as objects and use higher-order patterns to simplify repeated computations.",
+      "descriptionEn": "The learner can pass functions as objects and use higher-order patterns to simplify repeated computations.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "3b87a2b0-8c28-5100-abfb-adf7accdcfa9"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-8-functions-as-objects/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:treat-functions-as-first-class-program-objects:concept",
+            "type": "concept",
+            "title": "Treat functions as first-class program objects - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-8-functions-as-objects/",
+            "resourceType": "lecture-notes",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:treat-functions-as-first-class-program-objects:practice",
+            "type": "practice",
+            "title": "Treat functions as first-class program objects - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:treat-functions-as-first-class-program-objects:assessment",
+            "type": "assessment",
+            "title": "Treat functions as first-class program objects - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:treat-functions-as-first-class-program-objects:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 14
+      }
+    },
+    {
+      "id": "b53e8ff8-390b-535e-9bca-b34ff24fb360",
+      "title": "Manipulate tuples, lists, and mutability behaviors",
+      "titleEn": "Manipulate tuples, lists, and mutability behaviors",
+      "description": "The learner can manipulate tuple/list structures while predicting aliasing, mutation, and cloning effects.",
+      "descriptionEn": "The learner can manipulate tuple/list structures while predicting aliasing, mutation, and cloning effects.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "6abe92b7-791c-5835-b739-3550d7e822a5"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-10-lists-mutability/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:manipulate-tuples-lists-and-mutability-behaviors:concept",
+            "type": "concept",
+            "title": "Manipulate tuples, lists, and mutability behaviors - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-10-lists-mutability/",
+            "resourceType": "lecture-notes",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:manipulate-tuples-lists-and-mutability-behaviors:practice",
+            "type": "practice",
+            "title": "Manipulate tuples, lists, and mutability behaviors - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:manipulate-tuples-lists-and-mutability-behaviors:assessment",
+            "type": "assessment",
+            "title": "Manipulate tuples, lists, and mutability behaviors - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:manipulate-tuples-lists-and-mutability-behaviors:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 16
+      }
+    },
+    {
+      "id": "4981fdc2-b881-5f6d-a2ba-537b34f4eeff",
+      "title": "Use dictionaries and error-handling assertions",
+      "titleEn": "Use dictionaries and error-handling assertions",
+      "description": "The learner can apply dictionary-based representations together with assertion/exception controls for robust code.",
+      "descriptionEn": "The learner can apply dictionary-based representations together with assertion/exception controls for robust code.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "atomic"
+      ],
+      "requires": [
+        "b53e8ff8-390b-535e-9bca-b34ff24fb360"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-14-dictionaries/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:use-dictionaries-and-error-handling-assertions:concept",
+            "type": "concept",
+            "title": "Use dictionaries and error-handling assertions - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/lecture-14-dictionaries/",
+            "resourceType": "lecture-notes",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:use-dictionaries-and-error-handling-assertions:practice",
+            "type": "practice",
+            "title": "Use dictionaries and error-handling assertions - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:use-dictionaries-and-error-handling-assertions:assessment",
+            "type": "assessment",
+            "title": "Use dictionaries and error-handling assertions - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:use-dictionaries-and-error-handling-assertions:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 17
+      }
+    },
+    {
+      "id": "85a735d5-212c-561b-9e03-4efee065be27",
+      "title": "Solve finger exercises with incremental refinements",
+      "titleEn": "Solve finger exercises with incremental refinements",
+      "description": "The learner can complete regular finger exercises, test intermediate outputs, and refine code iteratively.",
+      "descriptionEn": "The learner can complete regular finger exercises, test intermediate outputs, and refine code iteratively.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "practice",
+        "atomic"
+      ],
+      "requires": [
+        "b14c9023-03f7-5a67-aaff-c24d8cc70c0c"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:solve-finger-exercises-with-incremental-refinements:concept",
+            "type": "concept",
+            "title": "Solve finger exercises with incremental refinements - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:solve-finger-exercises-with-incremental-refinements:practice",
+            "type": "practice",
+            "title": "Solve finger exercises with incremental refinements - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:solve-finger-exercises-with-incremental-refinements:assessment",
+            "type": "assessment",
+            "title": "Solve finger exercises with incremental refinements - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:solve-finger-exercises-with-incremental-refinements:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 19
+      }
+    },
+    {
+      "id": "517fc74d-9cbf-5024-8d61-3ce207deb978",
+      "title": "Deliver problem-set style solutions with evidence",
+      "titleEn": "Deliver problem-set style solutions with evidence",
+      "description": "The learner can produce problem-set submissions with executable code, correctness checks, and concise reasoning.",
+      "descriptionEn": "The learner can produce problem-set submissions with executable code, correctness checks, and concise reasoning.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "practice",
+        "atomic"
+      ],
+      "requires": [
+        "85a735d5-212c-561b-9e03-4efee065be27"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps1_pdf/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:deliver-problem-set-style-solutions-with-evidence:concept",
+            "type": "concept",
+            "title": "Deliver problem-set style solutions with evidence - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps1_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:deliver-problem-set-style-solutions-with-evidence:practice",
+            "type": "practice",
+            "title": "Deliver problem-set style solutions with evidence - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:deliver-problem-set-style-solutions-with-evidence:assessment",
+            "type": "assessment",
+            "title": "Deliver problem-set style solutions with evidence - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:deliver-problem-set-style-solutions-with-evidence:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 20
+      }
+    },
+    {
+      "id": "6696eed4-510c-5171-b683-6a5d61dd2673",
+      "title": "Deliver full problem-set solutions with code quality checks",
+      "titleEn": "Deliver full problem-set solutions with code quality checks",
+      "description": "The learner can deliver end-to-end problem-set solutions with correctness, readability, and edge-case checks.",
+      "descriptionEn": "The learner can deliver end-to-end problem-set solutions with correctness, readability, and edge-case checks.",
+      "weight": 1,
+      "tags": [
+        "module:6.100L",
+        "CORE",
+        "CS",
+        "license:CC-BY-NC-SA-4.0",
+        "atomic"
+      ],
+      "requires": [
+        "f0dc1ac0-b588-5b2a-bc6c-c6d30cc9ec53"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps5_pdf/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:deliver-full-problem-set-solutions-with-code-quality-checks:concept",
+            "type": "concept",
+            "title": "Deliver full problem-set solutions with code quality checks - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps5_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:deliver-full-problem-set-solutions-with-code-quality-checks:practice",
+            "type": "practice",
+            "title": "Deliver full problem-set solutions with code quality checks - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:deliver-full-problem-set-solutions-with-code-quality-checks:assessment",
+            "type": "assessment",
+            "title": "Deliver full problem-set solutions with code quality checks - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:deliver-full-problem-set-solutions-with-code-quality-checks:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 22
+      }
+    },
+    {
+      "id": "ffe1f5f3-602f-5553-8585-106293108dbe",
+      "title": "Use provided code templates for iterative debugging",
+      "titleEn": "Use provided code templates for iterative debugging",
+      "description": "The learner can use provided code templates to run iterative debugging and validation before submission.",
+      "descriptionEn": "The learner can use provided code templates to run iterative debugging and validation before submission.",
+      "weight": 1,
+      "tags": [
+        "module:6.100L",
+        "CORE",
+        "CS",
+        "license:CC-BY-NC-SA-4.0",
+        "atomic"
+      ],
+      "requires": [
+        "6696eed4-510c-5171-b683-6a5d61dd2673"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps5_code_zip/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:use-provided-code-templates-for-iterative-debugging:concept",
+            "type": "concept",
+            "title": "Use provided code templates for iterative debugging - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps5_code_zip/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:use-provided-code-templates-for-iterative-debugging:practice",
+            "type": "practice",
+            "title": "Use provided code templates for iterative debugging - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:use-provided-code-templates-for-iterative-debugging:assessment",
+            "type": "assessment",
+            "title": "Use provided code templates for iterative debugging - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:use-provided-code-templates-for-iterative-debugging:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 23
+      }
+    },
+    {
+      "id": "4eca5f86-7483-5f97-accf-8860706d9ba9",
+      "title": "Problem-set delivery and debugging cycle",
+      "titleEn": "Problem-set delivery and debugging cycle",
+      "description": "The learner can prepare, test, and submit robust Python solutions under problem-set constraints.",
+      "descriptionEn": "The learner can prepare, test, and submit robust Python solutions under problem-set constraints.",
+      "weight": 2,
+      "tags": [
+        "module:6.100L",
+        "CORE",
+        "CS",
+        "license:CC-BY-NC-SA-4.0",
+        "cluster:crosscutting"
+      ],
+      "requires": [
+        "f0dc1ac0-b588-5b2a-bc6c-c6d30cc9ec53"
+      ],
+      "contains": [
+        "6696eed4-510c-5171-b683-6a5d61dd2673",
+        "ffe1f5f3-602f-5553-8585-106293108dbe"
+      ],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "treeOrder": 21,
+        "sourceLinks": [
+          {
+            "id": "ocw:4eca5f86-7483-5f97-accf-8860706d9ba9:concept",
+            "type": "concept",
+            "title": "Problem-set delivery and debugging cycle - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "course-overview",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:4eca5f86-7483-5f97-accf-8860706d9ba9:practice",
+            "type": "practice",
+            "title": "Problem-set delivery and debugging cycle - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/programming-assignments-with-examples/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:4eca5f86-7483-5f97-accf-8860706d9ba9:assessment",
+            "type": "assessment",
+            "title": "Problem-set delivery and debugging cycle - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/problem-sets/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:4eca5f86-7483-5f97-accf-8860706d9ba9:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ]
+      }
+    },
+    {
+      "id": "181f853e-cdd3-5bcc-afd2-985039b14daa",
+      "title": "Navigate lecture materials by sequence dependencies",
+      "titleEn": "Navigate lecture materials by sequence dependencies",
+      "description": "The learner can navigate lecture materials by dependency order to reinforce prerequisite coding concepts.",
+      "descriptionEn": "The learner can navigate lecture materials by dependency order to reinforce prerequisite coding concepts.",
+      "weight": 1,
+      "tags": [
+        "module:6.100L",
+        "CORE",
+        "CS",
+        "license:CC-BY-NC-SA-4.0",
+        "atomic"
+      ],
+      "requires": [
+        "4eca5f86-7483-5f97-accf-8860706d9ba9"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/material-by-lecture/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:navigate-lecture-materials-by-sequence-dependencies:concept",
+            "type": "concept",
+            "title": "Navigate lecture materials by sequence dependencies - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/material-by-lecture/",
+            "resourceType": "course-page",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:navigate-lecture-materials-by-sequence-dependencies:practice",
+            "type": "practice",
+            "title": "Navigate lecture materials by sequence dependencies - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:navigate-lecture-materials-by-sequence-dependencies:assessment",
+            "type": "assessment",
+            "title": "Navigate lecture materials by sequence dependencies - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:navigate-lecture-materials-by-sequence-dependencies:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 25
+      }
+    },
+    {
+      "id": "bf333631-e295-53b5-b4d0-33ef14ef6514",
+      "title": "Connect readings to implementation decisions",
+      "titleEn": "Connect readings to implementation decisions",
+      "description": "The learner can connect reading concepts to implementation decisions in coding assignments and exercises.",
+      "descriptionEn": "The learner can connect reading concepts to implementation decisions in coding assignments and exercises.",
+      "weight": 1,
+      "tags": [
+        "module:6.100L",
+        "CORE",
+        "CS",
+        "license:CC-BY-NC-SA-4.0",
+        "atomic"
+      ],
+      "requires": [
+        "181f853e-cdd3-5bcc-afd2-985039b14daa"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/readings/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:connect-readings-to-implementation-decisions:concept",
+            "type": "concept",
+            "title": "Connect readings to implementation decisions - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/readings/",
+            "resourceType": "course-page",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:connect-readings-to-implementation-decisions:practice",
+            "type": "practice",
+            "title": "Connect readings to implementation decisions - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/pages/finger-exercises/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:connect-readings-to-implementation-decisions:assessment",
+            "type": "assessment",
+            "title": "Connect readings to implementation decisions - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/mit6_100l_f22_ps0_pdf/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_100l:connect-readings-to-implementation-decisions:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 26
+      }
+    },
+    {
+      "id": "abfd0a24-e3ca-52c8-8637-c296aebce7be",
+      "title": "Lecture-material planning and reading workflow",
+      "titleEn": "Lecture-material planning and reading workflow",
+      "description": "The learner can organize lecture materials and readings into a coherent weekly programming workflow.",
+      "descriptionEn": "The learner can organize lecture materials and readings into a coherent weekly programming workflow.",
+      "weight": 2,
+      "tags": [
+        "module:6.100L",
+        "CORE",
+        "CS",
+        "license:CC-BY-NC-SA-4.0",
+        "cluster:crosscutting"
+      ],
+      "requires": [
+        "4eca5f86-7483-5f97-accf-8860706d9ba9"
+      ],
+      "contains": [
+        "181f853e-cdd3-5bcc-afd2-985039b14daa",
+        "bf333631-e295-53b5-b4d0-33ef14ef6514"
+      ],
+      "sourceRef": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-100l",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.100L"
+      },
+      "extendedData": {
+        "treeOrder": 24,
+        "sourceLinks": [
+          {
+            "id": "ocw:abfd0a24-e3ca-52c8-8637-c296aebce7be:concept",
+            "type": "concept",
+            "title": "Lecture-material planning and reading workflow - concept source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
+            "resourceType": "course-overview",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:abfd0a24-e3ca-52c8-8637-c296aebce7be:practice",
+            "type": "practice",
+            "title": "Lecture-material planning and reading workflow - practice source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/programming-assignments-with-examples/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:abfd0a24-e3ca-52c8-8637-c296aebce7be:assessment",
+            "type": "assessment",
+            "title": "Lecture-material planning and reading workflow - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/resources/problem-sets/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:abfd0a24-e3ca-52c8-8637-c296aebce7be:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"

@@ -31,7 +31,7 @@
       "titleEn": "6.0002 Computational Thinking and Data Science",
       "description": "The learner can complete the 6.0002 sequence from computational modeling to simulation and introductory data-science methods.",
       "descriptionEn": "The learner can complete the 6.0002 sequence from computational modeling to simulation and introductory data-science methods.",
-      "weight": 6,
+      "weight": 15,
       "tags": [
         "root",
         "module:6.0002",
@@ -40,16 +40,16 @@
         "DATA",
         "license:CC-BY-NC-SA-4.0"
       ],
-      "requires": [
-        "ec426731-189b-5d35-b053-9b0c5417d069"
-      ],
+      "requires": [],
       "contains": [
         "d44953c6-bc2b-580d-b67a-82ff71a4424f",
         "9120b1c5-11f8-5613-b149-26faaebe345f",
         "31528ac5-c047-5f85-a956-18a2fbc0f12c",
         "915ad263-d008-5d7e-8430-734cb5dc4b91",
         "d9593032-34e7-52e5-af58-a735aa4dec2f",
-        "2dbdc6ae-f80f-557b-ab11-8b2baeedc5dc"
+        "2dbdc6ae-f80f-557b-ab11-8b2baeedc5dc",
+        "e02d7c4b-50a0-5af7-ac96-8ba558990e96",
+        "2ffb3524-8b43-5174-80a4-8ff9486d64a2"
       ],
       "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
       "dimensionTags": {
@@ -60,6 +60,47 @@
         "phase": "Module",
         "area": "Computer Science",
         "topicCode": "6.0002"
+      },
+      "extendedData": {
+        "treeOrder": 1,
+        "sourceLinks": [
+          {
+            "id": "ocw:502f3476-c8e1-5f70-9b6c-c1757cb6eb8b:concept",
+            "type": "concept",
+            "title": "6.0002 Computational Thinking and Data Science - concept source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "course-overview",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:502f3476-c8e1-5f70-9b6c-c1757cb6eb8b:practice",
+            "type": "practice",
+            "title": "6.0002 Computational Thinking and Data Science - practice source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:502f3476-c8e1-5f70-9b6c-c1757cb6eb8b:assessment",
+            "type": "assessment",
+            "title": "6.0002 Computational Thinking and Data Science - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:502f3476-c8e1-5f70-9b6c-c1757cb6eb8b:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ]
       }
     },
     {
@@ -102,7 +143,7 @@
             "id": "ocw:mit_ocw_6_0002_why:practice",
             "type": "practice",
             "title": "6.0002 Computational Thinking and Data Science - practice",
-            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-videos/",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-slides-and-files/",
             "resourceType": "video",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -120,12 +161,13 @@
             "id": "ocw:mit_ocw_6_0002_why:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
           }
-        ]
+        ],
+        "treeOrder": 2
       }
     },
     {
@@ -134,16 +176,20 @@
       "titleEn": "Optimization problem modeling",
       "description": "The learner can formalize optimization questions and encode decision variables, constraints, and objective functions computationally.",
       "descriptionEn": "The learner can formalize optimization questions and encode decision variables, constraints, and objective functions computationally.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "CORE",
         "CS",
-        "DATA"
+        "DATA",
+        "cluster:topic"
       ],
       "requires": [
         "d44953c6-bc2b-580d-b67a-82ff71a4424f"
       ],
-      "contains": [],
+      "contains": [
+        "d467c72a-c376-51f4-bcb3-b215e07f21c0",
+        "9f5975f1-4728-5872-b065-e19a0630ada4"
+      ],
       "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/syllabus/",
       "dimensionTags": {
         "framework": "mit-ocw-6-0002",
@@ -169,7 +215,7 @@
             "id": "ocw:mit_ocw_6_0002_optimization_modeling:practice",
             "type": "practice",
             "title": "6.0002 Computational Thinking and Data Science - practice",
-            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-videos/",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-slides-and-files/",
             "resourceType": "video",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -187,12 +233,13 @@
             "id": "ocw:mit_ocw_6_0002_optimization_modeling:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
           }
-        ]
+        ],
+        "treeOrder": 3
       }
     },
     {
@@ -201,17 +248,21 @@
       "titleEn": "Simulation and Monte Carlo methods",
       "description": "The learner can implement simulation workflows and use Monte Carlo methods to estimate model behavior.",
       "descriptionEn": "The learner can implement simulation workflows and use Monte Carlo methods to estimate model behavior.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "CORE",
         "CS",
-        "DATA"
+        "DATA",
+        "cluster:topic"
       ],
       "requires": [
         "9120b1c5-11f8-5613-b149-26faaebe345f"
       ],
-      "contains": [],
-      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-videos/",
+      "contains": [
+        "ea42d63f-39cf-5f74-8803-ed774435aa04",
+        "aaa7f175-f045-5e71-8e02-abdada794da4"
+      ],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-slides-and-files/",
       "dimensionTags": {
         "framework": "mit-ocw-6-0002",
         "demandLevel": "AB2",
@@ -227,7 +278,7 @@
             "id": "ocw:mit_ocw_6_0002_simulation_monte_carlo:concept",
             "type": "concept",
             "title": "Simulation and Monte Carlo methods - concept source",
-            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-videos/",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-slides-and-files/",
             "resourceType": "lecture-notes",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -236,7 +287,7 @@
             "id": "ocw:mit_ocw_6_0002_simulation_monte_carlo:practice",
             "type": "practice",
             "title": "6.0002 Computational Thinking and Data Science - practice",
-            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-videos/",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-slides-and-files/",
             "resourceType": "video",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -254,12 +305,13 @@
             "id": "ocw:mit_ocw_6_0002_simulation_monte_carlo:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
           }
-        ]
+        ],
+        "treeOrder": 6
       }
     },
     {
@@ -268,17 +320,21 @@
       "titleEn": "Random-walk and process models",
       "description": "The learner can build and analyze random-walk style process models for data-driven questions.",
       "descriptionEn": "The learner can build and analyze random-walk style process models for data-driven questions.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "CORE",
         "CS",
-        "DATA"
+        "DATA",
+        "cluster:topic"
       ],
       "requires": [
         "31528ac5-c047-5f85-a956-18a2fbc0f12c"
       ],
-      "contains": [],
-      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-videos/",
+      "contains": [
+        "fd0eec5f-d331-51be-b7dc-df5b5817dbc7",
+        "981470bb-99a3-506a-9376-567311554710"
+      ],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-slides-and-files/",
       "dimensionTags": {
         "framework": "mit-ocw-6-0002",
         "demandLevel": "AB2",
@@ -294,7 +350,7 @@
             "id": "ocw:mit_ocw_6_0002_random_walks:concept",
             "type": "concept",
             "title": "Random-walk and process models - concept source",
-            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-videos/",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-slides-and-files/",
             "resourceType": "lecture-notes",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -303,7 +359,7 @@
             "id": "ocw:mit_ocw_6_0002_random_walks:practice",
             "type": "practice",
             "title": "6.0002 Computational Thinking and Data Science - practice",
-            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-videos/",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-slides-and-files/",
             "resourceType": "video",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -321,12 +377,13 @@
             "id": "ocw:mit_ocw_6_0002_random_walks:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
           }
-        ]
+        ],
+        "treeOrder": 9
       }
     },
     {
@@ -335,17 +392,21 @@
       "titleEn": "Introductory ML and clustering",
       "description": "The learner can explain and implement introductory clustering-oriented workflows on small datasets.",
       "descriptionEn": "The learner can explain and implement introductory clustering-oriented workflows on small datasets.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "CORE",
         "CS",
-        "DATA"
+        "DATA",
+        "cluster:topic"
       ],
       "requires": [
         "915ad263-d008-5d7e-8430-734cb5dc4b91"
       ],
-      "contains": [],
-      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-videos/",
+      "contains": [
+        "5a4c07fd-1286-512d-85d8-40af6cf1ff0d",
+        "12d20f24-9bdb-5ad4-955a-6c0c479df844"
+      ],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-slides-and-files/",
       "dimensionTags": {
         "framework": "mit-ocw-6-0002",
         "demandLevel": "AB2",
@@ -361,7 +422,7 @@
             "id": "ocw:mit_ocw_6_0002_ml_clustering_intro:concept",
             "type": "concept",
             "title": "Introductory ML and clustering - concept source",
-            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-videos/",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-slides-and-files/",
             "resourceType": "lecture-notes",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -370,7 +431,7 @@
             "id": "ocw:mit_ocw_6_0002_ml_clustering_intro:practice",
             "type": "practice",
             "title": "6.0002 Computational Thinking and Data Science - practice",
-            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-videos/",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-slides-and-files/",
             "resourceType": "video",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -388,12 +449,13 @@
             "id": "ocw:mit_ocw_6_0002_ml_clustering_intro:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
           }
-        ]
+        ],
+        "treeOrder": 12
       }
     },
     {
@@ -402,17 +464,21 @@
       "titleEn": "Experimental iteration and validation",
       "description": "The learner can iteratively test and refine computational experiments and communicate evidence-based conclusions.",
       "descriptionEn": "The learner can iteratively test and refine computational experiments and communicate evidence-based conclusions.",
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "CORE",
         "CS",
         "DATA",
-        "practice"
+        "practice",
+        "cluster:topic"
       ],
       "requires": [
         "d9593032-34e7-52e5-af58-a735aa4dec2f"
       ],
-      "contains": [],
+      "contains": [
+        "a6b997c0-5b00-5100-a5c7-1d7cbaae46e4",
+        "6e399257-749c-59a3-9f6b-50926644850a"
+      ],
       "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/assignments/",
       "dimensionTags": {
         "framework": "mit-ocw-6-0002",
@@ -438,7 +504,7 @@
             "id": "ocw:mit_ocw_6_0002_experimentation_iteration:practice",
             "type": "practice",
             "title": "6.0002 Computational Thinking and Data Science - practice",
-            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-videos/",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-slides-and-files/",
             "resourceType": "video",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
@@ -456,7 +522,1132 @@
             "id": "ocw:mit_ocw_6_0002_experimentation_iteration:license",
             "type": "license",
             "title": "MIT OCW Terms and License",
-            "url": "https://ocw.mit.edu/terms/",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 15
+      }
+    },
+    {
+      "id": "d467c72a-c376-51f4-bcb3-b215e07f21c0",
+      "title": "Formulate optimization objectives and constraints",
+      "titleEn": "Formulate optimization objectives and constraints",
+      "description": "The learner can formalize optimization tasks with explicit objective functions, constraints, and computational search spaces.",
+      "descriptionEn": "The learner can formalize optimization tasks with explicit objective functions, constraints, and computational search spaces.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "DATA",
+        "atomic"
+      ],
+      "requires": [
+        "d44953c6-bc2b-580d-b67a-82ff71a4424f"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-1-introduction-and-optimization-problems/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-0002",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.0002"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:formulate-optimization-objectives-and-constraints:concept",
+            "type": "concept",
+            "title": "Formulate optimization objectives and constraints - concept source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-1-introduction-and-optimization-problems/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:formulate-optimization-objectives-and-constraints:practice",
+            "type": "practice",
+            "title": "Formulate optimization objectives and constraints - practice source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:formulate-optimization-objectives-and-constraints:assessment",
+            "type": "assessment",
+            "title": "Formulate optimization objectives and constraints - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:formulate-optimization-objectives-and-constraints:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 4
+      }
+    },
+    {
+      "id": "9f5975f1-4728-5872-b065-e19a0630ada4",
+      "title": "Represent optimization tasks with graph models",
+      "titleEn": "Represent optimization tasks with graph models",
+      "description": "The learner can translate optimization scenarios into graph-theoretic structures and justify representation trade-offs.",
+      "descriptionEn": "The learner can translate optimization scenarios into graph-theoretic structures and justify representation trade-offs.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "DATA",
+        "atomic"
+      ],
+      "requires": [
+        "d467c72a-c376-51f4-bcb3-b215e07f21c0"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-3-graph-theoretic-models/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-0002",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.0002"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:represent-optimization-tasks-with-graph-models:concept",
+            "type": "concept",
+            "title": "Represent optimization tasks with graph models - concept source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-3-graph-theoretic-models/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:represent-optimization-tasks-with-graph-models:practice",
+            "type": "practice",
+            "title": "Represent optimization tasks with graph models - practice source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:represent-optimization-tasks-with-graph-models:assessment",
+            "type": "assessment",
+            "title": "Represent optimization tasks with graph models - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:represent-optimization-tasks-with-graph-models:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 5
+      }
+    },
+    {
+      "id": "ea42d63f-39cf-5f74-8803-ed774435aa04",
+      "title": "Model stochastic systems with simulation primitives",
+      "titleEn": "Model stochastic systems with simulation primitives",
+      "description": "The learner can design stochastic simulations with randomized primitives and reproducible experiment settings.",
+      "descriptionEn": "The learner can design stochastic simulations with randomized primitives and reproducible experiment settings.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "DATA",
+        "atomic"
+      ],
+      "requires": [
+        "9120b1c5-11f8-5613-b149-26faaebe345f"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-4-stochastic-thinking/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-0002",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.0002"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:model-stochastic-systems-with-simulation-primitives:concept",
+            "type": "concept",
+            "title": "Model stochastic systems with simulation primitives - concept source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-4-stochastic-thinking/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:model-stochastic-systems-with-simulation-primitives:practice",
+            "type": "practice",
+            "title": "Model stochastic systems with simulation primitives - practice source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:model-stochastic-systems-with-simulation-primitives:assessment",
+            "type": "assessment",
+            "title": "Model stochastic systems with simulation primitives - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:model-stochastic-systems-with-simulation-primitives:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 7
+      }
+    },
+    {
+      "id": "aaa7f175-f045-5e71-8e02-abdada794da4",
+      "title": "Estimate outcomes with Monte Carlo experiments",
+      "titleEn": "Estimate outcomes with Monte Carlo experiments",
+      "description": "The learner can run Monte Carlo experiments, quantify sampling uncertainty, and report stable estimates.",
+      "descriptionEn": "The learner can run Monte Carlo experiments, quantify sampling uncertainty, and report stable estimates.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "DATA",
+        "atomic"
+      ],
+      "requires": [
+        "ea42d63f-39cf-5f74-8803-ed774435aa04"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-6-monte-carlo-simulation/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-0002",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.0002"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:estimate-outcomes-with-monte-carlo-experiments:concept",
+            "type": "concept",
+            "title": "Estimate outcomes with Monte Carlo experiments - concept source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-6-monte-carlo-simulation/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:estimate-outcomes-with-monte-carlo-experiments:practice",
+            "type": "practice",
+            "title": "Estimate outcomes with Monte Carlo experiments - practice source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:estimate-outcomes-with-monte-carlo-experiments:assessment",
+            "type": "assessment",
+            "title": "Estimate outcomes with Monte Carlo experiments - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:estimate-outcomes-with-monte-carlo-experiments:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 8
+      }
+    },
+    {
+      "id": "fd0eec5f-d331-51be-b7dc-df5b5817dbc7",
+      "title": "Construct random-walk process simulators",
+      "titleEn": "Construct random-walk process simulators",
+      "description": "The learner can build random-walk process simulators and interpret long-run trajectory behavior.",
+      "descriptionEn": "The learner can build random-walk process simulators and interpret long-run trajectory behavior.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "DATA",
+        "atomic"
+      ],
+      "requires": [
+        "31528ac5-c047-5f85-a956-18a2fbc0f12c"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-5-random-walks/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-0002",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.0002"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:construct-random-walk-process-simulators:concept",
+            "type": "concept",
+            "title": "Construct random-walk process simulators - concept source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-5-random-walks/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:construct-random-walk-process-simulators:practice",
+            "type": "practice",
+            "title": "Construct random-walk process simulators - practice source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:construct-random-walk-process-simulators:assessment",
+            "type": "assessment",
+            "title": "Construct random-walk process simulators - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:construct-random-walk-process-simulators:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 10
+      }
+    },
+    {
+      "id": "981470bb-99a3-506a-9376-567311554710",
+      "title": "Compare process assumptions against empirical traces",
+      "titleEn": "Compare process assumptions against empirical traces",
+      "description": "The learner can compare model-generated traces against observed behavior and revise process assumptions.",
+      "descriptionEn": "The learner can compare model-generated traces against observed behavior and revise process assumptions.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "DATA",
+        "atomic"
+      ],
+      "requires": [
+        "fd0eec5f-d331-51be-b7dc-df5b5817dbc7"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-9-understanding-experimental-data/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-0002",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.0002"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:compare-process-assumptions-against-empirical-traces:concept",
+            "type": "concept",
+            "title": "Compare process assumptions against empirical traces - concept source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-9-understanding-experimental-data/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:compare-process-assumptions-against-empirical-traces:practice",
+            "type": "practice",
+            "title": "Compare process assumptions against empirical traces - practice source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:compare-process-assumptions-against-empirical-traces:assessment",
+            "type": "assessment",
+            "title": "Compare process assumptions against empirical traces - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:compare-process-assumptions-against-empirical-traces:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 11
+      }
+    },
+    {
+      "id": "5a4c07fd-1286-512d-85d8-40af6cf1ff0d",
+      "title": "Apply introductory supervised classification steps",
+      "titleEn": "Apply introductory supervised classification steps",
+      "description": "The learner can define features, train simple classifiers, and interpret classification outcomes.",
+      "descriptionEn": "The learner can define features, train simple classifiers, and interpret classification outcomes.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "DATA",
+        "atomic"
+      ],
+      "requires": [
+        "915ad263-d008-5d7e-8430-734cb5dc4b91"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-13-classification/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-0002",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.0002"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:apply-introductory-supervised-classification-steps:concept",
+            "type": "concept",
+            "title": "Apply introductory supervised classification steps - concept source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-13-classification/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:apply-introductory-supervised-classification-steps:practice",
+            "type": "practice",
+            "title": "Apply introductory supervised classification steps - practice source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:apply-introductory-supervised-classification-steps:assessment",
+            "type": "assessment",
+            "title": "Apply introductory supervised classification steps - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:apply-introductory-supervised-classification-steps:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 13
+      }
+    },
+    {
+      "id": "12d20f24-9bdb-5ad4-955a-6c0c479df844",
+      "title": "Apply clustering workflows for unlabeled datasets",
+      "titleEn": "Apply clustering workflows for unlabeled datasets",
+      "description": "The learner can apply clustering workflows to unlabeled data and evaluate cluster coherence qualitatively.",
+      "descriptionEn": "The learner can apply clustering workflows to unlabeled data and evaluate cluster coherence qualitatively.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "DATA",
+        "atomic"
+      ],
+      "requires": [
+        "5a4c07fd-1286-512d-85d8-40af6cf1ff0d"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-12-clustering/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-0002",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.0002"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:apply-clustering-workflows-for-unlabeled-datasets:concept",
+            "type": "concept",
+            "title": "Apply clustering workflows for unlabeled datasets - concept source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-12-clustering/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:apply-clustering-workflows-for-unlabeled-datasets:practice",
+            "type": "practice",
+            "title": "Apply clustering workflows for unlabeled datasets - practice source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:apply-clustering-workflows-for-unlabeled-datasets:assessment",
+            "type": "assessment",
+            "title": "Apply clustering workflows for unlabeled datasets - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:apply-clustering-workflows-for-unlabeled-datasets:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 14
+      }
+    },
+    {
+      "id": "a6b997c0-5b00-5100-a5c7-1d7cbaae46e4",
+      "title": "Build confidence intervals and sampling error bounds",
+      "titleEn": "Build confidence intervals and sampling error bounds",
+      "description": "The learner can estimate sampling error with confidence intervals and communicate uncertainty in experiment reports.",
+      "descriptionEn": "The learner can estimate sampling error with confidence intervals and communicate uncertainty in experiment reports.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "DATA",
+        "practice",
+        "atomic"
+      ],
+      "requires": [
+        "d9593032-34e7-52e5-af58-a735aa4dec2f"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-7-confidence-intervals/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-0002",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.0002"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:build-confidence-intervals-and-sampling-error-bounds:concept",
+            "type": "concept",
+            "title": "Build confidence intervals and sampling error bounds - concept source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-7-confidence-intervals/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:build-confidence-intervals-and-sampling-error-bounds:practice",
+            "type": "practice",
+            "title": "Build confidence intervals and sampling error bounds - practice source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:build-confidence-intervals-and-sampling-error-bounds:assessment",
+            "type": "assessment",
+            "title": "Build confidence intervals and sampling error bounds - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:build-confidence-intervals-and-sampling-error-bounds:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 16
+      }
+    },
+    {
+      "id": "6e399257-749c-59a3-9f6b-50926644850a",
+      "title": "Detect statistical pitfalls in model conclusions",
+      "titleEn": "Detect statistical pitfalls in model conclusions",
+      "description": "The learner can identify common statistical pitfalls and validate conclusions against robust experimental criteria.",
+      "descriptionEn": "The learner can identify common statistical pitfalls and validate conclusions against robust experimental criteria.",
+      "weight": 1,
+      "tags": [
+        "CORE",
+        "CS",
+        "DATA",
+        "practice",
+        "atomic"
+      ],
+      "requires": [
+        "a6b997c0-5b00-5100-a5c7-1d7cbaae46e4"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-14-classification-and-statistical-sins/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-0002",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.0002"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:detect-statistical-pitfalls-in-model-conclusions:concept",
+            "type": "concept",
+            "title": "Detect statistical pitfalls in model conclusions - concept source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/lecture-14-classification-and-statistical-sins/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:detect-statistical-pitfalls-in-model-conclusions:practice",
+            "type": "practice",
+            "title": "Detect statistical pitfalls in model conclusions - practice source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:detect-statistical-pitfalls-in-model-conclusions:assessment",
+            "type": "assessment",
+            "title": "Detect statistical pitfalls in model conclusions - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:detect-statistical-pitfalls-in-model-conclusions:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 17
+      }
+    },
+    {
+      "id": "589d067d-b2a3-50fb-a4c2-69eaa1c650bd",
+      "title": "Complete computational assignments with reproducible outputs",
+      "titleEn": "Complete computational assignments with reproducible outputs",
+      "description": "The learner can complete assignment workflows with reproducible outputs and transparent parameter documentation.",
+      "descriptionEn": "The learner can complete assignment workflows with reproducible outputs and transparent parameter documentation.",
+      "weight": 1,
+      "tags": [
+        "module:6.0002",
+        "CORE",
+        "CS",
+        "DATA",
+        "license:CC-BY-NC-SA-4.0",
+        "atomic"
+      ],
+      "requires": [
+        "2dbdc6ae-f80f-557b-ab11-8b2baeedc5dc"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/assignments/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-0002",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.0002"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:complete-computational-assignments-with-reproducible-outputs:concept",
+            "type": "concept",
+            "title": "Complete computational assignments with reproducible outputs - concept source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:complete-computational-assignments-with-reproducible-outputs:practice",
+            "type": "practice",
+            "title": "Complete computational assignments with reproducible outputs - practice source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:complete-computational-assignments-with-reproducible-outputs:assessment",
+            "type": "assessment",
+            "title": "Complete computational assignments with reproducible outputs - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:complete-computational-assignments-with-reproducible-outputs:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 19
+      }
+    },
+    {
+      "id": "73fc4675-ef6f-56e5-9767-2eabb579e1e1",
+      "title": "Validate advanced assignment models against benchmark cases",
+      "titleEn": "Validate advanced assignment models against benchmark cases",
+      "description": "The learner can validate advanced assignment models against benchmark cases and justify final modeling choices.",
+      "descriptionEn": "The learner can validate advanced assignment models against benchmark cases and justify final modeling choices.",
+      "weight": 1,
+      "tags": [
+        "module:6.0002",
+        "CORE",
+        "CS",
+        "DATA",
+        "license:CC-BY-NC-SA-4.0",
+        "atomic"
+      ],
+      "requires": [
+        "589d067d-b2a3-50fb-a4c2-69eaa1c650bd"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-0002",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.0002"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:validate-advanced-assignment-models-against-benchmark-cases:concept",
+            "type": "concept",
+            "title": "Validate advanced assignment models against benchmark cases - concept source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:validate-advanced-assignment-models-against-benchmark-cases:practice",
+            "type": "practice",
+            "title": "Validate advanced assignment models against benchmark cases - practice source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:validate-advanced-assignment-models-against-benchmark-cases:assessment",
+            "type": "assessment",
+            "title": "Validate advanced assignment models against benchmark cases - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:validate-advanced-assignment-models-against-benchmark-cases:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 20
+      }
+    },
+    {
+      "id": "e02d7c4b-50a0-5af7-ac96-8ba558990e96",
+      "title": "Assignment and model-validation cycle",
+      "titleEn": "Assignment and model-validation cycle",
+      "description": "The learner can prepare assignment deliverables and validate model conclusions with robust checks.",
+      "descriptionEn": "The learner can prepare assignment deliverables and validate model conclusions with robust checks.",
+      "weight": 2,
+      "tags": [
+        "module:6.0002",
+        "CORE",
+        "CS",
+        "DATA",
+        "license:CC-BY-NC-SA-4.0",
+        "cluster:crosscutting"
+      ],
+      "requires": [
+        "2dbdc6ae-f80f-557b-ab11-8b2baeedc5dc"
+      ],
+      "contains": [
+        "589d067d-b2a3-50fb-a4c2-69eaa1c650bd",
+        "73fc4675-ef6f-56e5-9767-2eabb579e1e1"
+      ],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-0002",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.0002"
+      },
+      "extendedData": {
+        "treeOrder": 18,
+        "sourceLinks": [
+          {
+            "id": "ocw:e02d7c4b-50a0-5af7-ac96-8ba558990e96:concept",
+            "type": "concept",
+            "title": "Assignment and model-validation cycle - concept source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "course-overview",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:e02d7c4b-50a0-5af7-ac96-8ba558990e96:practice",
+            "type": "practice",
+            "title": "Assignment and model-validation cycle - practice source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:e02d7c4b-50a0-5af7-ac96-8ba558990e96:assessment",
+            "type": "assessment",
+            "title": "Assignment and model-validation cycle - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:e02d7c4b-50a0-5af7-ac96-8ba558990e96:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ]
+      }
+    },
+    {
+      "id": "3ccf700f-3a69-56a0-8a45-1f394e8bb5d1",
+      "title": "Set up course software and execution environment",
+      "titleEn": "Set up course software and execution environment",
+      "description": "The learner can set up and verify the software environment needed to run provided computational resources.",
+      "descriptionEn": "The learner can set up and verify the software environment needed to run provided computational resources.",
+      "weight": 1,
+      "tags": [
+        "module:6.0002",
+        "CORE",
+        "CS",
+        "DATA",
+        "license:CC-BY-NC-SA-4.0",
+        "atomic"
+      ],
+      "requires": [
+        "e02d7c4b-50a0-5af7-ac96-8ba558990e96"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/software/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-0002",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.0002"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:set-up-course-software-and-execution-environment:concept",
+            "type": "concept",
+            "title": "Set up course software and execution environment - concept source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/software/",
+            "resourceType": "course-page",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:set-up-course-software-and-execution-environment:practice",
+            "type": "practice",
+            "title": "Set up course software and execution environment - practice source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:set-up-course-software-and-execution-environment:assessment",
+            "type": "assessment",
+            "title": "Set up course software and execution environment - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:set-up-course-software-and-execution-environment:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 22
+      }
+    },
+    {
+      "id": "b2bbc7d3-716b-5519-8ef6-a5b659db5370",
+      "title": "Integrate lecture slides and files into experiment notebooks",
+      "titleEn": "Integrate lecture slides and files into experiment notebooks",
+      "description": "The learner can integrate lecture slide/file resources into experiment notebooks for iterative model development.",
+      "descriptionEn": "The learner can integrate lecture slide/file resources into experiment notebooks for iterative model development.",
+      "weight": 1,
+      "tags": [
+        "module:6.0002",
+        "CORE",
+        "CS",
+        "DATA",
+        "license:CC-BY-NC-SA-4.0",
+        "atomic"
+      ],
+      "requires": [
+        "3ccf700f-3a69-56a0-8a45-1f394e8bb5d1"
+      ],
+      "contains": [],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-slides-and-files/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-0002",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.0002"
+      },
+      "extendedData": {
+        "sourceLinks": [
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:integrate-lecture-slides-and-files-into-experiment-notebooks:concept",
+            "type": "concept",
+            "title": "Integrate lecture slides and files into experiment notebooks - concept source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/lecture-slides-and-files/",
+            "resourceType": "course-page",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:integrate-lecture-slides-and-files-into-experiment-notebooks:practice",
+            "type": "practice",
+            "title": "Integrate lecture slides and files into experiment notebooks - practice source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/pages/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:integrate-lecture-slides-and-files-into-experiment-notebooks:assessment",
+            "type": "assessment",
+            "title": "Integrate lecture slides and files into experiment notebooks - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "resource",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:us_mas_u_mit_ocw_6_0002:integrate-lecture-slides-and-files-into-experiment-notebooks:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "license",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          }
+        ],
+        "treeOrder": 23
+      }
+    },
+    {
+      "id": "2ffb3524-8b43-5174-80a4-8ff9486d64a2",
+      "title": "Toolchain and lecture-file integration",
+      "titleEn": "Toolchain and lecture-file integration",
+      "description": "The learner can maintain the software/toolchain setup required for data-science lecture-file workflows.",
+      "descriptionEn": "The learner can maintain the software/toolchain setup required for data-science lecture-file workflows.",
+      "weight": 2,
+      "tags": [
+        "module:6.0002",
+        "CORE",
+        "CS",
+        "DATA",
+        "license:CC-BY-NC-SA-4.0",
+        "cluster:crosscutting"
+      ],
+      "requires": [
+        "e02d7c4b-50a0-5af7-ac96-8ba558990e96"
+      ],
+      "contains": [
+        "3ccf700f-3a69-56a0-8a45-1f394e8bb5d1",
+        "b2bbc7d3-716b-5519-8ef6-a5b659db5370"
+      ],
+      "sourceRef": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+      "dimensionTags": {
+        "framework": "mit-ocw-6-0002",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Module",
+        "area": "Computer Science",
+        "topicCode": "6.0002"
+      },
+      "extendedData": {
+        "treeOrder": 21,
+        "sourceLinks": [
+          {
+            "id": "ocw:2ffb3524-8b43-5174-80a4-8ff9486d64a2:concept",
+            "type": "concept",
+            "title": "Toolchain and lecture-file integration - concept source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
+            "resourceType": "course-overview",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:2ffb3524-8b43-5174-80a4-8ff9486d64a2:practice",
+            "type": "practice",
+            "title": "Toolchain and lecture-file integration - practice source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/assignments/",
+            "resourceType": "problem-set",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:2ffb3524-8b43-5174-80a4-8ff9486d64a2:assessment",
+            "type": "assessment",
+            "title": "Toolchain and lecture-file integration - assessment source",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/resources/ps5/",
+            "resourceType": "exam",
+            "license": "CC-BY-NC-SA-4.0",
+            "checkedAt": "2026-03-01"
+          },
+          {
+            "id": "ocw:2ffb3524-8b43-5174-80a4-8ff9486d64a2:license",
+            "type": "license",
+            "title": "MIT OCW Terms and License",
+            "url": "https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/",
             "resourceType": "license",
             "license": "CC-BY-NC-SA-4.0",
             "checkedAt": "2026-03-01"
