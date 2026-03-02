@@ -41,13 +41,13 @@ class MitOcwFrontierWalkthroughTest {
     private static final String LANDSCAPE_6_100L = "157803a5-e13c-5ab9-9d9d-fd6a060e6023";
 
     private static final String FOUNDATIONS_WHY_ID = "9c136002-6239-5228-84be-2956c8f597a0";
-    private static final String ENTRY_18_01SC_ID = "f9b9191b-5623-571b-a742-a628bc4b1f75";
-    private static final String ENTRY_18_02SC_ID = "2c4a2a63-d3ff-5660-8e8e-d0fa245925cf";
-    private static final String ENTRY_18_05_ID = "b9c6db12-600e-5f2b-993c-a1cb37c94122";
+    private static final String ENTRY_18_01SC_ID = "0e52f435-f9b7-4e7b-84da-1a964e68ef84";
+    private static final String ENTRY_18_02SC_ID = "01f3b897-8a16-4432-a8b6-23abc100179c";
+    private static final String ENTRY_18_05_ID = "097042b8-a7fc-4e1b-96ea-5fc6c45cfe79";
     private static final String ENTRY_18_06_ID = "814257f7-9324-5893-962f-66d28ebd90e9";
-    private static final String ENTRY_6_100L_ID = "ec426731-189b-5d35-b053-9b0c5417d069";
-    private static final String ENTRY_6_0002_ID = "502f3476-c8e1-5f70-9b6c-c1757cb6eb8b";
-    private static final String ENTRY_6_006_ID = "e005ee72-bf4e-5d18-8cbc-569a0ae753d8";
+    private static final String ENTRY_6_100L_ID = "acc2b340-1489-4742-b038-c8e6508a601b";
+    private static final String ENTRY_6_0002_ID = "b2989c72-6428-4bce-8502-820ad893a284";
+    private static final String ENTRY_6_006_ID = "e02d20de-8049-4d61-8b66-24a4274898b4";
 
     private static ObjectMapper objectMapper;
     private static LandscapeService landscapeService;

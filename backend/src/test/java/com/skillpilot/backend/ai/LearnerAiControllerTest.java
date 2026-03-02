@@ -15,6 +15,7 @@ import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.service.LearnerService;
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -97,6 +98,24 @@ class LearnerAiControllerTest {
         verifyNoMoreInteractions(learnerService);
     }
 
+    @Test
+    void normalizeMathDelimitersForChat_usesSingleBackslashLatexDelimiters() throws Exception {
+        String raw = "Inline $Q=900\\\\,\\\\mathrm{kJ}$ and block $$\\\\eta=\\\\frac{W}{Q}$$.";
+
+        String normalized = invokeNormalizeMathDelimitersForChat(raw);
+
+        assertThat(normalized).contains("\\(Q=900\\\\,\\\\mathrm{kJ}\\)");
+        assertThat(normalized).contains("\\[\n\\\\eta=\\\\frac{W}{Q}\n\\]");
+        assertThat(normalized).doesNotContain("\\\\(");
+        assertThat(normalized).doesNotContain("\\\\[");
+    }
+
+    private String invokeNormalizeMathDelimitersForChat(String content) throws Exception {
+        Method method = LearnerAiController.class.getDeclaredMethod("normalizeMathDelimitersForChat", String.class);
+        method.setAccessible(true);
+        return (String) method.invoke(controller, content);
+    }
+
     private static UnifiedLearnerStateResponse learnerState(String skillpilotId, String requiredAction) {
         return new UnifiedLearnerStateResponse(
                 skillpilotId,
@@ -111,4 +130,3 @@ class LearnerAiControllerTest {
                 new StateMachineInfo("state", requiredAction, List.of(), List.of(), null));
     }
 }
-

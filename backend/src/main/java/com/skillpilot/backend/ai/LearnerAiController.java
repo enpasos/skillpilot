@@ -394,7 +394,7 @@ public class LearnerAiController {
         StringBuffer sb = new StringBuffer();
         while (matcher.find()) {
             String inner = matcher.group(1).trim();
-            String replacement = "\\\\[\n" + inner + "\n\\\\]";
+            String replacement = "\\[\n" + inner + "\n\\]";
             matcher.appendReplacement(sb, Matcher.quoteReplacement(replacement));
         }
         matcher.appendTail(sb);
@@ -410,7 +410,7 @@ public class LearnerAiController {
         StringBuffer sb = new StringBuffer();
         while (matcher.find()) {
             String inner = matcher.group(1).trim();
-            String replacement = "\\\\(" + inner + "\\\\)";
+            String replacement = "\\(" + inner + "\\)";
             matcher.appendReplacement(sb, Matcher.quoteReplacement(replacement));
         }
         matcher.appendTail(sb);

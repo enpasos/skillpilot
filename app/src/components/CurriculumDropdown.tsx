@@ -74,7 +74,7 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
     }, [providedLandscapes, language]) // Re-fetch when language changes
 
     const getCategory = (l: LandscapeSummary): Category => {
-        const sType = (l.schoolType || '').toUpperCase()
+        const sType = (l.schoolType || l.type || '').toUpperCase()
         const title = (l.title || '').toUpperCase()
 
         // Explicit School Types
@@ -82,6 +82,8 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
         if (schoolTypes.some(t => sType.includes(t)) || title.includes('SCHULE') || title.includes('GYMNASIUM') || title.includes('GYMNASIAL')) return 'SCHOOL'
 
         // Explicit Uni keywords
+        if (sType === 'U') return 'UNI'
+        if (title.includes('OPENCOURSEWARE') || title.includes('OCW')) return 'UNI'
         if (title.includes('BACHELOR') || title.includes('MASTER')) return 'UNI'
         if (['TUM', 'HEIDELBERG', 'MANNHEIM', 'DARMSTADT', 'UNI', 'HOCHSCHULE'].some(t => sType.includes(t) || title.includes(t))) return 'UNI'
 
