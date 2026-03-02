@@ -312,6 +312,10 @@ public class LearnerAiController {
                 goal.nodeKind(),
                 goal.reason(),
                 goal.tags(),
+                goal.resourceLinks(),
+                goal.sourceRef(),
+                goal.sourceLicense(),
+                goal.sourceLicenseUrl(),
                 updated);
     }
 

@@ -439,8 +439,46 @@
               "type": "string"
             }
           },
+          "resourceLinks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GoalSourceLink"
+            }
+          },
+          "sourceRef": {
+            "type": "string",
+            "description": "Kanonische Curriculum-/Provenienz-Quelle (URL) für dieses Lernziel."
+          },
+          "sourceLicense": {
+            "type": "string",
+            "description": "Lizenzbezeichnung der kanonischen Quelle (z. B. CC-BY-NC-SA-4.0)."
+          },
+          "sourceLicenseUrl": {
+            "type": "string",
+            "description": "URL zur geltenden Lizenz- oder Terms-Seite."
+          },
           "examData": {
             "$ref": "#/components/schemas/ExamData"
+          }
+        }
+      },
+      "GoalSourceLink": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "resourceType": {
+            "type": "string"
+          },
+          "license": {
+            "type": "string"
           }
         }
       },

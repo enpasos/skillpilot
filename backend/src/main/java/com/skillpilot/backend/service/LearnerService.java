@@ -41,6 +41,7 @@ import com.skillpilot.backend.api.ClientStateRequest;
 import com.skillpilot.backend.api.ClientStateResponse;
 import com.skillpilot.backend.api.ClientStateSnapshot;
 import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
@@ -946,16 +947,7 @@ public class LearnerService {
             }
 
             if (prerequisitesMet) {
-                String type = resolveNodeType(goal);
-                frontier.add(new FrontierGoal(
-                        goal.getId(),
-                        goal.getTitle(),
-                        goal.getDescription(),
-                        type,
-                        resolveNodeKind(goal),
-                        "Prerequisites met",
-                        goal.getTags(),
-                        null));
+                frontier.add(toFrontierGoal(goal, "Prerequisites met", null));
             }
         }
 
@@ -1150,19 +1142,11 @@ public class LearnerService {
             }
 
             if (g != null) {
-                String type = resolveNodeType(g);
-                plannedRich.add(new FrontierGoal(
-                        g.getId(),
-                        g.getTitle(),
-                        g.getDescription(),
-                        type,
-                        resolveNodeKind(g),
-                        "Planned",
-                        g.getTags(),
-                        null));
+                plannedRich.add(toFrontierGoal(g, "Planned", null));
             } else {
                 // True unknown (deleted or invalid ID)
-                plannedRich.add(new FrontierGoal(pid, "Unknown Goal", "", "unknown", null, "Planned", null, null));
+                plannedRich.add(new FrontierGoal(pid, "Unknown Goal", "", "unknown", null, "Planned",
+                        null, null, null, null, null, null));
             }
         }
 
@@ -1362,16 +1346,7 @@ public class LearnerService {
             if (g == null) {
                 continue;
             }
-            String type = resolveNodeType(g);
-            result.add(new FrontierGoal(
-                    g.getId(),
-                    g.getTitle(),
-                    g.getDescription(),
-                    type,
-                    resolveNodeKind(g),
-                    "Scope expansion",
-                    g.getTags(),
-                    null));
+            result.add(toFrontierGoal(g, "Scope expansion", null));
         }
 
         if (!result.isEmpty()) {
@@ -1391,6 +1366,10 @@ public class LearnerService {
                         g.nodeKind(),
                         "Scope expansion",
                         g.tags(),
+                        g.resourceLinks(),
+                        g.sourceRef(),
+                        g.sourceLicense(),
+                        g.sourceLicenseUrl(),
                         g.examData()))
                 .toList();
     }
@@ -1529,6 +1508,130 @@ public class LearnerService {
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "ACTIVE_GOAL_UPDATE"));
     }
 
+    private FrontierGoal toFrontierGoal(LearningGoal goal, String reason, com.skillpilot.backend.landscape.ExamData examData) {
+        if (goal == null) {
+            return null;
+        }
+        List<Map<String, Object>> rawSourceLinks = extractRawSourceLinks(goal);
+        List<GoalSourceLink> resourceLinks = rawSourceLinks.stream()
+                .filter(link -> !"license".equalsIgnoreCase(readString(link.get("type"))))
+                .map(this::toGoalSourceLink)
+                .filter(Objects::nonNull)
+                .toList();
+
+        ProvenanceInfo provenance = extractProvenance(goal, rawSourceLinks);
+
+        return new FrontierGoal(
+                goal.getId(),
+                goal.getTitle(),
+                goal.getDescription(),
+                resolveNodeType(goal),
+                resolveNodeKind(goal),
+                reason,
+                goal.getTags(),
+                resourceLinks,
+                provenance.sourceRef(),
+                provenance.sourceLicense(),
+                provenance.sourceLicenseUrl(),
+                examData);
+    }
+
+    private record ProvenanceInfo(String sourceRef, String sourceLicense, String sourceLicenseUrl) {
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<Map<String, Object>> extractRawSourceLinks(LearningGoal goal) {
+        if (goal == null || goal.getExtendedData() == null) {
+            return Collections.emptyList();
+        }
+        Object raw = goal.getExtendedData().get("sourceLinks");
+        if (!(raw instanceof List<?> list)) {
+            return Collections.emptyList();
+        }
+        List<Map<String, Object>> links = new ArrayList<>();
+        for (Object entry : list) {
+            if (entry instanceof Map<?, ?> map) {
+                links.add((Map<String, Object>) map);
+            }
+        }
+        return links;
+    }
+
+    @SuppressWarnings("unchecked")
+    private ProvenanceInfo extractProvenance(LearningGoal goal, List<Map<String, Object>> rawSourceLinks) {
+        String sourceRef = trimToNull(goal.getSourceRef());
+        String sourceLicense = extractLicenseFromTags(goal.getTags());
+        String sourceLicenseUrl = null;
+
+        if (goal.getExtendedData() != null) {
+            Object provenanceRaw = goal.getExtendedData().get("provenance");
+            if (provenanceRaw instanceof Map<?, ?> map) {
+                Map<String, Object> provenance = (Map<String, Object>) map;
+                sourceRef = coalesce(trimToNull(readString(provenance.get("sourceUrl"))), sourceRef);
+                sourceLicense = coalesce(trimToNull(readString(provenance.get("license"))), sourceLicense);
+                sourceLicenseUrl = coalesce(trimToNull(readString(provenance.get("licenseUrl"))), sourceLicenseUrl);
+            }
+        }
+
+        for (Map<String, Object> link : rawSourceLinks) {
+            String type = readString(link.get("type"));
+            String url = trimToNull(readString(link.get("url")));
+            if (sourceRef == null && "concept".equalsIgnoreCase(type)) {
+                sourceRef = url;
+            }
+            if ("license".equalsIgnoreCase(type)) {
+                sourceLicense = coalesce(trimToNull(readString(link.get("license"))), sourceLicense);
+                sourceLicenseUrl = coalesce(url, sourceLicenseUrl);
+            }
+        }
+
+        return new ProvenanceInfo(sourceRef, sourceLicense, sourceLicenseUrl);
+    }
+
+    private GoalSourceLink toGoalSourceLink(Map<String, Object> rawLink) {
+        String url = trimToNull(readString(rawLink.get("url")));
+        if (url == null) {
+            return null;
+        }
+        return new GoalSourceLink(
+                trimToNull(readString(rawLink.get("type"))),
+                trimToNull(readString(rawLink.get("title"))),
+                url,
+                trimToNull(readString(rawLink.get("resourceType"))),
+                trimToNull(readString(rawLink.get("license"))));
+    }
+
+    private String extractLicenseFromTags(List<String> tags) {
+        if (tags == null) {
+            return null;
+        }
+        for (String tag : tags) {
+            if (tag == null) {
+                continue;
+            }
+            if (tag.startsWith("license:")) {
+                return trimToNull(tag.substring("license:".length()));
+            }
+        }
+        return null;
+    }
+
+    private String readString(Object value) {
+        return value instanceof String str ? str : null;
+    }
+
+    private String trimToNull(String value) {
+        if (value == null) {
+            return null;
+        }
+        String trimmed = value.trim();
+        return trimmed.isEmpty() ? null : trimmed;
+    }
+
+    private String coalesce(String first, String second) {
+        return first != null ? first : second;
+    }
+
     private FrontierGoal resolveActiveGoal(String goalId, Map<String, LearningGoal> allGoals) {
         if (goalId == null || goalId.isBlank()) {
             return null;
@@ -1544,12 +1647,10 @@ public class LearnerService {
             }
         }
         if (g == null) {
-            return new FrontierGoal(goalId, "Unknown Goal", "", "unknown", null, "Active", null, null);
+            return new FrontierGoal(goalId, "Unknown Goal", "", "unknown", null, "Active",
+                    null, null, null, null, null, null);
         }
-        String type = resolveNodeType(g);
-        return new FrontierGoal(g.getId(), g.getTitle(), g.getDescription(), type, resolveNodeKind(g), "Active",
-                g.getTags(),
-                g.getExamData());
+        return toFrontierGoal(g, "Active", g.getExamData());
     }
 
     private void ensureLearnerExists(String skillpilotId) {
@@ -1813,16 +1914,7 @@ public class LearnerService {
                     String childId = childRef;
                     LearningGoal child = allGoals.get(childId);
                     if (child != null) {
-                        String type = resolveNodeType(child);
-                        roots.add(new FrontierGoal(
-                                child.getId(),
-                                child.getTitle(),
-                                child.getDescription(),
-                                type,
-                                resolveNodeKind(child),
-                                "Module",
-                                child.getTags(),
-                                null));
+                        roots.add(toFrontierGoal(child, "Module", null));
                     }
                 }
                 // If we found a container, we assume it's the root and we returned its

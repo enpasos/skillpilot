@@ -808,6 +808,10 @@ public class LandscapeService {
                 nodeKind,
                 "Search Result",
                 g.getTags(),
+                null,
+                g.getSourceRef(),
+                null,
+                null,
                 null));
     }
 }

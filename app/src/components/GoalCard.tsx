@@ -27,6 +27,79 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 
+type GoalSourceLink = {
+  type?: string
+  title?: string
+  url: string
+  resourceType?: string
+  license?: string
+}
+
+type GoalProvenance = {
+  sourceUrl?: string
+  sourceLicense?: string
+  sourceLicenseUrl?: string
+}
+
+const asRecord = (value: unknown): Record<string, unknown> | null => {
+  return value && typeof value === 'object' && !Array.isArray(value) ? (value as Record<string, unknown>) : null
+}
+
+const readString = (value: unknown): string | undefined => {
+  if (typeof value !== 'string') return undefined
+  const trimmed = value.trim()
+  return trimmed.length > 0 ? trimmed : undefined
+}
+
+const extractLicenseFromTags = (tags?: string[]): string | undefined => {
+  if (!tags) return undefined
+  for (const tag of tags) {
+    if (typeof tag === 'string' && tag.startsWith('license:')) {
+      const value = tag.slice('license:'.length).trim()
+      if (value) return value
+    }
+  }
+  return undefined
+}
+
+const extractSourceMetadata = (goal: Goal): { provenance: GoalProvenance; helpfulLinks: GoalSourceLink[] } => {
+  const extended = asRecord(goal.extendedData)
+  const provenanceRaw = asRecord(extended?.provenance)
+  const sourceLinksRaw = Array.isArray(extended?.sourceLinks) ? extended?.sourceLinks : []
+
+  const rawLinksMapped: Array<GoalSourceLink | null> = sourceLinksRaw
+    .map((entry) => asRecord(entry))
+    .filter((entry): entry is Record<string, unknown> => Boolean(entry))
+    .map((entry) => {
+      const url = readString(entry.url)
+      if (!url) return null
+      const link: GoalSourceLink = {
+        type: readString(entry.type),
+        title: readString(entry.title),
+        url,
+        resourceType: readString(entry.resourceType),
+        license: readString(entry.license),
+      }
+      return link
+    })
+  const rawLinks: GoalSourceLink[] = rawLinksMapped.filter((entry): entry is GoalSourceLink => entry !== null)
+
+  const licenseLink = rawLinks.find((link) => link.type?.toLowerCase() === 'license')
+  const conceptLink = rawLinks.find((link) => link.type?.toLowerCase() === 'concept')
+
+  const provenance: GoalProvenance = {
+    sourceUrl: readString(provenanceRaw?.sourceUrl) ?? readString(goal.sourceRef) ?? conceptLink?.url,
+    sourceLicense: readString(provenanceRaw?.license) ?? extractLicenseFromTags(goal.tags) ?? licenseLink?.license,
+    sourceLicenseUrl: readString(provenanceRaw?.licenseUrl) ?? licenseLink?.url,
+  }
+
+  const helpfulLinks = rawLinks
+    .filter((link) => link.type?.toLowerCase() !== 'license')
+    .filter((link, index, all) => all.findIndex((other) => other.url === link.url) === index)
+
+  return { provenance, helpfulLinks }
+}
+
 export const GoalCard: React.FC<GoalCardProps> = ({
   goal,
   masteryValue,
@@ -53,6 +126,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   const activeActionLabel = isActive
     ? 'Zum aktiven Lernziel springen'
     : 'Als aktuelles Lernziel auswählen'
+  const { provenance, helpfulLinks } = extractSourceMetadata(goal)
 
   // Determine Status Icon
   let StatusIcon = Target
@@ -144,6 +218,41 @@ export const GoalCard: React.FC<GoalCardProps> = ({
         )}
       </div>
 
+      {(provenance.sourceUrl || provenance.sourceLicense) && (
+        <div className="mt-3 text-xs text-text-secondary">
+          {provenance.sourceUrl && (
+            <span>
+              <span className="font-medium text-text-primary">{language === 'en' ? 'Curriculum source: ' : 'Curriculum-Quelle: '}</span>
+              <a
+                href={provenance.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-dotted hover:decoration-solid"
+              >
+                {language === 'en' ? 'Course page' : 'Kursseite'}
+              </a>
+            </span>
+          )}
+          {provenance.sourceLicense && (
+            <span className={provenance.sourceUrl ? 'ml-3' : ''}>
+              <span className="font-medium text-text-primary">{language === 'en' ? 'License: ' : 'Lizenz: '}</span>
+              {provenance.sourceLicenseUrl ? (
+                <a
+                  href={provenance.sourceLicenseUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-dotted hover:decoration-solid"
+                >
+                  {provenance.sourceLicense}
+                </a>
+              ) : (
+                <span>{provenance.sourceLicense}</span>
+              )}
+            </span>
+          )}
+        </div>
+      )}
+
       {/* Detail Information Section - only shown in Explorer view */}
       {showDetails && (
         <div className="mt-4 space-y-3 text-[11px] text-text-secondary border-t border-border-color pt-4">
@@ -162,11 +271,59 @@ export const GoalCard: React.FC<GoalCardProps> = ({
             </div>
           )}
 
-          {/* Source Reference */}
-          {goal.sourceRef && (
+          {/* Provenance */}
+          {(provenance.sourceUrl || provenance.sourceLicense) && (
             <div>
-              <span className="font-semibold text-text-primary">Quelle: </span>
-              <span>{goal.sourceRef}</span>
+              <span className="font-semibold text-text-primary">{language === 'en' ? 'Curriculum source: ' : 'Curriculum-Quelle: '}</span>
+              {provenance.sourceUrl ? (
+                <a
+                  href={provenance.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-dotted hover:decoration-solid break-all"
+                >
+                  {provenance.sourceUrl}
+                </a>
+              ) : (
+                <span>—</span>
+              )}
+              {provenance.sourceLicense && (
+                <div className="mt-1">
+                  <span className="font-semibold text-text-primary">{language === 'en' ? 'License: ' : 'Lizenz: '}</span>
+                  {provenance.sourceLicenseUrl ? (
+                    <a
+                      href={provenance.sourceLicenseUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-1 underline decoration-dotted hover:decoration-solid break-all"
+                    >
+                      {provenance.sourceLicense}
+                    </a>
+                  ) : (
+                    <span className="ml-1">{provenance.sourceLicense}</span>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Helpful resource links */}
+          {helpfulLinks.length > 0 && (
+            <div>
+              <span className="font-semibold text-text-primary">{language === 'en' ? 'Helpful resources:' : 'Hilfreiche Quellen:'}</span>
+              <div className="mt-1 flex flex-wrap gap-1.5">
+                {helpfulLinks.slice(0, 6).map((link) => (
+                  <a
+                    key={`${link.type ?? 'resource'}:${link.url}`}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2 py-0.5 rounded-full bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 hover:underline"
+                  >
+                    {link.title ?? link.resourceType ?? link.type ?? (language === 'en' ? 'Resource' : 'Quelle')}
+                  </a>
+                ))}
+              </div>
             </div>
           )}
 

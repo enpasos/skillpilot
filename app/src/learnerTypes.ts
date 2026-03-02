@@ -34,6 +34,16 @@ export interface FrontierGoal {
   nodeKind?: 'exam' | 'tutor' | 'memory';
   reason: string;
   tags?: string[];
+  resourceLinks?: Array<{
+    type?: string;
+    title?: string;
+    url: string;
+    resourceType?: string;
+    license?: string;
+  }>;
+  sourceRef?: string;
+  sourceLicense?: string;
+  sourceLicenseUrl?: string;
 }
 
 export interface StateMachineInfo {

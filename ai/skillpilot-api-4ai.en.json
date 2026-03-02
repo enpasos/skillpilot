@@ -439,8 +439,46 @@
               "type": "string"
             }
           },
+          "resourceLinks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GoalSourceLink"
+            }
+          },
+          "sourceRef": {
+            "type": "string",
+            "description": "Canonical curriculum/provenance source URL for this goal."
+          },
+          "sourceLicense": {
+            "type": "string",
+            "description": "License label for the canonical source (e.g. CC-BY-NC-SA-4.0)."
+          },
+          "sourceLicenseUrl": {
+            "type": "string",
+            "description": "URL to the applicable license or terms page."
+          },
           "examData": {
             "$ref": "#/components/schemas/ExamData"
+          }
+        }
+      },
+      "GoalSourceLink": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "resourceType": {
+            "type": "string"
+          },
+          "license": {
+            "type": "string"
           }
         }
       },

@@ -10,5 +10,9 @@ public record FrontierGoal(
                 String nodeKind, // "exam" | "tutor" | "memory"
                 String reason,
                 java.util.List<String> tags,
+                java.util.List<GoalSourceLink> resourceLinks,
+                String sourceRef,
+                String sourceLicense,
+                String sourceLicenseUrl,
                 ExamData examData) {
 }
