@@ -40,7 +40,6 @@ class MitOcwFrontierWalkthroughTest {
     private static final String LANDSCAPE_18_06 = "2735b190-d8f0-5122-98a3-2e876447b4f2";
     private static final String LANDSCAPE_6_100L = "157803a5-e13c-5ab9-9d9d-fd6a060e6023";
 
-    private static final String FOUNDATIONS_WHY_ID = "9c136002-6239-5228-84be-2956c8f597a0";
     private static final String MODULE_18_01SC_ID = "f9b9191b-5623-571b-a742-a628bc4b1f75";
     private static final String MODULE_18_02SC_ID = "2c4a2a63-d3ff-5660-8e8e-d0fa245925cf";
     private static final String MODULE_18_05_ID = "b9c6db12-600e-5f2b-993c-a1cb37c94122";
@@ -101,24 +100,11 @@ class MitOcwFrontierWalkthroughTest {
     }
 
     @Test
-    void frontierStartsWithFoundationThenUnlocksDirectModules() {
+    void frontierStartsWithDirectModules() {
         setMasteredGoals(Set.of());
         Set<String> frontierBeforeFoundation = frontierIds();
 
-        assertThat(frontierBeforeFoundation).contains(FOUNDATIONS_WHY_ID);
         assertThat(frontierBeforeFoundation).contains(
-                MODULE_18_01SC_ID,
-                MODULE_18_02SC_ID,
-                MODULE_18_05_ID,
-                MODULE_18_06_ID,
-                MODULE_6_100L_ID,
-                MODULE_6_0002_ID,
-                MODULE_6_006_ID);
-
-        setMasteredGoals(Set.of(FOUNDATIONS_WHY_ID));
-        Set<String> frontierAfterFoundation = frontierIds();
-
-        assertThat(frontierAfterFoundation).contains(
                 MODULE_18_01SC_ID,
                 MODULE_18_02SC_ID,
                 MODULE_18_05_ID,
@@ -131,7 +117,6 @@ class MitOcwFrontierWalkthroughTest {
     @Test
     void mastering1801ModuleRemovesItFromFrontierWhileKeepingOtherMathModules() {
         Set<String> masteryAfter1801 = new HashSet<>();
-        masteryAfter1801.add(FOUNDATIONS_WHY_ID);
         masteryAfter1801.add(MODULE_18_01SC_ID);
         masteryAfter1801.addAll(atomicGoalIdsForLandscape(LANDSCAPE_18_01SC));
 
@@ -144,13 +129,12 @@ class MitOcwFrontierWalkthroughTest {
 
     @Test
     void mastering6100lModuleKeepsAdvancedCsModulesAvailable() {
-        setMasteredGoals(Set.of(FOUNDATIONS_WHY_ID));
+        setMasteredGoals(Set.of());
         Set<String> frontierAfterFoundation = frontierIds();
 
         assertThat(frontierAfterFoundation).contains(MODULE_6_0002_ID, MODULE_6_006_ID);
 
         Set<String> masteryAfter6100l = new HashSet<>();
-        masteryAfter6100l.add(FOUNDATIONS_WHY_ID);
         masteryAfter6100l.add(MODULE_6_100L_ID);
         masteryAfter6100l.addAll(atomicGoalIdsForLandscape(LANDSCAPE_6_100L));
         setMasteredGoals(masteryAfter6100l);

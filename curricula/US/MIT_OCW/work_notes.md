@@ -120,8 +120,8 @@ Reference: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S
 - Method: automated backend regression test using real curriculum closure and frontier logic.
 - Test file: `backend/src/test/java/com/skillpilot/backend/service/MitOcwFrontierWalkthroughTest.java`
 - Result: root-level onboarding works as intended:
-  - With empty mastery, frontier starts at `mit_ocw_foundations_why`.
-  - After mastering `mit_ocw_foundations_why`, first module-entry atomics unlock:
+  - With empty mastery, frontier starts directly at module entry goals (no cross-disciplinary `Why` node).
+  - First module-entry atomics include:
     - `mit_ocw_18_01sc_why`
     - `mit_ocw_6_100l_why`
 - Math path coherence:

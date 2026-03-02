@@ -101,11 +101,10 @@ const extractSourceMetadata = (goal: Goal): { provenance: GoalProvenance; helpfu
   const rawLinks: GoalSourceLink[] = rawLinksMapped.filter((entry): entry is GoalSourceLink => entry !== null)
 
   const licenseLink = rawLinks.find((link) => link.type?.toLowerCase() === 'license')
-  const conceptLink = rawLinks.find((link) => link.type?.toLowerCase() === 'concept')
 
   const provenance: GoalProvenance = {
     sourceTitle: readString(provenanceRaw?.sourceTitle),
-    sourceUrl: readString(provenanceRaw?.sourceUrl) ?? readString(goal.sourceRef) ?? conceptLink?.url,
+    sourceUrl: readString(provenanceRaw?.sourceUrl),
     sourceLicense: readString(provenanceRaw?.license) ?? extractLicenseFromTags(goal.tags) ?? licenseLink?.license,
     sourceLicenseUrl: readString(provenanceRaw?.licenseUrl) ?? licenseLink?.url,
   }
@@ -237,7 +236,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
         )}
       </div>
 
-      {(provenance.sourceUrl || provenance.sourceLicense || learningMaterialLinks.length > 0) && (
+      {(provenance.sourceUrl || learningMaterialLinks.length > 0) && (
         <div className="mt-3 text-xs text-text-secondary">
           {provenance.sourceUrl && (
             <div>
@@ -270,7 +269,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
               ))}
             </div>
           )}
-          {provenance.sourceLicense && (
+          {provenance.sourceUrl && provenance.sourceLicense && (
             <span className={provenance.sourceUrl || learningMaterialLinks.length > 0 ? 'ml-3' : ''}>
               <span className="font-medium text-text-primary">{language === 'en' ? 'License: ' : 'Lizenz: '}</span>
               {provenance.sourceLicenseUrl ? (
@@ -309,7 +308,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           )}
 
           {/* Provenance */}
-          {(provenance.sourceUrl || provenance.sourceLicense) && (
+          {provenance.sourceUrl && (
             <div>
               <span className="font-semibold text-text-primary">{language === 'en' ? 'Curriculum source: ' : 'Curriculum-Quelle: '}</span>
               {provenance.sourceUrl ? (
