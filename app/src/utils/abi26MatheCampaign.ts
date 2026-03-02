@@ -1,3 +1,5 @@
+import { SKILLPILOT_GPT_URL_DE } from './skillpilotGpt'
+
 export type Abi26CourseLevel = 'GK' | 'LK'
 
 export interface Abi26CampaignContext {
@@ -11,7 +13,7 @@ export interface Abi26CampaignContext {
 
 export const ABI26_CAMPAIGN_SLUG = 'abi26-he-mathe-k1'
 export const ABI26_MATH_CURRICULUM_ID = '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3'
-export const ABI26_GPT_URL = 'https://chatgpt.com/g/g-693ebdcb2fac8191b3a765ce7f451fb2-skillpilot-gpt'
+export const ABI26_GPT_URL = SKILLPILOT_GPT_URL_DE
 export const ABI26_FEEDBACK_URL = 'https://github.com/enpasos/skillpilot/issues/new/choose'
 export const ABI26_CONTEXT_STORAGE_KEY = 'skillpilot_campaign_context'
 

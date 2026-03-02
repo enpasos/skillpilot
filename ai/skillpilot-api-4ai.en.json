@@ -16,7 +16,7 @@
     }
   ],
   "paths": {
-    "/api/ai/learners": {
+    "/api/ai/en/learners": {
       "post": {
         "operationId": "createLearner",
         "summary": "Initialize a new learner session",
@@ -46,7 +46,7 @@
         "x-openai-isConsequential": false
       }
     },
-    "/api/ai/learners/{skillpilotId}/state": {
+    "/api/ai/en/learners/{skillpilotId}/state": {
       "get": {
         "operationId": "getLearnerState",
         "summary": "Get unified learner state",
@@ -76,7 +76,7 @@
         "x-openai-isConsequential": false
       }
     },
-    "/api/ai/learners/{skillpilotId}/scope": {
+    "/api/ai/en/learners/{skillpilotId}/scope": {
       "post": {
         "operationId": "setScope",
         "summary": "Set learning scope/focus",
@@ -116,7 +116,7 @@
         "x-openai-isConsequential": false
       }
     },
-    "/api/ai/learners/{skillpilotId}/active-goal": {
+    "/api/ai/en/learners/{skillpilotId}/active-goal": {
       "post": {
         "operationId": "setActiveGoal",
         "summary": "Lock an atomic goal for teaching",
@@ -156,7 +156,7 @@
         "x-openai-isConsequential": false
       }
     },
-    "/api/ai/learners/{skillpilotId}/mastery": {
+    "/api/ai/en/learners/{skillpilotId}/mastery": {
       "post": {
         "operationId": "setMastery",
         "summary": "Update mastery and get next steps",
@@ -206,7 +206,7 @@
         "x-openai-isConsequential": false
       }
     },
-    "/api/ai/landscapes": {
+    "/api/ai/en/landscapes": {
       "get": {
         "operationId": "listLandscapes",
         "summary": "List available curriculums",
@@ -225,7 +225,7 @@
         "x-openai-isConsequential": false
       }
     },
-    "/api/ai/learners/{skillpilotId}/curriculum": {
+    "/api/ai/en/learners/{skillpilotId}/curriculum": {
       "post": {
         "operationId": "setCurriculum",
         "summary": "Set current curriculum/landscape",
@@ -267,7 +267,7 @@
         "x-openai-isConsequential": false
       }
     },
-    "/api/ai/learners/{skillpilotId}/personalization": {
+    "/api/ai/en/learners/{skillpilotId}/personalization": {
       "post": {
         "operationId": "setPersonalization",
         "summary": "Personalize the curriculum",
@@ -846,3 +846,4 @@
     }
   }
 }
+

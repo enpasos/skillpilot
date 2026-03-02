@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.extensions.Extension;
 import io.swagger.v3.oas.annotations.extensions.ExtensionProperty;
 
 @RestController
-@RequestMapping(value = "/api/ai/landscapes", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/ai/{lang}/landscapes", produces = MediaType.APPLICATION_JSON_VALUE)
 @CrossOrigin(origins = "${cors.allowed-origins:http://localhost:5173}")
 public class LandscapeAiController {
 

@@ -1,0 +1,117 @@
+# SkillPilot GPT Setup Guide
+
+This file documents how to configure a custom GPT in ChatGPT so it can act as a **SkillPilot trainer**.
+
+The goal: a GPT that guides learners through the SkillPilot competence graph, calls `getLearnerState` to find the frontier, and updates mastery via `setMastery`.
+
+---
+
+## 1. Prerequisites
+
+- You have access to the GPT builder ("Create → New GPT").
+- You have the **Optimized OpenAPI JSON** ready (provided at the bottom of this file).
+
+---
+
+## 2. Creating the SkillPilot Trainer GPT
+
+Open **Create → New GPT → Configure** and fill out the fields as follows.
+
+### 2.1 Name and description
+
+- **Name**
+  ```text
+  SkillPilot GPT
+  ```
+
+  - **Description**
+    ```text
+    Learning trainer ... https://skillpilot.com
+    ```
+
+### 2.2 Instructions (System Instructions)
+
+In the GPT builder, paste the **entire** content of `ai/openai custom gpt/system_instructions.en.md` into **Instructions** (plain text, unchanged).
+
+*Note: These instructions are critical for ensuring the AI uses UUIDs correctly and understands the difference between Frontier and Planned goals.*
+
+-----
+
+### 2.3 Conversation Starters
+
+```text
+I want to start with high school math. 
+```
+
+```text
+I want to continue learning with ID ...
+```
+
+```text
+I want to practice physics for my physics bachelor's degree. 
+```
+
+```text
+I want to practice law at university level.
+```
+-----  
+
+### 2.4 Quick sanity check
+
+After setup, send a message that contains a UUID.
+
+Expected behavior:
+- The assistant **calls the backend immediately** and only responds **after** the result is available.
+- No placeholder text like "I'm loading..." or a follow-up nudge from the user.
+
+If it waits for a "ping", the system instructions or actions are not correctly wired.
+
+## 3. Knowledge: attaching knowledge_docs
+
+In the **Knowledge** section of the GPT builder:
+
+1.  Click **"Upload files"**.
+2.  Upload all knowledge_docs from this repository.
+
+The GPT will consult these files to understand the pedagogical "Training Loop".
+
+-----
+
+## 4. Actions: The Optimized Schema
+
+In the **Actions** section:
+
+1.  Click **"Create new action"**.
+2.  **Authentication:** API Key (Bearer). Use the same value as `skillpilot.ai.api-key` on the backend.
+3.  **Schema:** **Do not use the URL import.** Instead, copy and paste the **Optimized JSON** below directly into the schema box. This version contains specific instructions for the AI (like "Use UUIDs") that are missing from the raw server export.
+
+*(See Section 7 for the JSON content)*
+
+-----
+
+## 5. Model choice
+
+  - **Recommended Model:** **GPT-4o** (or GPT-5.1 if available).
+      - This model follows the complex instruction to map UUIDs much better than smaller models.
+
+-----
+
+## 6. How the GPT and SkillPilot API work together
+
+End-to-end flow for a typical learner session:
+
+1.  **Init:** The GPT checks for a nickname and `skillpilotId`. If missing, it calls `createLearner` (optionally with a topic like "Math").
+2.  **Context:** It calls `getLearnerState` (or uses the state from `createLearner`) to get the Curriculum, Frontier, Goals, and `stateMachine` immediately.
+3.  **Discovery:** It looks at `frontier` and selects goals with `type=atomic`. If only clusters are present, call `setScope` to drill down.
+4.  **Personalization:** If `stateMachine.requiredAction` is `setPersonalization` (e.g. Standard/Advanced track or subject/level filters are needed), ask for the missing preference and call `setPersonalization`.
+5.  **Scope:** If the user has a specific topic goal ("I want to learn Calculus/Analysis"), call `setScope` to focus the plan.
+6.  **Lock Goal:** It calls `setActiveGoal` for the chosen atomic goal.
+7.  **Teaching:** It teaches that locked goal and does exercises.
+8.  **Mastery:** After success, it calls `setMastery` **immediately** (no confirmation prompt). If competence is not verified, it must **not** call `setMastery`. This returns the **new** frontier immediately.
+9.  **Loop:** It picks the next `type=atomic` goal from `frontier`, locks it, and continues.
+
+-----
+
+## 7. Optimized API Schema (Copy this into ChatGPT)
+
+see ../skillpilot-api-4ai.json

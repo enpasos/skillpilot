@@ -29,7 +29,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @RestController
-@RequestMapping(value = "/api/ai/learners", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/ai/{lang}/learners", produces = MediaType.APPLICATION_JSON_VALUE)
 public class LearnerAiController {
 
     private final LearnerService learnerService;
@@ -116,7 +116,8 @@ public class LearnerAiController {
         String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
         if (requiredAction != null && !"setMastery".equals(requiredAction)) {
             // Recovery path:
-            // If the conversation already selected a goal but the backend active goal was not
+            // If the conversation already selected a goal but the backend active goal was
+            // not
             // persisted, allow /mastery to auto-lock that goal first.
             if ("setActiveGoal".equals(requiredAction)) {
                 String selectedGoalId = extractGoalIdFromMasteryRequest(effectiveRequest);
