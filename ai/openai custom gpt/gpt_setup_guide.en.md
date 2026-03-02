@@ -40,20 +40,14 @@ In the GPT builder, paste the **entire** content of `ai/openai custom gpt/system
 ### 2.3 Conversation Starters
 
 ```text
-I want to start with high school math. 
+I want to learn Linear Algebra (MIT OCW). 
 ```
 
 ```text
 I want to continue learning with ID ...
 ```
 
-```text
-I want to practice physics for my physics bachelor's degree. 
-```
-
-```text
-I want to practice law at university level.
-```
+ 
 -----  
 
 ### 2.4 Quick sanity check
