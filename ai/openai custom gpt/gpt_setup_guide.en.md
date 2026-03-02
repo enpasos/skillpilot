@@ -114,4 +114,4 @@ End-to-end flow for a typical learner session:
 
 ## 7. Optimized API Schema (Copy this into ChatGPT)
 
-see ../skillpilot-api-4ai.json
+see ../skillpilot-api-4ai.en.json
