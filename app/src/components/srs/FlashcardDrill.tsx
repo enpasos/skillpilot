@@ -157,6 +157,7 @@ export function FlashcardDrill({
     const syncedAllCaughtUpRef = useRef(false)
     const autoReloadRef = useRef(false)
     const lastMasteryRef = useRef<number | null>(null)
+    const sessionInitialDueRef = useRef<number | null>(null)
 
     const [stats, setStats] = useState({
         total: 0,
@@ -228,6 +229,7 @@ export function FlashcardDrill({
         setSrsState({}) // Clear state
         setSyncInFlight(false)
         syncedAllCaughtUpRef.current = false
+        sessionInitialDueRef.current = null
     }, [dataSourceUrl, goalId]) // Reset on goal change
 
     useEffect(() => {
@@ -340,6 +342,10 @@ export function FlashcardDrill({
                     box3: b3,
                     due: dueCardsCount
                 })
+
+                if (sessionInitialDueRef.current === null) {
+                    sessionInitialDueRef.current = dueCardsCount
+                }
 
                 const shuffled = shuffle(dueCards)
                 setQueue(shuffled.slice(0, 20))
@@ -527,6 +533,10 @@ export function FlashcardDrill({
 
     if (!currentCard || !vocabData) return <div className="p-8 text-center">{t.loading}</div>
 
+    const progressTotal = sessionInitialDueRef.current || 1
+    const progressDone = Math.max(0, progressTotal - stats.due)
+    const progressPercent = Math.min(100, Math.max(0, (progressDone / progressTotal) * 100))
+
     return (
         <div className="flex flex-col items-center w-full max-w-md mx-auto p-4 min-h-[60vh]">
 
@@ -624,12 +634,12 @@ export function FlashcardDrill({
                 <div className="w-full h-2 bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
                     <div
                         className="h-full bg-sky-500 transition-all duration-300 ease-out"
-                        style={{ width: `${((currentCardIndex) / queue.length) * 100}%` }}
+                        style={{ width: `${progressPercent}%` }}
                     />
                 </div>
                 {/* Tooltip */}
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-50">
-                    {t.progressTooltip.replace('{0}', currentCardIndex.toString()).replace('{1}', queue.length.toString())}
+                    {t.progressTooltip.replace('{0}', progressDone.toString()).replace('{1}', progressTotal.toString())}
                 </div>
             </div>
 

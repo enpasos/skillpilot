@@ -63,6 +63,21 @@ const extractLicenseFromTags = (tags?: string[]): string | undefined => {
   return undefined
 }
 
+const normalize = (value?: string): string => (value ?? '').trim().toLowerCase()
+
+const isLearningMaterialLink = (link: GoalSourceLink): boolean => {
+  const type = normalize(link.type)
+  const resourceType = normalize(link.resourceType)
+  return (
+    type === 'learning-material' ||
+    type === 'learning_material' ||
+    type === 'learningmaterial' ||
+    type === 'material' ||
+    type === 'oer' ||
+    resourceType === 'oer'
+  )
+}
+
 const extractSourceMetadata = (goal: Goal): { provenance: GoalProvenance; helpfulLinks: GoalSourceLink[] } => {
   const extended = asRecord(goal.extendedData)
   const provenanceRaw = asRecord(extended?.provenance)
@@ -129,12 +144,8 @@ export const GoalCard: React.FC<GoalCardProps> = ({
     ? 'Zum aktiven Lernziel springen'
     : 'Als aktuelles Lernziel auswählen'
   const { provenance, helpfulLinks } = extractSourceMetadata(goal)
+  const learningMaterialLinks = helpfulLinks.filter(isLearningMaterialLink).slice(0, 3)
   const sourceLinkLabel = provenance.sourceTitle || (language === 'en' ? 'Course page' : 'Kursseite')
-  const showExplicitSourceUrl = Boolean(
-    provenance.sourceUrl &&
-    provenance.sourceTitle &&
-    provenance.sourceTitle.toLowerCase().includes('kerncurriculum gymnasiale oberstufe'),
-  )
 
   // Determine Status Icon
   let StatusIcon = Target
@@ -226,7 +237,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
         )}
       </div>
 
-      {(provenance.sourceUrl || provenance.sourceLicense) && (
+      {(provenance.sourceUrl || provenance.sourceLicense || learningMaterialLinks.length > 0) && (
         <div className="mt-3 text-xs text-text-secondary">
           {provenance.sourceUrl && (
             <div>
@@ -239,13 +250,28 @@ export const GoalCard: React.FC<GoalCardProps> = ({
               >
                 {sourceLinkLabel}
               </a>
-              {showExplicitSourceUrl && (
-                <div className="mt-1 break-all">{provenance.sourceUrl}</div>
-              )}
+            </div>
+          )}
+          {learningMaterialLinks.length > 0 && (
+            <div className={provenance.sourceUrl ? 'mt-1' : ''}>
+              <span className="font-medium text-text-primary">{language === 'en' ? 'Learning material: ' : 'Lernmaterial: '}</span>
+              {learningMaterialLinks.map((link, index) => (
+                <React.Fragment key={`${link.type ?? 'resource'}:${link.url}`}>
+                  {index > 0 && <span className="mx-1">·</span>}
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-dotted hover:decoration-solid"
+                  >
+                    {link.title ?? link.resourceType ?? (language === 'en' ? 'Resource' : 'Quelle')}
+                  </a>
+                </React.Fragment>
+              ))}
             </div>
           )}
           {provenance.sourceLicense && (
-            <span className={provenance.sourceUrl ? 'ml-3' : ''}>
+            <span className={provenance.sourceUrl || learningMaterialLinks.length > 0 ? 'ml-3' : ''}>
               <span className="font-medium text-text-primary">{language === 'en' ? 'License: ' : 'Lizenz: '}</span>
               {provenance.sourceLicenseUrl ? (
                 <a
@@ -291,9 +317,9 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                   href={provenance.sourceUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline decoration-dotted hover:decoration-solid break-all"
+                  className="underline decoration-dotted hover:decoration-solid"
                 >
-                  {provenance.sourceUrl}
+                  {sourceLinkLabel}
                 </a>
               ) : (
                 <span>—</span>
