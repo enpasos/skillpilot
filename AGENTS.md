@@ -555,3 +555,34 @@ SkillPilot provides an **Optimized OpenAPI Specification** designed specifically
 - **Source of Truth:** Flashcard decks (`*_deck.json`) and other curriculum-related assets must be stored in the same directory as the curriculum JSON files (e.g., `curricula/EU/CEFR/English_From_German/json/`).
 - **Deployment:** These files are copied to `app/public/data/` during the build/deployment process to be accessible by the frontend.
 - **Development:** When creating a new deck, save it in the curriculum directory and manually copy it to `app/public/data/` if testing locally.
+
+---
+
+## 14. LaTeX Rendering Context (Cockpit vs. Exam Mode)
+
+For math formulas in task content, always distinguish between:
+
+- **Stored/escaped LaTeX text** (e.g. `\\( ... \\)` in JSON or raw payloads),
+- **Rendered math output** (when a math renderer is active in UI).
+
+Important behavior rule:
+
+- In **exam mode / assessment mode**, task blocks may need to be shown **verbatim**.  
+  In that case, do not silently rewrite or "repair" escaped LaTeX formatting.
+- In **Cockpit/normal learning views**, formulas can appear properly rendered because a math renderer is active.
+
+Practical note for explanations to users:
+
+- Raw `\\( ... \\)` means LaTeX is present as escaped text but currently not rendered.
+- Proper inline rendering form is `\\( Q = 900\\,\\mathrm{kJ} \\)`; block form is:
+
+```latex
+$$
+\eta = \frac{W}{Q}
+$$
+```
+
+When users report "formulas are broken", first clarify whether the issue is:
+
+1. content encoding (wrong LaTeX in data), or
+2. rendering context (correct LaTeX, but no active math renderer in that view).
