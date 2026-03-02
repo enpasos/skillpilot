@@ -218,6 +218,7 @@ public class LandscapeService {
         Map<String, LearningLandscape> byLegacyId = new HashMap<>();
         Map<String, String> goalIndex = new HashMap<>();
         long maxLastModified = 0L;
+        boolean criticalParseError = false;
 
         try {
             List<Path> files = Files.walk(dir)
@@ -288,13 +289,29 @@ public class LandscapeService {
                     loaded.add(landscape);
 
                 } catch (com.fasterxml.jackson.databind.exc.MismatchedInputException e) {
-                    log.debug("Skipping non-landscape JSON file {}: {}", file, e.getMessage());
+                    if (isCriticalLandscapeFile(file)) {
+                        criticalParseError = true;
+                        log.error("Failed to read critical landscape file {}", file, e);
+                    } else {
+                        log.debug("Skipping non-landscape JSON file {}: {}", file, e.getMessage());
+                    }
                 } catch (Exception e) {
+                    if (isCriticalLandscapeFile(file)) {
+                        criticalParseError = true;
+                    }
                     log.error("Failed to read landscape file {}", file, e);
                 }
             }
         } catch (Exception e) {
             log.error("Failed to list landscapes in {}", dir, e);
+        }
+
+        if (criticalParseError && !cachedLandscapes.isEmpty()) {
+            log.warn("Critical landscape parse errors detected. Keeping previous cache with {} landscapes and {} goals.",
+                    cachedLandscapes.size(), goalIdToLandscapeId.size());
+            // Avoid repeated reload attempts on unchanged broken files.
+            lastLoadedFingerprint = maxLastModified;
+            return;
         }
 
         for (LearningLandscape l : loaded) {
@@ -313,6 +330,11 @@ public class LandscapeService {
         curriculumManifest = loadCurriculumManifest(dir, cachedById);
         lastLoadedFingerprint = maxLastModified;
         log.info("Loaded {} landscapes and {} goals from {}", loaded.size(), goalIndex.size(), dir);
+    }
+
+    private boolean isCriticalLandscapeFile(Path file) {
+        String filename = file.getFileName().toString();
+        return FILENAME_PATTERN.matcher(filename).matches();
     }
 
     public LandscapeOverviewResponse getOverview() {

@@ -42,6 +42,11 @@ type GoalProvenance = {
   sourceLicenseUrl?: string
 }
 
+const LEGACY_ATTRIBUTION_LINE_PATTERNS = [
+  /^\s*\[(course url|kurs-url)\]\(.*\)\s*$/i,
+  /^\s*(license|lizenz)\s*:\s*\[.*\]\(.*\)\s*$/i,
+]
+
 const asRecord = (value: unknown): Record<string, unknown> | null => {
   return value && typeof value === 'object' && !Array.isArray(value) ? (value as Record<string, unknown>) : null
 }
@@ -64,6 +69,17 @@ const extractLicenseFromTags = (tags?: string[]): string | undefined => {
 }
 
 const normalize = (value?: string): string => (value ?? '').trim().toLowerCase()
+
+const stripLegacyAttributionLines = (description: string | undefined, hasProvenance: boolean): string | undefined => {
+  if (!description || !hasProvenance) return description
+  const cleaned = description
+    .split('\n')
+    .filter((line) => !LEGACY_ATTRIBUTION_LINE_PATTERNS.some((pattern) => pattern.test(line)))
+    .join('\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()
+  return cleaned
+}
 
 const isLearningMaterialLink = (link: GoalSourceLink): boolean => {
   const type = normalize(link.type)
@@ -145,6 +161,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   const { provenance, helpfulLinks } = extractSourceMetadata(goal)
   const learningMaterialLinks = helpfulLinks.filter(isLearningMaterialLink).slice(0, 3)
   const sourceLinkLabel = provenance.sourceTitle || (language === 'en' ? 'Course page' : 'Kursseite')
+  const displayDescription = stripLegacyAttributionLines(goal.description, Boolean(provenance.sourceUrl))
 
   // Determine Status Icon
   let StatusIcon = Target
@@ -231,7 +248,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
             remarkPlugins={[remarkGfm, remarkMath]}
             rehypePlugins={[rehypeKatex]}
           >
-            {goal.description}
+            {displayDescription ?? ''}
           </ReactMarkdown>
         )}
       </div>
