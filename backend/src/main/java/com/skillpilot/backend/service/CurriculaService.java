@@ -40,6 +40,8 @@ public class CurriculaService {
     private static final Logger log = LoggerFactory.getLogger(CurriculaService.class);
     private static final double MASTERY_THRESHOLD = 0.9;
     private static final Pattern GITHUB_ID_PATTERN = Pattern.compile("^[A-Za-z0-9-]{1,39}$");
+    private static final Pattern WHY_TOPIC_PATTERN = Pattern.compile("^\\s*(warum|why)\\b.*",
+            Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
 
     private final LandscapeService landscapeService;
     private final MasteryRepository masteryRepository;
@@ -585,6 +587,7 @@ public class CurriculaService {
         return childrenIds.stream()
                 .map(id -> landscapeService.getGoalDefinition(id))
                 .filter(java.util.Objects::nonNull)
+                .filter(g -> !isWhyTopic(g))
                 .map(g -> {
                     String title = g.getTitle();
                     String titleEn = g.getTitleEn();
@@ -597,5 +600,16 @@ public class CurriculaService {
                             titleEn);
                 })
                 .toList();
+    }
+
+    private boolean isWhyTopic(LearningGoal goal) {
+        if (goal == null) {
+            return false;
+        }
+        return matchesWhyTopicTitle(goal.getTitle()) || matchesWhyTopicTitle(goal.getTitleEn());
+    }
+
+    private boolean matchesWhyTopicTitle(String title) {
+        return title != null && WHY_TOPIC_PATTERN.matcher(title).matches();
     }
 }
