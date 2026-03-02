@@ -43,6 +43,50 @@ interface LearnerViewProps {
   parentMap?: Map<string, string[]>
 }
 
+type PersonalCurriculumConfig = Record<string, { selected: boolean; filterId?: string }>
+
+const normalizePersonalConfig = (
+  input: PersonalCurriculumConfig,
+  availableLandscapes: { landscapeId: string }[],
+  rootLandscapeId?: string,
+): { config: PersonalCurriculumConfig; corrected: boolean } => {
+  if (!input || typeof input !== 'object') {
+    return { config: {}, corrected: false }
+  }
+
+  const childLandscapeIds = availableLandscapes
+    .map((l) => l.landscapeId)
+    .filter((id) => id !== rootLandscapeId)
+
+  if (childLandscapeIds.length === 0) {
+    return { config: input, corrected: false }
+  }
+
+  const hasChildEntries = childLandscapeIds.some((id) => input[id] !== undefined)
+  const hasSelectedChild = childLandscapeIds.some((id) => input[id]?.selected === true)
+
+  // Recovery case: profile explicitly stores child settings, but all children are deselected.
+  // This leads to an empty tree in learner cockpit and is almost always accidental.
+  if (hasChildEntries && !hasSelectedChild) {
+    const repaired: PersonalCurriculumConfig = { ...input }
+    if (rootLandscapeId) {
+      repaired[rootLandscapeId] = {
+        ...repaired[rootLandscapeId],
+        selected: true,
+      }
+    }
+    childLandscapeIds.forEach((id) => {
+      repaired[id] = {
+        ...repaired[id],
+        selected: true,
+      }
+    })
+    return { config: repaired, corrected: true }
+  }
+
+  return { config: input, corrected: false }
+}
+
 export const LearnerView: React.FC<LearnerViewProps> = ({
   rootGoals,
   goalIndexAll,
@@ -71,7 +115,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     personalizedTotalAtomic?: number
   } | null>(null)
   const [isSetupOpen, setIsSetupOpen] = useState(false)
-  const [personalConfig, setPersonalConfig] = useState<Record<string, { selected: boolean; filterId?: string }>>({})
+  const [personalConfig, setPersonalConfig] = useState<PersonalCurriculumConfig>({})
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
@@ -775,7 +819,19 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           const data = await res.json()
           if (data.personalCurriculum) {
             const parsed = JSON.parse(data.personalCurriculum)
-            setPersonalConfig(parsed || {})
+            const { config, corrected } = normalizePersonalConfig(parsed || {}, availableLandscapes, rootLandscapeId)
+            setPersonalConfig(config || {})
+
+            if (corrected) {
+              const saveUrl = apiBase
+                ? `${apiBase}/api/ui/learners/${skillpilotId}/personal-curriculum`
+                : `/api/ui/learners/${skillpilotId}/personal-curriculum`
+              await fetch(saveUrl, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(config),
+              })
+            }
           }
         }
       } catch (e) {
@@ -784,7 +840,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
     fetchConfig()
     refreshState()
-  }, [skillpilotId, refreshState])
+  }, [skillpilotId, refreshState, availableLandscapes, rootLandscapeId])
 
   // Check mobile state
   const [isMobile, setIsMobile] = useState(false)
@@ -823,7 +879,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [resize, stopResizing])
 
   // Save personal config to backend
-  const handleConfigChange = useCallback(async (newConfig: Record<string, { selected: boolean; filterId?: string }>) => {
+  const handleConfigChange = useCallback(async (newConfig: PersonalCurriculumConfig) => {
     setPersonalConfig(newConfig)
     if (!skillpilotId) return
     try {
