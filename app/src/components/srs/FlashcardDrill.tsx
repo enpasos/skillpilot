@@ -32,6 +32,7 @@ const UI_TEXT = {
         configError: "Configuration Error: Missing Vocabulary Source.",
         loading: "Loading Data...",
         allCaughtUp: "All Caught Up!",
+        noCardsForFilter: "No flashcards found for the current filter.",
         new: "New",
         learn: "Learn",
         review: "Review",
@@ -70,6 +71,7 @@ const UI_TEXT = {
         configError: "Konfigurationsfehler: Fehlende Vokabelquelle.",
         loading: "Lade Daten...",
         allCaughtUp: "Alles erledigt!",
+        noCardsForFilter: "Keine Karteikarten für den aktuellen Filter gefunden.",
         new: "Neu",
         learn: "Lernen",
         review: "Wdh.",
@@ -529,6 +531,10 @@ export function FlashcardDrill({
                 <p className="text-gray-500 mb-6">{titleOverride || vocabData?.title || 'Loading...'} - {t.noneDue}</p>
             </div>
         )
+    }
+
+    if (stats.total === 0) {
+        return <div className="p-8 text-center text-gray-500 italic">{t.noCardsForFilter}</div>
     }
 
     if (!currentCard || !vocabData) return <div className="p-8 text-center">{t.loading}</div>

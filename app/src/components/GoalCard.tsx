@@ -85,6 +85,7 @@ const isLearningMaterialLink = (link: GoalSourceLink): boolean => {
   const type = normalize(link.type)
   const resourceType = normalize(link.resourceType)
   return (
+    type === 'concept' ||
     type === 'learning-material' ||
     type === 'learning_material' ||
     type === 'learningmaterial' ||

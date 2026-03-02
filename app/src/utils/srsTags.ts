@@ -8,6 +8,7 @@ const SRS_FILTER_EXCLUDE = new Set([
   'vocabulary',
   'grammar',
   'practice',
+  'memorization',
   'A1',
   'A2',
   'B1',
