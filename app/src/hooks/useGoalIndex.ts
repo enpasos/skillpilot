@@ -33,8 +33,25 @@ export function useGoalIndex(allGoalsGlobal: Goal[]) {
   }, [allGoalsGlobal, goalIndexAll])
 
   const globalRootGoals = useMemo(() => {
-    return allGoalsGlobal
+    const roots = allGoalsGlobal
       .filter((goal) => !(parentMapAll.get(goal.id)?.length) && goal.contains.length > 0)
+    const rootsById = new Map(roots.map((goal) => [goal.id, goal]))
+
+    // Hide redundant wrapper roots (single child) when the same child is already anchored by a stronger root.
+    const dedupedRoots = roots.filter((goal) => {
+      if (goal.contains.length !== 1) return true
+      const [childId] = goal.contains
+      const candidateParents = parentMapAll.get(childId) ?? []
+      return !candidateParents.some((parentId) => {
+        if (parentId === goal.id) return false
+        const otherRoot = rootsById.get(parentId)
+        if (!otherRoot) return false
+        if (otherRoot.contains.length > goal.contains.length) return true
+        return otherRoot.contains.length === goal.contains.length && otherRoot.id < goal.id
+      })
+    })
+
+    return dedupedRoots
       .sort((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: 'base' }))
   }, [allGoalsGlobal, parentMapAll])
 
