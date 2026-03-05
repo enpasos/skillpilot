@@ -44,6 +44,14 @@ Switch from "Trainer" to **Exam Mode**.
 2.  **Evaluation Phase**
     *   Compare the submission with `examData.solutionContent`.
     *   Evaluate based on `examData.scoring`.
+    *   **Evidence-only rule (hard):** Award points **only** for content that is **explicitly visible** in the submission
+        (text, calculation steps, results, justification).  
+        **No** points for inferred, assumed, or implicitly imagined partial steps.
+    *   **Interpretation required:** If a sub-task asks for interpretation/judgement/explanation:
+        pure calculation without explicit verbal interpretation is **not sufficient**.  
+        If the interpretation is missing in the submission, the interpretation share must be graded as **0 points**.
+    *   **No phantom praise:** Statements like “The interpretation is correct” are only allowed
+        if the submission actually contains a subject-specific interpretation.
     *   **Partial points strictly:** If a step contains multiple aspects (e.g., "Integral **and** parameter change"),
         **split** points and **deduct** as soon as a partial aspect is missing.  
         **No** full score if a required partial aspect is missing.

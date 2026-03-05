@@ -44,6 +44,13 @@ Wechsle von „Trainer“ in den **Prüfungsmodus**.
 2.  **Bewertungsphase**
     *   Vergleiche die Abgabe mit `examData.solutionContent`.
     *   Bewerte anhand `examData.scoring`.
+    *   **Evidenzpflicht (hart):** Vergib Punkte **nur** für Inhalte, die in der Abgabe **explizit erkennbar** sind (Text, Rechnung, Ergebnis, Begründung).  
+        **Keine** Punkte für hineininterpretierte, vermutete oder implizit unterstellte Teilschritte.
+    *   **Interpretationspflicht:** Wenn eine Teilaufgabe eine Deutung/Interpretation/Beurteilung fordert, gilt:
+        reine Rechnung ohne sprachliche Deutung ist **nicht ausreichend**.  
+        Fehlt die Deutung in der Abgabe, ist der Interpretationsanteil mit **0 Punkten** zu bewerten.
+    *   **Keine Phantom-Lobs:** Formulierungen wie „Die Interpretation ist korrekt“ sind nur erlaubt,
+        wenn in der Abgabe tatsächlich eine fachliche Interpretation vorhanden ist.
     *   **Teilpunkte strikt:** Wenn ein Schritt mehrere Aspekte enthält (z. B. „Integral **und** Parameteränderung“),
         Punkte **aufteilen** und **abziehen**, sobald ein Teilaspekt fehlt.  
         **Keine** Vollpunktzahl, wenn ein geforderter Teilaspekt fehlt.
