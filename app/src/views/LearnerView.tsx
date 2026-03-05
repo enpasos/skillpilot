@@ -1468,7 +1468,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {atomicFrontierOptions
-                    .slice(0, 6)
                     .map((candidate, idx) => (
                       <button
                         key={candidate.id}
