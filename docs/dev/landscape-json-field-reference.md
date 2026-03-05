@@ -3,10 +3,14 @@
 This document describes the landscape JSON schema used by the app. It uses the
 Hessian math landscape as a concrete reference.
 
+The runtime schema in `docs/landscape-runtime.schema.json` validates the required
+runtime contract but intentionally allows additional metadata fields at the
+top level and per goal for future layers and exports.
+
 ## Scope
 - Reference file: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json`
 - Goal count: file-specific; check the JSON for the current number.
-- Types: `src/landscapeTypes.ts`
+- Types: `app/src/landscapeTypes.ts`
 - Loader: `app/src/hooks/useLandscapes.ts`
 
 ## Top-level fields (LearningLandscape)
@@ -44,7 +48,7 @@ Hessian math landscape as a concrete reference.
 ### titleEn
 - Type: string
 - Example: `Mathematics Upper Secondary (Hesse, KC 2024)`
-- Used by: not defined in `src/landscapeTypes.ts`, so ignored by the typed loader
+- Used by: not defined in `app/src/landscapeTypes.ts`, so ignored by the typed loader
 - Status: currently unused
 
 ### description
@@ -56,7 +60,7 @@ Hessian math landscape as a concrete reference.
 ### descriptionEn
 - Type: string
 - Example: `Learning landscape for the Hessian upper secondary mathematics curriculum (Kerncurriculum 2024).`
-- Used by: not defined in `src/landscapeTypes.ts`, so ignored by the typed loader
+- Used by: not defined in `app/src/landscapeTypes.ts`, so ignored by the typed loader
 - Status: currently unused
 
 ### filters
@@ -88,8 +92,8 @@ Hessian math landscape as a concrete reference.
 ### shortKey
 - Type: string (ASCII identifier)
 - Example: `q3_5_gk_02_datenanalyse_modellvergleich`
-- Used by: not used in UI; `app/src/hooks/useAppCore.ts` builds short keys from UUIDs instead
-- Status: currently unused in UI, planned for stable persistence in Layer B/C
+- Used by: accepted by schema and intended for stable cross-layer/export references; the current UI still derives fallback short keys from UUIDs in `app/src/hooks/useAppCore.ts`
+- Status: not yet consumed directly by the current UI runtime
 
 ### title
 - Type: string
@@ -118,8 +122,8 @@ Hessian math landscape as a concrete reference.
 ### core
 - Type: boolean
 - Example: `true`
-- Used by: not referenced in UI code yet
-- Status: currently unused (intended for core vs extension metrics)
+- Used by: loaded into `UiGoal` via `app/src/goalTypes.ts`; current UI does not yet expose dedicated core-vs-extension reporting
+- Status: available, lightly used, not yet surfaced prominently
 
 ### weight
 - Type: number

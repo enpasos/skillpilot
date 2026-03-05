@@ -1,64 +1,95 @@
 # SkillPilot Deployment Process
 
-This document describes the automated deployment workflow for the SkillPilot application on Linux servers.
+This document describes the current automated deployment workflow implemented by `scripts/deploy.sh` for Linux servers.
 
 ## Overview
 
-The deployment process ensures that:
-1.  The latest code is pulled from Git.
-2.  **Vocabulary Decks** are correctly deployed from the curriculum source-of-truth to the application's data folder.
-3.  **Whitepaper assets** (Markdown + images) are deployed into the app's public folder.
-4.  The React frontend is rebuilt with the new data.
-5.  The system service is restarted.
+The deployment process currently does all of the following:
+1.  Stash local working-tree changes.
+2.  Pull the latest code from Git.
+3.  Deploy **curriculum decks** from `curricula/.../json/` into both frontend and backend static data folders.
+4.  Deploy **whitepaper assets** into `app/public/whitepaper` and the comic folders.
+5.  Deploy **quickstart/story assets** into `app/public/`.
+6.  Install frontend dependencies and rebuild the React app.
+7.  Build the backend jar.
+8.  Restart the `skillpilot` system service.
 
 ## The Deployment Script (`scripts/deploy.sh`)
 
-We use a bash script to automate these steps.
+This is the current automation flow:
 
 ```bash
 #!/bin/bash
 set -e
 
-# 1. Navigate to Project Root
-cd /home/enpasos/skillpilot
+# Deploy from the repository that contains this script.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+cd "${PROJECT_ROOT}"
 
-# 2. Get Latest Code
+echo "Stash local changes..."
+git stash
+
 echo "Hole Updates..."
 git pull
 
-# 3. Deploy Vocabulary Decks (NEW)
-# This copies json files from curricula/.../json/ to app/public/data/
 echo "Deploying Vocabulary Decks..."
 python3 scripts/deploy_decks.py
 
-# 4. Deploy Whitepaper Assets (NEW)
-# This copies docs/whitepaper and referenced images into app/public
 echo "Deploying Whitepaper assets..."
 python3 scripts/deploy_whitepaper.py
 
-# 5. Build Frontend
+echo "Deploying Story assets..."
+python3 scripts/deploy_story.py
+
 cd app
+echo "Installiere Abhaengigkeiten..."
+npm install
+
 echo "Baue Anwendung..."
 npm run build
 
-# 6. Restart Service
+cd ../backend
+chmod +x gradlew
+./gradlew clean build -x test
+cd ..
+
 echo "Starte Service neu..."
 sudo systemctl restart skillpilot
-
-echo "Fertig!"
 ```
 
 ## Why this order?
 
-1.  **`git pull`**: Ensures we have the latest `json` curriculum files and the `deploy_decks.py` script.
-2.  **`deploy_decks.py`**: Must run **before** `npm run build`. This script places all deck files matching `_deck*.json` (including locale suffixes like `_deck.de.json` or `_deck_en.json`) into `app/public/data/`.
-3.  **`deploy_whitepaper.py`**: Must run **before** `npm run build`. This script places the Whitepaper Markdown and images into `app/public/`.
-4.  **`npm run build`**: The build process parses the `public/` directory and bundles assets. By having the decks and whitepaper assets in place first, we ensure they are available in the final production build.
-5.  **`systemctl restart`**: Reloads the backend (Spring Boot) or web server to serve the new application.
+1.  **`git stash` + `git pull`**: The current script assumes deployment happens from a possibly dirty working tree and protects the pull by stashing first.
+2.  **Deck/story/whitepaper deployment** must happen before the frontend build so those files are present in `app/public/`.
+3.  **Frontend build** must finish before restart so the web assets are ready.
+4.  **Backend build** produces the updated server artifact.
+5.  **`systemctl restart`** activates the freshly built frontend/backend bundle.
+
+## Asset deployment details
+
+- `scripts/deploy_decks.py`
+  - scans `curricula/**/json/` for files matching `_deck*.json`
+  - copies them to:
+    - `app/public/data/`
+    - `backend/src/main/resources/static/data/`
+- `scripts/deploy_whitepaper.py`
+  - copies `docs/whitepaper/` into `app/public/whitepaper/`
+  - copies comic assets for `comic1`, `comic2`, and `comic3`
+- `scripts/deploy_story.py`
+  - copies `docs/quickstart/*` into `app/public/`
+
+## Operational notes
+
+- `git stash` is part of the current script behavior.
+  - Operators should be aware that locally modified files will be stashed, not merged or deployed.
+- The backend build currently runs with `-x test`.
+  - CI is expected to catch regressions before deployment.
 
 ## Prerequisites on Server
 
-- **Python 3**: Required to run `scripts/deploy_decks.py` and `scripts/deploy_whitepaper.py`.
-- **Node.js & npm**: Required for building the frontend.
+- **Python 3**: Required to run `scripts/deploy_decks.py`, `scripts/deploy_whitepaper.py`, and `scripts/deploy_story.py`.
+- **Node.js & npm**: Required for installing dependencies and building the frontend.
+- **Java**: Required for the backend Gradle build.
 - **Git**: Required for pulling updates.
 - **Sudo Access**: Required for restarting the system service.

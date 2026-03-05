@@ -2,9 +2,9 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://skillpilot.local/schema/landscape-runtime.schema.json",
   "title": "LearningLandscape (Runtime Fields Only)",
-  "description": "Schema for fields that are read by the runtime app. Extra fields are allowed.",
+  "description": "Schema for the runtime contract used by the app. Additional metadata is allowed at the top level and per goal.",
   "type": "object",
-  "additionalProperties": false,
+  "additionalProperties": true,
   "required": [
     "landscapeId",
     "title",
@@ -83,7 +83,7 @@
   "$defs": {
     "goal": {
       "type": "object",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "required": [
         "id",
         "title",
@@ -97,6 +97,10 @@
         "id": {
           "type": "string",
           "description": "Goal UUID."
+        },
+        "shortKey": {
+          "type": "string",
+          "description": "Stable ASCII identifier used across persistence/export layers."
         },
         "title": {
           "type": "string",
@@ -117,6 +121,10 @@
         "sourceRef": {
           "type": "string",
           "description": "Reference to external source/PDF."
+        },
+        "core": {
+          "type": "boolean",
+          "description": "Whether the goal is part of the core/default path."
         },
         "weight": {
           "type": "number",
@@ -143,24 +151,93 @@
           },
           "description": "Prerequisite goal IDs (requires edges)."
         },
+        "examples": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional example task IDs or labels."
+        },
+        "courseLevel": {
+          "type": "string",
+          "description": "Optional course-level marker such as GK/LK/both."
+        },
+        "themenfeld": {
+          "type": "string",
+          "description": "Optional explicit topic field code."
+        },
+        "leitideen": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional guiding-idea tags."
+        },
+        "kompetenzen": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional process-competency tags."
+        },
         "dimensionTags": {
           "type": "object",
-          "additionalProperties": false,
           "required": [
             "phase"
           ],
           "properties": {
+            "framework": {
+              "type": "string"
+            },
+            "demandLevel": {
+              "type": "string"
+            },
+            "processCompetencies": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "guidingIdeas": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
             "phase": {
               "type": "string",
               "description": "Phase code used for ordering (e.g., E, Q1, Q2, Q3, Q4, J11)."
+            },
+            "area": {
+              "type": "string"
+            },
+            "topicCode": {
+              "type": "string"
             }
           },
-          "description": "Only phase is required at runtime; other dimension tags are ignored by the UI.",
+          "description": "Only `phase` is required. Runtime may derive UI fields from the other known tags; additional dimension tags are allowed.",
           "additionalProperties": true
         },
         "extendedData": {
           "type": "object",
           "description": "Arbitrary extra data (e.g. SRS deck config)."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "atomic",
+            "cluster"
+          ],
+          "description": "Optional explicit node type."
+        },
+        "nodeKind": {
+          "type": "string",
+          "enum": [
+            "exam",
+            "tutor",
+            "memory"
+          ],
+          "description": "Optional explicit node kind."
         },
         "oerContent": {
           "$ref": "#/$defs/oerContent",

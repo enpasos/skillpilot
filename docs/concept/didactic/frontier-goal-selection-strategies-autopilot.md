@@ -34,4 +34,5 @@ The Autopilot feature removes friction by automatically transitioning the learne
 ### Configuration
 *   **UI**: These settings are available in the "Mein Lehrplan" (Personal Curriculum) modal.
 *   **Persistence**: Settings are stored in the `Learner` backend entity (`learningStrategy`, `autoPilot`) to persist across sessions.
-*   **API**: Preferences are updated via `PUT /api/ui/learners/{skillpilotId}/preferences` with a payload of `{ "learningStrategy": "...", "autoPilot": true/false }`.
+*   **API**: Preferences are updated via `PUT /api/ui/learners/{skillpilotId}/preferences` with a payload of `{ "learningStrategy": "...", "autoPilot": true/false, "strictMode": true/false }`.
+*   **Strict mode interaction**: `strictMode` controls whether frontier prerequisites are enforced only inside the filtered scope (optimistic) or globally (strict/pessimistic).

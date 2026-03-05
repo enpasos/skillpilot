@@ -1,48 +1,75 @@
 # Learning Workflow
 
-This document describes the end-to-end workflow of how learning is organized and executed in SkillPilot, from static data to individual mastery.
+This document describes the runtime workflow from static curricula to learner-specific navigation and mastery updates.
 
-## 1. Data Foundation: Curricula & Modules
-The world of SkillPilot is built from **Curricula** (e.g., "Gymnasiale Oberstufe Hessen") and **Modules** (e.g., "Math Q1", "Physics Mechanics").
-- **Storage:** These are stored as JSON files in the `curricula/` folder.
-- **Structure:** They form a directed acyclic graph (DAG) of learning goals connected by `requires` edges.
+## 1. Data Foundation: Landscapes, Structure, and Filters
+SkillPilot starts from curriculum landscapes stored as JSON files under `curricula/`.
+
+- The landscape is a DAG of learning goals with two relations:
+  - `contains` for hierarchy and scope
+  - `requires` for didactic prerequisites
+- Runtime navigation does not use only direct `requires`.
+  - The system derives **effective prerequisites** by inheriting `requires` from `contains` ancestors.
+- Personal curriculum filters and course selections narrow the visible/searchable subset.
+  - The backend may still use the full structural graph for scope expansion and strict prerequisite checks.
 
 ## 2. The Learning Lifecycle
 
-The learning process follows a strict sequence of personalization steps:
+### Step 1: Base Curriculum Selection
+Before learning starts, a **base curriculum** must be chosen.
 
-### Step 1: Base Curriculum Selection (Level 1)
-Before learning starts, a **Base Curriculum** must be chosen.
-- *Definition:* The complete set of all possible modules and goals defined by an authority.
-- *Action:* The user selects "Gymnasiale Oberstufe" or "B.Sc. Physics".
+- Definition: the authority-defined landscape that provides the full goal universe.
+- Example: "Gymnasiale Oberstufe Hessen" or a specific university pathway.
 
-### Step 2: Personal Curriculum (Level 2)
-The learner selects the specific **Modules** relevant to their path.
-- *Definition:* A subset of the Base Curriculum (e.g., specific electives or majors).
-- *Action:* The learner chooses "Math (Advanced)", "Physics (Basic)", and omits "Latin".
-- *Result:* This defines the personal "search space" for the frontier calculation.
+### Step 2: Personal Curriculum / Filters
+The learner narrows the base curriculum to the subset relevant for their own path.
 
-### Step 3: Concrete Learning Goal (Level 3)
-The learner sets a specific focus.
-- *Definition:* A target goal or topic to work towards.
-- *Constraint:* **Only one** Planned Goal can be active at a time to ensure clear focus. Setting a new goal replaces the previous one.
-- *Default:* "All goals in the Personal Curriculum" (if no specific goal is planned).
-- *Action:* The learner says "I want to learn Analysis" or "I want to finish my Bachelor's".
+- Definition: the filtered subset of the base curriculum that should currently count as in-scope.
+- Example: selecting advanced Math and basic Physics while omitting unrelated subjects.
+- Result: this filtered view becomes the candidate space for frontier navigation.
 
-### Step 4: The Frontier Loop (AI Assisted)
-Learning happens along the **Frontier**.
-- **The Frontier:** The set of goals where:
-    1.  The goal itself is **not yet mastered**.
-    2.  All direct `requires` (prerequisites) **are mastered**.
-- **Process:**
-    1.  **Calculate Frontier:** The system analyzes the graph and current mastery to find the "next best steps".
-    2.  **AI Guidance:** An AI Tutor (ChatGPT) uses this frontier to suggest topics, explain concepts, and provide exercises.
-    3.  **Reverse Traversal:** If a user wants a goal *not* on the frontier, the system traces back the `requires` chain to find the missing foundations.
+### Step 3: Planned Scope and Active Goal
+The learner can define focus at two different levels.
 
-### Step 5: Mastery & Feedback (Level 4)
-Success is recorded as **Mastery**.
-- **Action:** When a learner solves tasks correctly, the AI updates the mastery level (0.0 to 1.0) for that specific goal UUID.
-- **Effect:**
-    -   Mastering a goal satisfies the prerequisites for *other* goals.
-    -   The **Frontier moves forward**, opening up new learning opportunities.
-    -   The cycle repeats.
+- **Planned goals / scope roots:** one or more goals can be marked as planned.
+  - Their descendants define the learner's current focus scope.
+  - If no planned goals are set, the whole personal curriculum remains in scope.
+- **Active goal:** one goal can be active as the immediate working target in the UI/tutor loop.
+  - The active goal should normally come from the frontier, but the system can still diagnose blockers for non-frontier selections.
+
+### Step 4: Frontier Calculation and Navigation Loop
+Learning proceeds along the **frontier**: the set of sensible next goals.
+
+- A goal is frontier-eligible when:
+  - the goal itself is not yet mastered
+  - all **effective** prerequisites are sufficiently mastered
+- Effective prerequisites include:
+  - the goal's direct `requires`
+  - inherited `requires` from ancestor clusters via `contains`
+
+SkillPilot supports two evaluation modes for filtered learning:
+
+- **Optimistic mode:** apply the filter first and check prerequisites only inside the filtered graph.
+  - This lets learners start directly in the selected scope without being blocked by out-of-filter gaps.
+- **Strict mode:** candidates are still chosen from the filtered graph, but prerequisites are enforced globally.
+  - This exposes missing foundations outside the current filter.
+
+Runtime loop:
+
+1. Calculate the frontier inside the current filtered/planned scope.
+2. Let the tutor or UI select an active goal from that frontier.
+3. If the learner wants a non-frontier goal, trace the missing effective prerequisites and redirect to the blockers.
+
+### Step 5: Mastery, Aggregation, and Feedback
+Progress is stored as **mastery** on atomic goals and aggregated upward for clusters.
+
+- Atomic mastery is tracked per goal UUID on a `0.0` to `1.0` scale.
+- Cluster mastery is aggregated from contained descendants using goal weights.
+- Memorization/SRS goals are a special case.
+  - Their mastery is derived from review state rather than manually set.
+
+When mastery changes:
+
+- satisfied prerequisites unlock new goals
+- the frontier is recomputed
+- the learner state refreshes, including next steps and summaries

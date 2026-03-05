@@ -55,7 +55,7 @@ The AI provider processes the conversation and tool outputs.
 
 ### Scenario: Onboarding a Class
 1.  **Teacher** enters names ("Peter", "Paul") in the browser.
-2.  **Browser** requests new IDs from **Server** (`POST /api/learners`).
+2.  **Browser** requests new IDs from **Server** (`POST /api/ui/learners`).
 3.  **Server** generates UUIDs (`0824a2e2-5981-447d-b6de-9a14d0929c21`, `97bfe5ee-abc6-4088-9f0a-ef63c7ba1068`) and saves them.
 4.  **Browser** links "Peter" -> `0824a2e2-5981-447d-b6de-9a14d0929c21` locally.
 5.  **Result:** Server has empty profiles. Browser has the key to unlock them.
@@ -63,13 +63,13 @@ The AI provider processes the conversation and tool outputs.
 ### Scenario: Grading / Assessment
 1.  **Teacher** selects "Peter" in the UI.
 2.  **Browser** looks up ID `0824a2e2-5981-447d-b6de-9a14d0929c21`.
-3.  **Browser** requests progress from **Server** (`GET /api/learners/0824a2e2-5981-447d-b6de-9a14d0929c21/mastery`).
+3.  **Browser** requests progress from **Server** (`GET /api/ui/learners/0824a2e2-5981-447d-b6de-9a14d0929c21/mastery`).
 4.  **Teacher** updates slider.
-5.  **Browser** sends update to **Server** (`PUT /api/learners/0824a2e2-5981-447d-b6de-9a14d0929c21/mastery`).
+5.  **Browser** sends update to **Server** (`PUT /api/ui/learners/0824a2e2-5981-447d-b6de-9a14d0929c21/mastery`).
 
 ### Scenario: AI Tutoring Session
 1.  **Learner** provides `0824a2e2-5981-447d-b6de-9a14d0929c21` to the AI (or clicks a link containing it).
-2.  **AI** calls `get_frontier(learnerId="0824a2e2-5981-447d-b6de-9a14d0929c21")`.
+2.  **AI** calls `getFrontier(skillpilotId="0824a2e2-5981-447d-b6de-9a14d0929c21")` (or the corresponding `GET /api/ui/learners/{skillpilotId}/frontier` endpoint).
 3.  **Server** returns: "Goal A: Mastered, Goal B: Ready".
 4.  **AI** sees: "This user (0824a2e2-5981-447d-b6de-9a14d0929c21) knows A but needs B."
 5.  **AI** generates a tutorial for Goal B.

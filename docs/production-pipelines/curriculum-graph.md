@@ -71,9 +71,10 @@ Top-level:
 * `landscapeId`, `title`, `description`, `locale`, `subject`, `goals`
 
 Goal-level:
-* `id`, `shortKey`, `title`, `description`
-* `phase`, `area`, `level`, `core`, `weight`
-* `requires`, `contains`, `tags`
+* `id`, `title`, `description`, `weight`, `requires`, `contains`, `dimensionTags`
+* Recommended stable cross-layer field: `shortKey`
+* Inside `dimensionTags`, require at least `phase`; prefer `area`, `topicCode`, `demandLevel`, `processCompetencies`, and `guidingIdeas` when available
+* Optional metadata: `tags`, `core`, `examples`, `sourceRef`
 
 ### 2.3 Localization
 
