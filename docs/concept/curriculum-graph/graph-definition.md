@@ -47,6 +47,18 @@ $$
 \forall g,h\in G:\ g\neq h \Rightarrow Id(g)\neq Id(h)
 $$
 
+### 2.4 Atomic and cluster goals (conceptual)
+
+For modeling guidance, it is useful to distinguish two conceptual subsets of $G$:
+
+* $A \subseteq G$: the set of **atomic goals**  
+  Assessable, didactically precise goals that can be mastered directly.
+* $K = G \setminus A$: the set of **cluster goals**  
+  Structural aggregation goals used for navigation, grouping, and summaries.
+
+The exact storage-level encoding of this distinction is implementation-specific.  
+Conceptually, atomic goals are the units where learning logic should become precise, while cluster goals organize and summarize that logic.
+
 ---
 
 ## 3. Relations
@@ -113,7 +125,24 @@ $$
 $(u,v)\in R_d$ means **$u$ is a direct prerequisite of $v$**.  
 Equivalently: to learn/attempt $v$, $u$ must be satisfied first.
 
-### 5.2 DAG constraint
+### 5.2 Canonical modeling target (recommended)
+
+The formal model allows direct prerequisite edges between arbitrary goals in $G$.  
+However, for high-quality and mature curricula, the **canonical prerequisite layer** SHOULD primarily live between atomic goals:
+
+$$
+R_d \subseteq A \times A
+$$
+
+Interpretation:
+
+* atomic goals carry the precise didactic sequencing logic,
+* cluster goals remain useful for navigation, filtering, and aggregation,
+* cluster-level `requires` edges are best treated as a transitional authoring aid or as an intentionally strong universal statement.
+
+If a direct prerequisite is authored on a cluster goal, it is stronger than a mere summary: under the semantics in §6 it constrains descendants via inheritance.
+
+### 5.3 DAG constraint
 
 $(G,R_d)$ MUST be acyclic:
 
@@ -125,7 +154,9 @@ $$
 
 ## 6. Effective Requires semantics
 
-Direct prerequisites can be specified at higher-level nodes and inherited by their descendants in the hierarchy. This yields the **Effective Requires** relation.
+For compatibility with the current runtime and validator profile, direct prerequisites can be specified at higher-level nodes and inherited by their descendants in the hierarchy. This yields the **Effective Requires** relation.
+
+This inheritance model is useful during early-stage authoring, but the long-term modeling target remains the atomic prerequisite layer from §5.2.
 
 ### 6.1 Effective Requires relation
 
@@ -153,6 +184,15 @@ For convenience, define the set of effective prerequisites of a node:
 $$
 Pre_{eff}(v) = \{\, u\in G \mid (u,v)\in R_{eff} \,\}
 $$
+
+### 6.3 Relation to the canonical atomic model
+
+In the target state where prerequisites are authored canonically on atomic goals, hierarchy inheritance becomes mostly a compatibility mechanism rather than the primary source of learning logic.
+
+In particular:
+
+* if no ancestor of a goal $v$ carries outgoing prerequisite edges, then $Pre_{eff}(v)$ is just the directly authored prerequisite set of $v$,
+* if $R_d \subseteq A \times A$, then cluster hierarchy does not inject additional prerequisite facts into atomic goals.
 
 ---
 
@@ -240,6 +280,62 @@ $$
 \forall c\in G:\ \left|\{\,p\in G \mid (p,c)\in C\,\}\right| \le 1
 $$
 
+### 8.4 Prefer atomic prerequisite authoring
+
+For mature landscapes, the actual didactic sequencing SHOULD be authored on atomic goals first.
+
+Practical guidance:
+
+* Prefer adding `requires` edges between atomic goals instead of between clusters.
+* Use cluster-level `requires` only temporarily during early modeling, or when the prerequisite claim truly applies to all relevant descendants.
+* When refining a curriculum over time, move broad cluster dependencies downward into the relevant atomic goals and let higher-level dependency views be derived from that atomic layer.
+
+This keeps frontier logic precise and avoids over-blocking learners with coarse prerequisites.
+
+### 8.5 Didactic route coverage: motivation to autonomy
+
+SkillPilot landscapes SHOULD expose one or more didactic routes through the atomic prerequisite graph.
+
+Let:
+
+* $M \subseteq A$ be the set of **motivation anchors**  
+  (for example, atomic goals such as "Warum Physik?" / "Why Physics?")
+* $T \subseteq A$ be the set of **terminal autonomy goals**  
+  (for example, independent exam-task solving or other authentic capstone performances)
+
+An atomic goal $a\in A$ is **route-covered** iff:
+
+$$
+\exists m\in M,\ \exists t\in T:
+\big(a=m \lor (m,a)\in R_d^+\big)
+\ \land\
+\big(a=t \lor (a,t)\in R_d^+\big)
+$$
+
+Interpretation: every atomic goal should lie on at least one didactic path that starts with motivation and ends in autonomous performance.
+
+This means the atomic `requires` graph should not be a loose bag of local dependencies.  
+It should form teachable routes whose overall direction is:
+
+* motivation,
+* understanding / guided learning,
+* memorization where needed,
+* independent application / exam-level performance.
+
+In the current validator rollout, rules `GVR-004` and `GVR-005` implement only the first half of this idea: they ensure connectivity from atomic goals back to a motivation anchor in the effective-prerequisite graph. A future stricter profile can extend this to full route coverage toward terminal autonomy goals, preferably on the atomic prerequisite layer.
+
+### 8.6 Derive cluster-level dependency views from atomic routes
+
+For cluster goals $k_1,k_2\in K$, higher-level dependency views SHOULD normally be derived from atomic descendants rather than authored as standalone prerequisite facts.
+
+Typical summary semantics include:
+
+* **existential summary:** some atomic descendant of $k_2$ depends on some atomic descendant of $k_1$,
+* **coverage summary:** a defined share of atomic descendants of $k_2$ depends on descendants of $k_1$.
+
+If a UI, report, or API exposes cluster-level dependencies, it SHOULD document which summary semantics it uses.  
+A raw boolean cluster edge is often too coarse for mature curricula.
+
 ---
 
 ## 9. Learning availability and progression
@@ -259,6 +355,9 @@ g \in G\setminus M \ \middle|\
 $$
 
 Interpretation: a goal is available if all of its prerequisite goals (including transitive prerequisites) are mastered.
+
+In the current compatibility model, availability is evaluated on $R_{eff}$.  
+In a mature atomic-authored landscape, frontier decisions for atomic goals should be driven primarily by the atomic prerequisite layer, with inherited cluster prerequisites serving only as transitional support where they still exist.
 
 ---
 
