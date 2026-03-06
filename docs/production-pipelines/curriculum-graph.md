@@ -58,6 +58,8 @@ Rules of thumb:
 - Create **cluster nodes** for phases or topic fields.
 - Create **atomic nodes** for measurable goals (1-3 tasks per goal).
 - For learner-facing routes, include one or more **motivation** atomic goals and one or more **terminal autonomy** goals where appropriate (often practice or exam-style nodes).
+- In phase-based school curricula, prefer **phase-local autonomy clusters** such as `Übungen E-Phase`, `Übungen Q1`, `Übungen Q2`, ... with ordinary klausur character.
+- Keep **global Abitur / final-exam branches** separate from these local autonomy routes; they are an additional assessment layer, not a replacement for phase-local self-sufficiency goals.
 - Keep titles short and descriptions assessable ("The learner can ...").
 
 ---
@@ -137,6 +139,8 @@ Rules:
 - Use cluster-level `requires` only temporarily during early modeling, or when the prerequisite claim truly applies to all relevant descendants.
 - If higher-level dependency views are useful for navigation or reporting, derive them from atomic descendant dependencies rather than authoring them as the primary truth.
 - Where the landscape is learner-facing, check that atomic goals participate in teachable routes from one or more motivation anchors to one or more terminal autonomy goals.
+- In multi-phase school landscapes, close those routes with **local phase exercise goals** first; do not let ordinary phase goals point only toward a distant global Abitur branch.
+- If the landscape has cross-phase process competencies, consider a dedicated terminal autonomy branch for them as well (for example `Übungen Prozesskompetenzen`).
 - Avoid transitive redundancy.
 
 Migration note:
@@ -148,6 +152,27 @@ References:
 
 - `../concept/curriculum-graph/graph-definition.md`
 - `../qa-ci/graph-validation-rules.md`
+
+### Reference implementations
+
+Two committed landscapes provide concrete authoring benchmarks for this target state:
+
+- **Physics upper secondary**
+  - file: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json`
+  - benchmark pattern:
+    - mature atomic `requires` authoring
+    - local autonomy branches `Übungen E-Phase`, `Übungen Q1`, `Übungen Q2`, `Übungen Q3`, `Übungen Q4`
+    - ordinary klausur-style terminal goals kept separate from the global Abi branch
+
+- **Mathematics upper secondary**
+  - file: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json`
+  - benchmark pattern:
+    - mature atomic `requires` authoring across the ordinary curriculum phases
+    - local autonomy branches `Übungen E-Phase`, `Übungen Q1`, `Übungen Q2`, `Übungen Q3`, `Übungen Q4`
+    - additional cross-phase branch `Übungen Prozesskompetenzen`
+    - ordinary klausur-style terminal goals kept separate from the two global Abi containers
+
+These files should be treated as practical reference implementations when authoring new phase-based school landscapes.
 
 ---
 
@@ -191,6 +216,7 @@ If this is a sub-curriculum:
 - Atomic goals have passed a requires review pass where the landscape is mature enough for that investment.
 - `contains` and `requires` are acyclic.
 - Learner-facing atomic goals lie on at least one route from a motivation anchor to a terminal autonomy goal.
+- In phase-based school curricula, each ordinary phase has its own local terminal autonomy branch instead of relying only on a global final-exam branch.
 - IDs are stable and consistent.
 - Metadata (phase/area/level/core/weight) is consistent.
 - Localization is aligned (if applicable).

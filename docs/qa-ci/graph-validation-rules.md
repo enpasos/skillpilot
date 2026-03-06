@@ -127,19 +127,25 @@ Recommended rollout strategy:
 - later add stricter route-quality rules on the atomic graph
 - treat full atomic route coverage as `SHOULD` at concept level first, then promote it to `MUST` only for mature rollout subsets or strict validator profiles
 
-Reference implementation already curated:
+Reference implementations already curated:
 
 - Physics landscape file: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json`
-- subtree: `Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen`
+  - subtree: `Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen`
+  - benchmark value:
+    - no cluster-level `requires` inside the subtree
+    - every non-memory atomic goal in the subtree has at least one direct atomic prerequisite path back to the motivation anchor
+    - every non-memory atomic goal in the subtree also lies on at least one atomic path toward terminal autonomy goals under `Übungen E-Phase`
+    - the single memorization node in that subtree is explicitly typed as `nodeKind: "memory"` and is therefore a documented exception rather than an ambiguous leaf
 
-This subtree is a useful QA benchmark for the stricter target model because:
+- Mathematics landscape file: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json`
+  - scope: ordinary phases `E`, `Q1`, `Q2`, `Q3`, `Q4` plus `Übungen Prozesskompetenzen`
+  - benchmark value:
+    - all local phase-autonomy branches (`Übungen E-Phase`, `Übungen Q1`, `Übungen Q2`, `Übungen Q3`, `Übungen Q4`) and the global process-competency branch contain only atomic terminal goals
+    - all of these terminal goals are exam-mode-capable via concrete `examData`
+    - outside the intentionally separate global Abitur containers, the landscape does not rely on cluster-level `requires` for ordinary didactic sequencing
+    - the two remaining cluster-level `requires` belong only to the dedicated global Abitur containers and are therefore not the model for ordinary route-quality validation
 
-- it no longer uses cluster-level `requires` inside the subtree,
-- every non-memory atomic goal in the subtree has at least one direct atomic prerequisite path back to the motivation anchor,
-- every non-memory atomic goal in the subtree also lies on at least one atomic path toward terminal autonomy goals under `Übungen E-Phase`,
-- the single memorization node in that subtree is explicitly typed as `nodeKind: "memory"` and is therefore a documented exception rather than an ambiguous leaf.
-
-This means future strict route-quality rules can use this subtree as a practical benchmark during rollout, even before new stable `GVR-*` IDs are introduced for the stricter atomic route model.
+This means future strict route-quality rules can use both a subtree benchmark (Physics E-phase) and a whole-landscape benchmark (Mathematics upper secondary) during rollout, even before new stable `GVR-*` IDs are introduced for the stricter atomic route model.
 
 ## Direct-child prerequisite rule (`GVR-006`)
 

@@ -104,6 +104,15 @@ Die folgenden Punkte konkretisieren nur die Physik-spezifischen Erwartungen.
 - Integration der finalen Abiaufgaben in `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json` erfolgt **erst**, wenn Aufgabenblatt und Musterlösung inhaltlich stabil/freigegeben sind.
 - Vorher dürfen nur unabhängige Landscape-Findings umgesetzt werden (z. B. Metadaten, Auswahllogik, zusätzliche optionale Q4-Cluster).
 
+#### Didaktische Integrationsregel für die Landscape-Anbindung
+
+- Abiturbeispiele gehören in SkillPilot auf einen **separaten globalen Abitur-Zweig**, nicht in die normalen phasenlokalen Übungszweige.
+- Die normalen Lernrouten des Curriculums enden weiterhin in lokalen Autonomie-Clustern wie `Übungen E-Phase`, `Übungen Q1`, `Übungen Q2`, `Übungen Q3`, `Übungen Q4`.
+- Diese lokalen Übungszweige modellieren **normalen Klausurcharakter** und schließen die atomaren didaktischen Routen innerhalb der jeweiligen Phase.
+- Die globalen Abiturziele sind eine **zusätzliche Assessment-Schicht**. Sie ersetzen nicht die phasenlokalen Selbstständigkeitsziele.
+- Durch die Integration eines Abiturbeispiels dürfen keine neuen groben Cluster-`requires` für die normale Curriculumsnavigation entstehen. Die didaktische Kernlogik bleibt auf atomaren `requires`.
+- Falls ein Abiturbeispiel inhaltlich stark auf einzelne Phasen zurückgreift, wird diese fachliche Nähe über Auswahl, Metadaten, `sourceRef` oder `resourceLinks` sichtbar gemacht, nicht durch eine Vermischung von Abi- und Phasen-Übungszweigen.
+
 ## Arbeitsregel für künftige Iterationen
 
 Jede weitere Arbeitsrunde beginnt mit:

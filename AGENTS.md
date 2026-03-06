@@ -48,7 +48,8 @@ We use exactly **two connection types**:
 
 1. `requires` – **prerequisite**  
    - `A.requires = [B, C]` means: A should only be approached if B und C sitzen.  
-   - Prereqs können auf Clustern stehen und vererben sich entlang `contains` auf alle Unterziele; Frontiers sollten mit der effektiven Menge (direkt + vererbt) rechnen.
+   - Current compatibility model: prerequisites may still appear on clusters and can be inherited along `contains` for runtime/frontier purposes.
+   - Target modeling state: the canonical didactic sequencing layer should live on **atomic goals**; cluster-level `requires` are only transitional authoring shortcuts or rare, truly universal prerequisite claims.
    - Intention: modelling **didactic dependencies** (prevents jumping into topics without foundation).
 
 2. `contains` – **is composed of / includes**  
@@ -225,10 +226,27 @@ Dependencies between Themenfeldern should be **simple and regular**, not over-en
 
   * Use the logical structure of the curriculum:
     * Example: `Q1` Analysis requires the E-phase basics; `TF_Q3_2` (binomial distributions) requires `TF_Q3_1` (foundations).
-  * Implement dependencies primarily at cluster level (Layer 1 or 2). Atomic goals can add finer prerequisites if necessary.
+  * In mature landscapes, implement the canonical sequencing primarily on **atomic goals**. Use cluster-level `requires` only temporarily during early modeling or when the prerequisite claim truly applies to all relevant descendants.
 
 Agents should **avoid creating very long or tangled `requires` chains**
 if they can be expressed via a small number of well-chosen prerequisites.
+
+### 6.3 Phase-local autonomy branches vs. global final-exam branches
+
+For phase-based school curricula, ordinary didactic routes should normally end in **phase-local terminal autonomy goals**, not only in distant global final-exam nodes.
+
+Practical modeling rule:
+
+* Create local autonomy clusters such as `Übungen E-Phase`, `Übungen Q1`, `Übungen Q2`, `Übungen Q3`, `Übungen Q4` where appropriate.
+* If the curriculum has cross-phase process competencies, a separate branch such as `Übungen Prozesskompetenzen` can be appropriate.
+* Keep global Abitur/final-exam branches **separate** from these local exercise branches.
+* Do not use the global final-exam branch as the only terminal target for ordinary phase goals.
+
+Interpretation:
+
+* Local exercise branches model ordinary klausur-style self-sufficiency inside a phase.
+* Global final-exam branches model an additional assessment layer with different selection and assessment semantics.
+* Mature learner-facing landscapes should aim for atomic route coverage from motivation anchors through ordinary atomic goals toward one or more local terminal autonomy goals.
 
 ---
 
@@ -264,6 +282,12 @@ When adding new goals (especially atomic ones), follow these conventions:
      * LK-only extensions,
      * enrichment topics,
      * deeper applications.
+
+6. **Separate local autonomy from global exam layers**
+
+   * In phase-based school curricula, add explicit local terminal autonomy branches for ordinary learning routes.
+   * Keep global Abitur/final-exam goals on their own branch instead of mixing them into the normal phase exercise structure.
+   * Do not introduce coarse cluster-level `requires` just to connect ordinary curriculum goals to a global exam branch.
 
 ---
 

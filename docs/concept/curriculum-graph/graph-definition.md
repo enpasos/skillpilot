@@ -340,6 +340,23 @@ In its curated state, this subtree is intended as a model example for mature pre
 
 This example is useful because it shows that the target semantics in §5.2 and §8.5 are not merely aspirational; they can be implemented in a real curriculum subtree without relying on inherited cluster prerequisites.
 
+### 8.5.2 Reference example: Mathematics upper-secondary landscape
+
+A second concrete reference implementation exists in the Mathematics landscape:
+
+- file: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json`
+- scope: the ordinary curriculum phases `E`, `Q1`, `Q2`, `Q3`, `Q4` plus the global process-competency exercise branch
+
+In its curated state, this landscape is intended as a whole-landscape reference for mature route coverage:
+
+- normal learning goals use atomic `requires` as their canonical didactic layer,
+- the phase-local autonomy targets are modeled explicitly via `Übungen E-Phase`, `Übungen Q1`, `Übungen Q2`, `Übungen Q3`, `Übungen Q4` and `Übungen Prozesskompetenzen`,
+- each of these exercise branches contains atomic exam-mode-capable goals with concrete `examData`,
+- outside the intentionally separate global Abitur containers, the landscape no longer relies on cluster-level `requires` for ordinary didactic sequencing,
+- the global Abitur containers remain a distinct assessment layer and should not be confused with the local terminal autonomy goals that close the ordinary phase routes.
+
+This example is useful because it demonstrates the target semantics not only for a subtree, but for an entire subject landscape with multiple phases and an additional cross-phase process-competency branch.
+
 ### 8.6 Derive cluster-level dependency views from atomic routes
 
 For cluster goals $k_1,k_2\in K$, higher-level dependency views SHOULD normally be derived from atomic descendants rather than authored as standalone prerequisite facts.

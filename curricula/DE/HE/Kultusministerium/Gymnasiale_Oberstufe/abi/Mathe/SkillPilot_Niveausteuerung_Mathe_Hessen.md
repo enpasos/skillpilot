@@ -259,6 +259,46 @@ Bewerte jede Aufgabe auf 0–2 Punkte je Kriterium (max 10):
 
 ---
 
+## 8. Einordnung in die SkillPilot-Lernlandschaft
+
+Dieser Leitfaden steuert das **Aufgabenniveau**. Fuer die **Einordnung in die Lernlandschaft** gilt zusaetzlich:
+
+### 8.1 Lokale Uebungszweige vor globalem Abi-Zweig
+
+- Gewoehnliche klausuraehnliche Aufgaben mit E-, Q1-, Q2-, Q3- oder Q4-Charakter gehoeren in lokale terminale Autonomie-Zweige:
+  - `Übungen E-Phase`
+  - `Übungen Q1`
+  - `Übungen Q2`
+  - `Übungen Q3`
+  - `Übungen Q4`
+- Querschnittsaufgaben zu prozessbezogenen Kompetenzen gehoeren in `Übungen Prozesskompetenzen`.
+- Die beiden globalen Abitur-Container (`Abiturprüfung Mathematik`, `Abiturprüfung Mathematik (LK)`) bleiben davon getrennt.
+
+### 8.2 Semantik der Integration
+
+- Ein starkes Aufgabenformat ist **nicht automatisch** eine Abituraufgabe.
+- Phase-lokale Uebungsziele schliessen die normalen didaktischen Routen des Curriculums und modellieren Selbststaendigkeit innerhalb der jeweiligen Phase.
+- Globale Abi-Ziele bilden eine zusaetzliche Assessment-Schicht mit eigenem Auswahl- und Pruefungscharakter.
+- Daher sollen lokale Uebungsaufgaben nicht in den globalen Abi-Zweig verschoben werden, nur weil sie anspruchsvoll sind.
+
+### 8.3 Relation zu `requires`
+
+- Die didaktische Kernlogik bleibt auf atomaren `requires`.
+- Neue Aufgabenintegration darf keine groben Cluster-`requires` als Abkuerzung einfuehren.
+- Wenn eine Aufgabe mehrere Inhaltsideen verbindet, wird das ueber passende atomare Voraussetzungen und saubere Aufgabenbeschreibung modelliert, nicht ueber einen undifferenzierten Global-Praereq.
+
+### 8.4 Praktische Authoring-Regel
+
+Vor jeder Integration einer neu erzeugten Mathematikaufgabe ist explizit zu entscheiden:
+
+1. Ist die Aufgabe eine **normale phase-lokale Klausur-/Selbststaendigkeitsaufgabe**?
+2. Ist sie eine **prozessbezogene Querschnittsaufgabe**?
+3. Oder ist sie wirklich eine **globale Abituraufgabe**?
+
+Erst danach wird sie dem passenden Branch in der Landscape zugeordnet.
+
+---
+
 ## 8. Minimal‑Transformationen: „Von zu leicht → passend“
 Wenn eine LK‑Aufgabe als zu leicht bewertet wird, wende in dieser Reihenfolge an:
 
@@ -327,4 +367,3 @@ Für Klausurvarianten, die explizit **„Realitätsnah & Komplex“** simulieren
 - **Vorteil**: Erlaubt pro Domäne mehr Tiefe (AB3-Prozesskompetenz) und klarere Trennung der Bewertungskriterien.
 
 _Ende des Leitfadens._
-
