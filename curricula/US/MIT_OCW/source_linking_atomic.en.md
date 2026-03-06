@@ -84,4 +84,3 @@ Per module:
 
 ## Open Decisions
 - Whether link integrity should be checked in CI (head request) or manual QA only.
-- How long legacy `extendedData.sourceLinks` should remain accepted during migration.

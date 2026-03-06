@@ -243,26 +243,7 @@ Design intent:
   - Recommended `resourceType` values: `course-page`, `video`, `notes`, `article`, `simulation`, `problem-set`, `exam`, `solution-set`, `book`, `tool`.
   - Optional descriptive fields: `provider`, `sections`, `description`, `lang`, `license`.
   - Do not duplicate dozens of broad course links onto every atomic node; link deeply only where it actually helps.
-
-### extendedData.sourceLinks
-- Type: legacy array inside `extendedData`
-- Used by:
-  - legacy data only
-- Status: transitional only
-- Notes:
-  - Runtime link rendering no longer reads this field.
-  - New and existing landscapes should use top-level `resourceLinks`.
-  - Committed landscape JSON in this repository should not contain this field anymore; CI enforces this via `GVR-008`.
-
-### oerContent
-- Type: legacy object (`source`, `link`, optional `sections`, `description`)
-- Used by:
-  - older OER annotations in some landscapes
-- Status: transitional only
-- Notes:
-  - Runtime link rendering no longer reads this field.
-  - Migrate OER hints into `resourceLinks` instead.
-  - Committed landscape JSON in this repository should not contain this field anymore; CI enforces this via `GVR-008`.
+  - No alternative goal-level helper-link field is supported in committed landscapes; CI enforces canonical `resourceLinks`.
 
 ## dimensionTags fields
 

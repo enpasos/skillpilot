@@ -219,7 +219,8 @@ function getLegacyGoalLinkFields(goal: UiGoal): string[] {
   if (Object.prototype.hasOwnProperty.call(extData, 'sourceLinks')) {
     fields.push('extendedData.sourceLinks')
   }
-  if (goal.oerContent) {
+  const rawGoal = goal as unknown as Record<string, unknown>
+  if (Object.prototype.hasOwnProperty.call(rawGoal, 'oerContent')) {
     fields.push('oerContent')
   }
   return fields

@@ -74,7 +74,7 @@ This file is the execution log + implementation backlog.
   - `sourceRef` (primary concept source),
   - one practice link (problem set/activity),
   - one assessment link (exam/quiz) where available.
-- [x] Add stable source link IDs in `extendedData.sourceLinks`.
+- [x] Add stable source link metadata in canonical `resourceLinks`.
 - [x] Verify link coverage percentages per module and record gaps.
 
 ## Quality Gates (Definition of Done)
@@ -147,9 +147,9 @@ Reference: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S
 ## Progress Log
 - 2026-03-01: Plan extracted, schema/validator constraints checked, actionable backlog defined in this file.
 - 2026-03-01: Created v1 JSON package (root + top-5 OCW modules), added manifest entry, and passed `npm run validate:graph` (`593 landscape(s) passed validation`).
-- 2026-03-01: Added structured atomic source linking (`extendedData.sourceLinks`) for top-5 modules and revalidated (`595 landscape(s) passed validation`).
-- 2026-03-01: Normalized MIT OCW goal objects to the existing runtime field set (removed non-standard goal-level fields) and kept intensive source-linking exclusively in `extendedData.sourceLinks`.
+- 2026-03-01: Added structured atomic source linking (`resourceLinks`) for top-5 modules and revalidated (`595 landscape(s) passed validation`).
+- 2026-03-01: Normalized MIT OCW goal objects to the existing runtime field set and kept intensive source-linking canonically in `resourceLinks`.
 - 2026-03-01: Extended the same atomic source-linking depth to `6.0002` and `6.006` and introduced CI enforcement rule `GVR-007` for MIT OCW module landscapes.
-- 2026-03-01: Aligned the `FOUNDATIONS` atomic orientation goal with the same source-linking schema (`extendedData.sourceLinks`).
+- 2026-03-01: Aligned the `FOUNDATIONS` atomic orientation goal with the same source-linking schema (`resourceLinks`).
 - 2026-03-01: Completed Phase 4 frontier walkthrough via automated test (`MitOcwFrontierWalkthroughTest`), confirmed coherent first-path unlock order for math and CS, and recorded that no dependency micro-adjustments are currently needed.
 - 2026-03-01: Rebuilt `US_MAS_U_MIT_OCW_18_06.en.json` from `input/18.06-spring-2010` to Hessen-like granularity (93 goals total, 70 atomics, layered unit/topic/atomic DAG) and revalidated with schema check, graph validator, and `MitOcwFrontierWalkthroughTest`.

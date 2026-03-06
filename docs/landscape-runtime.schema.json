@@ -246,10 +246,6 @@
           ],
           "description": "Optional explicit node kind."
         },
-        "oerContent": {
-          "$ref": "#/$defs/oerContent",
-          "description": "Legacy OER metadata kept for data compatibility. Runtime link rendering uses canonical `resourceLinks`."
-        },
         "experimentData": {
           "$ref": "#/$defs/experimentData",
           "description": "Optional structured experiment description."
@@ -362,30 +358,6 @@
           "description": "Optional BCP-47 language tag of the linked resource."
         },
         "license": {
-          "type": "string"
-        }
-      }
-    },
-    "oerContent": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "source"
-      ],
-      "properties": {
-        "source": {
-          "type": "string"
-        },
-        "link": {
-          "type": "string"
-        },
-        "sections": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "description": {
           "type": "string"
         }
       }

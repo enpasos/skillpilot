@@ -1,14 +1,15 @@
 import json
-import os
-from collections import defaultdict
+from pathlib import Path
 
-# Paths
-GRAPH_PATH = r"\\wsl.localhost\Ubuntu\home\enpasos\projects\skillpilot\curricula\US\MIT_OCW\json\US_MAS_U_MIT_OCW_18_06.en.json"
-INPUT_DIR = r"\\wsl.localhost\Ubuntu\home\enpasos\projects\skillpilot\curricula\US\MIT_OCW\input\18.06-spring-2010"
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parents[3]
+GRAPH_PATH = SCRIPT_DIR / "US_MAS_U_MIT_OCW_18_06.en.json"
+INPUT_DIR = SCRIPT_DIR.parent / "input" / "18.06-spring-2010"
+REPORT_PATH = REPO_ROOT / "tmp" / "mit_ocw_analyze_graph_report.txt"
 
 def analyze_graph():
     print("--- SkillGraph Analysis ---")
-    with open(GRAPH_PATH, 'r', encoding='utf-8') as f:
+    with GRAPH_PATH.open('r', encoding='utf-8') as f:
         graph = json.load(f)
 
     # Basic stats
@@ -54,7 +55,8 @@ def analyze_graph():
     for r in roots:
         print_tree(r['id'])
         
-    with open("report.txt", "w", encoding="utf-8") as f:
+    REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with REPORT_PATH.open("w", encoding="utf-8") as f:
         f.write("\n".join(report_lines))
         
     print("\n--- Node Connections ---")
@@ -72,8 +74,7 @@ def analyze_graph():
         if g.get("sourceRef"):
             sources_in_graph.add(g.get("sourceRef"))
         
-        ext_data = g.get("extendedData", {})
-        for link in ext_data.get("sourceLinks", []):
+        for link in g.get("resourceLinks", []):
             if link.get("url"):
                 sources_in_graph.add(link["url"])
                 
@@ -81,12 +82,12 @@ def analyze_graph():
 
 def analyze_sources():
     print("\n--- Source Coverage ---")
-    content_map_path = os.path.join(INPUT_DIR, "content_map.json")
-    with open(GRAPH_PATH, 'r', encoding='utf-8') as f:
+    content_map_path = INPUT_DIR / "content_map.json"
+    with GRAPH_PATH.open('r', encoding='utf-8') as f:
         graph = json.load(f)
         
-    if os.path.exists(content_map_path):
-        with open(content_map_path, 'r', encoding='utf-8') as f:
+    if content_map_path.exists():
+        with content_map_path.open('r', encoding='utf-8') as f:
             content_map = json.load(f)
             paths = list(content_map.values())
             print(f"content_map.json values (pages): {len(paths)}")
@@ -106,8 +107,7 @@ def analyze_sources():
                     clean_ref = [x for x in ref.split('/') if x][-1]
                     graph_urls.add(clean_ref)
                 
-                ext = g.get("extendedData", {})
-                for l in ext.get("sourceLinks", []):
+                for l in g.get("resourceLinks", []):
                     u = l.get("url", "")
                     if u:
                         clean_u = [x for x in u.split('/') if x][-1]

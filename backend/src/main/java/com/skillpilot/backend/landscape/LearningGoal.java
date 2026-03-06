@@ -21,7 +21,6 @@ public class LearningGoal {
     private String sourceRef;
     private List<java.util.Map<String, Object>> resourceLinks;
     private java.util.Map<String, Object> extendedData;
-    private java.util.Map<String, Object> oerContent;
     // Explicit node type ("atomic" | "cluster"), optional for backward compatibility
     private String type;
     // Explicit node kind ("exam" | "tutor" | "memory"), optional for backward compatibility
@@ -153,14 +152,6 @@ public class LearningGoal {
 
     public void setResourceLinks(List<java.util.Map<String, Object>> resourceLinks) {
         this.resourceLinks = resourceLinks;
-    }
-
-    public java.util.Map<String, Object> getOerContent() {
-        return oerContent;
-    }
-
-    public void setOerContent(java.util.Map<String, Object> oerContent) {
-        this.oerContent = oerContent;
     }
 
     public String getType() {

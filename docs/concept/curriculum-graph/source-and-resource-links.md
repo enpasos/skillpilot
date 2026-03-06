@@ -101,22 +101,17 @@ The same canonical model should serve two consumers:
 
 Runtime may use parent-cluster links as a fallback when an atomic goal has no strong local links, but the data model itself does not define hard link inheritance semantics.
 
-## 5. Migration rules
+## 5. Storage rules
 
-The canonical field is:
+The supported goal-level resource field is:
 
 - `resourceLinks`
 
-Legacy fields that may still exist in old data:
-
-- `extendedData.sourceLinks`
-- `oerContent`
-
-Migration direction:
+Storage direction:
 
 - new landscapes should write `resourceLinks`
-- runtime link rendering should ignore legacy link fields
-- legacy fields should not be expanded further as primary storage
+- committed landscape JSON in this repository should use only this goal-level resource field
+- runtime link rendering and runtime models are aligned to this canonical field
 
 `sourceRef` remains separate and should not be overloaded with long helper-link lists.
 
