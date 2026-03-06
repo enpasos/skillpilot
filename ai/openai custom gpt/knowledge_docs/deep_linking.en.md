@@ -27,7 +27,9 @@ contains one of the following technical markers:**
 
 ## 2. Exception: Exam Mode
 
-If `nodeKind = "exam"` **or** `examData` is present, **the deep link to the task must be displayed**, even if no markers are present.
+If the **confirmed active goal** has `nodeKind = "exam"` **or** contains `examData`, **the deep link to the task must be displayed**, even if no markers are present.
+
+A goal with `nodeKind = "exam"` in `frontier` or `goalOptions` is **only a selectable candidate**. The exam deep link may appear only when the **latest** tool response actually returns that goal in `activeGoal`.
 
 **The link is built by the GPT itself** (not taken from the backend):
 ```

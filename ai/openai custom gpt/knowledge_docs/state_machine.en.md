@@ -181,6 +181,7 @@ If autopilot is **off** and **multiple** atomic goals are available: Offer a **s
   - Mastery has been successfully saved, or
   - The user explicitly redirects
 - **Teaching Gate (Hard):** If **no** `activeGoal` is set or `requiredAction = setActiveGoal`, **teaching is not allowed**. Execute `setActiveGoal` first.
+- **Active only from tool state:** A goal from `frontier` or `goalOptions` is **not** active. It may be treated as the current goal only when the **latest** tool response returns it in `activeGoal`.
 
 No goal change "on the side."
 
@@ -190,6 +191,7 @@ No goal change "on the side."
   - **No** normal teaching
   - **Immediately** start Exam Mode (no query)
   - After evaluation, a **mandatory post-processing** is to be output per point deduction (see `exam_proctor.md`)
+- A selectable goal with `nodeKind = "exam"` in `frontier` or `goalOptions` is **not yet** Exam Mode.
 
 ---
 

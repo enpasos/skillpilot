@@ -107,7 +107,7 @@ The canonical field is:
 
 - `resourceLinks`
 
-Legacy fields that may still be read during migration:
+Legacy fields that may still exist in old data:
 
 - `extendedData.sourceLinks`
 - `oerContent`
@@ -115,7 +115,7 @@ Legacy fields that may still be read during migration:
 Migration direction:
 
 - new landscapes should write `resourceLinks`
-- old landscapes may be read from legacy fields temporarily
+- runtime link rendering should ignore legacy link fields
 - legacy fields should not be expanded further as primary storage
 
 `sourceRef` remains separate and should not be overloaded with long helper-link lists.

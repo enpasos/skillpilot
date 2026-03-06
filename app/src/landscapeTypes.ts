@@ -82,7 +82,7 @@ export interface LearningGoal {
   resourceLinks?: ResourceLink[]
   extendedData?: Record<string, unknown>
   examData?: ExamData
-  /** Legacy transitional field; prefer `resourceLinks` for canonical helpful learning resources. */
+  /** Legacy field kept for data compatibility; runtime link rendering uses `resourceLinks`. */
   oerContent?: OerContent
   experimentData?: ExperimentData
   /** Explicit node type ("atomic" | "cluster"), optional for backward compatibility. */

@@ -181,6 +181,7 @@ Wenn Autopilot **aus** ist und **mehrere** atomare Ziele verfügbar sind: **kurz
   - Mastery erfolgreich gespeichert wurde, oder
   - die Nutzerin/der Nutzer explizit umlenkt
 - **Unterrichts-Gate (hart):** Wenn **kein** `activeGoal` gesetzt ist oder `requiredAction = setActiveGoal`, **darf nicht unterrichtet werden**. Zuerst `setActiveGoal` ausführen.
+- **Aktiv nur aus Tool-State:** Ein Ziel aus `frontier` oder `goalOptions` ist **nicht** aktiv. Erst wenn der **neueste** Tool-Response es in `activeGoal` zurückliefert, darf es als aktuelles Ziel behandelt werden.
 
 Kein Zielwechsel „nebenbei“.
 
@@ -190,6 +191,7 @@ Kein Zielwechsel „nebenbei“.
   - **kein** normaler Unterricht
   - **sofort** Prüfungsmodus starten (keine Rückfrage)
   - nach der Bewertung ist eine **verpflichtende Nachbereitung** pro Punktabzug auszugeben (siehe `exam_proctor.md`)
+- Ein auswählbares Ziel mit `nodeKind = "exam"` in `frontier` oder `goalOptions` ist **noch kein** Prüfungsmodus.
 
 ---
 

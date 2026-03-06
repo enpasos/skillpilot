@@ -1549,47 +1549,7 @@ public class LearnerService {
         }
 
         List<Map<String, Object>> links = new ArrayList<>();
-
         appendRawLinks(links, goal.getResourceLinks());
-
-        if (goal.getExtendedData() != null) {
-            Object raw = goal.getExtendedData().get("sourceLinks");
-            if (raw instanceof List<?> list) {
-                appendRawLinks(links, list);
-            }
-        }
-
-        Map<String, Object> legacyOerContent = goal.getOerContent();
-        if (legacyOerContent != null) {
-            String link = trimToNull(readString(legacyOerContent.get("link")));
-            if (link != null) {
-                Map<String, Object> synthesized = new HashMap<>();
-                synthesized.put("type", "concept");
-                synthesized.put("title", coalesce(
-                        trimToNull(readString(legacyOerContent.get("source"))),
-                        trimToNull(goal.getTitle())));
-                synthesized.put("url", link);
-                synthesized.put("resourceType", "oer");
-                synthesized.put("provider", trimToNull(readString(legacyOerContent.get("source"))));
-                Object sections = legacyOerContent.get("sections");
-                if (sections instanceof List<?> list) {
-                    List<String> normalizedSections = list.stream()
-                            .filter(String.class::isInstance)
-                            .map(String.class::cast)
-                            .map(this::trimToNull)
-                            .filter(Objects::nonNull)
-                            .toList();
-                    if (!normalizedSections.isEmpty()) {
-                        synthesized.put("sections", normalizedSections);
-                    }
-                }
-                String description = trimToNull(readString(legacyOerContent.get("description")));
-                if (description != null) {
-                    synthesized.put("description", description);
-                }
-                links.add(synthesized);
-            }
-        }
 
         return links;
     }

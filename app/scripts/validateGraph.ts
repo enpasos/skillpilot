@@ -67,6 +67,7 @@ const RULE_FIRST_ATOMIC_IS_WARUM = 'GVR-004'
 const RULE_ATOMIC_TRANSITIVE_TO_WARUM = 'GVR-005'
 const RULE_REQUIRES_DIRECT_CHILD = 'GVR-006'
 const RULE_MIT_ATOMIC_SOURCE_LINKS = 'GVR-007'
+const RULE_NO_LEGACY_LINK_FIELDS = 'GVR-008'
 const HESSEN_GYM_OVERVIEW_LANDSCAPE_ID = 'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da'
 const motivationRuleLandscapeIds = new Set<string>([
   '3e56aa75-c76c-4de5-883b-0aac98297846', // DE_HES_S_GYM_2_BIOLOGIE
@@ -209,17 +210,19 @@ function addIssue(level: Issue['level'], landscapeId: string, message: string) {
 
 function getCanonicalResourceLinks(goal: UiGoal): Record<string, unknown>[] {
   const directLinks = Array.isArray(goal.resourceLinks) ? goal.resourceLinks : []
-  if (directLinks.length > 0) {
-    return directLinks.filter((item): item is Record<string, unknown> => !!item && typeof item === 'object')
-  }
+  return directLinks.filter((item): item is Record<string, unknown> => !!item && typeof item === 'object')
+}
 
+function getLegacyGoalLinkFields(goal: UiGoal): string[] {
+  const fields: string[] = []
   const extData = (goal.extendedData ?? {}) as Record<string, unknown>
-  const legacyLinks = extData.sourceLinks
-  if (Array.isArray(legacyLinks)) {
-    return legacyLinks.filter((item): item is Record<string, unknown> => !!item && typeof item === 'object')
+  if (Object.prototype.hasOwnProperty.call(extData, 'sourceLinks')) {
+    fields.push('extendedData.sourceLinks')
   }
-
-  return []
+  if (goal.oerContent) {
+    fields.push('oerContent')
+  }
+  return fields
 }
 
 function parseReference(raw: string, currentLandscape: string) {
@@ -308,6 +311,15 @@ function validateLandscape(landscape: ParsedLandscape) {
   })
 
   const validateGoal = (goal: UiGoal) => {
+    const legacyLinkFields = getLegacyGoalLinkFields(goal)
+    if (legacyLinkFields.length > 0) {
+      addIssue(
+        graphRuleIssueLevel,
+        landscape.landscapeId,
+        `[${RULE_NO_LEGACY_LINK_FIELDS}] Goal ${goal.id} (${goal.title}) uses legacy link field(s): ${legacyLinkFields.join(', ')}. Use canonical resourceLinks instead.`,
+      )
+    }
+
     if (!allowedPhases.has(goal.phase)) {
       addIssue('error', landscape.landscapeId, `Goal ${goal.id} has invalid phase ${goal.phase}`)
     }
@@ -626,8 +638,7 @@ function validateLandscape(landscape: ParsedLandscape) {
 
   // GVR-007:
   // MIT OCW atomic goals must provide intensive source linking:
-  // - canonical resourceLinks (or legacy extendedData.sourceLinks during migration)
-  //   include concept/practice/assessment
+  // - canonical resourceLinks include concept/practice/assessment
   // - required links point to OCW course pages
   const isMitOcwLandscape = (landscape.frameworkId ?? '').startsWith('mit-ocw-')
   const rootGoal = landscape.goals.find((goal) => goal.tags?.includes('root')) ?? landscape.goals[0]
@@ -650,7 +661,7 @@ function validateLandscape(landscape: ParsedLandscape) {
           addIssue(
             graphRuleIssueLevel,
             landscape.landscapeId,
-            `[${RULE_MIT_ATOMIC_SOURCE_LINKS}] Atomic goal ${goalLabel} is missing canonical resourceLinks (or legacy extendedData.sourceLinks during migration).`,
+            `[${RULE_MIT_ATOMIC_SOURCE_LINKS}] Atomic goal ${goalLabel} is missing canonical resourceLinks.`,
           )
           return
         }

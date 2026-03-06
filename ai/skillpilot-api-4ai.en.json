@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Skillpilot AI Interface",
-    "description": "Optimized API for AI Tutors.\n\n### INSTRUCTIONS\n1. **First Priority**: Ensure you have a `skillpilotId`. If not, **ASK** the user. Do **NOT** create a new learner unless explicitly requested (e.g. 'new user').\n2. **State Machine**: Always follow `stateMachine.requiredAction` (fallback: `nextAllowedActions`).\n   - If `setCurriculum`: ask the user to select from `stateMachine.curriculumOptions`.\n   - If `setPersonalization`: apply subject/module `goalIds` plus `filters` (e.g. GK/LK).\n   - If `setScope`: call `setScope` with `goalIds` from `stateMachine.goalOptions` (scope/cluster options). If `frontier` is empty, treat these as a **context change** (scope is replaced, not expanded) and do not invent new scopes. If only one option or the user says \"egal\", pick it automatically.\n   - If `setActiveGoal`: select from `stateMachine.goalOptions` and call `setActiveGoal`.\n   - **Never teach without an active goal.** If `requiredAction` is `setActiveGoal` (or `activeGoal` is null), call `setActiveGoal` first; no content before that.\n   - If `setMastery`: teach the locked goal and call `setMastery`.\n   - If a call returns **409** due to a required action mismatch (e.g. missing active goal), call `getLearnerState` and follow `stateMachine.requiredAction` immediately.\n3. **Core Concepts**: Use `getLearnerState` for context, `setMastery` for progress.",
+    "description": "Optimized API for AI Tutors.\n\n### INSTRUCTIONS\n1. **First Priority**: Ensure you have a `skillpilotId`. If not, **ASK** the user. Do **NOT** create a new learner unless explicitly requested (e.g. 'new user').\n2. **State Machine**: Always follow `stateMachine.requiredAction` (fallback: `nextAllowedActions`).\n   - If `setCurriculum`: ask the user to select from `stateMachine.curriculumOptions`.\n   - If `setPersonalization`: apply subject/module `goalIds` plus `filters` (e.g. GK/LK).\n   - If `setScope`: call `setScope` with `goalIds` from `stateMachine.goalOptions` (scope/cluster options). If `frontier` is empty, treat these as a **context change** (scope is replaced, not expanded) and do not invent new scopes. If only one option or the user says \"egal\", pick it automatically.\n   - If `setActiveGoal`: select from `stateMachine.goalOptions` and call `setActiveGoal`.\n   - **Never teach without an active goal.** If `requiredAction` is `setActiveGoal` (or `activeGoal` is null), call `setActiveGoal` first; no content before that.\n   - Treat `frontier` and `stateMachine.goalOptions` as **candidates only**. A goal is current only when it is returned in `activeGoal`.\n   - Start exam mode only if the returned `activeGoal` itself has `nodeKind = exam` or contains `examData`. Never infer exam mode from selectable candidates alone.\n   - If `setMastery`: teach the locked goal and call `setMastery`.\n   - If a call returns **409** due to a required action mismatch (e.g. missing active goal), call `getLearnerState` and follow `stateMachine.requiredAction` immediately.\n3. **Core Concepts**: Use `getLearnerState` for context, `setMastery` for progress.",
     "version": "v2-ai-optimized-unified"
   },
   "servers": [
@@ -347,7 +347,7 @@
           },
           "frontier": {
             "type": "array",
-            "description": "Goals ready to be learned; includes atomic and cluster goals. Filter by type=atomic when selecting an active goal.",
+            "description": "Goals ready to be learned; includes atomic and cluster goals. Treat these as selectable candidates only. Filter by type=atomic when selecting an active goal. Full exam payloads are exposed on activeGoal, not here.",
             "items": {
               "$ref": "#/components/schemas/FrontierGoal"
             }
@@ -380,7 +380,8 @@
             "description": "Current learning state (e.g. FRONTIER, TEACHING)."
           },
           "activeGoal": {
-            "$ref": "#/components/schemas/FrontierGoal"
+            "$ref": "#/components/schemas/FrontierGoal",
+            "description": "The confirmed current goal. Use this as the canonical source for teaching and for full exam payloads."
           },
           "stateMachine": {
             "$ref": "#/components/schemas/StateMachineInfo"
@@ -440,7 +441,7 @@
             }
           },
           "resourceLinks": {
-            "description": "Ordered helpful learning resources for this goal. Canonical field for Cockpit and AI tutors; entries may originate from goal-level resource links or migrated legacy link fields.",
+            "description": "Ordered helpful learning resources for this goal. Canonical field for Cockpit and AI tutors.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/GoalSourceLink"
@@ -459,7 +460,8 @@
             "description": "URL to the applicable license or terms page."
           },
           "examData": {
-            "$ref": "#/components/schemas/ExamData"
+            "$ref": "#/components/schemas/ExamData",
+            "description": "Full exam payload. Guaranteed only on activeGoal and stateMachine.activeGoal; selectable candidates may omit it even when nodeKind=exam."
           }
         }
       },
@@ -567,7 +569,7 @@
         "properties": {
           "frontier": {
             "type": "array",
-            "description": "Updated frontier after mastery; includes atomic and cluster goals. Filter by type=atomic when selecting an active goal.",
+            "description": "Updated frontier after mastery; includes atomic and cluster goals. Treat these as selectable candidates only. Filter by type=atomic when selecting an active goal. Full exam payloads are exposed on activeGoal, not here.",
             "items": {
               "$ref": "#/components/schemas/FrontierGoal"
             }
@@ -584,7 +586,8 @@
             "description": "Current learning state after mastery (e.g. FRONTIER, TEACHING)."
           },
           "activeGoal": {
-            "$ref": "#/components/schemas/FrontierGoal"
+            "$ref": "#/components/schemas/FrontierGoal",
+            "description": "The confirmed current goal after mastery handling. Use this as the canonical source for teaching and for full exam payloads."
           },
           "stateMachine": {
             "$ref": "#/components/schemas/StateMachineInfo"
@@ -607,7 +610,7 @@
           },
           "goalOptions": {
             "type": "array",
-            "description": "Goal options relevant to the required action (e.g. frontier goals or active goal).",
+            "description": "Goal options relevant to the required action. When requiredAction=setActiveGoal these are selectable candidates, not the current goal. Full exam payloads are exposed on activeGoal, not here.",
             "items": {
               "$ref": "#/components/schemas/FrontierGoal"
             }
@@ -620,7 +623,8 @@
             }
           },
           "activeGoal": {
-            "$ref": "#/components/schemas/FrontierGoal"
+            "$ref": "#/components/schemas/FrontierGoal",
+            "description": "Mirror of the confirmed active goal inside the state machine. Use this, not goalOptions/frontier, when deciding whether exam mode should start."
           }
         }
       },

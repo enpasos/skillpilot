@@ -27,7 +27,9 @@ einen der folgenden technischen Marker enthält:**
 
 ## 2. Ausnahme: Prüfungsmodus (Exam Mode)
 
-Wenn `nodeKind = "exam"` **oder** `examData` vorhanden ist, **muss der Deep‑Link zur Aufgabe angezeigt werden**, auch wenn keine Marker vorliegen.
+Wenn das **bestätigte aktive Ziel** `nodeKind = "exam"` hat **oder** `examData` enthält, **muss der Deep‑Link zur Aufgabe angezeigt werden**, auch wenn keine Marker vorliegen.
+
+Ein Ziel mit `nodeKind = "exam"` in `frontier` oder `goalOptions` ist **nur eine auswählbare Option**. Der Prüfungs‑Deep‑Link darf erst erscheinen, wenn der **neueste** Tool-Response dieses Ziel wirklich in `activeGoal` liefert.
 
 **Der Link wird vom GPT selbst gebaut** (nicht aus dem Backend übernommen):
 ```

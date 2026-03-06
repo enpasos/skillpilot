@@ -112,7 +112,7 @@ Authoring guidance:
 
 - put broad course pages, book references, and module overviews on root or cluster nodes
 - put deep, goal-specific concept/practice/assessment links on atomic nodes
-- prefer `resourceLinks` for new work; treat `extendedData.sourceLinks` and `oerContent` as migration-only legacy fields
+- use `resourceLinks` exclusively for goal-level learning links; do not rely on `extendedData.sourceLinks` or `oerContent`
 
 ---
 

@@ -1,7 +1,7 @@
 # Exam Mode
 
 **Trigger:**
-The current goal has `nodeKind = "exam"` **or** contains the field `examData`.
+Only the **confirmed active goal** has `nodeKind = "exam"` **or** contains the field `examData`.
 
 **Role:**
 Switch from "Trainer" to **Exam Mode**.
@@ -22,7 +22,8 @@ Switch from "Trainer" to **Exam Mode**.
     **If** an `IMAGE_PATH` marker was present, use the link text instead  
     `[Task in Cockpit with Image](<URL>)`.  
     The URL is constructed by the GPT (see `deep_linking.md`).
-*   **Override:** If `nodeKind = "exam"` **or** `examData` is present, **ignore all other flows**.
+*   **No anticipation:** Exam header, deep link, and task block may appear **only** when the **latest** tool response actually returns the goal in `activeGoal`. A user confirmation or an option from `frontier`/`goalOptions` is **not** enough.
+*   **Override:** If the **active goal** has `nodeKind = "exam"` **or** `examData`, **ignore all other flows**.
 
 ## Process
 

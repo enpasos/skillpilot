@@ -12,8 +12,11 @@ import static org.mockito.Mockito.when;
 
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
+import com.skillpilot.backend.api.LearnerGoals;
+import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
+import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.service.LearnerService;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -110,10 +113,87 @@ class LearnerAiControllerTest {
         assertThat(normalized).doesNotContain("\\\\[");
     }
 
+    @Test
+    void getLearnerState_stripsExamDataFromSelectableGoals() {
+        String skillpilotId = "learner-1";
+        FrontierGoal examCandidate = examGoal("goal-1");
+        UnifiedLearnerStateResponse rawState = new UnifiedLearnerStateResponse(
+                skillpilotId,
+                null,
+                List.of(examCandidate),
+                new LearnerGoals(List.of(examCandidate), 0, 1, null, null, false),
+                List.of("setActiveGoal"),
+                List.of(),
+                Set.of(),
+                "FRONTIER",
+                null,
+                new StateMachineInfo("FRONTIER", "setActiveGoal", List.of(examCandidate), List.of(), null));
+
+        when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
+
+        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
+
+        assertThat(state.frontier()).hasSize(1);
+        assertThat(state.frontier().get(0).nodeKind()).isEqualTo("exam");
+        assertThat(state.frontier().get(0).examData()).isNull();
+        assertThat(state.stateMachine().goalOptions()).hasSize(1);
+        assertThat(state.stateMachine().goalOptions().get(0).examData()).isNull();
+        assertThat(state.goals().planned()).hasSize(1);
+        assertThat(state.goals().planned().get(0).examData()).isNull();
+    }
+
+    @Test
+    void getLearnerState_keepsExamDataOnActiveGoal() {
+        String skillpilotId = "learner-1";
+        FrontierGoal activeExamGoal = examGoal("goal-1");
+        UnifiedLearnerStateResponse rawState = new UnifiedLearnerStateResponse(
+                skillpilotId,
+                null,
+                List.of(activeExamGoal),
+                null,
+                List.of("setMastery"),
+                List.of(),
+                Set.of(),
+                "TEACHING",
+                activeExamGoal,
+                new StateMachineInfo("TEACHING", "setMastery", List.of(activeExamGoal), List.of(), activeExamGoal));
+
+        when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
+
+        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
+
+        assertThat(state.activeGoal()).isNotNull();
+        assertThat(state.activeGoal().examData()).isNotNull();
+        assertThat(state.activeGoal().examData().getTaskContent()).contains("Task body");
+        assertThat(state.stateMachine().activeGoal()).isNotNull();
+        assertThat(state.stateMachine().activeGoal().examData()).isNotNull();
+        assertThat(state.frontier()).hasSize(1);
+        assertThat(state.frontier().get(0).examData()).isNull();
+    }
+
     private String invokeNormalizeMathDelimitersForChat(String content) throws Exception {
         Method method = LearnerAiController.class.getDeclaredMethod("normalizeMathDelimitersForChat", String.class);
         method.setAccessible(true);
         return (String) method.invoke(controller, content);
+    }
+
+    private static FrontierGoal examGoal(String goalId) {
+        ExamData examData = new ExamData();
+        examData.setTaskContent("Task body");
+        examData.setSolutionContent("Solution body");
+        return new FrontierGoal(
+                goalId,
+                "Exam Goal",
+                "Description",
+                "atomic",
+                "exam",
+                "Ready",
+                List.of(),
+                List.of(),
+                null,
+                null,
+                null,
+                examData);
     }
 
     private static UnifiedLearnerStateResponse learnerState(String skillpilotId, String requiredAction) {

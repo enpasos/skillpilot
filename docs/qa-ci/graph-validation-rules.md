@@ -24,7 +24,8 @@ This is the single source of truth for algorithmic graph validation in CI.
 | `GVR-004` | First atomic node must be a motivation anchor (`Warum`/`Why`). | Rollout subset (`DE_HES_S_GYM_2_*`, excluding `OVERVIEW`) | `error` |
 | `GVR-005` | Every atomic node must have a transitive path to the motivation anchor via effective `requires`. | Rollout subset (`DE_HES_S_GYM_2_*`, excluding `OVERVIEW`) | `error` |
 | `GVR-006` | A goal must not directly require one of its direct `contains` children (inverse anti-pattern of `GVR-003`). | Rollout subset (`DE_HES_S_GYM_2_*`, including `OVERVIEW`) | `error` |
-| `GVR-007` | MIT OCW module atomic goals must include intensive source-link coverage (`concept` + `practice` + `assessment`) in canonical `resourceLinks` (legacy `extendedData.sourceLinks` accepted during migration). | MIT OCW module landscapes (`frameworkId` starts with `mit-ocw-` and root tagged `module:*`) | `error` |
+| `GVR-007` | MIT OCW module atomic goals must include intensive source-link coverage (`concept` + `practice` + `assessment`) in canonical `resourceLinks`. | MIT OCW module landscapes (`frameworkId` starts with `mit-ocw-` and root tagged `module:*`) | `error` |
+| `GVR-008` | Committed landscape goals must not use legacy link fields (`extendedData.sourceLinks`, `oerContent`); use canonical `resourceLinks` instead. | Local landscape | `error` |
 
 ## Core validator checks (always active, fail CI)
 
@@ -162,5 +163,20 @@ Validation semantics for each atomic goal:
   - `concept`
   - `practice`
   - `assessment`
-- legacy `extendedData.sourceLinks` is still accepted during migration if canonical `resourceLinks` is not present
 - Required source-link types must include at least one valid OCW course URL (`https://ocw.mit.edu/courses/...`).
+
+## Legacy goal-level link fields rule (`GVR-008`)
+
+- Scope: all committed landscape JSON files validated in CI.
+- Current issue level: follows global `GVR-*` strictness (`error` by default, `warn` with `VALIDATE_GRAPH_STRICT_RULES=0`).
+
+Validation semantics:
+
+- if a goal contains `extendedData.sourceLinks`, emit `GVR-008`
+- if a goal contains `oerContent`, emit `GVR-008`
+- the canonical replacement is top-level `resourceLinks`
+
+Interpretation:
+
+- legacy goal-level link fields are rejected by CI and ignored by runtime link rendering
+- committed landscape files in this repository should no longer store legacy goal-level link metadata

@@ -233,7 +233,7 @@ Design intent:
 ```
 - Used by:
   - backend AI/OpenAPI response field `resourceLinks`
-  - Cockpit goal detail cards (canonical field with legacy fallback)
+  - Cockpit goal detail cards
   - CI source-link coverage checks for MIT OCW landscapes
 - Status: canonical goal-level link field
 - Notes:
@@ -247,22 +247,22 @@ Design intent:
 ### extendedData.sourceLinks
 - Type: legacy array inside `extendedData`
 - Used by:
-  - legacy data imports
-  - migration compatibility in Cockpit/backend/validator
+  - legacy data only
 - Status: transitional only
 - Notes:
-  - New landscapes should prefer top-level `resourceLinks`.
-  - Existing landscapes may still be read from `extendedData.sourceLinks` during migration.
+  - Runtime link rendering no longer reads this field.
+  - New and existing landscapes should use top-level `resourceLinks`.
+  - Committed landscape JSON in this repository should not contain this field anymore; CI enforces this via `GVR-008`.
 
 ### oerContent
 - Type: legacy object (`source`, `link`, optional `sections`, `description`)
 - Used by:
   - older OER annotations in some landscapes
-  - migration fallback for Cockpit/backend
 - Status: transitional only
 - Notes:
-  - `oerContent` should no longer be the primary place for new learning-resource links.
-  - Migrate new OER hints into `resourceLinks` instead.
+  - Runtime link rendering no longer reads this field.
+  - Migrate OER hints into `resourceLinks` instead.
+  - Committed landscape JSON in this repository should not contain this field anymore; CI enforces this via `GVR-008`.
 
 ## dimensionTags fields
 

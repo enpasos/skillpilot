@@ -204,14 +204,15 @@ public class LearnerAiController {
 
         com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(state.activeGoal(), assetBase);
         com.skillpilot.backend.api.StateMachineInfo sm = state.stateMachine();
-        List<com.skillpilot.backend.api.FrontierGoal> frontier = filterFrontierForAi(
+        List<com.skillpilot.backend.api.FrontierGoal> frontier = stripExamDataFromSelectableGoals(filterFrontierForAi(
                 rewriteExamData(state.frontier(), assetBase),
-                sm);
+                sm));
+        com.skillpilot.backend.api.LearnerGoals goals = rewriteLearnerGoals(state.goals(), assetBase);
         com.skillpilot.backend.api.StateMachineInfo smUpdated = sm == null ? null
                 : new com.skillpilot.backend.api.StateMachineInfo(
                         sm.state(),
                         sm.requiredAction(),
-                        rewriteExamData(sm.goalOptions(), assetBase),
+                        stripExamDataFromSelectableGoals(rewriteExamData(sm.goalOptions(), assetBase)),
                         sm.curriculumOptions(),
                         rewriteExamData(sm.activeGoal(), assetBase));
 
@@ -219,7 +220,7 @@ public class LearnerAiController {
                 state.skillpilotId(),
                 state.curriculum(),
                 frontier,
-                state.goals(),
+                goals,
                 state.nextAllowedActions(),
                 state.activeFilters(),
                 state.copySources(),
@@ -238,15 +239,15 @@ public class LearnerAiController {
         }
         String assetBase = baseUrl + "/ai-assets";
         com.skillpilot.backend.api.StateMachineInfo sm = response.stateMachine();
-        List<com.skillpilot.backend.api.FrontierGoal> frontier = filterFrontierForAi(
+        List<com.skillpilot.backend.api.FrontierGoal> frontier = stripExamDataFromSelectableGoals(filterFrontierForAi(
                 rewriteExamData(response.frontier(), assetBase),
-                sm);
+                sm));
         com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(response.activeGoal(), assetBase);
         com.skillpilot.backend.api.StateMachineInfo smUpdated = sm == null ? null
                 : new com.skillpilot.backend.api.StateMachineInfo(
                         sm.state(),
                         sm.requiredAction(),
-                        rewriteExamData(sm.goalOptions(), assetBase),
+                        stripExamDataFromSelectableGoals(rewriteExamData(sm.goalOptions(), assetBase)),
                         sm.curriculumOptions(),
                         rewriteExamData(sm.activeGoal(), assetBase));
 
@@ -259,6 +260,21 @@ public class LearnerAiController {
                 response.goals());
     }
 
+    private com.skillpilot.backend.api.LearnerGoals rewriteLearnerGoals(
+            com.skillpilot.backend.api.LearnerGoals goals,
+            String assetBase) {
+        if (goals == null) {
+            return null;
+        }
+        return new com.skillpilot.backend.api.LearnerGoals(
+                stripExamDataFromSelectableGoals(rewriteExamData(goals.planned(), assetBase)),
+                goals.mastered_count(),
+                goals.total_count(),
+                goals.personalized(),
+                goals.scope(),
+                goals.scope_completed());
+    }
+
     private List<com.skillpilot.backend.api.FrontierGoal> rewriteExamData(
             List<com.skillpilot.backend.api.FrontierGoal> goals,
             String assetBase) {
@@ -268,6 +284,36 @@ public class LearnerAiController {
         return goals.stream()
                 .map(goal -> rewriteExamData(goal, assetBase))
                 .toList();
+    }
+
+    private List<com.skillpilot.backend.api.FrontierGoal> stripExamDataFromSelectableGoals(
+            List<com.skillpilot.backend.api.FrontierGoal> goals) {
+        if (goals == null || goals.isEmpty()) {
+            return goals;
+        }
+        return goals.stream()
+                .map(this::stripExamDataFromSelectableGoal)
+                .toList();
+    }
+
+    private com.skillpilot.backend.api.FrontierGoal stripExamDataFromSelectableGoal(
+            com.skillpilot.backend.api.FrontierGoal goal) {
+        if (goal == null || goal.examData() == null) {
+            return goal;
+        }
+        return new com.skillpilot.backend.api.FrontierGoal(
+                goal.id(),
+                goal.title(),
+                goal.description(),
+                goal.type(),
+                goal.nodeKind(),
+                goal.reason(),
+                goal.tags(),
+                goal.resourceLinks(),
+                goal.sourceRef(),
+                goal.sourceLicense(),
+                goal.sourceLicenseUrl(),
+                null);
     }
 
     private List<com.skillpilot.backend.api.FrontierGoal> filterFrontierForAi(
