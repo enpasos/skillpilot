@@ -50,6 +50,7 @@ Rules of thumb:
 * Start with a **root node** (the full curriculum or module).
 * Create **cluster nodes** for phases or topic fields.
 * Create **atomic nodes** for measurable goals (1-3 tasks per goal).
+* For learner-facing routes, include one or more **motivation** atomic goals and one or more **terminal autonomy** goals where appropriate (often practice or exam-style nodes).
 * Keep titles short and descriptions assessable ("The learner can ...").
 
 ---
@@ -102,14 +103,22 @@ Guidelines:
 
 ## Step 4: Add `requires` relations
 
-Goal: model prerequisites with minimal and readable edges.
+Goal: model prerequisites as precise, readable didactic routes.
 
 Rules:
-* Prefer **cluster-level** prerequisites when they apply broadly.
-* Use **inherited requires** rather than repeating edges on every leaf.
+* Prefer **atomic-to-atomic** prerequisites for the canonical didactic sequencing layer.
+* Use cluster-level `requires` only temporarily during early modeling, or when the prerequisite claim truly applies to all relevant descendants.
+* If higher-level dependency views are useful for navigation or reporting, derive them from atomic descendant dependencies rather than authoring them as the primary truth.
+* Where the landscape is learner-facing, check that atomic goals participate in teachable routes from one or more motivation anchors to one or more terminal autonomy goals.
 * Avoid transitive redundancy.
 
-Reference: `../qa-ci/graph-validation-rules.md`
+Migration note:
+* The current runtime/validator still supports inherited `requires` from cluster ancestors.
+* Treat that as a compatibility mechanism, not as the preferred end state for mature landscapes.
+
+References:
+* `../concept/curriculum-graph/graph-definition.md`
+* `../qa-ci/graph-validation-rules.md`
 
 ---
 
@@ -140,7 +149,10 @@ If this is a sub-curriculum:
 
 * Titles and descriptions are clear and measurable.
 * Atomic goals are testable in 1-3 tasks.
+* Atomic `requires` are authored canonically on atomic goals wherever practical.
+* Cluster-level `requires` are only used intentionally, not as the default modeling shortcut.
 * `contains` and `requires` are acyclic.
+* Learner-facing atomic goals lie on at least one route from a motivation anchor to a terminal autonomy goal.
 * IDs are stable and consistent.
 * Metadata (phase/area/level/core/weight) is consistent.
 * Localization is aligned (if applicable).
