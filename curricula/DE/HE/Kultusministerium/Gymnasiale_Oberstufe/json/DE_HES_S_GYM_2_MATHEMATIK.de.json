@@ -12856,8 +12856,7 @@
         "4b30e32d-acd3-59f2-9491-8a64c2e72c67",
         "db2445f8-2224-5083-9cec-a295fed85207"
       ],
-      "examples": [],
-      "sourceRef": null
+      "examples": []
     },
     {
       "id": "b3ad9693-580a-55ea-9a02-2cd1ea60f8d4",
@@ -12893,7 +12892,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Eine Wasserfontäne wird im Zeitintervall $0 \\le x \\le 8$ durch die Funktion\n$$\nf(x) = -\\frac{1}{2}x^2 + 4x + 2\n$$\nbeschrieben. Dabei gibt $x$ die waagerechte Entfernung in Metern und $f(x)$ die Höhe in Metern an.\n\n1. Bestimmen Sie die Symmetrieachse und den Scheitelpunkt des Graphen.\n2. Berechnen Sie die Nullstellen von $f$ und interpretieren Sie deren Bedeutung im Kontext.\n3. Untersuchen Sie, in welchem Intervall die Fontäne höher als $8\\,\\text{m}$ ist.\n4. Die lineare Funktion $g(x)=mx+2$ soll durch den Punkt $(4\\mid 6)$ gehen. Bestimmen Sie $m$ und vergleichen Sie die Änderungsrate von $g$ mit dem Verlauf von $f$ im Bereich um den Scheitelpunkt.",
         "solutionContent": "1. Für die quadratische Funktion gilt\n$$\nx_S = -\\frac{b}{2a} = -\\frac{4}{2\\cdot(-\\tfrac12)} = 4.\n$$\nDann ist\n$$\nf(4) = -\\frac12\\cdot 16 + 16 + 2 = 10.\n$$\nSymmetrieachse: $x=4$, Scheitelpunkt: $S(4\\mid 10)$.\n\n2. Nullstellen aus\n$$\n-\\frac12x^2 + 4x + 2 = 0\n$$\nfolgen mit Multiplikation durch $-2$ zu\n$$\nx^2 - 8x - 4 = 0.\n$$\nDamit\n$$\nx_{1,2} = 4 \\pm 2\\sqrt{5}.\n$$\nRelevant im Modell ist die positive Nullstelle $x_2 = 4 + 2\\sqrt5 \\approx 8{,}47$ m; dort trifft der Wasserstrahl wieder den Boden. Die negative Nullstelle liegt außerhalb des betrachteten Kontextes.\n\n3. Gesucht ist\n$$\n-\\frac12x^2 + 4x + 2 > 8.\n$$\nDies ist äquivalent zu\n$$\nx^2 - 8x + 12 < 0.\n$$\nFaktorisieren liefert\n$$\n(x-2)(x-6) < 0.\n$$\nAlso ist die Fontäne für $2 < x < 6$ höher als $8$ m.\n\n4. Aus $g(4)=6$ folgt\n$$\n4m + 2 = 6 \\Rightarrow m=1.\n$$\nDie lineare Funktion hat konstante Änderungsrate $1$. Am Scheitelpunkt von $f$ ist die momentane Änderungsrate $0$; in Scheitelnähe flacht der parabolische Verlauf also ab, während $g$ überall mit derselben Steigung wächst.",
@@ -12957,7 +12955,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Gegeben ist die Funktion\n$$\nf(x) = \\frac13 x^3 - 2x^2 + 3x.\n$$\n\n1. Berechnen Sie die erste Ableitung $f'(x)$.\n2. Bestimmen Sie die Stellen, an denen der Graph von $f$ eine waagerechte Tangente besitzt.\n3. Untersuchen Sie, in welchen Intervallen der Graph steigt bzw. fällt.\n4. Bestimmen Sie die Gleichung der Tangente an den Graphen von $f$ im Punkt mit der Stelle $x=1$ und deuten Sie die Steigung in diesem Punkt.",
         "solutionContent": "1. Ableitung:\n$$\nf'(x) = x^2 - 4x + 3 = (x-1)(x-3).\n$$\n\n2. Waagerechte Tangenten liegen bei $f'(x)=0$, also bei\n$$\nx_1 = 1, \\qquad x_2 = 3.\n$$\n\n3. Vorzeichen von $f'(x)$:\n- für $x<1$ ist $f'(x)>0$, also steigt $f$.\n- für $1<x<3$ ist $f'(x)<0$, also fällt $f$.\n- für $x>3$ ist $f'(x)>0$, also steigt $f$ wieder.\n\n4. Funktionswert an $x=1$:\n$$\nf(1)=\\frac13-2+3=\\frac43.\n$$\nDie Tangentensteigung ist\n$$\nf'(1)=0.\n$$\nDamit lautet die Tangente\n$$\ny = \\frac43.\n$$\nDie Steigung $0$ bedeutet, dass der Graph dort in diesem Moment weder steigt noch fällt; es handelt sich um eine Extremstelle.",
@@ -13021,7 +13018,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Aus $40\\,$m Zaun soll an einer geraden Hauswand ein rechteckiger Auslauf gebaut werden. Die Hauswand bildet dabei eine Seite des Rechtecks, sodass nur drei Seiten eingezäunt werden müssen.\n\n1. Stellen Sie die Fläche $A(x)$ des Auslaufs in Abhängigkeit von der Breite $x$ senkrecht zur Hauswand auf.\n2. Bestimmen Sie den Definitionsbereich der Funktion.\n3. Berechnen Sie die Breite $x$ und die zugehörige Länge, für die die Fläche maximal wird.\n4. Interpretieren Sie das Ergebnis im Sachzusammenhang.",
         "solutionContent": "Bezeichne mit $x$ die Breite senkrecht zur Wand und mit $y$ die Länge parallel zur Wand.\n\n1. Wegen der Zaunlänge gilt\n$$\n2x + y = 40 \\Rightarrow y = 40 - 2x.\n$$\nDie Fläche ist damit\n$$\nA(x) = x\\cdot y = x(40-2x) = 40x - 2x^2.\n$$\n\n2. Es muss $x>0$ und $y>0$ gelten. Also\n$$\n40 - 2x > 0 \\Rightarrow x < 20.\n$$\nDamit ist der sinnvolle Definitionsbereich\n$$\n0 < x < 20.\n$$\n\n3. Die Parabel $A(x)=40x-2x^2$ ist nach unten geöffnet. Das Maximum liegt im Scheitelpunkt:\n$$\nx_S = -\\frac{b}{2a} = -\\frac{40}{2\\cdot(-2)} = 10.\n$$\nDann ist\n$$\ny = 40 - 2\\cdot 10 = 20.\n$$\nDie maximale Fläche beträgt\n$$\nA(10)=40\\cdot 10 - 2\\cdot 10^2 = 200\\,\\text{m}^2.\n$$\n\n4. Der größte Auslauf entsteht bei einer Breite von $10\\,$m und einer Länge von $20\\,$m. Dann wird der vorhandene Zaun optimal ausgenutzt und die Fläche ist maximal.",
@@ -13085,7 +13081,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Eine Bakterienkultur wird zu Beginn mit $500$ Bakterien angesetzt. Nach $4$ Stunden sind $980$ Bakterien vorhanden. Die Entwicklung soll mit einer Exponentialfunktion\n$$\nN(t)=N_0\\cdot a^t\n$$\nmodelliert werden.\n\n1. Bestimmen Sie $N_0$ und den Wachstumsfaktor $a$.\n2. Geben Sie die Funktionsgleichung an.\n3. Berechnen Sie, nach wie vielen Stunden die Anzahl $2000$ erstmals überschritten wird.\n4. Bestimmen Sie die Verdopplungszeit und deuten Sie das Ergebnis.",
         "solutionContent": "1. Anfangsbestand:\n$$\nN_0 = 500.\n$$\nMit $N(4)=980$ folgt\n$$\n500\\cdot a^4 = 980 \\Rightarrow a^4 = 1{,}96 \\Rightarrow a = 1{,}96^{1/4} \\approx 1{,}1832.\n$$\n\n2. Das Modell lautet\n$$\nN(t)=500\\cdot 1{,}1832^t.\n$$\n\n3. Gesucht ist\n$$\n500\\cdot 1{,}1832^t > 2000 \\Rightarrow 1{,}1832^t > 4.\n$$\nDaraus folgt\n$$\nt > \\frac{\\ln 4}{\\ln 1{,}1832} \\approx 8{,}22.\n$$\nDie Anzahl $2000$ wird also nach etwa $8{,}2$ Stunden erstmals überschritten.\n\n4. Verdopplungszeit $T$ aus\n$$\n1{,}1832^T = 2.\n$$\nAlso\n$$\nT = \\frac{\\ln 2}{\\ln 1{,}1832} \\approx 4{,}11.\n$$\nDie Kultur verdoppelt sich also ungefähr alle $4{,}1$ Stunden.",
@@ -13150,7 +13145,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Die Höhe einer Gondel eines Riesenrads über dem Boden wird durch die Funktion\n$$\nh(t)=12+10\\sin\\left(\\frac{\\pi}{20}(t-5)\\right)\n$$\nbeschrieben. Dabei ist $t$ die Zeit in Sekunden und $h(t)$ die Höhe in Metern.\n\n1. Bestimmen Sie Amplitude, Mittellinie und Periode der Bewegung.\n2. Berechnen Sie die Höhe der Gondel zu Beginn ($t=0$).\n3. Bestimmen Sie einen Zeitpunkt im Intervall $0\\le t\\le 40$, zu dem die Gondel ihre maximale Höhe erreicht.\n4. Untersuchen Sie, in welchem Zeitintervall innerhalb der ersten Umdrehung die Gondel höher als $20\\,$m ist.",
         "solutionContent": "1. Aus\n$$\nh(t)=12+10\\sin\\left(\\frac{\\pi}{20}(t-5)\\right)\n$$\nliest man ab:\n- Amplitude: $10$\n- Mittellinie: $h=12$\n- Kreisfrequenz: $\\omega = \\frac{\\pi}{20}$\n\nDie Periode ist\n$$\nT = \\frac{2\\pi}{\\omega} = \\frac{2\\pi}{\\pi/20} = 40.\n$$\n\n2. Für $t=0$ gilt\n$$\nh(0)=12+10\\sin\\left(-\\frac{\\pi}{4}\\right)=12-5\\sqrt2\\approx 4{,}93.\n$$\n\n3. Das Maximum wird erreicht, wenn der Sinuswert $1$ ist:\n$$\n\\frac{\\pi}{20}(t-5)=\\frac\\pi2 + 2k\\pi.\n$$\nFür $k=0$ folgt\n$$\nt-5=10 \\Rightarrow t=15.\n$$\nDann ist\n$$\nh(15)=22.\n$$\n\n4. Gesucht ist\n$$\n12+10\\sin\\left(\\frac{\\pi}{20}(t-5)\\right) > 20.\n$$\nAlso\n$$\n\\sin\\left(\\frac{\\pi}{20}(t-5)\\right) > 0{,}8.\n$$\nIm ersten Umlauf gilt dafür\n$$\n\\alpha \\in (\\arcsin(0{,}8),\\ \\pi-\\arcsin(0{,}8)).\n$$\nMit $\\arcsin(0{,}8)\\approx 0{,}9273$ ergibt sich\n$$\nt \\in \\left(5+\\frac{20}{\\pi}\\cdot 0{,}9273,\\ 5+\\frac{20}{\\pi}(\\pi-0{,}9273)\\right).\n$$\nNumerisch folgt\n$$\nt \\in (10{,}90,\\ 29{,}10).\n$$\nIn diesem Zeitintervall ist die Gondel höher als $20$ m.",
@@ -13214,7 +13208,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Die Gleichung\n$$\nx^3-x-1=0\n$$\nsoll näherungsweise gelöst werden.\n\n1. Zeigen Sie, dass die Gleichung im Intervall $[1,2]$ mindestens eine Nullstelle besitzt.\n2. Führen Sie zwei Schritte des Intervallschachtelungsverfahrens auf dem Intervall $[1,2]$ durch.\n3. Verwenden Sie anschließend das Newton-Verfahren mit Startwert $x_0=1{,}5$ und berechnen Sie $x_1$ und $x_2$.\n4. Vergleichen Sie beide Verfahren im Hinblick auf Aufwand und Konvergenzgeschwindigkeit in diesem Beispiel.",
         "solutionContent": "1. Setze\n$$\nf(x)=x^3-x-1.\n$$\nDann gilt\n$$\nf(1) = -1 < 0, \\qquad f(2)=8-2-1=5>0.\n$$\nDa $f$ stetig ist, besitzt $f$ nach dem Zwischenwertsatz mindestens eine Nullstelle in $[1,2]$.\n\n2. Erster Mittelpunkt:\n$$\nm_1=1{,}5.\n$$\nEs ist\n$$\nf(1{,}5)=3{,}375-1{,}5-1=0{,}875>0.\n$$\nNeue Intervallschachtelung: $[1,1{,}5]$.\n\nZweiter Mittelpunkt:\n$$\nm_2=1{,}25.\n$$\nDann\n$$\nf(1{,}25)=1{,}953125-1{,}25-1=-0{,}296875<0.\n$$\nNeues Intervall: $[1{,}25,1{,}5]$.\n\n3. Für das Newton-Verfahren gilt\n$$\nf'(x)=3x^2-1.\n$$\nMit\n$$\nx_{n+1}=x_n-\\frac{f(x_n)}{f'(x_n)}\n$$\nfolgt aus $x_0=1{,}5$:\n$$\nx_1 = 1{,}5 - \\frac{0{,}875}{5{,}75} \\approx 1{,}3478.\n$$\nDann\n$$\nf(1{,}3478)\\approx 0{,}1003,\\qquad f'(1{,}3478)\\approx 4{,}4497,\n$$\nund damit\n$$\nx_2 \\approx 1{,}3478 - \\frac{0{,}1003}{4{,}4497} \\approx 1{,}3253.\n$$\n\n4. Das Intervallschachtelungsverfahren ist sicher und einfach, braucht aber mehr Schritte. Das Newton-Verfahren liefert hier deutlich schneller eine gute Näherung, setzt aber Ableitung und einen geeigneten Startwert voraus.",
@@ -13279,7 +13272,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Gegeben ist die Folge\n$$\na_n = 3 - 2\\cdot \\left(\\frac12\\right)^n \\qquad (n\\in\\mathbb N).\n$$\n\n1. Berechnen Sie $a_1$, $a_2$ und $a_4$.\n2. Untersuchen Sie, ob die Folge monoton ist.\n3. Bestimmen Sie den Grenzwert der Folge und begründen Sie Ihr Ergebnis.\n4. Betrachten Sie zusätzlich die Reihe\n$$\n\\sum_{k=1}^{n} 2\\cdot \\left(\\frac12\\right)^k.\n$$\nBestimmen Sie eine Formel für die Partialsummen und den Grenzwert der Reihe für $n\\to\\infty$.",
         "solutionContent": "1. Es gilt\n$$\na_1 = 3-2\\cdot \\frac12 = 2,\n$$\n$$\na_2 = 3-2\\cdot \\frac14 = 2{,}5,\n$$\n$$\na_4 = 3-2\\cdot \\frac1{16} = 2{,}875.\n$$\n\n2. Da $\\left(\\frac12\\right)^n$ mit wachsendem $n$ kleiner wird, wird der Term\n$$\n-2\\cdot \\left(\\frac12\\right)^n\n$$\nimmer weniger negativ. Deshalb wächst $a_n$. Die Folge ist also monoton steigend.\n\n3. Weil\n$$\n\\left(\\frac12\\right)^n \\to 0 \\quad (n\\to\\infty),\n$$\nfolgt\n$$\na_n \\to 3.\n$$\nDer Grenzwert der Folge ist $3$.\n\n4. Die Reihe ist geometrisch mit erstem Glied $1$ und Quotienten $q=\\frac12$. Daher gilt für die Partialsummen\n$$\nS_n = 1\\cdot \\frac{1-(1/2)^n}{1-1/2} = 2\\left(1-\\left(\\frac12\\right)^n\\right).\n$$\nFür $n\\to\\infty$ folgt\n$$\nS_n \\to 2.\n$$\nDie Reihe konvergiert also gegen $2$.",
@@ -13344,7 +13336,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Für die Funktion\n$$\nf(x)=x^4-4x^2+1\n$$\nwerden mit einem CAS folgende Näherungen ausgegeben:\n- Nullstellen: $x\\approx -1{,}93$, $x\\approx -0{,}52$, $x\\approx 0{,}52$, $x\\approx 1{,}93$\n- Extremstellen: $x=0$, $x\\approx \\pm 1{,}41$\n\n1. Überprüfen Sie rechnerisch, ob $x=0$ tatsächlich eine Extremstelle ist.\n2. Bestimmen Sie mithilfe von $f'(x)$ die exakten Extremstellen.\n3. Berechnen Sie die Funktionswerte an den Extremstellen.\n4. Erläutern Sie, wie das digitale Werkzeug hier hilft und an welcher Stelle eine mathematische Kontrolle notwendig bleibt.",
         "solutionContent": "1. Ableitung:\n$$\nf'(x)=4x^3-8x=4x(x^2-2).\n$$\nDaraus folgt sofort $f'(0)=0$, also ist $x=0$ tatsächlich eine kritische Stelle.\n\n2. Aus\n$$\n4x(x^2-2)=0\n$$\nfolgen die exakten Extremstellen\n$$\nx=0, \\qquad x=\\pm \\sqrt2.\n$$\nDas stimmt näherungsweise mit den CAS-Werten $\\pm 1{,}41$ überein.\n\n3. Funktionswerte:\n$$\nf(0)=1.\n$$\nFür $x=\\pm \\sqrt2$ gilt\n$$\nf(\\pm \\sqrt2) = (\\sqrt2)^4 - 4(\\sqrt2)^2 + 1 = 4-8+1=-3.\n$$\nAlso liegt bei $x=0$ ein Hochpunkt und bei $x=\\pm\\sqrt2$ liegen Tiefpunkte.\n\n4. Das CAS liefert schnell Näherungen für Nullstellen und Extremstellen und unterstützt bei der grafischen Orientierung. Die mathematische Kontrolle bleibt nötig, um exakte Werte, Vorzeichenwechsel und die korrekte Deutung der Punkte sicher zu begründen.",
@@ -13410,8 +13401,7 @@
         "234631b4-4b14-5540-95c7-76aed6781b47",
         "0ca96eef-d4a3-58c2-a6b0-1349efae6bd2"
       ],
-      "examples": [],
-      "sourceRef": null
+      "examples": []
     },
     {
       "id": "bc3526bd-c0a5-5033-902a-871078283626",
@@ -13446,7 +13436,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Die Zuflussrate in ein Speicherbecken wird für $0 \\le t \\le 8$ Stunden durch\n$$\nz(t)= -\\frac14 t^2 + 2t + 3\n$$\nin $\\text{m}^3/\\text{h}$ beschrieben.\n\n1. Berechnen Sie den gesamten Zufluss im Zeitraum von $0$ bis $8$ Stunden.\n2. Bestimmen Sie die mittlere Zuflussrate in diesem Zeitraum.\n3. Zu Beginn befinden sich $12\\,\\text{m}^3$ Wasser im Becken. Stellen Sie eine Funktion $B(t)$ für den Beckeninhalt auf, wenn kein Wasser abfließt.\n4. Erläutern Sie den Unterschied zwischen Zuflussrate und Beckeninhalt im gegebenen Modell.",
         "solutionContent": "1. Gesamtzufluss:\n$$\n\\int_0^8 \\left(-\\frac14 t^2 + 2t + 3\\right)\\,dt\n= \\left(-\\frac1{12}t^3 + t^2 + 3t\\right)_0^8.\n$$\nDamit ergibt sich\n$$\n-\\frac1{12}\\cdot 512 + 64 + 24 = -\\frac{128}{3} + 88 = \\frac{136}{3}.\n$$\nDer gesamte Zufluss beträgt also\n$$\n\\frac{136}{3}\\,\\text{m}^3 \\approx 45{,}33\\,\\text{m}^3.\n$$\n\n2. Die mittlere Zuflussrate ist\n$$\n\\bar z = \\frac{1}{8}\\int_0^8 z(t)\\,dt = \\frac{1}{8}\\cdot \\frac{136}{3} = \\frac{17}{3}\\,\\text{m}^3/\\text{h} \\approx 5{,}67\\,\\text{m}^3/\\text{h}.\n$$\n\n3. Der Beckeninhalt ergibt sich durch Aufintegrieren:\n$$\nB(t)=12+\\int_0^t \\left(-\\frac14 x^2+2x+3\\right)\\,dx.\n$$\nAlso\n$$\nB(t)=12-\\frac1{12}t^3+t^2+3t.\n$$\n\n4. Die Zuflussrate $z(t)$ gibt an, wie schnell sich der Inhalt pro Stunde ändert. Der Beckeninhalt $B(t)$ beschreibt dagegen die gesamte bis zum Zeitpunkt $t$ angesammelte Wassermenge. Inhalt ist also die aufintegrierte Änderungsrate plus Anfangsbestand.",
@@ -13515,7 +13504,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Die Zuflussrate eines Regenrückhaltebeckens wird für $0 \\le t \\le 6$ Stunden durch\n$$\nr(t) = -\\frac12 t^2 + 3t + 4\n$$\nin $\\text{m}^3/\\text{h}$ beschrieben.\n\n1. Berechnen Sie, wie viel Wasser im Zeitraum von $0$ bis $6$ Stunden insgesamt zufließt.\n2. Bestimmen Sie die mittlere Zuflussrate in diesem Zeitraum.\n3. Zu Beginn befinden sich $5\\,\\text{m}^3$ Wasser im Becken. Gleichzeitig fließen konstant $3\\,\\text{m}^3/\\text{h}$ ab.\n   Stellen Sie eine Funktion $V(t)$ für den Beckeninhalt auf.\n4. Bestimmen Sie den maximalen Beckeninhalt im betrachteten Zeitraum und interpretieren Sie das Ergebnis.",
         "solutionContent": "1. Gesamtzufluss:\n$$\n\\int_0^6 \\left(-\\frac12 t^2 + 3t + 4\\right)\\,dt\n= \\left(-\\frac16 t^3 + \\frac32 t^2 + 4t\\right)_0^6\n= -36 + 54 + 24 = 42.\n$$\nEs fließen insgesamt $42\\,\\text{m}^3$ zu.\n\n2. Mittlere Zuflussrate:\n$$\n\\bar r = \\frac{1}{6}\\int_0^6 r(t)\\,dt = \\frac{42}{6} = 7\\,\\text{m}^3/\\text{h}.\n$$\n\n3. Nettozufluss ist\n$$\nr(t)-3 = -\\frac12 t^2 + 3t + 1.\n$$\nMit $V(0)=5$ ergibt sich\n$$\nV(t) = 5 + \\int_0^t \\left(-\\frac12 x^2 + 3x + 1\\right)\\,dx\n= 5 - \\frac16 t^3 + \\frac32 t^2 + t.\n$$\n\n4. Maximum von $V$ über $V'(t)=0$:\n$$\nV'(t)= -\\frac12 t^2 + 3t + 1.\n$$\nDie Nullstellen erfüllen\n$$\nt^2 - 6t - 2 = 0,\n$$\nalso\n$$\nt = 3 \\pm \\sqrt{11}.\n$$\nIm Intervall liegt nur $t=3-\\sqrt{11}<0$ außerhalb. Für $0 \\le t \\le 6$ ist $V'(t)$ positiv, also ist $V$ dort streng steigend. Das Maximum liegt daher bei $t=6$:\n$$\nV(6)=5-36+54+6=29.\n$$\nDer größte Beckeninhalt im betrachteten Zeitraum beträgt $29\\,\\text{m}^3$.",
@@ -13581,7 +13569,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Das Wachstum einer Fischpopulation in einem See wird durch das logistische Modell\n$$\nP'(t)=0{,}4\\,P(t)\\left(1-\\frac{P(t)}{5000}\\right)\n$$\nbeschrieben. Dabei gibt $P(t)$ die Anzahl der Fische zum Zeitpunkt $t$ in Monaten an.\nZu Beginn gilt $P(0)=1000$.\n\n1. Erläutern Sie die Bedeutung der Zahlen $0{,}4$ und $5000$ im Modell.\n2. Begründen Sie, warum $P(t)=5000$ eine konstante Lösung ist.\n3. Untersuchen Sie das Wachstum der Population für $P(t)<5000$ und für $P(t)>5000$.\n4. Erklären Sie, warum das logistische Modell für diese Situation geeigneter ist als ein reines Exponentialmodell.",
         "solutionContent": "1. Der Faktor $0{,}4$ beschreibt die relative Wachstumsstärke der Population. Die Zahl $5000$ ist die Sättigungsgrenze bzw. langfristige Kapazität des Sees.\n\n2. Setzt man $P(t)=5000$ in die Differentialgleichung ein, so erhält man\n$$\nP'(t)=0{,}4\\cdot 5000\\left(1-\\frac{5000}{5000}\\right)=0.\n$$\nAlso ändert sich die Population dort nicht; $P(t)=5000$ ist eine konstante Lösung.\n\n3. Für $0<P(t)<5000$ gilt\n$$\n1-\\frac{P(t)}{5000} > 0,\n$$\nalso ist $P'(t)>0$ und die Population wächst.\nFür $P(t)>5000$ ist\n$$\n1-\\frac{P(t)}{5000} < 0,\n$$\nalso ist $P'(t)<0$ und die Population nimmt ab. Die Sättigungsgrenze wirkt damit stabilisierend.\n\n4. Ein Exponentialmodell würde unbegrenztes Wachstum annehmen. In einem realen See sind Nahrung, Platz und Sauerstoff jedoch begrenzt. Das logistische Modell berücksichtigt diese Begrenzung durch den Faktor\n$$\n1-\\frac{P(t)}{5000}\n$$\nund ist deshalb sachlich besser geeignet.",
@@ -13648,7 +13635,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Berechnen Sie die folgenden Integrale und begründen Sie jeweils kurz die Wahl Ihrer Methode.\n\n1. $$I_1=\\int_0^1 (2x+1)e^{x^2+x}\\,dx$$\n2. $$I_2=\\int_1^e \\ln(x)\\,dx$$\n3. $$I_3=\\int_0^{\\pi} x\\sin(x)\\,dx$$\n4. Erläutern Sie, weshalb für diese drei Integrale nicht dieselbe Integrationsmethode zweckmäßig ist.",
         "solutionContent": "1. Für\n$$\nI_1=\\int_0^1 (2x+1)e^{x^2+x}\\,dx\n$$\nist die Substitution\n$$\nu=x^2+x,\\qquad d\\nu=(2x+1)dx\n$$\nnaheliegend. Damit folgt\n$$\nI_1=\\int_0^2 e^{\\nu}\\,d\\nu = e^2-1.\n$$\n\n2. Für\n$$\nI_2=\\int_1^e \\ln(x)\\,dx\n$$\nist partielle Integration geeignet:\n$$\nu=\\ln(x),\\quad dw=dx,\\quad d\\nu=\\frac1x dx,\\quad w=x.\n$$\nDaraus ergibt sich\n$$\nI_2=\\left[x\\ln(x)-x\\right]_1^e = (e\\cdot 1-e) - (0-1)=1.\n$$\n\n3. Für\n$$\nI_3=\\int_0^{\\pi} x\\sin(x)\\,dx\n$$\nist ebenfalls partielle Integration geeignet:\n$$\nu=x,\\quad dw=\\sin(x)dx,\\quad d\\nu=dx,\\quad w=-\\cos(x).\n$$\nAlso\n$$\nI_3=\\left[-x\\cos(x)\\right]_0^{\\pi}+\\int_0^{\\pi}\\cos(x)\\,dx = \\pi + 0 = \\pi.\n$$\n\n4. Im ersten Integral ist die innere Ableitung direkt vorhanden, daher ist Substitution optimal. In den beiden anderen Integralen liegt ein Produkt bzw. ein Logarithmus vor; dort führt partielle Integration zielgerichtet zum Ergebnis. Die Struktur des Integranden entscheidet also über die geeignete Methode.",
@@ -13714,7 +13700,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Die Temperatur $T(t)$ eines heißen Getränks in einem Raum mit konstanter Umgebungstemperatur $20^\\circ\\text{C}$ wird näherungsweise durch die Differentialgleichung\n$$\nT'(t) = -0{,}25\\,(T(t)-20)\n$$\nbeschrieben. Zu Beginn gilt $T(0)=80$.\n\n1. Erläutern Sie die Bedeutung des Terms $(T(t)-20)$ im Modell.\n2. Begründen Sie, warum $T(t)=20$ eine Gleichgewichtslösung ist.\n3. Geben Sie an, ob die Temperatur steigt oder fällt, solange $T(t)>20$ gilt. Begründen Sie dies mithilfe der Differentialgleichung.\n4. Skizzieren Sie qualitativ den Verlauf von $T(t)$ und erläutern Sie, weshalb sich die Temperatur langfristig der Umgebungstemperatur annähert.",
         "solutionContent": "1. Der Term $(T(t)-20)$ beschreibt die Abweichung der Getränketemperatur von der Umgebungstemperatur. Je größer diese Abweichung ist, desto stärker ist die Änderungsrate im Modell.\n\n2. Für $T(t)=20$ gilt\n$$\nT'(t) = -0{,}25\\,(20-20)=0.\n$$\nAlso ändert sich die Temperatur nicht mehr; $20^\\circ\\text{C}$ ist eine Gleichgewichtslösung.\n\n3. Gilt $T(t)>20$, dann ist\n$$\nT(t)-20 > 0.\n$$\nWegen des negativen Vorfaktors folgt\n$$\nT'(t)<0.\n$$\nDie Temperatur fällt also, solange das Getränk wärmer als die Umgebung ist.\n\n4. Der Graph startet bei $T(0)=80$ und fällt monoton. Dabei flacht der Verlauf mit der Zeit ab, weil die Differenz zur Umgebungstemperatur kleiner wird. Langfristig nähert sich der Graph der Horizontalen $T=20$ an, da dort die Änderungsrate gegen $0$ geht.",
@@ -13781,8 +13766,7 @@
         "a4c918fe-cdfa-524f-85fa-22f18b1d36a2",
         "7c44c075-17b8-54b4-a8f9-aa94b7e66962"
       ],
-      "examples": [],
-      "sourceRef": null
+      "examples": []
     },
     {
       "id": "69a6ac27-cd48-5779-bfb7-03b8e3125688",
@@ -13821,7 +13805,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Gegeben ist die Funktion\n$$\nf(x) = 2\\,e^{0.5x}-3.\n$$\nAußerdem wird die Funktion\n$$\ng(x) = \\ln(x+3)\n$$\nbetrachtet.\n\n1. Beschreiben Sie, wie der Graph von $f$ aus dem Graphen von $y=e^{0.5x}$ hervorgeht.\n2. Bestimmen Sie die Nullstelle von $f$.\n3. Geben Sie Definitionsmenge und Wertemenge von $g$ an.\n4. Untersuchen Sie die Verknüpfung\n$$\n(g\\circ f)(x)=g(f(x))\n$$\nauf ihre Definitionsmenge und vereinfachen Sie den Funktionsterm so weit wie möglich.",
         "solutionContent": "1. Der Faktor $2$ bewirkt eine Streckung in $y$-Richtung um den Faktor $2$. Der Term $-3$ verschiebt den Graphen anschließend um $3$ Einheiten nach unten.\n\n2. Nullstelle von $f$:\n$$\n2e^{0.5x}-3=0 \\Rightarrow e^{0.5x}=\\frac32.\n$$\nLogarithmieren liefert\n$$\n0.5x = \\ln\\left(\\frac32\\right) \\Rightarrow x = 2\\ln\\left(\\frac32\\right).\n$$\n\n3. Für $g(x)=\\ln(x+3)$ muss gelten\n$$\nx+3>0 \\Rightarrow x>-3.\n$$\nAlso ist die Definitionsmenge\n$$\nD_g = (-3,\\infty).\n$$\nDa der Logarithmus alle reellen Werte annimmt, ist die Wertemenge\n$$\nW_g = \\mathbb R.\n$$\n\n4. Es gilt\n$$\n(g\\circ f)(x)=\\ln(f(x)+3)=\\ln(2e^{0.5x}).\n$$\nMit Logarithmusregeln folgt\n$$\n(g\\circ f)(x)=\\ln 2 + 0.5x.\n$$\nFür die Definitionsmenge muss $f(x)+3>0$ gelten. Wegen\n$$\nf(x)+3 = 2e^{0.5x}>0\n$$\nfür alle $x\\in\\mathbb R$ ist die Definitionsmenge von $g\\circ f$ gleich $\\mathbb R$.",
@@ -13894,7 +13877,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Gegeben sind die Punkte\n$$\nA(0\\mid0\\mid0),\\ B(6\\mid0\\mid0),\\ C(0\\mid4\\mid0),\\ D(0\\mid0\\mid3).\n$$\nSie bilden die Eckpunkte einer Pyramide mit Grunddreieck $ABC$ und Spitze $D$.\n\n1. Zeigen Sie, dass das Dreieck $ABC$ rechtwinklig ist.\n2. Berechnen Sie den Flächeninhalt des Grunddreiecks $ABC$.\n3. Bestimmen Sie das Volumen der Pyramide $ABCD$.\n4. Die Koordinaten aller Punkte werden mit dem Faktor $1.5$ multipliziert. Bestimmen Sie das neue Volumen und erläutern Sie, warum sich das Volumen gerade so ändert.",
         "solutionContent": "1. Es gilt\n$$\n\\overrightarrow{AB} = \\begin{pmatrix}6\\\\0\\\\0\\end{pmatrix},\\qquad \\overrightarrow{AC}=\\begin{pmatrix}0\\\\4\\\\0\\end{pmatrix}.\n$$\nDas Skalarprodukt ist\n$$\n\\overrightarrow{AB}\\cdot\\overrightarrow{AC}=6\\cdot 0+0\\cdot 4+0\\cdot 0=0.\n$$\nAlso stehen $\\overrightarrow{AB}$ und $\\overrightarrow{AC}$ senkrecht aufeinander; das Dreieck $ABC$ ist rechtwinklig bei $A$.\n\n2. Der Flächeninhalt des rechtwinkligen Dreiecks ist\n$$\nA_{ABC}=\\frac12\\cdot 6\\cdot 4 = 12.\n$$\n\n3. Die Höhe der Pyramide ist die Entfernung des Punktes $D$ von der Ebene $z=0$, also $h=3$.\nDamit ergibt sich\n$$\nV = \\frac13\\cdot A_{ABC}\\cdot h = \\frac13\\cdot 12\\cdot 3 = 12.\n$$\nDas Volumen beträgt $12\\,\\text{LE}^3$.\n\n4. Bei einer Streckung aller Längen mit dem Faktor $1.5$ werden Flächen mit dem Faktor $1.5^2=2.25$ und Volumina mit dem Faktor $1.5^3=3.375$ multipliziert. Also gilt\n$$\nV_{\\text{neu}} = 12\\cdot 1.5^3 = 12\\cdot 3.375 = 40.5.\n$$\nDas neue Volumen beträgt $40.5\\,\\text{LE}^3$.",
@@ -13963,7 +13945,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Gegeben sind die Gerade\n$$\ng: \\vec x = \\begin{pmatrix}1\\\\2\\\\3\\end{pmatrix} + t\\begin{pmatrix}2\\\\-1\\\\1\\end{pmatrix}\n$$\nund die Ebene\n$$\nE: x_1 + x_2 + x_3 = 9.\n$$\nAußerdem sei der Quader mit den Eckpunkten\n$$\nO(0\\mid0\\mid0),\\ A(6\\mid0\\mid0),\\ B(6\\mid4\\mid0),\\ C(0\\mid4\\mid0),\\ O'(0\\mid0\\mid3)\n$$\ngegeben.\n\n1. Prüfen Sie, ob der Punkt $P(5\\mid 0\\mid 5)$ auf der Geraden $g$ liegt.\n2. Bestimmen Sie den Schnittpunkt von $g$ mit der Ebene $E$.\n3. Stellen Sie die Ebene $E$ in Hessescher Normalenform dar.\n4. Beschreiben Sie die Schnittfigur, die durch die Ebene $E$ im Quader entsteht. Begründen Sie Ihre Aussage anhand der Achsenabschnitte.",
         "solutionContent": "1. Für $t=2$ erhält man aus $g$\n$$\n\\begin{pmatrix}1\\\\2\\\\3\\end{pmatrix} + 2\\begin{pmatrix}2\\\\-1\\\\1\\end{pmatrix} = \\begin{pmatrix}5\\\\0\\\\5\\end{pmatrix}.\n$$\nAlso liegt $P$ auf $g$.\n\n2. Für den Schnittpunkt wird in die Ebenengleichung eingesetzt:\n$$\n(1+2t) + (2-t) + (3+t) = 9.\n$$\nDas ergibt\n$$\n6 + 2t = 9 \\Rightarrow t = \\frac32.\n$$\nDamit ist\n$$\nS = \\begin{pmatrix}1\\\\2\\\\3\\end{pmatrix} + \\frac32\\begin{pmatrix}2\\\\-1\\\\1\\end{pmatrix} = \\begin{pmatrix}4\\\\0{,}5\\\\4{,}5\\end{pmatrix}.\n$$\n\n3. Ein Normalenvektor ist\n$$\n\\vec n = \\begin{pmatrix}1\\\\1\\\\1\\end{pmatrix},\\qquad |\\vec n| = \\sqrt3.\n$$\nDamit lautet die Hessesche Normalenform\n$$\n\\frac{1}{\\sqrt3}(x_1+x_2+x_3-9)=0\n$$\noder äquivalent\n$$\n\\frac{1}{\\sqrt3}(x_1+x_2+x_3)=\\frac{9}{\\sqrt3}.\n$$\n\n4. Die Ebene schneidet die Koordinatenachsen bei $(9,0,0)$, $(0,9,0)$ und $(0,0,9)$. Im Quader sind wegen der Begrenzungen $x_1\\le 6$, $x_2\\le 4$, $x_3\\le 3$ nur Teilstücke der Ebene sichtbar. Die Ebene trifft mehrere Seitenflächen des Quaders; dadurch entsteht eine viereckige Schnittfigur. Die Achsenabschnittsform zeigt, dass kein vollständiger Achsenabschnitt innerhalb des Quaders liegt, daher ist die Schnittfigur kein Dreieck.",
@@ -14034,7 +14015,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "In einer Region leben zu Beginn eines Jahres $10{,}000$ Personen in Stadt A und $8{,}000$ Personen in Stadt B. Von Jahr zu Jahr ziehen $8\\,$% der Bevölkerung von A nach B und $5\\,$% der Bevölkerung von B nach A.\n\n1. Stellen Sie eine Übergangsmatrix $M$ auf, die die Verteilung der Bevölkerung von einem Jahr zum nächsten beschreibt.\n2. Berechnen Sie die Bevölkerungsverteilung nach einem Jahr und nach zwei Jahren.\n3. Untersuchen Sie eine stationäre Verteilung $\\vec v$ mit $M\\vec v = \\vec v$ und insgesamt $18{,}000$ Personen.\n4. Erläutern Sie die Bedeutung der stationären Verteilung im gegebenen Kontext.",
         "solutionContent": "1. Mit der Reihenfolge $(A,B)$ gilt:\n- In A bleiben $92\\,$% und aus B kommen $5\\,$% nach A.\n- In B bleiben $95\\,$% und aus A wechseln $8\\,$% nach B.\n\nAlso ist\n$$\nM = \\begin{pmatrix}0.92 & 0.05\\\\ 0.08 & 0.95\\end{pmatrix}.\n$$\n\n2. Anfangsvektor:\n$$\n\\vec x_0 = \\begin{pmatrix}10000\\\\8000\\end{pmatrix}.\n$$\nNach einem Jahr:\n$$\n\\vec x_1 = M\\vec x_0 = \\begin{pmatrix}0.92 & 0.05\\\\ 0.08 & 0.95\\end{pmatrix}\\begin{pmatrix}10000\\\\8000\\end{pmatrix} = \\begin{pmatrix}9600\\\\8400\\end{pmatrix}.\n$$\nNach zwei Jahren:\n$$\n\\vec x_2 = M\\vec x_1 = \\begin{pmatrix}0.92 & 0.05\\\\ 0.08 & 0.95\\end{pmatrix}\\begin{pmatrix}9600\\\\8400\\end{pmatrix} = \\begin{pmatrix}9252\\\\8748\\end{pmatrix}.\n$$\n\n3. Für die stationäre Verteilung gilt\n$$\nM\\vec v = \\vec v,\\qquad v_A+v_B=18000.\n$$\nAus der ersten Zeile folgt\n$$\n0.92v_A + 0.05v_B = v_A \\Rightarrow -0.08v_A + 0.05v_B = 0.\n$$\nAlso\n$$\n0.05v_B = 0.08v_A \\Rightarrow v_B = 1.6v_A.\n$$\nMit $v_A+v_B=18000$ folgt\n$$\n2.6v_A = 18000 \\Rightarrow v_A \\approx 6923.08.\n$$\nDaraus ergibt sich\n$$\nv_B \\approx 11076.92.\n$$\n\n4. Die stationäre Verteilung beschreibt den langfristigen Zustand, auf den sich die Bevölkerungszahlen bei unveränderten Übergangsraten zubewegen. Langfristig leben also etwa $6923$ Personen in A und $11077$ Personen in B.",
@@ -14101,7 +14081,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Gegeben ist die lineare Abbildung mit der Matrix\n$$\nA = \\begin{pmatrix}2 & 1\\\\ 0 & 1\\end{pmatrix}.\n$$\nAußerdem sei das Dreieck mit den Eckpunkten\n$$\nP(0\\mid0),\\ Q(1\\mid0),\\ R(0\\mid2)\n$$\ngegeben.\n\n1. Bestimmen Sie die Bildpunkte $P'$, $Q'$ und $R'$ unter der Abbildung $A$.\n2. Beschreiben Sie, wie sich das Dreieck durch die Abbildung verändert.\n3. Untersuchen Sie, ob der Vektor\n$$\n\\vec u = \\begin{pmatrix}1\\\\0\\end{pmatrix}\n$$\nein Eigenvektor von $A$ ist.\n4. Die Matrix\n$$\nB = \\begin{pmatrix}1 & 0\\\\ 0 & 0\\end{pmatrix}\n$$\nbeschreibt eine Projektion. Erläutern Sie die geometrische Wirkung von $B$ und bestimmen Sie $B\\cdot R$.",
         "solutionContent": "1. Es gilt\n$$\nA\\cdot P = \\begin{pmatrix}2 & 1\\\\0 & 1\\end{pmatrix}\\begin{pmatrix}0\\\\0\\end{pmatrix} = \\begin{pmatrix}0\\\\0\\end{pmatrix},\n$$\n$$\nA\\cdot Q = \\begin{pmatrix}2 & 1\\\\0 & 1\\end{pmatrix}\\begin{pmatrix}1\\\\0\\end{pmatrix} = \\begin{pmatrix}2\\\\0\\end{pmatrix},\n$$\n$$\nA\\cdot R = \\begin{pmatrix}2 & 1\\\\0 & 1\\end{pmatrix}\\begin{pmatrix}0\\\\2\\end{pmatrix} = \\begin{pmatrix}2\\\\2\\end{pmatrix}.\n$$\nAlso sind\n$$\nP'(0\\mid0),\\ Q'(2\\mid0),\\ R'(2\\mid2).\n$$\n\n2. Der Punkt $P$ bleibt fest. Der Punkt $Q$ wird in $x$-Richtung gestreckt, und $R$ wird sowohl verschoben als auch gestreckt. Das ursprüngliche Dreieck wird zu einem schiefen Dreieck; die Abbildung enthält also eine Scherung kombiniert mit einer Streckung.\n\n3. Für\n$$\n\\vec u = \\begin{pmatrix}1\\\\0\\end{pmatrix}\n$$\nergibt sich\n$$\nA\\vec u = \\begin{pmatrix}2\\\\0\\end{pmatrix} = 2\\begin{pmatrix}1\\\\0\\end{pmatrix} = 2\\vec u.\n$$\nDamit ist $\\vec u$ ein Eigenvektor zum Eigenwert $2$.\n\n4. Die Matrix\n$$\nB = \\begin{pmatrix}1 & 0\\\\0 & 0\\end{pmatrix}\n$$\nprojiziert jeden Punkt auf die $x$-Achse, weil die zweite Koordinate auf $0$ gesetzt wird. Für den Punkt $R$ gilt\n$$\nB\\cdot R = \\begin{pmatrix}1 & 0\\\\0 & 0\\end{pmatrix}\\begin{pmatrix}0\\\\2\\end{pmatrix} = \\begin{pmatrix}0\\\\0\\end{pmatrix}.\n$$",
@@ -14165,8 +14144,7 @@
         "04f4a371-8637-5415-983c-84850fa0f96e",
         "aec93301-9262-5aa5-bbd4-e0ab9d9999fe"
       ],
-      "examples": [],
-      "sourceRef": null
+      "examples": []
     },
     {
       "id": "360325a7-0093-5a3a-9782-b34d25a35eb1",
@@ -14199,7 +14177,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Fuer ein Forschungscamp werden $3$ Plaetze unter $20$ Bewerberinnen und Bewerbern verlost. Darunter sind $8$ Personen aus dem Leistungskurs Mathematik und $12$ aus anderen Kursen.\n\n1. Beschreiben Sie das Ziehen ohne Zuruecklegen mit einem geeigneten Modell und berechnen Sie die Wahrscheinlichkeit, dass genau zwei der drei ausgewaehlten Personen aus dem Leistungskurs Mathematik stammen.\n2. Eine Schuelerin vereinfacht das Experiment zu drei Ziehungen mit Zuruecklegen und verwendet ein Binomialmodell mit $p=0{,}4$. Berechnen Sie in diesem Modell ebenfalls die Wahrscheinlichkeit fuer genau zwei Leistungskurs-Personen.\n3. Vergleichen Sie beide Ergebnisse und beurteilen Sie, welches Modell die reale Situation besser beschreibt.\n4. Erlaeutern Sie, warum die Binomialmodellierung bei einer sehr grossen Grundgesamtheit mit demselben Anteil von $40\\,$% deutlich besser geeignet ist.",
         "solutionContent": "1. Da ohne Zuruecklegen gezogen wird, ist die hypergeometrische Modellierung passend. Fuer genau zwei Leistungskurs-Personen gilt\n$$\nP(X=2)=\\frac{\\binom{8}{2}\\binom{12}{1}}{\\binom{20}{3}}=\\frac{28\\cdot 12}{1140}\\approx 0{,}2947.\n$$\n\n2. Im Binomialmodell mit $n=3$ und $p=0{,}4$ ergibt sich\n$$\nP(Y=2)=\\binom{3}{2}\\cdot 0{,}4^2\\cdot 0{,}6=3\\cdot 0{,}16\\cdot 0{,}6=0{,}288.\n$$\n\n3. Beide Werte liegen nah beieinander, unterscheiden sich aber leicht. Das reale Ziehen ohne Zuruecklegen wird durch das hypergeometrische Modell besser beschrieben, weil sich die Wahrscheinlichkeiten nach jeder Ziehung veraendern.\n\n4. Bei einer sehr grossen Grundgesamtheit aendert sich der Anteil von Leistungskurs-Personen durch eine einzelne Ziehung kaum. Dann sind die Ziehungen nahezu unabhaengig, sodass die Binomialverteilung eine gute Approximation liefert.",
@@ -14266,7 +14243,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "In einem Versandzentrum kommen erfahrungsgemaess $6\\,$% aller Sendungen verspaetet an. An einem Tag werden $250$ Sendungen betrachtet. Die Zufallsvariable $X$ beschreibt die Anzahl der verspaeteten Sendungen.\n\n1. Begruenden Sie ein geeignetes Modell fuer $X$ und bestimmen Sie Erwartungswert und Standardabweichung.\n2. Berechnen Sie mit der Normalapproximation und Stetigkeitskorrektur die Wahrscheinlichkeit, dass zwischen $10$ und $20$ Sendungen verspaetet ankommen.\n3. Bestimmen Sie naeherungsweise die Wahrscheinlichkeit, dass mehr als $25$ Sendungen verspaetet sind.\n4. Beurteilen Sie, ob ein Tageswert von mehr als $25$ verspaeteten Sendungen als auffaellig gelten kann.",
         "solutionContent": "1. Es ist ein Binomialmodell mit\n$$\nX\\sim B(250;0{,}06)\n$$\nangemessen. Es gilt\n$$\n\\mu=np=250\\cdot 0{,}06=15,\n$$\n$$\n\\sigma=\\sqrt{np(1-p)}=\\sqrt{250\\cdot 0{,}06\\cdot 0{,}94}=\\sqrt{14{,}1}\\approx 3{,}76.\n$$\n\n2. Mit Stetigkeitskorrektur wird\n$$\nP(10\\le X\\le 20)\\approx P(9{,}5\\le Y\\le 20{,}5)\n$$\nmit $Y\\sim N(15;3{,}76)$. Standardisiert ergibt sich\n$$\nz_1=\\frac{9{,}5-15}{3{,}76}\\approx -1{,}46,\\qquad z_2=\\frac{20{,}5-15}{3{,}76}\\approx 1{,}46.\n$$\nDamit folgt\n$$\nP(10\\le X\\le 20)\\approx \\Phi(1{,}46)-\\Phi(-1{,}46)\\approx 0{,}857.\n$$\n\n3. Fuer mehr als $25$ verspaetete Sendungen gilt mit Stetigkeitskorrektur\n$$\nP(X>25)\\approx P(Y>25{,}5).\n$$\nStandardisieren liefert\n$$\nz=\\frac{25{,}5-15}{3{,}76}\\approx 2{,}79.\n$$\nAlso\n$$\nP(X>25)\\approx 1-\\Phi(2{,}79)\\approx 0{,}0026.\n$$\n\n4. Ein Tageswert von mehr als $25$ verspaeteten Sendungen ist sehr unwahrscheinlich. Mit einer Wahrscheinlichkeit von nur etwa $0{,}26\\,$% kann ein solcher Wert als deutlich auffaellig beurteilt werden.",
@@ -14329,7 +14305,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Ein Hersteller behauptet, dass höchstens $2\\,$% aller produzierten Sensoren fehlerhaft sind. Zur Überprüfung wird eine Stichprobe von $n=400$ Sensoren untersucht; dabei werden $14$ fehlerhafte Sensoren gefunden.\n\n1. Formulieren Sie eine passende Nullhypothese und eine geeignete Alternativhypothese.\n2. Bestimmen Sie für einen einseitigen Test zum Signifikanzniveau $5\\,$% mit der Normalapproximation eine Entscheidungsregel.\n3. Treffen Sie auf Grundlage der Stichprobe eine Testentscheidung.\n4. Erläutern Sie die Bedeutung eines Fehlers 1. Art im gegebenen Kontext.",
         "solutionContent": "1. Geeignet ist\n$$\nH_0: p \\le 0{,}02, \\qquad H_1: p > 0{,}02.\n$$\nFür die Rechnung wird unter $H_0$ mit $p_0=0{,}02$ gearbeitet.\n\n2. Unter $H_0$ gilt näherungsweise\n$$\n\\mu = np_0 = 8, \\qquad \\sigma = \\sqrt{np_0(1-p_0)} = \\sqrt{7{,}84} \\approx 2{,}8.\n$$\nFür einen einseitigen Test mit $\\alpha=0{,}05$ wird der kritische $z$-Wert $1{,}645$ verwendet:\n$$\nk \\approx \\mu + 1{,}645\\sigma \\approx 8 + 1{,}645\\cdot 2{,}8 \\approx 12{,}6.\n$$\nMit Stetigkeitskorrektur ist eine sinnvolle Entscheidungsregel:\n$$\n\\text{Verwerfe } H_0 \\text{ für } X \\ge 13.\n$$\n\n3. Beobachtet wurde $X=14$. Da $14 \\ge 13$, wird $H_0$ verworfen. Die Stichprobe spricht also dafür, dass die Fehlerquote größer als $2\\,$% ist.\n\n4. Ein Fehler 1. Art liegt vor, wenn $H_0$ verworfen wird, obwohl die wahre Fehlerquote tatsächlich höchstens $2\\,$% beträgt. Im Kontext würde der Hersteller also zu Unrecht als qualitativ schlechter eingestuft.",
@@ -14393,7 +14368,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Bei einer Befragung von $500$ Schuelerinnen und Schuelern geben $315$ an, regelmaessig mit dem Fahrrad zur Schule zu fahren.\n\n1. Bestimmen Sie den relativen Stichprobenanteil.\n2. Geben Sie ein $95\\,$%-Konfidenzintervall fuer den unbekannten Anteil $p$ aller Schuelerinnen und Schueler an, die regelmaessig mit dem Fahrrad zur Schule fahren.\n3. Beurteilen Sie mithilfe des Intervalls die Aussage: \"Mindestens $60\\,$% aller Schuelerinnen und Schueler fahren regelmaessig mit dem Fahrrad zur Schule.\"\n4. Wie gross muss eine neue Stichprobe mindestens sein, damit der Stichprobenfehler bei einem $95\\,$%-Konfidenzintervall hoechstens $0{,}03$ betraegt, wenn man weiter mit dem beobachteten Anteil rechnet?",
         "solutionContent": "1. Der relative Stichprobenanteil ist\n$$\n\\hat p=\\frac{315}{500}=0{,}63.\n$$\n\n2. Fuer ein $95\\,$%-Konfidenzintervall gilt naeherungsweise\n$$\n\\hat p\\pm 1{,}96\\sqrt{\\frac{\\hat p(1-\\hat p)}{n}}.\n$$\nMit $\\hat p=0{,}63$ und $n=500$ ergibt sich\n$$\n\\sqrt{\\frac{0{,}63\\cdot 0{,}37}{500}}\\approx 0{,}0214,\n$$\nalso der Fehlerterm\n$$\n1{,}96\\cdot 0{,}0214\\approx 0{,}042.\n$$\nDamit lautet das Intervall naeherungsweise\n$$\n[0{,}588;\\,0{,}672].\n$$\n\n3. Der Wert $0{,}60$ liegt im Konfidenzintervall. Die Aussage \"mindestens $60\\,$%\" ist also mit den Daten vereinbar, aber durch die Stichprobe nicht eindeutig gesichert.\n\n4. Gesucht ist $n$ mit\n$$\n1{,}96\\sqrt{\\frac{0{,}63\\cdot 0{,}37}{n}}\\le 0{,}03.\n$$\nUmformen liefert\n$$\nn\\ge 0{,}63\\cdot 0{,}37\\left(\\frac{1{,}96}{0{,}03}\\right)^2\\approx 994{,}95.\n$$\nAlso werden mindestens\n$$\nn=995\n$$\nPersonen benoetigt.",
@@ -14462,7 +14436,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "In einem Callcenter wird in $100$ gleich langen Zeitintervallen erfasst, wie viele Anrufe eingehen. Die beobachteten Haeufigkeiten lauten:\n\n- $0$ Anrufe: $12$\n- $1$ Anruf: $29$\n- $2$ Anrufe: $31$\n- $3$ Anrufe: $17$\n- mindestens $4$ Anrufe: $11$\n\nDie Leitung vermutet, dass die Anzahl der Anrufe pro Intervall durch eine Poisson-Verteilung mit dem Parameter $\\lambda=2$ beschrieben werden kann.\n\n1. Berechnen Sie die erwarteten Haeufigkeiten fuer $0$, $1$, $2$, $3$ und mindestens $4$ Anrufe in $100$ Intervallen.\n2. Vergleichen Sie Beobachtung und Modell und beurteilen Sie, ob die Poisson-Verteilung hier als sinnvolles Modell gelten kann.\n3. Bestimmen Sie die Wahrscheinlichkeit, dass in drei aufeinanderfolgenden Intervallen zusammen mindestens $8$ Anrufe eingehen.\n4. Erlaeutern Sie, wie eine Simulation helfen kann, die Modellannahme weiter zu ueberpruefen.",
         "solutionContent": "1. Fuer $X\\sim \\operatorname{Pois}(2)$ gilt\n$$\nP(X=k)=\\frac{2^k\\mathrm e^{-2}}{k!}.\n$$\nDaraus folgen naeherungsweise\n$$\nP(X=0)=\\mathrm e^{-2}\\approx 0{,}1353,\\quad P(X=1)=2\\mathrm e^{-2}\\approx 0{,}2707,\n$$\n$$\nP(X=2)=\\frac{2^2}{2!}\\mathrm e^{-2}\\approx 0{,}2707,\\quad P(X=3)=\\frac{2^3}{3!}\\mathrm e^{-2}\\approx 0{,}1804.\n$$\nSomit ist\n$$\nP(X\\ge 4)=1-(0{,}1353+0{,}2707+0{,}2707+0{,}1804)\\approx 0{,}1429.\n$$\nFuer $100$ Intervalle ergeben sich die erwarteten Haeufigkeiten:\n$$\n13{,}5;\\ 27{,}1;\\ 27{,}1;\\ 18{,}0;\\ 14{,}3.\n$$\n\n2. Die beobachteten Werte $12,29,31,17,11$ liegen insgesamt recht nah an den erwarteten Haeufigkeiten. Es gibt kleinere Abweichungen, aber keine deutliche systematische Verletzung. Die Poisson-Verteilung kann deshalb als sinnvolles Modell angesehen werden.\n\n3. Die Summe von drei unabhaengigen Poisson-verteilten Zufallsvariablen mit Parameter $2$ ist wieder poissonverteilt mit Parameter $6$. Fuer $Y\\sim \\operatorname{Pois}(6)$ gilt daher\n$$\nP(Y\\ge 8)=1-P(Y\\le 7)\\approx 0{,}256.\n$$\nDie Wahrscheinlichkeit betraegt also etwa $25{,}6\\,$%.\n\n4. Man kann sehr viele Serien von je $100$ Intervallen mit dem Poisson-Modell simulieren und dabei vergleichen, wie stark die simulierten Haeufigkeiten typischerweise streuen. Liegen die realen Daten im Bereich dieser typischen Schwankungen, stuetzt das die Modellannahme.",
@@ -14524,8 +14497,7 @@
         "c053c6e0-0c6e-5040-8cbc-9876f7291a10",
         "d793d007-e320-5eb0-b3df-87c145366e4a"
       ],
-      "examples": [],
-      "sourceRef": null
+      "examples": []
     },
     {
       "id": "2ed36182-404a-5d37-8aa5-ecc7bb19f354",
@@ -14559,7 +14531,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Gegeben ist fuer $a \\in \\mathbb R$ die Funktionenschar\n$$\nf_a(x)=x^2-2ax+2a.\n$$\n\n1. Bestimmen Sie den Scheitelpunkt $S_a$ des Graphen von $f_a$ in Abhaengigkeit von $a$.\n2. Weisen Sie nach, dass die Scheitelpunkte aller Graphen auf einer gemeinsamen Ortskurve liegen, und geben Sie deren Gleichung an.\n3. Untersuchen Sie in Abhaengigkeit von $a$, fuer welche Werte die Parabel keine reellen Nullstellen besitzt.\n4. Berechnen Sie fuer $a=3$ den Flaecheninhalt der von dem Graphen von $f_3$, der $x$-Achse und den Nullstellen eingeschlossenen Flaeche.",
         "solutionContent": "1. Durch quadratische Ergaenzung erhaelt man\n$$\nf_a(x)=x^2-2ax+2a=(x-a)^2-a^2+2a.\n$$\nDamit ist der Scheitelpunkt\n$$\nS_a=(a\\mid -a^2+2a).\n$$\n\n2. Fuer die Scheitelpunkte gilt $x=a$. Einsetzen in die $y$-Koordinate liefert\n$$\ny=-a^2+2a=-x^2+2x.\n$$\nDie Ortskurve der Scheitelpunkte ist also\n$$\ny=-x^2+2x.\n$$\n\n3. Die Funktion $f_a$ besitzt genau dann keine reellen Nullstellen, wenn die Diskriminante negativ ist:\n$$\n\\Delta=(-2a)^2-4\\cdot 1\\cdot 2a=4a^2-8a=4a(a-2).\n$$\nGesucht ist\n$$\n4a(a-2)<0.\n$$\nDas gilt fuer\n$$\n0<a<2.\n$$\n\n4. Fuer $a=3$ ist\n$$\nf_3(x)=x^2-6x+6=(x-3)^2-3.\n$$\nDie Nullstellen sind\n$$\nx_{1,2}=3\\pm \\sqrt{3}.\n$$\nZwischen diesen Nullstellen liegt der Graph unter der $x$-Achse. Der Flaecheninhalt ist daher\n$$\nA=\\int_{3-\\sqrt{3}}^{3+\\sqrt{3}} -f_3(x)\\,dx.\n$$\nMit $u=x-3$ wird\n$$\nA=\\int_{-\\sqrt{3}}^{\\sqrt{3}} (3-u^2)\\,du = \\left[3u-\\frac{u^3}{3}\\right]_{-\\sqrt{3}}^{\\sqrt{3}} = 4\\sqrt{3}.\n$$\nAlso gilt\n$$\nA=4\\sqrt{3}.\n$$",
@@ -14622,7 +14593,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Es sollen rechteckige Gehege mit dem Flaecheninhalt $36\\,\\mathrm{m}^2$ geplant werden. Unter allen moeglichen Rechtecken soll dasjenige mit dem kleinsten Umfang gefunden werden.\n\n1. Stellen Sie den Umfang $U$ in Abhaengigkeit von einer Seitenlaenge $x$ als Funktion dar.\n2. Bestimmen Sie mit einer Analysis-Methode das Rechteck mit minimalem Umfang.\n3. Loesen Sie dieselbe Aufgabe ein zweites Mal ohne Differentialrechnung, sondern mit einem passenden Ungleichungsargument.\n4. Vergleichen Sie beide Loesungsstrategien und beurteilen Sie, welche im gegebenen Kontext beziehungsweise in allgemeineren Situationen staerker ist.",
         "solutionContent": "1. Sei $x>0$ eine Seitenlaenge. Dann ist die andere Seitenlaenge wegen des Flaecheninhalts\n$$\ny=\\frac{36}{x}.\n$$\nDer Umfang lautet damit\n$$\nU(x)=2x+2\\cdot \\frac{36}{x}=2x+\\frac{72}{x}, \\qquad x>0.\n$$\n\n2. Mit der Ableitung\n$$\nU'(x)=2-\\frac{72}{x^2}\n$$\nfolgt aus $U'(x)=0$\n$$\n2=\\frac{72}{x^2} \\quad \\Rightarrow \\quad x^2=36 \\quad \\Rightarrow \\quad x=6.\n$$\nDann ist auch\n$$\ny=\\frac{36}{6}=6.\n$$\nMit\n$$\nU''(x)=\\frac{144}{x^3}>0\n$$\nfur $x>0$ liegt dort ein Minimum vor. Das gesuchte Rechteck ist also das Quadrat mit Seitenlaenge $6\\,\\mathrm m$ und Umfang\n$$\nU_{\\min}=24\\,\\mathrm m.\n$$\n\n3. Mit der Ungleichung vom arithmetischen und geometrischen Mittel gilt fuer $x>0$\n$$\nx+\\frac{36}{x} \\ge 2\\sqrt{x\\cdot \\frac{36}{x}}=2\\sqrt{36}=12.\n$$\nSomit folgt\n$$\nU(x)=2\\left(x+\\frac{36}{x}\\right)\\ge 24.\n$$\nGleichheit gilt genau dann, wenn\n$$\nx=\\frac{36}{x},\n$$\nalso bei $x=6$. Wieder ergibt sich das Quadrat als optimale Loesung.\n\n4. Im gegebenen Kontext fuehren beide Strategien sicher zum selben Ergebnis. Das Ungleichungsargument ist kuerzer und sehr elegant, wenn nur das Minimum gesucht wird und positive Groessen vorliegen. Die Analysis-Methode ist flexibler, weil sie auch bei komplizierteren Nebenbedingungen, anderen Zielfunktionen oder weiterfuehrenden Untersuchungen eingesetzt werden kann.",
@@ -14686,7 +14656,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Gegeben ist die Gleichung\n$$\nz^2 - 4z + 13 = 0\n$$\nmit $z \\in \\mathbb C$.\n\n1. Lösen Sie die Gleichung in $\\mathbb C$.\n2. Stellen Sie die beiden Lösungen in der Gaußschen Zahlenebene dar.\n3. Bestimmen Sie Betrag und ein Argument der Lösung mit positivem Imaginärteil.\n4. Die Multiplikation mit $i$ kann in $\\mathbb R^2$ als lineare Abbildung dargestellt werden. Geben Sie die zugehörige Matrix an und erläutern Sie deren geometrische Bedeutung.",
         "solutionContent": "1. Mit der Mitternachtsformel ergibt sich\n$$\nz = \\frac{4 \\pm \\sqrt{16-52}}{2} = \\frac{4 \\pm \\sqrt{-36}}{2} = 2 \\pm 3i.\n$$\n\n2. In der Gaußschen Zahlenebene entsprechen die Lösungen den Punkten\n$$\n(2\\mid 3) \\quad \\text{und} \\quad (2\\mid -3).\n$$\nSie liegen spiegelsymmetrisch zur reellen Achse.\n\n3. Für $z_1 = 2+3i$ gilt\n$$\n|z_1| = \\sqrt{2^2+3^2} = \\sqrt{13}.\n$$\nEin Argument ist\n$$\n\\varphi = \\arctan\\left(\\frac{3}{2}\\right).\n$$\nNumerisch erhält man ungefähr $\\varphi \\approx 0{,}983$ rad.\n\n4. Die Multiplikation mit $i$ bildet\n$$\n(x,y) \\mapsto (-y,x)\n$$\nab. Die zugehörige Matrix ist\n$$\nA = \\begin{pmatrix}0 & -1\\\\ 1 & 0\\end{pmatrix}.\n$$\nGeometrisch beschreibt diese Matrix eine Drehung um $90^\\circ$ gegen den Uhrzeigersinn um den Ursprung.",
@@ -14756,8 +14725,7 @@
         "3dc3212c-4bf4-5fbd-8c1d-628dbbca8a58",
         "2f558a81-161f-5164-b16e-fc486b339140"
       ],
-      "examples": [],
-      "sourceRef": null
+      "examples": []
     },
     {
       "id": "bd3d4920-ee29-50cd-b6b0-9cf9bc55ca58",
@@ -14804,7 +14772,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Sei $f$ eine gerade Funktion mit Definitionsmenge $\\mathbb R$.\n\n1. Begruenden Sie, dass die Funktion $g(x)=2f(x)-3$ ebenfalls gerade ist.\n2. Untersuchen Sie die Aussage: \"Die Funktion $h(x)=f(x-1)$ ist fuer jede gerade Funktion $f$ wieder gerade.\" Widerlegen oder beweisen Sie die Aussage.\n3. Formulieren Sie eine fachlich korrekte Ersatz-Aussage zu $h(x)=f(x-1)$.\n4. Begruenden Sie Ihre Ersatz-Aussage allgemein.",
         "solutionContent": "1. Da $f$ gerade ist, gilt fuer alle $x\\in \\mathbb R$\n$$\nf(-x)=f(x).\n$$\nDamit folgt\n$$\ng(-x)=2f(-x)-3=2f(x)-3=g(x).\n$$\nAlso ist $g$ gerade.\n\n2. Die Aussage ist falsch. Ein Gegenbeispiel ist $f(x)=x^2$. Dann gilt\n$$\nh(x)=f(x-1)=(x-1)^2.\n$$\nEs ist\n$$\nh(-x)=(-x-1)^2=(x+1)^2 \\neq (x-1)^2=h(x)\n$$\nzum Beispiel fuer $x=1$. Also ist $h$ im Allgemeinen nicht gerade.\n\n3. Eine korrekte Ersatz-Aussage lautet: Der Graph von $h(x)=f(x-1)$ ist achsensymmetrisch zur Geraden $x=1$.\n\n4. Setzt man $x=1+t$, so erhaelt man\n$$\nh(1+t)=f(t), \\qquad h(1-t)=f(-t).\n$$\nDa $f$ gerade ist, gilt $f(-t)=f(t)$. Also folgt\n$$\nh(1-t)=h(1+t).\n$$\nDamit sind die Funktionswerte in gleichem Abstand links und rechts von $x=1$ gleich. Genau das bedeutet Achsensymmetrie zur Geraden $x=1$.",
@@ -14875,7 +14842,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Gesucht sind alle Paare positiver ganzer Zahlen $(a,b)$ mit\n$$\nab=2a+2b.\n$$\n\n1. Loesen Sie die Aufgabe mit einer systematischen Strategie.\n2. Bestimmen Sie die Loesungsmenge ein zweites Mal durch geeignetes Umformen der Gleichung.\n3. Begruenden Sie, warum damit alle Loesungen erfasst sind.\n4. Beurteilen Sie, welche der beiden Strategien sich leichter auf aehnliche Gleichungen wie $ab=3a+3b$ uebertragen laesst.",
         "solutionContent": "1. Eine systematische Strategie ist, die Gleichung nach moeglichen Teilern zu untersuchen. Zweckmaessiger ist aber direkt das Umformen.\n\n2. Aus\n$$\nab=2a+2b\n$$\nfolgt durch Addition von $4$ auf beiden Seiten\n$$\nab-2a-2b+4=4.\n$$\nDamit erhaelt man\n$$\n(a-2)(b-2)=4.\n$$\nDa $a$ und $b$ positive ganze Zahlen sind, muessen auch $a-2$ und $b-2$ positive Teiler von $4$ sein. Die moeglichen Teilerpaare sind\n$$\n(1,4), (2,2), (4,1).\n$$\nDaraus folgen die Loesungen\n$$\n(a,b)=(3,6), (4,4), (6,3).\n$$\n\n3. Weitere Loesungen gibt es nicht, weil die Zahl $4$ nur die genannten positiven Teilerpaare besitzt. Jedes davon fuehrt genau auf ein Zahlenpaar $(a,b)$ der Ausgangsgleichung.\n\n4. Die Faktorisierungsstrategie ist fuer aehnliche Gleichungen besonders stark, weil sie das Problem auf eine endliche Anzahl von Teilerpaaren reduziert. Reines Probieren kann zwar ebenfalls zum Ziel fuehren, ist aber weniger transparent und bei groesseren Zahlen deutlich unpraktischer.",
@@ -14944,7 +14910,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Eine Schule plant fuer einen Projekttag ein Mittagessen und vergleicht zwei Caterer.\n\n- Anbieter A verlangt eine Grundgebuehr von $250\\,\\mathrm{EUR}$ und zusaetzlich $4{,}20\\,\\mathrm{EUR}$ pro Essen.\n- Anbieter B verlangt eine Grundgebuehr von $80\\,\\mathrm{EUR}$ und zusaetzlich $5{,}10\\,\\mathrm{EUR}$ pro Essen.\n\n1. Stellen Sie fuer beide Anbieter Kostenfunktionen in Abhaengigkeit von der Anzahl $x$ der Essen auf.\n2. Bestimmen Sie diejenige Teilnehmerzahl, ab der Anbieter A guenstiger ist als Anbieter B.\n3. Entscheiden Sie fuer $120$ erwartete Essen, welcher Anbieter zu waehlen ist.\n4. Beurteilen Sie die Aussagekraft des Modells. Nennen Sie mindestens zwei Aspekte der Realitaet, die im Modell nicht oder nur unvollstaendig beruecksichtigt werden.",
         "solutionContent": "1. Die Kostenfunktionen lauten\n$$\nK_A(x)=250+4{,}2x,\n$$\n$$\nK_B(x)=80+5{,}1x.\n$$\n\n2. Gesucht ist der Schnittpunkt:\n$$\n250+4{,}2x=80+5{,}1x.\n$$\nDaraus folgt\n$$\n170=0{,}9x \\quad \\Rightarrow \\quad x\\approx 188{,}9.\n$$\nAb etwa $189$ Essen ist Anbieter A guenstiger als Anbieter B.\n\n3. Fuer $x=120$ gilt\n$$\nK_A(120)=250+4{,}2\\cdot 120=754,\n$$\n$$\nK_B(120)=80+5{,}1\\cdot 120=692.\n$$\nAlso ist bei $120$ Essen Anbieter B die guenstigere Wahl.\n\n4. Das Modell betrachtet nur lineare Kosten. Nicht beruecksichtigt werden zum Beispiel Qualitaetsunterschiede, moegliche Rabatte bei grossen Mengen, Lieferkosten, Ausfallrisiken, Restessen oder Unsicherheit bei der tatsaechlichen Teilnehmerzahl. Daher ist das Modell eine sinnvolle erste Orientierung, aber keine vollstaendige Entscheidungsgrundlage.",
@@ -15016,7 +14981,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Gegeben ist die Funktion\n$$\np(x)=-0{,}5x^2+12x.\n$$\n\n1. Erstellen Sie eine Wertetabelle fuer $x=0,4,8,12,16,20,24$.\n2. Bestimmen Sie mit Hilfe des Terms die Nullstellen und den Scheitelpunkt des Graphen.\n3. Erlaeutern Sie, welche Informationen der Term, die Wertetabelle und ein Schaubild jeweils besonders gut liefern.\n4. Eine Schuelerin sagt: \"Zwischen $x=6$ und $x=18$ verhaelt sich die Funktion fast linear.\" Beurteilen Sie diese Aussage mithilfe der verschiedenen Darstellungen.",
         "solutionContent": "1. Einsetzen liefert die Tabelle\n$$\n\\begin{array}{c|ccccccc}\nx & 0 & 4 & 8 & 12 & 16 & 20 & 24\\\\ \\hline\np(x) & 0 & 40 & 64 & 72 & 64 & 40 & 0\n\\end{array}\n$$\n\n2. Fuer die Nullstellen gilt\n$$\np(x)=-0{,}5x^2+12x=x(-0{,}5x+12).\n$$\nAlso sind die Nullstellen\n$$\nx_1=0, \\qquad x_2=24.\n$$\nDer Scheitel liegt in der Mitte zwischen den Nullstellen bei\n$$\nx_S=12.\n$$\nDann ist\n$$\np(12)=72.\n$$\nSomit lautet der Scheitelpunkt\n$$\nS(12\\mid 72).\n$$\n\n3. Der Term erlaubt exakte Rechnungen und allgemeine Aussagen. Die Wertetabelle zeigt schnell einzelne Werte und Trends. Ein Schaubild macht den gesamten Verlauf anschaulich und erlaubt schnelles Ablesen, ist aber meist weniger exakt.\n\n4. Die Aussage ist nur eingeschraenkt richtig. Im mittleren Bereich wirkt der Graph optisch flacher als an den Raendern, aber der Term zeigt klar, dass es sich um eine quadratische Funktion handelt. Auch die Tabelle zeigt keine konstante Aenderungsrate: Von $x=8$ nach $12$ steigt der Wert um $8$, von $12$ nach $16$ faellt er um $8$. Eine echte lineare Entwicklung liegt also nicht vor.",
@@ -15088,7 +15052,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Untersucht wird die Gleichung\n$$\n\\ln(x)=2-x\n$$\nmit $x>0$.\n\n1. Begruenden Sie, dass die Gleichung genau eine Loesung besitzt.\n2. Führen Sie fuer die Funktion $F(x)=\\ln(x)+x-2$ einen Newton-Schritt mit dem Startwert $x_0=2$ aus.\n3. Bestimmen Sie die Loesung naeherungsweise auf drei Dezimalstellen.\n4. Erlaeutern Sie, wie ein graphisches Werkzeug bei der Bearbeitung helfen kann und welche Grenzen eine rein graphische Ablesung hat.",
         "solutionContent": "1. Es wird\n$$\nF(x)=\\ln(x)+x-2\n$$\nbetrachtet. Fuer $x>0$ gilt\n$$\nF'(x)=\\frac{1}{x}+1>0.\n$$\nAlso ist $F$ streng monoton steigend und kann daher hoechstens eine Nullstelle besitzen. Da\n$$\nF(1)=-1<0 \\quad \\text{und} \\quad F(2)=\\ln(2)>0,\n$$\nliegt nach dem Zwischenwertsatz mindestens eine Nullstelle im Intervall $(1,2)$. Insgesamt gibt es also genau eine Loesung.\n\n2. Fuer das Newton-Verfahren gilt\n$$\nx_{n+1}=x_n-\\frac{F(x_n)}{F'(x_n)}.\n$$\nMit $x_0=2$ ist\n$$\nF(2)=\\ln(2), \\qquad F'(2)=\\frac{1}{2}+1=1{,}5.\n$$\nDaher folgt\n$$\nx_1=2-\\frac{\\ln(2)}{1{,}5}\\approx 2-0{,}462=1{,}538.\n$$\n\n3. Numerisch ergibt sich die eindeutige Loesung zu\n$$\nx\\approx 1{,}557.\n$$\n\n4. Ein graphisches Werkzeug kann schnell zeigen, dass sich die Graphen von $y=\\ln(x)$ und $y=2-x$ genau einmal schneiden und wo die Loesung ungefaehr liegt. Eine rein graphische Ablesung ist aber ungenau und haengt von Fensterwahl und Aufloesung ab. Fuer die exakte Begruendung der Eindeutigkeit und fuer verlaessliche Naeherungswerte sind formale Verfahren wie Monotonieargumente und Newton-Verfahren notwendig.",
@@ -15160,7 +15123,6 @@
       ],
       "contains": [],
       "examples": [],
-      "sourceRef": null,
       "examData": {
         "taskContent": "Bei einer Schulbefragung geben $315$ von $500$ Schuelerinnen und Schuelern an, regelmaessig mit dem Fahrrad zur Schule zu fahren.\n\n1. Formulieren Sie das Ergebnis mathematisch praezise mit Stichprobenanteil und einem geeigneten $95\\,$%-Konfidenzintervall.\n2. Formulieren Sie dasselbe Ergebnis in zwei bis drei Saetzen so, dass die Schulleitung ohne mathematischen Spezialwortschatz es gut versteht.\n3. Eine Rueckfrage lautet: \"Heisst das, dass sicher genau $63\\,$% aller Schuelerinnen und Schueler mit dem Fahrrad kommen?\" Antworten Sie fachlich korrekt und adressatengerecht.\n4. Verbessern Sie die missverstaendliche Aussage: \"Fast alle Schueler fahren mit dem Fahrrad.\"",
         "solutionContent": "1. Der Stichprobenanteil ist\n$$\n\\hat p=\\frac{315}{500}=0{,}63.\n$$\nEin naeherungsweises $95\\,$%-Konfidenzintervall lautet\n$$\n0{,}63 \\pm 1{,}96\\sqrt{\\frac{0{,}63\\cdot 0{,}37}{500}} \\approx 0{,}63 \\pm 0{,}042.\n$$\nDamit ergibt sich\n$$\n[0{,}588;\\,0{,}672].\n$$\n\n2. Eine adressatengerechte Formulierung fuer die Schulleitung kann lauten: \"In unserer Befragung fuhren rund 63 Prozent der befragten Schuelerinnen und Schueler regelmaessig mit dem Fahrrad zur Schule. Beruecksichtigt man die uebliche Unsicherheit einer Stichprobe, liegt der wahre Anteil wahrscheinlich irgendwo zwischen etwa 59 und 67 Prozent.\"\n\n3. Nein. Die 63 Prozent sind der beobachtete Anteil in der Stichprobe. Fuer alle Schuelerinnen und Schueler der Schule laesst sich nur ein plausibler Bereich angeben; deshalb spricht man von einem Intervall und nicht von einem exakt sicheren Wert.\n\n4. Eine bessere Formulierung ist zum Beispiel: \"Nach der Befragung kommt eine klare Mehrheit der Schuelerinnen und Schueler regelmaessig mit dem Fahrrad zur Schule; der wahre Anteil duerfte ungefaehr zwischen 59 und 67 Prozent liegen.\"",

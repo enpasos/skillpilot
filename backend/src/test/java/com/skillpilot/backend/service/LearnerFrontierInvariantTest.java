@@ -292,7 +292,7 @@ public class LearnerFrontierInvariantTest {
         Map<String, Double> effectivePrereqMastery = computeEffectivePrereqMastery(filteredGoals, masteryMap);
         Set<String> scope = computeScope(plannedIds, structuralGoals);
 
-        Set<String> frontier = new HashSet<>();
+        List<String> frontier = new ArrayList<>();
         for (LearningGoal goal : filteredGoals.values()) {
             if (!plannedIds.isEmpty() && !scope.contains(goal.getId())) {
                 continue;
@@ -327,7 +327,33 @@ public class LearnerFrontierInvariantTest {
             }
         }
 
-        return frontier;
+        if (frontier.size() > 20) {
+            List<String> atomic = frontier.stream()
+                    .filter(id -> {
+                        LearningGoal goal = filteredGoals.get(id);
+                        return goal != null && (goal.getContains() == null || goal.getContains().isEmpty());
+                    })
+                    .limit(20)
+                    .toList();
+            if (!atomic.isEmpty()) {
+                return new LinkedHashSet<>(atomic);
+            }
+
+            List<String> clusters = frontier.stream()
+                    .filter(id -> {
+                        LearningGoal goal = filteredGoals.get(id);
+                        return goal != null && goal.getContains() != null && !goal.getContains().isEmpty();
+                    })
+                    .limit(20)
+                    .toList();
+            if (!clusters.isEmpty()) {
+                return new LinkedHashSet<>(clusters);
+            }
+
+            return new LinkedHashSet<>(frontier.subList(0, Math.min(frontier.size(), 20)));
+        }
+
+        return new LinkedHashSet<>(frontier);
     }
 
     private static Snapshot loadSnapshot(String resourcePath) throws Exception {
