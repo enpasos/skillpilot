@@ -9,7 +9,7 @@ Design benchmark for atomic quality:
 ## Atomic Linking Standard (Mandatory)
 For every atomic goal (leaf node, i.e. no `contains` children):
 - `sourceRef`: primary concept source (deep link where possible).
-- `extendedData.sourceLinks`: structured source metadata list.
+- `resourceLinks`: canonical structured learning-resource list.
 
 Minimum link coverage per atomic goal:
 1. `concept` link (lecture notes, readings, core explanation).
@@ -23,18 +23,18 @@ Atomic decomposition requirements (copied from Hessen-style practice):
 - One atomic should be checkable in 1-3 concrete tasks.
 - Atomic nodes should form a short didactic chain with local prerequisites only.
 
-## Structured Link Schema (in `extendedData.sourceLinks`)
+## Structured Link Schema (in `resourceLinks`)
 Each entry should follow this shape:
 
 ```json
 {
-  "id": "ocw:18.01sc:limits:concept",
   "type": "concept",
   "title": "Limits and continuity notes",
   "url": "https://ocw.mit.edu/...",
   "resourceType": "lecture-notes",
+  "provider": "MIT OCW",
   "license": "CC-BY-NC-SA-4.0",
-  "checkedAt": "2026-03-01"
+  "sections": ["Session 1", "Session 2"]
 }
 ```
 
@@ -66,12 +66,11 @@ Per module:
 ## Quality Checks
 - URL is live and course-consistent (`ocw.mit.edu/courses/...`).
 - Link granularity is atomic-goal specific (not only course homepage).
-- IDs are stable and reusable across exports.
-- Duplicate links are deduplicated by `id`.
+- Duplicate links should be avoided; deduplicate primarily by URL during QA/runtime.
 - Atomic text quality check: no broad umbrella statements; action verb + measurable outcome required.
 
 ## Rollout Plan
-1. Add `extendedData.sourceLinks` to all atomic goals in top modules:
+1. Add canonical `resourceLinks` to all atomic goals in top modules:
    - 18.01SC, 18.02SC, 18.05, 18.06, 6.100L.
 2. Extend to 6.0002 and 6.006.
 3. Add module-level coverage report to `work_notes.md`.
@@ -85,3 +84,4 @@ Per module:
 
 ## Open Decisions
 - Whether link integrity should be checked in CI (head request) or manual QA only.
+- How long legacy `extendedData.sourceLinks` should remain accepted during migration.

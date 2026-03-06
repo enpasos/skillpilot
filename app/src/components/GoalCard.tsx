@@ -32,6 +32,10 @@ type GoalSourceLink = {
   title?: string
   url: string
   resourceType?: string
+  provider?: string
+  sections?: string[]
+  description?: string
+  lang?: string
   license?: string
 }
 
@@ -70,6 +74,27 @@ const extractLicenseFromTags = (tags?: string[]): string | undefined => {
 
 const normalize = (value?: string): string => (value ?? '').trim().toLowerCase()
 
+const mapRawLink = (entry: Record<string, unknown>): GoalSourceLink | null => {
+  const url = readString(entry.url)
+  if (!url) return null
+  const rawSections = Array.isArray(entry.sections) ? entry.sections : []
+  const sections = rawSections
+    .filter((value): value is string => typeof value === 'string')
+    .map((value) => value.trim())
+    .filter(Boolean)
+  return {
+    type: readString(entry.type),
+    title: readString(entry.title),
+    url,
+    resourceType: readString(entry.resourceType),
+    provider: readString(entry.provider),
+    sections: sections.length > 0 ? sections : undefined,
+    description: readString(entry.description),
+    lang: readString(entry.lang),
+    license: readString(entry.license),
+  }
+}
+
 const stripLegacyAttributionLines = (description: string | undefined, hasProvenance: boolean): string | undefined => {
   if (!description || !hasProvenance) return description
   const cleaned = description
@@ -98,24 +123,42 @@ const isLearningMaterialLink = (link: GoalSourceLink): boolean => {
 const extractSourceMetadata = (goal: Goal): { provenance: GoalProvenance; helpfulLinks: GoalSourceLink[] } => {
   const extended = asRecord(goal.extendedData)
   const provenanceRaw = asRecord(extended?.provenance)
-  const sourceLinksRaw = Array.isArray(extended?.sourceLinks) ? extended?.sourceLinks : []
+  const canonicalLinksRaw = Array.isArray(goal.resourceLinks) ? goal.resourceLinks : []
+  const legacySourceLinksRaw = Array.isArray(extended?.sourceLinks) ? extended?.sourceLinks : []
+  const oerContent = asRecord(goal.oerContent)
 
-  const rawLinksMapped: Array<GoalSourceLink | null> = sourceLinksRaw
+  const rawLinksMapped: Array<GoalSourceLink | null> = canonicalLinksRaw
     .map((entry) => asRecord(entry))
     .filter((entry): entry is Record<string, unknown> => Boolean(entry))
-    .map((entry) => {
-      const url = readString(entry.url)
-      if (!url) return null
-      const link: GoalSourceLink = {
-        type: readString(entry.type),
-        title: readString(entry.title),
-        url,
-        resourceType: readString(entry.resourceType),
-        license: readString(entry.license),
-      }
-      return link
-    })
-  const rawLinks: GoalSourceLink[] = rawLinksMapped.filter((entry): entry is GoalSourceLink => entry !== null)
+    .map(mapRawLink)
+
+  const legacyLinksMapped: Array<GoalSourceLink | null> = legacySourceLinksRaw
+    .map((entry) => asRecord(entry))
+    .filter((entry): entry is Record<string, unknown> => Boolean(entry))
+    .map(mapRawLink)
+
+  const oerLink = (() => {
+    const url = readString(oerContent?.link)
+    if (!url) return null
+    const rawSections = Array.isArray(oerContent?.sections) ? oerContent.sections : []
+    const sections = rawSections
+      .filter((value): value is string => typeof value === 'string')
+      .map((value) => value.trim())
+      .filter(Boolean)
+    const fallbackLink: GoalSourceLink = {
+      type: 'concept',
+      title: readString(oerContent?.source) ?? goal.title,
+      url,
+      resourceType: 'oer',
+      provider: readString(oerContent?.source),
+      sections: sections.length > 0 ? sections : undefined,
+      description: readString(oerContent?.description),
+    }
+    return fallbackLink
+  })()
+
+  const rawLinks: GoalSourceLink[] = [...rawLinksMapped, ...legacyLinksMapped, oerLink]
+    .filter((entry): entry is GoalSourceLink => entry !== null)
 
   const licenseLink = rawLinks.find((link) => link.type?.toLowerCase() === 'license')
 

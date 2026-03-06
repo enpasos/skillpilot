@@ -162,6 +162,24 @@ top level and per goal for future layers and exports.
 - Used by: not referenced in UI or backend code yet
 - Status: currently unused
 
+## Link model
+
+The project distinguishes two different metadata concerns at goal level:
+
+- `sourceRef` = the canonical provenance/source-of-truth reference for why the goal exists
+- `resourceLinks` = ordered helpful learning resources for Cockpit and AI tutors
+
+Concept note:
+
+- `docs/concept/curriculum-graph/source-and-resource-links.md`
+
+Design intent:
+
+- Keep provenance and helpful learning material separate.
+- Prefer a single canonical link list (`resourceLinks`) over ad-hoc per-project link fields.
+- Use cluster-level links for broad course pages, books, or module overviews.
+- Use atomic-goal links only for specific deep links that genuinely help with that exact goal.
+
 ### dimensionTags
 - Type: object
 - Example:
@@ -181,9 +199,70 @@ top level and per goal for future layers and exports.
 
 ### sourceRef
 - Type: string (optional)
-- Example: `KC2024, S.58, Q3.5`
-- Used by: not referenced in UI or backend code
-- Status: currently unused
+- Example: `https://ocw.mit.edu/courses/18-06-introduction-to-algorithms-spring-2020/` or `KC2024, S.58, Q3.5`
+- Used by:
+  - provenance display and API export in the backend learner state
+  - fallback canonical source reference for AI tutors
+- Status: used in backend/API; still only lightly surfaced in the current Cockpit UI
+- Notes:
+  - `sourceRef` should point to the primary provenance anchor when possible.
+  - Prefer a stable URL if one exists; otherwise use a concise citation string.
+  - `sourceRef` is not the place for a long list of helper resources.
+
+### resourceLinks
+- Type: array of resource-link objects (optional)
+- Example:
+```json
+[
+  {
+    "type": "concept",
+    "title": "Physik Libre: Ladung und Reibungselektrizitaet",
+    "url": "https://physikbuch.schule/electricity.html#ladung-und-reibungselektrizitaet",
+    "resourceType": "article",
+    "provider": "physikbuch.schule",
+    "sections": ["12.1 Ladung und Reibungselektrizitaet"]
+  },
+  {
+    "type": "practice",
+    "title": "MIT OCW Problem Set 3",
+    "url": "https://ocw.mit.edu/...",
+    "resourceType": "problem-set",
+    "provider": "MIT OCW"
+  }
+]
+```
+- Used by:
+  - backend AI/OpenAPI response field `resourceLinks`
+  - Cockpit goal detail cards (canonical field with legacy fallback)
+  - CI source-link coverage checks for MIT OCW landscapes
+- Status: canonical goal-level link field
+- Notes:
+  - Array order is meaningful and should express pedagogical priority.
+  - Keep the required shape minimal: `type`, `title`, `url`.
+  - Recommended `type` values: `overview`, `concept`, `practice`, `assessment`, `solution`, `reference`.
+  - Recommended `resourceType` values: `course-page`, `video`, `notes`, `article`, `simulation`, `problem-set`, `exam`, `solution-set`, `book`, `tool`.
+  - Optional descriptive fields: `provider`, `sections`, `description`, `lang`, `license`.
+  - Do not duplicate dozens of broad course links onto every atomic node; link deeply only where it actually helps.
+
+### extendedData.sourceLinks
+- Type: legacy array inside `extendedData`
+- Used by:
+  - legacy data imports
+  - migration compatibility in Cockpit/backend/validator
+- Status: transitional only
+- Notes:
+  - New landscapes should prefer top-level `resourceLinks`.
+  - Existing landscapes may still be read from `extendedData.sourceLinks` during migration.
+
+### oerContent
+- Type: legacy object (`source`, `link`, optional `sections`, `description`)
+- Used by:
+  - older OER annotations in some landscapes
+  - migration fallback for Cockpit/backend
+- Status: transitional only
+- Notes:
+  - `oerContent` should no longer be the primary place for new learning-resource links.
+  - Migrate new OER hints into `resourceLinks` instead.
 
 ## dimensionTags fields
 

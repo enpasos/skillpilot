@@ -440,6 +440,7 @@
             }
           },
           "resourceLinks": {
+            "description": "Geordnete hilfreiche Lernressourcen für dieses Lernziel. Kanonisches Feld für Cockpit und KI-Tutoren; Einträge können aus direkten goal.resourceLinks oder aus migrierten Legacy-Linkfeldern stammen.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/GoalSourceLink"
@@ -447,7 +448,7 @@
           },
           "sourceRef": {
             "type": "string",
-            "description": "Kanonische Curriculum-/Provenienz-Quelle (URL) für dieses Lernziel."
+            "description": "Kanonische Provenienz-Referenz für dieses Lernziel, idealerweise eine stabile URL, sonst eine Zitationszeichenkette."
           },
           "sourceLicense": {
             "type": "string",
@@ -466,19 +467,43 @@
         "type": "object",
         "properties": {
           "type": {
-            "type": "string"
+            "type": "string",
+            "description": "Didaktische Rolle des Links, z. B. overview, concept, practice, assessment, solution, reference."
           },
           "title": {
-            "type": "string"
+            "type": "string",
+            "description": "Kurze, nutzerseitige Bezeichnung."
           },
           "url": {
-            "type": "string"
+            "type": "string",
+            "description": "Absolute Ziel-URL."
           },
           "resourceType": {
-            "type": "string"
+            "type": "string",
+            "description": "Konkrete Materialart, z. B. course-page, video, notes, article, simulation, problem-set, exam, solution-set, book, tool."
+          },
+          "provider": {
+            "type": "string",
+            "description": "Optionales Provider- oder Seitenlabel, z. B. MIT OCW oder physikbuch.schule."
+          },
+          "sections": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Optionale Kapitel- oder Abschnittshinweise zum Lernziel."
+          },
+          "description": {
+            "type": "string",
+            "description": "Optionaler kurzer Hinweis, warum der Link hilfreich ist."
+          },
+          "lang": {
+            "type": "string",
+            "description": "Optionaler BCP-47-Sprachcode der verlinkten Ressource."
           },
           "license": {
-            "type": "string"
+            "type": "string",
+            "description": "Optionale Lizenzbezeichnung der verlinkten Ressource."
           }
         }
       },

@@ -85,7 +85,7 @@ Goal-level:
 - `id`, `title`, `description`, `weight`, `requires`, `contains`, `dimensionTags`
 - Recommended stable cross-layer field: `shortKey`
 - Inside `dimensionTags`, require at least `phase`; prefer `area`, `topicCode`, `demandLevel`, `processCompetencies`, and `guidingIdeas` when available
-- Optional metadata: `tags`, `core`, `examples`, `sourceRef`
+- Optional metadata: `tags`, `core`, `examples`, `sourceRef`, `resourceLinks`
 
 ### 2.3 Localization
 
@@ -100,6 +100,19 @@ If the curriculum uses images:
 
 - Store assets alongside the JSON in the curriculum directory.
 - Reference with relative Markdown paths.
+
+### 2.5 Source And Resource Links
+
+Use one consistent goal-level link model:
+
+- `sourceRef` for the canonical provenance/source-of-truth reference
+- `resourceLinks` for ordered helpful learning resources
+
+Authoring guidance:
+
+- put broad course pages, book references, and module overviews on root or cluster nodes
+- put deep, goal-specific concept/practice/assessment links on atomic nodes
+- prefer `resourceLinks` for new work; treat `extendedData.sourceLinks` and `oerContent` as migration-only legacy fields
 
 ---
 

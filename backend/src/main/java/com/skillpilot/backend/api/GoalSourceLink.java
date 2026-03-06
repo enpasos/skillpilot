@@ -5,5 +5,9 @@ public record GoalSourceLink(
         String title,
         String url,
         String resourceType,
+        String provider,
+        java.util.List<String> sections,
+        String description,
+        String lang,
         String license) {
 }

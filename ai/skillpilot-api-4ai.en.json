@@ -440,6 +440,7 @@
             }
           },
           "resourceLinks": {
+            "description": "Ordered helpful learning resources for this goal. Canonical field for Cockpit and AI tutors; entries may originate from goal-level resource links or migrated legacy link fields.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/GoalSourceLink"
@@ -447,7 +448,7 @@
           },
           "sourceRef": {
             "type": "string",
-            "description": "Canonical curriculum/provenance source URL for this goal."
+            "description": "Canonical provenance reference for this goal, preferably a stable URL when available, otherwise a citation string."
           },
           "sourceLicense": {
             "type": "string",
@@ -466,19 +467,43 @@
         "type": "object",
         "properties": {
           "type": {
-            "type": "string"
+            "type": "string",
+            "description": "Didactic role of the link, e.g. overview, concept, practice, assessment, solution, reference."
           },
           "title": {
-            "type": "string"
+            "type": "string",
+            "description": "Short user-facing label."
           },
           "url": {
-            "type": "string"
+            "type": "string",
+            "description": "Absolute target URL."
           },
           "resourceType": {
-            "type": "string"
+            "type": "string",
+            "description": "Concrete material kind, e.g. course-page, video, notes, article, simulation, problem-set, exam, solution-set, book, tool."
+          },
+          "provider": {
+            "type": "string",
+            "description": "Optional provider or site label, e.g. MIT OCW or physikbuch.schule."
+          },
+          "sections": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Optional chapter or section hints relevant to the goal."
+          },
+          "description": {
+            "type": "string",
+            "description": "Optional short note explaining why the link is useful."
+          },
+          "lang": {
+            "type": "string",
+            "description": "Optional BCP-47 language tag for the linked resource."
           },
           "license": {
-            "type": "string"
+            "type": "string",
+            "description": "Optional license label for the linked resource."
           }
         }
       },

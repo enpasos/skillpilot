@@ -5599,13 +5599,10 @@
         "b0cb1efa-0661-4871-853c-a436398d26ad",
         "25e2a8a8-7827-4997-b625-5f000213b9f9",
         "ddcea38e-61a0-441b-9632-3b6f7860c466",
-        "43fd27ed-2cf7-4139-91d9-9a83f9129a50"
+        "43fd27ed-2cf7-4139-91d9-9a83f9129a50",
+        "bb23a52c-01f0-46f2-968f-2175049b7ca8"
       ],
-      "requires": [
-        "f2a9d97f-c5f8-4756-94b0-1194abd0a37b",
-        "b9f32c77-7e8b-441f-9952-144fe86f9119",
-        "30adb86b-0fc1-4d41-880f-2dd65645e2cf"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -5642,7 +5639,11 @@
         "vocabularySource": "/data/hes_physic_flashcards_q2_deck.de.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "82d607df-4af5-4f22-b276-579c7fbf0e05",
+        "f44ef8ce-bcdf-4436-9a57-ba68d11395a1",
+        "8eb24087-a99a-45de-a576-7a6a0a0510c8"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",
@@ -5652,7 +5653,8 @@
           "LI_ENERGIE"
         ],
         "phase": "Q2"
-      }
+      },
+      "nodeKind": "memory"
     },
     {
       "id": "b0cb1efa-0661-4871-853c-a436398d26ad",
@@ -5967,8 +5969,9 @@
       ],
       "contains": [],
       "requires": [
-        "f44ef8ce-bcdf-4436-9a57-ba68d11395a1",
-        "541d9bfa-6e97-47d1-86dc-3b798bd13eb4"
+        "2a16c3e4-757b-44a1-92ef-10f9a8919ece",
+        "541d9bfa-6e97-47d1-86dc-3b798bd13eb4",
+        "f2a9d97f-c5f8-4756-94b0-1194abd0a37b"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -6014,7 +6017,8 @@
       ],
       "contains": [],
       "requires": [
-        "f44ef8ce-bcdf-4436-9a57-ba68d11395a1"
+        "f44ef8ce-bcdf-4436-9a57-ba68d11395a1",
+        "b9f32c77-7e8b-441f-9952-144fe86f9119"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -6158,9 +6162,7 @@
       "contains": [
         "72a14c28-87a7-4a23-ab63-9af52c30bca9"
       ],
-      "requires": [
-        "b9ccac36-475a-4e75-a269-7903617d7c7d"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -6182,7 +6184,9 @@
         "Context"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "b9ccac36-475a-4e75-a269-7903617d7c7d"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -6300,6 +6304,303 @@
       }
     },
     {
+      "id": "bb23a52c-01f0-46f2-968f-2175049b7ca8",
+      "title": "Übungen Q2",
+      "titleEn": "Practice Set Q2",
+      "description": "Buendelt materialgestuetzte Q2-Klausuraufgaben mit normalem Klausurcharakter zu Schwingungen, Induktion und mechanischen Wellen. Abiturvorschlaege bleiben davon getrennt modelliert.",
+      "descriptionEn": "Bundles material-based Q2 written-test tasks with regular classroom-assessment character on oscillations, induction, and mechanical waves. Abitur proposals remain modeled separately.",
+      "weight": 7,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "a1f59f61-71cf-45cf-9426-a8c2fd52fec8",
+        "0ab705bd-57a7-470a-a149-1a9108596bf6",
+        "09eda7f8-0356-4bde-af97-faaa164d3044",
+        "fd33ecb2-6cc8-4ec8-8aa1-64d9b04472c8",
+        "5fbeec71-4cd0-4b9a-83b0-e6f05fd47b63",
+        "d3d7f95a-81ac-4daf-a08a-f30e4a79acbb",
+        "be0dfd3c-43ca-4d3f-8e13-a5573cd5abbb"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_ENERGIE",
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "phase": "Q2"
+      },
+      "extendedData": {
+        "treeOrder": 10
+      }
+    },
+    {
+      "id": "a1f59f61-71cf-45cf-9426-a8c2fd52fec8",
+      "title": "Schwingungsanalyse und Energiebilanz",
+      "titleEn": "Oscillation Analysis and Energy Balance",
+      "description": "Die lernende Person kann eine materialgestuetzte Q2-Klausuraufgabe zu harmonischen Schwingungen, charakteristischen Groessen und Energieerhaltung selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q2 written-test task on harmonic oscillations, characteristic quantities, and conservation of energy.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "82d607df-4af5-4f22-b276-579c7fbf0e05",
+        "541d9bfa-6e97-47d1-86dc-3b798bd13eb4"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q2"
+      },
+      "extendedData": {
+        "treeOrder": 1
+      }
+    },
+    {
+      "id": "0ab705bd-57a7-470a-a149-1a9108596bf6",
+      "title": "Resonanz, Daempfung und Schwingungsgleichung",
+      "titleEn": "Resonance, Damping, and Oscillation Equation",
+      "description": "Die lernende Person kann eine LK-orientierte Q2-Klausuraufgabe zu gedaempften und erzwungenen Schwingungen, Resonanzkurven und zur Schwingungsgleichung selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve an advanced-course-oriented Q2 written-test task on damped and forced oscillations, resonance curves, and the oscillation equation.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "b54b8351-b639-4dc1-ad69-a1d0db02eef6",
+        "672bea9c-2747-432d-8e63-351748b0959b",
+        "bbe5bf93-83bc-4221-97fe-beb02f169edc",
+        "d05bf127-b722-4d23-922c-908733fc0819"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q2"
+      },
+      "extendedData": {
+        "treeOrder": 2
+      }
+    },
+    {
+      "id": "09eda7f8-0356-4bde-af97-faaa164d3044",
+      "title": "Induktionsgesetz und Wirbelstrombremse",
+      "titleEn": "Law of Induction and Eddy-Current Braking",
+      "description": "Die lernende Person kann eine materialgestuetzte Q2-Klausuraufgabe zu Bewegungsinduktion, magnetischem Fluss, Lenz-Regel und Wirbelstrombremsen selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q2 written-test task on motional induction, magnetic flux, Lenz’s law, and eddy-current braking.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "f44ef8ce-bcdf-4436-9a57-ba68d11395a1",
+        "1d9dfcef-ebb7-48dd-9f08-541d49547a60"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q2"
+      },
+      "extendedData": {
+        "treeOrder": 3
+      }
+    },
+    {
+      "id": "fd33ecb2-6cc8-4ec8-8aa1-64d9b04472c8",
+      "title": "Selbstinduktion, Einschaltvorgaenge und Feldenergie",
+      "titleEn": "Self-Induction, Switching Processes, and Field Energy",
+      "description": "Die lernende Person kann eine LK-orientierte Q2-Klausuraufgabe zu Selbstinduktion, Ein- und Ausschaltvorgaengen, Induktionsgleichungen und gespeicherter Magnetfeldenergie selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve an advanced-course-oriented Q2 written-test task on self-induction, switching processes, induction equations, and stored magnetic-field energy.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "2a16c3e4-757b-44a1-92ef-10f9a8919ece",
+        "3f1941e2-8c5d-4c79-9033-10ee92148d2a",
+        "7996337e-d3dd-4f43-a864-888bad0bc099",
+        "6850cc7a-3679-4d02-818a-54708a380b70"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q2"
+      },
+      "extendedData": {
+        "treeOrder": 4
+      }
+    },
+    {
+      "id": "5fbeec71-4cd0-4b9a-83b0-e6f05fd47b63",
+      "title": "LC-Schwingkreis und Thomson-Gleichung",
+      "titleEn": "LC Oscillating Circuit and Thomson Equation",
+      "description": "Die lernende Person kann eine materialgestuetzte Q2-Klausuraufgabe zum elektromagnetischen Schwingkreis und zur Thomson-Gleichung selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q2 written-test task on the electromagnetic oscillating circuit and Thomson’s equation.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "b0c55d63-be48-4b9a-b1d1-1cd3e1da53d7",
+        "215f2e31-c6de-4812-bbcc-7f86b8761566"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q2"
+      },
+      "extendedData": {
+        "treeOrder": 5
+      }
+    },
+    {
+      "id": "d3d7f95a-81ac-4daf-a08a-f30e4a79acbb",
+      "title": "Wellenphaenomene, Ultraschall und Wellengleichung",
+      "titleEn": "Wave Phenomena, Ultrasound, and Wave Equation",
+      "description": "Die lernende Person kann eine materialgestuetzte Q2-Klausuraufgabe zu Wellenphaenomenen, Ultraschall, Doppler-Effekt und zur mathematischen Beschreibung harmonischer Wellen selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q2 written-test task on wave phenomena, ultrasound, the Doppler effect, and the mathematical description of harmonic waves.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "773ca1f4-285b-45c2-8eb7-ca570de6f69b",
+        "6ab1e863-28b4-4b20-8714-dea49fcfa969",
+        "f398a325-3859-4ac9-9428-c2261075fc83"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "phase": "Q2"
+      },
+      "extendedData": {
+        "treeOrder": 6
+      }
+    },
+    {
+      "id": "be0dfd3c-43ca-4d3f-8e13-a5573cd5abbb",
+      "title": "Interferenz, stehende Wellen und Musikinstrumente",
+      "titleEn": "Interference, Standing Waves, and Musical Instruments",
+      "description": "Die lernende Person kann eine materialgestuetzte Q2-Klausuraufgabe zu Interferenz, stehenden Wellen, Phasenspruengen, Wellenpaketen und zur Physik von Musikinstrumenten selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q2 written-test task on interference, standing waves, phase shifts, wave packets, and the physics of musical instruments.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "24a45385-bdfd-4681-a240-d039778c4025",
+        "6513a330-9225-42af-a231-33ab7717a3fa",
+        "1fd7e6b4-cbc7-4ac7-94b5-c08412f724cc",
+        "915b437a-4f00-4153-88fe-e3ce982491cf"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "phase": "Q2"
+      },
+      "extendedData": {
+        "treeOrder": 7
+      }
+    },
+    {
       "id": "2613c187-1d02-4953-9163-e9cbb471aebe",
       "title": "Q3 Elektromagnetische Wellen und Quantenphysik",
       "titleEn": "Q3 Electromagnetic Waves and Quantum Physics",
@@ -6314,13 +6615,10 @@
         "8e73be49-37c9-4d95-8b01-4e76371ccd4e",
         "82e3a037-6865-4e3c-90aa-9dcd3f032df7",
         "1362c3c8-fa69-45b8-88fe-98a1584ef625",
-        "d8cd0a8c-7dfd-46d9-8bee-09f1e069edb8"
+        "d8cd0a8c-7dfd-46d9-8bee-09f1e069edb8",
+        "77007d19-7167-4ff7-80e0-b54ba98c9875"
       ],
-      "requires": [
-        "f44ef8ce-bcdf-4436-9a57-ba68d11395a1",
-        "b0c55d63-be48-4b9a-b1d1-1cd3e1da53d7",
-        "72a14c28-87a7-4a23-ab63-9af52c30bca9"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -6357,7 +6655,11 @@
         "vocabularySource": "/data/hes_physic_flashcards_q3_deck.de.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "b9ca584e-75e5-43b2-98b5-218930594dfa",
+        "7372d1e4-1a5f-413e-aee0-b81536bd44f1",
+        "98a78f99-2b91-4d08-8fc7-f7b063e877b7"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",
@@ -6367,7 +6669,8 @@
           "LI_MATERIE"
         ],
         "phase": "Q3"
-      }
+      },
+      "nodeKind": "memory"
     },
     {
       "id": "8e73be49-37c9-4d95-8b01-4e76371ccd4e",
@@ -6392,10 +6695,7 @@
         "2535d6f0-4f77-4d79-8a02-d5773d281baf",
         "cf97c1d9-a295-4298-9f73-47e4859a84f2"
       ],
-      "requires": [
-        "f44ef8ce-bcdf-4436-9a57-ba68d11395a1",
-        "b0c55d63-be48-4b9a-b1d1-1cd3e1da53d7"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -6568,10 +6868,7 @@
         "a75cd921-a02b-424d-9a4d-fae33f921ee5",
         "0471dc6e-c33d-4d13-aac0-5cb18befbe34"
       ],
-      "requires": [
-        "4c4f80df-6d13-4a9b-9236-df4f06f995bc",
-        "b9ca584e-75e5-43b2-98b5-218930594dfa"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -6757,10 +7054,7 @@
         "457837a5-3f19-485a-87b0-504f97aa121d",
         "474a1fa6-d211-4b1c-bfa6-e7134326ba7e"
       ],
-      "requires": [
-        "7372d1e4-1a5f-413e-aee0-b81536bd44f1",
-        "b5cb8f4c-bc0f-44e7-ade4-3b0cd3563655"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -6890,6 +7184,277 @@
       }
     },
     {
+      "id": "77007d19-7167-4ff7-80e0-b54ba98c9875",
+      "title": "Übungen Q3",
+      "titleEn": "Practice Set Q3",
+      "description": "Buendelt materialgestuetzte Q3-Klausuraufgaben mit normalem Klausurcharakter zu elektromagnetischen Wellen und Quantenphysik. Abiturvorschlaege bleiben davon getrennt modelliert.",
+      "descriptionEn": "Bundles material-based Q3 written-test tasks with regular classroom-assessment character on electromagnetic waves and quantum physics. Abitur proposals remain modeled separately.",
+      "weight": 6,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "b9db1af2-7dd4-4039-8f94-5bbc8b45e17d",
+        "b4c62d7a-ae9c-4cfd-ab15-89bf467a5da1",
+        "0bcf7157-814d-4553-bd27-924d1bd71589",
+        "5e4e0a1b-3f96-4bab-9de7-fb412bd51f1e",
+        "fe4ecc9c-a8e1-4003-9d24-0b3fd7d6bf5b",
+        "1f159635-a6a6-468f-bbc8-51d1f208340c"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_MATERIE",
+          "LI_TECHNIK",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q3"
+      },
+      "extendedData": {
+        "treeOrder": 10
+      }
+    },
+    {
+      "id": "b9db1af2-7dd4-4039-8f94-5bbc8b45e17d",
+      "title": "Spektrum, Polarisation und Glasfaseroptik",
+      "titleEn": "Spectrum, Polarization, and Optical Fibers",
+      "description": "Die lernende Person kann eine materialgestuetzte Q3-Klausuraufgabe zu elektromagnetischem Spektrum, Polarisation und Totalreflexion in Glasfasern selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q3 written-test task on the electromagnetic spectrum, polarization, and total reflection in optical fibers.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "b9ca584e-75e5-43b2-98b5-218930594dfa",
+        "bd56f9d0-8ce6-4082-985b-ab260e672241",
+        "5af4fbad-4052-4446-8867-25169991fb31"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "phase": "Q3"
+      },
+      "extendedData": {
+        "treeOrder": 1
+      }
+    },
+    {
+      "id": "b4c62d7a-ae9c-4cfd-ab15-89bf467a5da1",
+      "title": "Interferenz, Beugung und optische Instrumente",
+      "titleEn": "Interference, Diffraction, and Optical Instruments",
+      "description": "Die lernende Person kann eine materialgestuetzte Q3-Klausuraufgabe zu Doppelspalt, Beugung, Interferometern, stehenden elektromagnetischen Wellen und optischer Aufloesung selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q3 written-test task on the double slit, diffraction, interferometers, standing electromagnetic waves, and optical resolution.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "4c4f80df-6d13-4a9b-9236-df4f06f995bc",
+        "6bf2e482-404b-488f-adbb-2770069c1ed1",
+        "2bd62155-31d9-43ad-84ed-5adf873b55eb",
+        "d263576c-ab00-4337-a609-085c3e66a38e",
+        "fa19c671-7e00-43c6-8dc0-86b9ad3b4427",
+        "2535d6f0-4f77-4d79-8a02-d5773d281baf",
+        "cf97c1d9-a295-4298-9f73-47e4859a84f2"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "phase": "Q3"
+      },
+      "extendedData": {
+        "treeOrder": 2
+      }
+    },
+    {
+      "id": "0bcf7157-814d-4553-bd27-924d1bd71589",
+      "title": "Photonenmodell und Fotoeffekt",
+      "titleEn": "Photon Model and Photoelectric Effect",
+      "description": "Die lernende Person kann eine materialgestuetzte Q3-Klausuraufgabe zu Energie und Impuls von Photonen, Fotoeffekt, Solarzellen und der Bestimmung des Planckschen Wirkungsquantums selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q3 written-test task on photon energy and momentum, the photoelectric effect, solar cells, and determining Planck's constant.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "b5cb8f4c-bc0f-44e7-ade4-3b0cd3563655",
+        "7372d1e4-1a5f-413e-aee0-b81536bd44f1",
+        "c9871b6b-9511-4aac-903d-db5249642f10",
+        "b3456789-1234-4321-abcd-ef1234567890",
+        "a75cd921-a02b-424d-9a4d-fae33f921ee5"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_MATERIE",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q3"
+      },
+      "extendedData": {
+        "treeOrder": 3
+      }
+    },
+    {
+      "id": "5e4e0a1b-3f96-4bab-9de7-fb412bd51f1e",
+      "title": "Materiewellen und Quantencharakter",
+      "titleEn": "Matter Waves and Quantum Character",
+      "description": "Die lernende Person kann eine LK-orientierte Q3-Klausuraufgabe zu De-Broglie-Wellen, Compton-Effekt und Einzelphotonen-Interferenz selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve an advanced-course-oriented Q3 written-test task on De Broglie waves, the Compton effect, and single-photon interference.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "a0ff15f1-a634-4403-973c-b480fc410138",
+        "855a56c6-d007-4e83-af9a-9aad06853092",
+        "0471dc6e-c33d-4d13-aac0-5cb18befbe34"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_MATERIE"
+        ],
+        "phase": "Q3"
+      },
+      "extendedData": {
+        "treeOrder": 4
+      }
+    },
+    {
+      "id": "fe4ecc9c-a8e1-4003-9d24-0b3fd7d6bf5b",
+      "title": "Bohr-Modell, Franck-Hertz und Wasserstoffspektren",
+      "titleEn": "Bohr Model, Franck-Hertz, and Hydrogen Spectra",
+      "description": "Die lernende Person kann eine materialgestuetzte Q3-Klausuraufgabe zu Bohr-Modell, Energieniveaus, Franck-Hertz-Versuch, Linienspektren und Rydberg-Formel selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q3 written-test task on the Bohr model, energy levels, the Franck-Hertz experiment, line spectra, and the Rydberg formula.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "ef30ce6d-d2f7-4d9f-8db7-64ec139a7c4f",
+        "98a78f99-2b91-4d08-8fc7-f7b063e877b7",
+        "150fe161-64fe-4ff4-9a64-78c9619421d8",
+        "39d95d63-3968-45b5-8400-5c8e4b5b4e28",
+        "9bb72d60-7474-4c51-b283-65b82d625337"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE"
+        ],
+        "phase": "Q3"
+      },
+      "extendedData": {
+        "treeOrder": 5
+      }
+    },
+    {
+      "id": "1f159635-a6a6-468f-bbc8-51d1f208340c",
+      "title": "Erweiterte Spektralanalyse und Laser",
+      "titleEn": "Advanced Spectral Analysis and Lasers",
+      "description": "Die lernende Person kann eine LK-orientierte Q3-Klausuraufgabe zu wasserstoffaehnlichen Atomen, Roentgenspektren, Bragg-Bedingung, Spektrallinien und Laserprinzip selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve an advanced-course-oriented Q3 written-test task on hydrogen-like atoms, X-ray spectra, Bragg's condition, spectral lines, and the laser principle.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "2e2659e2-f559-4776-8b25-3ee80b757fdd",
+        "b56b7131-6454-40f6-b0e4-7839ea558a98",
+        "a5de652f-8fb5-4fda-b7f5-2c0371ba54b0",
+        "457837a5-3f19-485a-87b0-504f97aa121d",
+        "474a1fa6-d211-4b1c-bfa6-e7134326ba7e"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "Q3"
+      },
+      "extendedData": {
+        "treeOrder": 6
+      }
+    },
+    {
       "id": "52ae8c00-635e-46c0-b4d4-35f823284eae",
       "title": "Q4 Struktur von Materie, Raum und Zeit",
       "titleEn": "Q4 Structure of Matter, Space, and Time",
@@ -6920,13 +7485,10 @@
         "45db17b1-0a4a-4e3a-9aa9-8e2c137db501",
         "d39d69b4-e1cb-47be-a2f2-e952606b78d4",
         "20f81ea0-4c40-4c1b-9e14-886911af77d5",
-        "1fc1878d-6e28-44f5-bc68-f0c11aedbe14"
+        "1fc1878d-6e28-44f5-bc68-f0c11aedbe14",
+        "49f01cc7-38d6-4184-ab58-bbdacefc07ee"
       ],
-      "requires": [
-        "4c4f80df-6d13-4a9b-9236-df4f06f995bc",
-        "7372d1e4-1a5f-413e-aee0-b81536bd44f1",
-        "98a78f99-2b91-4d08-8fc7-f7b063e877b7"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -6962,7 +7524,13 @@
         "vocabularySource": "/data/hes_physic_flashcards_q4_deck.de.json"
       },
       "contains": [],
-      "requires": [],
+      "requires": [
+        "9fb3e6a0-83de-4ff2-b154-f4ef2960bd67",
+        "e8148d5c-fa8e-4fc3-9018-5d96328a3f9e",
+        "ce0c63a5-c1b5-43b8-9af6-c2fef12ee20e",
+        "8ea7e1ac-10a6-4522-9b87-ac9dfb29d285",
+        "65c5a696-bd70-4e8a-929e-935e30cd1cf9"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",
@@ -6972,7 +7540,8 @@
           "LI_TECHNIK"
         ],
         "phase": "Q4"
-      }
+      },
+      "nodeKind": "memory"
     },
     {
       "id": "3c9d71e4-322d-40a6-a038-cd6990ddce49",
@@ -6995,11 +7564,7 @@
         "7c9063c3-ee17-4cbd-8606-4f08e5486296",
         "db649343-95e5-44a7-a58a-28af67a3ecb6"
       ],
-      "requires": [
-        "ef30ce6d-d2f7-4d9f-8db7-64ec139a7c4f",
-        "98a78f99-2b91-4d08-8fc7-f7b063e877b7",
-        "39d95d63-3968-45b5-8400-5c8e4b5b4e28"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB3",
@@ -7031,9 +7596,7 @@
       "contains": [
         "c0572098-807f-460c-b2a7-cc36b3e4024a"
       ],
-      "requires": [
-        "98a78f99-2b91-4d08-8fc7-f7b063e877b7"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB3",
@@ -7268,10 +7831,7 @@
         "5cf17b11-0b53-481e-9fa7-f4b6501d6d70",
         "42c10ae4-8163-403d-8c47-1ddc6a538b8d"
       ],
-      "requires": [
-        "9fb3e6a0-83de-4ff2-b154-f4ef2960bd67",
-        "5cecd7d4-956a-4e8d-939a-7f849a08fa5b"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -7357,10 +7917,7 @@
         "183ca145-5504-4d67-9e18-af6ca29fb0e9",
         "81d10b3d-9b64-43b9-900e-c546f37f5d82"
       ],
-      "requires": [
-        "9fb3e6a0-83de-4ff2-b154-f4ef2960bd67",
-        "5cecd7d4-956a-4e8d-939a-7f849a08fa5b"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -7390,7 +7947,9 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "4b56b5c6-0e7b-4486-aa8f-7d5be7f085a5"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",
@@ -7521,7 +8080,9 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "5ac6578f-8df1-4950-8db9-95650562809b"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -7629,10 +8190,7 @@
         "028818dd-948b-4d6b-9238-92730c1aaa28",
         "735f8361-a78e-40e7-b8d7-dbe5a955ad11"
       ],
-      "requires": [
-        "9fb3e6a0-83de-4ff2-b154-f4ef2960bd67",
-        "78c8b1ac-c98e-4c37-baa6-ec3a835aa720"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -7660,7 +8218,9 @@
         "Context"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "4b56b5c6-0e7b-4486-aa8f-7d5be7f085a5"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -7684,7 +8244,9 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "75834916-4ae4-40d8-b6b7-e84956d4d02e"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",
@@ -7706,7 +8268,9 @@
       ],
       "contains": [],
       "requires": [
-        "8ea7e1ac-10a6-4522-9b87-ac9dfb29d285"
+        "8ea7e1ac-10a6-4522-9b87-ac9dfb29d285",
+        "9fb3e6a0-83de-4ff2-b154-f4ef2960bd67",
+        "78c8b1ac-c98e-4c37-baa6-ec3a835aa720"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -7810,11 +8374,7 @@
         "7797ade7-69c5-45fe-9528-0548a516c46a",
         "2c3538f6-1b3e-4212-9af1-8fdee3e2a2c5"
       ],
-      "requires": [
-        "06012d22-7495-4b9d-8ea5-bea7c8dc45e5",
-        "10d6ba07-317b-4dd1-9c10-682388139ce7",
-        "b4d1380d-1ff4-44d2-b1fd-822ea00e69cb"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -7960,7 +8520,9 @@
         "Method"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "65c5a696-bd70-4e8a-929e-935e30cd1cf9"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB3",
@@ -8410,7 +8972,7 @@
       ],
       "contains": [],
       "requires": [
-        "6fe6fada-b416-4949-a57f-684aae437881"
+        "2a16c3e4-757b-44a1-92ef-10f9a8919ece"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -8709,7 +9271,8 @@
       ],
       "contains": [],
       "requires": [
-        "bf3ace8c-cdbb-4a7c-9084-f6233803ab1b"
+        "bf3ace8c-cdbb-4a7c-9084-f6233803ab1b",
+        "9fb3e6a0-83de-4ff2-b154-f4ef2960bd67"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -8738,7 +9301,8 @@
       ],
       "contains": [],
       "requires": [
-        "b53bf31f-0cce-4831-b2cd-89e8b5bbe869"
+        "b53bf31f-0cce-4831-b2cd-89e8b5bbe869",
+        "9fb3e6a0-83de-4ff2-b154-f4ef2960bd67"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -9137,10 +9701,7 @@
         "5bb5c8ee-561f-48db-af7a-5b845170125a",
         "acf58900-191a-4a68-8da1-0fc132737a58"
       ],
-      "requires": [
-        "e8148d5c-fa8e-4fc3-9018-5d96328a3f9e",
-        "b53bf31f-0cce-4831-b2cd-89e8b5bbe869"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB3",
@@ -9168,7 +9729,10 @@
         "Context"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "e8148d5c-fa8e-4fc3-9018-5d96328a3f9e",
+        "b53bf31f-0cce-4831-b2cd-89e8b5bbe869"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB3",
@@ -9234,10 +9798,7 @@
         "f58b34b9-d9a4-4aa7-bf1f-e9428139e0fe",
         "1a0ff9c2-208e-4b1d-8404-80b8d621609b"
       ],
-      "requires": [
-        "9fb3e6a0-83de-4ff2-b154-f4ef2960bd67",
-        "5cecd7d4-956a-4e8d-939a-7f849a08fa5b"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -9405,6 +9966,365 @@
           "LI_KOSMOS"
         ],
         "phase": "Q4"
+      }
+    },
+    {
+      "id": "49f01cc7-38d6-4184-ab58-bbdacefc07ee",
+      "title": "Übungen Q4",
+      "titleEn": "Practice Set Q4",
+      "description": "Buendelt materialgestuetzte Q4-Klausuraufgaben mit normalem Klausurcharakter zu Quantenobjekten, Relativitaet, Kernphysik, Festkoerperphysik und Astrophysik. Abiturvorschlaege bleiben davon getrennt modelliert.",
+      "descriptionEn": "Bundles material-based Q4 written-test tasks with regular classroom-assessment character on quantum objects, relativity, nuclear physics, solid-state physics, and astrophysics. Abitur proposals remain modeled separately.",
+      "weight": 8,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "de1dbad2-a2d0-4af2-bef4-122f85c9078e",
+        "7cc7a730-947e-4d35-a465-068b4a8e4cfe",
+        "d5bd94d8-3539-4a7a-b314-6698f58178a9",
+        "8727dafb-3057-43d0-8495-7427ce911609",
+        "697460b6-8f97-4ff5-b2d6-20e139fbfd87",
+        "7d92e67c-b63e-4783-8173-6bf2eefdf551",
+        "4c56f39c-416a-41cb-81eb-49db37bf5ea3",
+        "50bcbfd6-3d32-463d-9756-d0b61116f630"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_TECHNIK",
+          "LI_KOSMOS",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q4"
+      },
+      "extendedData": {
+        "treeOrder": 10
+      }
+    },
+    {
+      "id": "de1dbad2-a2d0-4af2-bef4-122f85c9078e",
+      "title": "Quantenobjekte, Unbestimmtheit und Messproblem",
+      "titleEn": "Quantum Objects, Uncertainty, and Measurement Problem",
+      "description": "Die lernende Person kann eine materialgestuetzte Q4-Klausuraufgabe zu Quantenobjekten, Wellenfunktion, Unbestimmtheit, Komplementaritaet und quantenphysikalischer Messung selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q4 written-test task on quantum objects, wave functions, uncertainty, complementarity, and quantum measurement.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "c0572098-807f-460c-b2a7-cc36b3e4024a",
+        "78c8b1ac-c98e-4c37-baa6-ec3a835aa720",
+        "5cecd7d4-956a-4e8d-939a-7f849a08fa5b",
+        "f7a2b9c3-4d5e-6f78-9012-345678901234",
+        "416d771a-8a53-4536-856b-b12e8b1e4892",
+        "7c9063c3-ee17-4cbd-8606-4f08e5486296",
+        "db649343-95e5-44a7-a58a-28af67a3ecb6"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE"
+        ],
+        "phase": "Q4"
+      },
+      "extendedData": {
+        "treeOrder": 1
+      }
+    },
+    {
+      "id": "7cc7a730-947e-4d35-a465-068b4a8e4cfe",
+      "title": "Laser, Tunneleffekt und Quantenanwendungen",
+      "titleEn": "Lasers, Tunneling, and Quantum Applications",
+      "description": "Die lernende Person kann eine materialgestuetzte Q4-Klausuraufgabe zu Lasern, Tunneleffekt und technischen Anwendungen der Quantenphysik selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q4 written-test task on lasers, tunneling, and technical applications of quantum physics.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "5cf17b11-0b53-481e-9fa7-f4b6501d6d70",
+        "42c10ae4-8163-403d-8c47-1ddc6a538b8d"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "Q4"
+      },
+      "extendedData": {
+        "treeOrder": 2
+      }
+    },
+    {
+      "id": "d5bd94d8-3539-4a7a-b314-6698f58178a9",
+      "title": "Radioaktivitaet, Zerfall und Strahlenschutz",
+      "titleEn": "Radioactivity, Decay, and Radiation Protection",
+      "description": "Die lernende Person kann eine materialgestuetzte Q4-Klausuraufgabe zu radioaktiver Strahlung, Zerfall, Strahlenschutz und der Beurteilung von Strahlungsrisiken selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q4 written-test task on radioactive radiation, decay, radiation protection, and the assessment of radiation risks.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "e8148d5c-fa8e-4fc3-9018-5d96328a3f9e",
+        "893d9639-cfd4-42bb-a80b-a1f3460a1b48",
+        "2735ee9c-58b3-4c80-b90e-6e5735a04f46",
+        "9d10db5a-f1e0-4caf-9c37-6e05e4f9d4fb",
+        "5bb5c8ee-561f-48db-af7a-5b845170125a",
+        "acf58900-191a-4a68-8da1-0fc132737a58"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_ENERGIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "Q4"
+      },
+      "extendedData": {
+        "treeOrder": 3
+      }
+    },
+    {
+      "id": "8727dafb-3057-43d0-8495-7427ce911609",
+      "title": "Kernreaktionen und Kernmodelle",
+      "titleEn": "Nuclear Reactions and Nuclear Models",
+      "description": "Die lernende Person kann eine materialgestuetzte Q4-Klausuraufgabe zu Bindungsenergie, Kernreaktionen, Q-Werten und vereinfachten Kernmodellen selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q4 written-test task on binding energy, nuclear reactions, Q-values, and simplified nuclear models.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "bf3ace8c-cdbb-4a7c-9084-f6233803ab1b",
+        "b53bf31f-0cce-4831-b2cd-89e8b5bbe869",
+        "183ca145-5504-4d67-9e18-af6ca29fb0e9",
+        "0c3fbca9-66e4-479a-a098-430028135c5f",
+        "d2e00a16-f794-47c1-9c0a-8501e8ac1d3d"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q4"
+      },
+      "extendedData": {
+        "treeOrder": 4
+      }
+    },
+    {
+      "id": "697460b6-8f97-4ff5-b2d6-20e139fbfd87",
+      "title": "Standardmodell und Teilchenphysik",
+      "titleEn": "Standard Model and Particle Physics",
+      "description": "Die lernende Person kann eine materialgestuetzte Q4-Klausuraufgabe zu Teilchenfamilien, Quarks, fundamentalen Wechselwirkungen und Teilchenphysik in der Forschung selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q4 written-test task on particle families, quarks, fundamental interactions, and particle-physics research.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "23faeb9a-56f6-429b-9625-53b4a6793968",
+        "abae2f22-b531-4948-a618-a93f9f2895c5",
+        "f58b34b9-d9a4-4aa7-bf1f-e9428139e0fe",
+        "1a0ff9c2-208e-4b1d-8404-80b8d621609b"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE"
+        ],
+        "phase": "Q4"
+      },
+      "extendedData": {
+        "treeOrder": 5
+      }
+    },
+    {
+      "id": "7d92e67c-b63e-4783-8173-6bf2eefdf551",
+      "title": "Relativitaet und Raumzeit",
+      "titleEn": "Relativity and Spacetime",
+      "description": "Die lernende Person kann eine materialgestuetzte Q4-Klausuraufgabe zu spezieller und allgemeiner Relativitaet, Minkowski-Diagrammen und technischen Anwendungen wie GPS selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q4 written-test task on special and general relativity, Minkowski diagrams, and technical applications such as GPS.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "376cf778-c9c5-4110-b009-7b31c6a75623",
+        "a364aa86-6fa6-470e-b172-1c72752cd61a",
+        "33615810-9f87-42ac-926f-28a5990b7440",
+        "68dc2daa-3e31-433d-9a96-b76be95a6d68",
+        "af183ee3-f2dc-4d35-b5bf-de1edc946e82",
+        "2c3538f6-1b3e-4212-9af1-8fdee3e2a2c5"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_KOSMOS"
+        ],
+        "phase": "Q4"
+      },
+      "extendedData": {
+        "treeOrder": 6
+      }
+    },
+    {
+      "id": "4c56f39c-416a-41cb-81eb-49db37bf5ea3",
+      "title": "Festkoerperphysik und Halbleiterelektronik",
+      "titleEn": "Solid-State Physics and Semiconductor Electronics",
+      "description": "Die lernende Person kann eine materialgestuetzte Q4-Klausuraufgabe zu Festkoerperphysik, Halbleitern, Dioden, Transistoren und quantenphysikalischen Festkoerpermodellen selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q4 written-test task on solid-state physics, semiconductors, diodes, transistors, and quantum solid-state models.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "75834916-4ae4-40d8-b6b7-e84956d4d02e",
+        "11e0caff-b958-4a9b-b31a-ff5203857bae",
+        "0c41072f-076e-4b9c-8502-862881b617b5",
+        "87c6a06d-2ecc-4222-86f4-5675325cc6db",
+        "f3e35ae6-342c-4f1b-a1ec-80489e398e58",
+        "028818dd-948b-4d6b-9238-92730c1aaa28",
+        "735f8361-a78e-40e7-b8d7-dbe5a955ad11"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "Q4"
+      },
+      "extendedData": {
+        "treeOrder": 7
+      }
+    },
+    {
+      "id": "50bcbfd6-3d32-463d-9756-d0b61116f630",
+      "title": "Astrophysik und Kosmologie",
+      "titleEn": "Astrophysics and Cosmology",
+      "description": "Die lernende Person kann eine materialgestuetzte Q4-Klausuraufgabe zu Sonnensystem, Kosmologie, Sternentwicklung, Entfernungsbestimmung und allgemeiner Relativitaet im kosmischen Kontext selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q4 written-test task on the solar system, cosmology, stellar evolution, distance determination, and general relativity in a cosmic context.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "65c5a696-bd70-4e8a-929e-935e30cd1cf9",
+        "98a7de71-da9f-4b0e-adae-dfbf612f5a10",
+        "bf1a6607-076c-4b59-b782-a2a7d736177c",
+        "072ca990-6ed1-47ba-ba97-057538cf2231",
+        "8228b040-3333-4fa4-97a8-f04e8c3699ef",
+        "cf22e1d9-1357-4ead-ba5f-2287d2641eff",
+        "7797ade7-69c5-45fe-9528-0548a516c46a",
+        "2c3538f6-1b3e-4212-9af1-8fdee3e2a2c5"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_KOSMOS",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q4"
+      },
+      "extendedData": {
+        "treeOrder": 8
       }
     },
     {

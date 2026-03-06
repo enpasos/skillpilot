@@ -30,6 +30,7 @@ export interface UiGoal {
   requires: string[]
   contains: string[]
   examples: string[]
+  resourceLinks?: import('./landscapeTypes').ResourceLink[]
   effectiveRequires?: string[]
   inheritedRequires?: string[]
   extendedData?: Record<string, unknown>
@@ -87,6 +88,7 @@ export function convertLearningGoal(
     requires: goal.requires ?? [],
     contains: goal.contains ?? [],
     examples: goal.examples ?? [],
+    resourceLinks: goal.resourceLinks,
     effectiveRequires: goal.requires ?? [],
     inheritedRequires: [],
     extendedData: goal.extendedData,

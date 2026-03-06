@@ -207,6 +207,21 @@ function addIssue(level: Issue['level'], landscapeId: string, message: string) {
   issues.push({ level, message: `[${landscapeId}] ${message}` })
 }
 
+function getCanonicalResourceLinks(goal: UiGoal): Record<string, unknown>[] {
+  const directLinks = Array.isArray(goal.resourceLinks) ? goal.resourceLinks : []
+  if (directLinks.length > 0) {
+    return directLinks.filter((item): item is Record<string, unknown> => !!item && typeof item === 'object')
+  }
+
+  const extData = (goal.extendedData ?? {}) as Record<string, unknown>
+  const legacyLinks = extData.sourceLinks
+  if (Array.isArray(legacyLinks)) {
+    return legacyLinks.filter((item): item is Record<string, unknown> => !!item && typeof item === 'object')
+  }
+
+  return []
+}
+
 function parseReference(raw: string, currentLandscape: string) {
   if (raw.includes(':')) {
     const [landscape, goalId] = raw.split(':', 2)
@@ -611,7 +626,8 @@ function validateLandscape(landscape: ParsedLandscape) {
 
   // GVR-007:
   // MIT OCW atomic goals must provide intensive source linking:
-  // - extendedData.sourceLinks includes concept/practice/assessment
+  // - canonical resourceLinks (or legacy extendedData.sourceLinks during migration)
+  //   include concept/practice/assessment
   // - required links point to OCW course pages
   const isMitOcwLandscape = (landscape.frameworkId ?? '').startsWith('mit-ocw-')
   const rootGoal = landscape.goals.find((goal) => goal.tags?.includes('root')) ?? landscape.goals[0]
@@ -628,20 +644,16 @@ function validateLandscape(landscape: ParsedLandscape) {
       .filter((goal) => isAtomicGoal(goal))
       .forEach((goal) => {
         const goalLabel = `${goal.id} (${goal.title})`
-        const extData = (goal.extendedData ?? {}) as Record<string, unknown>
-        const rawSourceLinks = extData.sourceLinks
+        const sourceLinks = getCanonicalResourceLinks(goal)
 
-        if (!Array.isArray(rawSourceLinks) || rawSourceLinks.length === 0) {
+        if (sourceLinks.length === 0) {
           addIssue(
             graphRuleIssueLevel,
             landscape.landscapeId,
-            `[${RULE_MIT_ATOMIC_SOURCE_LINKS}] Atomic goal ${goalLabel} is missing extendedData.sourceLinks.`,
+            `[${RULE_MIT_ATOMIC_SOURCE_LINKS}] Atomic goal ${goalLabel} is missing canonical resourceLinks (or legacy extendedData.sourceLinks during migration).`,
           )
           return
         }
-
-        const sourceLinks = rawSourceLinks
-          .filter((item): item is Record<string, unknown> => !!item && typeof item === 'object')
         const typeToLinkCount = new Map<string, number>()
         const typeHasValidOcwCourseUrl = new Map<string, boolean>()
 

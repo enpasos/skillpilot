@@ -120,7 +120,14 @@
         },
         "sourceRef": {
           "type": "string",
-          "description": "Reference to external source/PDF."
+          "description": "Canonical provenance reference for this goal; preferably a stable URL when available, otherwise a citation string."
+        },
+        "resourceLinks": {
+          "type": "array",
+          "description": "Canonical helpful learning resources for this goal, ordered by pedagogical priority.",
+          "items": {
+            "$ref": "#/$defs/resourceLink"
+          }
         },
         "core": {
           "type": "boolean",
@@ -241,7 +248,7 @@
         },
         "oerContent": {
           "$ref": "#/$defs/oerContent",
-          "description": "Optional Open Educational Resource metadata."
+          "description": "Legacy transitional OER metadata. Prefer `resourceLinks` for canonical helpful learning resources."
         },
         "experimentData": {
           "$ref": "#/$defs/experimentData",
@@ -310,6 +317,52 @@
               }
             }
           }
+        }
+      }
+    },
+    "resourceLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "title",
+        "url"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Didactic role, e.g. overview, concept, practice, assessment, solution, reference."
+        },
+        "title": {
+          "type": "string",
+          "description": "Short user-facing label."
+        },
+        "url": {
+          "type": "string",
+          "description": "Absolute target URL."
+        },
+        "resourceType": {
+          "type": "string",
+          "description": "Concrete material kind, e.g. course-page, video, notes, article, simulation, problem-set, exam, solution-set, book, tool."
+        },
+        "provider": {
+          "type": "string"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string",
+          "description": "Optional BCP-47 language tag of the linked resource."
+        },
+        "license": {
+          "type": "string"
         }
       }
     },

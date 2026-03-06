@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -1513,11 +1514,13 @@ public class LearnerService {
             return null;
         }
         List<Map<String, Object>> rawSourceLinks = extractRawSourceLinks(goal);
-        List<GoalSourceLink> resourceLinks = rawSourceLinks.stream()
+        Map<String, GoalSourceLink> dedupedLinks = new LinkedHashMap<>();
+        rawSourceLinks.stream()
                 .filter(link -> !"license".equalsIgnoreCase(readString(link.get("type"))))
                 .map(this::toGoalSourceLink)
                 .filter(Objects::nonNull)
-                .toList();
+                .forEach(link -> dedupedLinks.putIfAbsent(link.url(), link));
+        List<GoalSourceLink> resourceLinks = new ArrayList<>(dedupedLinks.values());
 
         ProvenanceInfo provenance = extractProvenance(goal, rawSourceLinks);
 
@@ -1541,20 +1544,66 @@ public class LearnerService {
 
     @SuppressWarnings("unchecked")
     private List<Map<String, Object>> extractRawSourceLinks(LearningGoal goal) {
-        if (goal == null || goal.getExtendedData() == null) {
+        if (goal == null) {
             return Collections.emptyList();
         }
-        Object raw = goal.getExtendedData().get("sourceLinks");
-        if (!(raw instanceof List<?> list)) {
-            return Collections.emptyList();
-        }
+
         List<Map<String, Object>> links = new ArrayList<>();
-        for (Object entry : list) {
-            if (entry instanceof Map<?, ?> map) {
-                links.add((Map<String, Object>) map);
+
+        appendRawLinks(links, goal.getResourceLinks());
+
+        if (goal.getExtendedData() != null) {
+            Object raw = goal.getExtendedData().get("sourceLinks");
+            if (raw instanceof List<?> list) {
+                appendRawLinks(links, list);
             }
         }
+
+        Map<String, Object> legacyOerContent = goal.getOerContent();
+        if (legacyOerContent != null) {
+            String link = trimToNull(readString(legacyOerContent.get("link")));
+            if (link != null) {
+                Map<String, Object> synthesized = new HashMap<>();
+                synthesized.put("type", "concept");
+                synthesized.put("title", coalesce(
+                        trimToNull(readString(legacyOerContent.get("source"))),
+                        trimToNull(goal.getTitle())));
+                synthesized.put("url", link);
+                synthesized.put("resourceType", "oer");
+                synthesized.put("provider", trimToNull(readString(legacyOerContent.get("source"))));
+                Object sections = legacyOerContent.get("sections");
+                if (sections instanceof List<?> list) {
+                    List<String> normalizedSections = list.stream()
+                            .filter(String.class::isInstance)
+                            .map(String.class::cast)
+                            .map(this::trimToNull)
+                            .filter(Objects::nonNull)
+                            .toList();
+                    if (!normalizedSections.isEmpty()) {
+                        synthesized.put("sections", normalizedSections);
+                    }
+                }
+                String description = trimToNull(readString(legacyOerContent.get("description")));
+                if (description != null) {
+                    synthesized.put("description", description);
+                }
+                links.add(synthesized);
+            }
+        }
+
         return links;
+    }
+
+    @SuppressWarnings("unchecked")
+    private void appendRawLinks(List<Map<String, Object>> target, List<?> entries) {
+        if (entries == null) {
+            return;
+        }
+        for (Object entry : entries) {
+            if (entry instanceof Map<?, ?> map) {
+                target.add((Map<String, Object>) map);
+            }
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -1593,11 +1642,25 @@ public class LearnerService {
         if (url == null) {
             return null;
         }
+        List<String> sections = null;
+        Object rawSections = rawLink.get("sections");
+        if (rawSections instanceof List<?> list) {
+            sections = list.stream()
+                    .filter(String.class::isInstance)
+                    .map(String.class::cast)
+                    .map(this::trimToNull)
+                    .filter(Objects::nonNull)
+                    .toList();
+        }
         return new GoalSourceLink(
                 trimToNull(readString(rawLink.get("type"))),
                 trimToNull(readString(rawLink.get("title"))),
                 url,
                 trimToNull(readString(rawLink.get("resourceType"))),
+                trimToNull(readString(rawLink.get("provider"))),
+                sections,
+                trimToNull(readString(rawLink.get("description"))),
+                trimToNull(readString(rawLink.get("lang"))),
                 trimToNull(readString(rawLink.get("license"))));
     }
 

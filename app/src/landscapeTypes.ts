@@ -39,6 +39,18 @@ export interface OerContent {
   description?: string
 }
 
+export interface ResourceLink {
+  type: string
+  title: string
+  url: string
+  resourceType?: string
+  provider?: string
+  sections?: string[]
+  description?: string
+  lang?: string
+  license?: string
+}
+
 export interface ExperimentData {
   title: string
   description: string
@@ -67,8 +79,10 @@ export interface LearningGoal {
   contains: string[]
   examples?: string[]
   sourceRef?: string
+  resourceLinks?: ResourceLink[]
   extendedData?: Record<string, unknown>
   examData?: ExamData
+  /** Legacy transitional field; prefer `resourceLinks` for canonical helpful learning resources. */
   oerContent?: OerContent
   experimentData?: ExperimentData
   /** Explicit node type ("atomic" | "cluster"), optional for backward compatibility. */

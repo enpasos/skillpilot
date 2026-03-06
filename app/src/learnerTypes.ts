@@ -39,6 +39,10 @@ export interface FrontierGoal {
     title?: string;
     url: string;
     resourceType?: string;
+    provider?: string;
+    sections?: string[];
+    description?: string;
+    lang?: string;
     license?: string;
   }>;
   sourceRef?: string;
