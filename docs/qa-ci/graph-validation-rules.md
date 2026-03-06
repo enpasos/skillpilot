@@ -126,6 +126,20 @@ Recommended rollout strategy:
 - later add stricter route-quality rules on the atomic graph
 - treat full atomic route coverage as `SHOULD` at concept level first, then promote it to `MUST` only for mature rollout subsets or strict validator profiles
 
+Reference implementation already curated:
+
+- Physics landscape file: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json`
+- subtree: `Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen`
+
+This subtree is a useful QA benchmark for the stricter target model because:
+
+- it no longer uses cluster-level `requires` inside the subtree,
+- every non-memory atomic goal in the subtree has at least one direct atomic prerequisite path back to the motivation anchor,
+- every non-memory atomic goal in the subtree also lies on at least one atomic path toward terminal autonomy goals under `Übungen E-Phase`,
+- the single memorization node in that subtree is explicitly typed as `nodeKind: "memory"` and is therefore a documented exception rather than an ambiguous leaf.
+
+This means future strict route-quality rules can use this subtree as a practical benchmark during rollout, even before new stable `GVR-*` IDs are introduced for the stricter atomic route model.
+
 ## Direct-child prerequisite rule (`GVR-006`)
 
 - Scope is controlled in `app/scripts/validateGraph.ts` via `noDirectChildRequireRuleLandscapeIds`.

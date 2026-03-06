@@ -324,6 +324,22 @@ It should form teachable routes whose overall direction is:
 
 In the current validator rollout, rules `GVR-004` and `GVR-005` implement only the first half of this idea: they ensure connectivity from atomic goals back to a motivation anchor in the effective-prerequisite graph. A future stricter profile can extend this to full route coverage toward terminal autonomy goals, preferably on the atomic prerequisite layer.
 
+### 8.5.1 Reference example: Physics E-phase subtree
+
+A concrete reference implementation for this target state exists in the Physics landscape:
+
+- file: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json`
+- subtree root: `Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen`
+
+In its curated state, this subtree is intended as a model example for mature prerequisite authoring:
+
+- normal learning goals in the subtree use atomic `requires` as their canonical didactic layer,
+- cluster goals inside the subtree do not carry direct `requires`,
+- all non-memory atomic goals in the subtree lie on atomic routes from the global motivation anchor `Warum Physik? – Weltverständnis & Zukunft` to one or more terminal autonomy goals in `Übungen E-Phase`,
+- the memorization node `Lernkarten - E-Phase` is explicitly modeled as a memory node and should be treated separately from normal route-coverage judgments.
+
+This example is useful because it shows that the target semantics in §5.2 and §8.5 are not merely aspirational; they can be implemented in a real curriculum subtree without relying on inherited cluster prerequisites.
+
 ### 8.6 Derive cluster-level dependency views from atomic routes
 
 For cluster goals $k_1,k_2\in K$, higher-level dependency views SHOULD normally be derived from atomic descendants rather than authored as standalone prerequisite facts.
