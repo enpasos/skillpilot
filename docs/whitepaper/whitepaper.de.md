@@ -22,9 +22,9 @@ Die Qualitätssicherung erfolgt offen: über ein **Champion-Programm** aus der P
 
 Bildung folgt Curricula, die staatlich vorgegeben oder durch **Akkreditierung** definiert sind. In der Praxis klafft jedoch eine Lücke zwischen Curriculum und Lernrealität:
 
-* Lernende starten **nicht am selben Punkt** (Vorwissen, Tempo, Lücken).
-* Lehrende müssen trotzdem **viele Personen parallel** steuern – oft in großen Kohorten.
-* Lernziele liegen meist **als Text** vor, aber nicht als **navigierbare Struktur** mit Abhängigkeiten und sinnvollen nächsten Schritten.
+- Lernende starten **nicht am selben Punkt** (Vorwissen, Tempo, Lücken).
+- Lehrende müssen trotzdem **viele Personen parallel** steuern – oft in großen Kohorten.
+- Lernziele liegen meist **als Text** vor, aber nicht als **navigierbare Struktur** mit Abhängigkeiten und sinnvollen nächsten Schritten.
 
 Das führt zu Überforderung bei einigen, Langeweile bei anderen – und zu hohem Aufwand, Lernstände und nächste Schritte sauber zu erfassen.
 
@@ -60,25 +60,25 @@ Die Integrität des Graphen wird durch eine formale mathematische Spezifikation 
 
 Dabei geht es um:
 
-* **Operationalisierung:** Learning Outcomes werden in atomare Skill-Ziele zerlegt (ohne den Standard zu verändern).
-* **Traceability:** Jeder Skill bleibt auf Quelle/Abschnitt/Version zurückführbar.
-* **Navigierbarkeit:** Prereqs und Hierarchien werden explizit modelliert, damit Pfade planbar werden (didaktische Prereqs ggf. als **Overlay**). Der Graph erzwingt keine starren Pfade: Er unterstützt pädagogische Flexibilität. Der **Optimistische Modus** prüft Voraussetzungen nur **innerhalb des gewählten Filters** (z.B. Jahrgang), sodass ein Einstieg direkt im Themenjahr möglich ist, ohne dass Lücken aus Vorjahren blockieren. Erst wenn Lernende scheitern, schaltet der Tutor zur Diagnose in den **Pessimistischen Modus**, um die Lücke im Fundament zu finden.
-* **Governance:** Änderungen laufen aktuell über GitHub (Issues/PRs), Versionierung über die GitHub-Historie (siehe Abschnitt 6).
+- **Operationalisierung:** Learning Outcomes werden in atomare Skill-Ziele zerlegt (ohne den Standard zu verändern).
+- **Traceability:** Jeder Skill bleibt auf Quelle/Abschnitt/Version zurückführbar.
+- **Navigierbarkeit:** Prereqs und Hierarchien werden explizit modelliert, damit Pfade planbar werden (didaktische Prereqs ggf. als **Overlay**). Der Graph erzwingt keine starren Pfade: Er unterstützt pädagogische Flexibilität. Der **Optimistische Modus** prüft Voraussetzungen nur **innerhalb des gewählten Filters** (z.B. Jahrgang), sodass ein Einstieg direkt im Themenjahr möglich ist, ohne dass Lücken aus Vorjahren blockieren. Erst wenn Lernende scheitern, schaltet der Tutor zur Diagnose in den **Pessimistischen Modus**, um die Lücke im Fundament zu finden.
+- **Governance:** Änderungen laufen aktuell über GitHub (Issues/PRs), Versionierung über die GitHub-Historie (siehe Abschnitt 6).
 
 #### Landkarte: Knoten & Kanten
 
-* **Knoten:** atomare Skills („kann X erklären/anwenden“) und Cluster (Themen/Module).
-* **Kanten:**
-  * **Prerequisites:** „A vor B“
-  * **Contains/Part-of:** „X umfasst Y und Z“
+- **Knoten:** atomare Skills („kann X erklären/anwenden“) und Cluster (Themen/Module).
+- **Kanten:**
+  - **Prerequisites:** „A vor B“
+  - **Contains/Part-of:** „X umfasst Y und Z“
 
 #### Drei Knotentypen in der Praxis
 
 SkillPilot unterscheidet drei **Knotentypen**, die verschiedene Lernmodi abbilden:
 
-* **Verstehen:** Alle Stoffthemen werden vom KI‑Tutor erklärt und eingeübt.
-* **Sich merken:** Einzelne Fakten werden gezielt memoriert (modernes Karteikastenprinzip).
-* **Selbstständig Probleme lösen:** Abitur‑Aufgaben werden selbstständig gelöst (z. B. auf einem Zettel, mit Handy fotographiert und hochgeladen), sofort bewertet (Punkte, bestanden/nicht bestanden, Fehler) und anschließend erklärt.
+- **Verstehen:** Alle Stoffthemen werden vom KI‑Tutor erklärt und eingeübt.
+- **Sich merken:** Einzelne Fakten werden gezielt memoriert (modernes Karteikastenprinzip).
+- **Selbstständig Probleme lösen:** Abitur‑Aufgaben werden selbstständig gelöst (z. B. auf einem Zettel, mit Handy fotographiert und hochgeladen), sofort bewertet (Punkte, bestanden/nicht bestanden, Fehler) und anschließend erklärt.
 
 Im Curriculum **Gymnasiale Oberstufe (DE, HE, G9, Sekundarstufe II) – Mathematik (QS Stufe 2)** beispielsweise werden **alle drei Knotentypen** eingesetzt.
 
@@ -113,9 +113,9 @@ Die in Kapitel 3.1 berechnete **Frontier** dient dem Tutor als **Fokus-Filter**:
 
 **Mastery** ist kein Logbuch, sondern ein abgeleiteter Status aus Lerninteraktionen. Für Anschlussfähigkeit hilft ein simples Evidenzmodell:
 
-* **Formativ:** Tutor-Dialoge, Aufgaben im Gespräch, kurze Checks.
-* **Optional stärker:** Quizzes, Aufgabenserien, Artefakte (Rechenweg/Code/Kurztext), mündliche Checks.
-* **Optional Review:** Skills können später ein Re-Check verlangen.
+- **Formativ:** Tutor-Dialoge, Aufgaben im Gespräch, kurze Checks.
+- **Optional stärker:** Quizzes, Aufgabenserien, Artefakte (Rechenweg/Code/Kurztext), mündliche Checks.
+- **Optional Review:** Skills können später ein Re-Check verlangen.
 
 > SkillPilot macht Fortschritt sichtbar – die Institution entscheidet, welche Evidenz welche Konsequenz hat.
 
@@ -151,16 +151,16 @@ Während beim Verstehen sowie beim Bewerten und Erklären von Prüfungsleistunge
 
 SkillPilot integriert dafür eine **Flashcard Drill Engine** (SRS):
 
-* **Kompetenz-Loop:** Der Skill-Graph definiert, *was* als Nächstes dran ist.
-* **Memorisier-Loop:** Die Drill Engine optimiert *wie* wiederholt wird (Intervalle, Priorisierung; z.B. SuperMemo-2).
+- **Kompetenz-Loop:** Der Skill-Graph definiert, *was* als Nächstes dran ist.
+- **Memorisier-Loop:** Die Drill Engine optimiert *wie* wiederholt wird (Intervalle, Priorisierung; z.B. SuperMemo-2).
 
 Ergänzend braucht es weitere Lernmodi für „Doing“-Skills: Der Tutor soll Lernende in passende **Practice-Formate** schicken (z.B. Aufgabenserien, Programmieraufgaben, Schreib-/Sprechübungen) und sie anschließend im Chat bei Auswertung, Feedback und Transfer begleiten.
 
 #### Technische Ableitungen: Ziel-Route in Backend, UI und Tutor
 
-* **Backend (didaktische Routenlogik):** Die Ziel-Route ist keine freie KI-Berechnung, sondern eine im Curriculum modellierte topologische Route unter DAG-Constraints. Das bedeutet: Die menschlichen Lehrplan-Autor:innen (Champions) behalten die volle pädagogische Kontrolle, da die KI den vorgegebenen Pfad nicht eigenmächtig verlassen oder verändern darf. Für jedes Fernziel sind die vorgelagerten Knoten (Motivation, Verstehen, Memorieren, Anwenden) als `requires` explizit vorgeschaltet.
-* **UI/UX (Routen-Visualisierung):** Lernende wählen ihren Zielkontext (z.B. LK Physik) und ein Fernziel. Die Oberfläche blendet irrelevante Bereiche aus und hebt die didaktische Route zum Ziel klar hervor.
-* **KI-Tutor (Didaktischer Kontext):** Der Tutor arbeitet strikt auf Basis dieser vorgegebenen Route und erklärt transparent, warum der aktuelle Schritt der logische nächste Halt auf dem Weg zur Prüfungsreife ist.
+- **Backend (didaktische Routenlogik):** Die Ziel-Route ist keine freie KI-Berechnung, sondern eine im Curriculum modellierte topologische Route unter DAG-Constraints. Das bedeutet: Die menschlichen Lehrplan-Autor:innen (Champions) behalten die volle pädagogische Kontrolle, da die KI den vorgegebenen Pfad nicht eigenmächtig verlassen oder verändern darf. Für jedes Fernziel sind die vorgelagerten Knoten (Motivation, Verstehen, Memorieren, Anwenden) als `requires` explizit vorgeschaltet.
+- **UI/UX (Routen-Visualisierung):** Lernende wählen ihren Zielkontext (z.B. LK Physik) und ein Fernziel. Die Oberfläche blendet irrelevante Bereiche aus und hebt die didaktische Route zum Ziel klar hervor.
+- **KI-Tutor (Didaktischer Kontext):** Der Tutor arbeitet strikt auf Basis dieser vorgegebenen Route und erklärt transparent, warum der aktuelle Schritt der logische nächste Halt auf dem Weg zur Prüfungsreife ist.
 
 ---
 
@@ -197,8 +197,8 @@ Für Kontexte mit höheren Souveränitätsanforderungen sind alternative KI-Back
 
 Damit Lernstände **portabel** und **prüfbar** bleiben, nutzt SkillPilot ein **Chain-of-Custody**-Pattern.
 
-* Tutor-Instanzen authentisieren sich gegenüber dem Backend.
-* Schreibrechte für Fortschritts-Updates erhalten nur **autorisierte Akteure** (aktuelles Muster: der Tutor als schreibender Akteur).
+- Tutor-Instanzen authentisieren sich gegenüber dem Backend.
+- Schreibrechte für Fortschritts-Updates erhalten nur **autorisierte Akteure** (aktuelles Muster: der Tutor als schreibender Akteur).
 
 #### Signierte Exporte
 
@@ -236,9 +236,9 @@ SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula/Standards als St
 **Curriculum Champions (Praxisanker):**  
 ![Curriculum Champion Comic](../comic3/champion.de.png)  
 
-* Champions übernehmen Verantwortung für ein Curriculum oder einen **klaren Themen-Scope**.
-* Sie **lernen das Curriculum durch**, sammeln Praxisfeedback und bündeln es in Issues/PRs.
-* Sichtbarkeit schafft Verantwortung: Champion-Profile zeigen Engagement (z.B. Issues/PRs) und Fortschritt.
+- Champions übernehmen Verantwortung für ein Curriculum oder einen **klaren Themen-Scope**.
+- Sie **lernen das Curriculum durch**, sammeln Praxisfeedback und bündeln es in Issues/PRs.
+- Sichtbarkeit schafft Verantwortung: Champion-Profile zeigen Engagement (z.B. Issues/PRs) und Fortschritt.
 
 Der QS-Prozess bezieht sich nicht nur auf Curricula: Der SkillPilot KI‑Tutor wird im laufenden Betrieb kontinuierlich qualifiziert, damit die Nutzung über reale Curricula hinweg zuverlässig und didaktisch sinnvoll bleibt.
 
@@ -246,29 +246,29 @@ Der QS-Prozess bezieht sich nicht nur auf Curricula: Der SkillPilot KI‑Tutor w
 
 **Bayern:**
 
-* Grundschule (Alle Fächer, Jgst 1–4)
-* Mittelschule (Alle Fächer, Jgst 5–10)
-* Realschule (Alle Fächer, Jgst 5–10)
-* Gymnasium (Alle Fächer, Jgst 5–13)
-* Fachoberschule & Berufsoberschule (FOS/BOS)
-* Wirtschaftsschule
+- Grundschule (Alle Fächer, Jgst 1–4)
+- Mittelschule (Alle Fächer, Jgst 5–10)
+- Realschule (Alle Fächer, Jgst 5–10)
+- Gymnasium (Alle Fächer, Jgst 5–13)
+- Fachoberschule & Berufsoberschule (FOS/BOS)
+- Wirtschaftsschule
 
 **Hessen:**
 
-* Gymnasiale Oberstufe (G9, Sekundarstufe II)
-* Gymnasiale Mittelstufe (G9, Sekundarstufe I)
+- Gymnasiale Oberstufe (G9, Sekundarstufe II)
+- Gymnasiale Mittelstufe (G9, Sekundarstufe I)
 
 #### Hochschule (Bologna-relevant)
 
-* Uni Heidelberg: Bachelor Biowissenschaften, Master Molecular BioSciences, Physikum Medizin
-* Uni Mannheim: Bachelor BWL, Bachelor Jura, Master Jura
-* TU Darmstadt: Bachelor Informatik
-* TU München: Bachelor Informatik, Bachelor Mathematik, Bachelor Physik, Master Quantenwissenschaft und -technologie, Master Theoretische und Mathematische Physik, Executive Master of Business Administration (MBA)
+- Uni Heidelberg: Bachelor Biowissenschaften, Master Molecular BioSciences, Physikum Medizin
+- Uni Mannheim: Bachelor BWL, Bachelor Jura, Master Jura
+- TU Darmstadt: Bachelor Informatik
+- TU München: Bachelor Informatik, Bachelor Mathematik, Bachelor Physik, Master Quantenwissenschaft und -technologie, Master Theoretische und Mathematische Physik, Executive Master of Business Administration (MBA)
 
 #### Sprachen (CEFR A1–C2)
 
-* Englisch (A1–C2)
-* Französisch (A1–C2)
+- Englisch (A1–C2)
+- Französisch (A1–C2)
 
 Die hier gelisteten Curricula befinden sich damit aktuell in **Stufe 1 (KI-abgeleitet)**. Der Prozess, sie in **Stufe 2** zu überführen, läuft über den **Curriculum Champion Prozess**.
 
@@ -291,16 +291,16 @@ Bologna/EHEA setzt im Hochschulraum den Rahmen für **Outcomes, Transparenz, Ane
 
 SkillPilot wird als **Open Source** unter der **Apache-2.0-Lizenz** veröffentlicht – als Einladung, bestehende Akteure einzubinden statt zu verdrängen:
 
-* Institutionen behalten **Souveränität** über Curricula und Inhalte.
-* Die Kopplung von Content an Skillziele ist perspektivisch möglich.
-* Offene Schnittstellen ermöglichen Beiträge und Integration.
+- Institutionen behalten **Souveränität** über Curricula und Inhalte.
+- Die Kopplung von Content an Skillziele ist perspektivisch möglich.
+- Offene Schnittstellen ermöglichen Beiträge und Integration.
 
 **Governance & Qualitätssicherung (aktuell über GitHub + Champion-Programm):**
 
-* Feedback fließt über **GitHub Issues** und wird häufig durch Champions initiiert.
-* Änderungen am Curriculum/Graph laufen über **Pull Requests** (Review in GitHub).
-* **Versionierung** erfolgt über die GitHub-Historie; **Curriculaquellen** sind referenziert.
-* Weitergehende Governance-Mechanismen (z.B. Fachreview-Gremien, QA-Prozesse, Overlays) sind perspektivisch möglich.
+- Feedback fließt über **GitHub Issues** und wird häufig durch Champions initiiert.
+- Änderungen am Curriculum/Graph laufen über **Pull Requests** (Review in GitHub).
+- **Versionierung** erfolgt über die GitHub-Historie; **Curriculaquellen** sind referenziert.
+- Weitergehende Governance-Mechanismen (z.B. Fachreview-Gremien, QA-Prozesse, Overlays) sind perspektivisch möglich.
 
 **Initiator:**  
 Träger ist die **enpasos GmbH**. Wir laden Partner ein, SkillPilot gemeinsam weiterzuentwickeln – fachlich, didaktisch und technisch.

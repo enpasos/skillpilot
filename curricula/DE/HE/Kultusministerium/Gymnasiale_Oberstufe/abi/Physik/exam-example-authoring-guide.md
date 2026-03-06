@@ -1,11 +1,18 @@
-# Prompting-Workflow: Klausurbeispiel Physik Hessen 2026 (GK/LK)
+# Exam Example Authoring Guide: Klausurbeispiel Physik Hessen 2026 (GK/LK)
 
 ## Ziel
 
 Erstellung eines vollständigen, eigenständigen Klausurbeispiels für das Landesabitur 2026 im Fach Physik (GK und LK, Hessen).
 
+## Allgemeine Pipeline-Referenz
+
+- Generische Production Pipeline: `docs/production-pipelines/exam-example.md`
+- Zentrale Quellenliste Hessen Oberstufe: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/input/references.md`
+- Diese Authoring-Guide-Datei konkretisiert die allgemeine Pipeline für das Fach Physik und den Jahrgang 2026.
+
 ## Verbindliche Quellen
 
+- Zentrale PDF-Registry: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/input/references.md`
 - Erlassauszug: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/la26_abiturerlass_physik.txt`
 - Primärquelle: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/la26-abiturerlass.pdf`
 - Stilreferenz (Niveau/Art): `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/input/leifiphysik_abitur_md`
@@ -30,8 +37,12 @@ Erstellung eines vollständigen, eigenständigen Klausurbeispiels für das Lande
 - Findings-Backlog (Schritt 6): `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/Klausurbeispiel2026_1/findings.md`
 - Finding-Bearbeitung (Schritt 7): `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/Klausurbeispiel2026_1/Schritt7_Finding_Bearbeitung.md`
 - Re-QS nach Findings (Schritt 8): `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/Klausurbeispiel2026_1/Schritt8_ReQS.md`
+- Für weitere Klausurbeispiele gilt derselbe Artefaktsatz analog im jeweiligen `Klausurbeispiel...`-Ordner.
 
-## Vorgehensmodell (Prompting)
+## Fachspezifische Ergänzungen zur allgemeinen Pipeline
+
+Die Schritte 1 bis 9 folgen der generischen Pipeline in `docs/production-pipelines/exam-example.md`.
+Die folgenden Punkte konkretisieren nur die Physik-spezifischen Erwartungen.
 
 ### Schritt 1: QS-Checkliste erstellen
 
@@ -93,7 +104,7 @@ Erstellung eines vollständigen, eigenständigen Klausurbeispiels für das Lande
 - Integration der finalen Abiaufgaben in `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json` erfolgt **erst**, wenn Aufgabenblatt und Musterlösung inhaltlich stabil/freigegeben sind.
 - Vorher dürfen nur unabhängige Landscape-Findings umgesetzt werden (z. B. Metadaten, Auswahllogik, zusätzliche optionale Q4-Cluster).
 
-## Prompt-Regel für künftige Iterationen
+## Arbeitsregel für künftige Iterationen
 
 Jede weitere Arbeitsrunde beginnt mit:
 

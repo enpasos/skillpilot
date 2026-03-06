@@ -3,6 +3,8 @@
 This document is a general, repeatable blueprint for producing a curriculum graph JSON from any source curriculum.
 It is written to be auditable and reusable across domains, institutions, and languages.
 
+For exam authoring workflows, see `exam-example.md`.
+
 ---
 
 ## Scope

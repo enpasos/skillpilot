@@ -2,9 +2,9 @@
 
 ## 1. Core Philosophy: "Privacy by Design" & "User Responsibility"
 SkillPilot separates **identity** from **educational progress**. 
-* The **Server** knows *what* was learned (linked to a random ID), but not *who* learned it.
-* The **Local Client** (Teacher's Browser) knows *who* the students are, but stores this mapping only locally.
-* The **AI Layer** acts as a processor. It knows the *skills* associated with an ID to provide tutoring, but it relies on the user to keep the conversation anonymous.
+- The **Server** knows *what* was learned (linked to a random ID), but not *who* learned it.
+- The **Local Client** (Teacher's Browser) knows *who* the students are, but stores this mapping only locally.
+- The **AI Layer** acts as a processor. It knows the *skills* associated with an ID to provide tutoring, but it relies on the user to keep the conversation anonymous.
 
 ## 2. Data Partitioning
 
@@ -12,42 +12,42 @@ SkillPilot separates **identity** from **educational progress**.
 **Status:** Trusted, Private, Persistent (via Backup)
 This layer holds the Personal Identifiable Information (PII).
 
-* **Teacher's Browser:**
-    * **Class Rosters:** List of classes (e.g., "Physics 12 LK").
-    * **Identity Mapping:** The link between a real name ("Anna Schmidt") and the SkillPilot ID (`0824a2e2-5981-447d-b6de-9a14d0929c21`).
-    * **Session Configuration:** Active filters, selected landscapes.
-* **Learner's Browser:**
-    * **Session ID:** The `skillpilotId` stored in LocalStorage to resume sessions.
-    * **Display Name:** A purely local display name (e.g., "Me") for UI friendliness, not synced to the backend.
+- **Teacher's Browser:**
+    - **Class Rosters:** List of classes (e.g., "Physics 12 LK").
+    - **Identity Mapping:** The link between a real name ("Anna Schmidt") and the SkillPilot ID (`0824a2e2-5981-447d-b6de-9a14d0929c21`).
+    - **Session Configuration:** Active filters, selected landscapes.
+- **Learner's Browser:**
+    - **Session ID:** The `skillpilotId` stored in LocalStorage to resume sessions.
+    - **Display Name:** A purely local display name (e.g., "Me") for UI friendliness, not synced to the backend.
 
 ### B. SkillPilot Server (Backend / Database)
 **Status:** Pseudonymous, Centralized
 This layer holds the educational data. It contains **zero PII**.
 
-* **Entity: `Learner`**
-    * `skillpilotId` (Primary Key, e.g., `0824a2e2-5981-447d-b6de-9a14d0929c21`).
-    * No names, no emails, no passwords.
-* **Entity: `Mastery`**
-    * Mapping: `skillpilotId` + `goalId` -> `value` (0.0 to 1.0).
-* **Entity: `PlannedGoal`**
-    * List of `goalId`s marked as "focus" by a specific `skillpilotId`.
-* **Static Data:**
-    * Learning Landscapes (Curricula, Competence Definitions).
+- **Entity: `Learner`**
+    - `skillpilotId` (Primary Key, e.g., `0824a2e2-5981-447d-b6de-9a14d0929c21`).
+    - No names, no emails, no passwords.
+- **Entity: `Mastery`**
+    - Mapping: `skillpilotId` + `goalId` -> `value` (0.0 to 1.0).
+- **Entity: `PlannedGoal`**
+    - List of `goalId`s marked as "focus" by a specific `skillpilotId`.
+- **Static Data:**
+    - Learning Landscapes (Curricula, Competence Definitions).
 
 ### C. LLM / AI Layer (e.g., ChatGPT)
 **Status:** Stateless processor, "User Responsible"
 The AI provider processes the conversation and tool outputs.
 
-* **System-Provided Data (What the App sends):**
-    * **SkillPilot-ID:** The pseudonymous token (e.g. `0824a2e2-5981-447d-b6de-9a14d0929c21`) allows the LLM to fetch/save progress.
-    * **Competence Profile:** The specific skills and mastery levels of this ID (essential for the AI to adapt its teaching).
-    * **Curriculum Content:** Definitions of learning goals ("Explain Quantum Mechanics").
-* **User-Provided Data (Responsibility):**
-    * **Conversation History:** The user chats freely with the AI.
-    * **Responsibility Principle:** It is the **user's responsibility** not to share PII (real names, addresses, emails) in the chat. The system does not filter this input.
-* **What the System NEVER sends:**
-    * The "Real Name" stored in the Teacher's local browser.
-    * Any metadata not strictly related to the curriculum or the `skillpilotId`.
+- **System-Provided Data (What the App sends):**
+    - **SkillPilot-ID:** The pseudonymous token (e.g. `0824a2e2-5981-447d-b6de-9a14d0929c21`) allows the LLM to fetch/save progress.
+    - **Competence Profile:** The specific skills and mastery levels of this ID (essential for the AI to adapt its teaching).
+    - **Curriculum Content:** Definitions of learning goals ("Explain Quantum Mechanics").
+- **User-Provided Data (Responsibility):**
+    - **Conversation History:** The user chats freely with the AI.
+    - **Responsibility Principle:** It is the **user's responsibility** not to share PII (real names, addresses, emails) in the chat. The system does not filter this input.
+- **What the System NEVER sends:**
+    - The "Real Name" stored in the Teacher's local browser.
+    - Any metadata not strictly related to the curriculum or the `skillpilotId`.
 
 ---
 
@@ -80,8 +80,8 @@ The AI provider processes the conversation and tool outputs.
 ## 4. Backup & Recovery Strategy
 Since the server does not know who the students are, the **Teacher is the single source of truth** for the identity mapping.
 
-* **Export:** The Teacher/Learner utilizes the "Backup Data" feature. This generates a JSON file (wrapper format) containing:
+- **Export:** The Teacher/Learner utilizes the "Backup Data" feature. This generates a JSON file (wrapper format) containing:
     1.  The signed Server Data (Class definitions, Student mappings, Mastery).
     2.  The Local Client Data (SRS Flashcard Progress).
-* **Storage:** This file must be stored securely by the user.
-* **Restore:** If browser data is cleared or the user switches devices, the JSON file can be imported. The system will restore the server state and re-hydrate the local flashcard progress for the current user.
+- **Storage:** This file must be stored securely by the user.
+- **Restore:** If browser data is cleared or the user switches devices, the JSON file can be imported. The system will restore the server state and re-hydrate the local flashcard progress for the current user.

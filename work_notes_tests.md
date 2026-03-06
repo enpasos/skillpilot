@@ -37,7 +37,7 @@ Nicht zulaessig:
 - Themen ohne Skill-Abdeckung in dieser E-Phase-Teilstruktur.
 - Konkretes Beispiel fuer Ausschluss: Federmodelle/Federpuffer/Federkonstante, solange dafuer im E-Phase-Mechanik-Unterbaum kein expliziter Skill-Knoten vorhanden ist.
 
-## 4) Vorgehensmodell (angelehnt an `abi/Physik/prompt.md`)
+## 4) Vorgehensmodell (angelehnt an `abi/Physik/exam-example-authoring-guide.md`)
 
 ### Schritt 1: Scope-Audit und Mapping
 

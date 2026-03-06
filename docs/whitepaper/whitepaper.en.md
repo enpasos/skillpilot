@@ -22,9 +22,9 @@ Quality assurance is anchored in a practice-driven **Champion program** and the 
 
 Education follows curricula that are defined by the state or through **accreditation**. In practice, there is a gap between curriculum and learning reality:
 
-* Learners do not start at the same point (prior knowledge, pace, gaps).
-* Teachers still have to guide **many people in parallel**, often in large cohorts.
-* Learning goals usually exist **as text**, but not as a **navigable structure** with dependencies and sensible next steps.
+- Learners do not start at the same point (prior knowledge, pace, gaps).
+- Teachers still have to guide **many people in parallel**, often in large cohorts.
+- Learning goals usually exist **as text**, but not as a **navigable structure** with dependencies and sensible next steps.
 
 This leads to overload for some, boredom for others, and high effort to track learning states and next steps.
 
@@ -60,25 +60,25 @@ The integrity of the graph is ensured by a formal mathematical specification (Ac
 
 This is about:
 
-* **Operationalization:** learning outcomes are broken down into atomic skill goals (without changing the standard).
-* **Traceability:** each skill remains traceable to source/section/version.
-* **Navigability:** prerequisites and hierarchies are modeled explicitly so paths are plannable (didactic prereqs possibly as **overlay**). The graph does not enforce rigid paths: it supports pedagogical flexibility. In **Optimistic Mode**, prerequisites are checked only **inside the selected filter** (e.g., grade level), so learners can start directly in the selected year without being blocked by gaps from earlier years. If learners struggle, the tutor switches to diagnostic **Pessimistic Mode** to find the missing foundation.
-* **Governance:** changes currently run via GitHub (Issues/PRs), with versioning through GitHub history (see section 6).
+- **Operationalization:** learning outcomes are broken down into atomic skill goals (without changing the standard).
+- **Traceability:** each skill remains traceable to source/section/version.
+- **Navigability:** prerequisites and hierarchies are modeled explicitly so paths are plannable (didactic prereqs possibly as **overlay**). The graph does not enforce rigid paths: it supports pedagogical flexibility. In **Optimistic Mode**, prerequisites are checked only **inside the selected filter** (e.g., grade level), so learners can start directly in the selected year without being blocked by gaps from earlier years. If learners struggle, the tutor switches to diagnostic **Pessimistic Mode** to find the missing foundation.
+- **Governance:** changes currently run via GitHub (Issues/PRs), with versioning through GitHub history (see section 6).
 
 #### Map: Nodes & Edges
 
-* **Nodes:** atomic skills ("can explain/apply X") and clusters (topics/modules).
-* **Edges:**
-  * **Prerequisites:** "A before B"
-  * **Contains/Part-of:** "X includes Y and Z"
+- **Nodes:** atomic skills ("can explain/apply X") and clusters (topics/modules).
+- **Edges:**
+  - **Prerequisites:** "A before B"
+  - **Contains/Part-of:** "X includes Y and Z"
 
 #### Three Node Types in Practice
 
 SkillPilot distinguishes three **node types** that reflect different learning modes:
 
-* **Understanding:** Subject topics are explained and practiced with the AI tutor.
-* **Memorization:** Individual facts are memorized in a targeted way (modern flashcard principle).
-* **Independent problem solving:** Final-exam tasks are solved independently (e.g., on paper, photographed, and uploaded), immediately graded (points, pass/fail, errors), and then explained.
+- **Understanding:** Subject topics are explained and practiced with the AI tutor.
+- **Memorization:** Individual facts are memorized in a targeted way (modern flashcard principle).
+- **Independent problem solving:** Final-exam tasks are solved independently (e.g., on paper, photographed, and uploaded), immediately graded (points, pass/fail, errors), and then explained.
 
 In the curriculum **Upper Secondary School (DE, HE, G9, Secondary II) – Mathematics (QA Stage 2)**, **all three node types** are used.
 
@@ -113,9 +113,9 @@ The **frontier** calculated in chapter 3.1 serves as a **focus filter** for the 
 
 **Mastery** is not a logbook but a derived status from learning interactions. For interoperability, a simple evidence model helps:
 
-* **Formative:** tutor dialogs, in-chat tasks, quick checks.
-* **Optional stronger:** quizzes, task series, artifacts (solution steps/code/short text), oral checks.
-* **Optional review:** skills can later require a re-check.
+- **Formative:** tutor dialogs, in-chat tasks, quick checks.
+- **Optional stronger:** quizzes, task series, artifacts (solution steps/code/short text), oral checks.
+- **Optional review:** skills can later require a re-check.
 
 > SkillPilot makes progress visible - the institution decides which evidence has which consequences.
 
@@ -155,16 +155,16 @@ While tutor interaction is valuable for understanding and for evaluating/explain
 
 SkillPilot integrates a **flashcard drill engine** (SRS):
 
-* **Competence loop:** the skill graph defines *what* comes next.
-* **Memorization loop:** the drill engine optimizes *how* to repeat (intervals, prioritization; e.g., SuperMemo-2).
+- **Competence loop:** the skill graph defines *what* comes next.
+- **Memorization loop:** the drill engine optimizes *how* to repeat (intervals, prioritization; e.g., SuperMemo-2).
 
 In addition, other learning modes are needed for "doing" skills: the tutor should send learners into suitable **practice formats** (e.g., problem sets, programming tasks, writing/speaking exercises) and then guide them back in chat for evaluation, feedback, and transfer.
 
 #### Technical Implications: Target Route in Backend, UI, and Tutor
 
-* **Backend (didactic route logic):** The target route is not a free AI computation. It is a topological route modeled in the curriculum under DAG constraints. This means human curriculum authors (champions) retain full pedagogical control, because the AI is not allowed to leave or alter the predefined path on its own. For each long-term goal, upstream nodes (motivation, understanding, memorization, application) are explicitly configured as `requires`.
-* **UI/UX (route visualization):** Learners select their target context (e.g., advanced physics) and a long-term goal. The interface fades irrelevant areas and clearly highlights the didactic route toward the goal.
-* **AI tutor (didactic context):** The tutor operates strictly on this predefined route and explains transparently why the current step is the logical next stop on the way to exam readiness.
+- **Backend (didactic route logic):** The target route is not a free AI computation. It is a topological route modeled in the curriculum under DAG constraints. This means human curriculum authors (champions) retain full pedagogical control, because the AI is not allowed to leave or alter the predefined path on its own. For each long-term goal, upstream nodes (motivation, understanding, memorization, application) are explicitly configured as `requires`.
+- **UI/UX (route visualization):** Learners select their target context (e.g., advanced physics) and a long-term goal. The interface fades irrelevant areas and clearly highlights the didactic route toward the goal.
+- **AI tutor (didactic context):** The tutor operates strictly on this predefined route and explains transparently why the current step is the logical next stop on the way to exam readiness.
 
 ---
 
@@ -201,8 +201,8 @@ For contexts with higher sovereignty requirements, alternative AI backends up to
 
 To keep learning states **portable** and **verifiable**, SkillPilot uses a **chain-of-custody** pattern.
 
-* Tutor instances authenticate to the backend.
-* Write access for progress updates is granted only to **authorized actors** (current pattern: the tutor as the writing actor).
+- Tutor instances authenticate to the backend.
+- Write access for progress updates is granted only to **authorized actors** (current pattern: the tutor as the writing actor).
 
 #### Signed Exports
 
@@ -236,34 +236,34 @@ SkillPilot is not just a concept: it already contains curricula/standards as sta
 
 **Curriculum Champions (practice anchor):**  
 ![Curriculum Champion comic](../comic3/champion.en.png)  
-* Champions take responsibility for a curriculum or a **clearly scoped topic area**.
-* They work through the curriculum, gather practice feedback, and channel it into Issues/PRs.
-* Visibility creates accountability: Champion profiles show engagement (e.g., Issues/PRs) and progress.
+- Champions take responsibility for a curriculum or a **clearly scoped topic area**.
+- They work through the curriculum, gather practice feedback, and channel it into Issues/PRs.
+- Visibility creates accountability: Champion profiles show engagement (e.g., Issues/PRs) and progress.
 
 The QA process does not only cover curricula: the SkillPilot AI tutor is continuously qualified in real-world use so that the experience remains reliable and didactically sound across curricula.
 
 #### Schools (Bavaria & Hesse, Germany)
 **Bavaria:**
-* Grundschule (Primary School, complete: Grades 1–4)
-* Mittelschule (Middle School, complete: Grades 5–10)
-* Realschule (Secondary School, complete: Grades 5–10)
-* Gymnasium (Academic High School, complete: Grades 5–13)
-* Fachoberschule & Berufsoberschule (Vocational High School)
-* Wirtschaftsschule (Business School)
+- Grundschule (Primary School, complete: Grades 1–4)
+- Mittelschule (Middle School, complete: Grades 5–10)
+- Realschule (Secondary School, complete: Grades 5–10)
+- Gymnasium (Academic High School, complete: Grades 5–13)
+- Fachoberschule & Berufsoberschule (Vocational High School)
+- Wirtschaftsschule (Business School)
 
 **Hesse:**
-* Gymnasiale Oberstufe (G9, Secondary II)
-* Gymnasiale Mittelstufe (G9, Secondary I)
+- Gymnasiale Oberstufe (G9, Secondary II)
+- Gymnasiale Mittelstufe (G9, Secondary I)
 
 #### Higher Education (Bologna-relevant)
-* Uni Heidelberg: Bachelor Biosciences, Master Molecular BioSciences, Physikum (Medicine)
-* Uni Mannheim: Bachelor Business Administration (BWL), Bachelor Law, Master Law
-* TU Darmstadt: Bachelor Computer Science
-* TU Munich: Bachelor Computer Science (Informatics), Bachelor Mathematics, Bachelor Physics, Master Quantum Science and Technology, Master Theoretical and Mathematical Physics, Executive Master of Business Administration (MBA)
+- Uni Heidelberg: Bachelor Biosciences, Master Molecular BioSciences, Physikum (Medicine)
+- Uni Mannheim: Bachelor Business Administration (BWL), Bachelor Law, Master Law
+- TU Darmstadt: Bachelor Computer Science
+- TU Munich: Bachelor Computer Science (Informatics), Bachelor Mathematics, Bachelor Physics, Master Quantum Science and Technology, Master Theoretical and Mathematical Physics, Executive Master of Business Administration (MBA)
 
 #### Languages (CEFR A1-C2)
-* English (A1-C2)
-* French (A1-C2)
+- English (A1-C2)
+- French (A1-C2)
 
 The listed curricula are currently in **Stage 1 (AI-derived)**. The process to move them to **Stage 2** runs via the **Curriculum Champion process**.
 
@@ -287,15 +287,15 @@ Bologna/EHEA sets the framework for **outcomes, transparency, recognition, and q
 
 SkillPilot is released as **open source** under the **Apache-2.0 license** - an invitation to include established stakeholders rather than displace them:
 
-* Institutions retain **sovereignty** over curricula and content.
-* Coupling content to skill goals is possible in the future.
-* Open interfaces enable contributions and integration.
+- Institutions retain **sovereignty** over curricula and content.
+- Coupling content to skill goals is possible in the future.
+- Open interfaces enable contributions and integration.
 
 **Governance & quality assurance (currently via GitHub + Champion program):**
-* Feedback flows through **GitHub Issues**, often initiated by champions.
-* Changes to the curriculum/graph run through **pull requests** (review on GitHub).
-* **Versioning** follows GitHub history; **curriculum sources** are referenced.
-* More advanced governance mechanisms (e.g., expert review boards, QA processes, overlays) are possible in the future.
+- Feedback flows through **GitHub Issues**, often initiated by champions.
+- Changes to the curriculum/graph run through **pull requests** (review on GitHub).
+- **Versioning** follows GitHub history; **curriculum sources** are referenced.
+- More advanced governance mechanisms (e.g., expert review boards, QA processes, overlays) are possible in the future.
 
 **Initiator:**  
 The legal entity behind SkillPilot is **enpasos GmbH**. We invite partners to develop SkillPilot further together - in content, didactics, and technology.
