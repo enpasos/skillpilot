@@ -58,10 +58,31 @@ These checks are already implemented and treated as `error`:
 - Didactic quality checks (sequencing quality, granularity, redundancy of meanings, etc.) remain part of manual QA (`curricula/QA/*`).
 - Additional structural rules should be added here first, then implemented in `validateGraph.ts`, then rolled out in CI.
 
+## Current compatibility model vs. target model
+
+The current CI validator still operates on the compatibility model used by the existing runtime and landscapes:
+
+- direct `requires` may be authored on atomic or cluster goals
+- effective prerequisites are computed by inheriting `requires` from `contains` ancestors
+- rollout rules such as `GVR-004` / `GVR-005` validate motivation connectivity in that effective graph
+
+The conceptual target model described in `docs/concept/curriculum-graph/graph-definition.md` is stricter:
+
+- the canonical didactic sequencing layer should primarily be authored on atomic goals
+- cluster-level dependency views should preferably be derived from atomic descendants
+- mature route-quality checks should eventually validate atomic didactic routes from motivation anchors to terminal autonomy goals
+
+Until the validator and landscapes are migrated, this file distinguishes clearly between:
+
+- rules that are implemented today and have stable `GVR-*` IDs
+- planned future direction that is not yet implemented in CI and therefore has no stable rule IDs here
+
 ## Motivation-anchor rollout rules (`GVR-004`, `GVR-005`)
 
 - Scope is controlled in `app/scripts/validateGraph.ts` via `motivationRuleLandscapeIds`.
 - Current rollout scope: Hessen Gymnasiale Oberstufe subject landscapes (`DE_HES_S_GYM_2_*`) excluding `DE_HES_S_GYM_2_OVERVIEW`.
+
+These rules are intentionally a compatibility rollout, not yet the full mature route-coverage model.
 
 Validation semantics:
 
@@ -81,6 +102,29 @@ Effective-requires graph means:
 - direct `requires`
 - plus inherited `requires` from `contains` ancestors
 - then transitive reachability over these effective edges
+
+Interpretation of current coverage strength:
+
+- `GVR-004` / `GVR-005` ensure that each checked atomic node is connected back to a motivation anchor
+- they do **not** yet ensure that the node also lies on a path toward one or more terminal autonomy goals
+- they do **not** yet prove that the didactic route is modeled canonically on the atomic `requires` layer
+
+## Planned direction for route-quality validation (not yet implemented in CI)
+
+The following direction is planned but currently has no stable validator rule IDs in this file.
+
+Target semantics for mature landscapes:
+
+- route coverage should be defined primarily on the atomic direct-prerequisite graph (`R_d` on atomic goals), not on inherited `R_eff`
+- a landscape or route-group may have one or more motivation anchors; a single global anchor is not required if the content structure suggests otherwise
+- a landscape will often have multiple terminal autonomy goals, typically authentic independent performances such as exam tasks or other capstones
+- every atomic goal should ideally lie on at least one didactic path from a motivation anchor to a terminal autonomy goal
+
+Recommended rollout strategy:
+
+- keep `GVR-004` / `GVR-005` as migration-compatible checks on `R_eff`
+- later add stricter route-quality rules on the atomic graph
+- treat full atomic route coverage as `SHOULD` at concept level first, then promote it to `MUST` only for mature rollout subsets or strict validator profiles
 
 ## Direct-child prerequisite rule (`GVR-006`)
 
