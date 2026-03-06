@@ -4415,12 +4415,10 @@
       "contains": [
         "e7db6cca-346a-493c-bcd5-294468f4223b",
         "98141a21-f5a2-4fea-a277-226d5f144ff6",
-        "88e7bae1-d35c-4b03-b7bb-79a3445dafd6"
+        "88e7bae1-d35c-4b03-b7bb-79a3445dafd6",
+        "0d8968ef-7011-488a-a3f1-e6e2ab7e66ff"
       ],
-      "requires": [
-        "0436c8fc-b849-4cab-84d7-32e92c0d94a9",
-        "99bbf33e-74f5-4f33-98e2-e4e6661d8648"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -4470,7 +4468,8 @@
           "LI_ENERGIE"
         ],
         "phase": "Q1"
-      }
+      },
+      "nodeKind": "memory"
     },
     {
       "id": "e7db6cca-346a-493c-bcd5-294468f4223b",
@@ -4552,10 +4551,7 @@
         "8f15d181-f194-4bc8-b452-3c12e19b5fdb",
         "c662a457-2362-4037-999c-5f96bb8cb38d"
       ],
-      "requires": [
-        "3a9f85cd-feb6-45e4-adec-d25b784fdd29",
-        "2506276a-8365-4192-bd54-675378eca830"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -4585,10 +4581,7 @@
         "bef60a6e-132d-40e6-a308-6b654289e8ad",
         "8dc20eba-73f3-46db-80b8-9f3eb306ad86"
       ],
-      "requires": [
-        "a481793d-c8d2-4256-9269-58e1d986dbbd",
-        "f2a9d97f-c5f8-4756-94b0-1194abd0a37b"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -4616,7 +4609,9 @@
         "Phenomenon"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "4b56b5c6-0e7b-4486-aa8f-7d5be7f085a5"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",
@@ -4756,7 +4751,8 @@
       ],
       "contains": [],
       "requires": [
-        "2506276a-8365-4192-bd54-675378eca830"
+        "2506276a-8365-4192-bd54-675378eca830",
+        "99bbf33e-74f5-4f33-98e2-e4e6661d8648"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -4920,10 +4916,7 @@
         "5277de22-78fd-4c40-b21d-53249006daae",
         "5ac6578f-8df1-4950-8db9-95650562809b"
       ],
-      "requires": [
-        "f2a9d97f-c5f8-4756-94b0-1194abd0a37b",
-        "0436c8fc-b849-4cab-84d7-32e92c0d94a9"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -4946,7 +4939,8 @@
       ],
       "contains": [],
       "requires": [
-        "87d529ab-0a87-4214-9560-a5e102ba6e87"
+        "f2a9d97f-c5f8-4756-94b0-1194abd0a37b",
+        "0436c8fc-b849-4cab-84d7-32e92c0d94a9"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -5106,10 +5100,7 @@
         "4f9e692f-66b8-4c9f-9f0d-c34b8b1eff82",
         "3e9b3065-ef84-45ec-930b-33a9d2b55203"
       ],
-      "requires": [
-        "babef1d4-7ebb-4066-82ba-b19abb445af4",
-        "97af421c-cf9d-4f1a-86e9-f25ee1e4afd9"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -5139,7 +5130,9 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "4b56b5c6-0e7b-4486-aa8f-7d5be7f085a5"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB1",
@@ -5246,11 +5239,7 @@
         "fd1423c1-8288-42d5-9591-860ec4c13a86",
         "83a987a4-c805-4315-810b-020d7ec6c15b"
       ],
-      "requires": [
-        "30adb86b-0fc1-4d41-880f-2dd65645e2cf",
-        "4f9e692f-66b8-4c9f-9f0d-c34b8b1eff82",
-        "3e9b3065-ef84-45ec-930b-33a9d2b55203"
-      ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB2",
@@ -5293,6 +5282,306 @@
       },
       "extendedData": {
         "treeOrder": 4
+      }
+    },
+    {
+      "id": "0d8968ef-7011-488a-a3f1-e6e2ab7e66ff",
+      "title": "Übungen Q1",
+      "titleEn": "Practice Set Q1",
+      "description": "Buendelt materialgestuetzte Q1-Klausuraufgaben mit normalem Klausurcharakter zu elektrischen und magnetischen Feldern. Abiturvorschlaege bleiben davon getrennt modelliert.",
+      "descriptionEn": "Bundles material-based Q1 written-test tasks with regular classroom-assessment character on electric and magnetic fields. Abitur proposals remain modeled separately.",
+      "weight": 7,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "d7829e7b-5640-4933-bff1-94670e37ae1e",
+        "5774da0d-8740-463b-af40-8a5e5659275a",
+        "2a895096-f327-47f9-89f1-40832c9a5bfa",
+        "335dac08-14bc-4684-8f37-460de5da0449",
+        "c1495102-b871-4496-9ca1-f3b33f1aec12",
+        "f395d80f-0f59-4bb4-8832-ca8bc7f87603",
+        "a5b6ecd0-610c-4458-9fcf-cc0bc37658ce"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_ENERGIE",
+          "LI_TECHNIK",
+          "LI_MATERIE"
+        ],
+        "phase": "Q1"
+      },
+      "extendedData": {
+        "treeOrder": 10
+      }
+    },
+    {
+      "id": "d7829e7b-5640-4933-bff1-94670e37ae1e",
+      "title": "Elektrostatik und Potenzial",
+      "titleEn": "Electrostatics and Potential",
+      "description": "Die lernende Person kann eine materialgestuetzte Q1-Klausuraufgabe zu Coulomb-Kraft, Feldlinien, Superposition, Spannung und elektrischem Potenzial selbstaendig bearbeiten und fachlich auswerten.",
+      "descriptionEn": "The learner can independently solve and evaluate a material-based Q1 written-test task on Coulomb force, field lines, superposition, voltage, and electric potential.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "653a9072-5b70-4535-b1f8-c54d578502d4",
+        "a481793d-c8d2-4256-9269-58e1d986dbbd",
+        "33f80f1a-8d83-4322-93a3-ed2169adc1e2"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q1"
+      },
+      "extendedData": {
+        "treeOrder": 1
+      }
+    },
+    {
+      "id": "5774da0d-8740-463b-af40-8a5e5659275a",
+      "title": "Kondensator, Feldenergie und Millikan-Versuch",
+      "titleEn": "Capacitor, Field Energy, and Millikan Experiment",
+      "description": "Die lernende Person kann eine materialgestuetzte Q1-Klausuraufgabe zu Plattenkondensator, Auf- und Entladung, Feldenergie und dem Millikan-Versuch selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q1 written-test task on the parallel-plate capacitor, charging and discharging, field energy, and the Millikan experiment.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "f2a9d97f-c5f8-4756-94b0-1194abd0a37b",
+        "ce2bafec-2a6d-4191-84c5-79c61e0f0284",
+        "c662a457-2362-4037-999c-5f96bb8cb38d",
+        "bef60a6e-132d-40e6-a308-6b654289e8ad"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_ENERGIE",
+          "LI_MATERIE"
+        ],
+        "phase": "Q1"
+      },
+      "extendedData": {
+        "treeOrder": 2
+      }
+    },
+    {
+      "id": "2a895096-f327-47f9-89f1-40832c9a5bfa",
+      "title": "RC-Kreis und Dielektrika modellieren",
+      "titleEn": "Model RC Circuits and Dielectrics",
+      "description": "Die lernende Person kann eine LK-orientierte Q1-Klausuraufgabe zu Dielektrika, Modellannahmen und der Differentialgleichung des RC-Kreises selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve an advanced-course-oriented Q1 written-test task on dielectrics, modeling assumptions, and the differential equation of the RC circuit.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "10de95ed-5eaa-4868-8070-b462a1d6d805",
+        "9e048bfc-694b-4557-8eea-a288383b5d73",
+        "33d33ffd-7337-44af-b6ba-521129c80784"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q1"
+      },
+      "extendedData": {
+        "treeOrder": 3
+      }
+    },
+    {
+      "id": "335dac08-14bc-4684-8f37-460de5da0449",
+      "title": "Elektronenablenkung im elektrischen Feld",
+      "titleEn": "Electron Deflection in Electric Fields",
+      "description": "Die lernende Person kann eine materialgestuetzte Q1-Klausuraufgabe zur Elektronenablenkung, zum Oszilloskop und zur Deutung von Teilchenbahnen im elektrischen Feld selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q1 written-test task on electron deflection, oscilloscopes, and the interpretation of particle trajectories in electric fields.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "eea19d9d-44b9-45c9-ba59-411af80c378a",
+        "bef60a6e-132d-40e6-a308-6b654289e8ad"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "phase": "Q1"
+      },
+      "extendedData": {
+        "treeOrder": 4
+      }
+    },
+    {
+      "id": "c1495102-b871-4496-9ca1-f3b33f1aec12",
+      "title": "Linearbeschleuniger und Relativitaetsgrenze",
+      "titleEn": "Linear Accelerator and Relativistic Limit",
+      "description": "Die lernende Person kann eine LK-orientierte Q1-Klausuraufgabe zum Linearbeschleuniger, zur Energieuebertragung an geladene Teilchen und zur relativistischen Modellgrenze selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve an advanced-course-oriented Q1 written-test task on linear accelerators, energy transfer to charged particles, and the relativistic limit of the model.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "5277de22-78fd-4c40-b21d-53249006daae",
+        "5ac6578f-8df1-4950-8db9-95650562809b"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_TECHNIK",
+          "LI_ENERGIE"
+        ],
+        "phase": "Q1"
+      },
+      "extendedData": {
+        "treeOrder": 5
+      }
+    },
+    {
+      "id": "f395d80f-0f59-4bb4-8832-ca8bc7f87603",
+      "title": "Magnetfeld, Leiterkraft und Lorentzkraft",
+      "titleEn": "Magnetic Field, Conductor Force, and Lorentz Force",
+      "description": "Die lernende Person kann eine materialgestuetzte Q1-Klausuraufgabe zu Magnetfeldern, Leiterkraft, magnetischer Flussdichte und Lorentzkraft selbstaendig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q1 written-test task on magnetic fields, conductor force, magnetic flux density, and Lorentz force.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "97af421c-cf9d-4f1a-86e9-f25ee1e4afd9",
+        "b9f32c77-7e8b-441f-9952-144fe86f9119",
+        "30adb86b-0fc1-4d41-880f-2dd65645e2cf"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_BEWEGUNG"
+        ],
+        "phase": "Q1"
+      },
+      "extendedData": {
+        "treeOrder": 6
+      }
+    },
+    {
+      "id": "a5b6ecd0-610c-4458-9fcf-cc0bc37658ce",
+      "title": "Magnetische Messverfahren und Technik",
+      "titleEn": "Magnetic Measurement Methods and Technology",
+      "description": "Die lernende Person kann eine LK-orientierte Q1-Klausuraufgabe zu Drehmoment auf Dipole, Gauß-Verfahren, Hall-Effekt, Teilchenbeschleunigern und MRT selbstaendig bearbeiten und beurteilen.",
+      "descriptionEn": "The learner can independently solve and assess an advanced-course-oriented Q1 written-test task on torque on dipoles, the Gauss method, the Hall effect, particle accelerators, and MRI.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "3e9b3065-ef84-45ec-930b-33a9d2b55203",
+        "f4b5dae4-f4df-4d78-9f37-7ac65778ef8b",
+        "bcefc6c3-dd78-4d12-8498-863af2997ee8",
+        "fd1423c1-8288-42d5-9591-860ec4c13a86",
+        "83a987a4-c805-4315-810b-020d7ec6c15b"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_TECHNIK",
+          "LI_MATERIE"
+        ],
+        "phase": "Q1"
+      },
+      "extendedData": {
+        "treeOrder": 7
       }
     },
     {
