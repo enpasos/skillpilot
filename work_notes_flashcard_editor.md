@@ -1,5 +1,8 @@
 # Work Notes: Flashcard Editor GUI (lokal, DE/EN)
 
+Stable reference documentation now lives in `docs/dev/flashcard-editor.md`.
+This work-notes file keeps implementation notes and local planning context.
+
 ## Ziel
 - Eine **zweite GUI** unter eigener Route, lokal startbar.
 - Es wird immer nur **ein ausgewähltes Deck** bearbeitet (optional als DE/EN-Paar).
@@ -118,4 +121,3 @@
 - Vite-Dev-Middleware ist bewusst lokal; kein Production-Feature.
 - Physik-Decks haben aktuell nur `.de.json`; EN bleibt optional.
 - Bei sehr großen Decks ggf. Virtualisierung für Kartenliste nachziehen (später).
-

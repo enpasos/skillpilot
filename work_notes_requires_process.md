@@ -1,5 +1,8 @@
 # Work Notes: Requires-Prozess (Authoring, nicht CI)
 
+Stable reference documentation now lives in `docs/qa-ci/requires-review-process.md`.
+This work-notes file keeps run-specific context, examples, and dated review history.
+
 Datum: 2026-02-16  
 Scope: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json`
 

@@ -1,5 +1,8 @@
 # Work Notes: Atomicitäts-Prozess (Authoring, nicht CI)
 
+Stable reference documentation now lives in `docs/qa-ci/atomic-review-process.md`.
+This work-notes file keeps run-specific context, examples, and dated review history.
+
 Datum: 2026-02-17  
 Scope: Alle Curricula unter `curricula/.../json/*.json` (pro Review-Durchlauf genau eine Datei)
 

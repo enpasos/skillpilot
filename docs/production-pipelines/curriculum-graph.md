@@ -149,6 +149,11 @@ npm run validate:graph
 
 Fix any errors (missing IDs, invalid phases, cycles, manifest mismatches).
 
+For manual review workflows beyond structural validation, see:
+
+- `../qa-ci/atomic-review-process.md`
+- `../qa-ci/requires-review-process.md`
+
 ---
 
 ## Step 6: Register the curriculum
@@ -169,6 +174,8 @@ If this is a sub-curriculum:
 - Atomic goals are testable in 1-3 tasks.
 - Atomic `requires` are authored canonically on atomic goals wherever practical.
 - Cluster-level `requires` are only used intentionally, not as the default modeling shortcut.
+- Atomic goals have passed an atomic review pass where the landscape is mature enough for that investment.
+- Atomic goals have passed a requires review pass where the landscape is mature enough for that investment.
 - `contains` and `requires` are acyclic.
 - Learner-facing atomic goals lie on at least one route from a motivation anchor to a terminal autonomy goal.
 - IDs are stable and consistent.
