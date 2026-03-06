@@ -11,11 +11,11 @@ The intent is that independent implementations interpret and validate graphs in 
 
 ## 1. Notation and conventions
 
-* $G$ is a finite set of **goals** (also called skills or nodes).
-* A **binary relation** $X \subseteq G \times G$ is a set of ordered pairs $(a,b)$.
-* For any relation $X$, $X^+$ denotes the **transitive closure** of $X$.  
+- $G$ is a finite set of **goals** (also called skills or nodes).
+- A **binary relation** $X \subseteq G \times G$ is a set of ordered pairs $(a,b)$.
+- For any relation $X$, $X^+$ denotes the **transitive closure** of $X$.  
   Informally, $(a,b)\in X^+$ means there exists a directed path from $a$ to $b$ following edges in $X$.
-* A directed graph $(G,X)$ is **acyclic** iff there is no $g \in G$ such that $(g,g)\in X^+$.
+- A directed graph $(G,X)$ is **acyclic** iff there is no $g \in G$ such that $(g,g)\in X^+$.
 
 ---
 
@@ -25,19 +25,19 @@ Each goal $g \in G$ is a distinct entity.
 
 ### 2.1 Attribute domains
 
-* $\text{UUID}$: the set of UUID values.
-* $\Sigma^*$: the set of finite strings over an alphabet $\Sigma$.
-* $\mathbb{R}_{>0}$: strictly positive real numbers.
-* $P$: a set of phases. If phase ordering is used, phases form a totally ordered set $(P,\le)$.
+- $\text{UUID}$: the set of UUID values.
+- $\Sigma^*$: the set of finite strings over an alphabet $\Sigma$.
+- $\mathbb{R}_{>0}$: strictly positive real numbers.
+- $P$: a set of phases. If phase ordering is used, phases form a totally ordered set $(P,\le)$.
 
 ### 2.2 Attribute mappings
 
 Each goal $g\in G$ has the following attributes:
 
-* $Id: G \to \text{UUID}$
-* $Title: G \to \Sigma^*$
-* $Phase: G \to P$
-* $Weight: G \to \mathbb{R}_{>0}$
+- $Id: G \to \text{UUID}$
+- $Title: G \to \Sigma^*$
+- $Phase: G \to P$
+- $Weight: G \to \mathbb{R}_{>0}$
 
 ### 2.3 Identifier uniqueness
 
@@ -51,9 +51,9 @@ $$
 
 For modeling guidance, it is useful to distinguish two conceptual subsets of $G$:
 
-* $A \subseteq G$: the set of **atomic goals**  
+- $A \subseteq G$: the set of **atomic goals**  
   Assessable, didactically precise goals that can be mastered directly.
-* $K = G \setminus A$: the set of **cluster goals**  
+- $K = G \setminus A$: the set of **cluster goals**  
   Structural aggregation goals used for navigation, grouping, and summaries.
 
 The exact storage-level encoding of this distinction is implementation-specific.  
@@ -65,8 +65,8 @@ Conceptually, atomic goals are the units where learning logic should become prec
 
 The curriculum graph is defined using two primary relations on $G$:
 
-* a hierarchy relation called **Contains**
-* a dependency relation called **Direct Requires**
+- a hierarchy relation called **Contains**
+- a dependency relation called **Direct Requires**
 
 ---
 
@@ -136,9 +136,9 @@ $$
 
 Interpretation:
 
-* atomic goals carry the precise didactic sequencing logic,
-* cluster goals remain useful for navigation, filtering, and aggregation,
-* cluster-level `requires` edges are best treated as a transitional authoring aid or as an intentionally strong universal statement.
+- atomic goals carry the precise didactic sequencing logic,
+- cluster goals remain useful for navigation, filtering, and aggregation,
+- cluster-level `requires` edges are best treated as a transitional authoring aid or as an intentionally strong universal statement.
 
 If a direct prerequisite is authored on a cluster goal, it is stronger than a mere summary: under the semantics in §6 it constrains descendants via inheritance.
 
@@ -172,8 +172,8 @@ $$
 
 Interpretation:
 
-* A goal inherits all direct prerequisites declared on its ancestors.
-* Only **direct** prerequisites declared in $R_d$ are inherited from ancestors.
+- A goal inherits all direct prerequisites declared on its ancestors.
+- Only **direct** prerequisites declared in $R_d$ are inherited from ancestors.
 
 **Note (with multiple parents):** If a node has multiple parents, it inherits the union of prerequisites from *all* ancestor paths.
 
@@ -191,8 +191,8 @@ In the target state where prerequisites are authored canonically on atomic goals
 
 In particular:
 
-* if no ancestor of a goal $v$ carries outgoing prerequisite edges, then $Pre_{eff}(v)$ is just the directly authored prerequisite set of $v$,
-* if $R_d \subseteq A \times A$, then cluster hierarchy does not inject additional prerequisite facts into atomic goals.
+- if no ancestor of a goal $v$ carries outgoing prerequisite edges, then $Pre_{eff}(v)$ is just the directly authored prerequisite set of $v$,
+- if $R_d \subseteq A \times A$, then cluster hierarchy does not inject additional prerequisite facts into atomic goals.
 
 ---
 
@@ -266,7 +266,7 @@ This prevents “inside-out” prerequisite definitions that often indicate a mo
 
 Often, prerequisites SHOULD be modeled between peer concepts rather than between ancestors/descendants in the hierarchy. Common guidance:
 
-* For $(u,v)\in R_d$: $u \notin Ancestors(v)$ and $u \notin Descendants(v)$
+- For $(u,v)\in R_d$: $u \notin Ancestors(v)$ and $u \notin Descendants(v)$
 
 If your product needs exceptions, treat this as a heuristic.
 
@@ -286,9 +286,9 @@ For mature landscapes, the actual didactic sequencing SHOULD be authored on atom
 
 Practical guidance:
 
-* Prefer adding `requires` edges between atomic goals instead of between clusters.
-* Use cluster-level `requires` only temporarily during early modeling, or when the prerequisite claim truly applies to all relevant descendants.
-* When refining a curriculum over time, move broad cluster dependencies downward into the relevant atomic goals and let higher-level dependency views be derived from that atomic layer.
+- Prefer adding `requires` edges between atomic goals instead of between clusters.
+- Use cluster-level `requires` only temporarily during early modeling, or when the prerequisite claim truly applies to all relevant descendants.
+- When refining a curriculum over time, move broad cluster dependencies downward into the relevant atomic goals and let higher-level dependency views be derived from that atomic layer.
 
 This keeps frontier logic precise and avoids over-blocking learners with coarse prerequisites.
 
@@ -298,9 +298,9 @@ SkillPilot landscapes SHOULD expose one or more didactic routes through the atom
 
 Let:
 
-* $M \subseteq A$ be the set of **motivation anchors**  
+- $M \subseteq A$ be the set of **motivation anchors**  
   (for example, atomic goals such as "Warum Physik?" / "Why Physics?")
-* $T \subseteq A$ be the set of **terminal autonomy goals**  
+- $T \subseteq A$ be the set of **terminal autonomy goals**  
   (for example, independent exam-task solving or other authentic capstone performances)
 
 An atomic goal $a\in A$ is **route-covered** iff:
@@ -317,10 +317,10 @@ Interpretation: every atomic goal should lie on at least one didactic path that 
 This means the atomic `requires` graph should not be a loose bag of local dependencies.  
 It should form teachable routes whose overall direction is:
 
-* motivation,
-* understanding / guided learning,
-* memorization where needed,
-* independent application / exam-level performance.
+- motivation,
+- understanding / guided learning,
+- memorization where needed,
+- independent application / exam-level performance.
 
 In the current validator rollout, rules `GVR-004` and `GVR-005` implement only the first half of this idea: they ensure connectivity from atomic goals back to a motivation anchor in the effective-prerequisite graph. A future stricter profile can extend this to full route coverage toward terminal autonomy goals, preferably on the atomic prerequisite layer.
 
@@ -330,8 +330,8 @@ For cluster goals $k_1,k_2\in K$, higher-level dependency views SHOULD normally 
 
 Typical summary semantics include:
 
-* **existential summary:** some atomic descendant of $k_2$ depends on some atomic descendant of $k_1$,
-* **coverage summary:** a defined share of atomic descendants of $k_2$ depends on descendants of $k_1$.
+- **existential summary:** some atomic descendant of $k_2$ depends on some atomic descendant of $k_1$,
+- **coverage summary:** a defined share of atomic descendants of $k_2$ depends on descendants of $k_1$.
 
 If a UI, report, or API exposes cluster-level dependencies, it SHOULD document which summary semantics it uses.  
 A raw boolean cluster edge is often too coarse for mature curricula.
@@ -494,5 +494,5 @@ $$
 
 Special cases:
 
-* $S = G$ gives the fully pessimistic mode.
-* Choosing $S$ smaller than $G$ yields a relaxed pessimistic check that can be widened iteratively if needed.
+- $S = G$ gives the fully pessimistic mode.
+- Choosing $S$ smaller than $G$ yields a relaxed pessimistic check that can be widened iteratively if needed.
