@@ -383,7 +383,7 @@ Layer A contains the **static, curriculum-level description** of a domain:
 - Conceptually, Layer A is **pure data**, ideally representable as JSON (or a similarly simple format) so that:
   - it can be reused by different frontends and tools,
   - other curricula or Themenwelten (z. B. Physik, Informatik, Brückenkurse) can be added as additional landscapes.
-- In this repo, the JSON files in `landscapes/` are the **concrete encodings** of each landscape:
+- In this repo, the JSON files under `curricula/**/json/` are the **concrete encodings** of each landscape:
   - e.g. das hessische *Kerncurriculum Mathematik gymnasiale Oberstufe* (KC 2024) sowie Physik (KC 2024) als DAG-Dateien.
 
 Agents working on Layer A should think in terms of:
@@ -459,13 +459,14 @@ To keep the architecture transparent and repo-friendly, we use simple JSON files
 - **Layer A (landscapes)**
   - Stored under `curricula/` (e.g. `curricula/<...>/json/<file>.json`).
   - Root curricula are explicitly listed in `curricula/curriculum_manifest.json` and validated in CI.
-  - Generated from the TypeScript source via `npm run export:landscape` (see `scripts/exportLandscape.ts`).
-  - Fields follow `LearningLandscape` / `LearningGoal` in `src/landscapeTypes.ts`.
-  - `shortKey` is an ASCII identifier derived from `id` and should be used for cross-layer references (Layer B/C).
+  - In the current repo they are maintained directly as committed JSON files; there is no `export:landscape` pipeline at the moment.
+  - Fields follow `LearningLandscape` / `LearningGoal` in `app/src/landscapeTypes.ts`; the backend mirrors these structures in its landscape loader types.
+  - `shortKey` is an optional ASCII identifier for cross-layer references. Current committed landscapes may still omit it, so runtime code must tolerate deterministic fallback derivation from `id`.
 
 - **Layer B (learner state)**
-  - Stored under `learners/<learnerId>.json`.
-  - Schema draft:
+  - Conceptually this can be represented as `learners/<learnerId>.json` in a file-based PoC.
+  - Current implementation in this repo persists learner state in the backend and also uses browser-local prototype state for some UI flows; there is no committed `learners/` directory in the repository today.
+  - Schema draft (if file-based snapshots are used):
     ```json
     {
       "learnerId": "alice",
@@ -479,8 +480,8 @@ To keep the architecture transparent and repo-friendly, we use simple JSON files
       }
     }
     ```
-  - Mastery map keys in the **Runtime/API** use **UUIDs** (`goalId`).
-  - In the **JSON persistence** (Layer A), we use `shortKey` for readability and stability across versions. The backend maps these to UUIDs at runtime.
+  - Runtime/API calls currently use goal IDs / goal keys as returned by the backend.
+  - If `shortKey` is available in a landscape, it is a good human-readable external reference, but consumers must handle missing `shortKey`.
   - During the PoC we can load/save these JSON files directly. Later they can move into a database or service, but the schema should remain stable so MCP tools/users can rely on it.
 
 - **Layer C (MCP resources/tools)**
@@ -519,7 +520,7 @@ Guiding principle:
 **Server-side (SkillPilot backend)**
 
 - Stores:
-  - landscapes (`landscapes/*.json`) – public curriculum-level descriptions,
+  - landscapes (`curricula/**/json/*.json`) – public curriculum-level descriptions,
   - learner state per `skillpilotId` – pseudonymous mastery and history.
 - Does **not** store:
   - names, nicknames, e‑mails, or other PII.
@@ -548,10 +549,11 @@ When designing tools (MCP or OpenAPI) on top of this model:
 - Document explicitly:
   - “This parameter must be an opaque SkillPilot ID, never a name or e‑mail.”
 - Typical endpoints:
-  - `POST /learners` → returns a new `skillpilotId` (optional `topic` for smart init),
-  - `GET /learners/{skillpilotId}/state` → returns unified state (Curriculum + Frontier + Goals),
-  - `PUT /learners/{skillpilotId}/mastery` → updates mastery and returns **new frontier** immediately,
-  - `POST /learners/{skillpilotId}/scope` → sets focus (e.g. "Stochastik") and updates planned goals.
+  - `POST /learners` → returns a new `skillpilotId` plus initial state,
+  - `GET /learners/{skillpilotId}/state` → returns unified state (Curriculum + Frontier + Goals + `stateMachine`),
+  - `POST /learners/{skillpilotId}/mastery` → updates mastery and returns **new frontier** immediately,
+  - `POST /learners/{skillpilotId}/scope` → sets focus (e.g. "Stochastik") and updates planned goals,
+  - `POST /learners/{skillpilotId}/active-goal` → locks the current atomic goal for the tutoring loop.
 
 LLM/trainer prompts should reinforce that:
 
@@ -565,15 +567,15 @@ LLM/trainer prompts should reinforce that:
 SkillPilot provides an **Optimized OpenAPI Specification** designed specifically for LLM Agents.
 
 ### 12.1 Key Features for AI
-- **Smart Initialization:** Agents can call `createLearner(topic="Math")` to auto-select the right curriculum.
+- **Lean Initialization:** Agents can call `createLearner()` to get a `skillpilotId` and initial state; curriculum selection then follows via `stateMachine.requiredAction`.
 - **Unified State:** `getLearnerState` returns everything the agent needs (Curriculum info, Rich Frontier, Planned Goals) in one call, reducing token usage and latency.
 - **Rich Frontier:** The frontier response includes goal titles, descriptions, and types, so the agent doesn't need to look them up separately.
-- **Immediate Feedback:** `upsertMastery` returns the *new* frontier immediately, allowing for a tight "Teach -> Assess -> Next Step" loop.
+- **Immediate Feedback:** `setMastery` returns the *new* frontier immediately, allowing for a tight "Teach -> Assess -> Next Step" loop.
 
 ### 12.2 Setup Guides
-- **Google Gemini:** See `ai/gem/gemini.md` for system instructions and setup steps.
-- **ChatGPT:** See `ai/gpt/gpt.md` for GPT configuration.
-- **OpenAPI Spec:** Use `ai/skillpilot-api-4ai.json` for the tool definition.
+- **Google Gemini:** See `ai/google gem/gemini.md` for the current status notes.
+- **ChatGPT:** See `ai/openai custom gpt/gpt_setup_guide.de.md` and `ai/openai custom gpt/gpt_setup_guide.en.md` for GPT configuration.
+- **OpenAPI Spec:** Use `ai/skillpilot-api-4ai.de.json` or `ai/skillpilot-api-4ai.en.json` for the tool definition.
 
 ## 13. Curriculum Assets & Flashcard Decks
 - **Source of Truth:** Flashcard decks (`*_deck.json`) and other curriculum-related assets must be stored in the same directory as the curriculum JSON files (e.g., `curricula/EU/CEFR/English_From_German/json/`).

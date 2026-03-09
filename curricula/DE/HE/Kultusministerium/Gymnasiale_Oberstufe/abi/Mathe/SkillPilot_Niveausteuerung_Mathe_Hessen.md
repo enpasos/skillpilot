@@ -45,8 +45,8 @@ allowed_tools: none         # none | WTR | CAS
 time_hint_min: 8            # grober Richtwert pro 5-BE-Task (optional)
 
 skills:
-  content_nodes: [271, 273] # KC-Knoten-IDs (Inhalt)
-  process_nodes: [44, 53]   # K-Knoten-IDs (Prozess)
+  content_goal_refs: ["<goal-uuid-or-shortKey>", "<goal-uuid-or-shortKey>"]
+  process_goal_refs: ["<goal-uuid-or-shortKey>", "<goal-uuid-or-shortKey>"]
   notes: "Grenzwertthema / Parameterbestimmung"
 
 operators: ["bestimmen", "begründen", "interpretieren"]
@@ -77,6 +77,8 @@ quality_gates:
 ```
 
 **Warum das wirkt:** Sobald du `min_decision_points` und `min_justification_steps` erzwingst, verschieben sich LK‑Aufgaben automatisch weg von „Rechenroutine“.
+
+**Wichtig zur Referenzierung:** Wenn Aufgabenmetadaten in SkillPilot persistiert oder mit Landscapes verknüpft werden, sollten diese Felder auf die tatsächlichen Goal-Referenzen der Landscape zeigen (UUID oder vorhandener `shortKey`). Reine KC-Indexnummern können zusätzlich als externe Curriculum-Notiz dokumentiert werden, sind aber nicht die kanonischen SkillPilot-Goal-IDs.
 
 ---
 
@@ -299,7 +301,7 @@ Erst danach wird sie dem passenden Branch in der Landscape zugeordnet.
 
 ---
 
-## 8. Minimal‑Transformationen: „Von zu leicht → passend“
+## 9. Minimal‑Transformationen: „Von zu leicht → passend“
 Wenn eine LK‑Aufgabe als zu leicht bewertet wird, wende in dieser Reihenfolge an:
 
 1. **Teilfragen zusammenziehen** (Scaffolding entfernen).  
@@ -310,7 +312,7 @@ Wenn eine LK‑Aufgabe als zu leicht bewertet wird, wende in dieser Reihenfolge 
 
 ---
 
-## 9. Kalibrierung anhand Originalaufgaben (Hessen 2007–2014; Stichprobe)
+## 10. Kalibrierung anhand Originalaufgaben (Hessen 2007–2014; Stichprobe)
 
 ### 9.1 Beobachtungen aus Originalformaten
 Aus den öffentlich zugänglichen Original‑Abituraufgaben (Hessen, GK/LK) lassen sich wiederkehrende **Niveau‑Signale** ablesen:
@@ -349,7 +351,7 @@ Wenn ihr Aufgaben **abiturähnlicher** machen wollt (ohne sie länger zu machen)
 
 ---
 
-## 10. Erweiterung für „Realitätsnah & Komplex“ (Scenario-Focus)
+## 11. Erweiterung für „Realitätsnah & Komplex“ (Scenario-Focus)
 
 Für Klausurvarianten, die explizit **„Realitätsnah & Komplex“** simulieren sollen (z. B. Klausurbeispiel 1), gelten zusätzliche Design-Prinzipien:
 

@@ -48,8 +48,8 @@ top level and per goal for future layers and exports.
 ### titleEn
 - Type: string
 - Example: `Mathematics Upper Secondary (Hesse, KC 2024)`
-- Used by: not defined in `app/src/landscapeTypes.ts`, so ignored by the typed loader
-- Status: currently unused
+- Used by: backend curriculum overview APIs and `app/src/views/CurriculaView.tsx`; not part of the current `useLandscapes` closure-hook type
+- Status: used in directory/overview flows, not in the learner/explorer closure hook
 
 ### description
 - Type: string
@@ -60,8 +60,8 @@ top level and per goal for future layers and exports.
 ### descriptionEn
 - Type: string
 - Example: `Learning landscape for the Hessian upper secondary mathematics curriculum (Kerncurriculum 2024).`
-- Used by: not defined in `app/src/landscapeTypes.ts`, so ignored by the typed loader
-- Status: currently unused
+- Used by: backend curriculum overview APIs and `app/src/views/CurriculaView.tsx`; not part of the current `useLandscapes` closure-hook type
+- Status: used in directory/overview flows, not in the learner/explorer closure hook
 
 ### filters
 - Type: array of objects `{ id: string, label: string }`
@@ -104,8 +104,8 @@ top level and per goal for future layers and exports.
 ### titleEn
 - Type: string
 - Example: `Q3.5 Statistics and Further Probability Distributions`
-- Used by: not used in UI; the typed loader ignores it
-- Status: currently unused
+- Used by: backend landscape loading and bilingual source files; learner/explorer views primarily use the localized `title` of the selected file
+- Status: available in data, not surfaced directly in the current learner/explorer UI
 
 ### description
 - Type: string
@@ -116,8 +116,8 @@ top level and per goal for future layers and exports.
 ### descriptionEn
 - Type: string
 - Example: `Statistical probability concept and data analysis ...`
-- Used by: not used in UI; the typed loader ignores it
-- Status: currently unused
+- Used by: backend landscape loading and bilingual source files; learner/explorer views primarily use the localized `description` of the selected file
+- Status: available in data, not surfaced directly in the current learner/explorer UI
 
 ### core
 - Type: boolean
@@ -142,6 +142,12 @@ top level and per goal for future layers and exports.
 - Status: used
 - Notes: tags are generic; other landscapes use tags like `srs-deck:*` or `select:*`
 
+### courseLevel
+- Type: string (optional)
+- Example: `GK`, `LK`, `both`
+- Used by: `app/src/goalTypes.ts` to derive GK/LK tags when explicit tags are missing
+- Status: used indirectly via tag inference
+
 ### contains
 - Type: string[] (goal IDs)
 - Example: `["22586099-f0ff-4a58-84cd-07867cb3ae51", "..."]`
@@ -161,6 +167,43 @@ top level and per goal for future layers and exports.
 - Example: `["Q3_5_A07", "Q3_5_A08"]`
 - Used by: not referenced in UI or backend code yet
 - Status: currently unused
+
+### extendedData
+- Type: object (optional, free-form)
+- Example: `{ "treeOrder": 1, "provenance": { "sourceTitle": "..." } }`
+- Used by:
+  - `app/src/views/GraphEditorView.tsx` for stable local ordering keys such as `treeOrder`
+  - backend provenance enrichment where present
+- Status: used as an extension bucket for non-core metadata
+
+### type
+- Type: string (`atomic` | `cluster`, optional)
+- Example: `atomic`
+- Used by:
+  - `app/src/goalTypes.ts` to preserve explicit node typing
+  - graph validation / authoring tools when distinguishing atomic vs cluster nodes
+- Status: used; falls back to `contains.length === 0` when omitted
+
+### nodeKind
+- Type: string (`exam` | `tutor` | `memory`, optional)
+- Example: `memory`
+- Used by:
+  - `app/src/goalTypes.ts`
+  - learner UI / AI responses for exam-mode and SRS-specific behavior
+- Status: used
+
+### examData
+- Type: object (optional)
+- Used by:
+  - exam-capable goals in Cockpit and AI state responses
+  - backend asset URL rewriting for AI endpoints
+- Status: used on exam nodes
+- Notes: contains task text, solution text, and scoring metadata
+
+### experimentData
+- Type: object (optional)
+- Used by: experiment-capable goals in the frontend and backend goal mapping
+- Status: available, domain-specific
 
 ## Link model
 

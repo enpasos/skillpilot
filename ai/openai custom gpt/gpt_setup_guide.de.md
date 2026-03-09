@@ -31,7 +31,7 @@ Open **Create → New GPT → Konfigurieren** and fill out the fields as follows
 
 ### 2.2 Hinweise (System Instructions)
 
-In the GPT builder, paste the **entire** content of `ai/openai custom gpt/system_instructions.md` into **Hinweise** (plain text, unchanged).
+In the GPT builder, paste the **entire** content of `ai/openai custom gpt/system_instructions.de.md` into **Hinweise** (plain text, unchanged).
 
 *Note: These instructions are critical for ensuring the AI uses UUIDs correctly and understands the difference between Frontier and Planned goals.*
 
@@ -77,9 +77,9 @@ If it waits for a "ping", the system instructions or actions are not correctly w
 In the **Wissen** section of the GPT builder:
 
 1.  Click **„Datei hochladen“**.
-2.  Upload the all knowledge_docs from this repository.
+2.  Upload all `knowledge_docs` from this repository.
 
-The GPT willconsult this file to understand the pedagogical "Training Loop".
+The GPT will consult these files to understand the pedagogical "Training Loop".
 
 -----
 
@@ -106,15 +106,16 @@ In the **Aktionen** section:
 
 End-to-end flow for a typical learner session:
 
-1.  **Init:** The GPT checks for a nickname and `skillpilotId`. If missing, it calls `createLearner` (optionally with a topic like "Math").
-2.  **Context:** It calls `getLearnerState` (or uses the state from `createLearner`) to get the Curriculum, Frontier, Goals, and `stateMachine` immediately.
-3.  **Discovery:** It looks at `frontier` and selects goals with `type=atomic`. If only clusters are present, call `setScope` to drill down.
-4.  **Personalization:** If `stateMachine.requiredAction` is `setPersonalization` (e.g. GK/LK or subject/level filters are needed), ask for the missing preference and call `setPersonalization`.
-5.  **Scope:** If the user has a specific topic goal ("I want to learn Stochastik/Analysis"), call `setScope` to focus the plan.
-6.  **Lock Goal:** It calls `setActiveGoal` for the chosen atomic goal.
-7.  **Teaching:** It teaches that locked goal and does exercises.
-8.  **Mastery:** After success, it calls `setMastery` **immediately** (no confirmation prompt). If competence is not verified, it must **not** call `setMastery`. This returns the **new** frontier immediately.
-9.  **Loop:** It picks the next `type=atomic` goal from `frontier`, locks it, and continues.
+1.  **Init:** The GPT checks for a nickname and `skillpilotId`. If missing, it calls `createLearner()`.
+2.  **Bootstrap:** It reads `stateMachine.requiredAction` from `createLearner` / `getLearnerState`. If `setCurriculum` is required, it asks the user to choose from `stateMachine.curriculumOptions` and calls `setCurriculum`.
+3.  **Context:** It calls `getLearnerState` (or uses the state from `createLearner`) to get the Curriculum, Frontier, Goals, and `stateMachine` immediately.
+4.  **Discovery:** It looks at `frontier` and selects goals with `type=atomic`. If only clusters are present, call `setScope` to drill down.
+5.  **Personalization:** If `stateMachine.requiredAction` is `setPersonalization` (e.g. GK/LK or subject/level filters are needed), ask for the missing preference and call `setPersonalization`.
+6.  **Scope:** If the user has a specific topic goal ("I want to learn Stochastik/Analysis"), call `setScope` to focus the plan.
+7.  **Lock Goal:** It calls `setActiveGoal` for the chosen atomic goal.
+8.  **Teaching:** It teaches that locked goal and does exercises.
+9.  **Mastery:** After success, it calls `setMastery` **immediately** (no confirmation prompt). If competence is not verified, it must **not** call `setMastery`. This returns the **new** frontier immediately.
+10. **Loop:** It picks the next `type=atomic` goal from `frontier`, locks it, and continues.
 
 -----
 

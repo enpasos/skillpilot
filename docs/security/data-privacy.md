@@ -60,19 +60,20 @@ The AI provider processes the conversation and tool outputs.
 4.  **Browser** links "Peter" -> `0824a2e2-5981-447d-b6de-9a14d0929c21` locally.
 5.  **Result:** Server has empty profiles. Browser has the key to unlock them.
 
-### Scenario: Grading / Assessment
+### Scenario: Progress Review / Current PoC
 1.  **Teacher** selects "Peter" in the UI.
 2.  **Browser** looks up ID `0824a2e2-5981-447d-b6de-9a14d0929c21`.
 3.  **Browser** requests progress from **Server** (`GET /api/ui/learners/0824a2e2-5981-447d-b6de-9a14d0929c21/mastery`).
-4.  **Teacher** updates slider.
-5.  **Browser** sends update to **Server** (`PUT /api/ui/learners/0824a2e2-5981-447d-b6de-9a14d0929c21/mastery`).
+4.  **Teacher/Learner** may adjust the manual mastery slider in the current browser UI.
+5.  **Current status:** these manual slider changes are still local browser state in the React app; there is currently no dedicated UI endpoint like `PUT /api/ui/learners/{skillpilotId}/mastery`.
+6.  Persisted mastery changes currently happen via the AI tutoring flow (`POST /api/ai/{lang}/learners/{skillpilotId}/mastery`) or via export/import restore.
 
 ### Scenario: AI Tutoring Session
 1.  **Learner** provides `0824a2e2-5981-447d-b6de-9a14d0929c21` to the AI (or clicks a link containing it).
-2.  **AI** calls `getFrontier(skillpilotId="0824a2e2-5981-447d-b6de-9a14d0929c21")` (or the corresponding `GET /api/ui/learners/{skillpilotId}/frontier` endpoint).
-3.  **Server** returns: "Goal A: Mastered, Goal B: Ready".
-4.  **AI** sees: "This user (0824a2e2-5981-447d-b6de-9a14d0929c21) knows A but needs B."
-5.  **AI** generates a tutorial for Goal B.
+2.  **AI** calls `GET /api/ai/{lang}/learners/{skillpilotId}/state`.
+3.  **Server** returns unified learner state (curriculum, frontier, active goal, and `stateMachine`).
+4.  **AI** follows `stateMachine.requiredAction`, typically calling `POST /api/ai/{lang}/learners/{skillpilotId}/active-goal` before teaching and `POST /api/ai/{lang}/learners/{skillpilotId}/mastery` after competence is verified.
+5.  **AI** generates a tutorial for the active goal and receives the updated frontier immediately after the mastery write.
 6.  *Privacy Note:* The AI knows the *capabilities* of 0824a2e2-5981-447d-b6de-9a14d0929c21, but does not know that 0824a2e2-5981-447d-b6de-9a14d0929c21 is "Peter", unless Peter explicitly writes "My name is Peter" in the chat.
 
 ---
