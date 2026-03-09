@@ -126,6 +126,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [refreshCounter, setRefreshCounter] = useState(0);
   const [velocityRefreshCounter, setVelocityRefreshCounter] = useState(0);
   const [srsMasteryTick, setSrsMasteryTick] = useState(0);
+  const [optimisticSrsMasteryByGoal, setOptimisticSrsMasteryByGoal] = useState<Record<string, number>>({});
 
 
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -184,10 +185,26 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const srsMasteryByGoal = useSrsMastery(srsGoals, skillpilotId, srsMasteryTick, language)
 
+  useEffect(() => {
+    setOptimisticSrsMasteryByGoal((current) => {
+      let changed = false
+      const next = { ...current }
+      Object.entries(current).forEach(([goalId, mastery]) => {
+        if (srsMasteryByGoal[goalId] === mastery) {
+          delete next[goalId]
+          changed = true
+        }
+      })
+      return changed ? next : current
+    })
+  }, [srsMasteryByGoal])
+
   const getEffectiveMastery = useCallback((goalId: string) => {
+    const optimistic = optimisticSrsMasteryByGoal[goalId]
+    if (optimistic !== undefined) return optimistic
     const override = srsMasteryByGoal[goalId]
     return override !== undefined ? override : getMastery(goalId)
-  }, [srsMasteryByGoal, getMastery])
+  }, [optimisticSrsMasteryByGoal, srsMasteryByGoal, getMastery])
 
   // Filter root goals based on Personal Curriculum (Level 2)
   const visibleRootGoals = useMemo(() => {
@@ -608,6 +625,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const handleSseUpdate = useCallback(async (payload?: { type?: string; nodeId?: string }) => {
     if (payload?.type === 'CLIENT_STATE_UPDATED' && payload?.nodeId) {
       setSrsMasteryTick(c => c + 1)
+      setRefreshCounter(c => c + 1)
       setVelocityRefreshCounter(c => c + 1)
       if (currentGoal?.id === payload.nodeId) {
         setSrsReloadCounter(c => c + 1)
@@ -1427,7 +1445,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   onSync={syncClientData}
                   reloadSignal={srsReloadCounter}
                   filterTags={getSrsFilterTagsForGoal(currentGoal)}
-                  onStateChange={() => {
+                  onStateChange={({ goalId, mastery }) => {
+                    setOptimisticSrsMasteryByGoal((current) => {
+                      if (current[goalId] === mastery) return current
+                      return { ...current, [goalId]: mastery }
+                    })
                     setSrsMasteryTick(c => c + 1)
                     setRefreshCounter(c => c + 1)
                   }}

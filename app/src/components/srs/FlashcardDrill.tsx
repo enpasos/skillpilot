@@ -12,7 +12,12 @@ interface FlashcardDrillProps {
     goalId: string
     onSync?: (goalId: string) => Promise<boolean>
     reloadSignal?: number
-    onStateChange?: () => void
+    onStateChange?: (state: {
+        goalId: string
+        mastery: number
+        due: number
+        total: number
+    }) => void
 }
 
 interface VocabData {
@@ -232,6 +237,7 @@ export function FlashcardDrill({
         setSyncInFlight(false)
         syncedAllCaughtUpRef.current = false
         sessionInitialDueRef.current = null
+        lastMasteryRef.current = null
     }, [dataSourceUrl, goalId]) // Reset on goal change
 
     useEffect(() => {
@@ -306,7 +312,6 @@ export function FlashcardDrill({
                 } catch (e) { console.error("Storage load error", e) }
 
                 setSrsState(loadedState)
-                onStateChange?.()
 
                 // Process Queue
                 const now = Date.now()
@@ -399,8 +404,13 @@ export function FlashcardDrill({
         const mastery = stats.due === 0 ? 1 : 0
         if (lastMasteryRef.current === mastery) return
         lastMasteryRef.current = mastery
-        onStateChange()
-    }, [stats.due, stats.total, onStateChange])
+        onStateChange({
+            goalId,
+            mastery,
+            due: stats.due,
+            total: stats.total,
+        })
+    }, [goalId, stats.due, stats.total, onStateChange])
 
     useEffect(() => {
         if (!isFinished) {
