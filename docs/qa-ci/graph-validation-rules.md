@@ -26,6 +26,7 @@ This is the single source of truth for algorithmic graph validation in CI.
 | `GVR-006` | A goal must not directly require one of its direct `contains` children (inverse anti-pattern of `GVR-003`). | Rollout subset (`DE_HES_S_GYM_2_*`, including `OVERVIEW`) | `error` |
 | `GVR-007` | MIT OCW module atomic goals must include intensive source-link coverage (`concept` + `practice` + `assessment`) in canonical `resourceLinks`. | MIT OCW module landscapes (`frameworkId` starts with `mit-ocw-` and root tagged `module:*`) | `error` |
 | `GVR-008` | Committed landscape goals must use canonical `resourceLinks` as the only supported goal-level helper-link field. | Local landscape | `error` |
+| `GVR-009` | If explicit `type` metadata is present, it must match the canonical node classification derived from direct `contains` children (`atomic` iff leaf, `cluster` iff non-leaf). | Local landscape | `error` |
 
 ## Core validator checks (always active, fail CI)
 
@@ -57,6 +58,7 @@ These checks are already implemented and treated as `error`:
 
 - Validation is intentionally structural/algorithmic.
 - Didactic quality checks (sequencing quality, granularity, redundancy of meanings, etc.) remain part of manual QA (`curricula/QA/*`).
+- Learner-state semantics from the concept spec such as atomic mastery, frontier computation, and optimistic/pessimistic filter evaluation are currently **not** validated in CI.
 - Additional structural rules should be added here first, then implemented in `validateGraph.ts`, then rolled out in CI.
 
 ## Current compatibility model vs. target model
@@ -70,8 +72,10 @@ The current CI validator still operates on the compatibility model used by the e
 The conceptual target model described in `docs/concept/curriculum-graph/graph-definition.md` is stricter:
 
 - the canonical didactic sequencing layer should primarily be authored on atomic goals
+- atomic/cluster semantics are defined canonically by the direct `contains` relation (leaf = atomic, non-leaf = cluster)
 - cluster-level dependency views should preferably be derived from atomic descendants
 - mature route-quality checks should eventually validate atomic didactic routes from motivation anchors to terminal autonomy goals
+- progression semantics in the concept doc are defined via atomic mastery and derived cluster satisfaction, but this is not yet a CI validation target
 
 Until the validator and landscapes are migrated, this file distinguishes clearly between:
 
@@ -88,8 +92,9 @@ These rules are intentionally a compatibility rollout, not yet the full mature r
 Validation semantics:
 
 - Atomic node detection:
-  - `type === "atomic"` if explicitly set
-  - otherwise fallback: `contains.length === 0`
+  - concept-level canonical meaning: a node is atomic iff `contains.length === 0`
+  - current validator implementation uses that canonical leaf/non-leaf definition
+  - if explicit `type` metadata is present, `GVR-009` additionally enforces consistency with that canonical classification
 - Motivation anchor detection:
   - first atomic node title must start with `Warum` or `Why` (case-insensitive)
 - `GVR-004` fails if:
@@ -119,13 +124,37 @@ Target semantics for mature landscapes:
 - route coverage should be defined primarily on the atomic direct-prerequisite graph (`R_d` on atomic goals), not on inherited `R_eff`
 - a landscape or route-group may have one or more motivation anchors; a single global anchor is not required if the content structure suggests otherwise
 - a landscape will often have multiple terminal autonomy goals, typically authentic independent performances such as exam tasks or other capstones
-- every atomic goal should ideally lie on at least one didactic path from a motivation anchor to a terminal autonomy goal
+- every route-relevant atomic goal should ideally lie on at least one didactic path from a motivation anchor to a terminal autonomy goal
+- explicitly excluded support-only atomic goals (concept-spec set `E_route`, e.g. memorization-only helper nodes) require a machine-readable profile convention before they can be validated generically in CI
 
 Recommended rollout strategy:
 
 - keep `GVR-004` / `GVR-005` as migration-compatible checks on `R_eff`
 - later add stricter route-quality rules on the atomic graph
 - treat full atomic route coverage as `SHOULD` at concept level first, then promote it to `MUST` only for mature rollout subsets or strict validator profiles
+
+## Immediate implications from the updated concept spec
+
+The recent updates in `docs/concept/curriculum-graph/graph-definition.md` do **not** imply that every newly clarified concept should become a CI graph rule immediately.
+
+### Already implemented structural alignment
+
+- **`GVR-009`: explicit node-type consistency**  
+  If a goal stores explicit `type` metadata, it must match the canonical concept-spec classification:
+  - `atomic` iff `contains.length === 0`
+  - `cluster` iff `contains.length > 0`
+
+### Not suitable as graph-only CI rules yet
+
+- **Atomic mastery / cluster satisfaction semantics**  
+  These are learner-state/runtime semantics, not static graph invariants.
+- **Optimistic / pessimistic filter frontier semantics**  
+  These describe scoped runtime evaluation, not a property of a landscape JSON in isolation.
+
+### Future-rule prerequisites before rollout
+
+- **Route-exclusion support set (`E_route`)**  
+  The concept spec now allows explicit support-only atomic exceptions (for example memory-only helper nodes), but a generic CI rule should only be introduced once there is a stable machine-readable convention for identifying those nodes across landscapes.
 
 Reference implementations already curated:
 
@@ -185,3 +214,21 @@ Interpretation:
 
 - unsupported goal-level link metadata is rejected by CI and ignored by runtime link rendering
 - committed landscape files in this repository should store helper links only in canonical `resourceLinks`
+
+## Explicit node-type consistency rule (`GVR-009`)
+
+- Scope: all committed landscape JSON files validated in CI.
+- Current issue level: follows global `GVR-*` strictness (`error` by default, `warn` with `VALIDATE_GRAPH_STRICT_RULES=0`).
+
+Validation semantics:
+
+- canonical node classification is derived structurally:
+  - `atomic` iff `contains.length === 0`
+  - `cluster` iff `contains.length > 0`
+- if a goal explicitly stores `type: "atomic"` but is structurally non-leaf, emit `GVR-009`
+- if a goal explicitly stores `type: "cluster"` but is structurally a leaf, emit `GVR-009`
+
+Interpretation:
+
+- explicit `type` metadata is optional
+- if present, it is a redundant declaration and must agree with the canonical graph structure

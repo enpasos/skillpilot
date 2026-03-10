@@ -28,7 +28,9 @@ Each goal $g \in G$ is a distinct entity.
 - $\text{UUID}$: the set of UUID values.
 - $\Sigma^*$: the set of finite strings over an alphabet $\Sigma$.
 - $\mathbb{R}_{>0}$: strictly positive real numbers.
-- $P$: a set of phases. If phase ordering is used, phases form a totally ordered set $(P,\le)$.
+- $P$: a set of phases.  
+  A curriculum MAY additionally declare a totally ordered comparable subset $(P_{ord},\le)$ with $P_{ord}\subseteq P$.  
+  Phase-monotonicity rules in this specification apply only on that declared ordered subset.
 
 ### 2.2 Attribute mappings
 
@@ -47,17 +49,27 @@ $$
 \forall g,h\in G:\ g\neq h \Rightarrow Id(g)\neq Id(h)
 $$
 
-### 2.4 Atomic and cluster goals (conceptual)
+### 2.4 Atomic and cluster goals (canonical semantic classification)
 
-For modeling guidance, it is useful to distinguish two conceptual subsets of $G$:
+Once the direct containment relation $C$ from §4 is fixed, the atomic/cluster split is defined canonically by the graph structure:
 
-- $A \subseteq G$: the set of **atomic goals**  
-  Assessable, didactically precise goals that can be mastered directly.
-- $K = G \setminus A$: the set of **cluster goals**  
-  Structural aggregation goals used for navigation, grouping, and summaries.
+$$
+A = \{\, g\in G \mid \neg \exists c\in G:\ (g,c)\in C \,\}
+$$
 
-The exact storage-level encoding of this distinction is implementation-specific.  
-Conceptually, atomic goals are the units where learning logic should become precise, while cluster goals organize and summarize that logic.
+$$
+K = G \setminus A
+$$
+
+Interpretation:
+
+- $A$: the set of **atomic goals**  
+  Assessable leaf goals with no direct `contains` children.
+- $K$: the set of **cluster goals**  
+  Structural aggregation goals with at least one direct `contains` child.
+
+Implementations MAY store explicit node-type metadata, but if they do, it MUST agree with this derived classification.  
+This makes all later references to “atomic” and “cluster” portable across implementations.
 
 ---
 
@@ -109,6 +121,23 @@ $$
 $$
 Descendants(g) = \{\, d\in G \mid (g,d)\in C^+ \,\}
 $$
+
+For later progression semantics, define the **atomic basis** of a goal:
+
+$$
+Atoms(g)=
+\begin{cases}
+\{g\} & \text{if } g\in A\\
+Descendants(g)\cap A & \text{if } g\in K
+\end{cases}
+$$
+
+Interpretation:
+
+- for an atomic goal, its basis is itself,
+- for a cluster goal, its basis is the set of atomic descendants whose mastery witnesses satisfaction of that cluster in set-based progression semantics.
+
+Clusters with $Atoms(g)=\varnothing$ are structurally allowed, but they SHOULD NOT participate in prerequisite authoring or learner progression semantics.
 
 ---
 
@@ -302,8 +331,18 @@ Let:
   (for example, atomic goals such as "Warum Physik?" / "Why Physics?")
 - $T \subseteq A$ be the set of **terminal autonomy goals**  
   (for example, independent exam-task solving or other authentic capstone performances)
+- $E_{route} \subseteq A$ be an optional set of **explicitly excluded support-only atomic goals**  
+  (for example, memorization-only nodes or other operational helper nodes)
 
-An atomic goal $a\in A$ is **route-covered** iff:
+Default:
+
+$$
+E_{route}=\varnothing
+$$
+
+If a profile uses a non-empty $E_{route}$, the identifying predicate MUST be machine-readable and documented by that profile.
+
+An atomic goal $a\in A\setminus E_{route}$ is **route-covered** iff:
 
 $$
 \exists m\in M,\ \exists t\in T:
@@ -312,7 +351,7 @@ $$
 \big(a=t \lor (a,t)\in R_d^+\big)
 $$
 
-Interpretation: every atomic goal should lie on at least one didactic path that starts with motivation and ends in autonomous performance.
+Interpretation: every route-relevant atomic goal should lie on at least one didactic path that starts with motivation and ends in autonomous performance.
 
 This means the atomic `requires` graph should not be a loose bag of local dependencies.  
 It should form teachable routes whose overall direction is:
@@ -373,21 +412,51 @@ A raw boolean cluster edge is often too coarse for mature curricula.
 
 ## 9. Learning availability and progression
 
-Let $M\subseteq G$ be the set of goals the learner has **mastered**.
+The primitive learner state for progression semantics is an **atomic mastered set**:
+
+$$
+M_A \subseteq A
+$$
+
+This reflects the intended authoring model: atomic goals are mastered directly, while cluster satisfaction is derived from atomic mastery.
 
 ### 9.1 Available next goals
 
-The learner’s frontier (available next goals) is:
+Define the global **satisfaction predicate**:
 
 $$
-Frontier(M) =
+Sat(g,M_A)
+\iff
+\big(Atoms(g)\neq\varnothing\big)\ \land\ \big(Atoms(g)\subseteq M_A\big)
+$$
+
+Interpretation:
+
+- an atomic goal is satisfied iff it is in $M_A$,
+- a cluster goal is satisfied iff all of its atomic descendants are in $M_A$.
+
+The normative learner frontier is defined on atomic goals:
+
+$$
+Frontier(M_A) =
 \left\{
-g \in G\setminus M \ \middle|\ 
-\forall u\in G:\ (u,g)\in R_{eff}^+ \Rightarrow u\in M
+a \in A\setminus M_A \ \middle|\ 
+\forall u\in G:\ (u,a)\in R_{eff}^+ \Rightarrow Sat(u,M_A)
 \right\}
 $$
 
-Interpretation: a goal is available if all of its prerequisite goals (including transitive prerequisites) are mastered.
+Interpretation: an atomic goal is available if all of its effective prerequisite goals are already satisfied, where cluster prerequisites are evaluated through their atomic descendants.
+
+If a product also exposes **cluster availability** for navigation purposes, it SHOULD derive it from the same satisfaction predicate:
+
+$$
+Frontier_K(M_A)=
+\left\{
+k\in K \mid Atoms(k)\neq\varnothing\ \land\ \neg Sat(k,M_A)\ \land\ \forall u\in G:\ (u,k)\in R_{eff}^+ \Rightarrow Sat(u,M_A)
+\right\}
+$$
+
+This keeps learner progression deterministic even while cluster-level `requires` remain legal in the compatibility model.
 
 In the current compatibility model, availability is evaluated on $R_{eff}$.  
 In a mature atomic-authored landscape, frontier decisions for atomic goals should be driven primarily by the atomic prerequisite layer, with inherited cluster prerequisites serving only as transitional support where they still exist.
@@ -396,16 +465,18 @@ In a mature atomic-authored landscape, frontier decisions for atomic goals shoul
 
 ## 10. Phase ordering
 
-Assume phases are totally ordered by $\le$.
+This section applies only to curricula that declare an ordered comparable phase subset $(P_{ord},\le)$ as described in §2.1.
 
 ### 10.1 Monotone prerequisite flow
 
 In typical curricula, prerequisites SHOULD point backward in time or remain within the same phase:
 
 $$
-(u,v)\in R_{eff} \Rightarrow Phase(u)\le Phase(v)
+(u,v)\in R_{eff}\ \land\ Phase(u)\in P_{ord}\ \land\ Phase(v)\in P_{ord}
+\Rightarrow Phase(u)\le Phase(v)
 $$
 
+Goals whose phases are not in the declared ordered subset are outside the scope of this rule.  
 If the system supports remedial or non-linear paths, violations of this rule may be allowed as explicit exceptions.
 
 In the current validator profile, this check is implemented as rule `GVR-002` (strict by default; temporary warn mode via `VALIDATE_GRAPH_STRICT_RULES=0`).
@@ -453,26 +524,52 @@ C_F = C \cap (G_F \times G_F),
 R_{d,F} = R_d \cap (G_F \times G_F).
 $$
 
-The effective relation inside the filtered graph, $R_{eff,F}$, is computed from $C_F$ and $R_{d,F}$ using the same definition as in §6 (i.e., by inheriting requirements along $C_F$).
+For scoped learner evaluation, the normative filtered effective relation is the **restriction of the global effective relation**:
+
+$$
+R_{eff}|_F = R_{eff} \cap (G_F \times G_F)
+$$
+
+This means:
+
+- effective prerequisite facts are computed once on the full graph,
+- then prerequisite facts whose source or target lies outside the filter are ignored,
+- but in-scope prerequisite facts are preserved even if they arose globally via an out-of-scope ancestor.
+
+This avoids making scoped availability depend on whether a prerequisite was authored directly on a child or inherited from a filtered-out ancestor.
 
 ### 12.2 Optimistic mode
 
 In **optimistic mode**, we first apply the filter and then compute availability inside the filtered graph only.  
 Intuition: when a learner is in the filtered scope (e.g., Grade 12), we temporarily assume that missing prerequisites from outside the scope do not block progress.
 
-Let $M \subseteq G$ be the learner’s mastered set (global). Define the filtered mastery:
+Define the filtered atomic set:
 
 $$
-M_F = M \cap G_F.
+A_F = A \cap G_F
+$$
+
+Define the scope-relative atomic basis:
+
+$$
+Atoms_F(g)=Atoms(g)\cap G_F
+$$
+
+and the corresponding scope-relative satisfaction predicate:
+
+$$
+Sat_F(g,M_A)
+\iff
+\big(Atoms_F(g)\neq\varnothing\big)\ \land\ \big(Atoms_F(g)\subseteq M_A\big)
 $$
 
 Then the optimistic frontier is:
 
 $$
-Frontier_{opt}(M,F) =
+Frontier_{opt}(M_A,F) =
 \left\{
-g \in G_F \setminus M_F \ \middle|\ 
-\forall u\in G_F:\ (u,g)\in R_{eff,F}^+ \Rightarrow u\in M_F
+a \in A_F \setminus M_A \ \middle|\ 
+\forall u\in G_F:\ (u,a)\in (R_{eff}|_F)^+ \Rightarrow Sat_F(u,M_A)
 \right\}.
 $$
 
@@ -483,10 +580,10 @@ In **pessimistic mode** or **strict mode**, candidate goals are still restricted
 Let $R_{eff}$ be computed on the full graph $(G,C,R_d)$. Then:
 
 $$
-Frontier_{pess}(M,F) =
+Frontier_{pess}(M_A,F) =
 \left\{
-g \in G_F \setminus M \ \middle|\ 
-\forall u\in G:\ (u,g)\in R_{eff}^+ \Rightarrow u\in M
+a \in A_F \setminus M_A \ \middle|\ 
+\forall u\in G:\ (u,a)\in R_{eff}^+ \Rightarrow Sat(u,M_A)
 \right\}.
 $$
 
@@ -495,16 +592,16 @@ $$
 For diagnosis, define the set of missing prerequisites of a goal $g$:
 
 $$
-Missing(g,M) =
-\{\, u \in G \mid (u,g)\in R_{eff}^+ \land u\notin M \,\}.
+Missing(g,M_A) =
+\{\, u \in G \mid (u,g)\in R_{eff}^+ \land \neg Sat(u,M_A) \,\}.
 $$
 
 To distinguish gaps inside vs. outside the filter:
 
 $$
 \begin{aligned}
-Missing_{in}(g,M,F)  &= Missing(g,M)\cap G_F,\\
-Missing_{out}(g,M,F) &= Missing(g,M)\setminus G_F.
+Missing_{in}(g,M_A,F)  &= Missing(g,M_A)\cap G_F,\\
+Missing_{out}(g,M_A,F) &= Missing(g,M_A)\setminus G_F.
 \end{aligned}
 $$
 
@@ -518,10 +615,10 @@ A “weakened” pessimistic approach can be modeled by choosing a **scope** set
 Define:
 
 $$
-Frontier_{scope}(M,F,S) =
+Frontier_{scope}(M_A,F,S) =
 \left\{
-g \in G_F \setminus M \ \middle|\ 
-\forall u\in S:\ (u,g)\in R_{eff}^+ \Rightarrow u\in M
+a \in A_F \setminus M_A \ \middle|\ 
+\forall u\in S:\ (u,a)\in R_{eff}^+ \Rightarrow Sat(u,M_A)
 \right\}.
 $$
 

@@ -68,6 +68,7 @@ const RULE_ATOMIC_TRANSITIVE_TO_WARUM = 'GVR-005'
 const RULE_REQUIRES_DIRECT_CHILD = 'GVR-006'
 const RULE_MIT_ATOMIC_SOURCE_LINKS = 'GVR-007'
 const RULE_NO_LEGACY_LINK_FIELDS = 'GVR-008'
+const RULE_EXPLICIT_TYPE_CONSISTENCY = 'GVR-009'
 const HESSEN_GYM_OVERVIEW_LANDSCAPE_ID = 'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da'
 const motivationRuleLandscapeIds = new Set<string>([
   '3e56aa75-c76c-4de5-883b-0aac98297846', // DE_HES_S_GYM_2_BIOLOGIE
@@ -268,8 +269,6 @@ function getComparablePhaseRank(phase: string): number | null {
 }
 
 function isAtomicGoal(goal: UiGoal): boolean {
-  if (goal.type === 'atomic') return true
-  if (goal.type === 'cluster') return false
   return (goal.contains?.length ?? 0) === 0
 }
 
@@ -318,6 +317,22 @@ function validateLandscape(landscape: ParsedLandscape) {
         graphRuleIssueLevel,
         landscape.landscapeId,
         `[${RULE_NO_LEGACY_LINK_FIELDS}] Goal ${goal.id} (${goal.title}) uses legacy link field(s): ${legacyLinkFields.join(', ')}. Use canonical resourceLinks instead.`,
+      )
+    }
+
+    const canonicalType = isAtomicGoal(goal) ? 'atomic' : 'cluster'
+    if (goal.type === 'atomic' && canonicalType !== 'atomic') {
+      addIssue(
+        graphRuleIssueLevel,
+        landscape.landscapeId,
+        `[${RULE_EXPLICIT_TYPE_CONSISTENCY}] Goal ${goal.id} (${goal.title}) declares type "atomic" but has direct contains children.`,
+      )
+    }
+    if (goal.type === 'cluster' && canonicalType !== 'cluster') {
+      addIssue(
+        graphRuleIssueLevel,
+        landscape.landscapeId,
+        `[${RULE_EXPLICIT_TYPE_CONSISTENCY}] Goal ${goal.id} (${goal.title}) declares type "cluster" but has no direct contains children.`,
       )
     }
 
