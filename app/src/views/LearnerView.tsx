@@ -222,11 +222,22 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [rootGoals, personalConfig])
 
   // Determine effective active filter based on personal config for current landscape
+  const supportedFilterIds = useMemo(() => {
+    const ids = new Set<string>()
+    availableLandscapes?.forEach((landscape) => {
+      landscape.filters?.forEach((filter) => ids.add(filter.id))
+    })
+    return ids
+  }, [availableLandscapes])
+
   const effectiveActiveFilter = useMemo(() => {
     const config = personalConfig[landscapeId]
-    if (config?.filterId) return config.filterId
-    return activeFilter
-  }, [landscapeId, personalConfig, activeFilter])
+    if (config?.filterId) {
+      return supportedFilterIds.has(config.filterId) ? config.filterId : undefined
+    }
+    if (!activeFilter || activeFilter === 'all') return activeFilter
+    return supportedFilterIds.has(activeFilter) ? activeFilter : undefined
+  }, [landscapeId, personalConfig, activeFilter, supportedFilterIds])
 
   const getVisibleChildIds = useCallback((parentId: string) => {
     const parent = goalIndexAll.get(parentId)
