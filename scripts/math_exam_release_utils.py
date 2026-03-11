@@ -28,7 +28,6 @@ def resolve_release_collection_specs(goals: list[dict], collections: list[dict])
     for collection in collections:
         release_ref = collection.get("releaseRef")
         if not isinstance(release_ref, dict):
-            errors.append(f"Collection {collection['id']} is missing a releaseRef object.")
             continue
 
         key = release_key(release_ref)
@@ -83,6 +82,7 @@ def resolve_release_collection_specs(goals: list[dict], collections: list[dict])
     for collection in collections:
         release_ref = collection.get("releaseRef")
         if not isinstance(release_ref, dict):
+            resolved_specs.append({**collection})
             continue
 
         key = release_key(release_ref)

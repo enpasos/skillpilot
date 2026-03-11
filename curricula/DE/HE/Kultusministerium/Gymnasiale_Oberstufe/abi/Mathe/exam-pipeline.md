@@ -4,12 +4,10 @@ The curriculum JSON is the single canonical release artifact for the 2026 Hessen
 
 - `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json`
 
-The four release anchors live in that curriculum as ordinary goals with minimal `release` metadata:
+The curriculum keeps only the canonical offer release anchors as ordinary goals with minimal `release` metadata:
 
 - `abi_gk_offer_2026`
 - `abi_lk_offer_2026`
-- `abi_gk_master_2026`
-- `abi_lk_master_2026`
 
 Everything in `abi/Mathe/` is derived build and QA infrastructure:
 
@@ -21,6 +19,7 @@ How the pipeline works:
 
 1. Update the curriculum goals and `examData` in the curriculum JSON.
 2. Mark the four release anchors in the curriculum with `release.examYear`, `release.kind`, `release.courseLevel`, and `release.status`.
+2. Mark the two offer release anchors in the curriculum with `release.examYear`, `release.kind`, `release.courseLevel`, and `release.status`.
 3. Rebuild derived artifacts from the curriculum.
 4. Validate structure, coverage, and review status against the curriculum-derived release anchors.
 

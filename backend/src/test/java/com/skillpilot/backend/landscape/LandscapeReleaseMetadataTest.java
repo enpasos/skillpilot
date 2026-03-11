@@ -11,7 +11,7 @@ class LandscapeReleaseMetadataTest {
     private static final String MATH_LANDSCAPE_ID = "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3";
 
     @Test
-    void mathLandscape_exposesExactlyFourReleasedAbiAnchors_andKeepsThemInLocalizedOutput() {
+    void mathLandscape_exposesExactlyTwoReleasedOfferAnchors_andKeepsThemInLocalizedOutput() {
         LandscapeProperties properties = new LandscapeProperties();
         properties.setDirectory("../curricula");
         LandscapeService landscapeService = new LandscapeService(properties, new ObjectMapper());
@@ -29,9 +29,7 @@ class LandscapeReleaseMetadataTest {
                 .extracting(LearningGoal::getShortKey)
                 .containsExactlyInAnyOrder(
                         "abi_gk_offer_2026",
-                        "abi_lk_offer_2026",
-                        "abi_gk_master_2026",
-                        "abi_lk_master_2026");
+                        "abi_lk_offer_2026");
 
         LearningLandscape english = landscapeService.getClosure(MATH_LANDSCAPE_ID, "en").stream()
                 .filter(landscape -> MATH_LANDSCAPE_ID.equals(landscape.getLandscapeId()))
@@ -49,16 +47,7 @@ class LandscapeReleaseMetadataTest {
         assertThat(localizedGkOffer.getRelease().getCourseLevel()).isEqualTo("GK");
         assertThat(localizedGkOffer.getRelease().getStatus()).isEqualTo("released");
 
-        LearningGoal germanGkMaster = german.getGoals().stream()
-                .filter(goal -> "abi_gk_master_2026".equals(goal.getShortKey()))
-                .findFirst()
-                .orElseThrow();
-        LearningGoal germanLkMaster = german.getGoals().stream()
-                .filter(goal -> "abi_lk_master_2026".equals(goal.getShortKey()))
-                .findFirst()
-                .orElseThrow();
-
-        assertThat(germanGkMaster.getContains()).isEmpty();
-        assertThat(germanLkMaster.getContains()).isEmpty();
+        assertThat(german.getGoals().stream().map(LearningGoal::getShortKey))
+                .doesNotContain("abi_gk_master_2026", "abi_lk_master_2026");
     }
 }
