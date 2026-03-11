@@ -21,6 +21,7 @@ public class LearningGoal {
     private String sourceRef;
     private List<java.util.Map<String, Object>> resourceLinks;
     private java.util.Map<String, Object> extendedData;
+    private ReleaseMetadata release;
     // Explicit node type ("atomic" | "cluster"), optional for backward compatibility
     private String type;
     // Explicit node kind ("exam" | "tutor" | "memory"), optional for backward compatibility
@@ -32,6 +33,14 @@ public class LearningGoal {
 
     public void setExtendedData(java.util.Map<String, Object> extendedData) {
         this.extendedData = extendedData;
+    }
+
+    public ReleaseMetadata getRelease() {
+        return release;
+    }
+
+    public void setRelease(ReleaseMetadata release) {
+        this.release = release;
     }
 
     public String getId() {

@@ -50,6 +50,13 @@ export interface ExperimentData {
   equipment: string[]
 }
 
+export interface ReleaseMetadata {
+  examYear: number
+  kind: 'offer' | 'master'
+  courseLevel: 'GK' | 'LK'
+  status: 'draft' | 'released'
+}
+
 export interface LearningGoal {
   /** Original goal id (KC-oriented, may be German). */
   id: string
@@ -74,6 +81,7 @@ export interface LearningGoal {
   sourceRef?: string
   resourceLinks?: ResourceLink[]
   extendedData?: Record<string, unknown>
+  release?: ReleaseMetadata
   examData?: ExamData
   experimentData?: ExperimentData
   /** Explicit node type ("atomic" | "cluster"), optional for backward compatibility. */

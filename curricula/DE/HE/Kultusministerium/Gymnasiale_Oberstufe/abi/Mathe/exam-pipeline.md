@@ -1,0 +1,51 @@
+# Math Exam Pipeline
+
+The curriculum JSON is the single canonical release artifact for the 2026 Hessen math exam setup:
+
+- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json`
+
+The four release anchors live in that curriculum as ordinary goals with minimal `release` metadata:
+
+- `abi_gk_offer_2026`
+- `abi_lk_offer_2026`
+- `abi_gk_master_2026`
+- `abi_lk_master_2026`
+
+Everything in `abi/Mathe/` is derived build and QA infrastructure:
+
+- `slot_matrix.json`: offer-slot structure and selection rules
+- `coverage_requirements.json`: coverage and review requirements
+- `task_bank.json`: generated inventory of exam-capable goals
+
+How the pipeline works:
+
+1. Update the curriculum goals and `examData` in the curriculum JSON.
+2. Mark the four release anchors in the curriculum with `release.examYear`, `release.kind`, `release.courseLevel`, and `release.status`.
+3. Rebuild derived artifacts from the curriculum.
+4. Validate structure, coverage, and review status against the curriculum-derived release anchors.
+
+Commands:
+
+```bash
+python scripts/build_math_exam_task_bank.py
+python scripts/validate_math_exam_pipeline.py --report tmp/math_exam_pipeline_report.json
+python scripts/export_math_exam_release_bundle.py
+```
+
+Interpretation:
+
+- `gk_offer_2026` and `lk_offer_2026` are the official offer structures.
+- `gk_master_2026` and `lk_master_2026` are the full training sets.
+- `draftReady` means the derived structure and declared coverage pass.
+- `releaseReady` additionally requires completed manual review fields in `task_bank.json`.
+
+Important boundary:
+
+- `task_bank.json`, `slot_matrix.json`, `coverage_requirements.json`, validator reports, and export bundles are not the release itself.
+- They may be regenerated at any time from the curriculum.
+- Nothing from those QA/build artifacts should be mirrored back into the curriculum unless it is product-relevant runtime data.
+
+Optional export:
+
+- `export_math_exam_release_bundle.py` creates a convenience bundle for downstream use.
+- That bundle is derived output, not the canonical release path.

@@ -136,6 +136,7 @@ public class LandscapeService {
                 gc.setExamples(g.getExamples());
                 gc.setSourceRef(g.getSourceRef());
                 gc.setExtendedData(g.getExtendedData());
+                gc.setRelease(g.getRelease());
                 gc.setType(g.getType());
                 gc.setNodeKind(g.getNodeKind());
                 gc.setExamData(localizeExamData(g.getExamData(), lang));

@@ -38,6 +38,8 @@
         "031b5000-16bb-430a-9c11-cb625f228bf4",
         "be43163c-b2fb-5296-a1be-c97de53ee868",
         "f204141c-c20b-504d-808c-6bcb426ce453",
+        "3fe71a23-2e16-5368-b5a0-ba13220f3451",
+        "fafbd2f3-412a-5dca-89e6-fcc4c35d8d0e",
         "e73eff57-dcf1-4db3-8325-ccdce9d53a3c"
       ],
       "requires": [],
@@ -11313,6 +11315,7 @@
     },
     {
       "id": "be43163c-b2fb-5296-a1be-c97de53ee868",
+      "shortKey": "abi_lk_offer_2026",
       "title": "Abiturprüfung Mathematik (LK)",
       "titleEn": "Abitur Exam Mathematics (Advanced Course)",
       "description": "Der Lernende kann die schriftliche Abiturprüfung Mathematik im Leistungskurs (100 BE) erfolgreich ablegen. Dies umfasst Teil 1 (hilfsmittelfrei, 30 BE) und Teil 2 (mit WTR/CAS, 70 BE).",
@@ -11326,16 +11329,18 @@
         "3cdb44da-e46e-504c-ad61-e04b282359d2"
       ],
       "requires": [
-        "482e852b-9358-457f-93b8-8b0bee089857",
-        "bad20033-7b35-4cab-869b-99b7590d8b0f",
-        "2abfedb2-6e23-4d0f-8701-e1c5b8f2aea0",
-        "7d45b71b-2841-41df-b411-d27c730ccfe9",
         "bea16be0-88b3-51b7-be3b-494d5c496105"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
         "demandLevel": "AB3",
         "phase": "Abitur"
+      },
+      "release": {
+        "examYear": 2026,
+        "kind": "offer",
+        "courseLevel": "LK",
+        "status": "released"
       }
     },
     {
@@ -11495,8 +11500,8 @@
       "id": "d1428383-7c50-4819-bf39-49774301551a",
       "title": "A4 (Lineare Algebra, Niveau 1, 5 BE) (LK)",
       "titleEn": "A4 (Linear Algebra, Level 1, 5 BE)",
-      "description": "Untersuchung von Geraden und Ebenen (Parallelität/Schnitt).",
-      "descriptionEn": "Investigation of lines and planes (parallelism/intersection).",
+      "description": "Untersuchung von Geraden und Ebenen mit Schnittpunkt- und Winkelbestimmung.",
+      "descriptionEn": "Investigation of lines and planes including intersection point and angle determination.",
       "weight": 1,
       "tags": [
         "LK"
@@ -11509,8 +11514,8 @@
         "demandLevel": "AB1"
       },
       "examData": {
-        "taskContent": "Gegeben sind die Gerade $g: \\vec{x} = \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix} + r \\cdot \\begin{pmatrix} 2 \\\\ 0 \\\\ -1 \\end{pmatrix}$ und die Ebene $E: x_1 + 2x_2 + 2x_3 = 10$.\nUntersuchen Sie die gegenseitige Lage von $g$ und $E$. Berechnen Sie gegebenenfalls den Schnittpunkt.",
-        "solutionContent": "**Lageuntersuchung:**\nRichtungsvektor $\\vec{u} = (2, 0, -1)^T$, Normalenvektor $\\vec{n} = (1, 2, 2)^T$.\nSkalarprodukt: $\\vec{u} \\cdot \\vec{n} = 2\\cdot1 + 0\\cdot2 + (-1)\\cdot2 = 0$. $\\Rightarrow$ $g$ verläuft parallel zu $E$ oder liegt in $E$.\n\n**Punktprobe:**\nStützpunkt $P(1|2|3)$ in $E$ einsetzen: $1 + 2(2) + 2(3) = 1 + 4 + 6 = 11 \\neq 10$.\n\n**Ergebnis:** Die Gerade $g$ ist echt parallel zur Ebene $E$.",
+        "taskContent": "Gegeben sind die Gerade\n$$\ng: \\vec{x} = \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix} + r \\cdot \\begin{pmatrix} 2 \\\\ 0 \\\\ -2 \\end{pmatrix}\n$$\nund die Ebene\n$$\nE: x_3 = 1.\n$$\n\n1. Bestimmen Sie den Schnittpunkt von $g$ mit $E$.\n2. Berechnen Sie den spitzen Winkel, unter dem die Gerade $g$ die Ebene $E$ schneidet.",
+        "solutionContent": "**1. Schnittpunkt:**\nFuer Punkte der Geraden gilt\n$$\n\\vec{x}(r)=\\begin{pmatrix}1+2r\\\\2\\\\3-2r\\end{pmatrix}.\n$$\nFuer den Schnitt mit $E$ muss die dritte Koordinate gleich $1$ sein:\n$$\n3-2r=1 \\Rightarrow r=1.\n$$\nDamit ist der Schnittpunkt\n$$\nS=\\begin{pmatrix}3\\\\2\\\\1\\end{pmatrix}.\n$$\n\n**2. Winkel zwischen Gerade und Ebene:**\nEin Normalenvektor der Ebene ist\n$$\n\\vec n=\\begin{pmatrix}0\\\\0\\\\1\\end{pmatrix}.\n$$\nDer Richtungsvektor der Geraden ist\n$$\n\\vec u=\\begin{pmatrix}2\\\\0\\\\-2\\end{pmatrix}.\n$$\nFuer den Winkel $\\beta$ zwischen Gerade und Ebene gilt\n$$\n\\sin(\\beta)=\\frac{|\\vec u\\cdot \\vec n|}{|\\vec u|\\cdot|\\vec n|}\n=\\frac{2}{\\sqrt{8}\\cdot 1}=\\frac{1}{\\sqrt2}.\n$$\nAlso folgt\n$$\n\\beta=45^\\circ.\n$$",
         "scoring": {
           "maxPoints": 5,
           "passingPoints": 3,
@@ -11518,22 +11523,17 @@
             {
               "id": "s1",
               "points": 2,
-              "description": "Skalarprodukt/Parallelität geprüft"
+              "description": "Schnittpunkt korrekt bestimmt"
             },
             {
               "id": "s2",
-              "points": 2,
-              "description": "Punktprobe/Abstand durchgeführt"
-            },
-            {
-              "id": "s3",
-              "points": 1,
-              "description": "Korrekte Schlussfolgerung"
+              "points": 3,
+              "description": "Winkel zwischen Gerade und Ebene korrekt berechnet"
             }
           ]
         },
-        "taskContentEn": "Given the line $g: \\vec{x} = \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix} + r \\cdot \\begin{pmatrix} 2 \\\\ 0 \\\\ -1 \\end{pmatrix}$ and the plane $E: x_1 + 2x_2 + 2x_3 = 10$.\nExamine the relative position of $g$ and $E$. If applicable, compute the intersection point.",
-        "solutionContentEn": "**Position check:**\nDirection vector $\\vec{u} = (2, 0, -1)^T$, normal vector $\\vec{n} = (1, 2, 2)^T$.\nDot product: $\\vec{u} \\cdot \\vec{n} = 2\\cdot1 + 0\\cdot2 + (-1)\\cdot2 = 0$. $\\Rightarrow$ $g$ is parallel to $E$ or lies in $E$.\n\n**Point test:**\nSupport point $P(1|2|3)$ in $E$: $1 + 2(2) + 2(3) = 1 + 4 + 6 = 11 \\neq 10$.\n\n**Result:** The line $g$ is strictly parallel to the plane $E$."
+        "taskContentEn": "Given the line\n$$\ng: \\vec{x} = \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix} + r \\cdot \\begin{pmatrix} 2 \\\\ 0 \\\\ -2 \\end{pmatrix}\n$$\nand the plane\n$$\nE: x_3 = 1.\n$$\n\n1. Determine the intersection point of $g$ and $E$.\n2. Compute the acute angle at which the line $g$ intersects the plane $E$.",
+        "solutionContentEn": "**1. Intersection point:**\nPoints on the line are given by\n$$\n\\vec{x}(r)=\\begin{pmatrix}1+2r\\\\2\\\\3-2r\\end{pmatrix}.\n$$\nFor the intersection with $E$, the third coordinate must equal $1$:\n$$\n3-2r=1 \\Rightarrow r=1.\n$$\nHence the intersection point is\n$$\nS=\\begin{pmatrix}3\\\\2\\\\1\\end{pmatrix}.\n$$\n\n**2. Angle between line and plane:**\nA normal vector of the plane is\n$$\n\\vec n=\\begin{pmatrix}0\\\\0\\\\1\\end{pmatrix}.\n$$\nThe direction vector of the line is\n$$\n\\vec u=\\begin{pmatrix}2\\\\0\\\\-2\\end{pmatrix}.\n$$\nFor the angle $\\beta$ between line and plane we get\n$$\n\\sin(\\beta)=\\frac{|\\vec u\\cdot \\vec n|}{|\\vec u|\\cdot|\\vec n|}\n=\\frac{2}{\\sqrt{8}\\cdot 1}=\\frac{1}{\\sqrt2}.\n$$\nTherefore,\n$$\n\\beta=45^\\circ.\n$$"
       }
     },
     {
@@ -11807,7 +11807,7 @@
       },
       "examData": {
         "taskContent": "![Abb. 4: Eine komplexe Hängebrücke zwischen zwei Pylonen. Das Haupttragseil hängt durch, daran hängen vertikal weitere Seile, die die Fahrbahn halten. Die Fahrbahn ist leicht nach oben gewölbt.](/assets/abi/2026_1/image4.png)\n\nDas Haupttragseil einer Brücke wird durch die Funktion der Kettenlinie approximiert:\n\n$$\nk(x) = 10 \\cdot (e^{0,02x} + e^{-0,02x})\n$$\n\nDie x‑Achse beschreibt die Wasseroberfläche (Höhe 0). Die Fahrbahn verläuft (wegen der Wölbung) gemäß der Parabel:\n\n$$\nf(x) = -0,0005x^2 + 10\n$$\n\n(Alle Angaben in Metern. Symmetrie zur y-Achse wird angenommen, Pylone bei $x = \\pm 100$).\n\n1. **Geometrie:** Bestimmen Sie die Gesamthöhe der Pylone über dem Wasserspiegel (y‑Koordinate der Aufhängepunkte des Seils bei $x=\\pm 100$) sowie den tiefsten Punkt des Tragseils. (5 BE)\n2. **Vertikal-Seile:** Zwischen dem Tragseil $k(x)$ und der Fahrbahn $f(x)$ verlaufen vertikale Haltestreben.\n   Bestimmen Sie die Länge der kürzesten und der längsten Haltestrebe im Bereich $-100 \\le x \\le 100$. (8 BE)\n3. **Winkel:** Unter welchem Winkel trifft das Tragseil auf die Pylone? (4 BE)\n4. **Fläche/Anstrich:** Die Fläche zwischen Tragseil und Fahrbahn soll seitlich mit einem Werbenetz verhängt werden.\n   Berechnen Sie den Flächeninhalt. (7 BE)\n5. **Variation:** Bei Belastung ändert sich die Form des Seils. Die neue Funktion ist $k_a(x) = \\frac{1}{5a} (e^{ax} + e^{-ax})$ mit $a>0$ (für $a=0{,}02$ erhält man das Seil aus Teilaufgabe 1).\n   Zeigen Sie allgemein durch Rechnung oder Argumentation: Je größer der Parameter $a$, desto steiler ist der Anstieg des Seils am Pylon ($x=100$). (6 BE)",
-        "solutionContent": "**1. Geometrie (5 BE)**\n$k(100) \\approx 75,2$m. $k(0) = 20$m.\n\n**2. Vertikal-Seile (8 BE)**\n$L(x) = k(x) - f(x)$. Min bei $x=0$: $10$m. Max bei $x=100$: $70,2$m.\n\n**3. Winkel (4 BE)**\n$k'(100) \\approx 1,45 \\Rightarrow \\alpha \\approx 55,4^\\circ$.\n\n**4. Fläche (7 BE)**\n$\\int_{-100}^{100} (k(x)-f(x)) dx \\approx 5.587,1 \\, m^2$.\n\n**5. Variation (6 BE)**\n$k_a'(100) = \\frac{1}{5}(e^{100a} - e^{-100a})$. Streng monoton wachsend für $a>0$.",
+        "solutionContent": "**1. Geometrie (5 BE)**\n$k(100) \\approx 75,2\\,\\text{m}$. Damit sind die Pylone etwa $75,2\\,\\text{m}$ hoch.\nWegen der Symmetrie liegt der tiefste Punkt bei $x=0$ mit\n$$\nk(0)=10(1+1)=20\\,\\text{m}.\n$$\n\n**2. Vertikal-Seile (8 BE)**\nDie Strebenlänge ist\n$$\nL(x)=k(x)-f(x).\n$$\nWegen der Symmetrie und des Wachstums von $L(x)$ für $x>0$ ist die kürzeste Strebe bei $x=0$:\n$$\nL(0)=20-10=10\\,\\text{m}.\n$$\nDie längste Strebe liegt an den Pylonen bei $x=\\pm 100$:\n$$\nL(100)=k(100)-f(100)\\approx 75,2-5=70,2\\,\\text{m}.\n$$\n\n**3. Winkel (4 BE)**\nDie Tangentensteigung am Pylon ist\n$$\nk'(x)=0,2\\left(e^{0,02x}-e^{-0,02x}\\right),\\qquad k'(100)\\approx 1,4507.\n$$\nDamit beträgt der Winkel der Tangente mit der Horizontalen\n$$\n\\varphi=\\arctan(1,4507)\\approx 55,4^\\circ.\n$$\nDa der Pylon vertikal steht, ist der gesuchte Winkel zwischen Tragseil und Pylon der Ergänzungswinkel:\n$$\n\\alpha=90^\\circ-55,4^\\circ\\approx 34,6^\\circ.\n$$\n\n**4. Fläche (7 BE)**\n$\\int_{-100}^{100} (k(x)-f(x)) dx \\approx 5.587,1 \\, m^2$.\n\n**5. Variation (6 BE)**\n$k_a'(100) = \\frac{1}{5}(e^{100a} - e^{-100a})$. Streng monoton wachsend für $a>0$.",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 15,
@@ -11840,7 +11840,7 @@
           ]
         },
         "taskContentEn": "![Fig. 4: A complex suspension bridge between two pylons. The main cable sags, with vertical hangers holding the roadway. The roadway is slightly cambered upward.](/assets/abi/2026_1/image4.png)\n\nThe main cable of a bridge is approximated by the catenary function:\n\n$$\nk(x) = 10 \\cdot (e^{0,02x} + e^{-0,02x})\n$$\n\nThe x-axis represents the water surface (height 0). The roadway (due to its camber) follows the parabola:\n\n$$\nf(x) = -0,0005x^2 + 10\n$$\n\n(All measurements in meters. Symmetry about the y-axis is assumed; pylons at $x = \\pm 100$).\n\n1. **Geometry:** Determine the total height of the pylons above the water level (y-coordinate of the cable attachment points at $x=\\pm 100$) and the lowest point of the main cable. (5 BE)\n2. **Vertical cables:** Between the main cable $k(x)$ and the roadway $f(x)$ run vertical hangers.\n   Determine the length of the shortest and longest hanger for $-100 \\le x \\le 100$. (8 BE)\n3. **Angle:** At what angle does the main cable meet the pylons? (4 BE)\n4. **Area/covering:** The area between the main cable and the roadway is to be covered on the sides with an advertising net.\n   Compute the area. (7 BE)\n5. **Variation:** Under load the cable shape changes. The new function is $k_a(x) = \\frac{1}{5a} (e^{ax} + e^{-ax})$ with $a>0$ (for $a=0{,}02$ you get the cable from part 1).\n   Show in general, by calculation or argument, that the larger the parameter $a$, the steeper the rise of the cable at the pylon ($x=100$). (6 BE)",
-        "solutionContentEn": "**1. Geometry (5 BE)**\n$k(100) \\approx 75.2$ m. $k(0) = 20$ m.\n\n**2. Vertical cables (8 BE)**\n$L(x) = k(x) - f(x)$. Min at $x=0$: $10$ m. Max at $x=100$: $70.2$ m.\n\n**3. Angle (4 BE)**\n$k'(100) \\approx 1.45 \\Rightarrow \\alpha \\approx 55.4^\\circ$.\n\n**4. Area (7 BE)**\n$\\int_{-100}^{100} (k(x)-f(x)) dx \\approx 5,587.1 \\, m^2$.\n\n**5. Variation (6 BE)**\n$k_a'(100) = \\frac{1}{5}(e^{100a} - e^{-100a})$. Strictly increasing for $a>0$."
+        "solutionContentEn": "**1. Geometry (5 BE)**\n$k(100) \\approx 75.2\\,\\text{m}$. So the pylons are about $75.2\\,\\text{m}$ high.\nBy symmetry, the lowest point is at $x=0$ with\n$$\nk(0)=10(1+1)=20\\,\\text{m}.\n$$\n\n**2. Vertical cables (8 BE)**\nThe hanger length is\n$$\nL(x)=k(x)-f(x).\n$$\nBy symmetry and because $L(x)$ increases for $x>0$, the shortest hanger is at $x=0$:\n$$\nL(0)=20-10=10\\,\\text{m}.\n$$\nThe longest hanger is at the pylons $x=\\pm 100$:\n$$\nL(100)=k(100)-f(100)\\approx 75.2-5=70.2\\,\\text{m}.\n$$\n\n**3. Angle (4 BE)**\nThe tangent slope at the pylon is\n$$\nk'(x)=0.2\\left(e^{0.02x}-e^{-0.02x}\\right),\\qquad k'(100)\\approx 1.4507.\n$$\nSo the angle of the tangent with the horizontal is\n$$\n\\varphi=\\arctan(1.4507)\\approx 55.4^\\circ.\n$$\nSince the pylon is vertical, the required angle between cable and pylon is the complementary angle:\n$$\n\\alpha=90^\\circ-55.4^\\circ\\approx 34.6^\\circ.\n$$\n\n**4. Area (7 BE)**\n$\\int_{-100}^{100} (k(x)-f(x)) dx \\approx 5,587.1 \\, m^2$.\n\n**5. Variation (6 BE)**\n$k_a'(100) = \\frac{1}{5}(e^{100a} - e^{-100a})$. Strictly increasing for $a>0$."
       }
     },
     {
@@ -11912,7 +11912,7 @@
       },
       "examData": {
         "taskContent": "### **C1 (Lineare Algebra – \"Populationsdynamik\", 20 BE)**\n\n![Abb. 5: Übergangsdiagrammvorstufe und ein Virus.](/assets/abi/2026_1/image5.png)\n\nEine Virenpopulation mutiert zwischen den Zuständen A, B und C.\nDie Übergangsmatrix pro Woche lautet:\n\n$$\nM = \\begin{pmatrix} 0,6 & 0,1 & 0 \\\\ 0,3 & 0,7 & 0,2 \\\\ 0,1 & 0,2 & 0,8 \\end{pmatrix}\n$$\n\n1. **Systemverständnis:** Interpretieren Sie die Spaltensummen von $M$. Handelt es sich um eine geschlossene Population?\n   Zeichnen Sie ein Übergangsdiagramm für die Zustände A, B und C. (4 BE)\n2. **Prognose:** Zu Beginn sind 10.000 Viren vom Typ A vorhanden (Rest 0).\n   Bestimmen Sie die Verteilung nach 10 Wochen.\n   Untersuchen Sie, ob sich langfristig ein stabiles Gleichgewicht einstellt. (8 BE)\n3. **Rekonstruktion:** In einer Probe fand man die Verteilung $\\vec{x}_{t+1} = (500, 800, 1000)^T$. \n   Bestimmen Sie die Verteilung in der Woche davor.\n   Erläutern Sie, warum nicht jede beliebige Verteilung eine \"Vorgänger\"-Verteilung haben muss. (8 BE)",
-        "solutionContent": "**1. Systemverständnis (4 BE)**\nSpaltensummen = 1. Geschlossene Population.\nDiagramm: A->A, A->B, A->C(0), etc. Pfeile entsprechend Matrixeinträgen.\n\n**2. Prognose (8 BE)**\n$\\vec{v}_{10} \\approx (1440, 3940, 4620)^T$. Fixvektor $\\approx (1053, 4210, 4737)^T$.\n\n**3. Rekonstruktion (8 BE)**\n$\\vec{x}_t = M^{-1}\\vec{x}_{t+1} \\approx (1389, -444, 1355)^T$. Negativ $\\Rightarrow$ unmöglich.",
+        "solutionContent": "**1. Systemverständnis (4 BE)**\nDie Spaltensummen von $M$ sind jeweils $1$. Damit wird die gesamte Population nur zwischen den Zuständen A, B und C umverteilt; es geht also keine Population verloren und es kommt keine hinzu. Das Modell beschreibt daher eine geschlossene Population.\nDas Übergangsdiagramm enthält für jede Spalte die zugehörigen Übergangswahrscheinlichkeiten, z. B. von A nach A mit $0{,}6$, von A nach B mit $0{,}3$ und von A nach C mit $0{,}1$.\n\n**2. Prognose (8 BE)**\nMit der Konvention\n$$\n\\vec{x}_{t+1}=M\\vec{x}_t\n$$\nund\n$$\n\\vec{x}_0=\\begin{pmatrix}10000\\\\0\\\\0\\end{pmatrix}\n$$\nfolgt\n$$\n\\vec{x}_{10}=M^{10}\\vec{x}_0\\approx \\begin{pmatrix}1128\\\\4254\\\\4618\\end{pmatrix}.\n$$\nLangfristig stellt sich ein Gleichgewicht ein, da $M$ einen Fixvektor zum Eigenwert $1$ besitzt. Nach Normierung auf insgesamt 10.000 Viren ergibt sich zum Beispiel\n$$\n\\vec{x}_*\\approx \\begin{pmatrix}1053\\\\4211\\\\4737\\end{pmatrix}.\n$$\n\n**3. Rekonstruktion (8 BE)**\nDa $\\det(M)=0{,}29\\neq 0$, ist $M$ invertierbar. Daher gilt\n$$\n\\vec{x}_t=M^{-1}\\vec{x}_{t+1}=M^{-1}\\begin{pmatrix}500\\\\800\\\\1000\\end{pmatrix}\n=\\begin{pmatrix}\\frac{21600}{29}\\\\\\frac{15400}{29}\\\\\\frac{29700}{29}\\end{pmatrix}\n\\approx \\begin{pmatrix}745\\\\531\\\\1024\\end{pmatrix}.\n$$\nDiese Probe besitzt also eine sinnvolle Vorgänger-Verteilung.\nNicht jede beliebige Verteilung ist jedoch als Vorgänger möglich: Zwar existiert wegen der Invertierbarkeit für jeden Vektor eine formale Urbildlösung, diese kann aber negative Einträge enthalten und wäre dann als Populationsverteilung fachlich nicht zulässig.",
         "scoring": {
           "maxPoints": 20,
           "passingPoints": 10,
@@ -11935,7 +11935,7 @@
           ]
         },
         "taskContentEn": "### **C1 (Linear Algebra – \"Population Dynamics\", 20 BE)**\n\n![Fig. 5: A draft transition diagram and a virus.](/assets/abi/2026_1/image5.png)\n\nA virus population mutates between states A, B and C.\nThe weekly transition matrix is:\n\n$$\nM = \\begin{pmatrix} 0,6 & 0,1 & 0 \\\\ 0,3 & 0,7 & 0,2 \\\\ 0,1 & 0,2 & 0,8 \\end{pmatrix}\n$$\n\n1. **System understanding:** Interpret the column sums of $M$. Is this a closed population?\n   Draw a transition diagram for states A, B and C. (4 BE)\n2. **Forecast:** Initially there are 10,000 viruses of type A (others 0).\n   Determine the distribution after 10 weeks.\n   Investigate whether a stable long-term equilibrium is reached. (8 BE)\n3. **Reconstruction:** In a sample, the distribution $\\vec{x}_{t+1} = (500, 800, 1000)^T$ was found.\n   Determine the distribution in the previous week.\n   Explain why not every arbitrary distribution must have a \"predecessor\" distribution. (8 BE)",
-        "solutionContentEn": "**1. System understanding (4 BE)**\nColumn sums = 1. Closed population.\nDiagram: A->A, A->B, A->C (0), etc. Arrows according to matrix entries.\n\n**2. Forecast (8 BE)**\n$\\vec{v}_{10} \\approx (1440, 3940, 4620)^T$. Fixed vector $\\approx (1053, 4210, 4737)^T$.\n\n**3. Reconstruction (8 BE)**\n$\\vec{x}_t = M^{-1}\\vec{x}_{t+1} \\approx (1389, -444, 1355)^T$. Negative component $\\Rightarrow$ impossible."
+        "solutionContentEn": "**1. System understanding (4 BE)**\nThe column sums of $M$ are all equal to $1$. So the total population is only redistributed between states A, B and C; no population is lost and none is added. Therefore the model describes a closed population.\nThe transition diagram contains the probabilities from each state according to the matrix entries, for example from A to A with $0.6$, from A to B with $0.3$, and from A to C with $0.1$.\n\n**2. Forecast (8 BE)**\nUsing the convention\n$$\n\\vec{x}_{t+1}=M\\vec{x}_t\n$$\nand\n$$\n\\vec{x}_0=\\begin{pmatrix}10000\\\\0\\\\0\\end{pmatrix},\n$$\nwe get\n$$\n\\vec{x}_{10}=M^{10}\\vec{x}_0\\approx \\begin{pmatrix}1128\\\\4254\\\\4618\\end{pmatrix}.\n$$\nA long-term equilibrium is reached because $M$ has a fixed vector for eigenvalue $1$. After normalization to a total of 10,000 viruses, one obtains for example\n$$\n\\vec{x}_*\\approx \\begin{pmatrix}1053\\\\4211\\\\4737\\end{pmatrix}.\n$$\n\n**3. Reconstruction (8 BE)**\nSince $\\det(M)=0.29\\neq 0$, the matrix is invertible. Hence\n$$\n\\vec{x}_t=M^{-1}\\vec{x}_{t+1}=M^{-1}\\begin{pmatrix}500\\\\800\\\\1000\\end{pmatrix}\n=\\begin{pmatrix}\\frac{21600}{29}\\\\\\frac{15400}{29}\\\\\\frac{29700}{29}\\end{pmatrix}\n\\approx \\begin{pmatrix}745\\\\531\\\\1024\\end{pmatrix}.\n$$\nSo this sample does have a meaningful predecessor distribution.\nHowever, not every arbitrary distribution is admissible as a predecessor: because of invertibility there is always a formal preimage, but it may contain negative entries and would then not be valid as a population distribution."
       }
     },
     {
@@ -11957,7 +11957,7 @@
       },
       "examData": {
         "taskContent": "![Abb. 6: Ein Baumdiagramm, das den Testablauf visualisiert. Erste Stufe: Infiziert (C) vs. Nicht-Infiziert. Zweite Stufe: Test Positiv (+) vs. Test Negativ (-).](/assets/abi/2026_1/image6.de.png)\n\nEin Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).\nDie Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).\n\n1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (4 BE)\n2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.\n   Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.\n   Interpretieren Sie das Ergebnis für die Teststrategie. (5 BE)\n3. **Testoptimierung:** Wie oft muss der Test bei einer Person wiederholt werden (unabhängig), damit bei lauter positiven Ergebnissen die Wahrscheinlichkeit für eine tatsächliche Infektion auf über 90% steigt? (6 BE)\n4. **Kapazitätsplanung:** Ein Labor wertet eine Serie von 2.000 Proben aus (Falsch-Positiv-Rate $p=0,02$). Bestimmen Sie die kleinste Zahl $k$, sodass die Anzahl der falsch-positiven Ergebnisse mit einer Wahrscheinlichkeit von mindestens 95% im Intervall $[0; k]$ liegt. (5 BE)",
-        "solutionContent": "**1. Testanalyse (4 BE)**\n$P(T+) = 0,005 \\cdot 0,99 + 0,995 \\cdot 0,02 \\approx 2,49\\%$.\n\n**2. Bedingte Wahrscheinlichkeit (5 BE)**\n$P(C|T+) = \\frac{0,00495}{0,02485} \\approx 19,9\\%$.\nInterpretation: Trotz positivem Test ist eine Infektion weiterhin unwahrscheinlich (Massentest problematisch).\n\n**3. Testoptimierung (6 BE)**\nBei $n$ unabhängigen Tests:\n$P(C|n \\times Pos) = \\frac{0,005 \\cdot 0,99^n}{0,005 \\cdot 0,99^n + 0,995 \\cdot 0,02^n}$.\nFür $n=2$ ergibt sich $\\approx 92\\% > 90\\%$.\nErgebnis: Eine Wiederholung (insgesamt 2 Tests) reicht rechnerisch aus. Hinweis: Unabhängigkeit ist in der Praxis fraglich.\n\n**4. Kapazitätsplanung (5 BE)**\n$X \\sim B_{2000; 0,02}$. Gesucht ist das kleinste $k$ mit $P(X \\le k) \\ge 0,95$.\nRechnerisch: $P(X \\le 50) \\approx 0,9506$, $P(X \\le 49) \\approx 0,935$.\n**Ergebnis:** $k = 50$.",
+        "solutionContent": "**1. Testanalyse (4 BE)**\n$P(T+) = 0,005 \\cdot 0,99 + 0,995 \\cdot 0,02 \\approx 2,49\\%$.\n\n**2. Bedingte Wahrscheinlichkeit (5 BE)**\n$P(C|T+) = \\frac{0,00495}{0,02485} \\approx 19,9\\%$.\nInterpretation: Trotz positivem Test ist eine Infektion weiterhin unwahrscheinlich (Massentest problematisch).\n\n**3. Testoptimierung (6 BE)**\nBei $n$ unabhängigen Tests:\n$P(C|n \\times Pos) = \\frac{0,005 \\cdot 0,99^n}{0,005 \\cdot 0,99^n + 0,995 \\cdot 0,02^n}$.\nFür $n=2$ ergibt sich $\\approx 92\\% > 90\\%$.\nErgebnis: Eine Wiederholung (insgesamt 2 Tests) reicht rechnerisch aus. Hinweis: Unabhängigkeit ist in der Praxis fraglich.\n\n**4. Kapazitätsplanung (5 BE)**\n$X \\sim B_{2000; 0,02}$. Gesucht ist das kleinste $k$ mit $P(X \\le k) \\ge 0,95$.\nRechnerisch erhält man zum Beispiel\n$$\nP(X \\le 50) \\approx 0{,}9491 < 0{,}95,\n$$\naber\n$$\nP(X \\le 51) \\approx 0{,}9628 \\ge 0{,}95.\n$$\n**Ergebnis:** $k = 51$.",
         "scoring": {
           "maxPoints": 20,
           "passingPoints": 10,
@@ -11985,11 +11985,12 @@
           ]
         },
         "taskContentEn": "![Fig. 6: A tree diagram visualizing the test procedure. First stage: infected (C) vs. not infected. Second stage: test positive (+) vs. test negative (-).](/assets/abi/2026_1/image6.en.png)\n\nA rapid test for type C reacts positive for 99% of infected samples (sensitivity), but also for 2% of non-infected samples (false-positive rate).\nThe prevalence of type C in the overall population is 0.5% ($P(C) = 0.005$).\n\n1. **Test analysis:** Determine the probability that a random sample tests positive. (4 BE)\n2. **Conditional probability:** A person receives a positive test result.\n   Compute the probability that they *actually* have virus type C.\n   Interpret the result for the testing strategy. (5 BE)\n3. **Test optimization:** How many times must the test be repeated independently for one person so that, given all positive results, the probability of a true infection exceeds 90%? (6 BE)\n4. **Capacity planning:** A lab processes a batch of 2,000 samples (false-positive rate $p=0.02$). Determine the smallest number $k$ such that the number of false positives lies in the interval $[0; k]$ with probability at least 95%. (5 BE)",
-        "solutionContentEn": "**1. Test analysis (4 BE)**\n$P(T+) = 0.005 \\cdot 0.99 + 0.995 \\cdot 0.02 \\approx 2.49\\%$.\n\n**2. Conditional probability (5 BE)**\n$P(C|T+) = \\frac{0.00495}{0.02485} \\approx 19.9\\%$.\nInterpretation: Even with a positive test, infection is still unlikely (mass testing is problematic).\n\n**3. Test optimization (6 BE)**\nFor $n$ independent tests:\n$P(C|n \\times Pos) = \\frac{0.005 \\cdot 0.99^n}{0.005 \\cdot 0.99^n + 0.995 \\cdot 0.02^n}$.\nFor $n=2$ this gives $\\approx 92\\% > 90\\%$.\nResult: One repetition (2 tests total) is sufficient mathematically. Note: independence is questionable in practice.\n\n**4. Capacity planning (5 BE)**\n$X \\sim B_{2000; 0.02}$. Find the smallest $k$ with $P(X \\le k) \\ge 0.95$.\nNumerically: $P(X \\le 50) \\approx 0.9506$, $P(X \\le 49) \\approx 0.935$.\n**Result:** $k = 50$."
+        "solutionContentEn": "**1. Test analysis (4 BE)**\n$P(T+) = 0.005 \\cdot 0.99 + 0.995 \\cdot 0.02 \\approx 2.49\\%$.\n\n**2. Conditional probability (5 BE)**\n$P(C|T+) = \\frac{0.00495}{0.02485} \\approx 19.9\\%$.\nInterpretation: Even with a positive test, infection is still unlikely (mass testing is problematic).\n\n**3. Test optimization (6 BE)**\nFor $n$ independent tests:\n$P(C|n \\times Pos) = \\frac{0.005 \\cdot 0.99^n}{0.005 \\cdot 0.99^n + 0.995 \\cdot 0.02^n}$.\nFor $n=2$ this gives $\\approx 92\\% > 90\\%$.\nResult: One repetition (2 tests total) is sufficient mathematically. Note: independence is questionable in practice.\n\n**4. Capacity planning (5 BE)**\n$X \\sim B_{2000; 0.02}$. Find the smallest $k$ with $P(X \\le k) \\ge 0.95$.\nNumerically, for example,\n$$\nP(X \\le 50) \\approx 0.9491 < 0.95,\n$$\nbut\n$$\nP(X \\le 51) \\approx 0.9628 \\ge 0.95.\n$$\n**Result:** $k = 51$."
       }
     },
     {
       "id": "f204141c-c20b-504d-808c-6bcb426ce453",
+      "shortKey": "abi_gk_offer_2026",
       "title": "Abiturprüfung Mathematik",
       "titleEn": "Abitur Exam Mathematics (Basic Course)",
       "description": "Der Lernende kann die schriftliche Abiturprüfung Mathematik im Grundkurs (80 BE) erfolgreich ablegen. Dies umfasst Teil 1 (hilfsmittelfrei, 25 BE) und Teil 2 (mit WTR/CAS, 55 BE).",
@@ -12003,16 +12004,96 @@
         "f13a3bae-88ed-53e9-b5a7-21179a264119"
       ],
       "requires": [
-        "482e852b-9358-457f-93b8-8b0bee089857",
-        "bad20033-7b35-4cab-869b-99b7590d8b0f",
-        "2abfedb2-6e23-4d0f-8701-e1c5b8f2aea0",
-        "7d45b71b-2841-41df-b411-d27c730ccfe9",
         "bea16be0-88b3-51b7-be3b-494d5c496105"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",
         "demandLevel": "AB2",
         "phase": "Abitur"
+      },
+      "release": {
+        "examYear": 2026,
+        "kind": "offer",
+        "courseLevel": "GK",
+        "status": "released"
+      }
+    },
+    {
+      "id": "fafbd2f3-412a-5dca-89e6-fcc4c35d8d0e",
+      "shortKey": "abi_gk_master_2026",
+      "title": "Abiturtraining Mathematik (GK, Master-Set 2026)",
+      "titleEn": "Mathematics Abitur Training (GK, Master Set 2026)",
+      "description": "Bündelt das vollständige GK-Trainingsset 2026: die offizielle GK-Abiturstruktur sowie die phasenbezogenen Übungssets E, Q1, Q2, Q3, Q4 und Prozesskompetenzen.",
+      "descriptionEn": "Bundles the complete 2026 basic-course Abitur training set: the official GK Abitur structure plus the phase-based practice sets E, Q1, Q2, Q3, Q4 and process competencies.",
+      "weight": 45,
+      "tags": [
+        "GK",
+        "Assessment",
+        "MasterSet"
+      ],
+      "contains": [
+        "f204141c-c20b-504d-808c-6bcb426ce453",
+        "579e6b1a-02fc-53ed-81fd-e2413d9d6575",
+        "eda62545-ff80-544e-82e0-301131d16605",
+        "2797a516-1be3-5ab2-8f28-b60e70444f66",
+        "74f9a8ba-8ac3-5acb-a161-552da913e905",
+        "0f344cd9-d4c8-5065-8776-23ce1c1f92ee",
+        "1cbbc7d5-11b5-5ef6-a228-001c77f80944"
+      ],
+      "requires": [
+        "bea16be0-88b3-51b7-be3b-494d5c496105"
+      ],
+      "examples": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "phase": "Abitur",
+        "area": "Training"
+      },
+      "release": {
+        "examYear": 2026,
+        "kind": "master",
+        "courseLevel": "GK",
+        "status": "released"
+      }
+    },
+    {
+      "id": "3fe71a23-2e16-5368-b5a0-ba13220f3451",
+      "shortKey": "abi_lk_master_2026",
+      "title": "Abiturtraining Mathematik (LK, Master-Set 2026)",
+      "titleEn": "Mathematics Abitur Training (LK, Master Set 2026)",
+      "description": "Bündelt das vollständige LK-Trainingsset 2026: die offizielle LK-Abiturstruktur sowie die phasenbezogenen Übungssets E, Q1, Q2, Q3, Q4 und Prozesskompetenzen.",
+      "descriptionEn": "Bundles the complete 2026 advanced-course Abitur training set: the official LK Abitur structure plus the phase-based practice sets E, Q1, Q2, Q3, Q4 and process competencies.",
+      "weight": 46,
+      "tags": [
+        "LK",
+        "Assessment",
+        "MasterSet"
+      ],
+      "contains": [
+        "be43163c-b2fb-5296-a1be-c97de53ee868",
+        "579e6b1a-02fc-53ed-81fd-e2413d9d6575",
+        "eda62545-ff80-544e-82e0-301131d16605",
+        "2797a516-1be3-5ab2-8f28-b60e70444f66",
+        "74f9a8ba-8ac3-5acb-a161-552da913e905",
+        "0f344cd9-d4c8-5065-8776-23ce1c1f92ee",
+        "1cbbc7d5-11b5-5ef6-a228-001c77f80944"
+      ],
+      "requires": [
+        "bea16be0-88b3-51b7-be3b-494d5c496105"
+      ],
+      "examples": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "phase": "Abitur",
+        "area": "Training"
+      },
+      "release": {
+        "examYear": 2026,
+        "kind": "master",
+        "courseLevel": "LK",
+        "status": "released"
       }
     },
     {
@@ -12567,31 +12648,31 @@
         "demandLevel": "AB2"
       },
       "examData": {
-        "taskContent": "![Abb. 3: Ein modernes Haus mit einem schrägen Pultdach. Auf dem Dach ist ein rechteckiges Modul montiert. Die Sonne scheint in einem bestimmten Vektor darauf.](/assets/abi/2026_1/image3.de.png)\n\nIn einem Modell (1 LE = 1 m) liegen die Eckpunkte einer Dachfläche in $A(10|0|3)$, $B(10|10|3)$, $C(0|10|6)$ und $D(0|0|6)$.\n\n1. Zeigen Sie, dass die Dachfläche ein Rechteck ist. Bestimmen Sie eine Koordinatengleichung der Ebene $E$, in der das Dach liegt. (6 BE)\n2. **Schattenwurf:** Ein 10 m hoher Mast steht im Punkt $M(13|5|0)$. Die Sonnenstrahlen fallen in Richtung $\\vec{v} = \\begin{pmatrix} -1 \\\\ 0 \\\\ -2 \\end{pmatrix}$ ein.\n   Prüfen Sie rechnerisch, ob der Schatten der Mastspitze auf die Dachfläche fällt. (7 BE)\n3. **Effizienz:** Sonnenlicht liefert die maximale Energie, wenn es senkrecht auf die Fläche trifft.\n   Bestimmen Sie einen Vektor für den Sonnenstand, bei dem die Strahlen exakt senkrecht auf das Dach fallen. (2 BE)",
-        "solutionContent": "**1. Ebene (6 BE)**\nRechtecknachweis (Skalarprodukt=0, Längen). $E: 3x_1 + 10x_3 = 60$ (oder ähnlich).\n\n**2. Schattenwurf (7 BE)**\nGerade durch Mastspitze $S_M(13|5|10)$ mit $\\vec{v}$. Schnittpunkt mit $E$. $P(8|5|0)$.\n(Achtung: $P$ muss im Rechteck liegen. $0 \\le 8 \\le 10$ und $0 \\le 5 \\le 10$. Ja, Treffer).\n\n**3. Effizienz (2 BE)**\nNormalenvektor $\\vec{n} = (3, 0, 10)^T$ (oder vielfaches).",
+        "taskContent": "![Abb. 3: Ein modernes Haus mit einem schrägen Pultdach. Auf dem Dach ist ein rechteckiges Modul montiert. Die Sonne scheint in einem bestimmten Vektor darauf.](/assets/abi/2026_1/image3.de.png)\n\nIn einem Modell (1 LE = 1 m) liegen die Eckpunkte einer Dachfläche in $A(10|0|3)$, $B(10|10|3)$, $C(0|10|6)$ und $D(0|0|6)$.\n\n1. Zeigen Sie, dass die Dachfläche ein Rechteck ist. Bestimmen Sie eine Koordinatengleichung der Ebene $E$ sowie einen Normalenvektor der Dachfläche. (5 BE)\n2. **Schattenwurf:** Ein 10 m hoher Mast steht im Punkt $M(13|5|0)$. Die Sonnenstrahlen fallen in Richtung $\\vec{v} = \\begin{pmatrix} -1 \\\\ 0 \\\\ -2 \\end{pmatrix}$ ein.\n   Bestimmen Sie den Schnittpunkt der Schattenlinie der Mastspitze mit der Ebene $E$ und pruefen Sie, ob dieser Punkt auf der Dachflaeche liegt. (5 BE)\n3. **Einfallswinkel:** Bestimmen Sie den spitzen Winkel, unter dem die Sonnenstrahlen die Dachflaeche treffen. Beurteilen Sie, ob die Strahlen die Dachflaeche nahezu senkrecht treffen. (5 BE)",
+        "solutionContent": "**1. Rechteck, Ebene und Normalenvektor (5 BE)**\nEs gilt\n$$\n\\overrightarrow{AB}=\\begin{pmatrix}0\\\\10\\\\0\\end{pmatrix},\\qquad \\overrightarrow{AD}=\\begin{pmatrix}-10\\\\0\\\\3\\end{pmatrix}.\n$$\nWegen\n$$\n\\overrightarrow{AB}\\cdot\\overrightarrow{AD}=0\n$$\nstehen die benachbarten Kanten senkrecht aufeinander. Zudem sind die gegenueberliegenden Seiten parallel, also ist die Dachflaeche ein Rechteck.\n\nEin Normalenvektor ist das Kreuzprodukt\n$$\n\\vec n=\\overrightarrow{AB}\\times\\overrightarrow{AD}=\\begin{pmatrix}30\\\\0\\\\100\\end{pmatrix},\n$$\nalso zum Beispiel\n$$\n\\vec n=\\begin{pmatrix}3\\\\0\\\\10\\end{pmatrix}.\n$$\nMit dem Punkt $A(10|0|3)$ folgt fuer die Ebene\n$$\n3(x_1-10)+10(x_3-3)=0,\n$$\nalso\n$$\nE: 3x_1+10x_3=60.\n$$\n\n**2. Schattenwurf (5 BE)**\nDie Mastspitze ist\n$$\nS_M=(13|5|10).\n$$\nDie Schattenlinie hat die Form\n$$\n\\vec x=\\begin{pmatrix}13\\\\5\\\\10\\end{pmatrix}+t\\begin{pmatrix}-1\\\\0\\\\-2\\end{pmatrix}.\n$$\nEinsetzen in die Ebenengleichung liefert\n$$\n3(13-t)+10(10-2t)=60.\n$$\nDaraus folgt\n$$\n139-23t=60 \\Rightarrow t=\\frac{79}{23}.\n$$\nDamit ist der Schnittpunkt\n$$\nP=\\begin{pmatrix}13-\\frac{79}{23}\\\\5\\\\10-2\\cdot\\frac{79}{23}\\end{pmatrix}=\\begin{pmatrix}\\frac{220}{23}\\\\5\\\\\\frac{72}{23}\\end{pmatrix}\\approx(9{,}57|5|3{,}13).\n$$\nWegen $0\\le 5\\le 10$ und $0\\le 9{,}57\\le 10$ liegt der Punkt innerhalb des rechteckigen Dachbereichs. Der Schatten der Mastspitze faellt also auf die Dachflaeche.\n\n**3. Einfallswinkel (5 BE)**\nFuer den Winkel $\\beta$ zwischen den Sonnenstrahlen und der Ebene gilt mit\n$$\n\\vec v=\\begin{pmatrix}-1\\\\0\\\\-2\\end{pmatrix},\\qquad \\vec n=\\begin{pmatrix}3\\\\0\\\\10\\end{pmatrix}\n$$\n\n$$\n\\sin(\\beta)=\\frac{|\\vec v\\cdot\\vec n|}{|\\vec v|\\cdot|\\vec n|}=\\frac{23}{\\sqrt5\\cdot\\sqrt{109}}\\approx 0{,}9852.\n$$\nDaraus folgt\n$$\n\\beta\\approx 80{,}1^\\circ.\n$$\nDie Sonnenstrahlen treffen die Dachflaeche also unter einem grossen Winkel und damit nahezu senkrecht.",
         "scoring": {
           "maxPoints": 15,
           "passingPoints": 8,
           "steps": [
             {
               "id": "s1",
-              "points": 6,
-              "description": "Rechteck und Ebenengleichung"
+              "points": 5,
+              "description": "Rechteck, Ebenengleichung und Normalenvektor korrekt bestimmt"
             },
             {
               "id": "s2",
-              "points": 7,
-              "description": "Schattenwurf (Schnittpunkt)"
+              "points": 5,
+              "description": "Schnittpunkt der Schattenlinie korrekt bestimmt und Lage auf der Dachflaeche begruendet"
             },
             {
               "id": "s3",
-              "points": 2,
-              "description": "Normalenvektor"
+              "points": 5,
+              "description": "Einfallswinkel korrekt berechnet und im Kontext beurteilt"
             }
           ]
         },
-        "taskContentEn": "![Fig. 3: A modern house with a slanted single-pitch roof. A rectangular module is mounted on the roof. Sunlight hits it with a given vector direction.](/assets/abi/2026_1/image3.en.png)\n\nIn a model (1 length unit = 1 m), the corner points of a roof surface are $A(10|0|3)$, $B(10|10|3)$, $C(0|10|6)$ and $D(0|0|6)$.\n\n1. Show that the roof surface is a rectangle. Determine a coordinate equation of the plane $E$ in which the roof lies. (6 BE)\n2. **Shadow:** A 10 m high mast stands at point $M(13|5|0)$. The sun rays fall in direction $\\vec{v} = \\begin{pmatrix} -1 \\\\ 0 \\\\ -2 \\end{pmatrix}$.\n   Check mathematically whether the shadow of the mast tip falls onto the roof surface. (7 BE)\n3. **Efficiency:** Sunlight delivers maximum energy when it hits the surface perpendicularly.\n   Determine a vector for the sun position at which the rays are exactly perpendicular to the roof. (2 BE)",
-        "solutionContentEn": "**1. Plane (6 BE)**\nRectangle proof (dot product = 0, lengths). $E: 3x_1 + 10x_3 = 60$ (or equivalent).\n\n**2. Shadow (7 BE)**\nLine through mast tip $S_M(13|5|10)$ with direction $\\vec{v}$. Intersection with $E$: $P(8|5|0)$.\n(Check: $0 \\le 8 \\le 10$ and $0 \\le 5 \\le 10$. Yes, hits the roof.)\n\n**3. Efficiency (2 BE)**\nNormal vector $\\vec{n} = (3, 0, 10)^T$ (or any multiple)."
+        "taskContentEn": "![Fig. 3: A modern house with a slanted single-pitch roof. A rectangular module is mounted on the roof. Sunlight hits it with a given vector direction.](/assets/abi/2026_1/image3.en.png)\n\nIn a model (1 length unit = 1 m), the corner points of a roof surface are $A(10|0|3)$, $B(10|10|3)$, $C(0|10|6)$ and $D(0|0|6)$.\n\n1. Show that the roof surface is a rectangle. Determine a coordinate equation of the plane $E$ and a normal vector of the roof surface. (5 BE)\n2. **Shadow:** A 10 m high mast stands at point $M(13|5|0)$. The sun rays fall in direction $\\vec{v} = \\begin{pmatrix} -1 \\\\ 0 \\\\ -2 \\end{pmatrix}$.\n   Determine the intersection point of the shadow line of the mast tip with the plane $E$ and check whether this point lies on the roof surface. (5 BE)\n3. **Angle of incidence:** Determine the acute angle at which the sun rays hit the roof surface. Assess whether the rays hit the roof almost perpendicularly. (5 BE)",
+        "solutionContentEn": "**1. Rectangle, plane and normal vector (5 BE)**\nWe have\n$$\n\\overrightarrow{AB}=\\begin{pmatrix}0\\\\10\\\\0\\end{pmatrix},\\qquad \\overrightarrow{AD}=\\begin{pmatrix}-10\\\\0\\\\3\\end{pmatrix}.\n$$\nSince\n$$\n\\overrightarrow{AB}\\cdot\\overrightarrow{AD}=0,\n$$\nthe adjacent edges are perpendicular. The opposite sides are parallel, so the roof surface is a rectangle.\n\nA normal vector is given by the cross product\n$$\n\\vec n=\\overrightarrow{AB}\\times\\overrightarrow{AD}=\\begin{pmatrix}30\\\\0\\\\100\\end{pmatrix},\n$$\nfor example\n$$\n\\vec n=\\begin{pmatrix}3\\\\0\\\\10\\end{pmatrix}.\n$$\nUsing point $A(10|0|3)$, the plane equation is\n$$\n3(x_1-10)+10(x_3-3)=0,\n$$\nthat is\n$$\nE: 3x_1+10x_3=60.\n$$\n\n**2. Shadow (5 BE)**\nThe mast tip is\n$$\nS_M=(13|5|10).\n$$\nThe shadow line is\n$$\n\\vec x=\\begin{pmatrix}13\\\\5\\\\10\\end{pmatrix}+t\\begin{pmatrix}-1\\\\0\\\\-2\\end{pmatrix}.\n$$\nSubstituting into the plane equation gives\n$$\n3(13-t)+10(10-2t)=60.\n$$\nThus,\n$$\n139-23t=60 \\Rightarrow t=\\frac{79}{23}.\n$$\nHence the intersection point is\n$$\nP=\\begin{pmatrix}13-\\frac{79}{23}\\\\5\\\\10-2\\cdot\\frac{79}{23}\\end{pmatrix}=\\begin{pmatrix}\\frac{220}{23}\\\\5\\\\\\frac{72}{23}\\end{pmatrix}\\approx(9.57|5|3.13).\n$$\nSince $0\\le 5\\le 10$ and $0\\le 9.57\\le 10$, the point lies inside the rectangular roof area. So the shadow of the mast tip falls on the roof surface.\n\n**3. Angle of incidence (5 BE)**\nFor the angle $\\beta$ between the sun rays and the plane we use\n$$\n\\vec v=\\begin{pmatrix}-1\\\\0\\\\-2\\end{pmatrix},\\qquad \\vec n=\\begin{pmatrix}3\\\\0\\\\10\\end{pmatrix}.\n$$\nThen\n$$\n\\sin(\\beta)=\\frac{|\\vec v\\cdot\\vec n|}{|\\vec v|\\cdot|\\vec n|}=\\frac{23}{\\sqrt5\\cdot\\sqrt{109}}\\approx 0.9852.\n$$\nTherefore,\n$$\n\\beta\\approx 80.1^\\circ.\n$$\nSo the sun rays hit the roof under a large angle and therefore almost perpendicularly."
       }
     },
     {
@@ -12612,8 +12693,8 @@
         "demandLevel": "AB2"
       },
       "examData": {
-        "taskContent": "![Abb. 6: Ein Baumdiagramm, das den Testablauf visualisiert. Erste Stufe: Infiziert (C) vs. Nicht-Infiziert. Zweite Stufe: Test Positiv (+) vs. Test Negativ (-).](/assets/abi/2026_1/image6.de.png)\n\nEin Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).\nDie Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).\n\n1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (4 BE)\n2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.\n   Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.\n   Interpretieren Sie das Ergebnis im Hinblick auf die Verlässlichkeit eines einzelnen Massentests. (6 BE)\n3. **Massen-Screening:** Wie viele Personen müssen mindestens getestet werden, damit mit einer Wahrscheinlichkeit von mehr als 99% mindestens ein positives Testergebnis auftritt? (5 BE)",
-        "solutionContent": "**1. Testanalyse (4 BE)**\nSatz der totalen Wahrscheinlichkeit:\n$P(T+) = 0,005 \\cdot 0,99 + 0,995 \\cdot 0,02 \\approx 2,49\\%$.\n\n**2. Bedingte Wahrscheinlichkeit (6 BE)**\nSatz von Bayes:\n$P(C|T+) = \\frac{0,005 \\cdot 0,99}{0,02485} \\approx 19,9\\%$.\nInterpretation: Wegen der geringen Prävalenz sind die meisten positiven Ergebnisse falsch-positiv. Ein einzelner Test ist kaum aussagekräftig.\n\n**3. Massen-Screening (5 BE)**\nGesucht ist $n$ mit $1-(1-p)^n > 0,99$ und $p \\approx 0,02485$.\n$(0,97515)^n < 0,01 \\Rightarrow n > \\frac{\\ln(0,01)}{\\ln(0,97515)} \\approx 182,8$.\n**Ergebnis:** Es müssen mindestens 183 Personen getestet werden.",
+        "taskContent": "![Abb. 6: Ein Baumdiagramm, das den Testablauf visualisiert. Erste Stufe: Infiziert (C) vs. Nicht-Infiziert. Zweite Stufe: Test Positiv (+) vs. Test Negativ (-).](/assets/abi/2026_1/image6.de.png)\n\nEin Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).\nDie Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).\n\n1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (4 BE)\n2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.\n   Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.\n   Interpretieren Sie das Ergebnis im Hinblick auf die Verlässlichkeit eines einzelnen Massentests. (6 BE)\n3. **Screening-Planung:** Bei einer Massentestung werden $200$ Personen unabhängig voneinander getestet.\n   Bestimmen Sie die kleinste Zahl $k$, sodass die Anzahl der positiven Testergebnisse mit einer Wahrscheinlichkeit von mindestens $95\\,$% im Intervall $[0;k]$ liegt. (5 BE)",
+        "solutionContent": "**1. Testanalyse (4 BE)**\nSatz der totalen Wahrscheinlichkeit:\n$$\nP(T+) = 0{,}005 \\cdot 0{,}99 + 0{,}995 \\cdot 0{,}02 = 0{,}02485.\n$$\nAlso wird eine zufaellige Probe mit einer Wahrscheinlichkeit von etwa\n$$\n2{,}485\\,\\%\n$$\npositiv getestet.\n\n**2. Bedingte Wahrscheinlichkeit (6 BE)**\nSatz von Bayes:\n$$\nP(C\\mid T+) = \\frac{0{,}005 \\cdot 0{,}99}{0{,}02485} \\approx 0{,}199.\n$$\nAlso liegt die Wahrscheinlichkeit fuer eine tatsaechliche Infektion trotz positivem Test nur bei etwa\n$$\n19{,}9\\,\\%.\n$$\nInterpretation: Wegen der geringen Praevalenz sind viele positive Ergebnisse falsch-positiv. Ein einzelner Massentest ist daher nur begrenzt verlaesslich.\n\n**3. Screening-Planung (5 BE)**\nDie Anzahl positiver Testergebnisse bei $200$ Tests wird modelliert durch\n$$\nX\\sim B(200;0{,}02485).\n$$\nGesucht ist das kleinste $k$ mit\n$$\nP(X\\le k)\\ge 0{,}95.\n$$\nMit dem WTR/CAS erhaelt man zum Beispiel\n$$\nP(X\\le 8)\\approx 0{,}936<0{,}95,\n$$\naber\n$$\nP(X\\le 9)\\approx 0{,}971\\ge 0{,}95.\n$$\nDamit ist\n$$\nk=9.\n$$\nMit mindestens $95\\,$% Wahrscheinlichkeit gibt es also hoechstens $9$ positive Testergebnisse.",
         "scoring": {
           "maxPoints": 15,
           "passingPoints": 8,
@@ -12631,12 +12712,12 @@
             {
               "id": "s3",
               "points": 5,
-              "description": "Massen-Screening"
+              "description": "Inverse Fragestellung zur kumulierten Binomialverteilung korrekt geloest"
             }
           ]
         },
-        "taskContentEn": "![Fig. 6: A tree diagram visualizing the test procedure. First stage: infected (C) vs. not infected. Second stage: test positive (+) vs. test negative (-).](/assets/abi/2026_1/image6.en.png)\n\nA rapid test for type C reacts positive for 99% of infected samples (sensitivity), but also for 2% of non-infected samples (false-positive rate).\nThe prevalence of type C in the overall population is 0.5% ($P(C) = 0.005$).\n\n1. **Test analysis:** Determine the probability that a random sample tests positive. (4 BE)\n2. **Conditional probability:** A person receives a positive test result.\n   Compute the probability that they *actually* have virus type C.\n   Interpret the result with regard to the reliability of a single mass test. (6 BE)\n3. **Mass screening:** How many people must be tested at minimum so that, with probability greater than 99%, at least one positive test result occurs? (5 BE)",
-        "solutionContentEn": "**1. Test analysis (4 BE)**\nLaw of total probability:\n$P(T+) = 0.005 \\cdot 0.99 + 0.995 \\cdot 0.02 \\approx 2.49\\%$.\n\n**2. Conditional probability (6 BE)**\nBayes' theorem:\n$P(C|T+) = \\frac{0.005 \\cdot 0.99}{0.02485} \\approx 19.9\\%$.\nInterpretation: Due to the low prevalence, most positive results are false positives. A single test is hardly conclusive.\n\n**3. Mass screening (5 BE)**\nFind $n$ with $1-(1-p)^n > 0.99$ and $p \\approx 0.02485$.\n$(0.97515)^n < 0.01 \\Rightarrow n > \\frac{\\ln(0.01)}{\\ln(0.97515)} \\approx 182.8$.\n**Result:** At least 183 people must be tested."
+        "taskContentEn": "![Fig. 6: A tree diagram visualizing the test procedure. First stage: infected (C) vs. not infected. Second stage: test positive (+) vs. test negative (-).](/assets/abi/2026_1/image6.en.png)\n\nA rapid test for type C reacts positive for 99% of infected samples (sensitivity), but also for 2% of non-infected samples (false-positive rate).\nThe prevalence of type C in the overall population is 0.5% ($P(C) = 0.005$).\n\n1. **Test analysis:** Determine the probability that a random sample tests positive. (4 BE)\n2. **Conditional probability:** A person receives a positive test result.\n   Compute the probability that they *actually* have virus type C.\n   Interpret the result with regard to the reliability of a single mass test. (6 BE)\n3. **Screening plan:** In a mass screening, $200$ people are tested independently.\n   Determine the smallest number $k$ such that the number of positive test results lies in the interval $[0;k]$ with probability at least $95\\,$%. (5 BE)",
+        "solutionContentEn": "**1. Test analysis (4 BE)**\nBy the law of total probability,\n$$\nP(T+) = 0.005 \\cdot 0.99 + 0.995 \\cdot 0.02 = 0.02485.\n$$\nSo a random sample tests positive with probability about\n$$\n2.485\\,\\%.\n$$\n\n**2. Conditional probability (6 BE)**\nBy Bayes' theorem,\n$$\nP(C\\mid T+) = \\frac{0.005 \\cdot 0.99}{0.02485} \\approx 0.199.\n$$\nThus, despite a positive test, the probability of actually having the infection is only about\n$$\n19.9\\,\\%.\n$$\nInterpretation: Because the prevalence is low, many positive results are false positives. A single mass test is therefore only limited in reliability.\n\n**3. Screening plan (5 BE)**\nThe number of positive test results in $200$ tests is modeled by\n$$\nX\\sim B(200;0.02485).\n$$\nWe seek the smallest $k$ with\n$$\nP(X\\le k)\\ge 0.95.\n$$\nUsing WTR/CAS, one obtains for example\n$$\nP(X\\le 8)\\approx 0.936<0.95,\n$$\nbut\n$$\nP(X\\le 9)\\approx 0.971\\ge 0.95.\n$$\nHence,\n$$\nk=9.\n$$\nSo with probability at least $95\\,$%, there are at most $9$ positive test results."
       }
     },
     {
