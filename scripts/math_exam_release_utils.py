@@ -110,3 +110,28 @@ def require_release_collection_specs(goals: list[dict], collections: list[dict])
     if errors:
         raise ValueError("\n".join(errors))
     return resolved_specs
+
+
+def collection_accepts_course_level(collection_course_level: str, task_course_level: str) -> bool:
+    if task_course_level == "BOTH":
+        return collection_course_level in {"GK", "LK"}
+    return collection_course_level == task_course_level
+
+
+def task_belongs_to_collection(
+    collection: dict,
+    task_course_level: str,
+    production_track: str,
+    ancestors: set[str],
+) -> bool:
+    if not collection_accepts_course_level(collection["courseLevel"], task_course_level):
+        return False
+
+    if collection["kind"] == "offer":
+        landscape_goal_id = collection.get("resolvedLandscapeGoalId")
+        return bool(landscape_goal_id and landscape_goal_id in ancestors)
+
+    if collection["kind"] == "master":
+        return production_track in {"abi_offer", "phase_practice", "process_practice"}
+
+    return False

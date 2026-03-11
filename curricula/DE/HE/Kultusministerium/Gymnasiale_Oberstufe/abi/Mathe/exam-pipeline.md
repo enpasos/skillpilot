@@ -35,7 +35,8 @@ python scripts/export_math_exam_release_bundle.py
 Interpretation:
 
 - `gk_offer_2026` and `lk_offer_2026` are the official offer structures.
-- `gk_master_2026` and `lk_master_2026` are the full training sets.
+- `gk_master_2026` and `lk_master_2026` are derived full training sets.
+- The master sets are not modeled as a second `contains` tree in the curriculum. They are derived by course level from the released offer tasks plus the phase and process practice clusters.
 - `draftReady` means the derived structure and declared coverage pass.
 - `releaseReady` additionally requires completed manual review fields in `task_bank.json`.
 

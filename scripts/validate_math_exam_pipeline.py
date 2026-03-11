@@ -8,7 +8,7 @@ import itertools
 import json
 from pathlib import Path
 
-from math_exam_release_utils import resolve_release_collection_specs
+from math_exam_release_utils import resolve_release_collection_specs, task_belongs_to_collection
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -47,12 +47,6 @@ def ancestor_closure(goal_id: str, parents: dict[str, list[str]]) -> set[str]:
         ancestors.add(parent_id)
         stack.extend(parents.get(parent_id, []))
     return ancestors
-
-
-def collection_accepts_course_level(collection_course_level: str, task_course_level: str) -> bool:
-    if task_course_level == "BOTH":
-        return collection_course_level in {"GK", "LK"}
-    return collection_course_level == task_course_level
 
 
 def enumerate_paths(selection_groups: list[dict]) -> list[list[str]]:
@@ -311,8 +305,7 @@ def validate_collection_membership(
         expected = sorted(
             collection["id"]
             for collection in collection_specs
-            if collection["resolvedLandscapeGoalId"] in ancestors
-            and collection_accepts_course_level(collection["courseLevel"], task["courseLevel"])
+            if task_belongs_to_collection(collection, task["courseLevel"], task["productionTrack"], ancestors)
         )
         actual = sorted(task.get("releaseCollections", []))
         if actual != expected:

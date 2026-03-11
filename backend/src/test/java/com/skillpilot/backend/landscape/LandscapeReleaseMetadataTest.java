@@ -48,5 +48,17 @@ class LandscapeReleaseMetadataTest {
         assertThat(localizedGkOffer.getRelease().getKind()).isEqualTo("offer");
         assertThat(localizedGkOffer.getRelease().getCourseLevel()).isEqualTo("GK");
         assertThat(localizedGkOffer.getRelease().getStatus()).isEqualTo("released");
+
+        LearningGoal germanGkMaster = german.getGoals().stream()
+                .filter(goal -> "abi_gk_master_2026".equals(goal.getShortKey()))
+                .findFirst()
+                .orElseThrow();
+        LearningGoal germanLkMaster = german.getGoals().stream()
+                .filter(goal -> "abi_lk_master_2026".equals(goal.getShortKey()))
+                .findFirst()
+                .orElseThrow();
+
+        assertThat(germanGkMaster.getContains()).isEmpty();
+        assertThat(germanLkMaster.getContains()).isEmpty();
     }
 }

@@ -8,7 +8,7 @@ import re
 import unicodedata
 from pathlib import Path
 
-from math_exam_release_utils import require_release_collection_specs
+from math_exam_release_utils import require_release_collection_specs, task_belongs_to_collection
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -278,23 +278,15 @@ def infer_allowed_tools(ancestors: set[str]) -> str:
     return "AUTHOR_DEFINED"
 
 
-def collection_accepts_course_level(collection_course_level: str, task_course_level: str) -> bool:
-    if task_course_level == "BOTH":
-        return collection_course_level in {"GK", "LK"}
-    return collection_course_level == task_course_level
-
-
 def build_release_collections(
     task_course_level: str,
+    production_track: str,
     ancestors: set[str],
     collection_specs: list[dict],
 ) -> list[str]:
     collections: list[str] = []
     for collection in collection_specs:
-        landscape_goal_id = collection.get("resolvedLandscapeGoalId")
-        if not landscape_goal_id or landscape_goal_id not in ancestors:
-            continue
-        if not collection_accepts_course_level(collection["courseLevel"], task_course_level):
+        if not task_belongs_to_collection(collection, task_course_level, production_track, ancestors):
             continue
         collections.append(collection["id"])
     return collections
@@ -384,7 +376,7 @@ def main() -> None:
                 "title": goal["title"],
                 "courseLevel": course_level,
                 "productionTrack": track,
-                "releaseCollections": build_release_collections(course_level, ancestors, collection_specs),
+                "releaseCollections": [],
                 "slotIds": slot_ids,
                 "examPart": exam_part,
                 "phase": goal["dimensionTags"].get("phase", "UNKNOWN"),
@@ -411,6 +403,13 @@ def main() -> None:
                 },
                 "status": existing_entry.get("status", "seeded"),
             }
+        )
+
+        task_entries[-1]["releaseCollections"] = build_release_collections(
+            course_level,
+            track,
+            ancestors,
+            collection_specs,
         )
 
     task_entries.sort(
