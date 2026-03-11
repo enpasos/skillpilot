@@ -10,6 +10,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.LearnerGoals;
@@ -169,6 +170,30 @@ class LearnerAiControllerTest {
         assertThat(state.stateMachine().activeGoal().examData()).isNotNull();
         assertThat(state.frontier()).hasSize(1);
         assertThat(state.frontier().get(0).examData()).isNull();
+    }
+
+    @Test
+    void getLearnerState_doesNotExposeInternalReleaseMetadata() throws Exception {
+        String skillpilotId = "learner-1";
+        FrontierGoal activeExamGoal = examGoal("goal-1");
+        UnifiedLearnerStateResponse rawState = new UnifiedLearnerStateResponse(
+                skillpilotId,
+                null,
+                List.of(activeExamGoal),
+                new LearnerGoals(List.of(activeExamGoal), 0, 1, null, null, false),
+                List.of("setMastery"),
+                List.of(),
+                Set.of(),
+                "TEACHING",
+                activeExamGoal,
+                new StateMachineInfo("TEACHING", "setMastery", List.of(activeExamGoal), List.of(), activeExamGoal));
+
+        when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
+
+        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
+        String json = new ObjectMapper().writeValueAsString(state);
+
+        assertThat(json).doesNotContain("\"release\"");
     }
 
     private String invokeNormalizeMathDelimitersForChat(String content) throws Exception {
