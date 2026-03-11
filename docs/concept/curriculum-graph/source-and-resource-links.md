@@ -123,3 +123,28 @@ Storage direction:
 - MIT OCW:
   - `sourceRef` can point to the canonical OCW course page
   - `resourceLinks` can contain lecture videos, notes, problem sets, exams, solutions, and selected book references
+
+## 7. Coverage profiles, not schema forks
+
+The schema is repo-wide and fixed:
+
+- `sourceRef`
+- `resourceLinks`
+
+What may vary by curriculum is only the **coverage profile** on top of that schema.
+
+Examples:
+
+- MIT OCW intensive profile
+  - atomic goals should usually have `concept` + `practice` + `assessment`
+  - see `curricula/US/MIT_OCW/source_linking_atomic.en.md`
+- Hessen physics textbook profile
+  - goals with local `physikbuch.schule` deep links should also carry `sourceRef`
+  - atomic goals should usually have one strong `concept` deep link when a good book section exists
+  - broader overview links belong on root or cluster nodes
+  - see `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/physik_source_linking_profile.de.md`
+
+Rule:
+
+- curriculum-specific rollout docs may tighten coverage targets
+- they must not introduce alternative goal-level link fields or a different schema
