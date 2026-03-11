@@ -4,12 +4,16 @@ Der kanonische fachliche Release-Pfad fuer Biologie bleibt das Curriculum:
 
 - `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_BIOLOGIE.de.json`
 
-Dieser erste Bio-Batch bereitet nur die Architektur vor:
+Die aktuelle Biologie-Pipeline umfasst jetzt:
 
 - Quellenpaket fuer das Landesabitur 2026
-- erster offizieller Blueprint
-- lokale Uebungsanker im Curriculum
-- zwei draft-Offer-Anker im Curriculum
+- ersten offiziellen Blueprint
+- lokale Uebungsanker und reale phase-practice-Aufgaben im Curriculum
+- zwei kanonische Offer-Anker im Curriculum
+- `slot_matrix.json`
+- `coverage_requirements.json`
+- `build_biology_exam_task_bank.py`
+- `validate_biology_exam_pipeline.py`
 
 Zielzustand analog zu Mathe und Physik:
 
@@ -17,13 +21,10 @@ Zielzustand analog zu Mathe und Physik:
 - Master-Sets werden spaeter aus Offer-Tasks plus Phase-Practice-Tasks abgeleitet
 - `abi/Biologie/*` bleibt Build- und QA-Infrastruktur
 
-Geplante Artefakte in der naechsten Ausbaustufe:
+Abgeleitete Artefakte:
 
-- `slot_matrix.json`
-- `coverage_requirements.json`
 - `task_bank.json`
-- `build_biology_exam_task_bank.py`
-- `validate_biology_exam_pipeline.py`
+- Validator-Reports unter `tmp/`
 
 Wichtige Modellregel:
 
@@ -31,9 +32,10 @@ Wichtige Modellregel:
 - Der globale Abi-Zweig bleibt davon getrennt.
 - Es wird kein Master-Baum in die Curriculum-`contains`-Struktur geschrieben.
 
-Aktueller Status nach diesem Batch:
+Aktueller Status:
 
 - Bio hat einen 2026-Erlassauszug fuer das Fach.
-- Bio hat einen ersten offiziellen Quellen-Blueprint mit Mapping auf die vorhandene Landscape.
-- Bio hat vorbereitete lokale Uebungsanker und draft-Offer-Anker im Curriculum.
-- Die eigentlichen `examData`-Tasks, die Slot-Matrix und die Validator-Pipeline folgen in den naechsten Batches.
+- Bio hat einen offiziellen Quellen-Blueprint mit Mapping auf die vorhandene Landscape.
+- Bio hat phase-practice-Aufgaben fuer `E` bis `Q4`.
+- Bio hat eine lauffaehige erste Offer-/Master-Pipeline.
+- Die eigentlichen 2026-GK/LK-Offer-Aufgaben fehlen noch; genau diese Luecken werden durch Builder und Validator jetzt explizit sichtbar.

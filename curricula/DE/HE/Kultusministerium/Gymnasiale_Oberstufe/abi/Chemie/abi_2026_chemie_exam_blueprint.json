@@ -1,0 +1,120 @@
+{
+  "examYear": 2026,
+  "subject": "Chemistry",
+  "frameworkId": "hessen-kc-2024-chemistry",
+  "status": "draft",
+  "sourceFiles": [
+    "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/input/kerncurriculum_gymnasiale_oberstufe-chemie.pdf",
+    "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/la26-abiturerlass.pdf",
+    "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Chemie/la26_abiturerlass_chemie.txt"
+  ],
+  "taskType": "materialgebundene Aufgabe",
+  "selectionMode": {
+    "gk": {
+      "offers": ["A", "B", "C", "D"],
+      "pick": 3
+    },
+    "lk": {
+      "offers": ["A", "B", "C", "D"],
+      "pick": 3
+    },
+    "lk_schulen_fuer_erwachsene": {
+      "mandatory": ["A"],
+      "choicePool": ["B1", "B2", "B3"],
+      "pickAdditional": 2
+    }
+  },
+  "officialFocusTopics": [
+    {
+      "officialCode": "Q1.1",
+      "title": "Kohlenwasserstoffe",
+      "courseLevels": ["GK", "LK"],
+      "currentCurriculumRefs": [
+        "b0aacac3-7ff3-4971-a538-f0d3fc6c36fb",
+        "d71478c0-23d8-4a21-8bc1-6f62ee2a263e"
+      ],
+      "mappingStatus": "renumbered"
+    },
+    {
+      "officialCode": "Q1.2",
+      "title": "Alkanole und Carbonylverbindungen",
+      "courseLevels": ["GK", "LK"],
+      "currentCurriculumRefs": [
+        "db2557e0-1720-43fb-be4e-db222ae3b34c"
+      ],
+      "mappingStatus": "direct"
+    },
+    {
+      "officialCode": "Q1.3",
+      "title": "Alkansaeuren und ihre Derivate",
+      "courseLevels": ["GK", "LK"],
+      "currentCurriculumRefs": [
+        "1fa48289-a254-4866-97de-a7fd960ded2a"
+      ],
+      "mappingStatus": "direct"
+    },
+    {
+      "officialCode": "Q2.1",
+      "title": "Kohlenhydrate und Peptide",
+      "courseLevels": ["GK", "LK"],
+      "currentCurriculumRefs": [
+        "1507ed0d-068f-4fab-8125-abf33076893a",
+        "cd5c7f13-f056-4ba5-a066-099406e6b6fb",
+        "e624ba00-9202-4dbf-ab86-0c7dd93089e6"
+      ],
+      "mappingStatus": "embedded"
+    },
+    {
+      "officialCode": "Q2.2",
+      "title": "Grundlagen der Kunststoffchemie",
+      "courseLevels": ["GK", "LK"],
+      "currentCurriculumRefs": [
+        "2b75db6e-3be7-4c96-8f31-b960dd75ac20"
+      ],
+      "mappingStatus": "direct"
+    },
+    {
+      "officialCode": "Q2.3",
+      "title": "Fette im Alltag",
+      "courseLevels": ["GK", "LK"],
+      "currentCurriculumRefs": [
+        "1507ed0d-068f-4fab-8125-abf33076893a",
+        "d7ce7699-8bf3-4efc-93bf-013912db5cf0"
+      ],
+      "mappingStatus": "embedded"
+    },
+    {
+      "officialCode": "Q3.1",
+      "title": "Chemische Gleichgewichte und ihre Einstellung",
+      "courseLevels": ["GK", "LK"],
+      "currentCurriculumRefs": [
+        "3ea16598-166a-4f7f-a2f7-4baffc3978c6"
+      ],
+      "mappingStatus": "direct"
+    },
+    {
+      "officialCode": "Q3.2",
+      "title": "Protolysegleichgewichte",
+      "courseLevels": ["GK", "LK"],
+      "currentCurriculumRefs": [
+        "a58ab76f-9b22-460b-a911-fed7d5112457"
+      ],
+      "mappingStatus": "direct"
+    },
+    {
+      "officialCode": "Q3.4",
+      "title": "Puffersysteme - Saeure-Base-Puffer",
+      "courseLevels": ["GK", "LK"],
+      "currentCurriculumRefs": [
+        "71841410-5081-4a7b-99e8-e18731edb9af"
+      ],
+      "mappingStatus": "direct"
+    }
+  ],
+  "notes": [
+    "Die offiziellen 2026-Chemie-Schwerpunkte decken nicht den gesamten aktuellen Chemie-Graphen ab.",
+    "Insbesondere aktuelle Themenfelder wie Q2.3 Chemie der Aromaten, Q2.4 Organische Werkstoffe, Q3.3 Redoxgleichgewichte, Q3.5 Reaktionsgeschwindigkeit und die Q4-Themen liegen ausserhalb des offiziellen Schwerpunktkerns fuer 2026.",
+    "Das offizielle Thema Q1.1 Kohlenwasserstoffe liegt in der aktuellen Landscape teils bereits in E.3 Einfuehrung organische Verbindungen und teils in Q1.1 Chemische Bindung und Strukturen; der Blueprint markiert dies bewusst als renumbered.",
+    "Der Blueprint ist in diesem Batch ein Quellen- und Mapping-Artefakt. Slot-Matrix, Coverage-Requirements und Offer-Sets folgen spaeter."
+  ]
+}
