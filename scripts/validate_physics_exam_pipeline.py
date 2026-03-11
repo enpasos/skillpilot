@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the Hessen 2026 math exam pipeline artifacts."""
+"""Validate the Hessen 2026 physics exam pipeline artifacts."""
 
 from __future__ import annotations
 
@@ -12,10 +12,10 @@ from exam_release_utils import resolve_release_collection_specs, task_belongs_to
 
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_SLOT_MATRIX = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Mathe/slot_matrix.json"
-DEFAULT_COVERAGE = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Mathe/coverage_requirements.json"
-DEFAULT_TASK_BANK = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Mathe/task_bank.json"
-DEFAULT_LANDSCAPE = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json"
+DEFAULT_SLOT_MATRIX = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/slot_matrix.json"
+DEFAULT_COVERAGE = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/coverage_requirements.json"
+DEFAULT_TASK_BANK = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/task_bank.json"
+DEFAULT_LANDSCAPE = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json"
 
 RELEASE_READY_STATUSES = {"reviewed", "approved"}
 
@@ -75,9 +75,8 @@ def validate_structure(
 ) -> dict:
     summary = {
         "slotTaskCounts": {},
-        "pathCount": 0,
-        "pathDomainFailures": 0,
-        "pathBeFailures": 0,
+        "formPathCounts": {},
+        "formBeFailures": 0,
     }
 
     if collection.get("kind") != "offer":
@@ -107,12 +106,19 @@ def validate_structure(
                     "slot_course_level_mismatch",
                     f"Task {task['goalId']} in slot {slot_id} has courseLevel {task['courseLevel']} but slot expects {slot['courseLevel']}.",
                 )
-            if task["examPart"] != slot["examPart"]:
+            if task.get("formId") != slot["formId"]:
                 add_finding(
                     findings,
                     "error",
-                    "slot_exam_part_mismatch",
-                    f"Task {task['goalId']} in slot {slot_id} has examPart {task['examPart']} but slot expects {slot['examPart']}.",
+                    "slot_form_mismatch",
+                    f"Task {task['goalId']} in slot {slot_id} has formId {task.get('formId')} but slot expects {slot['formId']}.",
+                )
+            if task.get("proposalId") != slot["proposalId"]:
+                add_finding(
+                    findings,
+                    "error",
+                    "slot_proposal_mismatch",
+                    f"Task {task['goalId']} in slot {slot_id} has proposalId {task.get('proposalId')} but slot expects {slot['proposalId']}.",
                 )
             if task["domain"] != slot["domain"]:
                 add_finding(
@@ -120,13 +126,6 @@ def validate_structure(
                     "error",
                     "slot_domain_mismatch",
                     f"Task {task['goalId']} in slot {slot_id} has domain {task['domain']} but slot expects {slot['domain']}.",
-                )
-            if slot.get("niveau") is not None and task.get("niveau") != slot["niveau"]:
-                add_finding(
-                    findings,
-                    "error",
-                    "slot_niveau_mismatch",
-                    f"Task {task['goalId']} in slot {slot_id} has niveau {task.get('niveau')} but slot expects {slot['niveau']}.",
                 )
             if task["allowedTools"] != slot["allowedTools"]:
                 add_finding(
@@ -142,66 +141,115 @@ def validate_structure(
                     "slot_be_mismatch",
                     f"Task {task['goalId']} in slot {slot_id} has {task['beTotal']} BE but slot expects {slot['beTotal']}.",
                 )
+            if task.get("materialBound") is not True:
+                add_finding(
+                    findings,
+                    "error",
+                    "slot_material_binding",
+                    f"Task {task['goalId']} in slot {slot_id} is not marked as material-bound.",
+                )
 
-    paths = enumerate_paths(collection.get("selectionGroups", []))
-    summary["pathCount"] = len(paths)
-    for path in paths:
-        path_tasks: list[dict] = []
-        for slot_id in path:
-            assigned = tasks_by_slot.get(slot_id, [])
-            if len(assigned) != 1:
-                continue
-            path_tasks.append(assigned[0])
-        domains = {task["domain"] for task in path_tasks}
-        if not {"analysis", "linalg_geo", "stoch"} <= domains:
-            summary["pathDomainFailures"] += 1
-            add_finding(
-                findings,
-                "error",
-                "path_domain_coverage",
-                f"{collection['id']} path {path} does not cover all three domains.",
-            )
-        be_total = sum(task["beTotal"] for task in path_tasks)
-        if be_total != collection["expectedSolvedBeTotal"]:
-            summary["pathBeFailures"] += 1
-            add_finding(
-                findings,
-                "error",
-                "path_be_total",
-                f"{collection['id']} path {path} yields {be_total} BE but expected {collection['expectedSolvedBeTotal']}.",
-            )
+    for group in collection.get("selectionGroups", []):
+        paths = enumerate_paths([group])
+        summary["formPathCounts"][group["id"]] = len(paths)
+        expected_total = collection["expectedSolvedBeTotalPerForm"]
+        for path in paths:
+            path_tasks: list[dict] = []
+            for slot_id in path:
+                assigned = tasks_by_slot.get(slot_id, [])
+                if len(assigned) != 1:
+                    continue
+                path_tasks.append(assigned[0])
+            be_total = sum(task["beTotal"] for task in path_tasks)
+            if be_total != expected_total:
+                summary["formBeFailures"] += 1
+                add_finding(
+                    findings,
+                    "error",
+                    "form_path_be_total",
+                    f"{collection['id']} group {group['id']} path {path} yields {be_total} BE but expected {expected_total}.",
+                )
 
     return summary
 
 
 def validate_union_requirements(requirement: dict, tasks: list[dict], findings: list[dict]) -> dict:
-    union_domains = sorted({task["domain"] for task in tasks})
+    union_form_ids = sorted({task.get("formId") for task in tasks if task.get("formId")})
     union_topic_codes = sorted({code for task in tasks for code in task["coverage"].get("topicCodes", [])})
-    union_special_hints = sorted({hint for task in tasks for hint in task["coverage"].get("specialHintIds", [])})
+    union_terms = sorted({term for task in tasks for term in task["coverage"].get("mandatoryTerms", [])})
+    union_hints = sorted({hint for task in tasks for hint in task["coverage"].get("coverageHintIds", [])})
 
-    required_domains = set(requirement.get("requiredDomains", []))
+    required_form_ids = set(requirement.get("requiredFormIds", []))
     required_topic_codes = set(requirement.get("requiredTopicCodes", []))
-    required_special_hints = set(requirement.get("requiredSpecialHintIds", []))
+    required_terms = set(requirement.get("requiredMandatoryTerms", []))
+    required_hints = set(requirement.get("requiredCoverageHintIds", []))
 
-    missing_domains = sorted(required_domains - set(union_domains))
+    missing_form_ids = sorted(required_form_ids - set(union_form_ids))
     missing_topic_codes = sorted(required_topic_codes - set(union_topic_codes))
-    missing_special_hints = sorted(required_special_hints - set(union_special_hints))
+    missing_terms = sorted(required_terms - set(union_terms))
+    missing_hints = sorted(required_hints - set(union_hints))
 
-    for code in missing_domains:
-        add_finding(findings, "error", "missing_domain_union", f"Missing domain in union coverage: {code}.")
+    for code in missing_form_ids:
+        add_finding(findings, "error", "missing_form_union", f"Missing form in union coverage: {code}.")
     for code in missing_topic_codes:
         add_finding(findings, "error", "missing_topic_code_union", f"Missing topic code in union coverage: {code}.")
-    for code in missing_special_hints:
-        add_finding(findings, "error", "missing_special_hint_union", f"Missing special hint in union coverage: {code}.")
+    for code in missing_terms:
+        add_finding(findings, "error", "missing_mandatory_term_union", f"Missing mandatory term in union coverage: {code}.")
+    for code in missing_hints:
+        add_finding(findings, "error", "missing_coverage_hint_union", f"Missing coverage hint in union coverage: {code}.")
 
     return {
-        "unionDomains": union_domains,
+        "unionFormIds": union_form_ids,
         "unionTopicCodes": union_topic_codes,
-        "unionSpecialHintIds": union_special_hints,
-        "missingDomains": missing_domains,
+        "unionMandatoryTerms": union_terms,
+        "unionCoverageHintIds": union_hints,
+        "missingFormIds": missing_form_ids,
         "missingTopicCodes": missing_topic_codes,
-        "missingSpecialHintIds": missing_special_hints,
+        "missingMandatoryTerms": missing_terms,
+        "missingCoverageHintIds": missing_hints,
     }
+
+
+def validate_form_requirements(requirements: list[dict], tasks: list[dict], findings: list[dict]) -> dict:
+    form_summaries: dict[str, dict] = {}
+    for requirement in requirements:
+        form_id = requirement["formId"]
+        form_tasks = [task for task in tasks if task.get("formId") == form_id]
+        proposal_ids = sorted(task.get("proposalId") for task in form_tasks if task.get("proposalId"))
+        topic_codes = sorted({code for task in form_tasks for code in task["coverage"].get("topicCodes", [])})
+        mandatory_terms = sorted({term for task in form_tasks for term in task["coverage"].get("mandatoryTerms", [])})
+        coverage_hints = sorted({hint for task in form_tasks for hint in task["coverage"].get("coverageHintIds", [])})
+
+        required_proposals = sorted(requirement.get("offeredProposalIds", []))
+        missing_proposals = sorted(set(required_proposals) - set(proposal_ids))
+        missing_topic_codes = sorted(set(requirement.get("requiredTopicCodes", [])) - set(topic_codes))
+        missing_terms = sorted(set(requirement.get("requiredMandatoryTerms", [])) - set(mandatory_terms))
+        missing_hints = sorted(set(requirement.get("requiredCoverageHintIds", [])) - set(coverage_hints))
+
+        for code in missing_proposals:
+            add_finding(findings, "error", "missing_form_proposal", f"Form {form_id} is missing proposal {code}.")
+        for code in missing_topic_codes:
+            add_finding(findings, "error", "missing_form_topic_code", f"Form {form_id} is missing topic code {code}.")
+        for code in missing_terms:
+            add_finding(findings, "error", "missing_form_mandatory_term", f"Form {form_id} is missing mandatory term {code}.")
+        for code in missing_hints:
+            add_finding(findings, "error", "missing_form_coverage_hint", f"Form {form_id} is missing coverage hint {code}.")
+
+        form_summaries[form_id] = {
+            "taskCount": len(form_tasks),
+            "proposalIds": proposal_ids,
+            "topicCodes": topic_codes,
+            "mandatoryTerms": mandatory_terms,
+            "coverageHintIds": coverage_hints,
+            "missingProposalIds": missing_proposals,
+            "missingTopicCodes": missing_topic_codes,
+            "missingMandatoryTerms": missing_terms,
+            "missingCoverageHintIds": missing_hints,
+            "pickCount": requirement["pickCount"],
+            "expectedSolvedBeTotal": requirement["expectedSolvedBeTotal"],
+        }
+
+    return form_summaries
 
 
 def validate_bucket_requirements(
@@ -377,6 +425,8 @@ def main() -> None:
         coverage_summary = {}
         if "unionRequirements" in requirement:
             coverage_summary["union"] = validate_union_requirements(requirement["unionRequirements"], tasks, findings)
+        if "formRequirements" in requirement:
+            coverage_summary["forms"] = validate_form_requirements(requirement["formRequirements"], tasks, findings)
         if "bucketRequirements" in requirement or "mustIncludeCollectionTasks" in requirement:
             coverage_summary["buckets"] = validate_bucket_requirements(requirement, tasks, collection_tasks, findings)
 
@@ -401,8 +451,8 @@ def main() -> None:
             json.dump(report, handle, indent=2, ensure_ascii=False)
             handle.write("\n")
 
-    print("Math exam pipeline validation summary")
-    print("-----------------------------------")
+    print("Physics exam pipeline validation summary")
+    print("--------------------------------------")
     if report["globalFindings"]:
         print(f"Global findings: {len(report['globalFindings'])}")
     for collection_id, collection_report in report["collections"].items():

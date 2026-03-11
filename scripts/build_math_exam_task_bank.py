@@ -8,7 +8,7 @@ import re
 import unicodedata
 from pathlib import Path
 
-from math_exam_release_utils import require_release_collection_specs, task_belongs_to_collection
+from exam_release_utils import require_release_collection_specs, task_belongs_to_collection
 
 
 ROOT = Path(__file__).resolve().parent.parent
