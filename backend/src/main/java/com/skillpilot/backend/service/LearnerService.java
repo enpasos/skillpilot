@@ -1216,6 +1216,13 @@ public class LearnerService {
             }
 
             personalizationRequired = needsPersonalization(frontier, activeFilters);
+        }
+
+        activeGoalId = maybeAutoActivateFrontierGoal(learner, activeGoalId, frontierAtomic, personalizationRequired);
+        activeGoalMastered = activeGoalId != null && !activeGoalId.isBlank()
+                && mastery.getOrDefault(activeGoalId, 0.0) >= 0.9;
+
+        if (curriculumId != null) {
             nextAllowedActions.add("setPersonalization");
             if (!personalizationRequired) {
                 nextAllowedActions.add("setScope");
@@ -1266,6 +1273,34 @@ public class LearnerService {
                         personalizedStats, scopeStats, scopeCompleted),
                 nextAllowedActions, activeFilters,
                 learner.getCopySources(), learningState.name(), activeGoal, stateMachine);
+    }
+
+    private String maybeAutoActivateFrontierGoal(
+            Learner learner,
+            String activeGoalId,
+            List<FrontierGoal> frontierAtomic,
+            boolean personalizationRequired) {
+        if (!Boolean.TRUE.equals(learner.getAutoPilot())) {
+            return activeGoalId;
+        }
+        if (activeGoalId != null && !activeGoalId.isBlank()) {
+            return activeGoalId;
+        }
+        if (personalizationRequired || frontierAtomic == null || frontierAtomic.isEmpty()) {
+            return activeGoalId;
+        }
+
+        FrontierGoal nextGoal = frontierAtomic.get(0);
+        if (nextGoal == null || nextGoal.id() == null || nextGoal.id().isBlank()) {
+            return activeGoalId;
+        }
+
+        learner.setActiveGoalId(nextGoal.id());
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.save(learner);
+        eventPublisher.publishEvent(
+                new LearnerStateChangedEvent(this, learner.getSkillpilotId(), "ACTIVE_GOAL_UPDATE_AUTOPILOT"));
+        return nextGoal.id();
     }
 
     private List<FrontierGoal> filterAtomicFrontier(List<FrontierGoal> frontier) {

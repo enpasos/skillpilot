@@ -140,6 +140,26 @@ public class LearnerFrontierInvariantTest {
     }
 
     @Test
+    void autoPilotLocksFirstAtomicFrontierGoalServerSide() {
+        learner.setAutoPilot(true);
+        setPlannedGoals(Q22_CLUSTER_ID);
+        setMastery(Collections.emptyMap());
+
+        var state = learnerService.getLearnerState(LEARNER_ID);
+
+        assertThat(state.activeGoal()).isNotNull();
+        assertThat(state.activeGoal().id()).isEqualTo(learner.getActiveGoalId());
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("setMastery");
+        assertThat(state.stateMachine().activeGoal()).isNotNull();
+        assertThat(state.stateMachine().activeGoal().id()).isEqualTo(state.activeGoal().id());
+        assertThat(state.stateMachine().goalOptions())
+                .hasSize(1)
+                .first()
+                .extracting(FrontierGoal::id)
+                .isEqualTo(state.activeGoal().id());
+    }
+
+    @Test
     void frontierMatchesExportSnapshot() throws Exception {
         Snapshot snapshot = loadSnapshot("exports/learner_export_1c90a010.json");
 

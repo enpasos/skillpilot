@@ -789,23 +789,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [skillpilotId, onRefresh, parentMap, selectedId, onSelectGoal, language])
 
-  // Autopilot Logic
-  useEffect(() => {
-    if (!learnerData?.autoPilot || !learnerData?.activeGoalId) return
-
-    // Check if active goal is mastered
-    const currentMastery = getEffectiveMastery(learnerData.activeGoalId)
-    if (isMastered(currentMastery)) {
-      if (atomicFrontierOptions.length > 0) {
-        const next = atomicFrontierOptions[0]
-        if (next.id !== learnerData.activeGoalId) {
-          console.log("Autopilot: Switching to", next.title)
-          handleSetActiveGoal(next.id)
-        }
-      }
-    }
-  }, [learnerData?.autoPilot, learnerData?.activeGoalId, getEffectiveMastery, atomicFrontierOptions, handleSetActiveGoal])
-
   const togglePlan = useCallback(async (id: string) => {
     // Single Goal Mode:
     // If clicking the ALREADY selected goal -> Deselect it (Set empty)

@@ -164,8 +164,11 @@ If only clusters are available:
 - **No** `setActiveGoal` before `setScope` returns the atomic goals.
 
 **Important:** As soon as **at least one** atomic goal is available, **no** cluster nodes may be suggested as an alternative.
-If **exactly one** atomic goal is available, **automatically** select this goal **only if autopilot is active** (or the learner says "doesn't matter").  
-If autopilot is **off** and **multiple** atomic goals are available: Offer a **short selection** (max. 3), no "Continue?" Yes/No question.
+Autopilot is resolved by the **backend**, not by the trainer.  
+If the backend already returns a new `activeGoal`, continue with that goal immediately.  
+Only when the backend still returns `requiredAction = setActiveGoal` should you offer or execute a goal selection.  
+If there is exactly **one** atomic option, set it directly.  
+If there are **multiple** atomic options, offer a **short selection** (max. 3), unless the learner says "doesn't matter".
 
 ### 5.3 After Scope
 

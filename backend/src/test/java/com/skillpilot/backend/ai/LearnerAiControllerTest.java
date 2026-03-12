@@ -103,6 +103,43 @@ class LearnerAiControllerTest {
     }
 
     @Test
+    void setMastery_returnsServerAutoAdvancedGoalWithoutManualReselection() {
+        String skillpilotId = "learner-1";
+        String currentGoalId = "goal-1";
+        String nextGoalId = "goal-2";
+        FrontierGoal currentGoal = simpleGoal(currentGoalId, "Current Goal");
+        FrontierGoal nextGoal = simpleGoal(nextGoalId, "Next Goal");
+
+        UnifiedLearnerStateResponse before = learnerState(skillpilotId, "setMastery", currentGoal);
+        MasteryUpdateResponse masteryResponse = new MasteryUpdateResponse(
+                List.of(nextGoal),
+                List.of("setMastery"),
+                "TEACHING",
+                nextGoal,
+                new StateMachineInfo("TEACHING", "setMastery", List.of(nextGoal), List.of(), nextGoal),
+                null);
+
+        when(learnerService.getLearnerState(skillpilotId)).thenReturn(before);
+        when(learnerService.setMastery(eq(skillpilotId), any(MasteryUpdateRequest.class))).thenReturn(masteryResponse);
+
+        var response = controller.setMastery(
+                skillpilotId,
+                new MasteryUpdateRequest(Map.of(currentGoalId, 1.0), currentGoalId));
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isInstanceOf(MasteryUpdateResponse.class);
+        MasteryUpdateResponse body = (MasteryUpdateResponse) response.getBody();
+        assertThat(body.activeGoal()).isNotNull();
+        assertThat(body.activeGoal().id()).isEqualTo(nextGoalId);
+        assertThat(body.stateMachine()).isNotNull();
+        assertThat(body.stateMachine().requiredAction()).isEqualTo("setMastery");
+
+        verify(learnerService).getLearnerState(skillpilotId);
+        verify(learnerService).setMastery(eq(skillpilotId), any(MasteryUpdateRequest.class));
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
     void normalizeMathDelimitersForChat_usesSingleBackslashLatexDelimiters() throws Exception {
         String raw = "Inline $Q=900\\\\,\\\\mathrm{kJ}$ and block $$\\\\eta=\\\\frac{W}{Q}$$.";
 
@@ -222,6 +259,13 @@ class LearnerAiControllerTest {
     }
 
     private static UnifiedLearnerStateResponse learnerState(String skillpilotId, String requiredAction) {
+        return learnerState(skillpilotId, requiredAction, null);
+    }
+
+    private static UnifiedLearnerStateResponse learnerState(
+            String skillpilotId,
+            String requiredAction,
+            FrontierGoal activeGoal) {
         return new UnifiedLearnerStateResponse(
                 skillpilotId,
                 null,
@@ -230,8 +274,25 @@ class LearnerAiControllerTest {
                 List.of(),
                 List.of(),
                 Set.of(),
-                "FRONTIER",
+                activeGoal == null ? "FRONTIER" : "TEACHING",
+                activeGoal,
+                new StateMachineInfo("state", requiredAction, activeGoal == null ? List.of() : List.of(activeGoal),
+                        List.of(), activeGoal));
+    }
+
+    private static FrontierGoal simpleGoal(String goalId, String title) {
+        return new FrontierGoal(
+                goalId,
+                title,
+                "Description",
+                "atomic",
                 null,
-                new StateMachineInfo("state", requiredAction, List.of(), List.of(), null));
+                "Ready",
+                List.of(),
+                List.of(),
+                null,
+                null,
+                null,
+                null);
     }
 }

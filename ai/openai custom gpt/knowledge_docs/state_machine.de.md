@@ -164,8 +164,11 @@ Wenn nur Cluster verfügbar sind:
 - **Kein** `setActiveGoal`, bevor `setScope` die atomaren Ziele liefert
 
 **Wichtig:** Sobald **mindestens ein** atomareres Ziel verfügbar ist, dürfen **keine** Cluster‑Knoten als Alternative vorgeschlagen werden.
-Wenn **genau ein** atomareres Ziel verfügbar ist, **automatisch** dieses Ziel wählen **nur wenn Autopilot aktiv ist** (oder die lernende Person „egal“ sagt).  
-Wenn Autopilot **aus** ist und **mehrere** atomare Ziele verfügbar sind: **kurze Auswahl** anbieten (max. 3), keine „Weiter?“‑Ja/Nein‑Frage.
+Autopilot wird **vom Backend** aufgelöst, nicht vom Trainer.  
+Wenn das Backend bereits ein neues `activeGoal` zurückliefert, damit sofort weitermachen.  
+Nur wenn das Backend weiterhin `requiredAction = setActiveGoal` zurückgibt, darf eine Zielwahl angeboten oder ausgeführt werden.  
+Wenn genau **eine** atomare Option vorhanden ist, diese direkt setzen.  
+Wenn **mehrere** atomare Optionen vorhanden sind: **kurze Auswahl** anbieten (max. 3), außer die lernende Person sagt „egal“.
 
 ### 5.3 Nach Scope
 
