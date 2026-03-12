@@ -13506,31 +13506,31 @@
       "contains": [],
       "examples": [],
       "examData": {
-        "taskContent": "Die Zuflussrate eines Regenrückhaltebeckens wird für $0 \\le t \\le 6$ Stunden durch\n$$\nr(t) = -\\frac12 t^2 + 3t + 4\n$$\nin $\\text{m}^3/\\text{h}$ beschrieben.\n\n1. Berechnen Sie, wie viel Wasser im Zeitraum von $0$ bis $6$ Stunden insgesamt zufließt.\n2. Bestimmen Sie die mittlere Zuflussrate in diesem Zeitraum.\n3. Zu Beginn befinden sich $5\\,\\text{m}^3$ Wasser im Becken. Gleichzeitig fließen konstant $3\\,\\text{m}^3/\\text{h}$ ab.\n   Stellen Sie eine Funktion $V(t)$ für den Beckeninhalt auf.\n4. Bestimmen Sie den maximalen Beckeninhalt im betrachteten Zeitraum und interpretieren Sie das Ergebnis.",
-        "solutionContent": "1. Gesamtzufluss:\n$$\n\\int_0^6 \\left(-\\frac12 t^2 + 3t + 4\\right)\\,dt\n= \\left(-\\frac16 t^3 + \\frac32 t^2 + 4t\\right)_0^6\n= -36 + 54 + 24 = 42.\n$$\nEs fließen insgesamt $42\\,\\text{m}^3$ zu.\n\n2. Mittlere Zuflussrate:\n$$\n\\bar r = \\frac{1}{6}\\int_0^6 r(t)\\,dt = \\frac{42}{6} = 7\\,\\text{m}^3/\\text{h}.\n$$\n\n3. Nettozufluss ist\n$$\nr(t)-3 = -\\frac12 t^2 + 3t + 1.\n$$\nMit $V(0)=5$ ergibt sich\n$$\nV(t) = 5 + \\int_0^t \\left(-\\frac12 x^2 + 3x + 1\\right)\\,dx\n= 5 - \\frac16 t^3 + \\frac32 t^2 + t.\n$$\n\n4. Maximum von $V$ über $V'(t)=0$:\n$$\nV'(t)= -\\frac12 t^2 + 3t + 1.\n$$\nDie Nullstellen erfüllen\n$$\nt^2 - 6t - 2 = 0,\n$$\nalso\n$$\nt = 3 \\pm \\sqrt{11}.\n$$\nIm Intervall liegt nur $t=3-\\sqrt{11}<0$ außerhalb. Für $0 \\le t \\le 6$ ist $V'(t)$ positiv, also ist $V$ dort streng steigend. Das Maximum liegt daher bei $t=6$:\n$$\nV(6)=5-36+54+6=29.\n$$\nDer größte Beckeninhalt im betrachteten Zeitraum beträgt $29\\,\\text{m}^3$.",
+        "taskContent": "Das Innenprofil eines Trinkbechers wird im Längsschnitt für $0 \\le x \\le 12$ cm durch\n$$\nr(x)=2+\\frac{x}{6}\n$$\nbeschrieben. Dabei ist $r(x)$ der Innenradius in cm. Durch Rotation des Graphen um die $x$-Achse entsteht das Innenvolumen des Bechers.\n\n1. Stellen Sie ein Integral für das Innenvolumen des Bechers auf und berechnen Sie das Volumen.\n2. Bestimmen Sie die mittlere Querschnittsfläche des Bechers auf dem Intervall $0 \\le x \\le 12$.\n3. Prüfen Sie, ob der Becher mindestens $0{,}33$ Liter fasst.\n4. Erläutern Sie, warum beim Volumenintegral $r(x)^2$ und nicht nur $r(x)$ integriert wird.",
+        "solutionContent": "1. Beim Rotieren um die $x$-Achse entsteht ein Rotationskörper mit dem Volumen\n$$\nV=\\pi\\int_0^{12} r(x)^2\\,dx\n= \\pi\\int_0^{12} \\left(2+\\frac{x}{6}\\right)^2\\,dx.\n$$\nAusmultiplizieren liefert\n$$\n\\left(2+\\frac{x}{6}\\right)^2 = 4+\\frac{2}{3}x+\\frac1{36}x^2.\n$$\nAlso\n$$\nV=\\pi\\int_0^{12}\\left(4+\\frac{2}{3}x+\\frac1{36}x^2\\right)dx\n= \\pi\\left(4x+\\frac13x^2+\\frac1{108}x^3\\right)_0^{12}.\n$$\nDamit ergibt sich\n$$\nV=\\pi(48+48+16)=112\\pi\\,\\text{cm}^3\\approx 351{,}9\\,\\text{cm}^3.\n$$\n\n2. Die mittlere Querschnittsfläche ist Volumen durch Höhe:\n$$\n\\bar A = \\frac{V}{12} = \\frac{112\\pi}{12}=\\frac{28\\pi}{3}\\,\\text{cm}^2\\approx 29{,}3\\,\\text{cm}^2.\n$$\n\n3. Es gilt\n$$\n112\\pi\\,\\text{cm}^3 \\approx 351{,}9\\,\\text{cm}^3.\n$$\nDa $1\\,\\text{Liter}=1000\\,\\text{cm}^3$, fasst der Becher etwa\n$$\n0{,}352\\,\\text{Liter}.\n$$\nDer Becher fasst also mehr als $0{,}33$ Liter.\n\n4. In jedem Querschnitt senkrecht zur $x$-Achse entsteht eine Kreisfläche mit\n$$\nA(x)=\\pi r(x)^2.\n$$\nFür das Volumen werden diese Kreisflächen über die Höhe aufsummiert. Nur den Radius $r(x)$ zu integrieren würde eine Länge aufsummieren, aber kein Volumen beschreiben.",
         "scoring": {
           "maxPoints": 20,
           "passingPoints": 10,
           "steps": [
             {
-              "id": "q1_1",
-              "points": 5,
-              "description": "Gesamtzufluss korrekt mit Integral bestimmt"
-            },
-            {
-              "id": "q1_2",
-              "points": 4,
-              "description": "Mittlere Zuflussrate korrekt berechnet und gedeutet"
-            },
-            {
-              "id": "q1_3",
-              "points": 5,
-              "description": "Bestandsfunktion korrekt aufgestellt"
-            },
-            {
-              "id": "q1_4",
+              "id": "q1_rot_1",
               "points": 6,
-              "description": "Maximalen Beckeninhalt korrekt bestimmt und interpretiert"
+              "description": "Volumenintegral korrekt aufgestellt und berechnet"
+            },
+            {
+              "id": "q1_rot_2",
+              "points": 4,
+              "description": "Mittlere Querschnittsfläche korrekt bestimmt"
+            },
+            {
+              "id": "q1_rot_3",
+              "points": 5,
+              "description": "Fassungsvermögen korrekt geprüft und in Liter gedeutet"
+            },
+            {
+              "id": "q1_rot_4",
+              "points": 5,
+              "description": "Bedeutung von r(x)^2 im Volumenmodell fachlich korrekt erläutert"
             }
           ]
         }
