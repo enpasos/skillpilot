@@ -57,6 +57,7 @@ After setup, send a message that contains a UUID.
 Expected behavior:
 - The assistant **calls the backend immediately** and only responds **after** the result is available.
 - No placeholder text like "I'm loading..." or a follow-up nudge from the user.
+- No detour like "Open the cockpit first", "type ready", or "the ID alone is not enough".
 
 If it waits for a "ping", the system instructions or actions are not correctly wired.
 
@@ -94,7 +95,7 @@ In the **Actions** section:
 
 End-to-end flow for a typical learner session:
 
-1.  **Init:** The GPT checks for a nickname and `skillpilotId`. If missing, it calls `createLearner()`.
+1.  **Init:** The GPT checks for a `skillpilotId`. If one is provided, it calls `getLearnerState()` immediately. If none is provided and the user explicitly wants a new profile, it calls `createLearner()`.
 2.  **Bootstrap:** It reads `stateMachine.requiredAction` from `createLearner` / `getLearnerState`. If `setCurriculum` is required, it asks the user to choose from `stateMachine.curriculumOptions` and calls `setCurriculum`.
 3.  **Context:** It calls `getLearnerState` (or uses the state from `createLearner`) to get the Curriculum, Frontier, Goals, and `stateMachine` immediately.
 4.  **Discovery:** It looks at `frontier` and selects goals with `type=atomic`. If only clusters are present, call `setScope` to drill down.
