@@ -1,0 +1,289 @@
+{
+  "examSpecId": "hessen-landesabitur-2026-english",
+  "version": 1,
+  "notes": [
+    "Offer collections are anchored in the curriculum via release metadata.",
+    "Master collections are derived in the pipeline from offer tasks plus phase practice tasks.",
+    "Englisch 2026 nutzt die offizielle Zweiteilung: Pflichtaufgabe A (Sprachmittlung) plus Wahl zwischen B1 und B2."
+  ],
+  "collections": [
+    {
+      "id": "gk_offer_2026",
+      "label": "GK Offer Set 2026",
+      "releaseRef": {
+        "examYear": 2026,
+        "kind": "offer",
+        "courseLevel": "GK"
+      },
+      "courseLevel": "GK",
+      "kind": "offer",
+      "selectionMode": "official_exam_two_part",
+      "expectedSolvedBeTotal": 50,
+      "slotIds": [
+        "gk_a_mediation_globalization_britain",
+        "gk_b1_usa_democracy_identity",
+        "gk_b2_media_gender_dilemmas"
+      ],
+      "selectionGroups": [
+        {
+          "id": "gk_mandatory_a",
+          "pick": "all",
+          "slotIds": [
+            "gk_a_mediation_globalization_britain"
+          ]
+        },
+        {
+          "id": "gk_choice_b",
+          "pick": 1,
+          "slotIds": [
+            "gk_b1_usa_democracy_identity",
+            "gk_b2_media_gender_dilemmas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lk_offer_2026",
+      "label": "LK Offer Set 2026",
+      "releaseRef": {
+        "examYear": 2026,
+        "kind": "offer",
+        "courseLevel": "LK"
+      },
+      "courseLevel": "LK",
+      "kind": "offer",
+      "selectionMode": "official_exam_two_part",
+      "expectedSolvedBeTotal": 50,
+      "slotIds": [
+        "lk_a_mediation_globalization_britain",
+        "lk_b1_usa_democracy_identity",
+        "lk_b2_media_gender_dilemmas"
+      ],
+      "selectionGroups": [
+        {
+          "id": "lk_mandatory_a",
+          "pick": "all",
+          "slotIds": [
+            "lk_a_mediation_globalization_britain"
+          ]
+        },
+        {
+          "id": "lk_choice_b",
+          "pick": 1,
+          "slotIds": [
+            "lk_b1_usa_democracy_identity",
+            "lk_b2_media_gender_dilemmas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gk_master_2026",
+      "label": "GK Master Set 2026",
+      "courseLevel": "GK",
+      "kind": "master",
+      "selectionMode": "full_set"
+    },
+    {
+      "id": "lk_master_2026",
+      "label": "LK Master Set 2026",
+      "courseLevel": "LK",
+      "kind": "master",
+      "selectionMode": "full_set"
+    }
+  ],
+  "slots": [
+    {
+      "id": "gk_a_mediation_globalization_britain",
+      "collectionId": "gk_offer_2026",
+      "proposalId": "A",
+      "workingTitle": "Pflichtteil Sprachmittlung zu Grossbritannien, Nachhaltigkeit und Digitalisierung",
+      "domain": "mediation_globalization_britain",
+      "topicCodes": [
+        "Q3.5",
+        "Q2.1"
+      ],
+      "courseLevel": "GK",
+      "allowedTools": "language_exam_aids",
+      "beTotal": 20,
+      "selectionRole": "mandatory",
+      "materialBound": true,
+      "materialTypes": [
+        "deutschsprachiger Sachtext",
+        "Infografik oder Datensatz",
+        "Adressaten- und Situationsvorgabe"
+      ],
+      "operatorProfile": [
+        "selektieren",
+        "sprachmitteln",
+        "strukturieren",
+        "adressatengerecht formulieren"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_b1_usa_democracy_identity",
+      "collectionId": "gk_offer_2026",
+      "proposalId": "B1",
+      "workingTitle": "USA, Demokratie, Identitaet und Individualismus",
+      "domain": "usa_democracy_identity_individualism",
+      "topicCodes": [
+        "Q1.1",
+        "Q1.2",
+        "Q1.3"
+      ],
+      "courseLevel": "GK",
+      "allowedTools": "language_exam_aids",
+      "beTotal": 30,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "literarischer oder autobiografischer Auszug",
+        "pragmatischer Text",
+        "visuelles Material"
+      ],
+      "operatorProfile": [
+        "analysieren",
+        "erlaeutern",
+        "interpretieren",
+        "kommentieren"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_b2_media_gender_dilemmas",
+      "collectionId": "gk_offer_2026",
+      "proposalId": "B2",
+      "workingTitle": "Medienmacht, Gender, Dilemmasituationen und Vielfalt",
+      "domain": "media_gender_dilemmas_diversity",
+      "topicCodes": [
+        "Q2.2",
+        "Q3.1",
+        "Q3.3",
+        "Q4.2"
+      ],
+      "courseLevel": "GK",
+      "allowedTools": "language_exam_aids",
+      "beTotal": 30,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "fiktionaler Textauszug",
+        "journalistischer Text",
+        "Datenblatt oder Fact Sheet"
+      ],
+      "operatorProfile": [
+        "analysieren",
+        "erklaeren",
+        "kommentieren",
+        "verfassen"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_a_mediation_globalization_britain",
+      "collectionId": "lk_offer_2026",
+      "proposalId": "A",
+      "workingTitle": "Vertiefte Sprachmittlung zu Grossbritannien, Nachhaltigkeit und Globalisierung",
+      "domain": "mediation_globalization_britain",
+      "topicCodes": [
+        "Q3.5",
+        "Q2.1"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "language_exam_aids",
+      "beTotal": 20,
+      "selectionRole": "mandatory",
+      "materialBound": true,
+      "materialTypes": [
+        "deutschsprachiger Sachtext",
+        "Interview oder Kommentar",
+        "Adressaten- und Situationsvorgabe"
+      ],
+      "operatorProfile": [
+        "selektieren",
+        "sprachmitteln",
+        "strukturieren",
+        "adressatengerecht formulieren"
+      ],
+      "lkDifferentiation": [
+        "mindestens ein komplexer Argumentationszusammenhang muss praezise und adressatengerecht uebertragen werden",
+        "mindestens ein politischer oder wirtschaftlicher Zielkonflikt muss explizit herausgearbeitet werden"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_b1_usa_democracy_identity",
+      "collectionId": "lk_offer_2026",
+      "proposalId": "B1",
+      "workingTitle": "USA, Demokratie, Identitaet und Individualismus mit vertiefter Bewertung",
+      "domain": "usa_democracy_identity_individualism",
+      "topicCodes": [
+        "Q1.1",
+        "Q1.2",
+        "Q1.3"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "language_exam_aids",
+      "beTotal": 30,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "essayistischer oder literarischer Text",
+        "pragmatischer Text",
+        "visuelles Material"
+      ],
+      "operatorProfile": [
+        "analysieren",
+        "erlaeutern",
+        "interpretieren",
+        "eroertern"
+      ],
+      "lkDifferentiation": [
+        "mindestens eine Position muss explizit bewertet und mit Alternativen kontrastiert werden",
+        "mindestens ein Schreibentscheid muss argumentativ reflektiert werden"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_b2_media_gender_dilemmas",
+      "collectionId": "lk_offer_2026",
+      "proposalId": "B2",
+      "workingTitle": "Medienethik, Gender und Dilemmasituationen mit vertiefter Urteilsbildung",
+      "domain": "media_gender_dilemmas_diversity",
+      "topicCodes": [
+        "Q2.2",
+        "Q3.1",
+        "Q3.3",
+        "Q4.2"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "language_exam_aids",
+      "beTotal": 30,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "fiktionaler Textauszug",
+        "Feature oder Kommentar",
+        "Fact Sheet oder Datensatz"
+      ],
+      "operatorProfile": [
+        "analysieren",
+        "erklaeren",
+        "beurteilen",
+        "verfassen"
+      ],
+      "lkDifferentiation": [
+        "mindestens ein ethischer Zielkonflikt muss aus mehreren Perspektiven bewertet werden",
+        "mindestens ein abstrakter Begriff wie responsibility, identity oder media power muss begrifflich geklaert werden"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    }
+  ]
+}

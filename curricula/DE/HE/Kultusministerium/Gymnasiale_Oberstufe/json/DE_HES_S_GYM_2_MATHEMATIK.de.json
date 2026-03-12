@@ -11513,7 +11513,7 @@
       },
       "examData": {
         "taskContent": "Gegeben sind die Gerade\n$$\ng: \\vec{x} = \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix} + r \\cdot \\begin{pmatrix} 2 \\\\ 0 \\\\ -2 \\end{pmatrix}\n$$\nund die Ebene\n$$\nE: x_3 = 1.\n$$\n\n1. Bestimmen Sie den Schnittpunkt von $g$ mit $E$.\n2. Berechnen Sie den spitzen Winkel, unter dem die Gerade $g$ die Ebene $E$ schneidet.",
-        "solutionContent": "**1. Schnittpunkt:**\nFuer Punkte der Geraden gilt\n$$\n\\vec{x}(r)=\\begin{pmatrix}1+2r\\\\2\\\\3-2r\\end{pmatrix}.\n$$\nFuer den Schnitt mit $E$ muss die dritte Koordinate gleich $1$ sein:\n$$\n3-2r=1 \\Rightarrow r=1.\n$$\nDamit ist der Schnittpunkt\n$$\nS=\\begin{pmatrix}3\\\\2\\\\1\\end{pmatrix}.\n$$\n\n**2. Winkel zwischen Gerade und Ebene:**\nEin Normalenvektor der Ebene ist\n$$\n\\vec n=\\begin{pmatrix}0\\\\0\\\\1\\end{pmatrix}.\n$$\nDer Richtungsvektor der Geraden ist\n$$\n\\vec u=\\begin{pmatrix}2\\\\0\\\\-2\\end{pmatrix}.\n$$\nFuer den Winkel $\\beta$ zwischen Gerade und Ebene gilt\n$$\n\\sin(\\beta)=\\frac{|\\vec u\\cdot \\vec n|}{|\\vec u|\\cdot|\\vec n|}\n=\\frac{2}{\\sqrt{8}\\cdot 1}=\\frac{1}{\\sqrt2}.\n$$\nAlso folgt\n$$\n\\beta=45^\\circ.\n$$",
+        "solutionContent": "**1. Schnittpunkt:**\nFür Punkte der Geraden gilt\n$$\n\\vec{x}(r)=\\begin{pmatrix}1+2r\\\\2\\\\3-2r\\end{pmatrix}.\n$$\nFür den Schnitt mit $E$ muss die dritte Koordinate gleich $1$ sein:\n$$\n3-2r=1 \\Rightarrow r=1.\n$$\nDamit ist der Schnittpunkt\n$$\nS=\\begin{pmatrix}3\\\\2\\\\1\\end{pmatrix}.\n$$\n\n**2. Winkel zwischen Gerade und Ebene:**\nEin Normalenvektor der Ebene ist\n$$\n\\vec n=\\begin{pmatrix}0\\\\0\\\\1\\end{pmatrix}.\n$$\nDer Richtungsvektor der Geraden ist\n$$\n\\vec u=\\begin{pmatrix}2\\\\0\\\\-2\\end{pmatrix}.\n$$\nFür den Winkel $\\beta$ zwischen Gerade und Ebene gilt\n$$\n\\sin(\\beta)=\\frac{|\\vec u\\cdot \\vec n|}{|\\vec u|\\cdot|\\vec n|}\n=\\frac{2}{\\sqrt{8}\\cdot 1}=\\frac{1}{\\sqrt2}.\n$$\nAlso folgt\n$$\n\\beta=45^\\circ.\n$$",
         "scoring": {
           "maxPoints": 5,
           "passingPoints": 3,
@@ -12568,8 +12568,8 @@
         "demandLevel": "AB2"
       },
       "examData": {
-        "taskContent": "![Abb. 3: Ein modernes Haus mit einem schrägen Pultdach. Auf dem Dach ist ein rechteckiges Modul montiert. Die Sonne scheint in einem bestimmten Vektor darauf.](/assets/abi/2026_1/image3.de.png)\n\nIn einem Modell (1 LE = 1 m) liegen die Eckpunkte einer Dachfläche in $A(10|0|3)$, $B(10|10|3)$, $C(0|10|6)$ und $D(0|0|6)$.\n\n1. Zeigen Sie, dass die Dachfläche ein Rechteck ist. Bestimmen Sie eine Koordinatengleichung der Ebene $E$ sowie einen Normalenvektor der Dachfläche. (5 BE)\n2. **Schattenwurf:** Ein 10 m hoher Mast steht im Punkt $M(13|5|0)$. Die Sonnenstrahlen fallen in Richtung $\\vec{v} = \\begin{pmatrix} -1 \\\\ 0 \\\\ -2 \\end{pmatrix}$ ein.\n   Bestimmen Sie den Schnittpunkt der Schattenlinie der Mastspitze mit der Ebene $E$ und pruefen Sie, ob dieser Punkt auf der Dachflaeche liegt. (5 BE)\n3. **Einfallswinkel:** Bestimmen Sie den spitzen Winkel, unter dem die Sonnenstrahlen die Dachflaeche treffen. Beurteilen Sie, ob die Strahlen die Dachflaeche nahezu senkrecht treffen. (5 BE)",
-        "solutionContent": "**1. Rechteck, Ebene und Normalenvektor (5 BE)**\nEs gilt\n$$\n\\overrightarrow{AB}=\\begin{pmatrix}0\\\\10\\\\0\\end{pmatrix},\\qquad \\overrightarrow{AD}=\\begin{pmatrix}-10\\\\0\\\\3\\end{pmatrix}.\n$$\nWegen\n$$\n\\overrightarrow{AB}\\cdot\\overrightarrow{AD}=0\n$$\nstehen die benachbarten Kanten senkrecht aufeinander. Zudem sind die gegenueberliegenden Seiten parallel, also ist die Dachflaeche ein Rechteck.\n\nEin Normalenvektor ist das Kreuzprodukt\n$$\n\\vec n=\\overrightarrow{AB}\\times\\overrightarrow{AD}=\\begin{pmatrix}30\\\\0\\\\100\\end{pmatrix},\n$$\nalso zum Beispiel\n$$\n\\vec n=\\begin{pmatrix}3\\\\0\\\\10\\end{pmatrix}.\n$$\nMit dem Punkt $A(10|0|3)$ folgt fuer die Ebene\n$$\n3(x_1-10)+10(x_3-3)=0,\n$$\nalso\n$$\nE: 3x_1+10x_3=60.\n$$\n\n**2. Schattenwurf (5 BE)**\nDie Mastspitze ist\n$$\nS_M=(13|5|10).\n$$\nDie Schattenlinie hat die Form\n$$\n\\vec x=\\begin{pmatrix}13\\\\5\\\\10\\end{pmatrix}+t\\begin{pmatrix}-1\\\\0\\\\-2\\end{pmatrix}.\n$$\nEinsetzen in die Ebenengleichung liefert\n$$\n3(13-t)+10(10-2t)=60.\n$$\nDaraus folgt\n$$\n139-23t=60 \\Rightarrow t=\\frac{79}{23}.\n$$\nDamit ist der Schnittpunkt\n$$\nP=\\begin{pmatrix}13-\\frac{79}{23}\\\\5\\\\10-2\\cdot\\frac{79}{23}\\end{pmatrix}=\\begin{pmatrix}\\frac{220}{23}\\\\5\\\\\\frac{72}{23}\\end{pmatrix}\\approx(9{,}57|5|3{,}13).\n$$\nWegen $0\\le 5\\le 10$ und $0\\le 9{,}57\\le 10$ liegt der Punkt innerhalb des rechteckigen Dachbereichs. Der Schatten der Mastspitze faellt also auf die Dachflaeche.\n\n**3. Einfallswinkel (5 BE)**\nFuer den Winkel $\\beta$ zwischen den Sonnenstrahlen und der Ebene gilt mit\n$$\n\\vec v=\\begin{pmatrix}-1\\\\0\\\\-2\\end{pmatrix},\\qquad \\vec n=\\begin{pmatrix}3\\\\0\\\\10\\end{pmatrix}\n$$\n\n$$\n\\sin(\\beta)=\\frac{|\\vec v\\cdot\\vec n|}{|\\vec v|\\cdot|\\vec n|}=\\frac{23}{\\sqrt5\\cdot\\sqrt{109}}\\approx 0{,}9852.\n$$\nDaraus folgt\n$$\n\\beta\\approx 80{,}1^\\circ.\n$$\nDie Sonnenstrahlen treffen die Dachflaeche also unter einem grossen Winkel und damit nahezu senkrecht.",
+        "taskContent": "![Abb. 3: Ein modernes Haus mit einem schrägen Pultdach. Auf dem Dach ist ein rechteckiges Modul montiert. Die Sonne scheint in einem bestimmten Vektor darauf.](/assets/abi/2026_1/image3.de.png)\n\nIn einem Modell (1 LE = 1 m) liegen die Eckpunkte einer Dachfläche in $A(10|0|3)$, $B(10|10|3)$, $C(0|10|6)$ und $D(0|0|6)$.\n\n1. Zeigen Sie, dass die Dachfläche ein Rechteck ist. Bestimmen Sie eine Koordinatengleichung der Ebene $E$ sowie einen Normalenvektor der Dachfläche. (5 BE)\n2. **Schattenwurf:** Ein 10 m hoher Mast steht im Punkt $M(13|5|0)$. Die Sonnenstrahlen fallen in Richtung $\\vec{v} = \\begin{pmatrix} -1 \\\\ 0 \\\\ -2 \\end{pmatrix}$ ein.\n   Bestimmen Sie den Schnittpunkt der Schattenlinie der Mastspitze mit der Ebene $E$ und prüfen Sie, ob dieser Punkt auf der Dachfläche liegt. (5 BE)\n3. **Einfallswinkel:** Bestimmen Sie den spitzen Winkel, unter dem die Sonnenstrahlen die Dachfläche treffen. Beurteilen Sie, ob die Strahlen die Dachfläche nahezu senkrecht treffen. (5 BE)",
+        "solutionContent": "**1. Rechteck, Ebene und Normalenvektor (5 BE)**\nEs gilt\n$$\n\\overrightarrow{AB}=\\begin{pmatrix}0\\\\10\\\\0\\end{pmatrix},\\qquad \\overrightarrow{AD}=\\begin{pmatrix}-10\\\\0\\\\3\\end{pmatrix}.\n$$\nWegen\n$$\n\\overrightarrow{AB}\\cdot\\overrightarrow{AD}=0\n$$\nstehen die benachbarten Kanten senkrecht aufeinander. Zudem sind die gegenüberliegenden Seiten parallel, also ist die Dachfläche ein Rechteck.\n\nEin Normalenvektor ist das Kreuzprodukt\n$$\n\\vec n=\\overrightarrow{AB}\\times\\overrightarrow{AD}=\\begin{pmatrix}30\\\\0\\\\100\\end{pmatrix},\n$$\nalso zum Beispiel\n$$\n\\vec n=\\begin{pmatrix}3\\\\0\\\\10\\end{pmatrix}.\n$$\nMit dem Punkt $A(10|0|3)$ folgt für die Ebene\n$$\n3(x_1-10)+10(x_3-3)=0,\n$$\nalso\n$$\nE: 3x_1+10x_3=60.\n$$\n\n**2. Schattenwurf (5 BE)**\nDie Mastspitze ist\n$$\nS_M=(13|5|10).\n$$\nDie Schattenlinie hat die Form\n$$\n\\vec x=\\begin{pmatrix}13\\\\5\\\\10\\end{pmatrix}+t\\begin{pmatrix}-1\\\\0\\\\-2\\end{pmatrix}.\n$$\nEinsetzen in die Ebenengleichung liefert\n$$\n3(13-t)+10(10-2t)=60.\n$$\nDaraus folgt\n$$\n139-23t=60 \\Rightarrow t=\\frac{79}{23}.\n$$\nDamit ist der Schnittpunkt\n$$\nP=\\begin{pmatrix}13-\\frac{79}{23}\\\\5\\\\10-2\\cdot\\frac{79}{23}\\end{pmatrix}=\\begin{pmatrix}\\frac{220}{23}\\\\5\\\\\\frac{72}{23}\\end{pmatrix}\\approx(9{,}57|5|3{,}13).\n$$\nWegen $0\\le 5\\le 10$ und $0\\le 9{,}57\\le 10$ liegt der Punkt innerhalb des rechteckigen Dachbereichs. Der Schatten der Mastspitze fällt also auf die Dachfläche.\n\n**3. Einfallswinkel (5 BE)**\nFür den Winkel $\\beta$ zwischen den Sonnenstrahlen und der Ebene gilt mit\n$$\n\\vec v=\\begin{pmatrix}-1\\\\0\\\\-2\\end{pmatrix},\\qquad \\vec n=\\begin{pmatrix}3\\\\0\\\\10\\end{pmatrix}\n$$\n\n$$\n\\sin(\\beta)=\\frac{|\\vec v\\cdot\\vec n|}{|\\vec v|\\cdot|\\vec n|}=\\frac{23}{\\sqrt5\\cdot\\sqrt{109}}\\approx 0{,}9852.\n$$\nDaraus folgt\n$$\n\\beta\\approx 80{,}1^\\circ.\n$$\nDie Sonnenstrahlen treffen die Dachfläche also unter einem grossen Winkel und damit nahezu senkrecht.",
         "scoring": {
           "maxPoints": 15,
           "passingPoints": 8,
@@ -12582,7 +12582,7 @@
             {
               "id": "s2",
               "points": 5,
-              "description": "Schnittpunkt der Schattenlinie korrekt bestimmt und Lage auf der Dachflaeche begruendet"
+              "description": "Schnittpunkt der Schattenlinie korrekt bestimmt und Lage auf der Dachfläche begründet"
             },
             {
               "id": "s3",
@@ -12614,7 +12614,7 @@
       },
       "examData": {
         "taskContent": "![Abb. 6: Ein Baumdiagramm, das den Testablauf visualisiert. Erste Stufe: Infiziert (C) vs. Nicht-Infiziert. Zweite Stufe: Test Positiv (+) vs. Test Negativ (-).](/assets/abi/2026_1/image6.de.png)\n\nEin Schnelltest für Typ C reagiert bei 99% der infizierten Proben positiv (Sensitivität), aber auch bei 2% der nicht-infizierten Proben (Falsch-Positiv-Rate).\nDie Verbreitung von Typ C in der Gesamtbevölkerung liegt bei 0,5% ($P(C) = 0,005$).\n\n1. **Testanalyse:** Bestimmen Sie die Wahrscheinlichkeit, dass eine zufällige Probe positiv getestet wird. (4 BE)\n2. **Bedingte Wahrscheinlichkeit:** Eine Person erhält ein positives Testergebnis.\n   Berechnen Sie die Wahrscheinlichkeit, dass sie *tatsächlich* den Virustyp C hat.\n   Interpretieren Sie das Ergebnis im Hinblick auf die Verlässlichkeit eines einzelnen Massentests. (6 BE)\n3. **Screening-Planung:** Bei einer Massentestung werden $200$ Personen unabhängig voneinander getestet.\n   Bestimmen Sie die kleinste Zahl $k$, sodass die Anzahl der positiven Testergebnisse mit einer Wahrscheinlichkeit von mindestens $95\\,$% im Intervall $[0;k]$ liegt. (5 BE)",
-        "solutionContent": "**1. Testanalyse (4 BE)**\nSatz der totalen Wahrscheinlichkeit:\n$$\nP(T+) = 0{,}005 \\cdot 0{,}99 + 0{,}995 \\cdot 0{,}02 = 0{,}02485.\n$$\nAlso wird eine zufaellige Probe mit einer Wahrscheinlichkeit von etwa\n$$\n2{,}485\\,\\%\n$$\npositiv getestet.\n\n**2. Bedingte Wahrscheinlichkeit (6 BE)**\nSatz von Bayes:\n$$\nP(C\\mid T+) = \\frac{0{,}005 \\cdot 0{,}99}{0{,}02485} \\approx 0{,}199.\n$$\nAlso liegt die Wahrscheinlichkeit fuer eine tatsaechliche Infektion trotz positivem Test nur bei etwa\n$$\n19{,}9\\,\\%.\n$$\nInterpretation: Wegen der geringen Praevalenz sind viele positive Ergebnisse falsch-positiv. Ein einzelner Massentest ist daher nur begrenzt verlaesslich.\n\n**3. Screening-Planung (5 BE)**\nDie Anzahl positiver Testergebnisse bei $200$ Tests wird modelliert durch\n$$\nX\\sim B(200;0{,}02485).\n$$\nGesucht ist das kleinste $k$ mit\n$$\nP(X\\le k)\\ge 0{,}95.\n$$\nMit dem WTR/CAS erhaelt man zum Beispiel\n$$\nP(X\\le 8)\\approx 0{,}936<0{,}95,\n$$\naber\n$$\nP(X\\le 9)\\approx 0{,}971\\ge 0{,}95.\n$$\nDamit ist\n$$\nk=9.\n$$\nMit mindestens $95\\,$% Wahrscheinlichkeit gibt es also hoechstens $9$ positive Testergebnisse.",
+        "solutionContent": "**1. Testanalyse (4 BE)**\nSatz der totalen Wahrscheinlichkeit:\n$$\nP(T+) = 0{,}005 \\cdot 0{,}99 + 0{,}995 \\cdot 0{,}02 = 0{,}02485.\n$$\nAlso wird eine zufällige Probe mit einer Wahrscheinlichkeit von etwa\n$$\n2{,}485\\,\\%\n$$\npositiv getestet.\n\n**2. Bedingte Wahrscheinlichkeit (6 BE)**\nSatz von Bayes:\n$$\nP(C\\mid T+) = \\frac{0{,}005 \\cdot 0{,}99}{0{,}02485} \\approx 0{,}199.\n$$\nAlso liegt die Wahrscheinlichkeit für eine tatsächliche Infektion trotz positivem Test nur bei etwa\n$$\n19{,}9\\,\\%.\n$$\nInterpretation: Wegen der geringen Prävalenz sind viele positive Ergebnisse falsch-positiv. Ein einzelner Massentest ist daher nur begrenzt verlässlich.\n\n**3. Screening-Planung (5 BE)**\nDie Anzahl positiver Testergebnisse bei $200$ Tests wird modelliert durch\n$$\nX\\sim B(200;0{,}02485).\n$$\nGesucht ist das kleinste $k$ mit\n$$\nP(X\\le k)\\ge 0{,}95.\n$$\nMit dem WTR/CAS erhält man zum Beispiel\n$$\nP(X\\le 8)\\approx 0{,}936<0{,}95,\n$$\naber\n$$\nP(X\\le 9)\\approx 0{,}971\\ge 0{,}95.\n$$\nDamit ist\n$$\nk=9.\n$$\nMit mindestens $95\\,$% Wahrscheinlichkeit gibt es also höchstens $9$ positive Testergebnisse.",
         "scoring": {
           "maxPoints": 15,
           "passingPoints": 8,
@@ -12632,7 +12632,7 @@
             {
               "id": "s3",
               "points": 5,
-              "description": "Inverse Fragestellung zur kumulierten Binomialverteilung korrekt geloest"
+              "description": "Inverse Fragestellung zur kumulierten Binomialverteilung korrekt gelöst"
             }
           ]
         },
@@ -14179,8 +14179,8 @@
       "contains": [],
       "examples": [],
       "examData": {
-        "taskContent": "Fuer ein Forschungscamp werden $3$ Plaetze unter $20$ Bewerberinnen und Bewerbern verlost. Darunter sind $8$ Personen aus dem Leistungskurs Mathematik und $12$ aus anderen Kursen.\n\n1. Beschreiben Sie das Ziehen ohne Zuruecklegen mit einem geeigneten Modell und berechnen Sie die Wahrscheinlichkeit, dass genau zwei der drei ausgewaehlten Personen aus dem Leistungskurs Mathematik stammen.\n2. Eine Schuelerin vereinfacht das Experiment zu drei Ziehungen mit Zuruecklegen und verwendet ein Binomialmodell mit $p=0{,}4$. Berechnen Sie in diesem Modell ebenfalls die Wahrscheinlichkeit fuer genau zwei Leistungskurs-Personen.\n3. Vergleichen Sie beide Ergebnisse und beurteilen Sie, welches Modell die reale Situation besser beschreibt.\n4. Erlaeutern Sie, warum die Binomialmodellierung bei einer sehr grossen Grundgesamtheit mit demselben Anteil von $40\\,$% deutlich besser geeignet ist.",
-        "solutionContent": "1. Da ohne Zuruecklegen gezogen wird, ist die hypergeometrische Modellierung passend. Fuer genau zwei Leistungskurs-Personen gilt\n$$\nP(X=2)=\\frac{\\binom{8}{2}\\binom{12}{1}}{\\binom{20}{3}}=\\frac{28\\cdot 12}{1140}\\approx 0{,}2947.\n$$\n\n2. Im Binomialmodell mit $n=3$ und $p=0{,}4$ ergibt sich\n$$\nP(Y=2)=\\binom{3}{2}\\cdot 0{,}4^2\\cdot 0{,}6=3\\cdot 0{,}16\\cdot 0{,}6=0{,}288.\n$$\n\n3. Beide Werte liegen nah beieinander, unterscheiden sich aber leicht. Das reale Ziehen ohne Zuruecklegen wird durch das hypergeometrische Modell besser beschrieben, weil sich die Wahrscheinlichkeiten nach jeder Ziehung veraendern.\n\n4. Bei einer sehr grossen Grundgesamtheit aendert sich der Anteil von Leistungskurs-Personen durch eine einzelne Ziehung kaum. Dann sind die Ziehungen nahezu unabhaengig, sodass die Binomialverteilung eine gute Approximation liefert.",
+        "taskContent": "Für ein Forschungscamp werden $3$ Plätze unter $20$ Bewerberinnen und Bewerbern verlost. Darunter sind $8$ Personen aus dem Leistungskurs Mathematik und $12$ aus anderen Kursen.\n\n1. Beschreiben Sie das Ziehen ohne Zurücklegen mit einem geeigneten Modell und berechnen Sie die Wahrscheinlichkeit, dass genau zwei der drei ausgewählten Personen aus dem Leistungskurs Mathematik stammen.\n2. Eine Schülerin vereinfacht das Experiment zu drei Ziehungen mit Zurücklegen und verwendet ein Binomialmodell mit $p=0{,}4$. Berechnen Sie in diesem Modell ebenfalls die Wahrscheinlichkeit für genau zwei Leistungskurs-Personen.\n3. Vergleichen Sie beide Ergebnisse und beurteilen Sie, welches Modell die reale Situation besser beschreibt.\n4. Erläutern Sie, warum die Binomialmodellierung bei einer sehr grossen Grundgesamtheit mit demselben Anteil von $40\\,$% deutlich besser geeignet ist.",
+        "solutionContent": "1. Da ohne Zurücklegen gezogen wird, ist die hypergeometrische Modellierung passend. Für genau zwei Leistungskurs-Personen gilt\n$$\nP(X=2)=\\frac{\\binom{8}{2}\\binom{12}{1}}{\\binom{20}{3}}=\\frac{28\\cdot 12}{1140}\\approx 0{,}2947.\n$$\n\n2. Im Binomialmodell mit $n=3$ und $p=0{,}4$ ergibt sich\n$$\nP(Y=2)=\\binom{3}{2}\\cdot 0{,}4^2\\cdot 0{,}6=3\\cdot 0{,}16\\cdot 0{,}6=0{,}288.\n$$\n\n3. Beide Werte liegen nah beieinander, unterscheiden sich aber leicht. Das reale Ziehen ohne Zurücklegen wird durch das hypergeometrische Modell besser beschrieben, weil sich die Wahrscheinlichkeiten nach jeder Ziehung verändern.\n\n4. Bei einer sehr grossen Grundgesamtheit ändert sich der Anteil von Leistungskurs-Personen durch eine einzelne Ziehung kaum. Dann sind die Ziehungen nahezu unabhängig, sodass die Binomialverteilung eine gute Approximation liefert.",
         "scoring": {
           "maxPoints": 20,
           "passingPoints": 10,
@@ -14188,7 +14188,7 @@
             {
               "id": "q3a_1",
               "points": 6,
-              "description": "Passendes Modell erkannt und Wahrscheinlichkeit fuer genau zwei Treffer korrekt berechnet"
+              "description": "Passendes Modell erkannt und Wahrscheinlichkeit für genau zwei Treffer korrekt berechnet"
             },
             {
               "id": "q3a_2",
@@ -14203,7 +14203,7 @@
             {
               "id": "q3a_4",
               "points": 5,
-              "description": "Eignung der Approximation bei grosser Grundgesamtheit korrekt begruendet"
+              "description": "Eignung der Approximation bei grosser Grundgesamtheit korrekt begründet"
             }
           ]
         }
@@ -14245,8 +14245,8 @@
       "contains": [],
       "examples": [],
       "examData": {
-        "taskContent": "In einem Versandzentrum kommen erfahrungsgemaess $6\\,$% aller Sendungen verspaetet an. An einem Tag werden $250$ Sendungen betrachtet. Die Zufallsvariable $X$ beschreibt die Anzahl der verspaeteten Sendungen.\n\n1. Begruenden Sie ein geeignetes Modell fuer $X$ und bestimmen Sie Erwartungswert und Standardabweichung.\n2. Berechnen Sie mit der Normalapproximation und Stetigkeitskorrektur die Wahrscheinlichkeit, dass zwischen $10$ und $20$ Sendungen verspaetet ankommen.\n3. Bestimmen Sie naeherungsweise die Wahrscheinlichkeit, dass mehr als $25$ Sendungen verspaetet sind.\n4. Beurteilen Sie, ob ein Tageswert von mehr als $25$ verspaeteten Sendungen als auffaellig gelten kann.",
-        "solutionContent": "1. Es ist ein Binomialmodell mit\n$$\nX\\sim B(250;0{,}06)\n$$\nangemessen. Es gilt\n$$\n\\mu=np=250\\cdot 0{,}06=15,\n$$\n$$\n\\sigma=\\sqrt{np(1-p)}=\\sqrt{250\\cdot 0{,}06\\cdot 0{,}94}=\\sqrt{14{,}1}\\approx 3{,}76.\n$$\n\n2. Mit Stetigkeitskorrektur wird\n$$\nP(10\\le X\\le 20)\\approx P(9{,}5\\le Y\\le 20{,}5)\n$$\nmit $Y\\sim N(15;3{,}76)$. Standardisiert ergibt sich\n$$\nz_1=\\frac{9{,}5-15}{3{,}76}\\approx -1{,}46,\\qquad z_2=\\frac{20{,}5-15}{3{,}76}\\approx 1{,}46.\n$$\nDamit folgt\n$$\nP(10\\le X\\le 20)\\approx \\Phi(1{,}46)-\\Phi(-1{,}46)\\approx 0{,}857.\n$$\n\n3. Fuer mehr als $25$ verspaetete Sendungen gilt mit Stetigkeitskorrektur\n$$\nP(X>25)\\approx P(Y>25{,}5).\n$$\nStandardisieren liefert\n$$\nz=\\frac{25{,}5-15}{3{,}76}\\approx 2{,}79.\n$$\nAlso\n$$\nP(X>25)\\approx 1-\\Phi(2{,}79)\\approx 0{,}0026.\n$$\n\n4. Ein Tageswert von mehr als $25$ verspaeteten Sendungen ist sehr unwahrscheinlich. Mit einer Wahrscheinlichkeit von nur etwa $0{,}26\\,$% kann ein solcher Wert als deutlich auffaellig beurteilt werden.",
+        "taskContent": "In einem Versandzentrum kommen erfahrungsgemäß $6\\,$% aller Sendungen verspätet an. An einem Tag werden $250$ Sendungen betrachtet. Die Zufallsvariable $X$ beschreibt die Anzahl der verspäteten Sendungen.\n\n1. Begründen Sie ein geeignetes Modell für $X$ und bestimmen Sie Erwartungswert und Standardabweichung.\n2. Berechnen Sie mit der Normalapproximation und Stetigkeitskorrektur die Wahrscheinlichkeit, dass zwischen $10$ und $20$ Sendungen verspätet ankommen.\n3. Bestimmen Sie näherungsweise die Wahrscheinlichkeit, dass mehr als $25$ Sendungen verspätet sind.\n4. Beurteilen Sie, ob ein Tageswert von mehr als $25$ verspäteten Sendungen als auffällig gelten kann.",
+        "solutionContent": "1. Es ist ein Binomialmodell mit\n$$\nX\\sim B(250;0{,}06)\n$$\nangemessen. Es gilt\n$$\n\\mu=np=250\\cdot 0{,}06=15,\n$$\n$$\n\\sigma=\\sqrt{np(1-p)}=\\sqrt{250\\cdot 0{,}06\\cdot 0{,}94}=\\sqrt{14{,}1}\\approx 3{,}76.\n$$\n\n2. Mit Stetigkeitskorrektur wird\n$$\nP(10\\le X\\le 20)\\approx P(9{,}5\\le Y\\le 20{,}5)\n$$\nmit $Y\\sim N(15;3{,}76)$. Standardisiert ergibt sich\n$$\nz_1=\\frac{9{,}5-15}{3{,}76}\\approx -1{,}46,\\qquad z_2=\\frac{20{,}5-15}{3{,}76}\\approx 1{,}46.\n$$\nDamit folgt\n$$\nP(10\\le X\\le 20)\\approx \\Phi(1{,}46)-\\Phi(-1{,}46)\\approx 0{,}857.\n$$\n\n3. Für mehr als $25$ verspätete Sendungen gilt mit Stetigkeitskorrektur\n$$\nP(X>25)\\approx P(Y>25{,}5).\n$$\nStandardisieren liefert\n$$\nz=\\frac{25{,}5-15}{3{,}76}\\approx 2{,}79.\n$$\nAlso\n$$\nP(X>25)\\approx 1-\\Phi(2{,}79)\\approx 0{,}0026.\n$$\n\n4. Ein Tageswert von mehr als $25$ verspäteten Sendungen ist sehr unwahrscheinlich. Mit einer Wahrscheinlichkeit von nur etwa $0{,}26\\,$% kann ein solcher Wert als deutlich auffällig beurteilt werden.",
         "scoring": {
           "maxPoints": 20,
           "passingPoints": 10,
@@ -14264,12 +14264,12 @@
             {
               "id": "q3b_3",
               "points": 4,
-              "description": "Randwahrscheinlichkeit fuer mehr als 25 korrekt bestimmt"
+              "description": "Randwahrscheinlichkeit für mehr als 25 korrekt bestimmt"
             },
             {
               "id": "q3b_4",
               "points": 5,
-              "description": "Auffaelligkeit im Kontext fachlich sinnvoll bewertet"
+              "description": "Auffälligkeit im Kontext fachlich sinnvoll bewertet"
             }
           ]
         }
@@ -14370,8 +14370,8 @@
       "contains": [],
       "examples": [],
       "examData": {
-        "taskContent": "Bei einer Befragung von $500$ Schuelerinnen und Schuelern geben $315$ an, regelmaessig mit dem Fahrrad zur Schule zu fahren.\n\n1. Bestimmen Sie den relativen Stichprobenanteil.\n2. Geben Sie ein $95\\,$%-Konfidenzintervall fuer den unbekannten Anteil $p$ aller Schuelerinnen und Schueler an, die regelmaessig mit dem Fahrrad zur Schule fahren.\n3. Beurteilen Sie mithilfe des Intervalls die Aussage: \"Mindestens $60\\,$% aller Schuelerinnen und Schueler fahren regelmaessig mit dem Fahrrad zur Schule.\"\n4. Wie gross muss eine neue Stichprobe mindestens sein, damit der Stichprobenfehler bei einem $95\\,$%-Konfidenzintervall hoechstens $0{,}03$ betraegt, wenn man weiter mit dem beobachteten Anteil rechnet?",
-        "solutionContent": "1. Der relative Stichprobenanteil ist\n$$\n\\hat p=\\frac{315}{500}=0{,}63.\n$$\n\n2. Fuer ein $95\\,$%-Konfidenzintervall gilt naeherungsweise\n$$\n\\hat p\\pm 1{,}96\\sqrt{\\frac{\\hat p(1-\\hat p)}{n}}.\n$$\nMit $\\hat p=0{,}63$ und $n=500$ ergibt sich\n$$\n\\sqrt{\\frac{0{,}63\\cdot 0{,}37}{500}}\\approx 0{,}0214,\n$$\nalso der Fehlerterm\n$$\n1{,}96\\cdot 0{,}0214\\approx 0{,}042.\n$$\nDamit lautet das Intervall naeherungsweise\n$$\n[0{,}588;\\,0{,}672].\n$$\n\n3. Der Wert $0{,}60$ liegt im Konfidenzintervall. Die Aussage \"mindestens $60\\,$%\" ist also mit den Daten vereinbar, aber durch die Stichprobe nicht eindeutig gesichert.\n\n4. Gesucht ist $n$ mit\n$$\n1{,}96\\sqrt{\\frac{0{,}63\\cdot 0{,}37}{n}}\\le 0{,}03.\n$$\nUmformen liefert\n$$\nn\\ge 0{,}63\\cdot 0{,}37\\left(\\frac{1{,}96}{0{,}03}\\right)^2\\approx 994{,}95.\n$$\nAlso werden mindestens\n$$\nn=995\n$$\nPersonen benoetigt.",
+        "taskContent": "Bei einer Befragung von $500$ Schülerinnen und Schülern geben $315$ an, regelmäßig mit dem Fahrrad zur Schule zu fahren.\n\n1. Bestimmen Sie den relativen Stichprobenanteil.\n2. Geben Sie ein $95\\,$%-Konfidenzintervall für den unbekannten Anteil $p$ aller Schülerinnen und Schüler an, die regelmäßig mit dem Fahrrad zur Schule fahren.\n3. Beurteilen Sie mithilfe des Intervalls die Aussage: \"Mindestens $60\\,$% aller Schülerinnen und Schüler fahren regelmäßig mit dem Fahrrad zur Schule.\"\n4. Wie gross muss eine neue Stichprobe mindestens sein, damit der Stichprobenfehler bei einem $95\\,$%-Konfidenzintervall höchstens $0{,}03$ beträgt, wenn man weiter mit dem beobachteten Anteil rechnet?",
+        "solutionContent": "1. Der relative Stichprobenanteil ist\n$$\n\\hat p=\\frac{315}{500}=0{,}63.\n$$\n\n2. Für ein $95\\,$%-Konfidenzintervall gilt näherungsweise\n$$\n\\hat p\\pm 1{,}96\\sqrt{\\frac{\\hat p(1-\\hat p)}{n}}.\n$$\nMit $\\hat p=0{,}63$ und $n=500$ ergibt sich\n$$\n\\sqrt{\\frac{0{,}63\\cdot 0{,}37}{500}}\\approx 0{,}0214,\n$$\nalso der Fehlerterm\n$$\n1{,}96\\cdot 0{,}0214\\approx 0{,}042.\n$$\nDamit lautet das Intervall näherungsweise\n$$\n[0{,}588;\\,0{,}672].\n$$\n\n3. Der Wert $0{,}60$ liegt im Konfidenzintervall. Die Aussage \"mindestens $60\\,$%\" ist also mit den Daten vereinbar, aber durch die Stichprobe nicht eindeutig gesichert.\n\n4. Gesucht ist $n$ mit\n$$\n1{,}96\\sqrt{\\frac{0{,}63\\cdot 0{,}37}{n}}\\le 0{,}03.\n$$\nUmformen liefert\n$$\nn\\ge 0{,}63\\cdot 0{,}37\\left(\\frac{1{,}96}{0{,}03}\\right)^2\\approx 994{,}95.\n$$\nAlso werden mindestens\n$$\nn=995\n$$\nPersonen benötigt.",
         "scoring": {
           "maxPoints": 20,
           "passingPoints": 10,
@@ -14438,8 +14438,8 @@
       "contains": [],
       "examples": [],
       "examData": {
-        "taskContent": "In einem Callcenter wird in $100$ gleich langen Zeitintervallen erfasst, wie viele Anrufe eingehen. Die beobachteten Haeufigkeiten lauten:\n\n- $0$ Anrufe: $12$\n- $1$ Anruf: $29$\n- $2$ Anrufe: $31$\n- $3$ Anrufe: $17$\n- mindestens $4$ Anrufe: $11$\n\nDie Leitung vermutet, dass die Anzahl der Anrufe pro Intervall durch eine Poisson-Verteilung mit dem Parameter $\\lambda=2$ beschrieben werden kann.\n\n1. Berechnen Sie die erwarteten Haeufigkeiten fuer $0$, $1$, $2$, $3$ und mindestens $4$ Anrufe in $100$ Intervallen.\n2. Vergleichen Sie Beobachtung und Modell und beurteilen Sie, ob die Poisson-Verteilung hier als sinnvolles Modell gelten kann.\n3. Bestimmen Sie die Wahrscheinlichkeit, dass in drei aufeinanderfolgenden Intervallen zusammen mindestens $8$ Anrufe eingehen.\n4. Erlaeutern Sie, wie eine Simulation helfen kann, die Modellannahme weiter zu ueberpruefen.",
-        "solutionContent": "1. Fuer $X\\sim \\operatorname{Pois}(2)$ gilt\n$$\nP(X=k)=\\frac{2^k\\mathrm e^{-2}}{k!}.\n$$\nDaraus folgen naeherungsweise\n$$\nP(X=0)=\\mathrm e^{-2}\\approx 0{,}1353,\\quad P(X=1)=2\\mathrm e^{-2}\\approx 0{,}2707,\n$$\n$$\nP(X=2)=\\frac{2^2}{2!}\\mathrm e^{-2}\\approx 0{,}2707,\\quad P(X=3)=\\frac{2^3}{3!}\\mathrm e^{-2}\\approx 0{,}1804.\n$$\nSomit ist\n$$\nP(X\\ge 4)=1-(0{,}1353+0{,}2707+0{,}2707+0{,}1804)\\approx 0{,}1429.\n$$\nFuer $100$ Intervalle ergeben sich die erwarteten Haeufigkeiten:\n$$\n13{,}5;\\ 27{,}1;\\ 27{,}1;\\ 18{,}0;\\ 14{,}3.\n$$\n\n2. Die beobachteten Werte $12,29,31,17,11$ liegen insgesamt recht nah an den erwarteten Haeufigkeiten. Es gibt kleinere Abweichungen, aber keine deutliche systematische Verletzung. Die Poisson-Verteilung kann deshalb als sinnvolles Modell angesehen werden.\n\n3. Die Summe von drei unabhaengigen Poisson-verteilten Zufallsvariablen mit Parameter $2$ ist wieder poissonverteilt mit Parameter $6$. Fuer $Y\\sim \\operatorname{Pois}(6)$ gilt daher\n$$\nP(Y\\ge 8)=1-P(Y\\le 7)\\approx 0{,}256.\n$$\nDie Wahrscheinlichkeit betraegt also etwa $25{,}6\\,$%.\n\n4. Man kann sehr viele Serien von je $100$ Intervallen mit dem Poisson-Modell simulieren und dabei vergleichen, wie stark die simulierten Haeufigkeiten typischerweise streuen. Liegen die realen Daten im Bereich dieser typischen Schwankungen, stuetzt das die Modellannahme.",
+        "taskContent": "In einem Callcenter wird in $100$ gleich langen Zeitintervallen erfasst, wie viele Anrufe eingehen. Die beobachteten Häufigkeiten lauten:\n\n- $0$ Anrufe: $12$\n- $1$ Anruf: $29$\n- $2$ Anrufe: $31$\n- $3$ Anrufe: $17$\n- mindestens $4$ Anrufe: $11$\n\nDie Leitung vermutet, dass die Anzahl der Anrufe pro Intervall durch eine Poisson-Verteilung mit dem Parameter $\\lambda=2$ beschrieben werden kann.\n\n1. Berechnen Sie die erwarteten Häufigkeiten für $0$, $1$, $2$, $3$ und mindestens $4$ Anrufe in $100$ Intervallen.\n2. Vergleichen Sie Beobachtung und Modell und beurteilen Sie, ob die Poisson-Verteilung hier als sinnvolles Modell gelten kann.\n3. Bestimmen Sie die Wahrscheinlichkeit, dass in drei aufeinanderfolgenden Intervallen zusammen mindestens $8$ Anrufe eingehen.\n4. Erläutern Sie, wie eine Simulation helfen kann, die Modellannahme weiter zu überprüfen.",
+        "solutionContent": "1. Für $X\\sim \\operatorname{Pois}(2)$ gilt\n$$\nP(X=k)=\\frac{2^k\\mathrm e^{-2}}{k!}.\n$$\nDaraus folgen näherungsweise\n$$\nP(X=0)=\\mathrm e^{-2}\\approx 0{,}1353,\\quad P(X=1)=2\\mathrm e^{-2}\\approx 0{,}2707,\n$$\n$$\nP(X=2)=\\frac{2^2}{2!}\\mathrm e^{-2}\\approx 0{,}2707,\\quad P(X=3)=\\frac{2^3}{3!}\\mathrm e^{-2}\\approx 0{,}1804.\n$$\nSomit ist\n$$\nP(X\\ge 4)=1-(0{,}1353+0{,}2707+0{,}2707+0{,}1804)\\approx 0{,}1429.\n$$\nFür $100$ Intervalle ergeben sich die erwarteten Häufigkeiten:\n$$\n13{,}5;\\ 27{,}1;\\ 27{,}1;\\ 18{,}0;\\ 14{,}3.\n$$\n\n2. Die beobachteten Werte $12,29,31,17,11$ liegen insgesamt recht nah an den erwarteten Häufigkeiten. Es gibt kleinere Abweichungen, aber keine deutliche systematische Verletzung. Die Poisson-Verteilung kann deshalb als sinnvolles Modell angesehen werden.\n\n3. Die Summe von drei unabhängigen Poisson-verteilten Zufallsvariablen mit Parameter $2$ ist wieder poissonverteilt mit Parameter $6$. Für $Y\\sim \\operatorname{Pois}(6)$ gilt daher\n$$\nP(Y\\ge 8)=1-P(Y\\le 7)\\approx 0{,}256.\n$$\nDie Wahrscheinlichkeit beträgt also etwa $25{,}6\\,$%.\n\n4. Man kann sehr viele Serien von je $100$ Intervallen mit dem Poisson-Modell simulieren und dabei vergleichen, wie stark die simulierten Häufigkeiten typischerweise streuen. Liegen die realen Daten im Bereich dieser typischen Schwankungen, stützt das die Modellannahme.",
         "scoring": {
           "maxPoints": 20,
           "passingPoints": 10,
@@ -14447,7 +14447,7 @@
             {
               "id": "q3d_1",
               "points": 7,
-              "description": "Erwartete Haeufigkeiten unter dem Poisson-Modell korrekt berechnet"
+              "description": "Erwartete Häufigkeiten unter dem Poisson-Modell korrekt berechnet"
             },
             {
               "id": "q3d_2",
@@ -14457,12 +14457,12 @@
             {
               "id": "q3d_3",
               "points": 4,
-              "description": "Wahrscheinlichkeit fuer mindestens 8 Anrufe in drei Intervallen korrekt bestimmt"
+              "description": "Wahrscheinlichkeit für mindestens 8 Anrufe in drei Intervallen korrekt bestimmt"
             },
             {
               "id": "q3d_4",
               "points": 5,
-              "description": "Rolle einer Simulation fuer die Modellpruefung korrekt erlaeutert"
+              "description": "Rolle einer Simulation für die Modellprüfung korrekt erläutert"
             }
           ]
         }
@@ -14533,8 +14533,8 @@
       "contains": [],
       "examples": [],
       "examData": {
-        "taskContent": "Gegeben ist fuer $a \\in \\mathbb R$ die Funktionenschar\n$$\nf_a(x)=x^2-2ax+2a.\n$$\n\n1. Bestimmen Sie den Scheitelpunkt $S_a$ des Graphen von $f_a$ in Abhaengigkeit von $a$.\n2. Weisen Sie nach, dass die Scheitelpunkte aller Graphen auf einer gemeinsamen Ortskurve liegen, und geben Sie deren Gleichung an.\n3. Untersuchen Sie in Abhaengigkeit von $a$, fuer welche Werte die Parabel keine reellen Nullstellen besitzt.\n4. Berechnen Sie fuer $a=3$ den Flaecheninhalt der von dem Graphen von $f_3$, der $x$-Achse und den Nullstellen eingeschlossenen Flaeche.",
-        "solutionContent": "1. Durch quadratische Ergaenzung erhaelt man\n$$\nf_a(x)=x^2-2ax+2a=(x-a)^2-a^2+2a.\n$$\nDamit ist der Scheitelpunkt\n$$\nS_a=(a\\mid -a^2+2a).\n$$\n\n2. Fuer die Scheitelpunkte gilt $x=a$. Einsetzen in die $y$-Koordinate liefert\n$$\ny=-a^2+2a=-x^2+2x.\n$$\nDie Ortskurve der Scheitelpunkte ist also\n$$\ny=-x^2+2x.\n$$\n\n3. Die Funktion $f_a$ besitzt genau dann keine reellen Nullstellen, wenn die Diskriminante negativ ist:\n$$\n\\Delta=(-2a)^2-4\\cdot 1\\cdot 2a=4a^2-8a=4a(a-2).\n$$\nGesucht ist\n$$\n4a(a-2)<0.\n$$\nDas gilt fuer\n$$\n0<a<2.\n$$\n\n4. Fuer $a=3$ ist\n$$\nf_3(x)=x^2-6x+6=(x-3)^2-3.\n$$\nDie Nullstellen sind\n$$\nx_{1,2}=3\\pm \\sqrt{3}.\n$$\nZwischen diesen Nullstellen liegt der Graph unter der $x$-Achse. Der Flaecheninhalt ist daher\n$$\nA=\\int_{3-\\sqrt{3}}^{3+\\sqrt{3}} -f_3(x)\\,dx.\n$$\nMit $u=x-3$ wird\n$$\nA=\\int_{-\\sqrt{3}}^{\\sqrt{3}} (3-u^2)\\,du = \\left[3u-\\frac{u^3}{3}\\right]_{-\\sqrt{3}}^{\\sqrt{3}} = 4\\sqrt{3}.\n$$\nAlso gilt\n$$\nA=4\\sqrt{3}.\n$$",
+        "taskContent": "Gegeben ist für $a \\in \\mathbb R$ die Funktionenschar\n$$\nf_a(x)=x^2-2ax+2a.\n$$\n\n1. Bestimmen Sie den Scheitelpunkt $S_a$ des Graphen von $f_a$ in Abhängigkeit von $a$.\n2. Weisen Sie nach, dass die Scheitelpunkte aller Graphen auf einer gemeinsamen Ortskurve liegen, und geben Sie deren Gleichung an.\n3. Untersuchen Sie in Abhängigkeit von $a$, für welche Werte die Parabel keine reellen Nullstellen besitzt.\n4. Berechnen Sie für $a=3$ den Flächeninhalt der von dem Graphen von $f_3$, der $x$-Achse und den Nullstellen eingeschlossenen Fläche.",
+        "solutionContent": "1. Durch quadratische Ergänzung erhält man\n$$\nf_a(x)=x^2-2ax+2a=(x-a)^2-a^2+2a.\n$$\nDamit ist der Scheitelpunkt\n$$\nS_a=(a\\mid -a^2+2a).\n$$\n\n2. Für die Scheitelpunkte gilt $x=a$. Einsetzen in die $y$-Koordinate liefert\n$$\ny=-a^2+2a=-x^2+2x.\n$$\nDie Ortskurve der Scheitelpunkte ist also\n$$\ny=-x^2+2x.\n$$\n\n3. Die Funktion $f_a$ besitzt genau dann keine reellen Nullstellen, wenn die Diskriminante negativ ist:\n$$\n\\Delta=(-2a)^2-4\\cdot 1\\cdot 2a=4a^2-8a=4a(a-2).\n$$\nGesucht ist\n$$\n4a(a-2)<0.\n$$\nDas gilt für\n$$\n0<a<2.\n$$\n\n4. Für $a=3$ ist\n$$\nf_3(x)=x^2-6x+6=(x-3)^2-3.\n$$\nDie Nullstellen sind\n$$\nx_{1,2}=3\\pm \\sqrt{3}.\n$$\nZwischen diesen Nullstellen liegt der Graph unter der $x$-Achse. Der Flächeninhalt ist daher\n$$\nA=\\int_{3-\\sqrt{3}}^{3+\\sqrt{3}} -f_3(x)\\,dx.\n$$\nMit $u=x-3$ wird\n$$\nA=\\int_{-\\sqrt{3}}^{\\sqrt{3}} (3-u^2)\\,du = \\left[3u-\\frac{u^3}{3}\\right]_{-\\sqrt{3}}^{\\sqrt{3}} = 4\\sqrt{3}.\n$$\nAlso gilt\n$$\nA=4\\sqrt{3}.\n$$",
         "scoring": {
           "maxPoints": 20,
           "passingPoints": 10,
@@ -14557,7 +14557,7 @@
             {
               "id": "q4a_4",
               "points": 6,
-              "description": "Flaecheninhalt fuer a=3 korrekt berechnet"
+              "description": "Flächeninhalt für a=3 korrekt berechnet"
             }
           ]
         }
@@ -14595,8 +14595,8 @@
       "contains": [],
       "examples": [],
       "examData": {
-        "taskContent": "Es sollen rechteckige Gehege mit dem Flaecheninhalt $36\\,\\mathrm{m}^2$ geplant werden. Unter allen moeglichen Rechtecken soll dasjenige mit dem kleinsten Umfang gefunden werden.\n\n1. Stellen Sie den Umfang $U$ in Abhaengigkeit von einer Seitenlaenge $x$ als Funktion dar.\n2. Bestimmen Sie mit einer Analysis-Methode das Rechteck mit minimalem Umfang.\n3. Loesen Sie dieselbe Aufgabe ein zweites Mal ohne Differentialrechnung, sondern mit einem passenden Ungleichungsargument.\n4. Vergleichen Sie beide Loesungsstrategien und beurteilen Sie, welche im gegebenen Kontext beziehungsweise in allgemeineren Situationen staerker ist.",
-        "solutionContent": "1. Sei $x>0$ eine Seitenlaenge. Dann ist die andere Seitenlaenge wegen des Flaecheninhalts\n$$\ny=\\frac{36}{x}.\n$$\nDer Umfang lautet damit\n$$\nU(x)=2x+2\\cdot \\frac{36}{x}=2x+\\frac{72}{x}, \\qquad x>0.\n$$\n\n2. Mit der Ableitung\n$$\nU'(x)=2-\\frac{72}{x^2}\n$$\nfolgt aus $U'(x)=0$\n$$\n2=\\frac{72}{x^2} \\quad \\Rightarrow \\quad x^2=36 \\quad \\Rightarrow \\quad x=6.\n$$\nDann ist auch\n$$\ny=\\frac{36}{6}=6.\n$$\nMit\n$$\nU''(x)=\\frac{144}{x^3}>0\n$$\nfur $x>0$ liegt dort ein Minimum vor. Das gesuchte Rechteck ist also das Quadrat mit Seitenlaenge $6\\,\\mathrm m$ und Umfang\n$$\nU_{\\min}=24\\,\\mathrm m.\n$$\n\n3. Mit der Ungleichung vom arithmetischen und geometrischen Mittel gilt fuer $x>0$\n$$\nx+\\frac{36}{x} \\ge 2\\sqrt{x\\cdot \\frac{36}{x}}=2\\sqrt{36}=12.\n$$\nSomit folgt\n$$\nU(x)=2\\left(x+\\frac{36}{x}\\right)\\ge 24.\n$$\nGleichheit gilt genau dann, wenn\n$$\nx=\\frac{36}{x},\n$$\nalso bei $x=6$. Wieder ergibt sich das Quadrat als optimale Loesung.\n\n4. Im gegebenen Kontext fuehren beide Strategien sicher zum selben Ergebnis. Das Ungleichungsargument ist kuerzer und sehr elegant, wenn nur das Minimum gesucht wird und positive Groessen vorliegen. Die Analysis-Methode ist flexibler, weil sie auch bei komplizierteren Nebenbedingungen, anderen Zielfunktionen oder weiterfuehrenden Untersuchungen eingesetzt werden kann.",
+        "taskContent": "Es sollen rechteckige Gehege mit dem Flächeninhalt $36\\,\\mathrm{m}^2$ geplant werden. Unter allen möglichen Rechtecken soll dasjenige mit dem kleinsten Umfang gefunden werden.\n\n1. Stellen Sie den Umfang $U$ in Abhängigkeit von einer Seitenlänge $x$ als Funktion dar.\n2. Bestimmen Sie mit einer Analysis-Methode das Rechteck mit minimalem Umfang.\n3. Lösen Sie dieselbe Aufgabe ein zweites Mal ohne Differentialrechnung, sondern mit einem passenden Ungleichungsargument.\n4. Vergleichen Sie beide Lösungsstrategien und beurteilen Sie, welche im gegebenen Kontext beziehungsweise in allgemeineren Situationen stärker ist.",
+        "solutionContent": "1. Sei $x>0$ eine Seitenlänge. Dann ist die andere Seitenlänge wegen des Flächeninhalts\n$$\ny=\\frac{36}{x}.\n$$\nDer Umfang lautet damit\n$$\nU(x)=2x+2\\cdot \\frac{36}{x}=2x+\\frac{72}{x}, \\qquad x>0.\n$$\n\n2. Mit der Ableitung\n$$\nU'(x)=2-\\frac{72}{x^2}\n$$\nfolgt aus $U'(x)=0$\n$$\n2=\\frac{72}{x^2} \\quad \\Rightarrow \\quad x^2=36 \\quad \\Rightarrow \\quad x=6.\n$$\nDann ist auch\n$$\ny=\\frac{36}{6}=6.\n$$\nMit\n$$\nU''(x)=\\frac{144}{x^3}>0\n$$\nfür $x>0$ liegt dort ein Minimum vor. Das gesuchte Rechteck ist also das Quadrat mit Seitenlänge $6\\,\\mathrm m$ und Umfang\n$$\nU_{\\min}=24\\,\\mathrm m.\n$$\n\n3. Mit der Ungleichung vom arithmetischen und geometrischen Mittel gilt für $x>0$\n$$\nx+\\frac{36}{x} \\ge 2\\sqrt{x\\cdot \\frac{36}{x}}=2\\sqrt{36}=12.\n$$\nSomit folgt\n$$\nU(x)=2\\left(x+\\frac{36}{x}\\right)\\ge 24.\n$$\nGleichheit gilt genau dann, wenn\n$$\nx=\\frac{36}{x},\n$$\nalso bei $x=6$. Wieder ergibt sich das Quadrat als optimale Lösung.\n\n4. Im gegebenen Kontext führen beide Strategien sicher zum selben Ergebnis. Das Ungleichungsargument ist kürzer und sehr elegant, wenn nur das Minimum gesucht wird und positive Größen vorliegen. Die Analysis-Methode ist flexibler, weil sie auch bei komplizierteren Nebenbedingungen, anderen Zielfunktionen oder weiterführenden Untersuchungen eingesetzt werden kann.",
         "scoring": {
           "maxPoints": 20,
           "passingPoints": 10,
@@ -14604,7 +14604,7 @@
             {
               "id": "q4b_1",
               "points": 4,
-              "description": "Zielfunktion fuer den Umfang korrekt aufgestellt"
+              "description": "Zielfunktion für den Umfang korrekt aufgestellt"
             },
             {
               "id": "q4b_2",
@@ -14614,12 +14614,12 @@
             {
               "id": "q4b_3",
               "points": 5,
-              "description": "Alternative Loesung mit Ungleichungsargument korrekt durchgefuehrt"
+              "description": "Alternative Lösung mit Ungleichungsargument korrekt durchgeführt"
             },
             {
               "id": "q4b_4",
               "points": 5,
-              "description": "Loesungsstrategien fachlich sinnvoll verglichen und bewertet"
+              "description": "Lösungsstrategien fachlich sinnvoll verglichen und bewertet"
             }
           ]
         }
@@ -14774,8 +14774,8 @@
       "contains": [],
       "examples": [],
       "examData": {
-        "taskContent": "Sei $f$ eine gerade Funktion mit Definitionsmenge $\\mathbb R$.\n\n1. Begruenden Sie, dass die Funktion $g(x)=2f(x)-3$ ebenfalls gerade ist.\n2. Untersuchen Sie die Aussage: \"Die Funktion $h(x)=f(x-1)$ ist fuer jede gerade Funktion $f$ wieder gerade.\" Widerlegen oder beweisen Sie die Aussage.\n3. Formulieren Sie eine fachlich korrekte Ersatz-Aussage zu $h(x)=f(x-1)$.\n4. Begruenden Sie Ihre Ersatz-Aussage allgemein.",
-        "solutionContent": "1. Da $f$ gerade ist, gilt fuer alle $x\\in \\mathbb R$\n$$\nf(-x)=f(x).\n$$\nDamit folgt\n$$\ng(-x)=2f(-x)-3=2f(x)-3=g(x).\n$$\nAlso ist $g$ gerade.\n\n2. Die Aussage ist falsch. Ein Gegenbeispiel ist $f(x)=x^2$. Dann gilt\n$$\nh(x)=f(x-1)=(x-1)^2.\n$$\nEs ist\n$$\nh(-x)=(-x-1)^2=(x+1)^2 \\neq (x-1)^2=h(x)\n$$\nzum Beispiel fuer $x=1$. Also ist $h$ im Allgemeinen nicht gerade.\n\n3. Eine korrekte Ersatz-Aussage lautet: Der Graph von $h(x)=f(x-1)$ ist achsensymmetrisch zur Geraden $x=1$.\n\n4. Setzt man $x=1+t$, so erhaelt man\n$$\nh(1+t)=f(t), \\qquad h(1-t)=f(-t).\n$$\nDa $f$ gerade ist, gilt $f(-t)=f(t)$. Also folgt\n$$\nh(1-t)=h(1+t).\n$$\nDamit sind die Funktionswerte in gleichem Abstand links und rechts von $x=1$ gleich. Genau das bedeutet Achsensymmetrie zur Geraden $x=1$.",
+        "taskContent": "Sei $f$ eine gerade Funktion mit Definitionsmenge $\\mathbb R$.\n\n1. Begründen Sie, dass die Funktion $g(x)=2f(x)-3$ ebenfalls gerade ist.\n2. Untersuchen Sie die Aussage: \"Die Funktion $h(x)=f(x-1)$ ist für jede gerade Funktion $f$ wieder gerade.\" Widerlegen oder beweisen Sie die Aussage.\n3. Formulieren Sie eine fachlich korrekte Ersatz-Aussage zu $h(x)=f(x-1)$.\n4. Begründen Sie Ihre Ersatz-Aussage allgemein.",
+        "solutionContent": "1. Da $f$ gerade ist, gilt für alle $x\\in \\mathbb R$\n$$\nf(-x)=f(x).\n$$\nDamit folgt\n$$\ng(-x)=2f(-x)-3=2f(x)-3=g(x).\n$$\nAlso ist $g$ gerade.\n\n2. Die Aussage ist falsch. Ein Gegenbeispiel ist $f(x)=x^2$. Dann gilt\n$$\nh(x)=f(x-1)=(x-1)^2.\n$$\nEs ist\n$$\nh(-x)=(-x-1)^2=(x+1)^2 \\neq (x-1)^2=h(x)\n$$\nzum Beispiel für $x=1$. Also ist $h$ im Allgemeinen nicht gerade.\n\n3. Eine korrekte Ersatz-Aussage lautet: Der Graph von $h(x)=f(x-1)$ ist achsensymmetrisch zur Geraden $x=1$.\n\n4. Setzt man $x=1+t$, so erhält man\n$$\nh(1+t)=f(t), \\qquad h(1-t)=f(-t).\n$$\nDa $f$ gerade ist, gilt $f(-t)=f(t)$. Also folgt\n$$\nh(1-t)=h(1+t).\n$$\nDamit sind die Funktionswerte in gleichem Abstand links und rechts von $x=1$ gleich. Genau das bedeutet Achsensymmetrie zur Geraden $x=1$.",
         "scoring": {
           "maxPoints": 20,
           "passingPoints": 10,
@@ -14783,7 +14783,7 @@
             {
               "id": "pk_1_1",
               "points": 4,
-              "description": "Geradheit von g korrekt begruendet"
+              "description": "Geradheit von g korrekt begründet"
             },
             {
               "id": "pk_1_2",
@@ -14793,12 +14793,12 @@
             {
               "id": "pk_1_3",
               "points": 4,
-              "description": "Korrekte Ersatz-Aussage fachlich praezise formuliert"
+              "description": "Korrekte Ersatz-Aussage fachlich präzise formuliert"
             },
             {
               "id": "pk_1_4",
               "points": 6,
-              "description": "Ersatz-Aussage allgemein schluessig begruendet"
+              "description": "Ersatz-Aussage allgemein schlüssig begründet"
             }
           ]
         }
@@ -14844,8 +14844,8 @@
       "contains": [],
       "examples": [],
       "examData": {
-        "taskContent": "Gesucht sind alle Paare positiver ganzer Zahlen $(a,b)$ mit\n$$\nab=2a+2b.\n$$\n\n1. Loesen Sie die Aufgabe mit einer systematischen Strategie.\n2. Bestimmen Sie die Loesungsmenge ein zweites Mal durch geeignetes Umformen der Gleichung.\n3. Begruenden Sie, warum damit alle Loesungen erfasst sind.\n4. Beurteilen Sie, welche der beiden Strategien sich leichter auf aehnliche Gleichungen wie $ab=3a+3b$ uebertragen laesst.",
-        "solutionContent": "1. Eine systematische Strategie ist, die Gleichung nach moeglichen Teilern zu untersuchen. Zweckmaessiger ist aber direkt das Umformen.\n\n2. Aus\n$$\nab=2a+2b\n$$\nfolgt durch Addition von $4$ auf beiden Seiten\n$$\nab-2a-2b+4=4.\n$$\nDamit erhaelt man\n$$\n(a-2)(b-2)=4.\n$$\nDa $a$ und $b$ positive ganze Zahlen sind, muessen auch $a-2$ und $b-2$ positive Teiler von $4$ sein. Die moeglichen Teilerpaare sind\n$$\n(1,4), (2,2), (4,1).\n$$\nDaraus folgen die Loesungen\n$$\n(a,b)=(3,6), (4,4), (6,3).\n$$\n\n3. Weitere Loesungen gibt es nicht, weil die Zahl $4$ nur die genannten positiven Teilerpaare besitzt. Jedes davon fuehrt genau auf ein Zahlenpaar $(a,b)$ der Ausgangsgleichung.\n\n4. Die Faktorisierungsstrategie ist fuer aehnliche Gleichungen besonders stark, weil sie das Problem auf eine endliche Anzahl von Teilerpaaren reduziert. Reines Probieren kann zwar ebenfalls zum Ziel fuehren, ist aber weniger transparent und bei groesseren Zahlen deutlich unpraktischer.",
+        "taskContent": "Gesucht sind alle Paare positiver ganzer Zahlen $(a,b)$ mit\n$$\nab=2a+2b.\n$$\n\n1. Lösen Sie die Aufgabe mit einer systematischen Strategie.\n2. Bestimmen Sie die Lösungsmenge ein zweites Mal durch geeignetes Umformen der Gleichung.\n3. Begründen Sie, warum damit alle Lösungen erfasst sind.\n4. Beurteilen Sie, welche der beiden Strategien sich leichter auf ähnliche Gleichungen wie $ab=3a+3b$ übertragen lässt.",
+        "solutionContent": "1. Eine systematische Strategie ist, die Gleichung nach möglichen Teilern zu untersuchen. Zweckmäßiger ist aber direkt das Umformen.\n\n2. Aus\n$$\nab=2a+2b\n$$\nfolgt durch Addition von $4$ auf beiden Seiten\n$$\nab-2a-2b+4=4.\n$$\nDamit erhält man\n$$\n(a-2)(b-2)=4.\n$$\nDa $a$ und $b$ positive ganze Zahlen sind, müssen auch $a-2$ und $b-2$ positive Teiler von $4$ sein. Die möglichen Teilerpaare sind\n$$\n(1,4), (2,2), (4,1).\n$$\nDaraus folgen die Lösungen\n$$\n(a,b)=(3,6), (4,4), (6,3).\n$$\n\n3. Weitere Lösungen gibt es nicht, weil die Zahl $4$ nur die genannten positiven Teilerpaare besitzt. Jedes davon führt genau auf ein Zahlenpaar $(a,b)$ der Ausgangsgleichung.\n\n4. Die Faktorisierungsstrategie ist für ähnliche Gleichungen besonders stark, weil sie das Problem auf eine endliche Anzahl von Teilerpaaren reduziert. Reines Probieren kann zwar ebenfalls zum Ziel führen, ist aber weniger transparent und bei größeren Zahlen deutlich unpraktischer.",
         "scoring": {
           "maxPoints": 20,
           "passingPoints": 10,
@@ -14853,22 +14853,22 @@
             {
               "id": "pk_2_1",
               "points": 5,
-              "description": "Eine systematische Loesungsstrategie sinnvoll entwickelt"
+              "description": "Eine systematische Lösungsstrategie sinnvoll entwickelt"
             },
             {
               "id": "pk_2_2",
               "points": 7,
-              "description": "Umformung zu einer Faktorzerlegung und Loesungen korrekt bestimmt"
+              "description": "Umformung zu einer Faktorzerlegung und Lösungen korrekt bestimmt"
             },
             {
               "id": "pk_2_3",
               "points": 4,
-              "description": "Vollstaendigkeit der Loesungsmenge korrekt begruendet"
+              "description": "Vollständigkeit der Lösungsmenge korrekt begründet"
             },
             {
               "id": "pk_2_4",
               "points": 4,
-              "description": "Strategien sinnvoll verglichen und uebertragen"
+              "description": "Strategien sinnvoll verglichen und übertragen"
             }
           ]
         }
@@ -14912,8 +14912,8 @@
       "contains": [],
       "examples": [],
       "examData": {
-        "taskContent": "Eine Schule plant fuer einen Projekttag ein Mittagessen und vergleicht zwei Caterer.\n\n- Anbieter A verlangt eine Grundgebuehr von $250\\,\\mathrm{EUR}$ und zusaetzlich $4{,}20\\,\\mathrm{EUR}$ pro Essen.\n- Anbieter B verlangt eine Grundgebuehr von $80\\,\\mathrm{EUR}$ und zusaetzlich $5{,}10\\,\\mathrm{EUR}$ pro Essen.\n\n1. Stellen Sie fuer beide Anbieter Kostenfunktionen in Abhaengigkeit von der Anzahl $x$ der Essen auf.\n2. Bestimmen Sie diejenige Teilnehmerzahl, ab der Anbieter A guenstiger ist als Anbieter B.\n3. Entscheiden Sie fuer $120$ erwartete Essen, welcher Anbieter zu waehlen ist.\n4. Beurteilen Sie die Aussagekraft des Modells. Nennen Sie mindestens zwei Aspekte der Realitaet, die im Modell nicht oder nur unvollstaendig beruecksichtigt werden.",
-        "solutionContent": "1. Die Kostenfunktionen lauten\n$$\nK_A(x)=250+4{,}2x,\n$$\n$$\nK_B(x)=80+5{,}1x.\n$$\n\n2. Gesucht ist der Schnittpunkt:\n$$\n250+4{,}2x=80+5{,}1x.\n$$\nDaraus folgt\n$$\n170=0{,}9x \\quad \\Rightarrow \\quad x\\approx 188{,}9.\n$$\nAb etwa $189$ Essen ist Anbieter A guenstiger als Anbieter B.\n\n3. Fuer $x=120$ gilt\n$$\nK_A(120)=250+4{,}2\\cdot 120=754,\n$$\n$$\nK_B(120)=80+5{,}1\\cdot 120=692.\n$$\nAlso ist bei $120$ Essen Anbieter B die guenstigere Wahl.\n\n4. Das Modell betrachtet nur lineare Kosten. Nicht beruecksichtigt werden zum Beispiel Qualitaetsunterschiede, moegliche Rabatte bei grossen Mengen, Lieferkosten, Ausfallrisiken, Restessen oder Unsicherheit bei der tatsaechlichen Teilnehmerzahl. Daher ist das Modell eine sinnvolle erste Orientierung, aber keine vollstaendige Entscheidungsgrundlage.",
+        "taskContent": "Eine Schule plant für einen Projekttag ein Mittagessen und vergleicht zwei Caterer.\n\n- Anbieter A verlangt eine Grundgebühr von $250\\,\\mathrm{EUR}$ und zusätzlich $4{,}20\\,\\mathrm{EUR}$ pro Essen.\n- Anbieter B verlangt eine Grundgebühr von $80\\,\\mathrm{EUR}$ und zusätzlich $5{,}10\\,\\mathrm{EUR}$ pro Essen.\n\n1. Stellen Sie für beide Anbieter Kostenfunktionen in Abhängigkeit von der Anzahl $x$ der Essen auf.\n2. Bestimmen Sie diejenige Teilnehmerzahl, ab der Anbieter A günstiger ist als Anbieter B.\n3. Entscheiden Sie für $120$ erwartete Essen, welcher Anbieter zu wählen ist.\n4. Beurteilen Sie die Aussagekraft des Modells. Nennen Sie mindestens zwei Aspekte der Realität, die im Modell nicht oder nur unvollständig berücksichtigt werden.",
+        "solutionContent": "1. Die Kostenfunktionen lauten\n$$\nK_A(x)=250+4{,}2x,\n$$\n$$\nK_B(x)=80+5{,}1x.\n$$\n\n2. Gesucht ist der Schnittpunkt:\n$$\n250+4{,}2x=80+5{,}1x.\n$$\nDaraus folgt\n$$\n170=0{,}9x \\quad \\Rightarrow \\quad x\\approx 188{,}9.\n$$\nAb etwa $189$ Essen ist Anbieter A günstiger als Anbieter B.\n\n3. Für $x=120$ gilt\n$$\nK_A(120)=250+4{,}2\\cdot 120=754,\n$$\n$$\nK_B(120)=80+5{,}1\\cdot 120=692.\n$$\nAlso ist bei $120$ Essen Anbieter B die günstigere Wahl.\n\n4. Das Modell betrachtet nur lineare Kosten. Nicht berücksichtigt werden zum Beispiel Qualitätsunterschiede, mögliche Rabatte bei grossen Mengen, Lieferkosten, Ausfallrisiken, Restessen oder Unsicherheit bei der tatsächlichen Teilnehmerzahl. Daher ist das Modell eine sinnvolle erste Orientierung, aber keine vollständige Entscheidungsgrundlage.",
         "scoring": {
           "maxPoints": 20,
           "passingPoints": 10,
@@ -14931,12 +14931,12 @@
             {
               "id": "pk_3_3",
               "points": 4,
-              "description": "Konkrete Entscheidung fuer 120 Essen korrekt begruendet"
+              "description": "Konkrete Entscheidung für 120 Essen korrekt begründet"
             },
             {
               "id": "pk_3_4",
               "points": 6,
-              "description": "Guete und Grenzen des Modells fachlich sinnvoll bewertet"
+              "description": "Güte und Grenzen des Modells fachlich sinnvoll bewertet"
             }
           ]
         }
@@ -14983,8 +14983,8 @@
       "contains": [],
       "examples": [],
       "examData": {
-        "taskContent": "Gegeben ist die Funktion\n$$\np(x)=-0{,}5x^2+12x.\n$$\n\n1. Erstellen Sie eine Wertetabelle fuer $x=0,4,8,12,16,20,24$.\n2. Bestimmen Sie mit Hilfe des Terms die Nullstellen und den Scheitelpunkt des Graphen.\n3. Erlaeutern Sie, welche Informationen der Term, die Wertetabelle und ein Schaubild jeweils besonders gut liefern.\n4. Eine Schuelerin sagt: \"Zwischen $x=6$ und $x=18$ verhaelt sich die Funktion fast linear.\" Beurteilen Sie diese Aussage mithilfe der verschiedenen Darstellungen.",
-        "solutionContent": "1. Einsetzen liefert die Tabelle\n$$\n\\begin{array}{c|ccccccc}\nx & 0 & 4 & 8 & 12 & 16 & 20 & 24\\\\ \\hline\np(x) & 0 & 40 & 64 & 72 & 64 & 40 & 0\n\\end{array}\n$$\n\n2. Fuer die Nullstellen gilt\n$$\np(x)=-0{,}5x^2+12x=x(-0{,}5x+12).\n$$\nAlso sind die Nullstellen\n$$\nx_1=0, \\qquad x_2=24.\n$$\nDer Scheitel liegt in der Mitte zwischen den Nullstellen bei\n$$\nx_S=12.\n$$\nDann ist\n$$\np(12)=72.\n$$\nSomit lautet der Scheitelpunkt\n$$\nS(12\\mid 72).\n$$\n\n3. Der Term erlaubt exakte Rechnungen und allgemeine Aussagen. Die Wertetabelle zeigt schnell einzelne Werte und Trends. Ein Schaubild macht den gesamten Verlauf anschaulich und erlaubt schnelles Ablesen, ist aber meist weniger exakt.\n\n4. Die Aussage ist nur eingeschraenkt richtig. Im mittleren Bereich wirkt der Graph optisch flacher als an den Raendern, aber der Term zeigt klar, dass es sich um eine quadratische Funktion handelt. Auch die Tabelle zeigt keine konstante Aenderungsrate: Von $x=8$ nach $12$ steigt der Wert um $8$, von $12$ nach $16$ faellt er um $8$. Eine echte lineare Entwicklung liegt also nicht vor.",
+        "taskContent": "Gegeben ist die Funktion\n$$\np(x)=-0{,}5x^2+12x.\n$$\n\n1. Erstellen Sie eine Wertetabelle für $x=0,4,8,12,16,20,24$.\n2. Bestimmen Sie mit Hilfe des Terms die Nullstellen und den Scheitelpunkt des Graphen.\n3. Erläutern Sie, welche Informationen der Term, die Wertetabelle und ein Schaubild jeweils besonders gut liefern.\n4. Eine Schülerin sagt: \"Zwischen $x=6$ und $x=18$ verhält sich die Funktion fast linear.\" Beurteilen Sie diese Aussage mithilfe der verschiedenen Darstellungen.",
+        "solutionContent": "1. Einsetzen liefert die Tabelle\n$$\n\\begin{array}{c|ccccccc}\nx & 0 & 4 & 8 & 12 & 16 & 20 & 24\\\\ \\hline\np(x) & 0 & 40 & 64 & 72 & 64 & 40 & 0\n\\end{array}\n$$\n\n2. Für die Nullstellen gilt\n$$\np(x)=-0{,}5x^2+12x=x(-0{,}5x+12).\n$$\nAlso sind die Nullstellen\n$$\nx_1=0, \\qquad x_2=24.\n$$\nDer Scheitel liegt in der Mitte zwischen den Nullstellen bei\n$$\nx_S=12.\n$$\nDann ist\n$$\np(12)=72.\n$$\nSomit lautet der Scheitelpunkt\n$$\nS(12\\mid 72).\n$$\n\n3. Der Term erlaubt exakte Rechnungen und allgemeine Aussagen. Die Wertetabelle zeigt schnell einzelne Werte und Trends. Ein Schaubild macht den gesamten Verlauf anschaulich und erlaubt schnelles Ablesen, ist aber meist weniger exakt.\n\n4. Die Aussage ist nur eingeschränkt richtig. Im mittleren Bereich wirkt der Graph optisch flacher als an den Rändern, aber der Term zeigt klar, dass es sich um eine quadratische Funktion handelt. Auch die Tabelle zeigt keine konstante Änderungsrate: Von $x=8$ nach $12$ steigt der Wert um $8$, von $12$ nach $16$ fällt er um $8$. Eine echte lineare Entwicklung liegt also nicht vor.",
         "scoring": {
           "maxPoints": 20,
           "passingPoints": 10,
@@ -15002,12 +15002,12 @@
             {
               "id": "pk_4_3",
               "points": 4,
-              "description": "Staerken der verschiedenen Darstellungen fachlich korrekt beschrieben"
+              "description": "Stärken der verschiedenen Darstellungen fachlich korrekt beschrieben"
             },
             {
               "id": "pk_4_4",
               "points": 6,
-              "description": "Aussage zur scheinbaren Linearitaet mit Darstellungen sinnvoll beurteilt"
+              "description": "Aussage zur scheinbaren Linearität mit Darstellungen sinnvoll beurteilt"
             }
           ]
         }
@@ -15054,8 +15054,8 @@
       "contains": [],
       "examples": [],
       "examData": {
-        "taskContent": "Untersucht wird die Gleichung\n$$\n\\ln(x)=2-x\n$$\nmit $x>0$.\n\n1. Begruenden Sie, dass die Gleichung genau eine Loesung besitzt.\n2. Führen Sie fuer die Funktion $F(x)=\\ln(x)+x-2$ einen Newton-Schritt mit dem Startwert $x_0=2$ aus.\n3. Bestimmen Sie die Loesung naeherungsweise auf drei Dezimalstellen.\n4. Erlaeutern Sie, wie ein graphisches Werkzeug bei der Bearbeitung helfen kann und welche Grenzen eine rein graphische Ablesung hat.",
-        "solutionContent": "1. Es wird\n$$\nF(x)=\\ln(x)+x-2\n$$\nbetrachtet. Fuer $x>0$ gilt\n$$\nF'(x)=\\frac{1}{x}+1>0.\n$$\nAlso ist $F$ streng monoton steigend und kann daher hoechstens eine Nullstelle besitzen. Da\n$$\nF(1)=-1<0 \\quad \\text{und} \\quad F(2)=\\ln(2)>0,\n$$\nliegt nach dem Zwischenwertsatz mindestens eine Nullstelle im Intervall $(1,2)$. Insgesamt gibt es also genau eine Loesung.\n\n2. Fuer das Newton-Verfahren gilt\n$$\nx_{n+1}=x_n-\\frac{F(x_n)}{F'(x_n)}.\n$$\nMit $x_0=2$ ist\n$$\nF(2)=\\ln(2), \\qquad F'(2)=\\frac{1}{2}+1=1{,}5.\n$$\nDaher folgt\n$$\nx_1=2-\\frac{\\ln(2)}{1{,}5}\\approx 2-0{,}462=1{,}538.\n$$\n\n3. Numerisch ergibt sich die eindeutige Loesung zu\n$$\nx\\approx 1{,}557.\n$$\n\n4. Ein graphisches Werkzeug kann schnell zeigen, dass sich die Graphen von $y=\\ln(x)$ und $y=2-x$ genau einmal schneiden und wo die Loesung ungefaehr liegt. Eine rein graphische Ablesung ist aber ungenau und haengt von Fensterwahl und Aufloesung ab. Fuer die exakte Begruendung der Eindeutigkeit und fuer verlaessliche Naeherungswerte sind formale Verfahren wie Monotonieargumente und Newton-Verfahren notwendig.",
+        "taskContent": "Untersucht wird die Gleichung\n$$\n\\ln(x)=2-x\n$$\nmit $x>0$.\n\n1. Begründen Sie, dass die Gleichung genau eine Lösung besitzt.\n2. Führen Sie für die Funktion $F(x)=\\ln(x)+x-2$ einen Newton-Schritt mit dem Startwert $x_0=2$ aus.\n3. Bestimmen Sie die Lösung näherungsweise auf drei Dezimalstellen.\n4. Erläutern Sie, wie ein graphisches Werkzeug bei der Bearbeitung helfen kann und welche Grenzen eine rein graphische Ablesung hat.",
+        "solutionContent": "1. Es wird\n$$\nF(x)=\\ln(x)+x-2\n$$\nbetrachtet. Für $x>0$ gilt\n$$\nF'(x)=\\frac{1}{x}+1>0.\n$$\nAlso ist $F$ streng monoton steigend und kann daher höchstens eine Nullstelle besitzen. Da\n$$\nF(1)=-1<0 \\quad \\text{und} \\quad F(2)=\\ln(2)>0,\n$$\nliegt nach dem Zwischenwertsatz mindestens eine Nullstelle im Intervall $(1,2)$. Insgesamt gibt es also genau eine Lösung.\n\n2. Für das Newton-Verfahren gilt\n$$\nx_{n+1}=x_n-\\frac{F(x_n)}{F'(x_n)}.\n$$\nMit $x_0=2$ ist\n$$\nF(2)=\\ln(2), \\qquad F'(2)=\\frac{1}{2}+1=1{,}5.\n$$\nDaher folgt\n$$\nx_1=2-\\frac{\\ln(2)}{1{,}5}\\approx 2-0{,}462=1{,}538.\n$$\n\n3. Numerisch ergibt sich die eindeutige Lösung zu\n$$\nx\\approx 1{,}557.\n$$\n\n4. Ein graphisches Werkzeug kann schnell zeigen, dass sich die Graphen von $y=\\ln(x)$ und $y=2-x$ genau einmal schneiden und wo die Lösung ungefähr liegt. Eine rein graphische Ablesung ist aber ungenau und hängt von Fensterwahl und Auflösung ab. Für die exakte Begründung der Eindeutigkeit und für verlässliche Näherungswerte sind formale Verfahren wie Monotonieargumente und Newton-Verfahren notwendig.",
         "scoring": {
           "maxPoints": 20,
           "passingPoints": 10,
@@ -15063,17 +15063,17 @@
             {
               "id": "pk_5_1",
               "points": 6,
-              "description": "Eindeutigkeit der Loesung formal korrekt begruendet"
+              "description": "Eindeutigkeit der Lösung formal korrekt begründet"
             },
             {
               "id": "pk_5_2",
               "points": 5,
-              "description": "Newton-Schritt korrekt ausgefuehrt"
+              "description": "Newton-Schritt korrekt ausgeführt"
             },
             {
               "id": "pk_5_3",
               "points": 4,
-              "description": "Loesung numerisch sinnvoll bestimmt"
+              "description": "Lösung numerisch sinnvoll bestimmt"
             },
             {
               "id": "pk_5_4",
@@ -15125,8 +15125,8 @@
       "contains": [],
       "examples": [],
       "examData": {
-        "taskContent": "Bei einer Schulbefragung geben $315$ von $500$ Schuelerinnen und Schuelern an, regelmaessig mit dem Fahrrad zur Schule zu fahren.\n\n1. Formulieren Sie das Ergebnis mathematisch praezise mit Stichprobenanteil und einem geeigneten $95\\,$%-Konfidenzintervall.\n2. Formulieren Sie dasselbe Ergebnis in zwei bis drei Saetzen so, dass die Schulleitung ohne mathematischen Spezialwortschatz es gut versteht.\n3. Eine Rueckfrage lautet: \"Heisst das, dass sicher genau $63\\,$% aller Schuelerinnen und Schueler mit dem Fahrrad kommen?\" Antworten Sie fachlich korrekt und adressatengerecht.\n4. Verbessern Sie die missverstaendliche Aussage: \"Fast alle Schueler fahren mit dem Fahrrad.\"",
-        "solutionContent": "1. Der Stichprobenanteil ist\n$$\n\\hat p=\\frac{315}{500}=0{,}63.\n$$\nEin naeherungsweises $95\\,$%-Konfidenzintervall lautet\n$$\n0{,}63 \\pm 1{,}96\\sqrt{\\frac{0{,}63\\cdot 0{,}37}{500}} \\approx 0{,}63 \\pm 0{,}042.\n$$\nDamit ergibt sich\n$$\n[0{,}588;\\,0{,}672].\n$$\n\n2. Eine adressatengerechte Formulierung fuer die Schulleitung kann lauten: \"In unserer Befragung fuhren rund 63 Prozent der befragten Schuelerinnen und Schueler regelmaessig mit dem Fahrrad zur Schule. Beruecksichtigt man die uebliche Unsicherheit einer Stichprobe, liegt der wahre Anteil wahrscheinlich irgendwo zwischen etwa 59 und 67 Prozent.\"\n\n3. Nein. Die 63 Prozent sind der beobachtete Anteil in der Stichprobe. Fuer alle Schuelerinnen und Schueler der Schule laesst sich nur ein plausibler Bereich angeben; deshalb spricht man von einem Intervall und nicht von einem exakt sicheren Wert.\n\n4. Eine bessere Formulierung ist zum Beispiel: \"Nach der Befragung kommt eine klare Mehrheit der Schuelerinnen und Schueler regelmaessig mit dem Fahrrad zur Schule; der wahre Anteil duerfte ungefaehr zwischen 59 und 67 Prozent liegen.\"",
+        "taskContent": "Bei einer Schulbefragung geben $315$ von $500$ Schülerinnen und Schülern an, regelmäßig mit dem Fahrrad zur Schule zu fahren.\n\n1. Formulieren Sie das Ergebnis mathematisch präzise mit Stichprobenanteil und einem geeigneten $95\\,$%-Konfidenzintervall.\n2. Formulieren Sie dasselbe Ergebnis in zwei bis drei Sätzen so, dass die Schulleitung ohne mathematischen Spezialwortschatz es gut versteht.\n3. Eine Rückfrage lautet: \"Heisst das, dass sicher genau $63\\,$% aller Schülerinnen und Schüler mit dem Fahrrad kommen?\" Antworten Sie fachlich korrekt und adressatengerecht.\n4. Verbessern Sie die missverständliche Aussage: \"Fast alle Schüler fahren mit dem Fahrrad.\"",
+        "solutionContent": "1. Der Stichprobenanteil ist\n$$\n\\hat p=\\frac{315}{500}=0{,}63.\n$$\nEin näherungsweises $95\\,$%-Konfidenzintervall lautet\n$$\n0{,}63 \\pm 1{,}96\\sqrt{\\frac{0{,}63\\cdot 0{,}37}{500}} \\approx 0{,}63 \\pm 0{,}042.\n$$\nDamit ergibt sich\n$$\n[0{,}588;\\,0{,}672].\n$$\n\n2. Eine adressatengerechte Formulierung für die Schulleitung kann lauten: \"In unserer Befragung fuhren rund 63 Prozent der befragten Schülerinnen und Schüler regelmäßig mit dem Fahrrad zur Schule. Berücksichtigt man die übliche Unsicherheit einer Stichprobe, liegt der wahre Anteil wahrscheinlich irgendwo zwischen etwa 59 und 67 Prozent.\"\n\n3. Nein. Die 63 Prozent sind der beobachtete Anteil in der Stichprobe. Für alle Schülerinnen und Schüler der Schule lässt sich nur ein plausibler Bereich angeben; deshalb spricht man von einem Intervall und nicht von einem exakt sicheren Wert.\n\n4. Eine bessere Formulierung ist zum Beispiel: \"Nach der Befragung kommt eine klare Mehrheit der Schülerinnen und Schüler regelmäßig mit dem Fahrrad zur Schule; der wahre Anteil dürfte ungefähr zwischen 59 und 67 Prozent liegen.\"",
         "scoring": {
           "maxPoints": 20,
           "passingPoints": 10,
@@ -15134,22 +15134,22 @@
             {
               "id": "pk_6_1",
               "points": 6,
-              "description": "Mathematisch praezise Darstellung mit Anteil und Konfidenzintervall korrekt"
+              "description": "Mathematisch präzise Darstellung mit Anteil und Konfidenzintervall korrekt"
             },
             {
               "id": "pk_6_2",
               "points": 5,
-              "description": "Ergebnis adressatengerecht fuer die Schulleitung formuliert"
+              "description": "Ergebnis adressatengerecht für die Schulleitung formuliert"
             },
             {
               "id": "pk_6_3",
               "points": 4,
-              "description": "Rueckfrage fachlich korrekt und verstaendlich beantwortet"
+              "description": "Rückfrage fachlich korrekt und verständlich beantwortet"
             },
             {
               "id": "pk_6_4",
               "points": 5,
-              "description": "Missverstaendliche Aussage klar und angemessen verbessert"
+              "description": "Missverständliche Aussage klar und angemessen verbessert"
             }
           ]
         }
