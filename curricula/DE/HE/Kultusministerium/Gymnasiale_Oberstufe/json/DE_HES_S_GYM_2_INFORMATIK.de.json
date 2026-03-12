@@ -35,7 +35,14 @@
         "8a73ef93-2482-4840-b456-e53be7e8f767",
         "a7bde9ba-4d06-41da-8dca-22fae0ea0403",
         "644c3440-77c9-4d5c-90e0-27804c26e1fc",
-        "76f6c76d-2d00-4a6a-8a9d-2344c1aa5086"
+        "76f6c76d-2d00-4a6a-8a9d-2344c1aa5086",
+        "b9cb98f0-16c5-5b5a-a15a-8f9e718a07c1",
+        "8f92401f-897d-5282-8859-b58f12f4bf95",
+        "66a91fef-7608-56f0-a213-c5f7aa4a4be7",
+        "c90da7df-48d2-51df-ae55-64972d4150e8",
+        "0aaf7a1f-c87b-5f03-83d9-9b3a674973d8",
+        "8fe90ebe-3957-510f-a0ae-7197b9fd34ca",
+        "561e8c0d-cfa0-5ecf-8485-d0ef30c9e8ff"
       ],
       "requires": [],
       "dimensionTags": {
@@ -48,7 +55,8 @@
         ],
         "guidingIdeas": [],
         "phase": "GLOBAL"
-      }
+      },
+      "sourceRef": "KC2024, Gymnasiale Oberstufe Informatik, Hessen"
     },
     {
       "id": "9037d005-eea9-45b3-b5ed-23cea87312e7",
@@ -5727,6 +5735,1308 @@
           "I5"
         ],
         "phase": "Q4"
+      }
+    },
+    {
+      "id": "7fc8c5e4-5d0b-4a4e-b94b-5b743c93816a",
+      "title": "Web-Fehlersuche fuer den Schultag",
+      "titleEn": "Web debugging for school life",
+      "description": "Die lernende Person kann eine materialgestuetzte E-Phasen-Aufgabe zu HTTP, HTML und JavaScript in einem einfachen Webprojekt bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based introductory task on HTTP, HTML and JavaScript in a simple web project.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "eaf23ba5-5147-4629-8d8d-7c516590c693",
+        "bbf0e850-3ddf-4072-abd5-0f7cb917c028",
+        "2178fd3a-671d-407a-846f-1e89f712074e"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEine Schul-AG meldet, dass ihre kleine Veranstaltungswebseite zwar geladen wird, aber Formulareingaben nicht korrekt verarbeitet werden.\n\n**Material 1:** gekuerzte HTTP-Anfrage und HTTP-Antwort.  \n**Material 2:** HTML-Ausschnitt mit Formular und DOM-Elementen.  \n**Material 3:** JavaScript-Codeausschnitt zur Eingabepruefung.\n\n**Aufgaben:**\n\n1. Erlaeutern Sie, welche Rolle HTTP-Anfrage und HTTP-Antwort in diesem Fall spielen. (5 BE)\n2. Analysieren Sie den HTML-Ausschnitt im Hinblick auf Formularstruktur und DOM-Zugriff. (5 BE)\n3. Arbeiten Sie den Fehler im JavaScript-Code heraus und beschreiben Sie eine Korrektur. (5 BE)\n4. Beurteilen Sie, warum ein systematisches Testen im kleinen Informatikprojekt hier notwendig ist. (5 BE)",
+        "solutionContent": "1. Erwartet werden Client-Server-Kommunikation, Request/Response-Modell und Statusbezug.  \n   **5 BE**\n\n2. Die Analyse beschreibt Formularelemente, IDs/Namen und den vorgesehenen DOM-Zugriff.  \n   **5 BE**\n\n3. Der Fehler wird korrekt lokalisiert und eine fachlich passende Korrektur beschrieben.  \n   **5 BE**\n\n4. Eine begruendete Bewertung verweist auf Reproduzierbarkeit, Fehlereingrenzung und Wartbarkeit.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "HTTP-Ablauf korrekt beschrieben"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "HTML-Struktur schluessig analysiert"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "JavaScript-Fehler fachlich korrekt korrigiert"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Testnotwendigkeit reflektiert"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "6db2ed9e-7826-4a96-aa72-7ed5a1461170",
+      "title": "Paketstation objektorientiert modellieren",
+      "titleEn": "Model a parcel station in an object-oriented way",
+      "description": "Die lernende Person kann eine materialgestuetzte Q1-Aufgabe zu Klassen, Rekursion und Such-/Sortieralgorithmen bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based Q1 task on classes, recursion and search/sort algorithms.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "9aa30b59-f7bd-49f8-9814-faaeaddbe4e8",
+        "f9207c66-1347-4121-bf56-fd3ce0ad4ec9",
+        "e1feb075-47f4-43e9-9f7b-418323dd0fb7"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEine Paketstation verwaltet Faecher, Pakete und Abholcodes in einem Java- oder Python-Programm.\n\n**Material 1:** UML-Klassendiagramm fuer `Paket`, `Fach` und `Station`.  \n**Material 2:** Codeausschnitt fuer eine rekursive Suche nach freiem Fach.  \n**Material 3:** Protokoll einer Sortierfunktion fuer Abholcodes.\n\n**Aufgaben:**\n\n1. Erlaeutern Sie die Beziehungen der Klassen im Diagramm. (5 BE)\n2. Analysieren Sie die rekursive Suche im Hinblick auf Abbruchbedingung und Rueckgabewert. (5 BE)\n3. Beurteilen Sie das Sortierverfahren aus Material 3 fachlich begruendet. (5 BE)\n4. Entwickeln Sie einen Vorschlag, wie die objektorientierte Modellierung die Wartbarkeit des Programms verbessert. (5 BE)",
+        "solutionContent": "1. Erwartet werden Attribute, Methoden und Beziehungen zwischen den Klassen.  \n   **5 BE**\n\n2. Die Analyse beschreibt Rekursionsschritt, Basisfall und korrekte Rueckgabe.  \n   **5 BE**\n\n3. Das Sortierverfahren wird mit Blick auf Korrektheit und Effizienz fachlich bewertet.  \n   **5 BE**\n\n4. Ein tragfaehiger Vorschlag nennt Kapselung, Zustaendigkeiten und Erweiterbarkeit.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "Klassenbeziehungen korrekt beschrieben"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "Rekursion fachlich korrekt analysiert"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "Such-/Sortieridee plausibel beurteilt"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "OO-Modellierung reflektiert"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "f06f4e46-76be-45dc-b4c7-0288c5471d25",
+      "title": "Bibliotheksdatenbank zwischen ER-Modell und SQL",
+      "titleEn": "Library database between ER model and SQL",
+      "description": "Die lernende Person kann eine materialgestuetzte Q2-Aufgabe zu ER-Modell, SQL und Relationenalgebra bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based Q2 task on ER models, SQL and relational algebra.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "18f714d2-62ea-440f-be5c-f4c203fe9d90",
+        "250ee1b5-a9af-44a9-bfa1-d0322370e32b",
+        "b12daa97-81eb-4e4c-8039-9c9bc243dcdd"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q2"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEine Schulbibliothek moechte Ausleihe, Medien und Benutzerkonten in einer relationalen Datenbank verwalten.\n\n**Material 1:** ER-Diagramm der Bibliothek.  \n**Material 2:** SQL-Abfrage mit Join und Gruppierung.  \n**Material 3:** Relationenalgebra-Ausdruck fuer dieselbe Fragestellung.\n\n**Aufgaben:**\n\n1. Beschreiben Sie das ER-Modell im Hinblick auf Entitaeten, Beziehungen und Kardinalitaeten. (5 BE)\n2. Analysieren Sie die SQL-Abfrage fachlich und geben Sie an, welche Ergebnismenge erzeugt wird. (5 BE)\n3. Ueberfuehren Sie die Fragestellung aus Material 3 in eine passende SQL-Idee. (5 BE)\n4. Beurteilen Sie, warum ein konsistentes Datenmodell fuer die Bibliothek wichtiger ist als nur einzelne Abfragen zu optimieren. (5 BE)",
+        "solutionContent": "1. Erwartet werden passende Entitaeten, Beziehungen und sinnvolle Kardinalitaeten.  \n   **5 BE**\n\n2. Die SQL-Analyse beschreibt Selektion, Join, Gruppierung und Ergebnislogik.  \n   **5 BE**\n\n3. Der Relationenalgebra-Ausdruck wird fachlich korrekt in SQL ueberfuehrt.  \n   **5 BE**\n\n4. Eine Begruendung verweist auf Redundanzfreiheit, Konsistenz und Erweiterbarkeit.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "ER-Modell korrekt erschlossen"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "SQL-Abfrage schluessig analysiert"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "Relationenalgebra in SQL uebertragen"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Datenmodellqualitaet reflektiert"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "6eb7838d-d2b2-494b-bb59-4411137f87b9",
+      "title": "Zutrittskontrolle mit Automat und Berechenbarkeitsgrenzen",
+      "titleEn": "Access control with automata and computability limits",
+      "description": "Die lernende Person kann eine materialgestuetzte Q3-Aufgabe zu formalen Sprachen, endlichen Automaten und Berechenbarkeit bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based Q3 task on formal languages, finite automata and computability.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "f4847d81-6764-4fa7-b9e1-ece381520408",
+        "074cec9d-b501-405c-a131-be6db239ddad",
+        "e87645e8-1100-4370-aa89-67f278a2a62c"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q3"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEin Zutrittssystem akzeptiert nur bestimmte Folgen von Chipkarten- und Tuerereignissen.\n\n**Material 1:** Beschreibung der erlaubten Eingabefolgen in informeller Sprache.  \n**Material 2:** endlicher Automat fuer eine Teilmenge der Folgen.  \n**Material 3:** kurzer Text zur Frage, welche Eigenschaften durch endliche Automaten bzw. allgemeinere Berechenbarkeitsmodelle beschrieben werden koennen.\n\n**Aufgaben:**\n\n1. Formulieren Sie fuer Material 1 eine passende formale Sprache oder Grammatikidee. (5 BE)\n2. Analysieren Sie den Automaten aus Material 2 im Hinblick auf akzeptierte und nicht akzeptierte Woerter. (5 BE)\n3. Erlaeutern Sie, wo Grenzen endlicher Automaten in diesem Kontext liegen. (5 BE)\n4. Beurteilen Sie, warum fuer komplexere Pruefprobleme andere Berechenbarkeitsmodelle relevant werden. (5 BE)",
+        "solutionContent": "1. Erwartet wird eine fachlich passende Formalisierung der erlaubten Eingabefolgen.  \n   **5 BE**\n\n2. Die Analyse beschreibt Zustaende, Uebergaenge und Akzeptanz korrekt.  \n   **5 BE**\n\n3. Zu erlaeutern sind Grenzen regulaerer Sprachen bzw. endlicher Automaten.  \n   **5 BE**\n\n4. Ein begruendetes Urteil verweist auf erweiterte Speicher- oder Berechnungsmodelle.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "formale Sprache fachlich passend modelliert"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "Automat korrekt analysiert"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "Grenzen endlicher Automaten plausibel erlaeutert"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Berechenbarkeitsbezug reflektiert"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "75be6ce1-a665-48b3-bf43-a0f1878aef8d",
+      "title": "Ampelsteuerung zwischen Logikschaltung und Prolog-Regeln",
+      "titleEn": "Traffic light control between logic circuits and Prolog rules",
+      "description": "Die lernende Person kann eine materialgestuetzte Q4-Aufgabe zu technischer Informatik und logischer Programmierung bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based Q4 task on computer engineering and logic programming.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "e50fad37-b94e-495d-b17d-c337e187d9fe",
+        "3a3d64aa-194a-49da-8c49-33ff1af57776"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEine Modellkreuzung soll sowohl als einfache Logikschaltung als auch mit deklarativen Regeln beschrieben werden.\n\n**Material 1:** Wahrheitstabelle fuer Sensoren und Ampelphasen.  \n**Material 2:** Schaltnetz-Skizze mit logischen Gattern.  \n**Material 3:** Prolog-Regeln fuer Freigaben und Sperren.\n\n**Aufgaben:**\n\n1. Analysieren Sie die Wahrheitstabelle im Hinblick auf Eingaben und Ausgaben. (5 BE)\n2. Erlaeutern Sie, wie Material 2 die Ampellogik technisch realisiert. (5 BE)\n3. Beschreiben Sie, wie Material 3 dieselbe Logik deklarativ ausdrueckt. (5 BE)\n4. Beurteilen Sie, wann in diesem Kontext eine technische bzw. eine logische Modellierung zweckmaessiger ist. (5 BE)",
+        "solutionContent": "1. Erwartet werden korrekte Zuordnung von Sensorwerten und Ampelzustaenden.  \n   **5 BE**\n\n2. Die Erlaeuterung beschreibt die Funktion der Gatter und die resultierenden Schaltbedingungen.  \n   **5 BE**\n\n3. Die Prolog-Regeln werden als deklarative Beschreibung derselben Logik fachlich eingeordnet.  \n   **5 BE**\n\n4. Ein begruendetes Urteil waegt Hardware-Naehe, Transparenz und Erweiterbarkeit gegeneinander ab.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "Wahrheitstabelle korrekt analysiert"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "Schaltungslogik plausibel erlaeutert"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "Prolog-Regeln fachlich korrekt beschrieben"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Modellierungsvergleich begruendet"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c8706447-24b7-4c5f-9dc3-74e88cdd613f",
+      "title": "Drohnenauftraege zwischen Klassenmodell und Rekursion",
+      "titleEn": "Drone jobs between class design and recursion",
+      "description": "Die lernende Person kann eine materialgestuetzte Q1-Aufgabe zu Klassen, Rekursion und algorithmischer Auswahl bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based Q1 task on classes, recursion, and algorithmic selection.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "9aa30b59-f7bd-49f8-9814-faaeaddbe4e8",
+        "f9207c66-1347-4121-bf56-fd3ce0ad4ec9",
+        "e1feb075-47f4-43e9-9f7b-418323dd0fb7"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEin Lieferdienst verwaltet Drohnenauftraege objektorientiert. Zielorte werden priorisiert, und fuer Teilmengen von Auftraegen soll rekursiv eine Auswertung vorgenommen werden.\n\n**Material 1:** UML-Skizze fuer Klassen wie `Drohne`, `Auftrag` und `Tour`.  \n**Material 2:** Codeauszug mit einer rekursiven Auswertungsfunktion.  \n**Material 3:** Pseudocode fuer die Auswahl oder Sortierung von Auftraegen.\n\n**Aufgaben:**\n\n1. Analysieren Sie Material 1 im Hinblick auf Attribute, Methoden und Objektbeziehungen. (5 BE)\n2. Erlaeutern Sie die Rekursionsidee aus Material 2 fachlich korrekt. (5 BE)\n3. Analysieren Sie das Verfahren aus Material 3 anhand der gegebenen Beschreibung. (5 BE)\n4. Begruenden Sie, warum das Zusammenspiel von Klassenmodell und Algorithmus fuer diesen Kontext zweckmaessig ist. (5 BE)",
+        "solutionContent": "1. Erwartet werden korrekte Aussagen zu Attributen, Methoden und Beziehungen im Modell.  \n   **5 BE**\n\n2. Die Rekursion wird mit Abbruchfall, rekursivem Schritt und Ergebnisbildung schluessig beschrieben.  \n   **5 BE**\n\n3. Das Verfahren wird fachlich passend analysiert, etwa im Hinblick auf Vergleiche, Auswahl oder Sortierung.  \n   **5 BE**\n\n4. Eine Begruendung verweist auf Kapselung, klare Datenhaltung und nachvollziehbare Verfahrenslogik.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "Klassenmodell korrekt analysiert"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "Rekursionsidee fachlich erklaert"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "Algorithmus passend analysiert"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Modellierungsentscheidung begruendet"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "0fb23704-f1cc-4cc2-a117-f23a602d2285",
+      "title": "Festivaldatenbank zwischen Schema und Anfrage",
+      "titleEn": "Festival database between schema and query",
+      "description": "Die lernende Person kann eine materialgestuetzte Q2-Aufgabe zu Datenmodell, SQL und Relationenalgebra bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based Q2 task on data modelling, SQL, and relational algebra.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "18f714d2-62ea-440f-be5c-f4c203fe9d90",
+        "250ee1b5-a9af-44a9-bfa1-d0322370e32b",
+        "b12daa97-81eb-4e4c-8039-9c9bc243dcdd"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q2"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEin Musikfestival verwaltet Buehnen, Auftritte, Kuenstler und Zeitfenster in einer relationalen Datenbank.\n\n**Material 1:** ER-Diagramm des Systems.  \n**Material 2:** Relationsschema mit Beispieltabellen.  \n**Material 3:** SQL-Abfrage mit Join und Gruppierung.  \n**Material 4:** Relationenalgebra-Ausdruck fuer eine zweite Fragestellung.\n\n**Aufgaben:**\n\n1. Analysieren Sie Material 1 im Hinblick auf Entitaeten, Beziehungen und Kardinalitaeten. (5 BE)\n2. Begruenden Sie, wie Material 2 aus dem Modell hervorgeht. (5 BE)\n3. Analysieren Sie Material 3 fachlich und beschreiben Sie die Ergebnismenge. (5 BE)\n4. Ueberfuehren Sie Material 4 in eine passende SQL-Idee. (5 BE)",
+        "solutionContent": "1. Erwartet werden passende Aussagen zu Entitaeten, Beziehungen und Kardinalitaeten.  \n   **5 BE**\n\n2. Die Ableitung des Schemas beschreibt Primar- und Fremdschluessel fachlich passend.  \n   **5 BE**\n\n3. Die SQL-Analyse erklaert Join-, Selektions- und Gruppierungslogik schluessig.  \n   **5 BE**\n\n4. Die Relationenalgebra wird fachlich korrekt in eine SQL-Idee ueberfuehrt.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "ER-Modell korrekt erschlossen"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "Schemaableitung plausibel begruendet"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "SQL-Abfrage fachlich analysiert"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Relationenalgebra in SQL-Idee uebertragen"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "9f0feff2-4411-4c34-9ef8-625cb90ad25b",
+      "title": "Pruefprotokolle zwischen Sprache, Automat und Aufwand",
+      "titleEn": "Verification protocols between language, automaton, and complexity",
+      "description": "Die lernende Person kann eine materialgestuetzte Q3-Aufgabe zu formalen Sprachen, Automaten und Berechenbarkeitsbezug bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based Q3 task on formal languages, automata, and computability-related reasoning.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "f4847d81-6764-4fa7-b9e1-ece381520408",
+        "074cec9d-b501-405c-a131-be6db239ddad",
+        "8eee5d80-e5cd-40a4-9f1b-6745c4c08e85",
+        "7fcdd1bc-ee17-4ffe-ae8c-5a4956d871f3"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q3"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEin System zur Pruefung digitaler Protokolle nutzt eine Sprachbeschreibung, einen Automaten fuer regulaere Teilbedingungen und einen Kurztext zu Aufwand und Berechenbarkeitsgrenzen.\n\n**Material 1:** informelle Beschreibung und Grammatikfragment einer Protokollsprache.  \n**Material 2:** endlicher Automat fuer Teilpruefungen.  \n**Material 3:** Kurztext zu Zeitkomplexitaet und Grenzen von Berechnungsmodellen.\n\n**Aufgaben:**\n\n1. Formulieren oder analysieren Sie zu Material 1 eine passende formale Sprache bzw. Grammatikidee. (5 BE)\n2. Analysieren Sie den Automaten aus Material 2 im Hinblick auf akzeptierte und nicht akzeptierte Woerter. (5 BE)\n3. Erlaeutern Sie anhand von Material 3, wo Grenzen endlicher Automaten liegen. (5 BE)\n4. Beurteilen Sie, welche Rolle Zeitkomplexitaet und Berechenbarkeit fuer reale Pruefsysteme spielen. (5 BE)",
+        "solutionContent": "1. Erwartet wird eine fachlich passende Formalisierung oder Analyse der Sprache.  \n   **5 BE**\n\n2. Die Automatenanalyse beschreibt Zustaende, Uebergaenge und Akzeptanz fachlich korrekt.  \n   **5 BE**\n\n3. Zu erlaeutern sind Grenzen regulaerer Sprachen bzw. endlicher Automaten und der Bedarf allgemeinerer Modelle.  \n   **5 BE**\n\n4. Ein begruendetes Urteil verbindet Aufwand, Skalierung und technische Zweckmaessigkeit.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "Sprache oder Grammatik passend modelliert"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "Automat fachlich analysiert"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "Grenzen endlicher Automaten plausibel erlaeutert"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Komplexitaets- und Berechenbarkeitsbezug reflektiert"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "b9cb98f0-16c5-5b5a-a15a-8f9e718a07c1",
+      "title": "Übungen E-Phase",
+      "titleEn": "Practice E Phase",
+      "description": "Phasenlokales Übungsziel: Die lernende Person kann materialgestuetzte Informatikaufgaben zur Einfuehrungsphase selbstaendig bearbeiten.",
+      "descriptionEn": "Phase-local practice goal: The learner can independently solve material-based computer science tasks for the introductory phase.",
+      "weight": 2,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [
+        "7fc8c5e4-5d0b-4a4e-b94b-5b743c93816a"
+      ],
+      "requires": [
+        "eaf23ba5-5147-4629-8d8d-7c516590c693",
+        "bbf0e850-3ddf-4072-abd5-0f7cb917c028",
+        "2178fd3a-671d-407a-846f-1e89f712074e"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "extendedData": {
+        "treeOrder": 7
+      }
+    },
+    {
+      "id": "8f92401f-897d-5282-8859-b58f12f4bf95",
+      "title": "Übungen Q1",
+      "titleEn": "Practice Q1",
+      "description": "Phasenlokales Übungsziel: Die lernende Person kann materialgestuetzte Informatikaufgaben zu Algorithmik und objektorientierter Modellierung selbstaendig bearbeiten.",
+      "descriptionEn": "Phase-local practice goal: The learner can independently solve material-based computer science tasks on algorithms and object-oriented modeling.",
+      "weight": 3,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [
+        "6db2ed9e-7826-4a96-aa72-7ed5a1461170",
+        "c8706447-24b7-4c5f-9dc3-74e88cdd613f"
+      ],
+      "requires": [
+        "9aa30b59-f7bd-49f8-9814-faaeaddbe4e8",
+        "f9207c66-1347-4121-bf56-fd3ce0ad4ec9",
+        "e1feb075-47f4-43e9-9f7b-418323dd0fb7"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q1"
+      },
+      "extendedData": {
+        "treeOrder": 8
+      }
+    },
+    {
+      "id": "66a91fef-7608-56f0-a213-c5f7aa4a4be7",
+      "title": "Übungen Q2",
+      "titleEn": "Practice Q2",
+      "description": "Phasenlokales Übungsziel: Die lernende Person kann materialgestuetzte Informatikaufgaben zu Datenbanken selbstaendig bearbeiten.",
+      "descriptionEn": "Phase-local practice goal: The learner can independently solve material-based computer science tasks on databases.",
+      "weight": 3,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [
+        "f06f4e46-76be-45dc-b4c7-0288c5471d25",
+        "0fb23704-f1cc-4cc2-a117-f23a602d2285"
+      ],
+      "requires": [
+        "18f714d2-62ea-440f-be5c-f4c203fe9d90",
+        "250ee1b5-a9af-44a9-bfa1-d0322370e32b",
+        "b12daa97-81eb-4e4c-8039-9c9bc243dcdd"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q2"
+      },
+      "extendedData": {
+        "treeOrder": 9
+      }
+    },
+    {
+      "id": "c90da7df-48d2-51df-ae55-64972d4150e8",
+      "title": "Übungen Q3",
+      "titleEn": "Practice Q3",
+      "description": "Phasenlokales Übungsziel: Die lernende Person kann materialgestuetzte Informatikaufgaben zur theoretischen Informatik selbstaendig bearbeiten.",
+      "descriptionEn": "Phase-local practice goal: The learner can independently solve material-based computer science tasks on theoretical computer science.",
+      "weight": 3,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [
+        "6eb7838d-d2b2-494b-bb59-4411137f87b9",
+        "9f0feff2-4411-4c34-9ef8-625cb90ad25b"
+      ],
+      "requires": [
+        "f4847d81-6764-4fa7-b9e1-ece381520408",
+        "074cec9d-b501-405c-a131-be6db239ddad",
+        "e87645e8-1100-4370-aa89-67f278a2a62c"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q3"
+      },
+      "extendedData": {
+        "treeOrder": 10
+      }
+    },
+    {
+      "id": "0aaf7a1f-c87b-5f03-83d9-9b3a674973d8",
+      "title": "Übungen Q4",
+      "titleEn": "Practice Q4",
+      "description": "Phasenlokales Übungsziel: Die lernende Person kann materialgestuetzte Informatikaufgaben zu technischer Informatik oder Prolog selbstaendig bearbeiten.",
+      "descriptionEn": "Phase-local practice goal: The learner can independently solve material-based computer science tasks on computer engineering or Prolog.",
+      "weight": 2,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [
+        "75be6ce1-a665-48b3-bf43-a0f1878aef8d"
+      ],
+      "requires": [
+        "e50fad37-b94e-495d-b17d-c337e187d9fe",
+        "3a3d64aa-194a-49da-8c49-33ff1af57776"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      },
+      "extendedData": {
+        "treeOrder": 11
+      }
+    },
+    {
+      "id": "9af35926-8cbe-4fce-81ca-7faef6c12c4a",
+      "title": "GK Pflichtaufgabe A: Paketlogistik zwischen Klasse, Rekursion und Sortierung",
+      "titleEn": "GK mandatory task A: parcel logistics across classes, recursion, and sorting",
+      "description": "Die lernende Person kann eine materialgestuetzte GK-Abituraufgabe zu Algorithmik und objektorientierter Modellierung bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based GK Abitur task on algorithms and object-oriented modeling.",
+      "weight": 1.1,
+      "tags": [
+        "GK",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "9aa30b59-f7bd-49f8-9814-faaeaddbe4e8",
+        "f9207c66-1347-4121-bf56-fd3ce0ad4ec9",
+        "e1feb075-47f4-43e9-9f7b-418323dd0fb7"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEin Paketzentrum verwaltet Sendungen mit einer Klasse `Paket`. Eine Liste eingehender Pakete soll nach Prioritaet sortiert werden; eine Rekursionsfunktion zaehlt zugleich die Gesamtzahl bestimmter Sendungstypen.\n\n**Material 1:** UML-Skizze und Klassenausschnitt fuer `Paket`.  \n**Material 2:** Quelltext eines rekursiven Zaehlerverfahrens.  \n**Material 3:** Pseudocode eines Sortierverfahrens mit Laufspuren.\n\n**Aufgaben:**\n\n1. Analysieren Sie Material 1 im Hinblick auf Attribute, Methoden und Objektzustand. (5 BE)\n2. Erlaeutern Sie die Rekursionsidee aus Material 2 fachlich korrekt. (5 BE)\n3. Analysieren Sie das Sortierverfahren aus Material 3 anhand der gegebenen Laufspur. (5 BE)\n4. Begruenden Sie, warum fuer diesen Kontext eine objektorientierte Modellierung zweckmaessig ist. (5 BE)\n5. Entwickeln Sie eine fachlich plausible Verbesserungsidee fuer Datenhaltung oder Sortierung. (5 BE)",
+        "solutionContent": "1. Erwartet werden korrekte Aussagen zu Attributen, Methodenaufrufen und Objektzustand.  \n   **5 BE**\n\n2. Die Rekursion wird mit Abbruchbedingung, rekursivem Schritt und Ergebnisbildung schluessig beschrieben.  \n   **5 BE**\n\n3. Die Laufspur wird fachlich korrekt analysiert; Vergleiche und Tauschschritte werden richtig eingeordnet.  \n   **5 BE**\n\n4. Eine passende Begruendung verweist auf Kapselung, Wiederverwendbarkeit und klare Modellierung der Sendungen.  \n   **5 BE**\n\n5. Erwartet wird eine begruendete Verbesserung, z. B. bessere Attributstruktur oder passenderes Sortierverfahren.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 25,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "Klassenmodell fachlich korrekt analysiert"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "Rekursionsidee schluessig erklaert"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "Sortierverfahren passend analysiert"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "OO-Modellierung plausibel begruendet"
+            },
+            {
+              "id": "s5",
+              "points": 5,
+              "description": "Verbesserungsidee fachlich tragfaehig entwickelt"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "3d9315c0-8887-4bf6-a4ce-9580bd38e55d",
+      "title": "GK Vorschlag B1: Fahrradverleih als Datenbankmodell",
+      "titleEn": "GK proposal B1: bike rental as a database model",
+      "description": "Die lernende Person kann eine materialgestuetzte GK-Abituraufgabe zu Datenbanken bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based GK Abitur task on databases.",
+      "weight": 1.1,
+      "tags": [
+        "GK",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "18f714d2-62ea-440f-be5c-f4c203fe9d90",
+        "250ee1b5-a9af-44a9-bfa1-d0322370e32b",
+        "b12daa97-81eb-4e4c-8039-9c9bc243dcdd"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEin kommunaler Fahrradverleih verwaltet Stationen, Fahrraeder, Ausleihen und Wartungen in einer relationalen Datenbank.\n\n**Material 1:** ER-Diagramm des Systems.  \n**Material 2:** Relationsschema und Beispieltabellen.  \n**Material 3:** SQL-Abfrage mit Join und Aggregation.  \n**Material 4:** Relationenalgebra-Ausdruck fuer eine weitere Anfrage.\n\n**Aufgaben:**\n\n1. Analysieren Sie Material 1 im Hinblick auf Entitaeten, Beziehungen und Kardinalitaeten. (5 BE)\n2. Begruenden Sie, wie das Relationsschema aus Material 2 aus dem ER-Modell hervorgeht. (5 BE)\n3. Analysieren Sie die SQL-Abfrage aus Material 3 fachlich und beschreiben Sie die Ergebnismenge. (5 BE)\n4. Ueberfuehren Sie die Anfrage aus Material 4 in eine passende SQL-Idee. (5 BE)\n5. Beurteilen Sie, warum ein konsistentes Datenmodell fuer den Fahrradverleih wichtiger ist als nur einzelne Abfragen zu optimieren. (5 BE)",
+        "solutionContent": "1. Erwartet werden passende Entitaeten, Beziehungen und Kardinalitaeten.  \n   **5 BE**\n\n2. Die Ableitung des Relationsschemas beschreibt Primar- und Fremdschluessel fachlich korrekt.  \n   **5 BE**\n\n3. Die SQL-Analyse beschreibt Selektion, Join, Aggregation und Ergebnislogik.  \n   **5 BE**\n\n4. Der Relationenalgebra-Ausdruck wird fachlich passend in SQL ueberfuehrt.  \n   **5 BE**\n\n5. Eine Begruendung verweist auf Konsistenz, Redundanzfreiheit und Wartbarkeit.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 25,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "ER-Modell korrekt erschlossen"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "Relationsschema plausibel abgeleitet"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "SQL-Abfrage fachlich analysiert"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Relationenalgebra in SQL uebertragen"
+            },
+            {
+              "id": "s5",
+              "points": 5,
+              "description": "Datenmodellqualitaet reflektiert"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "116113b7-39de-4464-a02b-1ded97c90fb0",
+      "title": "GK Vorschlag B2: Zugangssystem zwischen Automat und Berechenbarkeit",
+      "titleEn": "GK proposal B2: access system between automata and computability",
+      "description": "Die lernende Person kann eine materialgestuetzte GK-Abituraufgabe zur theoretischen Informatik bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based GK Abitur task on theoretical computer science.",
+      "weight": 1.1,
+      "tags": [
+        "GK",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "f4847d81-6764-4fa7-b9e1-ece381520408",
+        "074cec9d-b501-405c-a131-be6db239ddad",
+        "8eee5d80-e5cd-40a4-9f1b-6745c4c08e85",
+        "7fcdd1bc-ee17-4ffe-ae8c-5a4956d871f3"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEin Zugangssystem akzeptiert nur bestimmte Folgen von Karten-, PIN- und Tuerereignissen. Fuer die technische Umsetzung werden Sprache, Automat und ein kurzer Text zu Berechenbarkeitsgrenzen betrachtet.\n\n**Material 1:** informelle Beschreibung erlaubter Folgen.  \n**Material 2:** endlicher Automat fuer eine Teilmenge der Folgen.  \n**Material 3:** kurzer Fachtext zu Zeitkomplexitaet und Berechenbarkeitsgrenzen.\n\n**Aufgaben:**\n\n1. Formulieren Sie zu Material 1 eine passende formale Sprache oder Grammatikidee. (5 BE)\n2. Analysieren Sie den Automaten aus Material 2 im Hinblick auf akzeptierte und nicht akzeptierte Woerter. (5 BE)\n3. Erlaeutern Sie, wo Grenzen endlicher Automaten in diesem Kontext liegen. (5 BE)\n4. Begruenden Sie anhand von Material 3, warum fuer komplexere Pruefprobleme andere Berechnungsmodelle relevant werden. (5 BE)\n5. Beurteilen Sie, welche Rolle Zeitkomplexitaet fuer eine reale Zugangskontrolle spielt. (5 BE)",
+        "solutionContent": "1. Erwartet wird eine fachlich passende Formalisierung der erlaubten Eingabefolgen.  \n   **5 BE**\n\n2. Die Analyse beschreibt Zustaende, Uebergaenge und Akzeptanz korrekt.  \n   **5 BE**\n\n3. Zu erlaeutern sind Grenzen regulaerer Sprachen bzw. endlicher Automaten.  \n   **5 BE**\n\n4. Ein schluessiger Bezug auf erweiterte Speicher- oder Berechnungsmodelle wird erwartet.  \n   **5 BE**\n\n5. Ein begruendetes Urteil verbindet Laufzeit, Skalierung und Praxistauglichkeit.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 25,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "Sprache oder Grammatik passend modelliert"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "Automat korrekt analysiert"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "Grenzen endlicher Automaten plausibel erlaeutert"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Berechnungsmodelle fachlich eingeordnet"
+            },
+            {
+              "id": "s5",
+              "points": 5,
+              "description": "Komplexitaetsbezug reflektiert"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "6a120bbd-dcd1-4a6e-b6b0-27ad20b5cc27",
+      "title": "LK Pflichtaufgabe A: Lagerroboter mit Baumstruktur und Rekursion",
+      "titleEn": "LK mandatory task A: warehouse robots with tree structures and recursion",
+      "description": "Die lernende Person kann eine materialgestuetzte LK-Abituraufgabe zu Algorithmik und objektorientierter Modellierung bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based LK Abitur task on algorithms and object-oriented modeling.",
+      "weight": 1.15,
+      "tags": [
+        "LK",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "9aa30b59-f7bd-49f8-9814-faaeaddbe4e8",
+        "f9207c66-1347-4121-bf56-fd3ce0ad4ec9",
+        "e1feb075-47f4-43e9-9f7b-418323dd0fb7",
+        "431089c2-9152-4387-a142-ba80852d9a7b"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEin Lagerroboter verwaltet Transportauftraege in einer objektorientierten Anwendung. Priorisierte Auftraege werden in einer Baumstruktur organisiert; Such- und Sortierschritte sowie rekursive Traversierungen sollen bewertet werden.\n\n**Material 1:** UML-Skizze mit Klassen fuer Auftrag, Knoten und Lagerroboter.  \n**Material 2:** Codeauszug fuer rekursive Traversierung und Einfuegen in eine Baumstruktur.  \n**Material 3:** Laufzeitvergleich zweier Sortier- oder Suchvarianten.\n\n**Aufgaben:**\n\n1. Analysieren Sie das Klassenmodell aus Material 1 im Hinblick auf Zustandsraum, Beziehungen und Verantwortlichkeiten. (5 BE)\n2. Erlaeutern Sie die rekursive Struktur aus Material 2 fachlich korrekt. (5 BE)\n3. Analysieren Sie, wie die Baumstruktur Operationen auf Auftraegen beeinflusst. (5 BE)\n4. Begruenden Sie anhand von Material 3, welche algorithmische Variante fuer grosse Datenmengen vorzuziehen ist. (5 BE)\n5. Entwickeln Sie eine plausible Erweiterung des Modells oder der Datenstruktur und begruenden Sie deren Nutzen. (5 BE)",
+        "solutionContent": "1. Erwartet werden korrekte Aussagen zu Beziehungen, Kapselung und Verantwortlichkeiten im Modell.  \n   **5 BE**\n\n2. Die Rekursion wird mit Abbruchfall, rekursivem Schritt und Traversierungslogik schluessig erklaert.  \n   **5 BE**\n\n3. Die Rolle der Baumstruktur fuer Suche, Einfuegen oder Traversierung wird fachlich passend analysiert.  \n   **5 BE**\n\n4. Ein begruendeter Laufzeitvergleich waegt Datenumfang und Struktureigenschaften ab.  \n   **5 BE**\n\n5. Erwartet wird eine tragfaehige Erweiterung, z. B. Balancierung, neues Interface oder alternative Datenhaltung.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 25,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "Klassenmodell fachlich analysiert"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "Rekursion schluessig erklaert"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "Datenstruktur fachlich eingeordnet"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Algorithmische Wahl plausibel begruendet"
+            },
+            {
+              "id": "s5",
+              "points": 5,
+              "description": "Erweiterung tragfaehig entwickelt"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "47546467-61a9-49e2-9f8e-6bdeceddf9d3",
+      "title": "LK Pflichtaufgabe B: Klinische Studiendaten zwischen ER-Modell, SQL und Relationenalgebra",
+      "titleEn": "LK mandatory task B: clinical study data between ER modelling, SQL, and relational algebra",
+      "description": "Die lernende Person kann eine materialgestuetzte LK-Abituraufgabe zu Datenbanken bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based LK Abitur task on databases.",
+      "weight": 1.15,
+      "tags": [
+        "LK",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "18f714d2-62ea-440f-be5c-f4c203fe9d90",
+        "250ee1b5-a9af-44a9-bfa1-d0322370e32b",
+        "b12daa97-81eb-4e4c-8039-9c9bc243dcdd"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEine Klinik wertet Studiendaten zu Behandlungen, Untersuchungen und Nebenwirkungen in einer relationalen Datenbank aus.\n\n**Material 1:** ER-Diagramm mit schwachen und starken Entitaeten.  \n**Material 2:** Relationsschema mit Schluesselattributen.  \n**Material 3:** SQL-Abfrage mit Unterabfrage und Gruppierung.  \n**Material 4:** Relationenalgebra-Ausdruck fuer eine vergleichbare Fragestellung.\n\n**Aufgaben:**\n\n1. Analysieren Sie Material 1 im Hinblick auf Entitaeten, Beziehungen und Kardinalitaeten. (5 BE)\n2. Begruenden Sie, wie Material 2 aus dem ER-Modell abgeleitet wird. (5 BE)\n3. Analysieren Sie die SQL-Abfrage aus Material 3 fachlich und beschreiben Sie die Ergebnismenge. (5 BE)\n4. Ueberfuehren Sie Material 4 in eine fachlich passende SQL-Idee oder umgekehrt. (5 BE)\n5. Beurteilen Sie die Qualitaet des Datenmodells im Hinblick auf Konsistenz, Erweiterbarkeit und Auswertbarkeit. (5 BE)",
+        "solutionContent": "1. Erwartet werden korrekte Aussagen zu Entitaeten, Beziehungen und Kardinalitaeten.  \n   **5 BE**\n\n2. Die Ableitung des Schemas beschreibt Primar- und Fremdschluessel fachlich passend.  \n   **5 BE**\n\n3. Die SQL-Analyse erklaert Unterabfrage, Join-, Selektions- und Gruppierungslogik.  \n   **5 BE**\n\n4. Erwartet wird eine fachlich korrekte Uebertragung zwischen Relationenalgebra und SQL.  \n   **5 BE**\n\n5. Ein begruendetes Urteil reflektiert Modellqualitaet, Wartbarkeit und Datennutzung.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 25,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "ER-Modell fachlich korrekt analysiert"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "Schemaableitung schluessig begruendet"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "SQL-Abfrage fachlich analysiert"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Relationenalgebra und SQL passend verknuepft"
+            },
+            {
+              "id": "s5",
+              "points": 5,
+              "description": "Datenmodellqualitaet reflektiert"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "0fdde13e-5187-4fc4-a0fe-7934d7b7ea9f",
+      "title": "LK Pflichtaufgabe B: Parser und Registermaschine fuer Logdateien",
+      "titleEn": "LK mandatory task B: parser and register machine for log files",
+      "description": "Die lernende Person kann eine materialgestuetzte LK-Abituraufgabe zur theoretischen Informatik bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based LK Abitur task on theoretical computer science.",
+      "weight": 1.15,
+      "tags": [
+        "LK",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "f4847d81-6764-4fa7-b9e1-ece381520408",
+        "074cec9d-b501-405c-a131-be6db239ddad",
+        "8eee5d80-e5cd-40a4-9f1b-6745c4c08e85",
+        "7fcdd1bc-ee17-4ffe-ae8c-5a4956d871f3",
+        "b76f6f88-78ee-4cdf-a7ce-36109d5eb169"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEin Analysewerkzeug prueft Logdateien eines Servers. Dazu werden eine formale Sprache fuer gueltige Eintraege, ein endlicher Automat fuer Vorpruefungen und ein vereinfachtes Registermaschinenmodell zur weitergehenden Bearbeitung betrachtet.\n\n**Material 1:** Beschreibung einer Logsprache mit Grammatikfragment.  \n**Material 2:** Automat fuer Teilpruefungen.  \n**Material 3:** Registermaschinen- oder Pseudocodeausschnitt fuer eine weitergehende Analyse.  \n**Material 4:** kurzer Fachtext zu Berechenbarkeit und Aufwand.\n\n**Aufgaben:**\n\n1. Analysieren Sie Material 1 im Hinblick auf Spracheigenschaften und Grammatik. (5 BE)\n2. Analysieren Sie den Automaten aus Material 2 fachlich korrekt. (5 BE)\n3. Erlaeutern Sie, welche Rolle die Registermaschine in Material 3 fuer die Verarbeitung spielt. (5 BE)\n4. Begruenden Sie anhand von Material 4, wo Grenzen einfacher Modelle liegen. (5 BE)\n5. Beurteilen Sie die praktische Relevanz von Aufwand und Berechenbarkeit fuer dieses Analysesystem. (5 BE)",
+        "solutionContent": "1. Erwartet wird eine korrekte Einordnung der Sprache oder Grammatik.  \n   **5 BE**\n\n2. Die Automatenanalyse beschreibt Zustaende, Uebergaenge und Akzeptanz fachlich passend.  \n   **5 BE**\n\n3. Die Funktion des Registermaschinenmodells fuer Sequenzen, Zaehlen oder Verarbeitungsschritte wird schluessig erklaert.  \n   **5 BE**\n\n4. Erwartet wird eine fachlich korrekte Begruendung fuer Grenzen einfacher Modelle und den Bedarf allgemeinerer Berechnungsmodelle.  \n   **5 BE**\n\n5. Ein begruendetes Urteil verbindet Aufwand, Skalierung und technische Zweckmaessigkeit.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 25,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "Sprache oder Grammatik fachlich analysiert"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "Automat korrekt analysiert"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "Registermaschinenbezug schluessig erklaert"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Grenzen einfacher Modelle plausibel begruendet"
+            },
+            {
+              "id": "s5",
+              "points": 5,
+              "description": "Aufwand und Berechenbarkeit reflektiert"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "8050984e-f2dd-4de1-b1cb-31461c0f0b91",
+      "title": "LK Vorschlag C1: Konzertticketing mit Normalisierung und Anfrageoptimierung",
+      "titleEn": "LK proposal C1: concert ticketing with normalization and query optimization",
+      "description": "Die lernende Person kann eine materialgestuetzte LK-Abituraufgabe zu Datenbanken bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based LK Abitur task on databases.",
+      "weight": 1.1,
+      "tags": [
+        "LK",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "18f714d2-62ea-440f-be5c-f4c203fe9d90",
+        "250ee1b5-a9af-44a9-bfa1-d0322370e32b",
+        "b12daa97-81eb-4e4c-8039-9c9bc243dcdd"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEin Konzertticketing-System verwaltet Hallen, Veranstaltungen, Plaetze, Buchungen und Wartelisten.\n\n**Material 1:** ER-Diagramm des Systems.  \n**Material 2:** nicht vollstaendig normalisiertes Relationsschema.  \n**Material 3:** SQL-Abfrage mit mehreren Joins und Aggregationen.  \n**Material 4:** Relationenalgebra-Ausdruck fuer eine alternative Auswertung.\n\n**Aufgaben:**\n\n1. Analysieren Sie das ER-Modell aus Material 1 im Hinblick auf Entitaeten, Beziehungen und Kardinalitaeten. (5 BE)\n2. Untersuchen Sie Material 2 im Hinblick auf moegliche Redundanzen und schlagen Sie eine fachlich sinnvolle Strukturierung vor. (5 BE)\n3. Analysieren Sie Material 3 fachlich und beschreiben Sie die Ergebnismenge. (5 BE)\n4. Ueberfuehren Sie Material 4 in eine fachlich passende SQL-Idee. (5 BE)\n5. Beurteilen Sie, welche Modellierungs- oder Anfrageentscheidungen fuer Skalierbarkeit und Wartbarkeit besonders wichtig sind. (5 BE)",
+        "solutionContent": "1. Erwartet werden korrekte Aussagen zu Entitaeten, Beziehungen und Kardinalitaeten.  \n   **5 BE**\n\n2. Eine tragfaehige Strukturierung erkennt Redundanzen und formuliert eine passende Verbesserung des Schemas.  \n   **5 BE**\n\n3. Die SQL-Analyse beschreibt Join-, Filter- und Aggregationslogik fachlich passend.  \n   **5 BE**\n\n4. Erwartet wird eine fachlich korrekte Uebertragung zwischen Relationenalgebra und SQL.  \n   **5 BE**\n\n5. Ein begruendetes Urteil verknuepft Datenqualitaet, Wartbarkeit und Performance.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 25,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "ER-Modell fachlich analysiert"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "Strukturierungsproblem plausibel untersucht"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "SQL-Ergebnis fachlich analysiert"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Relationenalgebra passend in SQL uebertragen"
+            },
+            {
+              "id": "s5",
+              "points": 5,
+              "description": "Modellierungsentscheidungen reflektiert"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "9617449a-ab19-455f-b2f5-e59cbe16d999",
+      "title": "LK Vorschlag C2: Lieferkettenanalyse mit SQL und Relationenalgebra",
+      "titleEn": "LK proposal C2: supply chain analysis with SQL and relational algebra",
+      "description": "Die lernende Person kann eine materialgestuetzte LK-Abituraufgabe zu Datenbanken bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based LK Abitur task on databases.",
+      "weight": 1.1,
+      "tags": [
+        "LK",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "18f714d2-62ea-440f-be5c-f4c203fe9d90",
+        "250ee1b5-a9af-44a9-bfa1-d0322370e32b",
+        "b12daa97-81eb-4e4c-8039-9c9bc243dcdd"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEin Unternehmen analysiert Lieferketten, Lagerorte, Zulieferer und Transportwege in einer relationalen Datenbank.\n\n**Material 1:** ER-Diagramm fuer Standorte, Lieferungen und Produkte.  \n**Material 2:** Relationsschema mit Beispieltabellen.  \n**Material 3:** SQL-Abfrage mit Join, Gruppierung und Bedingung.  \n**Material 4:** Relationenalgebra-Ausdruck fuer eine weitere Auswertung.\n\n**Aufgaben:**\n\n1. Analysieren Sie Material 1 fachlich im Hinblick auf Entitaeten, Beziehungen und Kardinalitaeten. (5 BE)\n2. Begruenden Sie, wie Material 2 aus dem Modell hervorgeht und welche Schluessel relevant sind. (5 BE)\n3. Analysieren Sie Material 3 fachlich und beschreiben Sie die Ergebnismenge. (5 BE)\n4. Formulieren Sie zu Material 4 eine fachlich passende SQL-Idee. (5 BE)\n5. Beurteilen Sie, welche Rolle Datenqualitaet und konsistente Modellierung fuer belastbare Lieferkettenanalysen spielen. (5 BE)",
+        "solutionContent": "1. Erwartet werden korrekte Aussagen zu Entitaeten, Beziehungen und Kardinalitaeten.  \n   **5 BE**\n\n2. Die Schemaableitung beschreibt Primar- und Fremdschluessel fachlich passend.  \n   **5 BE**\n\n3. Die SQL-Analyse erklaert Join-, Filter- und Aggregationslogik schluessig.  \n   **5 BE**\n\n4. Erwartet wird eine fachlich korrekte SQL-Idee zur gegebenen Relationenalgebra.  \n   **5 BE**\n\n5. Ein begruendetes Urteil verbindet Datenqualitaet, Konsistenz und Aussagekraft der Auswertungen.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 25,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "ER-Modell fachlich analysiert"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "Schluessel und Schemaableitung plausibel begruendet"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "SQL-Ergebnismenge fachlich analysiert"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "SQL-Idee aus Relationenalgebra entwickelt"
+            },
+            {
+              "id": "s5",
+              "points": 5,
+              "description": "Bedeutung konsistenter Datenqualitaet reflektiert"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c02bd164-b3d8-47b8-998e-f9d1e732882f",
+      "title": "LK Vorschlag C1: Protokollsprache zwischen Automat, Grammatik und Registermaschine",
+      "titleEn": "LK proposal C1: protocol language between automata, grammar, and register machines",
+      "description": "Die lernende Person kann eine materialgestuetzte LK-Abituraufgabe zur theoretischen Informatik bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based LK Abitur task on theoretical computer science.",
+      "weight": 1.1,
+      "tags": [
+        "LK",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "f4847d81-6764-4fa7-b9e1-ece381520408",
+        "074cec9d-b501-405c-a131-be6db239ddad",
+        "8eee5d80-e5cd-40a4-9f1b-6745c4c08e85",
+        "7fcdd1bc-ee17-4ffe-ae8c-5a4956d871f3",
+        "b76f6f88-78ee-4cdf-a7ce-36109d5eb169"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEin Kommunikationsprotokoll fuer IoT-Geraete wird mit einer Grammatik beschrieben, durch einen Automaten vorgeprueft und fuer weitergehende Verarbeitung in einem vereinfachten Maschinenmodell betrachtet.\n\n**Material 1:** Beschreibung der Protokollsprache mit Grammatikfragment.  \n**Material 2:** endlicher Automat fuer einen regulaeren Teil der Sprache.  \n**Material 3:** Registermaschinen- oder Programmausschnitt fuer Auswertungsschritte.  \n**Material 4:** Kurztext zu Aufwand und Berechenbarkeit.\n\n**Aufgaben:**\n\n1. Analysieren Sie Material 1 im Hinblick auf Spracheigenschaften und Grammatik. (5 BE)\n2. Analysieren Sie den Automaten aus Material 2 fachlich korrekt. (5 BE)\n3. Erlaeutern Sie die Rolle des Maschinenmodells aus Material 3 fuer weitergehende Verarbeitungsschritte. (5 BE)\n4. Begruenden Sie, wo Grenzen des endlichen Automaten liegen und warum allgemeinere Modelle notwendig werden. (5 BE)\n5. Beurteilen Sie die praktische Bedeutung von Aufwand und Berechenbarkeit fuer dieses Protokollsystem. (5 BE)",
+        "solutionContent": "1. Erwartet wird eine korrekte Einordnung der Sprache oder Grammatik.  \n   **5 BE**\n\n2. Die Automatenanalyse beschreibt Zustaende, Uebergaenge und Akzeptanz schluessig.  \n   **5 BE**\n\n3. Die Funktion des Maschinenmodells fuer Speicher, Sequenzen oder Auswertung wird fachlich passend erklaert.  \n   **5 BE**\n\n4. Erwartet wird eine fachlich schluessige Begruendung fuer die Grenzen endlicher Automaten und den Bedarf allgemeinerer Modelle.  \n   **5 BE**\n\n5. Ein begruendetes Urteil verbindet Aufwand, technische Umsetzbarkeit und Skalierung.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 25,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "Sprache oder Grammatik fachlich analysiert"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "Automat korrekt analysiert"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "Maschinenmodell schluessig eingeordnet"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Grenzen endlicher Automaten plausibel begruendet"
+            },
+            {
+              "id": "s5",
+              "points": 5,
+              "description": "Aufwand und Berechenbarkeit reflektiert"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "df6a62a7-6d3e-4c49-b2ed-4a96a94d2fe0",
+      "title": "LK Vorschlag C2: Zugriffskontrolle mit Sprache, Komplexitaet und Berechenbarkeit",
+      "titleEn": "LK proposal C2: access control with language, complexity, and computability",
+      "description": "Die lernende Person kann eine materialgestuetzte LK-Abituraufgabe zur theoretischen Informatik bearbeiten.",
+      "descriptionEn": "The learner can solve a material-based LK Abitur task on theoretical computer science.",
+      "weight": 1.1,
+      "tags": [
+        "LK",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "f4847d81-6764-4fa7-b9e1-ece381520408",
+        "074cec9d-b501-405c-a131-be6db239ddad",
+        "8eee5d80-e5cd-40a4-9f1b-6745c4c08e85",
+        "7fcdd1bc-ee17-4ffe-ae8c-5a4956d871f3",
+        "b76f6f88-78ee-4cdf-a7ce-36109d5eb169"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Abitur"
+      },
+      "examData": {
+        "taskContent": "**Kontext:**\n\nEin Sicherheitsmodul bewertet Folgen von Karten-, Sensor- und Tuerereignissen. Eine Grammatik, ein Automat, ein Maschinenmodell und ein Kurztext zu Aufwand und Grenzen stehen zur Verfuegung.\n\n**Material 1:** Beschreibung und Grammatikfragment der Ereignissprache.  \n**Material 2:** Automat fuer regulaere Teilbedingungen.  \n**Material 3:** Registermaschinen- oder Pseudocodeausschnitt fuer weitergehende Pruefungen.  \n**Material 4:** Fachtext zu Zeitkomplexitaet und Berechenbarkeit.\n\n**Aufgaben:**\n\n1. Analysieren Sie Material 1 im Hinblick auf Spracheigenschaften und Grammatik. (5 BE)\n2. Analysieren Sie Material 2 fachlich korrekt. (5 BE)\n3. Erlaeutern Sie, welche Aufgabe das Maschinenmodell aus Material 3 fuer komplexere Pruefungen uebernimmt. (5 BE)\n4. Begruenden Sie anhand von Material 4, wo Grenzen einfacher Modelle liegen. (5 BE)\n5. Beurteilen Sie die praktische Relevanz von Zeitkomplexitaet und Berechenbarkeit fuer die Zugriffskontrolle. (5 BE)",
+        "solutionContent": "1. Erwartet wird eine fachlich korrekte Einordnung der Sprache oder Grammatik.  \n   **5 BE**\n\n2. Die Automatenanalyse beschreibt Zustaende, Uebergaenge und Akzeptanz schluessig.  \n   **5 BE**\n\n3. Die Rolle des Maschinenmodells fuer weitergehende Speicher- oder Pruefschritte wird passend erklaert.  \n   **5 BE**\n\n4. Erwartet wird eine fachlich stimmige Begruendung fuer die Grenzen einfacher Modelle.  \n   **5 BE**\n\n5. Ein begruendetes Urteil verknuepft Aufwand, Zweckmaessigkeit und technische Skalierbarkeit.  \n   **5 BE**",
+        "scoring": {
+          "maxPoints": 25,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 5,
+              "description": "Sprache oder Grammatik fachlich analysiert"
+            },
+            {
+              "id": "s2",
+              "points": 5,
+              "description": "Automat korrekt analysiert"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "Maschinenmodell schluessig erklaert"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Grenzen einfacher Modelle plausibel begruendet"
+            },
+            {
+              "id": "s5",
+              "points": 5,
+              "description": "Komplexitaets- und Berechenbarkeitsbezug reflektiert"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "8fe90ebe-3957-510f-a0ae-7197b9fd34ca",
+      "title": "Abiturpruefung Informatik (GK)",
+      "titleEn": "Abitur Examination Informatics (GK)",
+      "description": "Vorbereitender Release-Anker fuer die schriftliche Abiturpruefung Informatik 2026 im GK.",
+      "descriptionEn": "Preparatory release anchor for the written Informatics Abitur 2026 at GK level.",
+      "weight": 3,
+      "tags": [
+        "GK"
+      ],
+      "contains": [
+        "9af35926-8cbe-4fce-81ca-7faef6c12c4a",
+        "3d9315c0-8887-4bf6-a4ce-9580bd38e55d",
+        "116113b7-39de-4464-a02b-1ded97c90fb0"
+      ],
+      "requires": [
+        "db2d4785-9a69-468f-ba42-ac4be2bcfdb3"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Abitur"
+      },
+      "shortKey": "abi_gk_offer_2026",
+      "release": {
+        "examYear": 2026,
+        "kind": "offer",
+        "courseLevel": "GK",
+        "status": "released"
+      },
+      "extendedData": {
+        "treeOrder": 12
+      }
+    },
+    {
+      "id": "561e8c0d-cfa0-5ecf-8485-d0ef30c9e8ff",
+      "title": "Abiturpruefung Informatik (LK)",
+      "titleEn": "Abitur Examination Informatics (LK)",
+      "description": "Vorbereitender Release-Anker fuer die schriftliche Abiturpruefung Informatik 2026 im LK.",
+      "descriptionEn": "Preparatory release anchor for the written Informatics Abitur 2026 at LK level.",
+      "weight": 3,
+      "tags": [
+        "LK"
+      ],
+      "contains": [
+        "6a120bbd-dcd1-4a6e-b6b0-27ad20b5cc27",
+        "47546467-61a9-49e2-9f8e-6bdeceddf9d3",
+        "0fdde13e-5187-4fc4-a0fe-7934d7b7ea9f",
+        "8050984e-f2dd-4de1-b1cb-31461c0f0b91",
+        "9617449a-ab19-455f-b2f5-e59cbe16d999",
+        "c02bd164-b3d8-47b8-998e-f9d1e732882f",
+        "df6a62a7-6d3e-4c49-b2ed-4a96a94d2fe0"
+      ],
+      "requires": [
+        "db2d4785-9a69-468f-ba42-ac4be2bcfdb3"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Abitur"
+      },
+      "shortKey": "abi_lk_offer_2026",
+      "release": {
+        "examYear": 2026,
+        "kind": "offer",
+        "courseLevel": "LK",
+        "status": "released"
+      },
+      "extendedData": {
+        "treeOrder": 13
       }
     }
   ]

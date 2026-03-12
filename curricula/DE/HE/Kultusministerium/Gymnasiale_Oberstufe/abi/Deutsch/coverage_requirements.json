@@ -1,0 +1,139 @@
+{
+  "examSpecId": "hessen-landesabitur-2026-german",
+  "version": 1,
+  "reviewFields": [
+    "abiStyle",
+    "materialQuality",
+    "germanConsistency",
+    "solutionConsistency",
+    "motivationPraxisbezug",
+    "originality"
+  ],
+  "collections": [
+    {
+      "id": "gk_offer_2026",
+      "unionRequirements": {
+        "requiredTopicCodes": [
+          "Q1.1",
+          "Q1.2",
+          "Q1.3",
+          "Q2.1",
+          "Q2.2",
+          "Q2.3",
+          "Q3.1",
+          "Q3.2",
+          "Q3.4"
+        ],
+        "requiredOfferedProposalIds": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "pickCount": 1,
+        "expectedSolvedBeTotal": 25,
+        "requiredCoverageHintIds": [
+          "material_bound_all_proposals",
+          "textbezogenes_schreiben_present",
+          "materialgestuetztes_schreiben_present"
+        ]
+      }
+    },
+    {
+      "id": "lk_offer_2026",
+      "unionRequirements": {
+        "requiredTopicCodes": [
+          "Q1.1",
+          "Q1.2",
+          "Q1.3",
+          "Q2.1",
+          "Q2.2",
+          "Q2.3",
+          "Q3.1",
+          "Q3.2",
+          "Q3.4"
+        ],
+        "requiredOfferedProposalIds": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "pickCount": 1,
+        "expectedSolvedBeTotal": 25,
+        "requiredCoverageHintIds": [
+          "material_bound_all_proposals",
+          "textbezogenes_schreiben_present",
+          "materialgestuetztes_schreiben_present",
+          "lk_depth_in_all_proposals"
+        ]
+      }
+    },
+    {
+      "id": "gk_master_2026",
+      "bucketRequirements": [
+        {
+          "track": "phase_practice",
+          "phase": "E",
+          "minCount": 1
+        },
+        {
+          "track": "phase_practice",
+          "phase": "Q1",
+          "minCount": 2
+        },
+        {
+          "track": "phase_practice",
+          "phase": "Q2",
+          "minCount": 2
+        },
+        {
+          "track": "phase_practice",
+          "phase": "Q3",
+          "minCount": 2
+        },
+        {
+          "track": "phase_practice",
+          "phase": "Q4",
+          "minCount": 1
+        }
+      ],
+      "mustIncludeCollectionTasks": [
+        "gk_offer_2026"
+      ]
+    },
+    {
+      "id": "lk_master_2026",
+      "bucketRequirements": [
+        {
+          "track": "phase_practice",
+          "phase": "E",
+          "minCount": 1
+        },
+        {
+          "track": "phase_practice",
+          "phase": "Q1",
+          "minCount": 2
+        },
+        {
+          "track": "phase_practice",
+          "phase": "Q2",
+          "minCount": 2
+        },
+        {
+          "track": "phase_practice",
+          "phase": "Q3",
+          "minCount": 2
+        },
+        {
+          "track": "phase_practice",
+          "phase": "Q4",
+          "minCount": 1
+        }
+      ],
+      "mustIncludeCollectionTasks": [
+        "lk_offer_2026"
+      ]
+    }
+  ]
+}
