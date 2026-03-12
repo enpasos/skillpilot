@@ -140,13 +140,13 @@ class LearnerAiControllerTest {
     }
 
     @Test
-    void normalizeMathDelimitersForChat_usesSingleBackslashLatexDelimiters() throws Exception {
-        String raw = "Inline $Q=900\\\\,\\\\mathrm{kJ}$ and block $$\\\\eta=\\\\frac{W}{Q}$$.";
+    void normalizeMathDelimitersForChat_usesDollarLatexDelimitersForChat() throws Exception {
+        String raw = "Inline \\(Q=900\\\\,\\\\mathrm{kJ}\\) and block \\[\\\\eta=\\\\frac{W}{Q}\\].";
 
         String normalized = invokeNormalizeMathDelimitersForChat(raw);
 
-        assertThat(normalized).contains("\\(Q=900\\\\,\\\\mathrm{kJ}\\)");
-        assertThat(normalized).contains("\\[\n\\\\eta=\\\\frac{W}{Q}\n\\]");
+        assertThat(normalized).contains("$Q=900\\\\,\\\\mathrm{kJ}$");
+        assertThat(normalized).contains("$$\n\\\\eta=\\\\frac{W}{Q}\n$$");
         assertThat(normalized).doesNotContain("\\\\(");
         assertThat(normalized).doesNotContain("\\\\[");
     }

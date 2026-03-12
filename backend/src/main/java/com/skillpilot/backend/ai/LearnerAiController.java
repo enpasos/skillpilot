@@ -432,36 +432,36 @@ public class LearnerAiController {
         if (content == null || content.isBlank()) {
             return content;
         }
-        String displayFixed = convertDisplayMathToBrackets(content);
-        return convertInlineMathToParens(displayFixed);
+        String displayFixed = convertDisplayMathToDollars(content);
+        return convertInlineMathToDollars(displayFixed);
     }
 
-    private String convertDisplayMathToBrackets(String content) {
+    private String convertDisplayMathToDollars(String content) {
         if (content == null || content.isBlank()) {
             return content;
         }
-        Pattern pattern = Pattern.compile("(?s)(?<!\\\\)\\$\\$(.+?)(?<!\\\\)\\$\\$");
+        Pattern pattern = Pattern.compile("(?s)\\\\\\[(.+?)\\\\\\]");
         Matcher matcher = pattern.matcher(content);
         StringBuffer sb = new StringBuffer();
         while (matcher.find()) {
             String inner = matcher.group(1).trim();
-            String replacement = "\\[\n" + inner + "\n\\]";
+            String replacement = "$$\n" + inner + "\n$$";
             matcher.appendReplacement(sb, Matcher.quoteReplacement(replacement));
         }
         matcher.appendTail(sb);
         return sb.toString();
     }
 
-    private String convertInlineMathToParens(String content) {
+    private String convertInlineMathToDollars(String content) {
         if (content == null || content.isBlank()) {
             return content;
         }
-        Pattern pattern = Pattern.compile("(?<!\\\\)(?<!\\$)\\$(?!\\$)(.+?)(?<!\\\\)\\$(?!\\$)");
+        Pattern pattern = Pattern.compile("\\\\\\((.+?)\\\\\\)");
         Matcher matcher = pattern.matcher(content);
         StringBuffer sb = new StringBuffer();
         while (matcher.find()) {
             String inner = matcher.group(1).trim();
-            String replacement = "\\(" + inner + "\\)";
+            String replacement = "$" + inner + "$";
             matcher.appendReplacement(sb, Matcher.quoteReplacement(replacement));
         }
         matcher.appendTail(sb);
