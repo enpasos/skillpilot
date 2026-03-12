@@ -120,7 +120,7 @@
       "post": {
         "operationId": "setActiveGoal",
         "summary": "Lock an atomic goal for teaching",
-        "description": "Selects the current atomic goal (use stateMachine.goalOptions or filter frontier by type=atomic) and locks the session until mastery. Only call when stateMachine.requiredAction is setActiveGoal. Bei aktivem Autopilot kann das Backend diesen Schritt nach Mastery bereits selbst uebersprungen haben. If the user explicitly requests a redirect while requiredAction is setMastery, set redirect=true.",
+        "description": "Locks the current atomic goal for teaching until mastery. Call only when stateMachine.requiredAction is setActiveGoal. If the user explicitly requests a redirect while requiredAction is setMastery, set redirect=true.",
         "parameters": [
           {
             "name": "skillpilotId",
