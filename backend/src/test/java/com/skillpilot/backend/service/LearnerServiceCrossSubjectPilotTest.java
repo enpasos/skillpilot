@@ -36,7 +36,9 @@ import org.springframework.context.ApplicationEventPublisher;
 class LearnerServiceCrossSubjectPilotTest {
 
     private static final String LEARNER_ID = "cross-subject-pilot-learner";
+    private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String CANONICAL_PHYSICS_PILOT_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+    private static final String CANONICAL_PHYSICS_ROOT_ID = "bf980fff-b62b-4ea4-a20d-31681a7ad785";
     private static final String HESSEN_PHYSICS_LANDSCAPE_ID = "24f2ca0f-b94a-444e-bb70-677cb6f85c02";
     private static final String BAYERN_PHYSICS_LANDSCAPE_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
     private static final String CANONICAL_PHYSICS_CLUSTER_ID = "65ddd780-0323-45d1-8f94-5e31bf28da23";
@@ -155,6 +157,29 @@ class LearnerServiceCrossSubjectPilotTest {
 
         assertThat(mastery).containsEntry(CANONICAL_PHYSICS_DIAGRAMS_ID, 1.0);
         assertThat(mastery).containsEntry(LEGACY_PHYSICS_DIAGRAMS_ID, 1.0);
+    }
+
+    @Test
+    void canonicalGymnasiumRootPropagatesBundeslandFilterIntoPhysicsChildLandscape() {
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-BY"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": false, "filterId": "GK"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "GK"}
+                }
+                """);
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_PHYSICS_ROOT_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
+
+        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_PHYSICS_ROOT_ID, CANONICAL_PHYSICS_CLUSTER_ID, CANONICAL_PHYSICS_E2_CLUSTER_ID,
+                        CANONICAL_PHYSICS_E3_CLUSTER_ID)
+                .doesNotContain("5c44b9ba-9b05-4774-95d5-073230d3fc4f");
     }
 
     @Test

@@ -507,6 +507,9 @@ Practical rollout rules:
 - The existing repository directory layout such as `curricula/DE/HE/...` may remain unchanged during transition; path segments are not the canonical public identifier contract.
 - Keep Custom GPT / MCP / API contracts as stable as possible; translation between legacy and canonical layers should happen in backend/runtime logic, not in prompt logic.
 - Preserve **multi-subject navigation** and allow selected cross-subject `requires` edges where didactically justified, e.g. Mathematik -> Physik.
+- Prefer one DE-level school root such as `Gymnasium (DE)` in learner-facing curriculum selection, with subject landscapes as child modules.
+- Keep course-level filters such as `GK` / `LK` on the child subject landscapes.
+- Put Bundesland filters such as `DE-HE`, `DE-BY`, and `ALL` on the shared DE-level root and propagate them runtime-side into the selected canonical child landscapes.
 
 Detailed rollout plan:
 

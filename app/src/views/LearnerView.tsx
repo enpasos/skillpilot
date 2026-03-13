@@ -47,11 +47,25 @@ type PersonalCurriculumConfig = Record<string, { selected: boolean; filterId?: s
 
 const normalizePersonalConfig = (
   input: PersonalCurriculumConfig,
-  availableLandscapes: { landscapeId: string }[],
+  availableLandscapes: { landscapeId: string; filters?: { id: string; label: string }[] }[],
   rootLandscapeId?: string,
 ): { config: PersonalCurriculumConfig; corrected: boolean } => {
-  if (!input || typeof input !== 'object') {
-    return { config: {}, corrected: false }
+  const buildDefaultConfig = (): PersonalCurriculumConfig => {
+    const next: PersonalCurriculumConfig = {}
+    availableLandscapes.forEach((landscape) => {
+      next[landscape.landscapeId] = {
+        selected: true,
+        ...(landscape.filters && landscape.filters.length > 0 ? { filterId: landscape.filters[0].id } : {}),
+      }
+    })
+    return next
+  }
+
+  if (!input || typeof input !== 'object' || Object.keys(input).length === 0) {
+    if (availableLandscapes.length === 0) {
+      return { config: {}, corrected: false }
+    }
+    return { config: buildDefaultConfig(), corrected: true }
   }
 
   const childLandscapeIds = availableLandscapes
@@ -62,13 +76,28 @@ const normalizePersonalConfig = (
     return { config: input, corrected: false }
   }
 
+  let corrected = false
+  const normalized: PersonalCurriculumConfig = { ...input }
+
+  availableLandscapes.forEach((landscape) => {
+    const current = normalized[landscape.landscapeId]
+    if (!current) return
+    if (!current.filterId && landscape.filters && landscape.filters.length > 0) {
+      normalized[landscape.landscapeId] = {
+        ...current,
+        filterId: landscape.filters[0].id,
+      }
+      corrected = true
+    }
+  })
+
   const hasChildEntries = childLandscapeIds.some((id) => input[id] !== undefined)
   const hasSelectedChild = childLandscapeIds.some((id) => input[id]?.selected === true)
 
   // Recovery case: profile explicitly stores child settings, but all children are deselected.
   // This leads to an empty tree in learner cockpit and is almost always accidental.
   if (hasChildEntries && !hasSelectedChild) {
-    const repaired: PersonalCurriculumConfig = { ...input }
+    const repaired: PersonalCurriculumConfig = { ...normalized }
     if (rootLandscapeId) {
       repaired[rootLandscapeId] = {
         ...repaired[rootLandscapeId],
@@ -84,7 +113,7 @@ const normalizePersonalConfig = (
     return { config: repaired, corrected: true }
   }
 
-  return { config: input, corrected: false }
+  return { config: normalized, corrected }
 }
 
 export const LearnerView: React.FC<LearnerViewProps> = ({

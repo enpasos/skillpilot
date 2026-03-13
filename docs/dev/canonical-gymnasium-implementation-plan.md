@@ -111,6 +111,7 @@ Adoption checklist for a subtree:
 Current operational baseline:
 
 - Hessen upper-secondary and lower-secondary source JSON remain `legacy_frozen`
+- the canonical `Gymnasium (DE)` overview root is the current preferred DE-level learner entry point
 - the canonical Mathematics pilot function corridor is `cutover_ready`
 - the canonical Physics motion corridor is `cutover_ready`
 - the canonical Physics E.2 mechanics corridor is `cutover_ready`
@@ -220,7 +221,12 @@ WP2 result:
   - one introductory analysis branch for functions and representations
 - coexistence strategy:
   - all pilot goals use new IDs
-  - the pilot landscape is exposed as its own root curriculum so it can be selected directly during the pilot
+  - the pilot landscapes remain directly loadable, but the learner-facing entry point is now the shared root `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json`
+- current learner-facing filter split:
+  - root: `ALL`, `DE-HE`, `DE-BY`
+  - child subjects: `GK`, `LK`
+- current runtime rule:
+  - the selected root Bundesland filter is propagated into the selected canonical child landscapes during goal filtering
 - verification:
   - backend tests confirm loading of the pilot landscape and the repository mapping fixture
   - graph validation passes with the new pilot landscape present

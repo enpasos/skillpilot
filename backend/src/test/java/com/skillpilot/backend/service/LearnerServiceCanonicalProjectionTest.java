@@ -38,9 +38,11 @@ import org.springframework.context.ApplicationEventPublisher;
 class LearnerServiceCanonicalProjectionTest {
 
     private static final String LEARNER_ID = "canonical-projection-learner";
+    private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String HESSEN_MATH_LANDSCAPE_ID = "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3";
     private static final String BAYERN_MATH_LANDSCAPE_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
     private static final String CANONICAL_MATH_PILOT_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+    private static final String CANONICAL_MATH_ROOT_ID = "c01b1ce9-a667-4a46-b251-ec33ae602b15";
     private static final String LEGACY_SEK1_CLUSTER_ID = "86e86a3b-740b-44aa-b3ab-68cd3ee25def";
     private static final String CANONICAL_SEK1_CLUSTER_ID = "5c6b7342-0f67-4b4c-894d-fd83a6df64b3";
     private static final String LEGACY_SEK1_MAPPINGS_ID = "4261f57b-13c9-4733-a0dc-72f2dcd4726d";
@@ -214,6 +216,28 @@ class LearnerServiceCanonicalProjectionTest {
                 .extracting(FrontierGoal::id)
                 .contains(CANONICAL_CALCULATE_VALUES_ID, CANONICAL_READ_VALUES_ID, CANONICAL_SYMMETRY_ID)
                 .doesNotContain(CANONICAL_FUNCTION_CONCEPT_ID, LEGACY_FUNCTION_CONCEPT_ID);
+    }
+
+    @Test
+    void canonicalGymnasiumRootPropagatesBundeslandFilterIntoMathChildLandscape() {
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-BY"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": false, "filterId": "GK"}
+                }
+                """);
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_MATH_ROOT_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
+
+        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_MATH_ROOT_ID, CANONICAL_SEK1_CLUSTER_ID)
+                .doesNotContain(CANONICAL_ANALYSIS_CLUSTER_ID, CANONICAL_E1_CLUSTER_ID);
     }
 
     @Test

@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 class LandscapeServiceTest {
 
+        private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
         private static final String CANONICAL_MATH_PILOT_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
         private static final String CANONICAL_PHYSICS_PILOT_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
 
@@ -54,6 +55,7 @@ class LandscapeServiceTest {
                 // "4a7e9ee2-c24e-55a2-9fdc-5e3350947052" -> DE_BAY_U_TUM_BSC_PHYSIK
                 assertThat(summaries).extracting(LandscapeSummary::getCurriculumId)
                                 .contains("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da",
+                                                CANONICAL_GYMNASIUM_ROOT_ID,
                                                 "4a7e9ee2-c24e-55a2-9fdc-5e3350947052");
 
                 // Verify contained curricula are ABSENT
@@ -61,11 +63,39 @@ class LandscapeServiceTest {
                 // "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3" -> DE_HES_S_GYM_2_MATHEMATIK
                 assertThat(summaries).extracting(LandscapeSummary::getCurriculumId)
                                 .doesNotContain("3e56aa75-c76c-4de5-883b-0aac98297846",
-                                                "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3");
+                                                "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+                                                CANONICAL_MATH_PILOT_ID,
+                                                CANONICAL_PHYSICS_PILOT_ID);
         }
 
         @Test
-        void loadsCanonicalMathPilotAsRootCurriculum() {
+        void loadsCanonicalGymnasiumOverviewAsRootCurriculum() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape root = landscapeService.getById(CANONICAL_GYMNASIUM_ROOT_ID);
+
+                assertThat(root).isNotNull();
+                assertThat(root.getTitle()).isEqualTo("Gymnasium (DE)");
+                assertThat(root.getFilters())
+                                .extracting(LandscapeFilter::getId)
+                                .containsExactly("ALL", "DE-HE", "DE-BY");
+                assertThat(root.getGoals())
+                                .extracting(LearningGoal::getTitle)
+                                .contains("Warum Gymnasium gemeinsam denken? - Faecher, Voraussetzungen & Wege");
+                assertThat(landscapeService.getOverview().getSummaries())
+                                .extracting(LandscapeSummary::getCurriculumId)
+                                .contains(CANONICAL_GYMNASIUM_ROOT_ID)
+                                .doesNotContain(CANONICAL_MATH_PILOT_ID, CANONICAL_PHYSICS_PILOT_ID);
+                assertThat(landscapeService.getClosure(CANONICAL_GYMNASIUM_ROOT_ID))
+                                .extracting(LearningLandscape::getLandscapeId)
+                                .contains(CANONICAL_GYMNASIUM_ROOT_ID, CANONICAL_MATH_PILOT_ID, CANONICAL_PHYSICS_PILOT_ID);
+        }
+
+        @Test
+        void loadsCanonicalMathPilotAsChildCurriculum() {
                 LandscapeProperties properties = new LandscapeProperties();
                 properties.setDirectory("../curricula");
                 ObjectMapper objectMapper = new ObjectMapper();
@@ -82,13 +112,13 @@ class LandscapeServiceTest {
                                                 "Funktionsgrundlagen (Sek I, Pilot)",
                                                 "Lineare Funktionen rechnerisch untersuchen",
                                                 "Scheitelpunkte quadratischer Funktionen bestimmen");
-                assertThat(landscapeService.getOverview().getSummaries())
-                                .extracting(LandscapeSummary::getCurriculumId)
-                                .contains(CANONICAL_MATH_PILOT_ID);
+                assertThat(pilot.getFilters())
+                                .extracting(LandscapeFilter::getId)
+                                .containsExactly("GK", "LK");
         }
 
         @Test
-        void loadsCanonicalPhysicsPilotAsRootCurriculumAndClosureIncludesMathPilot() {
+        void loadsCanonicalPhysicsPilotAsChildCurriculumAndClosureIncludesMathPilot() {
                 LandscapeProperties properties = new LandscapeProperties();
                 properties.setDirectory("../curricula");
                 ObjectMapper objectMapper = new ObjectMapper();
@@ -114,9 +144,9 @@ class LandscapeServiceTest {
                                                 "Erhaltungssaetze",
                                                 "Einfache Stossvorgaenge mit Impuls- und Energieerhaltung analysieren",
                                                 "Kraftstoss und Impulsaenderung verknuepfen");
-                assertThat(landscapeService.getOverview().getSummaries())
-                                .extracting(LandscapeSummary::getCurriculumId)
-                                .contains(CANONICAL_PHYSICS_PILOT_ID);
+                assertThat(pilot.getFilters())
+                                .extracting(LandscapeFilter::getId)
+                                .containsExactly("GK", "LK");
                 assertThat(landscapeService.getClosure(CANONICAL_PHYSICS_PILOT_ID))
                                 .extracting(LearningLandscape::getLandscapeId)
                                 .contains(CANONICAL_PHYSICS_PILOT_ID, CANONICAL_MATH_PILOT_ID);

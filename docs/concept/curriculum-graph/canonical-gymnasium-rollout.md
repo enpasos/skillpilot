@@ -100,6 +100,23 @@ Examples:
 
 These cross-subject edges should be added sparingly and only where they improve learner navigation in a concrete way.
 
+### 7. Prefer one DE-level school root in learner-facing configuration
+
+The learner-facing school UX should converge towards one DE-level root such as `Gymnasium (DE)` instead of exposing every pilot subject as an independent top-level curriculum forever.
+
+Preferred shape:
+
+- one shared DE-level root
+- subject landscapes such as Mathematik and Physik as child landscapes under that root
+- subject-local filters such as `GK` / `LK` on the child landscapes
+- one global root filter such as `DE-HE` / `DE-BY` / `ALL`
+
+Implementation rule:
+
+- do not clone canonical subject files per Bundesland
+- derive state-specific visibility from mappings and provenance
+- propagate the selected root Bundesland filter runtime-side into the selected child landscapes
+
 ## Minimal Data Additions
 
 The rollout should start with only two additions.
