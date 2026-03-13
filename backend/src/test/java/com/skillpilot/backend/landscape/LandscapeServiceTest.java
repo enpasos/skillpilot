@@ -488,8 +488,7 @@ class LandscapeServiceTest {
                                                 "Leseverstehen E-Phase Chinesisch",
                                                 "Leseverstehen Q1 Chinesisch",
                                                 "Leseverstehen Q4 Chinesisch",
-                                                "Abiturprüfung Chinesisch (GK)",
-                                                "Abiturprüfung Chinesisch (LK)");
+                                                "Übungen Q4");
                 assertThat(chinese.getFilters())
                                 .extracting(LandscapeFilter::getId)
                                 .containsExactly("GK", "LK");
