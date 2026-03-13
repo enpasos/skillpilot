@@ -13,6 +13,7 @@ class LandscapeServiceTest {
         private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
         private static final String CANONICAL_MATH_PILOT_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
         private static final String CANONICAL_PHYSICS_PILOT_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        private static final String HESSEN_UPPER_MATH_ID = "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3";
 
         @Test
         void getOverview_returnsEmptyFilters_forModifiedCurricula() {
@@ -91,7 +92,8 @@ class LandscapeServiceTest {
                                 .doesNotContain(CANONICAL_MATH_PILOT_ID, CANONICAL_PHYSICS_PILOT_ID);
                 assertThat(landscapeService.getClosure(CANONICAL_GYMNASIUM_ROOT_ID))
                                 .extracting(LearningLandscape::getLandscapeId)
-                                .contains(CANONICAL_GYMNASIUM_ROOT_ID, CANONICAL_MATH_PILOT_ID, CANONICAL_PHYSICS_PILOT_ID);
+                                .contains(CANONICAL_GYMNASIUM_ROOT_ID, CANONICAL_MATH_PILOT_ID, CANONICAL_PHYSICS_PILOT_ID)
+                                .doesNotContain(HESSEN_UPPER_MATH_ID);
         }
 
         @Test
@@ -147,7 +149,8 @@ class LandscapeServiceTest {
                                 .containsExactly("GK", "LK");
                 assertThat(landscapeService.getClosure(CANONICAL_PHYSICS_PILOT_ID))
                                 .extracting(LearningLandscape::getLandscapeId)
-                                .contains(CANONICAL_PHYSICS_PILOT_ID, CANONICAL_MATH_PILOT_ID);
+                                .contains(CANONICAL_PHYSICS_PILOT_ID, CANONICAL_MATH_PILOT_ID)
+                                .doesNotContain(HESSEN_UPPER_MATH_ID);
         }
 
         private void assertFiltersEmpty(List<LandscapeSummary> summaries, String curriculumId) {

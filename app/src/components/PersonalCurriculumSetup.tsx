@@ -20,6 +20,15 @@ interface MigrationPreviewItem {
     value: string
 }
 
+const cleanLandscapeDisplayTitle = (title: string) => {
+    return title
+        .replace(/^Kanonische\s+/i, '')
+        .replace(/^Canonical\s+/i, '')
+        .replace(/\s+Pilot\b/gi, '')
+        .replace(/\s*\(Gymnasium,\s*DE\)\s*$/i, '')
+        .trim()
+}
+
 
 
 interface PersonalCurriculumSetupProps {
@@ -206,7 +215,9 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         const showFilterControls = Boolean(hasFilters)
         const isExpandable = isRoot || showFilterControls
         const isExpanded = expanded.has(landscape.landscapeId)
-        const displayLabel = !isRoot && landscape.subject ? landscape.subject : landscape.title
+        const displayLabel = isRoot
+            ? landscape.title
+            : (landscape.subject?.trim() || cleanLandscapeDisplayTitle(landscape.title))
 
         return (
             <div key={landscape.landscapeId} className="flex flex-col">

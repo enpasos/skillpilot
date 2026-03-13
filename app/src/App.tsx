@@ -130,14 +130,43 @@ const App: React.FC = () => {
   }, [navigate])
 
   const availableLandscapes = useMemo(
-    () =>
-      core.landscapeEntries.map((e) => ({
-        landscapeId: e.meta.landscapeId,
-        title: e.meta.title,
-        subject: e.meta.subject,
-        filters: e.meta.filters,
-      })),
-    [core.landscapeEntries],
+    () => {
+      const toSummary = (entry: (typeof core.landscapeEntries)[number]) => ({
+        landscapeId: entry.meta.landscapeId,
+        title: entry.meta.title,
+        subject: entry.meta.subject,
+        filters: entry.meta.filters,
+      })
+
+      const currentEntry = core.currentLandscapeEntry
+      if (!currentEntry) {
+        return core.landscapeEntries.map(toSummary)
+      }
+
+      const summaries = [toSummary(currentEntry)]
+      const seenLandscapeIds = new Set([currentEntry.meta.landscapeId])
+      const entriesById = new Map(core.landscapeEntries.map((entry) => [entry.meta.landscapeId, entry]))
+      const rootGoal = currentEntry.goals.find((goal) => goal.tags?.includes('root')) ?? currentEntry.goals[0]
+
+      for (const childId of rootGoal?.contains ?? []) {
+        const childGoal = core.goalIndexAll.get(childId)
+        const childLandscapeId = childGoal?.landscapeId
+        if (!childLandscapeId || seenLandscapeIds.has(childLandscapeId) || childLandscapeId === currentEntry.meta.landscapeId) {
+          continue
+        }
+
+        const childEntry = entriesById.get(childLandscapeId)
+        if (!childEntry) {
+          continue
+        }
+
+        summaries.push(toSummary(childEntry))
+        seenLandscapeIds.add(childLandscapeId)
+      }
+
+      return summaries
+    },
+    [core.currentLandscapeEntry, core.goalIndexAll, core.landscapeEntries],
   )
 
   useEffect(() => {

@@ -246,20 +246,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     return override !== undefined ? override : getMastery(goalId)
   }, [optimisticSrsMasteryByGoal, srsMasteryByGoal, getMastery])
 
-  // Filter root goals based on Personal Curriculum (Level 2)
+  const currentLandscapeRootGoals = useMemo(() => {
+    const localRoots = rootGoals.filter((goal) => goal.landscapeId === landscapeId)
+    return localRoots.length > 0 ? localRoots : rootGoals
+  }, [rootGoals, landscapeId])
+
   const visibleRootGoals = useMemo(() => {
-    // If no config exists yet, show all by default
-    if (Object.keys(personalConfig).length === 0) return rootGoals
-
-    return rootGoals.filter((goal) => {
-      const config = personalConfig[goal.id]
-      // Always show root goals
-      if (rootGoals.some(r => r.id === goal.id)) return true
-
-      // Show only if explicitly selected (strict opt-in when config exists)
-      return config?.selected === true
-    })
-  }, [rootGoals, personalConfig])
+    return currentLandscapeRootGoals
+  }, [currentLandscapeRootGoals])
 
   // Determine effective active filter based on personal config for current landscape
   const supportedFilterIds = useMemo(() => {
