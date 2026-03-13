@@ -20,6 +20,12 @@ interface MigrationPreviewItem {
     value: string
 }
 
+const DEFAULT_GYMNASIUM_DE_ROOT_FILTERS = [
+    { id: 'ALL', label: 'Alle Bundeslaender' },
+    { id: 'DE-HE', label: 'Hessen' },
+    { id: 'DE-BY', label: 'Bayern' },
+]
+
 const cleanLandscapeDisplayTitle = (title: string) => {
     return title
         .replace(/^Kanonische\s+/i, '')
@@ -211,13 +217,16 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const renderNode = (landscape: LandscapeSummary, isRoot: boolean) => {
         const isSelected = config[landscape.landscapeId]?.selected ?? false
         const currentFilter = config[landscape.landscapeId]?.filterId ?? ''
-        const hasFilters = landscape.filters && landscape.filters.length > 0
+        const effectiveFilters =
+            isRoot && landscape.title === 'Gymnasium (DE)' && (!landscape.filters || landscape.filters.length === 0)
+                ? DEFAULT_GYMNASIUM_DE_ROOT_FILTERS
+                : (landscape.filters ?? [])
+        const hasFilters = effectiveFilters.length > 0
         const showFilterControls = Boolean(hasFilters)
         const isExpandable = isRoot || showFilterControls
         const isExpanded = expanded.has(landscape.landscapeId)
-        const displayLabel = isRoot
-            ? landscape.title
-            : (landscape.subject?.trim() || cleanLandscapeDisplayTitle(landscape.title))
+        const rawDisplayLabel = isRoot ? landscape.title : (landscape.subject?.trim() || landscape.title)
+        const displayLabel = isRoot ? rawDisplayLabel : cleanLandscapeDisplayTitle(rawDisplayLabel)
 
         return (
             <div key={landscape.landscapeId} className="flex flex-col">
@@ -254,7 +263,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                 Bundesland
                             </div>
                         )}
-                        {landscape.filters!.map(f => (
+                        {effectiveFilters.map(f => (
                             <label
                                 key={f.id}
                                 className={`flex items-center gap-2 p-1.5 rounded cursor-pointer hover:bg-input-bg/50 transition-colors ${currentFilter === f.id ? 'text-sky-600 dark:text-sky-300' : 'text-text-secondary'
