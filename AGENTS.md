@@ -500,6 +500,8 @@ Practical rollout rules:
 - Keep existing state-specific landscapes alive during transition as **legacy views**.
 - Start the convergence from the most mature legacy source, currently `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe`.
 - Use a **small mapping layer** from legacy goal IDs to canonical goal IDs instead of introducing a large new abstraction stack too early.
+- When a Bundesland must be represented explicitly in metadata, filters, overlays, or APIs, use ISO 3166-2 codes such as `DE-HE` and `DE-BY`.
+- The existing repository directory layout such as `curricula/DE/HE/...` may remain unchanged during transition; path segments are not the canonical public identifier contract.
 - Keep Custom GPT / MCP / API contracts as stable as possible; translation between legacy and canonical layers should happen in backend/runtime logic, not in prompt logic.
 - Preserve **multi-subject navigation** and allow selected cross-subject `requires` edges where didactically justified, e.g. Mathematik -> Physik.
 

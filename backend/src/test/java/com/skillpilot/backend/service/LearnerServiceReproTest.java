@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
+import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.LearningLandscape;
@@ -34,6 +35,7 @@ public class LearnerServiceReproTest {
     private LearnerClientStateRepository learnerClientStateRepository;
     private MasteryRepository masteryRepository;
     private PlannedGoalRepository plannedGoalRepository;
+    private GoalMappingService goalMappingService;
     private DeckResourceService deckResourceService;
     private ApplicationEventPublisher eventPublisher;
 
@@ -50,6 +52,7 @@ public class LearnerServiceReproTest {
         learnerClientStateRepository = mock(LearnerClientStateRepository.class);
         masteryRepository = mock(MasteryRepository.class);
         plannedGoalRepository = mock(PlannedGoalRepository.class);
+        goalMappingService = mock(GoalMappingService.class);
         deckResourceService = mock(DeckResourceService.class);
         eventPublisher = mock(ApplicationEventPublisher.class);
 
@@ -59,9 +62,11 @@ public class LearnerServiceReproTest {
                 masteryRepository,
                 plannedGoalRepository,
                 landscapeService,
+                goalMappingService,
                 deckResourceService,
                 new ObjectMapper(),
                 eventPublisher);
+        when(goalMappingService.getAllMappings()).thenReturn(Collections.emptyList());
 
         // Mock Learner
         learner = new Learner();

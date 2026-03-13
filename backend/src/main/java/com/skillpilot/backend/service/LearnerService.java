@@ -14,8 +14,10 @@ import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
+import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
+import com.skillpilot.backend.landscape.ResolvedGoalMapping;
 import com.skillpilot.backend.events.LearnerStateChangedEvent;
 import org.springframework.context.ApplicationEventPublisher;
 import com.skillpilot.backend.landscape.LearningLandscape;
@@ -66,6 +68,7 @@ public class LearnerService {
     private final MasteryRepository masteryRepository;
     private final PlannedGoalRepository plannedGoalRepository;
     private final LandscapeService landscapeService;
+    private final GoalMappingService goalMappingService;
     private final DeckResourceService deckResourceService;
 
     private final ObjectMapper objectMapper;
@@ -95,6 +98,7 @@ public class LearnerService {
             MasteryRepository masteryRepository,
             PlannedGoalRepository plannedGoalRepository,
             LandscapeService landscapeService,
+            GoalMappingService goalMappingService,
             DeckResourceService deckResourceService,
             ObjectMapper objectMapper,
             ApplicationEventPublisher eventPublisher) {
@@ -103,6 +107,7 @@ public class LearnerService {
         this.masteryRepository = masteryRepository;
         this.plannedGoalRepository = plannedGoalRepository;
         this.landscapeService = landscapeService;
+        this.goalMappingService = goalMappingService;
         this.deckResourceService = deckResourceService;
         this.objectMapper = objectMapper;
         this.eventPublisher = eventPublisher;
@@ -509,7 +514,8 @@ public class LearnerService {
         if (curriculumId != null) {
             goals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
         }
-        return applySrsMasteryOverlay(skillpilotId, goals, result);
+        Map<String, Double> projected = applyCanonicalMasteryProjection(goals, result);
+        return applySrsMasteryOverlay(skillpilotId, goals, projected);
     }
 
     @Transactional(readOnly = true)
@@ -525,7 +531,143 @@ public class LearnerService {
         if (curriculumId != null) {
             goals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
         }
-        return applySrsMasteryOverlayWithTimestamps(skillpilotId, goals, result);
+        Map<String, MasteryEntryDTO> projected = applyCanonicalMasteryProjectionWithTimestamps(goals, result);
+        return applySrsMasteryOverlayWithTimestamps(skillpilotId, goals, projected);
+    }
+
+    private Map<String, Double> applyCanonicalMasteryProjection(Map<String, LearningGoal> goals,
+            Map<String, Double> masteryMap) {
+        if (goals == null || goals.isEmpty() || masteryMap == null || masteryMap.isEmpty()) {
+            return masteryMap;
+        }
+
+        Map<String, Double> projected = new HashMap<>(masteryMap);
+        Set<String> visibleGoalIds = goals.keySet();
+        boolean changed = false;
+
+        for (ResolvedGoalMapping mapping : goalMappingService.getAllMappings()) {
+            if (!"exact".equals(mapping.matchType())) {
+                continue;
+            }
+            if (!visibleGoalIds.contains(mapping.canonicalGoalId())) {
+                continue;
+            }
+            Double legacyMastery = masteryMap.get(mapping.legacyGoalId());
+            if (legacyMastery == null) {
+                continue;
+            }
+
+            double current = projected.getOrDefault(mapping.canonicalGoalId(), 0.0);
+            if (legacyMastery > current) {
+                projected.put(mapping.canonicalGoalId(), legacyMastery);
+                changed = true;
+            }
+        }
+
+        return changed ? projected : masteryMap;
+    }
+
+    private Map<String, MasteryEntryDTO> applyCanonicalMasteryProjectionWithTimestamps(Map<String, LearningGoal> goals,
+            Map<String, MasteryEntryDTO> masteryMap) {
+        if (goals == null || goals.isEmpty() || masteryMap == null || masteryMap.isEmpty()) {
+            return masteryMap;
+        }
+
+        Map<String, MasteryEntryDTO> projected = new HashMap<>(masteryMap);
+        Set<String> visibleGoalIds = goals.keySet();
+        boolean changed = false;
+
+        for (ResolvedGoalMapping mapping : goalMappingService.getAllMappings()) {
+            if (!"exact".equals(mapping.matchType())) {
+                continue;
+            }
+            if (!visibleGoalIds.contains(mapping.canonicalGoalId())) {
+                continue;
+            }
+            MasteryEntryDTO legacyEntry = masteryMap.get(mapping.legacyGoalId());
+            if (legacyEntry == null) {
+                continue;
+            }
+
+            MasteryEntryDTO current = projected.get(mapping.canonicalGoalId());
+            if (shouldReplaceProjectedEntry(current, legacyEntry)) {
+                projected.put(mapping.canonicalGoalId(), legacyEntry);
+                changed = true;
+            }
+        }
+
+        return changed ? projected : masteryMap;
+    }
+
+    private boolean shouldReplaceProjectedEntry(MasteryEntryDTO current, MasteryEntryDTO candidate) {
+        if (candidate == null) {
+            return false;
+        }
+        if (current == null) {
+            return true;
+        }
+        if (candidate.value() > current.value()) {
+            return true;
+        }
+        if (candidate.value() < current.value()) {
+            return false;
+        }
+        Instant currentTs = current.updatedAt();
+        Instant candidateTs = candidate.updatedAt();
+        if (currentTs == null) {
+            return candidateTs != null;
+        }
+        if (candidateTs == null) {
+            return false;
+        }
+        return candidateTs.isAfter(currentTs);
+    }
+
+    private String mapGoalIdForVisibleGoals(String goalId, Map<String, LearningGoal> visibleGoals, boolean allowPartial) {
+        if (goalId == null || goalId.isBlank()) {
+            return null;
+        }
+        if (visibleGoals == null || visibleGoals.isEmpty()) {
+            return goalId;
+        }
+        if (visibleGoals.containsKey(goalId)) {
+            return goalId;
+        }
+        ResolvedGoalMapping mapping = goalMappingService.findByLegacyGoalId(goalId).orElse(null);
+        if (mapping == null) {
+            return goalId;
+        }
+        if (!allowPartial && !"exact".equals(mapping.matchType())) {
+            return goalId;
+        }
+        return visibleGoals.containsKey(mapping.canonicalGoalId()) ? mapping.canonicalGoalId() : goalId;
+    }
+
+    private String resolveGoalIdInVisibleGoals(String goalId, Map<String, LearningGoal> visibleGoals,
+            boolean allowPartial) {
+        String mappedGoalId = mapGoalIdForVisibleGoals(goalId, visibleGoals, allowPartial);
+        if (mappedGoalId == null || mappedGoalId.isBlank()) {
+            return null;
+        }
+        if (visibleGoals == null || visibleGoals.isEmpty()) {
+            return mappedGoalId;
+        }
+        return visibleGoals.containsKey(mappedGoalId) ? mappedGoalId : null;
+    }
+
+    private List<String> mapGoalIdsForVisibleGoals(List<String> goalIds, Map<String, LearningGoal> visibleGoals,
+            boolean allowPartial) {
+        if (goalIds == null || goalIds.isEmpty()) {
+            return Collections.emptyList();
+        }
+        LinkedHashSet<String> mappedGoalIds = new LinkedHashSet<>();
+        for (String goalId : goalIds) {
+            String mappedGoalId = mapGoalIdForVisibleGoals(goalId, visibleGoals, allowPartial);
+            if (mappedGoalId != null && !mappedGoalId.isBlank()) {
+                mappedGoalIds.add(mappedGoalId);
+            }
+        }
+        return new ArrayList<>(mappedGoalIds);
     }
 
     @Transactional
@@ -533,14 +675,22 @@ public class LearnerService {
         Learner learner = learnerRepository.findById(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
 
-        String activeGoalId = learner.getActiveGoalId();
+        Map<String, LearningGoal> visibleGoals = Collections.emptyMap();
+        if (learner.getSelectedCurriculum() != null && !learner.getSelectedCurriculum().isBlank()) {
+            visibleGoals = getFilteredGoals(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        }
+
+        String activeGoalId = resolveGoalIdInVisibleGoals(learner.getActiveGoalId(), visibleGoals, false);
         String requestedGoalId = request.goalId();
+        requestedGoalId = mapGoalIdForVisibleGoals(requestedGoalId, visibleGoals, false);
         Map.Entry<String, Double> masteryEntry = null;
+        String masteryEntryGoalId = null;
         if (request.mastery() != null && request.mastery().size() == 1) {
             masteryEntry = request.mastery().entrySet().iterator().next();
+            masteryEntryGoalId = mapGoalIdForVisibleGoals(masteryEntry.getKey(), visibleGoals, false);
         }
-        if ((requestedGoalId == null || requestedGoalId.isBlank()) && masteryEntry != null) {
-            requestedGoalId = masteryEntry.getKey();
+        if ((requestedGoalId == null || requestedGoalId.isBlank()) && masteryEntryGoalId != null) {
+            requestedGoalId = masteryEntryGoalId;
         }
 
         String effectiveGoalId = (activeGoalId != null && !activeGoalId.isBlank())
@@ -560,7 +710,7 @@ public class LearnerService {
                 double currentMastery = masterySnapshot.getOrDefault(effectiveGoalId, 0.0);
                 boolean explicitCorrection = masteryEntry != null
                         && masteryEntry.getValue() != null
-                        && effectiveGoalId.equals(masteryEntry.getKey())
+                        && effectiveGoalId.equals(masteryEntryGoalId)
                         && masteryEntry.getValue() < currentMastery;
 
                 // Allow explicit correction (e.g. reset from 1.0 to 0.0) even if the goal
@@ -584,7 +734,7 @@ public class LearnerService {
         }
 
         double masteryValue = 1.0;
-        if (masteryEntry != null && effectiveGoalId.equals(masteryEntry.getKey()) && masteryEntry.getValue() != null) {
+        if (masteryEntry != null && effectiveGoalId.equals(masteryEntryGoalId) && masteryEntry.getValue() != null) {
             masteryValue = masteryEntry.getValue();
         }
 
@@ -620,6 +770,17 @@ public class LearnerService {
 
     @Transactional(readOnly = true)
     public List<String> getPlannedGoals(String skillpilotId) {
+        Learner learner = getLearner(skillpilotId);
+        List<String> storedPlannedGoals = getStoredPlannedGoals(skillpilotId);
+        String curriculumId = learner.getSelectedCurriculum();
+        if (curriculumId == null || curriculumId.isBlank()) {
+            return storedPlannedGoals;
+        }
+        Map<String, LearningGoal> structuralGoals = getFilteredGoals(curriculumId, "{}");
+        return mapGoalIdsForVisibleGoals(storedPlannedGoals, structuralGoals, true);
+    }
+
+    private List<String> getStoredPlannedGoals(String skillpilotId) {
         ensureLearnerExists(skillpilotId);
         return plannedGoalRepository.findByLearner_SkillpilotId(skillpilotId)
                 .stream()
@@ -639,27 +800,34 @@ public class LearnerService {
         Set<String> saneTargetIds = targetIds.stream()
                 .filter(id -> id != null && !id.isBlank())
                 .collect(Collectors.toSet());
+        if (learner.getSelectedCurriculum() != null && !learner.getSelectedCurriculum().isBlank()) {
+            Map<String, LearningGoal> structuralGoals = getFilteredGoals(learner.getSelectedCurriculum(), "{}");
+            saneTargetIds = new LinkedHashSet<>(mapGoalIdsForVisibleGoals(new ArrayList<>(saneTargetIds),
+                    structuralGoals, true));
+        }
+        final Set<String> normalizedTargetIds = saneTargetIds;
 
         List<PlannedGoal> toDelete = existing.stream()
-                .filter(pg -> !saneTargetIds.contains(pg.getGoalId()))
+                .filter(pg -> !normalizedTargetIds.contains(pg.getGoalId()))
                 .toList();
         plannedGoalRepository.deleteAll(toDelete);
 
-        List<PlannedGoal> toAdd = saneTargetIds.stream()
+        List<PlannedGoal> toAdd = normalizedTargetIds.stream()
                 .filter(id -> !existingIds.contains(id))
                 .map(id -> new PlannedGoal(learner, id))
                 .toList();
         plannedGoalRepository.saveAll(toAdd);
 
         // Validation: Verify Active Goal is still in Scope
-        String activeGoalId = learner.getActiveGoalId();
-        if (activeGoalId != null && !activeGoalId.isBlank()) {
+        String storedActiveGoalId = learner.getActiveGoalId();
+        if (storedActiveGoalId != null && !storedActiveGoalId.isBlank()) {
             String curriculumId = learner.getSelectedCurriculum();
             if (curriculumId != null) {
                 // Must rebuild context to compute scope
                 Map<String, LearningGoal> allGoals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
                 Map<String, List<String>> effectiveRequires = computeEffectiveRequires(allGoals);
-                List<String> newPlannedIds = new ArrayList<>(saneTargetIds); // Use the new set
+                List<String> newPlannedIds = new ArrayList<>(normalizedTargetIds); // Use the new set
+                String activeGoalId = resolveGoalIdInVisibleGoals(storedActiveGoalId, allGoals, false);
 
                 Set<String> newScope = computeScope(newPlannedIds, allGoals, effectiveRequires);
 
@@ -668,7 +836,7 @@ public class LearnerService {
                 // But setActiveGoal restricts to atomic frontier.
                 // If plan is cleared, we are in overview. Active goal should probably be
                 // cleared to be safe.
-                boolean inScope = newScope.contains(activeGoalId);
+                boolean inScope = activeGoalId != null && newScope.contains(activeGoalId);
 
                 if (!inScope) {
                     learner.setActiveGoalId(null);
@@ -871,7 +1039,7 @@ public class LearnerService {
                 : effectivePrereqMastery;
 
         // Calculate Scope (Plan + Descendants + Prerequisites)
-        List<String> plannedIds = getPlannedGoals(skillpilotId);
+        List<String> plannedIds = mapGoalIdsForVisibleGoals(getStoredPlannedGoals(skillpilotId), allStructuralGoals, true);
 
         // CRITICAL FIX: Use Structural (Unfiltered) Goals for Scope!
         // This ensures that if the User plans a Parent that is currently "Hidden" by a
@@ -1118,17 +1286,22 @@ public class LearnerService {
         List<FrontierGoal> frontier = getRichFrontier(skillpilotId);
         List<FrontierGoal> frontierAtomic = filterAtomicFrontier(frontier);
 
-        List<String> plannedIds = getPlannedGoals(skillpilotId);
-        List<FrontierGoal> plannedRich = new ArrayList<>();
-
         // Build a map of all goals in the closure for quick lookup
         Map<String, LearningGoal> allGoals = new HashMap<>();
+        Map<String, LearningGoal> structuralGoals = Collections.emptyMap();
         if (curriculumId != null) {
             allGoals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
+            structuralGoals = getFilteredGoals(curriculumId, "{}");
         }
+
+        List<String> plannedIds = mapGoalIdsForVisibleGoals(getStoredPlannedGoals(skillpilotId), structuralGoals, true);
+        List<FrontierGoal> plannedRich = new ArrayList<>();
 
         for (String pid : plannedIds) {
             LearningGoal g = allGoals.get(pid);
+            if (g == null) {
+                g = structuralGoals.get(pid);
+            }
             if (g == null) {
                 // Fallback: Goal might be filtered out by personalization, but since it's
                 // planned, we want to see it.
@@ -1152,23 +1325,26 @@ public class LearnerService {
         }
 
         Map<String, Double> mastery = getMastery(skillpilotId);
-        String activeGoalId = learner.getActiveGoalId();
+        String storedActiveGoalId = learner.getActiveGoalId();
+        String activeGoalId = resolveGoalIdInVisibleGoals(storedActiveGoalId, allGoals, false);
         boolean activeGoalMastered = activeGoalId != null && !activeGoalId.isBlank()
                 && mastery.getOrDefault(activeGoalId, 0.0) >= 0.9;
-        if (activeGoalMastered) {
+        boolean activeGoalInvalidInView = storedActiveGoalId != null
+                && !storedActiveGoalId.isBlank()
+                && activeGoalId == null;
+        if (activeGoalMastered || activeGoalInvalidInView) {
             // Persistently clear stale active goals.
             learner.setActiveGoalId(null);
             learner.setLearningState(LearningState.FRONTIER);
             learnerRepository.save(learner);
             eventPublisher.publishEvent(
-                    new LearnerStateChangedEvent(this, skillpilotId, "ACTIVE_GOAL_CLEARED_STALE"));
+                    new LearnerStateChangedEvent(this, skillpilotId,
+                            activeGoalInvalidInView ? "ACTIVE_GOAL_CLEARED_INVALID_VIEW" : "ACTIVE_GOAL_CLEARED_STALE"));
             activeGoalId = null;
             activeGoalMastered = false;
         }
-        Map<String, LearningGoal> structuralGoals = Collections.emptyMap();
         Set<String> scope = Collections.emptySet();
         if (curriculumId != null && !plannedIds.isEmpty()) {
-            structuralGoals = getFilteredGoals(curriculumId, "{}");
             scope = computeScope(plannedIds, structuralGoals, Collections.emptyMap());
         }
 
@@ -1526,19 +1702,29 @@ public class LearnerService {
                     "goalId must not be empty.");
         }
 
+        Map<String, LearningGoal> visibleGoals = Collections.emptyMap();
+        if (learner.getSelectedCurriculum() != null && !learner.getSelectedCurriculum().isBlank()) {
+            visibleGoals = getFilteredGoals(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        }
+        String effectiveGoalId = resolveGoalIdInVisibleGoals(goalId, visibleGoals, false);
+        if (effectiveGoalId == null || effectiveGoalId.isBlank()) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "goalId must be an atomic goal from the current frontier.");
+        }
+
         String currentActiveGoalId = learner.getActiveGoalId();
-        if (currentActiveGoalId != null && !currentActiveGoalId.isBlank() && currentActiveGoalId.equals(goalId)) {
+        if (currentActiveGoalId != null && !currentActiveGoalId.isBlank() && currentActiveGoalId.equals(effectiveGoalId)) {
             return;
         }
 
         List<FrontierGoal> frontierAtomic = filterAtomicFrontier(getRichFrontier(skillpilotId));
-        boolean allowed = frontierAtomic.stream().anyMatch(goal -> goal.id().equals(goalId));
+        boolean allowed = frontierAtomic.stream().anyMatch(goal -> goal.id().equals(effectiveGoalId));
         if (!allowed) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
                     "goalId must be an atomic goal from the current frontier.");
         }
 
-        learner.setActiveGoalId(goalId);
+        learner.setActiveGoalId(effectiveGoalId);
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.save(learner);
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "ACTIVE_GOAL_UPDATE"));

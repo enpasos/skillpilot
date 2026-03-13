@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.domain.Mastery;
+import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeProperties;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
@@ -50,6 +51,7 @@ class MitOcwFrontierWalkthroughTest {
 
     private static ObjectMapper objectMapper;
     private static LandscapeService landscapeService;
+    private static GoalMappingService goalMappingService;
 
     private LearnerService learnerService;
     private LearnerRepository learnerRepository;
@@ -66,6 +68,7 @@ class MitOcwFrontierWalkthroughTest {
         LandscapeProperties properties = new LandscapeProperties();
         properties.setDirectory(resolveCurriculaDir().toString());
         landscapeService = new LandscapeService(properties, objectMapper);
+        goalMappingService = new GoalMappingService(properties, objectMapper);
     }
 
     @BeforeEach
@@ -83,6 +86,7 @@ class MitOcwFrontierWalkthroughTest {
                 masteryRepository,
                 plannedGoalRepository,
                 landscapeService,
+                goalMappingService,
                 deckResourceService,
                 objectMapper,
                 eventPublisher);

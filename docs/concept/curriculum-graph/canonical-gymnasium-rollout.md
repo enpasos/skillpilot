@@ -59,7 +59,20 @@ At the beginning, the project should add only:
 
 The project should avoid introducing additional abstract layers unless the pilot proves they are necessary.
 
-### 4. Keep GPT-facing APIs stable
+### 4. Standardize Bundesland identifiers in metadata, not in directory layout
+
+For state-specific filters, overlays, and API-visible metadata, use ISO 3166-2 codes for Germany.
+
+Examples:
+
+- `DE-HE` for Hessen
+- `DE-BY` for Bayern
+
+This should become the canonical identifier format whenever the data model needs to refer to a Bundesland explicitly.
+
+At the same time, the existing repository path layout such as `curricula/DE/HE/...` does not need to be renamed during the pilot. Those directory segments are storage organization, not the long-term public identifier contract.
+
+### 5. Keep GPT-facing APIs stable
 
 The Custom GPT should continue to see one learner state, one frontier, and one mastery model.
 
@@ -71,7 +84,7 @@ The GPT should not need to know:
 
 That translation belongs in backend/runtime code, not in prompts or GPT tool logic.
 
-### 5. Support cross-subject dependencies
+### 6. Support cross-subject dependencies
 
 The long-term model must support selected cross-subject `requires` edges where they are didactically justified.
 
@@ -210,4 +223,3 @@ The rollout is on track if the following become true:
 - Bavaria can be represented without duplicating the same mathematics competencies.
 - Study-oriented views can hide state-specific exam distinctions without losing the underlying mastery history.
 - Physik can reference Mathematik prerequisites in a controlled, explicit way.
-

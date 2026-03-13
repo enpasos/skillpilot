@@ -1,0 +1,810 @@
+{
+  "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "DEU",
+  "schoolType": "Gymnasium",
+  "subject": "Mathematik",
+  "frameworkId": "canonical-gymnasium-math-pilot",
+  "title": "Modul: Kanonischer Mathematik-Pilot (Gymnasium, DE)",
+  "titleEn": "Module: Canonical Mathematics Pilot (Gymnasium, DE)",
+  "description": "Kleiner kanonischer Pilot fuer Mathematik am Gymnasium in Deutschland. Der aktuelle Seed umfasst Motivation, einen ersten Sek-I-Anschluss zu Funktionen sowie Grundlagen zu Funktionen und Darstellungen in der Einfuehrungsphase und ist aus den hessischen Mathematik-Curricula der Mittelstufe und Oberstufe mit einer ersten Bayern-Anbindung im Funktionskorridor abgeleitet.",
+  "descriptionEn": "Small canonical pilot for mathematics at Gymnasium in Germany. The current seed covers motivation, a first lower-secondary attachment for functions, and foundations of functions and representations in the introductory upper-secondary phase and is derived from the Hessian lower- and upper-secondary mathematics curricula with an initial Bavarian alignment along the function corridor.",
+  "filters": [],
+  "goals": [
+    {
+      "id": "c01b1ce9-a667-4a46-b251-ec33ae602b15",
+      "shortKey": "canonical_math_pilot_module",
+      "title": "Kanonischer Mathematik-Pilot",
+      "titleEn": "Canonical Mathematics Pilot",
+      "description": "Modulwurzel fuer den ersten kanonischen Mathematik-Pilot. Der aktuelle Umfang umfasst Motivation sowie Grundlagen zu Funktionen und Darstellungen als kleiner Seed fuer den spaeteren bundeslaenderuebergreifenden Kompetenzkern.",
+      "descriptionEn": "Module root for the first canonical mathematics pilot. The current scope covers motivation and foundations of functions and representations as a small seed for the later cross-state competence core.",
+      "core": true,
+      "weight": 14,
+      "tags": [
+        "root",
+        "module:canonical-pilot",
+        "canonical",
+        "pilot",
+        "subject:mathematics"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1",
+          "K3",
+          "K4",
+          "K5"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.PILOT"
+      },
+      "contains": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "5c6b7342-0f67-4b4c-894d-fd83a6df64b3",
+        "a668ea17-9226-4074-8f8e-051acbe839eb"
+      ],
+      "requires": [],
+      "sourceRef": "Derived from Hessen KC 2024 Mathematik Oberstufe with lower-secondary alignment from Hessen G9 and Bayern Gymnasium",
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+          "sourceLandscapeTitle": "Mathematik Oberstufe (Hessen, KC 2024)",
+          "additionalSourceLandscapeIds": [
+            "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+            "c1600692-e543-5cf2-a399-6bd96e6b817f"
+          ]
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+      "shortKey": "canonical_math_why",
+      "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+      "titleEn": "Why Mathematics? – Thinking, Patterns & Future",
+      "description": "Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden, warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert loest.",
+      "descriptionEn": "The 'Big Picture' intro: How algorithms power your smartphone, how data becomes decisions, why models make growth and risks visible, and why mathematical thinking structures problem solving.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot",
+        "Motivation",
+        "Orientation"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "phase": "E",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.WHY"
+      },
+      "contains": [],
+      "requires": [],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+          "sourceGoalId": "bea16be0-88b3-51b7-be3b-494d5c496105"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5c6b7342-0f67-4b4c-894d-fd83a6df64b3",
+      "shortKey": "canonical_math_sek1_function_foundations",
+      "title": "Funktionsgrundlagen (Sek I, Pilot)",
+      "titleEn": "Function Foundations (Lower Secondary, Pilot)",
+      "description": "Pilot-Cluster fuer grundlegende Vorstellungen zu Zuordnungen, linearen Funktionen und quadratischen Funktionen aus der gymnasialen Sekundarstufe I.",
+      "descriptionEn": "Pilot cluster for foundational ideas of mappings, linear functions, and quadratic functions from lower secondary Gymnasium mathematics.",
+      "core": true,
+      "weight": 7,
+      "tags": [
+        "canonical",
+        "pilot",
+        "phase:SekI",
+        "area:Analysis"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1",
+          "K3",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "GLOBAL",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.FUNCTIONS"
+      },
+      "contains": [
+        "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb",
+        "9023226b-fc17-412b-807c-2bb45cd551d5",
+        "c23705d2-57fc-4260-80d8-2d340203a173",
+        "5a9702f4-7e4d-457d-b98c-f0bafcd1e386"
+      ],
+      "requires": [],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+          "sourceLandscapeTitle": "Mathematik Sekundarstufe I (Hessen, G9)",
+          "additionalSourceLandscapeIds": [
+            "c1600692-e543-5cf2-a399-6bd96e6b817f"
+          ]
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+      "shortKey": "canonical_math_analyze_mappings",
+      "title": "Zuordnungen analysieren",
+      "titleEn": "Analyze mappings",
+      "description": "Die lernende Person kann Zuordnungstabellen erstellen, grafisch darstellen und einfache funktionale Zusammenhaenge deuten.",
+      "descriptionEn": "The learner can create mapping tables, represent them graphically, and interpret simple functional relationships.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "GLOBAL",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.1"
+      },
+      "contains": [],
+      "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+          "sourceGoalId": "4261f57b-13c9-4733-a0dc-72f2dcd4726d"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+      "shortKey": "canonical_math_use_proportional_mappings",
+      "title": "Proportionale Zuordnungen nutzen",
+      "titleEn": "Use proportional mappings",
+      "description": "Die lernende Person kann proportionale Zusammenhaenge mit Quotientengleichheit pruefen, Dreisatz anwenden und Ursprungsgeraden zeichnen.",
+      "descriptionEn": "The learner can test proportional relationships using constant quotients, apply the rule of three, and draw lines through the origin.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J7",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.1B"
+      },
+      "contains": [],
+      "requires": [
+        "2bb4bb91-7929-483a-b735-44275f6b5cdc"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+          "sourceGoalId": "ed0c5283-b1b2-4562-9115-7336fca7a8d4"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+      "shortKey": "canonical_math_describe_linear_functions",
+      "title": "Lineare Funktionen beschreiben",
+      "titleEn": "Describe linear functions",
+      "description": "Die lernende Person kann Geraden durch Gleichungen, Tabellen und Graphen darstellen sowie Steigung und Achsenabschnitt in einfachen Situationen deuten.",
+      "descriptionEn": "The learner can represent lines using equations, tables, and graphs and interpret slope and intercept in simple situations.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "GLOBAL",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.2"
+      },
+      "contains": [],
+      "requires": [
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+          "sourceGoalId": "faafd111-21a1-4f67-945a-6bff60b3e19b"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "9023226b-fc17-412b-807c-2bb45cd551d5",
+      "shortKey": "canonical_math_solve_quadratic_equations",
+      "title": "Quadratische Gleichungen loesen",
+      "titleEn": "Solve quadratic equations",
+      "description": "Die lernende Person kann quadratische Gleichungen grafisch, durch quadratische Ergaenzung oder mit einer Loesungsformel bearbeiten und Sachprobleme darauf zurueckfuehren.",
+      "descriptionEn": "The learner can solve quadratic equations graphically, by completing the square, or by using a formula and connect them to simple word problems.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.2B"
+      },
+      "contains": [],
+      "requires": [
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+          "sourceGoalId": "3fd40670-16c0-4a3c-b9f5-e64e3a56792f"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb",
+      "shortKey": "canonical_math_analyze_linear_functions_rechnerisch",
+      "title": "Lineare Funktionen rechnerisch untersuchen",
+      "titleEn": "Analyze linear functions algebraically",
+      "description": "Die lernende Person kann Geradengleichungen aufstellen, Nullstellen linearer Funktionen bestimmen und Schnittpunkte zweier Geraden berechnen.",
+      "descriptionEn": "The learner can set up line equations, determine roots of linear functions, and calculate intersections of two lines.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "GLOBAL",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.2A"
+      },
+      "contains": [],
+      "requires": [
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceGoalId": "edd3e6df-7f3d-5230-9377-dcf9d095c49c"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c23705d2-57fc-4260-80d8-2d340203a173",
+      "shortKey": "canonical_math_determine_vertices_of_quadratic_functions",
+      "title": "Scheitelpunkte quadratischer Funktionen bestimmen",
+      "titleEn": "Determine vertices of quadratic functions",
+      "description": "Die lernende Person kann aus quadratischen Termen den Scheitelpunkt ermitteln, zwischen Normal- und Scheitelpunktform wechseln und den zugehoerigen Graphen skizzieren.",
+      "descriptionEn": "The learner can determine the vertex from quadratic expressions, switch between general and vertex form, and sketch the corresponding graph.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "GLOBAL",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.3A"
+      },
+      "contains": [],
+      "requires": [
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceGoalId": "6e7ff196-a9e4-5bac-afee-621801ec85c2"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5a9702f4-7e4d-457d-b98c-f0bafcd1e386",
+      "shortKey": "canonical_math_describe_quadratic_functions",
+      "title": "Quadratische Funktionen beschreiben",
+      "titleEn": "Describe quadratic functions",
+      "description": "Die lernende Person kann Parabeln ueber Scheitelpunkt, Nullstellen und Verschiebungen analysieren und ihre Graphen darstellen.",
+      "descriptionEn": "The learner can analyze parabolas using vertex, roots, and shifts and represent their graphs.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "GLOBAL",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.3"
+      },
+      "contains": [],
+      "requires": [
+        "c23705d2-57fc-4260-80d8-2d340203a173"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+          "sourceGoalId": "1ebf8f29-5c87-4fa3-879b-dac273057605"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "shortKey": "canonical_math_e_analysis_foundations",
+      "title": "Analysis-Grundlagen (E-Phase, Pilot)",
+      "titleEn": "Analysis Foundations (Introductory Phase, Pilot)",
+      "description": "Pilot-Cluster fuer Grundideen zu Funktionen und ihren Darstellungen in der Einfuehrungsphase.",
+      "descriptionEn": "Pilot cluster for foundational ideas of functions and their representations in the introductory phase.",
+      "core": true,
+      "weight": 6,
+      "tags": [
+        "canonical",
+        "pilot",
+        "phase:E",
+        "area:Analysis"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1",
+          "K3",
+          "K4",
+          "K5"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "E",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.E"
+      },
+      "contains": [
+        "c9d92f32-167a-4006-a940-b8063a6ed434"
+      ],
+      "requires": [
+        "5c6b7342-0f67-4b4c-894d-fd83a6df64b3"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+          "sourceGoalId": "a6ee6304-8c26-4eda-b56e-676655e703c2"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "c9d92f32-167a-4006-a940-b8063a6ed434",
+      "shortKey": "canonical_math_functions_and_representations",
+      "title": "Funktionen und Darstellungen",
+      "titleEn": "Functions and Representations",
+      "description": "Grundbegriffe und Eigenschaften von Funktionen, Wechsel zwischen Term, Tabelle und Graph sowie Deutungen linearer und quadratischer Funktionen in einfachen Kontexten.",
+      "descriptionEn": "Basic concepts and properties of functions, switching between term, table, and graph, and interpreting linear and quadratic functions in simple contexts.",
+      "core": true,
+      "weight": 6,
+      "tags": [
+        "canonical",
+        "pilot",
+        "phase:E",
+        "area:Analysis"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "E",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.E1"
+      },
+      "contains": [
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+        "a8c42ee9-2898-4247-819f-c235032ac78a",
+        "d8c9eb57-1614-4c1d-829a-618134def352",
+        "2d75fd3f-c68b-4a11-89ae-19a30fefc47a",
+        "29ce4053-b5c5-4a82-9ff0-3acc492284d8"
+      ],
+      "requires": [
+        "5c6b7342-0f67-4b4c-894d-fd83a6df64b3"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+          "sourceGoalId": "bcfb5d13-23f1-4063-b97a-3d6ed50bcca7",
+          "sourceTopicCode": "E.1"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "09f47964-2cd0-410e-93ee-9632b582fc91",
+      "shortKey": "canonical_math_function_concept_and_representations",
+      "title": "Funktionsbegriff und Darstellungen verstehen",
+      "titleEn": "Understand function concept and representations",
+      "description": "Die lernende Person kann reellwertige Funktionen als Zuordnung zwischen Zahlenmengen beschreiben und zwischen Wertetabelle, Term und Graph wechseln.",
+      "descriptionEn": "The learner can describe real-valued functions as a mapping between sets of numbers and switch between value table, term, and graph.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "E",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.E1"
+      },
+      "contains": [],
+      "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "2bb4bb91-7929-483a-b735-44275f6b5cdc"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+          "sourceGoalId": "0903db01-4377-4a79-8f29-aceffea68f24"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+      "shortKey": "canonical_math_calculate_function_values",
+      "title": "Funktionswerte berechnen",
+      "titleEn": "Calculate function values",
+      "description": "Die lernende Person kann zu gegebenen Termen f(x) Funktionswerte fuer konkrete x-Werte korrekt berechnen.",
+      "descriptionEn": "The learner can correctly calculate function values for concrete x-values given terms f(x).",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "E",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.E1"
+      },
+      "contains": [],
+      "requires": [
+        "09f47964-2cd0-410e-93ee-9632b582fc91"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+          "sourceGoalId": "2618a712-e625-426d-aa87-ad11ebe707e1"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "a8c42ee9-2898-4247-819f-c235032ac78a",
+      "shortKey": "canonical_math_read_function_values_from_graphs",
+      "title": "Funktionswerte aus Graphen ablesen",
+      "titleEn": "Read function values from graphs",
+      "description": "Die lernende Person kann aus Graphen zu gegebenen x-Werten die zugehoerigen Funktionswerte sowie zu gegebenen Funktionswerten die zugehoerigen x-Werte ablesen.",
+      "descriptionEn": "The learner can read the corresponding function values for given x-values and the corresponding x-values for given function values from graphs.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "E",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.E1"
+      },
+      "contains": [],
+      "requires": [
+        "09f47964-2cd0-410e-93ee-9632b582fc91"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+          "sourceGoalId": "cd46ce36-883e-4e68-8bfd-2bbdc0ecce9d"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d8c9eb57-1614-4c1d-829a-618134def352",
+      "shortKey": "canonical_math_verify_function_graph_symmetry",
+      "title": "Symmetrie von Funktionsgraphen nachweisen",
+      "titleEn": "Verify symmetry of function graphs",
+      "description": "Die lernende Person kann Achsensymmetrie zur y-Achse und Punktsymmetrie zum Ursprung rechnerisch nachweisen und Graphen entsprechend beurteilen.",
+      "descriptionEn": "The learner can verify symmetry with respect to the y-axis and point symmetry about the origin algebraically and assess graphs accordingly.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "E",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.E1"
+      },
+      "contains": [],
+      "requires": [
+        "09f47964-2cd0-410e-93ee-9632b582fc91"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+          "sourceGoalId": "8f42b49d-a2fb-45f5-9da3-97ec96b8113e"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "2d75fd3f-c68b-4a11-89ae-19a30fefc47a",
+      "shortKey": "canonical_math_interpret_linear_function_parameters",
+      "title": "Parameter linearer Funktionen deuten",
+      "titleEn": "Interpret parameters of linear functions",
+      "description": "Die lernende Person kann bei linearen Funktionen die Bedeutung von Steigung und y-Achsenabschnitt im Graphen und in einfachen Sachsituationen deuten.",
+      "descriptionEn": "The learner can interpret the meaning of slope and y-intercept in graphs and simple real-world situations for linear functions.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "E",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.E1"
+      },
+      "contains": [],
+      "requires": [
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+        "a8c42ee9-2898-4247-819f-c235032ac78a",
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+          "sourceGoalId": "83023e39-d1a1-4943-b878-b70b97ad1ade"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "29ce4053-b5c5-4a82-9ff0-3acc492284d8",
+      "shortKey": "canonical_math_interpret_quadratic_functions_in_graphs",
+      "title": "Quadratische Funktionen im Graphen deuten",
+      "titleEn": "Interpret quadratic functions in graphs",
+      "description": "Die lernende Person kann den Graphen quadratischer Funktionen erkennen, Scheitelpunkt und Nullstellen bestimmen und diese in einfachen Kontexten deuten.",
+      "descriptionEn": "The learner can recognize the graph of quadratic functions, determine vertex and roots, and interpret them in simple contexts.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K3.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "E",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.E1"
+      },
+      "contains": [],
+      "requires": [
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+        "a8c42ee9-2898-4247-819f-c235032ac78a",
+        "5a9702f4-7e4d-457d-b98c-f0bafcd1e386"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+          "sourceGoalId": "3d8a13aa-4151-4cf3-b091-365de50c89a7"
+        }
+      },
+      "type": "atomic"
+    }
+  ]
+}

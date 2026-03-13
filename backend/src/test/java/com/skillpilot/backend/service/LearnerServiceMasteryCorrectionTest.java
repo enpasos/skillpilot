@@ -11,6 +11,7 @@ import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.MasteryId;
+import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
@@ -31,6 +32,7 @@ class LearnerServiceMasteryCorrectionTest {
     private MasteryRepository masteryRepository;
     private PlannedGoalRepository plannedGoalRepository;
     private LandscapeService landscapeService;
+    private GoalMappingService goalMappingService;
     private DeckResourceService deckResourceService;
     private ApplicationEventPublisher eventPublisher;
 
@@ -46,6 +48,7 @@ class LearnerServiceMasteryCorrectionTest {
         masteryRepository = org.mockito.Mockito.mock(MasteryRepository.class);
         plannedGoalRepository = org.mockito.Mockito.mock(PlannedGoalRepository.class);
         landscapeService = org.mockito.Mockito.mock(LandscapeService.class);
+        goalMappingService = org.mockito.Mockito.mock(GoalMappingService.class);
         deckResourceService = org.mockito.Mockito.mock(DeckResourceService.class);
         eventPublisher = org.mockito.Mockito.mock(ApplicationEventPublisher.class);
 
@@ -55,6 +58,7 @@ class LearnerServiceMasteryCorrectionTest {
                 masteryRepository,
                 plannedGoalRepository,
                 landscapeService,
+                goalMappingService,
                 deckResourceService,
                 new ObjectMapper(),
                 eventPublisher);
@@ -69,6 +73,7 @@ class LearnerServiceMasteryCorrectionTest {
         when(learnerRepository.findById(LEARNER_ID)).thenReturn(Optional.of(learner));
         when(learnerRepository.existsById(LEARNER_ID)).thenReturn(true);
         when(learnerRepository.save(any(Learner.class))).thenAnswer(invocation -> invocation.getArgument(0));
+        when(goalMappingService.getAllMappings()).thenReturn(List.of());
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of(existingMastery));
         when(masteryRepository.findById(new MasteryId(LEARNER_ID, GOAL_ID))).thenReturn(Optional.of(existingMastery));
         when(masteryRepository.save(any(Mastery.class))).thenAnswer(invocation -> invocation.getArgument(0));

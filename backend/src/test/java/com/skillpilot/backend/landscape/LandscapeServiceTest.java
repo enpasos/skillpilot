@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 
 class LandscapeServiceTest {
 
+        private static final String CANONICAL_MATH_PILOT_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+
         @Test
         void getOverview_returnsEmptyFilters_forModifiedCurricula() {
                 // Setup
@@ -59,6 +61,29 @@ class LandscapeServiceTest {
                 assertThat(summaries).extracting(LandscapeSummary::getCurriculumId)
                                 .doesNotContain("3e56aa75-c76c-4de5-883b-0aac98297846",
                                                 "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3");
+        }
+
+        @Test
+        void loadsCanonicalMathPilotModuleWithoutExposingItAsRootCurriculum() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape pilot = landscapeService.getById(CANONICAL_MATH_PILOT_ID);
+
+                assertThat(pilot).isNotNull();
+                assertThat(pilot.getTitle()).contains("Modul");
+                assertThat(pilot.getGoals()).isNotEmpty();
+                assertThat(pilot.getGoals())
+                                .extracting(LearningGoal::getTitle)
+                                .contains(
+                                                "Funktionsgrundlagen (Sek I, Pilot)",
+                                                "Lineare Funktionen rechnerisch untersuchen",
+                                                "Scheitelpunkte quadratischer Funktionen bestimmen");
+                assertThat(landscapeService.getOverview().getSummaries())
+                                .extracting(LandscapeSummary::getCurriculumId)
+                                .doesNotContain(CANONICAL_MATH_PILOT_ID);
         }
 
         private void assertFiltersEmpty(List<LandscapeSummary> summaries, String curriculumId) {
