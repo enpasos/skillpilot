@@ -8,8 +8,8 @@
   "frameworkId": "canonical-gymnasium-chemistry",
   "title": "Chemie (Gymnasium, DE)",
   "titleEn": "Chemistry (Gymnasium, DE)",
-  "description": "Chemie für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt für spätere bundesländerübergreifende Angleichung.",
-  "descriptionEn": "Chemistry for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum as the starting point for later cross-state alignment.",
+  "description": "Chemie für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt für spätere bundesländerübergreifende Angleichung und verankert einen ersten Hessen-Sek-I-Brückenschnitt für Stoff- und Lösungsgrundlagen.",
+  "descriptionEn": "Chemistry for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum as the starting point for later cross-state alignment and now anchors a first Hessian lower-secondary bridge slice for substance and solution foundations.",
   "filters": [
     {
       "id": "GK",
@@ -25,8 +25,8 @@
       "id": "442c31c5-c561-5c7a-90bb-2335d779175c",
       "title": "Chemie",
       "titleEn": "Chemistry",
-      "description": "Gemeinsame Wurzel für Chemie am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
-      "descriptionEn": "Shared root for chemistry at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+      "description": "Gemeinsame Wurzel für Chemie am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig, behält sie als belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz und bindet erste Stoff- und Lösungsgrundlagen aus der hessischen Sekundarstufe I an.",
+      "descriptionEn": "Shared root for chemistry at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum, keeps it as a reliable starting point for later cross-state convergence, and attaches first substance and solution foundations from Hessian lower secondary.",
       "weight": 1.2,
       "tags": [
         "GK",
@@ -37,6 +37,7 @@
       ],
       "contains": [
         "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+        "3588c15e-adbe-5b81-b3a7-10da20574e3d",
         "323a222e-5db8-53c5-b2dc-6f9c1d0d277c",
         "a0893975-1677-5dae-bbfb-675789be4f17",
         "ae683d59-06a5-59be-87b5-b8648fd138c8",
@@ -94,6 +95,259 @@
         }
       ],
       "type": "cluster"
+    },
+    {
+      "id": "3588c15e-adbe-5b81-b3a7-10da20574e3d",
+      "shortKey": "canonical_chemistry_sek1_foundations_cluster",
+      "title": "Chemische Grundlagen (Sek I)",
+      "titleEn": "Chemistry Foundations (Lower Secondary)",
+      "description": "Cluster für grundlegende Arbeitsweisen, Stoffeigenschaften, Lösungen und erste Säure-Base-Unterscheidungen aus der gymnasialen Sekundarstufe I.",
+      "descriptionEn": "Cluster for foundational working methods, substance properties, solutions, and first acid-base distinctions from lower secondary Gymnasium chemistry.",
+      "weight": 5,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+        "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+        "326d45bf-9f77-57d5-a054-93e76b034dd5",
+        "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+        "d2ccd1d5-56f7-583f-9724-e97441367f91"
+      ],
+      "requires": [
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.FOUNDATIONS"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "8feb6b0f-d39c-4daf-9a13-9cb00413ff55"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+      "shortKey": "canonical_chemistry_sek1_working_methods",
+      "title": "Arbeitsweisen der Chemie anwenden",
+      "titleEn": "Apply working methods of chemistry",
+      "description": "Die lernende Person kann grundlegende Arbeitsweisen und Sicherheitsregeln im Chemielabor anwenden.",
+      "descriptionEn": "The learner can apply basic working methods and safety rules in the chemistry laboratory.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.WORKING_METHODS"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "8476c11a-9c9a-4d4c-b1eb-9977d9fe4558"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+      "shortKey": "canonical_chemistry_sek1_substances_properties",
+      "title": "Stoffe und Eigenschaften beschreiben",
+      "titleEn": "Describe substances and properties",
+      "description": "Die lernende Person kann Stoffe anhand von Eigenschaftsmerkmalen beschreiben und ordnen.",
+      "descriptionEn": "The learner can describe and classify substances based on properties.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "266a2b2a-9ee2-52f6-ae09-59343da9a60b"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.SUBSTANCES"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "465935ab-3813-40a5-b1d8-51aa8fa0c6ec"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+      "shortKey": "canonical_chemistry_sek1_states_transitions",
+      "title": "Aggregatzustände und Übergänge deuten",
+      "titleEn": "Interpret states of matter and transitions",
+      "description": "Die lernende Person kann Aggregatzustände und Zustandsänderungen beschreiben und deuten.",
+      "descriptionEn": "The learner can describe and interpret states of matter and phase changes.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "fcc73fb5-7413-557f-aea3-b9692a66ee75"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.STATES"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "6e9590a8-b99c-4808-aa30-184337053fbd"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+      "shortKey": "canonical_chemistry_sek1_solutions_solubility",
+      "title": "Lösungen und Löslichkeit beschreiben",
+      "titleEn": "Describe solutions and solubility",
+      "description": "Die lernende Person kann Lösungen herstellen, Löslichkeit beschreiben und Unterschiede zwischen gesättigten und ungesättigten Lösungen erklären.",
+      "descriptionEn": "The learner can prepare solutions, describe solubility, and explain differences between saturated and unsaturated solutions.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "326d45bf-9f77-57d5-a054-93e76b034dd5"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.SOLUTIONS"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "745306f5-5d03-4cfd-bca8-5cb0c63d828c"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "shortKey": "canonical_chemistry_sek1_acid_base_distinguish",
+      "title": "Saure, alkalische und neutrale Lösungen unterscheiden",
+      "titleEn": "Distinguish acidic, alkaline, and neutral solutions",
+      "description": "Die lernende Person kann saure, alkalische und neutrale Lösungen unterscheiden und Indikatoren fachlich nutzen.",
+      "descriptionEn": "The learner can distinguish acidic, alkaline, and neutral solutions and use indicators appropriately.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "53fd1bfd-facb-54ae-b2dc-f667ed1414fc"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ACID_BASE"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "0bfc34bc-9a17-4e86-ac62-b2bf4b967a43"
+        }
+      },
+      "type": "atomic"
     },
     {
       "id": "323a222e-5db8-53c5-b2dc-6f9c1d0d277c",
@@ -257,7 +511,10 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+        "d2ccd1d5-56f7-583f-9724-e97441367f91"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-chemistry",
         "demandLevel": "AB2",
@@ -431,7 +688,10 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+        "d2ccd1d5-56f7-583f-9724-e97441367f91"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-chemistry",
         "demandLevel": "AB2",
@@ -463,7 +723,9 @@
       ],
       "contains": [],
       "requires": [
-        "28bb9d15-f865-5843-a035-6066580fea64"
+        "28bb9d15-f865-5843-a035-6066580fea64",
+        "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+        "d2ccd1d5-56f7-583f-9724-e97441367f91"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-chemistry",

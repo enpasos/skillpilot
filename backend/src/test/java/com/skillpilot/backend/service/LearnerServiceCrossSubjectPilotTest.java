@@ -80,9 +80,18 @@ class LearnerServiceCrossSubjectPilotTest {
     private static final String LEGACY_PHYSICS_APPLY_F_EQUALS_M_A_ID = "0436c8fc-b849-4cab-84d7-32e92c0d94a9";
     private static final String LEGACY_PHYSICS_ENERGY_CONSERVATION_ID = "9aeaf941-baef-43fb-8077-50d37e600c26";
     private static final String LEGACY_PHYSICS_MOMENTUM_CONSERVATION_ID = "f9c16720-ee4e-4bd4-b4a5-e9c12b910fab";
+    private static final String LEGACY_SEK1_PHYSICS_MOTION_ID = "d95d5a8b-8415-46d2-b8aa-568a7244f7a9";
+    private static final String LEGACY_SEK1_PHYSICS_FORCES_ID = "93241d35-1d4f-4239-9116-87eacb985521";
+    private static final String LEGACY_SEK1_PHYSICS_FRICTION_ID = "006d9fe7-ddd9-42c1-9d48-b4b723d033c2";
+    private static final String LEGACY_SEK1_PHYSICS_ENERGY_ID = "3ebf05d1-ddd5-4199-8899-9d2fe34cf484";
     private static final String LEGACY_MATH_FUNCTION_CONCEPT_ID = "0903db01-4377-4a79-8f29-aceffea68f24";
     private static final String LEGACY_MATH_READ_VALUES_ID = "cd46ce36-883e-4e68-8bfd-2bbdc0ecce9d";
     private static final String LEGACY_SEK1_LINEAR_FUNCTIONS_ID = "faafd111-21a1-4f67-945a-6bff60b3e19b";
+    private static final String CANONICAL_PHYSICS_SEK1_MECHANICS_CLUSTER_ID = "9645f0d8-43a3-5f29-873c-daa5ace638db";
+    private static final String CANONICAL_PHYSICS_SEK1_MOTION_ID = "ae67bcf1-f3ee-50d6-9a12-25a159dff659";
+    private static final String CANONICAL_PHYSICS_SEK1_FORCES_ID = "5ea765ac-c279-551a-8a94-a07da2381e5b";
+    private static final String CANONICAL_PHYSICS_SEK1_FRICTION_ID = "581c0766-b84b-54cb-b8b6-375310329a41";
+    private static final String CANONICAL_PHYSICS_SEK1_ENERGY_ID = "722857cf-f327-5740-8151-64eb92195ec8";
     private static final String CANONICAL_PHYSICS_DIAGRAMS_ID = "ce431132-dfc4-42c2-aff6-bd72035190f8";
     private static final String CANONICAL_PHYSICS_UNIFORM_MOTION_ID = "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd";
     private static final String CANONICAL_PHYSICS_FREE_FALL_ID = "230345f3-c360-4963-b390-ab94e3e2c864";
@@ -166,6 +175,23 @@ class LearnerServiceCrossSubjectPilotTest {
     }
 
     @Test
+    void getMasteryProjectsExactLegacySek1PhysicsMasteryIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_MOTION_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_FORCES_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_FRICTION_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_ENERGY_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_MOTION_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_FORCES_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_FRICTION_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_ENERGY_ID, 1.0);
+    }
+
+    @Test
     void canonicalGymnasiumRootPropagatesBundeslandFilterIntoPhysicsChildLandscape() {
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learner.setPersonalCurriculum("""
@@ -186,6 +212,23 @@ class LearnerServiceCrossSubjectPilotTest {
                 .contains(CANONICAL_PHYSICS_ROOT_ID, CANONICAL_PHYSICS_CLUSTER_ID, CANONICAL_PHYSICS_E2_CLUSTER_ID,
                         CANONICAL_PHYSICS_E3_CLUSTER_ID)
                 .doesNotContain("5c44b9ba-9b05-4774-95d5-073230d3fc4f");
+    }
+
+    @Test
+    void projectedSek1PhysicsMasteryUnlocksCanonicalPhysicsDiagramAnalysis() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_PHYSICS_WHY_ID, 1.0),
+                        new Mastery(learner, LEGACY_MATH_FUNCTION_CONCEPT_ID, 1.0),
+                        new Mastery(learner, LEGACY_MATH_READ_VALUES_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_MOTION_ID, 1.0)));
+
+        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_PHYSICS_DIAGRAMS_ID)
+                .doesNotContain(LEGACY_SEK1_PHYSICS_MOTION_ID);
     }
 
     @Test

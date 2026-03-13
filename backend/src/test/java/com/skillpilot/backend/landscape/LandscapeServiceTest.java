@@ -25,6 +25,8 @@ class LandscapeServiceTest {
         private static final String CANONICAL_SPANISH_ID = "90eedebf-9ea8-5247-85dd-31c147f907c3";
         private static final String CANONICAL_GREEK_ID = "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0";
         private static final String CANONICAL_CHINESE_ID = "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80";
+        private static final String CANONICAL_MUSIC_ID = "f620c251-c1e1-41c1-b4e1-b10950b43608";
+        private static final String CANONICAL_ECONOMICS_ID = "605bdaf6-32d5-56fd-8d92-5a80c2fd2901";
         private static final String HESSEN_UPPER_MATH_ID = "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3";
 
         @Test
@@ -90,7 +92,9 @@ class LandscapeServiceTest {
                                                 CANONICAL_LATIN_ID,
                                                 CANONICAL_SPANISH_ID,
                                                 CANONICAL_GREEK_ID,
-                                                CANONICAL_CHINESE_ID);
+                                                CANONICAL_CHINESE_ID,
+                                                CANONICAL_MUSIC_ID,
+                                                CANONICAL_ECONOMICS_ID);
         }
 
         @Test
@@ -115,7 +119,8 @@ class LandscapeServiceTest {
                                 .contains(CANONICAL_GYMNASIUM_ROOT_ID)
                                 .doesNotContain(CANONICAL_MATH_PILOT_ID, CANONICAL_PHYSICS_PILOT_ID, CANONICAL_CHEMISTRY_ID,
                                                 CANONICAL_BIOLOGY_ID, CANONICAL_INFORMATICS_ID, CANONICAL_HISTORY_ID,
-                                                CANONICAL_GERMAN_ID, CANONICAL_POLITICS_ECONOMICS_ID);
+                                                CANONICAL_GERMAN_ID, CANONICAL_POLITICS_ECONOMICS_ID,
+                                                CANONICAL_ECONOMICS_ID);
                 assertThat(landscapeService.getClosure(CANONICAL_GYMNASIUM_ROOT_ID))
                                 .extracting(LearningLandscape::getLandscapeId)
                                 .contains(CANONICAL_GYMNASIUM_ROOT_ID, CANONICAL_MATH_PILOT_ID, CANONICAL_PHYSICS_PILOT_ID,
@@ -124,7 +129,8 @@ class LandscapeServiceTest {
                                                 CANONICAL_POLITICS_ECONOMICS_ID, CANONICAL_ENGLISH_ID,
                                                 CANONICAL_FRENCH_ID, CANONICAL_LATIN_ID,
                                                 CANONICAL_SPANISH_ID, CANONICAL_GREEK_ID,
-                                                CANONICAL_CHINESE_ID)
+                                                CANONICAL_CHINESE_ID, CANONICAL_MUSIC_ID,
+                                                CANONICAL_ECONOMICS_ID)
                                 .doesNotContain(HESSEN_UPPER_MATH_ID);
         }
 
@@ -168,6 +174,7 @@ class LandscapeServiceTest {
                 assertThat(pilot.getGoals())
                                 .extracting(LearningGoal::getTitle)
                                 .contains(
+                                                "Mechanische Grundlagen (Sek I)",
                                                 "Methode: Messunsicherheit und Fehleranalyse",
                                                 "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
                                                 "Bewegungen mit Diagrammen untersuchen",
@@ -201,6 +208,7 @@ class LandscapeServiceTest {
                                 .extracting(LearningGoal::getTitle)
                                 .contains(
                                                 "Warum Chemie? - Relevanz und Orientierung",
+                                                "Chemische Grundlagen (Sek I)",
                                                 "Einführungsphase Reaktionsgrundlagen",
                                                 "Q1 Stoffgruppen",
                                                 "Q4 Energie und Nachhaltigkeit",
@@ -226,6 +234,8 @@ class LandscapeServiceTest {
                 assertThat(biology.getGoals())
                                 .extracting(LearningGoal::getTitle)
                                 .contains(
+                                                "Biologische Grundlagen (Sek I)",
+                                                "Fotosynthese und Zellatmung (Sek I)",
                                                 "Warum Biologie? - Relevanz und Orientierung",
                                                 "Einführungsphase Zellbiologie",
                                                 "Q1 Genetik und Gentechnik",
@@ -490,6 +500,58 @@ class LandscapeServiceTest {
                                                 "Leseverstehen Q4 Chinesisch",
                                                 "Übungen Q4");
                 assertThat(chinese.getFilters())
+                                .extracting(LandscapeFilter::getId)
+                                .containsExactly("GK", "LK");
+        }
+
+        @Test
+        void loadsCanonicalEconomicsAsChildCurriculum() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape economics = landscapeService.getById(CANONICAL_ECONOMICS_ID);
+
+                assertThat(economics).isNotNull();
+                assertThat(economics.getTitle()).isEqualTo("Wirtschaftswissenschaften (Gymnasium, DE)");
+                assertThat(economics.getGoals()).isNotEmpty();
+                assertThat(economics.getGoals())
+                                .extracting(LearningGoal::getTitle)
+                                .contains(
+                                                "Warum Wirtschaftswissenschaften? - Relevanz und Orientierung",
+                                                "E1 Gesellschaftlicher Wandel",
+                                                "Q2 Wirtschaft und Wirtschaftspolitik",
+                                                "Q4 Wirtschaftsethik & Entwicklung",
+                                                "Abiturprüfung Wirtschaftswissenschaften (GK)",
+                                                "Abiturprüfung Wirtschaftswissenschaften (LK)");
+                assertThat(economics.getFilters())
+                                .extracting(LandscapeFilter::getId)
+                                .containsExactly("GK", "LK");
+        }
+
+        @Test
+        void loadsCanonicalMusicAsChildCurriculum() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape music = landscapeService.getById(CANONICAL_MUSIC_ID);
+
+                assertThat(music).isNotNull();
+                assertThat(music.getTitle()).isEqualTo("Musik (Gymnasium, DE)");
+                assertThat(music.getGoals()).isNotEmpty();
+                assertThat(music.getGoals())
+                                .extracting(LearningGoal::getTitle)
+                                .contains(
+                                                "Warum Musik? - Relevanz und Orientierung",
+                                                "E-Phase Musik",
+                                                "Q2 Musik",
+                                                "Q4 Musik",
+                                                "Abiturprüfung Musik (GK)",
+                                                "Abiturprüfung Musik (LK)");
+                assertThat(music.getFilters())
                                 .extracting(LandscapeFilter::getId)
                                 .containsExactly("GK", "LK");
         }

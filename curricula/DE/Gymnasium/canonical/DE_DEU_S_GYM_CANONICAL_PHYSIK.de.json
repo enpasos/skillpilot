@@ -8,8 +8,8 @@
   "frameworkId": "canonical-gymnasium-physics",
   "title": "Physik (Gymnasium, DE)",
   "titleEn": "Physics (Gymnasium, DE)",
-  "description": "Physik für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig und behält die bereits aufgebauten fachübergreifenden Mathematik-Voraussetzungen im Mechanikbereich.",
-  "descriptionEn": "Physics for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum and keeps the already established cross-subject mathematics prerequisites in the mechanics domain.",
+  "description": "Physik für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig, behält die bereits aufgebauten fachübergreifenden Mathematik-Voraussetzungen im Mechanikbereich und verankert erste mechanische Grundlagen aus der hessischen Sekundarstufe I.",
+  "descriptionEn": "Physics for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum, keeps the already established cross-subject mathematics prerequisites in the mechanics domain, and anchors first mechanics foundations from Hessian lower secondary.",
   "filters": [
     {
       "id": "GK",
@@ -25,8 +25,8 @@
       "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
       "title": "Physik",
       "titleEn": "Physics",
-      "description": "Gemeinsame Wurzel für Physik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und behält die bereits eingeführten expliziten Mathematik-Voraussetzungen im Mechanik-Korridor.",
-      "descriptionEn": "Shared root for physics at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and keeps the already introduced explicit mathematics prerequisites in the mechanics corridor.",
+      "description": "Gemeinsame Wurzel für Physik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig, behält die bereits eingeführten expliziten Mathematik-Voraussetzungen im Mechanik-Korridor und verankert erste mechanische Grundlagen aus der hessischen Sekundarstufe I.",
+      "descriptionEn": "Shared root for physics at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum, keeps the already introduced explicit mathematics prerequisites in the mechanics corridor, and anchors first mechanics foundations from Hessian lower secondary.",
       "weight": 1.2,
       "tags": [
         "GK",
@@ -37,6 +37,7 @@
       ],
       "contains": [
         "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+        "9645f0d8-43a3-5f29-873c-daa5ace638db",
         "942de15b-32f1-5713-80e5-e7aeb8749fc4",
         "0735269d-703d-57ab-8861-6f7e1c5e2b8a",
         "fcefb129-ad4c-50a2-9762-a910caa1af16",
@@ -192,6 +193,217 @@
         "phase": "E"
       },
       "shortKey": "canonical_physics_why",
+      "type": "atomic"
+    },
+    {
+      "id": "9645f0d8-43a3-5f29-873c-daa5ace638db",
+      "shortKey": "canonical_physics_sek1_mechanics_cluster",
+      "title": "Mechanische Grundlagen (Sek I)",
+      "titleEn": "Mechanics Foundations (Lower Secondary)",
+      "description": "Brückencluster für die mechanischen Grundlagen aus der gymnasialen Sekundarstufe I: Bewegungsdarstellungen, Kräfte und Trägheit, Reibung sowie grundlegende Energievorstellungen.",
+      "descriptionEn": "Bridge cluster for lower-secondary Gymnasium mechanics foundations: motion representations, forces and inertia, friction, and basic energy ideas.",
+      "weight": 4,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+        "5ea765ac-c279-551a-8a94-a07da2381e5b",
+        "581c0766-b84b-54cb-b8b6-375310329a41",
+        "722857cf-f327-5740-8151-64eb92195ec8"
+      ],
+      "requires": [
+        "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_ENERGIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.MECHANICS"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "22f30637-5c9c-45c9-9c39-fd736ae565fb"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+      "shortKey": "canonical_physics_sek1_motion_diagrams",
+      "title": "Bewegungen mit Weg-Zeit-Diagrammen beschreiben",
+      "titleEn": "Describe motions using distance-time diagrams",
+      "description": "Die lernende Person kann gleichförmige und beschleunigte Bewegungen qualitativ beschreiben und Weg-Zeit-Diagramme fachlich interpretieren.",
+      "descriptionEn": "The learner can qualitatively describe uniform and accelerated motion and interpret distance-time diagrams appropriately.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.MECHANICS.MOTION"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "d95d5a8b-8415-46d2-b8aa-568a7244f7a9"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5ea765ac-c279-551a-8a94-a07da2381e5b",
+      "shortKey": "canonical_physics_sek1_forces_inertia",
+      "title": "Kräfte und Trägheit qualitativ erklären",
+      "titleEn": "Explain forces and inertia qualitatively",
+      "description": "Die lernende Person kann Änderungen von Bewegungszuständen durch Kräfte erklären und Trägheit qualitativ beschreiben.",
+      "descriptionEn": "The learner can explain changes of motion through forces and describe inertia qualitatively.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "ae67bcf1-f3ee-50d6-9a12-25a159dff659"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.MECHANICS.FORCES"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "93241d35-1d4f-4239-9116-87eacb985521"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "581c0766-b84b-54cb-b8b6-375310329a41",
+      "shortKey": "canonical_physics_sek1_friction",
+      "title": "Kräfte und Reibung qualitativ nutzen",
+      "titleEn": "Use forces and friction qualitatively",
+      "description": "Die lernende Person kann Reibungskräfte qualitativ deuten und ihre Rolle bei Fortbewegung und Bewegungsänderungen erklären.",
+      "descriptionEn": "The learner can interpret frictional forces qualitatively and explain their role in locomotion and changes of motion.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "5ea765ac-c279-551a-8a94-a07da2381e5b"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.MECHANICS.FRICTION"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "006d9fe7-ddd9-42c1-9d48-b4b723d033c2"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "722857cf-f327-5740-8151-64eb92195ec8",
+      "shortKey": "canonical_physics_sek1_energy_forms",
+      "title": "Mechanische Energieformen qualitativ unterscheiden",
+      "titleEn": "Distinguish mechanical forms of energy qualitatively",
+      "description": "Die lernende Person kann mechanische Energieformen unterscheiden und einfache Energieumwandlungen qualitativ beschreiben.",
+      "descriptionEn": "The learner can distinguish mechanical forms of energy and describe simple energy transformations qualitatively.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "5ea765ac-c279-551a-8a94-a07da2381e5b"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.MECHANICS.ENERGY"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "3ebf05d1-ddd5-4199-8899-9d2fe34cf484"
+        }
+      },
       "type": "atomic"
     },
     {
@@ -1645,7 +1857,8 @@
       "requires": [
         "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
         "09f47964-2cd0-410e-93ee-9632b582fc91",
-        "a8c42ee9-2898-4247-819f-c235032ac78a"
+        "a8c42ee9-2898-4247-819f-c235032ac78a",
+        "ae67bcf1-f3ee-50d6-9a12-25a159dff659"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -1988,7 +2201,8 @@
       ],
       "contains": [],
       "requires": [
-        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "5ea765ac-c279-551a-8a94-a07da2381e5b"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -2224,7 +2438,8 @@
       "contains": [],
       "requires": [
         "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
-        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca"
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+        "5ea765ac-c279-551a-8a94-a07da2381e5b"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -2299,7 +2514,8 @@
       "requires": [
         "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
         "7eeff2de-6015-49a6-a96e-a488d886dc9f",
-        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+        "722857cf-f327-5740-8151-64eb92195ec8"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",

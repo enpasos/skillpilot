@@ -715,6 +715,86 @@ CHINESE = SubjectConfig(
     framework_id="canonical-gymnasium-chinese",
 )
 
+MUSIC = SubjectConfig(
+    subject_key="music",
+    source_landscape_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MUSIK.de.json",
+    target_landscape_path=REPO_ROOT
+    / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+    mapping_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_music_upper_secondary_to_canonical_music.json",
+    source_landscape_id="a8c23058-6998-49f2-9f3b-a85e951d5ab0",
+    source_landscape_title="Musik Oberstufe (Hessen, KC 2024)",
+    target_landscape_id="f620c251-c1e1-41c1-b4e1-b10950b43608",
+    root_goal_id="25ed77a4-2214-4979-bd00-e88c7db51aa9",
+    root_goal_mode="exact_root",
+    root_title="Musik",
+    root_title_en="Music",
+    root_description=(
+        "Gemeinsame Wurzel für Musik am Gymnasium in Deutschland. "
+        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft "
+        "damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz."
+    ),
+    root_description_en=(
+        "Shared root for music at Gymnasium in Germany. "
+        "The current baseline fully adopts the Hessian upper-secondary curriculum and establishes "
+        "a reliable starting point for later cross-state convergence."
+    ),
+    landscape_title="Musik (Gymnasium, DE)",
+    landscape_title_en="Music (Gymnasium, DE)",
+    landscape_description=(
+        "Musik für das Gymnasium in Deutschland. "
+        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt "
+        "für spätere bundesländerübergreifende Angleichung."
+    ),
+    landscape_description_en=(
+        "Music for Gymnasium in Germany. "
+        "The current baseline fully secures the Hessian upper-secondary curriculum as the starting point "
+        "for later cross-state alignment."
+    ),
+    framework_id="canonical-gymnasium-music",
+)
+
+ECONOMICS = SubjectConfig(
+    subject_key="economics",
+    source_landscape_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_WIRTSCHAFT.de.json",
+    target_landscape_path=REPO_ROOT
+    / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    mapping_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_economics_upper_secondary_to_canonical_economics.json",
+    source_landscape_id="a334a745-1d67-4e1d-86a5-dadc04f144d2",
+    source_landscape_title="Wirtschaftswissenschaften Oberstufe (Hessen, KC 2024)",
+    target_landscape_id="605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    root_goal_id="96183c48-b499-54d7-8530-578f6ff40207",
+    root_goal_mode="exact_root",
+    root_title="Wirtschaftswissenschaften",
+    root_title_en="Economics",
+    root_description=(
+        "Gemeinsame Wurzel für Wirtschaftswissenschaften am Gymnasium in Deutschland. "
+        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft "
+        "damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz."
+    ),
+    root_description_en=(
+        "Shared root for economics at Gymnasium in Germany. "
+        "The current baseline fully adopts the Hessian upper-secondary curriculum and establishes "
+        "a reliable starting point for later cross-state convergence."
+    ),
+    landscape_title="Wirtschaftswissenschaften (Gymnasium, DE)",
+    landscape_title_en="Economics (Gymnasium, DE)",
+    landscape_description=(
+        "Wirtschaftswissenschaften für das Gymnasium in Deutschland. "
+        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt "
+        "für spätere bundesländerübergreifende Angleichung."
+    ),
+    landscape_description_en=(
+        "Economics for Gymnasium in Germany. "
+        "The current baseline fully secures the Hessian upper-secondary curriculum as the starting point "
+        "for later cross-state alignment."
+    ),
+    framework_id="canonical-gymnasium-economics",
+)
+
 
 def bootstrap_target(config: SubjectConfig, legacy: dict[str, Any]) -> dict[str, Any]:
     legacy_root = legacy["goals"][0]
@@ -948,6 +1028,8 @@ def main() -> None:
     spanish_goals, spanish_mappings = adopt_subject(SPANISH)
     greek_goals, greek_mappings = adopt_subject(GREEK)
     chinese_goals, chinese_mappings = adopt_subject(CHINESE)
+    music_goals, music_mappings = adopt_subject(MUSIC)
+    economics_goals, economics_mappings = adopt_subject(ECONOMICS)
     print(
         json.dumps(
             {
@@ -979,6 +1061,10 @@ def main() -> None:
                 "greekMappings": greek_mappings,
                 "chineseGoals": chinese_goals,
                 "chineseMappings": chinese_mappings,
+                "musicGoals": music_goals,
+                "musicMappings": music_mappings,
+                "economicsGoals": economics_goals,
+                "economicsMappings": economics_mappings,
             },
             indent=2,
         )

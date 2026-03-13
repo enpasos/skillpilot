@@ -8,8 +8,8 @@
   "frameworkId": "canonical-gymnasium-biology",
   "title": "Biologie (Gymnasium, DE)",
   "titleEn": "Biology (Gymnasium, DE)",
-  "description": "Biologie für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt für spätere bundesländerübergreifende Angleichung.",
-  "descriptionEn": "Biology for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum as the starting point for later cross-state alignment.",
+  "description": "Biologie für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt für spätere bundesländerübergreifende Angleichung und verankert erste Hessen-Sek-I-Brückenschnitte für biologische Grundvorstellungen, Zellbiologie sowie Fotosynthese und Zellatmung.",
+  "descriptionEn": "Biology for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum as the starting point for later cross-state alignment and anchors first Hessian lower-secondary bridge slices for biological foundations, cell biology, and photosynthesis with cell respiration.",
   "filters": [
     {
       "id": "GK",
@@ -25,8 +25,8 @@
       "id": "e8d54127-d42e-51f5-bfa5-51d826069f95",
       "title": "Biologie",
       "titleEn": "Biology",
-      "description": "Gemeinsame Wurzel für Biologie am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
-      "descriptionEn": "Shared root for biology at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+      "description": "Gemeinsame Wurzel für Biologie am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig, behält sie als belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz und bindet erste biologische Grundvorstellungen, Zellthemen sowie frühe Stoffwechselkonzepte aus der hessischen Sekundarstufe I an.",
+      "descriptionEn": "Shared root for biology at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum, keeps it as a reliable starting point for later cross-state convergence, and attaches first biological foundations, cell topics, and early metabolism concepts from Hessian lower secondary.",
       "weight": 1,
       "tags": [
         "GK",
@@ -37,6 +37,8 @@
       ],
       "contains": [
         "2d451684-6e53-565e-a987-f362da919d2c",
+        "b530a382-2786-5794-8821-3e01a62d88fd",
+        "860c80f9-e463-598b-8ef8-79f65c12f235",
         "78370970-54ec-579e-ab99-d16cce22e27d",
         "3ae95c96-e058-5045-b5e7-a613b8086f8b",
         "d23951c2-4791-5a91-a2de-b72a421a4536",
@@ -93,6 +95,482 @@
       "type": "cluster"
     },
     {
+      "id": "b530a382-2786-5794-8821-3e01a62d88fd",
+      "shortKey": "canonical_biology_sek1_foundations_cluster",
+      "title": "Biologische Grundlagen (Sek I)",
+      "titleEn": "Biology Foundations (Lower Secondary)",
+      "description": "Cluster für Grundvorstellungen zum Leben, erste Zellbeobachtung und den Vergleich pflanzlicher und tierischer Zellen aus der gymnasialen Sekundarstufe I.",
+      "descriptionEn": "Cluster for basic concepts of life, first cell observation, and the comparison of plant and animal cells from lower secondary Gymnasium biology.",
+      "weight": 5,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "8d35381e-d646-512c-b0c2-bb90c4974208",
+        "55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba",
+        "91df35c7-e384-50d6-bb3a-37e74a6086f1",
+        "e0d04e58-1591-5230-bfa6-5c685b56d25b",
+        "b1dff57f-329e-5264-b2b9-2db71a0b2172"
+      ],
+      "requires": [
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-biology",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_STRUKTUR_FUNKTION",
+          "BIO_ENTWICKLUNG"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.BIOLOGY.SEK1.FOUNDATIONS"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
+          "sourceLandscapeTitle": "Biologie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "09ada9f9-7ed6-454c-b1cf-105c3e803ddc"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "8d35381e-d646-512c-b0c2-bb90c4974208",
+      "shortKey": "canonical_biology_sek1_biology_as_science",
+      "title": "Biologie als Wissenschaft vom Leben beschreiben",
+      "titleEn": "Describe biology as the science of life",
+      "description": "Die lernende Person kann das Fach Biologie als Wissenschaft vom Leben beschreiben.",
+      "descriptionEn": "The learner can describe biology as the science of life.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-biology",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_ENTWICKLUNG"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.BIOLOGY.SEK1.BIOLOGY_AS_SCIENCE"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
+          "sourceLandscapeTitle": "Biologie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "9f32781f-c0f1-4124-b06d-47210ae968bf"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba",
+      "shortKey": "canonical_biology_sek1_characteristics_of_life",
+      "title": "Kennzeichen von Lebewesen ordnen",
+      "titleEn": "Organize characteristics of living beings",
+      "description": "Die lernende Person kann grundlegende Kennzeichen von Lebewesen sammeln und ordnen.",
+      "descriptionEn": "The learner can collect and organize fundamental characteristics of living beings.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "8d35381e-d646-512c-b0c2-bb90c4974208"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-biology",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_STRUKTUR_FUNKTION",
+          "BIO_ENTWICKLUNG"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.BIOLOGY.SEK1.CHARACTERISTICS_OF_LIFE"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
+          "sourceLandscapeTitle": "Biologie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "6829bc14-3ac9-4e99-a0ca-b73f2e126d1a"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "91df35c7-e384-50d6-bb3a-37e74a6086f1",
+      "shortKey": "canonical_biology_sek1_microscopy_methods",
+      "title": "Mikroskop sachgerecht nutzen",
+      "titleEn": "Use microscope properly",
+      "description": "Die lernende Person kann ein Mikroskop als Arbeitsgerät bedienen und einfache Präparate herstellen.",
+      "descriptionEn": "The learner can operate a microscope as a tool and prepare simple specimens.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-biology",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_STRUKTUR_FUNKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Zellbiologie",
+        "topicCode": "CANONICAL.BIOLOGY.SEK1.MICROSCOPY"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
+          "sourceLandscapeTitle": "Biologie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "cadd0abb-2f9e-4ab0-bd71-ddf81d719f44"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e0d04e58-1591-5230-bfa6-5c685b56d25b",
+      "shortKey": "canonical_biology_sek1_plant_cell_structure",
+      "title": "Bau der Pflanzenzelle beschreiben",
+      "titleEn": "Describe the structure of the plant cell",
+      "description": "Die lernende Person kann Bestandteile einer Pflanzenzelle benennen und ihre Funktionen erläutern.",
+      "descriptionEn": "The learner can name components of a plant cell and explain their functions.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "91df35c7-e384-50d6-bb3a-37e74a6086f1"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-biology",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_STRUKTUR_FUNKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Zellbiologie",
+        "topicCode": "CANONICAL.BIOLOGY.SEK1.PLANT_CELL"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
+          "sourceLandscapeTitle": "Biologie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "b94ab326-156a-4baa-90e4-cb96df2620b7"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "b1dff57f-329e-5264-b2b9-2db71a0b2172",
+      "shortKey": "canonical_biology_sek1_plant_animal_cell_comparison",
+      "title": "Pflanzen- und Tierzellen vergleichen",
+      "titleEn": "Compare plant and animal cells",
+      "description": "Die lernende Person kann Gemeinsamkeiten und Unterschiede von Pflanzen- und Tierzellen darlegen.",
+      "descriptionEn": "The learner can state similarities and differences between plant and animal cells.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "e0d04e58-1591-5230-bfa6-5c685b56d25b"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-biology",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_STRUKTUR_FUNKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Zellbiologie",
+        "topicCode": "CANONICAL.BIOLOGY.SEK1.CELL_COMPARISON"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
+          "sourceLandscapeTitle": "Biologie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "840b4079-1c5f-4b99-9c19-e603823ae462"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "860c80f9-e463-598b-8ef8-79f65c12f235",
+      "shortKey": "canonical_biology_sek1_photosynthesis_respiration_cluster",
+      "title": "Fotosynthese und Zellatmung (Sek I)",
+      "titleEn": "Photosynthesis and Cell Respiration (Lower Secondary)",
+      "description": "Cluster für erste experimentelle und fachsprachliche Zugänge zu Fotosynthese, ihren Bedingungen und ihrer Bedeutung im Zusammenhang mit Zellatmung aus der gymnasialen Sekundarstufe I.",
+      "descriptionEn": "Cluster for first experimental and disciplinary approaches to photosynthesis, its conditions, and its significance in connection with cell respiration from lower secondary Gymnasium biology.",
+      "weight": 5,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "fc89ed54-1a78-55a9-8e54-751d6d46dad6",
+        "0d96a802-2a8d-5445-a7fa-02387f6b1f2d",
+        "e6f128c8-b38e-5167-9367-77e079a994c3",
+        "576d59e2-397a-5654-b853-7c0c4870fbd3",
+        "8678d0b5-8b74-5b01-8143-91bfea1e4482"
+      ],
+      "requires": [
+        "b530a382-2786-5794-8821-3e01a62d88fd"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-biology",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_STOFF_ENERGIE",
+          "BIO_STRUKTUR_FUNKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.BIOLOGY.SEK1.PHOTOSYNTHESIS_RESPIRATION"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
+          "sourceLandscapeTitle": "Biologie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "29428ad4-de22-4020-ac98-001f9dfc777c"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "fc89ed54-1a78-55a9-8e54-751d6d46dad6",
+      "shortKey": "canonical_biology_sek1_light_dependence",
+      "title": "Lichtabhängigkeit der Fotosynthese nachweisen",
+      "titleEn": "Demonstrate the light dependence of photosynthesis",
+      "description": "Die lernende Person kann den Einfluss von Licht auf die Fotosynthese experimentell nachweisen.",
+      "descriptionEn": "The learner can experimentally demonstrate the influence of light on photosynthesis.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "e0d04e58-1591-5230-bfa6-5c685b56d25b"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-biology",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_STOFF_ENERGIE",
+          "BIO_STRUKTUR_FUNKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.BIOLOGY.SEK1.LIGHT_DEPENDENCE"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
+          "sourceLandscapeTitle": "Biologie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "d8d8a5ca-e4de-44cc-a714-f31a520a9bf1"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "0d96a802-2a8d-5445-a7fa-02387f6b1f2d",
+      "shortKey": "canonical_biology_sek1_carbon_dioxide_water",
+      "title": "Kohlenstoffdioxid und Wasser als Voraussetzungen zeigen",
+      "titleEn": "Show carbon dioxide and water as prerequisites",
+      "description": "Die lernende Person kann den Bedarf von Kohlenstoffdioxid und Wasser für die Fotosynthese experimentell zeigen.",
+      "descriptionEn": "The learner can experimentally show the need for carbon dioxide and water for photosynthesis.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "fc89ed54-1a78-55a9-8e54-751d6d46dad6"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-biology",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_STOFF_ENERGIE",
+          "BIO_STRUKTUR_FUNKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.BIOLOGY.SEK1.CARBON_DIOXIDE_WATER"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
+          "sourceLandscapeTitle": "Biologie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "abfbab52-5799-4b46-b4e8-3e4d8ec8d905"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e6f128c8-b38e-5167-9367-77e079a994c3",
+      "shortKey": "canonical_biology_sek1_starch_oxygen_detection",
+      "title": "Stärkeproduktion und Sauerstoffentwicklung nachweisen",
+      "titleEn": "Detect starch production and oxygen evolution",
+      "description": "Die lernende Person kann Stärkeproduktion und Sauerstoffentwicklung als Ergebnisse der Fotosynthese nachweisen.",
+      "descriptionEn": "The learner can detect starch production and oxygen evolution as results of photosynthesis.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "0d96a802-2a8d-5445-a7fa-02387f6b1f2d"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-biology",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_STOFF_ENERGIE",
+          "BIO_STRUKTUR_FUNKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.BIOLOGY.SEK1.STARCH_OXYGEN"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
+          "sourceLandscapeTitle": "Biologie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "f9d964a4-b715-4bbe-b41c-33a4300b8b48"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "576d59e2-397a-5654-b853-7c0c4870fbd3",
+      "shortKey": "canonical_biology_sek1_photosynthesis_word_equation",
+      "title": "Wortgleichung der Fotosynthese angeben und deuten",
+      "titleEn": "State and interpret the word equation of photosynthesis",
+      "description": "Die lernende Person kann die Wortgleichung der Fotosynthese angeben und inhaltlich deuten.",
+      "descriptionEn": "The learner can state the word equation of photosynthesis and interpret it conceptually.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "e6f128c8-b38e-5167-9367-77e079a994c3"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-biology",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_STOFF_ENERGIE",
+          "BIO_STRUKTUR_FUNKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.BIOLOGY.SEK1.PHOTOSYNTHESIS_WORD_EQUATION"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
+          "sourceLandscapeTitle": "Biologie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "e639c5a6-b114-4467-a466-f8e2fde6ac66"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8678d0b5-8b74-5b01-8143-91bfea1e4482",
+      "shortKey": "canonical_biology_sek1_importance_photosynthesis_respiration",
+      "title": "Bedeutung von Fotosynthese und Zellatmung erklären",
+      "titleEn": "Explain the importance of photosynthesis and cell respiration",
+      "description": "Die lernende Person kann die Bedeutung der Fotosynthese für Wachstum, Ernährung und Sauerstoffversorgung erklären und sie mit Zellatmung in Beziehung setzen.",
+      "descriptionEn": "The learner can explain the importance of photosynthesis for growth, nutrition, and oxygen supply and relate it to cell respiration.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "576d59e2-397a-5654-b853-7c0c4870fbd3"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-biology",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_STOFF_ENERGIE",
+          "BIO_STRUKTUR_FUNKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.BIOLOGY.SEK1.IMPORTANCE_PHOTOSYNTHESIS_RESPIRATION"
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
+          "sourceLandscapeTitle": "Biologie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "4ad0ecd3-7f20-400e-a12e-aeda5145541c"
+        }
+      },
+      "type": "atomic"
+    },
+    {
       "id": "78370970-54ec-579e-ab99-d16cce22e27d",
       "title": "Einführungsphase Zellbiologie",
       "titleEn": "Introductory Phase Cell Biology",
@@ -111,7 +589,8 @@
         "05712fc7-e1b5-5ee4-b09e-47d2045e24f1"
       ],
       "requires": [
-        "2d451684-6e53-565e-a987-f362da919d2c"
+        "2d451684-6e53-565e-a987-f362da919d2c",
+        "b530a382-2786-5794-8821-3e01a62d88fd"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-biology",
@@ -222,7 +701,9 @@
       ],
       "contains": [],
       "requires": [
-        "2d451684-6e53-565e-a987-f362da919d2c"
+        "2d451684-6e53-565e-a987-f362da919d2c",
+        "8d35381e-d646-512c-b0c2-bb90c4974208",
+        "55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-biology",
@@ -257,7 +738,8 @@
       ],
       "contains": [],
       "requires": [
-        "2d451684-6e53-565e-a987-f362da919d2c"
+        "2d451684-6e53-565e-a987-f362da919d2c",
+        "b1dff57f-329e-5264-b2b9-2db71a0b2172"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-biology",
@@ -292,7 +774,8 @@
       ],
       "contains": [],
       "requires": [
-        "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f"
+        "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f",
+        "e0d04e58-1591-5230-bfa6-5c685b56d25b"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-biology",
@@ -2234,7 +2717,9 @@
         "9f074006-74e8-5f09-884d-038bd9b4f0ec",
         "3cb5f199-3c9a-5f01-a4ba-373bdef0112e"
       ],
-      "requires": [],
+      "requires": [
+        "860c80f9-e463-598b-8ef8-79f65c12f235"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-biology",
         "demandLevel": "AB2",
@@ -2267,7 +2752,8 @@
       ],
       "contains": [],
       "requires": [
-        "0dbe758c-73c8-530b-bbbd-fb55540f942f"
+        "0dbe758c-73c8-530b-bbbd-fb55540f942f",
+        "576d59e2-397a-5654-b853-7c0c4870fbd3"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-biology",
@@ -2301,7 +2787,8 @@
       ],
       "contains": [],
       "requires": [
-        "32f47903-0788-5c27-ac88-7464f481f2f7"
+        "32f47903-0788-5c27-ac88-7464f481f2f7",
+        "8678d0b5-8b74-5b01-8143-91bfea1e4482"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-biology",

@@ -126,7 +126,10 @@ Current operational baseline:
 - the DE-level Spanish landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
 - the DE-level Greek landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
 - the DE-level Chinese landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
-- a first backend learner-cutover path from frozen Hessen upper-secondary Math/Physics/Chemistry/Biology/Informatics/History/German/Politics-and-Economics/English/French/Latin/Spanish/Greek/Chinese views into the DE-level `Gymnasium (DE)` root is available
+- the DE-level Music landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
+- the DE-level Economics landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
+- with Music added, every currently modeled Hessen Gymnasiale-Oberstufe subject landscape now has a DE-level adopted counterpart below `Gymnasium (DE)`
+- a first backend learner-cutover path from frozen Hessen upper-secondary Math/Physics/Chemistry/Biology/Informatics/History/German/Politics-and-Economics/English/French/Latin/Spanish/Greek/Chinese/Music/Economics views into the DE-level `Gymnasium (DE)` root is available
 - cutover now stabilizes curriculum selection, root/subject filters, first-response planned-scope normalization, and canonical continuation with preserved legacy mastery history
 - the cutover HTTP contract now also covers the frozen Hessen overview case with combined Mathematics/Physics selection and the direct Chemistry cutover case with canonical planned-scope continuation
 - the learner cockpit now exposes a first explicit UI migration path from frozen Hessen upper-secondary views into `Gymnasium (DE)` and switches the frontend landscape context after successful cutover
@@ -140,6 +143,9 @@ Current operational baseline:
 - the canonical Physics motion corridor is `cutover_ready`
 - the canonical Physics E.2 mechanics corridor is `cutover_ready`
 - the canonical Physics E.3 horizontal-projection slice is `cutover_ready`
+- the first Hessen Sek I physics mechanics bridge is `subtree_adopted`
+- the first Hessen Sek I chemistry foundations bridge is `subtree_adopted`
+- the first Hessen Sek I biology foundations/cell plus photosynthesis-respiration bridge is `subtree_adopted`
 - the canonical Chemistry Hessen baseline is `subtree_adopted`
 - the canonical Biology Hessen baseline is `subtree_adopted`
 - the canonical Informatics Hessen baseline is `subtree_adopted`
@@ -152,6 +158,8 @@ Current operational baseline:
 - the canonical Spanish Hessen baseline is `subtree_adopted`
 - the canonical Greek Hessen baseline is `subtree_adopted`
 - the canonical Chinese Hessen baseline is `subtree_adopted`
+- the canonical Music Hessen baseline is `subtree_adopted`
+- the canonical Economics Hessen baseline is `subtree_adopted`
 - no subtree has reached `legacy_view_retained` yet
 
 ## Work packages
@@ -385,6 +393,26 @@ WP6 progress so far:
 - canonical seed now references both Hessen upper-secondary and Hessen Sek I source material
 - explicit second mapping file added for Hessen Sek I -> canonical pilot
 - no API/GPT contract changes were required for this content expansion
+- first Hessen Sek I physics bridge slice added to the canonical DE physics landscape:
+  - new canonical mechanics bridge cluster under DE physics
+  - exact mappings for motion diagrams, forces/inertia, friction, and qualitative mechanical energy
+  - selected upper-secondary physics goals now explicitly depend on these adopted Sek-I mechanics anchors
+  - mastery projection and frontier unlocking are covered by targeted backend tests
+- first Hessen Sek I chemistry bridge slice added to the canonical DE chemistry landscape:
+  - new canonical foundations cluster for working methods, substances, states, solutions, and first acid-base distinctions
+  - exact mappings for the adopted J8 chemistry atoms plus partial scope anchors from Hessen J8/8.1
+  - selected E-phase protolysis goals now explicitly depend on these adopted Sek-I chemistry anchors
+  - mastery projection, planned-goal projection, and frontier unlocking are covered by targeted backend tests
+- first Hessen Sek I biology bridge slice added to the canonical DE biology landscape:
+  - new canonical foundations-and-cells cluster for biology-as-science, characteristics of life, microscopy, plant cells, and plant/animal cell comparison
+  - exact mappings for the adopted Sek-I biology atoms plus partial scope anchors from Hessen introductory biology and cells clusters
+  - selected E-phase cell-biology goals now explicitly depend on these adopted Sek-I biology anchors
+  - mastery projection, planned-goal projection, and frontier unlocking are covered by targeted backend tests
+- Hessen Sek I biology bridge widened in the same canonical DE biology landscape:
+  - new canonical photosynthesis-and-respiration cluster for light dependence, carbon dioxide/water, starch/oxygen detection, the word equation, and the first significance bridge toward cell respiration
+  - exact mappings for the adopted Hessen 7.2 metabolism atoms plus a partial scope anchor from the Hessen 7.2 cluster
+  - selected Q3 metabolism goals now explicitly depend on these adopted Sek-I biology anchors
+  - mastery projection, planned-goal projection, and Q3 frontier unlocking are covered by targeted backend tests
 
 ## WP7. Bavaria math mapping
 

@@ -43,6 +43,8 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String BAYERN_MATH_LANDSCAPE_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
     private static final String CANONICAL_MATH_PILOT_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_MATH_ROOT_ID = "c01b1ce9-a667-4a46-b251-ec33ae602b15";
+    private static final String CANONICAL_CHEMISTRY_ID = "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0";
+    private static final String CANONICAL_BIOLOGY_ID = "08a43a1b-d97e-522c-9dfa-c950a493364e";
     private static final String CANONICAL_MATH_GK_PERSONAL_CONFIG = """
             {
               "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
@@ -59,6 +61,27 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String LEGACY_ANALYSIS_CLUSTER_ID = "a6ee6304-8c26-4eda-b56e-676655e703c2";
     private static final String CANONICAL_ANALYSIS_CLUSTER_ID = "a668ea17-9226-4074-8f8e-051acbe839eb";
     private static final String LEGACY_FUNCTION_CONCEPT_ID = "0903db01-4377-4a79-8f29-aceffea68f24";
+    private static final String LEGACY_SEK1_CHEMISTRY_CLUSTER_ID = "8feb6b0f-d39c-4daf-9a13-9cb00413ff55";
+    private static final String LEGACY_SEK1_CHEMISTRY_WHY_ID = "88c81951-4fbe-5e68-96b1-f5e9834e9c9d";
+    private static final String LEGACY_SEK1_CHEMISTRY_WORKING_METHODS_ID = "8476c11a-9c9a-4d4c-b1eb-9977d9fe4558";
+    private static final String LEGACY_SEK1_CHEMISTRY_SUBSTANCES_ID = "465935ab-3813-40a5-b1d8-51aa8fa0c6ec";
+    private static final String LEGACY_SEK1_CHEMISTRY_STATES_ID = "6e9590a8-b99c-4808-aa30-184337053fbd";
+    private static final String LEGACY_SEK1_CHEMISTRY_SOLUTIONS_ID = "745306f5-5d03-4cfd-bca8-5cb0c63d828c";
+    private static final String LEGACY_SEK1_CHEMISTRY_ACID_BASE_ID = "0bfc34bc-9a17-4e86-ac62-b2bf4b967a43";
+    private static final String LEGACY_SEK1_BIOLOGY_CLUSTER_ID = "09ada9f9-7ed6-454c-b1cf-105c3e803ddc";
+    private static final String LEGACY_SEK1_BIOLOGY_WHY_ID = "93ce5d67-4d9b-5579-a695-38158b93df92";
+    private static final String LEGACY_SEK1_BIOLOGY_SCIENCE_ID = "9f32781f-c0f1-4124-b06d-47210ae968bf";
+    private static final String LEGACY_SEK1_BIOLOGY_CHARACTERISTICS_ID = "6829bc14-3ac9-4e99-a0ca-b73f2e126d1a";
+    private static final String LEGACY_SEK1_BIOLOGY_CELL_CLUSTER_ID = "bce76162-9595-45b4-8508-29774c6445aa";
+    private static final String LEGACY_SEK1_BIOLOGY_MICROSCOPE_ID = "cadd0abb-2f9e-4ab0-bd71-ddf81d719f44";
+    private static final String LEGACY_SEK1_BIOLOGY_PLANT_CELL_ID = "b94ab326-156a-4baa-90e4-cb96df2620b7";
+    private static final String LEGACY_SEK1_BIOLOGY_CELL_COMPARE_ID = "840b4079-1c5f-4b99-9c19-e603823ae462";
+    private static final String LEGACY_SEK1_BIOLOGY_PHOTOSYNTHESIS_CLUSTER_ID = "29428ad4-de22-4020-ac98-001f9dfc777c";
+    private static final String LEGACY_SEK1_BIOLOGY_LIGHT_ID = "d8d8a5ca-e4de-44cc-a714-f31a520a9bf1";
+    private static final String LEGACY_SEK1_BIOLOGY_CO2_WATER_ID = "abfbab52-5799-4b46-b4e8-3e4d8ec8d905";
+    private static final String LEGACY_SEK1_BIOLOGY_STARCH_OXYGEN_ID = "f9d964a4-b715-4bbe-b41c-33a4300b8b48";
+    private static final String LEGACY_SEK1_BIOLOGY_WORD_EQUATION_ID = "e639c5a6-b114-4467-a466-f8e2fde6ac66";
+    private static final String LEGACY_SEK1_BIOLOGY_IMPORTANCE_ID = "4ad0ecd3-7f20-400e-a12e-aeda5145541c";
     private static final String LEGACY_BAYERN_FUNCTION_CLUSTER_ID = "f9538605-8bf4-5279-b00a-c18786f9cc51";
     private static final String LEGACY_BAYERN_FUNCTION_CONCEPT_ID = "0042dc1e-859b-5c95-95a4-48aeff1bae63";
     private static final String LEGACY_BAYERN_LINEAR_ANALYSIS_ID = "edd3e6df-7f3d-5230-9377-dcf9d095c49c";
@@ -71,6 +94,30 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String CANONICAL_CALCULATE_VALUES_ID = "c65ecabf-d00b-4e2d-99ae-b64692325ffb";
     private static final String CANONICAL_READ_VALUES_ID = "a8c42ee9-2898-4247-819f-c235032ac78a";
     private static final String CANONICAL_SYMMETRY_ID = "d8c9eb57-1614-4c1d-829a-618134def352";
+    private static final String CANONICAL_CHEMISTRY_SEK1_CLUSTER_ID = "3588c15e-adbe-5b81-b3a7-10da20574e3d";
+    private static final String CANONICAL_CHEMISTRY_SEK1_SOLUTIONS_ID = "53fd1bfd-facb-54ae-b2dc-f667ed1414fc";
+    private static final String CANONICAL_CHEMISTRY_SEK1_ACID_BASE_ID = "d2ccd1d5-56f7-583f-9724-e97441367f91";
+    private static final String CANONICAL_CHEMISTRY_E2_CLUSTER_ID = "f97b9c87-16d0-58fd-bcb2-c51574aa36d0";
+    private static final String CANONICAL_CHEMISTRY_WHY_ID = "a9c22adc-b543-5b0c-a2d8-3189facdff08";
+    private static final String CANONICAL_CHEMISTRY_ARRHENIUS_ID = "28bb9d15-f865-5843-a035-6066580fea64";
+    private static final String CANONICAL_CHEMISTRY_PH_ID = "f1ed86f0-534d-57d7-8952-a004a331cc54";
+    private static final String CANONICAL_BIOLOGY_SEK1_CLUSTER_ID = "b530a382-2786-5794-8821-3e01a62d88fd";
+    private static final String CANONICAL_BIOLOGY_SEK1_SCIENCE_ID = "8d35381e-d646-512c-b0c2-bb90c4974208";
+    private static final String CANONICAL_BIOLOGY_SEK1_CHARACTERISTICS_ID = "55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba";
+    private static final String CANONICAL_BIOLOGY_SEK1_PLANT_CELL_ID = "e0d04e58-1591-5230-bfa6-5c685b56d25b";
+    private static final String CANONICAL_BIOLOGY_SEK1_CELL_COMPARE_ID = "b1dff57f-329e-5264-b2b9-2db71a0b2172";
+    private static final String CANONICAL_BIOLOGY_SEK1_PHOTOSYNTHESIS_CLUSTER_ID = "860c80f9-e463-598b-8ef8-79f65c12f235";
+    private static final String CANONICAL_BIOLOGY_SEK1_WORD_EQUATION_ID = "576d59e2-397a-5654-b853-7c0c4870fbd3";
+    private static final String CANONICAL_BIOLOGY_SEK1_IMPORTANCE_ID = "8678d0b5-8b74-5b01-8143-91bfea1e4482";
+    private static final String CANONICAL_BIOLOGY_E1_CLUSTER_ID = "765df889-5828-564a-ab47-c10312c956f4";
+    private static final String CANONICAL_BIOLOGY_WHY_ID = "2d451684-6e53-565e-a987-f362da919d2c";
+    private static final String CANONICAL_BIOLOGY_LIFE_ID = "11e90f71-a9a4-5a57-b619-ad5d81e81f96";
+    private static final String CANONICAL_BIOLOGY_CELL_TYPES_ID = "7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f";
+    private static final String CANONICAL_BIOLOGY_ORGANELLES_ID = "fc8c4b02-02f2-5ad6-b481-224d36121da1";
+    private static final String CANONICAL_BIOLOGY_Q3_METABOLISM_CLUSTER_ID = "c7f2fc89-543d-5ad1-9875-d6fcedf0d1fb";
+    private static final String CANONICAL_BIOLOGY_PHOTOSYNTHESIS_MODEL_ID = "32f47903-0788-5c27-ac88-7464f481f2f7";
+    private static final String CANONICAL_BIOLOGY_CELL_RESPIRATION_ID = "135447a0-5d55-564a-afc3-3e3fbed77819";
+    private static final String CANONICAL_BIOLOGY_ENZYME_CATALYSIS_ID = "0dbe758c-73c8-530b-bbbd-fb55540f942f";
 
     private static ObjectMapper objectMapper;
     private static LandscapeService landscapeService;
@@ -195,6 +242,50 @@ class LearnerServiceCanonicalProjectionTest {
     }
 
     @Test
+    void getMasteryProjectsExactSek1ChemistryMasteryIntoCanonicalChemistryGoals() {
+        learner.setSelectedCurriculum(CANONICAL_CHEMISTRY_ID);
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_SOLUTIONS_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_ACID_BASE_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_CHEMISTRY_SEK1_SOLUTIONS_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_CHEMISTRY_SEK1_ACID_BASE_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactSek1BiologyMasteryIntoCanonicalBiologyGoals() {
+        learner.setSelectedCurriculum(CANONICAL_BIOLOGY_ID);
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_BIOLOGY_SCIENCE_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_BIOLOGY_CHARACTERISTICS_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_BIOLOGY_CELL_COMPARE_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_BIOLOGY_SEK1_SCIENCE_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_BIOLOGY_SEK1_CHARACTERISTICS_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_BIOLOGY_SEK1_CELL_COMPARE_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactSek1BiologyPhotosynthesisMasteryIntoCanonicalBiologyGoals() {
+        learner.setSelectedCurriculum(CANONICAL_BIOLOGY_ID);
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_BIOLOGY_WORD_EQUATION_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_BIOLOGY_IMPORTANCE_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_BIOLOGY_SEK1_WORD_EQUATION_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_BIOLOGY_SEK1_IMPORTANCE_ID, 1.0);
+    }
+
+    @Test
     void canonicalPilotFrontierUsesProjectedLegacyMastery() {
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new Mastery(learner, LEGACY_FUNCTION_CONCEPT_ID, 1.0)));
@@ -205,6 +296,76 @@ class LearnerServiceCanonicalProjectionTest {
                 .extracting(FrontierGoal::id)
                 .contains(CANONICAL_CALCULATE_VALUES_ID, CANONICAL_READ_VALUES_ID, CANONICAL_SYMMETRY_ID)
                 .doesNotContain(CANONICAL_FUNCTION_CONCEPT_ID);
+    }
+
+    @Test
+    void canonicalChemistryFrontierUsesProjectedSek1ChemistryMastery() {
+        learner.setSelectedCurriculum(CANONICAL_CHEMISTRY_ID);
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_CHEMISTRY_E2_CLUSTER_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_WHY_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_WORKING_METHODS_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_SUBSTANCES_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_STATES_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_SOLUTIONS_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_ACID_BASE_ID, 1.0)));
+
+        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_CHEMISTRY_ARRHENIUS_ID)
+                .doesNotContain(CANONICAL_CHEMISTRY_WHY_ID, CANONICAL_CHEMISTRY_PH_ID, LEGACY_SEK1_CHEMISTRY_ACID_BASE_ID);
+    }
+
+    @Test
+    void canonicalBiologyFrontierUsesProjectedSek1BiologyMastery() {
+        learner.setSelectedCurriculum(CANONICAL_BIOLOGY_ID);
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_BIOLOGY_E1_CLUSTER_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_BIOLOGY_WHY_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_BIOLOGY_SCIENCE_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_BIOLOGY_CHARACTERISTICS_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_BIOLOGY_MICROSCOPE_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_BIOLOGY_PLANT_CELL_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_BIOLOGY_CELL_COMPARE_ID, 1.0)));
+
+        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_BIOLOGY_LIFE_ID, CANONICAL_BIOLOGY_CELL_TYPES_ID)
+                .doesNotContain(CANONICAL_BIOLOGY_WHY_ID, CANONICAL_BIOLOGY_ORGANELLES_ID, LEGACY_SEK1_BIOLOGY_CELL_COMPARE_ID);
+    }
+
+    @Test
+    void canonicalBiologyQ3FrontierUsesProjectedSek1PhotosynthesisMastery() {
+        learner.setSelectedCurriculum(CANONICAL_BIOLOGY_ID);
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_BIOLOGY_Q3_METABOLISM_CLUSTER_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, CANONICAL_BIOLOGY_ENZYME_CATALYSIS_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_BIOLOGY_LIGHT_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_BIOLOGY_CO2_WATER_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_BIOLOGY_STARCH_OXYGEN_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_BIOLOGY_WORD_EQUATION_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_BIOLOGY_IMPORTANCE_ID, 1.0)));
+
+        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_BIOLOGY_PHOTOSYNTHESIS_MODEL_ID)
+                .doesNotContain(
+                        CANONICAL_BIOLOGY_SEK1_WORD_EQUATION_ID,
+                        CANONICAL_BIOLOGY_SEK1_IMPORTANCE_ID,
+                        CANONICAL_BIOLOGY_CELL_RESPIRATION_ID,
+                        LEGACY_SEK1_BIOLOGY_IMPORTANCE_ID);
     }
 
     @Test
@@ -274,6 +435,39 @@ class LearnerServiceCanonicalProjectionTest {
         List<String> plannedGoals = learnerService.getPlannedGoals(LEARNER_ID);
 
         assertThat(plannedGoals).containsExactly(CANONICAL_QUADRATIC_VERTEX_ID);
+    }
+
+    @Test
+    void getPlannedGoalsProjectsLegacySek1ChemistryClusterForCanonicalView() {
+        learner.setSelectedCurriculum(CANONICAL_CHEMISTRY_ID);
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, LEGACY_SEK1_CHEMISTRY_CLUSTER_ID)));
+
+        List<String> plannedGoals = learnerService.getPlannedGoals(LEARNER_ID);
+
+        assertThat(plannedGoals).containsExactly(CANONICAL_CHEMISTRY_SEK1_CLUSTER_ID);
+    }
+
+    @Test
+    void getPlannedGoalsProjectsLegacySek1BiologyClusterForCanonicalView() {
+        learner.setSelectedCurriculum(CANONICAL_BIOLOGY_ID);
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, LEGACY_SEK1_BIOLOGY_CLUSTER_ID)));
+
+        List<String> plannedGoals = learnerService.getPlannedGoals(LEARNER_ID);
+
+        assertThat(plannedGoals).containsExactly(CANONICAL_BIOLOGY_SEK1_CLUSTER_ID);
+    }
+
+    @Test
+    void getPlannedGoalsProjectsLegacySek1BiologyPhotosynthesisClusterForCanonicalView() {
+        learner.setSelectedCurriculum(CANONICAL_BIOLOGY_ID);
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, LEGACY_SEK1_BIOLOGY_PHOTOSYNTHESIS_CLUSTER_ID)));
+
+        List<String> plannedGoals = learnerService.getPlannedGoals(LEARNER_ID);
+
+        assertThat(plannedGoals).containsExactly(CANONICAL_BIOLOGY_SEK1_PHOTOSYNTHESIS_CLUSTER_ID);
     }
 
     @Test

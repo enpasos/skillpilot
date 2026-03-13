@@ -152,6 +152,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     '936efc61-a4d5-49fd-8694-085d1347db80',
     'c7209caa-18e5-4dd8-b68f-dd86e228d045',
     '7651cbe2-5fb8-464d-b0c4-3e830cda41dd',
+    'a8c23058-6998-49f2-9f3b-a85e951d5ab0',
+    'a334a745-1d67-4e1d-86a5-dadc04f144d2',
   ])
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [forcedExpandedIds, setForcedExpandedIds] = useState<Set<string>>(new Set())
@@ -667,6 +669,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     let spanishSelected = selectedCurriculum === '936efc61-a4d5-49fd-8694-085d1347db80'
     let greekSelected = selectedCurriculum === 'c7209caa-18e5-4dd8-b68f-dd86e228d045'
     let chineseSelected = selectedCurriculum === '7651cbe2-5fb8-464d-b0c4-3e830cda41dd'
+    let musicSelected = selectedCurriculum === 'a8c23058-6998-49f2-9f3b-a85e951d5ab0'
+    let economicsSelected = selectedCurriculum === 'a334a745-1d67-4e1d-86a5-dadc04f144d2'
 
     if (selectedCurriculum === 'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da') {
       mathSelected = personalConfig['2796fc7b-ba9d-446f-8f26-711dd6d8a9a3']?.selected === true
@@ -683,7 +687,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       spanishSelected = personalConfig['936efc61-a4d5-49fd-8694-085d1347db80']?.selected === true
       greekSelected = personalConfig['c7209caa-18e5-4dd8-b68f-dd86e228d045']?.selected === true
       chineseSelected = personalConfig['7651cbe2-5fb8-464d-b0c4-3e830cda41dd']?.selected === true
-      if (!mathSelected && !physicsSelected && !chemistrySelected && !biologySelected && !informaticsSelected && !historySelected && !germanSelected && !politicsEconomicsSelected && !englishSelected && !frenchSelected && !latinSelected && !spanishSelected && !greekSelected && !chineseSelected) {
+      musicSelected = personalConfig['a8c23058-6998-49f2-9f3b-a85e951d5ab0']?.selected === true
+      economicsSelected = personalConfig['a334a745-1d67-4e1d-86a5-dadc04f144d2']?.selected === true
+      if (!mathSelected && !physicsSelected && !chemistrySelected && !biologySelected && !informaticsSelected && !historySelected && !germanSelected && !politicsEconomicsSelected && !englishSelected && !frenchSelected && !latinSelected && !spanishSelected && !greekSelected && !chineseSelected && !musicSelected && !economicsSelected) {
         mathSelected = true
         physicsSelected = true
         chemistrySelected = true
@@ -698,6 +704,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         spanishSelected = true
         greekSelected = true
         chineseSelected = true
+        musicSelected = true
+        economicsSelected = true
       }
     }
 
@@ -705,7 +713,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (physicsSelected) {
       mathSelected = true
     }
-    if (!mathSelected && !physicsSelected && !chemistrySelected && !biologySelected && !informaticsSelected && !historySelected && !germanSelected && !politicsEconomicsSelected && !englishSelected && !frenchSelected && !latinSelected && !spanishSelected && !greekSelected && !chineseSelected) {
+    if (!mathSelected && !physicsSelected && !chemistrySelected && !biologySelected && !informaticsSelected && !historySelected && !germanSelected && !politicsEconomicsSelected && !englishSelected && !frenchSelected && !latinSelected && !spanishSelected && !greekSelected && !chineseSelected && !musicSelected && !economicsSelected) {
       mathSelected = true
       chemistrySelected = true
       biologySelected = true
@@ -719,6 +727,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       spanishSelected = true
       greekSelected = true
       chineseSelected = true
+      musicSelected = true
+      economicsSelected = true
     }
 
     const items: Array<{ label: string; value: string }> = [
@@ -822,6 +832,20 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       items.push({
         label: 'Chinesisch',
         value: inferCourseFilter('7651cbe2-5fb8-464d-b0c4-3e830cda41dd'),
+      })
+    }
+
+    if (musicSelected) {
+      items.push({
+        label: 'Musik',
+        value: inferCourseFilter('a8c23058-6998-49f2-9f3b-a85e951d5ab0'),
+      })
+    }
+
+    if (economicsSelected) {
+      items.push({
+        label: 'Wirtschaftswissenschaften',
+        value: inferCourseFilter('a334a745-1d67-4e1d-86a5-dadc04f144d2'),
       })
     }
 
@@ -1889,7 +1913,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         initialStrictMode={learnerData?.strictMode}
         onPreferencesChange={handlePreferencesChange}
         migrationTitle={canCutoverLegacyHessenGymnasium ? 'Auf Gymnasium (DE) umstellen' : undefined}
-        migrationDescription={canCutoverLegacyHessenGymnasium ? 'Dein bisheriger Hessen-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie, Biologie, Informatik, Geschichte, Deutsch, Politik und Wirtschaft, Englisch, Französisch, Latein, Spanisch, Griechisch und Chinesisch laufen danach unter einem gemeinsamen Gymnasium-Root weiter.' : undefined}
+        migrationDescription={canCutoverLegacyHessenGymnasium ? 'Dein bisheriger Hessen-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie, Biologie, Informatik, Geschichte, Deutsch, Politik und Wirtschaft, Englisch, Französisch, Latein, Spanisch, Griechisch, Chinesisch, Musik und Wirtschaftswissenschaften laufen danach unter einem gemeinsamen Gymnasium-Root weiter.' : undefined}
         migrationActionLabel={canCutoverLegacyHessenGymnasium ? 'Jetzt umstellen' : undefined}
         migrationActionPending={isCutoverPending}
         onMigrationAction={canCutoverLegacyHessenGymnasium ? handleCutoverCanonicalGymnasium : undefined}

@@ -5,6 +5,7 @@ import com.skillpilot.backend.api.ChampionRegistrationResponse;
 import com.skillpilot.backend.api.CurriculaSnapshot;
 import com.skillpilot.backend.api.CurriculumChampionProfile;
 import com.skillpilot.backend.api.CurriculumOverview;
+import com.skillpilot.backend.api.MasteryEntryDTO;
 import com.skillpilot.backend.api.TopicSummary;
 import com.skillpilot.backend.domain.CurriculumChampion;
 import com.skillpilot.backend.domain.Mastery;
@@ -395,9 +396,6 @@ public class CurriculaService {
         if (skillpilotId == null || skillpilotId.isBlank()) {
             return 0;
         }
-        List<Mastery> masteryEntries = masteryCache.computeIfAbsent(
-                skillpilotId,
-                id -> masteryRepository.findByLearner_SkillpilotId(id));
 
         if (topicId != null && !topicId.isBlank()) {
             Set<String> atomicIds = collectAtomicGoalIds(topicId);
@@ -418,45 +416,39 @@ public class CurriculaService {
             if (atomicIds.isEmpty()) {
                 return 0;
             }
-            long count = 0;
-            for (Mastery mastery : masteryEntries) {
-                if (mastery.getValue() < MASTERY_THRESHOLD) {
-                    continue;
-                }
-                String goalKey = normalize(mastery.getGoalKey()).toLowerCase();
-                if (atomicIds.contains(goalKey) || atomicIds.contains(mastery.getGoalKey())) {
-                    count++;
-                }
-            }
-            // Add SRS/flashcard mastery count (these goals have dynamic mastery not stored
-            // in DB)
-            long srsMastery = learnerService.countSrsMastery(skillpilotId, atomicIds);
-            return count + srsMastery;
+            Map<String, MasteryEntryDTO> masteryEntries =
+                    learnerService.getMasteryProjectedToGoalIds(skillpilotId, atomicIds);
+            return countMasteredAtomicIds(atomicIds, masteryEntries);
         }
 
         // Curriculum-wide counting (no topicId)
         if (goalToRoots == null || goalToRoots.isEmpty()) {
             return 0;
         }
-        long count = 0;
-        for (Mastery mastery : masteryEntries) {
-            if (mastery.getValue() < MASTERY_THRESHOLD) {
-                continue;
+        Set<String> atomicIds = new HashSet<>();
+        for (Map.Entry<String, Set<String>> entry : goalToRoots.entrySet()) {
+            if (entry.getValue().contains(curriculumId)) {
+                atomicIds.add(entry.getKey());
             }
-            String goalKey = normalize(mastery.getGoalKey()).toLowerCase();
-            // Try normalized first (canonical), then raw
-            Set<String> roots = goalToRoots.get(goalKey);
-            if (roots == null) {
-                roots = goalToRoots.get(mastery.getGoalKey());
-            }
+        }
+        if (atomicIds.isEmpty()) {
+            return 0;
+        }
+        Map<String, MasteryEntryDTO> masteryEntries = learnerService.getMasteryProjectedToGoalIds(skillpilotId, atomicIds);
+        return countMasteredAtomicIds(atomicIds, masteryEntries);
+    }
 
-            // Fallback: Dynamic linkage check if cache missed
-            if (roots == null || !roots.contains(curriculumId)) {
-                if (isReachable(curriculumId, goalKey)) {
-                    count++;
-                    continue;
-                }
-            } else if (roots.contains(curriculumId)) {
+    private long countMasteredAtomicIds(Set<String> atomicIds, Map<String, MasteryEntryDTO> masteryEntries) {
+        if (atomicIds == null || atomicIds.isEmpty() || masteryEntries == null || masteryEntries.isEmpty()) {
+            return 0;
+        }
+        long count = 0;
+        for (String atomicId : atomicIds) {
+            MasteryEntryDTO entry = masteryEntries.get(atomicId);
+            if (entry == null) {
+                entry = masteryEntries.get(normalize(atomicId).toLowerCase());
+            }
+            if (entry != null && entry.value() >= MASTERY_THRESHOLD) {
                 count++;
             }
         }
