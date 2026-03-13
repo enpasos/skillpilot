@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import copy
 import json
-import unicodedata
 import uuid
 from pathlib import Path
 from typing import Any
@@ -19,42 +18,7 @@ def load_json(path: Path) -> dict[str, Any]:
 
 
 def write_json(path: Path, data: dict[str, Any]) -> None:
-    path.write_text(json.dumps(asciiize(data), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-
-
-def asciiize_text(value: str) -> str:
-    replacements = {
-        "ä": "ae",
-        "Ä": "Ae",
-        "ö": "oe",
-        "Ö": "Oe",
-        "ü": "ue",
-        "Ü": "Ue",
-        "ß": "ss",
-        "–": "-",
-        "—": "-",
-        "−": "-",
-        "’": "'",
-        "‘": "'",
-        "“": '"',
-        "”": '"',
-        "„": '"',
-        "…": "...",
-        "·": "·",
-    }
-    normalized = "".join(replacements.get(ch, ch) for ch in value)
-    normalized = unicodedata.normalize("NFKD", normalized)
-    return normalized.encode("ascii", "ignore").decode("ascii")
-
-
-def asciiize(value: Any) -> Any:
-    if isinstance(value, str):
-        return asciiize_text(value)
-    if isinstance(value, list):
-        return [asciiize(item) for item in value]
-    if isinstance(value, dict):
-        return {key: asciiize(item) for key, item in value.items()}
-    return value
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def dedupe(values: list[str]) -> list[str]:
@@ -152,6 +116,7 @@ class SubjectConfig:
         landscape_description_en: str,
         framework_id: str,
         additional_root_contains: list[str] | None = None,
+        external_ref_overrides: dict[str, str] | None = None,
     ) -> None:
         self.subject_key = subject_key
         self.source_landscape_path = source_landscape_path
@@ -173,6 +138,7 @@ class SubjectConfig:
         self.landscape_description_en = landscape_description_en
         self.framework_id = framework_id
         self.additional_root_contains = additional_root_contains or []
+        self.external_ref_overrides = external_ref_overrides or {}
 
 
 MATH = SubjectConfig(
@@ -201,21 +167,21 @@ MATH = SubjectConfig(
     root_title="Mathematik",
     root_title_en="Mathematics",
     root_description=(
-        "Gemeinsame Wurzel fuer Mathematik am Gymnasium in Deutschland. "
-        "Die aktuelle Baseline uebernimmt die hessische Oberstufe vollstaendig und behaelt "
-        "den bereits aufgebauten Sek-I-Funktionsanschluss fuer die spaetere bundeslaenderuebergreifende Konvergenz."
+        "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. "
+        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und behält "
+        "den bereits aufgebauten Sek-I-Funktionsanschluss für die spätere bundesländerübergreifende Konvergenz."
     ),
     root_description_en=(
         "Shared root for mathematics at Gymnasium in Germany. "
         "The current baseline fully adopts the Hessian upper-secondary curriculum and keeps "
         "the previously established lower-secondary function bridge for later cross-state convergence."
     ),
-    landscape_title="Kanonische Mathematik (Gymnasium, DE)",
-    landscape_title_en="Canonical Mathematics (Gymnasium, DE)",
+    landscape_title="Mathematik (Gymnasium, DE)",
+    landscape_title_en="Mathematics (Gymnasium, DE)",
     landscape_description=(
-        "Mathematik fuer das Gymnasium in Deutschland. "
-        "Die aktuelle Baseline sichert die hessische Oberstufe vollstaendig und behaelt "
-        "den vorhandenen Sek-I-Funktionsanschluss als Ausgangspunkt fuer spaetere bundeslaenderuebergreifende Angleichung."
+        "Mathematik für das Gymnasium in Deutschland. "
+        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig und behält "
+        "den vorhandenen Sek-I-Funktionsanschluss als Ausgangspunkt für spätere bundesländerübergreifende Angleichung."
     ),
     landscape_description_en=(
         "Mathematics for Gymnasium in Germany. "
@@ -242,21 +208,21 @@ PHYSICS = SubjectConfig(
     root_title="Physik",
     root_title_en="Physics",
     root_description=(
-        "Gemeinsame Wurzel fuer Physik am Gymnasium in Deutschland. "
-        "Die aktuelle Baseline uebernimmt die hessische Oberstufe vollstaendig und behaelt "
-        "die bereits eingefuehrten expliziten Mathematik-Voraussetzungen im Mechanik-Korridor."
+        "Gemeinsame Wurzel für Physik am Gymnasium in Deutschland. "
+        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und behält "
+        "die bereits eingeführten expliziten Mathematik-Voraussetzungen im Mechanik-Korridor."
     ),
     root_description_en=(
         "Shared root for physics at Gymnasium in Germany. "
         "The current baseline fully adopts the Hessian upper-secondary curriculum and keeps "
         "the already introduced explicit mathematics prerequisites in the mechanics corridor."
     ),
-    landscape_title="Kanonische Physik (Gymnasium, DE)",
-    landscape_title_en="Canonical Physics (Gymnasium, DE)",
+    landscape_title="Physik (Gymnasium, DE)",
+    landscape_title_en="Physics (Gymnasium, DE)",
     landscape_description=(
-        "Physik fuer das Gymnasium in Deutschland. "
-        "Die aktuelle Baseline sichert die hessische Oberstufe vollstaendig und behaelt "
-        "die bereits aufgebauten fachuebergreifenden Mathematik-Voraussetzungen im Mechanikbereich."
+        "Physik für das Gymnasium in Deutschland. "
+        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig und behält "
+        "die bereits aufgebauten fachübergreifenden Mathematik-Voraussetzungen im Mechanikbereich."
     ),
     landscape_description_en=(
         "Physics for Gymnasium in Germany. "
@@ -264,12 +230,448 @@ PHYSICS = SubjectConfig(
         "the already established cross-subject mathematics prerequisites in the mechanics domain."
     ),
     framework_id="canonical-gymnasium-physics",
+    external_ref_overrides={
+        "e2b6b4d1-02db-4a27-948e-ecfbdb44dab3": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+    },
 )
+
+CHEMISTRY = SubjectConfig(
+    subject_key="chemistry",
+    source_landscape_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_CHEMIE.de.json",
+    target_landscape_path=REPO_ROOT
+    / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    mapping_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_chemistry_upper_secondary_to_canonical_chemistry.json",
+    source_landscape_id="2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+    source_landscape_title="Chemie Oberstufe (Hessen, KC 2024)",
+    target_landscape_id="c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    root_goal_id="442c31c5-c561-5c7a-90bb-2335d779175c",
+    root_goal_mode="exact_root",
+    root_title="Chemie",
+    root_title_en="Chemistry",
+    root_description=(
+        "Gemeinsame Wurzel für Chemie am Gymnasium in Deutschland. "
+        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft "
+        "damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz."
+    ),
+    root_description_en=(
+        "Shared root for chemistry at Gymnasium in Germany. "
+        "The current baseline fully adopts the Hessian upper-secondary curriculum and establishes "
+        "a reliable starting point for later cross-state convergence."
+    ),
+    landscape_title="Chemie (Gymnasium, DE)",
+    landscape_title_en="Chemistry (Gymnasium, DE)",
+    landscape_description=(
+        "Chemie für das Gymnasium in Deutschland. "
+        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt "
+        "für spätere bundesländerübergreifende Angleichung."
+    ),
+    landscape_description_en=(
+        "Chemistry for Gymnasium in Germany. "
+        "The current baseline fully secures the Hessian upper-secondary curriculum as the starting point "
+        "for later cross-state alignment."
+    ),
+    framework_id="canonical-gymnasium-chemistry",
+)
+
+BIOLOGY = SubjectConfig(
+    subject_key="biology",
+    source_landscape_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_BIOLOGIE.de.json",
+    target_landscape_path=REPO_ROOT
+    / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    mapping_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_biology_upper_secondary_to_canonical_biology.json",
+    source_landscape_id="3e56aa75-c76c-4de5-883b-0aac98297846",
+    source_landscape_title="Biologie Oberstufe (Hessen, KC 2024)",
+    target_landscape_id="08a43a1b-d97e-522c-9dfa-c950a493364e",
+    root_goal_id="e8d54127-d42e-51f5-bfa5-51d826069f95",
+    root_goal_mode="exact_root",
+    root_title="Biologie",
+    root_title_en="Biology",
+    root_description=(
+        "Gemeinsame Wurzel für Biologie am Gymnasium in Deutschland. "
+        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft "
+        "damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz."
+    ),
+    root_description_en=(
+        "Shared root for biology at Gymnasium in Germany. "
+        "The current baseline fully adopts the Hessian upper-secondary curriculum and establishes "
+        "a reliable starting point for later cross-state convergence."
+    ),
+    landscape_title="Biologie (Gymnasium, DE)",
+    landscape_title_en="Biology (Gymnasium, DE)",
+    landscape_description=(
+        "Biologie für das Gymnasium in Deutschland. "
+        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt "
+        "für spätere bundesländerübergreifende Angleichung."
+    ),
+    landscape_description_en=(
+        "Biology for Gymnasium in Germany. "
+        "The current baseline fully secures the Hessian upper-secondary curriculum as the starting point "
+        "for later cross-state alignment."
+    ),
+    framework_id="canonical-gymnasium-biology",
+)
+
+INFORMATICS = SubjectConfig(
+    subject_key="informatics",
+    source_landscape_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_INFORMATIK.de.json",
+    target_landscape_path=REPO_ROOT
+    / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    mapping_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_informatics_upper_secondary_to_canonical_informatics.json",
+    source_landscape_id="c1a02ddd-736d-4975-920b-18b03aff147f",
+    source_landscape_title="Informatik Oberstufe (Hessen, KC 2024)",
+    target_landscape_id="7d51b38c-a149-5407-bddc-d2ce7878b020",
+    root_goal_id="29ec47db-7dfe-553d-b850-40e06f164545",
+    root_goal_mode="exact_root",
+    root_title="Informatik",
+    root_title_en="Computer Science",
+    root_description=(
+        "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. "
+        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft "
+        "damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz."
+    ),
+    root_description_en=(
+        "Shared root for computer science at Gymnasium in Germany. "
+        "The current baseline fully adopts the Hessian upper-secondary curriculum and establishes "
+        "a reliable starting point for later cross-state convergence."
+    ),
+    landscape_title="Informatik (Gymnasium, DE)",
+    landscape_title_en="Computer Science (Gymnasium, DE)",
+    landscape_description=(
+        "Informatik für das Gymnasium in Deutschland. "
+        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt "
+        "für spätere bundesländerübergreifende Angleichung."
+    ),
+    landscape_description_en=(
+        "Computer science for Gymnasium in Germany. "
+        "The current baseline fully secures the Hessian upper-secondary curriculum as the starting point "
+        "for later cross-state alignment."
+    ),
+    framework_id="canonical-gymnasium-informatics",
+)
+
+HISTORY = SubjectConfig(
+    subject_key="history",
+    source_landscape_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_GESCHICHTE.de.json",
+    target_landscape_path=REPO_ROOT
+    / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+    mapping_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_history_upper_secondary_to_canonical_history.json",
+    source_landscape_id="bdc89685-73d3-446c-af5a-eaf642c07463",
+    source_landscape_title="Geschichte Oberstufe (Hessen, KC 2024)",
+    target_landscape_id="92406d94-e3c1-58ec-b7c6-12122278d25a",
+    root_goal_id="37edc7ba-faca-5142-a909-4d8ecf4bd18b",
+    root_goal_mode="exact_root",
+    root_title="Geschichte",
+    root_title_en="History",
+    root_description=(
+        "Gemeinsame Wurzel für Geschichte am Gymnasium in Deutschland. "
+        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft "
+        "damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz."
+    ),
+    root_description_en=(
+        "Shared root for history at Gymnasium in Germany. "
+        "The current baseline fully adopts the Hessian upper-secondary curriculum and establishes "
+        "a reliable starting point for later cross-state convergence."
+    ),
+    landscape_title="Geschichte (Gymnasium, DE)",
+    landscape_title_en="History (Gymnasium, DE)",
+    landscape_description=(
+        "Geschichte für das Gymnasium in Deutschland. "
+        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt "
+        "für spätere bundesländerübergreifende Angleichung."
+    ),
+    landscape_description_en=(
+        "History for Gymnasium in Germany. "
+        "The current baseline fully secures the Hessian upper-secondary curriculum as the starting point "
+        "for later cross-state alignment."
+    ),
+    framework_id="canonical-gymnasium-history",
+)
+
+GERMAN = SubjectConfig(
+    subject_key="german",
+    source_landscape_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_DEUTSCH.de.json",
+    target_landscape_path=REPO_ROOT
+    / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+    mapping_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_german_upper_secondary_to_canonical_german.json",
+    source_landscape_id="f1ba2118-853f-4aa0-bef5-4f749bc621ed",
+    source_landscape_title="Deutsch Oberstufe (Hessen, KC 2024)",
+    target_landscape_id="67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+    root_goal_id="a9154942-479f-54e7-9f65-7312be75686d",
+    root_goal_mode="exact_root",
+    root_title="Deutsch",
+    root_title_en="German",
+    root_description=(
+        "Gemeinsame Wurzel für Deutsch am Gymnasium in Deutschland. "
+        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft "
+        "damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz."
+    ),
+    root_description_en=(
+        "Shared root for German at Gymnasium in Germany. "
+        "The current baseline fully adopts the Hessian upper-secondary curriculum and establishes "
+        "a reliable starting point for later cross-state convergence."
+    ),
+    landscape_title="Deutsch (Gymnasium, DE)",
+    landscape_title_en="German (Gymnasium, DE)",
+    landscape_description=(
+        "Deutsch für das Gymnasium in Deutschland. "
+        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt "
+        "für spätere bundesländerübergreifende Angleichung."
+    ),
+    landscape_description_en=(
+        "German for Gymnasium in Germany. "
+        "The current baseline fully secures the Hessian upper-secondary curriculum as the starting point "
+        "for later cross-state alignment."
+    ),
+    framework_id="canonical-gymnasium-german",
+)
+
+POLITICS_ECONOMICS = SubjectConfig(
+    subject_key="politics_economics",
+    source_landscape_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_POLITIKWIRTSCHAFT.de.json",
+    target_landscape_path=REPO_ROOT
+    / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+    mapping_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_politics_economics_upper_secondary_to_canonical_politics_economics.json",
+    source_landscape_id="1d0e9f8f-0087-49e4-8ea2-976e5a89b165",
+    source_landscape_title="Politik und Wirtschaft Oberstufe (Hessen, KC 2024)",
+    target_landscape_id="51b60137-46e8-5498-973e-ea38bb32f327",
+    root_goal_id="94b281ca-2317-5d73-9a4a-0ae2d5896c1e",
+    root_goal_mode="exact_root",
+    root_title="Politik und Wirtschaft",
+    root_title_en="Politics and Economics",
+    root_description=(
+        "Gemeinsame Wurzel für Politik und Wirtschaft am Gymnasium in Deutschland. "
+        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft "
+        "damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz."
+    ),
+    root_description_en=(
+        "Shared root for politics and economics at Gymnasium in Germany. "
+        "The current baseline fully adopts the Hessian upper-secondary curriculum and establishes "
+        "a reliable starting point for later cross-state convergence."
+    ),
+    landscape_title="Politik und Wirtschaft (Gymnasium, DE)",
+    landscape_title_en="Politics and Economics (Gymnasium, DE)",
+    landscape_description=(
+        "Politik und Wirtschaft für das Gymnasium in Deutschland. "
+        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt "
+        "für spätere bundesländerübergreifende Angleichung."
+    ),
+    landscape_description_en=(
+        "Politics and economics for Gymnasium in Germany. "
+        "The current baseline fully secures the Hessian upper-secondary curriculum as the starting point "
+        "for later cross-state alignment."
+    ),
+    framework_id="canonical-gymnasium-politics-economics",
+)
+
+ENGLISH = SubjectConfig(
+    subject_key="english",
+    source_landscape_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_ENGLISCH.de.json",
+    target_landscape_path=REPO_ROOT
+    / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+    mapping_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_english_upper_secondary_to_canonical_english.json",
+    source_landscape_id="bc2124fa-2974-46cc-85e7-2392e61250e1",
+    source_landscape_title="Englisch Oberstufe (Hessen, KC 2024)",
+    target_landscape_id="c8c84073-46ae-57ec-898a-882d08d7a72f",
+    root_goal_id="c787e8c5-fc6e-5a8b-8482-92a8fe65553f",
+    root_goal_mode="exact_root",
+    root_title="Englisch",
+    root_title_en="English",
+    root_description=(
+        "Gemeinsame Wurzel für Englisch am Gymnasium in Deutschland. "
+        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft "
+        "damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz."
+    ),
+    root_description_en=(
+        "Shared root for English at Gymnasium in Germany. "
+        "The current baseline fully adopts the Hessian upper-secondary curriculum and establishes "
+        "a reliable starting point for later cross-state convergence."
+    ),
+    landscape_title="Englisch (Gymnasium, DE)",
+    landscape_title_en="English (Gymnasium, DE)",
+    landscape_description=(
+        "Englisch für das Gymnasium in Deutschland. "
+        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt "
+        "für spätere bundesländerübergreifende Angleichung."
+    ),
+    landscape_description_en=(
+        "English for Gymnasium in Germany. "
+        "The current baseline fully secures the Hessian upper-secondary curriculum as the starting point "
+        "for later cross-state alignment."
+    ),
+    framework_id="canonical-gymnasium-english",
+)
+
+FRENCH = SubjectConfig(
+    subject_key="french",
+    source_landscape_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_FRANZOESISCH.de.json",
+    target_landscape_path=REPO_ROOT
+    / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+    mapping_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_french_upper_secondary_to_canonical_french.json",
+    source_landscape_id="30acd190-609c-4109-8ee7-06fc5594af19",
+    source_landscape_title="Französisch Oberstufe (Hessen, KC 2024)",
+    target_landscape_id="96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977",
+    root_goal_id="3cdb4109-e977-54f3-b662-0800e2f043d3",
+    root_goal_mode="exact_root",
+    root_title="Französisch",
+    root_title_en="French",
+    root_description=(
+        "Gemeinsame Wurzel für Französisch am Gymnasium in Deutschland. "
+        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft "
+        "damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz."
+    ),
+    root_description_en=(
+        "Shared root for French at Gymnasium in Germany. "
+        "The current baseline fully adopts the Hessian upper-secondary curriculum and establishes "
+        "a reliable starting point for later cross-state convergence."
+    ),
+    landscape_title="Französisch (Gymnasium, DE)",
+    landscape_title_en="French (Gymnasium, DE)",
+    landscape_description=(
+        "Französisch für das Gymnasium in Deutschland. "
+        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt "
+        "für spätere bundesländerübergreifende Angleichung."
+    ),
+    landscape_description_en=(
+        "French for Gymnasium in Germany. "
+        "The current baseline fully secures the Hessian upper-secondary curriculum as the starting point "
+        "for later cross-state alignment."
+    ),
+    framework_id="canonical-gymnasium-french",
+)
+
+LATIN = SubjectConfig(
+    subject_key="latin",
+    source_landscape_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_LATEIN.de.json",
+    target_landscape_path=REPO_ROOT
+    / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+    mapping_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_latin_upper_secondary_to_canonical_latin.json",
+    source_landscape_id="fe28bda8-03f3-4c4a-8286-7fcfce4eeac1",
+    source_landscape_title="Latein Oberstufe (Hessen, KC 2024)",
+    target_landscape_id="668cf206-941e-51f8-8704-3e8938631235",
+    root_goal_id="34596272-3efc-58f9-b213-b5665ce59c3d",
+    root_goal_mode="exact_root",
+    root_title="Latein",
+    root_title_en="Latin",
+    root_description=(
+        "Gemeinsame Wurzel für Latein am Gymnasium in Deutschland. "
+        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft "
+        "damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz."
+    ),
+    root_description_en=(
+        "Shared root for Latin at Gymnasium in Germany. "
+        "The current baseline fully adopts the Hessian upper-secondary curriculum and establishes "
+        "a reliable starting point for later cross-state convergence."
+    ),
+    landscape_title="Latein (Gymnasium, DE)",
+    landscape_title_en="Latin (Gymnasium, DE)",
+    landscape_description=(
+        "Latein für das Gymnasium in Deutschland. "
+        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt "
+        "für spätere bundesländerübergreifende Angleichung."
+    ),
+    landscape_description_en=(
+        "Latin for Gymnasium in Germany. "
+        "The current baseline fully secures the Hessian upper-secondary curriculum as the starting point "
+        "for later cross-state alignment."
+    ),
+    framework_id="canonical-gymnasium-latin",
+)
+
+SPANISH = SubjectConfig(
+    subject_key="spanish",
+    source_landscape_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_SPANISCH.de.json",
+    target_landscape_path=REPO_ROOT
+    / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+    mapping_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_spanish_upper_secondary_to_canonical_spanish.json",
+    source_landscape_id="936efc61-a4d5-49fd-8694-085d1347db80",
+    source_landscape_title="Spanisch Oberstufe (Hessen, KC 2024)",
+    target_landscape_id="90eedebf-9ea8-5247-85dd-31c147f907c3",
+    root_goal_id="1b23eb50-e5f6-5958-8c99-ff8ca9668031",
+    root_goal_mode="exact_root",
+    root_title="Spanisch",
+    root_title_en="Spanish",
+    root_description=(
+        "Gemeinsame Wurzel für Spanisch am Gymnasium in Deutschland. "
+        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft "
+        "damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz."
+    ),
+    root_description_en=(
+        "Shared root for Spanish at Gymnasium in Germany. "
+        "The current baseline fully adopts the Hessian upper-secondary curriculum and establishes "
+        "a reliable starting point for later cross-state convergence."
+    ),
+    landscape_title="Spanisch (Gymnasium, DE)",
+    landscape_title_en="Spanish (Gymnasium, DE)",
+    landscape_description=(
+        "Spanisch für das Gymnasium in Deutschland. "
+        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt "
+        "für spätere bundesländerübergreifende Angleichung."
+    ),
+    landscape_description_en=(
+        "Spanish for Gymnasium in Germany. "
+        "The current baseline fully secures the Hessian upper-secondary curriculum as the starting point "
+        "for later cross-state alignment."
+    ),
+    framework_id="canonical-gymnasium-spanish",
+)
+
+
+def bootstrap_target(config: SubjectConfig, legacy: dict[str, Any]) -> dict[str, Any]:
+    legacy_root = legacy["goals"][0]
+    return {
+        "landscapeId": config.target_landscape_id,
+        "locale": legacy.get("locale", "de-DE"),
+        "country": legacy.get("country", "DE"),
+        "region": legacy.get("region", "DEU"),
+        "schoolType": legacy.get("schoolType", "Gymnasium"),
+        "subject": legacy.get("subject") or config.root_title,
+        "frameworkId": config.framework_id,
+        "title": config.landscape_title,
+        "titleEn": config.landscape_title_en,
+        "description": config.landscape_description,
+        "descriptionEn": config.landscape_description_en,
+        "filters": copy.deepcopy(legacy.get("filters") or []),
+        "goals": [
+            {
+                "id": config.root_goal_id,
+                "title": config.root_title,
+                "titleEn": config.root_title_en,
+                "description": config.root_description,
+                "descriptionEn": config.root_description_en,
+                "core": legacy_root.get("core", True),
+                "weight": legacy_root.get("weight", 1),
+                "tags": [],
+                "contains": [],
+                "requires": [],
+                "type": "cluster",
+            }
+        ],
+    }
 
 
 def adopt_subject(config: SubjectConfig) -> tuple[int, int]:
     legacy = load_json(config.source_landscape_path)
-    current = load_json(config.target_landscape_path)
+    current = load_json(config.target_landscape_path) if config.target_landscape_path.exists() else bootstrap_target(config, legacy)
 
     legacy_goals_by_id = {goal["id"]: goal for goal in legacy["goals"]}
     current_goals_by_id = {goal["id"]: goal for goal in current["goals"]}
@@ -296,6 +698,10 @@ def adopt_subject(config: SubjectConfig) -> tuple[int, int]:
         mapped: list[str] = []
         for raw in refs or []:
             normalized = normalize_ref(raw)
+            override = config.external_ref_overrides.get(normalized) or config.external_ref_overrides.get(raw)
+            if override:
+                mapped.append(override)
+                continue
             if normalized in legacy_goals_by_id:
                 mapped.append(canonical_id_for_legacy(normalized))
             else:
@@ -322,7 +728,7 @@ def adopt_subject(config: SubjectConfig) -> tuple[int, int]:
                 goal["title"] = "Funktionsgrundlagen (Sek I)"
                 goal["titleEn"] = "Function Foundations (Lower Secondary)"
                 goal["description"] = (
-                    "Cluster fuer grundlegende Vorstellungen zu Zuordnungen, linearen Funktionen "
+                    "Cluster für grundlegende Vorstellungen zu Zuordnungen, linearen Funktionen "
                     "und quadratischen Funktionen aus der gymnasialen Sekundarstufe I."
                 )
                 goal["descriptionEn"] = (
@@ -450,6 +856,16 @@ def adopt_subject(config: SubjectConfig) -> tuple[int, int]:
 def main() -> None:
     math_goals, math_mappings = adopt_subject(MATH)
     physics_goals, physics_mappings = adopt_subject(PHYSICS)
+    chemistry_goals, chemistry_mappings = adopt_subject(CHEMISTRY)
+    biology_goals, biology_mappings = adopt_subject(BIOLOGY)
+    informatics_goals, informatics_mappings = adopt_subject(INFORMATICS)
+    history_goals, history_mappings = adopt_subject(HISTORY)
+    german_goals, german_mappings = adopt_subject(GERMAN)
+    politics_economics_goals, politics_economics_mappings = adopt_subject(POLITICS_ECONOMICS)
+    english_goals, english_mappings = adopt_subject(ENGLISH)
+    french_goals, french_mappings = adopt_subject(FRENCH)
+    latin_goals, latin_mappings = adopt_subject(LATIN)
+    spanish_goals, spanish_mappings = adopt_subject(SPANISH)
     print(
         json.dumps(
             {
@@ -457,6 +873,26 @@ def main() -> None:
                 "mathMappings": math_mappings,
                 "physicsGoals": physics_goals,
                 "physicsMappings": physics_mappings,
+                "chemistryGoals": chemistry_goals,
+                "chemistryMappings": chemistry_mappings,
+                "biologyGoals": biology_goals,
+                "biologyMappings": biology_mappings,
+                "informaticsGoals": informatics_goals,
+                "informaticsMappings": informatics_mappings,
+                "historyGoals": history_goals,
+                "historyMappings": history_mappings,
+                "germanGoals": german_goals,
+                "germanMappings": german_mappings,
+                "politicsEconomicsGoals": politics_economics_goals,
+                "politicsEconomicsMappings": politics_economics_mappings,
+                "englishGoals": english_goals,
+                "englishMappings": english_mappings,
+                "frenchGoals": french_goals,
+                "frenchMappings": french_mappings,
+                "latinGoals": latin_goals,
+                "latinMappings": latin_mappings,
+                "spanishGoals": spanish_goals,
+                "spanishMappings": spanish_mappings,
             },
             indent=2,
         )

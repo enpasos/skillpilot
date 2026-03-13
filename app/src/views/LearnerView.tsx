@@ -140,6 +140,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da',
     '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3',
     '24f2ca0f-b94a-444e-bb70-677cb6f85c02',
+    '2f391ba2-ba1e-40e4-a8d2-dff049516c13',
+    '3e56aa75-c76c-4de5-883b-0aac98297846',
+    'c1a02ddd-736d-4975-920b-18b03aff147f',
+    'bdc89685-73d3-446c-af5a-eaf642c07463',
+    'f1ba2118-853f-4aa0-bef5-4f749bc621ed',
+    '1d0e9f8f-0087-49e4-8ea2-976e5a89b165',
+    'bc2124fa-2974-46cc-85e7-2392e61250e1',
+    '30acd190-609c-4109-8ee7-06fc5594af19',
+    'fe28bda8-03f3-4c4a-8286-7fcfce4eeac1',
+    '936efc61-a4d5-49fd-8694-085d1347db80',
   ])
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [forcedExpandedIds, setForcedExpandedIds] = useState<Set<string>>(new Set())
@@ -643,13 +653,43 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
     let mathSelected = selectedCurriculum === '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3'
     let physicsSelected = selectedCurriculum === '24f2ca0f-b94a-444e-bb70-677cb6f85c02'
+    let chemistrySelected = selectedCurriculum === '2f391ba2-ba1e-40e4-a8d2-dff049516c13'
+    let biologySelected = selectedCurriculum === '3e56aa75-c76c-4de5-883b-0aac98297846'
+    let informaticsSelected = selectedCurriculum === 'c1a02ddd-736d-4975-920b-18b03aff147f'
+    let historySelected = selectedCurriculum === 'bdc89685-73d3-446c-af5a-eaf642c07463'
+    let germanSelected = selectedCurriculum === 'f1ba2118-853f-4aa0-bef5-4f749bc621ed'
+    let politicsEconomicsSelected = selectedCurriculum === '1d0e9f8f-0087-49e4-8ea2-976e5a89b165'
+    let englishSelected = selectedCurriculum === 'bc2124fa-2974-46cc-85e7-2392e61250e1'
+    let frenchSelected = selectedCurriculum === '30acd190-609c-4109-8ee7-06fc5594af19'
+    let latinSelected = selectedCurriculum === 'fe28bda8-03f3-4c4a-8286-7fcfce4eeac1'
+    let spanishSelected = selectedCurriculum === '936efc61-a4d5-49fd-8694-085d1347db80'
 
     if (selectedCurriculum === 'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da') {
       mathSelected = personalConfig['2796fc7b-ba9d-446f-8f26-711dd6d8a9a3']?.selected === true
       physicsSelected = personalConfig['24f2ca0f-b94a-444e-bb70-677cb6f85c02']?.selected === true
-      if (!mathSelected && !physicsSelected) {
+      chemistrySelected = personalConfig['2f391ba2-ba1e-40e4-a8d2-dff049516c13']?.selected === true
+      biologySelected = personalConfig['3e56aa75-c76c-4de5-883b-0aac98297846']?.selected === true
+      informaticsSelected = personalConfig['c1a02ddd-736d-4975-920b-18b03aff147f']?.selected === true
+      historySelected = personalConfig['bdc89685-73d3-446c-af5a-eaf642c07463']?.selected === true
+      germanSelected = personalConfig['f1ba2118-853f-4aa0-bef5-4f749bc621ed']?.selected === true
+      politicsEconomicsSelected = personalConfig['1d0e9f8f-0087-49e4-8ea2-976e5a89b165']?.selected === true
+      englishSelected = personalConfig['bc2124fa-2974-46cc-85e7-2392e61250e1']?.selected === true
+      frenchSelected = personalConfig['30acd190-609c-4109-8ee7-06fc5594af19']?.selected === true
+      latinSelected = personalConfig['fe28bda8-03f3-4c4a-8286-7fcfce4eeac1']?.selected === true
+      spanishSelected = personalConfig['936efc61-a4d5-49fd-8694-085d1347db80']?.selected === true
+      if (!mathSelected && !physicsSelected && !chemistrySelected && !biologySelected && !informaticsSelected && !historySelected && !germanSelected && !politicsEconomicsSelected && !englishSelected && !frenchSelected && !latinSelected && !spanishSelected) {
         mathSelected = true
         physicsSelected = true
+        chemistrySelected = true
+        biologySelected = true
+        informaticsSelected = true
+        historySelected = true
+        germanSelected = true
+        politicsEconomicsSelected = true
+        englishSelected = true
+        frenchSelected = true
+        latinSelected = true
+        spanishSelected = true
       }
     }
 
@@ -657,8 +697,18 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (physicsSelected) {
       mathSelected = true
     }
-    if (!mathSelected && !physicsSelected) {
+    if (!mathSelected && !physicsSelected && !chemistrySelected && !biologySelected && !informaticsSelected && !historySelected && !germanSelected && !politicsEconomicsSelected && !englishSelected && !frenchSelected && !latinSelected && !spanishSelected) {
       mathSelected = true
+      chemistrySelected = true
+      biologySelected = true
+      informaticsSelected = true
+      historySelected = true
+      germanSelected = true
+      politicsEconomicsSelected = true
+      englishSelected = true
+      frenchSelected = true
+      latinSelected = true
+      spanishSelected = true
     }
 
     const items: Array<{ label: string; value: string }> = [
@@ -678,6 +728,76 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       items.push({
         label: 'Physik',
         value: inferCourseFilter('24f2ca0f-b94a-444e-bb70-677cb6f85c02'),
+      })
+    }
+
+    if (chemistrySelected) {
+      items.push({
+        label: 'Chemie',
+        value: inferCourseFilter('2f391ba2-ba1e-40e4-a8d2-dff049516c13'),
+      })
+    }
+
+    if (biologySelected) {
+      items.push({
+        label: 'Biologie',
+        value: inferCourseFilter('3e56aa75-c76c-4de5-883b-0aac98297846'),
+      })
+    }
+
+    if (informaticsSelected) {
+      items.push({
+        label: 'Informatik',
+        value: inferCourseFilter('c1a02ddd-736d-4975-920b-18b03aff147f'),
+      })
+    }
+
+    if (historySelected) {
+      items.push({
+        label: 'Geschichte',
+        value: inferCourseFilter('bdc89685-73d3-446c-af5a-eaf642c07463'),
+      })
+    }
+
+    if (germanSelected) {
+      items.push({
+        label: 'Deutsch',
+        value: inferCourseFilter('f1ba2118-853f-4aa0-bef5-4f749bc621ed'),
+      })
+    }
+
+    if (politicsEconomicsSelected) {
+      items.push({
+        label: 'Politik und Wirtschaft',
+        value: inferCourseFilter('1d0e9f8f-0087-49e4-8ea2-976e5a89b165'),
+      })
+    }
+
+    if (englishSelected) {
+      items.push({
+        label: 'Englisch',
+        value: inferCourseFilter('bc2124fa-2974-46cc-85e7-2392e61250e1'),
+      })
+    }
+
+    if (frenchSelected) {
+      items.push({
+        label: 'Französisch',
+        value: inferCourseFilter('30acd190-609c-4109-8ee7-06fc5594af19'),
+      })
+    }
+
+    if (latinSelected) {
+      items.push({
+        label: 'Latein',
+        value: inferCourseFilter('fe28bda8-03f3-4c4a-8286-7fcfce4eeac1'),
+      })
+    }
+
+    if (spanishSelected) {
+      items.push({
+        label: 'Spanisch',
+        value: inferCourseFilter('936efc61-a4d5-49fd-8694-085d1347db80'),
       })
     }
 
@@ -1745,7 +1865,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         initialStrictMode={learnerData?.strictMode}
         onPreferencesChange={handlePreferencesChange}
         migrationTitle={canCutoverLegacyHessenGymnasium ? 'Auf Gymnasium (DE) umstellen' : undefined}
-        migrationDescription={canCutoverLegacyHessenGymnasium ? 'Dein bisheriger Hessen-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe und Physik laufen danach unter einem gemeinsamen Gymnasium-Root weiter.' : undefined}
+        migrationDescription={canCutoverLegacyHessenGymnasium ? 'Dein bisheriger Hessen-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe, Physik, Chemie, Biologie, Informatik, Geschichte, Deutsch, Politik und Wirtschaft, Englisch, Französisch, Latein und Spanisch laufen danach unter einem gemeinsamen Gymnasium-Root weiter.' : undefined}
         migrationActionLabel={canCutoverLegacyHessenGymnasium ? 'Jetzt umstellen' : undefined}
         migrationActionPending={isCutoverPending}
         onMigrationAction={canCutoverLegacyHessenGymnasium ? handleCutoverCanonicalGymnasium : undefined}

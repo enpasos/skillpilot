@@ -114,9 +114,18 @@ Current operational baseline:
 - the canonical `Gymnasium (DE)` overview root is the current preferred DE-level learner entry point
 - the DE-level Mathematics landscape now bulk-adopts the Hessen upper-secondary tree and keeps the existing Sek-I bridge plus exact Hessen legacy mappings for later learner migration
 - the DE-level Physics landscape now bulk-adopts the Hessen upper-secondary tree and keeps the pre-existing cross-subject Math bridge and Bavaria collision anchor IDs stable for later learner migration
-- a first backend learner-cutover path from frozen Hessen upper-secondary Math/Physics views into the DE-level `Gymnasium (DE)` root is available
+- the DE-level Chemistry landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
+- the DE-level Biology landscape now bulk-adopts the Hessen upper-secondary tree as another Hessen-first subject slice and is attached below the shared DE root
+- the DE-level Informatics landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
+- the DE-level History landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
+- the DE-level German landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
+- the DE-level Politics-and-Economics landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
+- the DE-level English landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
+- the DE-level French landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
+- the DE-level Latin landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
+- a first backend learner-cutover path from frozen Hessen upper-secondary Math/Physics/Chemistry/Biology/Informatics/History/German/Politics-and-Economics/English/French/Latin views into the DE-level `Gymnasium (DE)` root is available
 - cutover now stabilizes curriculum selection, root/subject filters, first-response planned-scope normalization, and canonical continuation with preserved legacy mastery history
-- the cutover HTTP contract now also covers the frozen Hessen overview case with combined Mathematics/Physics selection and mixed legacy planned scopes
+- the cutover HTTP contract now also covers the frozen Hessen overview case with combined Mathematics/Physics selection and the direct Chemistry cutover case with canonical planned-scope continuation
 - the learner cockpit now exposes a first explicit UI migration path from frozen Hessen upper-secondary views into `Gymnasium (DE)` and switches the frontend landscape context after successful cutover
 - after successful UI cutover, the cockpit now navigates directly into the migrated canonical focus instead of leaving the learner on the old Hessen route or only at the DE root
 - the UI cutover dialog now previews the adopted Hessen -> DE transfer per subject and course level before the learner triggers migration
@@ -128,6 +137,15 @@ Current operational baseline:
 - the canonical Physics motion corridor is `cutover_ready`
 - the canonical Physics E.2 mechanics corridor is `cutover_ready`
 - the canonical Physics E.3 horizontal-projection slice is `cutover_ready`
+- the canonical Chemistry Hessen baseline is `subtree_adopted`
+- the canonical Biology Hessen baseline is `subtree_adopted`
+- the canonical Informatics Hessen baseline is `subtree_adopted`
+- the canonical History Hessen baseline is `subtree_adopted`
+- the canonical German Hessen baseline is `subtree_adopted`
+- the canonical Politics-and-Economics Hessen baseline is `subtree_adopted`
+- the canonical English Hessen baseline is `subtree_adopted`
+- the canonical French Hessen baseline is `subtree_adopted`
+- the canonical Latin Hessen baseline is `subtree_adopted`
 - no subtree has reached `legacy_view_retained` yet
 
 ## Work packages
