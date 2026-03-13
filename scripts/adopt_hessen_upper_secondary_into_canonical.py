@@ -675,6 +675,46 @@ GREEK = SubjectConfig(
     framework_id="canonical-gymnasium-greek",
 )
 
+CHINESE = SubjectConfig(
+    subject_key="chinese",
+    source_landscape_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_CHINESISCH.de.json",
+    target_landscape_path=REPO_ROOT
+    / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+    mapping_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_chinese_upper_secondary_to_canonical_chinese.json",
+    source_landscape_id="7651cbe2-5fb8-464d-b0c4-3e830cda41dd",
+    source_landscape_title="Chinesisch Oberstufe (Hessen, KC 2024)",
+    target_landscape_id="8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
+    root_goal_id="494065c2-8707-5284-b6ba-a159df15bb6c",
+    root_goal_mode="exact_root",
+    root_title="Chinesisch",
+    root_title_en="Chinese",
+    root_description=(
+        "Gemeinsame Wurzel für Chinesisch am Gymnasium in Deutschland. "
+        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft "
+        "damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz."
+    ),
+    root_description_en=(
+        "Shared root for Chinese at Gymnasium in Germany. "
+        "The current baseline fully adopts the Hessian upper-secondary curriculum and establishes "
+        "a reliable starting point for later cross-state convergence."
+    ),
+    landscape_title="Chinesisch (Gymnasium, DE)",
+    landscape_title_en="Chinese (Gymnasium, DE)",
+    landscape_description=(
+        "Chinesisch für das Gymnasium in Deutschland. "
+        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt "
+        "für spätere bundesländerübergreifende Angleichung."
+    ),
+    landscape_description_en=(
+        "Chinese for Gymnasium in Germany. "
+        "The current baseline fully secures the Hessian upper-secondary curriculum as the starting point "
+        "for later cross-state alignment."
+    ),
+    framework_id="canonical-gymnasium-chinese",
+)
+
 
 def bootstrap_target(config: SubjectConfig, legacy: dict[str, Any]) -> dict[str, Any]:
     legacy_root = legacy["goals"][0]
@@ -907,6 +947,7 @@ def main() -> None:
     latin_goals, latin_mappings = adopt_subject(LATIN)
     spanish_goals, spanish_mappings = adopt_subject(SPANISH)
     greek_goals, greek_mappings = adopt_subject(GREEK)
+    chinese_goals, chinese_mappings = adopt_subject(CHINESE)
     print(
         json.dumps(
             {
@@ -936,6 +977,8 @@ def main() -> None:
                 "spanishMappings": spanish_mappings,
                 "greekGoals": greek_goals,
                 "greekMappings": greek_mappings,
+                "chineseGoals": chinese_goals,
+                "chineseMappings": chinese_mappings,
             },
             indent=2,
         )

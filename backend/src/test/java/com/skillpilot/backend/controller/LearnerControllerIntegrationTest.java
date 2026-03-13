@@ -996,16 +996,9 @@ public class LearnerControllerIntegrationTest {
         assertThat(planned).hasSize(1);
         assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_GREEK_E_PHASE_ID);
         assertThat(jsonIds(goalOptions))
-                .contains(
-                        CANONICAL_GREEK_LANGUAGE_FORMS_ID,
-                        CANONICAL_GREEK_TEXT_UNDERSTANDING_ID,
-                        CANONICAL_GREEK_CULTURE_RELIGION_ID)
+                .contains(CANONICAL_GREEK_E_PHASE_ID)
                 .doesNotContain(LEGACY_GREEK_WHY_ID, LEGACY_GREEK_E_PHASE_ID);
-        assertThat(jsonIds(frontier))
-                .contains(
-                        CANONICAL_GREEK_LANGUAGE_FORMS_ID,
-                        CANONICAL_GREEK_TEXT_UNDERSTANDING_ID,
-                        CANONICAL_GREEK_CULTURE_RELIGION_ID);
+        assertThat(jsonIds(frontier)).contains(CANONICAL_GREEK_E_PHASE_ID);
 
         assertThat(response.body())
                 .doesNotContain(LEGACY_GREEK_WHY_ID)
@@ -1644,9 +1637,7 @@ public class LearnerControllerIntegrationTest {
                 .contains(
                         CANONICAL_GERMAN_GRAMMAR_ID,
                         CANONICAL_GERMAN_TEXT_TYPE_ID,
-                        CANONICAL_GREEK_LANGUAGE_FORMS_ID,
-                        CANONICAL_GREEK_TEXT_UNDERSTANDING_ID,
-                        CANONICAL_GREEK_CULTURE_RELIGION_ID)
+                        CANONICAL_GREEK_E_PHASE_ID)
                 .doesNotContain(
                         LEGACY_GERMAN_E_PHASE_CLUSTER_ID,
                         LEGACY_GREEK_E_PHASE_ID,
@@ -1656,9 +1647,7 @@ public class LearnerControllerIntegrationTest {
                 .contains(
                         CANONICAL_GERMAN_GRAMMAR_ID,
                         CANONICAL_GERMAN_TEXT_TYPE_ID,
-                        CANONICAL_GREEK_LANGUAGE_FORMS_ID,
-                        CANONICAL_GREEK_TEXT_UNDERSTANDING_ID,
-                        CANONICAL_GREEK_CULTURE_RELIGION_ID);
+                        CANONICAL_GREEK_E_PHASE_ID);
 
         assertThat(response.body())
                 .doesNotContain(LEGACY_GERMAN_E_PHASE_CLUSTER_ID)
