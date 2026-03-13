@@ -107,7 +107,7 @@ The learner-facing school UX should converge towards one DE-level root such as `
 Preferred shape:
 
 - one shared DE-level root
-- subject landscapes such as Mathematik, Physik, Chemie, Biologie, Informatik, Geschichte, Deutsch, Politik und Wirtschaft, Englisch, Französisch, Latein, Spanisch, and Griechisch as child landscapes under that root
+- subject landscapes such as Mathematik, Physik, Chemie, Biologie, Informatik, Geschichte, Deutsch, Politik und Wirtschaft, Englisch, Französisch, Latein, Spanisch, Griechisch, and Chinesisch as child landscapes under that root
 - subject-local filters such as `GK` / `LK` on the child landscapes
 - one global root filter such as `DE-HE` / `DE-BY` / `ALL`
 

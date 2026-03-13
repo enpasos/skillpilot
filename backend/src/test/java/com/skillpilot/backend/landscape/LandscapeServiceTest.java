@@ -24,6 +24,7 @@ class LandscapeServiceTest {
         private static final String CANONICAL_LATIN_ID = "668cf206-941e-51f8-8704-3e8938631235";
         private static final String CANONICAL_SPANISH_ID = "90eedebf-9ea8-5247-85dd-31c147f907c3";
         private static final String CANONICAL_GREEK_ID = "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0";
+        private static final String CANONICAL_CHINESE_ID = "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80";
         private static final String HESSEN_UPPER_MATH_ID = "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3";
 
         @Test
@@ -88,7 +89,8 @@ class LandscapeServiceTest {
                                                 CANONICAL_FRENCH_ID,
                                                 CANONICAL_LATIN_ID,
                                                 CANONICAL_SPANISH_ID,
-                                                CANONICAL_GREEK_ID);
+                                                CANONICAL_GREEK_ID,
+                                                CANONICAL_CHINESE_ID);
         }
 
         @Test
@@ -121,7 +123,8 @@ class LandscapeServiceTest {
                                                 CANONICAL_HISTORY_ID, CANONICAL_GERMAN_ID,
                                                 CANONICAL_POLITICS_ECONOMICS_ID, CANONICAL_ENGLISH_ID,
                                                 CANONICAL_FRENCH_ID, CANONICAL_LATIN_ID,
-                                                CANONICAL_SPANISH_ID, CANONICAL_GREEK_ID)
+                                                CANONICAL_SPANISH_ID, CANONICAL_GREEK_ID,
+                                                CANONICAL_CHINESE_ID)
                                 .doesNotContain(HESSEN_UPPER_MATH_ID);
         }
 
@@ -462,6 +465,32 @@ class LandscapeServiceTest {
                                                 "Abiturprüfung Griechisch (GK)",
                                                 "Abiturprüfung Griechisch (LK)");
                 assertThat(greek.getFilters())
+                                .extracting(LandscapeFilter::getId)
+                                .containsExactly("GK", "LK");
+        }
+
+        @Test
+        void loadsCanonicalChineseAsChildCurriculum() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape chinese = landscapeService.getById(CANONICAL_CHINESE_ID);
+
+                assertThat(chinese).isNotNull();
+                assertThat(chinese.getTitle()).isEqualTo("Chinesisch (Gymnasium, DE)");
+                assertThat(chinese.getGoals()).isNotEmpty();
+                assertThat(chinese.getGoals())
+                                .extracting(LearningGoal::getTitle)
+                                .contains(
+                                                "Warum Chinesisch? - Relevanz und Orientierung",
+                                                "Leseverstehen E-Phase Chinesisch",
+                                                "Leseverstehen Q1 Chinesisch",
+                                                "Leseverstehen Q4 Chinesisch",
+                                                "Abiturprüfung Chinesisch (GK)",
+                                                "Abiturprüfung Chinesisch (LK)");
+                assertThat(chinese.getFilters())
                                 .extracting(LandscapeFilter::getId)
                                 .containsExactly("GK", "LK");
         }
