@@ -490,6 +490,23 @@ To keep the architecture transparent and repo-friendly, we use simple JSON files
 
 These JSON conventions let us run the full SkillPilot proof-of-concept without additional infrastructure, and they keep the project open to future landscapes, languages and persistence layers.
 
+### 10.5 Canonical Gymnasium convergence (transition strategy)
+
+For German Gymnasium curricula, the long-term target is a **canonical competence layer per subject** that spans Sekundarstufe I and Sekundarstufe II and can be viewed through state-specific curriculum filters.
+
+Practical rollout rules:
+
+- Do **not** duplicate canonical goals per Bundesland.
+- Keep existing state-specific landscapes alive during transition as **legacy views**.
+- Start the convergence from the most mature legacy source, currently `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe`.
+- Use a **small mapping layer** from legacy goal IDs to canonical goal IDs instead of introducing a large new abstraction stack too early.
+- Keep Custom GPT / MCP / API contracts as stable as possible; translation between legacy and canonical layers should happen in backend/runtime logic, not in prompt logic.
+- Preserve **multi-subject navigation** and allow selected cross-subject `requires` edges where didactically justified, e.g. Mathematik -> Physik.
+
+Detailed rollout plan:
+
+- `docs/concept/curriculum-graph/canonical-gymnasium-rollout.md`
+
 ---
 
 ## 11. SkillPilot ID and privacy model
