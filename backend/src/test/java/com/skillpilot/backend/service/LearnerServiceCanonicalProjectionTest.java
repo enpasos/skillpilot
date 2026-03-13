@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.MasteryEntryDTO;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.domain.Learner;
@@ -25,6 +26,7 @@ import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
 import java.nio.file.Path;
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -275,6 +277,48 @@ class LearnerServiceCanonicalProjectionTest {
     }
 
     @Test
+    void getPlannedGoalsCollapsesMixedLegacyScopesIntoCanonicalSubtrees() {
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new PlannedGoal(learner, LEGACY_ANALYSIS_CLUSTER_ID),
+                        new PlannedGoal(learner, LEGACY_BAYERN_FUNCTION_CLUSTER_ID),
+                        new PlannedGoal(learner, LEGACY_SEK1_CLUSTER_ID)));
+
+        List<String> plannedGoals = learnerService.getPlannedGoals(LEARNER_ID);
+
+        assertThat(plannedGoals).containsExactly(CANONICAL_ANALYSIS_CLUSTER_ID, CANONICAL_SEK1_CLUSTER_ID);
+    }
+
+    @Test
+    void getMasteryKeepsHigherStoredCanonicalMasteryThanLowerLegacyProjection() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        masteryEntry(LEGACY_FUNCTION_CONCEPT_ID, 0.5, Instant.parse("2026-03-10T08:00:00Z")),
+                        masteryEntry(CANONICAL_FUNCTION_CONCEPT_ID, 1.0, Instant.parse("2026-03-11T08:00:00Z"))));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(LEGACY_FUNCTION_CONCEPT_ID, 0.5);
+        assertThat(mastery).containsEntry(CANONICAL_FUNCTION_CONCEPT_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryWithTimestampsUsesNewerLegacyTimestampForEqualExactProjection() {
+        Instant canonicalTs = Instant.parse("2026-03-10T08:00:00Z");
+        Instant legacyTs = Instant.parse("2026-03-11T08:00:00Z");
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        masteryEntry(CANONICAL_FUNCTION_CONCEPT_ID, 1.0, canonicalTs),
+                        masteryEntry(LEGACY_FUNCTION_CONCEPT_ID, 1.0, legacyTs)));
+
+        Map<String, MasteryEntryDTO> mastery = learnerService.getMasteryWithTimestamps(LEARNER_ID);
+
+        assertThat(mastery)
+                .containsEntry(CANONICAL_FUNCTION_CONCEPT_ID, new MasteryEntryDTO(1.0, legacyTs))
+                .containsEntry(LEGACY_FUNCTION_CONCEPT_ID, new MasteryEntryDTO(1.0, legacyTs));
+    }
+
+    @Test
     void canonicalPilotLearnerStateProjectsLegacyActiveGoalToCanonicalGoal() {
         learner.setActiveGoalId(LEGACY_FUNCTION_CONCEPT_ID);
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
@@ -330,5 +374,11 @@ class LearnerServiceCanonicalProjectionTest {
 
     private static Path resolveCurriculaDir() {
         return Path.of("../curricula").toAbsolutePath().normalize();
+    }
+
+    private Mastery masteryEntry(String goalId, double value, Instant updatedAt) {
+        Mastery mastery = new Mastery(learner, goalId, value);
+        mastery.setUpdatedAt(updatedAt);
+        return mastery;
     }
 }

@@ -17,6 +17,11 @@ Current repository status:
 - `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe` already covers Hessen Sekundarstufe I in the same general direction.
 - `curricula/DE/BY/Gymnasium` already provides broad Bavaria subject coverage, but in a less normalized structure than the Hessen upper-secondary JSON landscapes.
 
+Repository layout rule for the rollout:
+
+- existing source curricula under state-owned paths such as `curricula/DE/HE/.../json/` remain legacy source material and should not be rewritten just to host canonical convergence
+- canonical Gymnasium subject landscapes should live on a Germany-level path, not inside a single Bundesland subtree
+
 The strategic objective is not to preserve state-specific duplication forever, but to converge towards one canonical competence layer per subject across the full Gymnasium path.
 
 ## Goals
@@ -153,6 +158,76 @@ Once mapping coverage is stable for a subject:
 - legacy landscapes remain as views until they are no longer needed.
 
 The migration should prioritize continuity of learner progress over purity of data architecture.
+
+## Operational Migration Model
+
+The operational migration unit is not a whole subject or a whole Bundesland rollout at once.
+
+The migration unit is a **didactically closed subtree**.
+
+Examples:
+
+- a lower-secondary function corridor in Mathematics
+- one coherent introductory upper-secondary topic field
+- one Physics subtree that depends on a small, explicit Mathematics prerequisite set
+
+This keeps cutovers small enough that a subtree can later be switched over within a few days instead of requiring a long big-bang migration window.
+
+### State 1: `legacy_frozen`
+
+Meaning:
+
+- an existing state-specific school curriculum remains the authoritative legacy source
+- its JSON under `curricula/.../json/` is treated as read-only source material for convergence work
+
+Implications:
+
+- bug fixes in runtime, metadata interpretation, or mappings are still allowed
+- canonical work must not rewrite the legacy source tree just to host new canonical content
+
+### State 2: `subtree_adopted`
+
+Meaning:
+
+- a complete legacy subtree has been copied or reconstructed into the canonical DE-level subject landscape
+- explicit mappings from legacy goals into canonical goals exist
+- the subtree is already visible through canonical views
+
+Acceptance conditions:
+
+- the subtree is sufficiently closed with respect to `contains`
+- prerequisite edges are either carried over or explicitly rebound
+- no goal-identity collision with legacy goals exists
+
+### State 3: `cutover_ready`
+
+Meaning:
+
+- the adopted subtree is stable enough that ordinary learner navigation can switch to the canonical version with low operational risk
+
+Acceptance conditions:
+
+- canonical learner-state projection behaves deterministically
+- frontier behavior is acceptable in regression tests
+- the mapping coverage is good enough that learner progress does not fragment
+- a rollback path through the legacy view still exists
+
+### State 4: `legacy_view_retained`
+
+Meaning:
+
+- the canonical subtree is the preferred operational path
+- the old state-specific subtree remains available temporarily as a compatibility or audit view
+
+This is the expected near-term state after a successful cutover.
+
+### Transition rule
+
+The intended transition path is:
+
+- `legacy_frozen` -> `subtree_adopted` -> `cutover_ready` -> `legacy_view_retained`
+
+The project should avoid skipping directly from legacy authoring to full cutover without an explicit subtree adoption step.
 
 ## Rollout Order
 

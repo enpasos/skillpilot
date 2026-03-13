@@ -20,9 +20,11 @@ The project should therefore start with a small, testable pilot rather than a br
 
 - Do not duplicate canonical goals per Bundesland.
 - Keep `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` operational throughout the transition.
+- Do not modify the existing Hessen source JSON under `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/` just to host canonical content.
 - Keep the Custom GPT interface unchanged: one learner state, one frontier, one mastery flow.
 - Use ISO 3166-2 state codes in new Bundesland-facing metadata, filters, and API-visible fields, for example `DE-HE` and `DE-BY`.
 - Do not rename existing curriculum directory segments just to enforce that convention during the pilot.
+- Place canonical Gymnasium subject landscapes on a Germany-level path, not inside a single Bundesland subtree.
 - Prefer additive infrastructure over destructive migration.
 - Introduce only the minimum new data structures required for the first pilot.
 - Preserve multi-subject navigation as a design target from the beginning.
@@ -78,6 +80,42 @@ Add tests proving that, for the overlapping Hessen pilot scope:
 - frontier behavior stays stable,
 - mastery projection is deterministic,
 - existing API/controller contracts remain unchanged.
+
+## Operating States
+
+Canonical convergence should be tracked per adopted subtree, not only per work package.
+
+Use these operational states:
+
+- `legacy_frozen`
+  - the legacy source subtree stays authoritative and read-only for convergence purposes
+- `subtree_adopted`
+  - the subtree exists in canonical DE-level form and has explicit mappings
+- `cutover_ready`
+  - projection, frontier, and learner-state behavior are stable enough for low-risk operational switch
+- `legacy_view_retained`
+  - canonical is the preferred path, while the old subtree remains available as a compatibility view
+
+Transition rule:
+
+- `legacy_frozen` -> `subtree_adopted` -> `cutover_ready` -> `legacy_view_retained`
+
+Adoption checklist for a subtree:
+
+- the subtree is didactically coherent
+- `contains` coverage is complete enough to navigate it as a unit
+- prerequisites are carried over or explicitly rebound
+- legacy-to-canonical mappings exist with justified `exact` / `partial` semantics
+- runtime projection tests cover at least mastery and planned-goal normalization
+
+Current operational baseline:
+
+- Hessen upper-secondary and lower-secondary source JSON remain `legacy_frozen`
+- the canonical Mathematics pilot function corridor is `cutover_ready`
+- the canonical Physics motion corridor is `cutover_ready`
+- the canonical Physics E.2 mechanics corridor is `cutover_ready`
+- the canonical Physics E.3 horizontal-projection slice is `cutover_ready`
+- no subtree has reached `legacy_view_retained` yet
 
 ## Work packages
 
@@ -171,11 +209,11 @@ Acceptance criteria:
 WP2 result:
 
 - first canonical mathematics pilot landscape added:
-  - `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
+  - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - first real Hessen-to-canonical mapping fixture added:
   - `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_math_upper_secondary_to_canonical_math_pilot.json`
 - pilot location decision for now:
-  - keep the first canonical seed close to the mature Hessen source to avoid premature global restructuring
+  - keep the first canonical seed physically separate from state-owned source trees on a Germany-level path
 - pilot scope kept intentionally small:
 - pilot root
   - motivation goal
@@ -263,7 +301,7 @@ WP4 result:
 
 ## WP5. Test coverage
 
-Status: `in_progress`
+Status: `done`
 
 Tasks:
 
@@ -271,6 +309,18 @@ Tasks:
 - add service tests for mastery projection
 - add learner-state invariants for the pilot
 - add one regression test ensuring legacy Hessen behavior remains intact
+
+WP5 result:
+
+- mapping-loader coverage exists for repository-backed fixtures and conflict handling
+- learner-service coverage now explicitly locks the first canonical cutover invariants for the Mathematics function corridor:
+  - exact legacy mastery from Hessen and Bayern projects deterministically into the same canonical goals
+  - the canonical frontier unlocks from projected legacy mastery without leaking legacy IDs into the visible learner state
+  - mixed legacy planned goals collapse into the same canonical subtree targets
+  - stored canonical mastery is not downgraded by weaker projected legacy mastery
+  - equal-valued projection ties resolve deterministically via newer timestamps
+- practical consequence:
+  - the first adopted Mathematics function corridor can now be treated as `cutover_ready` on the backend/runtime side while legacy views stay available
 
 ## WP6. Hessen Sek I math attachment
 
@@ -327,13 +377,104 @@ WP7 progress so far:
 
 ## WP8. Cross-subject pilot
 
-Status: `later`
+Status: `in_progress`
 
 Tasks:
 
 - add a first combined Mathematics + Physics view
 - add only a small set of explicit Mathe -> Physik `requires` edges
 - verify that navigation improves before expanding cross-subject dependencies further
+
+WP8 progress so far:
+
+- first canonical Physics pilot added on the Germany-level path:
+  - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
+- pilot scope intentionally stays narrow:
+  - Hessen upper-secondary E.1 motion corridor
+  - first Hessen upper-secondary E.3 horizontal-projection subtree
+  - motion diagrams
+  - uniform motion
+  - uniformly accelerated motion
+  - free fall
+  - motion modeling
+  - reference frames and superposition
+  - horizontal projection
+  - traffic safety / reaction and braking distances
+- first explicit Hessen Physik -> canonical Physik mapping fixture added:
+  - `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_physics_upper_secondary_to_canonical_physics_pilot.json`
+- the Physics pilot reuses the existing canonical Mathematics pilot instead of duplicating content:
+  - selected canonical mathematics atoms are visible in the Physics motion cluster
+  - Physics atomic goals add only a small set of explicit Math -> Physics prerequisite edges
+- second Physics adoption slice added:
+  - Hessen E.2 Newton subtree (`Newtons Axiome und Inertialsysteme`) is now attached to the canonical Physics pilot
+  - the broader Hessen E.2 parent cluster maps with `partial` semantics onto this adopted Newton slice
+- third Physics adoption slice added:
+  - the Hessen E.2 conservation subtree (`Erhaltungssaetze`) is now attached to the canonical Physics pilot
+  - the adopted conservation corridor keeps energy, momentum, and simple collision goals together as one closed migration slice
+- E.2 hardening step added:
+  - a canonical E.2 mechanics root now groups the adopted Newton and conservation subtrees as one explicit migration unit
+  - the Hessen E.2 parent cluster now maps `exact` onto that canonical E.2 corridor
+- first Bavaria Physics compatibility slice added:
+  - a small Bavaria mapping fixture now projects selected Ph8/Ph9/Ph10 mechanics goals into the canonical Physics pilot
+  - the first Bavaria scope anchors cover motion modeling, energy conservation, and momentum conservation
+- Bavaria collision bridge added:
+  - one small canonical collision atom now absorbs the broader Bavaria collision goal without reshaping the existing Hessen-based elastic/inelastic atoms
+- Bavaria 2D motion edge added:
+  - selected Bavaria horizontal-throw and motion-modeling goals now attach with `partial` semantics to existing canonical motion-modeling and free-fall goals
+- Bavaria E.3 reattachment added:
+  - the selected Bavaria horizontal-throw goals now attach to the new canonical E.3 slice instead of borrowing the older motion/free-fall atoms
+- first E.3 adoption slice added:
+  - the Hessen subtree `Waagerechter Wurf und Superposition` is now attached to the canonical Physics pilot as a new `subtree_adopted` migration unit
+  - the broader frozen Hessen E.3 parent cluster maps `partial` onto this adopted horizontal-throw slice
+- mixed-state scope normalization hardened:
+  - redundant canonical child scopes are now removed when a mapped Hessen or Bavaria parent cluster already contains them
+- learner-state planned-scope normalization aligned:
+  - `getLearnerState` now returns the same collapsed canonical parent scopes that `getPlannedGoals` already exposed for mixed Hessen/Bavaria plans
+- HTTP state contract covered:
+  - the UI learner-state endpoint now has integration tests that read persisted mixed Hessen/Bavaria legacy plans and verify that the serialized `goals.planned` payload exposes only the collapsed canonical parent scope for movement, E.2 mechanics, and conservation
+- first cutover-usage test covered:
+  - a mixed Hessen/Bavaria conservation plan plus mixed projected legacy mastery now yields a shared canonical collision frontier on the UI learner-state endpoint
+- movement cutover-usage test covered:
+  - a mixed Hessen/Bavaria movement plan plus projected Bavaria physics mastery and Hessen mathematics mastery now yields a shared canonical uniform-motion frontier on the UI learner-state endpoint
+- E.2 cutover-usage test covered:
+  - a mixed Hessen/Bavaria E.2 plan plus projected Hessen accelerated-motion mastery now yields a shared canonical Newton frontier on the UI learner-state endpoint
+- E.3 usage test covered:
+  - a Hessen E.3 legacy plan plus projected Hessen E.2 mastery now yields a canonical superposition frontier on the UI learner-state endpoint
+- mixed E.3 usage test covered:
+  - a mixed Hessen/Bavaria E.3 plan plus projected Hessen E.2 mastery now yields the same canonical superposition frontier on the UI learner-state endpoint
+- E.3 cutover-readiness invariants covered:
+  - exact mastery projection from legacy Hessen E.3 atoms into canonical E.3 atoms
+  - canonical dominance and timestamp tie-break for mapped E.3 mastery
+  - canonical active-goal and mastery-write behavior for mapped E.3 goals
+  - legacy Hessen Physics views staying free of canonical E.3 goal leakage
+- targeted verification now covers:
+  - root-curriculum loading and closure from canonical Physics into canonical Mathematics
+  - repository-backed Physics mapping fixture loading
+  - learner frontier / learner-state behavior using projected Hessen Physics + Hessen Mathematics mastery inside the Physics pilot
+  - first Bavaria Physics mastery projection and scope normalization into the canonical Physics pilot
+  - exact Bavaria collision-goal projection into the canonical Physics collision bridge atom
+  - partial scope normalization from Bavaria 2D motion goals into existing canonical movement atoms
+  - remapped Bavaria horizontal-throw planned-goal normalization into the new canonical E.3 slice
+  - planned-goal normalization from the frozen Hessen E.3 parent cluster and the adopted horizontal-throw subtree into the new canonical E.3 slice
+  - mixed Hessen/Bavaria scope collapse onto shared canonical movement, conservation, and E.2 roots
+  - mixed Hessen/Bavaria scope collapse onto the new shared canonical E.3 root
+  - learner-state planned-goal output collapsing the same mixed Hessen/Bavaria scope combinations onto shared canonical movement, conservation, and E.2 roots
+  - exact planned-goal normalization from the Hessen E.2 parent cluster and the Hessen conservation cluster into canonical E.2 scopes
+  - frontier unlocking inside the hardened E.2 corridor from projected Hessen mastery
+  - canonical active-goal projection and canonical mastery-write behavior for mapped E.2 goals
+  - deterministic projection dominance and timestamp tie-break on canonical E.2 goals
+  - legacy Hessen Physics views staying free of canonical E.2 goal leakage
+  - cutover-readiness invariants for the Physics motion corridor:
+    - exact legacy-Physics mastery projection into canonical Physics goals
+    - planned-goal normalization from the Hessen E.1 cluster into the canonical Physics corridor
+    - canonical active-goal and mastery-write flow for mapped legacy Physics goals
+    - legacy-Physics views staying free of canonical Physics goal leakage
+    - deterministic projection dominance and timestamp tie-break on canonical Physics goals
+- practical consequence:
+  - the adopted Physics motion corridor can now be treated as `cutover_ready` on the backend/runtime side while the frozen Hessen Physics view remains available
+  - the canonical Physics E.2 mechanics corridor can now also be treated as `cutover_ready` on the backend/runtime side while the frozen Hessen Physics view remains available
+  - the canonical Physics E.3 horizontal-projection slice can now also be treated as `cutover_ready` on the backend/runtime side while the frozen Hessen Physics view remains available
+  - the same canonical Physics pilot now accepts a first Bavaria legacy slice without introducing a second canonical structure
 
 ## Recommended execution order
 

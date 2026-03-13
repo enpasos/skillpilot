@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 class LandscapeServiceTest {
 
         private static final String CANONICAL_MATH_PILOT_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+        private static final String CANONICAL_PHYSICS_PILOT_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
 
         @Test
         void getOverview_returnsEmptyFilters_forModifiedCurricula() {
@@ -84,6 +85,41 @@ class LandscapeServiceTest {
                 assertThat(landscapeService.getOverview().getSummaries())
                                 .extracting(LandscapeSummary::getCurriculumId)
                                 .contains(CANONICAL_MATH_PILOT_ID);
+        }
+
+        @Test
+        void loadsCanonicalPhysicsPilotAsRootCurriculumAndClosureIncludesMathPilot() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LearningLandscape pilot = landscapeService.getById(CANONICAL_PHYSICS_PILOT_ID);
+
+                assertThat(pilot).isNotNull();
+                assertThat(pilot.getTitle()).isEqualTo("Kanonischer Physik-Pilot (Gymnasium, DE)");
+                assertThat(pilot.getGoals()).isNotEmpty();
+                assertThat(pilot.getGoals())
+                                .extracting(LearningGoal::getTitle)
+                                .contains(
+                                                "Bewegungen, freier Fall und Modellierung",
+                                                "Bewegungen in Diagrammen darstellen und interpretieren",
+                                                "Reaktions- und Bremswege physikalisch bewerten",
+                                                "Waagerechter Wurf und Superposition",
+                                                "Bezugssysteme waehlen und Superpositionsprinzip erklaeren",
+                                                "Waagerechten Wurf als Ueberlagerung analysieren",
+                                                "Newtonsche Axiome und Erhaltungssaetze",
+                                                "Newtonsche Axiome und Inertialsysteme",
+                                                "Grundgleichung der Mechanik anwenden",
+                                                "Erhaltungssaetze",
+                                                "Einfache Stossvorgaenge mit Impuls- und Energieerhaltung analysieren",
+                                                "Kraftstoss und Impulsaenderung verknuepfen");
+                assertThat(landscapeService.getOverview().getSummaries())
+                                .extracting(LandscapeSummary::getCurriculumId)
+                                .contains(CANONICAL_PHYSICS_PILOT_ID);
+                assertThat(landscapeService.getClosure(CANONICAL_PHYSICS_PILOT_ID))
+                                .extracting(LearningLandscape::getLandscapeId)
+                                .contains(CANONICAL_PHYSICS_PILOT_ID, CANONICAL_MATH_PILOT_ID);
         }
 
         private void assertFiltersEmpty(List<LandscapeSummary> summaries, String curriculumId) {

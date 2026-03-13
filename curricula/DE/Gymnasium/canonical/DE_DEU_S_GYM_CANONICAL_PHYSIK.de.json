@@ -1,0 +1,1711 @@
+{
+  "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "DEU",
+  "schoolType": "Gymnasium",
+  "subject": "Physik",
+  "frameworkId": "canonical-gymnasium-physics-pilot",
+  "title": "Kanonischer Physik-Pilot (Gymnasium, DE)",
+  "titleEn": "Canonical Physics Pilot (Gymnasium, DE)",
+  "description": "Kleiner kanonischer Pilot fuer Physik am Gymnasium in Deutschland. Der aktuelle Seed uebernimmt den hessischen E.1-Bewegungskorridor, einen ersten E.3-Teilbaum zu waagerechtem Wurf und Superposition sowie zwei E.2-Teilbaeume zu Newtonschen Axiomen und Erhaltungssaetzen und bindet wenige explizite mathematische Voraussetzungen aus dem kanonischen Mathematik-Pilot an.",
+  "descriptionEn": "Small canonical pilot for physics at Gymnasium in Germany. The current seed adopts the Hessian E.1 motion corridor, a first E.3 subtree on horizontal projection and superposition, together with two E.2 subtrees on Newton's laws and conservation laws, and attaches a small set of explicit mathematical prerequisites from the canonical mathematics pilot.",
+  "filters": [],
+  "goals": [
+    {
+      "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+      "shortKey": "canonical_physics_pilot_module",
+      "title": "Kanonischer Physik-Pilot",
+      "titleEn": "Canonical Physics Pilot",
+      "description": "Wurzel fuer den ersten kanonischen Physik-Pilot. Der aktuelle Umfang deckt einen kleinen Mechanik-Korridor zu Bewegungen, waagerechtem Wurf, freiem Fall, Newtonschen Axiomen, Erhaltungssaetzen und Modellierung ab und macht ausgewaehlte mathematische Voraussetzungen sichtbar, ohne die Legacy-Physikquellen zu veraendern.",
+      "descriptionEn": "Root for the first canonical physics pilot. The current scope covers a small mechanics corridor on motion, horizontal projection, free fall, Newton's laws, conservation laws, and modeling and makes selected mathematical prerequisites visible without modifying the legacy physics sources.",
+      "core": true,
+      "weight": 39,
+      "tags": [
+        "root",
+        "canonical",
+        "pilot",
+        "subject:physics"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1",
+          "PK2",
+          "PK3",
+          "PK5"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_ENERGIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Physik",
+        "topicCode": "CANONICAL.PHYSICS.PILOT"
+      },
+      "contains": [
+        "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+        "65ddd780-0323-45d1-8f94-5e31bf28da23",
+        "82b5df3d-b1a7-4c6f-bd62-18fbbbe097a3",
+        "9340e894-bb0d-45a4-91f2-b90a63ad50a8"
+      ],
+      "requires": [],
+      "sourceRef": "Derived from Hessen KC 2024 Physik Oberstufe E.1/E.2 with explicit cross-subject prerequisites from the canonical DE-level mathematics pilot.",
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceLandscapeTitle": "Physik Oberstufe (Hessen, KC 2024)",
+          "crossSubjectPrerequisiteLandscapeIds": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+          ]
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+      "shortKey": "canonical_physics_why",
+      "title": "Warum Physik? - Bewegung, Modelle & Sicherheit",
+      "titleEn": "Why Physics? - Motion, Models & Safety",
+      "description": "Der Big-Picture-Einstieg: Warum Bewegungsdiagramme, freie Fallmodelle und Sicherheitsbewertungen im Verkehr helfen, reale Situationen zu verstehen, zu berechnen und kritisch zu beurteilen.",
+      "descriptionEn": "The big-picture intro: why motion diagrams, free-fall models, and traffic-safety evaluations help to understand, calculate, and critically assess real situations.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot",
+        "Motivation",
+        "Orientation"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK5"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_TECHNIK"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.WHY"
+      },
+      "contains": [],
+      "requires": [],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "4b56b5c6-0e7b-4486-aa8f-7d5be7f085a5"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "65ddd780-0323-45d1-8f94-5e31bf28da23",
+      "shortKey": "canonical_physics_motion_corridor",
+      "title": "Bewegungen, freier Fall und Modellierung",
+      "titleEn": "Motion, Free Fall, and Modeling",
+      "description": "Pilot-Cluster fuer einen ersten kanonischen Mechanik-Korridor. Er verbindet die hessischen E.1-Physikziele mit wenigen expliziten mathematischen Voraussetzungen aus dem kanonischen Mathematik-Pilot.",
+      "descriptionEn": "Pilot cluster for a first canonical mechanics corridor. It connects the Hessian E.1 physics goals with a small set of explicit mathematical prerequisites from the canonical mathematics pilot.",
+      "core": true,
+      "weight": 14,
+      "tags": [
+        "canonical",
+        "pilot",
+        "area:Mechanik",
+        "cross-subject:mathematics"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1",
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E1"
+      },
+      "contains": [
+        "ce431132-dfc4-42c2-aff6-bd72035190f8",
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "230345f3-c360-4963-b390-ab94e3e2c864",
+        "d6dc0e02-831d-4894-a61a-852bcc74f147",
+        "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "a8c42ee9-2898-4247-819f-c235032ac78a",
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "5a9702f4-7e4d-457d-b98c-f0bafcd1e386",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+        "e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb",
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca"
+      ],
+      "requires": [],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "af70212d-e318-462d-a53f-fee8f05697d6"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "shortKey": "canonical_physics_motion_diagrams",
+      "title": "Bewegungen in Diagrammen darstellen und interpretieren",
+      "titleEn": "Represent and interpret motion in diagrams",
+      "description": "Die lernende Person kann einfache Bewegungen experimentell erfassen und in t-s-, t-v- und t-a-Diagrammen darstellen und interpretieren.",
+      "descriptionEn": "The learner can experimentally record simple motions and represent and interpret them in t-s, t-v, and t-a diagrams.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot",
+        "cross-subject:mathematics"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E1.1"
+      },
+      "contains": [],
+      "requires": [
+        "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "a8c42ee9-2898-4247-819f-c235032ac78a"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "e8160c09-a013-4146-80e6-b0e5dedd8fc6"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "shortKey": "canonical_physics_uniform_motion",
+      "title": "Gleichfoermige Bewegungen als lineare Modelle deuten",
+      "titleEn": "Interpret uniform motion as linear models",
+      "description": "Die lernende Person kann gleichfoermige Bewegungen im Diagramm erkennen, Geschwindigkeit als Steigung oder Quotient deuten und lineare Modelle fuer einfache Bewegungen verwenden.",
+      "descriptionEn": "The learner can recognize uniform motion in diagrams, interpret velocity as slope or quotient, and use linear models for simple motions.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot",
+        "cross-subject:mathematics"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E1.2"
+      },
+      "contains": [],
+      "requires": [
+        "ce431132-dfc4-42c2-aff6-bd72035190f8",
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "3c52943a-6d01-45a6-b429-18bc9132b4e1"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "shortKey": "canonical_physics_accelerated_motion",
+      "title": "Gleichmaessig beschleunigte Bewegungen mit linearen und quadratischen Darstellungen beschreiben",
+      "titleEn": "Describe uniformly accelerated motion with linear and quadratic representations",
+      "description": "Die lernende Person kann gleichmaessig beschleunigte Bewegungen beschreiben, Beschleunigung definieren und lineare v-t- sowie quadratische s-t-Darstellungen fachlich deuten.",
+      "descriptionEn": "The learner can describe uniformly accelerated motion, define acceleration, and interpret linear v-t and quadratic s-t representations.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot",
+        "cross-subject:mathematics"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E1.3"
+      },
+      "contains": [],
+      "requires": [
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+        "5a9702f4-7e4d-457d-b98c-f0bafcd1e386"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "d00d74e7-4fce-48e2-9d00-49f52082f8e6"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "230345f3-c360-4963-b390-ab94e3e2c864",
+      "shortKey": "canonical_physics_free_fall",
+      "title": "Freien Fall aus Messdaten modellieren",
+      "titleEn": "Model free fall from measurement data",
+      "description": "Die lernende Person kann den freien Fall experimentell untersuchen, Messdaten grafisch darstellen, die Gravitationsbeschleunigung bestimmen und ein Zeit-Ort-Gesetz formulieren.",
+      "descriptionEn": "The learner can experimentally investigate free fall, represent measurement data graphically, determine gravitational acceleration, and formulate a time-displacement law.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot",
+        "cross-subject:mathematics"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1",
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E1.4"
+      },
+      "contains": [],
+      "requires": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "17dcaf0e-088d-49d0-8c79-ae2cce5611d4"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "shortKey": "canonical_physics_motion_modeling",
+      "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeit-Gesetzen modellieren",
+      "titleEn": "Model motion with time-displacement and time-velocity laws",
+      "description": "Die lernende Person kann Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeit-Gesetzen modellieren und die Rolle von Idealisierungen wie Massepunkt und Reibungsfreiheit reflektieren.",
+      "descriptionEn": "The learner can model motion with time-displacement and time-velocity laws and reflect on idealizations such as point masses and frictionlessness.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot",
+        "cross-subject:mathematics"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2",
+          "PK3",
+          "PK5"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E1.5"
+      },
+      "contains": [],
+      "requires": [
+        "230345f3-c360-4963-b390-ab94e3e2c864",
+        "e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "7ff5ae5e-2959-45af-aa6e-73aaaf128440"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+      "shortKey": "canonical_physics_traffic_safety",
+      "title": "Reaktions- und Bremswege physikalisch bewerten",
+      "titleEn": "Evaluate reaction and braking distances physically",
+      "description": "Die lernende Person kann Reaktions- und Bremswege qualitativ und mithilfe einfacher Modelle beurteilen und daraus Sicherheitsabstaende in Alltagssituationen bewerten.",
+      "descriptionEn": "The learner can assess reaction and braking distances qualitatively and using simple models and evaluate safe distances in everyday situations.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot",
+        "context:traffic",
+        "cross-subject:mathematics"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2",
+          "PK3",
+          "PK5"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_TECHNIK"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E1.6"
+      },
+      "contains": [],
+      "requires": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+        "5a9702f4-7e4d-457d-b98c-f0bafcd1e386"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "1eb4a590-2801-49e6-b8b7-2881540dd660"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "82b5df3d-b1a7-4c6f-bd62-18fbbbe097a3",
+      "shortKey": "canonical_physics_e3_horizontal_throw",
+      "title": "Waagerechter Wurf und Superposition",
+      "titleEn": "Horizontal Projection and Superposition",
+      "description": "Erster kanonischer E.3-Teilbaum. Er buendelt Bezugssysteme, Superpositionsprinzip und waagerechten Wurf als naechsten geschlossenen Mechanik-Slice oberhalb des bisherigen Bewegungs- und E.2-Korridors.",
+      "descriptionEn": "First canonical E.3 subtree. It bundles reference frames, superposition, and horizontal projection as the next closed mechanics slice on top of the existing motion and E.2 corridors.",
+      "core": true,
+      "weight": 2,
+      "tags": [
+        "canonical",
+        "pilot",
+        "area:Mechanik",
+        "topic:e3"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E3.HORIZONTAL_THROW"
+      },
+      "contains": [
+        "68c90ba6-c438-463c-9a53-cf61062d416a",
+        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"
+      ],
+      "requires": [],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "b552ca1c-3f92-5e8d-91b7-359a2f190d5a",
+          "sourceParentGoalId": "0f3f9df2-37ee-4fd9-95b6-8786367d3794"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "68c90ba6-c438-463c-9a53-cf61062d416a",
+      "shortKey": "canonical_physics_reference_frames_superposition",
+      "title": "Bezugssysteme waehlen und Superpositionsprinzip erklaeren",
+      "titleEn": "Choose reference frames and explain superposition",
+      "description": "Die lernende Person kann geeignete Bezugssysteme fuer Bewegungen waehlen und das Superpositionsprinzip fuer Bewegungsueberlagerungen qualitativ erklaeren.",
+      "descriptionEn": "The learner can choose suitable reference frames for motions and qualitatively explain the principle of superposition for combined motions.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E3.1"
+      },
+      "contains": [],
+      "requires": [
+        "5f289cdc-fda1-4058-b44f-041ba1398e79"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "3c1db2d2-6e30-4661-88bf-1da5f7ebe590"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "shortKey": "canonical_physics_horizontal_throw",
+      "title": "Waagerechten Wurf als Ueberlagerung analysieren",
+      "titleEn": "Analyze horizontal projection as a superposed motion",
+      "description": "Die lernende Person kann den waagerechten Wurf als Ueberlagerung horizontaler und vertikaler Bewegung deuten und die Flugbahn im x-y-Diagramm darstellen.",
+      "descriptionEn": "The learner can interpret horizontal projection as a superposition of horizontal and vertical motion and represent the trajectory in an x-y diagram.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E3.2"
+      },
+      "contains": [],
+      "requires": [
+        "68c90ba6-c438-463c-9a53-cf61062d416a",
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "a0eaf01d-1e13-470e-8ee3-ba1d56c9e3c1"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "9340e894-bb0d-45a4-91f2-b90a63ad50a8",
+      "shortKey": "canonical_physics_e2_mechanics_corridor",
+      "title": "Newtonsche Axiome und Erhaltungssaetze",
+      "titleEn": "Newton's Laws and Conservation Laws",
+      "description": "Pilot-Cluster fuer den ersten geschlossenen kanonischen E.2-Mechanik-Korridor. Er verbindet die adoptierten Hessen-Teilbaeume zu Newtonschen Axiomen, Energie- und Impulserhaltung sowie einfachen Stossprozessen.",
+      "descriptionEn": "Pilot cluster for the first closed canonical E.2 mechanics corridor. It connects the adopted Hessian subtrees on Newton's laws, energy and momentum conservation, and simple collision processes.",
+      "core": true,
+      "weight": 22,
+      "tags": [
+        "canonical",
+        "pilot",
+        "area:Mechanik"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_ENERGIE"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2"
+      },
+      "contains": [
+        "4dc9a094-66d7-4d4d-9436-134aabe48f39",
+        "e9d616d8-685f-4129-a36f-dae7a280bae7"
+      ],
+      "requires": [],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "52c3d2e8-6634-4806-b84b-3709e3c4aef1"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "4dc9a094-66d7-4d4d-9436-134aabe48f39",
+      "shortKey": "canonical_physics_newton_axioms_and_frames",
+      "title": "Newtonsche Axiome und Inertialsysteme",
+      "titleEn": "Newton's Laws and Inertial Frames",
+      "description": "Pilot-Cluster fuer den ersten kanonischen Newton-Korridor. Er uebernimmt den hessischen Teilbaum zu Traegheitsprinzip, Grundgleichung der Mechanik, Wechselwirkungsprinzip und Bezugssystemen.",
+      "descriptionEn": "Pilot cluster for the first canonical Newton corridor. It adopts the Hessian subtree on the principle of inertia, the fundamental equation of mechanics, action-reaction, and reference frames.",
+      "core": true,
+      "weight": 7,
+      "tags": [
+        "canonical",
+        "pilot",
+        "area:Mechanik",
+        "cross-subject:mathematics"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.NEWTON"
+      },
+      "contains": [
+        "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+        "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+        "5f289cdc-fda1-4058-b44f-041ba1398e79",
+        "5a1b3cb2-c0e6-4372-9c57-f33675cffc9b",
+        "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+        "00245a43-eb89-47d2-92d7-21799dbec9f3",
+        "977e7421-0953-4b40-a966-5668b54ed8c9"
+      ],
+      "requires": [],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "ff07337f-24bd-4148-8fa7-7a750d7ae5f8"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+      "shortKey": "canonical_physics_first_law",
+      "title": "Newtons 1. Axiom formulieren und deuten",
+      "titleEn": "Formulate and interpret Newton's first law",
+      "description": "Die lernende Person kann das Traegheitsprinzip formulieren und an einfachen Situationen deuten.",
+      "descriptionEn": "The learner can formulate the principle of inertia and interpret it in simple situations.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.1"
+      },
+      "contains": [],
+      "requires": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "31b6e9ae-003a-474d-8055-e92f4fc3acc3"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+      "shortKey": "canonical_physics_apply_first_law",
+      "title": "Traegheitsprinzip auf gleichfoermige Bewegungen anwenden",
+      "titleEn": "Apply the principle of inertia to uniform motion",
+      "description": "Die lernende Person kann das Traegheitsprinzip auf Alltagssituationen anwenden und Kraeftegleichgewicht von gleichfoermiger Bewegung abgrenzen.",
+      "descriptionEn": "The learner can apply the principle of inertia to everyday situations and distinguish force equilibrium from uniform motion.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.1A"
+      },
+      "contains": [],
+      "requires": [
+        "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "08ef9ae5-e076-4a3f-b330-36417c7471eb"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "shortKey": "canonical_physics_second_law",
+      "title": "Newtons 2. Axiom als Grundgleichung der Mechanik deuten",
+      "titleEn": "Interpret Newton's second law as the fundamental equation of mechanics",
+      "description": "Die lernende Person kann den Impuls p = m * v einfuehren und Newtons zweites Axiom in der Form d/dt p = F formulieren und deuten.",
+      "descriptionEn": "The learner can introduce momentum p = m * v and formulate and interpret Newton's second law in the form d/dt p = F.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.2"
+      },
+      "contains": [],
+      "requires": [
+        "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "be89ee6a-d11d-4970-8c39-bb0c84edac56"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "shortKey": "canonical_physics_apply_f_equals_m_a",
+      "title": "Grundgleichung der Mechanik anwenden",
+      "titleEn": "Apply the fundamental equation of mechanics",
+      "description": "Die lernende Person kann die Grundgleichung der Mechanik F = m * a in einfachen eindimensionalen Situationen anwenden und Kraeftegleichgewichte von beschleunigten Bewegungen abgrenzen.",
+      "descriptionEn": "The learner can apply the fundamental equation of mechanics F = m * a in simple one-dimensional situations and distinguish force equilibrium from accelerated motion.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot",
+        "cross-subject:mathematics"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.2A"
+      },
+      "contains": [],
+      "requires": [
+        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "0436c8fc-b849-4cab-84d7-32e92c0d94a9"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5a1b3cb2-c0e6-4372-9c57-f33675cffc9b",
+      "shortKey": "canonical_physics_third_law",
+      "title": "Newtons 3. Axiom formulieren und erlaeutern",
+      "titleEn": "Formulate and explain Newton's third law",
+      "description": "Die lernende Person kann das Wechselwirkungsprinzip formulieren und an Beispielen erlaeutern.",
+      "descriptionEn": "The learner can formulate the action-reaction principle and explain it using examples.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.3"
+      },
+      "contains": [],
+      "requires": [
+        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "d6550712-7460-446a-96ff-e7599c8f4fb7"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+      "shortKey": "canonical_physics_apply_third_law",
+      "title": "Wechselwirkungsprinzip in Alltagssituationen anwenden",
+      "titleEn": "Apply the action-reaction principle in everyday situations",
+      "description": "Die lernende Person kann das Wechselwirkungsprinzip in Alltagssituationen anwenden und Kraeftepaare korrekt zuordnen.",
+      "descriptionEn": "The learner can apply the action-reaction principle in everyday situations and correctly assign force pairs.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.3A"
+      },
+      "contains": [],
+      "requires": [
+        "5a1b3cb2-c0e6-4372-9c57-f33675cffc9b"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "8ed5596c-2d5e-4b6e-8885-d7e8097afd25"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "00245a43-eb89-47d2-92d7-21799dbec9f3",
+      "shortKey": "canonical_physics_inertial_frames",
+      "title": "Inertialsysteme und Bezugssysteme unterscheiden",
+      "titleEn": "Distinguish inertial and non-inertial frames",
+      "description": "Die lernende Person kann Inertialsysteme definieren und von nicht-inertialen Bezugssystemen unterscheiden.",
+      "descriptionEn": "The learner can define inertial frames and distinguish them from non-inertial reference frames.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.4"
+      },
+      "contains": [],
+      "requires": [
+        "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "2808ec13-5b8b-4fb9-9b1a-7792146995b7"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "977e7421-0953-4b40-a966-5668b54ed8c9",
+      "shortKey": "canonical_physics_name_newton_laws",
+      "title": "Die drei Newtonschen Axiome benennen und erklaeren",
+      "titleEn": "Name and explain Newton's three laws",
+      "description": "Cluster zur zusammenfassenden Wiederholung der drei Newtonschen Axiome.",
+      "descriptionEn": "Cluster for consolidated review of Newton's three laws.",
+      "core": true,
+      "weight": 3,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.5"
+      },
+      "contains": [
+        "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+        "5a1b3cb2-c0e6-4372-9c57-f33675cffc9b"
+      ],
+      "requires": [],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "4e327e2e-8ad6-4fc0-8c6e-46189e0ceea4"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "e9d616d8-685f-4129-a36f-dae7a280bae7",
+      "shortKey": "canonical_physics_conservation_laws",
+      "title": "Erhaltungssaetze",
+      "titleEn": "Conservation Laws",
+      "description": "Pilot-Cluster fuer den ersten kanonischen Erhaltungssaetze-Korridor. Er uebernimmt den hessischen Teilbaum zu Energie- und Impulserhaltung sowie zu einfachen Stossprozessen.",
+      "descriptionEn": "Pilot cluster for the first canonical conservation-laws corridor. It adopts the Hessian subtree on energy and momentum conservation together with simple collision processes.",
+      "core": true,
+      "weight": 15,
+      "tags": [
+        "canonical",
+        "pilot",
+        "area:Mechanik"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_ENERGIE"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.CONSERVATION"
+      },
+      "contains": [
+        "feb70838-931c-4b45-b9a9-930605d93efa",
+        "912febf0-754a-4409-9f8b-7d66810edc08",
+        "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+        "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+      ],
+      "requires": [],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "e26447c4-36a3-43ef-b400-ca918754f3b0"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "feb70838-931c-4b45-b9a9-930605d93efa",
+      "shortKey": "canonical_physics_energy_cluster",
+      "title": "Energie",
+      "titleEn": "Energy",
+      "description": "Cluster zu mechanischer Energie, Arbeit, Energieerhaltung und Reibungsenergie in einfachen mechanischen Situationen.",
+      "descriptionEn": "Cluster on mechanical energy, work, energy conservation, and frictional energy in simple mechanical situations.",
+      "core": true,
+      "weight": 7,
+      "tags": [
+        "canonical",
+        "pilot",
+        "area:Mechanik"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.ENERGY"
+      },
+      "contains": [
+        "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+        "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+        "253a71d2-e751-4c63-acbe-238b71463cd8",
+        "91c49019-ea51-4ce5-a919-c91c45b25e83",
+        "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+      ],
+      "requires": [],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "fa204429-674f-466d-b049-a6de19a50579"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+      "shortKey": "canonical_physics_work_as_energy_change",
+      "title": "Mechanische Arbeit als Energieaenderung deuten",
+      "titleEn": "Interpret mechanical work as a change in energy",
+      "description": "Die lernende Person kann Arbeit als Prozessgroesse verstehen und erklaeren, wie durch verrichtete Arbeit Energie uebertragen oder umgewandelt wird.",
+      "descriptionEn": "The learner can understand work as a process quantity and explain how energy is transferred or transformed by work.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.ENERGY.1"
+      },
+      "contains": [],
+      "requires": [
+        "5f289cdc-fda1-4058-b44f-041ba1398e79"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "75c8920f-757e-47bf-be3a-a5901eb52334"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+      "shortKey": "canonical_physics_mechanical_energy",
+      "title": "Mechanische Energie als Summe deuten",
+      "titleEn": "Interpret mechanical energy as a sum",
+      "description": "Die lernende Person kann mechanische Energie als Summe aus kinetischer und potenzieller Energie beschreiben und an einfachen Beispielen deuten.",
+      "descriptionEn": "The learner can describe mechanical energy as the sum of kinetic and potential energy and interpret it in simple examples.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.ENERGY.2"
+      },
+      "contains": [],
+      "requires": [
+        "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "fa86f7ee-98df-439f-b96c-e39de02ec054"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+      "shortKey": "canonical_physics_kinetic_energy",
+      "title": "Kinetische Energie berechnen und deuten",
+      "titleEn": "Calculate and interpret kinetic energy",
+      "description": "Die lernende Person kann die kinetische Energie E_k = 1/2 * m * v^2 berechnen und die Abhaengigkeit von Masse und Geschwindigkeit erlaeutern.",
+      "descriptionEn": "The learner can calculate kinetic energy E_k = 1/2 * m * v^2 and explain its dependence on mass and velocity.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.ENERGY.3"
+      },
+      "contains": [],
+      "requires": [
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "10ae3ebb-b1e0-4ec5-b396-5286c9fc1425"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "shortKey": "canonical_physics_potential_energy",
+      "title": "Potenzielle Energie in einfachen Situationen berechnen",
+      "titleEn": "Calculate potential energy in simple situations",
+      "description": "Die lernende Person kann potenzielle Energie als Lageenergie in einfachen mechanischen Situationen beschreiben und berechnen.",
+      "descriptionEn": "The learner can describe and calculate potential energy as positional energy in simple mechanical situations.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.ENERGY.4"
+      },
+      "contains": [],
+      "requires": [
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "9e8a79bc-e739-4381-9188-08ad7a5e713f"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "253a71d2-e751-4c63-acbe-238b71463cd8",
+      "shortKey": "canonical_physics_friction_energy",
+      "title": "Reibungsenergie als Umwandlung deuten",
+      "titleEn": "Interpret frictional energy as a transformation",
+      "description": "Die lernende Person kann Reibungsenergie als Umwandlung mechanischer Energie in innere Energie deuten und einfache Energieumwandlungen qualitativ beschreiben.",
+      "descriptionEn": "The learner can interpret frictional energy as the transformation of mechanical energy into internal energy and qualitatively describe simple energy conversions.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.ENERGY.5"
+      },
+      "contains": [],
+      "requires": [
+        "91c49019-ea51-4ce5-a919-c91c45b25e83"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "14cf1aa0-303b-4dcd-b3b6-26a6d8ab6934"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+      "shortKey": "canonical_physics_energy_conservation",
+      "title": "Energieerhaltung in abgeschlossenen Systemen formulieren",
+      "titleEn": "Formulate energy conservation in closed systems",
+      "description": "Die lernende Person kann die Energieerhaltung in abgeschlossenen Systemen formulieren und einfache Energieumwandlungen bilanziell beschreiben.",
+      "descriptionEn": "The learner can formulate energy conservation in closed systems and describe simple energy transformations using balances.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.ENERGY.6"
+      },
+      "contains": [],
+      "requires": [
+        "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "9aeaf941-baef-43fb-8077-50d37e600c26"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "shortKey": "canonical_physics_derive_energy_conservation",
+      "title": "Erhaltung der mechanischen Energie aus Newton herleiten",
+      "titleEn": "Derive mechanical-energy conservation from Newtonian mechanics",
+      "description": "Die lernende Person kann die Erhaltung der mechanischen Energie aus den Newtonschen Axiomen herleiten und die Voraussetzungen dieser Herleitung benennen.",
+      "descriptionEn": "The learner can derive mechanical-energy conservation from Newtonian mechanics and state the assumptions of that derivation.",
+      "core": false,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot",
+        "course:advanced"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.ENERGY.7"
+      },
+      "contains": [],
+      "requires": [
+        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+        "00245a43-eb89-47d2-92d7-21799dbec9f3",
+        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+        "91c49019-ea51-4ce5-a919-c91c45b25e83"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "b36bb565-f304-47c4-b44e-012dd9ff7a1a"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "912febf0-754a-4409-9f8b-7d66810edc08",
+      "shortKey": "canonical_physics_momentum_cluster",
+      "title": "Impuls",
+      "titleEn": "Momentum",
+      "description": "Cluster zu Impulserhaltung, Kraftstoss und einfachen inelastischen Stossen.",
+      "descriptionEn": "Cluster on momentum conservation, impulse, and simple inelastic collisions.",
+      "core": true,
+      "weight": 6,
+      "tags": [
+        "canonical",
+        "pilot",
+        "area:Mechanik"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.MOMENTUM"
+      },
+      "contains": [
+        "839ecc8f-3a60-418b-bc92-64bfeef33824",
+        "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+        "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+        "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+        "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+        "1232febe-868a-4dac-b4c2-e35789434601"
+      ],
+      "requires": [],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "80b09455-fba6-452b-9104-0eda23df3111"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "shortKey": "canonical_physics_momentum_conservation",
+      "title": "Impulserhaltung in einfachen Situationen begruenden",
+      "titleEn": "Justify momentum conservation in simple situations",
+      "description": "Die lernende Person kann den Impuls als Erhaltungsgroesse nutzen, einfache Rueckstosssituationen beschreiben und Impulserhaltung qualitativ begruenden.",
+      "descriptionEn": "The learner can use momentum as a conserved quantity, describe simple recoil situations, and qualitatively justify momentum conservation.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.MOMENTUM.1"
+      },
+      "contains": [],
+      "requires": [
+        "5f289cdc-fda1-4058-b44f-041ba1398e79",
+        "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "f9c16720-ee4e-4bd4-b4a5-e9c12b910fab"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "shortKey": "canonical_physics_derive_momentum_conservation",
+      "title": "Impulserhaltung aus Newtonschen Axiomen herleiten",
+      "titleEn": "Derive momentum conservation from Newton's laws",
+      "description": "Die lernende Person kann die Impulserhaltung aus den Newtonschen Axiomen herleiten und ihren Geltungsbereich diskutieren.",
+      "descriptionEn": "The learner can derive momentum conservation from Newton's laws and discuss its domain of validity.",
+      "core": false,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot",
+        "course:advanced"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.MOMENTUM.2"
+      },
+      "contains": [],
+      "requires": [
+        "5f289cdc-fda1-4058-b44f-041ba1398e79",
+        "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "0c7a1a3d-ca41-4795-8b60-0ba555e1b804"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+      "shortKey": "canonical_physics_force_impulse",
+      "title": "Kraftstoss und Impulsaenderung verknuepfen",
+      "titleEn": "Relate force impulse to change in momentum",
+      "description": "Die lernende Person kann den Kraftstoss als Produkt aus Kraft und Einwirkdauer beschreiben und mit Impulsaenderungen verknuepfen.",
+      "descriptionEn": "The learner can describe impulse as the product of force and interaction time and relate it to changes in momentum.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.MOMENTUM.3"
+      },
+      "contains": [],
+      "requires": [
+        "839ecc8f-3a60-418b-bc92-64bfeef33824"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "9bd4fd50-6da2-48cf-bcdd-5a23a92cb80c"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+      "shortKey": "canonical_physics_inelastic_collisions",
+      "title": "Inelastische Stoesse mit Impulserhaltung analysieren",
+      "titleEn": "Analyze inelastic collisions using momentum conservation",
+      "description": "Die lernende Person kann inelastische Stoesse in einer Dimension mithilfe der Impulserhaltung analysieren und Energieumwandlungen qualitativ beschreiben.",
+      "descriptionEn": "The learner can analyze inelastic collisions in one dimension using momentum conservation and qualitatively describe energy transformations.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_ENERGIE"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.MOMENTUM.4"
+      },
+      "contains": [],
+      "requires": [
+        "839ecc8f-3a60-418b-bc92-64bfeef33824",
+        "91c49019-ea51-4ce5-a919-c91c45b25e83"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "c17eef04-4355-475a-9d05-4d60b1c22cdb"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1232febe-868a-4dac-b4c2-e35789434601",
+      "shortKey": "canonical_physics_crash_impulse_context",
+      "title": "Kraftstoss und Knautschzone im Unfallkontext bewerten",
+      "titleEn": "Assess impulse and crumple zones in crash contexts",
+      "description": "Die lernende Person kann den Zusammenhang zwischen Kraftstoss, Einwirkdauer und Verletzungsrisiko im Verkehr fachlich deuten.",
+      "descriptionEn": "The learner can interpret the relation between impulse, interaction time, and injury risk in traffic contexts.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot",
+        "context:traffic_safety"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK5"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_TECHNIK"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.MOMENTUM.5"
+      },
+      "contains": [],
+      "requires": [
+        "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "e65ea17b-332b-4fe1-922f-57c4f9708332"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+      "shortKey": "canonical_physics_simple_collision_processes",
+      "title": "Einfache Stossvorgaenge mit Impuls- und Energieerhaltung analysieren",
+      "titleEn": "Analyze simple collision processes using momentum and energy conservation",
+      "description": "Die lernende Person kann einfache Stossvorgaenge quantitativ untersuchen, dabei Impuls- und Energieerhaltung fachlich nutzen und die Rolle von Erhaltungssaetzen in der Mechanik erklaeren.",
+      "descriptionEn": "The learner can quantitatively analyze simple collision processes, use momentum and energy conservation appropriately, and explain the role of conservation laws in mechanics.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_ENERGIE"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.COLLISIONS.0"
+      },
+      "contains": [],
+      "requires": [
+        "839ecc8f-3a60-418b-bc92-64bfeef33824",
+        "91c49019-ea51-4ce5-a919-c91c45b25e83"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "42c2f7e3-91b4-5de8-bef0-d563440e9d52",
+          "sourceGoalId": "fe76e9bb-f2ce-5d9a-9ea2-d7ed7ea6ca8f"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+      "shortKey": "canonical_physics_elastic_collisions",
+      "title": "Elastische Stoesse von inelastischen unterscheiden",
+      "titleEn": "Distinguish elastic from inelastic collisions",
+      "description": "Die lernende Person kann elastische Stoesse in einer Dimension mithilfe von Impuls- und kinetischer Energieerhaltung analysieren und sie fachlich von inelastischen Stoessen abgrenzen.",
+      "descriptionEn": "The learner can analyze elastic collisions in one dimension using momentum and kinetic-energy conservation and distinguish them from inelastic collisions.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_ENERGIE"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.COLLISIONS.1"
+      },
+      "contains": [],
+      "requires": [
+        "839ecc8f-3a60-418b-bc92-64bfeef33824",
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+        "91c49019-ea51-4ce5-a919-c91c45b25e83"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "3428ea3e-05fc-4cef-a3f7-5d723c9cc756"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+      "shortKey": "canonical_physics_com_frame_collisions",
+      "title": "Elastische Stoesse im Schwerpunktsystem analysieren",
+      "titleEn": "Analyze elastic collisions in the center-of-mass frame",
+      "description": "Die lernende Person kann elastische Stoesse im Schwerpunktsystem analysieren, Relativgeschwindigkeiten vor und nach dem Stoss verknuepfen und Ergebnisse ins Laborsystem zuruecktransformieren.",
+      "descriptionEn": "The learner can analyze elastic collisions in the center-of-mass frame, relate relative velocities before and after impact, and transform results back to the laboratory frame.",
+      "core": false,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot",
+        "course:advanced"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics-pilot",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2",
+          "PK3"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.E2.COLLISIONS.2"
+      },
+      "contains": [],
+      "requires": [
+        "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+      ],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+          "sourceGoalId": "f2b4d6e1-177f-4b14-aea1-9fcbe510e1bd"
+        }
+      },
+      "type": "atomic"
+    }
+  ]
+}

@@ -670,6 +670,34 @@ public class LearnerService {
         return new ArrayList<>(mappedGoalIds);
     }
 
+    private List<String> normalizePlannedGoalIdsForVisibleGoals(List<String> goalIds,
+            Map<String, LearningGoal> visibleGoals,
+            boolean allowPartial) {
+        List<String> mappedGoalIds = mapGoalIdsForVisibleGoals(goalIds, visibleGoals, allowPartial);
+        return collapseContainedGoalIds(mappedGoalIds, visibleGoals);
+    }
+
+    private List<String> collapseContainedGoalIds(List<String> goalIds, Map<String, LearningGoal> visibleGoals) {
+        if (goalIds == null || goalIds.isEmpty() || visibleGoals == null || visibleGoals.isEmpty()) {
+            return goalIds == null ? Collections.emptyList() : goalIds;
+        }
+
+        LinkedHashSet<String> orderedGoalIds = new LinkedHashSet<>(goalIds);
+        Set<String> redundantGoalIds = new HashSet<>();
+        for (String goalId : orderedGoalIds) {
+            if (!visibleGoals.containsKey(goalId)) {
+                continue;
+            }
+            Set<String> descendants = new HashSet<>();
+            collectDescendants(goalId, visibleGoals, descendants);
+            redundantGoalIds.addAll(descendants);
+        }
+
+        return orderedGoalIds.stream()
+                .filter(goalId -> !redundantGoalIds.contains(goalId))
+                .toList();
+    }
+
     @Transactional
     public MasteryUpdateResponse setMastery(String skillpilotId, MasteryUpdateRequest request) {
         Learner learner = learnerRepository.findById(skillpilotId)
@@ -777,7 +805,7 @@ public class LearnerService {
             return storedPlannedGoals;
         }
         Map<String, LearningGoal> structuralGoals = getFilteredGoals(curriculumId, "{}");
-        return mapGoalIdsForVisibleGoals(storedPlannedGoals, structuralGoals, true);
+        return normalizePlannedGoalIdsForVisibleGoals(storedPlannedGoals, structuralGoals, true);
     }
 
     private List<String> getStoredPlannedGoals(String skillpilotId) {
@@ -802,7 +830,7 @@ public class LearnerService {
                 .collect(Collectors.toSet());
         if (learner.getSelectedCurriculum() != null && !learner.getSelectedCurriculum().isBlank()) {
             Map<String, LearningGoal> structuralGoals = getFilteredGoals(learner.getSelectedCurriculum(), "{}");
-            saneTargetIds = new LinkedHashSet<>(mapGoalIdsForVisibleGoals(new ArrayList<>(saneTargetIds),
+            saneTargetIds = new LinkedHashSet<>(normalizePlannedGoalIdsForVisibleGoals(new ArrayList<>(saneTargetIds),
                     structuralGoals, true));
         }
         final Set<String> normalizedTargetIds = saneTargetIds;
@@ -1294,7 +1322,10 @@ public class LearnerService {
             structuralGoals = getFilteredGoals(curriculumId, "{}");
         }
 
-        List<String> plannedIds = mapGoalIdsForVisibleGoals(getStoredPlannedGoals(skillpilotId), structuralGoals, true);
+        List<String> plannedIds = normalizePlannedGoalIdsForVisibleGoals(
+                getStoredPlannedGoals(skillpilotId),
+                structuralGoals,
+                true);
         List<FrontierGoal> plannedRich = new ArrayList<>();
 
         for (String pid : plannedIds) {
