@@ -44,6 +44,7 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_FRENCH_ID = "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977";
     private static final String CANONICAL_LATIN_ID = "668cf206-941e-51f8-8704-3e8938631235";
     private static final String CANONICAL_SPANISH_ID = "90eedebf-9ea8-5247-85dd-31c147f907c3";
+    private static final String CANONICAL_GREEK_ID = "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0";
     private static final String HESSEN_GYMNASIUM_UPPER_ROOT_ID = "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da";
     private static final String HESSEN_GYMNASIUM_UPPER_MATH_ID = "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3";
     private static final String HESSEN_GYMNASIUM_UPPER_PHYSICS_ID = "24f2ca0f-b94a-444e-bb70-677cb6f85c02";
@@ -57,6 +58,7 @@ public class LearnerControllerIntegrationTest {
     private static final String HESSEN_GYMNASIUM_UPPER_FRENCH_ID = "30acd190-609c-4109-8ee7-06fc5594af19";
     private static final String HESSEN_GYMNASIUM_UPPER_LATIN_ID = "fe28bda8-03f3-4c4a-8286-7fcfce4eeac1";
     private static final String HESSEN_GYMNASIUM_UPPER_SPANISH_ID = "936efc61-a4d5-49fd-8694-085d1347db80";
+    private static final String HESSEN_GYMNASIUM_UPPER_GREEK_ID = "c7209caa-18e5-4dd8-b68f-dd86e228d045";
     private static final String CANONICAL_PHYSICS_GK_PERSONAL_CONFIG = """
             {
               "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "GK"}
@@ -104,6 +106,10 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_SPANISH_E_PHASE_CLUSTER_ID = "f4bf14a4-099c-5baf-b1b2-75b5f5a8b8d0";
     private static final String CANONICAL_SPANISH_READ_IDENTITY_ID = "2e40b905-27db-5976-bf4f-98c450cef0ac";
     private static final String CANONICAL_SPANISH_LISTEN_RELATIONSHIPS_ID = "31fc4aa9-6aaa-5728-9f93-4056e7524e8c";
+    private static final String CANONICAL_GREEK_E_PHASE_ID = "b743649c-d25a-50b8-8302-9e972e2a72c2";
+    private static final String CANONICAL_GREEK_LANGUAGE_FORMS_ID = "98a4f066-729b-517e-aa43-0975df521f1a";
+    private static final String CANONICAL_GREEK_TEXT_UNDERSTANDING_ID = "2e09f77d-6e0c-5d11-aba2-f53863579a22";
+    private static final String CANONICAL_GREEK_CULTURE_RELIGION_ID = "086a36a2-a443-5205-b59a-247d6bbb5d9f";
     private static final String CANONICAL_POLITICS_ECONOMICS_E_PHASE_CLUSTER_ID = "bb341613-10ba-5d25-a331-36831bf766e3";
     private static final String CANONICAL_POLITICS_ECONOMICS_SOCIETY_CLUSTER_ID = "56cc2051-994e-57cc-8cbf-2d60bcad16a3";
     private static final String CANONICAL_POLITICS_ECONOMICS_ECONOMY_CLUSTER_ID = "7fbc5949-2c8c-53e5-a97f-af3cedf020c9";
@@ -138,6 +144,8 @@ public class LearnerControllerIntegrationTest {
     private static final String LEGACY_LATIN_WHY_ID = "735abeb1-41ab-4e65-8be8-865731853213";
     private static final String LEGACY_SPANISH_E_PHASE_CLUSTER_ID = "9fa56b9a-3944-4d28-b7f3-ee1ebf18bb62";
     private static final String LEGACY_SPANISH_WHY_ID = "549ca3b3-28f3-42dc-ba23-eb299061ec93";
+    private static final String LEGACY_GREEK_E_PHASE_ID = "bb6a397a-076b-4bdc-b2f2-7f42d11cd63e";
+    private static final String LEGACY_GREEK_WHY_ID = "f4c86e99-93b1-4376-b9d0-408d611de20e";
     private static final String LEGACY_POLITICS_ECONOMICS_E_PHASE_CLUSTER_ID = "e8dcf1ec-fdda-4528-ab67-212810d973a9";
     private static final String LEGACY_POLITICS_ECONOMICS_WHY_ID = "3bee27bb-2277-4a7a-a66e-5038d6ee1781";
     private static final String LEGACY_MATH_ANALYSIS_CLUSTER_ID = "a6ee6304-8c26-4eda-b56e-676655e703c2";
@@ -944,6 +952,67 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
+    void cutoverEndpointMigratesLegacyHessenGreekLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(HESSEN_GYMNASIUM_UPPER_GREEK_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "c7209caa-18e5-4dd8-b68f-dd86e228d045": {"selected": true, "filterId": "GK"}
+                }
+                """);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_GREEK_E_PHASE_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_GREEK_WHY_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+        JsonNode goalOptions = body.path("stateMachine").path("goalOptions");
+        JsonNode frontier = body.path("frontier");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
+        assertThat(persistedConfig.path(CANONICAL_GREEK_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_GREEK_ID).path("filterId").asText()).isEqualTo("GK");
+        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_INFORMATICS_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_HISTORY_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_POLITICS_ECONOMICS_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_ENGLISH_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_SPANISH_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_GREEK_E_PHASE_ID);
+        assertThat(jsonIds(goalOptions))
+                .contains(
+                        CANONICAL_GREEK_LANGUAGE_FORMS_ID,
+                        CANONICAL_GREEK_TEXT_UNDERSTANDING_ID,
+                        CANONICAL_GREEK_CULTURE_RELIGION_ID)
+                .doesNotContain(LEGACY_GREEK_WHY_ID, LEGACY_GREEK_E_PHASE_ID);
+        assertThat(jsonIds(frontier))
+                .contains(
+                        CANONICAL_GREEK_LANGUAGE_FORMS_ID,
+                        CANONICAL_GREEK_TEXT_UNDERSTANDING_ID,
+                        CANONICAL_GREEK_CULTURE_RELIGION_ID);
+
+        assertThat(response.body())
+                .doesNotContain(LEGACY_GREEK_WHY_ID)
+                .doesNotContain(LEGACY_GREEK_E_PHASE_ID);
+    }
+
+    @Test
     void cutoverEndpointMigratesLegacyHessenOverviewLearnerToCanonicalGymnasiumRootWithBothSubjects() throws Exception {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(HESSEN_GYMNASIUM_UPPER_ROOT_ID);
@@ -1517,6 +1586,85 @@ public class LearnerControllerIntegrationTest {
                 .doesNotContain(LEGACY_SPANISH_E_PHASE_CLUSTER_ID)
                 .doesNotContain(LEGACY_GERMAN_WHY_ID)
                 .doesNotContain(LEGACY_SPANISH_WHY_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyHessenOverviewLearnerToCanonicalGymnasiumRootWithGermanAndGreek() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(HESSEN_GYMNASIUM_UPPER_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "f1ba2118-853f-4aa0-bef5-4f749bc621ed": {"selected": true, "filterId": "LK"},
+                  "c7209caa-18e5-4dd8-b68f-dd86e228d045": {"selected": true, "filterId": "GK"}
+                }
+                """);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.saveAll(List.of(
+                new PlannedGoal(learner, LEGACY_GERMAN_E_PHASE_CLUSTER_ID),
+                new PlannedGoal(learner, LEGACY_GREEK_E_PHASE_ID)));
+        masteryRepository.saveAll(List.of(
+                new Mastery(learner, LEGACY_GERMAN_WHY_ID, 1.0),
+                new Mastery(learner, LEGACY_GREEK_WHY_ID, 1.0)));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+        JsonNode goalOptions = body.path("stateMachine").path("goalOptions");
+        JsonNode frontier = body.path("frontier");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
+        assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_GERMAN_ID).path("filterId").asText()).isEqualTo("LK");
+        assertThat(persistedConfig.path(CANONICAL_GREEK_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_GREEK_ID).path("filterId").asText()).isEqualTo("GK");
+        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_INFORMATICS_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_HISTORY_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_POLITICS_ECONOMICS_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_ENGLISH_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_FRENCH_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_LATIN_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_SPANISH_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(2);
+        assertThat(jsonIds(planned))
+                .containsExactlyInAnyOrder(CANONICAL_GERMAN_E_PHASE_CLUSTER_ID, CANONICAL_GREEK_E_PHASE_ID);
+        assertThat(body.path("stateMachine").path("requiredAction").asText()).isEqualTo("setActiveGoal");
+        assertThat(jsonIds(goalOptions))
+                .contains(
+                        CANONICAL_GERMAN_GRAMMAR_ID,
+                        CANONICAL_GERMAN_TEXT_TYPE_ID,
+                        CANONICAL_GREEK_LANGUAGE_FORMS_ID,
+                        CANONICAL_GREEK_TEXT_UNDERSTANDING_ID,
+                        CANONICAL_GREEK_CULTURE_RELIGION_ID)
+                .doesNotContain(
+                        LEGACY_GERMAN_E_PHASE_CLUSTER_ID,
+                        LEGACY_GREEK_E_PHASE_ID,
+                        LEGACY_GERMAN_WHY_ID,
+                        LEGACY_GREEK_WHY_ID);
+        assertThat(jsonIds(frontier))
+                .contains(
+                        CANONICAL_GERMAN_GRAMMAR_ID,
+                        CANONICAL_GERMAN_TEXT_TYPE_ID,
+                        CANONICAL_GREEK_LANGUAGE_FORMS_ID,
+                        CANONICAL_GREEK_TEXT_UNDERSTANDING_ID,
+                        CANONICAL_GREEK_CULTURE_RELIGION_ID);
+
+        assertThat(response.body())
+                .doesNotContain(LEGACY_GERMAN_E_PHASE_CLUSTER_ID)
+                .doesNotContain(LEGACY_GREEK_E_PHASE_ID)
+                .doesNotContain(LEGACY_GERMAN_WHY_ID)
+                .doesNotContain(LEGACY_GREEK_WHY_ID);
     }
 
     @Test

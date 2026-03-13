@@ -124,7 +124,8 @@ Current operational baseline:
 - the DE-level French landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
 - the DE-level Latin landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
 - the DE-level Spanish landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
-- a first backend learner-cutover path from frozen Hessen upper-secondary Math/Physics/Chemistry/Biology/Informatics/History/German/Politics-and-Economics/English/French/Latin/Spanish views into the DE-level `Gymnasium (DE)` root is available
+- the DE-level Greek landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root
+- a first backend learner-cutover path from frozen Hessen upper-secondary Math/Physics/Chemistry/Biology/Informatics/History/German/Politics-and-Economics/English/French/Latin/Spanish/Greek views into the DE-level `Gymnasium (DE)` root is available
 - cutover now stabilizes curriculum selection, root/subject filters, first-response planned-scope normalization, and canonical continuation with preserved legacy mastery history
 - the cutover HTTP contract now also covers the frozen Hessen overview case with combined Mathematics/Physics selection and the direct Chemistry cutover case with canonical planned-scope continuation
 - the learner cockpit now exposes a first explicit UI migration path from frozen Hessen upper-secondary views into `Gymnasium (DE)` and switches the frontend landscape context after successful cutover
@@ -148,6 +149,7 @@ Current operational baseline:
 - the canonical French Hessen baseline is `subtree_adopted`
 - the canonical Latin Hessen baseline is `subtree_adopted`
 - the canonical Spanish Hessen baseline is `subtree_adopted`
+- the canonical Greek Hessen baseline is `subtree_adopted`
 - no subtree has reached `legacy_view_retained` yet
 
 ## Work packages
