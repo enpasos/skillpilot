@@ -63,8 +63,10 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     const childIds = parent?.contains ?? []
     if (childIds.length === 0) return []
 
+    const hasConfig = !!personalConfig && Object.keys(personalConfig).length > 0
+
     // Check if this level has any "Positive Selection" (at least one sibling explicitly selected).
-    const hasPositiveSibling = personalConfig && Object.keys(personalConfig).length > 0 && childIds.some(childId => {
+    const hasPositiveSibling = hasConfig && childIds.some(childId => {
       const c = allGoals.get(childId)
       if (!c) return false
       const config = (c.landscapeId ? personalConfig[c.landscapeId] : undefined) ?? personalConfig[c.id]
@@ -72,8 +74,10 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     })
 
     return childIds.filter((childId) => {
-      // 1. Filter by active activeFilter (e.g. "GK", "LK")
-      if (activeFilter && activeFilter !== 'all') {
+      // Global goal-tag filters are only valid in legacy single-filter mode.
+      // Landscape-level filters such as DE-HE/DE-BY or per-subject GK/LK are
+      // already handled via personalConfig and must not be re-applied here.
+      if (!hasConfig && activeFilter && activeFilter !== 'all') {
         const child = allGoals.get(childId)
         if (!child) return false
         if (child.tags && child.tags.length > 0 && !child.tags.includes(activeFilter)) {
@@ -83,7 +87,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
 
       // 2. Filter by Personal Curriculum (Level 2)
       const child = allGoals.get(childId)
-      if (child && personalConfig && Object.keys(personalConfig).length > 0) {
+      if (child && hasConfig) {
         const config = (child.landscapeId ? personalConfig[child.landscapeId] : undefined) ?? personalConfig[child.id]
 
         if (config) {

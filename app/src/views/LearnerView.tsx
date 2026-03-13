@@ -285,8 +285,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       const child = goalIndexAll.get(childId)
       if (!child) return false
 
-      // 1) Global active filter (e.g. "GK", "LK")
-      if (effectiveActiveFilter && effectiveActiveFilter !== 'all') {
+      // Global goal-tag filters are only valid in legacy single-filter mode.
+      // Landscape-level filters such as DE-HE/DE-BY or per-subject GK/LK are
+      // already represented in personalConfig and must not be re-applied here.
+      if (!hasConfig && effectiveActiveFilter && effectiveActiveFilter !== 'all') {
         if (child.tags && child.tags.length > 0 && !child.tags.includes(effectiveActiveFilter)) {
           return false
         }
