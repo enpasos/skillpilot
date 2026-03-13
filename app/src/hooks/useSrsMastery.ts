@@ -13,6 +13,15 @@ type VocabData = {
   cards: VocabCard[]
 }
 
+type SrsReviewState = {
+  nextReview?: number | string
+}
+
+type ClientStateSnapshot = {
+  updatedAt?: string
+  srsState?: Record<string, SrsReviewState>
+}
+
 type SrsMasteryMap = Record<string, number>
 
 const SRS_TAG_PREFIX = 'srs-deck'
@@ -36,6 +45,7 @@ export function useSrsMastery(
   const [masteryByGoal, setMasteryByGoal] = useState<SrsMasteryMap>({})
   const [timerTick, setTimerTick] = useState(0)
   const deckCacheRef = useRef<Map<string, Promise<VocabData | null>>>(new Map())
+  const clientStateCacheRef = useRef<Map<string, Promise<ClientStateSnapshot | null>>>(new Map())
   const timerRef = useRef<number | null>(null)
   const runRef = useRef(0)
 
@@ -50,6 +60,29 @@ export function useSrsMastery(
     }
     return cache.get(url) ?? null
   }, [])
+
+  const loadClientState = useCallback(async (goalId: string) => {
+    if (!skillpilotId || !goalId) return null
+
+    const cacheKey = `${skillpilotId}:${reloadSignal}:${goalId}`
+    const cache = clientStateCacheRef.current
+    if (!cache.has(cacheKey)) {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase
+        ? `${apiBase}/api/ui/learners/${skillpilotId}/client-state/${goalId}`
+        : `/api/ui/learners/${skillpilotId}/client-state/${goalId}`
+      const promise = fetch(url, { cache: 'no-store' })
+        .then((res) => (res.ok ? res.json() : null))
+        .then((payload) => {
+          if (!payload || typeof payload !== 'object') return null
+          const snapshot = payload as ClientStateSnapshot
+          return snapshot
+        })
+        .catch(() => null)
+      cache.set(cacheKey, promise)
+    }
+    return cache.get(cacheKey) ?? null
+  }, [reloadSignal, skillpilotId])
 
   const computeMastery = useCallback(async () => {
     runRef.current += 1
@@ -104,12 +137,30 @@ export function useSrsMastery(
       }
 
       const storageKey = `srs_state_${skillpilotId}_${goal.id}`
-      let srsState: Record<string, { nextReview?: number }> = {}
+      const lastSyncKey = `srs_state_last_sync_${skillpilotId}_${goal.id}`
+      let srsState: Record<string, SrsReviewState> = {}
       try {
         const stored = localStorage.getItem(storageKey)
         if (stored) srsState = JSON.parse(stored)
       } catch {
         srsState = {}
+      }
+
+      if (Object.keys(srsState).length === 0) {
+        const snapshot = await loadClientState(goal.id)
+        if (runId !== runRef.current) return
+        const serverState = snapshot?.srsState
+        if (serverState && Object.keys(serverState).length > 0) {
+          srsState = serverState
+          try {
+            localStorage.setItem(storageKey, JSON.stringify(serverState))
+            if (snapshot?.updatedAt) {
+              localStorage.setItem(lastSyncKey, String(snapshot.updatedAt))
+            }
+          } catch {
+            // Ignore local persistence errors; mastery can still be computed from the server snapshot.
+          }
+        }
       }
 
       let dueCount = 0
@@ -144,12 +195,16 @@ export function useSrsMastery(
         setTimerTick((prev) => prev + 1)
       }, delay)
     }
-  }, [goals, loadDeck, skillpilotId, language])
+  }, [goals, loadDeck, loadClientState, skillpilotId, language])
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     void computeMastery()
   }, [computeMastery, reloadSignal, timerTick])
+
+  useEffect(() => {
+    clientStateCacheRef.current.clear()
+  }, [reloadSignal, skillpilotId])
 
   useEffect(() => {
     return () => {
