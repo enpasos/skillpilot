@@ -76,6 +76,22 @@
           "resourceType": "course-page",
           "provider": "physikbuch.schule",
           "lang": "de"
+        },
+        {
+          "type": "curriculum",
+          "title": "KCGO Gymnasiale Oberstufe ab dem zweiten Halbjahr des Schuljahres 2024/25",
+          "url": "https://kultus.hessen.de/unterricht/kerncurricula-und-lehrplaene/kerncurricula/gymnasiale-oberstufe-ab-schuljahr-20242025-kerncurricula",
+          "resourceType": "official_curriculum_page",
+          "provider": "Hessisches Kultusministerium",
+          "lang": "de"
+        },
+        {
+          "type": "curriculum",
+          "title": "KCGO Physik (Ausgabe 2024)",
+          "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-physik.pdf",
+          "resourceType": "official_curriculum_pdf",
+          "provider": "Hessisches Kultusministerium",
+          "lang": "de"
         }
       ]
     },
@@ -644,7 +660,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "E"
     },
     {
       "id": "57e2a9bb-ca96-4fee-bed5-482eaff52bba",
@@ -677,7 +694,7 @@
         "phase": "E"
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nSie analysieren für einen Logistikbetrieb typische Kraftsituationen beim Beladen, im Aufzugbetrieb und beim Ziehen von Anhängern. Ziel ist es, Trag- und Sicherheitsgrenzen mithilfe der Newtonschen Axiome fachlich zu bewerten.\n\nAlle Materialien gehören zu derselben Betriebssituation: Material 1 beschreibt die Rampe, Material 2 den Aufzug und Material 3 die Zugfahrzeug-Anhänger-Kopplung als Wechselwirkungsbeispiel.\n\n**Material 1 (Logistik-Rampe):**\n\n- Ein Paketdienst belädt einen Transporter über eine Rampe.\n- Masse des Pakets: $m=15.0\\,\\mathrm{kg}$\n- Neigungswinkel: $\\alpha=18^\\circ$\n- Erdbeschleunigung: $g=9.81\\,\\mathrm{m/s^2}$\n- Haftreibungskoeffizient (Karton/Metall): $\\mu_H=0.30$\n- Gleitreibungskoeffizient: $\\mu_G=0.22$\n\n**Material 2 (Aufzug):**\n\n- Masse der Person: $m_P=70\\,\\mathrm{kg}$\n- Aufwärtsbeschleunigung: $a=1.2\\,\\mathrm{m/s^2}$\n\n**Material 3 (Zugfahrzeug und Anhänger):**\n\n- Das Zugfahrzeug zieht den Anhänger mit einer Kraft von $1.8\\,\\mathrm{kN}$ nach vorn.\n\n**Aufgaben:**\n\n1. Berechnen Sie die Hangabtriebskraft und die maximale Haftreibung. Entscheiden Sie, ob das Paket von allein rutscht. (7 BE)\n2. Falls das Paket rutscht: Berechnen Sie die Beschleunigung entlang der schiefen Ebene. (6 BE)\n3. Berechnen Sie die Kraft, mit der die Person im Aufzug auf die Waage drückt. (6 BE)\n4. Formulieren Sie mit Material 3 das Wechselwirkungsprinzip (3. Newtonsches Axiom) für Fahrzeug und Anhänger. (6 BE)",
+        "taskContent": "**Kontext:**\n\nSie analysieren für einen Logistikbetrieb typische Kraftsituationen beim Beladen, im Aufzugbetrieb und beim Ziehen von Anhängern. Ziel ist es, Trag- und Sicherheitsgrenzen mithilfe der Newtonschen Axiome fachlich zu bewerten.\n\nAlle Materialien gehören zu derselben Betriebssituation: Material 1 beschreibt die Rampe, Material 2 den Aufzug und Material 3 die Zugfahrzeug-Anhänger-Kopplung als Wechselwirkungsbeispiel.\n\n**Material 1 (Logistik-Rampe):**\n\n- Ein Paketdienst belädt einen Transporter über eine Rampe.\n- Masse des Pakets: $m=15.0\\,\\mathrm{kg}$\n- Neigungswinkel: $\\alpha=18^\\circ$\n- Erdbeschleunigung: $g=9.81\\,\\mathrm{m/s^2}$\n- Haftreibungsköffizient (Karton/Metall): $\\mu_H=0.30$\n- Gleitreibungsköffizient: $\\mu_G=0.22$\n\n**Material 2 (Aufzug):**\n\n- Masse der Person: $m_P=70\\,\\mathrm{kg}$\n- Aufwärtsbeschleunigung: $a=1.2\\,\\mathrm{m/s^2}$\n\n**Material 3 (Zugfahrzeug und Anhänger):**\n\n- Das Zugfahrzeug zieht den Anhänger mit einer Kraft von $1.8\\,\\mathrm{kN}$ nach vorn.\n\n**Aufgaben:**\n\n1. Berechnen Sie die Hangabtriebskraft und die maximale Haftreibung. Entscheiden Sie, ob das Paket von allein rutscht. (7 BE)\n2. Falls das Paket rutscht: Berechnen Sie die Beschleunigung entlang der schiefen Ebene. (6 BE)\n3. Berechnen Sie die Kraft, mit der die Person im Aufzug auf die Waage drückt. (6 BE)\n4. Formulieren Sie mit Material 3 das Wechselwirkungsprinzip (3. Newtonsches Axiom) für Fahrzeug und Anhänger. (6 BE)",
         "solutionContent": "1. Hangabtriebskraft:\n\n$$\nF_H=m g\\sin\\alpha=15.0\\cdot 9.81\\cdot \\sin(18^\\circ)=45.5\\,\\mathrm{N}\n$$\n\nNormalkraft:\n\n$$\nF_N=m g\\cos\\alpha=15.0\\cdot 9.81\\cdot \\cos(18^\\circ)=139.9\\,\\mathrm{N}\n$$\n\nMaximale Haftreibung:\n\n$$\nF_{R,H,\\max}=\\mu_H F_N=0.30\\cdot 139.9=42.0\\,\\mathrm{N}\n$$\n\nDa $F_H>F_{R,H,\\max}$, rutscht das Paket.\n\n**7 BE**\n\n2. Gleitreibung:\n\n$$\nF_{R,G}=\\mu_G F_N=0.22\\cdot 139.9=30.8\\,\\mathrm{N}\n$$\n\nResultierende Kraft hangabwärts:\n\n$$\nF_\\mathrm{res}=F_H-F_{R,G}=45.5-30.8=14.7\\,\\mathrm{N}\n$$\n\nBeschleunigung:\n\n$$\na=\\frac{F_\\mathrm{res}}{m}=\\frac{14.7}{15.0}=0.98\\,\\mathrm{m/s^2}\n$$\n\n**6 BE**\n\n3. Bei Aufwärtsbeschleunigung gilt für die Normalkraft $N$:\n\n$$\nN=m_P(g+a)=70\\,(9.81+1.2)=770.7\\,\\mathrm{N}\n$$\n\nDie Waage zeigt damit etwa $771\\,\\mathrm{N}$ (entspricht ca. $78.6\\,\\mathrm{kg}$-Anzeige).\n\n**6 BE**\n\n4. Wechselwirkungsprinzip:\n\n$$\n\\vec F_{1}=1.8\\,\\mathrm{kN}\\ \\text{(Fahrzeug auf Anhänger, nach vorn)}\n$$\n\n$$\n\\vec F_{2}=1.8\\,\\mathrm{kN}\\ \\text{(Anhänger auf Fahrzeug, nach hinten)}\n$$\n\nDie Kräfte sind gleich groß, entgegengesetzt gerichtet und greifen an verschiedenen Körpern an.\n\n**6 BE**",
         "scoring": {
           "maxPoints": 25,
@@ -705,7 +722,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "E"
     },
     {
       "id": "cbdeb098-232e-4079-8d4b-01f20b8e5448",
@@ -769,7 +787,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "E"
     },
     {
       "id": "a0b70616-83ba-49f3-9b78-2842cac3a7d8",
@@ -806,7 +825,7 @@
         "phase": "E"
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nSie beraten ein Technikteam bei der Auslegung eines mobilen Demonstrators, der Kurvenfahrt, Satellitenorbit und Gasmodell in einem vernetzten Anwendungsszenario kombiniert. Ziel ist es, Modellgrenzen zu kennen und verlässliche Kenngrößen zu berechnen.\n\nAlle Materialien gehören zu derselben Entwicklungsaufgabe: Material 1 beschreibt die Fahrdynamik, Material 2 die Orbitalbewegung und Material 3 den thermodynamischen Teilprozess.\n\n**Material 1 (Kurvenfahrt):**\n\n- Fahrzeugmasse: $m=1200\\,\\mathrm{kg}$\n- Radius der Kurve: $r=45\\,\\mathrm{m}$\n- Geschwindigkeit: $v=12.0\\,\\mathrm{m/s}$\n- Erdbeschleunigung: $g=9.81\\,\\mathrm{m/s^2}$\n\n**Material 2 (Satellit in niedriger Erdumlaufbahn):**\n\n- Bahnhöhe: $h=400\\,\\mathrm{km}$\n- Erdradius: $r_E=6.37\\cdot 10^6\\,\\mathrm{m}$\n- Gravitationsparameter der Erde: $\\mu=G\\cdot M_E=3.986\\cdot 10^{14}\\,\\mathrm{m^3/s^2}$\n\n**Material 3 (Fahrradpumpe/Kompressor):**\n\n- In einer Fahrradpumpe wird Luft komprimiert (vereinfachtes Modell).\n- Anfangszustand: $p_1=1.00\\,\\mathrm{bar}$, $V_1=200\\,\\mathrm{mL}$ (ausgezogen), $T_1=293\\,\\mathrm{K}$\n- isotherme Kompression auf $V_2=120\\,\\mathrm{mL}$ (langsames Drücken)\n- danach isochore Erwärmung auf $T_3=330\\,\\mathrm{K}$ (durch Reibung/schnelle Kompression)\n\n**Aufgaben:**\n\n1. Berechnen Sie die Zentripetalbeschleunigung und die dafür notwendige Zentripetalkraft (Material 1). (7 BE)\n2. Bestimmen Sie den minimalen Reibungskoeffizienten $\\mu_{\\min}$ für die Kurvenfahrt ohne Rutschen (Material 1). (6 BE)\n3. Berechnen Sie die Bahngeschwindigkeit des Satelliten (Material 2). (6 BE)\n4. Bestimmen Sie den Druck $p_2$ nach der isothermen Kompression und den Druck $p_3$ nach der isochoren Erwärmung (Material 3). (6 BE)",
+        "taskContent": "**Kontext:**\n\nSie beraten ein Technikteam bei der Auslegung eines mobilen Demonstrators, der Kurvenfahrt, Satellitenorbit und Gasmodell in einem vernetzten Anwendungsszenario kombiniert. Ziel ist es, Modellgrenzen zu kennen und verlässliche Kenngrößen zu berechnen.\n\nAlle Materialien gehören zu derselben Entwicklungsaufgabe: Material 1 beschreibt die Fahrdynamik, Material 2 die Orbitalbewegung und Material 3 den thermodynamischen Teilprozess.\n\n**Material 1 (Kurvenfahrt):**\n\n- Fahrzeugmasse: $m=1200\\,\\mathrm{kg}$\n- Radius der Kurve: $r=45\\,\\mathrm{m}$\n- Geschwindigkeit: $v=12.0\\,\\mathrm{m/s}$\n- Erdbeschleunigung: $g=9.81\\,\\mathrm{m/s^2}$\n\n**Material 2 (Satellit in niedriger Erdumlaufbahn):**\n\n- Bahnhöhe: $h=400\\,\\mathrm{km}$\n- Erdradius: $r_E=6.37\\cdot 10^6\\,\\mathrm{m}$\n- Gravitationsparameter der Erde: $\\mu=G\\cdot M_E=3.986\\cdot 10^{14}\\,\\mathrm{m^3/s^2}$\n\n**Material 3 (Fahrradpumpe/Kompressor):**\n\n- In einer Fahrradpumpe wird Luft komprimiert (vereinfachtes Modell).\n- Anfangszustand: $p_1=1.00\\,\\mathrm{bar}$, $V_1=200\\,\\mathrm{mL}$ (ausgezogen), $T_1=293\\,\\mathrm{K}$\n- isotherme Kompression auf $V_2=120\\,\\mathrm{mL}$ (langsames Drücken)\n- danach isochore Erwärmung auf $T_3=330\\,\\mathrm{K}$ (durch Reibung/schnelle Kompression)\n\n**Aufgaben:**\n\n1. Berechnen Sie die Zentripetalbeschleunigung und die dafür notwendige Zentripetalkraft (Material 1). (7 BE)\n2. Bestimmen Sie den minimalen Reibungsköffizienten $\\mu_{\\min}$ für die Kurvenfahrt ohne Rutschen (Material 1). (6 BE)\n3. Berechnen Sie die Bahngeschwindigkeit des Satelliten (Material 2). (6 BE)\n4. Bestimmen Sie den Druck $p_2$ nach der isothermen Kompression und den Druck $p_3$ nach der isochoren Erwärmung (Material 3). (6 BE)",
         "solutionContent": "1. Zentripetalbeschleunigung:\n\n$$\na_c=\\frac{v^2}{r}=\\frac{12.0^2}{45}=3.20\\,\\mathrm{m/s^2}\n$$\n\nZentripetalkraft:\n\n$$\nF_c=m a_c=1200\\cdot 3.20=3840\\,\\mathrm{N}\n$$\n\n**7 BE**\n\n2. Für ebene Kurvenfahrt muss die Haftreibung $F_c$ liefern:\n\n$$\n\\mu_{\\min}=\\frac{F_c}{m g}=\\frac{a_c}{g}=\\frac{3.20}{9.81}=0.326\n$$\n\nAlso mindestens $\\mu_{\\min}\\approx 0.33$.\n\n**6 BE**\n\n3. Bahnradius:\n\n$$\nr=r_E+h=6.37\\cdot 10^6+4.00\\cdot 10^5=6.77\\cdot 10^6\\,\\mathrm{m}\n$$\n\nKreisbahngeschwindigkeit:\n\n$$\nv=\\sqrt{\\frac{\\mu}{r}}=\\sqrt{\\frac{3.986\\cdot 10^{14}}{6.77\\cdot 10^6}}=7.67\\cdot 10^3\\,\\mathrm{m/s}\n$$\n\n**6 BE**\n\n4. Isotherm gilt $p_1V_1=p_2V_2$:\n\n$$\np_2=p_1\\frac{V_1}{V_2}=1.00\\cdot \\frac{200}{120}=1.67\\,\\mathrm{bar}\n$$\n\nIsochor gilt $\\frac{p}{T}=\\text{konstant}$:\n\n$$\np_3=p_2\\frac{T_3}{T_2}=1.67\\cdot \\frac{330}{293}=1.88\\,\\mathrm{bar}\n$$\n\n**6 BE**",
         "scoring": {
           "maxPoints": 25,
@@ -834,7 +853,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "E"
     },
     {
       "id": "73cb58ec-6ded-4a35-9809-32aa8bfff1b0",
@@ -903,7 +923,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "E"
     },
     {
       "id": "80fe6c96-c34c-4ba6-93d9-c6105764b221",
@@ -938,8 +959,8 @@
         "phase": "E"
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nSie beraten ein Nachwuchs-Rennteam bei der Auslegung einer überhöhten Kurve. Ziel ist es, sichere Geschwindigkeitsbereiche für trockene und nasse Bedingungen zu bestimmen und die Grenzen eines vereinfachten Modells kritisch zu bewerten.\n\nAlle Materialien gehören zu derselben Kurvensituation: Material 1 liefert die Geometrie der Kurve, Material 2 die Fahrbahnhaftung und Material 3 die geplante Zielgeschwindigkeit des Teams.\n\n**Material 1 (Autorennstrecke, überhöhte Kurve):**\n\n- Fahrzeugmasse: $m=900\\,\\mathrm{kg}$\n- Kurvenradius: $r=80\\,\\mathrm{m}$\n- Überhöhungswinkel: $\\beta=17^\\circ$\n- Erdbeschleunigung: $g=9.81\\,\\mathrm{m/s^2}$\n\n**Material 2 (Haftreibung):**\n\n- trockene Strecke: $\\mu_{H,\\mathrm{trocken}}=0.30$\n- nasse Strecke: $\\mu_{H,\\mathrm{nass}}=0.10$\n\n**Material 3 (Telemetrie):**\n\n- geplante Kurvengeschwindigkeit: $v_{\\mathrm{plan}}=34\\,\\mathrm{m/s}$\n\n**Aufgaben:**\n\n1. Leiten Sie für den reibungsfreien Fall die Entwurfsgeschwindigkeit $v_0$ (d. h. die Geschwindigkeit, bei der die Kurve ohne Reibung befahren werden kann) her und berechnen Sie sie. (7 BE)\n2. Berechnen Sie für trockene Strecke die zulässigen Grenzgeschwindigkeiten $v_{\\min}$ und $v_{\\max}$. (8 BE)\n3. Berechnen Sie für nasse Strecke $v_{\\min}$ und $v_{\\max}$ und vergleichen Sie den sicheren Geschwindigkeitsbereich mit Teilaufgabe 2. (6 BE)\n4. Bestimmen Sie den erforderlichen Haftreibungskoeffizienten $\\mu_{\\mathrm{erf}}$ für $v_{\\mathrm{plan}}$ und bewerten Sie die physikalische Plausibilität. (5 BE)\n5. Nennen Sie zwei Modellgrenzen und erläutern Sie kurz deren Bedeutung für reale Rennbedingungen. (4 BE)",
-        "solutionContent": "1. Reibungsfrei liefert allein die Normalkraft die Zentripetalkraft:\n\n$$\n\\tan\\beta=\\frac{v_0^2}{rg}\n\\quad\\Rightarrow\\quad\nv_0=\\sqrt{rg\\tan\\beta}\n$$\n\n$$\nv_0=\\sqrt{80\\cdot 9.81\\cdot \\tan(17^\\circ)}=15.5\\,\\mathrm{m/s}\n$$\n\nDas entspricht etwa $55.8\\,\\mathrm{km/h}$.\n\n**7 BE**\n\n2. Mit Haftreibung ergeben sich für eine überhöhte Kurve:\n\n$$\nv_{\\max}=\\sqrt{rg\\,\\frac{\\sin\\beta+\\mu\\cos\\beta}{\\cos\\beta-\\mu\\sin\\beta}}\n$$\n\n$$\nv_{\\min}=\\sqrt{rg\\,\\frac{\\sin\\beta-\\mu\\cos\\beta}{\\cos\\beta+\\mu\\sin\\beta}}\n$$\n\nFür $\\mu=0.30$:\n\n$$\nv_{\\max}=22.9\\,\\mathrm{m/s}\\;(\\approx 82.4\\,\\mathrm{km/h})\n$$\n\n$$\nv_{\\min}=2.0\\,\\mathrm{m/s}\\;(\\approx 7.3\\,\\mathrm{km/h})\n$$\n\n**8 BE**\n\n3. Für $\\mu=0.10$:\n\n$$\nv_{\\max}=18.1\\,\\mathrm{m/s}\\;(\\approx 65.2\\,\\mathrm{km/h})\n$$\n\n$$\nv_{\\min}=12.5\\,\\mathrm{m/s}\\;(\\approx 45.0\\,\\mathrm{km/h})\n$$\n\nDer sichere Bereich wird bei Nässe deutlich enger und nach oben abgesenkt.\n\n**6 BE**\n\n4. Für hohe Geschwindigkeiten (Tendenz nach außen/oben) gilt:\n\n$$\n\\mu_{\\mathrm{erf}}=\\frac{k\\cos\\beta-\\sin\\beta}{\\cos\\beta+k\\sin\\beta},\n\\qquad k=\\frac{v^2}{rg}\n$$\n\nMit $v=v_{\\mathrm{plan}}=34\\,\\mathrm{m/s}$ erhält man:\n\n$$\n\\mu_{\\mathrm{erf}}\\approx 0.80\n$$\n\nDas ist für normale Reifen-Fahrbahn-Kontakte im Schulmodell nicht plausibel; die Geschwindigkeit ist zu hoch.\n\n**5 BE**\n\n5. Mögliche Modellgrenzen (zwei genügen):\n\n- Kein aerodynamischer Abtrieb berücksichtigt.\n- Konstanter Reibungskoeffizient trotz Temperatur, Reifenverschleiß und Nässegradienten.\n- Keine Lastverlagerung (Nick/Roll) im Fahrzeugmodell.\n\nDiese Effekte verändern in der Praxis die tatsächlich fahrbaren Grenzgeschwindigkeiten.\n\n**4 BE**",
+        "taskContent": "**Kontext:**\n\nSie beraten ein Nachwuchs-Rennteam bei der Auslegung einer überhöhten Kurve. Ziel ist es, sichere Geschwindigkeitsbereiche für trockene und nasse Bedingungen zu bestimmen und die Grenzen eines vereinfachten Modells kritisch zu bewerten.\n\nAlle Materialien gehören zu derselben Kurvensituation: Material 1 liefert die Geometrie der Kurve, Material 2 die Fahrbahnhaftung und Material 3 die geplante Zielgeschwindigkeit des Teams.\n\n**Material 1 (Autorennstrecke, überhöhte Kurve):**\n\n- Fahrzeugmasse: $m=900\\,\\mathrm{kg}$\n- Kurvenradius: $r=80\\,\\mathrm{m}$\n- Überhöhungswinkel: $\\beta=17^\\circ$\n- Erdbeschleunigung: $g=9.81\\,\\mathrm{m/s^2}$\n\n**Material 2 (Haftreibung):**\n\n- trockene Strecke: $\\mu_{H,\\mathrm{trocken}}=0.30$\n- nasse Strecke: $\\mu_{H,\\mathrm{nass}}=0.10$\n\n**Material 3 (Telemetrie):**\n\n- geplante Kurvengeschwindigkeit: $v_{\\mathrm{plan}}=34\\,\\mathrm{m/s}$\n\n**Aufgaben:**\n\n1. Leiten Sie für den reibungsfreien Fall die Entwurfsgeschwindigkeit $v_0$ (d. h. die Geschwindigkeit, bei der die Kurve ohne Reibung befahren werden kann) her und berechnen Sie sie. (7 BE)\n2. Berechnen Sie für trockene Strecke die zulässigen Grenzgeschwindigkeiten $v_{\\min}$ und $v_{\\max}$. (8 BE)\n3. Berechnen Sie für nasse Strecke $v_{\\min}$ und $v_{\\max}$ und vergleichen Sie den sicheren Geschwindigkeitsbereich mit Teilaufgabe 2. (6 BE)\n4. Bestimmen Sie den erforderlichen Haftreibungsköffizienten $\\mu_{\\mathrm{erf}}$ für $v_{\\mathrm{plan}}$ und bewerten Sie die physikalische Plausibilität. (5 BE)\n5. Nennen Sie zwei Modellgrenzen und erläutern Sie kurz deren Bedeutung für reale Rennbedingungen. (4 BE)",
+        "solutionContent": "1. Reibungsfrei liefert allein die Normalkraft die Zentripetalkraft:\n\n$$\n\\tan\\beta=\\frac{v_0^2}{rg}\n\\quad\\Rightarrow\\quad\nv_0=\\sqrt{rg\\tan\\beta}\n$$\n\n$$\nv_0=\\sqrt{80\\cdot 9.81\\cdot \\tan(17^\\circ)}=15.5\\,\\mathrm{m/s}\n$$\n\nDas entspricht etwa $55.8\\,\\mathrm{km/h}$.\n\n**7 BE**\n\n2. Mit Haftreibung ergeben sich für eine überhöhte Kurve:\n\n$$\nv_{\\max}=\\sqrt{rg\\,\\frac{\\sin\\beta+\\mu\\cos\\beta}{\\cos\\beta-\\mu\\sin\\beta}}\n$$\n\n$$\nv_{\\min}=\\sqrt{rg\\,\\frac{\\sin\\beta-\\mu\\cos\\beta}{\\cos\\beta+\\mu\\sin\\beta}}\n$$\n\nFür $\\mu=0.30$:\n\n$$\nv_{\\max}=22.9\\,\\mathrm{m/s}\\;(\\approx 82.4\\,\\mathrm{km/h})\n$$\n\n$$\nv_{\\min}=2.0\\,\\mathrm{m/s}\\;(\\approx 7.3\\,\\mathrm{km/h})\n$$\n\n**8 BE**\n\n3. Für $\\mu=0.10$:\n\n$$\nv_{\\max}=18.1\\,\\mathrm{m/s}\\;(\\approx 65.2\\,\\mathrm{km/h})\n$$\n\n$$\nv_{\\min}=12.5\\,\\mathrm{m/s}\\;(\\approx 45.0\\,\\mathrm{km/h})\n$$\n\nDer sichere Bereich wird bei Nässe deutlich enger und nach oben abgesenkt.\n\n**6 BE**\n\n4. Für hohe Geschwindigkeiten (Tendenz nach außen/oben) gilt:\n\n$$\n\\mu_{\\mathrm{erf}}=\\frac{k\\cos\\beta-\\sin\\beta}{\\cos\\beta+k\\sin\\beta},\n\\qquad k=\\frac{v^2}{rg}\n$$\n\nMit $v=v_{\\mathrm{plan}}=34\\,\\mathrm{m/s}$ erhält man:\n\n$$\n\\mu_{\\mathrm{erf}}\\approx 0.80\n$$\n\nDas ist für normale Reifen-Fahrbahn-Kontakte im Schulmodell nicht plausibel; die Geschwindigkeit ist zu hoch.\n\n**5 BE**\n\n5. Mögliche Modellgrenzen (zwei genügen):\n\n- Kein aerodynamischer Abtrieb berücksichtigt.\n- Konstanter Reibungsköffizient trotz Temperatur, Reifenverschleiß und Nässegradienten.\n- Keine Lastverlagerung (Nick/Roll) im Fahrzeugmodell.\n\nDiese Effekte verändern in der Praxis die tatsächlich fahrbaren Grenzgeschwindigkeiten.\n\n**4 BE**",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 18,
@@ -962,7 +983,7 @@
             {
               "id": "s4",
               "points": 5,
-              "description": "Erforderlichen Reibungskoeffizienten berechnet und plausibel bewertet"
+              "description": "Erforderlichen Reibungsköffizienten berechnet und plausibel bewertet"
             },
             {
               "id": "s5",
@@ -971,7 +992,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "E"
     },
     {
       "id": "6df0d2cb-680f-4ffb-81f1-2024316053cf",
@@ -1040,7 +1062,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "E"
     },
     {
       "id": "ab0135a0-c421-439c-b631-7a5e8ab89575",
@@ -1115,7 +1138,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "E"
     },
     {
       "id": "af70212d-e318-462d-a53f-fee8f05697d6",
@@ -5416,7 +5440,7 @@
         "treeOrder": 1
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEin Team entwickelt einen elektrostatischen Sortierkanal fuer Kunststoffgranulat. Im Vorversuch werden Punktladungen, homogenes Feld und Potenzialmessung kombiniert, um die Trennung unterschiedlicher Koerner abzuschaetzen.\n\n**Material 1 (Punktladungen im Vorfeld):**\n\n- Ladung 1: $Q_1 = +3.0\\,nC$ bei $x = 0.00\\,m$\n- Ladung 2: $Q_2 = +2.0\\,nC$ bei $x = 0.20\\,m$\n- Auswertepunkt $P$ liegt bei $x = 0.10\\,m$\n\n**Material 2 (Sortierkanal als Plattenkondensator):**\n\n- Plattenabstand $d = 8.0\\,mm$\n- Spannung $U = 1.60\\,kV$\n- Ein Korn traegt die Ladung $q = 1.5\\,nC$\n- betrachtete Wegstrecke im Feld: $s = 1.5\\,cm$\n\n**Material 3 (Betriebsgrenze):**\n\n- zulaessige Feldstaerke im Luftspalt: $E_{max} = 2.5 \\cdot 10^5\\,V/m$\n- fuer sichere Trennung ist eine Arbeit von mindestens $2.0 \\cdot 10^{-8}\\,J$ erforderlich\n\n**Aufgaben:**\n\n1. Berechnen Sie die elektrische Feldstaerke am Punkt $P$ durch beide Punktladungen und geben Sie Richtung sowie Betrag des resultierenden Feldes an. (8 BE)\n2. Bestimmen Sie fuer Material 2 die Feldstaerke zwischen den Platten und die auf das Korn wirkende Kraft. (7 BE)\n3. Berechnen Sie die im homogenen Feld auf der Strecke $s$ verrichtete elektrische Arbeit sowie die Potenzialdifferenz. (8 BE)\n4. Beurteilen Sie mit Material 3, ob die Anlage innerhalb der Feldgrenze arbeitet und ob die geforderte Trennarbeit erreicht wird. (7 BE)",
+        "taskContent": "**Kontext:**\n\nEin Team entwickelt einen elektrostatischen Sortierkanal für Kunststoffgranulat. Im Vorversuch werden Punktladungen, homogenes Feld und Potenzialmessung kombiniert, um die Trennung unterschiedlicher Koerner abzuschaetzen.\n\n**Material 1 (Punktladungen im Vorfeld):**\n\n- Ladung 1: $Q_1 = +3.0\\,nC$ bei $x = 0.00\\,m$\n- Ladung 2: $Q_2 = +2.0\\,nC$ bei $x = 0.20\\,m$\n- Auswertepunkt $P$ liegt bei $x = 0.10\\,m$\n\n**Material 2 (Sortierkanal als Plattenkondensator):**\n\n- Plattenabstand $d = 8.0\\,mm$\n- Spannung $U = 1.60\\,kV$\n- Ein Korn traegt die Ladung $q = 1.5\\,nC$\n- betrachtete Wegstrecke im Feld: $s = 1.5\\,cm$\n\n**Material 3 (Betriebsgrenze):**\n\n- zulaessige Feldstaerke im Luftspalt: $E_{max} = 2.5 \\cdot 10^5\\,V/m$\n- für sichere Trennung ist eine Arbeit von mindestens $2.0 \\cdot 10^{-8}\\,J$ erforderlich\n\n**Aufgaben:**\n\n1. Berechnen Sie die elektrische Feldstaerke am Punkt $P$ durch beide Punktladungen und geben Sie Richtung sowie Betrag des resultierenden Feldes an. (8 BE)\n2. Bestimmen Sie für Material 2 die Feldstaerke zwischen den Platten und die auf das Korn wirkende Kraft. (7 BE)\n3. Berechnen Sie die im homogenen Feld auf der Strecke $s$ verrichtete elektrische Arbeit sowie die Potenzialdifferenz. (8 BE)\n4. Beurteilen Sie mit Material 3, ob die Anlage innerhalb der Feldgrenze arbeitet und ob die geforderte Trennarbeit erreicht wird. (7 BE)",
         "solutionContent": "1. Abstand zu beiden Ladungen: $r = 0.10\\,m$.  \n   $E_1 = k \\cdot Q_1 / r^2 = 8.99\\cdot 10^9 \\cdot 3.0\\cdot 10^{-9} / 0.01 \\approx 2697\\,V/m$ nach rechts.  \n   $E_2 = k \\cdot Q_2 / r^2 = 1798\\,V/m$ nach links.  \n   Resultat: $E_{res} \\approx 899\\,V/m$ nach rechts.  \n   **8 BE**\n\n2. Homogenes Feld: $E = U/d = 1600 / 0.008 = 2.0 \\cdot 10^5\\,V/m$.  \n   Kraft: $F = qE = 1.5\\cdot 10^{-9} \\cdot 2.0\\cdot 10^5 = 3.0\\cdot 10^{-4}\\,N$.  \n   **7 BE**\n\n3. Potenzialdifferenz auf $s=0.015\\,m$: $\\Delta V = E s = 2.0\\cdot 10^5 \\cdot 0.015 = 3000\\,V$.  \n   Arbeit: $W = q \\Delta V = 1.5\\cdot 10^{-9} \\cdot 3000 = 4.5\\cdot 10^{-6}\\,J$.  \n   **8 BE**\n\n4. Feldgrenze: $2.0\\cdot 10^5\\,V/m < 2.5\\cdot 10^5\\,V/m$ -> Feldbetrieb zulaessig.  \n   Trennarbeit: $4.5\\cdot 10^{-6}\\,J \\gg 2.0\\cdot 10^{-8}\\,J$ -> die geforderte Arbeit wird deutlich erreicht.  \n   Sinnvolle Zusatzreflexion: reale Verluste durch Luftfeuchte, Randfelder und Ladungsstreuung sind im Modell nicht enthalten.  \n   **7 BE**",
         "scoring": {
           "maxPoints": 30,
@@ -5440,11 +5464,12 @@
             {
               "id": "s4",
               "points": 7,
-              "description": "Betriebsgrenze und Trennwirkung begruendet beurteilt"
+              "description": "Betriebsgrenze und Trennwirkung begründet beurteilt"
             }
           ]
         }
-      }
+      },
+      "phase": "Q1"
     },
     {
       "id": "5774da0d-8740-463b-af40-8a5e5659275a",
@@ -5484,8 +5509,8 @@
         "treeOrder": 2
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nIn einem Oberstufenlabor wird eine Tropfenfalle fuer Feinpartikel kalibriert. Dabei werden ein Plattenkondensator, die im Feld gespeicherte Energie und eine an den Millikan-Versuch angelehnte Kraftbilanz gemeinsam ausgewertet.\n\n**Material 1 (Plattenkondensator):**\n\n- Plattenflaeche $A = 0.018\\,m^2$\n- Plattenabstand $d = 3.5\\,mm$\n- Dielektrikum mit $\\varepsilon_r = 2.6$\n- Betriebsspannung $U = 600\\,V$\n\n**Material 2 (Tropfen im elektrischen Feld):**\n\n- Masse des Tropfens $m = 2.4 \\cdot 10^{-15}\\,kg$\n- Feld zwischen den Platten wie in Material 1\n- Erdbeschleunigung $g = 9.81\\,m/s^2$\n\n**Material 3 (Elementarladungsvergleich):**\n\n- Elementarladung $e = 1.602 \\cdot 10^{-19}\\,C$\n- im Kalibrierprotokoll gilt ein ganzzahliges Vielfaches von $e$ als plausibel\n\n**Aufgaben:**\n\n1. Berechnen Sie die Kapazitaet des Kondensators. (6 BE)\n2. Bestimmen Sie die im Kondensator gespeicherte Feldenergie bei der Betriebsspannung. (6 BE)\n3. Berechnen Sie die Tropfenladung, wenn Gewichtskraft und elektrische Kraft im Gleichgewicht sind. (8 BE)\n4. Pruefen Sie mit Material 3, ob die erhaltene Tropfenladung mit einem ganzzahligen Vielfachen der Elementarladung vereinbar ist. (5 BE)",
-        "solutionContent": "1. $C = \\varepsilon_0 \\varepsilon_r A / d = 8.854\\cdot 10^{-12} \\cdot 2.6 \\cdot 0.018 / 0.0035 \\approx 1.18\\cdot 10^{-10}\\,F = 118\\,pF$.  \n   **6 BE**\n\n2. $W = \\frac{1}{2} C U^2 = 0.5 \\cdot 1.18\\cdot 10^{-10} \\cdot 600^2 \\approx 2.12\\cdot 10^{-5}\\,J$.  \n   **6 BE**\n\n3. Feldstaerke: $E = U/d = 600 / 0.0035 \\approx 1.71\\cdot 10^5\\,V/m$.  \n   Gleichgewicht: $qE = mg$ -> $q = mg/E = 2.4\\cdot 10^{-15} \\cdot 9.81 / 1.71\\cdot 10^5 \\approx 1.38\\cdot 10^{-19}\\,C$.  \n   **8 BE**\n\n4. Vergleich mit $e$: $q/e \\approx 1.38\\cdot 10^{-19} / 1.602\\cdot 10^{-19} \\approx 0.86$.  \n   Das Ergebnis liegt in der Groessenordnung einer Elementarladung, ist aber nicht exakt ganzzahlig; im Experiment koennen Modellvereinfachung und Messunsicherheit die Abweichung erklaeren.  \n   **5 BE**",
+        "taskContent": "**Kontext:**\n\nIn einem Oberstufenlabor wird eine Tropfenfalle für Feinpartikel kalibriert. Dabei werden ein Plattenkondensator, die im Feld gespeicherte Energie und eine an den Millikan-Versuch angelehnte Kraftbilanz gemeinsam ausgewertet.\n\n**Material 1 (Plattenkondensator):**\n\n- Plattenflaeche $A = 0.018\\,m^2$\n- Plattenabstand $d = 3.5\\,mm$\n- Dielektrikum mit $\\varepsilon_r = 2.6$\n- Betriebsspannung $U = 600\\,V$\n\n**Material 2 (Tropfen im elektrischen Feld):**\n\n- Masse des Tropfens $m = 2.4 \\cdot 10^{-15}\\,kg$\n- Feld zwischen den Platten wie in Material 1\n- Erdbeschleunigung $g = 9.81\\,m/s^2$\n\n**Material 3 (Elementarladungsvergleich):**\n\n- Elementarladung $e = 1.602 \\cdot 10^{-19}\\,C$\n- im Kalibrierprotokoll gilt ein ganzzahliges Vielfaches von $e$ als plausibel\n\n**Aufgaben:**\n\n1. Berechnen Sie die Kapazitaet des Kondensators. (6 BE)\n2. Bestimmen Sie die im Kondensator gespeicherte Feldenergie bei der Betriebsspannung. (6 BE)\n3. Berechnen Sie die Tropfenladung, wenn Gewichtskraft und elektrische Kraft im Gleichgewicht sind. (8 BE)\n4. Pruefen Sie mit Material 3, ob die erhaltene Tropfenladung mit einem ganzzahligen Vielfachen der Elementarladung vereinbar ist. (5 BE)",
+        "solutionContent": "1. $C = \\varepsilon_0 \\varepsilon_r A / d = 8.854\\cdot 10^{-12} \\cdot 2.6 \\cdot 0.018 / 0.0035 \\approx 1.18\\cdot 10^{-10}\\,F = 118\\,pF$.  \n   **6 BE**\n\n2. $W = \\frac{1}{2} C U^2 = 0.5 \\cdot 1.18\\cdot 10^{-10} \\cdot 600^2 \\approx 2.12\\cdot 10^{-5}\\,J$.  \n   **6 BE**\n\n3. Feldstaerke: $E = U/d = 600 / 0.0035 \\approx 1.71\\cdot 10^5\\,V/m$.  \n   Gleichgewicht: $qE = mg$ -> $q = mg/E = 2.4\\cdot 10^{-15} \\cdot 9.81 / 1.71\\cdot 10^5 \\approx 1.38\\cdot 10^{-19}\\,C$.  \n   **8 BE**\n\n4. Vergleich mit $e$: $q/e \\approx 1.38\\cdot 10^{-19} / 1.602\\cdot 10^{-19} \\approx 0.86$.  \n   Das Ergebnis liegt in der Größenordnung einer Elementarladung, ist aber nicht exakt ganzzahlig; im Experiment können Modellvereinfachung und Messunsicherheit die Abweichung erklären.  \n   **5 BE**",
         "scoring": {
           "maxPoints": 25,
           "passingPoints": 15,
@@ -5512,7 +5537,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Q1"
     },
     {
       "id": "2a895096-f327-47f9-89f1-40832c9a5bfa",
@@ -5550,8 +5576,8 @@
         "treeOrder": 3
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEin Entwicklungsteam bewertet den Lade- und Entladevorgang eines RC-Sensors. Ein Dielektrikum veraendert die Kapazitaet, und fuer die Modellierung soll geklaert werden, wie gut die Differentialgleichung des RC-Kreises die Messdaten trifft.\n\n**Material 1 (Ladevorgang):**\n\n- Versorgungsspannung $U_0 = 12.0\\,V$\n- Widerstand $R = 220\\,k\\Omega$\n- Messwerte fuer die Kondensatorspannung $U_C(t)$:\n\n| $t$ in ms | 0.0 | 2.0 | 4.0 | 6.0 | 8.0 |\n|---|---:|---:|---:|---:|---:|\n| $U_C$ in V | 0.0 | 7.2 | 10.0 | 11.1 | 11.6 |\n\n**Material 2 (Dielektrikum):**\n\n- Kapazitaet ohne Dielektrikum: $C_0 = 8.0\\,nF$\n- nach Einsetzen des Dielektrikums steigt die Zeitkonstante auf $\\tau = 3.96\\,ms$\n\n**Material 3 (Modellhinweis):**\n\n- fuer den idealen RC-Kreis gilt $\\frac{dU_C}{dt} = \\frac{1}{RC}(U_0-U_C)$\n- reale Abweichungen entstehen unter anderem durch Innenwiderstand der Quelle und Leckstroeme\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 eine geeignete Zeitkonstante $\\tau$ und erklaeren Sie Ihr Vorgehen. (8 BE)\n2. Berechnen Sie daraus die Kapazitaet des Sensors ohne Dielektrikum und vergleichen Sie sie mit Material 2. (7 BE)\n3. Bestimmen Sie aus der neuen Zeitkonstante in Material 2 die Kapazitaet mit Dielektrikum und den relativen Permittivitaetsfaktor $\\varepsilon_r$. (8 BE)\n4. Erlaeutern Sie die Differentialgleichung aus Material 3 qualitativ und diskutieren Sie zwei Modellgrenzen. (7 BE)",
-        "solutionContent": "1. Beim Ladevorgang ist bei $U_C \\approx 0.632 U_0$ die Zeitkonstante erreicht.  \n   $0.632 U_0 = 7.58\\,V$; der Messwert bei $t=2.0\\,ms$ liegt mit $7.2\\,V$ sehr nahe daran.  \n   Damit ist $\\tau \\approx 2.0\\,ms$ eine geeignete Schaetzung.  \n   **8 BE**\n\n2. $C = \\tau / R = 2.0\\cdot 10^{-3} / 220\\cdot 10^3 \\approx 9.09\\cdot 10^{-9}\\,F = 9.1\\,nF$.  \n   Vergleich mit Material 2: Das liegt nahe bei $C_0 = 8.0\\,nF$; die Differenz ist im Kontext als Mess- oder Modellabweichung plausibel.  \n   **7 BE**\n\n3. Mit Dielektrikum: $C_D = \\tau / R = 3.96\\cdot 10^{-3} / 220\\cdot 10^3 = 1.80\\cdot 10^{-8}\\,F = 18.0\\,nF$.  \n   Relativer Faktor: $\\varepsilon_r \\approx C_D / C_0 = 18.0 / 8.0 = 2.25$.  \n   **8 BE**\n\n4. Die Gleichung beschreibt: je groesser die Spannungsdifferenz $U_0-U_C$, desto schneller aendert sich $U_C$.  \n   Modellgrenzen: Quelle idealisiert, Leckstroeme und temperaturabhaengige Widerstaende vernachlaessigt, Streukapazitaeten fehlen.  \n   **7 BE**",
+        "taskContent": "**Kontext:**\n\nEin Entwicklungsteam bewertet den Lade- und Entladevorgang eines RC-Sensors. Ein Dielektrikum verändert die Kapazitaet, und für die Modellierung soll geklärt werden, wie gut die Differentialgleichung des RC-Kreises die Messdaten trifft.\n\n**Material 1 (Ladevorgang):**\n\n- Versorgungsspannung $U_0 = 12.0\\,V$\n- Widerstand $R = 220\\,k\\Omega$\n- Messwerte für die Kondensatorspannung $U_C(t)$:\n\n| $t$ in ms | 0.0 | 2.0 | 4.0 | 6.0 | 8.0 |\n|---|---:|---:|---:|---:|---:|\n| $U_C$ in V | 0.0 | 7.2 | 10.0 | 11.1 | 11.6 |\n\n**Material 2 (Dielektrikum):**\n\n- Kapazitaet ohne Dielektrikum: $C_0 = 8.0\\,nF$\n- nach Einsetzen des Dielektrikums steigt die Zeitkonstante auf $\\tau = 3.96\\,ms$\n\n**Material 3 (Modellhinweis):**\n\n- für den idealen RC-Kreis gilt $\\frac{dU_C}{dt} = \\frac{1}{RC}(U_0-U_C)$\n- reale Abweichungen entstehen unter anderem durch Innenwiderstand der Quelle und Leckstroeme\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 eine geeignete Zeitkonstante $\\tau$ und erklären Sie Ihr Vorgehen. (8 BE)\n2. Berechnen Sie daraus die Kapazitaet des Sensors ohne Dielektrikum und vergleichen Sie sie mit Material 2. (7 BE)\n3. Bestimmen Sie aus der neuen Zeitkonstante in Material 2 die Kapazitaet mit Dielektrikum und den relativen Permittivitaetsfaktor $\\varepsilon_r$. (8 BE)\n4. Erläutern Sie die Differentialgleichung aus Material 3 qualitativ und diskutieren Sie zwei Modellgrenzen. (7 BE)",
+        "solutionContent": "1. Beim Ladevorgang ist bei $U_C \\approx 0.632 U_0$ die Zeitkonstante erreicht.  \n   $0.632 U_0 = 7.58\\,V$; der Messwert bei $t=2.0\\,ms$ liegt mit $7.2\\,V$ sehr nahe daran.  \n   Damit ist $\\tau \\approx 2.0\\,ms$ eine geeignete Schaetzung.  \n   **8 BE**\n\n2. $C = \\tau / R = 2.0\\cdot 10^{-3} / 220\\cdot 10^3 \\approx 9.09\\cdot 10^{-9}\\,F = 9.1\\,nF$.  \n   Vergleich mit Material 2: Das liegt nahe bei $C_0 = 8.0\\,nF$; die Differenz ist im Kontext als Mess- oder Modellabweichung plausibel.  \n   **7 BE**\n\n3. Mit Dielektrikum: $C_D = \\tau / R = 3.96\\cdot 10^{-3} / 220\\cdot 10^3 = 1.80\\cdot 10^{-8}\\,F = 18.0\\,nF$.  \n   Relativer Faktor: $\\varepsilon_r \\approx C_D / C_0 = 18.0 / 8.0 = 2.25$.  \n   **8 BE**\n\n4. Die Gleichung beschreibt: je größer die Spannungsdifferenz $U_0-U_C$, desto schneller aendert sich $U_C$.  \n   Modellgrenzen: Quelle idealisiert, Leckstroeme und temperaturabhaengige Widerstaende vernachlaessigt, Streukapazitaeten fehlen.  \n   **7 BE**",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 18,
@@ -5574,11 +5600,12 @@
             {
               "id": "s4",
               "points": 7,
-              "description": "Differentialgleichung und Modellgrenzen erklaert"
+              "description": "Differentialgleichung und Modellgrenzen erklärt"
             }
           ]
         }
-      }
+      },
+      "phase": "Q1"
     },
     {
       "id": "335dac08-14bc-4684-8f37-460de5da0449",
@@ -5615,8 +5642,8 @@
         "treeOrder": 4
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEin altes Kathodenstrahl-Oszilloskop wird fuer einen Museumsworkshop in Betrieb genommen. Ein Elektronenstrahl wird beschleunigt, in einem Plattenkondensator abgelenkt und am Schirm ausgewertet.\n\n**Material 1 (Beschleunigung):**\n\n- Beschleunigungsspannung $U_B = 1.8\\,kV$\n- Elektronenmasse $m_e = 9.11 \\cdot 10^{-31}\\,kg$\n- Elementarladung $e = 1.602 \\cdot 10^{-19}\\,C$\n\n**Material 2 (Ablenkplatten):**\n\n- Plattenlaenge $l = 5.0\\,cm$\n- Plattenabstand $d = 2.0\\,cm$\n- Ablenkspannung $U_A = 120\\,V$\n\n**Material 3 (Drift zum Schirm):**\n\n- Abstand vom Plattenende bis zum Schirm $L = 12.0\\,cm$\n- eine Schirmabweichung von mindestens $1.5\\,cm$ gilt als gut sichtbar\n\n**Aufgaben:**\n\n1. Berechnen Sie die Geschwindigkeit der Elektronen nach der Beschleunigung mit $eU_B = \\frac12 m_e v^2$. (6 BE)\n2. Bestimmen Sie die Feldstaerke zwischen den Ablenkplatten sowie die senkrechte Beschleunigung des Elektronenstrahls. (6 BE)\n3. Berechnen Sie die vertikale Ablenkung beim Verlassen der Platten und die gesamte Schirmablenkung. (8 BE)\n4. Beurteilen Sie mit Material 3, ob die Ablenkung gut sichtbar ist. Erklaeren Sie ausserdem qualitativ, wie sich eine Verdopplung von $U_A$ auf das Ergebnis auswirkt. (5 BE)",
-        "solutionContent": "1. $v = \\sqrt{2 e U_B / m_e} = \\sqrt{2 \\cdot 1.602\\cdot 10^{-19} \\cdot 1800 / 9.11\\cdot 10^{-31}} \\approx 2.52\\cdot 10^7\\,m/s$.  \n   **6 BE**\n\n2. Feldstaerke: $E = U_A/d = 120 / 0.020 = 6.0\\cdot 10^3\\,V/m$.  \n   Beschleunigung: $a_y = eE/m_e = 1.05\\cdot 10^{15}\\,m/s^2$.  \n   **6 BE**\n\n3. Aufenthaltszeit in den Platten: $t_1 = l/v = 0.050 / 2.52\\cdot 10^7 \\approx 1.98\\cdot 10^{-9}\\,s$.  \n   Ablenkung in den Platten: $y_1 = \\frac12 a_y t_1^2 \\approx 2.06\\cdot 10^{-3}\\,m = 2.1\\,mm$.  \n   Vertikalgeschwindigkeit am Ende: $v_y = a_y t_1 \\approx 2.07\\cdot 10^6\\,m/s$.  \n   Driftzeit: $t_2 = L/v = 0.120 / 2.52\\cdot 10^7 \\approx 4.76\\cdot 10^{-9}\\,s$.  \n   Zusatzablenkung: $y_2 = v_y t_2 \\approx 9.86\\cdot 10^{-3}\\,m = 9.9\\,mm$.  \n   Gesamt: $y \\approx 1.19\\,cm$.  \n   **8 BE**\n\n4. $1.19\\,cm < 1.5\\,cm$ -> die Ablenkung ist sichtbar, aber unterhalb des Zielwerts fuer gute Sichtbarkeit.  \n   Bei Verdopplung von $U_A$ verdoppeln sich Feldstaerke und Beschleunigung; die Ablenkung waechst in guter Naeherung ebenfalls um den Faktor 2.  \n   **5 BE**",
+        "taskContent": "**Kontext:**\n\nEin altes Kathodenstrahl-Oszilloskop wird für einen Museumsworkshop in Betrieb genommen. Ein Elektronenstrahl wird beschleunigt, in einem Plattenkondensator abgelenkt und am Schirm ausgewertet.\n\n**Material 1 (Beschleunigung):**\n\n- Beschleunigungsspannung $U_B = 1.8\\,kV$\n- Elektronenmasse $m_e = 9.11 \\cdot 10^{-31}\\,kg$\n- Elementarladung $e = 1.602 \\cdot 10^{-19}\\,C$\n\n**Material 2 (Ablenkplatten):**\n\n- Plattenlaenge $l = 5.0\\,cm$\n- Plattenabstand $d = 2.0\\,cm$\n- Ablenkspannung $U_A = 120\\,V$\n\n**Material 3 (Drift zum Schirm):**\n\n- Abstand vom Plattenende bis zum Schirm $L = 12.0\\,cm$\n- eine Schirmabweichung von mindestens $1.5\\,cm$ gilt als gut sichtbar\n\n**Aufgaben:**\n\n1. Berechnen Sie die Geschwindigkeit der Elektronen nach der Beschleunigung mit $eU_B = \\frac12 m_e v^2$. (6 BE)\n2. Bestimmen Sie die Feldstaerke zwischen den Ablenkplatten sowie die senkrechte Beschleunigung des Elektronenstrahls. (6 BE)\n3. Berechnen Sie die vertikale Ablenkung beim Verlassen der Platten und die gesamte Schirmablenkung. (8 BE)\n4. Beurteilen Sie mit Material 3, ob die Ablenkung gut sichtbar ist. Erklären Sie ausserdem qualitativ, wie sich eine Verdopplung von $U_A$ auf das Ergebnis auswirkt. (5 BE)",
+        "solutionContent": "1. $v = \\sqrt{2 e U_B / m_e} = \\sqrt{2 \\cdot 1.602\\cdot 10^{-19} \\cdot 1800 / 9.11\\cdot 10^{-31}} \\approx 2.52\\cdot 10^7\\,m/s$.  \n   **6 BE**\n\n2. Feldstaerke: $E = U_A/d = 120 / 0.020 = 6.0\\cdot 10^3\\,V/m$.  \n   Beschleunigung: $a_y = eE/m_e = 1.05\\cdot 10^{15}\\,m/s^2$.  \n   **6 BE**\n\n3. Aufenthaltszeit in den Platten: $t_1 = l/v = 0.050 / 2.52\\cdot 10^7 \\approx 1.98\\cdot 10^{-9}\\,s$.  \n   Ablenkung in den Platten: $y_1 = \\frac12 a_y t_1^2 \\approx 2.06\\cdot 10^{-3}\\,m = 2.1\\,mm$.  \n   Vertikalgeschwindigkeit am Ende: $v_y = a_y t_1 \\approx 2.07\\cdot 10^6\\,m/s$.  \n   Driftzeit: $t_2 = L/v = 0.120 / 2.52\\cdot 10^7 \\approx 4.76\\cdot 10^{-9}\\,s$.  \n   Zusatzablenkung: $y_2 = v_y t_2 \\approx 9.86\\cdot 10^{-3}\\,m = 9.9\\,mm$.  \n   Gesamt: $y \\approx 1.19\\,cm$.  \n   **8 BE**\n\n4. $1.19\\,cm < 1.5\\,cm$ -> die Ablenkung ist sichtbar, aber unterhalb des Zielwerts für gute Sichtbarkeit.  \n   Bei Verdopplung von $U_A$ verdoppeln sich Feldstaerke und Beschleunigung; die Ablenkung waechst in guter Naeherung ebenfalls um den Faktor 2.  \n   **5 BE**",
         "scoring": {
           "maxPoints": 25,
           "passingPoints": 15,
@@ -5639,17 +5666,18 @@
             {
               "id": "s4",
               "points": 5,
-              "description": "Sichtbarkeit und Einfluss groesserer Ablenkspannung beurteilt"
+              "description": "Sichtbarkeit und Einfluss größerer Ablenkspannung beurteilt"
             }
           ]
         }
-      }
+      },
+      "phase": "Q1"
     },
     {
       "id": "c1495102-b871-4496-9ca1-f3b33f1aec12",
       "title": "Linearbeschleuniger und Relativitaetsgrenze",
       "titleEn": "Linear Accelerator and Relativistic Limit",
-      "description": "Die lernende Person kann eine LK-orientierte Q1-Klausuraufgabe zum Linearbeschleuniger, zur Energieuebertragung an geladene Teilchen und zur relativistischen Modellgrenze selbstaendig bearbeiten.",
+      "description": "Die lernende Person kann eine LK-orientierte Q1-Klausuraufgabe zum Linearbeschleuniger, zur Energieübertragung an geladene Teilchen und zur relativistischen Modellgrenze selbstaendig bearbeiten.",
       "descriptionEn": "The learner can independently solve an advanced-course-oriented Q1 written-test task on linear accelerators, energy transfer to charged particles, and the relativistic limit of the model.",
       "weight": 1,
       "tags": [
@@ -5681,8 +5709,8 @@
         "treeOrder": 5
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEin Linearbeschleuniger soll fuer eine Materialanalyse kalibriert werden. Das Team will pruefen, bis zu welcher Teilchenenergie das nichtrelativistische Modell noch sinnvoll ist.\n\n**Material 1 (Elektronenbeschleunigung):**\n\n- Beschleunigungsspannung $U_1 = 45\\,kV$\n- Elektronenmasse $m_e = 9.11 \\cdot 10^{-31}\\,kg$\n- Elementarladung $e = 1.602 \\cdot 10^{-19}\\,C$\n\n**Material 2 (zweiter Betriebsfall):**\n\n- Beschleunigungsspannung $U_2 = 180\\,kV$\n- Lichtgeschwindigkeit $c = 3.00 \\cdot 10^8\\,m/s$\n\n**Material 3 (Bewertung):**\n\n- nichtrelativistische Modellrechnungen gelten hier nur als verlaesslich, solange $v < 0.30c$\n\n**Aufgaben:**\n\n1. Berechnen Sie fuer Material 1 die kinetische Energie in eV und die nichtrelativistische Geschwindigkeit des Elektrons. (8 BE)\n2. Wiederholen Sie die Rechnung fuer Material 2. (8 BE)\n3. Vergleichen Sie beide Ergebnisse mit der Grenze aus Material 3 und beurteilen Sie, fuer welchen Betriebsfall das nichtrelativistische Modell noch vertretbar ist. (7 BE)\n4. Erlaeutern Sie qualitativ, warum die Grenzbeurteilung mit steigender Spannung physikalisch notwendig wird. (7 BE)",
-        "solutionContent": "1. Kinetische Energie: $E_{kin} = eU_1 = 45\\,keV$.  \n   Nichtrelativistisch: $v_1 = \\sqrt{2eU_1/m_e} \\approx 1.26\\cdot 10^8\\,m/s = 0.42c$.  \n   **8 BE**\n\n2. Fuer $U_2 = 180\\,kV$ gilt $E_{kin} = 180\\,keV$.  \n   $v_2 = \\sqrt{2eU_2/m_e} \\approx 2.52\\cdot 10^8\\,m/s = 0.84c$.  \n   **8 BE**\n\n3. Vergleich mit $0.30c$:  \n   - Material 1: $0.42c > 0.30c$  \n   - Material 2: $0.84c > 0.30c$  \n   Damit ist in beiden Faellen die Grenzbedingung ueberschritten; das nichtrelativistische Modell ist insbesondere bei Material 2 deutlich unzureichend.  \n   **7 BE**\n\n4. Mit wachsender Spannung steigt die kinetische Energie stark an; die klassische Beziehung $E_{kin}=\\frac12 mv^2$ wuerde Geschwindigkeiten vorhersagen, die der Lichtgeschwindigkeit zu nahe kommen.  \n   Relativistische Effekte aendern dann den Zusammenhang zwischen Energie und Geschwindigkeit wesentlich.  \n   **7 BE**",
+        "taskContent": "**Kontext:**\n\nEin Linearbeschleuniger soll für eine Materialanalyse kalibriert werden. Das Team will pruefen, bis zu welcher Teilchenenergie das nichtrelativistische Modell noch sinnvoll ist.\n\n**Material 1 (Elektronenbeschleunigung):**\n\n- Beschleunigungsspannung $U_1 = 45\\,kV$\n- Elektronenmasse $m_e = 9.11 \\cdot 10^{-31}\\,kg$\n- Elementarladung $e = 1.602 \\cdot 10^{-19}\\,C$\n\n**Material 2 (zweiter Betriebsfall):**\n\n- Beschleunigungsspannung $U_2 = 180\\,kV$\n- Lichtgeschwindigkeit $c = 3.00 \\cdot 10^8\\,m/s$\n\n**Material 3 (Bewertung):**\n\n- nichtrelativistische Modellrechnungen gelten hier nur als verlaesslich, solange $v < 0.30c$\n\n**Aufgaben:**\n\n1. Berechnen Sie für Material 1 die kinetische Energie in eV und die nichtrelativistische Geschwindigkeit des Elektrons. (8 BE)\n2. Wiederholen Sie die Rechnung für Material 2. (8 BE)\n3. Vergleichen Sie beide Ergebnisse mit der Grenze aus Material 3 und beurteilen Sie, für welchen Betriebsfall das nichtrelativistische Modell noch vertretbar ist. (7 BE)\n4. Erläutern Sie qualitativ, warum die Grenzbeurteilung mit steigender Spannung physikalisch notwendig wird. (7 BE)",
+        "solutionContent": "1. Kinetische Energie: $E_{kin} = eU_1 = 45\\,keV$.  \n   Nichtrelativistisch: $v_1 = \\sqrt{2eU_1/m_e} \\approx 1.26\\cdot 10^8\\,m/s = 0.42c$.  \n   **8 BE**\n\n2. Für $U_2 = 180\\,kV$ gilt $E_{kin} = 180\\,keV$.  \n   $v_2 = \\sqrt{2eU_2/m_e} \\approx 2.52\\cdot 10^8\\,m/s = 0.84c$.  \n   **8 BE**\n\n3. Vergleich mit $0.30c$:  \n   - Material 1: $0.42c > 0.30c$  \n   - Material 2: $0.84c > 0.30c$  \n   Damit ist in beiden Faellen die Grenzbedingung überschritten; das nichtrelativistische Modell ist insbesondere bei Material 2 deutlich unzureichend.  \n   **7 BE**\n\n4. Mit wachsender Spannung steigt die kinetische Energie stark an; die klassische Beziehung $E_{kin}=\\frac12 mv^2$ wuerde Geschwindigkeiten vorhersagen, die der Lichtgeschwindigkeit zu nahe kommen.  \n   Relativistische Effekte aendern dann den Zusammenhang zwischen Energie und Geschwindigkeit wesentlich.  \n   **7 BE**",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 18,
@@ -5690,26 +5718,27 @@
             {
               "id": "s1",
               "points": 8,
-              "description": "Energie und Geschwindigkeit fuer den ersten Betriebsfall bestimmt"
+              "description": "Energie und Geschwindigkeit für den ersten Betriebsfall bestimmt"
             },
             {
               "id": "s2",
               "points": 8,
-              "description": "Energie und Geschwindigkeit fuer den zweiten Betriebsfall bestimmt"
+              "description": "Energie und Geschwindigkeit für den zweiten Betriebsfall bestimmt"
             },
             {
               "id": "s3",
               "points": 7,
-              "description": "Modellgrenze gegenueber 0.30c sauber beurteilt"
+              "description": "Modellgrenze gegenüber 0.30c sauber beurteilt"
             },
             {
               "id": "s4",
               "points": 7,
-              "description": "Notwendigkeit relativistischer Modellierung erklaert"
+              "description": "Notwendigkeit relativistischer Modellierung erklärt"
             }
           ]
         }
-      }
+      },
+      "phase": "Q1"
     },
     {
       "id": "f395d80f-0f59-4bb4-8832-ca8bc7f87603",
@@ -5747,7 +5776,7 @@
         "treeOrder": 6
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEin Pruefstand fuer Elektromotoren vergleicht die magnetische Kraft auf Leiter und die Kreisbahn schneller Elektronen im selben Magnetfeld.\n\n**Material 1 (Messung der Flussdichte):**\n\n| Strom $I$ in A | 1.0 | 1.5 | 2.0 | 2.5 |\n|---|---:|---:|---:|---:|\n| $B$ in mT | 12 | 18 | 24 | 30 |\n\n**Material 2 (Leiter im Feld):**\n\n- Leiterlaenge im Feld $l = 8.0\\,cm$\n- Strom im Leiter $I_L = 3.0\\,A$\n- Magnetfeld aus Material 1 fuer $I = 2.0\\,A$\n\n**Material 3 (Elektronenbahn):**\n\n- Elektronengeschwindigkeit $v = 4.0 \\cdot 10^6\\,m/s$\n- Magnetfeld wie in Material 2\n- Elektronenmasse $m_e = 9.11 \\cdot 10^{-31}\\,kg$\n- Elementarladung $e = 1.602 \\cdot 10^{-19}\\,C$\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 eine lineare Beziehung $B(I)$. (5 BE)\n2. Berechnen Sie die Kraft auf den Leiter aus Material 2. (6 BE)\n3. Bestimmen Sie fuer Material 3 den Radius der Kreisbahn. (8 BE)\n4. Erklaeren Sie qualitativ den Unterschied zwischen Leiterkraft und Lorentzkraft auf ein einzelnes Elektron. (6 BE)",
+        "taskContent": "**Kontext:**\n\nEin Pruefstand für Elektromotoren vergleicht die magnetische Kraft auf Leiter und die Kreisbahn schneller Elektronen im selben Magnetfeld.\n\n**Material 1 (Messung der Flussdichte):**\n\n| Strom $I$ in A | 1.0 | 1.5 | 2.0 | 2.5 |\n|---|---:|---:|---:|---:|\n| $B$ in mT | 12 | 18 | 24 | 30 |\n\n**Material 2 (Leiter im Feld):**\n\n- Leiterlaenge im Feld $l = 8.0\\,cm$\n- Strom im Leiter $I_L = 3.0\\,A$\n- Magnetfeld aus Material 1 für $I = 2.0\\,A$\n\n**Material 3 (Elektronenbahn):**\n\n- Elektronengeschwindigkeit $v = 4.0 \\cdot 10^6\\,m/s$\n- Magnetfeld wie in Material 2\n- Elektronenmasse $m_e = 9.11 \\cdot 10^{-31}\\,kg$\n- Elementarladung $e = 1.602 \\cdot 10^{-19}\\,C$\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 eine lineare Beziehung $B(I)$. (5 BE)\n2. Berechnen Sie die Kraft auf den Leiter aus Material 2. (6 BE)\n3. Bestimmen Sie für Material 3 den Radius der Kreisbahn. (8 BE)\n4. Erklären Sie qualitativ den Unterschied zwischen Leiterkraft und Lorentzkraft auf ein einzelnes Elektron. (6 BE)",
         "solutionContent": "1. Die Daten sind exakt proportional: $B(I) = 12\\,mT/A \\cdot I$.  \n   In SI-Einheiten: $B(I) = 0.012\\,T/A \\cdot I$.  \n   **5 BE**\n\n2. Bei $I=2.0\\,A$ gilt $B = 24\\,mT = 0.024\\,T$.  \n   Leiterkraft: $F = B I_L l = 0.024 \\cdot 3.0 \\cdot 0.080 = 5.76\\cdot 10^{-3}\\,N$.  \n   **6 BE**\n\n3. Lorentzkraft liefert Zentripetalkraft: $e v B = m_e v^2 / r$ -> $r = m_e v /(eB)$.  \n   $r = 9.11\\cdot 10^{-31} \\cdot 4.0\\cdot 10^6 / (1.602\\cdot 10^{-19} \\cdot 0.024) \\approx 9.48\\cdot 10^{-4}\\,m = 0.95\\,mm$.  \n   **8 BE**\n\n4. Leiterkraft wirkt makroskopisch auf viele bewegte Ladungen im stromdurchflossenen Leiter; die Lorentzkraft beschreibt die Kraft auf eine einzelne Ladung.  \n   Beide beruhen auf demselben magnetischen Wirkprinzip, unterscheiden sich aber im betrachteten System und in der Modellierung.  \n   **6 BE**",
         "scoring": {
           "maxPoints": 25,
@@ -5775,7 +5804,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Q1"
     },
     {
       "id": "a5b6ecd0-610c-4458-9fcf-cc0bc37658ce",
@@ -5817,7 +5847,7 @@
         "treeOrder": 7
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEin Medizintechnik-Team bewertet magnetische Messverfahren fuer eine Bildgebungseinheit. Neben der Kalibrierung eines Hall-Sensors sollen Drehmoment und Feldhomogenitaet im MRT-Messraum abgeschaetzt werden.\n\n**Material 1 (Hall-Sensor):**\n\n| $B$ in mT | 20 | 40 | 60 | 80 |\n|---|---:|---:|---:|---:|\n| $U_H$ in mV | 3.1 | 6.3 | 9.4 | 12.7 |\n\n**Material 2 (Dipol im Feld):**\n\n- magnetisches Dipolmoment $\\mu = 0.18\\,A m^2$\n- Magnetfeld $B = 0.60\\,T$\n- Winkel zwischen Dipol und Feld: $\\varphi = 35^\\circ$\n\n**Material 3 (MRT-Bewertung):**\n\n- in einem Messfenster von $40\\,cm$ soll die Feldschwankung unter $2\\%$ bleiben\n- gemessene Flussdichten: $0.588\\,T$, $0.600\\,T$, $0.612\\,T$\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 eine lineare Kalibrierbeziehung zwischen Hall-Spannung und Flussdichte. (8 BE)\n2. Ein unbekanntes Messsignal betraegt $U_H = 10.5\\,mV$. Bestimmen Sie die zugehoerige Flussdichte. (5 BE)\n3. Berechnen Sie mit Material 2 das Drehmoment auf den Dipol. (7 BE)\n4. Beurteilen Sie mit Material 3, ob die Feldhomogenitaet fuer die Anwendung ausreicht. (5 BE)\n5. Nennen Sie zwei technische Gruende, warum reale Magnetmessungen von der Idealisierung abweichen koennen. (5 BE)",
+        "taskContent": "**Kontext:**\n\nEin Medizintechnik-Team bewertet magnetische Messverfahren für eine Bildgebungseinheit. Neben der Kalibrierung eines Hall-Sensors sollen Drehmoment und Feldhomogenitaet im MRT-Messraum abgeschaetzt werden.\n\n**Material 1 (Hall-Sensor):**\n\n| $B$ in mT | 20 | 40 | 60 | 80 |\n|---|---:|---:|---:|---:|\n| $U_H$ in mV | 3.1 | 6.3 | 9.4 | 12.7 |\n\n**Material 2 (Dipol im Feld):**\n\n- magnetisches Dipolmoment $\\mu = 0.18\\,A m^2$\n- Magnetfeld $B = 0.60\\,T$\n- Winkel zwischen Dipol und Feld: $\\varphi = 35^\\circ$\n\n**Material 3 (MRT-Bewertung):**\n\n- in einem Messfenster von $40\\,cm$ soll die Feldschwankung unter $2\\%$ bleiben\n- gemessene Flussdichten: $0.588\\,T$, $0.600\\,T$, $0.612\\,T$\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 eine lineare Kalibrierbeziehung zwischen Hall-Spannung und Flussdichte. (8 BE)\n2. Ein unbekanntes Messsignal betraegt $U_H = 10.5\\,mV$. Bestimmen Sie die zugehoerige Flussdichte. (5 BE)\n3. Berechnen Sie mit Material 2 das Drehmoment auf den Dipol. (7 BE)\n4. Beurteilen Sie mit Material 3, ob die Feldhomogenitaet für die Anwendung ausreicht. (5 BE)\n5. Nennen Sie zwei technische Gruende, warum reale Magnetmessungen von der Idealisierung abweichen können. (5 BE)",
         "solutionContent": "1. Naehernd linear: Steigung etwa $0.158\\,mV/mT$ bzw. $6.33\\,mT/mV$.  \n   Eine passende Kalibrierfunktion ist z. B. $B(U_H) \\approx 6.33\\,mT/mV \\cdot U_H$.  \n   **8 BE**\n\n2. $B \\approx 6.33 \\cdot 10.5\\,mT \\approx 66.5\\,mT$.  \n   **5 BE**\n\n3. Drehmoment: $M = \\mu B \\sin\\varphi = 0.18 \\cdot 0.60 \\cdot \\sin 35^\\circ \\approx 0.062\\,N m$.  \n   **7 BE**\n\n4. Mittelwert der Flussdichten: $0.600\\,T$.  \n   Abweichung nach oben/unten: $0.012\\,T = 2.0\\%$ vom Mittelwert.  \n   Die Homogenitaet liegt damit gerade an der Grenzlinie; im strengen Sinne ist sie nur knapp ausreichend und sollte weiter beobachtet werden.  \n   **5 BE**\n\n5. Beispiele: Temperaturdrift, mechanische Toleranzen, Streufelder, Sensoroffset, nichtlineare Magnetisierung.  \n   **5 BE**",
         "scoring": {
           "maxPoints": 30,
@@ -5850,7 +5880,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Q1"
     },
     {
       "id": "e8742831-c9d4-41c3-be12-c0320cdcbee3",
@@ -6632,7 +6663,7 @@
       "id": "a1f59f61-71cf-45cf-9426-a8c2fd52fec8",
       "title": "Schwingungsanalyse und Energiebilanz",
       "titleEn": "Oscillation Analysis and Energy Balance",
-      "description": "Die lernende Person kann eine materialgestuetzte Q2-Klausuraufgabe zu harmonischen Schwingungen, charakteristischen Groessen und Energieerhaltung selbstaendig bearbeiten.",
+      "description": "Die lernende Person kann eine materialgestuetzte Q2-Klausuraufgabe zu harmonischen Schwingungen, charakteristischen Größen und Energieerhaltung selbstaendig bearbeiten.",
       "descriptionEn": "The learner can independently solve a material-based Q2 written-test task on harmonic oscillations, characteristic quantities, and conservation of energy.",
       "weight": 1,
       "tags": [
@@ -6736,8 +6767,8 @@
         "treeOrder": 3
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEin Logistikzentrum prueft eine Wirbelstrombremse fuer fahrerlose Wagen. Die Bewegung eines Leiters im Magnetfeld wird mit dem Induktionsgesetz und einem Bremsvergleich verknuepft.\n\n**Material 1 (bewegter Leiter):**\n\n- Leiterlaenge $l = 0.18\\,m$\n- Geschwindigkeit $v = 4.0\\,m/s$\n- Magnetische Flussdichte $B = 0.42\\,T$\n\n**Material 2 (Spule im Feld):**\n\n- Windungszahl $N = 180$\n- magnetischer Fluss sinkt gleichmaessig von $2.8\\,mWb$ auf $0.4\\,mWb$ in $35\\,ms$\n\n**Material 3 (Bremse):**\n\n- bei offener Aluminiumplatte verringert sich die Geschwindigkeit eines Testwagens von $3.0\\,m/s$ auf $2.6\\,m/s$ in $0.80\\,s$\n- bei geschlitzter Platte sinkt sie im gleichen Zeitintervall nur auf $2.8\\,m/s$\n\n**Aufgaben:**\n\n1. Berechnen Sie fuer Material 1 die induzierte Spannung des bewegten Leiters. (6 BE)\n2. Bestimmen Sie mit Material 2 die induzierte Spannung der Spule. (7 BE)\n3. Erklaeren Sie mit der Lenz-Regel, warum die ungeschlitzte Platte staerker bremst als die geschlitzte. (8 BE)\n4. Vergleichen Sie die mittlere Verzogerung in beiden Bremsfaellen und beurteilen Sie den technischen Nutzen von Blechpaketen in Transformatoren. (9 BE)",
-        "solutionContent": "1. Bewegungsinduktion: $U = B l v = 0.42 \\cdot 0.18 \\cdot 4.0 = 0.3024\\,V$.  \n   **6 BE**\n\n2. $U = N \\cdot |\\Delta \\Phi / \\Delta t| = 180 \\cdot |(0.4-2.8)\\cdot 10^{-3}| / 0.035 \\approx 12.34\\,V$.  \n   **7 BE**\n\n3. Ungeschlitzte Platte: groessere geschlossene Wirbelstromkreise -> staerkerer Induktionsstrom -> staerkeres Gegenfeld -> staerkere Bremswirkung.  \n   Geschlitzte Platte: Stromwege unterbrochen, Wirbelstroeme kleiner, Bremswirkung geringer.  \n   **8 BE**\n\n4. Mittlere Verzogerung:  \n   - ungeschlitzt: $a_1 = (2.6-3.0)/0.80 = -0.50\\,m/s^2$  \n   - geschlitzt: $a_2 = (2.8-3.0)/0.80 = -0.25\\,m/s^2$  \n   Blechpakete in Transformatoren unterdruecken Wirbelstroeme und damit unerwuenschte Erwarmung; genau dieser Effekt wird bei Bremsen technisch umgekehrt genutzt.  \n   **9 BE**",
+        "taskContent": "**Kontext:**\n\nEin Logistikzentrum prueft eine Wirbelstrombremse für fahrerlose Wagen. Die Bewegung eines Leiters im Magnetfeld wird mit dem Induktionsgesetz und einem Bremsvergleich verknuepft.\n\n**Material 1 (bewegter Leiter):**\n\n- Leiterlaenge $l = 0.18\\,m$\n- Geschwindigkeit $v = 4.0\\,m/s$\n- Magnetische Flussdichte $B = 0.42\\,T$\n\n**Material 2 (Spule im Feld):**\n\n- Windungszahl $N = 180$\n- magnetischer Fluss sinkt gleichmaessig von $2.8\\,mWb$ auf $0.4\\,mWb$ in $35\\,ms$\n\n**Material 3 (Bremse):**\n\n- bei offener Aluminiumplatte verringert sich die Geschwindigkeit eines Testwagens von $3.0\\,m/s$ auf $2.6\\,m/s$ in $0.80\\,s$\n- bei geschlitzter Platte sinkt sie im gleichen Zeitintervall nur auf $2.8\\,m/s$\n\n**Aufgaben:**\n\n1. Berechnen Sie für Material 1 die induzierte Spannung des bewegten Leiters. (6 BE)\n2. Bestimmen Sie mit Material 2 die induzierte Spannung der Spule. (7 BE)\n3. Erklären Sie mit der Lenz-Regel, warum die ungeschlitzte Platte staerker bremst als die geschlitzte. (8 BE)\n4. Vergleichen Sie die mittlere Verzogerung in beiden Bremsfaellen und beurteilen Sie den technischen Nutzen von Blechpaketen in Transformatoren. (9 BE)",
+        "solutionContent": "1. Bewegungsinduktion: $U = B l v = 0.42 \\cdot 0.18 \\cdot 4.0 = 0.3024\\,V$.  \n   **6 BE**\n\n2. $U = N \\cdot |\\Delta \\Phi / \\Delta t| = 180 \\cdot |(0.4-2.8)\\cdot 10^{-3}| / 0.035 \\approx 12.34\\,V$.  \n   **7 BE**\n\n3. Ungeschlitzte Platte: größere geschlossene Wirbelstromkreise -> staerkerer Induktionsstrom -> staerkeres Gegenfeld -> staerkere Bremswirkung.  \n   Geschlitzte Platte: Stromwege unterbrochen, Wirbelstroeme kleiner, Bremswirkung geringer.  \n   **8 BE**\n\n4. Mittlere Verzogerung:  \n   - ungeschlitzt: $a_1 = (2.6-3.0)/0.80 = -0.50\\,m/s^2$  \n   - geschlitzt: $a_2 = (2.8-3.0)/0.80 = -0.25\\,m/s^2$  \n   Blechpakete in Transformatoren unterdrücken Wirbelstroeme und damit unerwuenschte Erwarmung; genau dieser Effekt wird bei Bremsen technisch umgekehrt genutzt.  \n   **9 BE**",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 18,
@@ -6755,7 +6786,7 @@
             {
               "id": "s3",
               "points": 8,
-              "description": "Bremswirkung ueber Wirbelstroeme und Lenz-Regel erklaert"
+              "description": "Bremswirkung über Wirbelstroeme und Lenz-Regel erklärt"
             },
             {
               "id": "s4",
@@ -6764,7 +6795,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Q2"
     },
     {
       "id": "fd33ecb2-6cc8-4ec8-8aa1-64d9b04472c8",
@@ -6838,7 +6870,7 @@
         "treeOrder": 5
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEin drahtloser Sensor nutzt einen LC-Schwingkreis. Fuer die Abstimmung der Sendeeinheit sollen Schwingungsdauer, Frequenz und Energieumlagerung bestimmt werden.\n\n**Material 1 (Bauteile):**\n\n- Induktivitaet $L = 12\\,mH$\n- Kapazitaet $C = 220\\,nF$\n- Anfangsspannung am Kondensator $U_0 = 6.0\\,V$\n\n**Material 2 (Messung):**\n\n- gemessene Schwingungsdauer: $T_{mess} = 10.3\\,ms$\n\n**Material 3 (Bewertung):**\n\n- im Betrieb gilt eine Frequenzabweichung unter $5\\%$ als akzeptabel\n\n**Aufgaben:**\n\n1. Berechnen Sie mit der Thomson-Gleichung die theoretische Schwingungsdauer und Frequenz. (8 BE)\n2. Bestimmen Sie die im elektrischen Feld des Kondensators gespeicherte Anfangsenergie. (6 BE)\n3. Erlaeutern Sie den periodischen Energieaustausch zwischen elektrischem und magnetischem Feld im LC-Kreis. (8 BE)\n4. Vergleichen Sie den Theoriewert mit $T_{mess}$ und beurteilen Sie mit Material 3, ob der Schwingkreis hinreichend abgestimmt ist. (8 BE)",
+        "taskContent": "**Kontext:**\n\nEin drahtloser Sensor nutzt einen LC-Schwingkreis. Für die Abstimmung der Sendeeinheit sollen Schwingungsdauer, Frequenz und Energieumlagerung bestimmt werden.\n\n**Material 1 (Bauteile):**\n\n- Induktivitaet $L = 12\\,mH$\n- Kapazitaet $C = 220\\,nF$\n- Anfangsspannung am Kondensator $U_0 = 6.0\\,V$\n\n**Material 2 (Messung):**\n\n- gemessene Schwingungsdauer: $T_{mess} = 10.3\\,ms$\n\n**Material 3 (Bewertung):**\n\n- im Betrieb gilt eine Frequenzabweichung unter $5\\%$ als akzeptabel\n\n**Aufgaben:**\n\n1. Berechnen Sie mit der Thomson-Gleichung die theoretische Schwingungsdauer und Frequenz. (8 BE)\n2. Bestimmen Sie die im elektrischen Feld des Kondensators gespeicherte Anfangsenergie. (6 BE)\n3. Erläutern Sie den periodischen Energieaustausch zwischen elektrischem und magnetischem Feld im LC-Kreis. (8 BE)\n4. Vergleichen Sie den Theoriewert mit $T_{mess}$ und beurteilen Sie mit Material 3, ob der Schwingkreis hinreichend abgestimmt ist. (8 BE)",
         "solutionContent": "1. $T = 2\\pi \\sqrt{LC} = 2\\pi \\sqrt{12\\cdot 10^{-3} \\cdot 220\\cdot 10^{-9}} \\approx 10.22\\,ms$.  \n   $f = 1/T \\approx 97.9\\,Hz$.  \n   **8 BE**\n\n2. $W_C = \\frac12 C U_0^2 = 0.5 \\cdot 220\\cdot 10^{-9} \\cdot 6.0^2 \\approx 3.96\\cdot 10^{-6}\\,J$.  \n   **6 BE**\n\n3. Zu Beginn ist die Energie im elektrischen Feld des Kondensators gespeichert.  \n   Beim Entladen steigt der Strom, Energie wandert in das Magnetfeld der Spule.  \n   Danach wird der Kondensator mit umgekehrter Polaritaet wieder geladen; der Prozess wiederholt sich periodisch.  \n   **8 BE**\n\n4. Relative Abweichung: $|10.3-10.22|/10.22 \\approx 0.8\\%$.  \n   Das liegt deutlich unter $5\\%$ -> Abstimmung akzeptabel.  \n   **8 BE**",
         "scoring": {
           "maxPoints": 30,
@@ -6857,7 +6889,7 @@
             {
               "id": "s3",
               "points": 8,
-              "description": "Energieumlagerung im LC-Kreis physikalisch erklaert"
+              "description": "Energieumlagerung im LC-Kreis physikalisch erklärt"
             },
             {
               "id": "s4",
@@ -6866,7 +6898,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Q2"
     },
     {
       "id": "d3d7f95a-81ac-4daf-a08a-f30e4a79acbb",
@@ -6905,8 +6938,8 @@
         "treeOrder": 6
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEin Gebaeudetechnik-Team nutzt Ultraschall zur Leitungsdiagnostik. Neben Laufzeitmessungen sollen auch Wellenausbreitung und Doppler-Effekt bewertet werden.\n\n**Material 1 (Ultraschallimpuls):**\n\n- Schallgeschwindigkeit in Wasser $c = 1480\\,m/s$\n- Echozeit eines Impulses: $t_E = 2.40\\,ms$\n\n**Material 2 (Dauerbetrieb):**\n\n- Sende-Frequenz $f = 40.0\\,kHz$\n- gemessene Doppler-Verschiebung bei einer Stroemung: $\\Delta f = 1.2\\,kHz$\n- fuer Reflexion an kleinen Partikeln gilt naeherungsweise $\\Delta f = 2 f v / c$\n\n**Material 3 (Wellenbeschreibung):**\n\n- Ausbreitungsgeschwindigkeit einer Stoerung in einem Rohrsystem: $v = 320\\,m/s$\n- Frequenz einer periodischen Stoerung: $f = 80\\,Hz$\n\n**Aufgaben:**\n\n1. Berechnen Sie aus Material 1 die Entfernung zur reflektierenden Stoerung. (6 BE)\n2. Bestimmen Sie aus Material 2 die Stroemungsgeschwindigkeit. (7 BE)\n3. Berechnen Sie fuer Material 3 die Wellenlaenge und formulieren Sie die passende Wellengleichung in der Form $v = \\lambda f$. (7 BE)\n4. Erklaeren Sie, warum Ultraschallmessungen in Luft und in Wasser unterschiedliche Reichweiten und Auswertequalitaeten zeigen koennen. (5 BE)\n5. Bewerten Sie die Vor- und Nachteile des Doppler-Verfahrens gegenueber einer reinen Echo-Laufzeitmessung. (5 BE)",
-        "solutionContent": "1. Hin- und Rueckweg: $s = c t_E / 2 = 1480 \\cdot 2.40\\cdot 10^{-3}/2 \\approx 1.78\\,m$.  \n   **6 BE**\n\n2. $v = \\Delta f \\cdot c /(2f) = 1.2\\cdot 10^3 \\cdot 1480 /(2 \\cdot 40.0\\cdot 10^3) \\approx 22.2\\,m/s$.  \n   **7 BE**\n\n3. $\\lambda = v/f = 320 / 80 = 4.0\\,m$.  \n   Zusammenhang: $v = \\lambda f$.  \n   **7 BE**\n\n4. Begruendung: unterschiedliche Schallgeschwindigkeiten, Daempfung, akustische Impedanz und Streuung beeinflussen Reichweite und Signalqualitaet. Wasser koppelt Ultraschall meist effizienter als Luft.  \n   **5 BE**\n\n5. Doppler misst Bewegungen bzw. Stroemungen direkt, waehrend die Echo-Laufzeit eher Ortsinformationen liefert.  \n   Nachteil des Doppler-Verfahrens: staerker modellabhaengig und winkel- bzw. streuungsempfindlich.  \n   **5 BE**",
+        "taskContent": "**Kontext:**\n\nEin Gebaeudetechnik-Team nutzt Ultraschall zur Leitungsdiagnostik. Neben Laufzeitmessungen sollen auch Wellenausbreitung und Doppler-Effekt bewertet werden.\n\n**Material 1 (Ultraschallimpuls):**\n\n- Schallgeschwindigkeit in Wasser $c = 1480\\,m/s$\n- Echozeit eines Impulses: $t_E = 2.40\\,ms$\n\n**Material 2 (Dauerbetrieb):**\n\n- Sende-Frequenz $f = 40.0\\,kHz$\n- gemessene Doppler-Verschiebung bei einer Stroemung: $\\Delta f = 1.2\\,kHz$\n- für Reflexion an kleinen Partikeln gilt naeherungsweise $\\Delta f = 2 f v / c$\n\n**Material 3 (Wellenbeschreibung):**\n\n- Ausbreitungsgeschwindigkeit einer Stoerung in einem Rohrsystem: $v = 320\\,m/s$\n- Frequenz einer periodischen Stoerung: $f = 80\\,Hz$\n\n**Aufgaben:**\n\n1. Berechnen Sie aus Material 1 die Entfernung zur reflektierenden Stoerung. (6 BE)\n2. Bestimmen Sie aus Material 2 die Stroemungsgeschwindigkeit. (7 BE)\n3. Berechnen Sie für Material 3 die Wellenlaenge und formulieren Sie die passende Wellengleichung in der Form $v = \\lambda f$. (7 BE)\n4. Erklären Sie, warum Ultraschallmessungen in Luft und in Wasser unterschiedliche Reichweiten und Auswertequalitaeten zeigen können. (5 BE)\n5. Bewerten Sie die Vor- und Nachteile des Doppler-Verfahrens gegenüber einer reinen Echo-Laufzeitmessung. (5 BE)",
+        "solutionContent": "1. Hin- und Rückweg: $s = c t_E / 2 = 1480 \\cdot 2.40\\cdot 10^{-3}/2 \\approx 1.78\\,m$.  \n   **6 BE**\n\n2. $v = \\Delta f \\cdot c /(2f) = 1.2\\cdot 10^3 \\cdot 1480 /(2 \\cdot 40.0\\cdot 10^3) \\approx 22.2\\,m/s$.  \n   **7 BE**\n\n3. $\\lambda = v/f = 320 / 80 = 4.0\\,m$.  \n   Zusammenhang: $v = \\lambda f$.  \n   **7 BE**\n\n4. Begründung: unterschiedliche Schallgeschwindigkeiten, Daempfung, akustische Impedanz und Streuung beeinflussen Reichweite und Signalqualitaet. Wasser koppelt Ultraschall meist effizienter als Luft.  \n   **5 BE**\n\n5. Doppler misst Bewegungen bzw. Stroemungen direkt, während die Echo-Laufzeit eher Ortsinformationen liefert.  \n   Nachteil des Doppler-Verfahrens: staerker modellabhaengig und winkel- bzw. streuungsempfindlich.  \n   **5 BE**",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 18,
@@ -6929,7 +6962,7 @@
             {
               "id": "s4",
               "points": 5,
-              "description": "Mediumseinfluss auf Ultraschallmessung erklaert"
+              "description": "Mediumseinfluss auf Ultraschallmessung erklärt"
             },
             {
               "id": "s5",
@@ -6938,7 +6971,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Q2"
     },
     {
       "id": "be0dfd3c-43ca-4d3f-8e13-a5573cd5abbb",
@@ -6978,8 +7012,8 @@
         "treeOrder": 7
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEin Akustiklabor stimmt ein neues Musikinstrument ab. Dabei werden Interferenz, stehende Wellen und Resonanzbedingungen gemeinsam genutzt.\n\n**Material 1 (Saite):**\n\n- Saitenlaenge $L = 0.65\\,m$\n- Grundfrequenz $f_1 = 262\\,Hz$\n\n**Material 2 (Doppelquellen):**\n\n- Frequenz $f = 850\\,Hz$\n- Ausbreitungsgeschwindigkeit in Luft $c = 340\\,m/s$\n- Wegdifferenz an einem Punkt $P$: $\\Delta s = 0.20\\,m$\n\n**Material 3 (Resonator):**\n\n- ein offenes Rohr hat die Laenge $0.50\\,m$\n- gesucht ist die Grundfrequenz\n\n**Aufgaben:**\n\n1. Bestimmen Sie fuer Material 1 die Ausbreitungsgeschwindigkeit auf der Saite. (7 BE)\n2. Berechnen Sie fuer Material 2 die Wellenlaenge und entscheiden Sie, ob am Punkt $P$ ein Maximum oder Minimum der Interferenz vorliegt. (9 BE)\n3. Bestimmen Sie fuer Material 3 die Grundfrequenz des offenen Rohres. (7 BE)\n4. Erlaeutern Sie den Zusammenhang zwischen stehenden Wellen, Eigenfrequenzen und Klangcharakter eines Instruments. (7 BE)",
-        "solutionContent": "1. Fuer die Grundschwingung gilt $\\lambda_1 = 2L = 1.30\\,m$.  \n   Daher $v = f_1 \\lambda_1 = 262 \\cdot 1.30 \\approx 341\\,m/s$.  \n   **7 BE**\n\n2. $\\lambda = c/f = 340 / 850 = 0.40\\,m$.  \n   Wegdifferenz: $\\Delta s = 0.20\\,m = \\lambda/2$.  \n   Das entspricht destruktiver Interferenz -> Minimum.  \n   **9 BE**\n\n3. Offenes Rohr, Grundschwingung: $\\lambda_1 = 2L = 1.0\\,m$.  \n   $f_1 = c/\\lambda_1 = 340\\,Hz$.  \n   **7 BE**\n\n4. Stehende Wellen entstehen bei Resonanzbedingungen; nur bestimmte Eigenfrequenzen passen zur Geometrie des Systems.  \n   Diese Eigenfrequenzen bestimmen Obertonstruktur und damit den Klangcharakter.  \n   **7 BE**",
+        "taskContent": "**Kontext:**\n\nEin Akustiklabor stimmt ein neues Musikinstrument ab. Dabei werden Interferenz, stehende Wellen und Resonanzbedingungen gemeinsam genutzt.\n\n**Material 1 (Saite):**\n\n- Saitenlaenge $L = 0.65\\,m$\n- Grundfrequenz $f_1 = 262\\,Hz$\n\n**Material 2 (Doppelquellen):**\n\n- Frequenz $f = 850\\,Hz$\n- Ausbreitungsgeschwindigkeit in Luft $c = 340\\,m/s$\n- Wegdifferenz an einem Punkt $P$: $\\Delta s = 0.20\\,m$\n\n**Material 3 (Resonator):**\n\n- ein offenes Rohr hat die Laenge $0.50\\,m$\n- gesucht ist die Grundfrequenz\n\n**Aufgaben:**\n\n1. Bestimmen Sie für Material 1 die Ausbreitungsgeschwindigkeit auf der Saite. (7 BE)\n2. Berechnen Sie für Material 2 die Wellenlaenge und entscheiden Sie, ob am Punkt $P$ ein Maximum oder Minimum der Interferenz vorliegt. (9 BE)\n3. Bestimmen Sie für Material 3 die Grundfrequenz des offenen Rohres. (7 BE)\n4. Erläutern Sie den Zusammenhang zwischen stehenden Wellen, Eigenfrequenzen und Klangcharakter eines Instruments. (7 BE)",
+        "solutionContent": "1. Für die Grundschwingung gilt $\\lambda_1 = 2L = 1.30\\,m$.  \n   Daher $v = f_1 \\lambda_1 = 262 \\cdot 1.30 \\approx 341\\,m/s$.  \n   **7 BE**\n\n2. $\\lambda = c/f = 340 / 850 = 0.40\\,m$.  \n   Wegdifferenz: $\\Delta s = 0.20\\,m = \\lambda/2$.  \n   Das entspricht destruktiver Interferenz -> Minimum.  \n   **9 BE**\n\n3. Offenes Rohr, Grundschwingung: $\\lambda_1 = 2L = 1.0\\,m$.  \n   $f_1 = c/\\lambda_1 = 340\\,Hz$.  \n   **7 BE**\n\n4. Stehende Wellen entstehen bei Resonanzbedingungen; nur bestimmte Eigenfrequenzen passen zur Geometrie des Systems.  \n   Diese Eigenfrequenzen bestimmen Obertonstruktur und damit den Klangcharakter.  \n   **7 BE**",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 18,
@@ -6992,7 +7026,7 @@
             {
               "id": "s2",
               "points": 9,
-              "description": "Interferenzlage ueber Wellenlaenge und Wegdifferenz entschieden"
+              "description": "Interferenzlage über Wellenlaenge und Wegdifferenz entschieden"
             },
             {
               "id": "s3",
@@ -7002,11 +7036,12 @@
             {
               "id": "s4",
               "points": 7,
-              "description": "Zusammenhang von Resonanz, Eigenfrequenz und Klang erklaert"
+              "description": "Zusammenhang von Resonanz, Eigenfrequenz und Klang erklärt"
             }
           ]
         }
-      }
+      },
+      "phase": "Q2"
     },
     {
       "id": "2613c187-1d02-4953-9163-e9cbb471aebe",
@@ -7259,7 +7294,7 @@
       "id": "82e3a037-6865-4e3c-90aa-9dcd3f032df7",
       "title": "Welle-Teilchen-Dualismus",
       "titleEn": "Wave-Particle Duality",
-      "description": "Cluster zum Welle-Teilchen-Dualismus: Energie- und Impulsbeziehung von Photonen, Fotoeffekt, De-Broglie-Wellen und Compton-Effekt.",
+      "description": "Cluster zum Welle-Teilchen-Dualismus: Energie- und Impulsbeziehung von Photonen, Fotöffekt, De-Broglie-Wellen und Compton-Effekt.",
       "descriptionEn": "Cluster on wave-particle duality: energy and momentum relationship of photons, photoelectric effect, De Broglie waves, and Compton effect.",
       "weight": 1.1,
       "tags": [
@@ -7343,9 +7378,9 @@
     },
     {
       "id": "7372d1e4-1a5f-413e-aee0-b81536bd44f1",
-      "title": "Fotoeffekt und Einstein-Deutung",
+      "title": "Fotöffekt und Einstein-Deutung",
       "titleEn": "Photoelectric Effect and Einstein's Interpretation",
-      "description": "Die lernende Person kann den Fotoeffekt beschreiben, die Einstein’sche Deutung erläutern und die Widersprüche zur klassischen Wellentheorie herausarbeiten.",
+      "description": "Die lernende Person kann den Fotöffekt beschreiben, die Einstein’sche Deutung erläutern und die Widersprüche zur klassischen Wellentheorie herausarbeiten.",
       "descriptionEn": "The learner can describe the photoelectric effect, explain Einstein's interpretation, and highlight contradictions to classical wave theory.",
       "weight": 1.1,
       "tags": [
@@ -7670,8 +7705,8 @@
         "treeOrder": 1
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEin Glasfaserlabor verknuepft Spektrum, Polarisation und Totalreflexion in einem gemeinsamen Pruefstand fuer optische Datenuebertragung.\n\n**Material 1 (Polarisation):**\n\n| Winkel $\\alpha$ | $0^\\circ$ | $30^\\circ$ | $60^\\circ$ |\n|---|---:|---:|---:|\n| Intensitaet $I/I_0$ | 1.00 | 0.75 | 0.25 |\n\n**Material 2 (Glasfaser):**\n\n- Kernbrechungsindex $n_1 = 1.48$\n- Mantelbrechungsindex $n_2 = 1.44$\n\n**Material 3 (Spektrum):**\n\n- Wellenlaengenbereich sichtbares Licht: etwa $400\\,nm$ bis $700\\,nm$\n- Infrarotbereich einer Datenfaser: etwa $1310\\,nm$\n\n**Aufgaben:**\n\n1. Zeigen Sie mit Material 1, dass die Messwerte mit dem Malus-Gesetz vereinbar sind. (8 BE)\n2. Bestimmen Sie fuer Material 2 den Grenzwinkel der Totalreflexion vom Kern zum Mantel. (8 BE)\n3. Ordnen Sie die Wellenlaengen aus Material 3 den Spektralbereichen zu und begruenden Sie, warum Glasfasertechnik typischerweise im Infraroten arbeitet. (8 BE)\n4. Beurteilen Sie, warum Polarisation in Mess- und Kommunikationstechnik sowohl nuetzlich als auch stoeranfaellig sein kann. (6 BE)",
-        "solutionContent": "1. Malus: $I = I_0 \\cos^2 \\alpha$.  \n   - $\\alpha=30^\\circ$: $\\cos^2 30^\\circ = 0.75$  \n   - $\\alpha=60^\\circ$: $\\cos^2 60^\\circ = 0.25$  \n   Die Messwerte passen exakt.  \n   **8 BE**\n\n2. Grenzwinkel: $\\sin \\alpha_G = n_2 / n_1 = 1.44 / 1.48 = 0.9730$.  \n   $\\alpha_G \\approx 76.7^\\circ$.  \n   **8 BE**\n\n3. Sichtbar: $400$ bis $700\\,nm$.  \n   $1310\\,nm$ liegt im Infrarot.  \n   Begruendung fuer Fasertechnik: geringe Daempfung und guenstige Materialeigenschaften von Glas in diesem Bereich.  \n   **8 BE**\n\n4. Polarisation kann Signale filtern und Kontraste erhoehen, ist aber empfindlich gegen Verdrehung, Streuung und Materialspannungen im optischen System.  \n   **6 BE**",
+        "taskContent": "**Kontext:**\n\nEin Glasfaserlabor verknuepft Spektrum, Polarisation und Totalreflexion in einem gemeinsamen Pruefstand für optische Datenübertragung.\n\n**Material 1 (Polarisation):**\n\n| Winkel $\\alpha$ | $0^\\circ$ | $30^\\circ$ | $60^\\circ$ |\n|---|---:|---:|---:|\n| Intensitaet $I/I_0$ | 1.00 | 0.75 | 0.25 |\n\n**Material 2 (Glasfaser):**\n\n- Kernbrechungsindex $n_1 = 1.48$\n- Mantelbrechungsindex $n_2 = 1.44$\n\n**Material 3 (Spektrum):**\n\n- Wellenlaengenbereich sichtbares Licht: etwa $400\\,nm$ bis $700\\,nm$\n- Infrarotbereich einer Datenfaser: etwa $1310\\,nm$\n\n**Aufgaben:**\n\n1. Zeigen Sie mit Material 1, dass die Messwerte mit dem Malus-Gesetz vereinbar sind. (8 BE)\n2. Bestimmen Sie für Material 2 den Grenzwinkel der Totalreflexion vom Kern zum Mantel. (8 BE)\n3. Ordnen Sie die Wellenlaengen aus Material 3 den Spektralbereichen zu und begründen Sie, warum Glasfasertechnik typischerweise im Infraroten arbeitet. (8 BE)\n4. Beurteilen Sie, warum Polarisation in Mess- und Kommunikationstechnik sowohl nuetzlich als auch stoeranfaellig sein kann. (6 BE)",
+        "solutionContent": "1. Malus: $I = I_0 \\cos^2 \\alpha$.  \n   - $\\alpha=30^\\circ$: $\\cos^2 30^\\circ = 0.75$  \n   - $\\alpha=60^\\circ$: $\\cos^2 60^\\circ = 0.25$  \n   Die Messwerte passen exakt.  \n   **8 BE**\n\n2. Grenzwinkel: $\\sin \\alpha_G = n_2 / n_1 = 1.44 / 1.48 = 0.9730$.  \n   $\\alpha_G \\approx 76.7^\\circ$.  \n   **8 BE**\n\n3. Sichtbar: $400$ bis $700\\,nm$.  \n   $1310\\,nm$ liegt im Infrarot.  \n   Begründung für Fasertechnik: geringe Daempfung und günstige Materialeigenschaften von Glas in diesem Bereich.  \n   **8 BE**\n\n4. Polarisation kann Signale filtern und Kontraste erhöhen, ist aber empfindlich gegen Verdrehung, Streuung und Materialspannungen im optischen System.  \n   **6 BE**",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 18,
@@ -7689,7 +7724,7 @@
             {
               "id": "s3",
               "points": 8,
-              "description": "Spektralbereiche zugeordnet und Glasfaserwahl begruendet"
+              "description": "Spektralbereiche zugeordnet und Glasfaserwahl begründet"
             },
             {
               "id": "s4",
@@ -7698,13 +7733,14 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Q3"
     },
     {
       "id": "b4c62d7a-ae9c-4cfd-ab15-89bf467a5da1",
       "title": "Interferenz, Beugung und optische Instrumente",
       "titleEn": "Interference, Diffraction, and Optical Instruments",
-      "description": "Die lernende Person kann eine materialgestuetzte Q3-Klausuraufgabe zu Doppelspalt, Beugung, Interferometern, stehenden elektromagnetischen Wellen und optischer Aufloesung selbstaendig bearbeiten.",
+      "description": "Die lernende Person kann eine materialgestuetzte Q3-Klausuraufgabe zu Doppelspalt, Beugung, Interferometern, stehenden elektromagnetischen Wellen und optischer Auflösung selbstaendig bearbeiten.",
       "descriptionEn": "The learner can independently solve a material-based Q3 written-test task on the double slit, diffraction, interferometers, standing electromagnetic waves, and optical resolution.",
       "weight": 1,
       "tags": [
@@ -7741,8 +7777,8 @@
         "treeOrder": 2
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEin Optiklabor entwickelt ein kompaktes Messmikroskop. Die Auswertung nutzt Interferenz am Doppelspalt, Beugung am Gitter und die Aufloesungsgrenze optischer Instrumente.\n\n**Material 1 (Doppelspalt):**\n\n- Spaltabstand $d = 0.25\\,mm$\n- Wellenlaenge $\\lambda = 532\\,nm$\n- Abstand zum Schirm $L = 2.0\\,m$\n\n**Material 2 (Beugungsgitter):**\n\n- Gitterkonstante $g = 1.67\\,\\mu m$\n- Licht der Wellenlaenge $\\lambda = 600\\,nm$\n\n**Material 3 (Mikroskop):**\n\n- numerische Apertur $NA = 0.25$\n- Lichtwellenlaenge $\\lambda = 550\\,nm$\n- Aufloesungsgrenze naeherungsweise $d_{min} = 0.61\\lambda/NA$\n\n**Aufgaben:**\n\n1. Berechnen Sie den Abstand benachbarter Interferenzmaxima auf dem Schirm. (8 BE)\n2. Bestimmen Sie den Beugungswinkel 1. Ordnung fuer Material 2. (7 BE)\n3. Berechnen Sie mit Material 3 die Aufloesungsgrenze des Mikroskops. (7 BE)\n4. Erlaeutern Sie, warum die Beugung gleichzeitig Messhilfe und Aufloesungsgrenze optischer Systeme ist. (8 BE)",
-        "solutionContent": "1. Maximaabstand: $\\Delta y = \\lambda L / d = 532\\cdot 10^{-9} \\cdot 2.0 / 2.5\\cdot 10^{-4} \\approx 4.26\\,mm$.  \n   **8 BE**\n\n2. Gittergleichung: $\\sin \\alpha = \\lambda/g = 600\\cdot 10^{-9} / 1.67\\cdot 10^{-6} \\approx 0.359$.  \n   $\\alpha \\approx 21.1^\\circ$.  \n   **7 BE**\n\n3. $d_{min} = 0.61 \\lambda / NA = 0.61 \\cdot 550\\cdot 10^{-9} / 0.25 \\approx 1.34\\cdot 10^{-6}\\,m = 1.34\\,\\mu m$.  \n   **7 BE**\n\n4. Beugung macht Wellenlaengenmessung und Interferenzverfahren erst moeglich, begrenzt aber zugleich die Schaerfe und damit die Trennbarkeit feiner Strukturen.  \n   **8 BE**",
+        "taskContent": "**Kontext:**\n\nEin Optiklabor entwickelt ein kompaktes Messmikroskop. Die Auswertung nutzt Interferenz am Doppelspalt, Beugung am Gitter und die Auflösungsgrenze optischer Instrumente.\n\n**Material 1 (Doppelspalt):**\n\n- Spaltabstand $d = 0.25\\,mm$\n- Wellenlaenge $\\lambda = 532\\,nm$\n- Abstand zum Schirm $L = 2.0\\,m$\n\n**Material 2 (Beugungsgitter):**\n\n- Gitterkonstante $g = 1.67\\,\\mu m$\n- Licht der Wellenlaenge $\\lambda = 600\\,nm$\n\n**Material 3 (Mikroskop):**\n\n- numerische Apertur $NA = 0.25$\n- Lichtwellenlaenge $\\lambda = 550\\,nm$\n- Auflösungsgrenze naeherungsweise $d_{min} = 0.61\\lambda/NA$\n\n**Aufgaben:**\n\n1. Berechnen Sie den Abstand benachbarter Interferenzmaxima auf dem Schirm. (8 BE)\n2. Bestimmen Sie den Beugungswinkel 1. Ordnung für Material 2. (7 BE)\n3. Berechnen Sie mit Material 3 die Auflösungsgrenze des Mikroskops. (7 BE)\n4. Erläutern Sie, warum die Beugung gleichzeitig Messhilfe und Auflösungsgrenze optischer Systeme ist. (8 BE)",
+        "solutionContent": "1. Maximaabstand: $\\Delta y = \\lambda L / d = 532\\cdot 10^{-9} \\cdot 2.0 / 2.5\\cdot 10^{-4} \\approx 4.26\\,mm$.  \n   **8 BE**\n\n2. Gittergleichung: $\\sin \\alpha = \\lambda/g = 600\\cdot 10^{-9} / 1.67\\cdot 10^{-6} \\approx 0.359$.  \n   $\\alpha \\approx 21.1^\\circ$.  \n   **7 BE**\n\n3. $d_{min} = 0.61 \\lambda / NA = 0.61 \\cdot 550\\cdot 10^{-9} / 0.25 \\approx 1.34\\cdot 10^{-6}\\,m = 1.34\\,\\mu m$.  \n   **7 BE**\n\n4. Beugung macht Wellenlaengenmessung und Interferenzverfahren erst möglich, begrenzt aber zugleich die Schaerfe und damit die Trennbarkeit feiner Strukturen.  \n   **8 BE**",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 18,
@@ -7760,22 +7796,23 @@
             {
               "id": "s3",
               "points": 7,
-              "description": "Aufloesungsgrenze eines Mikroskops berechnet"
+              "description": "Auflösungsgrenze eines Mikroskops berechnet"
             },
             {
               "id": "s4",
               "points": 8,
-              "description": "Doppelfunktion der Beugung fachlich erklaert"
+              "description": "Doppelfunktion der Beugung fachlich erklärt"
             }
           ]
         }
-      }
+      },
+      "phase": "Q3"
     },
     {
       "id": "0bcf7157-814d-4553-bd27-924d1bd71589",
-      "title": "Photonenmodell und Fotoeffekt",
+      "title": "Photonenmodell und Fotöffekt",
       "titleEn": "Photon Model and Photoelectric Effect",
-      "description": "Die lernende Person kann eine materialgestuetzte Q3-Klausuraufgabe zu Energie und Impuls von Photonen, Fotoeffekt, Solarzellen und der Bestimmung des Planckschen Wirkungsquantums selbstaendig bearbeiten.",
+      "description": "Die lernende Person kann eine materialgestuetzte Q3-Klausuraufgabe zu Energie und Impuls von Photonen, Fotöffekt, Solarzellen und der Bestimmung des Planckschen Wirkungsquantums selbstaendig bearbeiten.",
       "descriptionEn": "The learner can independently solve a material-based Q3 written-test task on photon energy and momentum, the photoelectric effect, solar cells, and determining Planck's constant.",
       "weight": 1,
       "tags": [
@@ -7811,8 +7848,8 @@
         "treeOrder": 3
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEin Solar-Startup prueft neue Lichtsensoren. Aus Fotoeffekt-Daten sollen Austrittsarbeit, Planck-Konstante und die Eignung eines Materials fuer sichtbares Licht abgeschaetzt werden.\n\n**Material 1 (Fotoeffekt):**\n\n| $f$ in $10^{14}\\,Hz$ | 5.5 | 6.0 | 6.5 | 7.0 |\n|---|---:|---:|---:|---:|\n| Grenzspannung $U_g$ in V | 0.15 | 0.36 | 0.57 | 0.78 |\n\n**Material 2 (Photonen):**\n\n- sichtbares Licht mit $\\lambda = 500\\,nm$\n- Vakuumlichtgeschwindigkeit $c = 3.00 \\cdot 10^8\\,m/s$\n\n**Material 3 (Materialwahl):**\n\n- eine Austrittsarbeit unter $2.6\\,eV$ gilt fuer den geplanten Sensor als guenstig\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 eine lineare Beziehung zwischen $U_g$ und $f$. (8 BE)\n2. Berechnen Sie daraus das Plancksche Wirkungsquantum $h$ und die Austrittsarbeit $W_A$. (8 BE)\n3. Bestimmen Sie die Photonenergie fuer Material 2 in eV. (6 BE)\n4. Beurteilen Sie mit Material 3, ob das Material fuer sichtbares Licht um $500\\,nm$ gut geeignet ist. (8 BE)",
-        "solutionContent": "1. Die Werte liegen linear mit Steigung  \n   $m = \\Delta U / \\Delta f = 0.21 / (0.5\\cdot 10^{14}) = 4.2\\cdot 10^{-15}\\,V s$.  \n   Ein passender Achsenabschnitt ist etwa $b \\approx -2.16\\,V$.  \n   **8 BE**\n\n2. Aus $U_g = (h/e)f - W_A/e$ folgt  \n   $h = e m \\approx 1.602\\cdot 10^{-19} \\cdot 4.2\\cdot 10^{-15} \\approx 6.73\\cdot 10^{-34}\\,J s$.  \n   $W_A \\approx 2.16\\,eV$.  \n   **8 BE**\n\n3. $E = hc/\\lambda = 1240\\,eV\\,nm / 500\\,nm = 2.48\\,eV$.  \n   **6 BE**\n\n4. $E_{Photon} = 2.48\\,eV > W_A = 2.16\\,eV$ -> der Fotoeffekt tritt auf.  \n   Zudem liegt $W_A < 2.6\\,eV$, also ist das Material gemaess Material 3 fuer sichtbares Licht gut geeignet.  \n   **8 BE**",
+        "taskContent": "**Kontext:**\n\nEin Solar-Startup prueft neue Lichtsensoren. Aus Fotöffekt-Daten sollen Austrittsarbeit, Planck-Konstante und die Eignung eines Materials für sichtbares Licht abgeschaetzt werden.\n\n**Material 1 (Fotöffekt):**\n\n| $f$ in $10^{14}\\,Hz$ | 5.5 | 6.0 | 6.5 | 7.0 |\n|---|---:|---:|---:|---:|\n| Grenzspannung $U_g$ in V | 0.15 | 0.36 | 0.57 | 0.78 |\n\n**Material 2 (Photonen):**\n\n- sichtbares Licht mit $\\lambda = 500\\,nm$\n- Vakuumlichtgeschwindigkeit $c = 3.00 \\cdot 10^8\\,m/s$\n\n**Material 3 (Materialwahl):**\n\n- eine Austrittsarbeit unter $2.6\\,eV$ gilt für den geplanten Sensor als günstig\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 eine lineare Beziehung zwischen $U_g$ und $f$. (8 BE)\n2. Berechnen Sie daraus das Plancksche Wirkungsquantum $h$ und die Austrittsarbeit $W_A$. (8 BE)\n3. Bestimmen Sie die Photonenergie für Material 2 in eV. (6 BE)\n4. Beurteilen Sie mit Material 3, ob das Material für sichtbares Licht um $500\\,nm$ gut geeignet ist. (8 BE)",
+        "solutionContent": "1. Die Werte liegen linear mit Steigung  \n   $m = \\Delta U / \\Delta f = 0.21 / (0.5\\cdot 10^{14}) = 4.2\\cdot 10^{-15}\\,V s$.  \n   Ein passender Achsenabschnitt ist etwa $b \\approx -2.16\\,V$.  \n   **8 BE**\n\n2. Aus $U_g = (h/e)f - W_A/e$ folgt  \n   $h = e m \\approx 1.602\\cdot 10^{-19} \\cdot 4.2\\cdot 10^{-15} \\approx 6.73\\cdot 10^{-34}\\,J s$.  \n   $W_A \\approx 2.16\\,eV$.  \n   **8 BE**\n\n3. $E = hc/\\lambda = 1240\\,eV\\,nm / 500\\,nm = 2.48\\,eV$.  \n   **6 BE**\n\n4. $E_{Photon} = 2.48\\,eV > W_A = 2.16\\,eV$ -> der Fotöffekt tritt auf.  \n   Zudem liegt $W_A < 2.6\\,eV$, also ist das Material gemaess Material 3 für sichtbares Licht gut geeignet.  \n   **8 BE**",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 18,
@@ -7820,7 +7857,7 @@
             {
               "id": "s1",
               "points": 8,
-              "description": "linearen Zusammenhang aus Fotoeffekt-Daten bestimmt"
+              "description": "linearen Zusammenhang aus Fotöffekt-Daten bestimmt"
             },
             {
               "id": "s2",
@@ -7830,7 +7867,7 @@
             {
               "id": "s3",
               "points": 6,
-              "description": "Photonenergie fuer sichtbares Licht bestimmt"
+              "description": "Photonenergie für sichtbares Licht bestimmt"
             },
             {
               "id": "s4",
@@ -7839,7 +7876,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Q3"
     },
     {
       "id": "5e4e0a1b-3f96-4bab-9de7-fb412bd51f1e",
@@ -7879,10 +7917,10 @@
     },
     {
       "id": "fe4ecc9c-a8e1-4003-9d24-0b3fd7d6bf5b",
-      "title": "Bohr-Modell, Franck-Hertz und Wasserstoffspektren",
-      "titleEn": "Bohr Model, Franck-Hertz, and Hydrogen Spectra",
-      "description": "Die lernende Person kann eine materialgestuetzte Q3-Klausuraufgabe zu Bohr-Modell, Energieniveaus, Franck-Hertz-Versuch, Linienspektren und Rydberg-Formel selbstaendig bearbeiten.",
-      "descriptionEn": "The learner can independently solve a material-based Q3 written-test task on the Bohr model, energy levels, the Franck-Hertz experiment, line spectra, and the Rydberg formula.",
+      "title": "Absorptionsspektren und Fluoreszenz deuten",
+      "titleEn": "Interpret Absorption Spectra and Fluorescence",
+      "description": "Die lernende Person kann eine materialgestützte Q3-Klausuraufgabe zu Energieniveaus, Absorption, Emission und Fluoreszenz selbständig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q3 written-test task on energy levels, absorption, emission, and fluorescence.",
       "weight": 1,
       "tags": [
         "GK",
@@ -7894,9 +7932,7 @@
       "requires": [
         "ef30ce6d-d2f7-4d9f-8db7-64ec139a7c4f",
         "98a78f99-2b91-4d08-8fc7-f7b063e877b7",
-        "150fe161-64fe-4ff4-9a64-78c9619421d8",
-        "39d95d63-3968-45b5-8400-5c8e4b5b4e28",
-        "9bb72d60-7474-4c51-b283-65b82d625337"
+        "39d95d63-3968-45b5-8400-5c8e4b5b4e28"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -7915,41 +7951,42 @@
         "treeOrder": 5
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEine Spektrallampe wird fuer den Unterricht kalibriert. Das Team verknuepft Bohr-Modell, Franck-Hertz-Versuch und Spektrallinien, um das Energiestufenmodell experimentell zu stuetzen.\n\n**Material 1 (Franck-Hertz):**\n\n- Strommaxima bei $5.0\\,V$, $10.1\\,V$, $15.2\\,V$, $20.2\\,V$\n\n**Material 2 (vereinfachtes Energieniveauschema):**\n\n- Grundzustand $E_0 = -5.0\\,eV$\n- erster angeregter Zustand $E_1 = -2.9\\,eV$\n- zweiter angeregter Zustand $E_2 = -1.6\\,eV$\n\n**Material 3 (Spektrallinien):**\n\n- beobachtete Linie A: $590\\,nm$\n- beobachtete Linie B: $405\\,nm$\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 den mittleren Spannungsabstand und die zugehoerige Anregungsenergie. (7 BE)\n2. Erlaeutern Sie den Begriff **Energiestufenmodell** mithilfe von Material 2. (7 BE)\n3. Berechnen Sie zu zwei Uebergaengen aus Material 2 die erwarteten Emissionswellenlaengen und ordnen Sie sie den Linien A und B zu. (10 BE)\n4. Bewerten Sie, inwiefern Material 1 und Material 3 das Energiestufenmodell gegenseitig stuetzen. (6 BE)",
-        "solutionContent": "1. Spannungsabstaende: etwa $5.1\\,V$, $5.1\\,V$, $5.0\\,V$.  \n   Mittelwert etwa $\\Delta U = 5.07\\,V$.  \n   Anregungsenergie: $\\Delta E \\approx 5.07\\,eV$.  \n   **7 BE**\n\n2. Energiestufenmodell: Elektronen im Atom koennen nur bestimmte diskrete Energieniveaus einnehmen.  \n   Anregung und Emission erfolgen nur ueber feste Energiedifferenzen, die mit bestimmten Photonenergien verknuepft sind.  \n   **7 BE**\n\n3. Uebergaenge:  \n   - $E_1 \\to E_0$: $\\Delta E = 2.1\\,eV$ -> $\\lambda \\approx 1240/2.1 = 590\\,nm$ -> Linie A.  \n   - $E_2 \\to E_0$: $\\Delta E = 3.4\\,eV$ -> $\\lambda \\approx 1240/3.4 = 365\\,nm$ (naher UV-Bereich, nicht Linie B).  \n   - $E_2 \\to E_1$: $\\Delta E = 1.3\\,eV$ -> $\\lambda \\approx 954\\,nm$ (IR).  \n   Linie B bei $405\\,nm$ zeigt, dass das vereinfachte Niveauschema nicht alle realen Niveaus enthaelt.  \n   **10 BE**\n\n4. Franck-Hertz zeigt diskrete Anregungsenergien experimentell.  \n   Die Spektrallinien zeigen diskrete Emissionsenergien.  \n   Beide Befunde sprechen gemeinsam fuer diskrete Energieniveaus; Restabweichungen verweisen auf Vereinfachungen des Modells.  \n   **6 BE**",
+        "taskContent": "**Kontext:**\n\nEin Lecksuchsystem nutzt einen fluoreszierenden Marker. Aus Absorptions- und Emissionsdaten soll beurteilt werden, ob der Stoff mit einer violetten LED zuverlässig nachweisbar ist.\n\n**Material 1 (Absorptionslinien):**\n\n- starke Absorption bei $\\lambda_A = 407\\,nm$\n- schwächere Absorption bei $\\lambda_B = 620\\,nm$\n\n**Material 2 (vereinfachtes Energieniveauschema):**\n\n- Grundzustand $E_0 = -5.40\\,eV$\n- erster angeregter Zustand $E_1 = -3.40\\,eV$\n- zweiter angeregter Zustand $E_2 = -2.35\\,eV$\n\n**Material 3 (Fluoreszenz):**\n\n- nach Anregung mit der violetten LED wird eine Emission bei $620\\,nm$ beobachtet\n- die LED arbeitet bei $405\\,nm$\n- für die Sichtprüfung gilt ein klarer Abstand zwischen Anregungs- und Emissionswellenlänge als günstig\n\n**Aufgaben:**\n\n1. Berechnen Sie die Photonenergien der Wellenlängen aus Material 1 in $eV$ und ordnen Sie sie passenden Übergängen aus Material 2 zu. (8 BE)\n2. Erläutern Sie mithilfe von Material 2 den Begriff **Energiestufenmodell** für Absorption und Emission. (7 BE)\n3. Nach der Anregung in den Zustand $E_2$ erfolgt zunächst ein strahlungsloser Übergang nach $E_1$. Berechnen Sie die zugehörige Fluoreszenzwellenlänge für den Übergang $E_1 \\to E_0$ und vergleichen Sie mit Material 3. (9 BE)\n4. Beurteilen Sie mit Material 3, ob der Marker für die Sichtprüfung mit der violetten LED geeignet ist. (6 BE)",
+        "solutionContent": "1. Photonenergien:  \n   - $E_A = 1240/407 \\approx 3.05\\,eV$  \n   - $E_B = 1240/620 = 2.00\\,eV$  \n   Zuordnung:  \n   - $E_2 - E_0 = 3.05\\,eV$ -> $407\\,nm$  \n   - $E_1 - E_0 = 2.00\\,eV$ -> $620\\,nm$  \n   **8 BE**\n\n2. Energiestufenmodell: Elektronen oder gebundene Zustände können nur diskrete Energien einnehmen. Absorption erfolgt bei genau passenden Photonenergien für einen Übergang nach oben; Emission bei festen Energiedifferenzen nach unten.  \n   **7 BE**\n\n3. Für den Fluoreszenzübergang $E_1 \\to E_0$ gilt $\\Delta E = 2.00\\,eV$.  \n   Damit $\\lambda = 1240/2.00 = 620\\,nm$.  \n   Das stimmt mit Material 3 überein. Die Differenz zwischen $405\\,nm$ und $620\\,nm$ zeigt den Energieverlust vor der Emission.  \n   **9 BE**\n\n4. Die Anregung mit $405\\,nm$ passt nahezu zum Übergang $E_2 \\to E_0$ und ist daher geeignet. Die Emission bei $620\\,nm$ liegt deutlich im roten Bereich und ist von der violetten Anregung gut getrennt; der Marker ist für die Sichtprüfung günstig.  \n   **6 BE**",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 18,
           "steps": [
             {
               "id": "s1",
-              "points": 7,
-              "description": "Anregungsenergie aus Franck-Hertz-Daten bestimmt"
+              "points": 8,
+              "description": "Photonenergien berechnet und Übergängen korrekt zugeordnet"
             },
             {
               "id": "s2",
               "points": 7,
-              "description": "Energiestufenmodell fachlich erlaeutert"
+              "description": "Energiestufenmodell für Absorption und Emission fachlich erläutert"
             },
             {
               "id": "s3",
-              "points": 10,
-              "description": "Emissionswellenlaengen berechnet und Spektrallinien eingeordnet"
+              "points": 9,
+              "description": "Fluoreszenzwellenlänge berechnet und mit dem Material verglichen"
             },
             {
               "id": "s4",
               "points": 6,
-              "description": "gemeinsame Evidenz fuer diskrete Energieniveaus bewertet"
+              "description": "Eignung des Markers für die Sichtprüfung begründet beurteilt"
             }
           ]
         }
-      }
+      },
+      "phase": "Q3"
     },
     {
       "id": "1f159635-a6a6-468f-bbc8-51d1f208340c",
       "title": "Erweiterte Spektralanalyse und Laser",
       "titleEn": "Advanced Spectral Analysis and Lasers",
-      "description": "Die lernende Person kann eine LK-orientierte Q3-Klausuraufgabe zu wasserstoffaehnlichen Atomen, Roentgenspektren, Bragg-Bedingung, Spektrallinien und Laserprinzip selbstaendig bearbeiten.",
+      "description": "Die lernende Person kann eine LK-orientierte Q3-Klausuraufgabe zu wasserstoffähnlichen Atomen, Roentgenspektren, Bragg-Bedingung, Spektrallinien und Laserprinzip selbstaendig bearbeiten.",
       "descriptionEn": "The learner can independently solve an advanced-course-oriented Q3 written-test task on hydrogen-like atoms, X-ray spectra, Bragg's condition, spectral lines, and the laser principle.",
       "weight": 1,
       "tags": [
@@ -10073,9 +10110,9 @@
     },
     {
       "id": "a75cd921-a02b-424d-9a4d-fae33f921ee5",
-      "title": "Fotoeffekt-Auswertung",
+      "title": "Fotöffekt-Auswertung",
       "titleEn": "Photoelectric Effect Evaluation",
-      "description": "Plancksches Wirkungsquantum aus Fotoeffekt-Daten bestimmen.",
+      "description": "Plancksches Wirkungsquantum aus Fotöffekt-Daten bestimmen.",
       "descriptionEn": "Determine Planck's constant from photoelectric effect data.",
       "weight": 1.1,
       "tags": [
@@ -10588,8 +10625,8 @@
         "treeOrder": 1
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEin Forschungskurs plant eine Ausstellung zu modernen Quantenbildern. Im Zentrum stehen Potenzialtopf, Wahrscheinlichkeitsdeutung und die Grenze klassischer Vorstellungsmodelle.\n\n**Material 1 (Teilchen im Kasten):**\n\n- Kaestenlaenge $L = 0.50\\,nm$\n- fuer den unendlichen Potenzialtopf gilt $E_n = n^2 h^2 /(8 m_e L^2)$\n- nutzen Sie $h = 6.626\\cdot 10^{-34}\\,J s$ und $m_e = 9.11\\cdot 10^{-31}\\,kg$\n\n**Material 2 (Wahrscheinlichkeitsdichte):**\n\n- fuer den Grundzustand ist die Aufenthaltswahrscheinlichkeit in der Mitte des Kastens am groessten\n- an den Randpunkten verschwindet sie\n\n**Material 3 (Messproblem):**\n\n- ein Nachweisgeraet registriert nur einzelne Trefferorte, nicht die Wellenfunktion selbst\n\n**Aufgaben:**\n\n1. Berechnen Sie die Energien $E_1$ und $E_2$ des Elektrons im Potenzialtopf in eV. (10 BE)\n2. Erklaeren Sie mithilfe von Material 2 die Wahrscheinlichkeitsdeutung der Wellenfunktion. (7 BE)\n3. Formulieren Sie die Orts-Impuls-Unbestimmtheit qualitativ und grenzen Sie sie von klassischer Messungenauigkeit ab. (7 BE)\n4. Beurteilen Sie mit Material 3, warum das Messproblem ueber eine rein klassische Teilchenvorstellung hinausweist. (6 BE)",
-        "solutionContent": "1. $E_1 = h^2 /(8 m_e L^2) \\approx 2.41\\cdot 10^{-19}\\,J = 1.50\\,eV$.  \n   $E_2 = 4E_1 \\approx 6.00\\,eV$.  \n   **10 BE**\n\n2. Die Wellenfunktion selbst ist kein direkt beobachtbarer Stoffwert.  \n   Ihr Quadrat beschreibt, mit welcher Wahrscheinlichkeit das Quantenobjekt in einem Raumabschnitt gefunden wird.  \n   Hohe Wahrscheinlichkeitsdichte bedeutet hohe Trefferhaeufigkeit in vielen gleichartigen Messungen.  \n   **7 BE**\n\n3. Orts-Impuls-Unbestimmtheit bedeutet: Ort und Impuls koennen nicht gleichzeitig beliebig genau festgelegt werden.  \n   Das ist keine bloesse Apparategenauigkeit, sondern eine prinzipielle Eigenschaft quantenmechanischer Zustaende.  \n   **7 BE**\n\n4. Das Nachweisgeraet misst einzelne Treffer, waehrend die Theorie eine Wahrscheinlichkeitsverteilung beschreibt.  \n   Der Messvorgang greift in die Zustandsbeschreibung ein; genau das geht ueber eine klassische Bahnvorstellung hinaus.  \n   **6 BE**",
+        "taskContent": "**Kontext:**\n\nEin Forschungskurs plant eine Ausstellung zu modernen Quantenbildern. Im Zentrum stehen Potenzialtopf, Wahrscheinlichkeitsdeutung und die Grenze klassischer Vorstellungsmodelle.\n\n**Material 1 (Teilchen im Kasten):**\n\n- Kaestenlaenge $L = 0.50\\,nm$\n- für den unendlichen Potenzialtopf gilt $E_n = n^2 h^2 /(8 m_e L^2)$\n- nutzen Sie $h = 6.626\\cdot 10^{-34}\\,J s$ und $m_e = 9.11\\cdot 10^{-31}\\,kg$\n\n**Material 2 (Wahrscheinlichkeitsdichte):**\n\n- für den Grundzustand ist die Aufenthaltswahrscheinlichkeit in der Mitte des Kastens am größten\n- an den Randpunkten verschwindet sie\n\n**Material 3 (Messproblem):**\n\n- ein Nachweisgeraet registriert nur einzelne Trefferorte, nicht die Wellenfunktion selbst\n\n**Aufgaben:**\n\n1. Berechnen Sie die Energien $E_1$ und $E_2$ des Elektrons im Potenzialtopf in eV. (10 BE)\n2. Erklären Sie mithilfe von Material 2 die Wahrscheinlichkeitsdeutung der Wellenfunktion. (7 BE)\n3. Formulieren Sie die Orts-Impuls-Unbestimmtheit qualitativ und grenzen Sie sie von klassischer Messungenauigkeit ab. (7 BE)\n4. Beurteilen Sie mit Material 3, warum das Messproblem über eine rein klassische Teilchenvorstellung hinausweist. (6 BE)",
+        "solutionContent": "1. $E_1 = h^2 /(8 m_e L^2) \\approx 2.41\\cdot 10^{-19}\\,J = 1.50\\,eV$.  \n   $E_2 = 4E_1 \\approx 6.00\\,eV$.  \n   **10 BE**\n\n2. Die Wellenfunktion selbst ist kein direkt beobachtbarer Stoffwert.  \n   Ihr Quadrat beschreibt, mit welcher Wahrscheinlichkeit das Quantenobjekt in einem Raumabschnitt gefunden wird.  \n   Hohe Wahrscheinlichkeitsdichte bedeutet hohe Trefferhaeufigkeit in vielen gleichartigen Messungen.  \n   **7 BE**\n\n3. Orts-Impuls-Unbestimmtheit bedeutet: Ort und Impuls können nicht gleichzeitig beliebig genau festgelegt werden.  \n   Das ist keine blösse Apparategenauigkeit, sondern eine prinzipielle Eigenschaft quantenmechanischer Zustaende.  \n   **7 BE**\n\n4. Das Nachweisgeraet misst einzelne Treffer, während die Theorie eine Wahrscheinlichkeitsverteilung beschreibt.  \n   Der Messvorgang greift in die Zustandsbeschreibung ein; genau das geht über eine klassische Bahnvorstellung hinaus.  \n   **6 BE**",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 18,
@@ -10602,12 +10639,12 @@
             {
               "id": "s2",
               "points": 7,
-              "description": "Wahrscheinlichkeitsdeutung der Wellenfunktion erklaert"
+              "description": "Wahrscheinlichkeitsdeutung der Wellenfunktion erklärt"
             },
             {
               "id": "s3",
               "points": 7,
-              "description": "Unbestimmtheit gegenueber klassischer Messung abgegrenzt"
+              "description": "Unbestimmtheit gegenüber klassischer Messung abgegrenzt"
             },
             {
               "id": "s4",
@@ -10616,7 +10653,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Q4"
     },
     {
       "id": "7cc7a730-947e-4d35-a465-068b4a8e4cfe",
@@ -10694,8 +10732,8 @@
         "treeOrder": 3
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEin Krankenhaus bewertet die Lagerung radioaktiver Praeparate. Dabei muessen Zerfall, Abschirmung und Strahlenschutz gemeinsam beurteilt werden.\n\n**Material 1 (Zerfall):**\n\n- Anfangsaktivitaet $A_0 = 320\\,kBq$\n- Halbwertszeit $T_{1/2} = 6.0\\,h$\n\n**Material 2 (Betriebszeit):**\n\n- Zeit seit Einlagerung: $t = 18.0\\,h$\n\n**Material 3 (Abschirmung):**\n\n- hinter einer Schutzplatte bleiben $18\\%$ der urspruenglichen Intensitaet uebrig\n- fuer den Arbeitsbereich gilt: unter $20\\%$ Restintensitaet ist die Abschirmung ausreichend\n\n**Aufgaben:**\n\n1. Berechnen Sie die Aktivitaet nach $18.0\\,h$. (8 BE)\n2. Bestimmen Sie, welcher Bruchteil der urspruenglichen Kerne dann noch nicht zerfallen ist. (6 BE)\n3. Beurteilen Sie mit Material 3, ob die Abschirmung ausreicht. (6 BE)\n4. Erlaeutern Sie zwei Strahlenschutzprinzipien, die neben der Abschirmung im klinischen Alltag wichtig sind. (10 BE)",
-        "solutionContent": "1. Nach drei Halbwertszeiten gilt $A = A_0 \\cdot (1/2)^3 = 320\\,kBq / 8 = 40\\,kBq$.  \n   **8 BE**\n\n2. Der unverfallene Kernanteil entspricht ebenfalls $(1/2)^3 = 1/8 = 12.5\\%$.  \n   **6 BE**\n\n3. Restintensitaet $18\\% < 20\\%$ -> die Abschirmung erfuellt das angegebene Kriterium.  \n   **6 BE**\n\n4. Wichtige Strahlenschutzprinzipien: Aufenthaltszeit verkleinern, Abstand vergroessern, gezielte Abschirmung, organisatorische Kontrolle und Dosisueberwachung.  \n   **10 BE**",
+        "taskContent": "**Kontext:**\n\nEin Krankenhaus bewertet die Lagerung radioaktiver Praeparate. Dabei muessen Zerfall, Abschirmung und Strahlenschutz gemeinsam beurteilt werden.\n\n**Material 1 (Zerfall):**\n\n- Anfangsaktivitaet $A_0 = 320\\,kBq$\n- Halbwertszeit $T_{1/2} = 6.0\\,h$\n\n**Material 2 (Betriebszeit):**\n\n- Zeit seit Einlagerung: $t = 18.0\\,h$\n\n**Material 3 (Abschirmung):**\n\n- hinter einer Schutzplatte bleiben $18\\%$ der urspruenglichen Intensitaet uebrig\n- für den Arbeitsbereich gilt: unter $20\\%$ Restintensitaet ist die Abschirmung ausreichend\n\n**Aufgaben:**\n\n1. Berechnen Sie die Aktivitaet nach $18.0\\,h$. (8 BE)\n2. Bestimmen Sie, welcher Bruchteil der urspruenglichen Kerne dann noch nicht zerfallen ist. (6 BE)\n3. Beurteilen Sie mit Material 3, ob die Abschirmung ausreicht. (6 BE)\n4. Erläutern Sie zwei Strahlenschutzprinzipien, die neben der Abschirmung im klinischen Alltag wichtig sind. (10 BE)",
+        "solutionContent": "1. Nach drei Halbwertszeiten gilt $A = A_0 \\cdot (1/2)^3 = 320\\,kBq / 8 = 40\\,kBq$.  \n   **8 BE**\n\n2. Der unverfallene Kernanteil entspricht ebenfalls $(1/2)^3 = 1/8 = 12.5\\%$.  \n   **6 BE**\n\n3. Restintensitaet $18\\% < 20\\%$ -> die Abschirmung erfuellt das angegebene Kriterium.  \n   **6 BE**\n\n4. Wichtige Strahlenschutzprinzipien: Aufenthaltszeit verkleinern, Abstand vergrößern, gezielte Abschirmung, organisatorische Kontrolle und Dosisüberwachung.  \n   **10 BE**",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 18,
@@ -10703,7 +10741,7 @@
             {
               "id": "s1",
               "points": 8,
-              "description": "Aktivitaet ueber das Zerfallsgesetz berechnet"
+              "description": "Aktivitaet über das Zerfallsgesetz berechnet"
             },
             {
               "id": "s2",
@@ -10718,11 +10756,12 @@
             {
               "id": "s4",
               "points": 10,
-              "description": "Strahlenschutzprinzipien fachlich erklaert"
+              "description": "Strahlenschutzprinzipien fachlich erklärt"
             }
           ]
         }
-      }
+      },
+      "phase": "Q4"
     },
     {
       "id": "8727dafb-3057-43d0-8495-7427ce911609",
@@ -10840,8 +10879,8 @@
         "treeOrder": 6
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEin Satellitennavigationssystem wird im Unterricht als Anwendungsfall der Relativitaet untersucht. Zeitdilatation und Signallaufzeit muessen gemeinsam bewertet werden.\n\n**Material 1 (Satellit):**\n\n- Bahngeschwindigkeit $v = 3.90 \\cdot 10^3\\,m/s$\n- Borduhr-Eigenzeitintervall $\\Delta t_0 = 1.000000\\,s$\n- Lichtgeschwindigkeit $c = 3.00 \\cdot 10^8\\,m/s$\n\n**Material 2 (Signalstrecke):**\n\n- Abstand Satellit-Empfaenger: $2.10 \\cdot 10^7\\,m$\n\n**Material 3 (Bewertung):**\n\n- fuer Navigationssignale fuehren Mikrosekundenfehler bereits zu merklichen Ortsfehlern\n\n**Aufgaben:**\n\n1. Berechnen Sie mit der Naeherung der speziellen Relativitaet die Zeitdilatation pro Sekunde fuer die Borduhr. (10 BE)\n2. Bestimmen Sie die Laufzeit eines Signals von Material 2. (6 BE)\n3. Erlaeutern Sie qualitativ, warum neben der speziellen auch die allgemeine Relativitaet fuer GPS eine Rolle spielt. (7 BE)\n4. Beurteilen Sie mit Material 3, warum selbst sehr kleine Zeitfehler technisch relevant sind. (7 BE)",
-        "solutionContent": "1. Fuer kleine $v/c$ gilt naeherungsweise  \n   $\\Delta t - \\Delta t_0 \\approx \\frac12 \\frac{v^2}{c^2} \\Delta t_0$.  \n   $\\frac12 \\frac{(3.90\\cdot 10^3)^2}{(3.00\\cdot 10^8)^2} \\approx 8.45\\cdot 10^{-11}\\,s$.  \n   Die bewegte Borduhr geht also pro Sekunde um etwa $8.5\\cdot 10^{-11}\\,s$ nach.  \n   **10 BE**\n\n2. Laufzeit: $t = s/c = 2.10\\cdot 10^7 / 3.00\\cdot 10^8 = 7.0\\cdot 10^{-2}\\,s = 70\\,ms$.  \n   **6 BE**\n\n3. Spezielle Relativitaet beschreibt die Bewegungswirkung auf die Uhr.  \n   Die allgemeine Relativitaet beruecksichtigt zusaetzlich den anderen Gravitationszustand der Satellitenuhr gegenueber einer Uhr auf der Erdoberflaeche.  \n   Beide Effekte muessen zusammen korrigiert werden.  \n   **7 BE**\n\n4. Positionsbestimmung beruht auf Laufzeiten von Signalen mit Lichtgeschwindigkeit.  \n   Schon sehr kleine Zeitabweichungen fuehren daher zu grossen Ortsfehlern; Mikrosekundenfehler koennen Kilometerordnungen bedeuten.  \n   **7 BE**",
+        "taskContent": "**Kontext:**\n\nEin Satellitennavigationssystem wird im Unterricht als Anwendungsfall der Relativitaet untersucht. Zeitdilatation und Signallaufzeit muessen gemeinsam bewertet werden.\n\n**Material 1 (Satellit):**\n\n- Bahngeschwindigkeit $v = 3.90 \\cdot 10^3\\,m/s$\n- Borduhr-Eigenzeitintervall $\\Delta t_0 = 1.000000\\,s$\n- Lichtgeschwindigkeit $c = 3.00 \\cdot 10^8\\,m/s$\n\n**Material 2 (Signalstrecke):**\n\n- Abstand Satellit-Empfaenger: $2.10 \\cdot 10^7\\,m$\n\n**Material 3 (Bewertung):**\n\n- für Navigationssignale fuehren Mikrosekundenfehler bereits zu merklichen Ortsfehlern\n\n**Aufgaben:**\n\n1. Berechnen Sie mit der Naeherung der speziellen Relativitaet die Zeitdilatation pro Sekunde für die Borduhr. (10 BE)\n2. Bestimmen Sie die Laufzeit eines Signals von Material 2. (6 BE)\n3. Erläutern Sie qualitativ, warum neben der speziellen auch die allgemeine Relativitaet für GPS eine Rolle spielt. (7 BE)\n4. Beurteilen Sie mit Material 3, warum selbst sehr kleine Zeitfehler technisch relevant sind. (7 BE)",
+        "solutionContent": "1. Für kleine $v/c$ gilt naeherungsweise  \n   $\\Delta t - \\Delta t_0 \\approx \\frac12 \\frac{v^2}{c^2} \\Delta t_0$.  \n   $\\frac12 \\frac{(3.90\\cdot 10^3)^2}{(3.00\\cdot 10^8)^2} \\approx 8.45\\cdot 10^{-11}\\,s$.  \n   Die bewegte Borduhr geht also pro Sekunde um etwa $8.5\\cdot 10^{-11}\\,s$ nach.  \n   **10 BE**\n\n2. Laufzeit: $t = s/c = 2.10\\cdot 10^7 / 3.00\\cdot 10^8 = 7.0\\cdot 10^{-2}\\,s = 70\\,ms$.  \n   **6 BE**\n\n3. Spezielle Relativitaet beschreibt die Bewegungswirkung auf die Uhr.  \n   Die allgemeine Relativitaet berücksichtigt zusätzlich den anderen Gravitationszustand der Satellitenuhr gegenüber einer Uhr auf der Erdoberflaeche.  \n   Beide Effekte muessen zusammen korrigiert werden.  \n   **7 BE**\n\n4. Positionsbestimmung beruht auf Laufzeiten von Signalen mit Lichtgeschwindigkeit.  \n   Schon sehr kleine Zeitabweichungen fuehren daher zu grossen Ortsfehlern; Mikrosekundenfehler können Kilometerordnungen bedeuten.  \n   **7 BE**",
         "scoring": {
           "maxPoints": 30,
           "passingPoints": 18,
@@ -10849,7 +10888,7 @@
             {
               "id": "s1",
               "points": 10,
-              "description": "Zeitdilatation fuer die Borduhr berechnet"
+              "description": "Zeitdilatation für die Borduhr berechnet"
             },
             {
               "id": "s2",
@@ -10859,7 +10898,7 @@
             {
               "id": "s3",
               "points": 7,
-              "description": "Bedeutung der allgemeinen Relativitaet fuer GPS erklaert"
+              "description": "Bedeutung der allgemeinen Relativitaet für GPS erklärt"
             },
             {
               "id": "s4",
@@ -10868,7 +10907,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Q4"
     },
     {
       "id": "4c56f39c-416a-41cb-81eb-49db37bf5ea3",
@@ -11155,7 +11195,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Abitur"
     },
     {
       "id": "99f47b55-8284-4505-9efd-9c8e41e5a42f",
@@ -11218,11 +11259,12 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Abitur"
     },
     {
       "id": "c1a90089-00e5-4939-9d15-142f16e3d28d",
-      "title": "Vorschlag C (GK) - Fotoeffekt und Energiestufen",
+      "title": "Vorschlag C (GK) - Fotöffekt und Energiestufen",
       "titleEn": "Proposal C (Basic Course) - Photoelectric Effect and Energy Levels",
       "description": "Q3.1/Q3.2, 25 BE.",
       "descriptionEn": "Q3.1/Q3.2, 25 points.",
@@ -11252,8 +11294,8 @@
         "phase": "Abitur"
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nSie arbeiten in einem Analytiklabor, das Fotoeffekt-Messungen und Linienspektren zur Materialcharakterisierung nutzt. Ziel ist es, quantenphysikalische Modelle mit Messdaten zu verknüpfen.\n\nAlle Materialien gehören zu derselben Laboranalyse: Material 1 enthält die Fotoeffekt-Messreihe, Material 2 die Spektralinformationen und Material 3 den Auswertungskontext zur Modellprüfung.\n\n**Material 1 (Messung am Fotoelement):**\n\n| Frequenz $f$ ($10^{14} Hz$) | 5,5 | 6,0 | 6,5 | 7,0 |\n|---|---:|---:|---:|---:|\n| Gegenspannung $U_g$ (V) | 0,19 | 0,39 | 0,60 | 0,80 |\n\n**Material 2 (Spektrallinien einer Entladungslampe):**\n\n- $\\lambda_1 = 589 nm$\n- $\\lambda_2 = 546 nm$\n- $\\lambda_3 = 436 nm$\n\n**Material 3 (vereinfachtes Energiestufenmodell eines Atoms):**\n\n- $E_0 = -5,1 eV$\n- $E_1 = -3,0 eV$\n- $E_2 = -1,9 eV$\n\n**Aufgaben:**\n\n1. Nutzen Sie Material 1 und bestimmen Sie mit zwei geeigneten Messpunkten eine Näherung für das Plancksche Wirkungsquantum $h$ sowie die Austrittsarbeit $W_A$. (9 BE)\n2. Erklären Sie den Begriff **Energiestufenmodell** und ordnen Sie Material 2 geeigneten Übergängen aus Material 3 zu. Begründen Sie Ihre Zuordnung über Energiedifferenzen. (8 BE)\n3. Elektronen besitzen eine kinetische Energie von $3,2 eV$. Berechnen Sie ihre De-Broglie-Wellenlänge und vergleichen Sie diese mit einem typischen Atomabstand von $0,30 nm$. (8 BE)",
-        "solutionContent": "1. Modellgleichung Fotoeffekt: $U_g = (h/e) \\cdot f - W_A/e$.  \n   Regressionsauswertung (alle 4 Punkte):  \n   $m \\approx 4.08e-15 V/Hz$, $b \\approx -2.055 V$.  \n   Damit $h \\approx e*m = 6.54e-34 J s$, $W_A \\approx -e*b = 2.06 eV$.  \n   (Mit zwei geeigneten Punkten sind nahe Werte ebenfalls korrekt.)  \n   **9 BE**\n\n2. Begriff Energiestufenmodell: Elektronen können nur diskrete Energieniveaus einnehmen; Photonen bei Übergängen haben Energien $\\Delta E = h f = hc/\\lambda$.  \n   Mit Material 3:  \n   - $E_1 \\rightarrow E_0$: $\\Delta E = 2.1 eV$ -> $\\lambda \\approx 1240/2.1 = 590 nm$ (nahe 589 nm).  \n   - $E_2 \\rightarrow E_0$: $\\Delta E = 3.2 eV$ -> $\\lambda \\approx 388 nm$ (kurzwelliger Bereich).  \n   - $E_2 \\rightarrow E_1$: $\\Delta E = 1.1 eV$ -> $\\lambda \\approx 1127 nm$ (IR, nicht sichtbar).  \n   Deutung: Das vereinfachte Modell bildet die sichtbaren Linien nur teilweise ab; weitere Niveaus/Feinstruktur fehlen.  \n   **8 BE**\n\n3. De-Broglie-Wellenlänge:  \n   $\\lambda = h / \\sqrt{2 m_e E_{kin}}$ mit $E_{kin} = 3.2 eV$.  \n   $\\lambda \\approx 6.86e-10 m = 0.686 nm$.  \n   Vergleich mit $0.30 nm$: gleiche Größenordnung, daher Interferenz-/Beugungseffekte an atomaren Strukturen plausibel.  \n   **8 BE**",
+        "taskContent": "**Kontext:**\n\nSie arbeiten in einem Analytiklabor, das Fotöffekt-Messungen und Linienspektren zur Materialcharakterisierung nutzt. Ziel ist es, quantenphysikalische Modelle mit Messdaten zu verknüpfen.\n\nAlle Materialien gehören zu derselben Laboranalyse: Material 1 enthält die Fotöffekt-Messreihe, Material 2 die Spektralinformationen und Material 3 den Auswertungskontext zur Modellprüfung.\n\n**Material 1 (Messung am Fotoelement):**\n\n| Frequenz $f$ ($10^{14} Hz$) | 5,5 | 6,0 | 6,5 | 7,0 |\n|---|---:|---:|---:|---:|\n| Gegenspannung $U_g$ (V) | 0,19 | 0,39 | 0,60 | 0,80 |\n\n**Material 2 (Spektrallinien einer Entladungslampe):**\n\n- $\\lambda_1 = 589 nm$\n- $\\lambda_2 = 546 nm$\n- $\\lambda_3 = 436 nm$\n\n**Material 3 (vereinfachtes Energiestufenmodell eines Atoms):**\n\n- $E_0 = -5,1 eV$\n- $E_1 = -3,0 eV$\n- $E_2 = -1,9 eV$\n\n**Aufgaben:**\n\n1. Nutzen Sie Material 1 und bestimmen Sie mit zwei geeigneten Messpunkten eine Näherung für das Plancksche Wirkungsquantum $h$ sowie die Austrittsarbeit $W_A$. (9 BE)\n2. Erklären Sie den Begriff **Energiestufenmodell** und ordnen Sie Material 2 geeigneten Übergängen aus Material 3 zu. Begründen Sie Ihre Zuordnung über Energiedifferenzen. (8 BE)\n3. Elektronen besitzen eine kinetische Energie von $3,2 eV$. Berechnen Sie ihre De-Broglie-Wellenlänge und vergleichen Sie diese mit einem typischen Atomabstand von $0,30 nm$. (8 BE)",
+        "solutionContent": "1. Modellgleichung Fotöffekt: $U_g = (h/e) \\cdot f - W_A/e$.  \n   Regressionsauswertung (alle 4 Punkte):  \n   $m \\approx 4.08e-15 V/Hz$, $b \\approx -2.055 V$.  \n   Damit $h \\approx e*m = 6.54e-34 J s$, $W_A \\approx -e*b = 2.06 eV$.  \n   (Mit zwei geeigneten Punkten sind nahe Werte ebenfalls korrekt.)  \n   **9 BE**\n\n2. Begriff Energiestufenmodell: Elektronen können nur diskrete Energieniveaus einnehmen; Photonen bei Übergängen haben Energien $\\Delta E = h f = hc/\\lambda$.  \n   Mit Material 3:  \n   - $E_1 \\rightarrow E_0$: $\\Delta E = 2.1 eV$ -> $\\lambda \\approx 1240/2.1 = 590 nm$ (nahe 589 nm).  \n   - $E_2 \\rightarrow E_0$: $\\Delta E = 3.2 eV$ -> $\\lambda \\approx 388 nm$ (kurzwelliger Bereich).  \n   - $E_2 \\rightarrow E_1$: $\\Delta E = 1.1 eV$ -> $\\lambda \\approx 1127 nm$ (IR, nicht sichtbar).  \n   Deutung: Das vereinfachte Modell bildet die sichtbaren Linien nur teilweise ab; weitere Niveaus/Feinstruktur fehlen.  \n   **8 BE**\n\n3. De-Broglie-Wellenlänge:  \n   $\\lambda = h / \\sqrt{2 m_e E_{kin}}$ mit $E_{kin} = 3.2 eV$.  \n   $\\lambda \\approx 6.86e-10 m = 0.686 nm$.  \n   Vergleich mit $0.30 nm$: gleiche Größenordnung, daher Interferenz-/Beugungseffekte an atomaren Strukturen plausibel.  \n   **8 BE**",
         "scoring": {
           "maxPoints": 25,
           "passingPoints": 15,
@@ -11261,7 +11303,7 @@
             {
               "id": "s1",
               "points": 9,
-              "description": "Lineare Auswertung des Fotoeffekts mit Bestimmung von h und WA"
+              "description": "Lineare Auswertung des Fotöffekts mit Bestimmung von h und WA"
             },
             {
               "id": "s2",
@@ -11275,7 +11317,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Abitur"
     },
     {
       "id": "d65a44f6-41da-44f1-8c47-5ecccf0c9535",
@@ -11338,7 +11381,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Abitur"
     },
     {
       "id": "90933b59-35b7-445e-aab8-7e74a5a47928",
@@ -11409,7 +11453,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Abitur"
     },
     {
       "id": "cbf8326c-54f3-4967-b481-33e482c83df2",
@@ -11479,7 +11524,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Abitur"
     },
     {
       "id": "07dc73c7-fce8-4d58-a64d-58d5b8117338",
@@ -11515,7 +11561,7 @@
         "phase": "Abitur"
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nSie analysieren in einem Qualitätslabor die Spektrallampe einer Fertigungslinie. Aus Fotoeffekt- und Energieniveaudaten soll geprüft werden, ob das Quantensystem stabil und spezifikationskonform arbeitet.\n\nAlle Materialien gehören zu derselben Qualitätsprüfung: Material 1 liefert die Fotoeffekt-Daten, Material 2 das Energieniveaumodell und Material 3 die Bewertungsentscheidung für den Betrieb.\n\n**Material 1 (Fotoeffekt-Messreihe):**\n\n| $f$ ($10^{14} Hz$) | 5,2 | 5,8 | 6,4 | 7,0 |\n|---|---:|---:|---:|---:|\n| $U_g$ (V) | 0,04 | 0,29 | 0,54 | 0,79 |\n\n**Material 2 (Energieniveaus, vereinfachtes Atommodell):**\n\n- $E_0 = -5,4 eV$\n- $E_1 = -3,2 eV$\n- $E_2 = -2,1 eV$\n- $E_3 = -1,5 eV$\n\n**Material 3 (Moseley-Datensatz, K-alpha-Linie):**\n\n| Ordnungszahl $Z$ | 29 | 30 | 32 |\n|---|---:|---:|---:|\n| Frequenz $f_{K\\alpha}$ ($10^{18} Hz$) | 1,95 | 2,10 | 2,42 |\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 eine lineare Beziehung zwischen $U_g$ und $f$ und daraus $h$ und $W_A$. (8 BE)\n2. Stellen Sie mit Material 2 ein **Energiestufenmodell** dar und berechnen Sie zwei mögliche Emissionswellenlängen für Übergänge in den Grundzustand. (7 BE)\n3. Für Elektronen mit $E_{kin} = 4,0 eV$: Berechnen Sie die De-Broglie-Wellenlänge und diskutieren Sie den Bezug zur Interferenzfähigkeit an Kristallen. (5 BE)\n4. Nutzen Sie Material 3 zur LK-Erweiterung: linearisieren Sie den Zusammenhang zwischen $\\sqrt{f_{K\\alpha}}$ und $Z$ und bestimmen Sie daraus den Abschirmparameter in einem Modell $f_{K\\alpha} \\approx (Z - \\sigma)^2$. (7 BE)\n5. Begründen Sie die Grenzen dieses vereinfachten Moseley-Modells. (3 BE)",
+        "taskContent": "**Kontext:**\n\nSie analysieren in einem Qualitätslabor die Spektrallampe einer Fertigungslinie. Aus Fotöffekt- und Energieniveaudaten soll geprüft werden, ob das Quantensystem stabil und spezifikationskonform arbeitet.\n\nAlle Materialien gehören zu derselben Qualitätsprüfung: Material 1 liefert die Fotöffekt-Daten, Material 2 das Energieniveaumodell und Material 3 die Bewertungsentscheidung für den Betrieb.\n\n**Material 1 (Fotöffekt-Messreihe):**\n\n| $f$ ($10^{14} Hz$) | 5,2 | 5,8 | 6,4 | 7,0 |\n|---|---:|---:|---:|---:|\n| $U_g$ (V) | 0,04 | 0,29 | 0,54 | 0,79 |\n\n**Material 2 (Energieniveaus, vereinfachtes Atommodell):**\n\n- $E_0 = -5,4 eV$\n- $E_1 = -3,2 eV$\n- $E_2 = -2,1 eV$\n- $E_3 = -1,5 eV$\n\n**Material 3 (Moseley-Datensatz, K-alpha-Linie):**\n\n| Ordnungszahl $Z$ | 29 | 30 | 32 |\n|---|---:|---:|---:|\n| Frequenz $f_{K\\alpha}$ ($10^{18} Hz$) | 1,95 | 2,10 | 2,42 |\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1 eine lineare Beziehung zwischen $U_g$ und $f$ und daraus $h$ und $W_A$. (8 BE)\n2. Stellen Sie mit Material 2 ein **Energiestufenmodell** dar und berechnen Sie zwei mögliche Emissionswellenlängen für Übergänge in den Grundzustand. (7 BE)\n3. Für Elektronen mit $E_{kin} = 4,0 eV$: Berechnen Sie die De-Broglie-Wellenlänge und diskutieren Sie den Bezug zur Interferenzfähigkeit an Kristallen. (5 BE)\n4. Nutzen Sie Material 3 zur LK-Erweiterung: linearisieren Sie den Zusammenhang zwischen $\\sqrt{f_{K\\alpha}}$ und $Z$ und bestimmen Sie daraus den Abschirmparameter in einem Modell $f_{K\\alpha} \\approx (Z - \\sigma)^2$. (7 BE)\n5. Begründen Sie die Grenzen dieses vereinfachten Moseley-Modells. (3 BE)",
         "solutionContent": "1. Regressionsansatz $U_g = (h/e) f - W_A/e$:  \n   $m \\approx 4.167e-15 V/Hz$, $b \\approx -2.127 V$.  \n   $h \\approx e m = 6.68e-34 J s$, $W_A \\approx 2.13 eV$.  \n   **8 BE**\n\n2. Energiestufenmodell (Material 2), Übergänge in den Grundzustand:  \n   - $E_1 \\rightarrow E_0$: $\\Delta E = 2.2 eV$ -> $\\lambda \\approx 1240/2.2 = 564 nm$  \n   - $E_2 \\rightarrow E_0$: $\\Delta E = 3.3 eV$ -> $\\lambda \\approx 376 nm$  \n   - $E_3 \\rightarrow E_0$: $\\Delta E = 3.9 eV$ -> $\\lambda \\approx 318 nm$  \n   Zwei davon genügen, sauber begründet.  \n   **7 BE**\n\n3. De-Broglie für $E_{kin} = 4.0 eV$:  \n   $\\lambda \\approx 6.13e-10 m = 0.613 nm$.  \n   Damit liegt die Wellenlänge im Bereich atomarer Gitterabstände -> Interferenz an Kristallen ist zu erwarten.  \n   **5 BE**\n\n4. Moseley-Linearisation mit $Y = \\sqrt{f_{K\\alpha}}$:  \n   Für die Linearisierung ist ein Plot $\\sqrt{f_{K\\alpha}}$ gegen $Z$ (oder äquivalent $Z$ gegen $\\sqrt{f_{K\\alpha}}$) erforderlich.  \n   Ein Plot $f_{K\\alpha}$ gegen $Z$ ist nicht linear und gilt nicht als Linearisierung.  \n   Lineare Anpassung $Y = a Z + c$ liefert näherungsweise  \n   $a \\approx 5.31e7 (Hz^0.5)$ und $c \\approx -1.44e8 (Hz^0.5)$.  \n   Mit $Y = a (Z - \\sigma)$ folgt $\\sigma = -c/a \\approx 2.70$.  \n   **7 BE**\n\n5. Modellgrenzen: sehr kleine Datenbasis, effektive Abschirmung nicht exakt konstant, Mehr-Elektronen- und relativistische Effekte im einfachen Modell vernachlässigt.  \n   **3 BE**",
         "scoring": {
           "maxPoints": 30,
@@ -11524,7 +11570,7 @@
             {
               "id": "s1",
               "points": 8,
-              "description": "Lineare Fotoeffekt-Auswertung mit h und WA"
+              "description": "Lineare Fotöffekt-Auswertung mit h und WA"
             },
             {
               "id": "s2",
@@ -11548,7 +11594,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Abitur"
     },
     {
       "id": "c4f98384-f18c-426e-9eeb-47d935c54961",
@@ -11585,7 +11632,7 @@
         "phase": "Abitur"
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nSie beraten ein Werkstofflabor, das Röntgen-CT zur zerstörungsfreien Prüfung einsetzt. Ziel ist es, aus Spektrum und Abschwächungsdaten belastbare Aussagen zur Materialqualität abzuleiten.\n\nAlle Materialien gehören zu derselben Prüfkette: Material 1 beschreibt die Röhrenparameter, Material 2 die Transmissionen in Referenzmaterialien und Material 3 die technische Entscheidungssituation.\n\n**Material 1 (Röntgenröhre):**\n\n- Beschleunigungsspannung: $U = 120 kV$\n- gemessene Grenzwellenlänge: $\\lambda_{min} = 0,0105 nm$\n\n**Material 2 (Abschwächung in zwei Materialien):**\n\n| Dicke $d$ (mm) | 1 | 2 | 3 | 4 |\n|---|---:|---:|---:|---:|\n| $I/I_0$ in Al | 0,80 | 0,64 | 0,51 | 0,41 |\n| $I/I_0$ in Stahl | 0,62 | 0,38 | 0,24 | 0,15 |\n\n**Material 3 (Kristallanalyse einer charakteristischen Linie):**\n\n- Gitterabstand $d_G = 201 pm$\n- Maximum 1. Ordnung bei $\\theta = 16,8^\\circ$\n\n**Aufgaben:**\n\n1. Berechnen Sie aus Material 1 die maximale Photonenergie und prüfen Sie die Konsistenz mit der Grenzwellenlänge über $E = h c / \\lambda$. (7 BE)\n2. Bestimmen Sie für Al und Stahl jeweils einen linearen Schwächungskoeffizienten $\\mu$ aus Material 2 und vergleichen Sie die Materialien quantitativ. (7 BE)\n3. Berechnen Sie mit Material 3 die Wellenlänge der charakteristischen Linie über das Bragg-Gesetz. Ordnen Sie die Linie qualitativ in das Spektrum ein. (6 BE)\n4. Eine Einschlussstelle im Stahlbauteil erhöht lokal die Transmission um $11 \\%$. Das CT-System hat eine relative Messunsicherheit von $\\pm 3 \\%$. Beurteilen Sie die Nachweisbarkeit belastbar. (6 BE)\n5. Bewerten Sie den Einsatz höherer Beschleunigungsspannungen im Spannungsfeld aus Durchdringung, Kontrast und Strahlenschutz. (4 BE)",
+        "taskContent": "**Kontext:**\n\nSie beraten ein Werkstofflabor, das Röntgen-CT zur zerstörungsfreien Prüfung einsetzt. Ziel ist es, aus Spektrum und Abschwächungsdaten belastbare Aussagen zur Materialqualität abzuleiten.\n\nAlle Materialien gehören zu derselben Prüfkette: Material 1 beschreibt die Röhrenparameter, Material 2 die Transmissionen in Referenzmaterialien und Material 3 die technische Entscheidungssituation.\n\n**Material 1 (Röntgenröhre):**\n\n- Beschleunigungsspannung: $U = 120 kV$\n- gemessene Grenzwellenlänge: $\\lambda_{min} = 0,0105 nm$\n\n**Material 2 (Abschwächung in zwei Materialien):**\n\n| Dicke $d$ (mm) | 1 | 2 | 3 | 4 |\n|---|---:|---:|---:|---:|\n| $I/I_0$ in Al | 0,80 | 0,64 | 0,51 | 0,41 |\n| $I/I_0$ in Stahl | 0,62 | 0,38 | 0,24 | 0,15 |\n\n**Material 3 (Kristallanalyse einer charakteristischen Linie):**\n\n- Gitterabstand $d_G = 201 pm$\n- Maximum 1. Ordnung bei $\\theta = 16,8^\\circ$\n\n**Aufgaben:**\n\n1. Berechnen Sie aus Material 1 die maximale Photonenergie und prüfen Sie die Konsistenz mit der Grenzwellenlänge über $E = h c / \\lambda$. (7 BE)\n2. Bestimmen Sie für Al und Stahl jeweils einen linearen Schwächungsköffizienten $\\mu$ aus Material 2 und vergleichen Sie die Materialien quantitativ. (7 BE)\n3. Berechnen Sie mit Material 3 die Wellenlänge der charakteristischen Linie über das Bragg-Gesetz. Ordnen Sie die Linie qualitativ in das Spektrum ein. (6 BE)\n4. Eine Einschlussstelle im Stahlbauteil erhöht lokal die Transmission um $11 \\%$. Das CT-System hat eine relative Messunsicherheit von $\\pm 3 \\%$. Beurteilen Sie die Nachweisbarkeit belastbar. (6 BE)\n5. Bewerten Sie den Einsatz höherer Beschleunigungsspannungen im Spannungsfeld aus Durchdringung, Kontrast und Strahlenschutz. (4 BE)",
         "solutionContent": "1. Maximale Photonenergie aus Beschleunigungsspannung:  \n   $E_{max} = eU = 120 keV = 1.92e-14 J$.  \n   Aus Grenzwellenlänge $\\lambda_{min} = 0.0105 nm$:  \n   $E = hc/\\lambda_{min} \\approx 118 keV$.  \n   Abweichung ~$1.6 \\%$, damit konsistent im Rahmen eines realen Mess-/Rundungsfehlers.  \n   **7 BE**\n\n2. $I/I_0 = \\exp(-\\mu d)$ (Regression auf Logarithmus):  \n   - Aluminium: $\\mu_{Al} \\approx 0.223 mm^-1$  \n   - Stahl: $\\mu_{St} \\approx 0.472 mm^-1$  \n   Vergleich: Stahl schwächt etwa $2.1$-mal stärker als Aluminium.  \n   **7 BE**\n\n3. Bragg-Gesetz (1. Ordnung): $\\lambda = 2 d_G \\sin(\\theta)$  \n   $\\lambda = 2 \\cdot 201 pm \\cdot \\sin(16.8^\\circ) \\approx 116 pm = 0.116 nm$.  \n   Qualitativ: charakteristische Linie im kurzwelligen Röntgenbereich.  \n   **6 BE**\n\n4. Nachweisbarkeit bei $11 \\%$ Signalzuwachs und $\\pm 3 \\%$ relativer Unsicherheit:  \n   Signal liegt deutlich über der Unsicherheit ($SNR \\approx 11/3 \\approx 3.7$), daher prinzipiell nachweisbar; für belastbare Freigabe sind Wiederholmessung/Kalibration sinnvoll.  \n   **6 BE**\n\n5. Bewertung höherer Spannung:  \n   Vorteile: bessere Durchdringung, kürzere Grenzwellenlänge.  \n   Nachteile: geringerer Materialkontrast bei feinen Defekten, höhere Dosis/Strahlenschutzaufwand, mehr Streustrahlung.  \n   **4 BE**",
         "scoring": {
           "maxPoints": 30,
@@ -11599,7 +11646,7 @@
             {
               "id": "s2",
               "points": 7,
-              "description": "Schwächungskoeffizienten bestimmt und verglichen"
+              "description": "Schwächungsköffizienten bestimmt und verglichen"
             },
             {
               "id": "s3",
@@ -11618,7 +11665,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Abitur"
     },
     {
       "id": "4fe650ce-aa4d-48e9-9502-3a43e3e6e563",
@@ -11762,7 +11810,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Abitur"
     },
     {
       "id": "5d275b86-b5d4-4e27-8105-f87694b326d7",
@@ -11825,7 +11874,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Abitur"
     },
     {
       "id": "4afec69f-e7fc-425f-a13f-b4d592e32b04",
@@ -11882,7 +11932,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Abitur"
     },
     {
       "id": "94af337d-8889-4161-b353-e74cd754c15a",
@@ -11945,7 +11996,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Abitur"
     },
     {
       "id": "e3137881-3a57-497c-93ef-1182be0aa35d",
@@ -12016,7 +12068,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Abitur"
     },
     {
       "id": "f2b82ecd-a3b6-425c-a8b0-aa134b095429",
@@ -12086,7 +12139,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Abitur"
     },
     {
       "id": "f7352d9d-2062-455d-9358-1d8ad43b93d6",
@@ -12155,7 +12209,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Abitur"
     },
     {
       "id": "44e8d55f-7600-4354-825c-2717a5eea048",
@@ -12192,7 +12247,7 @@
         "phase": "Abitur"
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nSie begleiten die Röntgen-Qualitätssicherung einer Batteriezellfertigung. Aus Spektrum und Transmission soll bewertet werden, ob der Prüfprozess Defekte zuverlässig erkennt und dabei normgerecht arbeitet.\n\nAlle Materialien gehören zu derselben Qualitätssicherungskette: Material 1 beschreibt die Röhrenparameter, Material 2 die Materialtransmission und Material 3 die Entscheidungskriterien für die Prozessfreigabe.\n\n**Material 1 (Röntgenröhre):**\n\n- Beschleunigungsspannung: $U = 100 \\, kV$\n- Gemessene Grenzwellenlänge: $\\lambda_{min} = 0{,}0128 \\, nm$\n\n**Material 2 (Transmission in zwei Materialien):**\n\n| Dicke $d$ (mm) | 2 | 4 | 6 | 8 |\n|---|---:|---:|---:|---:|\n| $I/I_0$ in CFRP | 0,89 | 0,79 | 0,70 | 0,62 |\n| $I/I_0$ in Al | 0,74 | 0,55 | 0,41 | 0,30 |\n\n**Material 3 (Bragg-Analyse):**\n\n- Netzebenenabstand: $d_G = 201 \\, pm$\n- Maximum 1. Ordnung: $\\theta = 18{,}4^\\circ$\n\n**Material 4 (Detektionskriterium):**\n\n- Lokaler Transmissionsanstieg durch Defekt: $9\\%$\n- Relative Messunsicherheit des Systems: $\\pm 2{,}5\\%$\n\n**Aufgaben:**\n\n1. Berechnen Sie die maximale Photonenergie aus $U$ und prüfen Sie die Konsistenz mit $\\lambda_{min}$ über $E = hc/\\lambda$. (6 BE)\n2. Bestimmen Sie für CFRP und Al jeweils einen linearen Schwächungskoeffizienten $\\mu$ aus Material 2 und vergleichen Sie die Materialien quantitativ. (7 BE)\n3. Berechnen Sie für beide Materialien die Halbwertsdicke $d_{1/2} = \\ln 2 / \\mu$ und deuten Sie den Unterschied. (6 BE)\n4. Berechnen Sie mit dem Bragg-Gesetz die Wellenlänge der charakteristischen Linie und ordnen Sie sie qualitativ ein. (5 BE)\n5. Beurteilen Sie die Nachweisbarkeit des Defekts aus Material 4 und diskutieren Sie den Zielkonflikt zwischen Durchdringung, Kontrast und Strahlenschutz. (6 BE)",
+        "taskContent": "**Kontext:**\n\nSie begleiten die Röntgen-Qualitätssicherung einer Batteriezellfertigung. Aus Spektrum und Transmission soll bewertet werden, ob der Prüfprozess Defekte zuverlässig erkennt und dabei normgerecht arbeitet.\n\nAlle Materialien gehören zu derselben Qualitätssicherungskette: Material 1 beschreibt die Röhrenparameter, Material 2 die Materialtransmission und Material 3 die Entscheidungskriterien für die Prozessfreigabe.\n\n**Material 1 (Röntgenröhre):**\n\n- Beschleunigungsspannung: $U = 100 \\, kV$\n- Gemessene Grenzwellenlänge: $\\lambda_{min} = 0{,}0128 \\, nm$\n\n**Material 2 (Transmission in zwei Materialien):**\n\n| Dicke $d$ (mm) | 2 | 4 | 6 | 8 |\n|---|---:|---:|---:|---:|\n| $I/I_0$ in CFRP | 0,89 | 0,79 | 0,70 | 0,62 |\n| $I/I_0$ in Al | 0,74 | 0,55 | 0,41 | 0,30 |\n\n**Material 3 (Bragg-Analyse):**\n\n- Netzebenenabstand: $d_G = 201 \\, pm$\n- Maximum 1. Ordnung: $\\theta = 18{,}4^\\circ$\n\n**Material 4 (Detektionskriterium):**\n\n- Lokaler Transmissionsanstieg durch Defekt: $9\\%$\n- Relative Messunsicherheit des Systems: $\\pm 2{,}5\\%$\n\n**Aufgaben:**\n\n1. Berechnen Sie die maximale Photonenergie aus $U$ und prüfen Sie die Konsistenz mit $\\lambda_{min}$ über $E = hc/\\lambda$. (6 BE)\n2. Bestimmen Sie für CFRP und Al jeweils einen linearen Schwächungsköffizienten $\\mu$ aus Material 2 und vergleichen Sie die Materialien quantitativ. (7 BE)\n3. Berechnen Sie für beide Materialien die Halbwertsdicke $d_{1/2} = \\ln 2 / \\mu$ und deuten Sie den Unterschied. (6 BE)\n4. Berechnen Sie mit dem Bragg-Gesetz die Wellenlänge der charakteristischen Linie und ordnen Sie sie qualitativ ein. (5 BE)\n5. Beurteilen Sie die Nachweisbarkeit des Defekts aus Material 4 und diskutieren Sie den Zielkonflikt zwischen Durchdringung, Kontrast und Strahlenschutz. (6 BE)",
         "solutionContent": "1. Aus Beschleunigungsspannung:\n\n$$\nE_{max} = eU = 100 \\, keV\n$$\n\nAus Grenzwellenlänge:\n\n$$\nE = \\frac{1240 \\, eV\\,nm}{0{,}0128 \\, nm} \\approx 96{,}9 \\, keV\n$$\n\nAbweichung:\n\n$$\n\\frac{|100-96{,}9|}{100} \\approx 3{,}1\\%\n$$\n\n-> im Modellrahmen konsistent.\n\n**6 BE**\n\n2. Mit $I/I_0 = e^{-\\mu d}$ (Regression auf $\\ln(I/I_0)$):\n\n- $\\mu_{CFRP} \\approx 0{,}060 \\, mm^{-1}$\n- $\\mu_{Al} \\approx 0{,}150 \\, mm^{-1}$\n\nAl schwächt ca. $2{,}5$-mal stärker.\n\n**7 BE**\n\n3. Halbwertsdicken:\n\n$$\nd_{1/2} = \\frac{\\ln 2}{\\mu}\n$$\n\n- $d_{1/2,CFRP} \\approx 11{,}5 \\, mm$\n- $d_{1/2,Al} \\approx 4{,}62 \\, mm$\n\nDeutung: Aluminium reduziert die Intensität pro Dicke deutlich stärker.\n\n**6 BE**\n\n4. Bragg (1. Ordnung):\n\n$$\n\\lambda = 2d_G\\sin\\theta = 2\\cdot 201\\,pm \\cdot \\sin(18{,}4^\\circ) \\approx 127\\,pm = 0{,}127\\,nm\n$$\n\nEinordnung: kurzwelliger Röntgenbereich.\n\n**5 BE**\n\n5. Nachweisbarkeit: Signalanstieg $9\\%$ bei Unsicherheit $2{,}5\\%$ ergibt\n\n$$\n\\text{SNR} \\approx \\frac{9}{2{,}5} = 3{,}6\n$$\n\n-> prinzipiell gut nachweisbar. Fachliche Bewertung: Höhere Spannung verbessert Durchdringung, kann aber Kontrast senken und Strahlenschutzanforderungen erhöhen.\n\n**6 BE**",
         "scoring": {
           "maxPoints": 30,
@@ -12206,7 +12261,7 @@
             {
               "id": "s2",
               "points": 7,
-              "description": "Schwächungskoeffizienten für CFRP und Al bestimmt"
+              "description": "Schwächungsköffizienten für CFRP und Al bestimmt"
             },
             {
               "id": "s3",
@@ -12225,7 +12280,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "Abitur"
     },
     {
       "id": "6235841f-411f-40cd-b407-c8029657b20d",
@@ -12298,7 +12354,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "E"
     },
     {
       "id": "03bd0e3d-1952-42e5-b1fd-e2bf4d16dc42",
@@ -12340,7 +12397,7 @@
         "phase": "E"
       },
       "examData": {
-        "taskContent": "**Kontext:**\n\nEine Stunt-Sequenz wird mit Mehrphasenmodell, Wurfanteil, Reibung, numerischer Näherung und einem Vergleich zweier fast gleicher Anfangsbedingungen geplant.\n\n**Material 1 (v-t-Daten):**\n\n| t in s | 0 | 2 | 4 | 6 | 8 |\n|---|---:|---:|---:|---:|---:|\n| v in m/s | 0 | 6 | 10 | 10 | 6 |\n\n**Material 2 (Wurf):**\n\n- horizontaler Absprung mit $v_x = 10.0\\,\\mathrm{m/s}$ aus Höhe $h = 1.80\\,\\mathrm{m}$\n- zusätzlich: schiefer Wurf vom Boden mit $v_0 = 10.0\\,\\mathrm{m/s}$ und $\\alpha = 25^\\circ$\n- Erdbeschleunigung: $g=9.81\\,\\mathrm{m/s^2}$\n- Luftwiderstand während der Flugphase vernachlässigt\n\n**Material 3 (Auslauf nach Landung):**\n\n- Masse $m = 70\\,\\mathrm{kg}$\n- Reibungskoeffizient $\\mu = 0.20$\n- zusätzliche konstante Luftwiderstandskraft $F_d = 40\\,\\mathrm{N}$\n\n**Material 4 (Kurvenfahrt):**\n\n- Radius $r = 20\\,\\mathrm{m}$\n- Geschwindigkeit $v = 10.0\\,\\mathrm{m/s}$\n\n**Material 5 (Chaossensitivität):**\n\nZwei Simulationen eines nichtlinearen Systems mit Startwinkeln $10.0^\\circ$ und $10.1^\\circ$ zeigen bis $t = 4\\,\\mathrm{s}$ nahezu identische Verläufe, danach starke Abweichungen.\n\n**Aufgaben:**\n\n1. Leiten Sie ein Drei-Phasen-Modell aus Material 1 ab (Beschleunigen, Konstantfahrt, Bremsen) und bestimmen Sie mittlere Beschleunigungen sowie die Gesamtstrecke. (7 BE)\n2. Berechnen Sie für Material 2 die Wurfweite beim horizontalen und beim schiefen Wurf und vergleichen Sie die Modelle kurz. (6 BE)\n3. Berechnen Sie mit Material 3 Verzögerung und Auslaufstrecke nach der Landung. (6 BE)\n4. Bestimmen Sie für Material 4 den minimalen Haftreibungskoeffizienten und erläutern Sie kurz den Unterschied zwischen inertialem und mitrotierendem Bezugssystem. (5 BE)\n5. Geben Sie für die numerische Simulation ein einfaches Differenzenmodell an ($v_{k+1}=v_k+a_k\\,\\Delta t$, $s_{k+1}=s_k+v_{k+1}\\,\\Delta t$), berechnen Sie den ersten Schritt für $a_k = 2.5\\,\\mathrm{m/s^2}$ und $\\Delta t = 0.2\\,\\mathrm{s}$ aus $v_0 = s_0 = 0$ und deuten Sie Material 5 zur begrenzten Vorhersagbarkeit. (6 BE)",
+        "taskContent": "**Kontext:**\n\nEine Stunt-Sequenz wird mit Mehrphasenmodell, Wurfanteil, Reibung, numerischer Näherung und einem Vergleich zweier fast gleicher Anfangsbedingungen geplant.\n\n**Material 1 (v-t-Daten):**\n\n| t in s | 0 | 2 | 4 | 6 | 8 |\n|---|---:|---:|---:|---:|---:|\n| v in m/s | 0 | 6 | 10 | 10 | 6 |\n\n**Material 2 (Wurf):**\n\n- horizontaler Absprung mit $v_x = 10.0\\,\\mathrm{m/s}$ aus Höhe $h = 1.80\\,\\mathrm{m}$\n- zusätzlich: schiefer Wurf vom Boden mit $v_0 = 10.0\\,\\mathrm{m/s}$ und $\\alpha = 25^\\circ$\n- Erdbeschleunigung: $g=9.81\\,\\mathrm{m/s^2}$\n- Luftwiderstand während der Flugphase vernachlässigt\n\n**Material 3 (Auslauf nach Landung):**\n\n- Masse $m = 70\\,\\mathrm{kg}$\n- Reibungsköffizient $\\mu = 0.20$\n- zusätzliche konstante Luftwiderstandskraft $F_d = 40\\,\\mathrm{N}$\n\n**Material 4 (Kurvenfahrt):**\n\n- Radius $r = 20\\,\\mathrm{m}$\n- Geschwindigkeit $v = 10.0\\,\\mathrm{m/s}$\n\n**Material 5 (Chaossensitivität):**\n\nZwei Simulationen eines nichtlinearen Systems mit Startwinkeln $10.0^\\circ$ und $10.1^\\circ$ zeigen bis $t = 4\\,\\mathrm{s}$ nahezu identische Verläufe, danach starke Abweichungen.\n\n**Aufgaben:**\n\n1. Leiten Sie ein Drei-Phasen-Modell aus Material 1 ab (Beschleunigen, Konstantfahrt, Bremsen) und bestimmen Sie mittlere Beschleunigungen sowie die Gesamtstrecke. (7 BE)\n2. Berechnen Sie für Material 2 die Wurfweite beim horizontalen und beim schiefen Wurf und vergleichen Sie die Modelle kurz. (6 BE)\n3. Berechnen Sie mit Material 3 Verzögerung und Auslaufstrecke nach der Landung. (6 BE)\n4. Bestimmen Sie für Material 4 den minimalen Haftreibungsköffizienten und erläutern Sie kurz den Unterschied zwischen inertialem und mitrotierendem Bezugssystem. (5 BE)\n5. Geben Sie für die numerische Simulation ein einfaches Differenzenmodell an ($v_{k+1}=v_k+a_k\\,\\Delta t$, $s_{k+1}=s_k+v_{k+1}\\,\\Delta t$), berechnen Sie den ersten Schritt für $a_k = 2.5\\,\\mathrm{m/s^2}$ und $\\Delta t = 0.2\\,\\mathrm{s}$ aus $v_0 = s_0 = 0$ und deuten Sie Material 5 zur begrenzten Vorhersagbarkeit. (6 BE)",
         "solutionContent": "1. Phasen:\n- Phase I ($0$-$4\\,\\mathrm{s}$): $a_1 = \\frac{10 - 0}{4} = 2.5\\,\\mathrm{m/s^2}$\n- Phase II ($4$-$6\\,\\mathrm{s}$): $a_2 = 0$\n- Phase III ($6$-$8\\,\\mathrm{s}$): $a_3 = \\frac{6 - 10}{2} = -2.0\\,\\mathrm{m/s^2}$\n\nGesamtstrecke als Fläche unter v-t:\n$0$-$2$: $\\frac{0+6}{2} \\cdot 2 = 6\\,\\mathrm{m}$\n$2$-$4$: $\\frac{6+10}{2} \\cdot 2 = 16\\,\\mathrm{m}$\n$4$-$6$: $\\frac{10+10}{2} \\cdot 2 = 20\\,\\mathrm{m}$\n$6$-$8$: $\\frac{10+6}{2} \\cdot 2 = 16\\,\\mathrm{m}$\n$s_{\\mathrm{ges}} = 58\\,\\mathrm{m}$\n\n2. Horizontaler Wurf:\n$t_f = \\sqrt{\\frac{2h}{g}} = \\sqrt{\\frac{3.6}{9.81}} = 0.606\\,\\mathrm{s}$\n$x_h = v_x \\cdot t_f = 10.0 \\cdot 0.606 = 6.06\\,\\mathrm{m}$\n\nSchiefer Wurf (gleiches Start-/Endniveau):\n$R = \\frac{v_0^2 \\cdot \\sin(2\\alpha)}{g} = \\frac{100 \\cdot \\sin(50^\\circ)}{9.81} = 7.81\\,\\mathrm{m}$\n\nKurzvergleich: horizontaler Wurf als Sonderfall mit fester Fallzeit aus Höhe; schiefer Wurf als Überlagerung horizontal/vertikal bei gleichem Niveau.\n\n3. Reibungskraft:\n$F_R = \\mu \\cdot m \\cdot g = 0.20 \\cdot 70 \\cdot 9.81 = 137.3\\,\\mathrm{N}$\nGesamtbremskraft:\n$F_{\\mathrm{ges}} = 137.3 + 40 = 177.3\\,\\mathrm{N}$\nVerzögerung:\n$a = -\\frac{F_{\\mathrm{ges}}}{m} = -\\frac{177.3}{70} = -2.53\\,\\mathrm{m/s^2}$\nAuslaufstrecke ab $v_0 = 10.0\\,\\mathrm{m/s}$:\n$s = \\frac{v_0^2}{2 \\cdot |a|} = \\frac{100}{2 \\cdot 2.53} = 19.8\\,\\mathrm{m}$\n\n4. Kurvenfahrt:\n$\\mu_{\\min} = \\frac{v^2}{r \\cdot g} = \\frac{100}{20 \\cdot 9.81} = 0.51$\n\nIm Inertialsystem wirkt die reale Zentripetalkraft nach innen.\nIm mitrotierenden System tritt zusätzlich eine Scheinkraft (Zentrifugalterm) auf.\n\n5. Differenzenmodell:\n$v_1 = v_0 + a_0 \\cdot \\Delta t = 0 + 2.5 \\cdot 0.2 = 0.5\\,\\mathrm{m/s}$\n$s_1 = s_0 + v_1 \\cdot \\Delta t = 0 + 0.5 \\cdot 0.2 = 0.10\\,\\mathrm{m}$\n\nChaosdeutung: Das System ist deterministisch, weil gleiche Anfangsbedingungen denselben Verlauf liefern. Kleine Anfangsabweichungen führen aber nach endlicher Zeit zu großen Unterschieden, daher ist die praktische Vorhersage begrenzt.",
         "scoring": {
           "maxPoints": 30,
@@ -12373,7 +12430,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "E"
     },
     {
       "id": "9e263544-b019-44b4-99dd-0c01ce8e5f5e",
@@ -12435,7 +12493,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "E"
     },
     {
       "id": "48749201-9827-4aa1-b1e0-36b19acd15c1",
@@ -12511,7 +12570,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "E"
     },
     {
       "id": "15817192-8574-4692-b0d8-e61bd8110dde",
@@ -12578,7 +12638,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "E"
     },
     {
       "id": "53d3fb0e-5ebf-4f09-bf76-5c45305d2951",
@@ -12648,7 +12709,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "E"
     },
     {
       "id": "37460b26-27d9-44a2-9f3e-136856be123b",
@@ -12720,7 +12782,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "E"
     },
     {
       "id": "9a44aff1-8a34-4a01-87b1-16ac731e1421",
@@ -12782,7 +12845,8 @@
             }
           ]
         }
-      }
+      },
+      "phase": "E"
     }
   ]
 }

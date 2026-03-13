@@ -1,0 +1,263 @@
+{
+  "examSpecId": "hessen-landesabitur-2026-greek",
+  "version": 1,
+  "notes": [
+    "Offer collections are anchored in the curriculum via release metadata.",
+    "Master collections are derived in the pipeline from offer tasks plus phase practice tasks.",
+    "Ancient Greek 2026 uses the official three-proposal structure with one selected proposal per course level.",
+    "Each proposal combines a translation component with a structured interpretation component."
+  ],
+  "collections": [
+    {
+      "id": "gk_offer_2026",
+      "label": "GK Offer Set 2026",
+      "releaseRef": {
+        "examYear": 2026,
+        "kind": "offer",
+        "courseLevel": "GK"
+      },
+      "courseLevel": "GK",
+      "kind": "offer",
+      "selectionMode": "official_exam",
+      "expectedSolvedBeTotal": 25,
+      "slotIds": [
+        "gk_a_homer",
+        "gk_b_herodotus",
+        "gk_c_plato"
+      ],
+      "selectionGroups": [
+        {
+          "id": "gk_choice",
+          "pick": 1,
+          "slotIds": [
+            "gk_a_homer",
+            "gk_b_herodotus",
+            "gk_c_plato"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lk_offer_2026",
+      "label": "LK Offer Set 2026",
+      "releaseRef": {
+        "examYear": 2026,
+        "kind": "offer",
+        "courseLevel": "LK"
+      },
+      "courseLevel": "LK",
+      "kind": "offer",
+      "selectionMode": "official_exam",
+      "expectedSolvedBeTotal": 25,
+      "slotIds": [
+        "lk_a_homer",
+        "lk_b_herodotus",
+        "lk_c_plato"
+      ],
+      "selectionGroups": [
+        {
+          "id": "lk_choice",
+          "pick": 1,
+          "slotIds": [
+            "lk_a_homer",
+            "lk_b_herodotus",
+            "lk_c_plato"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gk_master_2026",
+      "label": "GK Master Set 2026",
+      "courseLevel": "GK",
+      "kind": "master",
+      "selectionMode": "full_set"
+    },
+    {
+      "id": "lk_master_2026",
+      "label": "LK Master Set 2026",
+      "courseLevel": "LK",
+      "kind": "master",
+      "selectionMode": "full_set"
+    }
+  ],
+  "slots": [
+    {
+      "id": "gk_a_homer",
+      "collectionId": "gk_offer_2026",
+      "proposalId": "A",
+      "workingTitle": "Homer: Gesellschaft, Götter und frühes philosophisches Fragen",
+      "domain": "homer_society_religion",
+      "topicCodes": [
+        "Q1.1",
+        "Q1.2",
+        "Q1.4"
+      ],
+      "courseLevel": "GK",
+      "allowedTools": "greek_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "altgriechischer Originaltext",
+        "Kontextmaterial"
+      ],
+      "operatorProfile": [
+        "uebersetzen",
+        "analysieren",
+        "einordnen",
+        "interpretieren"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_b_herodotus",
+      "collectionId": "gk_offer_2026",
+      "proposalId": "B",
+      "workingTitle": "Herodot: Geschichte, Macht und Freiheit",
+      "domain": "history_fate_freedom",
+      "topicCodes": [
+        "Q2.1",
+        "Q2.2",
+        "Q2.3"
+      ],
+      "courseLevel": "GK",
+      "allowedTools": "greek_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "altgriechischer Originaltext",
+        "Kontextmaterial oder Schema"
+      ],
+      "operatorProfile": [
+        "uebersetzen",
+        "analysieren",
+        "interpretieren",
+        "beurteilen"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_c_plato",
+      "collectionId": "gk_offer_2026",
+      "proposalId": "C",
+      "workingTitle": "Platon: Glück, Erkenntnis und Sophistik",
+      "domain": "platonic_knowledge_happiness",
+      "topicCodes": [
+        "Q3.1",
+        "Q3.2",
+        "Q3.4"
+      ],
+      "courseLevel": "GK",
+      "allowedTools": "greek_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "altgriechischer Originaltext",
+        "Begriffs- oder Tabellenmaterial"
+      ],
+      "operatorProfile": [
+        "uebersetzen",
+        "analysieren",
+        "interpretieren",
+        "vergleichen"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_a_homer",
+      "collectionId": "lk_offer_2026",
+      "proposalId": "A",
+      "workingTitle": "Homer: Gesellschaft, Religion und Erkenntnisfragen",
+      "domain": "homer_society_religion",
+      "topicCodes": [
+        "Q1.1",
+        "Q1.2",
+        "Q1.4"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "greek_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "altgriechischer Originaltext",
+        "Kontextmaterial"
+      ],
+      "operatorProfile": [
+        "uebersetzen",
+        "analysieren",
+        "einordnen",
+        "interpretieren",
+        "eroertern"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_b_herodotus",
+      "collectionId": "lk_offer_2026",
+      "proposalId": "B",
+      "workingTitle": "Herodot: Geschichte, Macht und politische Freiheit",
+      "domain": "history_fate_freedom",
+      "topicCodes": [
+        "Q2.1",
+        "Q2.2",
+        "Q2.3"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "greek_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "altgriechischer Originaltext",
+        "Kontextmaterial oder Schema"
+      ],
+      "operatorProfile": [
+        "uebersetzen",
+        "analysieren",
+        "interpretieren",
+        "beurteilen",
+        "eroertern"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_c_plato",
+      "collectionId": "lk_offer_2026",
+      "proposalId": "C",
+      "workingTitle": "Platon: Erkenntnis, Glück und Sophistik",
+      "domain": "platonic_knowledge_happiness",
+      "topicCodes": [
+        "Q3.1",
+        "Q3.2",
+        "Q3.4"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "greek_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "altgriechischer Originaltext",
+        "Begriffs- oder Tabellenmaterial"
+      ],
+      "operatorProfile": [
+        "uebersetzen",
+        "analysieren",
+        "interpretieren",
+        "vergleichen",
+        "eroertern"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    }
+  ]
+}
