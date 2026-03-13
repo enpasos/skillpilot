@@ -1159,6 +1159,7 @@ public class LearnerService {
         }
         if (CANONICAL_GYMNASIUM_ROOT_ID.equals(currentCurriculumId)) {
             materializeCanonicalMasteryFromExactMappings(skillpilotId);
+            materializeCanonicalClientStateFromExactMappings(skillpilotId);
             return getPlannedGoals(skillpilotId);
         }
         if (!isSupportedHessenGymnasiumCutoverSource(currentCurriculumId)) {
@@ -1176,6 +1177,7 @@ public class LearnerService {
         learner.setLearningState(LearningState.FRONTIER);
         learnerRepository.save(learner);
         materializeCanonicalMasteryFromExactMappings(skillpilotId);
+        materializeCanonicalClientStateFromExactMappings(skillpilotId);
 
         Learner refreshed = getLearner(skillpilotId);
         refreshed.setActiveGoalId(plan.normalizedActiveGoalId());
@@ -2798,6 +2800,90 @@ public class LearnerService {
             }
             masteryByGoalKey.put(mapping.canonicalGoalId(), canonicalMastery);
         }
+    }
+
+    @Transactional
+    public void materializeCanonicalClientStateFromExactMappings(String skillpilotId) {
+        if (skillpilotId == null || skillpilotId.isBlank()) {
+            return;
+        }
+
+        Learner learner = learnerRepository.findById(skillpilotId).orElse(null);
+        if (learner == null) {
+            return;
+        }
+
+        List<LearnerClientState> clientStates = learnerClientStateRepository.findByLearner_SkillpilotId(skillpilotId);
+        if (clientStates.isEmpty()) {
+            return;
+        }
+
+        Map<String, LearnerClientState> clientStateByNodeId = new HashMap<>();
+        for (LearnerClientState clientState : clientStates) {
+            if (clientState == null || clientState.getId() == null) {
+                continue;
+            }
+            String nodeId = clientState.getId().getNodeId();
+            if (nodeId == null || nodeId.isBlank()) {
+                continue;
+            }
+            clientStateByNodeId.put(nodeId, clientState);
+        }
+
+        for (ResolvedGoalMapping mapping : goalMappingService.getAllMappings()) {
+            if (!"exact".equals(mapping.matchType())) {
+                continue;
+            }
+
+            LearnerClientState legacyClientState = clientStateByNodeId.get(mapping.legacyGoalId());
+            if (!hasPersistableClientState(legacyClientState)) {
+                continue;
+            }
+
+            LearnerClientState canonicalClientState = clientStateByNodeId.get(mapping.canonicalGoalId());
+            if (!shouldReplaceProjectedClientState(canonicalClientState, legacyClientState)) {
+                continue;
+            }
+
+            if (canonicalClientState == null) {
+                canonicalClientState = new LearnerClientState(
+                        learner,
+                        mapping.canonicalGoalId(),
+                        legacyClientState.getClientState(),
+                        legacyClientState.getClientStateUpdatedAt());
+            } else {
+                canonicalClientState.setClientState(legacyClientState.getClientState());
+                canonicalClientState.setClientStateUpdatedAt(legacyClientState.getClientStateUpdatedAt());
+            }
+
+            learnerClientStateRepository.save(canonicalClientState);
+            clientStateByNodeId.put(mapping.canonicalGoalId(), canonicalClientState);
+        }
+    }
+
+    private boolean hasPersistableClientState(LearnerClientState clientState) {
+        return clientState != null
+                && clientState.getClientState() != null
+                && !clientState.getClientState().isBlank();
+    }
+
+    private boolean shouldReplaceProjectedClientState(LearnerClientState current, LearnerClientState candidate) {
+        if (!hasPersistableClientState(candidate)) {
+            return false;
+        }
+        if (!hasPersistableClientState(current)) {
+            return true;
+        }
+
+        Instant currentTs = current.getClientStateUpdatedAt();
+        Instant candidateTs = candidate.getClientStateUpdatedAt();
+        if (currentTs == null) {
+            return candidateTs != null || !Objects.equals(current.getClientState(), candidate.getClientState());
+        }
+        if (candidateTs == null) {
+            return false;
+        }
+        return candidateTs.isAfter(currentTs);
     }
 
     @Transactional(readOnly = true)

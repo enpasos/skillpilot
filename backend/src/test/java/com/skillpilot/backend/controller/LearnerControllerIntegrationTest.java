@@ -5,9 +5,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.ChampionRegistrationRequest;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.domain.LearnerClientState;
+import com.skillpilot.backend.domain.LearnerClientStateId;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.PlannedGoal;
 import com.skillpilot.backend.repository.CurriculumChampionRepository;
+import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
@@ -20,6 +23,7 @@ import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.time.Instant;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -174,6 +178,8 @@ public class LearnerControllerIntegrationTest {
     private static final String LEGACY_MATH_FUNCTION_CONCEPT_ID = "0903db01-4377-4a79-8f29-aceffea68f24";
     private static final String LEGACY_MATH_READ_VALUES_ID = "cd46ce36-883e-4e68-8bfd-2bbdc0ecce9d";
     private static final String LEGACY_MATH_LK_PROOF_STRATEGIES_ID = "b3cd4a12-509f-46bb-b077-6d517a7aab76";
+    private static final String LEGACY_MATH_MEMORY_E_PHASE_ID = "cef2c3f7-af4f-41db-809f-805957a66be3";
+    private static final String CANONICAL_MATH_MEMORY_E_PHASE_ID = "77259806-add7-5fcb-b89c-376e1b0c88d6";
     private static final String LEGACY_BAYERN_PHYSICS_MOTION_CLUSTER_ID =
             "6be922a1-e60a-5317-b910-b6fea632f0fb";
     private static final String LEGACY_BAYERN_PHYSICS_HORIZONTAL_THROW_HYPOTHESES_ID =
@@ -199,6 +205,9 @@ public class LearnerControllerIntegrationTest {
     private PlannedGoalRepository plannedGoalRepository;
 
     @Autowired
+    private LearnerClientStateRepository learnerClientStateRepository;
+
+    @Autowired
     private MasteryRepository masteryRepository;
 
     @Autowired
@@ -221,6 +230,7 @@ public class LearnerControllerIntegrationTest {
     @BeforeEach
     void setUp() {
         curriculumChampionRepository.deleteAll();
+        learnerClientStateRepository.deleteAll();
         masteryRepository.deleteAll();
         plannedGoalRepository.deleteAll();
         learnerRepository.deleteAll();
@@ -604,6 +614,39 @@ public class LearnerControllerIntegrationTest {
 
         assertThat(response.body())
                 .doesNotContain(LEGACY_MATH_FUNCTION_CONCEPT_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyMathMemoryClientStateToCanonicalGoalId() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(HESSEN_GYMNASIUM_UPPER_MATH_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3": {"selected": true, "filterId": "LK"}
+                }
+                """);
+        learnerRepository.save(learner);
+
+        Instant updatedAt = Instant.parse("2026-03-13T12:34:56Z");
+        String srsState = """
+                {"card-1":{"nextReview":"2099-01-01T00:00:00Z"}}
+                """;
+        learnerClientStateRepository.save(new LearnerClientState(
+                learner,
+                LEGACY_MATH_MEMORY_E_PHASE_ID,
+                srsState,
+                updatedAt));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        LearnerClientState canonicalState = learnerClientStateRepository.findById(
+                new LearnerClientStateId(learnerId, CANONICAL_MATH_MEMORY_E_PHASE_ID)).orElse(null);
+
+        assertThat(canonicalState).isNotNull();
+        assertThat(canonicalState.getClientState()).isEqualTo(srsState);
+        assertThat(canonicalState.getClientStateUpdatedAt()).isEqualTo(updatedAt);
     }
 
     @Test
