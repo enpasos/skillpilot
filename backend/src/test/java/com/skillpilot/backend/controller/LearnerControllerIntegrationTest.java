@@ -650,6 +650,44 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
+    void cutoverEndpointReplacesEmptyCanonicalMathMemoryClientStateWithLegacyState() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(HESSEN_GYMNASIUM_UPPER_MATH_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3": {"selected": true, "filterId": "LK"}
+                }
+                """);
+        learnerRepository.save(learner);
+
+        Instant legacyUpdatedAt = Instant.parse("2026-03-13T12:34:56Z");
+        Instant canonicalEmptyUpdatedAt = Instant.parse("2026-03-14T12:34:56Z");
+        String legacySrsState = """
+                {"card-1":{"nextReview":"2099-01-01T00:00:00Z"}}
+                """;
+        learnerClientStateRepository.save(new LearnerClientState(
+                learner,
+                LEGACY_MATH_MEMORY_E_PHASE_ID,
+                legacySrsState,
+                legacyUpdatedAt));
+        learnerClientStateRepository.save(new LearnerClientState(
+                learner,
+                CANONICAL_MATH_MEMORY_E_PHASE_ID,
+                "{}",
+                canonicalEmptyUpdatedAt));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        LearnerClientState canonicalState = learnerClientStateRepository.findById(
+                new LearnerClientStateId(learnerId, CANONICAL_MATH_MEMORY_E_PHASE_ID)).orElseThrow();
+
+        assertThat(canonicalState.getClientState()).isEqualTo(legacySrsState);
+        assertThat(canonicalState.getClientStateUpdatedAt()).isEqualTo(legacyUpdatedAt);
+    }
+
+    @Test
     void cutoverEndpointMigratesLegacyHessenPhysicsLearnerToCanonicalGymnasiumRootWithMathBridge() throws Exception {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(HESSEN_GYMNASIUM_UPPER_PHYSICS_ID);

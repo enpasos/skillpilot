@@ -2863,8 +2863,22 @@ public class LearnerService {
 
     private boolean hasPersistableClientState(LearnerClientState clientState) {
         return clientState != null
-                && clientState.getClientState() != null
-                && !clientState.getClientState().isBlank();
+                && hasPersistableClientStatePayload(clientState.getClientState());
+    }
+
+    private boolean hasPersistableClientStatePayload(String clientStateJson) {
+        if (clientStateJson == null || clientStateJson.isBlank()) {
+            return false;
+        }
+        try {
+            Map<String, Object> parsed = objectMapper.readValue(
+                    clientStateJson,
+                    new TypeReference<Map<String, Object>>() {
+                    });
+            return parsed != null && !parsed.isEmpty();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     private boolean shouldReplaceProjectedClientState(LearnerClientState current, LearnerClientState candidate) {
