@@ -1158,6 +1158,7 @@ public class LearnerService {
                     "No curriculum selected for cutover.");
         }
         if (CANONICAL_GYMNASIUM_ROOT_ID.equals(currentCurriculumId)) {
+            materializeCanonicalMasteryFromExactMappings(skillpilotId);
             return getPlannedGoals(skillpilotId);
         }
         if (!isSupportedHessenGymnasiumCutoverSource(currentCurriculumId)) {
@@ -1174,6 +1175,7 @@ public class LearnerService {
         learner.setActiveGoalId(null);
         learner.setLearningState(LearningState.FRONTIER);
         learnerRepository.save(learner);
+        materializeCanonicalMasteryFromExactMappings(skillpilotId);
 
         Learner refreshed = getLearner(skillpilotId);
         refreshed.setActiveGoalId(plan.normalizedActiveGoalId());
@@ -2743,6 +2745,59 @@ public class LearnerService {
     @Transactional(readOnly = true)
     public List<com.skillpilot.backend.landscape.LandscapeSummary> getAvailableLandscapes() {
         return landscapeService.getOverview().getSummaries();
+    }
+
+    @Transactional
+    public void materializeCanonicalMasteryFromExactMappings(String skillpilotId) {
+        if (skillpilotId == null || skillpilotId.isBlank()) {
+            return;
+        }
+
+        Learner learner = learnerRepository.findById(skillpilotId).orElse(null);
+        if (learner == null) {
+            return;
+        }
+
+        List<Mastery> mastered = masteryRepository.findByLearner_SkillpilotId(skillpilotId);
+        if (mastered.isEmpty()) {
+            return;
+        }
+
+        Map<String, Mastery> masteryByGoalKey = new HashMap<>();
+        for (Mastery mastery : mastered) {
+            masteryByGoalKey.put(mastery.getGoalKey(), mastery);
+        }
+
+        for (ResolvedGoalMapping mapping : goalMappingService.getAllMappings()) {
+            if (!"exact".equals(mapping.matchType())) {
+                continue;
+            }
+
+            Mastery legacyMastery = masteryByGoalKey.get(mapping.legacyGoalId());
+            if (legacyMastery == null) {
+                continue;
+            }
+
+            Mastery canonicalMastery = masteryByGoalKey.get(mapping.canonicalGoalId());
+            MasteryEntryDTO currentEntry = canonicalMastery == null
+                    ? null
+                    : new MasteryEntryDTO(canonicalMastery.getValue(), canonicalMastery.getUpdatedAt());
+            MasteryEntryDTO candidateEntry = new MasteryEntryDTO(legacyMastery.getValue(), legacyMastery.getUpdatedAt());
+            if (!shouldReplaceProjectedEntry(currentEntry, candidateEntry)) {
+                continue;
+            }
+
+            if (canonicalMastery == null) {
+                canonicalMastery = new Mastery(learner, mapping.canonicalGoalId(), legacyMastery.getValue());
+            } else {
+                canonicalMastery.setValue(legacyMastery.getValue());
+            }
+            masteryRepository.saveAndFlush(canonicalMastery);
+            if (legacyMastery.getUpdatedAt() != null) {
+                masteryRepository.updateTimestamp(skillpilotId, mapping.canonicalGoalId(), legacyMastery.getUpdatedAt());
+            }
+            masteryByGoalKey.put(mapping.canonicalGoalId(), canonicalMastery);
+        }
     }
 
     @Transactional(readOnly = true)
