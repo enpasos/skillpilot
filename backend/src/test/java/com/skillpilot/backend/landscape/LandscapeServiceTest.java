@@ -64,7 +64,7 @@ class LandscapeServiceTest {
         }
 
         @Test
-        void loadsCanonicalMathPilotModuleWithoutExposingItAsRootCurriculum() {
+        void loadsCanonicalMathPilotAsRootCurriculum() {
                 LandscapeProperties properties = new LandscapeProperties();
                 properties.setDirectory("../curricula");
                 ObjectMapper objectMapper = new ObjectMapper();
@@ -73,7 +73,7 @@ class LandscapeServiceTest {
                 LearningLandscape pilot = landscapeService.getById(CANONICAL_MATH_PILOT_ID);
 
                 assertThat(pilot).isNotNull();
-                assertThat(pilot.getTitle()).contains("Modul");
+                assertThat(pilot.getTitle()).isEqualTo("Kanonischer Mathematik-Pilot (Gymnasium, DE)");
                 assertThat(pilot.getGoals()).isNotEmpty();
                 assertThat(pilot.getGoals())
                                 .extracting(LearningGoal::getTitle)
@@ -83,7 +83,7 @@ class LandscapeServiceTest {
                                                 "Scheitelpunkte quadratischer Funktionen bestimmen");
                 assertThat(landscapeService.getOverview().getSummaries())
                                 .extracting(LandscapeSummary::getCurriculumId)
-                                .doesNotContain(CANONICAL_MATH_PILOT_ID);
+                                .contains(CANONICAL_MATH_PILOT_ID);
         }
 
         private void assertFiltersEmpty(List<LandscapeSummary> summaries, String curriculumId) {

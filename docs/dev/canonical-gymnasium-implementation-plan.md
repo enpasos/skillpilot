@@ -177,12 +177,12 @@ WP2 result:
 - pilot location decision for now:
   - keep the first canonical seed close to the mature Hessen source to avoid premature global restructuring
 - pilot scope kept intentionally small:
-  - module root
+- pilot root
   - motivation goal
   - one introductory analysis branch for functions and representations
 - coexistence strategy:
   - all pilot goals use new IDs
-  - the pilot landscape is marked as a module so it does not become a new root curriculum requiring manifest exposure
+  - the pilot landscape is exposed as its own root curriculum so it can be selected directly during the pilot
 - verification:
   - backend tests confirm loading of the pilot landscape and the repository mapping fixture
   - graph validation passes with the new pilot landscape present
