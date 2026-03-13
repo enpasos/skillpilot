@@ -27,6 +27,19 @@ interface TreeNodeProps {
   frontierIds?: Set<string>
 }
 
+const isWildcardFilter = (filterId?: string) => {
+  if (!filterId) return false
+  return filterId.toLowerCase() === 'all'
+}
+
+const formatFilterLabel = (filterId?: string) => {
+  if (!filterId) return undefined
+  if (filterId === 'GK') return 'GK'
+  if (filterId === 'LK') return 'LK'
+  if (isWildcardFilter(filterId)) return 'GK+LK'
+  return filterId
+}
+
 const TreeNode: React.FC<TreeNodeProps> = ({
   goalId,
   allGoals,
@@ -80,7 +93,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
       if (!hasConfig && activeFilter && activeFilter !== 'all') {
         const child = allGoals.get(childId)
         if (!child) return false
-        if (child.tags && child.tags.length > 0 && !child.tags.includes(activeFilter)) {
+        if (!isWildcardFilter(activeFilter) && child.tags && child.tags.length > 0 && !child.tags.includes(activeFilter)) {
           return false
         }
       }
@@ -94,7 +107,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           if (config.selected !== true) return false
 
           // 3. Filter by 'filterId' (e.g. "LK", "GK") if configured for this landscape
-          if (config.filterId && child.tags && child.tags.length > 0 && !child.tags.includes(config.filterId)) {
+          if (config.filterId && !isWildcardFilter(config.filterId) && child.tags && child.tags.length > 0 && !child.tags.includes(config.filterId)) {
             return false
           }
         } else {
@@ -181,9 +194,11 @@ const TreeNode: React.FC<TreeNodeProps> = ({
 
   const personalFilterId = (goal.landscapeId ? personalConfig?.[goal.landscapeId]?.filterId : undefined)
     ?? personalConfig?.[goal.id]?.filterId
-  const effectiveFilterLabel = personalFilterId && personalFilterId !== 'all'
-    ? personalFilterId
-    : (activeFilter && activeFilter !== 'all' ? activeFilter : undefined)
+  const effectiveFilterLabel = formatFilterLabel(
+    personalFilterId && personalFilterId !== 'all'
+      ? personalFilterId
+      : (activeFilter && activeFilter !== 'all' ? activeFilter : undefined),
+  )
   const shouldShowFilterBadge = depth === 1 && !!effectiveFilterLabel
   const displayTitle = shouldShowFilterBadge ? `${goal.title} (${effectiveFilterLabel})` : goal.title
 

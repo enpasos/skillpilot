@@ -47,6 +47,11 @@ interface LearnerViewProps {
 
 type PersonalCurriculumConfig = Record<string, { selected: boolean; filterId?: string }>
 
+const isWildcardFilter = (filterId?: string) => {
+  if (!filterId) return false
+  return filterId.toLowerCase() === 'all'
+}
+
 const normalizePersonalConfig = (
   input: PersonalCurriculumConfig,
   availableLandscapes: { landscapeId: string; filters?: { id: string; label: string }[] }[],
@@ -308,7 +313,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       // Landscape-level filters such as DE-HE/DE-BY or per-subject GK/LK are
       // already represented in personalConfig and must not be re-applied here.
       if (!hasConfig && effectiveActiveFilter && effectiveActiveFilter !== 'all') {
-        if (child.tags && child.tags.length > 0 && !child.tags.includes(effectiveActiveFilter)) {
+        if (!isWildcardFilter(effectiveActiveFilter) && child.tags && child.tags.length > 0 && !child.tags.includes(effectiveActiveFilter)) {
           return false
         }
       }
@@ -318,7 +323,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         const cfg = (child.landscapeId ? personalConfig[child.landscapeId] : undefined) ?? personalConfig[child.id]
         if (cfg) {
           if (cfg.selected !== true) return false
-          if (cfg.filterId && child.tags && child.tags.length > 0 && !child.tags.includes(cfg.filterId)) {
+          if (cfg.filterId && !isWildcardFilter(cfg.filterId) && child.tags && child.tags.length > 0 && !child.tags.includes(cfg.filterId)) {
             return false
           }
         } else if (hasPositiveSibling) {
