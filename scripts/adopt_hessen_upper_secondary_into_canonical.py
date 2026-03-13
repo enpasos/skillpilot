@@ -635,6 +635,46 @@ SPANISH = SubjectConfig(
     framework_id="canonical-gymnasium-spanish",
 )
 
+GREEK = SubjectConfig(
+    subject_key="greek",
+    source_landscape_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_GRIECHISCH.de.json",
+    target_landscape_path=REPO_ROOT
+    / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+    mapping_path=REPO_ROOT
+    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_greek_upper_secondary_to_canonical_greek.json",
+    source_landscape_id="c7209caa-18e5-4dd8-b68f-dd86e228d045",
+    source_landscape_title="Griechisch Oberstufe (Hessen, KC 2024)",
+    target_landscape_id="70a2cb55-127b-5c6e-b518-4a1c9f4f77a0",
+    root_goal_id="224a8ce5-e781-5973-acbd-9994b329fe8d",
+    root_goal_mode="exact_root",
+    root_title="Griechisch",
+    root_title_en="Greek",
+    root_description=(
+        "Gemeinsame Wurzel für Griechisch am Gymnasium in Deutschland. "
+        "Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft "
+        "damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz."
+    ),
+    root_description_en=(
+        "Shared root for Greek at Gymnasium in Germany. "
+        "The current baseline fully adopts the Hessian upper-secondary curriculum and establishes "
+        "a reliable starting point for later cross-state convergence."
+    ),
+    landscape_title="Griechisch (Gymnasium, DE)",
+    landscape_title_en="Greek (Gymnasium, DE)",
+    landscape_description=(
+        "Griechisch für das Gymnasium in Deutschland. "
+        "Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt "
+        "für spätere bundesländerübergreifende Angleichung."
+    ),
+    landscape_description_en=(
+        "Greek for Gymnasium in Germany. "
+        "The current baseline fully secures the Hessian upper-secondary curriculum as the starting point "
+        "for later cross-state alignment."
+    ),
+    framework_id="canonical-gymnasium-greek",
+)
+
 
 def bootstrap_target(config: SubjectConfig, legacy: dict[str, Any]) -> dict[str, Any]:
     legacy_root = legacy["goals"][0]
@@ -866,6 +906,7 @@ def main() -> None:
     french_goals, french_mappings = adopt_subject(FRENCH)
     latin_goals, latin_mappings = adopt_subject(LATIN)
     spanish_goals, spanish_mappings = adopt_subject(SPANISH)
+    greek_goals, greek_mappings = adopt_subject(GREEK)
     print(
         json.dumps(
             {
@@ -893,6 +934,8 @@ def main() -> None:
                 "latinMappings": latin_mappings,
                 "spanishGoals": spanish_goals,
                 "spanishMappings": spanish_mappings,
+                "greekGoals": greek_goals,
+                "greekMappings": greek_mappings,
             },
             indent=2,
         )

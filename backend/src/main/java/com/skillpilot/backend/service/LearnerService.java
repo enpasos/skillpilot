@@ -114,6 +114,7 @@ public class LearnerService {
     private static final String CANONICAL_GYMNASIUM_FRENCH_ID = "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977";
     private static final String CANONICAL_GYMNASIUM_LATIN_ID = "668cf206-941e-51f8-8704-3e8938631235";
     private static final String CANONICAL_GYMNASIUM_SPANISH_ID = "90eedebf-9ea8-5247-85dd-31c147f907c3";
+    private static final String CANONICAL_GYMNASIUM_GREEK_ID = "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0";
     private static final String HESSEN_GYMNASIUM_UPPER_ROOT_ID = "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da";
     private static final String HESSEN_GYMNASIUM_UPPER_MATH_ID = "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3";
     private static final String HESSEN_GYMNASIUM_UPPER_PHYSICS_ID = "24f2ca0f-b94a-444e-bb70-677cb6f85c02";
@@ -127,6 +128,7 @@ public class LearnerService {
     private static final String HESSEN_GYMNASIUM_UPPER_FRENCH_ID = "30acd190-609c-4109-8ee7-06fc5594af19";
     private static final String HESSEN_GYMNASIUM_UPPER_LATIN_ID = "fe28bda8-03f3-4c4a-8286-7fcfce4eeac1";
     private static final String HESSEN_GYMNASIUM_UPPER_SPANISH_ID = "936efc61-a4d5-49fd-8694-085d1347db80";
+    private static final String HESSEN_GYMNASIUM_UPPER_GREEK_ID = "c7209caa-18e5-4dd8-b68f-dd86e228d045";
     private static final String DEFAULT_COURSE_FILTER_ID = "GK";
 
     @Value("${skillpilot.security.signing-secret}")
@@ -1361,7 +1363,8 @@ public class LearnerService {
                 || HESSEN_GYMNASIUM_UPPER_ENGLISH_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_UPPER_FRENCH_ID.equals(curriculumId)
                 || HESSEN_GYMNASIUM_UPPER_LATIN_ID.equals(curriculumId)
-                || HESSEN_GYMNASIUM_UPPER_SPANISH_ID.equals(curriculumId);
+                || HESSEN_GYMNASIUM_UPPER_SPANISH_ID.equals(curriculumId)
+                || HESSEN_GYMNASIUM_UPPER_GREEK_ID.equals(curriculumId);
     }
 
     private CanonicalGymnasiumCutoverPlan buildCanonicalGymnasiumCutoverPlan(Learner learner, List<String> storedPlannedGoals) {
@@ -1381,6 +1384,7 @@ public class LearnerService {
         boolean frenchSelected = HESSEN_GYMNASIUM_UPPER_FRENCH_ID.equals(currentCurriculumId);
         boolean latinSelected = HESSEN_GYMNASIUM_UPPER_LATIN_ID.equals(currentCurriculumId);
         boolean spanishSelected = HESSEN_GYMNASIUM_UPPER_SPANISH_ID.equals(currentCurriculumId);
+        boolean greekSelected = HESSEN_GYMNASIUM_UPPER_GREEK_ID.equals(currentCurriculumId);
 
         if (HESSEN_GYMNASIUM_UPPER_ROOT_ID.equals(currentCurriculumId)) {
             mathSelected = readSelectedFlag(legacyConfig, HESSEN_GYMNASIUM_UPPER_MATH_ID)
@@ -1419,9 +1423,12 @@ public class LearnerService {
             spanishSelected = readSelectedFlag(legacyConfig, HESSEN_GYMNASIUM_UPPER_SPANISH_ID)
                     || containsGoalFromLandscape(storedPlannedGoals, HESSEN_GYMNASIUM_UPPER_SPANISH_ID)
                     || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_UPPER_SPANISH_ID);
+            greekSelected = readSelectedFlag(legacyConfig, HESSEN_GYMNASIUM_UPPER_GREEK_ID)
+                    || containsGoalFromLandscape(storedPlannedGoals, HESSEN_GYMNASIUM_UPPER_GREEK_ID)
+                    || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_UPPER_GREEK_ID);
             if (!mathSelected && !physicsSelected && !chemistrySelected && !biologySelected && !informaticsSelected
                     && !historySelected && !germanSelected && !politicsEconomicsSelected && !englishSelected
-                    && !frenchSelected && !latinSelected && !spanishSelected) {
+                    && !frenchSelected && !latinSelected && !spanishSelected && !greekSelected) {
                 mathSelected = true;
                 physicsSelected = true;
                 chemistrySelected = true;
@@ -1434,6 +1441,7 @@ public class LearnerService {
                 frenchSelected = true;
                 latinSelected = true;
                 spanishSelected = true;
+                greekSelected = true;
             }
         }
 
@@ -1442,7 +1450,7 @@ public class LearnerService {
         }
         if (!mathSelected && !physicsSelected && !chemistrySelected && !biologySelected && !informaticsSelected
                 && !historySelected && !germanSelected && !politicsEconomicsSelected && !englishSelected
-                && !frenchSelected && !latinSelected && !spanishSelected) {
+                && !frenchSelected && !latinSelected && !spanishSelected && !greekSelected) {
             mathSelected = true;
             chemistrySelected = true;
             biologySelected = true;
@@ -1454,6 +1462,7 @@ public class LearnerService {
             frenchSelected = true;
             latinSelected = true;
             spanishSelected = true;
+            greekSelected = true;
         }
 
         String mathCourseFilterId = inferLegacyCourseFilterId(
@@ -1504,6 +1513,10 @@ public class LearnerService {
                 legacyConfig,
                 HESSEN_GYMNASIUM_UPPER_SPANISH_ID,
                 HESSEN_GYMNASIUM_UPPER_SPANISH_ID.equals(currentCurriculumId));
+        String greekCourseFilterId = inferLegacyCourseFilterId(
+                legacyConfig,
+                HESSEN_GYMNASIUM_UPPER_GREEK_ID,
+                HESSEN_GYMNASIUM_UPPER_GREEK_ID.equals(currentCurriculumId));
 
         Map<String, Object> personalCurriculumConfig = new LinkedHashMap<>();
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_ROOT_ID, createSelectionConfig(true, "DE-HE"));
@@ -1530,6 +1543,8 @@ public class LearnerService {
                 createSelectionConfig(latinSelected, latinCourseFilterId));
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_SPANISH_ID,
                 createSelectionConfig(spanishSelected, spanishCourseFilterId));
+        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_GREEK_ID,
+                createSelectionConfig(greekSelected, greekCourseFilterId));
 
         String personalCurriculumJson = writePersonalCurriculumConfig(personalCurriculumConfig);
         Map<String, LearningGoal> structuralGoals = new LinkedHashMap<>(getFilteredGoals(CANONICAL_GYMNASIUM_ROOT_ID, "{}"));
@@ -1545,6 +1560,7 @@ public class LearnerService {
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_FRENCH_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_LATIN_ID, "{}"));
         structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_SPANISH_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_GREEK_ID, "{}"));
         List<String> normalizedPlannedGoalIds = normalizeCutoverPlannedGoalIds(storedPlannedGoals, structuralGoals).stream()
                 .filter(structuralGoals::containsKey)
                 .toList();

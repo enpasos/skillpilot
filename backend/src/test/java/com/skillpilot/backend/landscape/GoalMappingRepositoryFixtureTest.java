@@ -20,6 +20,7 @@ class GoalMappingRepositoryFixtureTest {
     private static final String HESSEN_ENGLISH_LANDSCAPE_ID = "bc2124fa-2974-46cc-85e7-2392e61250e1";
     private static final String HESSEN_FRENCH_LANDSCAPE_ID = "30acd190-609c-4109-8ee7-06fc5594af19";
     private static final String HESSEN_LATIN_LANDSCAPE_ID = "fe28bda8-03f3-4c4a-8286-7fcfce4eeac1";
+    private static final String HESSEN_SPANISH_LANDSCAPE_ID = "936efc61-a4d5-49fd-8694-085d1347db80";
     private static final String BAYERN_MATH_LANDSCAPE_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
     private static final String BAYERN_PHYSICS_LANDSCAPE_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
     private static final String CANONICAL_MATH_PILOT_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
@@ -33,6 +34,7 @@ class GoalMappingRepositoryFixtureTest {
     private static final String CANONICAL_ENGLISH_ID = "c8c84073-46ae-57ec-898a-882d08d7a72f";
     private static final String CANONICAL_FRENCH_ID = "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977";
     private static final String CANONICAL_LATIN_ID = "668cf206-941e-51f8-8704-3e8938631235";
+    private static final String CANONICAL_SPANISH_ID = "90eedebf-9ea8-5247-85dd-31c147f907c3";
     private static final Path MAPPING_FILE = Path.of("../curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_math_upper_secondary_to_canonical_math_pilot.json");
     private static final Path PHYSICS_MAPPING_FILE = Path.of("../curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_physics_upper_secondary_to_canonical_physics_pilot.json");
     private static final Path CHEMISTRY_MAPPING_FILE = Path.of("../curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_chemistry_upper_secondary_to_canonical_chemistry.json");
@@ -44,6 +46,7 @@ class GoalMappingRepositoryFixtureTest {
     private static final Path ENGLISH_MAPPING_FILE = Path.of("../curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_english_upper_secondary_to_canonical_english.json");
     private static final Path FRENCH_MAPPING_FILE = Path.of("../curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_french_upper_secondary_to_canonical_french.json");
     private static final Path LATIN_MAPPING_FILE = Path.of("../curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_latin_upper_secondary_to_canonical_latin.json");
+    private static final Path SPANISH_MAPPING_FILE = Path.of("../curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_spanish_upper_secondary_to_canonical_spanish.json");
     private static final Path SEK1_MAPPING_FILE = Path.of("../curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe/mapping/hessen_math_lower_secondary_to_canonical_math_pilot.json");
     private static final Path BAYERN_MAPPING_FILE = Path.of("../curricula/DE/BY/Gymnasium/mapping/bavaria_math_to_canonical_math_pilot.json");
     private static final Path BAYERN_PHYSICS_MAPPING_FILE = Path.of("../curricula/DE/BY/Gymnasium/mapping/bavaria_physics_to_canonical_physics_pilot.json");
@@ -206,6 +209,19 @@ class GoalMappingRepositoryFixtureTest {
     }
 
     @Test
+    void parsesRepositoryBackedCanonicalSpanishMappingFixture() throws Exception {
+        GoalMappingFile file = new ObjectMapper().readValue(SPANISH_MAPPING_FILE.toFile(), GoalMappingFile.class);
+
+        assertThat(file.getVersion()).isEqualTo(1);
+        assertThat(file.getSourceLandscapeId()).isEqualTo(HESSEN_SPANISH_LANDSCAPE_ID);
+        assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_SPANISH_ID);
+        assertThat(file.getMappings()).hasSize(83);
+        assertThat(file.getMappings())
+                .extracting(GoalMappingEntry::getMatchType)
+                .containsOnly("exact");
+    }
+
+    @Test
     void repositoryFixtureIsDiscoveredByGoalMappingServiceWithoutSpecialFilenameSuffix() {
         LandscapeProperties properties = new LandscapeProperties();
         properties.setDirectory(CURRICULA_DIR.toAbsolutePath().normalize().toString());
@@ -253,6 +269,9 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(service.getMappingsForSourceLandscape(HESSEN_LATIN_LANDSCAPE_ID))
                 .isNotEmpty()
                 .allMatch(mapping -> CANONICAL_LATIN_ID.equals(mapping.targetLandscapeId()));
+        assertThat(service.getMappingsForSourceLandscape(HESSEN_SPANISH_LANDSCAPE_ID))
+                .isNotEmpty()
+                .allMatch(mapping -> CANONICAL_SPANISH_ID.equals(mapping.targetLandscapeId()));
     }
 
     @Test
