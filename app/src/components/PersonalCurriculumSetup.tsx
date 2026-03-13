@@ -15,6 +15,11 @@ interface PersonalCurriculumConfig {
     }
 }
 
+interface MigrationPreviewItem {
+    label: string
+    value: string
+}
+
 
 
 interface PersonalCurriculumSetupProps {
@@ -28,6 +33,12 @@ interface PersonalCurriculumSetupProps {
     initialAutoPilot?: boolean
     initialStrictMode?: boolean
     onPreferencesChange?: (strategy: 'RANDOM' | 'SEQUENTIAL', autoPilot: boolean, strictMode: boolean) => void
+    migrationTitle?: string
+    migrationDescription?: string
+    migrationActionLabel?: string
+    migrationActionPending?: boolean
+    onMigrationAction?: () => void
+    migrationPreviewItems?: MigrationPreviewItem[]
 }
 
 export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = ({
@@ -41,6 +52,12 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     initialAutoPilot = false,
     initialStrictMode = false,
     onPreferencesChange,
+    migrationTitle,
+    migrationDescription,
+    migrationActionLabel,
+    migrationActionPending = false,
+    onMigrationAction,
+    migrationPreviewItems = [],
 }) => {
     const computedInitial = React.useMemo(() => {
         const initial: PersonalCurriculumConfig = {}
@@ -189,6 +206,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         const showFilterControls = Boolean(hasFilters)
         const isExpandable = isRoot || showFilterControls
         const isExpanded = expanded.has(landscape.landscapeId)
+        const displayLabel = !isRoot && landscape.subject ? landscape.subject : landscape.title
 
         return (
             <div key={landscape.landscapeId} className="flex flex-col">
@@ -214,7 +232,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                         className={`flex-1 font-medium cursor-pointer select-none ${isSelected ? 'text-text-primary' : 'text-text-secondary'}`}
                         onClick={() => toggleSelection(landscape.landscapeId, isRoot)}
                     >
-                        {landscape.title}
+                        {displayLabel}
                     </span>
                 </div>
 
@@ -272,6 +290,41 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 </div>
 
                 <div className="flex-1 overflow-y-auto p-4">
+                    {onMigrationAction && migrationTitle && migrationDescription && migrationActionLabel && (
+                        <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 p-4 dark:border-amber-900/40 dark:bg-amber-900/10">
+                            <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                                <div>
+                                    <h3 className="text-sm font-semibold text-text-primary">{migrationTitle}</h3>
+                                    <p className="mt-1 text-sm text-text-secondary">{migrationDescription}</p>
+                                    {migrationPreviewItems.length > 0 && (
+                                        <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                                            {migrationPreviewItems.map((item) => (
+                                                <div
+                                                    key={`${item.label}:${item.value}`}
+                                                    className="rounded-lg border border-amber-200/70 bg-white/70 px-3 py-2 dark:border-amber-900/30 dark:bg-slate-950/30"
+                                                >
+                                                    <div className="text-[11px] font-semibold uppercase tracking-wide text-text-secondary">
+                                                        {item.label}
+                                                    </div>
+                                                    <div className="mt-1 text-sm font-medium text-text-primary">
+                                                        {item.value}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                                <button
+                                    onClick={onMigrationAction}
+                                    disabled={migrationActionPending}
+                                    className="shrink-0 rounded-lg bg-amber-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-amber-500 disabled:cursor-not-allowed disabled:opacity-60"
+                                >
+                                    {migrationActionPending ? '...' : migrationActionLabel}
+                                </button>
+                            </div>
+                        </div>
+                    )}
+
                     {/* Preferences Section */}
                     {onPreferencesChange && (
                         <div className="mb-6 bg-blue-50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30">

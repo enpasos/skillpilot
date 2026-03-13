@@ -41,6 +41,8 @@ interface LearnerViewProps {
   rootLandscapeId?: string
   onRefresh?: () => void
   parentMap?: Map<string, string[]>
+  onLandscapeChange?: (landscapeId: string) => void
+  onLandscapeGoalChange?: (landscapeId: string, goalId: string) => void
 }
 
 type PersonalCurriculumConfig = Record<string, { selected: boolean; filterId?: string }>
@@ -130,7 +132,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   rootLandscapeId,
   onRefresh,
   parentMap,
+  onLandscapeChange,
+  onLandscapeGoalChange,
 }) => {
+  const CANONICAL_GYMNASIUM_ROOT_ID = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
+  const LEGACY_HESSEN_GYMNASIUM_UPPER_IDS = new Set([
+    'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da',
+    '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3',
+    '24f2ca0f-b94a-444e-bb70-677cb6f85c02',
+  ])
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [forcedExpandedIds, setForcedExpandedIds] = useState<Set<string>>(new Set())
   const [learnerData, setLearnerData] = useState<Learner | null>(null)
@@ -145,6 +155,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   } | null>(null)
   const [isSetupOpen, setIsSetupOpen] = useState(false)
   const [personalConfig, setPersonalConfig] = useState<PersonalCurriculumConfig>({})
+  const [isCutoverPending, setIsCutoverPending] = useState(false)
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
@@ -605,6 +616,80 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     atomicFrontierOptions.length > 0 &&
     (stateRequiredAction ? stateRequiredAction === 'setActiveGoal' : !effectiveActiveGoalId)
 
+  const refreshLearnerData = useCallback(async () => {
+    if (!skillpilotId) return
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
+      const res = await fetch(url)
+      if (res.ok) {
+        const data = await res.json()
+        setLearnerData(data)
+      }
+    } catch (e) {
+      console.warn('Failed to load learner data', e)
+    }
+  }, [skillpilotId])
+
+  const canCutoverLegacyHessenGymnasium = useMemo(() => {
+    const selectedCurriculum = learnerData?.selectedCurriculum
+    return !!selectedCurriculum && LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(selectedCurriculum)
+  }, [learnerData?.selectedCurriculum])
+
+  const legacyCutoverPreviewItems = useMemo(() => {
+    const selectedCurriculum = learnerData?.selectedCurriculum
+    if (!selectedCurriculum || !LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(selectedCurriculum)) {
+      return []
+    }
+
+    const inferCourseFilter = (landscapeId: string) => {
+      const filterId = personalConfig[landscapeId]?.filterId
+      return filterId === 'LK' ? 'Leistungskurs' : 'Grundkurs'
+    }
+
+    let mathSelected = selectedCurriculum === '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3'
+    let physicsSelected = selectedCurriculum === '24f2ca0f-b94a-444e-bb70-677cb6f85c02'
+
+    if (selectedCurriculum === 'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da') {
+      mathSelected = personalConfig['2796fc7b-ba9d-446f-8f26-711dd6d8a9a3']?.selected === true
+      physicsSelected = personalConfig['24f2ca0f-b94a-444e-bb70-677cb6f85c02']?.selected === true
+      if (!mathSelected && !physicsSelected) {
+        mathSelected = true
+        physicsSelected = true
+      }
+    }
+
+    const mathWasImplicitlyAdded = physicsSelected && !mathSelected
+    if (physicsSelected) {
+      mathSelected = true
+    }
+    if (!mathSelected && !physicsSelected) {
+      mathSelected = true
+    }
+
+    const items: Array<{ label: string; value: string }> = [
+      { label: 'Bundesland', value: 'Hessen -> Gymnasium (DE)' },
+    ]
+
+    if (mathSelected) {
+      items.push({
+        label: 'Mathematik',
+        value: mathWasImplicitlyAdded
+          ? `${inferCourseFilter('2796fc7b-ba9d-446f-8f26-711dd6d8a9a3')} (als Voraussetzung)`
+          : inferCourseFilter('2796fc7b-ba9d-446f-8f26-711dd6d8a9a3'),
+      })
+    }
+
+    if (physicsSelected) {
+      items.push({
+        label: 'Physik',
+        value: inferCourseFilter('24f2ca0f-b94a-444e-bb70-677cb6f85c02'),
+      })
+    }
+
+    return items
+  }, [learnerData?.selectedCurriculum, personalConfig])
+
 
   const refreshState = useCallback(
     async (cacheBust = false) => {
@@ -743,23 +828,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
     // fetchPlanned now handled by refreshPlanned
     refreshPlanned()
-
-    const fetchLearnerData = async () => {
-      try {
-        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
-        const res = await fetch(url)
-        if (res.ok) {
-          const data = await res.json()
-          setLearnerData(data)
-        }
-      } catch (e) {
-        console.warn('Failed to load learner data', e)
-      }
-    }
-
-    fetchLearnerData()
-  }, [skillpilotId, refreshPlanned])
+    refreshLearnerData()
+  }, [skillpilotId, refreshPlanned, refreshLearnerData])
 
   const handleSetActiveGoal = useCallback(async (goalId: string) => {
     if (!skillpilotId) return;
@@ -938,6 +1008,93 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       console.warn('Failed to save personal curriculum', e)
     }
   }, [skillpilotId, refreshState])
+
+  const handleCutoverCanonicalGymnasium = useCallback(async () => {
+    if (!skillpilotId || isCutoverPending) return
+    setIsCutoverPending(true)
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase
+        ? `${apiBase}/api/ui/learners/${skillpilotId}/cutover/canonical-gymnasium`
+        : `/api/ui/learners/${skillpilotId}/cutover/canonical-gymnasium`
+      const res = await fetch(url, { method: 'POST' })
+      if (!res.ok) {
+        const message = await res.text()
+        setModalTitle(language === 'de' ? 'Umstellung fehlgeschlagen' : 'Migration failed')
+        setModalMessage(
+          message || (
+            language === 'de'
+              ? 'Die Umstellung auf Gymnasium (DE) konnte nicht durchgeführt werden.'
+              : 'Could not migrate to Gymnasium (DE).'
+          ),
+        )
+        setModalType('error')
+        setIsModalOpen(true)
+        return
+      }
+
+      const data = await res.json()
+      if (data.frontier && Array.isArray(data.frontier)) {
+        setFrontierOptions(data.frontier)
+      } else if (data.stateMachine && Array.isArray(data.stateMachine.goalOptions)) {
+        setFrontierOptions(data.stateMachine.goalOptions)
+      } else {
+        setFrontierOptions([])
+      }
+      setStateActiveGoalId(data.activeGoal?.id ?? data.stateMachine?.activeGoal?.id ?? null)
+      setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
+      if (data.goals) {
+        setPlannedGoals(new Set((data.goals.planned ?? []).map((goal: FrontierGoal) => goal.id)))
+        setBackendStats({
+          masteredAtomic: data.goals.mastered_count ?? 0,
+          totalAtomic: data.goals.total_count ?? 0,
+          personalizedMasteredAtomic: data.goals.personalized?.mastered_atomic,
+          personalizedTotalAtomic: data.goals.personalized?.total_atomic,
+        })
+      }
+
+      const targetGoalId =
+        data.activeGoal?.id ??
+        data.goals?.planned?.[0]?.id ??
+        data.stateMachine?.activeGoal?.id ??
+        data.stateMachine?.goalOptions?.[0]?.id ??
+        null
+
+      if (targetGoalId && onLandscapeGoalChange) {
+        onLandscapeGoalChange(CANONICAL_GYMNASIUM_ROOT_ID, targetGoalId)
+      } else {
+        onLandscapeChange?.(CANONICAL_GYMNASIUM_ROOT_ID)
+      }
+
+      await Promise.all([
+        refreshLearnerData(),
+        onRefresh?.(),
+      ])
+      setRefreshCounter((count) => count + 1)
+      setVelocityRefreshCounter((count) => count + 1)
+      setIsSetupOpen(false)
+      setModalTitle(language === 'de' ? 'Umstellung abgeschlossen' : 'Migration complete')
+      setModalMessage(
+        language === 'de'
+          ? 'Dein Lernstand wurde auf Gymnasium (DE) umgestellt. Hessen bleibt als Legacy-Sicht erhalten, dein Mastery-Verlauf wird aber jetzt auf der gemeinsamen DE-Struktur weiter genutzt.'
+          : 'Your learner state has been migrated to Gymnasium (DE). Hesse remains available as a legacy view while your mastery history continues on the shared DE structure.',
+      )
+      setModalType('success')
+      setIsModalOpen(true)
+    } catch (e) {
+      console.warn('Failed to cut over learner to canonical Gymnasium', e)
+      setModalTitle(language === 'de' ? 'Umstellung fehlgeschlagen' : 'Migration failed')
+      setModalMessage(
+        language === 'de'
+          ? 'Während der Umstellung ist ein Netzwerk- oder Systemfehler aufgetreten.'
+          : 'A network or system error occurred during migration.',
+      )
+      setModalType('error')
+      setIsModalOpen(true)
+    } finally {
+      setIsCutoverPending(false)
+    }
+  }, [skillpilotId, isCutoverPending, language, onLandscapeChange, onLandscapeGoalChange, refreshLearnerData, onRefresh])
 
   useEffect(() => {
     if (!isAbi26CampaignSession || !campaignContext || !rootLandscapeId) return
@@ -1450,6 +1607,44 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         )}
         {currentGoal ? (
           <div className="w-full max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+            {canCutoverLegacyHessenGymnasium && (
+              <div className="mb-6 rounded-xl border border-amber-300/70 bg-amber-50/90 p-4 shadow-sm dark:border-amber-700/60 dark:bg-amber-950/30">
+                <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <div className="text-sm font-semibold text-amber-800 dark:text-amber-300">
+                      {language === 'de' ? 'Hessen-Lernstand erkannt' : 'Hesse learner state detected'}
+                    </div>
+                    <p className="mt-1 text-sm text-amber-900/90 dark:text-amber-100/90">
+                      {language === 'de'
+                        ? 'Diese Ansicht bleibt als Legacy-Sicht erhalten. Fuer die gemeinsame DE-Struktur kannst du jetzt direkt auf Gymnasium (DE) umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.'
+                        : 'This view remains available as a legacy view. You can now move directly to Gymnasium (DE) without losing your existing mastery history.'}
+                    </p>
+                  </div>
+                  <div className="flex shrink-0 gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setIsSetupOpen(true)}
+                      className="rounded-lg border border-amber-300 bg-white px-3 py-2 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-100 dark:border-amber-700 dark:bg-amber-950/40 dark:text-amber-100 dark:hover:bg-amber-900/50"
+                    >
+                      {language === 'de' ? 'Details' : 'Details'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleCutoverCanonicalGymnasium}
+                      disabled={isCutoverPending}
+                      className="inline-flex items-center gap-2 rounded-lg bg-sky-600 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      <MoveRight size={16} />
+                      <span>
+                        {isCutoverPending
+                          ? (language === 'de' ? 'Stelle um...' : 'Migrating...')
+                          : (language === 'de' ? 'Auf Gymnasium (DE) umstellen' : 'Migrate to Gymnasium (DE)')}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
             {/* Check for SRS Tag */}
             {currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
               <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6">
@@ -1555,6 +1750,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         initialAutoPilot={learnerData?.autoPilot}
         initialStrictMode={learnerData?.strictMode}
         onPreferencesChange={handlePreferencesChange}
+        migrationTitle={canCutoverLegacyHessenGymnasium ? 'Auf Gymnasium (DE) umstellen' : undefined}
+        migrationDescription={canCutoverLegacyHessenGymnasium ? 'Dein bisheriger Hessen-Lernstand bleibt erhalten und wird auf die gemeinsame DE-Struktur übernommen. Mathe und Physik laufen danach unter einem gemeinsamen Gymnasium-Root weiter.' : undefined}
+        migrationActionLabel={canCutoverLegacyHessenGymnasium ? 'Jetzt umstellen' : undefined}
+        migrationActionPending={isCutoverPending}
+        onMigrationAction={canCutoverLegacyHessenGymnasium ? handleCutoverCanonicalGymnasium : undefined}
+        migrationPreviewItems={canCutoverLegacyHessenGymnasium ? legacyCutoverPreviewItems : undefined}
       />
 
       <InfoModal

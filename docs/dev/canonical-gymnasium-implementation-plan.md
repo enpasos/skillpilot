@@ -112,6 +112,18 @@ Current operational baseline:
 
 - Hessen upper-secondary and lower-secondary source JSON remain `legacy_frozen`
 - the canonical `Gymnasium (DE)` overview root is the current preferred DE-level learner entry point
+- the DE-level Mathematics landscape now bulk-adopts the Hessen upper-secondary tree and keeps the existing Sek-I bridge plus exact Hessen legacy mappings for later learner migration
+- the DE-level Physics landscape now bulk-adopts the Hessen upper-secondary tree and keeps the pre-existing cross-subject Math bridge and Bavaria collision anchor IDs stable for later learner migration
+- a first backend learner-cutover path from frozen Hessen upper-secondary Math/Physics views into the DE-level `Gymnasium (DE)` root is available
+- cutover now stabilizes curriculum selection, root/subject filters, first-response planned-scope normalization, and canonical continuation with preserved legacy mastery history
+- the cutover HTTP contract now also covers the frozen Hessen overview case with combined Mathematics/Physics selection and mixed legacy planned scopes
+- the learner cockpit now exposes a first explicit UI migration path from frozen Hessen upper-secondary views into `Gymnasium (DE)` and switches the frontend landscape context after successful cutover
+- after successful UI cutover, the cockpit now navigates directly into the migrated canonical focus instead of leaving the learner on the old Hessen route or only at the DE root
+- the UI cutover dialog now previews the adopted Hessen -> DE transfer per subject and course level before the learner triggers migration
+- the curriculum picker now prioritizes `Gymnasium (DE)` for new learner entry and explicitly labels the frozen Hessen upper-secondary views as retained legacy views
+- the frozen Hessen cockpit view now also surfaces the DE cutover directly inside the learner workspace, so retained legacy views are usable without hiding the canonical migration path in setup only
+- an explicit backend bulk-cutover path with `dryRun` and a supplied learner-ID list is now available, so later Hessen -> DE migrations can be rehearsed and executed without exposing global learner listings
+- the operator-facing bulk-cutover UI now supports CSV export of dry-run/execution results and lets operators reduce the current input list to the `eligible` learner IDs before triggering the real migration
 - the canonical Mathematics pilot function corridor is `cutover_ready`
 - the canonical Physics motion corridor is `cutover_ready`
 - the canonical Physics E.2 mechanics corridor is `cutover_ready`

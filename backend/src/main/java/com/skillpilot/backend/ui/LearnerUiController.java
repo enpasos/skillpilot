@@ -5,6 +5,8 @@ import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.ClientStateRequest;
 import com.skillpilot.backend.api.ClientStateResponse;
 import com.skillpilot.backend.api.ClientStateSnapshot;
+import com.skillpilot.backend.api.BulkCanonicalGymnasiumCutoverRequest;
+import com.skillpilot.backend.api.BulkCanonicalGymnasiumCutoverResponse;
 import com.skillpilot.backend.api.MasteryResponse;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.FrontierResponse;
@@ -14,7 +16,6 @@ import com.skillpilot.backend.api.UpdateCurriculumRequest;
 import com.skillpilot.backend.api.CreateLearnerRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.ScopeRequest;
-import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.UpdatePersonalCurriculumRequest;
 import com.skillpilot.backend.api.LearnerDataDTO;
@@ -32,7 +33,6 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.extensions.Extension;
 import io.swagger.v3.oas.annotations.extensions.ExtensionProperty;
-
 @RestController
 @RequestMapping(value = "/api/ui/learners", produces = MediaType.APPLICATION_JSON_VALUE)
 public class LearnerUiController {
@@ -57,6 +57,20 @@ public class LearnerUiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse getLearnerState(@PathVariable String skillpilotId) {
         return learnerService.getLearnerState(skillpilotId);
+    }
+
+    @PostMapping("/{skillpilotId}/cutover/canonical-gymnasium")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public UnifiedLearnerStateResponse cutoverCanonicalGymnasium(@PathVariable String skillpilotId) {
+        learnerService.cutoverLegacyHessenGymnasiumToCanonicalAndPersistPlannedGoals(skillpilotId);
+        return learnerService.getLearnerState(skillpilotId);
+    }
+
+    @PostMapping("/cutover/canonical-gymnasium/bulk")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public BulkCanonicalGymnasiumCutoverResponse bulkCutoverCanonicalGymnasium(
+            @Valid @RequestBody BulkCanonicalGymnasiumCutoverRequest request) {
+        return learnerService.bulkCutoverLegacyHessenGymnasiumToCanonical(request.skillpilotIds(), request.dryRun());
     }
 
     @GetMapping("/{skillpilotId}/client-state/{nodeId}")

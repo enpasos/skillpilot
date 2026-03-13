@@ -39,10 +39,16 @@ class LearnerServiceCrossSubjectPilotTest {
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String CANONICAL_PHYSICS_PILOT_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
     private static final String CANONICAL_PHYSICS_ROOT_ID = "bf980fff-b62b-4ea4-a20d-31681a7ad785";
+    private static final String CANONICAL_PHYSICS_GK_PERSONAL_CONFIG = """
+            {
+              "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "GK"}
+            }
+            """;
     private static final String HESSEN_PHYSICS_LANDSCAPE_ID = "24f2ca0f-b94a-444e-bb70-677cb6f85c02";
     private static final String BAYERN_PHYSICS_LANDSCAPE_ID = "42c2f7e3-91b4-5de8-bef0-d563440e9d52";
     private static final String CANONICAL_PHYSICS_CLUSTER_ID = "65ddd780-0323-45d1-8f94-5e31bf28da23";
-    private static final String CANONICAL_PHYSICS_E3_CLUSTER_ID = "82b5df3d-b1a7-4c6f-bd62-18fbbbe097a3";
+    private static final String CANONICAL_PHYSICS_E3_CLUSTER_ID = "287739a3-6143-55d0-abe7-1a08889e9b49";
+    private static final String CANONICAL_PHYSICS_HORIZONTAL_THROW_CLUSTER_ID = "82b5df3d-b1a7-4c6f-bd62-18fbbbe097a3";
     private static final String CANONICAL_PHYSICS_E2_CLUSTER_ID = "9340e894-bb0d-45a4-91f2-b90a63ad50a8";
     private static final String CANONICAL_PHYSICS_NEWTON_CLUSTER_ID = "4dc9a094-66d7-4d4d-9436-134aabe48f39";
     private static final String CANONICAL_PHYSICS_CONSERVATION_CLUSTER_ID = "e9d616d8-685f-4129-a36f-dae7a280bae7";
@@ -360,7 +366,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
         List<String> plannedGoals = learnerService.getPlannedGoals(LEARNER_ID);
 
-        assertThat(plannedGoals).containsExactly(CANONICAL_PHYSICS_E3_CLUSTER_ID);
+        assertThat(plannedGoals).containsExactly(CANONICAL_PHYSICS_HORIZONTAL_THROW_CLUSTER_ID);
     }
 
     @Test
@@ -400,7 +406,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
         List<String> plannedGoals = learnerService.getPlannedGoals(LEARNER_ID);
 
-        assertThat(plannedGoals).containsExactly(CANONICAL_PHYSICS_E3_CLUSTER_ID);
+        assertThat(plannedGoals).containsExactly(CANONICAL_PHYSICS_HORIZONTAL_THROW_CLUSTER_ID);
     }
 
     @Test
@@ -504,6 +510,7 @@ class LearnerServiceCrossSubjectPilotTest {
                         new Mastery(learner, LEGACY_PHYSICS_WHY_ID, 1.0),
                         new Mastery(learner, LEGACY_MATH_FUNCTION_CONCEPT_ID, 1.0),
                         new Mastery(learner, LEGACY_MATH_READ_VALUES_ID, 1.0)));
+        learner.setPersonalCurriculum(CANONICAL_PHYSICS_GK_PERSONAL_CONFIG);
 
         UnifiedLearnerStateResponse state = learnerService.getLearnerState(LEARNER_ID);
 

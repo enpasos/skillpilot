@@ -27,6 +27,13 @@ interface CurriculumDropdownProps {
 
 type Category = 'SCHOOL' | 'UNI' | 'OTHER'
 
+const CANONICAL_GYMNASIUM_ROOT_ID = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
+const LEGACY_HESSEN_GYMNASIUM_UPPER_IDS = new Set([
+    'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da',
+    '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3',
+    '24f2ca0f-b94a-444e-bb70-677cb6f85c02',
+])
+
 export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
     currentLandscapeId,
     onSelect,
@@ -94,6 +101,20 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
         return 'OTHER'
     }
 
+    const getDisplayTitle = (l: LandscapeSummary) => {
+        const base = l.title || l.description || l.subject || ''
+        if (LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(l.curriculumId)) {
+            return language === 'de' ? `${base} (Legacy-Sicht)` : `${base} (Legacy view)`
+        }
+        return base
+    }
+
+    const getSortPriority = (l: LandscapeSummary) => {
+        if (l.curriculumId === CANONICAL_GYMNASIUM_ROOT_ID) return 0
+        if (LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(l.curriculumId)) return 2
+        return 1
+    }
+
     useEffect(() => {
         if (!currentLandscapeId || landscapes.length === 0) return
         const selected = landscapes.find((l) => l.curriculumId === currentLandscapeId)
@@ -116,8 +137,10 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
 
     // Sort alphabetically by the displayed text
     const sortedLandscapes = [...categoryFilteredLandscapes].sort((a, b) => {
-        const textA = a.title || a.description || a.subject || '';
-        const textB = b.title || b.description || b.subject || '';
+        const priorityDiff = getSortPriority(a) - getSortPriority(b)
+        if (priorityDiff !== 0) return priorityDiff
+        const textA = getDisplayTitle(a);
+        const textB = getDisplayTitle(b);
         return textA.localeCompare(textB, language);
     });
 
@@ -156,7 +179,7 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
                 </option>
                 {sortedLandscapes.map((l) => (
                     <option key={l.curriculumId} value={l.curriculumId} className="bg-input-bg text-text-primary">
-                        {l.title || l.description || l.subject}
+                        {getDisplayTitle(l)}
                     </option>
                 ))}
             </select>

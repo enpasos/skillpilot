@@ -29,10 +29,10 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(HESSEN_MATH_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_MATH_PILOT_ID);
-        assertThat(file.getMappings()).hasSize(9);
+        assertThat(file.getMappings()).hasSize(451);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getMatchType)
-                .contains("exact", "partial");
+                .containsOnly("exact");
     }
 
     @Test
@@ -55,10 +55,10 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(HESSEN_PHYSICS_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_PHYSICS_PILOT_ID);
-        assertThat(file.getMappings()).hasSize(39);
+        assertThat(file.getMappings()).hasSize(376);
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getMatchType)
-                .contains("exact", "partial");
+                .containsOnly("exact");
     }
 
     @Test

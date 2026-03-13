@@ -37,6 +37,11 @@ import java.util.stream.Collectors;
 import java.io.InputStream;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionTemplate;
+import org.springframework.transaction.support.SimpleTransactionStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -44,6 +49,8 @@ import com.skillpilot.backend.api.CreateLearnerRequest;
 import com.skillpilot.backend.api.ClientStateRequest;
 import com.skillpilot.backend.api.ClientStateResponse;
 import com.skillpilot.backend.api.ClientStateSnapshot;
+import com.skillpilot.backend.api.BulkCanonicalGymnasiumCutoverResponse;
+import com.skillpilot.backend.api.BulkCanonicalGymnasiumCutoverResult;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
@@ -53,6 +60,7 @@ import com.skillpilot.backend.api.LearnerDataDTO;
 import com.skillpilot.backend.api.MasteryEntryDTO;
 import com.skillpilot.backend.api.SignedLearnerDataDTO;
 import com.skillpilot.backend.api.StateMachineInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -74,6 +82,7 @@ public class LearnerService {
 
     private final ObjectMapper objectMapper;
     private final ApplicationEventPublisher eventPublisher;
+    private final TransactionTemplate transactionTemplate;
 
     private static final Set<String> SRS_FILTER_EXCLUDE = Set.of(
             "structure",
@@ -92,10 +101,18 @@ public class LearnerService {
 
     private static final Set<String> COURSE_FILTER_IDS = Set.of("GK", "LK");
     private static final Set<String> STATE_FILTER_IDS = Set.of("ALL", "DE-HE", "DE-BY");
+    private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
+    private static final String CANONICAL_GYMNASIUM_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+    private static final String CANONICAL_GYMNASIUM_PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+    private static final String HESSEN_GYMNASIUM_UPPER_ROOT_ID = "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da";
+    private static final String HESSEN_GYMNASIUM_UPPER_MATH_ID = "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3";
+    private static final String HESSEN_GYMNASIUM_UPPER_PHYSICS_ID = "24f2ca0f-b94a-444e-bb70-677cb6f85c02";
+    private static final String DEFAULT_COURSE_FILTER_ID = "GK";
 
     @Value("${skillpilot.security.signing-secret}")
     private String signingSecret;
 
+    @Autowired
     public LearnerService(
             LearnerRepository learnerRepository,
             LearnerClientStateRepository learnerClientStateRepository,
@@ -106,6 +123,30 @@ public class LearnerService {
             DeckResourceService deckResourceService,
             ObjectMapper objectMapper,
             ApplicationEventPublisher eventPublisher) {
+        this(
+                learnerRepository,
+                learnerClientStateRepository,
+                masteryRepository,
+                plannedGoalRepository,
+                landscapeService,
+                goalMappingService,
+                deckResourceService,
+                objectMapper,
+                eventPublisher,
+                new NoOpTransactionManager());
+    }
+
+    public LearnerService(
+            LearnerRepository learnerRepository,
+            LearnerClientStateRepository learnerClientStateRepository,
+            MasteryRepository masteryRepository,
+            PlannedGoalRepository plannedGoalRepository,
+            LandscapeService landscapeService,
+            GoalMappingService goalMappingService,
+            DeckResourceService deckResourceService,
+            ObjectMapper objectMapper,
+            ApplicationEventPublisher eventPublisher,
+            PlatformTransactionManager transactionManager) {
         this.learnerRepository = learnerRepository;
         this.learnerClientStateRepository = learnerClientStateRepository;
         this.masteryRepository = masteryRepository;
@@ -115,6 +156,25 @@ public class LearnerService {
         this.deckResourceService = deckResourceService;
         this.objectMapper = objectMapper;
         this.eventPublisher = eventPublisher;
+        this.transactionTemplate = new TransactionTemplate(transactionManager);
+        this.transactionTemplate.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+    }
+
+    private static final class NoOpTransactionManager implements PlatformTransactionManager {
+        @Override
+        public TransactionStatus getTransaction(TransactionDefinition definition) {
+            return new SimpleTransactionStatus();
+        }
+
+        @Override
+        public void commit(TransactionStatus status) {
+            // no-op
+        }
+
+        @Override
+        public void rollback(TransactionStatus status) {
+            // no-op
+        }
     }
 
     private static final class SrsCard {
@@ -148,6 +208,99 @@ public class LearnerService {
             }
         }
         return null;
+    }
+
+    private record CanonicalGymnasiumCutoverPlan(
+            Map<String, Object> personalCurriculumConfig,
+            List<String> normalizedPlannedGoalIds,
+            String normalizedActiveGoalId,
+            LearningState normalizedLearningState) {
+    }
+
+    private record BulkCanonicalGymnasiumCutoverCounters(
+            int migratedCount,
+            int eligibleCount,
+            int alreadyCanonicalCount,
+            int unsupportedCount,
+            int noCurriculumCount,
+            int notFoundCount,
+            int errorCount) {
+        private BulkCanonicalGymnasiumCutoverCounters incrementMigrated() {
+            return new BulkCanonicalGymnasiumCutoverCounters(
+                    migratedCount + 1,
+                    eligibleCount,
+                    alreadyCanonicalCount,
+                    unsupportedCount,
+                    noCurriculumCount,
+                    notFoundCount,
+                    errorCount);
+        }
+
+        private BulkCanonicalGymnasiumCutoverCounters incrementEligible() {
+            return new BulkCanonicalGymnasiumCutoverCounters(
+                    migratedCount,
+                    eligibleCount + 1,
+                    alreadyCanonicalCount,
+                    unsupportedCount,
+                    noCurriculumCount,
+                    notFoundCount,
+                    errorCount);
+        }
+
+        private BulkCanonicalGymnasiumCutoverCounters incrementAlreadyCanonical() {
+            return new BulkCanonicalGymnasiumCutoverCounters(
+                    migratedCount,
+                    eligibleCount,
+                    alreadyCanonicalCount + 1,
+                    unsupportedCount,
+                    noCurriculumCount,
+                    notFoundCount,
+                    errorCount);
+        }
+
+        private BulkCanonicalGymnasiumCutoverCounters incrementUnsupported() {
+            return new BulkCanonicalGymnasiumCutoverCounters(
+                    migratedCount,
+                    eligibleCount,
+                    alreadyCanonicalCount,
+                    unsupportedCount + 1,
+                    noCurriculumCount,
+                    notFoundCount,
+                    errorCount);
+        }
+
+        private BulkCanonicalGymnasiumCutoverCounters incrementNoCurriculum() {
+            return new BulkCanonicalGymnasiumCutoverCounters(
+                    migratedCount,
+                    eligibleCount,
+                    alreadyCanonicalCount,
+                    unsupportedCount,
+                    noCurriculumCount + 1,
+                    notFoundCount,
+                    errorCount);
+        }
+
+        private BulkCanonicalGymnasiumCutoverCounters incrementNotFound() {
+            return new BulkCanonicalGymnasiumCutoverCounters(
+                    migratedCount,
+                    eligibleCount,
+                    alreadyCanonicalCount,
+                    unsupportedCount,
+                    noCurriculumCount,
+                    notFoundCount + 1,
+                    errorCount);
+        }
+
+        private BulkCanonicalGymnasiumCutoverCounters incrementError() {
+            return new BulkCanonicalGymnasiumCutoverCounters(
+                    migratedCount,
+                    eligibleCount,
+                    alreadyCanonicalCount,
+                    unsupportedCount,
+                    noCurriculumCount,
+                    notFoundCount,
+                    errorCount + 1);
+        }
     }
 
     private boolean isSrsGoal(LearningGoal goal) {
@@ -637,6 +790,10 @@ public class LearnerService {
         if (visibleGoals.containsKey(goalId)) {
             return goalId;
         }
+        String provenanceMappedGoalId = findCanonicalGoalIdByLegacySourceId(goalId, visibleGoals);
+        if (provenanceMappedGoalId != null) {
+            return provenanceMappedGoalId;
+        }
         ResolvedGoalMapping mapping = goalMappingService.findByLegacyGoalId(goalId).orElse(null);
         if (mapping == null) {
             return goalId;
@@ -700,6 +857,26 @@ public class LearnerService {
         return orderedGoalIds.stream()
                 .filter(goalId -> !redundantGoalIds.contains(goalId))
                 .toList();
+    }
+
+    private String findCanonicalGoalIdByLegacySourceId(String legacyGoalId, Map<String, LearningGoal> visibleGoals) {
+        if (legacyGoalId == null || legacyGoalId.isBlank() || visibleGoals == null || visibleGoals.isEmpty()) {
+            return null;
+        }
+        for (LearningGoal goal : visibleGoals.values()) {
+            if (goal == null || goal.getExtendedData() == null) {
+                continue;
+            }
+            Object provenanceRaw = goal.getExtendedData().get("provenance");
+            if (!(provenanceRaw instanceof Map<?, ?> provenance)) {
+                continue;
+            }
+            Object sourceGoalIdRaw = provenance.get("sourceGoalId");
+            if (sourceGoalIdRaw instanceof String sourceGoalId && legacyGoalId.equals(sourceGoalId)) {
+                return goal.getId();
+            }
+        }
+        return null;
     }
 
     @Transactional
@@ -921,6 +1098,166 @@ public class LearnerService {
     }
 
     @Transactional
+    public List<String> cutoverLegacyHessenGymnasiumToCanonical(String skillpilotId) {
+        Learner learner = getLearner(skillpilotId);
+        String currentCurriculumId = learner.getSelectedCurriculum();
+        if (currentCurriculumId == null || currentCurriculumId.isBlank()) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "No curriculum selected for cutover.");
+        }
+        if (CANONICAL_GYMNASIUM_ROOT_ID.equals(currentCurriculumId)) {
+            return getPlannedGoals(skillpilotId);
+        }
+        if (!isSupportedHessenGymnasiumCutoverSource(currentCurriculumId)) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Unsupported curriculum for canonical Gymnasium cutover: " + currentCurriculumId);
+        }
+
+        List<String> storedPlannedGoals = getStoredPlannedGoals(skillpilotId);
+        CanonicalGymnasiumCutoverPlan plan = buildCanonicalGymnasiumCutoverPlan(learner, storedPlannedGoals);
+        String personalCurriculumJson = writePersonalCurriculumConfig(plan.personalCurriculumConfig());
+
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(personalCurriculumJson);
+        learner.setActiveGoalId(null);
+        learner.setLearningState(LearningState.FRONTIER);
+        learnerRepository.save(learner);
+
+        Learner refreshed = getLearner(skillpilotId);
+        refreshed.setActiveGoalId(plan.normalizedActiveGoalId());
+        refreshed.setLearningState(plan.normalizedLearningState());
+        learnerRepository.save(refreshed);
+
+        eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "CURRICULUM_CUTOVER"));
+        return plan.normalizedPlannedGoalIds();
+    }
+
+    @Transactional
+    public List<String> cutoverLegacyHessenGymnasiumToCanonicalAndPersistPlannedGoals(String skillpilotId) {
+        List<String> normalizedPlannedGoalIds = cutoverLegacyHessenGymnasiumToCanonical(skillpilotId);
+        return setPlannedGoals(skillpilotId, new LinkedHashSet<>(normalizedPlannedGoalIds));
+    }
+
+    public BulkCanonicalGymnasiumCutoverResponse bulkCutoverLegacyHessenGymnasiumToCanonical(
+            Set<String> requestedSkillpilotIds,
+            boolean dryRun) {
+        LinkedHashSet<String> skillpilotIds = requestedSkillpilotIds == null
+                ? new LinkedHashSet<>()
+                : requestedSkillpilotIds.stream()
+                        .filter(Objects::nonNull)
+                        .map(String::trim)
+                        .filter(id -> !id.isBlank())
+                        .collect(Collectors.toCollection(LinkedHashSet::new));
+
+        List<BulkCanonicalGymnasiumCutoverResult> results = new ArrayList<>();
+        BulkCanonicalGymnasiumCutoverCounters counters = new BulkCanonicalGymnasiumCutoverCounters(0, 0, 0, 0, 0, 0,
+                0);
+
+        for (String skillpilotId : skillpilotIds) {
+            Learner learner = learnerRepository.findById(skillpilotId).orElse(null);
+            if (learner == null) {
+                results.add(new BulkCanonicalGymnasiumCutoverResult(
+                        skillpilotId,
+                        "not_found",
+                        null,
+                        null,
+                        0,
+                        "Learner not found."));
+                counters = counters.incrementNotFound();
+                continue;
+            }
+
+            String previousCurriculumId = learner.getSelectedCurriculum();
+            if (previousCurriculumId == null || previousCurriculumId.isBlank()) {
+                results.add(new BulkCanonicalGymnasiumCutoverResult(
+                        skillpilotId,
+                        "no_curriculum",
+                        null,
+                        null,
+                        0,
+                        "No curriculum selected for cutover."));
+                counters = counters.incrementNoCurriculum();
+                continue;
+            }
+
+            if (CANONICAL_GYMNASIUM_ROOT_ID.equals(previousCurriculumId)) {
+                results.add(new BulkCanonicalGymnasiumCutoverResult(
+                        skillpilotId,
+                        "already_canonical",
+                        previousCurriculumId,
+                        previousCurriculumId,
+                        getStoredPlannedGoals(skillpilotId).size(),
+                        "Learner already uses Gymnasium (DE)."));
+                counters = counters.incrementAlreadyCanonical();
+                continue;
+            }
+
+            if (!isSupportedHessenGymnasiumCutoverSource(previousCurriculumId)) {
+                results.add(new BulkCanonicalGymnasiumCutoverResult(
+                        skillpilotId,
+                        "unsupported_curriculum",
+                        previousCurriculumId,
+                        previousCurriculumId,
+                        0,
+                        "Unsupported curriculum for canonical Gymnasium cutover."));
+                counters = counters.incrementUnsupported();
+                continue;
+            }
+
+            if (dryRun) {
+                List<String> normalizedPlannedGoalIds = buildCanonicalGymnasiumCutoverPlan(learner,
+                        getStoredPlannedGoals(skillpilotId)).normalizedPlannedGoalIds();
+                results.add(new BulkCanonicalGymnasiumCutoverResult(
+                        skillpilotId,
+                        "eligible",
+                        previousCurriculumId,
+                        CANONICAL_GYMNASIUM_ROOT_ID,
+                        normalizedPlannedGoalIds.size(),
+                        "Learner can be migrated without mastery-history loss."));
+                counters = counters.incrementEligible();
+                continue;
+            }
+
+            try {
+                List<String> normalizedPlannedGoalIds = transactionTemplate.execute(
+                        status -> cutoverLegacyHessenGymnasiumToCanonicalAndPersistPlannedGoals(skillpilotId));
+                if (normalizedPlannedGoalIds == null) {
+                    throw new IllegalStateException("Cutover transaction returned no result.");
+                }
+                results.add(new BulkCanonicalGymnasiumCutoverResult(
+                        skillpilotId,
+                        "migrated",
+                        previousCurriculumId,
+                        CANONICAL_GYMNASIUM_ROOT_ID,
+                        normalizedPlannedGoalIds.size(),
+                        "Learner migrated to Gymnasium (DE)."));
+                counters = counters.incrementMigrated();
+            } catch (RuntimeException ex) {
+                results.add(new BulkCanonicalGymnasiumCutoverResult(
+                        skillpilotId,
+                        "error",
+                        previousCurriculumId,
+                        previousCurriculumId,
+                        0,
+                        ex.getMessage()));
+                counters = counters.incrementError();
+            }
+        }
+
+        return new BulkCanonicalGymnasiumCutoverResponse(
+                dryRun,
+                skillpilotIds.size(),
+                counters.migratedCount(),
+                counters.eligibleCount(),
+                counters.alreadyCanonicalCount(),
+                counters.unsupportedCount(),
+                counters.noCurriculumCount(),
+                counters.notFoundCount(),
+                counters.errorCount(),
+                results);
+    }
+
+    @Transactional
     public void setPersonalCurriculum(String skillpilotId, Map<String, Object> config, List<String> goalIds,
             List<String> filters) {
         Learner learner = getLearner(skillpilotId);
@@ -989,6 +1326,210 @@ public class LearnerService {
                     "Invalid personalization config");
         }
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "PERSONALIZATION_UPDATE"));
+    }
+
+    private boolean isSupportedHessenGymnasiumCutoverSource(String curriculumId) {
+        return HESSEN_GYMNASIUM_UPPER_ROOT_ID.equals(curriculumId)
+                || HESSEN_GYMNASIUM_UPPER_MATH_ID.equals(curriculumId)
+                || HESSEN_GYMNASIUM_UPPER_PHYSICS_ID.equals(curriculumId);
+    }
+
+    private CanonicalGymnasiumCutoverPlan buildCanonicalGymnasiumCutoverPlan(Learner learner, List<String> storedPlannedGoals) {
+        Map<String, Map<String, Object>> legacyConfig = parsePersonalCurriculumConfig(learner.getPersonalCurriculum());
+        String currentCurriculumId = learner.getSelectedCurriculum();
+        String activeGoalId = learner.getActiveGoalId();
+
+        boolean mathSelected = HESSEN_GYMNASIUM_UPPER_MATH_ID.equals(currentCurriculumId);
+        boolean physicsSelected = HESSEN_GYMNASIUM_UPPER_PHYSICS_ID.equals(currentCurriculumId);
+
+        if (HESSEN_GYMNASIUM_UPPER_ROOT_ID.equals(currentCurriculumId)) {
+            mathSelected = readSelectedFlag(legacyConfig, HESSEN_GYMNASIUM_UPPER_MATH_ID)
+                    || containsGoalFromLandscape(storedPlannedGoals, HESSEN_GYMNASIUM_UPPER_MATH_ID)
+                    || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_UPPER_MATH_ID);
+            physicsSelected = readSelectedFlag(legacyConfig, HESSEN_GYMNASIUM_UPPER_PHYSICS_ID)
+                    || containsGoalFromLandscape(storedPlannedGoals, HESSEN_GYMNASIUM_UPPER_PHYSICS_ID)
+                    || goalBelongsToLandscape(activeGoalId, HESSEN_GYMNASIUM_UPPER_PHYSICS_ID);
+            if (!mathSelected && !physicsSelected) {
+                mathSelected = true;
+                physicsSelected = true;
+            }
+        }
+
+        if (physicsSelected) {
+            mathSelected = true;
+        }
+        if (!mathSelected && !physicsSelected) {
+            mathSelected = true;
+        }
+
+        String mathCourseFilterId = inferLegacyCourseFilterId(
+                legacyConfig,
+                HESSEN_GYMNASIUM_UPPER_MATH_ID,
+                HESSEN_GYMNASIUM_UPPER_MATH_ID.equals(currentCurriculumId));
+        String physicsCourseFilterId = inferLegacyCourseFilterId(
+                legacyConfig,
+                HESSEN_GYMNASIUM_UPPER_PHYSICS_ID,
+                HESSEN_GYMNASIUM_UPPER_PHYSICS_ID.equals(currentCurriculumId));
+
+        Map<String, Object> personalCurriculumConfig = new LinkedHashMap<>();
+        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_ROOT_ID, createSelectionConfig(true, "DE-HE"));
+        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_MATH_ID, createSelectionConfig(mathSelected, mathCourseFilterId));
+        personalCurriculumConfig.put(CANONICAL_GYMNASIUM_PHYSICS_ID,
+                createSelectionConfig(physicsSelected, physicsCourseFilterId));
+
+        String personalCurriculumJson = writePersonalCurriculumConfig(personalCurriculumConfig);
+        Map<String, LearningGoal> structuralGoals = new LinkedHashMap<>(getFilteredGoals(CANONICAL_GYMNASIUM_ROOT_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_MATH_ID, "{}"));
+        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_PHYSICS_ID, "{}"));
+        List<String> normalizedPlannedGoalIds = normalizeCutoverPlannedGoalIds(storedPlannedGoals, structuralGoals).stream()
+                .filter(structuralGoals::containsKey)
+                .toList();
+        Map<String, LearningGoal> visibleGoals = getFilteredGoals(CANONICAL_GYMNASIUM_ROOT_ID, personalCurriculumJson);
+        String normalizedActiveGoalId = resolveGoalIdInVisibleGoals(activeGoalId, visibleGoals, false);
+        LearningGoal activeGoal = normalizedActiveGoalId != null ? visibleGoals.get(normalizedActiveGoalId) : null;
+        LearningState normalizedLearningState = learner.getLearningState();
+        if (normalizedActiveGoalId == null || activeGoal == null || !isAtomicGoal(activeGoal)) {
+            normalizedActiveGoalId = null;
+            normalizedLearningState = LearningState.FRONTIER;
+        }
+
+        return new CanonicalGymnasiumCutoverPlan(
+                personalCurriculumConfig,
+                normalizedPlannedGoalIds,
+                normalizedActiveGoalId,
+                normalizedLearningState != null ? normalizedLearningState : LearningState.FRONTIER);
+    }
+
+    private Map<String, Map<String, Object>> parsePersonalCurriculumConfig(String personalCurriculumJson) {
+        if (personalCurriculumJson == null || personalCurriculumJson.isBlank()) {
+            return new HashMap<>();
+        }
+        try {
+            Map<String, Map<String, Object>> parsed = objectMapper.readValue(
+                    personalCurriculumJson,
+                    new TypeReference<Map<String, Map<String, Object>>>() {
+                    });
+            return parsed != null ? new HashMap<>(parsed) : new HashMap<>();
+        } catch (Exception ignored) {
+            return new HashMap<>();
+        }
+    }
+
+    private boolean readSelectedFlag(Map<String, Map<String, Object>> config, String landscapeId) {
+        Map<String, Object> entry = config.get(landscapeId);
+        if (entry == null) {
+            return false;
+        }
+        Object selected = entry.get("selected");
+        return selected instanceof Boolean && (Boolean) selected;
+    }
+
+    private String inferLegacyCourseFilterId(Map<String, Map<String, Object>> config, String landscapeId,
+            boolean currentLandscapeSelected) {
+        Map<String, Object> entry = config.get(landscapeId);
+        if (entry != null) {
+            Object filterId = entry.get("filterId");
+            String normalizedFilterId = normalizeFilterId(filterId instanceof String ? (String) filterId : null);
+            if (COURSE_FILTER_IDS.contains(normalizedFilterId)) {
+                return normalizedFilterId;
+            }
+        }
+        return currentLandscapeSelected ? DEFAULT_COURSE_FILTER_ID : DEFAULT_COURSE_FILTER_ID;
+    }
+
+    private boolean containsGoalFromLandscape(List<String> goalIds, String landscapeId) {
+        if (goalIds == null || goalIds.isEmpty()) {
+            return false;
+        }
+        for (String goalId : goalIds) {
+            if (goalBelongsToLandscape(goalId, landscapeId)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean goalBelongsToLandscape(String goalId, String landscapeId) {
+        if (goalId == null || goalId.isBlank() || landscapeId == null || landscapeId.isBlank()) {
+            return false;
+        }
+        String resolvedLandscapeId = landscapeService.getLandscapeIdForGoal(goalId);
+        if (landscapeId.equals(resolvedLandscapeId)) {
+            return true;
+        }
+        ResolvedGoalMapping mapping = goalMappingService.findByLegacyGoalId(goalId).orElse(null);
+        return mapping != null && landscapeId.equals(mapping.sourceLandscapeId());
+    }
+
+    private Map<String, Object> createSelectionConfig(boolean selected, String filterId) {
+        Map<String, Object> entry = new LinkedHashMap<>();
+        entry.put("selected", selected);
+        if (filterId != null && !filterId.isBlank()) {
+            entry.put("filterId", filterId);
+        }
+        return entry;
+    }
+
+    private String writePersonalCurriculumConfig(Map<String, Object> config) {
+        try {
+            return objectMapper.writeValueAsString(config);
+        } catch (Exception e) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR,
+                    "Failed to serialize personal curriculum config.");
+        }
+    }
+
+    private boolean isAtomicGoal(LearningGoal goal) {
+        return goal != null && (goal.getContains() == null || goal.getContains().isEmpty());
+    }
+
+    private List<String> normalizeCutoverPlannedGoalIds(List<String> goalIds, Map<String, LearningGoal> visibleGoals) {
+        if (goalIds == null || goalIds.isEmpty() || visibleGoals == null || visibleGoals.isEmpty()) {
+            return Collections.emptyList();
+        }
+        Map<String, String> canonicalIdsByLegacySourceId = collectCanonicalIdsByLegacySourceId(visibleGoals);
+        LinkedHashSet<String> normalizedGoalIds = new LinkedHashSet<>();
+        for (String goalId : goalIds) {
+            if (goalId == null || goalId.isBlank()) {
+                continue;
+            }
+            String provenanceMappedId = canonicalIdsByLegacySourceId.get(goalId);
+            if (provenanceMappedId != null && visibleGoals.containsKey(provenanceMappedId)) {
+                normalizedGoalIds.add(provenanceMappedId);
+                continue;
+            }
+            ResolvedGoalMapping mapping = goalMappingService.findByLegacyGoalId(goalId).orElse(null);
+            if (mapping != null && visibleGoals.containsKey(mapping.canonicalGoalId())) {
+                normalizedGoalIds.add(mapping.canonicalGoalId());
+                continue;
+            }
+            if (visibleGoals.containsKey(goalId)) {
+                normalizedGoalIds.add(goalId);
+            }
+        }
+        return collapseContainedGoalIds(new ArrayList<>(normalizedGoalIds), visibleGoals);
+    }
+
+    private Map<String, String> collectCanonicalIdsByLegacySourceId(Map<String, LearningGoal> visibleGoals) {
+        Map<String, String> canonicalIdsByLegacySourceId = new HashMap<>();
+        if (visibleGoals == null || visibleGoals.isEmpty()) {
+            return canonicalIdsByLegacySourceId;
+        }
+        for (LearningGoal goal : visibleGoals.values()) {
+            if (goal == null || goal.getExtendedData() == null) {
+                continue;
+            }
+            Object provenanceRaw = goal.getExtendedData().get("provenance");
+            if (!(provenanceRaw instanceof Map<?, ?> provenance)) {
+                continue;
+            }
+            Object sourceGoalIdRaw = provenance.get("sourceGoalId");
+            if (!(sourceGoalIdRaw instanceof String sourceGoalId) || sourceGoalId.isBlank()) {
+                continue;
+            }
+            canonicalIdsByLegacySourceId.putIfAbsent(sourceGoalId, goal.getId());
+        }
+        return canonicalIdsByLegacySourceId;
     }
 
     @Transactional(readOnly = true)

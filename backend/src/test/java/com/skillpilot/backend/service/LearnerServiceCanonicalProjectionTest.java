@@ -43,6 +43,11 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String BAYERN_MATH_LANDSCAPE_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
     private static final String CANONICAL_MATH_PILOT_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_MATH_ROOT_ID = "c01b1ce9-a667-4a46-b251-ec33ae602b15";
+    private static final String CANONICAL_MATH_GK_PERSONAL_CONFIG = """
+            {
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
+            }
+            """;
     private static final String LEGACY_SEK1_CLUSTER_ID = "86e86a3b-740b-44aa-b3ab-68cd3ee25def";
     private static final String CANONICAL_SEK1_CLUSTER_ID = "5c6b7342-0f67-4b4c-894d-fd83a6df64b3";
     private static final String LEGACY_SEK1_MAPPINGS_ID = "4261f57b-13c9-4733-a0dc-72f2dcd4726d";
@@ -206,6 +211,7 @@ class LearnerServiceCanonicalProjectionTest {
     void canonicalPilotLearnerStateUsesProjectedMasteryWithoutLegacyLeakage() {
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new Mastery(learner, LEGACY_FUNCTION_CONCEPT_ID, 1.0)));
+        learner.setPersonalCurriculum(CANONICAL_MATH_GK_PERSONAL_CONFIG);
 
         UnifiedLearnerStateResponse state = learnerService.getLearnerState(LEARNER_ID);
 

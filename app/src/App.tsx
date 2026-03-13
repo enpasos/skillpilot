@@ -461,6 +461,8 @@ const App: React.FC = () => {
             rootLandscapeId={core.selectedLandscapeId}
             onRefresh={core.refreshMastery}
             parentMap={core.parentMapAll}
+            onLandscapeChange={core.setSelectedLandscapeId}
+            onLandscapeGoalChange={core.handleNavigateToExternal}
           />
         }
       />

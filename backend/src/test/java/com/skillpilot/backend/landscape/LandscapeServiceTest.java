@@ -104,14 +104,16 @@ class LandscapeServiceTest {
                 LearningLandscape pilot = landscapeService.getById(CANONICAL_MATH_PILOT_ID);
 
                 assertThat(pilot).isNotNull();
-                assertThat(pilot.getTitle()).isEqualTo("Kanonischer Mathematik-Pilot (Gymnasium, DE)");
+                assertThat(pilot.getTitle()).isEqualTo("Kanonische Mathematik (Gymnasium, DE)");
                 assertThat(pilot.getGoals()).isNotEmpty();
                 assertThat(pilot.getGoals())
                                 .extracting(LearningGoal::getTitle)
                                 .contains(
-                                                "Funktionsgrundlagen (Sek I, Pilot)",
+                                                "Funktionsgrundlagen (Sek I)",
                                                 "Lineare Funktionen rechnerisch untersuchen",
-                                                "Scheitelpunkte quadratischer Funktionen bestimmen");
+                                                "Scheitelpunkte quadratischer Funktionen bestimmen",
+                                                "Q3 Stochastik",
+                                                "Prozessbezogene Kompetenzen (K)");
                 assertThat(pilot.getFilters())
                                 .extracting(LandscapeFilter::getId)
                                 .containsExactly("GK", "LK");
@@ -127,23 +129,19 @@ class LandscapeServiceTest {
                 LearningLandscape pilot = landscapeService.getById(CANONICAL_PHYSICS_PILOT_ID);
 
                 assertThat(pilot).isNotNull();
-                assertThat(pilot.getTitle()).isEqualTo("Kanonischer Physik-Pilot (Gymnasium, DE)");
+                assertThat(pilot.getTitle()).isEqualTo("Kanonische Physik (Gymnasium, DE)");
                 assertThat(pilot.getGoals()).isNotEmpty();
                 assertThat(pilot.getGoals())
                                 .extracting(LearningGoal::getTitle)
                                 .contains(
-                                                "Bewegungen, freier Fall und Modellierung",
-                                                "Bewegungen in Diagrammen darstellen und interpretieren",
-                                                "Reaktions- und Bremswege physikalisch bewerten",
-                                                "Waagerechter Wurf und Superposition",
-                                                "Bezugssysteme waehlen und Superpositionsprinzip erklaeren",
-                                                "Waagerechten Wurf als Ueberlagerung analysieren",
-                                                "Newtonsche Axiome und Erhaltungssaetze",
-                                                "Newtonsche Axiome und Inertialsysteme",
-                                                "Grundgleichung der Mechanik anwenden",
+                                                "Methode: Messunsicherheit und Fehleranalyse",
+                                                "Einfuehrungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+                                                "Bewegungen mit Diagrammen untersuchen",
+                                                "Newtons Axiome und Inertialsysteme",
                                                 "Erhaltungssaetze",
-                                                "Einfache Stossvorgaenge mit Impuls- und Energieerhaltung analysieren",
-                                                "Kraftstoss und Impulsaenderung verknuepfen");
+                                                "Q4 Struktur von Materie, Raum und Zeit",
+                                                "Abiturpruefung Physik (GK)",
+                                                "Abiturpruefung Physik (LK)");
                 assertThat(pilot.getFilters())
                                 .extracting(LandscapeFilter::getId)
                                 .containsExactly("GK", "LK");
