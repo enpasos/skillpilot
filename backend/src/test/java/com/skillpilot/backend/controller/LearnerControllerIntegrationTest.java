@@ -257,7 +257,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(response.champion().curriculumId()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(response.champion().topicId()).isEqualTo(CANONICAL_MATH_ROOT_ID);
         assertThat(response.champion().masteredCount()).isEqualTo(2);
-        assertThat(response.champion().totalTopicGoals()).isGreaterThan(2);
+        assertThat(response.champion().totalTopicGoals()).isEqualTo(361);
 
         var snapshot = curriculaService.getSnapshot();
         var curriculum = snapshot.curricula().stream()
@@ -268,6 +268,7 @@ public class LearnerControllerIntegrationTest {
                 .anySatisfy(champion -> {
                     assertThat(champion.topicId()).isEqualTo(CANONICAL_MATH_ROOT_ID);
                     assertThat(champion.masteredCount()).isEqualTo(2);
+                    assertThat(champion.totalTopicGoals()).isEqualTo(361);
                 });
     }
 
@@ -320,6 +321,31 @@ public class LearnerControllerIntegrationTest {
 
         assertThat(response.champion().masteredCount()).isEqualTo(2);
         assertThat(response.champion().totalTopicGoals()).isGreaterThan(2);
+    }
+
+    @Test
+    void registerChampionKeepsLegacyEquivalentPhysicsTotalsForHessenView() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-HE"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "GK"}
+                }
+                """);
+        learnerRepository.save(learner);
+
+        masteryRepository.save(new Mastery(learner, LEGACY_PHYSICS_DIAGRAMS_ID, 1.0));
+
+        var response = curriculaService.registerChampion(
+                new ChampionRegistrationRequest(
+                        CANONICAL_GYMNASIUM_ROOT_ID,
+                        learnerId,
+                        "enpasos",
+                        CANONICAL_PHYSICS_ROOT_ID));
+
+        assertThat(response.champion().masteredCount()).isEqualTo(1);
+        assertThat(response.champion().totalTopicGoals()).isEqualTo(308);
     }
 
     @Test

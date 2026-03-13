@@ -1,5 +1,7 @@
 package com.skillpilot.backend.service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.ChampionRegistrationRequest;
 import com.skillpilot.backend.api.ChampionRegistrationResponse;
 import com.skillpilot.backend.api.CurriculaSnapshot;
@@ -25,6 +27,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
@@ -41,6 +44,7 @@ public class CurriculaService {
 
     private static final Logger log = LoggerFactory.getLogger(CurriculaService.class);
     private static final double MASTERY_THRESHOLD = 0.9;
+    private static final String DE_HE_FILTER_ID = "DE-HE";
     private static final Pattern GITHUB_ID_PATTERN = Pattern.compile("^[A-Za-z0-9-]{1,39}$");
     private static final Pattern WHY_TOPIC_PATTERN = Pattern.compile("^\\s*(warum|why)\\b.*",
             Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
@@ -51,6 +55,7 @@ public class CurriculaService {
     private final CurriculumChampionRepository championRepository;
     private final GitHubStatsService githubStatsService;
     private final LearnerService learnerService;
+    private final ObjectMapper objectMapper;
 
     private final AtomicReference<CurriculaMetricsSnapshot> metricsSnapshot = new AtomicReference<>(
             new CurriculaMetricsSnapshot(Collections.emptyMap(), Collections.emptyMap(), null, Instant.now()));
@@ -61,13 +66,15 @@ public class CurriculaService {
             LearnerRepository learnerRepository,
             CurriculumChampionRepository championRepository,
             GitHubStatsService githubStatsService,
-            LearnerService learnerService) {
+            LearnerService learnerService,
+            ObjectMapper objectMapper) {
         this.landscapeService = landscapeService;
         this.masteryRepository = masteryRepository;
         this.learnerRepository = learnerRepository;
         this.championRepository = championRepository;
         this.githubStatsService = githubStatsService;
         this.learnerService = learnerService;
+        this.objectMapper = objectMapper;
     }
 
     @PostConstruct
@@ -427,11 +434,20 @@ public class CurriculaService {
                 && curriculumId.equals(learner.getSelectedCurriculum())
                 && learner.getPersonalCurriculum() != null
                 && !learner.getPersonalCurriculum().isBlank()) {
+            String rootFilterId = resolveRootFilterId(curriculumId, learner.getPersonalCurriculum());
             Set<String> filteredAtomicIds = learnerService.getFilteredAtomicGoalIds(
                     curriculumId,
                     learner.getPersonalCurriculum(),
                     topicId,
                     true);
+            if (topicId != null
+                    && DE_HE_FILTER_ID.equals(rootFilterId)
+                    && isCanonicalGymnasiumLandscape(curriculumId)) {
+                Set<String> legacyEquivalentAtomicIds = resolveHessenEquivalentCanonicalAtomicIds(topicId, filteredAtomicIds);
+                if (!legacyEquivalentAtomicIds.isEmpty()) {
+                    return legacyEquivalentAtomicIds;
+                }
+            }
             if (!filteredAtomicIds.isEmpty() || topicId != null) {
                 return filteredAtomicIds;
             }
@@ -463,6 +479,79 @@ public class CurriculaService {
             }
         }
         return atomicIds;
+    }
+
+    private boolean isCanonicalGymnasiumLandscape(String curriculumId) {
+        LearningLandscape landscape = landscapeService.getById(curriculumId);
+        if (landscape == null) {
+            return false;
+        }
+        String frameworkId = landscape.getFrameworkId();
+        return frameworkId != null && frameworkId.startsWith("canonical-gymnasium");
+    }
+
+    private String resolveRootFilterId(String curriculumId, String personalCurriculumJson) {
+        if (curriculumId == null || curriculumId.isBlank() || personalCurriculumJson == null || personalCurriculumJson.isBlank()) {
+            return null;
+        }
+        try {
+            Map<String, Map<String, Object>> config = objectMapper.readValue(personalCurriculumJson, new TypeReference<>() {
+            });
+            if (config == null) {
+                return null;
+            }
+            Map<String, Object> rootConfig = config.get(curriculumId);
+            if (rootConfig == null) {
+                return null;
+            }
+            Object filterId = rootConfig.get("filterId");
+            return filterId instanceof String ? normalize((String) filterId) : null;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private Set<String> resolveHessenEquivalentCanonicalAtomicIds(String topicId, Set<String> filteredAtomicIds) {
+        if (topicId == null || topicId.isBlank() || filteredAtomicIds == null || filteredAtomicIds.isEmpty()) {
+            return Collections.emptySet();
+        }
+        LearningGoal topicGoal = landscapeService.getGoalDefinition(topicId);
+        String sourceLandscapeId = extractProvenanceValue(topicGoal, "sourceLandscapeId");
+        String sourceGoalId = extractProvenanceValue(topicGoal, "sourceGoalId");
+        if (sourceLandscapeId == null || sourceGoalId == null) {
+            return Collections.emptySet();
+        }
+
+        Set<String> legacyAtomicIds = collectAtomicGoalIds(sourceGoalId);
+        if (legacyAtomicIds.isEmpty()) {
+            return Collections.emptySet();
+        }
+
+        Set<String> equivalentAtomicIds = new LinkedHashSet<>();
+        for (String atomicId : filteredAtomicIds) {
+            LearningGoal atomicGoal = landscapeService.getGoalDefinition(atomicId);
+            if (atomicGoal == null) {
+                continue;
+            }
+            String atomicSourceLandscapeId = extractProvenanceValue(atomicGoal, "sourceLandscapeId");
+            String atomicSourceGoalId = extractProvenanceValue(atomicGoal, "sourceGoalId");
+            if (sourceLandscapeId.equals(atomicSourceLandscapeId) && legacyAtomicIds.contains(atomicSourceGoalId)) {
+                equivalentAtomicIds.add(atomicId);
+            }
+        }
+        return equivalentAtomicIds;
+    }
+
+    private String extractProvenanceValue(LearningGoal goal, String key) {
+        if (goal == null || goal.getExtendedData() == null) {
+            return null;
+        }
+        Object provenanceObj = goal.getExtendedData().get("provenance");
+        if (!(provenanceObj instanceof Map<?, ?> provenance)) {
+            return null;
+        }
+        Object value = provenance.get(key);
+        return value instanceof String stringValue && !stringValue.isBlank() ? stringValue : null;
     }
 
     private long countMasteredAtomicIds(Set<String> atomicIds, Map<String, MasteryEntryDTO> masteryEntries) {
