@@ -28,6 +28,7 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -88,6 +89,9 @@ public class LearnerService {
             "B2",
             "C1",
             "C2");
+
+    private static final Set<String> COURSE_FILTER_IDS = Set.of("GK", "LK");
+    private static final Set<String> STATE_FILTER_IDS = Set.of("ALL", "DE-HE", "DE-BY");
 
     @Value("${skillpilot.security.signing-secret}")
     private String signingSecret;
@@ -1967,6 +1971,19 @@ public class LearnerService {
             }
         }
 
+        String rootFilterId = null;
+        if (!config.isEmpty()) {
+            Map<String, Object> rootConfig = config.get(curriculumId);
+            if (rootConfig != null) {
+                Object rootFilterObj = rootConfig.get("filterId");
+                if (rootFilterObj instanceof String) {
+                    rootFilterId = normalizeFilterId((String) rootFilterObj);
+                }
+            }
+        }
+
+        Map<String, Set<String>> mappedCanonicalGoalIdsByState = new HashMap<>();
+        Map<String, Boolean> canonicalStateCoverageCache = new HashMap<>();
         Map<String, LearningGoal> allGoals = new HashMap<>();
         for (LearningLandscape l : closure) {
             // Filter by landscape selection
@@ -1983,7 +2000,7 @@ public class LearnerService {
                     }
                     Object filterObj = landscapeConfig.get("filterId");
                     if (filterObj instanceof String) {
-                        filterId = (String) filterObj;
+                        filterId = normalizeFilterId((String) filterObj);
                     }
                 } else {
                     // If config exists but this landscape is not in it, assume not selected (unless
@@ -2006,24 +2023,218 @@ public class LearnerService {
                 continue;
             }
 
+            List<String> effectiveFilterIds = new ArrayList<>();
+            if (filterId != null && !filterId.isBlank()) {
+                effectiveFilterIds.add(filterId);
+            }
+            if (rootFilterId != null && !rootFilterId.isBlank() && !l.getLandscapeId().equals(curriculumId)
+                    && !effectiveFilterIds.contains(rootFilterId)) {
+                effectiveFilterIds.add(rootFilterId);
+            }
+
             if (l.getGoals() != null) {
                 for (LearningGoal g : l.getGoals()) {
-                    // Filter by tag if filterId is set
-                    if (filterId != null && !filterId.isBlank()) {
-                        boolean tagMatch = false;
-                        if (g.getTags() == null || g.getTags().isEmpty() || g.getTags().contains(filterId)) {
-                            tagMatch = true;
-                        }
-                        // Also check dimension tags if needed, but simple tags for now
-                        if (!tagMatch) {
-                            continue;
-                        }
+                    if (!matchesAllEffectiveFilters(g, l, effectiveFilterIds, mappedCanonicalGoalIdsByState,
+                            canonicalStateCoverageCache)) {
+                        continue;
                     }
                     allGoals.put(g.getId(), g);
                 }
             }
         }
         return allGoals;
+    }
+
+    private boolean matchesAllEffectiveFilters(LearningGoal goal, LearningLandscape landscape, List<String> effectiveFilterIds,
+            Map<String, Set<String>> mappedCanonicalGoalIdsByState, Map<String, Boolean> canonicalStateCoverageCache) {
+        if (effectiveFilterIds == null || effectiveFilterIds.isEmpty()) {
+            return true;
+        }
+        for (String filterId : effectiveFilterIds) {
+            if (!matchesFilter(goal, landscape, filterId, mappedCanonicalGoalIdsByState, canonicalStateCoverageCache)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean matchesFilter(LearningGoal goal, LearningLandscape landscape, String filterId,
+            Map<String, Set<String>> mappedCanonicalGoalIdsByState, Map<String, Boolean> canonicalStateCoverageCache) {
+        String normalizedFilterId = normalizeFilterId(filterId);
+        if (normalizedFilterId == null || normalizedFilterId.isBlank()) {
+            return true;
+        }
+        if ("ALL".equals(normalizedFilterId)) {
+            return true;
+        }
+        if (COURSE_FILTER_IDS.contains(normalizedFilterId)) {
+            return matchesCourseFilter(goal, normalizedFilterId);
+        }
+        if (STATE_FILTER_IDS.contains(normalizedFilterId)) {
+            return matchesStateFilter(goal, landscape, normalizedFilterId, mappedCanonicalGoalIdsByState,
+                    canonicalStateCoverageCache);
+        }
+        return matchesTagFilter(goal, normalizedFilterId);
+    }
+
+    private boolean matchesCourseFilter(LearningGoal goal, String filterId) {
+        List<String> tags = goal.getTags();
+        if (tags == null || tags.isEmpty()) {
+            return true;
+        }
+        if (tags.contains(filterId)) {
+            return true;
+        }
+        String releaseCourseLevel = goal.getRelease() != null ? normalizeFilterId(goal.getRelease().getCourseLevel()) : null;
+        if (filterId.equals(releaseCourseLevel)) {
+            return true;
+        }
+        boolean hasExplicitCourseRestriction = tags.contains("GK") || tags.contains("LK")
+                || (releaseCourseLevel != null && !releaseCourseLevel.isBlank());
+        return !hasExplicitCourseRestriction;
+    }
+
+    private boolean matchesStateFilter(LearningGoal goal, LearningLandscape landscape, String filterId,
+            Map<String, Set<String>> mappedCanonicalGoalIdsByState, Map<String, Boolean> canonicalStateCoverageCache) {
+        if (isCanonicalGymnasiumLandscape(landscape)) {
+            return hasCanonicalStateCoverage(goal.getId(), filterId, mappedCanonicalGoalIdsByState,
+                    canonicalStateCoverageCache, new HashSet<>());
+        }
+        String landscapeState = normalizeBundeslandCode(landscape);
+        if (landscapeState != null) {
+            return landscapeState.equals(filterId);
+        }
+        return matchesTagFilter(goal, filterId);
+    }
+
+    private boolean hasCanonicalStateCoverage(String goalId, String stateFilterId,
+            Map<String, Set<String>> mappedCanonicalGoalIdsByState,
+            Map<String, Boolean> canonicalStateCoverageCache,
+            Set<String> visitedGoalIds) {
+        if (goalId == null || goalId.isBlank() || !visitedGoalIds.add(goalId)) {
+            return false;
+        }
+
+        String cacheKey = stateFilterId + "::" + goalId;
+        Boolean cached = canonicalStateCoverageCache.get(cacheKey);
+        if (cached != null) {
+            return cached;
+        }
+
+        LearningGoal goal = landscapeService.getGoalDefinition(goalId);
+        if (goal == null) {
+            canonicalStateCoverageCache.put(cacheKey, false);
+            return false;
+        }
+
+        boolean covered = hasStateProvenance(goal, stateFilterId)
+                || getMappedCanonicalGoalIdsForState(stateFilterId, mappedCanonicalGoalIdsByState).contains(goalId);
+
+        if (!covered && goal.getContains() != null) {
+            for (String childId : goal.getContains()) {
+                if (hasCanonicalStateCoverage(childId, stateFilterId, mappedCanonicalGoalIdsByState,
+                        canonicalStateCoverageCache, visitedGoalIds)) {
+                    covered = true;
+                    break;
+                }
+            }
+        }
+
+        canonicalStateCoverageCache.put(cacheKey, covered);
+        return covered;
+    }
+
+    private boolean hasStateProvenance(LearningGoal goal, String stateFilterId) {
+        Map<String, Object> extendedData = goal.getExtendedData();
+        if (extendedData == null || extendedData.isEmpty()) {
+            return false;
+        }
+        Object provenanceObj = extendedData.get("provenance");
+        if (!(provenanceObj instanceof Map<?, ?> provenance)) {
+            return false;
+        }
+
+        List<String> referencedLandscapeIds = new ArrayList<>();
+        collectLandscapeIdsFromProvenanceValue(provenance.get("sourceLandscapeId"), referencedLandscapeIds);
+        collectLandscapeIdsFromProvenanceValue(provenance.get("additionalSourceLandscapeIds"), referencedLandscapeIds);
+        collectLandscapeIdsFromProvenanceValue(provenance.get("crossSubjectPrerequisiteLandscapeIds"),
+                referencedLandscapeIds);
+
+        for (String landscapeId : referencedLandscapeIds) {
+            LearningLandscape sourceLandscape = landscapeService.getById(landscapeId);
+            if (stateFilterId.equals(normalizeBundeslandCode(sourceLandscape))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void collectLandscapeIdsFromProvenanceValue(Object value, List<String> target) {
+        if (value instanceof String text) {
+            if (!text.isBlank()) {
+                target.add(text);
+            }
+            return;
+        }
+        if (value instanceof List<?> list) {
+            for (Object item : list) {
+                if (item instanceof String text && !text.isBlank()) {
+                    target.add(text);
+                }
+            }
+        }
+    }
+
+    private Set<String> getMappedCanonicalGoalIdsForState(String stateFilterId,
+            Map<String, Set<String>> mappedCanonicalGoalIdsByState) {
+        return mappedCanonicalGoalIdsByState.computeIfAbsent(stateFilterId, key -> goalMappingService.getAllMappings().stream()
+                .filter(mapping -> key.equals(normalizeBundeslandCode(landscapeService.getById(mapping.sourceLandscapeId()))))
+                .map(ResolvedGoalMapping::canonicalGoalId)
+                .collect(Collectors.toSet()));
+    }
+
+    private boolean isCanonicalGymnasiumLandscape(LearningLandscape landscape) {
+        if (landscape == null) {
+            return false;
+        }
+        String frameworkId = landscape.getFrameworkId();
+        return frameworkId != null && frameworkId.startsWith("canonical-gymnasium");
+    }
+
+    private boolean matchesTagFilter(LearningGoal goal, String filterId) {
+        List<String> tags = goal.getTags();
+        return tags == null || tags.isEmpty() || tags.contains(filterId);
+    }
+
+    private String normalizeBundeslandCode(LearningLandscape landscape) {
+        if (landscape == null) {
+            return null;
+        }
+        return normalizeBundeslandCode(landscape.getRegion());
+    }
+
+    private String normalizeBundeslandCode(String region) {
+        if (region == null || region.isBlank()) {
+            return null;
+        }
+        String normalized = region.trim().toUpperCase(Locale.ROOT);
+        return switch (normalized) {
+            case "HE", "HES" -> "DE-HE";
+            case "BY", "BAY" -> "DE-BY";
+            default -> null;
+        };
+    }
+
+    private String normalizeFilterId(String filterId) {
+        if (filterId == null || filterId.isBlank()) {
+            return null;
+        }
+        String normalized = filterId.trim().toUpperCase(Locale.ROOT);
+        return switch (normalized) {
+            case "HE", "HES", "DE-HES" -> "DE-HE";
+            case "BY", "BAY", "DE-BAY" -> "DE-BY";
+            default -> normalized;
+        };
     }
 
     // Package-private for testing

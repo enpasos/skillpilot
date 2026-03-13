@@ -1,0 +1,96 @@
+{
+  "landscapeId": "a0e13c56-c25f-4742-9272-3a1a603ee52e",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "DEU",
+  "schoolType": "Gymnasium",
+  "subject": "Gymnasium (Deutschland)",
+  "frameworkId": "canonical-gymnasium-overview",
+  "title": "Gymnasium (DE)",
+  "titleEn": "Gymnasium (DE)",
+  "description": "Kanonische Uebersicht fuer das Gymnasium in Deutschland. Die aktuelle Pilotstufe verbindet Mathematik und Physik unter einem gemeinsamen Root und erlaubt globale Bundesland-Filter fuer Hessen, Bayern oder die gemeinsame Sicht.",
+  "descriptionEn": "Canonical overview for Gymnasium in Germany. The current pilot stage combines mathematics and physics under one shared root and allows global state filters for Hesse, Bavaria, or the combined view.",
+  "filters": [
+    {
+      "id": "ALL",
+      "label": "Alle Bundeslaender"
+    },
+    {
+      "id": "DE-HE",
+      "label": "Hessen"
+    },
+    {
+      "id": "DE-BY",
+      "label": "Bayern"
+    }
+  ],
+  "goals": [
+    {
+      "id": "5449a3c2-3b9f-475c-acea-ba5fed25ec52",
+      "shortKey": "canonical_gymnasium_overview_root",
+      "title": "Gymnasium (DE)",
+      "titleEn": "Gymnasium (DE)",
+      "description": "Gemeinsame Wurzel fuer die kanonischen Gymnasium-Piloten. Die lernende Person kann Mathematik und Physik als abgestimmte Faecherlandschaft waehlen und je nach Ziel zwischen bundeslandgemeinsamer oder bundeslandspezifischer Sicht wechseln.",
+      "descriptionEn": "Shared root for the canonical Gymnasium pilots. The learner can choose mathematics and physics as a coordinated subject landscape and switch between cross-state and state-specific views depending on the goal.",
+      "core": true,
+      "weight": 55,
+      "tags": [
+        "root",
+        "canonical",
+        "pilot",
+        "school:Gymnasium"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-overview",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Programm",
+        "area": "Gymnasium",
+        "topicCode": "CANONICAL.GYMNASIUM.ROOT"
+      },
+      "contains": [
+        "1c4dedee-e36b-4c54-85fc-122ef0909323",
+        "c01b1ce9-a667-4a46-b251-ec33ae602b15",
+        "bf980fff-b62b-4ea4-a20d-31681a7ad785"
+      ],
+      "requires": [],
+      "sourceRef": "Canonical DE-level umbrella over the current mathematics and physics pilots",
+      "extendedData": {
+        "pilot": true
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "1c4dedee-e36b-4c54-85fc-122ef0909323",
+      "shortKey": "canonical_gymnasium_overview_why",
+      "title": "Warum Gymnasium gemeinsam denken? - Faecher, Voraussetzungen & Wege",
+      "titleEn": "Why think Gymnasium jointly? - Subjects, prerequisites & pathways",
+      "description": "Der Big-Picture-Einstieg: Die lernende Person kann erlaeutern, warum Mathematik und Physik im Gymnasium nicht isoliert gelernt werden sollten, wie bundeslandspezifische Pfade auf einen gemeinsamen Kompetenzkern zulaufen und wann eine gemeinsame oder eine bundeslandspezifische Sicht sinnvoll ist.",
+      "descriptionEn": "The big-picture entry: The learner can explain why mathematics and physics at Gymnasium should not be learned in isolation, how state-specific pathways converge on a shared competence core, and when a shared or state-specific view is useful.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot",
+        "Motivation",
+        "Orientation"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-overview",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Programm",
+        "area": "Gymnasium",
+        "topicCode": "CANONICAL.GYMNASIUM.WHY"
+      },
+      "contains": [],
+      "requires": [],
+      "extendedData": {
+        "pilot": true
+      },
+      "type": "atomic"
+    }
+  ]
+}

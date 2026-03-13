@@ -43,10 +43,19 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     onPreferencesChange,
 }) => {
     const computedInitial = React.useMemo(() => {
-        if (Object.keys(initialConfig).length > 0) return initialConfig
         const initial: PersonalCurriculumConfig = {}
         availableLandscapes.forEach((l) => {
-            initial[l.landscapeId] = { selected: true }
+            const existing = initialConfig[l.landscapeId]
+            const defaultFilterId = l.filters && l.filters.length > 0 ? l.filters[0].id : undefined
+            initial[l.landscapeId] = {
+                selected: existing?.selected ?? true,
+                ...(existing?.filterId ? { filterId: existing.filterId } : defaultFilterId ? { filterId: defaultFilterId } : {})
+            }
+        })
+        Object.entries(initialConfig).forEach(([landscapeId, value]) => {
+            if (!initial[landscapeId]) {
+                initial[landscapeId] = value
+            }
         })
         return initial
     }, [availableLandscapes, initialConfig])
@@ -158,7 +167,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         const isSelected = config[landscape.landscapeId]?.selected ?? false
         const currentFilter = config[landscape.landscapeId]?.filterId ?? ''
         const hasFilters = landscape.filters && landscape.filters.length > 0
-        const showFilterControls = Boolean(hasFilters && (!isRoot || !rootLandscape))
+        const showFilterControls = Boolean(hasFilters)
         const isExpandable = isRoot || showFilterControls
         const isExpanded = isRoot || expanded.has(landscape.landscapeId) || currentFilter.length > 0
 
@@ -191,7 +200,12 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 </div>
 
                 {showFilterControls && isExpanded && (
-                    <div className="ml-11 flex flex-col gap-1 mt-1 mb-2 border-l-2 border-border-color pl-2">
+                    <div className={`${isRoot ? 'ml-11 mt-2 mb-3 flex flex-col gap-1 rounded-lg border border-border-color bg-input-bg/40 p-3' : 'ml-11 flex flex-col gap-1 mt-1 mb-2 border-l-2 border-border-color pl-2'}`}>
+                        {isRoot && (
+                            <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">
+                                Bundesland
+                            </div>
+                        )}
                         {landscape.filters!.map(f => (
                             <label
                                 key={f.id}
@@ -214,7 +228,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 
                 {/* Render Children if this is Root */}
                 {isRoot && (
-                    <div className="ml-6 border-l border-border-color pl-2 mt-1">
+                    <div className="mt-3 grid gap-3 md:grid-cols-2">
                         {childrenLandscapes.map(child => renderNode(child, false))}
                     </div>
                 )}
