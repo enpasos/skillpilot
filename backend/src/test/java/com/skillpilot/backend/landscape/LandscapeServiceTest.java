@@ -106,7 +106,7 @@ class LandscapeServiceTest {
                 LearningLandscape pilot = landscapeService.getById(CANONICAL_MATH_PILOT_ID);
 
                 assertThat(pilot).isNotNull();
-                assertThat(pilot.getTitle()).isEqualTo("Kanonische Mathematik (Gymnasium, DE)");
+                assertThat(pilot.getTitle()).isEqualTo("Mathematik (Gymnasium, DE)");
                 assertThat(pilot.getGoals()).isNotEmpty();
                 assertThat(pilot.getGoals())
                                 .extracting(LearningGoal::getTitle)
@@ -131,7 +131,7 @@ class LandscapeServiceTest {
                 LearningLandscape pilot = landscapeService.getById(CANONICAL_PHYSICS_PILOT_ID);
 
                 assertThat(pilot).isNotNull();
-                assertThat(pilot.getTitle()).isEqualTo("Kanonische Physik (Gymnasium, DE)");
+                assertThat(pilot.getTitle()).isEqualTo("Physik (Gymnasium, DE)");
                 assertThat(pilot.getGoals()).isNotEmpty();
                 assertThat(pilot.getGoals())
                                 .extracting(LearningGoal::getTitle)
