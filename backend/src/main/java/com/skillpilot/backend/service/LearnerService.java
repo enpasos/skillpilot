@@ -2745,7 +2745,33 @@ public class LearnerService {
         return landscapeService.getOverview().getSummaries();
     }
 
+    @Transactional(readOnly = true)
+    public Set<String> getFilteredAtomicGoalIds(
+            String curriculumId,
+            String personalCurriculumJson,
+            String topicId,
+            boolean ignoreCourseFilters) {
+        Map<String, LearningGoal> filteredGoals = getFilteredGoals(curriculumId, personalCurriculumJson, ignoreCourseFilters);
+        if (filteredGoals.isEmpty()) {
+            return Collections.emptySet();
+        }
+        if (topicId == null || topicId.isBlank()) {
+            return filteredGoals.values().stream()
+                    .filter(goal -> goal.getContains() == null || goal.getContains().isEmpty())
+                    .map(LearningGoal::getId)
+                    .collect(Collectors.toCollection(LinkedHashSet::new));
+        }
+        Set<String> atomicIds = new LinkedHashSet<>();
+        collectVisibleAtomicGoalIds(topicId, filteredGoals, atomicIds, new HashSet<>());
+        return atomicIds;
+    }
+
     private Map<String, LearningGoal> getFilteredGoals(String curriculumId, String personalCurriculumJson) {
+        return getFilteredGoals(curriculumId, personalCurriculumJson, false);
+    }
+
+    private Map<String, LearningGoal> getFilteredGoals(String curriculumId, String personalCurriculumJson,
+            boolean ignoreCourseFilters) {
         List<LearningLandscape> closure = landscapeService.getClosure(curriculumId);
         LearningLandscape root = landscapeService.getById(curriculumId);
         if (root != null && closure.stream().noneMatch(l -> l.getLandscapeId().equals(root.getLandscapeId()))) {
@@ -2831,7 +2857,7 @@ public class LearnerService {
 
             if (l.getGoals() != null) {
                 for (LearningGoal g : l.getGoals()) {
-                    if (!matchesAllEffectiveFilters(g, l, effectiveFilterIds, mappedCanonicalGoalIdsByState,
+                    if (!matchesAllEffectiveFilters(g, l, effectiveFilterIds, ignoreCourseFilters, mappedCanonicalGoalIdsByState,
                             canonicalStateCoverageCache)) {
                         continue;
                     }
@@ -2843,12 +2869,14 @@ public class LearnerService {
     }
 
     private boolean matchesAllEffectiveFilters(LearningGoal goal, LearningLandscape landscape, List<String> effectiveFilterIds,
+            boolean ignoreCourseFilters,
             Map<String, Set<String>> mappedCanonicalGoalIdsByState, Map<String, Boolean> canonicalStateCoverageCache) {
         if (effectiveFilterIds == null || effectiveFilterIds.isEmpty()) {
             return true;
         }
         for (String filterId : effectiveFilterIds) {
-            if (!matchesFilter(goal, landscape, filterId, mappedCanonicalGoalIdsByState, canonicalStateCoverageCache)) {
+            if (!matchesFilter(goal, landscape, filterId, ignoreCourseFilters, mappedCanonicalGoalIdsByState,
+                    canonicalStateCoverageCache)) {
                 return false;
             }
         }
@@ -2856,6 +2884,7 @@ public class LearnerService {
     }
 
     private boolean matchesFilter(LearningGoal goal, LearningLandscape landscape, String filterId,
+            boolean ignoreCourseFilters,
             Map<String, Set<String>> mappedCanonicalGoalIdsByState, Map<String, Boolean> canonicalStateCoverageCache) {
         String normalizedFilterId = normalizeFilterId(filterId);
         if (normalizedFilterId == null || normalizedFilterId.isBlank()) {
@@ -2865,6 +2894,9 @@ public class LearnerService {
             return true;
         }
         if (COURSE_FILTER_IDS.contains(normalizedFilterId)) {
+            if (ignoreCourseFilters) {
+                return true;
+            }
             return matchesCourseFilter(goal, normalizedFilterId);
         }
         if (STATE_FILTER_IDS.contains(normalizedFilterId)) {
@@ -2872,6 +2904,46 @@ public class LearnerService {
                     canonicalStateCoverageCache);
         }
         return matchesTagFilter(goal, normalizedFilterId);
+    }
+
+    private void collectVisibleAtomicGoalIds(
+            String goalId,
+            Map<String, LearningGoal> filteredGoals,
+            Set<String> atomicIds,
+            Set<String> visiting) {
+        if (goalId == null || goalId.isBlank() || !visiting.add(goalId)) {
+            return;
+        }
+        LearningGoal goal = filteredGoals.get(goalId);
+        if (goal == null) {
+            goal = landscapeService.getGoalDefinition(goalId);
+        }
+        if (goal == null) {
+            visiting.remove(goalId);
+            return;
+        }
+        List<String> contains = goal.getContains();
+        if (contains == null || contains.isEmpty()) {
+            if (filteredGoals.containsKey(goal.getId())) {
+                atomicIds.add(goal.getId());
+            }
+            visiting.remove(goalId);
+            return;
+        }
+        for (String childRef : contains) {
+            String childId = resolveGoalRef(childRef, filteredGoals);
+            if (childId == null) {
+                LearningGoal child = landscapeService.getGoalDefinition(childRef);
+                if (child == null && childRef.contains(":")) {
+                    child = landscapeService.getGoalDefinition(childRef.substring(childRef.indexOf(':') + 1));
+                }
+                childId = child != null ? child.getId() : null;
+            }
+            if (childId != null) {
+                collectVisibleAtomicGoalIds(childId, filteredGoals, atomicIds, visiting);
+            }
+        }
+        visiting.remove(goalId);
     }
 
     private boolean matchesCourseFilter(LearningGoal goal, String filterId) {

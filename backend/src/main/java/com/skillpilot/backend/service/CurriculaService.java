@@ -8,6 +8,7 @@ import com.skillpilot.backend.api.CurriculumOverview;
 import com.skillpilot.backend.api.MasteryEntryDTO;
 import com.skillpilot.backend.api.TopicSummary;
 import com.skillpilot.backend.domain.CurriculumChampion;
+import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
@@ -299,10 +300,12 @@ public class CurriculaService {
             String curriculumId,
             Map<String, Set<String>> goalToRoots,
             Map<String, List<Mastery>> masteryCache) {
+        Learner learner = learnerRepository.findById(champion.getSkillpilotId()).orElse(null);
         long masteredCount = countChampionMastery(
                 curriculumId,
                 champion.getTopicId(),
                 champion.getSkillpilotId(),
+                learner,
                 goalToRoots,
                 masteryCache);
         GitHubStatsService.GitHubStats stats = githubStatsService.getStats(champion.getGithubId());
@@ -321,17 +324,21 @@ public class CurriculaService {
                 topicTitle = goal.getTitle();
                 String candidateEn = goal.getTitleEn();
                 topicTitleEn = (candidateEn != null && !candidateEn.isBlank()) ? candidateEn : topicTitle;
-                Set<String> atomicIds = collectAtomicGoalIds(goal.getId());
-                if (goalToRoots != null && !goalToRoots.isEmpty() && curriculumId != null && !curriculumId.isBlank()) {
-                    atomicIds.removeIf(id -> {
-                        Set<String> roots = goalToRoots.get(id);
-                        return roots == null || !roots.contains(curriculumId);
-                    });
-                }
+                Set<String> atomicIds = resolveChampionAtomicIds(
+                        curriculumId,
+                        goal.getId(),
+                        champion.getSkillpilotId(),
+                        learner,
+                        goalToRoots);
                 totalTopicGoals = atomicIds.size();
             }
         } else {
-            totalTopicGoals = countAtomicGoalsForCurriculum(curriculumId, goalToRoots);
+            totalTopicGoals = resolveChampionAtomicIds(
+                    curriculumId,
+                    null,
+                    champion.getSkillpilotId(),
+                    learner,
+                    goalToRoots).size();
         }
 
         return new CurriculumChampionProfile(
@@ -391,51 +398,71 @@ public class CurriculaService {
             String curriculumId,
             String topicId,
             String skillpilotId,
+            Learner learner,
             Map<String, Set<String>> goalToRoots,
             Map<String, List<Mastery>> masteryCache) {
         if (skillpilotId == null || skillpilotId.isBlank()) {
             return 0;
         }
 
+        Set<String> atomicIds = resolveChampionAtomicIds(curriculumId, topicId, skillpilotId, learner, goalToRoots);
+        if (atomicIds.isEmpty()) {
+            return 0;
+        }
+        Map<String, MasteryEntryDTO> masteryEntries = learnerService.getMasteryProjectedToGoalIds(skillpilotId, atomicIds);
+        return countMasteredAtomicIds(atomicIds, masteryEntries);
+    }
+
+    private Set<String> resolveChampionAtomicIds(
+            String curriculumId,
+            String topicId,
+            String skillpilotId,
+            Learner learner,
+            Map<String, Set<String>> goalToRoots) {
+        if (curriculumId == null || curriculumId.isBlank()) {
+            return Collections.emptySet();
+        }
+
+        if (learner != null
+                && curriculumId.equals(learner.getSelectedCurriculum())
+                && learner.getPersonalCurriculum() != null
+                && !learner.getPersonalCurriculum().isBlank()) {
+            Set<String> filteredAtomicIds = learnerService.getFilteredAtomicGoalIds(
+                    curriculumId,
+                    learner.getPersonalCurriculum(),
+                    topicId,
+                    true);
+            if (!filteredAtomicIds.isEmpty() || topicId != null) {
+                return filteredAtomicIds;
+            }
+        }
+
         if (topicId != null && !topicId.isBlank()) {
             Set<String> atomicIds = collectAtomicGoalIds(topicId);
-            if (atomicIds.isEmpty()) {
-                return 0;
-            }
-            if (goalToRoots != null && !goalToRoots.isEmpty() && curriculumId != null && !curriculumId.isBlank()) {
+            if (goalToRoots != null && !goalToRoots.isEmpty()) {
                 final String finalCurriculumId = curriculumId;
                 atomicIds.removeIf(id -> {
                     Set<String> roots = goalToRoots.get(id);
-                    // Fallback: if cache misses, check reachability dynamically
                     if (roots == null || !roots.contains(finalCurriculumId)) {
                         return !isReachable(finalCurriculumId, id);
                     }
                     return false;
                 });
             }
-            if (atomicIds.isEmpty()) {
-                return 0;
-            }
-            Map<String, MasteryEntryDTO> masteryEntries =
-                    learnerService.getMasteryProjectedToGoalIds(skillpilotId, atomicIds);
-            return countMasteredAtomicIds(atomicIds, masteryEntries);
+            return atomicIds;
         }
 
-        // Curriculum-wide counting (no topicId)
         if (goalToRoots == null || goalToRoots.isEmpty()) {
-            return 0;
+            return Collections.emptySet();
         }
+
         Set<String> atomicIds = new HashSet<>();
         for (Map.Entry<String, Set<String>> entry : goalToRoots.entrySet()) {
             if (entry.getValue().contains(curriculumId)) {
                 atomicIds.add(entry.getKey());
             }
         }
-        if (atomicIds.isEmpty()) {
-            return 0;
-        }
-        Map<String, MasteryEntryDTO> masteryEntries = learnerService.getMasteryProjectedToGoalIds(skillpilotId, atomicIds);
-        return countMasteredAtomicIds(atomicIds, masteryEntries);
+        return atomicIds;
     }
 
     private long countMasteredAtomicIds(Set<String> atomicIds, Map<String, MasteryEntryDTO> masteryEntries) {

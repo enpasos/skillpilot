@@ -652,7 +652,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
     const inferCourseFilter = (landscapeId: string) => {
       const filterId = personalConfig[landscapeId]?.filterId
-      return filterId === 'LK' ? 'Leistungskurs' : 'Grundkurs'
+      if (filterId === 'LK') {
+        return 'Leistungskurs'
+      }
+      if (filterId === 'ALL') {
+        return 'Grund- und Leistungskurs'
+      }
+      return 'Grundkurs'
     }
 
     let mathSelected = selectedCurriculum === '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3'

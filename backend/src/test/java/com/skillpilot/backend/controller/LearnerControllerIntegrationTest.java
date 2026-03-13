@@ -173,6 +173,7 @@ public class LearnerControllerIntegrationTest {
     private static final String LEGACY_MATH_ANALYSIS_CLUSTER_ID = "a6ee6304-8c26-4eda-b56e-676655e703c2";
     private static final String LEGACY_MATH_FUNCTION_CONCEPT_ID = "0903db01-4377-4a79-8f29-aceffea68f24";
     private static final String LEGACY_MATH_READ_VALUES_ID = "cd46ce36-883e-4e68-8bfd-2bbdc0ecce9d";
+    private static final String LEGACY_MATH_LK_PROOF_STRATEGIES_ID = "b3cd4a12-509f-46bb-b077-6d517a7aab76";
     private static final String LEGACY_BAYERN_PHYSICS_MOTION_CLUSTER_ID =
             "6be922a1-e60a-5317-b910-b6fea632f0fb";
     private static final String LEGACY_BAYERN_PHYSICS_HORIZONTAL_THROW_HYPOTHESES_ID =
@@ -268,6 +269,57 @@ public class LearnerControllerIntegrationTest {
                     assertThat(champion.topicId()).isEqualTo(CANONICAL_MATH_ROOT_ID);
                     assertThat(champion.masteredCount()).isEqualTo(2);
                 });
+    }
+
+    @Test
+    void registerChampionRespectsCanonicalStateFilterForProjectedLegacyMastery() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-BY"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
+                }
+                """);
+        learnerRepository.save(learner);
+
+        masteryRepository.save(new Mastery(learner, LEGACY_MATH_LK_PROOF_STRATEGIES_ID, 1.0));
+
+        var response = curriculaService.registerChampion(
+                new ChampionRegistrationRequest(
+                        CANONICAL_GYMNASIUM_ROOT_ID,
+                        learnerId,
+                        "enpasos",
+                        CANONICAL_MATH_ROOT_ID));
+
+        assertThat(response.champion().masteredCount()).isZero();
+    }
+
+    @Test
+    void registerChampionIgnoresGkLkFilterAndCountsBothCourseLevels() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-HE"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
+                }
+                """);
+        learnerRepository.save(learner);
+
+        masteryRepository.saveAll(List.of(
+                new Mastery(learner, LEGACY_MATH_FUNCTION_CONCEPT_ID, 1.0),
+                new Mastery(learner, LEGACY_MATH_LK_PROOF_STRATEGIES_ID, 1.0)));
+
+        var response = curriculaService.registerChampion(
+                new ChampionRegistrationRequest(
+                        CANONICAL_GYMNASIUM_ROOT_ID,
+                        learnerId,
+                        "enpasos",
+                        CANONICAL_MATH_ROOT_ID));
+
+        assertThat(response.champion().masteredCount()).isEqualTo(2);
+        assertThat(response.champion().totalTopicGoals()).isGreaterThan(2);
     }
 
     @Test

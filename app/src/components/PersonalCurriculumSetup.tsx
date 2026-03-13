@@ -26,6 +26,21 @@ const DEFAULT_GYMNASIUM_DE_ROOT_FILTERS = [
     { id: 'DE-BY', label: 'Bayern' },
 ]
 
+const COMBINED_COURSE_FILTER = { id: 'ALL', label: 'Grund- und Leistungskurs' }
+
+const withCombinedCourseFilter = (filters?: { id: string; label: string }[]) => {
+    const effectiveFilters = filters ?? []
+    const hasGk = effectiveFilters.some(filter => filter.id === 'GK')
+    const hasLk = effectiveFilters.some(filter => filter.id === 'LK')
+    const hasAll = effectiveFilters.some(filter => filter.id === 'ALL')
+
+    if (hasGk && hasLk && !hasAll) {
+        return [...effectiveFilters, COMBINED_COURSE_FILTER]
+    }
+
+    return effectiveFilters
+}
+
 const cleanLandscapeDisplayTitle = (title: string) => {
     return title
         .replace(/^Kanonische\s+/i, '')
@@ -220,7 +235,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         const effectiveFilters =
             isRoot && landscape.title === 'Gymnasium (DE)' && (!landscape.filters || landscape.filters.length === 0)
                 ? DEFAULT_GYMNASIUM_DE_ROOT_FILTERS
-                : (landscape.filters ?? [])
+                : withCombinedCourseFilter(landscape.filters)
         const hasFilters = effectiveFilters.length > 0
         const showFilterControls = Boolean(hasFilters)
         const isExpandable = isRoot || showFilterControls
