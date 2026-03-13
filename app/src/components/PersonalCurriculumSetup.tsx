@@ -60,16 +60,35 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         return initial
     }, [availableLandscapes, initialConfig])
 
+    const initialExpanded = React.useMemo(() => {
+        const next = new Set<string>()
+        if (rootLandscapeId) {
+            next.add(rootLandscapeId)
+        }
+        availableLandscapes.forEach((landscape) => {
+            const filterId = computedInitial[landscape.landscapeId]?.filterId
+            if (filterId) {
+                next.add(landscape.landscapeId)
+            }
+        })
+        return next
+    }, [availableLandscapes, computedInitial, rootLandscapeId])
+
     const [config, setConfig] = useState<PersonalCurriculumConfig>(computedInitial)
     const [strategy, setStrategy] = useState<'RANDOM' | 'SEQUENTIAL'>(initialStrategy)
     const [autoPilot, setAutoPilot] = useState<boolean>(initialAutoPilot)
     const [strictMode, setStrictMode] = useState<boolean>(initialStrictMode)
-    const [expanded, setExpanded] = useState<Set<string>>(new Set())
+    const [expanded, setExpanded] = useState<Set<string>>(new Set(initialExpanded))
 
     // Update config when initialConfig changes (e.g. loaded from backend)
     useEffect(() => {
         setConfig(computedInitial)
     }, [computedInitial])
+
+    useEffect(() => {
+        if (!isOpen) return
+        setExpanded(new Set(initialExpanded))
+    }, [isOpen, initialExpanded])
 
     useEffect(() => {
         setStrategy(initialStrategy)
@@ -169,7 +188,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         const hasFilters = landscape.filters && landscape.filters.length > 0
         const showFilterControls = Boolean(hasFilters)
         const isExpandable = isRoot || showFilterControls
-        const isExpanded = isRoot || expanded.has(landscape.landscapeId) || currentFilter.length > 0
+        const isExpanded = expanded.has(landscape.landscapeId)
 
         return (
             <div key={landscape.landscapeId} className="flex flex-col">
