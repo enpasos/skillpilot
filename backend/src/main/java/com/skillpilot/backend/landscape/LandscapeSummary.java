@@ -12,9 +12,15 @@ public class LandscapeSummary {
     private String subject;
     private String locale;
     private List<LandscapeFilter> filters;
+    private boolean compatibilityOnly;
 
     public LandscapeSummary(String curriculumId, String title, String description, String country, String region,
             String type, String subject, String locale, List<LandscapeFilter> filters) {
+        this(curriculumId, title, description, country, region, type, subject, locale, filters, false);
+    }
+
+    public LandscapeSummary(String curriculumId, String title, String description, String country, String region,
+            String type, String subject, String locale, List<LandscapeFilter> filters, boolean compatibilityOnly) {
         this.curriculumId = curriculumId;
         this.title = title;
         this.description = description;
@@ -24,6 +30,7 @@ public class LandscapeSummary {
         this.subject = subject;
         this.locale = locale;
         this.filters = filters;
+        this.compatibilityOnly = compatibilityOnly;
     }
 
     public String getCurriculumId() {
@@ -60,5 +67,9 @@ public class LandscapeSummary {
 
     public String getLocale() {
         return locale;
+    }
+
+    public boolean isCompatibilityOnly() {
+        return compatibilityOnly;
     }
 }

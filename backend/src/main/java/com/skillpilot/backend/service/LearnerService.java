@@ -1133,6 +1133,38 @@ public class LearnerService {
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
     }
 
+    @Transactional(readOnly = true)
+    public void assertWritableLearningSession(String skillpilotId) {
+        Learner learner = getLearner(skillpilotId);
+        if (!isReadOnlyCompatibilitySession(learner)) {
+            return;
+        }
+        throw new ResponseStatusException(
+                org.springframework.http.HttpStatus.CONFLICT,
+                "This compatibility-only learner session is read-only. Use the canonical cutover flow before changing learner state.");
+    }
+
+    @Transactional(readOnly = true)
+    public void assertCompatibilityAuditAccess(String skillpilotId, boolean includeCompatibilityAudit) {
+        Learner learner = getLearner(skillpilotId);
+        if (!isReadOnlyCompatibilitySession(learner) || includeCompatibilityAudit) {
+            return;
+        }
+        throw new ResponseStatusException(
+                org.springframework.http.HttpStatus.CONFLICT,
+                "This compatibility-only learner session is retired as a normal learner route. Use the canonical cutover flow or request includeCompatibilityAudit=true for an explicit audit fallback.");
+    }
+
+    private boolean isReadOnlyCompatibilitySession(Learner learner) {
+        if (learner == null) {
+            return false;
+        }
+        String curriculumId = learner.getSelectedCurriculum();
+        return curriculumId != null
+                && !curriculumId.isBlank()
+                && landscapeService.isCompatibilityOnlyLandscape(curriculumId);
+    }
+
     @Transactional
     public void setCurriculum(String skillpilotId, String curriculumId) {
         if (landscapeService.getById(curriculumId) == null) {
@@ -2113,7 +2145,8 @@ public class LearnerService {
                                 full.getSchoolType(),
                                 full.getSubject(),
                                 full.getLocale(),
-                                full.getFilters()));
+                                full.getFilters(),
+                                landscapeService.isCompatibilityOnlyLandscape(curriculumId)));
             }
         }
 
@@ -2742,12 +2775,22 @@ public class LearnerService {
 
     @Transactional(readOnly = true)
     public List<com.skillpilot.backend.landscape.LandscapeSummary> getAvailableBaseCurricula() {
-        return landscapeService.getBaseCurricula();
+        return getAvailableBaseCurricula(true);
+    }
+
+    @Transactional(readOnly = true)
+    public List<com.skillpilot.backend.landscape.LandscapeSummary> getAvailableBaseCurricula(boolean includeCompatibility) {
+        return landscapeService.getBaseCurricula(includeCompatibility);
     }
 
     @Transactional(readOnly = true)
     public List<com.skillpilot.backend.landscape.LandscapeSummary> getAvailableLandscapes() {
-        return landscapeService.getOverview().getSummaries();
+        return getAvailableLandscapes(true);
+    }
+
+    @Transactional(readOnly = true)
+    public List<com.skillpilot.backend.landscape.LandscapeSummary> getAvailableLandscapes(boolean includeCompatibility) {
+        return landscapeService.getOverview("de", includeCompatibility).getSummaries();
     }
 
     @Transactional
@@ -3212,8 +3255,7 @@ public class LearnerService {
                 referencedLandscapeIds);
 
         for (String landscapeId : referencedLandscapeIds) {
-            LearningLandscape sourceLandscape = landscapeService.getById(landscapeId);
-            if (stateFilterId.equals(normalizeBundeslandCode(sourceLandscape))) {
+            if (stateFilterId.equals(landscapeService.resolveSourceLandscapeJurisdiction(landscapeId))) {
                 return true;
             }
         }
@@ -3239,7 +3281,7 @@ public class LearnerService {
     private Set<String> getMappedCanonicalGoalIdsForState(String stateFilterId,
             Map<String, Set<String>> mappedCanonicalGoalIdsByState) {
         return mappedCanonicalGoalIdsByState.computeIfAbsent(stateFilterId, key -> goalMappingService.getAllMappings().stream()
-                .filter(mapping -> key.equals(normalizeBundeslandCode(landscapeService.getById(mapping.sourceLandscapeId()))))
+                .filter(mapping -> key.equals(landscapeService.resolveSourceLandscapeJurisdiction(mapping.sourceLandscapeId())))
                 .map(ResolvedGoalMapping::canonicalGoalId)
                 .collect(Collectors.toSet()));
     }

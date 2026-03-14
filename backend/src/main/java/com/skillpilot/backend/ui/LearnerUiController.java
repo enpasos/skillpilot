@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.extensions.Extension;
@@ -50,12 +51,15 @@ public class LearnerUiController {
         UnifiedLearnerStateResponse state = learnerService.getLearnerState(learner.getSkillpilotId());
         return new CreateLearnerResponse(
                 state,
-                learnerService.getAvailableLandscapes());
+                learnerService.getAvailableLandscapes(false));
     }
 
     @GetMapping("/{skillpilotId}/state")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
-    public UnifiedLearnerStateResponse getLearnerState(@PathVariable String skillpilotId) {
+    public UnifiedLearnerStateResponse getLearnerState(
+            @PathVariable String skillpilotId,
+            @RequestParam(defaultValue = "false") boolean includeCompatibilityAudit) {
+        learnerService.assertCompatibilityAuditAccess(skillpilotId, includeCompatibilityAudit);
         return learnerService.getLearnerState(skillpilotId);
     }
 
@@ -83,12 +87,14 @@ public class LearnerUiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public ClientStateResponse upsertClientState(@PathVariable String skillpilotId, @PathVariable String nodeId,
             @RequestBody(required = false) ClientStateRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
         return learnerService.upsertClientState(skillpilotId, nodeId, request);
     }
 
     @PostMapping("/{skillpilotId}/scope")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public void setScope(@PathVariable String skillpilotId, @RequestBody ScopeRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
         learnerService.setScope(skillpilotId, request.goalIds());
     }
 
@@ -96,6 +102,7 @@ public class LearnerUiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse setActiveGoal(@PathVariable String skillpilotId,
             @Valid @RequestBody ActiveGoalRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
         learnerService.setActiveGoal(skillpilotId, request.goalId());
         return learnerService.getLearnerState(skillpilotId);
     }
@@ -123,6 +130,7 @@ public class LearnerUiController {
     public PlannedGoalsResponse setPlanned(
             @PathVariable String skillpilotId,
             @Valid @RequestBody PlannedGoalsRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
         return new PlannedGoalsResponse(learnerService.setPlannedGoals(skillpilotId, request.goals()));
     }
 
@@ -135,6 +143,7 @@ public class LearnerUiController {
     @PutMapping("/{skillpilotId}/curriculum")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public void updateCurriculum(@PathVariable String skillpilotId, @RequestBody UpdateCurriculumRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
         learnerService.setCurriculum(skillpilotId, request.getCurriculumId());
     }
 
@@ -150,6 +159,7 @@ public class LearnerUiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public void updatePersonalCurriculum(@PathVariable String skillpilotId,
             @RequestBody UpdatePersonalCurriculumRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
         learnerService.setPersonalCurriculum(skillpilotId, request, null, null);
     }
 

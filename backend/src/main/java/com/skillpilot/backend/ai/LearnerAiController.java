@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import io.swagger.v3.oas.annotations.Operation;
@@ -54,7 +55,7 @@ public class LearnerAiController {
         java.util.List<com.skillpilot.backend.landscape.LandscapeSummary> available = (learner
                 .getSelectedCurriculum() != null && !learner.getSelectedCurriculum().isEmpty())
                         ? java.util.Collections.emptyList()
-                        : learnerService.getAvailableBaseCurricula();
+                        : learnerService.getAvailableBaseCurricula(false);
 
         return new CreateLearnerResponse(
                 state,
@@ -63,7 +64,10 @@ public class LearnerAiController {
 
     @GetMapping("/{skillpilotId}/state")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
-    public UnifiedLearnerStateResponse getLearnerState(@PathVariable String skillpilotId) {
+    public UnifiedLearnerStateResponse getLearnerState(
+            @PathVariable String skillpilotId,
+            @RequestParam(defaultValue = "false") boolean includeCompatibilityAudit) {
+        learnerService.assertCompatibilityAuditAccess(skillpilotId, includeCompatibilityAudit);
         return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
     }
 
@@ -71,6 +75,7 @@ public class LearnerAiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
 
     public UnifiedLearnerStateResponse setScope(@PathVariable String skillpilotId, @RequestBody ScopeRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
         learnerService.setScope(skillpilotId, request.goalIds());
         return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
     }
@@ -79,6 +84,7 @@ public class LearnerAiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse setActiveGoal(@PathVariable String skillpilotId,
             @Valid @RequestBody ActiveGoalRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
         UnifiedLearnerStateResponse state = learnerService.getLearnerState(skillpilotId);
         String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
         boolean redirect = Boolean.TRUE.equals(request.redirect());
@@ -100,6 +106,7 @@ public class LearnerAiController {
     public org.springframework.http.ResponseEntity<?> setMastery(
             @PathVariable String skillpilotId,
             @RequestBody(required = false) MasteryUpdateRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
 
         MasteryUpdateRequest effectiveRequest = request;
 
@@ -179,6 +186,7 @@ public class LearnerAiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse setCurriculum(@PathVariable String skillpilotId,
             @RequestBody UpdateCurriculumRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
         learnerService.setCurriculum(skillpilotId, request.getCurriculumId());
         return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
     }
@@ -188,6 +196,7 @@ public class LearnerAiController {
 
     public UnifiedLearnerStateResponse setPersonalization(@PathVariable String skillpilotId,
             @RequestBody com.skillpilot.backend.api.PersonalizationRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
         learnerService.setPersonalCurriculum(skillpilotId, request.config(), request.goalIds(), request.filters());
         return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
     }

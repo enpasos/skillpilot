@@ -102,8 +102,8 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_INFORMATICS_NETWORKS_ID = "ca07458c-1fc1-5ca1-b226-69f59e2d62d3";
     private static final String CANONICAL_INFORMATICS_TCP_IP_ID = "6539320a-aa0e-59e5-a34a-55f1a8b78337";
     private static final String CANONICAL_HISTORY_E_PHASE_CLUSTER_ID = "abed1f19-6cf8-54a4-aae2-d7691f97c2cf";
-    private static final String CANONICAL_HISTORY_FORMS_OF_RULE_ID = "3537a9c4-d336-5603-baf0-c428a7b20002";
-    private static final String CANONICAL_HISTORY_INTERCULTURAL_ID = "1bd17323-6be0-5391-967b-491a4e6ae43e";
+    private static final String CANONICAL_HISTORY_FORMS_CONTEXT_ID = "6fb3ce2a-8273-5b62-8a46-59f28ed3ad76";
+    private static final String CANONICAL_HISTORY_REVOLUTION_CONTEXT_ID = "c5cb2db1-73ba-59bc-9ca0-c8c8a512b47a";
     private static final String CANONICAL_GERMAN_E_PHASE_CLUSTER_ID = "bbcabb0c-b319-5622-a5b7-a0259f7de255";
     private static final String CANONICAL_GERMAN_GRAMMAR_ID = "abf6d684-791e-5e0d-90bf-3466087dc937";
     private static final String CANONICAL_GERMAN_TEXT_TYPE_ID = "bc28576e-243e-5bff-aca0-872e174d59e5";
@@ -111,6 +111,10 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_ENGLISH_GROWING_UP_ID = "aefe30a8-cb8e-54dc-b1db-da7634f32584";
     private static final String CANONICAL_ENGLISH_TEXT_COMPREHENSION_ID = "4ba50e17-1a1c-5ea3-a615-ceb4229844c9";
     private static final String CANONICAL_ENGLISH_MAKING_A_DIFFERENCE_ID = "aeacdf33-3be6-5a7f-adae-d2b490f81a0a";
+    private static final String CANONICAL_ENGLISH_GROWING_UP_INTERCULTURAL_REFLECTION_ID =
+            "393426c6-88ba-543e-8ea2-314e53fbb04d";
+    private static final String CANONICAL_ENGLISH_MAKING_A_DIFFERENCE_WRITING_MEDIATE_ID =
+            "a9ba9796-5e6e-5a99-8c89-265aed2b6cbc";
     private static final String CANONICAL_FRENCH_ROOT_ID = "3cdb4109-e977-54f3-b662-0800e2f043d3";
     private static final String CANONICAL_FRENCH_READ_FAMILY_ID = "5f0b8adf-e7af-5cdd-a50c-0a721662b54c";
     private static final String CANONICAL_FRENCH_READ_YOUTH_ID = "a39ca386-25f4-53ee-9fb7-f4e787cb218a";
@@ -941,10 +945,10 @@ public class LearnerControllerIntegrationTest {
         assertThat(planned).hasSize(1);
         assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_HISTORY_E_PHASE_CLUSTER_ID);
         assertThat(jsonIds(goalOptions))
-                .contains(CANONICAL_HISTORY_FORMS_OF_RULE_ID, CANONICAL_HISTORY_INTERCULTURAL_ID)
+                .contains(CANONICAL_HISTORY_FORMS_CONTEXT_ID, CANONICAL_HISTORY_REVOLUTION_CONTEXT_ID)
                 .doesNotContain(LEGACY_HISTORY_WHY_ID, LEGACY_HISTORY_E_PHASE_CLUSTER_ID);
         assertThat(jsonIds(frontier))
-                .contains(CANONICAL_HISTORY_FORMS_OF_RULE_ID, CANONICAL_HISTORY_INTERCULTURAL_ID);
+                .contains(CANONICAL_HISTORY_FORMS_CONTEXT_ID, CANONICAL_HISTORY_REVOLUTION_CONTEXT_ID);
 
         assertThat(response.body())
                 .doesNotContain(LEGACY_HISTORY_WHY_ID)
@@ -1041,10 +1045,14 @@ public class LearnerControllerIntegrationTest {
         assertThat(planned).hasSize(1);
         assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_ENGLISH_E_PHASE_CLUSTER_ID);
         assertThat(jsonIds(goalOptions))
-                .contains(CANONICAL_ENGLISH_GROWING_UP_ID, CANONICAL_ENGLISH_MAKING_A_DIFFERENCE_ID)
+                .contains(
+                        CANONICAL_ENGLISH_GROWING_UP_INTERCULTURAL_REFLECTION_ID,
+                        CANONICAL_ENGLISH_MAKING_A_DIFFERENCE_WRITING_MEDIATE_ID)
                 .doesNotContain(LEGACY_ENGLISH_WHY_ID, LEGACY_ENGLISH_E_PHASE_CLUSTER_ID);
         assertThat(jsonIds(frontier))
-                .contains(CANONICAL_ENGLISH_GROWING_UP_ID, CANONICAL_ENGLISH_MAKING_A_DIFFERENCE_ID);
+                .contains(
+                        CANONICAL_ENGLISH_GROWING_UP_INTERCULTURAL_REFLECTION_ID,
+                        CANONICAL_ENGLISH_MAKING_A_DIFFERENCE_WRITING_MEDIATE_ID);
 
         assertThat(response.body())
                 .doesNotContain(LEGACY_ENGLISH_WHY_ID)
@@ -1686,9 +1694,8 @@ public class LearnerControllerIntegrationTest {
         assertThat(jsonIds(goalOptions))
                 .contains(
                         CANONICAL_INFORMATICS_NETWORKS_ID,
-                        CANONICAL_INFORMATICS_TCP_IP_ID,
-                        CANONICAL_HISTORY_FORMS_OF_RULE_ID,
-                        CANONICAL_HISTORY_INTERCULTURAL_ID)
+                        CANONICAL_HISTORY_FORMS_CONTEXT_ID,
+                        CANONICAL_HISTORY_REVOLUTION_CONTEXT_ID)
                 .doesNotContain(
                         LEGACY_INFORMATICS_E_PHASE_CLUSTER_ID,
                         LEGACY_HISTORY_E_PHASE_CLUSTER_ID,
@@ -1697,9 +1704,8 @@ public class LearnerControllerIntegrationTest {
         assertThat(jsonIds(frontier))
                 .contains(
                         CANONICAL_INFORMATICS_NETWORKS_ID,
-                        CANONICAL_INFORMATICS_TCP_IP_ID,
-                        CANONICAL_HISTORY_FORMS_OF_RULE_ID,
-                        CANONICAL_HISTORY_INTERCULTURAL_ID);
+                        CANONICAL_HISTORY_FORMS_CONTEXT_ID,
+                        CANONICAL_HISTORY_REVOLUTION_CONTEXT_ID);
 
         assertThat(response.body())
                 .doesNotContain(LEGACY_INFORMATICS_E_PHASE_CLUSTER_ID)
@@ -1756,8 +1762,8 @@ public class LearnerControllerIntegrationTest {
         assertThat(body.path("stateMachine").path("requiredAction").asText()).isEqualTo("setActiveGoal");
         assertThat(jsonIds(goalOptions))
                 .contains(
-                        CANONICAL_HISTORY_FORMS_OF_RULE_ID,
-                        CANONICAL_HISTORY_INTERCULTURAL_ID,
+                        CANONICAL_HISTORY_FORMS_CONTEXT_ID,
+                        CANONICAL_HISTORY_REVOLUTION_CONTEXT_ID,
                         CANONICAL_GERMAN_GRAMMAR_ID,
                         CANONICAL_GERMAN_TEXT_TYPE_ID)
                 .doesNotContain(
@@ -1767,8 +1773,8 @@ public class LearnerControllerIntegrationTest {
                         LEGACY_GERMAN_WHY_ID);
         assertThat(jsonIds(frontier))
                 .contains(
-                        CANONICAL_HISTORY_FORMS_OF_RULE_ID,
-                        CANONICAL_HISTORY_INTERCULTURAL_ID,
+                        CANONICAL_HISTORY_FORMS_CONTEXT_ID,
+                        CANONICAL_HISTORY_REVOLUTION_CONTEXT_ID,
                         CANONICAL_GERMAN_GRAMMAR_ID,
                         CANONICAL_GERMAN_TEXT_TYPE_ID);
 
@@ -1831,8 +1837,8 @@ public class LearnerControllerIntegrationTest {
                 .contains(
                         CANONICAL_GERMAN_GRAMMAR_ID,
                         CANONICAL_GERMAN_TEXT_TYPE_ID,
-                        CANONICAL_ENGLISH_GROWING_UP_ID,
-                        CANONICAL_ENGLISH_MAKING_A_DIFFERENCE_ID)
+                        CANONICAL_ENGLISH_GROWING_UP_INTERCULTURAL_REFLECTION_ID,
+                        CANONICAL_ENGLISH_MAKING_A_DIFFERENCE_WRITING_MEDIATE_ID)
                 .doesNotContain(
                         LEGACY_GERMAN_E_PHASE_CLUSTER_ID,
                         LEGACY_ENGLISH_E_PHASE_CLUSTER_ID,
@@ -1842,8 +1848,8 @@ public class LearnerControllerIntegrationTest {
                 .contains(
                         CANONICAL_GERMAN_GRAMMAR_ID,
                         CANONICAL_GERMAN_TEXT_TYPE_ID,
-                        CANONICAL_ENGLISH_GROWING_UP_ID,
-                        CANONICAL_ENGLISH_MAKING_A_DIFFERENCE_ID);
+                        CANONICAL_ENGLISH_GROWING_UP_INTERCULTURAL_REFLECTION_ID,
+                        CANONICAL_ENGLISH_MAKING_A_DIFFERENCE_WRITING_MEDIATE_ID);
 
         assertThat(response.body())
                 .doesNotContain(LEGACY_GERMAN_E_PHASE_CLUSTER_ID)
@@ -2395,8 +2401,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(jsonIds(goalOptions))
                 .contains(
                         CANONICAL_POLITICS_ECONOMICS_SOCIETY_SYSTEMS_ID,
-                        CANONICAL_HISTORY_FORMS_OF_RULE_ID,
-                        CANONICAL_HISTORY_INTERCULTURAL_ID)
+                        CANONICAL_HISTORY_REVOLUTION_CONTEXT_ID)
                 .doesNotContain(
                         LEGACY_POLITICS_ECONOMICS_E_PHASE_CLUSTER_ID,
                         LEGACY_HISTORY_E_PHASE_CLUSTER_ID,
@@ -2405,8 +2410,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(jsonIds(frontier))
                 .contains(
                         CANONICAL_POLITICS_ECONOMICS_SOCIETY_SYSTEMS_ID,
-                        CANONICAL_HISTORY_FORMS_OF_RULE_ID,
-                        CANONICAL_HISTORY_INTERCULTURAL_ID);
+                        CANONICAL_HISTORY_REVOLUTION_CONTEXT_ID);
 
         assertThat(response.body())
                 .doesNotContain(LEGACY_POLITICS_ECONOMICS_E_PHASE_CLUSTER_ID)
@@ -2561,6 +2565,173 @@ public class LearnerControllerIntegrationTest {
                 .containsExactly(CANONICAL_PHYSICS_CLUSTER_ID);
     }
 
+    @Test
+    void compatibilitySessionRejectsUiLearningWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-ui-learning");
+        learner.setSelectedCurriculum(HESSEN_GYMNASIUM_UPPER_MATH_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3": {"selected": true, "filterId": "GK"}
+                }
+                """);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> activeGoalResponse = sendJsonRequest(
+                "POST",
+                "/api/ui/learners/readonly-ui-learning/active-goal",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_MATH_FUNCTION_CONCEPT_ID));
+        assertThat(activeGoalResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("readonly-ui-learning").orElseThrow().getActiveGoalId()).isNull();
+
+        HttpResponse<String> plannedResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-ui-learning/planned",
+                """
+                        {
+                          "goals": ["%s"]
+                        }
+                        """.formatted(LEGACY_MATH_ANALYSIS_CLUSTER_ID));
+        assertThat(plannedResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId("readonly-ui-learning")).isEmpty();
+
+        HttpResponse<String> clientStateResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-ui-learning/client-state/" + LEGACY_MATH_MEMORY_E_PHASE_ID,
+                """
+                        {
+                          "updatedAt": "2026-03-14T10:15:30Z",
+                          "srsState": {
+                            "card-1": {
+                              "interval": 1,
+                              "repetition": 0,
+                              "ef": 2.5,
+                              "nextReview": 0
+                            }
+                          }
+                        }
+                        """);
+        assertThat(clientStateResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerClientStateRepository.findById(
+                new LearnerClientStateId("readonly-ui-learning", LEGACY_MATH_MEMORY_E_PHASE_ID))).isEmpty();
+    }
+
+    @Test
+    void compatibilitySessionRejectsUiCurriculumMutationWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-ui-config");
+        learner.setSelectedCurriculum(HESSEN_GYMNASIUM_UPPER_MATH_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3": {"selected": true, "filterId": "LK"}
+                }
+                """);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-ui-config/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("readonly-ui-config").orElseThrow().getSelectedCurriculum())
+                .isEqualTo(HESSEN_GYMNASIUM_UPPER_MATH_ID);
+
+        HttpResponse<String> personalCurriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/readonly-ui-config/personal-curriculum",
+                """
+                        {
+                          "%s": {
+                            "selected": true,
+                            "filterId": "DE-HE"
+                          }
+                        }
+                        """.formatted(CANONICAL_GYMNASIUM_ROOT_ID));
+        assertThat(personalCurriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("readonly-ui-config").orElseThrow().getPersonalCurriculum())
+                .contains("\"2796fc7b-ba9d-446f-8f26-711dd6d8a9a3\"");
+    }
+
+    @Test
+    void compatibilitySessionRejectsAiMasteryWrites() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-ai-mastery");
+        learner.setSelectedCurriculum(HESSEN_GYMNASIUM_UPPER_MATH_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3": {"selected": true, "filterId": "GK"}
+                }
+                """);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> masteryResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/readonly-ai-mastery/mastery",
+                """
+                        {
+                          "goalId": "%s"
+                        }
+                        """.formatted(LEGACY_MATH_FUNCTION_CONCEPT_ID));
+        assertThat(masteryResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(
+                "readonly-ai-mastery",
+                LEGACY_MATH_FUNCTION_CONCEPT_ID))).isEmpty();
+    }
+
+    @Test
+    void compatibilitySessionRequiresExplicitAuditFlagForUiState() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-ui-state");
+        learner.setSelectedCurriculum(HESSEN_GYMNASIUM_UPPER_MATH_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3": {"selected": true, "filterId": "GK"}
+                }
+                """);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> retiredResponse = getRequest("/api/ui/learners/readonly-ui-state/state");
+        assertThat(retiredResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> auditResponse = getRequest(
+                "/api/ui/learners/readonly-ui-state/state?includeCompatibilityAudit=true");
+        assertThat(auditResponse.statusCode()).isEqualTo(HttpStatus.OK.value());
+        JsonNode body = objectMapper.readTree(auditResponse.body());
+        assertThat(body.path("skillpilotId").asText()).isEqualTo("readonly-ui-state");
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(HESSEN_GYMNASIUM_UPPER_MATH_ID);
+    }
+
+    @Test
+    void compatibilitySessionRequiresExplicitAuditFlagForAiState() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("readonly-ai-state");
+        learner.setSelectedCurriculum(HESSEN_GYMNASIUM_UPPER_MATH_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3": {"selected": true, "filterId": "LK"}
+                }
+                """);
+        learnerRepository.save(learner);
+
+        HttpResponse<String> retiredResponse = getRequest("/api/ai/en/learners/readonly-ai-state/state");
+        assertThat(retiredResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+
+        HttpResponse<String> auditResponse = getRequest(
+                "/api/ai/en/learners/readonly-ai-state/state?includeCompatibilityAudit=true");
+        assertThat(auditResponse.statusCode()).isEqualTo(HttpStatus.OK.value());
+        JsonNode body = objectMapper.readTree(auditResponse.body());
+        assertThat(body.path("skillpilotId").asText()).isEqualTo("readonly-ai-state");
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(HESSEN_GYMNASIUM_UPPER_MATH_ID);
+    }
+
     private String getLearnerStateBodyForPlannedGoals(String... goalIds) throws Exception {
         return getLearnerStateBody(List.of(goalIds), List.of());
     }
@@ -2617,6 +2788,31 @@ public class LearnerControllerIntegrationTest {
                         .uri(URI.create("http://localhost:" + port + "/api/ui/learners/cutover/canonical-gymnasium/bulk"))
                         .header("Content-Type", "application/json")
                         .POST(HttpRequest.BodyPublishers.ofString(body))
+                        .build(),
+                HttpResponse.BodyHandlers.ofString());
+    }
+
+    private HttpResponse<String> sendJsonRequest(String method, String path, String body) throws Exception {
+        HttpRequest.Builder builder = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:" + port + path))
+                .header("Content-Type", "application/json");
+
+        if ("POST".equals(method)) {
+            builder.POST(HttpRequest.BodyPublishers.ofString(body));
+        } else if ("PUT".equals(method)) {
+            builder.PUT(HttpRequest.BodyPublishers.ofString(body));
+        } else {
+            throw new IllegalArgumentException("Unsupported method: " + method);
+        }
+
+        return HttpClient.newHttpClient().send(builder.build(), HttpResponse.BodyHandlers.ofString());
+    }
+
+    private HttpResponse<String> getRequest(String path) throws Exception {
+        return HttpClient.newHttpClient().send(
+                HttpRequest.newBuilder()
+                        .uri(URI.create("http://localhost:" + port + path))
+                        .GET()
                         .build(),
                 HttpResponse.BodyHandlers.ofString());
     }

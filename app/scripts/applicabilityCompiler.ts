@@ -7,6 +7,7 @@ const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
 const curriculaDir = join(repoRoot, 'curricula')
 const canonicalDir = join(curriculaDir, 'DE', 'Gymnasium', 'canonical')
+const sourceLandscapeRegistryFile = join(curriculaDir, 'DE', 'Gymnasium', 'provenance', 'source-landscape-registry.json')
 const reportDir = join(repoRoot, 'tmp', 'applicability')
 
 const SUPPORTED_DIMENSION = 'jurisdiction' as const
@@ -40,6 +41,18 @@ interface GoalMappingFile {
   mappings?: GoalMappingEntry[]
 }
 
+interface SourceLandscapeRegistryEntry {
+  landscapeId?: string
+  jurisdiction?: string
+  sourcePath?: string
+  archivePath?: string
+}
+
+interface SourceLandscapeRegistryFile {
+  version?: number
+  entries?: SourceLandscapeRegistryEntry[]
+}
+
 interface LoadedCanonicalLandscape {
   file: string
   landscape: LearningLandscape
@@ -53,6 +66,18 @@ interface LoadedMappingFile {
   targetLandscapeId?: string
   jurisdiction: SupportedJurisdiction | null
   mappings: GoalMappingEntry[]
+}
+
+interface LoadedSourceLandscapeRegistryEntry {
+  landscapeId: string
+  jurisdiction: SupportedJurisdiction | null
+  sourcePath?: string
+  archivePath?: string
+}
+
+interface LoadedSourceLandscapeRegistry {
+  file: string
+  entriesByLandscapeId: Map<string, LoadedSourceLandscapeRegistryEntry>
 }
 
 interface GoalRef {
@@ -187,8 +212,12 @@ function normalizeJurisdictionValue(raw: string): SupportedJurisdiction | null {
 
 function jurisdictionFromPath(file: string): SupportedJurisdiction | null {
   const normalized = file.replace(/\\/g, '/').toUpperCase()
-  if (normalized.includes('/CURRICULA/DE/HE/')) return 'DE-HE'
-  if (normalized.includes('/CURRICULA/DE/BY/')) return 'DE-BY'
+  for (const segment of normalized.split('/')) {
+    const jurisdiction = normalizeJurisdictionValue(segment)
+    if (jurisdiction) {
+      return jurisdiction
+    }
+  }
   return null
 }
 
@@ -218,6 +247,60 @@ function loadLandscapePathIndex() {
   }
 
   return pathByLandscapeId
+}
+
+function loadSourceLandscapeRegistry(): LoadedSourceLandscapeRegistry {
+  const entriesByLandscapeId = new Map<string, LoadedSourceLandscapeRegistryEntry>()
+
+  try {
+    const raw = JSON.parse(readFileSync(sourceLandscapeRegistryFile, 'utf8')) as SourceLandscapeRegistryFile
+    if (raw.version !== 1) {
+      throw new Error(`Unsupported source landscape registry version in ${repoRelative(sourceLandscapeRegistryFile)}.`)
+    }
+
+    for (const entry of raw.entries ?? []) {
+      if (!entry || typeof entry.landscapeId !== 'string' || !entry.landscapeId.trim()) {
+        continue
+      }
+      const landscapeId = entry.landscapeId.trim()
+      const sourcePath = typeof entry.sourcePath === 'string' && entry.sourcePath.trim()
+        ? entry.sourcePath.trim().replace(/\\/g, '/')
+        : undefined
+      const archivePath = typeof entry.archivePath === 'string' && entry.archivePath.trim()
+        ? entry.archivePath.trim().replace(/\\/g, '/')
+        : undefined
+
+      entriesByLandscapeId.set(landscapeId, {
+        landscapeId,
+        jurisdiction: typeof entry.jurisdiction === 'string' ? normalizeJurisdictionValue(entry.jurisdiction) : null,
+        sourcePath,
+        archivePath,
+      })
+    }
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
+      throw error
+    }
+  }
+
+  return {
+    file: sourceLandscapeRegistryFile,
+    entriesByLandscapeId,
+  }
+}
+
+function formatRegistryEvidenceSource(
+  registry: LoadedSourceLandscapeRegistry,
+  entry: LoadedSourceLandscapeRegistryEntry,
+): string {
+  const registryRef = `${repoRelative(registry.file)}#${entry.landscapeId}`
+  if (entry.archivePath) {
+    return `${entry.archivePath} (${registryRef})`
+  }
+  if (entry.sourcePath) {
+    return `${entry.sourcePath} (${registryRef})`
+  }
+  return registryRef
 }
 
 function loadCanonicalLandscapes(): LoadedCanonicalLandscape[] {
@@ -408,6 +491,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
   )
   const mappingFiles = loadMappingFiles()
   const landscapePathById = loadLandscapePathIndex()
+  const sourceLandscapeRegistry = loadSourceLandscapeRegistry()
   const mappingEvidenceByTarget = new Map<string, Map<string, LoadedMappingFile[]>>()
   const canonicalGoalToLandscapeId = new Map<string, string>()
   const ambiguousCanonicalGoalIds = new Set<string>()
@@ -539,6 +623,31 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
       const evidence: ApplicabilityEvidence[] = []
 
       for (const sourceLandscapeId of getProvenanceLandscapeIds(goal)) {
+        const registryEntry = sourceLandscapeRegistry.entriesByLandscapeId.get(sourceLandscapeId)
+        if (registryEntry) {
+          if (!registryEntry.jurisdiction) {
+            findings.push({
+              code: 'APV-003',
+              severity: 'error',
+              landscapeId,
+              goalId: goal.id,
+              title: goal.title,
+              dimension: SUPPORTED_DIMENSION,
+              message: `Cannot resolve jurisdiction from source landscape registry entry ${repoRelative(sourceLandscapeRegistry.file)}#${sourceLandscapeId}.`,
+            })
+            continue
+          }
+
+          jurisdictions.add(registryEntry.jurisdiction)
+          evidence.push({
+            dimension: SUPPORTED_DIMENSION,
+            value: registryEntry.jurisdiction,
+            kind: 'provenance',
+            source: formatRegistryEvidenceSource(sourceLandscapeRegistry, registryEntry),
+          })
+          continue
+        }
+
         const sourcePath = landscapePathById.get(sourceLandscapeId)
         if (!sourcePath) {
           findings.push({

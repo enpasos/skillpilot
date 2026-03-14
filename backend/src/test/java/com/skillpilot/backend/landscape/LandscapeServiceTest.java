@@ -95,6 +95,36 @@ class LandscapeServiceTest {
                                                 CANONICAL_CHINESE_ID,
                                                 CANONICAL_MUSIC_ID,
                                                 CANONICAL_ECONOMICS_ID);
+
+                LandscapeSummary canonicalRootSummary = summaries.stream()
+                                .filter(summary -> CANONICAL_GYMNASIUM_ROOT_ID.equals(summary.getCurriculumId()))
+                                .findFirst()
+                                .orElseThrow();
+                LandscapeSummary hessenOverviewSummary = summaries.stream()
+                                .filter(summary -> "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da".equals(summary.getCurriculumId()))
+                                .findFirst()
+                                .orElseThrow();
+
+                assertThat(canonicalRootSummary.isCompatibilityOnly()).isFalse();
+                assertThat(hessenOverviewSummary.isCompatibilityOnly()).isTrue();
+        }
+
+        @Test
+        void getOverviewWithoutCompatibilityExcludesCompatibilityRoots() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LandscapeOverviewResponse response = landscapeService.getOverview("de", false);
+
+                assertThat(response.getSummaries()).extracting(LandscapeSummary::getCurriculumId)
+                                .contains(CANONICAL_GYMNASIUM_ROOT_ID)
+                                .doesNotContain("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da");
+                assertThat(landscapeService.getBaseCurricula(false))
+                                .extracting(LandscapeSummary::getCurriculumId)
+                                .contains(CANONICAL_GYMNASIUM_ROOT_ID)
+                                .doesNotContain("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da");
         }
 
         @Test

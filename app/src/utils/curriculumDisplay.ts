@@ -26,10 +26,16 @@ interface CurriculumDisplayTitleInput {
   description?: string
   subject?: string
   language?: string
+  compatibilityOnly?: boolean
 }
 
 export const isLegacyHessenGymnasiumUpper = (curriculumId?: string | null) =>
   !!curriculumId && LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(curriculumId)
+
+export const isCompatibilityOnlyCurriculum = (
+  curriculumId?: string | null,
+  compatibilityOnly?: boolean | null,
+) => Boolean(compatibilityOnly) || isLegacyHessenGymnasiumUpper(curriculumId)
 
 export const getCurriculumDisplayTitle = ({
   curriculumId,
@@ -37,13 +43,14 @@ export const getCurriculumDisplayTitle = ({
   description,
   subject,
   language,
+  compatibilityOnly,
 }: CurriculumDisplayTitleInput) => {
   const base = title || description || subject || curriculumId || ''
   if (!base) {
     return ''
   }
-  if (isLegacyHessenGymnasiumUpper(curriculumId)) {
-    return language === 'de' ? `${base} (Legacy-Sicht)` : `${base} (Legacy view)`
+  if (isCompatibilityOnlyCurriculum(curriculumId, compatibilityOnly)) {
+    return language === 'de' ? `${base} (Kompatibilitaetsansicht)` : `${base} (Compatibility view)`
   }
   return base
 }

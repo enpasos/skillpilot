@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useLearnerUpdates } from '../hooks/useLearnerUpdates'
 import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
@@ -16,6 +16,10 @@ import { useLanguage } from '../contexts/LanguageContext'
 import { isMastered } from '../goalUiUtils'
 import { useSrsMastery } from '../hooks/useSrsMastery'
 import { getSrsFilterTagsForGoal } from '../utils/srsTags'
+import {
+  CANONICAL_GYMNASIUM_ROOT_ID,
+  LEGACY_HESSEN_GYMNASIUM_UPPER_IDS,
+} from '../utils/curriculumDisplay'
 import {
   ABI26_CAMPAIGN_SLUG,
   extractAbi26CampaignContext,
@@ -37,7 +41,7 @@ interface LearnerViewProps {
   landscapeId: string
   activeFilter?: string
   onLogout?: () => void
-  availableLandscapes?: { landscapeId: string; title: string; filters?: { id: string; label: string }[] }[]
+  availableLandscapes?: { landscapeId: string; title: string; filters?: { id: string; label: string }[]; compatibilityOnly?: boolean }[]
   rootLandscapeId?: string
   onRefresh?: () => void
   parentMap?: Map<string, string[]>
@@ -54,7 +58,7 @@ const isWildcardFilter = (filterId?: string) => {
 
 const normalizePersonalConfig = (
   input: PersonalCurriculumConfig,
-  availableLandscapes: { landscapeId: string; filters?: { id: string; label: string }[] }[],
+  availableLandscapes: { landscapeId: string; filters?: { id: string; label: string }[]; compatibilityOnly?: boolean }[],
   rootLandscapeId?: string,
 ): { config: PersonalCurriculumConfig; corrected: boolean } => {
   const buildDefaultConfig = (): PersonalCurriculumConfig => {
@@ -85,6 +89,7 @@ const normalizePersonalConfig = (
 
   let corrected = false
   const normalized: PersonalCurriculumConfig = { ...input }
+  const availableLandscapeIds = new Set(availableLandscapes.map((landscape) => landscape.landscapeId))
 
   availableLandscapes.forEach((landscape) => {
     const current = normalized[landscape.landscapeId]
@@ -97,6 +102,16 @@ const normalizePersonalConfig = (
       corrected = true
     }
   })
+
+  if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
+    Object.keys(normalized).forEach((landscapeId) => {
+      if (!LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(landscapeId) || availableLandscapeIds.has(landscapeId)) {
+        return
+      }
+      delete normalized[landscapeId]
+      corrected = true
+    })
+  }
 
   const hasChildEntries = childLandscapeIds.some((id) => input[id] !== undefined)
   const hasSelectedChild = childLandscapeIds.some((id) => input[id]?.selected === true)
@@ -140,26 +155,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   onLandscapeChange,
   onLandscapeGoalChange,
 }) => {
-  const CANONICAL_GYMNASIUM_ROOT_ID = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
-  const LEGACY_HESSEN_GYMNASIUM_UPPER_IDS = new Set([
-    'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da',
-    '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3',
-    '24f2ca0f-b94a-444e-bb70-677cb6f85c02',
-    '2f391ba2-ba1e-40e4-a8d2-dff049516c13',
-    '3e56aa75-c76c-4de5-883b-0aac98297846',
-    'c1a02ddd-736d-4975-920b-18b03aff147f',
-    'bdc89685-73d3-446c-af5a-eaf642c07463',
-    'f1ba2118-853f-4aa0-bef5-4f749bc621ed',
-    '1d0e9f8f-0087-49e4-8ea2-976e5a89b165',
-    'bc2124fa-2974-46cc-85e7-2392e61250e1',
-    '30acd190-609c-4109-8ee7-06fc5594af19',
-    'fe28bda8-03f3-4c4a-8286-7fcfce4eeac1',
-    '936efc61-a4d5-49fd-8694-085d1347db80',
-    'c7209caa-18e5-4dd8-b68f-dd86e228d045',
-    '7651cbe2-5fb8-464d-b0c4-3e830cda41dd',
-    'a8c23058-6998-49f2-9f3b-a85e951d5ab0',
-    'a334a745-1d67-4e1d-86a5-dadc04f144d2',
-  ])
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [forcedExpandedIds, setForcedExpandedIds] = useState<Set<string>>(new Set())
   const [learnerData, setLearnerData] = useState<Learner | null>(null)
@@ -175,6 +170,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [isSetupOpen, setIsSetupOpen] = useState(false)
   const [personalConfig, setPersonalConfig] = useState<PersonalCurriculumConfig>({})
   const [isCutoverPending, setIsCutoverPending] = useState(false)
+  const [compatibilityRouteRetired, setCompatibilityRouteRetired] = useState(false)
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
@@ -197,8 +193,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const { language, setLanguage } = useLanguage();
   const t = useTranslation();
   const location = useLocation()
+  const navigate = useNavigate()
 
   const queryParams = useMemo(() => new URLSearchParams(location.search), [location.search])
+  const compatibilityAuditRequested = useMemo(() => {
+    const compatibilityMode = queryParams.get('compatibility')?.trim().toLowerCase()
+    const compatibilityAudit = queryParams.get('compatibilityAudit')?.trim().toLowerCase()
+    return compatibilityMode === 'audit' || compatibilityAudit === 'true'
+  }, [queryParams])
   const persistedCampaignContext = useMemo(() => loadAbi26CampaignContext(), [])
   const queryCampaignContext = useMemo(() => extractAbi26CampaignContext(queryParams), [queryParams])
   const hasAbi26Marker = useMemo(() => {
@@ -648,6 +650,27 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     const selectedCurriculum = learnerData?.selectedCurriculum
     return !!selectedCurriculum && LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(selectedCurriculum)
   }, [learnerData?.selectedCurriculum])
+  const isCompatibilityAuditOnly = canCutoverLegacyHessenGymnasium
+  const shouldShowCompatibilityRetirementGate =
+    compatibilityRouteRetired &&
+    canCutoverLegacyHessenGymnasium &&
+    !compatibilityAuditRequested
+
+  const updateCompatibilityAuditRoute = useCallback((enabled: boolean) => {
+    const nextParams = new URLSearchParams(location.search)
+    if (enabled) {
+      nextParams.set('compatibility', 'audit')
+    } else {
+      nextParams.delete('compatibility')
+      nextParams.delete('compatibilityAudit')
+    }
+    const nextSearch = nextParams.toString()
+    navigate(`${location.pathname}${nextSearch ? `?${nextSearch}` : ''}`, { replace: true })
+  }, [location.pathname, location.search, navigate])
+
+  const openCompatibilityAuditView = useCallback(() => {
+    updateCompatibilityAuditRoute(true)
+  }, [updateCompatibilityAuditRoute])
 
   const legacyCutoverPreviewItems = useMemo(() => {
     const selectedCurriculum = learnerData?.selectedCurriculum
@@ -869,12 +892,20 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       if (!skillpilotId) return
       try {
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-        const suffix = cacheBust ? `?_t=${Date.now()}` : ''
+        const params = new URLSearchParams()
+        if (cacheBust) {
+          params.set('_t', String(Date.now()))
+        }
+        if (compatibilityAuditRequested) {
+          params.set('includeCompatibilityAudit', 'true')
+        }
+        const suffix = params.size > 0 ? `?${params.toString()}` : ''
         const url = apiBase
           ? `${apiBase}/api/ui/learners/${skillpilotId}/state${suffix}`
           : `/api/ui/learners/${skillpilotId}/state${suffix}`
         const res = await fetch(url)
         if (res.ok) {
+          setCompatibilityRouteRetired(false)
           const data = await res.json()
           if (data.frontier && Array.isArray(data.frontier)) {
             setFrontierOptions(data.frontier)
@@ -894,12 +925,20 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               personalizedTotalAtomic: data.goals.personalized?.total_atomic,
             })
           }
+          return
+        }
+        if (res.status === 409) {
+          setCompatibilityRouteRetired(true)
+          setFrontierOptions([])
+          setStateActiveGoalId(null)
+          setStateRequiredAction('compatibilityAudit')
+          setBackendStats(null)
         }
       } catch (e) {
         console.warn('Failed to load learner state', e)
       }
     },
-    [skillpilotId],
+    [compatibilityAuditRequested, skillpilotId],
 
   )
 
@@ -1005,6 +1044,17 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [skillpilotId, refreshPlanned, refreshLearnerData])
 
   const handleSetActiveGoal = useCallback(async (goalId: string) => {
+    if (isCompatibilityAuditOnly) {
+      setModalTitle(language === 'de' ? 'Nur Lesemodus' : 'Read-only mode')
+      setModalMessage(
+        language === 'de'
+          ? 'In dieser Kompatibilitaetsansicht koennen keine neuen aktiven Lernziele gesetzt werden. Bitte auf Gymnasium (DE) umstellen.'
+          : 'You cannot set new active goals in this compatibility view. Please migrate to Gymnasium (DE).',
+      )
+      setModalType('info')
+      setIsModalOpen(true)
+      return
+    }
     if (!skillpilotId) return;
     try {
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
@@ -1061,9 +1111,20 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     } catch (e) {
       console.warn('Failed to set active goal', e)
     }
-  }, [skillpilotId, onRefresh, parentMap, selectedId, onSelectGoal, language])
+  }, [isCompatibilityAuditOnly, skillpilotId, onRefresh, parentMap, selectedId, onSelectGoal, language])
 
   const togglePlan = useCallback(async (id: string) => {
+    if (isCompatibilityAuditOnly) {
+      setModalTitle(language === 'de' ? 'Nur Lesemodus' : 'Read-only mode')
+      setModalMessage(
+        language === 'de'
+          ? 'Der Lernfokus kann in dieser Kompatibilitaetsansicht nicht mehr veraendert werden. Bitte auf Gymnasium (DE) umstellen.'
+          : 'Planned-goal changes are disabled in this compatibility view. Please migrate to Gymnasium (DE).',
+      )
+      setModalType('info')
+      setIsModalOpen(true)
+      return
+    }
     // Single Goal Mode:
     // If clicking the ALREADY selected goal -> Deselect it (Set empty)
     // If clicking a NEW goal -> Select only that one (Set with 1 item)
@@ -1091,7 +1152,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       console.warn('Failed to save planned goals', e)
       // Revert on error? For now, just warn.
     }
-  }, [plannedGoals, skillpilotId, refreshState])
+  }, [isCompatibilityAuditOnly, language, plannedGoals, skillpilotId, refreshState])
 
   // Load personal config from backend
   React.useEffect(() => {
@@ -1127,6 +1188,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     fetchConfig()
     refreshState()
   }, [skillpilotId, refreshState, availableLandscapes, rootLandscapeId])
+
+  useEffect(() => {
+    if (!compatibilityAuditRequested || canCutoverLegacyHessenGymnasium) {
+      return
+    }
+    updateCompatibilityAuditRoute(false)
+  }, [canCutoverLegacyHessenGymnasium, compatibilityAuditRequested, updateCompatibilityAuditRoute])
 
   // Check mobile state
   const [isMobile, setIsMobile] = useState(false)
@@ -1243,14 +1311,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         refreshLearnerData(),
         onRefresh?.(),
       ])
+      setCompatibilityRouteRetired(false)
+      updateCompatibilityAuditRoute(false)
       setRefreshCounter((count) => count + 1)
       setVelocityRefreshCounter((count) => count + 1)
       setIsSetupOpen(false)
       setModalTitle(language === 'de' ? 'Umstellung abgeschlossen' : 'Migration complete')
       setModalMessage(
         language === 'de'
-          ? 'Dein Lernstand wurde auf Gymnasium (DE) umgestellt. Hessen bleibt als Legacy-Sicht erhalten, dein Mastery-Verlauf wird aber jetzt auf der gemeinsamen DE-Struktur weiter genutzt.'
-          : 'Your learner state has been migrated to Gymnasium (DE). Hesse remains available as a legacy view while your mastery history continues on the shared DE structure.',
+          ? 'Dein Lernstand wurde auf Gymnasium (DE) umgestellt. Hessen bleibt als Kompatibilitaetsansicht erhalten, dein Mastery-Verlauf wird aber jetzt auf der gemeinsamen DE-Struktur weiter genutzt.'
+          : 'Your learner state has been migrated to Gymnasium (DE). Hesse remains available as a compatibility view while your mastery history continues on the shared DE structure.',
       )
       setModalType('success')
       setIsModalOpen(true)
@@ -1267,7 +1337,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     } finally {
       setIsCutoverPending(false)
     }
-  }, [skillpilotId, isCutoverPending, language, onLandscapeChange, onLandscapeGoalChange, refreshLearnerData, onRefresh])
+  }, [skillpilotId, isCutoverPending, language, onLandscapeChange, onLandscapeGoalChange, refreshLearnerData, onRefresh, updateCompatibilityAuditRoute])
 
   useEffect(() => {
     if (!isAbi26CampaignSession || !campaignContext || !rootLandscapeId) return
@@ -1717,6 +1787,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             getMastery={getEffectiveMastery}
             plannedGoals={plannedGoals}
             onTogglePlan={togglePlan}
+            readOnly={isCompatibilityAuditOnly}
             onSelect={onSelectGoal}
             selectedId={selectedId}
             activeFilter={effectiveActiveFilter}
@@ -1789,17 +1860,26 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                     </div>
                     <p className="mt-1 text-sm text-amber-900/90 dark:text-amber-100/90">
                       {language === 'de'
-                        ? 'Diese Ansicht bleibt als Legacy-Sicht erhalten. Fuer die gemeinsame DE-Struktur kannst du jetzt direkt auf Gymnasium (DE) umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.'
-                        : 'This view remains available as a legacy view. You can now move directly to Gymnasium (DE) without losing your existing mastery history.'}
+                        ? 'Diese Ansicht bleibt als Kompatibilitaetsansicht erhalten. Fuer die gemeinsame DE-Struktur kannst du jetzt direkt auf Gymnasium (DE) umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.'
+                        : 'This view remains available as a compatibility view. You can now move directly to Gymnasium (DE) without losing your existing mastery history.'}
                     </p>
                   </div>
                   <div className="flex shrink-0 gap-2">
+                    {!compatibilityAuditRequested && (
+                      <button
+                        type="button"
+                        onClick={openCompatibilityAuditView}
+                        className="rounded-lg border border-amber-300 bg-white px-3 py-2 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-100 dark:border-amber-700 dark:bg-amber-950/40 dark:text-amber-100 dark:hover:bg-amber-900/50"
+                      >
+                        {language === 'de' ? 'Audit-Ansicht' : 'Audit view'}
+                      </button>
+                    )}
                     <button
                       type="button"
                       onClick={() => setIsSetupOpen(true)}
                       className="rounded-lg border border-amber-300 bg-white px-3 py-2 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-100 dark:border-amber-700 dark:bg-amber-950/40 dark:text-amber-100 dark:hover:bg-amber-900/50"
                     >
-                      {language === 'de' ? 'Details' : 'Details'}
+                      {language === 'de' ? 'Migration' : 'Migration'}
                     </button>
                     <button
                       type="button"
@@ -1818,55 +1898,97 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 </div>
               </div>
             )}
-            {/* Check for SRS Tag */}
-            {currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
-              <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6">
-                <div className="mb-6 border-b border-border-color pb-4">
-                  <h1 className="text-2xl font-bold text-sky-600 dark:text-sky-400 mb-2">
-                    <InlineMathText text={currentGoal.title} />
-                  </h1>
-                  {currentGoal.description ? (
-                    <p className="text-text-secondary">{currentGoal.description}</p>
-                  ) : null}
+            {shouldShowCompatibilityRetirementGate && (
+              <div className="mb-6 rounded-xl border border-sky-300/80 bg-sky-50/90 p-5 shadow-sm dark:border-sky-700/60 dark:bg-sky-950/30">
+                <div className="flex flex-col gap-4">
+                  <div>
+                    <div className="text-sm font-semibold text-sky-800 dark:text-sky-300">
+                      {language === 'de' ? 'Normale Hessen-Route beendet' : 'Normal Hesse route retired'}
+                    </div>
+                    <p className="mt-2 text-sm text-sky-900/90 dark:text-sky-100/90">
+                      {language === 'de'
+                        ? 'Diese Learner-Session wird nicht mehr als normale Arbeitsansicht ausgeliefert. Bitte stelle jetzt auf Gymnasium (DE) um oder oeffne die alte Hessen-Sicht bewusst als Audit-Fallback.'
+                        : 'This learner session is no longer served as a normal working route. Please migrate to Gymnasium (DE) now or explicitly open the old Hesse view as an audit fallback.'}
+                    </p>
+                  </div>
+                  <div className="flex flex-col gap-2 sm:flex-row">
+                    <button
+                      type="button"
+                      onClick={handleCutoverCanonicalGymnasium}
+                      disabled={isCutoverPending}
+                      className="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      <MoveRight size={16} />
+                      <span>
+                        {isCutoverPending
+                          ? (language === 'de' ? 'Stelle um...' : 'Migrating...')
+                          : (language === 'de' ? 'Jetzt auf Gymnasium (DE) umstellen' : 'Migrate to Gymnasium (DE) now')}
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={openCompatibilityAuditView}
+                      className="rounded-lg border border-sky-300 bg-white px-4 py-2 text-sm font-medium text-sky-900 transition-colors hover:bg-sky-100 dark:border-sky-700 dark:bg-sky-950/40 dark:text-sky-100 dark:hover:bg-sky-900/50"
+                    >
+                      {language === 'de' ? 'Audit-Ansicht oeffnen' : 'Open audit view'}
+                    </button>
+                  </div>
                 </div>
-                <FlashcardDrill
-                  key={currentGoal.id}
-                  goalId={currentGoal.id}
-                  dataSourceUrl={getSrsSource(currentGoal)}
-                  skillPilotId={skillpilotId}
-                  titleOverride={currentGoal.title}
-                  onSync={syncClientData}
-                  reloadSignal={srsReloadCounter}
-                  filterTags={getSrsFilterTagsForGoal(currentGoal)}
-                  onStateChange={({ goalId, mastery }) => {
-                    setOptimisticSrsMasteryByGoal((current) => {
-                      if (current[goalId] === mastery) return current
-                      return { ...current, [goalId]: mastery }
-                    })
-                    setSrsMasteryTick(c => c + 1)
-                    setRefreshCounter(c => c + 1)
-                  }}
-                />
               </div>
-            ) : (
-              <GoalCard
-                goal={currentGoal}
-                masteryValue={
-                  currentGoal.contains && currentGoal.contains.length > 0
-                    ? getFilteredMastery(currentGoal.id)
-                    : getEffectiveMastery(currentGoal.id)
-                }
-                showLearnerTools={true}
-                isPlanned={plannedGoals.has(currentGoal.id)}
-                isActive={effectiveActiveGoalId === currentGoal.id}
-                onSetActive={handleSetActiveGoal}
-                onRevealActive={revealActiveGoal}
-                isFrontier={backendFrontierIds.has(currentGoal.id)}
-              />
+            )}
+            {/* Check for SRS Tag */}
+            {!shouldShowCompatibilityRetirementGate && (
+              currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
+                <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6">
+                  <div className="mb-6 border-b border-border-color pb-4">
+                    <h1 className="text-2xl font-bold text-sky-600 dark:text-sky-400 mb-2">
+                      <InlineMathText text={currentGoal.title} />
+                    </h1>
+                    {currentGoal.description ? (
+                      <p className="text-text-secondary">{currentGoal.description}</p>
+                    ) : null}
+                  </div>
+                  <FlashcardDrill
+                    key={currentGoal.id}
+                    goalId={currentGoal.id}
+                    dataSourceUrl={getSrsSource(currentGoal)}
+                    skillPilotId={skillpilotId}
+                    readOnly={isCompatibilityAuditOnly}
+                    titleOverride={currentGoal.title}
+                    onSync={syncClientData}
+                    reloadSignal={srsReloadCounter}
+                    filterTags={getSrsFilterTagsForGoal(currentGoal)}
+                    onStateChange={({ goalId, mastery }) => {
+                      setOptimisticSrsMasteryByGoal((current) => {
+                        if (current[goalId] === mastery) return current
+                        return { ...current, [goalId]: mastery }
+                      })
+                      setSrsMasteryTick(c => c + 1)
+                      setRefreshCounter(c => c + 1)
+                    }}
+                  />
+                </div>
+              ) : (
+                <GoalCard
+                  goal={currentGoal}
+                  masteryValue={
+                    currentGoal.contains && currentGoal.contains.length > 0
+                      ? getFilteredMastery(currentGoal.id)
+                      : getEffectiveMastery(currentGoal.id)
+                  }
+                  showLearnerTools={true}
+                  readOnly={isCompatibilityAuditOnly}
+                  isPlanned={plannedGoals.has(currentGoal.id)}
+                  isActive={effectiveActiveGoalId === currentGoal.id}
+                  onSetActive={handleSetActiveGoal}
+                  onRevealActive={revealActiveGoal}
+                  isFrontier={backendFrontierIds.has(currentGoal.id)}
+                />
+              )
             )}
 
             {/* Extended Frontier Panel (Below GoalCard) */}
-            {shouldShowNextSteps && (
+            {!shouldShowCompatibilityRetirementGate && !isCompatibilityAuditOnly && shouldShowNextSteps && (
               <div className="mt-8 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="p-2 bg-sky-100 dark:bg-sky-900/30 rounded-lg text-sky-600 dark:text-sky-400">
@@ -1916,6 +2038,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         isOpen={isSetupOpen}
         onClose={() => setIsSetupOpen(false)}
         availableLandscapes={availableLandscapes}
+        currentLandscapeId={landscapeId}
+        retirementOnly={canCutoverLegacyHessenGymnasium}
         onConfigChange={handleConfigChange}
         initialConfig={personalConfig}
         rootLandscapeId={rootLandscapeId}

@@ -7,13 +7,18 @@ import { buildApplicabilityCompilation, getApplicabilityReportDir, writeApplicab
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
 
-const REVIEWED_PILOT_LANDSCAPE_IDS = [
+const REVIEWED_CANONICAL_LANDSCAPE_IDS = [
   '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', // Mathematics
   '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a', // Physics
   'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0', // Chemistry
   '08a43a1b-d97e-522c-9dfa-c950a493364e', // Biology
   '7d51b38c-a149-5407-bddc-d2ce7878b020', // Informatics
   '67bd301b-e11a-582d-94ba-4f4b1a4cefff', // German
+  'c8c84073-46ae-57ec-898a-882d08d7a72f', // English
+  '96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977', // French
+  '70a2cb55-127b-5c6e-b518-4a1c9f4f77a0', // Greek
+  '8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80', // Chinese
+  '92406d94-e3c1-58ec-b7c6-12122278d25a', // History
   '51b60137-46e8-5498-973e-ea38bb32f327', // Politics and Economics
   'f620c251-c1e1-41c1-b4e1-b10950b43608', // Music
   '668cf206-941e-51f8-8704-3e8938631235', // Latin
@@ -36,7 +41,7 @@ const APPLICABILITY_INSERTION_KEYS = new Set([
 function parseTargetLandscapeIds(allLandscapeIds: string[]): Set<string> {
   const scope = process.env.APPLICABILITY_APPLY_SCOPE?.trim()
   if (!scope) {
-    return new Set(REVIEWED_PILOT_LANDSCAPE_IDS)
+    return new Set(REVIEWED_CANONICAL_LANDSCAPE_IDS)
   }
   if (scope === 'all') {
     return new Set(allLandscapeIds)

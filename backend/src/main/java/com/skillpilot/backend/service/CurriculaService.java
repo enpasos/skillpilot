@@ -526,7 +526,10 @@ public class CurriculaService {
             return Collections.emptySet();
         }
 
-        Set<String> legacyAtomicIds = collectAtomicGoalIds(sourceGoalId);
+        Set<String> legacyAtomicIds = landscapeService.resolveSourceAtomicGoalIds(sourceLandscapeId, sourceGoalId);
+        if (legacyAtomicIds.isEmpty()) {
+            legacyAtomicIds = collectAtomicGoalIds(sourceGoalId);
+        }
         if (legacyAtomicIds.isEmpty()) {
             return Collections.emptySet();
         }

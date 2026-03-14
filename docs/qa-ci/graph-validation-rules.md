@@ -62,7 +62,7 @@ These checks are already implemented and treated as `error`:
 - Didactic quality checks (sequencing quality, granularity, redundancy of meanings, etc.) remain part of manual QA (`curricula/QA/*`).
 - Learner-state semantics from the concept spec such as atomic mastery, frontier computation, and optimistic/pessimistic filter evaluation are currently **not** validated in CI.
 - Projected filtered learner graphs derived from compiled `applicability` are now validated by the separate `validate:view-filters` path.
-- The current CI enforcement scope for `validate:view-filters` is intentionally limited to the reviewed pilot set (`Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`).
+- The current CI enforcement scope for `validate:view-filters` covers the reviewed canonical DE Gymnasium set (`Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Englisch`, `Französisch`, `Griechisch`, `Chinesisch`, `Geschichte`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`).
 - Reviewed applicability warnings can be recorded in `docs/qa-ci/applicability-accepted-warnings.json`; the validator still prints them, but classifies them as accepted review debt instead of active warnings.
 - Additional structural rules should be added here first, then implemented in `validateGraph.ts`, then rolled out in CI.
 
@@ -72,13 +72,18 @@ This validator is separate from `validate:graph` and operates on projected filte
 
 Current CI scope:
 
-- reviewed canonical Gymnasium pilot set only
+- reviewed canonical DE Gymnasium set
 - `Mathematik`
 - `Physik`
 - `Chemie`
 - `Biologie`
 - `Informatik`
 - `Deutsch`
+- `Englisch`
+- `Französisch`
+- `Griechisch`
+- `Chinesisch`
+- `Geschichte`
 - `Politik und Wirtschaft`
 - `Musik`
 - `Latein`

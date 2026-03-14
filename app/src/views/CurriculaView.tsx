@@ -618,6 +618,7 @@ export const CurriculaView: React.FC = () => {
                       currentLandscapeId={selectedCurriculumId}
                       onSelect={setSelectedCurriculumId}
                       landscapes={curriculumOptions}
+                      showCompatibilityViews={false}
                     />
                   </div>
 

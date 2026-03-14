@@ -12,6 +12,7 @@ interface TreeNodeProps {
   getMastery: (goalId: string) => number
   plannedGoals: Set<string>
   onTogglePlan: (id: string) => void
+  readOnly?: boolean
   onSelect: (id: string) => void
   selectedId: string
   depth?: number
@@ -46,6 +47,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   getMastery,
   plannedGoals,
   onTogglePlan,
+  readOnly = false,
   onSelect,
   selectedId,
   depth = 0,
@@ -275,17 +277,26 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             )}
           </div>
         ) : (
-          <button
-            onClick={(e) => {
-              e.stopPropagation()
-              onTogglePlan(goal.id)
-            }}
-            className={`p-1 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors ${isPlanned ? 'text-amber-400' : 'text-slate-300 dark:text-slate-600 hover:text-amber-400 dark:hover:text-amber-200'
-              }`}
-            title={isPlanned ? t.tooltips.removeFromList : t.tooltips.addToList}
-          >
-            {isPlanned ? <SquareX size={16} className="text-red-500" /> : <Square size={16} className="text-slate-300" />}
-          </button>
+          readOnly ? (
+            <div
+              className={`p-1 ${isPlanned ? 'text-red-400' : 'text-slate-300 dark:text-slate-600'}`}
+              title="In der Kompatibilitaetsansicht schreibgeschuetzt"
+            >
+              {isPlanned ? <SquareX size={16} className="text-red-400" /> : <Square size={16} className="text-slate-300" />}
+            </div>
+          ) : (
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                onTogglePlan(goal.id)
+              }}
+              className={`p-1 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors ${isPlanned ? 'text-amber-400' : 'text-slate-300 dark:text-slate-600 hover:text-amber-400 dark:hover:text-amber-200'
+                }`}
+              title={isPlanned ? t.tooltips.removeFromList : t.tooltips.addToList}
+            >
+              {isPlanned ? <SquareX size={16} className="text-red-500" /> : <Square size={16} className="text-slate-300" />}
+            </button>
+          )
         )}
       </div>
 
@@ -300,6 +311,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 getMastery={getMastery}
                 plannedGoals={plannedGoals}
                 onTogglePlan={onTogglePlan}
+                readOnly={readOnly}
                 onSelect={onSelect}
                 selectedId={selectedId}
                 depth={depth + 1}
@@ -327,6 +339,7 @@ interface CompetenceTreeProps {
   getMastery: (goalId: string) => number
   plannedGoals: Set<string>
   onTogglePlan: (id: string) => void
+  readOnly?: boolean
   onSelect: (id: string) => void
   selectedId: string
   activeFilter?: string

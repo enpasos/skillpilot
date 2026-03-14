@@ -102,6 +102,7 @@ export interface LearningLandscape {
   frameworkId?: string
   title: string
   description: string
+  compatibilityOnly?: boolean
   filters?: LandscapeFilter[]
   goals: LearningGoal[]
 }

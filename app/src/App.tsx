@@ -144,6 +144,7 @@ const App: React.FC = () => {
         title: entry.meta.title,
         subject: entry.meta.subject,
         filters: entry.meta.filters,
+        compatibilityOnly: entry.meta.compatibilityOnly,
       })
 
       const currentEntry = currentLandscapeEntry

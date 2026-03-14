@@ -430,6 +430,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       currentLandscapeId={selectedLandscapeId}
                       onSelect={setSelectedLandscapeId}
                       landscapes={availableCurricula}
+                      showCompatibilityViews={false}
                     />
 
                     <div className="pt-4">

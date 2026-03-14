@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { X, ChevronDown, ChevronRight } from 'lucide-react'
+import { isCompatibilityOnlyCurriculum } from '../utils/curriculumDisplay'
 
 interface LandscapeSummary {
     landscapeId: string
     title: string
     subject?: string
     filters?: { id: string; label: string }[]
+    compatibilityOnly?: boolean
 }
 
 interface PersonalCurriculumConfig {
@@ -14,6 +16,9 @@ interface PersonalCurriculumConfig {
         filterId?: string
     }
 }
+
+const isCompatibilityOnlyLandscape = (landscape: LandscapeSummary) =>
+    isCompatibilityOnlyCurriculum(landscape.landscapeId, landscape.compatibilityOnly)
 
 interface MigrationPreviewItem {
     label: string
@@ -56,6 +61,8 @@ interface PersonalCurriculumSetupProps {
     isOpen: boolean
     onClose: () => void
     availableLandscapes: LandscapeSummary[]
+    currentLandscapeId?: string
+    retirementOnly?: boolean
     onConfigChange: (config: PersonalCurriculumConfig) => void
     initialConfig?: PersonalCurriculumConfig
     rootLandscapeId?: string
@@ -75,6 +82,8 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     isOpen,
     onClose,
     availableLandscapes,
+    currentLandscapeId,
+    retirementOnly = false,
     onConfigChange,
     initialConfig = {},
     rootLandscapeId,
@@ -126,6 +135,12 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const [autoPilot, setAutoPilot] = useState<boolean>(initialAutoPilot)
     const [strictMode, setStrictMode] = useState<boolean>(initialStrictMode)
     const [expanded, setExpanded] = useState<Set<string>>(new Set(initialExpanded))
+    const currentLandscape = availableLandscapes.find((landscape) => landscape.landscapeId === currentLandscapeId)
+    const currentLandscapeIsCompatibilityOnly = isCompatibilityOnlyLandscape(
+        currentLandscape ?? { landscapeId: currentLandscapeId ?? '', title: '' },
+    )
+    const shouldAutoRevealCompatibility = currentLandscapeIsCompatibilityOnly
+    const [showCompatibilityChildren, setShowCompatibilityChildren] = useState(shouldAutoRevealCompatibility)
 
     // Update config when initialConfig changes (e.g. loaded from backend)
     useEffect(() => {
@@ -136,6 +151,10 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         if (!isOpen) return
         setExpanded(new Set(initialExpanded))
     }, [isOpen, initialExpanded])
+
+    useEffect(() => {
+        setShowCompatibilityChildren(shouldAutoRevealCompatibility)
+    }, [shouldAutoRevealCompatibility, isOpen])
 
     useEffect(() => {
         setStrategy(initialStrategy)
@@ -228,6 +247,8 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     // Preserve backend order to reflect the authored curriculum/module sequence.
     const childrenLandscapes = availableLandscapes
         .filter(l => l.landscapeId !== rootLandscapeId)
+    const primaryChildrenLandscapes = childrenLandscapes.filter((landscape) => !isCompatibilityOnlyLandscape(landscape))
+    const compatibilityChildrenLandscapes = childrenLandscapes.filter((landscape) => isCompatibilityOnlyLandscape(landscape))
 
     const renderNode = (landscape: LandscapeSummary, isRoot: boolean) => {
         const isSelected = config[landscape.landscapeId]?.selected ?? false
@@ -242,6 +263,9 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         const isExpanded = expanded.has(landscape.landscapeId)
         const rawDisplayLabel = isRoot ? landscape.title : (landscape.subject?.trim() || landscape.title)
         const displayLabel = isRoot ? rawDisplayLabel : cleanLandscapeDisplayTitle(rawDisplayLabel)
+        const modeLabel = !isRoot && isCompatibilityOnlyLandscape(landscape)
+            ? `${displayLabel} (Kompatibilitaetsansicht)`
+            : displayLabel
 
         return (
             <div key={landscape.landscapeId} className="flex flex-col">
@@ -267,7 +291,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                         className={`flex-1 font-medium cursor-pointer select-none ${isSelected ? 'text-text-primary' : 'text-text-secondary'}`}
                         onClick={() => toggleSelection(landscape.landscapeId, isRoot)}
                     >
-                        {displayLabel}
+                        {modeLabel}
                     </span>
                 </div>
 
@@ -300,8 +324,43 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 
                 {/* Render Children if this is Root */}
                 {isRoot && (
-                    <div className="mt-3 grid gap-3 md:grid-cols-2">
-                        {childrenLandscapes.map(child => renderNode(child, false))}
+                    <div className="mt-3 space-y-4">
+                        {primaryChildrenLandscapes.length > 0 && (
+                            <div className="grid gap-3 md:grid-cols-2">
+                                {primaryChildrenLandscapes.map(child => renderNode(child, false))}
+                            </div>
+                        )}
+                        {compatibilityChildrenLandscapes.length > 0 && (
+                            <div className="rounded-xl border border-amber-200 bg-amber-50/40 p-4 dark:border-amber-900/40 dark:bg-amber-900/10">
+                                <div className="mb-3 flex items-start justify-between gap-3">
+                                    <div>
+                                        <h3 className="text-sm font-semibold text-text-primary">Kompatibilitaetsansichten</h3>
+                                        <p className="mt-1 text-sm text-text-secondary">
+                                            Diese eingefrorenen Hessen-Oberstufenansichten bleiben nur fuer Migration, Vergleich und Audit verfuegbar.
+                                        </p>
+                                        {!showCompatibilityChildren && (
+                                            <p className="mt-2 text-xs text-text-secondary">
+                                                {compatibilityChildrenLandscapes.length} Ansicht{compatibilityChildrenLandscapes.length === 1 ? '' : 'en'} ausgeblendet.
+                                            </p>
+                                        )}
+                                    </div>
+                                    {!shouldAutoRevealCompatibility && (
+                                        <button
+                                            type="button"
+                                            onClick={() => setShowCompatibilityChildren((current) => !current)}
+                                            className="shrink-0 rounded-lg border border-amber-300 bg-white px-3 py-2 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-100 dark:border-amber-700 dark:bg-amber-950/40 dark:text-amber-100 dark:hover:bg-amber-900/50"
+                                        >
+                                            {showCompatibilityChildren ? 'Ausblenden' : 'Einblenden'}
+                                        </button>
+                                    )}
+                                </div>
+                                {showCompatibilityChildren && (
+                                    <div className="grid gap-3 md:grid-cols-2">
+                                        {compatibilityChildrenLandscapes.map(child => renderNode(child, false))}
+                                    </div>
+                                )}
+                            </div>
+                        )}
                     </div>
                 )}
             </div>
@@ -313,8 +372,14 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             <div className="bg-sidebar-bg border border-border-color rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl transition-colors">
                 <div className="p-6 border-b border-border-color flex items-center justify-between">
                     <div>
-                        <h2 className="text-xl font-bold text-text-primary">Mein Lehrplan</h2>
-                        <p className="text-text-secondary text-sm mt-1">Wähle deine Fächer und Kursniveaus.</p>
+                        <h2 className="text-xl font-bold text-text-primary">
+                            {retirementOnly ? 'Kompatibilitaetsansicht' : 'Mein Lehrplan'}
+                        </h2>
+                        <p className="text-text-secondary text-sm mt-1">
+                            {retirementOnly
+                                ? 'Diese Hessen-Ansicht bleibt nur noch fuer Migration, Vergleich und Audit verfuegbar.'
+                                : 'Wähle deine Fächer und Kursniveaus.'}
+                        </p>
                     </div>
                     <button
                         onClick={onClose}
@@ -360,8 +425,21 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                         </div>
                     )}
 
+                    {retirementOnly && (
+                        <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50/40 p-4 dark:border-amber-900/40 dark:bg-amber-900/10">
+                            <h3 className="text-sm font-semibold text-text-primary">Nur noch fuer Umstellung und Audit</h3>
+                            <p className="mt-2 text-sm text-text-secondary">
+                                Fach- und Filteraenderungen werden in dieser eingefrorenen Hessen-Ansicht nicht mehr gepflegt.
+                                Fuer die weitere Arbeit soll der Lernstand auf Gymnasium (DE) umgestellt werden.
+                            </p>
+                            <p className="mt-2 text-sm text-text-secondary">
+                                Die aktuelle Legacy-Ansicht bleibt vorerst als Vergleichspfad sichtbar, ist aber kein normaler Konfigurationspfad mehr.
+                            </p>
+                        </div>
+                    )}
+
                     {/* Preferences Section */}
-                    {onPreferencesChange && (
+                    {!retirementOnly && onPreferencesChange && (
                         <div className="mb-6 bg-blue-50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30">
                             <h3 className="text-sm font-semibold text-text-primary mb-3">Auswahlpriorisierung</h3>
                             <div className="flex flex-col gap-3">
@@ -419,9 +497,11 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                         </div>
                     )}
 
-                    <div className="flex flex-col gap-1">
-                        {rootLandscape ? renderNode(rootLandscape, true) : childrenLandscapes.map(l => renderNode(l, false))}
-                    </div>
+                    {!retirementOnly && (
+                        <div className="flex flex-col gap-1">
+                            {rootLandscape ? renderNode(rootLandscape, true) : childrenLandscapes.map(l => renderNode(l, false))}
+                        </div>
+                    )}
                 </div>
 
                 <div className="p-6 border-t border-border-color bg-sidebar-bg/50 rounded-b-2xl flex justify-end">
@@ -429,7 +509,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                         onClick={onClose}
                         className="px-6 py-2.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg font-medium transition-colors shadow-lg shadow-sky-900/20"
                     >
-                        Fertig
+                        {retirementOnly ? 'Schliessen' : 'Fertig'}
                     </button>
                 </div>
             </div>

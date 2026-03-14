@@ -687,7 +687,7 @@ Before runtime changes begin, the dry-run compiler plus validator should satisfy
 | --- | --- | --- |
 | `A1` | canonical mathematics + `curricula/DE/BY/Gymnasium/mapping/bavaria_math_to_canonical_math_pilot.json` | projected graph `jurisdiction = DE-BY` contains the `J7-J9` anchors and the existing function corridor with zero closure errors |
 | `A2` | canonical mathematics + Hessen math upper-secondary and lower-secondary pilot mappings | projected graph `jurisdiction = DE-HE` for the currently cutover-relevant Hessen math slice has zero closure errors |
-| `A3` | canonical economics + `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_economics_upper_secondary_to_canonical_economics.json` | the reviewed Hessen economics mirror compiles with stable `jurisdiction = DE-HE` applicability and no unexpected `DE-BY` visibility |
+| `A3` | canonical economics + `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_economics_upper_secondary_to_canonical_economics.json` | the reviewed Hessen economics mirror compiles with stable `jurisdiction = DE-HE` applicability and no unexpected `DE-BY` visibility |
 | `A4` | canonical overview root plus child subject roots | root and subject clusters inherit only the union of visible child values; no phantom root visibility appears in the projected filtered graphs |
 | `A5` | at least one intentional override-backed synthetic goal in a reviewed fixture, if such a case exists | compiler emits `APV-201`, keeps applicability explicit, and still passes if no hard errors exist |
 
@@ -727,6 +727,7 @@ Responsibility split:
 - `validateGraph.ts` remains the raw-landscape validator
 - the new validator operates on projected filtered graphs derived from compiled `applicability`
 - the compiler writes review output under `tmp/applicability/` in its first phase
+- provenance-backed applicability may resolve `sourceLandscapeId` through the DE-level registry `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`, so reviewed applicability does not depend on an active legacy source tree staying loadable
 
 ### C. Backend runtime filtering
 

@@ -10,6 +10,7 @@ interface FlashcardDrillProps {
     titleOverride?: string
     filterTags?: string[]
     goalId: string
+    readOnly?: boolean
     onSync?: (goalId: string) => Promise<boolean>
     reloadSignal?: number
     onStateChange?: (state: {
@@ -47,6 +48,8 @@ const UI_TEXT = {
         sessionComplete: "Session Complete!",
         reviewed: "You reviewed {0} cards.",
         continue: "Continue Learning",
+        readOnlyTitle: "Compatibility View",
+        readOnlyBody: "Flashcard practice is disabled in this compatibility view. Please move to Gymnasium (DE) to continue learning here.",
         progress: "Your Progress",
         localData: "Local Data", // Not used explicitly anymore as we always force local
         localDataTooltip: "Saved in this browser.",
@@ -86,6 +89,8 @@ const UI_TEXT = {
         sessionComplete: "Sitzung beendet!",
         reviewed: "Du hast {0} Karten wiederholt.",
         continue: "Weiterlernen",
+        readOnlyTitle: "Kompatibilitaetsansicht",
+        readOnlyBody: "Der Karteikarten-Drill ist in dieser Kompatibilitaetsansicht deaktiviert. Bitte auf Gymnasium (DE) umstellen, um hier weiterzulernen.",
         progress: "Dein Fortschritt",
         localData: "Lokale Daten",
         localDataTooltip: "In diesem Browser gespeichert.",
@@ -141,6 +146,7 @@ export function FlashcardDrill({
     titleOverride,
     filterTags,
     goalId,
+    readOnly = false,
     onSync,
     reloadSignal,
     onStateChange
@@ -545,6 +551,27 @@ export function FlashcardDrill({
 
     if (stats.total === 0) {
         return <div className="p-8 text-center text-gray-500 italic">{t.noCardsForFilter}</div>
+    }
+
+    if (readOnly) {
+        return (
+            <div className="flex flex-col items-center w-full max-w-md mx-auto p-4 min-h-[40vh]">
+                <div className="w-full rounded-2xl border border-amber-200 bg-amber-50/40 p-5 dark:border-amber-900/40 dark:bg-amber-900/10">
+                    <h2 className="text-lg font-semibold text-text-primary">{t.readOnlyTitle}</h2>
+                    <p className="mt-2 text-sm text-text-secondary">{t.readOnlyBody}</p>
+                    <div className="mt-4 grid grid-cols-2 gap-3">
+                        <div className="rounded-xl bg-white/80 p-3 dark:bg-slate-950/30">
+                            <div className="text-[11px] font-semibold uppercase tracking-wide text-text-secondary">{t.review}</div>
+                            <div className="mt-1 text-xl font-semibold text-text-primary">{stats.due}</div>
+                        </div>
+                        <div className="rounded-xl bg-white/80 p-3 dark:bg-slate-950/30">
+                            <div className="text-[11px] font-semibold uppercase tracking-wide text-text-secondary">{t.master}</div>
+                            <div className="mt-1 text-xl font-semibold text-text-primary">{stats.box3}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
     }
 
     if (!currentCard || !vocabData) return <div className="p-8 text-center">{t.loading}</div>

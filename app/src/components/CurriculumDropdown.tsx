@@ -3,8 +3,8 @@ import { useTranslation } from '../hooks/useTranslation'
 import { useLanguage } from '../contexts/LanguageContext'
 import {
     CANONICAL_GYMNASIUM_ROOT_ID,
-    LEGACY_HESSEN_GYMNASIUM_UPPER_IDS,
     getCurriculumDisplayTitle,
+    isCompatibilityOnlyCurriculum,
 } from '../utils/curriculumDisplay'
 
 export interface LandscapeSummary {
@@ -20,6 +20,7 @@ export interface LandscapeSummary {
     filters?: { id: string; label: string }[]
     title?: string
     schoolType?: string
+    compatibilityOnly?: boolean
 }
 
 interface CurriculumDropdownProps {
@@ -28,6 +29,7 @@ interface CurriculumDropdownProps {
     className?: string
     filterOptions?: (options: LandscapeSummary[]) => LandscapeSummary[]
     landscapes?: LandscapeSummary[]
+    showCompatibilityViews?: boolean
 }
 
 type Category = 'SCHOOL' | 'UNI' | 'OTHER'
@@ -38,6 +40,7 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
     className = '',
     filterOptions,
     landscapes: providedLandscapes,
+    showCompatibilityViews = true,
 }) => {
     const t = useTranslation()
     const { language } = useLanguage()
@@ -56,9 +59,11 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
             try {
                 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
                 const url = apiBase ? `${apiBase}/api/ui/landscapes` : '/api/ui/landscapes'
+                const includeCompatibility = showCompatibilityViews
+                    || isCompatibilityOnlyCurriculum(currentLandscapeId, null)
 
                 // Pass current language to backend
-                const query = `?lang=${language}`
+                const query = `?lang=${language}&includeCompatibility=${includeCompatibility ? 'true' : 'false'}`
                 const res = await fetch(url + query)
                 const data = await res.json()
                 const summaries = (data.summaries || []) as LandscapeSummary[]
@@ -76,7 +81,7 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
             }
         }
         fetchLandscapes()
-    }, [providedLandscapes, language]) // Re-fetch when language changes
+    }, [providedLandscapes, language, showCompatibilityViews, currentLandscapeId]) // Re-fetch when language changes
 
     const getCategory = (l: LandscapeSummary): Category => {
         const sType = (l.schoolType || l.type || '').toUpperCase()
@@ -105,11 +110,12 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
         description: l.description,
         subject: l.subject,
         language,
+        compatibilityOnly: l.compatibilityOnly,
     })
 
     const getSortPriority = (l: LandscapeSummary) => {
         if (l.curriculumId === CANONICAL_GYMNASIUM_ROOT_ID) return 0
-        if (LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(l.curriculumId)) return 2
+        if (isCompatibilityOnlyCurriculum(l.curriculumId, l.compatibilityOnly)) return 2
         return 1
     }
 
@@ -141,6 +147,16 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
         const textB = getDisplayTitle(b);
         return textA.localeCompare(textB, language);
     });
+
+    const primaryLandscapes = sortedLandscapes.filter(
+        (landscape) => !isCompatibilityOnlyCurriculum(landscape.curriculumId, landscape.compatibilityOnly),
+    )
+    const compatibilityLandscapes = sortedLandscapes.filter((landscape) =>
+        isCompatibilityOnlyCurriculum(landscape.curriculumId, landscape.compatibilityOnly),
+    )
+    const visibleCompatibilityLandscapes = showCompatibilityViews
+        ? compatibilityLandscapes
+        : compatibilityLandscapes.filter((landscape) => landscape.curriculumId === currentLandscapeId)
 
     const categoryLabels: Record<Category, string> = {
         'SCHOOL': language === 'de' ? 'Schule' : 'School',
@@ -175,11 +191,24 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
                 <option value="" disabled>
                     {t.startPage.login.curriculumLabel.select}
                 </option>
-                {sortedLandscapes.map((l) => (
-                    <option key={l.curriculumId} value={l.curriculumId} className="bg-input-bg text-text-primary">
-                        {getDisplayTitle(l)}
-                    </option>
-                ))}
+                {primaryLandscapes.length > 0 && (
+                    <optgroup label={language === 'de' ? 'Empfohlene Curricula' : 'Recommended curricula'}>
+                        {primaryLandscapes.map((l) => (
+                            <option key={l.curriculumId} value={l.curriculumId} className="bg-input-bg text-text-primary">
+                                {getDisplayTitle(l)}
+                            </option>
+                        ))}
+                    </optgroup>
+                )}
+                {visibleCompatibilityLandscapes.length > 0 && (
+                    <optgroup label={language === 'de' ? 'Kompatibilitaetsansichten' : 'Compatibility views'}>
+                        {visibleCompatibilityLandscapes.map((l) => (
+                            <option key={l.curriculumId} value={l.curriculumId} className="bg-input-bg text-text-primary">
+                                {getDisplayTitle(l)}
+                            </option>
+                        ))}
+                    </optgroup>
+                )}
             </select>
         </div>
     )

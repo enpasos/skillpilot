@@ -141,8 +141,15 @@ Current operational baseline:
 - the learner cockpit now exposes a first explicit UI migration path from frozen Hessen upper-secondary views into `Gymnasium (DE)` and switches the frontend landscape context after successful cutover
 - after successful UI cutover, the cockpit now navigates directly into the migrated canonical focus instead of leaving the learner on the old Hessen route or only at the DE root
 - the UI cutover dialog now previews the adopted Hessen -> DE transfer per subject and course level before the learner triggers migration
-- the curriculum picker now prioritizes `Gymnasium (DE)` for new learner entry and explicitly labels the frozen Hessen upper-secondary views as retained legacy views
-- the frozen Hessen cockpit view now also surfaces the DE cutover directly inside the learner workspace, so retained legacy views are usable without hiding the canonical migration path in setup only
+- the curriculum picker now prioritizes `Gymnasium (DE)` for new learner entry and explicitly labels the frozen Hessen upper-secondary views as compatibility views
+- the frozen Hessen cockpit view now also surfaces the DE cutover directly inside the learner workspace, so retained compatibility views are usable without hiding the canonical migration path in setup only
+- ordinary session-start and championship-registration pickers no longer list compatibility views by default; they are only retained there when already selected
+- backend bootstrap for new learners now follows the same rule and returns recommended curricula without compatibility views by default; the general UI landscapes endpoint now exposes compatibility explicitly via `includeCompatibility=true`
+- the learner cockpit setup now treats Hessen compatibility subjects as an explicitly revealable secondary section, and canonical `Gymnasium (DE)` setups prune stale Hessen compatibility entries from persisted personal curriculum configs
+- when the learner is still inside a Hessen compatibility session, that same cockpit setup now runs in retirement-only mode: migration/audit stay available, but it no longer acts as a normal curriculum configuration editor for the frozen Hessen path
+- the learner cockpit now also treats those open Hessen compatibility sessions as read-only/audit-only for planning, active-goal selection, and SRS drilling, so the retained Hessen path is no longer a normal active-learning workspace even before full backend retirement
+- UI and AI write endpoints now enforce the same rule server-side: retained Hessen compatibility sessions reject curriculum mutation, planning, active-goal, mastery, and client-state writes, so the remaining compatibility route is backend-read-only as well as frontend-read-only
+- UI and AI learner-state routes now also require an explicit `includeCompatibilityAudit=true` opt-in before they will serve a retained Hessen compatibility session; without that flag, the normal learner route is retired and the cockpit must offer migration or an explicit audit fallback instead
 - an explicit backend bulk-cutover path with `dryRun` and a supplied learner-ID list is now available, so later Hessen -> DE migrations can be rehearsed and executed without exposing global learner listings
 - the operator-facing bulk-cutover UI now supports CSV export of dry-run/execution results and lets operators reduce the current input list to the `eligible` learner IDs before triggering the real migration
 - the canonical Mathematics pilot function corridor is `cutover_ready`
@@ -262,7 +269,7 @@ WP2 result:
 - first canonical mathematics pilot landscape added:
   - `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - first real Hessen-to-canonical mapping fixture added:
-  - `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_math_upper_secondary_to_canonical_math_pilot.json`
+  - `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_to_canonical_math_pilot.json`
 - pilot location decision for now:
   - keep the first canonical seed physically separate from state-owned source trees on a Germany-level path
 - pilot scope kept intentionally small:
@@ -279,6 +286,8 @@ WP2 result:
   - the selected root Bundesland filter is propagated into the selected canonical child landscapes during goal filtering
 - current runtime rule is still transitional:
   - canonical state visibility is currently derived at runtime from mappings and provenance
+  - `sourceLandscapeId -> jurisdiction` resolution can now be served from the DE-level provenance registry `curricula/DE/Gymnasium/provenance/source-landscape-registry.json` instead of depending only on a loaded legacy landscape file
+  - Hessen upper-secondary champion/topic equivalence can now also serve `sourceLandscapeId + sourceGoalId -> atomic legacy closure` from the DE-level provenance registry `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`
   - target architecture should converge to compiled node-level `applicability`; see `docs/dev/canonical-gymnasium-applicability-design.md`
 - verification:
   - backend tests confirm loading of the pilot landscape and the repository mapping fixture
@@ -480,7 +489,7 @@ WP8 progress so far:
   - horizontal projection
   - traffic safety / reaction and braking distances
 - first explicit Hessen Physik -> canonical Physik mapping fixture added:
-  - `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_physics_upper_secondary_to_canonical_physics_pilot.json`
+  - `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics_pilot.json`
 - the Physics pilot reuses the existing canonical Mathematics pilot instead of duplicating content:
   - selected canonical mathematics atoms are visible in the Physics motion cluster
   - Physics atomic goals add only a small set of explicit Math -> Physics prerequisite edges

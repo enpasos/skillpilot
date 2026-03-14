@@ -1,7 +1,9 @@
 package com.skillpilot.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -398,7 +400,7 @@ public class LearnerServiceReproTest {
 
         when(landscapeService.getById(curriculumId)).thenReturn(landscape);
         when(landscapeService.getClosure(curriculumId)).thenReturn(List.of(landscape));
-        when(landscapeService.getOverview())
+        when(landscapeService.getOverview(anyString(), anyBoolean()))
                 .thenReturn(new com.skillpilot.backend.api.LandscapeOverviewResponse(
                         Collections.emptyList(), Collections.emptyMap()));
 

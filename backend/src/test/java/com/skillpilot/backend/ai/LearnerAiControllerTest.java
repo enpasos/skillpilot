@@ -79,6 +79,7 @@ class LearnerAiControllerTest {
         assertThat(response.getBody()).isInstanceOf(MasteryUpdateResponse.class);
 
         InOrder ordered = inOrder(learnerService);
+        ordered.verify(learnerService).assertWritableLearningSession(skillpilotId);
         ordered.verify(learnerService).getLearnerState(skillpilotId);
         ordered.verify(learnerService).setActiveGoal(skillpilotId, goalId);
         ordered.verify(learnerService).getLearnerState(skillpilotId);
@@ -98,6 +99,7 @@ class LearnerAiControllerTest {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CONFLICT);
         assertThat(response.getBody()).isInstanceOf(UnifiedLearnerStateResponse.class);
 
+        verify(learnerService).assertWritableLearningSession(skillpilotId);
         verify(learnerService).getLearnerState(skillpilotId);
         verifyNoMoreInteractions(learnerService);
     }
@@ -134,6 +136,7 @@ class LearnerAiControllerTest {
         assertThat(body.stateMachine()).isNotNull();
         assertThat(body.stateMachine().requiredAction()).isEqualTo("setMastery");
 
+        verify(learnerService).assertWritableLearningSession(skillpilotId);
         verify(learnerService).getLearnerState(skillpilotId);
         verify(learnerService).setMastery(eq(skillpilotId), any(MasteryUpdateRequest.class));
         verifyNoMoreInteractions(learnerService);
@@ -169,7 +172,7 @@ class LearnerAiControllerTest {
 
         when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
 
-        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
+        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId, false);
 
         assertThat(state.frontier()).hasSize(1);
         assertThat(state.frontier().get(0).nodeKind()).isEqualTo("exam");
@@ -178,6 +181,10 @@ class LearnerAiControllerTest {
         assertThat(state.stateMachine().goalOptions().get(0).examData()).isNull();
         assertThat(state.goals().planned()).hasSize(1);
         assertThat(state.goals().planned().get(0).examData()).isNull();
+
+        verify(learnerService).assertCompatibilityAuditAccess(skillpilotId, false);
+        verify(learnerService).getLearnerState(skillpilotId);
+        verifyNoMoreInteractions(learnerService);
     }
 
     @Test
@@ -198,7 +205,7 @@ class LearnerAiControllerTest {
 
         when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
 
-        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
+        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId, false);
 
         assertThat(state.activeGoal()).isNotNull();
         assertThat(state.activeGoal().examData()).isNotNull();
@@ -207,6 +214,10 @@ class LearnerAiControllerTest {
         assertThat(state.stateMachine().activeGoal().examData()).isNotNull();
         assertThat(state.frontier()).hasSize(1);
         assertThat(state.frontier().get(0).examData()).isNull();
+
+        verify(learnerService).assertCompatibilityAuditAccess(skillpilotId, false);
+        verify(learnerService).getLearnerState(skillpilotId);
+        verifyNoMoreInteractions(learnerService);
     }
 
     @Test
@@ -227,10 +238,14 @@ class LearnerAiControllerTest {
 
         when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
 
-        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
+        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId, false);
         String json = new ObjectMapper().writeValueAsString(state);
 
         assertThat(json).doesNotContain("\"release\"");
+
+        verify(learnerService).assertCompatibilityAuditAccess(skillpilotId, false);
+        verify(learnerService).getLearnerState(skillpilotId);
+        verifyNoMoreInteractions(learnerService);
     }
 
     private String invokeNormalizeMathDelimitersForChat(String content) throws Exception {

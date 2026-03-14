@@ -26,6 +26,30 @@ import org.springframework.util.StringUtils;
 public class LandscapeService {
 
     private static final Logger log = LoggerFactory.getLogger(LandscapeService.class);
+    private static final int SUPPORTED_SOURCE_REGISTRY_VERSION = 1;
+    private static final Path SOURCE_LANDSCAPE_REGISTRY_PATH = Path.of(
+            "DE", "Gymnasium", "provenance", "source-landscape-registry.json");
+    private static final int SUPPORTED_SOURCE_GOAL_CLOSURE_REGISTRY_VERSION = 1;
+    private static final Path SOURCE_GOAL_CLOSURE_REGISTRY_PATH = Path.of(
+            "DE", "Gymnasium", "provenance", "source-goal-closure-registry.json");
+    private static final Set<String> COMPATIBILITY_ONLY_LANDSCAPE_IDS = Set.of(
+            "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da",
+            "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+            "24f2ca0f-b94a-444e-bb70-677cb6f85c02",
+            "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "bdc89685-73d3-446c-af5a-eaf642c07463",
+            "f1ba2118-853f-4aa0-bef5-4f749bc621ed",
+            "1d0e9f8f-0087-49e4-8ea2-976e5a89b165",
+            "bc2124fa-2974-46cc-85e7-2392e61250e1",
+            "30acd190-609c-4109-8ee7-06fc5594af19",
+            "fe28bda8-03f3-4c4a-8286-7fcfce4eeac1",
+            "936efc61-a4d5-49fd-8694-085d1347db80",
+            "c7209caa-18e5-4dd8-b68f-dd86e228d045",
+            "7651cbe2-5fb8-464d-b0c4-3e830cda41dd",
+            "a8c23058-6998-49f2-9f3b-a85e951d5ab0",
+            "a334a745-1d67-4e1d-86a5-dadc04f144d2");
 
     private final LandscapeProperties properties;
     private final ObjectMapper objectMapper;
@@ -37,6 +61,8 @@ public class LandscapeService {
     private volatile Map<String, LearningLandscape> cachedById = Collections.emptyMap();
     private volatile Map<String, LearningLandscape> cachedByLegacyId = Collections.emptyMap();
     private volatile Map<String, String> goalIdToLandscapeId = Collections.emptyMap();
+    private volatile Map<String, String> sourceLandscapeJurisdictionById = Collections.emptyMap();
+    private volatile Map<String, Map<String, Set<String>>> sourceAtomicGoalIdsByLandscapeAndGoal = Collections.emptyMap();
     private volatile Set<String> curriculumManifest = Collections.emptySet();
     private volatile long lastLoadedFingerprint = -1L;
     private volatile long lastReloadCheck = 0L;
@@ -210,7 +236,11 @@ public class LandscapeService {
             log.warn("Landscape directory does not exist: {}", dir);
             cachedLandscapes = Collections.emptyList();
             cachedById = Collections.emptyMap();
+            cachedByLegacyId = Collections.emptyMap();
             goalIdToLandscapeId = Collections.emptyMap();
+            sourceLandscapeJurisdictionById = Collections.emptyMap();
+            sourceAtomicGoalIdsByLandscapeAndGoal = Collections.emptyMap();
+            curriculumManifest = Collections.emptySet();
             lastLoadedFingerprint = -1L;
             return;
         }
@@ -329,6 +359,8 @@ public class LandscapeService {
         cachedById = Collections.unmodifiableMap(byId);
         cachedByLegacyId = Collections.unmodifiableMap(byLegacyId);
         goalIdToLandscapeId = Collections.unmodifiableMap(goalIndex);
+        sourceLandscapeJurisdictionById = Collections.unmodifiableMap(loadSourceLandscapeRegistry(dir));
+        sourceAtomicGoalIdsByLandscapeAndGoal = Collections.unmodifiableMap(loadSourceGoalClosureRegistry(dir));
         curriculumManifest = loadCurriculumManifest(dir, cachedById);
         lastLoadedFingerprint = maxLastModified;
         log.info("Loaded {} landscapes and {} goals from {}", loaded.size(), goalIndex.size(), dir);
@@ -344,6 +376,10 @@ public class LandscapeService {
     }
 
     public LandscapeOverviewResponse getOverview(String lang) {
+        return getOverview(lang, true);
+    }
+
+    public LandscapeOverviewResponse getOverview(String lang, boolean includeCompatibility) {
         ensureFresh();
         List<LandscapeSummary> summaries = new ArrayList<>();
 
@@ -388,7 +424,8 @@ public class LandscapeService {
 
             summaries.add(new LandscapeSummary(ll.getLandscapeId(), displayTitle, displayDescription,
                     country, region, mappedType, mappedSubject, ll.getLocale(),
-                    ll.getFilters() != null ? ll.getFilters() : new ArrayList<>()));
+                    ll.getFilters() != null ? ll.getFilters() : new ArrayList<>(),
+                    isCompatibilityOnlyLandscape(ll.getLandscapeId())));
 
         }
 
@@ -402,6 +439,9 @@ public class LandscapeService {
             for (String id : curriculumManifest) {
                 LandscapeSummary summary = byId.get(id);
                 if (summary != null) {
+                    if (!includeCompatibility && summary.isCompatibilityOnly()) {
+                        continue;
+                    }
                     rootSummaries.add(summary);
                 }
             }
@@ -409,6 +449,7 @@ public class LandscapeService {
             // Filter out non-root curricula (those that are contained in others)
             Set<String> referencedIds = getReferencedLandscapeIds();
             rootSummaries = summaries.stream()
+                    .filter(s -> includeCompatibility || !s.isCompatibilityOnly())
                     .filter(s -> !referencedIds.contains(s.getCurriculumId()))
                     .filter(s -> {
                         LearningLandscape landscape = cachedById.get(s.getCurriculumId());
@@ -503,10 +544,45 @@ public class LandscapeService {
     }
 
     public List<LandscapeSummary> getBaseCurricula() {
+        return getBaseCurricula(true);
+    }
+
+    public List<LandscapeSummary> getBaseCurricula(boolean includeCompatibility) {
         // Base curricula are all root landscapes that are not referenced
         // as sub-landscapes in others. This keeps AI and Explorer in sync
         // without hardcoding specific curriculum IDs.
-        return getOverview().getSummaries();
+        return getOverview("de", includeCompatibility).getSummaries();
+    }
+
+    public boolean isCompatibilityOnlyLandscape(String landscapeId) {
+        return landscapeId != null && COMPATIBILITY_ONLY_LANDSCAPE_IDS.contains(landscapeId);
+    }
+
+    public String resolveSourceLandscapeJurisdiction(String landscapeId) {
+        ensureFresh();
+        if (!StringUtils.hasText(landscapeId)) {
+            return null;
+        }
+        LearningLandscape landscape = cachedById.get(landscapeId);
+        if (landscape != null) {
+            String jurisdiction = normalizeBundeslandCode(landscape.getRegion());
+            if (jurisdiction != null) {
+                return jurisdiction;
+            }
+        }
+        return sourceLandscapeJurisdictionById.get(landscapeId);
+    }
+
+    public Set<String> resolveSourceAtomicGoalIds(String landscapeId, String goalId) {
+        ensureFresh();
+        if (!StringUtils.hasText(landscapeId) || !StringUtils.hasText(goalId)) {
+            return Collections.emptySet();
+        }
+        Map<String, Set<String>> byGoalId = sourceAtomicGoalIdsByLandscapeAndGoal.get(landscapeId);
+        if (byGoalId == null || byGoalId.isEmpty()) {
+            return Collections.emptySet();
+        }
+        return byGoalId.getOrDefault(goalId, Collections.emptySet());
     }
 
     private Map<String, Object> buildHierarchy(List<LandscapeSummary> summaries) {
@@ -549,6 +625,121 @@ public class LandscapeService {
             }
         }
         return hierarchy;
+    }
+
+    private Map<String, String> loadSourceLandscapeRegistry(Path dir) {
+        Path registryFile = dir.resolve(SOURCE_LANDSCAPE_REGISTRY_PATH);
+        if (!Files.isRegularFile(registryFile)) {
+            return Collections.emptyMap();
+        }
+        try {
+            JsonNode root = objectMapper.readTree(registryFile.toFile());
+            if (root == null || !root.isObject()) {
+                throw new IllegalStateException("Invalid source landscape registry root: " + registryFile);
+            }
+            JsonNode versionNode = root.get("version");
+            if (versionNode == null || !versionNode.canConvertToInt()
+                    || versionNode.intValue() != SUPPORTED_SOURCE_REGISTRY_VERSION) {
+                throw new IllegalStateException("Unsupported source landscape registry version in " + registryFile);
+            }
+            JsonNode entriesNode = root.get("entries");
+            if (entriesNode == null || !entriesNode.isArray()) {
+                throw new IllegalStateException("Source landscape registry has no entries array: " + registryFile);
+            }
+
+            Map<String, String> result = new LinkedHashMap<>();
+            for (JsonNode entry : entriesNode) {
+                if (entry == null || !entry.isObject()) {
+                    continue;
+                }
+                String landscapeId = readRegistryText(entry, "landscapeId");
+                String jurisdiction = normalizeBundeslandCode(readRegistryText(entry, "jurisdiction"));
+                if (!StringUtils.hasText(landscapeId) || !StringUtils.hasText(jurisdiction)) {
+                    throw new IllegalStateException("Invalid source landscape registry entry in " + registryFile);
+                }
+                result.put(landscapeId, jurisdiction);
+            }
+            return result;
+        } catch (IOException e) {
+            throw new IllegalStateException("Failed to load source landscape registry from " + registryFile, e);
+        }
+    }
+
+    private Map<String, Map<String, Set<String>>> loadSourceGoalClosureRegistry(Path dir) {
+        Path registryFile = dir.resolve(SOURCE_GOAL_CLOSURE_REGISTRY_PATH);
+        if (!Files.isRegularFile(registryFile)) {
+            return Collections.emptyMap();
+        }
+        try {
+            JsonNode root = objectMapper.readTree(registryFile.toFile());
+            if (root == null || !root.isObject()) {
+                throw new IllegalStateException("Invalid source goal closure registry root: " + registryFile);
+            }
+            JsonNode versionNode = root.get("version");
+            if (versionNode == null || !versionNode.canConvertToInt()
+                    || versionNode.intValue() != SUPPORTED_SOURCE_GOAL_CLOSURE_REGISTRY_VERSION) {
+                throw new IllegalStateException("Unsupported source goal closure registry version in " + registryFile);
+            }
+            JsonNode landscapesNode = root.get("landscapes");
+            if (landscapesNode == null || !landscapesNode.isArray()) {
+                throw new IllegalStateException("Source goal closure registry has no landscapes array: " + registryFile);
+            }
+
+            Map<String, Map<String, Set<String>>> result = new LinkedHashMap<>();
+            for (JsonNode landscapeNode : landscapesNode) {
+                if (landscapeNode == null || !landscapeNode.isObject()) {
+                    continue;
+                }
+                String landscapeId = readRegistryText(landscapeNode, "landscapeId");
+                JsonNode closuresNode = landscapeNode.get("goalAtomicClosures");
+                if (!StringUtils.hasText(landscapeId) || closuresNode == null || !closuresNode.isObject()) {
+                    throw new IllegalStateException("Invalid source goal closure registry entry in " + registryFile);
+                }
+
+                Map<String, Set<String>> closuresByGoalId = new LinkedHashMap<>();
+                closuresNode.fields().forEachRemaining(entry -> {
+                    String goalId = entry.getKey();
+                    JsonNode atomicIdsNode = entry.getValue();
+                    if (!StringUtils.hasText(goalId) || atomicIdsNode == null || !atomicIdsNode.isArray()) {
+                        throw new IllegalStateException(
+                                "Invalid source goal closure registry goal entry in " + registryFile);
+                    }
+                    Set<String> atomicIds = new LinkedHashSet<>();
+                    for (JsonNode atomicIdNode : atomicIdsNode) {
+                        if (atomicIdNode == null || !atomicIdNode.isTextual()
+                                || !StringUtils.hasText(atomicIdNode.asText())) {
+                            throw new IllegalStateException(
+                                    "Invalid source goal closure registry atomic id in " + registryFile);
+                        }
+                        atomicIds.add(atomicIdNode.asText());
+                    }
+                    closuresByGoalId.put(goalId, Collections.unmodifiableSet(atomicIds));
+                });
+                result.put(landscapeId, Collections.unmodifiableMap(closuresByGoalId));
+            }
+            return result;
+        } catch (IOException e) {
+            throw new IllegalStateException("Failed to load source goal closure registry from " + registryFile, e);
+        }
+    }
+
+    private String readRegistryText(JsonNode node, String field) {
+        JsonNode value = node.get(field);
+        return value != null && value.isTextual() ? value.asText() : null;
+    }
+
+    private String normalizeBundeslandCode(String region) {
+        if (!StringUtils.hasText(region)) {
+            return null;
+        }
+        String normalized = region.trim().toUpperCase(Locale.ROOT);
+        if (normalized.equals("HE") || normalized.equals("HES") || normalized.equals("DE-HE")) {
+            return "DE-HE";
+        }
+        if (normalized.equals("BY") || normalized.equals("BAY") || normalized.equals("DE-BY")) {
+            return "DE-BY";
+        }
+        return null;
     }
 
     private void ensureFresh() {

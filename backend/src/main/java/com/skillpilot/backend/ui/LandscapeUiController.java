@@ -31,8 +31,10 @@ public class LandscapeUiController {
 
     @GetMapping
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
-    public LandscapeOverviewResponse listLandscapes(@RequestParam(defaultValue = "de") String lang) {
-        return landscapeService.getOverview(lang);
+    public LandscapeOverviewResponse listLandscapes(
+            @RequestParam(defaultValue = "de") String lang,
+            @RequestParam(defaultValue = "true") boolean includeCompatibility) {
+        return landscapeService.getOverview(lang, includeCompatibility);
     }
 
     @GetMapping("/{landscapeId}")

@@ -12,6 +12,7 @@ interface GoalCardProps {
   masteryValue: number
   onMasteryChange?: (id: string, value: number) => void
   showLearnerTools: boolean
+  readOnly?: boolean
   showDetails?: boolean
   isPlanned?: boolean
   isActive?: boolean
@@ -154,6 +155,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   masteryValue,
   onMasteryChange,
   showLearnerTools,
+  readOnly = false,
   showDetails = false,
   isPlanned = false,
   isActive = false,
@@ -171,7 +173,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   // Detect if Atomic Goal (no children)
   const isAtomic = !goal.contains || goal.contains.length === 0
   const mastered = isMastered(masteryValue)
-  const canSetActive = Boolean(onSetActive && isAtomic && !mastered && (isFrontier || isActive))
+  const canSetActive = Boolean(!readOnly && onSetActive && isAtomic && !mastered && (isFrontier || isActive))
   const activeActionLabel = isActive
     ? 'Zum aktiven Lernziel springen'
     : 'Als aktuelles Lernziel auswählen'
@@ -443,9 +445,14 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
       {showLearnerTools && (
         <div className="mt-4 space-y-4">
+          {readOnly && (
+            <div className="rounded-xl border border-amber-200 bg-amber-50/40 p-4 text-sm text-text-secondary dark:border-amber-900/40 dark:bg-amber-900/10">
+              Diese Kompatibilitaetsansicht ist schreibgeschuetzt. Fuer aktives Lernen und Statusaenderungen bitte auf Gymnasium (DE) umstellen.
+            </div>
+          )}
 
           {/* Frontier Recommendations (When Mastered) */}
-          {mastered && nextCandidates.length > 0 && onSetActive && (
+          {!readOnly && mastered && nextCandidates.length > 0 && onSetActive && (
             <div className="bg-amber-50 dark:bg-amber-900/10 rounded-xl p-4 border border-amber-100 dark:border-amber-900/30">
               <h3 className="text-xs font-bold text-amber-700 dark:text-amber-500 uppercase tracking-wide mb-3">
                 Nächste Schritte
@@ -470,7 +477,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
 
           {/* Action Buttons Row (Only if NOT Mastered) */}
-          {isAtomic && !isActive && onSetActive && !mastered && isFrontier && (
+          {!readOnly && isAtomic && !isActive && onSetActive && !mastered && isFrontier && (
             <div className="flex justify-end">
               <button
                 onClick={() => onSetActive(goal.id)}
@@ -491,7 +498,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
           {!isAtomic && <MasteryBar value={masteryValue} />}
 
-          {onMasteryChange && (
+          {!readOnly && onMasteryChange && (
             <div className="flex items-center gap-3">
               <input
                 type="range"
