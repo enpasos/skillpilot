@@ -1,0 +1,430 @@
+{
+  "examSpecId": "hessen-landesabitur-2026-informatics",
+  "version": 1,
+  "notes": [
+    "Offer collections are anchored in the curriculum via release metadata.",
+    "Master collections are derived in the pipeline from offer tasks plus phase practice tasks.",
+    "Informatik 2026 uses an official A/B/C structure with mandatory and choice components rather than the four-proposal pattern of other subjects.",
+    "BE totals are normalized planning values for pipeline coverage and QA, not a claim about official score tables."
+  ],
+  "collections": [
+    {
+      "id": "gk_offer_2026",
+      "label": "GK Offer Set 2026",
+      "releaseRef": {
+        "examYear": 2026,
+        "kind": "offer",
+        "courseLevel": "GK"
+      },
+      "courseLevel": "GK",
+      "kind": "offer",
+      "selectionMode": "official_exam",
+      "expectedSolvedBeTotal": 50,
+      "slotIds": [
+        "gk_a_algorithmic_oop",
+        "gk_b1_databases",
+        "gk_b2_theoretical_informatics"
+      ],
+      "selectionPaths": [
+        {
+          "id": "gk_a_b1",
+          "slotIds": [
+            "gk_a_algorithmic_oop",
+            "gk_b1_databases"
+          ]
+        },
+        {
+          "id": "gk_a_b2",
+          "slotIds": [
+            "gk_a_algorithmic_oop",
+            "gk_b2_theoretical_informatics"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lk_offer_2026",
+      "label": "LK Offer Set 2026",
+      "releaseRef": {
+        "examYear": 2026,
+        "kind": "offer",
+        "courseLevel": "LK"
+      },
+      "courseLevel": "LK",
+      "kind": "offer",
+      "selectionMode": "official_exam",
+      "expectedSolvedBeTotal": 75,
+      "slotIds": [
+        "lk_a_algorithmic_oop",
+        "lk_b_databases",
+        "lk_b_theoretical_informatics",
+        "lk_c1_databases",
+        "lk_c2_databases",
+        "lk_c1_theoretical_informatics",
+        "lk_c2_theoretical_informatics"
+      ],
+      "selectionPaths": [
+        {
+          "id": "lk_a_b_db_c1_theory",
+          "slotIds": [
+            "lk_a_algorithmic_oop",
+            "lk_b_databases",
+            "lk_c1_theoretical_informatics"
+          ]
+        },
+        {
+          "id": "lk_a_b_db_c2_theory",
+          "slotIds": [
+            "lk_a_algorithmic_oop",
+            "lk_b_databases",
+            "lk_c2_theoretical_informatics"
+          ]
+        },
+        {
+          "id": "lk_a_b_theory_c1_db",
+          "slotIds": [
+            "lk_a_algorithmic_oop",
+            "lk_b_theoretical_informatics",
+            "lk_c1_databases"
+          ]
+        },
+        {
+          "id": "lk_a_b_theory_c2_db",
+          "slotIds": [
+            "lk_a_algorithmic_oop",
+            "lk_b_theoretical_informatics",
+            "lk_c2_databases"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gk_master_2026",
+      "label": "GK Master Set 2026",
+      "courseLevel": "GK",
+      "kind": "master",
+      "selectionMode": "full_set"
+    },
+    {
+      "id": "lk_master_2026",
+      "label": "LK Master Set 2026",
+      "courseLevel": "LK",
+      "kind": "master",
+      "selectionMode": "full_set"
+    }
+  ],
+  "slots": [
+    {
+      "id": "gk_a_algorithmic_oop",
+      "collectionId": "gk_offer_2026",
+      "proposalId": "A",
+      "workingTitle": "Algorithmik und objektorientierte Modellierung",
+      "domain": "algorithmic_oop",
+      "topicCodes": [
+        "Q1.1",
+        "Q1.2",
+        "Q1.3"
+      ],
+      "courseLevel": "GK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "mandatory",
+      "languageVariants": [
+        "Java",
+        "Python"
+      ],
+      "materialBound": true,
+      "materialTypes": [
+        "Codeauszug",
+        "Klassendiagramm oder UML-Skizze",
+        "Testfall oder Ablaufspur"
+      ],
+      "operatorProfile": [
+        "analysieren",
+        "entwickeln",
+        "erlaeutern",
+        "begruenden"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_b1_databases",
+      "collectionId": "gk_offer_2026",
+      "proposalId": "B1",
+      "workingTitle": "Datenbanken",
+      "domain": "databases",
+      "topicCodes": [
+        "Q2.1",
+        "Q2.2",
+        "Q2.5"
+      ],
+      "courseLevel": "GK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "choice",
+      "materialBound": true,
+      "materialTypes": [
+        "ER-Diagramm",
+        "Relationsschema",
+        "SQL-Abfrage oder Ergebnisrelation"
+      ],
+      "operatorProfile": [
+        "analysieren",
+        "modellieren",
+        "formulieren",
+        "begruenden"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_b2_theoretical_informatics",
+      "collectionId": "gk_offer_2026",
+      "proposalId": "B2",
+      "workingTitle": "Konzepte und Anwendungen der theoretischen Informatik",
+      "domain": "theoretical_informatics",
+      "topicCodes": [
+        "Q3.1",
+        "Q3.2",
+        "Q3.3"
+      ],
+      "courseLevel": "GK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "choice",
+      "materialBound": true,
+      "materialTypes": [
+        "Automat oder Zustandsdiagramm",
+        "Sprachbeschreibung oder Grammatik",
+        "Kurztext zu Komplexitaet oder Berechenbarkeit"
+      ],
+      "operatorProfile": [
+        "analysieren",
+        "modellieren",
+        "begruenden",
+        "beurteilen"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_a_algorithmic_oop",
+      "collectionId": "lk_offer_2026",
+      "proposalId": "A",
+      "workingTitle": "Algorithmik und objektorientierte Modellierung",
+      "domain": "algorithmic_oop",
+      "topicCodes": [
+        "Q1.1",
+        "Q1.2",
+        "Q1.3",
+        "Q1.4"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "mandatory",
+      "languageVariants": [
+        "Java",
+        "Python"
+      ],
+      "materialBound": true,
+      "materialTypes": [
+        "Codeauszug",
+        "Klassendiagramm oder UML-Skizze",
+        "Trace, Laufzeit- oder Datenstrukturmaterial"
+      ],
+      "operatorProfile": [
+        "analysieren",
+        "entwickeln",
+        "optimieren",
+        "begruenden"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_b_databases",
+      "collectionId": "lk_offer_2026",
+      "proposalId": "B",
+      "workingTitle": "Pflichtaufgabe B aus Datenbanken",
+      "domain": "databases",
+      "topicCodes": [
+        "Q2.1",
+        "Q2.2",
+        "Q2.5"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "mandatory_variant",
+      "materialBound": true,
+      "materialTypes": [
+        "komplexes ER-Diagramm",
+        "Relationsschema",
+        "mehrstufige SQL- oder Relationenalgebra-Abfragen"
+      ],
+      "operatorProfile": [
+        "analysieren",
+        "modellieren",
+        "entwickeln",
+        "begruenden"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_b_theoretical_informatics",
+      "collectionId": "lk_offer_2026",
+      "proposalId": "B",
+      "workingTitle": "Pflichtaufgabe B aus theoretischer Informatik",
+      "domain": "theoretical_informatics",
+      "topicCodes": [
+        "Q3.1",
+        "Q3.2",
+        "Q3.3",
+        "Q3.5"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "mandatory_variant",
+      "materialBound": true,
+      "materialTypes": [
+        "Automat oder Grammatik",
+        "Komplexitaets- oder Berechenbarkeitstext",
+        "Registermaschinen- oder Maschinenmodell"
+      ],
+      "operatorProfile": [
+        "analysieren",
+        "modellieren",
+        "entwickeln",
+        "begruenden"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_c1_databases",
+      "collectionId": "lk_offer_2026",
+      "proposalId": "C1",
+      "workingTitle": "Wahlvorschlag C1 aus Datenbanken",
+      "domain": "databases",
+      "topicCodes": [
+        "Q2.1",
+        "Q2.2",
+        "Q2.5"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "choice_variant",
+      "materialBound": true,
+      "materialTypes": [
+        "ER-Diagramm",
+        "Relationenschema",
+        "SQL- oder Relationenalgebra-Material"
+      ],
+      "operatorProfile": [
+        "analysieren",
+        "modellieren",
+        "entwickeln",
+        "beurteilen"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_c2_databases",
+      "collectionId": "lk_offer_2026",
+      "proposalId": "C2",
+      "workingTitle": "Wahlvorschlag C2 aus Datenbanken",
+      "domain": "databases",
+      "topicCodes": [
+        "Q2.1",
+        "Q2.2",
+        "Q2.5"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "choice_variant",
+      "materialBound": true,
+      "materialTypes": [
+        "ER-Diagramm",
+        "Relationenschema",
+        "SQL- oder Relationenalgebra-Material"
+      ],
+      "operatorProfile": [
+        "analysieren",
+        "modellieren",
+        "entwickeln",
+        "beurteilen"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_c1_theoretical_informatics",
+      "collectionId": "lk_offer_2026",
+      "proposalId": "C1",
+      "workingTitle": "Wahlvorschlag C1 aus theoretischer Informatik",
+      "domain": "theoretical_informatics",
+      "topicCodes": [
+        "Q3.1",
+        "Q3.2",
+        "Q3.3",
+        "Q3.5"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "choice_variant",
+      "materialBound": true,
+      "materialTypes": [
+        "Automat oder Grammatik",
+        "Komplexitaets- oder Berechenbarkeitstext",
+        "Registermaschinen- oder Maschinenmodell"
+      ],
+      "operatorProfile": [
+        "analysieren",
+        "modellieren",
+        "entwickeln",
+        "beurteilen"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_c2_theoretical_informatics",
+      "collectionId": "lk_offer_2026",
+      "proposalId": "C2",
+      "workingTitle": "Wahlvorschlag C2 aus theoretischer Informatik",
+      "domain": "theoretical_informatics",
+      "topicCodes": [
+        "Q3.1",
+        "Q3.2",
+        "Q3.3",
+        "Q3.5"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "choice_variant",
+      "materialBound": true,
+      "materialTypes": [
+        "Automat oder Grammatik",
+        "Komplexitaets- oder Berechenbarkeitstext",
+        "Registermaschinen- oder Maschinenmodell"
+      ],
+      "operatorProfile": [
+        "analysieren",
+        "modellieren",
+        "entwickeln",
+        "beurteilen"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    }
+  ]
+}

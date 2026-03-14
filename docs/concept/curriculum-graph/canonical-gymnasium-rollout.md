@@ -117,6 +117,29 @@ Implementation rule:
 - derive state-specific visibility from mappings and provenance
 - propagate the selected root Bundesland filter runtime-side into the selected child landscapes
 
+### 8. Normalize Sek I to a G9 year-level grid first
+
+For Sekundarstufe I, the first canonical reference grid should be the G9 year-level sequence:
+
+- Jahrgang 5
+- Jahrgang 6
+- Jahrgang 7
+- Jahrgang 8
+- Jahrgang 9
+- Jahrgang 10
+
+Rationale:
+
+- year-level buckets are easier to reason about than duration-specific program variants,
+- Hessen Sek I already exists in a mature G9-oriented structure,
+- Bavaria source material can contain G8 and G9 labels, but its content can still be mapped into year-level buckets without cloning the canonical graph.
+
+Operational rule:
+
+- preserve source truth such as `G8` / `G9` in provenance and archived inputs,
+- but author and migrate the first canonical Sek-I layer against the shared G9-aligned year-level grid,
+- only add duration-aware overlays later if real runtime needs justify the extra complexity.
+
 ## Minimal Data Additions
 
 The rollout should start with only two additions.
@@ -189,6 +212,8 @@ Examples:
 - one Physics subtree that depends on a small, explicit Mathematics prerequisite set
 
 This keeps cutovers small enough that a subtree can later be switched over within a few days instead of requiring a long big-bang migration window.
+
+For Sek I subtrees, "didactically closed" should currently be interpreted on the shared G9-aligned year-level grid, not on separate G8/G9 canonical branches.
 
 ### State 1: `legacy_frozen`
 

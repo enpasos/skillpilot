@@ -499,6 +499,7 @@ Practical rollout rules:
 - Do **not** duplicate canonical goals per Bundesland.
 - Keep existing state-specific landscapes alive during transition as **legacy views**.
 - Start the convergence from the most mature legacy source, currently `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe`.
+- For Sekundarstufe I, use **G9 year levels 5-10 as the first canonical reference grid**. If source materials come from tracks with different total duration such as G8 vs G9, normalize them initially onto the matching year-level buckets instead of creating separate canonical G8 and G9 goal sets.
 - Treat existing state-owned source JSON under paths such as `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/` as legacy source material; do not rewrite those files just to host canonical convergence.
 - Use a **small mapping layer** from legacy goal IDs to canonical goal IDs instead of introducing a large new abstraction stack too early.
 - When a Bundesland must be represented explicitly in metadata, filters, overlays, or APIs, use ISO 3166-2 codes such as `DE-HE` and `DE-BY`.
@@ -510,6 +511,12 @@ Practical rollout rules:
 - Prefer one DE-level school root such as `Gymnasium (DE)` in learner-facing curriculum selection, with subject landscapes as child modules.
 - Keep course-level filters such as `GK` / `LK` on the child subject landscapes.
 - Put Bundesland filters such as `DE-HE`, `DE-BY`, and `ALL` on the shared DE-level root and propagate them runtime-side into the selected canonical child landscapes.
+
+Operational consequence for Sek I:
+
+- Preserve the original source labels such as `G8`, `G9`, or state-specific year naming in provenance, mapping files, and archived input material.
+- But keep the first canonical authoring and migration target aligned to year levels `5`, `6`, `7`, `8`, `9`, `10`.
+- Only introduce a separate duration-aware overlay later if concrete learner/runtime use cases require it.
 
 Detailed rollout plan:
 

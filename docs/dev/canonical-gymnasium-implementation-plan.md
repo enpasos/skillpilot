@@ -5,6 +5,7 @@ This document turns the rollout strategy from the concept docs into an implement
 See also:
 
 - `docs/concept/curriculum-graph/canonical-gymnasium-rollout.md`
+- `docs/dev/canonical-gymnasium-migration-status.md`
 
 ## Purpose
 
@@ -28,6 +29,7 @@ The project should therefore start with a small, testable pilot rather than a br
 - Prefer additive infrastructure over destructive migration.
 - Introduce only the minimum new data structures required for the first pilot.
 - Preserve multi-subject navigation as a design target from the beginning.
+- For Sek I with different overall school lengths, normalize the first canonical layer to G9 year levels `5-10` rather than creating separate G8/G9 canonical branches.
 
 ## First implementation slice
 
@@ -111,6 +113,7 @@ Adoption checklist for a subtree:
 Current operational baseline:
 
 - Hessen upper-secondary and lower-secondary source JSON remain `legacy_frozen`
+- the first canonical Sek-I normalization target is the shared G9-aligned year-level grid `5-10`; duration-specific source labels stay in provenance and archived inputs
 - the canonical `Gymnasium (DE)` overview root is the current preferred DE-level learner entry point
 - the DE-level Mathematics landscape now bulk-adopts the Hessen upper-secondary tree and keeps the existing Sek-I bridge plus exact Hessen legacy mappings for later learner migration
 - the DE-level Physics landscape now bulk-adopts the Hessen upper-secondary tree and keeps the pre-existing cross-subject Math bridge and Bavaria collision anchor IDs stable for later learner migration
