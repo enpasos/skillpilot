@@ -368,7 +368,6 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: '../backend/src/main/resources/static',
       emptyOutDir: true,
-
     },
   }
 })

@@ -14,9 +14,7 @@ import {
     type Node,
 } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
-import ELK from 'elkjs/lib/elk.bundled.js'
-import { jsPDF } from 'jspdf'
-import 'svg2pdf.js'
+import elkWorkerUrl from 'elkjs/lib/elk-worker.min.js?url'
 import type { UiGoal as Goal } from '../goalTypes'
 import { InlineMathText } from './InlineMathText'
 
@@ -116,6 +114,21 @@ const DEFAULT_NODE_WIDTH = 256
 const CURRENT_NODE_HEIGHT = 120
 const DEFAULT_NODE_HEIGHT = 70
 
+type ElkLayoutGraph = {
+    id: string
+    layoutOptions: Record<string, string>
+    children: Array<{ id: string; width: number; height: number }>
+    edges: Array<{ id: string; sources: string[]; targets: string[] }>
+}
+
+type ElkLayoutResult = {
+    children?: Array<{ id: string; x?: number; y?: number }>
+}
+
+type ElkLike = {
+    layout: (graph: ElkLayoutGraph) => Promise<ElkLayoutResult>
+}
+
 function getNodeWidth(nodeData: RequiresNodeData): number {
     return nodeData.isCurrent ? CURRENT_NODE_WIDTH : DEFAULT_NODE_WIDTH
 }
@@ -159,7 +172,16 @@ function transitiveReduce(edges: FullPrerequisiteEdge[]): FullPrerequisiteEdge[]
 // ELK Layout
 // ------------------------------------------------------------------
 
-const elk = new ELK()
+let elkInstancePromise: Promise<ElkLike> | null = null
+
+async function getElkInstance(): Promise<ElkLike> {
+    if (!elkInstancePromise) {
+        elkInstancePromise = import('elkjs/lib/elk-api.js').then(({ default: ELK }) => (
+            new (ELK as unknown as { new(options: { workerUrl: string }): ElkLike })({ workerUrl: elkWorkerUrl })
+        ))
+    }
+    return elkInstancePromise
+}
 
 async function getElkLayout(
     nodes: Node[],
@@ -168,7 +190,7 @@ async function getElkLayout(
 ): Promise<{ nodes: Node[]; edges: Edge[] }> {
     const layerSpacing = direction === 'TB' ? '36' : '80'
 
-    const elkGraph = {
+    const elkGraph: ElkLayoutGraph = {
         id: 'root',
         layoutOptions: {
             'elk.algorithm': 'layered',
@@ -190,6 +212,7 @@ async function getElkLayout(
         })),
     }
 
+    const elk = await getElkInstance()
     const layoutedGraph = await elk.layout(elkGraph)
 
     const layoutedNodes = nodes.map((node) => {
@@ -333,6 +356,11 @@ const InnerRequiresFlow: React.FC<RequiresReactFlowBoardProps> = ({
 
     const handleExportPdf = useCallback(async () => {
         if (!layoutedNodes || !layoutedEdges) return
+
+        const [{ jsPDF }] = await Promise.all([
+            import('jspdf'),
+            import('svg2pdf.js'),
+        ])
 
         const liveNodes = getNodes()
         const liveEdges = getEdges()

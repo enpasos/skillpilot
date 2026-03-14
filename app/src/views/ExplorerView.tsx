@@ -1,16 +1,19 @@
-import React, { useState } from 'react'
+import React, { Suspense, lazy, useState } from 'react'
 import type { UiGoal as Goal, ExternalRequirement } from '../goalTypes'
 import { Breadcrumb } from '../components/Breadcrumb'
 import { NeighborSection } from '../components/NeighborSection'
 import { GoalCard } from '../components/GoalCard'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { LogoutButton } from '../components/LogoutButton'
-import { RequiresFlowMap } from '../components/RequiresFlowMap'
 
 import type { NeighborSets } from '../hooks/useCompetenceGraph'
 import { useLanguage } from '../contexts/LanguageContext'
 import { en } from '../locales/en'
 import { de } from '../locales/de'
+
+const RequiresFlowMap = lazy(() =>
+  import('../components/RequiresFlowMap').then((module) => ({ default: module.RequiresFlowMap })),
+)
 
 interface ExplorerViewProps {
   breadcrumbCrumbs: {
@@ -59,8 +62,13 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
   const t = language === 'en' ? en.explorer : de.explorer
   const [showRequiresFlow, setShowRequiresFlow] = useState(false)
   const containsOptions = [...neighbors.children].sort((a, b) => a.title.localeCompare(b.title))
-
-
+  const requiresFlowLoader = (
+    <main className="flex-1 p-4">
+      <div className="glass-panel border-border-color bg-sidebar-bg/70 p-4 text-sm text-text-secondary">
+        Requires-Flow laden ...
+      </div>
+    </main>
+  )
 
   return (
     <div className="min-h-screen flex flex-col bg-chat-bg text-text-primary transition-colors">
@@ -179,20 +187,22 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
       </header>
 
       {showRequiresFlow ? (
-        <main className="flex-1 p-4">
-          <RequiresFlowMap
-            language={language === 'en' ? 'en' : 'de'}
-            currentGoal={currentGoal}
-            requires={neighbors.requires}
-            inheritedRequires={neighbors.inheritedRequires}
-            forwardDirect={neighbors.directForward}
-            forwardInherited={neighbors.inheritedForward}
-            getMastery={getMastery}
-            onNavigate={onNavigate}
-            goalIndexAll={goalIndexAll}
-            showMastery={showLearnerTools}
-          />
-        </main>
+        <Suspense fallback={requiresFlowLoader}>
+          <main className="flex-1 p-4">
+            <RequiresFlowMap
+              language={language === 'en' ? 'en' : 'de'}
+              currentGoal={currentGoal}
+              requires={neighbors.requires}
+              inheritedRequires={neighbors.inheritedRequires}
+              forwardDirect={neighbors.directForward}
+              forwardInherited={neighbors.inheritedForward}
+              getMastery={getMastery}
+              onNavigate={onNavigate}
+              goalIndexAll={goalIndexAll}
+              showMastery={showLearnerTools}
+            />
+          </main>
+        </Suspense>
       ) : (
         <main className="flex-1 grid grid-cols-1 gap-4 p-4 lg:grid-cols-[minmax(220px,280px)_minmax(0,1.8fr)_minmax(260px,320px)]">
           <aside className="space-y-3 lg:max-h-[calc(100vh-96px)] overflow-y-auto">

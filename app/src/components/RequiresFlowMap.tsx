@@ -1,7 +1,6 @@
-import React, { useEffect, useId, useMemo, useRef, useState } from 'react'
+import React, { Suspense, lazy, useEffect, useId, useMemo, useRef, useState } from 'react'
 import type { UiGoal as Goal } from '../goalTypes'
 import { InlineMathText } from './InlineMathText'
-import { RequiresReactFlowBoard } from './RequiresReactFlowBoard'
 
 type PrereqKind = 'direct' | 'inherited'
 
@@ -66,6 +65,10 @@ const CONNECTOR_COLORS = {
   inherited: 'rgb(100 116 139)', // slate-500
   unlocks: 'rgb(5 150 105)', // emerald-600
 } as const
+
+const RequiresReactFlowBoard = lazy(() =>
+  import('./RequiresReactFlowBoard').then((module) => ({ default: module.RequiresReactFlowBoard })),
+)
 
 const isAtomicGoal = (goal: Goal): boolean => {
   if (goal.type === 'atomic') return true
@@ -741,23 +744,31 @@ export const RequiresFlowMap: React.FC<RequiresFlowMapProps> = ({
         )}
 
         {fullPrerequisiteFlow.nodes.length > 0 && (
-          <RequiresReactFlowBoard
-            currentGoal={currentGoal}
-            flow={fullPrerequisiteFlow}
-            getMastery={getMastery}
-            masteredThreshold={masteredThreshold}
-            onNavigate={onNavigate}
-            showMastery={showMastery}
-            labels={{
-              current: labels.current,
-              direct: labels.direct,
-              inherited: labels.inherited,
-              transitive: labels.transitive,
-              met: labels.met,
-              unmet: labels.unmet,
-              fullFlowLevel: labels.fullFlowLevel,
-            }}
-          />
+          <Suspense
+            fallback={
+              <div className="rounded-xl border border-border-color bg-chat-bg/70 px-3 py-6 text-center text-sm text-text-secondary">
+                Flow-Board laden ...
+              </div>
+            }
+          >
+            <RequiresReactFlowBoard
+              currentGoal={currentGoal}
+              flow={fullPrerequisiteFlow}
+              getMastery={getMastery}
+              masteredThreshold={masteredThreshold}
+              onNavigate={onNavigate}
+              showMastery={showMastery}
+              labels={{
+                current: labels.current,
+                direct: labels.direct,
+                inherited: labels.inherited,
+                transitive: labels.transitive,
+                met: labels.met,
+                unmet: labels.unmet,
+                fullFlowLevel: labels.fullFlowLevel,
+              }}
+            />
+          </Suspense>
         )}
       </div>
     </section>

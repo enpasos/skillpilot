@@ -1,20 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom'
-import { ExplorerView } from './views/ExplorerView'
-import { LearnerView } from './views/LearnerView'
-import { TrainerView } from './views/TrainerView'
-import { LegalView } from './views/LegalView'
-import { PrivacyView } from './views/PrivacyView'
-import { ImprintView } from './views/ImprintView'
-import { CurriculaView } from './views/CurriculaView'
-import { WhitepaperView } from './views/WhitepaperView'
-import { StoryView } from './views/StoryView'
-import { UsersView } from './views/UsersView'
-import { StatsView } from './views/StatsView'
-import { SuccessView } from './views/SuccessView'
-import { Abi26MatheStartView } from './views/Abi26MatheStartView'
-import { FlashcardEditorView } from './views/FlashcardEditorView'
-import { GraphEditorView } from './views/GraphEditorView'
 
 import { SessionSetup } from './components/SessionSetup'
 import { useAppCore } from './hooks/useAppCore'
@@ -39,6 +24,22 @@ const PUBLIC_PATHS = new Set([
 ])
 const GOAL_VIEWS = new Set(['learner', 'trainer', 'explorer'])
 const MAX_DESCRIPTION_LENGTH = 160
+
+const ExplorerView = lazy(() => import('./views/ExplorerView').then((module) => ({ default: module.ExplorerView })))
+const LearnerView = lazy(() => import('./views/LearnerView').then((module) => ({ default: module.LearnerView })))
+const TrainerView = lazy(() => import('./views/TrainerView').then((module) => ({ default: module.TrainerView })))
+const LegalView = lazy(() => import('./views/LegalView').then((module) => ({ default: module.LegalView })))
+const PrivacyView = lazy(() => import('./views/PrivacyView').then((module) => ({ default: module.PrivacyView })))
+const ImprintView = lazy(() => import('./views/ImprintView').then((module) => ({ default: module.ImprintView })))
+const CurriculaView = lazy(() => import('./views/CurriculaView').then((module) => ({ default: module.CurriculaView })))
+const WhitepaperView = lazy(() => import('./views/WhitepaperView').then((module) => ({ default: module.WhitepaperView })))
+const StoryView = lazy(() => import('./views/StoryView').then((module) => ({ default: module.StoryView })))
+const UsersView = lazy(() => import('./views/UsersView').then((module) => ({ default: module.UsersView })))
+const StatsView = lazy(() => import('./views/StatsView').then((module) => ({ default: module.StatsView })))
+const SuccessView = lazy(() => import('./views/SuccessView').then((module) => ({ default: module.SuccessView })))
+const Abi26MatheStartView = lazy(() => import('./views/Abi26MatheStartView').then((module) => ({ default: module.Abi26MatheStartView })))
+const FlashcardEditorView = lazy(() => import('./views/FlashcardEditorView').then((module) => ({ default: module.FlashcardEditorView })))
+const GraphEditorView = lazy(() => import('./views/GraphEditorView').then((module) => ({ default: module.GraphEditorView })))
 
 const normalizeText = (text: string) => text.replace(/\s+/g, ' ').trim()
 
@@ -69,6 +70,12 @@ const upsertLinkTag = (rel: string, href: string) => {
   }
   element.setAttribute('href', href)
 }
+
+const RouteLoadingFallback: React.FC = () => (
+  <div className="min-h-screen bg-app-gradient text-slate-100 p-6">
+    Ansicht laden ...
+  </div>
+)
 
 const App: React.FC = () => {
   const { language } = useLanguage()
@@ -117,6 +124,7 @@ const App: React.FC = () => {
   // console.log('Routing State:', { normalizedPath, isPublicRoute, hasSession })
 
   const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId })
+  const { currentLandscapeEntry, goalIndexAll, landscapeEntries } = core
 
   // Handle OAuth success redirect at App level
   // This is needed because after OAuth redirect, the SPA might be loaded from service worker cache
@@ -131,25 +139,25 @@ const App: React.FC = () => {
 
   const availableLandscapes = useMemo(
     () => {
-      const toSummary = (entry: (typeof core.landscapeEntries)[number]) => ({
+      const toSummary = (entry: (typeof landscapeEntries)[number]) => ({
         landscapeId: entry.meta.landscapeId,
         title: entry.meta.title,
         subject: entry.meta.subject,
         filters: entry.meta.filters,
       })
 
-      const currentEntry = core.currentLandscapeEntry
+      const currentEntry = currentLandscapeEntry
       if (!currentEntry) {
-        return core.landscapeEntries.map(toSummary)
+        return landscapeEntries.map(toSummary)
       }
 
       const summaries = [toSummary(currentEntry)]
       const seenLandscapeIds = new Set([currentEntry.meta.landscapeId])
-      const entriesById = new Map(core.landscapeEntries.map((entry) => [entry.meta.landscapeId, entry]))
+      const entriesById = new Map(landscapeEntries.map((entry) => [entry.meta.landscapeId, entry]))
       const rootGoal = currentEntry.goals.find((goal) => goal.tags?.includes('root')) ?? currentEntry.goals[0]
 
       for (const childId of rootGoal?.contains ?? []) {
-        const childGoal = core.goalIndexAll.get(childId)
+        const childGoal = goalIndexAll.get(childId)
         const childLandscapeId = childGoal?.landscapeId
         if (!childLandscapeId || seenLandscapeIds.has(childLandscapeId) || childLandscapeId === currentEntry.meta.landscapeId) {
           continue
@@ -166,7 +174,7 @@ const App: React.FC = () => {
 
       return summaries
     },
-    [core.currentLandscapeEntry, core.goalIndexAll, core.landscapeEntries],
+    [currentLandscapeEntry, goalIndexAll, landscapeEntries],
   )
 
   useEffect(() => {
@@ -324,23 +332,25 @@ const App: React.FC = () => {
   // This ensures CurriculaView is rendered even if React Router state is out of sync
   if (isPublicRoute || window.location.pathname.startsWith('/curricula')) {
     return (
-      <Routes>
-        <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
-        <Route path="/legal" element={<LegalView />} />
-        <Route path="/privacy" element={<PrivacyView />} />
-        <Route path="/legal" element={<LegalView />} />
-        <Route path="/privacy" element={<PrivacyView />} />
-        <Route path="/imprint" element={<ImprintView />} />
-        <Route path="/curricula" element={<CurriculaView />} />
-        <Route path="/stats" element={<StatsView />} />
-        <Route path="/users" element={<UsersView />} />
-        <Route path="/successes" element={<SuccessView />} />
-        <Route path="/quickstart/:lang?" element={<StoryView />} />
-        <Route path="/flashcard-editor" element={<FlashcardEditorView />} />
-        <Route path="/graph-editor" element={<GraphEditorView />} />
-        <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
-        <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
-      </Routes>
+      <Suspense fallback={<RouteLoadingFallback />}>
+        <Routes>
+          <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
+          <Route path="/legal" element={<LegalView />} />
+          <Route path="/privacy" element={<PrivacyView />} />
+          <Route path="/legal" element={<LegalView />} />
+          <Route path="/privacy" element={<PrivacyView />} />
+          <Route path="/imprint" element={<ImprintView />} />
+          <Route path="/curricula" element={<CurriculaView />} />
+          <Route path="/stats" element={<StatsView />} />
+          <Route path="/users" element={<UsersView />} />
+          <Route path="/successes" element={<SuccessView />} />
+          <Route path="/quickstart/:lang?" element={<StoryView />} />
+          <Route path="/flashcard-editor" element={<FlashcardEditorView />} />
+          <Route path="/graph-editor" element={<GraphEditorView />} />
+          <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
+          <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
+        </Routes>
+      </Suspense>
     )
   }
 
@@ -472,76 +482,78 @@ const App: React.FC = () => {
   }
 
   return (
-    <Routes>
-      <Route
-        path="/learner/:goalId?"
-        element={
-          <LearnerView
-            rootGoals={core.breadcrumbRootGoals}
-            goalIndexAll={core.goalIndexAll}
-            getMastery={core.getMasteryValue}
-            currentGoal={core.currentGoal}
-            onSelectGoal={core.handleSelectAbsolute}
-            skillpilotId={skillpilotId}
-            landscapeId={core.selectedLandscapeId}
-            activeFilter={core.activeFilter}
-            onLogout={handleLogout}
-            availableLandscapes={availableLandscapes}
-            rootLandscapeId={core.selectedLandscapeId}
-            onRefresh={core.refreshMastery}
-            parentMap={core.parentMapAll}
-            onLandscapeChange={core.setSelectedLandscapeId}
-            onLandscapeGoalChange={core.handleNavigateToExternal}
-          />
-        }
-      />
-      <Route
-        path="/trainer/:goalId?"
-        element={
-          <TrainerView
-            landscapeEntries={core.landscapeEntries}
-            onContextChange={core.handleTrainerContextChange}
-            rootGoals={core.breadcrumbRootGoals}
-            goalIndexAll={core.goalIndexAll}
-            currentLearnerId="__ALL__"
-            onSelectLearner={() => { }}
-            goalShortKeyMap={core.goalShortKeyMap}
-            onLogout={handleLogout}
-            getMastery={core.getMasteryValue}
-          />
-        }
-      />
-      <Route
-        path="/explorer/:goalId?"
-        element={
-          <ExplorerView
-            breadcrumbCrumbs={core.breadcrumbCrumbs}
-            neighbors={core.filteredNeighbors}
-            activeFilter={core.activeFilter}
-            availableFilters={core.availableFilters}
-            onFilterChange={core.setActiveFilter}
-            externalRequires={core.externalRequires}
-            currentGoal={core.currentGoal}
-            getMastery={core.getMasteryValue}
-            onNavigate={core.handleNavigateTo}
-            onNavigateExternal={core.handleNavigateToExternal}
-            onMasteryChange={core.handleMasteryChange}
-            showLearnerTools={core.showLearnerTools}
-            onLogout={handleLogout}
-            goalIndexAll={core.goalIndexAll}
-          />
-        }
-      />
-      <Route path="/legal" element={<LegalView />} />
-      <Route path="/privacy" element={<PrivacyView />} />
-      <Route path="/imprint" element={<ImprintView />} />
-      <Route path="/quickstart/:lang?" element={<StoryView />} />
-      <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
-      <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
-      <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <Routes>
+        <Route
+          path="/learner/:goalId?"
+          element={
+            <LearnerView
+              rootGoals={core.breadcrumbRootGoals}
+              goalIndexAll={core.goalIndexAll}
+              getMastery={core.getMasteryValue}
+              currentGoal={core.currentGoal}
+              onSelectGoal={core.handleSelectAbsolute}
+              skillpilotId={skillpilotId}
+              landscapeId={core.selectedLandscapeId}
+              activeFilter={core.activeFilter}
+              onLogout={handleLogout}
+              availableLandscapes={availableLandscapes}
+              rootLandscapeId={core.selectedLandscapeId}
+              onRefresh={core.refreshMastery}
+              parentMap={core.parentMapAll}
+              onLandscapeChange={core.setSelectedLandscapeId}
+              onLandscapeGoalChange={core.handleNavigateToExternal}
+            />
+          }
+        />
+        <Route
+          path="/trainer/:goalId?"
+          element={
+            <TrainerView
+              landscapeEntries={core.landscapeEntries}
+              onContextChange={core.handleTrainerContextChange}
+              rootGoals={core.breadcrumbRootGoals}
+              goalIndexAll={core.goalIndexAll}
+              currentLearnerId="__ALL__"
+              onSelectLearner={() => { }}
+              goalShortKeyMap={core.goalShortKeyMap}
+              onLogout={handleLogout}
+              getMastery={core.getMasteryValue}
+            />
+          }
+        />
+        <Route
+          path="/explorer/:goalId?"
+          element={
+            <ExplorerView
+              breadcrumbCrumbs={core.breadcrumbCrumbs}
+              neighbors={core.filteredNeighbors}
+              activeFilter={core.activeFilter}
+              availableFilters={core.availableFilters}
+              onFilterChange={core.setActiveFilter}
+              externalRequires={core.externalRequires}
+              currentGoal={core.currentGoal}
+              getMastery={core.getMasteryValue}
+              onNavigate={core.handleNavigateTo}
+              onNavigateExternal={core.handleNavigateToExternal}
+              onMasteryChange={core.handleMasteryChange}
+              showLearnerTools={core.showLearnerTools}
+              onLogout={handleLogout}
+              goalIndexAll={core.goalIndexAll}
+            />
+          }
+        />
+        <Route path="/legal" element={<LegalView />} />
+        <Route path="/privacy" element={<PrivacyView />} />
+        <Route path="/imprint" element={<ImprintView />} />
+        <Route path="/quickstart/:lang?" element={<StoryView />} />
+        <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
+        <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
+        <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
 
-      <Route path="/" element={<Navigate to="/explorer" />} />
-    </Routes>
+        <Route path="/" element={<Navigate to="/explorer" />} />
+      </Routes>
+    </Suspense>
   )
 }
 export default App

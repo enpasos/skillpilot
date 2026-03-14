@@ -35,13 +35,16 @@ The current runtime mapping file already proves a thin Bavaria -> canonical brid
 
 Observed current pilot scope:
 
-- `13` mapping entries total
+- `16` mapping entries total
 - `1` exact motivation mapping
-- `3` partial scope-anchor mappings
+- `6` partial scope-anchor mappings
 - `9` exact/partial atomic mappings inside the function corridor
 
 Current Bavaria source areas already covered:
 
+- `Jahrgangsstufe 7`
+- `Jahrgangsstufe 8`
+- `Jahrgangsstufe 9`
 - `M8 1 Funktion und Term`
 - `M8 2 Lineare Funktionen`
 - `M9 2.1 Quadratische Funktionen und quadratische Gleichungen`
@@ -50,6 +53,7 @@ Current Bavaria source areas already covered:
 This means:
 
 - the Bavaria pilot does **not** yet cover Sek-I mathematics broadly,
+- it now proves a first structural overlap at the year-anchor level for `J7-J9`,
 - it only confirms that the existing canonical DE lower-secondary math slice can absorb the `M8/M9` function corridor,
 - the next useful step is therefore year-anchor normalization, not a premature broad atomic mapping pass.
 
@@ -57,7 +61,7 @@ This means:
 
 The current canonical DE math landscape now contains:
 
-- a first lower-secondary year-anchor skeleton `J5-J10`
+- first realized lower-secondary year anchors `J7-J9`
 - the existing lower-secondary pilot cluster `Funktionsgrundlagen (Sek I)`
 
 Contained atomic goals:
@@ -74,7 +78,7 @@ Contained atomic goals:
 
 Interpretation:
 
-- the canonical DE math baseline now has a first **year-anchor skeleton**, but still only a **corridor-shaped** atomic Sek-I overlap,
+- the canonical DE math baseline now has the first **realized year anchors** inside the planned `J5-J10` grid, but still only a **corridor-shaped** atomic Sek-I overlap,
 - the existing function corridor is now explicitly attached under `J7-J9`,
 - broad Bavaria-wide atomic mapping would still be premature until the rest of the Sek-I spine is filled.
 
@@ -99,10 +103,11 @@ Important:
 
 ## Recommended implementation order inside mathematics
 
-1. Keep the new year-anchor skeleton `J5-J10` stable while avoiding broad atomic duplication.
-2. Add partial Bavaria source-cluster mappings from `M5` through `M10` to the canonical year anchors.
-3. Keep the existing `M8/M9` function pilot mappings as the first atomic overlap proof.
-4. Extend broad atomic mapping only after the year-anchor skeleton is stable.
+1. Keep the new realized year anchors `J7-J9` stable while avoiding broad atomic duplication.
+2. Keep the new partial Bavaria year-cluster mappings `J7-J9` stable as the first structural overlap proof.
+3. Extend the runtime skeleton when the missing year anchors `J5`, `J6`, and `J10` receive first real children.
+4. Keep the existing `M8/M9` function pilot mappings as the first atomic overlap proof.
+5. Extend broad atomic mapping only after the year-anchor skeleton is stable.
 
 ## Suggested first source rows per anchor
 
@@ -161,7 +166,7 @@ These are the first practical Bavaria source rows to use when building the ancho
 
 For Bavaria mathematics, the next concrete implementation task should be:
 
-- add partial source-cluster mappings from Bavaria `M5-M10` into the new canonical `J5-J10` skeleton in `DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
+- extend the realized canonical year-anchor skeleton beyond `J7-J9`, starting with first real child coverage for `J5`, `J6`, and `J10`
 
 and not:
 
