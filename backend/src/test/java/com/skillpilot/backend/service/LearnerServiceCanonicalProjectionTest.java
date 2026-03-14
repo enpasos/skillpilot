@@ -56,6 +56,7 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String CANONICAL_SEK1_CLUSTER_ID = "5c6b7342-0f67-4b4c-894d-fd83a6df64b3";
     private static final String LEGACY_SEK1_MAPPINGS_ID = "4261f57b-13c9-4733-a0dc-72f2dcd4726d";
     private static final String CANONICAL_SEK1_MAPPINGS_ID = "2bb4bb91-7929-483a-b735-44275f6b5cdc";
+    private static final String LEGACY_SEK1_NUMBER_BASICS_ID = "d20fcef5-b5dd-4e97-945a-52f7b7d89306";
     private static final String LEGACY_SEK1_PROPORTIONAL_ID = "ed0c5283-b1b2-4562-9115-7336fca7a8d4";
     private static final String CANONICAL_SEK1_PROPORTIONAL_ID = "c1f50bcc-7848-4e49-b9de-0ec030cc6bca";
     private static final String LEGACY_SEK1_LINEAR_EQUATIONS_ID = "05b6a520-c23a-414a-842a-ba1c0e57b776";
@@ -85,13 +86,20 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String LEGACY_SEK1_BIOLOGY_WORD_EQUATION_ID = "e639c5a6-b114-4467-a466-f8e2fde6ac66";
     private static final String LEGACY_SEK1_BIOLOGY_IMPORTANCE_ID = "4ad0ecd3-7f20-400e-a12e-aeda5145541c";
     private static final String LEGACY_BAYERN_FUNCTION_CLUSTER_ID = "f9538605-8bf4-5279-b00a-c18786f9cc51";
+    private static final String LEGACY_BAYERN_INTEGER_ARITHMETIC_ID = "1877cd7b-d4ce-5356-a938-f28ddd8d7f3c";
     private static final String LEGACY_BAYERN_FUNCTION_CONCEPT_ID = "0042dc1e-859b-5c95-95a4-48aeff1bae63";
     private static final String LEGACY_BAYERN_LINEAR_ANALYSIS_ID = "edd3e6df-7f3d-5230-9377-dcf9d095c49c";
     private static final String LEGACY_BAYERN_QUADRATIC_VERTEX_ID = "6e7ff196-a9e4-5bac-afee-621801ec85c2";
     private static final String LEGACY_BAYERN_QUADRATIC_FORMS_ID = "cd991abf-058c-54a3-8690-a76ed51060f8";
     private static final String CANONICAL_FUNCTION_CONCEPT_ID = "09f47964-2cd0-410e-93ee-9632b582fc91";
+    private static final String CANONICAL_INTEGER_ARITHMETIC_BAYERN_ID = "4b67bed9-06da-40b2-a306-24e9e7dfd390";
+    private static final String CANONICAL_NUMBER_BASICS_HE_ID = "cf474eab-1379-4877-907e-58b0892ce734";
     private static final String CANONICAL_LINEAR_ANALYSIS_ID = "e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb";
+    private static final String CANONICAL_LINEAR_ANALYSIS_BAYERN_ID = "ae772695-d55e-4cc5-81bc-6605272759b4";
+    private static final String CANONICAL_LINEAR_EQUATIONS_HE_ID = "e6eb42c7-454f-49bf-b598-64d2935d2735";
     private static final String CANONICAL_QUADRATIC_VERTEX_ID = "c23705d2-57fc-4260-80d8-2d340203a173";
+    private static final String CANONICAL_QUADRATIC_VERTEX_BAYERN_ID = "3e4032bd-4d8c-4e72-bfdd-64a34df053c9";
+    private static final String CANONICAL_BINOMIALS_HE_ID = "e322310f-f33a-485d-bc23-2412a6b8fa12";
     private static final String CANONICAL_E1_CLUSTER_ID = "c9d92f32-167a-4006-a940-b8063a6ed434";
     private static final String CANONICAL_CALCULATE_VALUES_ID = "c65ecabf-d00b-4e2d-99ae-b64692325ffb";
     private static final String CANONICAL_READ_VALUES_ID = "a8c42ee9-2898-4247-819f-c235032ac78a";
@@ -200,13 +208,24 @@ class LearnerServiceCanonicalProjectionTest {
     }
 
     @Test
+    void getMasteryProjectsExactBavariaIntegerArithmeticMasteryIntoCanonicalPilotGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_BAYERN_INTEGER_ARITHMETIC_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_INTEGER_ARITHMETIC_BAYERN_ID, 1.0);
+        assertThat(mastery).containsEntry(LEGACY_BAYERN_INTEGER_ARITHMETIC_ID, 1.0);
+    }
+
+    @Test
     void getMasteryProjectsExactBavariaLinearAnalysisMasteryIntoCanonicalPilotGoals() {
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new Mastery(learner, LEGACY_BAYERN_LINEAR_ANALYSIS_ID, 1.0)));
 
         Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
 
-        assertThat(mastery).containsEntry(CANONICAL_LINEAR_ANALYSIS_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_LINEAR_ANALYSIS_BAYERN_ID, 1.0);
         assertThat(mastery).containsEntry(LEGACY_BAYERN_LINEAR_ANALYSIS_ID, 1.0);
     }
 
@@ -217,7 +236,7 @@ class LearnerServiceCanonicalProjectionTest {
 
         Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
 
-        assertThat(mastery).containsEntry(CANONICAL_QUADRATIC_VERTEX_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_QUADRATIC_VERTEX_BAYERN_ID, 1.0);
         assertThat(mastery).containsEntry(LEGACY_BAYERN_QUADRATIC_VERTEX_ID, 1.0);
     }
 
@@ -504,7 +523,17 @@ class LearnerServiceCanonicalProjectionTest {
 
         List<String> plannedGoals = learnerService.getPlannedGoals(LEARNER_ID);
 
-        assertThat(plannedGoals).containsExactly(CANONICAL_LINEAR_ANALYSIS_ID);
+        assertThat(plannedGoals).containsExactly(CANONICAL_LINEAR_EQUATIONS_HE_ID);
+    }
+
+    @Test
+    void getPlannedGoalsProjectsLegacySek1NumberBasicsGoalForCanonicalView() {
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, LEGACY_SEK1_NUMBER_BASICS_ID)));
+
+        List<String> plannedGoals = learnerService.getPlannedGoals(LEARNER_ID);
+
+        assertThat(plannedGoals).containsExactly(CANONICAL_NUMBER_BASICS_HE_ID);
     }
 
     @Test
@@ -514,7 +543,7 @@ class LearnerServiceCanonicalProjectionTest {
 
         List<String> plannedGoals = learnerService.getPlannedGoals(LEARNER_ID);
 
-        assertThat(plannedGoals).containsExactly(CANONICAL_QUADRATIC_VERTEX_ID);
+        assertThat(plannedGoals).containsExactly(CANONICAL_BINOMIALS_HE_ID);
     }
 
     @Test

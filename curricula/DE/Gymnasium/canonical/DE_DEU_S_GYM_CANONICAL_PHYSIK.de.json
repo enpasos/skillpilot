@@ -8,8 +8,8 @@
   "frameworkId": "canonical-gymnasium-physics",
   "title": "Physik (Gymnasium, DE)",
   "titleEn": "Physics (Gymnasium, DE)",
-  "description": "Physik für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig, behält die bereits aufgebauten fachübergreifenden Mathematik-Voraussetzungen im Mechanikbereich und verankert erste mechanische Grundlagen aus der hessischen Sekundarstufe I.",
-  "descriptionEn": "Physics for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum, keeps the already established cross-subject mathematics prerequisites in the mechanics domain, and anchors first mechanics foundations from Hessian lower secondary.",
+  "description": "Physik für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig, behält die bereits aufgebauten fachübergreifenden Mathematik-Voraussetzungen im Mechanikbereich und verankert erste mechanische, optische sowie elektrische Grundlagen aus der hessischen Sekundarstufe I.",
+  "descriptionEn": "Physics for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum, keeps the already established cross-subject mathematics prerequisites in the mechanics domain, and anchors first mechanics, optics, and electricity foundations from Hessian lower secondary.",
   "filters": [
     {
       "id": "GK",
@@ -25,8 +25,8 @@
       "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
       "title": "Physik",
       "titleEn": "Physics",
-      "description": "Gemeinsame Wurzel für Physik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig, behält die bereits eingeführten expliziten Mathematik-Voraussetzungen im Mechanik-Korridor und verankert erste mechanische Grundlagen aus der hessischen Sekundarstufe I.",
-      "descriptionEn": "Shared root for physics at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum, keeps the already introduced explicit mathematics prerequisites in the mechanics corridor, and anchors first mechanics foundations from Hessian lower secondary.",
+      "description": "Gemeinsame Wurzel für Physik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig, behält die bereits eingeführten expliziten Mathematik-Voraussetzungen im Mechanik-Korridor und verankert erste mechanische, optische sowie elektrische Grundlagen aus der hessischen Sekundarstufe I.",
+      "descriptionEn": "Shared root for physics at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum, keeps the already introduced explicit mathematics prerequisites in the mechanics corridor, and anchors first mechanics, optics, and electricity foundations from Hessian lower secondary.",
       "weight": 1.2,
       "tags": [
         "GK",
@@ -38,6 +38,10 @@
       "contains": [
         "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
         "9645f0d8-43a3-5f29-873c-daa5ace638db",
+        "051cedc5-d380-4716-9751-b18f2e67a912",
+        "84b1bc70-dadf-449b-a8d4-8bcee1da1fea",
+        "4924d83e-5e4b-4819-9d70-86cda3496195",
+        "bbabac7c-9613-4c7e-877e-d7dc3df5300f",
         "942de15b-32f1-5713-80e5-e7aeb8749fc4",
         "0735269d-703d-57ab-8861-6f7e1c5e2b8a",
         "fcefb129-ad4c-50a2-9762-a910caa1af16",
@@ -217,9 +221,9 @@
       "shortKey": "canonical_physics_sek1_mechanics_cluster",
       "title": "Mechanische Grundlagen (Sek I)",
       "titleEn": "Mechanics Foundations (Lower Secondary)",
-      "description": "Brückencluster für die mechanischen Grundlagen aus der gymnasialen Sekundarstufe I: Bewegungsdarstellungen, Kräfte und Trägheit, Reibung sowie grundlegende Energievorstellungen.",
-      "descriptionEn": "Bridge cluster for lower-secondary Gymnasium mechanics foundations: motion representations, forces and inertia, friction, and basic energy ideas.",
-      "weight": 4,
+      "description": "Brückencluster für die mechanischen Grundlagen aus der gymnasialen Sekundarstufe I: Volumen, Masse und Dichte, Bewegungsdarstellungen, Kräfte und Trägheit, Kräfteigenschaften, Reibung sowie erste qualitative Arbeit-und-Energie-Vorstellungen.",
+      "descriptionEn": "Bridge cluster for lower-secondary Gymnasium mechanics foundations: volume, mass, and density, motion representations, forces and inertia, force properties, friction, and first qualitative work-and-energy concepts.",
+      "weight": 9,
       "tags": [
         "GK",
         "LK",
@@ -227,10 +231,12 @@
         "SekI"
       ],
       "contains": [
+        "e41356c1-968b-435a-af25-b663f080ae5a",
         "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
         "5ea765ac-c279-551a-8a94-a07da2381e5b",
+        "10bb8262-fb0f-40cf-94ef-408420ec7cf2",
         "581c0766-b84b-54cb-b8b6-375310329a41",
-        "722857cf-f327-5740-8151-64eb92195ec8"
+        "cd4fe3f9-a04d-4dcc-9c0b-db214daa72ba"
       ],
       "requires": [
         "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
@@ -265,6 +271,906 @@
         }
       },
       "type": "cluster"
+    },
+    {
+      "id": "051cedc5-d380-4716-9751-b18f2e67a912",
+      "shortKey": "canonical_physics_sek1_light_reflection_cluster",
+      "title": "Lichtausbreitung und Reflexion (Sek I)",
+      "titleEn": "Light Propagation and Reflection (Lower Secondary)",
+      "description": "Brückencluster für optische Sek-I-Grundlagen zu Licht, Schatten, Strahlenmodell und Reflexion.",
+      "descriptionEn": "Bridge cluster for lower-secondary optics foundations on light, shadows, the ray model, and reflection.",
+      "weight": 3,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "dd7cdcea-0950-461b-96ac-ce49989fca47",
+        "79cb1695-f985-443a-b93e-27b57ab474b7",
+        "cca06d84-28fe-4b80-9bcd-968dda026e0e"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Optik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.OPTICS.LIGHT"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "9d0b0fea-c866-42da-8c26-9a9691977d35"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "4924d83e-5e4b-4819-9d70-86cda3496195",
+      "shortKey": "canonical_physics_sek1_magnetism_electricity_cluster",
+      "title": "Magnetismus und einfache Stromkreise (Sek I)",
+      "titleEn": "Magnetism and Simple Circuits (Lower Secondary)",
+      "description": "Brückencluster für magnetische Grundphänomene, einfache Stromkreise, qualitative Stromwirkungen und erste Stromstärkemessungen.",
+      "descriptionEn": "Bridge cluster for basic magnetic phenomena, simple circuits, qualitative current effects, and first current measurements.",
+      "weight": 4,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "f778a659-1467-4aa7-97b2-bed78c530634",
+        "75bdf5ca-cda4-4658-9ec7-84c77b3759db",
+        "a5f652cc-e091-4c90-bec2-c357ae54fcf1",
+        "f1a078ae-6262-4444-a4bc-a5ab275621cf"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elektrizität",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ELECTRICITY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "800df877-c091-400c-ac88-2286b79524c0"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "bbabac7c-9613-4c7e-877e-d7dc3df5300f",
+      "shortKey": "canonical_physics_sek1_voltage_safety_cluster",
+      "title": "Spannung, Schaltungen und Sicherheit (Sek I)",
+      "titleEn": "Voltage, Circuits, and Safety (Lower Secondary)",
+      "description": "Brückencluster für statische Elektrizität, Spannung, Strom-Spannungs-Zusammenhänge, Schaltungen mit Widerständen und Sicherheitsbewertungen.",
+      "descriptionEn": "Bridge cluster for static electricity, voltage, current-voltage relations, resistor circuits, and safety evaluations.",
+      "weight": 4,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "32111497-d5ca-453e-906d-d352f885b126",
+        "53196a71-9dbd-4835-b2f9-ff21b8a8962c",
+        "01bebdfc-5819-4610-a03e-ea5e794fc954",
+        "1911920e-b099-4310-82f2-b47f51a78b33"
+      ],
+      "requires": [
+        "4924d83e-5e4b-4819-9d70-86cda3496195"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_ENERGIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elektrizität",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ELECTRICITY.VOLTAGE"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "057a39fd-bcfd-4008-b30c-f91370b34007"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "84b1bc70-dadf-449b-a8d4-8bcee1da1fea",
+      "shortKey": "canonical_physics_sek1_optics_cluster",
+      "title": "Optische Grundlagen (Sek I)",
+      "titleEn": "Optics Foundations (Lower Secondary)",
+      "description": "Brückencluster für optische Sek-I-Grundlagen: Linsenabbildung, Sehvorgang und einfache optische Instrumente.",
+      "descriptionEn": "Bridge cluster for lower-secondary optics foundations: lens imaging, vision, and simple optical instruments.",
+      "weight": 3,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5",
+        "90e1e6cf-4092-41d6-81f7-5206f9d68f84",
+        "6367d45e-919e-4c19-bcd9-7770a2d51139"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Optik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.OPTICS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "eb6bf9d8-943c-42af-85fc-1b3d08985b6f"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "dd7cdcea-0950-461b-96ac-ce49989fca47",
+      "shortKey": "canonical_physics_sek1_light_shadow_propagation",
+      "title": "Licht, Schatten und geradlinige Ausbreitung beschreiben",
+      "titleEn": "Describe light, shadows, and rectilinear propagation",
+      "description": "Die lernende Person kann grundlegende Beobachtungen zu Licht, Schatten und geradliniger Ausbreitung fachlich beschreiben.",
+      "descriptionEn": "The learner can appropriately describe basic observations of light, shadows, and rectilinear propagation.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN"
+        ],
+        "phase": "GLOBAL",
+        "area": "Optik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.OPTICS.PROPAGATION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "c8a36d2b-19f9-4cbf-b564-537678388646"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "79cb1695-f985-443a-b93e-27b57ab474b7",
+      "shortKey": "canonical_physics_sek1_ray_model",
+      "title": "Lichtwege mit dem Strahlenmodell darstellen und vorhersagen",
+      "titleEn": "Represent and predict light paths using the ray model",
+      "description": "Die lernende Person kann Lichtwege mit dem Strahlenmodell darstellen und einfache Lichtwege fachlich vorhersagen.",
+      "descriptionEn": "The learner can represent light paths using the ray model and appropriately predict simple light paths.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "dd7cdcea-0950-461b-96ac-ce49989fca47"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Optik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.OPTICS.RAYS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "cea91b60-1970-40bb-bbed-b0c142f26b0e"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "cca06d84-28fe-4b80-9bcd-968dda026e0e",
+      "shortKey": "canonical_physics_sek1_reflection",
+      "title": "Reflexion untersuchen und Spiegelbilder deuten",
+      "titleEn": "Investigate reflection and interpret mirror images",
+      "description": "Die lernende Person kann Reflexion an glatten Flächen untersuchen, das Reflexionsgesetz anwenden und Spiegelbilder deuten.",
+      "descriptionEn": "The learner can investigate reflection on smooth surfaces, apply the law of reflection, and interpret mirror images.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Optik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.OPTICS.REFLECTION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "10109c2a-788e-4969-9476-82d7cdd06f8f"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "32111497-d5ca-453e-906d-d352f885b126",
+      "shortKey": "canonical_physics_sek1_static_electricity_voltage",
+      "title": "Statische Elektrizität, Spannung und Kondensatoren qualitativ deuten",
+      "titleEn": "Interpret static electricity, voltage, and capacitors qualitatively",
+      "description": "Die lernende Person kann Ladungstrennung beschreiben, Spannung messen und den Kondensator als Ladungsspeicher deuten.",
+      "descriptionEn": "The learner can describe charge separation, measure voltage, and interpret the capacitor as charge storage.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "a5f652cc-e091-4c90-bec2-c357ae54fcf1"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elektrizität",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ELECTRICITY.VOLTAGE.STATIC"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "1e84b1e2-6802-45d3-9cac-f124cdcc39d8"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "53196a71-9dbd-4835-b2f9-ff21b8a8962c",
+      "shortKey": "canonical_physics_sek1_voltage_current_relation",
+      "title": "Zusammenhang von Spannung und Stromstärke qualitativ erläutern",
+      "titleEn": "Explain the relationship between voltage and current qualitatively",
+      "description": "Die lernende Person kann Stromstärke und Spannung messen und ihren Zusammenhang qualitativ erläutern.",
+      "descriptionEn": "The learner can measure current and voltage and qualitatively explain their relationship.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "32111497-d5ca-453e-906d-d352f885b126"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elektrizität",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ELECTRICITY.VOLTAGE.RELATION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "5e34edd7-75d0-46aa-8d10-954bde3a1166"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "01bebdfc-5819-4610-a03e-ea5e794fc954",
+      "shortKey": "canonical_physics_sek1_resistor_circuits",
+      "title": "Reihen- und Parallelschaltungen planen und Widerstände deuten",
+      "titleEn": "Plan series and parallel circuits and interpret resistors",
+      "description": "Die lernende Person kann Reihen- und Parallelschaltungen planen, Kirchhoff-Regeln anwenden und Widerstände qualitativ deuten.",
+      "descriptionEn": "The learner can plan series and parallel circuits, apply Kirchhoff rules, and qualitatively interpret resistors.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "53196a71-9dbd-4835-b2f9-ff21b8a8962c"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elektrizität",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ELECTRICITY.CIRCUITS.RESISTORS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "53801090-6ef2-4e61-8106-6833a348f701"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1911920e-b099-4310-82f2-b47f51a78b33",
+      "shortKey": "canonical_physics_sek1_electrical_safety",
+      "title": "Elektrische Anlagen, Gewitter und Haushaltsstromkreise sicher beurteilen",
+      "titleEn": "Assess electrical systems, thunderstorms, and household circuits safely",
+      "description": "Die lernende Person kann Gefahren elektrischer Anlagen erläutern, Verhalten bei Gewitter erklären und Haushaltsstromkreise sicher beurteilen.",
+      "descriptionEn": "The learner can explain dangers of electrical systems, explain behavior during thunderstorms, and safely assess household circuits.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "53196a71-9dbd-4835-b2f9-ff21b8a8962c"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elektrizität",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ELECTRICITY.SAFETY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "669d4da4-762a-40db-98b9-dab127d86346"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f778a659-1467-4aa7-97b2-bed78c530634",
+      "shortKey": "canonical_physics_sek1_magnets_fields",
+      "title": "Magnete, Pole und magnetische Kräfte qualitativ beschreiben",
+      "titleEn": "Describe magnets, poles, and magnetic forces qualitatively",
+      "description": "Die lernende Person kann Magnetpole und magnetische Kräfte beschreiben und das Konzept von Elementarmagneten in einfachen Situationen nutzen.",
+      "descriptionEn": "The learner can describe magnetic poles and forces and use the concept of elementary magnets in simple situations.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elektrizität",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ELECTRICITY.MAGNETS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "98906541-600f-4c98-9e90-b47c72f0ea18"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "75bdf5ca-cda4-4658-9ec7-84c77b3759db",
+      "shortKey": "canonical_physics_sek1_simple_circuits",
+      "title": "Einfache Stromkreise aufbauen und Schaltsymbole nutzen",
+      "titleEn": "Build simple circuits and use circuit symbols",
+      "description": "Die lernende Person kann Leitfähigkeit prüfen, offene und geschlossene Stromkreise aufbauen und Schaltsymbole fachlich verwenden.",
+      "descriptionEn": "The learner can test conductivity, build open and closed circuits, and appropriately use circuit symbols.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "f778a659-1467-4aa7-97b2-bed78c530634"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elektrizität",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ELECTRICITY.CIRCUITS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "303d4fb2-00c8-41ce-99b4-4adac0105897"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "a5f652cc-e091-4c90-bec2-c357ae54fcf1",
+      "shortKey": "canonical_physics_sek1_current_effects",
+      "title": "Wirkungen des elektrischen Stroms qualitativ beschreiben",
+      "titleEn": "Describe the effects of electric current qualitatively",
+      "description": "Die lernende Person kann magnetische, Licht-, Wärme- und chemische Wirkungen des elektrischen Stroms qualitativ beschreiben.",
+      "descriptionEn": "The learner can qualitatively describe magnetic, light, thermal, and chemical effects of electric current.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "75bdf5ca-cda4-4658-9ec7-84c77b3759db"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elektrizität",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ELECTRICITY.EFFECTS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "fbe3078b-7c31-4531-9c6b-da46d98375d3"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f1a078ae-6262-4444-a4bc-a5ab275621cf",
+      "shortKey": "canonical_physics_sek1_current_measurement",
+      "title": "Stromstärke in einfachen Stromkreisen messen",
+      "titleEn": "Measure current in simple circuits",
+      "description": "Die lernende Person kann ein Amperemeter fachlich anschließen und Stromstärken in einfachen Stromkreisen messen.",
+      "descriptionEn": "The learner can appropriately connect an ammeter and measure currents in simple circuits.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "75bdf5ca-cda4-4658-9ec7-84c77b3759db"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_FELDER",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Elektrizität",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.ELECTRICITY.CURRENT"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "5e56c17f-b5ce-4259-b525-10c636b0ffc6"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e41356c1-968b-435a-af25-b663f080ae5a",
+      "shortKey": "canonical_physics_sek1_density_mass_volume",
+      "title": "Volumen, Masse und Dichte bestimmen und vergleichen",
+      "titleEn": "Determine and compare volume, mass, and density",
+      "description": "Die lernende Person kann Volumen, Masse und Dichte von Körpern bestimmen, vergleichen und in einfachen Kontexten deuten.",
+      "descriptionEn": "The learner can determine, compare, and interpret the volume, mass, and density of bodies in simple contexts.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "79cb1695-f985-443a-b93e-27b57ab474b7"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE",
+          "LI_BEWEGUNG"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.MECHANICS.DENSITY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "e960edce-07a1-4678-b909-ca9889ae8f16"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5",
+      "shortKey": "canonical_physics_sek1_lens_imaging",
+      "title": "Linsenabbildungen qualitativ beschreiben und konstruieren",
+      "titleEn": "Describe and construct lens imaging qualitatively",
+      "description": "Die lernende Person kann Konvex- und Konkavlinsen beschreiben, Brennweiten angeben und einfache Bildkonstruktionen durchführen.",
+      "descriptionEn": "The learner can describe convex and concave lenses, state focal lengths, and carry out simple image constructions.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "79cb1695-f985-443a-b93e-27b57ab474b7"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Optik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.OPTICS.LENSES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "171b3ec7-1039-45a6-8dcb-be560f1517e5"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "90e1e6cf-4092-41d6-81f7-5206f9d68f84",
+      "shortKey": "canonical_physics_sek1_vision",
+      "title": "Sehvorgang und Fehlsichtigkeiten qualitativ erklären",
+      "titleEn": "Explain vision and visual impairments qualitatively",
+      "description": "Die lernende Person kann den Sehvorgang im Auge erläutern und Kurz- sowie Weitsichtigkeit qualitativ erklären.",
+      "descriptionEn": "The learner can explain the vision process in the eye and qualitatively explain near- and farsightedness.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Optik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.OPTICS.VISION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "1402524f-0965-44f1-b560-7a29690ae8a8"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6367d45e-919e-4c19-bcd9-7770a2d51139",
+      "shortKey": "canonical_physics_sek1_optical_instruments",
+      "title": "Einfache optische Instrumente beschreiben",
+      "titleEn": "Describe simple optical instruments",
+      "description": "Die lernende Person kann einfache optische Instrumente wie Fernrohr oder Mikroskop beschreiben und modellhafte Aufbauten deuten.",
+      "descriptionEn": "The learner can describe simple optical instruments such as telescopes or microscopes and interpret model setups.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "90e1e6cf-4092-41d6-81f7-5206f9d68f84"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Optik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.OPTICS.INSTRUMENTS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "8690086e-dfbf-4dd1-a996-e34b7e7db712"
+        }
+      },
+      "type": "atomic"
     },
     {
       "id": "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
@@ -365,6 +1271,52 @@
       "type": "atomic"
     },
     {
+      "id": "10bb8262-fb0f-40cf-94ef-408420ec7cf2",
+      "shortKey": "canonical_physics_sek1_force_properties",
+      "title": "Kräfteigenschaften qualitativ nutzen",
+      "titleEn": "Use force properties qualitatively",
+      "description": "Die lernende Person kann Kräfte zusammensetzen, Proportionalitäten qualitativ erkennen und Wirkungslinien beschreiben.",
+      "descriptionEn": "The learner can compose forces, qualitatively recognize proportional relationships, and describe lines of action.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "5ea765ac-c279-551a-8a94-a07da2381e5b"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.MECHANICS.FORCE_PROPERTIES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "73c87a76-9f85-48f4-8baa-bedb65ec4755"
+        }
+      },
+      "type": "atomic"
+    },
+    {
       "id": "581c0766-b84b-54cb-b8b6-375310329a41",
       "shortKey": "canonical_physics_sek1_friction",
       "title": "Kräfte und Reibung qualitativ nutzen",
@@ -406,6 +1358,106 @@
           "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
           "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
           "sourceGoalId": "006d9fe7-ddd9-42c1-9d48-b4b723d033c2"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "cd4fe3f9-a04d-4dcc-9c0b-db214daa72ba",
+      "shortKey": "canonical_physics_sek1_work_energy_cluster",
+      "title": "Arbeit und Energie qualitativ deuten",
+      "titleEn": "Interpret work and energy qualitatively",
+      "description": "Brückencluster für qualitative Sek-I-Vorstellungen zu Arbeit, einfachen Maschinen, mechanischen Energieformen sowie Wärme und elektrischer Energie als weiteren Energieformen.",
+      "descriptionEn": "Bridge cluster for qualitative lower-secondary concepts of work, simple machines, mechanical forms of energy, and heat and electrical energy as further forms of energy.",
+      "weight": 4,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "327302e3-5b36-46f8-9c16-73f24583b0eb",
+        "722857cf-f327-5740-8151-64eb92195ec8",
+        "eeba6bf8-a2b9-4d7d-a1d6-67286c923cef",
+        "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76"
+      ],
+      "requires": [
+        "5ea765ac-c279-551a-8a94-a07da2381e5b"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.MECHANICS.WORK_ENERGY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "ac0b8d1b-294b-4faa-b407-e719b9f914c1"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "327302e3-5b36-46f8-9c16-73f24583b0eb",
+      "shortKey": "canonical_physics_sek1_work_simple_machines",
+      "title": "Arbeit, einfache Maschinen und Wirkungsgrad qualitativ deuten",
+      "titleEn": "Interpret work, simple machines, and efficiency qualitatively",
+      "description": "Die lernende Person kann einfache Maschinen, Rollen und Räder als Kraftwandler beschreiben und den Wirkungsgrad qualitativ deuten.",
+      "descriptionEn": "The learner can describe simple machines, pulleys, and wheels as force transducers and interpret efficiency qualitatively.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "10bb8262-fb0f-40cf-94ef-408420ec7cf2"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.MECHANICS.WORK"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "bed517af-64ed-44a9-b7c8-649a7e102793"
         }
       },
       "type": "atomic"
@@ -458,6 +1510,100 @@
           "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
           "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
           "sourceGoalId": "3ebf05d1-ddd5-4199-8899-9d2fe34cf484"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "eeba6bf8-a2b9-4d7d-a1d6-67286c923cef",
+      "shortKey": "canonical_physics_sek1_heat_energy",
+      "title": "Wärme als Energieform qualitativ einordnen",
+      "titleEn": "Classify heat as a form of energy qualitatively",
+      "description": "Die lernende Person kann Wärme als Energieform einordnen und einfache Energiebilanzen qualitativ erläutern.",
+      "descriptionEn": "The learner can classify heat as a form of energy and qualitatively explain simple energy balances.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "722857cf-f327-5740-8151-64eb92195ec8"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.MECHANICS.HEAT"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "c4dd83af-0a29-401b-af0b-95d76d3470fa"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76",
+      "shortKey": "canonical_physics_sek1_electrical_energy",
+      "title": "Elektrische Energieumwandlungen qualitativ beschreiben",
+      "titleEn": "Describe electrical energy conversions qualitatively",
+      "description": "Die lernende Person kann elektrische Energieumwandlungen beschreiben und einfache Anwendungen qualitativ bewerten.",
+      "descriptionEn": "The learner can describe electrical energy conversions and qualitatively evaluate simple applications.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "722857cf-f327-5740-8151-64eb92195ec8",
+        "bbabac7c-9613-4c7e-877e-d7dc3df5300f"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_TECHNIK"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.MECHANICS.ELECTRICAL_ENERGY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "996d097a-cac2-4b5f-979a-b3a0b9803265",
+          "sourceLandscapeTitle": "Physik Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "9a37d05c-e957-4900-b722-539e6cec4ca7"
         }
       },
       "type": "atomic"

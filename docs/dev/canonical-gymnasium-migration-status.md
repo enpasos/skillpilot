@@ -49,6 +49,12 @@ Observed repo state:
 - Hessen Sek I mapping files present: `4`
 - Bavaria Gymnasium pilot mapping files present: `2`
 - the Bavaria Sek-I mathematics pilot now spans the shared canonical `J5-J10` spine with `64` reviewed mappings, including first explicit subrow refinement for `M8 3`, `M8 4`, `M9 3`, `M9 7`, and `M10 2`
+- the Hessen Sek-I mathematics pilot now carries `33` explicit mappings and reaches reviewed row coverage beyond the old function/quadratic slice: J5 number basics, linear equations/inequalities, quadratic binomial-form routes, roots, similarity/Strahlensatz, Pythagoras, circle/cylinder, and integer-exponent rules
+- the reviewed Hessen Sek-I mathematics pilot no longer carries any `APV-202` findings; remaining reviewed math debt is now limited to the two Bayern override-backed `APV-201` cases
+- the Hessen Sek-I physics mechanics bridge now closes the old `7.4 Mechanik` row at exact reviewed coverage: a dedicated canonical density/mass/volume atom plus exact row- and subrow-mappings now cover the full Hessen mechanics anchor, while `Kräfteigenschaften nutzen` and `10.1 Arbeit und Energie` already bind to their own reviewed canonical targets
+- the Hessen Sek-I physics optics bridge now spans both reviewed source rows `7.1 Optik 1` and `8.1 Optik 2`: light propagation, ray model, reflection, lens imaging, vision, and simple optical instruments all map exactly into dedicated canonical Sek-I optics anchors
+- the Hessen Sek-I physics electricity bridge now spans both reviewed source rows `7.3 Magnetismus und Elektrizität 1` and `8.2 Elektrizität 2`: magnets, simple circuits, current effects, current measurement, static electricity/voltage, current-voltage relation, resistor circuits, and electrical safety all map exactly into dedicated canonical Sek-I electricity anchors
+- the Hessen Sek-I physics work/energy bridge now reaches into the `J10` continuation of `10.1 Arbeit und Energie`: `Wärme als Energieform` and `Elektrische Energie nutzen` both map exactly into dedicated canonical energy atoms, with electrical-energy sequencing explicitly depending on the reviewed voltage bridge
 - Explicit learner cutover path to `Gymnasium (DE)` exists in backend and UI
 - Bulk cutover path for operators exists
 - Hessen upper-secondary legacy-to-canonical mapping fixtures now live in the DE-level archive `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/`
@@ -69,7 +75,7 @@ Observed repo state:
 - the `Abi26` Hessen mathematics bootstrap now provisions learners onto canonical `Gymnasium (DE)` with the `DE-HE` root filter plus canonical mathematics `GK`/`LK` scope, instead of selecting the retired Hessen mathematics curriculum directly
 - new UI and AI curriculum-selection writes now also reject retired Hessen compatibility IDs even when a caller already knows them, so compatibility routes are no longer re-openable as fresh learner selections
 - Reviewed canonical landscapes now carry committed node-level `applicability`; the currently enforced CI set now covers the full committed DE Gymnasium canonical set: `Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Englisch`, `Französisch`, `Griechisch`, `Chinesisch`, `Geschichte`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`
-- `validate:view-filters` is now clean on active reviewed findings for that scope: `0` errors, `0` active warnings, `10` accepted warnings recorded in `docs/qa-ci/applicability-accepted-warnings.json`
+- `validate:view-filters` is now clean on active reviewed findings for that scope: `0` errors, `0` active warnings, `8` accepted warnings recorded in `docs/qa-ci/applicability-accepted-warnings.json`
 - `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` has now effectively reached `legacy_view_retained` as an operational runtime state, even though hard repo deletion is still tracked separately
 - No legacy source tree has been deleted yet
 
@@ -169,6 +175,8 @@ Current unit list and status:
 | Physics E.2 mechanics corridor | `cutover_ready` | 75% |
 | Physics E.3 horizontal-projection slice | `cutover_ready` | 75% |
 | Hessen Sek I physics mechanics bridge | `subtree_adopted` | 50% |
+| Hessen Sek I physics optics bridge | `subtree_adopted` | 50% |
+| Hessen Sek I physics electricity bridge | `subtree_adopted` | 50% |
 | Hessen Sek I chemistry foundations bridge | `subtree_adopted` | 50% |
 | Hessen Sek I biology foundations/cell + photosynthesis-respiration bridge | `subtree_adopted` | 50% |
 | Chemistry Hessen baseline | `subtree_adopted` | 50% |
@@ -191,13 +199,13 @@ Current unit list and status:
 Tracked-unit calculation:
 
 - `4` units at `75%`
-- `17` units at `50%`
+- `19` units at `50%`
 
 Formula:
 
 ```text
-score = (4 * 75 + 17 * 50) / 21
-      = 54.76%
+score = (4 * 75 + 19 * 50) / 23
+      = 54.35%
 ```
 
 Working program score:

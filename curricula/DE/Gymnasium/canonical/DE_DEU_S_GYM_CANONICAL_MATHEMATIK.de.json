@@ -129,7 +129,8 @@
       "requires": [],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -145,6 +146,54 @@
     {
       "id": "8dd5199b-f614-4ebd-8819-b5ff37326524",
       "shortKey": "canonical_math_sek1_j5_integer_arithmetic",
+      "title": "Zahlenverständnis und Grundoperationen aufbauen",
+      "titleEn": "Build number sense and basic operations",
+      "description": "Kanonischer Cluster für den J5-Einstieg in Zahlvorstellungen und elementare Rechenroutinen. Der aktuelle Pilot trennt hier zwischen der Bayern-Route zu natürlichen und ganzen Zahlen mit Addition/Subtraktion und der Hessen-Route zum Darstellen, Ordnen und Rechnen mit natürlichen Zahlen.",
+      "descriptionEn": "Canonical cluster for the year-5 entry into number sense and elementary calculation routines. The current pilot distinguishes between the Bavaria route for natural and whole numbers with addition/subtraction and the Hessen route for representing, ordering, and calculating with natural numbers.",
+      "core": true,
+      "weight": 2,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J5",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J5.1"
+      },
+      "contains": [
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+        "cf474eab-1379-4877-907e-58b0892ce734"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "1877cd7b-d4ce-5356-a938-f28ddd8d7f3c"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+      "shortKey": "canonical_math_sek1_j5_integer_add_subtract",
       "title": "Natürliche und ganze Zahlen addieren und subtrahieren",
       "titleEn": "Add and subtract natural and whole numbers",
       "description": "Die lernende Person kann natürliche und ganze Zahlen sicher ordnen, auf der Zahlengeraden darstellen sowie Additions- und Subtraktionsaufgaben begründet lösen.",
@@ -167,7 +216,7 @@
         ],
         "phase": "J5",
         "area": "Arithmetic",
-        "topicCode": "CANONICAL.MATH.SEK1.J5.1"
+        "topicCode": "CANONICAL.MATH.SEK1.J5.1A"
       },
       "contains": [],
       "requires": [],
@@ -182,6 +231,50 @@
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceLandscapeTitle": "Mathematik (Gymnasium)",
           "sourceGoalId": "1877cd7b-d4ce-5356-a938-f28ddd8d7f3c"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "cf474eab-1379-4877-907e-58b0892ce734",
+      "shortKey": "canonical_math_sek1_j5_natural_numbers_foundations",
+      "title": "Natürliche Zahlen darstellen, ordnen und mit ihnen rechnen",
+      "titleEn": "Represent, order, and calculate with natural numbers",
+      "description": "Die lernende Person kann natürliche Zahlen sicher darstellen, ordnen und mit ihnen rechnen.",
+      "descriptionEn": "The learner can represent, order, and calculate with natural numbers reliably.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J5",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J5.1B"
+      },
+      "contains": [],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+          "sourceLandscapeTitle": "Mathematik",
+          "sourceGoalId": "d20fcef5-b5dd-4e97-945a-52f7b7d89306"
         }
       },
       "type": "atomic"
@@ -217,7 +310,8 @@
       "requires": [],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -263,7 +357,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -357,7 +452,8 @@
       "requires": [],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -403,7 +499,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -421,10 +518,10 @@
       "shortKey": "canonical_math_sek1_j6_area_volume",
       "title": "Flächeninhalt und Volumen berechnen",
       "titleEn": "Calculate area and volume",
-      "description": "Die lernende Person kann Flächeninhalte und Volumina einfacher Figuren und Körper bestimmen, Einheiten passend verwenden und Ergebnisse in Sachsituationen deuten.",
-      "descriptionEn": "The learner can determine areas and volumes of simple figures and solids, use appropriate units, and interpret results in contextual situations.",
+      "description": "Kanonischer Cluster für Flächen- und Volumenroutinen in J6. Der aktuelle Pilot trennt hier zwischen Flächeninhalten ebener Figuren und Volumina/Oberflächen einfacher Körper.",
+      "descriptionEn": "Canonical cluster for area and volume routines in year 6. The current pilot distinguishes between areas of plane figures and volumes/surfaces of simple solids.",
       "core": true,
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "canonical",
         "pilot"
@@ -443,6 +540,54 @@
         "area": "Geometry",
         "topicCode": "CANONICAL.MATH.SEK1.J6.2"
       },
+      "contains": [
+        "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+        "1f89d69e-ead1-424b-8221-fae37fdea2bc"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "fc5f5e55-a6c4-5175-8e96-a04dee910927"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+      "shortKey": "canonical_math_sek1_j6_area_figures",
+      "title": "Flächeninhalte ebener Figuren berechnen",
+      "titleEn": "Calculate areas of plane figures",
+      "description": "Die lernende Person kann Flächeninhalte ebener und zusammengesetzter Figuren berechnen, Zerlegungsstrategien nutzen und Ergebnisse mit passenden Einheiten deuten.",
+      "descriptionEn": "The learner can calculate areas of plane and composite figures, use decomposition strategies, and interpret results with suitable units.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J6",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.2A"
+      },
       "contains": [],
       "requires": [
         "ca834a7d-5a66-4876-b24c-143b1464d937",
@@ -450,7 +595,56 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "fc5f5e55-a6c4-5175-8e96-a04dee910927"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1f89d69e-ead1-424b-8221-fae37fdea2bc",
+      "shortKey": "canonical_math_sek1_j6_volume_solids",
+      "title": "Volumina und Oberflächen einfacher Körper berechnen",
+      "titleEn": "Calculate volumes and surfaces of simple solids",
+      "description": "Die lernende Person kann Volumina und Oberflächen einfacher Körper berechnen, Einheiten sicher verwenden und Ergebnisse an Modellen oder Sachsituationen prüfen.",
+      "descriptionEn": "The learner can calculate volumes and surfaces of simple solids, use units reliably, and check results on models or in contextual situations.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J6",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.2B"
+      },
+      "contains": [],
+      "requires": [
+        "ca834a7d-5a66-4876-b24c-143b1464d937",
+        "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -1255,7 +1449,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -1348,7 +1543,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -1444,7 +1640,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -1558,10 +1755,10 @@
       "shortKey": "canonical_math_analyze_linear_functions_rechnerisch",
       "title": "Lineare Funktionen rechnerisch untersuchen",
       "titleEn": "Analyze linear functions algebraically",
-      "description": "Die lernende Person kann Geradengleichungen aufstellen, Nullstellen linearer Funktionen bestimmen und Schnittpunkte zweier Geraden berechnen.",
-      "descriptionEn": "The learner can set up line equations, determine roots of linear functions, and calculate intersections of two lines.",
+      "description": "Kanonischer Cluster für lineare Rechenroutinen im J8-Korridor. Der aktuelle Pilot trennt hier zwischen dem rechnerischen Arbeiten mit Geradengleichungen, Nullstellen und Schnittpunkten sowie dem systematischen Lösen linearer Gleichungen und Ungleichungen.",
+      "descriptionEn": "Canonical cluster for linear calculation routines in the year-8 corridor. The current pilot distinguishes between algebraic work with line equations, roots, and intersections, and the systematic solving of linear equations and inequalities.",
       "core": true,
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "canonical",
         "pilot"
@@ -1582,9 +1779,13 @@
         "area": "Analysis",
         "topicCode": "CANONICAL.MATH.SEK1.2A"
       },
-      "contains": [],
+      "contains": [
+        "ae772695-d55e-4cc5-81bc-6605272759b4",
+        "e6eb42c7-454f-49bf-b598-64d2935d2735"
+      ],
       "requires": [
-        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "fd860da9-73ba-47cd-a1a8-452424915a80"
       ],
       "applicability": {
         "jurisdiction": [
@@ -1597,6 +1798,100 @@
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceGoalId": "edd3e6df-7f3d-5230-9377-dcf9d095c49c"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "ae772695-d55e-4cc5-81bc-6605272759b4",
+      "shortKey": "canonical_math_linear_equations_roots_intersections",
+      "title": "Geradengleichungen, Nullstellen und Schnittpunkte bestimmen",
+      "titleEn": "Determine line equations, roots, and intersections",
+      "description": "Die lernende Person kann Geradengleichungen aufstellen, Nullstellen linearer Funktionen bestimmen und Schnittpunkte zweier Geraden rechnerisch ermitteln.",
+      "descriptionEn": "The learner can set up line equations, determine roots of linear functions, and calculate intersections of two lines algebraically.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J8",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.2A1"
+      },
+      "contains": [],
+      "requires": [
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceGoalId": "edd3e6df-7f3d-5230-9377-dcf9d095c49c"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e6eb42c7-454f-49bf-b598-64d2935d2735",
+      "shortKey": "canonical_math_solve_linear_equations_inequalities",
+      "title": "Lineare Gleichungen und Ungleichungen lösen",
+      "titleEn": "Solve linear equations and inequalities",
+      "description": "Die lernende Person kann lineare Gleichungen und Ungleichungen systematisch mit Äquivalenzumformungen lösen, Lösungswege begründen und die Lösungsmenge passend darstellen.",
+      "descriptionEn": "The learner can solve linear equations and inequalities systematically using equivalent transformations, justify the solution path, and represent the solution set appropriately.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J8",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.2A2"
+      },
+      "contains": [],
+      "requires": [
+        "fd860da9-73ba-47cd-a1a8-452424915a80"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+          "sourceGoalId": "05b6a520-c23a-414a-842a-ba1c0e57b776"
         }
       },
       "type": "atomic"
@@ -1835,7 +2130,8 @@
       "requires": [],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -1975,7 +2271,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -2214,7 +2511,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -2260,7 +2558,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -2448,7 +2747,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -2466,10 +2766,10 @@
       "shortKey": "canonical_math_sek1_j9_power_functions",
       "title": "Potenzfunktionen und Potenzgesetze nutzen",
       "titleEn": "Use power functions and exponent rules",
-      "description": "Die lernende Person kann Potenzterme mit natürlichen Exponenten darstellen, Potenzgesetze anwenden und einfache Potenzfunktionen in ihrem Verlauf beschreiben.",
-      "descriptionEn": "The learner can represent power expressions with natural exponents, apply exponent rules, and describe the behaviour of simple power functions.",
+      "description": "Kanonischer Cluster für Potenzgesetze und Potenz-/Wurzelfunktionsbilder im späten Sek-I-Korridor. Der aktuelle Pilot trennt hier zwischen den Rechenregeln zu Potenzen und der graphischen Untersuchung von Potenz- und Wurzelfunktionen.",
+      "descriptionEn": "Canonical cluster for exponent rules and power/root-function representations in the late lower-secondary corridor. The current pilot distinguishes between calculation rules for powers and the graphical investigation of power and root functions.",
       "core": true,
-      "weight": 1,
+      "weight": 2,
       "tags": [
         "canonical",
         "pilot"
@@ -2490,13 +2790,64 @@
         "area": "Algebra",
         "topicCode": "CANONICAL.MATH.SEK1.J9.5"
       },
+      "contains": [
+        "6596405a-9728-41df-9163-53670ec2a937",
+        "66077296-a8f8-4645-938b-7c3424cb2f14"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "220d1b8c-ec1c-530e-a812-a5b4190da8f9"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "66077296-a8f8-4645-938b-7c3424cb2f14",
+      "shortKey": "canonical_math_sek1_j9_power_root_graphs",
+      "title": "Potenz- und Wurzelfunktionen graphisch untersuchen",
+      "titleEn": "Investigate power and root functions graphically",
+      "description": "Die lernende Person kann typische Potenzfunktionen mit positiven und negativen Exponenten sowie Wurzelfunktionen graphisch untersuchen, charakteristische Verlaeufe vergleichen und Transformationen beschreiben.",
+      "descriptionEn": "The learner can investigate typical power functions with positive and negative exponents as well as root functions graphically, compare characteristic behaviours, and describe transformations.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.5B"
+      },
       "contains": [],
       "requires": [
         "6596405a-9728-41df-9163-53670ec2a937"
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -2543,7 +2894,8 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BY"
+          "DE-BY",
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -2707,6 +3059,59 @@
       "shortKey": "canonical_math_determine_vertices_of_quadratic_functions",
       "title": "Scheitelpunkte quadratischer Funktionen bestimmen",
       "titleEn": "Determine vertices of quadratic functions",
+      "description": "Kanonischer Cluster für Scheitelpunkt- und Umformroutinen quadratischer Funktionen. Der aktuelle Pilot trennt hier zwischen dem Bestimmen des Scheitelpunkts aus quadratischen Termen und dem gezielten Umformen quadratischer Terme mit binomischen Formeln.",
+      "descriptionEn": "Canonical cluster for vertex and transformation routines of quadratic functions. The current pilot distinguishes between determining the vertex from quadratic expressions and purposefully transforming quadratic expressions using binomial formulas.",
+      "core": true,
+      "weight": 2,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "GLOBAL",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.3A"
+      },
+      "contains": [
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+        "e322310f-f33a-485d-bc23-2412a6b8fa12"
+      ],
+      "requires": [
+        "fd860da9-73ba-47cd-a1a8-452424915a80",
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceGoalId": "6e7ff196-a9e4-5bac-afee-621801ec85c2"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+      "shortKey": "canonical_math_quadratic_vertices_and_graphs",
+      "title": "Scheitelpunkte quadratischer Funktionen bestimmen",
+      "titleEn": "Determine vertices of quadratic functions",
       "description": "Die lernende Person kann aus quadratischen Termen den Scheitelpunkt ermitteln, zwischen Normal- und Scheitelpunktform wechseln und den zugehoerigen Graphen skizzieren.",
       "descriptionEn": "The learner can determine the vertex from quadratic expressions, switch between general and vertex form, and sketch the corresponding graph.",
       "core": true,
@@ -2729,7 +3134,7 @@
         ],
         "phase": "GLOBAL",
         "area": "Analysis",
-        "topicCode": "CANONICAL.MATH.SEK1.3A"
+        "topicCode": "CANONICAL.MATH.SEK1.3A1"
       },
       "contains": [],
       "requires": [
@@ -2738,8 +3143,7 @@
       ],
       "applicability": {
         "jurisdiction": [
-          "DE-BY",
-          "DE-HE"
+          "DE-BY"
         ]
       },
       "extendedData": {
@@ -2747,6 +3151,52 @@
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceGoalId": "6e7ff196-a9e4-5bac-afee-621801ec85c2"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e322310f-f33a-485d-bc23-2412a6b8fa12",
+      "shortKey": "canonical_math_binomial_formulas_quadratic_terms",
+      "title": "Quadratische Terme mit binomischen Formeln umformen",
+      "titleEn": "Transform quadratic expressions using binomial formulas",
+      "description": "Die lernende Person kann binomische Formeln anwenden und quadratische Terme so umformen oder faktorisieren, dass Ausdrucksformen gezielt verglichen werden können.",
+      "descriptionEn": "The learner can apply binomial formulas and transform or factor quadratic expressions so that different forms can be compared purposefully.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "GLOBAL",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.3A2"
+      },
+      "contains": [],
+      "requires": [
+        "fd860da9-73ba-47cd-a1a8-452424915a80"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+          "sourceGoalId": "172f1e73-b8fa-47be-b7af-50c93ce8cc7b"
         }
       },
       "type": "atomic"

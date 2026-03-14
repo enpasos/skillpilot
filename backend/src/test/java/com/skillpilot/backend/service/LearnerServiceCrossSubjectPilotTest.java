@@ -19,6 +19,8 @@ import com.skillpilot.backend.domain.PlannedGoal;
 import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeProperties;
 import com.skillpilot.backend.landscape.LandscapeService;
+import com.skillpilot.backend.landscape.LearningGoal;
+import com.skillpilot.backend.landscape.LearningLandscape;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
@@ -81,17 +83,64 @@ class LearnerServiceCrossSubjectPilotTest {
     private static final String LEGACY_PHYSICS_ENERGY_CONSERVATION_ID = "9aeaf941-baef-43fb-8077-50d37e600c26";
     private static final String LEGACY_PHYSICS_MOMENTUM_CONSERVATION_ID = "f9c16720-ee4e-4bd4-b4a5-e9c12b910fab";
     private static final String LEGACY_SEK1_PHYSICS_MOTION_ID = "d95d5a8b-8415-46d2-b8aa-568a7244f7a9";
+    private static final String LEGACY_SEK1_PHYSICS_MECHANICS_CLUSTER_ID = "22f30637-5c9c-45c9-9c39-fd736ae565fb";
+    private static final String LEGACY_SEK1_PHYSICS_DENSITY_ID = "e960edce-07a1-4678-b909-ca9889ae8f16";
     private static final String LEGACY_SEK1_PHYSICS_FORCES_ID = "93241d35-1d4f-4239-9116-87eacb985521";
+    private static final String LEGACY_SEK1_PHYSICS_FORCE_PROPERTIES_ID = "73c87a76-9f85-48f4-8baa-bedb65ec4755";
     private static final String LEGACY_SEK1_PHYSICS_FRICTION_ID = "006d9fe7-ddd9-42c1-9d48-b4b723d033c2";
+    private static final String LEGACY_SEK1_PHYSICS_WORK_ENERGY_CLUSTER_ID = "ac0b8d1b-294b-4faa-b407-e719b9f914c1";
     private static final String LEGACY_SEK1_PHYSICS_ENERGY_ID = "3ebf05d1-ddd5-4199-8899-9d2fe34cf484";
+    private static final String LEGACY_SEK1_PHYSICS_HEAT_ENERGY_ID = "c4dd83af-0a29-401b-af0b-95d76d3470fa";
+    private static final String LEGACY_SEK1_PHYSICS_ELECTRICAL_ENERGY_ID = "9a37d05c-e957-4900-b722-539e6cec4ca7";
+    private static final String LEGACY_SEK1_PHYSICS_LIGHT_CLUSTER_ID = "9d0b0fea-c866-42da-8c26-9a9691977d35";
+    private static final String LEGACY_SEK1_PHYSICS_LIGHT_PROPAGATION_ID = "c8a36d2b-19f9-4cbf-b564-537678388646";
+    private static final String LEGACY_SEK1_PHYSICS_RAY_MODEL_ID = "cea91b60-1970-40bb-bbed-b0c142f26b0e";
+    private static final String LEGACY_SEK1_PHYSICS_REFLECTION_ID = "10109c2a-788e-4969-9476-82d7cdd06f8f";
+    private static final String LEGACY_SEK1_PHYSICS_ELECTRICITY_CLUSTER_ID = "800df877-c091-400c-ac88-2286b79524c0";
+    private static final String LEGACY_SEK1_PHYSICS_MAGNETS_ID = "98906541-600f-4c98-9e90-b47c72f0ea18";
+    private static final String LEGACY_SEK1_PHYSICS_SIMPLE_CIRCUITS_ID = "303d4fb2-00c8-41ce-99b4-4adac0105897";
+    private static final String LEGACY_SEK1_PHYSICS_CURRENT_EFFECTS_ID = "fbe3078b-7c31-4531-9c6b-da46d98375d3";
+    private static final String LEGACY_SEK1_PHYSICS_CURRENT_MEASUREMENT_ID = "5e56c17f-b5ce-4259-b525-10c636b0ffc6";
+    private static final String LEGACY_SEK1_PHYSICS_VOLTAGE_CLUSTER_ID = "057a39fd-bcfd-4008-b30c-f91370b34007";
+    private static final String LEGACY_SEK1_PHYSICS_STATIC_ELECTRICITY_ID = "1e84b1e2-6802-45d3-9cac-f124cdcc39d8";
+    private static final String LEGACY_SEK1_PHYSICS_VOLTAGE_CURRENT_ID = "5e34edd7-75d0-46aa-8d10-954bde3a1166";
+    private static final String LEGACY_SEK1_PHYSICS_RESISTOR_CIRCUITS_ID = "53801090-6ef2-4e61-8106-6833a348f701";
+    private static final String LEGACY_SEK1_PHYSICS_ELECTRICAL_SAFETY_ID = "669d4da4-762a-40db-98b9-dab127d86346";
+    private static final String LEGACY_SEK1_PHYSICS_OPTICS_CLUSTER_ID = "eb6bf9d8-943c-42af-85fc-1b3d08985b6f";
+    private static final String LEGACY_SEK1_PHYSICS_LENSES_ID = "171b3ec7-1039-45a6-8dcb-be560f1517e5";
+    private static final String LEGACY_SEK1_PHYSICS_VISION_ID = "1402524f-0965-44f1-b560-7a29690ae8a8";
+    private static final String LEGACY_SEK1_PHYSICS_INSTRUMENTS_ID = "8690086e-dfbf-4dd1-a996-e34b7e7db712";
     private static final String LEGACY_MATH_FUNCTION_CONCEPT_ID = "0903db01-4377-4a79-8f29-aceffea68f24";
     private static final String LEGACY_MATH_READ_VALUES_ID = "cd46ce36-883e-4e68-8bfd-2bbdc0ecce9d";
     private static final String LEGACY_SEK1_LINEAR_FUNCTIONS_ID = "faafd111-21a1-4f67-945a-6bff60b3e19b";
     private static final String CANONICAL_PHYSICS_SEK1_MECHANICS_CLUSTER_ID = "9645f0d8-43a3-5f29-873c-daa5ace638db";
+    private static final String CANONICAL_PHYSICS_SEK1_DENSITY_ID = "e41356c1-968b-435a-af25-b663f080ae5a";
     private static final String CANONICAL_PHYSICS_SEK1_MOTION_ID = "ae67bcf1-f3ee-50d6-9a12-25a159dff659";
     private static final String CANONICAL_PHYSICS_SEK1_FORCES_ID = "5ea765ac-c279-551a-8a94-a07da2381e5b";
+    private static final String CANONICAL_PHYSICS_SEK1_FORCE_PROPERTIES_ID = "10bb8262-fb0f-40cf-94ef-408420ec7cf2";
     private static final String CANONICAL_PHYSICS_SEK1_FRICTION_ID = "581c0766-b84b-54cb-b8b6-375310329a41";
+    private static final String CANONICAL_PHYSICS_SEK1_WORK_ENERGY_CLUSTER_ID = "cd4fe3f9-a04d-4dcc-9c0b-db214daa72ba";
     private static final String CANONICAL_PHYSICS_SEK1_ENERGY_ID = "722857cf-f327-5740-8151-64eb92195ec8";
+    private static final String CANONICAL_PHYSICS_SEK1_HEAT_ENERGY_ID = "eeba6bf8-a2b9-4d7d-a1d6-67286c923cef";
+    private static final String CANONICAL_PHYSICS_SEK1_ELECTRICAL_ENERGY_ID = "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76";
+    private static final String CANONICAL_PHYSICS_SEK1_LIGHT_CLUSTER_ID = "051cedc5-d380-4716-9751-b18f2e67a912";
+    private static final String CANONICAL_PHYSICS_SEK1_LIGHT_PROPAGATION_ID = "dd7cdcea-0950-461b-96ac-ce49989fca47";
+    private static final String CANONICAL_PHYSICS_SEK1_RAY_MODEL_ID = "79cb1695-f985-443a-b93e-27b57ab474b7";
+    private static final String CANONICAL_PHYSICS_SEK1_REFLECTION_ID = "cca06d84-28fe-4b80-9bcd-968dda026e0e";
+    private static final String CANONICAL_PHYSICS_SEK1_ELECTRICITY_CLUSTER_ID = "4924d83e-5e4b-4819-9d70-86cda3496195";
+    private static final String CANONICAL_PHYSICS_SEK1_MAGNETS_ID = "f778a659-1467-4aa7-97b2-bed78c530634";
+    private static final String CANONICAL_PHYSICS_SEK1_SIMPLE_CIRCUITS_ID = "75bdf5ca-cda4-4658-9ec7-84c77b3759db";
+    private static final String CANONICAL_PHYSICS_SEK1_CURRENT_EFFECTS_ID = "a5f652cc-e091-4c90-bec2-c357ae54fcf1";
+    private static final String CANONICAL_PHYSICS_SEK1_CURRENT_MEASUREMENT_ID = "f1a078ae-6262-4444-a4bc-a5ab275621cf";
+    private static final String CANONICAL_PHYSICS_SEK1_VOLTAGE_CLUSTER_ID = "bbabac7c-9613-4c7e-877e-d7dc3df5300f";
+    private static final String CANONICAL_PHYSICS_SEK1_STATIC_ELECTRICITY_ID = "32111497-d5ca-453e-906d-d352f885b126";
+    private static final String CANONICAL_PHYSICS_SEK1_VOLTAGE_CURRENT_ID = "53196a71-9dbd-4835-b2f9-ff21b8a8962c";
+    private static final String CANONICAL_PHYSICS_SEK1_RESISTOR_CIRCUITS_ID = "01bebdfc-5819-4610-a03e-ea5e794fc954";
+    private static final String CANONICAL_PHYSICS_SEK1_ELECTRICAL_SAFETY_ID = "1911920e-b099-4310-82f2-b47f51a78b33";
+    private static final String CANONICAL_PHYSICS_SEK1_OPTICS_CLUSTER_ID = "84b1bc70-dadf-449b-a8d4-8bcee1da1fea";
+    private static final String CANONICAL_PHYSICS_SEK1_LENSES_ID = "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5";
+    private static final String CANONICAL_PHYSICS_SEK1_VISION_ID = "90e1e6cf-4092-41d6-81f7-5206f9d68f84";
+    private static final String CANONICAL_PHYSICS_SEK1_INSTRUMENTS_ID = "6367d45e-919e-4c19-bcd9-7770a2d51139";
     private static final String CANONICAL_PHYSICS_DIAGRAMS_ID = "ce431132-dfc4-42c2-aff6-bd72035190f8";
     private static final String CANONICAL_PHYSICS_UNIFORM_MOTION_ID = "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd";
     private static final String CANONICAL_PHYSICS_FREE_FALL_ID = "230345f3-c360-4963-b390-ab94e3e2c864";
@@ -178,17 +227,158 @@ class LearnerServiceCrossSubjectPilotTest {
     void getMasteryProjectsExactLegacySek1PhysicsMasteryIntoCanonicalPhysicsBridgeGoals() {
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_DENSITY_ID, 1.0),
                         new Mastery(learner, LEGACY_SEK1_PHYSICS_MOTION_ID, 1.0),
                         new Mastery(learner, LEGACY_SEK1_PHYSICS_FORCES_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_FORCE_PROPERTIES_ID, 1.0),
                         new Mastery(learner, LEGACY_SEK1_PHYSICS_FRICTION_ID, 1.0),
                         new Mastery(learner, LEGACY_SEK1_PHYSICS_ENERGY_ID, 1.0)));
 
         Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
 
         assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_MOTION_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_DENSITY_ID, 1.0);
         assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_FORCES_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_FORCE_PROPERTIES_ID, 1.0);
         assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_FRICTION_ID, 1.0);
         assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_ENERGY_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsMechanicsClusterIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_PHYSICS_MECHANICS_CLUSTER_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_MECHANICS_CLUSTER_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsWorkEnergyClusterIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_PHYSICS_WORK_ENERGY_CLUSTER_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_WORK_ENERGY_CLUSTER_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsHeatAndElectricalEnergyIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_HEAT_ENERGY_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_ELECTRICAL_ENERGY_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_HEAT_ENERGY_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_ELECTRICAL_ENERGY_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsLightMasteryIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_LIGHT_PROPAGATION_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_RAY_MODEL_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_REFLECTION_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_LIGHT_PROPAGATION_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_RAY_MODEL_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_REFLECTION_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsLightClusterIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_PHYSICS_LIGHT_CLUSTER_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_LIGHT_CLUSTER_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsElectricityMasteryIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_MAGNETS_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_SIMPLE_CIRCUITS_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_CURRENT_EFFECTS_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_CURRENT_MEASUREMENT_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_MAGNETS_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_SIMPLE_CIRCUITS_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_CURRENT_EFFECTS_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_CURRENT_MEASUREMENT_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsElectricityClusterIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_PHYSICS_ELECTRICITY_CLUSTER_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_ELECTRICITY_CLUSTER_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsVoltageMasteryIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_STATIC_ELECTRICITY_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_VOLTAGE_CURRENT_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_RESISTOR_CIRCUITS_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_ELECTRICAL_SAFETY_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_STATIC_ELECTRICITY_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_VOLTAGE_CURRENT_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_RESISTOR_CIRCUITS_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_ELECTRICAL_SAFETY_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsVoltageClusterIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_PHYSICS_VOLTAGE_CLUSTER_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_VOLTAGE_CLUSTER_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsOpticsMasteryIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_LENSES_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_VISION_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_INSTRUMENTS_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_LENSES_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_VISION_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_INSTRUMENTS_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactLegacySek1PhysicsOpticsClusterIntoCanonicalPhysicsBridgeGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_PHYSICS_OPTICS_CLUSTER_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SEK1_OPTICS_CLUSTER_ID, 1.0);
     }
 
     @Test
@@ -599,6 +789,86 @@ class LearnerServiceCrossSubjectPilotTest {
         assertThat(frontier)
                 .extracting(FrontierGoal::id)
                 .contains(CANONICAL_PHYSICS_UNIFORM_MOTION_ID);
+    }
+
+    @Test
+    void canonicalPhysicsPilotFrontierUnlocksLensImagingFromProjectedLegacyRayModelMastery() {
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_PHYSICS_SEK1_OPTICS_CLUSTER_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_PHYSICS_RAY_MODEL_ID, 1.0)));
+
+        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_PHYSICS_SEK1_LENSES_ID)
+                .doesNotContain(CANONICAL_PHYSICS_SEK1_VISION_ID);
+    }
+
+    @Test
+    void canonicalPhysicsPilotFrontierUnlocksCurrentEffectsFromProjectedLegacySimpleCircuitMastery() {
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_PHYSICS_SEK1_ELECTRICITY_CLUSTER_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_PHYSICS_SIMPLE_CIRCUITS_ID, 1.0)));
+
+        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_PHYSICS_SEK1_CURRENT_EFFECTS_ID, CANONICAL_PHYSICS_SEK1_CURRENT_MEASUREMENT_ID);
+    }
+
+    @Test
+    void canonicalPhysicsPilotFrontierUnlocksVoltageCurrentRelationFromProjectedLegacyElectricityAndStaticMastery() {
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_PHYSICS_SEK1_VOLTAGE_CLUSTER_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_ELECTRICITY_CLUSTER_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_STATIC_ELECTRICITY_ID, 1.0)));
+
+        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_PHYSICS_SEK1_VOLTAGE_CURRENT_ID)
+                .doesNotContain(CANONICAL_PHYSICS_SEK1_RESISTOR_CIRCUITS_ID);
+    }
+
+    @Test
+    void canonicalPhysicsPilotElectricalEnergyGoalDependsOnReviewedVoltageBridge() {
+        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_PILOT_ID);
+        LearningGoal heatGoal = landscape.getGoals().stream()
+                .filter(goal -> CANONICAL_PHYSICS_SEK1_HEAT_ENERGY_ID.equals(goal.getId()))
+                .findFirst()
+                .orElseThrow();
+        LearningGoal electricalGoal = landscape.getGoals().stream()
+                .filter(goal -> CANONICAL_PHYSICS_SEK1_ELECTRICAL_ENERGY_ID.equals(goal.getId()))
+                .findFirst()
+                .orElseThrow();
+
+        assertThat(heatGoal.getRequires()).containsExactly(CANONICAL_PHYSICS_SEK1_ENERGY_ID);
+        assertThat(electricalGoal.getRequires())
+                .containsExactly(CANONICAL_PHYSICS_SEK1_ENERGY_ID, CANONICAL_PHYSICS_SEK1_VOLTAGE_CLUSTER_ID);
+    }
+
+    @Test
+    void canonicalPhysicsPilotFrontierUnlocksElectricalEnergyFromProjectedLegacyEnergyAndVoltageMastery() {
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_PHYSICS_SEK1_WORK_ENERGY_CLUSTER_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_FORCE_PROPERTIES_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_ENERGY_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_VOLTAGE_CLUSTER_ID, 1.0)));
+
+        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_PHYSICS_SEK1_ELECTRICAL_ENERGY_ID);
     }
 
     @Test

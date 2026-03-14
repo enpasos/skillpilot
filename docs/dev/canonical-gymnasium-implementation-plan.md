@@ -163,6 +163,8 @@ Current operational baseline:
 - the canonical Physics E.2 mechanics corridor is `cutover_ready`
 - the canonical Physics E.3 horizontal-projection slice is `cutover_ready`
 - the first Hessen Sek I physics mechanics bridge is `subtree_adopted`
+- the first Hessen Sek I physics optics bridge is `subtree_adopted`
+- the first Hessen Sek I physics electricity bridge is `subtree_adopted`
 - the first Hessen Sek I chemistry foundations bridge is `subtree_adopted`
 - the first Hessen Sek I biology foundations/cell plus photosynthesis-respiration bridge is `subtree_adopted`
 - the canonical Chemistry Hessen baseline is `subtree_adopted`
@@ -414,14 +416,40 @@ WP6 progress so far:
   - linear functions
   - quadratic equations
   - quadratic functions
+- the Hessen Sek I math attachment is now widened with the first reviewed row-based bridge batch beyond that old corridor:
+  - exact reviewed row mappings for square roots, similarity/Strahlensatz, and circle/cylinder
+  - exact reviewed foundation mappings for rational-number fluency, geometry-basics visibility, units/measurement handling, and the J6 symmetry/angle baseline
+  - canonical `J6` area/volume baseline is now split into separate area and solid-measure atoms so Hessen can map there with exact row-level evidence instead of one broad partial bridge
+  - canonical `J9` power/root baseline is now split so Hessen can bind the graph-based Potenz-/Wurzelfunktionsziel exactly, while the shared Potenzgesetz-route remains visible as a sibling child
+  - canonical `J8` linear-analysis baseline is now split so Hessen can bind `Lineare Gleichungen und Ungleichungen lösen` exactly, while Bayern keeps the exact row for line equations, roots, and intersections
+  - canonical `quadratic vertex` baseline is now split so Hessen can bind the binomial-formula route exactly, while Bayern keeps the exact Scheitelpunkt/graph route as its own sibling child
+  - canonical `J5` number-basics baseline is now split so Hessen can bind `Natürliche Zahlen sicher darstellen, ordnen und mit ihnen rechnen` exactly, while Bayern keeps the exact add/subtract route with natural and whole numbers
+  - remaining reviewed math debt is no longer on Hessen row-coverage; only the two Bayern override-backed function-value pilot gaps remain
+  - exact mappings for Pythagoras, integer-exponent laws, congruence, and term setup
+  - prerequisite closure for `DE-HE` is now explicit in the mapping layer for rational numbers, terms, geometry basics, and size/unit handling
 - canonical seed now references both Hessen upper-secondary and Hessen Sek I source material
 - explicit second mapping file added for Hessen Sek I -> canonical pilot
 - no API/GPT contract changes were required for this content expansion
 - first Hessen Sek I physics bridge slice added to the canonical DE physics landscape:
   - new canonical mechanics bridge cluster under DE physics
   - exact mappings for motion diagrams, forces/inertia, friction, and qualitative mechanical energy
+  - a dedicated canonical density/mass/volume atom now closes the old Hessen `7.4 Mechanik` row so the broad mechanics anchor itself can bind exactly instead of staying partial
+  - the Hessen `Kräfteigenschaften nutzen` row now binds exactly to a dedicated canonical Sek-I `force-properties` atom instead of the broad mechanics bridge cluster
+  - the Hessen `10.1 Arbeit und Energie` row now binds exactly to a dedicated canonical Sek-I `work-and-energy` cluster that contains qualitative work, mechanical energy, heat, and electrical-energy children
   - selected upper-secondary physics goals now explicitly depend on these adopted Sek-I mechanics anchors
   - mastery projection and frontier unlocking are covered by targeted backend tests
+- first Hessen Sek I optics bridge slice added to the canonical DE physics landscape:
+  - new canonical Sek-I optics bridge cluster under DE physics
+  - exact mappings now cover both `7.1 Optik 1` and `8.1 Optik 2`, including light propagation, ray model, reflection, lens imaging, vision, and simple optical instruments
+  - `Linsenabbildungen` now explicitly depends on the adopted Sek-I ray-model anchor
+  - mastery projection for both adopted optics clusters and their atomic rows, plus the ray-model frontier unlock for lens imaging, are covered by targeted backend tests
+- first Hessen Sek I electricity bridge slice added to the canonical DE physics landscape:
+  - new canonical Sek-I electricity cluster under DE physics
+  - exact mappings now cover both `7.3 Magnetismus und Elektrizität 1` and `8.2 Elektrizität 2`, including magnets/fields, simple circuits, current effects, current measurement, static electricity/voltage, current-voltage relation, resistor circuits, and electrical safety
+  - the J8 voltage/safety cluster now explicitly depends on the adopted J7 electricity cluster
+  - mastery projection for both adopted electricity clusters and their atomic rows, plus frontier unlocks for current effects/current measurement and the voltage-current relation, are covered by targeted backend tests
+- the Hessen Sek I work/energy bridge is now widened into the `J10` continuation of `10.1 Arbeit und Energie`:
+  - exact mappings now also cover `Wärme als Energieform` and `Elektrische Energie nutzen`, and the canonical electrical-energy atom depends explicitly on the reviewed Sek-I voltage bridge rather than only on the coarse energy baseline
 - first Hessen Sek I chemistry bridge slice added to the canonical DE chemistry landscape:
   - new canonical foundations cluster for working methods, substances, states, solutions, and first acid-base distinctions
   - exact mappings for the adopted J8 chemistry atoms plus partial scope anchors from Hessen J8/8.1
