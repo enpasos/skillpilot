@@ -57,6 +57,8 @@ export interface ReleaseMetadata {
   status: 'draft' | 'released'
 }
 
+export type ApplicabilityMap = Record<string, string[]>
+
 export interface LearningGoal {
   /** Original goal id (KC-oriented, may be German). */
   id: string
@@ -80,6 +82,7 @@ export interface LearningGoal {
   examples?: string[]
   sourceRef?: string
   resourceLinks?: ResourceLink[]
+  applicability?: ApplicabilityMap
   extendedData?: Record<string, unknown>
   release?: ReleaseMetadata
   examData?: ExamData

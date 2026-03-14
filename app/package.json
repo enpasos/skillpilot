@@ -10,8 +10,11 @@
     "preview": "vite preview",
     "deploy:assets": "./node_modules/.bin/tsx ../scripts/deploy_curriculum_decks.ts && ./node_modules/.bin/tsx ../scripts/deploy_exam_assets.ts && ./node_modules/.bin/tsx ../scripts/deploy_whitepaper.ts",
     "validate:graph": "tsx scripts/validateGraph.ts",
+    "validate:view-filters": "tsx scripts/validateViewFilters.ts",
     "report:requires": "tsx scripts/generateRequiresReport.ts",
     "report:atomic": "tsx scripts/generateAtomicReport.ts",
+    "report:applicability": "tsx scripts/compileApplicability.ts",
+    "apply:applicability": "tsx scripts/applyApplicability.ts",
     "mcp:server": "tsx server/mcpServer.ts"
   },
   "dependencies": {

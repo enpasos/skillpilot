@@ -65,6 +65,8 @@ jobs:
         run: npm ci
       - name: Validate Graph
         run: npm run validate:graph
+      - name: Validate View Filters
+        run: npm run validate:view-filters
       - name: Set up Python
         uses: actions/setup-python@v4
         with:

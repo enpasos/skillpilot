@@ -696,6 +696,84 @@ Recommended go/no-go rule for implementation:
 - proceed to runtime integration only after the reviewed pilot set has zero `APV-0xx` and `APV-1xx` errors
 - warnings may remain temporarily, but only if they are explicitly accepted in review
 
+## Implementation touchpoints
+
+This section is intentionally concrete so the first implementation can stay narrow.
+
+### A. Shared types and schema-facing code
+
+Expected first touchpoints:
+
+- `app/src/landscapeTypes.ts`
+- goal-level schema handling in graph scripts and loaders that already depend on `LearningGoal`
+
+First-step change:
+
+- add optional `applicability?: Record<string, string[]>` to `LearningGoal`
+- do **not** widen the first compiler scope beyond `jurisdiction`, even if the field is generic
+
+### B. Read-only compiler and projected-view validator
+
+Expected first touchpoints:
+
+- new compiler script in `app/scripts/`, e.g. `compileApplicability.ts`
+- new validator script in `app/scripts/`, e.g. `validateViewFilters.ts`
+- `app/package.json` for script entrypoints
+- `docs/qa-ci/graph-validation-rules.md`
+- `docs/qa-ci/ci.md`
+
+Responsibility split:
+
+- `validateGraph.ts` remains the raw-landscape validator
+- the new validator operates on projected filtered graphs derived from compiled `applicability`
+- the compiler writes review output under `tmp/applicability/` in its first phase
+
+### C. Backend runtime filtering
+
+Current hot spots already visible in the codebase:
+
+- `backend/src/main/java/com/skillpilot/backend/service/LearnerService.java`
+
+Relevant current methods:
+
+- `matchesFilter(...)`
+- `matchesCourseFilter(...)`
+- `matchesStateFilter(...)`
+- `hasCanonicalStateCoverage(...)`
+
+Target first-step runtime change:
+
+- keep `matchesCourseFilter(...)` as-is
+- replace transitional state recursion with node-local `goal.applicability.jurisdiction`
+- keep mastery projection logic separate from visibility logic
+
+### D. Frontend compatibility layer
+
+Current hot spots already visible in the codebase:
+
+- `app/src/views/LearnerView.tsx`
+
+Current transitional behavior:
+
+- several view decisions still fall back to tag-based checks such as `child.tags.includes(filterId)`
+- this is acceptable as long as backend/runtime remains transitional
+
+Target after backend switch:
+
+- canonical jurisdiction filtering should no longer depend on ordinary `tags`
+- frontend compatibility checks should align with compiled `applicability` semantics
+- legacy landscapes may still continue to use their current simpler filter behavior
+
+### E. Scope guard for first implementation
+
+The first implementation should explicitly avoid:
+
+- changing legacy landscape JSON semantics
+- changing mastery projection rules
+- changing `GK` / `LK` modeling
+- changing multi-dimensional filter combinations
+- changing learner-facing filter labels or curriculum selection UX
+
 ## First implementation scope
 
 The first implementation should be intentionally narrow.

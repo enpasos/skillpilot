@@ -10,6 +10,9 @@ npm ci
 echo "--> Running Graph Validation"
 npm run validate:graph
 
+echo "--> Running View-Filter Validation"
+npm run validate:view-filters
+
 
 
 echo "--> Running Lint & Build"

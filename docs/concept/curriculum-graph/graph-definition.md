@@ -41,6 +41,23 @@ Each goal $g\in G$ has the following attributes:
 - $Phase: G \to P$
 - $Weight: G \to \mathbb{R}_{>0}$
 
+Implementations MAY additionally expose optional cross-cutting metadata for scoped learner views.
+
+One preferred structured form is a partial applicability mapping:
+
+$$
+Applicability: G \rightharpoonup \bigl(D \to \mathcal{P}(V_d)\bigr)
+$$
+
+Interpretation:
+
+- `Applicability` is optional and may be absent on goals or even on whole landscapes
+- $D$ is a set of filter dimensions
+- $V_d$ is the value vocabulary for dimension $d$
+- this mapping is intended for node-local view projection and view validation, not as the primary authored source of truth
+
+The normative filter semantics for such scoped views are defined in §12.
+
 ### 2.3 Identifier uniqueness
 
 Identifiers MUST be unique:
@@ -495,6 +512,12 @@ A curriculum graph $(G,C,R_d)$ is valid iff:
 6. $R_d$ satisfies transitive minimality
 
 Everything else in this specification is either derived (definitions) or recommended modeling guidance.
+
+Important scope note:
+
+- these are the validity conditions of the **full authored graph**
+- scoped learner views may impose additional validity expectations on projected filtered graphs as defined in §12
+- such projected-view validity is an additional property of a chosen filter realization, not part of base full-graph validity by default
 
 ---
 

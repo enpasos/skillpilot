@@ -101,6 +101,7 @@ public class LearnerService {
 
     private static final Set<String> COURSE_FILTER_IDS = Set.of("GK", "LK");
     private static final Set<String> STATE_FILTER_IDS = Set.of("ALL", "DE-HE", "DE-BY");
+    private static final String APPLICABILITY_DIMENSION_JURISDICTION = "jurisdiction";
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String CANONICAL_GYMNASIUM_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_GYMNASIUM_PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
@@ -3121,6 +3122,11 @@ public class LearnerService {
     private boolean matchesStateFilter(LearningGoal goal, LearningLandscape landscape, String filterId,
             Map<String, Set<String>> mappedCanonicalGoalIdsByState, Map<String, Boolean> canonicalStateCoverageCache) {
         if (isCanonicalGymnasiumLandscape(landscape)) {
+            Boolean explicitApplicabilityMatch = matchesApplicabilityDimension(goal, APPLICABILITY_DIMENSION_JURISDICTION,
+                    filterId);
+            if (explicitApplicabilityMatch != null) {
+                return explicitApplicabilityMatch;
+            }
             return hasCanonicalStateCoverage(goal.getId(), filterId, mappedCanonicalGoalIdsByState,
                     canonicalStateCoverageCache, new HashSet<>());
         }
@@ -3129,6 +3135,27 @@ public class LearnerService {
             return landscapeState.equals(filterId);
         }
         return matchesTagFilter(goal, filterId);
+    }
+
+    private Boolean matchesApplicabilityDimension(LearningGoal goal, String dimension, String filterId) {
+        if (goal == null || dimension == null || dimension.isBlank() || filterId == null || filterId.isBlank()) {
+            return null;
+        }
+        Map<String, List<String>> applicability = goal.getApplicability();
+        if (applicability == null || applicability.isEmpty() || !applicability.containsKey(dimension)) {
+            return null;
+        }
+        List<String> configuredValues = applicability.get(dimension);
+        if (configuredValues == null || configuredValues.isEmpty()) {
+            return false;
+        }
+        String normalizedFilterId = normalizeFilterId(filterId);
+        for (String configuredValue : configuredValues) {
+            if (normalizedFilterId.equals(normalizeFilterId(configuredValue))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean hasCanonicalStateCoverage(String goalId, String stateFilterId,

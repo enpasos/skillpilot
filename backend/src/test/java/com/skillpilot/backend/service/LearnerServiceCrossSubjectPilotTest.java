@@ -210,8 +210,7 @@ class LearnerServiceCrossSubjectPilotTest {
         assertThat(frontier)
                 .extracting(FrontierGoal::id)
                 .contains(CANONICAL_PHYSICS_ROOT_ID, CANONICAL_PHYSICS_CLUSTER_ID, CANONICAL_PHYSICS_E2_CLUSTER_ID,
-                        CANONICAL_PHYSICS_E3_CLUSTER_ID)
-                .doesNotContain("5c44b9ba-9b05-4774-95d5-073230d3fc4f");
+                        CANONICAL_PHYSICS_E3_CLUSTER_ID, "5c44b9ba-9b05-4774-95d5-073230d3fc4f");
     }
 
     @Test
@@ -262,6 +261,28 @@ class LearnerServiceCrossSubjectPilotTest {
 
         assertThat(mastery).containsEntry(CANONICAL_PHYSICS_SIMPLE_COLLISIONS_ID, 1.0);
         assertThat(mastery).containsEntry(LEGACY_BAYERN_PHYSICS_COLLISIONS_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactBavariaHorizontalThrowAnalysisIntoCanonicalPhysicsPilotGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_BAYERN_PHYSICS_HORIZONTAL_THROW_ANALYSIS_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_HORIZONTAL_THROW_ID, 1.0);
+        assertThat(mastery).containsEntry(LEGACY_BAYERN_PHYSICS_HORIZONTAL_THROW_ANALYSIS_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactBavariaMotionModelingIntoCanonicalPhysicsPilotGoals() {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_BAYERN_PHYSICS_MOTION_MODELING_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_PHYSICS_MOTION_MODELING_ID, 1.0);
+        assertThat(mastery).containsEntry(LEGACY_BAYERN_PHYSICS_MOTION_MODELING_ID, 1.0);
     }
 
     @Test

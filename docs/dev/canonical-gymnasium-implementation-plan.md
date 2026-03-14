@@ -499,7 +499,9 @@ WP8 progress so far:
 - Bavaria collision bridge added:
   - one small canonical collision atom now absorbs the broader Bavaria collision goal without reshaping the existing Hessen-based elastic/inelastic atoms
 - Bavaria 2D motion edge added:
-  - selected Bavaria horizontal-throw and motion-modeling goals now attach with `partial` semantics to existing canonical motion-modeling and free-fall goals
+  - selected Bavaria horizontal-throw and motion-modeling goals now attach to the canonical movement slice
+  - the Bavaria horizontal-throw analysis goal and the broad motion-modeling goal now project `exact` into the adopted canonical atoms
+  - the remaining borrowed closure nodes for Bavaria visibility still rely on explicit overrides or `partial` evidence where no honest 1:1 source goal exists yet
 - Bavaria E.3 reattachment added:
   - the selected Bavaria horizontal-throw goals now attach to the new canonical E.3 slice instead of borrowing the older motion/free-fall atoms
 - first E.3 adoption slice added:

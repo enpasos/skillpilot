@@ -31,8 +31,9 @@ Steps:
 
 1. `npm ci` (in `app/`)
 2. `npm run validate:graph`
-3. `python scripts/validate_schemas.py`
-4. `python scripts/validate_goal_ids_uuid.py`
+3. `npm run validate:view-filters`
+4. `python scripts/validate_schemas.py`
+5. `python scripts/validate_goal_ids_uuid.py`
 
 The graph rule catalog is documented in:
 
@@ -46,8 +47,10 @@ The graph rule catalog is documented in:
 Current scope note:
 
 - this job validates the full authored landscapes as committed
-- it does **not** yet validate projected filtered learner graphs derived from compiled `applicability`
-- once a dedicated filter-graph validator exists, it should be documented and added as a separate CI step or job rather than silently folded into the current raw-landscape rule set
+- it additionally validates projected filtered learner graphs via `validate:view-filters`
+- the current CI scope for `validate:view-filters` is the reviewed pilot set (`Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`)
+- the validator can be widened locally via `APPLICABILITY_VALIDATION_SCOPE=all npm run validate:view-filters`, but CI does not enforce that broader scope yet
+- reviewed residual `APV-201` / `APV-202` cases are tracked in `docs/qa-ci/applicability-accepted-warnings.json` and are reported as accepted warnings, not active warnings
 
 ### 3. `backend-ci`
 
@@ -71,5 +74,5 @@ bash run_ci.sh
 
 This runs:
 
-1. app checks (`validate:graph`, `lint`, `build`)
+1. app checks (`validate:graph`, `validate:view-filters`, `lint`, `build`)
 2. backend checks (`./gradlew clean check --no-daemon`)

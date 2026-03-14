@@ -21,12 +21,14 @@ import com.skillpilot.backend.events.LearnerStateChangedEvent;
 import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeProperties;
 import com.skillpilot.backend.landscape.LandscapeService;
+import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
 import java.nio.file.Path;
 import java.time.Instant;
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -408,6 +410,31 @@ class LearnerServiceCanonicalProjectionTest {
     }
 
     @Test
+    void canonicalGymnasiumRootStateFilterPrefersExplicitJurisdictionApplicability() throws Exception {
+        LearningGoal goal = landscapeService.getGoalDefinition(CANONICAL_FUNCTION_CONCEPT_ID);
+        assertThat(goal).isNotNull();
+
+        Map<String, List<String>> originalApplicability = goal.getApplicability();
+        goal.setApplicability(Map.of("jurisdiction", List.of("DE-HE")));
+        try {
+            Map<String, LearningGoal> filteredGoals = invokeGetFilteredGoals(
+                    CANONICAL_GYMNASIUM_ROOT_ID,
+                    """
+                            {
+                              "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-BY"},
+                              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
+                              "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": false, "filterId": "GK"}
+                            }
+                            """);
+
+            assertThat(filteredGoals).containsKey(CANONICAL_MATH_ROOT_ID);
+            assertThat(filteredGoals).doesNotContainKey(CANONICAL_FUNCTION_CONCEPT_ID);
+        } finally {
+            goal.setApplicability(originalApplicability);
+        }
+    }
+
+    @Test
     void getPlannedGoalsProjectsLegacyScopeIdsForCanonicalView() {
         when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new PlannedGoal(learner, LEGACY_ANALYSIS_CLUSTER_ID)));
@@ -604,5 +631,13 @@ class LearnerServiceCanonicalProjectionTest {
         Mastery mastery = new Mastery(learner, goalId, value);
         mastery.setUpdatedAt(updatedAt);
         return mastery;
+    }
+
+    @SuppressWarnings("unchecked")
+    private Map<String, LearningGoal> invokeGetFilteredGoals(String curriculumId, String personalCurriculumJson)
+            throws Exception {
+        Method method = LearnerService.class.getDeclaredMethod("getFilteredGoals", String.class, String.class);
+        method.setAccessible(true);
+        return (Map<String, LearningGoal>) method.invoke(learnerService, curriculumId, personalCurriculumJson);
     }
 }

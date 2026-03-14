@@ -18,6 +18,7 @@ public class LearningGoal {
     private List<String> requires;
     private List<String> contains;
     private List<String> examples;
+    private java.util.Map<String, java.util.List<String>> applicability;
     private String sourceRef;
     private List<java.util.Map<String, Object>> resourceLinks;
     private java.util.Map<String, Object> extendedData;
@@ -145,6 +146,14 @@ public class LearningGoal {
 
     public void setExamples(List<String> examples) {
         this.examples = examples;
+    }
+
+    public java.util.Map<String, java.util.List<String>> getApplicability() {
+        return applicability;
+    }
+
+    public void setApplicability(java.util.Map<String, java.util.List<String>> applicability) {
+        this.applicability = applicability;
     }
 
     public String getSourceRef() {

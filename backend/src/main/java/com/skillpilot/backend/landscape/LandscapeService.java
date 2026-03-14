@@ -134,6 +134,7 @@ public class LandscapeService {
                 gc.setRequires(g.getRequires());
                 gc.setContains(g.getContains());
                 gc.setExamples(g.getExamples());
+                gc.setApplicability(g.getApplicability());
                 gc.setSourceRef(g.getSourceRef());
                 gc.setExtendedData(g.getExtendedData());
                 gc.setRelease(g.getRelease());

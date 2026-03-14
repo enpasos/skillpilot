@@ -4,6 +4,8 @@ This is the single source of truth for algorithmic graph validation in CI.
 
 - Validator implementation: `app/scripts/validateGraph.ts`
 - CI entrypoint: `npm run validate:graph` in `.github/workflows/ci.yml` (`graph-validation` job)
+- Filter-projection validator: `app/scripts/validateViewFilters.ts`
+- Filter-projection CI entrypoint: `npm run validate:view-filters` in `.github/workflows/ci.yml` (`graph-validation` job)
 
 ## Enforcement profiles
 
@@ -59,8 +61,46 @@ These checks are already implemented and treated as `error`:
 - Validation is intentionally structural/algorithmic.
 - Didactic quality checks (sequencing quality, granularity, redundancy of meanings, etc.) remain part of manual QA (`curricula/QA/*`).
 - Learner-state semantics from the concept spec such as atomic mastery, frontier computation, and optimistic/pessimistic filter evaluation are currently **not** validated in CI.
-- A future filter-graph validator may validate projected filtered learner graphs derived from compiled `applicability`, but that is a separate concern from the current raw-landscape validator.
+- Projected filtered learner graphs derived from compiled `applicability` are now validated by the separate `validate:view-filters` path.
+- The current CI enforcement scope for `validate:view-filters` is intentionally limited to the reviewed pilot set (`Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`).
+- Reviewed applicability warnings can be recorded in `docs/qa-ci/applicability-accepted-warnings.json`; the validator still prints them, but classifies them as accepted review debt instead of active warnings.
 - Additional structural rules should be added here first, then implemented in `validateGraph.ts`, then rolled out in CI.
+
+## Filter-projection validator (`validate:view-filters`)
+
+This validator is separate from `validate:graph` and operates on projected filtered graphs rather than only on authored raw landscapes.
+
+Current CI scope:
+
+- reviewed canonical Gymnasium pilot set only
+- `Mathematik`
+- `Physik`
+- `Chemie`
+- `Biologie`
+- `Informatik`
+- `Deutsch`
+- `Politik und Wirtschaft`
+- `Musik`
+- `Latein`
+- `Spanisch`
+- `Wirtschaft`
+- `Overview`
+
+Current stable finding families:
+
+| Rule ID | Description | Default |
+| --- | --- | --- |
+| `APV-102` | A visible goal requires a prerequisite that is invisible in the projected filtered graph. | `error` |
+| `APV-103` | A visible goal is not reachable from the projected root. | `error` |
+| `APV-201` | An explicit `extendedData.applicabilityOverrides` path is used. | `warning` |
+| `APV-202` | Applicability is backed only by `partial` mappings. | `warning` |
+| `APV-203` | Compiled applicability differs from currently committed applicability metadata. | `warning` |
+
+Accepted-warning handling:
+
+- `APV-201` and `APV-202` may remain in reviewed pilots when no cleaner exact source alignment exists yet.
+- Such cases must be explicitly listed in `docs/qa-ci/applicability-accepted-warnings.json` with a short rationale.
+- `validate:view-filters` continues to print these findings for auditability, but separates them from active warnings in its summary output.
 
 ## Current compatibility model vs. target model
 

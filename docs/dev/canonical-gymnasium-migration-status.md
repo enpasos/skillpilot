@@ -50,7 +50,8 @@ Observed repo state:
 - Bavaria Gymnasium pilot mapping files present: `2`
 - Explicit learner cutover path to `Gymnasium (DE)` exists in backend and UI
 - Bulk cutover path for operators exists
-- Canonical state filtering still relies on transitional runtime derivation from mappings/provenance; compiled node-level `applicability` metadata is not implemented yet
+- Reviewed pilot landscapes now carry committed node-level `applicability`; current enforced set: `Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`
+- `validate:view-filters` is now clean on active reviewed findings for that scope: `0` errors, `0` active warnings, `10` accepted warnings recorded in `docs/qa-ci/applicability-accepted-warnings.json`
 - No tracked subtree has reached `legacy_view_retained` yet
 - No legacy source tree has been deleted yet
 

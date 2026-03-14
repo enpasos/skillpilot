@@ -10,6 +10,45 @@ SkillPilot models learning goals as nodes in a competence graph. This document d
 | Memorize | Spaced repetition recall | Facts, vocabulary, formulas |
 | Exam | Assessment tasks with scoring | Exam problems, Abitur tasks |
 
+## Cross-cutting metadata: applicability
+
+`applicability` is **not** a node type.
+
+It is optional, compiled goal metadata for learner-facing filtered views.
+
+Generic target shape:
+
+```json
+{
+  "applicability": {
+    "jurisdiction": ["DE-HE", "DE-BY"]
+  }
+}
+```
+
+Interpretation:
+
+- keys are filter dimensions, not hardcoded application cases
+- values are the allowed values for that dimension on the goal
+- the field is intended for runtime filtering and projected-view validation
+- it is compiled from source truth such as provenance, mappings, and reviewed overrides
+- it should not replace ordinary semantic `tags`
+
+For canonical Gymnasium, the first planned dimension is:
+
+- `jurisdiction`
+
+Possible later dimensions could include:
+
+- `courseLevel`
+- `track`
+- `gradeBand`
+
+Authoring note:
+
+- `applicability` is generated runtime metadata
+- reviewed authoring-side exceptions may live under `extendedData.applicabilityOverrides`
+
 ## Understanding
 
 **Purpose:** Standard learning goals that describe conceptual or procedural understanding.
@@ -18,6 +57,7 @@ SkillPilot models learning goals as nodes in a competence graph. This document d
 -   Covers the majority of existing goals in current landscapes.
 -   Described as assessable competencies (e.g., "The learner can ...").
 -   Progress is tracked via mastery values and prerequisites (`requires`).
+-   Filtered visibility may additionally be constrained by compiled `applicability` metadata where a landscape uses scoped learner views.
 -   If no special fields are present, a goal is treated as an Understanding node by default.
 
 ## Memorize
