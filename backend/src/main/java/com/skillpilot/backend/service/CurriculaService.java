@@ -221,8 +221,12 @@ public class CurriculaService {
         }
         String normalizedGithubId = normalizeGithubId(githubId);
         for (String curriculumId : curriculumIds) {
-            championRepository.findByCurriculumIdAndGithubId(curriculumId, normalizedGithubId)
-                    .ifPresent(championRepository::delete);
+            List<CurriculumChampion> champions = championRepository.findAllByCurriculumIdAndGithubId(
+                    curriculumId,
+                    normalizedGithubId);
+            if (!champions.isEmpty()) {
+                championRepository.deleteAll(champions);
+            }
         }
         // Force refresh metrics after modification
         refreshMetrics();

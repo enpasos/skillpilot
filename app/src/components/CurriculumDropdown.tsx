@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import { useLanguage } from '../contexts/LanguageContext'
+import {
+    CANONICAL_GYMNASIUM_ROOT_ID,
+    LEGACY_HESSEN_GYMNASIUM_UPPER_IDS,
+    getCurriculumDisplayTitle,
+} from '../utils/curriculumDisplay'
 
 export interface LandscapeSummary {
     curriculumId: string
@@ -26,13 +31,6 @@ interface CurriculumDropdownProps {
 }
 
 type Category = 'SCHOOL' | 'UNI' | 'OTHER'
-
-const CANONICAL_GYMNASIUM_ROOT_ID = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
-const LEGACY_HESSEN_GYMNASIUM_UPPER_IDS = new Set([
-    'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da',
-    '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3',
-    '24f2ca0f-b94a-444e-bb70-677cb6f85c02',
-])
 
 export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
     currentLandscapeId,
@@ -101,13 +99,13 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
         return 'OTHER'
     }
 
-    const getDisplayTitle = (l: LandscapeSummary) => {
-        const base = l.title || l.description || l.subject || ''
-        if (LEGACY_HESSEN_GYMNASIUM_UPPER_IDS.has(l.curriculumId)) {
-            return language === 'de' ? `${base} (Legacy-Sicht)` : `${base} (Legacy view)`
-        }
-        return base
-    }
+    const getDisplayTitle = (l: LandscapeSummary) => getCurriculumDisplayTitle({
+        curriculumId: l.curriculumId,
+        title: l.title,
+        description: l.description,
+        subject: l.subject,
+        language,
+    })
 
     const getSortPriority = (l: LandscapeSummary) => {
         if (l.curriculumId === CANONICAL_GYMNASIUM_ROOT_ID) return 0

@@ -140,7 +140,6 @@ public class LearnerService {
     @Value("${skillpilot.security.signing-secret}")
     private String signingSecret;
 
-    @Autowired
     public LearnerService(
             LearnerRepository learnerRepository,
             LearnerClientStateRepository learnerClientStateRepository,
@@ -164,6 +163,7 @@ public class LearnerService {
                 new NoOpTransactionManager());
     }
 
+    @Autowired
     public LearnerService(
             LearnerRepository learnerRepository,
             LearnerClientStateRepository learnerClientStateRepository,

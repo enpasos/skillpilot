@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface CurriculumChampionRepository extends JpaRepository<CurriculumChampion, String> {
     List<CurriculumChampion> findByCurriculumIdOrderByCreatedAtAsc(String curriculumId);
 
-    Optional<CurriculumChampion> findByCurriculumIdAndGithubId(String curriculumId, String githubId);
+    List<CurriculumChampion> findAllByCurriculumIdAndGithubId(String curriculumId, String githubId);
 
     Optional<CurriculumChampion> findByCurriculumIdAndTopicIdAndGithubId(String curriculumId, String topicId,
             String githubId);

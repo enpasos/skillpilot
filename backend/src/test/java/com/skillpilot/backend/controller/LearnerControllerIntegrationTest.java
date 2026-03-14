@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.ChampionRegistrationRequest;
+import com.skillpilot.backend.domain.CurriculumChampion;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearnerClientState;
 import com.skillpilot.backend.domain.LearnerClientStateId;
@@ -356,6 +357,36 @@ public class LearnerControllerIntegrationTest {
 
         assertThat(response.champion().masteredCount()).isEqualTo(1);
         assertThat(response.champion().totalTopicGoals()).isEqualTo(308);
+    }
+
+    @Test
+    void deregisterChampionsRemovesAllTopicEntriesForCurriculum() {
+        CurriculumChampion first = new CurriculumChampion();
+        first.setCurriculumId(HESSEN_GYMNASIUM_UPPER_ROOT_ID);
+        first.setTopicId(CANONICAL_MATH_ROOT_ID);
+        first.setSkillpilotId("sp-alpha");
+        first.setGithubId("enpasos");
+
+        CurriculumChampion second = new CurriculumChampion();
+        second.setCurriculumId(HESSEN_GYMNASIUM_UPPER_ROOT_ID);
+        second.setTopicId(CANONICAL_PHYSICS_ROOT_ID);
+        second.setSkillpilotId("sp-beta");
+        second.setGithubId("enpasos");
+
+        CurriculumChampion third = new CurriculumChampion();
+        third.setCurriculumId(CANONICAL_GYMNASIUM_ROOT_ID);
+        third.setTopicId(CANONICAL_MATH_ROOT_ID);
+        third.setSkillpilotId("sp-gamma");
+        third.setGithubId("other-user");
+
+        curriculumChampionRepository.saveAll(List.of(first, second, third));
+
+        curriculaService.deregisterChampions("enpasos", List.of(HESSEN_GYMNASIUM_UPPER_ROOT_ID));
+
+        assertThat(curriculumChampionRepository.findByGithubId("enpasos")).isEmpty();
+        assertThat(curriculumChampionRepository.findByGithubId("other-user"))
+                .extracting(CurriculumChampion::getCurriculumId)
+                .containsExactly(CANONICAL_GYMNASIUM_ROOT_ID);
     }
 
     @Test

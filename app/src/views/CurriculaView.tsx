@@ -7,6 +7,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import { useLanguage } from '../contexts/LanguageContext'
 import { ConfirmModal } from '../components/ConfirmModal'
 import { BadgeCheck, Trophy } from 'lucide-react'
+import { getCurriculumDisplayTitle } from '../utils/curriculumDisplay'
 
 interface ChampionEntry {
   curriculumId: string
@@ -48,6 +49,15 @@ interface CurriculaData {
   curricula: CurriculumEntry[]
   defaultCurriculumId: string
   lastUpdatedAt: string
+}
+
+interface DeregisterCurriculumGroup {
+  curriculumId: string
+  displayTitle: string
+  subject: string
+  entryCount: number
+  masteredCount: number
+  topicLabels: string[]
 }
 
 
@@ -100,10 +110,83 @@ export const CurriculaView: React.FC = () => {
       ? (champion.topicTitleEn || champion.topicTitle)
       : champion.topicTitle
   }, [language])
+  const curriculumById = useMemo(() => {
+    return new Map((data?.curricula ?? []).map((curriculum) => [curriculum.curriculumId, curriculum]))
+  }, [data])
   const isChampionCertified = useCallback((champion: ChampionEntry) => {
     if (!champion.totalTopicGoals || champion.totalTopicGoals <= 0) return false
     return champion.masteredCount >= champion.totalTopicGoals
   }, [])
+  const deregisterGroups = useMemo<DeregisterCurriculumGroup[]>(() => {
+    const groups = new Map<string, DeregisterCurriculumGroup>()
+
+    for (const champion of user?.champions ?? []) {
+      const curriculum = curriculumById.get(champion.curriculumId)
+      const displayTitle = getCurriculumDisplayTitle({
+        curriculumId: champion.curriculumId,
+        title: curriculum ? getCurriculumTitle(curriculum) : undefined,
+        description: curriculum ? getCurriculumDescription(curriculum) : undefined,
+        subject: curriculum?.subject,
+        language,
+      })
+      const group = groups.get(champion.curriculumId) ?? {
+        curriculumId: champion.curriculumId,
+        displayTitle,
+        subject: curriculum?.subject ?? '',
+        entryCount: 0,
+        masteredCount: 0,
+        topicLabels: [],
+      }
+
+      group.entryCount += 1
+      group.masteredCount = Math.max(group.masteredCount, champion.masteredCount)
+
+      const topicLabel = getChampionTopicTitle(champion)
+      if (topicLabel && !group.topicLabels.includes(topicLabel)) {
+        group.topicLabels.push(topicLabel)
+      }
+
+      groups.set(champion.curriculumId, group)
+    }
+
+    return Array.from(groups.values()).sort((a, b) => a.displayTitle.localeCompare(b.displayTitle, language))
+  }, [
+    curriculumById,
+    getChampionTopicTitle,
+    getCurriculumDescription,
+    getCurriculumTitle,
+    language,
+    user?.champions,
+  ])
+  const getDeregisterGroupDetail = useCallback((group: DeregisterCurriculumGroup) => {
+    const details: string[] = []
+
+    if (group.subject) {
+      const normalizedTitle = group.displayTitle.toLocaleLowerCase(language)
+      const normalizedSubject = group.subject.toLocaleLowerCase(language)
+      if (!normalizedTitle.includes(normalizedSubject)) {
+        details.push(group.subject)
+      }
+    }
+
+    if (group.topicLabels.length > 0) {
+      const preview = group.topicLabels.slice(0, 2).join(', ')
+      const remaining = group.topicLabels.length - 2
+      details.push(remaining > 0 ? `${preview} +${remaining}` : preview)
+    }
+
+    return details.join(' • ')
+  }, [language])
+  const getDeregisterGroupBadge = useCallback((group: DeregisterCurriculumGroup) => {
+    if (group.entryCount > 1) {
+      return language === 'de'
+        ? `${group.entryCount} Eintraege`
+        : `${group.entryCount} entries`
+    }
+    return language === 'de'
+      ? `${group.masteredCount} Ziele`
+      : `${group.masteredCount} goals`
+  }, [language])
 
   const fetchUser = useCallback(async () => {
     try {
@@ -693,28 +776,33 @@ export const CurriculaView: React.FC = () => {
             >
               <div className="space-y-4">
                 <p>Select the championships you want to end:</p>
-                {user?.champions.length === 0 ? (
+                {deregisterGroups.length === 0 ? (
                   <p className="text-gray-500 italic">No active championships found.</p>
                 ) : (
                   <div className="space-y-2 max-h-60 overflow-y-auto">
-                    {user?.champions.map(c => {
-                      const curriculum = data?.curricula.find(curr => curr.curriculumId === c.curriculumId)
+                    {deregisterGroups.map(group => {
+                      const detail = getDeregisterGroupDetail(group)
                       return (
-                        <label key={c.curriculumId} className="flex items-center gap-2 cursor-pointer hover:bg-white/5 dark:hover:bg-slate-800 p-2 rounded transition-colors">
+                        <label key={group.curriculumId} className="flex items-center gap-2 cursor-pointer hover:bg-white/5 dark:hover:bg-slate-800 p-2 rounded transition-colors">
                           <input type="checkbox"
-                            checked={selectedDeregisterIds.includes(c.curriculumId)}
+                            checked={selectedDeregisterIds.includes(group.curriculumId)}
                             onChange={(e) => {
                               if (e.target.checked) {
-                                setSelectedDeregisterIds([...selectedDeregisterIds, c.curriculumId])
+                                setSelectedDeregisterIds([...selectedDeregisterIds, group.curriculumId])
                               } else {
-                                setSelectedDeregisterIds(selectedDeregisterIds.filter(id => id !== c.curriculumId))
+                                setSelectedDeregisterIds(selectedDeregisterIds.filter(id => id !== group.curriculumId))
                               }
                             }}
                             className="rounded border-gray-300 text-sky-600 focus:ring-sky-500"
                           />
-                          <span className="text-text-primary text-sm flex-1">{curriculum?.title || c.curriculumId}</span>
+                          <span className="flex-1 min-w-0">
+                            <span className="block text-text-primary text-sm">{group.displayTitle}</span>
+                            {detail && (
+                              <span className="block text-xs text-text-secondary truncate">{detail}</span>
+                            )}
+                          </span>
                           <span className="text-xs text-text-secondary bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded">
-                            {c.masteredCount} goals
+                            {getDeregisterGroupBadge(group)}
                           </span>
                         </label>
                       )
