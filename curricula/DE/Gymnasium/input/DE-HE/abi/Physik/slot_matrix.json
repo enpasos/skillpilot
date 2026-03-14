@@ -1,0 +1,636 @@
+{
+  "examSpecId": "hessen-landesabitur-2026-physics",
+  "version": 1,
+  "notes": [
+    "Offer collections are anchored in the curriculum via release metadata.",
+    "Master collections are derived in the pipeline from offer tasks plus phase practice tasks.",
+    "Physics 2026 contains two sample forms (2026_1 and 2026_2) per course level."
+  ],
+  "collections": [
+    {
+      "id": "gk_offer_2026",
+      "label": "GK Offer Set 2026",
+      "releaseRef": {
+        "examYear": 2026,
+        "kind": "offer",
+        "courseLevel": "GK"
+      },
+      "courseLevel": "GK",
+      "kind": "offer",
+      "selectionMode": "sample_forms_bundle",
+      "offeredFormIds": [
+        "2026_1",
+        "2026_2"
+      ],
+      "expectedSolvedBeTotalPerForm": 75,
+      "slotIds": [
+        "gk_2026_1_a",
+        "gk_2026_1_b",
+        "gk_2026_1_c",
+        "gk_2026_1_d",
+        "gk_2026_2_a",
+        "gk_2026_2_b",
+        "gk_2026_2_c",
+        "gk_2026_2_d"
+      ],
+      "selectionGroups": [
+        {
+          "id": "gk_2026_1_choice",
+          "formId": "2026_1",
+          "pick": 3,
+          "slotIds": [
+            "gk_2026_1_a",
+            "gk_2026_1_b",
+            "gk_2026_1_c",
+            "gk_2026_1_d"
+          ]
+        },
+        {
+          "id": "gk_2026_2_choice",
+          "formId": "2026_2",
+          "pick": 3,
+          "slotIds": [
+            "gk_2026_2_a",
+            "gk_2026_2_b",
+            "gk_2026_2_c",
+            "gk_2026_2_d"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lk_offer_2026",
+      "label": "LK Offer Set 2026",
+      "releaseRef": {
+        "examYear": 2026,
+        "kind": "offer",
+        "courseLevel": "LK"
+      },
+      "courseLevel": "LK",
+      "kind": "offer",
+      "selectionMode": "sample_forms_bundle",
+      "offeredFormIds": [
+        "2026_1",
+        "2026_2"
+      ],
+      "expectedSolvedBeTotalPerForm": 90,
+      "slotIds": [
+        "lk_2026_1_a",
+        "lk_2026_1_b",
+        "lk_2026_1_c",
+        "lk_2026_1_d",
+        "lk_2026_2_a",
+        "lk_2026_2_b",
+        "lk_2026_2_c",
+        "lk_2026_2_d"
+      ],
+      "selectionGroups": [
+        {
+          "id": "lk_2026_1_choice",
+          "formId": "2026_1",
+          "pick": 3,
+          "slotIds": [
+            "lk_2026_1_a",
+            "lk_2026_1_b",
+            "lk_2026_1_c",
+            "lk_2026_1_d"
+          ]
+        },
+        {
+          "id": "lk_2026_2_choice",
+          "formId": "2026_2",
+          "pick": 3,
+          "slotIds": [
+            "lk_2026_2_a",
+            "lk_2026_2_b",
+            "lk_2026_2_c",
+            "lk_2026_2_d"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gk_master_2026",
+      "label": "GK Master Set 2026",
+      "courseLevel": "GK",
+      "kind": "master",
+      "selectionMode": "full_set"
+    },
+    {
+      "id": "lk_master_2026",
+      "label": "LK Master Set 2026",
+      "courseLevel": "LK",
+      "kind": "master",
+      "selectionMode": "full_set"
+    }
+  ],
+  "slots": [
+    {
+      "id": "gk_2026_1_a",
+      "collectionId": "gk_offer_2026",
+      "formId": "2026_1",
+      "proposalId": "A",
+      "workingTitle": "Felder und Induktion im technischen Kontext",
+      "domain": "fields_induction",
+      "topicCodes": [
+        "Q1.1",
+        "Q1.2",
+        "Q1.3"
+      ],
+      "courseLevel": "GK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "Versuchsaufbau-Skizze",
+        "Messwerttabelle",
+        "Kennliniendiagramm"
+      ],
+      "operatorProfile": [
+        "beschreiben",
+        "auswerten",
+        "berechnen",
+        "begruenden"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_2026_1_b",
+      "collectionId": "gk_offer_2026",
+      "formId": "2026_1",
+      "proposalId": "B",
+      "workingTitle": "Schwingungen, Wellen und Grenzflaechen",
+      "domain": "waves_oscillations",
+      "topicCodes": [
+        "Q2.1",
+        "Q2.2",
+        "Q2.3"
+      ],
+      "courseLevel": "GK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "Zeit-Ort-Diagramm",
+        "Spektrum/Oszillogramm",
+        "Abbildung zu Grenzflaechen"
+      ],
+      "operatorProfile": [
+        "darstellen",
+        "erklaeren",
+        "berechnen",
+        "interpretieren"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_2026_1_c",
+      "collectionId": "gk_offer_2026",
+      "formId": "2026_1",
+      "proposalId": "C",
+      "workingTitle": "Quantenobjekte und Atommodelle",
+      "domain": "quantum_atom",
+      "topicCodes": [
+        "Q3.1",
+        "Q3.2"
+      ],
+      "courseLevel": "GK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "Energie-Niveauschema",
+        "Messdatenreihe/Fotostrom oder Spektrallinien",
+        "Kurztext zu Experiment"
+      ],
+      "operatorProfile": [
+        "erklaeren",
+        "auswerten",
+        "berechnen",
+        "deuten"
+      ],
+      "mandatoryTerms": [
+        "Energiestufenmodell"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_2026_1_d",
+      "collectionId": "gk_offer_2026",
+      "formId": "2026_1",
+      "proposalId": "D",
+      "workingTitle": "Franck-Hertz-Vertiefung",
+      "domain": "quantum_depth",
+      "topicCodes": [
+        "Q3.1",
+        "Q3.2"
+      ],
+      "courseLevel": "GK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "Messreihe zu Strommaxima",
+        "Spektrallinie/Photonenenergie",
+        "Unsicherheitsangabe"
+      ],
+      "operatorProfile": [
+        "beschreiben",
+        "berechnen",
+        "interpretieren",
+        "bewerten"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_2026_2_a",
+      "collectionId": "gk_offer_2026",
+      "formId": "2026_2",
+      "proposalId": "A",
+      "workingTitle": "Felder, Lorentzkraft und Induktion im Laborcontainer",
+      "domain": "fields_induction",
+      "topicCodes": [
+        "Q1.1",
+        "Q1.2",
+        "Q1.3"
+      ],
+      "courseLevel": "GK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "Messwerttabelle",
+        "Versuchsparameter",
+        "Kurzfall fuer Bewertung"
+      ],
+      "operatorProfile": [
+        "berechnen",
+        "auswerten",
+        "erklaeren",
+        "beurteilen"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_2026_2_b",
+      "collectionId": "gk_offer_2026",
+      "formId": "2026_2",
+      "proposalId": "B",
+      "workingTitle": "Schwingungen, Wellen und Doppler in der Infrastrukturdiagnostik",
+      "domain": "waves_oscillations",
+      "topicCodes": [
+        "Q2.1",
+        "Q2.2",
+        "Q2.3"
+      ],
+      "courseLevel": "GK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "Zeitreihe",
+        "Resonanztabelle",
+        "Grenzflaechenparameter"
+      ],
+      "operatorProfile": [
+        "bestimmen",
+        "interpretieren",
+        "berechnen",
+        "vergleichen"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_2026_2_c",
+      "collectionId": "gk_offer_2026",
+      "formId": "2026_2",
+      "proposalId": "C",
+      "workingTitle": "Quantenobjekte zwischen Compton-Effekt und Energiestufenmodell",
+      "domain": "quantum_atom",
+      "topicCodes": [
+        "Q3.1",
+        "Q3.2"
+      ],
+      "courseLevel": "GK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "Messdatenreihe",
+        "Energieniveauschema",
+        "Spektraldatensatz"
+      ],
+      "operatorProfile": [
+        "berechnen",
+        "deuten",
+        "erklaeren",
+        "zuordnen"
+      ],
+      "mandatoryTerms": [
+        "Energiestufenmodell"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_2026_2_d",
+      "collectionId": "gk_offer_2026",
+      "formId": "2026_2",
+      "proposalId": "D",
+      "workingTitle": "Balmer-Auswertung und Teilchenwellen",
+      "domain": "quantum_depth",
+      "topicCodes": [
+        "Q3.1",
+        "Q3.2"
+      ],
+      "courseLevel": "GK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 25,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "Spektrallinien",
+        "Energieniveaudaten",
+        "Unsicherheitskriterium"
+      ],
+      "operatorProfile": [
+        "berechnen",
+        "interpretieren",
+        "begruenden",
+        "bewerten"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_2026_1_a",
+      "collectionId": "lk_offer_2026",
+      "formId": "2026_1",
+      "proposalId": "A",
+      "workingTitle": "Felder und Induktion im technischen Kontext",
+      "domain": "fields_induction",
+      "topicCodes": [
+        "Q1.1",
+        "Q1.2",
+        "Q1.3"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 30,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "Versuchsaufbau-Skizze",
+        "Messwerttabelle",
+        "Kennliniendiagramm"
+      ],
+      "operatorProfile": [
+        "auswerten",
+        "berechnen",
+        "begruenden",
+        "herleiten",
+        "beurteilen"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_2026_1_b",
+      "collectionId": "lk_offer_2026",
+      "formId": "2026_1",
+      "proposalId": "B",
+      "workingTitle": "Schwingungen, Wellen und Grenzflaechen",
+      "domain": "waves_oscillations",
+      "topicCodes": [
+        "Q2.1",
+        "Q2.2",
+        "Q2.3"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 30,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "Zeit-Ort-Diagramm",
+        "Spektrum/Oszillogramm",
+        "Abbildung zu Grenzflaechen"
+      ],
+      "operatorProfile": [
+        "modellieren",
+        "berechnen",
+        "interpretieren",
+        "vergleichend beurteilen"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_2026_1_c",
+      "collectionId": "lk_offer_2026",
+      "formId": "2026_1",
+      "proposalId": "C",
+      "workingTitle": "Quantenobjekte und Atommodelle",
+      "domain": "quantum_atom",
+      "topicCodes": [
+        "Q3.1",
+        "Q3.2"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 30,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "Energie-Niveauschema",
+        "Messdatenreihe/Fotostrom oder Spektrallinien",
+        "Kurztext zu Experiment"
+      ],
+      "operatorProfile": [
+        "deuten",
+        "modellieren",
+        "berechnen",
+        "begruendet vergleichen"
+      ],
+      "mandatoryTerms": [
+        "Energiestufenmodell"
+      ],
+      "mandatoryExtensions": [
+        "Rydbergformel auf wasserstoffaehnliche Atome (Moseley)"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_2026_1_d",
+      "collectionId": "lk_offer_2026",
+      "formId": "2026_1",
+      "proposalId": "D",
+      "workingTitle": "Roentgenanwendung und Vertiefung Q3.3",
+      "domain": "xray_quantum_depth",
+      "topicCodes": [
+        "Q3.2",
+        "Q3.3"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 30,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "Roentgenspektrum",
+        "Filter-/Absorptionsdaten",
+        "Anwendungsfall Medizin/Materialanalyse"
+      ],
+      "operatorProfile": [
+        "analysieren",
+        "berechnen",
+        "begruenden",
+        "bewerten"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_2026_2_a",
+      "collectionId": "lk_offer_2026",
+      "formId": "2026_2",
+      "proposalId": "A",
+      "workingTitle": "Felder, Lorentzkraft und Induktion im Laborcontainer",
+      "domain": "fields_induction",
+      "topicCodes": [
+        "Q1.1",
+        "Q1.2",
+        "Q1.3"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 30,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "Messwerttabelle",
+        "Versuchsparameter",
+        "Kurzfall fuer Bewertung"
+      ],
+      "operatorProfile": [
+        "berechnen",
+        "linearisieren",
+        "herleiten",
+        "bewerten"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_2026_2_b",
+      "collectionId": "lk_offer_2026",
+      "formId": "2026_2",
+      "proposalId": "B",
+      "workingTitle": "Schwingungen, Wellen und Doppler in der Infrastrukturdiagnostik",
+      "domain": "waves_oscillations",
+      "topicCodes": [
+        "Q2.1",
+        "Q2.2",
+        "Q2.3"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 30,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "Zeitreihe",
+        "Resonanztabelle",
+        "Grenzflaechenparameter"
+      ],
+      "operatorProfile": [
+        "modellieren",
+        "analysieren",
+        "begruendet vergleichen",
+        "beurteilen"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_2026_2_c",
+      "collectionId": "lk_offer_2026",
+      "formId": "2026_2",
+      "proposalId": "C",
+      "workingTitle": "Quantenobjekte zwischen Compton-Effekt und Energiestufenmodell",
+      "domain": "quantum_atom",
+      "topicCodes": [
+        "Q3.1",
+        "Q3.2"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 30,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "Messdatenreihe",
+        "Energieniveauschema",
+        "Spektraldatensatz"
+      ],
+      "operatorProfile": [
+        "linearisieren",
+        "modellieren",
+        "begruenden",
+        "kritisch einordnen"
+      ],
+      "mandatoryTerms": [
+        "Energiestufenmodell"
+      ],
+      "mandatoryExtensions": [
+        "Rydberg-Erweiterung auf wasserstoffaehnliche Atome (Moseley)"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_2026_2_d",
+      "collectionId": "lk_offer_2026",
+      "formId": "2026_2",
+      "proposalId": "D",
+      "workingTitle": "Roentgen-Qualitaetssicherung und Vertiefung Q3.3",
+      "domain": "xray_quantum_depth",
+      "topicCodes": [
+        "Q3.2",
+        "Q3.3"
+      ],
+      "courseLevel": "LK",
+      "allowedTools": "standard_exam_aids",
+      "beTotal": 30,
+      "selectionRole": "optional",
+      "materialBound": true,
+      "materialTypes": [
+        "Roentgenroehrenparameter",
+        "Absorptionsmessung",
+        "Bragg-Messpunkt"
+      ],
+      "operatorProfile": [
+        "analysieren",
+        "berechnen",
+        "bewerten",
+        "modellgrenzen diskutieren"
+      ],
+      "minCandidates": 1,
+      "maxCandidates": 1
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "examSpecId": "hessen-landesabitur-2026-math",
+  "version": 1,
+  "reviewFields": [
+    "abiStyle",
+    "motivationPraxisbezug",
+    "solutionConsistency",
+    "originality"
+  ],
+  "collections": [
+    {
+      "id": "gk_offer_2026",
+      "unionRequirements": {
+        "requiredDomains": [
+          "analysis",
+          "linalg_geo",
+          "stoch"
+        ],
+        "requiredTopicCodes": [
+          "Q1.1",
+          "Q1.2",
+          "Q1.3",
+          "Q1.4",
+          "Q2.1",
+          "Q2.2",
+          "Q2.3",
+          "Q2.6",
+          "Q3.1",
+          "Q3.2",
+          "Q3.3",
+          "Q3.4"
+        ],
+        "requiredSpecialHintIds": [
+          "q1_3_limits",
+          "q2_6_normal_vector",
+          "q2_angle_in_lagebeziehung",
+          "q3_inverse_distribution_part2"
+        ]
+      },
+      "pathRequirements": {
+        "requiredDomains": [
+          "analysis",
+          "linalg_geo",
+          "stoch"
+        ],
+        "expectedSolvedBeTotal": 80
+      }
+    },
+    {
+      "id": "lk_offer_2026",
+      "unionRequirements": {
+        "requiredDomains": [
+          "analysis",
+          "linalg_geo",
+          "stoch"
+        ],
+        "requiredTopicCodes": [
+          "Q1.1",
+          "Q1.2",
+          "Q1.3",
+          "Q1.4",
+          "Q2.1",
+          "Q2.2",
+          "Q2.3",
+          "Q2.4",
+          "Q3.1",
+          "Q3.2",
+          "Q3.3",
+          "Q3.4"
+        ],
+        "requiredSpecialHintIds": [
+          "q1_3_limits",
+          "q2_angle_in_lagebeziehung",
+          "q3_inverse_distribution_part2"
+        ]
+      },
+      "pathRequirements": {
+        "requiredDomains": [
+          "analysis",
+          "linalg_geo",
+          "stoch"
+        ],
+        "expectedSolvedBeTotal": 100
+      }
+    },
+    {
+      "id": "gk_master_2026",
+      "bucketRequirements": [
+        {
+          "track": "phase_practice",
+          "phase": "E",
+          "minCount": 8
+        },
+        {
+          "track": "phase_practice",
+          "phase": "Q1",
+          "minCount": 5
+        },
+        {
+          "track": "phase_practice",
+          "phase": "Q2",
+          "minCount": 5
+        },
+        {
+          "track": "phase_practice",
+          "phase": "Q3",
+          "minCount": 5
+        },
+        {
+          "track": "phase_practice",
+          "phase": "Q4",
+          "minCount": 3
+        },
+        {
+          "track": "process_practice",
+          "phase": "GLOBAL",
+          "minCount": 6
+        }
+      ],
+      "mustIncludeCollectionTasks": [
+        "gk_offer_2026"
+      ]
+    },
+    {
+      "id": "lk_master_2026",
+      "bucketRequirements": [
+        {
+          "track": "phase_practice",
+          "phase": "E",
+          "minCount": 8
+        },
+        {
+          "track": "phase_practice",
+          "phase": "Q1",
+          "minCount": 5
+        },
+        {
+          "track": "phase_practice",
+          "phase": "Q2",
+          "minCount": 5
+        },
+        {
+          "track": "phase_practice",
+          "phase": "Q3",
+          "minCount": 5
+        },
+        {
+          "track": "phase_practice",
+          "phase": "Q4",
+          "minCount": 3
+        },
+        {
+          "track": "process_practice",
+          "phase": "GLOBAL",
+          "minCount": 6
+        }
+      ],
+      "mustIncludeCollectionTasks": [
+        "lk_offer_2026"
+      ]
+    }
+  ]
+}

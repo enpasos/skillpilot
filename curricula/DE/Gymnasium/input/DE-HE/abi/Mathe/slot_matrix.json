@@ -1,0 +1,507 @@
+{
+  "examSpecId": "hessen-landesabitur-2026-math",
+  "version": 1,
+  "collections": [
+    {
+      "id": "gk_offer_2026",
+      "label": "GK Offer Set 2026",
+      "releaseRef": {
+        "examYear": 2026,
+        "kind": "offer",
+        "courseLevel": "GK"
+      },
+      "courseLevel": "GK",
+      "kind": "offer",
+      "selectionMode": "official_exam",
+      "expectedSolvedBeTotal": 80,
+      "slotIds": [
+        "gk_a_analysis_n1_mandatory",
+        "gk_a_linalg_geo_n1_mandatory",
+        "gk_a_stoch_n1_mandatory",
+        "gk_a_analysis_n1_optional",
+        "gk_a_linalg_geo_n1_optional",
+        "gk_a_stoch_n1_optional",
+        "gk_a_analysis_n2_optional",
+        "gk_a_linalg_geo_n2_optional",
+        "gk_a_stoch_n2_optional",
+        "gk_b1_analysis",
+        "gk_b2_analysis",
+        "gk_c_linalg_geo",
+        "gk_d_stoch"
+      ],
+      "selectionGroups": [
+        {
+          "id": "gk_a_mandatory",
+          "pick": "all",
+          "slotIds": [
+            "gk_a_analysis_n1_mandatory",
+            "gk_a_linalg_geo_n1_mandatory",
+            "gk_a_stoch_n1_mandatory"
+          ]
+        },
+        {
+          "id": "gk_a_optional_n1",
+          "pick": 1,
+          "slotIds": [
+            "gk_a_analysis_n1_optional",
+            "gk_a_linalg_geo_n1_optional",
+            "gk_a_stoch_n1_optional"
+          ]
+        },
+        {
+          "id": "gk_a_optional_n2",
+          "pick": 1,
+          "slotIds": [
+            "gk_a_analysis_n2_optional",
+            "gk_a_linalg_geo_n2_optional",
+            "gk_a_stoch_n2_optional"
+          ]
+        },
+        {
+          "id": "gk_part2_analysis_choice",
+          "pick": 1,
+          "slotIds": [
+            "gk_b1_analysis",
+            "gk_b2_analysis"
+          ]
+        },
+        {
+          "id": "gk_part2_fixed",
+          "pick": "all",
+          "slotIds": [
+            "gk_c_linalg_geo",
+            "gk_d_stoch"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lk_offer_2026",
+      "label": "LK Offer Set 2026",
+      "releaseRef": {
+        "examYear": 2026,
+        "kind": "offer",
+        "courseLevel": "LK"
+      },
+      "courseLevel": "LK",
+      "kind": "offer",
+      "selectionMode": "official_exam",
+      "expectedSolvedBeTotal": 100,
+      "slotIds": [
+        "lk_a_analysis_n1_mandatory_1",
+        "lk_a_analysis_n1_mandatory_2",
+        "lk_a_linalg_geo_n1_mandatory",
+        "lk_a_stoch_n1_mandatory",
+        "lk_a_analysis_n2_optional_1",
+        "lk_a_analysis_n2_optional_2",
+        "lk_a_linalg_geo_n2_optional_1",
+        "lk_a_linalg_geo_n2_optional_2",
+        "lk_a_stoch_n2_optional_1",
+        "lk_a_stoch_n2_optional_2",
+        "lk_b1_analysis",
+        "lk_b2_analysis",
+        "lk_c_linalg_geo",
+        "lk_d_stoch"
+      ],
+      "selectionGroups": [
+        {
+          "id": "lk_a_mandatory",
+          "pick": "all",
+          "slotIds": [
+            "lk_a_analysis_n1_mandatory_1",
+            "lk_a_analysis_n1_mandatory_2",
+            "lk_a_linalg_geo_n1_mandatory",
+            "lk_a_stoch_n1_mandatory"
+          ]
+        },
+        {
+          "id": "lk_a_optional_n2",
+          "pick": 2,
+          "slotIds": [
+            "lk_a_analysis_n2_optional_1",
+            "lk_a_analysis_n2_optional_2",
+            "lk_a_linalg_geo_n2_optional_1",
+            "lk_a_linalg_geo_n2_optional_2",
+            "lk_a_stoch_n2_optional_1",
+            "lk_a_stoch_n2_optional_2"
+          ]
+        },
+        {
+          "id": "lk_part2_analysis_choice",
+          "pick": 1,
+          "slotIds": [
+            "lk_b1_analysis",
+            "lk_b2_analysis"
+          ]
+        },
+        {
+          "id": "lk_part2_fixed",
+          "pick": "all",
+          "slotIds": [
+            "lk_c_linalg_geo",
+            "lk_d_stoch"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gk_master_2026",
+      "label": "GK Master Set 2026",
+      "courseLevel": "GK",
+      "kind": "master",
+      "selectionMode": "full_set"
+    },
+    {
+      "id": "lk_master_2026",
+      "label": "LK Master Set 2026",
+      "courseLevel": "LK",
+      "kind": "master",
+      "selectionMode": "full_set"
+    }
+  ],
+  "slots": [
+    {
+      "id": "gk_a_analysis_n1_mandatory",
+      "collectionId": "gk_offer_2026",
+      "examPart": "A",
+      "domain": "analysis",
+      "niveau": 1,
+      "courseLevel": "GK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "mandatory",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_a_linalg_geo_n1_mandatory",
+      "collectionId": "gk_offer_2026",
+      "examPart": "A",
+      "domain": "linalg_geo",
+      "niveau": 1,
+      "courseLevel": "GK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "mandatory",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_a_stoch_n1_mandatory",
+      "collectionId": "gk_offer_2026",
+      "examPart": "A",
+      "domain": "stoch",
+      "niveau": 1,
+      "courseLevel": "GK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "mandatory",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_a_analysis_n1_optional",
+      "collectionId": "gk_offer_2026",
+      "examPart": "A",
+      "domain": "analysis",
+      "niveau": 1,
+      "courseLevel": "GK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "optional",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_a_linalg_geo_n1_optional",
+      "collectionId": "gk_offer_2026",
+      "examPart": "A",
+      "domain": "linalg_geo",
+      "niveau": 1,
+      "courseLevel": "GK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "optional",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_a_stoch_n1_optional",
+      "collectionId": "gk_offer_2026",
+      "examPart": "A",
+      "domain": "stoch",
+      "niveau": 1,
+      "courseLevel": "GK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "optional",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_a_analysis_n2_optional",
+      "collectionId": "gk_offer_2026",
+      "examPart": "A",
+      "domain": "analysis",
+      "niveau": 2,
+      "courseLevel": "GK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "optional",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_a_linalg_geo_n2_optional",
+      "collectionId": "gk_offer_2026",
+      "examPart": "A",
+      "domain": "linalg_geo",
+      "niveau": 2,
+      "courseLevel": "GK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "optional",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_a_stoch_n2_optional",
+      "collectionId": "gk_offer_2026",
+      "examPart": "A",
+      "domain": "stoch",
+      "niveau": 2,
+      "courseLevel": "GK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "optional",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_b1_analysis",
+      "collectionId": "gk_offer_2026",
+      "examPart": "B",
+      "domain": "analysis",
+      "courseLevel": "GK",
+      "allowedTools": "WTR_OR_CAS",
+      "beTotal": 25,
+      "selectionRole": "optional",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_b2_analysis",
+      "collectionId": "gk_offer_2026",
+      "examPart": "B",
+      "domain": "analysis",
+      "courseLevel": "GK",
+      "allowedTools": "WTR_OR_CAS",
+      "beTotal": 25,
+      "selectionRole": "optional",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_c_linalg_geo",
+      "collectionId": "gk_offer_2026",
+      "examPart": "C",
+      "domain": "linalg_geo",
+      "courseLevel": "GK",
+      "allowedTools": "WTR_OR_CAS",
+      "beTotal": 15,
+      "selectionRole": "mandatory",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "gk_d_stoch",
+      "collectionId": "gk_offer_2026",
+      "examPart": "D",
+      "domain": "stoch",
+      "courseLevel": "GK",
+      "allowedTools": "WTR_OR_CAS",
+      "beTotal": 15,
+      "selectionRole": "mandatory",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_a_analysis_n1_mandatory_1",
+      "collectionId": "lk_offer_2026",
+      "examPart": "A",
+      "domain": "analysis",
+      "niveau": 1,
+      "courseLevel": "LK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "mandatory",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_a_analysis_n1_mandatory_2",
+      "collectionId": "lk_offer_2026",
+      "examPart": "A",
+      "domain": "analysis",
+      "niveau": 1,
+      "courseLevel": "LK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "mandatory",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_a_linalg_geo_n1_mandatory",
+      "collectionId": "lk_offer_2026",
+      "examPart": "A",
+      "domain": "linalg_geo",
+      "niveau": 1,
+      "courseLevel": "LK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "mandatory",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_a_stoch_n1_mandatory",
+      "collectionId": "lk_offer_2026",
+      "examPart": "A",
+      "domain": "stoch",
+      "niveau": 1,
+      "courseLevel": "LK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "mandatory",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_a_analysis_n2_optional_1",
+      "collectionId": "lk_offer_2026",
+      "examPart": "A",
+      "domain": "analysis",
+      "niveau": 2,
+      "courseLevel": "LK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "optional",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_a_analysis_n2_optional_2",
+      "collectionId": "lk_offer_2026",
+      "examPart": "A",
+      "domain": "analysis",
+      "niveau": 2,
+      "courseLevel": "LK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "optional",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_a_linalg_geo_n2_optional_1",
+      "collectionId": "lk_offer_2026",
+      "examPart": "A",
+      "domain": "linalg_geo",
+      "niveau": 2,
+      "courseLevel": "LK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "optional",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_a_linalg_geo_n2_optional_2",
+      "collectionId": "lk_offer_2026",
+      "examPart": "A",
+      "domain": "linalg_geo",
+      "niveau": 2,
+      "courseLevel": "LK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "optional",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_a_stoch_n2_optional_1",
+      "collectionId": "lk_offer_2026",
+      "examPart": "A",
+      "domain": "stoch",
+      "niveau": 2,
+      "courseLevel": "LK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "optional",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_a_stoch_n2_optional_2",
+      "collectionId": "lk_offer_2026",
+      "examPart": "A",
+      "domain": "stoch",
+      "niveau": 2,
+      "courseLevel": "LK",
+      "allowedTools": "none",
+      "beTotal": 5,
+      "selectionRole": "optional",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_b1_analysis",
+      "collectionId": "lk_offer_2026",
+      "examPart": "B",
+      "domain": "analysis",
+      "courseLevel": "LK",
+      "allowedTools": "WTR_OR_CAS",
+      "beTotal": 30,
+      "selectionRole": "optional",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_b2_analysis",
+      "collectionId": "lk_offer_2026",
+      "examPart": "B",
+      "domain": "analysis",
+      "courseLevel": "LK",
+      "allowedTools": "WTR_OR_CAS",
+      "beTotal": 30,
+      "selectionRole": "optional",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_c_linalg_geo",
+      "collectionId": "lk_offer_2026",
+      "examPart": "C",
+      "domain": "linalg_geo",
+      "courseLevel": "LK",
+      "allowedTools": "WTR_OR_CAS",
+      "beTotal": 20,
+      "selectionRole": "mandatory",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    },
+    {
+      "id": "lk_d_stoch",
+      "collectionId": "lk_offer_2026",
+      "examPart": "D",
+      "domain": "stoch",
+      "courseLevel": "LK",
+      "allowedTools": "WTR_OR_CAS",
+      "beTotal": 20,
+      "selectionRole": "mandatory",
+      "minCandidates": 1,
+      "maxCandidates": 1
+    }
+  ]
+}

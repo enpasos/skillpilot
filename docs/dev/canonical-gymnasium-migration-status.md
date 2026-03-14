@@ -67,6 +67,7 @@ Rule:
 
 - canonical DE landscapes stay shared and non-state-specific
 - transferred source inputs must stay explicitly state-scoped
+- the same state-scoped rule applies to retained non-canonical materials beyond pure `input/`, with `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi` as the clearest current example
 
 Recommended target structure:
 
@@ -87,15 +88,18 @@ Practical meaning:
 - the imported source/input material is separated by Bundesland under `curricula/DE/Gymnasium/input/<STATE>/...`
 - provenance and `sourceRef` should continue to point to a state-distinguishable source path
 - the lane-by-lane transfer inventory is tracked in `curricula/DE/Gymnasium/input/transfer-manifest.md`
+- `abi/` is therefore not treated as a one-off exception, but as part of the general state-scoped retained-asset policy
 
 Current status of this lane:
 
 - the target archive scaffold now exists under `curricula/DE/Gymnasium/input/`
 - the Hessen non-abi input batches have been transferred into that archive
 - a first Hessen `abi/` small-subject batch has been transferred into that archive
+- the Hessen `abi/Physik` bulk has now also been transferred into that archive
+- the Hessen `abi/Mathe` bulk has now also been transferred into that archive
 - the Bavaria subject-source snapshot has now also been transferred into that archive
-- Hessen `abi/` material and the optional Bavaria `abi/` lane are still open
-- therefore input-transfer readiness has started across both state lanes, but the dominant remaining mass is now the Hessen `abi/` `Physik` + `Mathe` remainder
+- the optional Bavaria `abi/` lane is still undecided and remains out of the current mandatory scope
+- therefore the currently known mandatory transfer scope is now mirrored; the only open question is whether a Bavaria `abi/` lane ever becomes part of scope
 - for Sek I normalization, the current canonical planning target is a shared G9-aligned year-level grid `5-10`; source-side `G8` / `G9` distinctions remain preserved in provenance and archived inputs
 
 ### Initial input inventory
@@ -103,7 +107,7 @@ Current status of this lane:
 | State lane | Current source location | Current form | Observed size | Migrated into DE archive | Planned target |
 | --- | --- | --- | ---: | ---: | --- |
 | `DE-HE` upper-secondary input | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/input/` | source PDFs + references | `24` files | `24` files | `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/` |
-| `DE-HE` upper-secondary abi | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/` | exam/release assets by subject | `2130` files | `87` files | `curricula/DE/Gymnasium/input/DE-HE/abi/` |
+| `DE-HE` upper-secondary abi | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/` | exam/release assets by subject | `2130` files | `2130` files | `curricula/DE/Gymnasium/input/DE-HE/abi/` |
 | `DE-HE` lower-secondary input | `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe/input/` | source PDFs + references | `20` files | `20` files | `curricula/DE/Gymnasium/input/DE-HE/lower-secondary/` |
 | `DE-BY` gymnasium source lane | `curricula/DE/BY/Gymnasium/` | subject JSON source set, no dedicated `input/` tree yet | `45` subject JSON files | `45` files | `curricula/DE/Gymnasium/input/DE-BY/gymnasium/` |
 | `DE-BY` abi lane | not yet present as dedicated canonical migration input lane | reserved | `0` migrated files | `0` files | `curricula/DE/Gymnasium/input/DE-BY/abi/` |
@@ -115,19 +119,20 @@ Interpretation:
 - Bavaria now has a first DE-level separated source snapshot archive, but not yet a dedicated exam lane.
 - The lower-secondary migration target is currently year-level based, not duration-track based: canonical Sek I should first align to G9-style year buckets `5-10`.
 - The archive scaffold is now in place, and the first HE/BY transfer batches have happened.
-- The dominant remaining blocks are Hessen `abi/Physik` and Hessen `abi/Mathe`.
+- The currently known mandatory transfer scope is fully mirrored.
+- The only remaining lane question is whether Bavaria exam assets must later be added to scope.
 
 Input-lane proxy score:
 
 ```text
 known files in scope = 24 + 2130 + 20 + 45 = 2219
-transferred so far   = 24 + 20 + 45 + 87 = 176
-proxy score          = 176 / 2219 = 7.93%
+transferred so far   = 24 + 20 + 45 + 2130 = 2219
+proxy score          = 2219 / 2219 = 100.00%
 ```
 
 Working input-transfer score:
 
-- `8%`
+- `100%`
 
 ## Current tracked migration units
 
@@ -188,7 +193,7 @@ Interpretation:
 Input-lane interpretation:
 
 - canonical graph migration is materially underway
-- input/source transfer is now active as a separate, deletion-safe workstream, but it is still far from completion
+- input/source transfer is complete for the currently known mandatory scope, but that does not by itself make any legacy tree deletable
 
 ## Repo-level deletion readiness
 
@@ -196,14 +201,14 @@ This table is intentionally conservative.
 
 | Legacy source tree | Migration picture | Deletion readiness | Why not deletable yet |
 | --- | --- | ---: | --- |
-| `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` | strong canonical mirror + mappings + first cutovers | 0% | legacy views are still active in UI/runtime, source tree still underpins mappings/provenance, and the `DE-HE` abi archive still lacks the `Physik` and `Mathe` bulk |
+| `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` | strong canonical mirror + mappings + first cutovers | 0% | legacy views are still active in UI/runtime, source tree still underpins mappings/provenance, and transfer completeness alone is not enough to remove the legacy tree |
 | `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe` | selected bridges adopted, but not broad cutover | 0% | only partial subtree adoption so far, despite a mirrored `DE-HE` lower-secondary input archive being in place |
 | `curricula/DE/BY/Gymnasium` | pilot-only mapping coverage | 0% | the source snapshot is now mirrored under `DE-BY`, but broad canonical replacement and mapping migration are still missing |
 
 Practical conclusion:
 
 - The overall migration program is around `55%`.
-- The input-transfer lane is at `8%`.
+- The input-transfer lane is at `100%` for the currently known mandatory scope.
 - The deletion program is effectively still `0%`.
 
 Both numbers can be true at the same time, because migration progress and deletion readiness are not the same thing.
@@ -247,7 +252,7 @@ If we collapse both into one naive percentage too early, the number becomes misl
 This document therefore uses:
 
 - `55%` as the current migration-program score
-- `8%` as the current input-transfer score
+- `100%` as the current input-transfer score for the currently known mandatory scope
 - `0%` as the current deletion-readiness picture for the legacy source trees
 
 That is, in my view, the most honest planning representation of the current state.

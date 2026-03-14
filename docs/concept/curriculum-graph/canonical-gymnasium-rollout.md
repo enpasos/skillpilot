@@ -21,6 +21,7 @@ Repository layout rule for the rollout:
 
 - existing source curricula under state-owned paths such as `curricula/DE/HE/.../json/` remain legacy source material and should not be rewritten just to host canonical convergence
 - canonical Gymnasium subject landscapes should live on a Germany-level path, not inside a single Bundesland subtree
+- retained non-canonical state-owned assets should also move to Germany-level archive paths, but remain state-scoped there, for example under `curricula/DE/Gymnasium/input/DE-HE/...`
 
 The strategic objective is not to preserve state-specific duplication forever, but to converge towards one canonical competence layer per subject across the full Gymnasium path.
 
@@ -139,6 +140,18 @@ Operational rule:
 - preserve source truth such as `G8` / `G9` in provenance and archived inputs,
 - but author and migrate the first canonical Sek-I layer against the shared G9-aligned year-level grid,
 - only add duration-aware overlays later if real runtime needs justify the extra complexity.
+
+### 9. Keep retained assets state-scoped, not mixed
+
+Canonical DE landscapes are shared.
+
+Retained source assets are not.
+
+This means:
+
+- if a legacy path such as `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi` remains relevant after convergence, it should be archived into a DE-level but still state-scoped lane
+- the same rule applies to other state-owned materials such as source bundles, blueprint packages, release notes, and similar regeneration/audit assets
+- `abi/` is the clearest current example of the rule, but not the only case it covers
 
 ## Minimal Data Additions
 

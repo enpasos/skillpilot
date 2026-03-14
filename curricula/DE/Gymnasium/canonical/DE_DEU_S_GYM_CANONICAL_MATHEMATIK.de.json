@@ -8,8 +8,8 @@
   "frameworkId": "canonical-gymnasium-math",
   "title": "Mathematik (Gymnasium, DE)",
   "titleEn": "Mathematics (Gymnasium, DE)",
-  "description": "Mathematik für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig und behält den vorhandenen Sek-I-Funktionsanschluss als Ausgangspunkt für spätere bundesländerübergreifende Angleichung.",
-  "descriptionEn": "Mathematics for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum and keeps the existing lower-secondary function bridge as the starting point for later cross-state alignment.",
+  "description": "Mathematik für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig, ergänzt ein erstes J5-J10-Skelett für die Sekundarstufe I und behält den vorhandenen Sek-I-Funktionsanschluss als Ausgangspunkt für spätere bundesländerübergreifende Angleichung.",
+  "descriptionEn": "Mathematics for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum, adds an initial J5-J10 lower-secondary skeleton, and keeps the existing lower-secondary function bridge as the starting point for later cross-state alignment.",
   "filters": [
     {
       "id": "GK",
@@ -26,8 +26,8 @@
       "shortKey": "canonical_math_pilot_module",
       "title": "Mathematik",
       "titleEn": "Mathematics",
-      "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und behält den bereits aufgebauten Sek-I-Funktionsanschluss für die spätere bundesländerübergreifende Konvergenz.",
-      "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and keeps the previously established lower-secondary function bridge for later cross-state convergence.",
+      "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig, ergänzt ein erstes kanonisches J5-J10-Skelett für die Sekundarstufe I und behält den bereits aufgebauten Sek-I-Funktionsanschluss für die spätere bundesländerübergreifende Konvergenz.",
+      "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum, adds an initial canonical J5-J10 lower-secondary skeleton, and keeps the previously established lower-secondary function bridge for later cross-state convergence.",
       "core": true,
       "weight": 329.0,
       "tags": [
@@ -55,6 +55,12 @@
         "topicCode": "CANONICAL.MATH.PILOT"
       },
       "contains": [
+        "2a13e6dd-1b44-4594-97f4-96f76007c670",
+        "6433fec9-09c5-412a-86d6-cda673b15bc5",
+        "5a7095a2-2b3a-48bf-9536-eca79ee5ff8c",
+        "d64516eb-9dd2-4808-91d0-0040ccdc281f",
+        "902de188-6f27-47c2-ace1-9b2c5771fde8",
+        "257033c9-1579-4c07-997d-4c77ddeb6d90",
         "5c6b7342-0f67-4b4c-894d-fd83a6df64b3",
         "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
         "a668ea17-9226-4074-8f8e-051acbe839eb",
@@ -86,8 +92,8 @@
       "shortKey": "canonical_math_sek1_function_foundations",
       "title": "Funktionsgrundlagen (Sek I)",
       "titleEn": "Function Foundations (Lower Secondary)",
-      "description": "Cluster für grundlegende Vorstellungen zu Zuordnungen, linearen Funktionen und quadratischen Funktionen aus der gymnasialen Sekundarstufe I.",
-      "descriptionEn": "Cluster for foundational ideas of mappings, linear functions, and quadratic functions from lower secondary Gymnasium mathematics.",
+      "description": "Cluster für grundlegende Vorstellungen zu Zuordnungen, linearen Funktionen und quadratischen Funktionen aus der gymnasialen Sekundarstufe I. Der aktuelle Pilotkorridor ist zusätzlich an die kanonischen Jahrgangsanker J7 bis J9 angebunden.",
+      "descriptionEn": "Cluster for foundational ideas of mappings, linear functions, and quadratic functions from lower secondary Gymnasium mathematics. The current pilot corridor is additionally attached to the canonical year anchors J7 to J9.",
       "core": true,
       "weight": 7,
       "tags": [
@@ -135,6 +141,259 @@
       "type": "cluster"
     },
     {
+      "id": "2a13e6dd-1b44-4594-97f4-96f76007c670",
+      "shortKey": "canonical_math_sek1_j5_anchor",
+      "title": "Jahrgang 5 (Sek I)",
+      "titleEn": "Year 5 (Lower Secondary)",
+      "description": "Erster kanonischer Jahrgangsanker für die gymnasiale Sekundarstufe I in Mathematik. Dieser Anker reserviert den späteren Ausbau für J5-Inhalte wie Arithmetik, grundlegende Geometrie und Größen.",
+      "descriptionEn": "First canonical year anchor for lower-secondary Gymnasium mathematics. This anchor reserves the later expansion for year-5 topics such as arithmetic, basic geometry, and units.",
+      "core": true,
+      "weight": 0,
+      "tags": [
+        "canonical",
+        "pilot",
+        "phase:SekI",
+        "phase:J5",
+        "area:Mathematik"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J5",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.SEK1.J5"
+      },
+      "contains": [],
+      "requires": [],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+          "sourceLandscapeTitle": "Mathematik Sekundarstufe I (Hessen, G9)",
+          "additionalSourceLandscapeIds": [
+            "c1600692-e543-5cf2-a399-6bd96e6b817f"
+          ]
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "6433fec9-09c5-412a-86d6-cda673b15bc5",
+      "shortKey": "canonical_math_sek1_j6_anchor",
+      "title": "Jahrgang 6 (Sek I)",
+      "titleEn": "Year 6 (Lower Secondary)",
+      "description": "Zweiter kanonischer Jahrgangsanker für die gymnasiale Sekundarstufe I in Mathematik. Dieser Anker reserviert den späteren Ausbau für J6-Inhalte wie rationale Zahlen, Flächen- und Volumenbegriffe sowie Prozent- und Datenbasics.",
+      "descriptionEn": "Second canonical year anchor for lower-secondary Gymnasium mathematics. This anchor reserves the later expansion for year-6 topics such as rational numbers, area and volume concepts, and percent/data basics.",
+      "core": true,
+      "weight": 0,
+      "tags": [
+        "canonical",
+        "pilot",
+        "phase:SekI",
+        "phase:J6",
+        "area:Mathematik"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J6",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.SEK1.J6"
+      },
+      "contains": [],
+      "requires": [],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+          "sourceLandscapeTitle": "Mathematik Sekundarstufe I (Hessen, G9)",
+          "additionalSourceLandscapeIds": [
+            "c1600692-e543-5cf2-a399-6bd96e6b817f"
+          ]
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "5a7095a2-2b3a-48bf-9536-eca79ee5ff8c",
+      "shortKey": "canonical_math_sek1_j7_anchor",
+      "title": "Jahrgang 7 (Sek I)",
+      "titleEn": "Year 7 (Lower Secondary)",
+      "description": "Kanonischer Jahrgangsanker für J7 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Pilot bindet hier die vorbereitenden Zuordnungs- und Proportionalitätsziele des bestehenden Funktionskorridors an.",
+      "descriptionEn": "Canonical year anchor for year 7 in lower-secondary Gymnasium mathematics. The current pilot attaches the preparatory mapping and proportionality goals of the existing function corridor here.",
+      "core": true,
+      "weight": 2,
+      "tags": [
+        "canonical",
+        "pilot",
+        "phase:SekI",
+        "phase:J7",
+        "area:Mathematik"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J7",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.SEK1.J7"
+      },
+      "contains": [
+        "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca"
+      ],
+      "requires": [],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+          "sourceLandscapeTitle": "Mathematik Sekundarstufe I (Hessen, G9)",
+          "additionalSourceLandscapeIds": [
+            "c1600692-e543-5cf2-a399-6bd96e6b817f"
+          ]
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "d64516eb-9dd2-4808-91d0-0040ccdc281f",
+      "shortKey": "canonical_math_sek1_j8_anchor",
+      "title": "Jahrgang 8 (Sek I)",
+      "titleEn": "Year 8 (Lower Secondary)",
+      "description": "Kanonischer Jahrgangsanker für J8 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Pilot bindet hier die linearen Teile des bestehenden Funktionskorridors an.",
+      "descriptionEn": "Canonical year anchor for year 8 in lower-secondary Gymnasium mathematics. The current pilot attaches the linear parts of the existing function corridor here.",
+      "core": true,
+      "weight": 2,
+      "tags": [
+        "canonical",
+        "pilot",
+        "phase:SekI",
+        "phase:J8",
+        "area:Mathematik"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J8",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.SEK1.J8"
+      },
+      "contains": [
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb"
+      ],
+      "requires": [],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+          "sourceLandscapeTitle": "Mathematik Sekundarstufe I (Hessen, G9)",
+          "additionalSourceLandscapeIds": [
+            "c1600692-e543-5cf2-a399-6bd96e6b817f"
+          ]
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "902de188-6f27-47c2-ace1-9b2c5771fde8",
+      "shortKey": "canonical_math_sek1_j9_anchor",
+      "title": "Jahrgang 9 (Sek I)",
+      "titleEn": "Year 9 (Lower Secondary)",
+      "description": "Kanonischer Jahrgangsanker für J9 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Pilot bindet hier die quadratischen Teile des bestehenden Funktionskorridors an.",
+      "descriptionEn": "Canonical year anchor for year 9 in lower-secondary Gymnasium mathematics. The current pilot attaches the quadratic parts of the existing function corridor here.",
+      "core": true,
+      "weight": 3,
+      "tags": [
+        "canonical",
+        "pilot",
+        "phase:SekI",
+        "phase:J9",
+        "area:Mathematik"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.SEK1.J9"
+      },
+      "contains": [
+        "9023226b-fc17-412b-807c-2bb45cd551d5",
+        "c23705d2-57fc-4260-80d8-2d340203a173",
+        "5a9702f4-7e4d-457d-b98c-f0bafcd1e386"
+      ],
+      "requires": [],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+          "sourceLandscapeTitle": "Mathematik Sekundarstufe I (Hessen, G9)",
+          "additionalSourceLandscapeIds": [
+            "c1600692-e543-5cf2-a399-6bd96e6b817f"
+          ]
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "257033c9-1579-4c07-997d-4c77ddeb6d90",
+      "shortKey": "canonical_math_sek1_j10_anchor",
+      "title": "Jahrgang 10 (Sek I)",
+      "titleEn": "Year 10 (Lower Secondary)",
+      "description": "Kanonischer Jahrgangsanker für J10 der gymnasialen Sekundarstufe I in Mathematik. Dieser Anker reserviert den späteren Ausbau für J10-Inhalte wie Wachstum, trigonometrische Funktionen, ganzrationale Funktionen und Raumgeometrie.",
+      "descriptionEn": "Canonical year anchor for year 10 in lower-secondary Gymnasium mathematics. This anchor reserves the later expansion for year-10 topics such as growth, trigonometric functions, polynomial functions, and solid geometry.",
+      "core": true,
+      "weight": 0,
+      "tags": [
+        "canonical",
+        "pilot",
+        "phase:SekI",
+        "phase:J10",
+        "area:Mathematik"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "J10",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.SEK1.J10"
+      },
+      "contains": [],
+      "requires": [],
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+          "sourceLandscapeTitle": "Mathematik Sekundarstufe I (Hessen, G9)",
+          "additionalSourceLandscapeIds": [
+            "c1600692-e543-5cf2-a399-6bd96e6b817f"
+          ]
+        }
+      },
+      "type": "cluster"
+    },
+    {
       "id": "2bb4bb91-7929-483a-b735-44275f6b5cdc",
       "shortKey": "canonical_math_analyze_mappings",
       "title": "Zuordnungen analysieren",
@@ -158,7 +417,7 @@
           "L1",
           "L4"
         ],
-        "phase": "GLOBAL",
+        "phase": "J7",
         "area": "Analysis",
         "topicCode": "CANONICAL.MATH.SEK1.1"
       },
@@ -242,7 +501,7 @@
           "L1",
           "L4"
         ],
-        "phase": "GLOBAL",
+        "phase": "J8",
         "area": "Analysis",
         "topicCode": "CANONICAL.MATH.SEK1.2"
       },
@@ -326,7 +585,7 @@
           "L1",
           "L4"
         ],
-        "phase": "GLOBAL",
+        "phase": "J8",
         "area": "Analysis",
         "topicCode": "CANONICAL.MATH.SEK1.2A"
       },
@@ -368,7 +627,7 @@
           "L1",
           "L4"
         ],
-        "phase": "GLOBAL",
+        "phase": "J9",
         "area": "Analysis",
         "topicCode": "CANONICAL.MATH.SEK1.3A"
       },
@@ -411,7 +670,7 @@
           "L1",
           "L4"
         ],
-        "phase": "GLOBAL",
+        "phase": "J9",
         "area": "Analysis",
         "topicCode": "CANONICAL.MATH.SEK1.3"
       },

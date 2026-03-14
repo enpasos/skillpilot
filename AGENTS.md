@@ -500,6 +500,7 @@ Practical rollout rules:
 - Keep existing state-specific landscapes alive during transition as **legacy views**.
 - Start the convergence from the most mature legacy source, currently `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe`.
 - For Sekundarstufe I, use **G9 year levels 5-10 as the first canonical reference grid**. If source materials come from tracks with different total duration such as G8 vs G9, normalize them initially onto the matching year-level buckets instead of creating separate canonical G8 and G9 goal sets.
+- When legacy source material must survive the migration outside the canonical graph, keep it **bundeslandspezifisch** in DE-level retained-asset lanes. This applies not only to `abi/`, but also to source snapshots, curriculum-owned input bundles, exam blueprints, release notes, and similar state-owned materials.
 - Treat existing state-owned source JSON under paths such as `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/` as legacy source material; do not rewrite those files just to host canonical convergence.
 - Use a **small mapping layer** from legacy goal IDs to canonical goal IDs instead of introducing a large new abstraction stack too early.
 - When a Bundesland must be represented explicitly in metadata, filters, overlays, or APIs, use ISO 3166-2 codes such as `DE-HE` and `DE-BY`.
@@ -517,6 +518,11 @@ Operational consequence for Sek I:
 - Preserve the original source labels such as `G8`, `G9`, or state-specific year naming in provenance, mapping files, and archived input material.
 - But keep the first canonical authoring and migration target aligned to year levels `5`, `6`, `7`, `8`, `9`, `10`.
 - Only introduce a separate duration-aware overlay later if concrete learner/runtime use cases require it.
+
+Operational consequence for retained assets:
+
+- If a file or directory is kept because it remains relevant after canonical cutover, archive it under a DE-level state lane such as `curricula/DE/Gymnasium/input/DE-HE/...` or `curricula/DE/Gymnasium/input/DE-BY/...`.
+- Treat `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi` as the model example for this rule, not as a special one-off exception.
 
 Detailed rollout plan:
 
