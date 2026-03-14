@@ -1,6 +1,7 @@
 package com.skillpilot.backend.landscape;
 
 import com.skillpilot.backend.api.LandscapeOverviewResponse;
+import com.skillpilot.backend.api.TopicSummary;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
@@ -32,6 +33,15 @@ public class LandscapeService {
     private static final int SUPPORTED_SOURCE_GOAL_CLOSURE_REGISTRY_VERSION = 1;
     private static final Path SOURCE_GOAL_CLOSURE_REGISTRY_PATH = Path.of(
             "DE", "Gymnasium", "provenance", "source-goal-closure-registry.json");
+    private static final int SUPPORTED_SOURCE_GOAL_MEMBERSHIP_REGISTRY_VERSION = 1;
+    private static final Path SOURCE_GOAL_MEMBERSHIP_REGISTRY_PATH = Path.of(
+            "DE", "Gymnasium", "provenance", "source-goal-membership-registry.json");
+    private static final int SUPPORTED_COMPATIBILITY_ARCHIVE_REGISTRY_VERSION = 1;
+    private static final Path COMPATIBILITY_ARCHIVE_REGISTRY_PATH = Path.of(
+            "DE", "Gymnasium", "archive", "compatibility-landscape-registry.json");
+    private static final int SUPPORTED_COMPATIBILITY_TOPIC_REGISTRY_VERSION = 1;
+    private static final Path COMPATIBILITY_TOPIC_REGISTRY_PATH = Path.of(
+            "DE", "Gymnasium", "archive", "compatibility-topic-summary-registry.json");
     private static final Set<String> COMPATIBILITY_ONLY_LANDSCAPE_IDS = Set.of(
             "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da",
             "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
@@ -63,6 +73,9 @@ public class LandscapeService {
     private volatile Map<String, String> goalIdToLandscapeId = Collections.emptyMap();
     private volatile Map<String, String> sourceLandscapeJurisdictionById = Collections.emptyMap();
     private volatile Map<String, Map<String, Set<String>>> sourceAtomicGoalIdsByLandscapeAndGoal = Collections.emptyMap();
+    private volatile Map<String, String> sourceLandscapeIdByGoalId = Collections.emptyMap();
+    private volatile Map<String, LandscapeSummary> compatibilityArchiveSummariesById = Collections.emptyMap();
+    private volatile Map<String, List<TopicSummary>> compatibilityArchiveTopicsById = Collections.emptyMap();
     private volatile Set<String> curriculumManifest = Collections.emptySet();
     private volatile long lastLoadedFingerprint = -1L;
     private volatile long lastReloadCheck = 0L;
@@ -88,6 +101,18 @@ public class LandscapeService {
     public String getLandscapeIdForGoal(String goalId) {
         ensureFresh();
         return goalIdToLandscapeId.get(goalId);
+    }
+
+    public String resolveLandscapeIdForGoalIncludingArchived(String goalId) {
+        ensureFresh();
+        if (!StringUtils.hasText(goalId)) {
+            return null;
+        }
+        String loadedLandscapeId = goalIdToLandscapeId.get(goalId);
+        if (loadedLandscapeId != null) {
+            return loadedLandscapeId;
+        }
+        return sourceLandscapeIdByGoalId.get(goalId);
     }
 
     public com.skillpilot.backend.landscape.LearningGoal getGoalDefinition(String goalId) {
@@ -240,6 +265,9 @@ public class LandscapeService {
             goalIdToLandscapeId = Collections.emptyMap();
             sourceLandscapeJurisdictionById = Collections.emptyMap();
             sourceAtomicGoalIdsByLandscapeAndGoal = Collections.emptyMap();
+            sourceLandscapeIdByGoalId = Collections.emptyMap();
+            compatibilityArchiveSummariesById = Collections.emptyMap();
+            compatibilityArchiveTopicsById = Collections.emptyMap();
             curriculumManifest = Collections.emptySet();
             lastLoadedFingerprint = -1L;
             return;
@@ -361,7 +389,12 @@ public class LandscapeService {
         goalIdToLandscapeId = Collections.unmodifiableMap(goalIndex);
         sourceLandscapeJurisdictionById = Collections.unmodifiableMap(loadSourceLandscapeRegistry(dir));
         sourceAtomicGoalIdsByLandscapeAndGoal = Collections.unmodifiableMap(loadSourceGoalClosureRegistry(dir));
-        curriculumManifest = loadCurriculumManifest(dir, cachedById);
+        sourceLandscapeIdByGoalId = Collections.unmodifiableMap(loadSourceGoalMembershipRegistry(dir));
+        compatibilityArchiveSummariesById = Collections.unmodifiableMap(loadCompatibilityArchiveRegistry(dir));
+        compatibilityArchiveTopicsById = Collections.unmodifiableMap(loadCompatibilityTopicRegistry(dir));
+        Set<String> knownRootIds = new LinkedHashSet<>(cachedById.keySet());
+        knownRootIds.addAll(compatibilityArchiveSummariesById.keySet());
+        curriculumManifest = loadCurriculumManifest(dir, knownRootIds);
         lastLoadedFingerprint = maxLastModified;
         log.info("Loaded {} landscapes and {} goals from {}", loaded.size(), goalIndex.size(), dir);
     }
@@ -381,53 +414,14 @@ public class LandscapeService {
 
     public LandscapeOverviewResponse getOverview(String lang, boolean includeCompatibility) {
         ensureFresh();
-        List<LandscapeSummary> summaries = new ArrayList<>();
-
+        Map<String, LandscapeSummary> summaryById = new LinkedHashMap<>();
         for (LearningLandscape ll : cachedLandscapes) {
-            String country = ll.getCountry();
-            String region = ll.getRegion();
-            String mappedType = ll.getSchoolType();
-            String mappedSubject = ll.getSubject();
-
-            // Skip if metadata is missing (e.g. if simpler JSONs are added without valid
-            // metadata)
-            if (country == null)
-                country = "Unknown";
-            if (region == null)
-                region = "Unknown";
-            if (mappedType == null)
-                mappedType = "Other";
-            if (mappedSubject == null)
-                mappedSubject = "General";
-
-            String displayTitle = null;
-            String displayDescription = null;
-
-            // Select Title
-            if ("en".equals(lang) && StringUtils.hasText(ll.getTitleEn())) {
-                displayTitle = ll.getTitleEn();
-            } else {
-                displayTitle = ll.getTitle();
-            }
-
-            // Select Description
-            if ("en".equals(lang) && StringUtils.hasText(ll.getDescriptionEn())) {
-                displayDescription = ll.getDescriptionEn();
-            } else {
-                displayDescription = ll.getDescription();
-            }
-
-            // Fallbacks
-            if (!StringUtils.hasText(displayTitle)) {
-                displayTitle = String.format("%s %s %s %s", country, region, mappedType, mappedSubject);
-            }
-
-            summaries.add(new LandscapeSummary(ll.getLandscapeId(), displayTitle, displayDescription,
-                    country, region, mappedType, mappedSubject, ll.getLocale(),
-                    ll.getFilters() != null ? ll.getFilters() : new ArrayList<>(),
-                    isCompatibilityOnlyLandscape(ll.getLandscapeId())));
-
+            summaryById.put(ll.getLandscapeId(), toOverviewSummary(ll, lang));
         }
+        for (LandscapeSummary archiveSummary : compatibilityArchiveSummariesById.values()) {
+            summaryById.put(archiveSummary.getCurriculumId(), archiveSummary);
+        }
+        List<LandscapeSummary> summaries = new ArrayList<>(summaryById.values());
 
         List<LandscapeSummary> rootSummaries;
         if (!curriculumManifest.isEmpty()) {
@@ -585,6 +579,22 @@ public class LandscapeService {
         return byGoalId.getOrDefault(goalId, Collections.emptySet());
     }
 
+    public LandscapeSummary getCompatibilityArchiveSummary(String landscapeId) {
+        ensureFresh();
+        if (!StringUtils.hasText(landscapeId)) {
+            return null;
+        }
+        return compatibilityArchiveSummariesById.get(landscapeId);
+    }
+
+    public List<TopicSummary> getCompatibilityArchiveTopics(String landscapeId) {
+        ensureFresh();
+        if (!StringUtils.hasText(landscapeId)) {
+            return Collections.emptyList();
+        }
+        return compatibilityArchiveTopicsById.getOrDefault(landscapeId, Collections.emptyList());
+    }
+
     private Map<String, Object> buildHierarchy(List<LandscapeSummary> summaries) {
         Map<String, Object> hierarchy = new HashMap<>();
         for (LandscapeSummary summary : summaries) {
@@ -723,9 +733,189 @@ public class LandscapeService {
         }
     }
 
+    private Map<String, String> loadSourceGoalMembershipRegistry(Path dir) {
+        Path registryFile = dir.resolve(SOURCE_GOAL_MEMBERSHIP_REGISTRY_PATH);
+        if (!Files.isRegularFile(registryFile)) {
+            return Collections.emptyMap();
+        }
+        try {
+            JsonNode root = objectMapper.readTree(registryFile.toFile());
+            if (root == null || !root.isObject()) {
+                throw new IllegalStateException("Invalid source goal membership registry root: " + registryFile);
+            }
+            JsonNode versionNode = root.get("version");
+            if (versionNode == null || !versionNode.canConvertToInt()
+                    || versionNode.intValue() != SUPPORTED_SOURCE_GOAL_MEMBERSHIP_REGISTRY_VERSION) {
+                throw new IllegalStateException("Unsupported source goal membership registry version in " + registryFile);
+            }
+            JsonNode landscapesNode = root.get("landscapes");
+            if (landscapesNode == null || !landscapesNode.isArray()) {
+                throw new IllegalStateException("Source goal membership registry has no landscapes array: " + registryFile);
+            }
+
+            Map<String, String> result = new LinkedHashMap<>();
+            for (JsonNode landscapeNode : landscapesNode) {
+                if (landscapeNode == null || !landscapeNode.isObject()) {
+                    continue;
+                }
+                String landscapeId = readRegistryText(landscapeNode, "landscapeId");
+                JsonNode goalIdsNode = landscapeNode.get("goalIds");
+                if (!StringUtils.hasText(landscapeId) || goalIdsNode == null || !goalIdsNode.isArray()) {
+                    throw new IllegalStateException("Invalid source goal membership registry entry in " + registryFile);
+                }
+                for (JsonNode goalIdNode : goalIdsNode) {
+                    if (goalIdNode == null || !goalIdNode.isTextual()
+                            || !StringUtils.hasText(goalIdNode.asText())) {
+                        throw new IllegalStateException(
+                                "Invalid source goal membership registry goal id in " + registryFile);
+                    }
+                    String goalId = goalIdNode.asText();
+                    String existing = result.putIfAbsent(goalId, landscapeId);
+                    if (existing != null && !existing.equals(landscapeId)) {
+                        throw new IllegalStateException(
+                                "Conflicting source goal membership registry goal id '%s' in %s"
+                                        .formatted(goalId, registryFile));
+                    }
+                }
+            }
+            return result;
+        } catch (IOException e) {
+            throw new IllegalStateException("Failed to load source goal membership registry from " + registryFile, e);
+        }
+    }
+
     private String readRegistryText(JsonNode node, String field) {
         JsonNode value = node.get(field);
         return value != null && value.isTextual() ? value.asText() : null;
+    }
+
+    private Map<String, LandscapeSummary> loadCompatibilityArchiveRegistry(Path dir) {
+        Path registryFile = dir.resolve(COMPATIBILITY_ARCHIVE_REGISTRY_PATH);
+        if (!Files.isRegularFile(registryFile)) {
+            return Collections.emptyMap();
+        }
+        try {
+            JsonNode root = objectMapper.readTree(registryFile.toFile());
+            if (root == null || !root.isObject()) {
+                throw new IllegalStateException("Invalid compatibility archive registry root: " + registryFile);
+            }
+            JsonNode versionNode = root.get("version");
+            if (versionNode == null || !versionNode.canConvertToInt()
+                    || versionNode.intValue() != SUPPORTED_COMPATIBILITY_ARCHIVE_REGISTRY_VERSION) {
+                throw new IllegalStateException("Unsupported compatibility archive registry version in " + registryFile);
+            }
+            JsonNode entriesNode = root.get("entries");
+            if (entriesNode == null || !entriesNode.isArray()) {
+                throw new IllegalStateException("Compatibility archive registry has no entries array: " + registryFile);
+            }
+
+            Map<String, LandscapeSummary> result = new LinkedHashMap<>();
+            for (JsonNode entry : entriesNode) {
+                if (entry == null || !entry.isObject()) {
+                    continue;
+                }
+                String landscapeId = readRegistryText(entry, "landscapeId");
+                String title = readRegistryText(entry, "title");
+                if (!StringUtils.hasText(landscapeId) || !StringUtils.hasText(title)) {
+                    throw new IllegalStateException("Invalid compatibility archive registry entry in " + registryFile);
+                }
+                String description = readRegistryText(entry, "description");
+                String country = readRegistryText(entry, "country");
+                String region = readRegistryText(entry, "region");
+                String type = readRegistryText(entry, "type");
+                String subject = readRegistryText(entry, "subject");
+                String locale = readRegistryText(entry, "locale");
+                List<LandscapeFilter> filters = new ArrayList<>();
+                JsonNode filtersNode = entry.get("filters");
+                if (filtersNode != null && !filtersNode.isNull()) {
+                    if (!filtersNode.isArray()) {
+                        throw new IllegalStateException(
+                                "Compatibility archive registry filters must be an array in " + registryFile);
+                    }
+                    for (JsonNode filterNode : filtersNode) {
+                        if (filterNode == null || !filterNode.isObject()) {
+                            throw new IllegalStateException(
+                                    "Invalid compatibility archive registry filter entry in " + registryFile);
+                        }
+                        String id = readRegistryText(filterNode, "id");
+                        String label = readRegistryText(filterNode, "label");
+                        if (!StringUtils.hasText(id) || !StringUtils.hasText(label)) {
+                            throw new IllegalStateException(
+                                    "Invalid compatibility archive registry filter values in " + registryFile);
+                        }
+                        LandscapeFilter filter = new LandscapeFilter();
+                        filter.setId(id);
+                        filter.setLabel(label);
+                        filters.add(filter);
+                    }
+                }
+                result.put(landscapeId, new LandscapeSummary(
+                        landscapeId,
+                        title,
+                        description,
+                        country,
+                        region,
+                        type,
+                        subject,
+                        locale,
+                        filters,
+                        true));
+            }
+            return result;
+        } catch (IOException e) {
+            throw new IllegalStateException("Failed to load compatibility archive registry from " + registryFile, e);
+        }
+    }
+
+    private Map<String, List<TopicSummary>> loadCompatibilityTopicRegistry(Path dir) {
+        Path registryFile = dir.resolve(COMPATIBILITY_TOPIC_REGISTRY_PATH);
+        if (!Files.isRegularFile(registryFile)) {
+            return Collections.emptyMap();
+        }
+        try {
+            JsonNode root = objectMapper.readTree(registryFile.toFile());
+            if (root == null || !root.isObject()) {
+                throw new IllegalStateException("Invalid compatibility topic registry root: " + registryFile);
+            }
+            JsonNode versionNode = root.get("version");
+            if (versionNode == null || !versionNode.canConvertToInt()
+                    || versionNode.intValue() != SUPPORTED_COMPATIBILITY_TOPIC_REGISTRY_VERSION) {
+                throw new IllegalStateException("Unsupported compatibility topic registry version in " + registryFile);
+            }
+            JsonNode entriesNode = root.get("entries");
+            if (entriesNode == null || !entriesNode.isArray()) {
+                throw new IllegalStateException("Compatibility topic registry has no entries array: " + registryFile);
+            }
+
+            Map<String, List<TopicSummary>> result = new LinkedHashMap<>();
+            for (JsonNode entry : entriesNode) {
+                if (entry == null || !entry.isObject()) {
+                    continue;
+                }
+                String curriculumId = readRegistryText(entry, "curriculumId");
+                JsonNode topicsNode = entry.get("topics");
+                if (!StringUtils.hasText(curriculumId) || topicsNode == null || !topicsNode.isArray()) {
+                    throw new IllegalStateException("Invalid compatibility topic registry entry in " + registryFile);
+                }
+                List<TopicSummary> topics = new ArrayList<>();
+                for (JsonNode topicNode : topicsNode) {
+                    if (topicNode == null || !topicNode.isObject()) {
+                        throw new IllegalStateException("Invalid compatibility topic registry topic entry in " + registryFile);
+                    }
+                    String topicId = readRegistryText(topicNode, "id");
+                    String title = readRegistryText(topicNode, "title");
+                    String titleEn = readRegistryText(topicNode, "titleEn");
+                    if (!StringUtils.hasText(topicId) || !StringUtils.hasText(title)) {
+                        throw new IllegalStateException("Invalid compatibility topic registry topic values in " + registryFile);
+                    }
+                    topics.add(new TopicSummary(topicId, title, StringUtils.hasText(titleEn) ? titleEn : title));
+                }
+                result.put(curriculumId, List.copyOf(topics));
+            }
+            return result;
+        } catch (IOException e) {
+            throw new IllegalStateException("Failed to load compatibility topic registry from " + registryFile, e);
+        }
     }
 
     private String normalizeBundeslandCode(String region) {
@@ -786,7 +976,46 @@ public class LandscapeService {
         }
     }
 
-    private Set<String> loadCurriculumManifest(Path dir, Map<String, LearningLandscape> byId) {
+    private LandscapeSummary toOverviewSummary(LearningLandscape ll, String lang) {
+        String country = ll.getCountry();
+        String region = ll.getRegion();
+        String mappedType = ll.getSchoolType();
+        String mappedSubject = ll.getSubject();
+
+        if (country == null)
+            country = "Unknown";
+        if (region == null)
+            region = "Unknown";
+        if (mappedType == null)
+            mappedType = "Other";
+        if (mappedSubject == null)
+            mappedSubject = "General";
+
+        String displayTitle;
+        if ("en".equals(lang) && StringUtils.hasText(ll.getTitleEn())) {
+            displayTitle = ll.getTitleEn();
+        } else {
+            displayTitle = ll.getTitle();
+        }
+
+        String displayDescription;
+        if ("en".equals(lang) && StringUtils.hasText(ll.getDescriptionEn())) {
+            displayDescription = ll.getDescriptionEn();
+        } else {
+            displayDescription = ll.getDescription();
+        }
+
+        if (!StringUtils.hasText(displayTitle)) {
+            displayTitle = String.format("%s %s %s %s", country, region, mappedType, mappedSubject);
+        }
+
+        return new LandscapeSummary(ll.getLandscapeId(), displayTitle, displayDescription,
+                country, region, mappedType, mappedSubject, ll.getLocale(),
+                ll.getFilters() != null ? ll.getFilters() : new ArrayList<>(),
+                isCompatibilityOnlyLandscape(ll.getLandscapeId()));
+    }
+
+    private Set<String> loadCurriculumManifest(Path dir, Set<String> knownLandscapeIds) {
         Path manifestPath = dir.resolve("curriculum_manifest.json");
         if (!Files.exists(manifestPath)) {
             log.info("Curriculum manifest not found at {}", manifestPath);
@@ -827,7 +1056,7 @@ public class LandscapeService {
                 if (!StringUtils.hasText(id)) {
                     continue;
                 }
-                if (!byId.containsKey(id)) {
+                if (!knownLandscapeIds.contains(id)) {
                     log.warn("Curriculum manifest references unknown landscape: {}", id);
                     continue;
                 }

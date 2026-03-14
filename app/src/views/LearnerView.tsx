@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useLearnerUpdates } from '../hooks/useLearnerUpdates'
 import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
@@ -171,6 +171,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [personalConfig, setPersonalConfig] = useState<PersonalCurriculumConfig>({})
   const [isCutoverPending, setIsCutoverPending] = useState(false)
   const [compatibilityRouteRetired, setCompatibilityRouteRetired] = useState(false)
+  const [isCompatibilityArchivePending, setIsCompatibilityArchivePending] = useState(false)
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
@@ -193,14 +194,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const { language, setLanguage } = useLanguage();
   const t = useTranslation();
   const location = useLocation()
-  const navigate = useNavigate()
 
   const queryParams = useMemo(() => new URLSearchParams(location.search), [location.search])
-  const compatibilityAuditRequested = useMemo(() => {
-    const compatibilityMode = queryParams.get('compatibility')?.trim().toLowerCase()
-    const compatibilityAudit = queryParams.get('compatibilityAudit')?.trim().toLowerCase()
-    return compatibilityMode === 'audit' || compatibilityAudit === 'true'
-  }, [queryParams])
   const persistedCampaignContext = useMemo(() => loadAbi26CampaignContext(), [])
   const queryCampaignContext = useMemo(() => extractAbi26CampaignContext(queryParams), [queryParams])
   const hasAbi26Marker = useMemo(() => {
@@ -653,24 +648,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const isCompatibilityAuditOnly = canCutoverLegacyHessenGymnasium
   const shouldShowCompatibilityRetirementGate =
     compatibilityRouteRetired &&
-    canCutoverLegacyHessenGymnasium &&
-    !compatibilityAuditRequested
-
-  const updateCompatibilityAuditRoute = useCallback((enabled: boolean) => {
-    const nextParams = new URLSearchParams(location.search)
-    if (enabled) {
-      nextParams.set('compatibility', 'audit')
-    } else {
-      nextParams.delete('compatibility')
-      nextParams.delete('compatibilityAudit')
-    }
-    const nextSearch = nextParams.toString()
-    navigate(`${location.pathname}${nextSearch ? `?${nextSearch}` : ''}`, { replace: true })
-  }, [location.pathname, location.search, navigate])
-
-  const openCompatibilityAuditView = useCallback(() => {
-    updateCompatibilityAuditRoute(true)
-  }, [updateCompatibilityAuditRoute])
+    canCutoverLegacyHessenGymnasium
 
   const legacyCutoverPreviewItems = useMemo(() => {
     const selectedCurriculum = learnerData?.selectedCurriculum
@@ -892,14 +870,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       if (!skillpilotId) return
       try {
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-        const params = new URLSearchParams()
-        if (cacheBust) {
-          params.set('_t', String(Date.now()))
-        }
-        if (compatibilityAuditRequested) {
-          params.set('includeCompatibilityAudit', 'true')
-        }
-        const suffix = params.size > 0 ? `?${params.toString()}` : ''
+        const suffix = cacheBust ? `?_t=${Date.now()}` : ''
         const url = apiBase
           ? `${apiBase}/api/ui/learners/${skillpilotId}/state${suffix}`
           : `/api/ui/learners/${skillpilotId}/state${suffix}`
@@ -931,14 +902,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           setCompatibilityRouteRetired(true)
           setFrontierOptions([])
           setStateActiveGoalId(null)
-          setStateRequiredAction('compatibilityAudit')
+          setStateRequiredAction('compatibilityArchive')
           setBackendStats(null)
         }
       } catch (e) {
         console.warn('Failed to load learner state', e)
       }
     },
-    [compatibilityAuditRequested, skillpilotId],
+    [skillpilotId],
 
   )
 
@@ -1189,13 +1160,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     refreshState()
   }, [skillpilotId, refreshState, availableLandscapes, rootLandscapeId])
 
-  useEffect(() => {
-    if (!compatibilityAuditRequested || canCutoverLegacyHessenGymnasium) {
-      return
-    }
-    updateCompatibilityAuditRoute(false)
-  }, [canCutoverLegacyHessenGymnasium, compatibilityAuditRequested, updateCompatibilityAuditRoute])
-
   // Check mobile state
   const [isMobile, setIsMobile] = useState(false)
   useEffect(() => {
@@ -1312,7 +1276,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         onRefresh?.(),
       ])
       setCompatibilityRouteRetired(false)
-      updateCompatibilityAuditRoute(false)
       setRefreshCounter((count) => count + 1)
       setVelocityRefreshCounter((count) => count + 1)
       setIsSetupOpen(false)
@@ -1337,7 +1300,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     } finally {
       setIsCutoverPending(false)
     }
-  }, [skillpilotId, isCutoverPending, language, onLandscapeChange, onLandscapeGoalChange, refreshLearnerData, onRefresh, updateCompatibilityAuditRoute])
+  }, [skillpilotId, isCutoverPending, language, onLandscapeChange, onLandscapeGoalChange, refreshLearnerData, onRefresh])
 
   useEffect(() => {
     if (!isAbi26CampaignSession || !campaignContext || !rootLandscapeId) return
@@ -1387,6 +1350,88 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
 
 
+
+  const downloadJsonPayload = useCallback((payload: unknown, filenamePrefix: string) => {
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })
+    const link = document.createElement('a')
+    link.href = URL.createObjectURL(blob)
+    const timestamp = new Date().toISOString().slice(0, 16).replace('T', '_').replace(':', '')
+    link.download = `${filenamePrefix}_${skillpilotId}_${timestamp}.json`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }, [skillpilotId])
+
+  const handleCompatibilityArchiveDownload = useCallback(async () => {
+    if (!skillpilotId || isCompatibilityArchivePending) return
+    setIsCompatibilityArchivePending(true)
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase
+        ? `${apiBase}/api/ui/learners/${skillpilotId}/compatibility-archive`
+        : `/api/ui/learners/${skillpilotId}/compatibility-archive`
+      const res = await fetch(url)
+      if (!res.ok) {
+        const message = await res.text()
+        setModalTitle(language === 'de' ? 'Archivexport fehlgeschlagen' : 'Archive export failed')
+        setModalMessage(
+          message || (
+            language === 'de'
+              ? 'Das Kompatibilitaetsarchiv konnte nicht erstellt werden.'
+              : 'Could not create the compatibility archive.'
+          ),
+        )
+        setModalType('error')
+        setIsModalOpen(true)
+        return
+      }
+
+      const serverArchive = await res.json()
+      const clientData: Record<string, unknown> = { srsState: {} }
+      const prefix = `srs_state_${skillpilotId}_`
+
+      try {
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i)
+          if (key && key.startsWith(prefix)) {
+            const val = localStorage.getItem(key)
+            if (val) (clientData.srsState as Record<string, unknown>)[key] = JSON.parse(val)
+          }
+        }
+      } catch (e) {
+        console.warn('Error collecting local SRS state for compatibility archive', e)
+      }
+
+      const exportPayload = {
+        version: 'compatibility-archive/1.0',
+        exportedAt: new Date().toISOString(),
+        serverArchive,
+        clientData,
+      }
+
+      downloadJsonPayload(exportPayload, 'compatibility_archive')
+      setModalTitle(language === 'de' ? 'Archiv erstellt' : 'Archive created')
+      setModalMessage(
+        language === 'de'
+          ? 'Die eingefrorene Hessen-Kompatibilitaetsansicht wurde als Archiv exportiert.'
+          : 'The frozen Hesse compatibility view was exported as an archive.',
+      )
+      setModalType('success')
+      setIsModalOpen(true)
+    } catch (e) {
+      console.error('Compatibility archive export error', e)
+      setModalTitle(language === 'de' ? 'Archivexport fehlgeschlagen' : 'Archive export failed')
+      setModalMessage(
+        language === 'de'
+          ? 'Waehrend des Archivexports ist ein Netzwerk- oder Systemfehler aufgetreten.'
+          : 'A network or system error occurred during archive export.',
+      )
+      setModalType('error')
+      setIsModalOpen(true)
+    } finally {
+      setIsCompatibilityArchivePending(false)
+    }
+  }, [downloadJsonPayload, isCompatibilityArchivePending, language, skillpilotId])
 
   const handleExport = useCallback(async () => {
     if (!skillpilotId) return
@@ -1464,21 +1509,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           clientData: clientData
         }
 
-        const blob = new Blob([JSON.stringify(exportPayload, null, 2)], { type: 'application/json' });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        const timestamp = new Date().toISOString().slice(0, 16).replace('T', '_').replace(':', '');
-        link.download = `learner_data_${skillpilotId}_${timestamp}.json`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        downloadJsonPayload(exportPayload, 'learner_data')
       } else {
         console.error("Export failed", res.status, res.statusText)
       }
     } catch (e) {
       console.error("Export error", e)
     }
-  }, [skillpilotId, srsGoals])
+  }, [downloadJsonPayload, skillpilotId, srsGoals])
 
   const syncClientData = useCallback(async (nodeId: string): Promise<boolean> => {
     if (!skillpilotId || !nodeId) return false
@@ -1860,20 +1898,21 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                     </div>
                     <p className="mt-1 text-sm text-amber-900/90 dark:text-amber-100/90">
                       {language === 'de'
-                        ? 'Diese Ansicht bleibt als Kompatibilitaetsansicht erhalten. Fuer die gemeinsame DE-Struktur kannst du jetzt direkt auf Gymnasium (DE) umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.'
-                        : 'This view remains available as a compatibility view. You can now move directly to Gymnasium (DE) without losing your existing mastery history.'}
+                        ? 'Diese Hessen-Lernspur bleibt als eingefrorenes Kompatibilitaetsarchiv exportierbar. Fuer die gemeinsame DE-Struktur kannst du jetzt direkt auf Gymnasium (DE) umstellen, ohne deinen bisherigen Mastery-Verlauf zu verlieren.'
+                        : 'This Hesse learner trail remains exportable as a frozen compatibility archive. You can now move directly to Gymnasium (DE) without losing your existing mastery history.'}
                     </p>
                   </div>
                   <div className="flex shrink-0 gap-2">
-                    {!compatibilityAuditRequested && (
-                      <button
-                        type="button"
-                        onClick={openCompatibilityAuditView}
-                        className="rounded-lg border border-amber-300 bg-white px-3 py-2 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-100 dark:border-amber-700 dark:bg-amber-950/40 dark:text-amber-100 dark:hover:bg-amber-900/50"
-                      >
-                        {language === 'de' ? 'Audit-Ansicht' : 'Audit view'}
-                      </button>
-                    )}
+                    <button
+                      type="button"
+                      onClick={handleCompatibilityArchiveDownload}
+                      disabled={isCompatibilityArchivePending}
+                      className="rounded-lg border border-amber-300 bg-white px-3 py-2 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-100 disabled:cursor-not-allowed disabled:opacity-60 dark:border-amber-700 dark:bg-amber-950/40 dark:text-amber-100 dark:hover:bg-amber-900/50"
+                    >
+                      {isCompatibilityArchivePending
+                        ? (language === 'de' ? 'Erstelle Archiv...' : 'Creating archive...')
+                        : (language === 'de' ? 'Archiv herunterladen' : 'Download archive')}
+                    </button>
                     <button
                       type="button"
                       onClick={() => setIsSetupOpen(true)}
@@ -1907,8 +1946,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                     </div>
                     <p className="mt-2 text-sm text-sky-900/90 dark:text-sky-100/90">
                       {language === 'de'
-                        ? 'Diese Learner-Session wird nicht mehr als normale Arbeitsansicht ausgeliefert. Bitte stelle jetzt auf Gymnasium (DE) um oder oeffne die alte Hessen-Sicht bewusst als Audit-Fallback.'
-                        : 'This learner session is no longer served as a normal working route. Please migrate to Gymnasium (DE) now or explicitly open the old Hesse view as an audit fallback.'}
+                        ? 'Diese Learner-Session wird nicht mehr als normale Arbeitsansicht ausgeliefert. Bitte stelle jetzt auf Gymnasium (DE) um oder lade das eingefrorene Hessen-Archiv fuer Audit- und Nachweiszwecke herunter.'
+                        : 'This learner session is no longer served as a normal working route. Please migrate to Gymnasium (DE) now or download the frozen Hesse archive for audit and record-keeping.'}
                     </p>
                   </div>
                   <div className="flex flex-col gap-2 sm:flex-row">
@@ -1927,10 +1966,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                     </button>
                     <button
                       type="button"
-                      onClick={openCompatibilityAuditView}
-                      className="rounded-lg border border-sky-300 bg-white px-4 py-2 text-sm font-medium text-sky-900 transition-colors hover:bg-sky-100 dark:border-sky-700 dark:bg-sky-950/40 dark:text-sky-100 dark:hover:bg-sky-900/50"
+                      onClick={handleCompatibilityArchiveDownload}
+                      disabled={isCompatibilityArchivePending}
+                      className="rounded-lg border border-sky-300 bg-white px-4 py-2 text-sm font-medium text-sky-900 transition-colors hover:bg-sky-100 disabled:cursor-not-allowed disabled:opacity-60 dark:border-sky-700 dark:bg-sky-950/40 dark:text-sky-100 dark:hover:bg-sky-900/50"
                     >
-                      {language === 'de' ? 'Audit-Ansicht oeffnen' : 'Open audit view'}
+                      {isCompatibilityArchivePending
+                        ? (language === 'de' ? 'Erstelle Archiv...' : 'Creating archive...')
+                        : (language === 'de' ? 'Archiv herunterladen' : 'Download archive')}
                     </button>
                   </div>
                 </div>

@@ -8,8 +8,8 @@
   "frameworkId": "canonical-gymnasium-math",
   "title": "Mathematik (Gymnasium, DE)",
   "titleEn": "Mathematics (Gymnasium, DE)",
-  "description": "Mathematik für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig, ergänzt erste realisierte Jahrgangsanker für die Sekundarstufe I und behält den vorhandenen Sek-I-Funktionsanschluss als Ausgangspunkt für spätere bundesländerübergreifende Angleichung.",
-  "descriptionEn": "Mathematics for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum, adds the first realized lower-secondary year anchors, and keeps the existing lower-secondary function bridge as the starting point for later cross-state alignment.",
+  "description": "Mathematik für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig, realisiert nun Jahrgangsanker J5 bis J10 für die Sekundarstufe I und erweitert den vorhandenen Sek-I-Funktionsanschluss um erste arithmetische, algebraische, geometrische, datenbezogene, stochastische und trigonometrische Ankerkorridore.",
+  "descriptionEn": "Mathematics for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum, now realizes lower-secondary year anchors J5 to J10, and extends the existing lower-secondary function bridge with first arithmetic, algebraic, geometry, data, stochastic, and trigonometric anchor corridors.",
   "filters": [
     {
       "id": "GK",
@@ -26,10 +26,10 @@
       "shortKey": "canonical_math_pilot_module",
       "title": "Mathematik",
       "titleEn": "Mathematics",
-      "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig, ergänzt erste realisierte kanonische Jahrgangsanker für die Sekundarstufe I und behält den bereits aufgebauten Sek-I-Funktionsanschluss für die spätere bundesländerübergreifende Konvergenz.",
-      "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum, adds the first realized canonical lower-secondary year anchors, and keeps the previously established lower-secondary function bridge for later cross-state convergence.",
+      "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig, realisiert kanonische Jahrgangsanker J5 bis J10 für die Sekundarstufe I und ergänzt den bestehenden Funktionskorridor um erste arithmetische, algebraische, geometrische, datenbezogene, stochastische und trigonometrische Anschlussziele.",
+      "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum, realizes canonical lower-secondary year anchors J5 to J10, and extends the existing function corridor with first arithmetic, algebraic, geometry, data, stochastic, and trigonometric bridge goals.",
       "core": true,
-      "weight": 329,
+      "weight": 366,
       "tags": [
         "root",
         "canonical",
@@ -55,11 +55,14 @@
         "topicCode": "CANONICAL.MATH.PILOT"
       },
       "contains": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "6377e1e3-8c26-4cf1-997d-8802690d74dd",
+        "8f7bb79b-f014-4bb6-8dce-7e3f1c92e893",
         "5a7095a2-2b3a-48bf-9536-eca79ee5ff8c",
         "d64516eb-9dd2-4808-91d0-0040ccdc281f",
         "902de188-6f27-47c2-ace1-9b2c5771fde8",
+        "845f2a2c-e6aa-4991-8a12-645b8a9f70fe",
         "5c6b7342-0f67-4b4c-894d-fd83a6df64b3",
-        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
         "a668ea17-9226-4074-8f8e-051acbe839eb",
         "c8951a07-a3e7-59d2-8a23-dce545dd811a",
         "98dcf9bd-d119-5eb1-835c-7d719f67b485",
@@ -91,6 +94,423 @@
       "type": "cluster"
     },
     {
+      "id": "6377e1e3-8c26-4cf1-997d-8802690d74dd",
+      "shortKey": "canonical_math_sek1_j5_anchor",
+      "title": "Jahrgang 5 (Sek I)",
+      "titleEn": "Year 5 (Lower Secondary)",
+      "description": "Kanonischer Jahrgangsanker für J5 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Bayern-Slice bindet hier erste additive, multiplikative, geometrische und größenbezogene Grundlagen an.",
+      "descriptionEn": "Canonical year anchor for year 5 in lower-secondary Gymnasium mathematics. The current Bavaria slice attaches first additive, multiplicative, geometry, and measurement foundations here.",
+      "core": true,
+      "weight": 4,
+      "tags": [
+        "canonical",
+        "pilot",
+        "phase:SekI",
+        "phase:J5",
+        "area:Mathematik"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J5",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.SEK1.J5"
+      },
+      "contains": [
+        "8dd5199b-f614-4ebd-8819-b5ff37326524",
+        "ca834a7d-5a66-4876-b24c-143b1464d937",
+        "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "e58ed4dd-67fd-5ece-b30c-1d39dcb918a2"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "8dd5199b-f614-4ebd-8819-b5ff37326524",
+      "shortKey": "canonical_math_sek1_j5_integer_arithmetic",
+      "title": "Natürliche und ganze Zahlen addieren und subtrahieren",
+      "titleEn": "Add and subtract natural and whole numbers",
+      "description": "Die lernende Person kann natürliche und ganze Zahlen sicher ordnen, auf der Zahlengeraden darstellen sowie Additions- und Subtraktionsaufgaben begründet lösen.",
+      "descriptionEn": "The learner can confidently order natural and whole numbers, represent them on the number line, and solve addition and subtraction tasks with justification.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J5",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J5.1"
+      },
+      "contains": [],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "1877cd7b-d4ce-5356-a938-f28ddd8d7f3c"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ca834a7d-5a66-4876-b24c-143b1464d937",
+      "shortKey": "canonical_math_sek1_j5_geometry_relations",
+      "title": "Geometrische Figuren und Lagebeziehungen beschreiben",
+      "titleEn": "Describe geometric figures and spatial relations",
+      "description": "Die lernende Person kann grundlegende geometrische Figuren erkennen, Eigenschaften benennen, Lagebeziehungen beschreiben und einfache Darstellungen präzise skizzieren.",
+      "descriptionEn": "The learner can identify basic geometric figures, name their properties, describe spatial relations, and sketch simple representations precisely.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J5",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J5.2"
+      },
+      "contains": [],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "505f7dc0-9656-582d-be8a-d4bc55eb5889"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "shortKey": "canonical_math_sek1_j5_units_measures",
+      "title": "Größen und Einheiten vergleichen und umrechnen",
+      "titleEn": "Compare and convert quantities and units",
+      "description": "Die lernende Person kann alltagsnahe Größen erfassen, passende Einheiten auswählen, Einheiten sicher umrechnen und Messergebnisse sinnvoll vergleichen.",
+      "descriptionEn": "The learner can determine everyday quantities, choose suitable units, convert units reliably, and compare measurements meaningfully.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J5",
+        "area": "Measurement",
+        "topicCode": "CANONICAL.MATH.SEK1.J5.3"
+      },
+      "contains": [],
+      "requires": [
+        "8dd5199b-f614-4ebd-8819-b5ff37326524"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "d5a546fd-13b0-540d-a6da-9ff1ad14a244"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+      "shortKey": "canonical_math_sek1_j5_integer_mult_div",
+      "title": "Natürliche und ganze Zahlen multiplizieren und dividieren",
+      "titleEn": "Multiply and divide natural and whole numbers",
+      "description": "Die lernende Person kann natürliche und ganze Zahlen sicher multiplizieren und dividieren, Rechengesetze nutzen und Ergebnisse in einfachen Sachzusammenhängen überprüfen.",
+      "descriptionEn": "The learner can confidently multiply and divide natural and whole numbers, use arithmetic laws, and check results in simple contexts.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J5",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J5.4"
+      },
+      "contains": [],
+      "requires": [
+        "8dd5199b-f614-4ebd-8819-b5ff37326524"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "fd9fbf2a-f74e-5bdd-874f-4ba62db3bd54"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8f7bb79b-f014-4bb6-8dce-7e3f1c92e893",
+      "shortKey": "canonical_math_sek1_j6_anchor",
+      "title": "Jahrgang 6 (Sek I)",
+      "titleEn": "Year 6 (Lower Secondary)",
+      "description": "Kanonischer Jahrgangsanker für J6 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Bayern-Slice bindet hier erste rationale Zahlvorstellungen, Flächen- und Volumenideen sowie Prozent- und Datenroutinen an.",
+      "descriptionEn": "Canonical year anchor for year 6 in lower-secondary Gymnasium mathematics. The current Bavaria slice attaches first rational-number concepts, area and volume ideas, and percentage and data routines here.",
+      "core": true,
+      "weight": 3,
+      "tags": [
+        "canonical",
+        "pilot",
+        "phase:SekI",
+        "phase:J6",
+        "area:Mathematik"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J6",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.SEK1.J6"
+      },
+      "contains": [
+        "de39c9fe-5940-4320-aca8-2be85d6ada8f",
+        "e07fa2ee-c26f-4032-9140-358a4f6c1457",
+        "32c9955e-c0e7-4085-8a9a-9341376a453b"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "f9e2689e-c719-554b-83bf-7672610d65f2"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "de39c9fe-5940-4320-aca8-2be85d6ada8f",
+      "shortKey": "canonical_math_sek1_j6_rational_numbers",
+      "title": "Rationale Zahlen darstellen und berechnen",
+      "titleEn": "Represent and calculate with rational numbers",
+      "description": "Die lernende Person kann Brüche, Dezimalzahlen und negative Zahlen ineinander überführen, vergleichen und die vier Grundrechenarten bei rationalen Zahlen sicher anwenden.",
+      "descriptionEn": "The learner can convert fractions, decimals, and negative numbers into one another, compare them, and confidently apply the four basic operations to rational numbers.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J6",
+        "area": "Arithmetic",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.1"
+      },
+      "contains": [],
+      "requires": [
+        "8dd5199b-f614-4ebd-8819-b5ff37326524"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "13fbb93a-d54f-5785-a186-3f1ad76c7069"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e07fa2ee-c26f-4032-9140-358a4f6c1457",
+      "shortKey": "canonical_math_sek1_j6_area_volume",
+      "title": "Flächeninhalt und Volumen berechnen",
+      "titleEn": "Calculate area and volume",
+      "description": "Die lernende Person kann Flächeninhalte und Volumina einfacher Figuren und Körper bestimmen, Einheiten passend verwenden und Ergebnisse in Sachsituationen deuten.",
+      "descriptionEn": "The learner can determine areas and volumes of simple figures and solids, use appropriate units, and interpret results in contextual situations.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J6",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.2"
+      },
+      "contains": [],
+      "requires": [
+        "ca834a7d-5a66-4876-b24c-143b1464d937",
+        "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "fc5f5e55-a6c4-5175-8e96-a04dee910927"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "32c9955e-c0e7-4085-8a9a-9341376a453b",
+      "shortKey": "canonical_math_sek1_j6_percent_data",
+      "title": "Prozentrechnung anwenden und Daten auswerten",
+      "titleEn": "Apply percentage calculations and analyze data",
+      "description": "Die lernende Person kann Grundaufgaben der Prozentrechnung lösen, Daten in Tabellen und Diagrammen darstellen und einfache statistische Aussagen nachvollziehbar auswerten.",
+      "descriptionEn": "The learner can solve basic percentage problems, represent data in tables and charts, and evaluate simple statistical statements in a comprehensible way.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "J6",
+        "area": "Data",
+        "topicCode": "CANONICAL.MATH.SEK1.J6.3"
+      },
+      "contains": [],
+      "requires": [
+        "de39c9fe-5940-4320-aca8-2be85d6ada8f",
+        "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "a0ffba4e-bc61-5461-af88-c14577534f15"
+        }
+      },
+      "type": "atomic"
+    },
+    {
       "id": "5c6b7342-0f67-4b4c-894d-fd83a6df64b3",
       "shortKey": "canonical_math_sek1_function_foundations",
       "title": "Funktionsgrundlagen (Sek I)",
@@ -98,7 +518,7 @@
       "description": "Cluster für grundlegende Vorstellungen zu Zuordnungen, linearen Funktionen und quadratischen Funktionen aus der gymnasialen Sekundarstufe I. Der aktuelle Pilotkorridor ist zusätzlich an die kanonischen Jahrgangsanker J7 bis J9 angebunden.",
       "descriptionEn": "Cluster for foundational ideas of mappings, linear functions, and quadratic functions from lower secondary Gymnasium mathematics. The current pilot corridor is additionally attached to the canonical year anchors J7 to J9.",
       "core": true,
-      "weight": 7,
+      "weight": 13,
       "tags": [
         "canonical",
         "pilot",
@@ -150,14 +570,401 @@
       "type": "cluster"
     },
     {
+      "id": "845f2a2c-e6aa-4991-8a12-645b8a9f70fe",
+      "shortKey": "canonical_math_sek1_j10_anchor",
+      "title": "Jahrgang 10 (Sek I)",
+      "titleEn": "Year 10 (Lower Secondary)",
+      "description": "Kanonischer Jahrgangsanker für J10 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Bayern-Slice bindet hier erste exponentielle, stochastische, trigonometrische, polynomiale und raumgeometrische Anschlussziele an.",
+      "descriptionEn": "Canonical year anchor for year 10 in lower-secondary Gymnasium mathematics. The current Bavaria slice attaches first exponential, stochastic, trigonometric, polynomial, and spatial-geometry bridge goals here.",
+      "core": true,
+      "weight": 6,
+      "tags": [
+        "canonical",
+        "pilot",
+        "phase:SekI",
+        "phase:J10",
+        "area:Mathematik"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J10",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.SEK1.J10"
+      },
+      "contains": [
+        "42e19186-6769-41ac-a7bf-ab39bdb50661",
+        "c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a",
+        "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+        "1ce8af38-082a-477b-af48-b924c92761bf",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "03bb6fae-84a6-59c5-b56a-0f4128688706"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "42e19186-6769-41ac-a7bf-ab39bdb50661",
+      "shortKey": "canonical_math_sek1_j10_exponential_growth",
+      "title": "Exponentielles Wachstum modellieren und Logarithmen nutzen",
+      "titleEn": "Model exponential growth and use logarithms",
+      "description": "Die lernende Person kann exponentielle Wachstumsprozesse in Termen, Tabellen und Graphen beschreiben, Parameter deuten und einfache Exponentialgleichungen mithilfe des Logarithmus lösen.",
+      "descriptionEn": "The learner can describe exponential growth processes in expressions, tables, and graphs, interpret parameters, and solve simple exponential equations using logarithms.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.2",
+          "K3.2",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J10",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.1"
+      },
+      "contains": [],
+      "requires": [
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "e16247e4-db2b-5cc7-81d4-5d7e279a5dd4"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "c7911f0f-83d4-44ba-9f28-bdc1a5e8cb4a",
+      "shortKey": "canonical_math_sek1_j10_compound_random_experiments",
+      "title": "Zusammengesetzte Zufallsexperimente modellieren und simulieren",
+      "titleEn": "Model and simulate compound random experiments",
+      "description": "Kanonischer Cluster für zusammengesetzte Zufallsexperimente und stochastische Simulationen in J10. Der aktuelle Bayern-Slice unterscheidet hier zwischen Struktur- und Pfadregeln einerseits sowie simulationsgestützten Näherungsverfahren andererseits.",
+      "descriptionEn": "Canonical cluster for compound random experiments and stochastic simulations in year 10. The current Bavaria slice distinguishes between tree/path-rule reasoning and simulation-based approximation methods.",
+      "core": true,
+      "weight": 2,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.2",
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "J10",
+        "area": "Probability",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.2"
+      },
+      "contains": [
+        "efc3506a-5f35-4d77-9498-d70a091a470b",
+        "e55edcb9-2184-4a24-890e-70cc91028990"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "9d1147ec-f55b-5ebf-83ca-48b494e6d160"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "efc3506a-5f35-4d77-9498-d70a091a470b",
+      "shortKey": "canonical_math_sek1_j10_tree_rules",
+      "title": "Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen",
+      "titleEn": "Use tree diagrams and path rules for compound experiments",
+      "description": "Die lernende Person kann zusammengesetzte Zufallsexperimente mit Baumdiagrammen strukturieren und Wahrscheinlichkeiten mit Pfadregeln in mehrstufigen Situationen bestimmen.",
+      "descriptionEn": "The learner can structure compound random experiments using tree diagrams and determine probabilities in multi-step situations using path rules.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.2",
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "J10",
+        "area": "Probability",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.2A"
+      },
+      "contains": [],
+      "requires": [
+        "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+        "075ef99c-7f84-48b5-97f1-4e28c7d78f95"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "c35677b0-5174-5c90-8a27-b8bf2948ea8c"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e55edcb9-2184-4a24-890e-70cc91028990",
+      "shortKey": "canonical_math_sek1_j10_simulation_monte_carlo",
+      "title": "Stochastische Simulationen und Monte-Carlo-Verfahren deuten",
+      "titleEn": "Interpret stochastic simulations and Monte Carlo methods",
+      "description": "Die lernende Person kann Zufallsexperimente simulieren, Näherungswerte für Wahrscheinlichkeiten gewinnen und Monte-Carlo-Verfahren als stochastische Approximation deuten.",
+      "descriptionEn": "The learner can simulate random experiments, obtain approximate probability values, and interpret Monte Carlo methods as stochastic approximation.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.2",
+          "K3.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "J10",
+        "area": "Probability",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.2B"
+      },
+      "contains": [],
+      "requires": [
+        "efc3506a-5f35-4d77-9498-d70a091a470b"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "35e00329-f800-5d1a-9ccc-0c10cabcc8ab"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+      "shortKey": "canonical_math_sek1_j10_sine_cosine_functions",
+      "title": "Sinus- und Kosinusfunktionen beschreiben",
+      "titleEn": "Describe sine and cosine functions",
+      "description": "Die lernende Person kann Sinus- und Kosinusfunktionen in Graphen und Termen beschreiben, periodische Verläufe deuten und Parameter in einfachen Anwendungen interpretieren.",
+      "descriptionEn": "The learner can describe sine and cosine functions in graphs and expressions, interpret periodic behaviour, and explain parameters in simple applications.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L4"
+        ],
+        "phase": "J10",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.3"
+      },
+      "contains": [],
+      "requires": [
+        "8da730f1-8947-498d-9e78-7fb20b00a994",
+        "415bd48b-8a76-4d4f-bfdd-d085573e7ac3"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "4c449fa1-6695-5bf5-867d-3e29e0f669e5"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1ce8af38-082a-477b-af48-b924c92761bf",
+      "shortKey": "canonical_math_sek1_j10_polynomial_functions",
+      "title": "Ganzrationale Funktionen beschreiben",
+      "titleEn": "Describe polynomial functions",
+      "description": "Die lernende Person kann ganzrationale Funktionen in einfachen Fällen über Funktionsterm, Graph und charakteristische Verläufe beschreiben und sie mit linearen, quadratischen oder exponentiellen Modellen vergleichen.",
+      "descriptionEn": "The learner can describe polynomial functions in simple cases using expressions, graphs, and characteristic behaviour and compare them with linear, quadratic, or exponential models.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J10",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.4"
+      },
+      "contains": [],
+      "requires": [
+        "5a9702f4-7e4d-457d-b98c-f0bafcd1e386"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "ef731877-eaae-5569-aa24-4214f1e412a5"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+      "shortKey": "canonical_math_sek1_j10_space_geometry",
+      "title": "Raumgeometrische Probleme mit Körpern lösen",
+      "titleEn": "Solve spatial geometry problems with solids",
+      "description": "Die lernende Person kann komplexere Raumgeometrie-Situationen mit Prismen, Zylindern oder zusammengesetzten Körpern modellieren, Volumina und Oberflächen berechnen und Darstellungen sicher interpretieren.",
+      "descriptionEn": "The learner can model more complex spatial-geometry situations with prisms, cylinders, or composite solids, calculate volumes and surface areas, and interpret representations reliably.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J10",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.5"
+      },
+      "contains": [],
+      "requires": [
+        "415bd48b-8a76-4d4f-bfdd-d085573e7ac3"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "f7f35bcd-6ff5-5129-90e1-07aa2fdf704a"
+        }
+      },
+      "type": "atomic"
+    },
+    {
       "id": "5a7095a2-2b3a-48bf-9536-eca79ee5ff8c",
       "shortKey": "canonical_math_sek1_j7_anchor",
       "title": "Jahrgang 7 (Sek I)",
       "titleEn": "Year 7 (Lower Secondary)",
-      "description": "Kanonischer Jahrgangsanker für J7 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Pilot bindet hier die vorbereitenden Zuordnungs- und Proportionalitätsziele des bestehenden Funktionskorridors an.",
-      "descriptionEn": "Canonical year anchor for year 7 in lower-secondary Gymnasium mathematics. The current pilot attaches the preparatory mapping and proportionality goals of the existing function corridor here.",
+      "description": "Kanonischer Jahrgangsanker für J7 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Pilot bindet hier vorbereitende Zuordnungs- und Proportionalitätsziele sowie erste algebraische, geometrische und datenbezogene Anker an.",
+      "descriptionEn": "Canonical year anchor for year 7 in lower-secondary Gymnasium mathematics. The current pilot attaches preparatory mapping and proportionality goals as well as first algebraic, geometric, and data anchors here.",
       "core": true,
-      "weight": 2,
+      "weight": 7,
       "tags": [
         "canonical",
         "pilot",
@@ -179,7 +986,12 @@
       },
       "contains": [
         "2bb4bb91-7929-483a-b735-44275f6b5cdc",
-        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca"
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+        "fd860da9-73ba-47cd-a1a8-452424915a80",
+        "325771e1-602d-4bca-a199-a8f39a2d3dee",
+        "8da730f1-8947-498d-9e78-7fb20b00a994",
+        "f0a49da2-018b-4cda-adbd-27047b610a0f",
+        "075ef99c-7f84-48b5-97f1-4e28c7d78f95"
       ],
       "requires": [],
       "applicability": {
@@ -205,10 +1017,10 @@
       "shortKey": "canonical_math_sek1_j8_anchor",
       "title": "Jahrgang 8 (Sek I)",
       "titleEn": "Year 8 (Lower Secondary)",
-      "description": "Kanonischer Jahrgangsanker für J8 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Pilot bindet hier die linearen Teile des bestehenden Funktionskorridors an.",
-      "descriptionEn": "Canonical year anchor for year 8 in lower-secondary Gymnasium mathematics. The current pilot attaches the linear parts of the existing function corridor here.",
+      "description": "Kanonischer Jahrgangsanker für J8 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Pilot bindet hier lineare, gebrochen-rationale, stochastische, körpergeometrische und gleichungssystembezogene Anschlussziele an.",
+      "descriptionEn": "Canonical year anchor for year 8 in lower-secondary Gymnasium mathematics. The current pilot attaches linear, elementary rational-function, stochastic, solid-geometry, and system-of-equations bridge goals here.",
       "core": true,
-      "weight": 2,
+      "weight": 7,
       "tags": [
         "canonical",
         "pilot",
@@ -230,7 +1042,12 @@
       },
       "contains": [
         "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
-        "e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb"
+        "e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb",
+        "612dfc95-95cb-44df-80ae-d8446199cb0d",
+        "792b3f32-4c13-423d-89c2-facb34827f47",
+        "546bf0b3-6921-416b-a2ef-8fd37d429dc7",
+        "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+        "415bd48b-8a76-4d4f-bfdd-d085573e7ac3"
       ],
       "requires": [],
       "applicability": {
@@ -256,10 +1073,10 @@
       "shortKey": "canonical_math_sek1_j9_anchor",
       "title": "Jahrgang 9 (Sek I)",
       "titleEn": "Year 9 (Lower Secondary)",
-      "description": "Kanonischer Jahrgangsanker für J9 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Pilot bindet hier die quadratischen Teile des bestehenden Funktionskorridors an.",
-      "descriptionEn": "Canonical year anchor for year 9 in lower-secondary Gymnasium mathematics. The current pilot attaches the quadratic parts of the existing function corridor here.",
+      "description": "Kanonischer Jahrgangsanker für J9 der gymnasialen Sekundarstufe I in Mathematik. Der aktuelle Pilot bindet hier quadratische, stochastische, ähnlichkeitstheoretische, potenzbezogene und trigonometrische Anschlussziele an.",
+      "descriptionEn": "Canonical year anchor for year 9 in lower-secondary Gymnasium mathematics. The current pilot attaches quadratic, stochastic, similarity-based, power-related, and trigonometric bridge goals here.",
       "core": true,
-      "weight": 3,
+      "weight": 11,
       "tags": [
         "canonical",
         "pilot",
@@ -280,7 +1097,13 @@
         "topicCode": "CANONICAL.MATH.SEK1.J9"
       },
       "contains": [
+        "8a0b0baf-c7e6-43df-a470-f56050ecaa46",
         "9023226b-fc17-412b-807c-2bb45cd551d5",
+        "50aeb801-d2b5-4939-b66b-2fcae0352dcf",
+        "ffd1ae26-c461-4439-9b18-d835c8f38e1a",
+        "289db903-2831-45ef-afc2-c0619c91d680",
+        "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
+        "219ce079-6bfd-4827-8b66-5dd199e44686",
         "c23705d2-57fc-4260-80d8-2d340203a173",
         "5a9702f4-7e4d-457d-b98c-f0bafcd1e386"
       ],
@@ -394,6 +1217,242 @@
         "provenance": {
           "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
           "sourceGoalId": "ed0c5283-b1b2-4562-9115-7336fca7a8d4"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8da730f1-8947-498d-9e78-7fb20b00a994",
+      "shortKey": "canonical_math_sek1_j7_symmetry_angles",
+      "title": "Symmetrie und Winkel begründen",
+      "titleEn": "Justify symmetry and angle relationships",
+      "description": "Die lernende Person kann Symmetrien erkennen, Winkelbeziehungen in Figuren begründen und geometrische Aussagen mit einfachen Konstruktionen oder Skizzen nachvollziehbar erläutern.",
+      "descriptionEn": "The learner can identify symmetries, justify angle relationships in figures, and explain geometric statements using simple constructions or sketches.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J7",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J7.2"
+      },
+      "contains": [],
+      "requires": [
+        "ca834a7d-5a66-4876-b24c-143b1464d937"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "f236d582-5efb-5f5f-896b-c09264a49238"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "075ef99c-7f84-48b5-97f1-4e28c7d78f95",
+      "shortKey": "canonical_math_sek1_j7_data_indicators",
+      "title": "Kenngrößen von Daten bestimmen und interpretieren",
+      "titleEn": "Determine and interpret data indicators",
+      "description": "Die lernende Person kann Lage- und Streuungsmaße aus Datensätzen bestimmen, passende Darstellungen auswählen und statistische Aussagen verständlich interpretieren.",
+      "descriptionEn": "The learner can determine measures of central tendency and spread from data sets, choose suitable representations, and interpret statistical statements clearly.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "J7",
+        "area": "Data",
+        "topicCode": "CANONICAL.MATH.SEK1.J7.4"
+      },
+      "contains": [],
+      "requires": [
+        "32c9955e-c0e7-4085-8a9a-9341376a453b"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "96f18796-b6a6-57c3-aba1-2ee9b7ab4a14"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "fd860da9-73ba-47cd-a1a8-452424915a80",
+      "shortKey": "canonical_math_sek1_j7_variable_terms",
+      "title": "Terme mit Variablen aufstellen und umformen",
+      "titleEn": "Set up and transform expressions with variables",
+      "description": "Die lernende Person kann Sachsituationen in Terme mit Variablen übersetzen, Terme sinnvoll interpretieren und äquivalente Umformungen sicher durchführen.",
+      "descriptionEn": "The learner can translate real situations into algebraic expressions with variables, interpret expressions meaningfully, and perform equivalent transformations reliably.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J7",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J7.1"
+      },
+      "contains": [],
+      "requires": [
+        "de39c9fe-5940-4320-aca8-2be85d6ada8f"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "0235cf56-da4b-5657-86be-92608b235e6c"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "325771e1-602d-4bca-a199-a8f39a2d3dee",
+      "shortKey": "canonical_math_sek1_j7_linear_equations_percent",
+      "title": "Lineare Gleichungen lösen und Prozentrechnung vertiefen",
+      "titleEn": "Solve linear equations and deepen percentage calculations",
+      "description": "Die lernende Person kann lineare Gleichungen systematisch lösen, Lösungswege begründen und Prozentrechnungen in anspruchsvolleren Sachzusammenhängen anwenden.",
+      "descriptionEn": "The learner can solve linear equations systematically, justify solution paths, and apply percentage calculations in more demanding contexts.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L5"
+        ],
+        "phase": "J7",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J7.3"
+      },
+      "contains": [],
+      "requires": [
+        "fd860da9-73ba-47cd-a1a8-452424915a80",
+        "32c9955e-c0e7-4085-8a9a-9341376a453b"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "ae549d5b-434c-56f8-9be2-949e926f0256"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f0a49da2-018b-4cda-adbd-27047b610a0f",
+      "shortKey": "canonical_math_sek1_j7_congruence_triangles",
+      "title": "Kongruenz begründen und Dreieckskonstruktionen ausführen",
+      "titleEn": "Justify congruence and carry out triangle constructions",
+      "description": "Die lernende Person kann Kongruenzsätze anwenden, besondere Dreiecke untersuchen und Dreieckskonstruktionen nachvollziehbar planen und ausführen.",
+      "descriptionEn": "The learner can apply congruence theorems, analyze special triangles, and plan and carry out triangle constructions in a comprehensible way.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J7",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J7.5"
+      },
+      "contains": [],
+      "requires": [
+        "8da730f1-8947-498d-9e78-7fb20b00a994"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "81e8bae0-979b-585a-81ec-bd4ed60d5aa6"
         }
       },
       "type": "atomic"
@@ -538,6 +1597,1107 @@
         "provenance": {
           "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
           "sourceGoalId": "edd3e6df-7f3d-5230-9377-dcf9d095c49c"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "612dfc95-95cb-44df-80ae-d8446199cb0d",
+      "shortKey": "canonical_math_sek1_j8_rational_functions",
+      "title": "Gebrochen-rationale Funktionen in einfachen Fällen beschreiben",
+      "titleEn": "Describe elementary rational functions",
+      "description": "Die lernende Person kann einfache gebrochen-rationale Funktionen in Termen, Tabellen und Graphen beschreiben und typische Unterschiede zu linearen Funktionen erläutern.",
+      "descriptionEn": "The learner can describe simple rational functions using expressions, tables, and graphs and explain typical differences compared with linear functions.",
+      "core": true,
+      "weight": 3,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J8",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.3"
+      },
+      "contains": [
+        "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+        "19a6bc8e-9851-4cf1-adf3-6898e08eb567",
+        "fa72cf74-a31e-402e-90d7-422c118f4a5b"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "4d86904c-6259-53c6-9768-55d314a041fe"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+      "shortKey": "canonical_math_sek1_j8_rational_domain_params",
+      "title": "Gebrochen-rationale Funktionen in Grundform untersuchen",
+      "titleEn": "Investigate elementary rational functions in standard form",
+      "description": "Die lernende Person kann für einfache gebrochen-rationale Funktionen die Definitionsmenge und Achsenschnittpunkte bestimmen sowie den Einfluss von Parametern auf den Graphen beschreiben.",
+      "descriptionEn": "The learner can determine the domain and axis intercepts of simple rational functions and describe how parameters influence the graph.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J8",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.3A"
+      },
+      "contains": [],
+      "requires": [
+        "fd860da9-73ba-47cd-a1a8-452424915a80",
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "97efb769-8e4f-56a1-acaf-f2d230263ef9"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "19a6bc8e-9851-4cf1-adf3-6898e08eb567",
+      "shortKey": "canonical_math_sek1_j8_rational_graphs_asymptotes",
+      "title": "Graphen und Asymptoten einfacher Hyperbeln deuten",
+      "titleEn": "Interpret graphs and asymptotes of simple hyperbolas",
+      "description": "Die lernende Person kann Graphen einfacher gebrochen-rationaler Funktionen mitsamt Asymptoten zeichnen und aus einem gegebenen Graphen passende Parameter zurückgewinnen.",
+      "descriptionEn": "The learner can draw graphs of simple rational functions including asymptotes and recover suitable parameters from a given graph.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J8",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.3B"
+      },
+      "contains": [],
+      "requires": [
+        "34ba4714-a0ff-4a48-857f-d2481cbe0441"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "71e28934-eefb-5600-aaa6-7991b1162d4b"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "fa72cf74-a31e-402e-90d7-422c118f4a5b",
+      "shortKey": "canonical_math_sek1_j8_inverse_proportion",
+      "title": "Indirekte Proportionalität mit Hyperbeln beschreiben",
+      "titleEn": "Describe inverse proportionality using hyperbolas",
+      "description": "Die lernende Person kann indirekt proportionale Größen als Spezialfall einfacher gebrochen-rationaler Funktionen erkennen und den Zusammenhang am Graphen auch in naturwissenschaftlichen Kontexten erläutern.",
+      "descriptionEn": "The learner can recognize inversely proportional quantities as a special case of simple rational functions and explain the relationship on the graph, also in science-related contexts.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J8",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.3C"
+      },
+      "contains": [],
+      "requires": [
+        "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "9a14516b-775f-5d35-8a04-bd705a57e09b"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "792b3f32-4c13-423d-89c2-facb34827f47",
+      "shortKey": "canonical_math_sek1_j8_fraction_terms_equations",
+      "title": "Bruchterme umformen und Bruchgleichungen lösen",
+      "titleEn": "Transform fractional expressions and solve fractional equations",
+      "description": "Die lernende Person kann Bruchterme vereinfachen, Definitionsmengen beachten und einfache Bruchgleichungen rechnerisch sicher lösen.",
+      "descriptionEn": "The learner can simplify fractional expressions, account for domains of definition, and reliably solve simple fractional equations algebraically.",
+      "core": true,
+      "weight": 5,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J8",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.4"
+      },
+      "contains": [
+        "c420e0be-1e74-4050-834c-d8da7f41095a",
+        "f7a9a0b4-ec64-468f-8da4-59c5055eac1d",
+        "6596405a-9728-41df-9163-53670ec2a937",
+        "797ee047-b8dd-45cf-880e-98571a56c690",
+        "0a154cbd-1218-4553-835c-a754e9901bba"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "e3f692c9-0014-569d-8ceb-7f3cf41c94db"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "c420e0be-1e74-4050-834c-d8da7f41095a",
+      "shortKey": "canonical_math_sek1_j8_fraction_terms_simplify",
+      "title": "Bruchterme strukturieren, erweitern und kürzen",
+      "titleEn": "Structure, expand, and reduce fractional expressions",
+      "description": "Die lernende Person kann die Struktur von Bruchtermen erkennen, sie auch mithilfe des Distributivgesetzes erweitern oder kürzen und die Verfahren mit Bezügen zu früheren Algebraideen erläutern.",
+      "descriptionEn": "The learner can identify the structure of fractional expressions, expand or reduce them using the distributive law, and explain the procedures in connection with earlier algebraic ideas.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J8",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.4A"
+      },
+      "contains": [],
+      "requires": [
+        "fd860da9-73ba-47cd-a1a8-452424915a80"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "20ddd1d4-c0fd-5dc8-9a8f-a6cd4bd665f5"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f7a9a0b4-ec64-468f-8da4-59c5055eac1d",
+      "shortKey": "canonical_math_sek1_j8_fraction_terms_operations",
+      "title": "Bruchterme auf gemeinsamen Nenner bringen und verknüpfen",
+      "titleEn": "Bring fractional expressions to a common denominator and combine them",
+      "description": "Die lernende Person kann Bruchterme auf einen gemeinsamen Nenner bringen, addieren, subtrahieren, multiplizieren und dividieren und die entstehenden Terme sinnvoll vereinfachen.",
+      "descriptionEn": "The learner can bring fractional expressions to a common denominator, add, subtract, multiply, and divide them, and simplify the resulting expressions meaningfully.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J8",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.4B"
+      },
+      "contains": [],
+      "requires": [
+        "c420e0be-1e74-4050-834c-d8da7f41095a"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "f49c2265-9da9-5156-a250-889a513833d3"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "6596405a-9728-41df-9163-53670ec2a937",
+      "shortKey": "canonical_math_sek1_j8_integer_exponent_rules",
+      "title": "Potenzgesetze mit ganzzahligen Exponenten anwenden",
+      "titleEn": "Apply exponent rules with integer exponents",
+      "description": "Die lernende Person kann Rechengesetze für Potenzen mit ganzzahligen Exponenten plausibel machen und sie in einfachen algebraischen Situationen sicher anwenden.",
+      "descriptionEn": "The learner can make exponent rules for integer exponents plausible and apply them reliably in simple algebraic situations.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J8",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.4C"
+      },
+      "contains": [],
+      "requires": [
+        "fd860da9-73ba-47cd-a1a8-452424915a80"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "6c6f187b-d9c4-5743-b507-b51d54f3414e"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "797ee047-b8dd-45cf-880e-98571a56c690",
+      "shortKey": "canonical_math_sek1_j8_fraction_equations_intersections",
+      "title": "Bruchgleichungen lösen und als Schnittprobleme deuten",
+      "titleEn": "Solve fractional equations and interpret them as intersection problems",
+      "description": "Die lernende Person kann Bruchgleichungen rechnerisch lösen und in einfachen Fällen als Schnittprobleme von Funktionsgraphen interpretieren.",
+      "descriptionEn": "The learner can solve fractional equations algebraically and, in simple cases, interpret them as intersection problems of function graphs.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J8",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.4D"
+      },
+      "contains": [],
+      "requires": [
+        "f7a9a0b4-ec64-468f-8da4-59c5055eac1d",
+        "19a6bc8e-9851-4cf1-adf3-6898e08eb567"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "ac2c9529-c000-5ac8-bfc4-0454fb395045"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "0a154cbd-1218-4553-835c-a754e9901bba",
+      "shortKey": "canonical_math_sek1_j8_rearrange_fraction_formulas",
+      "title": "Formeln mit Brüchen nach Variablen auflösen",
+      "titleEn": "Rearrange formulas with fractions for variables",
+      "description": "Die lernende Person kann Formeln mit Bruchtermen, besonders aus naturwissenschaftlichen Kontexten, nach einer gesuchten Variablen auflösen und die Umformungen nachvollziehbar begründen.",
+      "descriptionEn": "The learner can rearrange formulas with fractional expressions, especially from science contexts, for a target variable and justify the transformations clearly.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J8",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.4E"
+      },
+      "contains": [],
+      "requires": [
+        "f7a9a0b4-ec64-468f-8da4-59c5055eac1d"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "5d7ff54e-5d49-52a3-a256-cf6d98249822"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "546bf0b3-6921-416b-a2ef-8fd37d429dc7",
+      "shortKey": "canonical_math_sek1_j8_linear_systems",
+      "title": "Lineare Gleichungssysteme lösen und deuten",
+      "titleEn": "Solve and interpret systems of linear equations",
+      "description": "Die lernende Person kann lineare Gleichungssysteme in einfachen Fällen grafisch und rechnerisch lösen und die Bedeutung der Lösungen im Kontext deuten.",
+      "descriptionEn": "The learner can solve simple systems of linear equations graphically and algebraically and interpret the meaning of the solutions in context.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J8",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.6"
+      },
+      "contains": [],
+      "requires": [
+        "e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb",
+        "325771e1-602d-4bca-a199-a8f39a2d3dee"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "3911d7c9-3248-5cee-bc31-77a1bf5f30b5"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+      "shortKey": "canonical_math_sek1_j8_laplace_experiments",
+      "title": "Laplace-Experimente auswerten",
+      "titleEn": "Evaluate Laplace experiments",
+      "description": "Die lernende Person kann Laplace-Experimente beschreiben, Wahrscheinlichkeiten in gleichwahrscheinlichen Situationen bestimmen und Ergebnisse tabellarisch oder grafisch auswerten.",
+      "descriptionEn": "The learner can describe Laplace experiments, determine probabilities in equiprobable situations, and evaluate results in tables or graphs.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "J8",
+        "area": "Probability",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.5"
+      },
+      "contains": [],
+      "requires": [
+        "075ef99c-7f84-48b5-97f1-4e28c7d78f95"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "e5acc4c2-02ec-5df7-9b7d-fd9328e47b83"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+      "shortKey": "canonical_math_sek1_j8_circle_cylinder",
+      "title": "Kreise und Zylinder untersuchen",
+      "titleEn": "Analyze circles and cylinders",
+      "description": "Die lernende Person kann Umfang, Flächeninhalt und Volumen an Kreisen und Zylindern berechnen, Darstellungen deuten und geometrische Beziehungen begründet anwenden.",
+      "descriptionEn": "The learner can calculate circumference, area, and volume for circles and cylinders, interpret representations, and apply geometric relationships with justification.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J8",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J8.7"
+      },
+      "contains": [],
+      "requires": [
+        "e07fa2ee-c26f-4032-9140-358a4f6c1457",
+        "ca834a7d-5a66-4876-b24c-143b1464d937"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "d2705044-4ab6-5020-b500-7093f80df8f3"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "8a0b0baf-c7e6-43df-a470-f56050ecaa46",
+      "shortKey": "canonical_math_sek1_j9_square_roots",
+      "title": "Quadratwurzeln darstellen und nutzen",
+      "titleEn": "Represent and use square roots",
+      "description": "Die lernende Person kann Quadratwurzeln als Zahlkonzept deuten, Werte abschätzen und sie in einfachen algebraischen und geometrischen Zusammenhängen sicher verwenden.",
+      "descriptionEn": "The learner can interpret square roots as a number concept, estimate values, and use them reliably in simple algebraic and geometric contexts.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J9",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.1"
+      },
+      "contains": [],
+      "requires": [
+        "de39c9fe-5940-4320-aca8-2be85d6ada8f"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "51b3e1f8-f6e9-5db8-a5ce-403815407d45"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "50aeb801-d2b5-4939-b66b-2fcae0352dcf",
+      "shortKey": "canonical_math_sek1_j9_compound_probability",
+      "title": "Wahrscheinlichkeit verknüpfter Ereignisse bestimmen",
+      "titleEn": "Determine probabilities of combined events",
+      "description": "Kanonischer Cluster für verknüpfte Ereignisse in J9. Der aktuelle Bayern-Slice trennt hier zwischen Darstellungen mit Mengen- und Vierfeldertabellen sowie dem eigentlichen Berechnen von Wahrscheinlichkeiten.",
+      "descriptionEn": "Canonical cluster for combined events in year 9. The current Bavaria slice distinguishes between set/contingency-table representations and the actual calculation of probabilities.",
+      "core": true,
+      "weight": 2,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "J9",
+        "area": "Probability",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.3"
+      },
+      "contains": [
+        "759485a9-51c0-4261-af7d-caa3c0e5d68b",
+        "4ac925cf-3862-4810-be2a-d92efff7d735"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "5b3b5702-0d1d-5c74-b768-98775ef63a22"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "759485a9-51c0-4261-af7d-caa3c0e5d68b",
+      "shortKey": "canonical_math_sek1_j9_event_sets_tables",
+      "title": "Verknüpfte Ereignisse mit Mengen- und Vierfelderdarstellungen strukturieren",
+      "titleEn": "Structure combined events using sets and contingency tables",
+      "description": "Die lernende Person kann verknüpfte Ereignisse mit Mengen, Mengendiagrammen und Vierfeldertafeln darstellen und zwischen verbalen und formalen Beschreibungen sicher übersetzen.",
+      "descriptionEn": "The learner can represent combined events using sets, Venn-style diagrams, and contingency tables and translate reliably between verbal and formal descriptions.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "J9",
+        "area": "Probability",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.3A"
+      },
+      "contains": [],
+      "requires": [
+        "5ab17678-bba7-4e6b-9aff-5a909e24d40e"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "65594e82-8ecb-5c2d-ba80-98c0ac7fc6ad"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4ac925cf-3862-4810-be2a-d92efff7d735",
+      "shortKey": "canonical_math_sek1_j9_event_probability_rules",
+      "title": "Wahrscheinlichkeiten verknüpfter Ereignisse berechnen",
+      "titleEn": "Calculate probabilities of combined events",
+      "description": "Die lernende Person kann Wahrscheinlichkeiten verknüpfter Ereignisse aus Vierfeldertafeln und relativen Häufigkeiten ableiten, Additionsregeln begründen und Ergebnisse im Kontext interpretieren.",
+      "descriptionEn": "The learner can derive probabilities of combined events from contingency tables and relative frequencies, justify addition rules, and interpret results in context.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "J9",
+        "area": "Probability",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.3B"
+      },
+      "contains": [],
+      "requires": [
+        "759485a9-51c0-4261-af7d-caa3c0e5d68b"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "a00ca20b-d872-5e7a-82d1-a840e2e95ed9"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ffd1ae26-c461-4439-9b18-d835c8f38e1a",
+      "shortKey": "canonical_math_sek1_j9_similarity_intercept",
+      "title": "Ähnlichkeit und Strahlensatz anwenden",
+      "titleEn": "Apply similarity and the intercept theorem",
+      "description": "Die lernende Person kann Ähnlichkeitsbeziehungen erkennen, den Strahlensatz nutzen und Streckenverhältnisse in geometrischen Situationen begründet bestimmen.",
+      "descriptionEn": "The learner can recognize similarity relations, use the intercept theorem, and determine segment ratios in geometric situations with justification.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J9",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.4"
+      },
+      "contains": [],
+      "requires": [
+        "f0a49da2-018b-4cda-adbd-27047b610a0f"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "c31989a6-71bc-56b9-b858-3012be82ad00"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "289db903-2831-45ef-afc2-c0619c91d680",
+      "shortKey": "canonical_math_sek1_j9_power_functions",
+      "title": "Potenzfunktionen und Potenzgesetze nutzen",
+      "titleEn": "Use power functions and exponent rules",
+      "description": "Die lernende Person kann Potenzterme mit natürlichen Exponenten darstellen, Potenzgesetze anwenden und einfache Potenzfunktionen in ihrem Verlauf beschreiben.",
+      "descriptionEn": "The learner can represent power expressions with natural exponents, apply exponent rules, and describe the behaviour of simple power functions.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.5"
+      },
+      "contains": [],
+      "requires": [
+        "6596405a-9728-41df-9163-53670ec2a937"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "220d1b8c-ec1c-530e-a812-a5b4190da8f9"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
+      "shortKey": "canonical_math_sek1_j9_pythagorean_theorem",
+      "title": "Satz des Pythagoras anwenden",
+      "titleEn": "Apply the Pythagorean theorem",
+      "description": "Die lernende Person kann den Satz des Pythagoras in rechtwinkligen Dreiecken anwenden, Strecken berechnen und Ergebnisse geometrisch begründen.",
+      "descriptionEn": "The learner can apply the Pythagorean theorem in right triangles, calculate lengths, and justify results geometrically.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J9",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.6"
+      },
+      "contains": [],
+      "requires": [
+        "f0a49da2-018b-4cda-adbd-27047b610a0f"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "85cd279d-bdbe-5691-bc23-f911c5d8b4f7"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "219ce079-6bfd-4827-8b66-5dd199e44686",
+      "shortKey": "canonical_math_sek1_j9_trigonometry",
+      "title": "Trigonometrie am Dreieck anwenden",
+      "titleEn": "Apply trigonometry to triangles",
+      "description": "Kanonischer Cluster für trigonometrische Brücken in J9. Der aktuelle Bayern-Slice trennt hier zwischen rechtwinkliger Dreieckstrigonometrie und dem weiterführenden Einsatz von Sinus- und Kosinussatz.",
+      "descriptionEn": "Canonical cluster for trigonometric bridges in year 9. The current Bavaria slice distinguishes between right-triangle trigonometry and the more advanced use of sine and cosine laws.",
+      "core": true,
+      "weight": 2,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.7"
+      },
+      "contains": [
+        "71a483ba-9680-4654-bb5e-5ab5427f0919",
+        "0cefa694-636e-4c4b-abff-3ac3750dca18"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "fb20bed3-2c5b-5745-8031-c34a902ac9e7"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "71a483ba-9680-4654-bb5e-5ab5427f0919",
+      "shortKey": "canonical_math_sek1_j9_right_triangle_trig",
+      "title": "Trigonometrie am rechtwinkligen Dreieck anwenden",
+      "titleEn": "Apply trigonometry in right triangles",
+      "description": "Die lernende Person kann Sinus, Kosinus und Tangens am rechtwinkligen Dreieck nutzen, fehlende Seiten oder Winkel bestimmen und Ergebnisse mit Skizzen und Kontexten begründet deuten.",
+      "descriptionEn": "The learner can use sine, cosine, and tangent in right triangles, determine missing sides or angles, and interpret results with sketches and contextual reasoning.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.7A"
+      },
+      "contains": [],
+      "requires": [
+        "ffd1ae26-c461-4439-9b18-d835c8f38e1a",
+        "4d78bbcc-89b8-47f0-aa45-516199e4da5d"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "ef7d6c31-704c-57df-b974-3ec8b7bed6ed"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "0cefa694-636e-4c4b-abff-3ac3750dca18",
+      "shortKey": "canonical_math_sek1_j9_sine_cosine_laws",
+      "title": "Sinus- und Kosinussatz nutzen",
+      "titleEn": "Use the sine and cosine laws",
+      "description": "Die lernende Person kann Sinus- und Kosinussatz nutzen, Winkel- und Seitenbeziehungen in allgemeinen Dreiecken bestimmen und trigonometrische Lösungen geometrisch interpretieren.",
+      "descriptionEn": "The learner can use the sine and cosine laws, determine angle and side relations in general triangles, and interpret trigonometric solutions geometrically.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "pilot"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math-pilot",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.7B"
+      },
+      "contains": [],
+      "requires": [
+        "71a483ba-9680-4654-bb5e-5ab5427f0919"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "pilot": true,
+        "provenance": {
+          "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+          "sourceLandscapeTitle": "Mathematik (Gymnasium)",
+          "sourceGoalId": "5c48c28e-71b1-51c3-9dc4-ba200746a18d"
         }
       },
       "type": "atomic"

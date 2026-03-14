@@ -16,6 +16,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.extensions.Extension;
 import io.swagger.v3.oas.annotations.extensions.ExtensionProperty;
 
+import static org.springframework.http.HttpStatus.CONFLICT;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
@@ -40,6 +41,7 @@ public class LandscapeUiController {
     @GetMapping("/{landscapeId}")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public LearningLandscape getLandscape(@PathVariable String landscapeId) {
+        assertCompatibilityLandscapeRouteActive(landscapeId);
         return landscapeService.getById(landscapeId);
     }
 
@@ -47,7 +49,17 @@ public class LandscapeUiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public List<LearningLandscape> getLandscapeClosure(@PathVariable String landscapeId,
             @RequestParam(defaultValue = "de") String lang) {
+        assertCompatibilityLandscapeRouteActive(landscapeId);
         return landscapeService.getClosure(landscapeId, lang);
+    }
+
+    private void assertCompatibilityLandscapeRouteActive(String landscapeId) {
+        if (!landscapeService.isCompatibilityOnlyLandscape(landscapeId)) {
+            return;
+        }
+        throw new ResponseStatusException(
+                CONFLICT,
+                "This compatibility-only landscape route is retired. Use /api/ui/landscapes?includeCompatibility=true for frozen summaries, /api/ui/curricula/{curriculumId}/topics for frozen topic metadata, or the learner compatibility archive for retired learner sessions.");
     }
 
 }

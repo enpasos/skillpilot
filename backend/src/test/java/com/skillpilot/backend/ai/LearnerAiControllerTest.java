@@ -172,7 +172,7 @@ class LearnerAiControllerTest {
 
         when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
 
-        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId, false);
+        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
 
         assertThat(state.frontier()).hasSize(1);
         assertThat(state.frontier().get(0).nodeKind()).isEqualTo("exam");
@@ -182,7 +182,7 @@ class LearnerAiControllerTest {
         assertThat(state.goals().planned()).hasSize(1);
         assertThat(state.goals().planned().get(0).examData()).isNull();
 
-        verify(learnerService).assertCompatibilityAuditAccess(skillpilotId, false);
+        verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).getLearnerState(skillpilotId);
         verifyNoMoreInteractions(learnerService);
     }
@@ -205,7 +205,7 @@ class LearnerAiControllerTest {
 
         when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
 
-        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId, false);
+        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
 
         assertThat(state.activeGoal()).isNotNull();
         assertThat(state.activeGoal().examData()).isNotNull();
@@ -215,7 +215,7 @@ class LearnerAiControllerTest {
         assertThat(state.frontier()).hasSize(1);
         assertThat(state.frontier().get(0).examData()).isNull();
 
-        verify(learnerService).assertCompatibilityAuditAccess(skillpilotId, false);
+        verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).getLearnerState(skillpilotId);
         verifyNoMoreInteractions(learnerService);
     }
@@ -238,12 +238,12 @@ class LearnerAiControllerTest {
 
         when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
 
-        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId, false);
+        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
         String json = new ObjectMapper().writeValueAsString(state);
 
         assertThat(json).doesNotContain("\"release\"");
 
-        verify(learnerService).assertCompatibilityAuditAccess(skillpilotId, false);
+        verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).getLearnerState(skillpilotId);
         verifyNoMoreInteractions(learnerService);
     }

@@ -2661,6 +2661,44 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
+    void retiredCompatibilityCurriculumCannotBeSelectedViaUiEndpoint() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("retired-ui-selection");
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "PUT",
+                "/api/ui/learners/retired-ui-selection/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(HESSEN_GYMNASIUM_UPPER_MATH_ID));
+
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("retired-ui-selection").orElseThrow().getSelectedCurriculum()).isNull();
+    }
+
+    @Test
+    void retiredCompatibilityCurriculumCannotBeSelectedViaAiEndpoint() throws Exception {
+        Learner learner = new Learner();
+        learner.setSkillpilotId("retired-ai-selection");
+        learnerRepository.save(learner);
+
+        HttpResponse<String> curriculumResponse = sendJsonRequest(
+                "POST",
+                "/api/ai/en/learners/retired-ai-selection/curriculum",
+                """
+                        {
+                          "curriculumId": "%s"
+                        }
+                        """.formatted(HESSEN_GYMNASIUM_UPPER_MATH_ID));
+
+        assertThat(curriculumResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+        assertThat(learnerRepository.findById("retired-ai-selection").orElseThrow().getSelectedCurriculum()).isNull();
+    }
+
+    @Test
     void compatibilitySessionRejectsAiMasteryWrites() throws Exception {
         Learner learner = new Learner();
         learner.setSkillpilotId("readonly-ai-mastery");
@@ -2687,7 +2725,7 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
-    void compatibilitySessionRequiresExplicitAuditFlagForUiState() throws Exception {
+    void compatibilitySessionExportsCompatibilityArchiveViaDedicatedEndpoint() throws Exception {
         Learner learner = new Learner();
         learner.setSkillpilotId("readonly-ui-state");
         learner.setSelectedCurriculum(HESSEN_GYMNASIUM_UPPER_MATH_ID);
@@ -2697,20 +2735,31 @@ public class LearnerControllerIntegrationTest {
                 }
                 """);
         learnerRepository.save(learner);
+        plannedGoalRepository.save(new PlannedGoal(learner, "legacy-detached-goal"));
+        masteryRepository.save(new Mastery(learner, "legacy:detached-mastery", 1.0));
 
         HttpResponse<String> retiredResponse = getRequest("/api/ui/learners/readonly-ui-state/state");
         assertThat(retiredResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
 
-        HttpResponse<String> auditResponse = getRequest(
-                "/api/ui/learners/readonly-ui-state/state?includeCompatibilityAudit=true");
-        assertThat(auditResponse.statusCode()).isEqualTo(HttpStatus.OK.value());
-        JsonNode body = objectMapper.readTree(auditResponse.body());
-        assertThat(body.path("skillpilotId").asText()).isEqualTo("readonly-ui-state");
+        HttpResponse<String> archiveResponse = getRequest(
+                "/api/ui/learners/readonly-ui-state/compatibility-archive");
+        assertThat(archiveResponse.statusCode()).isEqualTo(HttpStatus.OK.value());
+        JsonNode body = objectMapper.readTree(archiveResponse.body());
+        assertThat(body.path("archiveType").asText()).isEqualTo("compatibility_retirement_archive");
+        assertThat(body.path("stateSnapshot").path("skillpilotId").asText()).isEqualTo("readonly-ui-state");
         assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(HESSEN_GYMNASIUM_UPPER_MATH_ID);
+        assertThat(body.path("stateSnapshot").path("plannedGoals").get(0).asText()).isEqualTo("legacy-detached-goal");
+        assertThat(body.path("stateSnapshot").path("mastery").path("legacy:detached-mastery").path("value").asDouble())
+                .isEqualTo(1.0);
+        assertThat(body.path("recoveryExport").path("data").path("learner").path("selectedCurriculum").asText())
+                .isEqualTo(HESSEN_GYMNASIUM_UPPER_MATH_ID);
+        assertThat(body.path("recoveryExport").path("data").path("plannedGoals").get(0).asText())
+                .isEqualTo("legacy-detached-goal");
+        assertThat(body.path("history").get(0).path("goalId").asText()).isEqualTo("legacy:detached-mastery");
     }
 
     @Test
-    void compatibilitySessionRequiresExplicitAuditFlagForAiState() throws Exception {
+    void compatibilitySessionAiStateRouteStaysRetired() throws Exception {
         Learner learner = new Learner();
         learner.setSkillpilotId("readonly-ai-state");
         learner.setSelectedCurriculum(HESSEN_GYMNASIUM_UPPER_MATH_ID);
@@ -2723,13 +2772,34 @@ public class LearnerControllerIntegrationTest {
 
         HttpResponse<String> retiredResponse = getRequest("/api/ai/en/learners/readonly-ai-state/state");
         assertThat(retiredResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+    }
 
-        HttpResponse<String> auditResponse = getRequest(
-                "/api/ai/en/learners/readonly-ai-state/state?includeCompatibilityAudit=true");
-        assertThat(auditResponse.statusCode()).isEqualTo(HttpStatus.OK.value());
-        JsonNode body = objectMapper.readTree(auditResponse.body());
-        assertThat(body.path("skillpilotId").asText()).isEqualTo("readonly-ai-state");
-        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(HESSEN_GYMNASIUM_UPPER_MATH_ID);
+    @Test
+    void compatibilityLandscapeDetailRouteIsRetired() throws Exception {
+        HttpResponse<String> response = getRequest("/api/ui/landscapes/" + HESSEN_GYMNASIUM_UPPER_MATH_ID);
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+    }
+
+    @Test
+    void compatibilityLandscapeClosureRouteIsRetired() throws Exception {
+        HttpResponse<String> response = getRequest("/api/ui/landscapes/" + HESSEN_GYMNASIUM_UPPER_MATH_ID + "/closure?lang=de");
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
+    }
+
+    @Test
+    void compatibilityCurriculumTopicsUseFrozenArchiveRegistry() throws Exception {
+        HttpResponse<String> response = getRequest("/api/ui/curricula/" + HESSEN_GYMNASIUM_UPPER_MATH_ID + "/topics");
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+        JsonNode body = objectMapper.readTree(response.body());
+        assertThat(body.isArray()).isTrue();
+        List<String> titles = new ArrayList<>();
+        for (JsonNode topic : body) {
+            titles.add(topic.path("title").asText());
+        }
+        assertThat(titles).contains("Q3 Stochastik", "Abiturprüfung Mathematik");
     }
 
     private String getLearnerStateBodyForPlannedGoals(String... goalIds) throws Exception {

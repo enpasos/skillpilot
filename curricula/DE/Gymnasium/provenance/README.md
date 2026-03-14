@@ -6,6 +6,7 @@ Current scope:
 
 - source-landscape jurisdiction metadata needed for audit and applicability/state filtering
 - source-goal atomic-closure metadata needed for champion/topic metrics without live legacy-tree expansion
+- source-goal membership metadata needed for Hessen upper-secondary cutover when only archived legacy goal IDs remain in stored planned/active learner state
 
 Rules:
 
@@ -14,3 +15,4 @@ Rules:
 - do not duplicate whole legacy landscapes here; store only the minimal metadata needed for stable resolution
 - backend canonical state filtering and the applicability compiler may resolve `sourceLandscapeId -> jurisdiction` from this registry instead of relying on a still-loaded legacy landscape file
 - backend champion/topic aggregation may resolve `sourceLandscapeId + sourceGoalId -> atomic legacy closure` from this registry instead of recursively traversing a live legacy landscape tree
+- backend Hessen cutover may resolve `legacyGoalId -> sourceLandscapeId` from this registry instead of inferring subject membership from a still-loaded legacy landscape graph

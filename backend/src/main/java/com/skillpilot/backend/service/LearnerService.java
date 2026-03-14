@@ -22,6 +22,7 @@ import com.skillpilot.backend.events.LearnerStateChangedEvent;
 import org.springframework.context.ApplicationEventPublisher;
 import com.skillpilot.backend.landscape.LearningLandscape;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -49,6 +50,8 @@ import com.skillpilot.backend.api.CreateLearnerRequest;
 import com.skillpilot.backend.api.ClientStateRequest;
 import com.skillpilot.backend.api.ClientStateResponse;
 import com.skillpilot.backend.api.ClientStateSnapshot;
+import com.skillpilot.backend.api.CompatibilityArchiveResponse;
+import com.skillpilot.backend.api.CompatibilityArchiveStateSnapshot;
 import com.skillpilot.backend.api.BulkCanonicalGymnasiumCutoverResponse;
 import com.skillpilot.backend.api.BulkCanonicalGymnasiumCutoverResult;
 import com.skillpilot.backend.api.FrontierGoal;
@@ -1145,14 +1148,14 @@ public class LearnerService {
     }
 
     @Transactional(readOnly = true)
-    public void assertCompatibilityAuditAccess(String skillpilotId, boolean includeCompatibilityAudit) {
+    public void assertActiveLearnerRouteAccess(String skillpilotId) {
         Learner learner = getLearner(skillpilotId);
-        if (!isReadOnlyCompatibilitySession(learner) || includeCompatibilityAudit) {
+        if (!isReadOnlyCompatibilitySession(learner)) {
             return;
         }
         throw new ResponseStatusException(
                 org.springframework.http.HttpStatus.CONFLICT,
-                "This compatibility-only learner session is retired as a normal learner route. Use the canonical cutover flow or request includeCompatibilityAudit=true for an explicit audit fallback.");
+                "This compatibility-only learner session is retired as a normal learner route. Use the canonical cutover flow or download a compatibility archive instead.");
     }
 
     private boolean isReadOnlyCompatibilitySession(Learner learner) {
@@ -1167,13 +1170,22 @@ public class LearnerService {
 
     @Transactional
     public void setCurriculum(String skillpilotId, String curriculumId) {
-        if (landscapeService.getById(curriculumId) == null) {
+        String effectiveCurriculumId = curriculumId == null ? null : curriculumId.trim();
+        if (effectiveCurriculumId == null || effectiveCurriculumId.isBlank()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
-                    "Invalid curriculum ID: " + curriculumId);
+                    "curriculumId must not be empty.");
+        }
+        if (landscapeService.getById(effectiveCurriculumId) == null) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Invalid curriculum ID: " + effectiveCurriculumId);
+        }
+        if (landscapeService.isCompatibilityOnlyLandscape(effectiveCurriculumId)) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "This compatibility-only curriculum is retired. Select Gymnasium (DE) and use the canonical DE-HE filter instead.");
         }
         Learner learner = getLearner(skillpilotId);
-        boolean curriculumChanged = !Objects.equals(learner.getSelectedCurriculum(), curriculumId);
-        learner.setSelectedCurriculum(curriculumId);
+        boolean curriculumChanged = !Objects.equals(learner.getSelectedCurriculum(), effectiveCurriculumId);
+        learner.setSelectedCurriculum(effectiveCurriculumId);
         if (curriculumChanged) {
             learner.setActiveGoalId(null);
         }
@@ -1746,7 +1758,7 @@ public class LearnerService {
         if (goalId == null || goalId.isBlank() || landscapeId == null || landscapeId.isBlank()) {
             return false;
         }
-        String resolvedLandscapeId = landscapeService.getLandscapeIdForGoal(goalId);
+        String resolvedLandscapeId = landscapeService.resolveLandscapeIdForGoalIncludingArchived(goalId);
         if (landscapeId.equals(resolvedLandscapeId)) {
             return true;
         }
@@ -3513,10 +3525,62 @@ public class LearnerService {
         Learner learner = getLearner(skillpilotId);
         Map<String, MasteryEntryDTO> mastery = getMasteryWithTimestamps(skillpilotId);
         List<String> planned = getPlannedGoals(skillpilotId);
-        LearnerDataDTO data = new LearnerDataDTO(learner, mastery, planned, learner.getCopySources());
+        return buildSignedLearnerExport(learner, mastery, planned);
+    }
 
-        String signature = calculateSignature(data);
-        return new SignedLearnerDataDTO(data, signature);
+    @Transactional(readOnly = true)
+    public CompatibilityArchiveResponse exportCompatibilityArchive(String skillpilotId) {
+        Learner learner = getLearner(skillpilotId);
+        if (!isReadOnlyCompatibilitySession(learner)) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Compatibility archive export is only available for retired compatibility sessions.");
+        }
+
+        com.skillpilot.backend.landscape.LandscapeSummary frozenCurriculumSummary = landscapeService
+                .getCompatibilityArchiveSummary(learner.getSelectedCurriculum());
+        if (frozenCurriculumSummary == null) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR,
+                    "Frozen compatibility archive metadata is missing for retired curriculum "
+                            + learner.getSelectedCurriculum());
+        }
+
+        List<String> plannedGoals = getStoredPlannedGoals(skillpilotId);
+        Map<String, MasteryEntryDTO> mastery = getStoredMasteryWithTimestamps(skillpilotId);
+        CompatibilityArchiveStateSnapshot stateSnapshot = new CompatibilityArchiveStateSnapshot(
+                learner.getSkillpilotId(),
+                learner.getSelectedCurriculum(),
+                learner.getPersonalCurriculum(),
+                learner.getActiveGoalId(),
+                learner.getLearningState() != null ? learner.getLearningState().name() : null,
+                learner.getLearningStrategy(),
+                learner.getAutoPilot(),
+                learner.getStrictMode(),
+                learner.getCreatedAt(),
+                plannedGoals,
+                mastery,
+                learner.getCopySources(),
+                parseClientStateSnapshot(learner.getClientState(), learner.getClientStateUpdatedAt()));
+        SignedLearnerDataDTO recoveryExport = buildSignedLearnerExport(learner, mastery, plannedGoals);
+        List<com.skillpilot.backend.api.MasteryHistoryEntry> history = getStoredMasteryHistory(skillpilotId);
+        Map<String, ClientStateSnapshot> serverClientStates = learnerClientStateRepository
+                .findByLearner_SkillpilotId(skillpilotId)
+                .stream()
+                .collect(Collectors.toMap(
+                        entry -> entry.getId().getNodeId(),
+                        entry -> parseClientStateSnapshot(entry.getClientState(), entry.getClientStateUpdatedAt()),
+                        (left, right) -> right,
+                        LinkedHashMap::new));
+
+        return new CompatibilityArchiveResponse(
+                "compatibility_retirement_archive",
+                Instant.now(),
+                frozenCurriculumSummary,
+                stateSnapshot,
+                recoveryExport,
+                history,
+                serverClientStates);
     }
 
     @Transactional(readOnly = true)
@@ -3555,6 +3619,57 @@ public class LearnerService {
             }
         }
         return false;
+    }
+
+    private ClientStateSnapshot parseClientStateSnapshot(String json, Instant updatedAt) {
+        Map<String, Object> state = Collections.emptyMap();
+        if (json != null && !json.isBlank()) {
+            try {
+                state = objectMapper.readValue(
+                        json,
+                        new TypeReference<Map<String, Object>>() {
+                        });
+            } catch (Exception e) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR,
+                        "Stored client state is invalid");
+            }
+        }
+        return new ClientStateSnapshot(updatedAt, state);
+    }
+
+    private SignedLearnerDataDTO buildSignedLearnerExport(
+            Learner learner,
+            Map<String, MasteryEntryDTO> mastery,
+            List<String> plannedGoals) {
+        LearnerDataDTO data = new LearnerDataDTO(learner, mastery, plannedGoals, learner.getCopySources());
+        String signature = calculateSignature(data);
+        return new SignedLearnerDataDTO(data, signature);
+    }
+
+    private Map<String, MasteryEntryDTO> getStoredMasteryWithTimestamps(String skillpilotId) {
+        return masteryRepository.findByLearner_SkillpilotId(skillpilotId)
+                .stream()
+                .sorted(Comparator.comparing(Mastery::getGoalKey, Comparator.nullsLast(String::compareTo)))
+                .collect(Collectors.toMap(
+                        Mastery::getGoalKey,
+                        mastery -> new MasteryEntryDTO(mastery.getValue(), mastery.getUpdatedAt()),
+                        (left, right) -> right,
+                        LinkedHashMap::new));
+    }
+
+    private List<com.skillpilot.backend.api.MasteryHistoryEntry> getStoredMasteryHistory(String skillpilotId) {
+        return masteryRepository.findByLearner_SkillpilotId(skillpilotId)
+                .stream()
+                .filter(mastery -> mastery.getValue() >= 0.9)
+                .sorted(Comparator
+                        .comparing(Mastery::getUpdatedAt, Comparator.nullsLast(Comparator.reverseOrder()))
+                        .thenComparing(Mastery::getGoalKey, Comparator.nullsLast(String::compareTo)))
+                .map(mastery -> new com.skillpilot.backend.api.MasteryHistoryEntry(
+                        mastery.getGoalKey(),
+                        mastery.getUpdatedAt(),
+                        mastery.getValue()))
+                .toList();
     }
 
     @Transactional

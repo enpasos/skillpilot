@@ -672,6 +672,9 @@ public class CurriculaService {
     }
 
     public List<com.skillpilot.backend.api.TopicSummary> getTopics(String curriculumId) {
+        if (landscapeService.isCompatibilityOnlyLandscape(curriculumId)) {
+            return landscapeService.getCompatibilityArchiveTopics(curriculumId);
+        }
         LearningLandscape landscape = landscapeService.getById(curriculumId);
         if (landscape == null || landscape.getGoals() == null || landscape.getGoals().isEmpty()) {
             return java.util.Collections.emptyList();

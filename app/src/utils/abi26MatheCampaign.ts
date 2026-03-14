@@ -1,3 +1,4 @@
+import { CANONICAL_GYMNASIUM_ROOT_ID } from './curriculumDisplay'
 import { SKILLPILOT_GPT_URL_DE } from './skillpilotGpt'
 
 export type Abi26CourseLevel = 'GK' | 'LK'
@@ -12,19 +13,21 @@ export interface Abi26CampaignContext {
 }
 
 export const ABI26_CAMPAIGN_SLUG = 'abi26-he-mathe-k1'
-export const ABI26_MATH_CURRICULUM_ID = '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3'
+export const ABI26_ROOT_CURRICULUM_ID = CANONICAL_GYMNASIUM_ROOT_ID
+export const ABI26_MATH_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
+export const ABI26_ROOT_FILTER_ID = 'DE-HE'
 export const ABI26_GPT_URL = SKILLPILOT_GPT_URL_DE
 export const ABI26_FEEDBACK_URL = 'https://github.com/enpasos/skillpilot/issues/new/choose'
 export const ABI26_CONTEXT_STORAGE_KEY = 'skillpilot_campaign_context'
 
 export const ABI26_SCOPE_BY_LEVEL: Record<Abi26CourseLevel, string> = {
-  GK: 'f204141c-c20b-504d-808c-6bcb426ce453',
-  LK: 'be43163c-b2fb-5296-a1be-c97de53ee868',
+  GK: '9ad83149-3cb7-5b87-a617-3eae3715a50c',
+  LK: '464a6024-a2f8-53b4-84e0-d7b9df22a0b1',
 }
 
 export const ABI26_FOCUS_GOAL_BY_LEVEL: Record<Abi26CourseLevel, string> = {
-  GK: '0ba923a8-1641-51a7-b01e-7860bf97d513',
-  LK: 'bc60e300-96be-599a-89b6-8fcca380803d',
+  GK: '53de0639-c08b-53dc-8f70-9b519b7ecbbd',
+  LK: '68a262fc-43f4-5d23-af30-853870bfd45b',
 }
 
 const sanitizeValue = (value: string | null, maxLength = 120) => {
@@ -83,7 +86,7 @@ export const loadAbi26CampaignContext = (): Abi26CampaignContext | null => {
 export const buildAbi26CockpitUrl = (context: Abi26CampaignContext, skillpilotId: string) => {
   const focusGoalId = ABI26_FOCUS_GOAL_BY_LEVEL[context.courseLevel]
   const params = new URLSearchParams()
-  params.set('l', ABI26_MATH_CURRICULUM_ID)
+  params.set('l', ABI26_ROOT_CURRICULUM_ID)
   params.set('f', context.courseLevel)
   params.set('source', context.source)
   params.set('campaign', context.campaign)

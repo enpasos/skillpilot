@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import io.swagger.v3.oas.annotations.Operation;
@@ -64,10 +63,8 @@ public class LearnerAiController {
 
     @GetMapping("/{skillpilotId}/state")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
-    public UnifiedLearnerStateResponse getLearnerState(
-            @PathVariable String skillpilotId,
-            @RequestParam(defaultValue = "false") boolean includeCompatibilityAudit) {
-        learnerService.assertCompatibilityAuditAccess(skillpilotId, includeCompatibilityAudit);
+    public UnifiedLearnerStateResponse getLearnerState(@PathVariable String skillpilotId) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
         return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
     }
 
@@ -414,7 +411,8 @@ public class LearnerAiController {
             return stripped;
         }
         String normalized = IMAGE_PATH_PREFIX + relativePath + "\n\n" + stripped;
-        if ("bc60e300-96be-599a-89b6-8fcca380803d".equals(goalId)) {
+        if ("bc60e300-96be-599a-89b6-8fcca380803d".equals(goalId)
+                || "68a262fc-43f4-5d23-af30-853870bfd45b".equals(goalId)) {
             normalized = buildExamPackagedContent(relativePath, stripped);
         }
         return normalized;

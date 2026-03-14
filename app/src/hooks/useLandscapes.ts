@@ -113,7 +113,10 @@ export function useLandscapes(landscapeId?: string, language: string = 'de') {
       const query = `?lang=${language}`
       fetch(url + query, { signal })
         .then(async (res) => {
-          if (!res.ok) throw new Error(`Failed to load landscapes (${res.status})`)
+          if (!res.ok) {
+            const message = (await res.text()).trim()
+            throw new Error(message || `Failed to load landscapes (${res.status})`)
+          }
           const json = await res.json()
           // Expecting LandscapeOverviewResponse { summaries: [...] }
           const summaries = json.summaries || []
@@ -142,7 +145,10 @@ export function useLandscapes(landscapeId?: string, language: string = 'de') {
 
     fetch(url + query, { signal })
       .then(async (res) => {
-        if (!res.ok) throw new Error(`Failed to load landscape (${res.status})`)
+        if (!res.ok) {
+          const message = (await res.text()).trim()
+          throw new Error(message || `Failed to load landscape (${res.status})`)
+        }
         const json = (await res.json()) as LearningLandscape[]
 
         const items = json

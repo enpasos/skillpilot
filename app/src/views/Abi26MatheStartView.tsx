@@ -6,7 +6,9 @@ import {
   ABI26_FEEDBACK_URL,
   ABI26_FOCUS_GOAL_BY_LEVEL,
   ABI26_GPT_URL,
-  ABI26_MATH_CURRICULUM_ID,
+  ABI26_MATH_LANDSCAPE_ID,
+  ABI26_ROOT_CURRICULUM_ID,
+  ABI26_ROOT_FILTER_ID,
   ABI26_SCOPE_BY_LEVEL,
   buildAbi26CockpitUrl,
   buildAbi26StartPrompt,
@@ -98,7 +100,7 @@ export const Abi26MatheStartView: React.FC = () => {
       const curriculumRes = await fetch(toApi(`/api/ui/learners/${encodeURIComponent(id)}/curriculum`), {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ curriculumId: ABI26_MATH_CURRICULUM_ID }),
+        body: JSON.stringify({ curriculumId: ABI26_ROOT_CURRICULUM_ID }),
       })
       if (!curriculumRes.ok) {
         throw new Error('Das Cockpit konnte nicht vorkonfiguriert werden (Curriculum).')
@@ -113,23 +115,10 @@ export const Abi26MatheStartView: React.FC = () => {
         throw new Error('Das Cockpit konnte nicht vorkonfiguriert werden (Scope).')
       }
 
-      const closureRes = await fetch(
-        toApi(`/api/ui/landscapes/${encodeURIComponent(ABI26_MATH_CURRICULUM_ID)}/closure?lang=de`),
-      )
-      if (!closureRes.ok) {
-        throw new Error('Das Cockpit konnte nicht vorkonfiguriert werden (Landschaftsstruktur).')
+      const personalConfig: Record<string, { selected: boolean; filterId: string }> = {
+        [ABI26_ROOT_CURRICULUM_ID]: { selected: true, filterId: ABI26_ROOT_FILTER_ID },
+        [ABI26_MATH_LANDSCAPE_ID]: { selected: true, filterId: courseLevel },
       }
-
-      const closure = (await closureRes.json()) as Array<{ landscapeId?: string }>
-      const closureLandscapeIds = Array.isArray(closure)
-        ? closure.map((entry) => String(entry?.landscapeId || '').trim()).filter(Boolean)
-        : []
-
-      const personalConfig: Record<string, { selected: boolean; filterId: Abi26CourseLevel }> = {}
-      const targetLandscapeIds = new Set<string>([ABI26_MATH_CURRICULUM_ID, ...closureLandscapeIds])
-      targetLandscapeIds.forEach((landscapeId) => {
-        personalConfig[landscapeId] = { selected: true, filterId: courseLevel }
-      })
 
       const personalCurriculumRes = await fetch(
         toApi(`/api/ui/learners/${encodeURIComponent(id)}/personal-curriculum`),
@@ -157,7 +146,7 @@ export const Abi26MatheStartView: React.FC = () => {
 
       localStorage.setItem('skillpilot_id', id)
       localStorage.setItem('skillpilot_role', 'learner')
-      localStorage.setItem('skillpilot_learner_landscape', ABI26_MATH_CURRICULUM_ID)
+      localStorage.setItem('skillpilot_learner_landscape', ABI26_ROOT_CURRICULUM_ID)
       localStorage.setItem('skillpilot_lang', 'de')
       saveAbi26CampaignContext({ ...context, skillpilotId: id })
 

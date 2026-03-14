@@ -20,6 +20,7 @@ import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
@@ -185,6 +186,20 @@ public class LearnerServiceReproTest {
             e.printStackTrace();
             throw e;
         }
+    }
+
+    @Test
+    void goalBelongsToLandscapeFallsBackToArchivedMembershipRegistry() throws Exception {
+        when(landscapeService.getLandscapeIdForGoal("legacy-archived-goal")).thenReturn(null);
+        when(landscapeService.resolveLandscapeIdForGoalIncludingArchived("legacy-archived-goal"))
+                .thenReturn("legacy-overview");
+
+        Method method = LearnerService.class.getDeclaredMethod("goalBelongsToLandscape", String.class, String.class);
+        method.setAccessible(true);
+
+        boolean result = (boolean) method.invoke(learnerService, "legacy-archived-goal", "legacy-overview");
+
+        assertThat(result).isTrue();
     }
 
     @Test

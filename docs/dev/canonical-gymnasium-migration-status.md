@@ -48,11 +48,13 @@ Observed repo state:
 - Hessen upper-secondary mapping files present: `16`
 - Hessen Sek I mapping files present: `4`
 - Bavaria Gymnasium pilot mapping files present: `2`
+- the Bavaria Sek-I mathematics pilot now spans the shared canonical `J5-J10` spine with `64` reviewed mappings, including first explicit subrow refinement for `M8 3`, `M8 4`, `M9 3`, `M9 7`, and `M10 2`
 - Explicit learner cutover path to `Gymnasium (DE)` exists in backend and UI
 - Bulk cutover path for operators exists
 - Hessen upper-secondary legacy-to-canonical mapping fixtures now live in the DE-level archive `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/`
 - Hessen upper-secondary source-landscape jurisdiction metadata now lives in the DE-level provenance registry `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`, and both backend state filtering and the applicability compiler read from that stable path
 - Hessen upper-secondary source-goal atomic closures now live in the DE-level provenance registry `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`, and canonical champion/topic metrics can read that frozen closure instead of expanding the live legacy tree
+- Hessen upper-secondary source-goal memberships now also live in the DE-level provenance registry `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`, and Hessen cutover can infer subject membership for stored legacy planned/active goal IDs without loading the live legacy source tree
 - learner-facing curriculum selection now exposes frozen Hessen upper-secondary roots and subjects as explicit compatibility views instead of mixing them into the ordinary recommended selection flow
 - ordinary session-start and championship-registration pickers now hide compatibility views by default and only retain them when they are already the active selection
 - backend bootstrap for new learners now also delivers recommended curricula without compatibility views by default, and `/api/ui/landscapes` supports an explicit `includeCompatibility` switch instead of forcing the frontend to guess
@@ -60,10 +62,15 @@ Observed repo state:
 - when a learner is still inside a Hessen compatibility session, the cockpit setup dialog now runs in retirement-only mode instead of acting as a normal curriculum editor; migration/audit remain available there, but regular curriculum reconfiguration is no longer part of that path
 - the learner cockpit now also treats open Hessen compatibility sessions as read-only/audit-only for planning, active-goal selection, and SRS drilling; the legacy session remains visible, but no longer behaves like a normal active learning path
 - UI and AI write endpoints now also reject compatibility-session writes server-side for curriculum mutation, planning, active-goal changes, mastery, and client-state updates, so the retained Hessen route is backend-read-only as well as frontend-read-only
-- UI and AI learner-state routes now also require an explicit audit flag for retained Hessen compatibility sessions; without `includeCompatibilityAudit=true`, the old Hessen session is no longer served as a normal learner route
+- UI and AI learner-state routes no longer serve retained Hessen compatibility sessions at all as live state views; instead, the UI exposes a dedicated compatibility-archive export that snapshots the retired Hessen state for audit/recovery
+- the compatibility-archive export now resolves retired Hessen curriculum summaries from the frozen DE-level archive registry `curricula/DE/Gymnasium/archive/compatibility-landscape-registry.json` and serializes raw persisted learner state, so archive generation no longer depends on projecting a live legacy landscape graph
+- `/api/ui/landscapes?includeCompatibility=true` now also resolves Hessen compatibility summaries from the frozen DE-level archive registry `curricula/DE/Gymnasium/archive/compatibility-landscape-registry.json`, so compatibility overview/listing metadata no longer depends on loaded Hessen upper-secondary landscape files
+- `/api/ui/curricula/{curriculumId}/topics` now also resolves Hessen compatibility topic lists from the frozen DE-level archive registry `curricula/DE/Gymnasium/archive/compatibility-topic-summary-registry.json`, and direct Hessen compatibility `/api/ui/landscapes/{id}` plus `/closure` routes are retired
+- the `Abi26` Hessen mathematics bootstrap now provisions learners onto canonical `Gymnasium (DE)` with the `DE-HE` root filter plus canonical mathematics `GK`/`LK` scope, instead of selecting the retired Hessen mathematics curriculum directly
+- new UI and AI curriculum-selection writes now also reject retired Hessen compatibility IDs even when a caller already knows them, so compatibility routes are no longer re-openable as fresh learner selections
 - Reviewed canonical landscapes now carry committed node-level `applicability`; the currently enforced CI set now covers the full committed DE Gymnasium canonical set: `Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Englisch`, `Französisch`, `Griechisch`, `Chinesisch`, `Geschichte`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`
 - `validate:view-filters` is now clean on active reviewed findings for that scope: `0` errors, `0` active warnings, `10` accepted warnings recorded in `docs/qa-ci/applicability-accepted-warnings.json`
-- No tracked subtree has reached `legacy_view_retained` yet
+- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` has now effectively reached `legacy_view_retained` as an operational runtime state, even though hard repo deletion is still tracked separately
 - No legacy source tree has been deleted yet
 
 ## Input transfer lane
@@ -239,7 +246,7 @@ Scoring rule:
 
 | Legacy source tree | Canonical replacement | Runtime default | Cutover path | Input/assets mirrored | Audit/provenance survivability | Legacy UI/API detached | Gate score | Deletable now | Biggest blocker | Next work package |
 | --- | --- | --- | --- | --- | --- | --- | ---: | --- | --- | --- |
-| `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` | done | partial | done | done | done | done | 90% | no | the Hessen upper-secondary tree is still retained as an explicit audit/fallback artifact, so the repo still carries it even though it is no longer a normal learner-facing route | decide whether the remaining explicit audit fallback should stay repo-local, move into a frozen export artifact, or be retired completely once operators no longer need it |
+| `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` | done | done | done | done | done | done | 100% | no | the runtime migration/detachment work is complete, but the legacy tree is still intentionally kept in the active repo until an explicit delete/archive decision is executed | keep the Hessen upper-secondary tree frozen, shift active migration effort to Sek I, and prepare the explicit repo-delete/handoff step separately |
 | `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe` | partial | no | no | done | no | no | 25% | no | only selected Sek I bridges are adopted; there is no broad canonical replacement or learner cutover path yet | move from bridge pilots to the first subject-wide Sek I canonical slices and add an explicit lower-secondary cutover plan |
 | `curricula/DE/BY/Gymnasium` | partial | no | no | done | no | no | 25% | no | Bavaria is still pilot-shaped; broad canonical subject coverage and runtime migration are missing | extend Bavaria beyond pilot mappings into the first reviewed subject-wide canonical replacements, then add a first Bavaria learner-view cutover path |
 
@@ -248,7 +255,7 @@ Practical conclusion:
 - The overall migration program is around `55%`.
 - The input-transfer lane is at `100%` for the currently known mandatory scope.
 - Hard deletion readiness is still `0%`, because no tracked legacy tree is deletable today.
-- Soft delete-gate progress is now visible tree by tree: `90%` for Hessen upper-secondary, `25%` for Hessen lower-secondary, `25%` for Bavaria Gymnasium.
+- Soft delete-gate progress is now visible tree by tree: `100%` for Hessen upper-secondary, `25%` for Hessen lower-secondary, `25%` for Bavaria Gymnasium.
 
 All four statements can be true at the same time, because migration progress, retained-input transfer, delete-gate progress, and actual deletability are different planning dimensions.
 
@@ -295,7 +302,7 @@ This document therefore uses:
 
 - `55%` as the current migration-program score
 - `100%` as the current input-transfer score for the currently known mandatory scope
-- `82.5%` / `25%` / `25%` as the current delete-gate progress picture for the three tracked legacy trees
+- `100%` / `25%` / `25%` as the current delete-gate progress picture for the three tracked legacy trees
 - `0%` as the current hard deletion-readiness picture, because none of those trees can yet be removed from the active repo
 
 That is, in my view, the most honest planning representation of the current state.
