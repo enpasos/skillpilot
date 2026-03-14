@@ -50,6 +50,7 @@ Observed repo state:
 - Bavaria Gymnasium pilot mapping files present: `2`
 - Explicit learner cutover path to `Gymnasium (DE)` exists in backend and UI
 - Bulk cutover path for operators exists
+- Canonical state filtering still relies on transitional runtime derivation from mappings/provenance; compiled node-level `applicability` metadata is not implemented yet
 - No tracked subtree has reached `legacy_view_retained` yet
 - No legacy source tree has been deleted yet
 
@@ -238,6 +239,8 @@ Recommended update rhythm:
 
 - update this file whenever a subtree changes state
 - update the program score only from explicit state transitions
+- keep `docs/dev/canonical-gymnasium-applicability-design.md` as the review target for the next state-filter architecture step
+- treat checklist `R1-R7` and pilot gates `A1-A5` in that document as the review gate before compiler/validator implementation starts
 - do not increase the percentage because of "felt progress"
 
 ## My assessment

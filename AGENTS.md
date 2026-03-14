@@ -512,6 +512,7 @@ Practical rollout rules:
 - Prefer one DE-level school root such as `Gymnasium (DE)` in learner-facing curriculum selection, with subject landscapes as child modules.
 - Keep course-level filters such as `GK` / `LK` on the child subject landscapes.
 - Put Bundesland filters such as `DE-HE`, `DE-BY`, and `ALL` on the shared DE-level root and propagate them runtime-side into the selected canonical child landscapes.
+- Target runtime filtering for canonical Gymnasium should converge toward compiled node-level `applicability` metadata derived from mappings, provenance, and validated filtered-graph rules, rather than depending permanently on recursive runtime inference.
 
 Operational consequence for Sek I:
 

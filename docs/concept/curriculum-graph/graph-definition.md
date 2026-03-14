@@ -502,7 +502,40 @@ Everything else in this specification is either derived (definitions) or recomme
 
 A **filter** restricts the global curriculum graph to a subset of nodes (e.g., *Grade 12* AND *Subject: Mathematics* AND *Track: Advanced*).
 
-### 12.1 Filter predicate and induced subgraph
+### 12.1 Filter representation and applicability-backed projection
+
+Normatively, a filter is still just a predicate on goals.
+
+However, implementations MAY realize parts of that predicate via structured, goal-local metadata such as a generic compiled applicability field:
+
+$$
+Applicability: G \to \bigl(D \to \mathcal{P}(V_d)\bigr)
+$$
+
+where:
+
+- $D$ is a set of filter dimensions (for example `jurisdiction`, `courseLevel`, `gradeBand`, ...)
+- $V_d$ is the value vocabulary for dimension $d$
+- $\mathcal{P}(V_d)$ is the set of allowed value sets for that dimension
+
+Interpretation:
+
+- the graph definition does **not** hardcode any one application-specific dimension such as German Bundeslaender
+- the same mechanism can be used for jurisdiction, course level, track, year band, or similar scoped views
+- `tags` remain semantically weaker and less structured than compiled applicability metadata
+
+For an active filter selection $Q$ over such dimensions, a goal-local applicability-backed predicate can be written as:
+
+$$
+F_Q(g)=1
+\iff
+\forall d\in D_{active}:
+\bigl(Q(d)=ALL\bigr)\ \lor\ \bigl(Q(d)\in Applicability(g)(d)\bigr)
+$$
+
+This is only one possible realization of a filter, but it is the preferred one for derived, prevalidated scoped views.
+
+### 12.2 Filter predicate and induced subgraph
 
 A filter is modeled as a predicate:
 
@@ -538,7 +571,17 @@ This means:
 
 This avoids making scoped availability depend on whether a prerequisite was authored directly on a child or inherited from a filtered-out ancestor.
 
-### 12.2 Optimistic mode
+For any concrete filter realization, the induced graph
+
+$$
+(G_F, C_F, R_{d,F}, R_{eff}|_F)
+$$
+
+is the **projected filtered graph** for that view.
+
+If an implementation claims that a filtered learner view is structurally valid, then that claim MUST be evaluated on the projected filtered graph, not merely on raw metadata fields attached to nodes.
+
+### 12.3 Optimistic mode
 
 In **optimistic mode**, we first apply the filter and then compute availability inside the filtered graph only.  
 Intuition: when a learner is in the filtered scope (e.g., Grade 12), we temporarily assume that missing prerequisites from outside the scope do not block progress.
@@ -573,7 +616,7 @@ a \in A_F \setminus M_A \ \middle|\
 \right\}.
 $$
 
-### 12.3 Pessimistic mode or strict mode
+### 12.4 Pessimistic mode or strict mode
 
 In **pessimistic mode** or **strict mode**, candidate goals are still restricted to the filtered set, but prerequisites are enforced **globally** (including nodes outside the filter).
 
@@ -587,7 +630,7 @@ a \in A_F \setminus M_A \ \middle|\
 \right\}.
 $$
 
-### 12.4 Diagnostic: missing prerequisites
+### 12.5 Diagnostic: missing prerequisites
 
 For diagnosis, define the set of missing prerequisites of a goal $g$:
 
@@ -608,7 +651,7 @@ $$
 
 Operationally, one can start with optimistic mode for efficiency and exploration; if a learner struggles with a goal, switch to pessimistic mode (or compute $Missing_{out}$) to identify prerequisite gaps outside the current filter.
 
-### 12.5 Optional: relaxed pessimism via a prerequisite scope
+### 12.6 Optional: relaxed pessimism via a prerequisite scope
 
 A “weakened” pessimistic approach can be modeled by choosing a **scope** set $S \subseteq G$ of prerequisites that must be enforced (e.g., only prerequisites from the last one or two phases, or only prerequisites up to a bounded depth).
 

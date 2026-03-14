@@ -115,7 +115,8 @@ Preferred shape:
 Implementation rule:
 
 - do not clone canonical subject files per Bundesland
-- derive state-specific visibility from mappings and provenance
+- current bridge behavior may derive state-specific visibility from mappings and provenance
+- target runtime behavior should use compiled node-level `applicability` metadata derived and validated ahead of time
 - propagate the selected root Bundesland filter runtime-side into the selected child landscapes
 
 ### 8. Normalize Sek I to a G9 year-level grid first

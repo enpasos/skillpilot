@@ -6,6 +6,7 @@ See also:
 
 - `docs/concept/curriculum-graph/canonical-gymnasium-rollout.md`
 - `docs/dev/canonical-gymnasium-migration-status.md`
+- `docs/dev/canonical-gymnasium-applicability-design.md`
 
 ## Purpose
 
@@ -276,6 +277,9 @@ WP2 result:
   - child subjects: `GK`, `LK`
 - current runtime rule:
   - the selected root Bundesland filter is propagated into the selected canonical child landscapes during goal filtering
+- current runtime rule is still transitional:
+  - canonical state visibility is currently derived at runtime from mappings and provenance
+  - target architecture should converge to compiled node-level `applicability`; see `docs/dev/canonical-gymnasium-applicability-design.md`
 - verification:
   - backend tests confirm loading of the pilot landscape and the repository mapping fixture
   - graph validation passes with the new pilot landscape present

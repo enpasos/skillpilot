@@ -59,6 +59,7 @@ These checks are already implemented and treated as `error`:
 - Validation is intentionally structural/algorithmic.
 - Didactic quality checks (sequencing quality, granularity, redundancy of meanings, etc.) remain part of manual QA (`curricula/QA/*`).
 - Learner-state semantics from the concept spec such as atomic mastery, frontier computation, and optimistic/pessimistic filter evaluation are currently **not** validated in CI.
+- A future filter-graph validator may validate projected filtered learner graphs derived from compiled `applicability`, but that is a separate concern from the current raw-landscape validator.
 - Additional structural rules should be added here first, then implemented in `validateGraph.ts`, then rolled out in CI.
 
 ## Current compatibility model vs. target model
@@ -150,6 +151,41 @@ The recent updates in `docs/concept/curriculum-graph/graph-definition.md` do **n
   These are learner-state/runtime semantics, not static graph invariants.
 - **Optimistic / pessimistic filter frontier semantics**  
   These describe scoped runtime evaluation, not a property of a landscape JSON in isolation.
+- **Applicability-backed filtered learner graphs**  
+  These can become a CI target, but only as a projection validator that first materializes filtered graphs from compiled `applicability` and then validates those projected graphs.
+
+## Planned filter-graph validation layer (not yet implemented in CI)
+
+The concept spec now makes an important distinction:
+
+- raw landscape validation on the full authored graph
+- projected filtered-graph validation on learner-facing scoped views
+
+The current `validate:graph` command covers only the first category.
+
+Planned future addition:
+
+- a separate validator, tentatively `validate:view-filters`
+- input:
+  - committed canonical landscapes
+  - compiled `applicability` metadata
+  - supported filter dimensions / vocabularies
+- validation unit:
+  - projected filtered graphs such as `G[jurisdiction = DE-HE]`
+  - later, if needed, selected multi-dimensional combinations
+
+Expected rule family for that validator:
+
+- `APV-*` for applicability and projected-view validation
+
+Planned validation focus:
+
+- malformed compiled applicability metadata
+- empty visible clusters in a projected filtered graph
+- visible goals with invisible prerequisites in a projected filtered graph
+- visible goals not reachable from the filtered root through visible `contains` edges
+
+This layer is intentionally documented here already so CI semantics stay aligned with the concept spec, even before the implementation lands.
 
 ### Future-rule prerequisites before rollout
 

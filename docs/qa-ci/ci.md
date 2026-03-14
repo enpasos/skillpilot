@@ -43,6 +43,12 @@ The graph rule catalog is documented in:
 - default: `GVR-*` rules are strict (failing)
 - legacy-warn mode: `VALIDATE_GRAPH_STRICT_RULES=0 npm run validate:graph`
 
+Current scope note:
+
+- this job validates the full authored landscapes as committed
+- it does **not** yet validate projected filtered learner graphs derived from compiled `applicability`
+- once a dedicated filter-graph validator exists, it should be documented and added as a separate CI step or job rather than silently folded into the current raw-landscape rule set
+
 ### 3. `backend-ci`
 
 Purpose: validate backend (`backend/`) via Gradle checks.
