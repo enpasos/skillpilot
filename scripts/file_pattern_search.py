@@ -8,6 +8,7 @@ the runner image does not provide ripgrep.
 
 from __future__ import annotations
 
+import os
 import re
 import shutil
 import subprocess
@@ -20,6 +21,11 @@ def to_relative(root: Path, path_str: str) -> str:
     if path.is_absolute():
         return str(path.relative_to(root))
     return path_str
+
+
+def _should_ignore_result(path_str: str) -> bool:
+    path = Path(path_str)
+    return "__pycache__" in path.parts or path.suffix == ".pyc"
 
 
 def _iter_files(root: Path, scan_roots: Iterable[str]) -> Iterator[Path]:
@@ -49,7 +55,10 @@ def _find_matches_with_python(root: Path, pattern: str, scan_roots: Iterable[str
             continue
         content = payload.decode("utf-8", errors="ignore")
         if compiled_pattern.search(content):
-            matches.append(str(path.relative_to(root)))
+            relative = str(path.relative_to(root))
+            if _should_ignore_result(relative):
+                continue
+            matches.append(relative)
     return sorted(set(matches))
 
 
@@ -68,11 +77,19 @@ def _find_matches_with_git_grep(root: Path, pattern: str, scan_roots: Iterable[s
         raise SystemExit(
             result.stderr.strip() or f"`git grep` failed with exit code {result.returncode}"
         )
-    return sorted({to_relative(root, line) for line in result.stdout.splitlines() if line})
+    return sorted(
+        {
+            relative
+            for line in result.stdout.splitlines()
+            if line
+            for relative in [to_relative(root, line)]
+            if not _should_ignore_result(relative)
+        }
+    )
 
 
 def find_matching_files(root: Path, pattern: str, scan_roots: Iterable[str]) -> list[str]:
-    rg = shutil.which("rg")
+    rg = None if os.environ.get("SKILLPILOT_DISABLE_RG") == "1" else shutil.which("rg")
     if rg:
         result = subprocess.run(
             [rg, "-l", pattern, *scan_roots],
@@ -85,7 +102,15 @@ def find_matching_files(root: Path, pattern: str, scan_roots: Iterable[str]) -> 
             raise SystemExit(
                 result.stderr.strip() or f"`rg` failed with exit code {result.returncode}"
             )
-        return sorted({to_relative(root, line) for line in result.stdout.splitlines() if line})
+        return sorted(
+            {
+                relative
+                for line in result.stdout.splitlines()
+                if line
+                for relative in [to_relative(root, line)]
+                if not _should_ignore_result(relative)
+            }
+        )
 
     git_grep_matches = _find_matches_with_git_grep(root, pattern, scan_roots)
     if git_grep_matches is not None:

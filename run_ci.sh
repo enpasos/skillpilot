@@ -27,13 +27,13 @@ python3 scripts/validate_schemas.py
 echo "--> Validating Curriculum Goal IDs (UUIDs)"
 python3 scripts/validate_goal_ids_uuid.py
 echo "--> Validating Hessen Upper-Secondary Archive Paths"
-python3 scripts/validate_hessen_upper_secondary_archive_paths.py
+SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_hessen_upper_secondary_archive_paths.py
 echo "--> Validating Hessen Upper-Secondary Legacy References"
-python3 scripts/validate_hessen_upper_secondary_legacy_refs.py
+SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_hessen_upper_secondary_legacy_refs.py
 echo "--> Validating Hessen Lower-Secondary Archive Paths"
-python3 scripts/validate_hessen_lower_secondary_archive_paths.py
+SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_hessen_lower_secondary_archive_paths.py
 echo "--> Validating Hessen Lower-Secondary Legacy References"
-python3 scripts/validate_hessen_lower_secondary_legacy_refs.py
+SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_hessen_lower_secondary_legacy_refs.py
 
 echo ""
 echo "=========================================="
