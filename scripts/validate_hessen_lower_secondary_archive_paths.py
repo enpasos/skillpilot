@@ -5,8 +5,9 @@ from __future__ import annotations
 
 import fnmatch
 import json
-import subprocess
 from pathlib import Path
+
+from file_pattern_search import find_matching_files
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -29,33 +30,6 @@ def load_legacy_pattern() -> str:
     return rf"{legacy_tree_path}|{legacy_tree_name}"
 
 
-def find_matching_files(archive_root: Path, legacy_pattern: str) -> list[str]:
-    archive_arg = (
-        str(archive_root.relative_to(ROOT))
-        if archive_root.is_absolute() and archive_root.is_relative_to(ROOT)
-        else str(archive_root)
-    )
-    result = subprocess.run(
-        ["rg", "-l", legacy_pattern, archive_arg],
-        cwd=ROOT,
-        text=True,
-        capture_output=True,
-        check=False,
-    )
-    if result.returncode not in (0, 1):
-        raise SystemExit(result.stderr.strip() or f"`rg` failed with exit code {result.returncode}")
-    matches: list[str] = []
-    for line in result.stdout.splitlines():
-        if not line:
-            continue
-        path = Path(line)
-        if path.is_absolute():
-            matches.append(str(path.relative_to(ROOT)))
-        else:
-            matches.append(line)
-    return matches
-
-
 def matches_allowlist(path: str, allowlist: list[str]) -> bool:
     return any(fnmatch.fnmatch(path, pattern) for pattern in allowlist)
 
@@ -66,7 +40,12 @@ def main() -> None:
     archive_root = ROOT / registry["archivePath"]
     allowlist = registry.get("allowedRawLegacyPathGlobs", [])
 
-    matches = find_matching_files(archive_root, legacy_pattern)
+    archive_arg = (
+        str(archive_root.relative_to(ROOT))
+        if archive_root.is_absolute() and archive_root.is_relative_to(ROOT)
+        else str(archive_root)
+    )
+    matches = find_matching_files(ROOT, legacy_pattern, [archive_arg])
     allowed = [path for path in matches if matches_allowlist(path, allowlist)]
     violations = [path for path in matches if not matches_allowlist(path, allowlist)]
 

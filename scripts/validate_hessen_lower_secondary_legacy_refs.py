@@ -5,8 +5,9 @@ from __future__ import annotations
 
 import fnmatch
 import json
-import subprocess
 from pathlib import Path
+
+from file_pattern_search import find_matching_files, to_relative
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -18,28 +19,12 @@ def load_registry() -> dict:
         return json.load(handle)
 
 
-def to_relative(path_str: str) -> str:
-    path = Path(path_str)
-    if path.is_absolute():
-        return str(path.relative_to(ROOT))
-    return path_str
-
-
 def matches_any(path: str, patterns: list[str]) -> bool:
     return any(fnmatch.fnmatch(path, pattern) for pattern in patterns)
 
 
 def find_matches(pattern: str, scan_roots: list[str]) -> list[str]:
-    result = subprocess.run(
-        ["rg", "-l", pattern, *scan_roots],
-        cwd=ROOT,
-        text=True,
-        capture_output=True,
-        check=False,
-    )
-    if result.returncode not in (0, 1):
-        raise SystemExit(result.stderr.strip() or f"`rg` failed with exit code {result.returncode}")
-    return [to_relative(line) for line in result.stdout.splitlines() if line]
+    return [to_relative(ROOT, line) for line in find_matching_files(ROOT, pattern, scan_roots)]
 
 
 def main() -> None:
