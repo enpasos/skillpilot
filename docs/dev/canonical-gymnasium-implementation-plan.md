@@ -115,7 +115,7 @@ Adoption checklist for a subtree:
 
 Current operational baseline:
 
-- Hessen lower-secondary source JSON plus the core lower-secondary provenance registries now survive in DE-level archive/provenance lanes, but runtime retirement work remains open
+- Hessen lower-secondary source JSON, mapping fixtures, and the core lower-secondary provenance registries now survive in DE-level archive/provenance lanes; the original tree is retired from the active repo
 - Hessen upper-secondary source JSON now survives only as archived DE-level snapshots under `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/`; the original tree is retired from the active repo
 - the first canonical Sek-I normalization target is the shared G9-aligned year-level grid `5-10`; duration-specific source labels stay in provenance and archived inputs
 - retained state-owned assets such as `abi/`, source bundles, and derived exam packages are expected to survive the transition in state-scoped DE archive lanes
@@ -172,8 +172,14 @@ Current operational baseline:
 - the Hessen Sek-I backend learner-cutover path now also covers the frozen mixed overview root across the currently supported `Mathematik`/`Physik`/`Chemie`/`Biologie`/`Französisch` surface; lower-secondary physics still auto-selects canonical mathematics to keep the existing cross-subject bridge visible, and lower-secondary French now cuts over onto the shared canonical French landscape instead of blocking mixed-overview retirement
 - ordinary learner entry now also prefers the canonical DE path over Hessen Sek-I legacy roots: the lower-secondary Hessen overview and subject roots are hidden by default from bootstrap and general picker surfaces, but remain retainable when they are already the active selection
 - the frozen Hessen lower-secondary source-JSON lane is now mirrored under `curricula/DE/Gymnasium/input/DE-HE/lower-secondary/source-json/` (`6` files), and `curricula/DE/Gymnasium/provenance/source-landscape-registry.json` now also exposes `archiveSourcePath` for those lower-secondary landscapes
+- Hessen Sek-I legacy-to-canonical mapping fixtures now also live in the DE-level archive lane `curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/`
+- frozen Hessen Sek-I compatibility summaries and topic lists now also resolve from the DE-level archive registries `curricula/DE/Gymnasium/archive/compatibility-landscape-registry.json` and `curricula/DE/Gymnasium/archive/compatibility-topic-summary-registry.json`
+- `scripts/validate_hessen_lower_secondary_archive_paths.py` and `scripts/validate_hessen_lower_secondary_legacy_refs.py` now fence retained-asset and repo-level references for Hessen Sek-I, and both checks are wired into `.github/workflows/ci.yml` plus local `run_ci.sh`
+- the Hessen lower-secondary delete handoff has now been executed: the original tree is gone from the active repo path, and `bash scripts/run_hessen_lower_secondary_delete_handoff_dry_run.sh` now serves as the post-retirement verification command against the surviving archive/provenance/mapping lanes
 - Hessen Sek-I source-goal closures and goal memberships are now also frozen in the shared DE-level provenance registries `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json` and `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`, so lower overview/root survivability no longer depends on the live legacy tree
 - the currently cutover-supported Hessen Sek-I legacy learner bundle is now frontend- and backend-read-only across `Mathematik`/`Physik`/`Chemie`/`Biologie`/`Französisch`; mixed overview sessions that resolve into that supported bundle also reject active-learning writes once the canonical cutover surface exists
+- the first Bavaria learner-cutover path is now operational for direct legacy `Mathematik` learners: Bavaria `Mathematik` migrates into `Gymnasium (DE)` with the root filter `DE-BY`, canonical Mathematics selected, and normalized planned-scope continuation on the shared canonical Math spine
+- ordinary learner entry now also prefers the canonical DE path over the Bavaria legacy root: `Gymnasium (Bayern)` is hidden by default from general overview/bootstrap surfaces and only retained when it is already the active learner selection
 - the canonical Mathematics pilot function corridor is `cutover_ready`
 - the canonical Physics motion corridor is `cutover_ready`
 - the canonical Physics E.2 mechanics corridor is `cutover_ready`
@@ -204,7 +210,7 @@ Current operational baseline:
 The migration has now entered the explicit close-out phase:
 
 - Hessen upper-secondary is already retired from the active repo
-- the remaining program risk is dominated by Hessen Sek I and Bavaria tree retirement
+- the remaining program risk is now dominated by Bavaria tree retirement
 - therefore the primary top-line progress number should no longer be the historical subtree-adoption score alone
 
 From here on, the main overall percentage should be the completion-track score from
@@ -214,7 +220,7 @@ From here on, the main overall percentage should be the completion-track score f
 
 Current close-out headline:
 
-- `72.5%`
+- `80.8%`
 
 Operational consequence:
 

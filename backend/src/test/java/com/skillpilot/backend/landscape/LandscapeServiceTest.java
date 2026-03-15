@@ -28,6 +28,7 @@ class LandscapeServiceTest {
         private static final String CANONICAL_MUSIC_ID = "f620c251-c1e1-41c1-b4e1-b10950b43608";
         private static final String CANONICAL_ECONOMICS_ID = "605bdaf6-32d5-56fd-8d92-5a80c2fd2901";
         private static final String HESSEN_UPPER_MATH_ID = "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3";
+        private static final String BAVARIA_GYMNASIUM_ROOT_ID = "12322e3f-f351-5d40-b4ea-4a13d7e15854";
         private static final String HESSEN_LOWER_OVERVIEW_ID = "f050ee48-6891-4f83-995f-0f8be5e31b7f";
         private static final String HESSEN_LOWER_OVERVIEW_WHY_ID = "27e64f66-856d-5316-ad35-653259580816";
         private static final String HESSEN_LOWER_MATH_ID = "b167b4cd-4b78-4c84-a721-6b2adbbcab3c";
@@ -124,15 +125,35 @@ class LandscapeServiceTest {
 
                 assertThat(response.getSummaries()).extracting(LandscapeSummary::getCurriculumId)
                                 .contains(CANONICAL_GYMNASIUM_ROOT_ID)
-                                .doesNotContain("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da", HESSEN_LOWER_OVERVIEW_ID);
+                                .doesNotContain("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da", HESSEN_LOWER_OVERVIEW_ID,
+                                                BAVARIA_GYMNASIUM_ROOT_ID);
                 assertThat(landscapeService.getBaseCurricula(false))
                                 .extracting(LandscapeSummary::getCurriculumId)
                                 .contains(CANONICAL_GYMNASIUM_ROOT_ID)
-                                .doesNotContain("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da", HESSEN_LOWER_OVERVIEW_ID);
+                                .doesNotContain("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da", HESSEN_LOWER_OVERVIEW_ID,
+                                                BAVARIA_GYMNASIUM_ROOT_ID);
         }
 
         @Test
-        void getOverviewMarksHessenLowerOverviewAsLegacyHiddenByDefault() {
+        void getOverviewMarksBavariaGymnasiumRootAsLegacyHiddenByDefault() {
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory("../curricula");
+                ObjectMapper objectMapper = new ObjectMapper();
+                LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
+
+                LandscapeOverviewResponse response = landscapeService.getOverview("de", true);
+
+                LandscapeSummary bavariaRootSummary = response.getSummaries().stream()
+                                .filter(summary -> BAVARIA_GYMNASIUM_ROOT_ID.equals(summary.getCurriculumId()))
+                                .findFirst()
+                                .orElseThrow();
+
+                assertThat(bavariaRootSummary.isLegacyHiddenByDefault()).isTrue();
+                assertThat(bavariaRootSummary.isCompatibilityOnly()).isFalse();
+        }
+
+        @Test
+        void getOverviewServesHessenLowerOverviewFromCompatibilityArchive() {
                 LandscapeProperties properties = new LandscapeProperties();
                 properties.setDirectory("../curricula");
                 ObjectMapper objectMapper = new ObjectMapper();
@@ -149,8 +170,8 @@ class LandscapeServiceTest {
                                 .findFirst()
                                 .orElseThrow();
 
-                assertThat(lowerOverviewSummary.isLegacyHiddenByDefault()).isTrue();
-                assertThat(lowerOverviewSummary.isCompatibilityOnly()).isFalse();
+                assertThat(lowerOverviewSummary.isLegacyHiddenByDefault()).isFalse();
+                assertThat(lowerOverviewSummary.isCompatibilityOnly()).isTrue();
                 assertThat(canonicalRootSummary.isLegacyHiddenByDefault()).isFalse();
         }
 

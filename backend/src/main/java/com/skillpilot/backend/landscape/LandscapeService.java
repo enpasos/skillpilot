@@ -61,12 +61,14 @@ public class LandscapeService {
             "a8c23058-6998-49f2-9f3b-a85e951d5ab0",
             "a334a745-1d67-4e1d-86a5-dadc04f144d2");
     private static final Set<String> LEGACY_HIDDEN_BY_DEFAULT_LANDSCAPE_IDS = Set.of(
+            "12322e3f-f351-5d40-b4ea-4a13d7e15854",
             "f050ee48-6891-4f83-995f-0f8be5e31b7f",
             "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
             "996d097a-cac2-4b5f-979a-b3a0b9803265",
             "bea90c22-b9c5-4c0c-9b10-89d875f50772",
             "71438941-0ceb-46ee-ad31-773cee700779",
-            "762de708-85fa-4324-958e-56002a318f7f");
+            "762de708-85fa-4324-958e-56002a318f7f",
+            "c1600692-e543-5cf2-a399-6bd96e6b817f");
 
     private final LandscapeProperties properties;
     private final ObjectMapper objectMapper;

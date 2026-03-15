@@ -70,7 +70,7 @@ Observed repo state:
   - `1` overview
   - `16` subject files
 - Hessen upper-secondary mapping files present: `16`
-- Hessen Sek I mapping files present: `4`
+- Hessen Sek I mapping files present: `5`
 - Bavaria Gymnasium pilot mapping files present: `2`
 - the Bavaria Sek-I mathematics pilot now spans the shared canonical `J5-J10` spine with `64` reviewed mappings, including first explicit subrow refinement for `M8 3`, `M8 4`, `M9 3`, `M9 7`, and `M10 2`
 - the Hessen Sek-I mathematics pilot now carries `33` explicit mappings and reaches reviewed row coverage beyond the old function/quadratic slice: J5 number basics, linear equations/inequalities, quadratic binomial-form routes, roots, similarity/Strahlensatz, Pythagoras, circle/cylinder, and integer-exponent rules
@@ -92,10 +92,16 @@ Observed repo state:
 - Explicit learner cutover path to `Gymnasium (DE)` exists in backend and UI
 - Bulk cutover path for operators exists
 - the Hessen Sek-I learner cutover path now also covers the frozen mixed overview root across the currently supported `Mathematik`/`Physik`/`Chemie`/`Biologie`/`Französisch` surface; lower-secondary physics still auto-selects canonical mathematics for the existing bridge prerequisites, and lower-secondary French now cuts over onto the shared canonical French landscape instead of blocking mixed-overview retirement
+- the first Bavaria learner cutover path is now operational for direct legacy `Mathematik` learners: Bavaria `Mathematik` can migrate into `Gymnasium (DE)` with the root filter `DE-BY`, canonical Mathematics selected, and normalized planned-scope continuation on the shared canonical Math spine
+- ordinary learner entry now also prefers the canonical DE path over the Bavaria legacy root: `Gymnasium (Bayern)` is hidden by default from general overview/bootstrap surfaces and only retained when it is already the active learner selection
 - ordinary learner entry now also prefers the canonical DE path over Hessen Sek-I legacy roots: lower-secondary Hessen landscapes are hidden by default from the general overview/bootstrap surface and only reappear when they are already the active selection
 - the frozen Hessen Sek-I source-JSON lane is now mirrored under `curricula/DE/Gymnasium/input/DE-HE/lower-secondary/source-json/` (`6` files), and the shared source-landscape registry now also offers `archiveSourcePath` for those lower-secondary landscapes so provenance survives outside the live legacy tree
 - Hessen Sek-I source-goal atomic closures and goal memberships now also live in the shared DE-level provenance registries `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json` and `curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json`, so lower overview/root survival no longer depends on expanding the live legacy tree for archived closure or membership lookups
 - Hessen Sek-I legacy learner sessions are now detached as active runtime paths across the currently supported lower-secondary bundle: `Mathematik`/`Physik`/`Chemie`/`Biologie`/`Französisch` sessions, including mixed overview sessions that resolve into that bundle, are frontend- and backend-read-only once the canonical cutover surface is available
+- Hessen Sek-I legacy-to-canonical mapping fixtures now also live in the DE-level archive lane `curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/`
+- frozen Hessen Sek-I compatibility summaries and topic lists now also resolve from the DE-level archive registries `curricula/DE/Gymnasium/archive/compatibility-landscape-registry.json` and `curricula/DE/Gymnasium/archive/compatibility-topic-summary-registry.json`
+- `scripts/validate_hessen_lower_secondary_archive_paths.py` and `scripts/validate_hessen_lower_secondary_legacy_refs.py` now fence retained-asset and repo-level references for Hessen Sek-I, and both checks are wired into `.github/workflows/ci.yml` plus local `run_ci.sh`
+- the Hessen lower-secondary delete handoff has now been executed: the original tree is gone from the active repo path, and `bash scripts/run_hessen_lower_secondary_delete_handoff_dry_run.sh` now serves as the post-retirement verification command against the surviving archive/provenance/mapping lanes
 - Hessen upper-secondary legacy-to-canonical mapping fixtures now live in the DE-level archive `curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/`
 - Hessen upper-secondary source-landscape jurisdiction metadata now lives in the DE-level provenance registry `curricula/DE/Gymnasium/provenance/source-landscape-registry.json`, and both backend state filtering and the applicability compiler read from that stable path
 - Hessen upper-secondary source-goal atomic closures now live in the DE-level provenance registry `curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json`, and canonical champion/topic metrics can read that frozen closure instead of expanding the live legacy tree
@@ -128,7 +134,7 @@ Observed repo state:
 - `validate:view-filters` is now clean on active reviewed findings for that scope: `0` errors, `0` active warnings, `8` accepted warnings recorded in `docs/qa-ci/applicability-accepted-warnings.json`
 - `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` has now crossed from `legacy_view_retained` to `legacy_deleted` at tree level: only the DE-level input/provenance lanes survive as operational artifacts
 - `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` is the first tracked legacy source tree that has actually been deleted from the active repo
-- the migration has therefore entered the explicit close-out phase: the remaining work is dominated by retiring `Gymnasium_9_Mittelstufe` and `DE/BY/Gymnasium`, not by starting new pilot lanes
+- the migration has therefore entered the explicit close-out phase: the remaining work is now dominated by retiring `DE/BY/Gymnasium`, not by starting new pilot lanes
 
 ## Input transfer lane
 
@@ -314,36 +320,36 @@ Scoring rule:
 | Legacy source tree | Canonical replacement | Runtime default | Cutover path | Input/assets mirrored | Audit/provenance survivability | Legacy UI/API detached | Gate score | Deletable now | Biggest blocker | Next work package |
 | --- | --- | --- | --- | --- | --- | --- | ---: | --- | --- | --- |
 | `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` | done | done | done | done | done | done | 100% | yes | none; delete handoff executed and CI now enforces that the tree stays absent | closed; keep the DE-level provenance/archive registries as the surviving audit trail and leave the post-retirement gate in CI |
-| `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe` | done | partial | done | done | done | done | 92.5% | no | ordinary defaulting is still only partial because active Hessen Sek-I legacy selections remain retainable until the retirement handoff removes the live tree from the runtime path | execute the Hessen Sek-I retirement registry/archive-path gate and delete-handoff dry run, then remove the live tree once the surviving DE-level retained-asset lane is verified |
-| `curricula/DE/BY/Gymnasium` | partial | no | no | done | no | no | 25% | no | Bavaria is still pilot-shaped; broad canonical subject coverage and runtime migration are missing | extend Bavaria beyond pilot mappings into the first reviewed subject-wide canonical replacements, then add a first Bavaria learner-view cutover path |
+| `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe` | done | done | done | done | done | done | 100% | yes | none; delete handoff executed and CI now enforces the surviving DE-level archive/provenance/mapping lane | closed; keep the DE-level retained-asset, mapping, and provenance registries as the surviving audit trail and leave the post-retirement gate in CI |
+| `curricula/DE/BY/Gymnasium` | partial | partial | partial | done | no | no | 42.5% | no | Bavaria is still pilot-shaped; audit survivability, broader canonical subject coverage, and legacy detachment are still missing even though Math entry/cutover now prefer the DE route | extend Bavaria beyond pilot mappings into the first reviewed subject-wide canonical replacements, then freeze Bavaria audit/provenance outside the live tree and start detaching the remaining learner-facing legacy paths |
 
 ## Current completion-track score
 
 Tracked-tree calculation:
 
 ```text
-score = (100 + 92.5 + 25) / 3
-      = 72.50%
+score = (100 + 100 + 42.5) / 3
+      = 80.83%
 ```
 
 Working completion-track score:
 
-- `72.5%`
+- `80.8%`
 
 Interpretation:
 
 - this is now the main overall percentage for "how close are we to actually finishing?"
 - it is anchored directly in the two remaining delete-handoff programs
-- it should increase step by step as Hessen Sek I and Bavaria close their remaining delete gates
+- it should increase step by step as Bavaria closes its remaining delete gates
 - it only reaches `100%` when all tracked legacy trees are fully retired from the active repo
 
 Practical conclusion:
 
 - The historical rollout program score is around `55%`.
-- The close-out headline score is now `72.5%`.
+- The close-out headline score is now `80.8%`.
 - The input-transfer lane is at `100%` for the currently known mandatory scope.
-- Hard legacy-tree retirement progress is now `33%` at tracked-tree granularity, because Hessen upper-secondary has actually been removed from the active repo while Hessen lower-secondary and Bavaria Gymnasium have not.
-- Soft delete-gate progress is now visible tree by tree: `100%` for Hessen upper-secondary, `92.5%` for Hessen lower-secondary, `25%` for Bavaria Gymnasium.
+- Hard legacy-tree retirement progress is now `67%` at tracked-tree granularity, because Hessen upper-secondary and Hessen lower-secondary have actually been removed from the active repo while Bavaria Gymnasium has not.
+- Soft delete-gate progress is now visible tree by tree: `100%` for Hessen upper-secondary, `100%` for Hessen lower-secondary, `42.5%` for Bavaria Gymnasium.
 
 All four statements can be true at the same time, because migration progress, retained-input transfer, delete-gate progress, and actual deletability are different planning dimensions.
 
@@ -390,10 +396,10 @@ If we collapse both into one naive percentage too early, the number becomes misl
 
 This document therefore uses:
 
-- `72.5%` as the current completion-track headline score
+- `80.8%` as the current completion-track headline score
 - `55%` as the current historical migration-program score
 - `100%` as the current input-transfer score for the currently known mandatory scope
-- `100%` / `92.5%` / `25%` as the current delete-gate progress picture for the three tracked legacy trees
+- `100%` / `100%` / `42.5%` as the current delete-gate progress picture for the three tracked legacy trees
 - `33%` as the current hard legacy-tree retirement picture, because one of the three tracked legacy trees has now actually been removed from the active repo without breaking the verified handoff paths
 
 That is, in my view, the most honest planning representation of the current state.

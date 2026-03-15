@@ -29,6 +29,11 @@ export const LEGACY_HESSEN_GYMNASIUM_LOWER_IDS = new Set([
   '762de708-85fa-4324-958e-56002a318f7f',
 ])
 
+export const LEGACY_BAVARIA_GYMNASIUM_IDS = new Set([
+  '12322e3f-f351-5d40-b4ea-4a13d7e15854',
+  'c1600692-e543-5cf2-a399-6bd96e6b817f',
+])
+
 interface CurriculumDisplayTitleInput {
   curriculumId?: string
   title?: string
@@ -45,6 +50,9 @@ export const isLegacyHessenGymnasiumUpper = (curriculumId?: string | null) =>
 export const isLegacyHessenGymnasiumLower = (curriculumId?: string | null) =>
   !!curriculumId && LEGACY_HESSEN_GYMNASIUM_LOWER_IDS.has(curriculumId)
 
+export const isLegacyBavariaGymnasium = (curriculumId?: string | null) =>
+  !!curriculumId && LEGACY_BAVARIA_GYMNASIUM_IDS.has(curriculumId)
+
 export const isCompatibilityOnlyCurriculum = (
   curriculumId?: string | null,
   compatibilityOnly?: boolean | null,
@@ -53,7 +61,9 @@ export const isCompatibilityOnlyCurriculum = (
 export const isLegacyHiddenByDefaultCurriculum = (
   curriculumId?: string | null,
   legacyHiddenByDefault?: boolean | null,
-) => Boolean(legacyHiddenByDefault) || isLegacyHessenGymnasiumLower(curriculumId)
+) => Boolean(legacyHiddenByDefault)
+  || isLegacyHessenGymnasiumLower(curriculumId)
+  || isLegacyBavariaGymnasium(curriculumId)
 
 export const getCurriculumDisplayTitle = ({
   curriculumId,

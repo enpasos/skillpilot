@@ -79,6 +79,7 @@ public class LearnerControllerIntegrationTest {
     private static final String HESSEN_GYMNASIUM_LOWER_CHEMISTRY_ID = "bea90c22-b9c5-4c0c-9b10-89d875f50772";
     private static final String HESSEN_GYMNASIUM_LOWER_BIOLOGY_ID = "71438941-0ceb-46ee-ad31-773cee700779";
     private static final String HESSEN_GYMNASIUM_LOWER_FRENCH_ID = "762de708-85fa-4324-958e-56002a318f7f";
+    private static final String BAVARIA_GYMNASIUM_MATH_ID = "c1600692-e543-5cf2-a399-6bd96e6b817f";
     private static final String CANONICAL_PHYSICS_GK_PERSONAL_CONFIG = """
             {
               "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "GK"}
@@ -207,6 +208,12 @@ public class LearnerControllerIntegrationTest {
             "0074dc7c-b4ab-5bfb-b1b7-a8f5cdb9accc";
     private static final String LEGACY_BAYERN_PHYSICS_MOMENTUM_CONSERVATION_ID =
             "713ad139-bcb8-5a71-a520-3f194a0f8754";
+    private static final String LEGACY_BAYERN_FUNCTION_CLUSTER_ID =
+            "f9538605-8bf4-5279-b00a-c18786f9cc51";
+    private static final String LEGACY_BAYERN_FUNCTION_CONCEPT_ID =
+            "0042dc1e-859b-5c95-95a4-48aeff1bae63";
+    private static final String CANONICAL_SEK1_MATH_CLUSTER_ID =
+            "5c6b7342-0f67-4b4c-894d-fd83a6df64b3";
     private static final String LEGACY_SEK1_LINEAR_FUNCTIONS_ID = "faafd111-21a1-4f67-945a-6bff60b3e19b";
     private static final String CANONICAL_SEK1_LINEAR_FUNCTIONS_ID = "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186";
     private static final String LEGACY_SEK1_MATH_ASSIGNMENTS_ID = "4261f57b-13c9-4733-a0dc-72f2dcd4726d";
@@ -911,6 +918,39 @@ public class LearnerControllerIntegrationTest {
         assertThat(response.body())
                 .doesNotContain(LEGACY_SEK1_LINEAR_FUNCTIONS_ID)
                 .doesNotContain(LEGACY_SEK1_MATH_ASSIGNMENTS_ID);
+    }
+
+    @Test
+    void cutoverEndpointMigratesLegacyBavariaMathLearnerToCanonicalGymnasiumRoot() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(BAVARIA_GYMNASIUM_MATH_ID);
+        learnerRepository.save(learner);
+
+        plannedGoalRepository.save(new PlannedGoal(learner, LEGACY_BAYERN_FUNCTION_CLUSTER_ID));
+        masteryRepository.save(new Mastery(learner, LEGACY_BAYERN_FUNCTION_CONCEPT_ID, 1.0));
+
+        HttpResponse<String> response = postCutover();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+
+        Learner migratedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode persistedConfig = objectMapper.readTree(migratedLearner.getPersonalCurriculum());
+        JsonNode body = objectMapper.readTree(response.body());
+        JsonNode planned = body.path("goals").path("planned");
+
+        assertThat(migratedLearner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(body.path("curriculum").path("curriculumId").asText()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(persistedConfig.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-BY");
+        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persistedConfig.path(CANONICAL_MATH_PILOT_ID).has("filterId")).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_PHYSICS_PILOT_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_CHEMISTRY_ID).path("selected").asBoolean()).isFalse();
+        assertThat(persistedConfig.path(CANONICAL_BIOLOGY_ID).path("selected").asBoolean()).isFalse();
+        assertThat(planned).hasSize(1);
+        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_SEK1_MATH_CLUSTER_ID);
+        assertThat(response.body())
+                .doesNotContain(LEGACY_BAYERN_FUNCTION_CLUSTER_ID)
+                .doesNotContain(LEGACY_BAYERN_FUNCTION_CONCEPT_ID);
     }
 
     @Test

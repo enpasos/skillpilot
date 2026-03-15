@@ -36,6 +36,8 @@ Steps:
 5. `python scripts/validate_goal_ids_uuid.py`
 6. `python scripts/validate_hessen_upper_secondary_archive_paths.py`
 7. `python scripts/validate_hessen_upper_secondary_legacy_refs.py`
+8. `python scripts/validate_hessen_lower_secondary_archive_paths.py`
+9. `python scripts/validate_hessen_lower_secondary_legacy_refs.py`
 
 The graph rule catalog is documented in:
 
@@ -52,6 +54,8 @@ Current scope note:
 - it additionally validates projected filtered learner graphs via `validate:view-filters`
 - it additionally enforces the Hessen Oberstufe retained-asset boundary: under `curricula/DE/Gymnasium/input/DE-HE/abi`, legacy `Gymnasiale_Oberstufe` path strings may only remain inside allowlisted raw archival provenance files from `curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json`
 - it also enforces the Hessen Oberstufe repo-handoff boundary: the retired legacy tree must stay absent from the active repo, and active tooling/runtime/test surfaces may mention it only from the explicit allowlist in `curricula/DE/Gymnasium/provenance/hessen-upper-secondary-retirement-registry.json`
+- it now also enforces the Hessen Sek-I retained-asset boundary: under `curricula/DE/Gymnasium/input/DE-HE/lower-secondary`, legacy `Gymnasium_9_Mittelstufe` path strings are forbidden in retained operational archive content
+- it also enforces the Hessen Sek-I repo-handoff boundary: active tooling/runtime/test surfaces may mention the lower-secondary legacy tree only from the explicit allowlist in `curricula/DE/Gymnasium/provenance/hessen-lower-secondary-retirement-registry.json`
 - the current CI scope for `validate:view-filters` is the reviewed canonical DE Gymnasium set (`Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Englisch`, `Französisch`, `Griechisch`, `Chinesisch`, `Geschichte`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`)
 - the validator can be widened locally via `APPLICABILITY_VALIDATION_SCOPE=all npm run validate:view-filters`, but CI does not enforce that broader scope yet
 - reviewed residual `APV-201` / `APV-202` cases are tracked in `docs/qa-ci/applicability-accepted-warnings.json` and are reported as accepted warnings, not active warnings
@@ -79,5 +83,5 @@ bash run_ci.sh
 This runs:
 
 1. app checks (`validate:graph`, `validate:view-filters`, `lint`, `build`)
-2. repo-level data checks (`validate_schemas.py`, `validate_goal_ids_uuid.py`, `validate_hessen_upper_secondary_archive_paths.py`, `validate_hessen_upper_secondary_legacy_refs.py`)
+2. repo-level data checks (`validate_schemas.py`, `validate_goal_ids_uuid.py`, `validate_hessen_upper_secondary_archive_paths.py`, `validate_hessen_upper_secondary_legacy_refs.py`, `validate_hessen_lower_secondary_archive_paths.py`, `validate_hessen_lower_secondary_legacy_refs.py`)
 3. backend checks (`./gradlew clean check --no-daemon`)

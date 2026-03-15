@@ -33,6 +33,7 @@ Migration convention:
 - `DE-HE/upper-secondary/source-json/` holds the frozen Hessen upper-secondary source-JSON snapshots plus deck/report sidecars that are still needed by authoring/deploy tooling after legacy-tree retirement
 - `DE-HE/lower-secondary/` receives transferable material from `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe/input/`
 - `DE-HE/lower-secondary/source-json/` holds the frozen Hessen lower-secondary source-JSON snapshots that are needed for shared provenance and later delete-handoff work
+- `DE-HE/lower-secondary/retained-asset-registry.json` defines the DE-level retained-asset and mapping lane for Hessen Sek-I delete handoff work
 - `DE-HE/abi/` receives retained Hessen Abitur material from `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/`
 - `DE-BY/gymnasium/` is the landing zone for Bavaria source/input material that currently still lives directly under `curricula/DE/BY/Gymnasium/`
 - `DE-BY/abi/` is reserved for later Bavaria exam/release inputs if they become part of the canonical migration scope
@@ -55,6 +56,9 @@ Current snapshot:
 - `DE-HE/upper-secondary/source-json/` now mirrors the Hessen upper-secondary source-JSON snapshot lane (`39` files), and the shared source-landscape registry prefers those archive snapshots via `archiveSourcePath` for tooling that still needs frozen source landscapes.
 - `DE-HE/lower-secondary/` now mirrors the transferred Hessen Sek-I input bundle.
 - `DE-HE/lower-secondary/source-json/` now mirrors the Hessen Sek-I source-JSON snapshot lane (`6` files), and the shared source-landscape registry now also offers `archiveSourcePath` entries for those frozen lower-secondary landscapes.
+- `DE-HE/lower-secondary/retained-asset-registry.json` now pins the retained Hessen Sek-I archive lane plus the DE-level mapping archive `curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/`.
+- `python3 scripts/validate_hessen_lower_secondary_archive_paths.py` now enforces that no operational retained-asset file under `DE-HE/lower-secondary/` still embeds `Gymnasium_9_Mittelstufe` path strings.
+- the original Hessen Sek-I tree is now retired from the active repo path; `bash scripts/run_hessen_lower_secondary_delete_handoff_dry_run.sh` now serves as the post-retirement verification command against the surviving archive/provenance/mapping lanes.
 - `DE-BY/gymnasium/` now mirrors the frozen Bavaria subject-source JSON snapshot.
 - `DE-HE/abi/` now mirrors the full retained Hessen Abitur bundle.
 - `DE-HE/retained-asset-registry.json` now defines the stable DE-level tooling defaults for Hessen upper-secondary exam assets and archived mapping files, while source-landscape lookup stays centralized in the DE-level provenance registry.

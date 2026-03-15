@@ -115,7 +115,7 @@ class LandscapeServiceSourceRegistryTest {
                     {
                       "landscapeId": "legacy-lower-overview",
                       "jurisdiction": "DE-HE",
-                      "sourcePath": "curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe/json/DE_HES_S_GYM_1_OVERVIEW.de.json",
+                      "sourcePath": "curricula/DE/HE/Kultusministerium/retired-lower-secondary/json/DE_HES_S_GYM_1_OVERVIEW.de.json",
                       "archiveSourcePath": "curricula/DE/Gymnasium/input/DE-HE/lower-secondary/source-json/legacy-lower-overview.de.json.snapshot",
                       "archivePath": "curricula/DE/Gymnasium/input/DE-HE/lower-secondary/"
                     }
