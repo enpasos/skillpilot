@@ -7,10 +7,11 @@ import argparse
 import json
 from datetime import date
 from pathlib import Path
+from hessen_upper_secondary_paths import resolve_hessen_upper_secondary_abi_directory
 
 
 ROOT = Path(__file__).resolve().parent.parent
-ABI_DIR = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Mathe"
+ABI_DIR = resolve_hessen_upper_secondary_abi_directory("math")
 DEFAULT_BLUEPRINT = ABI_DIR / "abi_2026_mathe_exam_blueprint.json"
 DEFAULT_SLOT_MATRIX = ABI_DIR / "slot_matrix.json"
 DEFAULT_COVERAGE = ABI_DIR / "coverage_requirements.json"

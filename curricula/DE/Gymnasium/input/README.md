@@ -51,6 +51,8 @@ Current snapshot:
 - `DE-HE/lower-secondary/` now mirrors the transferred Hessen Sek-I input bundle.
 - `DE-BY/gymnasium/` now mirrors the frozen Bavaria subject-source JSON snapshot.
 - `DE-HE/abi/` now mirrors the full retained Hessen Abitur bundle.
+- `DE-HE/retained-asset-registry.json` now defines the stable DE-level tooling defaults for Hessen upper-secondary exam assets and archived mapping files, while source-landscape lookup stays centralized in the DE-level provenance registry.
+- Operational Hessen `abi/` metadata now follows that same split: `task_bank.json` headers use `sourceLandscapeId` plus the shared provenance registry, and blueprint/source-catalog/release-bundle source references point at retained DE-level `DE-HE/abi/` or `DE-HE/upper-secondary/` assets instead of hardcoded live legacy source paths.
 - `DE-BY/abi/` remains a reserved lane until Bavaria exam assets become part of the active migration scope.
 
 Deletion rule:

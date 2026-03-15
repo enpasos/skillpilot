@@ -156,6 +156,8 @@ Current operational baseline:
 - `/api/ui/curricula/{curriculumId}/topics` now also resolves Hessen compatibility topics from the frozen DE-level archive registry `curricula/DE/Gymnasium/archive/compatibility-topic-summary-registry.json`, while direct `/api/ui/landscapes/{id}` and `/closure` routes for Hessen compatibility landscapes are retired
 - the `Abi26` Hessen mathematics bootstrap now provisions learners onto canonical `Gymnasium (DE)` with `DE-HE` at the root and canonical mathematics `GK`/`LK` filters, instead of selecting the retired Hessen mathematics curriculum directly
 - new learner curriculum selections now also reject retired Hessen compatibility IDs server-side even when the caller already knows those IDs, so the compatibility route cannot be reopened as a fresh runtime path
+- Hessen upper-secondary exam/deploy/adoption helper tooling now resolves retained `abi/` defaults plus archived mapping defaults via `curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json`, and resolves legacy subject-landscape source paths through the shared DE-level provenance source registry instead of per-script hardcoded legacy-tree defaults
+- DE-level Hessen `abi/` operational metadata now follows the same rule: task banks store `sourceLandscapeId` plus the shared provenance registry path instead of embedding legacy source-landscape file paths, while blueprint/source-catalog/release-bundle source references now only target retained DE-level `curricula/DE/Gymnasium/input/DE-HE/...` assets
 - an explicit backend bulk-cutover path with `dryRun` and a supplied learner-ID list is now available, so later Hessen -> DE migrations can be rehearsed and executed without exposing global learner listings
 - the operator-facing bulk-cutover UI now supports CSV export of dry-run/execution results and lets operators reduce the current input list to the `eligible` learner IDs before triggering the real migration
 - the canonical Mathematics pilot function corridor is `cutover_ready`
@@ -494,6 +496,16 @@ WP6 progress so far:
   - the Hessen `9.1` row and all five adopted J9 atoms now map exactly into that cluster
   - the new cluster reuses the reviewed `8.2` reactions bridge as its didactic base, and local frontier unlocking now covers the late J9 symbol-language endpoint `Redoxreaktionen und Oxidationszahlen`
   - mastery projection, planned-goal projection, and symbol-language frontier unlocking are covered by targeted backend tests
+- the Hessen Sek I chemistry ions/electrolysis bridge now extends reviewed adoption into `9.3 Elektrolyse und Ionenbegriff`:
+  - new canonical Sek-I ions/electrolysis cluster for conductivity, ions as charge carriers, and electrolysis of simple salt solutions
+  - the Hessen `9.3` row and all three adopted J9 atoms now map exactly into that cluster
+  - the new cluster reuses the reviewed `9.1` symbol-language bridge as its didactic base, and the upper-secondary `Elektrolyse beschreiben` route now additionally depends on the adopted Sek-I electrolysis anchor
+  - mastery projection, planned-goal projection, and local frontier unlocking for the widened ions/electrolysis slice are covered by targeted backend tests
+- the Hessen Sek I chemistry atomic-structure bridge now extends reviewed adoption into `10.1 Atombau, Periodensystem und Ionenbindung`:
+  - new canonical Sek-I atomic-structure-and-bonding cluster for core-shell model, Bohr energy levels, periodic-table orientation, ion formation via noble-gas rule, and ionic bonding
+  - the Hessen `10.1` row and all five adopted J10 atoms now map exactly into that cluster
+  - the new cluster reuses the reviewed `9.1` symbol-language bridge as its didactic base, while `Ionenbildung` additionally depends on the reviewed `9.3` ions anchor and the upper-secondary `Bindungsmodelle sicher nutzen` route now depends on the adopted Sek-I ionic-bonding anchor
+  - mastery projection, planned-goal projection, and local frontier unlocking for the widened atomic-structure slice are covered by targeted backend tests
 - first Hessen Sek I biology bridge slice added to the canonical DE biology landscape:
   - new canonical foundations-and-cells cluster for biology-as-science, characteristics of life, microscopy, plant cells, and plant/animal cell comparison
   - exact mappings for the adopted Sek-I biology atoms plus partial scope anchors from Hessen introductory biology and cells clusters

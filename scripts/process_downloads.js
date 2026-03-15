@@ -3,8 +3,15 @@ const path = require('path');
 const https = require('https');
 const crypto = require('crypto');
 
+const ROOT_DIR = path.resolve(__dirname, '..');
+const TOOLING_REGISTRY_PATH = path.join(
+    ROOT_DIR,
+    'curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json',
+);
+const toolingRegistry = JSON.parse(fs.readFileSync(TOOLING_REGISTRY_PATH, 'utf8'));
+
 // Target directory
-const TARGET_DIR = path.resolve('curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/input');
+const TARGET_DIR = path.join(ROOT_DIR, toolingRegistry.abiArchivePath, 'input');
 
 // Ensure target directory exists
 if (!fs.existsSync(TARGET_DIR)) {

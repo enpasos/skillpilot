@@ -9,12 +9,16 @@ import unicodedata
 from pathlib import Path
 
 from exam_release_utils import require_release_collection_specs, task_belongs_to_collection
+from hessen_upper_secondary_paths import resolve_hessen_upper_secondary_exam_paths
 
 
 ROOT = Path(__file__).resolve().parent.parent
-LANDSCAPE_PATH = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json"
-SLOT_MATRIX_PATH = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Mathe/slot_matrix.json"
-TASK_BANK_PATH = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Mathe/task_bank.json"
+EXAM_PATHS = resolve_hessen_upper_secondary_exam_paths("math")
+LANDSCAPE_PATH = EXAM_PATHS.landscape_path
+SLOT_MATRIX_PATH = EXAM_PATHS.slot_matrix_path
+TASK_BANK_PATH = EXAM_PATHS.task_bank_path
+SOURCE_LANDSCAPE_ID = EXAM_PATHS.source_landscape_id
+SOURCE_LANDSCAPE_REGISTRY_PATH = EXAM_PATHS.source_landscape_registry_path
 
 GK_PART1_ID = "bdf27846-8d7a-5a48-a108-3e5a9660e62a"
 LK_PART1_ID = "47d7c4aa-e6a0-5955-8c24-d2d07c3cb898"
@@ -425,7 +429,8 @@ def main() -> None:
     payload = {
         "examSpecId": "hessen-landesabitur-2026-math",
         "version": 1,
-        "landscapePath": str(LANDSCAPE_PATH.relative_to(ROOT)),
+        "sourceLandscapeId": SOURCE_LANDSCAPE_ID,
+        "sourceLandscapeRegistryPath": str(SOURCE_LANDSCAPE_REGISTRY_PATH.relative_to(ROOT)),
         "tasks": task_entries,
     }
 

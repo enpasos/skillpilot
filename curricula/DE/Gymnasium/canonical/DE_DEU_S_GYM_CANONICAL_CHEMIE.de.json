@@ -8,8 +8,8 @@
   "frameworkId": "canonical-gymnasium-chemistry",
   "title": "Chemie (Gymnasium, DE)",
   "titleEn": "Chemistry (Gymnasium, DE)",
-  "description": "Chemie für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt für spätere bundesländerübergreifende Angleichung und verankert erste Hessen-Sek-I-Brückenschnitte für Stoff-, Reaktions-, Symbol-, Sicherheits-, Trenn- und Lösungsgrundlagen.",
-  "descriptionEn": "Chemistry for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum as the starting point for later cross-state alignment and now anchors first Hessian lower-secondary bridge slices for substance, reaction, symbolic-language, safety, separation, and solution foundations.",
+  "description": "Chemie für das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollständig als Ausgangspunkt für spätere bundesländerübergreifende Angleichung und verankert erste Hessen-Sek-I-Brückenschnitte für Stoff-, Reaktions-, Symbol-, Atom-, Bindungs-, Ionen-, Elektrolyse-, Sicherheits-, Trenn- und Lösungsgrundlagen.",
+  "descriptionEn": "Chemistry for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum as the starting point for later cross-state alignment and now anchors first Hessian lower-secondary bridge slices for substance, reaction, symbolic-language, atomic, bonding, ion, electrolysis, safety, separation, and solution foundations.",
   "filters": [
     {
       "id": "GK",
@@ -25,8 +25,8 @@
       "id": "442c31c5-c561-5c7a-90bb-2335d779175c",
       "title": "Chemie",
       "titleEn": "Chemistry",
-      "description": "Gemeinsame Wurzel für Chemie am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig, behält sie als belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz und bindet erste Stoff-, Reaktions-, Symbol-, Sicherheits-, Trenn- und Lösungsgrundlagen aus der hessischen Sekundarstufe I an.",
-      "descriptionEn": "Shared root for chemistry at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum, keeps it as a reliable starting point for later cross-state convergence, and attaches first substance, reaction, symbolic-language, safety, separation, and solution foundations from Hessian lower secondary.",
+      "description": "Gemeinsame Wurzel für Chemie am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig, behält sie als belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz und bindet erste Stoff-, Reaktions-, Symbol-, Atom-, Bindungs-, Ionen-, Elektrolyse-, Sicherheits-, Trenn- und Lösungsgrundlagen aus der hessischen Sekundarstufe I an.",
+      "descriptionEn": "Shared root for chemistry at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum, keeps it as a reliable starting point for later cross-state convergence, and attaches first substance, reaction, symbolic-language, atomic, bonding, ion, electrolysis, safety, separation, and solution foundations from Hessian lower secondary.",
       "weight": 1.2,
       "tags": [
         "GK",
@@ -40,6 +40,8 @@
         "3588c15e-adbe-5b81-b3a7-10da20574e3d",
         "a00d302b-7762-4b9d-a6d7-de0c58b35540",
         "fb3bdf39-4baf-4510-a192-c8a12fbf5dba",
+        "702f774d-ad93-4a6b-98f6-c53310e176c4",
+        "1e803ef8-fc76-493d-85c5-de877cd38fda",
         "323a222e-5db8-53c5-b2dc-6f9c1d0d277c",
         "a0893975-1677-5dae-bbfb-675789be4f17",
         "ae683d59-06a5-59be-87b5-b8648fd138c8",
@@ -1050,6 +1052,485 @@
       "type": "atomic"
     },
     {
+      "id": "702f774d-ad93-4a6b-98f6-c53310e176c4",
+      "shortKey": "canonical_chemistry_sek1_ions_electrolysis_cluster",
+      "title": "Ionen und Elektrolyse (Sek I)",
+      "titleEn": "Ions and Electrolysis (Lower Secondary)",
+      "description": "Cluster für Leitfähigkeit, Ionen als Ladungsträger und die Deutung einfacher Elektrolysen aus der gymnasialen Sekundarstufe I.",
+      "descriptionEn": "Cluster for conductivity, ions as charge carriers, and the interpretation of simple electrolysis processes from lower secondary Gymnasium chemistry.",
+      "weight": 3,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "018bec90-445f-4a88-b8bc-228f8335dee6",
+        "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+        "70b12d1c-abaf-45c6-ae9e-b571e9cbc126"
+      ],
+      "requires": [
+        "fb3bdf39-4baf-4510-a192-c8a12fbf5dba"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION",
+          "BC_ENERGIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Ionen und Elektrolyse",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.IONS_ELECTROLYSIS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "cdff3dff-00c4-4a72-9dd0-10b04c8e2c47"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "018bec90-445f-4a88-b8bc-228f8335dee6",
+      "shortKey": "canonical_chemistry_sek1_conductivity",
+      "title": "Leitfähigkeit von Stoffen vergleichen",
+      "titleEn": "Compare conductivity of substances",
+      "description": "Die lernende Person kann feste, flüssige und gelöste Stoffe im Hinblick auf elektrische Leitfähigkeit vergleichen und Leiter sowie Nichtleiter fachlich unterscheiden.",
+      "descriptionEn": "The learner can compare solid, liquid, and dissolved substances with respect to electrical conductivity and distinguish conductors from insulators.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "53fd1bfd-facb-54ae-b2dc-f667ed1414fc"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Ionen und Elektrolyse",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.CONDUCTIVITY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "33e281e4-db5b-4c3c-b04e-73ceaf38170c"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+      "shortKey": "canonical_chemistry_sek1_ions_charge_carriers",
+      "title": "Ionen als Ladungsträger erklären",
+      "titleEn": "Explain ions as charge carriers",
+      "description": "Die lernende Person kann Ionenbildung beschreiben, Kationen und Anionen unterscheiden und ihre Rolle als Ladungsträger in Lösungen fachlich erläutern.",
+      "descriptionEn": "The learner can describe ion formation, distinguish cations and anions, and explain their role as charge carriers in solutions.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "018bec90-445f-4a88-b8bc-228f8335dee6",
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Ionen und Elektrolyse",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.IONS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "9c2c627d-a8dc-47ff-83fa-6785bf132475"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "70b12d1c-abaf-45c6-ae9e-b571e9cbc126",
+      "shortKey": "canonical_chemistry_sek1_electrolysis_salt_solutions",
+      "title": "Elektrolyse einfacher Salzlösungen deuten",
+      "titleEn": "Interpret electrolysis of simple salt solutions",
+      "description": "Die lernende Person kann die Elektrolyse einer einfachen Salzlösung mit Ionenwanderung und Elektrodenprozessen fachlich deuten.",
+      "descriptionEn": "The learner can interpret the electrolysis of a simple salt solution using ion migration and electrode processes.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+        "22133f29-ef02-4408-8f8d-2bbea3275d91"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION",
+          "BC_ENERGIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Ionen und Elektrolyse",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ELECTROLYSIS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "cdbc8b2c-fa4b-4ece-8c55-172c2f3df648"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "1e803ef8-fc76-493d-85c5-de877cd38fda",
+      "shortKey": "canonical_chemistry_sek1_atomic_structure_bonding_cluster",
+      "title": "Atombau, Periodensystem und Ionenbindung (Sek I)",
+      "titleEn": "Atomic Structure, Periodic Table, and Ionic Bonding (Lower Secondary)",
+      "description": "Cluster für Atommodelle, Elektronenverteilung, Periodensystem, Ionenbildung und Ionenbindung aus der gymnasialen Sekundarstufe I.",
+      "descriptionEn": "Cluster for atomic models, electron distribution, periodic table, ion formation, and ionic bonding from lower secondary Gymnasium chemistry.",
+      "weight": 5,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [
+        "72236f2c-771e-4ab6-933a-e549ee49d15b",
+        "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+        "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+        "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+        "950c73c6-4ed1-488a-9267-1142e95e0055"
+      ],
+      "requires": [
+        "fb3bdf39-4baf-4510-a192-c8a12fbf5dba"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Atombau und Bindung",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ATOMIC_STRUCTURE_BONDING"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "a50d139e-bdf7-4bf2-872c-41f2a566a201"
+        }
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "72236f2c-771e-4ab6-933a-e549ee49d15b",
+      "shortKey": "canonical_chemistry_sek1_core_shell_model",
+      "title": "Kern-Hülle-Modell und Elementarteilchen beschreiben",
+      "titleEn": "Describe the core-shell model and elementary particles",
+      "description": "Die lernende Person kann den Aufbau von Atomen mit dem Kern-Hülle-Modell beschreiben und Protonen, Neutronen sowie Elektronen fachlich einordnen.",
+      "descriptionEn": "The learner can describe the structure of atoms using the core-shell model and correctly classify protons, neutrons, and electrons.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "9b5d6326-d27c-4ece-8c72-debda705464a"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Atombau und Bindung",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.CORE_SHELL_MODEL"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "fd02c993-0950-41a4-a861-7522d1bd3f8c"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+      "shortKey": "canonical_chemistry_sek1_energy_level_model",
+      "title": "Energiestufenmodell und Elektronenverteilung anwenden",
+      "titleEn": "Apply the energy level model and electron distribution",
+      "description": "Die lernende Person kann das Bohrsche Energiestufenmodell nutzen und Elektronenverteilungen einfacher Atome fachlich korrekt angeben.",
+      "descriptionEn": "The learner can use Bohr's energy level model and correctly state electron distributions of simple atoms.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "72236f2c-771e-4ab6-933a-e549ee49d15b"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Atombau und Bindung",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ENERGY_LEVEL_MODEL"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "9ebc6606-c22c-4fe9-8852-4e3eecc3f4db"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+      "shortKey": "canonical_chemistry_sek1_periodic_table",
+      "title": "Periodensystem zur Strukturdeutung nutzen",
+      "titleEn": "Use the periodic table for structural interpretation",
+      "description": "Die lernende Person kann Ordnungsprinzipien des Periodensystems anwenden, Hauptgruppen ablesen und daraus einfache Aussagen über Atome ableiten.",
+      "descriptionEn": "The learner can apply ordering principles of the periodic table, read main groups, and derive simple statements about atoms from it.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "f5efab9d-2c61-44ea-b36a-87f873b51fd8"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Atombau und Bindung",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.PERIODIC_TABLE"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "2a469485-d750-453a-ad40-a31e0c69c4d4"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+      "shortKey": "canonical_chemistry_sek1_ion_formation_noble_gas_rule",
+      "title": "Ionenbildung mit der Edelgasregel deuten",
+      "titleEn": "Interpret ion formation using the noble gas rule",
+      "description": "Die lernende Person kann Kationen- und Anionenbildung mithilfe der Edelgasregel fachlich deuten.",
+      "descriptionEn": "The learner can interpret the formation of cations and anions using the noble gas rule.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+        "4285d84a-2c9a-4d51-8250-8bed4daf2d2e"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Atombau und Bindung",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.ION_FORMATION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "85bfad0b-2308-40e2-9040-dc29794f7e93"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "950c73c6-4ed1-488a-9267-1142e95e0055",
+      "shortKey": "canonical_chemistry_sek1_ionic_bonding",
+      "title": "Ionenbindung und Ionengitter beschreiben",
+      "titleEn": "Describe ionic bonding and ion lattices",
+      "description": "Die lernende Person kann Ionengitter wie Natriumchlorid beschreiben und einfache Struktur-Eigenschafts-Bezüge fachlich herstellen.",
+      "descriptionEn": "The learner can describe ionic lattices such as sodium chloride and establish simple structure-property relationships.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Atombau und Bindung",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.IONIC_BONDING"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "41de0477-78e2-48b5-82f7-e5864f2f66cc"
+        }
+      },
+      "type": "atomic"
+    },
+    {
       "id": "323a222e-5db8-53c5-b2dc-6f9c1d0d277c",
       "title": "Einführungsphase Reaktionsgrundlagen",
       "titleEn": "Introductory Phase: Reaction Basics",
@@ -1352,7 +1833,8 @@
       ],
       "contains": [],
       "requires": [
-        "f0939f88-a6af-5334-ac4d-5d54732af25a"
+        "f0939f88-a6af-5334-ac4d-5d54732af25a",
+        "70b12d1c-abaf-45c6-ae9e-b571e9cbc126"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-chemistry",
@@ -1673,7 +2155,9 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "950c73c6-4ed1-488a-9267-1142e95e0055"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-chemistry",
         "demandLevel": "AB2",
@@ -2225,7 +2709,9 @@
         "LK"
       ],
       "contains": [],
-      "requires": [],
+      "requires": [
+        "950c73c6-4ed1-488a-9267-1142e95e0055"
+      ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-chemistry",
         "demandLevel": "AB2",

@@ -9,13 +9,15 @@ import json
 from pathlib import Path
 
 from exam_release_utils import resolve_release_collection_specs, task_belongs_to_collection
+from hessen_upper_secondary_paths import resolve_hessen_upper_secondary_exam_paths
 
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_SLOT_MATRIX = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/slot_matrix.json"
-DEFAULT_COVERAGE = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/coverage_requirements.json"
-DEFAULT_TASK_BANK = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Physik/task_bank.json"
-DEFAULT_LANDSCAPE = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json"
+EXAM_PATHS = resolve_hessen_upper_secondary_exam_paths("physics")
+DEFAULT_SLOT_MATRIX = EXAM_PATHS.slot_matrix_path
+DEFAULT_COVERAGE = EXAM_PATHS.coverage_path
+DEFAULT_TASK_BANK = EXAM_PATHS.task_bank_path
+DEFAULT_LANDSCAPE = EXAM_PATHS.landscape_path
 
 RELEASE_READY_STATUSES = {"reviewed", "approved"}
 

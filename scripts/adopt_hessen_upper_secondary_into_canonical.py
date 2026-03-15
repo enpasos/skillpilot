@@ -7,6 +7,10 @@ import json
 import uuid
 from pathlib import Path
 from typing import Any
+from hessen_upper_secondary_paths import (
+    resolve_hessen_upper_secondary_landscape_path,
+    resolve_hessen_upper_secondary_mapping_path,
+)
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -143,12 +147,10 @@ class SubjectConfig:
 
 MATH = SubjectConfig(
     subject_key="math",
-    source_landscape_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json",
+    source_landscape_path=resolve_hessen_upper_secondary_landscape_path("math"),
     target_landscape_path=REPO_ROOT
     / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
-    mapping_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_math_upper_secondary_to_canonical_math_pilot.json",
+    mapping_path=resolve_hessen_upper_secondary_mapping_path("math"),
     source_landscape_id="2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
     source_landscape_title="Mathematik Oberstufe (Hessen, KC 2024)",
     target_landscape_id="68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
@@ -194,12 +196,10 @@ MATH = SubjectConfig(
 
 PHYSICS = SubjectConfig(
     subject_key="physics",
-    source_landscape_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json",
+    source_landscape_path=resolve_hessen_upper_secondary_landscape_path("physics"),
     target_landscape_path=REPO_ROOT
     / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
-    mapping_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_physics_upper_secondary_to_canonical_physics_pilot.json",
+    mapping_path=resolve_hessen_upper_secondary_mapping_path("physics"),
     source_landscape_id="24f2ca0f-b94a-444e-bb70-677cb6f85c02",
     source_landscape_title="Physik Oberstufe (Hessen, KC 2024)",
     target_landscape_id="7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
@@ -237,12 +237,10 @@ PHYSICS = SubjectConfig(
 
 CHEMISTRY = SubjectConfig(
     subject_key="chemistry",
-    source_landscape_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_CHEMIE.de.json",
+    source_landscape_path=resolve_hessen_upper_secondary_landscape_path("chemistry"),
     target_landscape_path=REPO_ROOT
     / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
-    mapping_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_chemistry_upper_secondary_to_canonical_chemistry.json",
+    mapping_path=resolve_hessen_upper_secondary_mapping_path("chemistry"),
     source_landscape_id="2f391ba2-ba1e-40e4-a8d2-dff049516c13",
     source_landscape_title="Chemie Oberstufe (Hessen, KC 2024)",
     target_landscape_id="c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
@@ -277,12 +275,10 @@ CHEMISTRY = SubjectConfig(
 
 BIOLOGY = SubjectConfig(
     subject_key="biology",
-    source_landscape_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_BIOLOGIE.de.json",
+    source_landscape_path=resolve_hessen_upper_secondary_landscape_path("biology"),
     target_landscape_path=REPO_ROOT
     / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
-    mapping_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_biology_upper_secondary_to_canonical_biology.json",
+    mapping_path=resolve_hessen_upper_secondary_mapping_path("biology"),
     source_landscape_id="3e56aa75-c76c-4de5-883b-0aac98297846",
     source_landscape_title="Biologie Oberstufe (Hessen, KC 2024)",
     target_landscape_id="08a43a1b-d97e-522c-9dfa-c950a493364e",
@@ -317,12 +313,10 @@ BIOLOGY = SubjectConfig(
 
 INFORMATICS = SubjectConfig(
     subject_key="informatics",
-    source_landscape_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_INFORMATIK.de.json",
+    source_landscape_path=resolve_hessen_upper_secondary_landscape_path("informatics"),
     target_landscape_path=REPO_ROOT
     / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
-    mapping_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_informatics_upper_secondary_to_canonical_informatics.json",
+    mapping_path=resolve_hessen_upper_secondary_mapping_path("informatics"),
     source_landscape_id="c1a02ddd-736d-4975-920b-18b03aff147f",
     source_landscape_title="Informatik Oberstufe (Hessen, KC 2024)",
     target_landscape_id="7d51b38c-a149-5407-bddc-d2ce7878b020",
@@ -357,12 +351,10 @@ INFORMATICS = SubjectConfig(
 
 HISTORY = SubjectConfig(
     subject_key="history",
-    source_landscape_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_GESCHICHTE.de.json",
+    source_landscape_path=resolve_hessen_upper_secondary_landscape_path("history"),
     target_landscape_path=REPO_ROOT
     / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
-    mapping_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_history_upper_secondary_to_canonical_history.json",
+    mapping_path=resolve_hessen_upper_secondary_mapping_path("history"),
     source_landscape_id="bdc89685-73d3-446c-af5a-eaf642c07463",
     source_landscape_title="Geschichte Oberstufe (Hessen, KC 2024)",
     target_landscape_id="92406d94-e3c1-58ec-b7c6-12122278d25a",
@@ -397,12 +389,10 @@ HISTORY = SubjectConfig(
 
 GERMAN = SubjectConfig(
     subject_key="german",
-    source_landscape_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_DEUTSCH.de.json",
+    source_landscape_path=resolve_hessen_upper_secondary_landscape_path("german"),
     target_landscape_path=REPO_ROOT
     / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
-    mapping_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_german_upper_secondary_to_canonical_german.json",
+    mapping_path=resolve_hessen_upper_secondary_mapping_path("german"),
     source_landscape_id="f1ba2118-853f-4aa0-bef5-4f749bc621ed",
     source_landscape_title="Deutsch Oberstufe (Hessen, KC 2024)",
     target_landscape_id="67bd301b-e11a-582d-94ba-4f4b1a4cefff",
@@ -437,12 +427,10 @@ GERMAN = SubjectConfig(
 
 POLITICS_ECONOMICS = SubjectConfig(
     subject_key="politics_economics",
-    source_landscape_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_POLITIKWIRTSCHAFT.de.json",
+    source_landscape_path=resolve_hessen_upper_secondary_landscape_path("politics_economics"),
     target_landscape_path=REPO_ROOT
     / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
-    mapping_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_politics_economics_upper_secondary_to_canonical_politics_economics.json",
+    mapping_path=resolve_hessen_upper_secondary_mapping_path("politics_economics"),
     source_landscape_id="1d0e9f8f-0087-49e4-8ea2-976e5a89b165",
     source_landscape_title="Politik und Wirtschaft Oberstufe (Hessen, KC 2024)",
     target_landscape_id="51b60137-46e8-5498-973e-ea38bb32f327",
@@ -477,12 +465,10 @@ POLITICS_ECONOMICS = SubjectConfig(
 
 ENGLISH = SubjectConfig(
     subject_key="english",
-    source_landscape_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_ENGLISCH.de.json",
+    source_landscape_path=resolve_hessen_upper_secondary_landscape_path("english"),
     target_landscape_path=REPO_ROOT
     / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
-    mapping_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_english_upper_secondary_to_canonical_english.json",
+    mapping_path=resolve_hessen_upper_secondary_mapping_path("english"),
     source_landscape_id="bc2124fa-2974-46cc-85e7-2392e61250e1",
     source_landscape_title="Englisch Oberstufe (Hessen, KC 2024)",
     target_landscape_id="c8c84073-46ae-57ec-898a-882d08d7a72f",
@@ -517,12 +503,10 @@ ENGLISH = SubjectConfig(
 
 FRENCH = SubjectConfig(
     subject_key="french",
-    source_landscape_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_FRANZOESISCH.de.json",
+    source_landscape_path=resolve_hessen_upper_secondary_landscape_path("french"),
     target_landscape_path=REPO_ROOT
     / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
-    mapping_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_french_upper_secondary_to_canonical_french.json",
+    mapping_path=resolve_hessen_upper_secondary_mapping_path("french"),
     source_landscape_id="30acd190-609c-4109-8ee7-06fc5594af19",
     source_landscape_title="Französisch Oberstufe (Hessen, KC 2024)",
     target_landscape_id="96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977",
@@ -557,12 +541,10 @@ FRENCH = SubjectConfig(
 
 LATIN = SubjectConfig(
     subject_key="latin",
-    source_landscape_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_LATEIN.de.json",
+    source_landscape_path=resolve_hessen_upper_secondary_landscape_path("latin"),
     target_landscape_path=REPO_ROOT
     / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
-    mapping_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_latin_upper_secondary_to_canonical_latin.json",
+    mapping_path=resolve_hessen_upper_secondary_mapping_path("latin"),
     source_landscape_id="fe28bda8-03f3-4c4a-8286-7fcfce4eeac1",
     source_landscape_title="Latein Oberstufe (Hessen, KC 2024)",
     target_landscape_id="668cf206-941e-51f8-8704-3e8938631235",
@@ -597,12 +579,10 @@ LATIN = SubjectConfig(
 
 SPANISH = SubjectConfig(
     subject_key="spanish",
-    source_landscape_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_SPANISCH.de.json",
+    source_landscape_path=resolve_hessen_upper_secondary_landscape_path("spanish"),
     target_landscape_path=REPO_ROOT
     / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
-    mapping_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_spanish_upper_secondary_to_canonical_spanish.json",
+    mapping_path=resolve_hessen_upper_secondary_mapping_path("spanish"),
     source_landscape_id="936efc61-a4d5-49fd-8694-085d1347db80",
     source_landscape_title="Spanisch Oberstufe (Hessen, KC 2024)",
     target_landscape_id="90eedebf-9ea8-5247-85dd-31c147f907c3",
@@ -637,12 +617,10 @@ SPANISH = SubjectConfig(
 
 GREEK = SubjectConfig(
     subject_key="greek",
-    source_landscape_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_GRIECHISCH.de.json",
+    source_landscape_path=resolve_hessen_upper_secondary_landscape_path("greek"),
     target_landscape_path=REPO_ROOT
     / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
-    mapping_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_greek_upper_secondary_to_canonical_greek.json",
+    mapping_path=resolve_hessen_upper_secondary_mapping_path("greek"),
     source_landscape_id="c7209caa-18e5-4dd8-b68f-dd86e228d045",
     source_landscape_title="Griechisch Oberstufe (Hessen, KC 2024)",
     target_landscape_id="70a2cb55-127b-5c6e-b518-4a1c9f4f77a0",
@@ -677,12 +655,10 @@ GREEK = SubjectConfig(
 
 CHINESE = SubjectConfig(
     subject_key="chinese",
-    source_landscape_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_CHINESISCH.de.json",
+    source_landscape_path=resolve_hessen_upper_secondary_landscape_path("chinese"),
     target_landscape_path=REPO_ROOT
     / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
-    mapping_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_chinese_upper_secondary_to_canonical_chinese.json",
+    mapping_path=resolve_hessen_upper_secondary_mapping_path("chinese"),
     source_landscape_id="7651cbe2-5fb8-464d-b0c4-3e830cda41dd",
     source_landscape_title="Chinesisch Oberstufe (Hessen, KC 2024)",
     target_landscape_id="8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
@@ -717,12 +693,10 @@ CHINESE = SubjectConfig(
 
 MUSIC = SubjectConfig(
     subject_key="music",
-    source_landscape_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MUSIK.de.json",
+    source_landscape_path=resolve_hessen_upper_secondary_landscape_path("music"),
     target_landscape_path=REPO_ROOT
     / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
-    mapping_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_music_upper_secondary_to_canonical_music.json",
+    mapping_path=resolve_hessen_upper_secondary_mapping_path("music"),
     source_landscape_id="a8c23058-6998-49f2-9f3b-a85e951d5ab0",
     source_landscape_title="Musik Oberstufe (Hessen, KC 2024)",
     target_landscape_id="f620c251-c1e1-41c1-b4e1-b10950b43608",
@@ -757,12 +731,10 @@ MUSIC = SubjectConfig(
 
 ECONOMICS = SubjectConfig(
     subject_key="economics",
-    source_landscape_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_WIRTSCHAFT.de.json",
+    source_landscape_path=resolve_hessen_upper_secondary_landscape_path("economics"),
     target_landscape_path=REPO_ROOT
     / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
-    mapping_path=REPO_ROOT
-    / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/mapping/hessen_economics_upper_secondary_to_canonical_economics.json",
+    mapping_path=resolve_hessen_upper_secondary_mapping_path("economics"),
     source_landscape_id="a334a745-1d67-4e1d-86a5-dadc04f144d2",
     source_landscape_title="Wirtschaftswissenschaften Oberstufe (Hessen, KC 2024)",
     target_landscape_id="605bdaf6-32d5-56fd-8d92-5a80c2fd2901",

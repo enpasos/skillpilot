@@ -1,13 +1,17 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { resolveHessenUpperSecondaryAbiDirectory } from './hessenUpperSecondaryPaths';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '..');
 
 // Configuration
-const SOURCE_DIR = path.join(ROOT_DIR, 'curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Mathe/Klausurbeispiel2026_1');
+const SOURCE_DIR = path.join(
+  resolveHessenUpperSecondaryAbiDirectory('math'),
+  'Klausurbeispiel2026_1',
+);
 const TARGET_DIR = path.join(ROOT_DIR, 'app/public/assets/abi/2026_1');
 
 // Ensure target directory exists

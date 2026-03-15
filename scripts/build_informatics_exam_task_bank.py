@@ -9,12 +9,16 @@ import unicodedata
 from pathlib import Path
 
 from exam_release_utils import require_release_collection_specs, task_belongs_to_collection
+from hessen_upper_secondary_paths import resolve_hessen_upper_secondary_exam_paths
 
 
 ROOT = Path(__file__).resolve().parent.parent
-LANDSCAPE_PATH = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_INFORMATIK.de.json"
-SLOT_MATRIX_PATH = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Informatik/slot_matrix.json"
-TASK_BANK_PATH = ROOT / "curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi/Informatik/task_bank.json"
+EXAM_PATHS = resolve_hessen_upper_secondary_exam_paths("informatics")
+LANDSCAPE_PATH = EXAM_PATHS.landscape_path
+SLOT_MATRIX_PATH = EXAM_PATHS.slot_matrix_path
+TASK_BANK_PATH = EXAM_PATHS.task_bank_path
+SOURCE_LANDSCAPE_ID = EXAM_PATHS.source_landscape_id
+SOURCE_LANDSCAPE_REGISTRY_PATH = EXAM_PATHS.source_landscape_registry_path
 
 PHASE_ROOTS = {
     "b9cb98f0-16c5-5b5a-a15a-8f9e718a07c1": ("phase_practice", "E", "internet_web_programming"),
@@ -339,7 +343,8 @@ def main() -> None:
     payload = {
         "examSpecId": "hessen-landesabitur-2026-informatics",
         "version": 1,
-        "landscapePath": str(LANDSCAPE_PATH.relative_to(ROOT)),
+        "sourceLandscapeId": SOURCE_LANDSCAPE_ID,
+        "sourceLandscapeRegistryPath": str(SOURCE_LANDSCAPE_REGISTRY_PATH.relative_to(ROOT)),
         "tasks": task_entries,
     }
 

@@ -4,9 +4,10 @@ Prunes orphaned nodes (unreachable from root) from the Hessen Mathematics curric
 """
 import json
 from pathlib import Path
+from hessen_upper_secondary_paths import resolve_hessen_upper_secondary_landscape_path
 
 def main():
-    json_path = Path("curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json")
+    json_path = resolve_hessen_upper_secondary_landscape_path("math")
     
     with open(json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)

@@ -6,6 +6,10 @@ import json
 import uuid
 import re
 from pathlib import Path
+from hessen_upper_secondary_paths import (
+    resolve_hessen_upper_secondary_abi_directory,
+    resolve_hessen_upper_secondary_landscape_path,
+)
 
 def generate_uuid(seed: str) -> str:
     """Generate deterministic UUID from seed string."""
@@ -46,8 +50,8 @@ def extract_tasks_from_markdown(file_path: Path) -> dict:
     return tasks
 
 def main():
-    base_path = Path("curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi")
-    json_path = Path("curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json")
+    base_path = resolve_hessen_upper_secondary_abi_directory("math")
+    json_path = resolve_hessen_upper_secondary_landscape_path("math")
     
     # Parse Markdown files
     lk_file = base_path / "abi_2026_mathe_lk.md"

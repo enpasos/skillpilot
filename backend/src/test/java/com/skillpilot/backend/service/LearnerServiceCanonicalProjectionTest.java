@@ -85,6 +85,16 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String LEGACY_SEK1_CHEMISTRY_SYMBOLS_FORMULAS_ID = "aba0f8ad-06c3-4553-ad37-e060c38cb0ff";
     private static final String LEGACY_SEK1_CHEMISTRY_REACTION_EQUATIONS_ID = "877990c1-6534-4328-81aa-5351396eb3d1";
     private static final String LEGACY_SEK1_CHEMISTRY_REDOX_SCHEMES_ID = "343e6f57-6dcf-49c1-91c7-001dbe446c4e";
+    private static final String LEGACY_SEK1_CHEMISTRY_IONS_ELECTROLYSIS_CLUSTER_ID = "cdff3dff-00c4-4a72-9dd0-10b04c8e2c47";
+    private static final String LEGACY_SEK1_CHEMISTRY_CONDUCTIVITY_ID = "33e281e4-db5b-4c3c-b04e-73ceaf38170c";
+    private static final String LEGACY_SEK1_CHEMISTRY_IONS_ID = "9c2c627d-a8dc-47ff-83fa-6785bf132475";
+    private static final String LEGACY_SEK1_CHEMISTRY_ELECTROLYSIS_ID = "cdbc8b2c-fa4b-4ece-8c55-172c2f3df648";
+    private static final String LEGACY_SEK1_CHEMISTRY_ATOMIC_STRUCTURE_CLUSTER_ID = "a50d139e-bdf7-4bf2-872c-41f2a566a201";
+    private static final String LEGACY_SEK1_CHEMISTRY_CORE_SHELL_ID = "fd02c993-0950-41a4-a861-7522d1bd3f8c";
+    private static final String LEGACY_SEK1_CHEMISTRY_ENERGY_LEVEL_ID = "9ebc6606-c22c-4fe9-8852-4e3eecc3f4db";
+    private static final String LEGACY_SEK1_CHEMISTRY_PERIODIC_TABLE_ID = "2a469485-d750-453a-ad40-a31e0c69c4d4";
+    private static final String LEGACY_SEK1_CHEMISTRY_ION_FORMATION_ID = "85bfad0b-2308-40e2-9040-dc29794f7e93";
+    private static final String LEGACY_SEK1_CHEMISTRY_IONIC_BONDING_ID = "41de0477-78e2-48b5-82f7-e5864f2f66cc";
     private static final String LEGACY_SEK1_BIOLOGY_CLUSTER_ID = "09ada9f9-7ed6-454c-b1cf-105c3e803ddc";
     private static final String LEGACY_SEK1_BIOLOGY_WHY_ID = "93ce5d67-4d9b-5579-a695-38158b93df92";
     private static final String LEGACY_SEK1_BIOLOGY_SCIENCE_ID = "9f32781f-c0f1-4124-b06d-47210ae968bf";
@@ -136,12 +146,25 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String CANONICAL_CHEMISTRY_SEK1_SYMBOLS_FORMULAS_ID = "e7c363d4-e02d-4895-8750-ba62c2eb63fe";
     private static final String CANONICAL_CHEMISTRY_SEK1_REACTION_EQUATIONS_ID = "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66";
     private static final String CANONICAL_CHEMISTRY_SEK1_REDOX_SCHEMES_ID = "22133f29-ef02-4408-8f8d-2bbea3275d91";
+    private static final String CANONICAL_CHEMISTRY_SEK1_IONS_ELECTROLYSIS_CLUSTER_ID = "702f774d-ad93-4a6b-98f6-c53310e176c4";
+    private static final String CANONICAL_CHEMISTRY_SEK1_CONDUCTIVITY_ID = "018bec90-445f-4a88-b8bc-228f8335dee6";
+    private static final String CANONICAL_CHEMISTRY_SEK1_IONS_ID = "4285d84a-2c9a-4d51-8250-8bed4daf2d2e";
+    private static final String CANONICAL_CHEMISTRY_SEK1_ELECTROLYSIS_ID = "70b12d1c-abaf-45c6-ae9e-b571e9cbc126";
+    private static final String CANONICAL_CHEMISTRY_SEK1_ATOMIC_STRUCTURE_CLUSTER_ID = "1e803ef8-fc76-493d-85c5-de877cd38fda";
+    private static final String CANONICAL_CHEMISTRY_SEK1_CORE_SHELL_ID = "72236f2c-771e-4ab6-933a-e549ee49d15b";
+    private static final String CANONICAL_CHEMISTRY_SEK1_ENERGY_LEVEL_ID = "f5efab9d-2c61-44ea-b36a-87f873b51fd8";
+    private static final String CANONICAL_CHEMISTRY_SEK1_PERIODIC_TABLE_ID = "e9d74940-1e0e-4511-9718-4851f49ad7a5";
+    private static final String CANONICAL_CHEMISTRY_SEK1_ION_FORMATION_ID = "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca";
+    private static final String CANONICAL_CHEMISTRY_SEK1_IONIC_BONDING_ID = "950c73c6-4ed1-488a-9267-1142e95e0055";
     private static final String CANONICAL_CHEMISTRY_E2_CLUSTER_ID = "f97b9c87-16d0-58fd-bcb2-c51574aa36d0";
     private static final String CANONICAL_CHEMISTRY_WHY_ID = "a9c22adc-b543-5b0c-a2d8-3189facdff08";
     private static final String CANONICAL_CHEMISTRY_OXIDATION_NUMBERS_ID = "4961130b-1ee8-58f2-a319-dff0a864db6a";
     private static final String CANONICAL_CHEMISTRY_ARRHENIUS_ID = "28bb9d15-f865-5843-a035-6066580fea64";
     private static final String CANONICAL_CHEMISTRY_PH_ID = "f1ed86f0-534d-57d7-8952-a004a331cc54";
     private static final String CANONICAL_CHEMISTRY_SIMPLE_REDOX_SERIES_ID = "16da6a4d-8e9c-5f5d-b69d-338d67a2d362";
+    private static final String CANONICAL_CHEMISTRY_GALVANIC_ID = "f0939f88-a6af-5334-ac4d-5d54732af25a";
+    private static final String CANONICAL_CHEMISTRY_UPPER_ELECTROLYSIS_ID = "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef";
+    private static final String CANONICAL_CHEMISTRY_BOND_MODELS_ID = "15e73664-8c3f-5aa6-ac65-b455fc3ed6d6";
     private static final String CANONICAL_BIOLOGY_SEK1_CLUSTER_ID = "b530a382-2786-5794-8821-3e01a62d88fd";
     private static final String CANONICAL_BIOLOGY_SEK1_SCIENCE_ID = "8d35381e-d646-512c-b0c2-bb90c4974208";
     private static final String CANONICAL_BIOLOGY_SEK1_CHARACTERISTICS_ID = "55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba";
@@ -362,6 +385,42 @@ class LearnerServiceCanonicalProjectionTest {
     }
 
     @Test
+    void getMasteryProjectsExactSek1ChemistryIonAndElectrolysisMasteryIntoCanonicalChemistryGoals() {
+        learner.setSelectedCurriculum(CANONICAL_CHEMISTRY_ID);
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_CONDUCTIVITY_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_IONS_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_ELECTROLYSIS_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_CHEMISTRY_SEK1_CONDUCTIVITY_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_CHEMISTRY_SEK1_IONS_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_CHEMISTRY_SEK1_ELECTROLYSIS_ID, 1.0);
+    }
+
+    @Test
+    void getMasteryProjectsExactSek1ChemistryAtomicStructureMasteryIntoCanonicalChemistryGoals() {
+        learner.setSelectedCurriculum(CANONICAL_CHEMISTRY_ID);
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_CORE_SHELL_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_ENERGY_LEVEL_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_PERIODIC_TABLE_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_ION_FORMATION_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_IONIC_BONDING_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+
+        assertThat(mastery).containsEntry(CANONICAL_CHEMISTRY_SEK1_CORE_SHELL_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_CHEMISTRY_SEK1_ENERGY_LEVEL_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_CHEMISTRY_SEK1_PERIODIC_TABLE_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_CHEMISTRY_SEK1_ION_FORMATION_ID, 1.0);
+        assertThat(mastery).containsEntry(CANONICAL_CHEMISTRY_SEK1_IONIC_BONDING_ID, 1.0);
+    }
+
+    @Test
     void getMasteryProjectsExactSek1BiologyMasteryIntoCanonicalBiologyGoals() {
         learner.setSelectedCurriculum(CANONICAL_BIOLOGY_ID);
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
@@ -474,6 +533,24 @@ class LearnerServiceCanonicalProjectionTest {
     }
 
     @Test
+    void canonicalChemistryUpperElectrolysisDependsOnProjectedSek1ElectrolysisBridge() {
+        LearningGoal goal = landscapeService.getGoalDefinition(CANONICAL_CHEMISTRY_UPPER_ELECTROLYSIS_ID);
+
+        assertThat(goal).isNotNull();
+        assertThat(goal.getRequires())
+                .contains(CANONICAL_CHEMISTRY_GALVANIC_ID, CANONICAL_CHEMISTRY_SEK1_ELECTROLYSIS_ID);
+    }
+
+    @Test
+    void canonicalChemistryBondModelsDependOnProjectedSek1IonicBondingBridge() {
+        LearningGoal goal = landscapeService.getGoalDefinition(CANONICAL_CHEMISTRY_BOND_MODELS_ID);
+
+        assertThat(goal).isNotNull();
+        assertThat(goal.getRequires())
+                .contains(CANONICAL_CHEMISTRY_SEK1_IONIC_BONDING_ID);
+    }
+
+    @Test
     void canonicalChemistrySek1SymbolLanguageFrontierUsesProjectedEquationAndReactionMastery() {
         learner.setSelectedCurriculum(CANONICAL_CHEMISTRY_ID);
         when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
@@ -498,6 +575,54 @@ class LearnerServiceCanonicalProjectionTest {
                         CANONICAL_CHEMISTRY_SEK1_SYMBOLS_FORMULAS_ID,
                         CANONICAL_CHEMISTRY_SEK1_REACTION_EQUATIONS_ID,
                         LEGACY_SEK1_CHEMISTRY_REACTION_EQUATIONS_ID);
+    }
+
+    @Test
+    void canonicalChemistrySek1ElectrolysisFrontierUsesProjectedIonAndRedoxMastery() {
+        learner.setSelectedCurriculum(CANONICAL_CHEMISTRY_ID);
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_CHEMISTRY_SEK1_IONS_ELECTROLYSIS_CLUSTER_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_CONDUCTIVITY_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_IONS_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_REDOX_SCHEMES_ID, 1.0)));
+
+        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_CHEMISTRY_SEK1_ELECTROLYSIS_ID)
+                .doesNotContain(
+                        CANONICAL_CHEMISTRY_SEK1_CONDUCTIVITY_ID,
+                        CANONICAL_CHEMISTRY_SEK1_IONS_ID,
+                        LEGACY_SEK1_CHEMISTRY_IONS_ID);
+    }
+
+    @Test
+    void canonicalChemistrySek1AtomicStructureFrontierUsesProjectedPeriodicAndIonMastery() {
+        learner.setSelectedCurriculum(CANONICAL_CHEMISTRY_ID);
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_CHEMISTRY_SEK1_ATOMIC_STRUCTURE_CLUSTER_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_CORE_SHELL_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_ENERGY_LEVEL_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_PERIODIC_TABLE_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_IONS_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_ION_FORMATION_ID, 1.0)));
+
+        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_CHEMISTRY_SEK1_IONIC_BONDING_ID)
+                .doesNotContain(
+                        CANONICAL_CHEMISTRY_SEK1_CORE_SHELL_ID,
+                        CANONICAL_CHEMISTRY_SEK1_ENERGY_LEVEL_ID,
+                        CANONICAL_CHEMISTRY_SEK1_PERIODIC_TABLE_ID,
+                        CANONICAL_CHEMISTRY_SEK1_ION_FORMATION_ID,
+                        LEGACY_SEK1_CHEMISTRY_ION_FORMATION_ID);
     }
 
     @Test
@@ -673,6 +798,28 @@ class LearnerServiceCanonicalProjectionTest {
         List<String> plannedGoals = learnerService.getPlannedGoals(LEARNER_ID);
 
         assertThat(plannedGoals).containsExactly(CANONICAL_CHEMISTRY_SEK1_SYMBOL_LANGUAGE_CLUSTER_ID);
+    }
+
+    @Test
+    void getPlannedGoalsProjectsLegacySek1ChemistryIonElectrolysisClusterForCanonicalView() {
+        learner.setSelectedCurriculum(CANONICAL_CHEMISTRY_ID);
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, LEGACY_SEK1_CHEMISTRY_IONS_ELECTROLYSIS_CLUSTER_ID)));
+
+        List<String> plannedGoals = learnerService.getPlannedGoals(LEARNER_ID);
+
+        assertThat(plannedGoals).containsExactly(CANONICAL_CHEMISTRY_SEK1_IONS_ELECTROLYSIS_CLUSTER_ID);
+    }
+
+    @Test
+    void getPlannedGoalsProjectsLegacySek1ChemistryAtomicStructureClusterForCanonicalView() {
+        learner.setSelectedCurriculum(CANONICAL_CHEMISTRY_ID);
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, LEGACY_SEK1_CHEMISTRY_ATOMIC_STRUCTURE_CLUSTER_ID)));
+
+        List<String> plannedGoals = learnerService.getPlannedGoals(LEARNER_ID);
+
+        assertThat(plannedGoals).containsExactly(CANONICAL_CHEMISTRY_SEK1_ATOMIC_STRUCTURE_CLUSTER_ID);
     }
 
     @Test

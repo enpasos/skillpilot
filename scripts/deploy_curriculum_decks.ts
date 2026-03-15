@@ -1,15 +1,13 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { resolveHessenUpperSecondaryLandscapePath } from './hessenUpperSecondaryPaths'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const ROOT_DIR = path.resolve(__dirname, '..')
 
-const SOURCE_DIR = path.join(
-  ROOT_DIR,
-  'curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json',
-)
+const SOURCE_DIR = path.dirname(resolveHessenUpperSecondaryLandscapePath('physics'))
 const TARGET_DIRS = [
   path.join(ROOT_DIR, 'app/public/data'),
   path.join(ROOT_DIR, 'backend/src/main/resources/static/data'),
